@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35cfb570_cc2c02e5",
+        "filename": "board/brya/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-07T00:03:33Z",
+      "side": 1,
+      "message": "Note - most platforms have these enabled throughout development.  The commands only need to be disabled if the EC flash space gets tight.",
+      "parentUuid": "46638704_e3cc605b",
+      "revId": "5bceb3eb8bd1affe8e7a520069863d09705e387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82ae0b13_0a855fb2",
@@ -77,6 +95,52 @@
         "startChar": 71,
         "endLine": 30,
         "endChar": 84
+      },
+      "revId": "5bceb3eb8bd1affe8e7a520069863d09705e387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4734fc1e_0439f69b",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-07T00:03:33Z",
+      "side": 1,
+      "message": "Open bug to verify lid rotation matrix once the lid accelerometer is mounted at a later board phase.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 2
+      },
+      "revId": "5bceb3eb8bd1affe8e7a520069863d09705e387a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9270ca02_6470ee7c",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-07T00:03:33Z",
+      "side": 1,
+      "message": "Has the base rotation matrix been verified?  If not open a bug to track.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
       },
       "revId": "5bceb3eb8bd1affe8e7a520069863d09705e387a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
