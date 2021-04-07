@@ -46,6 +46,30 @@
       },
       "revId": "a0de872e777e38b9099fa00917fa42dc49a2b7e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "814ceb9d_af8a10b6",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-07T03:34:12Z",
+      "side": 1,
+      "message": "ok ta",
+      "parentUuid": "49fc1c44_7171b7d1",
+      "range": {
+        "startLine": 264,
+        "startChar": 34,
+        "endLine": 264,
+        "endChar": 71
+      },
+      "revId": "a0de872e777e38b9099fa00917fa42dc49a2b7e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
