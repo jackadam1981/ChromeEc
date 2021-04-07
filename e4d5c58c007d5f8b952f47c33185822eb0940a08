@@ -46,6 +46,30 @@
       },
       "revId": "e4d5c58c007d5f8b952f47c33185822eb0940a08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dabc9579_c26c1f9c",
+        "filename": "zephyr/include/drivers/cros_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-07T01:54:18Z",
+      "side": 1,
+      "message": "I made a PR to provide chip id via hwinfo_get_device_id Zephyr api before. Please refer this url(https://github.com/zephyrproject-rtos/zephyr/pull/32602). The owner of the hwinfo driver folder, @alexanderwachter, described the background of this api is used for USB to provide a unique ID. Our chip doesn\u0027t support this feature and the owner asked to close this PR. (https://github.com/zephyrproject-rtos/zephyr/pull/32602#issuecomment-785795226) That\u0027s why we extend cros_system api for checking hardware info in case the customers select wrong part. If @alexanderwachter doesn\u0027t insist unique ID is necessary, I will open this PR for code review again.",
+      "parentUuid": "7b309915_8ad58140",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 35
+      },
+      "revId": "e4d5c58c007d5f8b952f47c33185822eb0940a08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
