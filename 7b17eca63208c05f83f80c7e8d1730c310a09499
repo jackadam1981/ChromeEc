@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "780f3a7a_f5192a5d",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-08T22:01:34Z",
+      "side": 1,
+      "message": "You need the leading \"CONFIG_\" prefix.",
+      "range": {
+        "startLine": 1416,
+        "startChar": 7,
+        "endLine": 1416,
+        "endChar": 41
+      },
+      "revId": "7b17eca63208c05f83f80c7e8d1730c310a09499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
