@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "974a7c49_d30597f1",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-04-08T11:04:03Z",
+      "side": 1,
+      "message": "So I still think this is the right place to put the logic, just maybe reverse it:\n\nif (gap \u003c\u003d 0) {\n    prochot_linger \u003d 0\n    new_state |\u003d THROT_PROCHOT;\n} else if (prochot_linger \u003c PROCHOT_DEFER_OFF) {\n    /*\n     * Do not turn off PROCHOT immediately.\n     */\n    prochot_linger++;\n    new_state |\u003d THROT_PROCHOT;\n}",
+      "parentUuid": "7540b4e2_70b1b7da",
+      "revId": "b27e308b2033f77319270d3bc8ff74ded7e530f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3dde5dd_519168ca",
         "filename": "board/dooly/board.c",
         "patchSetId": 1
