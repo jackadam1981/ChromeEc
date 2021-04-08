@@ -359,6 +359,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95a7c58f_e583f7a4",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-08T20:23:12Z",
+      "side": 1,
+      "message": "renamed as sklrvp_mchp1723, thanks!",
+      "parentUuid": "29ce6b6d_52e53f4c",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 31
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "363922e4_713f5f62",
