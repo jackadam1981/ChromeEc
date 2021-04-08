@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea5340cd_49fd2cc1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 23
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-08T18:41:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e5e5beca_2eb55556",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 39
+      },
+      "revId": "70516be3cf33ac304b65bced1fb098793ff06384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eefba4ed_b89c735b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-08T17:52:05Z",
       "side": 1,
       "message": "1723",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "70516be3cf33ac304b65bced1fb098793ff06384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0c34da3_3784af7f",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-08T18:41:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eefba4ed_b89c735b",
       "range": {
         "startLine": 7,
         "startChar": 31,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14915c92_8ba8fcdc",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-08T18:41:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "13bbd2f8_8c1b404a",
+      "range": {
+        "startLine": 8,
+        "startChar": 41,
+        "endLine": 8,
+        "endChar": 48
+      },
+      "revId": "70516be3cf33ac304b65bced1fb098793ff06384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26e2603f_d140d0dd",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-08T17:52:05Z",
       "side": 1,
       "message": "we need to use internal clock",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 28
+      },
+      "revId": "70516be3cf33ac304b65bced1fb098793ff06384",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0735022_8563ecbc",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-08T18:41:17Z",
+      "side": 1,
+      "message": "yes, using internal clock in code, refer to comments:\n * Use internal silicon 32KHz oscillator\n *   #undef CONFIG_CLOCK_SRC_EXTERNAL\n *   CONFIG_CLOCK_CRYSTAL is a don\u0027t care\n\nbut will remove\n#define\tCONFIG_CLOCK_CRYSTAL\nto cause confusion.\n\nverified on EVB, removed external crystal, system still boot up.",
+      "parentUuid": "26e2603f_d140d0dd",
       "range": {
         "startLine": 224,
         "startChar": 0,
