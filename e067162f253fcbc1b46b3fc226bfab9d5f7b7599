@@ -22,6 +22,30 @@
       },
       "revId": "e067162f253fcbc1b46b3fc226bfab9d5f7b7599",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d23f9b78_95ccd916",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-08T22:25:50Z",
+      "side": 1,
+      "message": "As discussed OOB, there is a regression in the main branch WRT this test and typec.ModeReboot. However, the firmware-volteer-13672.B-main branch still passes, and cherry-picking this CL doesn\u0027t change that.",
+      "parentUuid": "1c29863d_2b91ec10",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 36
+      },
+      "revId": "e067162f253fcbc1b46b3fc226bfab9d5f7b7599",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
