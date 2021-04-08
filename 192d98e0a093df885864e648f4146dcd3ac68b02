@@ -46,6 +46,30 @@
       },
       "revId": "192d98e0a093df885864e648f4146dcd3ac68b02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "835991d1_3b122475",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1202834
+      },
+      "writtenOn": "2021-04-08T04:41:56Z",
+      "side": 1,
+      "message": "Build failure resolved with checking for whether we are in RW (makes sense for bep/fpc_private.c to not be in RO as fingerprint sensors do not need to be available when the EC is running in RO).",
+      "parentUuid": "0c0196b7_2100753e",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 24
+      },
+      "revId": "192d98e0a093df885864e648f4146dcd3ac68b02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
