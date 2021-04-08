@@ -184,6 +184,7 @@ int ioex_init(int ioex)
 	 */
 	for (i = 0; i < IOEX_COUNT; i++, g++) {
 		int flags = g->flags;
+		int port0_flag;
 
 		if (g->ioex == ioex && g->mask && !(flags & GPIO_DEFAULT)) {
 			/* Late-sysJump should not set the output levels */
@@ -192,6 +193,12 @@ int ioex_init(int ioex)
 
 			drv->set_flags_by_mask(g->ioex, g->port,
 						g->mask, flags);
+			if ((ioex == 1) && (g->port == 0)) {
+				drv->get_flags_by_mask(g->ioex, g->port,
+					       g->mask, &port0_flag);
+				if (port0_flag & GPIO_INPUT)
+					while (1) {};
+			}
 		}
 	}
 
