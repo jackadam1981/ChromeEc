@@ -16,6 +16,24 @@
       "message": "I think this (and baseboard.c) can be removed.",
       "revId": "eae2f6495cb5ccee6986dc87b995d7d8eb722d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d1476b4_1753d418",
+        "filename": "baseboard/mtscp-rv32i/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-04-08T10:32:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c177a65_6826785f",
+      "revId": "eae2f6495cb5ccee6986dc87b995d7d8eb722d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
