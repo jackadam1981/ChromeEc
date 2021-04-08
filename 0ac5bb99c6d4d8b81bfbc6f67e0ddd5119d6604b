@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29b86447_7aca06ba",
+        "filename": "chip/mchp/registers.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 520,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-08T06:37:46Z",
+      "side": 1,
+      "message": "might as well use the BIT(n) macro here.",
+      "range": {
+        "startLine": 520,
+        "startChar": 35,
+        "endLine": 520,
+        "endChar": 38
+      },
+      "revId": "0ac5bb99c6d4d8b81bfbc6f67e0ddd5119d6604b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
