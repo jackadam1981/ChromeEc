@@ -227,6 +227,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d0be1a7_63c9aefa",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-08T00:07:34Z",
+      "side": 1,
+      "message": "If a board had more than one charger, and one of them was an ISL9241, and one of them was something else, this patch would apply to that other charger as well. AFAIK, there are no such platforms, and if there were, toggling charger_discharge_on_ac for the other charger should be harmless. Therefore, your code to call charger_discharge_on_ac in patchset 3 was fine. Sorry for the confusion.",
+      "parentUuid": "78310df4_2ffec6d4",
+      "revId": "f37ad962e7d9e41d40b52d2132138289db82e0c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "552251ca_9ecaf8e3",
         "filename": "driver/charger/isl9241.c",
         "patchSetId": 3
