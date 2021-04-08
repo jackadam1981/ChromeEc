@@ -4,6 +4,7 @@
  */
 
 #include "system.h"
+#include "cros_version.h"
 
 /* Ongoing actions preventing going into deep-sleep mode. */
 uint32_t sleep_mask;
@@ -20,4 +21,9 @@ int system_add_jump_tag(uint16_t tag, int version, int size, const void *data)
 const uint8_t *system_get_jump_tag(uint16_t tag, int *version, int *size)
 {
 	return NULL;
+}
+
+void system_print_banner(void)
+{
+	printk("Image: %s\n", build_info);
 }
