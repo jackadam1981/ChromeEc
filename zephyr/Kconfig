@@ -553,7 +553,7 @@ config PLATFORM_EC_VSTORE_SLOT_COUNT
 	  checking on resume. For this, one slot is enough.
 
 menuconfig PLATFORM_EC_WATCHDOG
-	bool "watchdog"
+	bool "Watchdog"
 	depends on WATCHDOG
 	default y
 	help
@@ -561,5 +561,10 @@ menuconfig PLATFORM_EC_WATCHDOG
 	  system if the hook task (which is the lowest-priority task on the
 	  system) gets starved for CPU time and isn't able to fire its
 	  HOOK_TICK event.
+
+	  Chromium EC system uses a fire auxiliary timer to handle the system
+	  warning event. This leaves some time to the system for preparing &
+	  printing the debug information. The interval between reloads of the
+	  watchdog timer should be less than half of CONFIG_AUX_TIMER_PERIOD_MS.
 
 endif # PLATFORM_EC

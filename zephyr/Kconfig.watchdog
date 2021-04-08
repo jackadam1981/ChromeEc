@@ -10,7 +10,5 @@ config PLATFORM_EC_WATCHDOG_PERIOD_MS
 	help
 	  Set the timeout of the watchdog timer. The watchdog timer reboots
 	  the system if no one reloads the watchdog timer before the timeout.
-	  The interval between reloads of the watchdog timer should be less than
-	  half of the watchdog period.
 
 endif # PLATFORM_EC_WATCHDOG
