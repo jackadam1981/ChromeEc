@@ -16,6 +16,63 @@
       "message": "ping",
       "revId": "2a36919fcbb28f00a192e4ebfb368355fcd22c6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0db70116_9b90a38f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-08T07:34:02Z",
+      "side": 1,
+      "message": "Sorry for the delay and thanks for making our doc public!\n\nJust one nit, the rest is fine IMHO.",
+      "revId": "2a36919fcbb28f00a192e4ebfb368355fcd22c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54ac016a_48d0b344",
+        "filename": "docs/hammer.md",
+        "patchSetId": 9
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-08T07:34:02Z",
+      "side": 1,
+      "message": "nit: Many",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 10
+      },
+      "revId": "2a36919fcbb28f00a192e4ebfb368355fcd22c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1033bb5e_36b11bea",
+        "filename": "docs/hammer.md",
+        "patchSetId": 9
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-08T07:34:02Z",
+      "side": 1,
+      "message": "I guess I was supposed to do it and... never did, but we really should check this in the platform/ec repo...\n\n(not necessary to do it right now)",
+      "revId": "2a36919fcbb28f00a192e4ebfb368355fcd22c6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
