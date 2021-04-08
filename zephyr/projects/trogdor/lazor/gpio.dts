@@ -369,4 +369,13 @@
 			&lvol_iob2 /* EC_I2C_SENSOR_SDA */
 		>;
 	};
+
+	unused-gpios {
+		compatible = "named-gpios";
+
+		unused_gpio51 {
+			gpios = <&gpio5 1 (GPIO_INPUT | GPIO_PULL_UP)>;
+			label = "UNUSED_GPIO51";
+		};
+	};
 };

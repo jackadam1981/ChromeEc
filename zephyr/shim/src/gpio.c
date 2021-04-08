@@ -27,9 +27,9 @@ struct gpio_config {
 	gpio_flags_t init_flags;
 };
 
-#define GPIO_CONFIG(id)                                                      \
+#define GPIO_CONFIG_UTIL(id, pro)                                            \
 	COND_CODE_1(                                                         \
-		DT_NODE_HAS_PROP(id, enum_name),                             \
+		DT_NODE_HAS_PROP(id, pro),                                   \
 		(                                                            \
 			{                                                    \
 				.name = DT_LABEL(id),                        \
@@ -38,9 +38,19 @@ struct gpio_config {
 				.init_flags = DT_GPIO_FLAGS(id, gpios),      \
 			}, ),                                                \
 		())
+
+#define GPIO_CONFIG(id) GPIO_CONFIG_UTIL(id, enum_name)
+#define GPIO_CONFIG_UNUSED(id) GPIO_CONFIG_UTIL(id, gpios)
+
 static const struct gpio_config configs[] = {
 #if DT_NODE_EXISTS(DT_PATH(named_gpios))
 	DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_CONFIG)
+#endif
+};
+
+static const struct gpio_config configs_unused[] = {
+#if DT_NODE_EXISTS(DT_PATH(unused_gpios))
+	DT_FOREACH_CHILD(DT_PATH(unused_gpios), GPIO_CONFIG_UNUSED)
 #endif
 };
 
@@ -257,6 +267,27 @@ static int init_gpios(const struct device *unused)
 			LOG_ERR("Callback reg failed %s (%d)",
 				configs[signal].name, rv);
 			continue;
+		}
+	}
+
+	/*
+	 * Loop through all unused GPIOs in device tree to set proper
+	 * configuration for better power consumption in the lowest power state.
+	 */
+	for (size_t i = 0; i < ARRAY_SIZE(configs_unused); ++i) {
+		data[i].dev = device_get_binding(configs_unused[i].dev_name);
+		int rv;
+
+		if (data[i].dev == NULL) {
+			LOG_ERR("Not found (%s)", configs_unused[i].name);
+		}
+
+		rv = gpio_pin_configure(data[i].dev, configs_unused[i].pin,
+					configs_unused[i].init_flags);
+
+		if (rv < 0) {
+			LOG_ERR("Config failed %s (%d)", configs_unused[i].name,
+				rv);
 		}
 	}
 
