@@ -16,6 +16,23 @@
       "message": "I\u0027m pretty sure that this is always the correct/safe place to get the SOP from, because if we\u0027re in RCH_REQUESTING_CHUNK, we should have just received an initial chunk or chunk response. But it would be good if someone more familiar with how the PRL state machines interlock could verify that.",
       "revId": "c8fcd769fee5a926ba40814c554371504cca461f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79934c9b_192b4737",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-08T15:05:22Z",
+      "side": 1,
+      "message": "Looks good, but I\u0027ll give the PRL owner time to review",
+      "revId": "c8fcd769fee5a926ba40814c554371504cca461f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
