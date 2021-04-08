@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97a8cb42_9f4eec13",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-08T00:27:48Z",
+      "side": 1,
+      "message": "This should be 10.",
+      "revId": "9e3ade069964caf0cb1bbd6fa217f32bce097b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2b0f62bb_03c59d22",
         "filename": "baseboard/guybrush/baseboard.c",
         "patchSetId": 2
@@ -68,6 +85,41 @@
       "side": 1,
       "message": "We had CBI as well.  It is still possible it will exist and we know it exists and we talk to it but it is not powered and fails out. The retries handled that and it was needed for Zork.",
       "parentUuid": "573269cd_c50104db",
+      "revId": "9e3ade069964caf0cb1bbd6fa217f32bce097b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b90a03_53626a38",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 932,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-08T00:27:48Z",
+      "side": 1,
+      "message": "I think probing is useful validation that might discover a hardware or software issue. Also it ensures the retimer is ready before attempting to write tuning values.\n\nI noticed the anx7491 takes ~50 retries before it responds, this may need to be done in a deferred function.",
+      "parentUuid": "1acfdd3a_fcd69136",
+      "revId": "9e3ade069964caf0cb1bbd6fa217f32bce097b90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e967397d_e06a044d",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 951,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-08T00:27:48Z",
+      "side": 1,
+      "message": "This should be 100.",
       "revId": "9e3ade069964caf0cb1bbd6fa217f32bce097b90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
