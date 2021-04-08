@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "542bb2e6_a970bec3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-08T22:57:18Z",
+      "side": 1,
+      "message": "Looks good.  Do we know if everyone has FW_CONFIG set for these definitions already?  I noticed my B1 has 0x138 for this field which I think is right for my DB",
+      "revId": "730fcc2019ae946bdba5bfbfe12be8faabbe341f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
