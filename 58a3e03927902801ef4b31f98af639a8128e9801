@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "615635b3_fd87053a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-08T21:04:35Z",
+      "side": 1,
+      "message": "Thanks for fixing it. Just some nits.",
+      "revId": "58a3e03927902801ef4b31f98af639a8128e9801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28c7987a_75db0135",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-08T21:04:35Z",
+      "side": 1,
+      "message": "The 1 mentioned is the above line 150 and line 162.\nThe 2 mentioned is the below line 178.\n\nThey are not related to the next line. Maybe you can just remove these comments.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 38
+      },
+      "revId": "58a3e03927902801ef4b31f98af639a8128e9801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8091fe04_5c8daae7",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-08T21:04:35Z",
+      "side": 1,
+      "message": "Remove \"Set WDCNT --\u003e\". It is duplicated to the above comment.",
+      "range": {
+        "startLine": 171,
+        "startChar": 4,
+        "endLine": 171,
+        "endChar": 18
+      },
+      "revId": "58a3e03927902801ef4b31f98af639a8128e9801",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
