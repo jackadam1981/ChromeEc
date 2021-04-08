@@ -32,7 +32,7 @@
 #define CONFIG_RAM_SIZE ((CONFIG_IPC_SHARED_OBJ_ADDR & (~(0x400 - 1))) - \
 			 CONFIG_RAM_BASE)
 
-#define SCP_FW_END 0x100000
+#define SCP_FW_END 0xc0000
 
 /* IPI configs */
 #define CONFIG_IPC_SHARED_OBJ_BUF_SIZE 288
