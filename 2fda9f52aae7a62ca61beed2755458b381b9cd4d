@@ -188,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28bdb1b_d1679689",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:41:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04ac44e7_1350db2c",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 17
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "073d0b00_75104cc1",
@@ -306,6 +330,24 @@
       "writtenOn": "2021-04-07T04:57:32Z",
       "side": 1,
       "message": "Extra blank line can be dropped.",
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a5175fe_b8c6430d",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:41:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3894e4ba_953d4697",
       "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
