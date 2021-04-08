@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9b9050a_d441ab1f",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-08T19:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7d16f29_b3a6f72d",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 34
+      },
+      "revId": "347b68070efaf5e4e3ec4569a00af1fb8a05ed00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "862d5ed8_91c0bd5e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-08T15:04:01Z",
       "side": 1,
       "message": "PDO_FIXED_VOLTAGE(pdo)",
+      "range": {
+        "startLine": 164,
+        "startChar": 8,
+        "endLine": 164,
+        "endChar": 34
+      },
+      "revId": "347b68070efaf5e4e3ec4569a00af1fb8a05ed00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "813585f7_2ba25603",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-08T19:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "862d5ed8_91c0bd5e",
       "range": {
         "startLine": 164,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbde91f_88e3e64e",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-08T19:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80088ca1_cba4afaa",
+      "range": {
+        "startLine": 166,
+        "startChar": 8,
+        "endLine": 166,
+        "endChar": 34
+      },
+      "revId": "347b68070efaf5e4e3ec4569a00af1fb8a05ed00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5671c9e_501ff642",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-08T15:04:01Z",
       "side": 1,
       "message": "PDO_BATT_MAX_POWER(pdo)",
+      "range": {
+        "startLine": 175,
+        "startChar": 7,
+        "endLine": 175,
+        "endChar": 26
+      },
+      "revId": "347b68070efaf5e4e3ec4569a00af1fb8a05ed00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb08135c_e9ca7fce",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-08T19:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5671c9e_501ff642",
       "range": {
         "startLine": 175,
         "startChar": 7,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a9e520_9368f0ec",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-08T19:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "428d8213_20747f84",
+      "range": {
+        "startLine": 177,
+        "startChar": 3,
+        "endLine": 177,
+        "endChar": 58
+      },
+      "revId": "347b68070efaf5e4e3ec4569a00af1fb8a05ed00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8dace22_31ff1426",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-04-08T15:04:01Z",
       "side": 1,
       "message": "PDO_AUG_MAX_CURRENT(pdo)",
+      "range": {
+        "startLine": 178,
+        "startChar": 10,
+        "endLine": 178,
+        "endChar": 28
+      },
+      "revId": "347b68070efaf5e4e3ec4569a00af1fb8a05ed00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8561ca4f_13001a64",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-08T19:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8dace22_31ff1426",
       "range": {
         "startLine": 178,
         "startChar": 10,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18fbd6f4_98047d5b",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-08T19:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24ea3cc6_7d479799",
+      "range": {
+        "startLine": 181,
+        "startChar": 11,
+        "endLine": 181,
+        "endChar": 29
+      },
+      "revId": "347b68070efaf5e4e3ec4569a00af1fb8a05ed00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "80eab2a2_44adfe5a",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-04-08T15:04:01Z",
       "side": 1,
       "message": "Use the PDO_FIXED macro here.  PDO_FIXED(5000, 3000, 0)",
+      "range": {
+        "startLine": 74,
+        "startChar": 22,
+        "endLine": 76,
+        "endChar": 34
+      },
+      "revId": "347b68070efaf5e4e3ec4569a00af1fb8a05ed00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4ba3e6b_13f4b3f2",
+        "filename": "test/usb_common_test.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-08T19:20:53Z",
+      "side": 1,
+      "message": "As discussed, I don\u0027t want to use macros from the code under test, but creating macros here in the test will improve readability.",
+      "parentUuid": "80eab2a2_44adfe5a",
       "range": {
         "startLine": 74,
         "startChar": 22,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a54c2e3_597e0f66",
+        "filename": "test/usb_common_test.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-08T19:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "739bcee9_bca6ea7e",
+      "range": {
+        "startLine": 105,
+        "startChar": 22,
+        "endLine": 108,
+        "endChar": 33
+      },
+      "revId": "347b68070efaf5e4e3ec4569a00af1fb8a05ed00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35447f74_ccf74f59",
@@ -231,6 +447,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1869a1f6_cf2bf1c5",
+        "filename": "test/usb_common_test.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-08T19:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35447f74_ccf74f59",
+      "range": {
+        "startLine": 128,
+        "startChar": 22,
+        "endLine": 131,
+        "endChar": 34
+      },
+      "revId": "347b68070efaf5e4e3ec4569a00af1fb8a05ed00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5e9427b_a5bc391f",
@@ -244,6 +484,30 @@
       "writtenOn": "2021-04-08T15:04:01Z",
       "side": 1,
       "message": "Create PDO_AUGMENTED() macro.",
+      "range": {
+        "startLine": 164,
+        "startChar": 22,
+        "endLine": 167,
+        "endChar": 34
+      },
+      "revId": "347b68070efaf5e4e3ec4569a00af1fb8a05ed00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae4e510_e87385d4",
+        "filename": "test/usb_common_test.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-08T19:20:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5e9427b_a5bc391f",
       "range": {
         "startLine": 164,
         "startChar": 22,
