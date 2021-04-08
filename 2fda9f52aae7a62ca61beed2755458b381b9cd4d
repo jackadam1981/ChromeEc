@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "102c0340_4307173b",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5802e409_af78ee1f",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 26
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a411235_3fce5183",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a956b1c6_dd799a50",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:39:24Z",
+      "side": 1,
+      "message": "No, the reason for this addition is not CONFIG_KEYBOARD_PROTOCOL_MKBP, but Coachz being the only board that calls `mkbp_update_switches` directly, so it will not compile without MKBP-input-devices addition.",
+      "parentUuid": "9a411235_3fce5183",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6ff9493_b2d5fd08",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-07T04:57:32Z",
       "side": 1,
       "message": "All these configs need to go into baseboard/trogdor/baseboard.h. CONFIG_MKBP_EVENT and CONFIG_MKBP_USE_GPIO are already selected. You need to replace CONFIG_KEYBOARD_PROTOCOL_MKBP with CONFIG_MKBP_INPUT_DEVICES.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee6f40b_464359b6",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:39:24Z",
+      "side": 1,
+      "message": "The only direct call to `mkbp_update_switches` is done from board/coachz/board.c - this is why I decided to use board-level config. Do you still think it is worth changing in the baseboard.h?",
+      "parentUuid": "c6ff9493_b2d5fd08",
       "range": {
         "startLine": 62,
         "startChar": 0,
@@ -162,6 +234,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8130cbf0_60e16636",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfd45b2a_ba6f7fe2",
+      "range": {
+        "startLine": 22,
+        "startChar": 41,
+        "endLine": 22,
+        "endChar": 50
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8d462f8_58494b1e",
@@ -175,6 +271,24 @@
       "writtenOn": "2021-04-07T04:57:32Z",
       "side": 1,
       "message": "Extra blank line can be dropped.",
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd1839c_6cefd7b4",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8d462f8_58494b1e",
       "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -213,6 +327,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aca9f0b_9e917e9f",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5afdf85c_50871af0",
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "729edd3f_473df817",
@@ -226,6 +358,24 @@
       "writtenOn": "2021-04-07T04:57:32Z",
       "side": 1,
       "message": "Extra blank line can be dropped.",
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c53870eb_4898c4a7",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "729edd3f_473df817",
       "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -247,6 +397,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73797ed6_6326a828",
+        "filename": "common/mkbp_input_devices.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2f74ab5_7b772ae1",
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd523165_8aeac313",
@@ -260,6 +428,30 @@
       "writtenOn": "2021-04-07T04:57:32Z",
       "side": 1,
       "message": "I think this will have to be select for MKBP_INPUT_DEVICES as well. Probably rearrange this as:\n\n```\n#ifdef CONFIG_KEYBOARD_PROTOCOL_MKBP\n#define CONFIG_MKBP_INPUT_DEVICES\n#endif\n\n#if defined(CONFIG_KEYBOARD_PROTOCOL_MKBP) || defined(CONFIG_MKBP_INPUT_DEVICES)\n#define CONFIG_MKBP_EVENT\n#endif\n```",
+      "range": {
+        "startLine": 5435,
+        "startChar": 0,
+        "endLine": 5435,
+        "endChar": 25
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8204069e_b702aaeb",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5435,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd523165_8aeac313",
       "range": {
         "startLine": 5435,
         "startChar": 0,
