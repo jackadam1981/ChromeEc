@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d890cdb_9c5c8b45",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fdf5726_bef621f8",
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f927d3f5_2dfe52a9",
@@ -65,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3baf52c0_b9f54ab6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a56336_13df0d42",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 58
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd2cf6f7_fc4c8cde",
@@ -78,6 +120,30 @@
       "writtenOn": "2021-03-18T02:24:55Z",
       "side": 1,
       "message": "this will go to \u0027main,firmware-dedede-13606.B,firmware-volteer-13672.B-main\u0027",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "6ec6e52e1e511fa9df5ff3c277ff6f12b646b300",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b21825c7_ac60c0b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-08T23:13:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd2cf6f7_fc4c8cde",
       "range": {
         "startLine": 13,
         "startChar": 7,
