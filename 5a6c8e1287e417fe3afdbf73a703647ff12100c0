@@ -22,6 +22,30 @@
       },
       "revId": "5a6c8e1287e417fe3afdbf73a703647ff12100c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "539c1d3d_32c7450d",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-04-08T14:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b73cb9e7_34697e94",
+      "range": {
+        "startLine": 84,
+        "startChar": 32,
+        "endLine": 84,
+        "endChar": 37
+      },
+      "revId": "5a6c8e1287e417fe3afdbf73a703647ff12100c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
