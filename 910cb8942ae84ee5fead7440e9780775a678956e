@@ -289,6 +289,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "98f22d6d_10113323",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-08T18:45:01Z",
+      "side": 1,
+      "message": "don\u0027t have to delete, rename the folder\n\ngit mv board/sklrvp_mchp172x board/sklrvp_mchp173",
+      "parentUuid": "98b1c414_832c9b19",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 31
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "363922e4_713f5f62",
         "filename": "board/sklrvp_mchp172x/board.h",
         "patchSetId": 20
