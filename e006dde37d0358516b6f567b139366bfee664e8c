@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd343e1a_5d6fb22d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-08T15:57:28Z",
+      "side": 1,
+      "message": "Hey, that\u0027s what I had in mind for the I2C EEPROM setup, uses the existing dts and adds the device as a standard node with all the properties. I think that the node could go in the main dts file, but since the gpio definitions are in an overlay, this has to go in an overlay as well.",
+      "revId": "e006dde37d0358516b6f567b139366bfee664e8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
