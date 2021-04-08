@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6504695_0b989ea8",
+        "filename": "baseboard/asurada/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-08T02:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bce8321_aa79d4e7",
+      "revId": "587c0f6584ebc38968042955b993fe48d9ac9f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fce0a5c3_55269cc8",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-07T10:37:52Z",
       "side": 1,
       "message": "Move into baseboard and undef in spherion/board.h since this should be the default option.",
+      "range": {
+        "startLine": 38,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 48
+      },
+      "revId": "587c0f6584ebc38968042955b993fe48d9ac9f0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e4af0b_d45d94b5",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-08T02:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fce0a5c3_55269cc8",
       "range": {
         "startLine": 38,
         "startChar": 8,
