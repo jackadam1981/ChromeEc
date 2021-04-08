@@ -72,8 +72,10 @@ static int wait_isr(int port, int mask)
 
 		/* Check for errors */
 		if (isr & (STM32_I2C_ISR_ARLO | STM32_I2C_ISR_BERR |
-			STM32_I2C_ISR_NACK))
+			STM32_I2C_ISR_NACK)) {
+			while (1) {};
 			return EC_ERROR_UNKNOWN;
+		}
 
 		/* Check for desired mask */
 		if ((isr & mask) == mask)

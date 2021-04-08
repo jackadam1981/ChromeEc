@@ -185,8 +185,10 @@ static int tca64xxa_set_flags_by_mask(int ioex, int port, int mask, int flags)
 
 	/* Configuration */
 	ret = tca64xxa_read_byte(ioex, port, TCA64XXA_REG_CONF, &v);
-	if(ret)
+	if(ret) {
+		while (1) {};
 		return ret;
+	}
 
 	if (flags & GPIO_INPUT)
 		v |= mask;
@@ -196,8 +198,10 @@ static int tca64xxa_set_flags_by_mask(int ioex, int port, int mask, int flags)
 		return EC_ERROR_INVAL;
 
 	ret = tca64xxa_write_byte(ioex, port, TCA64XXA_REG_CONF, v);
-	if (ret)
+	if (ret) {
+		while (1) {};
 		return ret;
+	}
 
 	return EC_SUCCESS;
 }
