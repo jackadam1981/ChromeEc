@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "955a9374_97c34e80",
+        "filename": "board/boldar/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1379412
+      },
+      "writtenOn": "2021-04-08T06:06:26Z",
+      "side": 1,
+      "message": "Is this 0 or 1 ( 7bit addr: 0x18 or 0x19) ?",
+      "range": {
+        "startLine": 111,
+        "startChar": 35,
+        "endLine": 111,
+        "endChar": 36
+      },
+      "revId": "d8c8b11b38202d128b3c6a15e76ce6069583650a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
