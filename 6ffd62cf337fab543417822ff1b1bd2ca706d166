@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab08c747_18a21322",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-08T15:12:19Z",
+      "side": 1,
+      "message": "Nit - move this check before the augmented check to match pd_find_pdo_index()",
+      "range": {
+        "startLine": 1219,
+        "startChar": 0,
+        "endLine": 1222,
+        "endChar": 0
+      },
+      "revId": "6ffd62cf337fab543417822ff1b1bd2ca706d166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42290b3b_edaa5b5b",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-08T15:12:19Z",
+      "side": 1,
+      "message": "Move before augmented check.",
+      "range": {
+        "startLine": 1273,
+        "startChar": 0,
+        "endLine": 1276,
+        "endChar": 0
+      },
+      "revId": "6ffd62cf337fab543417822ff1b1bd2ca706d166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaac6eb2_d48c9194",
+        "filename": "include/config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4823,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-08T15:12:19Z",
+      "side": 1,
+      "message": "Use the same help as the Kconfig option.",
+      "range": {
+        "startLine": 4823,
+        "startChar": 0,
+        "endLine": 4823,
+        "endChar": 62
+      },
+      "revId": "6ffd62cf337fab543417822ff1b1bd2ca706d166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a872b60d_f03a9bb4",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-08T15:12:19Z",
+      "side": 1,
+      "message": "You need to add the Kconfig to config.h mapping in zephyr/shim/include/config_chip.h",
+      "range": {
+        "startLine": 983,
+        "startChar": 7,
+        "endLine": 983,
+        "endChar": 41
+      },
+      "revId": "6ffd62cf337fab543417822ff1b1bd2ca706d166",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
