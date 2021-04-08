@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba1dac07_a2e3e71e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-08T02:07:06Z",
+      "side": 1,
+      "message": "Hi Caveh,\n  The download_from_flash ROM API is fixed on the NPCX9 ES2 chips. We would like to remove the workaround in CL:2435165 to save the code size.\nAs the Brya proto board uses ES1 chip, I am not sure when is the best time frame to remove it. I prepare this CL in advance and please let me know when the bray board migrates to use ES2 chip so we can land it.",
+      "revId": "3107846cb3203ce843e553ac545f22a5b6a37531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
