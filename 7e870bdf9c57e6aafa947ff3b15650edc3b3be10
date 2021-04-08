@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e3390c_04d92a08",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-08T22:06:43Z",
+      "side": 1,
+      "message": "Changed to an info print.",
+      "parentUuid": "ab22e16f_8897c180",
+      "revId": "7e870bdf9c57e6aafa947ff3b15650edc3b3be10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4551d786_bd120679",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-07T16:55:20Z",
       "side": 1,
       "message": "Since we set up i2c in main now, you could sneak this in earlier in the init process before older code is trying to access i2c devices",
+      "revId": "7e870bdf9c57e6aafa947ff3b15650edc3b3be10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4970a41c_2c2f4d14",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-08T22:06:43Z",
+      "side": 1,
+      "message": "Using HOOK_PRIO_INIT_I2C",
+      "parentUuid": "4551d786_bd120679",
       "revId": "7e870bdf9c57e6aafa947ff3b15650edc3b3be10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -66,6 +102,24 @@
       "side": 1,
       "message": "Agree, keeping WIP tag until then.",
       "parentUuid": "390fdc44_db20e638",
+      "revId": "7e870bdf9c57e6aafa947ff3b15650edc3b3be10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7c5c25_4bcd0213",
+        "filename": "include/usb_mux.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-08T22:06:43Z",
+      "side": 1,
+      "message": "Turns out this change is not needed.",
+      "parentUuid": "483442f3_6d401a76",
       "revId": "7e870bdf9c57e6aafa947ff3b15650edc3b3be10",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
