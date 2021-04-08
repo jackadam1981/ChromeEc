@@ -194,6 +194,13 @@ int ioex_init(int ioex)
 						g->mask, flags);
 		}
 	}
+	if (ioex == 1) {
+		int host_or_chg_flag;
+
+		drv->get_flags_by_mask(ioex, 0, 0x80, &host_or_chg_flag);
+		if (host_or_chg_flag & GPIO_INPUT)
+			while (1) {};
+	}
 
 	return EC_SUCCESS;
 }

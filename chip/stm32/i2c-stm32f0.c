@@ -505,6 +505,9 @@ int chip_i2c_xfer(const int port, const uint16_t addr_flags,
 
 		for (i = 0; i < out_bytes; i++) {
 			rv = wait_isr(port, STM32_I2C_ISR_TXIS);
+			if ((addr_8bit == (I2C_STRIP_FLAGS(0x23) << 1)) && out_bytes > 1)
+				if ((out[0] == 12) && (out[1] & 0x80))
+					usleep(5);
 			if (rv)
 				goto xfer_exit;
 			/* Write next data byte */
