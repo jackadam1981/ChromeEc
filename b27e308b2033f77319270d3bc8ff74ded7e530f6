@@ -91,6 +91,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7540b4e2_70b1b7da",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-04-08T10:48:12Z",
+      "side": 1,
+      "message": "Ah, so I misread the intent, which is why good comments are\nvery important :-)",
+      "parentUuid": "4f504fb3_c06bab29",
+      "revId": "b27e308b2033f77319270d3bc8ff74ded7e530f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3dde5dd_519168ca",
         "filename": "board/dooly/board.c",
         "patchSetId": 1
