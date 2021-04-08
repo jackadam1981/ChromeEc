@@ -16,6 +16,24 @@
       "message": "Excessive line length. Make sure you\u0027re uploading with\n repo upload\n\nto run pre-upload checks.",
       "revId": "d3319717065c8a83de1814eeb2d20ca9c2e449ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3136d260_8fd911fe",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-04-08T00:45:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7b4508a_a851813c",
+      "revId": "d3319717065c8a83de1814eeb2d20ca9c2e449ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
