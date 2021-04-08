@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c9b438f_5fceb04d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-04-08T13:10:45Z",
+      "side": 1,
+      "message": "Thank you for indulging me.",
+      "revId": "1fab2d69388919a09b7e9c0e4b93f8d2f571b8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "275ae2db_4827f7a0",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1281040
+      },
+      "writtenOn": "2021-04-08T13:10:45Z",
+      "side": 1,
+      "message": "for -\u003e to\nlonger -\u003e long",
+      "range": {
+        "startLine": 964,
+        "startChar": 24,
+        "endLine": 964,
+        "endChar": 27
+      },
+      "revId": "1fab2d69388919a09b7e9c0e4b93f8d2f571b8f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
