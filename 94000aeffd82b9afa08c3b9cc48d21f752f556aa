@@ -16,6 +16,24 @@
       "message": "Do we need to land Zephyr changes in branches at this stage?",
       "revId": "94000aeffd82b9afa08c3b9cc48d21f752f556aa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4fd7166_fb8b85a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-08T01:40:08Z",
+      "side": 1,
+      "message": "No, I just cherry-pick all the CLs to firmware branch.",
+      "parentUuid": "d2f43a1f_2023ccb3",
+      "revId": "94000aeffd82b9afa08c3b9cc48d21f752f556aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
