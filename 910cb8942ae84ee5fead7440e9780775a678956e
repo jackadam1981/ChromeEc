@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73b1ee62_fd98d63c",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-08T15:04:58Z",
+      "side": 1,
+      "message": "fixed in CL:2811578",
+      "parentUuid": "920bc81d_a61362e5",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 0
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4138a966_1bb55d0f",
@@ -191,6 +215,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29a3f48c_d862844b",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-08T15:04:58Z",
+      "side": 1,
+      "message": "need those definitions on board.h, they are board specific.",
+      "parentUuid": "fd32ac09_8033763a",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 31
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "363922e4_713f5f62",
@@ -228,6 +276,30 @@
       "side": 1,
       "message": "ack\nwill remove these 2",
       "parentUuid": "363922e4_713f5f62",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 0
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1399a66_a0abacb0",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-08T15:04:58Z",
+      "side": 1,
+      "message": "fixed in Patchset 23",
+      "parentUuid": "e1adc9b6_1a20a4bd",
       "range": {
         "startLine": 268,
         "startChar": 0,
@@ -381,6 +453,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c52d30e_2fc20edd",
+        "filename": "board/sklrvp_mchp172x/gpio.inc",
+        "patchSetId": 20
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-08T15:04:58Z",
+      "side": 1,
+      "message": "fixed in Patchset 23",
+      "parentUuid": "5883d316_c38320b2",
+      "range": {
+        "startLine": 256,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 0
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9c9bbdf_bca73b1c",
@@ -448,6 +544,24 @@
       "side": 1,
       "message": "ok, \ncan remove if/else in mk file, and delete gpio.inc under other boards,\nboard/mchpevb1/lfw/...\nboard/reef_mchp/lfw/...\nboard/sklrvp_mchp/lfw/...",
       "parentUuid": "de4aa0c3_a6cddfbb",
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a100379_9f6a8e42",
+        "filename": "chip/mchp/build.mk",
+        "patchSetId": 20
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-08T15:04:58Z",
+      "side": 1,
+      "message": "fixed in CL:2810884",
+      "parentUuid": "f21c3324_8544e932",
       "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
