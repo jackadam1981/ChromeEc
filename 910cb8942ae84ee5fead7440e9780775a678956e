@@ -239,6 +239,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "184323ba_e038074a",
+        "filename": "board/sklrvp_mchp172x/board.h",
+        "patchSetId": 20
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-08T17:52:05Z",
+      "side": 1,
+      "message": "i see this board is for 1723.\ncan you rename the board as sklrvp_mchp1723?\nits little confusing unless build.mk is read",
+      "parentUuid": "29a3f48c_d862844b",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 31
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "363922e4_713f5f62",
