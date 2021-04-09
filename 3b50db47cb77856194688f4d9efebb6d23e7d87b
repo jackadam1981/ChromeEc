@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbd1820f_defb7c7e",
+        "filename": "board/cherry_scp/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-09T05:22:21Z",
+      "side": 1,
+      "message": "maybe not in this CL, could we use macros to handle the MPU and memory segment settings?",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 18
+      },
+      "revId": "3b50db47cb77856194688f4d9efebb6d23e7d87b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
