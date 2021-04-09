@@ -15,12 +15,12 @@
 #include <unistd.h>
 #include <signal.h>
 #include <stdbool.h>
+#include <zlib.h>
 
 #include "battery.h"
 #include "comm-host.h"
 #include "chipset.h"
 #include "compile_time_macros.h"
-#include "crc.h"
 #include "cros_ec_dev.h"
 #include "ec_panicinfo.h"
 #include "ec_flash.h"
@@ -9427,6 +9427,7 @@ static int cmd_pchg_update(int port, uint32_t address, uint32_t version,
 	size_t len, total;
 	int progress;
 	int rv;
+	uLong crc;
 
 	fp = fopen(filename, "rb");
 	if (!fp) {
@@ -9467,7 +9468,7 @@ static int cmd_pchg_update(int port, uint32_t address, uint32_t version,
 
 	p->cmd = EC_PCHG_UPDATE_CMD_WRITE;
 	p->addr = address;
-	crc32_init();
+	crc = crc32(0L, Z_NULL, 0);
 
 	/* Write firmware in blocks. */
 	len = fread(p->data, 1, r->block_size, fp);
@@ -9475,7 +9476,7 @@ static int cmd_pchg_update(int port, uint32_t address, uint32_t version,
 		int previous_progress = progress;
 		int i;
 
-		crc32_hash(p->data, len);
+		crc = crc32(crc, p->data, len);
 		p->size = len;
 		rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p,
 				sizeof(*p) + len, NULL, 0);
@@ -9504,7 +9505,7 @@ static int cmd_pchg_update(int port, uint32_t address, uint32_t version,
 
 	/* Close session. */
 	p->cmd = EC_PCHG_UPDATE_CMD_CLOSE;
-	p->crc32 = crc32_result();
+	p->crc32 = crc;
 	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p, sizeof(*p), NULL, 0);
 
 	if (rv < 0) {
