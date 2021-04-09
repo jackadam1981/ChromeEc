@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed492395_38977100",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-09T04:03:23Z",
+      "side": 1,
+      "message": "This is very strange, shouldn\u0027t the compiler figure out that CONFIG_ESPI_PERIPHERAL_8042_KBC or HAS_TASK_KEYPROTO are disabled and not consider this a call to the function?",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 44
+      },
+      "revId": "c443f693a8cc607fe565ba7ef955278513b79759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be2580e_4034a237",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-09T04:03:23Z",
+      "side": 1,
+      "message": "What happens if someone later calls these without CONFIG_ESPI_PERIPHERAL_8042_KBC? Will this break things? I\u0027m not familiar with this code enough.",
+      "range": {
+        "startLine": 505,
+        "startChar": 1,
+        "endLine": 542,
+        "endChar": 1
+      },
+      "revId": "c443f693a8cc607fe565ba7ef955278513b79759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
