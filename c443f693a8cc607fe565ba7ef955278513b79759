@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f100a95a_b4722b74",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-09T07:00:42Z",
+      "side": 1,
+      "message": "I\u0027m not sure we can use IF_ENABLED() on something that is not a CONFIG, at least not in Zephyr.\n\nHave we tested that? It certainly doesn\u0027t work in U-Boot, for example.",
+      "parentUuid": "ed492395_38977100",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 44
+      },
+      "revId": "c443f693a8cc607fe565ba7ef955278513b79759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4be2580e_4034a237",
         "filename": "zephyr/shim/src/espi.c",
         "patchSetId": 1
