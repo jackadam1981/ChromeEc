@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84822c6_730f5bfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-09T01:33:42Z",
+      "side": 1,
+      "message": "spi_devices is a board specific table. Why are you trying to move it into chip?",
+      "revId": "ae8a4e09e95e4db33387625c34735c550b770b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
