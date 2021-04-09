@@ -16,7 +16,6 @@
 
 /*
  * This may be shorter than the internal MUX timeout.
- * Making it any longer could cause the PD task to miss messages.
  */
 #define WRITE_CMD_TIMEOUT_MS 100
 
@@ -26,21 +25,17 @@
  */
 static struct {
 	const struct usb_mux *mux;
-	mux_state_t state;
+	uint8_t val;
+	bool write_pending;
 } saved_mux_state[USBC_PORT_COUNT];
 
 static int amd_fp6_mux_port0_read(const struct usb_mux *me, uint8_t *val)
 {
 	uint8_t payload[3] = { 0 };
-	int rv;
 	bool mux_ready;
 
-	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
-		return EC_ERROR_NOT_POWERED;
-
-	rv = i2c_xfer(me->i2c_port, me->i2c_addr_flags, NULL, 0, payload, 3);
-	if (rv)
-		return rv;
+	RETURN_ERROR(i2c_xfer(me->i2c_port, me->i2c_addr_flags, NULL, 0,
+			      payload, 3));
 
 	/*
 	 * payload[0]: Status/ID
@@ -58,20 +53,16 @@ static int amd_fp6_mux_port0_read(const struct usb_mux *me, uint8_t *val)
 
 static int amd_fp6_mux_port0_write(const struct usb_mux *me, uint8_t write_val)
 {
-	int rv;
 	uint8_t read_val;
 	uint8_t port_status;
 	timestamp_t start;
 
 	/* Check if mux is ready */
-	rv = amd_fp6_mux_port0_read(me, &read_val);
-	if (rv)
-		return rv;
+	RETURN_ERROR(amd_fp6_mux_port0_read(me, &read_val));
 
 	/* Write control register */
-	rv = i2c_write8(me->i2c_port, me->i2c_addr_flags, 0, write_val);
-	if (rv)
-		return rv;
+	RETURN_ERROR(
+		i2c_write8(me->i2c_port, me->i2c_addr_flags, 0, write_val));
 
 	/*
 	 * Read status until write command finishes or times out.
@@ -80,9 +71,7 @@ static int amd_fp6_mux_port0_write(const struct usb_mux *me, uint8_t write_val)
 	 */
 	start = get_time();
 	while (time_since32(start) < WRITE_CMD_TIMEOUT_MS * MSEC) {
-		rv = amd_fp6_mux_port0_read(me, &read_val);
-		if (rv)
-			return rv;
+		RETURN_ERROR(amd_fp6_mux_port0_read(me, &read_val));
 
 		port_status = read_val >> AMD_FP6_MUX_PORT_STATUS_OFFSET;
 
@@ -99,18 +88,39 @@ static int amd_fp6_mux_port0_write(const struct usb_mux *me, uint8_t write_val)
 	return EC_ERROR_TIMEOUT;
 }
 
-static int amd_fp6_init(const struct usb_mux *me)
+static void amd_fp6_set_mux_retry(void);
+DECLARE_DEFERRED(amd_fp6_set_mux_retry);
+static void amd_fp6_set_mux_retry(void)
 {
-	return EC_SUCCESS;
+	int i;
+	int rv;
+	bool try_again = false;
+
+	for (i = 0; i < ARRAY_SIZE(saved_mux_state); i++) {
+		/* Check if saved_mux_state has been initialized */
+		if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+			saved_mux_state[i].write_pending = false;
+			continue;
+		}
+		if (saved_mux_state[i].mux == NULL ||
+		    !saved_mux_state[i].write_pending)
+			continue;
+
+		rv = amd_fp6_mux_port0_write(saved_mux_state[i].mux,
+					     saved_mux_state[i].val);
+		if (rv)
+			try_again = true;
+		else
+			saved_mux_state[i].write_pending = false;
+
+	}
+	if (try_again)
+		hook_call_deferred(&amd_fp6_set_mux_retry_data, 1000 * MSEC);
 }
 
 static int amd_fp6_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 {
 	uint8_t val;
-	int rv;
-
-	saved_mux_state[me->usb_port].mux = me;
-	saved_mux_state[me->usb_port].state = mux_state;
 
 	if (mux_state == USB_PD_MUX_NONE)
 		/*
@@ -133,16 +143,22 @@ static int amd_fp6_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		val |= AMD_FP6_MUX_ORIENTATION;
 
-	rv = amd_fp6_mux_port0_write(me, val);
-	/*
-	 * This MUX is on the FP6 SoC.  If that device is not powered then
-	 * we either have to complain that it is not powered or if we were
-	 * setting the state to OFF, then go ahead and report that we did
-	 * it because a powered down MUX is off.
-	 */
-	if (rv == EC_ERROR_NOT_POWERED && mux_state == USB_PD_MUX_NONE)
-		rv = EC_SUCCESS;
-	return rv;
+	saved_mux_state[me->usb_port].mux = me;
+	saved_mux_state[me->usb_port].val = val;
+	/* Mux is not powered in Z1 */
+	if (chipset_in_state(CHIPSET_STATE_HARD_OFF)) {
+		saved_mux_state[me->usb_port].write_pending = false;
+		return (mux_state == USB_PD_MUX_NONE) ? EC_SUCCESS
+						      : EC_ERROR_NOT_POWERED;
+	}
+	saved_mux_state[me->usb_port].write_pending = true;
+
+	if (me->usb_port == 0)
+		saved_mux_state[me->usb_port].write_pending = false;
+
+	amd_fp6_set_mux_retry();
+
+	return EC_SUCCESS;
 }
 
 static int amd_fp6_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
@@ -150,17 +166,12 @@ static int amd_fp6_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 	uint8_t val;
 	bool inverted;
 	uint8_t mode;
-	int rv;
 
-	rv = amd_fp6_mux_port0_read(me, &val);
-	/*
-	 * This MUX is on the FP6 SoC. If that device is not powered then claim
-	 * thestate to be NONE, which is SAFE.
-	 */
-	if (rv == EC_ERROR_NOT_POWERED)
-		val = 0;
-	else if (rv)
-		return rv;
+	/* Mux is not powered in Z1 */
+	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+		return USB_PD_MUX_NONE;
+
+	RETURN_ERROR(amd_fp6_mux_port0_read(me, &val));
 
 	mode = (val & AMD_FP6_MUX_MODE_MASK);
 	inverted = !!(val & AMD_FP6_MUX_ORIENTATION);
@@ -180,37 +191,21 @@ static int amd_fp6_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 	return EC_SUCCESS;
 }
 
-static void amd_fp6_chipset_reset_delay(void)
-{
-	int rv;
-	int i;
-
-	for (i = 0; i < ARRAY_SIZE(saved_mux_state); i++) {
-		/* Check if saved_mux_state has been initialized */
-		if (saved_mux_state[i].mux == NULL)
-			continue;
-		rv = amd_fp6_set_mux(saved_mux_state[i].mux,
-				     saved_mux_state[i].state);
-		if (rv)
-			ccprints("C%d restore mux rv:%d", i, rv);
-	}
-
-}
-DECLARE_DEFERRED(amd_fp6_chipset_reset_delay);
-
 /*
  * The AP's internal USB-C mux is reset when AP resets, so wait for
  * it to be ready and then restore the previous setting.
  */
 static int amd_fp6_chipset_reset(const struct usb_mux *mux)
 {
-	/* TODO: Tune 200ms delay for FP6 */
-	hook_call_deferred(&amd_fp6_chipset_reset_delay_data, 200 * MSEC);
+	int i;
+	/* TODO: Tune 1000ms delay for FP6 */
+	for (i = 0; i < ARRAY_SIZE(saved_mux_state); i++)
+		saved_mux_state[i].write_pending = true;
+	amd_fp6_set_mux_retry();
 	return EC_SUCCESS;
 }
 
 const struct usb_mux_driver amd_fp6_usb_mux_driver = {
-	.init = &amd_fp6_init,
 	.set = &amd_fp6_set_mux,
 	.get = &amd_fp6_get_mux,
 	.chipset_reset = &amd_fp6_chipset_reset,
