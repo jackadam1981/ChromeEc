@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "846a329f_79a4b71a",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-04-09T03:29:15Z",
+      "side": 1,
+      "message": "I\u0027ll fix this.",
+      "parentUuid": "99c2175d_e836eae8",
+      "revId": "65a66f72d347a9a432778de8f1eb0a70432c0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "90b21210_43283400",
         "filename": "board/dooly/board.c",
         "patchSetId": 3
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-09T01:28:37Z",
       "side": 1,
       "message": "Using FP_BITS will not work when float type is used.\n\nThe formula to encode is:\n(799.797 * (crgb_data[0]* 0.009) +\n\t    crgb_data[1]* 0.056) +\n\t    crgb_data[2]* 2.735) +\n\t    crgb_data[3]* -1.903)) * 1000 / (integration_time_us*cur_gain);\n\nSo it should look like:\n\nxyz_data[1] \u003d FP_TO_INT(fp_div(fp_mul(FLOAT_TO_FP(799.797),\n                     (fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.009)) +\n                      fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(0.056)) +\n                      fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(2.735)) +\n                      fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.903))),\n                      INT_TO_FP(integration_time_us * cur_gain / 1000ULL))",
+      "revId": "65a66f72d347a9a432778de8f1eb0a70432c0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c4cf404_76c7c06a",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-04-09T03:29:15Z",
+      "side": 1,
+      "message": "FP_TO_INT(fp_div(fp_mul(FLOAT_TO_FP(799.797),\nT tried this line will always overflow.\nI verified patchset 3 will get correct value.",
+      "parentUuid": "90b21210_43283400",
       "revId": "65a66f72d347a9a432778de8f1eb0a70432c0fd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
