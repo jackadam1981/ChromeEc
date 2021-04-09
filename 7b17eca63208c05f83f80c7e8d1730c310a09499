@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "879f7f87_134e8622",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-09T16:41:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "297f619a_07d8663f",
+      "range": {
+        "startLine": 1220,
+        "startChar": 0,
+        "endLine": 1223,
+        "endChar": 0
+      },
+      "revId": "7b17eca63208c05f83f80c7e8d1730c310a09499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16f67469_5c45cdda",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61721ff9_a5610c23",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-09T16:41:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16f67469_5c45cdda",
+      "range": {
+        "startLine": 1274,
+        "startChar": 0,
+        "endLine": 1277,
+        "endChar": 0
+      },
+      "revId": "7b17eca63208c05f83f80c7e8d1730c310a09499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "780f3a7a_f5192a5d",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-08T22:01:34Z",
       "side": 1,
       "message": "You need the leading \"CONFIG_\" prefix.",
+      "range": {
+        "startLine": 1416,
+        "startChar": 7,
+        "endLine": 1416,
+        "endChar": 41
+      },
+      "revId": "7b17eca63208c05f83f80c7e8d1730c310a09499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba47154_8ea3aa3d",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-09T16:41:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "780f3a7a_f5192a5d",
       "range": {
         "startLine": 1416,
         "startChar": 7,
