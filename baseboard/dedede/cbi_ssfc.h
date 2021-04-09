@@ -33,9 +33,9 @@ enum ec_ssfc_lid_sensor {
 
 union dedede_cbi_ssfc {
 	struct {
-		enum ec_ssfc_base_sensor	base_sensor : 3;
-		enum ec_ssfc_lid_sensor		lid_sensor : 3;
-		uint32_t					reserved_2 : 26;
+		enum ec_ssfc_base_sensor base_sensor : 3;
+		enum ec_ssfc_lid_sensor lid_sensor : 3;
+		uint32_t reserved_2 : 26;
 	};
 	uint32_t raw_value;
 };
