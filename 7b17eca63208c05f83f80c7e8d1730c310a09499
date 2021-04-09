@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "297f619a_07d8663f",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-09T03:41:52Z",
+      "side": 1,
+      "message": "Since CONFIG_USB_PD_ONLY_FIXED_PDOS is enabled for servo_v4 and servo_v4p1, just drop the lines.",
+      "range": {
+        "startLine": 1220,
+        "startChar": 0,
+        "endLine": 1223,
+        "endChar": 0
+      },
+      "revId": "7b17eca63208c05f83f80c7e8d1730c310a09499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16f67469_5c45cdda",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-09T03:41:52Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 1274,
+        "startChar": 0,
+        "endLine": 1277,
+        "endChar": 0
+      },
+      "revId": "7b17eca63208c05f83f80c7e8d1730c310a09499",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "780f3a7a_f5192a5d",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 7
