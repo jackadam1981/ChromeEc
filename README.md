@@ -26,7 +26,7 @@ and [video](http://youtu.be/Ie7LRGgCXC8) from the
     (inclusive). See the
     [Chrome OS devices](http://dev.chromium.org/chromium-os/developer-information-for-chrome-os-devices)
     page for a list.
-1.  A Linux development environment. Ubuntu 14.04 Trusty (x86_64) is well
+1.  A Linux development environment. The latest Debian Stable (x86_64) is well
     supported. Linux in a VM may work if you have a powerful host machine.
 1.  A [servo debug board](http://dev.chromium.org/chromium-os/servo) (and
     header) is highly recommended for serial console and JTAG access to the EC.
