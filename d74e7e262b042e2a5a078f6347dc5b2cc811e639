@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ee088ff_0c97a19a",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2021-04-09T08:08:52Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "259eaa09_ce985a0a",
+      "revId": "d74e7e262b042e2a5a078f6347dc5b2cc811e639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e6d7c1a_eeacfcbd",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c26148_fc3d74c5",
+        "filename": "board/guybrush/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2021-04-09T08:08:52Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "8e6d7c1a_eeacfcbd",
+      "revId": "d74e7e262b042e2a5a078f6347dc5b2cc811e639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04f62ede_1375f95f",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-04-01T13:31:57Z",
       "side": 1,
       "message": "This enum can be in baseboard.h",
+      "revId": "d74e7e262b042e2a5a078f6347dc5b2cc811e639",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9ea2c3_91a7bcf7",
+        "filename": "board/guybrush/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2021-04-09T08:08:52Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "04f62ede_1375f95f",
       "revId": "d74e7e262b042e2a5a078f6347dc5b2cc811e639",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
