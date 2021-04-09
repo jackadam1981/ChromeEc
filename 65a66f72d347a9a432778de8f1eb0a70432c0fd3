@@ -123,6 +123,24 @@
       "parentUuid": "2362e1b1_d7802775",
       "revId": "65a66f72d347a9a432778de8f1eb0a70432c0fd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63d2732e_c39b9e79",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-04-09T22:12:27Z",
+      "side": 1,
+      "message": "Agree, \nbut dooly not define CONFIG_FPU, so FP_BITS works.\n\nFrom my finding (fp_t) in fp_mul(), fp_div() will cause overflow,\nso I tear apart fp_mul(), fp_div() and remove (fp_t).\n\nstatic inline fp_t fp_mul(fp_t a, fp_t b)\n{\n\treturn (fp_t)(((fp_inter_t)a * b) \u003e\u003e FP_BITS);\n}",
+      "parentUuid": "c3d84bd5_8b21e5f5",
+      "revId": "65a66f72d347a9a432778de8f1eb0a70432c0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
