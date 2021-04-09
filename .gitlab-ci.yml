@@ -53,6 +53,17 @@ before_script:
       - build/${BOARD}/output/*
     expire_in: 1 week
 
+delbin:
+  variables:
+    BOARD: "delbin"
+    BOARD_DIR: "volteer/"
+  <<: *build_template
+
+kohaku:
+  variables:
+    BOARD: "kohaku"
+  <<: *build_template
+
 lazor:
   variables:
     BOARD: "lazor"
