@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81aefee3_be4d4939",
+        "filename": "board/guybrush/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-09T23:02:24Z",
+      "side": 1,
+      "message": "We could?  Generally the board LED functions tend to be quiet, and the common LED code is the one running color validity checks on colors and types.",
+      "parentUuid": "bdcb20ae_0eea1830",
+      "revId": "7d941f34c4c77ac4c2ddcbcd7a9af05bd1bbada7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c761c518_b5a5ffc9",
         "filename": "board/guybrush/led.c",
         "patchSetId": 1
