@@ -445,7 +445,7 @@ __overridable int board_c1_anx7451_mux_set(const struct usb_mux *me,
 struct usb_mux usbc1_anx7451 = {
 	.usb_port = USBC_PORT_C1,
 	.i2c_port = I2C_PORT_TCPC1,
-	.i2c_addr_flags = ANX7491_I2C_ADDR0_FLAGS,
+	.i2c_addr_flags = ANX7491_I2C_ADDR3_FLAGS,
 	.driver = &anx7451_usb_mux_driver,
 	.board_set = &board_c1_anx7451_mux_set,
 };

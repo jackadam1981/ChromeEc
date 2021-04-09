@@ -33,6 +33,13 @@ static int anx7451_set_mux(const struct usb_mux *me, mux_state_t mux_state)
 {
 	int reg;
 
+	/* b/184907521: If both DP and USB disabled, mux will fail */
+	if (!(mux_state & (USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED))) {
+		CPRINTS("ANX7451 requires USB or DP to be set, "
+			"forcing USB enabled");
+		mux_state |= USB_PD_MUX_USB_ENABLED;
+	}
+
 	/* ULP_CFG_MODE_EN overrides pin control. Always set it */
 	reg = ANX7451_ULP_CFG_MODE_EN;
 	if (mux_state & USB_PD_MUX_USB_ENABLED)
@@ -64,22 +71,32 @@ static int anx7451_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 
 static int anx7451_init(const struct usb_mux *me)
 {
-	uint64_t now;
+	int rv;
+	timestamp_t start;
 
-	/*
-	 * ANX7451 requires 30ms to power on. EC and ANX7451 are on the same
-	 * power rail, so just wait 30ms since EC boot.
-	 */
-	now = get_time().val;
-	if (now < ANX7451_I2C_READY_DELAY_MS*MSEC)
-		usleep(ANX7451_I2C_READY_DELAY_MS*MSEC - now);
+	/* Wait up to 100ms for ANX7451 to be ready */
+	start = get_time();
+	do {
+		int val;
+
+		rv = anx7451_read(me, ANX7451_REG_ULP_CFG_MODE, &val);
+	} while (rv && time_since32(start) < ANX7451_I2C_READY_DELAY_MS*MSEC);
+
+	if (rv) {
+		CPRINTS("ANX7451 still unresponsive after %d ms",
+			ANX7451_I2C_READY_DELAY_MS);
+		return EC_ERROR_TIMEOUT;
+	}
 
 	/* ULTRA_LOW_POWER must always be disabled (Fig 2-2) */
 	RETURN_ERROR(anx7451_write(me, ANX7451_REG_ULTRA_LOW_POWER,
 				   ANX7451_ULTRA_LOW_POWER_DIS));
 
-	/* Start mux in safe mode */
-	RETURN_ERROR(anx7451_set_mux(me, USB_PD_MUX_NONE));
+	/*
+	 * Start mux in USB mode
+	 * b/184907521: None or safe mode causes mux to fail
+	 */
+	RETURN_ERROR(anx7451_set_mux(me, USB_PD_MUX_USB_ENABLED));
 
 	return EC_SUCCESS;
 }

@@ -9,7 +9,7 @@
 #ifndef __CROS_EC_USB_MUX_ANX7451_H
 #define __CROS_EC_USB_MUX_ANX7451_H
 
-#define ANX7451_I2C_READY_DELAY_MS	30
+#define ANX7451_I2C_READY_DELAY_MS	100
 
 /* I2C interface addresses */
 #define ANX7451_I2C_ADDR0_FLAGS		0x10
