@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a7ddf8b_79132e74",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-09T07:32:09Z",
+      "side": 1,
+      "message": "Delete this line.",
+      "revId": "6884c6fa27759d46434e8f87f497f3de66daec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2340381c_f778735a",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-09T07:32:09Z",
+      "side": 1,
+      "message": "Insert a newline in between #endif and static int",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 670,
+        "endChar": 50
+      },
+      "revId": "6884c6fa27759d46434e8f87f497f3de66daec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382fc53b_5a2888b3",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-09T07:32:09Z",
+      "side": 1,
+      "message": "I think this can be removed since the below information is for the debug.",
+      "range": {
+        "startLine": 680,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 33
+      },
+      "revId": "6884c6fa27759d46434e8f87f497f3de66daec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e31652f_eb72fc05",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-09T07:32:09Z",
+      "side": 1,
+      "message": "Maybe can split to a static function and the below line 702-714 can use that static function.",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 55
+      },
+      "revId": "6884c6fa27759d46434e8f87f497f3de66daec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6a1f85e_af54bca0",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-09T07:32:09Z",
+      "side": 1,
+      "message": "This is redundant. This function has been included into lightbar_is_enabled().",
+      "range": {
+        "startLine": 701,
+        "startChar": 5,
+        "endLine": 701,
+        "endChar": 33
+      },
+      "revId": "6884c6fa27759d46434e8f87f497f3de66daec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
