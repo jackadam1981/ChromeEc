@@ -43,7 +43,7 @@
 /* Unsupported features/commands */
 #undef CONFIG_CMD_FLASHINFO
 #undef CONFIG_CMD_POWER_AP
-#undef CONFIG_FLASH
+#undef CONFIG_FLASH_FEATURE
 #undef CONFIG_FLASH_PHYSICAL
 #undef CONFIG_FMAP
 #undef CONFIG_HIBERNATE
