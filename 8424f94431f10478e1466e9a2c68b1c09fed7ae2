@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb3522e_ddc79ba9",
+        "filename": "board/baklava/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-04-09T13:34:30Z",
+      "side": 1,
+      "message": "nit: Disable\nand same below",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 10
+      },
+      "revId": "8424f94431f10478e1466e9a2c68b1c09fed7ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "764133f4_98774a93",
+        "filename": "board/baklava/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-04-09T13:34:30Z",
+      "side": 1,
+      "message": "nit: comments",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 41
+      },
+      "revId": "8424f94431f10478e1466e9a2c68b1c09fed7ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bc3755d_4a500faa",
+        "filename": "board/baklava/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-04-09T13:34:30Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 2,
+        "startChar": 12,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "8424f94431f10478e1466e9a2c68b1c09fed7ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0209326e_7f67b4c7",
+        "filename": "board/baklava/ec.tasklist",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-04-09T13:34:30Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "8424f94431f10478e1466e9a2c68b1c09fed7ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f739795_595bd56e",
+        "filename": "board/baklava/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-04-09T13:34:30Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 3,
+        "startChar": 13,
+        "endLine": 3,
+        "endChar": 17
+      },
+      "revId": "8424f94431f10478e1466e9a2c68b1c09fed7ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
