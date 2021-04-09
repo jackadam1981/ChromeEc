@@ -250,3 +250,5 @@ static_if_error-y=static_if_error.o.cmd
 run-genvif_test:
 	@echo "  TEST    genvif_test"
 	@test/genvif/genvif.sh
+
+$(out)/crc.exe: HOST_TEST_LDFLAGS+=$(shell $(HOST_PKG_CONFIG) --libs zlib)
