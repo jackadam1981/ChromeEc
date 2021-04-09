@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6481b0c2_4570037a",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-09T14:25:08Z",
+      "side": 1,
+      "message": "nit: make alphabetical",
+      "revId": "db0f61b3d8d9fab9527d03207b973007c68ec590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7c15b76_9b965444",
+        "filename": "board/guybrush/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-09T14:25:08Z",
+      "side": 1,
+      "message": "nit: should be a space",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "db0f61b3d8d9fab9527d03207b973007c68ec590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
