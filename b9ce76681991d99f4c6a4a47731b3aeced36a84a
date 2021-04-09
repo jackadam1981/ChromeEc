@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29b007c2_544a40fe",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-09T16:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f02da133_be155253",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 57
+      },
+      "revId": "b9ce76681991d99f4c6a4a47731b3aeced36a84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14979aec_4d77f8e6",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-09T03:37:58Z",
       "side": 1,
       "message": "I think this is better to be replaced with min_mv?",
+      "range": {
+        "startLine": 187,
+        "startChar": 49,
+        "endLine": 187,
+        "endChar": 55
+      },
+      "revId": "b9ce76681991d99f4c6a4a47731b3aeced36a84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc636978_7c4f92e8",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-09T16:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14979aec_4d77f8e6",
       "range": {
         "startLine": 187,
         "startChar": 49,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c1bb637_c9a2e4c6",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-09T16:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b21b603_dfe3456d",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 193,
+        "endChar": 53
+      },
+      "revId": "b9ce76681991d99f4c6a4a47731b3aeced36a84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34bbcba4_2b813d7c",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f1053a_73ddb933",
+        "filename": "include/usb_common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-09T16:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34bbcba4_2b813d7c",
+      "range": {
+        "startLine": 137,
+        "startChar": 17,
+        "endLine": 137,
+        "endChar": 68
+      },
+      "revId": "b9ce76681991d99f4c6a4a47731b3aeced36a84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76d4408b_8ff8c8a8",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-04-08T21:59:50Z",
       "side": 1,
       "message": "minimum voltage of the PDO",
+      "range": {
+        "startLine": 138,
+        "startChar": 17,
+        "endLine": 138,
+        "endChar": 67
+      },
+      "revId": "b9ce76681991d99f4c6a4a47731b3aeced36a84a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb9adf2c_2437a1c7",
+        "filename": "include/usb_common.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-09T16:40:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76d4408b_8ff8c8a8",
       "range": {
         "startLine": 138,
         "startChar": 17,
