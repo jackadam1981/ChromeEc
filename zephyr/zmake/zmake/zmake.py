@@ -136,15 +136,18 @@ class Zmake:
             self.module_paths = zmake.modules.locate_from_checkout(
                 self.checkout)
 
+        self.logger = logging.getLogger(self.__class__.__name__)
         if jobserver:
             self.jobserver = jobserver
+            self.logger.debug("Has Jobserver")
         else:
             try:
                 self.jobserver = zmake.jobserver.GNUMakeJobClient.from_environ()
+                self.logger.debug("Using GNUMakeJobClient")
             except OSError:
                 self.jobserver = zmake.jobserver.GNUMakeJobServer(jobs=jobs)
+                self.logger.debug("Using GNUMakeJobServer")
 
-        self.logger = logging.getLogger(self.__class__.__name__)
         self._sequential = jobs == 1
 
     @property

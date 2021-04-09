@@ -133,6 +133,7 @@ class GNUMakeJobServer(JobServer, GNUMakeJobClient):
             jobs = multiprocessing.cpu_count()
         elif jobs > select.PIPE_BUF:
             jobs = select.PIPE_BUF
+        logging.debug("Jobs = %d", jobs)
 
         self._pipe = os.pipe()
         os.write(self._pipe[1], b'+' * jobs)
