@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "831270b8_2aedbed3",
+        "filename": "baseboard/volteer/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-09T06:16:09Z",
+      "side": 1,
+      "message": "From the patch https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2814720/, it looks like LIGHTBAR_10_LED_TYPE and LIGHTBAR_12_LED_TYPE are the type for the lightbar. Could you just add the name here instead of adding the define in led.c?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "15cdb357353454731148bf144de0b1ef3ded2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
