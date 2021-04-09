@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a8d93a5_b57e9df5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-09T01:49:54Z",
+      "side": 1,
+      "message": "We don\u0027t want to be doing runtime probing of i2c components. We should consult CBI EEPROM as you noted. (SSFC)",
+      "revId": "a9f74abcc91b770f7e460f57c70cdddf2a037d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
