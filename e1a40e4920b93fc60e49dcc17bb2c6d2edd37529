@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2353aaee_a30fe77c",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-09T06:58:32Z",
+      "side": 1,
+      "message": "5 * LIGHTBAR_ONE_SEC",
+      "range": {
+        "startLine": 209,
+        "startChar": 42,
+        "endLine": 209,
+        "endChar": 60
+      },
+      "revId": "e1a40e4920b93fc60e49dcc17bb2c6d2edd37529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8fe7131_4dee24f6",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-09T06:58:32Z",
+      "side": 1,
+      "message": "Is this flag needed? The hook function lightbar_sleep_exit() should be called once after the system resumed. If that is the case, i think this flag can be removed.",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 35
+      },
+      "revId": "e1a40e4920b93fc60e49dcc17bb2c6d2edd37529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d130e28_d76ac767",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-09T06:58:32Z",
+      "side": 1,
+      "message": "I think you can change this to *lightbar_ctrl",
+      "range": {
+        "startLine": 392,
+        "startChar": 15,
+        "endLine": 392,
+        "endChar": 31
+      },
+      "revId": "e1a40e4920b93fc60e49dcc17bb2c6d2edd37529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
