@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "898c3f13_1c4a5cca",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-09T21:43:14Z",
+      "side": 1,
+      "message": "I verified with -save-temps that the pre-processor expands IS_ENABLED(HAS_TASK_KEYPROTO) to (0).",
+      "parentUuid": "f100a95a_b4722b74",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 44
+      },
+      "revId": "c443f693a8cc607fe565ba7ef955278513b79759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4be2580e_4034a237",
         "filename": "zephyr/shim/src/espi.c",
         "patchSetId": 1
