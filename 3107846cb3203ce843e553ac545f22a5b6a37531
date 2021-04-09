@@ -33,6 +33,24 @@
       "message": "thanks. it\u0027ll be a while before we can drop support for ES1 - like several months.\nbest thing to do is to open a bug for removing ES1 support and tag any related\npatches with that bug # so we can scan for pending work.\n\nwe can also add TODO(b/...) in the code as appropriate,\nbut we\u0027re not very good about scanning that.\n\nwe can mark such bugs with \"blocks...\" to make sure we take care\nof them in time - for example, for a particular build phase.\n",
       "revId": "3107846cb3203ce843e553ac545f22a5b6a37531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33f6bc11_acab64ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-09T08:40:20Z",
+      "side": 1,
+      "message": "A bug (b:184911180) is created to track this.\n\nBesides this CL, we may also remove the code block here:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/chip/npcx/system.c#902\nBecause there is no project using \"CONFIG_HIBERNATE_PSL_VCC1_RST_WAKEUP\", I think we can just remove it from the code base. I will prepare another CL to do it.\n\nAs for the \"blocks..\", I am not very familiar with how to do it.",
+      "parentUuid": "7f6e4423_56ca63aa",
+      "revId": "3107846cb3203ce843e553ac545f22a5b6a37531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
