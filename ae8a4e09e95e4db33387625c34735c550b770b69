@@ -16,6 +16,24 @@
       "message": "spi_devices is a board specific table. Why are you trying to move it into chip?",
       "revId": "ae8a4e09e95e4db33387625c34735c550b770b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dedc416b_e37fcd2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-09T01:54:07Z",
+      "side": 1,
+      "message": "looks like all the boards have to define it even if no GSPI is used.\nHence, I suggested to make it common code.\n\nIf we use additional gSPI we can add a macro and increase the SPI number in common code itself.\n\nexample, we can add such macros in common code.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/board/reef_mchp/board.c#165",
+      "parentUuid": "b84822c6_730f5bfa",
+      "revId": "ae8a4e09e95e4db33387625c34735c550b770b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
