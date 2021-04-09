@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef3296c_90bc9fdb",
+        "filename": "common/cbi.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-04-09T12:58:45Z",
+      "side": 1,
+      "message": "nit: add space between if and parentheses",
+      "range": {
+        "startLine": 607,
+        "startChar": 2,
+        "endLine": 607,
+        "endChar": 4
+      },
+      "revId": "f469f6211f081b8b96c59f9bcbec7459b210dd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5af59ae6_7c928c6c",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-04-09T12:58:45Z",
+      "side": 1,
+      "message": "updated",
+      "range": {
+        "startLine": 157,
+        "startChar": 20,
+        "endLine": 157,
+        "endChar": 27
+      },
+      "revId": "f469f6211f081b8b96c59f9bcbec7459b210dd71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
