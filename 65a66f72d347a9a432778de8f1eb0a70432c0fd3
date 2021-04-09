@@ -105,6 +105,24 @@
       "parentUuid": "7c4cf404_76c7c06a",
       "revId": "65a66f72d347a9a432778de8f1eb0a70432c0fd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d84bd5_8b21e5f5",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-09T17:55:45Z",
+      "side": 1,
+      "message": "Let\u0027s analyze where it overflows. Once again, \"\u003e\u003e FP_BITS\" will not work when the EC supports float.",
+      "parentUuid": "2362e1b1_d7802775",
+      "revId": "65a66f72d347a9a432778de8f1eb0a70432c0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
