@@ -15,12 +15,12 @@
 #include <unistd.h>
 #include <signal.h>
 #include <stdbool.h>
+#include <zlib.h>
 
 #include "battery.h"
 #include "comm-host.h"
 #include "chipset.h"
 #include "compile_time_macros.h"
-#include "crc.h"
 #include "cros_ec_dev.h"
 #include "ec_panicinfo.h"
 #include "ec_flash.h"
@@ -9468,7 +9468,7 @@ static int cmd_pchg_wait_event(int port, uint32_t expected)
 }
 
 static int cmd_pchg_update_open(int port, uint32_t version,
-				uint32_t *block_size, uint32_t *crc)
+				uint32_t *block_size, uLong *crc)
 {
 	struct ec_params_pchg_update *p =
 		(struct ec_params_pchg_update *)(ec_outbuf);
@@ -9500,14 +9500,14 @@ static int cmd_pchg_update_open(int port, uint32_t version,
 	       port, version, r->block_size);
 
 	*block_size = r->block_size;
-	crc32_ctx_init(crc);
+	*crc = crc32(0L, Z_NULL, 0);
 
 	return 0;
 }
 
 static int cmd_pchg_update_write(int port, uint32_t address,
 				 const char *filename, uint32_t block_size,
-				 uint32_t *crc)
+				 uLong *crc)
 {
 	struct ec_params_pchg_update *p =
 		(struct ec_params_pchg_update *)(ec_outbuf);
@@ -9537,7 +9537,7 @@ static int cmd_pchg_update_write(int port, uint32_t address,
 		int previous_progress = progress;
 		int i;
 
-		crc32_ctx_hash(crc, p->data, len);
+		*crc = crc32(*crc, p->data, len);
 		p->size = len;
 		rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p,
 				sizeof(*p) + len, NULL, 0);
@@ -9567,14 +9567,14 @@ static int cmd_pchg_update_write(int port, uint32_t address,
 	return 0;
 }
 
-static int cmd_pchg_update_close(int port, uint32_t *crc)
+static int cmd_pchg_update_close(int port, uLong crc)
 {
 	struct ec_params_pchg_update *p =
 		(struct ec_params_pchg_update *)(ec_outbuf);
 	int rv;
 
 	p->cmd = EC_PCHG_UPDATE_CMD_CLOSE;
-	p->crc32 = crc32_ctx_result(crc);
+	p->crc32 = crc;
 	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p, sizeof(*p), NULL, 0);
 
 	if (rv < 0) {
@@ -9658,7 +9658,7 @@ static int cmd_pchg(int argc, char *argv[])
 		 */
 		uint32_t address, version;
 		uint32_t block_size;
-		uint32_t crc;
+		uLong crc;
 		int i;
 
 		if (argc > 4 + max_input_files * 2) {
@@ -9698,7 +9698,7 @@ static int cmd_pchg(int argc, char *argv[])
 			}
 		}
 
-		rv = cmd_pchg_update_close(port, &crc);
+		rv = cmd_pchg_update_close(port, crc);
 		if (rv < 0) {
 			fprintf(stderr, "\nFailed to close update session: %d",
 				rv);

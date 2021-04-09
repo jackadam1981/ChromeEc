@@ -8,7 +8,11 @@
 /* CRC-32 implementation with USB constants */
 /* Note: it's a stateful CRC-32 to match the hardware block interface */
 
-#if defined(CONFIG_HW_CRC) && !defined(HOST_TOOLS_BUILD)
+#ifdef HOST_TOOLS_BUILD
+#error crc.h shouldn't be included in host tools' build. Use zlib.h instead.
+#endif
+
+#ifdef CONFIG_HW_CRC
 #include "crc_hw.h"
 #else
 
