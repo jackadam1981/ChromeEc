@@ -3,6 +3,8 @@
  * found in the LICENSE file.
  */
 
+#include "chipset.h"
+#include "ctn730.h"
 #include "common.h"
 #include "console.h"
 #include "gpio.h"
@@ -31,6 +33,7 @@ static const int _detection_interval_ms = 500;
 /* Buffer size for i2c read & write */
 #define CTN730_MESSAGE_BUFFER_SIZE	0x20
 
+<<<<<<< HEAD   (a04c1c pazquel: Initial EC image)
 /*
  * Static (Chip) Parameters
  */
@@ -145,6 +148,8 @@ struct ctn730_msg {
 	uint8_t payload[];
 } __packed;
 
+=======
+>>>>>>> CHANGE (6bb2d5 PCHG: Fuzz PCHG and ctn730 driver)
 /* This driver isn't compatible with big endian. */
 BUILD_ASSERT(__BYTE_ORDER__  == __ORDER_LITTLE_ENDIAN__);
 
