@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61ec40e3_0e10ae1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 37
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-10T16:10:42Z",
+      "side": 1,
+      "message": "Next rev is here now 😊",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 11,
+        "endChar": 33
+      },
+      "revId": "609e99d6907849966646187ed79fdc6a36ff0a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f99745_14518bc3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 37
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-10T16:10:42Z",
+      "side": 1,
+      "message": "What if you disable VCC_RST as wake source? Does it stay in hibernate mode? Are you able to wake using other sources in that case?",
+      "range": {
+        "startLine": 17,
+        "startChar": 57,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "609e99d6907849966646187ed79fdc6a36ff0a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
