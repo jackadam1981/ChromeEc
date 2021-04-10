@@ -141,6 +141,24 @@
       "parentUuid": "c3d84bd5_8b21e5f5",
       "revId": "65a66f72d347a9a432778de8f1eb0a70432c0fd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aaaffd1_acd15b1c",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-10T00:45:18Z",
+      "side": 1,
+      "message": "will it work if we multiply by 799.797 last?\n\nxyz_data[1] \u003d FP_TO_INT(fp_mul(FLOAT_TO_FP(799.797), fp_div(\n                     fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.009)) +\n                      fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(0.056)) +\n                      fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(2.735)) +\n                      fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.903)),\n                      INT_TO_FP(integration_time_us * cur_gain / 1000ULL))))",
+      "parentUuid": "63d2732e_c39b9e79",
+      "revId": "65a66f72d347a9a432778de8f1eb0a70432c0fd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
