@@ -22,6 +22,30 @@
       },
       "revId": "15cdb357353454731148bf144de0b1ef3ded2d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c50802ab_519116b2",
+        "filename": "baseboard/volteer/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-10T18:14:12Z",
+      "side": 1,
+      "message": "The purpose to adopt \"SSFC_LIGHTBAR_TYPEx instead of LIGHTBAR_XX_XXX_TYPE\" is the SSFC definition in baseboard should be common.\nBecause other board maybe use different lightbar type, ex. 5 led, 15 led, and so on. Other board can redefine its type name to have more explicit name for its board. Though, lindar could be the only one to have this feature in volteer.\n\nMay I have your advise if this proposal is available?",
+      "parentUuid": "831270b8_2aedbed3",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "15cdb357353454731148bf144de0b1ef3ded2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
