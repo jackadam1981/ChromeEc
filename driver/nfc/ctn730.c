@@ -143,6 +143,9 @@ static int _i2c_read(int i2c_port, uint8_t *in, int in_len)
 {
 	int rv;
 
+	if (!in_len)
+		return EC_ERROR_INVAL;
+
 	memset(in, 0, in_len);
 
 	rv = i2c_xfer(i2c_port, CTN730_I2C_ADDR, NULL, 0, in, in_len);
