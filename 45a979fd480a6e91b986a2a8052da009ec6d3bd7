@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e707fc44_6edbd61b",
+        "filename": "zephyr/test/drivers/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-11T17:31:45Z",
+      "side": 1,
+      "message": "and so we can test interactions between different subsystems easily",
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc592c7d_3ce7ae3c",
+        "filename": "zephyr/test/drivers/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-11T17:31:45Z",
+      "side": 1,
+      "message": "Why do you need this breakpoint?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f269b78_55e52121",
+        "filename": "zephyr/test/drivers/src/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-11T17:31:45Z",
+      "side": 1,
+      "message": "blank line after decls",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9acebce_990a5fba",
+        "filename": "zephyr/test/drivers/src/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-11T17:31:45Z",
+      "side": 1,
+      "message": "What does this show when the assert fails?",
+      "range": {
+        "startLine": 22,
+        "startChar": 66,
+        "endLine": 22,
+        "endChar": 70
+      },
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1877216_b1b28d2a",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-11T17:31:45Z",
+      "side": 1,
+      "message": "Are you able to sort these headers?",
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb7c4b9f_397b1b75",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-11T17:31:45Z",
+      "side": 1,
+      "message": "-",
+      "range": {
+        "startLine": 27,
+        "startChar": 44,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
