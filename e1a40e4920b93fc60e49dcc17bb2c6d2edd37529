@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f696bc70_4bc5e91e",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-11T02:12:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2353aaee_a30fe77c",
+      "range": {
+        "startLine": 209,
+        "startChar": 42,
+        "endLine": 209,
+        "endChar": 60
+      },
+      "revId": "e1a40e4920b93fc60e49dcc17bb2c6d2edd37529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8fe7131_4dee24f6",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94878f90_73edbe6c",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-11T02:12:24Z",
+      "side": 1,
+      "message": "lightbar_sleep_exit() register in HOOK_CHIPSET_RESUME. When system boot from G3/S5/S4 to S0, it also trigger HOOK_CHIPSET_RESUME.\nFrom V9 SPEC, UX define lightbar behavior from S0ix/S3 to S0, not G3/S5/S4 to S0.\nI\u0027m not sure if there is other HOOK (or other way) can be only called from S0ix/S3 to S0, so I create this flag, lightbar_enter_s0ix_s3, to know which state system go from. Then, we can base on it to control lightbar.",
+      "parentUuid": "f8fe7131_4dee24f6",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 35
+      },
+      "revId": "e1a40e4920b93fc60e49dcc17bb2c6d2edd37529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d130e28_d76ac767",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-09T06:58:32Z",
       "side": 1,
       "message": "I think you can change this to *lightbar_ctrl",
+      "range": {
+        "startLine": 392,
+        "startChar": 15,
+        "endLine": 392,
+        "endChar": 31
+      },
+      "revId": "e1a40e4920b93fc60e49dcc17bb2c6d2edd37529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "640a41a4_0fba1bcc",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-11T02:12:24Z",
+      "side": 1,
+      "message": "What we expect is to create \"one\" pointer to 2-dimensional array.\nIf we remove parentheses, it will become a KTD20XX_TOTOAL_REG size array which is uint8_t pointer.\n\nAnd, it will also cause build error when remove parentheses.",
+      "parentUuid": "0d130e28_d76ac767",
       "range": {
         "startLine": 392,
         "startChar": 15,
