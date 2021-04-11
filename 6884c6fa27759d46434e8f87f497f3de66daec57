@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a349ef1c_dc06d280",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-11T08:26:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a7ddf8b_79132e74",
+      "revId": "6884c6fa27759d46434e8f87f497f3de66daec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2340381c_f778735a",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-09T07:32:09Z",
       "side": 1,
       "message": "Insert a newline in between #endif and static int",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 670,
+        "endChar": 50
+      },
+      "revId": "6884c6fa27759d46434e8f87f497f3de66daec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac7e9f7a_89038706",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-11T08:26:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2340381c_f778735a",
       "range": {
         "startLine": 669,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17098ff6_19a68b16",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-11T08:26:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "382fc53b_5a2888b3",
+      "range": {
+        "startLine": 680,
+        "startChar": 0,
+        "endLine": 680,
+        "endChar": 33
+      },
+      "revId": "6884c6fa27759d46434e8f87f497f3de66daec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e31652f_eb72fc05",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "839cae05_93f74f8c",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-11T08:26:45Z",
+      "side": 1,
+      "message": "Add lightbar_dump_status() to dump lightbar debug information we needed.",
+      "parentUuid": "0e31652f_eb72fc05",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 55
+      },
+      "revId": "6884c6fa27759d46434e8f87f497f3de66daec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6a1f85e_af54bca0",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-04-09T07:32:09Z",
       "side": 1,
       "message": "This is redundant. This function has been included into lightbar_is_enabled().",
+      "range": {
+        "startLine": 701,
+        "startChar": 5,
+        "endLine": 701,
+        "endChar": 33
+      },
+      "revId": "6884c6fa27759d46434e8f87f497f3de66daec57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3b0d92e_e745f4a2",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-11T08:26:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6a1f85e_af54bca0",
       "range": {
         "startLine": 701,
         "startChar": 5,
