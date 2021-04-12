@@ -159,6 +159,7 @@ static int nx20p348x_vbus_sink_enable(int port, int enable)
 	 */
 	msleep(NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC);
 	rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &status);
+	CPRINTS("NX20P348X_SWITCH_STATUS_REG: %d", status);
 	if (rv)
 		return rv;
 
