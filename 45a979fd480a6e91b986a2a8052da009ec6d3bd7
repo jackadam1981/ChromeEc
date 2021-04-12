@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f967813a_0d76efd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-12T15:31:01Z",
+      "side": 1,
+      "message": "Quite true. However this stub is just temporary. I\u0027ll replace it instead with a gpio using the gpio_emul driver and use the real code from extpower_gpio.c.\n\nI.e. Add CONFIG_PLATFORM_EC_EXTPOWER_GPIO\u003dy to the prj.conf file and and the GPIO_AC_PRESENT to the overlay.dts file.\n\nRight now I\u0027m just trying to get this test to build, so that I and Semihalf have someplace to start adding new test cases to.",
+      "parentUuid": "443fe818_cf91345d",
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e707fc44_6edbd61b",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "277e04df_004792dd",
+        "filename": "zephyr/test/drivers/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-12T15:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e707fc44_6edbd61b",
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc592c7d_3ce7ae3c",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-04-11T17:31:45Z",
       "side": 1,
       "message": "Why do you need this breakpoint?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 26
+      },
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d6c8e57_dedbeafe",
+        "filename": "zephyr/test/drivers/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-12T15:31:01Z",
+      "side": 1,
+      "message": "Sorry it was just intented to be an example, I will replace with a comment instead.",
+      "parentUuid": "dc592c7d_3ce7ae3c",
       "range": {
         "startLine": 47,
         "startChar": 0,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "979e06de_340b097b",
+        "filename": "zephyr/test/drivers/src/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-12T15:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f269b78_55e52121",
+      "range": {
+        "startLine": 19,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9acebce_990a5fba",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-04-11T17:31:45Z",
       "side": 1,
       "message": "What does this show when the assert fails?",
+      "range": {
+        "startLine": 22,
+        "startChar": 66,
+        "endLine": 22,
+        "endChar": 70
+      },
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2ba7804_1e34aab5",
+        "filename": "zephyr/test/drivers/src/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-12T15:31:01Z",
+      "side": 1,
+      "message": "Here is a sample failure from line 20:\n\nAssertion failed at CMAKE_SOURCE_DIR/src/battery.c:22: test_battery_is_present_gpio: dev is NULL\n\nzassert_* docs say the message is optional, and the samples I see in the zephyr code sometimes pass a message and other times pass NULL.",
+      "parentUuid": "c9acebce_990a5fba",
       "range": {
         "startLine": 22,
         "startChar": 66,
@@ -121,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39777796_55a07423",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-12T15:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1877216_b1b28d2a",
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb7c4b9f_397b1b75",
@@ -134,6 +260,30 @@
       "writtenOn": "2021-04-11T17:31:45Z",
       "side": 1,
       "message": "-",
+      "range": {
+        "startLine": 27,
+        "startChar": 44,
+        "endLine": 27,
+        "endChar": 45
+      },
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b03c67c_aeaed059",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-12T15:31:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb7c4b9f_397b1b75",
       "range": {
         "startLine": 27,
         "startChar": 44,
