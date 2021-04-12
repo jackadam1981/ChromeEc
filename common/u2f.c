@@ -114,6 +114,8 @@ enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 	/* Authorization salt for versioned KHs */
 	uint8_t *authorization_salt;
 
+	CPRINTF("Starting u2f_generate\n");
+
 	*response_size = 0;
 
 	if (input_size != sizeof(struct u2f_generate_req))
@@ -135,9 +137,11 @@ enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 
 	/* Generate origin-specific keypair */
 	do {
+		CPRINTF("Start generating seed\n");
 		if (!DCRYPTO_ladder_random(&od_seed))
 			return VENDOR_RC_INTERNAL_ERROR;
 
+		CPRINTF("Generated seed\n");
 		if (kh_version == 0)
 			generate_kh_rc = u2f_origin_user_keyhandle(
 				req->appId, req->userSecret, od_seed,
@@ -150,9 +154,11 @@ enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 		if (generate_kh_rc != EC_SUCCESS)
 			return VENDOR_RC_INTERNAL_ERROR;
 
+		CPRINTF("Generated key handle\n");
 		generate_keypair_rc = u2f_origin_user_keypair(
 			(uint8_t *)&kh_buf, keypair_input_size, &od, &opk_x,
 			&opk_y);
+		CPRINTF("Computed key pair from key handle\n");
 	} while (generate_keypair_rc == EC_ERROR_TRY_AGAIN);
 
 	if (generate_keypair_rc != EC_SUCCESS)
@@ -167,22 +173,26 @@ enum vendor_cmd_rc u2f_generate(enum vendor_cmd_cc code, void *buf,
 		*response_size = sizeof(struct u2f_generate_resp);
 	} else {
 		authorization_salt = od_seed;
+		CPRINTF("Starting to generate authorization salt\n");
 		/* Generate in word-aligned array so that TRNG doesn't crash */
 		if (!DCRYPTO_ladder_random(authorization_salt))
 			return VENDOR_RC_INTERNAL_ERROR;
 
+		CPRINTF("Generates authorization salt\n");
 		if (u2f_authorization_hmac(
 			    authorization_salt, &kh_buf.vkh.header,
 			    req->authTimeSecretHash,
 			    kh_buf.vkh.authorization_hmac) != EC_SUCCESS)
 			return VENDOR_RC_INTERNAL_ERROR;
 
+		CPRINTF("Computed authorization hmac\n");
 		memcpy(&kh_buf.vkh.authorization_salt, authorization_salt,
 		       U2F_AUTHORIZATION_SALT_SIZE);
 		copy_versioned_kh_pubkey_out(&opk_x, &opk_y, &kh_buf.vkh, buf);
 		*response_size = sizeof(struct u2f_generate_versioned_resp);
 	}
 
+	CPRINTF("u2f_generate done\n");
 	return VENDOR_RC_SUCCESS;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_U2F_GENERATE, u2f_generate);
@@ -292,6 +302,8 @@ enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 
 	int verify_owned_rc;
 
+	CPRINTF("Starting u2f_sign\n");
+
 	/* Response is smaller than request, so no need to check this. */
 	*response_size = 0;
 
@@ -317,6 +329,8 @@ enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 		return VENDOR_RC_BOGUS_ARGS;
 	}
 
+	CPRINTF("Validated input and verified KH owned\n");
+
 	if (verify_owned_rc != EC_SUCCESS)
 		return VENDOR_RC_INTERNAL_ERROR;
 
@@ -324,8 +338,12 @@ enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 		return VENDOR_RC_PASSWORD_REQUIRED;
 
 	/* We might not actually need to sign anything. */
-	if ((flags & U2F_AUTH_CHECK_ONLY) == U2F_AUTH_CHECK_ONLY)
+	if ((flags & U2F_AUTH_CHECK_ONLY) == U2F_AUTH_CHECK_ONLY) {
+		CPRINTF("u2f_sign check only, returning success\n");
 		return VENDOR_RC_SUCCESS;
+	}
+
+	CPRINTF("u2f_sign checking presence\n");
 
 	/*
 	 * Enforce user presence for version 0 KHs, with optional consume.
@@ -340,6 +358,8 @@ enum vendor_cmd_rc u2f_sign(enum vendor_cmd_cc code, void *buf,
 		 * authorization hmac when no power button press.
 		 */
 	}
+
+	CPRINTF("Checked/Waived presence\n");
 
 	/* Re-create origin-specific key. */
 	if (u2f_origin_user_keypair(key_handle, keypair_input_size, &origin_d,
