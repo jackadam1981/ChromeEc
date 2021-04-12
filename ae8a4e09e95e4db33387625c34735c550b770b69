@@ -34,6 +34,24 @@
       "parentUuid": "b84822c6_730f5bfa",
       "revId": "ae8a4e09e95e4db33387625c34735c550b770b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c14f8b8_10c650db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-12T13:18:19Z",
+      "side": 1,
+      "message": "Option 1: Will abandon this CL, and move\nconst struct spi_device_t spi_devices[] \u003d {}\nback to board.c\n\noption 2: add:\n#if defined(CONFIG_SPI_ACCEL_PORT)\n\t{ GPSPI0_PORT, 2, GPIO_SPI0_CS0 },\n#endif\nIn spi.c, one limit is the SPI master controller 0 must be used for sensor in design for MEC170x, for MEC152x or 172x, that is ok, only one GPSPI master controller in chips.",
+      "parentUuid": "dedc416b_e37fcd2f",
+      "revId": "ae8a4e09e95e4db33387625c34735c550b770b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
