@@ -16,6 +16,24 @@
       "message": "Why the big change?",
       "revId": "bef18ef775b69deaf55d60ffa918ea4b7033aa28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e9abef_87be2105",
+        "filename": "zephyr/projects/volteer/volteer/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-12T15:47:14Z",
+      "side": 1,
+      "message": "clang-format mucked this up.  I didn\u0027t notice with my local diff tool wasn\u0027t showing me whitespace deltas.",
+      "parentUuid": "a0b37923_15967137",
+      "revId": "bef18ef775b69deaf55d60ffa918ea4b7033aa28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
