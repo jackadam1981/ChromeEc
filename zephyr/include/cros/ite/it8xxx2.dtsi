@@ -59,6 +59,25 @@
 
 	soc {
 
+		gpioe: gpio@f01605 {
+			compatible = "ite,it8xxx2-gpio";
+			reg = <0x00f01605 0x0001>;
+			ngpios = <8>;
+			label = "GPDRE";
+			status = "disabled";
+			gpio-controller;
+			interrupts = <72 0
+				73 0
+				74 0
+				75 0
+				119 0
+				176 0
+				177 0
+				178 0>;
+			interrupt-parent = <&intc>;
+			#gpio-cells = <2>;
+		};
+
 		bbram: bb-ram@f02200 {
 			#address-cells = <1>;
 			#size-cells = <1>;
@@ -67,6 +86,15 @@
 			reg = <0x00f02200 0xbf>;
 			reg-names = "memory";
 			label = "BBRAM";
+		};
+
+		spislv: spi-slv@f03a00 {
+			compatible = "ite,it8xxx2-cros-shi";
+			reg = <0x00f03a00 0x30>;
+			label = "SPI_SLAVE";
+			interrupts = <171 0>;
+			interrupt-parent = <&intc>;
+			status = "okay";
 		};
 
 		fiu0: flash-controller@80000000 {
