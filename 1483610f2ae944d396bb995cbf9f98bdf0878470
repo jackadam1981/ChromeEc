@@ -16,6 +16,23 @@
       "message": "For Lazor, it couldn\u0027t pass the test because of the hook tick task priority.\nPlease check the issue b:185066274.\nFor Volteer, the hook tick task priority is the same as the console task so the hook tick can be blocked.",
       "revId": "1483610f2ae944d396bb995cbf9f98bdf0878470",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a4fb3f3_de921301",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-12T18:58:29Z",
+      "side": 1,
+      "message": "It looks better than the original approach. But needs opinions from people who are more familiar with handling the configs between EC-OS and Zephyr. I\u0027d defer to them.",
+      "revId": "1483610f2ae944d396bb995cbf9f98bdf0878470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
