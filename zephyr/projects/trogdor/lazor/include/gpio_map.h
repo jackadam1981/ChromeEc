@@ -10,6 +10,17 @@
 #include <gpio_signal.h>
 
 /*
+ * Set EC_CROS_HIBERNATE_GPIOS to a comma-separated list of enum gpio_signal
+ * items. These GPIOs are used for wake-up ec from hibernating if PSL feature is
+ * not enabled.
+ */
+#define EC_CROS_HIBERNATE_GPIOS \
+	GPIO_LID_OPEN,          \
+	GPIO_AC_PRESENT,        \
+	GPIO_POWER_BUTTON_L,    \
+	GPIO_EC_RST_ODL
+
+/*
  * Set EC_CROS_GPIO_INTERRUPTS to a space-separated list of GPIO_INT items.
  *
  * Each GPIO_INT requires three parameters:
