@@ -504,6 +504,12 @@ int chip_i2c_xfer(const int port, const uint16_t addr_flags,
 			| (xfer_start ? STM32_I2C_CR2_START : 0);
 
 		for (i = 0; i < out_bytes; i++) {
+			uint32_t cr2 = STM32_I2C_CR2(port);
+			if ((addr_8bit == (I2C_STRIP_FLAGS(0x23) << 1)) && out_bytes > 1) {
+				if (cr2 != (((out_bytes & 0xFF) << 16) | STM32_I2C_CR2_START |
+				    STM32_I2C_CR2_AUTOEND | addr_8bit))
+				    	while (1) {};
+			}
 			rv = wait_isr(port, STM32_I2C_ISR_TXIS);
 			if (rv)
 				goto xfer_exit;
