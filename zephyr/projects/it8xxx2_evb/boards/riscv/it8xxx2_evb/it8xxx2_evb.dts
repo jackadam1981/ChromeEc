@@ -22,8 +22,20 @@
 	named-gpios {
 		compatible = "named-gpios";
 
+		power_button_l {
+			gpios = <&gpioe 4 GPIO_INPUT_PULL_UP>;
+			label = "POWER_BUTTON_L";
+		};
+		lid_open {
+			gpios = <&gpioe 2 GPIO_INPUT_PULL_UP>;
+			label = "LID_OPEN";
+		};
 	};
 
+};
+
+&gpioe {
+	status = "okay";
 };
 
 &uart1 {
