@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2347882_be640616",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-12T21:44:14Z",
+      "side": 1,
+      "message": "This shouldn\u0027t harm anything during EC mode entry, and should fix the kernel hang.  But I\u0027ve asked the ODM to try this out so let\u0027s not merge until the ODM reports results.",
+      "revId": "347ce528b3a7668a6e033a7ed4533fe42a127701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
