@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6f44816_247fcb3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-12T19:47:58Z",
+      "side": 1,
+      "message": "Effectively, this new chip wasn\u0027t planned first to be called icm42607. Marketing ways are sometimes complex to understand.\n\nAnyway, icm426xx is for the old icm426xx family while icm42607 is for the new icm42607 alone. It is difficult to find a correct regex. Perhaps renaming icm426xx to icm42605 (most generic chip of icm426xx \"old\" family). Tell me what you think about.",
+      "parentUuid": "517e7b76_104ef219",
+      "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4655a878_294cf5b8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2021-04-12T16:51:48Z",
       "side": 1,
       "message": "What is \"CROS-EC IIO\"? Did you use \u0027tast test \u003cDUT_IP\u003e hardware.SensorRing\u0027 to check the sensor data was flowing to user space?",
+      "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1c9c5be_e9b173fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-12T19:47:58Z",
+      "side": 1,
+      "message": "We are testing data from userspace by using a Linux command-line application that read data from the Linux IIO devices created by the CROS-EC SensorsHub driver (cros-ec-accel \u0026 cros-ec-gyro). As found in Chromium OS Linux kernels. (we have ported them to Raspberry Pi 4 kernel). They are using the same internal way than CROS EC Sensor Ring driver if I\u0027m not mistaken.\n\nThis application enables us to do logs for analyzing sensors data quality, and configure each sensor independently to check they are working well independently of each other. (for example, run the application with accel @50Hz and in another terminal run the application with gyro @200Hz. Turn off accel data then turn off gyro data, and check that all data are correct).",
+      "parentUuid": "a0380f41_63cb84f4",
       "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
