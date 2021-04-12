@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "845fb6e5_08970c3f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-12T18:33:45Z",
+      "side": 1,
+      "message": "is this needed for FAFT? there should be a bug....",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "790f7a4ee44a0367a0a321fcf46e8db34f158461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cd561f94_bb724efa",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-04-12T15:49:18Z",
       "side": 1,
       "message": "I welcome any thoughts on whether we add \"_zephyr\" into the version output.  Once we have dropped legacy cros EC support, we probably want to bump the major revision to 3.0.",
+      "revId": "790f7a4ee44a0367a0a321fcf46e8db34f158461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b5d8128_2bd6d33c",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-12T18:33:45Z",
+      "side": 1,
+      "message": "probably want the project name instead of the board ... we can save this for later",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 31
+      },
       "revId": "790f7a4ee44a0367a0a321fcf46e8db34f158461",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
