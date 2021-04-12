@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd561f94_bb724efa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-12T15:49:18Z",
+      "side": 1,
+      "message": "I welcome any thoughts on whether we add \"_zephyr\" into the version output.  Once we have dropped legacy cros EC support, we probably want to bump the major revision to 3.0.",
+      "revId": "790f7a4ee44a0367a0a321fcf46e8db34f158461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
