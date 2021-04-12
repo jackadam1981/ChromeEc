@@ -27,6 +27,7 @@ reset:
 	movs r0, #0          @ priv. mode / main stack / no floating point
 	msr control, r0
 	isb                  @ ensure the write is done
+	bkpt
 
 	/* Clear BSS */
 	movs r0, #0
