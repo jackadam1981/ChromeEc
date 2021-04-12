@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e7e00f_b48c9bc2",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-12T02:25:18Z",
+      "side": 1,
+      "message": "Thanks",
+      "parentUuid": "f696bc70_4bc5e91e",
+      "range": {
+        "startLine": 209,
+        "startChar": 42,
+        "endLine": 209,
+        "endChar": 60
+      },
+      "revId": "e1a40e4920b93fc60e49dcc17bb2c6d2edd37529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8fe7131_4dee24f6",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e88ce5d_602835de",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-12T02:25:18Z",
+      "side": 1,
+      "message": "got it. Could you please put this comment to line 270-272? It would be good to mention that the S5-\u003eS3-\u003eS0 needs to be excluded. So, you add this flag.",
+      "parentUuid": "94878f90_73edbe6c",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 35
+      },
+      "revId": "e1a40e4920b93fc60e49dcc17bb2c6d2edd37529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d130e28_d76ac767",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "What we expect is to create \"one\" pointer to 2-dimensional array.\nIf we remove parentheses, it will become a KTD20XX_TOTOAL_REG size array which is uint8_t pointer.\n\nAnd, it will also cause build error when remove parentheses.",
       "parentUuid": "0d130e28_d76ac767",
+      "range": {
+        "startLine": 392,
+        "startChar": 15,
+        "endLine": 392,
+        "endChar": 31
+      },
+      "revId": "e1a40e4920b93fc60e49dcc17bb2c6d2edd37529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cadb2934_f3de2d2b",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-12T02:25:18Z",
+      "side": 1,
+      "message": "Oh.. Thanks for clarification.",
+      "parentUuid": "640a41a4_0fba1bcc",
       "range": {
         "startLine": 392,
         "startChar": 15,
