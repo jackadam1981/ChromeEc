@@ -154,6 +154,14 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 
 	r->events = pd_get_events(p->port);
 
+	/*
+	 * When using EC mode driven entry, the kernel will never clear
+	 * the event flags, so clear them as soon as the kernel reads them.
+	 */
+#ifndef CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
+	pd_clear_events(p->port, r->events);
+#endif
+
 	r->sop_revision = r->sop_connected ?
 		PD_STATUS_REV_SET_MAJOR(pd_get_rev(p->port, TCPC_TX_SOP)) : 0;
 	r->sop_prime_revision = pd_get_identity_discovery(p->port,
