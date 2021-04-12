@@ -16,6 +16,23 @@
       "message": "We don\u0027t want to be doing runtime probing of i2c components. We should consult CBI EEPROM as you noted. (SSFC)",
       "revId": "a9f74abcc91b770f7e460f57c70cdddf2a037d8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee55b5d7_68cb173f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-12T22:00:42Z",
+      "side": 1,
+      "message": "I added a field in the SSFC for the superspeed mux in CL:2821600.\n\nThis CL should be rewritten to take advantage of the new field. Essentially, in board_init(), check the value of the `usb_ssfc_mux` field via `get_cbi_ssfc_usb_ss_mux()` and use that to set the usb_muxes table entry.",
+      "revId": "a9f74abcc91b770f7e460f57c70cdddf2a037d8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
