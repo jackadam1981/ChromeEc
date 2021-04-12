@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7b3f547_05e0e382",
+        "filename": "baseboard/cherry/baseboard.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1179294
+      },
+      "writtenOn": "2021-04-12T23:10:32Z",
+      "side": 1,
+      "message": "PWM_PRESCALER_C6 or PWM_PRESCALER_C7",
+      "range": {
+        "startLine": 201,
+        "startChar": 15,
+        "endLine": 201,
+        "endChar": 31
+      },
+      "revId": "96136d8d684fce4e00dde5a85c9265d6e93d02d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
