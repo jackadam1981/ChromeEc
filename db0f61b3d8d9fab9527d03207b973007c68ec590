@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71cd1a05_c7a8f186",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2021-04-12T06:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6481b0c2_4570037a",
+      "revId": "db0f61b3d8d9fab9527d03207b973007c68ec590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7c15b76_9b965444",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-09T14:25:08Z",
       "side": 1,
       "message": "nit: should be a space",
+      "range": {
+        "startLine": 22,
+        "startChar": 7,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "db0f61b3d8d9fab9527d03207b973007c68ec590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcce8759_bd986a4a",
+        "filename": "board/guybrush/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1286280
+      },
+      "writtenOn": "2021-04-12T06:19:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7c15b76_9b965444",
       "range": {
         "startLine": 22,
         "startChar": 7,
