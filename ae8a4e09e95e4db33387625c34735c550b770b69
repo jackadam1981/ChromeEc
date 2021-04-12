@@ -52,6 +52,24 @@
       "parentUuid": "dedc416b_e37fcd2f",
       "revId": "ae8a4e09e95e4db33387625c34735c550b770b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea34a99_80fbe3dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-12T14:44:51Z",
+      "side": 1,
+      "message": "option 2:\nin spic.c\n#ifdef CONFIG_EC_GSPI_1\n   { *, *, * },\n#endif\n#ifdef CONFIG_EC_GSPI_2\n   { *, *, * },\n#endif\n\nin config.h\n#undef CONFIG_EC_GSPI_1\n#undef CONFIG_EC_GSPI_2",
+      "parentUuid": "1c14f8b8_10c650db",
+      "revId": "ae8a4e09e95e4db33387625c34735c550b770b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
