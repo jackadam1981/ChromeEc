@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c316b529_75cd9ca8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-12T14:59:37Z",
+      "side": 1,
+      "message": "please make a bug for ITE 8xxx2 bringup",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "150c2b56ee0914a2d6d049018efb3c4da40a93f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24a2b2a2_ce5abad3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-12T14:59:37Z",
+      "side": 1,
+      "message": "please test the code",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "150c2b56ee0914a2d6d049018efb3c4da40a93f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9684ab4_48c9ffc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-12T14:59:37Z",
+      "side": 1,
+      "message": "getting there",
+      "revId": "150c2b56ee0914a2d6d049018efb3c4da40a93f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e099cc_c7a7eeec",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-12T14:59:37Z",
+      "side": 1,
+      "message": "blank line between kconfig items\n\nshould be \"config\" instead of menuconfig, as I don\u0027t see any config options which depend on this",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "150c2b56ee0914a2d6d049018efb3c4da40a93f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44fb43e8_5d0a7ff5",
+        "filename": "zephyr/drivers/cros_bbram/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-12T14:59:37Z",
+      "side": 1,
+      "message": "indentation for help text should be one tab plus two spaces.",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 2
+      },
+      "revId": "150c2b56ee0914a2d6d049018efb3c4da40a93f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
