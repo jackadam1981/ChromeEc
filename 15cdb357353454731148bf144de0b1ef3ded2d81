@@ -46,6 +46,30 @@
       },
       "revId": "15cdb357353454731148bf144de0b1ef3ded2d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a088854_431f190c",
+        "filename": "baseboard/volteer/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-12T01:52:58Z",
+      "side": 1,
+      "message": "IMHO, this feature is only for the lindar. If some projects that need to reuse this flag in the future, they can refine the enum if needed. To reduce the complexity, I would still suggest to put the SSFC_LIGHTBAR_12_LED.",
+      "parentUuid": "c50802ab_519116b2",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 20
+      },
+      "revId": "15cdb357353454731148bf144de0b1ef3ded2d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
