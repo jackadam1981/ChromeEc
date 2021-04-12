@@ -52,6 +52,46 @@
       "parentUuid": "2018dd14_23807f69",
       "revId": "fcd98891d9af020a674505a4baa4817030504978",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b08fd04_f5928293",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-12T08:36:44Z",
+      "side": 1,
+      "message": "Let\u0027s merge this one first, I will rebase and cleanup CL:2814729 later",
+      "revId": "fcd98891d9af020a674505a4baa4817030504978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b39c3ed5_748c9419",
+        "filename": "board/spherion/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-12T08:36:44Z",
+      "side": 1,
+      "message": "nit: remove this whitespace",
+      "range": {
+        "startLine": 65,
+        "startChar": 39,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "fcd98891d9af020a674505a4baa4817030504978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
