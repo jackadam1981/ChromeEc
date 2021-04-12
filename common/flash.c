@@ -17,6 +17,7 @@
 #include "system.h"
 #include "util.h"
 #include "vboot_hash.h"
+#include "timer.h"
 
 /*
  * Contents of erased flash, as a 32-bit value.  Most platforms erase flash
@@ -1052,6 +1053,8 @@ static int command_flash_erase(int argc, char **argv)
 	int size = -1;
 	int rv;
 
+	uint64_t t1, t2;
+
 	if (flash_get_protect() & EC_FLASH_PROTECT_ALL_NOW)
 		return EC_ERROR_ACCESS_DENIED;
 
@@ -1060,7 +1063,11 @@ static int command_flash_erase(int argc, char **argv)
 		return rv;
 
 	ccprintf("Erasing %d bytes at 0x%x...\n", size, offset);
-	return flash_erase(offset, size);
+	t1 = get_time().val;
+	rv = flash_erase(offset, size);
+	t2 = get_time().val;
+	ccprintf("t = %lld\n", t2 - t1);
+	return rv;
 }
 DECLARE_CONSOLE_COMMAND(flasherase, command_flash_erase,
 			"offset size",
