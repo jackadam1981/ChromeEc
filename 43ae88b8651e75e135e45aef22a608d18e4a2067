@@ -95,6 +95,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bca81888_f92cbe30",
+        "filename": "zephyr/drivers/cros_spi_slv/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-12T23:56:20Z",
+      "side": 1,
+      "message": "shi",
+      "range": {
+        "startLine": 5,
+        "startChar": 54,
+        "endLine": 5,
+        "endChar": 61
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "207e4df1_a380c35e",
         "filename": "zephyr/drivers/cros_spi_slv/Kconfig",
         "patchSetId": 2
@@ -272,6 +295,29 @@
         "startChar": 32,
         "endLine": 200,
         "endChar": 54
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39de6f17_26797940",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-12T23:56:20Z",
+      "side": 1,
+      "message": "Reference bug b:185176098 to fix this later.",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 33
       },
       "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
