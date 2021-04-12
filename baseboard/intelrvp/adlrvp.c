@@ -28,11 +28,13 @@ const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 		.ppc_alert = GPIO_USBC_TCPC_PPC_ALRT_P0,
 		.ppc_intr_handler = sn5s330_interrupt,
 	},
+#if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
 		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P1,
 		.ppc_alert = GPIO_USBC_TCPC_PPC_ALRT_P1,
 		.ppc_intr_handler = sn5s330_interrupt,
 	},
+#endif
 #if defined(HAS_TASK_PD_C2)
 	[TYPE_C_PORT_2] = {
 		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P2,
@@ -57,11 +59,13 @@ struct ppc_config_t ppc_chips[] = {
 		.i2c_addr_flags = I2C_ADDR_SN5S330_TCPC_AIC_PPC,
 		.drv = &sn5s330_drv,
 	},
+#if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
 		.i2c_port = I2C_PORT_TYPEC_1,
 		.i2c_addr_flags = I2C_ADDR_SN5S330_TCPC_AIC_PPC,
 		.drv = &sn5s330_drv
 	},
+#endif
 #if defined(HAS_TASK_PD_C2)
 	[TYPE_C_PORT_2] = {
 		.i2c_port = I2C_PORT_TYPEC_2,
@@ -86,11 +90,13 @@ struct usb_mux usbc0_tcss_usb_mux = {
 	.driver = &virtual_usb_mux_driver,
 	.hpd_update = &virtual_hpd_update,
 };
+#if defined(HAS_TASK_PD_C1)
 struct usb_mux usbc1_tcss_usb_mux = {
 	.usb_port = TYPE_C_PORT_1,
 	.driver = &virtual_usb_mux_driver,
 	.hpd_update = &virtual_hpd_update,
 };
+#endif
 #if defined(HAS_TASK_PD_C2)
 struct usb_mux usbc2_tcss_usb_mux = {
 	.usb_port = TYPE_C_PORT_2,
@@ -115,6 +121,7 @@ struct usb_mux usb_muxes[] = {
 		.i2c_port = I2C_PORT_TYPEC_0,
 		.i2c_addr_flags = I2C_PORT0_BB_RETIMER_ADDR,
 	},
+#if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
 		.usb_port = TYPE_C_PORT_1,
 		.next_mux = &usbc1_tcss_usb_mux,
@@ -122,6 +129,7 @@ struct usb_mux usb_muxes[] = {
 		.i2c_port = I2C_PORT_TYPEC_1,
 		.i2c_addr_flags = I2C_PORT1_BB_RETIMER_ADDR,
 	},
+#endif
 #if defined(HAS_TASK_PD_C2)
 	[TYPE_C_PORT_2] = {
 		.usb_port = TYPE_C_PORT_2,
@@ -150,11 +158,13 @@ const struct pca9675_ioexpander pca9675_iox[] = {
 		.i2c_addr_flags = I2C_ADDR_PCA9675_TCPC_AIC_IOEX,
 		.io_direction = TCPC_AIC_IOE_DIRECTION,
 	},
+#if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
 		.i2c_host_port = I2C_PORT_TYPEC_1,
 		.i2c_addr_flags = I2C_ADDR_PCA9675_TCPC_AIC_IOEX,
 		.io_direction = TCPC_AIC_IOE_DIRECTION,
 	},
+#endif
 #if defined(HAS_TASK_PD_C2)
 	[TYPE_C_PORT_2] = {
 		.i2c_host_port = I2C_PORT_TYPEC_2,
@@ -185,11 +195,14 @@ void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* Port 0 & 1 and 2 & 3 share same line for over current indication */
 	/* If PD_C2 task is defined, PD_C3 task is assumed to be defined. */
-#if defined(HAS_TASK_PD_C2)
+#if defined(HAS_TASK_PD_C2) && defined(HAS_TASK_PD_C3)
 	int ioex = port < TYPE_C_PORT_2 ?
 			TYPE_C_PORT_1 : TYPE_C_PORT_3;
-#else
+#elif defined(HAS_TASK_PD_C1)
 	int ioex = TYPE_C_PORT_1;
+#else
+	/* This would be a rework on the TCPC AIC */
+	int ioex = TYPE_C_PORT_0;
 #endif
 
 	if (is_overcurrented)
