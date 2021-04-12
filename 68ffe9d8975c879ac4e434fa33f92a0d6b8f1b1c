@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ee30d7e_4be9171e",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-12T15:45:03Z",
+      "side": 1,
+      "message": "combine into the same variable?\n\nAlso be careful here that BOARD is not the same as a Zephyr BOARD. In Zmake terms, it\u0027s a \"project\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 42
+      },
+      "revId": "68ffe9d8975c879ac4e434fa33f92a0d6b8f1b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
