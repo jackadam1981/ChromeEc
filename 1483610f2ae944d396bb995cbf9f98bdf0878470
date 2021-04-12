@@ -33,6 +33,121 @@
       "message": "It looks better than the original approach. But needs opinions from people who are more familiar with handling the configs between EC-OS and Zephyr. I\u0027d defer to them.",
       "revId": "1483610f2ae944d396bb995cbf9f98bdf0878470",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e89605a_4f2af0d7",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-12T23:44:01Z",
+      "side": 1,
+      "message": "Change to \"an auxiliary timer\"",
+      "range": {
+        "startLine": 572,
+        "startChar": 27,
+        "endLine": 572,
+        "endChar": 49
+      },
+      "revId": "1483610f2ae944d396bb995cbf9f98bdf0878470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fcbd5f8_32204abc",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-12T23:44:01Z",
+      "side": 1,
+      "message": "Change this to reference the KConfig property names instead of the CONFIG names.\n\n\"The interval between reloads of the watchdog timer should be less than half of the auxiliary timer (PLATFORM_EC_WATCHDOG_PERIOD_MS - PLATFORM_EC_WATCHDOG_WARNING_LEADING_TIME_MS).\"",
+      "range": {
+        "startLine": 574,
+        "startChar": 35,
+        "endLine": 575,
+        "endChar": 72
+      },
+      "revId": "1483610f2ae944d396bb995cbf9f98bdf0878470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d591a35_142dd3c5",
+        "filename": "zephyr/Kconfig.watchdog",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-12T23:44:01Z",
+      "side": 1,
+      "message": "Change to \"an auxiliary timer\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 30
+      },
+      "revId": "1483610f2ae944d396bb995cbf9f98bdf0878470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c6f2f8_258ab46b",
+        "filename": "zephyr/Kconfig.watchdog",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-12T23:44:01Z",
+      "side": 1,
+      "message": "delete",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 7
+      },
+      "revId": "1483610f2ae944d396bb995cbf9f98bdf0878470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf7ea93f_e954bab0",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-12T23:44:01Z",
+      "side": 1,
+      "message": "What is the source of this constant?",
+      "range": {
+        "startLine": 1326,
+        "startChar": 33,
+        "endLine": 1326,
+        "endChar": 35
+      },
+      "revId": "1483610f2ae944d396bb995cbf9f98bdf0878470",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
