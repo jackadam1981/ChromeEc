@@ -48,6 +48,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_USBC_TCPC_I2C_CLK_P0,
 		.sda = GPIO_USBC_TCPC_I2C_DATA_P0,
 	},
+#if defined(HAS_TASK_PD_C1)
 	[I2C_CHAN_TYPEC_1] = {
 		.name = "typec_1",
 		.port = IT83XX_I2C_CH_F,
@@ -55,6 +56,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_USBC_TCPC_I2C_CLK_P2,
 		.sda = GPIO_USBC_TCPC_I2C_DATA_P2,
 	},
+#endif
 #if defined(HAS_TASK_PD_C2)
 	[I2C_CHAN_TYPEC_2] = {
 		.name = "typec_2",
@@ -84,6 +86,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		/* TCPC is embedded within EC so no i2c config needed */
 		.drv = &it83xx_tcpm_drv,
 	},
+#if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
@@ -92,6 +95,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		},
 		.drv = &fusb302_tcpm_drv,
 	},
+#endif
 #if defined(HAS_TASK_PD_C2)
 	[TYPE_C_PORT_2] = {
 		.bus_type = EC_BUS_TYPE_I2C,
