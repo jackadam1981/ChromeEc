@@ -16,6 +16,24 @@
       "message": "This shouldn\u0027t harm anything during EC mode entry, and should fix the kernel hang.  But I\u0027ve asked the ODM to try this out so let\u0027s not merge until the ODM reports results.",
       "revId": "347ce528b3a7668a6e033a7ed4533fe42a127701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0471fb4b_4fcd5f07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-12T22:03:24Z",
+      "side": 1,
+      "message": "I don\u0027t believe this is necessary. The AP doesn\u0027t rely on the AP-mode entry feature flag to clear/not clear the typec event bits. Earlier, since the flags were not re-instated on AP reboot, the AP couldn\u0027t clear them since that would mean that after reboot, the flags would remain cleared and the AP would not parse the discovery info again.\n\nThat has since been fixed, and as of M-91 the AP does clear these events after it parses the discovery info (regardless of whether it is EC entry or AP entry)",
+      "parentUuid": "c2347882_be640616",
+      "revId": "347ce528b3a7668a6e033a7ed4533fe42a127701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
