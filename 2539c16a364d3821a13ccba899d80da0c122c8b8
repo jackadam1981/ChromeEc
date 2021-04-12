@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c418ea7_8beba284",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-12T16:22:01Z",
+      "side": 1,
+      "message": "Looks good for me.\n\nTested on Nucleo F411RE connected to Raspberry Pi 4. Using ectool and getting data from CROS-EC IIO drivers.\n\nBeware that despite its name, this chip cannot supported by icm426xx driver (too many differences in register map).",
+      "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
