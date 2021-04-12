@@ -172,6 +172,40 @@ class Zmake:
 
         return util.locate_zephyr_base(self.checkout, version)
 
+    def _cmake_run_func(self, config, project_dir, build_dir, build_name):
+        """Make a thunk which will run cmake to completion.
+
+        Args:
+            config: a zmake.build_config.BuildConfig object which will
+                be the configuration applied to the cmake run.
+            project_dir: the project to build.
+            build_dir: a path to the zmake build directory.
+            build_name: the name of the build (i.e., "ro", "rw",
+                "singleimage")
+
+        Returns:
+            A thunk, which when called, will run cmake to completion
+            and return the return code.
+        """
+        def run_cmake():
+            self.logger.info('Configuring %s:%s.', project_dir, build_name)
+
+            output_dir = build_dir / 'build-{}'.format(build_name)
+            kconfig_file = build_dir / 'kconfig-{}.conf'.format(build_name)
+
+            proc = config.popen_cmake(self.jobserver, project_dir, output_dir,
+                                      kconfig_file, stdin=subprocess.DEVNULL,
+                                      stdout=subprocess.PIPE,
+                                      stderr=subprocess.PIPE,
+                                      encoding='utf-8',
+                                      errors='replace')
+            zmake.multiproc.log_output(self.logger, logging.DEBUG, proc.stdout)
+            zmake.multiproc.log_output(self.logger, logging.ERROR, proc.stderr)
+
+            return proc.wait()
+
+        return run_cmake
+
     def configure(self, project_dir, build_dir=None,
                   toolchain=None, ignore_unsupported_zephyr_version=False,
                   build_after_configure=False, test_after_configure=False,
@@ -237,26 +271,16 @@ class Zmake:
         processes = []
         self.logger.info('Building %s in %s.', project_dir, build_dir)
         for build_name, build_config in project.iter_builds():
-            self.logger.info('Configuring %s:%s.', project_dir, build_name)
-            config = (base_config
-                      | toolchain_config
-                      | module_config
-                      | dts_overlay_config
-                      | build_config)
-            output_dir = build_dir / 'build-{}'.format(build_name)
-            kconfig_file = build_dir / 'kconfig-{}.conf'.format(build_name)
-            proc = config.popen_cmake(self.jobserver, project_dir, output_dir,
-                                      kconfig_file, stdin=subprocess.DEVNULL,
-                                      stdout=subprocess.PIPE,
-                                      stderr=subprocess.PIPE,
-                                      encoding='utf-8',
-                                      errors='replace')
-            zmake.multiproc.log_output(self.logger, logging.DEBUG, proc.stdout)
-            zmake.multiproc.log_output(self.logger, logging.ERROR, proc.stderr)
-            processes.append(proc)
-        for proc in processes:
-            if proc.wait():
-                raise OSError(get_process_failure_msg(proc))
+            self.executor.append(
+                self._cmake_run_func(
+                    config=(base_config
+                            | toolchain_config
+                            | module_config
+                            | dts_overlay_config
+                            | build_config),
+                    project_dir=project_dir,
+                    build_dir=build_dir,
+                    build_name=build_name))
 
         # Create symlink to project
         util.update_symlink(project_dir, build_dir / 'project')
