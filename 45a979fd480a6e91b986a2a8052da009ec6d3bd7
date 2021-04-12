@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "443fe818_cf91345d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-12T14:39:54Z",
+      "side": 1,
+      "message": "I found with stubs/mocks that allowing the test to control the return value of functions, where the default was the only previous choice, the test could verify more execution paths.\n\nFor example, the following\n\n\tint extpower_is_present(void)\n\t{\n\t\treturn 0;\n\t}\n\ncould become\n\n\tstatic int extpower_present;\n\tvoid extpower_set_present(int present)\n\t{\n\t\textpower_present \u003d present;\n\t}\n\tint extpower_is_present(void)\n\t{\n\t\treturn extpower_present;\n\t}",
+      "revId": "45a979fd480a6e91b986a2a8052da009ec6d3bd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e707fc44_6edbd61b",
         "filename": "zephyr/test/drivers/README.md",
         "patchSetId": 2
