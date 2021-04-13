@@ -38,17 +38,20 @@
 #define CONFIG_USB_MUX_VIRTUAL
 #define PD_MAX_POWER_MW              100000
 
+#if 0
 /* TCPC AIC config */
 /* Support NXP PCA9675 I/O expander. */
 #define CONFIG_IO_EXPANDER_PCA9675
 #define I2C_ADDR_PCA9675_TCPC_AIC_IOEX	0x21
 #define CONFIG_IO_EXPANDER_PORT_COUNT CONFIG_USB_PD_PORT_MAX_COUNT
+#endif
 
 /* DC Jack charge ports */
 #undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
 #define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
 #define DEDICATED_CHARGE_PORT CONFIG_USB_PD_PORT_MAX_COUNT
 
+#if 0
 /* PPC */
 #define CONFIG_USBC_PPC_SN5S330
 #define CONFIG_USB_PD_VBUS_DETECT_PPC
@@ -59,6 +62,7 @@
 #define CONFIG_USB_PD_DISCHARGE
 #define CONFIG_USB_PD_TCPM_FUSB302
 #define I2C_ADDR_FUSB302_TCPC_AIC	0x22
+#endif
 
 /* Config BB retimer */
 #define CONFIG_USBC_RETIMER_INTEL_BB
@@ -91,6 +95,7 @@
 #define BOARD_FAN_MIN_RPM	3000
 #define BOARD_FAN_MAX_RPM	10000
 
+#if 0
 /*
  * TCPC AIC used on all the ports are identical expect the I2C lines which
  * are on the respective TCPC port's EC I2C line. Hence, I2C address and
@@ -106,6 +111,7 @@
 	~(TCPC_AIC_IOE_BB_RETIMER_RST | TCPC_AIC_IOE_BB_RETIMER_LS_EN | \
 	TCPC_AIC_IOE_USB_MUX_CNTRL_1 | TCPC_AIC_IOE_USB_MUX_CNTRL_0 | \
 	TCPC_AIC_IOE_OC))
+#endif
 
 /* Charger */
 #define CONFIG_CHARGER_ISL9241
