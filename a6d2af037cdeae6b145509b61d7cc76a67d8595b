@@ -52,6 +52,23 @@
       "parentUuid": "aee69672_1c53b0a4",
       "revId": "a6d2af037cdeae6b145509b61d7cc76a67d8595b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20df0b78_4b555e37",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-13T23:40:42Z",
+      "side": 1,
+      "message": "Can you also ensure that resistances are calculated when charging from the sub board in suspend or S5/G3?",
+      "revId": "a6d2af037cdeae6b145509b61d7cc76a67d8595b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
