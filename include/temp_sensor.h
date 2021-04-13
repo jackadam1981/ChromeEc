@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -37,9 +37,6 @@ struct temp_sensor_t {
 	int (*read)(int idx, int *temp_ptr);
 	/* Index among the same kind of sensors. */
 	int idx;
-	/* Delay between reading temperature and taking action about it,
-	 * in seconds. */
-	int action_delay_sec;
 };
 
 #ifdef CONFIG_TEMP_SENSOR
@@ -59,5 +56,15 @@ extern const struct temp_sensor_t temp_sensors[];
  * @return EC_SUCCESS, or non-zero if error.
  */
 int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr);
+
+/**
+ * Console command to print temperature sensor values
+ *
+ * @param argc		argument count (Set argc = 1)
+ * @param argv		argument vector (Set argv = NULL)
+ *
+ * @return EC_SUCCESS, or non-zero if error.
+ */
+int console_command_temps(int argc, char **argv);
 
 #endif  /* __CROS_EC_TEMP_SENSOR_H */

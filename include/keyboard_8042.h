@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -44,5 +44,19 @@ void keyboard_host_write(int data, int is_cmd);
  */
 enum ec_error_list keyboard_scancode_callback(uint16_t *make_code,
 					      int8_t pressed);
+
+/**
+ * Send aux data to host from interrupt context.
+ *
+ * @param data	Aux response to send to host.
+ */
+void send_aux_data_to_host_interrupt(uint8_t data);
+
+/**
+ * Send aux data to device.
+ *
+ * @param data	Aux data to send to device.
+ */
+void send_aux_data_to_device(uint8_t data);
 
 #endif  /* __CROS_EC_KEYBOARD_8042_H */

@@ -16,6 +16,8 @@
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
 
+/* EC console on UART 0 */
+#define CONFIG_UART_CONSOLE 0
 
 /* EC console commands  */
 #define CONFIG_CMD_ACCELS
@@ -48,7 +50,6 @@
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGE_RAMP_SW
 #define CONFIG_CHARGER
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHARGER_BD9995X
 #define CONFIG_CHARGER_BD9995X_CHGEN
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
@@ -76,7 +77,7 @@
 #define CONFIG_TABLET_MODE
 
 /* USB PD config */
-#define CONFIG_CMD_PD_CONTROL
+#define CONFIG_HOSTCMD_PD_CONTROL
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_DUAL_ROLE
@@ -93,6 +94,7 @@
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_COMM_LOCKED
 
 #define CONFIG_USBC_SS_MUX
@@ -119,7 +121,7 @@
 #define CONFIG_FPU
 #define CONFIG_HOSTCMD_FLASH_SPI_INFO
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_KEYBOARD_COL2_INVERTED
@@ -166,7 +168,7 @@
 #define CONFIG_SPI_FLASH_PORT 0
 #define CONFIG_SPI_FLASH
 
-#define CONFIG_FLASH_SIZE 524288
+#define CONFIG_FLASH_SIZE_BYTES 524288
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q40	/* FIXME: Should be GD25LQ40? */
 
@@ -202,8 +204,8 @@
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
-#define CONFIG_MAG_BMI160_BMM150
-#define CONFIG_ACCELGYRO_SEC_ADDR BMM150_ADDR0	/* 8-bit address */
+#define CONFIG_MAG_BMI_BMM150
+#define CONFIG_ACCELGYRO_SEC_ADDR_FLAGS BMM150_ADDR0_FLAGS
 #define CONFIG_MAG_CALIBRATE
 #define CONFIG_ACCEL_KX022
 #define CONFIG_ALS_OPT3001
@@ -213,11 +215,12 @@
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
 /* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 1024
-
+#define CONFIG_ACCEL_FIFO_SIZE 1024
 /* Depends on how fast the AP boots and typical ODRs */
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 
 
 #ifndef __ASSEMBLER__
@@ -238,23 +241,6 @@ enum pwm_channel {
 	PWM_CH_LED_RED,
 	/* Number of PWM channels */
 	PWM_CH_COUNT
-};
-
-enum power_signal {
-#ifdef CONFIG_POWER_S0IX
-	X86_SLP_S0_N,
-#endif
-	X86_RSMRST_N,
-	X86_SLP_S3_N,
-	X86_SLP_S4_N,
-	X86_SUSPWRDNACK,
-
-	X86_ALL_SYS_PG,		/* PMIC_EC_PWROK_OD */
-	X86_PGOOD_PP3300,	/* GPIO_PP3300_PG */
-	X86_PGOOD_PP5000,	/* GPIO_PP5000_PG */
-
-	/* Number of X86 signals */
-	POWER_SIGNAL_COUNT
 };
 
 enum temp_sensor_id {
@@ -286,6 +272,7 @@ enum sensor_id {
 	BASE_MAG,
 	BASE_BARO,
 	LID_ALS,	/* firmware-reef-9042.B doesn't have this */
+	SENSOR_COUNT,
 };
 
 enum reef_board_version {
@@ -311,7 +298,6 @@ enum reef_board_version {
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 
 /* delay to turn on/off vconn */
-#define PD_VCONN_SWAP_DELAY 5000 /* us */
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
@@ -330,20 +316,12 @@ void board_print_tcpc_fw_version(int port);
 /* Map I2C port to controller */
 int board_i2c_p2c(int port);
 
-/* Return the two slave addresses the specified
- * controller will respond to when controller
- * is acting as a slave.
- * b[6:0]  = b[7:1] of I2C address 1
- * b[14:8] = b[7:1] of I2C address 2
- */
-uint16_t board_i2c_slave_addrs(int controller);
-
 /* MCHP - firwmare-reef-9042.B does have LID_ALS bit
  * because its using TASK_ALS ?
  */
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK \
-	((1 << LID_ACCEL) | (1 << BASE_BARO) | (1 << LID_ALS))
+	(BIT(LID_ACCEL) | BIT(BASE_BARO) | BIT(LID_ALS))
 
 #endif /* !__ASSEMBLER__ */
 

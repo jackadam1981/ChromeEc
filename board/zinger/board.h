@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -53,7 +53,9 @@
 #define CONFIG_SHA256
 #undef CONFIG_TASK_PROFILING
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_ALT_MODE
+#define CONFIG_USB_PD_CUSTOM_PDO
 #undef CONFIG_USB_PD_DUAL_ROLE
 #undef CONFIG_USB_PD_INTERNAL_COMP
 #define CONFIG_USB_PD_LOGGING
@@ -90,7 +92,6 @@
 #include "common.h"
 
 /* No GPIO abstraction layer */
-enum gpio_signal;
 
 enum adc_channel {
 	ADC_CH_CC1_PD = 1,

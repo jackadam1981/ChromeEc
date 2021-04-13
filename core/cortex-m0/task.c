@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -108,7 +108,7 @@ static const struct {
 
 /* Contexts for all tasks */
 static task_ tasks[TASK_ID_COUNT];
-/* Sanity checks about static task invariants */
+/* Validity checks about static task invariants */
 BUILD_ASSERT(TASK_ID_COUNT <= sizeof(unsigned) * 8);
 BUILD_ASSERT(TASK_ID_COUNT < (1 << (sizeof(task_id_t) * 8)));
 
@@ -136,13 +136,13 @@ task_ *current_task = (task_ *)scratchpad;
  * can do their init within a task switching context.  The hooks task will then
  * make a call to enable all tasks.
  */
-static uint32_t tasks_ready = (1 << TASK_ID_HOOKS);
+static uint32_t tasks_ready = BIT(TASK_ID_HOOKS);
 /*
  * Initially allow only the HOOKS and IDLE task to run, regardless of ready
  * status, in order for HOOK_INIT to complete before other tasks.
  * task_enable_all_tasks() will open the flood gates.
  */
-static uint32_t tasks_enabled = (1 << TASK_ID_HOOKS) | (1 << TASK_ID_IDLE);
+static uint32_t tasks_enabled = BIT(TASK_ID_HOOKS) | BIT(TASK_ID_IDLE);
 
 static int start_called;  /* Has task swapping started */
 
@@ -334,7 +334,7 @@ static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 		ret = timer_arm(deadline, me);
 		ASSERT(ret == EC_SUCCESS);
 	}
-	while (!(evt = atomic_read_clear(&tsk->events))) {
+	while (!(evt = atomic_clear(&tsk->events))) {
 		/*
 		 * We need to ensure that the execution priority is actually
 		 * decreased after the "cpsie i" in the atomic operation above
@@ -349,12 +349,12 @@ static uint32_t __wait_evt(int timeout_us, task_id_t resched)
 	if (timeout_us > 0) {
 		timer_cancel(me);
 		/* Ensure timer event is clear, we no longer care about it */
-		atomic_clear(&tsk->events, TASK_EVENT_TIMER);
+		atomic_clear_bits(&tsk->events, TASK_EVENT_TIMER);
 	}
 	return evt;
 }
 
-uint32_t task_set_event(task_id_t tskid, uint32_t event, int wait)
+uint32_t task_set_event(task_id_t tskid, uint32_t event)
 {
 	task_ *receiver = __task_id_to_ptr(tskid);
 	ASSERT(receiver);
@@ -371,22 +371,18 @@ uint32_t task_set_event(task_id_t tskid, uint32_t event, int wait)
 			 * Trigger the scheduler when there's
 			 * no other irqs happening.
 			 */
-			CPU_SCB_ICSR = (1 << 28);
+			CPU_SCB_ICSR = BIT(28);
 		}
 	} else {
-		if (wait) {
-			return __wait_evt(-1, tskid);
-		} else {
-			/*
-			 * We need to ensure that the execution priority is
-			 * actually decreased after the "cpsie i" in the atomic
-			 * operation above else the "svc" in the __schedule
-			 * call below will trigger a HardFault.
-			 * Use a barrier to force it at that point.
-			 */
-			asm volatile("isb");
-			__schedule(0, tskid);
-		}
+		/*
+		 * We need to ensure that the execution priority is
+		 * actually decreased after the "cpsie i" in the atomic
+		 * operation above else the "svc" in the __schedule
+		 * call below will trigger a HardFault.
+		 * Use a barrier to force it at that point.
+		 */
+		asm volatile("isb");
+		__schedule(0, tskid);
 	}
 
 	return 0;
@@ -428,9 +424,22 @@ uint32_t task_wait_event_mask(uint32_t event_mask, int timeout_us)
 void task_enable_all_tasks(void)
 {
 	/* Mark all tasks as ready and able to run. */
-	tasks_ready = tasks_enabled = (1 << TASK_ID_COUNT) - 1;
+	tasks_ready = tasks_enabled = BIT(TASK_ID_COUNT) - 1;
 	/* Reschedule the highest priority task. */
 	__schedule(0, 0);
+}
+
+void task_enable_task(task_id_t tskid)
+{
+	atomic_or(&tasks_enabled, BIT(tskid));
+}
+
+void task_disable_task(task_id_t tskid)
+{
+	atomic_clear_bits(&tasks_enabled, BIT(tskid));
+
+	if (!in_interrupt_context() && tskid == task_get_current())
+		__schedule(0, 0);
 }
 
 void task_enable_irq(int irq)
@@ -476,15 +485,8 @@ static void __nvic_init_irqs(void)
 
 	/* Set priorities */
 	for (i = 0; i < exc_calls; i++) {
-		uint8_t irq = __irqprio[i].irq;
-		uint8_t prio = __irqprio[i].priority;
-		uint32_t prio_shift = irq % 4 * 8 + 6;
-		if (prio > 0x3)
-			prio = 0x3;
-		CPU_NVIC_PRI(irq / 4) =
-				(CPU_NVIC_PRI(irq / 4) &
-				 ~(0x3 << prio_shift)) |
-				(prio << prio_shift);
+		cpu_set_interrupt_priority(__irqprio[i].irq,
+					   __irqprio[i].priority);
 	}
 }
 
@@ -507,7 +509,7 @@ void mutex_lock(struct mutex *mtx)
 	mtx->lock = 2;
 	__asm__ __volatile__("cpsie i");
 
-	atomic_clear(&mtx->waiters, id);
+	atomic_clear_bits(&mtx->waiters, id);
 }
 
 void mutex_unlock(struct mutex *mtx)
@@ -526,14 +528,14 @@ void mutex_unlock(struct mutex *mtx)
 
 	while (waiters) {
 		task_id_t id = __fls(waiters);
-		waiters &= ~(1 << id);
+		waiters &= ~BIT(id);
 
 		/* Somebody is waiting on the mutex */
-		task_set_event(id, TASK_EVENT_MUTEX, 0);
+		task_set_event(id, TASK_EVENT_MUTEX);
 	}
 
 	/* Ensure no event is remaining from mutex wake-up */
-	atomic_clear(&tsk->events, TASK_EVENT_MUTEX);
+	atomic_clear_bits(&tsk->events, TASK_EVENT_MUTEX);
 }
 
 void task_print_list(void)
@@ -553,7 +555,7 @@ void task_print_list(void)
 		     sp++)
 			stackused -= sizeof(uint32_t);
 
-		ccprintf("%4d %c %-16s %08x %11.6ld  %3d/%3d\n", i, is_ready,
+		ccprintf("%4d %c %-16s %08x %11.6lld  %3d/%3d\n", i, is_ready,
 			 task_names[i], tasks[i].events, tasks[i].runtime,
 			 stackused, tasks_init[i].stack_size);
 		cflush();
@@ -581,10 +583,10 @@ int command_task_info(int argc, char **argv)
 	ccprintf("Service calls:          %11d\n", svc_calls);
 	ccprintf("Total exceptions:       %11d\n", total + svc_calls);
 	ccprintf("Task switches:          %11d\n", task_switches);
-	ccprintf("Task switching started: %11.6ld s\n", task_start_time);
-	ccprintf("Time in tasks:          %11.6ld s\n",
+	ccprintf("Task switching started: %11.6lld s\n", task_start_time);
+	ccprintf("Time in tasks:          %11.6lld s\n",
 		 get_time().val - task_start_time);
-	ccprintf("Time in exceptions:     %11.6ld s\n", exc_total_time);
+	ccprintf("Time in exceptions:     %11.6lld s\n", exc_total_time);
 #endif
 
 	return EC_SUCCESS;

@@ -20,7 +20,11 @@
 
 /* USB PD */
 #undef CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
-#define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
+/*
+ * This board configures two chargers, one of which can measure VBUS and one of
+ * which cannot. Leave the default config, which defines
+ * CONFIG_USB_PD_VBUS_MEASURE_CHARGER.
+ */
 
 #define CONFIG_TEMP_SENSOR
 #define CONFIG_THERMISTOR
@@ -55,8 +59,6 @@
 /* TODO(b/119872005): Casta: confirm thermistor parts */
 #define CONFIG_STEINHART_HART_3V3_13K7_47K_4050B
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
-#define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_HOST_EVENT
 
 /* Battery W/A */
 #define CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA 6144

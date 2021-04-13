@@ -38,31 +38,83 @@ struct gpio_int_mapping {
  * 4		0200 - 0235	12
  * 5		0240 - 0276	26
  */
-static const struct gpio_int_mapping int_map[6] = {
+static const struct gpio_int_mapping int_map[] = {
 	{ 11, 0 }, { 10, 1 }, { 9, 2 },
 	{ 8, 3 }, { 12, 4 }, { 26, 5 }
 };
+BUILD_ASSERT(ARRAY_SIZE(int_map) == MCHP_GPIO_MAX_PORT);
 
+/*
+ * These pins default to BGPO functionality. BGPO overrides GPIO Control
+ * register programming. If the pin is in the GPIO list the user wants to
+ * use the pin as GPIO and we must disable BGPIO functionality for this pin.
+ */
+struct bgpo_pin {
+	uint16_t pin;
+	uint8_t bgpo_pos;
+};
 
+static const struct bgpo_pin bgpo_list[] = {
+	{ 0101, 1 }, /* GPIO 0101 */
+	{ 0102, 2 }, /* GPIO 0102 */
+#if defined(CHIP_FAMILY_MEC152X)
+	{ 0253, 0 }, /* GPIO 0253 */
+#elif defined(CHIP_FAMILY_MEC170X)
+	{ 0172, 3 }, /* GPIO 0172 */
+#endif
+};
+
+static const uint32_t bgpo_map[] = {
+#if defined(CHIP_FAMILY_MEC152X)
+	0, 0, (BIT(1) | BIT(2)), 0, 0, BIT(11)
+#elif defined(CHIP_FAMILY_MEC170X)
+	0, 0, (BIT(1) | BIT(2)), BIT(26), 0, 0
+#else
+	0, 0, 0, 0, 0, 0
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(bgpo_map) == MCHP_GPIO_MAX_PORT);
+
+/* Check for BGPO capable pins on this port and disable BGPO feature */
+static void disable_bgpo(uint32_t port, uint32_t mask)
+{
+	int i, n;
+	uint32_t gpnum;
+	uint32_t m = bgpo_map[port] & mask;
+
+	while (m) {
+		i = __builtin_ffs(m) - 1;
+		gpnum = (port * 32U) + i;
+		for (n = 0; n < ARRAY_SIZE(bgpo_list); n++)
+			if (gpnum == bgpo_list[n].pin)
+				MCHP_WKTIMER_BGPO_POWER &=
+					~BIT(bgpo_list[n].bgpo_pos);
+		m &= ~BIT(i);
+	}
+}
 
 /*
  * NOTE: GCC __builtin_ffs(val) returns (index + 1) of least significant
  * 1-bit of val or if val == 0 returns 0
  */
-void gpio_set_alternate_function(uint32_t port, uint32_t mask, int func)
+void gpio_set_alternate_function(uint32_t port, uint32_t mask,
+				enum gpio_alternate_func func)
 {
 	int i;
 	uint32_t val;
 
+	if (port >= MCHP_GPIO_MAX_PORT)
+		return;
+
 	while (mask) {
 		i = __builtin_ffs(mask) - 1;
 		val = MCHP_GPIO_CTL(port, i);
-		val &= ~((1 << 12) | (1 << 13));
-		/* mux_control = 0 indicates GPIO */
-		if (func > 0)
+		val &= ~(BIT(12) | BIT(13));
+		/* mux_control = DEFAULT, indicates GPIO */
+		if (func > GPIO_ALT_FUNC_DEFAULT)
 			val |= (func & 0x3) << 12;
 		MCHP_GPIO_CTL(port, i) = val;
-		mask &= ~(1 << i);
+		mask &= ~BIT(i);
 	}
 }
 
@@ -77,7 +129,7 @@ test_mockable int gpio_get_level(enum gpio_signal signal)
 	i = GPIO_MASK_TO_NUM(mask);
 	val = MCHP_GPIO_CTL(gpio_list[signal].port, i);
 
-	return (val & (1 << 24)) ? 1 : 0;
+	return (val & BIT(24)) ? 1 : 0;
 }
 
 void gpio_set_level(enum gpio_signal signal, int value)
@@ -90,41 +142,47 @@ void gpio_set_level(enum gpio_signal signal, int value)
 	i = GPIO_MASK_TO_NUM(mask);
 
 	if (value)
-		MCHP_GPIO_CTL(gpio_list[signal].port, i) |= (1 << 16);
+		MCHP_GPIO_CTL(gpio_list[signal].port, i) |= BIT(16);
 	else
-		MCHP_GPIO_CTL(gpio_list[signal].port, i) &= ~(1 << 16);
+		MCHP_GPIO_CTL(gpio_list[signal].port, i) &= ~BIT(16);
 }
 
 /*
  * Add support for new #ifdef CONFIG_CMD_GPIO_POWER_DOWN.
- * If GPIO_POWER_DONW flag is set force GPIO Control to
+ * If GPIO_POWER_DOWN flag is set force GPIO Control to
  * GPIO input, interrupt detect disabled, power control field
  * in bits[3:2]=10b.
  * NOTE: if interrupt detect is enabled when pin is powered down
  * then a false edge may be detected.
- *
+ * NOTE 2: MEC152x family implements input pad disable (bit[15]=1).
  */
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 {
 	int i;
 	uint32_t val;
 
+	if (port >= MCHP_GPIO_MAX_PORT)
+		return;
+
 	while (mask) {
 		i = GPIO_MASK_TO_NUM(mask);
-		mask &= ~(1 << i);
+		mask &= ~BIT(i);
 		val = MCHP_GPIO_CTL(port, i);
 
 #ifdef CONFIG_GPIO_POWER_DOWN
 		if (flags & GPIO_POWER_DOWN) {
-			val = (MCHP_GPIO_CTRL_PWR_OFF +
-					MCHP_GPIO_INTDET_DISABLED);
+			val = (MCHP_GPIO_CTRL_PWR_OFF
+				| MCHP_GPIO_INTDET_DISABLED
+				| MCHP_GPIO_CTRL_DIS_INPUT_BIT);
+
 			MCHP_GPIO_CTL(port, i) = val;
 			continue;
 		}
 #endif
-		val &= ~(MCHP_GPIO_CTRL_PWR_MASK);
-		val |= MCHP_GPIO_CTRL_PWR_VTR;
+		val &= ~(MCHP_GPIO_CTRL_PWR_MASK
+			| MCHP_GPIO_CTRL_DIS_INPUT_BIT);
 
+		val |= MCHP_GPIO_CTRL_PWR_VTR;
 		/*
 		 * Select open drain first, so that we don't
 		 * glitch the signal when changing the line to
@@ -189,12 +247,15 @@ void gpio_power_off_by_mask(uint32_t port, uint32_t mask)
 {
 	int i;
 
+	if (port >= MCHP_GPIO_MAX_PORT)
+		return;
+
 	while (mask) {
 		i = GPIO_MASK_TO_NUM(mask);
-		mask &= ~(1 << i);
-
-		MCHP_GPIO_CTL(port, i) = (MCHP_GPIO_CTRL_PWR_OFF +
-					MCHP_GPIO_INTDET_DISABLED);
+		mask &= ~BIT(i);
+		MCHP_GPIO_CTL(port, i) = (MCHP_GPIO_CTRL_PWR_OFF
+					| MCHP_GPIO_INTDET_DISABLED
+					| MCHP_GPIO_CTRL_DIS_INPUT_BIT);
 	}
 }
 
@@ -207,9 +268,9 @@ int gpio_power_off(enum gpio_signal signal)
 
 	i = GPIO_MASK_TO_NUM(gpio_list[signal].mask);
 	port = gpio_list[signal].port;
-
-	MCHP_GPIO_CTL(port, i) = (MCHP_GPIO_CTRL_PWR_OFF +
-			MCHP_GPIO_INTDET_DISABLED);
+	MCHP_GPIO_CTL(port, i) = (MCHP_GPIO_CTRL_PWR_OFF
+				| MCHP_GPIO_INTDET_DISABLED
+				| MCHP_GPIO_CTRL_DIS_INPUT_BIT);
 
 	return EC_SUCCESS;
 }
@@ -235,8 +296,8 @@ int gpio_enable_interrupt(enum gpio_signal signal)
 	port = gpio_list[signal].port;
 	girq_id = int_map[port].girq_id;
 
-	MCHP_INT_ENABLE(girq_id) = (1 << i);
-	MCHP_INT_BLK_EN |= (1 << girq_id);
+	MCHP_INT_ENABLE(girq_id) = BIT(i);
+	MCHP_INT_BLK_EN |= BIT(girq_id);
 
 	return EC_SUCCESS;
 }
@@ -253,7 +314,7 @@ int gpio_disable_interrupt(enum gpio_signal signal)
 	girq_id = int_map[port].girq_id;
 
 
-	MCHP_INT_DISABLE(girq_id) = (1 << i);
+	MCHP_INT_DISABLE(girq_id) = BIT(i);
 
 	return EC_SUCCESS;
 }
@@ -291,7 +352,7 @@ int gpio_clear_pending_interrupt(enum gpio_signal signal)
 	girq_id = int_map[port].girq_id;
 
 	/* Clear interrupt source sticky status bit even if not enabled */
-	MCHP_INT_SOURCE(girq_id) = (1 << i);
+	MCHP_INT_SOURCE(girq_id) = BIT(i);
 	i = MCHP_INT_SOURCE(girq_id);
 	task_clear_pending_irq(girq_id - 8);
 
@@ -322,10 +383,13 @@ void gpio_pre_init(void)
 		if (is_warm)
 			flags &= ~(GPIO_LOW | GPIO_HIGH);
 
+		disable_bgpo(g->port, g->mask);
+
 		gpio_set_flags_by_mask(g->port, g->mask, flags);
 
 		/* Use as GPIO, not alternate function */
-		gpio_set_alternate_function(g->port, g->mask, -1);
+		gpio_set_alternate_function(g->port, g->mask,
+					GPIO_ALT_FUNC_NONE);
 	}
 }
 
@@ -394,13 +458,13 @@ static void gpio_interrupt(int girq, int port)
 		bit = __builtin_ffs(g->mask);
 		if (bit) {
 			bit--;
-			if (sts & (1 << bit)) {
+			if (sts & BIT(bit)) {
 				trace12(0, GPIO, 0,
 					"Bit[%d]: handler @ 0x%08x", bit,
 					(uint32_t)gpio_irq_handlers[i]);
 				gpio_irq_handlers[i](i);
 			}
-			sts &= ~(1 << bit);
+			sts &= ~BIT(bit);
 		}
 	}
 }

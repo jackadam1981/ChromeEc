@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -101,7 +101,7 @@ static int keyscan_read_fdt_matrix(struct keyscan_info *keyscan,
 		matrix->col = (word >> 16) & 0xff;
 		matrix->keycode = word & 0xffff;
 
-		/* Hard-code some sanity limits for now */
+		/* Hard-code some limits for now */
 		if (matrix->row >= KEYBOARD_ROWS ||
 		    matrix->col >= KEYBOARD_COLS_MAX) {
 			fprintf(stderr, "Matrix pos out of range (%d,%d)\n",
@@ -137,7 +137,7 @@ static const unsigned char kbd_plain_xlate[] = {
 	'8',  '9',  '-',  '4',  '5',  '6',  '+',  '1',	/* 0x40 - 0x4f */
 	'2',  '3',  '0',  '.', 0xff, 0xff, 0xff, 0xff,
 	0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,	/* 0x50 - 0x5F */
-	'\r', 0xff, 0xff
+	'\r', 0xff, 0xff, '\0'
 };
 
 /**

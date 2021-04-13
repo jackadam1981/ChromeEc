@@ -32,7 +32,7 @@
  * address, mask, and disconnect value need to be provided.
  */
 const struct board_batt_params board_battery_info[] = {
-	/* SMP L17M3PB0 */
+	/* SMP 5B10Q13163 */
 	[BATTERY_SMP] = {
 		.fuel_gauge = {
 			.manuf_name = "SMP",
@@ -59,7 +59,7 @@ const struct board_batt_params board_battery_info[] = {
 			.discharging_max_c	= 60,
 		},
 	},
-	/* LGC L17L3PB0 */
+	/* LGC 5B10Q13162  */
 	[BATTERY_LGC] = {
 		.fuel_gauge = {
 			.manuf_name = "LGC",
@@ -86,7 +86,7 @@ const struct board_batt_params board_battery_info[] = {
 			.discharging_max_c	= 73,
 		},
 	},
-	/* Sunwoda L18D3PG1 */
+	/* Sunwoda L18D3PG1  */
 	[BATTERY_SUNWODA] = {
 		.fuel_gauge = {
 			.manuf_name = "SUNWODA",

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -96,29 +96,40 @@ void clock_init(void)
 #endif
 
 	/*
-	 * Configure frequency multiplier M/N values according to
-	 * the requested OSC_CLK (Unit:Hz).
+	 * Resting the OSC_CLK (even to the same value) will make the clock
+	 * unstable for a little which can affect peripheral communication like
+	 * eSPI. Skip this if not needed (e.g. RW jump)
 	 */
-	NPCX_HFCGN  = HFCGN;
-	NPCX_HFCGML = HFCGML;
-	NPCX_HFCGMH = HFCGMH;
+	if (NPCX_HFCGN != HFCGN || NPCX_HFCGML != HFCGML
+				|| NPCX_HFCGMH != HFCGMH) {
+		/*
+		 * Configure frequency multiplier M/N values according to
+		 * the requested OSC_CLK (Unit:Hz).
+		 */
+		NPCX_HFCGN  = HFCGN;
+		NPCX_HFCGML = HFCGML;
+		NPCX_HFCGMH = HFCGMH;
 
-	/* Load M and N values into the frequency multiplier */
-	SET_BIT(NPCX_HFCGCTRL, NPCX_HFCGCTRL_LOAD);
-
-	/* Wait for stable */
-	while (IS_BIT_SET(NPCX_HFCGCTRL, NPCX_HFCGCTRL_CLK_CHNG))
-		;
+		/* Load M and N values into the frequency multiplier */
+		SET_BIT(NPCX_HFCGCTRL, NPCX_HFCGCTRL_LOAD);
+		/* Wait for stable */
+		while (IS_BIT_SET(NPCX_HFCGCTRL, NPCX_HFCGCTRL_CLK_CHNG))
+			;
+	}
 
 	/* Set all clock prescalers of core and peripherals. */
 #if defined(CHIP_FAMILY_NPCX5)
 	NPCX_HFCGP  = (FPRED << 4);
 	NPCX_HFCBCD = (NPCX_HFCBCD & 0xF0) | (APB1DIV | (APB2DIV << 2));
-#elif defined(CHIP_FAMILY_NPCX7)
+#elif NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX7
 	NPCX_HFCGP   = ((FPRED << 4) | AHB6DIV);
 	NPCX_HFCBCD  = (FIUDIV << 4);
 	NPCX_HFCBCD1 = (APB1DIV | (APB2DIV << 4));
+#if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX9
+	NPCX_HFCBCD2 = (APB3DIV | (APB4DIV << 4));
+#else
 	NPCX_HFCBCD2 = APB3DIV;
+#endif
 #endif
 
 	/* Notify modules of frequency change */
@@ -152,23 +163,44 @@ void clock_turbo(void)
 	 */
 	NPCX_HFCBCD = NPCX_HFCBCD & 0xF3;
 }
-#elif defined(CHIP_FAMILY_NPCX7)
+#elif NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX7
 void clock_turbo(void)
 {
-	/*
+#if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX9
+	/* For NPCX9:
+	 * Increase CORE_CLK (CPU) as the same as OSC_CLK. Since
+	 * CORE_CLK > 66MHz, we also need to set FIUDIV as 1 but
+	 * can keep AHB6DIV to 0.
+	 */
+	NPCX_HFCGP = 0x00;
+#else
+	/* For NPCX7:
 	 * Increase CORE_CLK (CPU) as the same as OSC_CLK. Since
 	 * CORE_CLK > 66MHz, we also need to set AHB6DIV and FIUDIV as 1.
 	 */
 	NPCX_HFCGP = 0x01;
-	NPCX_HFCBCD = (1 << 4);
+#endif
+	NPCX_HFCBCD = BIT(4);
 }
 
-void clock_turbo_disable(void)
+void clock_normal(void)
 {
 	/* Set CORE_CLK (CPU), AHB6_CLK and FIU_CLK back to original values. */
 	NPCX_HFCGP = ((FPRED << 4) | AHB6DIV);
 	NPCX_HFCBCD = (FIUDIV << 4);
 }
+
+void clock_enable_module(enum module_id module, int enable)
+{
+	/* Assume we have a single task using MODULE_FAST_CPU */
+	if (module == MODULE_FAST_CPU) {
+		if (enable)
+			clock_turbo();
+		else
+			clock_normal();
+	}
+}
+
 #endif
 
 /**
@@ -206,7 +238,7 @@ int clock_get_apb2_freq(void)
 /**
  * Return the current APB3 clock frequency in Hz.
  */
-#if defined(CHIP_FAMILY_NPCX7)
+#if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX7
 int clock_get_apb3_freq(void)
 {
 	return NPCX_APB_CLOCK(3);
@@ -324,7 +356,7 @@ void __idle(void)
 #if defined(CHIP_FAMILY_NPCX5)
 			/* UART-rx(console) become to GPIO (NONE INT mode) */
 			clock_uart2gpio();
-#elif defined(CHIP_FAMILY_NPCX7)
+#elif NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX7
 			uartn_wui_en(CONFIG_CONSOLE_UART);
 #endif
 
@@ -427,9 +459,9 @@ static int command_idle_stats(int argc, char **argv)
 
 	ccprintf("Num idle calls that sleep:           %d\n", idle_sleep_cnt);
 	ccprintf("Num idle calls that deep-sleep:      %d\n", idle_dsleep_cnt);
-	ccprintf("Time spent in deep-sleep:            %.6lds\n",
+	ccprintf("Time spent in deep-sleep:            %.6llds\n",
 			idle_dsleep_time_us);
-	ccprintf("Total time on:                       %.6lds\n", ts.val);
+	ccprintf("Total time on:                       %.6llds\n", ts.val);
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,

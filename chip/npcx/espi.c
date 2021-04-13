@@ -62,7 +62,11 @@ struct vw_event_t {
 /* Default settings of VWEVMS registers (Please refer Table.43/44) */
 static const struct vwevms_config_t espi_in_list[] = {
 	/* IDX EN ENPL ENESP IE/WE          VW Event Bit 0 - 3 (M->S)         */
+#ifdef CONFIG_HOSTCMD_ESPI_RESET_SLP_SX_VW_ON_ESPI_RST
+	{0x02,  1,  0,  1,  1},  /* SLP_S3#,   SLP_S4#,    SLP_S5#,   Reserve */
+#else
 	{0x02,  1,  0,  0,  1},  /* SLP_S3#,   SLP_S4#,    SLP_S5#,   Reserve */
+#endif
 	{0x03,  1,  0,  1,  1},  /* SUS_STAT#, PLTRST#,    ORST_WARN, Reserve */
 	{0x07,  1,  1,  1,  1},  /* HRST_WARN, SMIOUT#,    NMIOUT#,   Reserve */
 	{0x41,  1,  0,  1,  1},  /* SUS_WARN#, SPWRDN_ACK, Reserve,   SLP_A#  */
@@ -233,6 +237,9 @@ static void espi_enable_vw_int(const struct host_wui_item *vwire_int)
 		/* enable Any Edge */
 		SET_BIT(NPCX_WKAEDG(table, group), num);
 
+	/* Clear the pending bit */
+	NPCX_WKPCL(table, group) = BIT(num);
+
 	/* Enable wake-up input sources */
 	SET_BIT(NPCX_WKEN(table, group), num);
 }
@@ -257,8 +264,9 @@ static int espi_vw_get_signal_index(enum espi_vw_signal event)
 /* The ISRs of VW signals which used for power sequences */
 void espi_vw_power_signal_interrupt(enum espi_vw_signal signal)
 {
-	/* TODO: Add VW handler in power/common.c */
-	power_signal_interrupt((enum gpio_signal) signal);
+	if (IS_ENABLED(CONFIG_HOST_ESPI_VW_POWER_SIGNAL))
+		/* TODO: Add VW handler in power/common.c */
+		power_signal_interrupt((enum gpio_signal) signal);
 }
 
 /*****************************************************************************/
@@ -527,12 +535,12 @@ void espi_interrupt(void)
 	int chan;
 	uint32_t mask, status;
 
-#if defined(CHIP_FAMILY_NPCX7)
+#if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX7
 	/*
 	 * Bit 17 of ESPIIE is reserved. We need to set the same bit in mask
 	 * in case bit 17 in ESPISTS of npcx7 is not cleared in ISR.
 	 */
-	mask = NPCX_ESPIIE | (1 << NPCX_ESPISTS_VWUPDW);
+	mask = NPCX_ESPIIE | BIT(NPCX_ESPISTS_VWUPDW);
 #else
 	mask = NPCX_ESPIIE;
 #endif
@@ -607,11 +615,11 @@ void espi_init(void)
 	NPCX_ESPICFG |= ESPI_SUPP_CH_ALL;
 
 	/* Support all I/O modes */
-	SET_FIELD(NPCX_ESPICFG, NPCX_ESPICFG_IOMODE_FILED,
+	SET_FIELD(NPCX_ESPICFG, NPCX_ESPICFG_IOMODE_FIELD,
 		NPCX_ESPI_IO_MODE_ALL);
 
 	/* Set eSPI speed to max supported */
-	SET_FIELD(NPCX_ESPICFG, NPCX_ESPICFG_MAXFREQ_FILED,
+	SET_FIELD(NPCX_ESPICFG, NPCX_ESPICFG_MAXFREQ_FIELD,
 		  NPCX_ESPI_MAXFREQ_MAX);
 
 	/* Configure Master-to-Slave Virtual Wire indexes (Inputs) */

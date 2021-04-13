@@ -6,8 +6,11 @@
  */
 
 #include "battery_fuel_gauge.h"
+#include "charge_state.h"
+#include "chipset.h"
 #include "common.h"
-#include "util.h"
+#include "hooks.h"
+#include "usb_pd.h"
 
 /*
  * Battery info for all Liara battery types. Note that the fields
@@ -86,7 +89,7 @@ const struct board_batt_params board_battery_info[] = {
 			.voltage_max		= 13200,
 			.voltage_normal		= 11520, /* mV */
 			.voltage_min		= 9000,  /* mV */
-			.precharge_current	= 256,   /* mA */
+			.precharge_current	= 200,   /* mA */
 			.start_charging_min_c	= 0,
 			.start_charging_max_c	= 50,
 			.charging_min_c		= 0,
@@ -118,7 +121,7 @@ const struct board_batt_params board_battery_info[] = {
 			.voltage_max		= 13200,
 			.voltage_normal		= 11520, /* mV */
 			.voltage_min		= 9000,  /* mV */
-			.precharge_current	= 256,   /* mA */
+			.precharge_current	= 247,   /* mA */
 			.start_charging_min_c	= 0,
 			.start_charging_max_c	= 50,
 			.charging_min_c		= 0,

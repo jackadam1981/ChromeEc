@@ -19,8 +19,8 @@
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_LID_ANGLE
-#define CONFIG_LID_ANGLE_SENSOR_BASE 0
-#define CONFIG_LID_ANGLE_SENSOR_LID 1
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 #define CONFIG_LID_ANGLE_UPDATE
 
 #define CONFIG_ADC
@@ -41,7 +41,6 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR 10
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHIPSET_MT817X
 #define CONFIG_CMD_TYPEC
 #define CONFIG_EXTPOWER_GPIO
@@ -58,13 +57,14 @@
 /* Other configs */
 #define CONFIG_HOST_COMMAND_STATUS
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_LED_COMMON
 #define CONFIG_LID_SWITCH
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
 #define CONFIG_POWER_BUTTON
 #define CONFIG_POWER_COMMON
 #define CONFIG_USB_CHARGER
@@ -86,6 +86,7 @@
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_DUAL_ROLE
@@ -98,8 +99,8 @@
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_PD_VBUS_DETECT_TCPC
-#undef  CONFIG_TCPC_I2C_BASE_ADDR
-#define CONFIG_TCPC_I2C_BASE_ADDR 0x58
+#undef  CONFIG_TCPC_I2C_BASE_ADDR_FLAGS
+#define CONFIG_TCPC_I2C_BASE_ADDR_FLAGS 0x2C
 #define CONFIG_USB_PD_ANX7688
 
 /* UART DMA */
@@ -118,7 +119,7 @@
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
 #define CONFIG_CMD_I2C_PROTECT
-#define CONFIG_CMD_PD_CONTROL
+#define CONFIG_HOSTCMD_PD_CONTROL
 
 /*
  * Flash layout:
@@ -171,8 +172,8 @@
 #define TIM_CLOCK32 2
 #define TIM_WATCHDOG 4
 
-/* Define the MKBP events which are allowed to wakeup AP in S3. */
-#define CONFIG_MKBP_WAKEUP_MASK \
+/* Define the host events which are allowed to wakeup AP in S3. */
+#define CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK \
 		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEY_PRESSED) |\
@@ -214,6 +215,12 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
+enum sensor_id {
+	BASE_ACCEL,
+	LID_ACCEL,
+	SENSOR_COUNT,
+};
+
 /* TODO: determine the following board specific type-C power constants */
 /*
  * delay to turn on the power supply max is ~16ms.
@@ -223,7 +230,6 @@ enum temp_sensor_id {
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 
 /* delay to turn on/off vconn */
-#define PD_VCONN_SWAP_DELAY 5000 /* us */
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000

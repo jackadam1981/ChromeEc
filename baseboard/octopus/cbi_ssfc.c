@@ -26,7 +26,7 @@ static void cbi_ssfc_init(void)
 
 	CPRINTS("CBI SSFC: 0x%04X", cached_ssfc);
 }
-DECLARE_HOOK(HOOK_INIT, cbi_ssfc_init, HOOK_PRIO_INIT_I2C + 1);
+DECLARE_HOOK(HOOK_INIT, cbi_ssfc_init, HOOK_PRIO_FIRST);
 
 enum ssfc_tcpc_p1 get_cbi_ssfc_tcpc_p1(void)
 {

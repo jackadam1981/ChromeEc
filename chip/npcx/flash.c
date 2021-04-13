@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -60,8 +60,11 @@ static void flash_pinmux(int enable)
 
 static void flash_execute_cmd(uint8_t code, uint8_t cts)
 {
-	/* Flash mutex must be held while executing UMA commands. */
-	ASSERT(flash_lock.lock);
+	/*
+	 * Flash mutex must be held while executing UMA commands after
+	 * task_start().
+	 */
+	ASSERT(!task_start_called() || flash_lock.lock);
 
 	/* set UMA_CODE */
 	NPCX_UMA_CODE = code;
@@ -291,7 +294,11 @@ static int flash_set_status_for_prot(int reg1, int reg2)
 	 * internal spi-flash, protect it now before setting them.
 	 */
 #ifdef NPCX_INT_FLASH_SUPPORT
+#ifdef CONFIG_WP_ACTIVE_HIGH
+	flash_protect_int_flash(gpio_get_level(GPIO_WP));
+#else
 	flash_protect_int_flash(!gpio_get_level(GPIO_WP_L));
+#endif /*_CONFIG_WP_ACTIVE_HIGH_*/
 #endif
 
 	/* Lock physical flash operations */
@@ -322,7 +329,7 @@ static int flash_set_status_for_prot(int reg1, int reg2)
 static int flash_check_prot_range(unsigned int offset, unsigned int bytes)
 {
 	/* Invalid value */
-	if (offset + bytes > CONFIG_FLASH_SIZE)
+	if (offset + bytes > CONFIG_FLASH_SIZE_BYTES)
 		return EC_ERROR_INVAL;
 	/* Check if ranges overlap */
 	if (MAX(addr_prot_start, offset) < MIN(addr_prot_start +
@@ -344,14 +351,18 @@ static int flash_check_prot_reg(unsigned int offset, unsigned int bytes)
 	 * internal spi-flash, protect it now.
 	 */
 #ifdef NPCX_INT_FLASH_SUPPORT
+#ifdef CONFIG_WP_ACTIVE_HIGH
+	flash_protect_int_flash(gpio_get_level(GPIO_WP));
+#else
 	flash_protect_int_flash(!gpio_get_level(GPIO_WP_L));
+#endif /* CONFIG_WP_ACTIVE_HIGH */
 #endif
 
 	sr1 = flash_get_status1();
 	sr2 = flash_get_status2();
 
 	/* Invalid value */
-	if (offset + bytes > CONFIG_FLASH_SIZE)
+	if (offset + bytes > CONFIG_FLASH_SIZE_BYTES)
 		return EC_ERROR_INVAL;
 
 	/* Compute current protect range */
@@ -375,7 +386,7 @@ static int flash_write_prot_reg(unsigned int offset, unsigned int bytes,
 	uint8_t sr2 = flash_get_status2();
 
 	/* Invalid values */
-	if (offset + bytes > CONFIG_FLASH_SIZE)
+	if (offset + bytes > CONFIG_FLASH_SIZE_BYTES)
 		return EC_ERROR_INVAL;
 
 	/* Compute desired protect range */
@@ -691,7 +702,11 @@ int flash_pre_init(void)
 	 * during ec initialization.
 	 */
 #ifdef NPCX_INT_FLASH_SUPPORT
+#ifdef CONFIG_WP_ACTIVE_HIGH
+	flash_protect_int_flash(gpio_get_level(GPIO_WP));
+#else
 	flash_protect_int_flash(!gpio_get_level(GPIO_WP_L));
+#endif /*CONFIG_WP_ACTIVE_HIGH */
 #endif
 
 #if !defined(NPCX_INT_FLASH_SUPPORT)
@@ -723,7 +738,7 @@ void flash_lock_mapped_storage(int lock)
 #if defined(CONFIG_HOSTCMD_FLASH_SPI_INFO) && !defined(BOARD_NPCX_EVB)
 /* NPCX EVB uses implementation from spi_flash.c */
 
-static int flash_command_spi_info(struct host_cmd_handler_args *args)
+static enum ec_status flash_command_spi_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_flash_spi_info *r = args->response;
 

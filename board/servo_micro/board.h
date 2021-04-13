@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define CONFIG_LTO
+
 /* 48 MHz SYSCLK clock frequency */
 #define CPU_CLOCK 48000000
 
@@ -30,6 +32,10 @@
 /* Optional features */
 #define CONFIG_STM_HWTIMER32
 #define CONFIG_HW_CRC
+#define CONFIG_PVD
+/* See 'Programmable voltage detector characteristics' in the STM32F072x8 Datasheet.
+   PVD Threshold 1 corresponds to a falling voltage threshold of min:2.09V, max:2.27V. */
+#define PVD_THRESHOLD     (1)
 
 /* USB Configuration */
 #define CONFIG_USB
@@ -79,39 +85,12 @@
 /* Enable control of I2C over USB */
 #define CONFIG_USB_I2C
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
-/*
- * iteflash requires 256 byte reads for verifying ITE EC firmware.  Without this
- * the limit is CONFIG_I2C_CHIP_MAX_READ_SIZE which is 255 for STM32F0 due to an
- * 8 bit field, per src/platform/ec/include/config.h comment.
- */
-#define CONFIG_I2C_XFER_LARGE_READ
+#define CONFIG_I2C_CONTROLLER
 #define I2C_PORT_MASTER 0
 
-/*
- * As of 2018-11-27 the default for both is 60 bytes.  These larger values allow
- * for reflashing of ITE EC chips over I2C
- * (https://issuetracker.google.com/79684405) in reasonably speedy fashion.  If
- * the EC firmware defaults are ever raised significantly, consider removing
- * these overrides.
- *
- * As of 2018-11-27 the actual maximum write size supported by the I2C-over-USB
- * protocol is (1<<12)-1, and the maximum read size supported is
- * (1<<15)-1.  However compile time assertions require that these values be
- * powers of 2 after overheads are included.  Thus, the write limit set here
- * /should/ be (1<<12)-4 and the read limit should be (1<<15)-6, however those
- * ideal limits are not actually possible because servo_micro lacks sufficient
- * spare memory for them.  With symmetrical limits, the maximum that currently
- * fits is (1<<11)-4 write limit and (1<<11)-6 read limit, leaving 1404 bytes of
- * RAM available.
- *
- * However even with a sufficiently large write value here, the maximum that
- * actually works as of 2018-12-03 is 255 bytes.  Additionally, ITE EC firmware
- * image verification requires exactly 256 byte reads.  Thus the only useful
- * powers-of-2-minus-overhead limits to set here are (1<<9)-4 writes and
- * (1<<9)-6 reads, leaving 6012 bytes of RAM available, down from 7356 bytes of
- * RAM available with the default 60 byte limits.
- */
+/* See i2c_ite_flash_support.c for more information about these values */
+#define CONFIG_ITE_FLASH_SUPPORT
+#define CONFIG_I2C_XFER_LARGE_TRANSFER
 #undef CONFIG_USB_I2C_MAX_WRITE_COUNT
 #undef CONFIG_USB_I2C_MAX_READ_COUNT
 #define CONFIG_USB_I2C_MAX_WRITE_COUNT ((1<<9) - 4)
@@ -129,6 +108,10 @@
 #define TIM_CLOCK32 2
 
 #include "gpio_signal.h"
+
+/* GPIO signal mapping */
+#define GPIO_USART4_SERVO_TX_DUT_RX GPIO_UART3_TX_SERVO_JTAG_TCK
+#define GPIO_USART4_SERVO_RX_DUT_TX GPIO_UART3_RX_JTAG_BUFFER_TO_SERVO_TDO
 
 /* USB string indexes */
 enum usb_strings {

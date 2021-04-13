@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -11,8 +11,8 @@
 #include "common.h"
 
 /* Smart battery and charger I2C address */
-#define BATTERY_ADDR 0x16
-#define CHARGER_ADDR 0x12
+#define BATTERY_ADDR_FLAGS	0x0B
+#define CHARGER_ADDR_FLAGS	0x09
 
 /* Charger functions */
 #define SB_CHARGER_SPEC_INFO            0x11
@@ -50,7 +50,7 @@
 #define SB_DESIGN_CAPACITY              0x18
 #define SB_DESIGN_VOLTAGE               0x19
 #define SB_SPECIFICATION_INFO           0x1a
-#define SB_MANUFACTURER_DATE            0x1b
+#define SB_MANUFACTURE_DATE             0x1b
 #define SB_SERIAL_NUMBER                0x1c
 #define SB_MANUFACTURER_NAME            0x20
 #define SB_DEVICE_NAME                  0x21
@@ -90,6 +90,13 @@
 #define STATUS_OVERTEMP_ALARM           BIT(12)
 #define STATUS_TERMINATE_CHARGE_ALARM   BIT(14)
 #define STATUS_OVERCHARGED_ALARM        BIT(15)
+
+/* Battery Spec Info */
+#define BATTERY_SPEC_VERSION(INFO)      ((INFO >> 4) & 0xF)
+/* Smart battery version info */
+#define BATTERY_SPEC_VER_1_0            1
+#define BATTERY_SPEC_VER_1_1            2
+#define BATTERY_SPEC_VER_1_1_WITH_PEC   3
 
 /* Charger alarm warning */
 #define ALARM_OVER_CHARGED              0x8000

@@ -15,8 +15,8 @@
 #include "registers.h"
 #include "system.h"
 #include "task.h"
-#include "tcpci.h"
-#include "tcpm.h"
+#include "tcpm/tcpci.h"
+#include "tcpm/tcpm.h"
 #include "timer.h"
 #include "util.h"
 #include "usb_pd.h"
@@ -202,6 +202,12 @@ enum pd_tx_errors {
 	PD_TX_ERR_COLLISION = -5 /* Collision detected during transmit */
 };
 
+/* PD Header with SOP* encoded in bits 31 - 28 */
+union pd_header_sop {
+	uint16_t pd_header;
+	uint32_t head;
+};
+
 /*
  * If TCPM is not on this chip, and PD low power is defined, then use low
  * power task delay logic.
@@ -308,11 +314,19 @@ int prepare_message(int port, uint16_t header, uint8_t cnt,
 	int off, i;
 	/* 64-bit preamble */
 	off = pd_write_preamble(port);
+#if defined(CONFIG_USB_VPD) || defined(CONFIG_USB_CTVPD)
+	/* Start Of Packet Prime: 2x Sync-1 + 2x Sync-3 */
+	off = pd_write_sym(port, off, BMC(PD_SYNC1));
+	off = pd_write_sym(port, off, BMC(PD_SYNC1));
+	off = pd_write_sym(port, off, BMC(PD_SYNC3));
+	off = pd_write_sym(port, off, BMC(PD_SYNC3));
+#else
 	/* Start Of Packet: 3x Sync-1 + 1x Sync-2 */
 	off = pd_write_sym(port, off, BMC(PD_SYNC1));
 	off = pd_write_sym(port, off, BMC(PD_SYNC1));
 	off = pd_write_sym(port, off, BMC(PD_SYNC1));
 	off = pd_write_sym(port, off, BMC(PD_SYNC2));
+#endif
 	/* header */
 	off = encode_short(port, off, header);
 
@@ -373,7 +387,8 @@ static int send_validate_message(int port, uint16_t header,
 	uint8_t expected_msg_id = PD_HEADER_ID(header);
 	uint8_t cnt = PD_HEADER_CNT(header);
 	int retries = PD_HEADER_TYPE(header) == PD_DATA_SOURCE_CAP ?
-		      0 : PD_RETRY_COUNT;
+				    0 :
+				    CONFIG_PD_RETRY_COUNT;
 
 	/* retry 3 times if we are not getting a valid answer */
 	for (r = 0; r <= retries; r++) {
@@ -546,7 +561,7 @@ static inline int decode_short(int port, int off, uint16_t *val16)
 	end = pd_dequeue_bits(port, off, 20, &w);
 
 #if 0 /* DEBUG */
-	CPRINTS("%d-%d: %05x %x:%x:%x:%x\n",
+	CPRINTS("%d-%d: %05x %x:%x:%x:%x",
 		off, end, w,
 		dec4b5b[(w >> 15) & 0x1f], dec4b5b[(w >> 10) & 0x1f],
 		dec4b5b[(w >>  5) & 0x1f], dec4b5b[(w >>  0) & 0x1f]);
@@ -626,7 +641,7 @@ int pd_analyze_rx(int port, uint32_t *payload)
 	int bit;
 	char *msg = "---";
 	uint32_t val = 0;
-	uint16_t header;
+	union pd_header_sop phs;
 	uint32_t pcrc, ccrc;
 	int p, cnt;
 	uint32_t eop;
@@ -646,6 +661,22 @@ int pd_analyze_rx(int port, uint32_t *payload)
 	/* Find the Start Of Packet sequence */
 	while (bit > 0) {
 		bit = pd_dequeue_bits(port, bit, 20, &val);
+#if defined(CONFIG_USB_VPD) || defined(CONFIG_USB_CTVPD)
+		if (val == PD_SOP_PRIME) {
+			break;
+		} else if (val == PD_SOP) {
+			CPRINTF("SOP\n");
+			return PD_RX_ERR_UNSUPPORTED_SOP;
+		} else if (val == PD_SOP_PRIME_PRIME) {
+			CPRINTF("SOP''\n");
+			return PD_RX_ERR_UNSUPPORTED_SOP;
+		}
+#else /* CONFIG_USB_VPD || CONFIG_USB_CTVPD */
+#ifdef CONFIG_USB_PD_DECODE_SOP
+		if (val == PD_SOP || val == PD_SOP_PRIME ||
+						val == PD_SOP_PRIME_PRIME)
+			break;
+#else
 		if (val == PD_SOP) {
 			break;
 		} else if (val == PD_SOP_PRIME) {
@@ -655,22 +686,51 @@ int pd_analyze_rx(int port, uint32_t *payload)
 			CPRINTF("SOP''\n");
 			return PD_RX_ERR_UNSUPPORTED_SOP;
 		}
+#endif /* CONFIG_USB_PD_DECODE_SOP */
+#endif /* CONFIG_USB_VPD || CONFIG_USB_CTVPD */
 	}
 	if (bit < 0) {
+#ifdef CONFIG_USB_PD_DECODE_SOP
+		if (val == PD_SOP)
+			msg = "SOP";
+		else if (val == PD_SOP_PRIME)
+			msg = "SOP'";
+		else if (val == PD_SOP_PRIME_PRIME)
+			msg = "SOP''";
+		else
+			msg = "SOP*";
+#else
 		msg = "SOP";
+#endif
 		goto packet_err;
 	}
 
+	phs.head = 0;
+
 	/* read header */
-	bit = decode_short(port, bit, &header);
+	bit = decode_short(port, bit, &phs.pd_header);
 
 #ifdef CONFIG_COMMON_RUNTIME
 	mutex_lock(&pd_crc_lock);
 #endif
 
 	crc32_init();
-	crc32_hash16(header);
-	cnt = PD_HEADER_CNT(header);
+	crc32_hash16(phs.pd_header);
+	cnt = PD_HEADER_CNT(phs.pd_header);
+
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	/* Encode message address */
+	if (val == PD_SOP) {
+		phs.head |= PD_HEADER_SOP(PD_MSG_SOP);
+	} else if (val == PD_SOP_PRIME) {
+		phs.head |= PD_HEADER_SOP(PD_MSG_SOP_PRIME);
+	} else if (val == PD_SOP_PRIME_PRIME) {
+		phs.head |= PD_HEADER_SOP(PD_MSG_SOP_PRIME_PRIME);
+	} else {
+		msg = "SOP*";
+		goto packet_err;
+	}
+#endif
 
 	/* read payload data */
 	for (p = 0; p < cnt && bit > 0; p++) {
@@ -710,7 +770,7 @@ int pd_analyze_rx(int port, uint32_t *payload)
 		goto packet_err;
 	}
 
-	return header;
+	return phs.head;
 packet_err:
 	if (debug_level >= 2)
 		pd_dump_packet(port, msg);
@@ -776,6 +836,10 @@ int tcpc_run(int port, int evt)
 {
 	int cc, i, res;
 
+	/* Don't do anything when port is not available */
+	if (port >= board_get_usb_pd_port_count())
+		return -1;
+
 	/* incoming packet ? */
 	if (pd_rx_started(port) && pd[port].rx_enabled) {
 		/* Get message and place at RX buffer head */
@@ -803,7 +867,11 @@ int tcpc_run(int port, int evt)
 	/* outgoing packet ? */
 	if ((evt & PD_EVENT_TX) && pd[port].rx_enabled) {
 		switch (pd[port].tx_type) {
+#if defined(CONFIG_USB_VPD) || defined(CONFIG_USB_CTVPD)
+		case TCPC_TX_SOP_PRIME:
+#else
 		case TCPC_TX_SOP:
+#endif
 			res = send_validate_message(port,
 					pd[port].tx_head,
 					pd[port].tx_data);
@@ -869,7 +937,7 @@ int tcpc_run(int port, int evt)
 #endif
 }
 
-#ifndef CONFIG_USB_POWER_DELIVERY
+#if !defined(CONFIG_USB_POWER_DELIVERY)
 void pd_task(void *u)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
@@ -894,7 +962,7 @@ void pd_task(void *u)
 
 void pd_rx_event(int port)
 {
-	task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE, 0);
+	task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE);
 }
 
 int tcpc_alert_status(int port, int *alert)
@@ -973,12 +1041,13 @@ int tcpc_set_cc(int port, int pull)
 #ifdef CONFIG_USB_POWER_DELIVERY
 	tcpc_run(port, PD_EVENT_CC);
 #else
-	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC);
 #endif
 	return EC_SUCCESS;
 }
 
-int tcpc_get_cc(int port, int *cc1, int *cc2)
+int tcpc_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
+	enum tcpc_cc_voltage_status *cc2)
 {
 	*cc2 = pd[port].cc_status[1];
 	*cc1 = pd[port].cc_status[0];
@@ -1070,7 +1139,7 @@ int tcpc_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
 #ifdef CONFIG_USB_POWER_DELIVERY
 	tcpc_run(port, PD_EVENT_TX);
 #else
-	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_TX, 0);
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_TX);
 #endif
 	return EC_SUCCESS;
 }
@@ -1229,7 +1298,7 @@ static void tcpc_i2c_write(int port, int reg, int len, uint8_t *payload)
 
 static int tcpc_i2c_read(int port, int reg, uint8_t *payload)
 {
-	int cc1, cc2;
+	enum tcpc_cc_voltage_status cc1, cc2;
 	int alert;
 
 	switch (reg) {

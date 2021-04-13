@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -43,15 +43,10 @@ static void switch_update(void)
 	else
 		*memmap_switches &= ~EC_SWITCH_POWER_BUTTON_PRESSED;
 
-#ifdef CONFIG_LID_SWITCH
-	if (lid_is_open())
+	if (!IS_ENABLED(CONFIG_LID_SWITCH) || lid_is_open())
 		*memmap_switches |= EC_SWITCH_LID_OPEN;
 	else
 		*memmap_switches &= ~EC_SWITCH_LID_OPEN;
-#else
-	/* For lid-less systems, lid looks always open */
-	*memmap_switches |= EC_SWITCH_LID_OPEN;
-#endif
 
 	if ((flash_get_protect() & EC_FLASH_PROTECT_GPIO_ASSERTED) == 0)
 		*memmap_switches |= EC_SWITCH_WRITE_PROTECT_DISABLED;
@@ -122,7 +117,7 @@ static int command_mmapinfo(int argc, char **argv)
 	};
 	ccprintf("memmap switches = 0x%x\n", val);
 	for (i = 0; i < ARRAY_SIZE(explanation); i++)
-		if (val & (1 << i))
+		if (val & BIT(i))
 			ccprintf(" %s\n", explanation[i]);
 
 	return EC_SUCCESS;

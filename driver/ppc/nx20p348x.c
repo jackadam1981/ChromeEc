@@ -7,12 +7,12 @@
 
 #include "common.h"
 #include "console.h"
-#include "driver/ppc/nx20p348x.h"
+#include "nx20p348x.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "system.h"
-#include "tcpm.h"
+#include "tcpm/tcpm.h"
 #include "usb_charge.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd.h"
@@ -27,13 +27,17 @@ static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 #define NX20P348X_DB_EXIT_FAIL_THRESHOLD 10
 static int db_exit_fail_count[CONFIG_USB_PD_PORT_MAX_COUNT];
 
-#define NX20P348X_FLAGS_SOURCE_ENABLED (1 << 0)
+#define NX20P348X_FLAGS_SOURCE_ENABLED BIT(0)
 static uint8_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+#if !defined(CONFIG_USBC_PPC_NX20P3481) && !defined(CONFIG_USBC_PPC_NX20P3483)
+#error "Either the NX20P3481 or NX20P3483 must be selected"
+#endif
 
 static int read_reg(uint8_t port, int reg, int *regval)
 {
 	return i2c_read8(ppc_chips[port].i2c_port,
-			 ppc_chips[port].i2c_addr,
+			 ppc_chips[port].i2c_addr_flags,
 			 reg,
 			 regval);
 }
@@ -41,7 +45,7 @@ static int read_reg(uint8_t port, int reg, int *regval)
 static int write_reg(uint8_t port, int reg, int regval)
 {
 	return i2c_write8(ppc_chips[port].i2c_port,
-			  ppc_chips[port].i2c_addr,
+			  ppc_chips[port].i2c_addr_flags,
 			  reg,
 			  regval);
 }
@@ -135,17 +139,15 @@ static int nx20p348x_vbus_sink_enable(int port, int enable)
 
 	enable = !!enable;
 
-#if defined(CONFIG_USBC_PPC_NX20P3481)
-	rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, control);
-#elif defined(CONFIG_USBC_PPC_NX20P3483)
-	/*
-	 * We cannot use an EC GPIO for EN_SNK since an EC reset will float the
-	 * GPIO thus browning out the board (without a battery).
-	 */
-	rv = tcpm_set_snk_ctrl(port, enable);
-#else
-#error "Either the NX20P3481 or NX20P3483 must be selected"
-#endif
+	if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3481))
+		rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, control);
+	else if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3483))
+		/*
+		 * We cannot use an EC GPIO for EN_SNK since an EC reset
+		 * will float the GPIO thus browning out the board (without
+		 * a battery).
+		 */
+		rv = tcpm_set_snk_ctrl(port, enable);
 	if (rv)
 		return rv;
 
@@ -173,17 +175,15 @@ static int nx20p348x_vbus_source_enable(int port, int enable)
 
 	enable = !!enable;
 
-#if defined(CONFIG_USBC_PPC_NX20P3481)
-	rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, control);
-#elif defined(CONFIG_USBC_PPC_NX20P3483)
-	/*
-	 * For parity's sake, we should not use an EC GPIO for EN_SRC since we
-	 * cannot use it for EN_SNK (for brown out reason listed above).
-	 */
-	rv = tcpm_set_src_ctrl(port, enable);
-#else
-#error "Either the NX20P3481 or NX20P3483 must be selected"
-#endif
+	if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3481))
+		rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, control);
+	else if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3483))
+		/*
+		 * For parity's sake, we should not use an EC GPIO for
+		 * EN_SRC since we cannot use it for EN_SNK (for brown
+		 * out reason listed above).
+		 */
+		rv = tcpm_set_src_ctrl(port, enable);
 	if (rv)
 		return rv;
 
@@ -200,15 +200,17 @@ static int nx20p348x_vbus_source_enable(int port, int enable)
 	 * (15 msec) before the status will reflect the control command.
 	 */
 	msleep(NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC);
-	rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &status);
-	if (rv) {
-		flags[port] = previous_flags;
-		return rv;
-	}
 
-	if ((status & NX20P348X_SWITCH_STATUS_MASK) != control) {
-		flags[port] = previous_flags;
-		return EC_ERROR_UNKNOWN;
+	if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3481)) {
+		rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &status);
+		if (rv) {
+			flags[port] = previous_flags;
+			return rv;
+		}
+		if ((status & NX20P348X_SWITCH_STATUS_MASK) != control) {
+			flags[port] = previous_flags;
+			return EC_ERROR_UNKNOWN;
+		}
 	}
 
 	return EC_SUCCESS;
@@ -231,7 +233,7 @@ static int nx20p348x_init(int port)
 	/* Mask interrupts for interrupt 1 register */
 	mask = ~(NX20P348X_INT1_OC_5VSRC | NX20P348X_INT1_SC_5VSRC |
 		 NX20P348X_INT1_RCP_5VSRC | NX20P348X_INT1_DBEXIT_ERR);
-#ifdef CONFIG_USBC_PPC_NX20P3481
+#if defined(CONFIG_USBC_PPC_NX20P3481) || defined(CONFIG_USBC_PPC_NX20P3483)
 	/* Unmask Fast Role Swap detect interrupt */
 	mask &= ~NX20P348X_INT1_FRS_DET;
 #endif
@@ -310,7 +312,7 @@ static void nx20p348x_handle_interrupt(int port)
 		 */
 		if (++db_exit_fail_count[port] >=
 		    NX20P348X_DB_EXIT_FAIL_THRESHOLD) {
-			CPRINTS("Port %d PPC failed to exit DB mode", port);
+			ppc_prints("failed to exit DB mode", port);
 			if (read_reg(port, NX20P348X_INTERRUPT1_MASK_REG,
 				    &mask_reg)) {
 				mask_reg |= NX20P348X_INT1_DBEXIT_ERR;
@@ -331,17 +333,17 @@ static void nx20p348x_handle_interrupt(int port)
 
 	/* Check for 5V OC interrupt */
 	if (reg & NX20P348X_INT1_OC_5VSRC) {
-		CPRINTS("C%d: PPC detected Vbus overcurrent!", port);
+		ppc_prints("detected Vbus overcurrent!", port);
 		pd_handle_overcurrent(port);
 	}
 
 	/* Check for Vbus reverse current protection */
 	if (reg & NX20P348X_INT1_RCP_5VSRC)
-		CPRINTS("C%d: PPC detected Vbus reverse current!", port);
+		ppc_prints("detected Vbus reverse current!", port);
 
 	/* Check for Vbus short protection */
 	if (reg & NX20P348X_INT1_SC_5VSRC)
-		CPRINTS("C%d: PPC Vbus short detected!", port);
+		ppc_prints("Vbus short detected!", port);
 
 #ifdef CONFIG_USBC_PPC_NX20P3481
 	/* Check for FRS detection */
@@ -360,7 +362,7 @@ static void nx20p348x_handle_interrupt(int port)
 		 * False detect, disable SRC mode which was enabled by
 		 * NX20P3481.
 		 */
-		CPRINTS("C%d: PPC FRS false detect, disabling SRC mode!", port);
+		ppc_prints("FRS false detect, disabling SRC mode!", port);
 		nx20p348x_vbus_source_enable(port, 0);
 	}
 #endif
@@ -382,17 +384,17 @@ static void nx20p348x_handle_interrupt(int port)
 static void nx20p348x_irq_deferred(void)
 {
 	int i;
-	uint32_t pending = atomic_read_clear(&irq_pending);
+	uint32_t pending = atomic_clear(&irq_pending);
 
 	for (i = 0; i < board_get_usb_pd_port_count(); i++)
-		if ((1 << i) & pending)
+		if (BIT(i) & pending)
 			nx20p348x_handle_interrupt(i);
 }
 DECLARE_DEFERRED(nx20p348x_irq_deferred);
 
 void nx20p348x_interrupt(int port)
 {
-	atomic_or(&irq_pending, (1 << port));
+	atomic_or(&irq_pending, BIT(port));
 	hook_call_deferred(&nx20p348x_irq_deferred_data, 0);
 }
 

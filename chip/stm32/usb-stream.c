@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -19,7 +19,7 @@
 static size_t rx_read(struct usb_stream_config const *config)
 {
 	uintptr_t address = btable_ep[config->endpoint].rx_addr;
-	size_t    count   = btable_ep[config->endpoint].rx_count & 0x3ff;
+	size_t count = btable_ep[config->endpoint].rx_count & RX_COUNT_MASK;
 
 	/*
 	 * Only read the received USB packet if there is enough space in the

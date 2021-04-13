@@ -17,16 +17,16 @@
 #include "wov_chip.h"
 
 #ifndef NPCX_WOV_SUPPORT
-#error "Do not enable CONFIG_WAKE_ON_VOICE if npcx ec doesn't support WOV !"
+#error "Do not enable CONFIG_AUDIO_CODEC_* if npcx ec doesn't support WOV !"
 #endif
 
 /* Console output macros */
-#if !(DEBUG_WOV)
+#ifndef DEBUG_AUDIO_CODEC
 #define CPUTS(...)
 #define CPRINTS(...)
 #else
-#define CPUTS(outstr) cputs(CC_WOV, outstr)
-#define CPRINTS(format, args...) cprints(CC_WOV, format, ## args)
+#define CPUTS(outstr) cputs(CC_AUDIO_CODEC, outstr)
+#define CPRINTS(format, args...) cprints(CC_AUDIO_CODEC, format, ## args)
 #endif
 
 /* WOV FIFO status. */
@@ -170,8 +170,6 @@ struct wov_config wov_conf;
 
 static struct wov_cfifo_buf cfifo_buf;
 static wov_call_back_t callback_fun;
-
-const uint32_t voice_buffer[VOICE_BUF_SIZE] = {0};
 
 #define WOV_RATE_ERROR_THRESH_MSEC 10
 #define WOV_RATE_ERROR_THRESH 5
@@ -1536,6 +1534,19 @@ void wov_set_gain(int left_chan_gain, int right_chan_gain)
 }
 
 /**
+ * Gets gain values
+ *
+ * @param   left_chan_gain  - address of left channel gain response.
+ * @param   right_chan_gain - address of right channel gain response.
+ * @return  None
+ */
+void wov_get_gain(int *left_chan_gain, int *right_chan_gain)
+{
+	*left_chan_gain = wov_conf.left_chan_gain;
+	*right_chan_gain = wov_conf.right_chan_gain;
+}
+
+/**
  * Enables/Disables ADC.
  *
  * @param   enable - enabled flag, 1 means enable
@@ -1730,12 +1741,12 @@ void wov_set_i2s_bclk(uint32_t i2s_clock)
  *                      first bit (MSB) of channel 1 (right channel).
  *                      If channel 1 is not used set this field to -1.
  *
- * @param   flags     -  WOV_TDM_ADJACENT_TO_CH0 = (1 << 0).  There is a
+ * @param   flags     -  WOV_TDM_ADJACENT_TO_CH0 = BIT(0).  There is a
  *                       channel adjacent to channel 0, so float SDAT when
  *                       driving the last bit (LSB) of the channel during the
  *                       second half of the clock cycle to avoid bus contention.
  *
- *                       WOV_TDM_ADJACENT_TO_CH1 = (1 << 1). There is a channel
+ *                       WOV_TDM_ADJACENT_TO_CH1 = BIT(1). There is a channel
  *                       adjacent to channel 1.
  *
  * @return  EC error code.
@@ -1807,6 +1818,10 @@ void wov_handle_event(enum wov_events event)
 	if (event == WOV_EVENT_ERROR_CORE_FIFO_OVERRUN)
 		CPRINTS("error: cfifo overrun");
 }
+
+#ifdef DEBUG_AUDIO_CODEC
+static uint32_t voice_buffer[VOICE_BUF_SIZE] = {0};
+
 /* voice data 16Khz 2ch 16bit 1s */
 static int command_wov(int argc, char **argv)
 {
@@ -2053,3 +2068,4 @@ DECLARE_CONSOLE_COMMAND(wov, command_wov,
 		"vadsens <0~31>\n"
 		"gain <0~31>",
 		"wov configuration");
+#endif

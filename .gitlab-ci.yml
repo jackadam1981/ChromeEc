@@ -1,0 +1,56 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+image: sjg20/bionic-20200526-12feb21
+
+# You can update that image using this repo:
+#   https://gitlab.com/zephyr-ec/gitlab-ci-runner/-/tree/main
+
+# Change pip's cache directory to be inside the project directory since we can
+# only cache local items.
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+# Pip's cache doesn't store the python packages
+# https://pip.pypa.io/en/stable/reference/pip_install/#caching
+#
+# If you want to also cache the installed packages, you have to install
+# them in a virtualenv and cache it as well.
+cache:
+  paths:
+    - .cache/pip
+    - venv/
+
+
+# The directory structure is:
+#
+# /zephyr
+# /builds/zephyr-ec/ec       EC_DIR
+before_script:
+  - export MODULES_DIR="$HOME/modules"
+  - mkdir -p "${MODULES_DIR}"
+  - export ZEPHYR_BASE="$HOME/zephyr"
+  - git clone -b chromeos-v2.5 https://chromium.googlesource.com/chromiumos/third_party/zephyr "${ZEPHYR_BASE}"
+  - git clone -b chromeos-v2.5 https://chromium.googlesource.com/chromiumos/third_party/zephyr/cmsis "${MODULES_DIR}/cmsis"
+  - git clone -b chromeos-v2.5 https://chromium.googlesource.com/chromiumos/third_party/zephyr/hal_stm32 "${MODULES_DIR}/hal_stm32"
+  - ln -s "$(pwd)" "${MODULES_DIR}/ec"
+  - python3 -V  # Print out python version for debugging
+  - python3 -m pip install zephyr/zmake --user
+  - export BUILD_DIR=build
+  - export ZEPHYR_DIR=/zephyr
+  - export PATH="$PATH:$HOME/.local/bin"
+
+test:
+  script:
+    echo "It works"
+
+run:
+  script:
+    - zmake --zephyr-base "${ZEPHYR_BASE}" --modules-dir "${MODULES_DIR}"
+      -l DEBUG configure -b -B "${BUILD_DIR}/vol" -t zephyr zephyr/projects/volteer
+    - ls "${BUILD_DIR}/vol" "${BUILD_DIR}/vol/output"
+  artifacts:
+    paths:
+      - build/vol/output/*
+    expire_in: 1 week

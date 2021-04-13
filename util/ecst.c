@@ -9,6 +9,7 @@
  * data used by NPCX ROM code (booter).
  */
 
+#include "compile_time_macros.h"
 #include "ecst.h"
 
 /* Global Variables */
@@ -33,19 +34,25 @@ unsigned int fw_offset;
 int is_ptr_merge;
 unsigned int g_ram_start_address;
 unsigned int g_ram_size;
-unsigned int api_file_size_bytes;
+int api_file_size_bytes;
 int is_mrider15 = FALSE;
 
 /* Chips information, RAM start address and RAM size. */
-struct chip_info chip_info[] = {{NPCX5M5G_RAM_ADDR, NPCX5M5G_RAM_SIZE},
-				{NPCX5M6G_RAM_ADDR, NPCX5M6G_RAM_SIZE},
-				{NPCX7M5X_RAM_ADDR, NPCX7M5X_RAM_SIZE},
-				{NPCX7M6X_RAM_ADDR, NPCX7M6X_RAM_SIZE},
-				{NPCX7M7X_RAM_ADDR, NPCX7M7X_RAM_SIZE},};
+struct chip_info chip_info[] = {
+	[NPCX5M5G] = {NPCX5M5G_RAM_ADDR, NPCX5M5G_RAM_SIZE},
+	[NPCX5M6G] = {NPCX5M6G_RAM_ADDR, NPCX5M6G_RAM_SIZE},
+	[NPCX7M5] = {NPCX7M5X_RAM_ADDR, NPCX7M5X_RAM_SIZE},
+	[NPCX7M6] = {NPCX7M6X_RAM_ADDR, NPCX7M6X_RAM_SIZE},
+	[NPCX7M7] = {NPCX7M7X_RAM_ADDR, NPCX7M7X_RAM_SIZE},
+	[NPCX9M3] = {NPCX9M3X_RAM_ADDR, NPCX9M3X_RAM_SIZE},
+	[NPCX9M6] = {NPCX9M6X_RAM_ADDR, NPCX9M6X_RAM_SIZE},
+};
+BUILD_ASSERT(ARRAY_SIZE(chip_info) == NPCX_CHIP_RAM_VAR_NONE);
 
 /* Support chips name strings */
 const char *supported_chips = "npcx5m5g, npcx5m6g, npcx7m5g, npcx7m6g, "
-		"npcx7m6f, npcx7m6fb, npcx7m6fc, or npcx7m7wb";
+		"npcx7m6f, npcx7m6fb, npcx7m6fc, npcx7m7fc, npcx7m7wb, "
+		"npcx7m7wc, npcx9m3f or npcx9m6f";
 
 static unsigned int calc_api_csum_bin(void);
 static unsigned int initialize_crc_32(void);
@@ -71,7 +78,7 @@ static int splice_into_path(char *result, const char *path, int resultsz,
 			"\n\nfilename '%s' with prefix '%s' too long\n\n",
 			path, prefix);
 		my_printf(TINF,
-			"\n\n%d + %d + 1 needs to fit in %d bytes\n\n",
+			"\n\n%zu + %zu + 1 needs to fit in %d bytes\n\n",
 			strlen(path), strlen(prefix), resultsz);
 		return FALSE;
 	}
@@ -89,6 +96,43 @@ static int splice_into_path(char *result, const char *path, int resultsz,
 	result_last_delim = result + (last_delim - path);
 	sprintf(result_last_delim + 1, "%s%s", prefix, last_delim + 1);
 	return TRUE;
+}
+
+/**
+ * Convert the chip name (string) to the chip's RAM variant.
+ * @param    chip_name - the string of the npcx chip variant.
+ *
+ * @return   one of enum value of npcx_chip_ram_variant,
+ *           NPCX_CHIP_RAM_VAR_NONE otherwise.
+ */
+static enum npcx_chip_ram_variant chip_to_ram_var(const char *chip_name)
+{
+	if (str_cmp_no_case(chip_name, "npcx9m6f") == 0)
+		return NPCX9M6;
+	else if (str_cmp_no_case(chip_name, "npcx9m3f") == 0)
+		return NPCX9M3;
+	else if (str_cmp_no_case(chip_name, "npcx7m7wb") == 0)
+		return NPCX7M7;
+	else if (str_cmp_no_case(chip_name, "npcx7m7wc") == 0)
+		return NPCX7M7;
+	else if (str_cmp_no_case(chip_name, "npcx7m7fc") == 0)
+		return NPCX7M7;
+	else if (str_cmp_no_case(chip_name, "npcx7m6f") == 0)
+		return NPCX7M6;
+	else if (str_cmp_no_case(chip_name, "npcx7m6fb") == 0)
+		return NPCX7M6;
+	else if (str_cmp_no_case(chip_name, "npcx7m6fc") == 0)
+		return NPCX7M6;
+	else if (str_cmp_no_case(chip_name, "npcx7m6g") == 0)
+		return  NPCX7M6;
+	else if (str_cmp_no_case(chip_name, "npcx7m5g") == 0)
+		return NPCX7M5;
+	else if (str_cmp_no_case(chip_name, "npcx5m6g") == 0)
+		return NPCX5M6G;
+	else if (str_cmp_no_case(chip_name, "npcx5m5g") == 0)
+		return NPCX5M5G;
+	else
+		return NPCX_CHIP_RAM_VAR_NONE;
 }
 
 /*
@@ -239,116 +283,40 @@ int main(int argc, char *argv[])
 						supported_chips);
 				main_status = FALSE;
 			} else {
-				if (str_cmp_no_case(main_str_temp,
-					"npcx7m7wb") == 0) {
-					if ((bin_params.bin_params
-						& BIN_FW_LOAD_START_ADDR) ==
-						0x00000000)
-						bin_params.fw_load_addr =
-						chip_info[NPCX7M7].ram_addr;
+				enum npcx_chip_ram_variant ram_variant;
 
-					if ((bin_params.bin_params
-						& BIN_FW_ENTRY_POINT) ==
-						0x00000000)
-						bin_params.fw_ep =
-						chip_info[NPCX7M7].ram_addr;
-
-					g_ram_start_address =
-						chip_info[NPCX7M7].ram_addr;
-					g_ram_size =
-						chip_info[NPCX7M7].ram_size;
-				} else if ((str_cmp_no_case(main_str_temp,
-					"npcx7m6f") == 0) ||
-					       (str_cmp_no_case(main_str_temp,
-					"npcx7m6fb") == 0) ||
-					       (str_cmp_no_case(main_str_temp,
-					"npcx7m6fc") == 0) ||
-					       (str_cmp_no_case(main_str_temp,
-					"npcx7m6g") == 0)) {
-					if ((bin_params.bin_params
-						& BIN_FW_LOAD_START_ADDR) ==
-						0x00000000)
-						bin_params.fw_load_addr =
-						chip_info[NPCX7M6].ram_addr;
-
-					if ((bin_params.bin_params &
-						BIN_FW_ENTRY_POINT) ==
-						0x00000000)
-						bin_params.fw_ep =
-						chip_info[NPCX7M6].ram_addr;
-
-					g_ram_start_address =
-						chip_info[NPCX7M6].ram_addr;
-					g_ram_size =
-						chip_info[NPCX7M6].ram_size;
-				} else if (str_cmp_no_case(main_str_temp,
-					"npcx7m5g") == 0) {
-					if ((bin_params.bin_params
-						& BIN_FW_LOAD_START_ADDR) ==
-						0x00000000)
-						bin_params.fw_load_addr =
-						chip_info[NPCX7M5].ram_addr;
-
-					if ((bin_params.bin_params &
-						BIN_FW_ENTRY_POINT) ==
-						0x00000000)
-						bin_params.fw_ep =
-						chip_info[NPCX7M5].ram_addr;
-
-					g_ram_start_address =
-						chip_info[NPCX7M5].ram_addr;
-					g_ram_size =
-						chip_info[NPCX7M5].ram_size;
-				} else if (str_cmp_no_case(main_str_temp,
-						    "npcx5m5g") == 0) {
-					if ((bin_params.bin_params
-						& BIN_FW_LOAD_START_ADDR) ==
-								0x00000000)
-						bin_params.fw_load_addr =
-						   chip_info[NPCX5M5G].ram_addr;
-
-					if ((bin_params.bin_params &
-					     BIN_FW_ENTRY_POINT) == 0x00000000)
-						bin_params.fw_ep =
-						   chip_info[NPCX5M5G].ram_addr;
-
-					g_ram_start_address =
-						chip_info[NPCX5M5G].ram_addr;
-					g_ram_size =
-						chip_info[NPCX5M5G].ram_size;
-
-					is_mrider15 = TRUE;
-
-				} else if (str_cmp_no_case(main_str_temp,
-							   "npcx5m6g") == 0) {
-					if ((bin_params.bin_params &
-						BIN_FW_LOAD_START_ADDR) ==
-								0x00000000)
-						bin_params.fw_load_addr =
-						   chip_info[NPCX5M6G].ram_addr;
-
-					if ((bin_params.bin_params &
-						BIN_FW_ENTRY_POINT) ==
-								0x00000000)
-						bin_params.fw_ep =
-						   chip_info[NPCX5M6G].ram_addr;
-
-					g_ram_start_address =
-						chip_info[NPCX5M6G].ram_addr;
-					g_ram_size =
-						chip_info[NPCX5M6G].ram_size;
-
-					is_mrider15 = TRUE;
-
-				} else {
+				ram_variant = chip_to_ram_var(main_str_temp);
+				if (ram_variant == NPCX_CHIP_RAM_VAR_NONE) {
 					my_printf(TERR,
 						  "\nInvalid chip name (%s) ",
 						  main_str_temp);
 					my_printf(TERR, ", it should be %s.\n",
 						supported_chips);
 					main_status = FALSE;
+					break;
 				}
 
+				if ((bin_params.bin_params
+					& BIN_FW_LOAD_START_ADDR) ==
+					0x00000000)
+					bin_params.fw_load_addr =
+					chip_info[ram_variant].ram_addr;
+
+				if ((bin_params.bin_params
+					& BIN_FW_ENTRY_POINT) ==
+					0x00000000)
+					bin_params.fw_ep =
+					chip_info[ram_variant].ram_addr;
+
+				g_ram_start_address =
+					chip_info[ram_variant].ram_addr;
+				g_ram_size =
+					chip_info[ram_variant].ram_size;
+
+				if ((ram_variant == NPCX5M5G) ||
+					(ram_variant == NPCX5M6G)) {
+					is_mrider15 = TRUE;
+				}
 			}
 		  /* -argfile Read argument file. File name must be after it.*/
 		} else if (str_cmp_no_case(hdr_args[arg_ind],
@@ -391,7 +359,8 @@ int main(int argc, char *argv[])
 
 					/* Copy back the restored arguments. */
 					for (tmp_ind = 0;
-						 tmp_ind < tmp_arg_num;
+						 (tmp_ind < tmp_arg_num) &&
+						 (arg_ind < MAX_ARGS);
 						 tmp_ind++) {
 						strncpy(hdr_args[arg_ind++],
 							tmp_hdr_args[tmp_ind],
@@ -715,8 +684,7 @@ int main(int argc, char *argv[])
 				if ((main_temp & ADDR_16_BYTES_ALIGNED_MASK)
 									!= 0) {
 					my_printf(TERR,
-						 "\nFW Image address (0x%08X)");
-					my_printf(TERR,
+						  "\nFW Image address (0x%08X)"
 						  " isn't 16-bytes aligned !\n",
 						  main_temp);
 					main_status = FALSE;
@@ -968,7 +936,7 @@ int copy_file_to_file(char *dst_file_name,
 		      int  origin)
 {
 
-	int index;
+	int index = 0;
 	int result = 0;
 	unsigned char local_val;
 	int src_file_size;
@@ -996,8 +964,10 @@ int copy_file_to_file(char *dst_file_name,
 
 	/* Point to the end of the destination file, and to the start */
 	/* of the source file. */
-	fseek(dst_file, offset, origin);
-	fseek(src_file, 0, SEEK_SET);
+	if (fseek(dst_file, offset, origin) < 0)
+		goto out;
+	if (fseek(src_file, 0, SEEK_SET) < 0)
+		goto out;
 
 	/* Loop over all destination file and write it to the source file.*/
 	for (index = 0; index < src_file_size; index++) {
@@ -1020,13 +990,13 @@ int copy_file_to_file(char *dst_file_name,
 			break;
 	}
 
+out:
 	/* Close the files. */
 	fclose(dst_file);
 	fclose(src_file);
 
 	/* Copy ended, return with the number of bytes that were copied. */
 	return index;
-
 }
 
 /*
@@ -1056,8 +1026,8 @@ void my_printf(int error_level, char *fmt, ...)
  *--------------------------------------------------------------------------
  * Function:	 write_to_file
  * Parameters:	 TBD
- * Return:		 TBD
- * Description:	 Writes to ELF or BIN files - whateves is open
+ * Return:	 TRUE on successful write
+ * Description:	 Writes to ELF or BIN files - whatever is open
  *--------------------------------------------------------------------------
  */
 int write_to_file(unsigned int write_value,
@@ -1072,8 +1042,8 @@ int write_to_file(unsigned int write_value,
 	unsigned short localValue2;
 	unsigned char localValue1;
 
-	fseek(g_hfd_pointer, 0L, SEEK_SET);
-	fseek(g_hfd_pointer, offset, SEEK_SET);
+	if (fseek(g_hfd_pointer, offset, SEEK_SET) < 0)
+		return FALSE;
 
 	switch (num_of_bytes) {
 	case(1):
@@ -1127,7 +1097,7 @@ int write_to_file(unsigned int write_value,
  *--------------------------------------------------------------------------
  * Function:	 read_from_file
  * Parameters:	 TBD
- * Return : TBD
+ * Return:       TRUE on successful read
  * Description : Reads from open BIN file
  *--------------------------------------------------------------------------
  */
@@ -1141,8 +1111,8 @@ int read_from_file(unsigned int offset,
 	unsigned short localValue2;
 	unsigned char localValue1;
 
-	fseek(input_file_pointer, 0L, SEEK_SET);
-	fseek(input_file_pointer, offset, SEEK_SET);
+	if (fseek(input_file_pointer, offset, SEEK_SET) < 0)
+		return FALSE;
 
 	switch (size_to_read) {
 	case(1):
@@ -1274,26 +1244,30 @@ int str_cmp_no_case(const char *s1, const char *s2)
 
 /*
  *--------------------------------------------------------------------------
- * Function:	 get_file_lengt
- * Parameters:	 stream - Pointer to a FILE objec
- * Return:		 File length in bytes
+ * Function:	 get_file_length
+ * Parameters:	 stream - Pointer to a FILE object
+ * Return:		 File length in bytes or -1 on error
  * Description:	 Gets the file length in bytes.
  *--------------------------------------------------------------------------
  */
 int get_file_length(FILE *stream)
 {
-	int curent_position;
+	int current_position;
 	int file_len;
 
 	/* Store current position. */
-	curent_position = ftell(stream);
+	current_position = ftell(stream);
+	if (current_position < 0)
+		return -1;
 
 	/* End position of the file is its length. */
-	fseek(stream, 0, SEEK_END); /* seek to end of file */
+	if (fseek(stream, 0, SEEK_END) < 0)
+		return -1;
 	file_len = ftell(stream);
 
 	/* Restore the original position. */
-	fseek(stream, curent_position, SEEK_SET);
+	if (fseek(stream, current_position, SEEK_SET) < 0)
+		return -1;
 
 	/* return file length. */
 	return file_len;
@@ -1362,10 +1336,9 @@ int main_bin(struct tbinparams binary_params)
 	if (((int)binary_params.fw_hdr_offset < 0) ||
 		(binary_params.fw_hdr_offset > bin_file_size_bytes)) {
 		my_printf(TERR,
-			  "\nFW header offset 0x%08x (%d) should be in the",
-			  binary_params.fw_hdr_offset);
-		my_printf(TERR,
+			  "\nFW header offset 0x%08x (%d) should be in the"
 			  " range of 0 and file size (%d).\n",
+			  binary_params.fw_hdr_offset,
 			  binary_params.fw_hdr_offset,
 			  bin_file_size_bytes);
 		return FALSE;
@@ -1858,7 +1831,7 @@ int main_bin(struct tbinparams binary_params)
  * Parameters:	unsigned short header checksum (O)
  *		unsigned int header offset from first byte in
  *		the binary (I)
- * Return:
+ * Return:	TRUE if successful
  * Description:	 Go thru bin file and calculate checksum
  *******************************************************************
  */
@@ -1872,12 +1845,14 @@ int calc_header_crc_bin(unsigned int *p_cksum)
 	init_calculation(&calc_header_checksum_crc);
 
 	/* Go thru the BIN File and calculate the Checksum */
-	fseek(g_hfd_pointer, 0x00000000, SEEK_SET);
+	if (fseek(g_hfd_pointer, 0x00000000, SEEK_SET) < 0)
+		return FALSE;
+
 	if (fread(g_header_array,
 		  HEADER_SIZE,
 		  1,
 		  g_hfd_pointer) != 1)
-		return 0;
+		return FALSE;
 
 	for (i = 0; i < (HEADER_SIZE - HEADER_CRC_FIELDS_SIZE); i++) {
 
@@ -1887,9 +1862,7 @@ int calc_header_crc_bin(unsigned int *p_cksum)
 		 */
 		if (g_verbose == SUPER_VERBOSE) {
 			if (i%line_print_size == 0)
-				my_printf(TDBG,
-					  "\n[%.4x]: ",
-					  g_header_array + i);
+				my_printf(TDBG, "\n[%.4x]: ", i);
 
 			my_printf(TDBG, "%.2x ", g_header_array[i]);
 		}
@@ -1959,8 +1932,9 @@ int calc_firmware_csum_bin(unsigned int *p_cksum,
 		else
 			calc_read_bytes = calc_num_of_bytes_to_read;
 
-		fseek(input_file_pointer, 0L, SEEK_SET);
-		fseek(input_file_pointer, calc_curr_position, SEEK_SET);
+		if (fseek(input_file_pointer,
+			calc_curr_position, SEEK_SET) < 0)
+			return 0;
 		if (fread(g_fw_array,
 			  calc_read_bytes,
 			  1,
@@ -2018,9 +1992,11 @@ int calc_firmware_csum_bin(unsigned int *p_cksum,
 int main_hdr(void)
 {
 	int result = 0;
-	char tmp_file_name[NAME_SIZE];
+	char tmp_file_name[NAME_SIZE + 1];
 	unsigned int tmp_long_val;
 	unsigned int bin_file_size_bytes;
+
+	tmp_file_name[NAME_SIZE] = '\0';
 
 	if (is_ptr_merge) {
 		if (strlen(input_file_name) == 0) {
@@ -2032,7 +2008,7 @@ int main_hdr(void)
 		if (strlen(output_file_name) == 0)
 			strncpy(tmp_file_name,
 				input_file_name,
-				sizeof(tmp_file_name));
+				sizeof(tmp_file_name) - 1);
 		else {
 			copy_file_to_file(output_file_name,
 					  input_file_name,
@@ -2040,7 +2016,7 @@ int main_hdr(void)
 					  SEEK_END);
 			strncpy(tmp_file_name,
 				output_file_name,
-				sizeof(tmp_file_name));
+				sizeof(tmp_file_name) - 1);
 		}
 
 		/* Open Header file */
@@ -2074,8 +2050,8 @@ int main_hdr(void)
 			return FALSE;
 		}
 
-		fseek(g_hdr_pointer, 0L, SEEK_SET);
-		fseek(g_hdr_pointer, fw_offset, SEEK_SET);
+		if (fseek(g_hdr_pointer, fw_offset, SEEK_SET) < 0)
+			return FALSE;
 
 		tmp_long_val = HDR_PTR_SIGNATURE;
 		result = (int)(fwrite(&tmp_long_val,
@@ -2099,11 +2075,9 @@ int main_hdr(void)
 				  ptr_fw_addr);
 		} else {
 			my_printf(TERR,
-				  "\n\nCouldn't write signature (%x) and ",
-				  tmp_long_val);
-			my_printf(TERR,
+				  "\n\nCouldn't write signature (%x) and "
 				  "pointer to BootLoader header file (%s)\n\n",
-				  ptr_fw_addr, tmp_file_name);
+				  tmp_long_val, tmp_file_name);
 			return FALSE;
 		}
 
@@ -2124,7 +2098,8 @@ int main_hdr(void)
 			return FALSE;
 		}
 
-		fseek(g_hdr_pointer, 0L, SEEK_SET);
+		if (fseek(g_hdr_pointer, 0L, SEEK_SET) < 0)
+			return FALSE;
 
 		tmp_long_val = HDR_PTR_SIGNATURE;
 		result = (int)(fwrite(&tmp_long_val,
@@ -2182,10 +2157,11 @@ int main_hdr(void)
  */
 int main_api(void)
 {
-	char tmp_file_name[NAME_SIZE];
+	char tmp_file_name[NAME_SIZE + 1];
 	int result = 0;
 	unsigned int crc_checksum;
 
+	tmp_file_name[NAME_SIZE] = '\0';
 	api_file_size_bytes = 0;
 
 	/* If API input file was not declared, then print error message. */
@@ -2201,7 +2177,8 @@ int main_api(void)
 			sizeof(tmp_file_name), "api_"))
 			return FALSE;
 	} else
-		strncpy(tmp_file_name, output_file_name, sizeof(tmp_file_name));
+		strncpy(tmp_file_name, output_file_name,
+			sizeof(tmp_file_name) - 1);
 
 	/* Make sure that new empty file is created. */
 	api_file_pointer = fopen(tmp_file_name, "w");
@@ -2225,6 +2202,8 @@ int main_api(void)
 	 * without any header.
 	 */
 	api_file_size_bytes = get_file_length(api_file_pointer);
+	if (api_file_size_bytes < 0)
+		return FALSE;
 	my_printf(TINF,
 		  "\nAPI file: %s, size: %d bytes (0x%x)\n",
 		  tmp_file_name,
@@ -2233,8 +2212,8 @@ int main_api(void)
 
 	crc_checksum = calc_api_csum_bin();
 
-	fseek(api_file_pointer, 0L, SEEK_SET);
-	fseek(api_file_pointer, api_file_size_bytes, SEEK_SET);
+	if (fseek(api_file_pointer, api_file_size_bytes, SEEK_SET) < 0)
+		return FALSE;
 
 	result = (int)(fwrite(&crc_checksum,
 			      4,
@@ -2277,7 +2256,7 @@ unsigned int calc_api_csum_bin(void)
 
 	unsigned int i;
 	unsigned int calc_read_bytes;
-	unsigned int calc_num_of_bytes_to_read;
+	int calc_num_of_bytes_to_read;
 	unsigned int calc_curr_position;
 	unsigned int calc_fw_checksum_crc = 0;
 	unsigned char g_fw_array[BUFF_SIZE];
@@ -2304,8 +2283,9 @@ unsigned int calc_api_csum_bin(void)
 		else
 			calc_read_bytes = calc_num_of_bytes_to_read;
 
-		fseek(api_file_pointer, 0L, SEEK_SET);
-		fseek(api_file_pointer, calc_curr_position, SEEK_SET);
+		if (fseek(api_file_pointer,
+			calc_curr_position, SEEK_SET) < 0)
+			return 0;
 		if (fread(g_fw_array,
 			  calc_read_bytes,
 			  1,

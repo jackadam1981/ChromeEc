@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -21,7 +21,12 @@ enum hook_priority {
 	HOOK_PRIO_INIT_DMA = HOOK_PRIO_FIRST + 1,
 	/* LPC inits before modules which need memory-mapped I/O */
 	HOOK_PRIO_INIT_LPC = HOOK_PRIO_FIRST + 1,
-	/* I2C is needed before chipset inits (battery communications). */
+	/*
+	 * I2C dependents (battery, sensors, etc), everything but the
+	 * controllers. I2C controller is now initialized in main.c
+	 * TODO(b/138384267): Split this hook up and name the resulting
+	 * ones more semantically.
+	 */
 	HOOK_PRIO_INIT_I2C = HOOK_PRIO_FIRST + 2,
 	/* Chipset inits before modules which need to know its initial state. */
 	HOOK_PRIO_INIT_CHIPSET = HOOK_PRIO_FIRST + 3,
@@ -43,6 +48,9 @@ enum hook_priority {
 	HOOK_PRIO_INIT_VBOOT_HASH = HOOK_PRIO_FIRST + 11,
 	/* Init charge manager before usage in board init */
 	HOOK_PRIO_CHARGE_MANAGER_INIT = HOOK_PRIO_FIRST + 12,
+
+	HOOK_PRIO_INIT_ADC = HOOK_PRIO_DEFAULT,
+	HOOK_PRIO_INIT_DAC = HOOK_PRIO_DEFAULT,
 
 	/* Specific values to lump temperature-related hooks together */
 	HOOK_PRIO_TEMP_SENSOR = 6000,
@@ -111,12 +119,44 @@ enum hook_type {
 	 */
 	HOOK_CHIPSET_SUSPEND,
 
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+	/*
+	 * Initialization before the system resumes, like enabling the SPI
+	 * driver such that it can receive a host resume event.
+	 *
+	 * Hook routines are called from the chipset task.
+	 */
+	HOOK_CHIPSET_RESUME_INIT,
+
+	/*
+	 * System has suspended. It is paired with CHIPSET_RESUME_INIT hook,
+	 * like reverting the initialization of the SPI driver.
+	 *
+	 * Hook routines are called from the chipset task.
+	 */
+	HOOK_CHIPSET_SUSPEND_COMPLETE,
+#endif
+
 	/*
 	 * System is shutting down.  All suspend rails are still on.
 	 *
 	 * Hook routines are called from the chipset task.
 	 */
 	HOOK_CHIPSET_SHUTDOWN,
+
+	/*
+	 * System has already shut down. All the suspend rails are already off.
+	 *
+	 * Hook routines are called from the chipset task.
+	 */
+	HOOK_CHIPSET_SHUTDOWN_COMPLETE,
+
+	/*
+	 * System is in G3.  All power rails are now turned off.
+	 *
+	 * Hook routines are called from the chipset task.
+	 */
+	HOOK_CHIPSET_HARD_OFF,
 
 	/*
 	 * System reset in S0.  All rails are still up.
@@ -169,15 +209,6 @@ enum hook_type {
 	 */
 	HOOK_BATTERY_SOC_CHANGE,
 
-#ifdef CONFIG_CASE_CLOSED_DEBUG_V1
-	/*
-	 * Case-closed debugging configuration changed.
-	 *
-	 * Hook routines are called from the TICK, console, or TPM task.
-	 */
-	HOOK_CCD_CHANGE,
-#endif
-
 #ifdef CONFIG_USB_SUSPEND
 	/*
 	 * Called when there is a change in USB power management status
@@ -203,11 +234,30 @@ enum hook_type {
 	HOOK_SECOND,
 
 	/*
-	 * Detect USB PD cc disconnect.
-	 *
-	 * Hook routines will be called from the PD task.
+	 * USB PD cc disconnect event.
 	 */
 	HOOK_USB_PD_DISCONNECT,
+
+	/*
+	 * USB PD cc connection event.
+	 */
+	HOOK_USB_PD_CONNECT,
+
+#ifdef TEST_BUILD
+	/*
+	 * Special hook types to be used by unit tests of the hooks
+	 * implementation only.
+	 */
+	HOOK_TEST_1,
+	HOOK_TEST_2,
+	HOOK_TEST_3,
+#endif  /* TEST_BUILD */
+
+	/*
+	 * Not a hook type (instead the number of hooks). This should
+	 * always be placed at the end of this enumeration.
+	 */
+	HOOK_TYPE_COUNT,
 };
 
 struct hook_data {
@@ -231,6 +281,14 @@ struct hook_data {
  */
 void hook_notify(enum hook_type type);
 
+/*
+ * CONFIG_PLATFORM_EC_HOOKS is enabled by default during a Zephyr
+ * build, but can be disabled via Kconfig if desired (leaving the stub
+ * implementation at the bottom of this file).
+ */
+#if defined(CONFIG_PLATFORM_EC_HOOKS)
+#include "zephyr_hooks_shim.h"
+#elif defined(CONFIG_COMMON_RUNTIME)
 struct deferred_data {
 	/* Deferred function pointer */
 	void (*routine)(void);
@@ -252,7 +310,6 @@ struct deferred_data {
  */
 int hook_call_deferred(const struct deferred_data *data, int us);
 
-#ifdef CONFIG_COMMON_RUNTIME
 /**
  * Register a hook routine.
  *
@@ -309,12 +366,16 @@ int hook_call_deferred(const struct deferred_data *data, int us);
 	CONCAT2(routine, _data)						\
 	__attribute__((section(".rodata.deferred")))			\
 	     = {routine}
-
-#else /* CONFIG_COMMON_RUNTIME */
+#else
+/*
+ * Stub implementation in case hooks are disabled (neither
+ * CONFIG_COMMON_RUNTIME nor CONFIG_PLATFORM_EC_HOOKS is defined)
+ */
+#define hook_call_deferred(unused1, unused2) -1
 #define DECLARE_HOOK(t, func, p)				\
 	void CONCAT2(unused_hook_, func)(void) { func(); }
 #define DECLARE_DEFERRED(func)					\
 	void CONCAT2(unused_deferred_, func)(void) { func(); }
-#endif /* CONFIG_COMMON_RUNTIME */
+#endif
 
 #endif  /* __CROS_EC_HOOKS_H */

@@ -11,36 +11,31 @@
 #include "math_util.h"
 #include "mat44.h"
 #include "vec4.h"
+#include "kasa.h"
 
 #define MAG_CAL_MAX_SAMPLES 0xffff
-#define MAG_CAL_MIN_BATCH_WINDOW_US    SECOND
-#define MAG_CAL_MIN_BATCH_SIZE      25      /* samples */
+#define MAG_CAL_MIN_BATCH_WINDOW_US    (2 * SECOND)
+#define MAG_CAL_MIN_BATCH_SIZE      50      /* samples */
 
 struct mag_cal_t {
-	/*
-	 * Matric for sphere fitting:
-	 * +----+----+----+----+
-	 * | xx | xy | xz | x  |
-	 * +----+----+----+----+
-	 * | xy | yy | yz | y  |
-	 * +----+----+----+----+
-	 * | xz | yz | zz | z  |
-	 * +----+----+----+----+
-	 * | x  | y  | z  | 1  |
-	 * +----+----+----+----+
-	 */
-	mat44_fp_t acc;
-	fpv4_t acc_w;
+	struct kasa_fit kasa_fit;
 	fp_t radius;
 
 	intv3_t bias;
 
 	/* number of samples needed to calibrate */
 	uint16_t batch_size;
-	uint16_t nsamples;
 };
 
 void init_mag_cal(struct mag_cal_t *moc);
 
+/**
+ * Update the magnetometer calibration structure and possibly compute the new
+ * bias.
+ *
+ * @param moc Pointer to the magnetometer struct to update.
+ * @param v   The new data.
+ * @return    1 if a new calibration value is available, 0 otherwise.
+ */
 int mag_cal_update(struct mag_cal_t *moc, const intv3_t v);
 #endif  /* __CROS_EC_MAG_CAL_H */

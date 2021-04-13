@@ -1,13 +1,13 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 #ifdef CHIP_VARIANT_STM32F03X8
-#define CONFIG_FLASH_SIZE 0x00010000
+#define CONFIG_FLASH_SIZE_BYTES 0x00010000
 #define CONFIG_RAM_SIZE   0x00002000
 #else
-#define CONFIG_FLASH_SIZE 0x00008000
+#define CONFIG_FLASH_SIZE_BYTES 0x00008000
 #define CONFIG_RAM_SIZE   0x00001000
 #endif
 

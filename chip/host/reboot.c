@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -20,7 +20,7 @@ void emulator_reboot(void)
 	ccprints("Emulator would reboot here. Fuzzing: doing nothing.");
 }
 #else /* !TEST_FUZZ */
-__attribute__((noreturn))
+noreturn
 void emulator_reboot(void)
 {
 	char *argv[] = {strdup(__get_prog_name()), NULL};

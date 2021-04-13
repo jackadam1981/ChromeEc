@@ -18,7 +18,7 @@
 #undef  CONFIG_HIBERNATE
 #define CONFIG_HOSTCMD_RTC
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_I2C_VIRTUAL_BATTERY
 #define CONFIG_I2C_PASSTHRU_RESTRICTED
 #define CONFIG_LED_COMMON
@@ -69,7 +69,6 @@
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_RT9467
 #define CONFIG_CHARGER_INPUT_CURRENT 512
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 2
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_BAT_PCT 2
 #define CONFIG_CHARGER_LIMIT_POWER_THRESH_CHG_MW 15000
@@ -99,13 +98,17 @@
 #define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_MODE_SWITCH
 
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
 /* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 256
+#define CONFIG_ACCEL_FIFO_SIZE 256
+/* Depends on how fast the AP boots and typical ODRs. */
 #define CONFIG_ACCEL_FIFO_THRES 10
 
 /* USB PD config */
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_DISCHARGE_GPIO
@@ -144,7 +147,6 @@
 
 #define PD_POWER_SUPPLY_TURN_ON_DELAY  30000  /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 50000  /* us */
-#define PD_VCONN_SWAP_DELAY 5000 /* us */
 
 /* Timer selection */
 #define TIM_CLOCK32  2
@@ -174,15 +176,16 @@
 #define I2C_PORT_TCPC0    1
 
 /* Route sbs host requests to virtual battery driver */
-#define VIRTUAL_BATTERY_ADDR 0x16
+#define VIRTUAL_BATTERY_ADDR_FLAGS 0x0B
 
 /* Enable Accel over SPI */
 #define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */
 
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
-/* Define the MKBP events which are allowed to wakeup AP in S3. */
-#define CONFIG_MKBP_WAKEUP_MASK \
+#define CONFIG_MKBP_USE_GPIO
+/* Define the host events which are allowed to wakeup AP in S3. */
+#define CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK \
 		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC))
 
@@ -210,6 +213,7 @@ enum sensor_id {
 	LID_ACCEL = 0,
 	LID_GYRO,
 	VSYNC,
+	SENSOR_COUNT,
 };
 
 #include "gpio_signal.h"

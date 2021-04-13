@@ -13,14 +13,12 @@
 #include "mag_bmm150.h"
 #include "mag_lis2mdl.h"
 
-#define LSM6DSM_I2C_ADDR(__x)		(__x << 1)
-
 /*
  * 7-bit address is 110101xb. Where 'x' is determined
  * by the voltage on the ADDR pin
  */
-#define LSM6DSM_ADDR0			LSM6DSM_I2C_ADDR(0x6a)
-#define LSM6DSM_ADDR1			LSM6DSM_I2C_ADDR(0x6b)
+#define LSM6DSM_ADDR0_FLAGS		0x6a
+#define LSM6DSM_ADDR1_FLAGS		0x6b
 
 /* COMMON DEFINE FOR ACCEL-GYRO SENSORS */
 #define LSM6DSM_EN_BIT			0x01
@@ -68,7 +66,10 @@
 
 /* Who Am I */
 #define LSM6DSM_WHO_AM_I_REG		0x0f
+/* LSM6DSM/LSM6DSL/LSM6DS3TR-C */
 #define LSM6DSM_WHO_AM_I			0x6a
+/* LSM6DS3 */
+#define LSM6DS3_WHO_AM_I			0x69
 
 #define LSM6DSM_CTRL1_ADDR		0x10
 #define LSM6DSM_XL_ODR_MASK			0xf0
@@ -107,6 +108,8 @@
 #define LSM6DSM_DTAP_DETECT			0x10
 
 #define LSM6DSM_STATUS_REG		0x1e
+
+#define LSM6DSM_OUT_TEMP_L_ADDR		0x20
 
 #define LSM6DSM_GYRO_OUT_X_L_ADDR	0x22
 #define LSM6DSM_ACCEL_OUT_X_L_ADDR	0x28
@@ -181,11 +184,14 @@ enum dev_fifo {
 	FIFO_DEV_INVALID = -1,
 	FIFO_DEV_GYRO = 0,
 	FIFO_DEV_ACCEL,
-#ifdef CONFIG_LSM6DSM_SEC_I2C
 	FIFO_DEV_MAG,
-#endif
-	FIFO_DEV_NUM,
 };
+
+#ifdef CONFIG_LSM6DSM_SEC_I2C
+#define	FIFO_DEV_NUM (FIFO_DEV_MAG + 1)
+#else
+#define	FIFO_DEV_NUM (FIFO_DEV_ACCEL + 1)
+#endif
 
 struct fstatus {
 	uint16_t len;
@@ -288,6 +294,33 @@ struct lsm6dsm_fifo_data {
 };
 
 /*
+ * Structure used to maintain the load state per sensor. This will be used to
+ * properly spread values in case we have more than one reading for a given
+ * sensor in a single fifo read pass.
+ */
+struct load_fifo_sensor_state_t {
+	uint32_t int_timestamp;
+	uint8_t sample_count;
+	int sample_rate;
+};
+
+/**
+ * Structure used to hold fifo state. This struct should only be used if
+ * CONFIG_ACCEL_FIFO is defined.
+ */
+struct lsm6dsm_accel_fifo_state {
+	struct lsm6dsm_fifo_data config;
+	struct lsm6dsm_fifo_data current;
+	int next_in_pattern;
+	/*
+	 * After an ODR change, the sensor filters need settling time; discard
+	 * initial samples with incorrect values
+	 */
+	unsigned int samples_to_discard[FIFO_DEV_NUM];
+	struct load_fifo_sensor_state_t load_fifo_sensor_state[FIFO_DEV_NUM];
+};
+
+/*
  * lsm6dsm_data is used for accel gyro and the sensor connect to a LSM6DSM.
  *
  * +---- lsm6dsm_data ------------------------------------------------+
@@ -322,16 +355,7 @@ struct lsm6dsm_data {
 	/* BMM150 doesn't use st_mems_common; no stprivate_data */
 	struct stprivate_data st_data[2];
 #endif
-#ifdef CONFIG_ACCEL_FIFO
-	struct lsm6dsm_fifo_data config;
-	struct lsm6dsm_fifo_data current;
-	int next_in_patten;
-	/*
-	 * After an ODR change, the sensor filters need settling time; discard
-	 * initial samples with incorrect values
-	 */
-	unsigned int samples_to_discard[FIFO_DEV_NUM];
-#endif
+	struct lsm6dsm_accel_fifo_state *accel_fifo_state;
 #if defined(CONFIG_LSM6DSM_SEC_I2C) && defined(CONFIG_MAG_CALIBRATE)
 	union {
 #ifdef CONFIG_MAG_LSM6DSM_BMM150
@@ -345,13 +369,24 @@ struct lsm6dsm_data {
 #endif  /* CONFIG_MAG_CALIBRATE */
 };
 
+#ifdef CONFIG_ACCEL_FIFO
+#define LSM6DSM_ACCEL_FIFO_STATE (&((struct lsm6dsm_accel_fifo_state) {}))
+#else
+#define LSM6DSM_ACCEL_FIFO_STATE NULL
+#endif
+
+#define LSM6DSM_DATA \
+	((struct lsm6dsm_data) { \
+		.accel_fifo_state = LSM6DSM_ACCEL_FIFO_STATE, \
+	})
+
 /*
  * Note: The specific number of samples to discard depends on the filters
  * configured for the chip, as well as the ODR being set.  For most of our
- * allowed ODRs, 4 should suffice.
+ * allowed ODRs, 5 should suffice.
  * See: ST's LSM6DSM application notes (AN4987) Tables 17 and 19 for details
  */
-#define LSM6DSM_DISCARD_SAMPLES 4
+#define LSM6DSM_DISCARD_SAMPLES 5
 
 #define LSM6DSM_ST_DATA(g, type) (&(&(g))->st_data[(type)])
 

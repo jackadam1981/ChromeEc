@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -12,8 +12,8 @@
 #include "i2c.h"
 
 /* I2C address */
-#define BQ24770_ADDR (0x12)
-#define BQ24773_ADDR (0x6a << 1)
+#define BQ24770_ADDR_FLAGS	0x09
+#define BQ24773_ADDR_FLAGS	0x6a
 
 /* Chip specific commands */
 #define BQ24770_CHARGE_OPTION0          0x12
@@ -41,23 +41,22 @@
 #define BQ24773_CHARGE_OPTION2          0x10
 
 /* Option bits */
-#define OPTION0_CHARGE_INHIBIT          (1 << 0)
-#define OPTION0_LEARN_ENABLE            (1 << 5)
+#define OPTION0_CHARGE_INHIBIT          BIT(0)
+#define OPTION0_LEARN_ENABLE            BIT(5)
 #define OPTION0_SWITCHING_FREQ_MASK     (3 << 8)
 #define OPTION0_SWITCHING_FREQ_600KHZ   (0 << 8)
-#define OPTION0_SWITCHING_FREQ_800KHZ   (1 << 8)
+#define OPTION0_SWITCHING_FREQ_800KHZ   BIT(8)
 #define OPTION0_SWITCHING_FREQ_1000KHZ  (2 << 8)
 #define OPTION0_SWITCHING_FREQ_1200KHZ  (3 << 8)
 
-#define OPTION2_EN_EXTILIM              (1 << 7)
+#define OPTION2_EN_EXTILIM              BIT(7)
 
 /* Prochot Option bits */
 #define PROCHOT_OPTION1_SELECTOR_MASK   0x7f /* [6:0] PROCHOT SELECTOR */
 
 #ifdef CONFIG_CHARGER_BQ24770
 	#define CHARGER_NAME		"bq24770"
-	#undef I2C_ADDR_CHARGER
-	#define I2C_ADDR_CHARGER	BQ24770_ADDR
+	#define I2C_ADDR_CHARGER_FLAGS	BQ24770_ADDR_FLAGS
 
 	#define REG_CHARGE_OPTION0	BQ24770_CHARGE_OPTION0
 	#define REG_CHARGE_OPTION1	BQ24770_CHARGE_OPTION1
@@ -73,8 +72,7 @@
 
 #elif defined(CONFIG_CHARGER_BQ24773)
 	#define CHARGER_NAME		"bq24773"
-	#undef I2C_ADDR_CHARGER
-	#define I2C_ADDR_CHARGER	BQ24773_ADDR
+	#define I2C_ADDR_CHARGER_FLAGS	BQ24773_ADDR_FLAGS
 
 	#define REG_CHARGE_OPTION0	BQ24773_CHARGE_OPTION0
 	#define REG_CHARGE_OPTION1	BQ24773_CHARGE_OPTION1

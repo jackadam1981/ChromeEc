@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -8,16 +8,18 @@
 #include "common.h"
 #include "console.h"
 #include "dptf.h"
+#include "ec_commands.h"
+#include "fan.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "keyboard_backlight.h"
 #include "lpc.h"
-#include "ec_commands.h"
-#include "tablet_mode.h"
 #include "pwm.h"
 #include "timer.h"
+#include "tablet_mode.h"
 #include "usb_charge.h"
+#include "usb_common.h"
 #include "util.h"
 
 /* Console output macros */
@@ -48,10 +50,6 @@ static int __bss_slow dptf_temp_threshold;	/* last threshold written */
  */
 static int current_dptf_profile = DPTF_PROFILE_DEFAULT;
 
-#endif
-
-#ifdef CONFIG_USB_PORT_POWER_DUMB
-extern const int usb_port_enable[USB_PORT_COUNT];
 #endif
 
 /*
@@ -111,9 +109,14 @@ int acpi_dptf_set_profile_num(int n)
 {
 	int ret = acpi_dptf_is_profile_valid(n);
 
-	if (ret == EC_SUCCESS)
+	if (ret == EC_SUCCESS) {
 		current_dptf_profile = n;
-
+		if (IS_ENABLED(CONFIG_DPTF_MULTI_PROFILE) &&
+		    IS_ENABLED(CONFIG_HOSTCMD_EVENTS)) {
+			/* Notify kernel to update DPTF profile */
+			host_set_single_event(EC_HOST_EVENT_MODE_CHANGE);
+		}
+	}
 	return ret;
 }
 
@@ -195,7 +198,7 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 		case EC_ACPI_MEM_TEST_COMPLIMENT:
 			result = 0xff - acpi_mem_test;
 			break;
-#ifdef CONFIG_PWM_KBLIGHT
+#ifdef CONFIG_KEYBOARD_BACKLIGHT
 		case EC_ACPI_MEM_KEYBOARD_BACKLIGHT:
 			result = kblight_get();
 			break;
@@ -279,7 +282,11 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			break;
 			}
 #endif
-
+#ifdef CONFIG_USBC_RETIMER_FW_UPDATE
+		case EC_ACPI_MEM_USB_RETIMER_FW_UPDATE:
+			result = usb_retimer_fw_update_get_result();
+			break;
+#endif
 		default:
 			result = acpi_read(acpi_addr);
 			break;
@@ -301,15 +308,17 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			battery_memmap_set_index(data);
 			break;
 #endif
-#ifdef CONFIG_PWM_KBLIGHT
+#ifdef CONFIG_KEYBOARD_BACKLIGHT
 		case EC_ACPI_MEM_KEYBOARD_BACKLIGHT:
 			/*
 			 * Debug output with CR not newline, because the host
 			 * does a lot of keyboard backlights and it scrolls the
 			 * debug console.
 			 */
-			CPRINTF("\r[%T ACPI kblight %d]", data);
+			CPRINTF("\r[%pT ACPI kblight %d]",
+				PRINTF_TIMESTAMP_NOW, data);
 			kblight_set(data);
+			kblight_enable(data > 0);
 			break;
 #endif
 #ifdef CONFIG_FANS
@@ -373,7 +382,13 @@ int acpi_ap_to_ec(int is_cmd, uint8_t value, uint8_t *resultptr)
 			break;
 			}
 #endif
-
+#ifdef CONFIG_USBC_RETIMER_FW_UPDATE
+		case EC_ACPI_MEM_USB_RETIMER_FW_UPDATE:
+			usb_retimer_fw_update_process_op(
+				EC_ACPI_MEM_USB_RETIMER_PORT(data),
+				EC_ACPI_MEM_USB_RETIMER_OP(data));
+			break;
+#endif
 		default:
 			CPRINTS("ACPI write 0x%02x = 0x%02x (ignored)",
 				acpi_addr, data);

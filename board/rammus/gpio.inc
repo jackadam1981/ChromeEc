@@ -27,7 +27,7 @@ GPIO_INT(USB_C1_VBUS_DET_L,  PIN(9, 7), GPIO_INT_BOTH | GPIO_PULL_UP,     vbus1_
 GPIO_INT(USB_C0_BC12_INT_L,  PIN(D, 3), GPIO_INT_FALLING,                 usb0_evt)
 GPIO_INT(USB_C1_BC12_INT_L,  PIN(3, 3), GPIO_INT_FALLING,                 usb1_evt)
 GPIO_INT(BASE_SIXAXIS_INT_L, PIN(7, 3), GPIO_INT_FALLING | GPIO_SEL_1P8V, bmi160_interrupt)
-GPIO_INT(TABLET_MODE,        PIN(C, 6), GPIO_INT_BOTH,                    hall_sensor_isr)
+GPIO_INT(TABLET_MODE,        PIN(C, 6), GPIO_INT_BOTH,                    gmr_tablet_switch_isr)
 
 GPIO(EN_PP3300_TRACKPAD,     PIN(4, 5), GPIO_OUT_LOW)                /* Enable TouchPad */
 GPIO(PCH_RTCRST,             PIN(8, 2), GPIO_OUT_LOW)                /* RTCRST# to SOC */
@@ -95,7 +95,6 @@ GPIO(USB_A_CHARGE_EN_L,      PIN(0, 0), GPIO_OUT_LOW)
 GPIO(EN_USB_A_5V,            PIN(8, 4), GPIO_OUT_LOW)
 
 /* LEDs */
-/* TODO(b:111815820): Need to modify the LED setting later */
 GPIO(CHG_LED1,               PIN(8, 0), GPIO_OUT_LOW)
 GPIO(CHG_LED2,               PIN(B, 7), GPIO_OUT_LOW)
 GPIO(PWR_LED,                PIN(8, 6), GPIO_OUT_LOW)

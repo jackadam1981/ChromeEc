@@ -15,8 +15,8 @@
  * 7-bit address is 110100Xb. Where 'X' is determined
  * by the logic level on pin AP_AD0.
  */
-#define ICM426XX_ADDR0_FLAGS		0xD0
-#define ICM426XX_ADDR1_FLAGS		0xD1
+#define ICM426XX_ADDR0_FLAGS		0x68
+#define ICM426XX_ADDR1_FLAGS		0x69
 
 /* Min and Max sampling frequency in mHz */
 #define ICM426XX_ACCEL_MIN_FREQ	3125
@@ -31,6 +31,14 @@
 /* Min and Max Gyro FS in dps */
 #define ICM426XX_GYRO_FS_MIN_VAL	125
 #define ICM426XX_GYRO_FS_MAX_VAL	2000
+
+/* accel stabilization time in us */
+#define ICM426XX_ACCEL_START_TIME	20000
+#define ICM426XX_ACCEL_STOP_TIME	0
+
+/* gyro stabilization time in us */
+#define ICM426XX_GYRO_START_TIME	60000
+#define ICM426XX_GYRO_STOP_TIME		150000
 
 /* Reg value from Accel FS in G */
 #define ICM426XX_ACCEL_FS_TO_REG(_fs)	((_fs) < 2 ? 3 : \
@@ -136,6 +144,9 @@ enum icm426xx_slew_rate {
 #define ICM426XX_UI_SIFS_CFG_MASK	GENMASK(1, 0)
 #define ICM426XX_UI_SIFS_CFG_SPI_DIS	0x02
 #define ICM426XX_UI_SIFS_CFG_I2C_DIS	0x03
+
+#define ICM426XX_REG_INTF_CONFIG1	0x004D
+#define ICM426XX_ACCEL_LP_CLK_SEL	BIT(3)
 
 enum icm426xx_sensor_mode {
 	ICM426XX_MODE_OFF,

@@ -36,7 +36,7 @@
 #include "system.h"
 #include "task.h"
 #include "tablet_mode.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "temp_sensor.h"
 #include "thermistor.h"
 #include "usb_mux.h"
@@ -54,13 +54,13 @@ static int is_support_syv_ppc;
 
 const struct ppc_config_t ppc_syv682x_port0 = {
 	.i2c_port = I2C_PORT_TCPC0,
-	.i2c_addr = SYV682X_ADDR0,
+	.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
 	.drv = &syv682x_drv,
 };
 
 const struct ppc_config_t ppc_syv682x_port1 = {
 	.i2c_port = I2C_PORT_TCPC1,
-	.i2c_addr = SYV682X_ADDR0,
+	.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
 	.drv = &syv682x_drv,
 };
 
@@ -70,13 +70,17 @@ static int board_is_syv_ppc(void)
 	return gpio_get_level(GPIO_PPC_ID);
 }
 
-static void board_update_ppc_config(void)
+static void board_update_ppc_config_from_board(void)
 {
 	if (!is_support_syv_ppc)
 		return;
 
-	ppc_chips[USB_PD_PORT_TCPC_0] = ppc_syv682x_port0;
-	ppc_chips[USB_PD_PORT_TCPC_1] = ppc_syv682x_port1;
+	memcpy(&ppc_chips[USB_PD_PORT_TCPC_0],
+	       &ppc_syv682x_port0,
+	       sizeof(struct ppc_config_t));
+	memcpy(&ppc_chips[USB_PD_PORT_TCPC_1],
+	       &ppc_syv682x_port1,
+	       sizeof(struct ppc_config_t));
 
 	gpio_set_flags(GPIO_USB_PD_C0_INT_ODL, GPIO_INT_BOTH);
 	gpio_set_flags(GPIO_USB_PD_C1_INT_ODL, GPIO_INT_BOTH);
@@ -87,16 +91,16 @@ static void ppc_interrupt(enum gpio_signal signal)
 	switch (signal) {
 	case GPIO_USB_PD_C0_INT_ODL:
 		if (is_support_syv_ppc)
-			syv682x_interrupt(USB_PD_PORT_TCPC_0);
+			syv682x_interrupt(0);
 		else
-			nx20p348x_interrupt(USB_PD_PORT_TCPC_0);
+			nx20p348x_interrupt(0);
 		break;
 
 	case GPIO_USB_PD_C1_INT_ODL:
 		if (is_support_syv_ppc)
-			syv682x_interrupt(USB_PD_PORT_TCPC_1);
+			syv682x_interrupt(1);
 		else
-			nx20p348x_interrupt(USB_PD_PORT_TCPC_1);
+			nx20p348x_interrupt(1);
 		break;
 
 	default:
@@ -122,18 +126,15 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_BATTERY] = {.name = "Battery",
 				 .type = TEMP_SENSOR_TYPE_BATTERY,
 				 .read = charge_get_battery_temp,
-				 .idx = 0,
-				 .action_delay_sec = 1},
+				 .idx = 0},
 	[TEMP_SENSOR_AMBIENT] = {.name = "Ambient",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_51k1_47k_4050b,
-				 .idx = ADC_TEMP_SENSOR_AMB,
-				 .action_delay_sec = 5},
+				 .idx = ADC_TEMP_SENSOR_AMB},
 	[TEMP_SENSOR_CHARGER] = {.name = "Charger",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_13k7_47k_4050b,
-				 .idx = ADC_TEMP_SENSOR_CHARGER,
-				 .action_delay_sec = 1},
+				 .idx = ADC_TEMP_SENSOR_CHARGER},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -157,7 +158,7 @@ const mat33_fp_t lid_standard_ref = {
 
 /* sensor private data */
 static struct stprivate_data g_lis2dh_data;
-static struct lsm6dsm_data lsm6dsm_data;
+static struct lsm6dsm_data lsm6dsm_data = LSM6DSM_DATA;
 
 /* Drivers */
 struct motion_sensor_t motion_sensors[] = {
@@ -171,7 +172,7 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_lid_mutex,
 		.drv_data = &g_lis2dh_data,
 		.port = I2C_PORT_SENSOR,
-		.addr = LIS2DH_ADDR1,
+		.i2c_spi_addr_flags = LIS2DH_ADDR1_FLAGS,
 		.rot_standard_ref = &lid_standard_ref,
 		.default_range = 2, /* g */
 		/* We only use 2g because its resolution is only 8-bits */
@@ -199,10 +200,12 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
 				MOTIONSENSE_TYPE_ACCEL),
+		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
+		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.port = I2C_PORT_SENSOR,
-		.addr = LSM6DSM_ADDR0,
+		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 		.rot_standard_ref = &base_standard_ref,
-		.default_range = 4,  /* g */
+		.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
 		.min_frequency = LSM6DSM_ODR_MIN_VAL,
 		.max_frequency = LSM6DSM_ODR_MAX_VAL,
 		.config = {
@@ -229,8 +232,10 @@ struct motion_sensor_t motion_sensors[] = {
 		.mutex = &g_base_mutex,
 		.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
 				MOTIONSENSE_TYPE_GYRO),
+		.int_signal = GPIO_BASE_SIXAXIS_INT_L,
+		.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 		.port = I2C_PORT_SENSOR,
-		.addr = LSM6DSM_ADDR0,
+		.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
 		.default_range = 1000 | ROUND_UP_FLAG, /* dps */
 		.rot_standard_ref = &base_standard_ref,
 		.min_frequency = LSM6DSM_ODR_MIN_VAL,
@@ -254,7 +259,7 @@ static void board_update_sensor_config_from_sku(void)
 		gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 	} else {
 		motion_sensor_count = 0;
-		hall_sensor_disable();
+		gmr_tablet_switch_disable();
 		/* Base accel is not stuffed, don't allow line to float */
 		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,
 			       GPIO_INPUT | GPIO_PULL_DOWN);
@@ -291,7 +296,7 @@ void lid_angle_peripheral_enable(int enable)
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
-	/* Sanity check the port. */
+	/* Check that port number is valid. */
 	if ((port < 0) || (port >= CONFIG_USB_PD_PORT_MAX_COUNT))
 		return;
 
@@ -303,10 +308,10 @@ static void charger_set_buck_boost_mode(void)
 {
 	int reg;
 	/* Reduce Buck-boost mode switching frequency to improve power efficiency. */
-	if (i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+	if (i2c_read16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
 			ISL9238_REG_CONTROL3, &reg) == EC_SUCCESS) {
 		reg |= ISL9238_C3_BB_SWITCHING_PERIOD;
-		if (i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER,
+		if (i2c_write16(I2C_PORT_CHARGER, I2C_ADDR_CHARGER_FLAGS,
 				ISL9238_REG_CONTROL3, reg))
 			ccprints("Failed to set isl9238");
 	}
@@ -318,13 +323,13 @@ static void board_init(void)
 
 	is_support_syv_ppc = board_is_syv_ppc();
 
-	board_update_ppc_config();
+	board_update_ppc_config_from_board();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 int ppc_get_alert_status(int port)
 {
-	if (port == USB_PD_PORT_TCPC_0)
+	if (port == 0)
 		return gpio_get_level(GPIO_USB_PD_C0_INT_ODL) == 0;
 
 	return gpio_get_level(GPIO_USB_PD_C1_INT_ODL) == 0;

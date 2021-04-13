@@ -1,10 +1,10 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 /* Memory mapping */
-#define CONFIG_FLASH_SIZE 0x00020000
+#define CONFIG_FLASH_SIZE_BYTES 0x00020000
 #define CONFIG_FLASH_BANK_SIZE  0x1000
 #define CONFIG_FLASH_ERASE_SIZE 0x0100  /* erase bank size */
 

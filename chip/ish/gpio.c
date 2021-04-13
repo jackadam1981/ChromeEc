@@ -1,4 +1,4 @@
-/* Copyright (c) 2016 The Chromium OS Authors. All rights reserved.
+/* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -18,12 +18,23 @@
 
 test_mockable int gpio_get_level(enum gpio_signal signal)
 {
-	return  !!(ISH_GPIO_GPLR & gpio_list[signal].mask);
+	const struct gpio_info *g = gpio_list + signal;
+
+	/* Unimplemented GPIOs shouldn't do anything */
+	if (g->port == UNIMPLEMENTED_GPIO_BANK)
+		return 0;
+
+	return  !!(ISH_GPIO_GPLR & g->mask);
 }
 
 void gpio_set_level(enum gpio_signal signal, int value)
 {
 	const struct gpio_info *g = gpio_list + signal;
+
+	/* Unimplemented GPIOs shouldn't do anything */
+	if (g->port == UNIMPLEMENTED_GPIO_BANK)
+		return;
+
 	if (value)
 		ISH_GPIO_GPSR |= g->mask;
 	else
@@ -32,6 +43,25 @@ void gpio_set_level(enum gpio_signal signal, int value)
 
 void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 {
+	/* Unimplemented GPIOs shouldn't do anything */
+	if (port == UNIMPLEMENTED_GPIO_BANK)
+		return;
+
+	/* ISH does not support level-trigger interrupts; only edge. */
+	if (flags & (GPIO_INT_F_HIGH | GPIO_INT_F_LOW)) {
+		ccprintf("\n\nISH does not support level trigger GPIO for %d "
+			 "0x%02x!\n\n",
+			 port, mask);
+	}
+
+	/* ISH 3 can't support both rising and falling edge */
+	if (IS_ENABLED(CHIP_FAMILY_ISH3) &&
+	    (flags & GPIO_INT_F_RISING) && (flags & GPIO_INT_F_FALLING)) {
+		ccprintf("\n\nISH 2/3 does not support both rising & falling "
+			 "edge for %d 0x%02x\n\n",
+			 port, mask);
+	}
+
 	/* GPSR/GPCR Output high/low */
 	if (flags & GPIO_HIGH) /* Output high */
 		ISH_GPIO_GPSR |= mask;
@@ -44,21 +74,13 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 	else /* GPIO_INPUT or un-configured */
 		ISH_GPIO_GPDR &= ~mask;
 
-	/* GRER/GFER interrupt trigger */
-#ifdef CONFIG_ISH_30
-	/* ISH 3 can't support both rising and falling edge */
-	if (((flags & GPIO_INT_F_RISING) && (flags & GPIO_INT_F_FALLING)) ||
-		((flags & GPIO_INT_F_HIGH) && (flags & GPIO_INT_F_LOW))) {
-		ccprintf("ISH 2/3 not support both rising&falling edge\n");
-	}
-#endif
-	/* Interrupt is asserted on rising edge/active high */
+	/* Interrupt is asserted on rising edge */
 	if (flags & GPIO_INT_F_RISING)
 		ISH_GPIO_GRER |= mask;
 	else
 		ISH_GPIO_GRER &= ~mask;
 
-	/* Interrupt is asserted on falling edge/active low */
+	/* Interrupt is asserted on falling edge */
 	if (flags & GPIO_INT_F_FALLING)
 		ISH_GPIO_GFER |= mask;
 	else
@@ -68,6 +90,10 @@ void gpio_set_flags_by_mask(uint32_t port, uint32_t mask, uint32_t flags)
 int gpio_enable_interrupt(enum gpio_signal signal)
 {
 	const struct gpio_info *g = gpio_list + signal;
+
+	/* Unimplemented GPIOs shouldn't do anything */
+	if (g->port == UNIMPLEMENTED_GPIO_BANK)
+		return EC_SUCCESS;
 
 	ISH_GPIO_GIMR |= g->mask;
 	return EC_SUCCESS;
@@ -112,12 +138,18 @@ void gpio_pre_init(void)
 
 		gpio_set_flags_by_mask(g->port, g->mask, flags);
 	}
+
+	/* disable GPIO interrupts */
+	ISH_GPIO_GIMR = 0;
+	/* clear pending GPIO interrupts */
+	ISH_GPIO_GISR = 0xFFFFFFFF;
 }
 
 static void gpio_init(void)
 {
 	task_enable_irq(ISH_GPIO_IRQ);
 }
+DECLARE_HOOK(HOOK_INIT, gpio_init, HOOK_PRIO_DEFAULT);
 
 static void gpio_interrupt(void)
 {
@@ -137,7 +169,4 @@ static void gpio_interrupt(void)
 		}
 	}
 }
-
 DECLARE_IRQ(ISH_GPIO_IRQ, gpio_interrupt);
-
-DECLARE_HOOK(HOOK_INIT, gpio_init, HOOK_PRIO_DEFAULT);

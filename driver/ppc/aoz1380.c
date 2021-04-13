@@ -14,10 +14,10 @@
 #include "atomic.h"
 #include "common.h"
 #include "console.h"
-#include "driver/ppc/aoz1380.h"
+#include "aoz1380.h"
 #include "hooks.h"
 #include "system.h"
-#include "tcpm.h"
+#include "tcpm/tcpm.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpc.h"
 #include "usbc_ppc.h"
@@ -33,11 +33,22 @@ static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 static uint32_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 #define AOZ1380_SET_FLAG(port, flag) atomic_or(&flags[port], (flag))
-#define AOZ1380_CLR_FLAG(port, flag) atomic_clear(&flags[port], (flag))
+#define AOZ1380_CLR_FLAG(port, flag) atomic_clear_bits(&flags[port], (flag))
 
 static int aoz1380_init(int port)
 {
+	int rv;
+	bool is_sinking, is_sourcing;
+
 	flags[port] = 0;
+
+	rv = tcpm_get_snk_ctrl(port, &is_sinking);
+	if (rv == EC_SUCCESS && is_sinking)
+		AOZ1380_SET_FLAG(port, AOZ1380_FLAGS_SINK_ENABLED);
+
+	rv = tcpm_get_src_ctrl(port, &is_sourcing);
+	if (rv == EC_SUCCESS && is_sourcing)
+		AOZ1380_SET_FLAG(port, AOZ1380_FLAGS_SOURCE_ENABLED);
 
 	return EC_SUCCESS;
 }
@@ -115,7 +126,7 @@ static void aoz1380_handle_interrupt(int port)
 		/*
 		 * This is a over current/temperature condition
 		 */
-		CPRINTS("C%d PPC Vbus overcurrent/temperature", port);
+		ppc_prints("Vbus overcurrent/temperature", port);
 		pd_handle_overcurrent(port);
 	} else {
 		/*
@@ -132,7 +143,7 @@ static void aoz1380_handle_interrupt(int port)
 static void aoz1380_irq_deferred(void)
 {
 	int i;
-	uint32_t pending = atomic_read_clear(&irq_pending);
+	uint32_t pending = atomic_clear(&irq_pending);
 
 	for (i = 0; i < board_get_usb_pd_port_count(); i++)
 		if (BIT(i) & pending)

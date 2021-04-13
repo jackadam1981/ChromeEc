@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+ * Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -7,11 +7,14 @@
 #include <stddef.h>
 
 #include "common.h"
+#include "cros_version.h"
 #include "rwsig.h"
 #include "util.h"
-#include "version.h"
 
-/* FMAP structs. See http://code.google.com/p/flashmap/wiki/FmapSpec */
+/*
+ * FMAP structs.
+ * See https://chromium.googlesource.com/chromiumos/third_party/flashmap/+/master/lib/fmap.h
+ */
 #define FMAP_NAMELEN 32
 #define FMAP_SIGNATURE "__FMAP__"
 #define FMAP_SIGNATURE_SIZE 8
@@ -51,9 +54,9 @@ struct fmap_header {
 	uint16_t    fmap_nareas;
 } __packed;
 
-#define FMAP_AREA_STATIC      (1 << 0)	/* can be checksummed */
-#define FMAP_AREA_COMPRESSED  (1 << 1)  /* may be compressed */
-#define FMAP_AREA_RO          (1 << 2)  /* writes may fail */
+#define FMAP_AREA_STATIC      BIT(0)	/* can be checksummed */
+#define FMAP_AREA_COMPRESSED  BIT(1)  /* may be compressed */
+#define FMAP_AREA_RO          BIT(2)  /* writes may fail */
 
 struct fmap_area_header {
 	uint32_t area_offset;
@@ -98,7 +101,7 @@ const struct _ec_fmap {
 		.fmap_ver_major = FMAP_VER_MAJOR,
 		.fmap_ver_minor = FMAP_VER_MINOR,
 		.fmap_base = CONFIG_PROGRAM_MEMORY_BASE,
-		.fmap_size = CONFIG_FLASH_SIZE,
+		.fmap_size = CONFIG_FLASH_SIZE_BYTES,
 		/* Used to distinguish the EC FMAP from other FMAPs */
 		.fmap_name = "EC_FMAP",
 		.fmap_nareas = NUM_EC_FMAP_AREAS,

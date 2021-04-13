@@ -12,9 +12,6 @@
 #include "bd99992gw.h"
 #include "board_config.h"
 #include "button.h"
-#include "charge_manager.h"
-#include "charge_state.h"
-#include "charger.h"
 #include "chipset.h"
 #include "console.h"
 #include "cros_board_info.h"
@@ -33,6 +30,7 @@
 #include "host_command.h"
 #include "i2c.h"
 #include "math_util.h"
+#include "oz554.h"
 #include "pi3usb9281.h"
 #include "power.h"
 #include "power_button.h"
@@ -76,12 +74,6 @@ enum bj_adapter {
  */
 #define BJ_ADAPTER_135W_MASK (1 << 4 | 1 << 5 | 1 << 6 | 1 << 3 | 1 << 2)
 
-/* BJ adapter specs */
-static const struct charge_port_info bj_adapters[] = {
-	[BJ_90W_19V] = { .current = 4740, .voltage = 19000 },
-	[BJ_135W_19V] = { .current = 7100, .voltage = 19000 },
-};
-
 static void tcpc_alert_event(enum gpio_signal signal)
 {
 	if (!gpio_get_level(GPIO_USB_C0_PD_RST_ODL))
@@ -98,17 +90,6 @@ void vbus0_evt(enum gpio_signal signal)
 }
 
 #include "gpio_list.h"
-
-/* power signal list.  Must match order of enum power_signal. */
-const struct power_signal_info power_signal_list[] = {
-	{GPIO_PCH_SLP_S0_L,	POWER_SIGNAL_ACTIVE_HIGH, "SLP_S0_DEASSERTED"},
-	{VW_SLP_S3_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
-	{VW_SLP_S4_L,		POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
-	{GPIO_PCH_SLP_SUS_L,	POWER_SIGNAL_ACTIVE_HIGH, "SLP_SUS_DEASSERTED"},
-	{GPIO_RSMRST_L_PGOOD,	POWER_SIGNAL_ACTIVE_HIGH, "RSMRST_L_PGOOD"},
-	{GPIO_PMIC_DPWROK,	POWER_SIGNAL_ACTIVE_HIGH, "PMIC_DPWROK"},
-};
-BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* Hibernate wake configuration */
 const enum gpio_signal hibernate_wake_pins[] = {
@@ -132,12 +113,12 @@ const struct fan_conf fan_conf_0 = {
 };
 
 const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 2200,
-	.rpm_start = 2200,
-	.rpm_max = 5600,
+	.rpm_min = 2180,
+	.rpm_start = 2180,
+	.rpm_max = 4900,
 };
 
-struct fan_t fans[] = {
+const struct fan_t fans[] = {
 	[FAN_CH_0] = { .conf = &fan_conf_0, .rpm = &fan_rpm_0, },
 };
 BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
@@ -163,25 +144,26 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
-			.addr = I2C_ADDR_TCPC0,
+			.addr_flags = I2C_ADDR_TCPC0_FLAGS,
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
 };
 
-static int ps8751_tune_mux(int port)
+static int ps8751_tune_mux(const struct usb_mux *me)
 {
 	/* 0x98 sets lower EQ of DP port (4.5db) */
-	mux_write(port, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
+	mux_write(me, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
 	return EC_SUCCESS;
 }
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
+		.usb_port = 0,
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 		.board_init = &ps8751_tune_mux,
-	}
+	},
 };
 
 const int usb_port_enable[USB_PORT_COUNT] = {
@@ -200,7 +182,7 @@ void board_reset_pd_mcu(void)
 
 void board_tcpc_init(void)
 {
-	int port, reg;
+	int reg;
 
 	/* This needs to be executed only once per boot. It could be run by RO
 	 * if we boot in recovery mode. It could be run by RW if we boot in
@@ -212,7 +194,7 @@ void board_tcpc_init(void)
 	 * TCPM_INIT will fail due to not able to access PS8751.
 	 * Note PS8751 A3 will wake on any I2C access.
 	 */
-	i2c_read8(I2C_PORT_TCPC0, I2C_ADDR_TCPC0, 0xA0, &reg);
+	i2c_read8(I2C_PORT_TCPC0, I2C_ADDR_TCPC0_FLAGS, 0xA0, &reg);
 
 	/* Enable TCPC interrupts */
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
@@ -221,10 +203,8 @@ void board_tcpc_init(void)
 	 * Initialize HPD to low; after sysjump SOC needs to see
 	 * HPD pulse to enable video path
 	 */
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
-		const struct usb_mux *mux = &usb_muxes[port];
-		mux->hpd_update(port, 0, 0);
-	}
+	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port)
+		usb_mux_hpd_update(port, 0, 0);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
@@ -245,9 +225,9 @@ uint16_t tcpc_get_alert_status(void)
  */
 const struct temp_sensor_t temp_sensors[] = {
 	{"TMP431_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
-			TMP432_IDX_LOCAL, 4},
+			TMP432_IDX_LOCAL},
 	{"TMP431_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
-			TMP432_IDX_REMOTE1, 4},
+			TMP432_IDX_REMOTE1},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -268,10 +248,10 @@ BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 /* Initialize PMIC */
 #define I2C_PMIC_READ(reg, data) \
-		i2c_read8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1, (reg), (data))
+	i2c_read8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1_FLAGS, (reg), (data))
 
 #define I2C_PMIC_WRITE(reg, data) \
-		i2c_write8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1, (reg), (data))
+	i2c_write8(I2C_PORT_PMIC, TPS650X30_I2C_ADDR1_FLAGS, (reg), (data))
 
 static void board_pmic_init(void)
 {
@@ -424,35 +404,6 @@ static void board_extpower(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
 
-void board_set_charge_limit(int port, int supplier, int charge_ma,
-			    int max_ma, int charge_mv)
-{
-	int u22 = 0;
-	/*
-	 * Turn on/off power shortage alert. Performs the same check as
-	 * system_can_boot_ap(). It's repeated here because charge_manager
-	 * hasn't updated charge_current/voltage when board_set_charge_limit
-	 * is called.
-	 */
-	led_alert(charge_ma * charge_mv <
-			CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON * 1000);
-
-	/*
-	 * Kalista has two types of charger: 90W, 135W.
-	 * 135W charger offers 7.1A/19V.
-	 * 90W charger offers 4.74A/19V.
-	 */
-	if (charge_ma < bj_adapters[BJ_135W_19V].current)
-		/* GPIO_U22_90W high means 90W charger */
-		u22 = 1;
-	gpio_set_level(GPIO_U22_90W, u22);
-}
-
-enum battery_present battery_is_present(void)
-{
-	return BP_NO;
-}
-
 int64_t get_time_dsw_pwrok(void)
 {
 	/* DSW_PWROK is turned on before EC was powered. */
@@ -474,14 +425,14 @@ struct fan_step {
 
 /* Note: Do not make the fan on/off point equal to 0 or 100 */
 static const struct fan_step fan_table0[] = {
-	{.on =  0, .off =  1, .rpm = 0},
-	{.on = 36, .off =  1, .rpm = 2800},
-	{.on = 58, .off = 58, .rpm = 3200},
-	{.on = 66, .off = 61, .rpm = 3400},
-	{.on = 75, .off = 69, .rpm = 4200},
-	{.on = 81, .off = 76, .rpm = 4800},
-	{.on = 88, .off = 83, .rpm = 5200},
-	{.on = 98, .off = 91, .rpm = 5600},
+	{.on =  0, .off =  5, .rpm = 0},
+	{.on = 30, .off =  5, .rpm = 2180},
+	{.on = 49, .off = 46, .rpm = 2680},
+	{.on = 53, .off = 50, .rpm = 3300},
+	{.on = 58, .off = 54, .rpm = 3760},
+	{.on = 63, .off = 59, .rpm = 4220},
+	{.on = 68, .off = 64, .rpm = 4660},
+	{.on = 75, .off = 70, .rpm = 4900},
 };
 /* All fan tables must have the same number of levels */
 #define NUM_FAN_LEVELS ARRAY_SIZE(fan_table0)
@@ -510,40 +461,13 @@ static void setup_bj(void)
 {
 	enum bj_adapter bj = (BJ_ADAPTER_135W_MASK & (1 << sku)) ?
 			BJ_135W_19V : BJ_90W_19V;
-
-	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
-				     DEDICATED_CHARGE_PORT, &bj_adapters[bj]);
+	gpio_set_level(GPIO_U22_90W, bj == BJ_90W_19V);
 }
-
-/*
- * Kalista has no battery and power is sourced only from a BJ adapter.
- * Kalista operates in continuous safe mode (charge_manager_leave_safe_mode()
- * will never be called), which modifies port / ILIM selection as follows:
- *
- * - Dual-role / dedicated capability of the port partner is ignored.
- * - Charge ceiling on PD voltage transition is ignored.
- * - CHARGE_PORT_NONE will never be selected.
- *
- * TODO: Set USB-C port as source only.
- */
-static void board_charge_manager_init(void)
-{
-	int i, j;
-
-	/* Initialize all charge suppliers to 0 */
-	for (i = 0; i < CHARGE_PORT_COUNT; i++) {
-		for (j = 0; j < CHARGE_SUPPLIER_COUNT; j++)
-			charge_manager_update_charge(j, i, NULL);
-	}
-
-	setup_bj();
-}
-DECLARE_HOOK(HOOK_INIT, board_charge_manager_init,
-	     HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
 
 static void board_init(void)
 {
-	/* Provide AC status to the PCH */
+	setup_bj();
+
 	board_extpower();
 
 	gpio_enable_interrupt(GPIO_USB_C0_VBUS_WAKE_L);
@@ -585,16 +509,8 @@ int fan_percent_to_rpm(int fan, int pct)
 
 	if (fan_table[current_level].rpm !=
 		fan_get_rpm_target(FAN_CH(fan)))
-		cprintf(CC_THERMAL, "[%T Setting fan RPM to %d]\n",
+		cprints(CC_THERMAL, "Setting fan RPM to %d",
 			fan_table[current_level].rpm);
 
 	return fan_table[current_level].rpm;
-}
-
-void board_rtc_reset(void)
-{
-	CPRINTS("Asserting RTCRST# to PCH");
-	gpio_set_level(GPIO_PCH_RTCRST, 1);
-	udelay(100);
-	gpio_set_level(GPIO_PCH_RTCRST, 0);
 }

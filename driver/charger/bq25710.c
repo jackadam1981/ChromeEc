@@ -35,6 +35,13 @@
 /* Sense resistor configurations and macros */
 #define DEFAULT_SENSE_RESISTOR 10
 
+#ifdef CONFIG_CHARGER_SENSE_RESISTOR_AC_BQ25710
+	#undef CONFIG_CHARGER_SENSE_RESISTOR_AC
+	#define CONFIG_CHARGER_SENSE_RESISTOR_AC \
+		CONFIG_CHARGER_SENSE_RESISTOR_AC_BQ25710
+#endif
+
+
 #define INPUT_RESISTOR_RATIO \
 	((CONFIG_CHARGER_SENSE_RESISTOR_AC) / DEFAULT_SENSE_RESISTOR)
 #define REG_TO_INPUT_CURRENT(REG) ((REG + 1) * 50 / INPUT_RESISTOR_RATIO)
@@ -91,7 +98,6 @@ static inline enum ec_error_list raw_write16(int chgnum, int offset, int value)
 
 #if defined(CONFIG_CHARGE_RAMP_HW) || \
 	defined(CONFIG_USB_PD_VBUS_MEASURE_CHARGER)
-#ifdef CONFIG_USB_PD_VBUS_MEASURE_CHARGER
 static int bq25710_get_low_power_mode(int chgnum, int *mode)
 {
 	int rv;
@@ -105,7 +111,6 @@ static int bq25710_get_low_power_mode(int chgnum, int *mode)
 
 	return EC_SUCCESS;
 }
-#endif //CONFIG_USB_PD_VBUS_MEASURE_CHARGER
 
 static int bq25710_set_low_power_mode(int chgnum, int enable)
 {
@@ -146,7 +151,6 @@ static int bq25710_set_low_power_mode(int chgnum, int enable)
 	return EC_SUCCESS;
 }
 
-#ifdef CONFIG_USB_PD_VBUS_MEASURE_CHARGER
 static int bq25710_adc_start(int chgnum, int adc_en_mask)
 {
 	int reg;
@@ -190,7 +194,6 @@ static int bq25710_adc_start(int chgnum, int adc_en_mask)
 
 	return EC_SUCCESS;
 }
-#endif //CONFIG_USB_PD_VBUS_MEASURE_CHARGER
 #endif
 
 static void bq25710_init(int chgnum)
@@ -209,7 +212,7 @@ static void bq25710_init(int chgnum)
 	 * may not be powered if AC is not connected. Note, this reset is only
 	 * required when running out of RO and not following sysjump to RW.
 	 */
-	if (!system_is_in_rw()) {
+	if (!system_jumped_late()) {
 		rv = bq25710_set_low_power_mode(chgnum, 0);
 		/* Allow enough time for VDDA to be powered */
 		msleep(BQ25710_VDDA_STARTUP_DELAY_MSEC);
@@ -288,8 +291,7 @@ static enum ec_error_list bq25710_post_init(int chgnum)
 	 *	discharge on AC     = disabled
 	 */
 
-	/* Set charger input current limit */
-	return charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
+	return EC_SUCCESS;
 }
 
 static enum ec_error_list bq25710_get_status(int chgnum, int *status)
@@ -341,12 +343,6 @@ static enum ec_error_list bq25710_set_otg_current_voltage(int chgum,
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
-int charger_is_sourcing_otg_power(int port)
-{
-	/* Add when needed. */
-	return EC_ERROR_UNIMPLEMENTED;
-}
-
 static enum ec_error_list bq25710_get_current(int chgnum, int *current)
 {
 	int rv, reg;
@@ -392,8 +388,8 @@ static enum ec_error_list bq25710_discharge_on_ac(int chgnum, int enable)
 	return bq25710_set_option(chgnum, option);
 }
 
-static enum ec_error_list bq25710_set_input_current(int chgnum,
-						    int input_current)
+static enum ec_error_list bq25710_set_input_current_limit(int chgnum,
+							  int input_current)
 {
 	int num_steps = INPUT_CURRENT_TO_REG(input_current);
 
@@ -401,8 +397,8 @@ static enum ec_error_list bq25710_set_input_current(int chgnum,
 			  BQ25710_CHARGE_IIN_BIT_0FFSET);
 }
 
-static enum ec_error_list bq25710_get_input_current(int chgnum,
-						    int *input_current)
+static enum ec_error_list bq25710_get_input_current_limit(int chgnum,
+							  int *input_current)
 {
 	int rv, reg;
 
@@ -432,7 +428,35 @@ static enum ec_error_list bq25710_device_id(int chgnum, int *id)
 }
 
 #ifdef CONFIG_USB_PD_VBUS_MEASURE_CHARGER
-static int bq25710_get_vbus_voltage(int chgnum, int port)
+
+#if defined(CONFIG_CHARGER_BQ25720)
+
+static int reg_adc_vbus_to_mv(int reg)
+{
+	/*
+	 * LSB => 96mV, no DC offset.
+	 */
+	return reg * BQ25720_ADC_VBUS_STEP_MV;
+}
+
+#elif defined(CONFIG_CHARGER_BQ25710)
+
+static int reg_adc_vbus_to_mv(int reg)
+{
+	/*
+	 * LSB => 64mV.
+	 * Return 0 when VBUS <= 3.2V as ADC can't measure it.
+	 */
+	return reg ?
+		(reg * BQ25710_ADC_VBUS_STEP_MV + BQ25710_ADC_VBUS_BASE_MV) : 0;
+}
+
+#else
+#error Only the BQ25720 and BQ25710 are supported by bq25710 driver.
+#endif
+
+static enum ec_error_list bq25710_get_vbus_voltage(int chgnum, int port,
+						   int *voltage)
 {
 	int reg, rv;
 
@@ -446,22 +470,12 @@ static int bq25710_get_vbus_voltage(int chgnum, int port)
 		goto error;
 
 	reg >>= BQ25710_ADC_VBUS_STEP_BIT_OFFSET;
-	/*
-	 * LSB => 64mV.
-	 * Return 0 when VBUS <= 3.2V as ADC can't measure it.
-	 */
-	*voltage = reg ?
-	       (reg * BQ25710_ADC_VBUS_STEP_MV + BQ25710_ADC_VBUS_BASE_MV) : 0;
+	*voltage = reg_adc_vbus_to_mv(reg);
 
 error:
 	if (rv)
 		CPRINTF("Could not read VBUS ADC! Error: %d\n", rv);
 	return rv;
-}
-#else
-static int bq25710_get_vbus_voltage(int chgnum, int port)
-{
-	return EC_ERROR_UNIMPLEMENTED;
 }
 #endif
 
@@ -482,6 +496,10 @@ static enum ec_error_list bq25710_set_option(int chgnum, int option)
 static void bq25710_chg_ramp_handle(void)
 {
 	int ramp_curr;
+	int chgnum = 0;
+
+	if (IS_ENABLED(CONFIG_OCPC))
+		chgnum = charge_get_active_chg_chip();
 
 	/*
 	 * Once the charge ramp is stable write back the stable ramp
@@ -489,7 +507,8 @@ static void bq25710_chg_ramp_handle(void)
 	 */
 	ramp_curr = chg_ramp_get_current_limit();
 	if (chg_ramp_is_stable()) {
-		if (ramp_curr && !charger_set_input_current(ramp_curr))
+		if (ramp_curr &&
+		    !charger_set_input_current_limit(chgnum, ramp_curr))
 			CPRINTF("bq25710: stable ramp current=%d\n", ramp_curr);
 	} else {
 		CPRINTF("bq25710: ICO stall, ramp current=%d\n", ramp_curr);
@@ -514,6 +533,18 @@ static enum ec_error_list bq25710_set_hw_ramp(int chgnum, int enable)
 		return rv;
 
 	if (enable) {
+		/*
+		 * ICO mode can only be used when a battery is present. If there
+		 * is no battery, or if the battery has not recovered yet from
+		 * cutoff, then enabling ICO mode will lead to VSYS
+		 * dropping out.
+		 */
+		if (!battery_is_present() || (battery_get_disconnect_state() !=
+					      BATTERY_NOT_DISCONNECTED)) {
+			CPRINTF("bq25710: no battery, skip ICO enable\n");
+			return EC_ERROR_UNKNOWN;
+		}
+
 		/* Set InputVoltage register to BC1.2 minimum ramp voltage */
 		rv = raw_write16(chgnum, BQ25710_REG_INPUT_VOLTAGE,
 			BQ25710_BC12_MIN_VOLTAGE_MV);
@@ -660,13 +691,15 @@ const struct charger_drv bq25710_drv = {
 	.set_voltage = &bq25710_set_voltage,
 	.discharge_on_ac = &bq25710_discharge_on_ac,
 	.get_vbus_voltage = &bq25710_get_vbus_voltage,
-	.set_input_current = &bq25710_set_input_current,
-	.get_input_current = &bq25710_get_input_current,
+	.set_input_current_limit = &bq25710_set_input_current_limit,
+	.get_input_current_limit = &bq25710_get_input_current_limit,
 	.manufacturer_id = &bq25710_manufacturer_id,
 	.device_id = &bq25710_device_id,
 	.get_option = &bq25710_get_option,
 	.set_option = &bq25710_set_option,
+#ifdef CONFIG_CHARGE_RAMP_HW
 	.set_hw_ramp = &bq25710_set_hw_ramp,
 	.ramp_is_stable = &bq25710_ramp_is_stable,
 	.ramp_get_current_limit = &bq25710_ramp_get_current_limit,
+#endif /* CONFIG_CHARGE_RAMP_HW */
 };

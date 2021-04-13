@@ -10,7 +10,10 @@
 
 #include "common.h"
 
-#define SECS_PER_DAY        (60 * 60 * 24)
+#define SECS_PER_MINUTE     60
+#define SECS_PER_HOUR       (60 * SECS_PER_MINUTE)
+#define SECS_PER_DAY        (24 * SECS_PER_HOUR)
+#define SECS_PER_WEEK       (7 * SECS_PER_DAY)
 #define SECS_PER_YEAR       (365 * SECS_PER_DAY)
 /* The seconds elapsed from 01-01-1970 to 01-01-2000 */
 #define SECS_TILL_YEAR_2K   (946684800)
@@ -20,9 +23,9 @@
 struct calendar_date {
 	/* The number of years since A.D. 2000, i.e. year = 17 for y2017 */
 	uint8_t year;
-	/* 1-based indexing, i.e. sane values range from 1 to 12 */
+	/* 1-based indexing, i.e. valid values range from 1 to 12 */
 	uint8_t month;
-	/* 1-based indexing, i.e. sane values range from 1 to 31 */
+	/* 1-based indexing, i.e. valid values range from 1 to 31 */
 	uint8_t day;
 };
 

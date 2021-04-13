@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -50,7 +50,7 @@
  */
 #define BATTERY_KEY_COL 0
 #define BATTERY_KEY_ROW 7
-#define BATTERY_KEY_ROW_MASK (1 << BATTERY_KEY_ROW)
+#define BATTERY_KEY_ROW_MASK BIT(BATTERY_KEY_ROW)
 
 static uint32_t fifo_start;	/* first entry */
 static uint32_t fifo_end;	/* last entry */
@@ -60,16 +60,17 @@ static struct ec_response_get_next_event fifo[FIFO_DEPTH];
  * Mutex for critical sections of mkbp_fifo_add(), which is called
  * from various tasks.
  */
-static struct mutex fifo_add_mutex;
+K_MUTEX_DEFINE(fifo_add_mutex);
 /*
  * Mutex for critical sections of fifo_remove(), which is called from the
  * hostcmd task and from keyboard_clear_buffer().
  */
-static struct mutex fifo_remove_mutex;
+K_MUTEX_DEFINE(fifo_remove_mutex);
 
 /* Button and switch state. */
 static uint32_t mkbp_button_state;
 static uint32_t mkbp_switch_state;
+static bool mkbp_init_done;
 #ifndef HAS_TASK_KEYSCAN
 /* Keys simulated-pressed */
 static uint8_t __bss_slow simulated_key[KEYBOARD_COLS_MAX];
@@ -164,7 +165,36 @@ static int fifo_remove(uint8_t *buffp)
 
 void keyboard_clear_buffer(void)
 {
-	mkbp_clear_fifo();
+	int i, new_fifo_entries = 0;
+
+	CPRINTS("clear keyboard MKBP fifo");
+
+	/*
+	 * Order of these locks is important to prevent deadlock since
+	 * mkbp_fifo_add() may call fifo_remove().
+	 */
+	mutex_lock(&fifo_add_mutex);
+	mutex_lock(&fifo_remove_mutex);
+
+	/* Reset the end position */
+	fifo_end = fifo_start;
+
+	for (i = 0; i < fifo_entries; i++) {
+		int cur = (fifo_start + i) % FIFO_DEPTH;
+
+		/* Drop keyboard events */
+		if (fifo[cur].event_type == EC_MKBP_EVENT_KEY_MATRIX)
+			continue;
+
+		/* And move other events to the front */
+		memmove(&fifo[fifo_end], &fifo[cur], sizeof(fifo[cur]));
+		fifo_end = (fifo_end + 1) % FIFO_DEPTH;
+		++new_fifo_entries;
+	}
+	fifo_entries = new_fifo_entries;
+
+	mutex_unlock(&fifo_remove_mutex);
+	mutex_unlock(&fifo_add_mutex);
 }
 
 void mkbp_clear_fifo(void)
@@ -238,11 +268,17 @@ test_mockable int mkbp_fifo_add(uint8_t event_type, const uint8_t *buffp)
 void mkbp_update_switches(uint32_t sw, int state)
 {
 
-	mkbp_switch_state &= ~(1 << sw);
+	mkbp_switch_state &= ~BIT(sw);
 	mkbp_switch_state |= (!!state << sw);
 
-	mkbp_fifo_add(EC_MKBP_EVENT_SWITCH,
-		      (const uint8_t *)&mkbp_switch_state);
+	/*
+	 * Only inform AP mkbp changes when all switches initialized, in case
+	 * of the middle states causing the weird behaviour in the AP side,
+	 * especially when sysjumped while AP up.
+	 */
+	if (mkbp_init_done)
+		mkbp_fifo_add(EC_MKBP_EVENT_SWITCH,
+			      (const uint8_t *)&mkbp_switch_state);
 }
 
 #ifdef CONFIG_LID_SWITCH
@@ -276,26 +312,35 @@ DECLARE_HOOK(HOOK_BASE_ATTACHED_CHANGE, mkbp_base_attached_change,
 DECLARE_HOOK(HOOK_INIT, mkbp_base_attached_change, HOOK_PRIO_INIT_LID+1);
 #endif
 
+static void mkbp_report_switch_on_init(void)
+{
+	/* All switches initialized, report switch state to AP */
+	mkbp_init_done = true;
+	mkbp_fifo_add(EC_MKBP_EVENT_SWITCH,
+		      (const uint8_t *)&mkbp_switch_state);
+}
+DECLARE_HOOK(HOOK_INIT, mkbp_report_switch_on_init, HOOK_PRIO_LAST);
+
 void keyboard_update_button(enum keyboard_button_type button, int is_pressed)
 {
 	switch (button) {
 	case KEYBOARD_BUTTON_POWER:
-		mkbp_button_state &= ~(1 << EC_MKBP_POWER_BUTTON);
+		mkbp_button_state &= ~BIT(EC_MKBP_POWER_BUTTON);
 		mkbp_button_state |= (is_pressed << EC_MKBP_POWER_BUTTON);
 		break;
 
 	case KEYBOARD_BUTTON_VOLUME_UP:
-		mkbp_button_state &= ~(1 << EC_MKBP_VOL_UP);
+		mkbp_button_state &= ~BIT(EC_MKBP_VOL_UP);
 		mkbp_button_state |= (is_pressed << EC_MKBP_VOL_UP);
 		break;
 
 	case KEYBOARD_BUTTON_VOLUME_DOWN:
-		mkbp_button_state &= ~(1 << EC_MKBP_VOL_DOWN);
+		mkbp_button_state &= ~BIT(EC_MKBP_VOL_DOWN);
 		mkbp_button_state |= (is_pressed << EC_MKBP_VOL_DOWN);
 		break;
 
 	case KEYBOARD_BUTTON_RECOVERY:
-		mkbp_button_state &= ~(1 << EC_MKBP_RECOVERY);
+		mkbp_button_state &= ~BIT(EC_MKBP_RECOVERY);
 		mkbp_button_state |= (is_pressed << EC_MKBP_RECOVERY);
 		break;
 
@@ -418,15 +463,15 @@ static uint32_t get_supported_buttons(void)
 	uint32_t val = 0;
 
 #ifdef CONFIG_VOLUME_BUTTONS
-	val |= (1 << EC_MKBP_VOL_UP) | (1 << EC_MKBP_VOL_DOWN);
+	val |= BIT(EC_MKBP_VOL_UP) | BIT(EC_MKBP_VOL_DOWN);
 #endif /* defined(CONFIG_VOLUME_BUTTONS) */
 
 #ifdef CONFIG_DEDICATED_RECOVERY_BUTTON
-	val |= (1 << EC_MKBP_RECOVERY);
+	val |= BIT(EC_MKBP_RECOVERY);
 #endif /* defined(CONFIG_DEDICATED_RECOVERY_BUTTON) */
 
 #ifdef CONFIG_POWER_BUTTON
-	val |= (1 << EC_MKBP_POWER_BUTTON);
+	val |= BIT(EC_MKBP_POWER_BUTTON);
 #endif /* defined(CONFIG_POWER_BUTTON) */
 
 	return val;
@@ -437,18 +482,21 @@ static uint32_t get_supported_switches(void)
 	uint32_t val = 0;
 
 #ifdef CONFIG_LID_SWITCH
-	val |= (1 << EC_MKBP_LID_OPEN);
+	val |= BIT(EC_MKBP_LID_OPEN);
 #endif
 #ifdef CONFIG_TABLET_MODE_SWITCH
-	val |= (1 << EC_MKBP_TABLET_MODE);
+	val |= BIT(EC_MKBP_TABLET_MODE);
 #endif
 #ifdef CONFIG_BASE_ATTACHED_SWITCH
-	val |= (1 << EC_MKBP_BASE_ATTACHED);
+	val |= BIT(EC_MKBP_BASE_ATTACHED);
+#endif
+#ifdef CONFIG_FRONT_PROXIMITY_SWITCH
+	val |= BIT(EC_MKBP_FRONT_PROXIMITY);
 #endif
 	return val;
 }
 
-static int mkbp_get_info(struct host_cmd_handler_args *args)
+static enum ec_status mkbp_get_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_mkbp_info *p = args->params;
 
@@ -536,12 +584,12 @@ DECLARE_HOST_COMMAND(EC_CMD_MKBP_INFO, mkbp_get_info,
 /* For boards without a keyscan task, try and simulate keyboard presses. */
 static void simulate_key(int row, int col, int pressed)
 {
-	if ((simulated_key[col] & (1 << row)) == ((pressed ? 1 : 0) << row))
+	if ((simulated_key[col] & BIT(row)) == ((pressed ? 1 : 0) << row))
 		return;  /* No change */
 
-	simulated_key[col] &= ~(1 << row);
+	simulated_key[col] &= ~BIT(row);
 	if (pressed)
-		simulated_key[col] |= (1 << row);
+		simulated_key[col] |= BIT(row);
 
 	keyboard_fifo_add(simulated_key);
 }
@@ -556,7 +604,7 @@ static int command_mkbp_keyboard_press(int argc, char **argv)
 			if (simulated_key[i] == 0)
 				continue;
 			for (j = 0; j < KEYBOARD_ROWS; ++j)
-				if (simulated_key[i] & (1 << j))
+				if (simulated_key[i] & BIT(j))
 					ccprintf("\t%d %d\n", i, j);
 		}
 
@@ -667,7 +715,7 @@ static void keyscan_copy_config(const struct ec_mkbp_config *src,
 	uint8_t new_flags;
 
 	if (valid_mask & EC_MKBP_VALID_FIFO_MAX_DEPTH) {
-		/* Sanity check for fifo depth */
+		/* Validity check for fifo depth */
 		dst->fifo_max_depth = MIN(src->fifo_max_depth,
 					  FIFO_DEPTH);
 	}
@@ -679,7 +727,8 @@ static void keyscan_copy_config(const struct ec_mkbp_config *src,
 	dst->flags = new_flags;
 }
 
-static int host_command_mkbp_set_config(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_mkbp_set_config(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_mkbp_set_config *req = args->params;
 
@@ -693,7 +742,8 @@ DECLARE_HOST_COMMAND(EC_CMD_MKBP_SET_CONFIG,
 		     host_command_mkbp_set_config,
 		     EC_VER_MASK(0));
 
-static int host_command_mkbp_get_config(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_mkbp_get_config(struct host_cmd_handler_args *args)
 {
 	struct ec_response_mkbp_get_config *resp = args->response;
 	struct ec_mkbp_config *dst = &resp->config;

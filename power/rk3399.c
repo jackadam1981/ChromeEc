@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -241,7 +241,7 @@ enum power_state power_chipset_init(void)
 			CPRINTS("already in S0");
 			return POWER_S0;
 		}
-	} else if (!(system_get_reset_flags() & RESET_FLAG_AP_OFF))
+	} else if (!(system_get_reset_flags() & EC_RESET_FLAG_AP_OFF))
 		/* Auto-power on */
 		chipset_exit_hard_off();
 
@@ -520,6 +520,9 @@ enum power_state power_handle_state(enum power_state state)
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
 
 		power_seq_run(s3s5_power_seq, ARRAY_SIZE(s3s5_power_seq));
+
+		/* Call hooks after we remove power rails */
+		hook_notify(HOOK_CHIPSET_SHUTDOWN_COMPLETE);
 
 		/* Start shutting down */
 		return POWER_S5;

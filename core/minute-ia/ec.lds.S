@@ -13,6 +13,8 @@ SECTIONS
 {
 	. = CONFIG_ISH_BOOT_START; /* ISH SRAM (640KB) begins at 0xFF000000 */
 
+	__aon_ro_start = .;
+
 	/* .init section should be first, since it contains the boot code */
 	.init : { *(.init*); }
 	.text : { *(.text.*); }
@@ -22,11 +24,11 @@ SECTIONS
 	.rodata : {
 		/* Symbols defined here are declared in link_defs.h */
 		 __irqprio = .;
-	        KEEP(*(.rodata.irqprio))
+		KEEP(*(.rodata.irqprio))
 		 __irqprio_end = .;
 
 		 __irq_data = .;
-	        KEEP(*(.rodata.irqs))
+		KEEP(*(.rodata.irqs))
 		 __irq_data_end = .;
 
 		. = ALIGN(4);
@@ -82,9 +84,27 @@ SECTIONS
 		KEEP(*(.rodata.HOOK_CHIPSET_SUSPEND))
 		__hooks_chipset_suspend_end = .;
 
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+		__hooks_chipset_resume_init = .;
+		KEEP(*(.rodata.HOOK_CHIPSET_RESUME_INIT))
+		__hooks_chipset_resume_init_end = .;
+
+		__hooks_chipset_suspend_complete = .;
+		KEEP(*(.rodata.HOOK_CHIPSET_SUSPEND_COMPLETE))
+		__hooks_chipset_suspend_complete_end = .;
+#endif
+
 		__hooks_chipset_shutdown = .;
 		KEEP(*(.rodata.HOOK_CHIPSET_SHUTDOWN))
 		__hooks_chipset_shutdown_end = .;
+
+		__hooks_chipset_shutdown_complete = .;
+		KEEP(*(.rodata.HOOK_CHIPSET_SHUTDOWN_COMPLETE))
+		__hooks_chipset_shutdown_complete_end = .;
+
+		__hooks_chipset_hard_off = .;
+		KEEP(*(.rodata.HOOK_CHIPSET_HARD_OFF))
+		__hooks_chipset_hard_off_end = .;
 
 		__hooks_chipset_reset = .;
 		KEEP(*(.rodata.HOOK_CHIPSET_RESET))
@@ -128,9 +148,13 @@ SECTIONS
 		KEEP(*(.rodata.HOOK_SECOND))
 		__hooks_second_end = .;
 
-                __hooks_usb_pd_disconnect = .;
-                KEEP(*(.rodata.HOOK_USB_PD_DISCONNECT))
-                __hooks_usb_pd_disconnect_end = .;
+		__hooks_usb_pd_disconnect = .;
+		KEEP(*(.rodata.HOOK_USB_PD_DISCONNECT))
+		__hooks_usb_pd_disconnect_end = .;
+
+		__hooks_usb_pd_connect = .;
+		KEEP(*(.rodata.HOOK_USB_PD_CONNECT))
+		__hooks_usb_pd_connect_end = .;
 
 		__deferred_funcs = .;
 		KEEP(*(.rodata.deferred))
@@ -138,13 +162,35 @@ SECTIONS
 
 		 . = ALIGN(4);
 		 KEEP(*(.rodata.*))
+
+#ifdef CONFIG_CHIP_INIT_ROM_REGION
+	ASSERT(0, "CONFIG_CHIP_INIT_ROM_REGION not supported by linker script")
+#endif /* CONFIG_CHIP_INIT_ROM_REGION */
+		/*
+		 * This linker file does not yet support a separate ROM resident
+		 * section. Ensure the corresponding data objects are linked
+		 * into the .rodata section.
+		 */
+		. = ALIGN(4);
+		__init_rom_start = .;
+		*(.init.rom)
+		__init_rom_end = .;
 	}
+
+	/*
+	 * ISH DMA need 64 bytes address align, in D0i3 low power state
+	 * need copy RW part to IMR DDR via DMA
+	 */
+	. = ALIGN(64);
+	__aon_ro_end = .;
+
+	__aon_rw_start = .;
 
 	.data : {
 		 __data_start = .;
 		*(.data.*);
 		 __data_end = .;
-	 }
+	}
 
 	. = ALIGN(4);
 	.note.gnu.build-id : { *(.note.gnu.build-id); }
@@ -170,25 +216,29 @@ SECTIONS
 		 __bss_end = .;
 		 __bss_size_words = ABSOLUTE((__bss_end - __bss_start) / 4);
 
-        	/*
+		/*
 		 * Shared memory buffer must be at the end of
-        	 * preallocated RAM, so it can expand to use all the
-        	 * remaining RAM.
+		 * preallocated RAM, so it can expand to use all the
+		 * remaining RAM.
 		 */
-        	__shared_mem_buf = .;
+		__shared_mem_buf = .;
 	}
 
+	__aon_rw_end = . + CONFIG_SHAREDMEM_MINIMUM_SIZE;
+
 	ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
-			(CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
-		"Not enough space for shared memory.")
+	       (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
+	       "Not enough space for shared memory.")
+	__ram_free = (CONFIG_RAM_BASE + CONFIG_RAM_SIZE) -
+		     (__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE);
 
 	/* TODO: Adjust __image_size to proper value for core minute-ia later */
 	__image_size = . - CONFIG_ISH_BOOT_START;
 
 	def_irq_low  = ABSOLUTE(default_int_handler) & 0xFFFF;
 	def_irq_high = ABSOLUTE(default_int_handler) >> 16;
-}
-MEMORY
-{
-	FLASH (rwx) : ORIGIN = CONFIG_ISH_BOOT_START, LENGTH = 640 * 1024
+
+#ifdef CONFIG_ISH_PM_AONTASK
+	ish_persistent_data_aon = ABSOLUTE(CONFIG_AON_PERSISTENT_BASE);
+#endif
 }

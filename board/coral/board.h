@@ -55,7 +55,6 @@
 #define CONFIG_CHARGE_RAMP_SW
 #define CONFIG_CHARGE_STATE_DEBUG
 #define CONFIG_CHARGER
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHARGER_BD9995X
 #define CONFIG_CHARGER_BD9995X_CHGEN
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
@@ -78,7 +77,7 @@
 #define CONFIG_TABLET_MODE
 
 /* USB PD config */
-#define CONFIG_CMD_PD_CONTROL
+#define CONFIG_HOSTCMD_PD_CONTROL
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_DUAL_ROLE
@@ -95,6 +94,7 @@
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_COMM_LOCKED
 
 #define CONFIG_USBC_SS_MUX
@@ -123,7 +123,7 @@
 #undef  CONFIG_MPU
 #define CONFIG_HOSTCMD_FLASH_SPI_INFO
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_KEYBOARD_COL2_INVERTED
@@ -151,7 +151,6 @@
 #define CONFIG_WLAN_POWER_ACTIVE_LOW
 #define  WIRELESS_GPIO_WLAN_POWER GPIO_WIRELESS_GPIO_WLAN_POWER
 #define CONFIG_PWR_STATE_DISCHARGE_FULL
-#define CONFIG_EC_FEATURE_BOARD_OVERRIDE
 
 /*
  * During shutdown sequence TPS65094x PMIC turns off the sensor rails
@@ -166,7 +165,7 @@
 #undef CONFIG_MOTION_SENSE_SUSPEND_DELAY_US
 #define CONFIG_MOTION_SENSE_SUSPEND_DELAY_US (MSEC * 60)
 
-#define CONFIG_FLASH_SIZE 524288
+#define CONFIG_FLASH_SIZE_BYTES 524288
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q40	/* FIXME: Should be GD25LQ40? */
 
@@ -207,11 +206,12 @@
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
 /* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 512
-
+#define CONFIG_ACCEL_FIFO_SIZE 512
 /* Depends on how fast the AP boots and typical ODRs */
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 
 
 #ifndef __ASSEMBLER__
@@ -235,23 +235,6 @@ enum pwm_channel {
 	PWM_CH_COUNT
 };
 
-enum power_signal {
-#ifdef CONFIG_POWER_S0IX
-	X86_SLP_S0_N,
-#endif
-	X86_RSMRST_N,
-	X86_SLP_S3_N,
-	X86_SLP_S4_N,
-	X86_SUSPWRDNACK,
-
-	X86_ALL_SYS_PG,		/* PMIC_EC_PWROK_OD */
-	X86_PGOOD_PP3300,	/* GPIO_PP3300_PG */
-	X86_PGOOD_PP5000,	/* GPIO_PP5000_PG */
-
-	/* Number of X86 signals */
-	POWER_SIGNAL_COUNT
-};
-
 enum temp_sensor_id {
 	TEMP_SENSOR_BATTERY = 0,
 	TEMP_SENSOR_AMBIENT,
@@ -269,6 +252,7 @@ enum sensor_id {
 	LID_ACCEL,
 	BASE_ACCEL,
 	BASE_GYRO,
+	SENSOR_COUNT,
 };
 
 #define CONFIG_HOSTCMD_SKUID
@@ -303,7 +287,6 @@ enum coral_board_version {
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 
 /* delay to turn on/off vconn */
-#define PD_VCONN_SWAP_DELAY 5000 /* us */
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
@@ -319,7 +302,7 @@ int board_get_version(void);
 void board_set_tcpc_power_mode(int port, int mode);
 
 /* Sensors without hardware FIFO are in forced mode */
-#define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
+#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
 
 #endif /* !__ASSEMBLER__ */
 

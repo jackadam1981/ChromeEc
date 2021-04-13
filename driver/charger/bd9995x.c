@@ -114,18 +114,23 @@ static enum usb_switch usb_switch_state[BD9995X_CHARGE_PORT_COUNT] = {
 static enum ec_error_list bd9995x_set_current(int chgnum, int current);
 static enum ec_error_list bd9995x_set_voltage(int chgnum, int voltage);
 
+/*
+ * The USB Type-C specification limits the maximum amount of current from BC 1.2
+ * suppliers to 1.5A.  Technically, proprietary methods are not allowed, but we
+ * will continue to allow those.
+ */
 static int bd9995x_get_bc12_ilim(int charge_supplier)
 {
 	switch (charge_supplier) {
 	case CHARGE_SUPPLIER_BC12_CDP:
-		return 1500;
+		return USB_CHARGER_MAX_CURR_MA;
 	case CHARGE_SUPPLIER_BC12_DCP:
-		return 2000;
+		return USB_CHARGER_MAX_CURR_MA;
 	case CHARGE_SUPPLIER_BC12_SDP:
 		return 900;
 	case CHARGE_SUPPLIER_OTHER:
 #ifdef CONFIG_CHARGE_RAMP_SW
-		return 2400;
+		return USB_CHARGER_MAX_CURR_MA;
 #else
 		/*
 		 * Setting the higher limit of current may result in an
@@ -592,7 +597,7 @@ static int usb_charger_process(int chgnum, int port)
 }
 
 #ifdef CONFIG_CHARGE_RAMP_SW
-int usb_charger_ramp_allowed(int supplier)
+static int bd9995x_ramp_allowed(int supplier)
 {
 	return supplier == CHARGE_SUPPLIER_BC12_DCP ||
 	       supplier == CHARGE_SUPPLIER_BC12_SDP ||
@@ -600,7 +605,7 @@ int usb_charger_ramp_allowed(int supplier)
 	       supplier == CHARGE_SUPPLIER_OTHER;
 }
 
-int usb_charger_ramp_max(int supplier, int sup_curr)
+static int bd9995x_ramp_max(int supplier, int sup_curr)
 {
 	return bd9995x_get_bc12_ilim(supplier);
 }
@@ -609,8 +614,8 @@ int usb_charger_ramp_max(int supplier, int sup_curr)
 
 /* chip specific interfaces */
 
-static enum ec_error_list bd9995x_set_input_current(int chgnum,
-						    int input_current)
+static enum ec_error_list bd9995x_set_input_current_limit(int chgnum,
+							  int input_current)
 {
 	int rv;
 
@@ -629,8 +634,8 @@ static enum ec_error_list bd9995x_set_input_current(int chgnum,
 				BD9995X_BAT_CHG_COMMAND);
 }
 
-static enum ec_error_list bd9995x_get_input_current(int chgnum,
-						    int *input_current)
+static enum ec_error_list bd9995x_get_input_current_limit(int chgnum,
+							  int *input_current)
 {
 	return ch_raw_read16(chgnum, BD9995X_CMD_CUR_ILIM_VAL, input_current,
 			     BD9995X_EXTENDED_COMMAND);
@@ -897,7 +902,7 @@ static void bd9995x_battery_charging_profile_settings(int chgnum)
 	const struct battery_info *bi = battery_get_info();
 
 	/* Input Current Limit Setting */
-	bd9995x_set_input_current(chgnum, CONFIG_CHARGER_INPUT_CURRENT);
+	bd9995x_set_input_current_limit(chgnum, CONFIG_CHARGER_INPUT_CURRENT);
 
 	/* Charge Termination Current Setting */
 	ch_raw_write16(chgnum, BD9995X_CMD_ITERM_SET, 0,
@@ -1076,16 +1081,16 @@ static enum ec_error_list bd9995x_discharge_on_ac(int chgnum, int enable)
 				BD9995X_EXTENDED_COMMAND);
 }
 
-static int bd9995x_get_vbus_voltage(int chgnum, int port)
+static enum ec_error_list bd9995x_get_vbus_voltage(int chgnum, int port,
+						   int *voltage)
 {
 	uint8_t read_reg;
-	int voltage;
 
 	read_reg = (port == BD9995X_CHARGE_PORT_VBUS) ? BD9995X_CMD_VBUS_VAL :
 							BD9995X_CMD_VCC_VAL;
 
-	return ch_raw_read16(chgnum, read_reg, &voltage,
-			     BD9995X_EXTENDED_COMMAND) ? 0 : voltage;
+	return ch_raw_read16(chgnum, read_reg, voltage,
+			     BD9995X_EXTENDED_COMMAND);
 }
 
 /*** Non-standard interface functions ***/
@@ -1269,7 +1274,7 @@ int bd9995x_bc12_enable_charging(int port, int enable)
 			BD9995X_EXTENDED_COMMAND);
 }
 
-void usb_charger_set_switches(int port, enum usb_switch setting)
+static void bd9995x_set_switches(int port, enum usb_switch setting)
 {
 	/* If switch is not changing then return */
 	if (setting == usb_switch_state[port])
@@ -1296,7 +1301,7 @@ void bd9995x_vbus_interrupt(enum gpio_signal signal)
 	task_wake(TASK_ID_USB_CHG);
 }
 
-void usb_charger_task(void *u)
+static void bd9995x_usb_charger_task(const int unused)
 {
 	static int initialized;
 	int changed, port, interrupts;
@@ -1550,7 +1555,7 @@ static int bd9995x_psys_charger_adc(int chgnum)
 	 * Calculate power in mW
 	 * PSYS = VACP×IACP+VBAT×IBAT = IPMON / GPMON
 	 */
-	return (int) ((ipmon * 1000) / ((1 << BD9995X_PSYS_GAIN_SELECT) *
+	return (int) ((ipmon * 1000) / (BIT(BD9995X_PSYS_GAIN_SELECT) *
 		BD9995X_PMON_IOUT_ADC_READ_COUNT));
 }
 
@@ -1726,10 +1731,45 @@ const struct charger_drv bd9995x_drv = {
 	.set_voltage = &bd9995x_set_voltage,
 	.discharge_on_ac = &bd9995x_discharge_on_ac,
 	.get_vbus_voltage = &bd9995x_get_vbus_voltage,
-	.set_input_current = &bd9995x_set_input_current,
-	.get_input_current = &bd9995x_get_input_current,
+	.set_input_current_limit = &bd9995x_set_input_current_limit,
+	.get_input_current_limit = &bd9995x_get_input_current_limit,
 	.manufacturer_id = &bd9995x_manufacturer_id,
 	.device_id = &bd9995x_device_id,
 	.get_option = &bd9995x_get_option,
 	.set_option = &bd9995x_set_option,
 };
+
+#ifdef CONFIG_BC12_SINGLE_DRIVER
+/* provide a default bc12_ports[] for backward compatibility */
+struct bc12_config bc12_ports[BD9995X_CHARGE_PORT_COUNT] = {
+	{
+		.drv = &(const struct bc12_drv) {
+			.usb_charger_task = bd9995x_usb_charger_task,
+			.set_switches = bd9995x_set_switches,
+#if defined(CONFIG_CHARGE_RAMP_SW)
+			.ramp_allowed = bd9995x_ramp_allowed,
+			.ramp_max = bd9995x_ramp_max,
+#endif /* CONFIG_CHARGE_RAMP_SW */
+		},
+	},
+	{
+		.drv = &(const struct bc12_drv) {
+			/* bd9995x uses a single task thread for both ports */
+			.usb_charger_task = NULL,
+			.set_switches = bd9995x_set_switches,
+#if defined(CONFIG_CHARGE_RAMP_SW)
+			.ramp_allowed = bd9995x_ramp_allowed,
+			.ramp_max = bd9995x_ramp_max,
+#endif /* CONFIG_CHARGE_RAMP_SW */
+		},
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(bc12_ports) == CHARGE_PORT_COUNT);
+#else
+/*
+ * TODO:
+ * This driver assumes its two ports is always on number 0 and 1.
+ * Prohibit multiple driver for safety.
+ */
+#error config not supported
+#endif /* CONFIG_BC12_SINGLE_DRIVER */

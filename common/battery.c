@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -6,20 +6,23 @@
  */
 
 #include "battery.h"
+#include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
 #include "console.h"
-#include "ec_ec_comm_master.h"
+#include "ec_ec_comm_client.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "timer.h"
+#include "usb_pd.h"
 #include "util.h"
 #include "watchdog.h"
 
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
+#define CUTOFFPRINTS(info) CPRINTS("%s %s", "Battery cut off", info)
 
 /* See config.h for details */
 const static int batt_full_factor = CONFIG_BATT_FULL_FACTOR;
@@ -31,7 +34,7 @@ const static int batt_host_shutdown_pct = CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE;
  * Store battery information in these 2 structures. Main (lid) battery is always
  * at index 0, and secondary (base) battery at index 1.
  */
-struct ec_response_battery_static_info battery_static[CONFIG_BATTERY_COUNT];
+struct ec_response_battery_static_info_v1 battery_static[CONFIG_BATTERY_COUNT];
 struct ec_response_battery_dynamic_info battery_dynamic[CONFIG_BATTERY_COUNT];
 #endif
 
@@ -206,7 +209,7 @@ static void print_battery_info(void)
 		ccprintf("%d mAh (%d mAh with %d %% compensation)\n",
 			 value, value*batt_full_factor/100, batt_full_factor);
 
-#ifdef CONFIG_CHARGER_V2
+#ifdef CONFIG_CHARGER
 	print_item_name("Display:");
 	value = charge_get_display_charge();
 	ccprintf("%d.%d %%\n", value / 10, value % 10);
@@ -304,10 +307,13 @@ static void pending_cutoff_deferred(void)
 
 	rv = board_cut_off_battery();
 
-	if (rv == EC_RES_SUCCESS)
-		CPRINTF("[%T Battery cut off succeeded.]\n");
-	else
-		CPRINTF("[%T Battery cut off failed!]\n");
+	if (rv == EC_RES_SUCCESS) {
+		CUTOFFPRINTS("succeeded.");
+		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
+	} else {
+		CUTOFFPRINTS("failed!");
+		battery_cutoff_state = BATTERY_CUTOFF_STATE_NORMAL;
+	}
 }
 DECLARE_DEFERRED(pending_cutoff_deferred);
 
@@ -320,7 +326,7 @@ static void clear_pending_cutoff(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, clear_pending_cutoff, HOOK_PRIO_DEFAULT);
 
-static int battery_command_cutoff(struct host_cmd_handler_args *args)
+static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_battery_cutoff *p;
 	int rv;
@@ -329,17 +335,17 @@ static int battery_command_cutoff(struct host_cmd_handler_args *args)
 		p = args->params;
 		if (p->flags & EC_BATTERY_CUTOFF_FLAG_AT_SHUTDOWN) {
 			battery_cutoff_state = BATTERY_CUTOFF_STATE_PENDING;
-			CPRINTS("Battery cut off at-shutdown is scheduled");
+			CUTOFFPRINTS("at-shutdown is scheduled");
 			return EC_RES_SUCCESS;
 		}
 	}
 
 	rv = board_cut_off_battery();
 	if (rv == EC_RES_SUCCESS) {
-		CPRINTS("Battery cut off is successful.");
+		CUTOFFPRINTS("is successful.");
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
 	} else {
-		CPRINTS("Battery cut off has failed.");
+		CUTOFFPRINTS("has failed.");
 	}
 
 	return rv;
@@ -350,7 +356,7 @@ DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cutoff,
 static void check_pending_cutoff(void)
 {
 	if (battery_cutoff_state == BATTERY_CUTOFF_STATE_PENDING) {
-		CPRINTF("[%T Cutting off battery in %d second(s)]\n",
+		CPRINTS("Cutting off battery in %d second(s)",
 			CONFIG_BATTERY_CUTOFF_DELAY_US / SECOND);
 		hook_call_deferred(&pending_cutoff_deferred_data,
 				   CONFIG_BATTERY_CUTOFF_DELAY_US);
@@ -373,7 +379,7 @@ static int command_cutoff(int argc, char **argv)
 
 	rv = board_cut_off_battery();
 	if (rv == EC_RES_SUCCESS) {
-		ccprintf("[%T Battery cut off]\n");
+		ccprints("Battery cut off");
 		battery_cutoff_state = BATTERY_CUTOFF_STATE_CUT_OFF;
 		return EC_SUCCESS;
 	}
@@ -429,7 +435,8 @@ DECLARE_CONSOLE_COMMAND(battparam, console_command_battery_vendor_param,
 			"<param> [value]",
 			"Get or set battery vendor parameters");
 
-static int host_command_battery_vendor_param(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_battery_vendor_param(struct host_cmd_handler_args *args)
 {
 	int rv;
 	const struct ec_params_battery_vendor_param *p = args->params;
@@ -458,24 +465,51 @@ DECLARE_HOST_COMMAND(EC_CMD_BATTERY_VENDOR_PARAM,
 #ifdef CONFIG_BATTERY_V2
 #ifdef CONFIG_HOSTCMD_BATTERY_V2
 static void battery_update(enum battery_index i);
-static int host_command_battery_get_static(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_battery_get_static(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_battery_static_info *p = args->params;
-	struct ec_response_battery_static_info *r = args->response;
+	struct ec_response_battery_static_info_v1 *bat;
 
 	if (p->index < 0 || p->index >= CONFIG_BATTERY_COUNT)
 		return EC_RES_INVALID_PARAM;
+	bat = &battery_static[p->index];
+
 	battery_update(p->index);
-	args->response_size = sizeof(*r);
-	memcpy(r, &battery_static[p->index], sizeof(*r));
+	if (args->version == 0) {
+		struct ec_response_battery_static_info *r = args->response;
+
+		args->response_size = sizeof(*r);
+		r->design_capacity = bat->design_capacity;
+		r->design_voltage = bat->design_voltage;
+		r->cycle_count = bat->cycle_count;
+
+		/* Truncate strings to reduced v0 size */
+		memcpy(&r->manufacturer, &bat->manufacturer_ext,
+		       sizeof(r->manufacturer));
+		r->manufacturer[sizeof(r->manufacturer) - 1] = 0;
+		memcpy(&r->model, &bat->model_ext, sizeof(r->model));
+		r->model[sizeof(r->model) - 1] = 0;
+		memcpy(&r->serial, &bat->serial_ext, sizeof(r->serial));
+		r->serial[sizeof(r->serial) - 1] = 0;
+		memcpy(&r->type, &bat->type_ext, sizeof(r->type));
+		r->type[sizeof(r->type) - 1] = 0;
+	} else {
+		/* v1 command stores the same data internally */
+		struct ec_response_battery_static_info_v1 *r = args->response;
+
+		args->response_size = sizeof(*r);
+		memcpy(r, bat, sizeof(*r));
+	}
 
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_BATTERY_GET_STATIC,
 		     host_command_battery_get_static,
-		     EC_VER_MASK(0));
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
-static int host_command_battery_get_dynamic(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_battery_get_dynamic(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_battery_dynamic_info *p = args->params;
 	struct ec_response_battery_dynamic_info *r = args->response;
@@ -508,7 +542,8 @@ static void battery_update(enum battery_index i)
 
 	/* Smart battery serial number is 16 bits */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_SERIAL);
-	memcpy(batt_str, battery_static[i].serial, EC_MEMMAP_TEXT_MAX);
+	memcpy(batt_str, battery_static[i].serial_ext, EC_MEMMAP_TEXT_MAX);
+	batt_str[EC_MEMMAP_TEXT_MAX - 1] = 0;
 
 	/* Design Capacity of Full */
 	*memmap_dcap = battery_static[i].design_capacity;
@@ -521,15 +556,19 @@ static void battery_update(enum battery_index i)
 
 	/* Battery Manufacturer string */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_MFGR);
-	memcpy(batt_str, battery_static[i].manufacturer, EC_MEMMAP_TEXT_MAX);
+	memcpy(batt_str, battery_static[i].manufacturer_ext,
+	       EC_MEMMAP_TEXT_MAX);
+	batt_str[EC_MEMMAP_TEXT_MAX - 1] = 0;
 
 	/* Battery Model string */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_MODEL);
-	memcpy(batt_str, battery_static[i].model, EC_MEMMAP_TEXT_MAX);
+	memcpy(batt_str, battery_static[i].model_ext, EC_MEMMAP_TEXT_MAX);
+	batt_str[EC_MEMMAP_TEXT_MAX - 1] = 0;
 
 	/* Battery Type string */
 	batt_str = (char *)host_get_memmap(EC_MEMMAP_BATT_TYPE);
-	memcpy(batt_str, battery_static[i].type, EC_MEMMAP_TEXT_MAX);
+	memcpy(batt_str, battery_static[i].type_ext, EC_MEMMAP_TEXT_MAX);
+	batt_str[EC_MEMMAP_TEXT_MAX - 1] = 0;
 
 	*memmap_volt = battery_dynamic[i].actual_voltage;
 	*memmap_rate = battery_dynamic[i].actual_current;
@@ -572,39 +611,144 @@ DECLARE_HOOK(HOOK_INIT, battery_init, HOOK_PRIO_DEFAULT);
 void battery_compensate_params(struct batt_params *batt)
 {
 	int numer, denom;
-	int remain = batt->remaining_capacity;
-	int full = batt->full_capacity;
-	int lfcc = *(int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
+	int *remain = &(batt->remaining_capacity);
+	int *full = &(batt->full_capacity);
 
 	if ((batt->flags & BATT_FLAG_BAD_FULL_CAPACITY) ||
 			(batt->flags & BATT_FLAG_BAD_REMAINING_CAPACITY))
 		return;
 
-	if (remain <= 0 || full <= 0)
-		return;
-
-	/* full_factor != 100 isn't supported. EC and host are not able to
-	 * act on soc changes synchronously. */
-	if (batt_host_full_factor != 100)
+	if (*remain <= 0 || *full <= 0)
 		return;
 
 	/* full_factor is effectively disabled in powerd. */
-	batt->full_capacity = full * batt_full_factor / 100;
-	if (lfcc == 0)
-		/* EC just reset. Assume host full is equal. */
-		lfcc = batt->full_capacity;
-	if (remain > lfcc) {
-		batt->remaining_capacity = lfcc;
-		remain = batt->remaining_capacity;
-	}
+	*full = *full * batt_full_factor / 100;
+	if (*remain > *full)
+		*remain = *full;
 
 	/*
 	 * Powerd uses the following equation to calculate display percentage:
-	 *   charge = 100 * remain/full;
-	 *   100 * (charge - shutdown_pct) / (full_factor - shutdown_pct);
+	 *   charge = 100 * remain / full
+	 *   display = 100 * (charge - shutdown_pct) /
+	 *		     (full_factor - shutdown_pct)
+	 *	     = 100 * ((100 * remain / full) - shutdown_pct) /
+	 *		     (full_factor - shutdown_pct)
+	 *	     = 100 * ((100 * remain) - (full * shutdown_pct)) /
+	 *		     (full * (full_factor - shutdown_pct))
+	 *
+	 * The unit of the following batt->display_charge is 0.1%.
 	 */
-	numer = (100 * remain - lfcc * batt_host_shutdown_pct) * 1000;
-	denom = lfcc * (100 - batt_host_shutdown_pct);
+	numer = 1000 * ((100 * *remain) - (*full * batt_host_shutdown_pct));
+	denom = *full * (batt_host_full_factor - batt_host_shutdown_pct);
 	/* Rounding (instead of truncating) */
 	batt->display_charge = (numer + denom / 2) / denom;
+	if (batt->display_charge < 0)
+		batt->display_charge = 0;
+	if (batt->display_charge > 1000)
+		batt->display_charge = 1000;
 }
+
+__overridable void board_battery_compensate_params(struct batt_params *batt)
+{
+}
+
+__attribute__((weak)) int get_battery_manufacturer_name(char *dest, int size)
+{
+	strzcpy(dest, "<unkn>", size);
+	return EC_SUCCESS;
+}
+
+__overridable int battery_get_avg_voltage(void)
+{
+	return -EC_ERROR_UNIMPLEMENTED;
+}
+
+__overridable int battery_get_avg_current(void)
+{
+	return -EC_ERROR_UNIMPLEMENTED;
+}
+
+int battery_manufacturer_name(char *dest, int size)
+{
+	return get_battery_manufacturer_name(dest, size);
+}
+
+#ifdef CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV
+
+#if CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV < 5000 || \
+    CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV >= PD_MAX_VOLTAGE_MV
+	#error "Voltage limit must be between 5000 and PD_MAX_VOLTAGE_MV"
+#endif
+
+#if !((defined(CONFIG_USB_PD_TCPMV1) && defined(CONFIG_USB_PD_DUAL_ROLE)) || \
+    (defined(CONFIG_USB_PD_TCPMV2) && defined(CONFIG_USB_PE_SM)))
+	#error "Voltage reducing requires TCPM with Policy Engine"
+#endif
+
+/*
+ * Returns true if input voltage should be reduced (chipset is in S5/G3) and
+ * battery is full, otherwise returns false
+ */
+static bool board_wants_reduced_input_voltage(void) {
+	struct batt_params batt;
+
+	/* Chipset not in S5/G3, so we don't want to reduce voltage */
+	if (!chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF))
+		return false;
+
+	battery_get_params(&batt);
+
+	/* Battery needs charge, so we don't want to reduce voltage */
+	if (batt.flags & BATT_FLAG_WANT_CHARGE)
+		return false;
+
+	return true;
+}
+
+static void reduce_input_voltage_when_full(void)
+{
+	static int saved_input_voltage = -1;
+	int max_pd_voltage_mv = pd_get_max_voltage();
+	int port;
+
+	port = charge_manager_get_active_charge_port();
+	if (port < 0 || port >= board_get_usb_pd_port_count())
+		return;
+
+	if (board_wants_reduced_input_voltage()) {
+		/*
+		 * Board wants voltage to be reduced. Apply limit if current
+		 * voltage is different. Save current voltage, it will be
+		 * restored when board wants to stop reducing input voltage.
+		 */
+		if (max_pd_voltage_mv !=
+		    CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV) {
+			saved_input_voltage = max_pd_voltage_mv;
+			max_pd_voltage_mv =
+			    CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV;
+		}
+	} else if (saved_input_voltage != -1) {
+		/*
+		 * Board doesn't want to reduce input voltage. If current
+		 * voltage is reduced we will restore previously saved voltage.
+		 * If current voltage is different we will respect newer value.
+		 */
+		if (max_pd_voltage_mv ==
+		    CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV)
+			max_pd_voltage_mv = saved_input_voltage;
+
+		saved_input_voltage = -1;
+	}
+
+	if (pd_get_max_voltage() != max_pd_voltage_mv)
+		pd_set_external_voltage_limit(port, max_pd_voltage_mv);
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, reduce_input_voltage_when_full,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE, reduce_input_voltage_when_full,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, reduce_input_voltage_when_full,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, reduce_input_voltage_when_full,
+	     HOOK_PRIO_DEFAULT);
+#endif

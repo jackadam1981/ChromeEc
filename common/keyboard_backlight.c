@@ -74,7 +74,9 @@ int kblight_register(const struct kblight_drv *drv)
 static void keyboard_backlight_init(void)
 {
 	/* Uses PWM by default. Can be customized by board_kblight_init */
+#ifdef CONFIG_PWM_KBLIGHT
 	kblight_register(&kblight_pwm);
+#endif
 	board_kblight_init();
 	if (kblight_init())
 		CPRINTS("kblight init failed");
@@ -89,7 +91,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kblight_suspend, HOOK_PRIO_DEFAULT);
 
 static void kblight_resume(void)
 {
-	if (lid_is_open()) {
+	if (lid_is_open() && current_percent) {
 		kblight_enable(1);
 		kblight_set(current_percent);
 	}
@@ -98,7 +100,7 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, kblight_resume, HOOK_PRIO_DEFAULT);
 
 static void kblight_lid_change(void)
 {
-	kblight_enable(lid_is_open());
+	kblight_enable(lid_is_open() && current_percent);
 }
 DECLARE_HOOK(HOOK_LID_CHANGE, kblight_lid_change, HOOK_PRIO_DEFAULT);
 
@@ -114,6 +116,8 @@ static int cc_kblight(int argc, char **argv)
 			return EC_ERROR_PARAM1;
 		if (kblight_set(i))
 			return EC_ERROR_PARAM1;
+		if (kblight_enable(i > 0))
+			return EC_ERROR_PARAM1;
 	}
 	ccprintf("Keyboard backlight: %d%%\n", kblight_get());
 	return EC_SUCCESS;
@@ -122,7 +126,7 @@ DECLARE_CONSOLE_COMMAND(kblight, cc_kblight,
 			"percent",
 			"Get/set keyboard backlight");
 
-int hc_get_keyboard_backlight(struct host_cmd_handler_args *args)
+enum ec_status hc_get_keyboard_backlight(struct host_cmd_handler_args *args)
 {
 	struct ec_response_pwm_get_keyboard_backlight *r = args->response;
 
@@ -136,11 +140,13 @@ DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_KEYBOARD_BACKLIGHT,
 		     hc_get_keyboard_backlight,
 		     EC_VER_MASK(0));
 
-int hc_set_keyboard_backlight(struct host_cmd_handler_args *args)
+enum ec_status hc_set_keyboard_backlight(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pwm_set_keyboard_backlight *p = args->params;
 
 	if (kblight_set(p->percent))
+		return EC_RES_ERROR;
+	if (kblight_enable(p->percent > 0))
 		return EC_RES_ERROR;
 	return EC_RES_SUCCESS;
 }

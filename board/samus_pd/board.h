@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -18,6 +18,7 @@
 /* Optional features */
 #define CONFIG_ADC
 #undef  CONFIG_ADC_WATCHDOG
+#define CONFIG_BATTERY_PRESENT_CUSTOM
 #define CONFIG_BOARD_PRE_INIT
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGE_RAMP_SW
@@ -30,8 +31,10 @@
 #undef  CONFIG_CMD_I2C_XFER
 /* Minimum ilim = 500 mA */
 #define CONFIG_CHARGER_INPUT_CURRENT PWM_0_MA
+#undef  CONFIG_CMD_GETTIME
 #undef  CONFIG_CMD_IDLE_STATS
 #undef  CONFIG_CMD_MD
+#undef  CONFIG_CMD_RW
 #undef  CONFIG_CMD_SHMEM
 #undef  CONFIG_CMD_TIMERINFO
 #define CONFIG_COMMON_GPIO_SHORTNAMES
@@ -44,8 +47,8 @@
 #undef  CONFIG_HOSTCMD_EVENTS
 #define CONFIG_HW_CRC
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
-#define CONFIG_I2C_SLAVE
+#define CONFIG_I2C_CONTROLLER
+#define CONFIG_I2C_PERIPHERAL
 #undef  CONFIG_LID_SWITCH
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_LTO
@@ -54,15 +57,18 @@
 #undef  CONFIG_TASK_PROFILING
 #define CONFIG_USB_CHARGER
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
+#undef CONFIG_USB_PD_TCPMV1_DEBUG
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_CHECK_MAX_REQUEST_ALLOWED
 #define CONFIG_USB_PD_COMM_LOCKED
+#define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_PD_FLASH_ERASE_CHECK
 #define CONFIG_USB_PD_INTERNAL_COMP
-#define CONFIG_USB_PD_LOGGING
+#undef CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
@@ -87,9 +93,9 @@
 #define I2C_PORT_EC I2C_PORT_SLAVE
 #define I2C_PORT_PERICOM I2C_PORT_MASTER
 
-/* slave address for host commands */
+/* peripheral address for host commands */
 #ifdef HAS_TASK_HOSTCMD
-#define CONFIG_HOSTCMD_I2C_SLAVE_ADDR CONFIG_USB_PD_I2C_SLAVE_ADDR
+#define CONFIG_HOSTCMD_I2C_ADDR_FLAGS CONFIG_USB_PD_I2C_ADDR_FLAGS
 #endif
 
 #ifndef __ASSEMBLER__
@@ -129,7 +135,6 @@ enum pwm_channel {
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 
 /* delay to turn on/off vconn */
-#define PD_VCONN_SWAP_DELAY 5000 /* us */
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
@@ -143,9 +148,6 @@ enum pwm_channel {
 
 /* Map current in milli-amps to PWM duty cycle percentage */
 #define MA_TO_PWM(curr) (((curr) - PWM_0_MA) * 100 / (PWM_100_MA - PWM_0_MA))
-
-/* Get the last received battery level. */
-int board_get_battery_soc(void);
 
 #endif /* !__ASSEMBLER__ */
 

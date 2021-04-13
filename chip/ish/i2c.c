@@ -22,8 +22,6 @@
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
 
-#define EVENT_FLAG_I2C_TIMEOUT			TASK_EVENT_CUSTOM(1 << 7)
-
 /*25MHz, 50MHz, 100MHz, 120MHz, 40MHz, 20MHz, 37MHz*/
 static uint16_t default_hcnt_scl_100[] = {
 	4000, 4420, 4920, 4400, 4000, 4000, 4300
@@ -52,31 +50,35 @@ static uint16_t default_lcnt_scl_1000[] = {
 static uint16_t default_hcnt_scl_hs[] = { 160, 300, 160, 166, 175, 150, 162 };
 static uint16_t default_lcnt_scl_hs[] = { 320, 340, 320, 325, 325, 300, 297 };
 
-static uint8_t speed_val_arr[] = {
-	STD_SPEED_VAL, FAST_SPEED_VAL, FAST_PLUS_SPEED_VAL, HIGH_SPEED_VAL
-};
 
+#ifdef CHIP_VARIANT_ISH5P4
+/* Change to I2C_FREQ_100 in real silicon platform */
+static uint8_t bus_freq[ISH_I2C_PORT_COUNT] = {
+	I2C_FREQ_100, I2C_FREQ_100, I2C_FREQ_100
+};
+#else
 static uint8_t bus_freq[ISH_I2C_PORT_COUNT] = {
 	I2C_FREQ_120, I2C_FREQ_120, I2C_FREQ_120
 };
+#endif
 
 static struct i2c_context i2c_ctxs[ISH_I2C_PORT_COUNT] = {
 	{
 		.bus = 0,
 		.base = (uint32_t *) ISH_I2C0_BASE,
-		.speed = I2C_SPEED_FAST,
+		.speed = I2C_SPEED_400KHZ,
 		.int_pin = ISH_I2C0_IRQ,
 	},
 	{
 		.bus = 1,
 		.base = (uint32_t *) ISH_I2C1_BASE,
-		.speed = I2C_SPEED_FAST,
+		.speed = I2C_SPEED_400KHZ,
 		.int_pin = ISH_I2C1_IRQ,
 	},
 	{
 		.bus = 2,
 		.base = (uint32_t *) ISH_I2C2_BASE,
-		.speed = I2C_SPEED_FAST,
+		.speed = I2C_SPEED_400KHZ,
 		.int_pin = ISH_I2C2_IRQ,
 	},
 };
@@ -156,15 +158,12 @@ static void i2c_intr_switch(uint32_t *base, int mode)
 }
 
 static void i2c_init_transaction(struct i2c_context *ctx,
-				 uint8_t slave_addr, uint8_t flags)
+				 uint16_t slave_addr, uint8_t flags)
 {
 	uint32_t con_value;
 	uint32_t *base = ctx->base;
 	struct i2c_bus_info *bus_info = &board_config[ctx->bus];
 	uint32_t clk_in_val = clk_in[bus_freq[ctx->bus]];
-
-	/* Convert 8-bit slave addrees to 7-bit for driver expectation*/
-	slave_addr >>= 1;
 
 	/* disable interrupts */
 	i2c_intr_switch(base, DISABLE_INT);
@@ -176,7 +175,7 @@ static void i2c_init_transaction(struct i2c_context *ctx,
 	/* set Clock SCL Count */
 	switch (ctx->speed) {
 
-	case I2C_SPEED_STD:
+	case I2C_SPEED_100KHZ:
 		i2c_mmio_write(base, IC_SS_SCL_HCNT,
 				NS_2_COUNTERS(bus_info->std_speed.hcnt,
 					     clk_in_val));
@@ -188,7 +187,7 @@ static void i2c_init_transaction(struct i2c_context *ctx,
 					     clk_in_val));
 		break;
 
-	case I2C_SPEED_FAST:
+	case I2C_SPEED_400KHZ:
 		i2c_mmio_write(base, IC_FS_SCL_HCNT,
 				NS_2_COUNTERS(bus_info->fast_speed.hcnt,
 					     clk_in_val));
@@ -200,7 +199,7 @@ static void i2c_init_transaction(struct i2c_context *ctx,
 					     clk_in_val));
 		break;
 
-	case I2C_SPEED_FAST_PLUS:
+	case I2C_SPEED_1MHZ:
 		i2c_mmio_write(base, IC_FS_SCL_HCNT,
 				NS_2_COUNTERS(bus_info->fast_plus_speed.hcnt,
 					     clk_in_val));
@@ -212,7 +211,7 @@ static void i2c_init_transaction(struct i2c_context *ctx,
 					     clk_in_val));
 		break;
 
-	case I2C_SPEED_HIGH:
+	case I2C_SPEED_3M4HZ:
 		i2c_mmio_write(base, IC_HS_SCL_HCNT,
 				NS_2_COUNTERS(bus_info->high_speed.hcnt,
 					     clk_in_val));
@@ -294,7 +293,8 @@ static void i2c_write_read_commands(uint32_t *base, uint8_t len, int more_data,
 	}
 }
 
-int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
+int chip_i2c_xfer(const int port, const uint16_t slave_addr_flags,
+		  const uint8_t *out, int out_size,
 		  uint8_t *in, int in_size, int flags)
 {
 	int i;
@@ -302,12 +302,21 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	uint64_t expire_ts;
 	struct i2c_context *ctx;
 	ssize_t curr_index = 0;
-
+	uint16_t addr = I2C_STRIP_FLAGS(slave_addr_flags);
 	int begin_indx;
 	uint8_t repeat_start = 0;
 
 	if (out_size == 0 && in_size == 0)
 		return EC_SUCCESS;
+
+	if (port < 0 || port >= ISH_I2C_PORT_COUNT)
+		return EC_ERROR_INVAL;
+
+	/* Check for reserved I2C addresses, pg. 74 in DW_apb_i2c.pdf
+	 * Address cannot be any of the reserved address locations
+	 */
+	if (addr < I2C_FIRST_VALID_ADDR || addr > I2C_LAST_VALID_ADDR)
+		return EC_ERROR_INVAL;
 
 	/* assume that if both out_size and in_size are not zero,
 	 * then, it is 'repeated Start' condition. */
@@ -320,7 +329,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 
 	total_len = in_size + out_size;
 
-	i2c_init_transaction(ctx, slave_addr, repeat_start);
+	i2c_init_transaction(ctx, addr, repeat_start);
 
 	/* Write W data */
 	if (out_size)
@@ -337,7 +346,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	if (in_size > (ISH_I2C_FIFO_SIZE - out_size)) {
 
 		while ((i2c_mmio_read(ctx->base, IC_STATUS) &
-			(1 << IC_STATUS_TFE)) == 0) {
+			BIT(IC_STATUS_TFE)) == 0) {
 
 			if (__hw_clock_source_read() >= expire_ts) {
 				ctx->error_flag = 1;
@@ -378,7 +387,7 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 
 
 		/* need timeout in case no ACK from slave */
-		task_wait_event_mask(EVENT_FLAG_I2C_TIMEOUT, 2*MSEC);
+		task_wait_event_mask(TASK_EVENT_I2C_IDLE, 2*MSEC);
 
 		if (ctx->interrupts & M_TX_ABRT) {
 			ctx->error_flag = 1;
@@ -399,8 +408,9 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 	/* do not disable device before master is idle */
 	expire_ts = __hw_clock_source_read() + I2C_TSC_TIMEOUT;
 
-	while (i2c_mmio_read(ctx->base, IC_STATUS) &
-	       (1 << IC_STATUS_MASTER_ACTIVITY)) {
+	while ((i2c_mmio_read(ctx->base, IC_STATUS) &
+		(BIT(IC_STATUS_MASTER_ACTIVITY) | BIT(IC_STATUS_TFE))) !=
+	       BIT(IC_STATUS_TFE)) {
 
 		if (__hw_clock_source_read() >= expire_ts) {
 			ctx->error_flag = 1;
@@ -408,27 +418,35 @@ int chip_i2c_xfer(int port, int slave_addr, const uint8_t *out, int out_size,
 		}
 	}
 
+	i2c_intr_switch(ctx->base, DISABLE_INT);
 	i2c_mmio_write(ctx->base, IC_ENABLE, IC_ENABLE_DISABLE);
+
+	if (ctx->error_flag)
+		return EC_ERROR_INVAL;
 
 	return EC_SUCCESS;
 }
 
 static void i2c_interrupt_handler(struct i2c_context *ctx)
 {
-#ifdef INTR_DEBUG
 	uint32_t raw_intr;
-	raw_intr = 0x0000FFFF & i2c_mmio_read(ctx->base, IC_RAW_INTR_STAT);
-#endif
+
+	if (IS_ENABLED(INTR_DEBUG))
+		raw_intr = 0x0000FFFF & i2c_mmio_read(ctx->base,
+						      IC_RAW_INTR_STAT);
+
 	/* check interrupts */
 	ctx->interrupts = i2c_mmio_read(ctx->base, IC_INTR_STAT);
 	ctx->reason = (uint16_t) i2c_mmio_read(ctx->base, IC_TX_ABRT_SOURCE);
-#ifdef INTR_DEBUG
-	CPRINTS("INTR_STAT = 0x%04x, TX_ABORT_SRC = 0x%04x, RAW_INTR_STAT = 0x%04x\n",
+
+	if (IS_ENABLED(INTR_DEBUG))
+		CPRINTS("INTR_STAT = 0x%04x, TX_ABORT_SRC = 0x%04x, "
+			"RAW_INTR_STAT = 0x%04x",
 			ctx->interrupts, ctx->reason, raw_intr);
-#endif
+
 	/* disable interrupts */
 	i2c_intr_switch(ctx->base, DISABLE_INT);
-	task_set_event(ctx->wait_task_id, EVENT_FLAG_I2C_TIMEOUT, 0);
+	task_set_event(ctx->wait_task_id, TASK_EVENT_I2C_IDLE);
 }
 
 static void i2c_isr_bus0(void)
@@ -453,18 +471,25 @@ static void  i2c_config_speed(struct i2c_context *ctx, int kbps)
 {
 
 	if (kbps > 1000)
-		ctx->speed = I2C_SPEED_HIGH;
+		ctx->speed = I2C_SPEED_3M4HZ;
 	else if (kbps > 400)
-		ctx->speed = I2C_SPEED_FAST_PLUS;
+		ctx->speed = I2C_SPEED_1MHZ;
 	else if (kbps > 100)
-		ctx->speed = I2C_SPEED_FAST;
+		ctx->speed = I2C_SPEED_400KHZ;
 	else
-		ctx->speed = I2C_SPEED_STD;
+		ctx->speed = I2C_SPEED_100KHZ;
 
 }
 
 static void i2c_init_hardware(struct i2c_context *ctx)
 {
+	static const uint8_t speed_val_arr[] = {
+		[I2C_SPEED_100KHZ] = STD_SPEED_VAL,
+		[I2C_SPEED_400KHZ] = FAST_SPEED_VAL,
+		[I2C_SPEED_1MHZ]   = FAST_SPEED_VAL,
+		[I2C_SPEED_3M4HZ]  = HIGH_SPEED_VAL,
+	};
+
 	uint32_t *base = ctx->base;
 
 	/* disable interrupts */
@@ -503,11 +528,17 @@ static void i2c_initial_board_config(struct i2c_context *ctx)
 	bus_info->high_speed.lcnt = default_lcnt_scl_hs[freq];
 }
 
-static void i2c_init(void)
+void i2c_port_restore(void)
 {
-	int i;
+	for (int i = 0; i < i2c_ports_used; i++) {
+		int port = i2c_ports[i].port;
+		i2c_init_hardware(&i2c_ctxs[port]);
+	}
+}
 
-	for (i = 0; i < i2c_ports_used; i++) {
+void i2c_init(void)
+{
+	for (int i = 0; i < i2c_ports_used; i++) {
 		int port = i2c_ports[i].port;
 		i2c_initial_board_config(&i2c_ctxs[port]);
 		/* Config speed from i2c_ports[] defined in board.c */
@@ -519,4 +550,3 @@ static void i2c_init(void)
 
 	CPRINTS("Done i2c_init");
 }
-DECLARE_HOOK(HOOK_INIT, i2c_init, HOOK_PRIO_INIT_I2C);

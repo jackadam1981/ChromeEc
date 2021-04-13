@@ -6,6 +6,8 @@
 #ifndef __CROS_EC_ASSERT_H__
 #define __CROS_EC_ASSERT_H__
 
+#include <stdnoreturn.h>
+
 /* Include CONFIG definitions for EC sources. */
 #ifndef THIRD_PARTY
 #include "common.h"
@@ -19,31 +21,38 @@ extern "C" {
 #ifdef CONFIG_DEBUG_ASSERT_REBOOTS
 
 #ifdef CONFIG_DEBUG_ASSERT_BRIEF
-extern void panic_assert_fail(const char *fname, int linenum)
-	__attribute__((noreturn));
-#define ASSERT(cond) do {					\
-		if (!(cond))					\
-			panic_assert_fail(__FILE__, __LINE__);	\
+extern noreturn void panic_assert_fail(const char *fname, int linenum);
+#define ASSERT(cond)                                           \
+	do {                                                   \
+		if (!(cond))                                   \
+			panic_assert_fail(__FILE__, __LINE__); \
 	} while (0)
-#else
-extern void panic_assert_fail(const char *msg, const char *func,
-		const char *fname, int linenum) __attribute__((noreturn));
-#define ASSERT(cond) do {					     \
-		if (!(cond))					     \
+
+#else /* !CONFIG_DEBUG_ASSERT_BRIEF */
+
+extern noreturn void panic_assert_fail(const char *msg, const char *func,
+			      const char *fname, int linenum);
+#define ASSERT(cond)                                                 \
+	do {                                                         \
+		if (!(cond))                                         \
 			panic_assert_fail(#cond, __func__, __FILE__, \
-					__LINE__);		     \
+					  __LINE__);                 \
 	} while (0)
-#endif
-#else
-#define ASSERT(cond) do {			\
-		if (!(cond))			\
-			__asm("bkpt");		\
-			__builtin_unreachable();\
+#endif /* CONFIG_DEBUG_ASSERT_BRIEF */
+
+#else /* !CONFIG_DEBUG_ASSERT_REBOOTS */
+
+#define ASSERT(cond)                     \
+	do {                             \
+		if (!(cond))             \
+			__asm("bkpt");   \
+		__builtin_unreachable(); \
 	} while (0)
-#endif
-#else
+#endif /* CONFIG_DEBUG_ASSERT_REBOOTS */
+
+#else /* !CONFIG_DEBUG_ASSERT */
 #define ASSERT(cond)
-#endif
+#endif /* CONFIG_DEBUG_ASSERT */
 
 /* This collides with cstdlib, so exclude it where cstdlib is supported. */
 #ifndef assert

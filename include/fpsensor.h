@@ -23,10 +23,13 @@
 /* 8-bit greyscale pixel format as defined by V4L2 headers */
 #define V4L2_PIX_FMT_GREY FOURCC('G', 'R', 'E', 'Y')
 
-/* --- fonctions provided by the sensor-specific driver --- */
+/* --- functions provided by the sensor-specific driver --- */
 
 /* Initialize the connected sensor hardware and put it in a low power mode. */
 int fp_sensor_init(void);
+
+/* De-initialize the sensor hardware. */
+int fp_sensor_deinit(void);
 
 /*
  * Fill the 'ec_response_fp_info' buffer with the sensor information
@@ -150,5 +153,16 @@ int fp_enrollment_finish(void *templ);
  *   finger covering too little area of the sensor
  */
 int fp_finger_enroll(uint8_t *image, int *completion);
+
+/**
+ * Runs a test for defective pixels.
+ *
+ * Should be triggered periodically by the client. The maintenance command can
+ * take several hundred milliseconds to run.
+ *
+ * @return EC_ERROR_HW_INTERNAL on error (such as finger on sensor)
+ * @return EC_SUCCESS on success
+ */
+int fp_maintenance(void);
 
 #endif /* __CROS_EC_FPSENSOR_H */

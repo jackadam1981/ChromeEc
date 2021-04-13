@@ -11,7 +11,7 @@
 #include "usb_pd_tcpm.h"
 
 #ifdef CONFIG_HOSTCMD_LOCATE_CHIP
-static int hc_locate_chip(struct host_cmd_handler_args *args)
+static enum ec_status hc_locate_chip(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_locate_chip *params = args->params;
 	struct ec_response_locate_chip *resp = args->response;
@@ -23,23 +23,22 @@ static int hc_locate_chip(struct host_cmd_handler_args *args)
 			return EC_RES_OVERFLOW;
 		resp->bus_type = EC_BUS_TYPE_I2C;
 		resp->i2c_info.port = I2C_PORT_EEPROM;
-		/* Convert from 8-bit address to 7-bit address */
-		resp->i2c_info.addr = I2C_ADDR_EEPROM >> 1;
+		resp->i2c_info.addr_flags = I2C_ADDR_EEPROM_FLAGS;
 #else
 		/* Lookup type is supported, but not present on system. */
 		return EC_RES_UNAVAILABLE;
 #endif /* CONFIG_CROS_BOARD_INFO */
 		break;
 	case EC_CHIP_TYPE_TCPC:
-#if defined(CONFIG_USB_PD_PORT_MAX_COUNT) && !defined(CONFIG_USB_PD_TCPC)
+#if defined(CONFIG_USB_POWER_DELIVERY) && defined(CONFIG_USB_PD_PORT_MAX_COUNT) && !defined(CONFIG_USB_PD_TCPC)
 		if (params->index >= board_get_usb_pd_port_count())
 			return EC_RES_OVERFLOW;
 		resp->bus_type = tcpc_config[params->index].bus_type;
 		if (resp->bus_type == EC_BUS_TYPE_I2C) {
 			resp->i2c_info.port =
 				tcpc_config[params->index].i2c_info.port;
-			resp->i2c_info.addr =
-				tcpc_config[params->index].i2c_info.addr >> 1;
+			resp->i2c_info.addr_flags =
+				tcpc_config[params->index].i2c_info.addr_flags;
 		}
 #else
 		return EC_RES_UNAVAILABLE;

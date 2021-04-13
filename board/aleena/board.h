@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define VARIANT_GRUNT_TCPC_0_ANX3429
+
 #include "baseboard.h"
 
 /*
@@ -29,9 +31,14 @@
 /* KB backlight driver */
 #define CONFIG_LED_DRIVER_LM3630A
 
+#define CONFIG_MKBP_USE_GPIO
+
 /* Motion sensing drivers */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+#define CONFIG_ACCELGYRO_ICM426XX	/* Base accel second source*/
+#define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCEL_KX022
@@ -48,6 +55,8 @@
 #undef  CONFIG_MOTION_SENSE_RESUME_DELAY_US
 #define CONFIG_MOTION_SENSE_RESUME_DELAY_US (10 * MSEC)
 
+#define CONFIG_KEYBOARD_FACTORY_TEST
+
 #ifndef __ASSEMBLER__
 
 enum pwm_channel {
@@ -57,9 +66,17 @@ enum pwm_channel {
 
 enum battery_type {
 	BATTERY_PANASONIC,
-	BATTERY_MURATA,
+	BATTERY_MURATA_4012,
+	BATTERY_MURATA_4013,
 	BATTERY_TYPE_COUNT,
 };
+
+#ifdef CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
+#endif
+
+void motion_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 

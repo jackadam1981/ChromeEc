@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define VARIANT_GRUNT_TCPC_0_ANX3429
+
 #include "baseboard.h"
 
 /*
@@ -17,6 +19,8 @@
 #define CC_DEFAULT     (CC_ALL & ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_LPC)))
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
+
+#define CONFIG_MKBP_USE_HOST_EVENT
 
 /* Work around Grunt KSI03 HW bug and rework (b/79758966) */
 #define CONFIG_KEYBOARD_REFRESH_ROW3

@@ -1,10 +1,11 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 /* Tiny charger configuration */
 
 #include "common.h"
+#include "cros_version.h"
 #include "debug_printf.h"
 #include "ec_commands.h"
 #include "registers.h"
@@ -15,7 +16,6 @@
 #include "task.h"
 #include "usb_pd.h"
 #include "util.h"
-#include "version.h"
 
 /* Large 768-Byte buffer for RSA computation : could be re-use afterwards... */
 static uint32_t rsa_workbuf[3 * RSANUMWORDS];

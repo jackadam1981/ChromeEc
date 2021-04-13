@@ -3,16 +3,29 @@
  * found in the LICENSE file.
  */
 
-/* Meowth Fingerprint MCU configuration */
+/*
+ * STM32H743 + FPC 1145 Fingerprint MCU configuration
+ *
+ * Alternate names that share this same board file:
+ *   nocturne_fp
+ *   nami_fp
+ *   dartmonkey
+ *   dragontalon
+ */
 
 #ifndef __BOARD_H
 #define __BOARD_H
 
+#undef CONFIG_SYSTEM_UNLOCKED
+
 /*
- * TODO(b/73337313) remove this config,
- * once the write-protection scheme is decided and validated.
+ * These allow console commands to be flagged as restricted.
+ * Restricted commands will only be permitted to run when
+ * console_is_restricted() returns false.
+ * See console_is_restricted's definition in board.c.
  */
-#define CONFIG_SYSTEM_UNLOCKED
+#define CONFIG_CONSOLE_COMMAND_FLAGS
+#define CONFIG_RESTRICTED_CONSOLE_COMMANDS
 
 /*
  * Flash layout: we redefine the sections offsets and sizes as we want to
@@ -50,7 +63,7 @@
 
 #define CONFIG_RW_MEM_OFF	(CONFIG_ROLLBACK_OFF + CONFIG_ROLLBACK_SIZE)
 #define CONFIG_RW_STORAGE_OFF	0
-#define CONFIG_RW_SIZE		(CONFIG_FLASH_SIZE -			\
+#define CONFIG_RW_SIZE		(CONFIG_FLASH_SIZE_BYTES -		\
 				(CONFIG_RW_MEM_OFF - CONFIG_RO_MEM_OFF))
 
 #define CONFIG_EC_PROTECTED_STORAGE_OFF         CONFIG_RO_MEM_OFF
@@ -87,6 +100,7 @@
 #undef CONFIG_LID_SWITCH
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
 #define CONFIG_PRINTF_LEGACY_LI_FORMAT
 #define CONFIG_SHA256
 #define CONFIG_SHA256_UNROLLED
@@ -101,6 +115,8 @@
 /* SPI configuration for the fingerprint sensor */
 #define CONFIG_SPI_MASTER
 #define CONFIG_SPI_FP_PORT  2 /* SPI4: third master config */
+
+#define CONFIG_FINGERPRINT_MCU
 #ifdef SECTION_IS_RW
 #define CONFIG_FP_SENSOR_FPC1145
 #define CONFIG_CMD_FPSENSOR_DEBUG
@@ -117,10 +133,11 @@
 #else /* SECTION_IS_RO */
 /* RO verifies the RW partition signature */
 #define CONFIG_RSA
-#define CONFIG_RSA_KEY_SIZE 3072
-#define CONFIG_RSA_EXPONENT_3
 #define CONFIG_RWSIG
 #endif
+
+#define CONFIG_RSA_KEY_SIZE 3072
+#define CONFIG_RSA_EXPONENT_3
 #define CONFIG_RWSIG_TYPE_RWSIG
 
 /* RW does slow compute, RO does slow flash erase. */
@@ -150,7 +167,17 @@
 #define CONFIG_RNG
 
 #define CONFIG_CMD_FLASH
+
+#ifdef SECTION_IS_RW
 #define CONFIG_CMD_SPI_XFER
+#endif
+
+#ifdef SECTION_IS_RW
+/*
+ * Mitigating the effects of b/146428434.
+ */
+#define APPLY_RESET_LOOP_FIX
+#endif
 
 #ifndef __ASSEMBLER__
 
@@ -159,8 +186,7 @@
 #define TIM_WATCHDOG 16
 
 #include "gpio_signal.h"
-
-void fps_event(enum gpio_signal signal);
+#include "board_rw.h"
 
 #endif /* !__ASSEMBLER__ */
 

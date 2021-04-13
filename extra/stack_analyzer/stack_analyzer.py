@@ -1,4 +1,4 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 # Copyright 2017 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -246,6 +246,9 @@ class Function(object):
 
     return True
 
+  def __hash__(self):
+    return id(self)
+
 class AndesAnalyzer(object):
   """Disassembly analyzer for Andes architecture.
 
@@ -275,8 +278,8 @@ class AndesAnalyzer(object):
   PUSH_OPCODE_RE = re.compile(r'^push(\d{1,})$')
   PUSH_OPERAND_RE = re.compile(r'^\$r\d{1,}, \#\d{1,}    \! \{([^\]]+)\}')
   SMW_OPCODE_RE = re.compile(r'^smw(\.\w\w|\.\w\w\w)$')
-  SMW_OPERAND_RE = re.compile(r'^(\$r\d{1,}|\$\w\p), \[\$\w\p\], '
-                   r'(\$r\d{1,}|\$\w\p), \#\d\w\d    \! \{([^\]]+)\}')
+  SMW_OPERAND_RE = re.compile(r'^(\$r\d{1,}|\$\wp), \[\$\wp\], '
+                   r'(\$r\d{1,}|\$\wp), \#\d\w\d    \! \{([^\]]+)\}')
   OPERANDGROUP_RE = re.compile(r'^\$r\d{1,}\~\$r\d{1,}')
 
   LWI_OPCODE_RE = re.compile(r'^lwi(\.\w\w)$')
@@ -369,8 +372,8 @@ class AndesAnalyzer(object):
           if self.OPERANDGROUP_RE.match(operandgroup_text) is not None:
             # capture number & transfer string to integer
             oprandgrouphead = operandgroup_text.split(',')[0]
-            rx=int(filter(str.isdigit, oprandgrouphead.split('~')[0]))
-            ry=int(filter(str.isdigit, oprandgrouphead.split('~')[1]))
+            rx=int(''.join(filter(str.isdigit, oprandgrouphead.split('~')[0])))
+            ry=int(''.join(filter(str.isdigit, oprandgrouphead.split('~')[1])))
 
             stack_frame += ((len(operandgroup_text.split(','))+ry-rx) *
                           self.GENERAL_PURPOSE_REGISTER_SIZE)
@@ -387,8 +390,8 @@ class AndesAnalyzer(object):
           if self.OPERANDGROUP_RE.match(operandgroup_text) is not None:
             # capture number & transfer string to integer
             oprandgrouphead = operandgroup_text.split(',')[0]
-            rx=int(filter(str.isdigit, oprandgrouphead.split('~')[0]))
-            ry=int(filter(str.isdigit, oprandgrouphead.split('~')[1]))
+            rx=int(''.join(filter(str.isdigit, oprandgrouphead.split('~')[0])))
+            ry=int(''.join(filter(str.isdigit, oprandgrouphead.split('~')[1])))
 
             stack_frame += ((len(operandgroup_text.split(','))+ry-rx) *
                           self.GENERAL_PURPOSE_REGISTER_SIZE)
@@ -547,6 +550,104 @@ class ArmAnalyzer(object):
 
     return (stack_frame, callsites)
 
+class RiscvAnalyzer(object):
+  """Disassembly analyzer for RISC-V architecture.
+
+  Public Methods:
+    AnalyzeFunction: Analyze stack frame and callsites of the function.
+  """
+
+  # Possible condition code suffixes.
+  CONDITION_CODES = [ 'eqz', 'nez', 'lez', 'gez', 'ltz', 'gtz', 'gt', 'le',
+                      'gtu', 'leu', 'eq', 'ne', 'ge', 'lt', 'ltu', 'geu']
+  CONDITION_CODES_RE = '({})'.format('|'.join(CONDITION_CODES))
+  # Branch instructions.
+  JUMP_OPCODE_RE = re.compile(r'^(b{0}|j|jr)$'.format(CONDITION_CODES_RE))
+  # Call instructions.
+  CALL_OPCODE_RE = re.compile(r'^(jal|jalr)$')
+  # Example: "j		8009b318 <set_state_prl_hr>" or
+  #          "jal	ra,800a4394 <power_get_signals>" or
+  #          "bltu	t0,t1,80080300 <data_loop>"
+  JUMP_ADDRESS_RE = r'((\w(\w|\d\d),){0,2})([0-9A-Fa-f]+)\s+<([^>]+)>'
+  CALL_OPERAND_RE = re.compile(r'^{}$'.format(JUMP_ADDRESS_RE))
+  # Capture address, Example:  800a4394
+  CAPTURE_ADDRESS = re.compile(r'[0-9A-Fa-f]{8}')
+  # Indirect jump, Example: jalr	a5
+  INDIRECT_CALL_OPERAND_RE = re.compile(r'^t\d+|s\d+|a\d+$')
+  # Example:  addi
+  ADDI_OPCODE_RE = re.compile(r'^addi$')
+  # Allocate stack instructions.
+  ADDI_OPERAND_RE = re.compile(r'^(sp,sp,-\d+)$')
+  # Example: "800804b6:	1101                	addi	sp,sp,-32"
+  DISASM_REGEX_RE = re.compile(r'^(?P<address>[0-9A-Fa-f]+):\s+[0-9A-Fa-f ]+'
+                               r'\t\s*(?P<opcode>\S+)(\s+(?P<operand>[^;]*))?')
+
+  def ParseInstruction(self, line, function_end):
+    """Parse the line of instruction.
+
+    Args:
+      line: Text of disassembly.
+      function_end: End address of the current function. None if unknown.
+
+    Returns:
+      (address, opcode, operand_text):  The instruction address, opcode,
+                                        and the text of operands. None if it
+                                        isn't an instruction line.
+    """
+    result = self.DISASM_REGEX_RE.match(line)
+    if result is None:
+      return None
+
+    address = int(result.group('address'), 16)
+    # Check if it's out of bound.
+    if function_end is not None and address >= function_end:
+      return None
+
+    opcode = result.group('opcode').strip()
+    operand_text = result.group('operand')
+    if operand_text is None:
+      operand_text = ''
+    else:
+      operand_text = operand_text.strip()
+
+    return (address, opcode, operand_text)
+
+  def AnalyzeFunction(self, function_symbol, instructions):
+
+    stack_frame = 0
+    callsites = []
+    for address, opcode, operand_text in instructions:
+      is_jump_opcode = self.JUMP_OPCODE_RE.match(opcode) is not None
+      is_call_opcode = self.CALL_OPCODE_RE.match(opcode) is not None
+
+      if is_jump_opcode or is_call_opcode:
+        is_tail = is_jump_opcode
+
+        result = self.CALL_OPERAND_RE.match(operand_text)
+        if result is None:
+          if (self.INDIRECT_CALL_OPERAND_RE.match(operand_text) is not None):
+            # Found an indirect call.
+            callsites.append(Callsite(address, None, is_tail))
+
+        else:
+          # Capture address form operand_text and then convert to string
+          address_str = "".join(self.CAPTURE_ADDRESS.findall(operand_text))
+          # String to integer
+          target_address = int(address_str, 16)
+          # Filter out the in-function target (branches and in-function calls,
+          # which are actually branches).
+          if not (function_symbol.size > 0 and
+                  function_symbol.address < target_address <
+                  (function_symbol.address + function_symbol.size)):
+            # Maybe it is a callsite.
+            callsites.append(Callsite(address, target_address, is_tail))
+
+      elif self.ADDI_OPCODE_RE.match(opcode) is not None:
+      	# Example: sp,sp,-32
+        if self.ADDI_OPERAND_RE.match(operand_text) is not None:
+            stack_frame += abs(int(operand_text.split(",")[2]))
+
+    return (stack_frame, callsites)
 
 class StackAnalyzer(object):
   """Class to analyze stack usage.
@@ -616,7 +717,7 @@ class StackAnalyzer(object):
       if resolve_inline:
         args.append('-i')
 
-      line_text = subprocess.check_output(args)
+      line_text = subprocess.check_output(args, encoding='utf-8')
     except subprocess.CalledProcessError:
       raise StackAnalyzerError('addr2line failed to resolve lines.')
     except OSError:
@@ -656,10 +757,12 @@ class StackAnalyzer(object):
     """
     disasm_lines = [line.strip() for line in disasm_text.splitlines()]
 
-    if (disasm_lines[1].find("nds") != -1):
+    if 'nds' in disasm_lines[1]:
       analyzer = AndesAnalyzer()
-    elif (disasm_lines[1].find("arm") != -1):
+    elif 'arm' in disasm_lines[1]:
       analyzer = ArmAnalyzer()
+    elif 'riscv' in disasm_lines[1]:
+      analyzer = RiscvAnalyzer()
     else:
       raise StackAnalyzerError('Unsupported architecture.')
 
@@ -940,7 +1043,7 @@ class StackAnalyzer(object):
       # to symbol object.
       for addr in range(begin_address+offset, end_address, stride):
         # TODO(drinkcat): Not all architectures need to drop the first bit.
-        val = self.rodata[(addr-self.rodata_offset)/4] & 0xfffffffe
+        val = self.rodata[(addr-self.rodata_offset) // 4] & 0xfffffffe
         name = None
         for symbol in self.symbols:
           if (symbol.address == val):
@@ -1460,7 +1563,8 @@ class StackAnalyzer(object):
     try:
       disasm_text = subprocess.check_output([self.options.objdump,
                                              '-d',
-                                             self.options.elf_path])
+                                             self.options.elf_path],
+                                            encoding='utf-8')
     except subprocess.CalledProcessError:
       raise StackAnalyzerError('objdump failed to disassemble.')
     except OSError:
@@ -1517,7 +1621,7 @@ class StackAnalyzer(object):
 
               text_list.append(order_text)
 
-          for _, text in sorted(text_list, key=lambda (k, _): k):
+          for _, text in sorted(text_list, key=lambda item: item[0]):
             print(text)
 
     print('Unresolved indirect callsites:')
@@ -1533,7 +1637,7 @@ class StackAnalyzer(object):
         for address in indirect_callsites:
           text_list.append(OutputInlineStack(address, '        '))
 
-        for _, text in sorted(text_list, key=lambda (k, _): k):
+        for _, text in sorted(text_list, key=lambda item: item[0]):
           print(text)
 
     print('Unresolved annotation signatures:')
@@ -1674,7 +1778,9 @@ def LoadTasklist(section, export_taskinfo, symbols):
   tasklist = []
   for index in range(taskinfo_num):
     taskinfo = taskinfos[index]
-    tasklist.append(Task(taskinfo.name, taskinfo.routine, taskinfo.stack_size))
+    tasklist.append(Task(taskinfo.name.decode('utf-8'),
+                         taskinfo.routine.decode('utf-8'),
+                         taskinfo.stack_size))
 
   # Resolve routine address for each task. It's more efficient to resolve all
   # routine addresses of tasks together.
@@ -1729,11 +1835,13 @@ def main():
     try:
       symbol_text = subprocess.check_output([options.objdump,
                                              '-t',
-                                             options.elf_path])
+                                             options.elf_path],
+                                            encoding='utf-8')
       rodata_text = subprocess.check_output([options.objdump,
                                              '-s',
                                              '-j', '.rodata',
-                                             options.elf_path])
+                                             options.elf_path],
+                                            encoding='utf-8')
     except subprocess.CalledProcessError:
       raise StackAnalyzerError('objdump failed to dump symbol table or rodata.')
     except OSError:

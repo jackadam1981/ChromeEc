@@ -13,7 +13,6 @@
  */
 
 #include "max14637.h"
-#include "cannonlake.h"
 #include "charge_manager.h"
 #include "chipset.h"
 #include "common.h"
@@ -21,8 +20,9 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "power.h"
+#include "power/cannonlake.h"
 #include "task.h"
-#include "tcpm.h"
+#include "tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
@@ -30,6 +30,7 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+#if defined(CONFIG_CHARGE_RAMP_SW) || defined(CONFIG_CHARGE_RAMP_HW)
 /**
  * Returns true if the charger detect pin is activated.
  *
@@ -42,6 +43,7 @@ static int is_chg_det_activated(const struct max14637_config_t * const cfg)
 	return !!gpio_get_level(cfg->chg_det_pin) ^
 		!!(cfg->flags & MAX14637_FLAGS_CHG_DET_ACTIVE_LOW);
 }
+#endif
 
 /**
  * Activates the Chip Enable GPIO based on the enabled value.
@@ -74,9 +76,11 @@ static void update_bc12_status_to_charger_manager(const int port)
 	 * The driver assumes that CHG_AL_N and SW_OPEN are not connected,
 	 * therefore an activated CHG_DET indicates whether the source is NOT a
 	 * low-power standard downstream port (SDP). The system will have to
-	 * ramp the current to determine the limit.
+	 * ramp the current to determine the limit.  The Type-C spec prohibits
+	 * proprietary methods now, therefore 1500mA is the max.
 	 */
-	new_chg.current = is_chg_det_activated(cfg) ? 2400 : 500;
+	new_chg.current = is_chg_det_activated(cfg) ? USB_CHARGER_MAX_CURR_MA :
+						      500;
 #else
 	/*
 	 * If the board doesn't support charge ramping, then assume the lowest
@@ -137,7 +141,7 @@ static void detect_or_power_down_ic(const int port)
 	int vbus_present;
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-	vbus_present = tcpm_get_vbus_level(port);
+	vbus_present = tcpm_check_vbus_level(port, VBUS_PRESENT);
 #else
 	vbus_present = pd_snk_is_vbus_provided(port);
 #endif /* !defined(CONFIG_USB_PD_VBUS_DETECT_TCPC) */
@@ -147,7 +151,7 @@ static void detect_or_power_down_ic(const int port)
 		/* Turn on the 5V rail to allow the chip to be powered. */
 		power_5v_enable(task_get_current(), 1);
 #endif
-		if (pd_get_role(port) == PD_ROLE_SINK) {
+		if (pd_get_power_role(port) == PD_ROLE_SINK) {
 			bc12_detect(port);
 			update_bc12_status_to_charger_manager(port);
 		}
@@ -170,9 +174,8 @@ static void detect_or_power_down_ic(const int port)
 	}
 }
 
-void usb_charger_task(void *u)
+static void max14637_usb_charger_task(const int port)
 {
-	const int port = (intptr_t)u;
 	uint32_t evt;
 	const struct max14637_config_t * const cfg = &max14637_config[port];
 
@@ -194,15 +197,8 @@ void usb_charger_task(void *u)
 	}
 }
 
-void usb_charger_set_switches(int port, enum usb_switch setting)
-{
-	/*
-	 * The MAX14637 automatically sets up the USB 2.0 high-speed switches.
-	 */
-}
-
 #if defined(CONFIG_CHARGE_RAMP_SW) || defined(CONFIG_CHARGE_RAMP_HW)
-int usb_charger_ramp_allowed(int supplier)
+static int max14637_ramp_allowed(int supplier)
 {
 	/*
 	 * Due to the limitations in the application of the MAX14637, we
@@ -212,7 +208,7 @@ int usb_charger_ramp_allowed(int supplier)
 	return supplier == CHARGE_SUPPLIER_OTHER;
 }
 
-int usb_charger_ramp_max(int supplier, int sup_curr)
+static int max14637_ramp_max(int supplier, int sup_curr)
 {
 	/* Use the current limit that was decided by the MAX14637. */
 	if (supplier == CHARGE_SUPPLIER_OTHER)
@@ -235,7 +231,24 @@ static void bc12_chipset_startup(void)
 	 */
 	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
 		task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
-			       USB_CHG_EVENT_VBUS, 0);
+			       USB_CHG_EVENT_VBUS);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, bc12_chipset_startup, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, bc12_chipset_startup, HOOK_PRIO_DEFAULT);
+
+const struct bc12_drv max14637_drv = {
+	.usb_charger_task = max14637_usb_charger_task,
+#if defined(CONFIG_CHARGE_RAMP_SW) || defined(CONFIG_CHARGE_RAMP_HW)
+	.ramp_allowed = max14637_ramp_allowed,
+	.ramp_max = max14637_ramp_max,
+#endif /* CONFIG_CHARGE_RAMP_SW || CONFIG_CHARGE_RAMP_HW */
+};
+
+#ifdef CONFIG_BC12_SINGLE_DRIVER
+/* provide a default bc12_ports[] for backward compatibility */
+struct bc12_config bc12_ports[CHARGE_PORT_COUNT] = {
+	[0 ... (CHARGE_PORT_COUNT - 1)] = {
+		.drv = &max14637_drv,
+	},
+};
+#endif /* CONFIG_BC12_SINGLE_DRIVER */

@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -29,12 +29,40 @@ static uint32_t channel_mask_saved = CC_DEFAULT;
  */
 static const char * const channel_names[] = {
 	#define CONSOLE_CHANNEL(enumeration, string) string,
-	#include "include/console_channel.inc"
+	#include "console_channel.inc"
 	#undef CONSOLE_CHANNEL
 };
 BUILD_ASSERT(ARRAY_SIZE(channel_names) == CC_CHANNEL_COUNT);
 /* ensure that we are not silently masking additional channels */
 BUILD_ASSERT(CC_CHANNEL_COUNT <= 8*sizeof(uint32_t));
+
+static int console_channel_name_to_index(const char *name)
+{
+	int i;
+
+	for (i = 0; i < CC_CHANNEL_COUNT; i++) {
+		if (!strncasecmp(name, channel_names[i], strlen(name)))
+			return i;
+	}
+
+	/* Not found */
+	return -1;
+}
+
+void console_channel_enable(const char *name)
+{
+	int index = console_channel_name_to_index(name);
+
+	if (index >= 0 && index != CC_COMMAND)
+		channel_mask |= CC_MASK(index);
+}
+void console_channel_disable(const char *name)
+{
+	int index = console_channel_name_to_index(name);
+
+	if (index >= 0 && index != CC_COMMAND)
+		channel_mask &= ~CC_MASK(index);
+}
 #endif /* CONFIG_CONSOLE_CHANNEL */
 
 /*****************************************************************************/
@@ -89,7 +117,7 @@ int cprints(enum console_channel channel, const char *format, ...)
 		return EC_SUCCESS;
 #endif
 
-	rv = cprintf(channel, "[%T ");
+	rv = cprintf(channel, "[%pT ", PRINTF_TIMESTAMP_NOW);
 
 	va_start(args, format);
 	r = uart_vprintf(format, args);

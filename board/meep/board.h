@@ -24,14 +24,12 @@
 #define CONFIG_LED_COMMON
 #define CONFIG_LED_POWER_LED
 
-#define CONFIG_EC_FEATURE_BOARD_OVERRIDE
-
 /* Sensors */
 #define CONFIG_ACCEL_KX022		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
 
 /* Sensors without hardware FIFO are in forced mode */
-#define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
+#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
 
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
@@ -58,6 +56,8 @@
 #define CONFIG_USBC_PPC_DEDICATED_INT
 #undef CONFIG_SYV682X_HV_ILIM
 #define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
+/* SYV682 isn't connected to CC, so TCPC must provide VCONN */
+#define CONFIG_SYV682X_NO_CC
 
 /* Additional TCPC second source in Port 1 */
 #define CONFIG_USB_PD_TCPM_MULTI_PS8XXX

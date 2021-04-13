@@ -23,6 +23,7 @@
 #include "usb_charge.h"
 #include "usb_pd.h"
 #include "usbc_ppc.h"
+#include "util.h"
 
 static void update_vbus_supplier(int port, int vbus_level)
 {
@@ -71,7 +72,11 @@ void usb_charger_vbus_change(int port, int vbus_level)
 
 #ifdef HAS_TASK_USB_CHG_P0
 	/* USB Charger task(s) */
-	task_set_event(USB_CHG_PORT_TO_TASK_ID(port), USB_CHG_EVENT_VBUS, 0);
+	task_set_event(USB_CHG_PORT_TO_TASK_ID(port), USB_CHG_EVENT_VBUS);
+
+	/* If we swapped to sourcing, drop any related charge suppliers */
+	if (usb_charger_port_is_sourcing_vbus(port))
+		usb_charger_reset_charge(port);
 #endif
 
 #if (defined(CONFIG_USB_PD_VBUS_DETECT_CHARGER) \
@@ -81,24 +86,48 @@ void usb_charger_vbus_change(int port, int vbus_level)
 #endif
 }
 
+void usb_charger_reset_charge(int port)
+{
+	charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
+				     port, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
+				     port, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
+				     port, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
+				     port, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
+				     port, NULL);
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
+				     port, NULL);
+#endif
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+	charge_manager_update_charge(CHARGE_SUPPLIER_WPC_BPP,
+				     port, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_WPC_EPP,
+				     port, NULL);
+	charge_manager_update_charge(CHARGE_SUPPLIER_WPC_GPP,
+				     port, NULL);
+#endif
+
+}
+
 static void usb_charger_init(void)
 {
 	int i;
-
-	/* Initialize all charge suppliers */
 	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
-		charge_manager_update_charge(CHARGE_SUPPLIER_PROPRIETARY,
-					     i, NULL);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_CDP,
-					     i, NULL);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_DCP,
-					     i, NULL);
-		charge_manager_update_charge(CHARGE_SUPPLIER_BC12_SDP,
-					     i, NULL);
-		charge_manager_update_charge(CHARGE_SUPPLIER_OTHER,
-					     i, NULL);
+		usb_charger_reset_charge(i);
 		/* Initialize VBUS supplier based on whether VBUS is present. */
 		update_vbus_supplier(i, pd_is_vbus_present(i));
 	}
 }
 DECLARE_HOOK(HOOK_INIT, usb_charger_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
+
+void usb_charger_task(void *u)
+{
+	int port = TASK_ID_TO_USB_CHG_PORT(task_get_current());
+
+	ASSERT(bc12_ports[port].drv->usb_charger_task);
+	bc12_ports[port].drv->usb_charger_task(port);
+}

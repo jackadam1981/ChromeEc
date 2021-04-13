@@ -7,6 +7,7 @@
 
 #include "common.h"
 #include "config.h"
+#include "console.h"
 #include "ec_commands.h"
 #include "board_config.h"
 
@@ -22,7 +23,7 @@ uint32_t get_feature_flags0(void)
 #ifdef CONFIG_FANS
 		| EC_FEATURE_MASK_0(EC_FEATURE_PWM_FAN)
 #endif
-#ifdef CONFIG_PWM_KBLIGHT
+#ifdef CONFIG_KEYBOARD_BACKLIGHT
 		| EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB)
 #endif
 #ifdef HAS_TASK_LIGHTBAR
@@ -58,7 +59,7 @@ uint32_t get_feature_flags0(void)
 #ifdef CONFIG_COMMON_GPIO
 		| EC_FEATURE_MASK_0(EC_FEATURE_GPIO)
 #endif
-#ifdef CONFIG_I2C_MASTER
+#ifdef CONFIG_I2C_CONTROLLER
 		| EC_FEATURE_MASK_0(EC_FEATURE_I2C)
 #endif
 #ifdef CONFIG_CHARGER
@@ -107,10 +108,7 @@ uint32_t get_feature_flags0(void)
 		| EC_FEATURE_MASK_0(EC_FEATURE_DEVICE_EVENT)
 #endif
 		;
-#ifdef CONFIG_EC_FEATURE_BOARD_OVERRIDE
-	result = board_override_feature_flags0(result);
-#endif
-	return result;
+	return board_override_feature_flags0(result);
 }
 
 uint32_t get_feature_flags1(void)
@@ -125,15 +123,49 @@ uint32_t get_feature_flags1(void)
 #ifdef CONFIG_CEC
 		| EC_FEATURE_MASK_1(EC_FEATURE_CEC)
 #endif
-#ifdef CONFIG_ACCEL_FIFO
+#ifdef CONFIG_SENSOR_TIGHT_TIMESTAMPS
 		| EC_FEATURE_MASK_1(EC_FEATURE_MOTION_SENSE_TIGHT_TIMESTAMPS)
 #endif
 #if defined(CONFIG_LID_ANGLE) && defined(CONFIG_TABLET_MODE)
 		| EC_FEATURE_MASK_1(EC_FEATURE_REFINED_TABLET_MODE_HYSTERESIS)
 #endif
-		;
-#ifdef CONFIG_EC_FEATURE_BOARD_OVERRIDE
-	result = board_override_feature_flags1(result);
+#ifdef CONFIG_VBOOT_EFS2
+		| EC_FEATURE_MASK_1(EC_FEATURE_EFS2)
 #endif
-	return result;
+#ifdef CONFIG_IPI
+		| EC_FEATURE_MASK_1(EC_FEATURE_SCP)
+#endif
+#ifdef CHIP_ISH
+		| EC_FEATURE_MASK_1(EC_FEATURE_ISH)
+#endif
+#ifdef CONFIG_USB_PD_TCPMV2
+		| EC_FEATURE_MASK_1(EC_FEATURE_TYPEC_CMD)
+#endif
+#ifdef CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
+		| EC_FEATURE_MASK_1(EC_FEATURE_TYPEC_REQUIRE_AP_MODE_ENTRY)
+#endif
+#ifdef CONFIG_USB_MUX_AP_ACK_REQUEST
+		| EC_FEATURE_MASK_1(EC_FEATURE_TYPEC_MUX_REQUIRE_AP_ACK)
+#endif
+		;
+	return board_override_feature_flags1(result);
 }
+
+__overridable uint32_t board_override_feature_flags0(uint32_t flags0)
+{
+	return flags0;
+}
+
+__overridable uint32_t board_override_feature_flags1(uint32_t flags1)
+{
+	return flags1;
+}
+
+static int cc_feat(int argc, char **argv)
+{
+	ccprintf(" 0-31: 0x%08x\n", get_feature_flags0());
+	ccprintf("32-63: 0x%08x\n", get_feature_flags1());
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(feat, cc_feat, "", "Print feature flags");

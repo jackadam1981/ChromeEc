@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -9,9 +9,6 @@
 #include "math.h"
 #include "math_util.h"
 #include "util.h"
-
-/* Some useful math functions.  Use with integers only! */
-#define SQ(x) ((x) * (x))
 
 /* For cosine lookup table, define the increment and the size of the table. */
 #define COSINE_LUT_INCR_DEG	5
@@ -82,7 +79,7 @@ fp_t arc_cos(fp_t x)
  * except when the floating point representation of the square root rounds up
  * to an integer.
  */
-static inline int int_sqrtf(fp_inter_t x)
+inline int int_sqrtf(fp_inter_t x)
 {
 	return sqrtf(x);
 }
@@ -93,14 +90,17 @@ fp_t fp_sqrtf(fp_t x)
 	return sqrtf(x);
 }
 #else
-static int int_sqrtf(fp_inter_t x)
+int int_sqrtf(fp_inter_t x)
 {
 	int rmax = INT32_MAX;
 	int rmin = 0;
 
-	/* Short cut if x is 32-bit value */
-	if (x < rmax)
-		rmax = 0x7fff;
+	/*
+	 * Short cut if x is 32-bit value
+	 * sqrt(INT32_MAX) ~= 46340.95
+	 */
+	if (x < INT32_MAX)
+		rmax = 46341;
 
 	/*
 	 * Just binary-search.  There are better algorithms, but we call this
@@ -108,11 +108,11 @@ static int int_sqrtf(fp_inter_t x)
 	 */
 	if (x <= 0)
 		return 0;  /* Yeah, for imaginary numbers too */
-	else if (x > (fp_inter_t)rmax * rmax)
+	else if (x >= (fp_inter_t)rmax * rmax)
 		return rmax;
 
 	while (1) {
-		int r = (rmax + rmin) / 2;
+		int r = rmin + (rmax - rmin) / 2;
 		fp_inter_t r2 = (fp_inter_t)r * r;
 
 		if (r2 > x) {
@@ -148,6 +148,28 @@ int vector_magnitude(const intv3_t v)
 	return int_sqrtf(sum);
 }
 
+/* cross_product only works if the vectors magnitudes are around 1<<16. */
+void cross_product(const intv3_t v1, const intv3_t v2, intv3_t v)
+{
+	v[X] = (fp_inter_t)v1[Y] * v2[Z] - (fp_inter_t)v1[Z] * v2[Y];
+	v[Y] = (fp_inter_t)v1[Z] * v2[X] - (fp_inter_t)v1[X] * v2[Z];
+	v[Z] = (fp_inter_t)v1[X] * v2[Y] - (fp_inter_t)v1[Y] * v2[X];
+}
+
+fp_inter_t dot_product(const intv3_t v1, const intv3_t v2)
+{
+	return (fp_inter_t)v1[X] * v2[X] +
+	       (fp_inter_t)v1[Y] * v2[Y] +
+	       (fp_inter_t)v1[Z] * v2[Z];
+}
+
+void vector_scale(intv3_t v, fp_t s)
+{
+	v[X] = fp_mul(v[X], s);
+	v[Y] = fp_mul(v[Y], s);
+	v[Z] = fp_mul(v[Z], s);
+}
+
 fp_t cosine_of_angle_diff(const intv3_t v1, const intv3_t v2)
 {
 	fp_inter_t dotproduct;
@@ -157,10 +179,7 @@ fp_t cosine_of_angle_diff(const intv3_t v1, const intv3_t v2)
 	 * Angle between two vectors is acos(A dot B / |A|*|B|). To return
 	 * cosine of angle between vectors, then don't do acos operation.
 	 */
-
-	dotproduct =	(fp_inter_t)v1[0] * v2[0] +
-			(fp_inter_t)v1[1] * v2[1] +
-			(fp_inter_t)v1[2] * v2[2];
+	dotproduct = dot_product(v1, v2);
 
 	denominator = (fp_inter_t)vector_magnitude(v1) * vector_magnitude(v2);
 

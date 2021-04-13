@@ -17,6 +17,7 @@
 #include "console.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
+#include "driver/charger/isl923x.h"
 #include "driver/tcpm/anx7688.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/temp_sensor/tmp432.h"
@@ -66,7 +67,7 @@ DECLARE_DEFERRED(deferred_reset_pd_mcu);
 void usb_evt(enum gpio_signal signal)
 {
 	if (!gpio_get_level(GPIO_BC12_WAKE_L))
-		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
+		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 }
 
 #include "gpio_list.h"
@@ -92,13 +93,16 @@ const struct adc_t adc_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
-int anx7688_passthru_allowed(const struct i2c_port_t *port, uint16_t address)
+int anx7688_passthru_allowed(const struct i2c_port_t *port,
+			     const uint16_t addr_flags)
 {
+	uint16_t addr = I2C_STRIP_FLAGS(addr_flags);
+
 	/* Allow access to 0x2c (TCPC) */
-	if (address == 0x2c)
+	if (addr == 0x2c)
 		return 1;
 
-	CPRINTF("Passthru rejected on %x", address);
+	CPRINTF("Passthru rejected on %x", addr);
 
 	return 0;
 }
@@ -125,7 +129,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC,
-			.addr = CONFIG_TCPC_I2C_BASE_ADDR,
+			.addr_flags = CONFIG_TCPC_I2C_BASE_ADDR_FLAGS,
 		},
 		.drv = &anx7688_tcpm_drv,
 	},
@@ -148,20 +152,29 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 const struct temp_sensor_t temp_sensors[] = {
 #ifdef CONFIG_TEMP_SENSOR_TMP432
 	{"TMP432_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
-		TMP432_IDX_LOCAL, 4},
+		TMP432_IDX_LOCAL},
 	{"TMP432_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
-		TMP432_IDX_REMOTE1, 4},
+		TMP432_IDX_REMOTE1},
 	{"TMP432_Sensor_2", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
-		TMP432_IDX_REMOTE2, 4},
+		TMP432_IDX_REMOTE2},
 #endif
 	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp,
-		0, 4},
+		0},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
-struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
+		.usb_port = 0,
 		.driver    = &anx7688_usb_mux_driver,
+	},
+};
+
+const struct charger_config_t chg_chips[] = {
+	{
+		.i2c_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
+		.drv = &isl923x_drv,
 	},
 };
 
@@ -193,7 +206,7 @@ void deferred_reset_pd_mcu(void)
 		gpio_set_level(GPIO_USB_C0_RST, 1);
 		hook_call_deferred(&deferred_reset_pd_mcu_data, 1*MSEC);
 		/* on PD reset, trigger PD task to reset state */
-		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET, 0);
+		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET);
 		break;
 	case 3:
 		/*
@@ -390,7 +403,7 @@ static void board_chipset_pre_init(void)
 	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
 	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
 
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
+	spi_enable(&spi_devices[0], 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_PRE_INIT, board_chipset_pre_init, HOOK_PRIO_DEFAULT);
 
@@ -400,7 +413,7 @@ static void board_chipset_shutdown(void)
 	/* Disable level shift to SoC when shutting down */
 	gpio_set_level(GPIO_LEVEL_SHIFT_EN_L, 1);
 
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
+	spi_enable(&spi_devices[0], 0);
 
 	/* Disable clocks to SPI2 module */
 	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
@@ -435,7 +448,6 @@ static void board_chipset_suspend(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
-#ifdef HAS_TASK_MOTIONSENSE
 /* Motion sensors */
 /* Mutexes */
 static struct mutex g_kx022_mutex[2];
@@ -457,50 +469,53 @@ const mat33_fp_t lid_standard_ref = {
 struct kionix_accel_data g_kx022_data[2];
 
 struct motion_sensor_t motion_sensors[] = {
-	{.name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_KX022,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &kionix_accel_drv,
-	 .mutex = &g_kx022_mutex[0],
-	 .drv_data = &g_kx022_data[0],
-	 .addr = 1, /* SPI, device ID 0 */
-	 .rot_standard_ref = &base_standard_ref,
-	 .default_range = 2, /* g, enough for laptop. */
-	 .min_frequency = KX022_ACCEL_MIN_FREQ,
-	 .max_frequency = KX022_ACCEL_MAX_FREQ,
-	 .config = {
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
+	[BASE_ACCEL] = {
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_KX022,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &kionix_accel_drv,
+		.mutex = &g_kx022_mutex[0],
+		.drv_data = &g_kx022_data[0],
+		.i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(0),
+		.rot_standard_ref = &base_standard_ref,
+		.default_range = 2, /* g, enough for lid angle calculation. */
+		.min_frequency = KX022_ACCEL_MIN_FREQ,
+		.max_frequency = KX022_ACCEL_MAX_FREQ,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
 		},
-	 },
 	},
 
-	{.name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_KX022,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &kionix_accel_drv,
-	 .mutex = &g_kx022_mutex[1],
-	 .drv_data = &g_kx022_data[1],
-	 .addr = 3, /* SPI, device ID 1 */
-	 .rot_standard_ref = &lid_standard_ref,
-	 .default_range = 2, /* g, enough for laptop. */
-	 .min_frequency = KX022_ACCEL_MIN_FREQ,
-	 .max_frequency = KX022_ACCEL_MAX_FREQ,
-	 .config = {
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
+	[LID_ACCEL] = {
+		.name = "Lid Accel",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_KX022,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &kionix_accel_drv,
+		.mutex = &g_kx022_mutex[1],
+		.drv_data = &g_kx022_data[1],
+		.i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(1),
+		.rot_standard_ref = &lid_standard_ref,
+		.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+		.min_frequency = KX022_ACCEL_MIN_FREQ,
+		.max_frequency = KX022_ACCEL_MAX_FREQ,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
 		},
-	 },
 	},
 };
+
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 void lid_angle_peripheral_enable(int enable)
@@ -510,7 +525,6 @@ void lid_angle_peripheral_enable(int enable)
 	/* enable/disable touchpad */
 	gpio_set_level(GPIO_EN_TP_INT_L, !enable);
 }
-#endif /* defined(HAS_TASK_MOTIONSENSE) */
 
 uint16_t tcpc_get_alert_status(void)
 {

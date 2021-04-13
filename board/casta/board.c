@@ -31,7 +31,7 @@
 #include "power_button.h"
 #include "switch.h"
 #include "system.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "temp_sensor.h"
 #include "thermistor.h"
 #include "usb_mux.h"
@@ -42,6 +42,8 @@
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+
+static uint8_t sku_id;
 
 static void ppc_interrupt(enum gpio_signal signal)
 {
@@ -76,18 +78,15 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_BATTERY] = {.name = "Battery",
 				 .type = TEMP_SENSOR_TYPE_BATTERY,
 				 .read = charge_get_battery_temp,
-				 .idx = 0,
-				 .action_delay_sec = 1},
+				 .idx = 0},
 	[TEMP_SENSOR_AMBIENT] = {.name = "Ambient",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_51k1_47k_4050b,
-				 .idx = ADC_TEMP_SENSOR_AMB,
-				 .action_delay_sec = 5},
+				 .idx = ADC_TEMP_SENSOR_AMB},
 	[TEMP_SENSOR_CHARGER] = {.name = "Charger",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_13k7_47k_4050b,
-				 .idx = ADC_TEMP_SENSOR_CHARGER,
-				 .action_delay_sec = 1},
+				 .idx = ADC_TEMP_SENSOR_CHARGER},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -95,7 +94,7 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 struct charger_config_t chg_chips[] = {
 	{
 		.i2c_port = I2C_PORT_CHARGER,
-		.i2c_addr_flags = ISL923X_ADDR,
+		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
 		.drv = &isl923x_drv,
 	},
 };
@@ -108,9 +107,10 @@ const unsigned int chg_cnt = ARRAY_SIZE(chg_chips);
 #define BATTERY_FREE_MIN_DELTA_US               (5 * MSEC)
 static timestamp_t battery_last_i2c_time;
 
-static int is_battery_i2c(int port, int slave_addr)
+static int is_battery_i2c(const int port, const uint16_t slave_addr_flags)
 {
-	return (port == I2C_PORT_BATTERY) && (slave_addr == BATTERY_ADDR);
+	return (port == I2C_PORT_BATTERY)
+		&& (slave_addr_flags == BATTERY_ADDR_FLAGS);
 }
 
 static int is_battery_port(int port)
@@ -118,11 +118,11 @@ static int is_battery_port(int port)
 	return (port == I2C_PORT_BATTERY);
 }
 
-void i2c_start_xfer_notify(int port, int slave_addr)
+void i2c_start_xfer_notify(const int port, const uint16_t slave_addr_flags)
 {
 	unsigned int time_delta_us;
 
-	if (!is_battery_i2c(port, slave_addr))
+	if (!is_battery_i2c(port, slave_addr_flags))
 		return;
 
 	time_delta_us = time_since32(battery_last_i2c_time);
@@ -132,7 +132,7 @@ void i2c_start_xfer_notify(int port, int slave_addr)
 	usleep(BATTERY_FREE_MIN_DELTA_US - time_delta_us);
 }
 
-void i2c_end_xfer_notify(int port, int slave_addr)
+void i2c_end_xfer_notify(const int port, const uint16_t slave_addr_flags)
 {
 	/*
 	 * The bus free time needs to be maintained from last transaction
@@ -144,36 +144,54 @@ void i2c_end_xfer_notify(int port, int slave_addr)
 	battery_last_i2c_time = get_time();
 }
 
-/* TODO: Casta: remove this routine after rev0 is not supported */
+/* Read CBI from i2c eeprom and initialize variables for board variants */
+static void cbi_init(void)
+{
+	uint32_t val;
+
+	if (cbi_get_sku_id(&val) != EC_SUCCESS || val > UINT8_MAX)
+		return;
+	sku_id = val;
+	CPRINTS("SKU: %d", sku_id);
+}
+DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C);
+
 static void board_init(void)
 {
 	if(get_cbi_ssfc_charger() != SSFC_CHARGER_BQ25710)
 		return;
 
 	chg_chips[0].drv = &bq25710_drv;
-	chg_chips[0].i2c_addr_flags = BQ25710_SMBUS_ADDR1;
+	chg_chips[0].i2c_addr_flags = BQ25710_SMBUS_ADDR1_FLAGS;
 }
-DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_I2C + 2);
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_INIT_I2C);
 
 static void set_input_limit_on_ac_removal(void)
 {
-        if(extpower_is_present())
-                return;
+	if (extpower_is_present())
+		return;
 
-        if(get_cbi_ssfc_charger() != SSFC_CHARGER_BQ25710)
-                return;
+	if (get_cbi_ssfc_charger() != SSFC_CHARGER_BQ25710)
+		return;
 
-        charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
+	charger_set_input_current_limit(0, CONFIG_CHARGER_INPUT_CURRENT);
 
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, set_input_limit_on_ac_removal, HOOK_PRIO_DEFAULT);
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
-	/* Sanity check the port. */
+	/* Check that port number is valid. */
 	if ((port < 0) || (port >= CONFIG_USB_PD_PORT_MAX_COUNT))
 		return;
 
 	/* Note that the level is inverted because the pin is active low. */
 	gpio_set_level(GPIO_USB_C_OC, !is_overcurrented);
+}
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	if (sku_id == 2)
+		return CONFIG_USB_PD_PORT_MAX_COUNT - 1;
+	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }

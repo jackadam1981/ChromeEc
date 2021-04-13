@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -18,24 +18,17 @@
 #define CPUTS(outstr) cputs(CC_SPI, outstr)
 #define CPRINTS(format, args...) cprints(CC_SPI, format, ## args)
 
-
-int spi_enable(int port, int enable)
+int spi_enable(const struct spi_device_t *spi_device, int enable)
 {
-	int i;
-
 	if (enable) {
 		gpio_config_module(MODULE_SPI, 1);
-		for (i = 0; i < spi_devices_used; i++) {
-			if (spi_devices[i].port != port)
-				continue;
-			/*
-			 * Don't use the SSI0 frame output.
-			 * CS# is a GPIO so we can keep it low during an entire
-			 * transaction.
-			*/
-			gpio_set_flags(spi_device[i]->gpio_cs, GPIO_OUTPUT);
-			gpio_set_level(spi_device[i]->gpio_cs, 1);
-		}
+		/*
+		 * Don't use the SSI0 frame output.
+		 * CS# is a GPIO so we can keep it low during an entire
+		 * transaction.
+		 */
+		gpio_set_flags(spi_device->gpio_cs, GPIO_OUTPUT);
+		gpio_set_level(spi_device->gpio_cs, 1);
 
 		/* Enable SSI port */
 		LM4_SSI_CR1(0) |= 0x02;
@@ -43,13 +36,9 @@ int spi_enable(int port, int enable)
 		/* Disable SSI port */
 		LM4_SSI_CR1(0) &= ~0x02;
 
-		for (i = 0; i < spi_devices_used; i++) {
-			if (spi_devices[i].port != port)
-				continue;
-			/* Make sure CS# is deselected */
-			gpio_set_level(spi_device[i]->gpio_cs, 1);
-			gpio_set_flags(spi_device->gpio_cs[i], GPIO_ODR_HIGH);
-		}
+		/* Make sure CS# is deselected */
+		gpio_set_level(spi_device->gpio_cs, 1);
+		gpio_set_flags(spi_device->gpio_cs[i], GPIO_ODR_HIGH);
 
 		gpio_config_module(MODULE_SPI, 0);
 	}
@@ -65,12 +54,12 @@ int spi_transaction(const struct spi_device_t *spi_device,
 	int totallen = txlen + rxlen;
 	int txcount = 0, rxcount = 0;
 	static struct mutex spi_mutex;
-	volatile uint32_t dummy  __attribute__((unused));
+	volatile uint32_t unused  __attribute__((unused));
 
 	mutex_lock(&spi_mutex);
 	/* Empty the receive FIFO */
 	while (LM4_SSI_SR(0) & LM4_SSI_SR_RNE)
-		dummy = LM4_SSI_DR(0);
+		unused = LM4_SSI_DR(0);
 
 	/* Start transaction.  Need to do this explicitly because the LM4
 	 * SSI controller pulses its frame select every byte, and the EEPROM
@@ -85,7 +74,7 @@ int spi_transaction(const struct spi_device_t *spi_device,
 			if (rxcount < txlen) {
 				/* Throw away bytes received while we were
 				   transmitting */
-				dummy = LM4_SSI_DR(0);
+				unused = LM4_SSI_DR(0);
 			} else
 				*(rxdata++) = LM4_SSI_DR(0);
 			rxcount++;
@@ -96,7 +85,7 @@ int spi_transaction(const struct spi_device_t *spi_device,
 			if (txcount < txlen)
 				LM4_SSI_DR(0) = *(txdata++);
 			else {
-				/* Clock out dummy byte so we can clock in the
+				/* Clock out unused byte so we can clock in the
 				 * response byte */
 				LM4_SSI_DR(0) = 0;
 			}
@@ -137,7 +126,7 @@ static int spi_init(void)
 	/* Ensure the SPI port is disabled.  This keeps us from interfering
 	 * with the main chipset when we're not explicitly using the SPI
 	 * bus. */
-	spi_enable(CONFIG_SPI_FLASH_PORT, 0);
+	spi_enable(SPI_FLASH_DEVICE, 0);
 
 	return EC_SUCCESS;
 }
@@ -173,7 +162,7 @@ static int command_spirom(int argc, char **argv)
 	uint8_t txsr1[] = {0x05};
 	uint8_t txsr2[] = {0x35};
 
-	spi_enable(CONFIG_SPI_FLASH_PORT, 1);
+	spi_enable(SPI_FLASH_DEVICE, 1);
 
 	printrx("Man/Dev ID", txmandev, sizeof(txmandev), 2);
 	printrx("JEDEC ID", txjedec, sizeof(txjedec), 3);
@@ -181,7 +170,7 @@ static int command_spirom(int argc, char **argv)
 	printrx("Status reg 1", txsr1, sizeof(txsr1), 1);
 	printrx("Status reg 2", txsr2, sizeof(txsr2), 1);
 
-	spi_enable(CONFIG_SPI_FLASH_PORT, 0);
+	spi_enable(SPI_FLASH_DEVICE, 0);
 
 	return EC_SUCCESS;
 }

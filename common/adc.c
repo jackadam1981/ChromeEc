@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -38,7 +38,7 @@ static int print_one_adc(int channel)
 	v = adc_read_channel(channel);
 	if (v == ADC_READ_ERROR)
 		return EC_ERROR_UNKNOWN;
-	ccprintf("  %s = %d\n", adc_channels[channel].name, v);
+	ccprintf("  %s = %d mV\n", adc_channels[channel].name, v);
 	return EC_SUCCESS;
 }
 
@@ -66,7 +66,7 @@ DECLARE_CONSOLE_COMMAND(adc, command_adc,
 			"[name]",
 			"Print ADC channel(s)");
 
-static int hc_adc_read(struct host_cmd_handler_args *args)
+static enum ec_status hc_adc_read(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_adc_read *params = args->params;
 	struct ec_response_adc_read *resp = args->response;

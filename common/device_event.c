@@ -1,4 +1,4 @@
-/* Copyright (c) 2017 The Chromium OS Authors. All rights reserved.
+/* Copyright 2017 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -27,7 +27,7 @@ uint32_t device_get_current_events(void)
 
 static uint32_t device_get_and_clear_events(void)
 {
-	return atomic_read_clear(&device_current_events);
+	return atomic_clear(&device_current_events);
 }
 
 static uint32_t device_get_enabled_events(void)
@@ -40,8 +40,20 @@ void device_set_events(uint32_t mask)
 	/* Ignore events that are not enabled */
 	mask &= device_enabled_events;
 
-	if ((device_current_events & mask) != mask)
+	if ((device_current_events & mask) != mask) {
 		CPRINTS("device event set 0x%08x", mask);
+	} else {
+		/*
+		 * We are here because there is no flag change (1->1, 0->0).
+		 * For 0->0, we shouldn't notify the host because the flag is
+		 * disabled. For 1->1, it's most likely redundant but we still
+		 * need to notify the host in case the host didn't have a
+		 * chance to read the flags. Otherwise, the flag would never be
+		 * consumed because the host would never be notified.
+		 */
+		if (!mask)
+			return;
+	}
 
 	atomic_or(&device_current_events, mask);
 
@@ -55,7 +67,7 @@ void device_clear_events(uint32_t mask)
 	if (device_current_events & mask)
 		CPRINTS("device event clear 0x%08x", mask);
 
-	atomic_clear(&device_current_events, mask);
+	atomic_clear_bits(&device_current_events, mask);
 }
 
 static void device_set_enabled_events(uint32_t mask)
@@ -102,7 +114,7 @@ DECLARE_CONSOLE_COMMAND(deviceevent, command_device_event,
 /*****************************************************************************/
 /* Host commands */
 
-static int device_event_cmd(struct host_cmd_handler_args *args)
+static enum ec_status device_event_cmd(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_device_event *p = args->params;
 	struct ec_response_device_event *r = args->response;

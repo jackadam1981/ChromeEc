@@ -9,7 +9,7 @@
 #define __CROS_EC_ALS_BH1730_H
 
 /* I2C interface */
-#define BH1730_I2C_ADDR		(0x29 << 1)
+#define BH1730_I2C_ADDR_FLAGS	0x29
 
 /* BH1730 registers */
 #define BH1730_CONTROL		0x80
@@ -58,6 +58,12 @@
 
 /* default Itime is about 10Hz */
 #define BH1730_10000_MHZ (10*1000)
+#define BH1730_MAX_FREQ BH1730_10000_MHZ
+/*
+ * 10Hz is too fast for the AP: allow the AP query data less often, the EC will
+ * downsample.
+ */
+#define BH1730_MIN_FREQ (BH1730_MAX_FREQ / 100)
 
 /*
  * Use default lux calculation formula parameters if board specific

@@ -21,9 +21,8 @@ GPIO_INT(SLP_SUS_L_PCH,		PIN(D, 4), GPIO_INT_BOTH,			power_signal_interrupt)
 GPIO_INT(ROP_EC_ACOK,		PIN(0, 0), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	extpower_interrupt)
 
 /* misc interrupt handler section */
-GPIO_INT(EC_WP_L,		PIN(A, 1), GPIO_INT_BOTH | GPIO_PULL_UP,	switch_interrupt)
+GPIO_INT(EC_WP_L,		PIN(A, 1), GPIO_INT_BOTH,			switch_interrupt)
 GPIO_INT(LID_OPEN,		PIN(D, 2), GPIO_INT_BOTH | GPIO_HIB_WAKE_HIGH,	lid_interrupt)
-GPIO_INT(ACCELGYRO3_INT_L,	PIN(4, 1), GPIO_INT_FALLING,			bmi160_interrupt)
 
 /* SoC section */
 GPIO(RSMRST_L,			PIN(3, 7), GPIO_OUT_LOW)			/* SOC Resume Reset */
@@ -60,7 +59,7 @@ GPIO(USB_PD_RST_L,		PIN(F, 1), GPIO_OUT_LOW)			/* C0,C1 PD Reset */
 GPIO(CCD_MODE_ODL,		PIN(E, 3), GPIO_INPUT)				/* Case Closed Debug Mode */
 GPIO(EC_BATT_PRES_L,		PIN(E, 5), GPIO_INPUT)				/* Battery Present */
 GPIO(EC_ENTERING_RW,		PIN(E, 1), GPIO_OUTPUT)				/* EC Entering RW */
-GPIO(EC_BL_DISABLE_L,		PIN(D, 3), GPIO_ODR_LOW)			/* Enable Backlight */
+GPIO(EC_BL_DISABLE_L,		PIN(D, 3), GPIO_INPUT)				/* Enable Backlight */
 GPIO(EC_BRD_ID1,		PIN(9, 6), GPIO_INPUT)				/* Board ID bit0 */
 GPIO(EC_BRD_ID2,		PIN(9, 3), GPIO_INPUT)				/* Board ID bit1 */
 GPIO(EC_BRD_ID3,		PIN(F, 0), GPIO_INPUT)				/* Board ID bit2 */
@@ -103,6 +102,7 @@ GPIO(NC_GPIOC7,			PIN(C, 7), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(NC_GPIOD6,			PIN(D, 6), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(NC_GPIOD7,			PIN(D, 7), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(NC_GPIOE0,			PIN(E, 0), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(ACCELGYRO3_INT_L,		PIN(4, 1), GPIO_INPUT | GPIO_PULL_UP)
 
 /* WoV is unused */
 GPIO(NC_GPIO94,			PIN(9, 4), GPIO_INPUT | GPIO_PULL_UP)

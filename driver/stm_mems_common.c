@@ -11,21 +11,25 @@
 /**
  * st_raw_read_n - Read n bytes for read
  */
-int st_raw_read_n(const int port, const int addr, const uint8_t reg,
-	       uint8_t *data_ptr, const int len)
+int st_raw_read_n(const int port,
+		  const uint16_t i2c_addr_flags,
+		  const uint8_t reg, uint8_t *data_ptr, const int len)
 {
 	/* TODO: Implement SPI interface support */
-	return i2c_read_block(port, addr, reg | 0x80, data_ptr, len);
+	return i2c_read_block(port, i2c_addr_flags,
+			      reg | 0x80, data_ptr, len);
 }
 
 /**
  * st_raw_read_n_noinc - Read n bytes for read (no auto inc address)
  */
-int st_raw_read_n_noinc(const int port, const int addr, const uint8_t reg,
-	       uint8_t *data_ptr, const int len)
+int st_raw_read_n_noinc(const int port,
+			const uint16_t i2c_addr_flags,
+			const uint8_t reg, uint8_t *data_ptr, const int len)
 {
 	/* TODO: Implement SPI interface support */
-	return i2c_read_block(port, addr, reg, data_ptr, len);
+	return i2c_read_block(port, i2c_addr_flags,
+			      reg, data_ptr, len);
 }
 
  /**
@@ -41,7 +45,8 @@ int st_write_data_with_mask(const struct motion_sensor_t *s, int reg,
 	int err;
 	int new_data = 0x00, old_data = 0x00;
 
-	err = st_raw_read8(s->port, s->addr, reg, &old_data);
+	err = st_raw_read8(s->port, s->i2c_spi_addr_flags,
+			   reg, &old_data);
 	if (err != EC_SUCCESS)
 		return err;
 
@@ -51,7 +56,8 @@ int st_write_data_with_mask(const struct motion_sensor_t *s, int reg,
 	if (new_data == old_data)
 		return EC_SUCCESS;
 
-	return st_raw_write8(s->port, s->addr, reg, new_data);
+	return st_raw_write8(s->port, s->i2c_spi_addr_flags,
+			     reg, new_data);
 }
 
 /**
@@ -119,7 +125,7 @@ int st_get_data_rate(const struct motion_sensor_t *s)
  */
 void st_normalize(const struct motion_sensor_t *s, intv3_t v, uint8_t *data)
 {
-	int i, range;
+	int i;
 	struct stprivate_data *drvdata = s->drv_data;
 	/*
 	 * Data is left-aligned and the bottom bits need to be
@@ -133,8 +139,6 @@ void st_normalize(const struct motion_sensor_t *s, intv3_t v, uint8_t *data)
 
 	rotate(v, *s->rot_standard_ref, v);
 
-	/* apply offset in the device coordinates */
-	range = s->drv->get_range(s);
 	for (i = X; i <= Z; i++)
-		v[i] += (drvdata->offset[i] << 5) / range;
+		v[i] += (drvdata->offset[i] << 5) / s->current_range;
 }
