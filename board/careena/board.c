@@ -8,6 +8,7 @@
 #include "button.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "extpower.h"
+#include "hooks.h"
 #include "i2c.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -15,6 +16,7 @@
 #include "pwm.h"
 #include "pwm_chip.h"
 #include "switch.h"
+#include "thermal.h"
 
 #include "gpio_list.h"
 
@@ -45,6 +47,32 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+const static struct ec_thermal_config thermal_soc = {
+	.temp_host = {
+		[EC_TEMP_THRESH_WARN] = 0,
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(74),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(79),
+	},
+	.temp_host_release = {
+		[EC_TEMP_THRESH_WARN] = 0,
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(71),
+		[EC_TEMP_THRESH_HALT] = 0,
+	},
+};
+
+struct ec_thermal_config thermal_params[TEMP_SENSOR_COUNT];
+
+static void setup_thermal(void)
+{
+	thermal_params[TEMP_SENSOR_SOC] = thermal_soc;
+}
+
+static void board_init(void)
+{
+	setup_thermal();
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_KEYBOARD_FACTORY_TEST
 /*
