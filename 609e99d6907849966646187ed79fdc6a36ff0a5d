@@ -69,6 +69,30 @@
       },
       "revId": "609e99d6907849966646187ed79fdc6a36ff0a5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d17e466_51b9182a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 37
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-13T00:35:19Z",
+      "side": 1,
+      "message": "Thanks for validating that Caveh. Do you think it makes sense to move the define for CONFIG_HIBERNATE_PSL_VCC1_RST_WAKEUP to board/brya.h? That way it will be enabled only for brya variant. All future boards should have this fixed and wouldn\u0027t require the extra define.",
+      "parentUuid": "db23e6c9_c02a0e2b",
+      "range": {
+        "startLine": 17,
+        "startChar": 57,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "609e99d6907849966646187ed79fdc6a36ff0a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
