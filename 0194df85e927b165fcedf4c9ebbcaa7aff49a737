@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "508c2843_7b2fb573",
+        "filename": "Makefile.rules",
+        "patchSetId": 14
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-13T14:26:21Z",
+      "side": 1,
+      "message": "this is harder to read than the \"if\" version.\n\nsince it\u0027s a variable now, I think you can even use something along these lines\n\n  ifeq ($(ALLOW_CONFIG),)\n  cmd_check_allowed \u003d ...\n  else\n  cmd_check_allowed \u003d ...\n  endif",
+      "range": {
+        "startLine": 228,
+        "startChar": 20,
+        "endLine": 228,
+        "endChar": 50
+      },
+      "revId": "0194df85e927b165fcedf4c9ebbcaa7aff49a737",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
