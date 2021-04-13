@@ -51,6 +51,29 @@
       "message": "Switch Simon as he is OOO.\n\nJeremy: do you mind helping out with a few zmake reviews?",
       "revId": "9a5956a0e614f0f0edfec02303680c5fef3194a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93193de0_cd4e8805",
+        "filename": "zephyr/zmake/tests/test_multiproc_executor.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-13T18:09:26Z",
+      "side": 1,
+      "message": "Here (and also below). I think you should just delete the cases where it used to say fail_fast\u003dTrue",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 12,
+        "endChar": 31
+      },
+      "revId": "9a5956a0e614f0f0edfec02303680c5fef3194a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
