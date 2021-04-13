@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b93c9c2b_5fc41c4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2021-04-13T05:57:11Z",
+      "side": 1,
+      "message": "I think we could close this CL due to the alternated CL that had been merged.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2813460\n\nBut I have one more question, I don\u0027t see gpio_set in brya board layer, so when do we actually enable keyboard backlight or control it?\n\nShall we upload another CL for it?",
+      "revId": "4355af96dd632f31cab493a89672a580cb697852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
