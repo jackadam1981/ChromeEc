@@ -45,6 +45,30 @@
       },
       "revId": "609e99d6907849966646187ed79fdc6a36ff0a5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db23e6c9_c02a0e2b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 37
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-13T00:28:54Z",
+      "side": 1,
+      "message": "ya, confirmed.\nyou have to disable CONFIG_HIBERNATE_PSL_VCC1_RST_WAKEUP,\nunplug power and battery to reset the Vsby powered PSL registers,\nthen you can wake the system from hibernate by triggering\nLID_OPEN with a magnet.",
+      "parentUuid": "27f99745_14518bc3",
+      "range": {
+        "startLine": 17,
+        "startChar": 57,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "609e99d6907849966646187ed79fdc6a36ff0a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
