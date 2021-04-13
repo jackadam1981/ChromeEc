@@ -16,6 +16,24 @@
       "message": "Do we stop charging from a chromebook though once we\u0027ve parsed the sourcecaps?",
       "revId": "76714a086648ca1ad5bf5f01855843077f660891",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aefedb65_2a3cba29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-13T01:26:57Z",
+      "side": 1,
+      "message": "I don\u0027t see any traces of charge current in TotalPhase before selecting the chromebook from the UI as a charging source.  I can double check the logs to ensure the charge manager isn\u0027t setting an active port in that little span too.  I assume it works in our favor that charge_manager_refresh() is running low-priority in the HOOKS task. \n\nThis should be a no-op since previously the flag was only set while we were in a connection, and we wouldn\u0027t have it set on entry to Attached.SNK not through a power role swap.",
+      "parentUuid": "7e4598ae_ba71b380",
+      "revId": "76714a086648ca1ad5bf5f01855843077f660891",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
