@@ -16,6 +16,24 @@
       "message": "Please split this CL into 2 CLs.  One for adding SSFC support, and one for all the functional changes.",
       "revId": "8c9285d626c8a3913bb45260922bfe05bc1cd5ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "502e9214_f5c80747",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-13T04:58:45Z",
+      "side": 1,
+      "message": "Split this CL. This CL-2814720/8 for Lightbar V9 SPEC, and the other, CL-2822270 is for SSFC support.",
+      "parentUuid": "c5a69595_e1d9af48",
+      "revId": "8c9285d626c8a3913bb45260922bfe05bc1cd5ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
