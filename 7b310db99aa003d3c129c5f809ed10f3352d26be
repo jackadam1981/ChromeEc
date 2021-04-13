@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70f954c2_05c8f95a",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-13T11:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c0c9de8_47bcd95c",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 3
+      },
+      "revId": "7b310db99aa003d3c129c5f809ed10f3352d26be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85bfb2ad_dc28e204",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "678ce1da_03d16ffe",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-13T11:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85bfb2ad_dc28e204",
+      "range": {
+        "startLine": 225,
+        "startChar": 2,
+        "endLine": 225,
+        "endChar": 3
+      },
+      "revId": "7b310db99aa003d3c129c5f809ed10f3352d26be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d77c76f3_7ef0143f",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-12T20:50:24Z",
       "side": 1,
       "message": "this would never be defined, right?",
+      "range": {
+        "startLine": 6,
+        "startChar": 8,
+        "endLine": 6,
+        "endChar": 25
+      },
+      "revId": "7b310db99aa003d3c129c5f809ed10f3352d26be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ddbbc8a_963d60ea",
+        "filename": "zephyr/linker/npcx-lfw.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-13T11:19:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d77c76f3_7ef0143f",
       "range": {
         "startLine": 6,
         "startChar": 8,
