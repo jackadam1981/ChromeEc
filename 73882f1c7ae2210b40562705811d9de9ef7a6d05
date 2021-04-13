@@ -16,6 +16,24 @@
       "message": "Is there an ec.tasklist change needed to remove the C1 PD task? ",
       "revId": "73882f1c7ae2210b40562705811d9de9ef7a6d05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f8b907f_ac5a4f88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-13T16:05:09Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this oversight was related to a merge, or I had just missed it initially. But, I have uploaded a new patchset with the old C1 tasks removed.",
+      "parentUuid": "2ae2c2cd_461ecbb6",
+      "revId": "73882f1c7ae2210b40562705811d9de9ef7a6d05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
