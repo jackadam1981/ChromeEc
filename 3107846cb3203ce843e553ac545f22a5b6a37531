@@ -51,6 +51,24 @@
       "parentUuid": "7f6e4423_56ca63aa",
       "revId": "3107846cb3203ce843e553ac545f22a5b6a37531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17a087bb_d8e9b586",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-13T01:10:28Z",
+      "side": 1,
+      "message": "actually, we use VCC1_RST on brya board ID 1 and later for wake.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2728679\n\nwe\u0027ll need to be able to enable this for now - i understand the next rev. of\nthe EC will do this unconditionally in the booter, but until then...",
+      "parentUuid": "33f6bc11_acab64ad",
+      "revId": "3107846cb3203ce843e553ac545f22a5b6a37531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
