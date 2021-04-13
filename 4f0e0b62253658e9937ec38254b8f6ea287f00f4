@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a8e63b0_95364855",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-13T15:43:59Z",
+      "side": 1,
+      "message": "Can you add this as a new case in zephyr/test/drivers instead? Simon really wants a big binary instead of many little ones to keep the build time down in the CQ and to discover unexpected interactions between drivers.",
+      "revId": "4f0e0b62253658e9937ec38254b8f6ea287f00f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
