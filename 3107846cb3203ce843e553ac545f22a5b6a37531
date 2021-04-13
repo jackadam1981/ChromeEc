@@ -69,6 +69,24 @@
       "parentUuid": "33f6bc11_acab64ad",
       "revId": "3107846cb3203ce843e553ac545f22a5b6a37531",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5464d10b_f3552ca3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-13T01:18:31Z",
+      "side": 1,
+      "message": "i have added the bug to the \"blocks-FSI\" hotlist in issuetracker.\n\nit\u0027s a bit cumbersome to set this up and i don\u0027t know much of this is\nvisible to partners. basically, you have to search for a hotlist\non the left panel, then star it. that\u0027ll make it available in the hotlists\npull-down menu on top of the page which makes it easy to check off all\nthe relevant hotlists for a bug.\n\nif in doubt, just let one of us know to take care of it.",
+      "parentUuid": "17a087bb_d8e9b586",
+      "revId": "3107846cb3203ce843e553ac545f22a5b6a37531",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
