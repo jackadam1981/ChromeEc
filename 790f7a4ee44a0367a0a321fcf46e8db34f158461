@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a7be7edf_a4679873",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-13T18:38:06Z",
+      "side": 1,
+      "message": "This isn\u0027t required by FAFT - but the reset type is really useful to have in the log. It makes sense to match the Chromium EC output for consistency.",
+      "parentUuid": "845fb6e5_08970c3f",
+      "range": {
+        "startLine": 29,
+        "startChar": 4,
+        "endLine": 29,
+        "endChar": 8
+      },
+      "revId": "790f7a4ee44a0367a0a321fcf46e8db34f158461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cd561f94_bb724efa",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-12T18:33:45Z",
       "side": 1,
       "message": "probably want the project name instead of the board ... we can save this for later",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "790f7a4ee44a0367a0a321fcf46e8db34f158461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f9b7ae8_129c68b8",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-13T18:38:06Z",
+      "side": 1,
+      "message": "Created a bug for this.  The project name is still \"Zephyr-Kernel\" at the time getversion.sh is run.",
+      "parentUuid": "0b5d8128_2bd6d33c",
       "range": {
         "startLine": 34,
         "startChar": 26,
