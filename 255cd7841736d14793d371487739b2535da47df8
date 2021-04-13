@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d320a01_43f7b722",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-13T14:40:07Z",
+      "side": 1,
+      "message": "DT_INST(0, cros_ec_hibernate_wake_pins)\n\nThat way the path does not need to be hard-coded",
+      "range": {
+        "startLine": 29,
+        "startChar": 40,
+        "endLine": 29,
+        "endChar": 68
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a75f3d1_1f68221a",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-13T14:40:07Z",
+      "side": 1,
+      "message": "add trailing comma",
+      "range": {
+        "startLine": 173,
+        "startChar": 43,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf637dd2_64c6043d",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-13T14:40:07Z",
+      "side": 1,
+      "message": "SYSTEM_DT_NODE_HIBERNATE_CONFIG",
+      "range": {
+        "startLine": 192,
+        "startChar": 19,
+        "endLine": 192,
+        "endChar": 47
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea614cc7_794bbf47",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-13T14:40:07Z",
+      "side": 1,
+      "message": "would using uint32_t make the below copy of EC_RESET_FLAG_RTC_ALARM and EC_RESET_FLAG_WAKE_PIN easier?",
+      "range": {
+        "startLine": 223,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 19
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37eb87e8_367850ae",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-13T14:40:07Z",
+      "side": 1,
+      "message": "these aren\u0027t necessary, since the type on the LHS is uint8_t",
+      "range": {
+        "startLine": 241,
+        "startChar": 50,
+        "endLine": 241,
+        "endChar": 56
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feb235bc_82e56d68",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-13T14:40:07Z",
+      "side": 1,
+      "message": "it would make sense to me to move the pointer still here, as then we are always pointing to the next value (consistently)\n\nalternatively, this might be a little clearer:\n\nsaved_reset_flags[0] |\u003d ...\nsaved_reset_flags[1] |\u003d ...\nsaved_reset_flags[2] |\u003d ...\nsaved_reset_flags[3] |\u003d ...",
+      "range": {
+        "startLine": 244,
+        "startChar": 19,
+        "endLine": 244,
+        "endChar": 20
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23ff225c_6f4787ca",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-13T14:40:07Z",
+      "side": 1,
+      "message": "/",
+      "range": {
+        "startLine": 410,
+        "startChar": 10,
+        "endLine": 410,
+        "endChar": 11
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
