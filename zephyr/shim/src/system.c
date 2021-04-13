@@ -12,6 +12,7 @@
 #include "common.h"
 #include "cros_version.h"
 #include "system.h"
+#include "task.h"
 #include "watchdog.h"
 
 #define BBRAM_REGION_PD0	DT_PATH(named_bbram_regions, pd0)
