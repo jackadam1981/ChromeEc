@@ -16,6 +16,24 @@
       "message": "I think we could close this CL due to the alternated CL that had been merged.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2813460\n\nBut I have one more question, I don\u0027t see gpio_set in brya board layer, so when do we actually enable keyboard backlight or control it?\n\nShall we upload another CL for it?",
       "revId": "4355af96dd632f31cab493a89672a580cb697852",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b90087f_0916bd28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-13T06:19:01Z",
+      "side": 1,
+      "message": "good point, we still need your gpio_set_level(...) invocations\nhooked into the chipset state transitions\nnow that we actually have GPIO control over the backlight enable.\n\nplease go ahead and update your patch (or create a new one if you prefer)\nfor review.\n\non TGL, we used HOOK_CHIPSET_{SUSPEND,RESUME} - need to double check\nif that\u0027s a better choice.",
+      "parentUuid": "b93c9c2b_5fc41c4c",
+      "revId": "4355af96dd632f31cab493a89672a580cb697852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
