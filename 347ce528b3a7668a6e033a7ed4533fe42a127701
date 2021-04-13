@@ -51,6 +51,24 @@
       "message": "It sounds like this might not be necessary, and its effect on the hang might be a coincidence. Nevertheless, LGTM if we end up wanting to submit it.",
       "revId": "347ce528b3a7668a6e033a7ed4533fe42a127701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "084d1698_02a887f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-04-13T18:40:02Z",
+      "side": 1,
+      "message": "Sorry, I probably wasn\u0027t clear. I think this shouldn\u0027t be submitted. I may be misinterpreting the CL, but it sounds like whenever the TYPEC_STATUS command is called, the SOP_*_DISC_DONE events will be cleared. That is not what we want. That means that the AP will never see those bits set, and so a partner and cable will never be registered (so userspace and kernel don\u0027t know that a partner or cable were ever attached).\n\nThe reading or clearing of the bits is not dependent on CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY  (I\u0027ve explained this a little more in the bug page).\n\nIn any case, it doesn\u0027t solve the issue that the partner is seeing (they still see the MCE error)",
+      "parentUuid": "2d8fcd52_f2ebb75a",
+      "revId": "347ce528b3a7668a6e033a7ed4533fe42a127701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
