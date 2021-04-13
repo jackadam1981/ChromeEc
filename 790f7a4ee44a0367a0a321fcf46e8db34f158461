@@ -110,6 +110,30 @@
       },
       "revId": "790f7a4ee44a0367a0a321fcf46e8db34f158461",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c28c6d2_1a38f88f",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-13T19:03:50Z",
+      "side": 1,
+      "message": "OK, we may need to move the logic to zmake anyway to support FRID/FWID in FMAP",
+      "parentUuid": "7f9b7ae8_129c68b8",
+      "range": {
+        "startLine": 34,
+        "startChar": 26,
+        "endLine": 34,
+        "endChar": 31
+      },
+      "revId": "790f7a4ee44a0367a0a321fcf46e8db34f158461",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
