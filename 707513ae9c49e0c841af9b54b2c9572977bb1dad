@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c6bb58f_f7625756",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-13T03:17:47Z",
+      "side": 1,
+      "message": "Won\u0027t this just make the CQ build take longer? I think we really want to just mute all the errors from the other jobs instead.",
+      "revId": "707513ae9c49e0c841af9b54b2c9572977bb1dad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
