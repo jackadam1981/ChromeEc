@@ -16,6 +16,24 @@
       "message": "Can you try directly with \"pytest zephyr/zmake/tests/test_zmake.py\"?\n\nUntil crrev.com/c/2823148 lands, some pytests can be skipped on accident in a CQ run.",
       "revId": "24b327a96924ed189afa78c673113285dfba6622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7301247f_cbdad9f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-13T19:24:07Z",
+      "side": 1,
+      "message": "Perhaps we should just wait until that lands?\n\nI would like to get this stuff landed but I\u0027m out this week...if you have time, please take a look?",
+      "parentUuid": "c8358a9a_f2c35018",
+      "revId": "24b327a96924ed189afa78c673113285dfba6622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
