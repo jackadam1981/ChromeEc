@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2164a977_c21f1c6d",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-13T18:05:17Z",
+      "side": 1,
+      "message": "suggestion: wouldn\u0027t an inline function be easier to read? Like this:\n\nstatic inline int iin_dpm_reg_to_current(int reg)\n{\n    return (reg + 1) * BQ25710_IIN_DPM_CURRENT_STEP_MA / INPUT_RESISTOR_RATIO;\n}",
+      "revId": "3e1156dc74c9638ea89b96dbebc1ca151be51a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c9d7e09_b2a0ba3f",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-13T18:05:17Z",
+      "side": 1,
+      "message": "The result would be divided by INPUT_RESISTOR_RATIO comparing to the original. Was that intended?",
+      "revId": "3e1156dc74c9638ea89b96dbebc1ca151be51a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
