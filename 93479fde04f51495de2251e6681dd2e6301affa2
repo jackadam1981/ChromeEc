@@ -22,6 +22,30 @@
       },
       "revId": "93479fde04f51495de2251e6681dd2e6301affa2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e511987_cccf77a2",
+        "filename": "baseboard/volteer/cbi_ssfc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-13T03:44:01Z",
+      "side": 1,
+      "message": "Besides coding style should be revised, it\u0027s also related with \"Tab Width\".\nThe default of tab width setting in Gerrit is 8, but some editor, ex. Visual Studio Code, are 4. So, it shows normally in my side.\nI change tab setting of my editor to 8 and follow keeby baseboard to revise coding style of cbi_ssfc.h of dedede and volteer.",
+      "parentUuid": "6fa5fb95_efd43471",
+      "range": {
+        "startLine": 47,
+        "startChar": 15,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "93479fde04f51495de2251e6681dd2e6301affa2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
