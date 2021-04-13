@@ -22,6 +22,30 @@
       },
       "revId": "6618ab0da5122ac120cad086a894eb6321ae167e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a1292c5_0414ce55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-13T19:31:40Z",
+      "side": 1,
+      "message": "I mean PLATFORM_EC_USB_MUX_RUNTIME_CONFIG\n\nActually it looks like that is duplicated, so really I am just removing the duplicate.",
+      "parentUuid": "6cff901d_3000f80a",
+      "range": {
+        "startLine": 12,
+        "startChar": 29,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "6618ab0da5122ac120cad086a894eb6321ae167e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
