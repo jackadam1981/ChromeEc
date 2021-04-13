@@ -63,6 +63,30 @@
       },
       "revId": "c94e27d229d90f9e50a10c44346aaf0670cb93a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926f5db6_67106dc6",
+        "filename": "board/sasukette/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-13T06:51:38Z",
+      "side": 1,
+      "message": "See below:\n    \nint isl923x_set_ac_prochot(int chgnum, uint16_t ma)\n{\n\tint rv;\n\n\tif (ma \u003e ISL923X_AC_PROCHOT_CURRENT_MAX) {\n\t\tCPRINTS(\"%s: invalid current (%d mA)\", CHARGER_NAME, ma);\n\t\treturn EC_ERROR_INVAL;\n\t}\n\n\trv \u003d raw_write16(chgnum, ISL923X_REG_PROCHOT_AC, AC_CURRENT_TO_REG(ma));\n\tif (rv)\n\t\tCPRINTS(\"%s set_ac_prochot failed (%d)\", CHARGER_NAME, rv);\n\treturn rv;\n}\n\n\nAnd similarly for the other, CURRENT_TO_REG().",
+      "parentUuid": "21d8080a_f9bc0c30",
+      "range": {
+        "startLine": 190,
+        "startChar": 38,
+        "endLine": 190,
+        "endChar": 57
+      },
+      "revId": "c94e27d229d90f9e50a10c44346aaf0670cb93a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
