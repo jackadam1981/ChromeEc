@@ -142,6 +142,30 @@
       },
       "revId": "a5227539b44f4608f07d244fbd3b15e8a0ed53ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5b1d238_9ad9d68d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-13T00:39:07Z",
+      "side": 1,
+      "message": "now that we have board ID 1 with a PoR battery as well as the original\nvolteer battery to test, i think the problem is fairly clear. we don\u0027t\nhave a spec for how long the battery can take to come out of cut-off and\npresent itself as fully operational. empirically, this is period\nis much longer than the 1 second timeout in the PB task. if we wake the\nsystem using an under-powered charger, we must wait long enough for the\nbattery to be fully operational before powering up the AP.",
+      "parentUuid": "0aed0ae1_11b102a2",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "a5227539b44f4608f07d244fbd3b15e8a0ed53ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
