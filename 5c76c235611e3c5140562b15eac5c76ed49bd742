@@ -16,6 +16,29 @@
       "message": "Sorry, forgot to export the getter.",
       "revId": "5c76c235611e3c5140562b15eac5c76ed49bd742",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e575d9b2_647bbbbb",
+        "filename": "baseboard/dedede/cbi_ssfc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-04-13T02:19:43Z",
+      "side": 1,
+      "message": "Hi Aseda, should we treat this `0` value as unprovisioned value, and add one more value`2` for PI3USB31532 ? \n\nNormally for SSFC provision process in factory and RMA, we should have a default \"unprovisioned\" value (normally `0`) first, then the tool(scrip) will probe which the component it is, then provision the SSFC value accordingly, then in the next OS boot, SW should know which component we are actually have there.  \n\nThanks!",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 24
+      },
+      "revId": "5c76c235611e3c5140562b15eac5c76ed49bd742",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
