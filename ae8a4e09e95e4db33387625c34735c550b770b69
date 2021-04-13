@@ -106,6 +106,24 @@
       "parentUuid": "8f6ce013_ca32779b",
       "revId": "ae8a4e09e95e4db33387625c34735c550b770b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bfd9033_e1ea3d5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-13T23:59:18Z",
+      "side": 1,
+      "message": "But, I mean the parameters in spi_device_t. I don\u0027t think it\u0027d be guaranteed that all boards would use the same values?",
+      "parentUuid": "9ae3b17b_74730773",
+      "revId": "ae8a4e09e95e4db33387625c34735c550b770b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
