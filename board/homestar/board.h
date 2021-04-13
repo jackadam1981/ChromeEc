@@ -67,6 +67,8 @@
 /* TODO(Dolan): check which pin was used for tablet mode detect */
 #define GMR_TABLET_MODE_GPIO_L GPIO_LID_OPEN_EC
 
+#define CONFIG_MKBP_INPUT_DEVICES
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
