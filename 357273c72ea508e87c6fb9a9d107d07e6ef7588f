@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a3287f0_b7a37561",
+        "filename": "test/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-04-13T16:43:10Z",
+      "side": 1,
+      "message": "I think it is not possible, because GPIO_WP is defined only if CONFIG_WP_ACTIVE_HIGH is enabled and GPIO_WP_L is defined only if CONFIG_WP_ACTIVE_HIGH is disabled. If I am correct, only solution is to use preprocessor here.",
+      "parentUuid": "b515b108_69913d00",
+      "range": {
+        "startLine": 20,
+        "startChar": 7,
+        "endLine": 20,
+        "endChar": 28
+      },
+      "revId": "357273c72ea508e87c6fb9a9d107d07e6ef7588f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7acf8ce3_2502bf9f",
         "filename": "test/cbi.c",
         "patchSetId": 1
