@@ -16,6 +16,23 @@
       "message": "hi Aseda: \nIs this ok? i test the sasukette, and the reg value can meet the power request",
       "revId": "b9b37e3b5588b3e6e2efa82f7de3f64d62d84d3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8aa8ff1_a5f83e5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-13T16:38:33Z",
+      "side": 1,
+      "message": "Yes, this looks good, but let\u0027s split up the CL. 1 for the driver change and 1 for the sasuke change. Sorry for the churn.",
+      "revId": "b9b37e3b5588b3e6e2efa82f7de3f64d62d84d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
