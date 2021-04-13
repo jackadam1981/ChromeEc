@@ -5,6 +5,7 @@
  * Power and battery LED control for Malefor
  */
 
+#include "cbi_ssfc.h"
 #include "charge_state.h"
 #include "common.h"
 #include "cros_board_info.h"
@@ -236,6 +237,13 @@ static bool lightbar_is_supported(void)
 	static uint32_t skuid = SKU_ID_NONE;
 	bool result;
 
+	/* lindar add SSFC tag to cbi image from "board_id = 3". */
+	if (get_board_id() >= 3) {
+		if (get_cbi_ssfc_lightbar() == SSFC_LIGHTBAR_NONE)
+			return false;
+		return true;
+	}
+
 	if (skuid == SKU_ID_NONE) {
 		if (cbi_get_sku_id(&skuid)) {
 			CPRINTS("Cannot get skuid for lightbar supported");
@@ -243,7 +251,10 @@ static bool lightbar_is_supported(void)
 		}
 	}
 
-	/* Check sku_id to know if system support lightbar or not. */
+	/*
+	 * If board_id = 1 or 2, it needs to check sku_id to know
+	 * if system support lightbar or not.
+	 */
 	if (skuid >= LB_SUPPORTED_SKUID_LOWER &&
 		skuid <= LB_SUPPORTED_SKUID_UPPER)
 		result = true;
@@ -331,12 +342,58 @@ const uint8_t lightbar_10_led_cfg[LIGHTBAR_COLOR_TOTAL][KTD20XX_TOTOAL_REG] = {
 	}
 };
 
+const uint8_t lightbar_12_led_cfg[LIGHTBAR_COLOR_TOTAL][KTD20XX_TOTOAL_REG] = {
+	[BAR_RESET] = {
+		0x00, 0x00, DISABLE_LIGHTBAR,
+		I_OFF, I_OFF, I_OFF, I_OFF, I_OFF, I_OFF,
+		SEL_OFF, SEL_OFF, SEL_OFF, SEL_OFF, SEL_OFF, SEL_OFF
+	},
+	[BAR_OFF] = {
+		0x00, 0x00, DISABLE_LIGHTBAR,
+		I_OFF, I_OFF, I_OFF, I_OFF, I_OFF, I_OFF,
+		SEL_OFF, SEL_OFF, SEL_OFF, SEL_OFF, SEL_OFF, SEL_OFF
+	},
+	[BAR_COLOR_ORG_20_PERCENT] = {
+		0x00, 0x00, ENABLE_LIGHTBAR,
+		I_OFF, ORG_I_ON, I_OFF, I_OFF, I_OFF, I_OFF,
+		SEL_2ND_LED, SEL_BOTH, SEL_OFF, SEL_OFF, SEL_OFF, SEL_OFF
+	},
+	[BAR_COLOR_GRN_40_PERCENT] = {
+		0x00, 0x00, ENABLE_LIGHTBAR,
+		GRN_I_ON, I_OFF, I_OFF, I_OFF, I_OFF, I_OFF,
+		SEL_BOTH, SEL_BOTH, SEL_OFF, SEL_2ND_LED, SEL_OFF, SEL_OFF
+	},
+	[BAR_COLOR_GRN_60_PERCENT] = {
+		0x00, 0x00, ENABLE_LIGHTBAR,
+		GRN_I_ON, I_OFF, I_OFF, I_OFF, I_OFF, I_OFF,
+		SEL_BOTH, SEL_BOTH, SEL_2ND_LED, SEL_BOTH, SEL_OFF, SEL_OFF
+	},
+	[BAR_COLOR_GRN_80_PERCENT] = {
+		0x00, 0x00, ENABLE_LIGHTBAR,
+		GRN_I_ON, I_OFF, I_OFF, I_OFF, I_OFF, I_OFF,
+		SEL_BOTH, SEL_BOTH, SEL_BOTH, SEL_BOTH, SEL_OFF, SEL_2ND_LED
+	},
+	[BAR_COLOR_GRN_FULL] = {
+		0x00, 0x00, ENABLE_LIGHTBAR,
+		GRN_I_ON, I_OFF, I_OFF, I_OFF, I_OFF, I_OFF,
+		SEL_BOTH, SEL_BOTH, SEL_BOTH, SEL_BOTH, SEL_BOTH, SEL_BOTH
+	},
+	[BAR_COLOR_ORG_FULL] = {
+		0x00, 0x00, ENABLE_LIGHTBAR,
+		I_OFF, ORG_I_ON, I_OFF, I_OFF, I_OFF, I_OFF,
+		SEL_BOTH, SEL_BOTH, SEL_BOTH, SEL_BOTH, SEL_BOTH, SEL_BOTH
+	}
+};
+
 static void lightbar_set_color(enum ec_lightbar_colors color)
 {
 	enum ktd20xx_register i;
 	const uint8_t (*lightbar_ctrl)[KTD20XX_TOTOAL_REG];
 
-	lightbar_ctrl = lightbar_10_led_cfg;
+	if (get_cbi_ssfc_lightbar() == SSFC_LIGHTBAR_12_LED)
+		lightbar_ctrl = lightbar_12_led_cfg;
+	else
+		lightbar_ctrl = lightbar_10_led_cfg;
 
 	if (color >= LIGHTBAR_COLOR_TOTAL) {
 		CPRINTS("Lightbar Error! Incorrect lightbard color %d", color);
