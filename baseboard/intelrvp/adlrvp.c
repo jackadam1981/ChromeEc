@@ -8,6 +8,7 @@
 #include "bb_retimer.h"
 #include "charger.h"
 #include "common.h"
+#include "driver/tcpm/ccgxxf.h"
 #include "hooks.h"
 #include "isl9241.h"
 #include "pca9675.h"
@@ -25,8 +26,7 @@
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 	[TYPE_C_PORT_0] = {
 		.tcpc_alert = GPIO_USBC_TCPC_ALRT_P0,
-		.ppc_alert = GPIO_USBC_TCPC_PPC_ALRT_P0,
-		.ppc_intr_handler = sn5s330_interrupt,
+		/* No PPC alert for CCG6 */
 	},
 #if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
@@ -56,8 +56,8 @@ BUILD_ASSERT(ARRAY_SIZE(tcpc_aic_gpios) == CONFIG_USB_PD_PORT_MAX_COUNT);
 struct ppc_config_t ppc_chips[] = {
 	[TYPE_C_PORT_0] = {
 		.i2c_port = I2C_PORT_TYPEC_0,
-		.i2c_addr_flags = I2C_ADDR_SN5S330_TCPC_AIC_PPC,
-		.drv = &sn5s330_drv,
+		.i2c_addr_flags = CCGXXF_I2C_ADDR1_FLAGS,
+		.drv = &ccgxxf_ppc_drv,
 	},
 #if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {
@@ -151,6 +151,7 @@ struct usb_mux usb_muxes[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
+#if 0
 /* Each TCPC have corresponding IO expander */
 const struct pca9675_ioexpander pca9675_iox[] = {
 	[TYPE_C_PORT_0] = {
@@ -181,6 +182,7 @@ const struct pca9675_ioexpander pca9675_iox[] = {
 #endif
 };
 BUILD_ASSERT(ARRAY_SIZE(pca9675_iox) == CONFIG_USB_PD_PORT_MAX_COUNT);
+#endif
 
 /* Charger Chips */
 const struct charger_config_t chg_chips[] = {
@@ -193,6 +195,7 @@ const struct charger_config_t chg_chips[] = {
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
+#if 0
 	/* Port 0 & 1 and 2 & 3 share same line for over current indication */
 	/* If PD_C2 task is defined, PD_C3 task is assumed to be defined. */
 #if defined(HAS_TASK_PD_C2) && defined(HAS_TASK_PD_C3)
@@ -209,10 +212,12 @@ void board_overcurrent_event(int port, int is_overcurrented)
 		pca9675_update_pins(ioex, TCPC_AIC_IOE_OC, 0);
 	else
 		pca9675_update_pins(ioex, 0, TCPC_AIC_IOE_OC);
+#endif
 }
 
 __override void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 {
+#if 0
 	/* Handle retimer's power domain.*/
 	if (on_off) {
 		pca9675_update_pins(me->usb_port,
@@ -240,10 +245,25 @@ __override void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 		pca9675_update_pins(me->usb_port,
 				0, TCPC_AIC_IOE_BB_RETIMER_LS_EN);
 	}
+#else
+#define TCPC_AIC_IOE_BB_RETIMER_LS_EN	GPIO_P1_1
+#define TCPC_AIC_IOE_BB_RETIMER_RST 	GPIO_P2_0
+	if (on_off) {
+		ccgxxf_gpio_set(me->usb_port, TCPC_AIC_IOE_BB_RETIMER_LS_EN, 1);
+		msleep(1);
+		ccgxxf_gpio_set(me->usb_port, TCPC_AIC_IOE_BB_RETIMER_RST, 1);
+		msleep(1);
+	} else {
+		ccgxxf_gpio_set(me->usb_port, TCPC_AIC_IOE_BB_RETIMER_LS_EN, 0);
+		msleep(1);
+		ccgxxf_gpio_set(me->usb_port, TCPC_AIC_IOE_BB_RETIMER_RST, 0);
+	}
+#endif
 }
 
 static void board_connect_c0_sbu_deferred(void)
 {
+#if 0
 	int ccd_intr_level = gpio_get_level(GPIO_CCD_MODE_ODL);
 
 	if (ccd_intr_level) {
@@ -257,6 +277,7 @@ static void board_connect_c0_sbu_deferred(void)
 			TCPC_AIC_IOE_USB_MUX_CNTRL_1,
 			TCPC_AIC_IOE_USB_MUX_CNTRL_0);
 	}
+#endif
 }
 DECLARE_DEFERRED(board_connect_c0_sbu_deferred);
 
@@ -300,7 +321,7 @@ static void tcpc_aic_init(void)
 
 	/* Initialize the IOEXPANDER on TCPC-AIC */
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-		pca9675_init(i);
+		//pca9675_init(i);
 		board_overcurrent_event(i, 0);
 	}
 
@@ -308,9 +329,11 @@ static void tcpc_aic_init(void)
 	board_connect_c0_sbu_deferred();
 
 #if defined(HAS_TASK_PD_C2)
+#if 0
 	 /* Only TCPC-0 can do CCD or BSSB, Default set SBU lines to AUX */
 	pca9675_update_pins(TYPE_C_PORT_2, 0,
 		TCPC_AIC_IOE_USB_MUX_CNTRL_1 | TCPC_AIC_IOE_USB_MUX_CNTRL_0);
+#endif
 #endif
 }
 DECLARE_HOOK(HOOK_INIT, tcpc_aic_init, HOOK_PRIO_INIT_PCA9675);
