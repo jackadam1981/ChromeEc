@@ -7,6 +7,7 @@
 #include "button.h"
 #include "fan.h"
 #include "fusb302.h"
+#include "driver/tcpm/ccgxxf.h"
 #include "gpio.h"
 #include "i2c.h"
 #include "it83xx_pd.h"
@@ -82,9 +83,13 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 /* USB-C TCPC Configuration */
 const struct tcpc_config_t tcpc_config[] = {
 	[TYPE_C_PORT_0] = {
-		.bus_type = EC_BUS_TYPE_EMBEDDED,
-		/* TCPC is embedded within EC so no i2c config needed */
-		.drv = &it83xx_tcpm_drv,
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_0,
+			.addr_flags = CCGXXF_I2C_ADDR1_FLAGS,
+		},
+		.drv = &ccgxxf_tcpm_drv,
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
 	},
 #if defined(HAS_TASK_PD_C1)
 	[TYPE_C_PORT_1] = {

@@ -14,12 +14,15 @@
 
 #define TCPC_REG_VENDOR_GPIO_CTRL        (0x80)
 
+#define GPIO_P2_0	BIT(1) /* LS */
+#define GPIO_P1_1	BIT(0) /* Reset */
+
 extern const struct tcpm_drv ccgxxf_tcpm_drv;
 extern const struct ppc_drv ccgxxf_ppc_drv;
 
 /* list all the pins that can be configured as GPIOs */
 enum ccgxxf_gpios {
-	CCG6_GPIO1 = 1u,
+	CCG6_GPIO_P1_1 = 1u,
 	CCG6_GPIO2 = 2u
 };
 
@@ -29,9 +32,9 @@ enum ccgxxf_gpios_state {
 };
 
 /* Set the GPIO */
-int ccgxxf_gpio_set(int port, enum ccgxxf_gpios gpio, enum ccgxxf_gpios_state val);
+int ccgxxf_gpio_set(int port, int gpio, int val);
 
 /* Get the GPIO */
-int ccgxxf_gpio_get(int port, enum ccgxxf_gpios gpio, enum ccgxxf_gpios_state *gpio_value);
+int ccgxxf_gpio_get(int port, int gpio, int *gpio_value);
 
 #endif /* __CROS_EC_DRIVER_TCPM_CCGXXF_H */

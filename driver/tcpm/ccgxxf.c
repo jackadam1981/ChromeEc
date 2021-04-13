@@ -67,13 +67,13 @@ const struct ppc_drv ccgxxf_ppc_drv = {
 	.vbus_source_enable = &tcpci_tcpm_set_src_ctrl,
 };
 
-int ccgxxf_gpio_set(int port, enum ccgxxf_gpios gpio, enum ccgxxf_gpios_state gpio_value)
+int ccgxxf_gpio_set(int port, int gpio, int gpio_value)
 {
 	return tcpc_update8(port, TCPC_REG_VENDOR_GPIO_CTRL, gpio, gpio_value);
 }
 
 /* Get the GPIO */
-int ccgxxf_gpio_get(int port, enum ccgxxf_gpios gpio, enum ccgxxf_gpios_state *gpio_value)
+int ccgxxf_gpio_get(int port, int gpio, int *gpio_value)
 {
 	int rv;
 	int read_v;
