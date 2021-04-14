@@ -9,6 +9,7 @@
 #define __CROS_EC_ZEPHYR_HOOKS_SHIM_H
 
 #include <init.h>
+#include <stdbool.h>
 #include <kernel.h>
 #include <zephyr.h>
 
@@ -20,6 +21,7 @@
 struct deferred_data {
 	void (*routine)(void);
 	struct k_delayed_work delayed_work;
+	bool ready;
 };
 
 /**

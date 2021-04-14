@@ -4,6 +4,7 @@
  */
 
 #include <kernel.h>
+#include <stdbool.h>
 #include <zephyr.h>
 
 #include "common.h"
@@ -49,12 +50,18 @@ void zephyr_shim_setup_deferred(const struct deferred_data *data)
 
 	k_delayed_work_init(&non_const->delayed_work,
 			    deferred_work_queue_handler);
+	non_const->ready = true;
 }
 
 int hook_call_deferred(const struct deferred_data *data, int us)
 {
 	struct deferred_data *non_const = (struct deferred_data *)data;
 	int rv = 0;
+
+	if (!data->ready) {
+		cprints(CC_HOOK, "Hooks are not ready yet!");
+		k_fatal_halt(0);
+	}
 
 	if (us == -1) {
 		k_delayed_work_cancel(&non_const->delayed_work);
