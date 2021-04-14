@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f82380f_859fffc0",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-14T14:47:24Z",
+      "side": 1,
+      "message": "it seems you could just change this to \"else\"",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "a244f2ff48f9c24727e87cedede8f8c122c26f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
