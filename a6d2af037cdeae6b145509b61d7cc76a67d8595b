@@ -69,6 +69,24 @@
       "message": "Can you also ensure that resistances are calculated when charging from the sub board in suspend or S5/G3?",
       "revId": "a6d2af037cdeae6b145509b61d7cc76a67d8595b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70fb33c_3fe49797",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-04-14T01:59:08Z",
+      "side": 1,
+      "message": "Could we discuss about this on https://partnerissuetracker.corp.google.com/issues/178356507.\nWe are trying to reduce S0iX power consumption on sub-board.",
+      "parentUuid": "b89124a0_b52982b6",
+      "revId": "a6d2af037cdeae6b145509b61d7cc76a67d8595b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
