@@ -94,4 +94,104 @@ struct ecpm_reg {
 	volatile uint8_t ECPM_SCDCR4;
 };
 
+/*
+ * General Control (GCTRL) registers
+ */
+struct gctrl_reg {
+	/* 0x00-0x01: Reserved1 */
+	volatile uint8_t reserved1[2];
+	/* 0x02: Chip Version */
+	volatile uint8_t GCTRL_ECHIPVER;
+	/* 0x03: */
+	volatile uint8_t GCTRL_DBGROS;
+	/* 0x04: Identify Input Register */
+	volatile uint8_t GCTRL_IDR;
+	/* 0x05: Reserved2 */
+	volatile uint8_t reserved2;
+	/* 0x06: Reset Status */
+	volatile uint8_t GCTRL_RSTS;
+	/* 0x07-0x09: Reserved3 */
+	volatile uint8_t reserved3[3];
+	/* 0x0A: Base Address Select */
+	volatile uint8_t GCTRL_BADRSEL;
+	/* 0x0B-0x0C: Reserved4 */
+	volatile uint8_t reserved4[2];
+	/* 0x0D: Special Control 1 */
+	volatile uint8_t GCTRL_SPCTRL1;
+	/* 0x0E-0x0F: Reserved5 */
+	volatile uint8_t reserved5[2];
+	/* 0x10: Reset Control DMM */
+	volatile uint8_t GCTRL_RSTDMMC;
+	/* 0x11: Reset Control 4 */
+	volatile uint8_t GCTRL_RSTC4;
+	/* 0x12-0x1B: Reserved6 */
+	volatile uint8_t reserved6[10];
+	/* 0x1C: Special Control 4 */
+	volatile uint8_t GCTRL_SPCTRL4;
+	/* 0x1D-0x1F: Reserved7 */
+	volatile uint8_t reserved7[3];
+	/* 0x20:  */
+	volatile uint8_t GCTRL_MCCR3;
+	/* 0x21:  */
+	volatile uint8_t GCTRL_RSTC5;
+	/* 0x22-0x2F: Reserved8 */
+	volatile uint8_t reserved8[14];
+	/* 0x30:  */
+	volatile uint8_t GCTRL_MCCR;
+	/* 0x31:  */
+	volatile uint8_t GCTRL_EIDSR;
+	/* 0x32:  */
+	volatile uint8_t GCTRL_PMER1_;
+	/* 0x33:  */
+	volatile uint8_t GCTRL_PMER2_;
+	/* 0x34-0x36: Reserved9 */
+	volatile uint8_t reserved9[3];
+	/* 0x37:  */
+	volatile uint8_t GCTRL_EPLR;
+	/* 0x38-0x40: Reserved10 */
+	volatile uint8_t reserved10[9];
+	/* 0x41:  */
+	volatile uint8_t GCTRL_IVTBAR;
+	/* 0x42-0x43: Reserved11 */
+	volatile uint8_t reserved11[2];
+	/* 0x44:  */
+	volatile uint8_t GCTRL_MCCR2;
+	/* 0x45: Reserved12 */
+	volatile uint8_t reserved12;
+	/* 0x46:  */
+	volatile uint8_t GCTRL_PIN_MUX0;
+	/* 0x47-0x49: Reserved13 */
+	volatile uint8_t reserved13[3];
+	/* 0x4A:  */
+	volatile uint8_t GCTRL_SSCR;
+	/* 0x4B:  */
+	volatile uint8_t GCTRL_ETWDUARTCR;
+	/* 0x4C:  */
+	volatile uint8_t GCTRL_WMCR;
+	/* 0x4D-0x52: Reserved14 */
+	volatile uint8_t reserved14[6];
+	/* 0x53:  */
+	volatile uint8_t GCTRL_H2ROFSR;
+	/* 0x54-0x5C: Reserved15 */
+	volatile uint8_t reserved15[9];
+	/* 0x5D:  */
+	volatile uint8_t GCTRL_RVILMCR0;
+	/* 0x5E-0x84: Reserved16 */
+	volatile uint8_t reserved16[39];
+	/* 0x85: Chip ID Byte 1 */
+	volatile uint8_t GCTRL_ECHIPID1;
+	/* 0x86: Chip ID Byte 2 */
+	volatile uint8_t GCTRL_ECHIPID2;
+	/* 0x87: Chip ID Byte 3 */
+	volatile uint8_t GCTRL_ECHIPID3;
+};
+
+/* GCTRL register fields */
+#define IT8XXX2_GCTRL_VCCDO		(BIT(7) | BIT(6))
+#define IT8XXX2_GCTRL_LRS		(BIT(1) | BIT(0))
+#define IT8XXX2_GCTRL_LRSIWR		BIT(2)
+#define IT8XXX2_GCTRL_LRSIPWRSWTR	BIT(1)
+#define IT8XXX2_GCTRL_LRSIPGWR		BIT(0)
+
+
 #endif /* _ITE_IT8XXX2_REG_DEF_CROS_H */
