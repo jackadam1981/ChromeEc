@@ -39,6 +39,30 @@
       },
       "revId": "69658b0864a81f001ea9624c9b54ef6e2462ac48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7391851_d7238196",
+        "filename": "baseboard/dedede/cbi_ssfc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-14T03:16:35Z",
+      "side": 1,
+      "message": "Thank you, Keith.\nI remove baseboard/dedede/cbi_ssfc.h change, and will create another CL to correct it.",
+      "parentUuid": "9406222c_724c10a1",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "69658b0864a81f001ea9624c9b54ef6e2462ac48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
