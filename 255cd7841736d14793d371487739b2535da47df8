@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb2075bf_cd614fd3",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-14T07:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d320a01_43f7b722",
+      "range": {
+        "startLine": 29,
+        "startChar": 40,
+        "endLine": 29,
+        "endChar": 68
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a75f3d1_1f68221a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ca9dfb_dc9dfc95",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-14T07:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a75f3d1_1f68221a",
+      "range": {
+        "startLine": 173,
+        "startChar": 43,
+        "endLine": 173,
+        "endChar": 44
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf637dd2_64c6043d",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-13T14:40:07Z",
       "side": 1,
       "message": "SYSTEM_DT_NODE_HIBERNATE_CONFIG",
+      "range": {
+        "startLine": 192,
+        "startChar": 19,
+        "endLine": 192,
+        "endChar": 47
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f0cafbf_a59ded09",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-14T07:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf637dd2_64c6043d",
       "range": {
         "startLine": 192,
         "startChar": 19,
@@ -95,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "82d6d468_35345643",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-14T07:00:40Z",
+      "side": 1,
+      "message": "We only checked the output assembly code which doesn\u0027t use the stack. Doesn\u0027t guarantee the stack at the last 32k block. So we wrote the function as small as we can to avoid the local variable use the stack.",
+      "parentUuid": "9f0fd5b0_74b9ce5a",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea614cc7_794bbf47",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 2
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c67ce065_e47d3604",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-14T07:00:40Z",
+      "side": 1,
+      "message": "Data access (read or write) to the BBRM must be byte-wide.",
+      "parentUuid": "ea614cc7_794bbf47",
+      "range": {
+        "startLine": 223,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 19
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "37eb87e8_367850ae",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 2
@@ -129,6 +249,30 @@
       "writtenOn": "2021-04-13T14:40:07Z",
       "side": 1,
       "message": "these aren\u0027t necessary, since the type on the LHS is uint8_t",
+      "range": {
+        "startLine": 241,
+        "startChar": 50,
+        "endLine": 241,
+        "endChar": 56
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afc1a35d_94318780",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-14T07:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37eb87e8_367850ae",
       "range": {
         "startLine": 241,
         "startChar": 50,
@@ -186,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26bebd63_545dca78",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-14T07:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0160d55_1daf6d85",
+      "range": {
+        "startLine": 244,
+        "startChar": 19,
+        "endLine": 244,
+        "endChar": 20
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46999d52_17aa5094",
@@ -211,6 +379,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7eef3ab6_4ba6534c",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-14T07:00:40Z",
+      "side": 1,
+      "message": "For the PSL hibernation, ec doesn\u0027t have power when enter hibernation so this shouldn\u0027t influence the PSL hibernation power consumption.",
+      "parentUuid": "46999d52_17aa5094",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 43
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23ff225c_6f4787ca",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 2
@@ -222,6 +414,30 @@
       "writtenOn": "2021-04-13T14:40:07Z",
       "side": 1,
       "message": "/",
+      "range": {
+        "startLine": 410,
+        "startChar": 10,
+        "endLine": 410,
+        "endChar": 11
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75a4030d_5287a2d6",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-14T07:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ff225c_6f4787ca",
       "range": {
         "startLine": 410,
         "startChar": 10,
