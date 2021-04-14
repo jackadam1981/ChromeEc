@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602974a3_fd108f56",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1129199
+      },
+      "writtenOn": "2021-04-14T10:54:37Z",
+      "side": 1,
+      "message": "Just round the closest integer instead?\n\ndpi_x !\u003d (254*CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X + (CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X/2)) /\n\t\t\t\tCONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X\n\nYou could create a macro if you want:\n#define DIV_ROUND(x, y) ((x+y/2)/y)\n\n(no need to bother with negative number logic -- see https://elixir.bootlin.com/linux/latest/source/include/linux/math.h#L80 for a fully working macro)",
+      "revId": "cd0a80e6d02a65ed4da4e3a99c5e1d1716c5d42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
