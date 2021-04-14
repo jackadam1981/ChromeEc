@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c633468b_56b0a8e0",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-14T03:46:33Z",
+      "side": 1,
+      "message": "I think we should add IS_ENABLED(CONFIG_OCPC) here as well as I believe the only reason we (now) have the ADC forced enabled is for the measurements. But actually thinking about this some more, we could save more power by disabling it on port 0 as well when nothing is plugged in (HOOK_USB_PD_DISCONNECT).",
+      "revId": "807a46ea8ba0df3b8ca532ab1f3c7786c642a748",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
