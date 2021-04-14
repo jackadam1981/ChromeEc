@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d6eff2d_0a567597",
+        "filename": "board/baklava/board.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-14T17:15:58Z",
+      "side": 1,
+      "message": "Should this be overridable?  It looks like each board is just implementing its own function without a baseboard default",
+      "revId": "4d3f4f6c5847b67d2e1097b776408511135f5d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff6b900_72943e21",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-14T17:15:58Z",
+      "side": 1,
+      "message": "Did the upload hooks not scold you for words on the first line of a multi-line comment?",
+      "revId": "4d3f4f6c5847b67d2e1097b776408511135f5d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
