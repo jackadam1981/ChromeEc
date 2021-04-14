@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b9900fa_8f85bd26",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-14T20:15:09Z",
+      "side": 1,
+      "message": "Thanks.  If we\u0027re actually taking that long, I\u0027ll bring this up with the USB-C task force as a question of what\u0027s best to do (hang the PD task until done versus presuming success and moving on)",
+      "parentUuid": "f7f4bb6e_b5d3b2d9",
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84ee98c8_a0cd7b5f",
         "filename": "driver/usb_mux/amd_fp6.c",
         "patchSetId": 2
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Yes, this is what I found in testing. There\u0027s a risk the mux is truly not ready and we mask the error here.",
       "parentUuid": "84ee98c8_a0cd7b5f",
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43920b9c_fa711e8c",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-14T20:15:09Z",
+      "side": 1,
+      "message": "Well, that\u0027s what the TODO is for then I guess :)",
+      "parentUuid": "9756da77_b9075f34",
       "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -125,6 +161,30 @@
       "side": 1,
       "message": "Reads work in S3, writes do not. This is documented in Chapter 2 intro.",
       "parentUuid": "de1fb8b7_1f716463",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30ce7305_95c05b4e",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-14T20:15:09Z",
+      "side": 1,
+      "message": "Okay, so writes should be checking for CHIPSET_STATE_ON, and reads CHIPSET_STATE_ANY_OFF?",
+      "parentUuid": "eacede16_a27f0237",
       "range": {
         "startLine": 133,
         "startChar": 0,
