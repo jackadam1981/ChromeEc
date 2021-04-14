@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8d4865a_318cc25f",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-14T18:55:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4491df89_3cf92a9c",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 1
+      },
+      "revId": "c46f0c899e1dc85fd9defe4cd16d3557be33119f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eefa0a2b_377fa358",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-14T18:34:08Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 1
+      },
+      "revId": "c46f0c899e1dc85fd9defe4cd16d3557be33119f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02e9ea7b_58b693fe",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-14T18:55:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eefa0a2b_377fa358",
       "range": {
         "startLine": 260,
         "startChar": 1,
