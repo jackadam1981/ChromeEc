@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f7f4bb6e_b5d3b2d9",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-14T19:19:28Z",
+      "side": 1,
+      "message": "This is the recommendation in the doc. I\u0027ll go back and check how long it takes in practice.",
+      "parentUuid": "54707121_c1878c9d",
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "84ee98c8_a0cd7b5f",
         "filename": "driver/usb_mux/amd_fp6.c",
         "patchSetId": 2
@@ -37,6 +55,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9756da77_b9075f34",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-14T19:19:28Z",
+      "side": 1,
+      "message": "Yes, this is what I found in testing. There\u0027s a risk the mux is truly not ready and we mask the error here.",
+      "parentUuid": "84ee98c8_a0cd7b5f",
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11cf18b3_ebbc8277",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-14T19:19:28Z",
+      "side": 1,
+      "message": "Should not be checking for port 0 again here.",
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de1fb8b7_1f716463",
         "filename": "driver/usb_mux/amd_fp6.c",
         "patchSetId": 2
@@ -48,6 +101,30 @@
       "writtenOn": "2021-04-14T16:31:34Z",
       "side": 1,
       "message": "Have we found that writes/reads will eventually work in S3/S0i3?  Or should we be waiting to write until we\u0027ve reached S0?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eacede16_a27f0237",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-14T19:19:28Z",
+      "side": 1,
+      "message": "Reads work in S3, writes do not. This is documented in Chapter 2 intro.",
+      "parentUuid": "de1fb8b7_1f716463",
       "range": {
         "startLine": 133,
         "startChar": 0,
