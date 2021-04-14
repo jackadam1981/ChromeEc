@@ -16,6 +16,29 @@
       "message": "Follow keeby baseboard to revise coding style of cbi_ssfc.h of dedede and volteer.",
       "revId": "69658b0864a81f001ea9624c9b54ef6e2462ac48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9406222c_724c10a1",
+        "filename": "baseboard/dedede/cbi_ssfc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-14T00:26:47Z",
+      "side": 1,
+      "message": "This file should be submitted as a separate CL.  If someone needs to cherry-pick just a dedede change, they don\u0027t want to pull in volteer changes.\n\nYou can just remove this file from the CL, it\u0027s not urgent to fix the whitespace.",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "69658b0864a81f001ea9624c9b54ef6e2462ac48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
