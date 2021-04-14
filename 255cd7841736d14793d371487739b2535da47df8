@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9f0fd5b0_74b9ce5a",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-14T00:12:59Z",
+      "side": 1,
+      "message": "What about the stack? Is that guaranteed to be in last 32k block?",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea614cc7_794bbf47",
         "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
         "patchSetId": 2
@@ -134,6 +157,53 @@
         "startChar": 19,
         "endLine": 244,
         "endChar": 20
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0160d55_1daf6d85",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-14T00:12:59Z",
+      "side": 1,
+      "message": "Also you could save the reset flags in a local variable, and then use a common block to write the local variable to BBRAM.\n\n    if (IS_BIT_SET(WTC_PTO))\n        reset_flags \u003d EC_RESET_FLAG_RTC_ALARM;\n    else\n        reset_flags \u003d EC_ReSET_FLAG_WAKE_PIN;\n    *saved_reset_flags[0] |\u003d ...",
+      "parentUuid": "feb235bc_82e56d68",
+      "range": {
+        "startLine": 244,
+        "startChar": 19,
+        "endLine": 244,
+        "endChar": 20
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46999d52_17aa5094",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-14T00:12:59Z",
+      "side": 1,
+      "message": "The chip/npcx/system.c driver does this for both PSL and RAM block hibernate modes.  Should this be moved into cros_system_npcx_hibernate()?",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 43
       },
       "revId": "255cd7841736d14793d371487739b2535da47df8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
