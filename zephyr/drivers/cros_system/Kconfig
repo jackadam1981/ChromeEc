@@ -24,3 +24,11 @@ config CROS_SYSTEM_NPCX_INIT_PRIORITY
 	  higher priority than CONFIG_SYSTEM_PRE_INIT_PRIORITY.
 
 endif # CROS_SYSTEM_NPCX
+
+config CROS_SYSTEM_IT8XXX2
+	bool "ITE IT8XXX2 cros system driver"
+	depends on SOC_FAMILY_RISCV_ITE
+	default y
+	help
+	  This option enables the cros system driver for the IT8XXX2 family of
+	  processors.

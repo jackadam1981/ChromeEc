@@ -94,4 +94,96 @@ struct ecpm_reg {
 	volatile uint8_t ECPM_SCDCR4;
 };
 
+/*
+ * General Control (GCTRL) registers
+ */
+struct gctrl_reg {
+	/* 0x00-0x01: Reserved1 */
+	volatile uint8_t reserved1[2];
+	/* 0x02:  */
+	volatile uint8_t GCTRL_ECHIPVER;
+	/* 0x03:  */
+	volatile uint8_t GCTRL_DBGROS;
+	/* 0x04:  */
+	volatile uint8_t GCTRL_IDR;
+	/* 0x05: Reserved2 */
+	volatile uint8_t reserved2;
+	/* 0x06:  */
+	volatile uint8_t GCTRL_RSTS;
+	/* 0x07-0x09:  reserved3 */
+	volatile uint8_t reserved3[3];
+	/* 0x0A:  */
+	volatile uint8_t GCTRL_BADRSEL;
+	/* 0x0B-0x0C:  reserved4 */
+	volatile uint8_t reserved4[2];
+	/* 0x0D:  */
+	volatile uint8_t GCTRL_SPCTRL1;
+	/* 0x0E-0x0F:  reserved5 */
+	volatile uint8_t reserved5[2];
+	/* 0x10:  */
+	volatile uint8_t GCTRL_RSTDMMC;
+	/* 0x11:  */
+	volatile uint8_t GCTRL_RSTC4;
+	/* 0x12-0x1B:  reserved6 */
+	volatile uint8_t reserved6[10];
+	/* 0x1C:  */
+	volatile uint8_t GCTRL_SPCTRL4;
+	/* 0x1D-0x1F:  reserved7 */
+	volatile uint8_t reserved7[3];
+	/* 0x20:  */
+	volatile uint8_t GCTRL_MCCR3;
+	/* 0x21:  */
+	volatile uint8_t GCTRL_RSTC5;
+	/* 0x22-0x2F:  */
+	volatile uint8_t reserved8[14];
+	/* 0x30:  */
+	volatile uint8_t GCTRL_MCCR;
+	/* 0x31:  */
+	volatile uint8_t GCTRL_EIDSR;
+	/* 0x32:  */
+	volatile uint8_t GCTRL_PMER1_;
+	/* 0x33:  */
+	volatile uint8_t GCTRL_PMER2_;
+	/* 0x34-0x36:  */
+	volatile uint8_t reserved9[3];
+	/* 0x37:  */
+	volatile uint8_t GCTRL_EPLR;
+	/* 0x38-0x40:  */
+	volatile uint8_t reserved10[8];
+	/* 0x41:  */
+	volatile uint8_t GCTRL_IVTBAR;
+	/* 0x42-0x43:  */
+	volatile uint8_t reserved11[2];
+	/* 0x44:  */
+	volatile uint8_t GCTRL_MCCR2;
+	/* 0x45:  */
+	volatile uint8_t reserved12;
+	/* 0x46:  */
+	volatile uint8_t GCTRL_PIN_MUX0;
+	/* 0x47-0x49:  */
+	volatile uint8_t reserved13[3];
+	/* 0x4A:  */
+	volatile uint8_t GCTRL_SSCR;
+	/* 0x4B:  */
+	volatile uint8_t GCTRL_ETWDUARTCR;
+	/* 0x4C:  */
+	volatile uint8_t GCTRL_WMCR;
+	/* 0x4D-0x52:  */
+	volatile uint8_t reserved14[6];
+	/* 0x53:  */
+	volatile uint8_t GCTRL_H2ROFSR;
+	/* 0x54-0x5C:  */
+	volatile uint8_t reserved15[9];
+	/* 0x5D:  */
+	volatile uint8_t GCTRL_RVILMCR0;
+	/* 0x5E-0x84:  */
+	volatile uint8_t reserved16[39];
+	/* 0x85:  */
+	volatile uint8_t GCTRL_ECHIPID1;
+	/* 0x86:  */
+	volatile uint8_t GCTRL_ECHIPID2;
+	/* 0x87:  */
+	volatile uint8_t GCTRL_ECHIPID3;
+};
+
 #endif /* _ITE_IT8XXX2_REG_DEF_CROS_H */
