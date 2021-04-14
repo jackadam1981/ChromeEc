@@ -16,6 +16,144 @@
       "message": "Note - when you address comments, please click the \"Done\" button or select the \"Resolved\" checkbox.  Clicking the \"Done\" button automatically adds the \"Done\" response text and selects the \"Resolved\" checkbox.",
       "revId": "5e27e79d544b9d11bddedd971f0b432dc6ee9034",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b2131be_9d4dd68a",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-14T19:31:06Z",
+      "side": 1,
+      "message": "move to for loop",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 7
+      },
+      "revId": "5e27e79d544b9d11bddedd971f0b432dc6ee9034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44b15b52_c5a41f37",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-14T19:31:06Z",
+      "side": 1,
+      "message": "how does this look like when output?\n\nI think log_err will add \\n",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 1
+      },
+      "revId": "5e27e79d544b9d11bddedd971f0b432dc6ee9034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5847dfef_922eee9c",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-14T19:31:06Z",
+      "side": 1,
+      "message": "move to for loop",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 7
+      },
+      "revId": "5e27e79d544b9d11bddedd971f0b432dc6ee9034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "539d903a_45b87ee8",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-14T19:31:06Z",
+      "side": 1,
+      "message": "use braces around the body of this loop",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 57
+      },
+      "revId": "5e27e79d544b9d11bddedd971f0b432dc6ee9034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e149d72d_b506df30",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-14T19:31:06Z",
+      "side": 1,
+      "message": "the return type of this function is void.\n\ndoes this code even compile?",
+      "range": {
+        "startLine": 188,
+        "startChar": 10,
+        "endLine": 188,
+        "endChar": 41
+      },
+      "revId": "5e27e79d544b9d11bddedd971f0b432dc6ee9034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da1a6136_6a4440b7",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-14T19:31:06Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 218,
+        "startChar": 9,
+        "endLine": 218,
+        "endChar": 33
+      },
+      "revId": "5e27e79d544b9d11bddedd971f0b432dc6ee9034",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
