@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e75ad811_cebbce7f",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-14T19:30:39Z",
+      "side": 1,
+      "message": "Ugh, forgot to commit....",
+      "parentUuid": "cdfed88d_6d1e84a4",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 1
+      },
+      "revId": "c46f0c899e1dc85fd9defe4cd16d3557be33119f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eefa0a2b_377fa358",
