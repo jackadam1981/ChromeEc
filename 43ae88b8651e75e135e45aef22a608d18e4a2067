@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa282da0_7de27aa5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c41e9f0f_2591504b",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 38
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "429d368d_4815f0eb",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-12T15:08:20Z",
       "side": 1,
       "message": "host interface",
+      "range": {
+        "startLine": 9,
+        "startChar": 8,
+        "endLine": 9,
+        "endChar": 13
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87e088c3_25775219",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "429d368d_4815f0eb",
       "range": {
         "startLine": 9,
         "startChar": 8,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c0eaaaf_42afb2ec",
+        "filename": "zephyr/drivers/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "This CMakeLists.txt is removed.",
+      "parentUuid": "f85b8057_3974a551",
+      "range": {
+        "startLine": 8,
+        "startChar": 22,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "35dfff09_5841df86",
         "filename": "zephyr/drivers/Kconfig",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-12T15:08:20Z",
       "side": 1,
       "message": "shi",
+      "range": {
+        "startLine": 8,
+        "startChar": 14,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3efc99_1908c972",
+        "filename": "zephyr/drivers/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "This Kconfig file is removed.",
+      "parentUuid": "35dfff09_5841df86",
       "range": {
         "startLine": 8,
         "startChar": 14,
@@ -118,6 +214,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a605f641_8bb4cbaf",
+        "filename": "zephyr/drivers/cros_spi_slv/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bca81888_f92cbe30",
+      "range": {
+        "startLine": 5,
+        "startChar": 54,
+        "endLine": 5,
+        "endChar": 61
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "207e4df1_a380c35e",
         "filename": "zephyr/drivers/cros_spi_slv/Kconfig",
         "patchSetId": 2
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8e29e77_02df548f",
+        "filename": "zephyr/drivers/cros_spi_slv/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "207e4df1_a380c35e",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "468c6dc7_e648ec9f",
         "filename": "zephyr/drivers/cros_spi_slv/Kconfig",
         "patchSetId": 2
@@ -152,6 +296,30 @@
       "writtenOn": "2021-04-12T15:08:20Z",
       "side": 1,
       "message": "if PLATFORM_EC_HOSTCMD",
+      "range": {
+        "startLine": 8,
+        "startChar": 9,
+        "endLine": 8,
+        "endChar": 10
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86315e82_18a4a607",
+        "filename": "zephyr/drivers/cros_spi_slv/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "468c6dc7_e648ec9f",
       "range": {
         "startLine": 8,
         "startChar": 9,
@@ -210,6 +378,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7a98d9a_85bd84bd",
+        "filename": "zephyr/drivers/cros_spi_slv/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34a308a4_5ba69e81",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09919660_28e298d7",
+        "filename": "zephyr/drivers/cros_spi_slv/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2ab7d42_ea92b585",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d92a1421_e36d2f2e",
         "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
         "patchSetId": 2
@@ -221,6 +437,30 @@
       "writtenOn": "2021-04-12T15:08:20Z",
       "side": 1,
       "message": "shi",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54951252_92bb4ae5",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d92a1421_e36d2f2e",
       "range": {
         "startLine": 17,
         "startChar": 25,
@@ -256,6 +496,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ef524a9_32990119",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a17ed9f_02e8fe9d",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f0fa6b4_a4a1ad8b",
         "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
         "patchSetId": 2
@@ -267,6 +531,30 @@
       "writtenOn": "2021-04-12T15:08:20Z",
       "side": 1,
       "message": "line is underindented ... recommend using clang-format to fix",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 3
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0842c0e_06cd7b65",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f0fa6b4_a4a1ad8b",
       "range": {
         "startLine": 190,
         "startChar": 2,
@@ -302,6 +590,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a67485a_1ae50e21",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35640f39_a6d1d079",
+      "range": {
+        "startLine": 200,
+        "startChar": 32,
+        "endLine": 200,
+        "endChar": 54
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39de6f17_26797940",
         "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
         "patchSetId": 2
@@ -325,6 +637,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2b58c4cb_cf9c71d5",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Add TODO tag.",
+      "parentUuid": "39de6f17_26797940",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 33
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bca7094d_dc445334",
         "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
         "patchSetId": 2
@@ -336,6 +672,30 @@
       "writtenOn": "2021-04-12T15:08:20Z",
       "side": 1,
       "message": "underindented (should algin with parenthesis)",
+      "range": {
+        "startLine": 335,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 2
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e052f50_892fcecf",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-14T07:16:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bca7094d_dc445334",
       "range": {
         "startLine": 335,
         "startChar": 1,
