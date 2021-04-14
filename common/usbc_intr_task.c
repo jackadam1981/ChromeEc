@@ -34,8 +34,10 @@ void schedule_deferred_pd_interrupt(const int port)
 	 * not all the port have pd int task, the pd_int_task_id of port
 	 * that doesn't have pd int task is 0.
 	 */
-	if (pd_int_task_id[port] != 0)
+	if (pd_int_task_id[port] != 0) {
+		ccprints("!!! WU pd int task port: %d !!!", port);
 		task_set_event(pd_int_task_id[port], PD_PROCESS_INTERRUPT);
+	}
 }
 
 static struct {
@@ -102,6 +104,7 @@ void pd_interrupt_handler_task(void *p)
 
 		if ((evt & PD_PROCESS_INTERRUPT) == 0)
 			continue;
+		ccprints("!!! WU event: %x !!!", evt);
 		/*
 		 * While the interrupt signal is asserted; we have more
 		 * work to do. This effectively makes the interrupt a
