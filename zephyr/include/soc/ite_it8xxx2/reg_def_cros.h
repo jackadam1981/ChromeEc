@@ -94,4 +94,54 @@ struct ecpm_reg {
 	volatile uint8_t ECPM_SCDCR4;
 };
 
+/*
+ * General Control (GCTRL) registers
+ */
+struct gctrl_reg {
+	/* 0x00-0x01: Reserved1 */
+	volatile uint8_t reserved1[2];
+	/* 0x02: Chip Version */
+	volatile uint8_t GCTRL_ECHIPVER;
+	/* 0x03-0x05: Reserved2 */
+	volatile uint8_t reserved2[3];
+	/* 0x06: Reset Status */
+	volatile uint8_t GCTRL_RSTS;
+	/* 0x07-0x1B: Reserved3 */
+	volatile uint8_t reserved3[21];
+	/* 0x1C: Special Control 4 */
+	volatile uint8_t GCTRL_SPCTRL4;
+	/* 0x1D-0x1F: Reserved4 */
+	volatile uint8_t reserved4[3];
+	/* 0x20: Memory Controller Configuration 3 */
+	volatile uint8_t GCTRL_MCCR3;
+	/* 0x21: Reset Control 5 */
+	volatile uint8_t GCTRL_RSTC5;
+	/* 0x22-0x2F: Reserved5 */
+	volatile uint8_t reserved5[14];
+	/* 0x30: Memory Controller Configuration */
+	volatile uint8_t GCTRL_MCCR;
+	/* 0x31: Externel ILM/DLM Size */
+	volatile uint8_t GCTRL_EIDSR;
+	/* 0x32-0x36: Reserved6 */
+	volatile uint8_t reserved6[5];
+	/* 0x37: Eflash Protect Lock */
+	volatile uint8_t GCTRL_EPLR;
+	/* 0x38-0x84: Reserved7 */
+	volatile uint8_t reserved7[77];
+	/* 0x85: Chip ID Byte 1 */
+	volatile uint8_t GCTRL_ECHIPID1;
+	/* 0x86: Chip ID Byte 2 */
+	volatile uint8_t GCTRL_ECHIPID2;
+	/* 0x87: Chip ID Byte 3 */
+	volatile uint8_t GCTRL_ECHIPID3;
+};
+
+/* GCTRL register fields */
+#define IT8XXX2_GCTRL_VCCDO		(BIT(7) | BIT(6))
+#define IT8XXX2_GCTRL_LRS		(BIT(1) | BIT(0))
+#define IT8XXX2_GCTRL_LRSIWR		BIT(2)
+#define IT8XXX2_GCTRL_LRSIPWRSWTR	BIT(1)
+#define IT8XXX2_GCTRL_LRSIPGWR		BIT(0)
+
+
 #endif /* _ITE_IT8XXX2_REG_DEF_CROS_H */
