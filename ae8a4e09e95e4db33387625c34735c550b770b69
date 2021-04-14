@@ -142,6 +142,24 @@
       "parentUuid": "1bfd9033_e1ea3d5a",
       "revId": "ae8a4e09e95e4db33387625c34735c550b770b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78ccdb32_8680ffe7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-14T13:19:36Z",
+      "side": 1,
+      "message": "makes sense, thanks feedbacks, will drop this CL and move table back to board..",
+      "parentUuid": "2e102101_399e78db",
+      "revId": "ae8a4e09e95e4db33387625c34735c550b770b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
