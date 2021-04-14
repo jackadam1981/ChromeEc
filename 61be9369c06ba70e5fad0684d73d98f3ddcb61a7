@@ -16,6 +16,24 @@
       "message": "Do you have a clever way to refactor the test without making it hard depend on Zephyr macros?",
       "revId": "61be9369c06ba70e5fad0684d73d98f3ddcb61a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf685a1f_fa82ecfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-04-14T15:24:50Z",
+      "side": 1,
+      "message": "According to docs/unit_test.md document in this repository, new tests or significantly modified tests should be written using Zephyr Ztest API. Since I want to use CBI test in Zephyr, I think it is okay to use Zephyr macros.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/docs/unit_tests.md#writing-unit-tests",
+      "parentUuid": "9c377d32_c24eb99f",
+      "revId": "61be9369c06ba70e5fad0684d73d98f3ddcb61a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
