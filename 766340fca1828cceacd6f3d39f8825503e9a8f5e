@@ -16,6 +16,29 @@
       "message": "Jack, do you mind taking a look at this change. I\u0027m having some issues with the watchdog timer (as you can see here I had to turn it off).",
       "revId": "766340fca1828cceacd6f3d39f8825503e9a8f5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a03538df_bb2e3112",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-14T13:25:54Z",
+      "side": 1,
+      "message": "ECOS doesn\u0027t do this until line 100 below.  Why the difference?",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "766340fca1828cceacd6f3d39f8825503e9a8f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
