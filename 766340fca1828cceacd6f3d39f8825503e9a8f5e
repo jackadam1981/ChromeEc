@@ -39,6 +39,30 @@
       },
       "revId": "766340fca1828cceacd6f3d39f8825503e9a8f5e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d06e9f49_b4938ba5",
+        "filename": "common/vboot/efs2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-14T15:31:58Z",
+      "side": 1,
+      "message": "I\u0027m not sure why ECOS doesn\u0027t do this sooner. In Zephyr\u0027s case I found that there was noise when calling uart_put_raw (line 89) if I didn\u0027t stop the shell before (some times the hash didn\u0027t come through correctly).",
+      "parentUuid": "a03538df_bb2e3112",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 0
+      },
+      "revId": "766340fca1828cceacd6f3d39f8825503e9a8f5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
