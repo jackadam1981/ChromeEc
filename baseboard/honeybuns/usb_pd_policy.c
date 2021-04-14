@@ -118,6 +118,7 @@ int pd_check_vconn_swap(int port)
 void pd_power_supply_reset(int port)
 {
 	int prev_en;
+	//int discharge = 0;
 
 	if (port < 0 || port >= CONFIG_USB_PD_PORT_MAX_COUNT)
 		return;
@@ -128,15 +129,27 @@ void pd_power_supply_reset(int port)
 	ppc_vbus_source_enable(port, 0);
 
 	/* Enable discharge if we were previously sourcing 5V */
-	if (prev_en)
+	if (prev_en) {
+		//discharge = 1;
 		pd_set_vbus_discharge(port, 1);
+	}
 
 	if (port == USB_PD_PORT_HOST) {
+		int mv;
+		int ma;
+		int unused_mv;
+
 		/* Turn off voltage output from buck-boost */
-		mp4245_votlage_out_enable(0);
+		//mp4245_votlage_out_enable(0);
 		/* Reset VBUS voltage to default value (fixed 5V SRC_CAP) */
+		pd_extract_pdo_power(pd_src_host_pdo[0], &ma, &mv,
+				     &unused_mv);
+		mp4245_set_voltage_out(mv);
+		/* Ensure voltage is back to 5V */
 		pd_transition_voltage(1);
 	}
+
+	//board_debug_gpio(TRIGGER_1, 1, discharge ? 40 * MSEC : 20 * MSEC);
 }
 
 int pd_set_power_supply_ready(int port)
@@ -160,6 +173,9 @@ int pd_set_power_supply_ready(int port)
 	return EC_SUCCESS;
 }
 
+#define MP4245_VOLTAGE_WINDOW BIT(2)
+#define MP4245_VOLTAGE_WINDOW_MASK (MP4245_VOLTAGE_WINDOW - 1)
+
 void pd_transition_voltage(int idx)
 {
 	int port = TASK_ID_TO_PD_PORT(task_get_current());
@@ -170,15 +186,20 @@ void pd_transition_voltage(int idx)
 		int vbus_hi;
 		int vbus_lo;
 		int i;
+		int mv_buffer[MP4245_VOLTAGE_WINDOW];
+		int buffer_index = 0;
 
 	/*
 	 * Set the VBUS output voltage and current limit to the values specified
 	 * by the PDO requested by sink. Note that USB PD uses idx = 1 for 1st
 	 * PDO of SRC_CAP which must always be 5V fixed supply.
 	 */
-		board_debug_gpio(TRIGGER_1, 1, 1 * MSEC);
 		pd_extract_pdo_power(pd_src_host_pdo[idx - 1], &ma, &mv,
 				     &unused_mv);
+
+		/* Initialize sample delay buffer */
+		for (i = 0; i < MP4245_VOLTAGE_WINDOW; i++)
+			mv_buffer[i] = 0;
 
 		/* Set VBUS level to value specified in the requested PDO */
 		mp4245_set_voltage_out(mv);
@@ -188,11 +209,30 @@ void pd_transition_voltage(int idx)
 
 		for (i = 0; i < 20; i++) {
 			int rv;
+			int j;
+			int sum = 0;
+			int mv_temp;
 
 			rv =  mp3245_get_vbus(&mv, &ma);
+			mv_buffer[buffer_index] = mv;
+
+			mv_temp = mv;
+			buffer_index = (buffer_index + 1) &
+				MP4245_VOLTAGE_WINDOW_MASK;
+			if (i >= (MP4245_VOLTAGE_WINDOW - 1)) {
+				for (j = 0; j < MP4245_VOLTAGE_WINDOW; j++)
+					sum += mv_buffer[j];
+
+				sum += MP4245_VOLTAGE_WINDOW / 2;
+				mv = sum / MP4245_VOLTAGE_WINDOW;
+			}
+
+			CPRINTS("mp4245: mv = %d, mv_average = %d, iteration = %d",
+				mv_temp, mv, i);
 			if ((rv == EC_SUCCESS) && (mv >= vbus_lo) &&
-			    (mv <= vbus_hi))
+			    (mv <= vbus_hi) && i >= (MP4245_VOLTAGE_WINDOW - 1)) {
 				return;
+			}
 
 			msleep(2);
 		}
