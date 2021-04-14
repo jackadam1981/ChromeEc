@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d46fcb5_d23509a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-14T23:19:52Z",
+      "side": 1,
+      "message": "i think we need to show a bit more functionality here - either\nin this patch or stacked on top of it. the AP needs to\nshut down (not logged in) or suspend (logged in) similar\nto what happens with the EC \"lidclose\" command.",
+      "range": {
+        "startLine": 16,
+        "startChar": 4,
+        "endLine": 16,
+        "endChar": 30
+      },
+      "revId": "6edf80bd5190d60af219389876a6ae703c43e715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
