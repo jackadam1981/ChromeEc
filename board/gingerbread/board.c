@@ -8,6 +8,7 @@
 #include "common.h"
 #include "cros_board_info.h"
 #include "driver/ppc/sn5s330.h"
+#include "driver/ppc/stub.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/stm32gx.h"
 #include "driver/tcpm/tcpci.h"
@@ -195,7 +196,7 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	 * solution for asymmetrical port hardware exists.
 	 */
 	[USB_PD_PORT_DP] = {
-		/* .drv = &ppc_stub_drv */
+		.drv = &ppc_stub_drv
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
