@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da4fbb5_0e94c2a1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-14T16:59:50Z",
+      "side": 1,
+      "message": "Was this needed for tests, or for posix arch support?\n\nWhy would enabling ztest cause the warning?",
+      "range": {
+        "startLine": 9,
+        "startChar": 44,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "e64a35859c612b4cea23aabc4847dbe08a975857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
