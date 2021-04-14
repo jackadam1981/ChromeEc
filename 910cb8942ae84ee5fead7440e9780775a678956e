@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "294b9ea8_4b8bd287",
+        "filename": "board/sklrvp_mchp172x/board.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-14T14:03:13Z",
+      "side": 1,
+      "message": "abandoned CL:2811578;\nmoved spi_devices[] back to board.c - patchset 26;",
+      "parentUuid": "73b1ee62_fd98d63c",
+      "range": {
+        "startLine": 307,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 0
+      },
+      "revId": "910cb8942ae84ee5fead7440e9780775a678956e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4138a966_1bb55d0f",
