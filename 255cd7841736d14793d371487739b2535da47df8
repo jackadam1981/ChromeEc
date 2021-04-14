@@ -189,6 +189,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a7d593f_cb4e5a88",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-14T16:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "82d6d468_35345643",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea614cc7_794bbf47",
@@ -415,6 +439,30 @@
       "side": 1,
       "message": "For the PSL hibernation, ec doesn\u0027t have power when enter hibernation so this shouldn\u0027t influence the PSL hibernation power consumption.",
       "parentUuid": "46999d52_17aa5094",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 43
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2b2fd9_45289b3b",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-14T16:28:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7eef3ab6_4ba6534c",
       "range": {
         "startLine": 292,
         "startChar": 0,
