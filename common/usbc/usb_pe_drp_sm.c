@@ -1485,6 +1485,7 @@ static bool common_src_snk_dpm_requests(int port)
 		return true;
 	} else if (PE_CHK_DPM_REQUEST(port,
 				      DPM_REQUEST_SOP_PRIME_SOFT_RESET_SEND)) {
+		CPRINTS("pe[%d]: sending cable reset", port);
 		pe_set_dpm_curr_request(port,
 			DPM_REQUEST_SOP_PRIME_SOFT_RESET_SEND);
 		pe[port].tx_type = TCPC_TX_SOP_PRIME;
@@ -1766,6 +1767,7 @@ static bool port_try_vconn_swap(int port)
 {
 	if (pe[port].vconn_swap_counter < N_VCONN_SWAP_COUNT) {
 		PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
+		CPRINTS("pd[%d]: try vconn swap", port);
 		set_state_pe(port, get_last_state_pe(port));
 		return true;
 	}
@@ -5179,7 +5181,9 @@ static void pe_vdm_send_request_entry(int port)
 
 	if ((pe[port].tx_type == TCPC_TX_SOP_PRIME ||
 	     pe[port].tx_type == TCPC_TX_SOP_PRIME_PRIME) &&
-	     !tc_is_vconn_src(port)) {
+	    !tc_is_vconn_src(port) && port_discovery_vconn_swap_policy(port,
+	            PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON))) {
+		CPRINTS("pe[%d]: vconn is not src: vdm", port);
 		if (port_try_vconn_swap(port))
 			return;
 	}
@@ -6042,6 +6046,7 @@ static void pe_enter_usb_entry(int port)
 	if ((pe[port].tx_type == TCPC_TX_SOP_PRIME ||
 	     pe[port].tx_type == TCPC_TX_SOP_PRIME_PRIME) &&
 	     !tc_is_vconn_src(port)) {
+		CPRINTS("pe[%d]: vconn is not src: usb", port);
 		if (port_try_vconn_swap(port))
 			return;
 	}
@@ -6507,6 +6512,7 @@ static void pe_vcs_cbl_send_soft_reset_entry(int port)
 		 */
 		if (pe_is_explicit_contract(port)) {
 			/* Return to PE_{SRC,SNK}_Ready state */
+			CPRINTS("pe[%d]: return to ready state 1", port);
 			pe_set_ready_state(port);
 		} else {
 			/*
@@ -6563,6 +6569,7 @@ static void pe_vcs_cbl_send_soft_reset_run(int port)
 	    (msg_check & PE_MSG_DISCARDED)) {
 		if (pe_is_explicit_contract(port)) {
 			/* Return to PE_{SRC,SNK}_Ready state */
+			CPRINTS("pe[%d]: return to ready state 2", port);
 			pe_set_ready_state(port);
 		} else {
 			/*
