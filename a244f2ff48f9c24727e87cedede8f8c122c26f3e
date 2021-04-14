@@ -22,6 +22,53 @@
       },
       "revId": "a244f2ff48f9c24727e87cedede8f8c122c26f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eec6aff8_aa2e09e7",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-14T16:50:38Z",
+      "side": 1,
+      "message": "This is needed, otherwise the zephyr unit tests all generate warnings.  See  CL:2816143.",
+      "parentUuid": "2f82380f_859fffc0",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 18
+      },
+      "revId": "a244f2ff48f9c24727e87cedede8f8c122c26f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b55b452_c9a765e3",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-14T16:50:38Z",
+      "side": 1,
+      "message": "This probably should be irq_lock().",
+      "range": {
+        "startLine": 30,
+        "startChar": 32,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "a244f2ff48f9c24727e87cedede8f8c122c26f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
