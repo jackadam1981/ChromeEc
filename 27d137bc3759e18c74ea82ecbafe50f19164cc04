@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dffac841_0bca9068",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-04-14T10:29:28Z",
+      "side": 1,
+      "message": "ADC of port 0 must be enabled to wake from Z Sleep.\n(https://partnerissuetracker.corp.google.com/issues/180668220)\n\u0027ADC Enable\u0027 can be cleared on Z Sleep if \u0027ADC Enable\u0027 bit of port 0 is cleared on AC-unplug.\nI think we need to modify raa489000_hibernate() to prevent this.",
+      "revId": "27d137bc3759e18c74ea82ecbafe50f19164cc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
