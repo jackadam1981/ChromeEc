@@ -331,6 +331,7 @@ static void baseboard_usb3_manage_vbus(void)
 	 * C2 is attached. When it's attached, this signal will be high. Use
 	 * this level to control PPC VBUS on/off.
 	 */
+	ppc_set_vbus_source_current_limit(USB_PD_PORT_USB3, TYPEC_RP_3A0);
 	ppc_vbus_source_enable(USB_PD_PORT_USB3, level);
 	CPRINTS("C2: State = %s", level ? "Attached.SRC " : "Unattached.SRC");
 }
@@ -352,6 +353,8 @@ int baseboard_config_usbc_usb3_ppc(void)
 	rv = ppc_init(USB_PD_PORT_USB3);
 	if (rv)
 		return rv;
+
+	ppc_set_vbus_source_current_limit(USB_PD_PORT_USB3, TYPEC_RP_3A0);
 
 	baseboard_usb3_manage_vbus();
 
