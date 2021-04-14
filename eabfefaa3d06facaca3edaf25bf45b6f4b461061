@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d55d891f_7ec1a623",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-14T04:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78341339_f7b28414",
+      "range": {
+        "startLine": 589,
+        "startChar": 31,
+        "endLine": 590,
+        "endChar": 32
+      },
+      "revId": "eabfefaa3d06facaca3edaf25bf45b6f4b461061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27f87aa8_bd44502e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-13T20:45:41Z",
       "side": 1,
       "message": "Nit - change to \"help | on | off | demo\"",
+      "range": {
+        "startLine": 742,
+        "startChar": 5,
+        "endLine": 742,
+        "endChar": 19
+      },
+      "revId": "eabfefaa3d06facaca3edaf25bf45b6f4b461061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0182bb54_2532e7ab",
+        "filename": "board/lindar/led.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-14T04:48:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27f87aa8_bd44502e",
       "range": {
         "startLine": 742,
         "startChar": 5,
