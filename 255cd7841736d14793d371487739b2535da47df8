@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fe91564_9f55cda3",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-14T14:39:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c67ce065_e47d3604",
+      "range": {
+        "startLine": 223,
+        "startChar": 12,
+        "endLine": 223,
+        "endChar": 19
+      },
+      "revId": "255cd7841736d14793d371487739b2535da47df8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37eb87e8_367850ae",
