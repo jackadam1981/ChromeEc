@@ -60,6 +60,7 @@
 
 
 #undef CONFIG_USB_MUX_RUNTIME_CONFIG
+#define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
 
 /* USB Type A Features */
 #define USB_PORT_COUNT			1
