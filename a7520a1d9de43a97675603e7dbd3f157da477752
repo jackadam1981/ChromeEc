@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0443fe76_d0851399",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-14T23:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7414ab18_a0f3dd09",
+      "range": {
+        "startLine": 114,
+        "startChar": 2,
+        "endLine": 114,
+        "endChar": 59
+      },
+      "revId": "a7520a1d9de43a97675603e7dbd3f157da477752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24710dd5_2323ba62",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-14T20:14:45Z",
       "side": 1,
       "message": "why an array of 1 element vs just a member on the stack?\n\nwould just be an \u0026event below",
+      "range": {
+        "startLine": 134,
+        "startChar": 21,
+        "endLine": 134,
+        "endChar": 34
+      },
+      "revId": "a7520a1d9de43a97675603e7dbd3f157da477752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6562e97f_9394b60d",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-14T23:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24710dd5_2323ba62",
       "range": {
         "startLine": 134,
         "startChar": 21,
