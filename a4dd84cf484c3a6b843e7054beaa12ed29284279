@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54707121_c1878c9d",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-14T16:31:34Z",
+      "side": 1,
+      "message": "Oh boy, did we find we actually need to wait this long for the mux command to work?",
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84ee98c8_a0cd7b5f",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-14T16:31:34Z",
+      "side": 1,
+      "message": "Is the mux actually working when we ignore the ready bit?   Like, can we flip our cable orientation and display works?",
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1fb8b7_1f716463",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-14T16:31:34Z",
+      "side": 1,
+      "message": "Have we found that writes/reads will eventually work in S3/S0i3?  Or should we be waiting to write until we\u0027ve reached S0?",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
