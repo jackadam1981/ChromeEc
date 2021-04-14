@@ -34,6 +34,24 @@
       "parentUuid": "62cd2091_74ab1363",
       "revId": "b477a90aac5442fe5619b542f76d8bf44c9928c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "990b64cf_342037a1",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3849,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-14T22:32:06Z",
+      "side": 1,
+      "message": "Per OOB discussion, handling events that happen during suspend is a larger issue that is being discussed elsewhere. Until that\u0027s resolved, we probably shouldn\u0027t clear events on resume.",
+      "parentUuid": "9634d848_64800d99",
+      "revId": "b477a90aac5442fe5619b542f76d8bf44c9928c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

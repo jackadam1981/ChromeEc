@@ -159,6 +159,24 @@
       "parentUuid": "8faa09e3_68dcf637",
       "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad84c97_597d0289",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-14T22:32:06Z",
+      "side": 1,
+      "message": "Summarizing OOB discussion with Prashant:\n* The AP clears discovery events after reading them. Thus, although it probably makes sense to clear them when the EC clears discovery data, it should be a no-op. That means that the only window where HR and a discovery bit could be set at the same time is if a Hard Reset happens immediately after a discovery bit is set.\n* Discovery takes about 1.5 s, whereas the AP reacts to EC events in a matter of ms.\n* The linked kernel patchset assumes that if the HR bit is set, a discovery event will be coming later. This will be true if the AP was up at all relevant times.\n* This CL and the kernel CL don\u0027t cover the case where a Hard Reset occurs during S0ix, but they almost certainly would if PD_MCU were a wake event.\n* We should probably just submit this EC CL in its current form. Anything else we might need to do will likely be in the kernel and will likely be a minor tweak in any case. Submitting this unblocks consideration of the kernel patch upstream.",
+      "parentUuid": "4451438e_1d1bdad8",
+      "revId": "7d6270a49176d58671d7742a1013711bd26e5d90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

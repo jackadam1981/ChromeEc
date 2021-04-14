@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e732012_fca96bb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-14T22:32:06Z",
+      "side": 1,
+      "message": "With Prashant\u0027s kernel patch, this seems to fix the issue in my testing. If we need to handle this more elaborately, this EC CL is probably a good basis for future kernel or EC work in this area.",
+      "revId": "3e2e0ea7b9821b67c6c21f4cf6efeb0b43d1ecfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
