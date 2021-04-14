@@ -34,6 +34,24 @@
       "parentUuid": "602974a3_fd108f56",
       "revId": "cd0a80e6d02a65ed4da4e3a99c5e1d1716c5d42f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85816074_05a5b501",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-14T16:37:07Z",
+      "side": 1,
+      "message": "I will rewrite this part to only accept the optimal PHYSICAL_MAX (i.e. minimize the equation ABS(254 * LOGICAL_MAX / PHYSICAL_MAX - dpi_y))",
+      "parentUuid": "b9e0ccc8_bf82089e",
+      "revId": "cd0a80e6d02a65ed4da4e3a99c5e1d1716c5d42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
