@@ -10,6 +10,7 @@
 #include "hwtimer.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "math_util.h"
 #include "sha256.h"
 #include "shared_mem.h"
 #include "task.h"
@@ -398,10 +399,10 @@ static void elan_tp_init(void)
 	 */
 	if (elan_tp_params.max_x != CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X ||
 	    elan_tp_params.max_y != CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y ||
-	    dpi_x != 254*CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X /
-				CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X ||
-	    dpi_y != 254*CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y /
-				CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y) {
+	    ABS(dpi_x - 254 * CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_X /
+				CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_X) > 1 ||
+	    ABS(dpi_y - 254 * CONFIG_USB_HID_TOUCHPAD_LOGICAL_MAX_Y /
+				CONFIG_USB_HID_TOUCHPAD_PHYSICAL_MAX_Y) > 1) {
 		CPRINTS("*** TP mismatch!");
 	}
 #endif
