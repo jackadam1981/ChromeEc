@@ -87,6 +87,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab98b35_53ec7be0",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-14T05:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40fcd691_f769f0ce",
+      "range": {
+        "startLine": 18,
+        "startChar": 24,
+        "endLine": 18,
+        "endChar": 58
+      },
+      "revId": "3f8b76fa753a613b52043057bdeb6c437c08b6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "035c313b_1c68d43e",
@@ -110,6 +134,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb4c06d_2b9826d0",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-14T05:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "035c313b_1c68d43e",
+      "range": {
+        "startLine": 25,
+        "startChar": 7,
+        "endLine": 25,
+        "endChar": 19
+      },
+      "revId": "3f8b76fa753a613b52043057bdeb6c437c08b6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6809315_1fbe85a5",
@@ -123,6 +171,30 @@
       "writtenOn": "2021-03-03T20:08:35Z",
       "side": 1,
       "message": "indentation must align with (",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 1
+      },
+      "revId": "3f8b76fa753a613b52043057bdeb6c437c08b6c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "905515cb_5bf445fc",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-14T05:01:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6809315_1fbe85a5",
       "range": {
         "startLine": 28,
         "startChar": 0,
