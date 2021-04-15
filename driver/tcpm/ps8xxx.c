@@ -611,6 +611,25 @@ static int ps8xxx_enter_low_power_mode(int port)
 }
 #endif
 
+#ifdef CONFIG_USB_PD_FRS_TCPC
+static int ps8xxx_tcpc_fast_role_swap_enable(int port, int enable)
+{
+	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8815) &&
+	    tcpc_config[port].flags & TCPC_FLAGS_FRS_GPIO) {
+		int status;
+
+		status = tcpc_update8(port,
+				      PS8815_P1_REG_RESERVED_F4,
+				      PS8815_P1_REG_RESERVED_F4_FRS_EN,
+				      enable ? MASK_SET : MASK_CLR);
+		if (status != EC_SUCCESS)
+			return status;
+	}
+
+	return tcpci_tcpc_fast_role_swap_enable(port, enable);
+}
+#endif /* CONFIG_USB_PD_FRS_TCPC */
+
 static int ps8xxx_dci_disable(int port)
 {
 	int i;
@@ -686,6 +705,16 @@ static int ps8xxx_tcpm_init(int port)
 	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8815)) {
 		ps8815_transmit_buffer_workaround_check(port);
 		ps8815_disable_rp_detect_workaround_check(port);
+
+		if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC) &&
+		    tcpc_config[port].flags & TCPC_FLAGS_FRS_GPIO) {
+			status = tcpc_update8(port,
+					      PS8815_P1_REG_RESERVED_D1,
+					      PS8815_P1_REG_RESERVED_D1_FRS_EN,
+					      MASK_SET);
+			if (status != EC_SUCCESS)
+				return status;
+		}
 	}
 
 	board_ps8xxx_tcpc_init(port);
@@ -808,6 +837,9 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 	.enter_low_power_mode	= &ps8xxx_enter_low_power_mode,
 #endif
 	.set_bist_test_mode	= &tcpci_set_bist_test_mode,
+#ifdef CONFIG_USB_PD_FRS_TCPC
+	.set_frs_enable         = &ps8xxx_tcpc_fast_role_swap_enable,
+#endif
 };
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
