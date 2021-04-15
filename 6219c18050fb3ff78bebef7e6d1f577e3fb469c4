@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c44135c_34724e1f",
+        "filename": "board/brya/tune_mp2964.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-15T03:45:25Z",
+      "side": 1,
+      "message": "What about just converting this into a proper MP2964 driver? then brya can just check the settings on each powerup (maybe HOOK_INIT after I2C is up)",
+      "revId": "6219c18050fb3ff78bebef7e6d1f577e3fb469c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
