@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8900d28_304b4ef3",
+        "filename": "zephyr/shim/include/gpio/gpio.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-15T20:16:17Z",
+      "side": 1,
+      "message": "What do think about adding a field for gpio_flags_t? This would enable the user to override the default INPUT|PULL_UP setting if desired.\n\nThe one use case I can think of is that the board provides an external pull so the internal pull shouldn\u0027t be enabled - possibly because a pin function was changed between board revisions.\n\nThe alternative is the user could move these specia signal back into the main GPIO list.\n\nIf you think an override is unlikely, the current implementation should be a little smaller.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "e26458f030d99a68d4213608e66be018cdf650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3b54bab_a827a594",
+        "filename": "zephyr/shim/include/gpio/gpio.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-15T20:16:17Z",
+      "side": 1,
+      "message": "See above, the flags could be initialized with something like:\n\n.flags \u003d COND_CODE_1(DT_PHA_HAS_CELL_AT_IDX(flags), \\\n                     DT_GPIO_FLAGS_BY_IDX(flags),  \n                     GPIO_INPUT | GPIO_PULL_UP)",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 3
+      },
+      "revId": "e26458f030d99a68d4213608e66be018cdf650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
