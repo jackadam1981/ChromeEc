@@ -22,6 +22,30 @@
       },
       "revId": "840d0528fb938cf21e7a75f3cbaf7403b38ad9c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4cbdf79_6dc0998c",
+        "filename": "board/baklava/board.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-15T00:05:07Z",
+      "side": 1,
+      "message": "Yeah this was missed. I should have been baseboard_usb3_ . I have fixed it.",
+      "parentUuid": "b4b221a4_f0aa2e0e",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 25
+      },
+      "revId": "840d0528fb938cf21e7a75f3cbaf7403b38ad9c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
