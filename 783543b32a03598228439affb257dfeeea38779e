@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b7345e_ef1504db",
+        "filename": "baseboard/asurada/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-15T06:54:53Z",
+      "side": 0,
+      "message": "There is another CONFIG_KEYBOARD_PROTOCOL_MKBP in line 171, do you really want to keep that?",
+      "revId": "783543b32a03598228439affb257dfeeea38779e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
