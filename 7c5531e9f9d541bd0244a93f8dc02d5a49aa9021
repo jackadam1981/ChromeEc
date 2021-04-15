@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c6a24dd_412349a4",
+        "filename": "driver/mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T20:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "075f11cd_3aab6e57",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df2ee6da_313d7532",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-15T15:19:01Z",
       "side": 1,
       "message": "nit: if there are only 2 register pages, maybe an enum would be easier to read?\ne.g.\n```\nenum reg_page {\nREG_PAGE_0,\nREG_PAGE_1\n};\n```\n\nWDYT?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9529196d_42e1abf9",
+        "filename": "driver/mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T20:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df2ee6da_313d7532",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f8a68c7_b5bcb9e8",
+        "filename": "driver/mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T20:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3b9262f_af79f4e8",
+      "range": {
+        "startLine": 62,
+        "startChar": 10,
+        "endLine": 62,
+        "endChar": 14
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81bb0961_93d4dba0",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-15T15:19:01Z",
       "side": 1,
       "message": "suggestion: does it work on 1 rail at a time? the API might be simpler just taking one set of values at a time",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 1
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70a1ac5b_8ec69bba",
+        "filename": "driver/mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T20:51:51Z",
+      "side": 1,
+      "message": "i\u0027m intentionally steering away from anything that looks like a\ngeneral purpose API given how low level these updates are and what\ntheir system impact might be. in other words, let\u0027s not create\nnew test scenarios.",
+      "parentUuid": "81bb0961_93d4dba0",
       "range": {
         "startLine": 115,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a9e00e_58b1045b",
+        "filename": "driver/mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T20:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0715a0b_70f3421a",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 15
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "681205b4_b90f5c3f",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a70c3f9_b71c9a2c",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T20:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "681205b4_b90f5c3f",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 81
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "277ef7ca_cd376242",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-04-15T19:39:07Z",
       "side": 1,
       "message": "Bools implicitly default to n, so this isn\u0027t needed.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66be8874_e1c3b0b1",
+        "filename": "zephyr/Kconfig.pmic",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T20:51:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "277ef7ca_cd376242",
       "range": {
         "startLine": 20,
         "startChar": 0,
