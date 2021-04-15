@@ -116,3 +116,42 @@ enum adc_channel board_get_vbus_adc(int port)
 	return ADC_VBUS_C0;
 }
 #endif /* CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT */
+
+/* Keyboard scan setting */
+struct keyboard_scan_config keyscan_config = {
+	/* Increase from 50 us, because KSO_02 passes through the H1. */
+	.output_settle_us = 80,
+	/* Other values should be the same as the default configuration. */
+	.debounce_down_us = 9 * MSEC,
+	.debounce_up_us = 30 * MSEC,
+	.scan_period_us = 3 * MSEC,
+	.min_post_scan_delay_us = 1000,
+	.poll_timeout_us = 100 * MSEC,
+	.actual_key_mask = {
+		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
+	},
+};
+
+static const struct ec_response_keybd_config zdm_new_kb = {
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,
+		TK_REFRESH,
+		TK_FULLSCREEN,
+		TK_OVERVIEW,
+		TK_SNAPSHOT,
+		TK_BRIGHTNESS_DOWN,
+		TK_BRIGHTNESS_UP,
+		TK_VOL_MUTE,
+		TK_VOL_DOWN,
+		TK_VOL_UP,
+	},
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
+};
+
+__override
+const struct ec_response_keybd_config *board_vivaldi_keybd_config(void)
+{
+	return &zdm_new_kb;
+}
