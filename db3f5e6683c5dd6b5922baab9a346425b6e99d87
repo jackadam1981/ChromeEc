@@ -16,6 +16,24 @@
       "message": "add this file here too\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/board/sklrvp_mchp/vif_override.xml\n\n\nI see this error\n  HOSTCC  util/uartupdatetool\nmake: *** No rule to make target \u0027board/sklrvp_mchp1723/vif_override.xml\u0027, needed by \u0027build/sklrvp_mchp1723/sklrvp_mchp1723_vif.xml\u0027.  Stop.\nmake: *** Waiting for unfinished jobs....\n  BUILDLD util/export_taskinfo.so\n",
       "revId": "db3f5e6683c5dd6b5922baab9a346425b6e99d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e17bcb6_99d3b3d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 26
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-15T15:43:19Z",
+      "side": 1,
+      "message": "ack\nadded board/sklrvp_mchp1723/vif_override.xml into this CL, Patchset 27, not sure why this file is requested at this point, certain infra changes.",
+      "parentUuid": "90dd8724_d6d716e7",
+      "revId": "db3f5e6683c5dd6b5922baab9a346425b6e99d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
