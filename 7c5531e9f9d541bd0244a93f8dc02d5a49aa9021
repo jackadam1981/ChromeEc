@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "075f11cd_3aab6e57",
+        "filename": "driver/mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-15T15:19:01Z",
+      "side": 1,
+      "message": "suggestion: separate \u0027send\u0027 and \u0027receive\u0027 buffers would make this more readable",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df2ee6da_313d7532",
+        "filename": "driver/mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-15T15:19:01Z",
+      "side": 1,
+      "message": "nit: if there are only 2 register pages, maybe an enum would be easier to read?\ne.g.\n```\nenum reg_page {\nREG_PAGE_0,\nREG_PAGE_1\n};\n```\n\nWDYT?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 1
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b9262f_af79f4e8",
+        "filename": "driver/mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-15T15:19:01Z",
+      "side": 1,
+      "message": "i think you mean \u0027output value\u0027 here, but it reads like https://en.wikipedia.org/wiki/Oval",
+      "range": {
+        "startLine": 62,
+        "startChar": 10,
+        "endLine": 62,
+        "endChar": 14
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81bb0961_93d4dba0",
+        "filename": "driver/mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-15T15:19:01Z",
+      "side": 1,
+      "message": "suggestion: does it work on 1 rail at a time? the API might be simpler just taking one set of values at a time",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 1
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0715a0b_70f3421a",
+        "filename": "driver/mp2964.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-15T15:19:01Z",
+      "side": 1,
+      "message": "nit: `if (delta)`",
+      "range": {
+        "startLine": 141,
+        "startChar": 1,
+        "endLine": 141,
+        "endChar": 15
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
