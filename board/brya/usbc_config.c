@@ -70,7 +70,8 @@ const struct tcpc_config_t tcpc_config[] = {
 		.drv = &ps8xxx_tcpm_drv,
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			 TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V |
-			 TCPC_FLAGS_CONTROL_VCONN,
+			 TCPC_FLAGS_CONTROL_VCONN |
+			 TCPC_FLAGS_FRS_GPIO,
 	},
 	[USBC_PORT_C2] = {
 		.bus_type = EC_BUS_TYPE_I2C,
@@ -529,3 +530,26 @@ __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
 
 	return TBT_SS_TBT_GEN3;
 }
+
+#ifdef CONFIG_USB_PD_FRS
+__override int board_pd_set_frs_enable(int port, int enable)
+{
+	if (port != USBC_PORT_C1)
+		return EC_SUCCESS;
+
+	switch (ec_cfg_usb_db_type()) {
+	case DB_USB3_PS8815:
+		if (get_board_id() != 1) {
+			/* Only board ID 1 needs GPIO control */
+			return EC_SUCCESS;
+		}
+		break;
+	default:
+		/* Other DBs do not need GPIO control */
+		return EC_SUCCESS;
+	}
+
+	gpio_set_level(GPIO_USB_C1_FRS_EN, enable);
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_USB_PD_FRS */
