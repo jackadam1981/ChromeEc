@@ -52,6 +52,24 @@
       "parentUuid": "b9e0ccc8_bf82089e",
       "revId": "cd0a80e6d02a65ed4da4e3a99c5e1d1716c5d42f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c27d0f_f363d68a",
+        "filename": "driver/touchpad_elan.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-15T08:00:28Z",
+      "side": 1,
+      "message": "Done (I didn\u0027t verify on other devices, those were calculated by hand)",
+      "parentUuid": "85816074_05a5b501",
+      "revId": "cd0a80e6d02a65ed4da4e3a99c5e1d1716c5d42f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
