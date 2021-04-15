@@ -375,3 +375,14 @@ void retimer_interrupt(enum gpio_signal signal)
 	 * TODO(b/179513527): add USB-C support
 	 */
 }
+
+#ifdef CONFIG_USB_PD_FRS
+int board_pd_set_frs_enable(int port, int enable)
+{
+	if (port != USBC_PORT_C1)
+		return EC_SUCCESS;
+
+	gpio_set_level(GPIO_USB_C1_FRS_EN, enable);
+	return EC_SUCCESS;
+}
+#endif /* CONFIG_USB_PD_FRS */
