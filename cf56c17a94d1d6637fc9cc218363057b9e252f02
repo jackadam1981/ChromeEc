@@ -16,6 +16,29 @@
       "message": "Verified that both page 0 and page 1 get updated to the right value. System still boots.",
       "revId": "cf56c17a94d1d6637fc9cc218363057b9e252f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "684f8842_5ebbd0ad",
+        "filename": "board/brya/tune_mp2964.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-15T22:54:07Z",
+      "side": 1,
+      "message": "This happens from the S5-\u003eS3 transition on x86. I\u0027m not sure when the SoC will start communicating with the VR (does it start in S5 or later?), so I wonder if maybe `CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK` and corresponding `chipset_pre_init_callback()` function that may be better suited. WDYT?",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "cf56c17a94d1d6637fc9cc218363057b9e252f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
