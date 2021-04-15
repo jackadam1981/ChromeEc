@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b52d71d2_8e77f2dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-04-15T21:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfff1231_0b1ac251",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "9b1eab95818fdbdfff33254244bb8e8bf65c5478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "89fb4c59_669e407d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -83,6 +107,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75bbf317_fd1ac913",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-04-15T21:03:08Z",
+      "side": 1,
+      "message": "good catch, I did not know about the other names, fixed.",
+      "parentUuid": "30b18d8a_813b64ed",
+      "range": {
+        "startLine": 419,
+        "startChar": 0,
+        "endLine": 422,
+        "endChar": 0
+      },
+      "revId": "9b1eab95818fdbdfff33254244bb8e8bf65c5478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7157bbf_30c35628",
         "filename": "util/flash_ec",
         "patchSetId": 2
@@ -94,6 +142,30 @@
       "writtenOn": "2021-04-15T16:50:43Z",
       "side": 1,
       "message": "This is what I\u0027m understanding what the current patch (and the base) does:\n\nccd_cr50   -\u003e stype \u003d \"ccd\"\nccd_ti50   -\u003e stype \u003d \"ccd\"\nservo_v4_with_ccd_cr50, -\u003e stype \u003d \"servo\"\nservo_v4_with_ccd_ti50, -\u003e stype \u003d \"servo\"\n\nBTW, calling ccd_ec_hard_reset() and servo_ec_hard_reset() looks same.\nCan we just have\n\n        if [[ \"${SERVO_TYPE}\" \u003d~ \"servo\" ]] || servo_is_ccd; then\n\t\tstype\u003d\"servo\"\n\nand remove ccd_ec_hard_reset()?",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 483,
+        "endChar": 3
+      },
+      "revId": "9b1eab95818fdbdfff33254244bb8e8bf65c5478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e445125_91718f48",
+        "filename": "util/flash_ec",
+        "patchSetId": 2
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-04-15T21:03:08Z",
+      "side": 1,
+      "message": "good idea, dropped ccd_ec_hard_reset().",
+      "parentUuid": "a7157bbf_30c35628",
       "range": {
         "startLine": 477,
         "startChar": 0,
