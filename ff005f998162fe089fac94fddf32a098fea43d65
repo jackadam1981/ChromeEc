@@ -46,6 +46,30 @@
       },
       "revId": "ff005f998162fe089fac94fddf32a098fea43d65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddcad355_841c3fd6",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-04-15T22:11:42Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "29a406e7_278e314f",
+      "range": {
+        "startLine": 1430,
+        "startChar": 1,
+        "endLine": 1430,
+        "endChar": 46
+      },
+      "revId": "ff005f998162fe089fac94fddf32a098fea43d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
