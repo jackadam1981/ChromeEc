@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a3d8c22_718e16f1",
+        "filename": "board/baklava/board.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-15T15:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "167bfa1c_33c68e93",
+      "revId": "4d3f4f6c5847b67d2e1097b776408511135f5d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ff6b900_72943e21",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "I had so many CLs in the stack that I had gotten out of the habit of running presubmit checks. I have corrected this comment here and the same one in /quiche/board.c",
       "parentUuid": "1ff6b900_72943e21",
+      "revId": "4d3f4f6c5847b67d2e1097b776408511135f5d79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "681da85f_addbc11a",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 32
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-15T15:27:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fccc1b4b_27a07938",
       "revId": "4d3f4f6c5847b67d2e1097b776408511135f5d79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
