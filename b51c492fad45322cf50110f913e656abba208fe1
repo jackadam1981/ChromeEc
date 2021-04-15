@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fae8b2a_9e753727",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-15T19:27:26Z",
+      "side": 1,
+      "message": "Same as the other CL.  Move to a common location.",
+      "range": {
+        "startLine": 175,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 32
+      },
+      "revId": "b51c492fad45322cf50110f913e656abba208fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e784e5e3_b6d118e3",
+        "filename": "zephyr/Kconfig.accelgyro_bmi",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-15T19:27:26Z",
+      "side": 1,
+      "message": "I believe best practice is add a name to choice configs.  See CL:2818068 for rationale.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "b51c492fad45322cf50110f913e656abba208fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
