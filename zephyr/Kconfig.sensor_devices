@@ -5,23 +5,46 @@
 menu "Sensor Devices"
 
 config PLATFORM_EC_ACCEL_BMA255
-    bool "BMA2X2 Accelerometer Family Driver"
-    help
-      The driver supports Bosch's a triaxial, low-g acceleration sensor.
-      It allows measurements of acceleration in three perpendicular axes.
-      Currently the driver supports BMA253, BMA255, BMA355, BMA280, BMA282,
-      BMA223, BMA254, BMA284, BMA250E, BMA222E, BMC150 BMC056, BMC156.
+	bool "BMA2X2 Accelerometer Family Driver"
+	help
+	  The driver supports Bosch's a triaxial, low-g acceleration sensor.
+	  It allows measurements of acceleration in three perpendicular axes.
+	  Currently the driver supports BMA253, BMA255, BMA355, BMA280, BMA282,
+	  BMA223, BMA254, BMA284, BMA250E, BMA222E, BMC150 BMC056, BMC156.
 
 config PLATFORM_EC_ACCELGYRO_BMI260
-    bool "BMI260 Accelgyrometer Driver"
-    help
-      The driver supports Bosch's BMI260 which is an IMU consisting of
-      a 16-bit tri-axial gyroscope and a 16-bit tri-axial accelerometer.
+	bool "BMI260 Accelgyrometer Driver"
+	help
+	  The driver supports Bosch's BMI260 which is an IMU consisting of
+	  a 16-bit tri-axial gyroscope and a 16-bit tri-axial accelerometer.
 
 config PLATFORM_EC_ALS_TCS3400
-    bool "TCS3400 Ambient Light Senseor Driver"
-    help
-      The driver supports TCS3400 which provides color and
-      IR (red, green, blue, clear and IR) ambient light sensing.
+	bool "TCS3400 Ambient Light Senseor Driver"
+	help
+	  The driver supports TCS3400 which provides color and
+	  IR (red, green, blue, clear and IR) ambient light sensing.
+
+choice
+	prompt "Accelgyro ICM's communication mode"
+	help
+	  When using the ICM drivers, there's the option to communicate with the
+	  chip via several methods. This choice helps improve code size by only
+	  compiling the needed communication channels.
+
+config PLATFORM_EC_ACCELGYRO_ICM_SPI
+	bool "Use SPI communication"
+	help
+	  The ICM chip is using SPI communication. This config value is used to
+	  save on code size as only the SPI communication code will be included
+	  for the ICM chip.
+
+config PLATFORM_EC_ACCELGYRO_ICM_I2C
+	bool "Use I2C communication"
+	help
+	  The ICM chip is using I2C communication. This config value is used to
+	  save on code size as only the I2C communication code will be included
+	  for the ICM chip.
+
+endchoice
 
 endmenu # Sensor devices

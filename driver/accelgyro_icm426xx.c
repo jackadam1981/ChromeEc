@@ -822,46 +822,36 @@ static int icm426xx_init_config(const struct motion_sensor_t *s)
 	 * interferences on the bus.
 	 */
 
-	ret = 0;
-	if (SLAVE_IS_SPI(s->i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
-		icm_field_update8(s, ICM426XX_REG_INTF_CONFIG6,
-			ICM426XX_INTF_CONFIG6_MASK,
-			ICM426XX_I3C_EN | ICM426XX_I3C_SDR_EN |
-			ICM426XX_I3C_DDR_EN);
-		ret = icm_field_update8(s, ICM426XX_REG_INTF_CONFIG4,
-			ICM426XX_I3C_BUS_MODE,
-			ICM426XX_I3C_BUS_MODE);
+#ifdef CONFIG_ACCELGYRO_ICM_SPI
+	icm_field_update8(
+		s, ICM426XX_REG_INTF_CONFIG6, ICM426XX_INTF_CONFIG6_MASK,
+		ICM426XX_I3C_EN | ICM426XX_I3C_SDR_EN | ICM426XX_I3C_DDR_EN);
+	ret = icm_field_update8(s, ICM426XX_REG_INTF_CONFIG4,
+				ICM426XX_I3C_BUS_MODE, ICM426XX_I3C_BUS_MODE);
+#elif defined(CONFIG_ACCELGYRO_ICM_I2C)
+	icm_field_update8(s, ICM426XX_REG_INTF_CONFIG6,
+			  ICM426XX_INTF_CONFIG6_MASK, ICM426XX_I3C_EN);
+	ret = icm_field_update8(s, ICM426XX_REG_INTF_CONFIG4,
+				ICM426XX_I3C_BUS_MODE, 0);
+#else
+#error "UNIMPLEMENTED icm426xx_init_config"
 #endif
-	} else {
-#ifdef I2C_PORT_ACCEL
-		icm_field_update8(s, ICM426XX_REG_INTF_CONFIG6,
-			ICM426XX_INTF_CONFIG6_MASK,
-			ICM426XX_I3C_EN);
-		ret = icm_field_update8(s, ICM426XX_REG_INTF_CONFIG4,
-			ICM426XX_I3C_BUS_MODE,
-			0);
-#endif
-	}
 	if (ret)
 		return ret;
 
-	ret = 0;
-	if (SLAVE_IS_SPI(s->i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
-		ret = icm_field_update8(s, ICM426XX_REG_DRIVE_CONFIG,
-			ICM426XX_DRIVE_CONFIG_MASK,
-			ICM426XX_I2C_SLEW_RATE(ICM426XX_SLEW_RATE_20NS_60NS) |
+#ifdef CONFIG_ACCELGYRO_ICM_SPI
+	ret = icm_field_update8(
+		s, ICM426XX_REG_DRIVE_CONFIG, ICM426XX_DRIVE_CONFIG_MASK,
+		ICM426XX_I2C_SLEW_RATE(ICM426XX_SLEW_RATE_20NS_60NS) |
 			ICM426XX_SPI_SLEW_RATE(ICM426XX_SLEW_RATE_INF_2NS));
-#endif
-	} else {
-#ifdef I2C_PORT_ACCEL
-		ret = icm_field_update8(s, ICM426XX_REG_DRIVE_CONFIG,
-			ICM426XX_DRIVE_CONFIG_MASK,
-			ICM426XX_I2C_SLEW_RATE(ICM426XX_SLEW_RATE_12NS_36NS) |
+#elif defined(CONFIG_ACCELGYRO_ICM_I2C)
+	ret = icm_field_update8(
+		s, ICM426XX_REG_DRIVE_CONFIG, ICM426XX_DRIVE_CONFIG_MASK,
+		ICM426XX_I2C_SLEW_RATE(ICM426XX_SLEW_RATE_12NS_36NS) |
 			ICM426XX_SPI_SLEW_RATE(ICM426XX_SLEW_RATE_12NS_36NS));
+#else
+#error "UNIMPLEMENTED icm426xx_init_config"
 #endif
-	}
 	if (ret)
 		return ret;
 
@@ -871,16 +861,13 @@ static int icm426xx_init_config(const struct motion_sensor_t *s)
 	 * Disable unused serial interface.
 	 */
 	mask = ICM426XX_DATA_CONF_MASK | ICM426XX_UI_SIFS_CFG_MASK;
-	val = 0;
-	if (SLAVE_IS_SPI(s->i2c_spi_addr_flags)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
-		val |= ICM426XX_UI_SIFS_CFG_I2C_DIS;
+#ifdef CONFIG_ACCELGYRO_ICM_SPI
+	val = ICM426XX_UI_SIFS_CFG_I2C_DIS;
+#elif defined(CONFIG_ACCELGYRO_ICM_I2C)
+	val = ICM426XX_UI_SIFS_CFG_SPI_DIS;
+#else
+#error "UNIMPLEMENTED icm426xx_init_config"
 #endif
-	} else {
-#ifdef I2C_PORT_ACCEL
-		val |= ICM426XX_UI_SIFS_CFG_SPI_DIS;
-#endif
-	}
 
 	ret = icm_field_update8(s, ICM426XX_REG_INTF_CONFIG0, mask, val);
 	if (ret)
