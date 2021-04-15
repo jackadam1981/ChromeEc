@@ -16,6 +16,24 @@
       "message": "Every single function is a TCPCI function. Why can\u0027t we just use the TCPCI driver instead?",
       "revId": "faff992afd90f03d85b27c7d9be96baae52d4aa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24d192e_3f51fb0c",
+        "filename": "driver/tcpm/ccgxxf.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-15T22:58:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86059b6b_c0da0b9d",
+      "revId": "faff992afd90f03d85b27c7d9be96baae52d4aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
