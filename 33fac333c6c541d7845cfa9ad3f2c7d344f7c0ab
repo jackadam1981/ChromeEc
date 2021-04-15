@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "61a736d2_9ff22ae5",
         "filename": "driver/accelgyro_bmi_common.c",
@@ -20,10 +21,10 @@
         "endChar": 0
       },
       "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1c768e29_3c659590",
         "filename": "driver/accelgyro_bmi_common.c",
@@ -44,10 +45,10 @@
         "endChar": 0
       },
       "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e9e06766_65b47c6c",
         "filename": "driver/accelgyro_bmi_common.c",
@@ -68,10 +69,10 @@
         "endChar": 0
       },
       "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "70bab8b6_df52ac29",
         "filename": "driver/accelgyro_bmi_common.c",
@@ -92,10 +93,10 @@
         "endChar": 0
       },
       "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a5801f67_bdfe670d",
         "filename": "driver/accelgyro_bmi_common.c",
@@ -116,8 +117,31 @@
         "endChar": 0
       },
       "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22299015_5d1f250d",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-15T07:04:42Z",
+      "side": 1,
+      "message": "I\u0027ve uploaded a similar CL to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2826920.\n\nThere are a few key differences, please take a look and we can find the commonality between the two for the best implementation.",
+      "parentUuid": "a5801f67_bdfe670d",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 173,
+        "endChar": 0
+      },
+      "revId": "33fac333c6c541d7845cfa9ad3f2c7d344f7c0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
