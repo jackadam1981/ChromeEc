@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba6f3ff_fc5e2ae6",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-15T16:17:08Z",
+      "side": 1,
+      "message": "This should be cleaned up and converted to a Kconfig and DTS driver.  Filed bug b/185480578.",
+      "range": {
+        "startLine": 1221,
+        "startChar": 1,
+        "endLine": 1222,
+        "endChar": 62
+      },
+      "revId": "ea2446dde899f6cea4268420bbc5f88a41744bc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
