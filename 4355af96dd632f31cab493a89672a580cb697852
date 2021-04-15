@@ -34,6 +34,24 @@
       "parentUuid": "b93c9c2b_5fc41c4c",
       "revId": "4355af96dd632f31cab493a89672a580cb697852",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e781fdd_9a9bd974",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2021-04-15T01:18:23Z",
+      "side": 1,
+      "message": "Thanks for reply,\nwe push a new CL for enable/disable keyboard backlight, so abandon this CL.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2822275",
+      "parentUuid": "7b90087f_0916bd28",
+      "revId": "4355af96dd632f31cab493a89672a580cb697852",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
