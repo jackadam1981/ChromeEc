@@ -58,4 +58,9 @@
 /* Vendor defined registers */
 #define PS8815_P1_REG_HW_REVISION		0xF0
 
+#define PS8815_P1_REG_RESERVED_D1		0xD1
+#define PS8815_P1_REG_RESERVED_D1_FRS_EN	BIT(7)
+#define PS8815_P1_REG_RESERVED_F4		0xF4
+#define PS8815_P1_REG_RESERVED_F4_FRS_EN	BIT(6)
+
 #endif /* defined(__CROS_EC_USB_PD_TCPM_PS8XXX_H) */
