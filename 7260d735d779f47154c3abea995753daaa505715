@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d27e95_3b3e02f0",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T02:13:44Z",
+      "side": 1,
+      "message": "this statement no longer needed?",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 69
+      },
+      "revId": "7260d735d779f47154c3abea995753daaa505715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7054baf_03ce8a6e",
+        "filename": "baseboard/intelrvp/ite_ec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T02:13:44Z",
+      "side": 1,
+      "message": "this seems a bit of of place since the rest of the patch is\nfocused on supporting a configurable number of TCPCs.",
+      "range": {
+        "startLine": 133,
+        "startChar": 35,
+        "endLine": 133,
+        "endChar": 73
+      },
+      "revId": "7260d735d779f47154c3abea995753daaa505715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
