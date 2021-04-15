@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "087d46c5_ada79d53",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T21:53:55Z",
+      "side": 1,
+      "message": "given that this is a hardware register and the accessor\nmacro uses (volatile uint8_t *...), i\u0027d suggest doing\na single read-modify-write style operation here instead.\n\nsplitting the operation like this means the register is\npotentially in an unintended state for a short period.",
+      "range": {
+        "startLine": 1378,
+        "startChar": 0,
+        "endLine": 1380,
+        "endChar": 0
+      },
+      "revId": "7f13fb97f9c6e565cecb4bb6c2350b98ff5225a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4da0ed53_fa7c3f22",
         "filename": "chip/mchp/registers.h",
         "patchSetId": 8
@@ -36,6 +59,53 @@
         "startChar": 0,
         "endLine": 522,
         "endChar": 46
+      },
+      "revId": "7f13fb97f9c6e565cecb4bb6c2350b98ff5225a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d31b5c70_c6d7f5cc",
+        "filename": "chip/mchp/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T21:53:55Z",
+      "side": 1,
+      "message": "if MAX_FREQ_* is just a 3 bit field as suggested by\nMCHP_ESPI_CAP1_MAX_FREQ_MASK, using the original\nnumber scheme makes more sense here.\n\nalso, CAP1_SINGLE_* is probably just 0, 1, 2\nsince that\u0027s a 2 bit field (MCHP_ESPI_CAP1_IO_MASK)?",
+      "parentUuid": "4da0ed53_fa7c3f22",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 46
+      },
+      "revId": "7f13fb97f9c6e565cecb4bb6c2350b98ff5225a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce1169f_c9d202d5",
+        "filename": "chip/mchp/registers.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-15T21:53:55Z",
+      "side": 1,
+      "message": "MCHP_ESPI_CAP1_IO_BITPOS",
+      "range": {
+        "startLine": 528,
+        "startChar": 43,
+        "endLine": 528,
+        "endChar": 44
       },
       "revId": "7f13fb97f9c6e565cecb4bb6c2350b98ff5225a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
