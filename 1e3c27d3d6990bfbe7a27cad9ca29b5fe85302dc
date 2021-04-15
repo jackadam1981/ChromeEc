@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ce18a86_dd6edfde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-15T15:54:53Z",
+      "side": 1,
+      "message": "getting there",
+      "revId": "1e3c27d3d6990bfbe7a27cad9ca29b5fe85302dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c075180f_d12fcef7",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-15T15:54:53Z",
+      "side": 1,
+      "message": "__aligned is not necessary here",
+      "range": {
+        "startLine": 44,
+        "startChar": 43,
+        "endLine": 44,
+        "endChar": 56
+      },
+      "revId": "1e3c27d3d6990bfbe7a27cad9ca29b5fe85302dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1080bbfc_34cbeaa3",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-15T15:54:53Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 45,
+        "startChar": 44,
+        "endLine": 45,
+        "endChar": 56
+      },
+      "revId": "1e3c27d3d6990bfbe7a27cad9ca29b5fe85302dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8378ba4f_68e46348",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-15T15:54:53Z",
+      "side": 1,
+      "message": "return at end of void function is unnecessary",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 9
+      },
+      "revId": "1e3c27d3d6990bfbe7a27cad9ca29b5fe85302dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
