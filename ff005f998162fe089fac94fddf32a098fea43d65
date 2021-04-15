@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ac7ab03_96f5a83d",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-04-15T21:46:21Z",
+      "side": 0,
+      "message": "nit: \nPerhaps, this should be replaced too:\n    \"if servo_is_ccd; then\"\n\nBTW, this function is for npcx_uut program, and Probably your flash_ec attempts on Brya didn\u0027t run the line 1431 ~ 1432. But this looks like for safety rather than critical, learning from the comment in crrev.com/i/1020159.",
+      "range": {
+        "startLine": 1430,
+        "startChar": 1,
+        "endLine": 1430,
+        "endChar": 46
+      },
+      "revId": "ff005f998162fe089fac94fddf32a098fea43d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
