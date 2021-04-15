@@ -114,6 +114,52 @@
       },
       "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "681205b4_b90f5c3f",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-15T19:39:07Z",
+      "side": 1,
+      "message": "Nit - alpha sort by the config name.",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 81
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "277ef7ca_cd376242",
+        "filename": "zephyr/Kconfig.pmic",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-15T19:39:07Z",
+      "side": 1,
+      "message": "Bools implicitly default to n, so this isn\u0027t needed.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 10
+      },
+      "revId": "7c5531e9f9d541bd0244a93f8dc02d5a49aa9021",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
