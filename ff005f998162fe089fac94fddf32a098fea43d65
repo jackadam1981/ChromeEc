@@ -22,6 +22,30 @@
       },
       "revId": "ff005f998162fe089fac94fddf32a098fea43d65",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29a406e7_278e314f",
+        "filename": "util/flash_ec",
+        "patchSetId": 4
+      },
+      "lineNbr": 1430,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-04-15T21:53:21Z",
+      "side": 0,
+      "message": "this was intentionally left behind, because Ti50 does not yet support\n\ndut-control ccd_keepalive\n\nwhich ends up running \u0027ccdstate\u0027 on the GSC console.\n\nI added a comment to this respect.",
+      "parentUuid": "7ac7ab03_96f5a83d",
+      "range": {
+        "startLine": 1430,
+        "startChar": 1,
+        "endLine": 1430,
+        "endChar": 46
+      },
+      "revId": "ff005f998162fe089fac94fddf32a098fea43d65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
