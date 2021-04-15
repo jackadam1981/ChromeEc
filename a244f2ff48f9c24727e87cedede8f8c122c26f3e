@@ -69,6 +69,30 @@
       },
       "revId": "a244f2ff48f9c24727e87cedede8f8c122c26f3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f11baa2_e304ba9e",
+        "filename": "include/system.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-15T08:23:27Z",
+      "side": 1,
+      "message": "Yeah, irq_lock()(irq.h) will disable the interrupt.",
+      "parentUuid": "6b55b452_c9a765e3",
+      "range": {
+        "startLine": 30,
+        "startChar": 32,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "a244f2ff48f9c24727e87cedede8f8c122c26f3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
