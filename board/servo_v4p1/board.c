@@ -482,6 +482,18 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+/*
+ * GL3590 chip may drive I2C_SDA and I2C_SCL lines for 100ms (max) after it is
+ * released from reset (through gpio de-asserted in main()). In order to avoid
+ * broken I2C transactions, we need to add an extra delay before any activity on
+ * the I2C bus in the system.
+ */
+static void gl3590_delay_on_init(void)
+{
+	udelay(100 * MSEC);
+}
+DECLARE_HOOK(HOOK_INIT, gl3590_delay_on_init, HOOK_PRIO_INIT_I2C - 1);
+
 #ifdef SECTION_IS_RO
 void tick_event(void)
 {
