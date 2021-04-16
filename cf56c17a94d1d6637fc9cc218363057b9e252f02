@@ -39,6 +39,30 @@
       },
       "revId": "cf56c17a94d1d6637fc9cc218363057b9e252f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cbbd55b_7dc3660f",
+        "filename": "board/brya/tune_mp2964.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-16T01:32:44Z",
+      "side": 1,
+      "message": "close but no cigar.\n\ni looked at intel_x86.c and am wondering\nwhy there is no hook_notify(HOOK_CHIPSET_PRE_INIT) in POWER_G3S5\nsimilar to other chipset support code. right around the place\nwhere the optional callback lives seems like a good place\nfor a hook_notify. don\u0027t know the history of that decision.\n\nanyhow, i instantiated chipset_pre_init_callback() but that turns\nout to be too early - the mp2964 is not responsive at that point.",
+      "parentUuid": "684f8842_5ebbd0ad",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "cf56c17a94d1d6637fc9cc218363057b9e252f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
