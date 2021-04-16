@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b18b7f_04dd6f01",
+        "filename": "zephyr/shim/chip/npcx/power_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-16T11:12:19Z",
+      "side": 1,
+      "message": "We found an issue occurred if users print 64-bit value with LOG utilities. But it is OK with printk().",
+      "revId": "cc3625122916db40b7e469f181f8bae1e8346c50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
