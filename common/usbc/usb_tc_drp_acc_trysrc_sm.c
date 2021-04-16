@@ -1722,8 +1722,12 @@ void tc_set_data_role(int port, enum pd_data_role role)
 	prev_data_role = tc[port].data_role;
 	tc[port].data_role = role;
 
-	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		/* Set USB MUX (virtual MUX) disconnect flag */
+		if (prev_data_role != role)
+			usb_mux_set_disconnect_latch_flag(port, true);
 		set_usb_mux_with_current_data_role(port);
+	}
 
 	/*
 	 * Run any board-specific code for role swap (e.g. setting OTG signals
