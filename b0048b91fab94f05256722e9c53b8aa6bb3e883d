@@ -16,6 +16,24 @@
       "message": "No need for hook and functions, you can set it all up statically, see example:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/52cfe6a41f0f81a7e07a485d2770a91dd63b3d3e/baseboard/guybrush/baseboard.c#221\n\nSo just define the thresholds directly in thermal_params[] and then delete the rest (thermal_soc, setup_thermal, board_init).",
       "revId": "b0048b91fab94f05256722e9c53b8aa6bb3e883d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e35b3ec_64d995cb",
+        "filename": "board/careena/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-04-16T00:48:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d460113_19fb2270",
+      "revId": "b0048b91fab94f05256722e9c53b8aa6bb3e883d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
