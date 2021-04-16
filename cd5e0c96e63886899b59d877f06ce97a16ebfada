@@ -33,6 +33,24 @@
       "message": "Since this is a new CONFIG_* option, you\u0027ll need to add it to the Kconfig as well.",
       "revId": "cd5e0c96e63886899b59d877f06ce97a16ebfada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec10bf9f_c900f424",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4307,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-16T16:17:25Z",
+      "side": 1,
+      "message": "Info on add the Kconfig:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/56955400/docs/zephyr_shim.md#303",
+      "parentUuid": "f1123fdd_7d882b43",
+      "revId": "cd5e0c96e63886899b59d877f06ce97a16ebfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
