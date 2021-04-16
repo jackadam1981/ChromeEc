@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f26348c6_7fd309d6",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-16T18:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33635c9b_93da3d41",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 33
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6ff9493_b2d5fd08",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "Yes, because the baseboard already has some of these configs selected. Also, see my comment above. Since this CL is putting the MKBP non-keyboard support into a separate driver of its own, the boards that require only the non-keyboard support should also be switched to using the new config.",
       "parentUuid": "8ee6f40b_464359b6",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 28
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9307c23a_1be10e05",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-16T18:15:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c91f64c_657967a9",
       "range": {
         "startLine": 62,
         "startChar": 0,
@@ -273,6 +321,30 @@
       "writtenOn": "2021-04-07T04:57:32Z",
       "side": 1,
       "message": "All these checks for HAS_TASK_KEYSCAN must be dropped as well. If this driver is now selected without HAS_TASK_KEYSCAN then it must error out. You can add a check at the start of this file:\n\n#ifndef HAS_TASK_KEYSCAN\n#error \"MKBP keyboard driver expects KEYSCAN task to be enabled\"\n#endif",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "2fda9f52aae7a62ca61beed2755458b381b9cd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca3547d_257c85a6",
+        "filename": "common/keyboard_mkbp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-16T18:15:25Z",
+      "side": 1,
+      "message": "addressed in crrev/c/2824044",
+      "parentUuid": "073d0b00_75104cc1",
       "range": {
         "startLine": 34,
         "startChar": 8,
