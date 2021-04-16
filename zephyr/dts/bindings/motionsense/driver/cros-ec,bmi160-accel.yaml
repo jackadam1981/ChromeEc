@@ -2,12 +2,8 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-board: trogdor
-dts-overlays:
-  - gpio.dts
-  - battery.dts
-  - motionsense.dts
-supported-zephyr-versions:
-  - v2.5
-toolchain: coreboot-sdk
-output-type: npcx
+description: motion sense sensor node for BMI160 accel
+
+compatible: "cros-ec,bmi160-accel"
+
+include: bmi160.yaml
