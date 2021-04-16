@@ -142,6 +142,30 @@
       },
       "revId": "9f7830e94b754802873d19e102ac1ab878799fb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f3eca9c_b36077a0",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-16T19:42:31Z",
+      "side": 1,
+      "message": "Not quite - the valid option are combination of multiple flags. \n\nhttps://chromium.googlesource.com/chromiumos/third_party/zephyr/+/33bd4ce0/include/drivers/gpio.h#134\n\n#define GPIO_INT_EDGE_RISING           (GPIO_INT_ENABLE | \\\n\t\t\t\t\tGPIO_INT_EDGE | \\\n\t\t\t\t\tGPIO_INT_HIGH_1)\n...\n#define GPIO_INT_EDGE_TO_ACTIVE        (GPIO_INT_ENABLE | \\\n\t\t\t\t\tGPIO_INT_LEVELS_LOGICAL | \\\n\t\t\t\t\tGPIO_INT_EDGE | \\\n\t\t\t\t\tGPIO_INT_HIGH_1)",
+      "parentUuid": "d3a928d8_a7c6044e",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 58
+      },
+      "revId": "9f7830e94b754802873d19e102ac1ab878799fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
