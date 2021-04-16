@@ -11,6 +11,7 @@
 #include "hooks.h"
 #include "isl9241.h"
 #include "pca9675.h"
+#include "ioexpander.h"
 #include "power/icelake.h"
 #include "sn5s330.h"
 #include "system.h"
@@ -143,6 +144,27 @@ struct usb_mux usb_muxes[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
+const struct bb_usb_control bb_controls[] = {
+	[TYPE_C_PORT_0] = {
+		.retimer_rst_gpio = IOEX_USB_C0_BB_RETIMER_RST,
+		.usb_ls_en_gpio = IOEX_USB_C0_BB_RETIMER_LS_EN,
+	},
+	[TYPE_C_PORT_1] = {
+		.retimer_rst_gpio = IOEX_USB_C1_BB_RETIMER_RST,
+		.usb_ls_en_gpio = IOEX_USB_C1_BB_RETIMER_LS_EN,
+	},
+	[TYPE_C_PORT_2] = {
+		.retimer_rst_gpio = IOEX_USB_C2_BB_RETIMER_RST,
+		.usb_ls_en_gpio = IOEX_USB_C2_BB_RETIMER_LS_EN,
+	},
+	[TYPE_C_PORT_3] = {
+		.retimer_rst_gpio = IOEX_USB_C3_BB_RETIMER_RST,
+		.usb_ls_en_gpio = IOEX_USB_C3_BB_RETIMER_LS_EN,
+	},
+};
+BUILD_ASSERT(ARRAY_SIZE(bb_controls) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+#if 0
 /* Each TCPC have corresponding IO expander */
 const struct pca9675_ioexpander pca9675_iox[] = {
 	[TYPE_C_PORT_0] = {
@@ -171,6 +193,31 @@ const struct pca9675_ioexpander pca9675_iox[] = {
 #endif
 };
 BUILD_ASSERT(ARRAY_SIZE(pca9675_iox) == CONFIG_USB_PD_PORT_MAX_COUNT);
+#else
+struct ioexpander_config_t ioex_config[] = {
+	[IOEX_C0_PCA9675] = {
+		.i2c_host_port = I2C_PORT_TYPEC_0,
+		.i2c_addr_flags = I2C_ADDR_PCA9675_TCPC_AIC_IOEX,
+		.drv = &pca9675_ioexpander_drv,
+	},
+	[IOEX_C1_PCA9675] = {
+		.i2c_host_port = I2C_PORT_TYPEC_1,
+		.i2c_addr_flags = I2C_ADDR_PCA9675_TCPC_AIC_IOEX,
+		.drv = &pca9675_ioexpander_drv,
+	},
+	[IOEX_C2_PCA9675] = {
+		.i2c_host_port = I2C_PORT_TYPEC_2,
+		.i2c_addr_flags = I2C_ADDR_PCA9675_TCPC_AIC_IOEX,
+		.drv = &pca9675_ioexpander_drv,
+	},
+	[IOEX_C3_PCA9675] = {
+		.i2c_host_port = I2C_PORT_TYPEC_3,
+		.i2c_addr_flags = I2C_ADDR_PCA9675_TCPC_AIC_IOEX,
+		.drv = &pca9675_ioexpander_drv,
+	},
+};
+//BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
+#endif
 
 /* Charger Chips */
 const struct charger_config_t chg_chips[] = {
@@ -183,6 +230,7 @@ const struct charger_config_t chg_chips[] = {
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
+#if 0
 	/* Port 0 & 1 and 2 & 3 share same line for over current indication */
 	/* If PD_C2 task is defined, PD_C3 task is assumed to be defined. */
 #if defined(HAS_TASK_PD_C2)
@@ -196,8 +244,9 @@ void board_overcurrent_event(int port, int is_overcurrented)
 		pca9675_update_pins(ioex, TCPC_AIC_IOE_OC, 0);
 	else
 		pca9675_update_pins(ioex, 0, TCPC_AIC_IOE_OC);
+#endif
 }
-
+#if 0
 __override void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 {
 	/* Handle retimer's power domain.*/
@@ -228,9 +277,10 @@ __override void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 				0, TCPC_AIC_IOE_BB_RETIMER_LS_EN);
 	}
 }
-
+#endif
 static void board_connect_c0_sbu_deferred(void)
 {
+#if 0
 	int ccd_intr_level = gpio_get_level(GPIO_CCD_MODE_ODL);
 
 	if (ccd_intr_level) {
@@ -244,6 +294,7 @@ static void board_connect_c0_sbu_deferred(void)
 			TCPC_AIC_IOE_USB_MUX_CNTRL_1,
 			TCPC_AIC_IOE_USB_MUX_CNTRL_0);
 	}
+#endif
 }
 DECLARE_DEFERRED(board_connect_c0_sbu_deferred);
 
@@ -287,7 +338,7 @@ static void tcpc_aic_init(void)
 
 	/* Initialize the IOEXPANDER on TCPC-AIC */
 	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
-		pca9675_init(i);
+//		pca9675_init(i);
 		board_overcurrent_event(i, 0);
 	}
 
@@ -296,11 +347,11 @@ static void tcpc_aic_init(void)
 
 #if defined(HAS_TASK_PD_C2)
 	 /* Only TCPC-0 can do CCD or BSSB, Default set SBU lines to AUX */
-	pca9675_update_pins(TYPE_C_PORT_2, 0,
-		TCPC_AIC_IOE_USB_MUX_CNTRL_1 | TCPC_AIC_IOE_USB_MUX_CNTRL_0);
+//	pca9675_update_pins(TYPE_C_PORT_2, 0,
+//		TCPC_AIC_IOE_USB_MUX_CNTRL_1 | TCPC_AIC_IOE_USB_MUX_CNTRL_0);
 #endif
 }
-DECLARE_HOOK(HOOK_INIT, tcpc_aic_init, HOOK_PRIO_INIT_PCA9675);
+DECLARE_HOOK(HOOK_INIT, tcpc_aic_init, HOOK_PRIO_LAST);
 
 /******************************************************************************/
 /* PWROK signal configuration */

@@ -36,6 +36,7 @@
 
 /* TCPC AIC config */
 /* Support NXP PCA9675 I/O expander. */
+#define CONFIG_IO_EXPANDER
 #define CONFIG_IO_EXPANDER_PCA9675
 #define I2C_ADDR_PCA9675_TCPC_AIC_IOEX	0x21
 #define CONFIG_IO_EXPANDER_PORT_COUNT CONFIG_USB_PD_PORT_MAX_COUNT
@@ -85,6 +86,7 @@
 #define BOARD_FAN_MIN_RPM	3000
 #define BOARD_FAN_MAX_RPM	10000
 
+#if 0
 /*
  * TCPC AIC used on all the ports are identical expect the I2C lines which
  * are on the respective TCPC port's EC I2C line. Hence, I2C address and
@@ -100,6 +102,7 @@
 	~(TCPC_AIC_IOE_BB_RETIMER_RST | TCPC_AIC_IOE_BB_RETIMER_LS_EN | \
 	TCPC_AIC_IOE_USB_MUX_CNTRL_1 | TCPC_AIC_IOE_USB_MUX_CNTRL_0 | \
 	TCPC_AIC_IOE_OC))
+#endif
 
 /* Charger */
 #define CONFIG_CHARGER_ISL9241
@@ -133,6 +136,14 @@ enum adlrvp_charge_ports {
 #if defined(HAS_TASK_PD_C3)
 	TYPE_C_PORT_3,
 #endif
+};
+
+enum ioex_port {
+	IOEX_C0_PCA9675,
+	IOEX_C1_PCA9675,
+	IOEX_C2_PCA9675,
+	IOEX_C3_PCA9675,
+	IOEX_PORT_COUNT,
 };
 
 enum battery_type {
