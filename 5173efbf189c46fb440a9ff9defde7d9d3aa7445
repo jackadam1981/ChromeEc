@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "060554b2_0d4a63bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-04-16T21:10:31Z",
+      "side": 1,
+      "message": "Disconnect latch flag is obsolete after the dark resume feature came it. How about adding usb_mux_set_safe_mode_exit() instead - This too sends a disconnect mode. Also, please add a reference - Because according to the Mux SAS doc, we only send the disconnect if we want switch from an Alt mode to USB mode. ",
+      "revId": "5173efbf189c46fb440a9ff9defde7d9d3aa7445",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
