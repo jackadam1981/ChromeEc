@@ -73,6 +73,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "b1bcc651_8993b76b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-04-16T20:13:33Z",
+      "side": 1,
+      "message": "y",
+      "revId": "d27adff0dc959f6d1ebca36d82b054dfa163259a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1593b7c9_16b82c77",
         "filename": "util/flash_ec",
         "patchSetId": 5
@@ -141,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94ab6a81_374d5fa9",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-04-16T20:13:33Z",
+      "side": 1,
+      "message": "Fair enough, I just verified. This works well :)",
+      "parentUuid": "1ab71be3_51d5a784",
+      "range": {
+        "startLine": 492,
+        "startChar": 2,
+        "endLine": 494,
+        "endChar": 27
+      },
+      "revId": "d27adff0dc959f6d1ebca36d82b054dfa163259a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4884b221_2a3e881c",
@@ -190,6 +231,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f720868_818b50d4",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-04-16T20:13:33Z",
+      "side": 1,
+      "message": "Can you add a TODO(b/link) for this support please",
+      "parentUuid": "dc860746_3cef54f5",
+      "range": {
+        "startLine": 1445,
+        "startChar": 2,
+        "endLine": 1446,
+        "endChar": 33
+      },
+      "revId": "d27adff0dc959f6d1ebca36d82b054dfa163259a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "819ca742_449d8dc2",
         "filename": "util/flash_ec",
         "patchSetId": 5
@@ -225,6 +290,30 @@
       "side": 1,
       "message": "ec_reset function is more involved than just calling dut_control.\n\nuut could be invoked on some other than ccd servo type and that servo might require a more sophisticated reset, which ec_reset() takes care of.",
       "parentUuid": "819ca742_449d8dc2",
+      "range": {
+        "startLine": 1465,
+        "startChar": 2,
+        "endLine": 1467,
+        "endChar": 10
+      },
+      "revId": "d27adff0dc959f6d1ebca36d82b054dfa163259a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6ecc1ca_86f198e5",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1467,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-04-16T20:13:33Z",
+      "side": 1,
+      "message": "That\u0027s fine. It is a little risky changing the flow for everyone else without any automated test coverage.\n\nLet\u0027s just leave it as is.",
+      "parentUuid": "ce891fbf_80896ef6",
       "range": {
         "startLine": 1465,
         "startChar": 2,
