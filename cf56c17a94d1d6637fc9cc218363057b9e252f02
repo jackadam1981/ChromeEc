@@ -63,6 +63,30 @@
       },
       "revId": "cf56c17a94d1d6637fc9cc218363057b9e252f02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af703b16_dbf7059d",
+        "filename": "board/brya/tune_mp2964.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-16T15:16:37Z",
+      "side": 1,
+      "message": "Ah ok, it must be powered by the S5 rails",
+      "parentUuid": "1cbbd55b_7dc3660f",
+      "range": {
+        "startLine": 31,
+        "startChar": 13,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "cf56c17a94d1d6637fc9cc218363057b9e252f02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
