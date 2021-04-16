@@ -16,6 +16,29 @@
       "message": "Current patchset5 submitted to remove lfw file  based on CL:2810884",
       "revId": "b52ded9d98a35de559f959c9b3dca6d115ec8afb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67af4a6b_d8e95e7b",
+        "filename": "board/adlrvpp_mchp1521/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-16T17:04:53Z",
+      "side": 1,
+      "message": "remove this, now its handled in mchp code",
+      "range": {
+        "startLine": 83,
+        "startChar": 1,
+        "endLine": 106,
+        "endChar": 1
+      },
+      "revId": "b52ded9d98a35de559f959c9b3dca6d115ec8afb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
