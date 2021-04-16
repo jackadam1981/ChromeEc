@@ -30,4 +30,10 @@
 #include "motionsense_sensors.h"
 #endif
 
+#undef CONFIG_ACCELGYRO_BMI160_INT_EVENT
+#ifdef CONFIG_PLATFORM_EC_ACCELGYRO_BMI160
+#define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(SENSOR_lid_accel)
+#endif
+
 #endif  /* __BOARD_H */

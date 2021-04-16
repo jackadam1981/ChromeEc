@@ -115,8 +115,9 @@
 			gpios = <&gpioc 6 GPIO_INPUT>;
 			label = "TABLET_MODE_L";
 		};
-		accel_gyro_int_l {
+		gpio_accel_gyro_int_l: accel_gyro_int_l {
 			gpios = <&gpioa 0 GPIO_INPUT>;
+			enum-name = "GPIO_EC_IMU_INT_L";
 			label = "ACCEL_GYRO_INT_L";
 		};
 		da9313_gpio0 {
