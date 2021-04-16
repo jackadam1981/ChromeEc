@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2d92ff85_c4d3f21f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-04-16T18:18:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "50b5068b_ec84a855",
+      "revId": "d27adff0dc959f6d1ebca36d82b054dfa163259a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e0591ef1_26202fe9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -101,6 +119,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1ab71be3_51d5a784",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-04-16T18:18:27Z",
+      "side": 1,
+      "message": "I am not sure about this, see below.",
+      "parentUuid": "cb258259_15c5441b",
+      "range": {
+        "startLine": 492,
+        "startChar": 2,
+        "endLine": 494,
+        "endChar": 27
+      },
+      "revId": "d27adff0dc959f6d1ebca36d82b054dfa163259a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4884b221_2a3e881c",
         "filename": "util/flash_ec",
         "patchSetId": 5
@@ -112,6 +154,30 @@
       "writtenOn": "2021-04-16T16:47:30Z",
       "side": 1,
       "message": "it should. we have the rddkeepalive console command on ti50. What doesn\u0027t work?",
+      "range": {
+        "startLine": 1445,
+        "startChar": 2,
+        "endLine": 1446,
+        "endChar": 33
+      },
+      "revId": "d27adff0dc959f6d1ebca36d82b054dfa163259a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc860746_3cef54f5",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-04-16T18:18:27Z",
+      "side": 1,
+      "message": "it does not yet work, ccd_keepalive option requires GSC supporting \u0027ccdstatus\u0027 command.",
+      "parentUuid": "4884b221_2a3e881c",
       "range": {
         "startLine": 1445,
         "startChar": 2,
@@ -135,6 +201,30 @@
       "writtenOn": "2021-04-16T16:47:30Z",
       "side": 1,
       "message": "instead of putting the special stanza for ti50 needing EC to be in reset first, change these lines to\n\ndut_control ec_reset:on\nec_enable_boot0 \"uut\"\ndut_control ec_reset:on\n\n\n\nHonestly we might be able to just collapse the C2D2 branch and this branch. If C2D2 we just have the extra c2d2_wait_for_h1_power_on_or_reset at the beginning.",
+      "range": {
+        "startLine": 1465,
+        "startChar": 2,
+        "endLine": 1467,
+        "endChar": 10
+      },
+      "revId": "d27adff0dc959f6d1ebca36d82b054dfa163259a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce891fbf_80896ef6",
+        "filename": "util/flash_ec",
+        "patchSetId": 5
+      },
+      "lineNbr": 1467,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-04-16T18:18:27Z",
+      "side": 1,
+      "message": "ec_reset function is more involved than just calling dut_control.\n\nuut could be invoked on some other than ccd servo type and that servo might require a more sophisticated reset, which ec_reset() takes care of.",
+      "parentUuid": "819ca742_449d8dc2",
       "range": {
         "startLine": 1465,
         "startChar": 2,
