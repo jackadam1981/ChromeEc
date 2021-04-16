@@ -118,6 +118,30 @@
       },
       "revId": "9f7830e94b754802873d19e102ac1ab878799fb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3a928d8_a7c6044e",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-16T19:07:16Z",
+      "side": 1,
+      "message": "Got it ... we want one and exactly one of these bits to be set.\n\n(__builtin_popcount(flag) \u003d\u003d 1 \u0026\u0026 (flags \u0026 valid_flags) \u003d\u003d flags)",
+      "parentUuid": "4eadee4c_bab79b71",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 58
+      },
+      "revId": "9f7830e94b754802873d19e102ac1ab878799fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
