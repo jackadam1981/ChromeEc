@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55e96dd7_6b213eb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-16T15:40:29Z",
+      "side": 1,
+      "message": "Can I get some clarification on this? Would the set of GPIO pins that are \"unused\" not just be all the pins in gpio.dts without \"enum-name\" assigned? That would make this change much simpler.",
+      "revId": "514693783fe4df9f48e722a69c8f4408413310e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
