@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8bbb8f5_a0d6e5ff",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 1383,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-16T19:46:27Z",
+      "side": 1,
+      "message": "nit: remove extra Parentheses\n\n\tMCHP_ESPI_IO_CAP1 \u003d (MCHP_ESPI_IO_CAP1 \u0026\n\t\t\t\t(~(MCHP_ESPI_CAP1_MAX_FREQ_MASK |\n\t\t\t\tMCHP_ESPI_CAP1_MAX_FREQ_MASK)) |\n\t\t\t\t(CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ |\n\t\t\t\t(CONFIG_HOSTCMD_ESPI_EC_MODE\n\t\t\t\t\u003c\u003c MCHP_ESPI_CAP1_IO_BITPOS);",
+      "range": {
+        "startLine": 1378,
+        "startChar": 0,
+        "endLine": 1383,
+        "endChar": 34
+      },
+      "revId": "66eac43c4949f0014ba4338feb11725005a48145",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
