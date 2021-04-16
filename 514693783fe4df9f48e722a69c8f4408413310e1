@@ -16,6 +16,29 @@
       "message": "Can I get some clarification on this? Would the set of GPIO pins that are \"unused\" not just be all the pins in gpio.dts without \"enum-name\" assigned? That would make this change much simpler.",
       "revId": "514693783fe4df9f48e722a69c8f4408413310e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f739360_ccdfbdb3",
+        "filename": "zephyr/dts/bindings/gpio/unused-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-16T16:39:07Z",
+      "side": 1,
+      "message": "is there a way to do this without using any DTS at all?\n\nalso, this should be sent to upstream zephyr to review. It seems like it would be far more useful to the upstream community than just us",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "514693783fe4df9f48e722a69c8f4408413310e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
