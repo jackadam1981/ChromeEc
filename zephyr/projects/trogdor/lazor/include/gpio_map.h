@@ -55,5 +55,6 @@
 	GPIO_INT(GPIO_USB_A0_OC_ODL, GPIO_INT_EDGE_BOTH, usba_oc_interrupt)   \
 	GPIO_INT(GPIO_CCD_MODE_ODL, GPIO_INT_EDGE_FALLING,                    \
 		 board_connect_c0_sbu)
+	GPIO_INT(GPIO_EC_IMU_INT_L, GPIO_INT_EDGE_FALLING, bmi160_interrupt)
 
 #endif /* __ZEPHYR_GPIO_MAP_H */
