@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf83eb87_6174b0b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-16T21:58:11Z",
+      "side": 1,
+      "message": "ACK: PD_PPC is used only by Cypress chip for now. Once we go in depth with the development we can plan to add these. Rest all boards use either only USBC_PPC or combination of USBC_PPC \u0026 PD_PPC.",
+      "parentUuid": "99fce177_011072c2",
+      "revId": "cd5e0c96e63886899b59d877f06ce97a16ebfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1123fdd_7d882b43",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Info on add the Kconfig:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/56955400/docs/zephyr_shim.md#303",
       "parentUuid": "f1123fdd_7d882b43",
+      "revId": "cd5e0c96e63886899b59d877f06ce97a16ebfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c30a3a21_1cf93864",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4307,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-16T21:58:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec10bf9f_c900f424",
       "revId": "cd5e0c96e63886899b59d877f06ce97a16ebfada",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
