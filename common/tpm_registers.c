@@ -436,9 +436,6 @@ void tpm_register_put(uint32_t regaddr, const uint8_t *data, uint32_t data_size)
 {
 	uint32_t i;
 
-	if (reset_in_progress)
-		return;
-
 	CPRINTF("%s(0x%03x, %d,", __func__, regaddr, data_size);
 	for (i = 0; i < data_size && i < 4; i++)
 		CPRINTF(" %02x", data[i]);
@@ -515,10 +512,13 @@ void tpm_register_get(uint32_t regaddr, uint8_t *dest, uint32_t data_size)
 	static uint32_t last_sts;
 	static uint32_t checked_sts;
 
+	reset_in_progress = 0;
+
 	if (regaddr != TPM_STS) {
 		CPRINTF("%s(0x%06x, %d)\n", __func__, regaddr, data_size);
 		checked_sts = 0;
 	}
+
 	switch (regaddr) {
 	case TPM_DID_VID:
 		copy_bytes(dest, data_size, (GOOGLE_DID << 16) | GOOGLE_VID);
@@ -898,8 +898,6 @@ static void tpm_reset_now(int wipe_first)
 	 * do not stay disabled for more than 3 seconds.
 	 */
 	hook_call_deferred(&reinstate_nvmem_commits_data, 3 * SECOND);
-
-	reset_in_progress = 0;
 
 	if_start();
 }
