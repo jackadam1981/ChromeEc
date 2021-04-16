@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99fce177_011072c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-16T06:40:11Z",
+      "side": 1,
+      "message": "You should also check all uses of CONFIG_USBC_PPC to make sure also handle PD_PPC now.\n\nFor example, usb_charger.c has some macros for checking if 5V sourcing is enabled.",
+      "revId": "cd5e0c96e63886899b59d877f06ce97a16ebfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1123fdd_7d882b43",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4307,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-16T06:40:11Z",
+      "side": 1,
+      "message": "Since this is a new CONFIG_* option, you\u0027ll need to add it to the Kconfig as well.",
+      "revId": "cd5e0c96e63886899b59d877f06ce97a16ebfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
