@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6dec44f_3d769481",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-16T17:17:14Z",
+      "side": 1,
+      "message": "I saw times as low as 250us and as high as 70ms. Changing back to 100ms.",
+      "parentUuid": "4b9900fa_8f85bd26",
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84ee98c8_a0cd7b5f",
@@ -185,6 +203,30 @@
       "side": 1,
       "message": "Okay, so writes should be checking for CHIPSET_STATE_ON, and reads CHIPSET_STATE_ANY_OFF?",
       "parentUuid": "eacede16_a27f0237",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "a4dd84cf484c3a6b843e7054beaa12ed29284279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c61ea36d_d60d7185",
+        "filename": "driver/usb_mux/amd_fp6.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-16T17:17:14Z",
+      "side": 1,
+      "message": "Reads work in S5 too. So writes check for CHIPSET_STATE_ON and reads check for !CHIPSET_STATE_HARD_OFF.",
+      "parentUuid": "30ce7305_95c05b4e",
       "range": {
         "startLine": 133,
         "startChar": 0,
