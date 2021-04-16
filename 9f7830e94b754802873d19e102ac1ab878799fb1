@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ba9cfe8_38329473",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-16T16:13:40Z",
+      "side": 1,
+      "message": "#define VALID_GPIO_FLAGS \u003d (GPIO_INT_EDGE_RISING | ... | ...)\nBUILD_ASSERT((f \u0026 VALID_GPIO_FLAGS) \u003d\u003d f)",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 58
+      },
+      "revId": "9f7830e94b754802873d19e102ac1ab878799fb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
