@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8db46833_68bf868a",
+        "filename": "baseboard/volteer/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-04-16T05:33:05Z",
+      "side": 1,
+      "message": "update to Set3",
+      "parentUuid": "1d62c4c2_793d0442",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "7dfce1d9562e513023c74e3474317e52f021f282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ff56b31_afb66c19",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2a228e2_3833528e",
+        "filename": "baseboard/volteer/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-04-16T05:33:05Z",
+      "side": 1,
+      "message": "update to Set3",
+      "parentUuid": "2ff56b31_afb66c19",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "7dfce1d9562e513023c74e3474317e52f021f282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac4b00c6_8f8b6a0b",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-15T21:00:54Z",
       "side": 1,
       "message": "Change these names in the same CL to include LID in the name.\n\nenum ec_ssfc_lid_sensor {\n\tSSFC_SENSOR_LID_DEFAULT \u003d 0,\n\tSSFC_SENSOR_LID_BMA255 \u003d 1,\n\tSSFC_SENSOR_LID_KX022 \u003d 2",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "7dfce1d9562e513023c74e3474317e52f021f282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92f2b472_9388c35b",
+        "filename": "baseboard/volteer/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-04-16T05:33:05Z",
+      "side": 1,
+      "message": "update to Set3",
+      "parentUuid": "ac4b00c6_8f8b6a0b",
       "range": {
         "startLine": 30,
         "startChar": 0,
