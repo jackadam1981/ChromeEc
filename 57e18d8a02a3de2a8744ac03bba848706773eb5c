@@ -46,6 +46,30 @@
       },
       "revId": "57e18d8a02a3de2a8744ac03bba848706773eb5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00428454_c49a5e07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-04-19T06:38:37Z",
+      "side": 1,
+      "message": "Do you know which board_id will need this fix? There are 3 board_id you need to consider, ie: board_id \u003d 1 , 2 and 3.",
+      "parentUuid": "18015d17_2f4fd01b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "57e18d8a02a3de2a8744ac03bba848706773eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
