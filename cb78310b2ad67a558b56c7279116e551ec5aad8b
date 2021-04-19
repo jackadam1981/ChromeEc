@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95f9042_4befc199",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-19T13:23:17Z",
+      "side": 1,
+      "message": "per mchp system engineer feedback, only CHIP_FAMILY_MEC172X chip family supports 66MHz in production, others are 50MHz in max. please help to fix via adding followings by this chance,\n\n#if defined(CHIP_FAMILY_MEC172X)\n#define CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ\t\tMCHP_ESPI_CAP1_MAX_FREQ_66M\n#else\n#define CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ\t\tMCHP_ESPI_CAP1_MAX_FREQ_50M\n#endif",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 68
+      },
+      "revId": "cb78310b2ad67a558b56c7279116e551ec5aad8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
