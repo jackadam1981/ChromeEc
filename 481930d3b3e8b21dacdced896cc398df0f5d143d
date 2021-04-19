@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5429d5_79ff676e",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-19T20:56:55Z",
+      "side": 1,
+      "message": "Add __override",
+      "range": {
+        "startLine": 1126,
+        "startChar": 0,
+        "endLine": 1126,
+        "endChar": 3
+      },
+      "revId": "481930d3b3e8b21dacdced896cc398df0f5d143d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ac2522_317b62a9",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-19T20:56:55Z",
+      "side": 1,
+      "message": "Add __override_proto",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 3
+      },
+      "revId": "481930d3b3e8b21dacdced896cc398df0f5d143d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12debe3c_3a2b6dcd",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-19T20:56:55Z",
+      "side": 1,
+      "message": "Adding the weak attribute to the prototype doesn\u0027t do what you want - instead you want the weak attribute put on the default implementation, and use macro __overridable for this.",
+      "range": {
+        "startLine": 352,
+        "startChar": 44,
+        "endLine": 352,
+        "endChar": 65
+      },
+      "revId": "481930d3b3e8b21dacdced896cc398df0f5d143d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6a9bc2f_654a68e3",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-19T20:56:55Z",
+      "side": 1,
+      "message": "Can you move these checks into the NPCX system_is_wake_up_by_rtc_overflow() function?  Both config options are only used for NPCX chips.",
+      "range": {
+        "startLine": 406,
+        "startChar": 5,
+        "endLine": 406,
+        "endChar": 68
+      },
+      "revId": "481930d3b3e8b21dacdced896cc398df0f5d143d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
