@@ -107,6 +107,7 @@ void board_set_switchcap_power(int enable)
 {
 	if (board_has_ln9310())
 		gpio_set_level(GPIO_SWITCHCAP_ON_L, !enable);
+		ln9310_software_enable(enable);
 	else
 		gpio_set_level(GPIO_SWITCHCAP_ON, enable);
 }
