@@ -22,6 +22,30 @@
       },
       "revId": "57e18d8a02a3de2a8744ac03bba848706773eb5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18015d17_2f4fd01b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-19T06:32:05Z",
+      "side": 1,
+      "message": "Lightbar PCBA vendor routed wrong path in last sample and correct it with latest sample.\nOur V9 patch, CL-2814720, base on last sample to rework and test. I have some misunderstanding for the final placement.\nAfter confirmed with EE and check latest lightbar sample last Saturday, the final placement adopt HW circuit\u0027s LED9 and LED10 which connect to KTD2061\u0027s LEDC1 and and LEDC2.\nThis CL can fix it.\nI update commit message and upload HW circuit to b:183826778 for reference.",
+      "parentUuid": "51313cd5_c4623adf",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "57e18d8a02a3de2a8744ac03bba848706773eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
