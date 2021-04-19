@@ -46,6 +46,30 @@
       },
       "revId": "63ee5ea2f3a3cb983ac2f63d0f7588a38ec48c53",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e1d3ae8_69a12cbd",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-19T23:57:51Z",
+      "side": 0,
+      "message": "Got it. Changing it to __display_irq() is reasonable.",
+      "parentUuid": "d96c2004_3b4d99c1",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 18
+      },
+      "revId": "63ee5ea2f3a3cb983ac2f63d0f7588a38ec48c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
