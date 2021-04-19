@@ -119,22 +119,23 @@ static int ln9310_update_startup_seq(void)
 {
 	CPRINTS("LN9310 update startup sequence");
 
-	/* Startup sequence instruction swap */
+	/* Startup sequence instruction swap to hold Cfly 
+	   bottom plate low during startup  */
 	field_update8(LN9310_REG_LION_CTRL,
 		      LN9310_LION_CTRL_MASK,
-		      LN9310_LION_CTRL_UNLOCK);
+		      LN9310_LION_CTRL_UNLOCK_AND_EN_TM);
 
 	field_update8(LN9310_REG_SWAP_CTRL_0,
 		      0xff,
-		      0x3f);
+		      0x52);
 
 	field_update8(LN9310_REG_SWAP_CTRL_1,
 		      0xff,
-		      0x51);
+		      0x54);
 
 	field_update8(LN9310_REG_SWAP_CTRL_2,
 		      0xff,
-		      0x19);
+		      0xCC);
 
 	field_update8(LN9310_REG_SWAP_CTRL_3,
 		      0xff,
@@ -240,7 +241,7 @@ static int ln9310_update_infet(void)
 
 	field_update8(LN9310_REG_LION_CTRL,
 		      LN9310_LION_CTRL_MASK,
-		      LN9310_LION_CTRL_UNLOCK);
+		      LN9310_LION_CTRL_UNLOCK_AND_EN_TM);
 
 	/* Update Infet register settings */
 	field_update8(LN9310_REG_CFG_5,
@@ -268,10 +269,93 @@ static int ln9310_update_infet(void)
 	return EC_SUCCESS;
 }
 
+static int ln9310_precharge_cfly(uint64_t *precharge_timeout)
+{
+	int status = 0;
+	CPRINTS("LN9310 precharge cfly");
+
+	/* Unlock registers and enable test mode */
+	status |= field_update8(LN9310_REG_LION_CTRL,
+			LN9310_LION_CTRL_MASK,
+			LN9310_LION_CTRL_UNLOCK_AND_EN_TM);
+
+	/* disable test mode overrides */
+	status |= field_update8(LN9310_REG_FORCE_SC21_CTRL_2,
+			LN9310_FORCE_SC21_CTRL_2_FORCE_SW_CTRL_REQ_MASK,
+			LN9310_FORCE_SC21_CTRL_2_FORCE_SW_CTRL_REQ_OFF);
+
+	/* Configure test mode target values for precharge ckts.  */
+	status |= field_update8(LN9310_REG_FORCE_SC21_CTRL_1,
+			LN9310_FORCE_SC21_CTRL_1_TM_SC_OUT_CFLY_PRECHARGE_MASK,
+			LN9310_FORCE_SC21_CTRL_1_TM_SC_OUT_CFLY_PRECHARGE_ON);
+
+	/* Force SCOUT precharge/predischarge overrides */
+	status |= field_update8(LN9310_REG_TEST_MODE_CTRL,
+			LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PRECHARGE_MASK |
+			LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PREDISCHARGE_MASK,
+			LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PRECHARGE_ON |
+			LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PREDISCHARGE_ON);
+
+	/* Force enable CFLY precharge overrides */
+	status |= field_update8(LN9310_REG_FORCE_SC21_CTRL_2,
+			LN9310_FORCE_SC21_CTRL_2_FORCE_SW_CTRL_REQ_MASK,
+			LN9310_FORCE_SC21_CTRL_2_FORCE_SW_CTRL_REQ_ON);
+
+	/* delay long enough to ensure CFLY has time to fully precharge */
+	usleep(LN9310_CFLY_PRECHARGE_DELAY);
+
+	/* locking and leaving test mode will stop CFLY precharge */
+	*precharge_timeout = get_time().val + LN9310_CFLY_PRECHARGE_TIMEOUT;
+	status |= field_update8(LN9310_REG_LION_CTRL,
+			LN9310_LION_CTRL_MASK,
+			LN9310_LION_CTRL_LOCK);
+
+	return status;
+}
+
+static int ln9310_precharge_cfly_reset(void)
+{
+	int status = 0;
+	CPRINTS("LN9310 precharge cfly reset");
+
+	/* set known initial state for config bits related to cfly precharge */
+	status |= field_update8(LN9310_REG_LION_CTRL,
+		LN9310_LION_CTRL_MASK,
+		LN9310_LION_CTRL_UNLOCK);
+
+	/* Force off SCOUT precharge/predischarge overrides */
+	status |= field_update8(LN9310_REG_TEST_MODE_CTRL,
+			LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PRECHARGE_MASK |
+			LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PREDISCHARGE_MASK,
+			LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PRECHARGE_OFF |
+			LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PREDISCHARGE_OFF);
+
+	/* disable test mode overrides */
+	status |= field_update8(LN9310_REG_FORCE_SC21_CTRL_2,
+			LN9310_FORCE_SC21_CTRL_2_FORCE_SW_CTRL_REQ_MASK,
+			LN9310_FORCE_SC21_CTRL_2_FORCE_SW_CTRL_REQ_OFF);
+
+	/* disable CFLY and SC_OUT precharge control  */
+	status |= field_update8(LN9310_REG_FORCE_SC21_CTRL_1,
+			LN9310_FORCE_SC21_CTRL_1_TM_SC_OUT_CFLY_PRECHARGE_MASK,
+			LN9310_FORCE_SC21_CTRL_1_TM_SC_OUT_CFLY_PRECHARGE_OFF);
+
+	status |= field_update8(LN9310_REG_LION_CTRL,
+			LN9310_LION_CTRL_MASK,
+			LN9310_LION_CTRL_LOCK);
+
+	return status;
+}
+
 void ln9310_init(void)
 {
-	int status, val;
+	int status;
 	enum battery_cell_type batt;
+
+	/* Make sure initial state of LN9310 is STANDBY (i.e. output is off)  */
+	field_update8(LN9310_REG_STARTUP_CTRL,
+				LN9310_STARTUP_STANDBY_EN,
+				1);
 
 	/* Update INFET configuration  */
 	status = ln9310_update_infet();
@@ -333,20 +417,116 @@ void ln9310_init(void)
 
 	/* Unmask the MODE change interrupt */
 	field_update8(LN9310_REG_INT1_MSK,
-		      LN9310_INT1_MODE,
-		      0);
+			LN9310_INT1_MODE,
+			0);
+}
 
-	/* Dummy clear all interrupts */
-	status = raw_read8(LN9310_REG_INT1, &val);
-	if (status) {
-		CPRINTS("LN9310 reading INT1 failed");
-		return;
+void ln9310_software_enable(int enable)
+{
+	int status, val, retry_count;
+	uint64_t precharge_timeout;
+	bool ln9310_init_completed = false;
+
+	/*
+	 * LN9310 startup requires (nEN=0 AND STANDBY_EN=0) where nEN is a pin
+	 * and STANDBY_EN is a register bit. Previous EC firmware set
+	 * STANDBY_EN=1 in ln9310_init and toggled nEN to startup/shutdown. This
+	 * function implements an alternate software (i.e. controlled by EC
+	 * through I2C commands) startup sequence so one option is to set nEN=1
+	 * and just used ln9310_software_enable to startup/shutdown.
+	 * ln9310_software_enable can also be used in conjunction w/ the nEN pin
+	 * (in case nEN pin is desired as visible signal ) as follows:
+	 *
+	 * Initial battery insertion:
+	 * nEN=1
+	 * ln9310_init() - initial condition is STANDBY_EN=1
+	 *
+	 * Power up LN9310:
+	 * nEN=0 - STANDBY_EN should be 1 so this doesn't trigger startup
+	 * ln9310_software_enable(1) - triggers alternate software-based startup
+	 *
+	 * Power down LN9310:
+	 * nEN=1 - shutdown LN9310 (shutdown seq. does not require modification)
+	 * ln9310_software_enable(0) - reset LN9310 register to state necessary
+	 *                             for subsequent startups
+	 */
+	if (enable) {
+		/*
+		 * Software modification of LN9310 startup sequence w/ retry
+		 * loop.
+		 *
+		 * (1) Clear interrupts
+		 * (2) Precharge Cfly w/ overrides of internal LN9310 signals
+		 * (3) disable overrides -> stop precharging Cfly
+		 * (4.1) if < 100 ms elapsed since (2) -> trigger LN9310 internal
+		 *                                        startup seq. 
+		 * (4.2) else -> abort and optionally retry from step 2
+		 */
+
+		/* Dummy clear all interrupts */
+		status = raw_read8(LN9310_REG_INT1, &val);
+		if (status) {
+			CPRINTS("LN9310 reading INT1 failed");
+			return;
+		}
+		CPRINTS("LN9310 cleared interrupts: 0x%x", val);
+
+		retry_count = 0;
+		while (!ln9310_init_completed && retry_count < LN9310_INIT_RETRY_COUNT) {
+			/* Precharge CFLY before starting up */
+			status = ln9310_precharge_cfly(&precharge_timeout);
+			if (status != EC_SUCCESS) {
+				CPRINTS("LN9310 failed to run Cfly precharge sequence");
+				status = ln9310_precharge_cfly_reset();
+				retry_count++;
+				continue;
+			}
+
+			/*
+			 * Only start the SC if the cfly precharge
+			 * hasn't timed out (i.e. ended too long ago)
+			 */
+			if (get_time().val < precharge_timeout) {
+				/* Clear the STANDBY_EN bit to enable the SC */
+				field_update8(LN9310_REG_STARTUP_CTRL,
+						LN9310_STARTUP_STANDBY_EN,
+						0);
+				if (get_time().val > precharge_timeout ) {
+					/*
+					* if timed out during previous I2C command, abort 
+					* startup attempt
+					*/
+					field_update8(LN9310_REG_STARTUP_CTRL,
+						LN9310_STARTUP_STANDBY_EN,
+						1);
+				} else {
+					/* all other paths should reattempt startup  */
+					ln9310_init_completed = true;
+				}
+			}
+			/* Reset to known state for config bits related to cfly precharge */
+			ln9310_precharge_cfly_reset();
+			retry_count++;
+		}
+
+		if (!ln9310_init_completed) {
+			CPRINTS("LN9310 failed to start after %d retry attempts", 
+					retry_count);
+		}
+	} else {
+		/*
+		 * Internal LN9310 shutdown sequence is ok as is, so just reset
+		 * the state to prepare for subsequent startup sequences.
+		 *
+		 * (1) set STANDBY_EN=1 to be sure the part turns off even if nEN=0
+		 * (2) reset cfly precharge related registers to known initial state
+		 */
+		field_update8(LN9310_REG_STARTUP_CTRL,
+				LN9310_STARTUP_STANDBY_EN,
+				1);
+
+		ln9310_precharge_cfly_reset();
 	}
+	return;
 
-	/* Clear the STANDBY_EN bit */
-	field_update8(LN9310_REG_STARTUP_CTRL,
-		      LN9310_STARTUP_STANDBY_EN,
-		      0);
-
-	CPRINTS("LN9310 cleared interrupts: 0x%x", val);
 }
