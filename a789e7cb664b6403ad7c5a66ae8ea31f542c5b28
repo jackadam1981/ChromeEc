@@ -56,6 +56,30 @@
       },
       "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc4573c_98d2006e",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-19T18:36:27Z",
+      "side": 1,
+      "message": "See this comment: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1568825/17/board/nami/board.c#996",
+      "parentUuid": "06fd548d_05274e32",
+      "range": {
+        "startLine": 549,
+        "startChar": 50,
+        "endLine": 549,
+        "endChar": 60
+      },
+      "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
