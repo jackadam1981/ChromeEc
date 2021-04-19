@@ -92,3 +92,45 @@ static int chip_system_init(const struct device *unused)
 #endif
 SYS_INIT(chip_system_init, PRE_KERNEL_1,
 	 CONFIG_CROS_SYSTEM_NPCX_PRE_INIT_PRIORITY);
+
+
+#undef sys_trace_isr_enter
+
+#undef sys_trace_isr_exit
+
+#undef sys_trace_idle
+
+/* IRQ commands */
+int irq_count[64];
+void sys_trace_isr_enter(void)
+{
+	uint32_t irq;
+	/* read exception number */
+	__asm__ volatile("mrs %0, ipsr \n":"=r"(irq));
+
+	irq_count[irq - 16]++;
+}
+
+void sys_trace_isr_exit(void)
+{
+
+}
+
+void sys_trace_idle(void)
+{
+
+}
+
+static int command_irq(int argc, char **argv)
+{
+	for (int i = 0; i < 64; i++) {
+		if (irq_count[i] != 0) {
+			printk("IRQ %d: %d\n", i,  irq_count[i]);
+		}
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(irq, command_irq,
+			"",
+			"irq counter.");
