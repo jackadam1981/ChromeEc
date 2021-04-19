@@ -295,6 +295,11 @@ flash_fp_mcu_stm32() {
     # Release reset as the SPI bus is now ready
     gpio 1 "${gpio_nrst}"
 
+    # Add delay of 1 ms to consider rise time for gpio_nrst signal
+    if [[ "${PLATFORM_NAME}" == "strongbad" ]]; then
+      sleep 0.001
+    fi
+
     # Print out the actual underlying command we're running and run it
     echo "# ${cmd}"
     ${cmd}
