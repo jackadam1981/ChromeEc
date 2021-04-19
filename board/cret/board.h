@@ -67,7 +67,7 @@
 #define CONFIG_USBC_RETIMER_NB7V904M
 
 /* USB PD */
-#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPM_RAA489000
 
 /* USB defines specific to external TCPCs */

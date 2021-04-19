@@ -500,23 +500,11 @@ const struct charger_config_t chg_chips[] = {
 		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
 		.drv = &isl923x_drv,
 	},
-
-	{
-		.i2c_port = I2C_PORT_SUB_USB_C1,
-		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
-		.drv = &isl923x_drv,
-	},
 };
 
 const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	{
 		.i2c_port = I2C_PORT_USB_C0,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
-		.flags = PI3USB9201_ALWAYS_POWERED,
-	},
-
-	{
-		.i2c_port = I2C_PORT_SUB_USB_C1,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
 		.flags = PI3USB9201_ALWAYS_POWERED,
 	},
@@ -554,24 +542,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.flags = TCPC_FLAGS_TCPCI_REV2_0,
 		.drv = &raa489000_tcpm_drv,
 	},
-
-	{
-		.bus_type = EC_BUS_TYPE_I2C,
-		.i2c_info = {
-			.port = I2C_PORT_SUB_USB_C1,
-			.addr_flags = RAA489000_TCPC0_I2C_FLAGS,
-		},
-		.flags = TCPC_FLAGS_TCPCI_REV2_0,
-		.drv = &raa489000_tcpm_drv,
-	},
 };
 
-const struct usb_mux usbc1_retimer = {
-	.usb_port = 1,
-	.i2c_port = I2C_PORT_SUB_USB_C1,
-	.i2c_addr_flags = NB7V904M_I2C_ADDR0,
-	.driver = &nb7v904m_usb_redriver_drv,
-};
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
 		.usb_port = 0,
@@ -579,13 +551,6 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_addr_flags = PI3USB3X532_I2C_ADDR0,
 		.driver = &pi3usb3x532_usb_mux_driver,
 	},
-	{
-		.usb_port = 1,
-		.i2c_port = I2C_PORT_SUB_USB_C1,
-		.i2c_addr_flags = PI3USB3X532_I2C_ADDR0,
-		.driver = &pi3usb3x532_usb_mux_driver,
-		.next_mux = &usbc1_retimer,
-	}
 };
 
 uint16_t tcpc_get_alert_status(void)
