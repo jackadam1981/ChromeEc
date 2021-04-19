@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "67bccafa_58a3193a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-19T11:00:02Z",
+      "side": 1,
+      "message": "We had a short discussion in b:184783076. It\u0027s more clear for those unused pins.",
+      "parentUuid": "55e96dd7_6b213eb1",
+      "revId": "514693783fe4df9f48e722a69c8f4408413310e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f739360_ccdfbdb3",
         "filename": "zephyr/dts/bindings/gpio/unused-gpios.yaml",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-16T16:39:07Z",
       "side": 1,
       "message": "is there a way to do this without using any DTS at all?\n\nalso, this should be sent to upstream zephyr to review. It seems like it would be far more useful to the upstream community than just us",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "514693783fe4df9f48e722a69c8f4408413310e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6b614c_45c74892",
+        "filename": "zephyr/dts/bindings/gpio/unused-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-19T11:00:02Z",
+      "side": 1,
+      "message": "Every device could bind a GPIO for its application. We couldn\u0027t know whether a GPIO is used/unused in a specific application without a used/unused pin defined structure.\nFor upstream, we couldn\u0027t know other zephyr application how to handle unused pins on their platform. For chromium ec, we know the unused pins are floating so we can set those to input pull-up.",
+      "parentUuid": "5f739360_ccdfbdb3",
       "range": {
         "startLine": 1,
         "startChar": 0,
