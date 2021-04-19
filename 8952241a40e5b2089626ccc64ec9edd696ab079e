@@ -51,6 +51,24 @@
       "message": "so we should cherry-pick this change right?",
       "revId": "8952241a40e5b2089626ccc64ec9edd696ab079e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a468475c_566b9405",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-19T08:46:28Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll batch cherry-picking this CL.",
+      "parentUuid": "c30a2971_b50a40a9",
+      "revId": "8952241a40e5b2089626ccc64ec9edd696ab079e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
