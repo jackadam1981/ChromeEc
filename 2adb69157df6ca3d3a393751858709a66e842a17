@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "407fc052_4fb60aac",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-19T20:23:08Z",
+      "side": 1,
+      "message": "Yes, it probably won\u0027t cause any issues, but it does need to be tested. Otherwise our team has to deal with the resulting bugs.",
+      "parentUuid": "627c59eb_feac8cdf",
+      "range": {
+        "startLine": 297,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 14
+      },
+      "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5722b36_3b14ef56",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 1
