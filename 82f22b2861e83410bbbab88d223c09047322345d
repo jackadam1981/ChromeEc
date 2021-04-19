@@ -51,6 +51,24 @@
       "parentUuid": "fc8172f4_fe7831a0",
       "revId": "82f22b2861e83410bbbab88d223c09047322345d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec044aa6_af4e6b72",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-19T08:23:09Z",
+      "side": 1,
+      "message": "Got it, I\u0027m not really confident about using 8042 protocol, but if you verified it on the device, then it should be fine.",
+      "parentUuid": "3bc40a00_e1e6b721",
+      "revId": "82f22b2861e83410bbbab88d223c09047322345d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
