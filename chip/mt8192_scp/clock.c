@@ -63,6 +63,7 @@ static inline void clock_busy_udelay(int usec)
 		;
 }
 
+#ifndef BOARD_CHERRY_SCP
 static void clock_ulposc_config_default(struct opp_ulposc_cfg *opp)
 {
 	unsigned int val = 0;
@@ -86,7 +87,9 @@ static void clock_ulposc_config_default(struct opp_ulposc_cfg *opp)
 	/* bias = 64 */
 	AP_ULPOSC_CON2(opp->osc) = 64;
 }
+#endif
 
+#ifndef BOARD_CHERRY_SCP
 static void clock_ulposc_config_cali(struct opp_ulposc_cfg *opp,
 				     uint32_t cali_val)
 {
@@ -99,7 +102,9 @@ static void clock_ulposc_config_cali(struct opp_ulposc_cfg *opp,
 
 	clock_busy_udelay(50);
 }
+#endif
 
+#ifndef BOARD_CHERRY_SCP
 static uint32_t clock_ulposc_measure_freq(uint32_t osc)
 {
 	uint32_t result = 0;
@@ -145,8 +150,10 @@ static uint32_t clock_ulposc_measure_freq(uint32_t osc)
 
 	return result;
 }
+#endif
 
 #define CAL_MIS_RATE	40
+#ifndef BOARD_CHERRY_SCP
 static int clock_ulposc_is_calibrated(struct opp_ulposc_cfg *opp)
 {
 	uint32_t curr, target;
@@ -161,7 +168,9 @@ static int clock_ulposc_is_calibrated(struct opp_ulposc_cfg *opp)
 	else
 		return 0;
 }
+#endif
 
+#ifndef BOARD_CHERRY_SCP
 static uint32_t clock_ulposc_process_cali(struct opp_ulposc_cfg *opp)
 {
 	uint32_t current_val = 0;
@@ -208,7 +217,9 @@ static uint32_t clock_ulposc_process_cali(struct opp_ulposc_cfg *opp)
 
 	return cal_result;
 }
+#endif
 
+#ifndef BOARD_CHERRY_SCP
 static void clock_high_enable(int osc)
 {
 	/* enable high speed clock */
@@ -232,7 +243,9 @@ static void clock_high_enable(int osc)
 		break;
 	}
 }
+#endif
 
+#ifndef BOARD_CHERRY_SCP
 static void clock_high_disable(int osc)
 {
 	switch (osc) {
@@ -252,6 +265,7 @@ static void clock_high_disable(int osc)
 		break;
 	}
 }
+#endif
 
 static void clock_calibrate_ulposc(struct opp_ulposc_cfg *opp)
 {
@@ -261,6 +275,7 @@ static void clock_calibrate_ulposc(struct opp_ulposc_cfg *opp)
 	 * - enabled in coreboot
 	 * - used by pmic wrapper
 	 */
+#ifndef BOARD_CHERRY_SCP
 	if (opp->osc != 0) {
 		clock_high_disable(opp->osc);
 		clock_ulposc_config_default(opp);
@@ -270,6 +285,7 @@ static void clock_calibrate_ulposc(struct opp_ulposc_cfg *opp)
 	/* Calibrate only if it is not accurate enough. */
 	if (!clock_ulposc_is_calibrated(opp))
 		opp->cali = clock_ulposc_process_cali(opp);
+#endif
 
 #ifdef DEBUG
 	CPRINTF("osc:%u, target=%uMHz, cal:%u\n",
@@ -328,13 +344,16 @@ void clock_init(void)
 	SCP_SLEEP_CTRL =
 		(SCP_SLEEP_CTRL & ~VREQ_COUNT_MASK) | VREQ_COUNT_VAL(1);
 
+#ifndef BOARD_CHERRY_SCP
 	/* turn off ULPOSC2 */
 	SCP_CLK_ON_CTRL |= HIGH_CORE_DIS_SUB;
+#endif
 
 	/* calibrate ULPOSC */
 	for (i = 0; i < ARRAY_SIZE(opp); ++i)
 		clock_calibrate_ulposc(&opp[i]);
 
+#ifndef BOARD_CHERRY_SCP
 	/* select ULPOSC2 high speed CPU clock */
 	clock_select_clock(SCP_CLK_ULPOSC2);
 
@@ -344,6 +363,7 @@ void clock_init(void)
 	/* enable default clock gate */
 	SCP_SET_CLK_CG |= CG_DMA_CH3 | CG_DMA_CH2 | CG_DMA_CH1 | CG_DMA_CH0 |
 		CG_I2C_MCLK | CG_MAD_MCLK | CG_AP2P_MCLK;
+#endif
 }
 
 #ifdef DEBUG
