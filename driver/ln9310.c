@@ -119,22 +119,23 @@ static int ln9310_update_startup_seq(void)
 {
 	CPRINTS("LN9310 update startup sequence");
 
-	/* Startup sequence instruction swap */
+	/* Startup sequence instruction swap to hold Cfly 
+	   bottom plate low during startup  */
 	field_update8(LN9310_REG_LION_CTRL,
 		      LN9310_LION_CTRL_MASK,
 		      LN9310_LION_CTRL_UNLOCK);
 
 	field_update8(LN9310_REG_SWAP_CTRL_0,
 		      0xff,
-		      0x3f);
+		      0x52);
 
 	field_update8(LN9310_REG_SWAP_CTRL_1,
 		      0xff,
-		      0x51);
+		      0x54);
 
 	field_update8(LN9310_REG_SWAP_CTRL_2,
 		      0xff,
-		      0x19);
+		      0xCC);
 
 	field_update8(LN9310_REG_SWAP_CTRL_3,
 		      0xff,
@@ -268,6 +269,48 @@ static int ln9310_update_infet(void)
 	return EC_SUCCESS;
 }
 
+static int ln9310_precharge_cfly(void)
+{
+	CPRINTS("LN9310 precharge cfly");
+
+	field_update8(LN9310_REG_LION_CTRL,
+			LN9310_LION_CTRL_MASK,
+			LN9310_LION_CTRL_UNLOCK);
+
+	/* Make sue test mode overrides are disabled */
+	field_update8(LN9310_REG_FORCE_SC21_CTRL_2,
+			LN9310_FORCE_SC21_CTRL_2_FORCE_SW_CTRL_REQ_MASK,
+			LN9310_FORCE_SC21_CTRL_2_FORCE_SW_CTRL_REQ_OFF);
+
+	/* Configure test mode target values for precharge ckts.  */
+	field_update8(LN9310_REG_FORCE_SC21_CTRL_1,
+			0xff,
+			0x59);
+
+	/* Force SCOUT precharge/predischarge overrides */
+	field_update8(LN9310_REG_TEST_MODE_CTRL,
+			LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PRECHARGE_MASK | 
+				LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PREDISCHARGE_MASK,
+			LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PRECHARGE_ON |
+				LN9310_TEST_MODE_CTRL_FORCE_SC_OUT_PREDISCHARGE_ON);
+
+	/* Force enable CFLY precharge overrides */
+	field_update8(LN9310_REG_FORCE_SC21_CTRL_2,
+			LN9310_FORCE_SC21_CTRL_2_FORCE_SW_CTRL_REQ_MASK,
+			LN9310_FORCE_SC21_CTRL_2_FORCE_SW_CTRL_REQ_ON);
+
+	/* delay long enough to ensure CFLY has time to fully precharge */
+	usleep(LN9310_CFLY_PRECHARGE_DELAY);
+
+	/* leave test mode and stop CFLY precharge */
+	field_update8(LN9310_REG_LION_CTRL,
+			LN9310_LION_CTRL_MASK,
+			LN9310_LION_CTRL_TEST_OFF_AND_UNLOCK);
+	
+	return EC_SUCCESS;
+
+}
+
 void ln9310_init(void)
 {
 	int status, val;
@@ -343,6 +386,11 @@ void ln9310_init(void)
 		return;
 	}
 
+	/* Precharge CFLY before starting up */
+	status = ln9310_precharge_cfly();
+
+    /* only run the following line if the I2C command will 
+	   be sent < 100 ms after the previous one    */
 	/* Clear the STANDBY_EN bit */
 	field_update8(LN9310_REG_STARTUP_CTRL,
 		      LN9310_STARTUP_STANDBY_EN,
