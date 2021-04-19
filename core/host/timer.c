@@ -32,7 +32,7 @@
  * use usleep/msleep, and for tests that use udelay(), we can scale
  * the time as mentioned above.
  */
-#define TEST_TIME_SLOW_DOWN 10
+#define TEST_TIME_SLOW_DOWN 11
 
 static timestamp_t boot_time;
 static int time_set;
