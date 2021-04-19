@@ -346,6 +346,12 @@ int system_set_scratchpad(uint32_t value);
 uint32_t system_get_scratchpad(void);
 
 /**
+ * Return the status if system is woken up from hibernating by RTC overflow
+ * event.
+ */
+int system_is_wake_up_by_rtc_overflow(void) __attribute__((weak));
+
+/**
  * Return the chip vendor/name/revision string.
  */
 const char *system_get_chip_vendor(void);
