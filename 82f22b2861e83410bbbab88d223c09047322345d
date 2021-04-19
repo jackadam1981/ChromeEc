@@ -33,6 +33,24 @@
       "message": "...and why using 8042 protocol?",
       "revId": "82f22b2861e83410bbbab88d223c09047322345d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bc40a00_e1e6b721",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-04-19T08:16:11Z",
+      "side": 1,
+      "message": "/*\n *  Vivaldi keyboard code to be enabled only if board has selected\n *  CONFIG_KEYBOARD_PROTOCOL_8042 and not disabled CONFIG_KEYBOARD_VIVALDI\n *  explicitly",
+      "parentUuid": "fc8172f4_fe7831a0",
+      "revId": "82f22b2861e83410bbbab88d223c09047322345d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
