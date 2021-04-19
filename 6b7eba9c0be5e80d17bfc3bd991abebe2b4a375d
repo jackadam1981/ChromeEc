@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3196947e_f3263ca0",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-04-19T19:07:23Z",
+      "side": 1,
+      "message": "I think you can remove this check because it\u0027s run in the PE layer:\n!tc_is_vconn_src(port) \u0026\u0026 port_discovery_vconn_swap_policy(",
+      "range": {
+        "startLine": 102,
+        "startChar": 24,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "6b7eba9c0be5e80d17bfc3bd991abebe2b4a375d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
