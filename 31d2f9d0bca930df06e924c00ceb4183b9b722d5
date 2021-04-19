@@ -16,6 +16,23 @@
       "message": "Hi,\n\nIn v2 the only change is regarding code location - regarding functionality this is the same. The idea was to move code into gl3590-specific driver, instead of putting this in servo_v4p1 directory.",
       "revId": "31d2f9d0bca930df06e924c00ceb4183b9b722d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a086cec_5adddd6e",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-19T22:29:33Z",
+      "side": 1,
+      "message": "Note that this delays all init for the entire system by 100ms. Could we contain this to within the init function?\n\nCould the init toggle reset and wait?",
+      "revId": "31d2f9d0bca930df06e924c00ceb4183b9b722d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
