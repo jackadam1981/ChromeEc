@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3476e3f4_82d1fd71",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-19T20:23:07Z",
+      "side": 0,
+      "message": "What I see the implementation of irq_lock(), or arch_irq_lock(), is actually \"cpsid i\", which should mask all IRQs.\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/zephyr/main/v2.5/include/arch/arm/aarch32/asm_inline_gcc.h;l\u003d43?q\u003darch_irq_lock",
+      "range": {
+        "startLine": 260,
+        "startChar": 1,
+        "endLine": 260,
+        "endChar": 18
+      },
+      "revId": "63ee5ea2f3a3cb983ac2f63d0f7588a38ec48c53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
