@@ -294,6 +294,7 @@ flash_fp_mcu_stm32() {
 
     # Release reset as the SPI bus is now ready
     gpio 1 "${gpio_nrst}"
+    sleep 0.01
 
     # Print out the actual underlying command we're running and run it
     echo "# ${cmd}"
