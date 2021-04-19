@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f20b2d6_ebf2706e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-04-19T19:12:45Z",
+      "side": 1,
+      "message": "I think this deserves a better patch description: why is this necessary, under what conditions this happens, etc.\n\nAlso, is there a way to reproduce the u2f failure and verify that this patch helps to recover?",
+      "revId": "b7d44ed1fb4b38e5a285d8ce51970804c01357fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
