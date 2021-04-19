@@ -295,6 +295,9 @@ flash_fp_mcu_stm32() {
     # Release reset as the SPI bus is now ready
     gpio 1 "${gpio_nrst}"
 
+    # Add delay of 100 ms to consider minimum bootloader startup time for stm32
+    sleep 0.1
+
     # Print out the actual underlying command we're running and run it
     echo "# ${cmd}"
     ${cmd}
