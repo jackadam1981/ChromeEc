@@ -70,6 +70,30 @@
       },
       "revId": "57e18d8a02a3de2a8744ac03bba848706773eb5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e596df4e_115144c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-04-19T07:08:39Z",
+      "side": 1,
+      "message": "Last lightbar test sample have led ordering problem.\nWe base on final circuit and lightbar sample to to verify this CL and it can work and light on ten led.\n\nFrom overall plan, \"board_id \u003d 2\" will use latest lightbar sample which correct wrong routing.",
+      "parentUuid": "00428454_c49a5e07",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "57e18d8a02a3de2a8744ac03bba848706773eb5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
