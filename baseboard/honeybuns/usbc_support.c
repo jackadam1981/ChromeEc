@@ -336,9 +336,20 @@ static void baseboard_usb3_manage_vbus(void)
 	ppc_vbus_source_enable(USB_PD_PORT_USB3, level);
 	CPRINTS("C2: State = %s", level ? "Attached.SRC " : "Unattached.SRC");
 
-	/* Reset OCP event counter for on detach */
+	/* Reset OCP event counter for detach */
 	if (!level)
 		ppc_ocp_count = 0;
+
+#ifdef GPIO_USB_HUB_OCP_NOTIFY
+	/*
+	 * In the case of an OCP event on this port, the usb hub should be
+	 * notified via a GPIO signal. Follwoing, an OCP, the attached.src state
+	 * for the usb3 only port is checked again. If it's attached, then make
+	 * sure the OCP notifiy signal is reset.
+	 */
+	if (level)
+		gpio_set_level(GPIO_USB_HUB_OCP_NOTIFY, 1);
+#endif
 }
 DECLARE_DEFERRED(baseboard_usb3_manage_vbus);
 
@@ -360,7 +371,7 @@ int baseboard_config_usbc_usb3_ppc(void)
 		return rv;
 
 	/* Need to set current limit to 3A to match advertised value */
-	//ppc_set_vbus_source_current_limit(USB_PD_PORT_USB3, TYPEC_RP_3A0);
+	ppc_set_vbus_source_current_limit(USB_PD_PORT_USB3, TYPEC_RP_3A0);
 	/* Reset OCP event counter */
 	ppc_ocp_count = 0;
 
@@ -397,7 +408,7 @@ static void baseboard_usbc_usb3_handle_interrupt(void)
 			CPRINTS("usb3_ppc: VBUS OC!");
 			if (++ppc_ocp_count < 5)
 				hook_call_deferred(&baseboard_usb3_manage_vbus_data,
-						   10 * MSEC);
+						   USB_HUB_OCP_RESET_MSEC);
 			else
 				CPRINTS("usb3_ppc: VBUS OC limit reached!");
 		}
@@ -433,5 +444,59 @@ void baseboard_usbc_usb3_irq(void)
 {
 	hook_call_deferred(&baseboard_usbc_usb3_handle_interrupt_data, 0);
 }
+
+/*
+ * Check the specified Vbus level
+ *
+ * Note that boards may override this function if they have a method outside the
+ * TCPCI driver to verify vSafe0V.
+ */
+#if 0
+static int vsafe0v_check_count;
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	int rv;
+	int regval;
+	int vsafe0v = 0;
+
+	if (port == 0) {
+		if (level == VBUS_SAFE0V) {
+			rv = read_reg(port, SN5S330_INT_STATUS_REG4, &regval);
+			if (!rv)
+				vsafe0v = !!(regval & SN5S330_VSAFE0V_STAT);
+			CPRINTS("usbc[%d]: vsafe0 check = %x", port, regval);
+
+			if (vsafe0v) {
+				regval |= SN5S330_VSAFE0V_STAT;
+				write_reg(port, SN5S330_INT_STATUS_REG4, regval);
+				return true;
+			}
+			vsafe0v_check_count++;
+		}
+
+		if (level == VBUS_PRESENT) {
+			vsafe0v_check_count = 0;
+			return pd_snk_is_vbus_provided(port);
+		} else {
+			if (level == VBUS_REMOVED) {
+				return !pd_snk_is_vbus_provided(port);
+			} else {
+				if (vsafe0v_check_count > 20){
+					vsafe0v_check_count = 0;
+					return !pd_snk_is_vbus_provided(port);
+				} else {
+					return false;
+				}
+			}
+		}
+	} else {
+		if (level == VBUS_PRESENT)
+			return pd_snk_is_vbus_provided(port);
+		else
+			return !pd_snk_is_vbus_provided(port);
+	}
+}
+#endif
+
 #endif
 

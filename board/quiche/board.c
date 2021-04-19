@@ -312,9 +312,20 @@ uint16_t tcpc_get_alert_status(void)
 	return status;
 }
 
+static void board_usb_pd_dp_ocp_reset(void)
+{
+	gpio_set_level(GPIO_USBC_ALTMODE_OCP_NOTIFY, 1);
+}
+DECLARE_DEFERRED(board_usb_pd_dp_ocp_reset);
+
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* TODO(b/174825406): check correct operation for honeybuns */
+	if (port == USB_PD_PORT_DP) {
+		gpio_set_level(GPIO_USBC_ALTMODE_OCP_NOTIFY, 0);
+		hook_call_deferred(&board_usb_pd_dp_ocp_reset_data,
+				   USB_HUB_OCP_RESET_MSEC);
+	}
 }
 
 int dock_get_mf_preference(void)

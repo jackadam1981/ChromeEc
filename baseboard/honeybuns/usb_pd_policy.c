@@ -230,7 +230,8 @@ void pd_transition_voltage(int idx)
 			CPRINTS("mp4245: mv = %d, mv_average = %d, iteration = %d",
 				mv_temp, mv, i);
 			if ((rv == EC_SUCCESS) && (mv >= vbus_lo) &&
-			    (mv <= vbus_hi) && i >= (MP4245_VOLTAGE_WINDOW - 1)) {
+			    (mv <= vbus_hi) && i >=
+			    MP4245_VOLTAGE_WINDOW_MASK) {
 				return;
 			}
 
@@ -290,16 +291,24 @@ static void usb_tc_connect(void)
 	 * attached so that the USB-EP can be properly enumerated. GPIO_BPWR_DET
 	 * is used for this purpose.
 	 */
-	if (pd_is_connected(USB_PD_PORT_HOST))
+	if (pd_is_connected(USB_PD_PORT_HOST)) {
 		gpio_set_level(GPIO_BPWR_DET, 1);
+#ifdef GPIO_UFP_PLUG_DET
+		gpio_set_level(GPIO_UFP_PLUG_DET, 1);
+#endif
+	}
 }
 DECLARE_HOOK(HOOK_USB_PD_CONNECT, usb_tc_connect, HOOK_PRIO_DEFAULT);
 
 static void usb_tc_disconnect(void)
 {
 	/* Only the host port disconnect is relevant */
-	if (!pd_is_connected(USB_PD_PORT_HOST))
+	if (!pd_is_connected(USB_PD_PORT_HOST)) {
 		gpio_set_level(GPIO_BPWR_DET, 0);
+#ifdef GPIO_UFP_PLUG_DET
+		gpio_set_level(GPIO_UFP_PLUG_DET, 0);
+#endif
+	}
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, usb_tc_disconnect, HOOK_PRIO_DEFAULT);
 
