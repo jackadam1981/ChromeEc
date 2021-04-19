@@ -19,7 +19,7 @@
 #define SCP_CLK_CTRL_BASE		(SCP_REG_BASE + 0x21000)
 /* clock source select */
 #define SCP_CLK_SW_SEL			REG32(SCP_CLK_CTRL_BASE + 0x0000)
-#define   CLK_SW_SEL_26M		0
+#define   CLK_SW_SEL_SYSTEM		0
 #define   CLK_SW_SEL_32K		1
 #define   CLK_SW_SEL_ULPOSC2		2
 #define   CLK_SW_SEL_ULPOSC1		3
@@ -119,7 +119,7 @@
 #define   HIGH_CORE_CG_AO		BIT(6)
 /* clock general control */
 #define SCP_CLK_CTRL_GENERAL_CTRL	REG32(SCP_CLK_CTRL_BASE + 0x009C)
-#define   VREQ_PMIC_WRAP_SEL		(0x2)
+#define   VREQ_PMIC_WRAP_SEL		(0x3)
 
 /* system control */
 #define SCP_SYS_CTRL			REG32(SCP_REG_BASE + 0x24000)
@@ -212,26 +212,41 @@
 
 /* external address: AP */
 #define AP_REG_BASE			0x60000000 /* 0x10000000 remap to 0x6 */
-/* OSC meter */
+
+/* TOPCK clk */
 #define TOPCK_BASE			AP_REG_BASE
-#define AP_CLK_MISC_CFG_0		REG32(TOPCK_BASE + 0x0140)
-#define   MISC_METER_DIVISOR_MASK	0xff000000
-#define   MISC_METER_DIV_1		0
-#define AP_CLK_DBG_CFG			REG32(TOPCK_BASE + 0x017C)
+#define AP_CLK_CFG_UPDATE3		REG32(TOPCK_BASE + 0x0010)
+#define   F_ULPOSC_CK_UPDATE		BIT(21)
+#define   F_ULPOSC_CORE_CK_UPDATE	BIT(22)
+#define AP_CLK_CFG_29_SET		REG32(TOPCK_BASE + 0x0180)
+#define AP_CLK_CFG_29_CLR		REG32(TOPCK_BASE + 0x0184)
+#define   ULPOSC1_CLK_SEL		(0x3 << 8)
+#define   PDN_F_ULPOSC_CK		BIT(15)
+#define   ULPOSC2_CLK_SEL		(0x3 << 16)
+#define   PDN_F_ULPOSC_CORE_CK		BIT(23)
+
+/* OSC meter */
+#define AP_CLK_DBG_CFG			REG32(TOPCK_BASE + 0x020C)
 #define   DBG_MODE_MASK			3
 #define   DBG_MODE_SET_CLOCK		0
-#define   DBG_BIST_SOURCE_MASK		(0x3f << 16)
-#define   DBG_BIST_SOURCE_ULPOSC1	(0x25 << 16)
-#define   DBG_BIST_SOURCE_ULPOSC2	(0x24 << 16)
-#define AP_SCP_CFG_0			REG32(TOPCK_BASE + 0x0220)
+#define   DBG_BIST_SOURCE_MASK		(0x7f << 8)
+#define   DBG_BIST_SOURCE_ULPOSC1	(0x30 << 8)
+#define   DBG_BIST_SOURCE_ULPOSC2	(0x32 << 8)
+#define AP_CLK26CALI_0			REG32(TOPCK_BASE + 0x0218)
 #define   CFG_FREQ_METER_RUN		BIT(4)
-#define   CFG_FREQ_METER_ENABLE		BIT(12)
-#define AP_SCP_CFG_1			REG32(TOPCK_BASE + 0x0224)
+#define   CFG_FREQ_METER_ENABLE		BIT(7)
+#define AP_CLK26CALI_1			REG32(TOPCK_BASE + 0x021C)
 #define   CFG_FREQ_COUNTER(CFG1)	((CFG1) & 0xFFFF)
+#define AP_CLK_MISC_CFG_0		REG32(TOPCK_BASE + 0x022C)
+#define   MISC_METER_DIVISOR_MASK	0xff000000
+#define   MISC_METER_DIV_1		0
+
 /* AP GPIO */
 #define AP_GPIO_BASE			(AP_REG_BASE + 0x5000)
 #define AP_GPIO_MODE11_SET		REG32(AP_GPIO_BASE + 0x03B4)
 #define AP_GPIO_MODE11_CLR		REG32(AP_GPIO_BASE + 0x03B8)
+#define AP_GPIO_MODE12_SET		REG32(AP_GPIO_BASE + 0x03C4)
+#define AP_GPIO_MODE12_CLR		REG32(AP_GPIO_BASE + 0x03C8)
 #define AP_GPIO_MODE20_SET		REG32(AP_GPIO_BASE + 0x0444)
 #define AP_GPIO_MODE20_CLR		REG32(AP_GPIO_BASE + 0x0448)
 /*
@@ -240,13 +255,10 @@
  */
 #define AP_ULPOSC_CON0_BASE		(AP_REG_BASE + 0xC2B0)
 #define AP_ULPOSC_CON1_BASE		(AP_REG_BASE + 0xC2B4)
-#define AP_ULPOSC_CON2_BASE		(AP_REG_BASE + 0xC2B8)
 #define AP_ULPOSC_CON0(osc) \
 		REG32(AP_ULPOSC_CON0_BASE + (osc) * 0x10)
 #define AP_ULPOSC_CON1(osc) \
 		REG32(AP_ULPOSC_CON1_BASE + (osc) * 0x10)
-#define AP_ULPOSC_CON2(osc) \
-		REG32(AP_ULPOSC_CON2_BASE + (osc) * 0x10)
 /*
  * AP_ULPOSC_CON0
  * bit0-6: calibration
@@ -254,29 +266,29 @@
  * bit14-17: fband
  * bit18-23: div
  * bit24: cp_en
- * bit25-31: reserved
+ * bit25-26: mod
+ * bit27: div2_en
+ * bit28-31: reserved
  */
+#define OSC_CALI_SHIFT		0
 #define OSC_CALI_MASK		0x7f
 #define OSC_IBAND_SHIFT		7
 #define OSC_FBAND_SHIFT		14
 #define OSC_DIV_SHIFT		18
 #define OSC_CP_EN		BIT(24)
-/* AP_ULPOSC_CON1
- * bit0-7: 32K calibration
- * bit 8-15: rsv1
- * bit 16-23: rsv2
- * bit 24-25: mod
- * bit26: div2_en
- * bit27-31: reserved
+#define OSC_MOD_SHIFT		25
+#define OSC_DIV2_EN		BIT(27)
+/*
+ * AP_ULPOSC_CON1
+ * bit0-7: rsv1
+ * bit8-15: rsv2
+ * bit16-23: 32K calibration
+ * bit24-31: bias
  */
-#define OSC_RSV1_SHIFT		8
-#define OSC_RSV2_SHIFT		16
-#define OSC_MOD_SHIFT		24
-#define OSC_DIV2_EN		BIT(26)
-/* AP_ULPOSC_CON2
- * bit0-7: bias
- * bit8-31: reserved
- */
+#define OSC_RSV1_SHIFT		0
+#define OSC_RSV2_SHIFT		8
+#define OSC_32KCALI_SHIFT	16
+#define OSC_BIAS_SHIFT		24
 
 /* IRQ numbers */
 #define SCP_IRQ_GIPC_IN0		0
