@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e7f06fe_7e9aca92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-04-19T08:22:59Z",
+      "side": 1,
+      "message": "Hi,\n\nIn v2 the only change is regarding code location - regarding functionality this is the same. The idea was to move code into gl3590-specific driver, instead of putting this in servo_v4p1 directory.",
+      "revId": "31d2f9d0bca930df06e924c00ceb4183b9b722d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
