@@ -69,6 +69,24 @@
       "parentUuid": "3bc40a00_e1e6b721",
       "revId": "82f22b2861e83410bbbab88d223c09047322345d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7baa465e_28bd0d45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-04-19T11:37:36Z",
+      "side": 1,
+      "message": "I change to MKBP protocol in set2, but key function, don\u0027t mapping to new keyboard function.\nHas other way to change it ?",
+      "parentUuid": "ec044aa6_af4e6b72",
+      "revId": "82f22b2861e83410bbbab88d223c09047322345d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
