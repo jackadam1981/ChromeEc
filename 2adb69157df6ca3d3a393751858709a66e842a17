@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3a857b3_e9f8408b",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-19T20:15:50Z",
+      "side": 1,
+      "message": "Did you test this on any other devices other than strongbad? If it\u0027s strongbad specific, we probably want to do something like line 280 (and have a TODO(b/) comment).",
+      "range": {
+        "startLine": 297,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 14
+      },
+      "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5722b36_3b14ef56",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 1
