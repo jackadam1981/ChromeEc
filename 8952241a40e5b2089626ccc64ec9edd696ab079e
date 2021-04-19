@@ -16,6 +16,24 @@
       "message": "What\u0027s the common practice - leave UNLOCKED on ToT and remove it (e.g., locked) on FW branch?\nOr have them locked for both?",
       "revId": "8952241a40e5b2089626ccc64ec9edd696ab079e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48c66278_49fc33ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-19T08:38:43Z",
+      "side": 1,
+      "message": "We should alwasy drop this config on firmware branch, and we don\u0027t care the config on main branch.",
+      "parentUuid": "4c70a433_bea6c0ea",
+      "revId": "8952241a40e5b2089626ccc64ec9edd696ab079e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
