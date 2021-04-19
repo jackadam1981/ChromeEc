@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bc99fd_f9984a60",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-19T20:12:31Z",
+      "side": 1,
+      "message": "It\u0027s probably a good idea to add more why this delay fixes things, instead of just \"to fix\".",
+      "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5722b36_3b14ef56",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-19T20:12:31Z",
+      "side": 1,
+      "message": "Interesting, so this is a delay between releasing of reset and the stm32mon doing stuff?\n\nOur board has a 10k pullup on this line, so I guess it\u0027s marginal/not fast enough?\n\nI would feel a lot better with this number if we had scope shots of this event (reset releasing vs cs asserting), together with perhaps a datasheet of the stm32 bootloader guide saying what the earliest time it\u0027s ready to accept commands is.",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 10
+      },
+      "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
