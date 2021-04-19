@@ -45,6 +45,11 @@
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
+#ifdef NPCX_LCT_SUPPORT
+/* A flag for waking up from hibernate mode by RTC overflow event*/
+static int is_rtc_overflow_event;
+#endif
+
 /*****************************************************************************/
 /* Internal functions */
 
@@ -328,6 +333,12 @@ static void chip_set_hib_flag(uint32_t *flags, uint32_t hib_wake_flags)
 		if (npcx_lct_is_event_set()) {
 			*flags |= EC_RESET_FLAG_RTC_ALARM |
 					  EC_RESET_FLAG_HIBERNATE;
+			/* Is RTC overflow event? */
+			if (bbram_data_read(BBRM_DATA_INDEX_LCT_TIME) ==
+				NPCX_LCT_MAX) {
+				/* Mark it as RTC overflow event */
+				is_rtc_overflow_event = 1;
+			}
 			npcx_lct_clear_event();
 			return;
 		}
@@ -1110,6 +1121,12 @@ int system_set_scratchpad(uint32_t value)
 uint32_t system_get_scratchpad(void)
 {
 	return bbram_data_read(BBRM_DATA_INDEX_SCRATCHPAD);
+}
+
+int system_is_wake_up_by_rtc_overflow(void)
+{
+	/* Is woken up from hibernating by RTC overflow event? */
+	return is_rtc_overflow_event;
 }
 
 int system_is_reboot_warm(void)

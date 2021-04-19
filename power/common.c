@@ -398,6 +398,16 @@ __overridable enum critical_shutdown board_system_is_idle(
 {
 	int remain;
 
+	/*
+	 * If platform uses PSL (Power Switch Logic) for hibernating and RTC is
+	 * also supported, determine whether ec is woken up by RTC with overflow
+	 * event (16 weeks). If so, let it go to hibernate mode immediately.
+	 */
+	if (IS_ENABLED(CONFIG_HIBERNATE_PSL) && IS_ENABLED(NPCX_LCT_SUPPORT) &&
+	    system_is_wake_up_by_rtc_overflow()){
+		return CRITICAL_SHUTDOWN_HIBERNATE;
+	}
+
 	if (now < *target)
 		return CRITICAL_SHUTDOWN_IGNORE;
 
@@ -422,6 +432,16 @@ __overridable enum critical_shutdown board_system_is_idle(
 __overridable enum critical_shutdown board_system_is_idle(
 		uint64_t last_shutdown_time, uint64_t *target, uint64_t now)
 {
+	/*
+	 * If platform uses PSL (Power Switch Logic) for hibernating and RTC is
+	 * also supported, determine whether ec is woken up by RTC with overflow
+	 * event (16 weeks). If so, let it go to hibernate mode immediately.
+	 */
+	if (IS_ENABLED(CONFIG_HIBERNATE_PSL) && IS_ENABLED(NPCX_LCT_SUPPORT) &&
+	    system_is_wake_up_by_rtc_overflow()){
+		return CRITICAL_SHUTDOWN_HIBERNATE;
+	}
+
 	return now > *target ?
 			CRITICAL_SHUTDOWN_HIBERNATE : CRITICAL_SHUTDOWN_IGNORE;
 }
