@@ -16,6 +16,24 @@
       "message": "About ec code has modified a lot at this change function in this moment.\n\nBut magolor/maglia has C0/C1 with PD charge prot.\n\nMagister needs to remove the above function.\n\nCould create new board name to distinguish the magolor\u0027s feature ?",
       "revId": "35d2aabee52d1633d19638b064620d13fc802f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eedcbc4c_24dba2ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-20T16:04:08Z",
+      "side": 1,
+      "message": "Is this simply a new daughter board?  Generally, you parse the FW_CONFIG and change returns for the board_get_usb_pd_port_count() and board_get_charger_chip_count() functions accordingly.  You can see waddledoo for an example of how this can work, plus examples of changing GPIO functionalities based on the DB.",
+      "parentUuid": "47d10bd9_8d3632a9",
+      "revId": "35d2aabee52d1633d19638b064620d13fc802f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
