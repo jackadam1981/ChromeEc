@@ -52,6 +52,24 @@
       "parentUuid": "f386964e_1505d4d5",
       "revId": "68ba20efaaaab324e7ab0d7aadcbc3c3d25ae69e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e94088e3_ad9bd981",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-20T16:11:20Z",
+      "side": 1,
+      "message": "But I believe that should be done outside of the EC via ectool.",
+      "parentUuid": "aff9db03_4ab29536",
+      "revId": "68ba20efaaaab324e7ab0d7aadcbc3c3d25ae69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
