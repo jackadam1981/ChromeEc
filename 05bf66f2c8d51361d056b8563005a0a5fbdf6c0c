@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8ddd477_1100c1bc",
+        "filename": "zephyr/shim/include/zephyr_adc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-20T23:11:02Z",
+      "side": 1,
+      "message": "for consistency should you have ADC_CH_COUNT be the only entry so it can show to the code that 0 ADC channels are present?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 2
+      },
+      "revId": "05bf66f2c8d51361d056b8563005a0a5fbdf6c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
