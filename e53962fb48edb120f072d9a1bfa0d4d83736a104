@@ -39,6 +39,30 @@
       },
       "revId": "e53962fb48edb120f072d9a1bfa0d4d83736a104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb2245e_44b6126b",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 12
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-20T03:10:39Z",
+      "side": 1,
+      "message": "+parker, maybe we can remove this in later builds",
+      "parentUuid": "93f0d18b_05a0c6c8",
+      "range": {
+        "startLine": 39,
+        "startChar": 10,
+        "endLine": 39,
+        "endChar": 34
+      },
+      "revId": "e53962fb48edb120f072d9a1bfa0d4d83736a104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
