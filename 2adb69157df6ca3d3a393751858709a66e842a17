@@ -206,6 +206,30 @@
       },
       "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b87318a_7708d064",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-20T23:01:11Z",
+      "side": 1,
+      "message": "Addition: in my pdf you want to look at \"68 Bootloader timings\", the 16.63 ms value is 68.1, \"Table 146. Bootloader startup timings (ms) for STM32 devices\", row \"STM32F74xxx/75xxx\".\n\nThough checking again, I should have looked at \"STM32H74xxx/75xxx\" which is even worse! 53ms!\n\n1us is for the SPI interface stuf on 68.5.",
+      "parentUuid": "f979426b_910ef6b7",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 10
+      },
+      "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
