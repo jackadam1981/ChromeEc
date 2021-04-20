@@ -34,6 +34,24 @@
       "parentUuid": "be67f572_ea1e6779",
       "revId": "976b3f7daa5fb3521467a21f051f41b79a59d247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ae83ad8_3d54d1a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-20T21:51:17Z",
+      "side": 1,
+      "message": "Hmmmm, interesting.  I\u0027d assumed since you\u0027d added the increase to 100 ms that it was probably for your TCPC to work.  I can collect some i2c tracing and put it in a bug with the vendor for some root-causing.",
+      "parentUuid": "7e6347a4_21de46b2",
+      "revId": "976b3f7daa5fb3521467a21f051f41b79a59d247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
