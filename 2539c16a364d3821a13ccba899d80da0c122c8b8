@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0eea8e3a_f0fc42fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-20T23:18:37Z",
+      "side": 1,
+      "message": "Renaming icm426xx to icm42605 (in a different CL) makes sense.",
+      "parentUuid": "d6f44816_247fcb3f",
+      "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4655a878_294cf5b8",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "We are testing data from userspace by using a Linux command-line application that read data from the Linux IIO devices created by the CROS-EC SensorsHub driver (cros-ec-accel \u0026 cros-ec-gyro). As found in Chromium OS Linux kernels. (we have ported them to Raspberry Pi 4 kernel). They are using the same internal way than CROS EC Sensor Ring driver if I\u0027m not mistaken.\n\nThis application enables us to do logs for analyzing sensors data quality, and configure each sensor independently to check they are working well independently of each other. (for example, run the application with accel @50Hz and in another terminal run the application with gyro @200Hz. Turn off accel data then turn off gyro data, and check that all data are correct).",
       "parentUuid": "a0380f41_63cb84f4",
+      "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca9b8099_cd73d574",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-20T23:18:37Z",
+      "side": 1,
+      "message": "That works with me. Using libiio test tool (iio_readdev) is also an open source solution [https://wiki.analog.com/resources/tools-software/linux-software/libiio/iio_readdev]\n\n[something like \u0027iio_readdev -T 10000 -s 4 -b 2 iio:deviceX\u0027]",
+      "parentUuid": "d1c9c5be_e9b173fb",
       "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

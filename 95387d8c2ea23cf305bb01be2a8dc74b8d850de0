@@ -16,6 +16,159 @@
       "message": "Hello Gwendal,\n\nsome responses to your questions, for better understanding what we are doing.",
       "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7ac423a_94f5c632",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-20T23:18:37Z",
+      "side": 1,
+      "message": "There is a lot of common code between icm42607.c and icm426xx.c, where the only difference are the registers.\nWe had the same problem in the past with kionix sensors (see accel_kionix.c).\nOne way is to have a private macro V() set to 1 when compiling for icm42607.\n\nAssuming ICM426XX_GYRO_FS_MAX_VAL as been renamed ICM42605_GYRO_FS_MAX_VAL\n\nThen we can use register like\n#define ICM426XX_GYRO_FS_MAX_VAL(v) (ICM42605_GYRO_FS_MAX_VAL + v * (ICM42607_GYRO_FS_MAX_VAL - ICM42605_GYRO_FS_MAX_VAL)\n\nIn the common code, we would use register ICM426XX_GYRO_FS_MAX_VAL(V(s)).",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a819ef8_4b763deb",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-20T23:18:37Z",
+      "side": 1,
+      "message": "can we split that function in 2:\nsend the fifo_flush in one.\nCheck later the FIFO is flushed: this way, we avoid the 10us mandatory wait.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7f4e07f_0556d7c1",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-20T23:18:37Z",
+      "side": 1,
+      "message": "st-\u003eaccel and st-\u003egyro are not necessary:\n\nicm42607_load_fifo() is called from icm42607_irq_handler() which is only called with the accelerometer sensor as argument.\nTherefore, we can replace st-\u003eaccel with s and st-\u003egyro with s+1.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa4fe497_f5dac9cc",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-20T23:18:37Z",
+      "side": 1,
+      "message": "we have to look when the mutex_lock are necessary:\nmost of the calls happen from the motion sense task, so we know we are already single threaded. Only when a change happen from the host command task there might be a problem.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b7c935b_30d0a031",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-20T23:18:37Z",
+      "side": 1,
+      "message": "I don\u0027t see MOTIONSENSE_FLAG_INT_ACTIVE_HIGH set anywhere, looks like dead code. I will remove it soon.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bcf9354_c82a6a2d",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-20T23:18:37Z",
+      "side": 1,
+      "message": "In driver/accelgyro_icm426xx.c, it is done after normalizing the rate. It should be fixed there to be consistent.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4666da04_0382c764",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-20T23:18:37Z",
+      "side": 1,
+      "message": "brace not needed for single line.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "927bccb9_36e30aff",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-20T23:18:37Z",
+      "side": 1,
+      "message": "gathering raw values code could be written only once if we use a variable for the base register.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e86faf7_bdb75165",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-04-20T23:18:37Z",
+      "side": 1,
+      "message": "When the sensor is not powered up in S5, (or worse S3), the delay will impact boot up time. If possible, can we use a loop, checking if the OTP is powered/loaded, to limit the amount of time to wait to a minimal.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
