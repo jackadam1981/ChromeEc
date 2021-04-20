@@ -34,6 +34,24 @@
       "parentUuid": "c8fc4c26_ff30beec",
       "revId": "68ba20efaaaab324e7ab0d7aadcbc3c3d25ae69e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aff9db03_4ab29536",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1184140
+      },
+      "writtenOn": "2021-04-20T05:22:36Z",
+      "side": 1,
+      "message": "default means unprovisioned, so we will need to prove device. For provisioned(SSFC written) device will has SSFC_USB_SS_MUX_PS8743 or SSFC_USB_SS_MUX_PI3USBX532.\nSo, we will skip probe for those values.",
+      "parentUuid": "f386964e_1505d4d5",
+      "revId": "68ba20efaaaab324e7ab0d7aadcbc3c3d25ae69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
