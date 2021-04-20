@@ -563,12 +563,12 @@ int charger_profile_override(struct charge_state_data *curr)
 		if (thermal_sensor_temp > C_TO_K(63))
 			limit_usbc_power = 1;
 
-		else if (thermal_sensor_temp > C_TO_K(58)) {
+		else if (thermal_sensor_temp > C_TO_K(55)) {
 			if (curr->state == ST_CHARGE)
 				limit_charge = 1;
 		}
 	} else if (thermal_sensor_temp < prev_thermal_sensor_temp) {
-		if (thermal_sensor_temp < C_TO_K(57)) {
+		if (thermal_sensor_temp < C_TO_K(53)) {
 			if (curr->state == ST_CHARGE)
 				limit_charge = 0;
 
