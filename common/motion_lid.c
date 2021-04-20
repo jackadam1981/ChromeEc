@@ -281,6 +281,15 @@ static void motion_lid_set_dptf_profile(int reliable)
 
 #endif /* MOTION_LID_SET_DPTF_PROFILE */
 
+#define SCAN_F_MAX 15
+static int scan_f;
+
+static void scan_f_init(void)
+{
+	scan_f = 0;
+}
+DECLARE_HOOK(HOOK_INIT, scan_f_init, HOOK_PRIO_LAST);
+
 /**
  * Calculate the lid angle using two acceleration vectors, one recorded in
  * the base and one in the lid.
@@ -299,6 +308,7 @@ static int calculate_lid_angle(const intv3_t base, const intv3_t lid,
 	int base_magnitude2, lid_magnitude2, largest_hinge_accel;
 	int reliable = 1, i;
 
+	scan_f++;
 	/*
 	 * Scale the vectors by their range, to be able to compare them.
 	 * If a single measurement is greated than 1g, we may overflow fixed
@@ -306,16 +316,26 @@ static int calculate_lid_angle(const intv3_t base, const intv3_t lid,
 	 * means the device is in movement and lid angle calculation is not
 	 * possible.
 	 */
+	if (scan_f > SCAN_F_MAX)
+		cprintf(CC_MOTION_SENSE,"\n AXIS_MAX: %-5d\n",MOTION_SCALING_AXIS_MAX);
 	for (i = X; i <= Z; i++) {
 		scaled_base[i] = base[i] * accel_base->current_range;
 		scaled_lid[i] = lid[i] * accel_lid->current_range;
 		if (ABS(scaled_base[i]) > MOTION_SCALING_AXIS_MAX ||
 		    ABS(scaled_lid[i]) > MOTION_SCALING_AXIS_MAX) {
+			cprintf(CC_MOTION_SENSE," Over MOTION_SCALING_AXIS_MAX!\n");
 			reliable = 0;
 			goto end_calculate_lid_angle;
 		}
 	}
-
+	if (scan_f > SCAN_F_MAX) {
+		cprintf(CC_MOTION_SENSE," ABS(scaled_base[x]): %-5d\n", ABS(scaled_base[0]));
+		cprintf(CC_MOTION_SENSE," ABS(scaled_base[y]): %-5d\n", ABS(scaled_base[1]));
+		cprintf(CC_MOTION_SENSE," ABS(scaled_base[z]): %-5d\n", ABS(scaled_base[2]));
+		cprintf(CC_MOTION_SENSE," ABS(scaled_lid[x]):  %-5d\n", ABS(scaled_lid[0]));
+		cprintf(CC_MOTION_SENSE," ABS(scaled_lid[y]):  %-5d\n", ABS(scaled_lid[1]));
+		cprintf(CC_MOTION_SENSE," ABS(scaled_lid[z]):  %-5d\n", ABS(scaled_lid[2]));
+	}
 	/*
 	 * Calculate square of vector magnitude in g.
 	 * Each entry is guaranteed to be up to +/- 1<<15, so the square will be
@@ -476,6 +496,10 @@ end_calculate_lid_angle:
 	if (reliable)
 		*lid_angle = FP_TO_INT(lid_to_base_fp + FLOAT_TO_FP(0.5));
 #endif
+	if (scan_f > SCAN_F_MAX) {
+		scan_f = 0;
+		cprintf(CC_MOTION_SENSE,"\n==============================\n");
+	}
 	return reliable;
 }
 
