@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8455a16_196036a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-20T00:39:03Z",
+      "side": 1,
+      "message": "ACK. Can I submit another CL or you would like me to add it in this CL itself?\n\nI see it\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/usb_charger.c#43\n\nI think I can modify this function args to get the info needed in usb_charger.c https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/driver/tcpm/tcpci.c#578",
+      "parentUuid": "66806e8c_1763ac79",
+      "revId": "cd5e0c96e63886899b59d877f06ce97a16ebfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1123fdd_7d882b43",
