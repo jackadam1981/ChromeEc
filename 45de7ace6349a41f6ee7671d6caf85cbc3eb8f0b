@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "266a58f9_b2111f8e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5184,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-20T17:03:59Z",
+      "side": 1,
+      "message": "I think for this call location, it should pass the flag directly as opposed to a check on it?  There\u0027s some weirdness here because we\u0027re not actually swapping but testing the hypothetical of running a swap later, and the common function will return false if the flag argument isn\u0027t set",
+      "range": {
+        "startLine": 5184,
+        "startChar": 13,
+        "endLine": 5184,
+        "endChar": 24
+      },
+      "revId": "45de7ace6349a41f6ee7671d6caf85cbc3eb8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef652803_62351199",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6512,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-20T17:03:59Z",
+      "side": 1,
+      "message": "Remove debug prints?",
+      "revId": "45de7ace6349a41f6ee7671d6caf85cbc3eb8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
