@@ -16,6 +16,24 @@
       "message": "Can this state occur on mancomb?",
       "revId": "fddc7d02b7175237a52155c51f0a557da9310fe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b8bedf4_cdf79784",
+        "filename": "board/mancomb/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-20T16:17:56Z",
+      "side": 1,
+      "message": "Not without an issue detecting our charger, so we can remove it.  It\u0027ll generate an error for an undefined state in the LED code if we hit it, which seems good.",
+      "parentUuid": "be332db5_fe789df2",
+      "revId": "fddc7d02b7175237a52155c51f0a557da9310fe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
