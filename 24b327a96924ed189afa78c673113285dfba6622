@@ -69,6 +69,24 @@
       "message": "When I patch this cl and run zmake testall, it passes.",
       "revId": "24b327a96924ed189afa78c673113285dfba6622",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c2b6f82_e265371a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-20T16:35:33Z",
+      "side": 1,
+      "message": "Yep, probably good to land now",
+      "parentUuid": "829bd202_642415eb",
+      "revId": "24b327a96924ed189afa78c673113285dfba6622",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
