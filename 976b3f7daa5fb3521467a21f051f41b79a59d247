@@ -16,6 +16,24 @@
       "message": "Ed, this seems to improve my battery-less boot on guybrush.  Was the NCT3807 the reason why you\u0027d chosen 100ms before in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2126078 ? ",
       "revId": "976b3f7daa5fb3521467a21f051f41b79a59d247",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e6347a4_21de46b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-04-20T21:33:56Z",
+      "side": 1,
+      "message": "No known issues with NCT3807 needing increased exit debounce.\nWould be nice to understand what the root cause is, and align Guybrush and Zork.",
+      "parentUuid": "be67f572_ea1e6779",
+      "revId": "976b3f7daa5fb3521467a21f051f41b79a59d247",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
