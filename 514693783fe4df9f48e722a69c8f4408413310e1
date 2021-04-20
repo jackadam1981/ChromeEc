@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d4b36d48_f377871f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-20T12:34:46Z",
+      "side": 1,
+      "message": "Sorry I wasn\u0027t a part of that discussion. I see Keith mentioning the same thing about the enum-name. Though I think that the initialization can still be done there and gets rid of duplication of logic. Basically if I want to move a GPIO from used to unused I would imagine it should be as simple as just removing the enum-name (same applies for the inverse). As for the logic, we don\u0027t need to do this in the same loop, couldn\u0027t we set the GPIO to `(GPIO_INPUT | GPIO_PULL_UP)` in something like:\n\n#define GPIO_UNINIT(inst) \\\n  gpio_pin_configure(get_device_binding(inst), DT_GPIO_PIN(inst, gpios), \\\n                     CONFIG_GPIO_UNINIT_FLAGS);\n\n#define GPIO_UNINIT_COND(inst) \\\n  COND_CODE_0(DT_NODE_HAS_PROP(id, enum_name), (GPIO_UNINIT(id), ), ())\n\nstatic some_init_function(const struct device *unused) {\n#if DT_NODE_EXISTS(DT_PATH(named_gpios))\n  DT_FOREACH_CHILD(DT_PATH(named_gpios), GPIO_UNINIT_COND)\n#endif\n}\nSYS_INIT(...)",
+      "parentUuid": "67bccafa_58a3193a",
+      "revId": "514693783fe4df9f48e722a69c8f4408413310e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f739360_ccdfbdb3",
         "filename": "zephyr/dts/bindings/gpio/unused-gpios.yaml",
         "patchSetId": 4
