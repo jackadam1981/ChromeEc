@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a1d42d04_965d0a48",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-20T02:18:21Z",
+      "side": 1,
+      "message": "Patch 4 implements moving the check into HOOK_INIT function. Passed verification on npcx9 evb.",
+      "parentUuid": "6757285b_b25da682",
+      "range": {
+        "startLine": 396,
+        "startChar": 37,
+        "endLine": 396,
+        "endChar": 57
+      },
+      "revId": "481930d3b3e8b21dacdced896cc398df0f5d143d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e6a9bc2f_654a68e3",
         "filename": "power/common.c",
         "patchSetId": 2
