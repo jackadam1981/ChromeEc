@@ -33,6 +33,24 @@
       "message": "Note that this delays all init for the entire system by 100ms. Could we contain this to within the init function?\n\nCould the init toggle reset and wait?",
       "revId": "31d2f9d0bca930df06e924c00ceb4183b9b722d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0865c9_4d08d93f",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-04-20T06:28:21Z",
+      "side": 1,
+      "message": "Yes, I\u0027m aware of the big impact of this change for the whole system - however the issue here is with chip\u0027s quirk and there are some trade-offs to workaround this. That being said, I\u0027m waiting for Genesys response regarding other solutions for this issue, but issue is rather significant and want to fix this asap.\n\n\u003e Could we contain this to within the init function?\n\nActually the only option to do so, will be to also move reset toggling there to gl3590_init(), since we cannot allow any i2c transactions in the system for 100ms after toggling reset. I have doubts that this will be better, please see below.\n\n\u003e Could the init toggle reset and wait?\n\nSuch option will delay (until board_init() is called) USB2/USB3 enumaration on servo, I believe this is a thing we want to avoid. As long as GL3590 is held in reset, all USB (including connection between host and STM) traffic is halted.\n\nSo from coding-style perspective, I agree that you idea is better. However considering system behavior, I think it\u0027s better to toggle host hub reset as soon as possible (currently in gpio_pre_init() called from main()).",
+      "parentUuid": "2a086cec_5adddd6e",
+      "revId": "31d2f9d0bca930df06e924c00ceb4183b9b722d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
