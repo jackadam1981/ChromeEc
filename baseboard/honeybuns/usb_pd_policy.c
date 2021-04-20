@@ -84,7 +84,7 @@ __override bool port_discovery_dr_swap_policy(int port,
 	enum pd_data_role role_test =
 		(port == USB_PD_PORT_HOST) ? PD_ROLE_DFP : PD_ROLE_UFP;
 
-	if (dr == role_test)
+	if (dr == role_test && dr_swap_flag)
 		return true;
 
 	/* Do not perform a DR swap */
