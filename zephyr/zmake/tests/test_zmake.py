@@ -79,21 +79,25 @@ def get_test_filepath(suffix):
     return os.path.join(OUR_PATH, 'files', 'sample_{}.txt'.format(suffix))
 
 
-def do_test_with_log_level(log_level):
+def do_test_with_log_level(log_level, fnames=None):
     """Test filtering using a particular log level
 
     Args:
         log_level: Level to use
+        fnames: Dict of regexp to filename. If the regexp matches the
+            command, then the filename will be returned as the output.
+            (None to use default ro/rw output)
 
     Returns:
         tuple:
             - List of log strings obtained from the run
             - Temporary directory used for build
     """
-    fnames = {
-        re.compile(r".*build-ro"): get_test_filepath('ro'),
-        re.compile(r".*build-rw"): get_test_filepath('rw'),
-    }
+    if fnames is None:
+        fnames = {
+            re.compile(r".*build-ro"): get_test_filepath('ro'),
+            re.compile(r".*build-rw"): get_test_filepath('rw'),
+        }
     zmk = zm.Zmake(jobserver=FakeJobserver(fnames))
 
     with LogCapture(level=log_level) as cap:
@@ -154,3 +158,13 @@ def test_filter_debug():
                     "[{}:build-{}]{}".format(tmpname, suffix, line.strip()))
     # This produces an easy-to-read diff if there is a difference
     assert set(recs) == expected
+
+
+def test_filter_devicetree_error():
+    """Test that devicetree errors appear"""
+    recs, tmpname = do_test_with_log_level(
+        logging.ERROR,
+        {re.compile(r'.*'): get_test_filepath('err')})
+
+    dt_errs = [rec for rec in recs if 'adc' in rec]
+    assert "devicetree error: 'adc' is marked as required" in list(dt_errs)[0]
