@@ -46,6 +46,30 @@
       },
       "revId": "6b7eba9c0be5e80d17bfc3bd991abebe2b4a375d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "025a4623_a3e89338",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-20T17:07:01Z",
+      "side": 1,
+      "message": "It looks like the common/usbc/usbc_pd_policy.c function will also check !tc_is_vconn_src() though, right? This change makes it on par with that function. Or it seems like it can be false if honeybus is disinterested in cable information.",
+      "parentUuid": "81bb84d4_cfa2fc44",
+      "range": {
+        "startLine": 102,
+        "startChar": 24,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "6b7eba9c0be5e80d17bfc3bd991abebe2b4a375d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
