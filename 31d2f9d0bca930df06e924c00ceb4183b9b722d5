@@ -51,6 +51,24 @@
       "parentUuid": "2a086cec_5adddd6e",
       "revId": "31d2f9d0bca930df06e924c00ceb4183b9b722d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a9bed6_a47e5939",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-20T17:23:09Z",
+      "side": 1,
+      "message": "I suppose it\u0027s not likely that this part would be used on a chromebook/box (at least connected to the EC). And either way, we have to wait the 100ms.",
+      "parentUuid": "2a0865c9_4d08d93f",
+      "revId": "31d2f9d0bca930df06e924c00ceb4183b9b722d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
