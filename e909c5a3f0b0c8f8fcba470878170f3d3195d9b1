@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b36a8719_c5221bad",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-20T22:49:05Z",
+      "side": 1,
+      "message": "Is this change intended? There are callers which check the returned value is specifically equal to BATTERY_DISCONNECT_ERROR or not. So, they\u0027ll take an unexpected branch.",
+      "range": {
+        "startLine": 223,
+        "startChar": 9,
+        "endLine": 223,
+        "endChar": 22
+      },
+      "revId": "e909c5a3f0b0c8f8fcba470878170f3d3195d9b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
