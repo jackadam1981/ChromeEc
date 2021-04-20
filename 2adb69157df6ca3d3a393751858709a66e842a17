@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d64082f4_99184ec4",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1413538
+      },
+      "writtenOn": "2021-04-20T22:05:31Z",
+      "side": 1,
+      "message": "I tested this only on strongbad board. I made this change strongbad specific now.",
+      "parentUuid": "407fc052_4fb60aac",
+      "range": {
+        "startLine": 297,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 14
+      },
+      "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5722b36_3b14ef56",
@@ -102,6 +126,30 @@
       "writtenOn": "2021-04-19T20:12:31Z",
       "side": 1,
       "message": "Interesting, so this is a delay between releasing of reset and the stm32mon doing stuff?\n\nOur board has a 10k pullup on this line, so I guess it\u0027s marginal/not fast enough?\n\nI would feel a lot better with this number if we had scope shots of this event (reset releasing vs cs asserting), together with perhaps a datasheet of the stm32 bootloader guide saying what the earliest time it\u0027s ready to accept commands is.",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 10
+      },
+      "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0f277b6_07f81764",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1413538
+      },
+      "writtenOn": "2021-04-20T22:05:31Z",
+      "side": 1,
+      "message": "I couldn\u0027t get the scope shots for this event. I guess, we need to consider rise time with the pull up. Having 10K pull resistor and 0.1 uF capacitor, the rise time comes around to be 0.8473 ms. Issue fixes with delay of 1 ms. Surprisingly, even adding \u0027sleep 0\u0027 works and I guess system call overhead may provide enough delay by itself.",
+      "parentUuid": "f5722b36_3b14ef56",
       "range": {
         "startLine": 301,
         "startChar": 0,
