@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee30dd4e_f365e64c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-20T03:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1eb3d5a_bfb0fa25",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "0bd99c1e5c8971a9390a48b89f21f7bfd93f15a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0aa407b1_09114e40",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-19T22:51:16Z",
       "side": 1,
       "message": "Please update the comment to indicate why irq_lock()/irq_unlock() cannot be used by this driver.",
+      "range": {
+        "startLine": 258,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 71
+      },
+      "revId": "0bd99c1e5c8971a9390a48b89f21f7bfd93f15a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd93a189_3fa822ae",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-20T03:16:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0aa407b1_09114e40",
       "range": {
         "startLine": 258,
         "startChar": 0,
