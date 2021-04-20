@@ -158,6 +158,7 @@ enum usb_strings {
 #define CONFIG_CMD_TCPC_DUMP
 
 #define CONFIG_MP4245
+#define USB_HUB_OCP_RESET_MSEC (10 * MSEC)
 
 #else /* RO Specific Config Options */
 

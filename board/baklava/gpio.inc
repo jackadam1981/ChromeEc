@@ -31,6 +31,7 @@ GPIO(EN_PP5000_HSPORT,              PIN(D,  0), GPIO_OUT_LOW)
 GPIO(MST_LP_CTL_L,                  PIN(D, 10), GPIO_ODR_LOW)
 GPIO(MST_RST_L,                     PIN(E, 14), GPIO_ODR_LOW)
 GPIO(MST_HUB_LANE_SWITCH,           PIN(C, 15), GPIO_OUT_HIGH)
+GPIO(MST_UFP_PLUG_DET,              PIN(B, 12), GPIO_OUT_LOW)
 
 /* Display Demux signals */
 GPIO(DEMUX_DP_HDMI_MODE,            PIN(E, 15), GPIO_OUT_LOW)
@@ -44,15 +45,15 @@ GPIO(USBC_UF_RESET_L,               PIN(D,  2), GPIO_ODR_LOW)
 /* USB Hubs signals */
 GPIO(EC_HUB2_RESET_L,               PIN(C,  5), GPIO_ODR_LOW)
 GPIO(EC_HUB3_RESET_L,               PIN(B, 10), GPIO_ODR_LOW)
+GPIO(USBC_DATA_OCP_NOTIFY,          PIN(C,  2), GPIO_OUT_HIGH)
+GPIO(HUB_BPWRDET,                   PIN(C,  1), GPIO_OUT_LOW)
 
 /* USB-A Current limit switches, set default to 1.5A */
-GPIO(TP73,                          PIN(C,  0), GPIO_OUT_LOW)
+GPIO(GBE_RESET_EC,                  PIN(C,  0), GPIO_OUT_LOW)
 GPIO(EC_DFU_MUX_CTRL,               PIN(C,  3), GPIO_OUT_HIGH)
-GPIO(EC_STATUS_LED1,                PIN(C,  1), GPIO_OUT_HIGH)
-GPIO(EC_STATUS_LED2,                PIN(C,  2), GPIO_OUT_HIGH)
 GPIO(USB3_A5_CDP_EN,                PIN(B,  9), GPIO_OUT_LOW)
 GPIO(USB3_A6_CDP_EN,                PIN(C, 13), GPIO_OUT_LOW)
-GPIO(TP41,                          PIN(B, 12), GPIO_OUT_LOW)
+
 
 /* Write protect */
 GPIO(EC_FLASH_WP_ODL,               PIN(A,  3), GPIO_ODR_HIGH)
