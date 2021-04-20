@@ -16,6 +16,24 @@
       "message": "What if we didn\u0027t include this in EC RO? Any security concern?",
       "revId": "6321815c8ba9b565605431f6af65a533dedbdcc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fa0ca0_a60e5516",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-20T07:06:49Z",
+      "side": 1,
+      "message": "This config would bother EC automatically power-on AP on x86, but it seems not affect the arm devices. It prints the powerail status in the EC console when they changed.\nBut, this config also prints \"WARNING: BRINGUP BUILD\" in the console, so I would rather drop this config.",
+      "parentUuid": "fab1fc57_7556bc1d",
+      "revId": "6321815c8ba9b565605431f6af65a533dedbdcc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
