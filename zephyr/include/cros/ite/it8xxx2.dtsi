@@ -69,6 +69,15 @@
 			label = "BBRAM";
 		};
 
+		spislv: spi-slv@f03a00 {
+			compatible = "ite,it8xxx2-cros-shi";
+			reg = <0x00f03a00 0x30>;
+			label = "SPI_SLAVE";
+			interrupts = <171 0>;
+			interrupt-parent = <&intc>;
+			status = "okay";
+		};
+
 		fiu0: flash-controller@80000000 {
 			compatible = "ite,it8xxx2-flash-controller";
 			reg = <0x80000000 0x80000>;
