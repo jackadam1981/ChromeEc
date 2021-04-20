@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57a05bdf_c1075739",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-20T01:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd5429d5_79ff676e",
+      "range": {
+        "startLine": 1126,
+        "startChar": 0,
+        "endLine": 1126,
+        "endChar": 3
+      },
+      "revId": "481930d3b3e8b21dacdced896cc398df0f5d143d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4ac2522_317b62a9",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f57cd8_cd8abb0d",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-20T01:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12debe3c_3a2b6dcd",
+      "range": {
+        "startLine": 352,
+        "startChar": 44,
+        "endLine": 352,
+        "endChar": 65
+      },
+      "revId": "481930d3b3e8b21dacdced896cc398df0f5d143d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3418dd86_f697dcec",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-20T01:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4ac2522_317b62a9",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 352,
+        "endChar": 3
+      },
+      "revId": "481930d3b3e8b21dacdced896cc398df0f5d143d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6228889_4d9d5c7c",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-19T22:37:38Z",
       "side": 1,
       "message": "This function is called periodically to check if any need to hibernate. LCT overflow is a one-time thing. If LCT is not overflow initially, it won\u0027t become overflow in runtime. So it just wastes time to check this always-false condition. Better to move this check to some init hook.",
+      "range": {
+        "startLine": 396,
+        "startChar": 37,
+        "endLine": 396,
+        "endChar": 57
+      },
+      "revId": "481930d3b3e8b21dacdced896cc398df0f5d143d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6757285b_b25da682",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-20T01:46:37Z",
+      "side": 1,
+      "message": "hook init function might be a good idea. I will make a CL and test it later.",
+      "parentUuid": "d6228889_4d9d5c7c",
       "range": {
         "startLine": 396,
         "startChar": 37,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f70ad56b_d0d5fcff",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-20T01:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6a9bc2f_654a68e3",
+      "range": {
+        "startLine": 406,
+        "startChar": 5,
+        "endLine": 406,
+        "endChar": 68
+      },
+      "revId": "481930d3b3e8b21dacdced896cc398df0f5d143d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ac589bb_d4919e5d",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-04-19T22:37:38Z",
       "side": 1,
       "message": "Better to print some message to note going back to hibernate.",
+      "range": {
+        "startLine": 407,
+        "startChar": 41,
+        "endLine": 407,
+        "endChar": 42
+      },
+      "revId": "481930d3b3e8b21dacdced896cc398df0f5d143d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0403dc6_58004cd7",
+        "filename": "power/common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-20T01:46:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ac589bb_d4919e5d",
       "range": {
         "startLine": 407,
         "startChar": 41,
