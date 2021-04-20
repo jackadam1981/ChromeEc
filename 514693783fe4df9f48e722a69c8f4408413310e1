@@ -99,6 +99,30 @@
       },
       "revId": "514693783fe4df9f48e722a69c8f4408413310e1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8a757b2_0f11984a",
+        "filename": "zephyr/dts/bindings/gpio/unused-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-20T14:54:24Z",
+      "side": 1,
+      "message": "OK, so even if we do have DTS to manually specify this, I still would like to see the feature land upstream.\n\nSending it to there for review will help you get a more extensive code review as well.",
+      "parentUuid": "9d6b614c_45c74892",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "514693783fe4df9f48e722a69c8f4408413310e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
