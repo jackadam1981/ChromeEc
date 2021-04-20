@@ -22,6 +22,30 @@
       },
       "revId": "6b7eba9c0be5e80d17bfc3bd991abebe2b4a375d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81bb84d4_cfa2fc44",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-20T09:08:20Z",
+      "side": 1,
+      "message": "But, this isn\u0027t checked when port_discovery_vconn_swap_policy() is called in pe_attempt_port_discovery",
+      "parentUuid": "3196947e_f3263ca0",
+      "range": {
+        "startLine": 102,
+        "startChar": 24,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "6b7eba9c0be5e80d17bfc3bd991abebe2b4a375d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
