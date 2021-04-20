@@ -649,6 +649,14 @@ static void cros_shi_npcx_isr(const struct device *dev)
 	inst->EVSTAT = stat;
 	stat2 = inst->EVSTAT2;
 
+	/* Test only */
+	if (IS_BIT_SET(stat2, NPCX_EVSTAT2_CSNFE) &&
+			IS_BIT_SET(stat2, NPCX_EVSTAT2_CSNRE)) {
+		if (state == SHI_STATE_SENDING) {
+			ccprints("Oops");
+		}
+	}
+
 	/* SHI CS pin is asserted in EVSTAT2 */
 	if (IS_BIT_SET(stat2, NPCX_EVSTAT2_CSNFE)) {
 		/* Clear pending bit of CSNFE */
