@@ -152,14 +152,10 @@ static int nct38xx_tcpm_set_cc(int port, int pull)
 	int rv;
 
 	if (pull == TYPEC_CC_OPEN) {
-		bool is_sinking;
+		if (!tcpm_get_snk_ctrl(port))
+			return EC_ERROR_UNKNOWN;
 
-		rv = tcpm_get_snk_ctrl(port, &is_sinking);
-		if (rv)
-			return rv;
-
-		if (is_sinking)
-			action = MASK_CLR;
+		action = MASK_CLR;
 	}
 
 	rv = tcpc_update8(port,
