@@ -6,13 +6,13 @@
 #include "common.h"
 
 #include "button.h"
-#include "cbi_ec_fw_config.h"
 #include "charge_ramp.h"
 #include "charger.h"
 #include "console.h"
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_lsm6dso.h"
 #include "driver/als_tcs3400.h"
+#include "fw_config.h"
 #include "hooks.h"
 #include "lid_switch.h"
 #include "power_button.h"
@@ -43,6 +43,7 @@ BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
  */
 const union brya_cbi_fw_config fw_config_defaults = {
 	.usb_db = DB_USB3_PS8815,
+	.kb_bl = KEYBOARD_BACKLIGHT_ENABLED,
 };
 
 __override void board_cbi_init(void)

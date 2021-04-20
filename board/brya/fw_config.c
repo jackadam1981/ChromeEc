@@ -5,8 +5,8 @@
 
 #include "common.h"
 #include "console.h"
-#include "cbi_ec_fw_config.h"
 #include "cros_board_info.h"
+#include "fw_config.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
@@ -16,7 +16,7 @@ BUILD_ASSERT(sizeof(fw_config) == sizeof(uint32_t));
 /****************************************************************************
  * Brya FW_CONFIG access
  */
-void init_fw_config(void)
+void board_init_fw_config(void)
 {
 	if (cbi_get_fw_config(&fw_config.raw_value)) {
 		CPRINTS("CBI: Read FW_CONFIG failed, using board defaults");
