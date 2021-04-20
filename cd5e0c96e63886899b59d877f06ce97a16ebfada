@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66806e8c_1763ac79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-20T00:01:40Z",
+      "side": 1,
+      "message": "I think it\u0027s really not that involved. With a cursory look, it looks like it just might be the change in usb_charger.c The other references seem not applicable.",
+      "parentUuid": "bf83eb87_6174b0b2",
+      "revId": "cd5e0c96e63886899b59d877f06ce97a16ebfada",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1123fdd_7d882b43",
