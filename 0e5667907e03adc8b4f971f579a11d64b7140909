@@ -16,6 +16,24 @@
       "message": "Remove this line, we don\u0027t need ADC_VBUS anymore.",
       "revId": "0e5667907e03adc8b4f971f579a11d64b7140909",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e57a7448_d21a7ccc",
+        "filename": "baseboard/asurada/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-20T05:48:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "894648e6_3a051b40",
+      "revId": "0e5667907e03adc8b4f971f579a11d64b7140909",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
