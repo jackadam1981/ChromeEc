@@ -36,8 +36,6 @@
 #define CONFIG_CHARGER_RAA489000
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 10
 #define CONFIG_CHARGER_SENSE_RESISTOR 10
-#define CONFIG_OCPC_DEF_RBATT_MOHMS 22 /* R_DS(on) 11.6mOhm + 10mOhm sns rstr */
-#define CONFIG_OCPC
 #undef  CONFIG_CHARGER_SINGLE_CHIP
 #undef CONFIG_CMD_CHARGER_DUMP
 #undef CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE
@@ -83,7 +81,7 @@
 /*******************************************************************************/
 
 /* USB PD */
-#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPM_RAA489000
 
 /* USB defines specific to external TCPCs */
@@ -108,6 +106,16 @@
 #define I2C_PORT_ACCEL      I2C_PORT_SENSOR
 
 #define I2C_ADDR_EEPROM_FLAGS 0x50 /* 7b address */
+
+/*
+ * I2C pin names for baseboard
+ *
+ * Note: these lines will be set as i2c on start-up, but this should be
+ * okay since they're ODL.
+ */
+#define GPIO_EC_I2C_SUB_USB_C1_SCL GPIO_GPIO92_NC
+#define GPIO_EC_I2C_SUB_USB_C1_SDA GPIO_HDMI_HPD_SUB_ODL
+
 
 /* Sensors */
 #define CONFIG_CMD_ACCELS
@@ -159,7 +167,6 @@
 
 enum chg_id {
 	CHARGER_PRIMARY,
-	CHARGER_SECONDARY,
 	CHARGER_NUM,
 };
 
