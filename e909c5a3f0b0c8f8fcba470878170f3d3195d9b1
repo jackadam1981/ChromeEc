@@ -22,6 +22,30 @@
       },
       "revId": "e909c5a3f0b0c8f8fcba470878170f3d3195d9b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "164707de_c6759058",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-20T23:39:36Z",
+      "side": 1,
+      "message": "Good catch, this is incorrect. The return type should be of enum battery_disconnect_state.",
+      "parentUuid": "b36a8719_c5221bad",
+      "range": {
+        "startLine": 223,
+        "startChar": 9,
+        "endLine": 223,
+        "endChar": 22
+      },
+      "revId": "e909c5a3f0b0c8f8fcba470878170f3d3195d9b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
