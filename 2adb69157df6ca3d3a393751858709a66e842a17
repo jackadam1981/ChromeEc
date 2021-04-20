@@ -115,6 +115,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9161465_966131df",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-20T22:51:32Z",
+      "side": 1,
+      "message": "I would be more inclined to keep it for all boards, especially with the new revelations in the other comment.",
+      "parentUuid": "d64082f4_99184ec4",
+      "range": {
+        "startLine": 297,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 14
+      },
+      "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5722b36_3b14ef56",
         "filename": "util/flash_fp_mcu",
         "patchSetId": 1
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "I couldn\u0027t get the scope shots for this event. I guess, we need to consider rise time with the pull up. Having 10K pull resistor and 0.1 uF capacitor, the rise time comes around to be 0.8473 ms. Issue fixes with delay of 1 ms. Surprisingly, even adding \u0027sleep 0\u0027 works and I guess system call overhead may provide enough delay by itself.",
       "parentUuid": "f5722b36_3b14ef56",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 10
+      },
+      "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f979426b_910ef6b7",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-20T22:51:32Z",
+      "side": 1,
+      "message": "That would explain a lot, I missed that we had a capacitor.\n\nMatch checks out, we should use at least 1ms for that reset to deasserted. But that\u0027s not enough:\n\nLooking further: https://www.st.com/resource/en/application_note/cd00167594-stm32-microcontroller-system-memory-boot-mode-stmicroelectronics.pdf. Apparently we need at least a 16.63 ms + 1us delay between reset deasserting and bootloader being able to recieve stuff on SPI.\n\nSounds like we would want 20ms instead and it\u0027s a miracle it worked until now with nothing. It\u0027s probably just userspace/syscall delays the helped us so far.\n\nThis kind of discussion would be perfect to be captured in the commit message and/or code comment.",
+      "parentUuid": "b0f277b6_07f81764",
       "range": {
         "startLine": 301,
         "startChar": 0,
