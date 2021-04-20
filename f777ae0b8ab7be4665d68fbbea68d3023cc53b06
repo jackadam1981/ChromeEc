@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f86d0c86_0bf832ce",
+        "filename": "board/brya/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-20T18:20:42Z",
+      "side": 1,
+      "message": "Move this into fw_config.c, and it can then be made static.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 53
+      },
+      "revId": "f777ae0b8ab7be4665d68fbbea68d3023cc53b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6450ae1b_6948041d",
+        "filename": "board/brya/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-20T18:20:42Z",
+      "side": 1,
+      "message": "See board.c - you can delete if you move this into fw_config.c",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 57
+      },
+      "revId": "f777ae0b8ab7be4665d68fbbea68d3023cc53b06",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
