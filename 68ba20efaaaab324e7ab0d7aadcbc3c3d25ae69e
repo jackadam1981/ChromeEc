@@ -16,6 +16,24 @@
       "message": "Why do we still need to probe if the field will be provisioned?",
       "revId": "68ba20efaaaab324e7ab0d7aadcbc3c3d25ae69e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f386964e_1505d4d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-04-20T02:44:54Z",
+      "side": 1,
+      "message": "We need to check usbmux of sub-board before writing cbi(ssfc).",
+      "parentUuid": "c8fc4c26_ff30beec",
+      "revId": "68ba20efaaaab324e7ab0d7aadcbc3c3d25ae69e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
