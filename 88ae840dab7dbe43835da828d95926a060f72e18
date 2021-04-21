@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e19f03f4_aaef7acc",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1379412
+      },
+      "writtenOn": "2021-04-21T14:57:42Z",
+      "side": 1,
+      "message": "Is this not need at HOOK_INIT? \n\t/* Default set the SBU lines to AUX mode on both the TCPC-AIC */\n\tboard_connect_c0_sbu_deferred();\n\n\n#if defined(HAS_TASK_PD_C2)\n\t /* Only TCPC-0 can do CCD or BSSB, Default set SBU lines to AUX */\n\tpca9675_update_pins(TYPE_C_PORT_2, 0,\n\t\tTCPC_AIC_IOE_USB_MUX_CNTRL_1 | TCPC_AIC_IOE_USB_MUX_CNTRL_0);\n#endif\n}",
+      "revId": "88ae840dab7dbe43835da828d95926a060f72e18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
