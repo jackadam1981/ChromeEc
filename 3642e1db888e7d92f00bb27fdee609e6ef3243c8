@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd31d13e_79d787e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-04-21T18:11:46Z",
+      "side": 1,
+      "message": "I\u0027d like to keep Cr50 and Ti50 output same, so that we can reuse any test scripts or hdctools driver.",
+      "parentUuid": "b8ea6248_0e04a4a1",
+      "revId": "3642e1db888e7d92f00bb27fdee609e6ef3243c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3bd4c05_ec4859f7",
