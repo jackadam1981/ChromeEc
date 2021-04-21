@@ -56,6 +56,41 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7cc422e_4750e24d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-21T01:39:16Z",
+      "side": 1,
+      "message": "Hi Yuval:\nWe have thought about it. There\u0027re serval way to handle unused pins for better power consumption. The current implementation is based on the suggestions in b:184783076. Since power consumption investigation on lazor and volteer is ongoing, Nuvoton provided this CL to prevent leakage current on G3 and S0ix. But it seems there\u0027re divergence how to handle unused pins via dts, I suggest let\u0027s discuss it in b:184783076 first. Is it ok to you?",
+      "parentUuid": "d4b36d48_f377871f",
+      "revId": "514693783fe4df9f48e722a69c8f4408413310e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2838231_71c10872",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-21T01:39:16Z",
+      "side": 1,
+      "message": "Hi Keith and WH:\nCould you add Yuval and Jack in b:184783076? Nuvoton might suspend this CL before we have a conclusion. Thanks.",
+      "revId": "514693783fe4df9f48e722a69c8f4408413310e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5f739360_ccdfbdb3",
         "filename": "zephyr/dts/bindings/gpio/unused-gpios.yaml",
         "patchSetId": 4
@@ -115,6 +150,30 @@
       "side": 1,
       "message": "OK, so even if we do have DTS to manually specify this, I still would like to see the feature land upstream.\n\nSending it to there for review will help you get a more extensive code review as well.",
       "parentUuid": "9d6b614c_45c74892",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "514693783fe4df9f48e722a69c8f4408413310e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f2300c_df2cd2cd",
+        "filename": "zephyr/dts/bindings/gpio/unused-gpios.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-21T01:39:16Z",
+      "side": 1,
+      "message": "\u003eis there a way to do this without using any DTS at all?\n\u003ealso, this should be sent to upstream zephyr to review. It seems like it would be far more useful to the upstream community than just us\n\nHi Jack:\nAs I mentioned in last comment, there\u0027re serval way to handle unused pins for better power consumption. The current implementation is based on the suggestions in b:184783076. Nuvoton provided this CL to prevent leakage current on G3 and S0ix during power consumption investigation on lazor and volteer. \n\nSince there\u0027re divergences how to handle unused pins, I suggest let\u0027s discuss it in b:184783076 first. How do you think?",
+      "parentUuid": "e8a757b2_0f11984a",
       "range": {
         "startLine": 1,
         "startChar": 0,
