@@ -16,6 +16,24 @@
       "message": "Run before set_state.  It\u0027s a best practice to immediately return without doing anything after set_state since we\u0027ve already run entry for the new state at this point.",
       "revId": "4bcc3dd1eb67ba5eca46877502187034d92c0c75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20874073_0c7253a3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 4327,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-21T00:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b980155_cd880054",
+      "revId": "4bcc3dd1eb67ba5eca46877502187034d92c0c75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
