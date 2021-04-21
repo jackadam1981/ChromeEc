@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb75b091_193d9e6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-21T21:52:22Z",
+      "side": 1,
+      "message": "please separate pca9675.? changes into a separate driver update patch.",
+      "revId": "5369657bdc0b66d715ffbfb4eee55ab8f30bb048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34bb3172_618cccec",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-21T21:52:22Z",
+      "side": 1,
+      "message": "pca9675_read16",
+      "range": {
+        "startLine": 20,
+        "startChar": 11,
+        "endLine": 20,
+        "endChar": 23
+      },
+      "revId": "5369657bdc0b66d715ffbfb4eee55ab8f30bb048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d22d417_7863b001",
+        "filename": "driver/ioexpander/pca9675.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-21T21:52:22Z",
+      "side": 1,
+      "message": "pca9675_write16",
+      "range": {
+        "startLine": 27,
+        "startChar": 11,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "5369657bdc0b66d715ffbfb4eee55ab8f30bb048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b75ec5c_bf394836",
+        "filename": "driver/ioexpander/pca9675.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-21T21:52:22Z",
+      "side": 1,
+      "message": "Write",
+      "range": {
+        "startLine": 31,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 7
+      },
+      "revId": "5369657bdc0b66d715ffbfb4eee55ab8f30bb048",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
