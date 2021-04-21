@@ -16,6 +16,23 @@
       "message": "I made some fixes to servo fw for b:178484932, they are not important as only some chargers are affected, but it would be good to put the changes into the branch.",
       "revId": "3d4758a6f32e7e960c75e60b9a5232d4740efbc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec53ebbd_5987ec88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-04-21T15:49:01Z",
+      "side": 1,
+      "message": "Brian, can you please review this merge cl?",
+      "revId": "3d4758a6f32e7e960c75e60b9a5232d4740efbc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
