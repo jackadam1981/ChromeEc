@@ -53,12 +53,18 @@ uint8_t rdd_is_detected(void)
 	return rdd_is_detected_shadow;
 }
 
-void print_rdd_state(void)
+void print_rdd_state(bool with_keepalive_status)
 {
 	ccprintf("Rdd:     %s%s\n",
-		 force_detected ? "keepalive" : device_state_name(state),
-		 ccd_get_flag(CCD_FLAG_RDDKEEPALIVE_AT_BOOT) ? " (atboot)" :
-		 "");
+		with_keepalive_status && force_detected ?
+			"keepalive" : device_state_name(state),
+		ccd_get_flag(CCD_FLAG_RDDKEEPALIVE_AT_BOOT) ? " (atboot)" :
+		"");
+}
+
+bool rdd_is_keepalive(void)
+{
+	return force_detected != 0;
 }
 
 /**
@@ -219,7 +225,7 @@ void init_rdd_state(void)
 static int command_rdd_keepalive(int argc, char **argv)
 {
 	if (argc == 1) {
-		print_rdd_state();
+		print_rdd_state(true);
 		return EC_SUCCESS;
 	}
 

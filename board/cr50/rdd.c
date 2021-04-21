@@ -462,11 +462,11 @@ static int command_ccd_state(int argc, char **argv)
 	print_ap_state();
 	print_ap_uart_state();
 	print_ec_state();
-	print_rdd_state();
 	print_servo_state();
+	print_rdd_state(false);
 
-	ccprintf("CCD EXT: %s\n",
-		 ccd_ext_is_enabled() ? "enabled" : "disabled");
+	ccprintf("CCD EXT: %sabled\n", ccd_ext_is_enabled() ? "en" : "dis");
+	ccprintf("KeepAlive: %sabled\n", rdd_is_keepalive() ? "en" : "dis");
 
 	ccprintf("State flags:");
 	print_state_flags(CC_COMMAND, get_state_flags());

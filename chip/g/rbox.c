@@ -46,7 +46,7 @@ int rbox_powerbtn_is_pressed(void)
 static void rbox_check_rdd(void)
 {
 #ifdef CR50_DEV
-	print_rdd_state();
+	print_rdd_state(true);
 #endif
 	if (rbox_powerbtn_is_pressed() && rdd_is_detected()) {
 		power_button_release_enable_interrupt(1);
