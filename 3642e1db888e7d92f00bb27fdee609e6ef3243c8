@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3bd4c05_ec4859f7",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-04-21T17:53:46Z",
+      "side": 1,
+      "message": "Should we just print Rdd and KeepAlive here as two separate lines?",
+      "revId": "3642e1db888e7d92f00bb27fdee609e6ef3243c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5088f64f_e5eaef47",
+        "filename": "chip/g/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-04-21T17:53:46Z",
+      "side": 1,
+      "message": "rddkeepalive_enabled",
+      "range": {
+        "startLine": 65,
+        "startChar": 5,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "3642e1db888e7d92f00bb27fdee609e6ef3243c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
