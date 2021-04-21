@@ -34,6 +34,24 @@
       "parentUuid": "d9166342_470ad6b4",
       "revId": "31f2750efa8466653709a0a2c866e328a71e6679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "867c1af8_acf51475",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-21T23:15:09Z",
+      "side": 1,
+      "message": "does it become dead lock if I add CQ-DEPEND\u003dCL:2845014 , because other CL depends on this CL.\n\nor can we try with both CLs putting to commit queue together ?",
+      "parentUuid": "122a09f7_29f20fcd",
+      "revId": "31f2750efa8466653709a0a2c866e328a71e6679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
