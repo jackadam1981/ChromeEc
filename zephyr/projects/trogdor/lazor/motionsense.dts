@@ -114,9 +114,7 @@
 			mutex = <&mutex_bmi160>;
 			port = <&i2c_sensor>;
 			rot-standard-ref = <&base_rot_ref>;
-			default-range = <4>;
 			drv-data = <&bmi160_data>;
-			i2c-spi-addr-flags = "BMI160_ADDR0_FLAGS";
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
@@ -141,9 +139,7 @@
 			mutex = <&mutex_bmi160>;
 			port = <&i2c_sensor>;
 			rot-standard-ref = <&base_rot_ref>;
-			default-range = <1000>; /* dps */
 			drv-data = <&bmi160_data>;
-			i2c-spi-addr-flags = "BMI160_ADDR0_FLAGS";
 		};
 	};
 
