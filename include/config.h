@@ -1784,7 +1784,9 @@
 /* Flash configuration */
 
 /* This enables console commands and higher-level features */
+#ifndef CONFIG_ZEPHYR
 #define CONFIG_FLASH
+#endif
 /* This enables chip-specific access functions */
 #define CONFIG_FLASH_PHYSICAL
 #undef CONFIG_FLASH_BANK_SIZE
