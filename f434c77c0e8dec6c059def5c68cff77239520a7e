@@ -52,6 +52,24 @@
       "parentUuid": "1fd73489_62f1be1a",
       "revId": "f434c77c0e8dec6c059def5c68cff77239520a7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7335c454_a3fab27d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-21T01:54:47Z",
+      "side": 1,
+      "message": "It\u0027s also a bugfix. Daisuke pointed out that some callers check explicitly for BATTERY_DISCONNECT_ERROR, so we\u0027d be taking a different path. Quickly checking the callers on ToT, it seems that the ones that do are old boards so we might be ok.",
+      "parentUuid": "8d0f215f_1079a4a2",
+      "revId": "f434c77c0e8dec6c059def5c68cff77239520a7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
