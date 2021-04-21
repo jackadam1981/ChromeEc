@@ -137,6 +137,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fed4536_572a8dbb",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-21T19:34:53Z",
+      "side": 1,
+      "message": "Agree. If we\u0027re not currently following the spec we should fix it for all boards. Someone on the FP team can do a quick test on another board as a sanity check once you\u0027ve finalized the values.",
+      "parentUuid": "a9161465_966131df",
+      "range": {
+        "startLine": 297,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 14
+      },
+      "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5722b36_3b14ef56",
