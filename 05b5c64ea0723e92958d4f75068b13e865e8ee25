@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c89ed3_971f78f5",
+        "filename": "zephyr/projects/volteer/delbin/motionsense.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-04-21T23:14:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8e5e6db_617169ee",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 38
+      },
+      "revId": "05b5c64ea0723e92958d4f75068b13e865e8ee25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2014336e_2304e0fe",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-21T18:56:10Z",
       "side": 1,
       "message": "Delbin",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "05b5c64ea0723e92958d4f75068b13e865e8ee25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3549e55_b5283c87",
+        "filename": "zephyr/projects/volteer/delbin/src/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-04-21T23:14:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2014336e_2304e0fe",
       "range": {
         "startLine": 10,
         "startChar": 3,
