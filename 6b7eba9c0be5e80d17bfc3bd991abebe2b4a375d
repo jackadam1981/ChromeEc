@@ -94,6 +94,30 @@
       },
       "revId": "6b7eba9c0be5e80d17bfc3bd991abebe2b4a375d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c32fea_bacf29c2",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-21T15:19:23Z",
+      "side": 1,
+      "message": "Yes, the check would match the common code one so it makes sense to be there if you\u0027d like to be Vconn source.\n\nOn the other hand, if you don\u0027t need the cable information then choosing to not swap reduces the amount of startup chatter.",
+      "parentUuid": "119a4b63_e35f9d92",
+      "range": {
+        "startLine": 102,
+        "startChar": 24,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "6b7eba9c0be5e80d17bfc3bd991abebe2b4a375d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
