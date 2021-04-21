@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b6f5a1e_627775bc",
+        "filename": "zephyr/drivers/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5c0eaaaf_42afb2ec",
+      "range": {
+        "startLine": 8,
+        "startChar": 22,
+        "endLine": 8,
+        "endChar": 29
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35dfff09_5841df86",
@@ -227,6 +251,30 @@
       "side": 1,
       "message": "This Kconfig file is removed.",
       "parentUuid": "35dfff09_5841df86",
+      "range": {
+        "startLine": 8,
+        "startChar": 14,
+        "endLine": 8,
+        "endChar": 21
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1ccf4ec_4ee5b31b",
+        "filename": "zephyr/drivers/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f3efc99_1908c972",
       "range": {
         "startLine": 8,
         "startChar": 14,
@@ -284,6 +332,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ad8528_4b497cf5",
+        "filename": "zephyr/drivers/cros_spi_slv/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a605f641_8bb4cbaf",
+      "range": {
+        "startLine": 5,
+        "startChar": 54,
+        "endLine": 5,
+        "endChar": 61
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "207e4df1_a380c35e",
@@ -331,6 +403,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d38995ed_f0c6e9a4",
+        "filename": "zephyr/drivers/cros_spi_slv/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c8e29e77_02df548f",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "468c6dc7_e648ec9f",
@@ -368,6 +464,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "468c6dc7_e648ec9f",
+      "range": {
+        "startLine": 8,
+        "startChar": 9,
+        "endLine": 8,
+        "endChar": 10
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f43504_47f2b515",
+        "filename": "zephyr/drivers/cros_spi_slv/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "86315e82_18a4a607",
       "range": {
         "startLine": 8,
         "startChar": 9,
@@ -472,6 +592,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "068baba1_c4be7967",
+        "filename": "zephyr/drivers/cros_spi_slv/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e7a98d9a_85bd84bd",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 2
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "819f3ed8_7eebcd98",
+        "filename": "zephyr/drivers/cros_spi_slv/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "09919660_28e298d7",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 10,
+        "endChar": 31
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d92a1421_e36d2f2e",
@@ -509,6 +677,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "d92a1421_e36d2f2e",
+      "range": {
+        "startLine": 17,
+        "startChar": 25,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8975104_c8a69e17",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54951252_92bb4ae5",
       "range": {
         "startLine": 17,
         "startChar": 25,
@@ -566,6 +758,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9161c192_e8689530",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6ef524a9_32990119",
+      "range": {
+        "startLine": 56,
+        "startChar": 2,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f0fa6b4_a4a1ad8b",
@@ -603,6 +819,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "5f0fa6b4_a4a1ad8b",
+      "range": {
+        "startLine": 190,
+        "startChar": 2,
+        "endLine": 190,
+        "endChar": 3
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed902e03_dc897101",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d0842c0e_06cd7b65",
       "range": {
         "startLine": 190,
         "startChar": 2,
@@ -660,6 +900,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c1e586_7c9d3768",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a67485a_1ae50e21",
+      "range": {
+        "startLine": 200,
+        "startChar": 32,
+        "endLine": 200,
+        "endChar": 54
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39de6f17_26797940",
@@ -707,6 +971,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6002ef02_45f51176",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b58c4cb_cf9c71d5",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 33
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bca7094d_dc445334",
@@ -744,6 +1032,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "bca7094d_dc445334",
+      "range": {
+        "startLine": 335,
+        "startChar": 1,
+        "endLine": 335,
+        "endChar": 2
+      },
+      "revId": "43ae88b8651e75e135e45aef22a608d18e4a2067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a66bb617_59d2c99b",
+        "filename": "zephyr/drivers/cros_spi_slv/cros_spi_slv_ite.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-21T14:50:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2e052f50_892fcecf",
       "range": {
         "startLine": 335,
         "startChar": 1,
