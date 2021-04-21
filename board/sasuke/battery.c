@@ -146,19 +146,26 @@ enum ec_status charger_profile_override_set_param(uint32_t param,
 /* Lower our input voltage to 5V in S0iX when battery is full. */
 static void reduce_input_voltage_when_full(void)
 {
-        int max_pd_voltage_mv;
-        int port;
+	static int saved_input_voltage = -1;
+	int max_pd_voltage_mv = pd_get_max_voltage();
+	int port;
 
-        if (charge_get_percent() == 100 &&
-           chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
-                max_pd_voltage_mv = 5000;
-        else
-                max_pd_voltage_mv = PD_MAX_VOLTAGE_MV;
+	if (charge_get_percent() == 100 &&
+			chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+		if (max_pd_voltage_mv != 5000) {
+			saved_input_voltage = max_pd_voltage_mv;
+			max_pd_voltage_mv = 5000;
+		}
+	} else if (saved_input_voltage != -1) {
+		if (max_pd_voltage_mv == 5000)
+			max_pd_voltage_mv = saved_input_voltage;
+		saved_input_voltage = -1;
+	}
 
-        if (pd_get_max_voltage() != max_pd_voltage_mv) {
-                for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
-                        pd_set_external_voltage_limit(port, max_pd_voltage_mv);
-        }
+	if (pd_get_max_voltage() != max_pd_voltage_mv) {
+		for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
+			pd_set_external_voltage_limit(port, max_pd_voltage_mv);
+	}
 }
 DECLARE_HOOK(HOOK_SECOND, reduce_input_voltage_when_full,
              HOOK_PRIO_DEFAULT);
