@@ -22,6 +22,30 @@
       },
       "revId": "48a463e9b93dac8bb1bc3a32e31cb285238759ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324c0385_b8d70b4e",
+        "filename": "zephyr/projects/volteer/volteer/pwm.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-21T09:32:01Z",
+      "side": 1,
+      "message": "I have searched all yaml files in Zephyr. The properties that support \u0027enum\u0027 are with \"int\" and \"string\" type. No example is found with \"phandle-array\" type.  From enums.yaml file (https://github.com/zephyrproject-rtos/zephyr/blob/master/scripts/dts/python-devicetree/tests/test-bindings/enums.yaml) for testing binding, I also don\u0027t see the support for \"phandle-array\" type.",
+      "parentUuid": "5eb6e5cf_a779073c",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 56
+      },
+      "revId": "48a463e9b93dac8bb1bc3a32e31cb285238759ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
