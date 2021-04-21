@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad859797_ccc8a0b2",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-21T07:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb287926_d4c90788",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "f42ec8734613cfca5086c356dfa32dcd963a0cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94c0e87a_a1435851",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-20T19:37:06Z",
       "side": 1,
       "message": "use the standard BSD-style license header with no spdx stuff",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 38
+      },
+      "revId": "f42ec8734613cfca5086c356dfa32dcd963a0cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e43ad4b_1eea7b53",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-21T07:41:52Z",
+      "side": 1,
+      "message": "Sorry, was copied from volteer\u0027s motionsense.dts and didn\u0027t think to look up here.",
+      "parentUuid": "94c0e87a_a1435851",
       "range": {
         "startLine": 4,
         "startChar": 0,
