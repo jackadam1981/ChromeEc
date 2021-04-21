@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9f6197a_757f403d",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-21T16:14:40Z",
+      "side": 1,
+      "message": "See below - also add driver support for kx022 lid accelerometer as a separate CL, but don\u0027t but in the device tree until b:183990188 is fixed.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "508e81576d3f2c3083edb1803f1e4ba490276a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "987ab1f3_e450b722",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-21T16:14:40Z",
+      "side": 1,
+      "message": "I think we need an entry for ec-s5 as well.  Seems like an oversight that cros-ec doesn\u0027t include an entry for SENSOR_CONFIG_EC_S5.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "508e81576d3f2c3083edb1803f1e4ba490276a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd57124c_7cc8ec1a",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-21T16:14:40Z",
+      "side": 1,
+      "message": "Related to http://issuetracker.google.com/183990188#comment4, the Lazor board supports the ICM426xx IMU as a second source sensor.  We will need to compile in the ICM426xx driver and then add the board_detect_motionsensor() to make a runtime decision as to the active sensor.\n\nCan you add the framework to compile in the ICM426xx driver?  Once b:183990188 solves the runtime update of motion_sensors[], we can do something similar with the I2C probing.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "508e81576d3f2c3083edb1803f1e4ba490276a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0288a5_1018283f",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-21T16:14:40Z",
+      "side": 1,
+      "message": "Add ec-s5 entry.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 11
+      },
+      "revId": "508e81576d3f2c3083edb1803f1e4ba490276a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
