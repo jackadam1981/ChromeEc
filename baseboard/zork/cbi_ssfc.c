@@ -22,7 +22,7 @@ static void cbi_ssfc_init(void)
 
 	CPRINTS("Read CBI SSFC : 0x%04X", cached_ssfc);
 }
-DECLARE_HOOK(HOOK_INIT, cbi_ssfc_init, HOOK_PRIO_FIRST);
+XECLARE_HOOK(HOOK_INIT, cbi_ssfc_init, HOOK_PRIO_FIRST);
 
 enum ec_ssfc_base_gyro_sensor get_cbi_ssfc_base_sensor(void)
 {
