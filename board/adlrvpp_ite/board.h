@@ -73,8 +73,11 @@
 #endif
 
 /* TCPC */
+#if 0
 #define CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 #define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT 1
+#endif
+#define CONFIG_USB_PD_TCPM_CCGXXF
 
 /* Config Fan */
 #define GPIO_FAN_POWER_EN	GPIO_EC_THRM_SEN_PWRGATE_N
@@ -86,7 +89,9 @@ enum adlrvp_i2c_channel {
 	I2C_CHAN_FLASH,
 	I2C_CHAN_BATT_CHG,
 	I2C_CHAN_TYPEC_0,
+#if defined(HAS_TASK_PD_C1)
 	I2C_CHAN_TYPEC_1,
+#endif
 #if defined(HAS_TASK_PD_C2)
 	I2C_CHAN_TYPEC_2,
 	I2C_CHAN_TYPEC_3,
