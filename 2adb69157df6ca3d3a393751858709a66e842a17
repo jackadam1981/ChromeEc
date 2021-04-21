@@ -161,6 +161,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbfde532_4bcbcb82",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-21T19:36:44Z",
+      "side": 1,
+      "message": "Cool\n\n\u003e once you\u0027ve finalized the values\n\nI propose 100ms. Not like anything\u0027s in a rush in this area of the code when the command itself takes half a minute.",
+      "parentUuid": "1fed4536_572a8dbb",
+      "range": {
+        "startLine": 297,
+        "startChar": 4,
+        "endLine": 297,
+        "endChar": 14
+      },
+      "revId": "2adb69157df6ca3d3a393751858709a66e842a17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5722b36_3b14ef56",
