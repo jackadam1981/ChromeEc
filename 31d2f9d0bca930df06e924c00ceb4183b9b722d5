@@ -69,6 +69,24 @@
       "parentUuid": "2a0865c9_4d08d93f",
       "revId": "31d2f9d0bca930df06e924c00ceb4183b9b722d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd734cf4_822b960e",
+        "filename": "driver/gl3590.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-04-21T21:57:01Z",
+      "side": 1,
+      "message": "Hi Aseda, thanks. I will wait before merging this until discussion in b/181930164 is resolved.",
+      "parentUuid": "d0a9bed6_a47e5939",
+      "revId": "31d2f9d0bca930df06e924c00ceb4183b9b722d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
