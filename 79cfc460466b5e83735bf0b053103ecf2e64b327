@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e35161_5f6b4d87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-21T03:43:41Z",
+      "side": 1,
+      "message": "Please check https://crrev.com/c/2842707",
+      "parentUuid": "fce50814_2957492c",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 55
+      },
+      "revId": "79cfc460466b5e83735bf0b053103ecf2e64b327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e3c0163_b3f78069",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-20T15:39:57Z",
       "side": 1,
       "message": "put this in a separate CL if you can",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 69
+      },
+      "revId": "79cfc460466b5e83735bf0b053103ecf2e64b327",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3067f3d1_9e1a0aa7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-21T03:43:41Z",
+      "side": 1,
+      "message": "Please check https://crrev.com/c/2842706",
+      "parentUuid": "3e3c0163_b3f78069",
       "range": {
         "startLine": 15,
         "startChar": 3,
