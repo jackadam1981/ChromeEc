@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb6e5cf_a779073c",
+        "filename": "zephyr/projects/volteer/volteer/pwm.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-21T01:06:34Z",
+      "side": 1,
+      "message": "Is it possible to create a new enum property for \"nuvoton,npcx-pwm\" that overrides only the default clock reference?  The other fields in this property can\u0027t be changed by the user.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 56
+      },
+      "revId": "48a463e9b93dac8bb1bc3a32e31cb285238759ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
