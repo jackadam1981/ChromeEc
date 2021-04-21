@@ -73,8 +73,11 @@
 #endif
 
 /* TCPC */
+#if 0
 #define CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 #define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT 1
+#endif
+#define CONFIG_USB_PD_TCPM_CCGXXF
 
 /* Config Fan */
 #define GPIO_FAN_POWER_EN	GPIO_EC_THRM_SEN_PWRGATE_N
