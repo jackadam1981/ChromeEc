@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da04f7d1_7d15ebe9",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-04-21T17:45:15Z",
+      "side": 0,
+      "message": "Swapping this so that it RDD status can be adjacent to \"CCD EXT:\" line.",
+      "range": {
+        "startLine": 465,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 21
+      },
+      "revId": "f38daf612e9bd788791191dfd17940d757d303fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
