@@ -34,6 +34,24 @@
       "parentUuid": "47d10bd9_8d3632a9",
       "revId": "35d2aabee52d1633d19638b064620d13fc802f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b23d75_b7b1aa3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-04-21T05:14:34Z",
+      "side": 1,
+      "message": "magolor i2c channel 2 defined to BC1.2 / charge ic, GPIOF5 is BC1.2 INT\n\nBut magister i2c channel define to HDMMI power enable and HPD pin , GPF5 is DB power enable. \n\nHow to distinguish ?",
+      "parentUuid": "eedcbc4c_24dba2ae",
+      "revId": "35d2aabee52d1633d19638b064620d13fc802f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
