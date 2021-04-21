@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c17f83c_1ce1ec7a",
+        "filename": "board/gingerbread/board.h",
+        "patchSetId": 33
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-21T02:11:42Z",
+      "side": 1,
+      "message": "there\u0027s no such config.\ndid you mean CONFIG_USB_PD_VBUS_DETECT_TCPC?",
+      "range": {
+        "startLine": 31,
+        "startChar": 8,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "d63ddef4a7c63066704c80f7e98d12911829a3c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
