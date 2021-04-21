@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60bf47b1_aa1fd350",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-21T19:38:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6397b44b_8cdefcea",
+      "range": {
+        "startLine": 7,
+        "startChar": 34,
+        "endLine": 7,
+        "endChar": 40
+      },
+      "revId": "1208ad04273c79c0ac7039ac9bb8f89cf5db4842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00775a25_0ddaa118",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-21T15:22:06Z",
       "side": 1,
       "message": "Lazor",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "1208ad04273c79c0ac7039ac9bb8f89cf5db4842",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2119f7b4_924bc224",
+        "filename": "zephyr/projects/trogdor/lazor/src/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-21T19:38:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00775a25_0ddaa118",
       "range": {
         "startLine": 10,
         "startChar": 3,
