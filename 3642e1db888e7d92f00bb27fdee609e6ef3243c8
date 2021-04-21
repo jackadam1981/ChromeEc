@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e02f4fb_45aa6c53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-04-21T18:27:25Z",
+      "side": 1,
+      "message": "Oh, I was expecting that DUTs in the lab should have Cr50 updated.\nIf no, then I think we still can have hdctools handle two versions.\nThe bug about hdctools modification is https://b.corp.google.com/issues/186005742.",
+      "parentUuid": "cc0535bc_afb4d91e",
+      "revId": "3642e1db888e7d92f00bb27fdee609e6ef3243c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3bd4c05_ec4859f7",
