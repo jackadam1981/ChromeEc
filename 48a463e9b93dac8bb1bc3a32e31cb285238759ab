@@ -46,6 +46,30 @@
       },
       "revId": "48a463e9b93dac8bb1bc3a32e31cb285238759ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c62cdaa3_76914810",
+        "filename": "zephyr/projects/volteer/volteer/pwm.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-21T16:30:50Z",
+      "side": 1,
+      "message": "Ack - This can be landed as is, but I added some comments into the bug.",
+      "parentUuid": "324c0385_b8d70b4e",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 56
+      },
+      "revId": "48a463e9b93dac8bb1bc3a32e31cb285238759ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
