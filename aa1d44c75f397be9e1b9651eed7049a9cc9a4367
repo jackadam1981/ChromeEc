@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7d1f65_89cbe677",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6568,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-21T15:21:11Z",
+      "side": 1,
+      "message": "Remove this one as well?  It seems like it\u0027s not providing any extra information for the most part, since we\u0027ll print our transition state next anyway.",
+      "revId": "aa1d44c75f397be9e1b9651eed7049a9cc9a4367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

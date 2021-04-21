@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "453d3870_ab9a2f02",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5184,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-21T15:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21face56_c7915880",
+      "range": {
+        "startLine": 5184,
+        "startChar": 13,
+        "endLine": 5184,
+        "endChar": 24
+      },
+      "revId": "45de7ace6349a41f6ee7671d6caf85cbc3eb8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef652803_62351199",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "I still left one in. There were 4-5 others I had removed and I guess I missed this one.",
       "parentUuid": "ef652803_62351199",
+      "revId": "45de7ace6349a41f6ee7671d6caf85cbc3eb8f0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3ecf397_3590fca3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 6512,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-21T15:21:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d04145e_964496f2",
       "revId": "45de7ace6349a41f6ee7671d6caf85cbc3eb8f0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
