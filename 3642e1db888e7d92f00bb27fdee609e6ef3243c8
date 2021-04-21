@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "73ecd55b_7dc3d8a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-04-21T19:33:53Z",
+      "side": 1,
+      "message": "You can\u0027t really tell the Rdd state on cr50 when keepalive is enabled, so I think it\u0027s good to change the Cr50 output too.\n\nThere\u0027s only one place that checks keepalive. We can modify it to be backwards compatible.\n\nIf the KeepAlive output exists, use that. If it doesn\u0027t, search for \u0027keepalive\u0027 in the Rdd output",
+      "parentUuid": "dd31d13e_79d787e5",
+      "revId": "3642e1db888e7d92f00bb27fdee609e6ef3243c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3bd4c05_ec4859f7",
