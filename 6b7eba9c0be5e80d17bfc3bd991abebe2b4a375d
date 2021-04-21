@@ -70,6 +70,30 @@
       },
       "revId": "6b7eba9c0be5e80d17bfc3bd991abebe2b4a375d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "119a4b63_e35f9d92",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-21T00:28:39Z",
+      "side": 1,
+      "message": "@Diana, then you agree this check should he here?",
+      "parentUuid": "025a4623_a3e89338",
+      "range": {
+        "startLine": 102,
+        "startChar": 24,
+        "endLine": 102,
+        "endChar": 41
+      },
+      "revId": "6b7eba9c0be5e80d17bfc3bd991abebe2b4a375d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
