@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4659e727_3473091b",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-21T19:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6f44dee_db751757",
+      "range": {
+        "startLine": 33,
+        "startChar": 50,
+        "endLine": 33,
+        "endChar": 53
+      },
+      "revId": "732f7007fdf39d901ffd05f41d4a84d63d96a020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fac41365_eaaff686",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-21T15:18:09Z",
       "side": 1,
       "message": "Inertial Measurement Unit (IMU)",
+      "range": {
+        "startLine": 40,
+        "startChar": 50,
+        "endLine": 40,
+        "endChar": 53
+      },
+      "revId": "732f7007fdf39d901ffd05f41d4a84d63d96a020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2862a03d_0b31121e",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-21T19:38:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fac41365_eaaff686",
       "range": {
         "startLine": 40,
         "startChar": 50,
