@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a366e99f_491a2b89",
+        "filename": "zephyr/dts/bindings/motionsense/driver/cros-ec,bmi160-accel.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-21T16:19:46Z",
+      "side": 1,
+      "message": "What do think about adding defaults for the following properties:\n    active-mask   # Almost all boards use S0_S3 now, Lazor can override\n    default-range\n    configs\n\nWe can add different defaults in the bmi160-gryo.\n\nSee the get-temp-func property in the thermistor support for an example.",
+      "revId": "45defca6f0f16586342d5027fd83988dc65d82cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
