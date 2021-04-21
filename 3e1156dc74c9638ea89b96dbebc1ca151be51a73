@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "768c60a4_013c81da",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-21T02:26:31Z",
+      "side": 1,
+      "message": "ok. i\u0027m doing that in the next patch in this series.\ni\u0027m not sure if compare_builds.sh would still pass with\nthe function rewrite.",
+      "parentUuid": "2164a977_c21f1c6d",
+      "revId": "3e1156dc74c9638ea89b96dbebc1ca151be51a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c9d7e09_b2a0ba3f",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-13T18:05:17Z",
       "side": 1,
       "message": "The result would be divided by INPUT_RESISTOR_RATIO comparing to the original. Was that intended?",
+      "revId": "3e1156dc74c9638ea89b96dbebc1ca151be51a73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19feb8c8_689736e9",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 23
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-21T02:26:31Z",
+      "side": 1,
+      "message": "yes, i believe the ratio should be included. it looks\nlike all the boards using the bq25710 use a ratio of 1,\nso the missing conversion went unnoticed and using the\nratio now won\u0027t affect existing boards.\n\nmakes sense, since compare_build.sh didn\u0027t flag this.",
+      "parentUuid": "5c9d7e09_b2a0ba3f",
       "revId": "3e1156dc74c9638ea89b96dbebc1ca151be51a73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
