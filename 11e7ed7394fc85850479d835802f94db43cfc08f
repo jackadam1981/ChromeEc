@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a782ff2a_d0c5bcfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-21T02:15:52Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "c1726364_a6770d9f",
+      "revId": "11e7ed7394fc85850479d835802f94db43cfc08f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "187c5865_9ac2f232",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-04-20T03:34:05Z",
       "side": 1,
       "message": "separate with space",
+      "range": {
+        "startLine": 49,
+        "startChar": 64,
+        "endLine": 49,
+        "endChar": 66
+      },
+      "revId": "11e7ed7394fc85850479d835802f94db43cfc08f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a5da4d7_42ba0ba1",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-04-21T02:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "187c5865_9ac2f232",
       "range": {
         "startLine": 49,
         "startChar": 64,
