@@ -27,7 +27,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGE_MANAGER
   "${PLATFORM_EC_BASEBOARD}/charger.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CBI
   "${PLATFORM_EC_BASEBOARD}/cbi.c"
-  "${PLATFORM_EC_BASEBOARD}/cbi_ec_fw_config.c")
+  "${PLATFORM_EC_BASEBOARD}/cbi_ec_fw_config.c"
+  "${PLATFORM_EC_BASEBOARD}/cbi_ssfc.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_POWERSEQ
   "${PLATFORM_EC_BASEBOARD}/power.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USB_POWER_DELIVERY
