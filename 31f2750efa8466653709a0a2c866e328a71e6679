@@ -52,6 +52,24 @@
       "parentUuid": "122a09f7_29f20fcd",
       "revId": "31f2750efa8466653709a0a2c866e328a71e6679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eeb1a66_6b659347",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-21T23:34:41Z",
+      "side": 1,
+      "message": "circular dependency is OK. they just land together. normally, they land\nin stack order, but if this patch breaks the adlrvp patch next up on the\nstack, we\u0027ll want them to go in together. it\u0027s sufficient for the first\npatch to depend on the 2nd (or last in a long sequence) to guarantee they\nall go in together.\n\nalso, if you were to create a topic for the patches, all patches with\nthe same topic will land together.",
+      "parentUuid": "867c1af8_acf51475",
+      "revId": "31f2750efa8466653709a0a2c866e328a71e6679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
