@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e0f6c95_a4b2d15a",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-21T19:39:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b9f6197a_757f403d",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 33
+      },
+      "revId": "508e81576d3f2c3083edb1803f1e4ba490276a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "987ab1f3_e450b722",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-21T16:14:40Z",
       "side": 1,
       "message": "I think we need an entry for ec-s5 as well.  Seems like an oversight that cros-ec doesn\u0027t include an entry for SENSOR_CONFIG_EC_S5.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "508e81576d3f2c3083edb1803f1e4ba490276a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2f2b15_e267613d",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-21T19:39:38Z",
+      "side": 1,
+      "message": "I looked around and it seems that only 2 boards actually set that config. It seems to be used for gesture detection, are we sure we want it?",
+      "parentUuid": "987ab1f3_e450b722",
       "range": {
         "startLine": 100,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9da7976b_b94da4cf",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-21T19:39:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bd57124c_7cc8ec1a",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "508e81576d3f2c3083edb1803f1e4ba490276a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e0288a5_1018283f",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-21T16:14:40Z",
       "side": 1,
       "message": "Add ec-s5 entry.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 11
+      },
+      "revId": "508e81576d3f2c3083edb1803f1e4ba490276a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70398a09_41812615",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-21T19:39:38Z",
+      "side": 1,
+      "message": "Moving discussion above",
+      "parentUuid": "8e0288a5_1018283f",
       "range": {
         "startLine": 127,
         "startChar": 0,
