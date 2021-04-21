@@ -31,6 +31,9 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
+/* EC_BATTERY_PRES_ODL state */
+#define EC_BATTERY_PRES_ODL_BAT_PRES 0
+
 #define UNKNOWN_DEV_ID -1
 static int dev_id = UNKNOWN_DEV_ID;
 
@@ -281,9 +284,11 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable)
 				rv |= test_write8(chgnum, 0x44, 0x2);
 				rv |= main_write8(chgnum, 0x1F, 0);
 			}
-			rv = sm5803_flow2_update(chgnum,
-						 SM5803_FLOW2_AUTO_ENABLED,
-						 MASK_SET);
+			if (GPIO_EC_BATTERY_PRES_ODL ==
+				EC_BATTERY_PRES_ODL_BAT_PRES)
+					rv = sm5803_flow2_update(chgnum,
+							SM5803_FLOW2_AUTO_ENABLED,
+							MASK_SET);
 		} else {
 			if (dev_id >= 3) {
 				/* Touch of magic on the primary charger */
