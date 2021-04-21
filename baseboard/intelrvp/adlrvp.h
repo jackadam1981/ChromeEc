@@ -54,10 +54,14 @@
 #define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
 
 /* TCPC AIC config */
+#if 0
 /* Support NXP PCA9675 I/O expander. */
 #define CONFIG_IO_EXPANDER
 #define CONFIG_IO_EXPANDER_PCA9675
 #define I2C_ADDR_PCA9675_TCPC_AIC_IOEX	0x21
+#else
+#define CONFIG_IO_EXPANDER
+#endif
 
 /* DC Jack charge ports */
 #undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
@@ -65,6 +69,7 @@
 #define DEDICATED_CHARGE_PORT CONFIG_USB_PD_PORT_MAX_COUNT
 
 /* PPC */
+#if 0
 #define CONFIG_USBC_PPC_SN5S330
 #define CONFIG_USB_PD_VBUS_DETECT_PPC
 #define CONFIG_USB_PD_DISCHARGE_PPC
@@ -74,6 +79,7 @@
 #define CONFIG_USB_PD_DISCHARGE
 #define CONFIG_USB_PD_TCPM_FUSB302
 #define I2C_ADDR_FUSB302_TCPC_AIC	0x22
+#endif
 
 /* Config BB retimer */
 #define CONFIG_USBC_RETIMER_INTEL_BB
@@ -180,6 +186,7 @@ enum adlrvp_charge_ports {
 #endif
 };
 
+#if 0
 /*
  * Each Type-C add in card has two I/O expanders hence even if one Type-C port
  * is enabled other I/O expander is available for usage.
@@ -194,6 +201,16 @@ enum ioex_port {
 	IOEX_PORT_COUNT
 };
 #define CONFIG_IO_EXPANDER_PORT_COUNT IOEX_PORT_COUNT
+#else
+enum ioex_port {
+	IOEX_C0_C1_CCGXXF,
+#if defined(HAS_TASK_PD_C2)
+	IOEX_C2_C3_CCGXXF,
+#endif
+	IOEX_PORT_COUNT
+};
+#define CONFIG_IO_EXPANDER_PORT_COUNT IOEX_PORT_COUNT
+#endif
 
 enum battery_type {
 	BATTERY_GETAC_SMP_HHP_408_3S,
