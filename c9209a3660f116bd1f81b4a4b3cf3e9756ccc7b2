@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a92effd_0f895e83",
+        "filename": "zephyr/shim/include/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-04-21T00:43:12Z",
+      "side": 1,
+      "message": "We don\u0027t need to this one here. The definition is only used by the driver, it\u0027s better to move it to the driver code. Please refer the bmi260 code.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/driver/accelgyro_bmi260.c;l\u003d31-49;drc\u003da0e46cd164efca0f48ecff3d1d2ffe10309e3fd4",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "c9209a3660f116bd1f81b4a4b3cf3e9756ccc7b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
