@@ -33,6 +33,29 @@
       "message": "We can push this change once it is tested for another FP device",
       "revId": "5a13e075a19474cfed27b1cc109718e26ef4b1e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c7dc5dd_08397a73",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-22T15:29:34Z",
+      "side": 1,
+      "message": "Can you add a link to the application note that amstan listed in his comments? It will be helpful for the future if there\u0027s ever any question about the delay.",
+      "range": {
+        "startLine": 298,
+        "startChar": 6,
+        "endLine": 298,
+        "endChar": 79
+      },
+      "revId": "5a13e075a19474cfed27b1cc109718e26ef4b1e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
