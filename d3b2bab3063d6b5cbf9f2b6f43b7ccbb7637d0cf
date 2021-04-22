@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9840e3e_ecd39c9f",
+        "filename": "zephyr/projects/volteer/delbin/src/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-22T23:09:07Z",
+      "side": 1,
+      "message": "don\u0027t think this ifdef is necessary",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "d3b2bab3063d6b5cbf9f2b6f43b7ccbb7637d0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26bc3c6d_439c628d",
+        "filename": "zephyr/projects/volteer/delbin/src/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-22T23:09:07Z",
+      "side": 1,
+      "message": "need to include lid_angle.h for this",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "d3b2bab3063d6b5cbf9f2b6f43b7ccbb7637d0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
