@@ -19,7 +19,7 @@
 #define FREE_EXT_TIMER_H     EXT_TIMER_4
 #define FAN_CTRL_EXT_TIMER   EXT_TIMER_5
 #define EVENT_EXT_TIMER      EXT_TIMER_6
-#define WDT_EXT_TIMER        EXT_TIMER_7
+/* EXT_TIMER_7 (24-bit timer) is reserved */
 #define LOW_POWER_EXT_TIMER  EXT_TIMER_8
 
 enum ext_timer_clock_source {
