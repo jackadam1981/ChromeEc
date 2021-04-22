@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "669ef85a_494fcc7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-22T22:16:15Z",
+      "side": 1,
+      "message": "Just noticed the board.h changes had failed to make it into the CL.  Present, and confirmed the onoff state file is a part of our mancomb build artifacts ",
+      "revId": "76656c925a773df1ae27186e250e2da793bc073d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
