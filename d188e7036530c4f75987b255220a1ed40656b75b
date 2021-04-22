@@ -33,6 +33,24 @@
       "message": "are you sure this is not a redundant check? and there is a check somewhere else.",
       "revId": "d188e7036530c4f75987b255220a1ed40656b75b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "229c3be6_dd7fc0e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-22T20:08:41Z",
+      "side": 1,
+      "message": "yes this condition check is not available in TCPMv2 code",
+      "parentUuid": "b398aa5f_8a3e486f",
+      "revId": "d188e7036530c4f75987b255220a1ed40656b75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
