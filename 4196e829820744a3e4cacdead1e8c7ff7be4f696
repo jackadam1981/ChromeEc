@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "161b79be_c447b9f5",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-22T22:46:02Z",
+      "side": 1,
+      "message": "no comma here since this is always the last element.",
+      "range": {
+        "startLine": 133,
+        "startChar": 16,
+        "endLine": 133,
+        "endChar": 17
+      },
+      "revId": "4196e829820744a3e4cacdead1e8c7ff7be4f696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
