@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d48ad570_0e73ad5e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-04-22T19:36:17Z",
+      "side": 1,
+      "message": "Correct, will fix this.",
+      "parentUuid": "19bb58e8_aeb16409",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "4868670d9b4a23919b9c33d7c8e24c65d1e9b303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4bd7a948_b8e4d881",
         "filename": "board/servo_v4/board.c",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-22T19:16:40Z",
       "side": 1,
       "message": "Traditionally a lot of people are putting here 0xff / USB_CLASS_VENDOR_SPEC too\n\nAs far as I understand this is not strictly required by the USB spec.",
+      "range": {
+        "startLine": 270,
+        "startChar": 23,
+        "endLine": 270,
+        "endChar": 25
+      },
+      "revId": "4868670d9b4a23919b9c33d7c8e24c65d1e9b303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cbde43e_1d177f50",
+        "filename": "board/servo_v4/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1421833
+      },
+      "writtenOn": "2021-04-22T19:36:17Z",
+      "side": 1,
+      "message": "Looking at the https://www.usb.org/defined-class-codes#anchor_BaseClassFFh, SubClass \u0026 Protocol are xxh \u0026 xxh respectively, thus one can choose whatever number. I don\u0027t have strong argumentation why I selected 0 there, just to keep this struct simple probably.",
+      "parentUuid": "4bd7a948_b8e4d881",
       "range": {
         "startLine": 270,
         "startChar": 23,
