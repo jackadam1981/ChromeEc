@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f161ee0_843a6790",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-22T18:41:51Z",
+      "side": 1,
+      "message": "Correct, but bb_retimer.dts is another overlay, we can do the following dependencies:\n* overlay \u003c-\u003e overlay\n* overlay -\u003e board\n\nBut not:\n* board -\u003e overlay",
+      "parentUuid": "a559074b_08a66477",
+      "range": {
+        "startLine": 82,
+        "startChar": 18,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "b46844ced866c9e4a2b61a73321a9569bef5c615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5da2d4bd_81630279",
