@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf50a1a_67eaf4f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-22T15:39:33Z",
+      "side": 1,
+      "message": "Can you specify the devices this was tested on?\n\nI tested it on nocturne and morphius and confirmed it works, so you can include those.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "5a13e075a19474cfed27b1cc109718e26ef4b1e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "041a67fa_982c160a",
@@ -31,6 +54,23 @@
       "writtenOn": "2021-04-21T22:43:34Z",
       "side": 1,
       "message": "We can push this change once it is tested for another FP device",
+      "revId": "5a13e075a19474cfed27b1cc109718e26ef4b1e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "520928ae_fc801e23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-22T15:39:33Z",
+      "side": 1,
+      "message": "See unresolved comments, but change looks good.",
       "revId": "5a13e075a19474cfed27b1cc109718e26ef4b1e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
