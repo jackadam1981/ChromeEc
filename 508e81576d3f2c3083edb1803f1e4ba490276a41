@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "089a175f_9e09bc88",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-22T18:35:58Z",
+      "side": 1,
+      "message": "This is the behavior we want - provided setting the ODR to 0 stops scanning on the sensor.  I haven\u0027t dug into the drivers to see if this actually the behavior.  As is we\u0027re at least duplicating cros-ec behavior.",
+      "parentUuid": "75c9553c_0d5726ea",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "508e81576d3f2c3083edb1803f1e4ba490276a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd57124c_7cc8ec1a",
