@@ -125,7 +125,7 @@ ALTERNATE(PIN_MASK(M, 0x33), 0, MODULE_SPI, 0) /* SPI */
 
 /* Unimplemented Pins  */
 GPIO(PG_PP5000_S5_OD,        PIN(D, 2), GPIO_INPUT)
-GPIO(EC_GSC_PACKET_MODE,     PIN(D, 4), GPIO_INPUT | GPIO_PULL_DOWN)
+GPIO(PACKET_MODE_EN,     PIN(D, 4), GPIO_OUT_LOW) /* EC_GSC_PACKET_MODE */
 /* *_ODL pin has external pullup so don't pull it down. */
 GPIO(PG_MT6315_GPU_ODL,      PIN(H, 6), GPIO_INPUT)
 /* reserved for future use */
