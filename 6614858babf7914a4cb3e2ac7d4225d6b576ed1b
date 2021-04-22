@@ -69,6 +69,30 @@
       },
       "revId": "6614858babf7914a4cb3e2ac7d4225d6b576ed1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b654e2f_31446902",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-22T20:43:36Z",
+      "side": 1,
+      "message": "I had 2 requests:\n1. I think changing CONFIG_FLASH_FEATURE to CONFIG_FLASH_CROS or CONFIG_CROS_FLASH is more descriptive (e.g. this is a config for the Chromium EC code), but this is just a preference.\n2. Whatever name you settle on for the Chromium EC config name, the Kconfig name should always replace the CONFIG_ prefix with CONFIG_PLATFORM_EC_.  For instance CONFIG_MY_NEW_OPTION becomes CONFIG_PLATFORM_EC_MY_NEW_OPTION.  If you do this, you shouldn\u0027t need to add a new entry to config_allowed.txt.\n\nSo change the CONFIG_PLATFORM_EC_FLASH to match your new config name (either CONFIG_PLATFORM_EC_FLASH_FEATURE or CONFIG_PLATFORM_EC_FLASH_CROS).",
+      "parentUuid": "a8b2e896_bbf2b6b1",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 20
+      },
+      "revId": "6614858babf7914a4cb3e2ac7d4225d6b576ed1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
