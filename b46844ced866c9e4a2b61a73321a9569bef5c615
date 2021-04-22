@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79936ae3_9a792fae",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-22T15:24:41Z",
+      "side": 1,
+      "message": "Note - this appears to be unused for Zephyr builds.  On cros EC, the kbps is used by the chip level driver.  But Zephyr the bus speed is set zephyr I2C driver at line 244.\n\nAs follow up CL, this property should get deleted from the named-i2c-ports so we don\u0027t confuse users.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 22
+      },
+      "revId": "b46844ced866c9e4a2b61a73321a9569bef5c615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d927c9bb_6edb0400",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-22T15:24:41Z",
+      "side": 1,
+      "message": "I found this confusing - the actual bus is I2C 7, but the enum references I2C0.  I think you should create new enums GPIO_EC_I2C_SENSOR_SCL and GPIO_EC_I2C_SENSOR_SDA.\n\nAnother thought is to change this child-binding to point to a gpio phandle-array instead of the enum.  Then use the DT macros to extract the gpio-enum-name.\n\nExample here: https://chromium.googlesource.com/chromiumos/platform/ec/+/793c8e2f/zephyr/dts/bindings/retimer/intel,jhl8040r.yaml#\n\nThis could be done in the same CL that removes the frequency property from the tree.",
+      "range": {
+        "startLine": 82,
+        "startChar": 18,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "b46844ced866c9e4a2b61a73321a9569bef5c615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da2d4bd_81630279",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-22T15:24:41Z",
+      "side": 1,
+      "message": "I hate creating more enums, but the \"I2C0\" designation is really confusing.  Create GPIO_EC_I2C_SENSOR_SCL and GPIO_EC_I2C_SENSOR_SDA.",
+      "range": {
+        "startLine": 320,
+        "startChar": 16,
+        "endLine": 320,
+        "endChar": 39
+      },
+      "revId": "b46844ced866c9e4a2b61a73321a9569bef5c615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea6b821_80d44587",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-22T15:24:41Z",
+      "side": 1,
+      "message": "Delete.  Now set by default.",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "b46844ced866c9e4a2b61a73321a9569bef5c615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae1412b2_7a73ae1d",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-22T15:24:41Z",
+      "side": 1,
+      "message": "Delete.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 36
+      },
+      "revId": "b46844ced866c9e4a2b61a73321a9569bef5c615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
