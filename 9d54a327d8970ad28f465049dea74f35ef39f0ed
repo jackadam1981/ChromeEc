@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d8533f1_37ea6d36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-22T22:24:17Z",
+      "side": 1,
+      "message": "where are the eSPI CAP registers documented? the mec170x datasheet\ndoesn\u0027t seem to cover these and it would be really nice to\ncross reference with these changes.\n",
+      "revId": "9d54a327d8970ad28f465049dea74f35ef39f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34d25a5f_feb420f7",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-22T22:24:17Z",
+      "side": 1,
+      "message": "this is a duplicate",
+      "range": {
+        "startLine": 1384,
+        "startChar": 4,
+        "endLine": 1384,
+        "endChar": 32
+      },
+      "revId": "9d54a327d8970ad28f465049dea74f35ef39f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
