@@ -128,6 +128,30 @@
       },
       "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a50014f8_d0844962",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-22T22:45:38Z",
+      "side": 1,
+      "message": "On chrome OS devices, our debug accessory makes use of the SBU lines for CCD. Additionally we have a constraint that only one orientation is actually functional and we don\u0027t supported OrientedDebug.SRC. usb_mux_set(...) configures the SuperSpeed mux (SSTX/SSRX) according to orientation, but none of those configured lines are used when we are using our debug accessory. In the case of DisplayPort Alternate mode, SBU is muxed to DP_AUX, but this mode is not applicable with our debug accessory because of the SBU conflict.\n\nTherefore, I was trying to make the point that there\u0027s no reason to wait since any configurations won\u0027t affect SBU when we\u0027re using our debug accessory.\n\nBut more importantly, my question was that since DP_AUX was interfering with CCD, shouldn\u0027t we isolate DP_AUX from SBU when we are using our debug accessory? Again, DisplayPort Alternate mode is not applicable when using our debug accessory.",
+      "parentUuid": "fe82995f_b3fa482a",
+      "range": {
+        "startLine": 549,
+        "startChar": 50,
+        "endLine": 549,
+        "endChar": 60
+      },
+      "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
