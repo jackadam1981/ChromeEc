@@ -104,6 +104,30 @@
       },
       "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe82995f_b3fa482a",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-22T21:51:35Z",
+      "side": 1,
+      "message": "Hi, Aseda, can you please elaborate your concern/question? Why shouldn\u0027t \"the mux settings affect SBU if we\u0027re using a debug accessory\"?",
+      "parentUuid": "98801375_cf0528f1",
+      "range": {
+        "startLine": 549,
+        "startChar": 50,
+        "endLine": 549,
+        "endChar": 60
+      },
+      "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
