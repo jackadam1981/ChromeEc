@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "292eae20_21da7844",
+        "filename": "zephyr/shim/include/gpio/gpio.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-22T21:48:46Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "11e29af0_510d3813",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "e26458f030d99a68d4213608e66be018cdf650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b3b54bab_a827a594",
         "filename": "zephyr/shim/include/gpio/gpio.h",
         "patchSetId": 3
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "The gpio-specifier length is controller dependent. Our gpio device sets it to #gpio-cells\u003d\u003c2\u003e; we couldn\u0027t skip the flags cell in the dts column. How about directly check the flag in gpio_config_unused_pins()?",
       "parentUuid": "b3b54bab_a827a594",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 3
+      },
+      "revId": "e26458f030d99a68d4213608e66be018cdf650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ffce69a_8b958bbd",
+        "filename": "zephyr/shim/include/gpio/gpio.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-22T21:48:46Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "6809c371_068b4144",
       "range": {
         "startLine": 62,
         "startChar": 1,
