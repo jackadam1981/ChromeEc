@@ -16,6 +16,29 @@
       "message": "I see items marked as resolved, but I don\u0027t actually see the resolution.",
       "revId": "69fe5633544e4656182479b654adf196ecff7346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c31b6b21_78b51ec5",
+        "filename": "board/wheelie/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-22T20:12:13Z",
+      "side": 1,
+      "message": "Why is this required? wheelie just like all other dedede boards has keyscan task. Also, wheelie is a x86-board which is currently using 8042 keyboard driver for buttons.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 33
+      },
+      "revId": "69fe5633544e4656182479b654adf196ecff7346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
