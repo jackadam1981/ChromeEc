@@ -16,6 +16,23 @@
       "message": "Don\u0027t think the ebuild change did anything here\n\nwe are still failing when running zmake -D testall",
       "revId": "f93fd1d3c319277ef97c8e69ca689f57418224d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d564067_3b09daf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-22T00:42:40Z",
+      "side": 1,
+      "message": "The problem here is that errors are being generated that should not be, so far as I can see\n\nIt is soooooo much harder to add tests after the event. Next time I will be a lot more insistent on tested earlier in the project :-)",
+      "revId": "f93fd1d3c319277ef97c8e69ca689f57418224d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
