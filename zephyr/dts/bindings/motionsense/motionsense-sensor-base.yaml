@@ -54,6 +54,8 @@ properties:
     type: phandle
     required: false
     description: phandle to driver data to be used for the motion sensor
+  is-alternate:
+    type: boolean
 
 #
 # examples:
