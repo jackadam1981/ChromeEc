@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75c9553c_0d5726ea",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-22T17:15:05Z",
+      "side": 1,
+      "message": "The config array is set to have a length of SENSOR_CONFIG_MAX so we don\u0027t overflow, so it is then initialized to an odr of 0 (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/include/motion_sense.h;l\u003d209;drc\u003d90995b4a525442b448384e8c5e6d77f541283c4d). So it\u0027s the same as setting:\n\nec-s5 {\n  odr \u003d \u003c0\u003e;\n};\n\nWhich I think is what you\u0027re saying that you want?",
+      "parentUuid": "7461ca8e_80a0d14a",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 11
+      },
+      "revId": "508e81576d3f2c3083edb1803f1e4ba490276a41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bd57124c_7cc8ec1a",
         "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
         "patchSetId": 5

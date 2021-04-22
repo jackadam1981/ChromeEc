@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "11df27d6_45e86266",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-22T17:15:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "79936ae3_9a792fae",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 22
+      },
+      "revId": "b46844ced866c9e4a2b61a73321a9569bef5c615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d927c9bb_6edb0400",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-22T15:24:41Z",
       "side": 1,
       "message": "I found this confusing - the actual bus is I2C 7, but the enum references I2C0.  I think you should create new enums GPIO_EC_I2C_SENSOR_SCL and GPIO_EC_I2C_SENSOR_SDA.\n\nAnother thought is to change this child-binding to point to a gpio phandle-array instead of the enum.  Then use the DT macros to extract the gpio-enum-name.\n\nExample here: https://chromium.googlesource.com/chromiumos/platform/ec/+/793c8e2f/zephyr/dts/bindings/retimer/intel,jhl8040r.yaml#\n\nThis could be done in the same CL that removes the frequency property from the tree.",
+      "range": {
+        "startLine": 82,
+        "startChar": 18,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "b46844ced866c9e4a2b61a73321a9569bef5c615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca38685_86c40d1d",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-22T17:15:05Z",
+      "side": 1,
+      "message": "I tried that when I first added the scl/sda config nodes. The issue is that gpio.dts is an overlay and we can\u0027t get a phandle from a board to an overlay. So that\u0027s not an option. The only things we can do is set them to the same enum-name. This still gives us compile time safety in that if the board references an enum, but the enum is never used in the overlay, the build will break.",
+      "parentUuid": "d927c9bb_6edb0400",
       "range": {
         "startLine": 82,
         "startChar": 18,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c470a6d0_6d057770",
+        "filename": "zephyr/projects/trogdor/lazor/gpio.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-22T17:15:05Z",
+      "side": 1,
+      "message": "Agreed, I plan on doing a sweep next week and cleaning up as many of these enums as possible (I think we have a lot of duplicates).",
+      "parentUuid": "5da2d4bd_81630279",
+      "range": {
+        "startLine": 320,
+        "startChar": 16,
+        "endLine": 320,
+        "endChar": 39
+      },
+      "revId": "b46844ced866c9e4a2b61a73321a9569bef5c615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aea6b821_80d44587",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55f97f8c_1dc5a5a7",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-22T17:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aea6b821_80d44587",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 23
+      },
+      "revId": "b46844ced866c9e4a2b61a73321a9569bef5c615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae1412b2_7a73ae1d",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-04-22T15:24:41Z",
       "side": 1,
       "message": "Delete.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 36
+      },
+      "revId": "b46844ced866c9e4a2b61a73321a9569bef5c615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9cfd52_dcc821de",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-22T17:15:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae1412b2_7a73ae1d",
       "range": {
         "startLine": 144,
         "startChar": 0,

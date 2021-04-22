@@ -116,6 +116,30 @@
       },
       "revId": "f42ec8734613cfca5086c356dfa32dcd963a0cec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96885e03_90562808",
+        "filename": "zephyr/shim/src/motionsense_driver/bmi160-drvinfo.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-22T17:15:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1127e90a_35bc5976",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 2
+      },
+      "revId": "f42ec8734613cfca5086c356dfa32dcd963a0cec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
