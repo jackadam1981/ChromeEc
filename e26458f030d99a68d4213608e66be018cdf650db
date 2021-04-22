@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "563aeb91_6ca8152d",
+        "filename": "zephyr/shim/include/gpio/gpio.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-22T22:58:53Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "292eae20_21da7844",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 16
+      },
+      "revId": "e26458f030d99a68d4213608e66be018cdf650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3b54bab_a827a594",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "SGTM",
       "parentUuid": "6809c371_068b4144",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 3
+      },
+      "revId": "e26458f030d99a68d4213608e66be018cdf650db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37734321_5a34be1a",
+        "filename": "zephyr/shim/include/gpio/gpio.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-22T22:58:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ffce69a_8b958bbd",
       "range": {
         "startLine": 62,
         "startChar": 1,
