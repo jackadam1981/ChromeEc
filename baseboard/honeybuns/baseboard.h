@@ -146,6 +146,7 @@ enum usb_strings {
 #define CONFIG_USB_PD_DISCHARGE_PPC
 #define CONFIG_USBC_PPC_SN5S330
 #define CONFIG_USBC_PPC_VCONN
+#define CONFIG_USB_PD_VSAFE0V_DETECT_PPC
 #define CONFIG_USBC_PPC_DEDICATED_INT
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
@@ -290,6 +291,7 @@ void baseboard_usbc_usb3_enable_interrupts(int enable);
  *
  */
 void baseboard_usbc_usb3_irq(void);
+void baseboard_usbc_reset_vsafe0v(void);
 
 #endif /* !__ASSEMBLER__ */
 
