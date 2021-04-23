@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3069662_5d597b26",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-23T04:38:01Z",
+      "side": 1,
+      "message": "Done\n\nwith the standard I/O expander GPIO config this is addressed now without rework",
+      "parentUuid": "9285d1e4_bfc55384",
+      "range": {
+        "startLine": 197,
+        "startChar": 1,
+        "endLine": 197,
+        "endChar": 69
+      },
+      "revId": "7260d735d779f47154c3abea995753daaa505715",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7054baf_03ce8a6e",
