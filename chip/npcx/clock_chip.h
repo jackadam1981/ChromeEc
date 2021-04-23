@@ -49,10 +49,17 @@
  * - CORE_CLK > 66MHz, AHB6DIV should be 1, else 0.
  * - CORE_CLK > 50MHz, FIUDIV should be 1, else 0.
  */
+#ifdef TEST_HIGHER_I2C_SRC_CLK
+/* Target OSC_CLK freq */
+#define OSC_CLK 100000000
+/* Core clock prescaler */
+#define FPRED 4 /* CORE_CLK = OSC_CLK/5 */
+#else
 /* Target OSC_CLK freq */
 #define OSC_CLK 90000000
 /* Core clock prescaler */
 #define FPRED 5 /* CORE_CLK = OSC_CLK/6 */
+#endif
 /* Core domain clock */
 #define CORE_CLK (OSC_CLK / (FPRED + 1))
 /* FMUL clock */
@@ -73,6 +80,20 @@
 #else
 #define FIUDIV 0 /* FIU_CLK = CORE_CLK */
 #endif
+#ifdef TEST_HIGHER_I2C_SRC_CLK
+/* APBs source clock */
+#define APBSRC_CLK OSC_CLK
+/* APB1 clock divider */
+#define APB1DIV 4 /* APB1 clock = OSC_CLK/5 */
+/* APB2 clock divider */
+#define APB2DIV 4 /* APB2 clock = OSC_CLK/5 */
+/* APB3 clock divider */
+#define APB3DIV 4 /* APB3 clock = OSC_CLK/5 */
+#if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX9
+/* APB4 clock divider */
+#define APB4DIV 4 /* APB4 clock = OSC_CLK/5 */
+#endif
+#else
 /* APBs source clock */
 #define APBSRC_CLK OSC_CLK
 /* APB1 clock divider */
@@ -84,6 +105,7 @@
 #if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX9
 /* APB4 clock divider */
 #define APB4DIV 5 /* APB4 clock = OSC_CLK/6 */
+#endif
 #endif
 #endif
 
