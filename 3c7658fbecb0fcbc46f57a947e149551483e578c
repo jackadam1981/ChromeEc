@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a167ce3e_09509be0",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-23T18:38:19Z",
+      "side": 1,
+      "message": "Thanks for the context, Furquan!  So it seems like it we should keep the GPIO-only check for S3, without adding any checks to the host sleep event.",
+      "parentUuid": "3d90c7eb_2d76fa5e",
+      "range": {
+        "startLine": 425,
+        "startChar": 11,
+        "endLine": 425,
+        "endChar": 37
+      },
+      "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b14a3e8a_1a7f4fce",
