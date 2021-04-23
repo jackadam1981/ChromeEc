@@ -98,17 +98,7 @@ static int rt1718s_init(int port)
 
 	/* set GPIO2 is push pull, as output, output low. */
 	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO2_CTRL, 0x0E, 0x0C));
-
-	/*
-	-- set GPIO2 as high when frs signal received.
-	-- set GPIO2 as low when RT1718S transmits frs signal.
-	-- set GPIO2 as high when enable source HV vbus by 0x23.
-	-- set GPIO2 as high when enable source vbus by 0x23.
-	-- set GPIO2 as low when disable source vbus by 0x23.
-	-- set GPIO2 as low when enable sink vbus by 0x23.
-	-- set GPIO2 as low when disable sink vbus by 0x23.
-	*/
-	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO2_VBUS_CTRL, 0x7F, 0x58));
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO1_CTRL, 0x0E, 0x0C));
 
 	/* set GPB floating when disable sink vbus by 0x23. */
 	RETURN_ERROR(rt1718s_update_bits8(port, 0xDE, 0xF0, 0x80));
@@ -133,25 +123,22 @@ static int rt1718s_init(int port)
 	RETURN_ERROR(rt1718s_update_bits8(port, 0xE9, 0xF0, 0x80));
 #endif
 
-	/* set gpio2 (source path)being controlled by 0x23. */
-	RETURN_ERROR(rt1718s_update_bits8(port, 0xEC, 0x80, 0x80));
-
 	/* set GPB (sink path) being controlled by 0x23. GPA not being controlled by 0x23. */
 	RETURN_ERROR(rt1718s_update_bits8(port, 0xEC, 0x30, 0x20));
 
 #if ENABLE_FAST_ROLE_SWAP
-	/* set GPIO2 frs action after vbus<5.5V */
-	RETURN_ERROR(rt1718s_update_bits8(port, 0xCE, 0x08, 0x08));
 
 	/* set GPB frs action after vbus<5.5V */
 	RETURN_ERROR(rt1718s_update_bits8(port, 0xCE, 0x02, 0x02));
 
-	/* set vendor defince alert unmasked */
-	RETURN_ERROR(rt1718s_update_bits8(port, 0x13, 0x80, 0x80));
-
 	/* set vbus frs low unmasked, Rx frs unmasked */
 	RETURN_ERROR(rt1718s_update_bits8(port, 0x91, 0xC0, 0xC0));
 #endif
+	/* set vendor defince alert unmasked */
+	RETURN_ERROR(rt1718s_update_bits8(port, 0x13, 0x80, 0x80));
+
+	/* set Vconn ovp cc1/2 interrupt unmasked */
+	RETURN_ERROR(rt1718s_update_bits8(port, 0x92, 0x03, 0x03));
 
 	/* Disable FOD function */
 	RETURN_ERROR(rt1718s_update_bits8(port, 0xCF, 0x40, 0x00));
@@ -163,9 +150,30 @@ static int rt1718s_init(int port)
 
 	RETURN_ERROR(rt1718s_write8(port, 0x11, 0xFF));
 
-	RETURN_ERROR(rt1718s_update_bits8(port, 0x8C, 0x02, 0x00));
+	RETURN_ERROR(rt1718s_write8(port, 0xF23A, 0x43));
 
-	return tcpci_tcpm_init(port);
+	RETURN_ERROR(tcpci_tcpm_init(port));
+
+	RETURN_ERROR(rt1718s_update_bits8(port, 0x13, 0x80, 0x80));
+
+	RETURN_ERROR(rt1718s_write8(port, 0xF211, 0x20));
+
+	return 0;
+}
+
+static void rt1718s_alert(int port)
+{
+	int alert_h;
+
+	rt1718s_read8(port, 0x11, &alert_h);
+	if (alert_h & 0x80) {
+		CPRINTS("\x1b[1;31mALARM_VBUS_VOLTAGE_L!!\x1b[m");
+		rt1718s_write8(port, 0x99, 0xFF);
+		rt1718s_write8(port, 0x90, 0x87);
+		rt1718s_write8(port, 0x11, 0x80);
+	}
+
+	tcpci_tcpc_alert(port);
 }
 
 /* RT1718S is a TCPCI compatible port controller */
@@ -187,7 +195,7 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message_raw	= &tcpci_tcpm_get_message_raw,
 	.transmit		= &tcpci_tcpm_transmit,
-	.tcpc_alert		= &tcpci_tcpc_alert,
+	.tcpc_alert		= &rt1718s_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
 #endif
@@ -203,3 +211,22 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
 #endif
 };
+
+int command_rt_dump(int argc, char **argv)
+{
+	for (int i = 0; i <= 0xEF; i++) {
+		int val = 0;
+		int rt = rt1718s_read8(1, i, &val);
+
+		if (i % 16 == 0)
+			CPRINTF("%02X: ", i);
+		if (rt)
+			CPRINTF("-- ");
+		else
+			CPRINTF("%02X ", val);
+		if (i % 16 == 15)
+			CPRINTF("\n");
+	}
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(rt_dump, command_rt_dump, "", "");
