@@ -79,7 +79,7 @@ STATIC_IF(DEBUG_I2C_FAULT_LAST_WRITE_OP)
  * helpful.  Defining DEBUG_GET_CC will output a line that gives
  * this useful information
  */
-#undef DEBUG_GET_CC
+#define DEBUG_GET_CC
 
 struct get_cc_values {
 	int cc1;
@@ -94,7 +94,7 @@ STATIC_IF(DEBUG_GET_CC)
  * Seeing RoleCtrl updates can help determine why GetCC is not
  * working as it should be.
  */
-#undef DEBUG_ROLE_CTRL_UPDATES
+#define DEBUG_ROLE_CTRL_UPDATES
 
 /****************************************************************************/
 
