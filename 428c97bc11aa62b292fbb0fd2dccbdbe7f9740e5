@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4437682_3abc12b4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-23T15:57:17Z",
+      "side": 1,
+      "message": "To keep up with the previous driver implementations. It is not really a header either, it is really a .c that is included. See the CL stack at crrev/c/2778820 for the initial code review.",
+      "parentUuid": "9385c0b0_ae75b2ce",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "428c97bc11aa62b292fbb0fd2dccbdbe7f9740e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05d85614_4304b6ad",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-23T15:43:07Z",
       "side": 1,
       "message": "line is underindented\n\nsuggest using clang-format to fix",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "428c97bc11aa62b292fbb0fd2dccbdbe7f9740e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4cc62ba_86c99fdb",
+        "filename": "zephyr/shim/src/motionsense_driver/kx022-drvinfo.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-23T15:57:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05d85614_4304b6ad",
       "range": {
         "startLine": 43,
         "startChar": 0,
