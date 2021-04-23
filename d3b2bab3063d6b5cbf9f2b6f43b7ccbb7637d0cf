@@ -117,6 +117,30 @@
       },
       "revId": "d3b2bab3063d6b5cbf9f2b6f43b7ccbb7637d0cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9bc9f6c_041d6488",
+        "filename": "zephyr/projects/volteer/delbin/src/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T02:16:09Z",
+      "side": 1,
+      "message": "Yep, if the signature of the function changes (i.e., someone adds a return value in the future), then we won\u0027t end up with mysterious issues if they forget to change this file (instead a compile error they will notice).",
+      "parentUuid": "9e6c3c7b_d764732e",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "d3b2bab3063d6b5cbf9f2b6f43b7ccbb7637d0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
