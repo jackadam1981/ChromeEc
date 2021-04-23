@@ -176,6 +176,30 @@
       },
       "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41c878cf_50645d57",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-23T16:56:15Z",
+      "side": 1,
+      "message": "Could a board_set field in the `struct usb_mux` make more sense for this?  The board set would be able to check the CCD level, and that would mean the PD task is setting whatever mux options are needed.\n\nDo all boards using the ANX7447 need this?  I think octopus had that TCPC on a number of C0 ports",
+      "parentUuid": "9a9430da_88e5081f",
+      "range": {
+        "startLine": 549,
+        "startChar": 50,
+        "endLine": 549,
+        "endChar": 60
+      },
+      "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
