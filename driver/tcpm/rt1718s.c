@@ -122,7 +122,30 @@ static int rt1718s_init(int port)
 
 	RETURN_ERROR(rt1718s_update_bits8(port, 0x8C, 0x02, 0x02));
 
-	return tcpci_tcpm_init(port);
+	RETURN_ERROR(rt1718s_write8(port, 0xF23A, 0x43));
+
+	RETURN_ERROR(tcpci_tcpm_init(port));
+
+	RETURN_ERROR(rt1718s_update_bits8(port, 0x13, 0x80, 0x80));
+
+	RETURN_ERROR(rt1718s_write8(port, 0xF211, 0x20));
+
+	return 0;
+}
+
+static void rt1718s_alert(int port)
+{
+	int alert_h;
+
+	rt1718s_read8(port, 0x11, &alert_h);
+	if (alert_h & 0x80) {
+		CPRINTS("\x1b[1;31mALARM_VBUS_VOLTAGE_L!!\x1b[m");
+		rt1718s_write8(port, 0x99, 0xFF);
+		rt1718s_write8(port, 0x90, 0x87);
+		rt1718s_write8(port, 0x11, 0x80);
+	}
+
+	tcpci_tcpc_alert(port);
 }
 
 /* RT1718S is a TCPCI compatible port controller */
@@ -144,7 +167,7 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message_raw	= &tcpci_tcpm_get_message_raw,
 	.transmit		= &tcpci_tcpm_transmit,
-	.tcpc_alert		= &tcpci_tcpc_alert,
+	.tcpc_alert		= &rt1718s_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
 #endif
