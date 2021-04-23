@@ -46,6 +46,30 @@
       },
       "revId": "2a65a673000216f194f60fb170c5b2ff750f01ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd0eb9e_05f6a106",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-04-23T09:35:56Z",
+      "side": 1,
+      "message": "after modify this CL, we test on storo and find C1 port still have problems. i plug in AC to TYpeC1, and it cannot boot",
+      "parentUuid": "1002328e_6acad483",
+      "range": {
+        "startLine": 111,
+        "startChar": 15,
+        "endLine": 111,
+        "endChar": 43
+      },
+      "revId": "2a65a673000216f194f60fb170c5b2ff750f01ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
