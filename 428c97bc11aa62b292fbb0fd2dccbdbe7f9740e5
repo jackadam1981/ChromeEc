@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9385c0b0_ae75b2ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T15:43:07Z",
+      "side": 1,
+      "message": "why .inc?\n\nseems like it should be .h",
+      "range": {
+        "startLine": 10,
+        "startChar": 14,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "428c97bc11aa62b292fbb0fd2dccbdbe7f9740e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d85614_4304b6ad",
+        "filename": "zephyr/shim/src/motionsense_driver/kx022-drvinfo.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T15:43:07Z",
+      "side": 1,
+      "message": "line is underindented\n\nsuggest using clang-format to fix",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 1
+      },
+      "revId": "428c97bc11aa62b292fbb0fd2dccbdbe7f9740e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
