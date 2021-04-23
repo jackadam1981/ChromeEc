@@ -978,6 +978,20 @@ void pd_notify_event(int port, uint32_t event_mask)
 	pd_send_host_event(PD_EVENT_TYPEC);
 }
 
+static int command_typec_event(int argc, char **argv) {
+	if (argc != 3) {
+		CPRINTS("Wrong arg count %d", argc);
+		return EC_ERROR_PARAM_COUNT;
+	}
+
+	pd_notify_event(strtoull(argv[1], NULL, 10),
+			strtoull(argv[2], NULL, 16));
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(tcev, command_typec_event, "tcev [port] [mask]",
+		"Fake PD_EVENT_TYPEC events");
+
 void pd_clear_events(int port, uint32_t clear_mask)
 {
 	atomic_clear_bits(&pe[port].events, clear_mask);
