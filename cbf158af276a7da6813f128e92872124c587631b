@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001630d1_6070b0e1",
+        "filename": "zephyr/include/cros/ite/it8xxx2.dtsi",
+        "patchSetId": 22
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T14:35:13Z",
+      "side": 1,
+      "message": "move this to a parent CL",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc0091e5_67b3c4c8",
+        "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
+        "patchSetId": 22
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T14:35:13Z",
+      "side": 1,
+      "message": "remove extra blank line at end of file",
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f9589a1_c7b93f1d",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 22
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T14:35:13Z",
+      "side": 1,
+      "message": "gpios and i2c should be a follow-on CL",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 4
+      },
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e2cd63b_7e88e152",
+        "filename": "zephyr/projects/it8xxx2_evb/prj.conf",
+        "patchSetId": 22
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T14:35:13Z",
+      "side": 1,
+      "message": "This should be added in a follow-on CL",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5f2dc22_51d5a74e",
+        "filename": "zephyr/projects/it8xxx2_evb/prj.conf",
+        "patchSetId": 22
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T14:35:13Z",
+      "side": 1,
+      "message": "would prefer if you can add these optional feature in a follow up CL\n\ninitial bring up should support UART and basic commands only",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0318dec_0b9f692e",
+        "filename": "zephyr/projects/it8xxx2_evb/prj.conf",
+        "patchSetId": 22
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T14:35:13Z",
+      "side": 1,
+      "message": "follow-on CL please",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
