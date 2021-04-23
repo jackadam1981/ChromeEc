@@ -57,6 +57,29 @@
       },
       "revId": "dee94ad8e1d7bf3d5afc4db38195c43861fc43b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a1eefc2_6514b17f",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T18:06:07Z",
+      "side": 1,
+      "message": "typical usage is to create defininitions and then re-use those multiple times (e.g., CROS_EC_GPIO_INTERRUPTS, etc) instead of include the same file multiple times\n\nthis can be refactored later",
+      "range": {
+        "startLine": 301,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 49
+      },
+      "revId": "dee94ad8e1d7bf3d5afc4db38195c43861fc43b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
