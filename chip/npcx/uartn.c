@@ -239,16 +239,33 @@ static void uartn_config(uint8_t uart_num)
 	 * If apb2's clock is not 15MHz, we need to find the other optimized
 	 * values of UPSR and UBAUD for baud rate 115200.
 	 */
+#if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX9
+#ifdef TEST_HIGHER_I2C_SRC_CLK
+#if (NPCX_APB_CLOCK(4) != 20000000)
+#error "Unsupported apb4 clock for UART!"
+#endif
+#else
+#if (NPCX_APB_CLOCK(4) != 15000000)
+#error "Unsupported apb4 clock for UART!"
+#endif
+#endif
+#else
 #if (NPCX_APB_CLOCK(2) != 15000000)
 #error "Unsupported apb2 clock for UART!"
+#endif
 #endif
 
 	/*
 	 * Fix baud rate to 115200. If this value is modified, please also
 	 * modify the delay in uart_set_pad and uart_reset_default_pad_panic.
 	 */
+#ifdef TEST_HIGHER_I2C_SRC_CLK
+	NPCX_UPSR(uart_num) = 0x08;
+	NPCX_UBAUD(uart_num) = 0x0A;
+#else
 	NPCX_UPSR(uart_num) = 0x38;
 	NPCX_UBAUD(uart_num) = 0x01;
+#endif
 
 	/*
 	 * 8-N-1, FIFO enabled.  Must be done after setting
