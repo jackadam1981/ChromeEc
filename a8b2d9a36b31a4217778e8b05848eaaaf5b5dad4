@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "918b0b2e_e6118ff1",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-04-23T16:34:48Z",
+      "side": 1,
+      "message": "Do you still need this debug trigger? If so, maybe move it above the comment.",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 43
+      },
+      "revId": "a8b2d9a36b31a4217778e8b05848eaaaf5b5dad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
