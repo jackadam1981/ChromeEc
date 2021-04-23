@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "906ef9bb_bc03f250",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-04-23T15:36:17Z",
+      "side": 1,
+      "message": "#if defined(HAS_TASK_PD_C1) missing",
+      "revId": "abc71c2e3a60a68a56dfa5aa0fbecfdb44e2dc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a98a1dff_80ff8f61",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-04-23T15:36:17Z",
+      "side": 1,
+      "message": "#endif\n#if defined(HAS_TASK_PD_C3)  missing",
+      "revId": "abc71c2e3a60a68a56dfa5aa0fbecfdb44e2dc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f623324_e15091ec",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-04-23T15:36:17Z",
+      "side": 1,
+      "message": "if defined(HAS_TASK_PD_C1) ?",
+      "revId": "abc71c2e3a60a68a56dfa5aa0fbecfdb44e2dc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
