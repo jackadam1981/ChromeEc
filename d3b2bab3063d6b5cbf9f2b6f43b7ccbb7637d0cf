@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e45c5a50_402e6f95",
+        "filename": "zephyr/projects/volteer/delbin/src/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-04-23T00:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9840e3e_ecd39c9f",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "d3b2bab3063d6b5cbf9f2b6f43b7ccbb7637d0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26bc3c6d_439c628d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-22T23:09:07Z",
       "side": 1,
       "message": "need to include lid_angle.h for this",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "d3b2bab3063d6b5cbf9f2b6f43b7ccbb7637d0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4edb83bc_5e546cf1",
+        "filename": "zephyr/projects/volteer/delbin/src/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-04-23T00:08:56Z",
+      "side": 1,
+      "message": "why ?",
+      "parentUuid": "26bc3c6d_439c628d",
       "range": {
         "startLine": 13,
         "startChar": 5,
