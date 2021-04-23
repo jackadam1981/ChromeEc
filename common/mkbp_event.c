@@ -173,6 +173,7 @@ static int mkbp_set_host_active(int active, uint32_t *timestamp)
 #endif
 }
 
+#if 0
 #if defined(CONFIG_MKBP_EVENT_WAKEUP_MASK) || \
 	defined(CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK)
 /**
@@ -193,6 +194,7 @@ static inline int host_is_sleeping(void)
 	return is_sleeping;
 }
 #endif /* CONFIG_MKBP_(HOST_EVENT_)?WAKEUP_MASK */
+#endif
 
 /*
  * This is the deferred function that ensures that we attempt to set the MKBP
