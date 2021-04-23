@@ -886,6 +886,13 @@ void raa489000_hibernate(int chgnum, bool disable_adc)
 				chgnum);
 	}
 #endif
+	/* Disable DVC on the main charger to reduce power consumption. */
+	if (chgnum == CHARGER_PRIMARY) {
+		rv = raw_write16(chgnum, RAA489000_REG_CONTROL10, 0);
+		if (rv)
+			CPRINTS("%s(%d):Failed to set Control10!", __func__,
+				chgnum);
+	}
 
 	cflush();
 }
