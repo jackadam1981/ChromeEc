@@ -577,8 +577,13 @@ DECLARE_IRQ(NPCX_IRQ_PM_CHAN_OBE, lpc_pmc_obe_interrupt, 4);
 void lpc_port80_interrupt(void)
 {
 	/* Send port 80 data to UART continuously if FIFO is not empty */
-	while (IS_BIT_SET(NPCX_DP80STS, 6))
-		port_80_write(NPCX_DP80BUF);
+	while (IS_BIT_SET(NPCX_DP80STS, 6)) {
+		 /*
+		  * DP80BUF register is 16-bit wide. Only the LSB is for the
+		  * Port80 code.
+		  */
+		port_80_write(NPCX_DP80BUF & 0xFF);
+	}
 
 	/* If FIFO is overflow */
 	if (IS_BIT_SET(NPCX_DP80STS, 7)) {
@@ -657,6 +662,15 @@ void host_register_init(void)
 	/* WIN2 as MEMMAP on the IO:0x900 */
 	sib_write_reg(SIO_OFFSET, 0xF9, 0x09);
 	sib_write_reg(SIO_OFFSET, 0xF8, 0x00);
+
+	/*
+	 * eSPI allows sending 4 bytes of Port80 code in a single PUT_IOWR_SHORT
+	 * transaction. When setting OFS0_SEL~OFS3_SEL in DPAR1 register to 1,
+	 * EC hardware will put those 4 bytes of Port80 code to DP80BUF FIFO.
+	 * This is only supported when CHIP_FAMILY >= NPCX9.
+	 */
+	if (IS_ENABLED(CONFIG_HOSTCMD_ESPI))
+		sib_write_reg(SIO_OFFSET, 0xFD, 0x0F);
 	/* enable SHM */
 	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
