@@ -152,6 +152,30 @@
       },
       "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a9430da_88e5081f",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-23T16:06:32Z",
+      "side": 1,
+      "message": "\u003e ... there\u0027s no reason to wait since any configurations won\u0027t affect SBU when we\u0027re using our debug accessory.\n\nWithout setting the mux register to 0xc, the noise from DDI_AUX_N will interfere with CCD. Without a delay, anx7447_set_aux_switch would be called immediately after a reset. Then the mux register would be initialized to a different value by the PD task. With the 2 sec delay, we\u0027ll get: reset -\u003e ccd_mode_isr -\u003e PD init -\u003e anx7447_set_aux_switch.\n\n\u003e ... since DP_AUX was interfering with CCD, shouldn\u0027t we isolate DP_AUX from SBU when we are using our debug accessory? \n\nYes, that\u0027s the intention of this patch.\n\nThe original patch is based on Nami and TCPM v1. Other hardware or TCPM v2 may behave differently and we may be able to further optimize the fix.\n\nSorry if I still misunderstand your points. Please feel free to open a chat or meeting for further discussion.",
+      "parentUuid": "a50014f8_d0844962",
+      "range": {
+        "startLine": 549,
+        "startChar": 50,
+        "endLine": 549,
+        "endChar": 60
+      },
+      "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
