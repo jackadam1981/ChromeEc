@@ -174,10 +174,20 @@ int pd_snk_is_vbus_provided(int port)
 	return 0;
 }
 
+static void rt1718s_enable_source(bool enable)
+{
+	enum mask_update_action val = enable ? MASK_SET : MASK_CLR;
+
+	CPRINTS("\x1b[1;33mrt1718s_enable_source %d\x1b[m", enable);
+	i2c_update8(4, 0x43, 0xED, 0x02, val);
+	i2c_update8(4, 0x43, 0xEE, 0x02, val);
+}
+
 void pd_power_supply_reset(int port)
 {
 	int prev_en;
 
+	CPRINTS("\x1b[1;33m%s\x1b[m", __func__);
 	prev_en = ppc_is_sourcing_vbus(port);
 
 	/* Disable VBUS. */
@@ -186,6 +196,9 @@ void pd_power_supply_reset(int port)
 	/* Enable discharge if we were previously sourcing 5V */
 	if (prev_en)
 		pd_set_vbus_discharge(port, 1);
+
+	if (port == 1)
+		rt1718s_enable_source(false);
 
 	/* Notify host of power info change. */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -201,6 +214,7 @@ int pd_set_power_supply_ready(int port)
 {
 	int rv;
 
+	CPRINTF("%s", __func__);
 	/* Disable charging. */
 	rv = ppc_vbus_sink_enable(port, 0);
 	if (rv)
@@ -212,6 +226,9 @@ int pd_set_power_supply_ready(int port)
 	rv = ppc_vbus_source_enable(port, 1);
 	if (rv)
 		return rv;
+
+	if (port == 1)
+		rt1718s_enable_source(true);
 
 	/* Notify host of power info change. */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
