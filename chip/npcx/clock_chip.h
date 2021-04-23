@@ -51,9 +51,9 @@
  */
 #ifdef TEST_HIGHER_I2C_SRC_CLK
 /* Target OSC_CLK freq */
-#define OSC_CLK 100000000
+#define OSC_CLK 80000000
 /* Core clock prescaler */
-#define FPRED 4 /* CORE_CLK = OSC_CLK/5 */
+#define FPRED 3 /* CORE_CLK = OSC_CLK/4 */
 #else
 /* Target OSC_CLK freq */
 #define OSC_CLK 90000000
@@ -84,14 +84,14 @@
 /* APBs source clock */
 #define APBSRC_CLK OSC_CLK
 /* APB1 clock divider */
-#define APB1DIV 4 /* APB1 clock = OSC_CLK/5 */
+#define APB1DIV 3 /* APB1 clock = OSC_CLK/4 */
 /* APB2 clock divider */
-#define APB2DIV 4 /* APB2 clock = OSC_CLK/5 */
+#define APB2DIV 3 /* APB2 clock = OSC_CLK/4 */
 /* APB3 clock divider */
-#define APB3DIV 4 /* APB3 clock = OSC_CLK/5 */
+#define APB3DIV 3 /* APB3 clock = OSC_CLK/4 */
 #if NPCX_FAMILY_VERSION >= NPCX_FAMILY_NPCX9
 /* APB4 clock divider */
-#define APB4DIV 4 /* APB4 clock = OSC_CLK/5 */
+#define APB4DIV 3 /* APB4 clock = OSC_CLK/4 */
 #endif
 #else
 /* APBs source clock */
@@ -116,7 +116,7 @@
  * Frequency multiplier M/N value definitions according to the requested
  * OSC_CLK (Unit:Hz).
  */
-#if (OSC_CLK > 80000000)
+#if (OSC_CLK >= 80000000)
 #define HFCGN    0x82 /* Set XF_RANGE as 1 if OSC_CLK >= 80MHz */
 #else
 #define HFCGN    0x02
