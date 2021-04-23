@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f26c4a_fd778a21",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T14:29:26Z",
+      "side": 1,
+      "message": "please describe an exact procedure I can repeat to do this test",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "96cacb07e36ca79741b0f81342ce54ab5d5b4a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07e260a1_544fa873",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T14:29:26Z",
+      "side": 1,
+      "message": "this code appears to be quite duplicate of the nuvoton code\n\ndo you think you can move it to common functionality instead of duplicating it?",
+      "revId": "96cacb07e36ca79741b0f81342ce54ab5d5b4a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17507f74_23a6949e",
+        "filename": "zephyr/shim/chip/it8xxx2/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-23T14:29:26Z",
+      "side": 1,
+      "message": "what does \"doesn\u0027t binding\" mean?",
+      "range": {
+        "startLine": 22,
+        "startChar": 21,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "96cacb07e36ca79741b0f81342ce54ab5d5b4a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
