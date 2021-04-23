@@ -638,6 +638,7 @@
  * On such systems, compensation is required to guarantee remaining_capacity
  * will be equal to full_capacity eventually. This used to be done in ACPI.
  *
+<<<<<<< HEAD   (b8b718 Merge remote-tracking branch cros/main into firmware-dedede-)
  * Powerd uses CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE as the threshold for low
  * battery shutdown.
  *
@@ -660,6 +661,23 @@
  * - If battery discharges to 2% while the system is running, system shuts down.
  *   If that happens while a user is away, they can press the power button to
  *   learn what happened.
+=======
+ * When CONFIG_BATTERY_EXPORT_DISPLAY_SOC is enabled, CONFIG_BATT_FULL_FACTOR
+ * has no effect. Also CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE is used by Powerd
+ * as the threshold for low battery shutdown. For example, if we have:
+ *
+ *   CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON = 3
+ *   CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE = 2,
+ *   BATTERY_LEVEL_SHUTDOWN = 1
+ *
+ * the battery range is divided as follows (assuming system is powered only by
+ * internal battery):
+ *
+ *   0% ------------------- 1% ------------------- 2% ------------------- 3%
+ *                                                   EC refuses to boot ->
+ *                      Powerd shuts down system ->
+ *   EC shuts down system ->
+>>>>>>> CHANGE (b97197 Battery: Add command to export display SoC)
  */
 #define CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE	2  /* shutdown if soc <= 2% */
 
@@ -667,9 +685,33 @@
  * Powerd's full_factor. The value comes from:
  *   src/platform2/power_manager/default_prefs/power_supply_full_factor
  *
+<<<<<<< HEAD   (b8b718 Merge remote-tracking branch cros/main into firmware-dedede-)
  * This value is used by the host to calculate the ETA for full charge.
+=======
+ * When CONFIG_BATTERY_EXPORT_DISPLAY_SOC is enabled, this value is exported
+ * to the host (i.e. Powerd). It's used to calculate the ETA for full charge.
+>>>>>>> CHANGE (b97197 Battery: Add command to export display SoC)
  */
 #define CONFIG_BATT_HOST_FULL_FACTOR		97
+
+/*
+ * This option enables EC to be the origin of the display SoC and allows the
+ * host (i.e. Powerd) to retrieve it through EC_CMD_DISPLAY_SOC.
+ *
+ * The display SoC is computed from the remaining capacity, the last full
+ * charge, CONFIG_BATT_FULL_FACTOR, CONFIG_BATT_HOST_FULL_FACTOR, and
+ * CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE.
+ *
+ * If this option is disabled, the EC and the host will individually compute
+ * the display SoC, which may result in inconsistent behaviors since the numbers
+ * do not necessarily match. As such, this option is going to be enabled by
+ * default and the old behavior (#undef CONFIG_BATTERY_EXPORT_DISPLAY_SOC) will
+ * be deprecated.
+ *
+ * TODO: Define CONFIG_BATTERY_EXPORT_DISPLAY_SOC by default and remove
+ *       CONFIG_BATTERY_EXPORT_DISPLAY_SOC and CONFIG_BATT_FULL_FACTOR.
+ */
+#undef CONFIG_BATTERY_EXPORT_DISPLAY_SOC
 
 /*
  * Smart battery pass-through host commands.

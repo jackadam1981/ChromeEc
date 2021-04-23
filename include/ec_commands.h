@@ -6917,6 +6917,7 @@ struct ec_response_display_soc {
 } __ec_align2;
 
 
+<<<<<<< HEAD   (b8b718 Merge remote-tracking branch cros/main into firmware-dedede-)
 #define EC_CMD_SET_BASE_STATE 0x0138
 
 struct ec_params_set_base_state {
@@ -6929,6 +6930,8 @@ enum ec_set_base_state_cmd {
 	EC_SET_BASE_STATE_RESET,
 };
 
+=======
+>>>>>>> CHANGE (b97197 Battery: Add command to export display SoC)
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 

@@ -626,6 +626,12 @@ void battery_compensate_params(struct batt_params *batt)
 		return;
 
 	/* Some batteries don't update full capacity as often. */
+<<<<<<< HEAD   (b8b718 Merge remote-tracking branch cros/main into firmware-dedede-)
+=======
+	if (!IS_ENABLED(CONFIG_BATTERY_EXPORT_DISPLAY_SOC))
+		/* full_factor is effectively disabled in powerd. */
+		*full = *full * batt_full_factor / 100;
+>>>>>>> CHANGE (b97197 Battery: Add command to export display SoC)
 	if (*remain > *full)
 		*remain = *full;
 
@@ -660,7 +666,11 @@ void battery_compensate_params(struct batt_params *batt)
 		batt->display_charge = 1000;
 }
 
+<<<<<<< HEAD   (b8b718 Merge remote-tracking branch cros/main into firmware-dedede-)
 #ifdef CONFIG_CHARGER
+=======
+#ifdef CONFIG_BATTERY_EXPORT_DISPLAY_SOC
+>>>>>>> CHANGE (b97197 Battery: Add command to export display SoC)
 static enum ec_status battery_display_soc(struct host_cmd_handler_args *args)
 {
 	struct ec_response_display_soc *r = args->response;
