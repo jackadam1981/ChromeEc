@@ -541,3 +541,25 @@ static void baseboard_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT - 1);
+
+static void enable_nvme(void)
+{
+	gpio_set_level(GPIO_EN_PP2500_NVME_X, 1);
+	udelay(1 * MSEC);
+	gpio_set_level(GPIO_EN_PP1200_NVME_X, 1);
+	udelay(1 * MSEC);
+	gpio_set_level(GPIO_EN_PP900_NVME_X, 1);
+	/* b/178569418: output high power loss notification is implemented */
+	gpio_set_level(GPIO_EC_NVME_PLN_ODL, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, enable_nvme, HOOK_PRIO_DEFAULT);
+
+static void disable_nvme(void)
+{
+	gpio_set_level(GPIO_EN_PP900_NVME_X, 0);
+	gpio_set_level(GPIO_EN_PP1200_NVME_X, 0);
+	gpio_set_level(GPIO_EN_PP2500_NVME_X, 0);
+
+	gpio_set_level(GPIO_EC_NVME_PLN_ODL, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, disable_nvme, HOOK_PRIO_DEFAULT);
