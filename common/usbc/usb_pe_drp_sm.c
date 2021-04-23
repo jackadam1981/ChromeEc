@@ -1366,6 +1366,9 @@ static void pe_handle_detach(void)
 
 	/* Exit BIST Test mode, in case the TCPC entered it. */
 	tcpc_set_bist_test_mode(port, false);
+
+	/* TODO: Maybe disconnect should have its own event defined. */
+	pd_notify_event(port, PD_STATUS_EVENT_HARD_RESET);
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, pe_handle_detach, HOOK_PRIO_DEFAULT);
 
