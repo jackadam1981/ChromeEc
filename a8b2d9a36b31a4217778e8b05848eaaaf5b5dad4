@@ -22,6 +22,30 @@
       },
       "revId": "a8b2d9a36b31a4217778e8b05848eaaaf5b5dad4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5277a6c_ad63fb1e",
+        "filename": "baseboard/honeybuns/usb_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-23T16:40:39Z",
+      "side": 1,
+      "message": "No, I should remove this. I will upload another patchset for this one.",
+      "parentUuid": "918b0b2e_e6118ff1",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 178,
+        "endChar": 43
+      },
+      "revId": "a8b2d9a36b31a4217778e8b05848eaaaf5b5dad4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
