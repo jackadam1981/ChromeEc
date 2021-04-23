@@ -14,6 +14,7 @@
 #include "ec_commands.h"
 #include "host_command.h"
 #include "mkbp_event.h"
+#include "chipset.h"
 #include "tcpm/tcpm.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
@@ -617,10 +618,16 @@ DECLARE_HOST_COMMAND(EC_CMD_PD_HOST_EVENT_STATUS, hc_pd_host_event_status,
 /* Send host event up to AP */
 void pd_send_host_event(int mask)
 {
+	const int wake_mask = PD_EVENT_TYPEC;
 	/* mask must be set */
 	if (!mask)
 		return;
 
+	CPRINTS("Wake mask 0x%x, event mask 0x%x", wake_mask, mask);
+	if (!(mask & wake_mask) && host_is_sleeping())
+		return;
+
+	CPRINTS("Sending PD_MCU");
 	atomic_or(&pd_host_event_status, mask);
 	/* interrupt the AP */
 	host_set_single_event(EC_HOST_EVENT_PD_MCU);

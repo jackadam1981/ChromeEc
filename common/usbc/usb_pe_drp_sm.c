@@ -14,6 +14,7 @@
 #include "ec_commands.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "chipset.h"
 #include "stdbool.h"
 #include "system.h"
 #include "task.h"
@@ -962,9 +963,18 @@ void pe_invalidate_explicit_contract(int port)
 
 void pd_notify_event(int port, uint32_t event_mask)
 {
+	/* TODO: Make the mask value an item in config.h */
+	const uint32_t wake_mask = PD_STATUS_EVENT_HARD_RESET;
+
 	atomic_or(&pe[port].events, event_mask);
 
+	CPRINTS("Wake mask 0x%x, event mask 0x%x", wake_mask, event_mask);
+	/* Only send a host event for events that should wake the AP. */
+	if (!(wake_mask & event_mask) && host_is_sleeping())
+		return;
+
 	/* Notify the host that new events are available to read */
+	CPRINTS("Sending PD_EVENT-TYPEC");
 	pd_send_host_event(PD_EVENT_TYPEC);
 }
 
