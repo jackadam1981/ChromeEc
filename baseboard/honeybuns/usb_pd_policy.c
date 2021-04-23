@@ -157,13 +157,17 @@ void pd_power_supply_reset(int port)
 		return;
 
 	prev_en = ppc_is_sourcing_vbus(port);
+	//baseboard_usbc_reset_vsafe0v();
 
 	/* Disable VBUS via PPC. */
 	ppc_vbus_source_enable(port, 0);
 
 	/* Enable discharge if we were previously sourcing 5V */
-	if (prev_en)
+	if (prev_en) {
 		pd_set_vbus_discharge(port, 1);
+		if (!port)
+			CPRINTS("usbc[%d]: vbus discharge enabled", port);
+	}
 
 	if (port == USB_PD_PORT_HOST) {
 		int mv;
@@ -312,6 +316,9 @@ int pd_check_data_swap(int port,
 int pd_check_power_swap(int port)
 {
 
+	if (pd_get_dual_role(port) != PD_DRP_TOGGLE_ON)
+		return 0;
+
 	if (pd_get_power_role(port) == PD_ROLE_SINK)
 		return 1;
 
@@ -354,8 +361,10 @@ __override bool pd_can_source_from_device(int port, const int pdo_cnt,
 	 * the port partner. We always want to be a power role source, so always
 	 * return false.
 	 */
-
-	return false;
+	if (pd_get_dual_role(port) == PD_DRP_FORCE_SINK)
+		return true;
+	else
+		return false;
 }
 
 static int vdm_is_dp_enabled(int port)
