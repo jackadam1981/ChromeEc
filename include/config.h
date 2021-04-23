@@ -658,6 +658,24 @@
 #define CONFIG_BATT_HOST_FULL_FACTOR		97
 
 /*
+ * This option enables EC to be the origin of the display SoC and allows the
+ * host to retrieve it through EC_CMD_DISPLAY_SOC.
+ *
+ * The display SoC is computed from the remaining capacity, the last full
+ * charge, CONFIG_BATT_FULL_FACTOR, CONFIG_BATT_HOST_FULL_FACTOR, and
+ * CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE.
+ *
+ * If this option is disabled, the EC and the host will individually compute
+ * the display SoC, which may result in inconsistent behaviors since the numbers
+ * do not necessarily match.
+ *
+ * As such, this option is going to be enabled by default and the old behavior
+ * (#undef CONFIG_BATTERY_EXPORT_DISPLAY_SOC) will be deprecated. Don't forget
+ * to remove CONFIG_BATT_FULL_FACTOR as well.
+ */
+#undef CONFIG_BATTERY_EXPORT_DISPLAY_SOC
+
+/*
  * Smart battery pass-through host commands.
  */
 #undef CONFIG_SB_PASSTHROUGH
