@@ -45,7 +45,7 @@ void zephyr_shim_setup_deferred(const struct deferred_data *data);
 #ifdef CONFIG_ARCH_POSIX
 #define DEFERRED_DATA_SECTION ".data.hooks"
 #else
-#define DEFERRED_DATA_SECTION ".rodata.hooks"
+#define DEFERRED_DATA_SECTION ".data.hooks"
 #endif
 
 #define DECLARE_DEFERRED(routine) _DECLARE_DEFERRED(routine)
