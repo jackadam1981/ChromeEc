@@ -28,6 +28,7 @@
 
 static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 static int source_enabled[CONFIG_USB_PD_PORT_MAX_COUNT];
+static int vsafe0v[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static int read_reg(uint8_t port, int reg, int *regval)
 {
@@ -352,6 +353,10 @@ static int sn5s330_init(int port)
 	 * is checked below.
 	 */
 	regval = SN5S330_DIG_RES | SN5S330_VSAFE0V_MASK;
+#ifdef CONFIG_USB_PD_VSAFE0V_DETECT_PPC
+	regval &= ~SN5S330_VSAFE0V_MASK;
+	regval |= SN5S330_VSAFE0V_STAT;
+#endif
 	status = i2c_write8(i2c_port, i2c_addr_flags,
 			    SN5S330_INT_STATUS_REG4, regval);
 	if (status) {
@@ -690,6 +695,27 @@ static void sn5s330_handle_interrupt(int port)
 		/* Clear the interrupt sources. */
 		write_reg(port, SN5S330_INT_TRIP_RISE_REG2, rise);
 		write_reg(port, SN5S330_INT_TRIP_FALL_REG2, fall);
+
+#ifdef CONFIG_USB_PD_VSAFE0V_DETECT_PPC
+		/* Read INT_STATUS_REG4 to see if VSAFE0V stat bit changed */
+		read_reg(port, SN5S330_INT_STATUS_REG4, &rise);
+		rise = !!(rise & SN5S330_VSAFE0V_STAT);
+		if (vsafe0v[port] != rise) {
+			write_reg(port, SN5S330_INT_STATUS_REG4,
+				  SN5S330_VSAFE0V_STAT);
+			vsafe0v[port] = rise;
+			read_reg(port, SN5S330_INT_STATUS_REG4, &fall);
+			CPRINTS("ppc[%d]: VSafe0V Change! new value = %d, after = %x",
+				port, rise, fall);
+		} else if (rise) {
+			write_reg(port, SN5S330_INT_STATUS_REG4,
+				  SN5S330_VSAFE0V_STAT);
+			vsafe0v[port] = rise;
+			read_reg(port, SN5S330_INT_STATUS_REG4, &fall);
+			CPRINTS("ppc[%d]: VSafe0V Detected! v1 = %d, reg = %x",
+				port, rise, fall);
+		}
+#endif
 
 #if defined(CONFIG_USB_PD_VBUS_DETECT_PPC) && defined(CONFIG_USB_CHARGER)
 		read_reg(port, SN5S330_INT_TRIP_RISE_REG3, &rise);
