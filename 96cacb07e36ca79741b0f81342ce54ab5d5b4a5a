@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9b0a6551_288eec69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-23T17:38:02Z",
+      "side": 1,
+      "message": "I added the code from this into my chain and messed up on having it use yours.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2848433\nThis includes the same code but the binding error messages have been adjusted.",
+      "revId": "96cacb07e36ca79741b0f81342ce54ab5d5b4a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "17507f74_23a6949e",
         "filename": "zephyr/shim/chip/it8xxx2/system.c",
         "patchSetId": 1
