@@ -16,6 +16,24 @@
       "message": "Remove this one as well?  It seems like it\u0027s not providing any extra information for the most part, since we\u0027ll print our transition state next anyway.",
       "revId": "aa1d44c75f397be9e1b9651eed7049a9cc9a4367",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "947342ca_6328aea2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 6568,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-23T16:13:03Z",
+      "side": 1,
+      "message": "Ah, I had still missed one. It\u0027s removed now.",
+      "parentUuid": "bc7d1f65_89cbe677",
+      "revId": "aa1d44c75f397be9e1b9651eed7049a9cc9a4367",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
