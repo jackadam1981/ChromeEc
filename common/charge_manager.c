@@ -852,8 +852,12 @@ static void charge_manager_refresh(void)
 
 	/* Update globals to reflect current state. */
 	charge_current = new_charge_current;
+	ccprints("#################### charge current = %dmA ####################"
+								, charge_current);
 	charge_current_uncapped = new_charge_current_uncapped;
 	charge_voltage = new_charge_voltage;
+	ccprints("#################### charge voltage = %dmV ####################"
+								, charge_voltage);
 	charge_supplier = new_supplier;
 	charge_port = new_port;
 
