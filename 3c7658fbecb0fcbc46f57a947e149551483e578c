@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b14a3e8a_1a7f4fce",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-23T18:03:27Z",
+      "side": 1,
+      "message": "In testing, were we able to verify both signals assert with about the same timing? So we\u0027ll expect them both to be the same when this code runs in S0ix?",
+      "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
