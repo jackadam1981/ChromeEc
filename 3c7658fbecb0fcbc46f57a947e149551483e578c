@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d90c7eb_2d76fa5e",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-23T18:22:11Z",
+      "side": 1,
+      "message": "The host command for indicating intent to enter S3 or S0ix wasn\u0027t really added until recently (maybe 3-4 years back?). So, all x86 platforms prior to that never really sent any host command indicating entry into S3 and so EC relied only on the sleep signals. Additionally, we transition via S3 state when going down into deeper states i.e. S0-\u003eS3-\u003eS5-\u003eG3. Even in those cases there is no host command sent. Also, SLP_S3# has been a reliable indicator of the power state. For Intel platforms, SLP_S0# gets asserted in cases other than real suspend i.e. runtime S0ix and hence we had to add the special host command. For all these reasons, HOST_SLEEP_EVENT_S3_SUSPEND was never really checked for S3 transition. The hardware sleep signal has been considered reliable and sufficient to indicate that.",
+      "parentUuid": "f26e3861_063515af",
+      "range": {
+        "startLine": 425,
+        "startChar": 11,
+        "endLine": 425,
+        "endChar": 37
+      },
+      "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b14a3e8a_1a7f4fce",
         "filename": "power/amd_x86.c",
         "patchSetId": 2
