@@ -93,6 +93,30 @@
       },
       "revId": "d3b2bab3063d6b5cbf9f2b6f43b7ccbb7637d0cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e6c3c7b_d764732e",
+        "filename": "zephyr/projects/volteer/delbin/src/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-04-23T00:13:56Z",
+      "side": 1,
+      "message": "is it to show the where the function signature came from ? to show the function is like part of API ?",
+      "parentUuid": "4edb83bc_5e546cf1",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "d3b2bab3063d6b5cbf9f2b6f43b7ccbb7637d0cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
