@@ -60,6 +60,8 @@ enum critical_shutdown {
  */
 int chipset_in_state(int state_mask);
 
+int host_is_sleeping(void);
+
 /**
  * Check if chipset is in a given state or if the chipset task is currently
  * transitioning to that state. For example, G3S5, S5, and S3S5 would all count
@@ -124,6 +126,10 @@ void init_reset_log(void);
 static inline int chipset_in_state(int state_mask)
 {
 	return state_mask & CHIPSET_STATE_ANY_OFF;
+}
+
+static inline int host_is_sleeping(void) {
+    return 0;
 }
 
 static inline int chipset_in_or_transitioning_to_state(int state_mask)

@@ -603,6 +603,24 @@ int chipset_in_state(int state_mask)
 	return (state_mask & need_mask) == need_mask;
 }
 
+/**
+ * Check if the host is sleeping. Check our power state in addition to the
+ * self-reported sleep state of host (CONFIG_POWER_TRACK_HOST_SLEEP_STATE).
+ */
+int host_is_sleeping(void)
+{
+	int is_sleeping = !chipset_in_state(CHIPSET_STATE_ON);
+
+#ifdef CONFIG_POWER_TRACK_HOST_SLEEP_STATE
+	enum host_sleep_event sleep_state = power_get_host_sleep_state();
+	is_sleeping |=
+		(sleep_state == HOST_SLEEP_EVENT_S0IX_SUSPEND ||
+		 sleep_state == HOST_SLEEP_EVENT_S3_SUSPEND ||
+		 sleep_state == HOST_SLEEP_EVENT_S3_WAKEABLE_SUSPEND);
+#endif
+	return is_sleeping;
+}
+
 int chipset_in_or_transitioning_to_state(int state_mask)
 {
 	switch (state) {
