@@ -93,6 +93,9 @@
 #define USB_PORT_COUNT 1
 #define CONFIG_USB_PORT_POWER_DUMB
 
+/*Set state machine to idle for debug*/
+#define CONFIG_BRINGUP
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
