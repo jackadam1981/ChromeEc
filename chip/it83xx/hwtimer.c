@@ -193,7 +193,7 @@ static void __hw_clock_source_irq(void)
 	 * go through this irq. So, if this interrupt was caused by watchdog
 	 * warning timer, then call that function.
 	 */
-	if (irq == et_ctrl_regs[WDT_EXT_TIMER].irq) {
+	if (irq == IT83XX_IRQ_EXT_TIMER1) {
 		watchdog_warning_irq();
 		return;
 	}
