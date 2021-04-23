@@ -437,5 +437,69 @@ void baseboard_usbc_usb3_irq(void)
 	hook_call_deferred(&baseboard_usbc_usb3_handle_interrupt_data, 0);
 }
 
-#endif /* defined(GPIO_USBC_UF_ATTACHED_SRC) && defined(SECTION_IS_RW) */
+void baseboard_usbc_reset_vsafe0v(void)
+{
+	int regval;
 
+	read_reg(0, SN5S330_INT_STATUS_REG4, &regval);
+	regval |= SN5S330_VSAFE0V_STAT;
+	write_reg(0, SN5S330_INT_STATUS_REG4, regval);
+}
+/*
+ * Check the specified Vbus level
+ *
+ * Note that boards may override this function if they have a method outside the
+ * TCPCI driver to verify vSafe0V.
+ */
+#if 1
+static int vsafe0v_check_count;
+__override bool pd_check_vbus_level(int port, enum vbus_level level)
+{
+	int rv;
+	int regval;
+	int vsafe0v = 0;
+
+	if (port == 0) {
+		if (level == VBUS_SAFE0V) {
+			rv = read_reg(port, SN5S330_INT_STATUS_REG4, &regval);
+			if (!rv)
+				vsafe0v = !!(regval & SN5S330_VSAFE0V_STAT);
+			CPRINTS("usbc[%d]: vsafe0 check = %x", port, regval);
+
+			if (vsafe0v) {
+				regval |= SN5S330_VSAFE0V_STAT;
+				write_reg(port, SN5S330_INT_STATUS_REG4, regval);
+				return true;
+			}
+			vsafe0v_check_count++;
+		}
+
+		if (level == VBUS_PRESENT) {
+			vsafe0v_check_count = 0;
+			return pd_snk_is_vbus_provided(port);
+		} else {
+			if (level == VBUS_REMOVED) {
+				if (!pd_snk_is_vbus_provided(port)) {
+					CPRINTS("vbus removed: enable discharge!");
+					pd_set_vbus_discharge(port, 1);
+				}
+				return !pd_snk_is_vbus_provided(port);
+			} else {
+				if (vsafe0v_check_count > 20){
+					vsafe0v_check_count = 0;
+					return !pd_snk_is_vbus_provided(port);
+				} else {
+					return false;
+				}
+			}
+		}
+	} else {
+		if (level == VBUS_PRESENT)
+			return pd_snk_is_vbus_provided(port);
+		else
+			return !pd_snk_is_vbus_provided(port);
+	}
+}
+#endif
+
+#endif /* defined(GPIO_USBC_UF_ATTACHED_SRC) && defined(SECTION_IS_RW) */
