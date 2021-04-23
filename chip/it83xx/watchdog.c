@@ -30,10 +30,23 @@ static int wdt_warning_fired;
 /* The interval to print warning message at critical period. */
 #define ITE83XX_WATCHDOG_CRITICAL_MS 30
 
+#define WARNING_TIMER_MS_TO_1024HZ_COUNT(ms)  ((ms) * 1024 / 1000)
+
 /* set warning timer */
 static void watchdog_set_warning_timer(int32_t ms, int init)
 {
+#ifdef CONFIG_IT83XX_WDT_WARNING_BY_TIMER1
+	/* timer 1 is 16-bit counter down timer */
+	uint16_t cnt = WARNING_TIMER_MS_TO_1024HZ_COUNT(ms);
+
+	/* configure timer 1 counter */
+	IT83XX_ETWD_ET1CNTLHR = (cnt >> 8) & 0xff;
+	IT83XX_ETWD_ET1CNTLLR = cnt & 0xff;
+	/* clear interrupt status */
+	task_clear_pending_irq(IT83XX_IRQ_EXT_TIMER1);
+#else
 	ext_timer_ms(WDT_EXT_TIMER, EXT_PSR_32P768K_HZ, 1, 1, ms, init, 0);
+#endif
 }
 
 void watchdog_warning_irq(void)
@@ -47,11 +60,20 @@ void watchdog_warning_irq(void)
 	pdata_ptr->riscv.mepc = get_mepc();
 #endif
 #endif
+#ifdef CONFIG_IT83XX_WDT_WARNING_BY_TIMER1
+	/* clear interrupt status */
+	task_clear_pending_irq(IT83XX_IRQ_EXT_TIMER1);
+
+	/* Reset warning timer. */
+	IT83XX_ETWD_ETWCTRL |= BIT(0);
+#else
 	/* clear interrupt status */
 	task_clear_pending_irq(et_ctrl_regs[WDT_EXT_TIMER].irq);
 
 	/* Reset warning timer. */
 	IT83XX_ETWD_ETXCTRL(WDT_EXT_TIMER) = 0x03;
+
+#endif
 
 #if defined(CHIP_CORE_NDS32)
 	/*
@@ -81,7 +103,11 @@ void watchdog_warning_irq(void)
 void watchdog_reload(void)
 {
 	/* Reset warning timer. */
+#ifdef CONFIG_IT83XX_WDT_WARNING_BY_TIMER1
+	IT83XX_ETWD_ETWCTRL |= BIT(0);
+#else
 	IT83XX_ETWD_ETXCTRL(WDT_EXT_TIMER) = 0x03;
+#endif
 
 	/* Restart (tickle) watchdog timer. */
 	IT83XX_ETWD_EWDKEYR = ITE83XX_WATCHDOG_MAGIC_WORD;
@@ -118,8 +144,13 @@ int watchdog_init(void)
 	/* Start WDT_EXT_TIMER (CONFIG_AUX_TIMER_PERIOD_MS ms). */
 	watchdog_set_warning_timer(ITE83XX_WATCHDOG_WARNING_MS, 1);
 
+#ifdef CONFIG_IT83XX_WDT_WARNING_BY_TIMER1
+	/* Enable timer 1 interrupt for printing warning message */
+	task_enable_irq(IT83XX_IRQ_EXT_TIMER1);
+#else
 	/* Start timer 1 (must be started for watchdog timer to run). */
 	IT83XX_ETWD_ET1CNTLLR = 0x00;
+#endif
 
 	/*
 	 * Set watchdog timer to CONFIG_WATCHDOG_PERIOD_MS ms.
@@ -128,8 +159,16 @@ int watchdog_init(void)
 	IT83XX_ETWD_EWDCNTLHR = (wdt_count >> 8) & 0xff;
 	IT83XX_ETWD_EWDCNTLLR = wdt_count & 0xff;
 
+#ifdef CONFIG_IT83XX_WDT_WARNING_BY_TIMER1
+	/*
+	 * Lock access to watchdog registers.
+	 * bit2=0: access timer 1 counter is allowed
+	 */
+	IT83XX_ETWD_ETWCFG = 0x3b;
+#else
 	/* Lock access to watchdog registers. */
 	IT83XX_ETWD_ETWCFG = 0x3f;
+#endif
 
 	return EC_SUCCESS;
 }

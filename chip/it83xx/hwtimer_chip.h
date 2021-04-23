@@ -32,7 +32,12 @@
  */
 #define LOW_POWER_EXT_TIMER  EXT_TIMER_7
 #define LOW_POWER_TIMER_MASK (BIT(24) - 1)
+
+#ifdef CONFIG_IT83XX_WDT_WARNING_BY_TIMER1
+/* EXT_TIMER_8 (32-bit timer) is reserved */
+#else
 #define WDT_EXT_TIMER        EXT_TIMER_8
+#endif
 
 enum ext_timer_clock_source {
 	EXT_PSR_32P768K_HZ = 0,

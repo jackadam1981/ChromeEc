@@ -2647,6 +2647,12 @@
 #undef CONFIG_IT83XX_VCC_3P3V
 
 /*
+ * If this option is enabled, watchdog warning timer will occupy timer 1.
+ * This will free one 32 bit timer (see hwtimer_chip.h header file ) for use.
+ */
+#undef CONFIG_IT83XX_WDT_WARNING_BY_TIMER1
+
+/*
  * If this is not defined, the firmware will revert the JTAG selection
  * triggered by the hardware strap pin.
  * Un-define this flag by default for all real platforms. see (b/129908668)
