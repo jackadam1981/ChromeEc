@@ -51,6 +51,75 @@
       "parentUuid": "b398aa5f_8a3e486f",
       "revId": "d188e7036530c4f75987b255220a1ed40656b75b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "374f0a6b_8f05fe68",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-04-23T15:44:31Z",
+      "side": 1,
+      "message": "Maybe you could update the comment as well saying port, port partner and cable?",
+      "range": {
+        "startLine": 278,
+        "startChar": 2,
+        "endLine": 278,
+        "endChar": 50
+      },
+      "revId": "d188e7036530c4f75987b255220a1ed40656b75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b443e49_8c9a8dc8",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-04-23T15:44:31Z",
+      "side": 1,
+      "message": "enter_usb_cable_is_capable() checks for cable speed - which takes into account the board speed as well. But we might need to add the check for all cable types instead of just passive cable or even this works.",
+      "range": {
+        "startLine": 282,
+        "startChar": 5,
+        "endLine": 282,
+        "endChar": 31
+      },
+      "revId": "d188e7036530c4f75987b255220a1ed40656b75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5743423_122b9110",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-04-23T15:44:31Z",
+      "side": 1,
+      "message": "tbt_setup_next_vdm() checks if tbt_mode_is_supported() which indeed checks if the the board, port and cable speed are tbt compatible.\nBut, we can avoid all those checks if the port isn\u0027t tbt compatible in the first place I guess",
+      "range": {
+        "startLine": 299,
+        "startChar": 5,
+        "endLine": 299,
+        "endChar": 27
+      },
+      "revId": "d188e7036530c4f75987b255220a1ed40656b75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
