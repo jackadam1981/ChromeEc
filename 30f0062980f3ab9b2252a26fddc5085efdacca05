@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1984e9b_2800a6bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-23T17:42:02Z",
+      "side": 1,
+      "message": "Sensors and lid angle verified on Lazor:\nlocalhost ~ # ectool motionsense   \nMotion sensing inactive\nSensor 0: -400  16144   656\nSensor 1: 62    3944    7277\nSensor 2: 0     0       0\nlocalhost ~ # ectool motionsense lid_angle\nLid angle: 104\n",
+      "revId": "30f0062980f3ab9b2252a26fddc5085efdacca05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
