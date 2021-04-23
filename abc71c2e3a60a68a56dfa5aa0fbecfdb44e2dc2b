@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "157ab1fe_7341ae60",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-23T15:39:58Z",
+      "side": 1,
+      "message": "this is deliberate as I2C for I/O expander needed and I/O expander come in pair",
+      "parentUuid": "906ef9bb_bc03f250",
+      "revId": "abc71c2e3a60a68a56dfa5aa0fbecfdb44e2dc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a98a1dff_80ff8f61",
         "filename": "board/adlrvpp_ite/board.c",
         "patchSetId": 7
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eababcf1_a8ddcd04",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-23T15:39:58Z",
+      "side": 1,
+      "message": "this is deliberate as I2C for I/O expander needed and I/O expander come in pair",
+      "parentUuid": "a98a1dff_80ff8f61",
+      "revId": "abc71c2e3a60a68a56dfa5aa0fbecfdb44e2dc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1f623324_e15091ec",
         "filename": "board/adlrvpp_ite/board.h",
         "patchSetId": 7
@@ -48,6 +84,24 @@
       "writtenOn": "2021-04-23T15:36:17Z",
       "side": 1,
       "message": "if defined(HAS_TASK_PD_C1) ?",
+      "revId": "abc71c2e3a60a68a56dfa5aa0fbecfdb44e2dc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bf83eff_992dd43d",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-23T15:39:58Z",
+      "side": 1,
+      "message": "this is deliberate as I2C for I/O expander needed and I/O expander come in pair",
+      "parentUuid": "1f623324_e15091ec",
       "revId": "abc71c2e3a60a68a56dfa5aa0fbecfdb44e2dc2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
