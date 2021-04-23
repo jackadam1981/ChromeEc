@@ -192,6 +192,8 @@ static int rt1718s_init(int port)
 	RETURN_ERROR(rt1718s_write8(port, TCPC_REG_FAULT_STATUS, 0xFF));
 	RETURN_ERROR(tcpc_write16(port, TCPC_REG_ALERT, 0xFFFF));
 
+	RETURN_ERROR(rt1718s_update_bits8(port, 0x8C, 0x02, 0x02));
+
 	RETURN_ERROR(tcpci_tcpm_init(port));
 
 	/*
@@ -201,6 +203,8 @@ static int rt1718s_init(int port)
 	RETURN_ERROR(tcpc_update16(port, TCPC_REG_ALERT_MASK,
 				TCPC_REG_ALERT_MASK_VENDOR_DEF,
 				MASK_SET));
+
+	RETURN_ERROR(rt1718s_write8(port, 0xF211, 0x20));
 
 	RETURN_ERROR(board_rt1718s_init(port));
 
@@ -309,6 +313,11 @@ void rt1718s_vendor_defined_alert(int port)
 	if (value & RT1718S_RT_INT6_INT_BC12_SNK_DONE)
 		task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
 			       USB_CHG_EVENT_BC12);
+
+	/* HACK: clear vconn ov/oc */
+	rt1718s_write8(port, 0x99, 0xFF);
+	rt1718s_write8(port, 0x90, 0x87);
+	rt1718s_write8(port, 0x11, 0x80);
 }
 
 static void rt1718s_alert(int port)
@@ -354,7 +363,7 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 	.set_rx_enable		= &tcpci_tcpm_set_rx_enable,
 	.get_message_raw	= &tcpci_tcpm_get_message_raw,
 	.transmit		= &tcpci_tcpm_transmit,
-	.tcpc_alert		= &tcpci_tcpc_alert,
+	.tcpc_alert		= &rt1718s_alert,
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
 #endif
