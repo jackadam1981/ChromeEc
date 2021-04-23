@@ -146,7 +146,7 @@ extern "C" {
 #define EC_MEMMAP_BATT_FLAG        0x4c /* Battery State, see below (8-bit) */
 #define EC_MEMMAP_BATT_COUNT       0x4d /* Battery Count (8-bit) */
 #define EC_MEMMAP_BATT_INDEX       0x4e /* Current Battery Data Index (8-bit) */
-/* Unused 0x4f */
+#define EC_MEMMAP_BATT_DISP        0x4f /* Battery display percent (8-bit) */
 #define EC_MEMMAP_BATT_DCAP        0x50 /* Battery Design Capacity */
 #define EC_MEMMAP_BATT_DVLT        0x54 /* Battery Design Voltage */
 #define EC_MEMMAP_BATT_LFCC        0x58 /* Battery Last Full Charge Capacity */

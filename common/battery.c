@@ -25,7 +25,6 @@
 #define CUTOFFPRINTS(info) CPRINTS("%s %s", "Battery cut off", info)
 
 /* See config.h for details */
-const static int batt_full_factor = CONFIG_BATT_FULL_FACTOR;
 const static int batt_host_full_factor = CONFIG_BATT_HOST_FULL_FACTOR;
 const static int batt_host_shutdown_pct = CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE;
 
@@ -206,8 +205,7 @@ static void print_battery_info(void)
 
 	print_item_name("Cap-full:");
 	if (check_print_error(battery_full_charge_capacity(&value)))
-		ccprintf("%d mAh (%d mAh with %d %% compensation)\n",
-			 value, value*batt_full_factor/100, batt_full_factor);
+		ccprintf("%d mAh\n", value);
 
 #ifdef CONFIG_CHARGER
 	print_item_name("Display:");
@@ -621,22 +619,30 @@ void battery_compensate_params(struct batt_params *batt)
 	if (*remain <= 0 || *full <= 0)
 		return;
 
-	/* full_factor is effectively disabled in powerd. */
-	*full = *full * batt_full_factor / 100;
+	/* Some batteries don't update full capacity as often. */
 	if (*remain > *full)
 		*remain = *full;
 
 	/*
-	 * Powerd uses the following equation to calculate display percentage:
-	 *   charge = 100 * remain / full
-	 *   display = 100 * (charge - shutdown_pct) /
-	 *		     (full_factor - shutdown_pct)
-	 *	     = 100 * ((100 * remain / full) - shutdown_pct) /
-	 *		     (full_factor - shutdown_pct)
-	 *	     = 100 * ((100 * remain) - (full * shutdown_pct)) /
-	 *		     (full * (full_factor - shutdown_pct))
+	 * EC calculates the display SoC like how Powerd used to do. Powerd
+	 * reads the display SoC from the EC. This design allows the system to
+	 * behave consistently on a single SoC value across all power states.
 	 *
-	 * The unit of the following batt->display_charge is 0.1%.
+	 * Display SoC is computed as follows:
+	 *
+	 *   actual_soc = 100 * remain / full
+	 *
+	 *		   actual_soc - shutdown_pct
+	 *   display_soc = --------------------------- x 1000
+	 *		   full_factor - shutdown_pct
+	 *
+	 *		   (100 * remain / full) - shutdown_pct
+	 *		 = ------------------------------------ x 1000
+	 *		        full_factor - shutdown_pct
+	 *
+	 *		   100 x remain - full x shutdown_pct
+	 *		 = ----------------------------------- x 1000
+	 *		   full x (full_factor - shutdown_pct)
 	 */
 	numer = 1000 * ((100 * *remain) - (*full * batt_host_shutdown_pct));
 	denom = *full * (batt_host_full_factor - batt_host_shutdown_pct);

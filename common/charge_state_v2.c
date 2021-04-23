@@ -804,6 +804,7 @@ static void update_dynamic_battery_info(void)
 	int *memmap_rate = (int *)host_get_memmap(EC_MEMMAP_BATT_RATE);
 	int *memmap_cap = (int *)host_get_memmap(EC_MEMMAP_BATT_CAP);
 	int *memmap_lfcc = (int *)host_get_memmap(EC_MEMMAP_BATT_LFCC);
+	uint8_t *memmap_disp = (uint8_t *)host_get_memmap(EC_MEMMAP_BATT_DISP);
 	uint8_t *memmap_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
 	uint8_t tmp;
 	int send_batt_status_event = 0;
@@ -847,10 +848,12 @@ static void update_dynamic_battery_info(void)
 		 * Don't report zero charge, as that has special meaning
 		 * to Chrome OS powerd.
 		 */
-		if (curr.batt.remaining_capacity == 0 && !curr.batt_is_charging)
-			*memmap_cap = 1;
-		else
+		*memmap_cap = 1;
+		*memmap_disp = 1;
+		if (curr.batt.remaining_capacity || curr.batt_is_charging) {
 			*memmap_cap = curr.batt.remaining_capacity;
+			*memmap_disp = curr.batt.display_charge / 10;
+		}
 	}
 
 	if (!(curr.batt.flags & BATT_FLAG_BAD_FULL_CAPACITY) &&

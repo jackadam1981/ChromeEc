@@ -648,7 +648,6 @@
  * On such systems, compensation is required to guarantee remaining_capacity
  * will be equal to full_capacity eventually. This used to be done in ACPI.
  */
-#define CONFIG_BATT_FULL_FACTOR			98
 #define CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE	4
 
 /*
