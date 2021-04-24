@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7a92c05_b0965c6c",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-24T01:35:45Z",
+      "side": 1,
+      "message": "The earlier software workaround performed the CFLY precharge operation in the LN9310 hardware by using these 4 registers to modify a single command of the LN9310\u0027s internal startup sequence.  This new workaround moves the CFLY precharge operation off the LN9310 and into the EC firmware (see the ln9310_precharge_cfly function) to free up these 4 registers so they can be used to modify a second command in the LN9310\u0027s internal startup sequence (unfortunately the LN9310 only has registers for modifying a single command otherwise it could all be done through the LN9310 register configuration)\n\nThese 4 registers now modify the internal startup sequence of the LN9310 to use the precharged CFLY capacitors as decoupling of an internal node during the startup sequence which should help prevent an OV glitch from appearing on the LN9310 output even if the internal level shifter on SW1 glitches and pulls up on the C1PA/B nodes.",
+      "revId": "1679193952ca30b8388ebdc25f14b90ed9aac7b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207b1840_a2d8e2f8",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-24T01:35:45Z",
+      "side": 1,
+      "message": "The earlier software workaround performed the CFLY precharge operation in the LN9310 hardware by using 4 registers to modify a single command of the LN9310\u0027s internal startup sequence.  This new workaround moves the CFLY precharge operation off the LN9310 and into the EC firmware (this ln9310_precharge_cfly function) to free up the 4 registers so they can be used to modify a second command in the LN9310\u0027s internal startup sequence (unfortunately the LN9310 only has registers for modifying a single command otherwise it could all be done through the LN9310 register configuration)",
+      "revId": "1679193952ca30b8388ebdc25f14b90ed9aac7b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0437562_68283c47",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-24T01:35:45Z",
+      "side": 1,
+      "message": "I tried to add in a timeout kind of similar to some other code I saw in the EC firmware.  precharge_timeout is set by the ln9310_precharge_cfly to be 100 ms after a time just before the final I2C operation of the ln9310_precharge_cfly which disables the CFLY PRECHARGE operation.  As long as the SC startup sequence is initiated within 100 ms of, the large CFLY capacitors will not have discharged appreciably.",
+      "revId": "1679193952ca30b8388ebdc25f14b90ed9aac7b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

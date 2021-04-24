@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bf1a90f_68f9a492",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-24T01:35:45Z",
+      "side": 1,
+      "message": "All,\n\nThis is the new software workaround to address https://partnerissuetracker.corp.google.com/issues/185308433.  I added some comments comparing the old workaround to this new one.\n\nI need some help from Google checking (and probably modifying) the code I implemented for the timeout.  The goal is to avoid sending the I2C command that actually writes register `LN9310_STARTUP_STANDBY_EN` to 0 if it has been longer than 100 ms since the previous I2C command (writing register `LN9310_LION_CTRL_MASK` to the value `LN9310_LION_CTRL_TEST_OFF_AND_UNLOCK`).  The way I have it written now is assuming `field_update8` can\u0027t be interrupted but I think that probably isn\u0027t true.  ",
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
