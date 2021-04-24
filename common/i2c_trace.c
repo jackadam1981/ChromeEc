@@ -30,6 +30,12 @@ void i2c_trace_notify(int port, uint16_t addr_flags,
 	size_t i;
 	uint16_t addr = I2C_STRIP_FLAGS(addr_flags);
 
+	/* Enable i2c_trace of device 0x32 on port 0x05 for debug */
+	trace_entries[0].enabled = 1;
+	trace_entries[0].port = 0x05;
+	trace_entries[0].slave_addr_lo = 0x32;
+	trace_entries[0].slave_addr_hi = 0x32;
+
 	for (i = 0; i < ARRAY_SIZE(trace_entries); i++)
 		if (trace_entries[i].enabled
 		    && trace_entries[i].port == port
