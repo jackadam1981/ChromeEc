@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1edab27_420ffdfa",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-25T22:02:22Z",
+      "side": 0,
+      "message": "Kept this the same, so that git blame is intact. The hope is that this is removed soon.",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 25
+      },
+      "revId": "3b7c9893afc5291d36d778921dcb7c8f5154c583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91b16074_933e3491",
+        "filename": "board/hatch_fp/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-25T22:02:22Z",
+      "side": 0,
+      "message": "Yes, I switched the order to help indicate the primary.",
+      "range": {
+        "startLine": 140,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 0
+      },
+      "revId": "3b7c9893afc5291d36d778921dcb7c8f5154c583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05ade745_7663c52e",
+        "filename": "board/nocturne_fp/board_rw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-25T22:02:22Z",
+      "side": 0,
+      "message": "Yes, I switched the order to help indicate the primary.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 42
+      },
+      "revId": "3b7c9893afc5291d36d778921dcb7c8f5154c583",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
