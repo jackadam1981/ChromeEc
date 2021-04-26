@@ -576,9 +576,31 @@ DECLARE_IRQ(NPCX_IRQ_PM_CHAN_OBE, lpc_pmc_obe_interrupt, 4);
 
 void lpc_port80_interrupt(void)
 {
-	/* Send port 80 data to UART continuously if FIFO is not empty */
-	while (IS_BIT_SET(NPCX_DP80STS, 6))
-		port_80_write(NPCX_DP80BUF);
+	uint32_t code;
+
+	if (IS_ENABLED(CONFIG_HOSTCMD_ESPI_PORT80_4_BYTE)) {
+		while (IS_BIT_SET(NPCX_DP80STS, 6)) {
+			uint32_t buf, offset;
+
+			buf = NPCX_DP80BUF;
+			/*
+			 * Bit 8~10 in DP80BUF register indicates this is the
+			 * N-th byte within the 4-byte.
+			 */
+			offset = (buf & 0x700) >> 8;
+			code = code + ((buf & 0xff) << (8 * offset));
+			if (offset == 3) {
+				port_80_write(code);
+				code = 0;
+			}
+		}
+	} else {
+		/*
+		 * Send port 80 data to UART continuously if FIFO is not empty
+		 */
+		while (IS_BIT_SET(NPCX_DP80STS, 6))
+			port_80_write(NPCX_DP80BUF);
+	}
 
 	/* If FIFO is overflow */
 	if (IS_BIT_SET(NPCX_DP80STS, 7)) {
@@ -657,6 +679,15 @@ void host_register_init(void)
 	/* WIN2 as MEMMAP on the IO:0x900 */
 	sib_write_reg(SIO_OFFSET, 0xF9, 0x09);
 	sib_write_reg(SIO_OFFSET, 0xF8, 0x00);
+
+#if defined(CONFIG_HOSTCMD_ESPI_PORT80_4_BYTE) && \
+	(!defined(CONFIG_HOSTCMD_ESPI) || \
+	NPCX_FAMILY_VERSION < NPCX_FAMILY_NPCX9)
+#error "Port80 4-byte mode is supported when:" \
+	"Host interface is eSPI and CHIP_FAMILY >= NPCX9"
+#endif
+	if (IS_ENABLED(CONFIG_HOSTCMD_ESPI_PORT80_4_BYTE))
+		sib_write_reg(SIO_OFFSET, 0xFD, 0x0F);
 	/* enable SHM */
 	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 

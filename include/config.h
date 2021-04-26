@@ -3011,6 +3011,12 @@
  */
 #undef CONFIG_HOSTCMD_ESPI_RESET_SLP_SX_VW_ON_ESPI_RST
 
+/*
+ * EC can receive 4-byte Port80 code when the host sends 4-byte Port80 code
+ * via a single PUT_IOWR_SHORT transaction.
+ */
+#undef CONFIG_HOSTCMD_ESPI_PORT80_4_BYTE
+
 /* Base address of low power RAM. */
 #undef CONFIG_LPRAM_BASE
 
