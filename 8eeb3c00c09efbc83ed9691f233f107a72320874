@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "670d451f_c4ebcf32",
+        "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-26T14:41:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "97a3d273_77cf6968",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 37
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cf98a99_e63f8f19",
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "7cf98a99_e63f8f19",
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e64f827_0b51bd1e",
+        "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-26T14:41:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a3620ec_06de43cf",
       "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +219,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "327ed2c6_5ce17e39",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/Kconfig.board",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-26T14:41:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0aec270d_610d3633",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61c55794_b7958414",
@@ -214,6 +280,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "61c55794_b7958414",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "8eeb3c00c09efbc83ed9691f233f107a72320874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c786a5e0_576199b7",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/Kconfig.defconfig",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-26T14:41:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "80663b6f_e305c015",
       "range": {
         "startLine": 1,
         "startChar": 0,
