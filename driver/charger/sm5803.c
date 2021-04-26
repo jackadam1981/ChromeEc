@@ -7,6 +7,7 @@
 #include "atomic.h"
 #include "battery.h"
 #include "battery_smart.h"
+#include "charge_state.h"
 #include "charge_state_v2.h"
 #include "charger.h"
 #include "gpio.h"
@@ -1710,6 +1711,27 @@ static int sm5803_ramp_get_current_limit(int chgnum)
 	return rv ? -1 : input_current;
 }
 #endif /* CONFIG_CHARGE_RAMP_HW */
+
+/* Discharge on AC when battery level full */
+
+#ifdef CONFIG_CHARGER_DISCHARGE_ON_AC
+static void sm5803_discharge_on_ac_when_battery_full(void)
+{
+	if (charge_get_percent() > BATTERY_LEVEL_FULL)
+		charger_discharge_on_ac(1);
+	else
+		charger_discharge_on_ac(0);
+}
+DECLARE_HOOK(HOOK_BATTERY_SOC_CHANGE,
+	     sm5803_discharge_on_ac_when_battery_full,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND,
+	     sm5803_discharge_on_ac_when_battery_full,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
+	     sm5803_discharge_on_ac_when_battery_full,
+	     HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_CHARGER_DISCHARGE_ON_AC */
 
 #ifdef CONFIG_CMD_CHARGER_DUMP
 static int command_sm5803_dump(int argc, char **argv)
