@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b389c1_408a26b1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-26T21:41:19Z",
+      "side": 1,
+      "message": "typo: Modify",
+      "revId": "a10eca95a0add2659c8fbc942871b7c42ed83d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5baaccb8_ccc97233",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-26T21:41:19Z",
+      "side": 1,
+      "message": "same typo",
+      "revId": "a10eca95a0add2659c8fbc942871b7c42ed83d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23d6ee0b_d49db016",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-04-26T21:41:19Z",
+      "side": 1,
+      "message": "Just to make sure: lid_close or lid_open events are not triggered by turning the lid accel, right?",
+      "revId": "a10eca95a0add2659c8fbc942871b7c42ed83d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
