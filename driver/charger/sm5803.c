@@ -7,6 +7,7 @@
 #include "atomic.h"
 #include "battery.h"
 #include "battery_smart.h"
+#include "charge_state.h"
 #include "charge_state_v2.h"
 #include "charger.h"
 #include "gpio.h"
@@ -75,6 +76,9 @@ static int attempt_bfet_enable;
  * has connected.
  */
 static bool fast_charge_disabled;
+
+/* Note if discharge_on_ac is disabled. */
+static bool discharge_on_ac_disabled;
 
 
 #define CHARGING_FAILURE_MAX_COUNT	5
@@ -970,7 +974,7 @@ void sm5803_restart_charging(void)
 	int act_chg = charge_manager_get_active_charge_port();
 	timestamp_t now = get_time();
 
-	if (act_chg == active_restart_port) {
+	if (act_chg == active_restart_port && discharge_on_ac_disabled) {
 		if (timestamp_expired(failure_tracker[act_chg].time, &now)) {
 			/*
 			 * Enough time has passed since our last failure,
@@ -1338,7 +1342,8 @@ static enum ec_error_list sm5803_set_voltage(int chgnum, int voltage)
 	rv |= chg_write8(chgnum, SM5803_REG_VBAT_FAST_LSB, (regval & 0x7));
 
 	/* Once battery is connected, set up fast charge enable */
-	if (fast_charge_disabled && chgnum == CHARGER_PRIMARY &&
+	if (fast_charge_disabled && discharge_on_ac_disabled &&
+		chgnum == CHARGER_PRIMARY &&
 	    battery_get_disconnect_state() == BATTERY_NOT_DISCONNECTED) {
 		rv = sm5803_flow2_update(chgnum,
 					 SM5803_FLOW2_AUTO_ENABLED,
@@ -1354,7 +1359,8 @@ static enum ec_error_list sm5803_set_voltage(int chgnum, int voltage)
 		 * port and the battery is dead.
 		 */
 		rv |= chg_read8(CHARGER_PRIMARY, SM5803_REG_LOG1, &regval);
-		if (!(regval & SM5803_BATFET_ON) && !attempt_bfet_enable) {
+		if (!(regval & SM5803_BATFET_ON) && !attempt_bfet_enable &&
+						discharge_on_ac_disabled) {
 			CPRINTS("SM5803: Attempting to turn on BFET");
 			cflush();
 			rv |= sm5803_flow1_update(CHARGER_PRIMARY,
@@ -1710,6 +1716,27 @@ static int sm5803_ramp_get_current_limit(int chgnum)
 	return rv ? -1 : input_current;
 }
 #endif /* CONFIG_CHARGE_RAMP_HW */
+
+/* Discharge on AC when battery level full */
+
+#ifdef CONFIG_CHARGER_DISCHARGE_ON_AC
+static void sm5803_discharge_on_ac_when_battery_full(void)
+{
+	if (charge_get_percent() == BATTERY_LEVEL_FULL) {
+		charger_discharge_on_ac(1);
+		discharge_on_ac_disabled = false;
+	}
+
+	if (charge_get_percent() < BATTERY_LEVEL_NEAR_FULL) {
+		charger_discharge_on_ac(0);
+		discharge_on_ac_disabled = true;
+	}
+
+}
+DECLARE_HOOK(HOOK_SECOND,
+	     sm5803_discharge_on_ac_when_battery_full,
+	     HOOK_PRIO_DEFAULT);
+#endif /* CONFIG_CHARGER_DISCHARGE_ON_AC */
 
 #ifdef CONFIG_CMD_CHARGER_DUMP
 static int command_sm5803_dump(int argc, char **argv)
