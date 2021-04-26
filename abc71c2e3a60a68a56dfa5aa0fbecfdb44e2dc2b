@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "498c01ac_14c33a3c",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-26T22:11:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "157ab1fe_7341ae60",
+      "revId": "abc71c2e3a60a68a56dfa5aa0fbecfdb44e2dc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a98a1dff_80ff8f61",
@@ -71,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b7bf9d0_ee302418",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-26T22:11:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eababcf1_a8ddcd04",
+      "revId": "abc71c2e3a60a68a56dfa5aa0fbecfdb44e2dc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f623324_e15091ec",
@@ -102,6 +138,24 @@
       "side": 1,
       "message": "this is deliberate as I2C for I/O expander needed and I/O expander come in pair",
       "parentUuid": "1f623324_e15091ec",
+      "revId": "abc71c2e3a60a68a56dfa5aa0fbecfdb44e2dc2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "719f494a_cf0c183f",
+        "filename": "board/adlrvpp_ite/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-26T22:11:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bf83eff_992dd43d",
       "revId": "abc71c2e3a60a68a56dfa5aa0fbecfdb44e2dc2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
