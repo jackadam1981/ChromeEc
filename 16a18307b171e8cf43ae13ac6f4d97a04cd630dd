@@ -33,6 +33,24 @@
       "message": "Do we have enough additional conditions (no charge port, not capable battery) that we could just always start sinking here?  We\u0027d have some risk of sinking from a dongle that\u0027s not supplying power if it\u0027s plugged in at the time we provide AC, but it seems like it\u0027s very tricky to get the Vbus detection correct here",
       "revId": "16a18307b171e8cf43ae13ac6f4d97a04cd630dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1cdadba_070b6a68",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-26T20:45:45Z",
+      "side": 1,
+      "message": "We need the VBUS presence check though. I think I tried without it and I found that we would attempt setting our charge port to C1 even though the adapter was plugged in on C0 (due to task order). In the setting of the active charge port, we stop sinking on _other_ charge ports, before setting the new one.",
+      "parentUuid": "ff8b74df_2808ec5e",
+      "revId": "16a18307b171e8cf43ae13ac6f4d97a04cd630dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
