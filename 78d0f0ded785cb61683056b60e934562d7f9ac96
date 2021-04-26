@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f594be4_789f20e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-26T07:46:39Z",
+      "side": 1,
+      "message": "When you input the console command \"reboot\", the flag of related to reset will be written to bbram.",
+      "parentUuid": "c063d541_61699f2d",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "78d0f0ded785cb61683056b60e934562d7f9ac96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20d7613f_ed3fd9d6",
