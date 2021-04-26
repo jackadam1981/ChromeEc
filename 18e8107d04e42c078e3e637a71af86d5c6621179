@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab3ddc70_ca9918e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-26T09:34:24Z",
+      "side": 1,
+      "message": "Hi,\nThe patch-set 2 adds a new ocnfig to handle the 4-byte case of Port80 code.\nIt will group 4-byte data into a single variable and pass it to port.c in common code.\nNote that the common port80 code assumes that the Port80 code \u003c 0x100 and the array \"history\" is only uint16_t. I cannot see the console print the grouped code with \"#define CONFIG_PORT80_PRINT_IN_INT 0\"\nIf \"#define CONFIG_PORT80_PRINT_IN_INT 1\", the grouped code can be printed correctly like:\n[4743.660839 Port 80: 0xeee20400]\n",
+      "revId": "18e8107d04e42c078e3e637a71af86d5c6621179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
