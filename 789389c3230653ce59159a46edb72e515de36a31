@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "94cdcbc4_ba37ced9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "As someone that only had cursory glances at what the bug was about, I still feel pretty out of the loop even after reading this CL. Maybe a bigger CL description here would help.\n\nFrom what I can tell: you have an overvoltage problem, so instead of letting the ln9310 do its own startup we override a few of its \"procedures\" by using those 4 registers (though we used those 4 registers for something else before, so now we have to live with a small loss of functionality?).\n\nAll of that should be in this commit message, but in better words than mine.",
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b4e5866_2a28e13c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "We\u0027re going to need a lot more confidence that \"\" in regards of how to test and reproduce this.\n\nIf I have 2 boards, one with before and one firmware with after your CL I should be able to tell them apart just using TEST\u003d line.",
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8bf1a90f_68f9a492",
@@ -14,6 +48,224 @@
       "writtenOn": "2021-04-24T01:35:45Z",
       "side": 1,
       "message": "All,\n\nThis is the new software workaround to address https://partnerissuetracker.corp.google.com/issues/185308433.  I added some comments comparing the old workaround to this new one.\n\nI need some help from Google checking (and probably modifying) the code I implemented for the timeout.  The goal is to avoid sending the I2C command that actually writes register `LN9310_STARTUP_STANDBY_EN` to 0 if it has been longer than 100 ms since the previous I2C command (writing register `LN9310_LION_CTRL_MASK` to the value `LN9310_LION_CTRL_TEST_OFF_AND_UNLOCK`).  The way I have it written now is assuming `field_update8` can\u0027t be interrupted but I think that probably isn\u0027t true.  ",
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28caadf4_4a7ea50e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "I don\u0027t know enough about the chip to fully review this, you\u0027re probably more on an expert than me.\n\nAs far as the EC functionality, it\u0027s ok.\n\nStylistically the commit could use more work, it\u0027s very hard to tell what it attempts to do.",
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cea9797d_6b734711",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "nit: please clean up",
+      "range": {
+        "startLine": 292,
+        "startChar": 54,
+        "endLine": 292,
+        "endChar": 55
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15ccbb22_9c5f4caa",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "nit: If this wasn\u0027t indented again it wouldn\u0027t go over 80 characters.",
+      "range": {
+        "startLine": 293,
+        "startChar": 3,
+        "endLine": 293,
+        "endChar": 4
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6a9348c_e6c7946b",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "nit: please clean up",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 1
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9061825f_e37d7eb6",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "nit: same here",
+      "range": {
+        "startLine": 323,
+        "startChar": 54,
+        "endLine": 324,
+        "endChar": 4
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4cd5a20_ad226c80",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "nit: please don\u0027t add spaces to empty lines.",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 2
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f68137e_f025aa38",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 427,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "indentation",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 427,
+        "endChar": 4
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86944b61_1c1327b0",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "nit: please remove last empty line.",
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09642428_35276133",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "nit: please align these.",
+      "range": {
+        "startLine": 163,
+        "startChar": 60,
+        "endLine": 163,
+        "endChar": 61
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f39970_bde5f141",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "nit: clean up please",
+      "range": {
+        "startLine": 186,
+        "startChar": 49,
+        "endLine": 186,
+        "endChar": 50
+      },
       "revId": "789389c3230653ce59159a46edb72e515de36a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

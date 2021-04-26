@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5212a6e4_c9c7222f",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-04-26T22:59:34Z",
+      "side": 1,
+      "message": "Maybe encode this in a comment directly in the code? Or perhaps commit message as well?",
+      "parentUuid": "c7a92c05_b0965c6c",
+      "revId": "1679193952ca30b8388ebdc25f14b90ed9aac7b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "207b1840_a2d8e2f8",
         "filename": "driver/ln9310.c",
         "patchSetId": 3
