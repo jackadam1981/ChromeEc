@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf33c0d_117ddc13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T14:44:18Z",
+      "side": 1,
+      "message": "Ok, will do after this driver.",
+      "parentUuid": "0eea8e3a_f0fc42fa",
+      "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4655a878_294cf5b8",
@@ -67,6 +85,24 @@
       "writtenOn": "2021-04-12T16:51:48Z",
       "side": 1,
       "message": "branch is used to remind us on which other branches for different board (eve, reef, ....) this change needs to be applied.\nUnless this chip is already used in a shipped product, this should be BRANCH\u003dNone.",
+      "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f353cf2b_163d155f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T14:44:18Z",
+      "side": 1,
+      "message": "OK, thanks for the explanation.",
+      "parentUuid": "4655a878_294cf5b8",
       "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +156,24 @@
       "side": 1,
       "message": "That works with me. Using libiio test tool (iio_readdev) is also an open source solution [https://wiki.analog.com/resources/tools-software/linux-software/libiio/iio_readdev]\n\n[something like \u0027iio_readdev -T 10000 -s 4 -b 2 iio:deviceX\u0027]",
       "parentUuid": "d1c9c5be_e9b173fb",
+      "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8209ba08_eed90614",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T14:44:18Z",
+      "side": 1,
+      "message": "OK we know. But we were experiencing some bugs with libiio in our first tries, so we wrote a standalone application that is also more convenient to use.",
+      "parentUuid": "ca9b8099_cd73d574",
       "revId": "2539c16a364d3821a13ccba899d80da0c122c8b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "32941ef7_570129b9",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T14:44:18Z",
+      "side": 1,
+      "message": "Reading the FIFO flush to ensure value is 0 is required to have the FIFO flush correctly working and put FIFO out of reset state. Cutting that in 2 would be really tricky since FIFO flush is done when turning the FIFO (meaning all sensors) off. We don\u0027t really now when to read the FIFO flush since all will be off.",
+      "parentUuid": "4a819ef8_4b763deb",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d7f4e07f_0556d7c1",
         "filename": "driver/accelgyro_icm42607.c",
         "patchSetId": 2
@@ -65,6 +83,24 @@
       "writtenOn": "2021-04-20T23:18:37Z",
       "side": 1,
       "message": "st-\u003eaccel and st-\u003egyro are not necessary:\n\nicm42607_load_fifo() is called from icm42607_irq_handler() which is only called with the accelerometer sensor as argument.\nTherefore, we can replace st-\u003eaccel with s and st-\u003egyro with s+1.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fb505bc_f97d7aae",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T14:44:18Z",
+      "side": 1,
+      "message": "Effectively. We could also do that in icm426xx driver and delete these variables in the internal data structure.",
+      "parentUuid": "d7f4e07f_0556d7c1",
       "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d4cf689_21319014",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T14:44:18Z",
+      "side": 1,
+      "message": "bus read/write must be atomic since before reading/write a register, there can be a change required to bank register or MREG access registers. That\u0027s why we are putting mutex around all bus access.",
+      "parentUuid": "fa4fe497_f5dac9cc",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5b7c935b_30d0a031",
         "filename": "driver/accelgyro_icm42607.c",
         "patchSetId": 2
@@ -99,6 +153,24 @@
       "writtenOn": "2021-04-20T23:18:37Z",
       "side": 1,
       "message": "I don\u0027t see MOTIONSENSE_FLAG_INT_ACTIVE_HIGH set anywhere, looks like dead code. I will remove it soon.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d31b7cb_bb200e22",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T14:44:18Z",
+      "side": 1,
+      "message": "OK will remove that.",
+      "parentUuid": "5b7c935b_30d0a031",
       "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +192,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d8a8aa4_1128986b",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T14:44:18Z",
+      "side": 1,
+      "message": "OK, we will change that in icm426xx driver.",
+      "parentUuid": "1bcf9354_c82a6a2d",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4666da04_0382c764",
@@ -133,6 +223,24 @@
       "writtenOn": "2021-04-20T23:18:37Z",
       "side": 1,
       "message": "brace not needed for single line.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de161286_eb1d6338",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T14:44:18Z",
+      "side": 1,
+      "message": "OK will do.",
+      "parentUuid": "4666da04_0382c764",
       "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +262,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f39b4b_8e7a580e",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T14:44:18Z",
+      "side": 1,
+      "message": "Indeed. We can use a first switch/case to select between USER4 or USER0. Use 1 for loop outside switch/case for all sensors. And add another switch/case for demangling the bits.",
+      "parentUuid": "927bccb9_36e30aff",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e86faf7_bdb75165",
@@ -167,6 +293,24 @@
       "writtenOn": "2021-04-20T23:18:37Z",
       "side": 1,
       "message": "When the sensor is not powered up in S5, (or worse S3), the delay will impact boot up time. If possible, can we use a loop, checking if the OTP is powered/loaded, to limit the amount of time to wait to a minimal.",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "911d5d8d_cfe6d321",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T14:44:18Z",
+      "side": 1,
+      "message": "For the 1st init of the sensor, we will have a total of 1.58ms sleep (1ms for reset, 300us for OTP power-up, 280us for OTP reload).\nIf needed to reduce 1st startup time, we can use for loops for checking startup reset and OTP reload. We cannot check for the OTP power-up. Tell me if we have to do it.",
+      "parentUuid": "8e86faf7_bdb75165",
       "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
