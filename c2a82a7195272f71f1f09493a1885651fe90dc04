@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b5d102b_c9e5154a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-26T13:28:00Z",
+      "side": 1,
+      "message": "I\u0027ve noticed the typo during CBI SSFC development.\n\nWe have two options here:\n-assume, there is the second motionsense_sensor_alt node and all alternative sensors are defined there\n-only one motionsense_sensor node and decide if the sensor is alternative only based on the alternate_for property.\n\nIf we go with the first option, I will also upload a fix for kx022 on Lazor CL:2846416.\n\nWhat do you think Yuval?",
+      "revId": "c2a82a7195272f71f1f09493a1885651fe90dc04",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
