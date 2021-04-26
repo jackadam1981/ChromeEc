@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d880731d_7630dbb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-26T14:38:23Z",
+      "side": 1,
+      "message": "OK, please document it in the TEST\u003d line, including the exact procedure as to how to check the bbram contents after issuing reboot.",
+      "parentUuid": "9f594be4_789f20e7",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "78d0f0ded785cb61683056b60e934562d7f9ac96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "20d7613f_ed3fd9d6",
         "filename": "zephyr/drivers/cros_bbram/Kconfig",
         "patchSetId": 1
