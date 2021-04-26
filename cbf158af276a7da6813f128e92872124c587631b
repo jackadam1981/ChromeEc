@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c854ef97_be432fd8",
+        "filename": "zephyr/include/cros/ite/it8xxx2.dtsi",
+        "patchSetId": 22
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-26T08:01:42Z",
+      "side": 1,
+      "message": "Separate to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2848432",
+      "parentUuid": "001630d1_6070b0e1",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc0091e5_67b3c4c8",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57505e11_f692a3b7",
+        "filename": "zephyr/projects/it8xxx2_evb/CMakeLists.txt",
+        "patchSetId": 22
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-26T08:01:42Z",
+      "side": 1,
+      "message": "removed.",
+      "parentUuid": "dc0091e5_67b3c4c8",
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f9589a1_c7b93f1d",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-04-23T14:35:13Z",
       "side": 1,
       "message": "gpios and i2c should be a follow-on CL",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 4
+      },
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38292b0c_ff456367",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 22
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-26T08:01:42Z",
+      "side": 1,
+      "message": "Separate to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2850298/1",
+      "parentUuid": "7f9589a1_c7b93f1d",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6271ba27_a2db822c",
+        "filename": "zephyr/projects/it8xxx2_evb/prj.conf",
+        "patchSetId": 22
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-26T08:01:42Z",
+      "side": 1,
+      "message": "Separate to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2850299/1",
+      "parentUuid": "9e2cd63b_7e88e152",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5f2dc22_51d5a74e",
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f54e4fe_b9056825",
+        "filename": "zephyr/projects/it8xxx2_evb/prj.conf",
+        "patchSetId": 22
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-26T08:01:42Z",
+      "side": 1,
+      "message": "Separate to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2850301/2",
+      "parentUuid": "f5f2dc22_51d5a74e",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 33
+      },
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0318dec_0b9f692e",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-04-23T14:35:13Z",
       "side": 1,
       "message": "follow-on CL please",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 31
+      },
+      "revId": "cbf158af276a7da6813f128e92872124c587631b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7637e8df_661c76b8",
+        "filename": "zephyr/projects/it8xxx2_evb/prj.conf",
+        "patchSetId": 22
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-26T08:01:42Z",
+      "side": 1,
+      "message": "Separate to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2850300/2",
+      "parentUuid": "d0318dec_0b9f692e",
       "range": {
         "startLine": 35,
         "startChar": 0,
