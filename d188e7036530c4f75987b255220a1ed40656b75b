@@ -123,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bdc70bc_5e70b224",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-26T18:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b443e49_8c9a8dc8",
+      "range": {
+        "startLine": 282,
+        "startChar": 5,
+        "endLine": 282,
+        "endChar": 31
+      },
+      "revId": "d188e7036530c4f75987b255220a1ed40656b75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5743423_122b9110",
@@ -160,6 +184,30 @@
       "side": 1,
       "message": "looks like tbt_mode_is_supported checks only for cable speed",
       "parentUuid": "b5743423_122b9110",
+      "range": {
+        "startLine": 299,
+        "startChar": 5,
+        "endLine": 299,
+        "endChar": 27
+      },
+      "revId": "d188e7036530c4f75987b255220a1ed40656b75b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16041057_8f6f608f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-04-26T18:17:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc94db23_96ec4173",
       "range": {
         "startLine": 299,
         "startChar": 5,
