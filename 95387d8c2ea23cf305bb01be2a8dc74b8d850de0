@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10b309a9_a6f46d3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-26T15:36:52Z",
+      "side": 1,
+      "message": "Concerning common code, I think the most simple way would be to have a common file accelgyro_icm426xx_common.c that would store most of driver functions. And have accelgyro_icm42605.c and accelgyro_icm42607.c calling these functions with a parameter to indicate the chip.\nDo you agree with this approach? And can we go on with the driver as it is and do the factorization afterward in a following CL?",
+      "parentUuid": "b7ac423a_94f5c632",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a819ef8_4b763deb",
         "filename": "driver/accelgyro_icm42607.c",
         "patchSetId": 2
