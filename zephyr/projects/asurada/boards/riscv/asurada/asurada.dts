@@ -22,6 +22,10 @@
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 	};
+
+	named-gpios {
+		compatible = "named-gpios";
+	};
 };
 
 &uart1 {
