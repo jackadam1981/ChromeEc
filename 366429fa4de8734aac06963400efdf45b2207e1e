@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b505989e_4d31b77e",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-26T13:49:40Z",
+      "side": 1,
+      "message": "We need to support both 1 byte and 4 byte port 80 codes at the same time. AMD PSP sends 4 byte codes while Coreboot sends 1 byte codes.",
+      "parentUuid": "c67430ae_31674f1a",
+      "revId": "366429fa4de8734aac06963400efdf45b2207e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9946740f_968d5a95",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 1
