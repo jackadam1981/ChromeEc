@@ -54,8 +54,10 @@ properties:
       - GPIO_EN_USB_A_5V
       - GPIO_ENABLE_BACKLIGHT
       - GPIO_ENTERING_RW
+      - GPIO_HIBERNATE_L
       - GPIO_KBD_KSO2
       - GPIO_LID_OPEN
+      - GPIO_LID_ACCEL_INT_L
       - GPIO_PACKET_MODE_EN
       - GPIO_PCH_DSW_PWROK
       - GPIO_PCH_PWRBTN_L
