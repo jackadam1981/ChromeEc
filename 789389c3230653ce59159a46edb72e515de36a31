@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc65522d_d557b81e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "Describe a bit the workaround in the commit message.",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "94cdcbc4_ba37ced9",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -71,6 +94,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "289c249e_5c5cf5c3",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "Define it as a constant?",
+      "range": {
+        "startLine": 288,
+        "startChar": 3,
+        "endLine": 288,
+        "endChar": 7
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cea9797d_6b734711",
         "filename": "driver/ln9310.c",
         "patchSetId": 5
@@ -82,6 +128,29 @@
       "writtenOn": "2021-04-26T22:59:34Z",
       "side": 1,
       "message": "nit: please clean up",
+      "range": {
+        "startLine": 292,
+        "startChar": 54,
+        "endLine": 292,
+        "endChar": 55
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d8854ab_3d507275",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "Remove the tailing space.",
       "range": {
         "startLine": 292,
         "startChar": 54,
@@ -140,6 +209,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2febee14_fe3cbcfe",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "Remove the tab.",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 1
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "537dddc5_49320170",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "Remove the tailing space.",
+      "range": {
+        "startLine": 323,
+        "startChar": 54,
+        "endLine": 323,
+        "endChar": 55
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9061825f_e37d7eb6",
         "filename": "driver/ln9310.c",
         "patchSetId": 5
@@ -156,6 +271,52 @@
         "startChar": 54,
         "endLine": 324,
         "endChar": 4
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f9df8f0_9b182087",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "Remove the extra space.",
+      "range": {
+        "startLine": 328,
+        "startChar": 14,
+        "endLine": 328,
+        "endChar": 15
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00cb6263_affd603c",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "If it always returns EC_SUCCESS, declare the return type to `void`.",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 337,
+        "endChar": 19
       },
       "revId": "789389c3230653ce59159a46edb72e515de36a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -186,6 +347,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ad89a13_62df3790",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "Remove the tailing tab.",
+      "range": {
+        "startLine": 417,
+        "startChar": 49,
+        "endLine": 417,
+        "endChar": 50
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6f68137e_f025aa38",
         "filename": "driver/ln9310.c",
         "patchSetId": 5
@@ -202,6 +386,75 @@
         "startChar": 0,
         "endLine": 427,
         "endChar": 4
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f4d799c_5bc6fdb3",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "The style of multi-line comment is like:\n\n\t/*\n\t * Only start the SC if the cfly precharge\n\t * hasn\u0027t timed out (i.e. ended too long ago)\n\t */",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 428,
+        "endChar": 52
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d8a2890_e2fc94c8",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "This I2C write may be interrupted and get delayed. A better way is to do the time check after the second I2C write and have a way to revert it back if timeout.",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 7
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "943b6664_e4c15dc5",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "What is the else case? retry it?",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 2
       },
       "revId": "789389c3230653ce59159a46edb72e515de36a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -249,6 +502,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18743128_e220c5cc",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "(12*MSEC)",
+      "range": {
+        "startLine": 185,
+        "startChar": 36,
+        "endLine": 185,
+        "endChar": 41
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77f39970_bde5f141",
         "filename": "include/driver/ln9310.h",
         "patchSetId": 5
@@ -260,6 +536,29 @@
       "writtenOn": "2021-04-26T22:59:34Z",
       "side": 1,
       "message": "nit: clean up please",
+      "range": {
+        "startLine": 186,
+        "startChar": 49,
+        "endLine": 186,
+        "endChar": 50
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9403c17c_2ab25080",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-26T22:59:50Z",
+      "side": 1,
+      "message": "Remove the tailing space.",
       "range": {
         "startLine": 186,
         "startChar": 49,
