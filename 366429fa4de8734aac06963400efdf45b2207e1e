@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6af9c2fa_5f36b48f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-04-26T18:02:36Z",
+      "side": 1,
+      "message": "I think we should implement CONFIG_PORT80_4_BYTE, which will change the port80 history buffer from uint16_t to uint32_t. We can then store the AMD 4 byte post codes naively, and even display them naively. This way we can see 0xEEE20400 when we type in `port80` into the console.",
+      "parentUuid": "c7d34fa4_0791d80b",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "366429fa4de8734aac06963400efdf45b2207e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebf76514_b7949b57",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 1
