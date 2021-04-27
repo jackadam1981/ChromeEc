@@ -28,6 +28,7 @@
 #define CONFIG_CMD_BUTTON
 
 /* USB Type C and USB PD defines */
+#define CONFIG_USB_MUX_ANX7451_I2C_USB_ADDR 0x2a
 
 /* USB Type A Features */
 
