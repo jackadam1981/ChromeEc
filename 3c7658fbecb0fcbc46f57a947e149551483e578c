@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2747a3ab_e0b9f360",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T19:51:42Z",
+      "side": 1,
+      "message": "Yes, we can push this forward today.  If it\u0027s testing well, we might be able to hand-wave (or leave TODOs) for tricky parts, and then hopefully remove them if/when the AP sends us GPIO signals like we were expecting.  And if it turns out that\u0027s not an option, we\u0027ll want to verify the electrical timings for the optimal \"if\" structuring.",
+      "parentUuid": "4442c210_b0d77f76",
+      "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f26e3861_063515af",
