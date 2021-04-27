@@ -22,6 +22,30 @@
       },
       "revId": "68a316ee771628e1d5339897daff02d13d6cb53e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "467e80b0_abe7dbb8",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-27T16:51:20Z",
+      "side": 1,
+      "message": "I believe Jack was suggesting to keep the names the same to show a mechanical conversion and cleaning up later.",
+      "parentUuid": "7d32bc60_a5cbee47",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 11
+      },
+      "revId": "68a316ee771628e1d5339897daff02d13d6cb53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
