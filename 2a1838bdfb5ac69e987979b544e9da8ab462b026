@@ -16,6 +16,24 @@
       "message": "No cherry-picks please. Do we need a merge?",
       "revId": "2a1838bdfb5ac69e987979b544e9da8ab462b026",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f9afde_4d40b3a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-04-27T02:33:13Z",
+      "side": 1,
+      "message": "we want retry CTS-V as soon as possible\nbecause main source is EOL.",
+      "parentUuid": "b3197859_279c9896",
+      "revId": "2a1838bdfb5ac69e987979b544e9da8ab462b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
