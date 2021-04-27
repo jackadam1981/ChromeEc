@@ -80,6 +80,30 @@
       },
       "revId": "54a8d94a22dbfc849dd3d136cf9abf9e8e551745",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292c8c2b_1c128cce",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-27T21:20:56Z",
+      "side": 1,
+      "message": "It\u0027s not causing errors on my non-reworked board, so I think we can keep it disabled for everyone.",
+      "parentUuid": "92562609_e683f3d3",
+      "range": {
+        "startLine": 120,
+        "startChar": 32,
+        "endLine": 120,
+        "endChar": 44
+      },
+      "revId": "54a8d94a22dbfc849dd3d136cf9abf9e8e551745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
