@@ -16,6 +16,24 @@
       "message": "syv682x driver also triggers usb_charger_vbus_change inside syv682x_vbus_source_enable, do we need that?",
       "revId": "b90535b2627a10b9c51cbaa96bc6022f4851fa39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a85c4cb_31e5d384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-27T09:11:11Z",
+      "side": 1,
+      "message": "I think the answer is yes.\n\nThe problem is that if we unplug the adapter, the BC1.2 charge source won\u0027t be cleared, and the call path won\u0027t pass-through the syv682x_vbus_source_enable path.",
+      "parentUuid": "8f169538_d2929d49",
+      "revId": "b90535b2627a10b9c51cbaa96bc6022f4851fa39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
