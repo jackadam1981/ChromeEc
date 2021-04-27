@@ -194,6 +194,24 @@
       "parentUuid": "b1a85214_afdf372f",
       "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f81e1b7_494a301a",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-27T21:41:43Z",
+      "side": 1,
+      "message": "\u003e I expect line 413 won\u0027t trigger until G3. I think this scenario will be caught by the host sleep tracking and call lpc_s0ix_hang_detected, which wakes the AP.\n\nSo, basically it would look like a wake from S5. It would be good to try it out whenever you get a chance to ensure the state machine on EC doesn\u0027t go completely out of sync.",
+      "parentUuid": "866fcf6e_15112a58",
+      "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
