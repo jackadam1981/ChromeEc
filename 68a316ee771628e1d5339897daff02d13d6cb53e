@@ -94,6 +94,30 @@
       },
       "revId": "68a316ee771628e1d5339897daff02d13d6cb53e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1262aad1_663ea2fa",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-27T18:11:37Z",
+      "side": 1,
+      "message": "this is not a local zephyr only change or even a local asurada change. This would affect a number of cros-ec projects.  I think leaving this as it currently is works fine for bringup and possible later cleanup can be done to make this better",
+      "parentUuid": "a8a0d9ac_5e2d1095",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 11
+      },
+      "revId": "68a316ee771628e1d5339897daff02d13d6cb53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
