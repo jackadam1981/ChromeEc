@@ -86,6 +86,24 @@
       "message": "Just to make sure: lid_close or lid_open events are not triggered by turning the lid accel, right?",
       "revId": "a10eca95a0add2659c8fbc942871b7c42ed83d28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ceb4c8e_86df76a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2021-04-27T02:02:37Z",
+      "side": 1,
+      "message": "Correct.Lid accel will not trigger lid_close or lid_open events.",
+      "parentUuid": "23d6ee0b_d49db016",
+      "revId": "a10eca95a0add2659c8fbc942871b7c42ed83d28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
