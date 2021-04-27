@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d9e3cadf_e86094e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-27T16:44:37Z",
+      "side": 1,
+      "message": "This seems reasonable to me, but I\u0027m concerned about the growing number of bindings we\u0027re adding that aren\u0027t actual drivers. Would it be possible for us to move cbi_ssfc.h to zephyr/include/drivers/ and cbi_ssfc.c to zephyr/drivers/?\n\nWe would then create an API for the driver that would create the mapping and not have to expose the motion_sensors_alt array from the motionsense_sensors.c. The hook would be declared there and will pass the 2 arrays to create the mapping.\n\nThe other up side to this is that the driver will not use the hard coded DT_PATH and will be a bit more flexible.",
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fef116e_6f13bec6",
         "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc-value.yaml",
         "patchSetId": 5
@@ -89,6 +106,29 @@
         "startChar": 8,
         "endLine": 12,
         "endChar": 69
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eae503b_b81e9248",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-27T16:44:37Z",
+      "side": 1,
+      "message": "Can the size be inferred by the number of children?",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 12
       },
       "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
