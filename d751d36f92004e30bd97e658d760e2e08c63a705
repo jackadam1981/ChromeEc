@@ -16,6 +16,24 @@
       "message": "move to ADLRVP, its much simple to add code there.\nrefer this board \nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/board/adlrvpp_npcx/\n",
       "revId": "d751d36f92004e30bd97e658d760e2e08c63a705",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae99bbb_3e5c6b93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-04-27T22:53:54Z",
+      "side": 1,
+      "message": "ok, understand.\nbut any simple way, to make it pass compilation and have a quick test on TGLY, I am interesting on power sequence only?",
+      "parentUuid": "0b1a14cd_cc80789a",
+      "revId": "d751d36f92004e30bd97e658d760e2e08c63a705",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
