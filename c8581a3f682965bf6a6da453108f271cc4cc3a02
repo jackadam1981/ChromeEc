@@ -16,6 +16,24 @@
       "message": "If I understand correctly, this change combined with CL #2848058 should trigger lid_open/lid_close (i.e. hibernate and wake) if you turn the sensor board. Does that happen? ",
       "revId": "c8581a3f682965bf6a6da453108f271cc4cc3a02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaf09989_bafb857a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2021-04-27T05:26:09Z",
+      "side": 1,
+      "message": "I believe the the wake event is only triggered by lid_interrupt which is effected by GMR. (Refer to CL #2839194)\nThis and CL #2848058 are for calculating angle and screen rotation purpose.",
+      "parentUuid": "97b96886_650fb90f",
+      "revId": "c8581a3f682965bf6a6da453108f271cc4cc3a02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
