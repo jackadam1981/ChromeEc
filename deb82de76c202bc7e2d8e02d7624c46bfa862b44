@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e23e9185_cabbd301",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-27T14:51:48Z",
+      "side": 1,
+      "message": "This should be \"least significant bit to most significant bit\"",
+      "parentUuid": "aed8b812_9f75506a",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 69
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a526f11_ef3a3295",
         "filename": "zephyr/shim/include/cbi_ssfc.h",
         "patchSetId": 5
