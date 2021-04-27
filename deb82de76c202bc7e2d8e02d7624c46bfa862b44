@@ -113,6 +113,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe5681c8_b31b5447",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-27T18:02:58Z",
+      "side": 1,
+      "message": "children",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7eae503b_b81e9248",
         "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
         "patchSetId": 5
@@ -124,6 +147,30 @@
       "writtenOn": "2021-04-27T16:44:37Z",
       "side": 1,
       "message": "Can the size be inferred by the number of children?",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1bc432_a3509c88",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-27T18:02:58Z",
+      "side": 1,
+      "message": "Sometimes we set the size slightly bigger to allow for additions to a field. We can infer a minimum size and verify that the specified size is \u003e\u003d.",
+      "parentUuid": "7eae503b_b81e9248",
       "range": {
         "startLine": 24,
         "startChar": 8,
