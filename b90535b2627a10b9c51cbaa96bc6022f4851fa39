@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f169538_d2929d49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-04-27T09:06:33Z",
+      "side": 1,
+      "message": "syv682x driver also triggers usb_charger_vbus_change inside syv682x_vbus_source_enable, do we need that?",
+      "revId": "b90535b2627a10b9c51cbaa96bc6022f4851fa39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
