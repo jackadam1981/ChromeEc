@@ -22,6 +22,29 @@
       },
       "revId": "b0f850312a7c7cad81711659c62a5d46a90adca9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86ee1597_e2c4ffc6",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T20:54:06Z",
+      "side": 1,
+      "message": "shfmt doesn\u0027t like the extra spaces: http://shortn/_fxOFX4cMbx",
+      "range": {
+        "startLine": 291,
+        "startChar": 26,
+        "endLine": 291,
+        "endChar": 28
+      },
+      "revId": "b0f850312a7c7cad81711659c62a5d46a90adca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
