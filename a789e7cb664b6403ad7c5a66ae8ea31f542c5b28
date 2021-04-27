@@ -200,6 +200,30 @@
       },
       "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6608413b_e7b976b7",
+        "filename": "board/kindred/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-27T23:08:25Z",
+      "side": 1,
+      "message": "I reached out to analogix about this behaviour and am waiting for their reply. In the meantime, I think we can move forward with this, but I think we should add a comment explaining the oddity (The fact that setting the field to 0xC actually isolates it).\n\nRegarding the applicability of this change, I think only the boards which have  incorrect SBU bypass circuitry need this. If there haven\u0027t been any issues on octopus, it likely doesn\u0027t need it.",
+      "parentUuid": "41c878cf_50645d57",
+      "range": {
+        "startLine": 549,
+        "startChar": 50,
+        "endLine": 549,
+        "endChar": 60
+      },
+      "revId": "a789e7cb664b6403ad7c5a66ae8ea31f542c5b28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
