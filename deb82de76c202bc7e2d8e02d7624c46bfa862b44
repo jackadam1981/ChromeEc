@@ -142,6 +142,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ba723af8_92fde4a7",
+        "filename": "zephyr/shim/src/cbi_ssfc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-27T14:56:01Z",
+      "side": 1,
+      "message": "Add a check that cached_ssfc is a 32-bit value:\n\nBUILD_ASSERT(sizeof(cached_ssfc) \u003d\u003d sizeof(uint32_t));\n\nThis verifies that the compiler didn\u0027t insert any padding and overflow the 32-bit value.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3b15343_0b7a6ad4",
         "filename": "zephyr/shim/src/cbi_ssfc.c",
         "patchSetId": 5
