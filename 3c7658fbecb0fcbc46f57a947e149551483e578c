@@ -122,6 +122,24 @@
       "parentUuid": "b14a3e8a_1a7f4fce",
       "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d102b31_7c9e2b65",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-27T18:40:08Z",
+      "side": 1,
+      "message": "Also what is the behavior when:\n\n1. Host says it is entering S0i3\n2. Fails and instead goes down into S5. Is that caught by line 413? Or does the EC state machine get stuck assuming the host is in S0i3?",
+      "parentUuid": "933384b7_bb51fad0",
+      "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
