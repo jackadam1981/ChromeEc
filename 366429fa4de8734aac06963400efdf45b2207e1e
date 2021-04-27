@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "318a0e7b_6cff4297",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-04-27T15:36:42Z",
+      "side": 1,
+      "message": "This looks great, Thanks!\n\nDo we need to update the following code: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/port80.c;l\u003d55\n\n```\nstatic uint16_t __bss_slow history[CONFIG_PORT80_HISTORY_LEN];\n```\n\nI think we need to update the data type too. This all can be done in a different CL since it\u0027s common code.",
+      "parentUuid": "411ed1bf_e9c60127",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "366429fa4de8734aac06963400efdf45b2207e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebf76514_b7949b57",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 1
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "No, it will print the single byte of code if host only send 1 byte data in the PUT_IOWR_SHORT transaction.",
       "parentUuid": "9946740f_968d5a95",
+      "range": {
+        "startLine": 673,
+        "startChar": 2,
+        "endLine": 673,
+        "endChar": 15
+      },
+      "revId": "366429fa4de8734aac06963400efdf45b2207e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd260cb_4c094189",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-04-27T15:36:42Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5fe8b00_d96714b3",
       "range": {
         "startLine": 673,
         "startChar": 2,

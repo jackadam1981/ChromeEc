@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc00ef59_fff2b80d",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-04-27T15:36:42Z",
+      "side": 1,
+      "message": "This might read easier as a `for` loop.",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 590,
+        "endChar": 16
+      },
+      "revId": "0960f070a5522da095b51e4448915db14077166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d041b331_7760b65e",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-04-27T15:36:42Z",
+      "side": 1,
+      "message": "nit: Can you use |\u003d instead. I think it\u0027s more common.",
+      "range": {
+        "startLine": 596,
+        "startChar": 7,
+        "endLine": 596,
+        "endChar": 8
+      },
+      "revId": "0960f070a5522da095b51e4448915db14077166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
