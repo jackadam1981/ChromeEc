@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d32bc60_a5cbee47",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-27T16:49:02Z",
+      "side": 1,
+      "message": "What are these used for? I\u0027m trying to move away from the privious enum names that were more specific to the gpio name and instead more to more descriptive ones. Could we re-use one of the other _SCL/_SDA enums?",
+      "range": {
+        "startLine": 200,
+        "startChar": 2,
+        "endLine": 200,
+        "endChar": 11
+      },
+      "revId": "68a316ee771628e1d5339897daff02d13d6cb53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
