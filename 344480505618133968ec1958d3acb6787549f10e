@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4655386_73464309",
+        "filename": "zephyr/projects/volteer/volteer/cbi_eeprom.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-27T15:01:38Z",
+      "side": 1,
+      "message": "For the Volteer family, the SSFC layout is shared by all boards, but only certain boards make use of SSFC.\n\nCan the layout be moved into the shared volteer.dts file, and then board overlay used to set the \"devices\" property?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 11
+      },
+      "revId": "344480505618133968ec1958d3acb6787549f10e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
