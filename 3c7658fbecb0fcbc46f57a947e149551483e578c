@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4442c210_b0d77f76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-27T18:37:08Z",
+      "side": 1,
+      "message": "There\u0027s an ongoing discussion in the bug about the conflict in AMD FW. However this change should be OK either way. Can we push it forward? ",
+      "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f26e3861_063515af",
@@ -85,6 +102,24 @@
       "writtenOn": "2021-04-23T18:03:27Z",
       "side": 1,
       "message": "In testing, were we able to verify both signals assert with about the same timing? So we\u0027ll expect them both to be the same when this code runs in S0ix?",
+      "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "933384b7_bb51fad0",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-27T18:37:08Z",
+      "side": 1,
+      "message": "No this has not been verified. I\u0027ll check with EE. \n\nWe can add `\u0026\u0026 power_get_host_sleep_state() \u003d\u003d HOST_SLEEP_EVENT_S3_SUSPEND` here and an else to report errors.",
+      "parentUuid": "b14a3e8a_1a7f4fce",
       "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
