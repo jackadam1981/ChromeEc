@@ -34,6 +34,24 @@
       "parentUuid": "b3197859_279c9896",
       "revId": "2a1838bdfb5ac69e987979b544e9da8ab462b026",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed1965f9_8621cf0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-27T03:15:38Z",
+      "side": 1,
+      "message": "I\u0027ve performed a merge here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2853144. I\u0027ll also kick the firmware builder and hopefully a new image will be ready in ~3hrs.",
+      "parentUuid": "44f9afde_4d40b3a2",
+      "revId": "2a1838bdfb5ac69e987979b544e9da8ab462b026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
