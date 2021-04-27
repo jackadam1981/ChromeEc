@@ -33,6 +33,24 @@
       "message": "Can you please move these masks and offsets to chip/npcx/registers.h.",
       "revId": "18e8107d04e42c078e3e637a71af86d5c6621179",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df8cbaed_0cb484b4",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-27T08:39:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bf63781_190602f7",
+      "revId": "18e8107d04e42c078e3e637a71af86d5c6621179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

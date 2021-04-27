@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "411ed1bf_e9c60127",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-27T08:39:04Z",
+      "side": 1,
+      "message": "The patch set 3 can display the 4-byte code according to its original endianness.",
+      "parentUuid": "6af9c2fa_5f36b48f",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "366429fa4de8734aac06963400efdf45b2207e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ebf76514_b7949b57",
         "filename": "chip/npcx/lpc.c",
         "patchSetId": 1
@@ -121,6 +145,24 @@
       "side": 1,
       "message": "We need to support both 1 byte and 4 byte port 80 codes at the same time. AMD PSP sends 4 byte codes while Coreboot sends 1 byte codes.",
       "parentUuid": "c67430ae_31674f1a",
+      "revId": "366429fa4de8734aac06963400efdf45b2207e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9d3872_b07467bc",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-27T08:39:04Z",
+      "side": 1,
+      "message": "There is no straightforward way to know which bytes are sent together.\nAlternatively, we need to buffer the data in FIFO, analyze the offset filed at each byte to know if it should be grouped or not.\nThis is done in the patch set 3.",
+      "parentUuid": "b505989e_4d31b77e",
       "revId": "366429fa4de8734aac06963400efdf45b2207e1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
