@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0721653b_a929cfe5",
+        "filename": "board/boten/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T14:19:23Z",
+      "side": 1,
+      "message": "Why is only A0 under control of the USB_PORT_POWER_* configuration, when A1 also has a GPIO?",
+      "revId": "461ddc620cab6748312cfada74650da17a1c3bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
