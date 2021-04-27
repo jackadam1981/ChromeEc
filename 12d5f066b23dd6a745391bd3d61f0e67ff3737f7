@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "276c57f1_1164f2b0",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T20:45:01Z",
+      "side": 1,
+      "message": "nit: most of the file has space after \"\u003e\"",
+      "range": {
+        "startLine": 281,
+        "startChar": 16,
+        "endLine": 281,
+        "endChar": 18
+      },
+      "revId": "12d5f066b23dd6a745391bd3d61f0e67ff3737f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "762efcf9_9fe73f43",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T20:45:01Z",
+      "side": 1,
+      "message": "Is echo \"\" slightly clearer than bare echo?",
+      "range": {
+        "startLine": 360,
+        "startChar": 4,
+        "endLine": 360,
+        "endChar": 8
+      },
+      "revId": "12d5f066b23dd6a745391bd3d61f0e67ff3737f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b59e483_0f3f6dd5",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T20:45:01Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 360,
+        "startChar": 9,
+        "endLine": 360,
+        "endChar": 11
+      },
+      "revId": "12d5f066b23dd6a745391bd3d61f0e67ff3737f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
