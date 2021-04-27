@@ -158,6 +158,24 @@
       "parentUuid": "933384b7_bb51fad0",
       "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1a85214_afdf372f",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-27T21:35:53Z",
+      "side": 1,
+      "message": "Capture from EE confirms SLP_S3 and SLP_S0 transition together. \n\nI expect line 413 won\u0027t trigger until G3. I think this scenario will be caught by the host sleep tracking and call lpc_s0ix_hang_detected, which wakes the AP.",
+      "parentUuid": "5d102b31_7c9e2b65",
+      "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
