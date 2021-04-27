@@ -56,6 +56,30 @@
       },
       "revId": "54a8d94a22dbfc849dd3d136cf9abf9e8e551745",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92562609_e683f3d3",
+        "filename": "baseboard/guybrush/base_gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T20:14:56Z",
+      "side": 1,
+      "message": "Does this need to be gated based on a CBI rework ID and/or board version?",
+      "parentUuid": "0fc4c9d4_7bb57165",
+      "range": {
+        "startLine": 120,
+        "startChar": 32,
+        "endLine": 120,
+        "endChar": 44
+      },
+      "revId": "54a8d94a22dbfc849dd3d136cf9abf9e8e551745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
