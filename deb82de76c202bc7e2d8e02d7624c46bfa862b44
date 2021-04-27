@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fef116e_6f13bec6",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc-value.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-27T14:48:10Z",
+      "side": 1,
+      "message": "This help text should only be listed in one place.  Probably makes most sense in the named-cbi-ssfc",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d49bea18_693b04ba",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-27T14:48:10Z",
+      "side": 1,
+      "message": "Second Source Factory Cache (SSFC)",
+      "range": {
+        "startLine": 5,
+        "startChar": 17,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed8b812_9f75506a",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-27T14:48:10Z",
+      "side": 1,
+      "message": "The order of the children in this node define the order of the SSFC bit fields from most significant bit to least significant bit. The total size of all SSFC bit fields must not exceed 32 bits.",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 69
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a526f11_ef3a3295",
+        "filename": "zephyr/shim/include/cbi_ssfc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-27T14:48:10Z",
+      "side": 1,
+      "message": "Probably good to add a comment how you\u0027re converting the device tree entries to bit field definitions.  Maybe a snippet of the device tree and the expected union cbi_ssfc output.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8886c78_c8747091",
+        "filename": "zephyr/shim/include/cbi_ssfc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-27T14:48:10Z",
+      "side": 1,
+      "message": "Add a check that CBI_SSFC_FIELDS_SIZE is 32 or smaller.  The statement at line 27 may still compile even if (32-CBI_SSFC_FIELDS_SIZE) is a negative number.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3b15343_0b7a6ad4",
+        "filename": "zephyr/shim/src/cbi_ssfc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-27T14:48:10Z",
+      "side": 1,
+      "message": "Might be nice to allow the device tree cbi-ssfc node specify the default value.  This is useful during manufacturing during first boot when the CBI EEPROM may not yet be programmed.\n\nThis has been a common need with the FW_CONFIG field, which should be able to follow this same pattern.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d941871a_db6c9e95",
+        "filename": "zephyr/shim/src/cbi_ssfc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-27T14:48:10Z",
+      "side": 1,
+      "message": "%08x  since this is a 32-bit value.",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
