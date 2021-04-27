@@ -16,6 +16,24 @@
       "message": "How does an ARM device do this today? I\u0027m only familiar with x86/ACPI",
       "revId": "4236275851306ba8ee2074274e32894d5d47f8d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d258f969_b856d78c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-27T18:22:39Z",
+      "side": 1,
+      "message": "I\u0027m still seeking for the best option for both x86 and ARM. I\u0027ll remove WIP once I make up my mind.",
+      "parentUuid": "ff24a413_760db991",
+      "revId": "4236275851306ba8ee2074274e32894d5d47f8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
