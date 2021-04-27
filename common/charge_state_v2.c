@@ -2433,6 +2433,11 @@ int charge_get_percent(void)
 	return is_full ? 100 : curr.batt.state_of_charge;
 }
 
+int charge_get_real_percent(void)
+{
+	return curr.batt.state_of_charge;
+}
+
 int charge_get_display_charge(void)
 {
 	return curr.batt.display_charge;

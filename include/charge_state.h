@@ -94,6 +94,11 @@ uint32_t charge_get_flags(void);
  * Return current battery charge percentage.
  */
 int charge_get_percent(void);
+
+/**
+ * Return real current battery charge percentage.
+ */
+int charge_get_real_percent(void);
 #elif defined(CONFIG_BATTERY)
 /**
  * Return current battery charge if not using charge manager sub-system.
