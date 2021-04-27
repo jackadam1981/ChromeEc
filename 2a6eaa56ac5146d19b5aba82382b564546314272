@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e94d79e_b287fbd2",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T21:08:45Z",
+      "side": 1,
+      "message": "Remind me, what\u0027s the main reason to not use the TCPC driver for this part?  Is it not part of the RO image?",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f3dcb4_ccff2c53",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T21:08:45Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand \"if (level)\" here.  Should it be \"if (ppc_ocp_count)\"?",
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78fcd9d9_376ed4fb",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T21:08:45Z",
+      "side": 1,
+      "message": "Should this notify anything else on the system, or is it just for your console debugging?",
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac587cba_5aa77e26",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T21:08:45Z",
+      "side": 1,
+      "message": "Does this take care of the TODO?",
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d28dfb3_2f780482",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T21:08:45Z",
+      "side": 1,
+      "message": "Should the GPIO level be !is_overcurrented? Also, does this get called when overcurrent is done or is that not happening, hence the hook?",
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
