@@ -51,6 +51,24 @@
       "parentUuid": "ff8b74df_2808ec5e",
       "revId": "16a18307b171e8cf43ae13ac6f4d97a04cd630dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "916d42b7_a4e948b2",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T14:14:58Z",
+      "side": 1,
+      "message": "Yup, that makes sense.  I\u0027m happy to approve whatever tests well in that case.  The Vbus presence bit used to be reliable before we switched to the recommended order of operations for init to avoid voltage drop.  Hopefully the charger Vbus voltage can work.  Otherwise... we\u0027d have to delve into the registers to figure out a good option.",
+      "parentUuid": "d1cdadba_070b6a68",
+      "revId": "16a18307b171e8cf43ae13ac6f4d97a04cd630dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
