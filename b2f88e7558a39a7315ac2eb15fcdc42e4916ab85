@@ -16,6 +16,24 @@
       "message": "Hey Aseda, Hey Yilun,\n\nPrevious FW images will lock timer 1 counter register. So this CL can\u0027t be merged to FW branch where the RO image has been locked, or warning message timer will not function after jumping to RW.\n\nIs there any way we can ensure the CL won\u0027t be merged to the FW branch?\nOr I need to create new config opiton to make FW compatible.",
       "revId": "b2f88e7558a39a7315ac2eb15fcdc42e4916ab85",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f986e86_a1ff2aa9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-27T09:20:02Z",
+      "side": 1,
+      "message": "Thanks for letting us know.\n\nA config option would be the ideal way to address this issue, the other NOT-SO-RECOMMENDED-APPROACH is cherry-pick this CL to the firmware branch and CR-2. But if in the future we have other firmware branches, we might miss this note.",
+      "parentUuid": "1e423d44_88b2991b",
+      "revId": "b2f88e7558a39a7315ac2eb15fcdc42e4916ab85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
