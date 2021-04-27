@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "999a6eed_8b483bcf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T20:23:12Z",
+      "side": 1,
+      "message": "You can use \"fingerprint\" here to indicate it\u0027s fingerprint-related.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "20164c5ecd6561db3d1bb3fb1d1dc76507cec3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "207ff1a5_5187d33c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T20:23:12Z",
+      "side": 1,
+      "message": "Can you also verify that it passes when using the \"run_device_tests.py\" script? (see other comment about adding the test to that file)\n\nYou\u0027ll also want to do a \"make buildall -j\" to make sure that all of the EC code compiles with this change (the CQ process will catch this for you, but it\u0027s easier to check locally first).",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 5
+      },
+      "revId": "20164c5ecd6561db3d1bb3fb1d1dc76507cec3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33beaf6e_dea30f28",
+        "filename": "driver/fingerprint/fpc/bep/fpc_private.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T20:23:12Z",
+      "side": 1,
+      "message": "This file is for the FPC 1025 sensor. You\u0027ll need to make the same change for the FPC 1145: https://chromium.googlesource.com/chromiumos/platform/ec/+/97f1427e200b70d0654d7391f45697f48d1a3d4c/driver/fingerprint/fpc/libfp/fpc_private.c#100\n\nThe compilation for the FPC 1145 board is the same as what you were using to test this, but with \"dartmonkey\":\n\n make BOARD\u003ddartmonkey ...\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/fingerprint/fingerprint.md#hardware",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "20164c5ecd6561db3d1bb3fb1d1dc76507cec3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aca05ce_8e2653d1",
+        "filename": "test/build.mk",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T20:23:12Z",
+      "side": 1,
+      "message": "We\u0027ll want to make sure this test is built for the fingerprint \"boards\": https://chromium.googlesource.com/chromiumos/platform/ec/+/97f1427e200b70d0654d7391f45697f48d1a3d4c/board/hatch_fp/build.mk#25\n\nThe relevant fingerprint \"boards\" are \"hatch_fp\", \"nocturne_fp\", and \"nucleo-dartmonkey\".\n\nYou\u0027ll also want to add \"fpsensor_hw\" to the list of tests that our test runner script uses: https://chromium.googlesource.com/chromiumos/platform/ec/+/97f1427e200b70d0654d7391f45697f48d1a3d4c/test/run_device_tests.py#107",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 27
+      },
+      "revId": "20164c5ecd6561db3d1bb3fb1d1dc76507cec3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1ab5125_dd897005",
+        "filename": "test/fpsensor_hw.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T20:23:12Z",
+      "side": 1,
+      "message": "Can you create a bug and use \"TODO(b/12345)\"?",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "20164c5ecd6561db3d1bb3fb1d1dc76507cec3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712f2b50_ac4a9cc2",
+        "filename": "test/fpsensor_hw.tasklist",
+        "patchSetId": 12
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-27T20:23:12Z",
+      "side": 1,
+      "message": "nit: 2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "20164c5ecd6561db3d1bb3fb1d1dc76507cec3cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
