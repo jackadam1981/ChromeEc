@@ -176,6 +176,24 @@
       "parentUuid": "5d102b31_7c9e2b65",
       "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "866fcf6e_15112a58",
+        "filename": "power/amd_x86.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T21:40:08Z",
+      "side": 1,
+      "message": "This ordering seems safe based on the scope shots then.",
+      "parentUuid": "b1a85214_afdf372f",
+      "revId": "3c7658fbecb0fcbc46f57a947e149551483e578c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
