@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dffcdc01_1c7fa734",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc65522d_d557b81e",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94cdcbc4_ba37ced9",
@@ -115,6 +139,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "271c181d_0e836303",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "289c249e_5c5cf5c3",
+      "range": {
+        "startLine": 288,
+        "startChar": 3,
+        "endLine": 288,
+        "endChar": 7
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cea9797d_6b734711",
@@ -161,6 +209,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb331df_69ee6ab8",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d8854ab_3d507275",
+      "range": {
+        "startLine": 292,
+        "startChar": 54,
+        "endLine": 292,
+        "endChar": 55
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9583876_ff37dddb",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cea9797d_6b734711",
+      "range": {
+        "startLine": 292,
+        "startChar": 54,
+        "endLine": 292,
+        "endChar": 55
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15ccbb22_9c5f4caa",
@@ -174,6 +270,30 @@
       "writtenOn": "2021-04-26T22:59:34Z",
       "side": 1,
       "message": "nit: If this wasn\u0027t indented again it wouldn\u0027t go over 80 characters.",
+      "range": {
+        "startLine": 293,
+        "startChar": 3,
+        "endLine": 293,
+        "endChar": 4
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe2f815e_9ba59355",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15ccbb22_9c5f4caa",
       "range": {
         "startLine": 293,
         "startChar": 3,
@@ -230,6 +350,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cace2d4_c66c2fe5",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6a9348c_e6c7946b",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 1
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efed99c0_ae5f1e36",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2febee14_fe3cbcfe",
+      "range": {
+        "startLine": 310,
+        "startChar": 0,
+        "endLine": 310,
+        "endChar": 1
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "537dddc5_49320170",
@@ -243,6 +411,30 @@
       "writtenOn": "2021-04-26T22:59:50Z",
       "side": 1,
       "message": "Remove the tailing space.",
+      "range": {
+        "startLine": 323,
+        "startChar": 54,
+        "endLine": 323,
+        "endChar": 55
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3311d10a_a9b94020",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "537dddc5_49320170",
       "range": {
         "startLine": 323,
         "startChar": 54,
@@ -276,6 +468,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a92aa0d2_02815ace",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9061825f_e37d7eb6",
+      "range": {
+        "startLine": 323,
+        "startChar": 54,
+        "endLine": 324,
+        "endChar": 4
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f9df8f0_9b182087",
@@ -289,6 +505,30 @@
       "writtenOn": "2021-04-26T22:59:50Z",
       "side": 1,
       "message": "Remove the extra space.",
+      "range": {
+        "startLine": 328,
+        "startChar": 14,
+        "endLine": 328,
+        "endChar": 15
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3209d216_9d55e2d4",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f9df8f0_9b182087",
       "range": {
         "startLine": 328,
         "startChar": 14,
@@ -322,6 +562,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "341290c6_794d10fc",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00cb6263_affd603c",
+      "range": {
+        "startLine": 337,
+        "startChar": 1,
+        "endLine": 337,
+        "endChar": 19
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4cd5a20_ad226c80",
@@ -345,6 +609,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3980677e_3feb4250",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4cd5a20_ad226c80",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 2
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6ad89a13_62df3790",
@@ -358,6 +646,30 @@
       "writtenOn": "2021-04-26T22:59:50Z",
       "side": 1,
       "message": "Remove the tailing tab.",
+      "range": {
+        "startLine": 417,
+        "startChar": 49,
+        "endLine": 417,
+        "endChar": 50
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "747e140f_1d9450f9",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ad89a13_62df3790",
       "range": {
         "startLine": 417,
         "startChar": 49,
@@ -414,6 +726,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60eaecc7_2e4cc429",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f4d799c_5bc6fdb3",
+      "range": {
+        "startLine": 427,
+        "startChar": 0,
+        "endLine": 428,
+        "endChar": 52
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d8a2890_e2fc94c8",
@@ -427,6 +763,30 @@
       "writtenOn": "2021-04-26T22:59:50Z",
       "side": 1,
       "message": "This I2C write may be interrupted and get delayed. A better way is to do the time check after the second I2C write and have a way to revert it back if timeout.",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 7
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c952dc73_5e0788bc",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "If this I2C command is sent (i.e. `LN9310_STARTUP_STANDBY_EN\u003d0`) and then the timeout is checked and fails, the only way to undo the command would be to send another I2C command (`LN9310_STARTUP_STANDBY_EN\u003d1`), but in that case what would guarantee that the new command would get sent in a fixed time?  \n\nThe point of the timeout is to prevent this I2C command from getting sent to the LN9310 if too much time (i.e. \u003e 100 ms) has elapsed since the previous I2C command occurred.  The previous I2C command disables the Cfly precharge, so if ln9310 doesn\u0027t try to startup quickly, the Cfly can be discharged too much prior to startup which could cause problems.\n\nIs there a way to setup the I2C operation (i.e. chip, address data) but not trigger it getting sent and then make the trigger conditional on having not timed out yet?",
+      "parentUuid": "6d8a2890_e2fc94c8",
       "range": {
         "startLine": 431,
         "startChar": 0,
@@ -462,6 +822,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "74404e1f_d4089ec8",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "If the timeout occurs and `LN9310_STARTUP_STANDBY_EN` is not set to 0, then the entire `ln9310_init()` function should be retried.  I didn\u0027t put an else statement because I thought that if the ln9310 never receives this final command, then it will never enter switching and the higher level `set_system_power` will fail when it doesn\u0027t see `ln9310_power_good`.  I think maybe the retry should be initiated at that higher level (i.e. `set_system_power`) or somewhere similar.  What do you think?",
+      "parentUuid": "943b6664_e4c15dc5",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 2
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86944b61_1c1327b0",
         "filename": "driver/ln9310.c",
         "patchSetId": 5
@@ -473,6 +857,24 @@
       "writtenOn": "2021-04-26T22:59:34Z",
       "side": 1,
       "message": "nit: please remove last empty line.",
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "735910ca_4993015c",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86944b61_1c1327b0",
       "revId": "789389c3230653ce59159a46edb72e515de36a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -523,6 +925,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef854ae_1d082202",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18743128_e220c5cc",
+      "range": {
+        "startLine": 185,
+        "startChar": 36,
+        "endLine": 185,
+        "endChar": 41
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77f39970_bde5f141",
@@ -559,6 +985,30 @@
       "writtenOn": "2021-04-26T22:59:50Z",
       "side": 1,
       "message": "Remove the tailing space.",
+      "range": {
+        "startLine": 186,
+        "startChar": 49,
+        "endLine": 186,
+        "endChar": 50
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33ff3c46_8e2f4ed2",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-27T04:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9403c17c_2ab25080",
       "range": {
         "startLine": 186,
         "startChar": 49,
