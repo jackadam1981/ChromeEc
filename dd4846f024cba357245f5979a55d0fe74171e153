@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59ec2e33_2f844cec",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T20:09:04Z",
+      "side": 1,
+      "message": "Note what it is that would conflict with 0x29?",
+      "range": {
+        "startLine": 171,
+        "startChar": 1,
+        "endLine": 171,
+        "endChar": 13
+      },
+      "revId": "dd4846f024cba357245f5979a55d0fe74171e153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c40cce0_f550cda8",
+        "filename": "driver/usb_mux/anx7451.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-27T20:09:04Z",
+      "side": 1,
+      "message": "Are there any restraints on what this address is, or can it be anything we want that doesn\u0027t conflict?",
+      "range": {
+        "startLine": 53,
+        "startChar": 53,
+        "endLine": 54,
+        "endChar": 73
+      },
+      "revId": "dd4846f024cba357245f5979a55d0fe74171e153",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
