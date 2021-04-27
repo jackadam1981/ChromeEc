@@ -1,0 +1,47 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description:
+    Possible CBI SSFC field values.
+    It has to be defied as grandchild on the "named-cbi-ssfc"
+
+compatible: "named-cbi-ssfc-value"
+
+properties:
+    value:
+        type: int
+        required: true
+        description:
+          Unique value of CBI SSFC field
+    devices:
+        type: phandles
+        required: true
+        description:
+          Pointers to alternative devices which has to be used if
+          CBI SSFC matches the defined value
+
+# Example:
+#
+# cbi-ssfc {
+#     compatible = "named-cbi-ssfc";
+#
+#     base_sensor {
+#         enum-name = "BASE_SENSOR";
+#         size = <3>;
+#         bmi160 {
+#             compatible = "named-cbi-ssfc-value";
+#             status = "okay";
+#
+#             value = <1>;
+#             devices = <&alt_base_accel &alt_base_gyro>;
+#         };
+#         kx022 {
+#             compatible = "named-cbi-ssfc-value";
+#             status = "okay";
+#
+#             value = <3>;
+#             devices = <&base_accel_kx022>;
+#         };
+#     };
+# };
