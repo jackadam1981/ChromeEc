@@ -15,3 +15,71 @@
 		wp-gpios = <&gpio_ec_wp_l>;
 	};
 };
+
+/ {
+	cbi-ssfc {
+		compatible = "named-cbi-ssfc";
+
+		base_sensor {
+			enum-name = "BASE_SENSOR";
+			size = <3>;
+			bmi160 {
+				compatible = "named-cbi-ssfc-value";
+				status = "okay";
+
+				value = <1>;
+				devices = <>;
+			};
+			icm426xx {
+				compatible = "named-cbi-ssfc-value";
+				status = "okay";
+
+				value = <2>;
+				devices = <>;
+			};
+			kx022 {
+				compatible = "named-cbi-ssfc-value";
+				status = "okay";
+
+				value = <3>;
+				devices = <>;
+			};
+		};
+		lid_sensor {
+			enum-name = "LID_SENSOR";
+			size = <3>;
+			bma255 {
+				compatible = "named-cbi-ssfc-value";
+				status = "okay";
+
+				value = <1>;
+				devices = <&lid_accel>;
+			};
+			kx022 {
+				compatible = "named-cbi-ssfc-value";
+				status = "okay";
+
+				value = <2>;
+				devices = <>;
+			};
+		};
+		lightbar {
+			enum-name = "LIGHTBAR";
+			size = <2>;
+			10_led {
+				compatible = "named-cbi-ssfc-value";
+				status = "okay";
+
+				value = <1>;
+				devices = <>;
+			};
+			12_led {
+				compatible = "named-cbi-ssfc-value";
+				status = "okay";
+
+				value = <2>;
+				devices = <>;
+			};
+		};
+	};
+};
