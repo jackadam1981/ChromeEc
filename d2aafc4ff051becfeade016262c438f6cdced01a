@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de2dfe8_3aea877a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-27T06:13:51Z",
+      "side": 1,
+      "message": "I think it\u0027s ok to define CONFIG_SUPPRESSED_HOST_COMMANDS in config.h. I think a consistent behavior is more beneficial.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "d2aafc4ff051becfeade016262c438f6cdced01a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
