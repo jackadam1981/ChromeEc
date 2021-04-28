@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba221dd4_42e6616b",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-28T19:33:53Z",
+      "side": 1,
+      "message": "Done, gotta fix my editor for these ones.",
+      "parentUuid": "0085db10_5739161c",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 16
+      },
+      "revId": "ec832b86b4e7b866e536c3da6bfb6386ae508e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2712dd5_158ded83",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-04-28T15:37:17Z",
       "side": 1,
       "message": "I occasionally see this error.  Can you modify the print to log the return value and the address of the routine that would have been called?\n\nI suspect the kernel is returning -EINVAL indicating that the work item is already getting processed.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "ec832b86b4e7b866e536c3da6bfb6386ae508e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e40d350_59ee8895",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-28T19:33:53Z",
+      "side": 1,
+      "message": "Yeah good idea, done. Let me know if I should change the message format, could not find an obvious \"standard\" one, shows something like this now:\n\n[1.670500 Warning: deferred call not submitted, routine\u003d0x10076441, err\u003d0]\n\nHad to use %08x, looks like %p is not working for some reason.",
+      "parentUuid": "d2712dd5_158ded83",
       "range": {
         "startLine": 42,
         "startChar": 0,
