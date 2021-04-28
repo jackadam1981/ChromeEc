@@ -34,6 +34,24 @@
       "parentUuid": "7f954bc7_159e9ad2",
       "revId": "7c63a6d1edf5b458f6920605efab87c4f0225ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "726b17b0_3bc87de4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-28T23:32:32Z",
+      "side": 1,
+      "message": "When is later?. We have been running with this \u0027problem\u0027 for a while. I worry that here you are introducing a non-CONFIG to the .dts, which might actually complicate things",
+      "parentUuid": "2b184723_ae891460",
+      "revId": "7c63a6d1edf5b458f6920605efab87c4f0225ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
