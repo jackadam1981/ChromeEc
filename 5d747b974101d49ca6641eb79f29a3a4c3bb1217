@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c4e5aa9_5a2ea1ed",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-28T17:42:13Z",
+      "side": 1,
+      "message": "#ifndef GPIO_CCD_MODE_ODL does not work due to the indirect way GPIOs are defined. Instead I define a local variable _GPIO_CCD_MODE_ODL to be either by an extern or GPIO_CCD_MODE_ODL depending whether CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT is defined. This isn\u0027t the cleanest solution, so let me know if you have a better idea.",
+      "parentUuid": "83f50ae5_f76d4b9f",
+      "range": {
+        "startLine": 1607,
+        "startChar": 0,
+        "endLine": 1607,
+        "endChar": 44
+      },
+      "revId": "5d747b974101d49ca6641eb79f29a3a4c3bb1217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2979bb93_11969f1b",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 13
@@ -85,6 +109,30 @@
       "writtenOn": "2021-03-15T19:07:38Z",
       "side": 1,
       "message": "why is this not \"if (IS_ENABLED(CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT))\"?",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 44
+      },
+      "revId": "5d747b974101d49ca6641eb79f29a3a4c3bb1217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2452f554_6689c4c9",
+        "filename": "common/usbc/usbc_task.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-28T17:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2979bb93_11969f1b",
       "range": {
         "startLine": 82,
         "startChar": 0,
