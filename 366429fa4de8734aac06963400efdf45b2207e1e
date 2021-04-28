@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ece031_5f6d2ed9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-04-28T15:37:40Z",
+      "side": 1,
+      "message": "If you can send a CL to update the common code that would be appreciated 😊\n\nI\u0027m not sure where the 0x100 limit came from. I think it\u0027s fine if we remove it.",
+      "parentUuid": "2547ee7b_35ca468e",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "366429fa4de8734aac06963400efdf45b2207e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebf76514_b7949b57",
@@ -211,6 +235,24 @@
       "side": 1,
       "message": "There is no straightforward way to know which bytes are sent together.\nAlternatively, we need to buffer the data in FIFO, analyze the offset filed at each byte to know if it should be grouped or not.\nThis is done in the patch set 3.",
       "parentUuid": "b505989e_4d31b77e",
+      "revId": "366429fa4de8734aac06963400efdf45b2207e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ce39a47_c7dec023",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-04-28T15:37:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d9d3872_b07467bc",
       "revId": "366429fa4de8734aac06963400efdf45b2207e1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
