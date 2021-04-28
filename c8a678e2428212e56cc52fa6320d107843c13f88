@@ -52,6 +52,24 @@
       "parentUuid": "eb398253_a1867872",
       "revId": "c8a678e2428212e56cc52fa6320d107843c13f88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd3162ea_6d38e0c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308774
+      },
+      "writtenOn": "2021-04-28T18:40:21Z",
+      "side": 1,
+      "message": "I expect that it will get picked up by CQ in the next 10-40 minutes, based on propagation of the fixed config.  (See also crrev.com/i/3790990)",
+      "parentUuid": "bd54592b_8b60c3af",
+      "revId": "c8a678e2428212e56cc52fa6320d107843c13f88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
