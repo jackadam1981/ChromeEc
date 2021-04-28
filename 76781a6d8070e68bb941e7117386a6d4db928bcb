@@ -46,6 +46,30 @@
       },
       "revId": "76781a6d8070e68bb941e7117386a6d4db928bcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bd95096_f2919845",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-04-28T06:16:25Z",
+      "side": 1,
+      "message": "yes,rv \u003d raw_read16(chgnum, RAA489000_REG_ADC_VBUS, \u0026val); and rv return 0;",
+      "parentUuid": "bc403b64_c5514eb8",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 12
+      },
+      "revId": "76781a6d8070e68bb941e7117386a6d4db928bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
