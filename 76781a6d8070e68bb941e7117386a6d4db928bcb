@@ -22,6 +22,30 @@
       },
       "revId": "76781a6d8070e68bb941e7117386a6d4db928bcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc403b64_c5514eb8",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-04-28T04:20:21Z",
+      "side": 1,
+      "message": "Did charger_get_vbus_voltage fail?",
+      "parentUuid": "297eeaf6_c78bd7af",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 12
+      },
+      "revId": "76781a6d8070e68bb941e7117386a6d4db928bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
