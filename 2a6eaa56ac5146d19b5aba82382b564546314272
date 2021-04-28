@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4b60afc_ba4b2feb",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-28T15:59:17Z",
+      "side": 1,
+      "message": "that\u0027s the main reason. The RO image doesn\u0027t include any of the TCPM stack.",
+      "parentUuid": "2e94d79e_b287fbd2",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27f3dcb4_ccff2c53",
         "filename": "baseboard/honeybuns/usbc_support.c",
         "patchSetId": 11
@@ -37,6 +61,24 @@
       "writtenOn": "2021-04-27T21:08:45Z",
       "side": 1,
       "message": "I\u0027m not sure I understand \"if (level)\" here.  Should it be \"if (ppc_ocp_count)\"?",
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67297530_9dd2b619",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-28T15:59:17Z",
+      "side": 1,
+      "message": "I am trying to remember my thinking here. The ODM didn\u0027t give any guidance as to when to reset the OCP event. level \u003d\u003d 1 means this port was just attached, so I wanted to make sure this signal is set appropriately.\n\nBut, I think it\u0027s more correct as you point out to make this reset when the detach happens. I modified this to put it in the if (!level) block which makes more sense.",
+      "parentUuid": "27f3dcb4_ccff2c53",
       "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9009bae_e09013df",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-28T15:59:17Z",
+      "side": 1,
+      "message": "yes there isn\u0027t any system to notify, so it\u0027s just a console debug feature.",
+      "parentUuid": "78fcd9d9_376ed4fb",
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ac587cba_5aa77e26",
         "filename": "board/quiche/board.c",
         "patchSetId": 11
@@ -71,6 +131,24 @@
       "writtenOn": "2021-04-27T21:08:45Z",
       "side": 1,
       "message": "Does this take care of the TODO?",
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "085b85e1_78a6bca9",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-28T15:59:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac587cba_5aa77e26",
       "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +166,24 @@
       "writtenOn": "2021-04-27T21:08:45Z",
       "side": 1,
       "message": "Should the GPIO level be !is_overcurrented? Also, does this get called when overcurrent is done or is that not happening, hence the hook?",
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a938553_e685bd40",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-04-28T15:59:17Z",
+      "side": 1,
+      "message": "yes, I think that\u0027s more clear.",
+      "parentUuid": "1d28dfb3_2f780482",
       "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
