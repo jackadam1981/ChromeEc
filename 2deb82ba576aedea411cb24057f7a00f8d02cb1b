@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f9a503_d58f956d",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-28T13:14:41Z",
+      "side": 1,
+      "message": "This is the most interesting point, right now struct init_entry specifies a \"const struct device\" as only possible argument, hence the various extra castings in this patch. Thinking about sending a PR to change it to a more flexible char *user_data. Can work on that in parallel, let me know if you have any opinion against it.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "2deb82ba576aedea411cb24057f7a00f8d02cb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
