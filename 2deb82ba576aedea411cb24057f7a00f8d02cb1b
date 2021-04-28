@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "922a68a1_7ae456df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-28T17:56:31Z",
+      "side": 1,
+      "message": "Do you think Z_STRUCT_SECTION_ITERABLE and Z_STRUCT_SECTION_FOREACH could work?\n\nWe also need to do this for host commands too...",
+      "revId": "2deb82ba576aedea411cb24057f7a00f8d02cb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38f9a503_d58f956d",
