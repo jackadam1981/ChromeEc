@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5499538_345b1778",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-28T13:16:58Z",
+      "side": 1,
+      "message": "I need to rethink and try the idea to see how it works. Can we merge as it is and send a following CL with a proposition of the new structure?",
+      "parentUuid": "d9e3cadf_e86094e5",
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fef116e_6f13bec6",
         "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc-value.yaml",
         "patchSetId": 5
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-27T14:48:10Z",
       "side": 1,
       "message": "This help text should only be listed in one place.  Probably makes most sense in the named-cbi-ssfc",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 3
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fe5af85_a6b487da",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc-value.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-28T13:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fef116e_6f13bec6",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -54,6 +96,30 @@
       "writtenOn": "2021-04-27T14:48:10Z",
       "side": 1,
       "message": "Second Source Factory Cache (SSFC)",
+      "range": {
+        "startLine": 5,
+        "startChar": 17,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba1b3f03_e9f4b701",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-28T13:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d49bea18_693b04ba",
       "range": {
         "startLine": 5,
         "startChar": 17,
@@ -134,6 +200,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f641f664_0767b683",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-28T13:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe5681c8_b31b5447",
+      "range": {
+        "startLine": 12,
+        "startChar": 21,
+        "endLine": 12,
+        "endChar": 30
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0e236f_6f34baa7",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-28T13:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e23e9185_cabbd301",
+      "range": {
+        "startLine": 12,
+        "startChar": 8,
+        "endLine": 12,
+        "endChar": 69
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eae503b_b81e9248",
@@ -183,6 +297,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3a3b252_90873349",
+        "filename": "zephyr/dts/bindings/cbi/named-cbi-ssfc.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-28T13:16:58Z",
+      "side": 1,
+      "message": "The check is hard to do due to lack of NUMBER_OF_CHILDREN macro and an issue with nested DT_FOREACH_CHILD and the defining too small SSFC size is unlikely, so I will leave it as it is.",
+      "parentUuid": "9f1bc432_a3509c88",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a526f11_ef3a3295",
         "filename": "zephyr/shim/include/cbi_ssfc.h",
         "patchSetId": 5
@@ -194,6 +332,30 @@
       "writtenOn": "2021-04-27T14:48:10Z",
       "side": 1,
       "message": "Probably good to add a comment how you\u0027re converting the device tree entries to bit field definitions.  Maybe a snippet of the device tree and the expected union cbi_ssfc output.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a25a49_ec9fd28a",
+        "filename": "zephyr/shim/include/cbi_ssfc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-28T13:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a526f11_ef3a3295",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -227,6 +389,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f19674f_b4c49e53",
+        "filename": "zephyr/shim/include/cbi_ssfc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-28T13:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8886c78_c8747091",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba723af8_92fde4a7",
@@ -240,6 +426,30 @@
       "writtenOn": "2021-04-27T14:56:01Z",
       "side": 1,
       "message": "Add a check that cached_ssfc is a 32-bit value:\n\nBUILD_ASSERT(sizeof(cached_ssfc) \u003d\u003d sizeof(uint32_t));\n\nThis verifies that the compiler didn\u0027t insert any padding and overflow the 32-bit value.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91dbb2e9_c0cb70af",
+        "filename": "zephyr/shim/src/cbi_ssfc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-28T13:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba723af8_92fde4a7",
       "range": {
         "startLine": 17,
         "startChar": 0,
@@ -273,6 +483,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecc54b18_39954246",
+        "filename": "zephyr/shim/src/cbi_ssfc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-28T13:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3b15343_0b7a6ad4",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d941871a_db6c9e95",
@@ -286,6 +520,30 @@
       "writtenOn": "2021-04-27T14:48:10Z",
       "side": 1,
       "message": "%08x  since this is a 32-bit value.",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a033f17e_0a75d124",
+        "filename": "zephyr/shim/src/cbi_ssfc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-28T13:16:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d941871a_db6c9e95",
       "range": {
         "startLine": 50,
         "startChar": 28,
