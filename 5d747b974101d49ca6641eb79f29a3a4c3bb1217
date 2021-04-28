@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea381fea_cac1bb76",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-28T17:52:38Z",
+      "side": 1,
+      "message": "I think the following should give GPIO_CCD_MODE_ODL a value that will be enough to get the compiler to not complain about the parameter and yet will be optimized out if CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT is not defined.\n\n#if !defined(GPIO_CCD_MODE_ODL)\nGEN_NOT_SUPPORTED(GPIO_CCD_MODE_ODL);\n#endif",
+      "parentUuid": "9c4e5aa9_5a2ea1ed",
+      "range": {
+        "startLine": 1607,
+        "startChar": 0,
+        "endLine": 1607,
+        "endChar": 44
+      },
+      "revId": "5d747b974101d49ca6641eb79f29a3a4c3bb1217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2979bb93_11969f1b",
         "filename": "common/usbc/usbc_task.c",
         "patchSetId": 13
