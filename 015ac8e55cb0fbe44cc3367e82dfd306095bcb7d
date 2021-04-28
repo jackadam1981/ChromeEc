@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b23838_12bfa12d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T15:59:07Z",
+      "side": 1,
+      "message": "\"If\"",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 11
+      },
+      "revId": "015ac8e55cb0fbe44cc3367e82dfd306095bcb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "37898296_dee6252a",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-04-28T11:34:11Z",
       "side": 1,
       "message": "Verified +1 according to the bug update.",
+      "revId": "015ac8e55cb0fbe44cc3367e82dfd306095bcb7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa24530f_1c532663",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T15:59:07Z",
+      "side": 1,
+      "message": "Update this comment to note that charget_get_state() returns the last known charge value, so need to also verify the battery is not disconnected.",
+      "range": {
+        "startLine": 503,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 0
+      },
       "revId": "015ac8e55cb0fbe44cc3367e82dfd306095bcb7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
