@@ -127,6 +127,30 @@
       },
       "revId": "ec832b86b4e7b866e536c3da6bfb6386ae508e5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1bd8242_95cc1022",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T19:43:24Z",
+      "side": 1,
+      "message": "The cros-ec cprintf implementation uses \"%pP\" for pointers.  But regular hex format is fine here.",
+      "parentUuid": "1e40d350_59ee8895",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "ec832b86b4e7b866e536c3da6bfb6386ae508e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
