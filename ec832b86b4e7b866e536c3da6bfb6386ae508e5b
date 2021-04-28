@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9afaa94_55a759c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-28T16:13:30Z",
+      "side": 1,
+      "message": "LGTM but waiting for Keith\u0027s comment to resolve before +2. I agree we should log the reason for the failure.",
+      "revId": "ec832b86b4e7b866e536c3da6bfb6386ae508e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0085db10_5739161c",
