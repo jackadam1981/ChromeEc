@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aba20a4_6c1376b8",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-28T23:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "207b1840_a2d8e2f8",
+      "revId": "1679193952ca30b8388ebdc25f14b90ed9aac7b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e0437562_68283c47",
@@ -102,6 +120,24 @@
       "writtenOn": "2021-04-24T01:35:45Z",
       "side": 1,
       "message": "I tried to add in a timeout kind of similar to some other code I saw in the EC firmware.  precharge_timeout is set by the ln9310_precharge_cfly to be 100 ms after a time just before the final I2C operation of the ln9310_precharge_cfly which disables the CFLY PRECHARGE operation.  As long as the SC startup sequence is initiated within 100 ms of, the large CFLY capacitors will not have discharged appreciably.",
+      "revId": "1679193952ca30b8388ebdc25f14b90ed9aac7b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba453e32_86aae543",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-28T23:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0437562_68283c47",
       "revId": "1679193952ca30b8388ebdc25f14b90ed9aac7b9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

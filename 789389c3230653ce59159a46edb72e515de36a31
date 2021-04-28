@@ -845,6 +845,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e527661f_61e03e95",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-28T23:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db691c04_868c722a",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 7
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "943b6664_e4c15dc5",
@@ -906,6 +930,30 @@
       "side": 1,
       "message": "The ln9310_init() is an init. It just does once on EC bootup. You need to add the retry logic. The switching mode should be configured properly.\n\nThe `set_system_power()` just sets the GPIO_SWITCHCAP_ON_L.",
       "parentUuid": "74404e1f_d4089ec8",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 2
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbc1dd32_58e3c143",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-28T23:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "304e0f2c_5a7fbd17",
       "range": {
         "startLine": 434,
         "startChar": 1,
@@ -1081,6 +1129,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "9403c17c_2ab25080",
+      "range": {
+        "startLine": 186,
+        "startChar": 49,
+        "endLine": 186,
+        "endChar": 50
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b327a8b_fb3984af",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-28T23:46:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77f39970_bde5f141",
       "range": {
         "startLine": 186,
         "startChar": 49,

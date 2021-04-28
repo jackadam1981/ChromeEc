@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "972dc1aa_f5504f18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-28T23:46:44Z",
+      "side": 1,
+      "message": "I added the changes discussed last night with Wai-Hong.",
+      "revId": "15b42bdebffc905bb2851d97dfc6cad3cb40f2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4a09c2_746225a6",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-28T23:46:44Z",
+      "side": 1,
+      "message": "I added a loop with a retry count of 3 as discussed with Wai-Hong",
+      "revId": "15b42bdebffc905bb2851d97dfc6cad3cb40f2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "305b1865_5772be24",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-28T23:46:44Z",
+      "side": 1,
+      "message": "If a long interrupt occurs and delays the command setting LN9310_STARTUP_STANDBY_EN\u003d0, then this should detect that after-the-fact and try to abort startup.",
+      "revId": "15b42bdebffc905bb2851d97dfc6cad3cb40f2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aacc7f9_0d14e6eb",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-28T23:46:44Z",
+      "side": 1,
+      "message": "I changed the names here for clarity of function.  Both of these unlock register access but only 0xAA also enables test mode (TM) functionality.  I edited ln9310.c accordingly.",
+      "revId": "15b42bdebffc905bb2851d97dfc6cad3cb40f2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
