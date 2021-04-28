@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e16f32_df5acddd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-28T03:41:07Z",
+      "side": 1,
+      "message": "minor nits, but LGTM otherwise",
+      "revId": "8557e3183e2bf3b1eeefc0af538fb1554b676ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c46586a0_b5aa2e4a",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-28T03:41:07Z",
+      "side": 1,
+      "message": "Is this Power Management?",
+      "range": {
+        "startLine": 212,
+        "startChar": 14,
+        "endLine": 212,
+        "endChar": 16
+      },
+      "revId": "8557e3183e2bf3b1eeefc0af538fb1554b676ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06542e12_5ba511c2",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-28T03:41:07Z",
+      "side": 1,
+      "message": "nit: L66 \"please keep alphabetized\"",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 13
+      },
+      "revId": "8557e3183e2bf3b1eeefc0af538fb1554b676ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
