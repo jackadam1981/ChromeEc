@@ -11,7 +11,8 @@ import zmake.multiproc
 import zmake.util as util
 
 
-def _write_dts_file(dts_file, config_header, output_bin, ro_filename, rw_filename):
+def _write_dts_file(dts_file, config_header, output_bin, ro_filename,
+                    rw_filename, version):
     """Generate the .dts file used for binman.
 
     Args:
@@ -20,10 +21,16 @@ def _write_dts_file(dts_file, config_header, output_bin, ro_filename, rw_filenam
         output_bin: The full path to the binary that binman should output.
         ro_filename: The RO image file name.
         rw_filename: The RW image file name.
+        version: The version string to use in FRID/FWID.
 
     Returns:
         The path to the .dts file that was generated.
     """
+    # Version in FRID/FWID can be at most 31 bytes long (32, minus one
+    # for null character).
+    if len(version) > 31:
+        version = version[:31]
+
     dts_file.write("""
     /dts-v1/;
     #include "{config_header}"
@@ -49,7 +56,7 @@ def _write_dts_file(dts_file, config_header, output_bin, ro_filename, rw_filenam
             RO_FRID {{
               type = "text";
               size = <32>;
-              text = "RO_FRID (not implemented)";
+              text = "{version}";
             }};
           }};
         }};
@@ -64,7 +71,7 @@ def _write_dts_file(dts_file, config_header, output_bin, ro_filename, rw_filenam
           RW_FWID {{
             type = "text";
             size = <32>;
-            text = "RW_FWID (not implemented)";
+            text = "{version}";
           }};
         }};
       }};
@@ -72,7 +79,8 @@ def _write_dts_file(dts_file, config_header, output_bin, ro_filename, rw_filenam
         output_bin=output_bin,
         config_header=config_header,
         ro_filename=ro_filename,
-        rw_filename=rw_filename
+        rw_filename=rw_filename,
+        version=version,
     ))
 
 
@@ -89,7 +97,7 @@ class BasePacker:
         """
         yield 'singleimage', build_config.BuildConfig()
 
-    def pack_firmware(self, work_dir, jobclient):
+    def pack_firmware(self, work_dir, jobclient, version_string=""):
         """Pack a firmware image.
 
         Config names from the configs generator are passed as keyword
@@ -100,6 +108,8 @@ class BasePacker:
             work_dir: A directory to write outputs and temporary files
             into.
             jobclient: A JobClient object to use.
+            version_string: The version string, which may end up in
+               certain parts of the outputs.
 
         Yields:
             2-tuples of the path of each file in the work_dir (or any
@@ -111,13 +121,15 @@ class BasePacker:
 
 class ElfPacker(BasePacker):
     """Raw proxy for ELF output of a single build."""
-    def pack_firmware(self, work_dir, jobclient, singleimage):
+    def pack_firmware(self, work_dir, jobclient, singleimage,
+                      version_string=""):
         yield singleimage / 'zephyr' / 'zephyr.elf', 'zephyr.elf'
 
 
 class RawBinPacker(BasePacker):
     """Raw proxy for zephyr.bin output of a single build."""
-    def pack_firmware(self, work_dir, jobclient, singleimage):
+    def pack_firmware(self, work_dir, jobclient, singleimage,
+                      version_string=""):
         yield singleimage / 'zephyr' / 'zephyr.bin', 'zephyr.bin'
 
 
@@ -136,7 +148,7 @@ class NpcxPacker(BasePacker):
         yield 'ro', build_config.BuildConfig(kconfig_defs={'CONFIG_CROS_EC_RO': 'y'})
         yield 'rw', build_config.BuildConfig(kconfig_defs={'CONFIG_CROS_EC_RW': 'y'})
 
-    def pack_firmware(self, work_dir, jobclient, ro, rw):
+    def pack_firmware(self, work_dir, jobclient, ro, rw, version_string=""):
         """Pack the 'raw' binary.
 
         This combines the RO and RW images as specified in the Kconfig file for
@@ -156,6 +168,7 @@ class NpcxPacker(BasePacker):
             jobclient: The client used to run subprocesses.
             ro: Directory containing the RO image build.
             rw: Directory containing the RW image build.
+            version_string: The version string to use in FRID/FWID.
 
         Returns:
             Tuple mapping the resulting .bin file to the output filename.
@@ -170,7 +183,8 @@ class NpcxPacker(BasePacker):
                 config_header=ro / 'zephyr' / 'include' / 'generated' / 'autoconf.h',
                 output_bin=work_dir / 'zephyr.bin',
                 ro_filename=ro / 'zephyr' / 'zephyr.packed.bin',
-                rw_filename=rw / 'zephyr' / 'zephyr.bin')
+                rw_filename=rw / 'zephyr' / 'zephyr.bin',
+                version=version_string)
 
         proc = jobclient.popen(
             ['binman', '-v', '5', 'build', '-d', dts_file_path, '-m'],
