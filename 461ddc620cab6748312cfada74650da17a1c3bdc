@@ -16,6 +16,24 @@
       "message": "Why is only A0 under control of the USB_PORT_POWER_* configuration, when A1 also has a GPIO?",
       "revId": "461ddc620cab6748312cfada74650da17a1c3bdc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc37225_83f07182",
+        "filename": "board/boten/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2021-04-28T06:57:06Z",
+      "side": 1,
+      "message": "According to the schematic, the power of AP2553FDC-7R comes from PP5000_U, so the EC does not need to make any settings.",
+      "parentUuid": "0721653b_a929cfe5",
+      "revId": "461ddc620cab6748312cfada74650da17a1c3bdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
