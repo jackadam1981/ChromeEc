@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "bee802c1_2879fda8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-28T09:49:42Z",
+      "side": 1,
+      "message": "console command: reboot\nThe memory dump of bbram will be written the flag of\nEC_RESET_FLAG_SOFT after rebooting.",
+      "parentUuid": "44f26c4a_fd778a21",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "96cacb07e36ca79741b0f81342ce54ab5d5b4a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "07e260a1_544fa873",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c283cba6_3b38a1a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-28T09:49:42Z",
+      "side": 1,
+      "message": "Abandon this CL, It has been merged.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2848433",
+      "parentUuid": "9b0a6551_288eec69",
+      "revId": "96cacb07e36ca79741b0f81342ce54ab5d5b4a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17507f74_23a6949e",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-04-23T14:29:26Z",
       "side": 1,
       "message": "what does \"doesn\u0027t binding\" mean?",
+      "range": {
+        "startLine": 22,
+        "startChar": 21,
+        "endLine": 22,
+        "endChar": 36
+      },
+      "revId": "96cacb07e36ca79741b0f81342ce54ab5d5b4a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d331b0d_02bf9150",
+        "filename": "zephyr/shim/chip/it8xxx2/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-04-28T09:49:42Z",
+      "side": 1,
+      "message": "This log message has been modified by Denis. Thanks!",
+      "parentUuid": "17507f74_23a6949e",
       "range": {
         "startLine": 22,
         "startChar": 21,
