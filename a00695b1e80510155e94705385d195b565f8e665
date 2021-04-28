@@ -16,6 +16,24 @@
       "message": "Is there a reason this is done only for delbin?",
       "revId": "a00695b1e80510155e94705385d195b565f8e665",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc686281_39b9aeb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T19:08:05Z",
+      "side": 1,
+      "message": "Delbin needed this because the power management is enabled for all Volteer boards.  Lazor and Hayato should enable MPU as separate CLs.",
+      "parentUuid": "e65b1abf_1eac4459",
+      "revId": "a00695b1e80510155e94705385d195b565f8e665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
