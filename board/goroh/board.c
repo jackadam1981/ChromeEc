@@ -16,14 +16,10 @@
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/als_tcs3400.h"
-#include "driver/bc12/mt6360.h"
-#include "driver/bc12/pi3usb9201.h"
 #include "driver/charger/isl923x.h"
 #include "driver/ppc/syv682x.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/temp_sensor/thermistor.h"
-#include "driver/usb_mux/it5205.h"
-#include "driver/usb_mux/ps8743.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -35,7 +31,6 @@
 #include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
-#include "regulator.h"
 #include "spi.h"
 #include "switch.h"
 #include "tablet_mode.h"
@@ -43,7 +38,6 @@
 #include "temp_sensor.h"
 #include "timer.h"
 #include "uart.h"
-#include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
@@ -185,6 +179,8 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
  * There total three 16 bits clock prescaler registers for all pwm channels,
  * so use the same frequency and prescaler register setting is required if
  * number of pwm channel greater than three.
+ *
+ * TODO(yllin): configure PWM
  */
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_LED1] = {
@@ -199,8 +195,14 @@ const struct pwm_t pwm_channels[] = {
 		.freq_hz = 324, /* maximum supported frequency */
 		.pcfsr_sel = PWM_PRESCALER_C4
 	},
-	[PWM_CH_LED3] = {
+	[PWM_CH_FAN] = {
 		.channel = 2,
+		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.freq_hz = 324, /* maximum supported frequency */
+		.pcfsr_sel = PWM_PRESCALER_C4
+	},
+	[PWM_CH_KB_BL] = {
+		.channel = 3,
 		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
 		.freq_hz = 324, /* maximum supported frequency */
 		.pcfsr_sel = PWM_PRESCALER_C4
@@ -219,31 +221,12 @@ int board_accel_force_mode_mask(void)
 
 static void board_suspend(void)
 {
-	if (board_get_version() >= 3)
-		gpio_set_level(GPIO_EN_5V_USM, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_suspend, HOOK_PRIO_DEFAULT);
 
 static void board_resume(void)
 {
-	if (board_get_version() >= 3)
-		gpio_set_level(GPIO_EN_5V_USM, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_resume, HOOK_PRIO_DEFAULT);
 
-__override int syv682x_board_is_syv682c(int port)
-{
-	return board_get_version() > 2;
-}
 
-#ifdef CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
-enum adc_channel board_get_vbus_adc(int port)
-{
-	if (port == 0)
-		return  ADC_VBUS_C0;
-	if (port == 1)
-		return  ADC_VBUS_C1;
-	CPRINTSUSB("Unknown vbus adc port id: %d", port);
-	return ADC_VBUS_C0;
-}
-#endif /* CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT */
