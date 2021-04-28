@@ -533,6 +533,9 @@ static int ps8805_make_device_id(int port, int *id)
  * identify the chip as A1.
  *
  * See b/159289062.
+ *
+ * The ps8815 A2 reports device ID 0x0001 instead of 0x0003 when
+ * the application firmware block is not recognized!?
  */
 static int ps8815_make_device_id(int port, int *id)
 {
@@ -547,12 +550,16 @@ static int ps8815_make_device_id(int port, int *id)
 				  &val);
 	if (status != EC_SUCCESS)
 		return status;
+
 	switch (val) {
 	case 0x0a00:
 		*id = 1;
 		break;
 	case 0x0a01:
 		*id = 2;
+		break;
+	case 0x0a02:
+		*id = 3;
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;
