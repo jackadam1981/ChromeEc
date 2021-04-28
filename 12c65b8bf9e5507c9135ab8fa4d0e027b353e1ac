@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c747ff2c_cfc702b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-28T23:31:11Z",
+      "side": 1,
+      "message": "I think this test would be better if it replaced the subprocess.run() function and returned the results it wanted...since then it would not rely on git.\n\nBut I\u0027m OK with what you have, if you are keen on it. It does have the potential advantage of checking that git works!",
+      "revId": "12c65b8bf9e5507c9135ab8fa4d0e027b353e1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
