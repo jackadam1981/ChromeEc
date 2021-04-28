@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31ef7f52_6ac94dba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-28T03:51:07Z",
+      "side": 1,
+      "message": "minor nit, but LGRM",
+      "revId": "bf7e08eaab7d3c1d7104ce791e2f513c83679578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9615c131_7ff550d3",
+        "filename": "zephyr/shim/src/adc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-28T03:51:07Z",
+      "side": 1,
+      "message": "nit: I think the \u0027\\\u0027 needs to align with the rest. Run clang-format",
+      "range": {
+        "startLine": 16,
+        "startChar": 33,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "bf7e08eaab7d3c1d7104ce791e2f513c83679578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
