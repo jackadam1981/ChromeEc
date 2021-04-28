@@ -69,6 +69,10 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 			continue;
 
 		mv = ((src_caps[i] >> 10) & 0x3FF) * 50;
+
+		/* Print every src_caps mv*/
+		ccprints("#################### src_caps[%d]_mv = %dmV ####################", i, mv);
+
 		/* Skip invalid voltage */
 		if (!mv)
 			continue;
@@ -153,6 +157,10 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 
 	if (selected_pdo)
 		*selected_pdo = src_caps[ret];
+
+	/* Print selected src_caps mv */
+	mv = ((src_caps[ret] >> 10) & 0x3FF) * 50;
+	ccprints("#################### Selected src_caps[%d]_mv = %dmV ####################", ret, mv);
 
 	return ret;
 }
