@@ -823,6 +823,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db691c04_868c722a",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-28T00:29:06Z",
+      "side": 1,
+      "message": "The interrupt can happen just after the time check (it passes) and before issuing the I2C write. So the I2C write may get delayed.\n\nMore safer is to have 2 time checks. Add a second time check after the I2C write. If the second time check fails, set LN9310_STARTUP_STANDBY_EN\u003d1 at the best effort.",
+      "parentUuid": "c952dc73_5e0788bc",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 7
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "943b6664_e4c15dc5",
         "filename": "driver/ln9310.c",
         "patchSetId": 5
@@ -858,6 +882,30 @@
       "side": 1,
       "message": "If the timeout occurs and `LN9310_STARTUP_STANDBY_EN` is not set to 0, then the entire `ln9310_init()` function should be retried.  I didn\u0027t put an else statement because I thought that if the ln9310 never receives this final command, then it will never enter switching and the higher level `set_system_power` will fail when it doesn\u0027t see `ln9310_power_good`.  I think maybe the retry should be initiated at that higher level (i.e. `set_system_power`) or somewhere similar.  What do you think?",
       "parentUuid": "943b6664_e4c15dc5",
+      "range": {
+        "startLine": 434,
+        "startChar": 1,
+        "endLine": 434,
+        "endChar": 2
+      },
+      "revId": "789389c3230653ce59159a46edb72e515de36a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "304e0f2c_5a7fbd17",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-28T00:29:06Z",
+      "side": 1,
+      "message": "The ln9310_init() is an init. It just does once on EC bootup. You need to add the retry logic. The switching mode should be configured properly.\n\nThe `set_system_power()` just sets the GPIO_SWITCHCAP_ON_L.",
+      "parentUuid": "74404e1f_d4089ec8",
       "range": {
         "startLine": 434,
         "startChar": 1,
