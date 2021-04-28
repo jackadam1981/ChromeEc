@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4aa2890f_d6247fa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-04-28T20:00:00Z",
+      "side": 1,
+      "message": "@ Martin Yan/ Scott Worley: can you please share the mentioined register details here for reference?",
+      "parentUuid": "3d8533f1_37ea6d36",
+      "revId": "9d54a327d8970ad28f465049dea74f35ef39f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34d25a5f_feb420f7",
         "filename": "chip/mchp/espi.c",
         "patchSetId": 12
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-22T22:24:17Z",
       "side": 1,
       "message": "this is a duplicate",
+      "range": {
+        "startLine": 1384,
+        "startChar": 4,
+        "endLine": 1384,
+        "endChar": 32
+      },
+      "revId": "9d54a327d8970ad28f465049dea74f35ef39f0ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "163981c2_777d9d05",
+        "filename": "chip/mchp/espi.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1384,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-04-28T20:00:00Z",
+      "side": 1,
+      "message": "Done.Thanks for pointing out the duplicate. It has to be MCHP_ESPI_CAP1_MAX_FREQ_MASK which is corresponding to espi mode.",
+      "parentUuid": "34d25a5f_feb420f7",
       "range": {
         "startLine": 1384,
         "startChar": 4,
