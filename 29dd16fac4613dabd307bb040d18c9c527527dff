@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e993af11_4fcb0925",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-28T19:48:32Z",
+      "side": 1,
+      "message": "Should this be setting GPIO_USB_HUB_OCP_NOTIFY to 0?",
+      "revId": "29dd16fac4613dabd307bb040d18c9c527527dff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16675d24_d5f72293",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-28T19:48:32Z",
+      "side": 1,
+      "message": "Hmmm, it seems like a shame to duplicate tcpm_set_cc() and tcpm_get_cc(). There\u0027s no way to just pull in the UCPD driver to avoid having multiple locations for the register sets?",
+      "parentUuid": "f4b60afc_ba4b2feb",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 35
+      },
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27f3dcb4_ccff2c53",
         "filename": "baseboard/honeybuns/usbc_support.c",
         "patchSetId": 11
@@ -114,6 +138,24 @@
       "side": 1,
       "message": "yes there isn\u0027t any system to notify, so it\u0027s just a console debug feature.",
       "parentUuid": "78fcd9d9_376ed4fb",
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6e0b6ba_ae484efd",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-28T19:48:32Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c9009bae_e09013df",
       "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -184,6 +226,24 @@
       "side": 1,
       "message": "yes, I think that\u0027s more clear.",
       "parentUuid": "1d28dfb3_2f780482",
+      "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2607679b_4c5c136f",
+        "filename": "board/quiche/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-04-28T19:48:32Z",
+      "side": 1,
+      "message": "Cool.  And is the deferred call needed, or will this function be called again when the overcurrent is done?",
+      "parentUuid": "4a938553_e685bd40",
       "revId": "2a6eaa56ac5146d19b5aba82382b564546314272",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
