@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c268b008_17b3728a",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T19:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "112eb006_53c76415",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 32
+      },
+      "revId": "64563ac60217fdef65aba08b85754241fae6b135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3834aa0c_ddaebd13",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-28T15:22:34Z",
       "side": 1,
       "message": "can these be alphabetized?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 49
+      },
+      "revId": "64563ac60217fdef65aba08b85754241fae6b135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad05f85_103b9f16",
+        "filename": "zephyr/projects/volteer/boards/arm/volteer/volteer.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T19:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3834aa0c_ddaebd13",
       "range": {
         "startLine": 11,
         "startChar": 0,
