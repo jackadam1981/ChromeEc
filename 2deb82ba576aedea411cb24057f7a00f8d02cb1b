@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2169f9bb_4152ce7f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-28T21:34:08Z",
+      "side": 1,
+      "message": "Oh neat I did not consider those. Yeah it\u0027s definitely an option, can\u0027t quite think of obvious advantage of either. SYS_INIT with user_data* feels like less custom stuff to me, think I\u0027ll try to upstream that and see if I get any blocker, it may be useful for other stuff as well.\n\nThanks for pointing out the host command bit, missed those somehow, will look into it.",
+      "parentUuid": "922a68a1_7ae456df",
+      "revId": "2deb82ba576aedea411cb24057f7a00f8d02cb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38f9a503_d58f956d",
@@ -55,6 +73,30 @@
       "side": 1,
       "message": "This seems reasonable to me. My first thought was that it subverts what the init entry was meant for and that you should create a device instance instead which would attach a data_ptr to it (see the definition of DEVICE_DT_DEFINE) but it requires the use of devicetree which doesn\u0027t really make sense here.\n\nI think we should start with upstreaming this then make the local change + cherry-pick.",
       "parentUuid": "38f9a503_d58f956d",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 17
+      },
+      "revId": "2deb82ba576aedea411cb24057f7a00f8d02cb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d136e3_b51bb500",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-28T21:34:08Z",
+      "side": 1,
+      "message": "Yeah I\u0027ll give it a go and see if it goes through. Thanks!",
+      "parentUuid": "6793a5fd_b03cdaa5",
       "range": {
         "startLine": 17,
         "startChar": 0,
