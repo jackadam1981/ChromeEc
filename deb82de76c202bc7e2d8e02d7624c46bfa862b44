@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f75fe16_fd37711c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1245946
+      },
+      "writtenOn": "2021-04-28T16:58:01Z",
+      "side": 1,
+      "message": "I believe cbi_ssfc shouldn\u0027t have any action for motion sense. the cbi_ssfc should only provide the information and the corresponding action should happen in the consumer of that information. so I believe we should move things like changing motion_sensor_t array should be in motionsense_sensors.c. \"cbi_ssfc\" only provides information and others like (\"motionsense_sensors.c\", charger, anything can be second source) consume the information.",
+      "parentUuid": "1ea163b1_365fd782",
+      "revId": "deb82de76c202bc7e2d8e02d7624c46bfa862b44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fef116e_6f13bec6",
