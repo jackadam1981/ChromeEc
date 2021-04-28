@@ -491,10 +491,20 @@ static int ps8xxx_get_chip_info(int port, int live,
 		return rv;
 
 	if (!live) {
-		product_id[port] = board_get_ps8xxx_product_id(port);
-		chip_info->vendor_id = PS8XXX_VENDOR_ID;
-		chip_info->product_id = product_id[port];
+		uint16_t pid;
+
+		pid = board_get_ps8xxx_product_id(port);
+		if (pid == 0)
+			return EC_ERROR_UNKNOWN;
+		product_id[port] = pid;
+		if (chip_info) {
+			chip_info->vendor_id = PS8XXX_VENDOR_ID;
+			chip_info->product_id = product_id[port];
+		}
 	}
+
+	if (chip_info == NULL)
+		return EC_SUCCESS;
 
 	if (chip_info->fw_version_number == 0 ||
 	    chip_info->fw_version_number == -1 || live) {
