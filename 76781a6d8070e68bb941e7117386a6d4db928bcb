@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "297eeaf6_c78bd7af",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-04-28T03:50:41Z",
+      "side": 1,
+      "message": "at initial status, i debug find the vbus_mv \u003d 0,so the program process will not enter the if condition",
+      "range": {
+        "startLine": 114,
+        "startChar": 5,
+        "endLine": 114,
+        "endChar": 12
+      },
+      "revId": "76781a6d8070e68bb941e7117386a6d4db928bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
