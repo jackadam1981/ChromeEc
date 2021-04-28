@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34d448d1_028669c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-04-28T16:08:32Z",
+      "side": 1,
+      "message": "Hello,\n\nhere is an updated version with changes discussed earlier.\n\nConcerning OTP reload sleeps, we tried to find a way to monitor it. But this lead us to a bug instead. MCLK must stay on during all OTP reload procedure for being effective. Thus the rewrite to push switch on/off MCLK outside for MREG read/write. 1 advantage is that now multiple MREG read/write can be done with a single MCLK on/off. But there is no other way than sleeping for this procedure.\n\nFor reducing the global init time, we are now monitoring reset at init with a for loop of 200µs increment. We see a big improvement here going from 1ms sleep to 400µs-600µs instead (sometimes even 200µs, depending on the chip).\n\nBest regards,\nJB",
+      "revId": "b020c4fec7c63f58da7e80fff7ed64afe7bcc66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
