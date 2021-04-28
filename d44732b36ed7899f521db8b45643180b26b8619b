@@ -16,6 +16,23 @@
       "message": "@madhusudanarao - should confirm before removing the disconnect latch flag code.",
       "revId": "d44732b36ed7899f521db8b45643180b26b8619b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1aa38a75_31d63c8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-04-28T06:18:56Z",
+      "side": 1,
+      "message": "Keeping this code is good and can be used for multiple purposes in future. \nThis code makes sure sending disconnect mode to AP. Dark resume enabled case also there will be possibilities of missing disconnect mode if device is plugged-in back immediately in S0ix.\n\nThe current limitation on EC and AP mux mode configuration:\n    -EC PD state machine has to wait until the USB Mux (in AP) configured with the current Mux mode. \n          -i.e.: After configuring the BB Retimer immediately Mux has to be configured\n                 before configuring the BB retimer with next mode.  \n    -We have to resolve this issue with help of Google EC team (long pending issue)\n\nMy suggestion is, please don\u0027t remove the disconnect latch flag code.\n",
+      "revId": "d44732b36ed7899f521db8b45643180b26b8619b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
