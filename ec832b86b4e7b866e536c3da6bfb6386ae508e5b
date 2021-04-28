@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "631f7b54_ce541f6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T15:37:17Z",
+      "side": 1,
+      "message": "I\u0027d also like Jack to review.",
+      "revId": "ec832b86b4e7b866e536c3da6bfb6386ae508e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2712dd5_158ded83",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T15:37:17Z",
+      "side": 1,
+      "message": "I occasionally see this error.  Can you modify the print to log the return value and the address of the routine that would have been called?\n\nI suspect the kernel is returning -EINVAL indicating that the work item is already getting processed.",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "ec832b86b4e7b866e536c3da6bfb6386ae508e5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
