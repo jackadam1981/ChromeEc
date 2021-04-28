@@ -52,34 +52,30 @@ int hook_call_deferred(const struct deferred_data *data, int us);
  */
 struct zephyr_shim_hook_list {
 	void (*routine)(void);
-	int priority;
+	enum hook_priority priority;
+	enum hook_type type;
 	struct zephyr_shim_hook_list *next;
 };
 
 /**
  * Runtime helper for DECLARE_HOOK setup data.
  *
- * @param type		The type of hook.
- * @param routine	The handler for the hook.
- * @param priority	The priority (smaller values are executed first).
- * @param entry		A statically allocated list entry.
+ * @param entry  The statically allocated hook list entry.
  */
-void zephyr_shim_setup_hook(enum hook_type type, void (*routine)(void),
-			    int priority, struct zephyr_shim_hook_list *entry);
+int zephyr_shim_setup_hook(struct zephyr_shim_hook_list *entry);
 
 /**
  * See include/hooks.h for documentation.
  */
 #define DECLARE_HOOK(hooktype, routine, priority) \
 	_DECLARE_HOOK_1(hooktype, routine, priority, __LINE__)
-#define _DECLARE_HOOK_1(hooktype, routine, priority, line) \
-	_DECLARE_HOOK_2(hooktype, routine, priority, line)
-#define _DECLARE_HOOK_2(hooktype, routine, priority, line)                 \
-	static int _setup_hook_##line(const struct device *unused)         \
-	{                                                                  \
-		ARG_UNUSED(unused);                                        \
-		static struct zephyr_shim_hook_list lst;                   \
-		zephyr_shim_setup_hook(hooktype, routine, priority, &lst); \
-		return 0;                                                  \
-	}                                                                  \
-	SYS_INIT(_setup_hook_##line, APPLICATION, 1)
+#define _DECLARE_HOOK_1(_hooktype, _routine, _priority, line) \
+	_DECLARE_HOOK_2(_hooktype, _routine, _priority, line)
+#define _DECLARE_HOOK_2(_hooktype, _routine, _priority, line)      \
+	static struct zephyr_shim_hook_list _hook_lst_##line = {   \
+		.routine = _routine,                               \
+		.priority = _priority,                             \
+		.type = _hooktype,                                 \
+	};                                                         \
+	SYS_INIT_ARG(zephyr_shim_setup_hook, &_hook_lst_##line, \
+			APPLICATION, 1)

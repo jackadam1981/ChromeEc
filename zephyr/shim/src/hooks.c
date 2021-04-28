@@ -52,22 +52,22 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 
 static struct zephyr_shim_hook_list *hook_registry[HOOK_TYPE_COUNT];
 
-void zephyr_shim_setup_hook(enum hook_type type, void (*routine)(void),
-			    int priority, struct zephyr_shim_hook_list *entry)
+int zephyr_shim_setup_hook(struct zephyr_shim_hook_list *entry)
 {
+	enum hook_type type = entry->type;
 	struct zephyr_shim_hook_list **loc = &hook_registry[type];
 
 	/* Find the correct place to put the entry in the registry. */
-	while (*loc && (*loc)->priority < priority)
+	while (*loc && (*loc)->priority < entry->priority)
 		loc = &((*loc)->next);
 
 	/* Setup the entry. */
-	entry->routine = routine;
-	entry->priority = priority;
 	entry->next = *loc;
 
 	/* Insert the entry. */
 	*loc = entry;
+
+	return 0;
 }
 
 void hook_notify(enum hook_type type)
