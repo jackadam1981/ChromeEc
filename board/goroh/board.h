@@ -103,7 +103,8 @@ enum adc_channel {
 enum pwm_channel {
 	PWM_CH_LED1,
 	PWM_CH_LED2,
-	PWM_CH_LED3,
+	PWM_CH_FAN,
+	PWM_CH_KB_BL,
 	PWM_CH_COUNT,
 };
 

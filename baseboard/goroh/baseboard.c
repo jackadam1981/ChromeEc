@@ -66,7 +66,7 @@ static enum board_sub_board board_get_sub_board(void);
 
 /* Wake-up pins for hibernate */
 enum gpio_signal hibernate_wake_pins[] = {
-	GPIO_AC_PRESENT,
+	GPIO_ACOK_OD,
 	GPIO_LID_OPEN,
 	GPIO_POWER_BUTTON_L,
 };
@@ -80,47 +80,17 @@ const struct charger_config_t chg_chips[] = {
 	},
 };
 
-__override void board_hibernate_late(void)
-{
-	/*
-	 * Turn off PP5000_A. Required for devices without Z-state.
-	 * Don't care for devices with Z-state.
-	 */
-	gpio_set_level(GPIO_EN_PP5000_A, 0);
-
-	/*
-	 * GPIO_EN_SLP_Z not implemented in rev0/1,
-	 * fallback to usual hibernate process.
-	 */
-	if (IS_ENABLED(BOARD_GOROH) && board_get_version() <= 1)
-		return;
-
-	isl9238c_hibernate(CHARGER_SOLO);
-
-	gpio_set_level(GPIO_EN_SLP_Z, 1);
-
-	/* should not reach here */
-	__builtin_unreachable();
-}
-
 /* power signal list.  Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
-	{GPIO_PMIC_EC_PWRGD, POWER_SIGNAL_ACTIVE_HIGH, "PMIC_PWR_GOOD"},
-	{GPIO_AP_IN_SLEEP_L, POWER_SIGNAL_ACTIVE_LOW, "AP_IN_S3_L"},
-	{GPIO_AP_EC_WATCHDOG_L, POWER_SIGNAL_ACTIVE_LOW, "AP_WDT_ASSERTED"},
+	/*TODO(yllin): implement ps */
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* Detect subboard */
 static void board_tcpc_init(void)
 {
-	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
-	/* C1: GPIO_USB_C1_PPC_INT_ODL & HDMI: GPIO_PS185_EC_DP_HPD */
-	gpio_enable_interrupt(GPIO_X_EC_GPIO2);
-
-	/* If this is not a Type-C subboard, disable the task. */
-	if (board_get_sub_board() != SUB_BOARD_TYPEC)
-		task_disable_task(TASK_ID_PD_C1);
+	gpio_enable_interrupt(GPIO_USB_C0_FAULT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_FAULT_ODL);
 }
 /* Must be done after I2C and subboard */
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
@@ -131,13 +101,11 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_port = I2C_PORT_PPC0,
 		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
 		.drv = &syv682x_drv,
-		.frs_en = GPIO_USB_C0_FRS_EN,
 	},
 	{
 		.i2c_port = I2C_PORT_PPC1,
 		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
 		.drv = &syv682x_drv,
-		.frs_en = GPIO_USB_C1_FRS_EN,
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
