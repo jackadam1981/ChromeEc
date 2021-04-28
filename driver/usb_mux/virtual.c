@@ -43,10 +43,11 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 	/*
 	 * EC waits for the ACK from kernel indicating that TCSS Mux
 	 * configuration is completed. This mechanism is implemented for
-	 * entering and exiting the safe mode. This is needed to remove
-	 * timing senstivity between BB retimer and TCSS Mux to allow better
-	 * synchronization between them and thereby remain in the same state
-	 * for achieving proper safe state terminations.
+	 * entering, exiting the safe mode and entering the disconnect mode
+	 * This is needed to remove timing senstivity between BB retimer and
+	 * TCSS Mux to allow better synchronization between them and thereby
+	 * remain in the same state for achieving proper safe state
+	 * terminations.
 	 *
 	 * Note: While the EC waits for the ACK, the value of usb_mux_get
 	 * won't match the most recently set value with usb_mux_set.
@@ -54,7 +55,9 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 	if ((!(previous_mux_state & USB_PD_MUX_SAFE_MODE) &&
 	     (mux_state & USB_PD_MUX_SAFE_MODE)) ||
 	   ((previous_mux_state & USB_PD_MUX_SAFE_MODE) &&
-	    !(mux_state & USB_PD_MUX_SAFE_MODE))) {
+	    !(mux_state & USB_PD_MUX_SAFE_MODE)) ||
+	   ((previous_mux_state != USB_PD_MUX_NONE) &&
+	    (mux_state == USB_PD_MUX_NONE))) {
 		/* This should only be called from the PD task */
 		assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
