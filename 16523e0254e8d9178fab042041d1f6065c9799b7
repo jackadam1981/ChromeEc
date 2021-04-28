@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50afd836_563c08ad",
+        "filename": "zephyr/Kconfig.stacks",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T19:08:05Z",
+      "side": 1,
+      "message": "Thanks, done.",
+      "parentUuid": "aa5b9c2a_8fee9fce",
+      "revId": "16523e0254e8d9178fab042041d1f6065c9799b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79092030_78800aed",
@@ -54,6 +72,24 @@
       "writtenOn": "2021-04-28T02:16:48Z",
       "side": 1,
       "message": "Since power management mechanism evolves continuously on Zephyr, the function, pm_policy_low_power_devices(), is deprecated in PR 32592(https://github.com/zephyrproject-rtos/zephyr/pull/32592/commits/725a0ade2ab7859cd5a7b7017ab3839ea2619ace#). We needn\u0027t it after the main version of Zephyr pushes to v2.6.",
+      "revId": "16523e0254e8d9178fab042041d1f6065c9799b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b51e7d_2a61fc52",
+        "filename": "zephyr/shim/chip/npcx/power_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T19:08:05Z",
+      "side": 1,
+      "message": "Thanks, I opened b:186651036 to delete this once we uprev to v2.6.",
+      "parentUuid": "fa41cc3d_74306041",
       "revId": "16523e0254e8d9178fab042041d1f6065c9799b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
