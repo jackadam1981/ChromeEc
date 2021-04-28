@@ -52,6 +52,24 @@
       "parentUuid": "d258f969_b856d78c",
       "revId": "4236275851306ba8ee2074274e32894d5d47f8d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1627860_62523cc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-28T18:52:43Z",
+      "side": 1,
+      "message": "Gotcha, that\u0027s what I thought. I have been considering moving x86 over to using sbs-battery.c driver in the kernel, so they both have access to the smart battery directly and we don\u0027t have to use chromeos-specific host commands everywhere 😊",
+      "parentUuid": "9a0a6c5f_66710eeb",
+      "revId": "4236275851306ba8ee2074274e32894d5d47f8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
