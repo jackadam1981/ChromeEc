@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aa5b9c2a_8fee9fce",
+        "filename": "zephyr/Kconfig.stacks",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-04-28T10:10:46Z",
+      "side": 1,
+      "message": "I\u0027m not sure what\u0027s the current stack size maintenance policy. If it should be close to 70% then it can set to 192.\nkernel stacks:\n0x200c8970 idle 00  (real size 192):  unused 56  usage 136 / 192 (70 %)",
+      "revId": "16523e0254e8d9178fab042041d1f6065c9799b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "79092030_78800aed",
         "filename": "zephyr/include/drivers/cros_system.h",
         "patchSetId": 1
