@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89fd92df_77e8d74d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-28T18:19:33Z",
+      "side": 1,
+      "message": ":( unfortunately this does not work... so CR+2",
+      "parentUuid": "ea381fea_cac1bb76",
+      "range": {
+        "startLine": 1607,
+        "startChar": 0,
+        "endLine": 1607,
+        "endChar": 44
+      },
+      "revId": "5d747b974101d49ca6641eb79f29a3a4c3bb1217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2979bb93_11969f1b",
