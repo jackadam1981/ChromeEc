@@ -14,6 +14,11 @@
 
 #include "common.h"
 
+/* TODO: upstream this */
+#define SYS_INIT_ARG(_init_fn, _init_arg, _level, _prio) \
+	Z_INIT_ENTRY_DEFINE(Z_SYS_NAME(_init_fn), _init_fn, _init_arg, \
+			_level, _prio)
+
 /**
  * The internal data structure stored for a deferred function.
  */
@@ -32,7 +37,7 @@ int hook_call_deferred(const struct deferred_data *data, int us);
  *
  * @param data		The struct deferred_data.
  */
-void zephyr_shim_setup_deferred(const struct deferred_data *data);
+int zephyr_shim_setup_deferred(const struct device *entry);
 
 /**
  * See include/hooks.h for documentation.
@@ -54,20 +59,16 @@ void zephyr_shim_setup_deferred(const struct deferred_data *data);
 		__attribute__((section(DEFERRED_DATA_SECTION))) = {        \
 		.routine = _routine,                                       \
 	};                                                                 \
-	static int _setup_deferred_##_routine(const struct device *unused) \
-	{                                                                  \
-		ARG_UNUSED(unused);                                        \
-		zephyr_shim_setup_deferred(&_routine##_data);              \
-		return 0;                                                  \
-	}                                                                  \
-	SYS_INIT(_setup_deferred_##_routine, APPLICATION, 1)
+	SYS_INIT_ARG(zephyr_shim_setup_deferred, (void *)&_routine##_data, \
+			APPLICATION, 1)
 
 /**
  * Internal linked-list structure used to store hook lists.
  */
 struct zephyr_shim_hook_list {
 	void (*routine)(void);
-	int priority;
+	enum hook_priority priority;
+	enum hook_type type;
 	struct zephyr_shim_hook_list *next;
 };
 
@@ -79,22 +80,20 @@ struct zephyr_shim_hook_list {
  * @param priority	The priority (smaller values are executed first).
  * @param entry		A statically allocated list entry.
  */
-void zephyr_shim_setup_hook(enum hook_type type, void (*routine)(void),
-			    int priority, struct zephyr_shim_hook_list *entry);
+int zephyr_shim_setup_hook(const struct device *entry);
 
 /**
  * See include/hooks.h for documentation.
  */
 #define DECLARE_HOOK(hooktype, routine, priority) \
 	_DECLARE_HOOK_1(hooktype, routine, priority, __LINE__)
-#define _DECLARE_HOOK_1(hooktype, routine, priority, line) \
-	_DECLARE_HOOK_2(hooktype, routine, priority, line)
-#define _DECLARE_HOOK_2(hooktype, routine, priority, line)                 \
-	static int _setup_hook_##line(const struct device *unused)         \
-	{                                                                  \
-		ARG_UNUSED(unused);                                        \
-		static struct zephyr_shim_hook_list lst;                   \
-		zephyr_shim_setup_hook(hooktype, routine, priority, &lst); \
-		return 0;                                                  \
-	}                                                                  \
-	SYS_INIT(_setup_hook_##line, APPLICATION, 1)
+#define _DECLARE_HOOK_1(_hooktype, _routine, _priority, line) \
+	_DECLARE_HOOK_2(_hooktype, _routine, _priority, line)
+#define _DECLARE_HOOK_2(_hooktype, _routine, _priority, line)      \
+	static struct zephyr_shim_hook_list _hook_lst_##line = {   \
+		.routine = _routine,                               \
+		.priority = _priority,                             \
+		.type = _hooktype,                                 \
+	};                                                         \
+	SYS_INIT_ARG(zephyr_shim_setup_hook, (void *)&_hook_lst_##line, \
+			APPLICATION, 1)

@@ -43,12 +43,14 @@ static int init_deferred_work_queue(const struct device *unused)
 }
 SYS_INIT(init_deferred_work_queue, APPLICATION, 0);
 
-void zephyr_shim_setup_deferred(const struct deferred_data *data)
+int zephyr_shim_setup_deferred(const struct device *device)
 {
+	const struct deferred_data *data = (const struct deferred_data *)device;
 	struct deferred_data *non_const = (struct deferred_data *)data;
 
 	k_delayed_work_init(&non_const->delayed_work,
 			    deferred_work_queue_handler);
+	return 0;
 }
 
 int hook_call_deferred(const struct deferred_data *data, int us)
@@ -74,22 +76,24 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 
 static struct zephyr_shim_hook_list *hook_registry[HOOK_TYPE_COUNT];
 
-void zephyr_shim_setup_hook(enum hook_type type, void (*routine)(void),
-			    int priority, struct zephyr_shim_hook_list *entry)
+int zephyr_shim_setup_hook(const struct device *device)
 {
+	struct zephyr_shim_hook_list *entry =
+		(struct zephyr_shim_hook_list *)device;
+	enum hook_type type = entry->type;
 	struct zephyr_shim_hook_list **loc = &hook_registry[type];
 
 	/* Find the correct place to put the entry in the registry. */
-	while (*loc && (*loc)->priority < priority)
+	while (*loc && (*loc)->priority < entry->priority)
 		loc = &((*loc)->next);
 
 	/* Setup the entry. */
-	entry->routine = routine;
-	entry->priority = priority;
 	entry->next = *loc;
 
 	/* Insert the entry. */
 	*loc = entry;
+
+	return 0;
 }
 
 void hook_notify(enum hook_type type)
