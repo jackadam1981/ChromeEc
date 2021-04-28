@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "069e7c4b_3c47e2e0",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-28T05:40:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc00ef59_fff2b80d",
+      "range": {
+        "startLine": 590,
+        "startChar": 1,
+        "endLine": 590,
+        "endChar": 16
+      },
+      "revId": "0960f070a5522da095b51e4448915db14077166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d041b331_7760b65e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-27T15:36:42Z",
       "side": 1,
       "message": "nit: Can you use |\u003d instead. I think it\u0027s more common.",
+      "range": {
+        "startLine": 596,
+        "startChar": 7,
+        "endLine": 596,
+        "endChar": 8
+      },
+      "revId": "0960f070a5522da095b51e4448915db14077166b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0753ac03_4e22ae9e",
+        "filename": "chip/npcx/lpc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-28T05:40:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d041b331_7760b65e",
       "range": {
         "startLine": 596,
         "startChar": 7,
