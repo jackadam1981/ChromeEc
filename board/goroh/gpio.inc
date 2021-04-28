@@ -27,6 +27,8 @@ GPIO_INT(AP_IN_SLEEP_L, PIN(F, 2),
          GPIO_INT_BOTH | GPIO_PULL_DOWN | GPIO_SEL_1P8V, power_signal_interrupt)
 
 /* Sensor Interrupts */
+GPIO_INT(BASE_IMU_INT_L,     PIN(M, 2), GPIO_INT_FALLING | GPIO_SEL_1P8V,
+         bmi160_interrupt)
 GPIO_INT(LID_ACCEL_INT_L,    PIN(G, 0), GPIO_INT_FALLING | GPIO_SEL_1P8V,
          lis2dw12_interrupt)
 
@@ -79,18 +81,15 @@ GPIO(EN_PP1800_VDDIO_PMC_X,    PIN(B, 7), GPIO_OUT_LOW)
 GPIO(EC_INT_L,               PIN(E, 6), GPIO_ODR_HIGH | GPIO_SEL_1P8V) /* EC_AP_INT_ODL */
 
 /* USB and USBC Signals */
-GPIO(DP_AUX_PATH_SEL,        PIN(G, 0), GPIO_OUT_HIGH)
 GPIO(USB_C0_HPD_3V3,         PIN(J, 0), GPIO_OUT_LOW)
 GPIO(USB_C1_HPD_3V3,         PIN(J, 1), GPIO_OUT_LOW)
 GPIO(USB_C1_HPD_IN,          PIN(J, 2), GPIO_INT_FALLING)
 GPIO(EN_USB_C1_MUX_PWR,      PIN(F, 0), GPIO_OUT_LOW)
 GPIO(USB_C0_SBU1_DC,         PIN(H, 4), GPIO_OUT_LOW)
 GPIO(USB_C0_SBU2_DC,         PIN(H, 5), GPIO_OUT_LOW)
-GPIO(USB_C1_FAULT_ODL,       PIN(B, 1), GPIO_ODR_HIGH)
 
 /* Misc Signals */
 GPIO(EC_BATT_PRES_ODL,       PIN(C, 0), GPIO_INPUT)
-GPIO(BC12_DET_EN,            PIN(J, 5), GPIO_OUT_LOW) /* EN_USB_C0_BC12_DET */
 GPIO(ENTERING_RW,            PIN(C, 5), GPIO_OUT_LOW) /* EC_ENTERING_RW */
 GPIO(FAN_SPEED_TACH_1,       PIN(D, 6), GPIO_INPUT)
 GPIO(EN_EC_ID_ODL,           PIN(C, 3), GPIO_OUT_LOW)
@@ -136,9 +135,8 @@ ALTERNATE(PIN_MASK(M, 0x33), 0, MODULE_SPI, 0) /* SPI */
 
 /* Unimplemented Pins  */
 
-/* b/160218054: behavior not defined */
 /* *_ODL pin has external pullup so don't pull it down. */
-GPIO(EN_PP3000_SD_U,         PIN(G, 1), GPIO_INPUT | GPIO_PULL_DOWN | GPIO_SEL_1P8V)
+
 /* reserved for future use */
 GPIO(CCD_MODE_ODL,           PIN(C, 4), GPIO_INPUT)
 /*
@@ -149,10 +147,9 @@ GPIO(NC_GPI7,                PIN(I, 7), GPIO_OUT_LOW)
 /* NC pins, enable internal pull-up/down to avoid floating state. */
 GPIO(SPI_CLK_GPG6,           PIN(G, 6), GPIO_INPUT | GPIO_PULL_UP)
 /*
- * These 4 pins don't have internal pull-down capability,
+ * These 3 pins don't have internal pull-down capability,
  * so we set them as output low.
  */
-GPIO(NC_GPG3,                PIN(G, 3), GPIO_OUT_LOW)
 GPIO(SPI_MOSI_GPG4,          PIN(G, 4), GPIO_OUT_LOW)
 GPIO(SPI_MISO_GPG5,          PIN(G, 5), GPIO_OUT_LOW)
 GPIO(SPI_CS_GPG7,            PIN(G, 7), GPIO_OUT_LOW)
