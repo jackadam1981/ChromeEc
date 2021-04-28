@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f4d84b_df90c01c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-28T20:25:09Z",
+      "side": 1,
+      "message": "This CL is building and requests via i2c shell for \"i2c scan I2C_0\" makes I2C requests but i2c_transaction in main/v2.5/drivers/i2c/i2c_ite_it8xxx2.c gives a data-\u003eerr of 8 (HOSTA_BSER) on line 669.  Any help from ITE would be appreciated.",
+      "revId": "af7d8d982ae62b682e451c11a46794d6e3e71ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
