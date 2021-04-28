@@ -34,6 +34,24 @@
       "parentUuid": "ff24a413_760db991",
       "revId": "4236275851306ba8ee2074274e32894d5d47f8d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a0a6c5f_66710eeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-28T00:05:07Z",
+      "side": 1,
+      "message": "Hi Tim,\n\nARM devices directly talk to the (smart) battery over i2c. So, I resort to the host command to have unified implementation for both. The counter part of powerd is crrev.com/c/2853269.",
+      "parentUuid": "d258f969_b856d78c",
+      "revId": "4236275851306ba8ee2074274e32894d5d47f8d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
