@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2eeb567_936f7348",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T19:08:05Z",
+      "side": 1,
+      "message": "Yes, Zephyr provides this config to enable power management: CONFIG_PM.",
+      "parentUuid": "c46586a0_b5aa2e4a",
+      "range": {
+        "startLine": 212,
+        "startChar": 14,
+        "endLine": 212,
+        "endChar": 16
+      },
+      "revId": "8557e3183e2bf3b1eeefc0af538fb1554b676ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "06542e12_5ba511c2",
         "filename": "zephyr/Kconfig",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-28T03:41:07Z",
       "side": 1,
       "message": "nit: L66 \"please keep alphabetized\"",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 13
+      },
+      "revId": "8557e3183e2bf3b1eeefc0af538fb1554b676ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53bc9316_45014da6",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-28T19:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06542e12_5ba511c2",
       "range": {
         "startLine": 210,
         "startChar": 0,
