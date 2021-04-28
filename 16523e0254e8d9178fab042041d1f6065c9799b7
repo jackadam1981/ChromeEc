@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79092030_78800aed",
+        "filename": "zephyr/include/drivers/cros_system.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-28T03:57:15Z",
+      "side": 1,
+      "message": "Copy paste?",
+      "range": {
+        "startLine": 87,
+        "startChar": 10,
+        "endLine": 87,
+        "endChar": 53
+      },
+      "revId": "16523e0254e8d9178fab042041d1f6065c9799b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fa41cc3d_74306041",
         "filename": "zephyr/shim/chip/npcx/power_policy.c",
         "patchSetId": 1
