@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb8a048_dc78dd35",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-28T14:00:43Z",
+      "side": 0,
+      "message": "note: this matches the current value CONFIG_SYSTEM_WORKQUEUE_PRIORITY",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 32
+      },
+      "revId": "eb99181ae5d51337db8f77ce57f014e6c153173a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
