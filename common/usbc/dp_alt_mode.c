@@ -16,6 +16,7 @@
 #include "usb_dp_alt_mode.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "usb_mux.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -268,6 +269,7 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 			return -1;
 
 		usb_mux_set_safe_mode_exit(port);
+		usb_mux_set_disconnect_latch_flag(port, true);
 
 		vdm[0] = VDO(USB_SID_DISPLAYPORT,
 			     1, /* structured */
