@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4527ba49_fff9ab69",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-28T23:05:50Z",
+      "side": 1,
+      "message": "Oops. Thanks.",
+      "parentUuid": "d93568cf_080d5657",
+      "range": {
+        "startLine": 121,
+        "startChar": 13,
+        "endLine": 121,
+        "endChar": 36
+      },
+      "revId": "b0f850312a7c7cad81711659c62a5d46a90adca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86ee1597_e2c4ffc6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-27T20:54:06Z",
       "side": 1,
       "message": "shfmt doesn\u0027t like the extra spaces: http://shortn/_fxOFX4cMbx",
+      "range": {
+        "startLine": 291,
+        "startChar": 26,
+        "endLine": 291,
+        "endChar": 28
+      },
+      "revId": "b0f850312a7c7cad81711659c62a5d46a90adca9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dbd9b99_e2e42c7e",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-28T23:05:50Z",
+      "side": 1,
+      "message": "Roger.",
+      "parentUuid": "86ee1597_e2c4ffc6",
       "range": {
         "startLine": 291,
         "startChar": 26,
