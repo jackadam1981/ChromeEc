@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4716e08d_70503542",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-04-28T17:02:43Z",
+      "side": 1,
+      "message": "This will cause the charger state not to toggle when the chipset comes out of suspend, and the  battery was near full but is now in cutoff. At that time, the ISL9241 may be stuck in CCM as described in the existing comment.\n\nI believe that this function will next be called when the battery comes out of cutoff, and it will toggle the charger state at that time. Therefore, there shouldn\u0027t be any period of time when the ISL9241 is in CCM inappropriately, and it matters.",
+      "revId": "0cd459fad0b94f77e271cc639109795c6c2db921",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
