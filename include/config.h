@@ -3232,6 +3232,9 @@
  */
 #define CONFIG_PORT80_PRINT_IN_INT 0
 
+/* Allow Port80 common layer to dump 4-byte Port80 code */
+#undef CONFIG_PORT80_4_BYTE
+
 /* MAX695x 7 segment driver */
 #undef CONFIG_MAX695X_SEVEN_SEGMENT_DISPLAY
 
