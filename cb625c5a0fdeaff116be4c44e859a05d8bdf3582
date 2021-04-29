@@ -70,6 +70,30 @@
       },
       "revId": "cb625c5a0fdeaff116be4c44e859a05d8bdf3582",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5887729e_b99c62a1",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-29T22:12:14Z",
+      "side": 1,
+      "message": "I think the #ifdef here is better.  Note that this code may not even be needed.  Nuvoton made changes that speed up the hash calculation so we may no longer trip the watchdog here.  b:182499153 is on my list to verify this and remove CONFIG_VBOOT_HASH_RELOAD_WATCHDOG.",
+      "parentUuid": "8d71e68f_ccc0574d",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "cb625c5a0fdeaff116be4c44e859a05d8bdf3582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
