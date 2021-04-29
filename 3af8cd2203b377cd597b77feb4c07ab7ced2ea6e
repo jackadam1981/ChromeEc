@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd4544c2_7b942ea6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-04-29T05:44:56Z",
+      "side": 1,
+      "message": "I\u0027m getting a bunch of warnings from this patch, Fabio do you mind adding a TODO to your checklist to clean it?\n\n2021-04-28 23:38:16,967 - Zmake/ERROR: /mnt/host/source/src/platform/ec/zephyr/shim/src/hooks.c: In function \u0027hook_call_deferred\u0027:\n2021-04-28 23:38:16,967 - Zmake/ERROR: /mnt/host/source/src/platform/ec/zephyr/shim/src/hooks.c:43:5: warning: format \u0027%x\u0027 expects argument of type \u0027unsigned int\u0027, but argument 3 has type \u0027void (*)(void)\u0027 [-Wformat\u003d]\n2021-04-28 23:38:16,967 - Zmake/ERROR: \"Warning: deferred call not submitted, \"\n2021-04-28 23:38:16,968 - Zmake/ERROR: ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n2021-04-28 23:38:16,968 - Zmake/ERROR: /mnt/host/source/src/platform/ec/zephyr/shim/src/hooks.c:45:5:\n2021-04-28 23:38:16,968 - Zmake/ERROR: non_const-\u003eroutine, rv);\n2021-04-28 23:38:16,968 - Zmake/ERROR: ~~~~~~~~~~~~~~~~~~\n2021-04-28 23:38:16,968 - Zmake/ERROR: /mnt/host/source/src/platform/ec/zephyr/shim/src/hooks.c:44:19: note: format string is defined here\n2021-04-28 23:38:16,968 - Zmake/ERROR: \"routine\u003d0x%08x, err\u003d%d\",\n2021-04-28 23:38:16,968 - Zmake/ERROR: ~~~^\n2021-04-28 23:38:17,300 - Zmake/ERROR: /mnt/host/source/src/platform/ec/zephyr/shim/src/hooks.c: In function \u0027hook_call_deferred\u0027:\n2021-04-28 23:38:17,300 - Zmake/ERROR: /mnt/host/source/src/platform/ec/zephyr/shim/src/hooks.c:43:5: warning: format \u0027%x\u0027 expects argument of type \u0027unsigned int\u0027, but argument 3 has type \u0027void (*)(void)\u0027 [-Wformat\u003d]\n2021-04-28 23:38:17,300 - Zmake/ERROR: \"Warning: deferred call not submitted, \"\n2021-04-28 23:38:17,300 - Zmake/ERROR: ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n2021-04-28 23:38:17,300 - Zmake/ERROR: /mnt/host/source/src/platform/ec/zephyr/shim/src/hooks.c:45:5:\n2021-04-28 23:38:17,301 - Zmake/ERROR: non_const-\u003eroutine, rv);\n2021-04-28 23:38:17,301 - Zmake/ERROR: ~~~~~~~~~~~~~~~~~~\n2021-04-28 23:38:17,301 - Zmake/ERROR: /mnt/host/source/src/platform/ec/zephyr/shim/src/hooks.c:44:19: note: format string is defined here\n2021-04-28 23:38:17,301 - Zmake/ERROR: \"routine\u003d0x%08x, err\u003d%d\",\n2021-04-28 23:38:17,301 - Zmake/ERROR: ~~~^",
+      "revId": "3af8cd2203b377cd597b77feb4c07ab7ced2ea6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
