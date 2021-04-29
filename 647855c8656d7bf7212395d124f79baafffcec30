@@ -16,6 +16,52 @@
       "message": "Added more comments and updated \u0027battery\u0027 command to print full factor and shutdown pct.",
       "revId": "647855c8656d7bf7212395d124f79baafffcec30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "482d094e_3d669c57",
+        "filename": "common/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-29T21:44:34Z",
+      "side": 1,
+      "message": "nit: pick either `*` or `x` for multiplication",
+      "range": {
+        "startLine": 643,
+        "startChar": 6,
+        "endLine": 655,
+        "endChar": 43
+      },
+      "revId": "647855c8656d7bf7212395d124f79baafffcec30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d690539_95bacb81",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-04-29T21:44:34Z",
+      "side": 1,
+      "message": "Nice, this is a great picture 👍",
+      "range": {
+        "startLine": 650,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 28
+      },
+      "revId": "647855c8656d7bf7212395d124f79baafffcec30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
