@@ -52,6 +52,24 @@
       "parentUuid": "2b184723_ae891460",
       "revId": "7c63a6d1edf5b458f6920605efab87c4f0225ee8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f39f9874_033b3727",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-29T16:52:24Z",
+      "side": 1,
+      "message": "I can refactor this to use -a now if we want for version only...\n\nultimately I wonder if we can drop the dts entirely and if binman can expose a Python API for this.",
+      "parentUuid": "726b17b0_3bc87de4",
+      "revId": "7c63a6d1edf5b458f6920605efab87c4f0225ee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
