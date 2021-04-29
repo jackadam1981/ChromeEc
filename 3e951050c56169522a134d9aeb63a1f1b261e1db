@@ -46,6 +46,30 @@
       },
       "revId": "3e951050c56169522a134d9aeb63a1f1b261e1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63bf0e51_3c0fa09f",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-29T21:38:18Z",
+      "side": 1,
+      "message": "I\u0027m partial to running addr2line, but as long as the deferred_data resolves to an easily identifiable symbol, I\u0027m good with it.",
+      "parentUuid": "6e47bf0d_7005d36f",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "3e951050c56169522a134d9aeb63a1f1b261e1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
