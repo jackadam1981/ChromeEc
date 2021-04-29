@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eddb750f_87ed95cb",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-04-29T06:55:45Z",
+      "side": 1,
+      "message": "i think this would be better done as a board_id macro\nor helper function that extracts the board_id field from\nthe board_get_version() return value.",
+      "revId": "593567b8252419285486956f9de0cbf581633615",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
