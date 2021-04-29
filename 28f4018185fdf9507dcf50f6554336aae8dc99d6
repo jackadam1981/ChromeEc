@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2740e70_e1c21530",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-29T13:17:42Z",
+      "side": 1,
+      "message": "If we make this a typedef, e.g. port80_code_t, then it can also be used for last_boot, and in the functions below.",
+      "revId": "28f4018185fdf9507dcf50f6554336aae8dc99d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abf7236e_b4c5f984",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3235,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-29T13:17:42Z",
+      "side": 1,
+      "message": "Please mention this is currently only supported on npcx9 chipsets.",
+      "revId": "28f4018185fdf9507dcf50f6554336aae8dc99d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5978661_4d42dadd",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3236,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-04-29T13:17:42Z",
+      "side": 1,
+      "message": "This needs to be added to the zephyr kconfig as well. Check compile time warnings/errors.",
+      "revId": "28f4018185fdf9507dcf50f6554336aae8dc99d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
