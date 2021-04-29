@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88bea261_b8e496e8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-29T23:15:18Z",
+      "side": 1,
+      "message": "I think this approach is ok. It would be nice if we could also return a useful error code on the commands themselves. The main reason is that we have some additional utilities outside of biod that can run EC commands. Specifically, \"ectool\" (https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/ectool.c) is used for debugging and testing (factory tests and Tast tests: https://chromium.googlesource.com/chromiumos/platform/tast-tests/+/refs/heads/main/src/chromiumos/tast/remote/firmware/fingerprint/fingerprint.go#939). It would be nice to be able to detect the issue when using ectool.",
+      "revId": "856520c30822dd249b5fd30b7f12020bd6cda057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "829516a1_3090c3c8",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-29T23:15:18Z",
+      "side": 1,
+      "message": "Technically it may not be a reset (it could be first boot). Maybe call it \"EC_MKBP_FP_MCU_BOOT\" or \"EC_MKBP_FP_MCU_TASK_STARTED\".",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 39
+      },
+      "revId": "856520c30822dd249b5fd30b7f12020bd6cda057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
