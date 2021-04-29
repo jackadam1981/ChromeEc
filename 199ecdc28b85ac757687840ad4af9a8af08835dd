@@ -16,6 +16,24 @@
       "message": "+2, but also see http://b/186697064#comment2. Just want to make sure I understand what these images actually are, but we\u0027ll find out when this change lands.",
       "revId": "199ecdc28b85ac757687840ad4af9a8af08835dd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c656014d_cc26fbb9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-29T18:09:23Z",
+      "side": 1,
+      "message": "Right. I figured the overhead to learn what these boards \"are\" through tests was pretty low compared to the research. Will revert is there is a grave misunderstanding.",
+      "parentUuid": "5abe4384_b789e273",
+      "revId": "199ecdc28b85ac757687840ad4af9a8af08835dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
