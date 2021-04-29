@@ -3,7 +3,6 @@
  * found in the LICENSE file.
  */
 
-#include "atomic.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include "compile_time_macros.h"
@@ -91,6 +90,13 @@ void usb_retimer_fw_update_process_op_cb(int port)
 {
 	switch (last_op) {
 	case USB_RETIMER_FW_UPDATE_SUSPEND_PD:
+		/*
+		 * Do not perform retimer firmware update process
+		 * if battery is not present, or battery level is low.
+		 */
+		if (!pd_firmware_upgrade_check_power_readiness(port))
+			break;
+
 		/*
 		 * If the port has entered low power mode, the PD task
 		 * is paused and will not complete processing of
