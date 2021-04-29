@@ -3,9 +3,10 @@
  * found in the LICENSE file.
  */
 
-#include "atomic.h"
 #include <stdbool.h>
 #include <stdint.h>
+#include "atomic.h"
+#include "battery.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "hooks.h"
@@ -81,6 +82,23 @@ int usb_retimer_fw_update_get_result(void)
 	return result;
 }
 
+static bool is_retimer_fw_update_operable(void)
+{
+	struct batt_params batt = { 0 };
+
+	battery_get_params(&batt);
+	batt.state_of_charge = 7;
+	if (batt.is_present != BP_YES ||
+		batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE ||
+		batt.state_of_charge <= BATTERY_LEVEL_LOW) {
+		CPRINTS("Cannot suspend for retimer update, not "
+			"enough battery");
+		return false;
+	}
+
+	return true;
+}
+
 static void deferred_pd_suspend(void)
 {
 	pd_set_suspend(cur_port, SUSPEND);
@@ -91,6 +109,13 @@ void usb_retimer_fw_update_process_op_cb(int port)
 {
 	switch (last_op) {
 	case USB_RETIMER_FW_UPDATE_SUSPEND_PD:
+		/*
+		 * Retimer firmware update is not allowed if battery
+		 * is not present, or battery level is low.
+		 */
+		if (!is_retimer_fw_update_operable())
+			break;
+
 		/*
 		 * If the port has entered low power mode, the PD task
 		 * is paused and will not complete processing of
