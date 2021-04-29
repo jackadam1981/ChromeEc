@@ -20,7 +20,6 @@
 
 /* TODO(waihong): Remove the following bringup features */
 #define CONFIG_BRINGUP
-#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands. */
 #define CONFIG_USB_PD_DEBUG_LEVEL 3
 #define CONFIG_CMD_GPIO_EXTENDED
 #define CONFIG_CMD_POWERINDEBUG
