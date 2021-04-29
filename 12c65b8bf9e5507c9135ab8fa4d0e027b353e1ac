@@ -16,6 +16,24 @@
       "message": "I think this test would be better if it replaced the subprocess.run() function and returned the results it wanted...since then it would not rely on git.\n\nBut I\u0027m OK with what you have, if you are keen on it. It does have the potential advantage of checking that git works!",
       "revId": "12c65b8bf9e5507c9135ab8fa4d0e027b353e1ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a68aeb30_49ebe05a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-29T14:54:26Z",
+      "side": 1,
+      "message": "I thought about mocking here. But yeah, what you said ... this actually ensures that Git is spitting out the right number of commits for the command we run. That ends up untested if we mock out the subprocess.run calls.",
+      "parentUuid": "c747ff2c_cfc702b4",
+      "revId": "12c65b8bf9e5507c9135ab8fa4d0e027b353e1ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
