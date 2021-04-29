@@ -16,6 +16,24 @@
       "message": "Jack,\nWhat does this mean?\n\n2021-04-28 09:26:38,860 - Zmake/INFO: \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d FAILURES \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n2021-04-28 09:26:38,860 - Zmake/INFO: _________________________ test_popen_cmake_no_kconfig __________________________\n2021-04-28 09:26:38,860 - Zmake/INFO: @hypothesis.given(build_configs_no_kconfig, paths, paths)\n2021-04-28 09:26:38,860 - Zmake/INFO: \u003e   def test_popen_cmake_no_kconfig(conf, project_dir, build_dir):\n2021-04-28 09:26:38,860 - Zmake/INFO: E   hypothesis.errors.FailedHealthCheck: Data generation is extremely slow: Only produced 9 valid examples in 1.02 seconds (0 invalid ones and 9 exceeded maximum size). Try decreasing size of the data you\u0027re generating (with e.g.max_size or max_leaves parameters).\n2021-04-28 09:26:38,861 - Zmake/INFO: E   See https://hypothesis.readthedocs.io/en/latest/healthchecks.html for more information about this. If you want to disable just this health check, add HealthCheck.too_slow to the suppress_health_check settings for this test.\n2021-04-28 09:26:38,861 - Zmake/INFO: ../platform/ec/zephyr/zmake/tests/test_build_config.py:133: FailedHealthCheck\n2021-04-28 09:26:38,861 - Zmake/INFO: ---------------------------------- Hypothesis ----------------------------------\n2021-04-28 09:26:38,861 - Zmake/INFO: You can add @seed(43953776319907230407364883382201486764) to this test or run pytest with --hypothesis-seed\u003d43953776319907230407364883382201486764 to reproduce this failure.\n2021-04-28 09:26:38,870 - Zmake/INFO: ../platform/ec/zephyr/zmake/tests/test_project.py::test_find_projects PASSED [100%]\n2021-04-28 09:26:38,917 - Zmake/INFO: \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d 1 failed, 3 passed in 41.32 seconds \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n2021-04-28 09:26:38,917 - Zmake/ERROR: Execution failed (return code\u003d1): pytest --verbose /mnt/host/source/src/platform/ec/zephyr/zmake/tests/test_build_config.py\n",
       "revId": "17966c917b0499bc909f1ec00374650b9edfb4a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef5888c4_b831b184",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-29T02:05:10Z",
+      "side": 1,
+      "message": "It\u0027s a deadline-exceeded error. We probably need to bump the deadline ... the CQ builders can stall the CPU for quite a while sometimes (this test that takes \u003c1sec on my machine indicates it was killed at 41.32 seconds in the CQ!).",
+      "parentUuid": "2a114665_00da34c0",
+      "revId": "17966c917b0499bc909f1ec00374650b9edfb4a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
