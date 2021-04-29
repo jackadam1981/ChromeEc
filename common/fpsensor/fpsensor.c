@@ -212,6 +212,9 @@ void fp_task(void)
 	/* Reset and initialize the sensor IC */
 	fp_sensor_init();
 
+	/* Inform AP that FPMCU restarted */
+	send_mkbp_event(EC_MKBP_FP_MCU_RESET);
+
 	while (1) {
 		uint32_t evt;
 		enum finger_state st = FINGER_NONE;
