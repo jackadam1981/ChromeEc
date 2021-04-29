@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66b3d815_a3298dcc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-04-29T20:05:00Z",
+      "side": 1,
+      "message": "Also, boards without KEYSCAN task that were selecting `CONFIG_KEYBOARD_PROTOCOL_MKBP` are now updated to select `CONFIG_MKBP_INPUT_DEVICES`.",
+      "revId": "ff54d7f27b51724e655826c99eb43f87d0ba7a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
