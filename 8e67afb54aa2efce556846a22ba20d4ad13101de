@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87d52f3b_228af029",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-29T13:51:07Z",
+      "side": 1,
+      "message": "%p does not seem to work with the current printf implementation, in my runs it was truncating the message. Sent http://crrev.com/c/2858967 earlier this morning to cast the pointer to integer explicitly.",
+      "range": {
+        "startLine": 44,
+        "startChar": 13,
+        "endLine": 44,
+        "endChar": 15
+      },
+      "revId": "8e67afb54aa2efce556846a22ba20d4ad13101de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
