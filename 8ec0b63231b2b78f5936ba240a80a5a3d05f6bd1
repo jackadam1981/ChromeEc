@@ -16,6 +16,40 @@
       "message": "this is ready for review",
       "revId": "8ec0b63231b2b78f5936ba240a80a5a3d05f6bd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e36072c8_f0215e10",
+        "filename": "driver/usb_mux/anx3443.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-29T07:21:25Z",
+      "side": 1,
+      "message": "add RETURN_ERROR?",
+      "revId": "8ec0b63231b2b78f5936ba240a80a5a3d05f6bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342de1e9_b73111b2",
+        "filename": "driver/usb_mux/anx3443.c",
+        "patchSetId": 20
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-04-29T07:21:25Z",
+      "side": 1,
+      "message": "Add RETURN_ERROR as well?",
+      "revId": "8ec0b63231b2b78f5936ba240a80a5a3d05f6bd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
