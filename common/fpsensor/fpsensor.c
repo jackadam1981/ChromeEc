@@ -212,6 +212,14 @@ void fp_task(void)
 	/* Reset and initialize the sensor IC */
 	fp_sensor_init();
 
+	/*
+	 * Inform AP that FPMCU booted. If boot happened when ChromeOS is
+	 * running, biometrics daemon (biod) will receive this event. Otherwise
+	 * this event will be lost. This mechanism was intended to detect
+	 * FPMCU reboots during runtime.
+	 */
+	send_mkbp_event(EC_MKBP_FP_MCU_BOOT);
+
 	while (1) {
 		uint32_t evt;
 		enum finger_state st = FINGER_NONE;

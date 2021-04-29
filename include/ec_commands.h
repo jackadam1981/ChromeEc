@@ -3893,6 +3893,7 @@ struct ec_response_keyboard_factory_test {
 #define EC_MKBP_FP_MATCH_IDX_MASK 0x0000F000
 #define EC_MKBP_FP_MATCH_IDX(fpe) (((fpe) & EC_MKBP_FP_MATCH_IDX_MASK) \
 					 >> EC_MKBP_FP_MATCH_IDX_OFFSET)
+#define EC_MKBP_FP_MCU_BOOT             BIT(26)
 #define EC_MKBP_FP_ENROLL               BIT(27)
 #define EC_MKBP_FP_MATCH                BIT(28)
 #define EC_MKBP_FP_FINGER_DOWN          BIT(29)
