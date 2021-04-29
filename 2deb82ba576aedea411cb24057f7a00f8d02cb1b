@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aed8fec_ddabcf28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-29T10:05:44Z",
+      "side": 1,
+      "message": "Hey I played a bit with the Z_STRUCT_ stuff in the end. They would work fine but the resulting code also needs to tap into the linker file (for Z_ITERABLE_SECTION_RAM()), so it\u0027s a bit more invasive. My main concern though is that being a Z_* APIs, I think they are meant for internal use only and may end up being one more thing that could breaks between releases.",
+      "parentUuid": "2169f9bb_4152ce7f",
+      "revId": "2deb82ba576aedea411cb24057f7a00f8d02cb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38f9a503_d58f956d",
