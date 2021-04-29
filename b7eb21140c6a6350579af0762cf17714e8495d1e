@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "966aab41_e784e661",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-29T18:43:05Z",
+      "side": 1,
+      "message": "Looks like it can be moved earlier, like before the line 493. So you don\u0027t need to the check in line 500.\n\nMy first thought was it can be move more earlier, like before the line 488. But after some checks, the tcpci_get_chip_info() requires to be called to cache the result.",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 508,
+        "endChar": 0
+      },
+      "revId": "b7eb21140c6a6350579af0762cf17714e8495d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
