@@ -22,6 +22,30 @@
       },
       "revId": "3e951050c56169522a134d9aeb63a1f1b261e1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e47bf0d_7005d36f",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-29T21:11:12Z",
+      "side": 1,
+      "message": "Nah it\u0027s a good point. So data points to the matching k_delayed_work, defined as routine##_work_data, so I think it should be as good as the work function pointer, for example on a test run I get:\n\ndeferred_data\u003d0x1009bfa8\n\n(gdb) x 0x1009bfa8\n0x1009bfa8 \u003cvboot_hash_next_chunk_data\u003e:        0x200c0110\n\n$ arm-none-eabi-readelf -W -s chroot-home/build-volteer/build-ro/zephyr/zephyr.elf | grep 1009bfa8\n  1729: 1009bfa8     4 OBJECT  LOCAL  DEFAULT    7 vboot_hash_next_chunk_data\n\nI supposed I could dig out the handler pointer, but that would dig into the internal data structure, so it may end up changing with zephyr major releases I suppose. Let me know if you think we should do it anyway.",
+      "parentUuid": "413b6e5f_d35e34b0",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "3e951050c56169522a134d9aeb63a1f1b261e1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
