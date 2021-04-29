@@ -16,6 +16,24 @@
       "message": "This CL is building and requests via i2c shell for \"i2c scan I2C_0\" makes I2C requests but i2c_transaction in main/v2.5/drivers/i2c/i2c_ite_it8xxx2.c gives a data-\u003eerr of 8 (HOSTA_BSER) on line 669.  Any help from ITE would be appreciated.",
       "revId": "af7d8d982ae62b682e451c11a46794d6e3e71ce5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d31a9374_582ab4aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-04-29T09:54:22Z",
+      "side": 1,
+      "message": "There is a slave address issue in the i2c driver.\nThis temporarily patch (CL:2859183) fix the issue.\n@Tim, can you create a formal CL to fix that?\n\nThe child CL enables i2c alt function with new pinmux driver (CL:2857993)\nWith the above CLs, i2c shell \"i2c scan\" works.",
+      "parentUuid": "b7f4d84b_df90c01c",
+      "revId": "af7d8d982ae62b682e451c11a46794d6e3e71ce5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
