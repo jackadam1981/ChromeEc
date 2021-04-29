@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a405158a_7390a0bf",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-29T16:35:24Z",
+      "side": 1,
+      "message": "I suggested on another CL to use the following pattern\n\n#ifndef CONFIG_WATCHDOG_PERIOD_MS\n/* Either not supported or just set it to 0 if that does not work */\nGEN_NOT_SUPPORTED(CONFIG_WATCHDOG_PERIOD_MS);\n#endif\n\nThen the IS_ENABLED can remain",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 0
+      },
+      "revId": "cb625c5a0fdeaff116be4c44e859a05d8bdf3582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
