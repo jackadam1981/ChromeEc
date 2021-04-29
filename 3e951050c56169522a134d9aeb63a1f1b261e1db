@@ -70,6 +70,30 @@
       },
       "revId": "3e951050c56169522a134d9aeb63a1f1b261e1db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47334efd_9846075e",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-29T21:46:54Z",
+      "side": 1,
+      "message": "Cool! I\u0027ll CQ it in then.",
+      "parentUuid": "63bf0e51_3c0fa09f",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "3e951050c56169522a134d9aeb63a1f1b261e1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
