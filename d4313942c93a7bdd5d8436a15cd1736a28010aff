@@ -22,6 +22,30 @@
       },
       "revId": "d4313942c93a7bdd5d8436a15cd1736a28010aff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34bdd74f_a1ec90e0",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-04-29T14:55:05Z",
+      "side": 1,
+      "message": "Oh cool, ok that worked, also changed it back to prints (not \"f\"), that slipped in as well, now it should print correctly and not cause any warnings.",
+      "parentUuid": "7739d411_492847a6",
+      "range": {
+        "startLine": 44,
+        "startChar": 13,
+        "endLine": 44,
+        "endChar": 19
+      },
+      "revId": "d4313942c93a7bdd5d8436a15cd1736a28010aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
