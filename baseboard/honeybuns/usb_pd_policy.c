@@ -126,7 +126,7 @@ void pd_power_supply_reset(int port)
 		return;
 
 	prev_en = ppc_is_sourcing_vbus(port);
-	baseboard_usbc_reset_vsafe0v();
+	//baseboard_usbc_reset_vsafe0v();
 
 	/* Disable VBUS via PPC. */
 	ppc_vbus_source_enable(port, 0);
