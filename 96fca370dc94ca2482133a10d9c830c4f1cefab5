@@ -16,6 +16,29 @@
       "message": "(rebased, merge conflict...)",
       "revId": "96fca370dc94ca2482133a10d9c830c4f1cefab5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3e45ad3_6d5d3b3e",
+        "filename": "zephyr/shim/include/zephyr_hooks_shim.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-29T20:22:59Z",
+      "side": 1,
+      "message": "line is underindented? align to (?\n\nclang-format can fix this for you",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 3
+      },
+      "revId": "96fca370dc94ca2482133a10d9c830c4f1cefab5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
