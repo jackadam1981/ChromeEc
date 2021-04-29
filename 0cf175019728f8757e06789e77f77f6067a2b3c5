@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e655e207_da2f7e40",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-29T17:29:53Z",
+      "side": 1,
+      "message": "Battery level low looks to be 10%, while the the EC_CMD_PD_CONTROL-\u003ePD_SUSPEND looks to allow down to 5%.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/688f36f9/common/usb_pd_host_cmd.c#555\n\n10% is probably fine here.  But a shared routine for both TCPC and retimer updates would be nice.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "0cf175019728f8757e06789e77f77f6067a2b3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
