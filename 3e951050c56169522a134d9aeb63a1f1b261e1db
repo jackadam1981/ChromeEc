@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "413b6e5f_d35e34b0",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-29T21:01:29Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t notice this on the previous patchset.  work-\u003ehandler is probably a lot more useful here.  \"data\" doesn\u0027t point to anything that can be used post mortem.",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 8
+      },
+      "revId": "3e951050c56169522a134d9aeb63a1f1b261e1db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
