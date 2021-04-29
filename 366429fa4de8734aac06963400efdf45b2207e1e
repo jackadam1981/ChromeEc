@@ -192,6 +192,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df0fba8a_a773f6f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-04-29T06:42:53Z",
+      "side": 1,
+      "message": "CL:2858296 has been pushed to allow print 4-byte code in the common layer.\nI added a new config to respect the original behavior (assume only 2-byte code is expected.) This also won\u0027t waste several hundred bytes if 4-byte is not used by AP.\n\nBy the way, it seems that we lost the permission to access the issue of b:184872297. Could you +CC us back to the issue if you are ok with it?",
+      "parentUuid": "0149b920_c14cead4",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 21,
+        "endChar": 12
+      },
+      "revId": "366429fa4de8734aac06963400efdf45b2207e1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebf76514_b7949b57",
