@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dca893fa_704c97c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-04-29T15:43:31Z",
+      "side": 1,
+      "message": "Wai-Hong,\n\nI overlooked that in this application the actual enable/disable of the LN9310 is handled by the nEN pin and that the `ln9310_init()` function is only called once .  For this new software workaround, I need to change that so that all startup/shutdown of the LN9310 is handled by a series of I2C writes by the EC (what I already included at the end of `ln9310_init()`.  I\u0027m going to work on adding this code but if you see any problems with these please let me know.  I believe I just need to shift a portion of the new code I just wrote in `ln9310_init()` and into a new `ln9310_enable()` function that will be called in the `board_set_switchcap_power` function from switchcap.c.\n\n##Background \n\nFor the software in the current boards, the `ln9310_init()` function writes all the necessary configuration bits to the ln9310 such that when the nEN pin is toggled, the startup sequence run internally by the ln9310 is as originally desired.  The new workaround adds an extra step in the sequence and there is no room to store this step internally in the ln9310 register space so a portion of the internal startup sequence is moved out of the ln9310 and recreated in EC I2C commands.\n\n",
+      "revId": "15b42bdebffc905bb2851d97dfc6cad3cb40f2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b4a09c2_746225a6",
