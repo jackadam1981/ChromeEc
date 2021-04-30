@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de41532c_b80b2544",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-04-30T13:39:40Z",
+      "side": 1,
+      "message": "I\u0027m sending a dirty draft of reworking CBI SSFC support to work through driver API and let the device drivers (motion_sensors in this case) decide what to do with alternative devices. Doing it this way would support SSFC not only motion_sensors, but every possible device e.g. usb_ss_mux version as it is in dedede. Obviously, this code is not ready for review, but I want to ask you if the direction is good in your opinion. ",
+      "revId": "d6b66ddecd54a03ef99553cf950bf2677f3449a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
