@@ -526,15 +526,23 @@ static int ps8xxx_get_chip_info(int port, int live,
 		if (chip_info->product_id == PS8815_PRODUCT_ID &&
 		    chip_info->device_id == 0x0001) {
 			rv = ps8815_make_device_id(port, &val);
-			if (rv != EC_SUCCESS)
+			if (rv != EC_SUCCESS) {
+				ccprintf("%s: ps8815_make_device_id failed\n",
+				 __func__);
 				return rv;
+			}
 			chip_info->device_id = val;
 		}
 #endif
 		reg = get_reg_by_product(port, REG_FW_VER);
 		rv = tcpc_read(port, reg, &val);
-		if (rv != EC_SUCCESS)
+		if (rv != EC_SUCCESS) {
+			ccprintf("%s: could not read REG_FW_VER 0x%02x\n",
+				 __func__, reg);
 			return rv;
+		}
+
+		ccprintf("%s: chip reports FW 0x%02x\n", __func__, val);
 
 		chip_info->fw_version_number = val;
 	}
@@ -543,8 +551,14 @@ static int ps8xxx_get_chip_info(int port, int live,
 	if (live && (
 	    chip_info->vendor_id != PS8XXX_VENDOR_ID ||
 	    chip_info->product_id != board_get_ps8xxx_product_id(port) ||
-	    chip_info->fw_version_number == 0))
+	    chip_info->fw_version_number == 0)) {
+
+		ccprintf("%s: EC_ERROR_UNKNOWN PID 0x%04x FW=0x%02llx\n", __func__,
+			 chip_info->product_id,
+			 chip_info->fw_version_number);
+
 		return EC_ERROR_UNKNOWN;
+	}
 
 #if defined(CONFIG_USB_PD_TCPM_PS8751) && \
 	defined(CONFIG_USB_PD_VBUS_DETECT_TCPC)
