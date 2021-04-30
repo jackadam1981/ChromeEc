@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f1e9ab6_afe6cec9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-04-30T16:03:49Z",
+      "side": 1,
+      "message": "I changed the description. This is a common requirement if power is not enough, don\u0027t do firmware update.",
+      "parentUuid": "3eb2df1c_f7edc796",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "0cf175019728f8757e06789e77f77f6067a2b3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b45b7656_c688dd75",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-30T02:19:35Z",
       "side": 1,
       "message": "retimers are not enumerated, when no devices are attached and Type-C ports are still usable.\nAlso, is there any Chrome requirement that tells the device should operate normally with just AC and no battery?",
+      "range": {
+        "startLine": 14,
+        "startChar": 67,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "0cf175019728f8757e06789e77f77f6067a2b3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9167343b_212319c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-04-30T16:03:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b45b7656_c688dd75",
       "range": {
         "startLine": 14,
         "startChar": 67,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78e7cc2e_25aa4703",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-04-30T16:03:49Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "a7798465_d0be4cb5",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "0cf175019728f8757e06789e77f77f6067a2b3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "438dd6fc_f9995cac",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c9f5a51_cbd62933",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-04-30T16:03:49Z",
+      "side": 1,
+      "message": "Removed and created a common routine for both TCPC and retimer.",
+      "parentUuid": "438dd6fc_f9995cac",
+      "range": {
+        "startLine": 85,
+        "startChar": 23,
+        "endLine": 85,
+        "endChar": 41
+      },
+      "revId": "0cf175019728f8757e06789e77f77f6067a2b3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e655e207_da2f7e40",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-04-29T17:29:53Z",
       "side": 1,
       "message": "Battery level low looks to be 10%, while the the EC_CMD_PD_CONTROL-\u003ePD_SUSPEND looks to allow down to 5%.\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/688f36f9/common/usb_pd_host_cmd.c#555\n\n10% is probably fine here.  But a shared routine for both TCPC and retimer updates would be nice.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 46
+      },
+      "revId": "0cf175019728f8757e06789e77f77f6067a2b3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "186065b2_618ff9dc",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-04-30T16:03:49Z",
+      "side": 1,
+      "message": "In usb_common.c, created a shared routine. Also uploaded a patch so TCPC power check calling new routine.",
+      "parentUuid": "e655e207_da2f7e40",
       "range": {
         "startLine": 92,
         "startChar": 0,
