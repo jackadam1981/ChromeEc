@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca46c8f6_dbfae6b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-30T19:39:56Z",
+      "side": 1,
+      "message": "verify that ad-hoc",
+      "revId": "cdf83a1c36d30288ffc6c2c076e990cc08332808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4590a252_43112e95",
+        "filename": "util/check_allowed.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-30T19:39:56Z",
+      "side": 1,
+      "message": "Are there any directories with this name?",
+      "range": {
+        "startLine": 58,
+        "startChar": 18,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "cdf83a1c36d30288ffc6c2c076e990cc08332808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
