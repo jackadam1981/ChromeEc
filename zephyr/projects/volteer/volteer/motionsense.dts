@@ -27,8 +27,8 @@
 	 */
 	motionsense-mutex {
 		compatible = "cros-ec,motionsense-mutex";
-		mutex_bma255: bma255-mutex {
-			label = "BMA255_MUTEX";
+		lid_mutex: lid-mutex {
+			label = "LID_MUTEX";
 		};
 
 		mutex_bmi260: bmi260-mutex {
@@ -63,6 +63,11 @@
 	motionsense-sensor-data {
 		bma255_data: bma255-drv-data {
 			compatible = "cros-ec,drvdata-bma255";
+			status = "okay";
+		};
+
+		kx022_data: kx022-drv-data {
+			compatible = "cros-ec,drvdata-kionix";
 			status = "okay";
 		};
 
@@ -149,7 +154,7 @@
 			label = "Lid Accel";
 			active-mask = "SENSOR_ACTIVE_S0_S3";
 			location = "MOTIONSENSE_LOC_LID";
-			mutex = <&mutex_bma255>;
+			mutex = <&lid_mutex>;
 			port = <&i2c_sensor>;
 			rot-standard-ref = <&lid_rot_ref>;
 			default-range = <2>;
@@ -198,7 +203,7 @@
 			};
 		};
 
-		base-gyro {
+		base_gyro: base-gyro {
 			compatible = "cros-ec,bmi260-gyro";
 			status = "okay";
 
@@ -245,6 +250,87 @@
 			default-range = <0x10000>; /* scale = 1x, uscale = 0 */
 			drv-data = <&tcs_rgb_data>;
 		};
+	};
+
+	motionsense-sensor-alt {
+		alt_lid_accel: alt-lid-accel {
+			compatible = "cros-ec,bma255";
+			status = "okay";
+
+			label = "Lid Accel Alt";
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_LID";
+			mutex = <&lid_mutex>;
+			port = <&i2c_sensor>;
+			rot-standard-ref = <&lid_rot_ref>;
+			default-range = <2>;
+			drv-data = <&bma255_data>;
+			i2c-spi-addr-flags = "BMA2x2_I2C_ADDR1_FLAGS";
+			alternate-for = <&lid_accel>;
+			alternate-indicator = <&lid_sensor_bma255>;
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				ec-s0 {
+					label = "SENSOR_CONFIG_EC_S0";
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+				ec-s3 {
+					label = "SENSOR_CONFIG_EC_S3";
+					odr = <(10000 | ROUND_UP_FLAG)>;
+				};
+			};
+		};
+
+		alt_base_accel: alt-base-accel {
+			compatible = "cros-ec,bmi260-accel";
+			status = "okay";
+
+			label = "Base Accel Alt";
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&mutex_bmi260>;
+			port = <&i2c_sensor>;
+			rot-standard-ref = <&base_rot_ref>;
+			default-range = <4>;
+			drv-data = <&bmi260_data>;
+			i2c-spi-addr-flags = "BMI260_ADDR0_FLAGS";
+			alternate-for = <&base_accel>;
+			alternate-indicator = <&base_sensor_bmi160>;
+			configs {
+				compatible =
+					"cros-ec,motionsense-sensor-config";
+				ec-s0 {
+					label = "SENSOR_CONFIG_EC_S0";
+					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
+				};
+				ec-s3 {
+					label = "SENSOR_CONFIG_EC_S3";
+					odr = <(10000 | ROUND_UP_FLAG)>;
+					ec-rate = <(100 * USEC_PER_MSEC)>;
+				};
+			};
+		};
+
+		alt_base_gyro: alt-base-gyro {
+			compatible = "cros-ec,bmi260-gyro";
+			status = "okay";
+
+			label = "Base Gyro Alt";
+			active-mask = "SENSOR_ACTIVE_S0_S3";
+			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&mutex_bmi260>;
+			port = <&i2c_sensor>;
+			rot-standard-ref = <&base_rot_ref>;
+			default-range = <1000>; /* dps */
+			drv-data = <&bmi260_data>;
+			i2c-spi-addr-flags = "BMI260_ADDR0_FLAGS";
+			alternate-for = <&base_gyro>;
+			alternate-indicator = <&base_sensor_bmi160>;
+		};
+
+
 	};
 
 	motionsense-sensor-info {
