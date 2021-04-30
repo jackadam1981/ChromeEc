@@ -98,6 +98,7 @@ static const int _detection_interval_ms = 500;
 #define WLC_CHG_CTRL_DEVICE_STATE_DEVICE_DEACTIVATED		0x01
 #define WLC_CHG_CTRL_DEVICE_STATE_DEVICE_DEVICE_LOST		0x02
 #define WLC_CHG_CTRL_DEVICE_STATE_DEVICE_DEVICE_BAD_VERSION	0x03
+#define WLC_CHG_CTRL_DEVICE_STATE_DEVICE_DOCKED			0x04
 #define WLC_CHG_CTRL_DEVICE_STATE_EVT_SIZE_DETECTED		8
 #define WLC_CHG_CTRL_DEVICE_STATE_EVT_SIZE			1
 
@@ -504,6 +505,11 @@ static int _process_payload_event(struct pchg *ctx, struct ctn730_msg *res)
 		switch (buf[0]) {
 		case WLC_CHG_CTRL_DEVICE_STATE_DEVICE_DETECTED:
 			if (len != WLC_CHG_CTRL_DEVICE_STATE_EVT_SIZE_DETECTED)
+				return EC_ERROR_INVAL;
+			ctx->event = PCHG_EVENT_DEVICE_DETECTED;
+			break;
+		case WLC_CHG_CTRL_DEVICE_STATE_DEVICE_DOCKED:
+			if (len != WLC_CHG_CTRL_DEVICE_STATE_EVT_SIZE)
 				return EC_ERROR_INVAL;
 			ctx->event = PCHG_EVENT_DEVICE_DETECTED;
 			break;

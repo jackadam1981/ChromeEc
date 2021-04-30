@@ -194,11 +194,6 @@ static void pchg_state_enabled(struct pchg *ctx)
 		ctx->state = PCHG_STATE_INITIALIZED;
 		break;
 	case PCHG_EVENT_DEVICE_DETECTED:
-		/*
-		 * Proactively query SOC in case charging info won't be sent
-		 * because device is already charged.
-		 */
-		ctx->cfg->drv->get_soc(ctx);
 		ctx->state = PCHG_STATE_DETECTED;
 		break;
 	case PCHG_EVENT_CHARGE_STARTED:
@@ -227,6 +222,17 @@ static void pchg_state_detected(struct pchg *ctx)
 		break;
 	case PCHG_EVENT_DISABLED:
 		ctx->state = PCHG_STATE_INITIALIZED;
+		break;
+	case PCHG_EVENT_DEVICE_DETECTED:
+		/*
+		 * CTN730 (fw=0x1041) sends DOCKED then DETECTED. Both are
+		 * reported to the PCHG as DEVICE_DETECTED event. The 1st DOCKED
+		 * moved us here. This DEVICE_DETECTED could be for another
+		 * DOCKED or a new DETECTED. Either way, we proactively query
+		 * SoC in case charging info won't be sent because the battery
+		 * is full. If ctn730 is still in DOCKED, this call will fail.
+		 */
+		ctx->cfg->drv->get_soc(ctx);
 		break;
 	case PCHG_EVENT_CHARGE_STARTED:
 		ctx->state = PCHG_STATE_CHARGING;
