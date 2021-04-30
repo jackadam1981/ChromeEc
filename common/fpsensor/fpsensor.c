@@ -409,6 +409,12 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 
 	/* The host requested a template. */
 
+	/* It's not possible to get template without TPM seed */
+	if (!fp_tpm_seed_is_set()) {
+		CPRINTS("%s: TPM seed is not initialized", __func__);
+		return EC_RES_INVALID_STATE;
+	}
+
 	/* Templates are numbered from 1 in this host request. */
 	fgr = idx - FP_FRAME_INDEX_TEMPLATE;
 
@@ -549,6 +555,12 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 	uint8_t key[SBP_ENC_KEY_LEN];
 	struct ec_fp_template_encryption_metadata *enc_info;
 	int ret;
+
+	/* It's not possible to load template without TPM seed */
+	if (!fp_tpm_seed_is_set()) {
+		CPRINTS("%s: TPM seed is not initialized", __func__);
+		return EC_RES_INVALID_STATE;
+	}
 
 	/* Can we store one more template ? */
 	if (idx >= FP_MAX_FINGER_COUNT)

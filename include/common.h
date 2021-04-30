@@ -308,6 +308,9 @@ enum ec_error_list {
 	/* Operation was successful but completion is pending. */
 	EC_SUCCESS_IN_PROGRESS = 27,
 
+	/* Internal state is invalid */
+	EC_ERROR_INVALID_STATE = 28,
+
 	/* Verified boot errors */
 	EC_ERROR_VBOOT_SIGNATURE = 0x1000, /* 4096 */
 	EC_ERROR_VBOOT_SIG_MAGIC = 0x1001,

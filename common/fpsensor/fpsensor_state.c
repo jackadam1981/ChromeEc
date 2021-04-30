@@ -133,6 +133,12 @@ int fp_tpm_seed_is_set(void)
 	return fp_encryption_status & FP_ENC_STATUS_SEED_SET;
 }
 
+static bool mode_uses_tpm_seed(uint32_t mode)
+{
+	return mode & (FP_MODE_ENROLL_SESSION | FP_MODE_ENROLL_IMAGE |
+		       FP_MODE_MATCH);
+}
+
 static enum ec_status
 fp_command_encryption_status(struct host_cmd_handler_args *args)
 {
@@ -158,6 +164,11 @@ static int validate_fp_mode(const uint32_t mode)
 
 	if (algo_mode & ~FP_VALID_MODES)
 		return EC_ERROR_INVAL;
+
+	if (mode_uses_tpm_seed(algo_mode) && !fp_tpm_seed_is_set()) {
+		CPRINTS("TPM seed is not provided");
+		return EC_ERROR_INVALID_STATE;
+	}
 
 	if ((mode & FP_MODE_ENROLL_SESSION) &&
 	    templ_valid >= FP_MAX_FINGER_COUNT) {
@@ -186,6 +197,12 @@ int fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output)
 
 	ret = validate_fp_mode(mode);
 	if (ret != EC_SUCCESS) {
+		if (ret == EC_ERROR_INVALID_STATE) {
+			CPRINTS("Internal state is invalid for mode 0x%x",
+				mode);
+			return EC_RES_INVALID_STATE;
+		}
+
 		CPRINTS("Invalid FP mode 0x%x", mode);
 		return EC_RES_INVALID_PARAM;
 	}

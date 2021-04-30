@@ -633,6 +633,7 @@ enum ec_status {
 	EC_RES_INVALID_HEADER_CRC = 18,      /* Header CRC invalid */
 	EC_RES_INVALID_DATA_CRC = 19,        /* Data CRC invalid */
 	EC_RES_DUP_UNAVAILABLE = 20,         /* Can't resend response */
+	EC_RES_INVALID_STATE = 21,           /* Internal state invalid */
 
 	EC_RES_MAX = UINT16_MAX		/**< Force enum to be 16 bits */
 } __packed;
