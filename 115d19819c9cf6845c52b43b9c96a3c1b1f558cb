@@ -22,6 +22,30 @@
       },
       "revId": "115d19819c9cf6845c52b43b9c96a3c1b1f558cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9297c1b6_f0f29f23",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-04-30T21:12:44Z",
+      "side": 1,
+      "message": "Current kernel checks if result is 0, and will try to read result every 25 ms for a total 250ms each port. USB_RETIMER_FW_UPDATE_ERR is proper return from EC point of view. I changed return result to be this; though kernel doesn\u0027t check this value in current implementation.",
+      "parentUuid": "5b8c87ae_d90fbebe",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "115d19819c9cf6845c52b43b9c96a3c1b1f558cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
