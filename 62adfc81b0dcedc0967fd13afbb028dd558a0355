@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "330d1f06_f4802b79",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-04-30T20:02:01Z",
+      "side": 1,
+      "message": "you will have to #ifdef this too",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "62adfc81b0dcedc0967fd13afbb028dd558a0355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
