@@ -1,0 +1,556 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "489abf42_1b5cdc0e",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Quote the below 2 lines with {}",
+      "range": {
+        "startLine": 108,
+        "startChar": 23,
+        "endLine": 108,
+        "endChar": 24
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84b1e914_64c1a74e",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Could you explain the GPIO and I2C sequence?\n\nWhat about enable is 0, i.e. disable the switchcap? Still doing the GPIO and then I2C?",
+      "range": {
+        "startLine": 110,
+        "startChar": 25,
+        "endLine": 110,
+        "endChar": 31
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c774ed52_f11fc373",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Remove the tab.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 1
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3c65f42_635e7d5a",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Remove the newline.",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 0
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7daeea96_dd811f2c",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Remove the tab.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 1
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3703e5a1_7d706761",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Remove the newline.",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 0
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3026667_1dba0f2a",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Don\u0027t need to assign an initial value. It will be assigned below.",
+      "range": {
+        "startLine": 429,
+        "startChar": 27,
+        "endLine": 429,
+        "endChar": 44
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e707fb99_72de487a",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Add newline between variable declaration and the program.",
+      "range": {
+        "startLine": 430,
+        "startChar": 35,
+        "endLine": 430,
+        "endChar": 36
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cabfd671_3d780057",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Use space",
+      "range": {
+        "startLine": 451,
+        "startChar": 31,
+        "endLine": 451,
+        "endChar": 32
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8d971a9_504277ad",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Use spaces",
+      "range": {
+        "startLine": 452,
+        "startChar": 4,
+        "endLine": 452,
+        "endChar": 12
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95fc6968_58350cee",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Remove space.",
+      "range": {
+        "startLine": 454,
+        "startChar": 11,
+        "endLine": 454,
+        "endChar": 12
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1ed5c16_2d027b2e",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Make it (3.1) and (3.2) for the if case and the else case.",
+      "range": {
+        "startLine": 462,
+        "startChar": 18,
+        "endLine": 462,
+        "endChar": 21
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e97af10_c5f4d146",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Remove the newline.",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 0
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15515848_d4d7dbb4",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Is it necessary to be called inside the while loop?",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 51
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bd9bac8_8d0714e1",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Does it need to wait a bit before the next retry?",
+      "range": {
+        "startLine": 481,
+        "startChar": 4,
+        "endLine": 481,
+        "endChar": 18
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77fbdfe9_10b41c5f",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Remove the space.",
+      "range": {
+        "startLine": 489,
+        "startChar": 41,
+        "endLine": 489,
+        "endChar": 42
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67bcbfb4_8de6bddf",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Add an extra tab for alignment.",
+      "range": {
+        "startLine": 495,
+        "startChar": 3,
+        "endLine": 495,
+        "endChar": 4
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e756db46_ae4be9e4",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "If it succeeds at the last iteration. It prints this error. Check the `ln9310_init_completed` instead.",
+      "range": {
+        "startLine": 509,
+        "startChar": 6,
+        "endLine": 509,
+        "endChar": 45
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b95230f_a661a4e4",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Break it into 2 lines.",
+      "range": {
+        "startLine": 510,
+        "startChar": 60,
+        "endLine": 510,
+        "endChar": 61
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a00299c4_2a318ee1",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Move it the above line, less than \u003c80 columns.",
+      "range": {
+        "startLine": 518,
+        "startChar": 4,
+        "endLine": 518,
+        "endChar": 5
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f3c3528_160cbd1a",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Remove the tab.",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 1
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea53f041_df83f49e",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Remove the newline.",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 0
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406216e1_186dbd24",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Add one tabs to align the above line.",
+      "range": {
+        "startLine": 136,
+        "startChar": 31,
+        "endLine": 136,
+        "endChar": 32
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45565744_f35ddd53",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T21:57:04Z",
+      "side": 1,
+      "message": "Please align this and the below 2 lines.",
+      "range": {
+        "startLine": 187,
+        "startChar": 24,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
