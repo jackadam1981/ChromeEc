@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bae8a566_9c664f9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-04-30T10:06:05Z",
+      "side": 1,
+      "message": "Implemented returning errors when TPM seed is necessary. I\u0027m not sure if used error codes are correct. Maybe we want to define our own codes.",
+      "revId": "4140ddd25b032aa3648a19a00e15941b721a78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
