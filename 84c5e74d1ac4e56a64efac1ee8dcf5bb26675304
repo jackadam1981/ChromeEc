@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "52b1bb64_2a44e120",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-04-30T21:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9284ec72_0f9d0b5c",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "84c5e74d1ac4e56a64efac1ee8dcf5bb26675304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "2132d5c7_9d4ba6dd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -95,6 +119,30 @@
       "side": 1,
       "message": "That would make this code simpler. Please add a TODO for this with a bug link.\n\nIf we go the route of expanding the logic for this if statement long-term, we\u0027re getting close to the point where a\n bool virtual_mux_should_wait_for_ack(mux_state_t previous, mux_state_t next);\n\nmight make sense.",
       "parentUuid": "b116dd31_4983088d",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 36
+      },
+      "revId": "84c5e74d1ac4e56a64efac1ee8dcf5bb26675304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e370f46_a4aecfa3",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-04-30T21:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ecd2e7c_01f068e3",
       "range": {
         "startLine": 55,
         "startChar": 0,
