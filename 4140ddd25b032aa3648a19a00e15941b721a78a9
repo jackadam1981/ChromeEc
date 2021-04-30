@@ -16,6 +16,24 @@
       "message": "Implemented returning errors when TPM seed is necessary. I\u0027m not sure if used error codes are correct. Maybe we want to define our own codes.",
       "revId": "4140ddd25b032aa3648a19a00e15941b721a78a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb26b8ae_f867115e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-30T18:35:36Z",
+      "side": 1,
+      "message": "I agree that it would be nice to have a more specific error code. What if we added a new error named something like \"EC_RES_INVALID_STATE\" (https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/include/ec_commands.h#614)? That seems like a generic enough error code that it could be used by other ECs, but also better describes the error we have here.\n\nSince making that change touches the generic EC code, we should add \"cros-ec-reviewers\" to review that part of the change.",
+      "parentUuid": "bae8a566_9c664f9e",
+      "revId": "4140ddd25b032aa3648a19a00e15941b721a78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
