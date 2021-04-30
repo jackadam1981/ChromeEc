@@ -78,7 +78,11 @@ CONFIG_HEX=45ab
             srctree: Directory to write to
         """
         with open(os.path.join(srctree, 'Kconfig'), 'w') as out:
-            out.write('config PLATFORM_EC_MY_KCONFIG\n')
+            out.write('''config PLATFORM_EC_MY_KCONFIG
+\tbool "my kconfig"
+
+rsource "subdir/Kconfig.wibble"
+''')
         subdir = os.path.join(srctree, 'subdir')
         os.mkdir(subdir)
         with open(os.path.join(subdir, 'Kconfig.wibble'), 'w') as out:
@@ -89,15 +93,6 @@ CONFIG_HEX=45ab
         os.mkdir(bad_subdir)
         with open(os.path.join(bad_subdir, 'Kconfig.bad'), 'w') as out:
             out.write('menuconfig PLATFORM_EC_BAD_KCONFIG')
-
-    def test_find_kconfigs(self):
-        """Test KconfigCheck.find_kconfigs()"""
-        checker = kconfig_check.KconfigCheck()
-        with tempfile.TemporaryDirectory() as srctree:
-            self.setup_srctree(srctree)
-            files = checker.find_kconfigs(srctree)
-            fnames = [fname[len(srctree):] for fname in files]
-            self.assertEqual(['/Kconfig', '/subdir/Kconfig.wibble'], fnames)
 
     def test_scan_kconfigs(self):
         """Test KconfigCheck.scan_configs()"""
