@@ -1,0 +1,23 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Describes the size and offset of the RO and RW regions
+
+compatible: "cros-ec,flash-layout"
+
+include: base.yaml
+
+properties:
+  type:
+    type: string
+    required: true
+  offset:
+    type: int
+    required: true
+  size:
+    type: int
+    required: true
+  read-only:
+    type: boolean
+    required: false
