@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15f1bf81_1255ad6b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:12:20Z",
+      "side": 1,
+      "message": "Agree... 😞",
+      "parentUuid": "256dba99_4f6ba419",
+      "revId": "2c4022aeb7476c345c27e49f2e51e5679928f35e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf64f273_6b3d5ad6",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-04-30T19:38:04Z",
       "side": 1,
       "message": "Need descriptions for these",
+      "revId": "2c4022aeb7476c345c27e49f2e51e5679928f35e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f86defd_826f7da1",
+        "filename": "zephyr/dts/bindings/cros_flash/cros-ec,flash-layout.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:12:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf64f273_6b3d5ad6",
       "revId": "2c4022aeb7476c345c27e49f2e51e5679928f35e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -58,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "100210bd_65b13f0d",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:12:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "884fa8eb_bebc3772",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "2c4022aeb7476c345c27e49f2e51e5679928f35e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c8fc546_6d917669",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-04-30T19:38:04Z",
       "side": 1,
       "message": "Why do we used zephyr_packed.bin for one and zephyr.bin for the other?\n\nPlease add a comment to explain that",
+      "range": {
+        "startLine": 100,
+        "startChar": 38,
+        "endLine": 100,
+        "endChar": 44
+      },
+      "revId": "2c4022aeb7476c345c27e49f2e51e5679928f35e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481089b6_95e9a494",
+        "filename": "zephyr/zmake/zmake/output_packers.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:12:20Z",
+      "side": 1,
+      "message": "There already is one (see line 66).",
+      "parentUuid": "7c8fc546_6d917669",
       "range": {
         "startLine": 100,
         "startChar": 38,
