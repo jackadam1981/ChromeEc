@@ -16,6 +16,29 @@
       "message": "hi Tam: please help to review this Cl , thanks",
       "revId": "e3807df381197b2594e6fe5132c0c9104a9135b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c34794_73580a07",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-04-30T17:22:36Z",
+      "side": 1,
+      "message": "I saw you said \"temporarily\". When it is ready for a FSI candidate, be sure to remove all the these bringup features. When will you do that?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "e3807df381197b2594e6fe5132c0c9104a9135b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
