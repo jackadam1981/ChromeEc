@@ -6962,6 +6962,10 @@ struct ec_params_fp_passthru {
 			FP_MODE_SENSOR_MAINTENANCE | \
 			FP_MODE_DONT_CHANGE)
 
+#define FP_NEED_TPM_SEED_MODES (FP_MODE_ENROLL_SESSION | \
+				FP_MODE_ENROLL_IMAGE   | \
+				FP_MODE_MATCH)
+
 /* Capture types defined in bits [30..28] */
 #define FP_MODE_CAPTURE_TYPE_SHIFT 28
 #define FP_MODE_CAPTURE_TYPE_MASK  (0x7 << FP_MODE_CAPTURE_TYPE_SHIFT)

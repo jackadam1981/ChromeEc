@@ -159,6 +159,12 @@ static int validate_fp_mode(const uint32_t mode)
 	if (algo_mode & ~FP_VALID_MODES)
 		return EC_ERROR_INVAL;
 
+	if (!fp_tpm_seed_is_set() &&
+	    (algo_mode & FP_NEED_TPM_SEED_MODES)) {
+		CPRINTS("TPM seed is not provided");
+		return EC_ERROR_INVAL;
+	}
+
 	if ((mode & FP_MODE_ENROLL_SESSION) &&
 	    templ_valid >= FP_MAX_FINGER_COUNT) {
 		CPRINTS("Maximum number of fingers already enrolled: %d",
