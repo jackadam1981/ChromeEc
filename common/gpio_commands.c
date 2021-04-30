@@ -289,3 +289,53 @@ static enum ec_status gpio_command_set(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GPIO_SET, gpio_command_set, EC_VER_MASK(0));
+
+struct reg_group {
+	const char *name;
+	const volatile uint8_t *base;
+	const unsigned int count;
+};
+
+static const struct reg_group npcx_regs[] =
+{
+	{ .name = "GPIO Port 0", .base = (const volatile uint8_t *)0x40081000, .count = 8, },
+	{ .name = "GPIO Port 1", .base = (const volatile uint8_t *)0x40083000, .count = 8, },
+	{ .name = "GPIO Port 2", .base = (const volatile uint8_t *)0x40085000, .count = 8, },
+	{ .name = "GPIO Port 3", .base = (const volatile uint8_t *)0x40087000, .count = 8, },
+	{ .name = "GPIO Port 4", .base = (const volatile uint8_t *)0x40089000, .count = 8, },
+	{ .name = "GPIO Port 5", .base = (const volatile uint8_t *)0x4008b000, .count = 8, },
+	{ .name = "GPIO Port 6", .base = (const volatile uint8_t *)0x4008d000, .count = 8, },
+	{ .name = "GPIO Port 7", .base = (const volatile uint8_t *)0x4008f000, .count = 8, },
+	{ .name = "GPIO Port 8", .base = (const volatile uint8_t *)0x40091000, .count = 8, },
+	{ .name = "GPIO Port 9", .base = (const volatile uint8_t *)0x40093000, .count = 8, },
+	{ .name = "GPIO Port a", .base = (const volatile uint8_t *)0x40095000, .count = 8, },
+	{ .name = "GPIO Port b", .base = (const volatile uint8_t *)0x40097000, .count = 8, },
+	{ .name = "GPIO Port c", .base = (const volatile uint8_t *)0x40099000, .count = 8, },
+	{ .name = "GPIO Port d", .base = (const volatile uint8_t *)0x4009b000, .count = 8, },
+	{ .name = "GPIO Port e", .base = (const volatile uint8_t *)0x4009d000, .count = 8, },
+	{ .name = "GPIO Port f", .base = (const volatile uint8_t *)0x4009f000, .count = 8, },
+
+	{ .name = "DEVALT", .base = (const volatile uint8_t *)0x400c3010, .count = 16, },
+	{ .name = "PUPD",   .base = (const volatile uint8_t *)0x400c3028, .count = 2, },
+	{ .name = "LV_CTL", .base = (const volatile uint8_t *)0x400c302a, .count = 5, },
+	{ .name = "LV_CTL5", .base = (const volatile uint8_t *)0x400c3026, .count = 1, },
+};
+
+static int command_gpiodebug(int argc, char **argv)
+{
+	int group;
+	int reg;
+
+	for (group = 0; group < ARRAY_SIZE(npcx_regs); group++) {
+		ccprintf("Reg group %s: ", npcx_regs[group].name);
+		for (reg = 0; reg < npcx_regs[group].count; reg++) {
+			ccprintf("0x%02x ", *(npcx_regs[group].base + reg));
+		}
+		ccprintf("\n");
+	}
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(gpiodebug, command_gpiodebug, NULL,
+		"Dump all GPIO related registers");
+
