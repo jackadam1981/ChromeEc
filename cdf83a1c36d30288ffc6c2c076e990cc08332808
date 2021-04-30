@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edcc8c06_2fc24795",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-30T20:05:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca46c8f6_dbfae6b6",
+      "revId": "cdf83a1c36d30288ffc6c2c076e990cc08332808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4590a252_43112e95",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-30T19:39:56Z",
       "side": 1,
       "message": "Are there any directories with this name?",
+      "range": {
+        "startLine": 58,
+        "startChar": 18,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "cdf83a1c36d30288ffc6c2c076e990cc08332808",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b55f765_2578ea15",
+        "filename": "util/check_allowed.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-30T20:05:02Z",
+      "side": 1,
+      "message": "When you use \"zmake configure \u003cproject\u003e\" instead of \"zmake configure -B \u003cdir\u003e \u003cproject\u003e\", the default build output is put under platform/ec/build/zephyr.  The zephyr build output creates a directory called Kconfig that caused \"cat\" to generate a warning.",
+      "parentUuid": "4590a252_43112e95",
       "range": {
         "startLine": 58,
         "startChar": 18,
