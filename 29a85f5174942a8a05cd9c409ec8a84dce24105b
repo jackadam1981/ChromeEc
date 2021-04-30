@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce30ee69_3d248490",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-04-30T22:21:19Z",
+      "side": 1,
+      "message": "Should also use hyphen since devicetree requires that",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "29a85f5174942a8a05cd9c409ec8a84dce24105b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
