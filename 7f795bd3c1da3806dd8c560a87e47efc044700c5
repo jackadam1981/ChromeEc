@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cabb46f_04287f7b",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-04-30T20:41:15Z",
+      "side": 1,
+      "message": "It looks like 2 may have a pre-defined meaning: https://tldp.org/LDP/abs/html/exitcodes.html",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "7f795bd3c1da3806dd8c560a87e47efc044700c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
