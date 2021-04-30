@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f864c35_89c12a91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-04-30T10:01:41Z",
+      "side": 1,
+      "message": "Implemented returning error codes in separate CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2859980.",
+      "parentUuid": "88bea261_b8e496e8",
+      "revId": "856520c30822dd249b5fd30b7f12020bd6cda057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "829516a1_3090c3c8",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-04-29T23:15:18Z",
       "side": 1,
       "message": "Technically it may not be a reset (it could be first boot). Maybe call it \"EC_MKBP_FP_MCU_BOOT\" or \"EC_MKBP_FP_MCU_TASK_STARTED\".",
+      "range": {
+        "startLine": 215,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 39
+      },
+      "revId": "856520c30822dd249b5fd30b7f12020bd6cda057",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2db0d3fb_5ae17bf2",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-04-30T10:01:41Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "829516a1_3090c3c8",
       "range": {
         "startLine": 215,
         "startChar": 1,
