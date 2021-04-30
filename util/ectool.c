@@ -775,8 +775,9 @@ int cmd_hostsleepstate(int argc, char *argv[])
 int cmd_test(int argc, char *argv[])
 {
 	struct ec_params_test_protocol p = {
-		.buf = "0123456789abcdef0123456789ABCDEF"
+		.buf = "0123456789abcdef0123456789ABCDE"
 	};
+	p.buf[sizeof(p.buf) - 1] = 'F';
 	struct ec_response_test_protocol r;
 	int rv, version = 0;
 	char *e;
