@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce54df7_e6763263",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-30T07:33:19Z",
+      "side": 1,
+      "message": "Absolutely.",
+      "parentUuid": "893ee762_1ad35019",
+      "range": {
+        "startLine": 7,
+        "startChar": 25,
+        "endLine": 7,
+        "endChar": 62
+      },
+      "revId": "a69327cd3e9c0ef4026674aa90d63c9806480295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "595fe42c_490e1156",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3985837_deb1c9d9",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-30T07:33:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "595fe42c_490e1156",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 19
+      },
+      "revId": "a69327cd3e9c0ef4026674aa90d63c9806480295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea9374d4_6509e1ef",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-27T16:25:11Z",
       "side": 1,
       "message": "Same as other comment",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "a69327cd3e9c0ef4026674aa90d63c9806480295",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c46db5e_54c3338e",
+        "filename": "board/nocturne_fp/board_rw.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-04-30T07:33:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea9374d4_6509e1ef",
       "range": {
         "startLine": 37,
         "startChar": 4,
