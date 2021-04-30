@@ -16,6 +16,29 @@
       "message": "This seems to pass, but need to try it on the CQ",
       "revId": "2c5b2aa73b8b4ba0ac42b6ff74a6490948fb4360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46219543_4ba2211c",
+        "filename": "docs/zephyr_build.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:47:05Z",
+      "side": 1,
+      "message": "Wow this is really confusing!\n\nSince \"working outside of the chroot\" is the first thing listed here, it seems that that\u0027s what we\u0027re recommending?!?!\n\nThe chroot has everything setup for you... it should be clear that these instructions are only if you *chose* to work outside of the chroot, and should also make it clear that it\u0027s not the officially supported development environment.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "2c5b2aa73b8b4ba0ac42b6ff74a6490948fb4360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
