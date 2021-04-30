@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edebd4f0_56314906",
+        "filename": "include/battery.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-04-30T22:21:18Z",
+      "side": 1,
+      "message": "This isn\u0027t a forward declaration. Why do you need this?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "4f551a9ee4dbeec79cdb307535ead96bfe61202a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
