@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b27a0c91_609de579",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 7
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-30T16:27:28Z",
+      "side": 1,
+      "message": "You need to update zephyr/shim/include/config_chip.h.  Follow the USB_BCD_DEV example.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/de1b38ab/zephyr/shim/include/config_chip.h#666",
+      "range": {
+        "startLine": 150,
+        "startChar": 7,
+        "endLine": 150,
+        "endChar": 26
+      },
+      "revId": "df12a7497c82ffeeaa5442129e4e51ca49fd726e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
