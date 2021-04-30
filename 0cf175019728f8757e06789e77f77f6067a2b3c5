@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3eb2df1c_f7edc796",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2021-04-30T02:19:35Z",
+      "side": 1,
+      "message": "\"do not allow retimer IO\".\n\nThis is because, the driver by default enumerates onboard retimers when no devices are attached after boot. fw update is done, only when marked by fwupd for retimer fw update, as part of auto update.",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 10,
+        "endChar": 15
+      },
+      "revId": "0cf175019728f8757e06789e77f77f6067a2b3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b45b7656_c688dd75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2021-04-30T02:19:35Z",
+      "side": 1,
+      "message": "retimers are not enumerated, when no devices are attached and Type-C ports are still usable.\nAlso, is there any Chrome requirement that tells the device should operate normally with just AC and no battery?",
+      "range": {
+        "startLine": 14,
+        "startChar": 67,
+        "endLine": 15,
+        "endChar": 23
+      },
+      "revId": "0cf175019728f8757e06789e77f77f6067a2b3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7798465_d0be4cb5",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2021-04-30T02:19:35Z",
+      "side": 1,
+      "message": "nit: Is this needed?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "0cf175019728f8757e06789e77f77f6067a2b3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "438dd6fc_f9995cac",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1109344
+      },
+      "writtenOn": "2021-04-30T02:19:35Z",
+      "side": 1,
+      "message": "io_allowed?",
+      "range": {
+        "startLine": 85,
+        "startChar": 23,
+        "endLine": 85,
+        "endChar": 41
+      },
+      "revId": "0cf175019728f8757e06789e77f77f6067a2b3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e655e207_da2f7e40",
         "filename": "common/usbc/usb_retimer_fw_update.c",
         "patchSetId": 2
