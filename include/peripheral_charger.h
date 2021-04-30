@@ -45,12 +45,18 @@
  *                         v |                      |
  *                  +------+--------+               |
  *   +------------->+    ENABLED    |               |
+ *   |              +-------+- -----+               |
+ *   |                      |                       |
+ *   |                      | DEVICE_DOCKED         |
+ *   |                      v                       |
+ *   | DEVICE_LOST  +-------+- -----+               |
+ *   +--------------+     DOCKED    +---------------+
  *   |              +-------+-------+               |
  *   |                      |                       |
- *   |                      | DEVICE_DETECTED       |
+ *   |                      | DEVICE_CONNECTED      |
  *   |                      v                       |
  *   |              +-------+-------+               |
- *   +--------------+   DETECTED    +---------------+
+ *   +--------------+   CONNECTED   +---------------+
  *   | DEVICE_LOST  +------+-+------+  ERROR        |
  *   |                     | ^                      |
  *   |      CHARGE_STARTED | | CHARGE_ENDED         |
@@ -94,6 +100,7 @@ enum pchg_event {
 	PCHG_EVENT_ENABLED,
 	PCHG_EVENT_DISABLED,
 	PCHG_EVENT_DEVICE_DETECTED,
+	PCHG_EVENT_DEVICE_CONNECTED,
 	PCHG_EVENT_DEVICE_LOST,
 	PCHG_EVENT_CHARGE_STARTED,
 	PCHG_EVENT_CHARGE_UPDATE,
