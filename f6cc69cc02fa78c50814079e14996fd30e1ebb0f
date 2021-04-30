@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5205d94c_941e3b8d",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:42:03Z",
+      "side": 1,
+      "message": "new python should use 4 spaces for indentation\n\nthe old stuff (like chromite) still uses the Google C++ like style",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 2
+      },
+      "revId": "f6cc69cc02fa78c50814079e14996fd30e1ebb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d30560d_ad6dc781",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:42:03Z",
+      "side": 1,
+      "message": "use pathlib.path objects",
+      "range": {
+        "startLine": 106,
+        "startChar": 24,
+        "endLine": 106,
+        "endChar": 36
+      },
+      "revId": "f6cc69cc02fa78c50814079e14996fd30e1ebb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a68e5756_4315ef1a",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:42:03Z",
+      "side": 1,
+      "message": "can we use kconfiglib instead of hand-parsing it ourselves?\n\npretty please :)",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 21
+      },
+      "revId": "f6cc69cc02fa78c50814079e14996fd30e1ebb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9f8bfe4_8409ca1d",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:42:03Z",
+      "side": 1,
+      "message": "typo ... maybe \"function\" instead",
+      "range": {
+        "startLine": 183,
+        "startChar": 10,
+        "endLine": 183,
+        "endChar": 18
+      },
+      "revId": "f6cc69cc02fa78c50814079e14996fd30e1ebb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "057dcf86_e2618246",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:42:03Z",
+      "side": 1,
+      "message": "no from imports in chromium code 😎",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "f6cc69cc02fa78c50814079e14996fd30e1ebb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c081c1_17100c27",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:42:03Z",
+      "side": 1,
+      "message": "pytest since it\u0027s 2021",
+      "range": {
+        "startLine": 34,
+        "startChar": 19,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "f6cc69cc02fa78c50814079e14996fd30e1ebb0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
