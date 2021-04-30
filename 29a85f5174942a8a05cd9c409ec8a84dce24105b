@@ -22,6 +22,30 @@
       },
       "revId": "29a85f5174942a8a05cd9c409ec8a84dce24105b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62ca74af_724f662b",
+        "filename": "zephyr/include/cros/binman.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-04-30T22:25:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce30ee69_3d248490",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 7
+      },
+      "revId": "29a85f5174942a8a05cd9c409ec8a84dce24105b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
