@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e24be55_a3d8ec7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-30T16:47:43Z",
+      "side": 1,
+      "message": "I think the CLs should be organized like:\n\n1st CL: Create common function to check battery level.  This CL also modifies TCPC to call new function.\n2nd CL: update usb_retimer_fw_update.c to call new function.",
+      "revId": "0c268b9b5c1ae8e1065e21a6f8207886cce279a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

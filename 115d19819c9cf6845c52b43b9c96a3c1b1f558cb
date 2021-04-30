@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b8c87ae_d90fbebe",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-30T16:47:43Z",
+      "side": 1,
+      "message": "This will cause usb_retimer_fw_update_get_result() to always return RESUME (1).  How long will the AP poll waiting for this port to suspend?  Can you return USB_RETIMER_FW_UPDATE_ERR?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 0
+      },
+      "revId": "115d19819c9cf6845c52b43b9c96a3c1b1f558cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
