@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07a77cd3_ba6347a8",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-30T21:37:53Z",
+      "side": 1,
+      "message": "Nit - \"so don\u0027t allow PD firmware upgrade on the port.\"",
+      "range": {
+        "startLine": 156,
+        "startChar": 39,
+        "endLine": 157,
+        "endChar": 44
+      },
+      "revId": "fcea1e040a5190f61a2dc9a4dee61de6ef4ac75a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
