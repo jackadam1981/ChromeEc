@@ -13,6 +13,14 @@ import os
 import re
 import sys
 
+# Try to use kconfiglib if available, but fall back to a simple recursive grep
+USE_KCONFIGLIB = False
+try:
+    import kconfiglib
+    USE_KCONFIGLIB = True
+except ImportError:
+    pass
+
 
 def parse_args(argv):
     """Parse the program arguments
@@ -37,7 +45,7 @@ a corresponding Kconfig option for Zephyr"""
         help='Enabling debugging (provides a full traceback on error)')
     parser.add_argument('-p', '--prefix', type=str, default='PLATFORM_EC_',
                         help='Prefix to string from Kconfig options')
-    parser.add_argument('-s', '--srctree', type=str, default='.',
+    parser.add_argument('-s', '--srctree', type=str, default='zephyr/',
                         help='Path to source tree to look for Kconfigs')
 
     subparsers = parser.add_subparsers(dest='cmd', required=True)
@@ -89,12 +97,15 @@ class KconfigCheck:
     def read_configs(cls, configs_file):
         """Read CONFIG options from a file
 
+        The file consists of a number of lines, each containing a CONFIG
+        option
+
         Args:
-            configs_file: Filename to read from
+            configs_file: Filename to read from (e.g. u-boot.cfg)
 
         Returns:
             List of CONFIG_xxx options found in the file, with the 'CONFIG_'
-                prefixremoved
+                prefix removed
         """
         with open(configs_file, 'r') as inf:
             configs = re.findall('CONFIG_([A-Za-z0-9_]*)', inf.read())
@@ -121,25 +132,37 @@ class KconfigCheck:
                 dirs.remove('Kconfig')
         return kconfig_files
 
-    def scan_kconfigs(self, srcdir, prefix=''):
+    @classmethod
+    def scan_kconfigs(cls, srcdir, prefix=''):
         """Scan a source tree for Kconfig options
 
         Args:
-            srcdir: Directory to scan
+            srcdir: Directory to scan (containing top-level Kconfig file)
             prefix: Prefix to strip from the name (e.g. 'PLATFORM_EC_')
 
         Returns:
-            List of config and menuconfig options found,
+            List of config and menuconfig options found
         """
-        kconfigs = []
+        if USE_KCONFIGLIB:
+            kconf = kconfiglib.Kconfig(os.path.join(srcdir, 'Kconfig'),
+                                       warn=False)
 
-        # Remove the prefix if present
-        expr = re.compile(r'(config|menuconfig) (%s)?([A-Za-z0-9_]*)\n' %
-                          prefix)
-        for fname in self.find_kconfigs(srcdir):
-            with open(fname) as inf:
-                found = re.findall(expr, inf.read())
-                kconfigs += [name for kctype, _, name in found]
+            # There is always a MODULES config, since kconfiglib is designed for
+            # linux, but we don't want it
+            kconfigs = filter(lambda name: name != 'MODULES', kconf.syms.keys())
+
+            if prefix:
+                re_drop_prefix = re.compile(r'^%s' % prefix)
+                kconfigs = [re_drop_prefix.sub('', name) for name in kconfigs]
+        else:
+            kconfigs = []
+            # Remove the prefix if present
+            expr = re.compile(r'(config|menuconfig) (%s)?([A-Za-z0-9_]*)\n' %
+                              prefix)
+            for fname in cls.find_kconfigs(srcdir):
+                with open(fname) as inf:
+                    found = re.findall(expr, inf.read())
+                    kconfigs += [name for kctype, _, name in found]
         return kconfigs
 
     def find_new_adhoc_configs(self, configs_file, srcdir, allowed_file,
