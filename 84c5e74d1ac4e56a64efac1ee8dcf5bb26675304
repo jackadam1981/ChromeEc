@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9284ec72_0f9d0b5c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-30T14:54:48Z",
+      "side": 1,
+      "message": "Have you tested other scenarios? Testing disconnects with a variety of devices seems like a good idea.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "84c5e74d1ac4e56a64efac1ee8dcf5bb26675304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2132d5c7_9d4ba6dd",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-04-29T12:13:29Z",
       "side": 1,
       "message": "(1). Before DP teardown EC may get several times IRQ after setting HPD\u003d1. There may be chances to get ACK corresponding to previous mux event IRQ and the current state is disconnect mode. In this scenario     \nthere is a possibility of missing in sending disconnect mode \n\nIdeal way of ACK: ACK should carry a byte of info, bit 0 \u003d disconnect ack, bit 1\u003d usb mode ack,...\n\n(2). In some scenarios we may be sent disconnect mode, but the current patch keeps PD in wait state for 100msec in case of display devices connected. \n\n(3). What is the benefit we get by keeping the PD state machine idle state, when there is a better approach in resolving the issue by setting the disconnect latch flag\n\n(4). please make sure there won\u0027t be any assert issues because of this patch as we saw some time back with this function.",
+      "revId": "84c5e74d1ac4e56a64efac1ee8dcf5bb26675304",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b116dd31_4983088d",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-04-30T14:54:48Z",
+      "side": 1,
+      "message": "I believe the kernel driver always sends the EC_CMD_USB_PD_MUX_ACK if the mux flags change or the data role changes.\n\nWe should consider waiting for the ack if (previous_mux_state !\u003d mux_state).  This is something I would like Intel to test after TBT certification.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 36
+      },
       "revId": "84c5e74d1ac4e56a64efac1ee8dcf5bb26675304",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
