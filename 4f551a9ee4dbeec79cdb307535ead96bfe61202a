@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83819adf_8407cba8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-05-01T13:39:05Z",
+      "side": 1,
+      "message": "Can you open a bug to remove all usages of this so that we can slowly detangle them later?",
+      "revId": "4f551a9ee4dbeec79cdb307535ead96bfe61202a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edebd4f0_56314906",
