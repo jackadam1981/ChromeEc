@@ -185,6 +185,20 @@ get_platform_name() {
   echo "${platform_name}"
 }
 
+# driver <cros-ec|raw> <bind|unbind>
+driver() {
+  local driver="$1"
+  local action="$2"
+
+  case "${driver}" in
+    cros-ec)
+      ;;
+
+    raw)
+      ;;
+  esac
+}
+
 flash_fp_mcu_stm32() {
   local transport="${1}"
   local device="${2}"
