@@ -113,24 +113,6 @@ gpio() {
   done
 }
 
-# Usage: warn_gpio <signal> <expected_value> <msg>
-warn_gpio() {
-  local signal=$1
-  local expected_value=$2
-  local msg=$3
-
-  local value
-  if ! value="$(gpio get "${signal}")"; then
-    echo "Error fetching gpio value ${signal}" >&2
-    exit "${EXIT_RUNTIME}"
-  fi
-
-  if [[ "${value}" != "${expected_value}" ]]; then
-    echo "${msg}" >&2
-    return 1
-  fi
-}
-
 # Taken verbatim from
 # https://chromium.googlesource.com/chromiumos/docs/+/master/lsb-release.md#shell
 # This should not be used by anything except get_platform_name.
@@ -185,6 +167,70 @@ get_platform_name() {
   echo "${platform_name}"
 }
 
+# driver <SPI|UART> <bind|unbind> <cros-ec|raw>
+driver() {
+  local transport="$1"
+  local action="$2"
+  local driver="$3"
+
+  local deviceid
+
+  if [[ "${transport}" == "UART" ]]; then
+    if ! deviceid="$(get_uartid)"; then
+      echo "Unable to find FP sensor UART device: ${CROS_EC_UART_MODALIAS_STR}"
+      return 1
+    fi
+  else
+    if ! deviceid="$(get_spiid)"; then
+      echo "Unable to find FP sensor SPI device: ${CROS_EC_SPI_MODALIAS_STR}"
+      return 1
+    fi
+  fi
+
+  case "${transport}/${action}/${driver}" in
+    SPI/bind/cros-ec)
+      echo "" > "/sys/bus/spi/devices/${deviceid}/driver_override" || return 1
+      echo "${deviceid}" > /sys/bus/spi/drivers/cros-ec-spi/bind || return 1
+      ;;
+    SPI/bind/raw)
+      echo spidev > "/sys/bus/spi/devices/${deviceid}/driver_override" || \
+        return 1
+      echo "${deviceid}" >/sys/bus/spi/drivers/spidev/bind || return 1
+      ;;
+    SPI/unbind/cros-ec)
+      echo "${deviceid}" > /sys/bus/spi/drivers/cros-ec-spi/unbind || return 1
+      ;;
+    SPI/unbind/raw)
+      echo "${deviceid}" > /sys/bus/spi/drivers/spidev/unbind || return 1
+      echo "" > "/sys/bus/spi/devices/${deviceid}/driver_override" || return 1
+      ;;
+
+    UART/bind/cros-ec)
+      echo "Cannot forcibly bind UART cros-ec driver. Please fix."
+      ;;
+    UART/bind/raw)
+      # load AMDI0020:01 ttyS1
+      echo AMDI0020:01 > /sys/bus/platform/drivers/dw-apb-uart/unbind || \
+        return 1
+      echo AMDI0020:01 > /sys/bus/platform/drivers/dw-apb-uart/bind || \
+        return 1
+      ;;
+    UART/unbind/cros-ec)
+      echo "${deviceid}" > /sys/bus/serial/drivers/cros-ec-uart/unbind || \
+        return 1
+      ;;
+    UART/unbind/raw)
+      echo "Cannot unload UART raw interface. Please fix."
+      ;;
+
+    *)
+      echo "Unknown transport/action/driver ${transport}/${action}/${driver}" \
+        >&2
+      return 1
+      ;;
+  esac
+}
+
 flash_fp_mcu_stm32() {
   local transport="${1}"
   local device="${2}"
@@ -192,7 +238,6 @@ flash_fp_mcu_stm32() {
   local gpio_boot0="${4}"
   local gpio_pwren="${5}"
   local file="${6}"
-  local deviceid
 
   local stm32mon_flags="-p --retries ${STM32MON_CONNECT_RETRIES}"
 
@@ -231,33 +276,13 @@ flash_fp_mcu_stm32() {
 
   check_hardware_write_protect_disabled
 
-  if [[ "${transport}" == "UART" ]]; then
-    if ! deviceid="$(get_uartid)"; then
-      echo "Unable to find FP sensor UART device: ${CROS_EC_UART_MODALIAS_STR}"
-      return "${EXIT_PRECONDITION}"
-    fi
-  else
-
-    if ! deviceid="$(get_spiid)"; then
-      echo "Unable to find FP sensor SPI device: ${CROS_EC_SPI_MODALIAS_STR}"
-      return "${EXIT_PRECONDITION}"
-    fi
-  fi
-
-  echo "Flashing ${transport} device ID: ${deviceid}"
+  echo "Flashing FPMCU using ${transport}."
 
   # Ensure the ACPI is not cutting power when unloading cros-ec-spi
   if [[ "${gpio_pwren}" -gt 0 ]]; then
     gpio export "${gpio_pwren}"
     gpio out    "${gpio_pwren}"
     gpio 1      "${gpio_pwren}"
-  fi
-
-  # Remove cros_fp if present
-  if [[ "${transport}" == "UART" ]]; then
-    echo "${deviceid}" > /sys/bus/serial/drivers/cros-ec-uart/unbind
-  else
-    echo "${deviceid}" > /sys/bus/spi/drivers/cros-ec-spi/unbind
   fi
 
   # Configure the MCU Boot0 and NRST GPIOs
@@ -268,26 +293,6 @@ flash_fp_mcu_stm32() {
   gpio 1 "${gpio_boot0}"
   gpio 0 "${gpio_nrst}"
   sleep 0.001
-
-  if [[ "${transport}" == "UART" ]]; then
-    # load AMDI0020:01 ttyS1
-    echo AMDI0020:01 > /sys/bus/platform/drivers/dw-apb-uart/unbind;
-    echo AMDI0020:01 > /sys/bus/platform/drivers/dw-apb-uart/bind;
-  else
-    echo spidev > "/sys/bus/spi/devices/${deviceid}/driver_override"
-    echo "${deviceid}" > /sys/bus/spi/drivers/spidev/bind
-    # The following sleep is a workaround to mitigate the effects of a
-    # poorly behaved chip select line. See b/145023809.
-  fi
-  sleep 0.5
-
-  # We do not expect the drivers to change the pin state when binding.
-  # If you receive this warning, the driver needs to be fixed on this board
-  # and this flash attempt will probably fail.
-  warn_gpio "${gpio_boot0}" 1 \
-    "WARNING: One of the drivers changed BOOT0 pin state on bind attempt."
-  warn_gpio "${gpio_nrst}" 0 \
-    "WARNING: One of the drivers changed NRST pin state on bind attempt."
 
   local attempt=0
   local cmd_exit_status=1
@@ -322,11 +327,6 @@ flash_fp_mcu_stm32() {
     sleep 1
   done
 
-  # unload device
-  if [[ "${transport}" != "UART" ]]; then
-    echo "${deviceid}" > /sys/bus/spi/drivers/spidev/unbind
-  fi
-
   # Go back to normal mode
   gpio out "${gpio_nrst}"
   gpio 0   "${gpio_boot0}" "${gpio_nrst}"
@@ -340,31 +340,15 @@ flash_fp_mcu_stm32() {
   fi
   gpio unexport "${gpio_boot0}" "${gpio_nrst}"
 
+  if [[ "${gpio_pwren}" -gt 0 ]]; then
+    gpio unexport "${gpio_pwren}"
+  fi
+
   # wait for FP MCU to come back up (including RWSIG delay)
   sleep 2
 
-  # Put back cros_fp driver if transport is SPI
-  if [[ "${transport}" != "UART" ]]; then
-    echo "" > "/sys/bus/spi/devices/${deviceid}/driver_override"
-    echo "${deviceid}" > /sys/bus/spi/drivers/cros-ec-spi/bind
-
-    # Kernel driver is back, we are no longer controlling power
-    if [[ "${gpio_pwren}" -gt 0 ]]; then
-      gpio unexport "${gpio_pwren}"
-    fi
-  fi
-
   if [[ "${cmd_exit_status}" -ne 0 ]]; then
     return "${EXIT_RUNTIME}"
-  fi
-
-  # Inform user to reboot if transport is UART.
-  # Display fw version is transport is SPI
-  if [[ "${transport}" == "UART" ]]; then
-    echo "Please reboot this device."
-  else
-    # Test it
-    ectool --name=cros_fp version
   fi
 }
 
@@ -478,6 +462,23 @@ config_guybrush() {
   readonly GPIO_PWREN=-1
 }
 
+# Intentionally ignore all post condition errors.
+cleanup_drivers() {
+  local transport="$1"
+
+  driver "${transport}" unbind raw
+  driver "${transport}" bind cros-ec
+
+  # Inform user to reboot if transport is UART.
+  # Display fw version is transport is SPI
+  if [[ "${transport}" == "UART" ]]; then
+    echo "Please reboot this device."
+  else
+    # Test it
+    ectool --name=cros_fp version
+  fi
+}
+
 main() {
   if [[ "$#" -eq 0 ]] && [[ "${FLAGS_hello}" -eq "${FLAGS_FALSE}" ]]; then
     echo "Missing filename"
@@ -521,6 +522,13 @@ main() {
     exit "${EXIT_CONFIG}"
   fi
 
+  trap "cleanup_drivers ${TRANSPORT}" EXIT
+  driver "${TRANSPORT}" unbind cros-ec || exit "${EXIT_PRECONDITION}"
+  driver "${TRANSPORT}" bind raw || exit "${EXIT_PRECONDITION}"
+  # The following sleep is a workaround to mitigate the effects of a
+  # poorly behaved chip select line. See b/145023809.
+  sleep 0.5
+
   flash_fp_mcu_stm32 \
     "${TRANSPORT}"   \
     "${DEVICE}"      \
@@ -528,7 +536,9 @@ main() {
     "${GPIO_BOOT0}"  \
     "${GPIO_PWREN}"  \
     "${1}"
-  exit $?
+  exit "$?"
+
+  # Don't forget that cleanup_drivers runs on exit.
 }
 
 main "$@"
