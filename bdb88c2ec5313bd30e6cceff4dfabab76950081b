@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "713cb631_7e5ee126",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-05-01T13:41:51Z",
+      "side": 1,
+      "message": "Really this should have been a CONFIG_ option...\n\nKconfig makes it easier (and we have it in the Zephyr world)...\n\nOK I guess 😞",
+      "revId": "bdb88c2ec5313bd30e6cceff4dfabab76950081b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
