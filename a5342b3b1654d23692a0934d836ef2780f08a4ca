@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "721f7d51_6e389591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-05-01T16:04:51Z",
+      "side": 1,
+      "message": "A forward fix already landed in crrev.com/c/2865026\n\nRevert if you want, but the problem was already solved",
+      "revId": "a5342b3b1654d23692a0934d836ef2780f08a4ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
