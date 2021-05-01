@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a941e224_d580a79d",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-01T06:00:46Z",
+      "side": 1,
+      "message": "There is hexdump in common/util.c. printf also supports %ph. Do you still need dump_data?",
+      "range": {
+        "startLine": 367,
+        "startChar": 12,
+        "endLine": 367,
+        "endChar": 21
+      },
+      "revId": "f525adb06c1e0a1dc6676f9106d61fc1f0702696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
