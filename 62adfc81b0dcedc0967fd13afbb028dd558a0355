@@ -22,6 +22,30 @@
       },
       "revId": "62adfc81b0dcedc0967fd13afbb028dd558a0355",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2f7d88_5008f0d8",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-02T04:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "330d1f06_f4802b79",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 136,
+        "endChar": 0
+      },
+      "revId": "62adfc81b0dcedc0967fd13afbb028dd558a0355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
