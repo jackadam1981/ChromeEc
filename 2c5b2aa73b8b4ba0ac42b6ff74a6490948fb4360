@@ -39,6 +39,30 @@
       },
       "revId": "2c5b2aa73b8b4ba0ac42b6ff74a6490948fb4360",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f18b54_2a4a2a91",
+        "filename": "docs/zephyr_build.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-02T14:43:51Z",
+      "side": 1,
+      "message": "Well this is the \u0027Working outside the chroot\u0027 section, after all.\n\nBut \u0027Working inside the chroot\u0027 is actually the first section.\n\nI\u0027ll add a comment about the chroot begin recommended, probably in a separate CL though, as I really want to get these tests in",
+      "parentUuid": "46219543_4ba2211c",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 43
+      },
+      "revId": "2c5b2aa73b8b4ba0ac42b6ff74a6490948fb4360",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
