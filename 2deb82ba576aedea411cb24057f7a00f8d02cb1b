@@ -89,6 +89,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1b920b4_31ba49d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-02T05:39:03Z",
+      "side": 1,
+      "message": "Another out there idea, did you consider using https://docs.zephyrproject.org/latest/reference/drivers/index.html#c.DEVICE_DEFINE? You could set the data pointer there as the device\u0027s data and you also get an init function that can access the device and in turn the data.",
+      "revId": "2deb82ba576aedea411cb24057f7a00f8d02cb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38f9a503_d58f956d",
