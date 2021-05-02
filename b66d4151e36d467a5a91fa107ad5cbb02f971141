@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "809f6e1d_7887c21f",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "489abf42_1b5cdc0e",
+      "range": {
+        "startLine": 108,
+        "startChar": 23,
+        "endLine": 108,
+        "endChar": 24
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84b1e914_64c1a74e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "Could you explain the GPIO and I2C sequence?\n\nWhat about enable is 0, i.e. disable the switchcap? Still doing the GPIO and then I2C?",
+      "range": {
+        "startLine": 110,
+        "startChar": 25,
+        "endLine": 110,
+        "endChar": 31
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb054dbe_8dc5046e",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "The intention of ln9310_software_enable(enable) is to enable the switchcap when the enable\u003d1 and disable it when enable\u003d0.\n\nOriginally (i.e. with no software-workaround) the intention was to set the STANDBY_EN register to be 0 permanently and only toggle the nEN pin to start and stop the chip.  Since we need a software-workaround, we could set the nEN to 0 permanently and toggle STANDBY_EN through the software workaround function.  \n\nI was not sure if the toggling of the nEN (GPIO_SWITCHCAP_ON_L) pin was important for some other reason so I decided to leave it in.  There are three scenarios to address:\n\n\t * Initial battery insertion:\n\t * nEN\u003d1 - make sure the part is in. STANDBY mode\n\t * ln9310_init() - initial condition is STANDBY_EN\u003d1\n\t *\n\t * Power up LN9310:\n\t * nEN\u003d0 - STANDBY_EN should be 1 so this doesn\u0027t trigger startup\n\t * ln9310_software_enable(1) - triggers alternate software-based startup\n\t *\n\t * Power down LN9310:\n\t * nEN\u003d1 - shutdown LN9310 (shutdown seq. does not require modification)\n\t * ln9310_software_enable(0) -\treset LN9310 register to state necessary\n\t * \t\t\t\t\t\t\t\tfor subsequent startups\n\t */",
+      "parentUuid": "84b1e914_64c1a74e",
       "range": {
         "startLine": 110,
         "startChar": 25,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbb9294a_c5a4ed0c",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c774ed52_f11fc373",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 312,
+        "endChar": 1
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3c65f42_635e7d5a",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "Remove the newline.",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 0
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffecf962_9f930e1f",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3c65f42_635e7d5a",
       "range": {
         "startLine": 322,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "979b0d76_74de1b88",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7daeea96_dd811f2c",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 338,
+        "endChar": 1
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3703e5a1_7d706761",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "Remove the newline.",
+      "range": {
+        "startLine": 423,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 0
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc16d4b3_43360096",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3703e5a1_7d706761",
       "range": {
         "startLine": 423,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e42ad2ae_6d15e16e",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3026667_1dba0f2a",
+      "range": {
+        "startLine": 429,
+        "startChar": 27,
+        "endLine": 429,
+        "endChar": 44
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e707fb99_72de487a",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "Add newline between variable declaration and the program.",
+      "range": {
+        "startLine": 430,
+        "startChar": 35,
+        "endLine": 430,
+        "endChar": 36
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7244ea12_5650896e",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e707fb99_72de487a",
       "range": {
         "startLine": 430,
         "startChar": 35,
@@ -208,6 +400,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69695134_f393802b",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cabfd671_3d780057",
+      "range": {
+        "startLine": 451,
+        "startChar": 31,
+        "endLine": 451,
+        "endChar": 32
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8d971a9_504277ad",
@@ -221,6 +437,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "Use spaces",
+      "range": {
+        "startLine": 452,
+        "startChar": 4,
+        "endLine": 452,
+        "endChar": 12
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52e2ba1d_7528c845",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8d971a9_504277ad",
       "range": {
         "startLine": 452,
         "startChar": 4,
@@ -254,6 +494,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7acd1da_1a4393ef",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95fc6968_58350cee",
+      "range": {
+        "startLine": 454,
+        "startChar": 11,
+        "endLine": 454,
+        "endChar": 12
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1ed5c16_2d027b2e",
@@ -267,6 +531,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "Make it (3.1) and (3.2) for the if case and the else case.",
+      "range": {
+        "startLine": 462,
+        "startChar": 18,
+        "endLine": 462,
+        "endChar": 21
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e145c56_9ae07dfb",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1ed5c16_2d027b2e",
       "range": {
         "startLine": 462,
         "startChar": 18,
@@ -300,6 +588,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f40f156_2a9e82f8",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e97af10_c5f4d146",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 0
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15515848_d4d7dbb4",
@@ -313,6 +625,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "Is it necessary to be called inside the while loop?",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 51
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2921b72c_4eb8e90f",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "No, I will move it just before the while loop",
+      "parentUuid": "15515848_d4d7dbb4",
       "range": {
         "startLine": 467,
         "startChar": 0,
@@ -348,6 +684,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17dbabf5_cbe54824",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be any risk to the LN9310 from trying to restart immediately in this scenario.   If a really long interrupt causes the first startup attempt to timeout, will adding a delay before reattempting startup reduce the likelihood of another long interrupt causing the subsequent startup attempt to timeout?  That is the only reason I can think of to add an extra delay here.",
+      "parentUuid": "4bd9bac8_8d0714e1",
+      "range": {
+        "startLine": 481,
+        "startChar": 4,
+        "endLine": 481,
+        "endChar": 18
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "77fbdfe9_10b41c5f",
         "filename": "driver/ln9310.c",
         "patchSetId": 15
@@ -359,6 +719,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "Remove the space.",
+      "range": {
+        "startLine": 489,
+        "startChar": 41,
+        "endLine": 489,
+        "endChar": 42
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb2e32c3_38c96100",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77fbdfe9_10b41c5f",
       "range": {
         "startLine": 489,
         "startChar": 41,
@@ -392,6 +776,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02d0cfb5_c8b3110f",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67bcbfb4_8de6bddf",
+      "range": {
+        "startLine": 495,
+        "startChar": 3,
+        "endLine": 495,
+        "endChar": 4
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e756db46_ae4be9e4",
@@ -405,6 +813,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "If it succeeds at the last iteration. It prints this error. Check the `ln9310_init_completed` instead.",
+      "range": {
+        "startLine": 509,
+        "startChar": 6,
+        "endLine": 509,
+        "endChar": 45
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4695ccb_99dff089",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e756db46_ae4be9e4",
       "range": {
         "startLine": 509,
         "startChar": 6,
@@ -438,6 +870,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bdb38e7_5c7d8d02",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b95230f_a661a4e4",
+      "range": {
+        "startLine": 510,
+        "startChar": 60,
+        "endLine": 510,
+        "endChar": 61
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a00299c4_2a318ee1",
@@ -451,6 +907,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "Move it the above line, less than \u003c80 columns.",
+      "range": {
+        "startLine": 518,
+        "startChar": 4,
+        "endLine": 518,
+        "endChar": 5
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4ae823_41ffda60",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a00299c4_2a318ee1",
       "range": {
         "startLine": 518,
         "startChar": 4,
@@ -484,6 +964,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c73697_1ce2be8b",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f3c3528_160cbd1a",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 1
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea53f041_df83f49e",
@@ -497,6 +1001,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "Remove the newline.",
+      "range": {
+        "startLine": 530,
+        "startChar": 0,
+        "endLine": 530,
+        "endChar": 0
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bd07276_7e08f1b6",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea53f041_df83f49e",
       "range": {
         "startLine": 530,
         "startChar": 0,
@@ -530,6 +1058,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe206bb_5386e71a",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "406216e1_186dbd24",
+      "range": {
+        "startLine": 136,
+        "startChar": 31,
+        "endLine": 136,
+        "endChar": 32
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45565744_f35ddd53",
@@ -543,6 +1095,30 @@
       "writtenOn": "2021-04-30T21:57:04Z",
       "side": 1,
       "message": "Please align this and the below 2 lines.",
+      "range": {
+        "startLine": 187,
+        "startChar": 24,
+        "endLine": 187,
+        "endChar": 25
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72663d53_4f615357",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-02T23:02:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45565744_f35ddd53",
       "range": {
         "startLine": 187,
         "startChar": 24,
