@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "082aeaf7_59de2367",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-05-03T23:55:10Z",
+      "side": 1,
+      "message": "can you please explain in the patch description or on the bug why TPM wipe reset needs to be a special case and what are the problem if reset is not debounced in that case.",
+      "revId": "49d013dfc773203fbf771b9bb70e67ed1f408f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
