@@ -46,6 +46,30 @@
       },
       "revId": "7b1ebcb703a226c9efcfce33643ac0eef4dfeb3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b312fbc_fbd050ae",
+        "filename": "util/ectool.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-05-03T17:59:08Z",
+      "side": 1,
+      "message": "Nit: I\u0027m basically on board with this suggestion, but I think these are both weird idioms. The original code will assign from the string literal and truncate the terminating null, which is pretty much what the compiler is complaining about. Daisuke\u0027s suggestion will do the same thing but hide it in a function call that doesn\u0027t care about truncation. buf is not defined or used as a string, so these are just acrobatics to get around the type system and initialize with a value that\u0027s convenient to type.\n\nIf it\u0027s not too burdensome, what about this?\n .buf \u003d {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31};\n\nOr maybe\n struct ec_params_test_protocol p;\n memset(p.buf, 0xa5, sizeof(p.buf));\n\nThose will change the actual value of buf, but I don\u0027t think that matters.",
+      "parentUuid": "d2094b8d_292cecfd",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 780,
+        "endChar": 32
+      },
+      "revId": "7b1ebcb703a226c9efcfce33643ac0eef4dfeb3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
