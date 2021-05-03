@@ -63,6 +63,23 @@
       "message": "Vadim, can you take a look at my update?\n\nNow with this change cr50 clears reset_in_progress after wiping the tpm.",
       "revId": "008857ff3d91c825f067933c7c0ceeb2a2c0a590",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a52d351_d0ab456a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-05-03T17:23:29Z",
+      "side": 1,
+      "message": "This is not a clean revert of the revert, there is some modification, do I get it right?\n\nBut in this case this should not be a revert patch, this should be a new patch, preferably first upload showing the original patch and then another one showing the fix.",
+      "revId": "008857ff3d91c825f067933c7c0ceeb2a2c0a590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
