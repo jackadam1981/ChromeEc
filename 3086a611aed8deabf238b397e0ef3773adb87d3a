@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a0acd5c_c141d7ad",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-03T17:07:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4162ec9b_50bf839d",
+      "revId": "3086a611aed8deabf238b397e0ef3773adb87d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0677b149_45fe0bda",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-03T16:17:26Z",
       "side": 1,
       "message": "In order to maintain GPIO_PULL_DWN also output value on this pin (Yes, I know that it configured as input) shall be set to LOW.\nplease add \nflags |\u003d GPIO_LOW;",
+      "revId": "3086a611aed8deabf238b397e0ef3773adb87d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af03b795_a83e8edd",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-03T17:07:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0677b149_45fe0bda",
       "revId": "3086a611aed8deabf238b397e0ef3773adb87d3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "830e6a6c_da29a264",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-03T17:07:32Z",
+      "side": 1,
+      "message": "Done\n\nto be safe added check for (GPIO_HIGH | GPIO_LOW)",
+      "parentUuid": "39e5e6c0_b5e97ca7",
+      "revId": "3086a611aed8deabf238b397e0ef3773adb87d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2aeed4d9_921df620",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-05-03T16:17:26Z",
       "side": 1,
       "message": "EC_ERROR_UNIMPLEMENTED?",
+      "revId": "3086a611aed8deabf238b397e0ef3773adb87d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce1fbc75_571a29b0",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-03T17:07:32Z",
+      "side": 1,
+      "message": "Done\n\nconsole commands need this function return success, added a TODO so that we can add actual code",
+      "parentUuid": "2aeed4d9_921df620",
       "revId": "3086a611aed8deabf238b397e0ef3773adb87d3a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
