@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4162ec9b_50bf839d",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1510379
+      },
+      "writtenOn": "2021-05-03T16:17:26Z",
+      "side": 1,
+      "message": "In order to maintain GPIO_PULL_UP also output value on this pin (Yes, I know that it configured as input) shall be set to HIGH.\nplease add \nflags |\u003d GPIO_HIGH;",
+      "revId": "3086a611aed8deabf238b397e0ef3773adb87d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0677b149_45fe0bda",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1510379
+      },
+      "writtenOn": "2021-05-03T16:17:26Z",
+      "side": 1,
+      "message": "In order to maintain GPIO_PULL_DWN also output value on this pin (Yes, I know that it configured as input) shall be set to LOW.\nplease add \nflags |\u003d GPIO_LOW;",
+      "revId": "3086a611aed8deabf238b397e0ef3773adb87d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e5e6c0_b5e97ca7",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1510379
+      },
+      "writtenOn": "2021-05-03T16:17:26Z",
+      "side": 1,
+      "message": "no need to check for GPIO_OUTPUT. There will be no adverse effect to set output value for input pins, even more for PULL_UP and PULL_DWN it is required",
+      "revId": "3086a611aed8deabf238b397e0ef3773adb87d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aeed4d9_921df620",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1510379
+      },
+      "writtenOn": "2021-05-03T16:17:26Z",
+      "side": 1,
+      "message": "EC_ERROR_UNIMPLEMENTED?",
+      "revId": "3086a611aed8deabf238b397e0ef3773adb87d3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
