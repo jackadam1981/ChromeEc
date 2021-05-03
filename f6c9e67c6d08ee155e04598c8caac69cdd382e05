@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c28f7352_d0d0975f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-03T14:38:57Z",
+      "side": 1,
+      "message": "zephyr: Add port80 Kconfig option\n\n(the zephyr tag tells us it touches the zephyr/ dir)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "f6c9e67c6d08ee155e04598c8caac69cdd382e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd6635cb_9de79d35",
+        "filename": "zephyr/Kconfig.port80",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-03T14:38:57Z",
+      "side": 1,
+      "message": "allow the common\n\nshould it be \u00274-byte codes\u0027 ?",
+      "revId": "f6c9e67c6d08ee155e04598c8caac69cdd382e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
