@@ -16,6 +16,23 @@
       "message": "Thank you for adding. Pow-Tech battery has a pending CL here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2861056. Please rebase on this CL. ",
       "revId": "e2fb4c8660268fb49d5be5b12542c9b2a86c61bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c15af6c6_87af39cc",
+        "filename": "board/guybrush/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-03T16:09:32Z",
+      "side": 1,
+      "message": "We already added POWTECH in this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2861056\n\nCan you rebase to include it?",
+      "revId": "e2fb4c8660268fb49d5be5b12542c9b2a86c61bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
