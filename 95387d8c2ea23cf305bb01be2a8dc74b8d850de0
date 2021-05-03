@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "034375ab_d9c4c2df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-05-03T16:11:40Z",
+      "side": 1,
+      "message": "That\u0027s fine, but from experience the macro trick is better than the parameter, as the macros to access register will be necessary.",
+      "parentUuid": "10b309a9_a6f46d3b",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a819ef8_4b763deb",
         "filename": "driver/accelgyro_icm42607.c",
         "patchSetId": 2
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "Reading the FIFO flush to ensure value is 0 is required to have the FIFO flush correctly working and put FIFO out of reset state. Cutting that in 2 would be really tricky since FIFO flush is done when turning the FIFO (meaning all sensors) off. We don\u0027t really now when to read the FIFO flush since all will be off.",
       "parentUuid": "4a819ef8_4b763deb",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af2cab2_4ea91ac9",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-05-03T16:11:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32941ef7_570129b9",
       "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -154,6 +190,24 @@
       "side": 1,
       "message": "bus read/write must be atomic since before reading/write a register, there can be a change required to bank register or MREG access registers. That\u0027s why we are putting mutex around all bus access.",
       "parentUuid": "fa4fe497_f5dac9cc",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e214056_ab6c7a68",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-05-03T16:11:40Z",
+      "side": 1,
+      "message": "If the lock is only to protect from MREG concurrent access, let\u0027s access where we are accessing MREG: it is fine at init. When changing hw offset, it can be an issue. We could disable sample gathering (set frequencies to 0), change parameter and set it back.",
+      "parentUuid": "6d4cf689_21319014",
       "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -329,6 +383,24 @@
       "side": 1,
       "message": "For the 1st init of the sensor, we will have a total of 1.58ms sleep (1ms for reset, 300us for OTP power-up, 280us for OTP reload).\nIf needed to reduce 1st startup time, we can use for loops for checking startup reset and OTP reload. We cannot check for the OTP power-up. Tell me if we have to do it.",
       "parentUuid": "8e86faf7_bdb75165",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a195c8f_3f49f363",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-05-03T16:11:40Z",
+      "side": 1,
+      "message": "Please do, we have a hard requirement regarding time to power up to login screen, and every ms counts.",
+      "parentUuid": "911d5d8d_cfe6d321",
       "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
