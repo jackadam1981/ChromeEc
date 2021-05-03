@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b2c5b77_9e98a08b",
+        "filename": "zephyr/zmake/tests/test_multiproc_logging.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-03T15:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b397c554_0659f32e",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "53c1b1d2616639099a9d63128b8ea20f2f8d6e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe723a7f_055df3ea",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-05-02T05:45:52Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "53c1b1d2616639099a9d63128b8ea20f2f8d6e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4654a7aa_3b5e44aa",
+        "filename": "zephyr/zmake/tests/test_multiproc_logging.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-03T15:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe723a7f_055df3ea",
       "range": {
         "startLine": 26,
         "startChar": 4,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1eef4aa_8d6c65fe",
+        "filename": "zephyr/zmake/tests/test_multiproc_logging.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-03T15:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa7943bf_a286f7bc",
+      "range": {
+        "startLine": 59,
+        "startChar": 4,
+        "endLine": 59,
+        "endChar": 11
+      },
+      "revId": "53c1b1d2616639099a9d63128b8ea20f2f8d6e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "250547df_8e64db07",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-05-02T05:45:52Z",
       "side": 1,
       "message": "and here",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 11
+      },
+      "revId": "53c1b1d2616639099a9d63128b8ea20f2f8d6e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7174ac5f_d3d8eece",
+        "filename": "zephyr/zmake/tests/test_multiproc_logging.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-03T15:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "250547df_8e64db07",
       "range": {
         "startLine": 82,
         "startChar": 4,
@@ -150,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b1f603_fff062e6",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-03T15:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e495617_50d28d0a",
+      "range": {
+        "startLine": 261,
+        "startChar": 23,
+        "endLine": 261,
+        "endChar": 32
+      },
+      "revId": "53c1b1d2616639099a9d63128b8ea20f2f8d6e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce3ad49b_c5e9af53",
@@ -163,6 +283,30 @@
       "writtenOn": "2021-05-02T05:45:52Z",
       "side": 1,
       "message": "Seems like we have the same string computed twice here, might be cleaner to set it above then pass it to the log_output function.",
+      "range": {
+        "startLine": 261,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 41
+      },
+      "revId": "53c1b1d2616639099a9d63128b8ea20f2f8d6e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52cda22f_a6989182",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-03T15:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce3ad49b_c5e9af53",
       "range": {
         "startLine": 261,
         "startChar": 16,
@@ -196,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c65b19_816ffbec",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-03T15:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bfad2f2_52eee78e",
+      "range": {
+        "startLine": 333,
+        "startChar": 20,
+        "endLine": 333,
+        "endChar": 60
+      },
+      "revId": "53c1b1d2616639099a9d63128b8ea20f2f8d6e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7d14b35f_d5152bab",
@@ -219,6 +387,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "360a5965_c8b92552",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-03T15:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d14b35f_d5152bab",
+      "range": {
+        "startLine": 391,
+        "startChar": 34,
+        "endLine": 391,
+        "endChar": 65
+      },
+      "revId": "53c1b1d2616639099a9d63128b8ea20f2f8d6e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "592a11f6_67035503",
@@ -232,6 +424,30 @@
       "writtenOn": "2021-05-02T05:45:52Z",
       "side": 1,
       "message": "Same here, compute the job_id once.",
+      "range": {
+        "startLine": 541,
+        "startChar": 16,
+        "endLine": 541,
+        "endChar": 56
+      },
+      "revId": "53c1b1d2616639099a9d63128b8ea20f2f8d6e7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b9a3648_6824215b",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-03T15:26:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "592a11f6_67035503",
       "range": {
         "startLine": 541,
         "startChar": 16,
