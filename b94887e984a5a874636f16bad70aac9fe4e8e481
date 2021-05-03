@@ -66,6 +66,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9bf64ed1_f52610dc",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-03T21:57:46Z",
+      "side": 1,
+      "message": "Remove the tailing space.",
+      "range": {
+        "startLine": 122,
+        "startChar": 50,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ac7554_c7ced293",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-03T21:57:46Z",
+      "side": 1,
+      "message": "Modify the style to multi-line comment, like\n /*\n  * LINE 1\n  * LINE 2\n  */",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 4
+      },
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fac8f3e_546cddbf",
         "filename": "driver/ln9310.c",
         "patchSetId": 16
@@ -83,6 +129,23 @@
         "endLine": 513,
         "endChar": 61
       },
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ae48a0b_b0bab7c4",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-03T21:57:46Z",
+      "side": 1,
+      "message": "Remove this extra newline.",
       "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
