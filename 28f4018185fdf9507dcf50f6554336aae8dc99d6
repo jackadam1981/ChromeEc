@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e1ecfe_0dd63d54",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-03T07:49:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2740e70_e1c21530",
+      "revId": "28f4018185fdf9507dcf50f6554336aae8dc99d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "abf7236e_b4c5f984",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b94ab1df_87fb49a5",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3235,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-03T07:49:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abf7236e_b4c5f984",
+      "revId": "28f4018185fdf9507dcf50f6554336aae8dc99d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5978661_4d42dadd",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-04-29T13:17:42Z",
       "side": 1,
       "message": "This needs to be added to the zephyr kconfig as well. Check compile time warnings/errors.",
+      "revId": "28f4018185fdf9507dcf50f6554336aae8dc99d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2495a445_d1a74d7d",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3236,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-03T07:49:47Z",
+      "side": 1,
+      "message": "Another CL:/2866029 is pushed to add the new option to Zephyr Kconfig.",
+      "parentUuid": "c5978661_4d42dadd",
       "revId": "28f4018185fdf9507dcf50f6554336aae8dc99d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
