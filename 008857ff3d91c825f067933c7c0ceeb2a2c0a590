@@ -98,6 +98,24 @@
       "parentUuid": "3a52d351_d0ab456a",
       "revId": "008857ff3d91c825f067933c7c0ceeb2a2c0a590",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d3c40e_0f9c0110",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-05-03T17:44:22Z",
+      "side": 1,
+      "message": "this patch should not be called a revert, revert is a straight git operation without any modifications.\n\nPlease just copy the original patch description editing it as appropriate, maybe mention there that this is the second attempt.",
+      "parentUuid": "20d34821_1f32c16d",
+      "revId": "008857ff3d91c825f067933c7c0ceeb2a2c0a590",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
