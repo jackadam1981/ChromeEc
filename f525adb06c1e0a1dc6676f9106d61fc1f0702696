@@ -81,6 +81,30 @@
       },
       "revId": "f525adb06c1e0a1dc6676f9106d61fc1f0702696",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58b591fe_a0790048",
+        "filename": "util/ec_sb_firmware_update.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-03T21:22:27Z",
+      "side": 1,
+      "message": "Looks like \"%pd\" doesn\u0027t work with libc",
+      "parentUuid": "118029f6_88355303",
+      "range": {
+        "startLine": 367,
+        "startChar": 12,
+        "endLine": 367,
+        "endChar": 21
+      },
+      "revId": "f525adb06c1e0a1dc6676f9106d61fc1f0702696",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
