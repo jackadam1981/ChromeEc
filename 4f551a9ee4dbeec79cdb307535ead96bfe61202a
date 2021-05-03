@@ -39,6 +39,30 @@
       },
       "revId": "4f551a9ee4dbeec79cdb307535ead96bfe61202a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79122db1_88e865b1",
+        "filename": "include/battery.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-03T22:08:39Z",
+      "side": 1,
+      "message": "If we specifying the underlying type in one location (i.e., in the real forward declaration in baseboard/hatch/baseboard.h), then it needs to be specified everywhere. Otherwise you\u0027ll get the following compilation error:\n\n include/battery.h:60:6: error: enumeration previously declared with fixed underlying type\nenum battery_present {\n     ^\nbaseboard/hatch/baseboard.h:215:22: note: previous declaration is here\nFORWARD_DECLARE_ENUM(battery_present);\n\nWe could skip using the macro for these cases (go back to ifdef __cplusplus) or if you can come up with a better macro name that works for both cases I can change it.",
+      "parentUuid": "edebd4f0_56314906",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "4f551a9ee4dbeec79cdb307535ead96bfe61202a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
