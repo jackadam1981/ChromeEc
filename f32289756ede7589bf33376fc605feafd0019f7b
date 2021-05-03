@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a5b813_91e1af0f",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-03T23:27:27Z",
+      "side": 1,
+      "message": "Does this compile? struct cros_ec_command_v2.",
+      "range": {
+        "startLine": 137,
+        "startChar": 10,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "f32289756ede7589bf33376fc605feafd0019f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "158814d4_752142c3",
+        "filename": "util/comm-servo-spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-03T23:27:27Z",
+      "side": 1,
+      "message": "Can you cast it in line 182 like other cases?",
+      "range": {
+        "startLine": 171,
+        "startChar": 20,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "f32289756ede7589bf33376fc605feafd0019f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f5b6c51_bf00389d",
+        "filename": "util/ectool_keyscan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-03T23:27:27Z",
+      "side": 1,
+      "message": "Does this compile?",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 21
+      },
+      "revId": "f32289756ede7589bf33376fc605feafd0019f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "618b13f7_e279c545",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-03T23:27:27Z",
+      "side": 1,
+      "message": "Do you need this?",
+      "range": {
+        "startLine": 664,
+        "startChar": 4,
+        "endLine": 664,
+        "endChar": 13
+      },
+      "revId": "f32289756ede7589bf33376fc605feafd0019f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
