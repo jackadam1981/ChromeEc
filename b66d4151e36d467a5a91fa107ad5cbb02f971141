@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc693349_79baa0c1",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-03T21:54:13Z",
+      "side": 1,
+      "message": "That\u0027s OK. I just wanted to make sure the sequence is intended.",
+      "parentUuid": "bb054dbe_8dc5046e",
+      "range": {
+        "startLine": 110,
+        "startChar": 25,
+        "endLine": 110,
+        "endChar": 31
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c774ed52_f11fc373",
@@ -696,6 +720,30 @@
       "side": 1,
       "message": "There shouldn\u0027t be any risk to the LN9310 from trying to restart immediately in this scenario.   If a really long interrupt causes the first startup attempt to timeout, will adding a delay before reattempting startup reduce the likelihood of another long interrupt causing the subsequent startup attempt to timeout?  That is the only reason I can think of to add an extra delay here.",
       "parentUuid": "4bd9bac8_8d0714e1",
+      "range": {
+        "startLine": 481,
+        "startChar": 4,
+        "endLine": 481,
+        "endChar": 18
+      },
+      "revId": "b66d4151e36d467a5a91fa107ad5cbb02f971141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d70d51a9_a03e0fe5",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-03T21:54:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "17dbabf5_cbe54824",
       "range": {
         "startLine": 481,
         "startChar": 4,

@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ad297a2_0f1b8ee2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-03T21:54:13Z",
+      "side": 1,
+      "message": "Describe the test steps, like at least it doesn\u0027t break the current boot flow.",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 5
+      },
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "597ffa84_78022e90",
@@ -14,6 +37,52 @@
       "writtenOn": "2021-05-02T23:02:49Z",
       "side": 1,
       "message": "I addressed Wai-Hong\u0027s comments.",
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "735cad7e_c195de42",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-03T21:54:13Z",
+      "side": 1,
+      "message": "Add {} too. The if clause and the else clause should do the same for consistency.",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 7
+      },
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fac8f3e_546cddbf",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-03T21:54:13Z",
+      "side": 1,
+      "message": "Remove the tailing space.",
+      "range": {
+        "startLine": 513,
+        "startChar": 60,
+        "endLine": 513,
+        "endChar": 61
+      },
       "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
