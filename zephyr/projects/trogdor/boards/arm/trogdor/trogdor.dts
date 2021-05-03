@@ -8,7 +8,7 @@
 #include <cros/nuvoton/npcx.dtsi>
 #include <dt-bindings/adc/adc.h>
 #include <dt-bindings/gpio_defines.h>
-#include <nuvoton/npcx7m6fc.dtsi>
+#include <nuvoton/npcx7m7fc.dtsi>
 
 / {
 	model = "Google Trogdor Baseboard";
@@ -196,11 +196,6 @@
 		};
 	};
 
-	/* Update flash size to 512KB from 196KB since we are using C variant */
-	/delete-node/ flash@10090000;
-	flash0: flash@10070000 {
-		reg = <0x10070000 0x40000>;
-	};
 };
 
 &uart1 {
