@@ -16,6 +16,24 @@
       "message": "What is this comment-out stuff for?",
       "revId": "a275a2beb479ada7e0451014b7df43ebe6b1c87c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b775e726_0ee7d05e",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-03T17:06:55Z",
+      "side": 1,
+      "message": "DOH! I commented out your test, while I rewrote it to just read from files instead, and forgot to remove it.",
+      "parentUuid": "8bbfecf6_8af48daf",
+      "revId": "a275a2beb479ada7e0451014b7df43ebe6b1c87c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
