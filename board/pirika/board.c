@@ -7,6 +7,7 @@
 
 #include "adc_chip.h"
 #include "button.h"
+#include "cbi_fw_config.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "charger.h"
@@ -21,6 +22,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "intc.h"
+#include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -144,12 +146,12 @@ const struct adc_t adc_channels[] = {
 		.shift = 0,
 		.channel = CHIP_ADC_CH3
 	},
-	[ADC_SUB_ANALOG] = {
-		.name = "SUB_ANALOG",
+	[ADC_TEMP_SENSOR_3] = {
+		.name = "TEMP_SENSOR3",
 		.factor_mul = ADC_MAX_MVOLT,
 		.factor_div = ADC_READ_MAX + 1,
 		.shift = 0,
-		.channel = CHIP_ADC_CH13
+		.channel = CHIP_ADC_CH15
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
@@ -361,6 +363,17 @@ void board_init(void)
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
 			      CHIPSET_STATE_SOFT_OFF);
 	board_power_5v_enable(on);
+
+	if (get_cbi_fw_config_numeric_pad() == NUMERIC_PAD_ABSENT) {
+		/* Disable scanning KSO13 and 14 if keypad isn't present. */
+		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
+	} else {
+		/* Setting scan mask KSO11, KSO12, KSO13 and KSO14 */
+		keyscan_config.actual_key_mask[11] = 0xfe;
+		keyscan_config.actual_key_mask[12] = 0xff;
+		keyscan_config.actual_key_mask[13] = 0xff;
+		keyscan_config.actual_key_mask[14] = 0xff;
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -650,16 +663,54 @@ const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 /* Thermistors */
 const struct temp_sensor_t temp_sensors[] = {
-	[TEMP_SENSOR_1] = {.name = "Memory",
+	[TEMP_SENSOR_1] = {.name = "Charger",
 			   .type = TEMP_SENSOR_TYPE_BOARD,
 			   .read = get_temp_3v3_51k1_47k_4050b,
 			   .idx = ADC_TEMP_SENSOR_1},
-	[TEMP_SENSOR_2] = {.name = "Ambient",
+	[TEMP_SENSOR_2] = {.name = "Vcore",
 			   .type = TEMP_SENSOR_TYPE_BOARD,
 			   .read = get_temp_3v3_51k1_47k_4050b,
 			   .idx = ADC_TEMP_SENSOR_2},
+	[TEMP_SENSOR_3] = {.name = "Ambient",
+			   .type = TEMP_SENSOR_TYPE_BOARD,
+			   .read = get_temp_3v3_51k1_47k_4050b,
+			   .idx = ADC_TEMP_SENSOR_3},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+const static struct ec_thermal_config thermal_charger = {
+	.temp_host = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(85),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(98),
+	},
+	.temp_host_release = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
+	},
+};
+const static struct ec_thermal_config thermal_vcore = {
+	.temp_host = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
+	},
+	.temp_host_release = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(50),
+	},
+};
+const static struct ec_thermal_config thermal_ambient = {
+	.temp_host = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
+	},
+	.temp_host_release = {
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(50),
+	},
+};
+struct ec_thermal_config thermal_params[] = {
+	[TEMP_SENSOR_1] = thermal_charger,
+	[TEMP_SENSOR_2] = thermal_vcore,
+	[TEMP_SENSOR_3] = thermal_ambient,
+};
+BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 #ifndef TEST_BUILD
 /* This callback disables keyboard when convertibles are fully open */
