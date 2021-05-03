@@ -16,6 +16,121 @@
       "message": "Here is a patchset that builds cleanly at ToT. It still needs some cleanup, and I\u0027ll probably split it, into multiple CLs.",
       "revId": "6fe34080a216d305e8e3ee1240086d1430ec5714",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ab1259e_a580f70e",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-03T22:04:56Z",
+      "side": 1,
+      "message": "note?",
+      "range": {
+        "startLine": 155,
+        "startChar": 11,
+        "endLine": 155,
+        "endChar": 14
+      },
+      "revId": "6fe34080a216d305e8e3ee1240086d1430ec5714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc683228_8436006b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-03T22:04:56Z",
+      "side": 1,
+      "message": "I think the pattern with these strings was state in upper and the rest is first letter caps. i.e. PE_UDR_Send_Data_Reset",
+      "range": {
+        "startLine": 465,
+        "startChar": 0,
+        "endLine": 474,
+        "endChar": 59
+      },
+      "revId": "6fe34080a216d305e8e3ee1240086d1430ec5714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c5262e4_51b6274b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 879,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-03T22:04:56Z",
+      "side": 1,
+      "message": "why? If you are making sure calls are not being made when it is undefined, you could assert on IS_ENABLED.  Otherwise the code will optimize away on its own.",
+      "range": {
+        "startLine": 879,
+        "startChar": 1,
+        "endLine": 879,
+        "endChar": 35
+      },
+      "revId": "6fe34080a216d305e8e3ee1240086d1430ec5714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ae9891a_c047c5a8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-03T22:04:56Z",
+      "side": 1,
+      "message": "would \"else if (IS_ENABLED(CONFIG_USB_PD_DATA_RESET_MSG) \u0026\u0026 PE_CHK_DPM_REQUEST...\" work?",
+      "range": {
+        "startLine": 1532,
+        "startChar": 1,
+        "endLine": 1532,
+        "endChar": 34
+      },
+      "revId": "6fe34080a216d305e8e3ee1240086d1430ec5714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e066232_15c28d5c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-03T22:04:56Z",
+      "side": 1,
+      "message": "PE bit in the midst of TC_FLAGS_ bits?  Is BIT(22) overloaded?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 47
+      },
+      "revId": "6fe34080a216d305e8e3ee1240086d1430ec5714",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
