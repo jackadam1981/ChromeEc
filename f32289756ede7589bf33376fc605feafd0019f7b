@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30cfd1b8_d0b9e600",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-03T23:59:46Z",
+      "side": 1,
+      "message": "This is correct for C++, but not C. Fixed.",
+      "parentUuid": "04a5b813_91e1af0f",
+      "range": {
+        "startLine": 137,
+        "startChar": 10,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "f32289756ede7589bf33376fc605feafd0019f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "158814d4_752142c3",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd8e9e7c_217d5ee5",
+        "filename": "util/ectool_keyscan.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-03T23:59:46Z",
+      "side": 1,
+      "message": "This is correct for C++, but not C. Fixed.",
+      "parentUuid": "8f5b6c51_bf00389d",
+      "range": {
+        "startLine": 272,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 21
+      },
+      "revId": "f32289756ede7589bf33376fc605feafd0019f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "618b13f7_e279c545",
@@ -83,6 +131,30 @@
       "writtenOn": "2021-05-03T23:27:27Z",
       "side": 1,
       "message": "Do you need this?",
+      "range": {
+        "startLine": 664,
+        "startChar": 4,
+        "endLine": 664,
+        "endChar": 13
+      },
+      "revId": "f32289756ede7589bf33376fc605feafd0019f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0140dec9_2d9abee9",
+        "filename": "util/stm32mon.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-03T23:59:46Z",
+      "side": 1,
+      "message": "Yes, the type defaults to int:\n\n util/stm32mon.cc:664:5: error: non-constant-expression cannot be narrowed from type \u0027int\u0027 to \u0027uint8_t\u0027 (aka \u0027unsigned char\u0027) in initializer list [-Wc++11-narrowing]\n                                (0xff ^ cmd) };\n                                ^~~~~~~~~~~~\nutil/stm32mon.cc:664:5: note: insert an explicit cast to silence this issue\n                                (0xff ^ cmd) };\n                                ^~~~~~~~~~~~\n                                static_cast\u003cuint8_t\u003e( )",
+      "parentUuid": "618b13f7_e279c545",
       "range": {
         "startLine": 664,
         "startChar": 4,
