@@ -46,9 +46,8 @@ GPIO_INT(ACCEL_GYRO_INT_L,  PIN(A, 0), GPIO_INT_FALLING, motion_interrupt)  /* A
 /* Switchcap
  *
  * For DA9313 SKUs, it is GPIO0 of DA9313. The GPIO0 is configured as PVC_PG.
- * For LN9310 SKUs, it is the interrupt line of LN9310.
  */
-GPIO_INT(DA9313_GPIO0,      PIN(E, 2), GPIO_INT_FALLING, ln9310_interrupt)
+GPIO(DA9313_GPIO0,      PIN(E, 2), GPIO_INPUT | GPIO_PULL_DOWN)
 
 /*
  * EC_RST_ODL used to be a wake source from PSL mode. However, we disabled
