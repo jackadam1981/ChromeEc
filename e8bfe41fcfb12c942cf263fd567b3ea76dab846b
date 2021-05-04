@@ -16,6 +16,23 @@
       "message": "I addressed Wai-Hong\u0027s most recent comments and also made the use of the startup sequence software workaround conditional on the LN9310 CHIP_REV.  \n\nA hardware revision has been made (currently being manufactured) with CHIP_REV\u003d0x4 that addresses the root cause of the SC_OUT glitch.  For any LN9310 revision with this CHIP_REV value or greater, the EC firmware should skip applying the software workaround.  This means not calling the ln9310_update_startup_seq() function from ln9310_init().  It also means skipping the software CFLY precharge sequence in ln9310_software_enable() and its associated timeout/retry loop. \n\nAll other configuration bits (e.g. for 2:1 vs 3:1) set within other segments of code should still be valid on the new revsion and I am leaving these untouched for the sake of limiting the change.  \n",
       "revId": "e8bfe41fcfb12c942cf263fd567b3ea76dab846b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5199c6b5_c8c121fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-05-04T03:25:27Z",
+      "side": 1,
+      "message": "I\u0027m happy with stuff, Tom to do the final +2.\nThanks for bearing with us.",
+      "revId": "e8bfe41fcfb12c942cf263fd567b3ea76dab846b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
