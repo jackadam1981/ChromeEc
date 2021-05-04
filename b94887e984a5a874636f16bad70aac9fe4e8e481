@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "48e1537d_d681459a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-04T01:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ad297a2_0f1b8ee2",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 5
+      },
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "597ffa84_78022e90",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 16
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-03T21:54:13Z",
       "side": 1,
       "message": "Add {} too. The if clause and the else clause should do the same for consistency.",
+      "range": {
+        "startLine": 111,
+        "startChar": 6,
+        "endLine": 111,
+        "endChar": 7
+      },
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ca75df_dd476593",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-04T01:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "735cad7e_c195de42",
       "range": {
         "startLine": 111,
         "startChar": 6,
@@ -110,6 +158,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eabfef8a_44ebca1c",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-04T01:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bf64ed1_f52610dc",
+      "range": {
+        "startLine": 122,
+        "startChar": 50,
+        "endLine": 122,
+        "endChar": 51
+      },
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b50edba_e07ab59a",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-04T01:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6ac7554_c7ced293",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 4
+      },
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fac8f3e_546cddbf",
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eedab367_41e799af",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-04T01:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fac8f3e_546cddbf",
+      "range": {
+        "startLine": 513,
+        "startChar": 60,
+        "endLine": 513,
+        "endChar": 61
+      },
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ae48a0b_b0bab7c4",
@@ -146,6 +266,24 @@
       "writtenOn": "2021-05-03T21:57:46Z",
       "side": 1,
       "message": "Remove this extra newline.",
+      "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00b417a3_24564b3c",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-04T01:04:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ae48a0b_b0bab7c4",
       "revId": "b94887e984a5a874636f16bad70aac9fe4e8e481",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
