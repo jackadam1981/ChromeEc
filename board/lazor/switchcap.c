@@ -12,6 +12,7 @@
 #include "i2c.h"
 #include "power/qcom.h"
 #include "system.h"
+#include "sku.h"
 
 #define CPRINTS(format, args...) cprints(CC_I2C, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_I2C, format, ## args)
@@ -46,7 +47,22 @@ static int board_has_ln9310(void)
 
 static void switchcap_init(void)
 {
-	if (board_has_ln9310()) {
+	if (board_has_da9313()) {
+		CPRINTS("Use switchcap: DA9313");
+
+		/*
+		 * When the chip in power down mode, it outputs high-Z.
+		 * Set pull-down to avoid floating.
+		 */
+		gpio_set_flags(GPIO_DA9313_GPIO0, GPIO_INPUT | GPIO_PULL_DOWN);
+
+		/*
+		 * Configure DA9313 enable, push-pull output. Don't set the
+		 * level here; otherwise, it will override its value and
+		 * shutdown the switchcap when sysjump to RW.
+		 */
+		gpio_set_flags(GPIO_SWITCHCAP_ON, GPIO_OUTPUT);
+	} else if (board_has_ln9310()) {
 		CPRINTS("Use switchcap: LN9310");
 
 		/* Configure and enable interrupt for LN9310 */
@@ -84,47 +100,39 @@ static void switchcap_init(void)
 			gpio_set_level(GPIO_SWITCHCAP_ON_L, 1);
 			ln9310_init();
 		}
-	} else {
-		CPRINTS("Use switchcap: DA9313");
-
-		/*
-		 * When the chip in power down mode, it outputs high-Z.
-		 * Set pull-down to avoid floating.
-		 */
-		gpio_set_flags(GPIO_DA9313_GPIO0, GPIO_INPUT | GPIO_PULL_DOWN);
-
-		/*
-		 * Configure DA9313 enable, push-pull output. Don't set the
-		 * level here; otherwise, it will override its value and
-		 * shutdown the switchcap when sysjump to RW.
-		 */
-		gpio_set_flags(GPIO_SWITCHCAP_ON, GPIO_OUTPUT);
-	}
+	} else
+		CPRINTS("Use Buck IC");
 }
 DECLARE_HOOK(HOOK_INIT, switchcap_init, HOOK_PRIO_DEFAULT);
 
 void board_set_switchcap_power(int enable)
 {
-	if (board_has_ln9310()) {
+	if (board_has_da9313())
+		gpio_set_level(GPIO_SWITCHCAP_ON, enable);
+	else if (board_has_ln9310()) {
 		gpio_set_level(GPIO_SWITCHCAP_ON_L, !enable);
 		ln9310_software_enable(enable);
-	} else {
-		gpio_set_level(GPIO_SWITCHCAP_ON, enable);
-	}
+	} else
+		gpio_set_level(GPIO_VBOB_EN, enable);
 }
 
 int board_is_switchcap_enabled(void)
 {
-	if (board_has_ln9310())
+	if (board_has_da9313())
+		return gpio_get_level(GPIO_SWITCHCAP_ON);
+	else if (board_has_ln9310())
 		return !gpio_get_level(GPIO_SWITCHCAP_ON_L);
 	else
-		return gpio_get_level(GPIO_SWITCHCAP_ON);
+		return gpio_get_level(GPIO_VBOB_EN);
 }
 
 int board_is_switchcap_power_good(void)
 {
-	if (board_has_ln9310())
+	if (board_has_da9313())
+		return gpio_get_level(GPIO_DA9313_GPIO0);
+	else if (board_has_ln9310())
 		return ln9310_power_good();
 	else
-		return gpio_get_level(GPIO_DA9313_GPIO0);
+		/* No way to check POWER GOOD */
+		return 1;
 }

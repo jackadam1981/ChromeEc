@@ -84,3 +84,8 @@ __override uint16_t board_get_ps8xxx_product_id(int port)
 
 	return PS8805_PRODUCT_ID;
 }
+
+int board_has_da9313(void)
+{
+	return get_model() == LAZOR;
+}
