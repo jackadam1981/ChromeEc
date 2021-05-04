@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb60c33d_371aebf2",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-04T16:52:31Z",
+      "side": 0,
+      "message": "Is it intend to remove the CONFIG_DEVICE_EVENT? Philip pointed out in another CL that EC can\u0027t boot when the CONFIG_DEVICE_EVENT is removed.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "214cf91968de5e4ddd83797bac7a7ef4dc0318e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
