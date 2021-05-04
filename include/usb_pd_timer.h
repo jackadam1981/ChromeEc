@@ -35,6 +35,9 @@ enum pd_task_timer {
 	 */
 	PE_TIMER_CHUNKING_NOT_SUPPORTED,
 
+	/* TODO: Explain */
+	PE_TIMER_DATA_RESET_FAIL,
+
 	/*
 	 * This timer is used during an Explicit Contract when discovering
 	 * whether a Port Partner is PD Capable using SOP'.
@@ -121,10 +124,16 @@ enum pd_task_timer {
 	/* Temporary available timeout timer */
 	PE_TIMER_TIMEOUT,
 
+	/* TODO: Explain */
+	PE_TIMER_VCONN_DISCHARGE,
+
 	/*
 	 * This timer is used during a VCONN Swap.
 	 */
 	PE_TIMER_VCONN_ON,
+
+	/* TODO: Explain */
+	PE_TIMER_VCONN_REAPPLIED,
 
 	/*
 	 * This timer is used by the Initiator’s Policy Engine to ensure that
