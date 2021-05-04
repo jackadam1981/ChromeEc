@@ -106,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a55360c9_074c1547",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-05-04T10:13:15Z",
+      "side": 1,
+      "message": "That would be convenient, but then you\u0027ll end up registering hundred of devices which I don\u0027t think stuff in device.c is particularly optimized for, there\u0027s even stuff like this in v2.5 (https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/refs/heads/chromeos-v2.5/kernel/device.c#73, got already reworked in upstream). If the maintainers don\u0027t want extend arguments to sys_init, custom sections may be the way to go, seen it used in some other Zephyr Based SDK as well (the Nordic one).",
+      "parentUuid": "d1b920b4_31ba49d8",
+      "revId": "2deb82ba576aedea411cb24057f7a00f8d02cb1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38f9a503_d58f956d",
