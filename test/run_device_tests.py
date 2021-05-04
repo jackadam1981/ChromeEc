@@ -28,7 +28,8 @@ from typing import Optional, BinaryIO, List
 import colorama  # type: ignore[import]
 
 EC_DIR = Path(os.path.dirname(os.path.realpath(__file__))).parent
-FLASH_SCRIPT = os.path.join(EC_DIR, 'util/flash_jlink.py')
+JTRACE_FLASH_SCRIPT = os.path.join(EC_DIR, 'util/flash_jlink.py')
+SERVO_MICRO_FLASH_SCRIPT = os.path.join(EC_DIR, 'util/flash_ec')
 
 ALL_TESTS_PASSED_REGEX = re.compile(r'Pass!\r\n')
 ALL_TESTS_FAILED_REGEX = re.compile(r'Fail! \(\d+ tests\)\r\n')
@@ -264,14 +265,16 @@ def build(test_name: str, board_name: str) -> None:
     subprocess.run(cmd).check_returncode()
 
 
-def flash(test_name: str, board: str) -> bool:
+def flash(test_name: str, board: str, flasher: str) -> bool:
     """Flash specified test to specified board."""
     logging.info("Flashing test")
 
-    # TODO(b/151105339): Support ./util/flash_ec as well. It's slower, but only
-    # requires servo micro.
+    if flasher == 'jtrace':
+        flash_script = JTRACE_FLASH_SCRIPT
+    elif flasher == 'servo_micro':
+        flash_script = SERVO_MICRO_FLASH_SCRIPT
     cmd = [
-        FLASH_SCRIPT,
+        flash_script,
         '--board', board,
         '--image', os.path.join(EC_DIR, 'build', board, test_name,
                                 test_name + '.bin'),
@@ -414,6 +417,13 @@ def main():
         default='DEBUG'
     )
 
+    flasher_choices = ['servo_micro', 'jtrace']
+    parser.add_argument(
+         '--flasher', '-f',
+         choices=flasher_choices,
+         default='jtrace'
+     )
+
     args = parser.parse_args()
     logging.basicConfig(level=args.log_level)
 
@@ -438,7 +448,7 @@ def main():
         flash_succeeded = False
         for i in range(0, test.num_flash_attempts):
             logging.debug('Flash attempt %d', i + 1)
-            if flash(test.name, args.board):
+            if flash(test.name, args.board, args.flasher):
                 flash_succeeded = True
                 break
             time.sleep(1)
