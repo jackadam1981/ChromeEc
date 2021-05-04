@@ -375,6 +375,11 @@ void tc_usb_firmware_fw_update_run(int port);
  */
 void tc_usb_firmware_fw_update_limited_run(int port);
 
+/*
+ * Instructs the Type-C State Machine to start a Data Reset
+ */
+void tc_start_data_reset(int port);
+
 #ifdef CONFIG_USB_CTVPD
 
 /**
