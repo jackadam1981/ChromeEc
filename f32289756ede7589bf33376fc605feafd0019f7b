@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7d887713_a6247d32",
+        "filename": "util/comm-servo-spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-04T00:04:14Z",
+      "side": 1,
+      "message": "Most of the other functions in this file seem to take \"uint8_t*\" for the data pointer (raw_read, send_request, get_response, etc), so I thought this was more consistent. Do you think it\u0027s ok or you want to keep it as \"void*\"?",
+      "parentUuid": "158814d4_752142c3",
+      "range": {
+        "startLine": 171,
+        "startChar": 20,
+        "endLine": 171,
+        "endChar": 32
+      },
+      "revId": "f32289756ede7589bf33376fc605feafd0019f7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f5b6c51_bf00389d",
         "filename": "util/ectool_keyscan.c",
         "patchSetId": 4
