@@ -45,6 +45,11 @@ void charge_manager_set_ceil(int port, enum ceil_requestor requestor, int ceil)
 	/* Do Nothing, but needed for linking */
 }
 
+void pe_data_reset_complete(int port)
+{
+	/* Do nothing */
+}
+
 void pd_resume_check_pr_swap_needed(int port)
 {
 	/* Do Nothing, but needed for linking */
