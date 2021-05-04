@@ -85,4 +85,22 @@ __override uint16_t board_get_ps8xxx_product_id(int port)
 
 	return PS8805_PRODUCT_ID;
 }
+<<<<<<< HEAD   (7d3281 Coachz: Remove PCHG from RO)
 #endif
+=======
+
+int board_has_da9313(void)
+{
+	return get_model() == LAZOR;
+}
+
+int board_has_buck_ic(void)
+{
+	return get_model() == LIMOZEEN && system_get_board_version() == 0;
+}
+
+int board_has_ln9310(void)
+{
+	return get_model() == LIMOZEEN && system_get_board_version() != 0;
+}
+>>>>>>> CHANGE (1a1bda Limozeen: buck IC solution)
