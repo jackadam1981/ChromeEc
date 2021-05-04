@@ -22,6 +22,30 @@
       },
       "revId": "214cf91968de5e4ddd83797bac7a7ef4dc0318e4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "457d2b01_a53ccb27",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-05-04T16:57:15Z",
+      "side": 0,
+      "message": "I added CONFIG_DEVICE_EVENT back to L65, under CONFIG_PERIPHERAL_CHARGER, since peripheral_charger.c depends on CONFIG_DEVICE_EVENT.",
+      "parentUuid": "eb60c33d_371aebf2",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "214cf91968de5e4ddd83797bac7a7ef4dc0318e4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
