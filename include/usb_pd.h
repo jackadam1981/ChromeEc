@@ -243,6 +243,10 @@ enum pd_rx_errors {
 #define PD_T_DISCOVER_IDENTITY      (45*MSEC) /* between 40ms and 50ms */
 #define PD_T_SYSJUMP              (1000*MSEC) /* 1s */
 #define PD_T_PR_SWAP_WAIT          (100*MSEC) /* tPRSwapWait 100ms */
+#define PD_T_DATA_RESET            (200*MSEC) /* 200ms */
+#define PD_T_DATA_RESET_FAIL       (300*MSEC) /* 300ms */
+#define PD_T_VCONN_REAPPLIED       (100*MSEC) /* TODO find actual value */
+#define PD_T_VCONN_DISCHARGE       (100*MSEC) /*TODO: Find actual value */
 
 /*
  * Non-spec timer to prevent going Unattached if Vbus drops before a partner FRS
@@ -1008,6 +1012,7 @@ enum pd_dpm_request {
 	DPM_REQUEST_SOP_PRIME_SOFT_RESET_SEND   = BIT(20),
 	DPM_REQUEST_FRS_DET_ENABLE		= BIT(21),
 	DPM_REQUEST_FRS_DET_DISABLE		= BIT(22),
+	DPM_REQUEST_DATA_RESET                  = BIT(23),
 };
 
 /**
@@ -1134,8 +1139,8 @@ enum pd_ctrl_msg_type {
 	PD_CTRL_VCONN_SWAP = 11,
 	PD_CTRL_WAIT = 12,
 	PD_CTRL_SOFT_RESET = 13,
-	/* 14-15 Reserved */
-
+	PD_CTRL_DATA_RESET = 14,
+	PD_CTRL_DATA_RESET_COMPLETE = 15,
 	/* Used for REV 3.0 */
 	PD_CTRL_NOT_SUPPORTED = 16,
 	PD_CTRL_GET_SOURCE_CAP_EXT = 17,
