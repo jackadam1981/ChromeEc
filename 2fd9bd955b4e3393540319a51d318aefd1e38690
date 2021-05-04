@@ -79,6 +79,29 @@
       "message": "This shell script continues to get more complex. We should think about moving it to python as long as we only need it in the test image or C++ otherwise (http://go/deshell).",
       "revId": "2fd9bd955b4e3393540319a51d318aefd1e38690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f169d4a2_9b806d27",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 17
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-04T16:34:59Z",
+      "side": 1,
+      "message": "Does this still apply with this change? The unloading is now done before this is called?",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 4
+      },
+      "revId": "2fd9bd955b4e3393540319a51d318aefd1e38690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
