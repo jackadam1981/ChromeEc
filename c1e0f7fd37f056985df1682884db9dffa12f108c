@@ -16,6 +16,24 @@
       "message": "CL:2859968 put the hooks structures back into the data section.  So this CL should no longer be needed.",
       "revId": "c1e0f7fd37f056985df1682884db9dffa12f108c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7eec090f_03320f29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-05-04T06:12:59Z",
+      "side": 1,
+      "message": "OK, abandon this HACK.",
+      "parentUuid": "c6a4642f_6bc0ccf5",
+      "revId": "c1e0f7fd37f056985df1682884db9dffa12f108c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
