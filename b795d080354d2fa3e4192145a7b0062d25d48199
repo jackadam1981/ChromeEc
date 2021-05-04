@@ -33,6 +33,24 @@
       "message": "Also it doesn\u0027t boot since CONFIG_DEVICE_EVENT is removed.",
       "revId": "b795d080354d2fa3e4192145a7b0062d25d48199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6de2b1ff_df13b5e0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-04T16:51:27Z",
+      "side": 1,
+      "message": "Why was CONFIG_DEVICE_EVENT grouped to bringup features? The other CL:2859349 removes CONFIG_DEVICE_EVENT too.",
+      "parentUuid": "6d0d4cb6_026e0d25",
+      "revId": "b795d080354d2fa3e4192145a7b0062d25d48199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
