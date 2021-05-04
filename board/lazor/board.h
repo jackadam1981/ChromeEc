@@ -13,9 +13,6 @@
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE_BYTES (512 * 1024)  /* 512KB internal spi flash */
 
-/* Switchcap */
-#define CONFIG_LN9310
-
 /* Keyboard */
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_KEYBOARD_BOARD_CONFIG
