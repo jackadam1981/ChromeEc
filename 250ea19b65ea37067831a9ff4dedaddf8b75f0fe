@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0b49ad1_2ffb9dfb",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-04T16:09:54Z",
+      "side": 1,
+      "message": "quotes: https://google.github.io/styleguide/shellguide.html#quoting",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 41
+      },
+      "revId": "250ea19b65ea37067831a9ff4dedaddf8b75f0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "220e8086_bfd7d615",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-04T16:09:54Z",
+      "side": 1,
+      "message": "timestamped",
+      "range": {
+        "startLine": 551,
+        "startChar": 43,
+        "endLine": 551,
+        "endChar": 56
+      },
+      "revId": "250ea19b65ea37067831a9ff4dedaddf8b75f0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae01bca4_5c284120",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-04T16:09:54Z",
+      "side": 1,
+      "message": "You can do this check first and add an else case for the write case",
+      "range": {
+        "startLine": 552,
+        "startChar": 4,
+        "endLine": 554,
+        "endChar": 6
+      },
+      "revId": "250ea19b65ea37067831a9ff4dedaddf8b75f0fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
