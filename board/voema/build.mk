@@ -8,7 +8,14 @@
 
 CHIP:=npcx
 CHIP_FAMILY:=npcx7
+# A limited Voema boards are reworked with NPCX797FC variant. Set the
+# modify the variant type to match.
+ifeq ($(BOARD),voema_npcx797fc)
+CHIP_VARIANT:=npcx7m7fc
+else
 CHIP_VARIANT:=npcx7m6fc
+endif
+
 BASEBOARD:=volteer
 
 board-y=board.o
