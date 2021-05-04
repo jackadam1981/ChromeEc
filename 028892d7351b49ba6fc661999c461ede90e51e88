@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57382d3f_2bceac64",
+        "filename": "board/voema/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-05-04T13:55:16Z",
+      "side": 1,
+      "message": "Should be the other way around? Limited boards with 796 variant and will use 797 moving forward?",
+      "range": {
+        "startLine": 11,
+        "startChar": 2,
+        "endLine": 11,
+        "endChar": 60
+      },
+      "revId": "028892d7351b49ba6fc661999c461ede90e51e88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
