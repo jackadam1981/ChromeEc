@@ -33,6 +33,23 @@
       "message": "I\u0027m happy with stuff, Tom to do the final +2.\nThanks for bearing with us.",
       "revId": "e8bfe41fcfb12c942cf263fd567b3ea76dab846b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a97b80_541f8e71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-04T17:49:23Z",
+      "side": 1,
+      "message": "Once the CL is merged, please cherry-pick the CL to Trogdor firmware branch. We use the firmware branch to build the official firmware.",
+      "revId": "e8bfe41fcfb12c942cf263fd567b3ea76dab846b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
