@@ -18,10 +18,13 @@ DEFINE_boolean 'remove_flash_write_protect' "${FLAGS_TRUE}" \
   'Remove flash write protection while performing command' 'u'
 DEFINE_integer 'retries' "${DEFAULT_RETRIES}" 'Specify number of retries' 'R'
 DEFINE_integer 'baudrate' "${STM32MON_SERIAL_BAUDRATE}" 'Specify UART baudrate' 'B'
+# Diagnostic commands
 DEFINE_boolean 'hello' "${FLAGS_FALSE}" 'Only ping the bootloader' 'H'
+DEFINE_string  'bind'   '' 'Force binding the "cros-ec" or "raw" interface.'
+DEFINE_string  'unbind' '' 'Force unbinding the "cros-ec" or "raw" interface.'
 FLAGS_HELP="Usage: ${0} [flags] [ec.bin]"
 
-#        EXIT_SUCCESS=0
+readonly EXIT_SUCCESS=0
 #        EXIT_FAILURE=1
 #        EXIT_BASHBUILTIN=2
 readonly EXIT_ARGUMENT=3
@@ -552,6 +555,24 @@ main() {
     if [[ "${FLAGS_read}" -eq "${FLAGS_TRUE}" ]]; then
       filename="/tmp/fpmcu-fw-$(date --iso-8601=seconds).bin"
     fi
+  fi
+
+  # Handle unbind/bind arguments that do not require invoking stm32mon.
+  if [[ -n "${FLAGS_unbind}" ]]; then
+    if ! driver "${TRANSPORT}" unbind "${FLAGS_unbind}"; then
+      echo "Failed to unbind driver '${FLAGS_unbind}'" >&2
+      exit "${EXIT_RUNTIME}"
+    fi
+  fi
+  if [[ -n "${FLAGS_bind}" ]]; then
+    if ! driver "${TRANSPORT}" bind "${FLAGS_bind}"; then
+      echo "Failed to bind driver '${FLAGS_bind}'" >&2
+      exit "${EXIT_RUNTIME}"
+    fi
+    echo "${DEVICE}"
+  fi
+  if [[ -n "${FLAGS_unbind}" ]] || [[ -n "${FLAGS_bind}" ]]; then
+    exit "${EXIT_SUCCESS}"
   fi
 
   # Check that the gpiochip exists
