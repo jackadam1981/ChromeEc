@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b734c93b_448a2104",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-04T16:33:46Z",
+      "side": 1,
+      "message": "I can\u0027t quite tell which change this is referring to. Can you break it out into a separate commit to make it clearer?",
+      "range": {
+        "startLine": 17,
+        "startChar": 2,
+        "endLine": 19,
+        "endChar": 22
+      },
+      "revId": "2fd9bd955b4e3393540319a51d318aefd1e38690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2a61439_dbeff2a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 17
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-04T16:33:46Z",
+      "side": 1,
+      "message": "Can you break out the removal into a separate commit to make it clearer (and this change smaller)?",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "2fd9bd955b4e3393540319a51d318aefd1e38690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fca7a60c_ea5a3b06",
@@ -14,6 +60,23 @@
       "writtenOn": "2021-05-04T00:41:56Z",
       "side": 1,
       "message": "I will do full test on multiple boards assuming code review looks good.",
+      "revId": "2fd9bd955b4e3393540319a51d318aefd1e38690",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b3fa113_4d3dfc2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-04T16:33:46Z",
+      "side": 1,
+      "message": "This shell script continues to get more complex. We should think about moving it to python as long as we only need it in the test image or C++ otherwise (http://go/deshell).",
       "revId": "2fd9bd955b4e3393540319a51d318aefd1e38690",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
