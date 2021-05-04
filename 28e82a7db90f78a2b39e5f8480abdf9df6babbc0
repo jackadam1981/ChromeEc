@@ -80,6 +80,24 @@
       "message": "Why you make similar CLs but with different description? like crrev.com/c/2859348 and crrev.com/c/2859344. You should make one CL to the main branch. Wait it approved and get it merged, and then cherry-pick it to the firmware branch.",
       "revId": "28e82a7db90f78a2b39e5f8480abdf9df6babbc0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6601dfbb_e6854133",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-05-04T02:45:00Z",
+      "side": 1,
+      "message": "I abandoned the other ones. Let\u0027s focus on this CL and then do the cherry-pick.",
+      "parentUuid": "059476a6_0a78bd72",
+      "revId": "28e82a7db90f78a2b39e5f8480abdf9df6babbc0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
