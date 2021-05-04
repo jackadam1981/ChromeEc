@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08ee4ce3_019b922f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-05-04T09:57:34Z",
+      "side": 1,
+      "message": "OK, refactorization will be done after approval of this CL.",
+      "parentUuid": "034375ab_d9c4c2df",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a819ef8_4b763deb",
@@ -208,6 +226,24 @@
       "side": 1,
       "message": "If the lock is only to protect from MREG concurrent access, let\u0027s access where we are accessing MREG: it is fine at init. When changing hw offset, it can be an issue. We could disable sample gathering (set frequencies to 0), change parameter and set it back.",
       "parentUuid": "6d4cf689_21319014",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a601d78_d0d58cbc",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-05-04T09:57:34Z",
+      "side": 1,
+      "message": "I don\u0027t completely understand when there are potential concurrency happening in the firmware. For sure while running, MREG accesses only happen when turning a sensor on/off (for setting FIFO EN bits) and when reading/setting offset. And when accessing a MREG register, no other chip access is allowed.\n\nMy understanding was that setting sensor on/off and reading/writing offsets are done in a different thread. Is that correct or not? Thanks.",
+      "parentUuid": "6e214056_ab6c7a68",
       "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -401,6 +437,24 @@
       "side": 1,
       "message": "Please do, we have a hard requirement regarding time to power up to login screen, and every ms counts.",
       "parentUuid": "911d5d8d_cfe6d321",
+      "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "003ec9eb_7edf6e47",
+        "filename": "driver/accelgyro_icm42607.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 982,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-05-04T09:57:34Z",
+      "side": 1,
+      "message": "This now done in patchset 3. After investigations, only reset can be reduced in a for loop checking (not possible for OTP reload). We are able to reduce reset time to 400µs most of the time. With this optimization, we can go down from 1.58ms to 0.98ms.",
+      "parentUuid": "1a195c8f_3f49f363",
       "revId": "95387d8c2ea23cf305bb01be2a8dc74b8d850de0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
