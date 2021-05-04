@@ -46,12 +46,14 @@ static struct {
 #define DPM_CHK_FLAG(port, flag) (dpm[(port)].flags & (flag))
 
 /* Flags for internal DPM state */
-#define DPM_FLAG_MODE_ENTRY_DONE BIT(0)
-#define DPM_FLAG_EXIT_REQUEST    BIT(1)
-#define DPM_FLAG_ENTER_DP        BIT(2)
-#define DPM_FLAG_ENTER_TBT       BIT(3)
-#define DPM_FLAG_ENTER_USB4      BIT(4)
-#define DPM_FLAG_SEND_ATTENTION  BIT(5)
+#define DPM_FLAG_MODE_ENTRY_DONE      BIT(0)
+#define DPM_FLAG_EXIT_REQUEST         BIT(1)
+#define DPM_FLAG_ENTER_DP             BIT(2)
+#define DPM_FLAG_ENTER_TBT            BIT(3)
+#define DPM_FLAG_ENTER_USB4           BIT(4)
+#define DPM_FLAG_SEND_ATTENTION       BIT(5)
+#define DPM_FLAG_DATA_RESET_REQUESTED BIT(6)
+#define DPM_FLAG_DATA_RESET_DONE      BIT(7)
 
 #ifdef CONFIG_ZEPHYR
 static int init_vdm_attention_mutex(const struct device *dev)
@@ -132,6 +134,7 @@ enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 
 	DPM_CLR_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE);
 	DPM_CLR_FLAG(port, DPM_FLAG_EXIT_REQUEST);
+	DPM_CLR_FLAG(port, DPM_FLAG_DATA_RESET_DONE);
 
 	return EC_RES_SUCCESS;
 }
@@ -139,6 +142,12 @@ enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 void dpm_init(int port)
 {
 	dpm[port].flags = 0;
+}
+
+void dpm_mode_exit_complete(int port)
+{
+	DPM_CLR_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE | DPM_FLAG_EXIT_REQUEST |
+			DPM_FLAG_SEND_ATTENTION);
 }
 
 static void dpm_set_mode_entry_done(int port)
@@ -151,6 +160,13 @@ static void dpm_set_mode_entry_done(int port)
 void dpm_set_mode_exit_request(int port)
 {
 	DPM_SET_FLAG(port, DPM_FLAG_EXIT_REQUEST);
+}
+
+void dpm_data_reset_complete(int port)
+{
+	DPM_CLR_FLAG(port, DPM_FLAG_DATA_RESET_REQUESTED);
+	DPM_SET_FLAG(port, DPM_FLAG_DATA_RESET_DONE);
+	DPM_CLR_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE);
 }
 
 static void dpm_clear_mode_exit_request(int port)
@@ -273,6 +289,19 @@ static void dpm_attempt_mode_entry(int port)
 				tbt_entry_is_done(port)) ||
 	   (IS_ENABLED(CONFIG_USB_PD_USB4) && enter_usb_entry_is_done(port))) {
 		dpm_set_mode_entry_done(port);
+		return;
+	}
+
+	if (IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) &&
+			!DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_REQUESTED) &&
+			!DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_DONE)) {
+		pd_dpm_request(port, DPM_REQUEST_DATA_RESET);
+		DPM_SET_FLAG(port, DPM_FLAG_DATA_RESET_REQUESTED);
+		return;
+	}
+
+	if (IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) &&
+			!DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_DONE)) {
 		return;
 	}
 
