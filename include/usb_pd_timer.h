@@ -141,6 +141,14 @@ enum pd_task_timer {
 	 */
 	PE_TIMER_WAIT_AND_ADD_JITTER,
 
+	/* TODO: Explain */
+	PE_TIMER_VCONN_DISCHARGE,
+
+	PE_TIMER_VCONN_REAPPLIED,
+
+	/* TODO: Explain */
+	PE_TIMER_DATA_RESET_FAIL,
+
 
 	/* Chunk Sender Response timer */
 	PR_TIMER_CHUNK_SENDER_RESPONSE,
