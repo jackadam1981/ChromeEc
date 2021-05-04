@@ -39,6 +39,23 @@
       "message": "Created http://b/182932028 to get advice from ST on how to handle this properly.",
       "revId": "b37e3439d982e7102448a26f9a91ac30f98c5fa8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b932973_e16cd2b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-04T23:57:33Z",
+      "side": 1,
+      "message": "Based on ST\u0027s response to http://b/182932028#comment12, we will be implementing this sync with DMA. \n\nFor this CL, should we use the CHIP_FAMILY_STM32H7 or CONFIG_ARMV7M_CACHE macro or should we leave the asm lines in https://crrev.com/c/2576799 while we reimplement with DMA?",
+      "revId": "b37e3439d982e7102448a26f9a91ac30f98c5fa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
