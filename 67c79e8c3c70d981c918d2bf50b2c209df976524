@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "696bea87_b086d751",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-05T04:14:25Z",
+      "side": 1,
+      "message": "This was missing, the calls below to motion_sense_fifo_stage_data were staging the previous data[0] which was just a timestamp entry with no actual data so it wasn\u0027t being spread and just using now - 19",
+      "range": {
+        "startLine": 295,
+        "startChar": 1,
+        "endLine": 295,
+        "endChar": 31
+      },
+      "revId": "67c79e8c3c70d981c918d2bf50b2c209df976524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab2530bc_8c035e4f",
+        "filename": "test/motion_sense_fifo.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-05T04:14:25Z",
+      "side": 1,
+      "message": "This is `now + 1` instead of `now` because:\n\n1. When we do our first call to stage_data we get the current time which will roughly equal to `now + 1`, we store that in the `read_ts` value.\n2. When we run the commit logic we calculate the window, this is done by `time_until(first_data_timestamp, read_ts)`, the window is 20 since we basically resolve to `time_until(now - 19, now + 1)`\n3. We update data_periods[] using the min of the window / (sample_count - 1) and period, both of those come out to 20 so the data_period for sensor 0 is 20\n4. We now spread the timestamps, the first entry isn\u0027t spread since it\u0027s our anchor, it returns now - 19.\n5. The second data entry is set to `now - 19 + data_period` which is `now + 1`\n\nWe then get the call to add a timestamp which forces a commit, but the previous data was already commit.\n\nDo we need this to equal `now`? If so we could probably do that, but the issue (which is the reason I never accounted for this) is that there\u0027s no guarantee that we won\u0027t get a host command between the commit and add_timestamp and then we wouldn\u0027t be able to patch things up anyway. That means that if we retroactively fix timestamps after the commit, we can\u0027t guarantee anything about them.",
+      "range": {
+        "startLine": 309,
+        "startChar": 28,
+        "endLine": 309,
+        "endChar": 35
+      },
+      "revId": "67c79e8c3c70d981c918d2bf50b2c209df976524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
