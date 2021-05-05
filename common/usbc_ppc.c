@@ -164,6 +164,10 @@ int ppc_set_vconn(int port, int enable)
 		return EC_ERROR_INVAL;
 	}
 
+	if (!port) {
+		CPRINTS("ppc[%d]: vconn enable = %d", port, enable);
+		//board_debug_gpio(TRIGGER_2, enable, 0);
+	}
 	ppc = &ppc_chips[port];
 	if (ppc->drv->set_vconn)
 		rv = ppc->drv->set_vconn(port, enable);

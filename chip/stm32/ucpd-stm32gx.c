@@ -333,9 +333,15 @@ static void ucpd_log_cc_change(void)
 {
 	enum tcpc_cc_voltage_status v_cc1, v_cc2;
 	uint32_t ts = __hw_clock_source_read();
+	int anamode = !!(STM32_UCPD_CR(0) & STM32_UCPD_CR_ANAMODE);
+
+	stm32gx_ucpd_get_cc(0, &v_cc1, &v_cc2);
 
 	if ((ts - ucpd_cc_term_ts) < 50)
 		return;
+
+	if (!anamode && v_cc1 == TYPEC_CC_VOLT_RD && v_cc2 == TYPEC_CC_VOLT_RD)
+		board_debug_gpio(TRIGGER_1, 1, 2 * MSEC);
 
 	if ((msg_log_idx > 1) && (msg_log[msg_log_idx - 1].dir == dir_cc))
 		return;
@@ -665,12 +671,14 @@ int stm32gx_ucpd_vconn_disc_rp(int port, int enable)
 	 * disconnected from the CCx line prior to enabling vconn.
 	 */
 	if (enable) {
+		board_debug_gpio(TRIGGER_2, 1, 0);
 		/* Get CC polarity */
 		pol = !!(cr & STM32_UCPD_CR_PHYCCSEL);
 		/* Disconnect cc line that is not being used for PD messaging */
 		cc_disable_mask = 1 << (STM32_UCPD_CR_CCENABLE_SHIFT + !pol);
 		cr &= ~cc_disable_mask;
 	} else {
+		board_debug_gpio(TRIGGER_2, 0, 0);
 		/* make sure Rp/Rd is connected */
 		cr |= STM32_UCPD_CR_CCENABLE_MASK;
 	}
@@ -709,6 +717,8 @@ int stm32gx_ucpd_set_cc(int port, int cc_pull, int rp)
 
 	/* Update pull values */
 	STM32_UCPD_CR(port) = cr;
+
+	//board_debug_gpio(TRIGGER_2, 1, 1 * MSEC);
 
 	/*
 	 * When changing from sink to source power role, allow a little time

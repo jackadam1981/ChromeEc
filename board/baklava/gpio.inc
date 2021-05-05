@@ -75,6 +75,8 @@ GPIO(EC_I2C3_SDA,                   PIN(C,  9),  GPIO_ODR_HIGH)
 
 /* misc signals */
 GPIO(BOOT0,                         PIN(B,  8),  GPIO_INPUT)
+GPIO(DEBUG_1, PIN(F, 0), GPIO_OUT_LOW)
+GPIO(DEBUG_2, PIN(F, 1), GPIO_OUT_LOW)
 
 /* Unimplemented signals since we are not an EC */
 UNIMPLEMENTED(ENTERING_RW)
