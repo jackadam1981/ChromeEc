@@ -63,8 +63,8 @@ int adc_read_channel(enum adc_channel ch)
 	if (rv)
 		return rv;
 
-	adc_raw_to_millivolts(adc_ref_internal(adc_dev), ADC_GAIN_1,
-			      CONFIG_PLATFORM_EC_ADC_RESOLUTION, &ret);
+	//adc_raw_to_millivolts(adc_ref_internal(adc_dev), ADC_GAIN_1,
+	//		      CONFIG_PLATFORM_EC_ADC_RESOLUTION, &ret);
 	ret = (ret * adc_channels[ch].factor_mul) / adc_channels[ch].factor_div;
 	return ret;
 }
