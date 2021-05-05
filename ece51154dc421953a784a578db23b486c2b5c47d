@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4765c014_942a380c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1409227
+      },
+      "writtenOn": "2021-05-05T22:50:15Z",
+      "side": 1,
+      "message": "Changed back to CHIP_FAMILY_STM32H7 and retested flash_physical test according to  crrev.com/c/2576799",
+      "revId": "ece51154dc421953a784a578db23b486c2b5c47d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
