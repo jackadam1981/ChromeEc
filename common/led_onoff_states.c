@@ -15,6 +15,7 @@
 #include "led_common.h"
 #include "led_onoff_states.h"
 #include "system.h"
+#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ## args)
 
@@ -30,10 +31,13 @@ __overridable void led_set_color_battery(enum ec_led_colors color)
 {
 }
 
-#ifndef CONFIG_CHARGER
-/* Include for the sake of compilation */
-int charge_get_percent(void);
-#endif
+static int led_get_charge_percent(void)
+{
+	if (IS_ENABLED(CONFIG_BATTERY_EXPORT_DISPLAY_SOC))
+		return DIV_ROUND_NEAREST(charge_get_display_charge(), 10);
+	else
+		return charge_get_percent();
+}
 
 static enum led_states led_get_state(void)
 {
@@ -46,7 +50,7 @@ static enum led_states led_get_state(void)
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
 		/* Get percent charge */
-		charge_lvl = charge_get_percent();
+		charge_lvl = led_get_charge_percent();
 		/* Determine which charge state to use */
 		if (charge_lvl < led_charge_lvl_1)
 			new_state = STATE_CHARGING_LVL_1;
@@ -70,7 +74,7 @@ static enum led_states led_get_state(void)
 	case PWR_STATE_DISCHARGE /* and PWR_STATE_DISCHARGE_FULL */:
 		if (chipset_in_state(CHIPSET_STATE_ON)) {
 #ifdef CONFIG_LED_ONOFF_STATES_BAT_LOW
-			if (charge_get_percent() <
+			if (led_get_charge_percent() <
 				CONFIG_LED_ONOFF_STATES_BAT_LOW)
 				new_state = STATE_DISCHARGE_S0_BAT_LOW;
 			else
