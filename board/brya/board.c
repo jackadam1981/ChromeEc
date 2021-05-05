@@ -91,3 +91,30 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 }
 
 #endif /* CONFIG_CHARGE_RAMP_SW */
+
+static int send_uart_break(int argc, char **argv)
+{
+	int break_us = 550;
+	char *e;
+
+	if (argc >= 2) {
+		break_us = strtoi(argv[1], &e, 10);
+
+		if (*e)
+			return EC_ERROR_PARAM1;
+	}
+	ccprintf("Will send a wake on break signal for %dus ...\n", break_us);
+	gpio_config_module(MODULE_UART, 0);
+
+	gpio_set_flags(GPIO_UART_EC_TX_DEBUG_RX, GPIO_OUT_LOW);
+	usleep(break_us);
+	gpio_set_level(GPIO_UART_EC_TX_DEBUG_RX, 1);
+
+	gpio_config_module(MODULE_UART, 1);
+	ccprintf("UART break done\n");
+
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(breakus, send_uart_break,
+			"usec",
+			"Send a break on main uart for specified usecs");

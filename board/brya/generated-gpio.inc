@@ -33,6 +33,8 @@ GPIO_INT(USB_C2_PPC_INT_ODL,             PIN(7, 0), GPIO_INT_BOTH, ppc_interrupt
 GPIO_INT(USB_C2_RT_INT_ODL,              PIN(4, 1), GPIO_INT_BOTH, retimer_interrupt)
 
 /* USED GPIOs: */
+GPIO(UART_EC_TX_DEBUG_RX,            PIN(6, 5), GPIO_OUT_HIGH)
+GPIO(UART_EC_RX_DEBUG_TX,            PIN(6, 4), GPIO_DEFAULT)
 GPIO(CCD_MODE_ODL,                   PIN(E, 5), GPIO_INPUT)
 GPIO(CHARGER_VAP_OTG_EN,             PIN(7, 3), GPIO_OUT_LOW)
 GPIO(CPU_C10_GATE_L,                 PIN(6, 7), GPIO_INPUT)
