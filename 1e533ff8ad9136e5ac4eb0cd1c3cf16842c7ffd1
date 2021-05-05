@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fca932a_cb557ad4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-05-05T17:05:42Z",
+      "side": 1,
+      "message": "I don\u0027t have a problem with this approach, but would it be more future-proof to stick -D_GNU_SOURCE in our CPPFLAGS in Makefile.toolchain?\n\nHow does _GNU_SOURCE get defined in the C++ build? Can we cause the C build to do it the same way?",
+      "revId": "1e533ff8ad9136e5ac4eb0cd1c3cf16842c7ffd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
