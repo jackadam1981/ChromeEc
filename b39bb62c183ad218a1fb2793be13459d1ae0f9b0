@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a96d81c_d94a92d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-05-05T17:43:29Z",
+      "side": 1,
+      "message": "LGTM, only 1 nit.",
+      "revId": "b39bb62c183ad218a1fb2793be13459d1ae0f9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1517a326_6fd3e70a",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1266306
+      },
+      "writtenOn": "2021-05-05T17:43:29Z",
+      "side": 1,
+      "message": "Put \u0027jtrace\u0027 and \u0027servo_micro\u0027 into constants to be referenced here and on lines 420, 424.",
+      "revId": "b39bb62c183ad218a1fb2793be13459d1ae0f9b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
