@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e6e9a3e_e13fd9ae",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-06T20:24:12Z",
+      "side": 1,
+      "message": "Can you add an \"else\" case to log an error and return false? Something like:\n\n else:\n   logging.error(\u0027Unknown flasher: \"%s\"\u0027, flasher)\n   return False",
+      "range": {
+        "startLine": 277,
+        "startChar": 4,
+        "endLine": 277,
+        "endChar": 8
+      },
+      "revId": "fb182eb746451ee78626c6b921b624f6d5dcc30e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
