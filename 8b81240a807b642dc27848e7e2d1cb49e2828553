@@ -16,6 +16,29 @@
       "message": "Addressed Wai-Hong\u0027s suggestions.  Should  ",
       "revId": "8b81240a807b642dc27848e7e2d1cb49e2828553",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d3275f4_7cd2776d",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-06T21:20:27Z",
+      "side": 1,
+      "message": "Move it to the next line.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "8b81240a807b642dc27848e7e2d1cb49e2828553",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
