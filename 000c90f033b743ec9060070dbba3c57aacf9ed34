@@ -16,6 +16,23 @@
       "message": "Retested flash_physical on dartmonkey. ",
       "revId": "000c90f033b743ec9060070dbba3c57aacf9ed34",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24c7c1f5_7109e9b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-06T21:08:43Z",
+      "side": 1,
+      "message": "Can you do the rename described in https://crrev.com/c/2576799/17..21/chip/stm32/flash-stm32h7.c#b206 in a followup commit?",
+      "revId": "000c90f033b743ec9060070dbba3c57aacf9ed34",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
