@@ -241,6 +241,7 @@ void board_hibernate_late(void)
 	#if CONFIG_USB_PD_PORT_MAX_COUNT > 1
 		gpio_set_flags(GPIO_USB_C1_INT_ODL, GPIO_INPUT);
 	#endif
+
 	/*
 	 * Turn on the Z state.  This will not return as it will cut power to
 	 * the EC.
