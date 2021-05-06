@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20db1234_ab6c0bc7",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-06T01:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b4a09c2_746225a6",
+      "revId": "15b42bdebffc905bb2851d97dfc6cad3cb40f2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "305b1865_5772be24",
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5999665d_421d05d4",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-06T01:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "305b1865_5772be24",
+      "revId": "15b42bdebffc905bb2851d97dfc6cad3cb40f2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aacc7f9_0d14e6eb",
@@ -82,6 +118,24 @@
       "writtenOn": "2021-04-28T23:46:44Z",
       "side": 1,
       "message": "I changed the names here for clarity of function.  Both of these unlock register access but only 0xAA also enables test mode (TM) functionality.  I edited ln9310.c accordingly.",
+      "revId": "15b42bdebffc905bb2851d97dfc6cad3cb40f2ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2b8f835_8fc9d32e",
+        "filename": "include/driver/ln9310.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-06T01:30:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aacc7f9_0d14e6eb",
       "revId": "15b42bdebffc905bb2851d97dfc6cad3cb40f2ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -50,6 +50,41 @@
       "message": "Once the CL is merged, please cherry-pick the CL to Trogdor firmware branch. We use the firmware branch to build the official firmware.",
       "revId": "e8bfe41fcfb12c942cf263fd567b3ea76dab846b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fca5214_8c6130c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-06T01:30:33Z",
+      "side": 1,
+      "message": "Should it be cherry-picked to the `firmware-trogdor-13577.B-master` branch or `firmware-trogdor-13577.B-cr50_stab` ?  \n\nWe will have a servo board to be able to try out the firmware very soon so the faster we can get the firmware to test out the better.  Please let me know if there is something else I need to do to make this happen",
+      "parentUuid": "54a97b80_541f8e71",
+      "revId": "e8bfe41fcfb12c942cf263fd567b3ea76dab846b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb01933_868eaacc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-06T01:30:33Z",
+      "side": 1,
+      "message": "Resolving some comments I missed or that were just informational and asked a question for Wai-Hong",
+      "revId": "e8bfe41fcfb12c942cf263fd567b3ea76dab846b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
