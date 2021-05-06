@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f68389_92ce1d04",
+        "filename": "driver/usb_mux/anx3443.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-06T06:59:31Z",
+      "side": 1,
+      "message": "I am not sure if we should just reutrn EC_ERROR_INVAL if setting mux to USB_PD_MUX_NONE... but this might get a even worse result. We might also confuse that the mux state always not in USB_PD_MUX_NONE state after setting it as the value... probably this is the best result we could have with anx3443.",
+      "revId": "1cd46aab375d56c4c5cacba20254fd4840d93ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
