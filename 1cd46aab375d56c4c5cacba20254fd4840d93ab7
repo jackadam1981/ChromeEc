@@ -16,6 +16,24 @@
       "message": "I am not sure if we should just reutrn EC_ERROR_INVAL if setting mux to USB_PD_MUX_NONE... but this might get a even worse result. We might also confuse that the mux state always not in USB_PD_MUX_NONE state after setting it as the value... probably this is the best result we could have with anx3443.",
       "revId": "1cd46aab375d56c4c5cacba20254fd4840d93ab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "432f1cc2_435c7957",
+        "filename": "driver/usb_mux/anx3443.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-05-06T07:17:15Z",
+      "side": 1,
+      "message": "Return error is okay but it spams ec console, so I didn\u0027t choose this.\n\nAnother way is to cache the last requested state in some static variable. So we can always return the expected answer.",
+      "parentUuid": "a5f68389_92ce1d04",
+      "revId": "1cd46aab375d56c4c5cacba20254fd4840d93ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
