@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "199f9f94_8074c58b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-06T07:23:32Z",
+      "side": 1,
+      "message": "Let\u0027s see if Tom has anything to say about this.",
+      "revId": "1cd46aab375d56c4c5cacba20254fd4840d93ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5f68389_92ce1d04",
@@ -32,6 +49,24 @@
       "side": 1,
       "message": "Return error is okay but it spams ec console, so I didn\u0027t choose this.\n\nAnother way is to cache the last requested state in some static variable. So we can always return the expected answer.",
       "parentUuid": "a5f68389_92ce1d04",
+      "revId": "1cd46aab375d56c4c5cacba20254fd4840d93ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ea7ca7_9bae1b2f",
+        "filename": "driver/usb_mux/anx3443.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-06T07:23:32Z",
+      "side": 1,
+      "message": "I have thought about this, but I don\u0027t think it\u0027s a better solution, since the SS mux is actually connected, but we report NONE.",
+      "parentUuid": "432f1cc2_435c7957",
       "revId": "1cd46aab375d56c4c5cacba20254fd4840d93ab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
