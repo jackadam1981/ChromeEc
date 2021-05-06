@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffb15677_5362f36b",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-06T17:19:29Z",
+      "side": 1,
+      "message": "The way this is coded creates warnings for any portx that is not used in the below conditional code. Can you change that?  Maybe as follows:\n\n#if DT_NODE_HAS_STATUS(DT_NODELABEL(i2c0), okay)\n\t{\n\t\tconst struct device *portb \u003d\n\t\t\tDEVICE_DT_GET(DT_NODELABELK(pinmuxb));\n\n\t\t/* I2C0 CLK */\n\t\tpinmux_pin_set(portb, 3, IT8XXX2_PINMUX_FUNC_1);\n\t\t/* I2C0 DAT */\n\t\tpinmux_pin_set(portb, 4, IT8XXX2_PINMUX_FUNC_1);\n\t}\n#endif\n#if DT_NODE_HAS_STATUS(DT_NODELABEL(i2c1), okay)\n\t{\n\t\tconst struct device *portc \u003d\n\t\t\tDEVICE_DT_GET(DT_NODELABELK(pinmuxc));\n\n\t\t/* I2C1 CLK */\n\t\tpinmux_pin_set(portc, 1, IT8XXX2_PINMUX_FUNC_1);\n\t\t/* I2C1 DAT */\n\t\tpinmux_pin_set(portc, 2, IT8XXX2_PINMUX_FUNC_1);\n\t}\n#endif\n\t...",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "67caa99faeae64b66c45cc51a367588ea041a2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
