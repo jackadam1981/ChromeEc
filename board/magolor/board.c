@@ -331,6 +331,7 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, hdmi_disable, HOOK_PRIO_DEFAULT);
 
 void board_hibernate(void)
 {
+	gpio_set_level(GPIO_SUB_C1_INT_EN_RAILS_ODL, 1);
 	/*
 	 * Both charger ICs need to be put into their "low power mode" before
 	 * entering the Z-state.
@@ -736,7 +737,7 @@ void board_init(void)
 		gpio_set_flags(GPIO_EC_I2C_SUB_C1_SCL_HDMI_EN_ODL,
 			       chipset_in_state(CHIPSET_STATE_ON) ?
 						GPIO_ODR_LOW : GPIO_ODR_HIGH);
-		gpio_set_flags(GPIO_SUB_C1_INT_EN_RAILS_ODL,   GPIO_ODR_HIGH);
+		gpio_set_flags(GPIO_SUB_C1_INT_EN_RAILS_ODL, GPIO_ODR_HIGH);
 
 		/* Select HDMI option */
 		gpio_set_level(GPIO_HDMI_SEL_L, 0);
