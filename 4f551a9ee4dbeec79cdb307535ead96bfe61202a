@@ -105,6 +105,30 @@
       },
       "revId": "4f551a9ee4dbeec79cdb307535ead96bfe61202a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a30d2c83_d0b87ac2",
+        "filename": "include/battery.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-05-06T16:26:06Z",
+      "side": 1,
+      "message": "A combination of better compiler checks as well as being able to use \"libec\", which can act as a unified source of EC command code (with unit tests). New EC commands can be added in \"libec\" and shared between ectool as well as other binaries (biod, cros_healthd, powerd, etc: http://b/144959033, http://b/187371195)",
+      "parentUuid": "c5c00868_ddcb77dd",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "4f551a9ee4dbeec79cdb307535ead96bfe61202a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
