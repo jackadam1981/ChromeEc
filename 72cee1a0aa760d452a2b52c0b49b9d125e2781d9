@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a2fe2df_04208c84",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-06T17:40:21Z",
+      "side": 1,
+      "message": "This call makes the same check for tpm seed as above:\n\nderive_encryption_key -\u003e get_ikm -\u003e !fp_tpm_seed_is_set()\n\n---------------\n\nMaybe we need to clarify the errors being returned.\n\nWe already have the following to work with:\n* EC_RES_SUCCESS\n* EC_RES_INVALID_COMMAND\n* EC_RES_ERROR\n* EC_RES_INVALID_PARAM\n* EC_RES_ACCESS_DENIED\n* EC_RES_UNAVAILABLE\n\n\nI think the get_ikm function returns the ec enum EC_ERROR_ACCESS_DENIED when the TPM seed isn\u0027t set, but then the errors aren\u0027t propagated/translated.",
+      "range": {
+        "startLine": 471,
+        "startChar": 8,
+        "endLine": 471,
+        "endChar": 29
+      },
+      "revId": "72cee1a0aa760d452a2b52c0b49b9d125e2781d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da6dcddd_983dcb63",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-06T17:40:21Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 610,
+        "startChar": 8,
+        "endLine": 610,
+        "endChar": 29
+      },
+      "revId": "72cee1a0aa760d452a2b52c0b49b9d125e2781d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
