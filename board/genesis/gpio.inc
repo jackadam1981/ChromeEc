@@ -34,8 +34,9 @@ GPIO_INT(PG_PP1200_U_OD,       PIN(2, 1), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(SLP_S3_L,             PIN(A, 5), GPIO_INT_BOTH, slp_s3_interrupt)
 #endif
 GPIO_INT(PG_PP950_VCCIO_OD,    PIN(1, 7), GPIO_INT_BOTH, power_signal_interrupt)
-GPIO_INT(SLP_S0_L,             PIN(D, 5), GPIO_INT_BOTH, power_signal_interrupt)
 GPIO_INT(IMVP8_VRRDY_OD,       PIN(1, 6), GPIO_INT_BOTH, power_signal_interrupt)
+
+GPIO(SLP_S0_L,                 PIN(D, 5), GPIO_INPUT)
 
 /*
  * Directly connected recovery button (not available on some boards).
