@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "971640ea_9d3e0e6b",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-06T20:53:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d1cfccf_838b7aaa",
+      "range": {
+        "startLine": 128,
+        "startChar": 19,
+        "endLine": 128,
+        "endChar": 20
+      },
+      "revId": "97dd6c2e7f1c1b3c5e96a45b1144b63149b7a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "06f7a767_e08b4711",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2f7524e_e5cb5cd3",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-06T20:53:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06f7a767_e08b4711",
+      "range": {
+        "startLine": 135,
+        "startChar": 22,
+        "endLine": 135,
+        "endChar": 23
+      },
+      "revId": "97dd6c2e7f1c1b3c5e96a45b1144b63149b7a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02f49361_e90c61a6",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-05-06T20:29:56Z",
       "side": 1,
       "message": "Don\u0027t need {} for oneline statement.",
+      "range": {
+        "startLine": 493,
+        "startChar": 29,
+        "endLine": 493,
+        "endChar": 31
+      },
+      "revId": "97dd6c2e7f1c1b3c5e96a45b1144b63149b7a188",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83cfe12e_f79447fe",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-06T20:53:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f49361_e90c61a6",
       "range": {
         "startLine": 493,
         "startChar": 29,
