@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5ce726_efa35b07",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-06T17:21:21Z",
+      "side": 1,
+      "message": "Paranoia hit me when I woke up, and I think I should make one more change.  My concern is if for any reason the LN9310 is reset (weird droop on the battery?) the software workaround changes will be wiped out and not get rewritten until the battery is removed and reinserted.  \n\nI made a new function called ln9310_reset_detected() to check a single byte (LN9310_REG_LION_CTRL) to see if it has been reset to its reset value (0x00 in this case).  LN9310_REG_LION_CTRL is set to non-zero values during the various init functions.  I changed the target value LN9310_LION_CTRL_LOCK from 0x00 to 0x22 to make sure the code never leaves the register at the reset value of 0x00.  Note that 0x22 is functionally equivalent to 0x00 from the perspective of LN9310 (i.e. the private register space is still locked and no special modes are enabled).  \n\nThe new function is then used to conditionally call ln9310_init() again just before any power enable/disable operation if a reset has been detected.  The primary concern is enable but I checked it should be ok for disable as well and I think it is safest to be sure the state is as expected before any action.",
+      "revId": "8972c9dd2e78c123b55116445b7c93afb464ddcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
