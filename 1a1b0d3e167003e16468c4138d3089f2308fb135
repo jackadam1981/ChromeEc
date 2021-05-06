@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b6152cb_b9ab6d3a",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-05-06T18:02:45Z",
+      "side": 1,
+      "message": "Just curious. \nWhat is the basis to have a config macro undefined in included/config.h bug defined in cr50/board.h, or in the opposite way?",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 504,
+        "endChar": 23
+      },
+      "revId": "1a1b0d3e167003e16468c4138d3089f2308fb135",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
