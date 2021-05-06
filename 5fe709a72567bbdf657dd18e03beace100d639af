@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6718cbe_7dd1d74b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-06T15:50:49Z",
+      "side": 1,
+      "message": "Wai-Hong and Alex,\n\nParanoia hit me when I woke up, and I think I should make one more change.  I think I should add in a check within ln9310_software_enable() function that checks one of the registers of the software sequence to verify that it has been written to the proper value.  It it hasn\u0027t, then I can call the ln9310_init() function again before attempting the software enable.  My concern is if for any reason the LN9310 is reset (weird droop on the battery?) the software workaround changes will be wiped out and not get rewritten until the battery is removed and reinserted.  The future revised part wouldn\u0027t have this issue because it won\u0027t rely on the workaround and if it gets reset for some reason, the internal LN9310 registers will be properly reinitialized from the LN9310\u0027s internal OTP.\n\n\nIf you guys agree with this change, should I make it here in this CL and resubmit to the commit queue?  Do I need to use the \"Revert\" and/or \"Create Reland\" options?  \n\n",
+      "revId": "5fe709a72567bbdf657dd18e03beace100d639af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
