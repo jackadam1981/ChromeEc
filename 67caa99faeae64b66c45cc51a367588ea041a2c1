@@ -22,6 +22,30 @@
       },
       "revId": "67caa99faeae64b66c45cc51a367588ea041a2c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "481fb577_2a4022b8",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-06T17:29:11Z",
+      "side": 1,
+      "message": "I added a CL after this one in the chain that removes the warnings... feel free to squash that into your code.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2876662/1",
+      "parentUuid": "ffb15677_5362f36b",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 0
+      },
+      "revId": "67caa99faeae64b66c45cc51a367588ea041a2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
