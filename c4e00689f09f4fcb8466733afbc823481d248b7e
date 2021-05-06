@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca43a077_423e652c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-06T17:14:07Z",
+      "side": 1,
+      "message": "I\u0027m trying to reduce the size of the CRYPTO_TEST image, so I can reenable the TPM.\n\nAll of those changes are a noop for the standard cr50 image.\n\n",
+      "revId": "c4e00689f09f4fcb8466733afbc823481d248b7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
