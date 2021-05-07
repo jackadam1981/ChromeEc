@@ -16,6 +16,29 @@
       "message": "I\u0027m not going to land these until 5.11 has been built and signed, but there were merge conflicts picking this change. Vadim can you take a look at this to make sure things look ok?\n\nI will revert these after the new eraseflashinfo image is built.",
       "revId": "1b9dc7b20e3fa72553ce9290c4254976e6ca9540",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85ffe7c1_8b72ddab",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-07T18:33:44Z",
+      "side": 1,
+      "message": "This section had the conflict. The GUC branch uses a different API for enabling flash read/write access. \n\nI don\u0027t think we need to enable flash read in this branch so I removed those lines.\n \nI replaced the flash write enable line with the one this branch uses. \n\nI am not entirely sure if it eneds to be before or after mutex_lock. The change moved flash_info_write_enable before the mutex lock, so I did that here.",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 45
+      },
+      "revId": "1b9dc7b20e3fa72553ce9290c4254976e6ca9540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
