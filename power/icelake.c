@@ -99,7 +99,10 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	GPIO_SET_LEVEL(GPIO_PCH_DSW_PWROK, 0);
 
 	/* Turn off DSW load switch. */
-	GPIO_SET_LEVEL(GPIO_EN_PP3300_A, 0);
+	/* GPIO_SET_LEVEL(GPIO_EN_PP3300_A, 0); */
+	/* clear VCI_OUT2 as 0 via VCI_FW_CNTRL = 0 */
+	*(volatile unsigned long*) 0x4000AE00 &= ~(1 << 10);
+	CPRINTS("chipset_force_shutdown: GPIO_EN_PP3300_A is clear: 0x%x", (unsigned int)(*(volatile unsigned long*) 0x4000AE00));
 
 	/*
 	 * For JSL, we need to wait 60ms before turning off PP5000_U to allow
@@ -267,7 +270,11 @@ enum power_state power_handle_state(enum power_state state)
 		 * be done using chipset_pre_init_callback()
 		 */
 		/* Turn on the PP3300_DSW rail. */
-		GPIO_SET_LEVEL(GPIO_EN_PP3300_A, 1);
+		/* GPIO_SET_LEVEL(GPIO_EN_PP3300_A, 1); */
+		/* set VCI_OUT2 as 1 via VCI_FW_CNTRL = 1 */
+		*(volatile unsigned long*) 0x4000AE00 |= (1 << 10);
+		CPRINTS("power_handle_state: POWER_G3S5: GPIO_EN_PP3300_A is set: 0x%x", (unsigned int)(*(volatile unsigned long*) 0x4000AE00));
+
 		if (power_wait_signals(IN_PGOOD_ALL_CORE))
 			break;
 

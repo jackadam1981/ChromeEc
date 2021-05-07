@@ -171,7 +171,8 @@ static void clock_turbo_disable(void)
 	else
 #endif
 		/* Use 12 MHz processor clock for power savings */
-		MCHP_PCR_PROC_CLK_CTL = MCHP_PCR_CLK_CTL_12MHZ;
+		/* 48 MHz processor clock per Chrome EC requirement */
+		MCHP_PCR_PROC_CLK_CTL = MCHP_PCR_CLK_CTL_48MHZ;
 }
 DECLARE_HOOK(HOOK_INIT,
 		clock_turbo_disable,

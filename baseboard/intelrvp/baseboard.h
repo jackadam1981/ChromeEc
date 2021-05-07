@@ -83,7 +83,7 @@
 #define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI2
 
 /* UART */
-#define CONFIG_LOW_POWER_IDLE
+/* #define CONFIG_LOW_POWER_IDLE */
 
 /* USB-A config */
 

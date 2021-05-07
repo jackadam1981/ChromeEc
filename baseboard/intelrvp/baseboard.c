@@ -126,7 +126,10 @@ BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
 static void board_init(void)
 {
 	/* Enable SOC SPI */
-	gpio_set_level(GPIO_EC_SPI_OE_N, 1);
+	/* gpio_set_level(GPIO_EC_SPI_OE_N, 1); */
+	/* Todo: need to rework to GPIO pin */
+	*(volatile unsigned long*) 0x4000ACA0 &= ~(0x0C);
+	*(volatile unsigned long*) 0x4000AC9C = 0x01;
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_LAST);
 
