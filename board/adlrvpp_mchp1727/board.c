@@ -1,0 +1,161 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/* Intel ADLRVP-NPCX board-specific configuration */
+#include "button.h"
+#include "fusb302.h"
+#include "lid_switch.h"
+#include "pca9675.h"
+#include "power.h"
+#include "power_button.h"
+#include "switch.h"
+#include "tablet_mode.h"
+#include "uart.h"
+#include "usb_pd_tcpm.h"
+#include "spi.h"
+#include "spi_chip.h"
+
+#include "gpio_list.h" /* Must come after other header files. */
+
+/******************************************************************************/
+/* I2C ports */
+const struct i2c_port_t i2c_ports[] = {
+	[I2C_CHAN_BATT_CHG] = {
+		.name = "batt_chg",
+		.port = I2C_PORT_CHARGER,
+		.kbps = 100,
+		.scl = GPIO_SMB_BS_CLK,
+		.sda = GPIO_SMB_BS_DATA,
+	},
+	[I2C_CHAN_TYPEC_0] = {
+		.name = "typec_0",
+		.port = I2C_PORT_TYPEC_0,
+		.kbps = 400,
+		.scl = GPIO_USBC_TCPC_I2C_CLK_P0,
+		.sda = GPIO_USBC_TCPC_I2C_DATA_P0,
+	},
+	[I2C_CHAN_TYPEC_1] = {
+		.name = "typec_1",
+		.port = I2C_PORT_TYPEC_1,
+		.kbps = 400,
+		.scl = GPIO_USBC_TCPC_I2C_CLK_P2,
+		.sda = GPIO_USBC_TCPC_I2C_DATA_P2,
+	},
+#if defined(HAS_TASK_PD_C2)
+	[I2C_CHAN_TYPEC_2] = {
+		.name = "typec_2",
+		.port = I2C_PORT_TYPEC_2,
+		.kbps = 400,
+		.scl = GPIO_USBC_TCPC_I2C_CLK_P1,
+		.sda = GPIO_USBC_TCPC_I2C_DATA_P1,
+	},
+#endif
+#if defined(HAS_TASK_PD_C3)
+	[I2C_CHAN_TYPEC_3] = {
+		.name = "typec_3",
+		.port = I2C_PORT_TYPEC_3,
+		.kbps = 400,
+		.scl = GPIO_USBC_TCPC_I2C_CLK_P3,
+		.sda = GPIO_USBC_TCPC_I2C_DATA_P3,
+	},
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(i2c_ports) == I2C_CHAN_COUNT);
+const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
+
+/* USB-C TCPC Configuration */
+const struct tcpc_config_t tcpc_config[] = {
+	[TYPE_C_PORT_0] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_0,
+			.addr_flags = I2C_ADDR_FUSB302_TCPC_AIC,
+		},
+		.drv = &fusb302_tcpm_drv,
+	},
+	[TYPE_C_PORT_1] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_1,
+			.addr_flags = I2C_ADDR_FUSB302_TCPC_AIC,
+		},
+		.drv = &fusb302_tcpm_drv,
+	},
+#if defined(HAS_TASK_PD_C2)
+	[TYPE_C_PORT_2] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_2,
+			.addr_flags = I2C_ADDR_FUSB302_TCPC_AIC,
+		},
+		.drv = &fusb302_tcpm_drv,
+	},
+#endif
+#if defined(HAS_TASK_PD_C3)
+	[TYPE_C_PORT_3] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TYPEC_3,
+			.addr_flags = I2C_ADDR_FUSB302_TCPC_AIC,
+		},
+		.drv = &fusb302_tcpm_drv,
+	},
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+/* SPI devices */
+const struct spi_device_t spi_devices[] = {
+	{ QMSPI0_PORT, 4, GPIO_QMSPI_CS0},
+};
+const unsigned int spi_devices_used = ARRAY_SIZE(spi_devices);
+
+/*
+ * Map ports to controller.
+ * Ports may map to the same controller.
+ * Two USB PD ports are mapped to 2 CTRL.
+ */
+const uint16_t i2c_port_to_ctrl[I2C_PORT_COUNT] = {
+	(MCHP_I2C_CTRL0 << 8) + MCHP_I2C_PORT0,
+	(MCHP_I2C_CTRL1 << 8) + MCHP_I2C_PORT6,
+	(MCHP_I2C_CTRL2 << 8) + MCHP_I2C_PORT7,
+};
+
+/*
+ * default to I2C0 because callers may not check
+ * return value if we returned an error code.
+ */
+int board_i2c_p2c(int port)
+{
+	int i;
+
+	for (i = 0; i < I2C_PORT_COUNT; i++)
+		if ((i2c_port_to_ctrl[i] & 0xFF) == port)
+			return (int)(i2c_port_to_ctrl[i] >> 8);
+
+	return -1;
+}
+
+#ifdef CONFIG_BOARD_PRE_INIT
+/*
+ * Used to enable JTAG debug during development.
+ * NOTE: UART2_TX on the same pin as SWV(JTAG_TDO).
+ * If UART2 is used for EC console you cannot enable SWV.
+ * For no SWV change mode to MCHP_JTAG_MODE_SWD.
+ * For low power idle testing enable GPIO060 as function 2(48MHZ_OUT)
+ * to check PLL is turning off in heavy sleep. Note, do not put GPIO060
+ * in gpio.inc
+ * GPIO060 is port 1 bit[16].
+ */
+void board_config_pre_init(void)
+{
+
+#ifdef CONFIG_CHIPSET_DEBUG
+	MCHP_EC_JTAG_EN = MCHP_JTAG_ENABLE + MCHP_JTAG_MODE_SWD;
+#endif
+	/* disable BGPO1 & 2 as GPIO101 & 102 function */
+	MCHP_WKTIMER_BGPO_POWER &= ~(1 << 2 | 1 << 3);
+}
+#endif /* #ifdef CONFIG_BOARD_PRE_INIT */
