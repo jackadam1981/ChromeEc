@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad67d19_64ae785c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-07T01:44:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b29b4307_8068a0bd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 394
+      },
+      "revId": "d184000f4bbea6ed7390b27a9406cce26e59e500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f094f0c7_20845107",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-07T00:21:34Z",
       "side": 1,
       "message": "Remove the tab.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 1
+      },
+      "revId": "d184000f4bbea6ed7390b27a9406cce26e59e500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23beb1f3_0f24d457",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1451837
+      },
+      "writtenOn": "2021-05-07T01:44:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f094f0c7_20845107",
       "range": {
         "startLine": 128,
         "startChar": 0,
