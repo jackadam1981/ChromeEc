@@ -16,6 +16,23 @@
       "message": "I cherry picked the latest change (that double checks that the LN9310 software workaround is in place on every power-up operation) to the trogdor branch.  I need somebody\u0027s help to put it in the commit queue.  ",
       "revId": "9a0a1341cd70471abe4a0942917756bd52c21561",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "121b591b_5a1ce554",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-05-07T06:00:02Z",
+      "side": 1,
+      "message": "PS: there\u0027s no need to CR+1 yourself.",
+      "revId": "9a0a1341cd70471abe4a0942917756bd52c21561",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
