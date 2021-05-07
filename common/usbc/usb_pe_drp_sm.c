@@ -1684,6 +1684,12 @@ static void send_source_cap(int port)
 	send_data_msg(port, TCPC_TX_SOP, PD_DATA_SOURCE_CAP);
 }
 
+void pe_get_last_request(int port, uint32_t *ma, uint32_t *mv)
+{
+	*ma = pe[port].curr_limit;
+	*mv = pe[port].supply_voltage;
+}
+
 /*
  * Request desired charge voltage from source.
  */
