@@ -24,18 +24,18 @@ test_static int test_pd_find_pdo_index(void)
 	const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
 	uint32_t pdo;
 
-	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 5000, &pdo), 0,
+	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 5000, 0, &pdo), 0,
 		"%d");
-	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 9000, &pdo), 3,
+	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 9000, 0, &pdo), 3,
 		"%d");
-	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 10000, &pdo), 3,
-		"%d");
-	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 12000, &pdo), 4,
-		"%d");
-	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 15000, &pdo), 4,
-		"%d");
-	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 20000, &pdo), 5,
-		"%d");
+	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 10000, 0, &pdo),
+		3, "%d");
+	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 12000, 0, &pdo),
+		4, "%d");
+	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 15000, 0, &pdo),
+		4, "%d");
+	TEST_EQ(pd_find_pdo_index(pd_snk_pdo_cnt, pd_snk_pdo, 20000, 0, &pdo),
+		5, "%d");
 	return EC_SUCCESS;
 }
 

@@ -293,7 +293,7 @@ static void update_ports(void)
 				pdo_index =
 				pd_find_pdo_index(pd_get_src_cap_cnt(CHG),
 					pd_get_src_caps(CHG),
-					pd_src_voltages_mv[i], &pdo);
+					pd_src_voltages_mv[i], 0, &pdo);
 				/* Don't duplicate PDOs */
 				if (pdo_index == snk_index)
 					continue;
