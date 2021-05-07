@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aca74c9_ef8a909d",
+        "filename": "zephyr/zmake/tests/files/sample_err.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-07T17:21:26Z",
+      "side": 1,
+      "message": "These 2 commands don\u0027t actually appear in the stdout of ninja, and should be removed. They are logged by zmake itself.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 45
+      },
+      "revId": "35b0c8b3617318cd46caa6fe576300536210b2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7167eb98_c4052d3c",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-07T17:21:26Z",
+      "side": 1,
+      "message": "This is a cmake error, but do_test_with_log_level calls build() and therefore uses the ninja log level filter instead. I think you need another version of do_test_with_log_level that calls configure instead.",
+      "range": {
+        "startLine": 170,
+        "startChar": 12,
+        "endLine": 170,
+        "endChar": 57
+      },
+      "revId": "35b0c8b3617318cd46caa6fe576300536210b2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
