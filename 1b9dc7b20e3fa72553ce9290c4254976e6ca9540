@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa771e6_36076b69",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-05-07T20:43:25Z",
+      "side": 1,
+      "message": "presumably you tested with 0.0.11",
+      "range": {
+        "startLine": 24,
+        "startChar": 50,
+        "endLine": 24,
+        "endChar": 57
+      },
+      "revId": "1b9dc7b20e3fa72553ce9290c4254976e6ca9540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "86e07070_c2dd75bb",
@@ -31,6 +54,30 @@
       "writtenOn": "2021-05-07T18:33:44Z",
       "side": 1,
       "message": "This section had the conflict. The GUC branch uses a different API for enabling flash read/write access. \n\nI don\u0027t think we need to enable flash read in this branch so I removed those lines.\n \nI replaced the flash write enable line with the one this branch uses. \n\nI am not entirely sure if it eneds to be before or after mutex_lock. The change moved flash_info_write_enable before the mutex lock, so I did that here.",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 45
+      },
+      "revId": "1b9dc7b20e3fa72553ce9290c4254976e6ca9540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9183bc9a_a8c2d72d",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-05-07T20:43:25Z",
+      "side": 1,
+      "message": "yes, looks like info read access is enabled at all times.\n\nKeeping flash_info_write_enable() inside the lock would be slightly more correct, so that in case  there is a preemption between lines 508 and 510 and someone disables write access go the INFO, erase operation would fail.\n\nBut we are doing the write later out of the lock (write itself will acquire the lock), so if someone was about to disable writes, they still would do it.",
+      "parentUuid": "85ffe7c1_8b72ddab",
       "range": {
         "startLine": 495,
         "startChar": 0,
