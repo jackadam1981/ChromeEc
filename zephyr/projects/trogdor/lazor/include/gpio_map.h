@@ -14,6 +14,12 @@
 #endif
 
 /*
+ * TODO(b/187432170) Trogdor defines GPIO_EC_INT_L which is needed for
+ *   common/mkbp_event.c, but shim/src/espi.c depends on GPIO_EC_PCH_WAKE_ODL.
+ */
+#define GPIO_EC_PCH_WAKE_ODL GPIO_EC_INT_L
+
+/*
  * Set EC_CROS_GPIO_INTERRUPTS to a space-separated list of GPIO_INT items.
  *
  * Each GPIO_INT requires three parameters:

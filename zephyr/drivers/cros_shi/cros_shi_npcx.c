@@ -142,6 +142,9 @@ struct cros_shi_npcx_config {
 	struct npcx_wui shi_cs_wui;
 };
 
+/* Cached SHI device pointer */
+static const struct device *shi_dev;
+
 /* SHI bus parameters */
 struct shi_bus_parameters {
 	uint8_t *rx_msg; /* Entry pointer of msg rx buffer   */
@@ -807,6 +810,8 @@ static int shi_npcx_init(const struct device *dev)
 	const struct device *const clk_dev =
 		device_get_binding(NPCX_CLK_CTRL_NAME);
 
+	shi_dev = dev;
+
 	/* Turn on shi device clock first */
 	ret = clock_control_on(clk_dev,
 			       (clock_control_subsys_t *)&config->clk_cfg);
@@ -898,3 +903,13 @@ NPCX_REG_OFFSET_CHECK(shi_reg, IBUFSTAT, 0x00a);
 NPCX_REG_OFFSET_CHECK(shi_reg, EVENABLE2, 0x010);
 NPCX_REG_OFFSET_CHECK(shi_reg, OBUF, 0x020);
 NPCX_REG_OFFSET_CHECK(shi_reg, IBUF, 0x0A0);
+
+void npcx_host_enable_access_interrupt(void)
+{
+	cros_shi_npcx_enable(shi_dev);
+}
+
+void npcx_host_disable_access_interrupt(void)
+{
+	cros_shi_npcx_disable(shi_dev);
+}
