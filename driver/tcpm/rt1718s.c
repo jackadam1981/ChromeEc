@@ -87,6 +87,143 @@ static int rt1718s_sw_reset(int port)
 	return rv;
 }
 
+/* enable bc 1.2 source function  */
+static int rt1718s_enable_bc12_source(int port, bool en)
+{	
+	return rt1718s_update_bits8(port,RT1718S_RT2_BC12_SRC_FUNC, RT1718S_RT2_BC12_SRC_FUNC_BC12_SRC_EN,
+								en ? RT1718S_RT2_BC12_SRC_FUNC_BC12_SRC_EN : 0);
+}
+
+/* enable bc 1.2 sink function  */
+static int rt1718s_enable_bc12_sink(int port, bool en)
+{
+	return rt1718s_update_bits8(port, RT1718S_RT2_BC12_SNK_FUNC, RT1718S_RT2_BC12_SNK_FUNC_BC12_SNK_EN,
+                                en ? RT1718S_RT2_BC12_SNK_FUNC_BC12_SNK_EN : 0);
+}
+
+
+static int rt1718s_set_bc12_source_mode(int port, uint8_t src_mode)
+{
+	return rt1718s_update_bits8(port,
+			RT1718S_RT2_BC12_SRC_FUNC,
+			RT1718S_RT2_BC12_SRC_FUNC_SRC_MODE_SEL_MASK, src_mode);
+}
+
+static int rt1718s_set_bc12_src_wait_vbus_on(int port, bool en)
+{
+	return rt1718s_update_bits8(port,
+			RT1718S_RT2_BC12_SRC_FUNC, 
+			RT1718S_RT2_BC12_SRC_FUNC_WAIT_VBUS_ON, en ? 0xFF : 0);
+}
+
+static int rt1718s_set_bc12_sink_spec_ta(int port,bool en)
+{
+	return rt1718s_update_bits8(port,
+			RT1718S_RT2_BC12_SNK_FUNC, 
+			RT1718S_RT2_BC12_SNK_FUNC_SPEC_TA_EN, en ? 0xFF : 0);	
+}
+
+static int rt1718s_set_bc12_sink_dcdt_sel(int port, uint8_t dcdt_sel)
+{
+	return rt1718s_update_bits8(port,
+			RT1718S_RT2_BC12_SNK_FUNC, 
+			RT1718S_RT2_BC12_SNK_FUNC_DCDT_SEL_MASK, dcdt_sel);
+}
+
+static int rt1718s_set_bc12_sink_vlgc_option(int port, bool en)
+{
+	return rt1718s_update_bits8(port,
+			RT1718S_RT2_BC12_SNK_FUNC, 
+			RT1718S_RT2_BC12_SNK_FUNC_VLGC_OPT, en ? 0xFF : 0);
+}
+
+static int rt1718s_set_bc12_sink_vport_sel(int port, uint8_t sel)
+{
+	return rt1718s_update_bits8(port,
+			RT1718S_RT2_DPDM_CTR1_DPDM_SET, 
+			RT1718S_RT2_DPDM_CTR1_DPDM_SET_DPDM_VSRC_SEL_MASK, sel);
+}
+
+static int rt1718s_set_bc12_sink_wait_vbus(int port, bool en)
+{
+	return rt1718s_update_bits8(port,
+			RT1718S_RT2_BC12_SNK_FUNC,
+			RT1718S_RT2_BC12_SNK_FUNC_BC12_WAIT_VBUS, en ? 0xFF : 0);
+}
+
+/*
+ * rt1718s BC12 function initial
+ */
+static int rt1718s_bc12_init(int port)
+{
+	int rv;
+		
+	/* enable vendor defined BC12 function */
+	rv = rt1718s_write8(port, RT1718S_RT_MASK6, 
+							 (RT1718S_RT_MASK6_M_BC12_SNK_DONE |
+							 RT1718S_RT_MASK6_M_BC12_TA_CHG));
+	if (rv)
+		return rv;	
+	
+	/* set vender defince alert unmasked */
+	rv = rt1718s_update_bits8(port, 0x13, 0x80, 0x80);
+	if (rv)
+		return rv;	
+	
+	/* RT2 0x3A = 0x43 */
+	rv = rt1718s_write8(port,RT1718S_RT2_SBU_CTRL_01,
+						(RT1718S_RT2_SBU_CTRL_01_DPDM_VIEN | 
+						RT1718S_RT2_SBU_CTRL_01_DM_SWEN | 
+						RT1718S_RT2_SBU_CTRL_01_DP_SWEN));
+	if (rv)
+		return rv;
+	
+	/* enable BC12 source mode */
+	rv = rt1718s_set_bc12_source_mode(port, RT1718S_RT2_BC12_SRC_FUNC_SRC_MODE_SEL_BC12_SDP);
+	if (rv)
+		return rv;	
+		
+	/* enable source wait vbus on */
+	rv = rt1718s_set_bc12_src_wait_vbus_on(port, false);
+	if (rv)
+		return rv;	
+
+	/* disable bv 1.2 source function */
+	rv = rt1718s_enable_bc12_source(port, false);
+	if (rv)
+		return rv;	
+	
+	/* disable 2.7v mode */
+	rv = rt1718s_set_bc12_sink_spec_ta(port, false);
+	if (rv)
+		return rv;	
+	
+	/* dcdt select 600ms timeout */ 
+	rv = rt1718s_set_bc12_sink_dcdt_sel(port, RT1718S_RT2_BC12_SNK_FUNC_DCDT_SEL_600MS);
+	if (rv)
+		return rv;	
+	
+	/* disable vlgc option */
+	rv = rt1718s_set_bc12_sink_vlgc_option(port, false);
+	if (rv)
+		return rv;	
+	
+	/* DPDM voltage selection */
+	rv = rt1718s_set_bc12_sink_vport_sel(port, RT1718S_RT2_DPDM_CTR1_DPDM_SET_DPDM_VSRC_SEL_0_65V);
+	if (rv)
+		return rv;
+	
+	/* disable sink wait vbus */
+	rv = rt1718s_set_bc12_sink_wait_vbus(port, false);
+	if (rv)
+		return rv;
+	
+	/* enable bv 1.2 sink function */
+	rv = rt1718s_enable_bc12_sink(port, false);
+	
+	return rv;	
+}
+
 static int rt1718s_init(int port)
 {
 	int sys_ctrl1;
@@ -98,7 +235,7 @@ static int rt1718s_init(int port)
 
 	/* set GPIO2 is push pull, as output, output low. */
 	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO2_CTRL, 0x0E, 0x0C));
-	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO1_CTRL, 0x0E, 0x0C));
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO1_CTRL, 0x0E, 0x0E));
 
 	/* set GPB floating when disable sink vbus by 0x23. */
 	RETURN_ERROR(rt1718s_update_bits8(port, 0xDE, 0xF0, 0x80));
@@ -140,6 +277,8 @@ static int rt1718s_init(int port)
 	/* set Vconn ovp cc1/2 interrupt unmasked */
 	RETURN_ERROR(rt1718s_update_bits8(port, 0x92, 0x03, 0x03));
 
+	RETURN_ERROR(rt1718s_bc12_init(port));
+	
 	/* Disable FOD function */
 	RETURN_ERROR(rt1718s_update_bits8(port, 0xCF, 0x40, 0x00));
 
@@ -161,18 +300,90 @@ static int rt1718s_init(int port)
 	return 0;
 }
 
+static int rt1718s_bc12_snk_done(int port)
+{
+	int rv, data;
+
+	rv = rt1718s_read8(port, RT1718S_RT2_BC12_STAT, &data);
+	if (rv)
+		return rv;
+
+	CPRINTS("\x1b[1;31mbc12_snk_done: %X\x1b[m", data);
+	task_set_event(USB_CHG_PORT_TO_TASK_ID(port), USB_CHG_EVENT_BC12);
+
+	/* check port status */
+	//RT1718S_RT2_BC12_STAT_PORT_STATUS_SDP 
+	//RT1718S_RT2_BC12_STAT_PORT_STATUS_CDP				
+	//RT1718S_RT2_BC12_STAT_PORT_STATUS_DCP
+	//type = data & RT1718S_RT2_BC12_STAT_PORT_STATUS_MASK;
+	
+	/* check is a dcdt */
+	//is_dcdt = ((data & RT1718S_RT2_BC12_STAT_DCDT) != 0);
+	
+	return rv;
+}
+
+static int rt1718s_bc12_ramp_allowed(int supplier)
+{
+	/* TODO */
+	return false;
+}
+
+static void rt1718s_bc12_usb_charger_task(const int port)
+{
+	rt1718s_enable_bc12_sink(port, false);
+
+	while (1) {
+		uint32_t evt = task_wait_event(-1);
+
+		/* vbus change, start bc12 detection */
+		if (evt & USB_CHG_EVENT_VBUS) {
+			if (pd_snk_is_vbus_provided(port))
+				rt1718s_enable_bc12_sink(port, true);
+			/*
+			else
+				mt6360_update_charge_manager(
+						0, CHARGE_SUPPLIER_NONE);
+			*/
+		}
+
+		/* detection done, update charge_manager and stop detection */
+		if (evt & USB_CHG_EVENT_BC12) {
+			rt1718s_enable_bc12_sink(port, false);
+		}
+	}
+}
+
+void rt1718s_vendor_defined_alert(int port)
+{
+	int rv, value;
+	
+	/* Process BC12 alert */
+	rv = rt1718s_read8(port, RT1718S_RT_INT6, &value);
+	if (rv)
+		return;
+	
+	/* clear BC12 alert */
+	rv = rt1718s_write8(port, RT1718S_RT_INT6, value);
+	if (rv)
+		return;
+
+	/* check snk done */
+	if (value & RT1718S_RT_INT6_INT_BC12_SNK_DONE)
+		rt1718s_bc12_snk_done(port);
+
+	/* HACK: clear vconn ov/oc */
+	rt1718s_write8(port, 0x99, 0xFF);
+	rt1718s_write8(port, 0x90, 0x87);
+	rt1718s_write8(port, 0x11, 0x80);
+}
 static void rt1718s_alert(int port)
 {
-	int alert_h;
+	int alert;
 
-	rt1718s_read8(port, 0x11, &alert_h);
-	if (alert_h & 0x80) {
-		CPRINTS("\x1b[1;31mALARM_VBUS_VOLTAGE_L!!\x1b[m");
-		rt1718s_write8(port, 0x99, 0xFF);
-		rt1718s_write8(port, 0x90, 0x87);
-		rt1718s_write8(port, 0x11, 0x80);
-	}
-
+	tcpc_read16(port, TCPC_REG_ALERT, &alert);
+	if (alert & TCPC_REG_ALERT_VENDOR_DEF)
+		rt1718s_vendor_defined_alert(port);
 	tcpci_tcpc_alert(port);
 }
 
@@ -210,6 +421,11 @@ const struct tcpm_drv rt1718s_tcpm_drv = {
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
 #endif
+};
+
+const struct bc12_drv rt1718s_bc12_drv = {
+	.usb_charger_task = rt1718s_bc12_usb_charger_task,
+	.ramp_allowed = rt1718s_bc12_ramp_allowed,
 };
 
 int command_rt_dump(int argc, char **argv)
