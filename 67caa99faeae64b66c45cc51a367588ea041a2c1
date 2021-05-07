@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "360bfd0d_da391597",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-07T21:26:41Z",
+      "side": 1,
+      "message": "This should be signed off by the author.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 50
+      },
+      "revId": "67caa99faeae64b66c45cc51a367588ea041a2c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ffb15677_5362f36b",
         "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
         "patchSetId": 5
