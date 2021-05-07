@@ -22,6 +22,30 @@
       },
       "revId": "d80ea7537f138b3cb22b27ef5e261fafdc8d5ecd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4573545b_140cce76",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-07T19:42:01Z",
+      "side": 1,
+      "message": "I think setting it up in the main app makes sense",
+      "parentUuid": "4df0ebe5_2ccb54f2",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "d80ea7537f138b3cb22b27ef5e261fafdc8d5ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
