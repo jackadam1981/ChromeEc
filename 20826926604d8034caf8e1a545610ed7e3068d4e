@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3583d63e_f7346ff8",
+        "filename": "driver/tcpm/image_b121.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3423,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-07T19:09:32Z",
+      "side": 1,
+      "message": "from cyacd_to_c.c code append the metadata here so that we don\u0027t have to keep two arrays.",
+      "range": {
+        "startLine": 3421,
+        "startChar": 0,
+        "endLine": 3423,
+        "endChar": 29
+      },
+      "revId": "20826926604d8034caf8e1a545610ed7e3068d4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
