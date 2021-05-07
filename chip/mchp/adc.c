@@ -15,6 +15,9 @@
 #include "util.h"
 #include "tfdp_chip.h"
 
+/* Console output macros */
+#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
+
 /*
  * Conversion on a single channel takes less than 12 ms. Set timeout to
  * 15 ms so that we have a 3-ms margin.
@@ -77,11 +80,15 @@ int adc_read_channel(enum adc_channel ch)
 	MCHP_ADC_SINGLE = 1 << adc->channel;
 
 	if (start_single_and_wait(ADC_SINGLE_READ_TIME))
+	{
 		value = (MCHP_ADC_READ(adc->channel) * adc->factor_mul) /
-			adc->factor_div + adc->shift;
+			adc->factor_div + adc->shift;			
+	}
 	else
 		value = ADC_READ_ERROR;
 
+	/* todo: 12bit ADC */
+	value = value >> 2;
 	mutex_unlock(&adc_lock);
 	return value;
 }
@@ -91,6 +98,8 @@ int adc_read_all_channels(int *data)
 	int i;
 	int ret = EC_SUCCESS;
 	const struct adc_t *adc;
+	
+	CPRINTS("adc_read_all_channels: enter??????.");
 
 	mutex_lock(&adc_lock);
 
@@ -124,12 +133,19 @@ exit_all_channels:
 static void adc_init(void)
 {
 	trace0(0, ADC, 0, "adc_init");
+	CPRINTS("adc_init: enter###");
 
 	gpio_config_module(MODULE_ADC, 1);
 
 	/* clear ADC sleep enable */
 	MCHP_PCR_SLP_DIS_DEV(MCHP_PCR_ADC);
-
+	
+	/* todo: 12bit adc in default */
+	CPRINTS("adc_init: Default SAR_ADC_CTRL=0x%x", MCHP_ADC_SAR_ADC_CTRL);	
+	MCHP_ADC_SAR_ADC_CTRL &= ~(1 << 1 | 1 << 2);
+	MCHP_ADC_SAR_ADC_CTRL |= (1 << 2);
+	
+	
 	/* Activate ADC module */
 	MCHP_ADC_CTRL |= BIT(0);
 
@@ -137,6 +153,14 @@ static void adc_init(void)
 	task_waiting = TASK_ID_INVALID;
 	MCHP_INT_ENABLE(MCHP_ADC_GIRQ) = MCHP_ADC_GIRQ_SINGLE_BIT;
 	task_enable_irq(MCHP_IRQ_ADC_SNGL);
+	
+	CPRINTS("adc_init: MCHP_ADC_CTRL=0x%x", MCHP_ADC_CTRL);	
+	CPRINTS("adc_init: MCHP_ADC_SAR_ADC_CTRL=0x%x", MCHP_ADC_SAR_ADC_CTRL);	
+	
+	CPRINTS("adc_init: gpio203 0x%x", (unsigned int)(*(volatile unsigned long*) 0x4008120c));
+	CPRINTS("adc_init: gpio205 0x%x", (unsigned int)(*(volatile unsigned long*) 0x40081214));
+	CPRINTS("adc_init: gpio204 0x%x", (unsigned int)(*(volatile unsigned long*) 0x40081210));
+	CPRINTS("adc_init: gpio200 0x%x", (unsigned int)(*(volatile unsigned long*) 0x40081200));
 }
 DECLARE_HOOK(HOOK_INIT, adc_init, HOOK_PRIO_INIT_ADC);
 
