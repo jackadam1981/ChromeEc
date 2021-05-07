@@ -1245,6 +1245,7 @@ __overridable bool pd_can_source_from_device(int port, const int pdo_cnt,
 		 */
 		pd_find_pdo_index(pdo_cnt, pdos,
 				  PD_REV3_MAX_VOLTAGE,
+				  0,
 				  &max_pdo);
 		pd_extract_pdo_power(max_pdo, &max_ma, &max_mv, &unused);
 		max_mw = max_ma * max_mv / 1000;

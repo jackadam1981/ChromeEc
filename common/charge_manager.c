@@ -906,7 +906,7 @@ static void charge_manager_refresh(void)
 			 */
 			pd_find_pdo_index(pd_get_src_cap_cnt(updated_new_port),
 					  pd_get_src_caps(updated_new_port),
-					  pd_get_max_voltage(), &pdo);
+					  pd_get_max_voltage(), 0, &pdo);
 			pd_extract_pdo_power(pdo, &max_current, &max_voltage,
 					     &unused);
 			if (charge_voltage != max_voltage ||

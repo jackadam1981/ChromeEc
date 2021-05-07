@@ -39,8 +39,8 @@ unsigned int pd_get_max_voltage(void)
  * PD_MAX_VOLTAGE_MV and PD_OPERATING_POWER_MW. And in turn, does not
  * use the following functions.
  */
-int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
-					int max_mv, uint32_t *selected_pdo)
+int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t *const src_caps,
+		      int max_mv, int designated_mv, uint32_t *selected_pdo)
 {
 	int i, uw, mv;
 	int ret = 0;
@@ -88,6 +88,14 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 		if (mv > max_mv)
 			continue;
 		uw = MIN(uw, PD_MAX_POWER_MW * 1000);
+
+		if (mv == designated_mv) {
+			ret = i;
+			cur_uw = uw;
+			cur_mv = mv;
+			break;
+		}
+
 		prefer_cur = 0;
 
 		/* Apply special rules in favor of voltage  */
@@ -98,7 +106,10 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 			if (uw == cur_uw && mv > cur_mv)
 				prefer_cur = 1;
 		} else if (IS_ENABLED(CONFIG_USB_PD_PREFER_MV)) {
-			/* Pick if the PDO provides more than desired. */
+			/*
+			 * TODO(b:169532537): drop it and replace it with APDO.
+			 * Pick if the PDO provides more than desired.
+			 */
 			if (uw >= desired_uw) {
 				/* pick if cur_uw is less than desired watt */
 				if (cur_uw < desired_uw)
@@ -243,7 +254,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	if (charging_allowed && max_request_allowed) {
 		/* find pdo index for max voltage we can request */
 		pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
-						max_request_mv, &pdo);
+						max_request_mv, 0, &pdo);
 	} else {
 		/* src cap 0 should be vSafe5V */
 		pdo_index = 0;
@@ -346,7 +357,7 @@ void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
 		/* Get max power info that we could request */
 		pd_find_pdo_index(pd_get_src_cap_cnt(port),
 					pd_get_src_caps(port),
-					pd_get_max_voltage(), &pdo);
+					pd_get_max_voltage(), 0, &pdo);
 		pd_extract_pdo_power(pdo, &ma, &mv, &unused);
 
 		/* Set max. limit, but apply 500mA ceiling */
