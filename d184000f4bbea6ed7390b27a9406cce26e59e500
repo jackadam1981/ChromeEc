@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b29b4307_8068a0bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-07T00:23:10Z",
+      "side": 1,
+      "message": "Please use the patchset 7. Each line is shorter than 72 cols.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 394
+      },
+      "revId": "d184000f4bbea6ed7390b27a9406cce26e59e500",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f094f0c7_20845107",
         "filename": "driver/ln9310.c",
         "patchSetId": 8
