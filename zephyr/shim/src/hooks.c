@@ -12,6 +12,23 @@
 #include "task.h"
 #include "timer.h"
 
+static int init_hooks(const struct device *unused)
+{
+	ARG_UNUSED(unused);
+
+	/*
+	 * By default, the system workqueue is run at the lowest cooperative
+	 * thread priority, blocking all preemptive threads until the
+	 * deferred work is completed. Change the system workqueue priority
+	 * to the lowest preemptive thread.
+	 */
+	if (IS_ENABLED(CONFIG_PREEMPT_ENABLED))
+		k_thread_priority_set(&k_sys_work_q.thread,
+				      CONFIG_NUM_PREEMPT_PRIORITIES - 1);
+	return 0;
+}
+SYS_INIT(init_hooks, APPLICATION, 0);
+
 int hook_call_deferred(const struct deferred_data *data, int us)
 {
 	struct k_delayed_work *work = data->delayed_work;
