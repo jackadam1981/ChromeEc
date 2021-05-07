@@ -9,6 +9,7 @@
 #define __CROS_EC_MCHP_EC_H
 
 /* ADC channels */
+#ifndef CHIP_FAMILY_MEC172X
 #define ADC_TEMP_SNS_AMBIENT_CHANNEL	CHIP_ADC_CH7
 #define ADC_TEMP_SNS_DDR_CHANNEL	CHIP_ADC_CH4
 #define ADC_TEMP_SNS_SKIN_CHANNEL	CHIP_ADC_CH3
@@ -22,5 +23,6 @@
  * voltage connected to MEC152x.
  */
 #define ADC_MAX_MVOLT 3000
+#endif
 
 #endif /* __CROS_EC_MCHP_EC_H */
