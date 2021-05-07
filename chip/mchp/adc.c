@@ -82,6 +82,8 @@ int adc_read_channel(enum adc_channel ch)
 	else
 		value = ADC_READ_ERROR;
 
+	/* todo: 12bit ADC */
+	value = value >> 2;
 	mutex_unlock(&adc_lock);
 	return value;
 }
@@ -129,6 +131,10 @@ static void adc_init(void)
 
 	/* clear ADC sleep enable */
 	MCHP_PCR_SLP_DIS_DEV(MCHP_PCR_ADC);
+
+	/* todo: 12bit adc in default */
+	MCHP_ADC_SAR_ADC_CTRL &= ~(1 << 1 | 1 << 2);
+	MCHP_ADC_SAR_ADC_CTRL |= (1 << 2);
 
 	/* Activate ADC module */
 	MCHP_ADC_CTRL |= BIT(0);
