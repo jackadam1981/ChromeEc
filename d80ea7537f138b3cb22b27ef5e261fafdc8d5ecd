@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4df0ebe5_2ccb54f2",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-05-07T19:16:01Z",
+      "side": 1,
+      "message": "Should we have a runtime check in the affected code path to print a warning if this is found to be set incorrectly? Then we could set the priority in ec_app_main() maybe? Thinking, it\u0027s really a system setting and not hook specific so it makes sense to me that it\u0027s initialized somewhere else, and at the same time we want to catch a possible regression.",
+      "range": {
+        "startLine": 26,
+        "startChar": 2,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "d80ea7537f138b3cb22b27ef5e261fafdc8d5ecd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
