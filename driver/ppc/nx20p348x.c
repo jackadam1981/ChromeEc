@@ -158,11 +158,11 @@ static int nx20p348x_vbus_sink_enable(int port, int enable)
 	 * (15 msec) before the status will reflect the control command.
 	 */
 	msleep(NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC);
-	rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &status);
+	rv = read_reg(port, NX20P348X_SWITCH_CONTROL_REG, &status);
 	if (rv)
 		return rv;
 
-	return (status & NX20P348X_SWITCH_STATUS_MASK) == control ?
+	return (status & NX20P348X_SWITCH_CONTROL_HVSNK) == control ?
 		EC_SUCCESS : EC_ERROR_UNKNOWN;
 }
 
