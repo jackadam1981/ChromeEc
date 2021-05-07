@@ -16,6 +16,23 @@
       "message": "Hello,\n\nhere is an updated version with changes discussed earlier.\n\nConcerning OTP reload sleeps, we tried to find a way to monitor it. But this lead us to a bug instead. MCLK must stay on during all OTP reload procedure for being effective. Thus the rewrite to push switch on/off MCLK outside for MREG read/write. 1 advantage is that now multiple MREG read/write can be done with a single MCLK on/off. But there is no other way than sleeping for this procedure.\n\nFor reducing the global init time, we are now monitoring reset at init with a for loop of 200µs increment. We see a big improvement here going from 1ms sleep to 400µs-600µs instead (sometimes even 200µs, depending on the chip).\n\nBest regards,\nJB",
       "revId": "b020c4fec7c63f58da7e80fff7ed64afe7bcc66d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff21ea80_938d4c1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-05-07T14:08:30Z",
+      "side": 1,
+      "message": "Hello Gwendal,\n\nsorry to bother you, but is it possible to have some feedback about our proposal, to accept this driver and do the refactorization work afterward?\n\nWe have a customer interested in including this chip in their next design. But code needs to be approved before middle/end of May.\n\nConcerning the mutex usage, our icm426xx driver is already using a mutex in data path without any issue. But this is something we can try to improve in the refactoring (like preventing get/set offset when the sensor is running).\n\nInitialization time has been reduced to the minimum possible, less than 1ms now. We will do the same for the icm426xx driver in the refactoring work.\n\nThanks for your help.\n\nBest regards,\nJB",
+      "revId": "b020c4fec7c63f58da7e80fff7ed64afe7bcc66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
