@@ -148,12 +148,6 @@ const struct mt6360_config_t mt6360_config = {
 	.i2c_addr_flags = MT6360_PMU_I2C_ADDR_FLAGS,
 };
 
-static void null_charger_task(const int port) {}
-
-static int no_ramp(int supplier) {
-	return false;
-}
-
 const struct pi3usb9201_config_t
 		pi3usb9201_bc12_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[0] = {
@@ -163,14 +157,9 @@ const struct pi3usb9201_config_t
 	/* [1]: unused */
 };
 
-static const struct bc12_drv null_bc12_drv = {
-	.usb_charger_task = null_charger_task,
-	.ramp_allowed = no_ramp,
-};
-
 struct bc12_config bc12_ports[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{ .drv = &pi3usb9201_drv },
-	{ .drv = &null_bc12_drv },
+	{ .drv = &rt1718s_bc12_drv },
 };
 
 static void bc12_interrupt(enum gpio_signal signal)
