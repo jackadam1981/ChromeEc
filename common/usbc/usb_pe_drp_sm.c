@@ -152,6 +152,8 @@
 #define PE_FLAGS_MSG_DISCARDED		     BIT(29)
 /* FLAG to note that hard reset can't be performed due to battery low */
 #define PE_FLAGS_SNK_WAITING_BATT	     BIT(30)
+/* Data reset operation has completed */
+#define PE_FLAGS_DATA_RESET_CONTINUE         BIT(31)
 
 /* Message flags which should not persist on returning to ready state */
 #define PE_FLAGS_READY_CLR		     (PE_FLAGS_LOCALLY_INITIATED_AMS \
@@ -311,6 +313,8 @@ enum usb_pe_state {
 	PE_HANDLE_CUSTOM_VDM_REQUEST,
 	PE_WAIT_FOR_ERROR_RECOVERY,
 	PE_BIST_TX,
+	PE_DDR_SEND_DATA_RESET,
+	PE_DDR_PERFORM_DATA_RESET,
 	PE_DEU_SEND_ENTER_USB,
 	PE_DR_GET_SINK_CAP,
 	PE_DR_SNK_GIVE_SOURCE_CAP,
@@ -430,6 +434,8 @@ __maybe_unused static __const_data const char * const pe_state_names[] = {
 	[PE_HANDLE_CUSTOM_VDM_REQUEST] = "PE_Handle_Custom_Vdm_Request",
 	[PE_WAIT_FOR_ERROR_RECOVERY] = "PE_Wait_For_Error_Recovery",
 	[PE_BIST_TX] = "PE_Bist_TX",
+	[PE_DDR_SEND_DATA_RESET] = "PE_DDR_Send_data_reset",
+	[PE_DDR_PERFORM_DATA_RESET] = "PE_DDR_Perform_data_reset",
 	[PE_DEU_SEND_ENTER_USB]  = "PE_DEU_Send_Enter_USB",
 	[PE_DR_GET_SINK_CAP] = "PE_DR_Get_Sink_Cap",
 	[PE_DR_SNK_GIVE_SOURCE_CAP] = "PE_DR_SNK_Give_Source_Cap",
@@ -1469,6 +1475,10 @@ static bool common_src_snk_dpm_requests(int port)
 		pe_set_dpm_curr_request(port, DPM_REQUEST_VDM);
 		/* Send previously set up SVDM. */
 		set_state_pe(port, PE_VDM_REQUEST_DPM);
+		return true;
+	} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_DATA_RESET)) {
+		pe_set_dpm_curr_request(port, DPM_REQUEST_DATA_RESET);
+		set_state_pe(port, PE_DDR_SEND_DATA_RESET);
 		return true;
 	} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_ENTER_USB)) {
 		pe_set_dpm_curr_request(port, DPM_REQUEST_ENTER_USB);
@@ -2691,6 +2701,12 @@ static void pe_src_ready_run(int port)
 		if (source_dpm_requests(port))
 			return;
 
+		if (PE_CHK_FLAG(port, PE_FLAGS_DATA_RESET_CONTINUE)) {
+			ccprintf("Perform data reset\n");
+			set_state_pe(port, PE_DDR_PERFORM_DATA_RESET);
+			return;
+		}
+
 		/*
 		 * Attempt discovery if possible, and return if state was
 		 * changed for that discovery.
@@ -3492,6 +3508,12 @@ static void pe_snk_ready_run(int port)
 		 */
 		if (sink_dpm_requests(port))
 			return;
+
+		if (PE_CHK_FLAG(port, PE_FLAGS_DATA_RESET_CONTINUE)) {
+			ccprintf("******Perform data reset\n");
+			set_state_pe(port, PE_DDR_PERFORM_DATA_RESET);
+			return;
+		}
 
 		/*
 		 * Attempt discovery if possible, and return if state was
@@ -6026,6 +6048,146 @@ static void pe_vdm_response_exit(int port)
 }
 
 /**
+ * PE_DDR_SEND_DATA_RESET
+ */
+static void pe_send_data_reset_entry(int port)
+{
+	print_current_state(port);
+
+	if (!IS_ENABLED(CONFIG_USB_PD_USB4)) {
+		pe_set_ready_state(port);
+		return;
+	}
+	pe[port].tx_type = TCPC_TX_SOP;
+	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_DATA_RESET);
+	pe_sender_response_msg_entry(port);
+}
+
+static void pe_send_data_reset_run(int port)
+{
+	enum pe_msg_check msg_check;
+
+	/*
+	 * Check the state of the message sent
+	 */
+	msg_check = pe_sender_response_msg_run(port);
+	/*
+	 * Handle Discarded message, return to PE_SNK/SRC_READY
+	 */
+	if (msg_check & PE_MSG_DISCARDED) {
+		pe_set_ready_state(port);
+		return;
+	} else if (msg_check == PE_MSG_SEND_PENDING) {
+		/* Wait until message is sent */
+		return;
+	}
+
+	if (pd_timer_is_expired(port, PE_TIMER_SENDER_RESPONSE)) {
+		pe_set_ready_state(port);
+		return;
+	}
+
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		int cnt = PD_HEADER_CNT(rx_emsg[port].header);
+		int type = PD_HEADER_TYPE(rx_emsg[port].header);
+		int sop = PD_HEADER_GET_SOP(rx_emsg[port].header);
+
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		/* Only look at control messages */
+		if (cnt == 0) {
+			/* Accept message received */
+			if (type == PD_CTRL_ACCEPT) {
+				if (tc_is_vconn_src(port)) {
+					set_state_pe(port,
+						     PE_DDR_PERFORM_DATA_RESET);
+					return;
+				}
+				/* TODO: ADD else PE_DDR_WAIT_FOR_VCONN_OFF */
+			} else if (type == PD_CTRL_REJECT) {
+				pe_set_ready_state(port);
+			} else {
+				/*
+				 * Unexpected control message received.
+				 * Send Soft Reset.
+				 */
+				pe_send_soft_reset(port, sop);
+				return;
+			}
+		} else {
+			/* Unexpected data message received. Send Soft reset */
+			pe_send_soft_reset(port, sop);
+			return;
+		}
+	}
+}
+
+static void pe_send_data_reset_exit(int port)
+{
+	pe_sender_response_msg_exit(port);
+}
+
+
+/**
+ * PE_DDR_WAIT_FOR_VCONN_OFF
+static void pe_wait_for_vconn_off_entry(int port)
+{
+
+}
+
+static void pe_wait_for_vconn_off_run(int port)
+{
+}
+
+ */
+/**
+ * PE_DDR_PERFORM_DATA_RESET
+ */
+static void pe_perform_data_reset_entry(int port)
+{
+	print_current_state(port);
+
+	PE_SET_FLAG(port, PE_FLAGS_DATA_RESET_CONTINUE);
+
+	usb_mux_set_safe_mode_exit(port);
+
+	if (get_last_state_pe(port) == PE_DDR_SEND_DATA_RESET) {
+		pd_dpm_request(port, DPM_REQUEST_SOP_PRIME_SOFT_RESET_SEND);
+		pe_set_ready_state(port);
+		return;
+	}
+
+	PE_CLR_FLAG(port, PE_FLAGS_DATA_RESET_CONTINUE);
+	set_usb_mux_with_current_data_role(port);
+
+	pe[port].tx_type = TCPC_TX_SOP;
+	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_DATA_RESET_COMPLETE);
+	pe_sender_response_msg_entry(port);
+}
+
+static void pe_perform_data_reset_run(int port)
+{
+	enum pe_msg_check msg_check;
+
+	/*
+	 * Check the state of the message sent
+	 */
+	msg_check = pe_sender_response_msg_run(port);
+
+	if (msg_check == PE_MSG_SEND_PENDING) {
+		/* Wait until message is sent */
+		return;
+	}
+
+	pe_set_ready_state(port);
+}
+
+static void pe_perform_data_reset_exit(int port)
+{
+	pe_sender_response_msg_exit(port);
+}
+
+/**
  * PE_DEU_SEND_ENTER_USB
  */
 static void pe_enter_usb_entry(int port)
@@ -7179,6 +7341,16 @@ static __const_data const struct usb_state pe_states[] = {
 		.entry = pe_handle_custom_vdm_request_entry,
 		.run   = pe_handle_custom_vdm_request_run,
 		.exit  = pe_handle_custom_vdm_request_exit,
+	},
+	[PE_DDR_SEND_DATA_RESET] = {
+		.entry = pe_send_data_reset_entry,
+		.run = pe_send_data_reset_run,
+		.exit = pe_send_data_reset_exit,
+	},
+	[PE_DDR_PERFORM_DATA_RESET] = {
+		.entry = pe_perform_data_reset_entry,
+		.run = pe_perform_data_reset_run,
+		.exit = pe_perform_data_reset_exit,
 	},
 	[PE_DEU_SEND_ENTER_USB] = {
 		.entry = pe_enter_usb_entry,

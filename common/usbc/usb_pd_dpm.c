@@ -51,6 +51,7 @@ static struct {
 #define DPM_FLAG_ENTER_TBT       BIT(3)
 #define DPM_FLAG_ENTER_USB4      BIT(4)
 #define DPM_FLAG_SEND_ATTENTION  BIT(5)
+#define DPM_FLAG_DATA_RESET_DONE BIT(6)
 
 #ifdef CONFIG_ZEPHYR
 static int init_vdm_attention_mutex(const struct device *dev)
@@ -285,6 +286,11 @@ static void dpm_attempt_mode_entry(int port)
 		 * For certain cables, enter Thunderbolt alt mode with the
 		 * cable and USB4 mode with the port partner.
 		 */
+		if (!DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_DONE)) {
+			DPM_SET_FLAG(port, DPM_FLAG_DATA_RESET_DONE);
+			pd_dpm_request(port, DPM_REQUEST_DATA_RESET);
+			return;
+		}
 		if (tbt_cable_entry_required_for_usb4(port)) {
 			vdo_count = tbt_setup_next_vdm(port,
 				ARRAY_SIZE(vdm), vdm, &tx_type);
