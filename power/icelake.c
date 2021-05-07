@@ -268,6 +268,7 @@ enum power_state power_handle_state(enum power_state state)
 		 */
 		/* Turn on the PP3300_DSW rail. */
 		GPIO_SET_LEVEL(GPIO_EN_PP3300_A, 1);
+
 		if (power_wait_signals(IN_PGOOD_ALL_CORE))
 			break;
 

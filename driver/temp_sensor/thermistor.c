@@ -11,6 +11,10 @@
 #include "temp_sensor/thermistor.h"
 #include "util.h"
 
+/* Console output macros */
+#define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
+
+
 int thermistor_linear_interpolate(uint16_t mv,
 		const struct thermistor_info *info)
 {
@@ -76,17 +80,21 @@ static int thermistor_get_temperature(int idx_adc, int *temp_ptr,
 #ifdef CONFIG_TEMP_SENSOR_POWER_GPIO
 	/*
 	 * If the power rail for the thermistor circuit is not enabled, then
-	 * need to ignore any ADC measurments.
-	 */
+	 * need to ignore any ADC measurements.
+	 */	 
 	if (!gpio_get_level(CONFIG_TEMP_SENSOR_POWER_GPIO))
+	{
 		return EC_ERROR_NOT_POWERED;
+	}
 #endif /* CONFIG_TEMP_SENSOR_POWER_GPIO */
 	mv = adc_read_channel(idx_adc);
 	if (mv < 0)
 		return EC_ERROR_UNKNOWN;
 
 	*temp_ptr = thermistor_linear_interpolate(mv, info);
+	
 	*temp_ptr = C_TO_K(*temp_ptr);
+	
 	return EC_SUCCESS;
 }
 #endif
