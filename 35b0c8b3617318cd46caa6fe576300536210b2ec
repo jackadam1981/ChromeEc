@@ -93,6 +93,30 @@
       },
       "revId": "35b0c8b3617318cd46caa6fe576300536210b2ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40a716c1_6e99276d",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-07T21:44:21Z",
+      "side": 1,
+      "message": "Yes. I think your change in zmake.py is correct, this just isn\u0027t testing it.",
+      "parentUuid": "52a6eb75_b998961d",
+      "range": {
+        "startLine": 170,
+        "startChar": 12,
+        "endLine": 170,
+        "endChar": 57
+      },
+      "revId": "35b0c8b3617318cd46caa6fe576300536210b2ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
