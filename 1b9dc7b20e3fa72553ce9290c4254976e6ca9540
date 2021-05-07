@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "90eab0d3_c19ebf50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-07T21:30:17Z",
+      "side": 1,
+      "message": "We can\u0027t actually run this test until we get the node locked prod signed image. I just verified the image builds.",
+      "parentUuid": "2fa771e6_36076b69",
+      "range": {
+        "startLine": 24,
+        "startChar": 50,
+        "endLine": 24,
+        "endChar": 57
+      },
+      "revId": "1b9dc7b20e3fa72553ce9290c4254976e6ca9540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "86e07070_c2dd75bb",
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "yes, looks like info read access is enabled at all times.\n\nKeeping flash_info_write_enable() inside the lock would be slightly more correct, so that in case  there is a preemption between lines 508 and 510 and someone disables write access go the INFO, erase operation would fail.\n\nBut we are doing the write later out of the lock (write itself will acquire the lock), so if someone was about to disable writes, they still would do it.",
       "parentUuid": "85ffe7c1_8b72ddab",
+      "range": {
+        "startLine": 495,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 45
+      },
+      "revId": "1b9dc7b20e3fa72553ce9290c4254976e6ca9540",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a340bcb1_145f06e1",
+        "filename": "chip/g/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-07T21:30:17Z",
+      "side": 1,
+      "message": "I moved it back inside the lock.",
+      "parentUuid": "9183bc9a_a8c2d72d",
       "range": {
         "startLine": 495,
         "startChar": 0,
