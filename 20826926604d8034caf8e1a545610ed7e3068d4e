@@ -22,6 +22,30 @@
       },
       "revId": "20826926604d8034caf8e1a545610ed7e3068d4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e03c94f_b80cdf29",
+        "filename": "driver/tcpm/image_b121.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 3423,
+      "author": {
+        "id": 1510379
+      },
+      "writtenOn": "2021-05-07T19:25:02Z",
+      "side": 1,
+      "message": "Metadata shall be pepared in buffer before CCGXXF_FWU_CMD_VALIDATE_FW_IMG command, but not written by CMD_FWU_WRITE_FLASH_ROW\n\nSo, I have to exclude metadata write from \nccgxxf_update_fw_region() \n\nplease also see changes to ccgxxf_fw_update() in patchset #4",
+      "parentUuid": "3583d63e_f7346ff8",
+      "range": {
+        "startLine": 3421,
+        "startChar": 0,
+        "endLine": 3423,
+        "endChar": 29
+      },
+      "revId": "20826926604d8034caf8e1a545610ed7e3068d4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
