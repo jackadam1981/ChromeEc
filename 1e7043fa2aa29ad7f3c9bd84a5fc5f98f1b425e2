@@ -16,6 +16,24 @@
       "message": "Alvis \u0026 Tony: Is this Hayato only? How about other followers?",
       "revId": "1e7043fa2aa29ad7f3c9bd84a5fc5f98f1b425e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a05eed1c_a3eac79e",
+        "filename": "baseboard/asurada/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-05-07T07:05:33Z",
+      "side": 1,
+      "message": "After discussed with Alvis, this should be a per-board config.\n\nMichael: please help move this function into board/asurada and board/spherion, thanks!",
+      "parentUuid": "09301274_0e221e97",
+      "revId": "1e7043fa2aa29ad7f3c9bd84a5fc5f98f1b425e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
