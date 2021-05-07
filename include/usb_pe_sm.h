@@ -176,5 +176,13 @@ const char *pe_get_current_state(int port);
  */
 uint32_t pe_get_flags(int port);
 
+/**
+ * Returns the last requested current and voltage
+ *
+ * @param port USB-C port number
+ * @param port ma current in mA (return value)
+ * @param port mv voltage in mV (return value)
+ */
+void pe_get_last_request(int port, uint32_t *ma, uint32_t *mv);
 #endif /* __CROS_EC_USB_PE_H */
 
