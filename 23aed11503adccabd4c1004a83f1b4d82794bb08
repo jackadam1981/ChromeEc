@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1620945f_84410bc7",
+        "filename": "zephyr/projects/trogdor/lazor/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-07T18:35:16Z",
+      "side": 1,
+      "message": "Lazor doesn\u0027t use ESPI. The espi.c is not linked to the image, right?",
+      "range": {
+        "startLine": 18,
+        "startChar": 30,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "23aed11503adccabd4c1004a83f1b4d82794bb08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dbf97e6_41fe009d",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-07T18:35:16Z",
+      "side": 1,
+      "message": "I guess it is for your debugging.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 37
+      },
+      "revId": "23aed11503adccabd4c1004a83f1b4d82794bb08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
