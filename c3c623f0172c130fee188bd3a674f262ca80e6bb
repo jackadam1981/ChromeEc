@@ -45,6 +45,30 @@
       },
       "revId": "c3c623f0172c130fee188bd3a674f262ca80e6bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22b5800a_5a0ebbd3",
+        "filename": "zephyr/shim/src/ztest_system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-10T15:33:30Z",
+      "side": 1,
+      "message": "Perhaps this file should have been named posix_ztest_system.c",
+      "parentUuid": "a5239289_9992fb1f",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 1
+      },
+      "revId": "c3c623f0172c130fee188bd3a674f262ca80e6bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
