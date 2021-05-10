@@ -186,6 +186,12 @@ const struct adc_t adc_channels[] = {
 		.factor_mul = ADC_MAX_VOLT,
 		.factor_div = ADC_READ_MAX + 1,
 	},
+	[ADC_TEMP_SENSOR_2] = {
+		.name = "TEMP_SENSOR_2",
+		.input_ch = NPCX_ADC_CH1,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+	},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -195,6 +201,12 @@ const struct temp_sensor_t temp_sensors[] = {
 		.type = TEMP_SENSOR_TYPE_BOARD,
 		.read = get_temp_3v3_30k9_47k_4050b,
 		.idx = ADC_TEMP_SENSOR_1,
+	},
+	[TEMP_SENSOR_WIFI] = {
+		.name = "Wifi",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = get_temp_3v3_30k9_47k_4050b,
+		.idx = ADC_TEMP_SENSOR_2,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
@@ -215,9 +227,9 @@ const struct fan_conf fan_conf_0 = {
 };
 
 const struct fan_rpm fan_rpm_0 = {
-	.rpm_min = 1900,
-	.rpm_start = 2400,
-	.rpm_max = 4300,
+	.rpm_min = 2500,
+	.rpm_start = 2500,
+	.rpm_max = 6000,
 };
 
 const struct fan_t fans[] = {
@@ -237,16 +249,16 @@ BUILD_ASSERT(ARRAY_SIZE(mft_channels) == MFT_CH_COUNT);
 const static struct ec_thermal_config thermal_a = {
 	.temp_host = {
 		[EC_TEMP_THRESH_WARN] = 0,
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(68),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(78),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(90),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(95),
 	},
 	.temp_host_release = {
 		[EC_TEMP_THRESH_WARN] = 0,
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(58),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(80),
 		[EC_TEMP_THRESH_HALT] = 0,
 	},
-	.temp_fan_off = C_TO_K(41),
-	.temp_fan_max = C_TO_K(72),
+	.temp_fan_off = C_TO_K(25),
+	.temp_fan_max = C_TO_K(90),
 };
 
 const static struct ec_thermal_config thermal_b = {
@@ -262,8 +274,24 @@ const static struct ec_thermal_config thermal_b = {
 	},
 };
 
+const static struct ec_thermal_config thermal_wifi = {
+	.temp_host = {
+		[EC_TEMP_THRESH_WARN] = 0,
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(90),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(95),
+	},
+	.temp_host_release = {
+		[EC_TEMP_THRESH_WARN] = 0,
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(80),
+		[EC_TEMP_THRESH_HALT] = 0,
+	},
+	.temp_fan_off = C_TO_K(25),
+	.temp_fan_max = C_TO_K(90),
+};
+
 struct ec_thermal_config thermal_params[] = {
 	[TEMP_SENSOR_CORE] = thermal_a,
+	[TEMP_SENSOR_WIFI] = thermal_wifi,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
