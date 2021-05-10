@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa3e16b0_9fa0f576",
+        "filename": "zephyr/projects/asurada/hayato/prj.conf",
+        "patchSetId": 12
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-10T17:25:05Z",
+      "side": 1,
+      "message": "Do we ever have a case where CONFIG_PLATFORM_EC_I2C\u003dy and CONFIG_I2C\u003dn? If not we should use `imply I2C` in our definition of config PLATFORM_EC_I2C.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 22
+      },
+      "revId": "b6834873a0c42306de87e4134aa147b22f1df8be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
