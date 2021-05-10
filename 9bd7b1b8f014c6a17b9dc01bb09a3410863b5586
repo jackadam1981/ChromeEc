@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b34184d_af6d8c1e",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-05-10T23:24:47Z",
+      "side": 1,
+      "message": "TODO: Check if the tusb timer has expired",
+      "range": {
+        "startLine": 291,
+        "startChar": 3,
+        "endLine": 291,
+        "endChar": 48
+      },
+      "revId": "9bd7b1b8f014c6a17b9dc01bb09a3410863b5586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba6b7016_ce7be170",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2705,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-05-10T23:24:47Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 2705,
+        "startChar": 3,
+        "endLine": 2705,
+        "endChar": 36
+      },
+      "revId": "9bd7b1b8f014c6a17b9dc01bb09a3410863b5586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a48828d9_5ef1f8d1",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3513,
+      "author": {
+        "id": 1329040
+      },
+      "writtenOn": "2021-05-10T23:24:47Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 3513,
+        "startChar": 3,
+        "endLine": 3513,
+        "endChar": 41
+      },
+      "revId": "9bd7b1b8f014c6a17b9dc01bb09a3410863b5586",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
