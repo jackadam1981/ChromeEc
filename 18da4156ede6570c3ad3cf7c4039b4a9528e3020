@@ -22,6 +22,30 @@
       },
       "revId": "18da4156ede6570c3ad3cf7c4039b4a9528e3020",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b53bb14_61cab7d5",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 22
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-10T21:39:49Z",
+      "side": 1,
+      "message": "Can this be done through a board_set_active_charge_port() implementation?  I know that\u0027s what puff does to prevent charge port swaps in S0, it just rejects them from the board code with EC_ERROR_INVAL.",
+      "parentUuid": "e4b5aa9a_7f15f9ce",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 21
+      },
+      "revId": "18da4156ede6570c3ad3cf7c4039b4a9528e3020",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
