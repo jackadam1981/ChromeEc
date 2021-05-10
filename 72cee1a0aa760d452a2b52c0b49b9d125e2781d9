@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bfff598b_5a541913",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-05-10T13:42:55Z",
+      "side": 1,
+      "message": "I\u0027m aware that TPM seed is checked in `get_ikm()` function. Should I remove my check in FP_TEMPLATE and FP_CHECK?",
+      "parentUuid": "8a2fe2df_04208c84",
+      "range": {
+        "startLine": 471,
+        "startChar": 8,
+        "endLine": 471,
+        "endChar": 29
+      },
+      "revId": "72cee1a0aa760d452a2b52c0b49b9d125e2781d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da6dcddd_983dcb63",
         "filename": "common/fpsensor/fpsensor.c",
         "patchSetId": 3
