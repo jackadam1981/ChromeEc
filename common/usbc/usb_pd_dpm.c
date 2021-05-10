@@ -51,6 +51,7 @@ static struct {
 #define DPM_FLAG_ENTER_TBT       BIT(3)
 #define DPM_FLAG_ENTER_USB4      BIT(4)
 #define DPM_FLAG_SEND_ATTENTION  BIT(5)
+#define DPM_FLAG_DATA_RESET_DONE BIT(6)
 
 #ifdef CONFIG_ZEPHYR
 static int init_vdm_attention_mutex(const struct device *dev)
@@ -150,6 +151,12 @@ static void dpm_set_mode_entry_done(int port)
 void dpm_set_mode_exit_request(int port)
 {
 	DPM_SET_FLAG(port, DPM_FLAG_EXIT_REQUEST);
+}
+
+void dpm_data_reset_complete(int port)
+{
+    CPRINTS("C%d: Data Reset done");
+    DPM_SET_FLAG(port, DPM_FLAG_DATA_RESET_DONE);
 }
 
 static void dpm_clear_mode_exit_request(int port)
@@ -274,6 +281,18 @@ static void dpm_attempt_mode_entry(int port)
 		dpm_set_mode_entry_done(port);
 		return;
 	}
+
+    /*
+     * TODO(b/141363146): Just set this flag in the host command. That way, this
+     * check won't need to be conditional upon AP mode entry. That means the
+     * flag will probably have to be inverted.
+     */
+    if (IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) &&
+            !DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_DONE)) {
+        CPRINTS("C%d: Requesting Data Reset");
+        pd_dpm_request(port, DPM_REQUEST_DATA_RESET);
+        return;
+    }
 
 	/* Check if port, port partner and cable support USB4. */
 	if (IS_ENABLED(CONFIG_USB_PD_USB4) &&

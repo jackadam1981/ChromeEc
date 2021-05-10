@@ -883,6 +883,7 @@ void pe_data_reset_complete(int port)
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
 	PE_SET_FLAG(port, PE_FLAGS_DATA_RESET_COMPLETE);
+	dpm_data_reset_complete(port);
 }
 #endif /* CONFIG_USB_PD_DATA_RESET_MSG */
 
