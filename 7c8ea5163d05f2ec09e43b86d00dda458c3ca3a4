@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc5bffdb_e8e1314a",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-10T15:14:18Z",
+      "side": 1,
+      "message": "does this #if belong before line 14\u0027s #if?  This will insure uart1 and pinmuxb are valid before setting the pin",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
