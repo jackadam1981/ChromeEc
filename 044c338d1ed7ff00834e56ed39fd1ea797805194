@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8bce41_171a86ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-10T17:11:57Z",
+      "side": 1,
+      "message": "LGTM, one question that might make ADC a bit cleaner in the future (feel free to address in a follow-up CL)",
+      "revId": "044c338d1ed7ff00834e56ed39fd1ea797805194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cb486a7_51ca3c49",
+        "filename": "zephyr/projects/asurada/hayato/prj.conf",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-10T17:11:57Z",
+      "side": 1,
+      "message": "Is there ever a case where CONFIG_PLATFORM_EC_ADC\u003dy but CONFIG_ADC\u003dn? If not, we should just set CONFIG_PLATFORM_EC_ADC to `imply ADC` in Kconfig.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "044c338d1ed7ff00834e56ed39fd1ea797805194",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
