@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868c8f77_3fdc3eb0",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-10T20:50:50Z",
+      "side": 1,
+      "message": "One side-effect of this change has been that we have now doubled the size of the history buffer whenever 4-byte port80 codes are used. Wouldn\u0027t it be sufficient to print the port80 code correctly for `print_in_int` mode, but in the deferred mode, just print it byte-by-byte? I suspect that close to 50% of our history buffer is now going to be just 0s for the platforms that select 4-byte port80 messages. Is the additional space usage really worth it?",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e8d12ca_cce2c5e2",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-10T20:50:50Z",
+      "side": 1,
+      "message": "Isn\u0027t it wrong to set this to uint32_t? `ec_response_port80_last_boot` only accepts a uint16_t as code.",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b02cce_2a884118",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-10T20:50:50Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we just drop this check completely? It will help keep the behavior consistent across all devices i.e. schedule a deferred call any time there is a new post code irrespective of whether it is \u003c 0x100.",
+      "range": {
+        "startLine": 63,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 59
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f526343c_d32545ed",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-10T20:50:50Z",
+      "side": 1,
+      "message": "Doesn\u0027t this mean that we would not ignore the special event codes in case of `CONFIG_PORT80_4_BYTE`? This would make the behavior inconsistent across different products, which can be confusing for debugging?",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
