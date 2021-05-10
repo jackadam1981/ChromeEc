@@ -142,6 +142,7 @@ enum adc_channel {
 	ADC_VBUS,           /* ADC4 */
 	ADC_PPVAR_IMON,     /* ADC9 */
 	ADC_TEMP_SENSOR_1,  /* ADC0 */
+	ADC_TEMP_SENSOR_2,
 	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
@@ -168,6 +169,7 @@ enum mft_channel {
 
 enum temp_sensor_id {
 	TEMP_SENSOR_CORE,
+	TEMP_SENSOR_WIFI,
 	TEMP_SENSOR_COUNT
 };
 
