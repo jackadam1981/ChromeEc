@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "217a68ec_b0ea03bd",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-11T02:23:08Z",
+      "side": 1,
+      "message": "Yeah, basically, I was wondering if it is okay to display the 4-byte code correctly only when `int_in_print` is true. In deferred mode, we could just dump the code as a 1-byte code i.e. 4 bytes one after the other. We can always massage it so that the MSB is pushed into history buffer before LSB so that it visually appears correctly.",
+      "parentUuid": "c48093ad_2edd4d04",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e8d12ca_cce2c5e2",
         "filename": "common/port80.c",
         "patchSetId": 3
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "Do you mean we can just ignore code \u003e\u003d0x100 even when it is 4-byte code?",
       "parentUuid": "f526343c_d32545ed",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed3b80a1_e4764487",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-11T02:23:08Z",
+      "side": 1,
+      "message": "Basically for platforms that do not select CONFIG_PORT80_4_BYTE, last_boot will not be set to special event codes e.g. PORT_80_EVENT_RESUME/PORT_80_EVENT_RESET.\n\nBut, for platforms that select CONFIG_PORT80_4_BYTE, last_boot can be set to special event codes e.g. PORT_80_EVENT_RESUME/PORT_80_EVENT_RESET.\n\nThis creates inconsistency in behavior across different Chrome OS devices.",
+      "parentUuid": "7e93ce10_d2fe59e7",
       "range": {
         "startLine": 71,
         "startChar": 22,
