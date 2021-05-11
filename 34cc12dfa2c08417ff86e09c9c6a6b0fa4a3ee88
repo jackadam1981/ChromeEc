@@ -16,6 +16,29 @@
       "message": "Ready to review, thanks.",
       "revId": "34cc12dfa2c08417ff86e09c9c6a6b0fa4a3ee88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c91c562_df177d2a",
+        "filename": "zephyr/shim/chip/it8xxx2/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-11T14:45:49Z",
+      "side": 1,
+      "message": "Can this be IT8XXX2_ECPM_PLLFREQR_MASK instead?",
+      "range": {
+        "startLine": 30,
+        "startChar": 49,
+        "endLine": 30,
+        "endChar": 52
+      },
+      "revId": "34cc12dfa2c08417ff86e09c9c6a6b0fa4a3ee88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
