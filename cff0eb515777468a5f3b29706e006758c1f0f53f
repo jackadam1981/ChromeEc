@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c313855_da28be7c",
+        "filename": "zephyr/projects/asurada/boards/riscv/asurada/asurada.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-11T16:00:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f91297d_c30dcad7",
+      "range": {
+        "startLine": 78,
+        "startChar": 17,
+        "endLine": 78,
+        "endChar": 21
+      },
+      "revId": "cff0eb515777468a5f3b29706e006758c1f0f53f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4406dc16_f08c508d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-11T15:48:12Z",
       "side": 1,
       "message": "400",
+      "range": {
+        "startLine": 92,
+        "startChar": 17,
+        "endLine": 92,
+        "endChar": 21
+      },
+      "revId": "cff0eb515777468a5f3b29706e006758c1f0f53f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c3ae62_c3eb703c",
+        "filename": "zephyr/projects/asurada/boards/riscv/asurada/asurada.dts",
+        "patchSetId": 13
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-11T16:00:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4406dc16_f08c508d",
       "range": {
         "startLine": 92,
         "startChar": 17,
