@@ -14,6 +14,8 @@
 
 LOG_MODULE_REGISTER(watchdog_shim, LOG_LEVEL_ERR);
 
+extern int command_wait(int argc, char **argv);
+
 static void wdt_warning_handler(const struct device *wdt_dev, int channel_id)
 {
 	/* TODO(b/176523207): watchdog warning message */
@@ -25,6 +27,8 @@ int watchdog_init(void)
 	int err;
 	const struct device *wdt;
 	struct wdt_timeout_cfg wdt_config;
+	//char *pS[4] = {"waitms", "1500"};
+	char *pS[4] = {"waitms", "1601"};
 
 	wdt = device_get_binding(DT_LABEL(DT_NODELABEL(twd0)));
 	if (!wdt) {
@@ -39,6 +43,7 @@ int watchdog_init(void)
 	 * Set the Warning timer as CONFIG_AUX_TIMER_PERIOD_MS.
 	 * Then the watchdog reset time = CONFIG_WATCHDOG_PERIOD_MS.
 	 */
+	printk("ec wdt init\n");
 	wdt_config.window.min = 0U;
 	wdt_config.window.max = CONFIG_AUX_TIMER_PERIOD_MS;
 	wdt_config.callback = wdt_warning_handler;
@@ -54,6 +59,8 @@ int watchdog_init(void)
 		LOG_ERR("Watchdog setup error");
 		return err;
 	}
+
+	command_wait(2, &pS[0]);
 
 	return EC_SUCCESS;
 }
