@@ -124,11 +124,9 @@ void print_flag(int port, int set_or_clear, int flag);
 #define TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN BIT(21)
 /* Flag for asynchronous call to request Error Recovery */
 #define TC_FLAGS_REQUEST_ERROR_RECOVERY	BIT(22)
-/* Flag to start a data reset process */
-#define PE_START_DATA_RESET             BIT(22)
 
 /* For checking flag_bit_names[] array */
-#define TC_FLAGS_COUNT			23
+#define TC_FLAGS_COUNT			24
 
 /* On disconnect, clear most of the flags. */
 #define CLR_FLAGS_ON_DISCONNECT(port) TC_CLR_FLAG(port, \
@@ -588,13 +586,6 @@ void pd_set_new_power_request(int port)
 			pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
 	}
 }
-
-#ifdef CONFIG_USB_PD_DATA_RESET_MSG
-void tc_start_data_reset(int port)
-{
-	TC_SET_FLAG(port, PE_START_DATA_RESET);
-}
-#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
 
 void tc_request_power_swap(int port)
 {
@@ -1876,18 +1867,22 @@ __maybe_unused static void handle_new_power_state(int port)
 #ifdef CONFIG_USBC_VCONN_SWAP
 void pd_request_vconn_swap_off(int port)
 {
+	CPRINTS("VCONN off requested");
 	if (get_state_tc(port) == TC_ATTACHED_SRC ||
 			get_state_tc(port) == TC_ATTACHED_SNK) {
 		TC_SET_FLAG(port, TC_FLAGS_REQUEST_VC_SWAP_OFF);
+		CPRINTS("VCONN off flagged");
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	}
 }
 
 void pd_request_vconn_swap_on(int port)
 {
+	CPRINTS("VCONN on requested");
 	if (get_state_tc(port) == TC_ATTACHED_SRC ||
 			get_state_tc(port) == TC_ATTACHED_SNK) {
 		TC_SET_FLAG(port, TC_FLAGS_REQUEST_VC_SWAP_ON);
+		CPRINTS("VCONN on flagged");
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	}
 }
@@ -2578,17 +2573,6 @@ static void tc_attached_snk_run(const int port)
 	 * PD swap commands
 	 */
 	if (tc_get_pd_enabled(port) && prl_is_running(port)) {
-#ifdef CONFIG_USB_PD_DATA_RESET_MSG
-		/*
-		 * Data Reset
-		 */
-		if (TC_CHK_FLAG(port, PE_START_DATA_RESET)) {
-			TC_CLR_FLAG(port, PE_START_DATA_RESET);
-			set_state_tc(port, TC_DATA_RESET);
-			return;
-		}
-#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
-
 		/*
 		 * Power Role Swap
 		 */
@@ -3125,17 +3109,6 @@ static void tc_attached_src_run(const int port)
 	 * PD swap commands
 	 */
 	if (tc_get_pd_enabled(port) && prl_is_running(port)) {
-#ifdef CONFIG_USB_PD_DATA_RESET_MSG
-		/*
-		 * Data Reset
-		 */
-		if (TC_CHK_FLAG(port, PE_START_DATA_RESET)) {
-			TC_CLR_FLAG(port, PE_START_DATA_RESET);
-			set_state_tc(port, TC_DATA_RESET);
-			return;
-		}
-#endif /* CONFIG_USB_PD_DATA_RESET_MSG */
-
 		/*
 		 * Power Role Swap Request
 		 */
@@ -3222,6 +3195,7 @@ static void tc_attached_src_exit(const int port)
 	 * A port shall cease to supply VBUS within tVBUSOFF of exiting
 	 * Attached.SRC.
 	 */
+	CPRINTS("Attached source exit");
 	tc_src_power_off(port);
 
 	if (!TC_CHK_FLAG(port, TC_FLAGS_REQUEST_PR_SWAP)) {
@@ -3555,6 +3529,7 @@ static void tc_try_wait_snk_exit(const int port)
 #ifdef CONFIG_USB_PD_DATA_RESET_MSG
 static void tc_data_reset_entry(int port)
 {
+	CPRINTS("TC DR entry");
 	print_current_state(port);
 
 	/*
@@ -3597,7 +3572,10 @@ static void tc_data_reset_entry(int port)
 			tc[port].data_role == PD_ROLE_DFP) {
 		set_vconn(port, 0);
 		pd_timer_enable(port, TC_TIMER_TIMEOUT, PD_T_VCONN_REAPPLIED);
+		CPRINTS("Disabling VCONN");
 	}
+
+	CPRINTS("TC DR entry: VBUS %d", pe_get_vbus_nom(port));
 }
 
 static void tc_data_reset_run(int port)
@@ -3608,6 +3586,8 @@ static void tc_data_reset_run(int port)
 			return;
 		/* Enable VCONN */
 		set_vconn(port, 1);
+		pd_timer_disable(port, TC_TIMER_TIMEOUT);
+		CPRINTS("Re-enabling VCONN");
 	}
 
 	if (tc[port].power_role	== PD_ROLE_SOURCE)
@@ -3636,6 +3616,7 @@ static void tc_data_reset_exit(int port)
 
 	/* 5) Inform Policy Engine Data Reset is complete */
 	pe_data_reset_complete(port);
+	CPRINTS("TC DR exit: VBUS %d", pe_get_vbus_nom(port));
 }
 #endif
 

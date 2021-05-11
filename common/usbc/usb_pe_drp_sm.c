@@ -883,7 +883,6 @@ void pe_data_reset_complete(int port)
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
 	PE_SET_FLAG(port, PE_FLAGS_DATA_RESET_COMPLETE);
-	dpm_data_reset_complete(port);
 }
 #endif /* CONFIG_USB_PD_DATA_RESET_MSG */
 
@@ -1532,8 +1531,13 @@ static bool common_src_snk_dpm_requests(int port)
 #ifdef CONFIG_USB_PD_DATA_RESET_MSG
 	else if (PE_CHK_DPM_REQUEST(port,
 					DPM_REQUEST_DATA_RESET)) {
-		PE_CLR_DPM_REQUEST(port,
-					DPM_REQUEST_DATA_RESET);
+		pe_set_dpm_curr_request(port, DPM_REQUEST_DATA_RESET);
+		if (prl_get_rev(port, TCPC_TX_SOP) < PD_REV30) {
+			CPRINTS("No DR in PD rev 2.0");
+			dpm_data_reset_complete(port);
+			return true;
+		}
+
 		if (pe[port].data_role == PD_ROLE_DFP)
 			set_state_pe(port, PE_DDR_SEND_DATA_RESET);
 		else
@@ -4999,6 +5003,26 @@ __maybe_unused static void pe_prs_frs_shared_exit(int port)
 	PE_CLR_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH);
 }
 
+int pe_get_vbus_nom(int port)
+{
+	int vbus_mv;
+	int ibus_ma;
+
+	/* Get the current nominal VBUS value */
+	if (pe[port].power_role == PD_ROLE_SOURCE) {
+		const uint32_t *src_pdo;
+		uint32_t unused;
+
+		dpm_get_source_pdo(&src_pdo, port);
+		pd_extract_pdo_power(src_pdo[pe[port].requested_idx - 1],
+				     &ibus_ma, &vbus_mv, &unused);
+	} else {
+		vbus_mv = pe[port].supply_voltage;
+	}
+
+	return vbus_mv;
+}
+
 /**
  * PE_BIST_TX
  */
@@ -6947,7 +6971,7 @@ static void pe_udr_data_reset_received_entry(int port)
 	/* send accept message */
 	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
 	/* Tell device policy manager a data reset message was received */
-	tc_start_data_reset(port);
+	/* TODO: Data reset procedure */
 }
 
 static void pe_udr_data_reset_received_run(int port)
@@ -7062,7 +7086,23 @@ static void pe_ddr_send_data_reset_entry(int port)
 
 static void pe_ddr_send_data_reset_run(int port)
 {
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE) &&
+	enum pe_msg_check msg_check;
+
+	/*
+	 * Check the state of the message sent
+	 */
+	msg_check = pe_sender_response_msg_run(port);
+
+	/*
+	 * Handle Discarded message, return to PE_SNK/SRC_READY
+	 */
+	if (msg_check & PE_MSG_DISCARDED) {
+		pe_set_ready_state(port);
+		return;
+	} else if (msg_check == PE_MSG_SEND_PENDING) {
+		/* Wait until message is sent */
+		return;
+	} else if (msg_check & PE_MSG_SENT &&
 		pd_timer_is_disabled(port, PE_TIMER_SENDER_RESPONSE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
@@ -7087,16 +7127,33 @@ static void pe_ddr_send_data_reset_run(int port)
 					set_state_pe(port,
 						PE_DDR_WAIT_FOR_VCONN_OFF);
 				}
+				return;
 			}
 			/* Reject message received of Protocol Error */
 			else if ((PD_HEADER_TYPE(rx_emsg[port].header) ==
 							PD_CTRL_REJECT)) {
 				set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
+				return;
+			}
+			/*
+			 * FIXME: This probably isn't compliant. If we want to
+			 * go into error recovery when Data Reset fails (as the
+			 * spec says), then we'll need to have some mechanism
+			 * for not trying again when it fails the first time.
+			 */
+			else if ((PD_HEADER_TYPE(rx_emsg[port].header) ==
+						PD_CTRL_NOT_SUPPORTED)) {
+				/* Just pretend it worked. */
+				CPRINTS("Partner does not support Data Reset");
+				dpm_data_reset_complete(port);
+				pe_set_ready_state(port);
+				return;
 			}
 		}
 	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
+		return;
 	}
 
 	/*
@@ -7186,30 +7243,96 @@ static void pe_ddr_wait_for_vconn_off_run(int port)
 static void pe_ddr_perform_data_reset_entry(int port)
 {
 	print_current_state(port);
-	/* Tell device policy manager to perform data reset */
-	tc_start_data_reset(port);
+
+	/*
+	 * 1) The DFP shall:
+	 *	a) Disconnect the Port’s [USB 2.0] D+/D- signals.
+	 *	b) If operating in [USB 3.2] remove the port’s Rx
+	 *		Terminations.
+	 *	c) If operating in [USB4] drive the port’s SBTX to
+	 *		a logic low.
+	 */
+		/* TODO */
+		/* Disconnect the Port’s [USB 2.0] D+/D- signals. */
+
+		/*
+		 * If operating in [USB 3.2] remove the port’s Rx
+		 * Terminations.
+		 */
+
+		/*
+		 * If operating in [USB4] drive the port’s SBTX to
+		 * a logic low.
+		 */
+
+	/* 2) Both the DFP and UFP Shall exit all Alternate Modes if any. */
+	if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
+		/* TODO: Need to check that this is right. */
+		pd_dfp_exit_mode(port, TCPC_TX_SOP, 0, 0);
+		pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME, 0, 0);
+		pd_dfp_exit_mode(port, TCPC_TX_SOP_PRIME_PRIME, 0, 0);
+	}
+
+	/* 3) Reset the cable */
+	if (IS_ENABLED(CONFIG_USBC_VCONN) && tc_is_vconn_src(port)) {
+		pd_request_vconn_swap_off(port);
+	} else {
+		PE_SET_FLAG(port, PE_FLAGS_DATA_RESET_COMPLETE);
+	}
 }
 
 static void pe_ddr_perform_data_reset_run(int port)
 {
-	if (PE_CHK_FLAG(port, PE_FLAGS_DATA_RESET_COMPLETE)) {
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
+	if (IS_ENABLED(CONFIG_USBC_VCONN) &&
+			PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_COMPLETE) &&
+			pd_timer_is_disabled(port, PE_TIMER_TIMEOUT)) {
+		PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_COMPLETE);
+		/* TODO: Consider another timer for this. */
+		pd_timer_enable(port, PE_TIMER_TIMEOUT, PD_T_VCONN_REAPPLIED);
+	} else if (IS_ENABLED(CONFIG_USBC_VCONN) &&
+			pd_timer_is_expired(port, PE_TIMER_TIMEOUT)) {
+		pd_request_vconn_swap_on(port);
+		pd_timer_disable(port, PE_TIMER_TIMEOUT);
+
+		/*
+		 * 4) The DFP shall:
+		 *    a) Reconnect the [USB 2.0] D+/D- signals
+		 *    b) If the Port was operating in [USB 3.2] or [USB4]
+		 *       reapply the port’s Rx Terminations
+		 */
+			/* TODO */
+			/* Reconnect the [USB 2.0] D+/D- signals */
+
+			/*
+			 * If the Port was operating in [USB 3.2] or [USB4]
+			 * reapply the port’s Rx Terminations
+			 */
+
+		PE_SET_FLAG(port, PE_FLAGS_DATA_RESET_COMPLETE);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_DATA_RESET_COMPLETE) &&
+			!pd_timer_is_disabled(port, PE_TIMER_DATA_RESET_FAIL)) {
+		/* Stop DataResetFailTimer */
+		pd_timer_disable(port, PE_TIMER_DATA_RESET_FAIL);
+		/* Send Data_Reset_Complete message */
+		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_DATA_RESET_COMPLETE);
 	} else if (pd_timer_is_expired(port, PE_TIMER_DATA_RESET_FAIL) ||
 				PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
+	} else if (PE_CHK_FLAG(port, PE_FLAGS_DATA_RESET_COMPLETE)) {
+		enum pe_msg_check msg_check = pe_sender_response_msg_run(port);
+		if (msg_check & PE_MSG_DISCARDED) {
+			send_ctrl_msg(port, TCPC_TX_SOP,
+					PD_CTRL_DATA_RESET_COMPLETE);
+		} else if (msg_check & PE_MSG_SENT)
+			pe_set_ready_state(port);
 	}
 }
 
 static void pe_ddr_perform_data_reset_exit(int port)
 {
-	/* Stop DataResetFailTimer */
-	pd_timer_disable(port, PE_TIMER_DATA_RESET_FAIL);
-	/* Send Data_Reset_Complete message */
-	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_DATA_RESET_COMPLETE);
+	PE_CLR_FLAG(port, PE_FLAGS_DATA_RESET_COMPLETE);
+	dpm_data_reset_complete(port);
 }
 #endif /* CONFIG_USB_PD_DATA_RESET_MSG */
 
@@ -7251,6 +7374,29 @@ void pd_dfp_discovery_init(int port)
 
 	memset(pe[port].discovery, 0, sizeof(pe[port].discovery));
 	memset(pe[port].partner_amodes, 0, sizeof(pe[port].partner_amodes));
+
+	/* Reset the DPM and DP modules to enable alternate mode entry. */
+	dpm_init(port);
+	dp_init(port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_TBT_COMPAT_MODE))
+		tbt_init(port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_USB4))
+		enter_usb_init(port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_UFP_DP))
+		pd_ufp_set_dp_opos(port, 0);
+}
+
+void pd_dfp_mode_init(int port)
+{
+	/*
+	 * Clear the VDM Setup Done and Modal Operation flags so we will
+	 * have a fresh discovery
+	 */
+	PE_CLR_FLAG(port, PE_FLAGS_VDM_SETUP_DONE |
+			  PE_FLAGS_MODAL_OPERATION);
 
 	/* Reset the DPM and DP modules to enable alternate mode entry. */
 	dpm_init(port);
