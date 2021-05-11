@@ -183,5 +183,7 @@ uint32_t pe_get_flags(int port);
  */
 void pe_data_reset_complete(int port);
 
+int pe_get_vbus_nom(int port);
+
 #endif /* __CROS_EC_USB_PE_H */
 

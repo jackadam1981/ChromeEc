@@ -356,6 +356,8 @@ void pd_dfp_discovery_init(int port)
 	memset(&partner_amodes[port], 0, sizeof(partner_amodes[0]));
 }
 
+void pd_dfp_mode_init(int port) {}
+
 static int dfp_discover_ident(uint32_t *payload)
 {
 	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_IDENT);
