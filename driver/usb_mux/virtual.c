@@ -23,8 +23,44 @@
 			USB_PD_MUX_DP_ENABLED | USB_PD_MUX_POLARITY_INVERTED | \
 			USB_PD_MUX_SAFE_MODE | USB_PD_MUX_TBT_COMPAT_ENABLED | \
 			USB_PD_MUX_USB4_ENABLED)
+#define USB_PD_MUX_ALT_MODE (USB_PD_MUX_DP_ENABLED | \
+			USB_PD_MUX_TBT_COMPAT_ENABLED | \
+			USB_PD_MUX_USB4_ENABLED)
 
 static mux_state_t virtual_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+static bool virtual_mux_should_wait_for_ack(mux_state_t previous,
+						mux_state_t next)
+{
+	/*
+	 * EC waits for the ACK from kernel indicating that TCSS Mux
+	 * configuration is completed. This mechanism is implemented for
+	 * entering, exiting the safe mode and entering the disconnect mode
+	 * from an alternate mode. This is needed to remove timing senstivity
+	 * between BB retimer and TCSS Mux to allow better synchronization
+	 * between them and thereby remain in the same state for achieving
+	 * proper state terminations.
+	 *
+	 * Note: While the EC waits for the ACK, the value of usb_mux_get
+	 * won't match the most recently set value with usb_mux_set.
+	 */
+
+	/* TODO(b/186777984): Wait for an ACK for all mux state change */
+
+	if (!(previous & USB_PD_MUX_SAFE_MODE) &&
+	     (next & USB_PD_MUX_SAFE_MODE))
+		return true;
+
+	if ((previous & USB_PD_MUX_SAFE_MODE) &&
+	    !(next & USB_PD_MUX_SAFE_MODE))
+		return true;
+
+	if ((previous & USB_PD_MUX_ALT_MODE) &&
+	    (next == USB_PD_MUX_NONE))
+		return true;
+
+	return false;
+}
 
 static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 {
@@ -40,27 +76,7 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state)
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
 		return;
 
-	/*
-	 * EC waits for the ACK from kernel indicating that TCSS Mux
-	 * configuration is completed. This mechanism is implemented for
-	 * entering, exiting the safe mode and entering the disconnect mode
-	 * This is needed to remove timing senstivity between BB retimer and
-	 * TCSS Mux to allow better synchronization between them and thereby
-	 * remain in the same state for achieving proper safe state
-	 * terminations.
-	 *
-	 * Note: While the EC waits for the ACK, the value of usb_mux_get
-	 * won't match the most recently set value with usb_mux_set.
-	 */
-
-	/* TODO(b/186777984): Wait for an ACK for all mux state change */
-
-	if ((!(previous_mux_state & USB_PD_MUX_SAFE_MODE) &&
-	     (mux_state & USB_PD_MUX_SAFE_MODE)) ||
-	   ((previous_mux_state & USB_PD_MUX_SAFE_MODE) &&
-	    !(mux_state & USB_PD_MUX_SAFE_MODE)) ||
-	   ((previous_mux_state != USB_PD_MUX_NONE) &&
-	    (mux_state == USB_PD_MUX_NONE))) {
+	if (virtual_mux_should_wait_for_ack(previous_mux_state, mux_state)) {
 		/* This should only be called from the PD task */
 		assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
