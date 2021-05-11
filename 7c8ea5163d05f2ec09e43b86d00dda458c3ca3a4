@@ -117,6 +117,30 @@
       },
       "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22626bfb_2b9bbfad",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-11T15:38:53Z",
+      "side": 1,
+      "message": "Yuval - to clarify the I2C0 clock and data pins are mapped to function 1 of the GPIOB port bits 3 and 4.  so this looks correct.",
+      "parentUuid": "6d16d527_56d260c4",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

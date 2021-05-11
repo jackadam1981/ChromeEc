@@ -140,6 +140,30 @@
       },
       "revId": "eea35fa26ade19a75cea2867b110050cab65397c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d5a0bd5_233b466f",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-11T15:38:53Z",
+      "side": 1,
+      "message": "Chromium EC configures I2C pins as GPIO and the alternate function (I2C operation).  This is so the common code in i2c_controller.c can switch the I2C pins to raw/GPIO mode to recover a stuck I2C bus.  The Zephyr I2C model looks to put this requirement on the device driver with i2c-recovery_bus().\n\nWe need to evaluate whether we should continue configuring I2C pins as both GPIO and I2C with Zephyr.\n\nI still think the pinmux_pin_set() calls need to be moved into each device driver.  But this can be done as follow on changes.",
+      "parentUuid": "e2038f4a_02a29543",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "eea35fa26ade19a75cea2867b110050cab65397c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
