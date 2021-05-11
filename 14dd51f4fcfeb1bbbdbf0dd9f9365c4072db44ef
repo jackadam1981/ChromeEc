@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd8221c_b9f144c1",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-11T18:17:16Z",
+      "side": 1,
+      "message": "Okay. It feels like we might be wasting a lot of history buffer space since the 4-byte codes are used primarily by PSP. Anyways, since it is considered important, this can be revisited if there are memory pressure issues.",
+      "parentUuid": "70375043_3fc6f0cc",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e8d12ca_cce2c5e2",
@@ -299,6 +323,30 @@
       "side": 1,
       "message": "I\u0027m fine if we remove the `|| IS_ENABLED(CONFIG_PORT80_4_BYTE)` check. As you pointed out `ec_response_port80_last_boot` is a uint16_t.\n\nIn order to support this we would need a new ec message.",
       "parentUuid": "ed3b80a1_e4764487",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311b080a_96b86a6e",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-11T18:17:16Z",
+      "side": 1,
+      "message": "yeah, I think we can add a comment here indicating that last_boot only reports 8-bit codes.",
+      "parentUuid": "d9d389bd_8a4d2868",
       "range": {
         "startLine": 71,
         "startChar": 22,
