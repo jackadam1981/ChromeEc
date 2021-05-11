@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f32791_d5f98e27",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-11T16:25:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d22ba481_e9b5a474",
+      "range": {
+        "startLine": 20,
+        "startChar": 24,
+        "endLine": 20,
+        "endChar": 41
+      },
+      "revId": "d6b66ddecd54a03ef99553cf950bf2677f3449a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f2302ba_68fe4400",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I don\u0027t think we can do it that way. SSFC configuration doesn\u0027t work as flags, but defined values:\n\nenum ec_ssfc_base_sensor {\n\tSSFC_SENSOR_BASE_DEFAULT \u003d 0,\n\tSSFC_SENSOR_BMI160 \u003d 1,\n\tSSFC_SENSOR_ICM426XX \u003d 2,\n\tSSFC_SENSOR_LSM6DSM \u003d 3\n};\n\nunion dedede_cbi_ssfc {\n\tstruct {\n\t\tuint32_t base_sensor : 3;\n\t\tuint32_t lid_sensor : 3;\n\t\tuint32_t usb_ss_mux : 3;\n\t\tuint32_t reserved_2 : 23;\n\t};\n\tuint32_t raw_value;\n};",
       "parentUuid": "4f2302ba_68fe4400",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "d6b66ddecd54a03ef99553cf950bf2677f3449a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a445c09a_8f822517",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-11T16:25:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "851ac456_2cddc8e4",
       "range": {
         "startLine": 117,
         "startChar": 0,
