@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "720b5d0d_e7c25bc9",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-11T21:07:41Z",
+      "side": 1,
+      "message": "Are we expecting something more complex than just setting an gpio (like we do for guybrush)? If not (sure), we can simply do:\n\n  #ifdef CONFIG_GPIO_EN_KB_BL\n    gpio_set_level(CONFIG_GPIO_EN_KB_BL, enable);\n  #endif",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "878a17cbf28ec01f9559d2d5e8f25c6ac002703c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
