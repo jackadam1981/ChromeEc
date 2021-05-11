@@ -80,7 +80,7 @@ const struct fan_t fans[FAN_CH_COUNT] = {
  */
 const static struct ec_thermal_config thermal_cpu = {
 	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(70),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(71),
 		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
 	},
 	.temp_host_release = {
