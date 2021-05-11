@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51ce3882_369814bc",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-11T14:33:00Z",
+      "side": 1,
+      "message": "does this need to be added to all of the similar conditionals in it8xxx2_pinmux_init_latr, to make sure the appropriate pinmux and i2c are present before trying to enable the alt functions?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "14e3b3eb8fb14eae8a4c662d95c7e576163dd8f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
