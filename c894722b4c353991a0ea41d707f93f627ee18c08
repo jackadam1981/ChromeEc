@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47c2e0d_182e1ce7",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-11T20:12:43Z",
+      "side": 1,
+      "message": "Does this need to be based on the power state?  And do we expect current_percent to be set during init?",
+      "revId": "c894722b4c353991a0ea41d707f93f627ee18c08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
