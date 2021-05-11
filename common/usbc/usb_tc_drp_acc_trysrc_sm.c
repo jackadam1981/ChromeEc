@@ -125,10 +125,10 @@ void print_flag(int port, int set_or_clear, int flag);
 /* Flag for asynchronous call to request Error Recovery */
 #define TC_FLAGS_REQUEST_ERROR_RECOVERY	BIT(22)
 /* Flag to start a data reset process */
-#define PE_START_DATA_RESET             BIT(22)
+#define PE_START_DATA_RESET             BIT(23)
 
 /* For checking flag_bit_names[] array */
-#define TC_FLAGS_COUNT			23
+#define TC_FLAGS_COUNT			24
 
 /* On disconnect, clear most of the flags. */
 #define CLR_FLAGS_ON_DISCONNECT(port) TC_CLR_FLAG(port, \

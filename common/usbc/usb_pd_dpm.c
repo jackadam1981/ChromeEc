@@ -45,13 +45,14 @@ static struct {
 #define DPM_CHK_FLAG(port, flag) (dpm[(port)].flags & (flag))
 
 /* Flags for internal DPM state */
-#define DPM_FLAG_MODE_ENTRY_DONE BIT(0)
-#define DPM_FLAG_EXIT_REQUEST    BIT(1)
-#define DPM_FLAG_ENTER_DP        BIT(2)
-#define DPM_FLAG_ENTER_TBT       BIT(3)
-#define DPM_FLAG_ENTER_USB4      BIT(4)
-#define DPM_FLAG_SEND_ATTENTION  BIT(5)
-#define DPM_FLAG_DATA_RESET_DONE BIT(6)
+#define DPM_FLAG_MODE_ENTRY_DONE      BIT(0)
+#define DPM_FLAG_EXIT_REQUEST         BIT(1)
+#define DPM_FLAG_ENTER_DP             BIT(2)
+#define DPM_FLAG_ENTER_TBT            BIT(3)
+#define DPM_FLAG_ENTER_USB4           BIT(4)
+#define DPM_FLAG_SEND_ATTENTION       BIT(5)
+#define DPM_FLAG_DATA_RESET_REQUESTED BIT(6)
+#define DPM_FLAG_DATA_RESET_DONE      BIT(7)
 
 #ifdef CONFIG_ZEPHYR
 static int init_vdm_attention_mutex(const struct device *dev)
@@ -132,6 +133,8 @@ enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 
 	DPM_CLR_FLAG(port, DPM_FLAG_MODE_ENTRY_DONE);
 	DPM_CLR_FLAG(port, DPM_FLAG_EXIT_REQUEST);
+    /* TODO: Is this the best place for this? */
+    DPM_CLR_FLAG(port, DPM_FLAG_DATA_RESET_DONE);
 
 	return EC_RES_SUCCESS;
 }
@@ -155,7 +158,8 @@ void dpm_set_mode_exit_request(int port)
 
 void dpm_data_reset_complete(int port)
 {
-    CPRINTS("C%d: Data Reset done");
+    CPRINTS("C%d: Data Reset done", port);
+    DPM_CLR_FLAG(port, DPM_FLAG_DATA_RESET_REQUESTED);
     DPM_SET_FLAG(port, DPM_FLAG_DATA_RESET_DONE);
 }
 
@@ -288,9 +292,16 @@ static void dpm_attempt_mode_entry(int port)
      * flag will probably have to be inverted.
      */
     if (IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) &&
+            !DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_REQUESTED) &&
             !DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_DONE)) {
-        CPRINTS("C%d: Requesting Data Reset");
+        CPRINTS("C%d: Requesting Data Reset", port);
         pd_dpm_request(port, DPM_REQUEST_DATA_RESET);
+        DPM_SET_FLAG(port, DPM_FLAG_DATA_RESET_REQUESTED);
+        return;
+    }
+
+    if (IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) &&
+            !DPM_CHK_FLAG(port, DPM_FLAG_DATA_RESET_DONE)) {
         return;
     }
 

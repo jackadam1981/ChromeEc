@@ -1532,8 +1532,13 @@ static bool common_src_snk_dpm_requests(int port)
 #ifdef CONFIG_USB_PD_DATA_RESET_MSG
 	else if (PE_CHK_DPM_REQUEST(port,
 					DPM_REQUEST_DATA_RESET)) {
-		PE_CLR_DPM_REQUEST(port,
-					DPM_REQUEST_DATA_RESET);
+		pe_set_dpm_curr_request(port, DPM_REQUEST_DATA_RESET);
+		if (prl_get_rev(port, TCPC_TX_SOP) < PD_REV30) {
+			CPRINTS("No DR in PD rev 2.0");
+			dpm_data_reset_complete(port);
+			return true;
+		}
+
 		if (pe[port].data_role == PD_ROLE_DFP)
 			set_state_pe(port, PE_DDR_SEND_DATA_RESET);
 		else
@@ -7041,7 +7046,23 @@ static void pe_ddr_send_data_reset_entry(int port)
 
 static void pe_ddr_send_data_reset_run(int port)
 {
-	if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE) &&
+	enum pe_msg_check msg_check;
+
+	/*
+	 * Check the state of the message sent
+	 */
+	msg_check = pe_sender_response_msg_run(port);
+
+	/*
+	 * Handle Discarded message, return to PE_SNK/SRC_READY
+	 */
+	if (msg_check & PE_MSG_DISCARDED) {
+		pe_set_ready_state(port);
+		return;
+	} else if (msg_check == PE_MSG_SEND_PENDING) {
+		/* Wait until message is sent */
+		return;
+	} else if (msg_check & PE_MSG_SENT &&
 		pd_timer_is_disabled(port, PE_TIMER_SENDER_RESPONSE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
@@ -7066,16 +7087,33 @@ static void pe_ddr_send_data_reset_run(int port)
 					set_state_pe(port,
 						PE_DDR_WAIT_FOR_VCONN_OFF);
 				}
+				return;
 			}
 			/* Reject message received of Protocol Error */
 			else if ((PD_HEADER_TYPE(rx_emsg[port].header) ==
 							PD_CTRL_REJECT)) {
 				set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
+				return;
+			}
+			/*
+			 * FIXME: This probably isn't compliant. If we want to
+			 * go into error recovery when Data Reset fails (as the
+			 * spec says), then we'll need to have some mechanism
+			 * for not trying again when it fails the first time.
+			 */
+			else if ((PD_HEADER_TYPE(rx_emsg[port].header) ==
+						PD_CTRL_NOT_SUPPORTED)) {
+				/* Just pretend it worked. */
+				CPRINTS("Partner does not support Data Reset");
+				pe_data_reset_complete(port);
+				pe_set_ready_state(port);
+				return;
 			}
 		}
 	} else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
+		return;
 	}
 
 	/*
