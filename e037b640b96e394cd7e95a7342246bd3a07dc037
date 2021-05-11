@@ -16,6 +16,52 @@
       "message": "Ready to review, thanks.",
       "revId": "e037b640b96e394cd7e95a7342246bd3a07dc037",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7880848_0cd02e7c",
+        "filename": "zephyr/projects/asurada/boards/riscv/asurada/asurada.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-11T14:48:09Z",
+      "side": 1,
+      "message": "nit: remove extra newline?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "e037b640b96e394cd7e95a7342246bd3a07dc037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e99c1821_39d10f7e",
+        "filename": "zephyr/projects/asurada/boards/riscv/asurada/asurada.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-11T14:48:09Z",
+      "side": 1,
+      "message": "nit: remove extra newline?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 0
+      },
+      "revId": "e037b640b96e394cd7e95a7342246bd3a07dc037",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
