@@ -306,7 +306,7 @@ static void timer_sysjump(void)
 DECLARE_HOOK(HOOK_SYSJUMP, timer_sysjump, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_CMD_WAITMS
-static int command_wait(int argc, char **argv)
+int command_wait(int argc, char **argv)
 {
 	char *e;
 	int i;
