@@ -12,6 +12,12 @@
 #include "baseboard.h"
 
 /*
+ * The RAM and flash size combination on the NPCX797FC dose not leave
+ * any unused flash space that can be used to store the .init_rom section.
+ */
+#undef CONFIG_CHIP_INIT_ROM_REGION
+
+/*
  * Create an EC build that requires AP-driven mode entry to facilitate debugging
  * b/177105656.
  */
