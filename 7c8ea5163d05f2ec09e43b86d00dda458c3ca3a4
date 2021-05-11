@@ -141,6 +141,30 @@
       },
       "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13c2417f_803d64f1",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-11T16:34:08Z",
+      "side": 1,
+      "message": "Is that always true though? Will every board use i2c0? I guess what I would have expected here is a driver for pinmux that set a phandle to the port. So you would get the device bunding for the pinmuxb, then check if the port is enabled in order to set the pins.",
+      "parentUuid": "22626bfb_2b9bbfad",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
