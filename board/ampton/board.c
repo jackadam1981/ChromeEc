@@ -281,17 +281,6 @@ struct motion_sensor_t motion_sensors[] = {
 	 .min_frequency = BMI_GYRO_MIN_FREQ,
 	 .max_frequency = BMI_GYRO_MAX_FREQ,
 	},
-	[VSYNC] = {
-	 .name = "Camera VSYNC",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_GPIO,
-	 .type = MOTIONSENSE_TYPE_SYNC,
-	 .location = MOTIONSENSE_LOC_CAMERA,
-	 .drv = &sync_drv,
-	 .default_range = 0,
-	 .min_frequency = 0,
-	 .max_frequency = 1,
-	},
 };
 
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
@@ -301,7 +290,7 @@ static int board_is_convertible(void)
 	/* SKU IDs of Ampton & unprovisioned: 1, 2, 3, 4, 255 */
 	return sku_id == 1 || sku_id == 2 || sku_id == 3 || sku_id == 4
 		|| sku_id == 255;
-	}
+}
 
 static int board_with_sensor_bma253(void)
 {
