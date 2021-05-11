@@ -69,6 +69,24 @@
       "parentUuid": "56a7a58b_fbe99dd7",
       "revId": "025e419bdbd283e51b43d230e6841aad76ce88b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b832639b_1a8a463f",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-11T15:50:54Z",
+      "side": 1,
+      "message": "According to Fabio\u0027s check (CL:2854850), for Zephyr EC configuration, the system workqueue is only used by something besides the hooks.\nFabio, can you elaborate which Zephyr driver/service uses the system workqueue in the Zephyr EC configuration?",
+      "parentUuid": "7f92ce5c_6f426983",
+      "revId": "025e419bdbd283e51b43d230e6841aad76ce88b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
