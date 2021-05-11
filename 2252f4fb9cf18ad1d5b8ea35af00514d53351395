@@ -16,6 +16,24 @@
       "message": "Is this actually connected to anything? (I haven\u0027t checked schematics). If not, please move to NC section below.",
       "revId": "2252f4fb9cf18ad1d5b8ea35af00514d53351395",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b34dba_92a39cbc",
+        "filename": "board/haboki/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-05-11T01:35:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b316af5_724f449e",
+      "revId": "2252f4fb9cf18ad1d5b8ea35af00514d53351395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
