@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5dfeb279_1db74c04",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-05-11T09:33:40Z",
+      "side": 1,
+      "message": "Changed to enable uart1 alt function when uart1 and pinmuxb are both valid.",
+      "parentUuid": "8278359c_7823c0f5",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 49
+      },
+      "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72111fe7_e3ada8b3",
         "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
         "patchSetId": 9
@@ -61,6 +85,30 @@
       "writtenOn": "2021-05-10T17:22:48Z",
       "side": 1,
       "message": "Why does this depend in i2c0? The code below sees to just use pinmuxb",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d16d527_56d260c4",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-05-11T09:33:40Z",
+      "side": 1,
+      "message": "We will enable alt function when the i2c port is enabled.",
+      "parentUuid": "72111fe7_e3ada8b3",
       "range": {
         "startLine": 39,
         "startChar": 36,
