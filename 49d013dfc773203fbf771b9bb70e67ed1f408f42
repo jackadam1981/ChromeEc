@@ -16,6 +16,24 @@
       "message": "can you please explain in the patch description or on the bug why TPM wipe reset needs to be a special case and what are the problem if reset is not debounced in that case.",
       "revId": "49d013dfc773203fbf771b9bb70e67ed1f408f42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0baf6b9_aed2ac29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-05-11T16:43:02Z",
+      "side": 1,
+      "message": "Actually I think clearing it in tpm_stop is more correct. The issue is we can\u0027t have the tpm stopped with reset in progress otherwise cr50 can\u0027t clear either.\n\nWhat do you think?",
+      "parentUuid": "082aeaf7_59de2367",
+      "revId": "49d013dfc773203fbf771b9bb70e67ed1f408f42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
