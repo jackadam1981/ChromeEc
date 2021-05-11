@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70375043_3fc6f0cc",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-05-11T15:11:57Z",
+      "side": 1,
+      "message": "I think the increase in memory usage is worth seeing the bytes grouped together. If run into memory pressure issues, we can lower the `CONFIG_PORT80_HISTORY_LEN`.",
+      "parentUuid": "41ba766b_72618e9d",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e8d12ca_cce2c5e2",
         "filename": "common/port80.c",
         "patchSetId": 3
@@ -109,6 +133,30 @@
       "writtenOn": "2021-05-10T20:50:50Z",
       "side": 1,
       "message": "Isn\u0027t it wrong to set this to uint32_t? `ec_response_port80_last_boot` only accepts a uint16_t as code.",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 20
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df728cfc_d3b863b9",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-05-11T15:11:57Z",
+      "side": 1,
+      "message": "Ah, good catch.",
+      "parentUuid": "9e8d12ca_cce2c5e2",
       "range": {
         "startLine": 27,
         "startChar": 7,
@@ -227,6 +275,30 @@
       "side": 1,
       "message": "Basically for platforms that do not select CONFIG_PORT80_4_BYTE, last_boot will not be set to special event codes e.g. PORT_80_EVENT_RESUME/PORT_80_EVENT_RESET.\n\nBut, for platforms that select CONFIG_PORT80_4_BYTE, last_boot can be set to special event codes e.g. PORT_80_EVENT_RESUME/PORT_80_EVENT_RESET.\n\nThis creates inconsistency in behavior across different Chrome OS devices.",
       "parentUuid": "7e93ce10_d2fe59e7",
+      "range": {
+        "startLine": 71,
+        "startChar": 22,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d389bd_8a4d2868",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-05-11T15:11:57Z",
+      "side": 1,
+      "message": "I\u0027m fine if we remove the `|| IS_ENABLED(CONFIG_PORT80_4_BYTE)` check. As you pointed out `ec_response_port80_last_boot` is a uint16_t.\n\nIn order to support this we would need a new ec message.",
+      "parentUuid": "ed3b80a1_e4764487",
       "range": {
         "startLine": 71,
         "startChar": 22,
