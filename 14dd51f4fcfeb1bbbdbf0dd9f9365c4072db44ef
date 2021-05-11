@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41ba766b_72618e9d",
+        "filename": "common/port80.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-11T03:20:50Z",
+      "side": 1,
+      "message": "Actually, in the NPCX Port80 module/driver, we get the Port80 code byte-by-byte (via DP80BUF register) even when AP sends it with 4-byte. In patchset 1 of CL:2847668, I just sent what is read from DP80BUF directly to common Port80 layer.\nHowever, per comments, it lost the readability and endianness. So I combined 4 1-byte into a 4-byte code and sent it to the common Port80 (parchset 4).\nWhat do you think if we go back to use patchset 1 of CL:2847668? With it, we don\u0027t need to change the common layer and should be no inconsistent issue.\n(Though, it lose the readability and endianness.)",
+      "parentUuid": "217a68ec_b0ea03bd",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 39
+      },
+      "revId": "14dd51f4fcfeb1bbbdbf0dd9f9365c4072db44ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e8d12ca_cce2c5e2",
         "filename": "common/port80.c",
         "patchSetId": 3
