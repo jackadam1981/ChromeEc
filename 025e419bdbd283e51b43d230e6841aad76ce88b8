@@ -51,6 +51,24 @@
       "parentUuid": "a5a0d2a5_817104da",
       "revId": "025e419bdbd283e51b43d230e6841aad76ce88b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f92ce5c_6f426983",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-11T07:06:22Z",
+      "side": 1,
+      "message": "I see, didn\u0027t realize Kconfig can\u0027t evaluate expressions. My concern is that if you look at the Zephyr repo and do a search for \"CONFIG_SYSTEM_WORKQUEUE_PRIORITY\" you\u0027ll see that several drivers and modules use it to do similar things. Changing this at runtime might break other seemingly unrelated things.\n\nWhat do you think of running:\n// zephyr/shim/src/hooks.c\n#ifdef CONFIG_PREEMPT_ENABLED\nBUILD_ASSERT(CONFIG_SYSTEM_WORKQUEUE_PRIORITY \u003d\u003d CONFIG_NUM_PREEMPT_PRIORITIES - 1);\n#endif\n\nThen we can do:\n// \u003cboard\u003e_defconfig\nCONFIG_SYSTEM_WORKQUEUE_PRIORITY\u003d14\n\nWe probably want some higher level defconfig for all the projects, but that can be done later.",
+      "parentUuid": "56a7a58b_fbe99dd7",
+      "revId": "025e419bdbd283e51b43d230e6841aad76ce88b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
