@@ -44,6 +44,11 @@ struct kblight_drv {
 void board_kblight_init(void);
 
 /**
+ * Enable keyboard backlight per board
+ */
+void board_kblight_enable(int enable);
+
+/**
  * Set keyboard backlight brightness
  *
  * @param percent Brightness in percentage

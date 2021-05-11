@@ -18,7 +18,10 @@
 static struct kblight_conf kblight;
 static int current_percent;
 
-void __attribute__((weak)) board_kblight_init(void)
+__overridable void board_kblight_init(void)
+{ }
+
+__overridable void board_kblight_enable(int enable)
 { }
 
 static int kblight_init(void)
@@ -56,6 +59,7 @@ int kblight_get(void)
 
 int kblight_enable(int enable)
 {
+	board_kblight_enable(enable);
 	if (!kblight.drv || !kblight.drv->enable)
 		return -1;
 	return kblight.drv->enable(enable);
