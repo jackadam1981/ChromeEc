@@ -87,6 +87,24 @@
       "parentUuid": "7f92ce5c_6f426983",
       "revId": "025e419bdbd283e51b43d230e6841aad76ce88b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db63d5bb_a5c280db",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-05-11T16:15:19Z",
+      "side": 1,
+      "message": "Back when I checked the sysworkq was only used by the vboot serial support code, that is https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/shim/src/console.c#150, called from https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/vboot/efs2.c#74\n\nSo right now it\u0027s only used once at boot time. Would expect this to be used for more stuff in the future though if we start to use more native drivers.",
+      "parentUuid": "b832639b_1a8a463f",
+      "revId": "025e419bdbd283e51b43d230e6841aad76ce88b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
