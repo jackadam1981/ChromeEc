@@ -46,6 +46,30 @@
       },
       "revId": "009c4879e71e617f28342a5e541cd473bba11eb1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f0078e6_67951d37",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 14
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-11T17:51:31Z",
+      "side": 1,
+      "message": "I didn\u0027t add this.\n\n8ba2a0dd44 (Hyungwoo Yang     2021-01-19 23:17:30 -0800 381) config PLATFORM_EC_MKBP_EVENT",
+      "parentUuid": "46ec7800_3f0adff2",
+      "range": {
+        "startLine": 367,
+        "startChar": 0,
+        "endLine": 372,
+        "endChar": 13
+      },
+      "revId": "009c4879e71e617f28342a5e541cd473bba11eb1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
