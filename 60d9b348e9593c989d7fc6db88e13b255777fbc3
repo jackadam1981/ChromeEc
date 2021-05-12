@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddaf7144_1e8dfc7a",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-05-12T05:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d783f4d8_83718ed1",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "60d9b348e9593c989d7fc6db88e13b255777fbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a71adaee_1c150861",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-11T14:43:22Z",
       "side": 1,
       "message": "are any of these magic numbers #defined anywhere to make the code easier to understand the code better?  This goes for all of the BIT(x) and constant magic numbers in this file.",
+      "range": {
+        "startLine": 131,
+        "startChar": 23,
+        "endLine": 131,
+        "endChar": 27
+      },
+      "revId": "60d9b348e9593c989d7fc6db88e13b255777fbc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14bf2be7_1c616b5e",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-05-12T05:19:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a71adaee_1c150861",
       "range": {
         "startLine": 131,
         "startChar": 23,
