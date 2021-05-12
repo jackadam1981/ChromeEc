@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1908b87_ad8c8703",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-12T17:59:02Z",
+      "side": 1,
+      "message": "pls add this too: and outputs can only be open drain pins",
+      "range": {
+        "startLine": 54,
+        "startChar": 36,
+        "endLine": 54,
+        "endChar": 40
+      },
+      "revId": "aa91fa31669754256211232d8ed0bb374cf08ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0924edc2_110450ca",
         "filename": "driver/ioexpander/ccgxxf.c",
         "patchSetId": 1
@@ -83,6 +106,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "84ef821a_b65c7950",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-12T17:59:02Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 37
+      },
+      "revId": "aa91fa31669754256211232d8ed0bb374cf08ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3a1a1dfe_34b78a45",
         "filename": "driver/ioexpander/ccgxxf.c",
         "patchSetId": 1
@@ -94,6 +140,52 @@
       "writtenOn": "2021-05-12T17:44:41Z",
       "side": 1,
       "message": "Try to keep under 80 cols.",
+      "revId": "aa91fa31669754256211232d8ed0bb374cf08ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf5676be_0097d047",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-12T17:59:02Z",
+      "side": 1,
+      "message": "if (flags \u0026 GPIO_SEL_1P8V)\n   pin_mode |\u003d CCGXXF_GPIO_1P8V_SEL;",
+      "range": {
+        "startLine": 95,
+        "startChar": 39,
+        "endLine": 95,
+        "endChar": 81
+      },
+      "revId": "aa91fa31669754256211232d8ed0bb374cf08ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9f4f7a_bb792677",
+        "filename": "driver/tcpm/ccgxxf.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-12T17:59:02Z",
+      "side": 1,
+      "message": "change to\n#define CCGXXF_GPIO_1P8V_SEL            BIT(7)",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 34
+      },
       "revId": "aa91fa31669754256211232d8ed0bb374cf08ba4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
