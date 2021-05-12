@@ -51,14 +51,20 @@ static int ccgxxf_set_level(int ioex, int port, int mask, int val)
  * - Output pins are supported with open-drain & pull-up
  * - Input pins are supported with pull-up & pull-down
  * - Analog pins
- *
- * TODO: Add support for 1.8V level GPIOs, after implementing it in the
- * CCGXXF firmware.
+ * - 1.8V level GPIOs supported per port
  */
 static int ccgxxf_set_flags_by_mask(int ioex, int port, int mask, int flags)
 {
 	uint16_t pin_mode;
+	uint8_t sel_1_8;
 	int rv;
+
+	/* push-pull output can't be configured for 1.8V level */
+	if ( (flags & GPIO_OUTPUT) && (flags & GPIO_SEL_1P8V) && (!(flags & GPIO_OPEN_DRAIN)) )
+		return EC_ERROR_INVAL;
+
+	/* Note: once set the 1.8V level affect whole GPIO port */
+	sel_1_8 = !!(flags & GPIO_SEL_1P8V);
 
 	if (flags & GPIO_OUTPUT) {
 		if (flags & GPIO_OPEN_DRAIN) {
@@ -86,7 +92,7 @@ static int ccgxxf_set_flags_by_mask(int ioex, int port, int mask, int flags)
 	}
 
 	pin_mode = port | (pin_mode << CCGXXF_GPIO_PIN_MODE_SHIFT) |
-			(mask << CCGXXF_GPIO_PIN_MASK_SHIFT);
+			(mask << CCGXXF_GPIO_PIN_MASK_SHIFT) | (sel_1_8 << CCGXXF_GPIO_1_8_SEL_SHIFT);
 
 	/*
 	 * Before setting the GPIO mode, initilaize the pins to default value
