@@ -86,7 +86,8 @@ int raa489000_init(int port)
 	 * TODO(b:147316511) Since this register can be accessed by multiple
 	 * tasks, we should add a mutex when modifying this register.
 	 */
-	if (IS_ENABLED(CONFIG_OCPC) && port == 0) {
+	if ((IS_ENABLED(CONFIG_OCPC) && port == 0) ||
+	!pd_is_battery_capable()) {
 		i2c_port = tcpc_config[port].i2c_info.port;
 		rv = i2c_read16(i2c_port, ISL923X_ADDR_FLAGS,
 				ISL9238_REG_CONTROL3, &regval);
