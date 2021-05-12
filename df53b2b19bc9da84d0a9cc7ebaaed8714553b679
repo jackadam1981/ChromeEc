@@ -22,6 +22,30 @@
       },
       "revId": "df53b2b19bc9da84d0a9cc7ebaaed8714553b679",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ff9cd5_c62ae1e0",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-05-12T09:26:50Z",
+      "side": 1,
+      "message": "It seems like that device_get_binding search label of property and DEVICE_DT_GET search label of node.",
+      "parentUuid": "07da1052_ee6d7366",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 17
+      },
+      "revId": "df53b2b19bc9da84d0a9cc7ebaaed8714553b679",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
