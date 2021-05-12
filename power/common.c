@@ -848,6 +848,13 @@ DECLARE_HOOK(HOOK_SECOND,
 	     HOOK_PRIO_DEFAULT);
 #endif
 
+void update_pwrgd(void)
+{
+	gpio_set_level(GPIO_EN_PP5000_USB_A0_VBUS,
+		gpio_get_level(GPIO_PMIC_EC_PWRGD));
+}
+DECLARE_DEFERRED(update_pwrgd);
+
 void power_signal_interrupt(enum gpio_signal signal)
 {
 #ifdef CONFIG_POWER_SIGNAL_INTERRUPT_STORM_DETECT_THRESHOLD
@@ -863,6 +870,8 @@ void power_signal_interrupt(enum gpio_signal signal)
 		}
 	}
 #endif
+	if (signal == GPIO_PMIC_EC_PWRGD)
+		hook_call_deferred(&update_pwrgd_data, 1 * SECOND);
 
 	SIGLOG(signal);
 
