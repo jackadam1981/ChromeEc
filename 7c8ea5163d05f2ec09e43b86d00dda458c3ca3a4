@@ -213,6 +213,30 @@
       },
       "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd456d1a_8c7c3804",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-12T17:56:59Z",
+      "side": 1,
+      "message": "Marking resolved after chatting with Keith about this offline.",
+      "parentUuid": "1a8ebc59_d3aa1d22",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
