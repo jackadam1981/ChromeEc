@@ -103,5 +103,5 @@ void board_init_rw(void)
 	gpio_enable_interrupt(gpio_slp_alt_l);
 	gpio_enable_interrupt(GPIO_SLP_L);
 	/* enable the SPI slave interface if the PCH is up */
-	hook_call_deferred(&ap_deferred_data, 0);
+	ap_deferred();
 }
