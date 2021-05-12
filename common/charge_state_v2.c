@@ -1304,8 +1304,13 @@ static int charge_request(int voltage, int current)
 	if (r2 != EC_SUCCESS)
 		problem(PR_SET_CURRENT, r2);
 
-	if (voltage >= 0)
-		r1 = charger_set_voltage(0, voltage);
+	if (IS_ENABLED(CONFIG_CHARGER_NARROW_VDC)) {
+		if (voltage > charger_get_info()->voltage_min)
+			r1 = charger_set_voltage(0, voltage);
+	} else {
+		if (voltage >= 0)
+			r1 = charger_set_voltage(0, voltage);
+	}
 	if (r1 != EC_SUCCESS)
 		problem(PR_SET_VOLTAGE, r1);
 
