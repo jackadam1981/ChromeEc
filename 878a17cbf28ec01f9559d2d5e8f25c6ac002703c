@@ -46,6 +46,30 @@
       },
       "revId": "878a17cbf28ec01f9559d2d5e8f25c6ac002703c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb4f3dc_6ab4fa9b",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-12T14:50:15Z",
+      "side": 1,
+      "message": "Then, let\u0027s do #ifdef GPIO_EN_KB_BL ... #endif. The GPIO name doesn\u0027t need CONFIG_ but it needs to be unlikely to conflict. \n GPIO_EN_KEYBOARD_BACKLIGHT_ODL, for example.\n\nWe can do __overridable when something more complex appears.",
+      "parentUuid": "a6275e79_8a09c930",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "878a17cbf28ec01f9559d2d5e8f25c6ac002703c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
