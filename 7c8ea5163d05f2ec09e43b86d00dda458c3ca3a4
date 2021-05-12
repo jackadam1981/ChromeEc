@@ -189,6 +189,30 @@
       },
       "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a8ebc59_d3aa1d22",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-12T16:05:35Z",
+      "side": 1,
+      "message": "I think I misspoke, what I mean is that what\u0027s the hard requirement between pinmuxb and i2c0? I\u0027m not finding any references to pinmuxb in any dts files right now through code search so it\u0027s hard to review this CL. Could it be that on another board pinmuxb will use i2c1? For example, looking for /i2c[0-9]+:/ in the chromium source tree I can find several SOCs that don\u0027t have i2c0 at all. What happens when/if we use one of those?",
+      "parentUuid": "c4b8f5da_4920aaff",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
