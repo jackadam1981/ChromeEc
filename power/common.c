@@ -863,6 +863,9 @@ void power_signal_interrupt(enum gpio_signal signal)
 		}
 	}
 #endif
+	if (signal == GPIO_PMIC_EC_PWRGD)
+		gpio_set_level(GPIO_EN_PP5000_USB_A0_VBUS,
+			gpio_get_level(GPIO_PMIC_EC_PWRGD));
 
 	SIGLOG(signal);
 
