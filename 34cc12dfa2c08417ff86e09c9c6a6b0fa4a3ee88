@@ -39,6 +39,30 @@
       },
       "revId": "34cc12dfa2c08417ff86e09c9c6a6b0fa4a3ee88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0ccd0f0_c8707791",
+        "filename": "zephyr/shim/chip/it8xxx2/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-05-12T05:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c91c562_df177d2a",
+      "range": {
+        "startLine": 30,
+        "startChar": 49,
+        "endLine": 30,
+        "endChar": 52
+      },
+      "revId": "34cc12dfa2c08417ff86e09c9c6a6b0fa4a3ee88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
