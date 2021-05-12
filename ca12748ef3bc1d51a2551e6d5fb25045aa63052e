@@ -39,6 +39,30 @@
       },
       "revId": "ca12748ef3bc1d51a2551e6d5fb25045aa63052e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9b3c1ec_cac9d864",
+        "filename": "board/collis/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2021-05-12T05:53:55Z",
+      "side": 1,
+      "message": "Dear Zhuohao\nCustomer confirm precharge current is 256mA. Please refer to issuetracker attach picture.\n\nThanks.",
+      "parentUuid": "8b4f254a_992965c5",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "ca12748ef3bc1d51a2551e6d5fb25045aa63052e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
