@@ -137,6 +137,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #ifdef TEST_EC_COMM
 #define CONFIG_CRC8
 #define CONFIG_EC_EFS_SUPPORT
+#define CONFIG_EC_EFS2_VERSION 0
 #endif
 
 #if defined(TEST_NVMEM) || defined(TEST_NVMEM_VARS)
