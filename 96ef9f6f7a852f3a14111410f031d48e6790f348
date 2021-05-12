@@ -22,6 +22,30 @@
       },
       "revId": "96ef9f6f7a852f3a14111410f031d48e6790f348",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30497b4e_f2f208f3",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-12T23:50:21Z",
+      "side": 1,
+      "message": "SG. Note, it\u0027s active high in this case.",
+      "parentUuid": "21d29d7d_3a699840",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "96ef9f6f7a852f3a14111410f031d48e6790f348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
