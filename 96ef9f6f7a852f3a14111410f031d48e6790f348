@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d29d7d_3a699840",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-12T23:14:28Z",
+      "side": 1,
+      "message": "Can you please describe this macro in keyboard_backlight.h? \n\n- used to enable power to the kb light circuitry\n- active-low.\n\nIt\u0027ll also prevent accidental functionality change.",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 33
+      },
+      "revId": "96ef9f6f7a852f3a14111410f031d48e6790f348",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
