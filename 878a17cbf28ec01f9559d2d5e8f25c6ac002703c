@@ -22,6 +22,30 @@
       },
       "revId": "878a17cbf28ec01f9559d2d5e8f25c6ac002703c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6275e79_8a09c930",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-12T14:26:11Z",
+      "side": 1,
+      "message": "No, I don\u0027t have other use cases. I don\u0027t have a strong preference.\n\nDo we actually need the CONFIG_ prefix? In most other cases we just use the GPIO directly and force boards to alias if their GPIO name is different.",
+      "parentUuid": "720b5d0d_e7c25bc9",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 30
+      },
+      "revId": "878a17cbf28ec01f9559d2d5e8f25c6ac002703c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
