@@ -43,8 +43,9 @@ static struct ec_efs_context_ {
 } ec_efs_ctx;
 
 static const char * const boot_mode_name_[] = {
-	"NORMAL",
+	"RO",
 	"NO_BOOT",
+	"VERIFIED",
 };
 
 /*
@@ -166,7 +167,7 @@ DECLARE_VENDOR_COMMAND_P(VENDOR_CC_RESET_EC, vc_reset_ec_);
 
 void ec_efs_reset(void)
 {
-	set_boot_mode_(EC_EFS_BOOT_MODE_NORMAL);
+	set_boot_mode_(EC_EFS_BOOT_MODE_RO);
 }
 
 /*
@@ -188,27 +189,42 @@ uint16_t ec_efs_set_boot_mode(const char * const data, const uint8_t size)
 	boot_mode = data[0];
 
 	switch (boot_mode) {
-	case EC_EFS_BOOT_MODE_NORMAL:
-		/*
-		 * Per EC-EFS2 design, CR50 accepts the repeating commands
-		 * as long as the result is the same. It is to be tolerant
-		 * against CR50 response loss, so that EC can resend the
-		 * same command.
-		 */
-		if (ec_efs_ctx.boot_mode == EC_EFS_BOOT_MODE_NORMAL)
-			break;
-		/*
-		 * Once the boot mode is NO_BOOT, then it must not be
-		 * set to NORMAL mode without resetting EC.
-		 */
-		board_reboot_ec_deferred(0);
-		return 0;
-
+	case EC_EFS_BOOT_MODE_RO:
+		switch (ec_efs_ctx.boot_mode) {
+		case EC_EFS_BOOT_MODE_RO:
+			/*
+			 * Per EC-EFS2 design, CR50 accepts the repeating
+			 * commands as long as the result is the same.
+			 * It is to be tolerant against CR50 response loss,
+			 * so that EC can resend the same command.
+			 */
+			return CR50_COMM_SUCCESS;
+		case EC_EFS_BOOT_MODE_NO_BOOT:
+			/* fall through */
+		case EC_EFS_BOOT_MODE_VERIFIED:
+			/*
+			 * Once the boot mode is NO_BOOT, then it must not be
+			 * set to RO mode without resetting EC.
+			 */
+			board_reboot_ec_deferred(0);
+			return 0;
+		default:
+			/*
+			 * This case should not happen.
+			 * However, should it happen, reset EC and EFS-context.
+			 */
+			cprints(CC_SYSTEM,
+				"ERROR: EFS boot_mode is corrupted: %x",
+				ec_efs_ctx.boot_mode);
+			board_reboot_ec_deferred(0);
+			return 0;
+		}
+		break;
 	case EC_EFS_BOOT_MODE_NO_BOOT:
 		break;
-
 	default:
-		return CR50_COMM_ERROR_BAD_PAYLOAD;
+		/* Reject changing to all other BOOT_MODEs. */
+		return CR50_COMM_ERROR_BAD_PARAM;
 	}
 
 	set_boot_mode_(boot_mode);
@@ -246,12 +262,19 @@ uint16_t ec_efs_verify_hash(const char *hash_data, const uint8_t size)
 	}
 
 	/*
-	 * Once the boot mode is not NORMAL, (i.e. it is NO_BOOT), then CR50
+	 * Once the boot mode is not RO, (i.e. it is NO_BOOT), then CR50
 	 * should not approve the hash verification, but reset EC.
 	 */
-	if (ec_efs_ctx.boot_mode != EC_EFS_BOOT_MODE_NORMAL) {
+	switch (ec_efs_ctx.boot_mode) {
+	case EC_EFS_BOOT_MODE_RO:
+		set_boot_mode_(EC_EFS_BOOT_MODE_VERIFIED);
+		break;
+	case EC_EFS_BOOT_MODE_NO_BOOT:
 		board_reboot_ec_deferred(0);
 		return 0;
+	default:
+		/* Do nothing if hash is verified in all other states. */
+		break;
 	}
 
 	return CR50_COMM_SUCCESS;
