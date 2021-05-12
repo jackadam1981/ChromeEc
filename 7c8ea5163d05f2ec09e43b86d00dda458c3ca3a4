@@ -237,6 +237,30 @@
       },
       "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af13082_9c02b19c",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-12T18:10:06Z",
+      "side": 1,
+      "message": "The DTS tie-in that I saw was the i2c-port and config/[scl|sda]. So assuming it is a project specific tie-in.\n\n\tnamed-i2c-ports {\n\t\tcompatible \u003d \"named-i2c-ports\";\n\n\t\tpower {\n\t\t\ti2c-port \u003d \u003c\u0026i2c0\u003e;\n\t\t\tenum-name \u003d \"I2C_PORT_POWER\";\n\t\t\tlabel \u003d \"POWER\";\n\t\t\tconfig {\n\t\t\t\tfrequency \u003d \u003c100\u003e;\n\t\t\t\tscl {\n\t\t\t\t\tenum-name \u003d \"GPIO_I2C_B_SCL\";\n\t\t\t\t};\n\t\t\t\tsda {\n\t\t\t\t\tenum-name \u003d \"GPIO_I2C_B_SDA\";\n\t\t\t\t};\n\t\t\t};\n\t\t};",
+      "parentUuid": "1a8ebc59_d3aa1d22",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 40
+      },
+      "revId": "7c8ea5163d05f2ec09e43b86d00dda458c3ca3a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
