@@ -16,6 +16,23 @@
       "message": "Hi Aseda ： \nplease help to check this CL to enable ADC function, thanks",
       "revId": "1e396eed7cb5a7bcb563d674ad8b4073e97396cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e05db8_5734da39",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-12T17:14:58Z",
+      "side": 1,
+      "message": "When we get to this point, let\u0027s clear the bit if it\u0027s not needed. We can also add a little helper function to avoid copy/pasting.",
+      "revId": "1e396eed7cb5a7bcb563d674ad8b4073e97396cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
