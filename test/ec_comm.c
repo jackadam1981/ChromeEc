@@ -185,7 +185,7 @@ static int test_ec_comm_packet_failure(void)
 
 	ec_has_reset();
 
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_RO);
 
 	/* Test 1: Test with less preambles than required. */
 	calculate_crc8(&pk);
@@ -227,7 +227,7 @@ static int test_ec_comm_packet_failure(void)
 	/* Check if ec has ever been reset during these tests */
 	TEST_ASSERT(!ec_has_reset());
 
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_RO);
 
 	return EC_SUCCESS;
 }
@@ -243,24 +243,42 @@ static int test_ec_comm_set_boot_mode(void)
 
 	ec_has_reset();
 
-	/* Test 1: Attempt to set boot mode to NORMAL. */
-	pk.ph.data[0] = EC_EFS_BOOT_MODE_NORMAL;
+	/*
+	 * Test 1-1: Attempt to set boot mode to BOOT_MODE_RO.
+	 *           RO -> RO
+	 */
+	pk.ph.data[0] = EC_EFS_BOOT_MODE_RO;
 	calculate_crc8(&pk);
 	preambles = MIN_LENGTH_PREAMBLE * 2;
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_SUCCESS));
 	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_RO);
 
-	/* Test 2: Attempt to set boot mode to NORMAL again. */
+	/*
+	 * Test 1-2: Attempt to set boot mode to BOOT_MODE_RO again.
+	 *           RO -> RO
+	 */
 	preambles = MIN_LENGTH_PREAMBLE;
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_SUCCESS));
 	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_RO);
 
 	/*
-	 * Test 3: Attempt to set boot mode to NO BOOT.
-	 *         EC should not be reset with this boot mode change from NORMAL
-	 *         to NO_BOOT.
+	 * Test 1-3: Attempt to set boot mode to BOOT_MODE_VERIFIED.
+	 *           It should fail.
+	 *           RO -> VERIFIED (x) RO (o)
+	 */
+	pk.ph.data[0] = EC_EFS_BOOT_MODE_VERIFIED;
+	calculate_crc8(&pk);
+	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERROR_BAD_PAYLOAD));
+	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_RO);
+
+	/*
+	 * Test 2-1: Attempt to set boot mode to NO BOOT.
+	 *           EC should not be reset with this boot mode change from
+	 *           BOOT_MODE_RO to BOOT_MODE_NO_BOOT.
+	 *           RO -> NO_BOOT
 	 */
 	pk.ph.data[0] = EC_EFS_BOOT_MODE_NO_BOOT;
 	calculate_crc8(&pk);
@@ -269,23 +287,35 @@ static int test_ec_comm_set_boot_mode(void)
 	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NO_BOOT);
 
 	/*
-	 * Test 4: Attempt to set boot mode to NO BOOT again.
-	 *         EC should not be reset since it is a repeating command.
+	 * Test 2-2: Attempt to set boot mode to NO BOOT again.
+	 *           EC should not be reset since it is a repeating command.
+	 *           NO_BOOT -> NO_BOOT
 	 */
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_SUCCESS));
 	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
 	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NO_BOOT);
 
 	/*
-	 * Test 5: Attempt to set boot mode to NORMAL.
-	 *         EC should be reset with this boot mode change from NO_BOOT
-	 *         to NORMAL.
+	 * Test 2-3: Attempt to set boot mode to VERIFIED. It should fail.
+	 *           NO_BOOT -> VERIFIED (x) NO_BOOT(o)
 	 */
-	pk.ph.data[0] = EC_EFS_BOOT_MODE_NORMAL;
+	pk.ph.data[0] = EC_EFS_BOOT_MODE_VERIFIED;
+	calculate_crc8(&pk);
+	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERROR_BAD_PAYLOAD));
+	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NO_BOOT);
+
+	/*
+	 * Test 2-4: Attempt to set boot mode to BOOT_MODE_RO.
+	 *           EC should be reset with this boot mode change from
+	 *           BOOT_MODE_NO_BOOT to BOOT_MODE_RO.
+	 *           NO_BOOT -> RO
+	 */
+	pk.ph.data[0] = EC_EFS_BOOT_MODE_RO;
 	calculate_crc8(&pk);
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, 0));
 	TEST_ASSERT(ec_has_reset());	/* EC must be reset. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_RO);
 
 	return EC_SUCCESS;
 }
@@ -301,43 +331,154 @@ static int test_ec_comm_verify_hash(void)
 
 	ec_has_reset();
 
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_RO);
 
-	/* Test 1: Attempt to verify EC Hash. */
+	/*
+	 * Test 1: Attempt to verify EC Hash.
+	 *         RO -> VERIFIED
+	 */
 	calculate_crc8(&pk);
 	preambles = MIN_LENGTH_PREAMBLE * 2;
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_SUCCESS));
 	TEST_ASSERT(!ec_has_reset());
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_VERIFIED);
 
-	/* Test 2: Attempt to verify EC Hash again. */
+	/*
+	 * Test 2: Attempt to verify EC Hash again.
+	 *         VERIFIED -> VERIFIED
+	 */
 	preambles = MIN_LENGTH_PREAMBLE;
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_SUCCESS));
 	TEST_ASSERT(!ec_has_reset());
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_VERIFIED);
 
-	/* Test 3: Attempt to verify a wrong EC Hash. */
+	/*
+	 * Test 3: Attempt to verify a wrong EC Hash.
+	 *         VERIFIED -> NO_BOOT
+	 */
 	pk.ph.data[0] ^= 0xff;	/* corrupt the payload */
 	calculate_crc8(&pk);
-	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERROR_BAD_PAYLOAD));
+	TEST_ASSERT(!test_ec_comm(&pk, preambles,
+		CR50_COMM_ERROR_BAD_PAYLOAD));
 	TEST_ASSERT(!ec_has_reset());	/* EC should not be reset though. */
 	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NO_BOOT);
 
-	/* Test 4: Attempt to verify a wrong EC Hash again. */
-	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERROR_BAD_PAYLOAD));
+	/*
+	 * Test 4: Attempt to verify a wrong EC Hash again.
+	 *         NO_BOOT -> NO_BOOT
+	 */
+	TEST_ASSERT(!test_ec_comm(&pk, preambles,
+		CR50_COMM_ERROR_BAD_PAYLOAD));
 	TEST_ASSERT(!ec_has_reset());	/* EC should not be reset though. */
 	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NO_BOOT);
 
 	/*
 	 * Test 5: Attempt to verify the correct EC Hash.
 	 *         EC should be reset because EC Boot mode is NO BOOT.
+	 *         NO_BOOT -> RO
 	 */
 	pk = sample_packet_cmd_verify_hash;
 	calculate_crc8(&pk);
 	preambles = MIN_LENGTH_PREAMBLE * 2;
 	TEST_ASSERT(!test_ec_comm(&pk, preambles, 0));
 	TEST_ASSERT(ec_has_reset());	/* EC must be reset. */
-	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NORMAL);
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_RO);
+
+	/* Check if ec has ever been reset during these tests */
+	return EC_SUCCESS;
+}
+
+/*
+ * Test cases for verify_hash command failure case.
+ */
+static int test_ec_comm_verify_hash_fail(void)
+{
+	/* Copy the sample packet to buffer. */
+	union cr50_test_packet pk = sample_packet_cmd_verify_hash;
+	int preambles = MIN_LENGTH_PREAMBLE;
+
+	ec_has_reset();
+
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_RO);
+
+	/*
+	 * Test 1: Attempt to verify a wrong EC Hash.
+	 *         RO -> NO_BOOT
+	 */
+	pk.ph.data[0] ^= 0xff;	/* corrupt the payload */
+	calculate_crc8(&pk);
+	TEST_ASSERT(!test_ec_comm(&pk, preambles, CR50_COMM_ERROR_BAD_PAYLOAD));
+	TEST_ASSERT(!ec_has_reset());	/* EC should not be reset though. */
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NO_BOOT);
+
+
+	/* Check if ec has ever been reset during these tests */
+	return EC_SUCCESS;
+}
+
+/*
+ * Test cases for EC-EFS 2.1 protocols
+ */
+static int test_ec_comm_verify_efs2_1(void)
+{
+	/* Copy the sample packet to buffer. */
+	union cr50_test_packet pk_verify = sample_packet_cmd_verify_hash;
+	union cr50_test_packet pk_set_bootmode = sample_packet_cmd_set_mode;
+	int preambles = MIN_LENGTH_PREAMBLE;
+
+	ec_has_reset();
+
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_RO);
+
+	/*
+	 * Test 1-1: Attempt to verify EC Hash while RO.
+	 *           RO -> VERIFIED
+	 */
+	calculate_crc8(&pk_verify);
+	TEST_ASSERT(!test_ec_comm(&pk_verify, preambles, CR50_COMM_SUCCESS));
+	TEST_ASSERT(!ec_has_reset());
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_VERIFIED);
+
+	/* TEST 1-2: Attempt to change BOOT_MODE to RO. Should fail */
+	pk_set_bootmode.ph.data[0] = EC_EFS_BOOT_MODE_RO;
+	calculate_crc8(&pk_set_bootmode);
+	TEST_ASSERT(!test_ec_comm(&pk_set_bootmode, preambles,
+		CR50_COMM_ERROR_BAD_PAYLOAD));
+	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_VERIFIED);
+
+	/*
+	 * TEST 1-3: Attempt to change BOOT_MODE to VERIFIED.
+	 *           Should fail, since VERIFIED is not allowed
+	 *           as a parameter of SET_BOOT_MODE command.
+	 *           VERIFIED -> VERIFIED
+	 */
+	pk_set_bootmode.ph.data[0] = EC_EFS_BOOT_MODE_VERIFIED;
+	calculate_crc8(&pk_set_bootmode);
+	TEST_ASSERT(!test_ec_comm(&pk_set_bootmode, preambles,
+		CR50_COMM_ERROR_BAD_PAYLOAD));
+	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_VERIFIED);
+
+	/*
+	 * TEST 1-4: Attempt to change BOOT_MODE to NO_BOOT.
+	 *           Should succeed
+	 *           VERIFIED -> NO_BOOT
+	 */
+	pk_set_bootmode.ph.data[0] = EC_EFS_BOOT_MODE_NO_BOOT;
+	calculate_crc8(&pk_set_bootmode);
+	TEST_ASSERT(!test_ec_comm(&pk_set_bootmode, preambles,
+		CR50_COMM_SUCCESS));
+	TEST_ASSERT(!ec_has_reset());	/* EC must not be reset. */
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_NO_BOOT);
+
+	/*
+	 * Test 1-5: Attempt to verify EC Hash while NO_BOOT
+	 *           NO_BOOT -> RO
+	 */
+	TEST_ASSERT(!test_ec_comm(&pk_verify, preambles, 0));
+	TEST_ASSERT(ec_has_reset());
+	TEST_ASSERT(ec_efs_get_boot_mode() == EC_EFS_BOOT_MODE_RO);
 
 	/* Check if ec has ever been reset during these tests */
 	return EC_SUCCESS;
@@ -359,16 +500,29 @@ void run_test(void)
 	test_secdata.crc8 = crc8((uint8_t *)&test_secdata.reserved0,
 				  size_to_crc);
 
-	/* Module init */
-	board_reboot_ec_deferred(0);
-	ec_efs_refresh();
 
 	/* Start test */
 	test_reset();
 
+	board_reboot_ec_deferred(0);
+	ec_efs_refresh();
 	RUN_TEST(test_ec_comm_packet_failure);
+
+	board_reboot_ec_deferred(0);
+	ec_efs_refresh();
 	RUN_TEST(test_ec_comm_set_boot_mode);
+
+	board_reboot_ec_deferred(0);
+	ec_efs_refresh();
 	RUN_TEST(test_ec_comm_verify_hash);
+
+	board_reboot_ec_deferred(0);
+	ec_efs_refresh();
+	RUN_TEST(test_ec_comm_verify_hash_fail);
+
+	board_reboot_ec_deferred(0);
+	ec_efs_refresh();
+	RUN_TEST(test_ec_comm_verify_efs2_1);
 
 	test_print_result();
 }

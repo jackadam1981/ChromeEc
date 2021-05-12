@@ -65,8 +65,9 @@ struct cr50_comm_packet {
  * BIT(1) : RECOVERY flag
  */
 enum ec_efs_boot_mode {
-	EC_EFS_BOOT_MODE_NORMAL           = 0x00,
+	EC_EFS_BOOT_MODE_RO               = 0x00, /* NORMAL in EFS2.0 */
 	EC_EFS_BOOT_MODE_NO_BOOT          = 0x01,
+	EC_EFS_BOOT_MODE_VERIFIED         = 0x02,
 
 	/* boot_mode is uint8_t */
 	EC_EFS_BOOT_MODE_LIMIT            = 255,
