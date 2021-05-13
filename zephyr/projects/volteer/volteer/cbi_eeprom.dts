@@ -1,0 +1,75 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+&i2c7_0 {
+	cbi_eeprom: eeprom@50 {
+		compatible = "atmel,at24";
+		reg = <0x50>;
+		label = "EEPROM_CBI";
+		size = <2048>;
+		pagesize = <16>;
+		address-width = <8>;
+		timeout = <5>;
+		wp-gpios = <&gpio_ec_wp_l>;
+	};
+};
+
+&cbi_ssfc_base_sensor {
+	bmi160 {
+		compatible = "named-cbi-ssfc-value";
+		status = "okay";
+
+		value = <1>;
+		devices = <>;
+	};
+	icm426xx {
+		compatible = "named-cbi-ssfc-value";
+		status = "okay";
+
+		value = <2>;
+		devices = <>;
+	};
+	kx022 {
+		compatible = "named-cbi-ssfc-value";
+		status = "okay";
+
+		value = <3>;
+		devices = <>;
+	};
+};
+
+&cbi_ssfc_lid_sensor {
+	bma255 {
+		compatible = "named-cbi-ssfc-value";
+		status = "okay";
+
+		value = <1>;
+		devices = <&lid_accel>;
+	};
+	kx022 {
+		compatible = "named-cbi-ssfc-value";
+		status = "okay";
+
+		value = <2>;
+		devices = <>;
+	};
+};
+
+&cbi_ssfc_lightbar {
+	10_led {
+		compatible = "named-cbi-ssfc-value";
+		status = "okay";
+
+		value = <1>;
+		devices = <>;
+	};
+	12_led {
+		compatible = "named-cbi-ssfc-value";
+		status = "okay";
+
+		value = <2>;
+		devices = <>;
+	};
+};

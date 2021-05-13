@@ -17,6 +17,22 @@
 #include "ec_commands.h"
 #include "timer.h"
 
+#ifdef CONFIG_ZEPHYR
+#ifdef CONFIG_CPU_CORTEX_M
+/*
+ * For cortex-m we cannot use irq_lock() for disabling all the interrupts
+ * because it leaves some (NMI and faults) still enabled.
+ */
+#define interrupt_disable_all() __asm__("cpsid i")
+#elif CONFIG_ZTEST
+#define interrupt_disable_all()
+#else /* !CONFIG_CPU_CORTEX_M */
+#define interrupt_disable_all() irq_lock()
+#endif
+#else /* !CONFIG_ZEPHYR */
+#define interrupt_disable_all() interrupt_disable()
+#endif /* CONFIG_ZEPHYR */
+
 /* Per chip implementation to save/read raw EC_RESET_FLAG_ flags. */
 void chip_save_reset_flags(uint32_t flags);
 uint32_t chip_read_reset_flags(void);
@@ -103,6 +119,11 @@ void system_clear_reset_flags(uint32_t flags);
  * Print a description of the reset flags to the console.
  */
 void system_print_reset_flags(void);
+
+/**
+ * Print a banner at boot, including image type, version, and reset type
+ */
+void system_print_banner(void);
 
 /**
  * Check if system is locked down for normal consumer use.
@@ -346,6 +367,15 @@ const char *system_get_chip_revision(void);
  * @return Number of bytes available at the provided address.
  */
 int system_get_chip_unique_id(uint8_t **id);
+
+/**
+ * Optional board-level function to pulse EC_ENTERING_RW.
+ *
+ * This should ONLY be overridden in very rare circumstances! AKA there better
+ * be a good reason why you're overriding this!
+ * The function ***MUST*** assert EC_ENTERING_RW for 1ms and then deassert it.
+ */
+__override_proto void board_pulse_entering_rw(void);
 
 /**
  * Optional board-level callback functions to read a unique serial number per

@@ -176,7 +176,7 @@ int system_is_locked(void)
 	is_locked = 0;
 	return 0;
 
-#elif defined(CONFIG_FLASH)
+#elif defined(CONFIG_FLASH_CROS)
 	/*
 	 * Unlocked if write protect pin deasserted or read-only firmware
 	 * is not protected.
@@ -225,6 +225,10 @@ void system_encode_save_flags(int reset_flags, uint32_t *save_flags)
 	/* Add in stay in RO flag into saved flags. */
 	if (reset_flags & SYSTEM_RESET_STAY_IN_RO)
 		*save_flags |= EC_RESET_FLAG_STAY_IN_RO;
+
+	/* Add in watchdog flag into saved flags. */
+	if (reset_flags & SYSTEM_RESET_AP_WATCHDOG)
+		*save_flags |= EC_RESET_FLAG_AP_WATCHDOG;
 
 	/* Save reset flag */
 	if (reset_flags & (SYSTEM_RESET_HARD | SYSTEM_RESET_WAIT_EXT))
@@ -281,6 +285,24 @@ static void print_reset_flags(uint32_t flags)
 void system_print_reset_flags(void)
 {
 	print_reset_flags(reset_flags);
+}
+
+void system_print_banner(void)
+{
+	/* be less verbose if we boot for USB resume to meet spec timings */
+	if (!(system_get_reset_flags() & EC_RESET_FLAG_USB_RESUME)) {
+		CPUTS("\n");
+		if (system_jumped_to_this_image())
+			CPRINTS("UART initialized after sysjump");
+		else
+			CPUTS("\n--- UART initialized after reboot ---\n");
+		CPRINTF("[Image: %s, %s]\n",
+			 system_get_image_copy_string(),
+			 system_get_build_info());
+		CPUTS("[Reset cause: ");
+		system_print_reset_flags();
+		CPUTS("]\n");
+	}
 }
 
 int system_jumped_to_this_image(void)
@@ -491,6 +513,13 @@ const char *ec_image_to_string(enum ec_image copy)
 	return image_names[copy < ARRAY_SIZE(image_names) ? copy : 0];
 }
 
+__overridable void board_pulse_entering_rw(void)
+{
+	gpio_set_level(GPIO_ENTERING_RW, 1);
+	usleep(MSEC);
+	gpio_set_level(GPIO_ENTERING_RW, 0);
+}
+
 /**
  * Jump to what we hope is the init address of an image.
  *
@@ -511,9 +540,7 @@ static void jump_to_image(uintptr_t init_addr)
 	 * drop it again so we don't leak power through the pulldown in the
 	 * Silego.
 	 */
-	gpio_set_level(GPIO_ENTERING_RW, 1);
-	usleep(MSEC);
-	gpio_set_level(GPIO_ENTERING_RW, 0);
+	board_pulse_entering_rw();
 
 	/*
 	 * Since in EFS2, USB/PD won't be enabled in RO or if it's enabled in
@@ -550,7 +577,7 @@ static void jump_to_image(uintptr_t init_addr)
 	hook_notify(HOOK_SYSJUMP);
 
 	/* Disable interrupts before jump */
-	interrupt_disable();
+	interrupt_disable_all();
 
 #ifdef CONFIG_DMA
 	/* Disable all DMA channels to avoid memory corruption */
@@ -941,6 +968,13 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 		if (!IS_ENABLED(CONFIG_HIBERNATE))
 			return EC_ERROR_INVAL;
 
+		/*
+		 * Allow some time for the system to quiesce before entering EC
+		 * hibernate.  Otherwise, some stray signals may cause an
+		 * immediate wake up.
+		 */
+		CPRINTS("Waiting 1s before hibernating...");
+		msleep(1000);
 		CPRINTS("system hibernating");
 		system_hibernate(hibernate_seconds, hibernate_microseconds);
 		/* That shouldn't return... */
