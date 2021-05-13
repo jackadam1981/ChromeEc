@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1930c9a_c7229232",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-05-13T17:46:25Z",
+      "side": 1,
+      "message": "How about just... \"qcom\" or something similarly generic? I noticed these EC sequences never have any links to the actual soc used. Most functionalities are dictated by the decisions we made on the schematic (those decisions (ex: buffer on SPI) are generally orthogonal to the actual soc used).",
+      "revId": "55e5b5ec7c9206f475994aac8fcb8206c5059a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
