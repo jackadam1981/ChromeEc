@@ -25,6 +25,8 @@ enum virtual_nv_index {
 	VIRTUAL_NV_INDEX_SN_DATA,
 	VIRTUAL_NV_INDEX_G2F_CERT,
 	VIRTUAL_NV_INDEX_RSU_DEV_ID,
+	/* Reversed for generic TPM2.0 stand-alone counter. */
+	VIRTUAL_NV_INDEX_RMA_COUNTER,
 	VIRTUAL_NV_INDEX_END,
 };
 /* Reserved space for future virtual indexes; this is the last valid index. */

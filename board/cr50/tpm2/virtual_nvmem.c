@@ -343,7 +343,8 @@ static const struct virtual_nv_index_cfg index_config[] = {
 
 /* Check sanity of above config. */
 BUILD_ASSERT(VIRTUAL_NV_INDEX_END <= (VIRTUAL_NV_INDEX_MAX + 1));
-BUILD_ASSERT((VIRTUAL_NV_INDEX_END - VIRTUAL_NV_INDEX_START) ==
+// "-1" refers to the index reserved for generic TPM2.0 case.
+BUILD_ASSERT((VIRTUAL_NV_INDEX_END - VIRTUAL_NV_INDEX_START) - 1 ==
 	     ARRAY_SIZE(index_config));
 /* Check we will never overrun the virtual address space. */
 BUILD_ASSERT((VIRTUAL_NV_INDEX_MAX - VIRTUAL_NV_INDEX_START + 1) *
