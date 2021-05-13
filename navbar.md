@@ -9,3 +9,4 @@
 *   [File a Bug](https://bugs.chromium.org/p/chromium/issues/entry?components=OS%3EFirmware%3EEC)
 *   [Report Security Issue](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/reporting_bugs.md#security)
 *   [Chromium OS Docs](https://chromium.googlesource.com/chromiumos/docs/+/HEAD/README.md)
+
