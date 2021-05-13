@@ -50,6 +50,23 @@
       "message": "This causing a size misalignment with older versions of depthcharge. So it may be best to make this a separate host command.",
       "revId": "6250dabdd09eaa0a61616fc606b4ee47cd477871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5ef4d9_13610d33",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-13T19:58:50Z",
+      "side": 1,
+      "message": "This is a bit messy. Coreboot gets this version inside of it\u0027s ebuild: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/sys-boot/coreboot/coreboot-9999.ebuild;l\u003d173. EC can do the same, the only downside is EC is often built using just make.",
+      "revId": "6250dabdd09eaa0a61616fc606b4ee47cd477871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
