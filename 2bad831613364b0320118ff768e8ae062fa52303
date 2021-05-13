@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dc7828b_2855a5d1",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-13T08:26:00Z",
+      "side": 1,
+      "message": "I am not sure if we need this long?\n\nAyo/Parker, do you have suggested value?",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 43
+      },
+      "revId": "2bad831613364b0320118ff768e8ae062fa52303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31ce069e_4514bebf",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-13T08:26:00Z",
+      "side": 1,
+      "message": "bc",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 14
+      },
+      "revId": "2bad831613364b0320118ff768e8ae062fa52303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d40753eb_c7336d47",
+        "filename": "driver/tcpm/rt1718s.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-13T08:26:00Z",
+      "side": 1,
+      "message": "Parenthesises are not needed for simple numeric values. (also below)",
+      "range": {
+        "startLine": 43,
+        "startChar": 28,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "2bad831613364b0320118ff768e8ae062fa52303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
