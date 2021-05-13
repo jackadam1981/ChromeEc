@@ -11,7 +11,7 @@
 #include "accelgyro.h"
 #include "common.h"
 #include "mag_bmm150.h"
-#include "driver/accelgyro_bmi260_public.h"
+#include "driver/motion_sensor/accelgyro_bmi260_public.h"
 
 #define BMI260_CHIP_ID      0x00
 #define BMI260_CHIP_ID_MAJOR    0x27

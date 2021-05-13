@@ -10,7 +10,7 @@
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "extpower.h"
-#include "driver/accelgyro_bmi_common.h"
+#include "driver/motion_sensor/accelgyro_bmi_common.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"

@@ -17,8 +17,8 @@
 #include "math_util.h"
 #include "task.h"
 #include "util.h"
-#include "driver/accel_lis2dh.h"
-#include "driver/stm_mems_common.h"
+#include "driver/motion_sensor/accel_lis2dh.h"
+#include "driver/motion_sensor/stm_mems_common.h"
 
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)

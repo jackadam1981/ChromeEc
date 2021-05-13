@@ -6,9 +6,9 @@
 /* Arcada ISH board-specific configuration */
 
 #include "console.h"
-#include "driver/accel_lis2dh.h"
-#include "driver/accelgyro_lsm6dsm.h"
-#include "driver/mag_lis2mdl.h"
+#include "driver/motion_sensor/accel_lis2dh.h"
+#include "driver/motion_sensor/accelgyro_lsm6dsm.h"
+#include "driver/motion_sensor/mag_lis2mdl.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"

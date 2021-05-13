@@ -9,7 +9,7 @@
 #define __CROS_EC_ACCELGYRO_BMI160_H
 
 #include "accelgyro.h"
-#include "driver/accelgyro_bmi160_public.h"
+#include "driver/motion_sensor/accelgyro_bmi160_public.h"
 #include "mag_bmm150.h"
 
 #define BMI160_CHIP_ID           0x00

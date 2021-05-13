@@ -6,9 +6,9 @@
 /* Volteer family-specific sensor configuration */
 #include "common.h"
 #include "accelgyro.h"
-#include "driver/accel_bma2x2_public.h"
-#include "driver/accelgyro_bmi_common_public.h"
-#include "driver/accelgyro_bmi260_public.h"
+#include "driver/motion_sensor/accel_bma2x2_public.h"
+#include "driver/motion_sensor/accelgyro_bmi_common_public.h"
+#include "driver/motion_sensor/accelgyro_bmi260_public.h"
 #include "driver/als_tcs3400_public.h"
 #include "keyboard_scan.h"
 #include "hooks.h"

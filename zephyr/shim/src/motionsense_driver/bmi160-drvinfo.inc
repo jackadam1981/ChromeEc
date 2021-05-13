@@ -3,8 +3,8 @@
  * found in the LICENSE file.
  */
 
-#include "driver/accelgyro_bmi_common_public.h"
-#include "driver/accelgyro_bmi160_public.h"
+#include "driver/motion_sensor/accelgyro_bmi_common_public.h"
+#include "driver/motion_sensor/accelgyro_bmi160_public.h"
 
 /*
  * CREATE_SENSOR_DATA which is defined in motionsense_sensros.c is

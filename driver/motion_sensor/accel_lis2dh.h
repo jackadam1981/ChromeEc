@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_ACCEL_LIS2DH_H
 #define __CROS_EC_ACCEL_LIS2DH_H
 
-#include "driver/stm_mems_common.h"
+#include "driver/motion_sensor/stm_mems_common.h"
 
 /*
  * LIS2DH/LIS2DE:

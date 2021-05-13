@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_ACCEL_BMA2x2_H
 #define __CROS_EC_ACCEL_BMA2x2_H
 
-#include "accel_bma2x2_public.h"
+#include "motion_sensor/accel_bma2x2_public.h"
 
 /*** Chip-specific registers ***/
 /* REGISTER ADDRESS DEFINITIONS */

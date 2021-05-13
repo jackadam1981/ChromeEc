@@ -14,7 +14,7 @@
 #include "common.h"
 #include "console.h"
 #include "compile_time_macros.h"
-#include "driver/accelgyro_bmi_common.h"
+#include "driver/motion_sensor/accelgyro_bmi_common.h"
 #include "driver/als_opt3001.h"
 #include "driver/charger/isl923x.h"
 #include "driver/ppc/sn5s330.h"

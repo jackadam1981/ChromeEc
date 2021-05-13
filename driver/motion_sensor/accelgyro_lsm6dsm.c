@@ -9,8 +9,8 @@
  * This driver supports both devices LSM6DSM and LSM6DSL
  */
 
-#include "driver/accelgyro_lsm6dsm.h"
-#include "driver/mag_lis2mdl.h"
+#include "driver/motion_sensor/accelgyro_lsm6dsm.h"
+#include "driver/motion_sensor/mag_lis2mdl.h"
 #include "hooks.h"
 #include "hwtimer.h"
 #include "mag_cal.h"

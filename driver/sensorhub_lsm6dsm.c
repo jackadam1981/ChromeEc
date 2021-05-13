@@ -9,9 +9,9 @@
  */
 
 #include "console.h"
-#include "driver/accelgyro_lsm6dsm.h"
+#include "driver/motion_sensor/accelgyro_lsm6dsm.h"
 #include "driver/sensorhub_lsm6dsm.h"
-#include "driver/stm_mems_common.h"
+#include "driver/motion_sensor/stm_mems_common.h"
 
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 

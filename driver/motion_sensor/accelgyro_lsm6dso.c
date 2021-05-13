@@ -11,7 +11,7 @@
  * Refer to AN5192 Application Note on www.st.com
  */
 
-#include "driver/accelgyro_lsm6dso.h"
+#include "driver/motion_sensor/accelgyro_lsm6dso.h"
 #include "hooks.h"
 #include "hwtimer.h"
 #include "math_util.h"

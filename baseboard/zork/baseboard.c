@@ -17,7 +17,7 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "cros_board_info.h"
-#include "driver/accelgyro_bmi_common.h"
+#include "driver/motion_sensor/accelgyro_bmi_common.h"
 #include "driver/charger/isl9241.h"
 #include "driver/retimer/pi3hdx1204.h"
 #include "driver/usb_mux/amd_fp5.h"
