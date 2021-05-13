@@ -15,7 +15,7 @@
 #include "common.h"
 #include "core/cortex-m/cpu.h"
 #include "cros_board_info.h"
-#include "driver/accel_bma2x2.h"
+#include "driver/motion_sensor/accel_bma2x2.h"
 #include "driver/als_tcs3400.h"
 #include "driver/ina3221.h"
 #include "driver/led/oz554.h"

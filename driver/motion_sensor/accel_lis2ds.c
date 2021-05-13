@@ -14,7 +14,7 @@
 #include "accelgyro.h"
 #include "common.h"
 #include "console.h"
-#include "driver/accel_lis2ds.h"
+#include "driver/motion_sensor/accel_lis2ds.h"
 #include "hooks.h"
 #include "hwtimer.h"
 #include "i2c.h"
@@ -84,14 +84,16 @@ static int lis2ds_load_fifo(struct motion_sensor_t *s, uint16_t nsamples,
 	return EC_SUCCESS;
 }
 
-__maybe_unused static int lis2ds_config_interrupt(const struct motion_sensor_t *s)
+__maybe_unused static int
+lis2ds_config_interrupt(const struct motion_sensor_t *s)
 {
 	int ret = EC_SUCCESS;
 
 	/* Interrupt trigger level of power-on-reset is HIGH */
 	if (!(s->flags & MOTIONSENSE_FLAG_INT_ACTIVE_HIGH)) {
 		ret = st_write_data_with_mask(s, LIS2DS_H_ACTIVE_ADDR,
-					      LIS2DS_H_ACTIVE_MASK, LIS2DS_EN_BIT);
+					      LIS2DS_H_ACTIVE_MASK,
+					      LIS2DS_EN_BIT);
 		if (ret != EC_SUCCESS)
 			return ret;
 	}

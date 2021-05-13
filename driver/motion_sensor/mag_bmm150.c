@@ -10,7 +10,7 @@
 #include "accelgyro.h"
 #include "common.h"
 #include "console.h"
-#include "driver/mag_bmm150.h"
+#include "driver/motion_sensor/mag_bmm150.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "task.h"
@@ -18,7 +18,7 @@
 #include "util.h"
 
 #ifdef CONFIG_MAG_BMI_BMM150
-#include "driver/accelgyro_bmi_common.h"
+#include "driver/motion_sensor/accelgyro_bmi_common.h"
 #define raw_mag_read8 bmi160_sec_raw_read8
 #define raw_mag_write8 bmi160_sec_raw_write8
 #else

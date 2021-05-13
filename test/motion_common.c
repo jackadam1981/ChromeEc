@@ -6,7 +6,7 @@
  */
 
 #include "accelgyro.h"
-#include "driver/accelgyro_bmi_common.h"
+#include "driver/motion_sensor/accelgyro_bmi_common.h"
 #include "host_command.h"
 #include "motion_common.h"
 #include "motion_sense.h"

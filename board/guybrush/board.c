@@ -7,8 +7,8 @@
 
 #include "button.h"
 #include "common.h"
-#include "driver/accelgyro_bmi_common.h"
-#include "driver/accelgyro_bmi160.h"
+#include "driver/motion_sensor/accelgyro_bmi_common.h"
+#include "driver/motion_sensor/accelgyro_bmi160.h"
 #include "driver/retimer/ps8818.h"
 #include "extpower.h"
 #include "gpio.h"

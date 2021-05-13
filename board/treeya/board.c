@@ -6,9 +6,9 @@
 /* Treeya board-specific configuration */
 
 #include "button.h"
-#include "driver/accel_lis2dw12.h"
-#include "driver/accelgyro_bmi_common.h"
-#include "driver/accelgyro_lsm6dsm.h"
+#include "driver/motion_sensor/accel_lis2dw12.h"
+#include "driver/motion_sensor/accelgyro_bmi_common.h"
+#include "driver/motion_sensor/accelgyro_lsm6dsm.h"
 #include "extpower.h"
 #include "i2c.h"
 #include "lid_switch.h"

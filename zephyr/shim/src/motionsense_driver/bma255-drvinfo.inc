@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-#include "driver/accel_bma2x2_public.h"
+#include "driver/motion_sensor/accel_bma2x2_public.h"
 
 /*
  * CREATE_SENSOR_DATA which is defined in motionsense_sensors.c is

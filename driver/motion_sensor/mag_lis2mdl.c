@@ -10,10 +10,10 @@
  */
 
 #include "common.h"
-#include "driver/mag_lis2mdl.h"
+#include "driver/motion_sensor/mag_lis2mdl.h"
 #include "driver/sensorhub_lsm6dsm.h"
-#include "driver/accelgyro_lsm6dsm.h"
-#include "driver/stm_mems_common.h"
+#include "driver/motion_sensor/accelgyro_lsm6dsm.h"
+#include "driver/motion_sensor/stm_mems_common.h"
 #include "hwtimer.h"
 #include "mag_cal.h"
 #include "task.h"

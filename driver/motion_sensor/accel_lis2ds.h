@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_ACCEL_LIS2DS_H
 #define __CROS_EC_ACCEL_LIS2DS_H
 
-#include "driver/stm_mems_common.h"
+#include "driver/motion_sensor/stm_mems_common.h"
 
 /*
  * 7-bit address is 110101Xb. Where 'X' is determined

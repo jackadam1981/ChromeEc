@@ -13,7 +13,7 @@
 #include "common.h"
 #include "console.h"
 #include "ec_commands.h"
-#include "driver/accelgyro_bmi_common.h"
+#include "driver/motion_sensor/accelgyro_bmi_common.h"
 #include "driver/baro_bmp280.h"
 #include "driver/tcpm/fusb302.h"
 #include "driver/temp_sensor/tmp432.h"

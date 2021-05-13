@@ -8,7 +8,7 @@
 #include "adc_chip.h"
 #include "common.h"
 #include "console.h"
-#include "driver/accelgyro_bmi_common.h"
+#include "driver/motion_sensor/accelgyro_bmi_common.h"
 #include "ec_version.h"
 #include "gpio.h"
 #include "hooks.h"

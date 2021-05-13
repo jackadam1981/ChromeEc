@@ -9,23 +9,31 @@
 # Note that this variable includes the trailing "/"
 _driver_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 
-# Accelerometers
-driver-$(CONFIG_ACCEL_BMA255)+=accel_bma2x2.o
-driver-$(CONFIG_ACCEL_KXCJ9)+=accel_kionix.o
-driver-$(CONFIG_ACCEL_KX022)+=accel_kionix.o
-driver-$(CONFIG_ACCELGYRO_LSM6DS0)+=accelgyro_lsm6ds0.o
-driver-$(CONFIG_ACCELGYRO_BMI160)+=accelgyro_bmi160.o accelgyro_bmi_common.o
-driver-$(CONFIG_ACCELGYRO_BMI260)+=accelgyro_bmi260.o accelgyro_bmi_common.o
-driver-$(CONFIG_MAG_BMI_BMM150)+=mag_bmm150.o
-driver-$(CONFIG_ACCELGYRO_LSM6DSM)+=accelgyro_lsm6dsm.o stm_mems_common.o
-driver-$(CONFIG_ACCELGYRO_LSM6DSO)+=accelgyro_lsm6dso.o stm_mems_common.o
-driver-$(CONFIG_ACCEL_LIS2D_COMMON)+=accel_lis2dh.o stm_mems_common.o
-driver-$(CONFIG_MAG_LIS2MDL)+=mag_lis2mdl.o
-driver-$(CONFIG_SENSORHUB_LSM6DSM)+=sensorhub_lsm6dsm.o
-driver-$(CONFIG_SYNC)+=sync.o
-driver-$(CONFIG_ACCEL_LIS2DW_COMMON)+=accel_lis2dw12.o stm_mems_common.o
-driver-$(CONFIG_ACCEL_LIS2DS)+=accel_lis2ds.o stm_mems_common.o
-driver-$(CONFIG_ACCELGYRO_ICM426XX)+=accelgyro_icm426xx.o accelgyro_icm_common.o
+# Motion Sensors
+driver-$(CONFIG_ACCEL_BMA255)+=motion_sensor/accel_bma2x2.o
+driver-$(CONFIG_ACCEL_KXCJ9)+=motion_sensor/accel_kionix.o
+driver-$(CONFIG_ACCEL_KX022)+=motion_sensor/accel_kionix.o
+driver-$(CONFIG_ACCELGYRO_LSM6DS0)+=motion_sensor/accelgyro_lsm6ds0.o
+driver-$(CONFIG_ACCELGYRO_BMI160)+=motion_sensor/accelgyro_bmi160.o \
+	motion_sensor/accelgyro_bmi_common.o
+driver-$(CONFIG_ACCELGYRO_BMI260)+=motion_sensor/accelgyro_bmi260.o \
+	motion_sensor/accelgyro_bmi_common.o
+driver-$(CONFIG_MAG_BMI_BMM150)+=motion_sensor/mag_bmm150.o
+driver-$(CONFIG_ACCELGYRO_LSM6DSM)+=motion_sensor/accelgyro_lsm6dsm.o \
+	motion_sensor/stm_mems_common.o
+driver-$(CONFIG_ACCELGYRO_LSM6DSO)+=motion_sensor/accelgyro_lsm6dso.o \
+	motion_sensor/stm_mems_common.o
+driver-$(CONFIG_ACCEL_LIS2D_COMMON)+=motion_sensor/accel_lis2dh.o \
+	motion_sensor/stm_mems_common.o
+driver-$(CONFIG_MAG_LIS2MDL)+=motion_sensor/mag_lis2mdl.o
+driver-$(CONFIG_SENSORHUB_LSM6DSM)+=motion_sensor/sensorhub_lsm6dsm.o
+driver-$(CONFIG_ACCEL_LIS2DW_COMMON)+=motion_sensor/accel_lis2dw12.o \
+	motion_sensor/stm_mems_common.o
+driver-$(CONFIG_ACCEL_LIS2DS)+=motion_sensor/accel_lis2ds.o \
+	motion_sensor/stm_mems_common.o
+driver-$(CONFIG_ACCELGYRO_ICM426XX)+=motion_sensor/accelgyro_icm426xx.o \
+	motion_sensor/accelgyro_icm_common.o
+driver-$(CONFIG_GYRO_L3GD20H)+=motion_sensor/gyro_l3gd20h.o
 
 # BC1.2 Charger Detection Devices
 driver-$(CONFIG_BC12_DETECT_MAX14637)+=bc12/max14637.o
@@ -33,8 +41,6 @@ driver-$(CONFIG_BC12_DETECT_MT6360)+=bc12/mt6360.o
 driver-$(CONFIG_BC12_DETECT_PI3USB9201)+=bc12/pi3usb9201.o
 driver-$(CONFIG_BC12_DETECT_PI3USB9281)+=bc12/pi3usb9281.o
 
-# Gyrometers
-driver-$(CONFIG_GYRO_L3GD20H)+=gyro_l3gd20h.o
 
 # ALS drivers
 driver-$(CONFIG_ALS_AL3010)+=als_al3010.o
@@ -209,3 +215,6 @@ driver-$(CONFIG_MP4245)+=mp4245.o
 
 # Power Management ICs
 driver-$(CONFIG_MP2964)+=mp2964.o
+
+# Utilities
+driver-$(CONFIG_SYNC)+=sync.o

@@ -11,7 +11,7 @@
 #include "accelgyro.h"
 #include "common.h"
 #include "console.h"
-#include "driver/accelgyro_lsm6ds0.h"
+#include "driver/motion_sensor/accelgyro_lsm6ds0.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "math_util.h"

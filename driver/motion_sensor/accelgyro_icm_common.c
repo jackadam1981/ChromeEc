@@ -12,8 +12,8 @@
 #include "console.h"
 #include "i2c.h"
 #include "spi.h"
-#include "driver/accelgyro_icm_common.h"
-#include "driver/accelgyro_icm426xx.h"
+#include "driver/motion_sensor/accelgyro_icm_common.h"
+#include "driver/motion_sensor/accelgyro_icm426xx.h"
 
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
