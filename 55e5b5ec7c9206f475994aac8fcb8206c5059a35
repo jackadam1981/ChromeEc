@@ -51,6 +51,24 @@
       "message": "\u003e For the power signal names in the next CL, I think SC7X80 is preferred since they indicate the signals from the chipset, not a company.\n\nYeah, no worries about power signals (those should match schematic anyway). I meanly meant as the main algorithm/file that\u0027s in power/ that has essentially stayed with us since cheza.",
       "revId": "55e5b5ec7c9206f475994aac8fcb8206c5059a35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52189794_c4bf364f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-13T19:57:22Z",
+      "side": 1,
+      "message": "Renamed them to qcom.c/.h.",
+      "parentUuid": "6a75da89_f08eed48",
+      "revId": "55e5b5ec7c9206f475994aac8fcb8206c5059a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
