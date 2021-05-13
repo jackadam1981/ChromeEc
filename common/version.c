@@ -26,6 +26,7 @@ const struct image_data __keep current_image_data
 #endif
 	.rollback_version = CONFIG_ROLLBACK_VERSION,
 	.cookie2 = CROS_EC_IMAGE_DATA_COOKIE2,
+	.fwid = FWID_VERSION16,
 };
 BUILD_ASSERT(sizeof(CROS_EC_VERSION32) <= 32);
 

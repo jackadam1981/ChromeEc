@@ -1147,12 +1147,16 @@ enum ec_image {
  * @version_string_rw: Null-terminated RW firmware version string.
  * @reserved: Unused bytes; was previously RW-B firmware version string.
  * @current_image: One of ec_image.
+ * @fwid_string_ro: Null-terminated RO fwid string.
+ * @fwid_string_rw: Null-terminated RW fwid string.
  */
 struct ec_response_get_version {
 	char version_string_ro[32];
 	char version_string_rw[32];
 	char reserved[32];
 	uint32_t current_image;
+	char fwid_string_ro[16];
+	char fwid_string_rw[16];
 } __ec_align4;
 
 /* Read test */

@@ -21,6 +21,11 @@ dc=$'\001'
 # Default marker to indicate 'dirty' repositories
 dirty_marker='+'
 
+# Derive path to chromeos_version.sh script
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+CHROMEOS_VERSION_SCRIPT="${SCRIPT_DIR}/../../../"\
+"third_party/chromiumos-overlay/chromeos/config/chromeos_version.sh"
+
 # This function examines the state of the current directory and attempts to
 # extract its version information: the latest tag, if any, how many patches
 # are there since the latest tag, the top sha1, and if there are local
@@ -196,6 +201,20 @@ main() {
       done | sort | tail -1 | cut -d ' ' -f '2 3')"
     echo "#define DATE \"${gitdate}\""
   fi
+
+  # Use the chromeos_version_string when available.
+  # This will not work if this script is run from a standalone checkout
+  if [[ -f "${CHROMEOS_VERSION_SCRIPT}" ]]; then
+    local fwid_version=$(${CHROMEOS_VERSION_SCRIPT} | \
+          grep "^[[:space:]]*CHROMEOS_VERSION_STRING=" | cut -d= -f2)
+    echo "/* FWID version of this build */"
+    echo "#define FWID_VERSION16 \"${fwid_version:0:15}\""
+  else
+  echo "/* FWID version is not available for this build */"
+    echo "#define FWID_VERSION16 \"\""
+  fi
+
+
 }
 
 main
