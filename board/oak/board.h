@@ -11,6 +11,8 @@
 /* board revision */
 #include "board_revs.h"
 
+#undef CONFIG_CROS_FWID_VERSION
+
 #define CONFIG_LTO
 
 #if BOARD_REV >= OAK_REV5

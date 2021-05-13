@@ -45,6 +45,9 @@ extern "C" {
 #define NULL ((void *)0)
 #endif
 
+/* Returns true if string is not null and not empty */
+#define IS_NONEMPTY_STRING(s) ((s) && (s)[0])
+
 /**
  * Ensure that value `v` is between `min` and `max`.
  *
@@ -124,6 +127,7 @@ void *memchr(const void *buffer, int c, size_t n);
  */
 char *strstr(const char *s1, const char *s2);
 
+size_t strcspn(const char *s, const char *a);
 size_t strlen(const char *s);
 char *strncpy(char *dest, const char *src, size_t n);
 int strncmp(const char *s1, const char *s2, size_t n);

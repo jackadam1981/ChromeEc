@@ -5165,6 +5165,11 @@
 #undef CONFIG_EXTENDED_VERSION_INFO
 
 /*
+ * Include CROS_FWID in version output.
+ */
+#define CONFIG_CROS_FWID_VERSION
+
+/*
  * Define this to enable Cros Board Info support. I2C_PORT_EEPROM and
  * I2C_ADDR_EEPROM_FLAGS must be defined as well.
  */
