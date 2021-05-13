@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9125671c_dddbccb4",
+        "filename": "baseboard/mancomb/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-13T20:36:57Z",
+      "side": 1,
+      "message": "Does this need to be so long? I guess puff is the same.",
+      "revId": "6980e5b8ca86216ddc912887f876859bf7cc2546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c673158_378451e1",
+        "filename": "baseboard/mancomb/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-13T20:36:57Z",
+      "side": 1,
+      "message": "This depends on charge_port order never changing. But it looks like ppc_is_sourcing_vbus is also making this assumption. So I guess this is an undocumented requirement?",
+      "revId": "6980e5b8ca86216ddc912887f876859bf7cc2546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a970722_8c05bf0b",
+        "filename": "board/mancomb/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-13T20:36:57Z",
+      "side": 1,
+      "message": "I guess this may depend on fwconfig later?",
+      "revId": "6980e5b8ca86216ddc912887f876859bf7cc2546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
