@@ -251,11 +251,13 @@ int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf, uint8_t size)
 
 static int eeprom_is_write_protected(void)
 {
-#ifdef CONFIG_WP_ACTIVE_HIGH
+#ifdef CONFIG_BYPASS_CBI_EEPROM_WP_CHECK
+	return 0;
+#elif defined(CONFIG_WP_ACTIVE_HIGH)
 	return gpio_get_level(GPIO_WP);
 #else
 	return !gpio_get_level(GPIO_WP_L);
-#endif /* CONFIG_WP_ACTIVE_HIGH */
+#endif /* CONFIG_BYPASS_CBI_EEPROM_WP_CHECK */
 }
 
 static int write_board_info(void)
@@ -343,6 +345,12 @@ int cbi_get_pcb_supplier(uint32_t *pcb_supplier)
 			&size);
 }
 
+int cbi_get_rework_id(uint64_t *id)
+{
+	uint8_t size = sizeof(*id);
+	return cbi_get_board_info(CBI_TAG_REWORK_ID, (uint8_t *)id, &size);
+}
+
 static enum ec_status hc_cbi_get(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_get_cbi *p = args->params;
@@ -361,10 +369,9 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_CROS_BOARD_INFO,
 		     hc_cbi_get,
 		     EC_VER_MASK(0));
 
-static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
+static enum ec_status common_cbi_set(const struct __ec_align4
+							ec_params_set_cbi * p)
 {
-	const struct __ec_align4 ec_params_set_cbi *p = args->params;
-
 	/*
 	 * If we ultimately cannot write to the flash, then fail early unless
 	 * we are explicitly trying to write to the in-memory CBI only
@@ -391,10 +398,6 @@ static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 			return EC_RES_ERROR;
 	}
 
-	/* Given data size exceeds the packet size. */
-	if (args->params_size < sizeof(*p) + p->size)
-		return EC_RES_INVALID_PARAM;
-
 	if (cbi_set_board_info(p->tag, p->data, p->size))
 		return EC_RES_INVALID_PARAM;
 
@@ -413,6 +416,17 @@ static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 		return EC_RES_ERROR;
 
 	return EC_RES_SUCCESS;
+}
+
+static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
+{
+	const struct __ec_align4 ec_params_set_cbi * p = args->params;
+
+	/* Given data size exceeds the packet size. */
+	if (args->params_size < sizeof(*p) + p->size)
+		return EC_RES_INVALID_PARAM;
+
+	return common_cbi_set(p);
 }
 DECLARE_HOST_COMMAND(EC_CMD_SET_CROS_BOARD_INFO,
 		     hc_cbi_set,
@@ -441,9 +455,21 @@ static void print_tag(const char * const tag, int rv, const uint32_t *val)
 		ccprintf(": (Error %d)\n", rv);
 }
 
+static void print_uint64_tag(const char * const tag, int rv,
+			     const uint64_t *lval)
+{
+	ccprintf("%s", tag);
+	if(rv == EC_SUCCESS && lval)
+		ccprintf(": %llu (0x%llx)\n", *(unsigned long long*)lval,
+			 *(unsigned long long*)lval);
+	else
+		ccprintf(": (Error %d)\n", rv);
+}
+
 static void dump_cbi(void)
 {
 	uint32_t val;
+	uint64_t lval;
 
 	/* Ensure we read the latest data from flash. */
 	cached_read_result = EC_ERROR_CBI_CACHE_INVALID;
@@ -464,15 +490,136 @@ static void dump_cbi(void)
 	print_tag("FW_CONFIG", cbi_get_fw_config(&val), &val);
 	print_tag("PCB_SUPPLIER", cbi_get_pcb_supplier(&val), &val);
 	print_tag("SSFC", cbi_get_ssfc(&val), &val);
+	print_uint64_tag("REWORK_ID", cbi_get_rework_id(&lval), &lval);
 }
+
+/*
+ * Space for the set command (does not include data space) plus maximum
+ * possible console input
+ */
+static uint8_t buf[sizeof(struct ec_params_set_cbi) + \
+		       CONFIG_CONSOLE_INPUT_LINE_SIZE];
 
 static int cc_cbi(int argc, char **argv)
 {
+	struct __ec_align4 ec_params_set_cbi * setter =
+		(struct __ec_align4 ec_params_set_cbi *)buf;
+	int last_arg;
+	char *e;
+
+	if (argc == 1) {
+		dump_cbi();
+		dump_flash();
+		return EC_SUCCESS;
+	}
+
+	if (strcasecmp(argv[1], "set") == 0) {
+		if (argc < 5) {
+			ccprintf("Set requires: <tag> <value> <size>\n");
+			return EC_ERROR_PARAM_COUNT;
+		}
+
+		setter->tag = strtoi(argv[2], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM2;
+
+		if (setter->tag == CBI_TAG_DRAM_PART_NUM ||
+		    setter->tag == CBI_TAG_OEM_NAME) {
+			setter->size = strlen(argv[3]) + 1;
+			memcpy(setter->data, argv[3], setter->size);
+		} else {
+			uint64_t val = strtoull(argv[3], &e, 0);
+
+			if (*e)
+				return EC_ERROR_PARAM3;
+
+			setter->size = strtoi(argv[4], &e, 0);
+			if (*e)
+				return EC_ERROR_PARAM4;
+
+			if (setter->size < 1) {
+				ccprintf("Set size too small\n");
+				return EC_ERROR_PARAM4;
+			} else if (setter->tag == CBI_TAG_REWORK_ID &&
+				   setter->size > 8) {
+				ccprintf("Set size too large\n");
+				return EC_ERROR_PARAM4;
+			} else if (setter->size > 4) {
+				ccprintf("Set size too large\n");
+				return EC_ERROR_PARAM4;
+			}
+
+			memcpy(setter->data, &val, setter->size);
+		}
+
+		last_arg = 5;
+	} else if (strcasecmp(argv[1], "remove") == 0) {
+		if (argc < 3) {
+			ccprintf("Remove requires: <tag>\n");
+			return EC_ERROR_PARAM_COUNT;
+		}
+
+		setter->tag = strtoi(argv[2], &e, 0);
+		if (*e)
+			return EC_ERROR_PARAM2;
+
+		setter->size = 0;
+		last_arg = 3;
+	} else {
+		return EC_ERROR_PARAM1;
+	}
+
+	setter->flag = 0;
+
+	if (argc > last_arg) {
+		int i;
+
+		for (i = last_arg; i < argc; i++) {
+			if (strcasecmp(argv[i], "init") == 0) {
+				setter->flag |= CBI_SET_INIT;
+			} else if (strcasecmp(argv[i], "skip_write") == 0) {
+				setter->flag |= CBI_SET_NO_SYNC;
+			} else {
+				ccprintf("Invalid additional option\n");
+				return EC_ERROR_PARAM1 + i - 1;
+			}
+		}
+	}
+
+	if (common_cbi_set(setter) == EC_RES_SUCCESS)
+		return EC_SUCCESS;
+
+	return EC_ERROR_UNKNOWN;
+}
+DECLARE_CONSOLE_COMMAND(cbi, cc_cbi, "[set <tag> <value> <size> | "
+			"remove <tag>] [init | skip_write]",
+			"Print or change Cros Board Info from flash");
+#endif /* CONFIG_CMD_CBI */
+
+#ifndef HAS_TASK_CHIPSET
+int cbi_set_fw_config(uint32_t fw_config)
+{
+	/* Check write protect status */
+	if (eeprom_is_write_protected())
+		return EC_ERROR_ACCESS_DENIED;
+
+	/* Ensure that CBI has been configured */
+	if (do_read_board_info())
+		cbi_create();
+
+	/* Update the FW_CONFIG field */
+	cbi_set_board_info(CBI_TAG_FW_CONFIG, (uint8_t *)&fw_config,
+			   sizeof(int));
+
+	/* Update CRC calculation and write to serial EEPROM */
+	head->crc = cbi_crc8(head);
+	if (write_board_info())
+		return EC_ERROR_UNKNOWN;
+
 	dump_cbi();
-	dump_flash();
+
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(cbi, cc_cbi, NULL, "Print Cros Board Info from flash");
-#endif /* CONFIG_CMD_CBI */
+#endif
 
 #endif /* !HOST_TOOLS_BUILD */

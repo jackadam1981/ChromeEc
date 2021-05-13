@@ -8,11 +8,18 @@
 #ifndef __CROS_EC_BASEBOARD_H
 #define __CROS_EC_BASEBOARD_H
 
+#include "compiler.h"
 #include "stdbool.h"
 
 #ifdef VARIANT_INTELRVP_EC_IT8320
 	#include "ite_ec.h"
-#endif /* VARIANT_INTELRVP_EC_IT8320 */
+#elif defined(VARIANT_INTELRVP_EC_MCHP)
+	#include "mchp_ec.h"
+#elif defined(VARIANT_INTELRVP_EC_NPCX)
+	#include "npcx_ec.h"
+#else
+	#error "Define EC chip variant"
+#endif
 
 /*
  * Allow dangerous commands.
@@ -172,7 +179,7 @@
 #include "module_id.h"
 #include "registers.h"
 
-enum tcpc_rp_value;
+FORWARD_DECLARE_ENUM(tcpc_rp_value);
 
 /* PWM channels */
 enum pwm_channel {
@@ -257,8 +264,6 @@ struct tcpc_aic_gpio_config_t {
 };
 extern const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[];
 
-/* Reset PD MCU */
-void board_reset_pd_mcu(void);
 void board_charging_enable(int port, int enable);
 void board_vbus_enable(int port, int enable);
 void board_set_vbus_source_current_limit(int port, enum tcpc_rp_value rp);

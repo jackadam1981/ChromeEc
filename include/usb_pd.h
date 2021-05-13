@@ -186,12 +186,10 @@ enum pd_rx_errors {
 /* Timers */
 #define PD_T_SINK_TX                (18*MSEC) /* between 16ms and 20 */
 #define PD_T_CHUNKING_NOT_SUPPORTED (45*MSEC) /* between 40ms and 50ms */
-#define PD_T_CHUNK_SENDER_RSP       (24*MSEC) /* between 24ms and 30ms */
-#define PD_T_CHUNK_SENDER_REQ       (24*MSEC) /* between 24ms and 30ms */
 #define PD_T_HARD_RESET_COMPLETE     (5*MSEC) /* between 4ms and 5ms*/
 #define PD_T_HARD_RESET_RETRY        (1*MSEC) /* 1ms */
 #define PD_T_SEND_SOURCE_CAP       (100*MSEC) /* between 100ms and 200ms */
-#define PD_T_SINK_WAIT_CAP         (600*MSEC) /* between 310ms and 620ms */
+#define PD_T_SINK_WAIT_CAP         (575*MSEC) /* between 310ms and 620ms */
 #define PD_T_SINK_TRANSITION        (35*MSEC) /* between 20ms and 35ms */
 #define PD_T_SOURCE_ACTIVITY        (45*MSEC) /* between 40ms and 50ms */
 /*
@@ -211,7 +209,7 @@ enum pd_rx_errors {
 #endif
 #define PD_T_PS_TRANSITION         (500*MSEC) /* between 450ms and 550ms */
 #define PD_T_PS_SOURCE_ON          (480*MSEC) /* between 390ms and 480ms */
-#define PD_T_PS_SOURCE_OFF         (920*MSEC) /* between 750ms and 920ms */
+#define PD_T_PS_SOURCE_OFF         (835*MSEC) /* between 750ms and 920ms */
 #define PD_T_PS_HARD_RESET          (25*MSEC) /* between 25ms and 35ms */
 #define PD_T_ERROR_RECOVERY        (240*MSEC) /* min 240ms if sourcing VConn */
 #define PD_T_CC_DEBOUNCE           (100*MSEC) /* between 100ms and 200ms */
@@ -228,7 +226,7 @@ enum pd_rx_errors {
 #define PD_T_NO_RESPONSE          (5500*MSEC) /* between 4.5s and 5.5s */
 #define PD_T_BIST_TRANSMIT          (50*MSEC) /* 50ms (for task_wait arg) */
 #define PD_T_BIST_RECEIVE           (60*MSEC) /* 60ms (time to process bist) */
-#define PD_T_BIST_CONT_MODE         (60*MSEC) /* 30ms to 60ms */
+#define PD_T_BIST_CONT_MODE         (55*MSEC) /* 30ms to 60ms */
 #define PD_T_VCONN_SOURCE_ON       (100*MSEC) /* 100ms */
 #define PD_T_DRP_TRY               (125*MSEC) /* between 75ms and 150ms */
 #define PD_T_TRY_TIMEOUT           (550*MSEC) /* between 550ms and 1100ms */
@@ -245,6 +243,13 @@ enum pd_rx_errors {
 #define PD_T_DISCOVER_IDENTITY      (45*MSEC) /* between 40ms and 50ms */
 #define PD_T_SYSJUMP              (1000*MSEC) /* 1s */
 #define PD_T_PR_SWAP_WAIT          (100*MSEC) /* tPRSwapWait 100ms */
+
+/*
+ * Non-spec timer to prevent going Unattached if Vbus drops before a partner FRS
+ * signal comes through.  This timer should be shorter than tSinkDisconnect
+ * (40ms) to ensure we still transition out of Attached.SNK in time.
+ */
+#define PD_T_FRS_VBUS_DEBOUNCE	     (5*MSEC)
 
 /* number of edges and time window to detect CC line is not idle */
 #define PD_RX_TRANSITION_COUNT  3
@@ -268,6 +273,7 @@ enum pd_rx_errors {
 /* Voltage thresholds in mV (Table 7-24, PD 3.0 Version 2.0 Spec) */
 #define PD_V_SAFE0V_MAX		800
 #define PD_V_SAFE5V_MIN		4750
+#define PD_V_SAFE5V_NOM		5000
 #define PD_V_SAFE5V_MAX		5500
 
 /* USB Type-C voltages in mV (Table 4-3, USB Type-C Release 2.0 Spec) */
@@ -1000,6 +1006,8 @@ enum pd_dpm_request {
 	DPM_REQUEST_GET_SRC_CAPS                = BIT(18),
 	DPM_REQUEST_EXIT_MODES                  = BIT(19),
 	DPM_REQUEST_SOP_PRIME_SOFT_RESET_SEND   = BIT(20),
+	DPM_REQUEST_FRS_DET_ENABLE		= BIT(21),
+	DPM_REQUEST_FRS_DET_DISABLE		= BIT(22),
 };
 
 /**
@@ -1598,6 +1606,17 @@ void pd_vbus_low(int port);
 __override_proto int pd_check_power_swap(int port);
 
 /**
+ * Check if we are allowed to automatically be charging from port partner
+ *
+ * @param port USB-C port number
+ * @pdo_cnt number of source cap PDOs
+ * @*pdos  pointer to source cap PDOs
+ * @return True if port partner can supply power
+ */
+__override_proto bool pd_can_source_from_device(int port, const int pdo_cnt,
+						const uint32_t *pdos);
+
+/**
  * Check if data swap is allowed.
  *
  * @param port USB-C port number
@@ -1797,6 +1816,76 @@ void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
  */
 void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
 		uint32_t *payload);
+
+/**
+ * Returns true if connected VPD supports Charge Through
+ *
+ * @param port  USB-C port number
+ * @return      TRUE if Charge Through is supported, else FALSE
+ */
+bool is_vpd_ct_supported(int port);
+
+/**
+ * Returns CTVPD ground impedance
+ *
+ * @param port     USB-C port number
+ * @return         Ground impedance through the VPD in 1 mOhm increments, else
+ *                 0 if Charge Through isn't supported
+ */
+uint8_t get_vpd_ct_gnd_impedance(int port);
+
+/**
+ * Returns CTVPD VBUS impedance
+ *
+ * @param port     USB-C port number
+ * @return         VBUS impedance through the VPD in 2 mOhm increments, else
+ *                 0 if Charge Through isn't supported
+ */
+uint8_t get_vpd_ct_vbus_impedance(int port);
+
+/**
+ * Returns CTVPD Current support
+ *
+ * @param port     USB-C port number
+ * @return         0 - 3A capable or
+ *                 1 - 5A capable
+ */
+uint8_t get_vpd_ct_current_support(int port);
+
+/**
+ * Returns CTVPD Maximum VBUS Voltage
+ *
+ * @param port     USB-C port number
+ * @return         0 - 20V
+ *                 1 - 30V
+ *                 2 - 40V
+ *                 3 - 50V
+ */
+uint8_t get_vpd_ct_max_vbus_voltage(int port);
+
+/**
+ * Returns VPD VDO Version
+ *
+ * @param port     USB-C port number
+ * @return         0 for Version 1.0
+ */
+uint8_t get_vpd_ct_vdo_version(int port);
+
+/**
+ * Returns VPD Firmware Version
+ *
+ * @param port     USB-C port number
+ * @return         Firmware version assigned by the VID owner
+ */
+uint8_t get_vpd_ct_firmware_verion(int port);
+
+/**
+ * Returns HW Firmware Version
+ *
+ * @param port     USB-C port number
+ * @return         HW version assigned by the VID owner
+ */
+uint8_t get_vpd_ct_hw_version(int port);
 
 /**
  * Initialize alternate mode discovery info for DFP
@@ -2070,6 +2159,23 @@ struct pd_discovery *pd_get_am_discovery(int port,
  */
 struct partner_active_modes *pd_get_partner_active_modes(int port,
 		enum tcpm_transmit_type type);
+
+/*
+ * Sets the current object position for DP alt-mode
+ * Note: opos == 0 means the mode is not active
+ *
+ * @param port USB-C port number
+ * @param opos Object position for DP alternate mode
+ */
+void pd_ufp_set_dp_opos(int port, int opos);
+
+/*
+ * Gets the current object position for DP alt-mode
+ *
+ * @param port USB-C port number
+ * @return Alt-DP object position value for the given port
+ */
+int pd_ufp_get_dp_opos(int port);
 
 /*
  * Returns True if cable supports USB2 connection
@@ -2548,6 +2654,16 @@ int pd_rx_started(int port);
 void pd_set_suspend(int port, int suspend);
 
 /**
+ * Request Error Recovery
+ *
+ * Note that Error Recovery will happen on the next cycle of the port's PD task
+ * and may not have started yet at the time of the function return.
+ *
+ * @param port USB-C port number
+ */
+void pd_set_error_recovery(int port);
+
+/**
  * Resume the PD task for a port after a period of time has elapsed.
  * @param port USB-C port number
  */
@@ -2666,12 +2782,34 @@ enum tcpc_cc_polarity pd_get_polarity(int port);
 uint32_t pd_get_events(int port);
 
 /**
+ * Notify the AP of an event on the given port number
+ *
+ * @param port USB-C port number
+ * @param event_mask bitmask of events to set (PD_STATUS_EVENT_* bitmask)
+ */
+void pd_notify_event(int port, uint32_t event_mask);
+
+/**
  * Clear selected port events
  *
  * @param port USB-C port number
  * @param clear_mask bitmask of events to clear (PD_STATUS_EVENT_* bitmask)
  */
 void pd_clear_events(int port, uint32_t clear_mask);
+
+/*
+ * Requests a VDM Attention message be sent. Attention is the only SVDM message
+ * that does not result in a response from the port partner. In addition, if
+ * it's a DP Attention message, then it will be requested from outside of the
+ * port's PD task.
+ *
+ * @param port USB-C port number
+ * @param *data pointer to the VDM Attention message
+ * @param vdo_count number of VDOs (must be 1 or 2)
+ * @return EC_RES_SUCCESS if a VDM message is scheduled.
+ */
+enum ec_status pd_request_vdm_attention(int port, const uint32_t *data,
+				       int vdo_count);
 
 /*
  * Requests that the port enter the specified mode. A successful result just
@@ -2897,6 +3035,22 @@ __override_proto uint8_t get_dp_pin_mode(int port);
  */
 __override_proto uint8_t board_get_usb_pd_port_count(void);
 
+/**
+ * Return true if specified PD port is present. This is similar to
+ * checking CONFIG_USB_PD_PORT_MAX_COUNT but handles sparse numbering.
+ *
+ * @param port USB-C port number
+ *
+ * @return true if port is present.
+ */
+__override_proto bool board_is_usb_pd_port_present(int port);
+
+/**
+ * Process PD-related alerts for a chip which is sharing the TCPC interrupt line
+ *
+ * @param port USB-C port number
+ */
+__override_proto void board_process_pd_alert(int port);
 
 /**
  * Resets external PD chips including TCPCs and MCUs.

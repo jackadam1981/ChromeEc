@@ -8,6 +8,7 @@
 #include "atomic.h"
 #include "common.h"
 #include "console.h"
+#include "chipset.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "task.h"
@@ -65,8 +66,9 @@ static int configure_mux(int port,
 			*mux_state = USB_PD_MUX_NONE;
 	}
 
-	if ((config == USB_MUX_SET_MODE && *mux_state == USB_PD_MUX_NONE) ||
-	      config == USB_MUX_INIT) {
+	if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND) &&
+	   ((config == USB_MUX_SET_MODE && *mux_state == USB_PD_MUX_NONE) ||
+	      config == USB_MUX_INIT)) {
 		usb_mux_set_disconnect_latch_flag(port, true);
 	}
 
@@ -346,6 +348,25 @@ void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
 			     (hpd_irq ? USB_PD_MUX_HPD_IRQ : 0);
 		configure_mux(port, USB_MUX_SET_MODE, &mux_state);
 	}
+}
+
+int usb_mux_retimer_fw_update_port_info(void)
+{
+	int i;
+	int port_info = 0;
+	const struct usb_mux *mux_ptr;
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		mux_ptr = &usb_muxes[i];
+		while (mux_ptr) {
+			if (mux_ptr->driver &&
+				mux_ptr->driver->is_retimer_fw_update_capable &&
+				mux_ptr->driver->is_retimer_fw_update_capable())
+				port_info |= BIT(i);
+			mux_ptr = mux_ptr->next_mux;
+		}
+	}
+	return port_info;
 }
 
 static void mux_chipset_reset(void)

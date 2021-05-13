@@ -15,9 +15,6 @@
 #undef GPIO_VOLUME_UP_L
 #define GPIO_VOLUME_UP_L GPIO_VOLUP_BTN_ODL_HDMI_HPD
 
-/* System unlocked in early development */
-#define CONFIG_SYSTEM_UNLOCKED
-
 /* Battery */
 #define CONFIG_BATTERY_FUEL_GAUGE
 
@@ -142,8 +139,6 @@ enum battery_type {
 	BATTERY_COS,
 	BATTERY_TYPE_COUNT,
 };
-
-int board_is_sourcing_vbus(int port);
 
 #ifdef CONFIG_KEYBOARD_FACTORY_TEST
 extern const int keyboard_factory_scan_pins[][2];

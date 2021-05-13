@@ -70,8 +70,7 @@ bool dp_entry_is_done(int port)
 static void dp_entry_failed(int port)
 {
 	CPRINTS("C%d: DP alt mode protocol failed!", port);
-	dp_state[port] = IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY)
-		? DP_START : DP_INACTIVE;
+	dp_state[port] = DP_INACTIVE;
 }
 
 static bool dp_response_valid(int port, enum tcpm_transmit_type type,
@@ -103,6 +102,11 @@ static void dp_exit_to_usb_mode(int port)
 	set_usb_mux_with_current_data_role(port);
 
 	CPRINTS("C%d: Exited DP mode", port);
+    /*
+     * If the EC exits an alt mode autonomously, don't try to enter it again. If
+     * the AP commands the EC to exit DP mode, it might command the EC to enter
+     * again later, so leave the state machine ready for that possibility.
+     */
 	dp_state[port] = IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY)
 		? DP_START : DP_INACTIVE;
 }
@@ -123,6 +127,8 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 	case DP_START:
 	case DP_ENTER_RETRY:
 		dp_state[port] = DP_ENTER_ACKED;
+		/* Inform PE layer that alt mode is now active */
+		pd_set_dfp_enter_mode_flag(port, true);
 		break;
 	case DP_ENTER_ACKED:
 		/* DP status response & UFP's DP attention have same payload. */
@@ -261,7 +267,8 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		if (!(modep && modep->opos))
 			return -1;
 
-		svdm_safe_dp_mode(port);
+		usb_mux_set_safe_mode_exit(port);
+
 		vdm[0] = VDO(USB_SID_DISPLAYPORT,
 			     1, /* structured */
 			     CMD_EXIT_MODE);

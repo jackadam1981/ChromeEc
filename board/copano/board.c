@@ -56,10 +56,33 @@ struct keyboard_scan_config keyscan_config = {
 	.min_post_scan_delay_us = 1000,
 	.poll_timeout_us = 100 * MSEC,
 	.actual_key_mask = {
-		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+		0x1c, 0xfe, 0xff, 0xff, 0xff, 0xf5, 0xff,
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
 	},
 };
+
+static const struct ec_response_keybd_config copano_kb = {
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNAPSHOT,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_VOL_MUTE,		/* T8 */
+		TK_VOL_DOWN,		/* T9 */
+		TK_VOL_UP,		/* T10 */
+	},
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
+};
+
+__override const struct ec_response_keybd_config
+*board_vivaldi_keybd_config(void)
+{
+	return &copano_kb;
+}
 
 /******************************************************************************/
 /*
@@ -142,7 +165,7 @@ const struct pwm_t pwm_channels[] = {
 		 * lower PWM frequencies, but higher frequencies record a much
 		 * lower maximum power.
 		 */
-		.freq = 2400,
+		.freq = 10000,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
@@ -253,11 +276,13 @@ struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C0] = {
 		.i2c_port = I2C_PORT_USB_C0,
 		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.frs_en = GPIO_USB_C0_FRS_EN,
 		.drv = &syv682x_drv,
 	},
 	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_USB_C1,
 		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.frs_en = GPIO_USB_C1_FRS_EN,
 		.drv = &syv682x_drv,
 	},
 };
