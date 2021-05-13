@@ -2908,6 +2908,7 @@ void pd_set_new_power_request(int port);
  * @return true if PD capable else false
  */
 bool pd_capable(int port);
+bool pd_unknown(int port);
 
 /**
  * Returns the source caps list
