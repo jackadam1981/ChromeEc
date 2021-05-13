@@ -188,6 +188,30 @@
       },
       "revId": "eea35fa26ade19a75cea2867b110050cab65397c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f17b4c36_53a8fff0",
+        "filename": "zephyr/shim/chip/it8xxx2/pinmux.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-13T14:29:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "12a1a6dc_b4e89c14",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "eea35fa26ade19a75cea2867b110050cab65397c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
