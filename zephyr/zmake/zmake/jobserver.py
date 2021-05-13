@@ -3,12 +3,13 @@
 # found in the LICENSE file.
 """Module for job counters, limiting the amount of concurrent executions."""
 
+import logging
 import multiprocessing
 import os
 import re
 import select
 import subprocess
-
+import zmake
 
 class JobHandle:
     """Small object to handle claim of a job."""
@@ -34,24 +35,19 @@ class JobClient:
         """Get the environment variables necessary to share the job server."""
         return {}
 
-    def popen(self, *args, claim_job=True, **kwargs):
-        """Start a process using subprocess.Popen, optionally claiming a job.
-
-        Args:
-            claim_job: True if a job should be claimed.
+    def popen(self, *args, **kwargs):
+        """Start a process using subprocess.Popen
 
         All other arguments are passed to subprocess.Popen.
 
         Returns:
             A Popen object.
         """
-        if claim_job:
-            with self.get_job():
-                return self.popen(*args, claim_job=False, **kwargs)
-
         kwargs.setdefault('env', os.environ)
         kwargs['env'].update(self.env())
 
+        logger = logging.getLogger(self.__class__.__name__)
+        logger.debug("Running %s", zmake.util.repr_command(*args))
         return subprocess.Popen(*args, **kwargs)
 
     def run(self, *args, claim_job=True, **kwargs):

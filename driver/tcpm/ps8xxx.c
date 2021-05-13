@@ -444,6 +444,42 @@ static int ps8xxx_tcpc_drp_toggle(int port)
 }
 #endif
 
+#ifdef CONFIG_USB_PD_TCPM_PS8815_FORCE_DID
+/*
+ * Early ps8815 A1 firmware reports 0x0001 in the TCPCI Device ID
+ * registers which makes it indistinguishable from A0. This
+ * overrides the Device ID based if vendor specific registers
+ * identify the chip as A1.
+ *
+ * See b/159289062.
+ */
+static int ps8815_make_device_id(int port, int *id)
+{
+	int p1_addr;
+	int val;
+	int status;
+
+	/* P1 registers are always accessible on PS8815 */
+	p1_addr = PS8751_P3_TO_P1_FLAGS(tcpc_config[port].i2c_info.addr_flags);
+
+	status = tcpc_addr_read16(port, p1_addr, PS8815_P1_REG_HW_REVISION,
+				  &val);
+	if (status != EC_SUCCESS)
+		return status;
+	switch (val) {
+	case 0x0a00:
+		*id = 1;
+		break;
+	case 0x0a01:
+		*id = 2;
+		break;
+	default:
+		return EC_ERROR_UNKNOWN;
+	}
+	return EC_SUCCESS;
+}
+#endif
+
 static int ps8xxx_get_chip_info(int port, int live,
 			struct ec_response_pd_chip_info_v1 *chip_info)
 {
@@ -454,14 +490,31 @@ static int ps8xxx_get_chip_info(int port, int live,
 	if (rv != EC_SUCCESS)
 		return rv;
 
+	if (chip_info == NULL)
+		return EC_SUCCESS;
+
 	if (!live) {
-		product_id[port] = board_get_ps8xxx_product_id(port);
+		uint16_t pid;
+
+		pid = board_get_ps8xxx_product_id(port);
+		if (pid == 0)
+			return EC_ERROR_UNKNOWN;
+		product_id[port] = pid;
 		chip_info->vendor_id = PS8XXX_VENDOR_ID;
 		chip_info->product_id = product_id[port];
 	}
 
 	if (chip_info->fw_version_number == 0 ||
 	    chip_info->fw_version_number == -1 || live) {
+#ifdef CONFIG_USB_PD_TCPM_PS8815_FORCE_DID
+		if (chip_info->product_id == PS8815_PRODUCT_ID &&
+		    chip_info->device_id == 0x0001) {
+			rv = ps8815_make_device_id(port, &val);
+			if (rv != EC_SUCCESS)
+				return rv;
+			chip_info->device_id = val;
+		}
+#endif
 		reg = get_reg_by_product(port, REG_FW_VER);
 		rv = tcpc_read(port, reg, &val);
 		if (rv != EC_SUCCESS)
@@ -685,7 +738,7 @@ const struct tcpm_drv ps8xxx_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	.drp_toggle		= &ps8xxx_tcpc_drp_toggle,
 #endif
-#ifdef CONFIG_USBC_PPC
+#ifdef CONFIG_USB_PD_PPC
 	.set_snk_ctrl		= &tcpci_tcpm_set_snk_ctrl,
 	.set_src_ctrl		= &tcpci_tcpm_set_src_ctrl,
 #endif

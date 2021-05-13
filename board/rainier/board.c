@@ -347,7 +347,6 @@ int board_get_version(void)
 }
 
 /* Motion sensors */
-#ifdef HAS_TASK_MOTIONSENSE
 /* Mutexes */
 static struct mutex g_base_mutex;
 
@@ -430,22 +429,12 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
-#endif /* defined(HAS_TASK_MOTIONSENSE) */
 
 int board_allow_i2c_passthru(int port)
 {
 	/*
 	 * Battery port is the only port passthru is allowed on and this board
 	 * does not have a battery, therefore always return false.
-	 */
-	return 0;
-}
-
-int charge_want_shutdown(void)
-{
-	/*
-	 * power/rk3399.c assumes there is internal power. Therefore this stub
-	 * returns false to prevent arbitrary shutdown.
 	 */
 	return 0;
 }

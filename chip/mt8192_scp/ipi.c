@@ -4,6 +4,7 @@
  */
 
 #include "atomic.h"
+#include "cache.h"
 #include "common.h"
 #include "console.h"
 #include "hooks.h"
@@ -97,6 +98,10 @@ int ipi_send(int32_t id, const void *buf, uint32_t len, int wait)
 	ipi_send_buf->len = len;
 	memcpy(ipi_send_buf->buffer, buf, len);
 
+	/* flush memory cache (if any) */
+	cache_flush_dcache_range((uintptr_t)ipi_send_buf,
+				 sizeof(*ipi_send_buf));
+
 	/* interrupt AP to handle the message */
 	ipi_wake_ap(id);
 	SCP_SCP2APMCU_IPC_SET = IPC_SCP2HOST;
@@ -123,8 +128,9 @@ static void ipi_enable_deferred(void)
 	scp_run.signaled = 1;
 	strncpy(scp_run.fw_ver, system_get_version(EC_IMAGE_RW),
 		SCP_FW_VERSION_LEN);
-	scp_run.dec_capability = VCODEC_CAPABILITY_4K_DISABLED;
-	scp_run.enc_capability = 0;
+	scp_run.dec_capability = VDEC_CAP_MT21C | VDEC_CAP_H264_SLICE |
+				 VDEC_CAP_VP8_FRAME | VDEC_CAP_VP9_FRAME;
+	scp_run.enc_capability = VENC_CAP_4K;
 
 	ret = ipi_send(SCP_IPI_INIT, (void *)&scp_run, sizeof(scp_run), 1);
 	if (ret) {

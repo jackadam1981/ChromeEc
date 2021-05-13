@@ -11,8 +11,17 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+#ifdef BOARD_VOEMA
+/*
+ * The RAM and flash size combination on the the NPCX797FC does not leave
+ * any unused flash space that can be used to store the .init_rom section.
+ */
+#undef CONFIG_CHIP_INIT_ROM_REGION
+#endif
+
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
+#define CONFIG_BYPASS_CBI_EEPROM_WP_CHECK /* bypass cbi wp check in dev. */
 
 #define CONFIG_VBOOT_EFS2
 
@@ -34,6 +43,7 @@
 /* Sensors */
 /* BMA253 accelerometer in base */
 #define CONFIG_ACCEL_BMA255
+#define CONFIG_ACCEL_KX022
 
 /* TCS3400 ALS */
 #define CONFIG_ALS
@@ -63,8 +73,8 @@
  * cables only support up to 60W.
  */
 #define PD_OPERATING_POWER_MW	15000
-#define PD_MAX_POWER_MW		60000
-#define PD_MAX_CURRENT_MA	3000
+#define PD_MAX_POWER_MW		65000
+#define PD_MAX_CURRENT_MA	3250
 #define PD_MAX_VOLTAGE_MV	20000
 
 /* Enabling Thunderbolt-compatible mode */
@@ -76,6 +86,7 @@
 
 /* USBC PPC*/
 #define CONFIG_USBC_PPC_SYV682X		/* USBC port C0/C1 */
+#define CONFIG_USB_PD_FRS_PPC
 #undef CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
 #undef CONFIG_USB_PD_TCPM_TUSB422
 #undef CONFIG_USB_MUX_RUNTIME_CONFIG
