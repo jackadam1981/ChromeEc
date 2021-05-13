@@ -16,6 +16,24 @@
       "message": "How about just... \"qcom\" or something similarly generic? I noticed these EC sequences never have any links to the actual soc used. Most functionalities are dictated by the decisions we made on the schematic (those decisions (ex: buffer on SPI) are generally orthogonal to the actual soc used).",
       "revId": "55e5b5ec7c9206f475994aac8fcb8206c5059a35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00cbe36_d9c33313",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-13T18:33:37Z",
+      "side": 1,
+      "message": "For the filenames in this CL, I am fine with changing them to \"qcom\". For the power signal names in the next CL, I think SC7X80 is preferred since they indicate the signals from the chipset, not a company.",
+      "parentUuid": "b1930c9a_c7229232",
+      "revId": "55e5b5ec7c9206f475994aac8fcb8206c5059a35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
