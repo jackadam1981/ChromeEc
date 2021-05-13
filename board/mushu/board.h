@@ -25,6 +25,8 @@
 #define CONFIG_HOSTCMD_ESPI
 #undef CONFIG_CMD_MFALLOW
 
+/* Free up some flash space */
+#undef CONFIG_CMD_TEMP_SENSOR
 
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
