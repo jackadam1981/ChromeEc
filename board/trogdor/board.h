@@ -22,9 +22,10 @@
 #define CONFIG_I2C_DEBUG
 
 /* Internal SPI flash on NPCX7 */
-#define CONFIG_FLASH_SIZE_BYTES (1024 * 1024)  /* 1MB internal spi flash */
+#define CONFIG_FLASH_SIZE_BYTES (512 * 1024)  /* 512KB internal spi flash */
 
 /* Keyboard */
+#define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_PWM_KBLIGHT
 
@@ -81,14 +82,6 @@ enum pwm_channel {
 	PWM_CH_COUNT
 };
 
-/* Swithcap functions */
-void board_set_switchcap_power(int enable);
-int board_is_switchcap_enabled(void);
-int board_is_switchcap_power_good(void);
-/* Custom function to indicate if sourcing VBUS */
-int board_is_sourcing_vbus(int port);
-/* Enable VBUS sink for a given port */
-int board_vbus_sink_enable(int port, int enable);
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);

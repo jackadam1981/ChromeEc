@@ -9,17 +9,34 @@
 #define __CROS_EC_BASEBOARD_H
 
 /* NPCX9 config */
+#define CONFIG_PORT80_4_BYTE
 #define NPCX9_PWM1_SEL    1  /* GPIO C2 is used as PWM1. */
 #define NPCX_UART_MODULE2 1  /* GPIO64/65 are used as UART pins. */
 
 /* Optional features */
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
-#define CONFIG_LTO
+#define CONFIG_LTO /* Link-Time Optimizations to reduce code size */
+#define CONFIG_I2C_DEBUG /* Print i2c traces */
+#define CONFIG_KEYBOARD_DEBUG /* Print keyboard debug messages */
+#define CONFIG_CMD_S5_TIMEOUT /* Allow a user-specified timeout to exit S5 */
 
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
 
+/* Vboot Config */
+#define CONFIG_CRC8
+#define CONFIG_VBOOT_EFS2
+#define CONFIG_VBOOT_HASH
+#define CONFIG_VSTORE
+#define CONFIG_VSTORE_SLOT_COUNT 1
+#define GPIO_PACKET_MODE_EN	GPIO_EC_GSC_PACKET_MODE
+
+/* CBI Config */
+#define CONFIG_CROS_BOARD_INFO
+#define CONFIG_BOARD_VERSION_CBI
+
 /* Power Config */
+#define CONFIG_CHIPSET_X86_RSMRST_DELAY
 #undef  CONFIG_EXTPOWER_DEBOUNCE_MS
 #define CONFIG_EXTPOWER_DEBOUNCE_MS 200
 #define CONFIG_EXTPOWER_GPIO
@@ -29,10 +46,12 @@
 #define CONFIG_POWER_BUTTON_TO_PCH_CUSTOM
 #define CONFIG_POWER_BUTTON_X86
 #define CONFIG_POWER_COMMON
-#define CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5
-#define G3_TO_PWRBTN_DELAY_MS 80
+#define CONFIG_POWER_S0IX
+#define CONFIG_POWER_SLEEP_FAILURE_DETECTION
+#define CONFIG_POWER_TRACK_HOST_SLEEP_STATE
+#define G3_TO_PWRBTN_DELAY_MS 16
 #define GPIO_AC_PRESENT		GPIO_ACOK_OD
-#define GPIO_EN_PWR_A		GPIO_EN_PWR_Z1
+#define GPIO_EN_PWR_A		GPIO_EN_PWR_S5
 #define GPIO_PCH_PWRBTN_L	GPIO_EC_SOC_PWR_BTN_L
 #define GPIO_PCH_RSMRST_L	GPIO_EC_SOC_RSMRST_L
 #define GPIO_PCH_SLP_S0_L	GPIO_SLP_S3_S0I3_L
@@ -76,7 +95,7 @@
 #define GPIO_EC_INT_L		GPIO_EC_SOC_INT_L
 
 /* Chipset config */
-#define CONFIG_CHIPSET_STONEY
+#define CONFIG_CHIPSET_CEZANNE
 #define CONFIG_CHIPSET_CAN_THROTTLE
 #define CONFIG_CHIPSET_RESET_HOOK
 
@@ -92,6 +111,8 @@
 #define CONFIG_TABLET_MODE
 #define CONFIG_GMR_TABLET_MODE
 #define GMR_TABLET_MODE_GPIO_L		GPIO_TABLET_MODE
+#define CONFIG_SUPPRESSED_HOST_COMMANDS \
+	EC_CMD_MOTION_SENSE_CMD
 
 /* Battery Config */
 #define CONFIG_BATTERY_PRESENT_GPIO	GPIO_EC_BATT_PRES_ODL
@@ -146,6 +167,8 @@
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_TCPC_LOW_POWER
+#undef  CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE
+#define CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE (100 * MSEC)
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_NCT38XX
 #define CONFIG_USB_PD_TCPM_TCPCI
@@ -159,10 +182,11 @@
 #define CONFIG_USBC_SS_MUX_DFP_ONLY
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
-#define CONFIG_USB_MUX_ANX7440
+#define CONFIG_USB_MUX_ANX7451
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USBC_PPC_NX20P3483
 #define CONFIG_USBC_RETIMER_PS8818
+#define CONFIG_USBC_RETIMER_ANX7451
 #define CONFIG_USB_MUX_RUNTIME_CONFIG
 #define CONFIG_USB_MUX_AMD_FP6
 
@@ -229,7 +253,9 @@
 #define GPIO_VOLUME_UP_L		GPIO_VOLUP_BTN_ODL
 #define GPIO_VOLUME_DOWN_L		GPIO_VOLDN_BTN_ODL
 
-/* Fan features */
+/* Fan Config */
+#define CONFIG_FANS FAN_CH_COUNT
+/* TODO: Set CONFIG_FAN_INIT_SPEED, defaults to 100 */
 
 /* LED Config */
 #define CONFIG_PWM
@@ -272,6 +298,8 @@ enum adc_channel {
 	ADC_TEMP_SENSOR_SOC = 0,
 	ADC_TEMP_SENSOR_CHARGER,
 	ADC_TEMP_SENSOR_MEMORY,
+	ADC_CORE_IMON1,
+	ADC_SOC_IMON2,
 	ADC_CH_COUNT
 };
 
@@ -284,10 +312,10 @@ enum temp_sensor_id {
 	TEMP_SENSOR_COUNT
 };
 
-/* Battery Types */
-enum battery_type {
-	BATTERY_AP18F4M,
-	BATTERY_TYPE_COUNT,
+enum sensor_id {
+	BASE_ACCEL = 0,
+	BASE_GYRO,
+	SENSOR_COUNT,
 };
 
 /* PWM Channels */
@@ -297,6 +325,18 @@ enum pwm_channel {
 	PWM_CH_LED_CHRG,
 	PWM_CH_LED_FULL,
 	PWM_CH_COUNT
+};
+
+/* Fan Channels */
+enum fan_channel {
+	FAN_CH_0 = 0,
+	/* Number of FAN channels */
+	FAN_CH_COUNT,
+};
+enum mft_channel {
+	MFT_CH_0 = 0,
+	/* Number of MFT channels */
+	MFT_CH_COUNT,
 };
 
 /* Common definition for the USB PD interrupt handlers. */

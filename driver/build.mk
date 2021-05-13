@@ -62,6 +62,7 @@ driver-$(CONFIG_CHARGER_BQ24715)+=charger/bq24715.o
 driver-$(CONFIG_CHARGER_BQ24770)+=charger/bq24773.o
 driver-$(CONFIG_CHARGER_BQ24773)+=charger/bq24773.o
 driver-$(CONFIG_CHARGER_BQ25710)+=charger/bq25710.o
+driver-$(CONFIG_CHARGER_BQ25720)+=charger/bq25710.o
 driver-$(CONFIG_CHARGER_ISL9237)+=charger/isl923x.o
 driver-$(CONFIG_CHARGER_ISL9238)+=charger/isl923x.o
 driver-$(CONFIG_CHARGER_ISL9238C)+=charger/isl923x.o
@@ -77,11 +78,13 @@ driver-$(CONFIG_CHARGER_SM5803)+=charger/sm5803.o
 include $(_driver_cur_dir)fingerprint/build.mk
 
 # I/O expander
+driver-$(CONFIG_IO_EXPANDER_CCGXXF)+=ioexpander/ccgxxf.o
 driver-$(CONFIG_IO_EXPANDER_IT8801)+=ioexpander/it8801.o
 driver-$(CONFIG_IO_EXPANDER_NCT38XX)+=ioexpander/ioexpander_nct38xx.o
 driver-$(CONFIG_IO_EXPANDER_PCA9534)+=ioexpander/pca9534.o
 driver-$(CONFIG_IO_EXPANDER_PCA9675)+=ioexpander/pca9675.o
 driver-$(CONFIG_IO_EXPANDER_PCAL6408)+=ioexpander/pcal6408.o
+driver-$(CONFIG_IO_EXPANDER_TCA64XXA)+=ioexpander/tca64xxa.o
 
 driver-$(CONFIG_CTN730)+=nfc/ctn730.o
 
@@ -167,7 +170,9 @@ driver-$(CONFIG_USBC_SS_MUX)+=usb_mux/usb_mux.o
 # USB muxes
 driver-$(CONFIG_USB_MUX_AMD_FP5)+=usb_mux/amd_fp5.o
 driver-$(CONFIG_USB_MUX_AMD_FP6)+=usb_mux/amd_fp6.o
+driver-$(CONFIG_USB_MUX_ANX3443)+=usb_mux/anx3443.o
 driver-$(CONFIG_USB_MUX_ANX7440)+=usb_mux/anx7440.o
+driver-$(CONFIG_USB_MUX_ANX7451)+=usb_mux/anx7451.o
 driver-$(CONFIG_USB_MUX_IT5205)+=usb_mux/it5205.o
 driver-$(CONFIG_USB_MUX_PI3USB30532)+=usb_mux/pi3usb3x532.o
 driver-$(CONFIG_USB_MUX_PI3USB31532)+=usb_mux/pi3usb3x532.o
@@ -175,6 +180,7 @@ driver-$(CONFIG_USB_MUX_PS8740)+=usb_mux/ps8740.o
 driver-$(CONFIG_USB_MUX_PS8742)+=usb_mux/ps8740.o
 driver-$(CONFIG_USB_MUX_PS8743)+=usb_mux/ps8743.o
 driver-$(CONFIG_USB_MUX_TUSB1064)+=usb_mux/tusb1064.o
+driver-$(CONFIG_USB_MUX_PS8822)+=usb_mux/ps8822.o
 driver-$(CONFIG_USB_MUX_VIRTUAL)+=usb_mux/virtual.o
 
 # USB Hub with I2C interface
@@ -200,3 +206,6 @@ driver-$(HAS_TASK_WPC) += wpc/p9221.o
 
 # Buck-Boost converters
 driver-$(CONFIG_MP4245)+=mp4245.o
+
+# Power Management ICs
+driver-$(CONFIG_MP2964)+=mp2964.o

@@ -36,7 +36,6 @@
 #include "registers.h"
 #include "spi.h"
 #include "system.h"
-#include "tablet_mode.h"
 #include "task.h"
 #include "tcpm/tcpm.h"
 #include "timer.h"
@@ -106,7 +105,7 @@ struct keyboard_scan_config keyscan_config = {
 struct ioexpander_config_t ioex_config[CONFIG_IO_EXPANDER_PORT_COUNT] = {
 	[0] = {
 		.i2c_host_port = I2C_PORT_IO_EXPANDER_IT8801,
-		.i2c_slave_addr = IT8801_I2C_ADDR,
+		.i2c_addr_flags = IT8801_I2C_ADDR,
 		.drv = &it8801_ioexpander_drv,
 	},
 };
@@ -356,7 +355,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .port = I2C_PORT_SENSORS,
 	 .i2c_spi_addr_flags = KX022_ADDR1_FLAGS,
 	 .rot_standard_ref = NULL, /* Identity matrix. */
-	 .default_range = 2, /* g, to meet CDD 7.3.1/C-1-4 reqs */
+	 .default_range = 2, /* g, enough to calculate lid angle. */
 	 .config = {
 		/* EC use accel for angle detection */
 		[SENSOR_CONFIG_EC_S0] = {
@@ -385,7 +384,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .port = CONFIG_SPI_ACCEL_PORT,
 	 .i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(CONFIG_SPI_ACCEL_PORT),
 	 .rot_standard_ref = &base_standard_ref,
-	 .default_range = 2,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+	 .default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
 	 .min_frequency = BMI_ACCEL_MIN_FREQ,
 	 .max_frequency = BMI_ACCEL_MAX_FREQ,
 	 .config = {
@@ -446,24 +445,3 @@ int board_get_battery_i2c(void)
 {
 	return board_get_version() >= 1 ? 2 : 1;
 }
-
-#ifndef TEST_BUILD
-void lid_angle_peripheral_enable(int enable)
-{
-	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
-
-	if (enable) {
-		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
-	} else {
-		/*
-		 * Ensure that the chipset is off before disabling the
-		 * keyboard. When the chipset is on, the EC keeps the
-		 * keyboard enabled and the AP decides whether to
-		 * ignore input devices or not.
-		 */
-		if (!chipset_in_s0)
-			keyboard_scan_enable(0,
-					     KB_SCAN_DISABLE_LID_ANGLE);
-	}
-}
-#endif

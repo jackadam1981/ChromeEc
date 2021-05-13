@@ -13,6 +13,7 @@
 #define VARIANT_KUKUI_POGO_KEYBOARD
 
 #define VARIANT_KUKUI_CHARGER_MT6370
+#define VARIANT_KUKUI_EC_STM32F098
 #define VARIANT_KUKUI_TABLET_PWRBTN
 
 #ifndef SECTION_IS_RW
@@ -64,6 +65,7 @@
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_MODE_CHANGE))
 
 /* MKBP */
+#define CONFIG_MKBP_INPUT_DEVICES
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_EVENT_WAKEUP_MASK \
 	(BIT(EC_MKBP_EVENT_SENSOR_FIFO) | BIT(EC_MKBP_EVENT_HOST_EVENT))
@@ -112,7 +114,6 @@ void emmc_cmd_interrupt(enum gpio_signal signal);
 
 void board_reset_pd_mcu(void);
 int board_get_version(void);
-int board_is_sourcing_vbus(int port);
 void pogo_adc_interrupt(enum gpio_signal signal);
 int board_discharge_on_ac(int enable);
 

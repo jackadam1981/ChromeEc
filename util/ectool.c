@@ -20,6 +20,7 @@
 #include "comm-host.h"
 #include "chipset.h"
 #include "compile_time_macros.h"
+#include "crc.h"
 #include "cros_ec_dev.h"
 #include "ec_panicinfo.h"
 #include "ec_flash.h"
@@ -152,8 +153,11 @@ const char help_str[] =
 	"      Retrieve the finger image as a PGM image\n"
 	"  fpinfo\n"
 	"      Prints information about the Fingerprint sensor\n"
-	"  fpmode [capture|deepsleep|fingerdown|fingerup]\n"
+	"  fpmode [mode... [capture_type]]\n"
 	"      Configure/Read the fingerprint sensor current mode\n"
+	"      mode: capture|deepsleep|fingerdown|fingerup|enroll|match|\n"
+	"            reset|reset_sensor|maintenance\n"
+	"      capture_type: vendor|pattern0|pattern1|qual|test_reset\n"
 	"  fpseed\n"
 	"      Sets the value of the TPM seed.\n"
 	"  fpstats\n"
@@ -443,6 +447,24 @@ static int read_mapped_string(uint8_t offset, char *buffer, int max_size)
 		exit(1);
 	}
 	return ret;
+}
+
+static int wait_event(long event_type,
+		      struct ec_response_get_next_event_v1 *buffer,
+		      size_t buffer_size, long timeout)
+{
+	int rv;
+
+	rv = ec_pollevent(1 << event_type, buffer, buffer_size, timeout);
+	if (rv == 0) {
+		fprintf(stderr, "Timeout waiting for MKBP event\n");
+		return -ETIMEDOUT;
+	} else if (rv < 0) {
+		perror("Error polling for MKBP event\n");
+		return -EIO;
+	}
+
+	return rv;
 }
 
 int cmd_adc_read(int argc, char *argv[])
@@ -753,7 +775,9 @@ int cmd_hostsleepstate(int argc, char *argv[])
 int cmd_test(int argc, char *argv[])
 {
 	struct ec_params_test_protocol p = {
-		.buf = "0123456789abcdef0123456789ABCDEF"
+		.buf = { 1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11,
+			 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22,
+			 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 }
 	};
 	struct ec_response_test_protocol r;
 	int rv, version = 0;
@@ -1329,7 +1353,7 @@ int cmd_rand(int argc, char *argv[])
 		return -1;
 	}
 
-	r = ec_inbuf;
+	r = (struct ec_response_rand_num *)(ec_inbuf);
 
 	for (i = 0; i < num_bytes; i += ec_max_insize) {
 		p.num_rand_bytes = ec_max_insize;
@@ -1387,7 +1411,7 @@ int cmd_flash_read(int argc, char *argv[])
 	int offset, size;
 	int rv;
 	char *e;
-	char *buf;
+	uint8_t *buf;
 
 	if (argc < 4) {
 		fprintf(stderr,
@@ -1406,7 +1430,7 @@ int cmd_flash_read(int argc, char *argv[])
 	}
 	printf("Reading %d bytes at offset %d...\n", size, offset);
 
-	buf = (char *)malloc(size);
+	buf = (uint8_t *)malloc(size);
 	if (!buf) {
 		fprintf(stderr, "Unable to allocate buffer.\n");
 		return -1;
@@ -1419,7 +1443,7 @@ int cmd_flash_read(int argc, char *argv[])
 		return rv;
 	}
 
-	rv = write_file(argv[3], buf, size);
+	rv = write_file(argv[3], (const char *)(buf), size);
 	free(buf);
 	if (rv)
 		return rv;
@@ -1454,7 +1478,8 @@ int cmd_flash_write(int argc, char *argv[])
 	printf("Writing to offset %d...\n", offset);
 
 	/* Write data in chunks */
-	rv = ec_flash_write(buf, offset, size);
+	rv = ec_flash_write((const uint8_t *)(buf), offset,
+			    size);
 
 	free(buf);
 
@@ -1808,6 +1833,7 @@ int cmd_rwsig(int argc, char **argv)
 }
 
 enum sysinfo_fields {
+	SYSINFO_FIELD_NONE = 0,
 	SYSINFO_FIELD_RESET_FLAGS = BIT(0),
 	SYSINFO_FIELD_CURRENT_IMAGE = BIT(1),
 	SYSINFO_FIELD_FLAGS = BIT(2),
@@ -1832,7 +1858,7 @@ static int sysinfo(struct ec_response_sysinfo *info)
 int cmd_sysinfo(int argc, char **argv)
 {
 	struct ec_response_sysinfo r;
-	enum sysinfo_fields fields = 0;
+	enum sysinfo_fields fields = SYSINFO_FIELD_NONE;
 	bool print_prefix = false;
 
 	if (argc != 1 && argc != 2)
@@ -1962,7 +1988,7 @@ static void *fp_download_frame(struct ec_response_fp_info *info, int index)
 		return NULL;
 	}
 
-	ptr = buffer;
+	ptr = (uint8_t *)(buffer);
 	p.offset = index << FP_FRAME_INDEX_SHIFT;
 	while (size) {
 		stride = MIN(ec_max_insize, size);
@@ -2016,6 +2042,8 @@ int cmd_fp_mode(int argc, char *argv[])
 			mode = FP_MODE_RESET_SENSOR;
 		else if (!strncmp(argv[i], "reset", 5))
 			mode = 0;
+		else if (!strncmp(argv[i], "maintenance", 11))
+			mode |= FP_MODE_SENSOR_MAINTENANCE;
 		else if (!strncmp(argv[i], "capture", 7))
 			mode |= FP_MODE_CAPTURE;
 		/* capture types */
@@ -2232,7 +2260,7 @@ int cmd_fp_frame(int argc, char *argv[])
 	struct ec_response_fp_info r;
 	int idx = (argc == 2 && !strcasecmp(argv[1], "raw")) ?
 		FP_FRAME_INDEX_RAW_IMAGE : FP_FRAME_INDEX_SIMPLE_IMAGE;
-	void *buffer = fp_download_frame(&r, idx);
+	uint8_t *buffer = (uint8_t *)(fp_download_frame(&r, idx));
 	uint8_t *ptr = buffer;
 	int x, y;
 
@@ -2263,14 +2291,15 @@ frame_done:
 int cmd_fp_template(int argc, char *argv[])
 {
 	struct ec_response_fp_info r;
-	struct ec_params_fp_template *p = ec_outbuf;
+	struct ec_params_fp_template *p =
+		(struct ec_params_fp_template *)(ec_outbuf);
 	/* TODO(b/78544921): removing 32 bits is a workaround for the MCU bug */
 	int max_chunk = ec_max_outsize
 			- offsetof(struct ec_params_fp_template, data) - 4;
 	int idx = -1;
 	char *e;
 	int size;
-	void *buffer = NULL;
+	char *buffer = NULL;
 	uint32_t offset = 0;
 	int rv = 0;
 
@@ -2281,7 +2310,7 @@ int cmd_fp_template(int argc, char *argv[])
 
 	idx = strtol(argv[1], &e, 0);
 	if (!(e && *e)) {
-		buffer = fp_download_frame(&r, idx + 1);
+		buffer = (char *)(fp_download_frame(&r, idx + 1));
 		if (!buffer) {
 			fprintf(stderr, "Failed to get FP template %d\n", idx);
 			return -1;
@@ -2726,8 +2755,10 @@ static void cmd_smart_discharge_usage(const char *command)
 
 int cmd_smart_discharge(int argc, char *argv[])
 {
-	struct ec_params_smart_discharge *p = ec_outbuf;
-	struct ec_response_smart_discharge *r = ec_inbuf;
+	struct ec_params_smart_discharge *p =
+		(struct ec_params_smart_discharge *)(ec_outbuf);
+	struct ec_response_smart_discharge *r =
+		(struct ec_response_smart_discharge *)(ec_inbuf);
 	uint32_t cap;
 	char *e;
 	int rv;
@@ -5498,7 +5529,7 @@ static int cmd_motionsense(int argc, char **argv)
 			uint32_t number_data;
 			struct ec_response_motion_sensor_data data[512];
 		} fifo_read_buffer = {
-			.number_data = -1,
+			.number_data = UINT32_MAX,
 		};
 		int print_data = 0,  max_data = strtol(argv[2], &e, 0);
 
@@ -6448,7 +6479,6 @@ int cmd_keyboard_factory_test(int argc, char *argv[])
 int cmd_panic_info(int argc, char *argv[])
 {
 	int rv;
-	struct panic_data *pdata = (struct panic_data *)ec_inbuf;
 
 	rv = ec_command(EC_CMD_GET_PANIC_INFO, 0, NULL, 0,
 			ec_inbuf, ec_max_insize);
@@ -6460,7 +6490,7 @@ int cmd_panic_info(int argc, char *argv[])
 		return 0;
 	}
 
-	return parse_panic_info(pdata);
+	return parse_panic_info((char *)(ec_inbuf), rv);
 }
 
 
@@ -7116,7 +7146,7 @@ static void cmd_i2c_help(void)
 
 int cmd_i2c_read(int argc, char *argv[])
 {
-	unsigned int port, addr;
+	unsigned int port, addr8, addr7;
 	int read_len, write_len;
 	uint8_t write_buf[1];
 	uint8_t *read_buf = NULL;
@@ -7141,13 +7171,12 @@ int cmd_i2c_read(int argc, char *argv[])
 		return -1;
 	}
 
-	addr = strtol(argv[3], &e, 0);
+	addr8 = strtol(argv[3], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad address.\n");
 		return -1;
 	}
-	/* Convert from 8-bit to 7-bit address */
-	addr = addr >> 1;
+	addr7 = addr8 >> 1;
 
 	write_buf[0] = strtol(argv[4], &e, 0);
 	if (e && *e) {
@@ -7156,20 +7185,21 @@ int cmd_i2c_read(int argc, char *argv[])
 	}
 	write_len = 1;
 
-	rv = do_i2c_xfer(port, addr, write_buf, write_len, &read_buf, read_len);
+	rv = do_i2c_xfer(port, addr7, write_buf, write_len, &read_buf,
+			 read_len);
 
 	if (rv < 0)
 		return rv;
 
 	printf("Read from I2C port %d at 0x%x offset 0x%x = 0x%x\n",
-		port, addr, write_buf[0], *(uint16_t *)read_buf);
+		port, addr8, write_buf[0], *(uint16_t *)read_buf);
 	return 0;
 }
 
 
 int cmd_i2c_write(int argc, char *argv[])
 {
-	unsigned int port, addr;
+	unsigned int port, addr8, addr7;
 	int write_len;
 	uint8_t write_buf[3];
 	char *e;
@@ -7194,13 +7224,12 @@ int cmd_i2c_write(int argc, char *argv[])
 		return -1;
 	}
 
-	addr = strtol(argv[3], &e, 0);
+	addr8 = strtol(argv[3], &e, 0);
 	if (e && *e) {
 		fprintf(stderr, "Bad address.\n");
 		return -1;
 	}
-	/* Convert from 8-bit to 7-bit address */
-	addr = addr >> 1;
+	addr7 = addr8 >> 1;
 
 	write_buf[0] = strtol(argv[4], &e, 0);
 	if (e && *e) {
@@ -7214,13 +7243,13 @@ int cmd_i2c_write(int argc, char *argv[])
 		return -1;
 	}
 
-	rv = do_i2c_xfer(port, addr, write_buf, write_len, NULL, 0);
+	rv = do_i2c_xfer(port, addr7, write_buf, write_len, NULL, 0);
 
 	if (rv < 0)
 		return rv;
 
 	printf("Wrote 0x%x to I2C port %d at 0x%x offset 0x%x.\n",
-	       *((uint16_t *)&write_buf[1]), port, addr, write_buf[0]);
+	       *((uint16_t *)&write_buf[1]), port, addr8, write_buf[0]);
 	return 0;
 }
 
@@ -7262,7 +7291,7 @@ int cmd_i2c_xfer(int argc, char *argv[])
 	write_len = argc;
 
 	if (write_len) {
-		write_buf = malloc(write_len);
+		write_buf = (uint8_t *)(malloc(write_len));
 		if (write_buf == NULL)
 			return -1;
 		for (i = 0; i < write_len; i++) {
@@ -8106,6 +8135,7 @@ static void cmd_cbi_help(char *cmd)
 	"      6: FW_CONFIG\n"
 	"      7: PCB_VENDOR\n"
 	"      8: SSFC\n"
+	"      9: REWORK_ID\n"
 	"    <size> is the size of the data in byte. It should be zero for\n"
 	"      string types.\n"
 	"    <value/string> is an integer or a string to be set\n"
@@ -8139,7 +8169,7 @@ static int cmd_cbi(int argc, char *argv[])
 	}
 
 	/* Tag */
-	tag = strtol(argv[2], &e, 0);
+	tag = (enum cbi_data_tag)(strtol(argv[2], &e, 0));
 	if (e && *e) {
 		fprintf(stderr, "Bad tag\n");
 		return -1;
@@ -8170,17 +8200,15 @@ static int cmd_cbi(int argc, char *argv[])
 		if (cmd_cbi_is_string_field(tag)) {
 			printf("%.*s", rv, (const char *)ec_inbuf);
 		} else {
-			const uint8_t * const buffer = ec_inbuf;
+			const uint8_t * const buffer =
+				(const uint8_t *const)(ec_inbuf);
+			uint64_t int_value = 0;
+                        for(i = 0; i < rv; i++)
+				int_value |= (uint64_t)buffer[i] << (i * 8);
 
-			if (rv <= sizeof(uint32_t)) {
-				uint32_t int_value = 0;
-
-				for (i = 0; i < rv; i++)
-					int_value |= buffer[i] << (i * 8);
-
-				printf("As uint: %u (0x%x)\n", int_value,
-				       int_value);
-			}
+                        printf("As uint: %llu (0x%llx)\n",
+				(unsigned long long)int_value,
+                                (unsigned long long)int_value);
 			printf("As binary:");
 			for (i = 0; i < rv; i++) {
 				if (i % 32 == 31)
@@ -8194,8 +8222,9 @@ static int cmd_cbi(int argc, char *argv[])
 		struct ec_params_set_cbi *p =
 				(struct ec_params_set_cbi *)ec_outbuf;
 		void *val_ptr;
-		uint32_t val;
+		uint64_t val = 0;
 		uint8_t size;
+		uint8_t bad_size = 0;
 		if (argc < 5) {
 			fprintf(stderr, "Invalid number of params\n");
 			cmd_cbi_help(argv[0]);
@@ -8206,19 +8235,33 @@ static int cmd_cbi(int argc, char *argv[])
 
 		if (cmd_cbi_is_string_field(tag)) {
 			val_ptr = argv[3];
-			size = strlen(val_ptr) + 1;
+			size = strlen((char *)(val_ptr)) + 1;
 		} else {
-			val = strtol(argv[3], &e, 0);
-			if (e && *e) {
+			val = strtoul(argv[3], &e, 0);
+			/* strtoul sets an errno for invalid input. If the value
+			 * read is out of range of representable values by an
+			 * unsigned long int, the function returns ULONG_MAX
+			 * or ULONG_MIN and the errno is set to ERANGE.
+			 */
+			if ((e && *e) || errno == ERANGE) {
 				fprintf(stderr, "Bad value\n");
 				return -1;
 			}
 			size = strtol(argv[4], &e, 0);
-			if ((e && *e) || size < 1 || 4 < size ||
-					val >= (1ull << size*8)) {
+			if (tag == CBI_TAG_REWORK_ID) {
+				if ((e && *e) || size < 1 || size > 8 ||
+				     (size < 8 && val >= (1ull << size*8)))
+					bad_size = 1;
+			} else {
+				if ((e && *e) || size < 1 || 4 < size ||
+						 val >= (1ull << size*8))
+					bad_size = 1;
+			}
+			if (bad_size == 1) {
 				fprintf(stderr, "Bad size: %d\n", size);
 				return -1;
 			}
+
 			val_ptr = &val;
 		}
 
@@ -9005,8 +9048,10 @@ static int cmd_tmp006cal_v0(int idx, int argc, char *argv[])
 static int cmd_tmp006cal_v1(int idx, int argc, char *argv[])
 {
 	struct ec_params_tmp006_get_calibration pg;
-	struct ec_response_tmp006_get_calibration_v1 *rg = ec_inbuf;
-	struct ec_params_tmp006_set_calibration_v1 *ps = ec_outbuf;
+	struct ec_response_tmp006_get_calibration_v1 *rg =
+		(struct ec_response_tmp006_get_calibration_v1 *)(ec_inbuf);
+	struct ec_params_tmp006_set_calibration_v1 *ps =
+		(struct ec_params_tmp006_set_calibration_v1 *)(ec_outbuf);
 	float val;
 	char *e;
 	int i, rv, cmdsize;
@@ -9216,7 +9261,8 @@ int cmd_port80_read(int argc, char *argv[])
 	writes = rsp.get_info.writes;
 	history_size = rsp.get_info.history_size;
 
-	history = malloc(history_size*sizeof(uint16_t));
+	history = (uint16_t *)(
+		malloc(history_size * sizeof(uint16_t)));
 	if (!history) {
 		fprintf(stderr, "Unable to allocate buffer.\n");
 		return -1;
@@ -9336,63 +9382,235 @@ static void cmd_pchg_help(char *cmd)
 {
 	fprintf(stderr,
 	"  Usage1: %s\n"
-	"  Usage2: %s <port>\n"
+	"          Print the number of ports.\n"
 	"\n"
-	"  Usage1 prints the number of ports.\n"
-	"  Usage2 prints the status of a port.\n",
-	cmd, cmd);
+	"  Usage2: %s <port>\n"
+	"          Print the status of <port>.\n"
+	"\n"
+	"  Usage3: %s <port> reset\n"
+	"          Reset <port>.\n"
+	"\n"
+	"  Usage4: %s <port> update <address> <version> <file>\n"
+	"          Update firmware of <port>.\n",
+	cmd, cmd, cmd, cmd);
 }
 
-int cmd_pchg(int argc, char *argv[])
+static int cmd_pchg_info(const struct ec_response_pchg *res)
 {
-	int port, port_count;
-	char *e;
-	int rv;
-	struct ec_response_pchg_count *rsp_count = ec_inbuf;
 	static const char * const pchg_state_text[] = EC_PCHG_STATE_TEXT;
 
-	rv = ec_command(EC_CMD_PCHG_COUNT, 0, NULL, 0, ec_inbuf, ec_max_insize);
+	printf("State: %s (%d)\n", res->state < sizeof(pchg_state_text)
+	       ? pchg_state_text[res->state] : "UNDEF", res->state);
+	printf("Battery: %u%%\n", res->battery_percentage);
+	printf("Errors: 0x%x\n", res->error);
+	printf("FW Version: 0x%x\n", res->fw_version);
+	printf("Dropped events: %u\n", res->dropped_event_count);
+	return 0;
+}
+
+static int cmd_pchg_wait_event(int port, uint32_t expected)
+{
+	struct ec_response_get_next_event_v1 event;
+	const long timeout = 5000;
+	uint32_t *e = &event.data.host_event;
+	int rv;
+
+	rv = wait_event(EC_MKBP_EVENT_PCHG, &event, sizeof(event), timeout);
+	if (rv < 0)
+		return rv;
+
+	if (EC_MKBP_PCHG_EVENT_TO_PORT(*e) == port) {
+		if (*e & EC_MKBP_PCHG_UPDATE_ERROR) {
+			fprintf(stderr, "\nReceived update error\n");
+			return -1;
+		}
+		if (*e & expected)
+			return 0;
+	}
+
+	fprintf(stderr, "\nExpected event=0x%x but received 0x%x\n",
+		expected, *e);
+	return -1;
+}
+
+static int cmd_pchg_update(int port, uint32_t address, uint32_t version,
+			   const char *filename)
+{
+	struct ec_params_pchg_update *p =
+		(struct ec_params_pchg_update *)(ec_outbuf);
+	struct ec_response_pchg_update *r =
+		(struct ec_response_pchg_update *)(ec_inbuf);
+	FILE *fp;
+	size_t len, total;
+	int progress = 0;
+	int rv;
+
+	fp = fopen(filename, "rb");
+	if (!fp) {
+		fprintf(stderr, "\nCan't open %s: %s\n",
+			filename, strerror(errno));
+		return -1;
+	}
+
+	fseek(fp, 0L, SEEK_END);
+	total = ftell(fp);
+	rewind(fp);
+	printf("Update file %s (%zu bytes) is opened.\n", filename, total);
+
+	/* Open session. */
+	p->port = port;
+	p->cmd = EC_PCHG_UPDATE_CMD_OPEN;
+	p->version = version;
+	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p, sizeof(*p), r, sizeof(*r));
 	if (rv < 0) {
-		fprintf(stderr, "Failed to get port count: %d\n", rv);
+		fprintf(stderr, "\nFailed to open update session: %d\n", rv);
+		fclose(fp);
 		return rv;
 	}
-	port_count = rsp_count->port_count;
+
+	if (r->block_size + sizeof(*p) > ec_max_outsize) {
+		fprintf(stderr, "\nBlock size (%d) is too large.\n",
+			r->block_size);
+		fclose(fp);
+		return -1;
+	}
+
+	rv = cmd_pchg_wait_event(port, EC_MKBP_PCHG_UPDATE_OPENED);
+	if (rv)
+		return rv;
+
+	printf("Writing firmware (port=%d ver=0x%x addr=0x%x bsize=%d):\n",
+	       port, version, address, r->block_size);
+
+	p->cmd = EC_PCHG_UPDATE_CMD_WRITE;
+	p->addr = address;
+	crc32_init();
+
+	/* Write firmware in blocks. */
+	len = fread(p->data, 1, r->block_size, fp);
+	while (len > 0) {
+		int previous_progress = progress;
+		int i;
+
+		crc32_hash(p->data, len);
+		p->size = len;
+		rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p,
+				sizeof(*p) + len, NULL, 0);
+		if (rv < 0) {
+			fprintf(stderr, "\nFailed to write FW: %d\n", rv);
+			fclose(fp);
+			return rv;
+		}
+
+		rv = cmd_pchg_wait_event(port, EC_MKBP_PCHG_WRITE_COMPLETE);
+		if (rv)
+			return rv;
+
+		p->addr += len;
+		progress = (p->addr - address) * 100 / total;
+		for (i = 0; i < progress - previous_progress; i++) {
+			printf("*");
+			fflush(stdout);
+		}
+
+		len = fread(p->data, 1, r->block_size, fp);
+	}
+
+	printf("\n");
+	fclose(fp);
+
+	/* Close session. */
+	p->cmd = EC_PCHG_UPDATE_CMD_CLOSE;
+	p->crc32 = crc32_result();
+	rv = ec_command(EC_CMD_PCHG_UPDATE, 0, p, sizeof(*p), NULL, 0);
+
+	if (rv < 0) {
+		fprintf(stderr, "\nFailed to close update session: %d\n", rv);
+		return rv;
+	}
+
+	rv = cmd_pchg_wait_event(port, EC_MKBP_PCHG_UPDATE_CLOSED);
+	if (rv)
+		return rv;
+
+	printf("FW update session closed (CRC32=0x%x).\n", p->crc32);
+
+	return 0;
+}
+
+static int cmd_pchg(int argc, char *argv[])
+{
+	int port, port_count;
+	struct ec_response_pchg_count rcnt;
+	struct ec_params_pchg p;
+	struct ec_response_pchg r;
+	uint32_t address, version;
+	char *e;
+	int rv;
+
+	rv = ec_command(EC_CMD_PCHG_COUNT, 0, NULL, 0, &rcnt, sizeof(rcnt));
+	if (rv < 0) {
+		fprintf(stderr, "\nFailed to get port count: %d\n", rv);
+		return rv;
+	}
+	port_count = rcnt.port_count;
 
 	if (argc == 1) {
-		/* Usage1 */
+		/* Usage.1 */
 		printf("%d\n", port_count);
 		return 0;
 	}
 
 	port = strtol(argv[1], &e, 0);
 	if ((e && *e) || port >= port_count) {
-		fprintf(stderr, "Bad port index\n");
+		fprintf(stderr, "\nBad port index: %s\n", argv[1]);
+		cmd_pchg_help(argv[0]);
 		return -1;
 	}
 
-	if (argc < 3) {
-		/* Usage2 */
-		struct ec_params_pchg *p = ec_outbuf;
-		struct ec_response_pchg *r = ec_inbuf;
-
-		p->port = port;
-		rv = ec_command(EC_CMD_PCHG, 0, ec_outbuf, sizeof(*p),
-				ec_inbuf, ec_max_insize);
-		if (rv < 0) {
-			fprintf(stderr, "Error code: %d\n", rv);
-			return rv;
-		}
-
-		printf("State: %s (%d)\n",
-		       r->state < sizeof(pchg_state_text) ?
-				       pchg_state_text[r->state] : "UNDEF",
-				       r->state);
-		printf("Battery: %d%%\n", r->battery_percentage);
-		printf("Flags: 0x%x\n", r->error);
-		return 0;
+	p.port = port;
+	rv = ec_command(EC_CMD_PCHG, 1, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0) {
+		fprintf(stderr, "\nError code: %d\n", rv);
+		return rv;
 	}
 
-	fprintf(stderr, "Invalid parameter count\n\n");
+	if (argc == 2) {
+		/* Usage.2 */
+		return cmd_pchg_info(&r);
+	} else if (argc == 3 && !strcmp(argv[2], "reset")) {
+		/* Usage.3 */
+		struct ec_params_pchg_update *u =
+			(struct ec_params_pchg_update *)(ec_outbuf);
+
+		u->cmd = EC_PCHG_UPDATE_CMD_RESET_TO_NORMAL;
+		rv = ec_command(EC_CMD_PCHG_UPDATE, 0, u, sizeof(*u), NULL, 0);
+		if (rv < 0) {
+			fprintf(stderr, "\nFailed to reset port %d: %d\n",
+				port, rv);
+			cmd_pchg_help(argv[0]);
+			return rv;
+		}
+		printf("Reset port %d complete.\n", port);
+		return 0;
+	} else if (argc == 6 && !strcmp(argv[2], "update")) {
+		/* Usage.4 */
+		address = strtol(argv[3], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "\nBad address: %s.\n", argv[3]);
+			cmd_pchg_help(argv[0]);
+			return -1;
+		}
+		version = strtol(argv[4], &e, 0);
+		if (e && *e) {
+			fprintf(stderr, "\nBad version: %s.\n", argv[4]);
+			cmd_pchg_help(argv[0]);
+			return -1;
+		}
+		return cmd_pchg_update(port, address, version, argv[5]);
+	}
+
+	fprintf(stderr, "Invalid parameter\n\n");
 	cmd_pchg_help(argv[0]);
 
 	return -1;
@@ -9787,7 +10005,7 @@ int cmd_typec_status(int argc, char *argv[])
 				(struct ec_response_typec_status *)ec_inbuf;
 	char *endptr;
 	int rv, i;
-	char *desc;
+	const char *desc;
 
 	if (argc != 2) {
 		fprintf(stderr,
@@ -9976,8 +10194,8 @@ int cmd_tp_frame_get(int argc, char* argv[])
 	struct ec_response_tp_frame_info* r;
 	struct ec_params_tp_frame_get p;
 
-	data = malloc(ec_max_insize);
-	r = malloc(ec_max_insize);
+	data = (uint8_t *)(malloc(ec_max_insize));
+	r = (struct ec_response_tp_frame_info *)(malloc(ec_max_insize));
 
 	if (data == NULL || r == NULL) {
 		fprintf(stderr, "Couldn't allocate memory.\n");
@@ -10029,24 +10247,6 @@ err:
 	free(r);
 
 	return rv < 0;
-}
-
-static int wait_event(long event_type,
-		      struct ec_response_get_next_event_v1 *buffer,
-		      size_t buffer_size, long timeout)
-{
-	int rv;
-
-	rv = ec_pollevent(1 << event_type, buffer, buffer_size, timeout);
-	if (rv == 0) {
-		fprintf(stderr, "Timeout waiting for MKBP event\n");
-		return -ETIMEDOUT;
-	} else if (rv < 0) {
-		perror("Error polling for MKBP event\n");
-		return -EIO;
-	}
-
-	return rv;
 }
 
 int cmd_wait_event(int argc, char *argv[])
