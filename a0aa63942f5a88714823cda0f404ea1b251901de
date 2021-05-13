@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b305b19c_d560e262",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-13T04:23:25Z",
+      "side": 1,
+      "message": "Replace with \"See b:...\"",
+      "range": {
+        "startLine": 89,
+        "startChar": 4,
+        "endLine": 89,
+        "endChar": 8
+      },
+      "revId": "a0aa63942f5a88714823cda0f404ea1b251901de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a5e52e9_abbed21c",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-13T04:23:25Z",
+      "side": 1,
+      "message": "You can combine these two comments.",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 3
+      },
+      "revId": "a0aa63942f5a88714823cda0f404ea1b251901de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75026680_60044695",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-13T04:23:25Z",
+      "side": 1,
+      "message": "Maybe reword to \"See b:178356507 - 9mW is ...\"",
+      "range": {
+        "startLine": 120,
+        "startChar": 3,
+        "endLine": 120,
+        "endChar": 24
+      },
+      "revId": "a0aa63942f5a88714823cda0f404ea1b251901de",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
