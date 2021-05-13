@@ -5311,6 +5311,24 @@ struct ec_params_reboot_ec {
  */
 #define EC_CMD_GET_PANIC_INFO 0x00D3
 
+/*
+ * Get ChromeOS FWID Version.
+ *
+ * Returns the CrOS FWID version. This is the official CrOS version that
+ * the EC image was built with.
+ */
+#define EC_CMD_GET_CROS_FWID 0x00D4
+
+/**
+ * struct ec_response_get_cros_fwid - Response to the get fwid command.
+ * @cros_fwid_string_ro: Null-terminated RO firmware version string.
+ * @cros_fwid_string_rw: Null-terminated RW firmware version string.
+ */
+struct ec_response_get_cros_fwid {
+	char cros_fwid_string_ro[32];
+	char cros_fwid_string_rw[32];
+} __ec_align4;
+
 /*****************************************************************************/
 /*
  * Special commands

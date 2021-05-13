@@ -21,6 +21,11 @@ dc=$'\001'
 # Default marker to indicate 'dirty' repositories
 dirty_marker='+'
 
+# Derive path to chromeos_version.sh script
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+CHROMEOS_VERSION_SCRIPT="${SCRIPT_DIR}/../../../"\
+"third_party/chromiumos-overlay/chromeos/config/chromeos_version.sh"
+
 # This function examines the state of the current directory and attempts to
 # extract its version information: the latest tag, if any, how many patches
 # are there since the latest tag, the top sha1, and if there are local
@@ -195,6 +200,20 @@ main() {
         git -C "${git_dir}" log -1 --format='%ct %ci' HEAD 2>/dev/null
       done | sort | tail -1 | cut -d ' ' -f '2 3')"
     echo "#define DATE \"${gitdate}\""
+  fi
+
+  # Use the chromeos_version_string when available.
+  # This will not work if this script is run from a standalone checkout.
+  if [[ -f "${CHROMEOS_VERSION_SCRIPT}" ]]; then
+    local fwid_version=${BOARD}_$(${CHROMEOS_VERSION_SCRIPT} | \
+          grep "^[[:space:]]*CHROMEOS_VERSION_STRING=" | cut -d= -f2)
+    echo "/* CrOS FWID of this build */"
+    echo "#define CROS_FWID \"${fwid_version}\""
+    echo "#define CROS_FWID32 \"${fwid_version:0:31}\""
+  else
+    echo "/* CrOS FWID is not available for this build */"
+    echo "#define CROS_FWID \"NO_CROS_FWID\""
+    echo "#define CROS_FWID32 \"NO_CROS_FWID\""
   fi
 }
 

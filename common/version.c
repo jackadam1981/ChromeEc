@@ -26,11 +26,13 @@ const struct image_data __keep current_image_data
 #endif
 	.rollback_version = CONFIG_ROLLBACK_VERSION,
 	.cookie2 = CROS_EC_IMAGE_DATA_COOKIE2,
+	.cros_fwid = CROS_FWID32,
 };
 BUILD_ASSERT(sizeof(CROS_EC_VERSION32) <= 32);
+BUILD_ASSERT(sizeof(CROS_FWID32) <= 32);
 
 const char build_info[] __keep __attribute__((section(".rodata.buildinfo"))) =
-	VERSION " " DATE " " BUILDER;
+	VERSION " " CROS_FWID " " DATE " " BUILDER;
 
 static int get_num_commits(const struct image_data *data)
 {
