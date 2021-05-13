@@ -12,6 +12,10 @@
 #include <stdint.h>
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef CHROMIUM_EC
 /*
  * CHROMIUM_EC is defined by the Makefile system of Chromium EC repository.
@@ -68,10 +72,6 @@
 #endif
 
 #endif  /* __KERNEL__ */
-
-#ifdef __cplusplus
-extern "C" {
-#endif
 
 /*
  * Current version of this protocol
@@ -2672,6 +2672,8 @@ enum motionsensor_chip {
 	MOTIONSENSE_CHIP_LIS2DS = 23,
 	MOTIONSENSE_CHIP_BMI260 = 24,
 	MOTIONSENSE_CHIP_ICM426XX = 25,
+	MOTIONSENSE_CHIP_BMI323 = 26,
+	MOTIONSENSE_CHIP_BMA422 = 27,
 	MOTIONSENSE_CHIP_MAX,
 };
 
@@ -6902,16 +6904,6 @@ struct ec_response_pchg_update {
 	/* Block size */
 	uint32_t block_size;
 } __ec_align4;
-
-
-#define EC_CMD_DISPLAY_SOC 0x0137
-
-struct ec_response_display_soc {
-	int16_t display_soc;  /* Display charge in 10ths of a % (1000=100.0%) */
-	int16_t full_factor;  /* Full factor in 10ths of a % (1000=100.0%) */
-	int16_t shutdown_soc; /* Shutdown SoC in 10ths of a % (1000=100.0%) */
-} __ec_align2;
-
 
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
