@@ -119,7 +119,6 @@ def get_version_string(project, zephyr_base, modules, static=False):
         project_id, major_version, minor_version, num_commits, vcs_hashes
     )
 
-
 def write_version_header(version_str, output_path, static=False):
     """Generate a version header and write it to the specified path.
 
@@ -153,6 +152,10 @@ def write_version_header(version_str, output_path, static=False):
     else:
         add_def("BUILDER", "{}@{}".format(getpass.getuser(), platform.node()))
         add_def("DATE", datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+    add_def("CROS_FWID_MISSING_STR", "CROS_FWID_MISSING")
+    # TODO(b/198475757): Add zmake support for getting CROS_FWID32
+    add_def("CROS_FWID32", "CROS_FWID_MISSING_STR")
 
     contents = output.getvalue()
     if not output_path.exists() or output_path.read_text() != contents:
