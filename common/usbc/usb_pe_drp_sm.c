@@ -5186,8 +5186,11 @@ static void pe_vdm_send_request_entry(int port)
 	     pe[port].tx_type == TCPC_TX_SOP_PRIME_PRIME) &&
 	    !tc_is_vconn_src(port) && port_discovery_vconn_swap_policy(port,
 		PE_FLAGS_VCONN_SWAP_TO_ON)) {
-		if (port_try_vconn_swap(port))
+		if (pe[port].vconn_swap_counter < N_VCONN_SWAP_COUNT) {
+			set_state_pe(port, get_last_state_pe(port));
+			pd_dpm_request(port, DPM_REQUEST_VCONN_SWAP);
 			return;
+		}
 	}
 
 	/* All VDM sequences are Interruptible */
