@@ -30,4 +30,15 @@
 #define EC_CROS_GPIO_INTERRUPTS					\
 	GPIO_INT(GPIO_LID_OPEN, GPIO_INT_EDGE_BOTH, lid_interrupt)
 
+
+
+#define GPIO_EN_PP5000 GPIO_EN_PP5000_A
+
+enum power_signal {
+	PMIC_PWR_GOOD,
+	AP_IN_S3_L,
+	AP_WDT_ASSERTED,
+	POWER_SIGNAL_COUNT,
+};
+
 #endif /* __ZEPHYR_GPIO_MAP_H */
