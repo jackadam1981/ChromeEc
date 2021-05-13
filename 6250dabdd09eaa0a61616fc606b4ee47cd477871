@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28970dbe_2f8797f4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-13T19:36:54Z",
+      "side": 1,
+      "message": "Looking for some feedback before I spend too much time on this. ",
+      "revId": "6250dabdd09eaa0a61616fc606b4ee47cd477871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75bff90a_d955fcd1",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-13T19:36:54Z",
+      "side": 1,
+      "message": "This causing a size misalignment with older versions of depthcharge. So it may be best to make this a separate host command.",
+      "revId": "6250dabdd09eaa0a61616fc606b4ee47cd477871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
