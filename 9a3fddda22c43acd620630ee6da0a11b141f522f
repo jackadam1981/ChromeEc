@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42356cdf_1ce32b02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511082
+      },
+      "writtenOn": "2021-05-13T16:14:33Z",
+      "side": 1,
+      "message": "BMA422 drive - draft version \n\nBST-Sensor API is integrated and unused code is cleaned up. \nDriver compilates and static code check is done, but its not tested. \n\nPropose to use this design for ease of integration, maintenance and also enabling other variants from this family of sensors.\n\nPl. have a look and provide your feedback\n\nThanks 😊",
+      "revId": "9a3fddda22c43acd620630ee6da0a11b141f522f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
