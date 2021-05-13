@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c6574e83_024d1f17",
+        "filename": "baseboard/mancomb/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-13T21:57:43Z",
+      "side": 1,
+      "message": "Yup, copied from puff which copied from fizz...\n\nI can ask Daniel\u0027s opinion though",
+      "parentUuid": "9125671c_dddbccb4",
+      "revId": "6980e5b8ca86216ddc912887f876859bf7cc2546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3c673158_378451e1",
         "filename": "baseboard/mancomb/usb_pd_policy.c",
         "patchSetId": 2
@@ -37,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "82c56d4b_fddcacb0",
+        "filename": "baseboard/mancomb/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-13T21:57:43Z",
+      "side": 1,
+      "message": "Yeah, there is some assumption about our charge port and USB-C port ordering that I tried noting in the active charge port set.  I\u0027m not sure if there\u0027s a better location to document that assumption.",
+      "parentUuid": "3c673158_378451e1",
+      "revId": "6980e5b8ca86216ddc912887f876859bf7cc2546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7a970722_8c05bf0b",
         "filename": "board/mancomb/board.c",
         "patchSetId": 2
@@ -48,6 +84,24 @@
       "writtenOn": "2021-05-13T20:36:57Z",
       "side": 1,
       "message": "I guess this may depend on fwconfig later?",
+      "revId": "6980e5b8ca86216ddc912887f876859bf7cc2546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fee86d0_d6d55cc2",
+        "filename": "board/mancomb/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-13T21:57:43Z",
+      "side": 1,
+      "message": "Yup, it\u0027ll very likely change per-OEM and could be dependent on FW_CONFIG so I figured we\u0027d delegate it to the boards",
+      "parentUuid": "7a970722_8c05bf0b",
       "revId": "6980e5b8ca86216ddc912887f876859bf7cc2546",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
