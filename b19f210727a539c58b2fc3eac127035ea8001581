@@ -16,6 +16,24 @@
       "message": "hi Diana: \nthis item test in blipper is pass",
       "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1690ff6a_9efcab45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-05-13T02:29:09Z",
+      "side": 1,
+      "message": "sorry.  this cl test TD.PD.VNDI3.E3 VDM Identity pass ,2881028: TCPMv2: Correct PD 3.0 reply when SVDM isn\u0027t supported | https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2881028",
+      "parentUuid": "6e90171d_7ac3a497",
+      "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
