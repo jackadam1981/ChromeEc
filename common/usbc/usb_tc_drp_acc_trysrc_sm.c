@@ -124,9 +124,11 @@ void print_flag(int port, int set_or_clear, int flag);
 #define TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN BIT(21)
 /* Flag for asynchronous call to request Error Recovery */
 #define TC_FLAGS_REQUEST_ERROR_RECOVERY	BIT(22)
+/* Flag to indicate the PD partner state is not yet known */
+#define TC_FLAGS_PARTNER_PD_UNKNOWN	BIT(23)
 
 /* For checking flag_bit_names[] array */
-#define TC_FLAGS_COUNT			22
+#define TC_FLAGS_COUNT			23
 
 /* On disconnect, clear most of the flags. */
 #define CLR_FLAGS_ON_DISCONNECT(port) TC_CLR_FLAG(port, \
@@ -321,6 +323,7 @@ static struct bit_name flag_bit_names[] = {
 	{ TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN,
 			"USB_RETIMER_FW_UPDATE_LTD_RUN" },
 	{ TC_FLAGS_REQUEST_ERROR_RECOVERY, "REQUEST_ERROR_RECOCVERY"},
+	{ TC_FLAGS_PARTNER_PD_UNKNOWN, "PARTNER_PD_UNKNOWN"},
 };
 BUILD_ASSERT(ARRAY_SIZE(flag_bit_names) == TC_FLAGS_COUNT);
 
@@ -656,23 +659,27 @@ static bool pd_comm_allowed_by_policy(void)
 
 static void tc_policy_pd_enable(int port, int en)
 {
-	if (en)
+	if (en) {
 		atomic_clear_bits(&tc[port].pd_disabled_mask,
 				  PD_DISABLED_BY_POLICY);
-	else
+	} else {
 		atomic_or(&tc[port].pd_disabled_mask, PD_DISABLED_BY_POLICY);
+		TC_CLR_FLAG(port, TC_FLAGS_PARTNER_PD_UNKNOWN);
+	}
 
 	CPRINTS("C%d: PD comm policy %sabled", port, en ? "en" : "dis");
 }
 
 static void tc_enable_pd(int port, int en)
 {
-	if (en)
+	if (en) {
 		atomic_clear_bits(&tc[port].pd_disabled_mask,
 				  PD_DISABLED_NO_CONNECTION);
-	else
+	} else {
 		atomic_or(&tc[port].pd_disabled_mask,
 			  PD_DISABLED_NO_CONNECTION);
+		TC_CLR_FLAG(port, TC_FLAGS_PARTNER_PD_UNKNOWN);
+	}
 }
 
 __maybe_unused static void tc_enable_try_src(int en)
@@ -753,6 +760,15 @@ bool pd_capable(int port)
 	return !!TC_CHK_FLAG(port, TC_FLAGS_PARTNER_PD_CAPABLE);
 }
 
+/*
+ * Return true if a partner is connected, but the partner PD capability is not
+ * yet known.
+ */
+bool pd_unknown(int port)
+{
+	return !!TC_CHK_FLAG(port, TC_FLAGS_PARTNER_PD_UNKNOWN);
+}
+
 enum pd_dual_role_states pd_get_dual_role(int port)
 {
 	return drp_state[port];
@@ -796,6 +812,7 @@ int tc_is_attached_snk(int port)
 
 void tc_pd_connection(int port, int en)
 {
+	TC_CLR_FLAG(port, TC_FLAGS_PARTNER_PD_UNKNOWN);
 	if (en) {
 		bool new_pd_capable = false;
 
@@ -2188,6 +2205,7 @@ static void tc_unattached_snk_entry(const int port)
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		CLR_FLAGS_ON_DISCONNECT(port);
 		tc_enable_pd(port, 0);
+		TC_SET_FLAG(port, TC_FLAGS_PARTNER_PD_UNKNOWN);
 	}
 }
 
@@ -2414,6 +2432,7 @@ static void tc_attached_snk_entry(const int port)
 		tc[port].polarity = get_snk_polarity(cc1, cc2);
 		pd_set_polarity(port, tc[port].polarity);
 
+		CPRINTS("TC%d: set UFP", port);
 		tc_set_data_role(port, PD_ROLE_UFP);
 
 		hook_notify(HOOK_USB_PD_CONNECT);
@@ -2735,6 +2754,7 @@ static void tc_unattached_src_entry(const int port)
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		CLR_FLAGS_ON_DISCONNECT(port);
 		tc_enable_pd(port, 0);
+		TC_SET_FLAG(port, TC_FLAGS_PARTNER_PD_UNKNOWN);
 	}
 
 	pd_timer_enable(port, TC_TIMER_NEXT_ROLE_SWAP, PD_T_DRP_SRC);

@@ -485,10 +485,13 @@ mux_state_t get_mux_mode_to_set(int port)
 	/*
 	 * If the power role is sink and the PD partner device is not capable
 	 * of USB communication then disconnect.
+	 *
+	 * TODO(b/188588458): TCPMv2: Delay enabling USB3 termination when USB4
+	 * is supported.
 	 */
 	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
 	    pd_get_power_role(port) == PD_ROLE_SINK &&
-	    pd_capable(port) &&
+	    (pd_capable(port) || pd_unknown(port)) &&
 	    !pd_get_partner_usb_comm_capable(port))
 		return USB_PD_MUX_NONE;
 
@@ -504,6 +507,7 @@ void set_usb_mux_with_current_data_role(int port)
 				(mux_mode == USB_PD_MUX_NONE) ?
 				USB_SWITCH_DISCONNECT : USB_SWITCH_CONNECT;
 
+		CPRINTS("Mux%d, mux_mode=0x%02x", port, mux_mode);
 		usb_mux_set(port, mux_mode, usb_switch_mode,
 				polarity_rm_dts(pd_get_polarity(port)));
 	}

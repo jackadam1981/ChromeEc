@@ -2910,6 +2910,15 @@ void pd_set_new_power_request(int port);
 bool pd_capable(int port);
 
 /**
+ * Return true if a partner is connected, but the partner PD capability is not
+ * yet known.
+ *
+ * @param port USB-C port number
+ * @return true if partner present, but PD capability not known
+ */
+bool pd_unknown(int port);
+
+/**
  * Returns the source caps list
  *
  * @param port USB-C port number
