@@ -124,9 +124,11 @@ void print_flag(int port, int set_or_clear, int flag);
 #define TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN BIT(21)
 /* Flag for asynchronous call to request Error Recovery */
 #define TC_FLAGS_REQUEST_ERROR_RECOVERY	BIT(22)
+/* Flag to indicate the PD partner has not yet sent source caps */
+#define TC_FLAGS_PARTNER_PD_SRC_CAPS_WAIT BIT(23)
 
 /* For checking flag_bit_names[] array */
-#define TC_FLAGS_COUNT			22
+#define TC_FLAGS_COUNT			23
 
 /* On disconnect, clear most of the flags. */
 #define CLR_FLAGS_ON_DISCONNECT(port) TC_CLR_FLAG(port, \
@@ -321,6 +323,7 @@ static struct bit_name flag_bit_names[] = {
 	{ TC_FLAGS_USB_RETIMER_FW_UPDATE_LTD_RUN,
 			"USB_RETIMER_FW_UPDATE_LTD_RUN" },
 	{ TC_FLAGS_REQUEST_ERROR_RECOVERY, "REQUEST_ERROR_RECOCVERY"},
+	{ TC_FLAGS_PARTNER_PD_SRC_CAPS_WAIT, "PARTNER_PD_SRC_CAPS_WAIT"},
 };
 BUILD_ASSERT(ARRAY_SIZE(flag_bit_names) == TC_FLAGS_COUNT);
 
@@ -753,6 +756,16 @@ bool pd_capable(int port)
 	return !!TC_CHK_FLAG(port, TC_FLAGS_PARTNER_PD_CAPABLE);
 }
 
+/*
+ * Return true if we transition through Unattached.SNK, but we're still waiting
+ * to receive source caps from the partner. This indicates that the PD
+ * capabilities are not yet known.
+ */
+bool pd_waiting_on_partner_src_caps(int port)
+{
+	return !!TC_CHK_FLAG(port, TC_FLAGS_PARTNER_PD_SRC_CAPS_WAIT);
+}
+
 enum pd_dual_role_states pd_get_dual_role(int port)
 {
 	return drp_state[port];
@@ -796,6 +809,7 @@ int tc_is_attached_snk(int port)
 
 void tc_pd_connection(int port, int en)
 {
+	TC_CLR_FLAG(port, TC_FLAGS_PARTNER_PD_SRC_CAPS_WAIT);
 	if (en) {
 		bool new_pd_capable = false;
 
@@ -2188,6 +2202,7 @@ static void tc_unattached_snk_entry(const int port)
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		CLR_FLAGS_ON_DISCONNECT(port);
 		tc_enable_pd(port, 0);
+		TC_SET_FLAG(port, TC_FLAGS_PARTNER_PD_SRC_CAPS_WAIT);
 	}
 }
 
