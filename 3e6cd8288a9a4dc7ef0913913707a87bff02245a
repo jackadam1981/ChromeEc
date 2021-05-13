@@ -80,6 +80,30 @@
       },
       "revId": "3e6cd8288a9a4dc7ef0913913707a87bff02245a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89197502_d6ed98d9",
+        "filename": "board/storo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-13T17:45:14Z",
+      "side": 1,
+      "message": "Why not? The intention was only to enable it when necessary.",
+      "parentUuid": "cf6c685c_282241eb",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 39
+      },
+      "revId": "3e6cd8288a9a4dc7ef0913913707a87bff02245a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
