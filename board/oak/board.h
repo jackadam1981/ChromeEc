@@ -11,6 +11,8 @@
 /* board revision */
 #include "board_revs.h"
 
+#undef CONFIG_CROS_FWID_VERSION
+
 /* Free up some flash space */
 #define CONFIG_USB_PD_DEBUG_LEVEL 0
 

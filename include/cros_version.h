@@ -29,6 +29,7 @@ struct image_data {
 	uint32_t size;
 	int32_t rollback_version;
 	uint32_t cookie2;
+	char cros_fwid[32];
 } __packed;
 
 extern const struct image_data current_image_data;
