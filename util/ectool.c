@@ -1092,7 +1092,9 @@ int cmd_version(int argc, char *argv[])
 
 	/* Print versions */
 	printf("RO version:    %s\n", r.version_string_ro);
+	printf("RO fwid:       %s\n", r.fwid_string_ro);
 	printf("RW version:    %s\n", r.version_string_rw);
+	printf("RW fwid:       %s\n", r.fwid_string_rw);
 	printf("Firmware copy: %s\n",
 	       (r.current_image < ARRAY_SIZE(image_names) ?
 		image_names[r.current_image] : "?"));
