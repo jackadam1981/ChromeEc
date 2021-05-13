@@ -58,9 +58,9 @@
 			interrupt-parent = <&intc>;
 		};
 
-		fiu0: flash-controller@80000000 {
+		fiu0: cros-flash@f01000 {
 			compatible = "ite,it8xxx2-cros-flash";
-			reg = <0x80000000 0x80000>;
+			reg = <0xf01000 0x100>;
 			label = "FLASH";
 		};
 	};
