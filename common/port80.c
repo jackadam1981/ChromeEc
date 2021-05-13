@@ -24,7 +24,7 @@ typedef uint16_t port80_code_t;
 #endif
 static port80_code_t __bss_slow history[CONFIG_PORT80_HISTORY_LEN];
 static int __bss_slow writes;    /* Number of port 80 writes so far */
-static port80_code_t last_boot; /* Last code from previous boot */
+static int last_boot; /* Last code from previous boot */
 static int __bss_slow scroll;
 
 #ifdef CONFIG_BRINGUP
@@ -60,15 +60,18 @@ void port_80_write(int data)
 	if (print_in_int)
 		CPRINTF("%c[%pT Port 80: 0x%02x]",
 			scroll ? '\n' : '\r', PRINTF_TIMESTAMP_NOW, data);
-	else if (data < 0x100 || IS_ENABLED(CONFIG_PORT80_4_BYTE))
-		hook_call_deferred(&port80_dump_buffer_data, 4 * SECOND);
+
+	hook_call_deferred(&port80_dump_buffer_data, 4 * SECOND);
 
 	/* Save current port80 code if system is resetting */
 	if (data == PORT_80_EVENT_RESET && writes) {
 		port80_code_t prev = history[(writes-1) % ARRAY_SIZE(history)];
 
-		/* Ignore special event codes */
-		if (prev < 0x100 || IS_ENABLED(CONFIG_PORT80_4_BYTE))
+		/*
+		 * last_boot only reports 8-bits code.
+		 * Ignore special event codes.
+		 */
+		if (prev < 0x100)
 			last_boot = prev;
 	}
 
