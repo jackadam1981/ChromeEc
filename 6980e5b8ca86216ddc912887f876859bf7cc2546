@@ -38,6 +38,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "82e5205d_84f70ad9",
+        "filename": "baseboard/mancomb/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-13T22:30:47Z",
+      "side": 1,
+      "message": "Sounds like this is a reasonable starting place, but he pointed out I\u0027d missed a pullup",
+      "parentUuid": "c6574e83_024d1f17",
+      "revId": "6980e5b8ca86216ddc912887f876859bf7cc2546",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3c673158_378451e1",
         "filename": "baseboard/mancomb/usb_pd_policy.c",
         "patchSetId": 2
