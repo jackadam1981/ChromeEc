@@ -34,6 +34,52 @@
       "parentUuid": "6e90171d_7ac3a497",
       "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdf4da6a_8563ca10",
+        "filename": "test/usb_tcpmv2_td_pd_vndi3_e3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-13T14:52:00Z",
+      "side": 1,
+      "message": "nit: the",
+      "range": {
+        "startLine": 51,
+        "startChar": 31,
+        "endLine": 51,
+        "endChar": 34
+      },
+      "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a7ad3c4_cb34282a",
+        "filename": "test/usb_tcpmv2_td_pd_vndi3_e3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-13T14:52:00Z",
+      "side": 1,
+      "message": "can you add in this comment what d-i are?  I generally tried to add all of the code in case the compiled CONFIGs changed to reflect a different VIF configuration. If this path is never going to happen, it should at least be documented what it is that is not going to happen.  If on the other hand, like in TD.PD.SRC3.E32, the received message of NotSupported or an actual response could happen, based on compile time decisions, then adding the code to handle it is in our best interest.\n\nIf this is something that should probably be added at some time, add a bug number for the TODO and still add the steps that need to be done.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
