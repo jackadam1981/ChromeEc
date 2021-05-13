@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fca1bb73_184d9738",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-05-13T19:49:04Z",
+      "side": 1,
+      "message": "(When WIP is set no review emails get sent, so you might want to remove WIP to get feedback.)\n\nI think it would be very nice to be able to see the \"normal\" version number in the EC output.\nI assume this will work on the builders too.\n\n",
+      "revId": "6250dabdd09eaa0a61616fc606b4ee47cd477871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75bff90a_d955fcd1",
