@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54df6246_c7fdf273",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-05-13T15:11:21Z",
+      "side": 1,
+      "message": "Let\u0027s make this a uint16_t since that\u0027s the size of the code in `ec_response_port80_last_boot`.",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 10
+      },
+      "revId": "fd1600fda4db492ca66c2978da8e6133109df014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51a4c5f6_739fe311",
+        "filename": "common/port80.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-05-13T15:11:21Z",
+      "side": 1,
+      "message": "nit: 8-bit codes.",
+      "range": {
+        "startLine": 71,
+        "startChar": 30,
+        "endLine": 71,
+        "endChar": 34
+      },
+      "revId": "fd1600fda4db492ca66c2978da8e6133109df014",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
