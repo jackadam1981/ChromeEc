@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8f1f77_885fc152",
+        "filename": "driver/ppc/rt1718s.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-13T06:00:07Z",
+      "side": 1,
+      "message": "I think it\u0027s better to use atomic operations to avoid potential race condition.",
+      "revId": "1b0a46c21cb37b422225a360580e2d20fcc3da6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5cc0a5_c3c558f2",
+        "filename": "driver/ppc/rt1718s.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-13T06:00:07Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 140,
+        "startChar": 13,
+        "endLine": 140,
+        "endChar": 14
+      },
+      "revId": "1b0a46c21cb37b422225a360580e2d20fcc3da6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f133faec_1f719b49",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-13T06:00:07Z",
+      "side": 1,
+      "message": "This has to be documented.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 11
+      },
+      "revId": "1b0a46c21cb37b422225a360580e2d20fcc3da6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4f3182c_32a4320e",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-13T06:00:07Z",
+      "side": 1,
+      "message": "I am a bit concerned about this. It means there is the only way to clean reset the TCPC is extiting the shipping mode. Could we drop this if condidtion?",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 51
+      },
+      "revId": "1b0a46c21cb37b422225a360580e2d20fcc3da6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7415c01a_24f5cab9",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-13T06:00:07Z",
+      "side": 1,
+      "message": "Replace with CONFIG_USB_PD_FRS_? instead.",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 25
+      },
+      "revId": "1b0a46c21cb37b422225a360580e2d20fcc3da6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8722943e_a238eff8",
+        "filename": "driver/tcpm/rt1718s.h",
+        "patchSetId": 34
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-13T06:00:07Z",
+      "side": 1,
+      "message": "Parenthesis are not needed if it\u0027s a simple numeric value. (also below)",
+      "range": {
+        "startLine": 14,
+        "startChar": 35,
+        "endLine": 14,
+        "endChar": 41
+      },
+      "revId": "1b0a46c21cb37b422225a360580e2d20fcc3da6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
