@@ -33,6 +33,29 @@
       "message": "LGTM, differ to Aseda to approve. Thanks!",
       "revId": "3e6cd8288a9a4dc7ef0913913707a87bff02245a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4c15df4_956845d8",
+        "filename": "board/storo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-13T14:22:12Z",
+      "side": 1,
+      "message": "nit: We don\u0027t really need this, do we?",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 39
+      },
+      "revId": "3e6cd8288a9a4dc7ef0913913707a87bff02245a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
