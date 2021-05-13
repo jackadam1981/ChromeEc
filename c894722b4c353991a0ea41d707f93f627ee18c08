@@ -81,6 +81,30 @@
       },
       "revId": "c894722b4c353991a0ea41d707f93f627ee18c08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b8fa1ce_6a08e2d9",
+        "filename": "common/keyboard_backlight.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-13T00:04:57Z",
+      "side": 1,
+      "message": "(Talking to myself) We don\u0027t know the brightness the host set if we sysjump in S0. We can save current_percent and restore it using a jumptag but I don\u0027t think it\u0027s necessary since that\u0027s not a path production devices take.",
+      "parentUuid": "0bb796ac_e61e958a",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 50
+      },
+      "revId": "c894722b4c353991a0ea41d707f93f627ee18c08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
