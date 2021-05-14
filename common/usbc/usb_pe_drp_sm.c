@@ -10,6 +10,7 @@
 #include "charge_state.h"
 #include "common.h"
 #include "console.h"
+#include "dps.h"
 #include "driver/tcpm/tcpm.h"
 #include "ec_commands.h"
 #include "hooks.h"
@@ -957,6 +958,10 @@ void pe_set_explicit_contract(int port)
 	/* Set Rp for collision avoidance */
 	if (IS_ENABLED(CONFIG_USB_PD_REV30))
 		typec_update_cc(port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_DPS) &&
+	    pe[port].power_role == PD_ROLE_SINK)
+		dps_set_flags(port, DPS_FLAG_NEW_CONTRACT);
 }
 
 void pe_invalidate_explicit_contract(int port)
@@ -3118,6 +3123,10 @@ static void pe_snk_evaluate_capability_entry(int port)
 
 	/* Device Policy Response Received */
 	set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
+
+#ifdef HAS_TASK_DPS
+	task_wake(TASK_ID_DPS);
+#endif
 }
 
 /**
@@ -3363,6 +3372,9 @@ static void pe_snk_ready_entry(int port)
 	/* Clear DPM Current Request */
 	pe[port].dpm_curr_request = 0;
 
+	if (IS_ENABLED(CONFIG_USB_PD_DPS))
+		dps_update_stabilized_time(port);
+
 	/*
 	 * On entry to the PE_SNK_Ready state as the result of a wait,
 	 * then do the following:
@@ -3554,6 +3566,9 @@ static void pe_snk_hard_reset_entry(int port)
 
 	print_current_state(port);
 
+	if (IS_ENABLED(CONFIG_USB_PD_DPS))
+		dps_clr_flags(port, DPS_FLAG_NEW_CONTRACT);
+
 	/*
 	 * Note: If the SinkWaitCapTimer times out and the HardResetCounter is
 	 *       greater than nHardResetCount the Sink Shall assume that the
@@ -3720,6 +3735,9 @@ static void pe_send_soft_reset_entry(int port)
 	 * to sending a single SoftReset message.
 	 */
 	pd_timer_enable(port, PE_TIMER_TIMEOUT, 0);
+
+	if (IS_ENABLED(CONFIG_USB_PD_DPS))
+		dps_clr_flags(port, DPS_FLAG_NEW_CONTRACT);
 }
 
 static void pe_send_soft_reset_run(int port)
