@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e689f23_e1f299a4",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-14T08:39:09Z",
+      "side": 1,
+      "message": "As we call hook_call_defferred in any case, I think we can remove this comment.",
+      "parentUuid": "7789c765_d4681ae0",
+      "range": {
+        "startLine": 56,
+        "startChar": 10,
+        "endLine": 57,
+        "endChar": 11
+      },
+      "revId": "a94257739b76e1ab7e7b2ec6c7910a631dcfcb6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cda18d80_3ba48f32",
         "filename": "common/port80.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-14T08:10:51Z",
       "side": 1,
       "message": "and 4-byte codes as well.",
+      "range": {
+        "startLine": 72,
+        "startChar": 31,
+        "endLine": 72,
+        "endChar": 32
+      },
+      "revId": "a94257739b76e1ab7e7b2ec6c7910a631dcfcb6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "878f5e9c_a89c5236",
+        "filename": "common/port80.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-14T08:39:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cda18d80_3ba48f32",
       "range": {
         "startLine": 72,
         "startChar": 31,
