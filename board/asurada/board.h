@@ -44,6 +44,7 @@
 #endif
 #define PD_POWER_SUPPLY_TURN_ON_DELAY  30000  /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
+#define CONFIG_USB_PD_DPS
 
 /* Optional console commands */
 #define CONFIG_CMD_FLASH
