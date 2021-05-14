@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "716fbb82_761cd20b",
+        "filename": "zephyr/projects/asurada/hayato/prj.conf",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-14T16:18:37Z",
+      "side": 1,
+      "message": "This option already defaults to n.  It does not need to specified here.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 42
+      },
+      "revId": "f3ea1d9eef3b1b249c28fe8c28a200e7c2af247b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
