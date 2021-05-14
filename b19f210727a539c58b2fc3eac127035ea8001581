@@ -176,6 +176,30 @@
       },
       "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9df6018d_d1919a4a",
+        "filename": "test/usb_tcpmv2_td_pd_vndi3_e3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-14T17:06:06Z",
+      "side": 1,
+      "message": "My point is if the default path changes the test should not fail just because the current path is not used, assuming the test is still valid. Verifying all of the paths is not needed and those not covered may not completely work but will give a starting point to anyone that needs to adjust for a different chromium implementation decision.\n\nI don\u0027t like to just verify the current path, at least not in tests that are very well defined on \"if x do y\" which is the case with the compliance tests. A number of the tests that I added have paths that we may never execute but the path is still valid and should pass if that choice is made some time in the future.",
+      "parentUuid": "a0de552b_b719f56a",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
