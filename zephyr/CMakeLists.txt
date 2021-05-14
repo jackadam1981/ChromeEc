@@ -38,10 +38,16 @@ if(DEFINED CONFIG_PLATFORM_EC)
   # Create a custom target that will depend on the file.
   add_custom_target(generate_ec_version DEPENDS ${ec_version_file})
 
+  set_property(GLOBAL PROPERTY GLOBAL_DEPENDS_DEBUG_MODE 1)
+
   # Create a local library (ec_version) that will be a pure interface library
   # and will depend on the custom target that generates the ec_version.h file.
   add_library(ec_version INTERFACE)
   add_dependencies(ec_version generate_ec_version)
+
+  # Ensure the EC version file is generated before trying to build the app
+  # library, which includes compiling version.c
+  add_dependencies(app ec_version)
 
   # Register the library with zephyr so that it generates the file at build
   # time. Also, append the include directory so we can include ec_version.h.
