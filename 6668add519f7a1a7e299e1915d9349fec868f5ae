@@ -16,6 +16,24 @@
       "message": "Looks like this accomplishes the same thing as CL:2895365.  Is there a preferred solution?",
       "revId": "6668add519f7a1a7e299e1915d9349fec868f5ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "baaf9cea_2d5e5b30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-05-14T16:59:09Z",
+      "side": 1,
+      "message": "We arrived at them independently around the same time. I prefer this one, because making the change in port_try_vconn_swap is more general.",
+      "parentUuid": "640f6569_bb482850",
+      "revId": "6668add519f7a1a7e299e1915d9349fec868f5ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
