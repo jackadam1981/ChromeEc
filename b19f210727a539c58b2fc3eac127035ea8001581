@@ -200,6 +200,30 @@
       },
       "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfcb8271_7e341268",
+        "filename": "test/usb_tcpmv2_td_pd_vndi3_e3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-14T17:32:08Z",
+      "side": 1,
+      "message": "We don\u0027t have a CONFIG we can compare against here. Would you suggest having the test access the svdm_rsp structure directly?",
+      "parentUuid": "9df6018d_d1919a4a",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
