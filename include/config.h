@@ -4110,6 +4110,14 @@
 #undef CONFIG_USB_PD_TCPMV2
 
 /*
+ * Enable adpative PDO selection.
+ * APS picks a power efficient voltage regarding to the battery configuration
+ * and the system loading. It monitors PIn (Power In), so VBUS/IBUS ADC
+ * should be supported on the platform.
+ */
+#undef CONFIG_USB_PD_APS
+
+/*
  * Device Types for TCPMv2.
  *
  * Exactly one must be defined when CONFIG_USB_PD_TCPMV2 is defined.
