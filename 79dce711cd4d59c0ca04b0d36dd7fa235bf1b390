@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e3e9785_f6826efa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-05-14T17:02:50Z",
+      "side": 1,
+      "message": "Although Ayushee was the first to arrive at this solution, I think I prefer to make the change in port_try_vconn_swap, as I did in CL:2895425. That makes it less likely that we\u0027ll encounter a similar issue in the future. Note that port_try_vconn_swap is also called during USB4 cable entry. The current policy is to enter USB4 from the lock screen, but if we chose to enter DP from the lock screen and then USB4 on login, I think the same issue could happen with the current patchset of this CL.",
+      "revId": "79dce711cd4d59c0ca04b0d36dd7fa235bf1b390",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
