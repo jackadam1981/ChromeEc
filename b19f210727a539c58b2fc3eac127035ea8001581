@@ -128,6 +128,30 @@
       },
       "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306d5530_f8a0d832",
+        "filename": "test/usb_tcpmv2_td_pd_vndi3_e3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-14T15:20:25Z",
+      "side": 1,
+      "message": "My theory is not to test every path but to make sure if the CONFIG_ values change and that would reflect a change in VIF that the test will continue to work as it is defined in the spec and not just for how the code currently is built.",
+      "parentUuid": "17def992_919ca3f6",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
