@@ -16,6 +16,29 @@
       "message": "The related upstream PR just merged. Please check this CL.",
       "revId": "18e48672a1eebbba8732f25b21940d95b3e06072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a03893_3b5e95b5",
+        "filename": "zephyr/projects/kohaku/boards/arm/kohaku/board.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-14T15:31:12Z",
+      "side": 1,
+      "message": "Can this be moved into zephyr/CMakeLists.txt and guarded with CONFIG_NPCX_HEADER?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 60
+      },
+      "revId": "18e48672a1eebbba8732f25b21940d95b3e06072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
