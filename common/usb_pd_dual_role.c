@@ -5,6 +5,7 @@
  * Dual Role (Source & Sink) USB-PD module.
  */
 
+#include "apdo.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "system.h"
@@ -21,6 +22,7 @@
  */
 static unsigned int max_request_mv = PD_MAX_VOLTAGE_MV;
 
+/* TODO(b:169532537): deprecate CONFIG_USB_PD_PREFER_MV */
 STATIC_IF_NOT(CONFIG_USB_PD_PREFER_MV)
 struct pd_pref_config_t __maybe_unused pd_pref_config;
 
@@ -211,7 +213,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 			uint32_t *mv, int port)
 {
 	uint32_t pdo;
-	int pdo_index, flags = 0;
+	int pdo_index = -1, flags = 0;
 	int uw;
 	int max_or_min_ma;
 	int max_or_min_mw;
@@ -223,6 +225,7 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	int charging_allowed;
 	int max_request_allowed;
 	uint32_t max_request_mv = pd_get_max_voltage();
+	uint32_t adaptive_mv = 0;
 	uint32_t unused;
 
 	/*
@@ -247,6 +250,9 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	else
 		max_request_allowed = 1;
 
+	if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+		if (apdo_is_enabled())
+			adaptive_mv = apdo_get_adaptive_voltage(port);
 	/*
 	 * If currently charging on a different port, or we are not allowed to
 	 * request the max voltage, then select vSafe5V
@@ -254,7 +260,8 @@ void pd_build_request(int32_t vpd_vdo, uint32_t *rdo, uint32_t *ma,
 	if (charging_allowed && max_request_allowed) {
 		/* find pdo index for max voltage we can request */
 		pdo_index = pd_find_pdo_index(src_cap_cnt, src_caps,
-						max_request_mv, 0, &pdo);
+					      max_request_mv,
+					      adaptive_mv, &pdo);
 	} else {
 		/* src cap 0 should be vSafe5V */
 		pdo_index = 0;
@@ -353,11 +360,17 @@ void pd_process_source_cap(int port, int cnt, uint32_t *src_caps)
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
 		uint32_t ma, mv, pdo, unused;
+		uint32_t designated_mv = 0;
+
+		if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+			if (apdo_is_enabled())
+				designated_mv =
+					apdo_get_adaptive_voltage(port);
 
 		/* Get max power info that we could request */
 		pd_find_pdo_index(pd_get_src_cap_cnt(port),
-					pd_get_src_caps(port),
-					pd_get_max_voltage(), 0, &pdo);
+				  pd_get_src_caps(port), pd_get_max_voltage(),
+				  designated_mv, &pdo);
 		pd_extract_pdo_power(pdo, &ma, &mv, &unused);
 
 		/* Set max. limit, but apply 500mA ceiling */
