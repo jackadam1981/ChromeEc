@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "apdo.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "common.h"
@@ -576,8 +577,12 @@ void pd_set_new_power_request(int port)
 {
 	if (IS_ENABLED(CONFIG_USB_PE_SM)) {
 		/* Must be in Attached.SNK when this function is called */
-		if (get_state_tc(port) == TC_ATTACHED_SNK)
+		if (get_state_tc(port) == TC_ATTACHED_SNK) {
+			if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+				/* a new request, reset the stable timer */
+				apdo_reset_stable(port);
 			pd_dpm_request(port, DPM_REQUEST_NEW_POWER_LEVEL);
+		}
 	}
 }
 
@@ -2375,6 +2380,9 @@ static void tc_attached_snk_entry(const int port)
 	enum tcpc_cc_voltage_status cc1, cc2;
 
 	print_current_state(port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+		apdo_init(port);
 
 	/*
 	 * Known state of attach is SNK.  We need to apply this pull value
