@@ -16,6 +16,74 @@
       "message": "BMA422 drive - draft version \n\nBST-Sensor API is integrated and unused code is cleaned up. \nDriver compilates and static code check is done, but its not tested. \n\nPropose to use this design for ease of integration, maintenance and also enabling other variants from this family of sensors.\n\nPl. have a look and provide your feedback\n\nThanks 😊",
       "revId": "9a3fddda22c43acd620630ee6da0a11b141f522f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8c1a058_2239171d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-14T22:54:15Z",
+      "side": 1,
+      "message": "Please switch to LF linebreaks and resubmit with the same Change-Id. ",
+      "revId": "9a3fddda22c43acd620630ee6da0a11b141f522f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80f801cf_fc3d08b2",
+        "filename": "board/ezkinil/ezkinil/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-14T22:54:15Z",
+      "side": 1,
+      "message": "Remove this file.",
+      "revId": "9a3fddda22c43acd620630ee6da0a11b141f522f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcd4170a_9c0e4232",
+        "filename": "board/ezkinil/ezkinil/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-14T22:54:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure why this file got duplicated, looks like a git typo.",
+      "revId": "9a3fddda22c43acd620630ee6da0a11b141f522f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fb3f8d8_1c3537ff",
+        "filename": "driver/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-14T22:54:15Z",
+      "side": 1,
+      "message": "It looks like this file is using CRLF line breaks. Please use LF line breaks and resubmit.",
+      "revId": "9a3fddda22c43acd620630ee6da0a11b141f522f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
