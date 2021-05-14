@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02494442_f9dd01dc",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-14T16:36:36Z",
+      "side": 1,
+      "message": "This depends on PLATFORM_EC_KEYBOARD_PROTOCOL_MKBP or PLATFORM_EC_MKBP_INPUT_DEVICES.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 29
+      },
+      "revId": "283a434c967ffc34950ef98bcd8147ba15222355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e47a0a49_33f89771",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-14T16:36:36Z",
+      "side": 1,
+      "message": "Expand this help text here.  Maybe mention that the tablet mode switch state is reported to the AP through the MKBP protocol.",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 69
+      },
+      "revId": "283a434c967ffc34950ef98bcd8147ba15222355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59de355b_9bf208c1",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-14T16:36:36Z",
+      "side": 1,
+      "message": "Nit - move this to a separate CL for a cleaner change history.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "283a434c967ffc34950ef98bcd8147ba15222355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
