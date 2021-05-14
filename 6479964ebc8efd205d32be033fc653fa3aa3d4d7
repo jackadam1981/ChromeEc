@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de735eea_6a667f39",
+        "filename": "zephyr/drivers/cros_kb_raw/Kconfig",
+        "patchSetId": 8
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-05-14T07:59:14Z",
+      "side": 1,
+      "message": "modify this, or running hook scripts cros_license_check() will be failed.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 3
+      },
+      "revId": "6479964ebc8efd205d32be033fc653fa3aa3d4d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

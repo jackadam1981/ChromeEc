@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15f08a8f_6050fc31",
+        "filename": "zephyr/projects/asurada/hayato/include/gpio_map.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-05-14T07:59:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7159a2f0_d51d6cdd",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "8524e5909ca05f22381006d2275f060ba82e9e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e54763b_f918ed1a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-13T15:25:44Z",
       "side": 1,
       "message": "Put the lid switch support into a separate CL.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "8524e5909ca05f22381006d2275f060ba82e9e45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06b3f4c_32397a95",
+        "filename": "zephyr/projects/asurada/hayato/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-05-14T07:59:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e54763b_f918ed1a",
       "range": {
         "startLine": 19,
         "startChar": 0,
