@@ -151,6 +151,30 @@
       },
       "revId": "ce38fd0206ba115549bfae303a0f37bdd9746972",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63743140_ae1e9e99",
+        "filename": "zephyr/shim/chip/it8xxx2/keyboard_raw.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-14T15:58:37Z",
+      "side": 1,
+      "message": "The clock_control.h and npcx_clock.h headers are not needed by the Nuvoton keyboard_raw.c file and can be deleted.\n\nsoc_gpio.h is included to get the reference to npcx_get_gpio_dev().  You could leave keyboard_raw_is_input_low() in the chip specific file, and move everything else to zephyr/shim/src/keyboard_raw.c.\n\nPlease create zephyr/shim/src/keyboard_raw.c as parent CL to this change.",
+      "parentUuid": "ad570405_0ffd5938",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "ce38fd0206ba115549bfae303a0f37bdd9746972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
