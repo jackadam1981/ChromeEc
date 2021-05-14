@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2661716a_d55916a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-05-14T07:54:40Z",
+      "side": 1,
+      "message": "Done, after cherry-pick from upstream/master to m/main, I will add the CL nubmer.",
+      "parentUuid": "70a04d1d_eb747e8d",
+      "revId": "ce95d0e30638bed52e4a9df07a0bbdf2f1114e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc4e34a3_2a2a3e05",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-05-13T15:22:32Z",
       "side": 1,
       "message": "Nit - use the MHZ() macro.",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "ce95d0e30638bed52e4a9df07a0bbdf2f1114e71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02bc3412_9ebb65c8",
+        "filename": "zephyr/shim/chip/it8xxx2/clock.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-05-14T07:54:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc4e34a3_2a2a3e05",
       "range": {
         "startLine": 24,
         "startChar": 0,
