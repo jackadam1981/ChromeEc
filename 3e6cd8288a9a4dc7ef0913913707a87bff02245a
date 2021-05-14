@@ -176,6 +176,30 @@
       },
       "revId": "3e6cd8288a9a4dc7ef0913913707a87bff02245a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "479627d9_1d90bf47",
+        "filename": "board/storo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-14T03:12:42Z",
+      "side": 1,
+      "message": "I was misreading the signal name. Sorry about the noise.",
+      "parentUuid": "9886599e_6c93c851",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 39
+      },
+      "revId": "3e6cd8288a9a4dc7ef0913913707a87bff02245a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
