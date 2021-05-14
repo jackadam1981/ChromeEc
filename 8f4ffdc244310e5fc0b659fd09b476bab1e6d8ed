@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35ebc8f4_e51dc42a",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-14T17:20:55Z",
+      "side": 1,
+      "message": "I think you can add, and then the board files don\u0027t need to always disable the Zephyr ADC shell command.  This needs to be inside the if block.\n\n# Chromium EC provides it\u0027s own \"adc\" command.  Disable the Zephyr\n# built-in ADC shell command.\nconfig ADC_SHELL\n    default n",
+      "revId": "8f4ffdc244310e5fc0b659fd09b476bab1e6d8ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
