@@ -31,6 +31,7 @@
 #endif
 
 /* PD / USB-C / PPC */
+#define CONFIG_USB_PD_ADAPTIVE_PDO
 
 /* Optional console commands */
 #define CONFIG_CMD_FLASH
