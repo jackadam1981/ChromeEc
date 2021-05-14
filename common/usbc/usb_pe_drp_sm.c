@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "apdo.h"
 #include "atomic.h"
 #include "battery.h"
 #include "battery_smart.h"
@@ -3511,6 +3512,10 @@ static void pe_snk_ready_run(int port)
 		dpm_run(port);
 
 	}
+
+	if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+		if (apdo_has_new_power_request(port))
+			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
 }
 
 /**
@@ -3523,6 +3528,9 @@ static void pe_snk_hard_reset_entry(int port)
 #endif
 
 	print_current_state(port);
+
+	if (IS_ENABLED(CONFIG_USB_PD_ADAPTIVE_PDO))
+		apdo_init(port);
 
 	/*
 	 * Note: If the SinkWaitCapTimer times out and the HardResetCounter is

@@ -5,6 +5,7 @@
  * Battery charging task and state machine.
  */
 
+#include "apdo.h"
 #include "battery.h"
 #include "battery_smart.h"
 #include "charge_manager.h"
