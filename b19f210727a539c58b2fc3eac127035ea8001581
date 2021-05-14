@@ -152,6 +152,30 @@
       },
       "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0de552b_b719f56a",
+        "filename": "test/usb_tcpmv2_td_pd_vndi3_e3.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-14T16:28:09Z",
+      "side": 1,
+      "message": "I believe we\u0027re currently using the default svdm_rsp in usb_pd_alt_mode_dfp.c, so we\u0027re coded to verify that default path here.  \n\nIf we wanted to verify any of these fields, we\u0027d need a way to mock out this data structure to actually reply to the VDMs, and then either have the test cheat and use that structure to verify fields or have the test consume some kind of VIF that matches the mock.",
+      "parentUuid": "306d5530_f8a0d832",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 0
+      },
+      "revId": "b19f210727a539c58b2fc3eac127035ea8001581",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
