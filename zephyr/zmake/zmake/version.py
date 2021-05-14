@@ -3,11 +3,12 @@
 # found in the LICENSE file.
 
 import subprocess
+import os
 
 import zmake.util as util
 
 
-def _get_num_commits(repo):
+def _get_num_commits(repo, vcsid):
     """Get the number of commits that have been made in a Git repository.
 
     Args:
@@ -16,13 +17,19 @@ def _get_num_commits(repo):
     Returns:
         An integer, the number of commits that have been made.
     """
-    result = subprocess.run(['git', '-C', repo, 'rev-list', 'HEAD', '--count'],
-                            check=True, stdout=subprocess.PIPE,
-                            encoding='utf-8')
-    return int(result.stdout)
+    try:
+        FNULL = open(os.devnull, 'w')
+        result = subprocess.run(['git', '-C', repo, 'rev-list', 'HEAD', '--count'],
+                                check=True, stdout=subprocess.PIPE, stderr=FNULL,
+                                encoding='utf-8')
+        commits = result.stdout
+    except:
+        commits, hash = vcsid.split('-')
+
+    return int(commits)
 
 
-def _get_revision(repo):
+def _get_revision(repo, vcsid):
     """Get the index's current revision of a Git repo.
 
     Args:
@@ -31,10 +38,16 @@ def _get_revision(repo):
     Returns:
         A string, of the current revision.
     """
-    result = subprocess.run(['git', '-C', repo, 'log', '-n1', '--format=%H'],
-                            check=True, stdout=subprocess.PIPE,
-                            encoding='utf-8')
-    return result.stdout
+    try:
+        FNULL = open(os.devnull, 'w')
+        result = subprocess.run(['git', '-C', repo, 'log', '-n1', '--format=%H'],
+                                check=True, stdout=subprocess.PIPE, stderr=FNULL,
+                                encoding='utf-8')
+        hash = result.stdout
+    except:
+        commits, hash = vcsid.split('-')
+
+    return hash
 
 
 def get_version_string(project, zephyr_base, modules, static=False):
@@ -56,6 +69,12 @@ def get_version_string(project, zephyr_base, modules, static=False):
     project_id = project.project_dir.parts[-1]
     num_commits = 0
 
+    # Fall back the VCSID provided by the packaging system,
+    try:
+        vcsid = os.environ['VCSID']
+    except:
+        vcsid = "9999-unknown"
+
     if static:
         vcs_hashes = 'STATIC'
     else:
@@ -65,10 +84,10 @@ def get_version_string(project, zephyr_base, modules, static=False):
         }
 
         for repo in repos.values():
-            num_commits += _get_num_commits(repo)
+            num_commits += _get_num_commits(repo, vcsid)
 
         vcs_hashes = ','.join(
-            '{}:{}'.format(name, _get_revision(repo)[:6])
+            '{}:{}'.format(name, _get_revision(repo, vcsid)[:6])
             for name, repo in sorted(repos.items()))
 
     return '{}_v{}.{}.{}-{}'.format(
