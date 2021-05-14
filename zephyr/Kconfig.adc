@@ -6,11 +6,17 @@ menuconfig PLATFORM_EC_ADC
 	bool "ADC shim"
 	default n if ARCH_POSIX
 	default y
+	imply ADC
 	help
 	  Enable compilation of the EC ADC module. Once enabled, it is
 	  possible to call platform/ec adc_read_channel() function.
 
 if PLATFORM_EC_ADC
+
+# Chromium EC provides it's own "adc" command.  Disable the Zephyr
+# built-in ADC shell command.
+config ADC_SHELL
+	default n
 
 config PLATFORM_EC_ADC_CMD
 	bool "ADC host/console command"
