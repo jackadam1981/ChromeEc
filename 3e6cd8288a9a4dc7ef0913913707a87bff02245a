@@ -152,6 +152,30 @@
       },
       "revId": "3e6cd8288a9a4dc7ef0913913707a87bff02245a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9886599e_6c93c851",
+        "filename": "board/storo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-05-14T01:26:03Z",
+      "side": 1,
+      "message": "yes, not all book has the stylus, so we need  enable the charge power according to the situation, \nHi Daisuke ，Do you have any better way to deal with it, I can verify it here， thanks",
+      "parentUuid": "44045489_f0519583",
+      "range": {
+        "startLine": 272,
+        "startChar": 1,
+        "endLine": 272,
+        "endChar": 39
+      },
+      "revId": "3e6cd8288a9a4dc7ef0913913707a87bff02245a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
