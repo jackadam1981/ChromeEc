@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "639d02ae_5ec3dda1",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-05-14T09:01:00Z",
+      "side": 1,
+      "message": "From BC1.2 spec:\nData Contact Detect (DCD) uses a current source, IDP_SRC, to detect when the data pins have made contact\nduring an attach event. A PD is not required to implement DCD. If a PD does not implement DCD, then it\nshall wait a time of TDCD_TIMEOUT(0.3 to 0.9 sec) min after the attach event before starting Primary Detection.",
+      "parentUuid": "2dc7828b_2855a5d1",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 43
+      },
+      "revId": "2bad831613364b0320118ff768e8ae062fa52303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31ce069e_4514bebf",
         "filename": "driver/tcpm/rt1718s.c",
         "patchSetId": 10
