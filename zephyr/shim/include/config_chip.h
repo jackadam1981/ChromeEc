@@ -887,6 +887,19 @@
 #define CONFIG_USB_PD_ALT_MODE_UFP
 #endif
 
+<<<<<<< HEAD   (929fee mt6360: Don't clear negative number supplier's charge port i)
+=======
+#undef CONFIG_USB_PD_DPS
+#ifdef CONFIG_PLATFORM_EC_USB_PD_DPS
+#define CONFIG_USB_PD_DPS
+#endif
+
+#undef CONFIG_DP_REDRIVER_TDP142
+#ifdef CONFIG_PLATFORM_EC_DP_REDRIVER_TDP142
+#define CONFIG_DP_REDRIVER_TDP142
+#endif
+
+>>>>>>> CHANGE (61bbfc usbpd: support dynamic PDO selection)
 #undef CONFIG_USBC_RETIMER_FW_UPDATE
 #ifdef CONFIG_PLATFORM_EC_USBC_RETIMER_FW_UPDATE
 #define CONFIG_USBC_RETIMER_FW_UPDATE
