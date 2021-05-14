@@ -66,6 +66,14 @@
 			i2c-port = <&i2c0_0>;
 			enum-name = "I2C_PORT_ACCEL";
 			label = "ACCEL";
+			config {
+				scl {
+					enum-name = "GPIO_EC_I2C0_SENSOR_SCL";
+				};
+				sda {
+					enum-name = "GPIO_EC_I2C0_SENSOR_SDA";
+				};
+			};
 		};
 		usb-c0 {
 			i2c-port = <&i2c1_0>;
@@ -123,6 +131,14 @@
 			i2c-port = <&i2c5_0>;
 			enum-name = "I2C_PORT_BATTERY";
 			label = "BATTERY";
+			config {
+				scl {
+					enum-name = "GPIO_EC_I2C5_BATTERY_SCL";
+				};
+				sda {
+					enum-name = "GPIO_EC_I2C5_BATTERY_SDA";
+				};
+			};
 		};
 		eeprom {
 			i2c-port = <&i2c7_0>;
@@ -141,6 +157,14 @@
 			i2c-port = <&i2c7_0>;
 			enum-name = "I2C_PORT_CHARGER";
 			label = "CHARGER";
+			config {
+				scl {
+					enum-name = "GPIO_EC_I2C7_EEPROM_PWR_SCL_R";
+				};
+				sda {
+					enum-name = "GPIO_EC_I2C7_EEPROM_PWR_SDA_R";
+				};
+			};
 		};
 	};
 
