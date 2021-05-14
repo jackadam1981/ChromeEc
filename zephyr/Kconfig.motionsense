@@ -124,6 +124,11 @@ config PLATFORM_EC_TABLET_MODE
 
 if PLATFORM_EC_TABLET_MODE
 
+config PLATFORM_EC_TABLET_MODE_SWITCH
+    bool "Tablet Mode Switch"
+    help
+      Enable a virtual switch to indicate when we are in tablet mode.
+
 config PLATFORM_EC_GMR_TABLET_MODE
     bool "Giant Magnetoresistance(GMR) Tablet Mode"
     help
