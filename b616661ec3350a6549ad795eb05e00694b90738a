@@ -33,6 +33,24 @@
       "message": "I\u0027m not sure we want to simply apply the same parameters to SOC and CPU sensors. Discussion in bug.",
       "revId": "b616661ec3350a6549ad795eb05e00694b90738a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feab93ed_53fba2dd",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2021-05-15T15:52:25Z",
+      "side": 1,
+      "message": "The fan table is only the initial setting. If there is test data, it will be updated. Refer b/187236086#comment7.",
+      "parentUuid": "56006d37_604e031d",
+      "revId": "b616661ec3350a6549ad795eb05e00694b90738a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
