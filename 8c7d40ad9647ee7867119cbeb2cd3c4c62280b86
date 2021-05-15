@@ -16,6 +16,29 @@
       "message": "Ping",
       "revId": "8c7d40ad9647ee7867119cbeb2cd3c4c62280b86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "586327b6_38c09589",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-15T00:51:05Z",
+      "side": 1,
+      "message": "nit: It\u0027s ok to be long for includes. qualcomm.h.",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "8c7d40ad9647ee7867119cbeb2cd3c4c62280b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
