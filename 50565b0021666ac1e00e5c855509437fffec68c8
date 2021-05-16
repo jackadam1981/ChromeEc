@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f206037_4eea5ce4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-16T19:25:45Z",
+      "side": 1,
+      "message": "This is actually new behavior that has not been made official in ROs. See https://crrev.com/c/2657778/6/board/nocturne_fp/board.c .\n\nThat being said. If you test a custom FW on a device, the RO of the custom FW will be different than the RO functionality of production images.\n\n---\n\nI am now starting to realize that this new RO sleep functionality needs to be reverted, since it does indeed impact the SPI follower (inclusive language) behavior.",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "50565b0021666ac1e00e5c855509437fffec68c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5b2f79e4_8058bbd5",
@@ -14,6 +37,46 @@
       "writtenOn": "2021-05-13T08:06:34Z",
       "side": 1,
       "message": "Tested on Icetower and Voxel.",
+      "revId": "50565b0021666ac1e00e5c855509437fffec68c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68354afe_670e484b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-16T19:25:45Z",
+      "side": 1,
+      "message": "Can you do a mirror change for bloonchipper too?",
+      "revId": "50565b0021666ac1e00e5c855509437fffec68c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcaab798_1c185295",
+        "filename": "board/nocturne_fp/board_rw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-16T19:25:45Z",
+      "side": 1,
+      "message": "This seems fine, since board_init_rw is already being called from the hook/deferred context. This simply streamlines the eventual call to this routine.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 15
+      },
       "revId": "50565b0021666ac1e00e5c855509437fffec68c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
