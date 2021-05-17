@@ -16,6 +16,24 @@
       "message": "We might want to hold this patch until we\u0027re actually sure the spi flash buffer works on our device, otherwise we\u0027ll be stuck without being able to program the spi flash.",
       "revId": "f398cd9fe43f478c5f860897ebb90467016ec395",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa6804c4_d2ba7feb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-17T22:29:41Z",
+      "side": 1,
+      "message": "The next CL addresses this problem. A new config is added as a temporary workaround.",
+      "parentUuid": "c928377b_b12a88af",
+      "revId": "f398cd9fe43f478c5f860897ebb90467016ec395",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
