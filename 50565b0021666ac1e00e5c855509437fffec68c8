@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "587fa5f7_8da530e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-17T17:59:23Z",
+      "side": 1,
+      "message": "\u003e Yup. I used part of this script to prepare FPMCU firmware with true RO version\n\nAwesome.\n\n\u003e Oh, this was just an example what kind of bugs can hide in RO firmware. Definitely not related to this topic.\n\nAhh gotcha. Yeah, we really need to improve automated fw testing in general. Robust contributions very welcome.",
+      "parentUuid": "be5d1896_8c6f9e8b",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "50565b0021666ac1e00e5c855509437fffec68c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5b2f79e4_8058bbd5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
