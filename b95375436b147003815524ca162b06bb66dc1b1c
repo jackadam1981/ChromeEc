@@ -16,6 +16,24 @@
       "message": "According to the HW spec (https://chromeos.google.com/partner/dlm/docs/latest-requirements/convertible.html#usb-type-c-ports-acting-as-a-power-sink):\n\nUSB-C ports should support any input voltage between 5V-20V.",
       "revId": "b95375436b147003815524ca162b06bb66dc1b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ae11b28_fff1f667",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-05-17T10:41:30Z",
+      "side": 1,
+      "message": "On devices that will never consume more than 45W, USB-C ports may be limited to input voltages between 5V-15V. USB-C power adapters designed to meet the original voltage profiles may not support 15V, so supporting the full 5-20V range is recommended.\n\nAre we \"never consume more than 45W\"?",
+      "parentUuid": "dd16a8da_0d62700d",
+      "revId": "b95375436b147003815524ca162b06bb66dc1b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
