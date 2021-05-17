@@ -22,6 +22,47 @@
       },
       "revId": "a933ec04a766328867d698326ca40263f8adcebf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd1d2783_f15a077d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-05-17T20:35:33Z",
+      "side": 1,
+      "message": "It worked like you said.",
+      "parentUuid": "74071c0d_09ceec17",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 21
+      },
+      "revId": "a933ec04a766328867d698326ca40263f8adcebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "295fcbbc_ecdb64bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-05-17T20:35:33Z",
+      "side": 1,
+      "message": "Tested on Dratini",
+      "revId": "a933ec04a766328867d698326ca40263f8adcebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
