@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd16a8da_0d62700d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-05-17T10:40:13Z",
+      "side": 1,
+      "message": "According to the HW spec (https://chromeos.google.com/partner/dlm/docs/latest-requirements/convertible.html#usb-type-c-ports-acting-as-a-power-sink):\n\nUSB-C ports should support any input voltage between 5V-20V.",
+      "revId": "b95375436b147003815524ca162b06bb66dc1b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
