@@ -68,6 +68,24 @@
       "parentUuid": "ef630c12_9b9678a9",
       "revId": "9c67cd542003621debd17a73dd0a91dc717bc6c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a154b2a5_2d6834d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-05-17T15:51:26Z",
+      "side": 1,
+      "message": "I added the formula version to the spreadsheet that I shared with you.\n\nWhen I calculated these, I used a resistance lookup table by a thermistor manufacture since the B values isn\u0027t constant through the entire range.\n\nFor example search for \"B473\" in https://www.murata.com/~/media/webrenewal/support/library/catalog/products/thermistor/ntc/r44e.ashx\n\nand you will find a resistance lookup table for a few different B4050 47K thermistors. The table data in this datasheet is closer to the values in the original table based calculations than the formula based data (using a constant B).\n\nI am not convinced we should update these tables",
+      "parentUuid": "326a46fc_6ce097bf",
+      "revId": "9c67cd542003621debd17a73dd0a91dc717bc6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
