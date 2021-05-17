@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b63c855_24a9ce3a",
+        "filename": "include/power/qcom.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-05-17T16:17:11Z",
+      "side": 1,
+      "message": "nit: SC7X80_WARM_RESET and SC7X80_DEPRECATED_AP_RST_REQ can probably stay as SC7180 to show even more of the deprecation.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "5846f3058268035d8c953ca71ca772f392e9bec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
