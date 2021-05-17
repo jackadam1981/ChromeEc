@@ -50,6 +50,24 @@
       "message": "Where are you getting your data and calculations from?",
       "revId": "9c67cd542003621debd17a73dd0a91dc717bc6c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "326a46fc_6ce097bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-05-17T11:57:51Z",
+      "side": 1,
+      "message": "I have used formula R1 \u003d R0*exp(B * (1/T1 - 1/T0) to get resistance of thermistor at temperature T1. T0 is given 25 *C \u003d 298,15 K, B and R0 are given in thermistor specification.\n\nNext I computed Vout from voltage divider using formula Vout \u003d (Vdd * R1)/(R + R1) where Vdd and R are given for thermistor and R1 are resistances at different temperatures which I computed in first step.\n\nFormula from first step comes from https://en.wikipedia.org/wiki/Thermistor#B_or_%CE%B2_parameter_equation",
+      "parentUuid": "ef630c12_9b9678a9",
+      "revId": "9c67cd542003621debd17a73dd0a91dc717bc6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
