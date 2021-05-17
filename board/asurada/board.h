@@ -32,6 +32,21 @@
 #endif
 
 /* PD / USB-C / PPC */
+<<<<<<< HEAD   (52f6fd chip/mt8192_scp: disalbe video hardware 4k capability)
+=======
+#define CONFIG_USB_PD_DEBUG_LEVEL 3
+#define PD_MAX_CURRENT_MA 3000
+#define PD_OPERATING_POWER_MW 15000
+#ifdef BOARD_HAYATO
+#define PD_MAX_VOLTAGE_MV 15000
+#define PD_MAX_POWER_MW 45000
+#else
+#define PD_MAX_VOLTAGE_MV 20000
+#define PD_MAX_POWER_MW 60000
+#endif
+#define PD_POWER_SUPPLY_TURN_ON_DELAY  30000  /* us */
+#define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
+>>>>>>> CHANGE (40c930 hayato: Modity PDO setting.)
 
 /* Optional console commands */
 #define CONFIG_CMD_FLASH
