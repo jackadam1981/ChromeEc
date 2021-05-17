@@ -30,6 +30,8 @@
 
 #include "anprintf.h"
 
+typedef unsigned __poll_t;
+
 /* Minimum i2cp_limit module parameter value. */
 #define I2CP_ADAPTERS_MIN	0
 /* Maximum i2cp_limit module parameter value. */
