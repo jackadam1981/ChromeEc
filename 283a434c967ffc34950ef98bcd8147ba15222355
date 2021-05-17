@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcac84b_4475baeb",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-05-17T09:07:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02494442_f9dd01dc",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 29
+      },
+      "revId": "283a434c967ffc34950ef98bcd8147ba15222355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e47a0a49_33f89771",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "25edb56c_6002a65a",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-05-17T09:07:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e47a0a49_33f89771",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 69
+      },
+      "revId": "283a434c967ffc34950ef98bcd8147ba15222355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59de355b_9bf208c1",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-05-14T16:36:36Z",
       "side": 1,
       "message": "Nit - move this to a separate CL for a cleaner change history.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 37
+      },
+      "revId": "283a434c967ffc34950ef98bcd8147ba15222355",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c0d8488_6e8b69d6",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-05-17T09:07:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59de355b_9bf208c1",
       "range": {
         "startLine": 137,
         "startChar": 0,
