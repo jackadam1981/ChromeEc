@@ -22,6 +22,30 @@
       },
       "revId": "5846f3058268035d8c953ca71ca772f392e9bec1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc6738a_0a4a7952",
+        "filename": "include/power/qcom.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-17T17:42:05Z",
+      "side": 1,
+      "message": "It\u0027d like to make them SC7X80_ for consistency. The #ifdef guard is enough to deprecate them.",
+      "parentUuid": "6b63c855_24a9ce3a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 19
+      },
+      "revId": "5846f3058268035d8c953ca71ca772f392e9bec1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
