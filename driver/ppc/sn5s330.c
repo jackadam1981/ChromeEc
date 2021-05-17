@@ -653,6 +653,9 @@ static void sn5s330_handle_interrupt(int port)
 	{
 		int rise = 0;
 		int fall = 0;
+#ifdef CONFIG_USBC_PPC_SBU
+		int regval = 0;
+#endif
 
 		attempt++;
 
@@ -684,6 +687,15 @@ static void sn5s330_handle_interrupt(int port)
 		/* Notify the system about the CC overvoltage event. */
 		if (rise & SN5S330_CC1_CON || rise & SN5S330_CC2_CON) {
 			ppc_prints("CC OV!", port);
+#ifdef CONFIG_USBC_PPC_SBU
+			read_reg(port, SN5S330_INT_STATUS_REG3,
+					&regval);
+			if (regval & SN5S330_VBUS_GOOD) {
+				sn5s330_set_sbu(port, 1);
+				sn5s330_pp_fet_enable(port,
+						SN5S330_PP2, 1);
+			}
+#endif
 			pd_handle_cc_overvoltage(port);
 		}
 
