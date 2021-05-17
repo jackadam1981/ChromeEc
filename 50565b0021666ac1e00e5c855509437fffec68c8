@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d61b27_f080cc11",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-05-17T09:58:47Z",
+      "side": 1,
+      "message": "I think that we should be more careful and test changes like this in the same environment as it would run in production.\n\nDigression, not related to topic. I found issue on nocturne - there was problem with booting from recovery (when pendrive was connected via ServoV4) it was a problem with TCPMv1 stack. Finally we implemented workaround in FAFT tests for this. How this passed qualification tests? I don\u0027t know.",
+      "parentUuid": "3f206037_4eea5ce4",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "50565b0021666ac1e00e5c855509437fffec68c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5b2f79e4_8058bbd5",
@@ -75,6 +99,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb7c2c93_57353279",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-05-17T09:58:47Z",
+      "side": 1,
+      "message": "Yup. See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2900222",
+      "parentUuid": "68354afe_670e484b",
+      "revId": "50565b0021666ac1e00e5c855509437fffec68c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a877eb_dbfebd3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-05-17T09:58:47Z",
+      "side": 1,
+      "message": "Yes, checked on CoachZ SKU1",
+      "parentUuid": "f83d9135_1ac1a9ce",
+      "revId": "50565b0021666ac1e00e5c855509437fffec68c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcaab798_1c185295",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-05-16T19:25:45Z",
       "side": 1,
       "message": "This seems fine, since board_init_rw is already being called from the hook/deferred context. This simply streamlines the eventual call to this routine.",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 15
+      },
+      "revId": "50565b0021666ac1e00e5c855509437fffec68c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae6e7b1_a11db9cb",
+        "filename": "board/nocturne_fp/board_rw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-05-17T09:58:47Z",
+      "side": 1,
+      "message": "Yup! This is how it works 😊",
+      "parentUuid": "fcaab798_1c185295",
       "range": {
         "startLine": 105,
         "startChar": 1,
