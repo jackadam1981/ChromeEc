@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74071c0d_09ceec17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-17T16:47:47Z",
+      "side": 1,
+      "message": "I know you tested this for dartmonkey, but can you do some on device testing for bloonchipper?\n\n\n```\ncrosfleet dut lease -dims label-fingerprint\u003dTrue,label-servo_state\u003dWORKING -minutes 120 -exit-early -model dratini\n\ncrosfleet dut leases -full\n```\n\nShould be able to get you a bloonchipper device.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 21
+      },
+      "revId": "a933ec04a766328867d698326ca40263f8adcebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
