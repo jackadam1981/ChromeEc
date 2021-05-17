@@ -39,6 +39,30 @@
       },
       "revId": "18e48672a1eebbba8732f25b21940d95b3e06072",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6f332a5_a7726710",
+        "filename": "zephyr/projects/kohaku/boards/arm/kohaku/board.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-05-17T08:54:35Z",
+      "side": 1,
+      "message": "It does not work because the invoked time of zephyr/CMakeLists.txt is after the setting ecst extra_post_build_commands. The command can\u0027t see the ${NPCX_IMAGE_FILE} definition if this moves to zephyr/CMakeLists.txt.",
+      "parentUuid": "74a03893_3b5e95b5",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 60
+      },
+      "revId": "18e48672a1eebbba8732f25b21940d95b3e06072",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
