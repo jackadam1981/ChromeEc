@@ -39,6 +39,30 @@
       },
       "revId": "3435f93359b7d9d9832f8ea766a4981133dfb7ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8edde2ea_762b9128",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-17T18:54:03Z",
+      "side": 1,
+      "message": "The zephyr adc shell only currently works with a single channel. I created a bug to investigate moving to the upstream adc shell but leaving it with the current CrOS adc command for the time being.",
+      "parentUuid": "a22bd20a_b5036c04",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 10
+      },
+      "revId": "3435f93359b7d9d9832f8ea766a4981133dfb7ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
