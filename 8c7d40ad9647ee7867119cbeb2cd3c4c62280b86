@@ -39,6 +39,30 @@
       },
       "revId": "8c7d40ad9647ee7867119cbeb2cd3c4c62280b86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eaad507_559c4916",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-17T16:12:14Z",
+      "side": 1,
+      "message": "\"qcom\" is a well-known short form of \"qualcomm\". The term has been used frequently in the Linux kernel and the coreboot repos.",
+      "parentUuid": "586327b6_38c09589",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "8c7d40ad9647ee7867119cbeb2cd3c4c62280b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
