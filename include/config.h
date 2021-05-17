@@ -1275,6 +1275,15 @@
 /* Shared chipset support; automatically gets defined below. */
 #undef CONFIG_CHIPSET_APL_GLK		/* Apollolake & Geminilake */
 
+/*
+ * A temporary CONFIG which enables the WARM_RESET handling in the SC7280 power
+ * sequence. It is needed when use the old Trogdor IO board to bringup the new
+ * chipset.
+ *
+ * TODO(b/187098628): Remove the CONFIG when we have the Herobrine IO board.
+ */
+#undef CONFIG_CHIPSET_SC7280_WARM_RESET_WORKAROUND
+
 /* Support chipset throttling */
 #undef CONFIG_CHIPSET_CAN_THROTTLE
 

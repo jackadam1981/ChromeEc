@@ -59,18 +59,21 @@ const struct power_signal_info power_signal_list[] = {
 		POWER_SIGNAL_ACTIVE_HIGH,
 		"AP_SUSPEND",
 	},
-#ifdef CONFIG_CHIPSET_SC7180
+#if defined(CONFIG_CHIPSET_SC7180) || \
+	defined(CONFIG_CHIPSET_SC7280_WARM_RESET_WORKAROUND)
 	[SC7X80_WARM_RESET] = {
 		GPIO_WARM_RESET_L,
 		POWER_SIGNAL_ACTIVE_HIGH,
 		"WARM_RESET_L",
 	},
+#endif
+#ifdef CONFIG_CHIPSET_SC7180
 	[SC7X80_DEPRECATED_AP_RST_REQ] = {
 		GPIO_DEPRECATED_AP_RST_REQ,
 		POWER_SIGNAL_ACTIVE_HIGH,
 		"DEPRECATED_AP_RST_REQ",
 	},
-#endif /* defined(CONFIG_CHIPSET_SC7180) */
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
@@ -254,7 +257,8 @@ static void request_cold_reset(void)
 	task_wake(TASK_ID_CHIPSET);
 }
 
-#ifdef CONFIG_CHIPSET_SC7180
+#if defined(CONFIG_CHIPSET_SC7180) || \
+	defined(CONFIG_CHIPSET_SC7280_WARM_RESET_WORKAROUND)
 
 /* 1 if AP_RST_L and PS_HOLD is overdriven by EC */
 static char ap_rst_overdriven;
@@ -319,7 +323,7 @@ void chipset_power_good_interrupt(enum gpio_signal signal)
 	}
 	power_signal_interrupt(signal);
 }
-#endif /* defined(CONFIG_CHIPSET_SC7180) */
+#endif /* CONFIG_CHIPSET_SC7180||CONFIG_CHIPSET_SC7280_WARM_RESET_WORKAROUND */
 
 static void sc7x80_lid_event(void)
 {
@@ -541,7 +545,8 @@ enum power_state power_chipset_init(void)
 	uint32_t reset_flags = system_get_reset_flags();
 
 	/* Enable interrupts */
-	if (IS_ENABLED(CONFIG_CHIPSET_SC7180)) {
+	if (IS_ENABLED(CONFIG_CHIPSET_SC7180) ||
+	    IS_ENABLED(CONFIG_CHIPSET_SC7280_WARM_RESET_WORKAROUND)) {
 		gpio_enable_interrupt(GPIO_WARM_RESET_L);
 		gpio_enable_interrupt(GPIO_POWER_GOOD);
 	}
