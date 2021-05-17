@@ -6,7 +6,7 @@ if PLATFORM_EC_FLASH_CROS
 
 config PLATFORM_EC_SPI_FLASH_REGS
 	bool "Enable SPI flash registers"
-	default y
+	default y if SOC_FAMILY_NPCX
 	help
 	  Enables flash registers for SPI flash (both internal and external).
 	  When enabled, two new functions will become available: (1) a function
