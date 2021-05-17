@@ -86,6 +86,24 @@
       "parentUuid": "326a46fc_6ce097bf",
       "revId": "9c67cd542003621debd17a73dd0a91dc717bc6c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "666844f3_ef123b69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-05-17T17:31:33Z",
+      "side": 1,
+      "message": "I agree with you that it is better to use data based on manufacturer\u0027s resistance lookup table. I will update thermistor unit test to also use this lookup table instead of formula.",
+      "parentUuid": "a154b2a5_2d6834d0",
+      "revId": "9c67cd542003621debd17a73dd0a91dc717bc6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
