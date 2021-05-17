@@ -31,6 +31,12 @@
 #endif
 
 /* PD / USB-C / PPC */
+#ifdef BOARD_HAYATO
+#undef PD_MAX_VOLTAGE_MV
+#undef PD_MAX_POWER_MW
+#define PD_MAX_VOLTAGE_MV 15000
+#define PD_MAX_POWER_MW 45000
+#endif
 
 /* Optional console commands */
 #define CONFIG_CMD_FLASH
