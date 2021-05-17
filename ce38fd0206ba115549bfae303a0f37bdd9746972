@@ -175,6 +175,30 @@
       },
       "revId": "ce38fd0206ba115549bfae303a0f37bdd9746972",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81c501f8_7bdadb9c",
+        "filename": "zephyr/shim/chip/it8xxx2/keyboard_raw.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-05-17T09:29:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63743140_ae1e9e99",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "ce38fd0206ba115549bfae303a0f37bdd9746972",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
