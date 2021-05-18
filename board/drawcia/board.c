@@ -579,6 +579,7 @@ int board_set_active_charge_port(int port)
 		if (board_get_charger_chip_count() > 1)
 			sm5803_vbus_sink_enable(CHARGER_SECONDARY, 0);
 
+		board_vbus_present_change();
 		return EC_SUCCESS;
 	}
 
@@ -597,6 +598,7 @@ int board_set_active_charge_port(int port)
 		sm5803_vbus_sink_enable(CHARGER_SECONDARY, 1);
 	}
 
+	board_vbus_present_change();
 	return EC_SUCCESS;
 }
 

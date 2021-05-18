@@ -397,6 +397,7 @@ int board_set_active_charge_port(int port)
 			raa489000_enable_asgate(i, false);
 		}
 
+		board_vbus_present_change();
 		return EC_SUCCESS;
 	}
 
@@ -439,6 +440,7 @@ int board_set_active_charge_port(int port)
 	/* Allow the charger IC to begin/continue switching. */
 	charger_discharge_on_ac(0);
 
+	board_vbus_present_change();
 	return EC_SUCCESS;
 }
 
