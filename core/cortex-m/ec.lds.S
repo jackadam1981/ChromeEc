@@ -413,6 +413,15 @@ SECTIONS
    __image_size = __hey_flash_used;
 #endif
 
+#if defined(SECTION_IS_RW) && defined(CHIP_STM32) && (CONFIG_FLASH_WRITE_SIZE > 4)
+.rw_image_size_alignment :
+{
+    . = ORIGIN(FLASH) + __image_size;  
+    BYTE(0xFF);
+    . = ALIGN (CONFIG_FLASH_WRITE_SIZE);
+} > FLASH = 0xFF
+#endif
+
 #ifdef CONFIG_CHIP_MEMORY_REGIONS
 #define REGION(name, attr, start, size) \
     .name(NOLOAD) : { \
