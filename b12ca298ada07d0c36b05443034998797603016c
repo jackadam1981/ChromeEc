@@ -16,6 +16,23 @@
       "message": "Here is a proposed fix for the gpio reconfigure problem after sysjump",
       "revId": "b12ca298ada07d0c36b05443034998797603016c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93c6fc01_6fa5ecb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-18T21:25:55Z",
+      "side": 1,
+      "message": "Why not make `no_config_after_sysjump` unconditionally present? Developers may be confused to decide what GPIO are `no_config_after_sysjump` and what GPIOs are not `no_config_after_sysjump`.\n\nWhat is the use case for reconfiguring the GPIO after sysjump? I suppose the GPIOs are all configured properly in RO.",
+      "revId": "b12ca298ada07d0c36b05443034998797603016c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
