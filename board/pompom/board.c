@@ -21,6 +21,7 @@
 #include "lid_switch.h"
 #include "pi3usb9201.h"
 #include "power.h"
+#include "power/qcom.h"
 #include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"

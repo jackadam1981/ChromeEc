@@ -8,6 +8,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "board.h"
+#include "base_state.h"
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
@@ -81,9 +82,9 @@ static void base_detect_change(enum base_status status)
 	if (current_base_status == status)
 		return;
 
-	CPRINTS("Base %sconnected", connected ? "" : "not ");
 	gpio_set_level(GPIO_EN_BASE, connected);
 	tablet_set_mode(!connected);
+	base_set_state(connected);
 	current_base_status = status;
 }
 
@@ -192,9 +193,13 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, base_enable, HOOK_PRIO_DEFAULT);
 
 static void base_disable(void)
 {
-	/* Disable base detection interrupt and disable power to base. */
+	/*
+	 * Disable base detection interrupt and disable power to base.
+	 * Set the state UNKNOWN so the next startup will initialize a
+	 * correct state and notify AP.
+	 */
 	gpio_disable_interrupt(GPIO_BASE_DET_L);
-	base_detect_change(BASE_DISCONNECTED);
+	base_detect_change(BASE_UNKNOWN);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, base_disable, HOOK_PRIO_DEFAULT);
 
