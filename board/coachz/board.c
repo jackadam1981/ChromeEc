@@ -18,12 +18,12 @@
 #include "driver/tcpm/tcpci.h"
 #include "gpio.h"
 #include "hooks.h"
-#include "keyboard_mkbp.h"
-#include "keyboard_scan.h"
 #include "lid_switch.h"
+#include "mkbp_input_devices.h"
 #include "peripheral_charger.h"
 #include "pi3usb9201.h"
 #include "power.h"
+#include "power/qcom.h"
 #include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
@@ -58,6 +58,8 @@ struct pchg pchgs[] = {
 			.drv = &ctn730_drv,
 			.i2c_port = I2C_PORT_WLC,
 			.irq_pin = GPIO_WLC_IRQ_CONN,
+			.full_percent = 96,
+			.block_size = 128,
 		},
 		.events = QUEUE_NULL(PCHG_EVENT_QUEUE_SIZE, enum pchg_event),
 	},

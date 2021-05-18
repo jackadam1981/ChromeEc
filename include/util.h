@@ -54,7 +54,9 @@ extern "C" {
  * @return `v` if it is already between `min`/`max`, `min` if `v` was smaller
  * than `min`, `max` if `v` was bigger than `max`.
  */
+#ifndef CONFIG_ZEPHYR
 #define CLAMP(v, min, max) MIN(max, MAX(v, min))
+#endif
 
 /*
  * Convert a pointer to a base struct into a pointer to the struct that
@@ -98,6 +100,7 @@ int atoi(const char *nptr);
 
 #ifdef CONFIG_ZEPHYR
 #include <ctype.h>
+#include <string.h>
 #else
 int isdigit(int c);
 int isspace(int c);
@@ -105,15 +108,12 @@ int isalpha(int c);
 int isupper(int c);
 int isprint(int c);
 int tolower(int c);
-#endif
 
 int memcmp(const void *s1, const void *s2, size_t len);
 void *memcpy(void *dest, const void *src, size_t len);
 void *memset(void *dest, int c, size_t len);
 void *memmove(void *dest, const void *src, size_t len);
 void *memchr(const void *buffer, int c, size_t n);
-int strcasecmp(const char *s1, const char *s2);
-int strncasecmp(const char *s1, const char *s2, size_t size);
 
 /**
  * Find the first occurrence of the substring <s2> in the string <s1>
@@ -125,9 +125,13 @@ int strncasecmp(const char *s1, const char *s2, size_t size);
 char *strstr(const char *s1, const char *s2);
 
 size_t strlen(const char *s);
-size_t strnlen(const char *s, size_t maxlen);
 char *strncpy(char *dest, const char *src, size_t n);
 int strncmp(const char *s1, const char *s2, size_t n);
+#endif
+
+int strcasecmp(const char *s1, const char *s2);
+int strncasecmp(const char *s1, const char *s2, size_t size);
+size_t strnlen(const char *s, size_t maxlen);
 
 /* Like strtol(), but for integers. */
 int strtoi(const char *nptr, char **endptr, int base);
