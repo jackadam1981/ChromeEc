@@ -63,6 +63,30 @@
       },
       "revId": "de6a94654e8542ea38459117324c4ee9cc18ba00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92e651b1_fb869500",
+        "filename": "board/blipper/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-18T03:33:29Z",
+      "side": 1,
+      "message": "Do you mean choke? As in \"common mode choke\"?",
+      "parentUuid": "3063ba42_7e71474e",
+      "range": {
+        "startLine": 378,
+        "startChar": 29,
+        "endLine": 378,
+        "endChar": 34
+      },
+      "revId": "de6a94654e8542ea38459117324c4ee9cc18ba00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
