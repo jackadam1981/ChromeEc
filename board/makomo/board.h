@@ -11,6 +11,7 @@
 #define VARIANT_KUKUI_JACUZZI
 #define VARIANT_KUKUI_BATTERY_SMART
 #define VARIANT_KUKUI_CHARGER_ISL9238
+#define VARIANT_KUKUI_EC_STM32L431
 
 #ifndef SECTION_IS_RW
 #define VARIANT_KUKUI_NO_SENSORS
@@ -21,6 +22,34 @@
 #undef CONFIG_CHIPSET_POWER_SEQ_VERSION
 #define CONFIG_CHIPSET_POWER_SEQ_VERSION 1
 #undef CONFIG_SYSTEM_UNLOCKED
+
+#undef CPU_CLOCK
+#define CPU_CLOCK 80000000
+
+#ifdef STM32_HSE_CLOCK
+/* PLL configuration. Freq = STM32_HSE_CLOCK * n/m/r */
+#undef STM32_PLLM
+#define STM32_PLLM	1
+#undef STM32_PLLN
+#define STM32_PLLN	12
+#undef STM32_PLLR
+#define STM32_PLLR	2
+#else	/* Use HSI as PLL clock source : 80Mhz	*/
+#undef STM32_PLLM
+#undef STM32_PLLN
+#undef STM32_PLLR
+#define STM32_PLLM	1
+#define STM32_PLLN	10
+#define STM32_PLLR	2
+#endif
+
+#define STM32_USE_PLL
+
+#undef CONFIG_GMR_TABLET_MODE
+#undef GMR_TABLET_MODE_GPIO_L
+#undef CONFIG_TABLET_MODE
+#undef CONFIG_TABLET_MODE_SWITCH
+
 
 #define CONFIG_BATTERY_HW_PRESENT_CUSTOM
 
@@ -47,6 +76,10 @@
 
 #define CONFIG_LED_ONOFF_STATES
 #define CONFIG_LED_POWER_LED
+
+#undef	CONFIG_WATCHDOG_PERIOD_MS
+#define CONFIG_WATCHDOG_PERIOD_MS 4000
+
 
 /* Motion Sensors */
 #ifndef VARIANT_KUKUI_NO_SENSORS
@@ -76,11 +109,18 @@
 #define I2C_PORT_BC12               0
 #define I2C_PORT_TCPC0              0
 #define I2C_PORT_USB_MUX            0
-#define I2C_PORT_CHARGER            board_get_charger_i2c()
-#define I2C_PORT_SENSORS            1
-#define I2C_PORT_IO_EXPANDER_IT8801 1
+#define I2C_PORT_CHARGER            2
+#define I2C_PORT_SENSORS            2
+#define I2C_PORT_IO_EXPANDER_IT8801 2
 #define I2C_PORT_VIRTUAL_BATTERY    I2C_PORT_BATTERY
-#define I2C_PORT_BATTERY            2
+#define I2C_PORT_BATTERY            3
+#define I2C_PORT_TCPC0				0
+
+#undef I2C_CONTROLLER_COUNT
+#undef I2C_PORT_COUNT
+#define	I2C_CONTROLLER_COUNT	3
+#define	I2C_PORT_COUNT			3
+
 
 /* Enable Accel over SPI */
 #define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */

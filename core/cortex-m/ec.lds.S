@@ -410,7 +410,20 @@ SECTIONS
 #if defined(SECTION_IS_RO) && defined(NPCX_RO_HEADER)
     __image_size = __hey_flash_used - FW_SIZE(RO_HDR);
 #else
+#if !(defined(SECTION_IS_RW) && defined(CHIP_STM32) && (CONFIG_FLASH_WRITE_SIZE > 4))
    __image_size = __hey_flash_used;
+#endif
+#endif
+
+#if defined(SECTION_IS_RW) && defined(CHIP_STM32) && (CONFIG_FLASH_WRITE_SIZE > 4)
+.rw_image_size_alignment :
+{
+    . = ORIGIN(FLASH) + __hey_flash_used;
+    BYTE(0xFF);
+    . = ALIGN (CONFIG_FLASH_WRITE_SIZE);
+} > FLASH = 0xFF
+
+  __image_size = __hey_flash_used + SIZEOF(.rw_image_size_alignment);
 #endif
 
 #ifdef CONFIG_CHIP_MEMORY_REGIONS
