@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3656ad8e_573c04e7",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-05-18T01:41:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9eb8c126_dd63c40e",
+      "range": {
+        "startLine": 163,
+        "startChar": 16,
+        "endLine": 163,
+        "endChar": 32
+      },
+      "revId": "817c145c5eed646d3c6ca8adc58d862b8a1c4621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f125048c_e36b60e9",
@@ -85,6 +109,30 @@
       "writtenOn": "2021-05-17T19:52:20Z",
       "side": 1,
       "message": "CONFIG_PLATFORM_EC_I2C defined in prj.conf implies CONFIG_I2C. Don\u0027t think this one is needed",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "817c145c5eed646d3c6ca8adc58d862b8a1c4621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "999ca791_81f1495e",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/it8xxx2_evb_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-05-18T01:41:11Z",
+      "side": 1,
+      "message": "OK, removed.",
+      "parentUuid": "f125048c_e36b60e9",
       "range": {
         "startLine": 36,
         "startChar": 0,
