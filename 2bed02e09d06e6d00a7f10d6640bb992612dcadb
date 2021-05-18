@@ -16,6 +16,24 @@
       "message": "Is there any particular reason we need to seed from Attached.SNK versus seeding ports during init time?",
       "revId": "2bed02e09d06e6d00a7f10d6640bb992612dcadb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a36e4cb_bdc2b56a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2407,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-18T23:04:12Z",
+      "side": 1,
+      "message": "Yes, it was moved from init to Attached.SNK/Unattached.SNK for a battery cutoff issue b/174105232#comment24 .",
+      "parentUuid": "87969941_1f70d553",
+      "revId": "2bed02e09d06e6d00a7f10d6640bb992612dcadb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
