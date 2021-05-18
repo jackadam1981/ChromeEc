@@ -10,6 +10,7 @@
 
 #include "gpio.h"
 #include "gpio/gpio.h"
+#include "system.h"
 
 LOG_MODULE_REGISTER(gpio_shim, LOG_LEVEL_ERR);
 
@@ -247,6 +248,11 @@ int gpio_get_default_flags(enum gpio_signal signal)
 static int init_gpios(const struct device *unused)
 {
 	ARG_UNUSED(unused);
+
+	/* Do not reinitialize gpios on warm reboot */
+	if (system_is_reboot_warm()) {
+		return 0;
+	}
 
 	/* Loop through all GPIOs in device tree to set initial configuration */
 	for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
