@@ -44,8 +44,8 @@ struct cbi_data {
 /**
  * Board info accessors
  *
- * @param version/sku_id/oem_id/id/fw_config/pcb_supplier/ssfc [OUT] Data read
- *        from EEPROM
+ * @param version/sku_id/oem_id/id/fw_config/pcb_supplier/ssfc/rework_id [OUT]
+ *        Data_read from EEPROM.
  * @return EC_SUCCESS on success or EC_ERROR_* otherwise.
  *         EC_ERROR_BUSY to indicate data is not ready.
  */
@@ -56,6 +56,7 @@ int cbi_get_model_id(uint32_t *id);
 int cbi_get_fw_config(uint32_t *fw_config);
 int cbi_get_pcb_supplier(uint32_t *pcb_supplier);
 int cbi_get_ssfc(uint32_t *ssfc);
+int cbi_get_rework_id(uint64_t *id);
 
 /**
  * Get data from CBI store
@@ -145,6 +146,20 @@ struct cbi_data *cbi_find_tag(const void *cbi, enum cbi_data_tag tag);
  *         EC_ERROR_BUSY to indicate supplemental data is not ready.
  */
 int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size);
+
+/**
+ * Set and update FW_CONFIG tag field
+ *
+ * This function is only included when HAS_TASK_CHIPSET is not defined. It is
+ * intended to be used for projects which want CBI functions, but do not have an
+ * AP and ectool host command access.
+ *
+ * @param fw_config	updated value for FW_CONFIG tag
+ * @return EC_SUCCESS to indicate the field was written correctly.
+ *         EC_ERROR_ACCESS_DENIED to indicate WP is active
+ *         EC_ERROR_UNKNOWN to indicate that the write operation failed
+ */
+int cbi_set_fw_config(uint32_t fw_config);
 
 #ifdef TEST_BUILD
 /**

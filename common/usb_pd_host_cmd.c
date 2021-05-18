@@ -15,19 +15,11 @@
 #include "host_command.h"
 #include "mkbp_event.h"
 #include "tcpm/tcpm.h"
+#include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd.h"
-
 #ifdef CONFIG_COMMON_RUNTIME
-/*
- * If we are trying to upgrade the TCPC port that is supplying power, then we
- * need to ensure that the battery has enough charge for the upgrade. 100mAh
- * is about 5% of most batteries, and it should be enough charge to get us
- * through the EC jump to RW and PD upgrade.
- */
-#define MIN_BATTERY_FOR_TCPC_UPGRADE_MAH 100 /* mAH */
-
 struct ec_params_usb_pd_rw_hash_entry rw_hash_table[RW_HASH_ENTRIES];
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -307,7 +299,6 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 	struct ec_response_usb_pd_control_v1 *r_v1 = args->response;
 	struct ec_response_usb_pd_control *r = args->response;
 	const char *task_state_name;
-	mux_state_t mux_state;
 
 	if (p->port >= board_get_usb_pd_port_count())
 		return EC_RES_INVALID_PARAM;
@@ -351,22 +342,13 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		break;
 	case 1:
 	case 2:
-		/*
-		 * Set enabled to 0 if disconnect latch flag=true, needed this
-		 * to configure Virtual mux in disconnect mode.
-		 */
-		if (IS_ENABLED(CONFIG_USB_MUX_VIRTUAL) &&
-		    usb_mux_get_disconnect_latch_flag(p->port)) {
-			r_v2->enabled = 0;
-		} else {
-			r_v2->enabled =
-				(pd_comm_is_enabled(p->port) ?
-					PD_CTRL_RESP_ENABLED_COMMS : 0) |
-				(pd_is_connected(p->port) ?
-					PD_CTRL_RESP_ENABLED_CONNECTED : 0) |
-				(pd_capable(p->port) ?
-					PD_CTRL_RESP_ENABLED_PD_CAPABLE : 0);
-		}
+		r_v2->enabled =
+			(pd_comm_is_enabled(p->port) ?
+				PD_CTRL_RESP_ENABLED_COMMS : 0) |
+			(pd_is_connected(p->port) ?
+				PD_CTRL_RESP_ENABLED_CONNECTED : 0) |
+			(pd_capable(p->port) ?
+				PD_CTRL_RESP_ENABLED_PD_CAPABLE : 0);
 		r_v2->role = pd_get_role_flags(p->port);
 		r_v2->polarity = pd_get_polarity(p->port);
 
@@ -381,18 +363,8 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 		r_v2->control_flags = get_pd_control_flags(p->port);
 		if (IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP)) {
 			r_v2->dp_mode = get_dp_pin_mode(p->port);
-			mux_state = usb_mux_get(p->port);
-			if (mux_state & USB_PD_MUX_USB4_ENABLED) {
-				r_v2->cable_speed =
-					get_usb4_cable_speed(p->port);
-			}
-			if (mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED ||
-			    mux_state & USB_PD_MUX_USB4_ENABLED) {
-				r_v2->cable_speed =
-					get_tbt_cable_speed(p->port);
-				r_v2->cable_gen =
-					get_tbt_rounded_support(p->port);
-			}
+			r_v2->cable_speed = get_tbt_cable_speed(p->port);
+			r_v2->cable_gen = get_tbt_rounded_support(p->port);
 		}
 
 		if (args->version == 1)
@@ -554,40 +526,8 @@ static enum ec_status pd_control(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 
 	if (cmd->subcmd == PD_SUSPEND) {
-		/*
-		 * The AP is requesting to suspend PD traffic on the EC so it
-		 * can perform a firmware upgrade. If Vbus is present on the
-		 * connector (it is either a source or sink), then we will
-		 * prevent the upgrade if there is not enough battery to finish
-		 * the upgrade. We cannot rely on the EC's active charger data
-		 * as the EC just rebooted into RW and has not necessarily
-		 * picked the active charger yet.
-		 */
-#ifdef HAS_TASK_CHARGER
-		if (pd_is_vbus_present(cmd->chip)) {
-			struct batt_params batt = { 0 };
-			/*
-			 * The charger task has not re-initialized, so we need
-			 * to ask the battery directly.
-			 */
-			battery_get_params(&batt);
-			if (batt.remaining_capacity <
-				    MIN_BATTERY_FOR_TCPC_UPGRADE_MAH ||
-			    batt.flags & BATT_FLAG_BAD_REMAINING_CAPACITY) {
-				CPRINTS("C%d: Cannot suspend for upgrade, not "
-					"enough battery (%dmAh)!",
-					cmd->chip, batt.remaining_capacity);
-				return EC_RES_BUSY;
-			}
-		}
-#else
-		if (pd_is_vbus_present(cmd->chip)) {
-			CPRINTS("C%d: Cannot suspend for upgrade, Vbus "
-				"present!",
-				cmd->chip);
+		if (!pd_firmware_upgrade_check_power_readiness(cmd->chip))
 			return EC_RES_BUSY;
-		}
-#endif
 		enable = 0;
 	} else if (cmd->subcmd == PD_RESUME) {
 		enable = 1;

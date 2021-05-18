@@ -34,6 +34,9 @@
 /* PWM */
 #define CONFIG_PWM
 
+/* LED defines */
+#define CONFIG_LED_ONOFF_STATES
+
 /* Sensors */
 #define CONFIG_ACCEL_BMA255		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
@@ -135,19 +138,11 @@ enum temp_sensor_id {
 
 /* List of possible batteries */
 enum battery_type {
-	BATTERY_DANAPACK_COS,
-	BATTERY_DANAPACK_ATL,
-	BATTERY_DANAPACK_HIGHPOWER,
-	BATTERY_DANAPACK_BYD,
-	BATTERY_SAMSUNG_SDI,
-	BATTERY_SIMPLO_COS,
-	BATTERY_SIMPLO_HIGHPOWER,
+	BATTERY_SIMPLO,
 	BATTERY_COS,
-	BATTERY_COS_2,
 	BATTERY_TYPE_COUNT,
 };
 
-int board_is_sourcing_vbus(int port);
 
 #ifdef CONFIG_KEYBOARD_FACTORY_TEST
 extern const int keyboard_factory_scan_pins[][2];

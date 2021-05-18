@@ -41,6 +41,8 @@ static void update_vbus_supplier(int port, int vbus_level)
 #define USB_5V_EN(port) board_is_sourcing_vbus(port)
 #elif defined(CONFIG_USBC_PPC)
 #define USB_5V_EN(port) ppc_is_sourcing_vbus(port)
+#elif defined(CONFIG_USB_PD_PPC)
+#define USB_5V_EN(port) tcpci_tcpm_get_src_ctrl(port)
 #elif defined(CONFIG_USB_PD_5V_CHARGER_CTRL)
 #define USB_5V_EN(port) charger_is_sourcing_otg_power(port)
 #elif defined(CONFIG_USB_PD_5V_EN_ACTIVE_LOW)
@@ -73,6 +75,10 @@ void usb_charger_vbus_change(int port, int vbus_level)
 #ifdef HAS_TASK_USB_CHG_P0
 	/* USB Charger task(s) */
 	task_set_event(USB_CHG_PORT_TO_TASK_ID(port), USB_CHG_EVENT_VBUS);
+
+	/* If we swapped to sourcing, drop any related charge suppliers */
+	if (usb_charger_port_is_sourcing_vbus(port))
+		usb_charger_reset_charge(port);
 #endif
 
 #if (defined(CONFIG_USB_PD_VBUS_DETECT_CHARGER) \

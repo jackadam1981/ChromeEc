@@ -882,6 +882,23 @@ static void update_dynamic_battery_info(void)
 		host_set_single_event(EC_HOST_EVENT_BATTERY_STATUS);
 }
 #else /* CONFIG_BATTERY_V2 */
+
+static int is_battery_string_reliable(const char *buf)
+{
+	/*
+	 * From is_string_printable rule, 0xFF is not printable.
+	 * So, EC should think battery string is unreliable if string
+	 * include 0xFF.
+	 */
+	while (*buf) {
+		if ((*buf) == 0xFF)
+			return 0;
+		buf++;
+	}
+
+	return 1;
+}
+
 static int update_static_battery_info(void)
 {
 	int batt_serial;
@@ -931,6 +948,28 @@ static int update_static_battery_info(void)
 
 	/* Battery Type string */
 	rv |= battery_device_chemistry(bs->type_ext, sizeof(bs->type_ext));
+
+	/*
+	 * b/181639264: Battery gauge follow SMBus SPEC and SMBus define
+	 * cumulative clock low extend time for both controller (master) and
+	 * peripheral (slave). However, I2C doesn't.
+	 * Regarding this issue, we observe EC sometimes pull I2C CLK low
+	 * a while after EC start running. Actually, we are not sure the
+	 * reason until now.
+	 * If EC pull I2C CLK low too long, and it may cause battery fw timeout
+	 * because battery count cumulative clock extend time over 25ms.
+	 * When it happened, battery will release both its CLK and DATA and
+	 * reset itself. So, EC may get 0xFF when EC keep reading data from
+	 * battery. Battery static information will be unreliable and need to
+	 * be updated.
+	 * This change is improvement that EC should retry if battery string is
+	 * unreliable.
+	 */
+	if (!is_battery_string_reliable(bs->serial_ext) ||
+	    !is_battery_string_reliable(bs->manufacturer_ext) ||
+	    !is_battery_string_reliable(bs->model_ext) ||
+	    !is_battery_string_reliable(bs->type_ext))
+		rv |= EC_ERROR_UNKNOWN;
 
 	/* Zero the dynamic entries. They'll come next. */
 	memset(&battery_dynamic[BATT_IDX_MAIN], 0,
@@ -1455,8 +1494,10 @@ static int shutdown_on_critical_battery(void)
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
 		switch (board_critical_shutdown_check(&curr)) {
 		case CRITICAL_SHUTDOWN_HIBERNATE:
-			CPRINTS("Hibernate due to critical battery");
-			system_hibernate(0, 0);
+			if (IS_ENABLED(CONFIG_HIBERNATE)) {
+				CPRINTS("Hibernate due to critical battery");
+				system_hibernate(0, 0);
+			}
 			break;
 		case CRITICAL_SHUTDOWN_CUTOFF:
 			CPRINTS("Cutoff due to critical battery");
@@ -2351,7 +2392,10 @@ enum charge_state charge_get_state(void)
 			return PWR_STATE_DISCHARGE;
 	case ST_CHARGE:
 		/* The only difference here is what the LEDs display. */
-		if (battery_near_full())
+		if (IS_ENABLED(CONFIG_CHARGE_MANAGER) &&
+		    charge_manager_get_active_charge_port() == CHARGE_PORT_NONE)
+			return PWR_STATE_DISCHARGE;
+		else if (battery_near_full())
 			return PWR_STATE_CHARGE_NEAR_FULL;
 		else
 			return PWR_STATE_CHARGE;

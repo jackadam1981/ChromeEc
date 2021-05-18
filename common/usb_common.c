@@ -38,6 +38,14 @@
 #define CPRINTF(format, args...)
 #endif
 
+/*
+ * If we are trying to upgrade PD firmwares (TCPC chips, retimer, etc), we
+ * need to ensure the battery has enough charge for this process. 100mAh
+ * is about 5% of most batteries, and it should be enough charge to get us
+ * through the EC jump to RW and PD upgrade.
+ */
+#define MIN_BATTERY_FOR_PD_UPGRADE_MAH 100 /* mAH */
+
 __overridable void board_vbus_present_change(void)
 {
 }
@@ -121,6 +129,39 @@ int remote_flashing(int argc, char **argv)
 	return EC_SUCCESS;
 }
 #endif /* defined(CONFIG_CMD_PD) && defined(CONFIG_CMD_PD_FLASH) */
+
+bool pd_firmware_upgrade_check_power_readiness(int port)
+{
+	if (IS_ENABLED(HAS_TASK_CHARGER)) {
+		struct batt_params batt = { 0 };
+		/*
+		 * Cannot rely on the EC's active charger data as the
+		 * EC may just rebooted into RW and has not necessarily
+		 * picked the active charger yet. Charger task may not
+		 * initialized, so check battery directly.
+		 * Prevent the upgrade if the battery doesn't have enough
+		 * charge to finish the upgrade.
+		 */
+		battery_get_params(&batt);
+		if (batt.flags & BATT_FLAG_BAD_REMAINING_CAPACITY ||
+			batt.remaining_capacity <
+				MIN_BATTERY_FOR_PD_UPGRADE_MAH) {
+			CPRINTS("C%d: Cannot suspend for upgrade, not "
+					"enough battery (%dmAh)!",
+					port, batt.remaining_capacity);
+			return false;
+		}
+	} else {
+		/* VBUS is present on the port (it is either a
+		 * source or sink) to provide power, so don't allow
+		 * PD firmware upgrade on the port.
+		 */
+		if (pd_is_vbus_present(port))
+			return false;
+	}
+
+	return true;
+}
 
 int usb_get_battery_soc(void)
 {
@@ -307,6 +348,18 @@ __overridable uint8_t board_get_usb_pd_port_count(void)
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
+__overridable bool board_is_usb_pd_port_present(int port)
+{
+	/*
+	 * Use board_get_usb_pd_port_count() instead of checking
+	 * CONFIG_USB_PD_PORT_MAX_COUNT directly here for legacy boards
+	 * that implement board_get_usb_pd_port_count() but do not
+	 * implement board_is_usb_pd_port_present().
+	 */
+
+	return (port >= 0) && (port < board_get_usb_pd_port_count());
+}
+
 int pd_get_retry_count(int port, enum tcpm_transmit_type type)
 {
 	/* PD 3.0 6.7.7: nRetryCount = 2; PD 2.0 6.6.9: nRetryCount = 3 */
@@ -470,6 +523,17 @@ void usb_mux_set_safe_mode(int port)
 		ppc_set_sbu(port, 0);
 }
 
+void usb_mux_set_safe_mode_exit(int port)
+{
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+		usb_mux_set(port, USB_PD_MUX_NONE, USB_SWITCH_CONNECT,
+			    polarity_rm_dts(pd_get_polarity(port)));
+
+	/* Isolate the SBU lines. */
+	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+		ppc_set_sbu(port, 0);
+}
+
 static void pd_send_hard_reset(int port)
 {
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_SEND_HARD_RESET);
@@ -619,7 +683,9 @@ const uint32_t pd_src_pdo_max[] = {
 const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
 
 const uint32_t pd_snk_pdo[] = {
-	PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
+	PDO_FIXED(5000,
+		  GENERIC_MIN((PD_OPERATING_POWER_MW / 5), PD_MAX_CURRENT_MA),
+		  PDO_FIXED_FLAGS),
 	PDO_BATT(4750, PD_MAX_VOLTAGE_MV, PD_OPERATING_POWER_MW),
 	PDO_VAR(4750, PD_MAX_VOLTAGE_MV, PD_MAX_CURRENT_MA),
 };
@@ -878,6 +944,26 @@ static int command_tcpc_dump(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(tcpci_dump, command_tcpc_dump, "<Type-C port>",
 			"dump the TCPC regs");
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
+
+void pd_srccaps_dump(int port)
+{
+	int i;
+	const uint32_t *const srccaps = pd_get_src_caps(port);
+
+	for (i = 0; i < pd_get_src_cap_cnt(port); ++i) {
+		uint32_t max_ma, max_mv, min_mv;
+
+		pd_extract_pdo_power(srccaps[i], &max_ma, &max_mv, &min_mv);
+
+		if ((srccaps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
+			if (IS_ENABLED(CONFIG_USB_PD_REV30))
+				ccprintf("%d: %dmV-%dmV/%dmA\n", i, min_mv,
+					 max_mv, max_ma);
+		} else {
+			ccprintf("%d: %dmV/%dmA\n", i, max_mv, max_ma);
+		}
+	}
+}
 
 int pd_build_alert_msg(uint32_t *msg, uint32_t *len, enum pd_power_role pr)
 {
