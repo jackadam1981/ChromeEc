@@ -6,6 +6,7 @@
 #include <device.h>
 #include <drivers/cros_bbram.h>
 #include <drivers/cros_system.h>
+#include <ec_commands.h>
 #include <logging/log.h>
 
 #include "bbram.h"
@@ -315,3 +316,25 @@ static int system_preinitialize(const struct device *unused)
 
 SYS_INIT(system_preinitialize, PRE_KERNEL_1,
 	 CONFIG_PLATFORM_EC_SYSTEM_PRE_INIT_PRIORITY);
+
+int system_is_reboot_warm(void)
+{
+	uint32_t reset_flags;
+
+	/*
+	 * Check reset cause here,
+	 * gpio_pre_init is executed faster than system_pre_init
+	 */
+	check_reset_cause();
+	reset_flags = system_get_reset_flags();
+
+	if ((reset_flags & EC_RESET_FLAG_RESET_PIN) ||
+	    (reset_flags & EC_RESET_FLAG_POWER_ON) ||
+	    (reset_flags & EC_RESET_FLAG_WATCHDOG) ||
+	    (reset_flags & EC_RESET_FLAG_HARD) ||
+	    (reset_flags & EC_RESET_FLAG_SOFT) ||
+	    (reset_flags & EC_RESET_FLAG_HIBERNATE))
+		return 0;
+	else
+		return 1;
+}
