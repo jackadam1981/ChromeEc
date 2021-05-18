@@ -127,10 +127,22 @@ defined(CHIP_FAMILY_STM32H7)
 	else if (n >= 15 && n <= 17)
 		mask = STM32_RCC_APB2ENR_TIM15 << (n - 15);
 #endif
+#if defined(CHIP_FAMILY_STM32L4)
+	if (n >= 2 && n <= 7) {
+		reg = &STM32_RCC_APB1ENR1;
+		mask = STM32_RCC_PB1_TIM2 << (n - 2);
+	} else if (n == 1 || n == 15 || n == 16) {
+		reg = &STM32_RCC_APB2ENR;
+		mask = (n == 1)	 ? STM32_RCC_APB2ENR_TIM1EN :
+		       (n == 15) ? STM32_RCC_APB2ENR_TIM15EN :
+					 STM32_RCC_APB2ENR_TIM16EN;
+	}
+#else
 	if (n >= 2 && n <= 7) {
 		reg = &STM32_RCC_APB1ENR;
 		mask = STM32_RCC_PB1_TIM2 << (n - 2);
 	}
+#endif
 
 	if (!mask)
 		return;
@@ -179,7 +191,7 @@ static void update_prescaler(void)
 #ifdef CONFIG_WATCHDOG_HELP
 	/* Watchdog timer runs at 1KHz */
 	STM32_TIM_PSC(TIM_WATCHDOG) =
-		(clock_get_timer_freq()  / SECOND * MSEC)- 1;
+		(clock_get_timer_freq()  / SECOND * MSEC) - 1;
 #endif  /* CONFIG_WATCHDOG_HELP */
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, update_prescaler, HOOK_PRIO_DEFAULT);
