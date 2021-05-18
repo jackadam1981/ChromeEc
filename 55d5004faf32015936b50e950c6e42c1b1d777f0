@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "926dc759_1ff50418",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-18T22:34:30Z",
+      "side": 1,
+      "message": "Yup, gotcha.  I know we used SM5803_REG_VBUS_LOW_TH/HIGH_TH for a while and saw interrupt storms when suzy-q was attached.  But if you\u0027re seeing us stable at 5V that probably indicates it\u0027s a good interrupt to use.",
+      "parentUuid": "9166a50a_465b72d4",
+      "revId": "55d5004faf32015936b50e950c6e42c1b1d777f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3d93225_7f625d82",
