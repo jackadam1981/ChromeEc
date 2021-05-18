@@ -315,3 +315,4 @@ static int system_preinitialize(const struct device *unused)
 
 SYS_INIT(system_preinitialize, PRE_KERNEL_1,
 	 CONFIG_PLATFORM_EC_SYSTEM_PRE_INIT_PRIORITY);
+
