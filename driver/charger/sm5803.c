@@ -624,6 +624,12 @@ static void sm5803_init(int chgnum)
 	rv = chg_write8(chgnum, SM5803_REG_DPM_VL_SET_MSB, (reg >> 3));
 	rv |= chg_write8(chgnum, SM5803_REG_DPM_VL_SET_LSB, (reg & 0x7));
 
+	/* Set the VCHGPWR thresholds to mirror those for VBUS. */
+	rv |= meas_write8(chgnum, SM5803_REG_VCHG_PWR_HIGH_TH,
+			  SM5803_VBUS_HIGH_LEVEL);
+	rv |= meas_write8(chgnum, SM5803_REG_VCHG_PWR_LOW_TH,
+			  SM5803_VBUS_LOW_LEVEL);
+
 	/* Set default input current */
 	reg = SM5803_CURRENT_TO_REG(CONFIG_CHARGER_INPUT_CURRENT)
 		& SM5803_CHG_ILIM_RAW;
@@ -647,8 +653,11 @@ static void sm5803_init(int chgnum)
 						SM5803_TINT_MIN_LEVEL);
 
 
-	/* Configure TINT interrupts to fire after thresholds are set */
-	rv |= main_write8(chgnum, SM5803_REG_INT2_EN, SM5803_INT2_TINT);
+	/*
+	 * Configure TINT & VCHGPWR interrupts to fire after thresholds are set
+	 */
+	rv |= main_write8(chgnum, SM5803_REG_INT2_EN, SM5803_INT2_TINT |
+						      SM5803_INT2_VCHGPWR);
 
 	/*
 	 * Configure CHG_ENABLE to only be set through I2C by setting
@@ -1070,6 +1079,10 @@ void sm5803_handle_interrupt(int chgnum)
 		 */
 	}
 
+	/* Update extpower if VCHGPWR changes. */
+	if (int_reg & SM5803_INT2_VCHGPWR)
+		board_vbus_present_change();
+
 	/* TODO(b/159376384): Take action on fatal BFET power alert. */
 	rv = main_read8(chgnum, SM5803_REG_INT3_REQ, &int_reg);
 	if (rv) {
@@ -1472,6 +1485,40 @@ static enum ec_error_list sm5803_get_option(int chgnum, int *option)
 	control |= reg << 16;
 
 	return rv;
+}
+
+enum ec_error_list sm5803_is_acok(int chgnum, bool *acok)
+{
+	int rv;
+	enum sm5803_charger_modes mode;
+	int reg;
+
+	rv = chg_read8(chgnum, SM5803_REG_FLOW1, &reg);
+	if (rv)
+		return rv;
+
+	/* The charger mode is contained in the last 2 bits. */
+	reg &= GENMASK(1, 0);
+	mode = (enum sm5803_charger_modes)reg;
+
+	/* If we're not sinking, then AC can't be OK. */
+	if (mode != CHARGER_MODE_SINK) {
+		*acok = false;
+		return EC_SUCCESS;
+	}
+
+	/*
+	 * Okay, we're sinking.  Check that VCHGPWR has some voltage.  This
+	 * should indicate that the path is good.
+	 */
+	rv = meas_read8(chgnum, SM5803_REG_VCHG_PWR_MSB, &reg);
+	if (rv)
+		return rv;
+
+	/* Assume that ACOK would be asserted if VCHGPWR is higher than ~4V. */
+	*acok = reg >= SM5803_VBUS_HIGH_LEVEL;
+
+	return EC_SUCCESS;
 }
 
 static enum ec_error_list sm5803_is_input_current_limit_reached(int chgnum,
