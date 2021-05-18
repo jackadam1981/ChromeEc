@@ -16,6 +16,8 @@
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
 
+/* EC console on UART 0 */
+#define CONFIG_UART_CONSOLE 0
 
 /* EC console commands  */
 #define CONFIG_CMD_ACCELS
@@ -313,14 +315,6 @@ void board_print_tcpc_fw_version(int port);
 
 /* Map I2C port to controller */
 int board_i2c_p2c(int port);
-
-/* Return the two slave addresses the specified
- * controller will respond to when controller
- * is acting as a slave.
- * b[6:0]  = b[7:1] of I2C address 1
- * b[14:8] = b[7:1] of I2C address 2
- */
-uint16_t board_i2c_slave_addrs(int controller);
 
 /* MCHP - firwmare-reef-9042.B does have LID_ALS bit
  * because its using TASK_ALS ?

@@ -54,7 +54,11 @@ void prl_end_ams(int port)
 {}
 
 void prl_execute_hard_reset(int port)
-{}
+{
+	mock_prl_port[port].last_ctrl_msg = 0;
+	mock_prl_port[port].last_data_msg = 0;
+	mock_prl_port[port].last_tx_type = TCPC_TX_HARD_RESET;
+}
 
 enum pd_rev_type prl_get_rev(int port, enum tcpm_transmit_type partner)
 {
@@ -73,9 +77,6 @@ __overridable bool prl_is_busy(int port)
 {
 	return false;
 }
-
-void prl_reset(int port)
-{}
 
 void prl_reset_soft(int port)
 {}

@@ -19,7 +19,7 @@ from zmake.build_config import BuildConfig
 filenames = st.text(
     alphabet=set(string.printable) - {'/', ';'},
     min_size=1,
-    max_size=254)
+    max_size=254).filter(lambda name: name not in ('.', '..'))
 paths = st.builds(lambda parts: pathlib.Path('/', *parts),
                   st.iterables(filenames, min_size=1))
 config_keys = st.text(alphabet=set(string.ascii_uppercase) | {'_'}, min_size=1)
@@ -153,6 +153,7 @@ def test_popen_cmake_kconfig_but_no_file(conf, project_dir, build_dir):
 
 
 @hypothesis.given(build_configs, paths, paths)
+@hypothesis.settings(deadline=None)
 def test_popen_cmake_kconfig(conf, project_dir, build_dir):
     job_client = FakeJobClient()
 
