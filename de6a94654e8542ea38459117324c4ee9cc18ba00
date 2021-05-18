@@ -16,6 +16,29 @@
       "message": "hi Henry \u0026 Aseda:\nplease help to review this CL for a new temp sensor ",
       "revId": "de6a94654e8542ea38459117324c4ee9cc18ba00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1679a42e_cac1e06f",
+        "filename": "board/blipper/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-18T03:11:47Z",
+      "side": 1,
+      "message": "What\u0027s Chock?",
+      "range": {
+        "startLine": 378,
+        "startChar": 29,
+        "endLine": 378,
+        "endChar": 34
+      },
+      "revId": "de6a94654e8542ea38459117324c4ee9cc18ba00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
