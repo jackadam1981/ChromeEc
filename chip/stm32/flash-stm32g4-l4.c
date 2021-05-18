@@ -46,7 +46,7 @@
 #define FLASH_PAGE_ROLLBACK_COUNT ROLLBACK_BANK_COUNT
 #define FLASH_PAGE_ROLLBACK_FIRST_IDX ROLLBACK_BANK_OFFSET
 #define FLASH_PAGE_ROLLBACK_LAST_IDX (FLASH_PAGE_ROLLBACK_FIRST_IDX +\
-					FLASH_PAGE_ROLLBACK_COUNT -1)
+					FLASH_PAGE_ROLLBACK_COUNT - 1)
 
 #ifdef STM32_FLASH_DBANK_MODE
 #define FLASH_WRP_MASK              (FLASH_PAGE_MAX_COUNT - 1)
@@ -55,10 +55,17 @@
 #endif /* CONFIG_FLASH_DBANK_MODE */
 #define FLASH_WRP_START(val)        ((val) & FLASH_WRP_MASK)
 #define FLASH_WRP_END(val)          (((val) >> 16) & FLASH_WRP_MASK)
+#ifdef CHIP_FAMILY_STM32L4
 #define FLASH_WRP_RANGE(start, end) (((start) & FLASH_WRP_MASK) | \
 				       (((end) & FLASH_WRP_MASK) << 16))
 #define FLASH_WRP_RANGE_DISABLED    FLASH_WRP_RANGE(FLASH_WRP_MASK, 0x00)
 #define FLASH_WRP1X_MASK FLASH_WRP_RANGE(FLASH_WRP_MASK, FLASH_WRP_MASK)
+#else
+#define FLASH_WRP_RANGE(start, end) (((start) & FLASH_WRP_MASK) | \
+				       (((end) & FLASH_WRP_MASK) << 16))
+#define FLASH_WRP_RANGE_DISABLED    FLASH_WRP_RANGE(FLASH_WRP_MASK, 0x00)
+#define FLASH_WRP1X_MASK FLASH_WRP_RANGE(FLASH_WRP_MASK, FLASH_WRP_MASK)
+#endif
 
 enum wrp_region {
 	WRP_RO,
@@ -115,7 +122,12 @@ static int unlock(int locks)
 
 static void lock(void)
 {
-	STM32_FLASH_CR = FLASH_CR_LOCK;
+	STM32_FLASH_CR |= FLASH_CR_LOCK;
+}
+
+static void ob_lock(void)
+{
+	STM32_FLASH_CR |= FLASH_CR_OPTLOCK;
 }
 
 /*
@@ -160,12 +172,21 @@ static int commit_optb(void)
 {
 	int rv;
 
+	/*
+	 * Wait for last operation.
+	 */
+	rv = wait_while_busy();
+	if (rv)
+		return rv;
+
 	STM32_FLASH_CR |= FLASH_CR_OPTSTRT;
 
 	rv = wait_while_busy();
 	if (rv)
 		return rv;
-	lock();
+
+	STM32_FLASH_CR &= ~FLASH_CR_OPTSTRT;
+	ob_lock();
 
 	return EC_SUCCESS;
 }
@@ -434,6 +455,10 @@ int crec_flash_physical_write(int offset, int size, const char *data)
 	int i;
 	int unaligned = (uint32_t)data & (STM32_FLASH_MIN_WRITE_SIZE - 1);
 	uint32_t *data32 = (void *)data;
+
+	/* Check Flash offset */
+	if (offset % STM32_FLASH_MIN_WRITE_SIZE)
+		return EC_ERROR_MEMORY_ALLOCATION;
 
 	if (unlock(FLASH_CR_LOCK) != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
