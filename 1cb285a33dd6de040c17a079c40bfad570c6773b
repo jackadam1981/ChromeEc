@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3dafba71_f1c23fea",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-18T23:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9a6de64_42ede691",
+      "revId": "1cb285a33dd6de040c17a079c40bfad570c6773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c46ce2f8_a7db8e6e",
@@ -52,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c779532_42b9d94c",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-18T23:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c46ce2f8_a7db8e6e",
+      "revId": "1cb285a33dd6de040c17a079c40bfad570c6773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87d28f65_d6940094",
@@ -65,6 +101,30 @@
       "writtenOn": "2021-05-18T20:11:23Z",
       "side": 1,
       "message": "How about stderr\u003dsubprocess.DEVNULL",
+      "range": {
+        "startLine": 23,
+        "startChar": 68,
+        "endLine": 23,
+        "endChar": 80
+      },
+      "revId": "1cb285a33dd6de040c17a079c40bfad570c6773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1e942b9_fe2bf804",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-18T23:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87d28f65_d6940094",
       "range": {
         "startLine": 23,
         "startChar": 68,
@@ -98,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39897d4f_8d6f431c",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-18T23:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0ff4cf5_7467548e",
+      "range": {
+        "startLine": 26,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 10
+      },
+      "revId": "1cb285a33dd6de040c17a079c40bfad570c6773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb7b486d_b07b5b8c",
@@ -111,6 +195,24 @@
       "writtenOn": "2021-05-18T20:11:23Z",
       "side": 1,
       "message": "Need to update this line",
+      "revId": "1cb285a33dd6de040c17a079c40bfad570c6773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c5b0cb_6f092473",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-18T23:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb7b486d_b07b5b8c",
       "revId": "1cb285a33dd6de040c17a079c40bfad570c6773b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -132,6 +234,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "81bee1f9_0ec2abfc",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-18T23:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c184bd60_f25c9bdc",
+      "revId": "1cb285a33dd6de040c17a079c40bfad570c6773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfd2a41f_b32d4823",
@@ -149,6 +269,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e63f197b_fa53f691",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-18T23:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfd2a41f_b32d4823",
+      "revId": "1cb285a33dd6de040c17a079c40bfad570c6773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1911f28d_1de067a1",
@@ -162,6 +300,24 @@
       "writtenOn": "2021-05-18T20:11:23Z",
       "side": 1,
       "message": "Does this work?\n\nvcsid \u003d os.environ.get(\u0027VCSID\u0027, \u00279999-unknown\u0027)\n\n?\n\nUsing an exception and patching things up is a bit ugly IMO\n\nAlso we should try to use \u0027 consistently instead of \"\n\n\" is used for multi-line comment strings",
+      "revId": "1cb285a33dd6de040c17a079c40bfad570c6773b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d84f3692_b77cc0be",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-18T23:01:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1911f28d_1de067a1",
       "revId": "1cb285a33dd6de040c17a079c40bfad570c6773b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
