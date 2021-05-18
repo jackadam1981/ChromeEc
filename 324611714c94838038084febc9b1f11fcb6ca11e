@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcb6df89_806de4d8",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-18T20:13:51Z",
+      "side": 1,
+      "message": "node names should use - instead of _\n\nPlease fix below also",
+      "range": {
+        "startLine": 98,
+        "startChar": 15,
+        "endLine": 98,
+        "endChar": 22
+      },
+      "revId": "324611714c94838038084febc9b1f11fcb6ca11e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "506ee9c7_c4ebd778",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-18T20:13:51Z",
+      "side": 1,
+      "message": "I think it helps to have a comment as to what this tests",
+      "revId": "324611714c94838038084febc9b1f11fcb6ca11e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38fcfd95_3f4666b1",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-18T20:13:51Z",
+      "side": 1,
+      "message": "could this be a static function instead?\n\nJust an idea...I\u0027m not sure which is better",
+      "revId": "324611714c94838038084febc9b1f11fcb6ca11e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
