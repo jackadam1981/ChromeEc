@@ -57,15 +57,22 @@
 #define FLASH_PAGE_ROLLBACK_COUNT ROLLBACK_BANK_COUNT
 #define FLASH_PAGE_ROLLBACK_FIRST_IDX ROLLBACK_BANK_OFFSET
 #define FLASH_PAGE_ROLLBACK_LAST_IDX (FLASH_PAGE_ROLLBACK_FIRST_IDX +\
-					FLASH_PAGE_ROLLBACK_COUNT -1)
+					FLASH_PAGE_ROLLBACK_COUNT - 1)
 
 #define FLASH_WRP_MASK              (FLASH_PAGE_MAX_COUNT - 1)
 #define FLASH_WRP_START(val)        ((val) & FLASH_WRP_MASK)
 #define FLASH_WRP_END(val)          (((val) >> 16) & FLASH_WRP_MASK)
+#ifdef CHIP_FAMILY_STM32L4
 #define FLASH_WRP_RANGE(start, end) (((start) & FLASH_WRP_MASK) | \
 				       (((end) & FLASH_WRP_MASK) << 16))
 #define FLASH_WRP_RANGE_DISABLED    FLASH_WRP_RANGE(FLASH_WRP_MASK, 0x00)
 #define FLASH_WRP1X_MASK FLASH_WRP_RANGE(FLASH_WRP_MASK, FLASH_WRP_MASK)
+#else
+#define FLASH_WRP_RANGE(start, end) (((start) & FLASH_WRP_MASK) | \
+				       (((end) & FLASH_WRP_MASK) << 16))
+#define FLASH_WRP_RANGE_DISABLED    FLASH_WRP_RANGE(FLASH_WRP_MASK, 0x00)
+#define FLASH_WRP1X_MASK FLASH_WRP_RANGE(FLASH_WRP_MASK, FLASH_WRP_MASK)
+#endif
 
 static inline int calculate_flash_timeout(void)
 {
@@ -111,7 +118,12 @@ static int unlock(int locks)
 
 static void lock(void)
 {
-	STM32_FLASH_CR = FLASH_CR_LOCK;
+	STM32_FLASH_CR |= FLASH_CR_LOCK;
+}
+
+static void ob_lock(void)
+{
+	STM32_FLASH_CR |= FLASH_CR_OPTLOCK;
 }
 
 /*
@@ -156,12 +168,21 @@ static int commit_optb(void)
 {
 	int rv;
 
+	/*
+	 * Wait for last operation.
+	 */
+	rv = wait_while_busy();
+	if (rv)
+		return rv;
+
 	STM32_FLASH_CR |= FLASH_CR_OPTSTRT;
 
 	rv = wait_while_busy();
 	if (rv)
 		return rv;
-	lock();
+
+	STM32_FLASH_CR &= ~FLASH_CR_OPTSTRT;
+	ob_lock();
 
 	return EC_SUCCESS;
 }
@@ -263,6 +284,10 @@ int flash_physical_write(int offset, int size, const char *data)
 	int i;
 	int unaligned = (uint32_t)data & (STM32_FLASH_MIN_WRITE_SIZE - 1);
 	uint32_t *data32 = (void *)data;
+
+	/* Check Flash offset */
+	if (offset % STM32_FLASH_MIN_WRITE_SIZE)
+		return EC_ERROR_MEMORY_ALLOCATION;
 
 	if (unlock(FLASH_CR_LOCK) != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
@@ -437,9 +462,31 @@ uint32_t flash_physical_get_protect_flags(void)
 	return flags;
 }
 
+/*	STM32 does not support WRP change on the fly	*/
 int flash_physical_protect_now(int all)
 {
 	return EC_ERROR_INVAL;
+}
+
+/*
+ * Reload Option Bytes
+ */
+int flash_physical_force_reload(void)
+{
+	int ret = unlock(FLASH_CR_OPTLOCK);
+
+	if (ret)
+		return ret;
+
+	/* Reload Option Byte
+	 * Note: It will cause a system reset!
+	 */
+	STM32_FLASH_CR |= FLASH_CR_OBL_LAUNCH;
+
+	while (1)
+		;
+
+	return EC_ERROR_HW_INTERNAL;
 }
 
 uint32_t flash_physical_get_valid_flags(void)
