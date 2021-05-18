@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87969941_1f70d553",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2407,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-18T22:57:02Z",
+      "side": 1,
+      "message": "Is there any particular reason we need to seed from Attached.SNK versus seeding ports during init time?",
+      "revId": "2bed02e09d06e6d00a7f10d6640bb992612dcadb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
