@@ -204,7 +204,15 @@ static inline int tcpm_sop_prime_enable(int port, bool enable)
 
 static inline int tcpm_set_vconn(int port, int enable)
 {
-	return tcpc_config[port].drv->set_vconn(port, enable);
+#ifdef CONFIG_USB_PD_TCPC_VCONN
+	int rv;
+
+	rv = tcpc_config[port].drv->set_vconn(port, enable);
+	if (rv)
+		return rv;
+#endif
+
+	return tcpm_sop_prime_enable(port, enable);
 }
 
 static inline int tcpm_set_msg_header(int port, int power_role, int data_role)
@@ -226,6 +234,14 @@ static inline void tcpm_enable_auto_discharge_disconnect(int port, int enable)
 		tcpc->tcpc_enable_auto_discharge_disconnect(port, enable);
 }
 
+static inline int tcpm_reset_bist_type_2(int port)
+{
+	if (tcpc_config[port].drv->reset_bist_type_2 != NULL)
+		return tcpc_config[port].drv->reset_bist_type_2(port);
+	else
+		return EC_SUCCESS;
+}
+
 /**
  * Reads a message using get_message_raw driver method and puts it into EC's
  * cache.
@@ -238,17 +254,11 @@ static inline int tcpm_transmit(int port, enum tcpm_transmit_type type,
 	return tcpc_config[port].drv->transmit(port, type, header, data);
 }
 
-#ifdef CONFIG_USBC_PPC
-static inline int tcpm_get_snk_ctrl(int port, bool *sinking)
+#ifdef CONFIG_USB_PD_PPC
+static inline bool tcpm_get_snk_ctrl(int port)
 {
-	int rv = EC_ERROR_UNIMPLEMENTED;
-
-	if (tcpc_config[port].drv->get_snk_ctrl != NULL)
-		rv = tcpc_config[port].drv->get_snk_ctrl(port, sinking);
-	else
-		*sinking = false;
-
-	return rv;
+	return tcpc_config[port].drv->get_snk_ctrl ?
+		tcpc_config[port].drv->get_snk_ctrl(port) : false;
 }
 static inline int tcpm_set_snk_ctrl(int port, int enable)
 {
@@ -258,16 +268,11 @@ static inline int tcpm_set_snk_ctrl(int port, int enable)
 		return EC_ERROR_UNIMPLEMENTED;
 }
 
-static inline int tcpm_get_src_ctrl(int port, bool *sourcing)
+static inline bool tcpm_get_src_ctrl(int port)
 {
-	int rv = EC_ERROR_UNIMPLEMENTED;
 
-	if (tcpc_config[port].drv->get_src_ctrl != NULL)
-		rv = tcpc_config[port].drv->get_src_ctrl(port, sourcing);
-	else
-		*sourcing = false;
-
-	return rv;
+	return tcpc_config[port].drv->get_src_ctrl ?
+		tcpc_config[port].drv->get_src_ctrl(port) : false;
 }
 static inline int tcpm_set_src_ctrl(int port, int enable)
 {
@@ -445,6 +450,16 @@ int tcpm_set_cc(int port, int pull);
 int tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity);
 
 /**
+ * Enable SOP' message transmit/receive.
+ *
+ * @param port Type-C port number
+ * @param enable Enable/Disable SOP' and SOP'' messages
+ *
+ * @return EC_SUCCESS or error
+ */
+int tcpm_sop_prime_enable(int port, int enable);
+
+/**
  * Set Vconn.
  *
  * @param port Type-C port number
@@ -549,5 +564,13 @@ static inline void tcpm_dump_registers(int port)
 		tcpc_dump_std_registers(port);
 }
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
+
+/**
+ * Disable BIST type-2 mode
+ *
+ * @param port Type-C port number
+ * @return EC_SUCCESS on success, or an error
+ */
+int tcpm_reset_bist_type_2(int port);
 
 #endif

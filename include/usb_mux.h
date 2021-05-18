@@ -58,6 +58,14 @@ struct usb_mux_driver {
 	int (*get)(const struct usb_mux *me, mux_state_t *mux_state);
 
 	/**
+	 * Return if retimer supports firmware update
+	 *
+	 * @return true  - supported
+	 *         false - not supported
+	 */
+	bool (*is_retimer_fw_update_capable)(void);
+
+	/**
 	 * Optional method that is called after the mux fully disconnects.
 	 *
 	 * Note: this method does not need to be defined for TCPC/MUX combos
@@ -145,6 +153,7 @@ extern const struct usb_mux_driver it5205_usb_mux_driver;
 extern const struct usb_mux_driver pi3usb3x532_usb_mux_driver;
 extern const struct usb_mux_driver ps8740_usb_mux_driver;
 extern const struct usb_mux_driver ps8743_usb_mux_driver;
+extern const struct usb_mux_driver ps8822_usb_mux_driver;
 extern const struct usb_mux_driver tcpm_usb_mux_driver;
 extern const struct usb_mux_driver tusb1064_usb_mux_driver;
 extern const struct usb_mux_driver virtual_usb_mux_driver;
@@ -240,6 +249,17 @@ void usb_mux_flip(int port);
  * @param hpd_irq HPD IRQ.
  */
 void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq);
+
+/**
+ * Port information about retimer firmware update support.
+ *
+ * @return which ports support retimer firmware update
+ *         Bits[7:0]: represent PD ports 0-7;
+ *         each bit
+ *         = 1, this port supports retimer firmware update;
+ *         = 0, not support.
+ */
+int usb_mux_retimer_fw_update_port_info(void);
 
 /**
  * Get the disconnect latch flag so that the Kernel Mux driver doesn't

@@ -380,7 +380,7 @@ static int cros_flash_npcx_erase(const struct device *dev, int offset, int size)
 		/* Set erase address */
 		cros_flash_npcx_set_address(dev, offset);
 		/* Start erasing */
-		cros_flash_npcx_exec_cmd(dev, SPI_NOR_CMD_SE, UMA_CODE_CMD_ADR);
+		cros_flash_npcx_exec_cmd(dev, SPI_NOR_CMD_BE, UMA_CODE_CMD_ADR);
 
 		/* Wait erase completed */
 		ret = cros_flash_npcx_wait_ready(dev);
@@ -519,7 +519,6 @@ static const struct cros_flash_npcx_config cros_flash_cfg = {
 
 static struct cros_flash_npcx_data cros_flash_data;
 
-DEVICE_AND_API_INIT(cros_flash_npcx_0, DT_INST_LABEL(0), flash_npcx_init,
-		    &cros_flash_data, &cros_flash_cfg, PRE_KERNEL_1,
-		    CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,
-		    &cros_flash_npcx_driver_api);
+DEVICE_DEFINE(cros_flash_npcx_0, DT_INST_LABEL(0), flash_npcx_init, NULL,
+	      &cros_flash_data, &cros_flash_cfg, PRE_KERNEL_1,
+	      CONFIG_KERNEL_INIT_PRIORITY_DEFAULT, &cros_flash_npcx_driver_api);

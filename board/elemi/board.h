@@ -18,8 +18,6 @@
 #undef CONFIG_CHIP_INIT_ROM_REGION
 
 /* Optional features */
-#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
-
 #define CONFIG_VBOOT_EFS2
 
 #define CONFIG_POWER_BUTTON
@@ -44,6 +42,9 @@
 /* TODO: b/144165680 - measure and check these values on Volteer */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
+/* Experimentally determined. See b/186079130. */
+#undef CONFIG_USBC_VCONN_SWAP_DELAY_US
+#define CONFIG_USBC_VCONN_SWAP_DELAY_US	10000 /* us */
 
 /*
  * SN5S30 PPC supports up to 24V VBUS source and sink, however passive USB-C
@@ -79,6 +80,9 @@
 /* Retimer */
 #undef CONFIG_USBC_RETIMER_INTEL_BB
 #undef CONFIG_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
+
+/* Keyboard feature */
+#define CONFIG_KEYBOARD_FACTORY_TEST
 
 /*
  * Macros for GPIO signals used in common code that don't match the
@@ -146,6 +150,11 @@ enum usbc_port {
 };
 
 void board_reset_pd_mcu(void);
+
+#ifdef CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
+#endif
 
 #endif /* !__ASSEMBLER__ */
 

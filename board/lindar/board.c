@@ -15,6 +15,7 @@
 #include "driver/sync.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
+#include "driver/tcpm/rt1715.h"
 #include "driver/tcpm/tusb422.h"
 #include "extpower.h"
 #include "fan.h"
@@ -89,6 +90,18 @@ static void board_init(void)
 	pwm_set_duty(PWM_CH_LED4_SIDESEL, 50);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+int board_is_i2c_port_powered(int port)
+{
+	if (port != I2C_PORT_LIGHTBAR)
+		return 1;
+
+	/*
+	 * Lightbar rails are off in S5/G3
+	 * Refer CL-2739008.
+	 */
+	return chipset_in_state(CHIPSET_STATE_ANY_OFF) ? 0 : 1;
+}
 
 int board_is_lid_angle_tablet_mode(void)
 {
@@ -249,18 +262,18 @@ const struct fan_t fans[FAN_CH_COUNT] = {
 /*
  * Tiger Lake specifies 100 C as maximum TDP temperature.  THRMTRIP# occurs at
  * 130 C.  However, sensor is located next to DDR, so we need to use the lower
- * DDR temperature limit (85 C)
+ * DDR temperature limit (100 C)
  */
 const static struct ec_thermal_config thermal_cpu = {
 	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(70),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(90),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(100),
 	},
 	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(85),
 	},
-	.temp_fan_off = C_TO_K(35),
-	.temp_fan_max = C_TO_K(50),
+	.temp_fan_off = C_TO_K(30),
+	.temp_fan_max = C_TO_K(60),
 };
 
 /*
@@ -272,18 +285,18 @@ const static struct ec_thermal_config thermal_cpu = {
  * PP3300 regulator: operating range -40 C to 145 C
  *
  * Inductors: limit of 125c
- * PCB: limit is 80c
+ * PCB: limit is 100c
  */
 const static struct ec_thermal_config thermal_inductor = {
 	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(75),
-		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(90),
+		[EC_TEMP_THRESH_HALT] = C_TO_K(100),
 	},
 	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(85),
 	},
-	.temp_fan_off = C_TO_K(40),
-	.temp_fan_max = C_TO_K(55),
+	.temp_fan_off = C_TO_K(30),
+	.temp_fan_max = C_TO_K(60),
 };
 
 
@@ -487,14 +500,14 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
 
 /******************************************************************************/
 /* USBC TCPC configuration */
-const struct tcpc_config_t tcpc_config[] = {
+struct tcpc_config_t tcpc_config[] = {
 	[USBC_PORT_C0] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C0,
-			.addr_flags = TUSB422_I2C_ADDR_FLAGS,
+			.addr_flags = RT1715_I2C_ADDR_FLAGS,
 		},
-		.drv = &tusb422_tcpm_drv,
+		.drv = &rt1715_tcpm_drv,
 	},
 	[USBC_PORT_C1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
@@ -552,6 +565,13 @@ static void board_tcpc_init(void)
 	/* Enable BC1.2 interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
+
+	if (get_board_id() <= 1) {
+		tcpc_config[USBC_PORT_C0].i2c_info.addr_flags =
+			TUSB422_I2C_ADDR_FLAGS;
+		tcpc_config[USBC_PORT_C0].drv = &tusb422_tcpm_drv;
+		tcpc_config[USBC_PORT_C0].flags = 0;
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
