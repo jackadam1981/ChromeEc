@@ -39,6 +39,21 @@ static int dma_get_irq(enum dma_channel channel)
 	return channel > STM32_DMAC_CH3 ?
 		STM32_IRQ_DMA_CHANNEL_4_7 :
 		STM32_IRQ_DMA_CHANNEL_2_3;
+#elif defined(CHIP_FAMILY_STM32L4)
+	int ret;
+
+	if (channel < STM32_DMAC_PER_CTLR)
+		ret = STM32_IRQ_DMA_CHANNEL_1 + channel;
+	else {
+		if (channel <= STM32_DMAC_CH13)
+			ret = STM32_IRQ_DMA2_CHANNEL1 +
+			      (channel - STM32_DMAC_PER_CTLR);
+		else
+			ret = STM32_IRQ_DMA2_CHANNEL6 +
+			      (channel - STM32_DMAC_PER_CTLR - 5);
+	}
+
+	return ret;
 #else
 	if (channel < STM32_DMAC_PER_CTLR)
 		return STM32_IRQ_DMA_CHANNEL_1 + channel;
@@ -59,7 +74,17 @@ stm32_dma_chan_t *dma_get_channel(enum dma_channel channel)
 	return &dma->chan[channel % STM32_DMAC_PER_CTLR];
 }
 
-#ifdef STM32_DMA_CSELR
+#ifdef STM32_DMAMUX_CxCR
+void dma_select_channel(enum dma_channel channel, uint8_t req)
+{
+	/*
+	 * STM32G4 includes a DMAMUX block which is used to handle dma requests
+	 * by peripherals. The correct 'req' number for a given peripheral is
+	 * given in ST doc RM0440.
+	 */
+	STM32_DMAMUX_CxCR(channel) = req;
+}
+#elif defined(STM32_DMA_CSELR)
 void dma_select_channel(enum dma_channel channel, unsigned char stream)
 {
 	/* Local channel # starting from 0 on each DMA controller */
@@ -73,13 +98,14 @@ void dma_select_channel(enum dma_channel channel, unsigned char stream)
 	val = STM32_DMA_CSELR(channel) & ~(mask << ch * shift);
 	STM32_DMA_CSELR(channel) = val | (stream << ch * shift);
 }
-#endif
+#endif /* STM32_DMAMUX_CxCR/STM32_DMA_CSELR */
 
 void dma_disable(enum dma_channel channel)
 {
 	stm32_dma_chan_t *chan = dma_get_channel(channel);
 
-	chan->ccr &= ~STM32_DMA_CCR_EN;
+	if (chan->ccr & STM32_DMA_CCR_EN)
+		chan->ccr &= ~STM32_DMA_CCR_EN;
 }
 
 void dma_disable_all(void)
@@ -88,6 +114,7 @@ void dma_disable_all(void)
 
 	for (ch = 0; ch < STM32_DMAC_COUNT; ch++) {
 		stm32_dma_chan_t *chan = dma_get_channel(ch);
+
 		chan->ccr &= ~STM32_DMA_CCR_EN;
 	}
 }
@@ -103,8 +130,8 @@ void dma_disable_all(void)
  *				STM32_DMA_CCR_MINC | STM32_DMA_CCR_DIR for tx
  *				0 for rx
  */
-static void prepare_channel(enum dma_channel channel, unsigned count,
-		void *periph, void *memory, unsigned flags)
+static void prepare_channel(enum dma_channel channel, unsigned int count,
+		void *periph, void *memory, unsigned int flags)
 {
 	stm32_dma_chan_t *chan = dma_get_channel(channel);
 	uint32_t ccr = STM32_DMA_CCR_PL_VERY_HIGH;
@@ -130,7 +157,7 @@ void dma_go(stm32_dma_chan_t *chan)
 	chan->ccr |= STM32_DMA_CCR_EN;
 }
 
-void dma_prepare_tx(const struct dma_option *option, unsigned count,
+void dma_prepare_tx(const struct dma_option *option, unsigned int count,
 		    const void *memory)
 {
 	/*
@@ -142,10 +169,11 @@ void dma_prepare_tx(const struct dma_option *option, unsigned count,
 			option->flags);
 }
 
-void dma_start_rx(const struct dma_option *option, unsigned count,
+void dma_start_rx(const struct dma_option *option, unsigned int count,
 		  void *memory)
 {
 	stm32_dma_chan_t *chan = dma_get_channel(option->channel);
+
 	prepare_channel(option->channel, count, option->periph, memory,
 			STM32_DMA_CCR_MINC | option->flags);
 	dma_go(chan);
@@ -200,7 +228,7 @@ void dma_test(enum dma_channel channel)
 	stm32_dma_chan_t *chan = dma_get_channel(channel);
 	uint32_t ctrl;
 	char periph[16], memory[16];
-	unsigned count = sizeof(periph);
+	unsigned int count = sizeof(periph);
 	int i;
 
 	memset(memory, '\0', sizeof(memory));
@@ -232,6 +260,9 @@ void dma_init(void)
 {
 #if defined(CHIP_FAMILY_STM32L4)
 	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN|STM32_RCC_AHB1ENR_DMA2EN;
+#elif defined(CHIP_FAMILY_STM32G4)
+	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN|STM32_RCC_AHB1ENR_DMA2EN |
+		STM32_RCC_AHB1ENR_DMAMUXEN;
 #else
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA1;
 #endif
@@ -261,6 +292,7 @@ int dma_wait(enum dma_channel channel)
 static inline void _dma_wake_callback(void *cb_data)
 {
 	task_id_t id = (task_id_t)(int)cb_data;
+
 	if (id != TASK_ID_INVALID)
 		task_set_event(id, TASK_EVENT_DMA_TC, 0);
 }
@@ -355,7 +387,7 @@ DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_4_7, dma_event_interrupt_channel_4_7, 1);
 				(dma_irq[CONCAT2(STM32_DMAC_CH, x)].cb_data); \
 	} \
 	DECLARE_IRQ(CONCAT2(STM32_IRQ_DMA_CHANNEL_, x), \
-		    CONCAT2(dma_event_interrupt_channel_, x), 1);
+		    CONCAT2(dma_event_interrupt_channel_, x), 1)
 
 DECLARE_DMA_IRQ(1);
 DECLARE_DMA_IRQ(2);
@@ -367,6 +399,15 @@ DECLARE_DMA_IRQ(7);
 #ifdef CHIP_FAMILY_STM32F3
 DECLARE_DMA_IRQ(9);
 DECLARE_DMA_IRQ(10);
+#endif
+#ifdef CHIP_FAMILY_STM32L4
+DECLARE_DMA_IRQ(9);
+DECLARE_DMA_IRQ(10);
+DECLARE_DMA_IRQ(11);
+DECLARE_DMA_IRQ(12);
+DECLARE_DMA_IRQ(13);
+DECLARE_DMA_IRQ(14);
+DECLARE_DMA_IRQ(15);
 #endif
 
 #endif /* CHIP_FAMILY_STM32F0 */

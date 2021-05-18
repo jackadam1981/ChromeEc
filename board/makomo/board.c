@@ -12,6 +12,7 @@
 #include "charge_state.h"
 #include "charger.h"
 #include "chipset.h"
+#include "clock-l4.h"
 #include "common.h"
 #include "console.h"
 #include "driver/accel_lis2dw12.h"
@@ -59,8 +60,10 @@ static void tcpc_alert_event(enum gpio_signal signal)
 /******************************************************************************/
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
-	[ADC_BOARD_ID] =  {"BOARD_ID",  3300, 4096, 0, STM32_AIN(10)},
-	[ADC_EC_SKU_ID] = {"EC_SKU_ID", 3300, 4096, 0, STM32_AIN(8)},
+	[ADC_BOARD_ID] = { "BOARD_ID", 1800, 4096, 0, STM32_AIN(5),
+			   STM32_RANK(1) },
+	[ADC_EC_SKU_ID] = { "EC_SKU_ID", 1800, 4096, 0, STM32_AIN(15),
+			    STM32_RANK(2) },
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -68,12 +71,12 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"typec", 0, 400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
-	{"other", 1, 400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
+	{"other", 2, 400, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 const struct i2c_port_t i2c_bitbang_ports[] = {
-	{"battery", 2, 100, GPIO_I2C3_SCL, GPIO_I2C3_SDA, .drv = &bitbang_drv},
+	{"battery", 3, 100, GPIO_I2C4_SCL, GPIO_I2C4_SDA, .drv = &bitbang_drv},
 };
 const unsigned int i2c_bitbang_ports_used = ARRAY_SIZE(i2c_bitbang_ports);
 
@@ -241,19 +244,32 @@ void bc12_interrupt(enum gpio_signal signal)
 #ifndef VARIANT_KUKUI_NO_SENSORS
 static void board_spi_enable(void)
 {
+	/* Set I/O speed before AF configured */
+	/* EMMC SPI SLAVE: PB13/14/15 */
+	/* SENSORS SPI MASTER: PB10, PB12, PC2, PC3 */
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xFF300000;
+	STM32_GPIO_OSPEEDR(GPIO_C) |= 0x000000F0;
+
 	/*
 	 * Pin mux spi peripheral away from emmc, since RO might have
 	 * left them there.
 	 */
 	gpio_config_module(MODULE_SPI_FLASH, 0);
+#ifdef CHIP_FAMILY_STM32L4
+	/* Enable clocks to SPI2 module. */
+	clock_enable_module(MODULE_SPI_FLASH, 1);
 
+	/* Reset SPI2 to clear state left over from the emmc slave. */
+	STM32_RCC_APB1RSTR1 |= STM32_RCC_PB1_SPI2;
+	STM32_RCC_APB1RSTR1 &= ~STM32_RCC_PB1_SPI2;
+#else
 	/* Enable clocks to SPI2 module. */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
 
 	/* Reset SPI2 to clear state left over from the emmc slave. */
 	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
 	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
-
+#endif
 	/* Reinitialize spi peripheral. */
 	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
 
@@ -273,7 +289,11 @@ static void board_spi_disable(void)
 
 	/* Disable spi peripheral and clocks. */
 	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
+#ifdef CHIP_FAMILY_STM32L4
+	STM32_RCC_APB1ENR1 &= ~STM32_RCC_PB1_SPI2;
+#else
 	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
 	     board_spi_disable,
@@ -410,6 +430,13 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
+
+void motion_interrupt(enum gpio_signal signal)
+{
+		bmi160_interrupt(signal);
+}
+
+
 const struct it8801_pwm_t it8801_pwm_channels[] = {
 	[IT8801_PWM_CH_KBLIGHT] = {.index = 4},
 };
@@ -466,11 +493,11 @@ DECLARE_HOOK(HOOK_INIT, board_chipset_resume, HOOK_PRIO_DEFAULT);
 /* Called on AP S0 -> S0iX transition */
 static void board_chipset_suspend(void)
 {
+
 #ifndef VARIANT_KUKUI_NO_SENSORS
 	if (board_has_kb_backlight())
 		ioex_set_level(IOEX_KB_BL_EN, 0);
 #endif
-
 	/* Quick charge mode */
 	sb_quick_charge_mode(1);
 }
@@ -493,12 +520,12 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 int board_get_charger_i2c(void)
 {
 	/* TODO(b:138415463): confirm the bus allocation for future builds */
-	return board_get_version() == 1 ? 2 : 1;
+	return 2;
 }
 
 int board_get_battery_i2c(void)
 {
-	return board_get_version() >= 1 ? 2 : 1;
+	return 3;
 }
 
 #ifdef SECTION_IS_RW
