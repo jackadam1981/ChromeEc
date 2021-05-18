@@ -155,7 +155,8 @@ static void vboot_hash_next_chunk(void)
 	}
 
 	/* If we're still here, more work to do; come back later */
-	hook_call_deferred(&vboot_hash_next_chunk_data, WORK_INTERVAL_US);
+	//hook_call_deferred(&vboot_hash_next_chunk_data, WORK_INTERVAL_US);
+	hook_call_deferred(&vboot_hash_next_chunk_data, 500);
 }
 
 /**
