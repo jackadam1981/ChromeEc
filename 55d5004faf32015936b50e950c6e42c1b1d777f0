@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c7d8b53_81dbaffe",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-18T21:05:18Z",
+      "side": 1,
+      "message": "How often do you see the interrupts fire?  If I remember right, we removed the Vbus detection interrupts because there were some voltages where we\u0027d just get a constant flow of interrupts",
+      "revId": "55d5004faf32015936b50e950c6e42c1b1d777f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3d93225_7f625d82",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-18T21:05:18Z",
+      "side": 1,
+      "message": "Still needed?",
+      "revId": "55d5004faf32015936b50e950c6e42c1b1d777f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c323a510_ef617a40",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-18T21:05:18Z",
+      "side": 1,
+      "message": "SM5803_FLOW1_MODE?",
+      "range": {
+        "startLine": 1501,
+        "startChar": 8,
+        "endLine": 1501,
+        "endChar": 15
+      },
+      "revId": "55d5004faf32015936b50e950c6e42c1b1d777f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
