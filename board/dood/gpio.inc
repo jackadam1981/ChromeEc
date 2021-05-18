@@ -33,7 +33,11 @@ GPIO_INT(ALL_SYS_PGOOD,	 PIN(F, 4), GPIO_INT_BOTH, power_signal_interrupt)	/* PM
 
 /* Other interrupts */
 GPIO_INT(WP_L,			PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)            /* EC_WP_ODL */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 GPIO_INT(TABLET_MODE_L,         PIN(8, 6), GPIO_INT_BOTH, hall_sensor_isr)
+=======
+GPIO_INT(TABLET_MODE_L,         PIN(8, 6), GPIO_INT_BOTH, gmr_tablet_switch_isr)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 GPIO_INT(EC_VOLUP_BTN_ODL,	PIN(7, 5), GPIO_INT_BOTH, button_interrupt)
 GPIO_INT(EC_VOLDN_BTN_ODL,	PIN(4, 0), GPIO_INT_BOTH, button_interrupt)
 

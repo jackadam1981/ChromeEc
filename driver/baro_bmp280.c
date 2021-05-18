@@ -98,7 +98,7 @@ static int bmp280_get_calib_param(const struct motion_sensor_t *s)
 	uint8_t a_data_u8[BMP280_CALIB_DATA_SIZE] = {0};
 	struct bmp280_drv_data_t *data = BMP280_GET_DATA(s);
 
-	ret = i2c_read_block(s->port, s->addr,
+	ret = i2c_read_block(s->port, s->i2c_spi_addr_flags,
 			BMP280_TEMPERATURE_CALIB_DIG_T1_LSB_REG,
 			a_data_u8, BMP280_CALIB_DATA_SIZE);
 
@@ -129,7 +129,7 @@ static int bmp280_read_uncomp_pressure(const struct motion_sensor_t *s,
 	int ret;
 	uint8_t a_data_u8[BMP280_PRESSURE_DATA_SIZE] = {0};
 
-	ret = i2c_read_block(s->port, s->addr,
+	ret = i2c_read_block(s->port, s->i2c_spi_addr_flags,
 			BMP280_PRESSURE_MSB_REG,
 			a_data_u8, BMP280_PRESSURE_DATA_SIZE);
 
@@ -218,13 +218,13 @@ static int bmp280_set_standby_durn(const struct motion_sensor_t *s,
 {
 	int ret, val;
 
-	ret = i2c_read8(s->port, s->addr,
+	ret = i2c_read8(s->port, s->i2c_spi_addr_flags,
 			BMP280_CONFIG_REG, &val);
 
 	if (ret == EC_SUCCESS) {
 		val = (val & 0xE0) | ((durn << 5) & 0xE0);
 		/* write the standby duration*/
-		ret = i2c_write8(s->port, s->addr,
+		ret = i2c_write8(s->port, s->i2c_spi_addr_flags,
 			   BMP280_CONFIG_REG, val);
 	}
 
@@ -239,10 +239,11 @@ static int bmp280_set_power_mode(const struct motion_sensor_t *s,
 	val = (BMP280_OVERSAMP_TEMP << 5) +
 		(BMP280_OVERSAMP_PRES << 2) + power_mode;
 
-	return i2c_write8(s->port, s->addr, BMP280_CTRL_MEAS_REG, val);
+	return i2c_write8(s->port, s->i2c_spi_addr_flags,
+			  BMP280_CTRL_MEAS_REG, val);
 }
 
-static int bmp280_set_range(const struct motion_sensor_t *s,
+static int bmp280_set_range(struct motion_sensor_t *s,
 				int range,
 				int rnd)
 {
@@ -252,14 +253,8 @@ static int bmp280_set_range(const struct motion_sensor_t *s,
 	 * measurment to fit into 16 bits (or less if the AP wants to).
 	 */
 	data->range = 15 - __builtin_clz(range);
+	s->current_range = 1 << (16 + data->range);
 	return EC_SUCCESS;
-}
-
-static int bmp280_get_range(const struct motion_sensor_t *s)
-{
-	struct bmp280_drv_data_t *data = BMP280_GET_DATA(s);
-
-	return 1 << (16 + data->range);
 }
 
 /*
@@ -269,7 +264,7 @@ static int bmp280_get_range(const struct motion_sensor_t *s)
  * @retval 0 -> Success
  */
 
-static int bmp280_init(const struct motion_sensor_t *s)
+static int bmp280_init(struct motion_sensor_t *s)
 {
 	int val, ret;
 
@@ -277,8 +272,8 @@ static int bmp280_init(const struct motion_sensor_t *s)
 		return EC_ERROR_INVAL;
 
 	/* Read chip id */
-	ret = i2c_read8(s->port, s->addr,
-				BMP280_CHIP_ID_REG, &val);
+	ret = i2c_read8(s->port, s->i2c_spi_addr_flags,
+			BMP280_CHIP_ID_REG, &val);
 	if (ret)
 		return ret;
 
@@ -371,7 +366,6 @@ const struct accelgyro_drv bmp280_drv = {
 	.init = bmp280_init,
 	.read = bmp280_read,
 	.set_range = bmp280_set_range,
-	.get_range = bmp280_get_range,
 	.set_data_rate = bmp280_set_data_rate,
 	.get_data_rate = bmp280_get_data_rate,
 };

@@ -35,7 +35,7 @@
 
 	/* Internal SPI flash on NPCX7 */
 	/* Flash is 1MB but reserve half for future use. */
-	#define CONFIG_FLASH_SIZE (512 * 1024)
+	#define CONFIG_FLASH_SIZE_BYTES (512 * 1024)
 
 	#define CONFIG_SPI_FLASH_REGS
 	#define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
@@ -47,7 +47,7 @@
 	#define I2C_PORT_EEPROM		NPCX_I2C_PORT3_0
 	#define I2C_PORT_CHARGER	NPCX_I2C_PORT4_1
 	#define I2C_PORT_SENSOR		NPCX_I2C_PORT7_0
-	#define I2C_ADDR_EEPROM		0xA0
+	#define I2C_ADDR_EEPROM_FLAGS	0x50
 
 	/* Enable PSL hibernate mode. */
 	#define CONFIG_HIBERNATE_PSL
@@ -58,9 +58,8 @@
 	/* Allow the EC to enter deep sleep in S0 */
 	#define CONFIG_LOW_POWER_S0
 #elif defined(VARIANT_OCTOPUS_EC_ITE8320)
-	 /* Flash clock must be > (50Mhz / 2) */
-	#define CONFIG_IT83XX_FLASH_CLOCK_48MHZ
-
+	/* IT83XX config */
+	#define CONFIG_IT83XX_VCC_1P8V
 	/* I2C Bus Configuration */
 	#define I2C_PORT_BATTERY	IT83XX_I2C_CH_A	/* Shared bus */
 	#define I2C_PORT_CHARGER	IT83XX_I2C_CH_A	/* Shared bus */
@@ -69,7 +68,8 @@
 	#define I2C_PORT_USBC1		IT83XX_I2C_CH_E
 	#define I2C_PORT_USB_MUX	I2C_PORT_USBC0	/* For MUX driver */
 	#define I2C_PORT_EEPROM		IT83XX_I2C_CH_F
-	#define I2C_ADDR_EEPROM		0xA0
+	#define I2C_ADDR_EEPROM_FLAGS	0x50
+	#define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT 2
 
 	/* EC variant determines USB-C variant */
 	#define VARIANT_OCTOPUS_USBC_ITE_EC_TCPCS
@@ -79,7 +79,7 @@
 
 /* Common EC defines */
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_I2C_BUS_MAY_BE_UNPOWERED
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
@@ -89,6 +89,10 @@
 #define CONFIG_BOARD_VERSION_CBI
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_DPTF
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+#define CONFIG_DO_NOT_INCLUDE_RV32I_PANIC_DATA
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #define CONFIG_BOARD_HAS_RTC_RESET
 #define CONFIG_LED_ONOFF_STATES
 #define CONFIG_CMD_CHARGEN
@@ -144,7 +148,6 @@
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGE_RAMP_HW
 #define CONFIG_CHARGER
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHARGER_INPUT_CURRENT 512 /* Allow low-current USB charging */
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 1
 #define CONFIG_CHARGER_SENSE_RESISTOR 10
@@ -182,9 +185,10 @@
 	#undef CONFIG_USB_PD_TCPC_LOW_POWER
 	#undef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	#define CONFIG_USB_PD_VBUS_DETECT_PPC
-	#define CONFIG_USB_PD_TCPM_ITE83XX	/* C0 & C1 TCPC: ITE EC */
+	#define CONFIG_USB_PD_TCPM_ITE_ON_CHIP	/* C0 & C1 TCPC: ITE EC */
 	#define CONFIG_USB_MUX_IT5205		/* C0 MUX: IT5205 */
 	#define CONFIG_USB_PD_TCPM_PS8751	/* C1 Mux: PS8751 */
+	#define CONFIG_USB_PD_TCPM_PS8751_CUSTOM_MUX_DRIVER
 	#define CONFIG_USBC_PPC_SN5S330		/* C0 & C1 PPC: each SN5S330 */
 	#define CONFIG_USBC_PPC_VCONN
 	#define CONFIG_USBC_PPC_DEDICATED_INT
@@ -195,7 +199,19 @@
 /* Common USB-C defines */
 #define USB_PD_PORT_TCPC_0	0
 #define USB_PD_PORT_TCPC_1	1
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+#define CONFIG_USB_PID 0x5046
+
+#define CONFIG_USB_DRP_ACC_TRYSRC
+#define CONFIG_USB_PD_DECODE_SOP
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #define CONFIG_USB_POWER_DELIVERY
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+#define CONFIG_USB_PD_TCPMV2
+#define CONFIG_USB_PD_3A_PORTS 0
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_LOGGING
@@ -213,13 +229,16 @@
 #define CONFIG_BC12_DETECT_MAX14637
 #undef CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS
 #define CONFIG_BC12_MAX14637_DELAY_FROM_OFF_TO_ON_MS 100
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #define CONFIG_CMD_PD_CONTROL
+=======
+#define CONFIG_HOSTCMD_PD_CONTROL
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #define CONFIG_CMD_PPC_DUMP
 
 /* TODO(b/76218141): Use correct PD delay values */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000	/* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	250000	/* us */
-#define PD_VCONN_SWAP_DELAY		5000	/* us */
 
 /* TODO(b/76218141): Use correct PD power values */
 #define PD_OPERATING_POWER_MW	15000
@@ -267,6 +286,10 @@
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PWRBTN_ASSERTS_KSI2
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+#undef  CONFIG_KEYBOARD_VIVALDI
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 /*******************************************************************************
  * Sensor Config
@@ -274,14 +297,20 @@
 
 /* Common Sensor Defines */
 #define CONFIG_TABLET_MODE
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #define CONFIG_HALL_SENSOR
 #define HALL_SENSOR_GPIO_L GPIO_TABLET_MODE_L
+=======
+#define CONFIG_GMR_TABLET_MODE
+#define GMR_TABLET_MODE_GPIO_L GPIO_TABLET_MODE_L
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 /*
  * Slew rate on the PP1800_SENSOR load switch requires a short delay on startup.
  */
 #undef  CONFIG_MOTION_SENSE_RESUME_DELAY_US
 #define CONFIG_MOTION_SENSE_RESUME_DELAY_US (10 * MSEC)
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /*
  * Interrupt and fifo are only used for base accelerometer
  * and the lid sensor is polled real-time (in forced mode).
@@ -298,34 +327,36 @@
  * hardware pin to send interrupt from EC -> AP (except casta).
  */
 #define CONFIG_MKBP_EVENT
+=======
+#ifndef VARIANT_OCTOPUS_NO_SENSORS
+/*
+ * Interrupt and fifo are only used for base accelerometer
+ * and the lid sensor is polled real-time (in forced mode).
+ */
+#define CONFIG_ACCEL_INTERRUPTS
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
+/* Power of 2 - Too large of a fifo causes too much timestamp jitter */
+#define CONFIG_ACCEL_FIFO_SIZE 256
+/* Depends on how fast the AP boots and typical ODRs */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+#endif /* VARIANT_OCTOPUS_NO_SENSORS */
+
+/*
+ * Sensor stack in EC/Kernel depends on a hardware interrupt pin from EC->AP, so
+ * do not define CONFIG_MKBP_USE_HOST_EVENT since all octopus boards use
+ * hardware pin to send interrupt from EC -> AP (except casta).
+ */
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
 
-enum power_signal {
-#ifdef CONFIG_POWER_S0IX
-	X86_SLP_S0_N,		/* PCH  -> SLP_S0_L */
-#endif
-	X86_SLP_S3_N,		/* PCH  -> SLP_S3_L */
-	X86_SLP_S4_N,		/* PCH  -> SLP_S4_L */
-	X86_SUSPWRDNACK,	/* PCH  -> SUSPWRDNACK */
-
-	X86_ALL_SYS_PG,		/* PMIC -> PMIC_EC_PWROK_OD */
-	X86_RSMRST_N,		/* PMIC -> PMIC_EC_RSMRST_ODL */
-	X86_PGOOD_PP3300,	/* PMIC -> PP3300_PG_OD */
-	X86_PGOOD_PP5000,	/* PMIC -> PP5000_PG_OD */
-
-	/* Number of X86 signals */
-	POWER_SIGNAL_COUNT
-};
-
 /* Forward declare common (within octopus) board-specific functions */
 void board_reset_pd_mcu(void);
-
-#ifdef VARIANT_OCTOPUS_USBC_ITE_EC_TCPCS
-void board_pd_vconn_ctrl(int port, int cc_pin, int enabled);
-#endif
 
 #ifdef VARIANT_OCTOPUS_USBC_STANDALONE_TCPCS
 void tcpc_alert_event(enum gpio_signal signal);

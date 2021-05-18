@@ -35,6 +35,13 @@
 /* Sense resistor configurations and macros */
 #define DEFAULT_SENSE_RESISTOR 10
 
+#ifdef CONFIG_CHARGER_SENSE_RESISTOR_AC_BQ25710
+	#undef CONFIG_CHARGER_SENSE_RESISTOR_AC
+	#define CONFIG_CHARGER_SENSE_RESISTOR_AC \
+		CONFIG_CHARGER_SENSE_RESISTOR_AC_BQ25710
+#endif
+
+
 #define INPUT_RESISTOR_RATIO \
 	((CONFIG_CHARGER_SENSE_RESISTOR_AC) / DEFAULT_SENSE_RESISTOR)
 #define REG_TO_INPUT_CURRENT(REG) ((REG + 1) * 50 / INPUT_RESISTOR_RATIO)
@@ -91,7 +98,10 @@ static inline enum ec_error_list raw_write16(int chgnum, int offset, int value)
 
 #if defined(CONFIG_CHARGE_RAMP_HW) || \
 	defined(CONFIG_USB_PD_VBUS_MEASURE_CHARGER)
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_USB_PD_VBUS_MEASURE_CHARGER
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 static int bq25710_get_low_power_mode(int chgnum, int *mode)
 {
 	int rv;
@@ -146,6 +156,7 @@ static int bq25710_set_low_power_mode(int chgnum, int enable)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_USB_PD_VBUS_MEASURE_CHARGER
 static int bq25710_adc_start(int chgnum, int adc_en_mask)
 {
@@ -191,6 +202,51 @@ static int bq25710_adc_start(int chgnum, int adc_en_mask)
 	return EC_SUCCESS;
 }
 #endif //CONFIG_USB_PD_VBUS_MEASURE_CHARGER
+=======
+static int bq25710_adc_start(int chgnum, int adc_en_mask)
+{
+	int reg;
+	int mode;
+	int tries_left = 8;
+
+	/* Save current mode to restore same state after ADC read */
+	if (bq25710_get_low_power_mode(chgnum, &mode))
+		return EC_ERROR_UNKNOWN;
+
+	/* Exit low power mode so ADC conversion takes typical time */
+	if (bq25710_set_low_power_mode(chgnum, 0))
+		return EC_ERROR_UNKNOWN;
+
+	/*
+	 * Turn on the ADC for one reading. Note that adc_en_mask
+	 * maps to bit[7:0] in ADCOption register.
+	 */
+	reg = (adc_en_mask & BQ25710_ADC_OPTION_EN_ADC_ALL) |
+	      BQ25710_ADC_OPTION_ADC_START;
+	if (raw_write16(chgnum, BQ25710_REG_ADC_OPTION, reg))
+		return EC_ERROR_UNKNOWN;
+
+	/*
+	 * Wait until the ADC operation completes. The spec says typical
+	 * conversion time is 10 msec. If low power mode isn't exited first,
+	 * then the conversion time jumps to ~60 msec.
+	 */
+	do {
+		msleep(2);
+		raw_read16(chgnum, BQ25710_REG_ADC_OPTION, &reg);
+	} while (--tries_left && (reg & BQ25710_ADC_OPTION_ADC_START));
+
+	/* ADC reading attempt complete, go back to low power mode */
+	if (bq25710_set_low_power_mode(chgnum, mode))
+		return EC_ERROR_UNKNOWN;
+
+	/* Could not complete read */
+	if (reg & BQ25710_ADC_OPTION_ADC_START)
+		return EC_ERROR_TIMEOUT;
+
+	return EC_SUCCESS;
+}
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #endif
 
 static void bq25710_init(int chgnum)
@@ -209,7 +265,11 @@ static void bq25710_init(int chgnum)
 	 * may not be powered if AC is not connected. Note, this reset is only
 	 * required when running out of RO and not following sysjump to RW.
 	 */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	if (!system_is_in_rw()) {
+=======
+	if (!system_jumped_late()) {
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		rv = bq25710_set_low_power_mode(chgnum, 0);
 		/* Allow enough time for VDDA to be powered */
 		msleep(BQ25710_VDDA_STARTUP_DELAY_MSEC);
@@ -288,8 +348,7 @@ static enum ec_error_list bq25710_post_init(int chgnum)
 	 *	discharge on AC     = disabled
 	 */
 
-	/* Set charger input current limit */
-	return charger_set_input_current(CONFIG_CHARGER_INPUT_CURRENT);
+	return EC_SUCCESS;
 }
 
 static enum ec_error_list bq25710_get_status(int chgnum, int *status)
@@ -341,12 +400,15 @@ static enum ec_error_list bq25710_set_otg_current_voltage(int chgum,
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 int charger_is_sourcing_otg_power(int port)
 {
 	/* Add when needed. */
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 static enum ec_error_list bq25710_get_current(int chgnum, int *current)
 {
 	int rv, reg;
@@ -392,8 +454,13 @@ static enum ec_error_list bq25710_discharge_on_ac(int chgnum, int enable)
 	return bq25710_set_option(chgnum, option);
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static enum ec_error_list bq25710_set_input_current(int chgnum,
 						    int input_current)
+=======
+static enum ec_error_list bq25710_set_input_current_limit(int chgnum,
+							  int input_current)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	int num_steps = INPUT_CURRENT_TO_REG(input_current);
 
@@ -401,8 +468,13 @@ static enum ec_error_list bq25710_set_input_current(int chgnum,
 			  BQ25710_CHARGE_IIN_BIT_0FFSET);
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static enum ec_error_list bq25710_get_input_current(int chgnum,
 						    int *input_current)
+=======
+static enum ec_error_list bq25710_get_input_current_limit(int chgnum,
+							  int *input_current)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	int rv, reg;
 
@@ -432,6 +504,7 @@ static enum ec_error_list bq25710_device_id(int chgnum, int *id)
 }
 
 #ifdef CONFIG_USB_PD_VBUS_MEASURE_CHARGER
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static int bq25710_get_vbus_voltage(int chgnum, int port)
 {
 	int reg, rv;
@@ -462,6 +535,56 @@ error:
 static int bq25710_get_vbus_voltage(int chgnum, int port)
 {
 	return EC_ERROR_UNIMPLEMENTED;
+=======
+
+#if defined(CONFIG_CHARGER_BQ25720)
+
+static int reg_adc_vbus_to_mv(int reg)
+{
+	/*
+	 * LSB => 96mV, no DC offset.
+	 */
+	return reg * BQ25720_ADC_VBUS_STEP_MV;
+}
+
+#elif defined(CONFIG_CHARGER_BQ25710)
+
+static int reg_adc_vbus_to_mv(int reg)
+{
+	/*
+	 * LSB => 64mV.
+	 * Return 0 when VBUS <= 3.2V as ADC can't measure it.
+	 */
+	return reg ?
+		(reg * BQ25710_ADC_VBUS_STEP_MV + BQ25710_ADC_VBUS_BASE_MV) : 0;
+}
+
+#else
+#error Only the BQ25720 and BQ25710 are supported by bq25710 driver.
+#endif
+
+static enum ec_error_list bq25710_get_vbus_voltage(int chgnum, int port,
+						   int *voltage)
+{
+	int reg, rv;
+
+	rv = bq25710_adc_start(chgnum, BQ25710_ADC_OPTION_EN_ADC_VBUS);
+	if (rv)
+		goto error;
+
+	/* Read ADC value */
+	rv = raw_read16(chgnum, BQ25710_REG_ADC_VBUS_PSYS, &reg);
+	if (rv)
+		goto error;
+
+	reg >>= BQ25710_ADC_VBUS_STEP_BIT_OFFSET;
+	*voltage = reg_adc_vbus_to_mv(reg);
+
+error:
+	if (rv)
+		CPRINTF("Could not read VBUS ADC! Error: %d\n", rv);
+	return rv;
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 #endif
 
@@ -482,6 +605,10 @@ static enum ec_error_list bq25710_set_option(int chgnum, int option)
 static void bq25710_chg_ramp_handle(void)
 {
 	int ramp_curr;
+	int chgnum = 0;
+
+	if (IS_ENABLED(CONFIG_OCPC))
+		chgnum = charge_get_active_chg_chip();
 
 	/*
 	 * Once the charge ramp is stable write back the stable ramp
@@ -489,7 +616,12 @@ static void bq25710_chg_ramp_handle(void)
 	 */
 	ramp_curr = chg_ramp_get_current_limit();
 	if (chg_ramp_is_stable()) {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		if (ramp_curr && !charger_set_input_current(ramp_curr))
+=======
+		if (ramp_curr &&
+		    !charger_set_input_current_limit(chgnum, ramp_curr))
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 			CPRINTF("bq25710: stable ramp current=%d\n", ramp_curr);
 	} else {
 		CPRINTF("bq25710: ICO stall, ramp current=%d\n", ramp_curr);
@@ -514,6 +646,18 @@ static enum ec_error_list bq25710_set_hw_ramp(int chgnum, int enable)
 		return rv;
 
 	if (enable) {
+		/*
+		 * ICO mode can only be used when a battery is present. If there
+		 * is no battery, or if the battery has not recovered yet from
+		 * cutoff, then enabling ICO mode will lead to VSYS
+		 * dropping out.
+		 */
+		if (!battery_is_present() || (battery_get_disconnect_state() !=
+					      BATTERY_NOT_DISCONNECTED)) {
+			CPRINTF("bq25710: no battery, skip ICO enable\n");
+			return EC_ERROR_UNKNOWN;
+		}
+
 		/* Set InputVoltage register to BC1.2 minimum ramp voltage */
 		rv = raw_write16(chgnum, BQ25710_REG_INPUT_VOLTAGE,
 			BQ25710_BC12_MIN_VOLTAGE_MV);
@@ -660,6 +804,7 @@ const struct charger_drv bq25710_drv = {
 	.set_voltage = &bq25710_set_voltage,
 	.discharge_on_ac = &bq25710_discharge_on_ac,
 	.get_vbus_voltage = &bq25710_get_vbus_voltage,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	.set_input_current = &bq25710_set_input_current,
 	.get_input_current = &bq25710_get_input_current,
 	.manufacturer_id = &bq25710_manufacturer_id,
@@ -669,4 +814,17 @@ const struct charger_drv bq25710_drv = {
 	.set_hw_ramp = &bq25710_set_hw_ramp,
 	.ramp_is_stable = &bq25710_ramp_is_stable,
 	.ramp_get_current_limit = &bq25710_ramp_get_current_limit,
+=======
+	.set_input_current_limit = &bq25710_set_input_current_limit,
+	.get_input_current_limit = &bq25710_get_input_current_limit,
+	.manufacturer_id = &bq25710_manufacturer_id,
+	.device_id = &bq25710_device_id,
+	.get_option = &bq25710_get_option,
+	.set_option = &bq25710_set_option,
+#ifdef CONFIG_CHARGE_RAMP_HW
+	.set_hw_ramp = &bq25710_set_hw_ramp,
+	.ramp_is_stable = &bq25710_ramp_is_stable,
+	.ramp_get_current_limit = &bq25710_ramp_get_current_limit,
+#endif /* CONFIG_CHARGE_RAMP_HW */
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 };

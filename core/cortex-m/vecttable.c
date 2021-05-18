@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 The Chromium OS Authors. All rights reserved.
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -92,7 +92,11 @@ void svc_helper_handler()
  */
 #define IRQ_UNUSED_OFFSET 8
 
-#define table(x) func vectors[] __attribute__((section(".text.vecttable,\"a\" @"))) = { x [IRQ_UNUSED_OFFSET] = null };
+#define table(x)								\
+	const func vectors[] __attribute__((section(".text.vecttable"))) = {	\
+		x								\
+		[IRQ_UNUSED_OFFSET] = null					\
+	};
 
 #define vec(name) name ## _handler,
 #define irq(num) [num < CONFIG_IRQ_COUNT ? num + IRQ_OFFSET : IRQ_UNUSED_OFFSET] = vec(irq_ ## num)

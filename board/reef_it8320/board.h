@@ -9,6 +9,13 @@
 #define __CROS_EC_BOARD_H
 
 /*
+ * Enable PD in RO image for TCPMv2, otherwise there is only Type-c functions.
+ * NOTE: This configuration is only for development board and will never be
+ *       released on a chrome os device.
+ */
+#define CONFIG_SYSTEM_UNLOCKED
+
+/*
  * By default, enable all console messages excepted HC, ACPI and event:
  * The sensor stack is generating a lot of activity.
  */
@@ -38,7 +45,6 @@
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGE_RAMP_SW
 #define CONFIG_CHARGER
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHARGER_BD9995X
 #define CONFIG_CHARGER_BD9995X_CHGEN
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
@@ -66,21 +72,31 @@
 /* USB PD config */
 #define CONFIG_USB_MUX_PI3USB30532
 #define CONFIG_USB_MUX_PS8740
-#define CONFIG_CMD_PD_CONTROL
+#define CONFIG_HOSTCMD_PD_CONTROL
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DISCHARGE_GPIO
 #define CONFIG_USB_PD_LOGGING
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #define CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT TYPEC_RP_3A0
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
+=======
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_PD_ITE_ACTIVE_PORT_COUNT 2
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #define CONFIG_USB_PD_VBUS_DETECT_CHARGER
-#define CONFIG_USB_PD_TCPM_ITE83XX
+#define CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV2
+#define CONFIG_USB_DRP_ACC_TRYSRC
+#define CONFIG_USB_PD_REV30
+#define CONFIG_USB_PID 0x1234            /* Invalid PID for development board */
+#define CONFIG_USB_PD_DECODE_SOP
+#define CONFIG_USB_PD_DEBUG_LEVEL 2
 #define CONFIG_USB_PD_COMM_LOCKED
-
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_SS_MUX_DFP_ONLY
 #define CONFIG_USBC_VCONN
@@ -103,7 +119,8 @@
 #undef  CONFIG_EXTPOWER_DEBOUNCE_MS
 #define CONFIG_EXTPOWER_DEBOUNCE_MS 1000
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
+#define CONFIG_IT83XX_VCC_3P3V
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_KEYBOARD_COL2_INVERTED
@@ -129,6 +146,7 @@
 #define CONFIG_WLAN_POWER_ACTIVE_LOW
 #define WIRELESS_GPIO_WLAN_POWER GPIO_WIRELESS_GPIO_WLAN_POWER
 #define CONFIG_PWR_STATE_DISCHARGE_FULL
+#undef CONFIG_KEYBOARD_VIVALDI
 
 /*
  * Enable 1 slot of secure temporary storage to support
@@ -158,23 +176,6 @@ enum adc_channel {
 	ADC_TEMP_SENSOR_AMB,		/* ADC CH2 */
 	ADC_BOARD_ID,			/* ADC CH3 */
 	ADC_CH_COUNT
-};
-
-enum power_signal {
-#ifdef CONFIG_POWER_S0IX
-	X86_SLP_S0_N,
-#endif
-	X86_RSMRST_N,
-	X86_SLP_S3_N,
-	X86_SLP_S4_N,
-	X86_SUSPWRDNACK,
-
-	X86_ALL_SYS_PG,		/* PMIC_EC_PWROK_OD */
-	X86_PGOOD_PP3300,	/* GPIO_PP3300_PG */
-	X86_PGOOD_PP5000,	/* GPIO_PP5000_PG */
-
-	/* Number of X86 signals */
-	POWER_SIGNAL_COUNT
 };
 
 enum temp_sensor_id {
@@ -207,7 +208,6 @@ enum reef_it8320_board_version {
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 
 /* delay to turn on/off vconn */
-#define PD_VCONN_SWAP_DELAY 5000 /* us */
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
@@ -218,8 +218,6 @@ enum reef_it8320_board_version {
 /* Reset PD MCU */
 void board_reset_pd_mcu(void);
 int board_get_version(void);
-/* Turn on/off vconn power switch. */
-void board_pd_vconn_ctrl(int port, int cc_pin, int enabled);
 
 #endif /* !__ASSEMBLER__ */
 

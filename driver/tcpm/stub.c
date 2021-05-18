@@ -6,8 +6,8 @@
 /* TCPM for MCU also running TCPC */
 
 #include "task.h"
-#include "tcpci.h"
-#include "tcpm.h"
+#include "tcpm/tcpci.h"
+#include "tcpm/tcpm.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpc.h"
 #include "usb_pd_tcpm.h"
@@ -47,7 +47,8 @@ int tcpm_init(int port)
 	return init_power_status_mask(port);
 }
 
-int tcpm_get_cc(int port, int *cc1, int *cc2)
+int tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
+	enum tcpc_cc_voltage_status *cc2)
 {
 	return tcpc_get_cc(port, cc1, cc2);
 }
@@ -62,9 +63,9 @@ int tcpm_set_cc(int port, int pull)
 	return tcpc_set_cc(port, pull);
 }
 
-int tcpm_set_polarity(int port, int polarity)
+int tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
-	return tcpc_set_polarity(port, polarity);
+	return tcpc_set_polarity(port, polarity_rm_dts(polarity));
 }
 
 int tcpm_set_vconn(int port, int enable)
@@ -86,6 +87,10 @@ static int tcpm_alert_status(int port, int *alert)
 int tcpm_set_rx_enable(int port, int enable)
 {
 	return tcpc_set_rx_enable(port, enable);
+}
+
+void tcpm_enable_auto_discharge_disconnect(int port, int enable)
+{
 }
 
 int tcpm_has_pending_message(int port)
@@ -131,7 +136,7 @@ void tcpc_alert(int port)
 
 	if (status & TCPC_REG_ALERT_CC_STATUS) {
 		/* CC status changed, wake task */
-		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC);
 	}
 	if (status & TCPC_REG_ALERT_RX_STATUS) {
 		/*
@@ -142,8 +147,8 @@ void tcpc_alert(int port)
 	}
 	if (status & TCPC_REG_ALERT_RX_HARD_RST) {
 		/* hard reset received */
-		pd_execute_hard_reset(port);
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		task_set_event(PD_PORT_TO_TASK_ID(port),
+			       PD_EVENT_RX_HARD_RESET);
 	}
 	if (status & TCPC_REG_ALERT_TX_COMPLETE) {
 		/* transmit complete */

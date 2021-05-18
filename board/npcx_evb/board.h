@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -19,11 +19,11 @@
 #define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands for testing */
 #define CONFIG_SPI_FLASH_PORT 0
 #define CONFIG_SPI_FLASH
-#define CONFIG_FLASH_SIZE          0x00800000 /* 8MB spi flash */
+#define CONFIG_FLASH_SIZE_BYTES          0x00800000 /* 8MB spi flash */
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q64
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_POWER_BUTTON

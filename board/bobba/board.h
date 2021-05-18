@@ -20,10 +20,16 @@
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 
+/* Reduce flash space usage */
+#define CONFIG_DEBUG_ASSERT_BRIEF
+
 #define CONFIG_LED_COMMON
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #define CONFIG_EC_FEATURE_BOARD_OVERRIDE
 
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 /*
  * Some bad battery which can report battery level correctly
  * but D-FET is disabled and can't be revived, so define reset
@@ -39,7 +45,11 @@
 
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 /* Sensors without hardware FIFO are in forced mode */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
+=======
+#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 /* Motion Sense Task Events */
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
@@ -47,6 +57,10 @@
 #define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #define CONFIG_SYNC_INT_EVENT	\
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(VSYNC)
 
@@ -76,6 +90,11 @@
 #define CONFIG_USBC_PPC_DEDICATED_INT
 #undef CONFIG_SYV682X_HV_ILIM
 #define CONFIG_SYV682X_HV_ILIM SYV682X_HV_ILIM_5_50
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+/* SYV682 isn't connected to CC, so TCPC must provide VCONN */
+#define CONFIG_SYV682X_NO_CC
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 #ifndef __ASSEMBLER__
 

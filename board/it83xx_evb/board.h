@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -8,10 +8,11 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-/* NOTE: 0->ec evb, non-zero->pd evb */
-#define IT83XX_PD_EVB  0
+/* Select Baseboard features */
+#include "baseboard.h"
 
 /* Optional features */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #define CONFIG_BATTERY_SMART
 #define CONFIG_BOARD_VERSION_GPIO
 #define CONFIG_FANS 1
@@ -59,16 +60,14 @@
 #undef CONFIG_KEYBOARD_DEBUG
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
+=======
+#define CONFIG_DAC
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
 #include "registers.h"
-
-#define I2C_PORT_CHARGER IT83XX_I2C_CH_C
-#define I2C_PORT_BATTERY IT83XX_I2C_CH_C
-
-#include "gpio_signal.h"
 
 enum pwm_channel {
 	PWM_CH_FAN,
@@ -87,29 +86,6 @@ enum adc_channel {
 	/* Number of ADC channels */
 	ADC_CH_COUNT
 };
-
-#if IT83XX_PD_EVB
-/* Define typical operating power and max power */
-#define PD_OPERATING_POWER_MW 15000
-#define PD_MAX_POWER_MW       60000
-#define PD_MAX_CURRENT_MA     3000
-/* Try to negotiate to 20V since i2c noise problems should be fixed. */
-#define PD_MAX_VOLTAGE_MV     20000
-/* TODO: determine the following board specific type-C power constants */
-/*
- * delay to turn on the power supply max is ~16ms.
- * delay to turn off the power supply max is about ~180ms.
- */
-#define PD_POWER_SUPPLY_TURN_ON_DELAY  30000  /* us */
-#define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
-
-/* delay to turn on/off vconn */
-#define PD_VCONN_SWAP_DELAY 5000 /* us */
-
-int board_get_battery_soc(void);
-void board_pd_vconn_ctrl(int port, int cc_pin, int enabled);
-void board_pd_vbus_ctrl(int port, int enabled);
-#endif
 
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */

@@ -4,7 +4,7 @@
  */
 
 /**
- * LSM6DSx (x is L or M) accelerometer and gyro module for Chrome EC
+ * LSM6DSx (x is L/M/3) accelerometer and gyro module for Chrome EC
  * 3D digital accelerometer & 3D digital gyroscope
  * This driver supports both devices LSM6DSM and LSM6DSL
  */
@@ -15,6 +15,8 @@
 #include "hwtimer.h"
 #include "mag_cal.h"
 #include "math_util.h"
+#include "motion_sense_fifo.h"
+#include "queue.h"
 #include "task.h"
 #include "timer.h"
 
@@ -22,9 +24,76 @@
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_ACCEL_FIFO
 static volatile uint32_t last_interrupt_timestamp;
+=======
+#define IS_FSTS_EMPTY(s) ((s).len & LSM6DSM_FIFO_EMPTY)
+
+#ifndef FIFO_READ_LEN
+#define FIFO_READ_LEN 0
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #endif
+
+#ifndef CONFIG_ACCEL_LSM6DSM_INT_EVENT
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT 0
+#endif
+
+static volatile uint32_t last_interrupt_timestamp;
+
+/**
+ * Resets the lsm6dsm load fifo sensor states to the given timestamp. This
+ * should be called at the start of the fifo read sequence.
+ *
+ * @param s Pointer to the first sensor in the lsm6dsm (accelerometer).
+ * @param ts The timestamp to use for the interrupt timestamp.
+ */
+__maybe_unused static void reset_load_fifo_sensor_state(
+	struct motion_sensor_t *s, uint32_t ts)
+{
+	int i;
+	struct lsm6dsm_accel_fifo_state *fifo_state =
+		LSM6DSM_GET_DATA(s)->accel_fifo_state;
+
+	for (i = 0; i < FIFO_DEV_NUM; i++) {
+		fifo_state->load_fifo_sensor_state[i].int_timestamp = ts;
+		fifo_state->load_fifo_sensor_state[i].sample_count = 0;
+	}
+}
+
+/**
+ * Gets the dev_fifo enum value for a given sensor.
+ *
+ * @param s Pointer to the sensor in question.
+ * @return the dev_fifo enum value corresponding to the sensor.
+ */
+static inline enum dev_fifo get_fifo_type(const struct motion_sensor_t *s)
+{
+	static enum dev_fifo map[] = {
+		FIFO_DEV_ACCEL,
+		FIFO_DEV_GYRO,
+		FIFO_DEV_MAG
+	};
+	return map[s->type];
+}
+
+/**
+ * Gets the sensor type associated with the dev_fifo enum. This type can be used
+ * to get the sensor number by using it as an offset from the first sensor in
+ * the lsm6dsm (the accelerometer).
+ *
+ * @param fifo_type The dev_fifo enum in question.
+ * @return the type of sensor represented by the fifo type.
+ */
+static inline uint8_t get_sensor_type(enum dev_fifo fifo_type)
+{
+	static uint8_t map[] = {
+		MOTIONSENSE_TYPE_GYRO,
+		MOTIONSENSE_TYPE_ACCEL,
+		MOTIONSENSE_TYPE_MAG,
+	};
+	return map[fifo_type];
+}
 
 /**
  * @return output base register for sensor
@@ -35,7 +104,6 @@ static inline int get_xyz_reg(enum motionsensor_type type)
 		(LSM6DSM_ACCEL_OUT_X_L_ADDR - LSM6DSM_GYRO_OUT_X_L_ADDR) * type;
 }
 
-#ifdef CONFIG_ACCEL_INTERRUPTS
 /**
  * Configure interrupt int 1 to fire handler for:
  *
@@ -43,16 +111,26 @@ static inline int get_xyz_reg(enum motionsensor_type type)
  *
  * @accel: Motion sensor pointer to accelerometer.
  */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static int config_interrupt(const struct motion_sensor_t *accel)
+=======
+__maybe_unused static int config_interrupt(const struct motion_sensor_t *accel)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	int ret = EC_SUCCESS;
 	int int1_ctrl_val;
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	ret = st_raw_read8(accel->port, accel->addr, LSM6DSM_INT1_CTRL,
 			   &int1_ctrl_val);
+=======
+	ret = st_raw_read8(accel->port, accel->i2c_spi_addr_flags,
+			   LSM6DSM_INT1_CTRL, &int1_ctrl_val);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	if (ret != EC_SUCCESS)
 		return ret;
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_ACCEL_FIFO
 	/* As soon as one sample is ready, trigger an interrupt. */
 	ret = st_raw_write8(accel->port, accel->addr, LSM6DSM_FIFO_CTRL1_ADDR,
@@ -62,13 +140,29 @@ static int config_interrupt(const struct motion_sensor_t *accel)
 	int1_ctrl_val |= LSM6DSM_INT_FIFO_TH | LSM6DSM_INT_FIFO_OVR |
 		LSM6DSM_INT_FIFO_FULL;
 #endif /* CONFIG_ACCEL_FIFO */
+=======
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
+		/* As soon as one sample is ready, trigger an interrupt. */
+		ret = st_raw_write8(accel->port, accel->i2c_spi_addr_flags,
+				    LSM6DSM_FIFO_CTRL1_ADDR,
+				    OUT_XYZ_SIZE / sizeof(uint16_t));
+		if (ret != EC_SUCCESS)
+			return ret;
+		int1_ctrl_val |= LSM6DSM_INT_FIFO_TH | LSM6DSM_INT_FIFO_OVR |
+			LSM6DSM_INT_FIFO_FULL;
+	}
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	return st_raw_write8(
 		accel->port, accel->addr, LSM6DSM_INT1_CTRL, int1_ctrl_val);
+=======
+	return st_raw_write8(accel->port, accel->i2c_spi_addr_flags,
+			     LSM6DSM_INT1_CTRL, int1_ctrl_val);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 
 
-#ifdef CONFIG_ACCEL_FIFO
 /**
  * fifo_disable - set fifo mode
  * @accel: Motion sensor pointer: must be MOTIONSENSE_TYPE_ACCEL.
@@ -76,7 +170,11 @@ static int config_interrupt(const struct motion_sensor_t *accel)
  */
 static int fifo_disable(const struct motion_sensor_t *accel)
 {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	return st_raw_write8(accel->port, accel->addr,
+=======
+	return st_raw_write8(accel->port, accel->i2c_spi_addr_flags,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 			     LSM6DSM_FIFO_CTRL5_ADDR, 0x00);
 }
 
@@ -86,9 +184,10 @@ static int fifo_disable(const struct motion_sensor_t *accel)
 static void fifo_reset_pattern(struct lsm6dsm_data *private)
 {
 	/* The fifo is ready to run. */
-	memcpy(&private->current, &private->config,
+	memcpy(&private->accel_fifo_state->current,
+	       &private->accel_fifo_state->config,
 	       sizeof(struct lsm6dsm_fifo_data));
-	private->next_in_patten = FIFO_DEV_INVALID;
+	private->accel_fifo_state->next_in_pattern = FIFO_DEV_INVALID;
 }
 
 /**
@@ -108,6 +207,10 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 	unsigned int max_odr = 0;
 	uint8_t odr_reg_val;
 	struct lsm6dsm_data *private = LSM6DSM_GET_DATA(accel);
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+	struct lsm6dsm_accel_fifo_state *fifo_state = private->accel_fifo_state;
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	/* In FIFO sensors are mapped in a different way. */
 	uint8_t agm_maps[] = {
 		MOTIONSENSE_TYPE_GYRO,
@@ -136,13 +239,19 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 	/* FIFO ODR must be set before the decimation factors */
 	odr_reg_val = LSM6DSM_ODR_TO_REG(max_odr) <<
 					LSM6DSM_FIFO_CTRL5_ODR_OFF;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	err = st_raw_write8(accel->port, accel->addr, LSM6DSM_FIFO_CTRL5_ADDR,
 			    odr_reg_val);
+=======
+	err = st_raw_write8(accel->port, accel->i2c_spi_addr_flags,
+			    LSM6DSM_FIFO_CTRL5_ADDR, odr_reg_val);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 	/* Scan all sensors configuration to calculate FIFO decimator. */
-	private->config.total_samples_in_pattern = 0;
+	fifo_state->config.total_samples_in_pattern = 0;
 	for (i = FIFO_DEV_GYRO; i < FIFO_DEV_NUM; i++) {
 		if (odrs[i] > 0) {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 			private->config.samples_in_pattern[i] =
 				odrs[i] / min_odr;
 			decimators[i] =
@@ -151,11 +260,20 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 				private->config.samples_in_pattern[i];
 			private->samples_to_discard[i] =
 							LSM6DSM_DISCARD_SAMPLES;
+=======
+			fifo_state->config.samples_in_pattern[i] =
+				odrs[i] / min_odr;
+			decimators[i] =
+				LSM6DSM_FIFO_DECIMATOR(max_odr / odrs[i]);
+			fifo_state->config.total_samples_in_pattern +=
+				fifo_state->config.samples_in_pattern[i];
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		} else {
 			/* Not in FIFO if sensor disabled. */
-			private->config.samples_in_pattern[i] = 0;
+			fifo_state->config.samples_in_pattern[i] = 0;
 		}
 	}
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	st_raw_write8(accel->port, accel->addr, LSM6DSM_FIFO_CTRL3_ADDR,
 		      (decimators[FIFO_DEV_GYRO] << LSM6DSM_FIFO_DEC_G_OFF) |
 		      (decimators[FIFO_DEV_ACCEL] << LSM6DSM_FIFO_DEC_XL_OFF));
@@ -186,6 +304,56 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 	 * enabled
 	 */
 	err = st_raw_write8(accel->port, accel->addr, LSM6DSM_FIFO_CTRL5_ADDR,
+=======
+	st_raw_write8(accel->port, accel->i2c_spi_addr_flags,
+		      LSM6DSM_FIFO_CTRL3_ADDR,
+		      (decimators[FIFO_DEV_GYRO] << LSM6DSM_FIFO_DEC_G_OFF) |
+		      (decimators[FIFO_DEV_ACCEL] << LSM6DSM_FIFO_DEC_XL_OFF));
+	if (IS_ENABLED(CONFIG_LSM6DSM_SEC_I2C)) {
+		st_raw_write8(accel->port, accel->i2c_spi_addr_flags,
+				LSM6DSM_FIFO_CTRL4_ADDR,
+				decimators[FIFO_DEV_MAG]);
+
+		/*
+		 * FIFO ODR is limited by odr of gyro or accel.
+		 * If we are sampling magnetometer faster than gyro or accel,
+		 * bump up ODR of accel. Thanks to decimation we will still
+		 * measure at the specified ODR.
+		 * Contrary to gyroscope, sampling faster will not affect
+		 * measurements.
+		 * Set the ODR behind the back of set/get_data_rate.
+		 *
+		 * First samples after ODR changes must be thrown out [See
+		 * AN4987, section 3.9].
+		 * When increasing accel ODR, the FIFO is going to drop samples,
+		 * - except the first one after ODR change.
+		 * When decreasing accel ODR, we don't need to drop sample if
+		 * frequency is less than 52Hz.
+		 * At most, we need to drop one sample, but Android requirement
+		 * specify that changing one sensor ODR should not affect other
+		 * sensors.
+		 * Leave the bad sample alone, it will be a single glitch in the
+		 * accelerometer data stream.
+		 */
+		if (max_odr > MAX(odrs[FIFO_DEV_ACCEL], odrs[FIFO_DEV_GYRO])) {
+			st_write_data_with_mask(accel,
+				LSM6DSM_ODR_REG(accel->type),
+				LSM6DSM_ODR_MASK,
+				LSM6DSM_ODR_TO_REG(max_odr));
+		} else {
+			st_write_data_with_mask(accel,
+				LSM6DSM_ODR_REG(accel->type),
+				LSM6DSM_ODR_MASK,
+				LSM6DSM_ODR_TO_REG(odrs[FIFO_DEV_ACCEL]));
+		}
+	}
+	/*
+	 * After ODR and decimation values are set, continuous mode can be
+	 * enabled
+	 */
+	err = st_raw_write8(accel->port, accel->i2c_spi_addr_flags,
+			    LSM6DSM_FIFO_CTRL5_ADDR,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 			    odr_reg_val | LSM6DSM_FIFO_MODE_CONTINUOUS_VAL);
 	if (err != EC_SUCCESS)
 		return err;
@@ -208,26 +376,27 @@ static int fifo_enable(const struct motion_sensor_t *accel)
 static int fifo_next(struct lsm6dsm_data *private)
 {
 	int next_id;
+	struct lsm6dsm_accel_fifo_state *fifo_state = private->accel_fifo_state;
 
-	if (private->current.total_samples_in_pattern == 0)
+	if (fifo_state->current.total_samples_in_pattern == 0)
 		fifo_reset_pattern(private);
 
-	if (private->current.total_samples_in_pattern == 0) {
+	if (fifo_state->current.total_samples_in_pattern == 0) {
 		/*
 		 * Not expected we are supposed to be called to process FIFO
 		 * data.
 		 */
-		CPRINTF("[%T FIFO empty pattern]\n");
+		CPRINTS("FIFO empty pattern");
 		return FIFO_DEV_INVALID;
 	}
 
-	for (next_id = private->next_in_patten + 1; 1; next_id++) {
+	for (next_id = fifo_state->next_in_pattern + 1; 1; next_id++) {
 		if (next_id == FIFO_DEV_NUM)
 			next_id = FIFO_DEV_GYRO;
-		if (private->current.samples_in_pattern[next_id] != 0) {
-			private->current.samples_in_pattern[next_id]--;
-			private->current.total_samples_in_pattern--;
-			private->next_in_patten = next_id;
+		if (fifo_state->current.samples_in_pattern[next_id] != 0) {
+			fifo_state->current.samples_in_pattern[next_id]--;
+			fifo_state->current.total_samples_in_pattern--;
+			fifo_state->next_in_pattern = next_id;
 			return next_id;
 		}
 	}
@@ -239,16 +408,24 @@ static int fifo_next(struct lsm6dsm_data *private)
  * push_fifo_data - Scan data pattern and push upside
  */
 static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 			   uint16_t flen, uint32_t int_ts)
+=======
+			   uint16_t flen,
+			   uint32_t timestamp)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	struct motion_sensor_t *s;
 	struct lsm6dsm_data *private = LSM6DSM_GET_DATA(accel);
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	/* In FIFO sensors are mapped in a different way. */
 	uint8_t agm_maps[] = {
 		MOTIONSENSE_TYPE_GYRO,
 		MOTIONSENSE_TYPE_ACCEL,
 		MOTIONSENSE_TYPE_MAG,
 	};
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 	while (flen > 0) {
 		struct ec_response_motion_sensor_data vect;
@@ -264,14 +441,22 @@ static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
 			return;
 		}
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		if (private->samples_to_discard[next_fifo] > 0) {
 			private->samples_to_discard[next_fifo]--;
 		} else {
 			id = agm_maps[next_fifo];
+=======
+		id = get_sensor_type(next_fifo);
+		if (private->accel_fifo_state->samples_to_discard[id] > 0) {
+			private->accel_fifo_state->samples_to_discard[id]--;
+		} else {
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 			s = accel + id;
 			axis = s->raw_xyz;
 
 			/* Apply precision, sensitivity and rotation. */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
 			if (s->type == MOTIONSENSE_TYPE_MAG) {
 				lis2mdl_normalize(s, axis, fifo);
@@ -290,6 +475,24 @@ static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
 			vect.flags = 0;
 			vect.sensor_num = s - motion_sensors;
 			motion_sense_fifo_add_data(&vect, s, 3, int_ts);
+=======
+			if (IS_ENABLED(CONFIG_MAG_LSM6DSM_LIS2MDL) &&
+			    (s->type == MOTIONSENSE_TYPE_MAG)) {
+				lis2mdl_normalize(s, axis, fifo);
+				rotate(axis, *s->rot_standard_ref, axis);
+			} else {
+				st_normalize(s, axis, fifo);
+			}
+
+
+			vect.data[X] = axis[X];
+			vect.data[Y] = axis[Y];
+			vect.data[Z] = axis[Z];
+
+			vect.flags = 0;
+			vect.sensor_num = s - motion_sensors;
+			motion_sense_fifo_stage_data(&vect, s, 3, timestamp);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		}
 
 		fifo += OUT_XYZ_SIZE;
@@ -297,10 +500,15 @@ static void push_fifo_data(struct motion_sensor_t *accel, uint8_t *fifo,
 	}
 }
 
-static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
+static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts,
+		     uint32_t *last_fifo_read_ts)
 {
+	uint32_t interrupt_timestamp = last_interrupt_timestamp;
 	int err, left, length;
 	uint8_t fifo[FIFO_READ_LEN];
+
+	/* Reset the load_fifo_sensor_state so we can start a new read. */
+	reset_load_fifo_sensor_state(s, interrupt_timestamp);
 
 	/*
 	 * DIFF[11:0] are number of unread uint16 in FIFO
@@ -325,42 +533,80 @@ static int load_fifo(struct motion_sensor_t *s, const struct fstatus *fsts)
 			length = left;
 
 		/* Read data and copy in buffer. */
-		err = st_raw_read_n_noinc(s->port, s->addr,
+		err = st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
 					  LSM6DSM_FIFO_DATA_ADDR,
 					  fifo, length);
+		*last_fifo_read_ts = __hw_clock_source_read();
 		if (err != EC_SUCCESS)
 			return err;
 
 		/*
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		 * Manage patterns and push data. Data should be pushed with the
 		 * timestamp of the last IRQ before the FIFO was read, so make a
 		 * copy of the current time in case another interrupt comes in
 		 * during processing.
 		 */
 		push_fifo_data(s, fifo, length, last_interrupt_timestamp);
+=======
+		 * Manage patterns and push data. Data is pushed with the
+		 * timestamp of the interrupt that got us into this function
+		 * in the first place. This avoids a potential race condition
+		 * where we empty the FIFO, and a new IRQ comes in between
+		 * reading the last sample and pushing it into the FIFO.
+		 */
+
+		push_fifo_data(s, fifo, length, interrupt_timestamp);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		left -= length;
 	} while (left > 0);
 
+	motion_sense_fifo_commit_data();
+
 	return EC_SUCCESS;
 }
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #endif /* CONFIG_ACCEL_FIFO */
+=======
+
+static int is_fifo_empty(struct motion_sensor_t *s, struct fstatus *fsts)
+{
+	int res;
+
+	if (s->flags & MOTIONSENSE_FLAG_INT_SIGNAL)
+		return gpio_get_level(s->int_signal);
+	CPRINTS("Interrupt signal not set for %s", s->name);
+	res = st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
+				  LSM6DSM_FIFO_STS1_ADDR,
+				  (int8_t *)fsts, sizeof(*fsts));
+	/* If we failed to read the FIFO size assume empty. */
+	if (res != EC_SUCCESS)
+		return 1;
+	return IS_FSTS_EMPTY(*fsts);
+}
+
+static void handle_interrupt_for_fifo(uint32_t ts)
+{
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO) &&
+	    time_after(ts, last_interrupt_timestamp))
+		last_interrupt_timestamp = ts;
+	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCEL_LSM6DSM_INT_EVENT);
+}
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 /**
  * lsm6dsm_interrupt - interrupt from int1/2 pin of sensor
  */
 void lsm6dsm_interrupt(enum gpio_signal signal)
 {
-#ifdef CONFIG_ACCEL_FIFO
-	last_interrupt_timestamp = __hw_clock_source_read();
-#endif
-	task_set_event(TASK_ID_MOTIONSENSE,
-		       CONFIG_ACCEL_LSM6DSM_INT_EVENT, 0);
+	handle_interrupt_for_fifo(__hw_clock_source_read());
 }
 
 /**
  * irq_handler - bottom half of the interrupt stack
  */
-static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
+__maybe_unused static int irq_handler(
+	struct motion_sensor_t *s, uint32_t *event)
 {
 	int ret = EC_SUCCESS;
 
@@ -368,26 +614,38 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	    (!(*event & CONFIG_ACCEL_LSM6DSM_INT_EVENT)))
 		return EC_ERROR_NOT_HANDLED;
 
-#ifdef CONFIG_ACCEL_FIFO
-	{
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
 		struct fstatus fsts;
+		uint32_t last_fifo_read_ts;
+		uint32_t triggering_interrupt_timestamp =
+			last_interrupt_timestamp;
+
 		/* Read how many data pattern on FIFO to read and pattern. */
-		ret = st_raw_read_n_noinc(s->port, s->addr,
-				LSM6DSM_FIFO_STS1_ADDR,
-				(uint8_t *)&fsts, sizeof(fsts));
+		ret = st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
+					  LSM6DSM_FIFO_STS1_ADDR,
+					  (uint8_t *)&fsts, sizeof(fsts));
 		if (ret != EC_SUCCESS)
 			return ret;
-		if (fsts.len & (LSM6DSM_FIFO_DATA_OVR | LSM6DSM_FIFO_FULL)) {
-			CPRINTF("[%T %s FIFO Overrun: %04x]\n",
-				s->name, fsts.len);
-		}
-		if (!(fsts.len & LSM6DSM_FIFO_EMPTY))
-			ret = load_fifo(s, &fsts);
+		last_fifo_read_ts = __hw_clock_source_read();
+		if (fsts.len & (LSM6DSM_FIFO_DATA_OVR | LSM6DSM_FIFO_FULL))
+			CPRINTS("%s FIFO Overrun: %04x", s->name, fsts.len);
+		if (!IS_FSTS_EMPTY(fsts))
+			ret = load_fifo(s, &fsts, &last_fifo_read_ts);
+
+		/*
+		 * Check if FIFO isn't empty and we never got an interrupt.
+		 * This can happen if new entries were added to the FIFO after
+		 * the count was read, but before the FIFO was cleared out.
+		 * In the long term it might be better to use the last
+		 * spread timestamp instead.
+		 */
+		if (!is_fifo_empty(s, &fsts) &&
+		    triggering_interrupt_timestamp == last_interrupt_timestamp)
+			handle_interrupt_for_fifo(last_fifo_read_ts);
 	}
-#endif
+
 	return ret;
 }
-#endif /* CONFIG_ACCEL_INTERRUPTS */
 
 /**
  * set_range - set full scale range
@@ -396,11 +654,14 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
  * @rnd: Round up/down flag
  * Note: Range is sensitivity/gain for speed purpose
  */
-static int set_range(const struct motion_sensor_t *s, int range, int rnd)
+static int set_range(struct motion_sensor_t *s, int range, int rnd)
 {
 	int err;
 	uint8_t ctrl_reg, reg_val;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	struct stprivate_data *data = s->drv_data;
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	int newrange = range;
 
 	switch (s->type) {
@@ -433,12 +694,17 @@ static int set_range(const struct motion_sensor_t *s, int range, int rnd)
 	err = st_write_data_with_mask(s, ctrl_reg, LSM6DSM_RANGE_MASK, reg_val);
 	if (err == EC_SUCCESS)
 		/* Save internally gain for speed optimization. */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		data->base.range = newrange;
+=======
+		s->current_range = newrange;
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	mutex_unlock(s->mutex);
 	return err;
 }
 
 /**
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
  * get_range - get full scale range
  * @s: Motion sensor pointer
  *
@@ -452,6 +718,8 @@ static int get_range(const struct motion_sensor_t *s)
 }
 
 /**
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
  * lsm6dsm_set_data_rate
  * @s: Motion sensor pointer
  * @range: Rate (mHz)
@@ -461,13 +729,22 @@ static int get_range(const struct motion_sensor_t *s)
  */
 int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	int ret = EC_SUCCESS, normalized_rate = 0;
 #ifdef CONFIG_ACCEL_FIFO
 	const struct motion_sensor_t *accel = LSM6DSM_MAIN_SENSOR(s);
 #endif
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	struct stprivate_data *data = s->drv_data;
+	const struct motion_sensor_t *accel = IS_ENABLED(CONFIG_ACCEL_FIFO) ?
+		LSM6DSM_MAIN_SENSOR(s) : NULL;
+	struct lsm6dsm_data *private = IS_ENABLED(CONFIG_ACCEL_FIFO) ?
+		LSM6DSM_GET_DATA(accel) : NULL;
+	int ret = EC_SUCCESS, normalized_rate = 0;
 	uint8_t ctrl_reg, reg_val = 0;
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_ACCEL_FIFO
 	/* FIFO must be disabled before setting any ODR values */
 	ret = fifo_disable(accel);
@@ -476,6 +753,17 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 		return ret;
 	}
 #endif
+=======
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
+		/* FIFO must be disabled before setting any ODR values */
+		ret = fifo_disable(accel);
+		if (ret != EC_SUCCESS) {
+			CPRINTS("Failed to disable FIFO. Error: %d", ret);
+			return ret;
+		}
+	}
+
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	if (rate > 0) {
 		reg_val = LSM6DSM_ODR_TO_REG(rate);
 		normalized_rate = LSM6DSM_REG_TO_ODR(reg_val);
@@ -485,11 +773,16 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 			normalized_rate = LSM6DSM_REG_TO_ODR(reg_val);
 		}
 		if (normalized_rate < LSM6DSM_ODR_MIN_VAL ||
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		    normalized_rate > MIN(LSM6DSM_ODR_MAX_VAL,
 				CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ))
+=======
+		    normalized_rate > LSM6DSM_ODR_MAX_VAL)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 			return EC_RES_INVALID_PARAM;
 	}
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_MAG_LSM6DSM_LIS2MDL
 	/*
 	 * TODO(b:110143516) Improve data rate selection:
@@ -515,6 +808,31 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	} else
 #endif
 	{
+=======
+	/*
+	 * TODO(b:110143516) Improve data rate selection:
+	 * Sensor is always running at 100Hz, even when not used.
+	 */
+	if (IS_ENABLED(CONFIG_MAG_LSM6DSM_LIS2MDL) &&
+	    (s->type == MOTIONSENSE_TYPE_MAG)) {
+		struct mag_cal_t *cal = LIS2MDL_CAL(s);
+
+		init_mag_cal(cal);
+		/*
+		 * Magnetometer ODR is calculating at 100Hz, but we are reading
+		 * less often.
+		 */
+		if (normalized_rate > 0)
+			cal->batch_size = MAX(
+				MAG_CAL_MIN_BATCH_SIZE,
+				(normalized_rate * 1000) /
+					MAG_CAL_MIN_BATCH_WINDOW_US);
+		else
+			cal->batch_size = 0;
+		CPRINTS("Batch size: %d", cal->batch_size);
+		mutex_lock(s->mutex);
+	} else {
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		mutex_lock(s->mutex);
 		ctrl_reg = LSM6DSM_ODR_REG(s->type);
 		ret = st_write_data_with_mask(s, ctrl_reg, LSM6DSM_ODR_MASK,
@@ -522,11 +840,27 @@ int lsm6dsm_set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	}
 	if (ret == EC_SUCCESS) {
 		data->base.odr = normalized_rate;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_ACCEL_FIFO
 		ret = fifo_enable(accel);
 		if (ret != EC_SUCCESS)
 			CPRINTS("Failed to enable FIFO. Error: %d", ret);
 #endif
+=======
+		if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
+			struct lsm6dsm_accel_fifo_state *fifo_state =
+				private->accel_fifo_state;
+			fifo_state->samples_to_discard[s->type] =
+				LSM6DSM_DISCARD_SAMPLES;
+			fifo_state->load_fifo_sensor_state[get_fifo_type(s)]
+				.sample_rate = normalized_rate == 0
+					? 0 : SECOND * 1000 / normalized_rate;
+			ret = fifo_enable(accel);
+			if (ret != EC_SUCCESS)
+				CPRINTS("Failed to enable FIFO. Error: %d",
+					ret);
+		}
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	}
 
 	mutex_unlock(s->mutex);
@@ -537,9 +871,10 @@ static int is_data_ready(const struct motion_sensor_t *s, int *ready)
 {
 	int ret, tmp;
 
-	ret = st_raw_read8(s->port, s->addr, LSM6DSM_STATUS_REG, &tmp);
+	ret = st_raw_read8(s->port, s->i2c_spi_addr_flags,
+			   LSM6DSM_STATUS_REG, &tmp);
 	if (ret != EC_SUCCESS) {
-		CPRINTF("[%T %s type:0x%X RS Error]", s->name, s->type);
+		CPRINTS("%s type:0x%X RS Error", s->name, s->type);
 		return ret;
 	}
 
@@ -580,8 +915,13 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 	xyz_reg = get_xyz_reg(s->type);
 
 	/* Read data bytes starting at xyz_reg. */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	ret = st_raw_read_n_noinc(s->port, s->addr, xyz_reg, raw,
 			OUT_XYZ_SIZE);
+=======
+	ret = st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
+				  xyz_reg, raw, OUT_XYZ_SIZE);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	if (ret != EC_SUCCESS)
 		return ret;
 
@@ -590,18 +930,22 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 	return EC_SUCCESS;
 }
 
-static int init(const struct motion_sensor_t *s)
+static int init(struct motion_sensor_t *s)
 {
 	int ret = 0, tmp;
 	struct stprivate_data *data = s->drv_data;
 	uint8_t ctrl_reg, reg_val = 0;
 
-	ret = st_raw_read8(s->port, s->addr, LSM6DSM_WHO_AM_I_REG, &tmp);
+	ret = st_raw_read8(s->port, s->i2c_spi_addr_flags,
+			   LSM6DSM_WHO_AM_I_REG, &tmp);
 	if (ret != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
 
-	if (tmp != LSM6DSM_WHO_AM_I)
+	if (tmp != LSM6DS3_WHO_AM_I && tmp != LSM6DSM_WHO_AM_I) {
+		/* Unrecognized sensor */
+		CPRINTS("Unknown WHO_AM_I value: 0x%x", tmp);
 		return EC_ERROR_ACCESS_DENIED;
+	}
 
 	/*
 	 * This sensor can be powered through an EC reboot, so the state of the
@@ -618,6 +962,7 @@ static int init(const struct motion_sensor_t *s)
 		ctrl_reg = LSM6DSM_ODR_REG(MOTIONSENSE_TYPE_ACCEL);
 
 		/* Power OFF gyro. */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		ret = st_raw_write8(s->port, s->addr, LSM6DSM_CTRL2_ADDR, 0);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
@@ -630,9 +975,14 @@ static int init(const struct motion_sensor_t *s)
 		/* Software reset. */
 		ret = st_raw_write8(s->port, s->addr, LSM6DSM_CTRL3_ADDR,
 				LSM6DSM_SW_RESET);
+=======
+		ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
+				    LSM6DSM_CTRL2_ADDR, 0);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_LSM6DSM_SEC_I2C
 		/*
 		 * Reboot to reload memory content as pass-through mode can get
@@ -662,28 +1012,74 @@ static int init(const struct motion_sensor_t *s)
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 #endif
+=======
+		/* Power ON Accel. */
+		ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
+				    ctrl_reg, reg_val);
+		if (ret != EC_SUCCESS)
+			goto err_unlock;
+
+		/* Software reset. */
+		ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
+				    LSM6DSM_CTRL3_ADDR, LSM6DSM_SW_RESET);
+		if (ret != EC_SUCCESS)
+			goto err_unlock;
+
+		if (IS_ENABLED(CONFIG_LSM6DSM_SEC_I2C)) {
+			/*
+			 * Reboot to reload memory content as pass-through mode
+			 * can get stuck.
+			 * Direct to the AN: See "AN4987 - LSM6DSM: always-on 3D
+			 * accelerometer and 3D gyroscope".
+			 */
+
+			/* Power ON Accel. */
+			ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
+					ctrl_reg, reg_val);
+			if (ret != EC_SUCCESS)
+				goto err_unlock;
+
+			ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
+					LSM6DSM_CTRL3_ADDR, LSM6DSM_BOOT);
+			if (ret != EC_SUCCESS)
+				goto err_unlock;
+
+			/*
+			 * Refer to AN4987, wait 15ms for accelerometer to doing
+			 * full reboot.
+			 */
+			msleep(15);
+
+			/* Power OFF Accel. */
+			ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
+					ctrl_reg, 0);
+			if (ret != EC_SUCCESS)
+				goto err_unlock;
+		}
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 		/*
 		 * Output data not updated until have been read.
 		 * Prefer interrupt to be active low.
 		 */
-		ret = st_raw_write8(s->port, s->addr, LSM6DSM_CTRL3_ADDR,
-				LSM6DSM_BDU | LSM6DSM_H_L_ACTIVE |
-				LSM6DSM_IF_INC);
+		ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
+				    LSM6DSM_CTRL3_ADDR,
+				    LSM6DSM_BDU
+				    | LSM6DSM_H_L_ACTIVE
+				    | LSM6DSM_IF_INC);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
 
-#ifdef CONFIG_ACCEL_FIFO
-		ret = fifo_disable(s);
-		if (ret != EC_SUCCESS)
-			goto err_unlock;
-#endif /* CONFIG_ACCEL_FIFO */
+		if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
+			ret = fifo_disable(s);
+			if (ret != EC_SUCCESS)
+				goto err_unlock;
+		}
 
-#ifdef CONFIG_ACCEL_INTERRUPTS
-		ret = config_interrupt(s);
+		if (IS_ENABLED(CONFIG_ACCEL_INTERRUPTS))
+			ret = config_interrupt(s);
 		if (ret != EC_SUCCESS)
 			goto err_unlock;
-#endif /* CONFIG_ACCEL_INTERRUPTS */
 
 		mutex_unlock(s->mutex);
 	}
@@ -694,19 +1090,33 @@ static int init(const struct motion_sensor_t *s)
 
 err_unlock:
 	mutex_unlock(s->mutex);
-	CPRINTF("[%T %s: MS Init type:0x%X Error]\n", s->name, s->type);
-
+	CPRINTS("%s: MS Init type:0x%X Error", s->name, s->type);
 	return ret;
+}
+
+static int read_temp(const struct motion_sensor_t *s, int *temp)
+{
+	int ret;
+	uint8_t raw[2];
+
+	ret = st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
+				  LSM6DSM_OUT_TEMP_L_ADDR, raw, 2);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	*temp = C_TO_K(25 + (int)raw[1]);
+
+	return EC_SUCCESS;
 }
 
 const struct accelgyro_drv lsm6dsm_drv = {
 	.init = init,
 	.read = read,
 	.set_range = set_range,
-	.get_range = get_range,
 	.get_resolution = st_get_resolution,
 	.set_data_rate = lsm6dsm_set_data_rate,
 	.get_data_rate = st_get_data_rate,
+	.read_temp = read_temp,
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 #ifdef CONFIG_ACCEL_INTERRUPTS

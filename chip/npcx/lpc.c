@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -13,6 +13,10 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+#include "i8042_protocol.h"
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #include "keyboard_protocol.h"
 #include "lpc.h"
 #include "lpc_chip.h"
@@ -299,7 +303,7 @@ int lpc_keyboard_input_pending(void)
 	return (NPCX_HIKMST&0x02) ? 1 : 0;
 }
 
-/* Put a char to host buffer and send IRQ if specified. */
+/* Put a char to host buffer by HIKDO and send IRQ if specified. */
 void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 {
 	NPCX_HIKDO = chr;
@@ -313,6 +317,26 @@ void lpc_keyboard_put_char(uint8_t chr, int send_irq)
 	}
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+/* Put an aux char to host buffer by HIMDO and assert status bit 5. */
+void lpc_aux_put_char(uint8_t chr, int send_irq)
+{
+	if (send_irq)
+		SET_BIT(NPCX_HICTRL, NPCX_HICTRL_OBFMIE);
+	else
+		CLEAR_BIT(NPCX_HICTRL, NPCX_HICTRL_OBFMIE);
+
+	NPCX_HIKMST |= I8042_AUX_DATA;
+	NPCX_HIMDO = chr;
+	CPRINTS("AUX put %02x", chr);
+
+	/* Enable OBE interrupt to detect host read data out */
+	SET_BIT(NPCX_HICTRL, NPCX_HICTRL_OBECIE);
+	task_enable_irq(NPCX_IRQ_KBC_OBE);
+}
+
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 void lpc_keyboard_clear_buffer(void)
 {
 	/*
@@ -500,11 +524,24 @@ static void handle_host_write(int is_cmd)
 /* KB controller input buffer full ISR */
 void lpc_kbc_ibf_interrupt(void)
 {
+	uint8_t status;
+	uint8_t ibf;
 	/* If "command" input 0, else 1*/
-	if (lpc_keyboard_input_pending())
-		keyboard_host_write(NPCX_HIKMDI, (NPCX_HIKMST & 0x08) ? 1 : 0);
-	CPRINTS("ibf isr %02x", NPCX_HIKMDI);
-	task_wake(TASK_ID_KEYPROTO);
+	if (lpc_keyboard_input_pending()) {
+		/*
+		 * Reading HIKMDI causes the IBF flag to deassert and allows
+		 * the host to write a new byte into the input buffer. So if we
+		 * don't capture the status before reading HIKMDI we will race
+		 * with the host and get an invalid value for HIKMST.A20.
+		 */
+		status = NPCX_HIKMST;
+		ibf = NPCX_HIKMDI;
+		keyboard_host_write(ibf, (status & 0x08) ? 1 : 0);
+		CPRINTS("ibf isr %02x", ibf);
+		task_wake(TASK_ID_KEYPROTO);
+	} else {
+		CPRINTS("ibf isr spurious");
+	}
 }
 DECLARE_IRQ(NPCX_IRQ_KBC_IBF, lpc_kbc_ibf_interrupt, 4);
 
@@ -516,6 +553,9 @@ void lpc_kbc_obe_interrupt(void)
 	task_disable_irq(NPCX_IRQ_KBC_OBE);
 
 	CPRINTS("obe isr %02x", NPCX_HIKMST);
+
+	NPCX_HIKMST &= ~I8042_AUX_DATA;
+
 	task_wake(TASK_ID_KEYPROTO);
 }
 DECLARE_IRQ(NPCX_IRQ_KBC_OBE, lpc_kbc_obe_interrupt, 4);
@@ -586,10 +626,22 @@ void host_register_init(void)
 	sib_write_reg(SIO_OFFSET, 0x07, 0x11);
 	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
 
-	/* enable KBC*/
+	/* Enable kbc and mouse */
 #ifdef HAS_TASK_KEYPROTO
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	sib_write_reg(SIO_OFFSET, 0x07, 0x06);
 	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+=======
+	/* LDN = 0x06 : keyboard */
+	sib_write_reg(SIO_OFFSET, 0x07, 0x06);
+	sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+
+	/* LDN = 0x05 : mouse */
+	if (IS_ENABLED(CONFIG_PS2)) {
+		sib_write_reg(SIO_OFFSET, 0x07, 0x05);
+		sib_write_reg(SIO_OFFSET, 0x30, 0x01);
+	}
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #endif
 
 	/* Setting PMC2 */
@@ -680,8 +732,16 @@ static void lpc_init(void)
 	/* Enable clock for LPC peripheral */
 	clock_enable_peripheral(CGC_OFFSET_LPC, CGC_LPC_MASK,
 			CGC_MODE_RUN | CGC_MODE_SLEEP);
+	/*
+	 * In npcx5/7, the host interface type (HIF_TYP_SEL in the DEVCNT
+	 * register) is updated by booter after VCC1 Power-Up reset according to
+	 * VHIF voltage.
+	 * In npcx9, the booter will not do this anymore. The HIF_TYP_SEL
+	 * field should be set by firmware.
+	 */
 #ifdef CONFIG_HOSTCMD_ESPI
-	/* Initialize eSPI IP */
+	/* Initialize eSPI module */
+	NPCX_DEVCNT |= 0x08;
 	espi_init();
 #else
 	/* Switching to LPC interface */
@@ -751,7 +811,6 @@ static void lpc_init(void)
 
 	/* Turn on PMC2 for Host Command usage */
 	SET_BIT(NPCX_HIPMCTL(PMC_HOST_CMD), 0);
-	SET_BIT(NPCX_HIPMCTL(PMC_HOST_CMD), 1);
 
 	/*
 	 * Set required control value (avoid setting HOSTWAIT bit at this stage)
@@ -765,19 +824,19 @@ static void lpc_init(void)
 	/*
 	 * Init KBC
 	 * Clear OBF status flag,
-	 * IBF(K&M) INT enable, OBE(K&M) empty INT enable ,
+	 * IBF(K&M) INT enable,
 	 * OBF Mouse Full INT enable and OBF KB Full INT enable
 	 */
 #ifdef HAS_TASK_KEYPROTO
 	lpc_keyboard_clear_buffer();
-	NPCX_HICTRL = 0x0F;
+	NPCX_HICTRL = 0x0B;
 #endif
 
 	/*
 	 * Turn on enhance mode on PM channel-1,
-	 * enable OBE/IBF core interrupt
+	 * enable IBF core interrupt
 	 */
-	NPCX_HIPMCTL(PMC_ACPI) |= 0x83;
+	NPCX_HIPMCTL(PMC_ACPI) |= 0x81;
 	/* Normally Polarity IRQ1,12 type (level + high) setting */
 	NPCX_HIIRQC = 0x00;
 
@@ -806,7 +865,7 @@ static void lpc_init(void)
 	CLEAR_BIT(NPCX_HIPMIC(PMC_ACPI), NPCX_HIPMIC_SMIPOL);
 	/* Set SMIB/SCIB to make sure SMI/SCI are high at init */
 	NPCX_HIPMIC(PMC_ACPI) = NPCX_HIPMIC(PMC_ACPI)
-			| (1 << NPCX_HIPMIC_SMIB) | (1 << NPCX_HIPMIC_SCIB);
+			| BIT(NPCX_HIPMIC_SMIB) | BIT(NPCX_HIPMIC_SCIB);
 #ifndef CONFIG_SCI_GPIO
 	/*
 	 * Allow SMI/SCI generated from PM module.
@@ -861,12 +920,12 @@ static void lpc_init(void)
 DECLARE_HOOK(HOOK_INIT, lpc_init, HOOK_PRIO_INIT_LPC);
 
 /* Get protocol information */
-static int lpc_get_protocol_info(struct host_cmd_handler_args *args)
+static enum ec_status lpc_get_protocol_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_protocol_info *r = args->response;
 
 	memset(r, 0, sizeof(*r));
-	r->protocol_versions = (1 << 3);
+	r->protocol_versions = BIT(3);
 	r->max_request_packet_size = EC_LPC_HOST_PACKET_SIZE;
 	r->max_response_packet_size = EC_LPC_HOST_PACKET_SIZE;
 	r->flags = 0;

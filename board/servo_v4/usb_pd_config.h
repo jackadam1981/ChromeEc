@@ -55,6 +55,24 @@
 /* use the hardware accelerator for CRC */
 #define CONFIG_HW_CRC
 
+/* Servo v4 CC configuration */
+#define CC_DETACH	BIT(0)   /* Emulate detach: both CC open */
+#define CC_DISABLE_DTS	BIT(1)   /* Apply resistors to single or both CC? */
+#define CC_ALLOW_SRC	BIT(2)   /* Allow charge through by policy? */
+#define CC_ENABLE_DRP	BIT(3)   /* Enable dual-role port */
+#define CC_SNK_WITH_PD	BIT(4)   /* Force enabling PD comm for sink role */
+#define CC_POLARITY	BIT(5)   /* CC polarity */
+
+/* Servo v4 DP alt-mode configuration */
+#define ALT_DP_ENABLE		BIT(0)   /* Enable DP alt-mode or not */
+#define ALT_DP_PIN_C		BIT(1)   /* Pin assignment C supported */
+#define ALT_DP_PIN_D		BIT(2)   /* Pin assignment D supported */
+#define ALT_DP_PIN_E		BIT(3)   /* Pin assignment E supported */
+#define ALT_DP_MF_PREF		BIT(4)   /* Multi-Function preferred */
+#define ALT_DP_PLUG		BIT(5)   /* Plug or receptacle */
+#define ALT_DP_OVERRIDE_HPD	BIT(6)   /* Override the HPD signal */
+#define ALT_DP_HPD_LVL		BIT(7)   /* HPD level if overridden */
+
 /* TX uses SPI1 on PB3-4 for CHG port, SPI2 on PB 13-14 for DUT port */
 #define SPI_REGS(p) ((p) ? STM32_SPI2_REGS : STM32_SPI1_REGS)
 static inline void spi_enable_clock(int port)
@@ -83,7 +101,7 @@ static inline void spi_enable_clock(int port)
  * EXTI line 22 is connected to the CMP2 output,
  * CHG uses CMP2, and DUT uses CMP1.
  */
-#define EXTI_COMP_MASK(p) ((p) ? (1<<21) : (1 << 22))
+#define EXTI_COMP_MASK(p) ((p) ? (1<<21) : BIT(22))
 
 #define IRQ_COMP STM32_IRQ_COMP
 /* triggers packet detection on comparator falling edge */
@@ -119,78 +137,49 @@ static inline void pd_tx_spi_reset(int port)
 {
 	if (port == 0) {
 		/* Reset SPI1 */
-		STM32_RCC_APB2RSTR |= (1 << 12);
-		STM32_RCC_APB2RSTR &= ~(1 << 12);
+		STM32_RCC_APB2RSTR |= BIT(12);
+		STM32_RCC_APB2RSTR &= ~BIT(12);
 	} else {
 		/* Reset SPI2 */
-		STM32_RCC_APB1RSTR |= (1 << 14);
-		STM32_RCC_APB1RSTR &= ~(1 << 14);
+		STM32_RCC_APB1RSTR |= BIT(14);
+		STM32_RCC_APB1RSTR &= ~BIT(14);
 	}
 }
+
+static const uint8_t tx_gpio[2 /* port */][2 /* polarity */] = {
+	{ GPIO_USB_CHG_CC1_TX_DATA, GPIO_USB_CHG_CC2_TX_DATA },
+	{ GPIO_USB_DUT_CC1_TX_DATA, GPIO_USB_DUT_CC2_TX_DATA },
+};
+static const uint8_t ref_gpio[2 /* port */][2 /* polarity */] = {
+	{ GPIO_USB_CHG_CC1_PD, GPIO_USB_CHG_CC2_PD },
+	{ GPIO_USB_DUT_CC1_PD, GPIO_USB_DUT_CC2_PD },
+};
 
 /* Drive the CC line from the TX block */
 static inline void pd_tx_enable(int port, int polarity)
 {
-	if (port == 0) {
-		/* put SPI function on TX pin */
-		if (polarity) {
-			const struct gpio_info *g = gpio_list +
-				GPIO_USB_CHG_CC2_TX_DATA;
-			gpio_set_alternate_function(g->port, g->mask, 0);
+#ifndef VIF_BUILD /* genvif doesn't like tricks with GPIO macros */
+	const struct gpio_info *tx = gpio_list + tx_gpio[port][polarity];
+	const struct gpio_info *ref = gpio_list + ref_gpio[port][polarity];
 
-			/* set the low level reference */
-			gpio_set_flags(GPIO_USB_CHG_CC2_PD, GPIO_OUT_LOW);
-		} else {
-			const struct gpio_info *g = gpio_list +
-				GPIO_USB_CHG_CC1_TX_DATA;
-			gpio_set_alternate_function(g->port, g->mask, 0);
+	/* use directly GPIO registers, latency before the PD preamble is key */
 
-			/* set the low level reference */
-			gpio_set_flags(GPIO_USB_CHG_CC1_PD, GPIO_OUT_LOW);
-		}
-	} else {
-		/* put SPI function on TX pin */
-		/* MCU ADC pin output low */
-		if (polarity) {
-			/* USB_DUT_CC2_TX_DATA: PC2 is SPI2 MISO */
-			const struct gpio_info *g = gpio_list +
-				GPIO_USB_DUT_CC2_TX_DATA;
-			gpio_set_alternate_function(g->port, g->mask, 1);
-
-			/* set the low level reference */
-			gpio_set_flags(GPIO_USB_DUT_CC2_PD, GPIO_OUT_LOW);
-		} else {
-			/* USB_DUT_CC1_TX_DATA: PB14 is SPI2 MISO */
-			const struct gpio_info *g = gpio_list +
-				GPIO_USB_DUT_CC1_TX_DATA;
-			gpio_set_alternate_function(g->port, g->mask, 0);
-
-			/* set the low level reference */
-			gpio_set_flags(GPIO_USB_DUT_CC1_PD, GPIO_OUT_LOW);
-		}
-	}
+	/* switch the TX pin Mode from Input (00) to Alternate (10) for SPI */
+	STM32_GPIO_MODER(tx->port) |= 2 << ((31 - __builtin_clz(tx->mask)) * 2);
+	/* switch the ref pin Mode from analog (11) to Out (01) for low level */
+	STM32_GPIO_MODER(ref->port) &=
+		~(2 << ((31 - __builtin_clz(ref->mask)) * 2));
+#endif /* !VIF_BUILD */
 }
 
 /* Put the TX driver in Hi-Z state */
 static inline void pd_tx_disable(int port, int polarity)
 {
-	if (port == 0) {
-		if (polarity) {
-			gpio_set_flags(GPIO_USB_CHG_CC2_TX_DATA, GPIO_INPUT);
-			gpio_set_flags(GPIO_USB_CHG_CC2_PD, GPIO_ANALOG);
-		} else {
-			gpio_set_flags(GPIO_USB_CHG_CC1_TX_DATA, GPIO_INPUT);
-			gpio_set_flags(GPIO_USB_CHG_CC1_PD, GPIO_ANALOG);
-		}
-	} else {
-		if (polarity) {
-			gpio_set_flags(GPIO_USB_DUT_CC2_TX_DATA, GPIO_INPUT);
-			gpio_set_flags(GPIO_USB_DUT_CC2_PD, GPIO_ANALOG);
-		} else {
-			gpio_set_flags(GPIO_USB_DUT_CC1_TX_DATA, GPIO_INPUT);
-			gpio_set_flags(GPIO_USB_DUT_CC1_PD, GPIO_ANALOG);
-		}
-	}
+	const struct gpio_info *tx = gpio_list + tx_gpio[port][polarity];
+	const struct gpio_info *ref = gpio_list + ref_gpio[port][polarity];
+
+	gpio_set_flags_by_mask(tx->port, tx->mask, GPIO_INPUT);
+	gpio_set_flags_by_mask(ref->port, ref->mask, GPIO_ANALOG);
 }
 
 /* we know the plug polarity, do the right configuration */
@@ -217,7 +206,25 @@ static inline void pd_select_polarity(int port, int polarity)
 /* Initialize pins used for TX and put them in Hi-Z */
 static inline void pd_tx_init(void)
 {
+	const struct gpio_info *c2 = gpio_list + GPIO_USB_CHG_CC2_TX_DATA;
+	const struct gpio_info *c1 = gpio_list + GPIO_USB_CHG_CC1_TX_DATA;
+	const struct gpio_info *d2 = gpio_list + GPIO_USB_DUT_CC2_TX_DATA;
+	const struct gpio_info *d1 = gpio_list + GPIO_USB_DUT_CC1_TX_DATA;
+
 	gpio_config_module(MODULE_USB_PD, 1);
+	/* Select the proper alternate SPI function on TX_DATA pins */
+	/* USB_CHG_CC2_TX_DATA: PA6 is SPI1 MISO (AF0) */
+	gpio_set_alternate_function(c2->port, c2->mask, 0);
+	gpio_set_flags_by_mask(c2->port, c2->mask, GPIO_INPUT);
+	/* USB_CHG_CC1_TX_DATA: PB4 is SPI1 MISO (AF0) */
+	gpio_set_alternate_function(c1->port, c1->mask, 0);
+	gpio_set_flags_by_mask(c1->port, c1->mask, GPIO_INPUT);
+	/* USB_DUT_CC2_TX_DATA: PC2 is SPI2 MISO (AF1) */
+	gpio_set_alternate_function(d2->port, d2->mask, 1);
+	gpio_set_flags_by_mask(d2->port, d2->mask, GPIO_INPUT);
+	/* USB_DUT_CC1_TX_DATA: PB14 is SPI2 MISO (AF0) */
+	gpio_set_alternate_function(d1->port, d1->mask, 0);
+	gpio_set_flags_by_mask(d1->port, d1->mask, GPIO_INPUT);
 }
 
 static inline void pd_set_host_mode(int port, int enable)
@@ -265,8 +272,8 @@ static inline void pd_set_host_mode(int port, int enable)
 static inline void pd_config_init(int port, uint8_t power_role)
 {
 	/*
-	 * Set CC pull resistors, and charge_en and vbus_en GPIOs to match
-	 * the initial role.
+	 * Set CC pull resistors. The PD state machine will then transit and
+	 * enable VBUS after it detects valid voltages on CC lines.
 	 */
 	pd_set_host_mode(port, power_role);
 
@@ -275,17 +282,7 @@ static inline void pd_config_init(int port, uint8_t power_role)
 
 }
 
-static inline int pd_adc_read(int port, int cc)
-{
-	int mv;
-
-	if (port == 0)
-		mv = adc_read_channel(cc ? ADC_CHG_CC2_PD : ADC_CHG_CC1_PD);
-	else
-		mv = adc_read_channel(cc ? ADC_DUT_CC2_PD : ADC_DUT_CC1_PD);
-
-	return mv;
-}
+int pd_adc_read(int port, int cc);
 
 #endif /* __CROS_EC_USB_PD_CONFIG_H */
 

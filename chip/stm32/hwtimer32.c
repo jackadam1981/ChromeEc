@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -78,7 +78,7 @@ void __hw_timer_enable_clock(int n, int enable)
 		reg = &STM32_RCC_APB2ENR;
 		mask = STM32_RCC_PB2_TIM1;
 	}
-#elif defined(CHIP_FAMILY_STM32L)
+#elif defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32F4)
 	if (n >= 9 && n <= 11) {
 		reg = &STM32_RCC_APB2ENR;
 		mask = STM32_RCC_PB2_TIM9 << (n - 9);
@@ -116,6 +116,17 @@ defined(CHIP_FAMILY_STM32H7)
 		mask = STM32_RCC_PB2_TIM19;
 	}
 #endif
+#if defined(CHIP_FAMILY_STM32G4)
+	reg = &STM32_RCC_APB2ENR;
+	if (n == 1)
+		mask = STM32_RCC_APB2ENR_TIM1;
+	else if (n == 8)
+		mask = STM32_RCC_APB2ENR_TIM8;
+	else if (n == 20)
+		mask = STM32_RCC_APB2ENR_TIM20;
+	else if (n >= 15 && n <= 17)
+		mask = STM32_RCC_APB2ENR_TIM15 << (n - 15);
+#endif
 	if (n >= 2 && n <= 7) {
 		reg = &STM32_RCC_APB1ENR;
 		mask = STM32_RCC_PB1_TIM2 << (n - 2);
@@ -131,7 +142,7 @@ defined(CHIP_FAMILY_STM32H7)
 }
 
 #if defined(CHIP_FAMILY_STM32L) || defined(CHIP_FAMILY_STM32L4) || \
-	defined(CHIP_FAMILY_STM32H7)
+	defined(CHIP_FAMILY_STM32F4) || defined(CHIP_FAMILY_STM32H7)
 /* for families using a variable clock feeding the timer */
 static void update_prescaler(void)
 {
@@ -172,7 +183,8 @@ static void update_prescaler(void)
 #endif  /* CONFIG_WATCHDOG_HELP */
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, update_prescaler, HOOK_PRIO_DEFAULT);
-#endif /* CHIP_FAMILY_STM32L || CHIP_FAMILY_STM32L4 || CHIP_FAMILY_STM32H7 */
+#endif /* CHIP_FAMILY_STM32L  || CHIP_FAMILY_STM32L4 || */
+	/*  CHIP_FAMILY_STM32F4 || CHIP_FAMILY_STM32H7 */
 
 int __hw_clock_source_init(uint32_t start_t)
 {

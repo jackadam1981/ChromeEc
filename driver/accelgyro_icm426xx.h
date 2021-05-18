@@ -15,6 +15,7 @@
  * 7-bit address is 110100Xb. Where 'X' is determined
  * by the logic level on pin AP_AD0.
  */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #define ICM426XX_ADDR0_FLAGS		0xD0
 #define ICM426XX_ADDR1_FLAGS		0xD1
 
@@ -136,6 +137,140 @@ enum icm426xx_slew_rate {
 #define ICM426XX_UI_SIFS_CFG_MASK	GENMASK(1, 0)
 #define ICM426XX_UI_SIFS_CFG_SPI_DIS	0x02
 #define ICM426XX_UI_SIFS_CFG_I2C_DIS	0x03
+=======
+#define ICM426XX_ADDR0_FLAGS		0x68
+#define ICM426XX_ADDR1_FLAGS		0x69
+
+/* Min and Max sampling frequency in mHz */
+#define ICM426XX_ACCEL_MIN_FREQ	3125
+#define ICM426XX_ACCEL_MAX_FREQ	MOTION_MAX_SENSOR_FREQUENCY(500000, 100000)
+#define ICM426XX_GYRO_MIN_FREQ	12500
+#define ICM426XX_GYRO_MAX_FREQ	MOTION_MAX_SENSOR_FREQUENCY(4000000, 100000)
+
+/* Min and Max Accel FS in G */
+#define ICM426XX_ACCEL_FS_MIN_VAL	2
+#define ICM426XX_ACCEL_FS_MAX_VAL	16
+
+/* Min and Max Gyro FS in dps */
+#define ICM426XX_GYRO_FS_MIN_VAL	125
+#define ICM426XX_GYRO_FS_MAX_VAL	2000
+
+/* accel stabilization time in us */
+#define ICM426XX_ACCEL_START_TIME	20000
+#define ICM426XX_ACCEL_STOP_TIME	0
+
+/* gyro stabilization time in us */
+#define ICM426XX_GYRO_START_TIME	60000
+#define ICM426XX_GYRO_STOP_TIME		150000
+
+/* Reg value from Accel FS in G */
+#define ICM426XX_ACCEL_FS_TO_REG(_fs)	((_fs) < 2 ? 3 : \
+					(_fs) > 16 ? 0 : \
+					3 - __fls((_fs) / 2))
+
+/* Accel FSR in G from Reg value */
+#define ICM426XX_ACCEL_REG_TO_FS(_reg)	((1 << (3 - (_reg))) * 2)
+
+/* Reg value from Gyro FS in dps */
+#define ICM426XX_GYRO_FS_TO_REG(_fs)	((_fs) < 125 ? 4 : \
+					(_fs) > 2000 ? 0 : \
+					4 - __fls((_fs) / 125))
+
+/* Gyro FSR in dps from Reg value */
+#define ICM426XX_GYRO_REG_TO_FS(_reg)	((1 << (4 - (_reg))) * 125)
+
+/* Reg value from ODR in mHz */
+#define ICM426XX_ODR_TO_REG(_odr)	((_odr) <= 200000 ? \
+					13 - __fls((_odr) / 3125) : \
+					(_odr) < 500000 ? 7 : \
+					(_odr) < 1000000 ? 15 : \
+					6 - __fls((_odr) / 1000000))
+
+/* ODR in mHz from Reg value */
+#define ICM426XX_REG_TO_ODR(_reg)	((_reg) == 15 ? 500000 : \
+					(_reg) >= 7 ? \
+					(1 << (13 - (_reg))) * 3125 : \
+					(1 << (6 - (_reg))) * 1000000)
+
+/* Reg value for the next higher ODR */
+#define ICM426XX_ODR_REG_UP(_reg)	((_reg) == 15 ? 6 : \
+					(_reg) == 7 ? 15 : \
+					(_reg) - 1)
+
+/*
+ * Register addresses are virtual address on 16 bits.
+ * MSB is coding register bank and LSB real register address.
+ * ex: bank 4, register 1F => 0x041F
+ */
+#define ICM426XX_REG_DEVICE_CONFIG	0x0011
+#define ICM426XX_SOFT_RESET_CONFIG	BIT(0)
+
+enum icm426xx_slew_rate {
+	ICM426XX_SLEW_RATE_20NS_60NS,
+	ICM426XX_SLEW_RATE_12NS_36NS,
+	ICM426XX_SLEW_RATE_6NS_18NS,
+	ICM426XX_SLEW_RATE_4NS_12NS,
+	ICM426XX_SLEW_RATE_2NS_6NS,
+	ICM426XX_SLEW_RATE_INF_2NS,
+};
+#define ICM426XX_REG_DRIVE_CONFIG	0x0013
+#define ICM426XX_DRIVE_CONFIG_MASK	GENMASK(5, 0)
+#define ICM426XX_I2C_SLEW_RATE(_s)	(((_s) & 0x07) << 3)
+#define ICM426XX_SPI_SLEW_RATE(_s)	((_s) & 0x07)
+
+/* default int configuration is pulsed mode, open drain, and active low */
+#define ICM426XX_REG_INT_CONFIG		0x0014
+#define ICM426XX_INT2_LATCHED		BIT(5)
+#define ICM426XX_INT2_PUSH_PULL		BIT(4)
+#define ICM426XX_INT2_ACTIVE_HIGH	BIT(3)
+#define ICM426XX_INT1_LATCHED		BIT(2)
+#define ICM426XX_INT1_PUSH_PULL		BIT(1)
+#define ICM426XX_INT1_ACTIVE_HIGH	BIT(0)
+
+#define ICM426XX_REG_FIFO_CONFIG	0x0016
+#define ICM426XX_FIFO_MODE_BYPASS	(0x00 << 6)
+#define ICM426XX_FIFO_MODE_STREAM	(0x01 << 6)
+#define ICM426XX_FIFO_MODE_STOP_FULL	(0x02 << 6)
+
+/* data are 16 bits */
+#define ICM426XX_REG_TEMP_DATA		0x001D
+/* X + Y + Z: 3 * 16 bits */
+#define ICM426XX_REG_ACCEL_DATA_XYZ	0x001F
+#define ICM426XX_REG_GYRO_DATA_XYZ	0x0025
+
+#define ICM426XX_INVALID_DATA		-32768
+
+#define ICM426XX_REG_INT_STATUS		0x002D
+#define ICM426XX_UI_FSYNC_INT		BIT(6)
+#define ICM426XX_PLL_RDY_INT		BIT(5)
+#define ICM426XX_RESET_DONE_INT		BIT(4)
+#define ICM426XX_DATA_RDY_INT		BIT(3)
+#define ICM426XX_FIFO_THS_INT		BIT(2)
+#define ICM426XX_FIFO_FULL_INT		BIT(1)
+#define ICM426XX_AGC_RDY_INT		BIT(0)
+
+/* FIFO count is 16 bits */
+#define ICM426XX_REG_FIFO_COUNT		0x002E
+#define ICM426XX_REG_FIFO_DATA		0x0030
+
+#define ICM426XX_REG_SIGNAL_PATH_RESET	0x004B
+#define ICM426XX_ABORT_AND_RESET	BIT(3)
+#define ICM426XX_TMST_STROBE		BIT(2)
+#define ICM426XX_FIFO_FLUSH		BIT(1)
+
+#define ICM426XX_REG_INTF_CONFIG0	0x004C
+#define ICM426XX_DATA_CONF_MASK		GENMASK(7, 4)
+#define ICM426XX_FIFO_HOLD_LAST_DATA	BIT(7)
+#define ICM426XX_FIFO_COUNT_REC		BIT(6)
+#define ICM426XX_FIFO_COUNT_BE		BIT(5)
+#define ICM426XX_SENSOR_DATA_BE		BIT(4)
+#define ICM426XX_UI_SIFS_CFG_MASK	GENMASK(1, 0)
+#define ICM426XX_UI_SIFS_CFG_SPI_DIS	0x02
+#define ICM426XX_UI_SIFS_CFG_I2C_DIS	0x03
+
+#define ICM426XX_REG_INTF_CONFIG1	0x004D
+#define ICM426XX_ACCEL_LP_CLK_SEL	BIT(3)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 enum icm426xx_sensor_mode {
 	ICM426XX_MODE_OFF,

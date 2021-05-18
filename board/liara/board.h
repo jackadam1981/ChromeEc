@@ -8,6 +8,9 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define VARIANT_GRUNT_TCPC_0_ANX3429
+#define VARIANT_GRUNT_NO_SENSORS
+
 #include "baseboard.h"
 
 /*
@@ -17,6 +20,10 @@
 #define CC_DEFAULT     (CC_ALL & ~(CC_MASK(CC_EVENTS) | CC_MASK(CC_LPC)))
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
+
+#define CONFIG_MKBP_USE_HOST_EVENT
+
+#define CONFIG_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV	5000
 
 /* Power and battery LEDs */
 #define CONFIG_LED_COMMON

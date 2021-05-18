@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -497,3 +498,5 @@ uint16_t tcpc_get_alert_status(void)
 	return gpio_get_level(GPIO_PD_MCU_INT) ? PD_STATUS_TCPC_ALERT_0 : 0;
 }
 
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

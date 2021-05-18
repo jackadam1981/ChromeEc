@@ -16,7 +16,7 @@
 #define CONFIG_CMD_RTC
 #define CONFIG_HOSTCMD_RTC
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_I2C_PASSTHRU_RESTRICTED
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_POWER_COMMON
@@ -77,16 +77,20 @@
 #define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_MODE_SWITCH
 
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
 /* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 256
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+#define CONFIG_ACCEL_FIFO_SIZE 256
+/* Depends on how fast the AP boots and typical ODRs. */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 
 /* Sensors without hardware FIFO are in forced mode. */
-#define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_BARO)
+#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_BARO)
 
 /* USB PD config */
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_DISCHARGE_GPIO
@@ -108,7 +112,6 @@
 
 #define PD_POWER_SUPPLY_TURN_ON_DELAY  30000  /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 50000  /* us */
-#define PD_VCONN_SWAP_DELAY 5000 /* us */
 
 /* Timer selection */
 #define TIM_CLOCK32  2
@@ -130,8 +133,9 @@
 
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_EVENT
-/* Define the MKBP events which are allowed to wakeup AP in S3. */
-#define CONFIG_MKBP_WAKEUP_MASK \
+#define CONFIG_MKBP_USE_GPIO
+/* Define the host events which are allowed to wakeup AP in S3. */
+#define CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK \
 		(EC_HOST_EVENT_MASK(EC_HOST_EVENT_POWER_BUTTON) |\
 		 EC_HOST_EVENT_MASK(EC_HOST_EVENT_RTC))
 
@@ -159,6 +163,7 @@ enum sensor_id {
 	LID_ACCEL = 0,
 	LID_GYRO,
 	LID_BARO,
+	SENSOR_COUNT,
 };
 
 #include "gpio_signal.h"

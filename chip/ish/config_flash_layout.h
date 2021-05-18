@@ -12,7 +12,11 @@
 #undef  CONFIG_FLASH_PSTATE
 #undef CONFIG_SPI_FLASH
 
+#ifdef CHIP_VARIANT_ISH5P4
+#define CONFIG_ISH_BOOT_START		0xFF200000
+#else
 #define CONFIG_ISH_BOOT_START		0xFF000000
+#endif
 
 /*****************************************************************************/
 /* The following macros are not applicable for ISH, however the build fails if
@@ -22,9 +26,9 @@
 
 #define CONFIG_MAPPED_STORAGE_BASE	0x0
 
-#define CONFIG_EC_PROTECTED_STORAGE_OFF  (CONFIG_FLASH_SIZE - 0x20000)
+#define CONFIG_EC_PROTECTED_STORAGE_OFF  (CONFIG_FLASH_SIZE_BYTES - 0x20000)
 #define CONFIG_EC_PROTECTED_STORAGE_SIZE 0x20000
-#define CONFIG_EC_WRITABLE_STORAGE_OFF   (CONFIG_FLASH_SIZE - 0x40000)
+#define CONFIG_EC_WRITABLE_STORAGE_OFF   (CONFIG_FLASH_SIZE_BYTES - 0x40000)
 #define CONFIG_EC_WRITABLE_STORAGE_SIZE  0x20000
 
 /* Unused for ISH - loader is external to ISH FW */

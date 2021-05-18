@@ -11,12 +11,14 @@
 #include "accelgyro.h"
 #include "common.h"
 #include "console.h"
+#include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/mag_bmm150.h"
-#include "hooks.h"
 #include "hwtimer.h"
 #include "i2c.h"
 #include "math_util.h"
+#include "motion_orientation.h"
+#include "motion_sense_fifo.h"
 #include "spi.h"
 #include "task.h"
 #include "timer.h"
@@ -26,38 +28,11 @@
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
-#ifdef CONFIG_ACCEL_FIFO
-static volatile uint32_t last_interrupt_timestamp;
-#endif
+STATIC_IF(CONFIG_BMI_ORIENTATION_SENSOR) void irq_set_orientation(
+				struct motion_sensor_t *s,
+				int interrupt);
 
-/*
- * Struct for pairing an engineering value with the register value for a
- * parameter.
- */
-struct accel_param_pair {
-	int val; /* Value in engineering units. */
-	int reg_val; /* Corresponding register value. */
-};
-
-/* List of range values in +/-G's and their associated register values. */
-static const struct accel_param_pair g_ranges[] = {
-	{2, BMI160_GSEL_2G},
-	{4, BMI160_GSEL_4G},
-	{8, BMI160_GSEL_8G},
-	{16, BMI160_GSEL_16G}
-};
-
-/*
- * List of angular rate range values in +/-dps's
- * and their associated register values.
- */
-const struct accel_param_pair dps_ranges[] = {
-	{125, BMI160_DPS_SEL_125},
-	{250, BMI160_DPS_SEL_250},
-	{500, BMI160_DPS_SEL_500},
-	{1000, BMI160_DPS_SEL_1000},
-	{2000, BMI160_DPS_SEL_2000}
-};
+STATIC_IF(CONFIG_ACCEL_FIFO) volatile uint32_t last_interrupt_timestamp;
 
 static int wakeup_time[] = {
 	[MOTIONSENSE_TYPE_ACCEL] = 4,
@@ -65,192 +40,20 @@ static int wakeup_time[] = {
 	[MOTIONSENSE_TYPE_MAG] = 1
 };
 
-static inline const struct accel_param_pair *get_range_table(
-		enum motionsensor_type type, int *psize)
-{
-	if (MOTIONSENSE_TYPE_ACCEL == type) {
-		if (psize)
-			*psize = ARRAY_SIZE(g_ranges);
-		return g_ranges;
-	} else {
-		if (psize)
-			*psize = ARRAY_SIZE(dps_ranges);
-		return dps_ranges;
-	}
-}
-
-static inline int get_xyz_reg(enum motionsensor_type type)
-{
-	switch (type) {
-	case MOTIONSENSE_TYPE_ACCEL:
-		return BMI160_ACC_X_L_G;
-	case MOTIONSENSE_TYPE_GYRO:
-		return BMI160_GYR_X_L_G;
-	case MOTIONSENSE_TYPE_MAG:
-		return BMI160_MAG_X_L_G;
-	default:
-		return -1;
-	}
-}
-
-/**
- * @return reg value that matches the given engineering value passed in.
- * The round_up flag is used to specify whether to round up or down.
- * Note, this function always returns a valid reg value. If the request is
- * outside the range of values, it returns the closest valid reg value.
- */
-static int get_reg_val(const int eng_val, const int round_up,
-		const struct accel_param_pair *pairs, const int size)
-{
-	int i;
-
-	for (i = 0; i < size - 1; i++) {
-		if (eng_val <= pairs[i].val)
-			break;
-
-		if (eng_val < pairs[i+1].val) {
-			if (round_up)
-				i += 1;
-			break;
-		}
-	}
-	return pairs[i].reg_val;
-}
-
-/**
- * @return engineering value that matches the given reg val
- */
-static int get_engineering_val(const int reg_val,
-		const struct accel_param_pair *pairs, const int size)
-{
-	int i;
-
-	for (i = 0; i < size; i++) {
-		if (reg_val == pairs[i].reg_val)
-			break;
-	}
-	return pairs[i].val;
-}
-
-#ifdef CONFIG_SPI_ACCEL_PORT
-static inline int spi_raw_read(const int addr, const uint8_t reg,
-			       uint8_t *data, const int len)
-{
-	uint8_t cmd = 0x80 | reg;
-
-	return spi_transaction(&spi_devices[addr], &cmd, 1, data, len);
-}
-#endif
-/**
- * Read 8bit register from accelerometer.
- */
-static int raw_read8(const int port, const int addr, const int reg,
-					 int *data_ptr)
-{
-	int rv = -EC_ERROR_PARAM1;
-
-	if (BMI160_IS_SPI(addr)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
-		uint8_t val;
-		rv = spi_raw_read(BMI160_SPI_ADDRESS(addr), reg, &val, 1);
-		if (rv == EC_SUCCESS)
-			*data_ptr = val;
-#endif
-	} else {
-#ifdef I2C_PORT_ACCEL
-		rv = i2c_read8(port, BMI160_I2C_ADDRESS(addr),
-			       reg, data_ptr);
-#endif
-	}
-	return rv;
-}
-
-/**
- * Write 8bit register from accelerometer.
- */
-static int raw_write8(const int port, const int addr, const int reg,
-					  int data)
-{
-	int rv = -EC_ERROR_PARAM1;
-
-	if (BMI160_IS_SPI(addr)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
-		uint8_t cmd[2] = { reg, data };
-		rv = spi_transaction(&spi_devices[BMI160_SPI_ADDRESS(addr)],
-				     cmd, 2, NULL, 0);
-#endif
-	} else {
-#ifdef I2C_PORT_ACCEL
-		rv = i2c_write8(port, BMI160_I2C_ADDRESS(addr),
-				reg, data);
-#endif
-	}
-	/*
-	 * From Bosch:  BMI160 needs a delay of 450us after each write if it
-	 * is in suspend mode, otherwise the operation may be ignored by
-	 * the sensor. Given we are only doing write during init, add
-	 * the delay inconditionally.
-	 */
-	msleep(1);
-	return rv;
-}
-
-#ifdef CONFIG_ACCEL_INTERRUPTS
-/**
- * Read 32bit register from accelerometer.
- */
-static int raw_read32(const int port, const int addr, const uint8_t reg,
-					  int *data_ptr)
-{
-	int rv = -EC_ERROR_PARAM1;
-	if (BMI160_IS_SPI(addr)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
-		rv = spi_raw_read(BMI160_SPI_ADDRESS(addr), reg,
-				  (uint8_t *)data_ptr, 4);
-#endif
-	} else {
-#ifdef I2C_PORT_ACCEL
-		rv = i2c_read32(port, BMI160_I2C_ADDRESS(addr),
-				reg, data_ptr);
-#endif
-	}
-	return rv;
-}
-#endif /* defined(CONFIG_ACCEL_INTERRUPTS) */
-
-/**
- * Read n bytes from accelerometer.
- */
-static int raw_read_n(const int port, const int addr, const uint8_t reg,
-		uint8_t *data_ptr, const int len)
-{
-	int rv = -EC_ERROR_PARAM1;
-
-	if (BMI160_IS_SPI(addr)) {
-#ifdef CONFIG_SPI_ACCEL_PORT
-		rv = spi_raw_read(BMI160_SPI_ADDRESS(addr), reg, data_ptr, len);
-#endif
-	} else {
-#ifdef I2C_PORT_ACCEL
-		rv = i2c_read_block(port, BMI160_I2C_ADDRESS(addr), reg,
-				data_ptr, len);
-#endif
-	}
-	return rv;
-}
-
-#ifdef CONFIG_BMI160_SEC_I2C
 /**
  * Control access to the compass on the secondary i2c interface:
  * enable values are:
  * 1: manual access, we can issue i2c to the compass
  * 0: data access: BMI160 gather data periodically from the compass.
  */
-static int bmi160_sec_access_ctrl(const int port, const int addr,
-				  const int enable)
+static __maybe_unused int bmi160_sec_access_ctrl(
+		const int port,
+		const uint16_t i2c_spi_addr_flags,
+		const int enable)
 {
 	int mag_if_ctrl;
-	raw_read8(port, addr, BMI160_MAG_IF_1, &mag_if_ctrl);
+	bmi_read8(port, i2c_spi_addr_flags,
+		  BMI160_MAG_IF_1, &mag_if_ctrl);
 	if (enable) {
 		mag_if_ctrl |= BMI160_MAG_MANUAL_EN;
 		mag_if_ctrl &= ~BMI160_MAG_READ_BURST_MASK;
@@ -260,162 +63,77 @@ static int bmi160_sec_access_ctrl(const int port, const int addr,
 		mag_if_ctrl &= ~BMI160_MAG_READ_BURST_MASK;
 		mag_if_ctrl |= BMI160_MAG_READ_BURST_8;
 	}
-	return raw_write8(port, addr, BMI160_MAG_IF_1, mag_if_ctrl);
+	return bmi_write8(port, i2c_spi_addr_flags,
+			  BMI160_MAG_IF_1, mag_if_ctrl);
 }
 
 /**
  * Read register from compass.
  * Assuming we are in manual access mode, read compass i2c register.
  */
-int bmi160_sec_raw_read8(const int port, const int addr, const uint8_t reg,
-				  int *data_ptr)
+int bmi160_sec_raw_read8(const int port,
+			 const uint16_t i2c_spi_addr_flags,
+			 const uint8_t reg, int *data_ptr)
 {
 	/* Only read 1 bytes */
-	raw_write8(port, addr, BMI160_MAG_I2C_READ_ADDR, reg);
-	return raw_read8(port, addr, BMI160_MAG_I2C_READ_DATA, data_ptr);
+	bmi_write8(port, i2c_spi_addr_flags,
+		   BMI160_MAG_I2C_READ_ADDR, reg);
+	return bmi_read8(port, i2c_spi_addr_flags,
+			 BMI160_MAG_I2C_READ_DATA, data_ptr);
 }
 
 /**
  * Write register from compass.
  * Assuming we are in manual access mode, write to compass i2c register.
  */
-int bmi160_sec_raw_write8(const int port, const int addr, const uint8_t reg,
-			  int data)
+int bmi160_sec_raw_write8(const int port,
+			  const uint16_t i2c_spi_addr_flags,
+			  const uint8_t reg, int data)
 {
-	raw_write8(port, addr, BMI160_MAG_I2C_WRITE_DATA, data);
-	return raw_write8(port, addr, BMI160_MAG_I2C_WRITE_ADDR, reg);
-}
-#endif
-
-#ifdef CONFIG_ACCEL_FIFO
-static int enable_fifo(const struct motion_sensor_t *s, int enable)
-{
-	struct bmi160_drv_data_t *data = BMI160_GET_DATA(s);
-	int ret, val;
-
-	if (enable) {
-		/* FIFO start collecting events */
-		ret = raw_read8(s->port, s->addr, BMI160_FIFO_CONFIG_1, &val);
-		val |= BMI160_FIFO_SENSOR_EN(s->type);
-		ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_1, val);
-		if (ret == EC_SUCCESS)
-			data->flags |= 1 << (s->type + BMI160_FIFO_FLAG_OFFSET);
-
-	} else {
-		/* FIFO stop collecting events */
-		ret = raw_read8(s->port, s->addr, BMI160_FIFO_CONFIG_1, &val);
-		val &= ~BMI160_FIFO_SENSOR_EN(s->type);
-		ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_1, val);
-		if (ret == EC_SUCCESS)
-			data->flags &=
-				~(1 << (s->type + BMI160_FIFO_FLAG_OFFSET));
-	}
-	return ret;
-}
-#endif
-
-static int set_range(const struct motion_sensor_t *s,
-				int range,
-				int rnd)
-{
-	int ret, range_tbl_size;
-	uint8_t reg_val, ctrl_reg;
-	const struct accel_param_pair *ranges;
-	struct accelgyro_saved_data_t *data = BMI160_GET_SAVED_DATA(s);
-
-	if (s->type == MOTIONSENSE_TYPE_MAG) {
-		data->range = range;
-		return EC_SUCCESS;
-	}
-
-	ctrl_reg = BMI160_RANGE_REG(s->type);
-	ranges = get_range_table(s->type, &range_tbl_size);
-	reg_val = get_reg_val(range, rnd, ranges, range_tbl_size);
-
-	ret = raw_write8(s->port, s->addr, ctrl_reg, reg_val);
-	/* Now that we have set the range, update the driver's value. */
-	if (ret == EC_SUCCESS)
-		data->range = get_engineering_val(reg_val, ranges,
-				range_tbl_size);
-	return ret;
-}
-
-static int get_range(const struct motion_sensor_t *s)
-{
-	struct accelgyro_saved_data_t *data = BMI160_GET_SAVED_DATA(s);
-
-	return data->range;
-}
-
-static int get_resolution(const struct motion_sensor_t *s)
-{
-	return BMI160_RESOLUTION;
+	bmi_write8(port, i2c_spi_addr_flags,
+		   BMI160_MAG_I2C_WRITE_DATA, data);
+	return bmi_write8(port, i2c_spi_addr_flags,
+			  BMI160_MAG_I2C_WRITE_ADDR, reg);
 }
 
 static int set_data_rate(const struct motion_sensor_t *s,
 				int rate,
 				int rnd)
 {
-	int ret, val, normalized_rate;
-	uint8_t ctrl_reg, reg_val;
-	struct accelgyro_saved_data_t *data = BMI160_GET_SAVED_DATA(s);
-#ifdef CONFIG_MAG_BMI160_BMM150
-	struct mag_cal_t              *moc = BMM150_CAL(s);
-#endif
+	int ret, normalized_rate;
+	uint8_t reg_val;
+	struct accelgyro_saved_data_t *data = BMI_GET_SAVED_DATA(s);
 
 	if (rate == 0) {
-#ifdef CONFIG_ACCEL_FIFO
 		/* FIFO stop collecting events */
-		enable_fifo(s, 0);
-#endif
+		if (IS_ENABLED(CONFIG_ACCEL_FIFO))
+			bmi_enable_fifo(s, 0);
+
 		/* go to suspend mode */
-		ret = raw_write8(s->port, s->addr, BMI160_CMD_REG,
+		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+				 BMI160_CMD_REG,
 				 BMI160_CMD_MODE_SUSPEND(s->type));
 		msleep(3);
 		data->odr = 0;
-#ifdef CONFIG_MAG_BMI160_BMM150
-		if (s->type == MOTIONSENSE_TYPE_MAG)
+		if (IS_ENABLED(CONFIG_MAG_BMI_BMM150) &&
+		    (s->type == MOTIONSENSE_TYPE_MAG)) {
+			struct mag_cal_t *moc = BMM150_CAL(s);
+
 			moc->batch_size = 0;
-#endif
+		}
+
 		return ret;
 	} else if (data->odr == 0) {
 		/* back from suspend mode. */
-		ret = raw_write8(s->port, s->addr, BMI160_CMD_REG,
+		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+				 BMI160_CMD_REG,
 				 BMI160_CMD_MODE_NORMAL(s->type));
 		msleep(wakeup_time[s->type]);
 	}
-	ctrl_reg = BMI160_CONF_REG(s->type);
-	reg_val = BMI160_ODR_TO_REG(rate);
-	normalized_rate = BMI160_REG_TO_ODR(reg_val);
-	if (rnd && (normalized_rate < rate)) {
-		reg_val++;
-		normalized_rate = BMI160_REG_TO_ODR(reg_val);
-	}
 
-	switch (s->type) {
-	case MOTIONSENSE_TYPE_ACCEL:
-		if (normalized_rate > MIN(BMI160_ACCEL_MAX_FREQ,
-					CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ) ||
-		    normalized_rate < BMI160_ACCEL_MIN_FREQ)
-			return EC_RES_INVALID_PARAM;
-		break;
-	case MOTIONSENSE_TYPE_GYRO:
-		if (normalized_rate > MIN(BMI160_GYRO_MAX_FREQ,
-					CONFIG_EC_MAX_SENSOR_FREQ_MILLIHZ) ||
-		    normalized_rate < BMI160_GYRO_MIN_FREQ)
-			return EC_RES_INVALID_PARAM;
-		break;
-#ifdef CONFIG_MAG_BMI160_BMM150
-	case MOTIONSENSE_TYPE_MAG:
-		/* We use the regular preset we can go about 100Hz */
-		if (reg_val > BMI160_ODR_100HZ || reg_val < BMI160_ODR_0_78HZ)
-			return EC_RES_INVALID_PARAM;
-		break;
-#endif
-
-	default:
-		return EC_RES_INVALID_PARAM;
-	}
+	ret = bmi_get_normalized_rate(s, rate, rnd, &normalized_rate, &reg_val);
+	if (ret)
+		return ret;
 
 	/*
 	 * Lock accel resource to prevent another task from attempting
@@ -423,20 +141,18 @@ static int set_data_rate(const struct motion_sensor_t *s,
 	 */
 	mutex_lock(s->mutex);
 
-	ret = raw_read8(s->port, s->addr, ctrl_reg, &val);
-	if (ret != EC_SUCCESS)
-		goto accel_cleanup;
-
-	val = (val & ~BMI160_ODR_MASK) | reg_val;
-	ret = raw_write8(s->port, s->addr, ctrl_reg, val);
+	ret = bmi_set_reg8(s, BMI_CONF_REG(s->type),
+			   reg_val, BMI_ODR_MASK);
 	if (ret != EC_SUCCESS)
 		goto accel_cleanup;
 
 	/* Now that we have set the odr, update the driver's value. */
 	data->odr = normalized_rate;
 
-#ifdef CONFIG_MAG_BMI160_BMM150
-	if (s->type == MOTIONSENSE_TYPE_MAG) {
+	if (IS_ENABLED(CONFIG_MAG_BMI_BMM150) &&
+	    (s->type == MOTIONSENSE_TYPE_MAG)) {
+		struct mag_cal_t *moc = BMM150_CAL(s);
+
 		/* Reset the calibration */
 		init_mag_cal(moc);
 		/*
@@ -449,21 +165,20 @@ static int set_data_rate(const struct motion_sensor_t *s,
 			(data->odr * 1000) / (MAG_CAL_MIN_BATCH_WINDOW_US));
 		CPRINTS("Batch size: %d", moc->batch_size);
 	}
-#endif
 
-#ifdef CONFIG_ACCEL_FIFO
 	/*
 	 * FIFO start collecting events.
 	 * They will be discarded if AP does not want them.
 	 */
-	enable_fifo(s, 1);
-#endif
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO))
+		bmi_enable_fifo(s, 1);
 
 accel_cleanup:
 	mutex_unlock(s->mutex);
 	return ret;
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static int get_data_rate(const struct motion_sensor_t *s)
 {
 	struct accelgyro_saved_data_t *data = BMI160_GET_SAVED_DATA(s);
@@ -533,21 +248,25 @@ static int get_offset(const struct motion_sensor_t *s,
 	return EC_SUCCESS;
 }
 
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 static int set_offset(const struct motion_sensor_t *s,
 			const int16_t *offset,
 			int16_t    temp)
 {
-	int ret, i, val, val98;
+	int ret, val98;
 	intv3_t v = { offset[X], offset[Y], offset[Z] };
 
 	rotate_inv(v, *s->rot_standard_ref, v);
 
-	ret = raw_read8(s->port, s->addr, BMI160_OFFSET_EN_GYR98, &val98);
+	ret = bmi_read8(s->port, s->i2c_spi_addr_flags,
+			BMI160_OFFSET_EN_GYR98, &val98);
 	if (ret != 0)
 		return ret;
 
 	switch (s->type) {
 	case MOTIONSENSE_TYPE_ACCEL:
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		for (i = X; i <= Z; i++) {
 			val = round_divide(
 				(int64_t)v[i] * BMI160_OFFSET_ACC_DIV_MG,
@@ -562,9 +281,15 @@ static int set_offset(const struct motion_sensor_t *s,
 				   val);
 		}
 		ret = raw_write8(s->port, s->addr, BMI160_OFFSET_EN_GYR98,
+=======
+		bmi_set_accel_offset(s, v);
+		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+				 BMI160_OFFSET_EN_GYR98,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 				 val98 | BMI160_OFFSET_ACC_EN);
 		break;
 	case MOTIONSENSE_TYPE_GYRO:
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		for (i = X; i <= Z; i++) {
 			val = round_divide(
 				(int64_t)v[i] * BMI160_OFFSET_GYRO_DIV_MDS,
@@ -581,25 +306,33 @@ static int set_offset(const struct motion_sensor_t *s,
 			val98 |= (val >> 8) << (2 * i);
 		}
 		ret = raw_write8(s->port, s->addr, BMI160_OFFSET_EN_GYR98,
+=======
+		bmi_set_gyro_offset(s, v, &val98);
+		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+				 BMI160_OFFSET_EN_GYR98,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 				 val98 | BMI160_OFFSET_GYRO_EN);
 		break;
-#ifdef CONFIG_MAG_BMI160_BMM150
+#ifdef CONFIG_MAG_BMI_BMM150
 	case MOTIONSENSE_TYPE_MAG:
 		ret = bmm150_set_offset(s, v);
 		break;
-#endif /* defined(CONFIG_MAG_BMI160) */
+#endif /* defined(CONFIG_MAG_BMI_BMM150) */
 	default:
 		ret = EC_RES_INVALID_PARAM;
 	}
 	return ret;
 }
 
-static int perform_calib(const struct motion_sensor_t *s)
+static int perform_calib(struct motion_sensor_t *s, int enable)
 {
-	int ret, val, en_flag, status, rate;
-	timestamp_t deadline;
+	int ret, val, en_flag, status, rate, range = s->current_range;
+	timestamp_t deadline, timeout;
 
-	rate = get_data_rate(s);
+	if (!enable)
+		return EC_SUCCESS;
+
+	rate = bmi_get_data_rate(s);
 	/*
 	 * Temporary set frequency to 100Hz to get enough data in a short
 	 * period of time.
@@ -618,40 +351,56 @@ static int perform_calib(const struct motion_sensor_t *s)
 			(BMI160_FOC_ACC_0G << BMI160_FOC_ACC_Y_OFFSET) |
 			(val << BMI160_FOC_ACC_Z_OFFSET);
 		en_flag = BMI160_OFFSET_ACC_EN;
+		/*
+		 * Temporary set range to minimum to run calibration with
+		 * full sensitivity
+		 */
+		bmi_set_range(s, 2, 0);
+		/* Timeout for accelerometer calibration */
+		timeout.val = 400 * MSEC;
 		break;
 	case MOTIONSENSE_TYPE_GYRO:
 		val = BMI160_FOC_GYRO_EN;
 		en_flag = BMI160_OFFSET_GYRO_EN;
+		/*
+		 * Temporary set range to minimum to run calibration with
+		 * full sensitivity
+		 */
+		bmi_set_range(s, 125, 0);
+		/* Timeout for gyroscope calibration */
+		timeout.val = 800 * MSEC;
 		break;
 	default:
 		/* Not supported on Magnetometer */
 		ret = EC_RES_INVALID_PARAM;
 		goto end_perform_calib;
 	}
-	ret = raw_write8(s->port, s->addr, BMI160_FOC_CONF, val);
-	ret = raw_write8(s->port, s->addr, BMI160_CMD_REG,
-			 BMI160_CMD_START_FOC);
-	deadline.val = get_time().val + 400 * MSEC;
+	ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+			 BMI160_FOC_CONF, val);
+	ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+			 BMI160_CMD_REG, BMI160_CMD_START_FOC);
+	deadline.val = get_time().val + timeout.val;
 	do {
 		if (timestamp_expired(deadline, NULL)) {
 			ret = EC_RES_TIMEOUT;
 			goto end_perform_calib;
 		}
 		msleep(50);
-		ret = raw_read8(s->port, s->addr, BMI160_STATUS, &status);
+		ret = bmi_read8(s->port, s->i2c_spi_addr_flags,
+				BMI160_STATUS, &status);
 		if (ret != EC_SUCCESS)
 			goto end_perform_calib;
 	} while ((status & BMI160_FOC_RDY) == 0);
 
 	/* Calibration is successful, and loaded, use the result */
-	ret = raw_read8(s->port, s->addr, BMI160_OFFSET_EN_GYR98, &val);
-	ret = raw_write8(s->port, s->addr, BMI160_OFFSET_EN_GYR98,
-			 val | en_flag);
+	ret = bmi_enable_reg8(s, BMI160_OFFSET_EN_GYR98, en_flag, 1);
 end_perform_calib:
+	bmi_set_range(s, range, 0);
 	set_data_rate(s, rate, 0);
 	return ret;
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 void normalize(const struct motion_sensor_t *s, intv3_t v, uint8_t *data)
 {
 #ifdef CONFIG_MAG_BMI160_BMM150
@@ -672,6 +421,8 @@ void normalize(const struct motion_sensor_t *s, intv3_t v, uint8_t *data)
 	rotate(v, *s->rot_standard_ref, v);
 }
 
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 /*
  * Manage gesture recognition.
  * Defined even if host interface is not defined, to enable double tap even
@@ -683,18 +434,15 @@ int manage_activity(const struct motion_sensor_t *s,
 		    const struct ec_motion_sense_activity *param)
 {
 	int ret;
-	struct bmi160_drv_data_t *data = BMI160_GET_DATA(s);
+	struct bmi_drv_data_t *data = BMI_GET_DATA(s);
 
 	switch (activity) {
 #ifdef CONFIG_GESTURE_SIGMO
 	case MOTIONSENSE_ACTIVITY_SIG_MOTION: {
-		int tmp;
-		ret = raw_read8(s->port, s->addr, BMI160_INT_EN_0, &tmp);
-		if (ret)
-			return ret;
 		if (enable) {
 			/* We should use parameters from caller */
-			raw_write8(s->port, s->addr, BMI160_INT_MOTION_3,
+			bmi_write8(s->port, s->i2c_spi_addr_flags,
+				BMI160_INT_MOTION_3,
 				BMI160_MOTION_PROOF_TIME(
 					CONFIG_GESTURE_SIGMO_PROOF_MS) <<
 				BMI160_MOTION_PROOF_OFF |
@@ -702,35 +450,27 @@ int manage_activity(const struct motion_sensor_t *s,
 					CONFIG_GESTURE_SIGMO_SKIP_MS) <<
 				BMI160_MOTION_SKIP_OFF |
 				BMI160_MOTION_SIG_MOT_SEL);
-			raw_write8(s->port, s->addr, BMI160_INT_MOTION_1,
+			bmi_write8(s->port, s->i2c_spi_addr_flags,
+				BMI160_INT_MOTION_1,
 				BMI160_MOTION_TH(s,
 					CONFIG_GESTURE_SIGMO_THRES_MG));
-			tmp |= BMI160_INT_ANYMO_X_EN |
-				BMI160_INT_ANYMO_Y_EN |
-				BMI160_INT_ANYMO_Z_EN;
-		} else {
-			tmp &= ~(BMI160_INT_ANYMO_X_EN |
-				 BMI160_INT_ANYMO_Y_EN |
-				 BMI160_INT_ANYMO_Z_EN);
 		}
-		ret = raw_write8(s->port, s->addr, BMI160_INT_EN_0, tmp);
+		ret = bmi_enable_reg8(s, BMI160_INT_EN_0,
+				      BMI160_INT_ANYMO_X_EN |
+				      BMI160_INT_ANYMO_Y_EN |
+				      BMI160_INT_ANYMO_Z_EN,
+				      enable);
 		if (ret)
 			ret = EC_RES_UNAVAILABLE;
 		break;
 	}
 #endif
-#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
+#ifdef CONFIG_GESTURE_SENSOR_DOUBLE_TAP
 	case MOTIONSENSE_ACTIVITY_DOUBLE_TAP: {
-		int tmp;
 		/* Set double tap interrupt */
-		ret = raw_read8(s->port, s->addr, BMI160_INT_EN_0, &tmp);
-		if (ret)
-			return ret;
-		if (enable)
-			tmp |= BMI160_INT_D_TAP_EN;
-		else
-			tmp &= ~BMI160_INT_D_TAP_EN;
-		ret = raw_write8(s->port, s->addr, BMI160_INT_EN_0, tmp);
+		ret = bmi_enable_reg8(s, BMI160_INT_EN_0,
+				      BMI160_INT_D_TAP_EN,
+				      enable);
 		if (ret)
 			ret = EC_RES_UNAVAILABLE;
 		break;
@@ -742,9 +482,9 @@ int manage_activity(const struct motion_sensor_t *s,
 	if (ret == EC_RES_SUCCESS) {
 		if (enable) {
 			data->enabled_activities |= 1 << activity;
-			data->disabled_activities &= ~(1 << activity);
+			data->disabled_activities &= ~BIT(activity);
 		} else {
-			data->enabled_activities &= ~(1 << activity);
+			data->enabled_activities &= ~BIT(activity);
 			data->disabled_activities |= 1 << activity;
 		}
 	}
@@ -756,13 +496,14 @@ int list_activities(const struct motion_sensor_t *s,
 		    uint32_t *enabled,
 		    uint32_t *disabled)
 {
-	struct bmi160_drv_data_t *data = BMI160_GET_DATA(s);
+	struct bmi_drv_data_t *data = BMI_GET_DATA(s);
 	*enabled = data->enabled_activities;
 	*disabled = data->disabled_activities;
 	return EC_RES_SUCCESS;
 }
 #endif
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_ACCEL_INTERRUPTS
 
 #ifdef CONFIG_ACCEL_FIFO
@@ -992,6 +733,9 @@ void bmi160_interrupt(enum gpio_signal signal)
 
 
 static int config_interrupt(const struct motion_sensor_t *s)
+=======
+static __maybe_unused int config_interrupt(const struct motion_sensor_t *s)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	int ret, tmp;
 
@@ -999,89 +743,102 @@ static int config_interrupt(const struct motion_sensor_t *s)
 		return EC_SUCCESS;
 
 	mutex_lock(s->mutex);
-	raw_write8(s->port, s->addr, BMI160_CMD_REG, BMI160_CMD_FIFO_FLUSH);
-	raw_write8(s->port, s->addr, BMI160_CMD_REG, BMI160_CMD_INT_RESET);
+	bmi_write8(s->port, s->i2c_spi_addr_flags,
+		   BMI160_CMD_REG, BMI160_CMD_FIFO_FLUSH);
+	bmi_write8(s->port, s->i2c_spi_addr_flags,
+		   BMI160_CMD_REG, BMI160_CMD_INT_RESET);
 
-#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
-	raw_write8(s->port, s->addr, BMI160_INT_TAP_0,
-		BMI160_TAP_DUR(s, CONFIG_GESTURE_TAP_MAX_INTERSTICE_T));
-	ret = raw_write8(s->port, s->addr, BMI160_INT_TAP_1,
-		BMI160_TAP_TH(s, CONFIG_GESTURE_TAP_THRES_MG));
-#endif
-#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
-	/* only use orientation sensor on the lid sensor */
-	if (s->location == MOTIONSENSE_LOC_LID) {
-		ret = raw_write8(s->port, s->addr, BMI160_INT_ORIENT_0,
-			BMI160_INT_ORIENT_0_INIT_VAL);
-		ret = raw_write8(s->port, s->addr, BMI160_INT_ORIENT_1,
-			BMI160_INT_ORIENT_1_INIT_VAL);
+	if (IS_ENABLED(CONFIG_GESTURE_SENSOR_DOUBLE_TAP)) {
+		bmi_write8(s->port, s->i2c_spi_addr_flags,
+				BMI160_INT_TAP_0,
+				BMI160_TAP_DUR(s, CONFIG_GESTURE_TAP_MAX_INTERSTICE_T));
+		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+				BMI160_INT_TAP_1,
+				BMI160_TAP_TH(s, CONFIG_GESTURE_TAP_THRES_MG));
 	}
-#endif
+	/* only use orientation sensor on the lid sensor */
+	if (IS_ENABLED(CONFIG_BMI_ORIENTATION_SENSOR) &&
+	    (s->location == MOTIONSENSE_LOC_LID)) {
+		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+				 BMI160_INT_ORIENT_0,
+				 BMI160_INT_ORIENT_0_INIT_VAL);
+		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+				 BMI160_INT_ORIENT_1,
+				 BMI160_INT_ORIENT_1_INIT_VAL);
+	}
 
-#ifdef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
-	ret = raw_write8(s->port, s->addr, BMI160_INT_LATCH, BMI160_LATCH_5MS);
-#else
-	/* Also, configure int2 as an external input. */
-	ret = raw_write8(s->port, s->addr, BMI160_INT_LATCH,
-		BMI160_INT2_INPUT_EN | BMI160_LATCH_5MS);
-#endif
+	if (IS_ENABLED(CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT)) {
+		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+				BMI160_INT_LATCH, BMI160_LATCH_5MS);
+	} else {
+		/* Also, configure int2 as an external input. */
+		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+				BMI160_INT_LATCH,
+				BMI160_INT2_INPUT_EN | BMI160_LATCH_5MS);
+	}
 
 	/* configure int1 as an interrupt */
-	ret = raw_write8(s->port, s->addr, BMI160_INT_OUT_CTRL,
-		BMI160_INT_CTRL(1, OUTPUT_EN));
+	ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+			 BMI160_INT_OUT_CTRL,
+			 BMI160_INT_CTRL(1, OUTPUT_EN));
 
 	/* Map activity interrupt to int 1 */
 	tmp = 0;
-#ifdef CONFIG_GESTURE_SIGMO
-	tmp |= BMI160_INT_ANYMOTION;
-#endif
-#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
-	tmp |= BMI160_INT_D_TAP;
-#endif
-#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
-	/* enable orientation interrupt for lid sensor only */
-	if (s->location == MOTIONSENSE_LOC_LID)
+	if (IS_ENABLED(CONFIG_GESTURE_SIGMO)) {
+		tmp |= BMI160_INT_ANYMOTION;
+	} else if (IS_ENABLED(CONFIG_GESTURE_SENSOR_DOUBLE_TAP)) {
+		tmp |= BMI160_INT_D_TAP;
+	} else if (IS_ENABLED(CONFIG_BMI_ORIENTATION_SENSOR) &&
+		   (s->location == MOTIONSENSE_LOC_LID)) {
+		/* enable orientation interrupt for lid sensor only */
 		tmp |= BMI160_INT_ORIENT;
-#endif
-	ret = raw_write8(s->port, s->addr, BMI160_INT_MAP_REG(1), tmp);
+	}
+	ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+			 BMI160_INT_MAP_REG(1), tmp);
 
-#ifdef CONFIG_ACCEL_FIFO
-	/* map fifo water mark to int 1 */
-	ret = raw_write8(s->port, s->addr, BMI160_INT_FIFO_MAP,
-			BMI160_INT_MAP(1, FWM) |
-			BMI160_INT_MAP(1, FFULL));
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO)) {
+		/* map fifo water mark to int 1 */
+		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+				 BMI160_INT_FIFO_MAP,
+				 BMI160_INT_MAP(1, FWM) |
+				 BMI160_INT_MAP(1, FFULL));
 
-	/* configure fifo watermark to int whenever there's any data in there */
-	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_0, 1);
-#ifdef CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT
-	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_1,
-			BMI160_FIFO_HEADER_EN);
-#else
-	ret = raw_write8(s->port, s->addr, BMI160_FIFO_CONFIG_1,
-			BMI160_FIFO_TAG_INT2_EN |
-			BMI160_FIFO_HEADER_EN);
-#endif
+		/*
+		 * Configure fifo watermark to int whenever there's any data in
+		 * there
+		 */
+		ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+				 BMI160_FIFO_CONFIG_0, 1);
+		if (IS_ENABLED(CONFIG_ACCELGYRO_BMI160_INT2_OUTPUT))
+			ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+					BMI160_FIFO_CONFIG_1,
+					BMI160_FIFO_HEADER_EN);
+		else
+			ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+					BMI160_FIFO_CONFIG_1,
+					BMI160_FIFO_TAG_INT2_EN |
+					BMI160_FIFO_HEADER_EN);
 
-	/* Set fifo*/
-	ret = raw_read8(s->port, s->addr, BMI160_INT_EN_1, &tmp);
-	tmp |= BMI160_INT_FWM_EN | BMI160_INT_FFUL_EN;
-	ret = raw_write8(s->port, s->addr, BMI160_INT_EN_1, tmp);
-#endif
+		/* Set fifo*/
+		bmi_enable_reg8(s, BMI160_INT_EN_1,
+				BMI160_INT_FWM_EN | BMI160_INT_FFUL_EN, 1);
+	}
 	mutex_unlock(s->mutex);
 	return ret;
 }
 
-#ifdef CONFIG_BMI160_ORIENTATION_SENSOR
+#ifdef CONFIG_ACCEL_INTERRUPTS
+#ifdef CONFIG_BMI_ORIENTATION_SENSOR
 static void irq_set_orientation(struct motion_sensor_t *s,
 				int interrupt)
 {
 	int shifted_masked_orientation =
 		(interrupt >> 24) & BMI160_ORIENT_XY_MASK;
-	if (BMI160_GET_DATA(s)->raw_orientation != shifted_masked_orientation) {
+	if (BMI_GET_DATA(s)->raw_orientation != shifted_masked_orientation) {
 		enum motionsensor_orientation orientation =
 			MOTIONSENSE_ORIENTATION_UNKNOWN;
 
-		BMI160_GET_DATA(s)->raw_orientation =
+		BMI_GET_DATA(s)->raw_orientation =
 			shifted_masked_orientation;
 
 		switch (shifted_masked_orientation) {
@@ -1102,11 +859,26 @@ static void irq_set_orientation(struct motion_sensor_t *s,
 		default:
 			break;
 		}
-		orientation = motion_sense_remap_orientation(s, orientation);
-		SET_ORIENTATION(s, orientation);
+		orientation = motion_orientation_remap(s, orientation);
+		*motion_orientation_ptr(s) = orientation;
 	}
 }
-#endif
+#endif  /* CONFIG_BMI_ORIENTATION_SENSOR */
+
+/**
+ * bmi160_interrupt - called when the sensor activates the interrupt line.
+ *
+ * This is a "top half" interrupt handler, it just asks motion sense ask
+ * to schedule the "bottom half", ->irq_handler().
+ */
+void bmi160_interrupt(enum gpio_signal signal)
+{
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO))
+		last_interrupt_timestamp = __hw_clock_source_read();
+
+	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_ACCELGYRO_BMI160_INT_EVENT);
+}
+
 /**
  * irq_handler - bottom half of the interrupt stack.
  * Ran from the motion_sense task, finds the events that raised the interrupt.
@@ -1114,9 +886,14 @@ static void irq_set_orientation(struct motion_sensor_t *s,
  * For now, we just print out. We should set a bitmask motion sense code will
  * act upon.
  */
-static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
+static int irq_handler(struct motion_sensor_t *s,
+				      uint32_t *event)
 {
 	uint32_t interrupt;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+	int8_t has_read_fifo = 0;
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	int rv;
 
 	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
@@ -1124,14 +901,20 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 		return EC_ERROR_NOT_HANDLED;
 
 	do {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		rv = raw_read32(s->port, s->addr, BMI160_INT_STATUS_0,
 				&interrupt);
+=======
+		rv = bmi_read16(s->port, s->i2c_spi_addr_flags,
+				BMI160_INT_STATUS_0, &interrupt);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		/*
 		 * Bail out of this loop there was an error reading the register
 		 */
 		if (rv)
 			return rv;
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
 		if (interrupt & BMI160_D_TAP_INT)
 			*event |= TASK_EVENT_MOTION_ACTIVITY_INTERRUPT(
@@ -1149,108 +932,97 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 #ifdef CONFIG_BMI160_ORIENTATION_SENSOR
 		irq_set_orientation(s, interrupt);
 #endif
+=======
+		if (IS_ENABLED(CONFIG_GESTURE_SENSOR_DOUBLE_TAP) &&
+		    (interrupt & BMI160_D_TAP_INT))
+			*event |= TASK_EVENT_MOTION_ACTIVITY_INTERRUPT(
+					MOTIONSENSE_ACTIVITY_DOUBLE_TAP);
+		if (IS_ENABLED(CONFIG_GESTURE_SIGMO) &&
+		    (interrupt & BMI160_SIGMOT_INT))
+			*event |= TASK_EVENT_MOTION_ACTIVITY_INTERRUPT(
+					MOTIONSENSE_ACTIVITY_SIG_MOTION);
+		if (IS_ENABLED(CONFIG_ACCEL_FIFO) &&
+		    (interrupt & (BMI160_FWM_INT | BMI160_FFULL_INT))) {
+			bmi_load_fifo(s, last_interrupt_timestamp);
+			has_read_fifo = 1;
+		}
+		if (IS_ENABLED(CONFIG_BMI_ORIENTATION_SENSOR))
+			irq_set_orientation(s, interrupt);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	} while (interrupt != 0);
+
+	if (IS_ENABLED(CONFIG_ACCEL_FIFO) && has_read_fifo)
+		motion_sense_fifo_commit_data();
 
 	return EC_SUCCESS;
 }
 #endif  /* CONFIG_ACCEL_INTERRUPTS */
 
-
-static int read(const struct motion_sensor_t *s, intv3_t v)
+static int init(struct motion_sensor_t *s)
 {
-	uint8_t data[6];
-	int ret, status = 0;
+	int ret = 0, tmp, i;
+	struct accelgyro_saved_data_t *saved_data = BMI_GET_SAVED_DATA(s);
 
-	ret = raw_read8(s->port, s->addr, BMI160_STATUS, &status);
-	if (ret != EC_SUCCESS)
-		return ret;
-
-	/*
-	 * If sensor data is not ready, return the previous read data.
-	 * Note: return success so that motion senor task can read again
-	 * to get the latest updated sensor data quickly.
-	 */
-	if (!(status & BMI160_DRDY_MASK(s->type))) {
-		if (v != s->raw_xyz)
-			memcpy(v, s->raw_xyz, sizeof(s->raw_xyz));
-		return EC_SUCCESS;
-	}
-
-	/* Read 6 bytes starting at xyz_reg */
-	ret = raw_read_n(s->port, s->addr, get_xyz_reg(s->type), data, 6);
-
-	if (ret != EC_SUCCESS) {
-		CPRINTS("%s: type:0x%X RD XYZ Error %d", s->name, s->type, ret);
-		return ret;
-	}
-	normalize(s, v, data);
-	return EC_SUCCESS;
-}
-
-static int init(const struct motion_sensor_t *s)
-{
-	int ret = 0, tmp;
-	struct accelgyro_saved_data_t *data = BMI160_GET_SAVED_DATA(s);
-
-	ret = raw_read8(s->port, s->addr, BMI160_CHIP_ID, &tmp);
+	ret = bmi_read8(s->port, s->i2c_spi_addr_flags,
+			BMI160_CHIP_ID, &tmp);
 	if (ret)
 		return EC_ERROR_UNKNOWN;
 
 	if (tmp != BMI160_CHIP_ID_MAJOR && tmp != BMI168_CHIP_ID_MAJOR) {
 		/* The device may be lock on paging mode. Try to unlock it. */
-		raw_write8(s->port, s->addr, BMI160_CMD_REG,
-				BMI160_CMD_EXT_MODE_EN_B0);
-		raw_write8(s->port, s->addr, BMI160_CMD_REG,
-				BMI160_CMD_EXT_MODE_EN_B1);
-		raw_write8(s->port, s->addr, BMI160_CMD_REG,
-				BMI160_CMD_EXT_MODE_EN_B2);
-		raw_write8(s->port, s->addr, BMI160_CMD_EXT_MODE_ADDR,
-				BMI160_CMD_PAGING_EN);
-		raw_write8(s->port, s->addr, BMI160_CMD_EXT_MODE_ADDR, 0);
+		bmi_write8(s->port, s->i2c_spi_addr_flags,
+			   BMI160_CMD_REG, BMI160_CMD_EXT_MODE_EN_B0);
+		bmi_write8(s->port, s->i2c_spi_addr_flags,
+			   BMI160_CMD_REG, BMI160_CMD_EXT_MODE_EN_B1);
+		bmi_write8(s->port, s->i2c_spi_addr_flags,
+			   BMI160_CMD_REG, BMI160_CMD_EXT_MODE_EN_B2);
+		bmi_write8(s->port, s->i2c_spi_addr_flags,
+			   BMI160_CMD_EXT_MODE_ADDR, BMI160_CMD_PAGING_EN);
+		bmi_write8(s->port, s->i2c_spi_addr_flags,
+			   BMI160_CMD_EXT_MODE_ADDR, 0);
 		return EC_ERROR_ACCESS_DENIED;
 	}
 
 
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
-		struct bmi160_drv_data_t *data = BMI160_GET_DATA(s);
+		struct bmi_drv_data_t *data = BMI_GET_DATA(s);
 
 		/* Reset the chip to be in a good state */
-		raw_write8(s->port, s->addr, BMI160_CMD_REG,
-				BMI160_CMD_SOFT_RESET);
+		bmi_write8(s->port, s->i2c_spi_addr_flags,
+			   BMI160_CMD_REG, BMI160_CMD_SOFT_RESET);
 		msleep(1);
-		data->flags &= ~(BMI160_FLAG_SEC_I2C_ENABLED |
-				(BMI160_FIFO_ALL_MASK <<
-				 BMI160_FIFO_FLAG_OFFSET));
-#ifdef CONFIG_GESTURE_HOST_DETECTION
-		data->enabled_activities = 0;
-		data->disabled_activities = 0;
-#ifdef CONFIG_GESTURE_SIGMO
-		data->disabled_activities |=
-			1 << MOTIONSENSE_ACTIVITY_SIG_MOTION;
-#endif
-#ifdef CONFIG_GESTURE_SENSOR_BATTERY_TAP
-		data->disabled_activities |=
-			1 << MOTIONSENSE_ACTIVITY_DOUBLE_TAP;
-#endif
-#endif
+		data->flags &= ~(BMI_FLAG_SEC_I2C_ENABLED |
+				(BMI_FIFO_ALL_MASK <<
+				 BMI_FIFO_FLAG_OFFSET));
+		if (IS_ENABLED(CONFIG_GESTURE_HOST_DETECTION)) {
+			data->enabled_activities = 0;
+			data->disabled_activities = 0;
+			if (IS_ENABLED(CONFIG_GESTURE_SIGMO))
+				data->disabled_activities |=
+					BIT(MOTIONSENSE_ACTIVITY_SIG_MOTION);
+			if (IS_ENABLED(CONFIG_GESTURE_SENSOR_DOUBLE_TAP))
+				data->disabled_activities |=
+					BIT(MOTIONSENSE_ACTIVITY_DOUBLE_TAP);
+		}
 		/* To avoid gyro wakeup */
-		raw_write8(s->port, s->addr, BMI160_PMU_TRIGGER, 0);
+		bmi_write8(s->port, s->i2c_spi_addr_flags,
+			   BMI160_PMU_TRIGGER, 0);
 	}
 
-#ifdef CONFIG_BMI160_SEC_I2C
+#ifdef CONFIG_BMI_SEC_I2C
 	if (s->type == MOTIONSENSE_TYPE_MAG) {
-		struct bmi160_drv_data_t *data = BMI160_GET_DATA(s);
+		struct bmi_drv_data_t *data = BMI_GET_DATA(s);
 
 		/*
 		 * To be able to configure the real magnetometer, we must set
 		 * the BMI160 magnetometer part (a pass through) in normal mode.
 		 */
-		raw_write8(s->port, s->addr, BMI160_CMD_REG,
-				BMI160_CMD_MODE_NORMAL(s->type));
+		bmi_write8(s->port, s->i2c_spi_addr_flags,
+			   BMI160_CMD_REG, BMI160_CMD_MODE_NORMAL(s->type));
 		msleep(wakeup_time[s->type]);
 
-		if ((data->flags & BMI160_FLAG_SEC_I2C_ENABLED) == 0) {
-			int ext_page_reg, pullup_reg;
+		if ((data->flags & BMI_FLAG_SEC_I2C_ENABLED) == 0) {
+			int ext_page_reg;
 			/* Enable secondary interface */
 			/*
 			 * This is not part of the normal configuration but from
@@ -1259,48 +1031,50 @@ static int init(const struct motion_sensor_t *s)
 			 *
 			 * Magic command sequences
 			 */
-			raw_write8(s->port, s->addr, BMI160_CMD_REG,
-					BMI160_CMD_EXT_MODE_EN_B0);
-			raw_write8(s->port, s->addr, BMI160_CMD_REG,
-					BMI160_CMD_EXT_MODE_EN_B1);
-			raw_write8(s->port, s->addr, BMI160_CMD_REG,
-					BMI160_CMD_EXT_MODE_EN_B2);
+			bmi_write8(s->port, s->i2c_spi_addr_flags,
+				   BMI160_CMD_REG, BMI160_CMD_EXT_MODE_EN_B0);
+			bmi_write8(s->port, s->i2c_spi_addr_flags,
+				   BMI160_CMD_REG, BMI160_CMD_EXT_MODE_EN_B1);
+			bmi_write8(s->port, s->i2c_spi_addr_flags,
+				   BMI160_CMD_REG, BMI160_CMD_EXT_MODE_EN_B2);
 
 			/*
 			 * Change the register page to target mode, to change
 			 * the internal pull ups of the secondary interface.
 			 */
-			raw_read8(s->port, s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					&ext_page_reg);
-			raw_write8(s->port, s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					ext_page_reg | BMI160_CMD_TARGET_PAGE);
-			raw_read8(s->port, s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					&ext_page_reg);
-			raw_write8(s->port, s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					ext_page_reg | BMI160_CMD_PAGING_EN);
-			raw_read8(s->port, s->addr, BMI160_COM_C_TRIM_ADDR,
-					&pullup_reg);
-			raw_write8(s->port, s->addr, BMI160_COM_C_TRIM_ADDR,
-					pullup_reg | BMI160_COM_C_TRIM);
-			raw_read8(s->port, s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					&ext_page_reg);
-			raw_write8(s->port, s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					ext_page_reg & ~BMI160_CMD_TARGET_PAGE);
-			raw_read8(s->port, s->addr, BMI160_CMD_EXT_MODE_ADDR,
-					&ext_page_reg);
+			bmi_enable_reg8(s, BMI160_CMD_EXT_MODE_ADDR,
+					BMI160_CMD_TARGET_PAGE, 1);
+			bmi_enable_reg8(s, BMI160_CMD_EXT_MODE_ADDR,
+					BMI160_CMD_PAGING_EN, 1);
+			bmi_enable_reg8(s, BMI160_COM_C_TRIM_ADDR,
+					BMI160_COM_C_TRIM, 1);
+			bmi_enable_reg8(s, BMI160_CMD_EXT_MODE_ADDR,
+					BMI160_CMD_TARGET_PAGE, 0);
+			bmi_read8(s->port, s->i2c_spi_addr_flags,
+				  BMI160_CMD_EXT_MODE_ADDR, &ext_page_reg);
 
 			/* Set the i2c address of the compass */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 			ret = raw_write8(s->port, s->addr, BMI160_MAG_IF_0,
 					CONFIG_ACCELGYRO_SEC_ADDR);
+=======
+			ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+					 BMI160_MAG_IF_0,
+					 I2C_STRIP_FLAGS(
+					     CONFIG_ACCELGYRO_SEC_ADDR_FLAGS)
+					 << 1);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 			/* Enable the secondary interface as I2C */
-			ret = raw_write8(s->port, s->addr, BMI160_IF_CONF,
-				BMI160_IF_MODE_AUTO_I2C << BMI160_IF_MODE_OFF);
-			data->flags |= BMI160_FLAG_SEC_I2C_ENABLED;
+			ret = bmi_write8(s->port, s->i2c_spi_addr_flags,
+					 BMI160_IF_CONF,
+					 BMI160_IF_MODE_AUTO_I2C <<
+					     BMI160_IF_MODE_OFF);
+			data->flags |= BMI_FLAG_SEC_I2C_ENABLED;
 		}
 
 
-		bmi160_sec_access_ctrl(s->port, s->addr, 1);
+		bmi160_sec_access_ctrl(s->port, s->i2c_spi_addr_flags, 1);
 
 		ret = bmm150_init(s);
 		if (ret)
@@ -1308,49 +1082,60 @@ static int init(const struct motion_sensor_t *s)
 			return ret;
 
 		/* Leave the address for reading the data */
-		raw_write8(s->port, s->addr, BMI160_MAG_I2C_READ_ADDR,
-				BMM150_BASE_DATA);
+		bmi_write8(s->port, s->i2c_spi_addr_flags,
+			   BMI160_MAG_I2C_READ_ADDR, BMM150_BASE_DATA);
 		/*
 		 * Put back the secondary interface in normal mode.
 		 * BMI160 will poll based on the configure ODR.
 		 */
-		bmi160_sec_access_ctrl(s->port, s->addr, 0);
+		bmi160_sec_access_ctrl(s->port, s->i2c_spi_addr_flags, 0);
+
+		/*
+		 * Clean interrupt event that may have occurred while the
+		 * BMI160 was in management mode.
+		 */
+		task_set_event(TASK_ID_MOTIONSENSE,
+			       CONFIG_ACCELGYRO_BMI160_INT_EVENT);
 	}
 #endif
 
+	for (i = X; i <= Z; i++)
+		saved_data->scale[i] = MOTION_SENSE_DEFAULT_SCALE;
 	/*
 	 * The sensor is in Suspend mode at init,
 	 * so set data rate to 0.
 	 */
-	data->odr = 0;
-	set_range(s, s->default_range, 0);
+	saved_data->odr = 0;
 
-	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
-#ifdef CONFIG_ACCEL_INTERRUPTS
+	if (IS_ENABLED(CONFIG_ACCEL_INTERRUPTS) &&
+	    (s->type == MOTIONSENSE_TYPE_ACCEL))
 		ret = config_interrupt(s);
-#endif
-	}
 
 	return sensor_init_done(s);
 }
 
 const struct accelgyro_drv bmi160_drv = {
 	.init = init,
-	.read = read,
-	.set_range = set_range,
-	.get_range = get_range,
-	.get_resolution = get_resolution,
+	.read = bmi_read,
+	.set_range = bmi_set_range,
+	.get_resolution = bmi_get_resolution,
 	.set_data_rate = set_data_rate,
-	.get_data_rate = get_data_rate,
+	.get_data_rate = bmi_get_data_rate,
 	.set_offset = set_offset,
-	.get_offset = get_offset,
+	.get_scale = bmi_get_scale,
+	.set_scale = bmi_set_scale,
+	.get_offset = bmi_get_offset,
 	.perform_calib = perform_calib,
+	.read_temp = bmi_read_temp,
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = irq_handler,
 #endif
 #ifdef CONFIG_GESTURE_HOST_DETECTION
 	.manage_activity = manage_activity,
 	.list_activities = list_activities,
+#endif
+#ifdef CONFIG_BODY_DETECTION
+	.get_rms_noise = bmi_get_rms_noise,
 #endif
 };
 
@@ -1361,23 +1146,16 @@ struct i2c_stress_test_dev bmi160_i2c_stress_test_dev = {
 		.read_val = BMI160_CHIP_ID_MAJOR,
 		.write_reg = BMI160_PMU_TRIGGER,
 	},
-	.i2c_read = &raw_read8,
-	.i2c_write = &raw_write8,
+	.i2c_read = &bmi_read8,
+	.i2c_write = &bmi_write8,
 };
 #endif /* CONFIG_CMD_I2C_STRESS_TEST_ACCEL */
 
+/*
+ * TODO(chingkang): Replace bmi160_get_sensor_temp in some board config to
+ *                  bmi_get_sensor_temp. Then, remove this definition.
+ */
 int bmi160_get_sensor_temp(int idx, int *temp_ptr)
 {
-	struct motion_sensor_t *s = &motion_sensors[idx];
-	int16_t temp;
-	int ret;
-
-	ret = raw_read_n(s->port, s->addr, BMI160_TEMPERATURE_0,
-			 (uint8_t *)&temp, sizeof(temp));
-
-	if (ret || temp == BMI160_INVALID_TEMP)
-		return EC_ERROR_NOT_POWERED;
-
-	*temp_ptr = C_TO_K(23 + ((temp + 256) >> 9));
-	return 0;
+	return bmi_get_sensor_temp(idx, temp_ptr);
 }

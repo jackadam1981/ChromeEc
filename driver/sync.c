@@ -12,6 +12,7 @@
 #include "console.h"
 #include "driver/sync.h"
 #include "hwtimer.h"
+#include "motion_sense_fifo.h"
 #include "queue.h"
 #include "task.h"
 #include "util.h"
@@ -36,8 +37,11 @@ static struct queue const sync_event_queue =
 	QUEUE_NULL(CONFIG_SYNC_QUEUE_SIZE, struct sync_event_t);
 
 struct sync_event_t next_event;
-struct ec_response_motion_sensor_data vector =
-	{.flags = MOTIONSENSE_SENSOR_FLAG_WAKEUP, .data = {0, 0, 0} };
+struct ec_response_motion_sensor_data vector = {
+	.flags = MOTIONSENSE_SENSOR_FLAG_BYPASS_FIFO,
+	.data = {0, 0, 0}
+};
+
 int sync_enabled;
 
 static int sync_read(const struct motion_sensor_t *s, intv3_t v)
@@ -75,7 +79,7 @@ void sync_interrupt(enum gpio_signal signal)
 	next_event.counter++;
 	queue_add_unit(&sync_event_queue, &next_event);
 
-	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_SYNC_INT_EVENT, 0);
+	task_set_event(TASK_ID_MOTIONSENSE, CONFIG_SYNC_INT_EVENT);
 }
 
 /* Bottom half of the irq handler */
@@ -88,13 +92,15 @@ static int motion_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 
 	while (queue_remove_unit(&sync_event_queue, &sync_event)) {
 		vector.data[X] = sync_event.counter;
-		motion_sense_fifo_add_data(&vector, s, 1, sync_event.timestamp);
+		motion_sense_fifo_stage_data(
+			&vector, s, 1, sync_event.timestamp);
 	}
+	motion_sense_fifo_commit_data();
 
 	return EC_SUCCESS;
 }
 
-static int sync_init(const struct motion_sensor_t *s)
+static int sync_init(struct motion_sensor_t *s)
 {
 	vector.sensor_num = s - motion_sensors;
 	sync_enabled = 0;

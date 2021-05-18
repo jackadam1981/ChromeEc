@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -13,6 +13,32 @@
 #include "util.h"
 
 /**
+ * @return Number of regions supported by the MPU. 0 means the processor does
+ * not implement an MPU.
+ */
+int mpu_num_regions(void)
+{
+	return MPU_TYPE_REG_COUNT(mpu_get_type());
+}
+
+/**
+ * @return true if processor has MPU, false otherwise
+ */
+bool has_mpu(void)
+{
+	return mpu_num_regions() != 0;
+}
+
+/**
+ * @return true if MPU has unified instruction and data maps, false otherwise
+ */
+bool mpu_is_unified(void)
+{
+	return (mpu_get_type() & MPU_TYPE_UNIFIED_MASK) == 0;
+}
+
+
+/**
  * Update a memory region.
  *
  * region: index of the region to update
@@ -24,9 +50,27 @@
  *
  * Based on 3.1.4.1 'Updating an MPU Region' of Stellaris LM4F232H5QC Datasheet
  */
-static void mpu_update_region(uint8_t region, uint32_t addr, uint8_t size_bit,
-			      uint16_t attr, uint8_t enable, uint8_t srd)
+int mpu_update_region(uint8_t region, uint32_t addr, uint8_t size_bit,
+		      uint16_t attr, uint8_t enable, uint8_t srd)
 {
+	/*
+	 * Note that on the Cortex-M3, Cortex-M4, and Cortex-M7, the base
+	 * address used for an MPU region must be aligned to the size of the
+	 * region:
+	 *
+	 * https://developer.arm.com/docs/dui0553/a/cortex-m4-peripherals/optional-memory-protection-unit/mpu-region-base-address-register
+	 * https://developer.arm.com/docs/dui0552/a/cortex-m3-peripherals/optional-memory-protection-unit/mpu-region-base-address-register
+	 * https://developer.arm.com/docs/dui0646/a/cortex-m7-peripherals/optional-memory-protection-unit/mpu-region-base-address-register#BABDAHJG
+	 */
+	if (!is_aligned(addr, BIT(size_bit)))
+		return -EC_ERROR_INVAL;
+
+	if (region >= mpu_num_regions())
+		return -EC_ERROR_INVAL;
+
+	if (size_bit < MPU_SIZE_BITS_MIN)
+		return -EC_ERROR_INVAL;
+
 	asm volatile("isb; dsb;");
 
 	MPU_NUMBER = region;
@@ -46,6 +90,79 @@ static void mpu_update_region(uint8_t region, uint32_t addr, uint8_t size_bit,
 	}
 
 	asm volatile("isb; dsb;");
+
+	return EC_SUCCESS;
+}
+
+/*
+ * Greedily configure the largest possible part of the given region from the
+ * base address.
+ *
+ * Returns EC_SUCCESS on success and sets *consumed to the number of bytes
+ * mapped from the base address. In case of error, the value of *consumed is
+ * unpredictable.
+ *
+ * For instance, if addr is 0x10070000 and size is 0x30000 then memory in the
+ * range 0x10070000-0x10080000 will be configured and *consumed will be set to
+ * 0x10000.
+ */
+static int mpu_config_region_greedy(uint8_t region, uint32_t addr,
+				    uint32_t size, uint16_t attr,
+				    uint8_t enable, uint32_t *consumed)
+{
+	/*
+	 * Compute candidate alignment to be used for the MPU region.
+	 *
+	 * This is the minimum of the base address and size alignment, since
+	 * regions must be naturally aligned to their size.
+	 */
+	uint8_t natural_alignment = MIN(addr == 0 ? 32 : alignment_log2(addr),
+				     alignment_log2(size));
+	uint8_t subregion_disable = 0;
+
+	if (natural_alignment >= 5) {
+		int sr_idx;
+		uint32_t subregion_base, subregion_size;
+		/*
+		 * For MPU regions larger than 256 bytes we can use subregions,
+		 * (which are a minimum of 32 bytes in size) making the actual
+		 * MPU region 8x larger. Depending on the address alignment this
+		 * can allow us to cover a larger area (and never a smaller
+		 * one).
+		 */
+		natural_alignment += 3;
+		/* Region size cannot exceed 4GB. */
+		if (natural_alignment > 32)
+			natural_alignment = 32;
+
+		/*
+		 * Generate the subregion mask by walking through each,
+		 * disabling if it is not completely contained in the requested
+		 * range.
+		 */
+		subregion_base = addr & ~((1 << natural_alignment) - 1);
+		subregion_size = 1 << (natural_alignment - 3);
+		*consumed = 0;
+		for (sr_idx = 0; sr_idx < 8; sr_idx++) {
+			if (subregion_base < addr ||
+			    (subregion_base + subregion_size) > (addr + size))
+				/* lsb of subregion mask is lowest address */
+				subregion_disable |= 1 << sr_idx;
+			else
+				/* not disabled means consumed */
+				*consumed += subregion_size;
+
+			subregion_base += subregion_size;
+		}
+	} else {
+		/* Not using subregions; all enabled */
+		*consumed = 1 << natural_alignment;
+	}
+
+	return mpu_update_region(region,
+			       addr & ~((1 << natural_alignment) - 1),
+			       natural_alignment,
+			       attr, enable, subregion_disable);
 }
 
 /**
@@ -57,73 +174,41 @@ static void mpu_update_region(uint8_t region, uint32_t addr, uint8_t size_bit,
  * attr: Attribute bits. Current value will be overwritten if enable is set.
  * enable: Enables the region if non zero. Otherwise, disables the region.
  *
- * Returns EC_SUCCESS on success or -EC_ERROR_INVAL if a parameter is invalid.
+ * Returns EC_SUCCESS on success, -EC_ERROR_OVERFLOW if it is not possible to
+ * fully configure the given region, or -EC_ERROR_INVAL if a parameter is
+ * invalid (such as the address or size having unsupported alignment).
  */
-static int mpu_config_region(uint8_t region, uint32_t addr, uint32_t size,
-			     uint16_t attr, uint8_t enable)
+int mpu_config_region(uint8_t region, uint32_t addr, uint32_t size,
+		      uint16_t attr, uint8_t enable)
 {
-	int size_bit = 0;
-	uint8_t blocks, srd1, srd2;
+	int rv;
+	uint32_t consumed;
 
-	if (!size)
+	/* Zero size doesn't require configuration */
+	if (size == 0)
 		return EC_SUCCESS;
 
-	/* Bit position of first '1' in size */
-	size_bit = 31 - __builtin_clz(size);
-	/* Min. region size is 32 bytes */
-	if (size_bit < 5)
-		return -EC_ERROR_INVAL;
+	rv = mpu_config_region_greedy(region, addr, size,
+				      attr, enable, &consumed);
+	if (rv != EC_SUCCESS)
+		return rv;
+	ASSERT(consumed <= size);
+	addr += consumed;
+	size -= consumed;
 
-	/* If size is a power of 2 then represent it with a single MPU region */
-	if (POWER_OF_TWO(size)) {
-		mpu_update_region(region, addr, size_bit, attr, enable, 0);
-		return EC_SUCCESS;
+	/* Regions other than DATA_RAM_TEXT may use two MPU regions */
+	if (size > 0 && region != REGION_DATA_RAM_TEXT) {
+		rv = mpu_config_region_greedy(region + 1, addr, size,
+					      attr, enable, &consumed);
+		if (rv != EC_SUCCESS)
+			return rv;
+		ASSERT(consumed <= size);
+		addr += consumed;
+		size -= consumed;
 	}
 
-	/* Sub-regions are not supported for region <= 128 bytes */
-	if (size_bit < 7)
-		return -EC_ERROR_INVAL;
-	/* Verify we can represent range with <= 2 regions */
-	if (size & ~(0x3f << (size_bit - 5)))
-		return -EC_ERROR_INVAL;
-
-	/*
-	 * Round up size of first region to power of 2.
-	 * Calculate the number of fully occupied blocks (block size =
-	 * region size / 8) in the first region.
-	 */
-	blocks = size >> (size_bit - 2);
-
-	/* Represent occupied blocks of two regions with srd mask. */
-	srd1 = (1 << blocks) - 1;
-	srd2 = (1 << ((size >> (size_bit - 5)) & 0x7)) - 1;
-
-	/*
-	 * Second region not supported for DATA_RAM_TEXT, also verify size of
-	 * second region is sufficient to support sub-regions.
-	 */
-	if (srd2 && (region == REGION_DATA_RAM_TEXT || size_bit < 10))
-		return -EC_ERROR_INVAL;
-
-	/* Write first region. */
-	mpu_update_region(region, addr, size_bit + 1, attr, enable, ~srd1);
-
-	/*
-	 * Second protection region (if necessary) begins at the first block
-	 * we marked unoccupied in the first region.
-	 * Size of the second region is the block size of first region.
-	 */
-	addr += (1 << (size_bit - 2)) * blocks;
-
-	/*
-	 * Now represent occupied blocks in the second region. It's possible
-	 * that the first region completely represented the occupied area, if
-	 * so then no second protection region is required.
-	 */
-	if (srd2)
-		mpu_update_region(region + 1, addr, size_bit - 2, attr, enable,
-				  ~srd2);
-
+	if (size > 0)
+		return EC_ERROR_OVERFLOW;
 	return EC_SUCCESS;
 }
 
@@ -179,13 +264,13 @@ int mpu_protect_data_ram(void)
 		MPU_ATTR_INTERNAL_SRAM);
 }
 
-#ifdef CONFIG_EXTERNAL_STORAGE
+#if defined(CONFIG_EXTERNAL_STORAGE) || !defined(CONFIG_FLASH_PHYSICAL)
 int mpu_protect_code_ram(void)
 {
 	/* Prevent write access to code RAM */
 	return mpu_config_region(REGION_STORAGE,
 				 CONFIG_PROGRAM_MEMORY_BASE + CONFIG_RO_MEM_OFF,
-				 CONFIG_RO_SIZE,
+				 CONFIG_CODE_RAM_SIZE,
 				 MPU_ATTR_RO_NO | MPU_ATTR_INTERNAL_SRAM,
 				 1);
 }
@@ -200,24 +285,102 @@ int mpu_lock_ro_flash(void)
 				 MPU_ATTR_FLASH_MEMORY, 1);
 }
 
+/* Represent RW with at most 2 MPU regions. */
+struct mpu_rw_regions mpu_get_rw_regions(void)
+{
+	int aligned_size_bit;
+	struct mpu_rw_regions regions = {};
+
+	regions.addr[0] = CONFIG_MAPPED_STORAGE_BASE + CONFIG_RW_MEM_OFF;
+
+	/*
+	 * Least significant set bit of the address determines the max size of
+	 * the region because on the Cortex-M3, Cortex-M4 and Cortex-M7, the
+	 * address used for an MPU region must be aligned to the size.
+	 */
+	aligned_size_bit =
+		__fls(regions.addr[0] & -regions.addr[0]);
+	regions.size[0] = MIN(BIT(aligned_size_bit), CONFIG_RW_SIZE);
+	regions.addr[1] = regions.addr[0] + regions.size[0];
+	regions.size[1] = CONFIG_RW_SIZE - regions.size[0];
+	regions.num_regions = (regions.size[1] == 0) ? 1 : 2;
+
+	return regions;
+}
+
 int mpu_lock_rw_flash(void)
 {
 	/* Prevent execution from internal mapped RW flash */
-	return mpu_config_region(REGION_STORAGE,
-				 CONFIG_MAPPED_STORAGE_BASE + CONFIG_RW_MEM_OFF,
-				 CONFIG_RW_SIZE,
-				 MPU_ATTR_XN | MPU_ATTR_RW_RW |
-				 MPU_ATTR_FLASH_MEMORY, 1);
+	const uint16_t mpu_attr = MPU_ATTR_XN | MPU_ATTR_RW_RW |
+				  MPU_ATTR_FLASH_MEMORY;
+	const struct mpu_rw_regions regions = mpu_get_rw_regions();
+	int rv;
+
+	rv = mpu_config_region(REGION_STORAGE, regions.addr[0], regions.size[0],
+			       mpu_attr, 1);
+	if ((rv != EC_SUCCESS) || (regions.num_regions == 1))
+		return rv;
+
+	/* If this fails then it's impossible to represent with two regions. */
+	return mpu_config_region(REGION_STORAGE2, regions.addr[1],
+				 regions.size[1], mpu_attr, 1);
 }
 #endif /* !CONFIG_EXTERNAL_STORAGE */
 
 #ifdef CONFIG_ROLLBACK_MPU_PROTECT
 int mpu_lock_rollback(int lock)
 {
-	return mpu_config_region(REGION_ROLLBACK,
-			CONFIG_MAPPED_STORAGE_BASE + CONFIG_ROLLBACK_OFF,
-			CONFIG_ROLLBACK_SIZE, MPU_ATTR_XN | MPU_ATTR_NO_NO,
-			lock);
+	int rv;
+	int num_mpu_regions = mpu_num_regions();
+
+	const uint32_t rollback_region_start_address =
+		CONFIG_MAPPED_STORAGE_BASE + CONFIG_ROLLBACK_OFF;
+	const uint32_t rollback_region_total_size = CONFIG_ROLLBACK_SIZE;
+	const uint16_t mpu_attr =
+		MPU_ATTR_XN /* Execute never */ |
+		MPU_ATTR_NO_NO /* No access (privileged or unprivileged */;
+
+	/*
+	 * Originally rollback MPU support was added on Cortex-M7, which
+	 * supports 16 MPU regions and has rollback region aligned in a way
+	 * that we can use a single region.
+	 */
+	uint8_t rollback_mpu_region = REGION_ROLLBACK;
+
+	if (rollback_mpu_region < num_mpu_regions) {
+		rv = mpu_config_region(rollback_mpu_region,
+				       rollback_region_start_address,
+				       rollback_region_total_size, mpu_attr,
+				       lock);
+		return rv;
+	}
+
+	/*
+	 * If we get here, we can't use REGION_ROLLBACK because our MPU doesn't
+	 * have enough regions. Instead, we choose unused MPU regions.
+	 *
+	 * Note that on the Cortex-M3, Cortex-M4, and Cortex-M7, the base
+	 * address used for an MPU region must be aligned to the size of the
+	 * region, so it's not possible to use a single region to protect the
+	 * entire rollback flash on the STM32F412 (bloonchipper); we have to
+	 * use two.
+	 *
+	 * See mpu_update_region for alignment details.
+	 */
+
+	rollback_mpu_region = REGION_CHIP_RESERVED;
+	rv = mpu_config_region(rollback_mpu_region,
+			       rollback_region_start_address,
+			       rollback_region_total_size / 2, mpu_attr, lock);
+	if (rv != EC_SUCCESS)
+		return rv;
+
+	rollback_mpu_region = REGION_CODE_RAM;
+	rv = mpu_config_region(rollback_mpu_region,
+			       rollback_region_start_address +
+				       (rollback_region_total_size / 2),
+			       rollback_region_total_size / 2, mpu_attr, lock);
+	return rv;
 }
 #endif
 
@@ -235,32 +398,60 @@ int mpu_lock_rollback(int lock)
 int mpu_pre_init(void)
 {
 	int i;
-	uint32_t mpu_type = mpu_get_type();
+	int num_mpu_regions;
+	int rv;
+
+	if (!has_mpu())
+		return EC_ERROR_HW_INTERNAL;
+
+	num_mpu_regions = mpu_num_regions();
 
 	/* Supports MPU with 8 or 16 unified regions */
-	if ((mpu_type & MPU_TYPE_UNIFIED_MASK) ||
-	    (MPU_TYPE_REG_COUNT(mpu_type) != 8 &&
-	     MPU_TYPE_REG_COUNT(mpu_type) != 16))
+	if (!mpu_is_unified() ||
+	    (num_mpu_regions != 8 && num_mpu_regions != 16))
 		return EC_ERROR_UNIMPLEMENTED;
 
 	mpu_disable();
-	for (i = 0; i < MPU_TYPE_REG_COUNT(mpu_type); ++i)
-		mpu_config_region(i, CONFIG_RAM_BASE, CONFIG_RAM_SIZE, 0, 0);
 
-#ifdef CONFIG_ROLLBACK_MPU_PROTECT
-	mpu_lock_rollback(1);
-#endif
+	for (i = 0; i < num_mpu_regions; ++i) {
+		/*
+		 * Disable all regions.
+		 *
+		 * We use the smallest possible size (32 bytes), but it
+		 * doesn't really matter since the regions are disabled.
+		 *
+		 * Use the fixed SRAM region base to ensure base is aligned
+		 * to the region size.
+		 */
+		rv = mpu_update_region(i, CORTEX_M_SRAM_BASE, MPU_SIZE_BITS_MIN,
+			0, 0, 0);
+		if (rv != EC_SUCCESS)
+			return rv;
+	}
 
-#ifdef CONFIG_ARMV7M_CACHE
+	if (IS_ENABLED(CONFIG_ROLLBACK_MPU_PROTECT)) {
+		rv = mpu_lock_rollback(1);
+		if (rv != EC_SUCCESS)
+			return rv;
+	}
+
+	if (IS_ENABLED(CONFIG_ARMV7M_CACHE)) {
 #ifdef CONFIG_CHIP_UNCACHED_REGION
-	mpu_config_region(REGION_UNCACHED_RAM,
-			  CONCAT2(_region_start_, CONFIG_CHIP_UNCACHED_REGION),
-			  CONCAT2(_region_size_, CONFIG_CHIP_UNCACHED_REGION),
-			  MPU_ATTR_XN | MPU_ATTR_RW_RW, 1);
+		rv = mpu_config_region(
+			REGION_UNCACHED_RAM,
+			CONCAT2(_region_start_, CONFIG_CHIP_UNCACHED_REGION),
+			CONCAT2(_region_size_, CONFIG_CHIP_UNCACHED_REGION),
+			MPU_ATTR_XN | MPU_ATTR_RW_RW, 1);
+		if (rv != EC_SUCCESS)
+			return rv;
+
+#endif
+	}
+
 	mpu_enable();
-#endif /* CONFIG_CHIP_UNCACHED_REGION */
-	cpu_enable_caches();
-#endif /* CONFIG_ARMV7M_CACHE */
+
+	if (IS_ENABLED(CONFIG_ARMV7M_CACHE))
+		cpu_enable_caches();
 
 	return EC_SUCCESS;
 }

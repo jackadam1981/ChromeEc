@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
+#define CONFIG_LTO
+
 /* Use external clock */
 #define CONFIG_STM32_CLOCK_HSE_HZ 24000000
 
@@ -62,7 +64,7 @@
 
 #define CONFIG_USB_I2C
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define I2C_PORT_0	0
 #define I2C_PORT_1	1
 #define I2C_PORT_2	2

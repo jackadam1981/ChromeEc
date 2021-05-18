@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -105,5 +105,17 @@ static inline void keyboard_raw_set_cols(int cols) {
 #endif
 	keyboard_cols = cols;
 }
+
+#ifdef CONFIG_KEYBOARD_CUSTOMIZATION
+/* The board implements this function to control the of the keyboard column.
+ * For example, use the gpio to drive 0 or 1 for the refresh key column.
+ * @param col: If the value is greater than or equal to 0, the function drive
+ *             the specific column.
+ *             If the value is KEYBOARD_COLUMN_NONE, drive nothing.
+ *             If the value is KEYBOARD_COLUMN_ALL, drive all columns.
+ *             Otherwise, do nothing.
+ */
+void board_keyboard_drive_col(int col);
+#endif
 
 #endif  /* __CROS_EC_KEYBOARD_RAW_H */

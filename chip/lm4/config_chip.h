@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -61,7 +61,7 @@
  * in order to emulate per-bank write-protection UNTIL REBOOT. The hardware
  * doesn't support a write-protect pin, and if we make the write-protection
  * permanent, it can't be undone easily enough to support RMA. */
-#define CONFIG_FLASH_SIZE  0x00040000
+#define CONFIG_FLASH_SIZE_BYTES  0x00040000
 
 /****************************************************************************/
 /* Define our flash layout. */
@@ -95,13 +95,14 @@
 #define CONFIG_HOSTCMD_ALIGNED
 #define CONFIG_HOSTCMD_LPC
 #define CONFIG_PECI
+#define CONFIG_RTC
 #define CONFIG_SWITCH
 #define CONFIG_MPU
 
 /* Chip needs to do custom pre-init */
 #define CONFIG_CHIP_PRE_INIT
 
-#define GPIO_PIN(port, index) GPIO_##port, (1 << index)
+#define GPIO_PIN(port, index) GPIO_##port, BIT(index)
 #define GPIO_PIN_MASK(p, m) .port = GPIO_##p, .mask = (m)
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */

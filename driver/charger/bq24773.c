@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -91,8 +91,13 @@ static inline enum ec_error_list raw_write16(int chgnum, int offset, int value)
 
 /* chip specific interfaces */
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static enum ec_error_list bq2477x_set_input_current(int chgnum,
 						    int input_current)
+=======
+static enum ec_error_list bq2477x_set_input_current_limit(int chgnum,
+							  int input_current)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 #ifdef CONFIG_CHARGER_BQ24770
 	return raw_write16(chgnum, REG_INPUT_CURRENT,
@@ -103,8 +108,13 @@ static enum ec_error_list bq2477x_set_input_current(int chgnum,
 #endif
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static enum ec_error_list bq2477x_get_input_current(int chgnum,
 						    int *input_current)
+=======
+static enum ec_error_list bq2477x_get_input_current_limit(int chgnum,
+							  int *input_current)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	int rv;
 	int reg;
@@ -308,8 +318,13 @@ const struct charger_drv bq2477x_drv = {
 	.get_voltage = &bq2477x_get_voltage,
 	.set_voltage = &bq2477x_set_voltage,
 	.discharge_on_ac = &bq2477x_discharge_on_ac,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	.set_input_current = &bq2477x_set_input_current,
 	.get_input_current = &bq2477x_get_input_current,
+=======
+	.set_input_current_limit = &bq2477x_set_input_current_limit,
+	.get_input_current_limit = &bq2477x_get_input_current_limit,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	.manufacturer_id = &bq2477x_manufacturer_id,
 	.device_id = &bq2477x_device_id,
 	.get_option = &bq2477x_get_option,

@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /*
  * Copyright 2018 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
@@ -86,3 +87,5 @@ enum tpm_modes get_tpm_mode(void)
 {
 	return s_tpm_mode;
 }
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

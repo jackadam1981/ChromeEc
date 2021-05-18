@@ -20,6 +20,7 @@
 
 /* USB PD */
 #undef CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #define CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT
 
 #define CONFIG_TEMP_SENSOR
@@ -57,6 +58,47 @@
 #define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
 #define CONFIG_MKBP_EVENT
 #define CONFIG_MKBP_USE_HOST_EVENT
+=======
+/*
+ * This board configures two chargers, one of which can measure VBUS and one of
+ * which cannot. Leave the default config, which defines
+ * CONFIG_USB_PD_VBUS_MEASURE_CHARGER.
+ */
+
+#define CONFIG_TEMP_SENSOR
+#define CONFIG_THERMISTOR
+
+/*
+ * Don't allow the system to boot to S0 when the battery is low and unable to
+ * communicate on locked systems (which haven't PD negotiated).
+ */
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT 15000
+#define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC 1
+
+#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 15001
+
+/*
+ * Allow an additional second during power button init to let PD negotiation
+ * complete when we have no battery and need to meet
+ * CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON.  SKUs which do not have a TCPC on
+ * port 1 will take slightly longer to complete negotiation while the PD1 task
+ * attempts to communicate with its TCPC before suspending.
+ */
+#undef CONFIG_POWER_BUTTON_INIT_TIMEOUT
+#define CONFIG_POWER_BUTTON_INIT_TIMEOUT 2
+
+/* Keyboard Backlight is unconnected in casta proto */
+#undef CONFIG_PWM
+#undef CONFIG_PWM_KBLIGHT
+
+/* All casta systems are clamshells */
+#undef CONFIG_TABLET_MODE
+#undef CONFIG_TABLET_SWITCH
+
+/* TODO(b/119872005): Casta: confirm thermistor parts */
+#define CONFIG_STEINHART_HART_3V3_13K7_47K_4050B
+#define CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 /* Battery W/A */
 #define CONFIG_CHARGER_BQ25710_IDCHG_LIMIT_MA 6144

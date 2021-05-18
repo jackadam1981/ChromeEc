@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -48,12 +48,31 @@ int uart_putc(int c);
 int uart_puts(const char *outstr);
 
 /**
+ * Put byte stream to the UART while translating '\n' to '\r\n'
+ *
+ * @param out		Pointer to data to send
+ * @param len		Length of transfer in bytes
+ * @return EC_SUCCESS, or non-zero if output was truncated.
+ */
+int uart_put(const char *out, int len);
+
+/**
+ * Put raw byte stream to the UART
+ *
+ * @param out		Pointer to data to send
+ * @param len		Length of transfer in bytes
+ * @return EC_SUCCESS, or non-zero if output was truncated.
+ */
+int uart_put_raw(const char *out, int len);
+
+/**
  * Print formatted output to the UART, like printf().
  *
  * See printf.h for valid formatting codes.
  *
  * @return EC_SUCCESS, or non-zero if output was truncated.
  */
+__attribute__((__format__(__printf__, 1, 2)))
 int uart_printf(const char *format, ...);
 
 /**
@@ -64,6 +83,22 @@ int uart_printf(const char *format, ...);
  * @return EC_SUCCESS, or non-zero if output was truncated.
  */
 int uart_vprintf(const char *format, va_list args);
+
+/**
+ * Put a single character into the transmit buffer.
+ *
+ * Does not enable the transmit interrupt; assumes that happens elsewhere.
+ *
+ * @param context	Context; ignored.
+ * @param c		Character to write.
+ * @return 0 if the character was transmitted, 1 if it was dropped.
+ *
+ * Note: This is intended to be implemented by the UART buffering
+ * module, and called only by the implementations of the uart_*
+ * functions.  You should stick to the higher level functions, such as
+ * uart_putc, outside of the UART implementation.
+ */
+int uart_tx_char_raw(void *context, int c);
 
 /**
  * Flush output.  Blocks until UART has transmitted all output.
@@ -180,6 +215,11 @@ void uart_tx_stop(void);
  * interrupt handler.
  */
 void uart_process_input(void);
+
+/**
+ * Clear input buffer
+ */
+void uart_clear_input(void);
 
 /**
  * Helper for processing UART output.
@@ -311,7 +351,7 @@ void uart_default_pad_rx_interrupt(enum gpio_signal signal);
  *
  * @return result status (EC_RES_*)
  */
-int uart_console_read_buffer_init(void);
+enum ec_status uart_console_read_buffer_init(void);
 
 /**
  * Read from uart buffer.
@@ -336,5 +376,10 @@ int uart_console_read_buffer(uint8_t type,
 			     char *dest,
 			     uint16_t dest_size,
 			     uint16_t *write_count);
+
+/**
+ * Initialize tx buffer head and tail
+ */
+void uart_init_buffer(void);
 
 #endif  /* __CROS_EC_UART_H */

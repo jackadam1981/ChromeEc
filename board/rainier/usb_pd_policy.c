@@ -21,39 +21,6 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
-			 PDO_FIXED_COMM_CAP)
-
-const uint32_t pd_src_pdo[] = {
-		PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
-const uint32_t pd_src_pdo_max[] = {
-		PDO_FIXED(5000, 3000, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
-
-const uint32_t pd_snk_pdo[] = {
-		PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
-		PDO_BATT(4750,
-			 (int)(PD_MAX_VOLTAGE_MV * 1.05),
-			 PD_OPERATING_POWER_MW),
-		PDO_VAR(4750,
-			(int)(PD_MAX_VOLTAGE_MV * 1.05),
-			PD_MAX_CURRENT_MA),
-};
-const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
-
-int pd_is_valid_input_voltage(int mv)
-{
-	return 1;
-}
-
-void pd_transition_voltage(int idx)
-{
-	/* No-operation: we are always 5V */
-}
-
 static uint8_t vbus_en;
 
 int board_vbus_source_enabled(int port)
@@ -89,32 +56,6 @@ void pd_power_supply_reset(int port)
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 }
 
-void typec_set_source_current_limit(int port, int rp)
-{
-	/* No-operation */
-}
-
-int pd_board_checks(void)
-{
-	return EC_SUCCESS;
-}
-
-int pd_check_power_swap(int port)
-{
-	/*
-	 * Allow power swap as long as we are acting as a dual role device,
-	 * otherwise assume our role is fixed (not in S0 or console command
-	 * to fix our role).
-	 */
-	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
-}
-
-int pd_check_data_swap(int port, int data_role)
-{
-	/* Allow data swap if we are a UFP, otherwise don't allow */
-	return (data_role == PD_ROLE_UFP) ? 1 : 0;
-}
-
 int pd_check_vconn_swap(int port)
 {
 	/*
@@ -123,6 +64,7 @@ int pd_check_vconn_swap(int port)
 	 */
 	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
 }
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 
 void pd_execute_data_swap(int port, int data_role)
 {
@@ -358,3 +300,5 @@ const struct svdm_amode_fx supported_modes[] = {
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

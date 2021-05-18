@@ -24,7 +24,7 @@
 #define CONFIG_CHARGER_SY21612
 #define CONFIG_HW_CRC
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_RSA
 #define CONFIG_RWSIG
 #define CONFIG_RWSIG_TYPE_USBPD1
@@ -38,6 +38,7 @@
 #define CONFIG_USB_BOS
 #define CONFIG_USB_INHIBIT_CONNECT
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_HW_DEV_ID_BOARD_MAJOR USB_PD_HW_DEV_ID_HOHO
 #define CONFIG_USB_PD_HW_DEV_ID_BOARD_MINOR 2
@@ -49,6 +50,10 @@
 #define CONFIG_USB_PD_LOGGING
 #undef  CONFIG_EVENT_LOG_SIZE
 #define CONFIG_EVENT_LOG_SIZE 256
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+#define CONFIG_USB_PD_CUSTOM_PDO
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPC
 #define CONFIG_USB_PD_TCPM_STUB
@@ -68,6 +73,9 @@
 /* No Write-protect GPIO, force the write-protection */
 #define CONFIG_WP_ALWAYS
 #define CONFIG_FLASH_READOUT_PROTECTION
+
+/* Inform VIF generator that this board is an Alt Mode Adapter */
+#define CONFIG_USB_ALT_MODE_ADAPTER
 
 #ifndef __ASSEMBLER__
 

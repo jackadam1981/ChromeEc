@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -24,7 +24,7 @@ static const struct charger_info mock_charger_info = {
 	.input_current_step = 128,
 };
 
-#define OPTION_CHARGE_INHIBIT (1 << 0)
+#define OPTION_CHARGE_INHIBIT BIT(0)
 
 static uint32_t mock_option;
 static uint32_t mock_mode;
@@ -120,15 +120,24 @@ static enum ec_error_list mock_device_id(int chgnum, int *id)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 
 static enum ec_error_list mock_get_input_current(int chgnum, int *input_current)
+=======
+static enum ec_error_list mock_get_input_current_limit(int chgnum,
+						       int *input_current)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	*input_current = mock_input_current;
 	return EC_SUCCESS;
 }
 
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static enum ec_error_list mock_set_input_current(int chgnum, int current)
+=======
+static enum ec_error_list mock_set_input_current_limit(int chgnum, int current)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	const struct charger_info *info = mock_get_info(chgnum);
 
@@ -160,6 +169,7 @@ const struct charger_drv mock_drv = {
 	.set_current = &mock_set_current,
 	.get_voltage = &mock_get_voltage,
 	.set_voltage = &mock_set_voltage,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	.set_input_current = &mock_set_input_current,
 	.get_input_current = &mock_get_input_current,
 	.manufacturer_id = &mock_manufacturer_id,
@@ -175,3 +185,18 @@ const struct charger_config_t chg_chips[] = {
 };
 
 const unsigned int chg_cnt = ARRAY_SIZE(chg_chips);
+=======
+	.set_input_current_limit = &mock_set_input_current_limit,
+	.get_input_current_limit = &mock_get_input_current_limit,
+	.manufacturer_id = &mock_manufacturer_id,
+	.device_id = &mock_device_id,
+	.get_option = &mock_get_option,
+	.set_option = &mock_set_option,
+};
+
+const struct charger_config_t chg_chips[] = {
+	{
+		.drv = &mock_drv,
+	},
+};
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

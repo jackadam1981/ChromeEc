@@ -16,6 +16,7 @@
 
 #include "usb_pd_tcpm.h"
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /**
  * AOZ1380 Set VBus Source Current Limit.
  *
@@ -33,6 +34,25 @@ int board_aoz1380_set_vbus_source_current_limit(int port,
 
 struct ppc_drv;
 extern const struct ppc_drv aoz1380_drv;
+=======
+struct ppc_drv;
+extern const struct ppc_drv aoz1380_drv;
+
+/**
+ * AOZ1380 Set VBus Source Current Limit.
+ *
+ * Using this driver requires a board_aoz1380_set_vbus_source_limit
+ * function due to the lack of programability of this device and
+ * requirement for hardware specific code to handle setting this limit.
+ *
+ * @param port The Type-C port
+ * @param rp The Type-C RP value
+ * @return EC_SUCCESS for success, otherwise error
+ */
+int board_aoz1380_set_vbus_source_current_limit(int port,
+						enum tcpc_rp_value rp);
+
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 /**
  * Interrupt Handler for the AOZ1380.

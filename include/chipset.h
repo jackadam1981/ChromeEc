@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -14,7 +14,10 @@
 #define __CROS_EC_CHIPSET_H
 
 #include "common.h"
+#include "compile_time_macros.h"
+#include "ec_commands.h"
 #include "gpio.h"
+#include "stddef.h"
 
 /*
  * Chipset state mask
@@ -39,68 +42,10 @@ enum chipset_state_mask {
 				     CHIPSET_STATE_STANDBY),
 };
 
-/*
- * Reason codes used by the AP after a shutdown to figure out why it was reset
- * by the EC.  These are sent in EC commands.  Therefore, to maintain protocol
- * compatibility:
- * - New entries must be inserted prior to the _COUNT field
- * - If an existing entry is no longer in service, it must be replaced with a
- *   RESERVED entry instead.
- * - The semantic meaning of an entry should not change.
- * - Do not exceed 2^15 - 1 for reset reasons or 2^16 - 1 for shutdown reasons.
- */
-enum chipset_reset_reason {
-	CHIPSET_RESET_BEGIN = 0,
-	CHIPSET_RESET_UNKNOWN = CHIPSET_RESET_BEGIN,
-	/* Custom reason defined by a board.c or baseboard.c file */
-	CHIPSET_RESET_BOARD_CUSTOM,
-	/* Believe that the AP has hung */
-	CHIPSET_RESET_HANG_REBOOT,
-	/* Reset by EC console command */
-	CHIPSET_RESET_CONSOLE_CMD,
-	/* Reset by EC host command */
-	CHIPSET_RESET_HOST_CMD,
-	/* Keyboard module reset key combination */
-	CHIPSET_RESET_KB_SYSRESET,
-	/* Keyboard module warm reboot */
-	CHIPSET_RESET_KB_WARM_REBOOT,
-	/* Debug module warm reboot */
-	CHIPSET_RESET_DBG_WARM_REBOOT,
-	/* I cannot self-terminate.  You must lower me into the steel. */
-	CHIPSET_RESET_AP_REQ,
-	/* Reset as side-effect of startup sequence */
-	CHIPSET_RESET_INIT,
-	/* EC detected an AP watchdog event. */
-	CHIPSET_RESET_AP_WATCHDOG,
-	CHIPSET_RESET_COUNT,
-};
-
-/*
- * Hard shutdowns are logged on the same path as resets.
- */
-enum chipset_shutdown_reason {
-	CHIPSET_SHUTDOWN_BEGIN = 1 << 15,
-	CHIPSET_SHUTDOWN_POWERFAIL = CHIPSET_SHUTDOWN_BEGIN,
-	/* Forcing a shutdown as part of EC initialization */
-	CHIPSET_SHUTDOWN_INIT,
-	/* Custom reason on a per-board basis. */
-	CHIPSET_SHUTDOWN_BOARD_CUSTOM,
-	/* This is a reason to inhibit startup, not cause shut down. */
-	CHIPSET_SHUTDOWN_BATTERY_INHIBIT,
-	/* A power_wait_signal is being asserted */
-	CHIPSET_SHUTDOWN_WAIT,
-	/* Critical battery level. */
-	CHIPSET_SHUTDOWN_BATTERY_CRIT,
-	/* Because you told me to. */
-	CHIPSET_SHUTDOWN_CONSOLE_CMD,
-	/* Forcing a shutdown to effect entry to G3. */
-	CHIPSET_SHUTDOWN_G3,
-	/* Force shutdown due to over-temperature. */
-	CHIPSET_SHUTDOWN_THERMAL,
-	/* Force a chipset shutdown from the power button through EC */
-	CHIPSET_SHUTDOWN_BUTTON,
-
-	CHIPSET_SHUTDOWN_COUNT,
+enum critical_shutdown {
+	CRITICAL_SHUTDOWN_IGNORE,
+	CRITICAL_SHUTDOWN_HIBERNATE,
+	CRITICAL_SHUTDOWN_CUTOFF,
 };
 
 enum critical_shutdown {
@@ -174,6 +119,11 @@ void chipset_handle_espi_reset_assert(void);
  */
 void chipset_pre_init_callback(void);
 
+/**
+ * Initialize reset logs and next reset log.
+ */
+void init_reset_log(void);
+
 #else /* !HAS_TASK_CHIPSET */
 
 /* When no chipset is present, assume it is always off. */
@@ -199,7 +149,11 @@ static inline void chipset_handle_espi_reset_assert(void) { }
 static inline void chipset_handle_reboot(void) { }
 static inline void chipset_reset_request_interrupt(enum gpio_signal signal) { }
 static inline void chipset_warm_reset_interrupt(enum gpio_signal signal) { }
+static inline void chipset_ap_rst_interrupt(enum gpio_signal signal) { }
+static inline void chipset_power_good_interrupt(enum gpio_signal signal) { }
 static inline void chipset_watchdog_interrupt(enum gpio_signal signal) { }
+
+static inline void init_reset_log(void) { }
 
 #endif /* !HAS_TASK_CHIPSET */
 
@@ -223,11 +177,26 @@ void chipset_handle_reboot(void);
 void chipset_reset_request_interrupt(enum gpio_signal signal);
 
 /**
+ * GPIO interrupt handler of AP_RST_L signal from PMIC.
+ * PMIC uses this signal to notify AP reset.
+ *
+ * It is used in Qualcomm chipset power sequence.
+ */
+void chipset_ap_rst_interrupt(enum gpio_signal signal);
+
+/**
  * GPIO interrupt handler of warm reset signal from servo or H1.
  *
- * It is used in SDM845 chipset power sequence.
+ * It is used in Qualcomm chipset power sequence.
  */
 void chipset_warm_reset_interrupt(enum gpio_signal signal);
+
+/**
+ * GPIO interrupt handler of the power good signal (pull rail of warm reset).
+ *
+ * It is used in Qualcomm chipset power sequence.
+ */
+void chipset_power_good_interrupt(enum gpio_signal signal);
 
 /**
  * GPIO interrupt handler of watchdog from AP.
@@ -245,8 +214,13 @@ void chipset_watchdog_interrupt(enum gpio_signal signal);
  * @param now                Current time
  * @return Action to take
  */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 enum critical_shutdown board_system_is_idle(uint64_t last_shutdown_time,
 					    uint64_t *target, uint64_t now);
+=======
+__override_proto enum critical_shutdown board_system_is_idle(
+		uint64_t last_shutdown_time, uint64_t *target, uint64_t now);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 #ifdef CONFIG_CMD_AP_RESET_LOG
 
@@ -255,9 +229,28 @@ enum critical_shutdown board_system_is_idle(uint64_t last_shutdown_time,
  */
 void report_ap_reset(enum chipset_shutdown_reason reason);
 
+/**
+ * Get statistics about AP resets.
+ *
+ * @param reset_log_entries       Pointer to array of log entries.
+ * @param num_reset_log_entries   Number of items in reset_log_entries.
+ * @param resets_since_ec_boot    Number of AP resets since EC boot.
+ */
+test_mockable enum ec_error_list
+get_ap_reset_stats(struct ap_reset_log_entry *reset_log_entries,
+		   size_t num_reset_log_entries,
+		   uint32_t *resets_since_ec_boot);
+
 #else
 
 static inline void report_ap_reset(enum chipset_shutdown_reason reason) { }
+
+test_mockable_static_inline enum ec_error_list
+get_ap_reset_stats(struct ap_reset_log_entry *reset_log_entries,
+		   size_t num_reset_log_entries, uint32_t *resets_since_ec_boot)
+{
+	return EC_SUCCESS;
+}
 
 #endif /* !CONFIG_CMD_AP_RESET_LOG */
 

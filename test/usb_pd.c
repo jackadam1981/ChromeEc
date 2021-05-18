@@ -48,11 +48,6 @@ uint16_t pd_get_identity_pid(int port)
 	return 0;
 }
 
-enum battery_present battery_is_present(void)
-{
-	return BP_YES;
-}
-
 int battery_status(int *status)
 {
 	*status = 1;
@@ -277,7 +272,11 @@ static void plug_in_source(int port, int polarity)
 	pd_port[port].partner_role = PD_ROLE_SOURCE;
 	pd_port[port].partner_polarity = polarity;
 	/* Indicate that the CC lines have changed. */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+=======
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 
 static void plug_in_sink(int port, int polarity)
@@ -286,7 +285,11 @@ static void plug_in_sink(int port, int polarity)
 	pd_port[port].partner_role = PD_ROLE_SINK;
 	pd_port[port].partner_polarity = polarity;
 	/* Indicate that the CC lines have changed. */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+=======
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 
 static void unplug(int port)
@@ -296,7 +299,11 @@ static void unplug(int port)
 	pd_port[port].has_vbus = 0;
 	pd_port[port].partner_role = -1;
 	/* Indicate that the CC lines have changed. */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+=======
+	task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	task_wake(PD_PORT_TO_TASK_ID(port));
 	usleep(30 * MSEC);
 }
@@ -905,7 +912,7 @@ static int test_sink(void)
 	return EC_SUCCESS;
 }
 
-void run_test(void)
+void run_test(int argc, char **argv)
 {
 	test_reset();
 	init_ports();

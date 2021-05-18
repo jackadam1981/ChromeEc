@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /* Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -253,3 +254,5 @@ static int hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,
 		     hc_usb_pd_mux_info,
 		     EC_VER_MASK(0));
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

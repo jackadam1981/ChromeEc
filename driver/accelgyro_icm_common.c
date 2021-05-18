@@ -55,6 +55,7 @@ static int icm_bank_sel(const struct motion_sensor_t *s, const int reg)
 		return EC_SUCCESS;
 
 	ret = EC_ERROR_UNIMPLEMENTED;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	ret = i2c_write8(s->port, s->addr,
 			 ICM426XX_REG_BANK_SEL, bank);
 
@@ -184,6 +185,233 @@ int icm_get_range(const struct motion_sensor_t *s)
 	struct accelgyro_saved_data_t *data = ICM_GET_SAVED_DATA(s);
 
 	return data->range;
+=======
+	if (SLAVE_IS_SPI(s->i2c_spi_addr_flags)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		ret = icm_spi_raw_write(
+				SLAVE_GET_SPI_ADDR(s->i2c_spi_addr_flags),
+				ICM426XX_REG_BANK_SEL, &bank, 1);
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		ret = i2c_write8(s->port, s->i2c_spi_addr_flags,
+				 ICM426XX_REG_BANK_SEL, bank);
+#endif
+	}
+
+	if (ret == EC_SUCCESS)
+		st->bank = bank;
+
+	return ret;
+}
+
+/**
+ * Read 8 bits register
+ */
+int icm_read8(const struct motion_sensor_t *s, const int reg, int *data_ptr)
+{
+	const uint8_t addr = ICM426XX_REG_GET_ADDR(reg);
+	int ret;
+
+	ret = icm_bank_sel(s, reg);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = EC_ERROR_UNIMPLEMENTED;
+	if (SLAVE_IS_SPI(s->i2c_spi_addr_flags)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		uint8_t val;
+
+		ret = icm_spi_raw_read(
+				SLAVE_GET_SPI_ADDR(s->i2c_spi_addr_flags),
+				addr, &val, sizeof(val));
+		if (ret == EC_SUCCESS)
+			*data_ptr = val;
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		ret = i2c_read8(s->port, s->i2c_spi_addr_flags, addr, data_ptr);
+#endif
+	}
+
+	return ret;
+}
+
+/**
+ * Write 8 bits register
+ */
+int icm_write8(const struct motion_sensor_t *s, const int reg, int data)
+{
+	const uint8_t addr = ICM426XX_REG_GET_ADDR(reg);
+	int ret;
+
+	ret = icm_bank_sel(s, reg);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = EC_ERROR_UNIMPLEMENTED;
+	if (SLAVE_IS_SPI(s->i2c_spi_addr_flags)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		uint8_t val = data;
+
+		ret = icm_spi_raw_write(
+				SLAVE_GET_SPI_ADDR(s->i2c_spi_addr_flags),
+				addr, &val, sizeof(val));
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		ret = i2c_write8(s->port, s->i2c_spi_addr_flags, addr, data);
+#endif
+	}
+
+	return ret;
+}
+
+/**
+ * Read 16 bits register
+ */
+int icm_read16(const struct motion_sensor_t *s, const int reg, int *data_ptr)
+{
+	const uint8_t addr = ICM426XX_REG_GET_ADDR(reg);
+	int ret;
+
+	ret = icm_bank_sel(s, reg);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = EC_ERROR_UNIMPLEMENTED;
+	if (SLAVE_IS_SPI(s->i2c_spi_addr_flags)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		uint8_t val[2];
+
+		ret = icm_spi_raw_read(
+				SLAVE_GET_SPI_ADDR(s->i2c_spi_addr_flags),
+				addr, val, sizeof(val));
+		if (ret == EC_SUCCESS) {
+			if (I2C_IS_BIG_ENDIAN(s->i2c_spi_addr_flags))
+				*data_ptr = ((int)val[0] << 8) | val[1];
+			else
+				*data_ptr = ((int)val[1] << 8) | val[0];
+		}
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		ret = i2c_read16(s->port, s->i2c_spi_addr_flags,
+				addr, data_ptr);
+#endif
+	}
+
+	return ret;
+}
+
+/**
+ * Write 16 bits register
+ */
+int icm_write16(const struct motion_sensor_t *s, const int reg, int data)
+{
+	const uint8_t addr = ICM426XX_REG_GET_ADDR(reg);
+	int ret;
+
+	ret = icm_bank_sel(s, reg);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = EC_ERROR_UNIMPLEMENTED;
+	if (SLAVE_IS_SPI(s->i2c_spi_addr_flags)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		uint8_t val[2];
+
+		if (I2C_IS_BIG_ENDIAN(s->i2c_spi_addr_flags)) {
+			val[0] = (data >> 8) & 0xFF;
+			val[1] = data & 0xFF;
+		} else {
+			val[0] = data & 0xFF;
+			val[1] = (data >> 8) & 0xFF;
+		}
+		ret = icm_spi_raw_write(
+				SLAVE_GET_SPI_ADDR(s->i2c_spi_addr_flags),
+				addr, val, sizeof(val));
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		ret = i2c_write16(s->port, s->i2c_spi_addr_flags, addr, data);
+#endif
+	}
+
+	return ret;
+}
+
+/**
+ * Read n bytes
+ */
+int icm_read_n(const struct motion_sensor_t *s, const int reg,
+	       uint8_t *data_ptr, const int len)
+{
+	const uint8_t addr = ICM426XX_REG_GET_ADDR(reg);
+	int ret;
+
+	ret = icm_bank_sel(s, reg);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = EC_ERROR_UNIMPLEMENTED;
+	if (SLAVE_IS_SPI(s->i2c_spi_addr_flags)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		ret = icm_spi_raw_read(
+				SLAVE_GET_SPI_ADDR(s->i2c_spi_addr_flags),
+				addr, data_ptr, len);
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		ret = i2c_read_block(s->port, s->i2c_spi_addr_flags, addr,
+				     data_ptr, len);
+#endif
+	}
+
+	return ret;
+}
+
+int icm_field_update8(const struct motion_sensor_t *s, const int reg,
+		      const uint8_t field_mask, const uint8_t set_value)
+{
+	const uint8_t addr = ICM426XX_REG_GET_ADDR(reg);
+	int ret;
+
+	ret = icm_bank_sel(s, reg);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+	ret = EC_ERROR_UNIMPLEMENTED;
+	if (SLAVE_IS_SPI(s->i2c_spi_addr_flags)) {
+#ifdef CONFIG_SPI_ACCEL_PORT
+		uint8_t val;
+
+		ret = icm_spi_raw_read(
+				SLAVE_GET_SPI_ADDR(s->i2c_spi_addr_flags),
+				addr, &val, sizeof(val));
+		if (ret != EC_SUCCESS)
+			return ret;
+
+		val = (val & (~field_mask)) | set_value;
+
+		ret = icm_spi_raw_write(
+				SLAVE_GET_SPI_ADDR(s->i2c_spi_addr_flags),
+				addr, &val, sizeof(val));
+#endif
+	} else {
+#ifdef I2C_PORT_ACCEL
+		ret = i2c_field_update8(s->port, s->i2c_spi_addr_flags, addr,
+					field_mask, set_value);
+#endif
+	}
+
+	return ret;
+}
+
+int icm_get_resolution(const struct motion_sensor_t *s)
+{
+	return ICM_RESOLUTION;
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 
 int icm_get_data_rate(const struct motion_sensor_t *s)

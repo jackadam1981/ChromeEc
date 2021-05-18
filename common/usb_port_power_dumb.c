@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -18,11 +18,7 @@
 #define CPUTS(outstr) cputs(CC_USBCHARGE, outstr)
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
-#define USB_SYSJUMP_TAG 0x5550 /* "UP" - Usb Port */
-#define USB_HOOK_VERSION 1
-
 static uint8_t charge_mode[USB_PORT_COUNT];
-extern const int usb_port_enable[USB_PORT_COUNT];
 
 static void usb_port_set_enabled(int port_id, int en)
 {
@@ -69,7 +65,8 @@ int usb_charge_set_mode(int port_id, enum usb_charge_mode mode,
 	return EC_SUCCESS;
 }
 
-static int usb_port_command_set_mode(struct host_cmd_handler_args *args)
+static enum ec_status
+usb_port_command_set_mode(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_charge_set_mode *p = args->params;
 
@@ -146,12 +143,12 @@ static void usb_port_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, usb_port_init, HOOK_PRIO_DEFAULT);
 
-static void usb_port_resume(void)
+static void usb_port_startup(void)
 {
-	/* Turn on USB ports on as we go into S0 from S3 or S5. */
+	/* Turn on USB ports on as we go into S0 from S5. */
 	usb_port_all_ports_on();
 }
-DECLARE_HOOK(HOOK_CHIPSET_RESUME, usb_port_resume, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, usb_port_startup, HOOK_PRIO_DEFAULT);
 
 static void usb_port_shutdown(void)
 {

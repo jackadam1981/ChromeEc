@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -9,6 +9,8 @@
 #define __CROS_EC_CHARGER_H
 
 #include "common.h"
+#include "ocpc.h"
+#include "stdbool.h"
 
 /* Charger information
  * voltage unit: mV
@@ -70,6 +72,7 @@ struct charger_drv {
 						      int output_current,
 						      int output_voltage);
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	/* Get/set charge current limit in mA */
 	enum ec_error_list (*get_current)(int chgnum, int *current);
 	enum ec_error_list (*set_current)(int chgnum, int current);
@@ -118,6 +121,99 @@ extern const unsigned int chg_cnt;
 
 #ifdef CONFIG_CHARGER_SINGLE_CHIP
 #define CHARGER_SOLO 0
+=======
+	/*
+	 * Is the charger sourcing VBUS / OTG power?
+	 */
+	int (*is_sourcing_otg_power)(int chgnum, int port);
+
+	/* Get/set charge current limit in mA */
+	enum ec_error_list (*get_current)(int chgnum, int *current);
+	enum ec_error_list (*set_current)(int chgnum, int current);
+
+	/* Get/set charge voltage limit in mV */
+	enum ec_error_list (*get_voltage)(int chgnum, int *voltage);
+	enum ec_error_list (*set_voltage)(int chgnum, int voltage);
+
+
+	/* Get the measured charge current and voltage in mA/mV */
+	enum ec_error_list (*get_actual_current)(int chgnum, int *current);
+	enum ec_error_list (*get_actual_voltage)(int chgnum, int *voltage);
+
+
+	/* Discharge battery when on AC power. */
+	enum ec_error_list (*discharge_on_ac)(int chgnum, int enable);
+
+	/* Get the VBUS voltage (mV) from the charger */
+	enum ec_error_list (*get_vbus_voltage)(int chgnum, int port,
+					       int *voltage);
+
+	/* Set desired input current value */
+	enum ec_error_list (*set_input_current_limit)(int chgnum,
+						      int input_current);
+
+	/* Get input current limit */
+	enum ec_error_list (*get_input_current_limit)(int chgnum,
+						      int *input_current);
+
+	/* Get actual input current value */
+	enum ec_error_list (*get_input_current)(int chgnum, int *input_current);
+
+	enum ec_error_list (*manufacturer_id)(int chgnum, int *id);
+	enum ec_error_list (*device_id)(int chgnum, int *id);
+	enum ec_error_list (*get_option)(int chgnum, int *option);
+	enum ec_error_list (*set_option)(int chgnum, int option);
+
+	/* Charge ramp functions */
+	enum ec_error_list (*set_hw_ramp)(int chgnum, int enable);
+	int (*ramp_is_stable)(int chgnum);
+	int (*ramp_is_detected)(int chgnum);
+	int (*ramp_get_current_limit)(int chgnum);
+
+	/* OCPC functions */
+	/*
+	 * Some chargers can perform VSYS output compensation.  Configure the
+	 * charger IC with the right parameters.
+	 */
+	enum ec_error_list (*set_vsys_compensation)(int chgnum,
+						    struct ocpc_data *o,
+						    int current_ma,
+						    int voltage_mv);
+
+	/* Is the input current limit reached? */
+	enum ec_error_list (*is_icl_reached)(int chgnum, bool *reached);
+
+	/* Enable/disable linear charging */
+	enum ec_error_list (*enable_linear_charge)(int chgnum, bool enable);
+};
+
+struct charger_config_t {
+	int i2c_port;
+	uint16_t i2c_addr_flags;
+	const struct charger_drv *drv;
+};
+
+#ifndef CONFIG_CHARGER_RUNTIME_CONFIG
+extern const struct charger_config_t chg_chips[];
+#else
+extern struct charger_config_t chg_chips[];
+#endif
+
+__override_proto uint8_t board_get_charger_chip_count(void);
+
+#ifdef CONFIG_CHARGER_SINGLE_CHIP
+/*
+ * Note: CHARGER_SOLO should be used anywhere the charger index being called is
+ * only valid for a single-chip system.  This will then generate build errors if
+ * the callsite is compliled for a multi-chip system, which needs to re-evaluate
+ * the charger index to act upon.
+ */
+enum chg_id {
+	CHARGER_SOLO,
+	CHARGER_NUM,
+};
+
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #endif
 
 /* Get the current charger_params. Failures are reported in .flags */
@@ -173,6 +269,7 @@ enum ec_error_list charger_set_mode(int mode);
  * For chargers that are able to supply output power for OTG dongle, this
  * function enables or disables power output.
  */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 enum ec_error_list charger_enable_otg_power(int enabled);
 
 /**
@@ -192,6 +289,28 @@ enum ec_error_list charger_enable_otg_power(int enabled);
  * @return EC_SUCCESS on success, an error otherwise.
  */
 enum ec_error_list charger_set_otg_current_voltage(int output_current,
+=======
+enum ec_error_list charger_enable_otg_power(int chgnum, int enabled);
+
+/**
+ * Sets OTG current limit and voltage (independent of whether OTG power is
+ * currently enabled).
+ *
+ * Depending on the charger and use case, one needs to be careful about
+ * changing the current/voltage while OTG power is enabled, and it might be wise
+ * to reset the value before enabling OTG power to ensure one does not provide
+ * excessive voltage to a device.
+ *
+ * @param output_current	Requested current limit in mA, driver should
+ *                              round the value up.
+ * @param output_voltage	Requested voltage in mV, driver should round the
+ *                              the value down.
+ *
+ * @return EC_SUCCESS on success, an error otherwise.
+ */
+enum ec_error_list charger_set_otg_current_voltage(int chgnum,
+						   int output_current,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 						   int output_voltage);
 
 /**
@@ -203,18 +322,32 @@ enum ec_error_list charger_set_otg_current_voltage(int output_current,
 int charger_is_sourcing_otg_power(int port);
 
 /* Get/set charge current limit in mA */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 enum ec_error_list charger_get_current(int *current);
 enum ec_error_list charger_set_current(int current);
+=======
+enum ec_error_list charger_get_current(int chgnum, int *current);
+enum ec_error_list charger_set_current(int chgnum, int current);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 /* Get/set charge voltage limit in mV */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 enum ec_error_list charger_get_voltage(int *voltage);
 enum ec_error_list charger_set_voltage(int voltage);
+=======
+enum ec_error_list charger_get_voltage(int chgnum, int *voltage);
+enum ec_error_list charger_set_voltage(int chgnum, int voltage);
+
+/* Get the measured charge current and voltage in mA/mV */
+enum ec_error_list charger_get_actual_current(int chgnum, int *current);
+enum ec_error_list charger_get_actual_voltage(int chgnum, int *voltage);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 /* Discharge battery when on AC power. */
 enum ec_error_list charger_discharge_on_ac(int enable);
 
 /* Get the VBUS voltage (mV) from the charger */
-int charger_get_vbus_voltage(int port);
+enum ec_error_list charger_get_vbus_voltage(int port, int *voltage);
 
 /* Custom board function to discharge battery when on AC power */
 int board_discharge_on_ac(int enable);
@@ -227,15 +360,53 @@ int charger_get_system_power(void);
 
 /* Other parameters that may be charger-specific, but are common so far. */
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /* Set desired input current value */
 enum ec_error_list charger_set_input_current(int input_current);
+=======
+/**
+ * Set desired input current limit
+ *
+ * Sets the hard limit of the input current (from AC).
+ *
+ * @param chgnum		charger IC index
+ * @param input_current		The current limit in mA.
+ *
+ * @return EC_SUCCESS on success, an error otherwise.
+ */
+enum ec_error_list charger_set_input_current_limit(int chgnum,
+						   int input_current);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
-/*
+/**
+ * Get desired input current limit
+ *
+ * Gets the hard limit of the input current (from AC).
+ *
+ * @param chgnum		charger IC index
+ * @param input_current		The current limit in mA.
+ *
+ * @return EC_SUCCESS on success, an error otherwise.
+ */
+enum ec_error_list charger_get_input_current_limit(int chgnum,
+						   int *input_current);
+
+/**
  * Get actual input current value.
+ *
  * Actual input current may be less than the desired input current set
  * due to current ratings of the wall adapter.
+ *
+ * @param chgnum		charger IC index
+ * @param input_current		The input current in mA.
+ *
+ * @return EC_SUCCESS on success, an error otherwise.
  */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 enum ec_error_list charger_get_input_current(int *input_current);
+=======
+enum ec_error_list charger_get_input_current(int chgnum, int *input_current);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 enum ec_error_list charger_manufacturer_id(int *id);
 enum ec_error_list charger_device_id(int *id);
@@ -243,8 +414,49 @@ enum ec_error_list charger_get_option(int *option);
 enum ec_error_list charger_set_option(int option);
 enum ec_error_list charger_set_hw_ramp(int enable);
 
-/* Print all charger info for debugging purposes */
-void print_charger_debug(void);
+/**
+ * Some charger ICs can compensate for board losses if charging from an
+ * auxiliary charger in a multi-charger IC design. (CONFIG_OCPC) Some of those
+ * charger ICs can dynamically compensate meaning that the PID loop may not be
+ * needed.  For the others, it still will be needed.  The charger driver should
+ * return the appropriate action.
+ *
+ * @param chgnum: Active charge port
+ * @param ocpc: Pointer to ocpc data
+ * @param current_ma: Desired charge current
+ * @param voltage_mv: Desired charge voltage
+ * @return EC_SUCCESS on success, error otherwise.
+ */
+enum ec_error_list charger_set_vsys_compensation(int chgnum,
+						 struct ocpc_data *ocpc,
+						 int current_ma,
+						 int voltage_mv);
+
+/**
+ * Is the input current limit been reached?
+ *
+ * @param chgnum: Active charge port
+ * @param reached: Pointer to reached
+ * @return EC_SUCCESS on success, error otherwise.
+ */
+enum ec_error_list charger_is_icl_reached(int chgnum, bool *reached);
+
+/**
+ * Enable/disable linear charging
+ *
+ * For charger ICs that support it, this allows the charger IC to operate the
+ * BFET in the linear region.
+ *
+ * @param chgnum: Active charge port
+ * @param enable: Whether to enable or disable linear charging.
+ * @return EC_SUCCESS on success, error otherwise.
+ */
+enum ec_error_list charger_enable_linear_charge(int chgnum, bool enable);
+
+/*
+ * Print all charger info for debugging purposes
+ * @param chgnum: charger IC index.
+ */
+void print_charger_debug(int chgnum);
 
 #endif /* __CROS_EC_CHARGER_H */
-

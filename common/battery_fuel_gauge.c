@@ -64,6 +64,11 @@ static int get_battery_type(void)
 	return battery_type;
 }
 
+__overridable int board_get_default_battery_type(void)
+{
+	return DEFAULT_BATTERY_TYPE;
+}
+
 /*
  * Initialize the battery type for the board.
  *
@@ -82,7 +87,7 @@ static inline const struct board_batt_params *get_batt_params(void)
 	int type = get_battery_type();
 
 	return &board_battery_info[type == BATTERY_TYPE_COUNT ?
-		DEFAULT_BATTERY_TYPE : type];
+		board_get_default_battery_type() : type];
 }
 
 const struct battery_info *battery_get_info(void)
@@ -148,6 +153,58 @@ int board_cut_off_battery(void)
 	return rv ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
 
+static enum ec_error_list battery_get_fet_status_regval(int *regval)
+{
+	int rv;
+	uint8_t data[6];
+	int type = get_battery_type();
+
+	/* If battery type is not known, can't check CHG/DCHG FETs */
+	if (type == BATTERY_TYPE_COUNT) {
+		/* Still don't know, so return here */
+		return EC_ERROR_BUSY;
+	}
+
+	/* Read the status of charge/discharge FETs */
+	if (board_battery_info[type].fuel_gauge.fet.mfgacc_support == 1) {
+		rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
+				    SB_ALT_MANUFACTURER_ACCESS, data,
+				    sizeof(data));
+		/* Get the lowest 16bits of the OperationStatus() data */
+		*regval = data[2] | data[3] << 8;
+	} else
+		rv = sb_read(board_battery_info[type].fuel_gauge.fet.reg_addr,
+			     regval);
+
+	return rv;
+}
+
+int battery_is_charge_fet_disabled(void)
+{
+	int rv;
+	int reg;
+	int type = get_battery_type();
+
+	/* If battery type is not known, can't check CHG/DCHG FETs */
+	if (type == BATTERY_TYPE_COUNT) {
+		/* Still don't know, so return here */
+		return -1;
+	}
+
+	/*
+	 * If the CFET mask hasn't been defined, assume that it's not disabled.
+	 */
+	if (!board_battery_info[type].fuel_gauge.fet.cfet_mask)
+		return 0;
+
+	rv = battery_get_fet_status_regval(&reg);
+	if (rv)
+		return -1;
+
+	return (reg & board_battery_info[type].fuel_gauge.fet.cfet_mask) ==
+	       board_battery_info[type].fuel_gauge.fet.cfet_off_val;
+}
+
 /*
  * This function checks the charge/discharge FET status bits. Each battery type
  * supported provides the register address, mask, and disconnect value for these
@@ -162,28 +219,16 @@ int board_cut_off_battery(void)
  */
 enum battery_disconnect_state battery_get_disconnect_state(void)
 {
-	int rv;
 	int reg;
-	uint8_t data[6];
 	int type = get_battery_type();
 
 	/* If battery type is not known, can't check CHG/DCHG FETs */
 	if (type == BATTERY_TYPE_COUNT) {
 		/* Still don't know, so return here */
-		return BATTERY_DISCONNECT_ERROR;
+		return EC_ERROR_BUSY;
 	}
 
-	/* Read the status of charge/discharge FETs */
-	if (board_battery_info[type].fuel_gauge.fet.mfgacc_support == 1) {
-		rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
-				SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
-		/* Get the lowest 16bits of the OperationStatus() data */
-		reg = data[2] | data[3] << 8;
-	} else
-		rv = sb_read(board_battery_info[type].fuel_gauge.fet.reg_addr,
-					&reg);
-
-	if (rv)
+	if (battery_get_fet_status_regval(&reg))
 		return BATTERY_DISCONNECT_ERROR;
 
 	if ((reg & board_battery_info[type].fuel_gauge.fet.reg_mask) ==

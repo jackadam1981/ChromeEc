@@ -21,12 +21,12 @@
 #define CONFIG_BOARD_FORCE_RESET_PIN
 #define CONFIG_CASE_CLOSED_DEBUG_EXTERNAL
 #define CONFIG_DPTF
-#define CONFIG_DPTF_MOTION_LID_NO_HALL_SENSOR
+#define CONFIG_DPTF_MOTION_LID_NO_GMR_SENSOR
 #define CONFIG_DPTF_MULTI_PROFILE
-#define CONFIG_FLASH_SIZE 0x80000
+#define CONFIG_FLASH_SIZE_BYTES 0x80000
 #define CONFIG_FPU
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_I2C_XFER_BOARD_CALLBACK
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_8042
@@ -64,7 +64,8 @@
 #define CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET
 #define CONFIG_CHIPSET_RESET_HOOK
 #define CONFIG_HOSTCMD_ESPI
-#define CONFIG_HOSTCMD_ESPI_VW_SLP_SIGNALS
+#define CONFIG_HOSTCMD_ESPI_VW_SLP_S3
+#define CONFIG_HOSTCMD_ESPI_VW_SLP_S4
 
 /* Battery */
 #define CONFIG_BATTERY_CUT_OFF
@@ -77,7 +78,6 @@
 #define CONFIG_CHARGE_RAMP_HW /* This, or just RAMP? */
 
 #define CONFIG_CHARGER
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHARGER_ISL9238
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_INPUT_CURRENT 512
@@ -87,7 +87,7 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR 10
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC 20
 #define CONFIG_CMD_CHARGER_ADC_AMON_BMON
-#define CONFIG_CMD_PD_CONTROL
+#define CONFIG_HOSTCMD_PD_CONTROL
 #define CONFIG_EXTPOWER_GPIO
 #undef   CONFIG_EXTPOWER_DEBOUNCE_MS
 #define  CONFIG_EXTPOWER_DEBOUNCE_MS 1000
@@ -123,11 +123,12 @@
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 #define CONFIG_LID_ANGLE_UPDATE
 
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
 /* FIFO size is in power of 2. */
-#define CONFIG_ACCEL_FIFO 512
-
+#define CONFIG_ACCEL_FIFO_SIZE 512
 /* Depends on how fast the AP boots and typical ODRs */
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
 
 #undef  CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 2048
@@ -152,6 +153,7 @@
 #define CONFIG_USB_PD_TCPM_PS8751
 #define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_SS_MUX_DFP_ONLY
 #define CONFIG_USBC_VCONN
@@ -181,25 +183,13 @@
 #define I2C_PORT_THERMAL	I2C_PORT_PMIC
 
 /* I2C addresses */
-#define I2C_ADDR_BD99992	0x60
-#define I2C_ADDR_MP2949		0x40
+#define I2C_ADDR_BD99992_FLAGS	0x30
+#define I2C_ADDR_MP2949_FLAGS	0x20
 
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
 #include "registers.h"
-
-enum power_signal {
-#ifdef CONFIG_POWER_S0IX
-	X86_SLP_S0_DEASSERTED,
-#endif
-	X86_SLP_S3_DEASSERTED,
-	X86_SLP_S4_DEASSERTED,
-	X86_SLP_SUS_DEASSERTED,
-	X86_RSMRST_L_PGOOD,
-	X86_PMIC_DPWROK,
-	POWER_SIGNAL_COUNT
-};
 
 /* Nautilus doesn't have systherm0 and systherm3 */
 enum temp_sensor_id {
@@ -220,6 +210,7 @@ enum sensor_id {
 	LID_ACCEL = 0,
 	BASE_ACCEL,
 	BASE_GYRO,
+	SENSOR_COUNT,
 };
 
 enum adc_channel {
@@ -238,7 +229,6 @@ enum adc_channel {
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	250000 /* us */
 
 /* delay to turn on/off vconn */
-#define PD_VCONN_SWAP_DELAY		5000   /* us */
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW		15000
@@ -252,7 +242,7 @@ void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
 
 /* Sensors without hardware FIFO are in forced mode */
-#define CONFIG_ACCEL_FORCE_MODE_MASK (1 << LID_ACCEL)
+#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
 
 #endif /* !__ASSEMBLER__ */
 

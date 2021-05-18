@@ -1,9 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # Copyright 2016 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
 # Upload firmware over USB
+# Note: This is a py2/3 compatible file.
 
 from __future__ import print_function
 
@@ -48,7 +49,7 @@ class Supdate(object):
     pass
 
 
-  def connect_usb(self, serialname=None ):
+  def connect_usb(self, serialname=None):
     """Initial discovery and connection to USB endpoint.
 
     This searches for a USB device matching the VID:PID specified
@@ -67,7 +68,8 @@ class Supdate(object):
     vendor = self._brdcfg['vid']
     product = self._brdcfg['pid']
 
-    dev_list = usb.core.find(idVendor=vendor, idProduct=product, find_all=True)
+    dev_g = usb.core.find(idVendor=vendor, idProduct=product, find_all=True)
+    dev_list = list(dev_g)
     if dev_list is None:
       raise Exception("Update", "USB device not found")
 
@@ -75,7 +77,7 @@ class Supdate(object):
     dev = None
     if serialname:
       for d in dev_list:
-        if usb.util.get_string(d, 256, d.iSerialNumber) == serialname:
+        if usb.util.get_string(d, d.iSerialNumber) == serialname:
           dev = d
           break
       if dev is None:
@@ -255,7 +257,7 @@ class Supdate(object):
       offset += pagesize
 
       # Validate that the micro thinks it successfully wrote the data.
-      read = self.wr_command("", read_count=4)
+      read = self.wr_command(''.encode(), read_count=4)
       result = struct.unpack("<I", read)
       result = result[0]
       if result != 0:
@@ -366,7 +368,7 @@ class Supdate(object):
       Exception on file not found or filesize not matching.
     """
     self._filesize = os.path.getsize(binfile)
-    self._binfile = open(binfile)
+    self._binfile = open(binfile, 'rb')
 
     if self._filesize != self._flashsize:
       raise Exception("Update", "Flash size 0x%x != file size 0x%x" % (self._flashsize, self._filesize))

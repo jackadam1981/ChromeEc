@@ -5,89 +5,44 @@
 
 /* Aleena board-specific configuration */
 
-#include "adc.h"
-#include "adc_chip.h"
 #include "button.h"
-#include "charge_manager.h"
-#include "charge_state.h"
-#include "charge_state_v2.h"
-#include "common.h"
-#include "compile_time_macros.h"
+#include "driver/accelgyro_bmi_common.h"
 #include "console.h"
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #include "driver/accelgyro_bmi160.h"
+=======
+#include "driver/accelgyro_icm_common.h"
+#include "driver/accelgyro_icm426xx.h"
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #include "driver/led/lm3630a.h"
-#include "driver/ppc/sn5s330.h"
-#include "driver/tcpm/anx74xx.h"
-#include "driver/tcpm/ps8xxx.h"
-#include "driver/temp_sensor/sb_tsi.h"
-#include "ec_commands.h"
 #include "extpower.h"
-#include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
-#include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
 #include "pwm.h"
 #include "pwm_chip.h"
-#include "registers.h"
 #include "switch.h"
-#include "system.h"
+#include "tablet_mode.h"
 #include "task.h"
-#include "tcpci.h"
-#include "temp_sensor.h"
-#include "thermistor.h"
-#include "usb_mux.h"
-#include "usb_pd_tcpm.h"
-#include "usbc_ppc.h"
-#include "util.h"
-
-#define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
-
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-static void anx74xx_cable_det_handler(void)
-{
-	int cable_det = gpio_get_level(GPIO_USB_C0_CABLE_DET);
-	int reset_n = gpio_get_level(GPIO_USB_C0_PD_RST_L);
-
-	/*
-	 * A cable_det low->high transition was detected. If following the
-	 * debounce time, cable_det is high, and reset_n is low, then ANX3429 is
-	 * currently in standby mode and needs to be woken up. Set the
-	 * TCPC_RESET event which will bring the ANX3429 out of standby
-	 * mode. Setting this event is gated on reset_n being low because the
-	 * ANX3429 will always set cable_det when transitioning to normal mode
-	 * and if in normal mode, then there is no need to trigger a tcpc reset.
-	 */
-	if (cable_det && !reset_n)
-		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET, 0);
-}
-DECLARE_DEFERRED(anx74xx_cable_det_handler);
-
-void anx74xx_cable_det_interrupt(enum gpio_signal signal)
-{
-	/* debounce for 2 msec */
-	hook_call_deferred(&anx74xx_cable_det_handler_data, (2 * MSEC));
-}
-#endif
-
-static void ppc_interrupt(enum gpio_signal signal)
-{
-	int port = (signal == GPIO_USB_C0_SWCTL_INT_ODL) ? 0 : 1;
-
-	sn5s330_interrupt(port);
-}
 
 #include "gpio_list.h"
+
+const enum gpio_signal hibernate_wake_pins[] = {
+	GPIO_LID_OPEN,
+	GPIO_AC_PRESENT,
+	GPIO_POWER_BUTTON_L,
+	GPIO_EC_RST_ODL,
+};
+const int hibernate_wake_pins_used =  ARRAY_SIZE(hibernate_wake_pins);
 
 /* I2C port map. */
 const struct i2c_port_t i2c_ports[] = {
 	{"power",   I2C_PORT_POWER,   100, GPIO_I2C0_SCL, GPIO_I2C0_SDA},
 	{"tcpc0",   I2C_PORT_TCPC0,   400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
 	{"tcpc1",   I2C_PORT_TCPC1,   400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
-	{"thermal", I2C_PORT_THERMAL, 400, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
+	{"thermal", I2C_PORT_THERMAL_AP, 400, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
 	{"kblight", I2C_PORT_KBLIGHT, 100, GPIO_I2C5_SCL, GPIO_I2C5_SDA},
 	{"sensor",  I2C_PORT_SENSOR,  400, GPIO_I2C7_SCL, GPIO_I2C7_SDA},
 };
@@ -103,8 +58,77 @@ const struct pwm_t pwm_channels[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 void board_update_sensor_config_from_sku(void)
+=======
+/* Motion sensors */
+static struct mutex icm426xx_mutex;
+
+static struct icm_drv_data_t g_icm426xx_data;
+
+enum base_accelgyro_type {
+	BASE_GYRO_NONE = 0,
+	BASE_GYRO_BMI160 = 1,
+	BASE_GYRO_ICM426XX = 2,
+};
+
+const mat33_fp_t base_standard_ref_icm426xx = {
+	{ 0, FLOAT_TO_FP(-1), 0},
+	{ FLOAT_TO_FP(1), 0, 0},
+	{ 0,  0, FLOAT_TO_FP(1)}
+};
+
+struct motion_sensor_t icm426xx_base_accel = {
+	 .name = "Base Accel",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_ICM426XX,
+	 .type = MOTIONSENSE_TYPE_ACCEL,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &icm426xx_drv,
+	 .mutex = &icm426xx_mutex,
+	 .drv_data = &g_icm426xx_data,
+	 .port = I2C_PORT_SENSOR,
+	 .i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
+	 .default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
+	 .rot_standard_ref = &base_standard_ref_icm426xx,
+	 .min_frequency = ICM426XX_ACCEL_MIN_FREQ,
+	 .max_frequency = ICM426XX_ACCEL_MAX_FREQ,
+	 .config = {
+		 /* EC use accel for angle detection */
+		 [SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100,
+		 },
+		 /* EC use accel for angle detection */
+		 [SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+		 },
+	 },
+};
+
+struct motion_sensor_t icm426xx_base_gyro = {
+	 .name = "Base Gyro",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_ICM426XX,
+	 .type = MOTIONSENSE_TYPE_GYRO,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &icm426xx_drv,
+	 .mutex = &icm426xx_mutex,
+	 .drv_data = &g_icm426xx_data,
+	 .port = I2C_PORT_SENSOR,
+	 .i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
+	 .default_range = 1000, /* dps */
+	 .rot_standard_ref = &base_standard_ref_icm426xx,
+	 .min_frequency = ICM426XX_GYRO_MIN_FREQ,
+	 .max_frequency = ICM426XX_GYRO_MAX_FREQ,
+};
+
+static enum base_accelgyro_type base_accelgyro_config;
+
+void motion_interrupt(enum gpio_signal signal)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	if (board_is_convertible()) {
 		/* Enable Gyro interrupts */
 		gpio_enable_interrupt(GPIO_6AXIS_INT_L);
@@ -156,77 +180,62 @@ void board_tcpc_init(void)
 		const struct usb_mux *mux = &usb_muxes[port];
 
 		mux->hpd_update(port, 0, 0);
+=======
+	switch (base_accelgyro_config) {
+	case BASE_GYRO_ICM426XX:
+		icm426xx_interrupt(signal);
+		break;
+	case BASE_GYRO_BMI160:
+	default:
+		bmi160_interrupt(signal);
+		break;
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	}
 }
-DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);
 
-uint16_t tcpc_get_alert_status(void)
+static void board_detect_motionsensor(void)
 {
-	uint16_t status = 0;
+	int ret;
+	int val;
 
-	if (!gpio_get_level(GPIO_USB_C0_PD_INT_ODL)) {
-		if (gpio_get_level(GPIO_USB_C0_PD_RST_L))
-			status |= PD_STATUS_TCPC_ALERT_0;
-	}
-
-	if (!gpio_get_level(GPIO_USB_C1_PD_INT_ODL)) {
-		if (gpio_get_level(GPIO_USB_C1_PD_RST_L))
-			status |= PD_STATUS_TCPC_ALERT_1;
-	}
-
-	return status;
-}
-
-/**
- * Power on (or off) a single TCPC.
- * minimum on/off delays are included.
- *
- * @param port	Port number of TCPC.
- * @param mode	0: power off, 1: power on.
- */
-void board_set_tcpc_power_mode(int port, int mode)
-{
-	if (port != USB_PD_PORT_ANX74XX)
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return;
+	if (base_accelgyro_config != BASE_GYRO_NONE)
 		return;
 
-	switch (mode) {
-	case ANX74XX_NORMAL_MODE:
-		gpio_set_level(GPIO_EN_USB_C0_TCPC_PWR, 1);
-		msleep(ANX74XX_PWR_H_RST_H_DELAY_MS);
-		gpio_set_level(GPIO_USB_C0_PD_RST_L, 1);
-		break;
-	case ANX74XX_STANDBY_MODE:
-		gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-		msleep(ANX74XX_RST_L_PWR_L_DELAY_MS);
-		gpio_set_level(GPIO_EN_USB_C0_TCPC_PWR, 0);
-		msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
-		break;
-	default:
-		break;
+	if (board_is_convertible()) {
+		/* Check base accelgyro chip */
+		ret = icm_read8(&icm426xx_base_accel,
+				 ICM426XX_REG_WHO_AM_I, &val);
+		if (ret)
+			ccprints("Get ICM fail.");
+		if (val == ICM426XX_CHIP_ICM40608) {
+			motion_sensors[BASE_ACCEL] = icm426xx_base_accel;
+			motion_sensors[BASE_GYRO] = icm426xx_base_gyro;
+		}
+		base_accelgyro_config = (val == ICM426XX_CHIP_ICM40608)
+			 ? BASE_GYRO_ICM426XX : BASE_GYRO_BMI160;
+		ccprints("Base Accelgyro: %s", (val == ICM426XX_CHIP_ICM40608)
+			 ? "ICM40608" : "BMI160");
 	}
 }
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_detect_motionsensor,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_detect_motionsensor, HOOK_PRIO_INIT_ADC + 2);
 
-void board_reset_pd_mcu(void)
+void board_update_sensor_config_from_sku(void)
 {
-	/* Assert reset to TCPC1 (ps8751) */
-	gpio_set_level(GPIO_USB_C1_PD_RST_L, 0);
-
-	/* Assert reset to TCPC0 (anx3429) */
-	gpio_set_level(GPIO_USB_C0_PD_RST_L, 0);
-
-	/* TCPC1 (ps8751) requires 1ms reset down assertion */
-	msleep(MAX(1, ANX74XX_RST_L_PWR_L_DELAY_MS));
-
-	/* Deassert reset to TCPC1 */
-	gpio_set_level(GPIO_USB_C1_PD_RST_L, 1);
-	/* Disable TCPC0 power */
-	gpio_set_level(GPIO_EN_USB_C0_TCPC_PWR, 0);
-
-	/*
-	 * anx3429 requires 10ms reset/power down assertion
-	 */
-	msleep(ANX74XX_PWR_L_PWR_H_DELAY_MS);
-	board_set_tcpc_power_mode(USB_PD_PORT_ANX74XX, 1);
+	if (board_is_convertible()) {
+		/* Enable Gyro interrupts */
+		gpio_enable_interrupt(GPIO_6AXIS_INT_L);
+	} else {
+		motion_sensor_count = 0;
+		/* Device is clamshell only */
+		tablet_set_mode(0);
+		/* Gyro is not present, don't allow line to float */
+		gpio_set_flags(GPIO_6AXIS_INT_L,
+			       GPIO_INPUT | GPIO_PULL_DOWN);
+	}
 }
 
 static void board_kblight_init(void)
@@ -239,3 +248,23 @@ static void board_kblight_init(void)
 	lm3630a_poweron();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_kblight_init, HOOK_PRIO_DEFAULT);
+
+#ifdef CONFIG_KEYBOARD_FACTORY_TEST
+/*
+ * Map keyboard connector pins to EC GPIO pins for factory test.
+ * Pins mapped to {-1, -1} are skipped.
+ * The connector has 30 pins total, and there is no pin 0.
+ */
+const int keyboard_factory_scan_pins[][2] = {
+		{-1, -1}, {0, 5}, {1, 1}, {1, 0}, {0, 6},
+		{0, 7}, {-1, -1}, {-1, -1}, {1, 4}, {1, 3},
+		{-1, -1}, {1, 6}, {1, 7}, {3, 1}, {2, 0},
+		{1, 5}, {2, 6}, {2, 7}, {2, 1}, {2, 4},
+		{2, 5}, {1, 2}, {2, 3}, {2, 2}, {3, 0},
+		{-1, -1}, {0, 4}, {-1, -1}, {8, 2}, {-1, -1},
+		{-1, -1},
+};
+
+const int keyboard_factory_scan_pins_used =
+			ARRAY_SIZE(keyboard_factory_scan_pins);
+#endif

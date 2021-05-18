@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -15,7 +15,7 @@
 #define IDLE_TASK_STACK_SIZE 256
 
 /* Default task stack size */
-#define TASK_STACK_SIZE 488
+#define TASK_STACK_SIZE 512
 
 /* Larger task stack size, for hook task */
 #define LARGER_TASK_STACK_SIZE 640
@@ -37,7 +37,7 @@
 
 /* Flash mapping */
 #define CONFIG_PROGRAM_MEMORY_BASE 0x00000000
-#define CONFIG_FLASH_SIZE 0x00040000
+#define CONFIG_FLASH_SIZE_BYTES 0x00040000
 #define CONFIG_FLASH_BANK_SIZE  0x1000
 
 /* Memory-mapped internal flash */
@@ -57,7 +57,7 @@
 #undef  CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 1024
 
-#define GPIO_PIN(port, index) GPIO_##port, (1 << index)
+#define GPIO_PIN(port, index) GPIO_##port, BIT(index)
 #define GPIO_PIN_MASK(p, m) .port = GPIO_##p, .mask = (m)
 
 #endif /* __CROS_EC_CONFIG_CHIP_H */

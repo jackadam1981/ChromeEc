@@ -28,10 +28,10 @@
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_USE_HOST_EVENT
 #define CONFIG_DPTF
-#define CONFIG_FLASH_SIZE 0x80000
+#define CONFIG_FLASH_SIZE_BYTES 0x80000
 #define CONFIG_FPU
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #undef  CONFIG_LID_SWITCH
 #define CONFIG_POWER_BUTTON_IGNORE_LID
 #define CONFIG_PWM
@@ -66,19 +66,10 @@
 #define CONFIG_CHIPSET_HAS_PRE_INIT_CALLBACK
 #define CONFIG_CHIPSET_RESET_HOOK
 #define CONFIG_HOSTCMD_ESPI
-/*
- * Eve and Poppy all have wires from GPIO to PCH but
- * CONFIG_HOSTCMD_ESPI_VW_SLP_SIGNALS is defined. So, those GPIOs are not used
- * by EC.
- */
-#define CONFIG_HOSTCMD_ESPI_VW_SLP_SIGNALS
+#define CONFIG_HOSTCMD_ESPI_VW_SLP_S3
+#define CONFIG_HOSTCMD_ESPI_VW_SLP_S4
 
-/* Charger */
-#define CONFIG_CHARGE_MANAGER
-
-#define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 50000
-
-#define CONFIG_CMD_PD_CONTROL
+#define CONFIG_HOSTCMD_PD_CONTROL
 #define CONFIG_EXTPOWER_GPIO
 #undef  CONFIG_EXTPOWER_DEBOUNCE_MS
 #define CONFIG_EXTPOWER_DEBOUNCE_MS 1000
@@ -94,30 +85,21 @@
 #define CONFIG_TEMP_SENSOR_TMP432
 
 /* USB */
-#undef  CONFIG_USB_CHARGER		/* dnojiri: verify */
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DISCHARGE_TCPC
-#define CONFIG_USB_PD_DUAL_ROLE
-#define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_VBUS_DETECT_GPIO
-#define CONFIG_USB_PD_TCPC_LOW_POWER
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_TCPM_PS8751
-#define CONFIG_USB_PD_TRY_SRC
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USBC_SS_MUX
 #define CONFIG_USBC_SS_MUX_DFP_ONLY
 #define CONFIG_USBC_VCONN
-#define CONFIG_USBC_VCONN_SWAP
-
-/* Charge ports */
-#undef  CONFIG_DEDICATED_CHARGE_PORT_COUNT
-#define CONFIG_DEDICATED_CHARGE_PORT_COUNT 1
-#define DEDICATED_CHARGE_PORT 1
 
 /* USB-A config */
 #define CONFIG_USB_PORT_POWER_DUMB
@@ -136,14 +118,19 @@
 #define I2C_PORT_THERMAL	NPCX_I2C_PORT3
 
 /* I2C addresses */
-#define I2C_ADDR_TCPC0		0x16
-#define I2C_ADDR_EEPROM		0xa0
+#define I2C_ADDR_TCPC0_FLAGS	0x0b
+#define I2C_ADDR_EEPROM_FLAGS	0x50
 
 /* Verify and jump to RW image on boot */
 #define CONFIG_VBOOT_EFS
 #define CONFIG_VBOOT_HASH
 #define CONFIG_VSTORE
 #define CONFIG_VSTORE_SLOT_COUNT 1
+
+/*
+ * LED backlight controller
+ */
+#define CONFIG_LED_DRIVER_OZ554
 
 /*
  * Flash layout. Since config_flash_layout.h is included before board.h,
@@ -156,7 +143,7 @@
 #define CONFIG_RW_B
 #define CONFIG_RW_B_MEM_OFF		CONFIG_RO_MEM_OFF
 #undef  CONFIG_RO_SIZE
-#define CONFIG_RO_SIZE			(CONFIG_FLASH_SIZE / 4)
+#define CONFIG_RO_SIZE			(CONFIG_FLASH_SIZE_BYTES / 4)
 #undef  CONFIG_RW_SIZE
 #define CONFIG_RW_SIZE			CONFIG_RO_SIZE
 #define CONFIG_RW_A_STORAGE_OFF		CONFIG_RW_STORAGE_OFF
@@ -166,6 +153,11 @@
 					 CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)
 #define CONFIG_RW_B_SIGN_STORAGE_OFF	(CONFIG_RW_B_STORAGE_OFF + \
 					 CONFIG_RW_SIZE - CONFIG_RW_SIG_SIZE)
+
+#undef CONFIG_EC_PROTECTED_STORAGE_SIZE
+#define CONFIG_EC_PROTECTED_STORAGE_SIZE	CONFIG_RO_SIZE
+#undef CONFIG_EC_WRITABLE_STORAGE_SIZE
+#define CONFIG_EC_WRITABLE_STORAGE_SIZE		CONFIG_RW_SIZE
 
 #define CONFIG_RWSIG
 #define CONFIG_RWSIG_TYPE_RWSIG
@@ -188,16 +180,6 @@
 enum charge_port {
 	CHARGE_PORT_TYPEC0,
 	CHARGE_PORT_BARRELJACK,
-};
-
-enum power_signal {
-	X86_SLP_S0_DEASSERTED,
-	X86_SLP_S3_DEASSERTED,
-	X86_SLP_S4_DEASSERTED,
-	X86_SLP_SUS_DEASSERTED,
-	X86_RSMRST_L_PGOOD,
-	X86_PMIC_DPWROK,
-	POWER_SIGNAL_COUNT
 };
 
 enum temp_sensor_id {
@@ -246,19 +228,10 @@ enum OEM_ID {
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	250000 /* us */
 
 /* delay to turn on/off vconn */
-#define PD_VCONN_SWAP_DELAY		5000   /* us */
-
-/* Define typical operating power. Since Kalista doesn't have a battery,
- * we're not interested in any power lower than the AP power-on threshold. */
-#define PD_OPERATING_POWER_MW	CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON
-#define PD_MAX_POWER_MW		100000
-#define PD_MAX_CURRENT_MA	5000
-#define PD_MAX_VOLTAGE_MV	20000
 
 /* Board specific handlers */
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
-int board_get_battery_soc(void);
 void led_alert(int enable);
 void led_critical(void);
 

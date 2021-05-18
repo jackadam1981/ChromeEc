@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -22,6 +22,9 @@ typedef float fp_inter_t;
 /* Fixed-point to float, for unit tests */
 #define FP_TO_FLOAT(x) ((float)(x))
 
+#define FLT_MAX (3.4028234664e+38)
+#define FLT_MIN (1.1754943508e-38)
+
 #else
 /* Fixed-point type */
 typedef int32_t fp_t;
@@ -39,7 +42,14 @@ typedef int64_t fp_inter_t;
 #define FLOAT_TO_FP(x) ((fp_t)((x) * (float)(1<<FP_BITS)))
 /* Fixed-point to float, for unit tests */
 #define FP_TO_FLOAT(x) ((float)(x) / (float)(1<<FP_BITS))
+
+#define FLT_MAX INT32_MAX
+#define FLT_MIN INT32_MIN
+
 #endif
+
+/* Some useful math functions.  Use with integers only! */
+#define POW2(x) ((x) * (x))
 
 /*
  * Fixed-point addition and subtraction can be done directly, because they
@@ -114,6 +124,22 @@ static inline fp_t fp_abs(fp_t a)
 	return (a >= INT_TO_FP(0) ? a : -a);
 }
 
+/*
+ * Return the smallest positive X where M * X >= N.
+ *
+ * For example, if n = 88 and m = 9, then it returns 10
+ * (i.e. 9 * 10 >= 88).
+ */
+static inline int ceil_for(int n, int m)
+{
+	return (((n - 1) / m) + 1);
+}
+
+/**
+ * Integer square root
+ */
+int int_sqrtf(fp_inter_t x);
+
 /**
  * Square root
  */
@@ -149,6 +175,24 @@ enum {
  * @return acos(x) in degrees.
  */
 fp_t arc_cos(fp_t x);
+
+/**
+ * Calculate the dot product of 2 vectors.
+ */
+fp_inter_t dot_product(const intv3_t v1, const intv3_t v2);
+
+/*
+ * Calculate the dot product of 2 vectors,
+ *
+ * Assume the result vector components fits in 32bit.
+ */
+void cross_product(const intv3_t v1, const intv3_t v2, intv3_t v);
+
+/**
+ * Scale a vector by fixed point constant.
+ */
+void vector_scale(intv3_t v, fp_t s);
+
 
 /**
  * Find the cosine of the angle between two vectors.

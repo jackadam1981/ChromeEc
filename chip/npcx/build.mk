@@ -1,5 +1,5 @@
 # -*- makefile -*-
-# Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+# Copyright 2014 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 #
@@ -19,9 +19,13 @@ endif
 # Required chip modules
 chip-y=header.o clock.o gpio.o hwtimer.o system.o uart.o uartn.o sib.o
 chip-y+=system-$(CHIP_FAMILY).o
+chip-y+=gpio-$(CHIP_FAMILY).o
 
 # Optional chip modules
 chip-$(CONFIG_ADC)+=adc.o
+chip-$(CONFIG_AUDIO_CODEC)+=apm.o wov.o
+chip-$(CONFIG_AUDIO_CODEC_DMIC)+=audio_codec_dmic.o
+chip-$(CONFIG_AUDIO_CODEC_I2S_RX)+=audio_codec_i2s_rx.o
 chip-$(CONFIG_FANS)+=fan.o
 chip-$(CONFIG_FLASH_PHYSICAL)+=flash.o
 chip-$(CONFIG_I2C)+=i2c.o i2c-$(CHIP_FAMILY).o
@@ -34,9 +38,17 @@ chip-$(CONFIG_CEC)+=cec.o
 chip-$(CONFIG_PWM)+=pwm.o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_WATCHDOG)+=watchdog.o
+ifndef CONFIG_KEYBOARD_NOT_RAW
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
-chip-$(CONFIG_WAKE_ON_VOICE)+=apm.o
-chip-$(CONFIG_WAKE_ON_VOICE)+=wov.o
+endif
+
+chip-$(CONFIG_PS2)+=ps2.o
+# Only npcx9 or later chip family can support LCT module
+ifneq ($(CHIP_FAMILY),$(filter $(CHIP_FAMILY),npcx5 npcx7))
+chip-y+=lct.o
+endif
+
+chip-$(CONFIG_SHA256_HW_ACCELERATE)+=sha256_chip.o
 
 # spi monitor program fw for openocd and UUT(UART Update Tool)
 npcx-monitor-fw=chip/npcx/spiflashfw/npcx_monitor
@@ -53,9 +65,18 @@ endif
 # ECST tool is for filling the header used by booter of npcx EC
 show_esct_cmd=$(if $(V),,echo '  ECST   ' $(subst $(out)/,,$@) ; )
 
+# Get the firmware length from the mapfile.  This can differ from the file
+# size when the CONFIG_CHIP_INIT_ROM_REGION is used. Note that the -fwlen
+# parameter for the ecst utility must be in hex.
+cmd_fwlen=$(shell awk '\
+  /__flash_used =/ {flash_used = strtonum($$1)} \
+  END {printf ("%x", flash_used)}' $(1))
+
 # ECST options for header
-bld_ecst=${out}/util/ecst -chip $(CHIP_VARIANT) -usearmrst -mode bt -ph -i $(1) -o $(2) -nohcrc \
--nofcrc -flashsize 8 -spimaxclk 50 -spireadmode dual 1> /dev/null
+bld_ecst=${out}/util/ecst -chip $(CHIP_VARIANT) \
+	-usearmrst -mode bt -ph -i $(1) -o $(2) -nohcrc -nofcrc -flashsize 8 \
+	-fwlen $(call cmd_fwlen, $(patsubst %.flat,%.map,$(2))) \
+	-spimaxclk 50 -spireadmode dual 1> /dev/null
 
 # Replace original one with the flat file including header
 moveflat=mv -f $(1) $(2)

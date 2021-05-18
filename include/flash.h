@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -46,6 +46,10 @@ int flash_bank_count(int offset, int size);
  */
 int flash_bank_size(int bank);
 
+int flash_bank_start_offset(int bank);
+
+int flash_bank_erase_size(int bank);
+
 /* Number of physical flash banks */
 #define PHYSICAL_BANKS  CONFIG_FLASH_MULTIPLE_REGION
 
@@ -57,7 +61,7 @@ int flash_bank_size(int bank);
 #else  /* CONFIG_FLASH_MULTIPLE_REGION */
 /* Number of physical flash banks */
 #ifndef PHYSICAL_BANKS
-#define PHYSICAL_BANKS (CONFIG_FLASH_SIZE / CONFIG_FLASH_BANK_SIZE)
+#define PHYSICAL_BANKS (CONFIG_FLASH_SIZE_BYTES / CONFIG_FLASH_BANK_SIZE)
 #endif
 
 /* WP region offset and size in units of flash banks */
@@ -74,6 +78,12 @@ int flash_bank_size(int bank);
 #error "Not supported."
 #endif
 
+/*
+ * When there is a dedicated flash bank used to store persistent state,
+ * ensure the RO flash region excludes the PSTATE bank.
+ */
+#define EC_FLASH_REGION_RO_SIZE		CONFIG_RO_SIZE
+
 #ifndef PSTATE_BANK
 #define PSTATE_BANK	    (CONFIG_FW_PSTATE_OFF / CONFIG_FLASH_BANK_SIZE)
 #endif
@@ -81,16 +91,24 @@ int flash_bank_size(int bank);
 #define PSTATE_BANK_COUNT   (CONFIG_FW_PSTATE_SIZE / CONFIG_FLASH_BANK_SIZE)
 #endif
 #else   /* CONFIG_FLASH_PSTATE && CONFIG_FLASH_PSTATE_BANK */
-#define PSTATE_BANK_COUNT	0
+/* Allow flashrom to program the entire write protected area */
+#define EC_FLASH_REGION_RO_SIZE		CONFIG_WP_STORAGE_SIZE
+#define PSTATE_BANK_COUNT		0
 #endif  /* CONFIG_FLASH_PSTATE && CONFIG_FLASH_PSTATE_BANK */
 
 #ifdef CONFIG_ROLLBACK
 /*
  * ROLLBACK region offset and size in units of flash banks.
  */
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+#define ROLLBACK_BANK_OFFSET	flash_bank_index(CONFIG_ROLLBACK_OFF)
+#define ROLLBACK_BANK_COUNT	\
+	flash_bank_count(CONFIG_ROLLBACK_OFF, CONFIG_ROLLBACK_SIZE)
+#else
 #define ROLLBACK_BANK_OFFSET	(CONFIG_ROLLBACK_OFF / CONFIG_FLASH_BANK_SIZE)
 #define ROLLBACK_BANK_COUNT	(CONFIG_ROLLBACK_SIZE / CONFIG_FLASH_BANK_SIZE)
-#endif
+#endif	/* CONFIG_FLASH_MULTIPLE_REGION */
+#endif	/* CONFIG_ROLLBACK */
 
 /* This enum is useful to identify different regions during verification. */
 enum flash_region {
@@ -332,6 +350,25 @@ const char *flash_read_pstate_serial(void);
  * @return success status.
  */
 int flash_write_pstate_serial(const char *serialno);
+
+/**
+ * Get the MAC address from flash.
+ *
+ * @return char * ascii MAC address string.
+ *     Format: "01:23:45:67:89:AB"
+ *     NULL if error.
+ */
+const char *flash_read_pstate_mac_addr(void);
+
+/**
+ * Set the MAC address in flash.
+ *
+ * @param mac_addr	ascii MAC address string.
+ *     Format: "01:23:45:67:89:AB"
+ *
+ * @return success status.
+ */
+int flash_write_pstate_mac_addr(const char *mac_addr);
 
 /**
  * Lock or unlock HW necessary for mapped storage read.

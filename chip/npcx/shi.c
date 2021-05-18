@@ -191,7 +191,7 @@ struct shi_bus_parameters {
 #endif
 } shi_params;
 
-/* Forward declaraction */
+/* Forward declaration */
 static void shi_reset_prepare(void);
 static void shi_bad_received_data(void);
 static void shi_fill_out_status(uint8_t status);
@@ -357,25 +357,31 @@ static void shi_parse_header(void)
 /* This routine fills out all SHI output buffer with status byte */
 static void shi_fill_out_status(uint8_t status)
 {
-	uint8_t offset;
-	uint8_t *obuf_ptr;
+	uint8_t start, end;
+	uint8_t *fill_ptr;
+	uint8_t *fill_end;
 	uint8_t *obuf_end;
 
 	/* Disable interrupts in case the interfere by the other interrupts */
 	interrupt_disable();
 
-	offset = SHI_OBUF_VALID_OFFSET;
+	/*
+	 * Fill out output buffer with status byte and leave a gap for PREAMBLE.
+	 * The gap guarantees the synchronization. The critical section should
+	 * be done within this gap. No racing happens.
+	 */
+	start = SHI_OBUF_VALID_OFFSET;
+	end = ((start + SHI_OBUF_FULL_SIZE - SHI_OUT_PREAMBLE_LENGTH)
+	       % SHI_OBUF_FULL_SIZE);
 
-	/* Fill out all output buffer with status byte */
-	obuf_ptr = (uint8_t *)SHI_OBUF_START_ADDR + offset;
+	fill_ptr = (uint8_t *)SHI_OBUF_START_ADDR + start;
+	fill_end = (uint8_t *)SHI_OBUF_START_ADDR + end;
 	obuf_end = (uint8_t *)SHI_OBUF_START_ADDR + SHI_OBUF_FULL_SIZE;
-	while (obuf_ptr != obuf_end)
-		*(obuf_ptr++) = status;
-
-	obuf_ptr = (uint8_t *)SHI_OBUF_START_ADDR;
-	obuf_end = (uint8_t *)SHI_OBUF_START_ADDR + offset;
-	while (obuf_ptr != obuf_end)
-		*(obuf_ptr++) = status;
+	while (fill_ptr != fill_end) {
+		*(fill_ptr++) = status;
+		if (fill_ptr == obuf_end)
+			fill_ptr = (uint8_t *)SHI_OBUF_START_ADDR;
+	}
 
 	/* End of critical section */
 	interrupt_enable();
@@ -661,7 +667,7 @@ void shi_int_handler(void)
 	/* SHI CS pin is asserted in EVSTAT2 */
 	if (IS_BIT_SET(stat2_reg, NPCX_EVSTAT2_CSNFE)) {
 		/* clear CSNFE bit */
-		NPCX_EVSTAT2 = (1 << NPCX_EVSTAT2_CSNFE);
+		NPCX_EVSTAT2 = BIT(NPCX_EVSTAT2_CSNFE);
 		DEBUG_CPRINTF("CSNFE-");
 		/*
 		 * BUSY bit is set when SHI_CS is asserted. If not, leave it for
@@ -688,7 +694,7 @@ void shi_int_handler(void)
 	 */
 	if (IS_BIT_SET(stat2_reg, NPCX_EVSTAT2_CSNRE)) {
 		/* Clear pending bit of CSNRE */
-		NPCX_EVSTAT2 = (1 << NPCX_EVSTAT2_CSNRE);
+		NPCX_EVSTAT2 = BIT(NPCX_EVSTAT2_CSNRE);
 #else
 	if (IS_BIT_SET(stat_reg, NPCX_EVSTAT_EOR)) {
 #endif
@@ -784,7 +790,7 @@ void shi_int_handler(void)
 	 */
 	if (IS_BIT_SET(stat2_reg, NPCX_EVSTAT2_IBHF2)) {
 		/* Clear IBHF2 */
-		NPCX_EVSTAT2 = (1 << NPCX_EVSTAT2_IBHF2);
+		NPCX_EVSTAT2 = BIT(NPCX_EVSTAT2_IBHF2);
 		DEBUG_CPRINTF("HDR-");
 		/* Disable second IBF interrupt and start to parse header */
 		shi_sec_ibf_int_enable(0);
@@ -940,12 +946,16 @@ static void shi_enable(void)
 	 */
 	task_enable_irq(NPCX_IRQ_SHI);
 }
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+DECLARE_HOOK(HOOK_CHIPSET_RESUME_INIT, shi_enable, HOOK_PRIO_DEFAULT);
+#else
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, shi_enable, HOOK_PRIO_DEFAULT);
+#endif
 
 static void shi_reenable_on_sysjump(void)
 {
 #if !(DEBUG_SHI)
-	if (system_jumped_to_this_image() && chipset_in_state(CHIPSET_STATE_ON))
+	if (system_jumped_late() && chipset_in_state(CHIPSET_STATE_ON))
 #endif
 		shi_enable();
 }
@@ -972,8 +982,18 @@ static void shi_disable(void)
 	 * SHI_SDI SHI_SDO SHI_CS# SHI_SCLK are selected to GPIO
 	 */
 	CLEAR_BIT(NPCX_DEVALT(ALT_GROUP_C), NPCX_DEVALTC_SHI_SL);
+
+	/*
+	 * Allow deep sleep again in case CS dropped before ec was
+	 * informed in hook function and turn off SHI's interrupt in time.
+	 */
+	enable_sleep(SLEEP_MASK_SPI);
 }
+#ifdef CONFIG_CHIPSET_RESUME_INIT_HOOK
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND_COMPLETE, shi_disable, HOOK_PRIO_DEFAULT);
+#else
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, shi_disable, HOOK_PRIO_DEFAULT);
+#endif
 DECLARE_HOOK(HOOK_SYSJUMP, shi_disable, HOOK_PRIO_DEFAULT);
 
 static void shi_init(void)
@@ -1044,12 +1064,12 @@ DECLARE_HOOK(HOOK_INIT, shi_init, HOOK_PRIO_INIT_CHIPSET - 1);
 /**
  * Get protocol information
  */
-static int shi_get_protocol_info(struct host_cmd_handler_args *args)
+static enum ec_status shi_get_protocol_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_get_protocol_info *r = args->response;
 
 	memset(r, 0, sizeof(*r));
-	r->protocol_versions = (1 << 3);
+	r->protocol_versions = BIT(3);
 	r->max_request_packet_size = SHI_MAX_REQUEST_SIZE;
 	r->max_response_packet_size = SHI_MAX_RESPONSE_SIZE;
 	r->flags = EC_PROTOCOL_INFO_IN_PROGRESS_SUPPORTED;

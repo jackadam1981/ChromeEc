@@ -211,9 +211,15 @@ static void uartn_set_fifo_mode(uint8_t uart_num)
 	/* Enable the UART FIFO mode */
 	SET_BIT(NPCX_UMDSL(uart_num), NPCX_UMDSL_FIFO_MD);
 	/* Disable all Tx interrupts */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	NPCX_UFTCTL(uart_num) &= ~((1 << NPCX_UFTCTL_TEMPTY_LVL_EN) |
 					(1 << NPCX_UFTCTL_TEMPTY_EN) |
 					(1 << NPCX_UFTCTL_NXMIPEN));
+=======
+	NPCX_UFTCTL(uart_num) &= ~(BIT(NPCX_UFTCTL_TEMPTY_LVL_EN) |
+					BIT(NPCX_UFTCTL_TEMPTY_EN) |
+					BIT(NPCX_UFTCTL_NXMIPEN));
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 
 #endif

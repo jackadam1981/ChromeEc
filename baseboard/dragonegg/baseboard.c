@@ -9,6 +9,7 @@
 #include "chipset.h"
 #include "console.h"
 #include "driver/bc12/max14637.h"
+#include "driver/charger/bq25710.h"
 #include "driver/ppc/nx20p348x.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/ppc/syv682x.h"
@@ -22,9 +23,10 @@
 #include "i2c.h"
 #include "keyboard_scan.h"
 #include "power.h"
+#include "power/icelake.h"
 #include "timer.h"
 #include "util.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -79,30 +81,26 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
-/* power signal list. */
-const struct power_signal_info power_signal_list[] = {
-	[X86_SLP_S0_DEASSERTED] = {GPIO_SLP_S0_L,
-		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
-		"SLP_S0_DEASSERTED"},
-#ifdef CONFIG_HOSTCMD_ESPI_VW_SIGNALS
-	[X86_SLP_S3_DEASSERTED] = {VW_SLP_S3_L, POWER_SIGNAL_ACTIVE_HIGH,
-				   "SLP_S3_DEASSERTED"},
-	[X86_SLP_S4_DEASSERTED] = {VW_SLP_S4_L, POWER_SIGNAL_ACTIVE_HIGH,
-				   "SLP_S4_DEASSERTED"},
-#else
-	[X86_SLP_S3_DEASSERTED] = {GPIO_SLP_S3_L, POWER_SIGNAL_ACTIVE_HIGH,
-				   "SLP_S3_DEASSERTED"},
-	[X86_SLP_S4_DEASSERTED] = {GPIO_SLP_S4_L, POWER_SIGNAL_ACTIVE_HIGH,
-				   "SLP_S4_DEASSERTED"},
-#endif
-	[X86_SLP_SUS_DEASSERTED] = {GPIO_SLP_SUS_L, POWER_SIGNAL_ACTIVE_HIGH,
-				    "SLP_SUS_DEASSERTED"},
-	[X86_RSMRST_L_PGOOD] = {GPIO_PG_EC_RSMRST_ODL, POWER_SIGNAL_ACTIVE_HIGH,
-				"RSMRST_L_PGOOD"},
-	[X86_DSW_DPWROK] = {GPIO_PG_EC_DSW_PWROK, POWER_SIGNAL_ACTIVE_HIGH,
-			    "DSW_DPWROK"},
+/* Charger Chips */
+const struct charger_config_t chg_chips[] = {
+	{
+		.i2c_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = BQ25710_SMBUS_ADDR1_FLAGS,
+		.drv = &bq25710_drv,
+	},
 };
-BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
+
+/******************************************************************************/
+/* PWROK signal configuration */
+/*
+ * On Dragonegg the ALL_SYS_PWRGD, VCCST_PWRGD, PCH_PWROK, and SYS_PWROK
+ * signals are handled by the board. No EC control needed.
+ */
+const struct intel_x86_pwrok_signal pwrok_signal_assert_list[] = {};
+const int pwrok_signal_assert_count = ARRAY_SIZE(pwrok_signal_assert_list);
+
+const struct intel_x86_pwrok_signal pwrok_signal_deassert_list[] = {};
+const int pwrok_signal_deassert_count = ARRAY_SIZE(pwrok_signal_assert_list);
 
 /******************************************************************************/
 /* Chipset callbacks/hooks */
@@ -183,7 +181,11 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USBC1C2,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 			.addr = TUSB422_I2C_ADDR,
+=======
+			.addr_flags = TUSB422_I2C_ADDR_FLAGS,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		},
 		.drv = &tusb422_tcpm_drv,
 		/* Alert is active-low, push-pull */
@@ -196,37 +198,43 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_ITE_0] = {
 		.i2c_port = I2C_PORT_USBC0,
-		.i2c_addr = SN5S330_ADDR0,
+		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
 		.drv = &sn5s330_drv
 	},
 
 	[USB_PD_PORT_ITE_1] = {
 		.i2c_port = I2C_PORT_USBC1C2,
-		.i2c_addr = SYV682X_ADDR0,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
 		.drv = &syv682x_drv
 	},
 
 	[USB_PD_PORT_TUSB422_2] = {
 		.i2c_port = I2C_PORT_USBC1C2,
-		.i2c_addr = NX20P3481_ADDR2,
+		.i2c_addr_flags = NX20P3481_ADDR2_FLAGS,
 		.drv = &nx20p348x_drv,
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+=======
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	[USB_PD_PORT_ITE_0] = {
+		.usb_port = USB_PD_PORT_ITE_0,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
 
 	[USB_PD_PORT_ITE_1] = {
+		.usb_port = USB_PD_PORT_ITE_1,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
 
 	[USB_PD_PORT_TUSB422_2] = {
-		.port_addr = 0,
+		.usb_port = USB_PD_PORT_TUSB422_2,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
@@ -295,7 +303,7 @@ void board_reset_pd_mcu(void)
 	 * but it will get reset when the EC gets reset.
 	 */
 }
-void board_pd_vconn_ctrl(int port, int cc_pin, int enabled)
+void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 {
 	/*
 	 * We ignore the cc_pin because the polarity should already be set

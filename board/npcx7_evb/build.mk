@@ -7,13 +7,22 @@
 #
 
 # the IC is Nuvoton NPCX7 M-Series EC (npcx7m6g, npcx7m6f, npcx7m6fb, npcx7m6fc,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 # npcx7m7wb)
+=======
+# npcx7m7fc, npcx7m7wb, npcx7m7wc)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 # CHIP_VARIANT:
 #    npcx7m6g  - for npcx7 ec without internal flash
 #    npcx7m6f  - for npcx7 ec with internal flash
 #    npcx7m6fb - for npcx7 ec with internal flash, enhanced features.
 #    npcx7m6fc - the same as npcx7m6fb but internal flash size is 512 Kbytes.
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+#    npcx7m7fc - the same as npcx7m6fc but more RAM sizes.
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #    npcx7m7wb - for npcx7 ec with internal flash, enhanced features + WOV.
+#    npcx7m7wc - the same as npcx7m7wb but internal flash size is 512 Kbytes.
 
 CHIP:=npcx
 CHIP_FAMILY:=npcx7

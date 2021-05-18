@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -14,6 +14,10 @@
 #include "thermal.h"
 #include "timer.h"
 #include "util.h"
+
+#ifdef CONFIG_ZEPHYR
+#include "temp_sensor/temp_sensor.h"
+#endif
 
 int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 {
@@ -67,8 +71,8 @@ static void temp_sensor_init(void)
 
 	/*
 	 * Initialize memory-mapped data so that if a temperature value is read
-	 * before we actually poll the sensors, we don't end up with an insane
-	 * value.
+	 * before we actually poll the sensors, we don't return an impossible
+	 * or out-of-range value.
 	 */
 	base = host_get_memmap(EC_MEMMAP_TEMP_SENSOR);
 	base_b = host_get_memmap(EC_MEMMAP_TEMP_SENSOR_B);
@@ -97,7 +101,8 @@ DECLARE_HOOK(HOOK_INIT, temp_sensor_init, HOOK_PRIO_DEFAULT);
 /*****************************************************************************/
 /* Console commands */
 
-static int command_temps(int argc, char **argv)
+#ifdef CONFIG_CMD_TEMP_SENSOR
+int console_command_temps(int argc, char **argv)
 {
 	int t, i;
 	int rv, rv1 = EC_SUCCESS;
@@ -135,14 +140,15 @@ static int command_temps(int argc, char **argv)
 
 	return rv1;
 }
-DECLARE_CONSOLE_COMMAND(temps, command_temps,
+DECLARE_CONSOLE_COMMAND(temps, console_command_temps,
 			NULL,
 			"Print temp sensors");
+#endif
 
 /*****************************************************************************/
 /* Host commands */
 
-int temp_sensor_command_get_info(struct host_cmd_handler_args *args)
+enum ec_status temp_sensor_command_get_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_temp_sensor_get_info *p = args->params;
 	struct ec_response_temp_sensor_get_info *r = args->response;

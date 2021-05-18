@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -19,7 +19,7 @@ enum battery_index {
 };
 
 #ifdef CONFIG_BATTERY_V2
-extern struct ec_response_battery_static_info
+extern struct ec_response_battery_static_info_v1
 	battery_static[CONFIG_BATTERY_COUNT];
 extern struct ec_response_battery_dynamic_info
 	battery_dynamic[CONFIG_BATTERY_COUNT];
@@ -120,16 +120,23 @@ int battery_get_avg_voltage(void); /* in mV */
 #define BATT_FLAG_BAD_FULL_CAPACITY		0x00000200
 #define BATT_FLAG_BAD_STATUS			0x00000400
 #define BATT_FLAG_IMBALANCED_CELL		0x00000800
+#define BATT_FLAG_BAD_AVERAGE_CURRENT		0x00001000
 /* All of the above BATT_FLAG_BAD_* bits */
-#define BATT_FLAG_BAD_ANY			0x000007fc
+#define BATT_FLAG_BAD_ANY			0x000017fc
 
 /* Battery constants */
 struct battery_info {
-	/* Design voltage in mV */
+	/* Operation voltage in mV */
 	int voltage_max;
 	int voltage_normal;
 	int voltage_min;
 	/* (TODO(chromium:756700): add desired_charging_current */
+	/**
+	 * Pre-charge to fast charge threshold in mV,
+	 * default to voltage_min if not specified.
+	 * This option is only available on isl923x and rt946x.
+	 */
+	int precharge_voltage;
 	/* Pre-charge current in mA */
 	int precharge_current;
 	/* Working temperature ranges in degrees C */
@@ -162,12 +169,23 @@ void battery_get_params(struct batt_params *batt);
  */
 void battery_override_params(struct batt_params *batt);
 
+#if defined(CONFIG_BATTERY) || defined(CONFIG_BATTERY_PRESENT_CUSTOM)
 /**
  * Check for presence of battery.
  *
  * @return Whether there is a battery attached or not, or if we can't tell.
  */
 enum battery_present battery_is_present(void);
+#else
+/*
+ * If battery support is not enabled and the board does not specifically
+ * provide its own implementation, assume a battery is never present.
+ */
+static inline enum battery_present battery_is_present(void)
+{
+	return BP_NO;
+}
+#endif
 
 /**
  * Check for physical presence of battery.
@@ -286,6 +304,16 @@ int battery_status(int *status);
 int battery_cycle_count(int *count);
 
 /**
+ * Read battery manufacture date.
+ *
+ * @param year		Destination for year
+ * @param month		Destination for month
+ * @param day		Destination for day
+ * @return non-zero if error.
+ */
+int battery_manufacture_date(int *year, int *month, int *day);
+
+/**
  * Read battery serial number.
  *
  * @param serial	Destination for serial number.
@@ -301,6 +329,17 @@ int battery_serial_number(int *serial);
  * @return non-zero if error.
  */
 int battery_manufacturer_name(char *dest, int size);
+
+/**
+ * Read manufacturer name.
+ *
+ * This can be overridden to return a chip or board custom string.
+ *
+ * @param dest		Destination buffer.
+ * @param size		Length of destination buffer in chars.
+ * @return non-zero if error.
+ */
+int get_battery_manufacturer_name(char *dest, int size);
 
 /**
  * Read device name.
@@ -427,5 +466,10 @@ extern struct i2c_stress_test_dev battery_i2c_stress_test_dev;
  *       battery drivers as needed.
  */
 void battery_compensate_params(struct batt_params *batt);
+
+/**
+ * board-specific battery_compensate_params
+ */
+__override_proto void board_battery_compensate_params(struct batt_params *batt);
 
 #endif /* __CROS_EC_BATTERY_H */

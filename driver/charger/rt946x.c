@@ -13,17 +13,36 @@
 #include "compile_time_macros.h"
 #include "config.h"
 #include "console.h"
+#include "extpower.h"
 #include "hooks.h"
 #include "i2c.h"
 #include "printf.h"
+#include "driver/wpc/p9221.h"
 #include "rt946x.h"
 #include "task.h"
+#include "tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_charge.h"
+#include "usb_pd.h"
 #include "util.h"
 
 /* Console output macros */
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
+#define CPRINTS(format, args...) \
+	cprints(CC_CHARGER, "%s " format, "RT946X", ## args)
+
+/* Charger parameters */
+#define CHARGER_NAME    RT946X_CHARGER_NAME
+#define CHARGE_V_MAX    4710
+#define CHARGE_V_MIN    3900
+#define CHARGE_V_STEP   10
+#define CHARGE_I_MAX    5000
+#define CHARGE_I_MIN    100
+#define CHARGE_I_OFF    0
+#define CHARGE_I_STEP   100
+#define INPUT_I_MAX     3250
+#define INPUT_I_MIN     100
+#define INPUT_I_STEP    50
 
 /* Charger parameters */
 #define CHARGER_NAME    RT946X_CHARGER_NAME
@@ -52,16 +71,7 @@ static const struct charger_info rt946x_charger_info = {
 	.input_current_step = INPUT_I_STEP,
 };
 
-struct charger_init_setting {
-	uint16_t eoc_current;
-	uint16_t mivr;
-	uint16_t ircmp_vclamp;
-	uint16_t ircmp_res;
-	uint16_t boost_voltage;
-	uint16_t boost_current;
-};
-
-static const struct charger_init_setting rt946x_charger_init_setting = {
+static const struct rt946x_init_setting default_init_setting = {
 	.eoc_current = 400,
 	.mivr = 4000,
 	.ircmp_vclamp = 32,
@@ -69,6 +79,12 @@ static const struct charger_init_setting rt946x_charger_init_setting = {
 	.boost_voltage = 5050,
 	.boost_current = 1500,
 };
+
+__attribute__((weak))
+const struct rt946x_init_setting *board_rt946x_init_setting(void)
+{
+	return &default_init_setting;
+}
 
 enum rt946x_ilmtsel {
 	RT946X_ILMTSEL_PSEL_OTG,
@@ -83,10 +99,62 @@ enum rt946x_chg_stat {
 	RT946X_CHGSTAT_FAULT,
 };
 
-enum rt946x_adc_in_sel {
-	RT946X_ADC_VBUS_DIV5 = 1,
-	RT946X_ADC_VBUS_DIV2,
+static struct mutex adc_access_lock;
+
+#ifdef CONFIG_CHARGER_MT6370
+/*
+ * Unit for each ADC parameter
+ * 0 stands for reserved
+ */
+static const int mt6370_adc_unit[MT6370_ADC_MAX] = {
+	0,
+	MT6370_ADC_UNIT_VBUS_DIV5,
+	MT6370_ADC_UNIT_VBUS_DIV2,
+	MT6370_ADC_UNIT_VSYS,
+	MT6370_ADC_UNIT_VBAT,
+	0,
+	MT6370_ADC_UNIT_TS_BAT,
+	0,
+	MT6370_ADC_UNIT_IBUS,
+	MT6370_ADC_UNIT_IBAT,
+	0,
+	MT6370_ADC_UNIT_CHG_VDDP,
+	MT6370_ADC_UNIT_TEMP_JC,
 };
+
+static const int mt6370_adc_offset[MT6370_ADC_MAX] = {
+	0,
+	MT6370_ADC_OFFSET_VBUS_DIV5,
+	MT6370_ADC_OFFSET_VBUS_DIV2,
+	MT6370_ADC_OFFSET_VSYS,
+	MT6370_ADC_OFFSET_VBAT,
+	0,
+	MT6370_ADC_OFFSET_TS_BAT,
+	0,
+	MT6370_ADC_OFFSET_IBUS,
+	MT6370_ADC_OFFSET_IBAT,
+	0,
+	MT6370_ADC_OFFSET_CHG_VDDP,
+	MT6370_ADC_OFFSET_TEMP_JC,
+};
+
+static int hidden_mode_cnt = 0;
+static struct mutex hidden_mode_lock;
+static const unsigned char mt6370_reg_en_hidden_mode[] = {
+	MT6370_REG_HIDDENPASCODE1,
+	MT6370_REG_HIDDENPASCODE2,
+	MT6370_REG_HIDDENPASCODE3,
+	MT6370_REG_HIDDENPASCODE4,
+};
+
+static const unsigned char mt6370_val_en_hidden_mode[] = {
+	0x96, 0x69, 0xC3, 0x3C,
+};
+
+static const unsigned char mt6370_val_en_test_mode[] = {
+	0x69, 0x96, 0x63, 0x70,
+};
+#endif /* CONFIG_CHARGER_MT6370 */
 
 #if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
 enum rt946x_irq {
@@ -137,15 +205,17 @@ enum rt946x_irq {
 };
 
 static uint8_t rt946x_irqmask[RT946X_IRQ_COUNT] = {
-	0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+	0xBF, 0xFF, 0xFF, 0xFF, 0xFF,
 	0xFF, 0xFC, 0xFF, 0xFF, 0xFF,
 	0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+	0xFF,
 };
 
 static const uint8_t rt946x_irq_maskall[RT946X_IRQ_COUNT] = {
 	0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
 	0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
 	0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+	0xFF,
 };
 #endif
 
@@ -325,6 +395,10 @@ static int mt6370_ichg_workaround(int chgnum, int new_ichg)
 	mt6370_enable_hidden_mode(chgnum, 0);
 	return rv;
 }
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+#endif /* CONFIG_CHARGER_MT6370 */
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 static inline int rt946x_enable_wdt(int chgnum, int en)
 {
@@ -367,7 +441,7 @@ int rt946x_por_reset(void)
 
 static int rt946x_reset_to_zero(int chgnum)
 {
-	int rv = 0;
+	int rv;
 
 	rv = rt946x_set_current(chgnum, 0);
 	if (rv)
@@ -404,12 +478,12 @@ static int rt946x_enable_bc12_detection(int chgnum, int en)
 
 static int rt946x_set_ieoc(int chgnum, unsigned int ieoc)
 {
-	uint8_t reg_ieoc = 0;
+	uint8_t reg_ieoc;
 
 	reg_ieoc = rt946x_closest_reg(RT946X_IEOC_MIN, RT946X_IEOC_MAX,
-		RT946X_IEOC_STEP, ieoc);
+				      RT946X_IEOC_STEP, ieoc);
 
-	CPRINTF("%s ieoc = %d(0x%02X)\n", __func__, ieoc, reg_ieoc);
+	CPRINTS("ieoc=%d", ieoc);
 
 	return rt946x_update_bits(chgnum, RT946X_REG_CHGCTRL9, RT946X_MASK_IEOC,
 				reg_ieoc << RT946X_SHIFT_IEOC);
@@ -422,7 +496,7 @@ static int rt946x_set_mivr(int chgnum, unsigned int mivr)
 	reg_mivr = rt946x_closest_reg(RT946X_MIVR_MIN, RT946X_MIVR_MAX,
 		RT946X_MIVR_STEP, mivr);
 
-	CPRINTF("%s: mivr = %d(0x%02X)\n", __func__, mivr, reg_mivr);
+	CPRINTS("mivr=%d", mivr);
 
 	return rt946x_update_bits(chgnum, RT946X_REG_CHGCTRL6, RT946X_MASK_MIVR,
 		reg_mivr << RT946X_SHIFT_MIVR);
@@ -435,7 +509,7 @@ static int rt946x_set_boost_voltage(int chgnum, unsigned int voltage)
 	reg_voltage = rt946x_closest_reg(RT946X_BOOST_VOLTAGE_MIN,
 		RT946X_BOOST_VOLTAGE_MAX, RT946X_BOOST_VOLTAGE_STEP, voltage);
 
-	CPRINTF("%s voltage = %d(0x%02X)\n", __func__, voltage, reg_voltage);
+	CPRINTS("voltage=%d", voltage);
 
 	return rt946x_update_bits(chgnum, RT946X_REG_CHGCTRL5,
 		RT946X_MASK_BOOST_VOLTAGE,
@@ -456,7 +530,7 @@ static int rt946x_set_boost_current(int chgnum, unsigned int current)
 			break;
 	}
 
-	CPRINTF("%s current = %d(0x%02X)\n", __func__, current, i);
+	CPRINTS("current=%d", current);
 
 	return rt946x_update_bits(chgnum, RT946X_REG_CHGCTRL10,
 		RT946X_MASK_BOOST_CURRENT,
@@ -470,7 +544,7 @@ static int rt946x_set_ircmp_vclamp(int chgnum, unsigned int vclamp)
 	reg_vclamp = rt946x_closest_reg(RT946X_IRCMP_VCLAMP_MIN,
 		RT946X_IRCMP_VCLAMP_MAX, RT946X_IRCMP_VCLAMP_STEP, vclamp);
 
-	CPRINTF("%s: vclamp = %d(0x%02X)\n", __func__, vclamp, reg_vclamp);
+	CPRINTS("vclamp=%d", vclamp);
 
 	return rt946x_update_bits(chgnum, RT946X_REG_CHGCTRL18,
 		RT946X_MASK_IRCMP_VCLAMP,
@@ -484,7 +558,7 @@ static int rt946x_set_ircmp_res(int chgnum, unsigned int res)
 	reg_res = rt946x_closest_reg(RT946X_IRCMP_RES_MIN, RT946X_IRCMP_RES_MAX,
 		RT946X_IRCMP_RES_STEP, res);
 
-	CPRINTF("%s: res = %d(0x%02X)\n", __func__, res, reg_res);
+	CPRINTS("res=%d", res);
 
 	return rt946x_update_bits(chgnum, RT946X_REG_CHGCTRL18,
 				  RT946X_MASK_IRCMP_RES,
@@ -498,7 +572,7 @@ static int rt946x_set_vprec(int chgnum, unsigned int vprec)
 	reg_vprec = rt946x_closest_reg(RT946X_VPREC_MIN, RT946X_VPREC_MAX,
 		RT946X_VPREC_STEP, vprec);
 
-	CPRINTF("%s: vprec = %d(0x%02X)\n", __func__, vprec, reg_vprec);
+	CPRINTS("vprec=%d", vprec);
 
 	return rt946x_update_bits(chgnum, RT946X_REG_CHGCTRL8,
 				  RT946X_MASK_VPREC,
@@ -512,7 +586,7 @@ static int rt946x_set_iprec(int chgnum, unsigned int iprec)
 	reg_iprec = rt946x_closest_reg(RT946X_IPREC_MIN, RT946X_IPREC_MAX,
 		RT946X_IPREC_STEP, iprec);
 
-	CPRINTF("%s: iprec = %d(0x%02X)\n", __func__, iprec, reg_iprec);
+	CPRINTS("iprec=%d", iprec);
 
 	return rt946x_update_bits(chgnum, RT946X_REG_CHGCTRL8,
 				  RT946X_MASK_IPREC,
@@ -522,7 +596,7 @@ static int rt946x_set_iprec(int chgnum, unsigned int iprec)
 static int rt946x_init_irq(int chgnum)
 {
 	int rv = 0;
-	int dummy;
+	int unused;
 	int i;
 
 	/* Mask all interrupts */
@@ -533,7 +607,11 @@ static int rt946x_init_irq(int chgnum)
 
 	/* Clear all interrupt flags */
 	for (i = 0; i < RT946X_IRQ_COUNT; i++) {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		rv = rt946x_read8(chgnum, RT946X_REG_CHGSTATC + i, &dummy);
+=======
+		rv = rt946x_read8(chgnum, RT946X_REG_CHGSTATC + i, &unused);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		if (rv)
 			return rv;
 	}
@@ -547,6 +625,14 @@ static int rt946x_init_setting(int chgnum)
 {
 	int rv = 0;
 	const struct battery_info *batt_info = battery_get_info();
+	const struct rt946x_init_setting *setting = board_rt946x_init_setting();
+
+#ifdef CONFIG_BATTERY_SMART
+	/* Disable EOC */
+	rv = rt946x_enable_charge_eoc(0);
+	if (rv)
+		return rv;
+#endif
 
 #ifdef CONFIG_CHARGER_OTG
 	/*  Disable boost-mode output voltage */
@@ -619,7 +705,7 @@ static enum ec_error_list rt946x_enable_otg_power(int chgnum, int enabled)
 		(chgnum, RT946X_REG_CHGCTRL1, RT946X_MASK_OPA_MODE);
 }
 
-int charger_is_sourcing_otg_power(int port)
+static int rt946x_is_sourcing_otg_power(int chgnum, int port)
 {
 	int val;
 
@@ -630,8 +716,13 @@ int charger_is_sourcing_otg_power(int port)
 }
 #endif
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static enum ec_error_list rt946x_set_input_current(int chgnum,
 						   int input_current)
+=======
+static enum ec_error_list rt946x_set_input_current_limit(int chgnum,
+							 int input_current)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	uint8_t reg_iin = 0;
 	const struct charger_info * const info = rt946x_get_info(chgnum);
@@ -640,14 +731,19 @@ static enum ec_error_list rt946x_set_input_current(int chgnum,
 		info->input_current_max, info->input_current_step,
 		input_current);
 
-	CPRINTF("%s iin = %d(0x%02X)\n", __func__, input_current, reg_iin);
+	CPRINTS("iin=%d", input_current);
 
 	return rt946x_update_bits(chgnum, RT946X_REG_CHGCTRL3, RT946X_MASK_AICR,
 		reg_iin << RT946X_SHIFT_AICR);
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static enum ec_error_list rt946x_get_input_current(int chgnum,
 						   int *input_current)
+=======
+static enum ec_error_list rt946x_get_input_current_limit(int chgnum,
+							 int *input_current)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	int rv;
 	int val = 0;
@@ -800,6 +896,40 @@ static enum ec_error_list rt946x_set_current(int chgnum, int current)
 
 	reg_icc = rt946x_closest_reg(info->current_min, info->current_max,
 				     info->current_step, current);
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+
+	rv = rt946x_update_bits(chgnum, RT946X_REG_CHGCTRL7, RT946X_MASK_ICHG,
+				reg_icc << RT946X_SHIFT_ICHG);
+	if (rv)
+		return rv;
+
+	if (IS_ENABLED(CONFIG_CHARGER_RT9466) ||
+	    IS_ENABLED(CONFIG_CHARGER_MT6370)) {
+		uint32_t curr_ieoc;
+
+		/*
+		 * workaround to make IEOC accurate:
+		 * witht normal charging (ICC >= 900mA), the power path is fully
+		 * turned on. But at low charging current state (ICC < 900mA),
+		 * the power path will only be partially turned on. So under
+		 * such situation, the IEOC is inaccurate.
+		 */
+		rv = rt946x_get_ieoc(chgnum, &curr_ieoc);
+		if (rv)
+			return rv;
+
+		if (current < 900 && !workaround) {
+			/* raise IEOC if charge current is under 900 */
+			rv = rt946x_set_ieoc(chgnum, curr_ieoc + 100);
+			workaround = 1;
+		} else if (current >= 900 && workaround) {
+			/* reset IEOC if charge current is above 900 */
+			workaround = 0;
+			rv = rt946x_set_ieoc(chgnum, curr_ieoc - 100);
+		}
+	}
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 	rv = rt946x_update_bits(chgnum, RT946X_REG_CHGCTRL7, RT946X_MASK_ICHG,
 				reg_icc << RT946X_SHIFT_ICHG);
@@ -832,8 +962,7 @@ static enum ec_error_list rt946x_set_current(int chgnum, int current)
 		}
 	}
 
-	return rt946x_update_bits(RT946X_REG_CHGCTRL7, RT946X_MASK_ICHG,
-		reg_icc << RT946X_SHIFT_ICHG);
+	return rv;
 }
 
 static enum ec_error_list rt946x_get_voltage(int chgnum, int *voltage)
@@ -867,6 +996,7 @@ static enum ec_error_list rt946x_set_voltage(int chgnum, int voltage)
 static enum ec_error_list rt946x_discharge_on_ac(int chgnum, int enable)
 {
 	return rt946x_enable_hz(chgnum, enable);
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 }
 
 int charger_get_vbus_voltage(int port)
@@ -908,6 +1038,8 @@ int charger_get_vbus_voltage(int port)
 	}
 
 	return vbus_mv;
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 
 /* Setup sourcing current to prevent overload */
@@ -943,6 +1075,10 @@ static enum ec_error_list rt946x_post_init(int chgnum)
 	rv = rt946x_select_ilmt(chgnum, RT946X_ILMTSEL_AICR);
 	if (rv)
 		return rv;
+
+	/* Need 5ms to ramp after choose current limit source */
+	msleep(5);
+
 	/* Disable ILIM pin */
 	rv = rt946x_enable_ilim_pin(chgnum, 0);
 	if (rv)
@@ -1000,7 +1136,7 @@ static enum ec_error_list rt946x_set_hw_ramp(int chgnum, int enable)
 	 * The vendor suggests setting AICL_VTH as (MIVR + 200mV).
 	 */
 	if ((mivr + 200) > RT946X_AICLVTH_MAX) {
-		CPRINTF("%s: no suitable vth, mivr = %d\n", __func__, mivr);
+		CPRINTS("mivr(%d) too high", mivr);
 		return EC_ERROR_INVAL;
 	}
 
@@ -1033,7 +1169,11 @@ static int rt946x_ramp_get_current_limit(int chgnum)
 	int rv;
 	int input_current = 0;
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	rv = rt946x_get_input_current(chgnum, &input_current);
+=======
+	rv = rt946x_get_input_current_limit(chgnum, &input_current);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 	return rv ? -1 : input_current;
 }
@@ -1044,6 +1184,7 @@ static void rt946x_init(int chgnum)
 	int ret = rt946x_init_setting(chgnum);
 
 	CPRINTS("init%d %s(%d)", chgnum, ret ? "fail" : "good", ret);
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 }
 
 #ifdef HAS_TASK_USB_CHG
@@ -1157,9 +1298,143 @@ static int mt6370_get_charger_type(int chgnum)
 		return;
 	}
 	CPRINTF("RT946X init succeeded\n");
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
-DECLARE_HOOK(HOOK_INIT, rt946x_init, HOOK_PRIO_INIT_I2C + 1);
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+#ifdef HAS_TASK_USB_CHG
+#ifdef CONFIG_CHARGER_MT6370
+static int mt6370_detect_apple_samsung_ta(int chgnum, int usb_stat)
+{
+	int ret, reg;
+	int chg_type =
+		(usb_stat & MT6370_MASK_USB_STATUS) >> MT6370_SHIFT_USB_STATUS;
+	int dp_2_3v, dm_2_3v;
+
+	/* Only SDP/CDP/DCP could possibly be Apple/Samsung TA */
+	if (chg_type != MT6370_CHG_TYPE_SDPNSTD &&
+	    chg_type != MT6370_CHG_TYPE_CDP &&
+	    chg_type != MT6370_CHG_TYPE_DCP)
+		return chg_type;
+
+	if (chg_type == MT6370_CHG_TYPE_SDPNSTD ||
+	    chg_type == MT6370_CHG_TYPE_CDP)
+		if (!(usb_stat & MT6370_MASK_DCD_TIMEOUT))
+			return chg_type;
+
+	/* Check D+ > 0.9V */
+	ret = rt946x_update_bits(chgnum, MT6370_REG_QCSTATUS2,
+				 MT6360_MASK_CHECK_DPDM,
+				 MT6370_MASK_APP_SS_EN | MT6370_MASK_APP_SS_PL);
+	ret |= rt946x_read8(chgnum, MT6370_REG_QCSTATUS2, &reg);
+
+	if (ret)
+		return chg_type;
+
+	/* Normal port (D+ < 0.9V) */
+	if (!(reg & MT6370_MASK_SS_OUT))
+		return chg_type;
+
+	/* Samsung charger (D+ < 1.5V) */
+	if (!(reg & MT6370_MASK_APP_OUT))
+		return MT6370_CHG_TYPE_SAMSUNG_CHARGER;
+
+	/* Check D+ > 2.3 V */
+	ret = rt946x_update_bits(chgnum, MT6370_REG_QCSTATUS2,
+				 MT6360_MASK_CHECK_DPDM,
+				 MT6370_MASK_APP_REF | MT6370_MASK_APP_SS_PL |
+				 MT6370_MASK_APP_SS_EN);
+	ret |= rt946x_read8(chgnum, MT6370_REG_QCSTATUS2, &reg);
+	dp_2_3v = reg & MT6370_MASK_APP_OUT;
+
+	/* Check D- > 2.3 V */
+	ret |= rt946x_update_bits(chgnum,
+		MT6370_REG_QCSTATUS2, MT6360_MASK_CHECK_DPDM,
+		MT6370_MASK_APP_REF | MT6370_MASK_APP_DPDM_IN |
+			MT6370_MASK_APP_SS_PL | MT6370_MASK_APP_SS_EN);
+	ret |= rt946x_read8(chgnum, MT6370_REG_QCSTATUS2, &reg);
+	dm_2_3v = reg & MT6370_MASK_APP_OUT;
+
+	if (ret)
+		return chg_type;
+
+	/* Apple charger */
+	if (!dp_2_3v && !dm_2_3v)
+		/* Apple 2.5W charger */
+		return MT6370_CHG_TYPE_APPLE_0_5A_CHARGER;
+	else if (!dp_2_3v && dm_2_3v)
+		/* Apple 5W charger */
+		return MT6370_CHG_TYPE_APPLE_1_0A_CHARGER;
+	else if (dp_2_3v && !dm_2_3v)
+		/* Apple 10W charger */
+		return MT6370_CHG_TYPE_APPLE_2_1A_CHARGER;
+	else
+		/* Apple 12W charger */
+		return MT6370_CHG_TYPE_APPLE_2_4A_CHARGER;
+}
+#endif
+
+static int mt6370_get_bc12_device_type(int charger_type)
+{
+	switch (charger_type) {
+	case MT6370_CHG_TYPE_SDP:
+	case MT6370_CHG_TYPE_SDPNSTD:
+		return CHARGE_SUPPLIER_BC12_SDP;
+	case MT6370_CHG_TYPE_CDP:
+		return CHARGE_SUPPLIER_BC12_CDP;
+	case MT6370_CHG_TYPE_DCP:
+	case MT6370_CHG_TYPE_SAMSUNG_CHARGER:
+	case MT6370_CHG_TYPE_APPLE_0_5A_CHARGER:
+	case MT6370_CHG_TYPE_APPLE_1_0A_CHARGER:
+	case MT6370_CHG_TYPE_APPLE_2_1A_CHARGER:
+	case MT6370_CHG_TYPE_APPLE_2_4A_CHARGER:
+		return CHARGE_SUPPLIER_BC12_DCP;
+	default:
+		return CHARGE_SUPPLIER_NONE;
+	}
+}
+
+/* Returns a mt6370 charger_type. */
+static int mt6370_get_charger_type(int chgnum)
+{
+#ifdef CONFIG_CHARGER_MT6370
+	int reg;
+
+	if (rt946x_read8(chgnum, MT6370_REG_USBSTATUS1, &reg))
+		return CHARGE_SUPPLIER_NONE;
+	return mt6370_detect_apple_samsung_ta(chgnum, reg);
+#else
+	return CHARGE_SUPPLIER_NONE;
+#endif
+}
+
+/*
+ * The USB Type-C specification limits the maximum amount of current from BC 1.2
+ * suppliers to 1.5A.  Technically, proprietary methods are not allowed, but we
+ * will continue to allow those.
+ */
+static int mt6370_get_bc12_ilim(int charge_supplier)
+{
+	switch (charge_supplier) {
+	case MT6370_CHG_TYPE_APPLE_0_5A_CHARGER:
+		return 500;
+	case MT6370_CHG_TYPE_APPLE_1_0A_CHARGER:
+		return 1000;
+	case MT6370_CHG_TYPE_APPLE_2_1A_CHARGER:
+	case MT6370_CHG_TYPE_APPLE_2_4A_CHARGER:
+	case MT6370_CHG_TYPE_DCP:
+	case MT6370_CHG_TYPE_CDP:
+	case MT6370_CHG_TYPE_SAMSUNG_CHARGER:
+		return USB_CHARGER_MAX_CURR_MA;
+	case MT6370_CHG_TYPE_SDP:
+	default:
+		return USB_CHARGER_MIN_CURR_MA;
+	}
+}
+
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 static int rt946x_get_bc12_device_type(int chgnum, int charger_type)
 {
 	int reg;
@@ -1177,35 +1452,35 @@ static int rt946x_get_bc12_device_type(int chgnum, int charger_type)
 	default:
 		return CHARGE_SUPPLIER_NONE;
 	}
-#elif defined(CONFIG_CHARGER_MT6370)
-	if (rt946x_read8(MT6370_REG_USBSTATUS1, &reg))
-		return CHARGE_SUPPLIER_NONE;
-
-	switch ((reg & MT6370_MASK_USB_STATUS) >> MT6370_SHIFT_USB_STATUS) {
-	case MT6370_CHG_TYPE_SDP:
-	case MT6370_CHG_TYPE_SDPNSTD:
-		return CHARGE_SUPPLIER_BC12_SDP;
-	case MT6370_CHG_TYPE_CDP:
-		return CHARGE_SUPPLIER_BC12_CDP;
-	case MT6370_CHG_TYPE_DCP:
-		return CHARGE_SUPPLIER_BC12_DCP;
-	default:
-		return CHARGE_SUPPLIER_NONE;
-	}
-#endif
 }
 
 static int rt946x_get_bc12_ilim(int charge_supplier)
 {
 	switch (charge_supplier) {
-	case CHARGE_SUPPLIER_BC12_CDP:
 	case CHARGE_SUPPLIER_BC12_DCP:
-		return 1500;
+		if (IS_ENABLED(CONFIG_CHARGE_RAMP_SW) ||
+		    IS_ENABLED(CONFIG_CHARGE_RAMP_HW))
+			/* A conservative value to prevent a bad charger. */
+			return RT946X_AICR_TYP2MAX(USB_CHARGER_MAX_CURR_MA);
+		/* fallback */
+	case CHARGE_SUPPLIER_BC12_CDP:
+		return USB_CHARGER_MAX_CURR_MA;
 	case CHARGE_SUPPLIER_BC12_SDP:
 	default:
 		return USB_CHARGER_MIN_CURR_MA;
 	}
 }
+
+static void check_ac_state(void)
+{
+	static uint8_t ac;
+
+	if (ac != extpower_is_present()) {
+		ac = !ac;
+		hook_notify(HOOK_AC_CHANGE);
+	}
+}
+DECLARE_DEFERRED(check_ac_state);
 
 void rt946x_interrupt(enum gpio_signal signal)
 {
@@ -1217,6 +1492,7 @@ void rt946x_interrupt(enum gpio_signal signal)
 	 * by PD negotiation.
 	 */
 	hook_call_deferred(&check_ac_state_data, 100 * MSEC);
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 }
 
 int rt946x_toggle_bc12_detection(void)
@@ -1461,13 +1737,284 @@ static int mt6370_irq_handler(int chgnum)
 	if (data)
 		ret = mt6370_pmu_chg_mivr_irq_handler(chgnum);
 	return ret;
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 
-void usb_charger_task(void *u)
+int rt946x_toggle_bc12_detection(void)
+{
+	int rv;
+	rv = rt946x_enable_bc12_detection(CHARGER_SOLO, 0);
+	if (rv)
+		return rv;
+	/* mt6370 requires 40us delay to toggle RT946X_MASK_USBCHGEN */
+	udelay(40);
+	return rt946x_enable_bc12_detection(CHARGER_SOLO, 1);
+}
+
+static void check_pd_capable(void)
+{
+	const int port = TASK_ID_TO_USB_CHG_PORT(TASK_ID_USB_CHG);
+
+	if (!pd_capable(port)) {
+		enum tcpc_cc_voltage_status cc1, cc2;
+
+		tcpm_get_cc(port, &cc1, &cc2);
+		/* if CC is not changed. */
+		if (cc_is_rp(cc1) || cc_is_rp(cc2))
+			rt946x_toggle_bc12_detection();
+	}
+}
+DECLARE_DEFERRED(check_pd_capable);
+
+static void rt946x_usb_connect(void)
+{
+	const int port = TASK_ID_TO_USB_CHG_PORT(TASK_ID_USB_CHG);
+	enum tcpc_cc_voltage_status cc1, cc2;
+
+	tcpm_get_cc(port, &cc1, &cc2);
+
+	/*
+	 * Only detect BC1.2 device when USB-C device recognition is
+	 * finished to prevent a potential race condition with USB enumeration.
+	 * If CC exists RP, then it might be a BC12 or a PD capable device.
+	 * Check this later to ensure it's not PD capable.
+	 */
+	if (cc_is_rp(cc1) || cc_is_rp(cc2))
+		/* delay extra 50 ms to ensure SrcCap received */
+		hook_call_deferred(&check_pd_capable_data,
+				   PD_T_SINK_WAIT_CAP + 50 * MSEC);
+	hook_call_deferred(&check_ac_state_data, 0);
+}
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, rt946x_usb_connect, HOOK_PRIO_DEFAULT);
+
+static void rt946x_pd_disconnect(void)
+{
+	/* Type-C disconnected, disable deferred check. */
+	hook_call_deferred(&check_pd_capable_data, -1);
+	hook_call_deferred(&check_ac_state_data, 0);
+}
+DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, rt946x_pd_disconnect, HOOK_PRIO_DEFAULT);
+
+int rt946x_get_adc(enum rt946x_adc_in_sel adc_sel, int *adc_val)
+{
+	int rv, i, adc_start, adc_result = 0;
+	int adc_data_h, adc_data_l, aicr;
+	const int max_wait_times = 6;
+
+	if (in_interrupt_context()) {
+		CPRINTS("Err: use ADC in IRQ");
+		return EC_ERROR_INVAL;
+        }
+	mutex_lock(&adc_access_lock);
+#ifdef CONFIG_CHARGER_MT6370
+	mt6370_enable_hidden_mode(CHARGER_SOLO, 1);
+#endif
+
+	/* Select ADC to desired channel */
+	rv = rt946x_update_bits(CHARGER_SOLO, RT946X_REG_CHGADC,
+				RT946X_MASK_ADC_IN_SEL,
+				adc_sel << RT946X_SHIFT_ADC_IN_SEL);
+	if (rv)
+		goto out;
+
+	if (adc_sel == MT6370_ADC_IBUS) {
+		rv = charger_get_input_current_limit(CHARGER_SOLO, &aicr);
+		if (rv)
+			goto out;
+	}
+
+	/* Start ADC conversation */
+	rv = rt946x_set_bit(CHARGER_SOLO, RT946X_REG_CHGADC,
+			    RT946X_MASK_ADC_START);
+	if (rv)
+		goto out;
+
+	for (i = 0; i < max_wait_times; i++) {
+		msleep(35);
+		rv = mt6370_pmu_reg_test_bit(CHARGER_SOLO, RT946X_REG_CHGADC,
+					      RT946X_SHIFT_ADC_START,
+					      &adc_start);
+		if (!adc_start && rv == 0)
+			break;
+	}
+	if (i == max_wait_times)
+		CPRINTS("conversion fail sel=%d", adc_sel);
+
+	/* Read ADC data */
+	rv = rt946x_read8(CHARGER_SOLO, RT946X_REG_ADCDATAH, &adc_data_h);
+	rv = rt946x_read8(CHARGER_SOLO, RT946X_REG_ADCDATAL, &adc_data_l);
+	if (rv)
+		goto out;
+
+#if defined(CONFIG_CHARGER_RT9466) || defined(CONFIG_CHARGER_RT9467)
+	if (adc_sel == RT946X_ADC_VBUS_DIV5)
+		adc_result = ((adc_data_h << 8) | adc_data_l) * 25;
+	else
+		CPRINTS("unsupported channel %d", adc_sel);
+	*adc_val = adc_result;
+#elif defined(CONFIG_CHARGER_MT6370)
+	/* Calculate ADC value */
+	adc_result = (adc_data_h * 256 + adc_data_l)
+			* mt6370_adc_unit[adc_sel] + mt6370_adc_offset[adc_sel];
+
+	/* For TS_BAT/TS_BUS, the real unit is 0.25, here we use 25(unit) */
+	if (adc_sel == MT6370_ADC_TS_BAT)
+		adc_result /= 100;
+#endif
+
+out:
+#ifdef CONFIG_CHARGER_MT6370
+	if (adc_sel == MT6370_ADC_IBUS) {
+		if (aicr < 400) /* 400mA */
+			adc_result = adc_result * 67 / 100;
+	}
+
+	if (adc_sel != MT6370_ADC_TS_BAT && adc_sel != MT6370_ADC_TEMP_JC)
+		*adc_val = adc_result / 1000;
+	else
+		*adc_val = adc_result;
+	mt6370_enable_hidden_mode(CHARGER_SOLO, 0);
+#endif
+	mutex_unlock(&adc_access_lock);
+	return rv;
+}
+
+static enum ec_error_list rt946x_get_vbus_voltage(int chgnum, int port,
+						  int *voltage)
+{
+	int vbus_mv;
+	int rv;
+
+	rv = rt946x_get_adc(RT946X_ADC_VBUS_DIV5, &vbus_mv);
+	*voltage = vbus_mv;
+
+	return rv;
+}
+
+#ifdef CONFIG_CHARGER_MT6370
+static int mt6370_toggle_cfo(void)
+{
+	int rv, data;
+
+	rv = rt946x_read8(CHARGER_SOLO, MT6370_REG_FLEDEN, &data);
+	if (rv)
+		return rv;
+
+	if (data & MT6370_STROBE_EN_MASK)
+		return rv;
+
+	/* read data */
+	rv = rt946x_read8(CHARGER_SOLO, RT946X_REG_CHGCTRL2, &data);
+	if (rv)
+		return rv;
+
+	/* cfo off */
+	data &= ~RT946X_MASK_CFO_EN;
+	rv = rt946x_write8(CHARGER_SOLO, RT946X_REG_CHGCTRL2, data);
+	if (rv)
+		return rv;
+
+	/* cfo on */
+	data |= RT946X_MASK_CFO_EN;
+	return rt946x_write8(CHARGER_SOLO, RT946X_REG_CHGCTRL2, data);
+}
+
+static int mt6370_pmu_chg_mivr_irq_handler(int chgnum)
+{
+	int rv, ibus = 0, mivr_stat;
+
+	rv = mt6370_pmu_reg_test_bit(chgnum, MT6370_REG_CHGSTAT1,
+				MT6370_SHIFT_MIVR_STAT, &mivr_stat);
+	if (rv)
+		return rv;
+
+	if (!mivr_stat) {
+		CPRINTS("no mivr stat");
+		return rv;
+	}
+
+	rv = rt946x_get_adc(MT6370_ADC_IBUS, &ibus);
+	if (rv)
+		return rv;
+
+	if (ibus < 100) /* 100mA */
+		rv = mt6370_toggle_cfo();
+
+	return rv;
+}
+
+static int mt6370_irq_handler(int chgnum)
+{
+	int data, mask, ret, reg_val;
+	int stat_chg, valid_chg, stat_old, stat_new;
+
+	ret = rt946x_write8(chgnum, MT6370_REG_IRQMASK, MT6370_IRQ_MASK_ALL);
+	if (ret)
+		return ret;
+
+	ret = rt946x_read8(chgnum, MT6370_REG_IRQIND, &reg_val);
+	if (ret)
+		return ret;
+
+	/* read stat before reading irq evt */
+	ret = rt946x_read8(chgnum, MT6370_REG_CHGSTAT1, &stat_old);
+	if (ret)
+		return ret;
+
+	/* workaround for irq, divided irq event into upper and lower */
+	ret = rt946x_read8(chgnum, MT6370_REG_CHGIRQ1, &data);
+	if (ret)
+		return ret;
+
+	/* read stat after reading irq evt */
+	ret = rt946x_read8(chgnum, MT6370_REG_CHGSTAT1, &stat_new);
+	if (ret)
+		return ret;
+
+	ret = rt946x_read8(chgnum, MT6370_REG_CHGMASK1, &mask);
+	if (ret)
+		return ret;
+
+	ret = rt946x_write8(chgnum, MT6370_REG_IRQMASK, 0x00);
+	if (ret)
+		return ret;
+
+	stat_chg = stat_old ^ stat_new;
+	valid_chg = (stat_new & 0xF1) | (~stat_new & 0xF1);
+	data |= (stat_chg & valid_chg);
+	data &= ~mask;
+	if (data)
+		ret = mt6370_pmu_chg_mivr_irq_handler(chgnum);
+	return ret;
+}
+#endif /* CONFIG_CHARGER_MT6370 */
+
+static void rt946x_bc12_workaround(void)
+{
+	/*
+	 * There is a parasitic capacitance on D+,
+	 * which results in pulling D+ up too slow while detecting BC1.2.
+	 * So we try to fix this in two steps:
+	 * 1. Pull D+ up to a voltage under 0.6V
+	 * 2. re-toggling and pull D+ up to 0.6V (again)
+	 * and then detect the voltage of D-.
+	 */
+	rt946x_toggle_bc12_detection();
+	msleep(10);
+	rt946x_toggle_bc12_detection();
+}
+DECLARE_DEFERRED(rt946x_bc12_workaround);
+
+static void rt946x_usb_charger_task(const int unused)
 {
 	struct charge_port_info chg;
 	int bc12_type = CHARGE_SUPPLIER_NONE;
+	int chg_type;
 	int reg = 0;
+	int bc12_cnt = 0;
+	const int max_bc12_cnt = 3;
+	int voltage;
 
 	chg.voltage = USB_CHARGER_VOLTAGE_MV;
 	while (1) {
@@ -1479,8 +2026,13 @@ void usb_charger_task(void *u)
 
 		/* VBUS attach event */
 		if (reg & RT946X_MASK_DPDMIRQ_ATTACH) {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 			CPRINTS("VBUS attached: %dmV",
 					charger_get_vbus_voltage(0));
+=======
+			charger_get_vbus_voltage(0, &voltage);
+			CPRINTS("VBUS attached: %dmV", voltage);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 			if (IS_ENABLED(CONFIG_CHARGER_MT6370)) {
 				chg_type =
 					mt6370_get_charger_type(CHARGER_SOLO);
@@ -1492,9 +2044,6 @@ void usb_charger_task(void *u)
 				    rt946x_get_bc12_device_type(CHARGER_SOLO,
 								    chg_type);
 				chg.current = rt946x_get_bc12_ilim(bc12_type);
-				charge_manager_update_charge(bc12_type,
-							     0, &chg);
-				rt946x_enable_bc12_detection(0);
 			}
 			CPRINTS("BC12 type %d", bc12_type);
 			if (bc12_type == CHARGE_SUPPLIER_NONE)
@@ -1522,13 +2071,29 @@ bc12_none:
 		}
 
 		/* VBUS detach event */
-		if (reg & RT946X_MASK_DPDMIRQ_DETACH) {
+		if (reg & RT946X_MASK_DPDMIRQ_DETACH &&
+		    bc12_type != CHARGE_SUPPLIER_NONE) {
+			CPRINTS("VBUS detached");
+			bc12_cnt = 0;
+#ifdef CONFIG_WIRELESS_CHARGER_P9221_R7
+			p9221_notify_vbus_change(0);
+#endif
 			charge_manager_update_charge(bc12_type, 0, NULL);
-			rt946x_enable_bc12_detection(1);
 		}
 
+wait_event:
 		task_wait_event(-1);
 	}
+}
+
+static int rt946x_ramp_allowed(int supplier)
+{
+	return supplier == CHARGE_SUPPLIER_BC12_DCP;
+}
+
+static int rt946x_ramp_max(int supplier, int sup_curr)
+{
+	return rt946x_get_bc12_ilim(supplier);
 }
 #endif /* HAS_TASK_USB_CHG */
 
@@ -1725,7 +2290,7 @@ int mt6370_led_set_dim_mode(enum mt6370_led_index index,
 	return EC_SUCCESS;
 }
 
-int mt6370_led_set_color(enum mt6370_led_index index)
+int mt6370_led_set_color(uint8_t mask)
 {
 	return rt946x_update_bits(CHARGER_SOLO, MT6370_REG_RGBEN,
 				  MT6370_MASK_RGB_ISNK_ALL_EN, mask);
@@ -1806,6 +2371,7 @@ const struct charger_drv rt946x_drv = {
 	.get_status = &rt946x_get_status,
 	.set_mode = &rt946x_set_mode,
 	.enable_otg_power = &rt946x_enable_otg_power,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	.get_current = &rt946x_get_current,
 	.set_current = &rt946x_set_current,
 	.get_voltage = &rt946x_get_voltage,
@@ -1823,5 +2389,43 @@ const struct charger_drv rt946x_drv = {
 	.ramp_is_stable = &rt946x_ramp_is_stable,
 	.ramp_is_detected = &rt946x_ramp_is_detected,
 	.ramp_get_current_limit = &rt946x_ramp_get_current_limit,
+=======
+	.is_sourcing_otg_power = &rt946x_is_sourcing_otg_power,
+	.get_current = &rt946x_get_current,
+	.set_current = &rt946x_set_current,
+	.get_voltage = &rt946x_get_voltage,
+	.set_voltage = &rt946x_set_voltage,
+	.discharge_on_ac = &rt946x_discharge_on_ac,
+	.get_vbus_voltage = &rt946x_get_vbus_voltage,
+	.set_input_current_limit = &rt946x_set_input_current_limit,
+	.get_input_current_limit = &rt946x_get_input_current_limit,
+	.manufacturer_id = &rt946x_manufacturer_id,
+	.device_id = &rt946x_device_id,
+	.get_option = &rt946x_get_option,
+	.set_option = &rt946x_set_option,
+#ifdef CONFIG_CHARGE_RAMP_HW
+	.set_hw_ramp = &rt946x_set_hw_ramp,
+	.ramp_is_stable = &rt946x_ramp_is_stable,
+	.ramp_is_detected = &rt946x_ramp_is_detected,
+	.ramp_get_current_limit = &rt946x_ramp_get_current_limit,
+#endif
+};
+
+#ifdef HAS_TASK_USB_CHG
+const struct bc12_drv rt946x_bc12_drv = {
+	.usb_charger_task = rt946x_usb_charger_task,
+	.ramp_allowed = rt946x_ramp_allowed,
+	.ramp_max = rt946x_ramp_max,
+};
+
+#ifdef CONFIG_BC12_SINGLE_DRIVER
+/* provide a default bc12_ports[] for backward compatibility */
+struct bc12_config bc12_ports[CHARGE_PORT_COUNT] = {
+	[0 ... (CHARGE_PORT_COUNT - 1)] = {
+		.drv = &rt946x_bc12_drv,
+	},
+};
+#endif /* CONFIG_BC12_SINGLE_DRIVER */
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #endif
 };

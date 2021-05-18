@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -67,7 +67,12 @@ struct host_packet {
 	 */
 	void (*send_response)(struct host_packet *pkt);
 
-	/* Input request data */
+	/*
+	 * Input request data. If request and response buffers overlap,
+	 * then request_temp must be non-null and be large enough to store the
+	 * entire request buffer. The request_temp buffer will then be used
+	 * as the buffer passed into the command handlers.
+	 */
 	const void *request;
 
 	/*
@@ -116,7 +121,7 @@ struct host_command {
 	 * Handler for the command.  Args points to context for handler.
 	 * Returns result status (EC_RES_*).
 	 */
-	int (*handler)(struct host_cmd_handler_args *args);
+	enum ec_status (*handler)(struct host_cmd_handler_args *args);
 	/* Command code */
 	int command;
 	/* Mask of supported versions */
@@ -125,8 +130,10 @@ struct host_command {
 
 #ifdef CONFIG_HOST_EVENT64
 typedef uint64_t host_event_t;
-#define HOST_EVENT_CPRINTS(str, e)	CPRINTS("%s 0x%016lx", str, e)
-#define HOST_EVENT_CCPRINTF(str, e)	ccprintf("%s 0x%016lx\n", str, e)
+#define HOST_EVENT_CPRINTS(str, e)	CPRINTS("%s 0x%016" PRIx64, str, e)
+#define HOST_EVENT_CCPRINTF(str, e) \
+	ccprintf("%s 0x%016" PRIx64 "\n", str, e)
+
 #else
 typedef uint32_t host_event_t;
 #define HOST_EVENT_CPRINTS(str, e)	CPRINTS("%s 0x%08x", str, e)
@@ -223,7 +230,7 @@ void host_command_received(struct host_cmd_handler_args *args);
 /**
  * Return the expected host packet size given its header.
  *
- * Also does some sanity checking on the host request.
+ * Also does some validity checking on the host request.
  *
  * @param r		Host request header
  * @return The expected packet size, or 0 if error.
@@ -237,7 +244,21 @@ int host_request_expected_size(const struct ec_host_request *r);
  */
 void host_packet_receive(struct host_packet *pkt);
 
-#ifdef HAS_TASK_HOSTCMD
+/**
+ * Find the handler for a command in Zephyr OS.
+ *
+ * @command		Command to handle (EC_CMD_...)
+ *
+ * Return: handler for the command, or NULL if not found.
+ */
+#ifndef CONFIG_ZEPHYR
+__error("This function should only be called from Zephyr OS code")
+#endif
+struct host_command *zephyr_find_host_command(int command);
+
+#if defined(CONFIG_PLATFORM_EC_HOSTCMD)
+#include "zephyr_host_command.h"
+#elif defined(HAS_TASK_HOSTCMD)
 #define EXPAND(off, cmd) __host_cmd_(off, cmd)
 #define __host_cmd_(off, cmd) __host_cmd_##off##cmd
 #define EXPANDSTR(off, cmd) "__host_cmd_"#off#cmd
@@ -265,7 +286,7 @@ void host_packet_receive(struct host_packet *pkt);
 		   version_mask}
 #else
 #define DECLARE_HOST_COMMAND(command, routine, version_mask)    \
-	int (routine)(struct host_cmd_handler_args *args)       \
+	enum ec_status (routine)(struct host_cmd_handler_args *args)       \
 		__attribute__((unused))
 
 #define DECLARE_PRIVATE_HOST_COMMAND(command, routine, version_mask)	\
@@ -313,16 +334,6 @@ int pd_get_active_charge_port(void);
 int pd_host_command(int command, int version,
 		    const void *outdata, int outsize,
 		    void *indata, int insize);
-
-
-/**
- * EC: Get verify boot mode
- * @return vboot_mode as the following:
- *    VBOOT_MODE_NORMAL    - normal mode
- *    VBOOT_MODE_DEVELOPER - developer mode
- *    VBOOT_MODE_RECOVERY  - recovery mode
- */
-int host_get_vboot_mode(void);
 
 /*
  * Sends an emulated sysrq to the host, used by button-based debug mode.

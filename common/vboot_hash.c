@@ -1,10 +1,11 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
 /* Verified boot hash computing module for Chrome EC */
 
+#include "clock.h"
 #include "common.h"
 #include "console.h"
 #include "flash.h"
@@ -12,6 +13,7 @@
 #include "host_command.h"
 #include "sha256.h"
 #include "shared_mem.h"
+#include "stdbool.h"
 #include "system.h"
 #include "task.h"
 #include "timer.h"
@@ -28,9 +30,6 @@ struct vboot_hash_tag {
 	uint32_t size;
 };
 
-#define VBOOT_HASH_SYSJUMP_TAG 0x5648 /* "VH" */
-#define VBOOT_HASH_SYSJUMP_VERSION 1
-
 #define CHUNK_SIZE 1024       /* Bytes to hash per deferred call */
 #define WORK_INTERVAL_US 100  /* Delay between deferred calls */
 
@@ -43,6 +42,8 @@ static uint32_t curr_pos;
 static const uint8_t *hash;   /* Hash, or NULL if not valid */
 static int want_abort;
 static int in_progress;
+#define VBOOT_HASH_DEFERRED	true
+#define VBOOT_HASH_BLOCKING	false
 
 static struct sha256_ctx ctx;
 
@@ -63,6 +64,9 @@ void vboot_hash_abort(void)
 		want_abort = 0;
 		data_size = 0;
 		hash = NULL;
+#ifdef CONFIG_SHA256_HW_ACCELERATE
+		SHA256_abort(&ctx);
+#endif
 	}
 }
 
@@ -108,6 +112,52 @@ static int read_and_hash_chunk(int offset, int size)
 #define SHA256_PRINT_SIZE 4
 #endif
 
+static void hash_next_chunk(size_t size)
+{
+#ifdef CONFIG_MAPPED_STORAGE
+	flash_lock_mapped_storage(1);
+	SHA256_update(&ctx, (const uint8_t *)(CONFIG_MAPPED_STORAGE_BASE +
+					      data_offset + curr_pos), size);
+	flash_lock_mapped_storage(0);
+#else
+	if (read_and_hash_chunk(data_offset + curr_pos, size) != EC_SUCCESS)
+		return;
+#endif
+}
+
+static void vboot_hash_all_chunks(void)
+{
+	uint64_t prev_watchdog;
+
+	if (IS_ENABLED(CONFIG_VBOOT_HASH_RELOAD_WATCHDOG)) {
+		prev_watchdog = get_time().val;
+		watchdog_reload();
+	}
+
+	do {
+		size_t size = MIN(CHUNK_SIZE, data_size - curr_pos);
+		hash_next_chunk(size);
+		curr_pos += size;
+
+		if (IS_ENABLED(CONFIG_VBOOT_HASH_RELOAD_WATCHDOG)) {
+			uint64_t cur_time = get_time().val;
+
+			if ((cur_time - prev_watchdog) >
+			    (CONFIG_WATCHDOG_PERIOD_MS * 1000 / 2)) {
+				watchdog_reload();
+				prev_watchdog = cur_time;
+			}
+		}
+	} while (curr_pos < data_size);
+
+	hash = SHA256_final(&ctx);
+	CPRINTS("hash done %ph", HEX_BUF(hash, SHA256_PRINT_SIZE));
+	in_progress = 0;
+	clock_enable_module(MODULE_FAST_CPU, 0);
+
+	return;
+}
+
 /**
  * Do next chunk of hashing work, if any.
  */
@@ -118,30 +168,24 @@ static void vboot_hash_next_chunk(void)
 	/* Handle abort */
 	if (want_abort) {
 		in_progress = 0;
+		clock_enable_module(MODULE_FAST_CPU, 0);
 		vboot_hash_abort();
 		return;
 	}
 
 	/* Compute the next chunk of hash */
 	size = MIN(CHUNK_SIZE, data_size - curr_pos);
-
-#ifdef CONFIG_MAPPED_STORAGE
-	flash_lock_mapped_storage(1);
-	SHA256_update(&ctx, (const uint8_t *)(CONFIG_MAPPED_STORAGE_BASE +
-					      data_offset + curr_pos), size);
-	flash_lock_mapped_storage(0);
-#else
-	if (read_and_hash_chunk(data_offset + curr_pos, size) != EC_SUCCESS)
-		return;
-#endif
+	hash_next_chunk(size);
 
 	curr_pos += size;
 	if (curr_pos >= data_size) {
 		/* Store the final hash */
 		hash = SHA256_final(&ctx);
-		CPRINTS("hash done %.*h", SHA256_PRINT_SIZE, hash);
+		CPRINTS("hash done %ph", HEX_BUF(hash, SHA256_PRINT_SIZE));
 
 		in_progress = 0;
+
+		clock_enable_module(MODULE_FAST_CPU, 0);
 
 		/* Handle receiving abort during finalize */
 		if (want_abort)
@@ -155,13 +199,23 @@ static void vboot_hash_next_chunk(void)
 }
 
 /**
- * Start computing a hash of <size> bytes of data at flash offset <offset>.
  *
  * If nonce_size is non-zero, prefixes the <nonce> onto the data to be hashed.
  * Returns non-zero if error.
  */
+/**
+ * Start computing a hash of <size> bytes of data at flash offset <offset>.
+ *
+ * @param offset	start address of data on flash to compute hash for.
+ * @param size		size of data to compute hash for.
+ * @param nonce		nonce to differentiate hash.
+ * @param nonce_size	size of nonce.
+ * @param deferred	True to hash progressively through deferred calls.
+ * 			False to hash with a blocking single call.
+ * @return		ec_error_list.
+ */
 static int vboot_hash_start(uint32_t offset, uint32_t size,
-			    const uint8_t *nonce, int nonce_size)
+			    const uint8_t *nonce, int nonce_size, bool deferred)
 {
 	/* Fail if hash computation is already in progress */
 	if (in_progress)
@@ -171,11 +225,13 @@ static int vboot_hash_start(uint32_t offset, uint32_t size,
 	 * Make sure request fits inside flash.  That is, you can't use this
 	 * command to peek at other memory.
 	 */
-	if (offset > CONFIG_FLASH_SIZE || size > CONFIG_FLASH_SIZE ||
-	    offset + size > CONFIG_FLASH_SIZE || nonce_size < 0) {
+	if (offset > CONFIG_FLASH_SIZE_BYTES ||
+	    size > CONFIG_FLASH_SIZE_BYTES ||
+	    offset + size > CONFIG_FLASH_SIZE_BYTES || nonce_size < 0) {
 		return EC_ERROR_INVAL;
 	}
 
+	clock_enable_module(MODULE_FAST_CPU, 1);
 	/* Save new hash request */
 	data_offset = offset;
 	data_size = size;
@@ -190,7 +246,10 @@ static int vboot_hash_start(uint32_t offset, uint32_t size,
 	if (nonce_size)
 		SHA256_update(&ctx, nonce, nonce_size);
 
-	hook_call_deferred(&vboot_hash_next_chunk_data, 0);
+	if (deferred)
+		hook_call_deferred(&vboot_hash_next_chunk_data, 0);
+	else
+		vboot_hash_all_chunks();
 
 	return EC_SUCCESS;
 }
@@ -227,30 +286,17 @@ int vboot_hash_invalidate(int offset, int size)
  */
 static uint32_t get_rw_size(void)
 {
-#ifdef CONFIG_VBOOT_EFS
+#ifdef CONFIG_VBOOT_EFS		/* Only needed for EFS, which signs and verifies
+				 * entire RW, thus not needed for EFS2, which
+				 * verifies only the used image size. */
 	return CONFIG_RW_SIZE;
 #else
-	return system_get_image_used(SYSTEM_IMAGE_RW);
+	return system_get_image_used(EC_IMAGE_RW);
 #endif
 }
 
 static void vboot_hash_init(void)
 {
-#ifdef CONFIG_SAVE_VBOOT_HASH
-	const struct vboot_hash_tag *tag;
-	int version, size;
-
-	tag = (const struct vboot_hash_tag *)system_get_jump_tag(
-		VBOOT_HASH_SYSJUMP_TAG, &version, &size);
-	if (tag && version == VBOOT_HASH_SYSJUMP_VERSION &&
-	    size == sizeof(*tag)) {
-		/* Already computed a hash, so don't recompute */
-		CPRINTS("hash precomputed");
-		hash = tag->hash;
-		data_offset = tag->offset;
-		data_size = tag->size;
-	} else
-#endif
 #ifdef CONFIG_HOSTCMD_EVENTS
 	/*
 	 * Don't auto-start hash computation if we've asked the host to enter
@@ -265,32 +311,18 @@ static void vboot_hash_init(void)
 	{
 		/* Start computing the hash of RW firmware */
 		vboot_hash_start(flash_get_rw_offset(system_get_active_copy()),
-				 get_rw_size(), NULL, 0);
+				 get_rw_size(), NULL, 0, VBOOT_HASH_DEFERRED);
 	}
 }
 DECLARE_HOOK(HOOK_INIT, vboot_hash_init, HOOK_PRIO_INIT_VBOOT_HASH);
 
-#ifdef CONFIG_SAVE_VBOOT_HASH
-
-static int vboot_hash_preserve_state(void)
+int vboot_get_rw_hash(const uint8_t **dst)
 {
-	struct vboot_hash_tag tag;
-
-	/* If we haven't finished our hash, nothing to save */
-	if (!hash)
-		return EC_SUCCESS;
-
-	memcpy(tag.hash, hash, sizeof(tag.hash));
-	tag.offset = data_offset;
-	tag.size = data_size;
-	system_add_jump_tag(VBOOT_HASH_SYSJUMP_TAG,
-			    VBOOT_HASH_SYSJUMP_VERSION,
-			    sizeof(tag), &tag);
-	return EC_SUCCESS;
+	int rv = vboot_hash_start(flash_get_rw_offset(system_get_active_copy()),
+				  get_rw_size(), NULL, 0, VBOOT_HASH_BLOCKING);
+	*dst = hash;
+	return rv;
 }
-DECLARE_HOOK(HOOK_SYSJUMP, vboot_hash_preserve_state, HOOK_PRIO_DEFAULT);
-
-#endif
 
 /**
  * Returns the offset of RO or RW image if the either region is specifically
@@ -326,7 +358,7 @@ static int command_hash(int argc, char **argv)
 		else if (in_progress)
 			ccprintf("(in progress)\n");
 		else if (hash)
-			ccprintf("%.*h\n", SHA256_DIGEST_SIZE, hash);
+			ccprintf("%ph\n", HEX_BUF(hash, SHA256_DIGEST_SIZE));
 		else
 			ccprintf("(invalid)\n");
 
@@ -340,13 +372,14 @@ static int command_hash(int argc, char **argv)
 		} else if (!strcasecmp(argv[1], "rw")) {
 			return vboot_hash_start(
 					get_offset(EC_VBOOT_HASH_OFFSET_ACTIVE),
-					get_rw_size(), NULL, 0);
+					get_rw_size(),
+					NULL, 0, VBOOT_HASH_DEFERRED);
 		} else if (!strcasecmp(argv[1], "ro")) {
 			return vboot_hash_start(
 				CONFIG_EC_PROTECTED_STORAGE_OFF +
 				CONFIG_RO_STORAGE_OFF,
-				system_get_image_used(SYSTEM_IMAGE_RO),
-				NULL, 0);
+				system_get_image_used(EC_IMAGE_RO),
+				NULL, 0, VBOOT_HASH_DEFERRED);
 		}
 		return EC_ERROR_PARAM2;
 	}
@@ -368,9 +401,10 @@ static int command_hash(int argc, char **argv)
 
 		return vboot_hash_start(offset, size,
 					(const uint8_t *)&nonce,
-					sizeof(nonce));
+					sizeof(nonce), VBOOT_HASH_DEFERRED);
 	} else
-		return vboot_hash_start(offset, size, NULL, 0);
+		return vboot_hash_start(offset, size,
+					NULL, 0, VBOOT_HASH_DEFERRED);
 }
 DECLARE_CONSOLE_COMMAND(hash, command_hash,
 			"[abort | ro | rw] | [<offset> <size> [<nonce>]]",
@@ -400,7 +434,7 @@ static void fill_response(struct ec_response_vboot_hash *r,
 }
 
 /**
- * Start computing a hash, with sanity checking on params.
+ * Start computing a hash, with validity checking on params.
  *
  * @return EC_RES_SUCCESS if success, or other result code on error.
  */
@@ -410,7 +444,7 @@ static int host_start_hash(const struct ec_params_vboot_hash *p)
 	int size = p->size;
 	int rv;
 
-	/* Sanity-check input params */
+	/* Validity-check input params */
 	if (p->hash_type != EC_VBOOT_HASH_TYPE_SHA256)
 		return EC_RES_INVALID_PARAM;
 	if (p->nonce_size > sizeof(p->nonce_data))
@@ -418,12 +452,13 @@ static int host_start_hash(const struct ec_params_vboot_hash *p)
 
 	/* Handle special offset values */
 	if (offset == EC_VBOOT_HASH_OFFSET_RO)
-		size = system_get_image_used(SYSTEM_IMAGE_RO);
+		size = system_get_image_used(EC_IMAGE_RO);
 	else if ((offset == EC_VBOOT_HASH_OFFSET_ACTIVE) ||
 			(offset == EC_VBOOT_HASH_OFFSET_UPDATE))
 		size = get_rw_size();
 	offset = get_offset(offset);
-	rv = vboot_hash_start(offset, size, p->nonce_data, p->nonce_size);
+	rv = vboot_hash_start(offset, size, p->nonce_data, p->nonce_size,
+			      VBOOT_HASH_DEFERRED);
 
 	if (rv == EC_SUCCESS)
 		return EC_RES_SUCCESS;
@@ -433,7 +468,8 @@ static int host_start_hash(const struct ec_params_vboot_hash *p)
 		return EC_RES_ERROR;
 }
 
-static int host_command_vboot_hash(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_vboot_hash(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_vboot_hash *p = args->params;
 	struct ec_response_vboot_hash *r = args->response;

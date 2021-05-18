@@ -23,7 +23,7 @@
 #include "driver/als_opt3001.h"
 #include "driver/accel_kionix.h"
 #include "driver/accel_kx022.h"
-#include "driver/accelgyro_bmi160.h"
+#include "driver/accelgyro_bmi_common.h"
 #include "driver/tcpm/tcpci.h"
 #include "extpower.h"
 #include "gpio_chip.h"
@@ -66,14 +66,14 @@
 /* NOTE: MEC17xx EVB + SKL RVP3 does not use BD99992 PMIC.
  * RVP3 PMIC controlled by RVP3 logic.
  */
-#define I2C_ADDR_BD99992	0x60
+#define I2C_ADDR_BD99992_FLAGS	0x30
 
 /*
  * Maxim DS1624 I2C temperature sensor used for testing I2C.
  * DS1624 contains one internal temperature sensor
  * and EEPROM. It has no external temperature inputs.
  */
-#define DS1624_I2C_ADDR		0x90 /* 7-bit address is 0x48 */
+#define DS1624_I2C_ADDR_FLAGS	(0x48 | I2C_FLAG_BIG_ENDIAN)
 #define DS1624_IDX_LOCAL	0
 #define DS1624_READ_TEMP16	0xAA	/* read 16-bit temperature */
 #define DS1624_ACCESS_CFG	0xAC	/* read/write 8-bit config */
@@ -88,10 +88,8 @@ static int smart_batt_temp;
 static int ds1624_temp;
 static int sb_temp(int idx, int *temp_ptr);
 static int ds1624_get_val(int idx, int *temp_ptr);
-#ifdef HAS_TASK_MOTIONSENSE
 static void board_spi_enable(void);
 static void board_spi_disable(void);
-#endif
 
 #ifdef CONFIG_BOARD_PRE_INIT
 /*
@@ -192,12 +190,12 @@ void vbus1_evt(enum gpio_signal signal)
 
 void usb0_evt(enum gpio_signal signal)
 {
-	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
+	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 }
 
 void usb1_evt(enum gpio_signal signal)
 {
-	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
+	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
 }
 #endif
 
@@ -214,17 +212,6 @@ void tablet_mode_interrupt(enum gpio_signal signal)
 }
 
 #include "gpio_list.h"
-
-/* power signal list.  Must match order of enum power_signal. */
-const struct power_signal_info power_signal_list[] = {
-	{GPIO_RSMRST_L_PGOOD, POWER_SIGNAL_ACTIVE_HIGH, "RSMRST_N_PWRGD"},
-	{VW_SLP_S3_L, POWER_SIGNAL_ACTIVE_HIGH,	"SLP_S3_DEASSERTED"},
-	{VW_SLP_S4_L, POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
-	{GPIO_PCH_SLP_SUS_L, POWER_SIGNAL_ACTIVE_HIGH, "SLP_SUS_DEASSERTED"},
-	{GPIO_PMIC_DPWROK, POWER_SIGNAL_ACTIVE_HIGH, "PMIC_DPWROK"},
-	{GPIO_ALL_SYS_PWRGD, POWER_SIGNAL_ACTIVE_HIGH, "ALL_SYS_PWRGD"}
-};
-BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /* ADC channels
  * name, factor multiplier, factor divider, shift, channel
@@ -275,44 +262,20 @@ int board_i2c_p2c(int port)
 
 #ifdef CONFIG_USB_POWER_DELIVERY
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	{I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR, &tcpci_tcpm_drv},
 	{I2C_PORT_TCPC, CONFIG_TCPC_I2C_BASE_ADDR + 2, &tcpci_tcpm_drv},
+=======
+	{I2C_PORT_TCPC,
+	 CONFIG_TCPC_I2C_BASE_ADDR_FLAGS,
+	 &tcpci_tcpm_drv},
+
+	{I2C_PORT_TCPC,
+	 CONFIG_TCPC_I2C_BASE_ADDR_FLAGS + 1,
+	 &tcpci_tcpm_drv},
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 };
 #endif
-
-const uint32_t i2c_ctrl_slave_addrs[I2C_CONTROLLER_COUNT] = {
-#ifdef CONFIG_BOARD_MCHP_I2C0_SLAVE_ADDRS
-	(MCHP_I2C_CTRL0 + (CONFIG_BOARD_MCHP_I2C0_SLAVE_ADDRS << 16)),
-#else
-	(MCHP_I2C_CTRL0 + (CONFIG_MCHP_I2C0_SLAVE_ADDRS << 16)),
-#endif
-#ifdef CONFIG_BOARD_MCHP_I2C1_SLAVE_ADDRS
-	(MCHP_I2C_CTRL1 + (CONFIG_BOARD_MCHP_I2C1_SLAVE_ADDRS << 16)),
-#else
-	(MCHP_I2C_CTRL1 + (CONFIG_MCHP_I2C1_SLAVE_ADDRS << 16)),
-#endif
-};
-
-/* Return the two slave addresses the specified
- * controller will respond to when controller
- * is acting as a slave.
- * b[6:0]  = b[7:1] of I2C address 1
- * b[14:8] = b[7:1] of I2C address 2
- * When not using I2C controllers as slaves we can use
- * the same value for all controllers. The address should
- * not be 0x00 as this is the general call address.
- */
-uint16_t board_i2c_slave_addrs(int controller)
-{
-	int i;
-
-	for (i = 0; i < I2C_CONTROLLER_COUNT; i++)
-		if ((i2c_ctrl_slave_addrs[i] & 0xffff) == controller)
-			return (i2c_ctrl_slave_addrs[i] >> 16);
-
-	return CONFIG_MCHP_I2C0_SLAVE_ADDRS;
-}
-
 
 /* SPI devices */
 const struct spi_device_t spi_devices[] = {
@@ -395,12 +358,16 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		.port_addr = 0xa8,
-		.driver = &pi3usb30532_usb_mux_driver,
+		.usb_port = 0,
+		.i2c_port = I2C_PORT_USB_MUX,
+		.i2c_addr_flags = PI3USB3X532_I2C_ADDR0,
+		.driver = &pi3usb3x532_usb_mux_driver,
 	},
 	{
-		.port_addr = 0x20,
-		.driver = &ps874x_usb_mux_driver,
+		.usb_port = 1,
+		.i2c_port = I2C_PORT_USB_MUX,
+		.i2c_addr_flags = 0x10,
+		.driver = &ps8740_usb_mux_driver,
 	}
 };
 #endif
@@ -446,8 +413,7 @@ const struct temp_sensor_t temp_sensors[] = {
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 #else /* mec1701_evb test I2C and EC ADC */
 /*
- * battery charge_get_battery_temp requires CONFIG_CHARGER_V2 and
- * charger task running.
+ * battery charge_get_battery_temp requires charger task running.
  * OR can we call into driver/battery/smart.c
  * int sb_read(int cmd, int *param)
  * sb_read(SB_TEMPERATURE, &batt_new.temperature)
@@ -457,9 +423,9 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  * a static global in this module.
  */
 const struct temp_sensor_t temp_sensors[] = {
-	{"Battery", TEMP_SENSOR_TYPE_BATTERY, sb_temp, 0, 4},
-	{"Ambient", TEMP_SENSOR_TYPE_BOARD, ds1624_get_val, 0, 4},
-	{"Case", TEMP_SENSOR_TYPE_CASE, therm_get_val, (int)ADC_CASE, 4},
+	{"Battery", TEMP_SENSOR_TYPE_BATTERY, sb_temp, 0},
+	{"Ambient", TEMP_SENSOR_TYPE_BOARD, ds1624_get_val, 0},
+	{"Case", TEMP_SENSOR_TYPE_CASE, therm_get_val, (int)ADC_CASE},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 #endif
@@ -488,7 +454,7 @@ static void board_pmic_init(void)
 	int rv, cfg;
 
 	/* No need to re-init PMIC since settings are sticky across sysjump */
-	if (system_jumped_to_this_image())
+	if (system_jumped_late())
 		return;
 
 #if 0 /* BD99992GW PMIC on a real Chromebook */
@@ -516,14 +482,14 @@ static void board_pmic_init(void)
 
 	/* Config DS1624 temperature sensor for continuous conversion */
 	cfg = 0x66;
-	rv = i2c_read8(I2C_PORT_THERMAL, DS1624_I2C_ADDR,
-			DS1624_ACCESS_CFG, &cfg);
+	rv = i2c_read8(I2C_PORT_THERMAL, DS1624_I2C_ADDR_FLAGS,
+		       DS1624_ACCESS_CFG, &cfg);
 	trace2(0, BRD, 0, "Read DS1624 Config rv = %d  cfg = 0x%02X",
 	       rv, cfg);
 
 	if ((rv == EC_SUCCESS) && (cfg & (1u << 0))) {
 		/* one-shot mode switch to continuous */
-		rv = i2c_write8(I2C_PORT_THERMAL, DS1624_I2C_ADDR,
+		rv = i2c_write8(I2C_PORT_THERMAL, DS1624_I2C_ADDR_FLAGS,
 				DS1624_ACCESS_CFG, 0);
 		trace1(0, BRD, 0, "Write DS1624 Config to 0, rv = %d", rv);
 		/* writes to config require 10ms until next I2C command */
@@ -532,7 +498,7 @@ static void board_pmic_init(void)
 	}
 
 	/* Send start command */
-	rv = i2c_write8(I2C_PORT_THERMAL, DS1624_I2C_ADDR,
+	rv = i2c_write8(I2C_PORT_THERMAL, DS1624_I2C_ADDR_FLAGS,
 			DS1624_CMD_START, 1);
 	trace1(0, BRD, 0, "Send Start command to DS1624 rv = %d", rv);
 
@@ -564,13 +530,11 @@ static void board_init(void)
 	/* Provide AC status to the PCH */
 	gpio_set_level(GPIO_PCH_ACOK, extpower_is_present());
 
-#ifdef HAS_TASK_MOTIONSENSE
-	if (system_jumped_to_this_image() &&
+	if (system_jumped_late() &&
 	    chipset_in_state(CHIPSET_STATE_ON)) {
 		trace0(0, BRD, 0, "board_init: S0 call board_spi_enable");
 		board_spi_enable();
 	}
-#endif
 
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
@@ -650,11 +614,6 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
  * TODO HACK providing functions from common/charge_state_v2.c
  * which is not compiled in when no charger
  */
-int charge_want_shutdown(void)
-{
-	return 0;
-}
-
 int charge_prevent_power_on(int power_button_pressed)
 {
 	return 0;
@@ -775,7 +734,7 @@ void board_hibernate_late(void)
 #define BOARD_MIN_ID_LOD_EN 2
 /* Make the pmic re-sequence the power rails under these conditions. */
 #define PMIC_RESET_FLAGS \
-	(RESET_FLAG_WATCHDOG | RESET_FLAG_SOFT | RESET_FLAG_HARD)
+	(EC_RESET_FLAG_WATCHDOG | EC_RESET_FLAG_SOFT | EC_RESET_FLAG_HARD)
 static void board_handle_reboot(void)
 {
 #if 0 /* MEC17xx EVB + SKL-RVP3 does not use chromebook PMIC design */
@@ -784,7 +743,7 @@ static void board_handle_reboot(void)
 	CPRINTS("MEC HOOK_INIT - called board_handle_reboot");
 	trace0(0, HOOK, 0, "HOOK_INIT - board_handle_reboot");
 
-	if (system_jumped_to_this_image())
+	if (system_jumped_late())
 		return;
 
 	if (system_get_board_version() < BOARD_MIN_ID_LOD_EN)
@@ -798,8 +757,8 @@ static void board_handle_reboot(void)
 		return;
 
 	/* Preserve AP off request. */
-	if (flags & RESET_FLAG_AP_OFF)
-		chip_save_reset_flags(RESET_FLAG_AP_OFF);
+	if (flags & EC_RESET_FLAG_AP_OFF)
+		chip_save_reset_flags(EC_RESET_FLAG_AP_OFF);
 
 	ccprintf("Restarting system with PMIC.\n");
 	/* Flush console */
@@ -875,15 +834,14 @@ static void ds1624_update(void)
 	int temp;
 	int rv __attribute__((unused));
 
-	rv = i2c_read16(I2C_PORT_THERMAL,
-			(DS1624_I2C_ADDR | I2C_FLAG_BIG_ENDIAN),
+	rv = i2c_read16(I2C_PORT_THERMAL, DS1624_I2C_ADDR_FLAGS,
 			DS1624_READ_TEMP16, &temp);
 
 	d = (temp & 0x7FFF) >> 8;
-	if ((uint32_t)temp & (1 << 7))
+	if ((uint32_t)temp & BIT(7))
 		d++;
 
-	if ((uint32_t)temp & (1 << 15))
+	if ((uint32_t)temp & BIT(15))
 		d |= (1u << 31);
 
 	ds1624_temp = (int32_t)d;
@@ -910,12 +868,11 @@ static void board_one_sec(void)
 }
 DECLARE_HOOK(HOOK_SECOND, board_one_sec, HOOK_PRIO_DEFAULT);
 
-#ifdef HAS_TASK_MOTIONSENSE
 /* Motion sensors */
 
 static struct mutex g_base_mutex;
 /* BMI160 private data */
-static struct bmi160_drv_data_t g_bmi160_data;
+static struct bmi_drv_data_t g_bmi160_data;
 
 #ifdef CONFIG_ACCEL_KX022
 static struct mutex g_lid_mutex;
@@ -929,64 +886,70 @@ struct motion_sensor_t motion_sensors[] = {
 	 * Requirement: accelerometer sensor must init before gyro sensor
 	 * DO NOT change the order of the following table.
 	 */
-	{.name = "Base Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .port = CONFIG_SPI_ACCEL_PORT,
-	 .addr = BMI160_SET_SPI_ADDRESS(CONFIG_SPI_ACCEL_PORT),
-	 .rot_standard_ref = NULL, /* Identity matrix. */
-	 .default_range = 2,  /* g, enough for laptop. */
-	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
-	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
-	 .config = {
-		 /* EC use accel for angle detection */
-		 [SENSOR_CONFIG_EC_S0] = {
-			 .odr = 10000 | ROUND_UP_FLAG,
-			 .ec_rate = 100 * MSEC,
-		 },
-	 },
+	[BASE_ACCEL] = {
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = CONFIG_SPI_ACCEL_PORT,
+		.i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(
+			CONFIG_SPI_ACCEL_PORT),
+		.rot_standard_ref = NULL, /* Identity matrix. */
+		.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+		.min_frequency = BMI_ACCEL_MIN_FREQ,
+		.max_frequency = BMI_ACCEL_MAX_FREQ,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+		},
 	},
 
-	{.name = "Base Gyro",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
-	 .type = MOTIONSENSE_TYPE_GYRO,
-	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &bmi160_drv,
-	 .mutex = &g_base_mutex,
-	 .drv_data = &g_bmi160_data,
-	 .port = CONFIG_SPI_ACCEL_PORT,
-	 .addr = BMI160_SET_SPI_ADDRESS(CONFIG_SPI_ACCEL_PORT),
-	 .default_range = 1000, /* dps */
-	 .rot_standard_ref = NULL, /* Identity Matrix. */
-	 .min_frequency = BMI160_GYRO_MIN_FREQ,
-	 .max_frequency = BMI160_GYRO_MAX_FREQ,
+	[BASE_GYRO] = {
+		.name = "Base Gyro",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_BMI160,
+		.type = MOTIONSENSE_TYPE_GYRO,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &bmi160_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi160_data,
+		.port = CONFIG_SPI_ACCEL_PORT,
+		.i2c_spi_addr_flags = SLAVE_MK_SPI_ADDR_FLAGS(
+			CONFIG_SPI_ACCEL_PORT),
+		.default_range = 1000, /* dps */
+		.rot_standard_ref = NULL, /* Identity Matrix. */
+		.min_frequency = BMI_GYRO_MIN_FREQ,
+		.max_frequency = BMI_GYRO_MAX_FREQ,
 	},
 #ifdef CONFIG_ACCEL_KX022
-	{.name = "Lid Accel",
-	 .active_mask = SENSOR_ACTIVE_S0,
-	 .chip = MOTIONSENSE_CHIP_KX022,
-	 .type = MOTIONSENSE_TYPE_ACCEL,
-	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &kionix_accel_drv,
-	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_kx022_data,
-	 .port = I2C_PORT_ACCEL,
-	 .addr = KX022_ADDR1,
-	 .rot_standard_ref = NULL, /* Identity matrix. */
-	 .default_range = 2, /* g, enough for laptop. */
-	 .min_frequency = KX022_ACCEL_MIN_FREQ,
-	 .max_frequency = KX022_ACCEL_MAX_FREQ,
-	 .config = {
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
+	[LID_ACCEL] = {
+		.name = "Lid Accel",
+		.active_mask = SENSOR_ACTIVE_S0,
+		.chip = MOTIONSENSE_CHIP_KX022,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &kionix_accel_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = &g_kx022_data,
+		.port = I2C_PORT_ACCEL,
+		.i2c_spi_addr_flags = KX022_ADDR1_FLAGS,
+		.rot_standard_ref = NULL, /* Identity matrix. */
+		.default_range = 2, /* g, enough for laptop. */
+		.min_frequency = KX022_ACCEL_MIN_FREQ,
+		.max_frequency = KX022_ACCEL_MAX_FREQ,
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
 		},
 	},
 #endif /* #ifdef CONFIG_ACCEL_KX022 */
@@ -997,7 +960,7 @@ static void board_spi_enable(void)
 {
 	trace0(0, BRD, 0, "HOOK_CHIPSET_STARTUP - board_spi_enable");
 
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 1);
+	spi_enable(&spi_devices[1], 1);
 
 	/* Toggle SPI chip select to switch BMI160 from I2C mode
 	 * to SPI mode
@@ -1012,11 +975,10 @@ DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_spi_enable,
 static void board_spi_disable(void)
 {
 	trace0(0, BRD, 0, "HOOK_CHIPSET_SHUTDOWN - board_spi_disable");
-	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
+	spi_enable(&spi_devices[1], 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_spi_disable,
 	     MOTION_SENSE_HOOK_PRIO + 1);
-#endif /* defined(HAS_TASK_MOTIONSENSE) */
 
 #ifdef MEC1701_EVB_TACH_TEST /* PWM/TACH test */
 void tach0_isr(void)

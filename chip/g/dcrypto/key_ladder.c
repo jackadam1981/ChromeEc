@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /* Copyright 2017 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -316,3 +317,5 @@ int DCRYPTO_ladder_is_enabled(void)
 	return  ctrl0 == KEYMGR_CERT_REVOKE_CTRL0_DEFAULT_VAL &&
 		ctrl1 == KEYMGR_CERT_REVOKE_CTRL1_DEFAULT_VAL;
 }
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

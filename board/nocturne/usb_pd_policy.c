@@ -4,6 +4,7 @@
  */
 
 #include "charge_manager.h"
+#include "chipset.h"
 #include "common.h"
 #include "console.h"
 #include "compile_time_macros.h"
@@ -18,86 +19,14 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
-#define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_COMM_CAP|\
-			 PDO_FIXED_DATA_SWAP)
-
-const uint32_t pd_src_pdo[] = {
-		PDO_FIXED(5000, 1500, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_cnt = ARRAY_SIZE(pd_src_pdo);
-
-const uint32_t pd_src_pdo_max[] = {
-	PDO_FIXED(5000, 3000, PDO_FIXED_FLAGS),
-};
-const int pd_src_pdo_max_cnt = ARRAY_SIZE(pd_src_pdo_max);
-
-/* TODO(aaboagye): Determine correct values. */
-const uint32_t pd_snk_pdo[] = {
-		PDO_FIXED(5000, 500, PDO_FIXED_FLAGS),
-		PDO_BATT(4750, 21000, 15000),
-		PDO_VAR(4750, 21000, 3000),
-};
-const int pd_snk_pdo_cnt = ARRAY_SIZE(pd_snk_pdo);
-
-int pd_board_checks(void)
-{
-	return EC_SUCCESS;
-}
-
-int pd_check_data_swap(int port, int data_role)
-{
-	/* Allow data swap if we are a UFP, otherwise don't allow. */
-	return (data_role == PD_ROLE_UFP) ? 1 : 0;
-}
-
-void pd_check_dr_role(int port, int dr_role, int flags)
-{
-	/* If UFP, try to switch to DFP */
-	if ((flags & PD_FLAGS_PARTNER_DR_DATA) &&
-			dr_role == PD_ROLE_UFP &&
-			system_get_image_copy() != SYSTEM_IMAGE_RO)
-		pd_request_data_swap(port);
-}
-
-/* TODO(aaboagye): re-eval for 3.0 & FRS. */
-int pd_check_power_swap(int port)
-{
-	/*
-	 * Allow power swap as long as we are acting as a dual role device,
-	 * otherwise assume our role is fixed (not in S0 or console command
-	 * to fix our role).
-	 */
-	return pd_get_dual_role(port) == PD_DRP_TOGGLE_ON ? 1 : 0;
-}
-
-void pd_check_pr_role(int port, int pr_role, int flags)
-{
-	/*
-	 * If partner is dual-role power and dualrole toggling is on, consider
-	 * if a power swap is necessary.
-	 */
-	if ((flags & PD_FLAGS_PARTNER_DR_POWER) &&
-	    pd_get_dual_role(port) == PD_DRP_TOGGLE_ON) {
-		/*
-		 * If we are a sink and partner is not externally powered, then
-		 * swap to become a source. If we are source and partner is
-		 * externally powered, swap to become a sink.
-		 */
-		int partner_extpower = flags & PD_FLAGS_PARTNER_EXTPOWER;
-
-		if ((!partner_extpower && pr_role == PD_ROLE_SINK) ||
-		     (partner_extpower && pr_role == PD_ROLE_SOURCE))
-			pd_request_power_swap(port);
-	}
-}
-
 int pd_check_vconn_swap(int port)
 {
 	/* Do not allow VCONN swap is 5V is off. */
 	return gpio_get_level(GPIO_EN_5V);
 }
 
-void pd_execute_data_swap(int port, int data_role)
+__override void pd_execute_data_swap(int port,
+				     enum pd_data_role data_role)
 {
 	int level;
 
@@ -111,15 +40,16 @@ void pd_execute_data_swap(int port, int data_role)
 	gpio_set_level(GPIO_USB2_VBUSSENSE, level);
 }
 
-int pd_is_valid_input_voltage(int mv)
-{
-	return 1;
-}
-
 void pd_power_supply_reset(int port)
 {
-	/* Disable VBUS. */
+	/*
+	 * Disable VBUS and discharge to vSafe0V.
+	 *
+	 * The PPC will automatically disable the discharge circuitry once it
+	 * reaches vSafe0V.
+	 */
 	ppc_vbus_source_enable(port, 0);
+	ppc_discharge_vbus(port, 1);
 
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 	/* Give back the current quota we are no longer using */
@@ -142,6 +72,10 @@ int pd_set_power_supply_ready(int port)
 	if (rv)
 		return rv;
 
+	/* The 5V rail used for sourcing is not powered when the AP is off. */
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return EC_ERROR_NOT_POWERED;
+
 	/* Provide Vbus. */
 	rv = ppc_vbus_source_enable(port, 1);
 	if (rv)
@@ -158,17 +92,8 @@ int pd_set_power_supply_ready(int port)
 	return EC_SUCCESS;
 }
 
-void pd_transition_voltage(int idx)
-{
-	/* No-operation: we are always 5V */
-}
-
-void typec_set_source_current_limit(int p, int rp)
-{
-	ppc_set_vbus_source_current_limit(p, rp);
-}
-
 /* ----------------- Vendor Defined Messages ------------------ */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 const struct svdm_response svdm_rsp = {
 	.identity = NULL,
 	.svids = NULL,
@@ -245,14 +170,16 @@ static int dp_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 static uint32_t dp_status[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 static void svdm_safe_dp_mode(int port)
+=======
+__override void svdm_safe_dp_mode(int port)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	/* make DP interface safe until configure */
-	dp_flags[port] = 0;
-	dp_status[port] = 0;
-	usb_mux_set(port, TYPEC_MUX_NONE,
-		USB_SWITCH_CONNECT, pd_get_polarity(port));
-}
+	usb_mux_set(port, USB_PD_MUX_NONE,
+		USB_SWITCH_CONNECT,
+		polarity_rm_dts(pd_get_polarity(port)));
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 {
 	/* Only enter mode if device is DFP_D capable */
@@ -390,42 +317,16 @@ static void svdm_exit_gfu_mode(int port)
 
 static int svdm_gfu_status(int port, uint32_t *payload)
 {
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	/*
-	 * This is called after enter mode is successful, send unstructured
-	 * VDM to read info.
+	 * Isolate the SBU lines.
+	 *
+	 * Older boards don't have the SBU line bypass needed for CCD, so never
+	 * disable the SBU lines for port 0.
 	 */
-	pd_send_vdm(port, USB_VID_GOOGLE, VDO_CMD_READ_INFO, NULL, 0);
-	return 0;
+	if ((board_get_version() < 2) && (port == 0))
+		CPRINTS("Skip disable SBU lines for C0.");
+	else
+		ppc_set_sbu(port, 0);
 }
-
-static int svdm_gfu_config(int port, uint32_t *payload)
-{
-	return 0;
-}
-
-static int svdm_gfu_attention(int port, uint32_t *payload)
-{
-	return 0;
-}
-
-const struct svdm_amode_fx supported_modes[] = {
-	{
-		.svid = USB_SID_DISPLAYPORT,
-		.enter = &svdm_enter_dp_mode,
-		.status = &svdm_dp_status,
-		.config = &svdm_dp_config,
-		.post_config = &svdm_dp_post_config,
-		.attention = &svdm_dp_attention,
-		.exit = &svdm_exit_dp_mode,
-	},
-	{
-		.svid = USB_VID_GOOGLE,
-		.enter = &svdm_enter_gfu_mode,
-		.status = &svdm_gfu_status,
-		.config = &svdm_gfu_config,
-		.attention = &svdm_gfu_attention,
-		.exit = &svdm_exit_gfu_mode,
-	}
-};
-const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
-#endif /* CONFIG_USB_PD_ALT_MODE_DFP */

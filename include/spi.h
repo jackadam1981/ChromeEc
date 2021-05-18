@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -7,6 +7,8 @@
 
 #ifndef __CROS_EC_SPI_H
 #define __CROS_EC_SPI_H
+
+#include "host_command.h"
 
 /*
  * SPI Clock polarity and phase mode (0 - 3)
@@ -45,7 +47,11 @@ struct spi_device_t {
 	enum gpio_signal gpio_cs;
 };
 
-extern const struct spi_device_t spi_devices[];
+extern
+#ifndef CONFIG_FINGERPRINT_MCU
+	const
+#endif
+	struct spi_device_t spi_devices[];
 extern const unsigned int spi_devices_used;
 
 /*
@@ -59,17 +65,18 @@ extern const unsigned int spi_devices_used;
  * Enable / disable the SPI port.  When the port is disabled, all its I/O lines
  * are high-Z so the EC won't interfere with other devices on the SPI bus.
  *
- * @param port  port id to work on.
- * @param enable  1 to enable the port, 0 to disable it.
+ * @param spi_device device
+ * @param enable  1 to enable the SPI device's port, 0 to disable it.
  */
-int spi_enable(int port, int enable);
+int spi_enable(const struct spi_device_t *spi_device, int enable);
 
 #define SPI_READBACK_ALL (-1)
 
-/* Issue a SPI transaction.  Assumes SPI port has already been enabled.
+/*
+ * Issue a SPI transaction.  Assumes SPI port has already been enabled.
  *
  * Transmits <txlen> bytes from <txdata>, throwing away the corresponding
- * received data, then transmits <rxlen> dummy bytes, saving the received data
+ * received data, then transmits <rxlen> bytes, saving the received data
  * in <rxdata>.
  * If SPI_READBACK_ALL is set in <rxlen>, the received data during transmission
  * is recorded in rxdata buffer and it assumes that the real <rxlen> is equal
@@ -85,7 +92,8 @@ int spi_transaction(const struct spi_device_t *spi_device,
 		    const uint8_t *txdata, int txlen,
 		    uint8_t *rxdata, int rxlen);
 
-/* Similar to spi_transaction(), but hands over to DMA for reading response.
+/*
+ * Similar to spi_transaction(), but hands over to DMA for reading response.
  * Must call spi_transaction_flush() after this to make sure the response is
  * received.
  * Contrary the regular spi_transaction(), this function does NOT lock the
@@ -100,6 +108,12 @@ int spi_transaction_flush(const struct spi_device_t *spi_device);
 
 /* Wait for async response received but do not de-assert chip select */
 int spi_transaction_wait(const struct spi_device_t *spi_device);
+
+/*
+ * Get SPI protocol information. This function is called in runtime if board's
+ * host command transport is SPI.
+ */
+enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args);
 
 #ifdef CONFIG_SPI
 /**

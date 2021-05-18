@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -255,7 +255,7 @@ static void peci_init(void)
 	CLEAR_BIT(NPCX_DEVALT(0x0A), 6);
 	/* Set initial clock frequency */
 	peci_freq_changed();
-	/* Initialize temperature reading buffer to a sane value. */
+	/* Initialize temperature reading buffer to a valid value. */
 	for (i = 0; i < TEMP_AVG_LENGTH; ++i)
 		temp_vals[i] = 300; /* 27 C */
 
@@ -271,7 +271,7 @@ DECLARE_HOOK(HOOK_INIT, peci_init, HOOK_PRIO_DEFAULT);
 /* If received a PECI DONE interrupt, post the event to PECI task */
 void peci_done_interrupt(void){
 	if (peci_pending_task_id != NULL_PENDING_TASK_ID)
-		task_set_event(peci_pending_task_id, TASK_EVENT_PECI_DONE, 0);
+		task_set_event(peci_pending_task_id, TASK_EVENT_PECI_DONE);
 	peci_sts = NPCX_PECI_CTL_STS & 0x18;
 	/* no matter what, clear status bit again */
 	SET_BIT(NPCX_PECI_CTL_STS, NPCX_PECI_CTL_STS_DONE);

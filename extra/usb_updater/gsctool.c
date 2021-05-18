@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /*
  * Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
@@ -2379,3 +2380,5 @@ int main(int argc, char *argv[])
 	printf("image updated\n");
 	return all_updated;
 }
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

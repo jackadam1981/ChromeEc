@@ -28,14 +28,14 @@
 #define NPCX7_PWM1_SEL    0  /* GPIO C2 is not used as PWM1. */
 
 /* Internal SPI flash on NPCX7 */
-#define CONFIG_FLASH_SIZE (1024 * 1024)  /* 1MB internal spi flash */
+#define CONFIG_FLASH_SIZE_BYTES (1024 * 1024)  /* 1MB internal spi flash */
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
 #define CONFIG_HOSTCMD_FLASH_SPI_INFO
 
 /* EC Modules */
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_LED_COMMON
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_ADC
@@ -55,6 +55,7 @@
 #define CONFIG_HOSTCMD_SECTION_SORTED /* Host commands are sorted. */
 #define CONFIG_MKBP_EVENT
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
+#define CONFIG_MKBP_USE_GPIO
 
 #define CONFIG_BOARD_VERSION_GPIO
 #define CONFIG_POWER_BUTTON
@@ -76,7 +77,6 @@
 
 /* Charger */
 #define CONFIG_CHARGER
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGER_ISL9238
 #define CONFIG_CHARGE_RAMP_HW
@@ -98,7 +98,8 @@
 
 /* USB */
 #define CONFIG_USB_POWER_DELIVERY
-#define CONFIG_CMD_PD_CONTROL
+#define CONFIG_USB_PD_TCPMV1
+#define CONFIG_HOSTCMD_PD_CONTROL
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_DISCHARGE_PPC
@@ -130,15 +131,27 @@
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #define CONFIG_ACCEL_FIFO 512
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+=======
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
+/* FIFO size is a power of 2. */
+#define CONFIG_ACCEL_FIFO_SIZE 256
+/* Depends on how fast the AP boots and typical ODRs. */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
+#define CONFIG_ALS
+#define CONFIG_ALS_OPT3001
+#define ALS_COUNT 1
+#define OPT3001_I2C_ADDR_FLAGS OPT3001_I2C_ADDR1_FLAGS
 
 /* PD */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY   30000  /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY  250000 /* us */
-#define PD_VCONN_SWAP_DELAY             5000 /* us */
 
 #define PD_OPERATING_POWER_MW   15000
 #define PD_MAX_POWER_MW         ((PD_MAX_VOLTAGE_MV * PD_MAX_CURRENT_MA) / 1000)
@@ -164,13 +177,16 @@
 #define I2C_PORT_EEPROM  NPCX_I2C_PORT5_0
 #define I2C_PORT_SENSOR  NPCX_I2C_PORT7_0
 
+/* GPIO alias */
+#define GPIO_PMIC_RESIN_L GPIO_PM845_RESIN_L
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
 #include "registers.h"
 
 enum power_signal {
-	SDM845_AP_RST_L = 0,
+	SDM845_AP_RST_ASSERTED = 0,
 	SDM845_PS_HOLD,
 	SDM845_PMIC_FAULT_L,
 	SDM845_POWER_GOOD,
@@ -191,6 +207,8 @@ enum adc_channel {
 enum sensor_id {
 	LID_ACCEL = 0,
 	LID_GYRO,
+	LID_ALS,
+	SENSOR_COUNT,
 };
 
 enum pwm_channel {
@@ -206,6 +224,9 @@ int board_vbus_sink_enable(int port, int enable);
 void board_reset_pd_mcu(void);
 /* Base detection interrupt handler */
 void base_detect_interrupt(enum gpio_signal signal);
+
+/* Sensors without hardware FIFO are in forced mode */
+#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ALS)
 
 #endif /* !defined(__ASSEMBLER__) */
 

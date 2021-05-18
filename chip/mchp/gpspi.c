@@ -56,14 +56,14 @@ static int gpspi_wait_byte(const int ctrl)
 /* NOTE: auto-read must be disabled before calling this routine! */
 static void gpspi_rx_fifo_clean(const int ctrl)
 {
-	uint8_t dummy = 0;
+	uint8_t unused = 0;
 
 	/* If ACTIVE and/or RXFF then clean it */
 	if ((MCHP_SPI_SR(ctrl) & 0x4) == 0x4)
-		dummy += MCHP_SPI_RD(ctrl);
+		unused += MCHP_SPI_RD(ctrl);
 
 	if ((MCHP_SPI_SR(ctrl) & 0x2) == 0x2)
-		dummy += MCHP_SPI_RD(ctrl);
+		unused += MCHP_SPI_RD(ctrl);
 }
 /*
  * NOTE: auto-read must be disabled before calling this routine!
@@ -73,7 +73,7 @@ static int gpspi_tx(const int ctrl, const uint8_t *txdata, int txlen)
 {
 	int i;
 	int ret;
-	uint8_t dummy = 0;
+	uint8_t unused = 0;
 
 	gpspi_rx_fifo_clean(ctrl);
 
@@ -83,7 +83,7 @@ static int gpspi_tx(const int ctrl, const uint8_t *txdata, int txlen)
 		ret = gpspi_wait_byte(ctrl);
 		if (ret != EC_SUCCESS)
 			break;
-		dummy += MCHP_SPI_RD(ctrl);
+		unused += MCHP_SPI_RD(ctrl);
 	}
 
 	return ret;
@@ -109,7 +109,7 @@ int gpspi_transaction_async(const struct spi_device_t *spi_device,
 	ctrl = gpspi_port_to_ctrl_id(hw_port);
 
 	/* Disable auto read */
-	MCHP_SPI_CR(ctrl) &= ~(1 << 5);
+	MCHP_SPI_CR(ctrl) &= ~BIT(5);
 
 	if ((txdata != NULL) && (txdata != 0)) {
 #ifdef CONFIG_MCHP_GPSPI_TX_DMA
@@ -151,7 +151,7 @@ int gpspi_transaction_async(const struct spi_device_t *spi_device,
 				if (!cs_asserted)
 					gpio_set_level(spi_device->gpio_cs, 0);
 				/* Enable auto read */
-				MCHP_SPI_CR(ctrl) |= 1 << 5;
+				MCHP_SPI_CR(ctrl) |= BIT(5);
 				dma_start_rx(opdma, rxlen, rxdata);
 				MCHP_SPI_TD(ctrl) = 0;
 				ret = EC_SUCCESS;
@@ -180,7 +180,7 @@ int gpspi_transaction_flush(const struct spi_device_t *spi_device)
 	ret = dma_wait(chan);
 
 	/* Disable auto read */
-	MCHP_SPI_CR(ctrl) &= ~(1 << 5);
+	MCHP_SPI_CR(ctrl) &= ~BIT(5);
 
 	deadline.val = get_time().val + SPI_BYTE_TRANSFER_TIMEOUT_US;
 	/* Wait for FIFO empty SPISR_TXBE */

@@ -13,12 +13,12 @@
 #include "cros_board_info.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accel_kionix.h"
-#include "driver/accelgyro_bmi160.h"
+#include "driver/accelgyro_bmi_common.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/sync.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/tcpm/ps8xxx.h"
-#include "driver/usb_mux_it5205.h"
+#include "driver/usb_mux/it5205.h"
 #include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -33,7 +33,7 @@
 #include "switch.h"
 #include "system.h"
 #include "tablet_mode.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "temp_sensor.h"
 #include "thermistor.h"
 #include "uart.h"
@@ -67,6 +67,7 @@ int ppc_get_alert_status(int port)
 #define USB_PD_PORT_ITE_0      0
 #define USB_PD_PORT_ITE_1      1
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static int tune_mux(int port);
 
 struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
@@ -99,6 +100,43 @@ static int tune_mux(int port)
 	mux_write(port, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
 	/* DP output swing adjustment +15% */
 	mux_write(port, PS8XXX_REG_MUX_DP_OUTPUT_CONFIGURATION, 0xc0);
+=======
+static int tune_mux(const struct usb_mux *me);
+
+const struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[USB_PD_PORT_ITE_0] = {
+		/* Use PS8751 as mux only */
+		.usb_port = USB_PD_PORT_ITE_0,
+		.i2c_port = I2C_PORT_USBC0,
+		.i2c_addr_flags = PS8751_I2C_ADDR1_FLAGS,
+		.flags = USB_MUX_FLAG_NOT_TCPC,
+		.driver = &ps8xxx_usb_mux_driver,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		.board_init = &tune_mux,
+	},
+	[USB_PD_PORT_ITE_1] = {
+		/* Use PS8751 as mux only */
+		.usb_port = USB_PD_PORT_ITE_1,
+		.i2c_port = I2C_PORT_USBC1,
+		.i2c_addr_flags = PS8751_I2C_ADDR1_FLAGS,
+		.flags = USB_MUX_FLAG_NOT_TCPC,
+		.driver = &ps8xxx_usb_mux_driver,
+		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		.board_init = &tune_mux,
+	}
+};
+
+/* Some external monitors can't display content normally (eg. ViewSonic VX2880).
+ * We need to turn the mux for monitors to function normally.
+ */
+static int tune_mux(const struct usb_mux *me)
+{
+	/* Auto EQ disabled, compensate for channel lost up to 3.6dB */
+	RETURN_ERROR(mux_write(me, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98));
+	/* DP output swing adjustment +15% */
+	RETURN_ERROR(mux_write(me, PS8XXX_REG_MUX_DP_OUTPUT_CONFIGURATION,
+			       0xc0));
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 	return EC_SUCCESS;
 }
@@ -135,18 +173,20 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_BATTERY] = {.name = "Battery",
 				 .type = TEMP_SENSOR_TYPE_BATTERY,
-				 .read = charge_get_battery_temp,
-				 .action_delay_sec = 1},
+				 .read = charge_get_battery_temp},
 	[TEMP_SENSOR_AMBIENT] = {.name = "Ambient",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_51k1_47k_4050b,
-				 .idx = ADC_TEMP_SENSOR_AMB,
-				 .action_delay_sec = 5},
+				 .idx = ADC_TEMP_SENSOR_AMB},
 	[TEMP_SENSOR_CHARGER] = {.name = "Charger",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_13k7_47k_4050b,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 				 .idx = ADC_TEMP_SENSOR_CHARGER,
 				 .action_delay_sec = 1},
+=======
+				 .idx = ADC_TEMP_SENSOR_CHARGER},
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -175,7 +215,39 @@ const mat33_fp_t gyro_standard_ref = {
 
 /* sensor private data */
 static struct kionix_accel_data g_kx022_data;
-static struct bmi160_drv_data_t g_bmi160_data;
+static struct bmi_drv_data_t g_bmi160_data;
+
+/* BMA253 private data */
+static struct accelgyro_saved_data_t g_bma253_data;
+
+static const struct motion_sensor_t motion_sensor_bma253 = {
+	.name = "Lid Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_BMA255,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_LID,
+	.drv = &bma2x2_accel_drv,
+	.mutex = &g_lid_mutex,
+	.drv_data = &g_bma253_data,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = BMA2x2_I2C_ADDR2_FLAGS,
+	.rot_standard_ref = &lid_standard_ref,
+	.min_frequency = BMA255_ACCEL_MIN_FREQ,
+	.max_frequency = BMA255_ACCEL_MAX_FREQ,
+	.default_range = 2, /* g */
+	.config = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 0,
+		},
+		/* Sensor on in S3 */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 0,
+		},
+	},
+};
 
 /* BMA253 private data */
 static struct accelgyro_saved_data_t g_bma253_data;
@@ -221,9 +293,13 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_lid_mutex,
 	 .drv_data = &g_kx022_data,
 	 .port = I2C_PORT_SENSOR,
-	 .addr = KX022_ADDR1,
+	 .i2c_spi_addr_flags = KX022_ADDR1_FLAGS,
 	 .rot_standard_ref = &lid_standard_ref,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	 .default_range = 4, /* g */
+=======
+	 .default_range = 2, /* g */
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	 .min_frequency = KX022_ACCEL_MIN_FREQ,
 	 .max_frequency = KX022_ACCEL_MAX_FREQ,
 	 .config = {
@@ -247,11 +323,19 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = I2C_PORT_SENSOR,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	 .addr = BMI160_ADDR0,
 	 .rot_standard_ref = &base_standard_ref,
 	 .default_range = 4,  /* g */
 	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
 	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
+=======
+	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+	 .rot_standard_ref = &base_standard_ref,
+	 .default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+	 .min_frequency = BMI_ACCEL_MIN_FREQ,
+	 .max_frequency = BMI_ACCEL_MAX_FREQ,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	 .config = {
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
@@ -275,11 +359,27 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = I2C_PORT_SENSOR,
-	 .addr = BMI160_ADDR0,
+	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = &gyro_standard_ref,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	 .min_frequency = BMI160_GYRO_MIN_FREQ,
 	 .max_frequency = BMI160_GYRO_MAX_FREQ,
+=======
+	 .min_frequency = BMI_GYRO_MIN_FREQ,
+	 .max_frequency = BMI_GYRO_MAX_FREQ,
+	},
+	[VSYNC] = {
+	 .name = "Camera VSYNC",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_GPIO,
+	 .type = MOTIONSENSE_TYPE_SYNC,
+	 .location = MOTIONSENSE_LOC_CAMERA,
+	 .drv = &sync_drv,
+	 .default_range = 0,
+	 .min_frequency = 0,
+	 .max_frequency = 1,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	},
 	[VSYNC] = {
 	 .name = "Camera VSYNC",
@@ -321,7 +421,11 @@ static void board_update_sensor_config_from_sku(void)
 		gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 	} else {
 		motion_sensor_count = 0;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		hall_sensor_disable();
+=======
+		gmr_tablet_switch_disable();
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 		/* Base accel is not stuffed, don't allow line to float */
 		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,

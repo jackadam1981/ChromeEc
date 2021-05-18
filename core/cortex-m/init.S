@@ -1,4 +1,4 @@
-/* Copyright (c) 2011 The Chromium OS Authors. All rights reserved.
+/* Copyright 2011 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -42,7 +42,21 @@ bss_loop:
 	blt bss_loop
 
 	/* Copy initialized data to Internal RAM */
-	ldr r0,_ro_end
+	ldr r0,_data_lma_start
+
+	/*
+	 * When the .data section is linked into the .init_rom section,
+	 * _data_lma_start is defined as a flash offset instead of a full
+	 * 32-bit address by the linker script. Add the 32-bit flash base
+	 * address to get a full 32-bit address.
+	 *
+	 * Flash locking isn't needed here as no tasks have been started.
+	 */
+#ifdef CONFIG_CHIP_DATA_IN_INIT_ROM
+	ldr r1, =CONFIG_MAPPED_STORAGE_BASE
+	add r0, r0, r1
+#endif
+
 	ldr r1,_data_start
 	ldr r2,_data_end
 data_loop:
@@ -100,10 +114,10 @@ _data_start:
 .long __data_start
 _data_end:
 .long __data_end
-_ro_end:
-.long __ro_end
+_data_lma_start:
+.long __data_lma_start
 
-/* Dummy functions to avoid linker complaints */
+/* Mock functions to avoid linker complaints */
 .global __aeabi_unwind_cpp_pr0
 .global __aeabi_unwind_cpp_pr1
 .global __aeabi_unwind_cpp_pr2

@@ -15,7 +15,7 @@ import time
 import tty
 import usb
 
-import stm32usb
+from . import stm32usb
 
 
 class SuartError(Exception):
@@ -73,6 +73,7 @@ class Suart(object):
     if self._tx_thread:
       self._tx_thread.join(2)
       self._tx_thread = None
+    self._susb.close()
 
   def run_rx_thread(self):
     """Background loop to pass data from USB to pty."""
@@ -112,6 +113,9 @@ class Suart(object):
         if not events:
           try:
             r = os.read(self._ptym, 64)
+            # TODO(crosbug.com/936182): Remove when the servo v4/micro console
+            # issues are fixed.
+            time.sleep(0.001)
             if r:
               self._susb._write_ep.write(r, self._susb.TIMEOUT_MS)
 

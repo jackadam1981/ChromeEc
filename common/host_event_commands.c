@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -211,6 +211,7 @@ void lpc_s3_resume_clear_masks(void)
 
 /*
  * Clear events that are not part of SCI/SMI mask so as to prevent
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
  * premature wakes on next suspend. This is needed because A.P only queries
  * SCI events after resume. We do not clear SCI/SMI events as they help
  * kernel identify the wake reason on resume.
@@ -224,6 +225,25 @@ void clear_non_sci_events(void)
 			  ~lpc_get_host_event_mask(LPC_HOST_EVENT_SMI));
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, clear_non_sci_events, HOOK_PRIO_DEFAULT);
+=======
+ * premature wakes on next suspend(S0ix). This is not needed on
+ * suspending to S3 as coreboot clears all events on path to suspend.
+ *
+ * We preserve events that are part of SCI/SMI mask to help kernel
+ * identify the wake reason on resume. For events that are not set
+ * in SCI mask but are part of S0iX WAKE masks, kernel drivers should
+ * have other ways (physical/virtual interrupt) pin to identify when
+ * they trigger wakes.
+ */
+#ifdef CONFIG_POWER_S0IX
+void clear_non_sci_events(void)
+{
+	host_clear_events(~lpc_get_host_event_mask(LPC_HOST_EVENT_SCI) &
+			  ~lpc_get_host_event_mask(LPC_HOST_EVENT_SMI));
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, clear_non_sci_events, HOOK_PRIO_DEFAULT);
+#endif
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 #endif
 
@@ -272,9 +292,9 @@ static void host_events_atomic_clear(host_event_t *e, host_event_t m)
 {
 	uint32_t *ptr = (uint32_t *)e;
 
-	atomic_clear(ptr, (uint32_t)m);
+	atomic_clear_bits(ptr, (uint32_t)m);
 #ifdef CONFIG_HOST_EVENT64
-	atomic_clear(ptr + 1, (uint32_t)(m >> 32));
+	atomic_clear_bits(ptr + 1, (uint32_t)(m >> 32));
 #endif
 }
 
@@ -455,7 +475,7 @@ static int command_host_event(int argc, char **argv)
 	/* Handle sub-commands */
 	if (argc == 3) {
 		char *e;
-		host_event_t i = strtoul(argv[2], &e, 0);
+		host_event_t i = strtoull(argv[2], &e, 0);
 		if (*e)
 			return EC_ERROR_PARAM2;
 
@@ -504,7 +524,8 @@ DECLARE_CONSOLE_COMMAND(hostevent, command_host_event,
 
 #ifdef CONFIG_HOSTCMD_X86
 
-static int host_event_get_smi_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_get_smi_mask(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
@@ -517,7 +538,8 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_SMI_MASK,
 		     host_event_get_smi_mask,
 		     EC_VER_MASK(0));
 
-static int host_event_get_sci_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_get_sci_mask(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
@@ -530,7 +552,8 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_SCI_MASK,
 		     host_event_get_sci_mask,
 		     EC_VER_MASK(0));
 
-static int host_event_get_wake_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_get_wake_mask(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
@@ -543,7 +566,8 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_WAKE_MASK,
 		     host_event_get_wake_mask,
 		     EC_VER_MASK(0));
 
-static int host_event_set_smi_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_set_smi_mask(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -554,7 +578,8 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SMI_MASK,
 		     host_event_set_smi_mask,
 		     EC_VER_MASK(0));
 
-static int host_event_set_sci_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_set_sci_mask(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -565,7 +590,8 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SCI_MASK,
 		     host_event_set_sci_mask,
 		     EC_VER_MASK(0));
 
-static int host_event_set_wake_mask(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_set_wake_mask(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -584,7 +610,7 @@ uint8_t lpc_is_active_wm_set_by_host(void)
 
 #endif  /* CONFIG_HOSTCMD_X86 */
 
-static int host_event_get_b(struct host_cmd_handler_args *args)
+static enum ec_status host_event_get_b(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
 
@@ -597,7 +623,7 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_B,
 		     host_event_get_b,
 		     EC_VER_MASK(0));
 
-static int host_event_clear(struct host_cmd_handler_args *args)
+static enum ec_status host_event_clear(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -608,7 +634,7 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_CLEAR,
 		     host_event_clear,
 		     EC_VER_MASK(0));
 
-static int host_event_clear_b(struct host_cmd_handler_args *args)
+static enum ec_status host_event_clear_b(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
 
@@ -619,7 +645,7 @@ DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_CLEAR_B,
 		     host_event_clear_b,
 		     EC_VER_MASK(0));
 
-static int host_event_action_get(struct host_cmd_handler_args *args)
+static enum ec_status host_event_action_get(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event *r = args->response;
 	const struct ec_params_host_event *p = args->params;
@@ -629,6 +655,9 @@ static int host_event_action_get(struct host_cmd_handler_args *args)
 	memset(r, 0, sizeof(*r));
 
 	switch (p->mask_type) {
+	case EC_HOST_EVENT_MAIN:
+		result = EC_RES_ACCESS_DENIED;
+		break;
 	case EC_HOST_EVENT_B:
 		r->value = events_copy_b;
 		break;
@@ -666,13 +695,17 @@ static int host_event_action_get(struct host_cmd_handler_args *args)
 	return result;
 }
 
-static int host_event_action_set(struct host_cmd_handler_args *args)
+static enum ec_status host_event_action_set(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event *p = args->params;
 	int result = EC_RES_SUCCESS;
 	host_event_t mask_value __unused = (host_event_t)(p->value);
 
 	switch (p->mask_type) {
+	case EC_HOST_EVENT_MAIN:
+	case EC_HOST_EVENT_B:
+		result = EC_RES_ACCESS_DENIED;
+		break;
 #ifdef CONFIG_HOSTCMD_X86
 	case EC_HOST_EVENT_SCI_MASK:
 		lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, mask_value);
@@ -708,7 +741,8 @@ static int host_event_action_set(struct host_cmd_handler_args *args)
 	return result;
 }
 
-static int host_event_action_clear(struct host_cmd_handler_args *args)
+static enum ec_status
+host_event_action_clear(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event *p = args->params;
 	int result = EC_RES_SUCCESS;
@@ -721,6 +755,19 @@ static int host_event_action_clear(struct host_cmd_handler_args *args)
 	case EC_HOST_EVENT_B:
 		host_clear_events_b(mask_value);
 		break;
+#ifdef CONFIG_HOSTCMD_X86
+	case EC_HOST_EVENT_SCI_MASK:
+	case EC_HOST_EVENT_SMI_MASK:
+	case EC_HOST_EVENT_ALWAYS_REPORT_MASK:
+	case EC_HOST_EVENT_ACTIVE_WAKE_MASK:
+#ifdef CONFIG_POWER_S0IX
+	case EC_HOST_EVENT_LAZY_WAKE_MASK_S0IX:
+#endif
+	case EC_HOST_EVENT_LAZY_WAKE_MASK_S3:
+	case EC_HOST_EVENT_LAZY_WAKE_MASK_S5:
+		result = EC_RES_ACCESS_DENIED;
+		break;
+#endif
 	default:
 		result = EC_RES_INVALID_PARAM;
 	}
@@ -728,7 +775,8 @@ static int host_event_action_clear(struct host_cmd_handler_args *args)
 	return result;
 }
 
-static int host_command_host_event(struct host_cmd_handler_args *args)
+static enum ec_status
+host_command_host_event(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event *p = args->params;
 

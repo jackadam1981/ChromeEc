@@ -8,7 +8,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "task.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "system.h"
 #include "usb_mux.h"
 #include "util.h"
@@ -19,10 +19,10 @@
 #define PTN5110_EXT_GPIO_CONFIG		0x92
 #define PTN5110_EXT_GPIO_CONTROL	0x93
 
-#define PTN5110_EXT_GPIO_FRS_EN			(1 << 6)
-#define PTN5110_EXT_GPIO_EN_SRC			(1 << 5)
-#define PTN5110_EXT_GPIO_EN_SNK1		(1 << 4)
-#define PTN5110_EXT_GPIO_IILIM_5V_VBUS_L	(1 << 3)
+#define PTN5110_EXT_GPIO_FRS_EN			BIT(6)
+#define PTN5110_EXT_GPIO_EN_SRC			BIT(5)
+#define PTN5110_EXT_GPIO_EN_SNK1		BIT(4)
+#define PTN5110_EXT_GPIO_IILIM_5V_VBUS_L	BIT(3)
 
 enum glkrvp_charge_ports {
 	TYPE_C_PORT_0,
@@ -31,6 +31,7 @@ enum glkrvp_charge_ports {
 };
 
 const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	{
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
@@ -51,20 +52,41 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	{
-		.port_addr = 0x20,
-		.driver = &ps874x_usb_mux_driver,
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = IT83XX_I2C_CH_B,
+			.addr_flags = 0x50,
+		},
+		.drv = &tcpci_tcpm_drv,
 	},
 	{
-		.port_addr = 0x22,
-		.driver = &ps874x_usb_mux_driver,
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = IT83XX_I2C_CH_B,
+			.addr_flags = 0x52,
+		},
+		.drv = &tcpci_tcpm_drv,
 	},
 };
+BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);
 
-/* TODO: Implement this function and move to appropriate file */
-void usb_charger_set_switches(int port, enum usb_switch setting)
-{
-}
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	{
+		.usb_port = 0,
+		.i2c_port = I2C_PORT_USB_MUX,
+		.i2c_addr_flags = 0x10,
+		.driver = &ps8743_usb_mux_driver,
+	},
+	{
+		.usb_port = 1,
+		.i2c_port = I2C_PORT_USB_MUX,
+		.i2c_addr_flags = 0x11,
+		.driver = &ps8743_usb_mux_driver,
+	},
+};
 
 static int board_charger_port_is_sourcing_vbus(int port)
 {
@@ -118,7 +140,7 @@ void tcpc_alert_event(enum gpio_signal signal)
 void board_tcpc_init(void)
 {
 	/* Only reset TCPC if not sysjump */
-	if (!system_jumped_to_this_image())
+	if (!system_jumped_late())
 		board_reset_pd_mcu();
 
 	/* Enable TCPC0/1 interrupt */

@@ -12,6 +12,7 @@
 /* Disable hibernate: We never want to exit while fuzzing. */
 #undef CONFIG_HIBERNATE
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef TEST_CR50_FUZZ
 #define CONFIG_DCRYPTO
 #define CONFIG_PINWEAVER
@@ -72,6 +73,8 @@ enum nvmem_users {
 
 #endif /* TEST_CR50_FUZZ */
 
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #ifdef TEST_HOST_COMMAND_FUZZ
 #undef CONFIG_HOSTCMD_DEBUG_MODE
 
@@ -83,8 +86,16 @@ enum nvmem_users {
 #else
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
 #endif /* ! FUZZ_HOSTCMD_VERBOSE */
+
+/* The following are for fpsensor host commands. */
+#define CONFIG_AES
+#define CONFIG_AES_GCM
+#define CONFIG_ROLLBACK_SECRET_SIZE 32
+#define CONFIG_SHA256
+
 #endif /* TEST_HOST_COMMAND_FUZZ */
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #if defined(TEST_USB_PD_FUZZ)
 #define CONFIG_USB_POWER_DELIVERY
 #define CONFIG_USB_PD_DUAL_ROLE
@@ -92,6 +103,59 @@ enum nvmem_users {
 #define CONFIG_SHA256
 #define CONFIG_SW_CRC
 #endif /* TEST_USB_PD_FUZZ */
+=======
+#ifdef TEST_USB_PD_FUZZ
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_SHA256
+#define CONFIG_SW_CRC
+#endif /* TEST_USB_PD_FUZZ */
+
+#ifdef TEST_USB_TCPM_V2_REV30_FUZZ
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_PD_TCPC_LOW_POWER
+#define CONFIG_USB_PD_TRY_SRC
+#define CONFIG_USB_PID 0x5555
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PRL_SM
+#define CONFIG_USB_PD_REV30
+#define CONFIG_USB_PD_TCPMV2
+#define CONFIG_USB_PD_DECODE_SOP
+#define CONFIG_USB_DRP_ACC_TRYSRC
+#define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
+#define CONFIG_USBC_VCONN_SWAP_DELAY_US 5000
+#define CONFIG_SHA256
+#define CONFIG_SW_CRC
+#define CONFIG_USB_PD_3A_PORTS 0 /* Host does not define a 3.0 A PDO */
+#endif /* TEST_USB_TCPM_V2_REV30_FUZZ */
+
+#ifdef TEST_USB_TCPM_V2_REV20_FUZZ
+#define CONFIG_USB_PD_DUAL_ROLE
+#define CONFIG_USB_PD_PORT_MAX_COUNT 2
+#define CONFIG_USB_PD_TCPC_LOW_POWER
+#define CONFIG_USB_PD_TRY_SRC
+#define CONFIG_USB_PID 0x5555
+#define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PRL_SM
+#define CONFIG_USB_PD_TCPMV2
+#define CONFIG_USB_PD_DECODE_SOP
+#define CONFIG_USB_DRP_ACC_TRYSRC
+#define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USBC_VCONN
+#define CONFIG_USBC_VCONN_SWAP
+#define CONFIG_USBC_VCONN_SWAP_DELAY_US 5000
+#define CONFIG_SHA256
+#define CONFIG_SW_CRC
+#define CONFIG_USB_PD_3A_PORTS 0 /* Host does not define a 3.0 A PDO */
+#endif /* TEST_USB_TCPM_V2_REV20_FUZZ */
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 #endif  /* TEST_FUZZ */
-#endif  /* __TEST_TEST_CONFIG_H */
+#endif  /* __FUZZ_FUZZ_CONFIG_H */

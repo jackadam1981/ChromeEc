@@ -24,8 +24,11 @@
 #undef CONFIG_LED_ONOFF_STATES
 #define CONFIG_LED_COMMON
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #define CONFIG_EC_FEATURE_BOARD_OVERRIDE
 
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 /* Sensors */
 #define CONFIG_ACCEL_KX022		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */

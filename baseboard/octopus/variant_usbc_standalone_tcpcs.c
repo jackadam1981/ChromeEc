@@ -16,7 +16,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "system.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -32,13 +32,18 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 			.addr = PS8751_I2C_ADDR1,
+=======
+			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		},
 		.drv = &ps8xxx_tcpm_drv,
 #else
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 			.addr = AN7447_TCPC0_I2C_ADDR,
 		},
 		.drv = &anx7447_tcpm_drv,
@@ -49,6 +54,18 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.i2c_info = {
 			.port = I2C_PORT_TCPC1,
 			.addr = PS8751_I2C_ADDR1,
+=======
+			.addr_flags = AN7447_TCPC0_I2C_ADDR_FLAGS,
+		},
+		.drv = &anx7447_tcpm_drv,
+#endif
+	},
+	[USB_PD_PORT_TCPC_1] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TCPC1,
+			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		},
 		.drv = &ps8xxx_tcpm_drv,
 	},
@@ -58,6 +75,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 /* USB-C MUX Configuration */
 
 #if defined(VARIANT_OCTOPUS_TCPC_0_PS8751)
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static int ps8751_tune_mux(int port)
 {
 	/* Tune USB mux registers for casta's port 0 Rx measurement */
@@ -68,6 +86,19 @@ static int ps8751_tune_mux(int port)
 
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
+=======
+static int ps8751_tune_mux(const struct usb_mux *me)
+{
+	/* Tune USB mux registers for casta's port 0 Rx measurement */
+	mux_write(me, PS8XXX_REG_MUX_USB_C2SS_EQ, 0x40);
+	return EC_SUCCESS;
+}
+#endif
+
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[USB_PD_PORT_TCPC_0] = {
+		.usb_port = USB_PD_PORT_TCPC_0,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #if defined(VARIANT_OCTOPUS_TCPC_0_PS8751)
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
@@ -78,6 +109,10 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 #endif
 	},
 	[USB_PD_PORT_TCPC_1] = {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+		.usb_port = USB_PD_PORT_TCPC_1,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		.driver = &tcpci_tcpm_usb_mux_driver,
 		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 	}
@@ -88,12 +123,12 @@ struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_TCPC_0] = {
 		.i2c_port = I2C_PORT_TCPC0,
-		.i2c_addr = NX20P3483_ADDR2,
+		.i2c_addr_flags = NX20P3483_ADDR2_FLAGS,
 		.drv = &nx20p348x_drv,
 	},
 	[USB_PD_PORT_TCPC_1] = {
 		.i2c_port = I2C_PORT_TCPC1,
-		.i2c_addr = NX20P3483_ADDR2,
+		.i2c_addr_flags = NX20P3483_ADDR2_FLAGS,
 		.drv = &nx20p348x_drv,
 	},
 };

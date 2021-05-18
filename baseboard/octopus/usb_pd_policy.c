@@ -20,6 +20,7 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #define PDO_FIXED_FLAGS (PDO_FIXED_DUAL_ROLE | PDO_FIXED_DATA_SWAP |\
 			 PDO_FIXED_COMM_CAP)
 
@@ -94,20 +95,12 @@ void pd_check_pr_role(int port, int pr_role, int flags)
 	}
 }
 
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 int pd_check_vconn_swap(int port)
 {
 	/* Only allow vconn swap if pp5000_A rail is enabled */
 	return gpio_get_level(GPIO_EN_PP5000);
-}
-
-void pd_execute_data_swap(int port, int data_role)
-{
-	/* Do nothing - functionality moved to the AP for octopus */
-}
-
-int pd_is_valid_input_voltage(int mv)
-{
-	return 1;
 }
 
 void pd_power_supply_reset(int port)
@@ -122,11 +115,6 @@ void pd_power_supply_reset(int port)
 	/* Enable discharge if we were previously sourcing 5V */
 	if (prev_en)
 		pd_set_vbus_discharge(port, 1);
-
-#ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
-	/* Give back the current quota we are no longer using */
-	charge_manager_source_port(port, 0);
-#endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
 
 	/* Notify host of power info change. */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
@@ -148,20 +136,10 @@ int pd_set_power_supply_ready(int port)
 	if (rv)
 		return rv;
 
-#ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
-	/* Ensure we advertise the proper available current quota */
-	charge_manager_source_port(port, 1);
-#endif /* defined(CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) */
-
 	/* Notify host of power info change. */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
 
 	return EC_SUCCESS;
-}
-
-void pd_transition_voltage(int idx)
-{
-	/* No-operation: we are always 5V */
 }
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_PPC
@@ -171,15 +149,11 @@ int pd_snk_is_vbus_provided(int port)
 }
 #endif
 
-void typec_set_source_current_limit(int port, int rp)
-{
-	ppc_set_vbus_source_current_limit(port, rp);
-}
-
 int board_vbus_source_enabled(int port)
 {
 	return ppc_is_sourcing_vbus(port);
 }
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 
 
 /* ----------------- Vendor Defined Messages ------------------ */
@@ -402,3 +376,5 @@ const struct svdm_amode_fx supported_modes[] = {
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

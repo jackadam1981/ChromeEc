@@ -131,6 +131,12 @@ GPIO(BAT_LED_RED_L,		PIN(C, 3), GPIO_OUT_HIGH)
 GPIO(BAT_LED_GREEN_L,		PIN(C, 4), GPIO_OUT_HIGH)
 GPIO(PWR_LED_BLUE_L,		PIN(D, 7), GPIO_OUT_HIGH)
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+/* MKBP event synchronization */
+GPIO(EC_INT_L,			PIN(9, 4), GPIO_ODR_HIGH) /* EC_AP_INT_ODL */
+
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 /* Not implemented in hardware */
 UNIMPLEMENTED(KB_BL_PWR_EN)
 

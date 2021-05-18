@@ -20,8 +20,8 @@
 /* Only test requests with valid size and checksum (makes fuzzing faster) */
 #define VALID_REQUEST_ONLY
 
-#define TASK_EVENT_FUZZ TASK_EVENT_CUSTOM(1)
-#define TASK_EVENT_HOSTCMD_DONE TASK_EVENT_CUSTOM(2)
+#define TASK_EVENT_FUZZ TASK_EVENT_CUSTOM_BIT(0)
+#define TASK_EVENT_HOSTCMD_DONE TASK_EVENT_CUSTOM_BIT(1)
 
 /* Request/response buffer size (and maximum command length) */
 #define BUFFER_SIZE 128
@@ -34,7 +34,7 @@ static struct ec_host_request *req = (struct ec_host_request *)req_buf;
 
 static void hostcmd_respond(struct host_packet *pkt)
 {
-	task_set_event(TASK_ID_TEST_RUNNER, TASK_EVENT_HOSTCMD_DONE, 0);
+	task_set_event(TASK_ID_TEST_RUNNER, TASK_EVENT_HOSTCMD_DONE);
 }
 
 static char calculate_checksum(const char *buf, int size)
@@ -113,8 +113,8 @@ static int hostcmd_fill(const uint8_t *data, size_t size)
 	 * issues.
 	 */
 	if (first) {
-		ccprintf("Request: cmd=%04x data=%.*h\n",
-			req->command, req_size, req_buf);
+		ccprintf("Request: cmd=%04x data=%ph\n",
+			req->command, HEX_BUF(req_buf, req_size));
 		first = 0;
 	}
 
@@ -131,7 +131,7 @@ static int hostcmd_fill(const uint8_t *data, size_t size)
 static pthread_cond_t done_cond;
 static pthread_mutex_t lock;
 
-void run_test(void)
+void run_test(int argc, char **argv)
 {
 	ccprints("Fuzzing task started");
 	wait_for_task_started();
@@ -151,7 +151,7 @@ int test_fuzz_one_input(const uint8_t *data, unsigned int size)
 	if (hostcmd_fill(data, size) < 0)
 		return 0;
 
-	task_set_event(TASK_ID_TEST_RUNNER, TASK_EVENT_FUZZ, 0);
+	task_set_event(TASK_ID_TEST_RUNNER, TASK_EVENT_FUZZ);
 	pthread_cond_wait(&done_cond, &lock);
 
 #ifdef VALID_REQUEST_ONLY

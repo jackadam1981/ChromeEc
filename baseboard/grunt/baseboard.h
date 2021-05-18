@@ -8,6 +8,11 @@
 #ifndef __CROS_EC_BASEBOARD_H
 #define __CROS_EC_BASEBOARD_H
 
+#if (defined(VARIANT_GRUNT_TCPC_0_ANX3429) \
+	+ defined(VARIANT_GRUNT_TCPC_0_ANX3447)) != 1
+#error Must choose VARIANT_GRUNT_TCPC_0_ANX3429 or VARIANT_GRUNT_TCPC_0_ANX3447
+#endif
+
 /* NPCX7 config */
 #define NPCX_UART_MODULE2 1  /* GPIO64/65 are used as UART pins. */
 #define NPCX_TACH_SEL2    0  /* No tach. */
@@ -15,7 +20,7 @@
 
 /* Internal SPI flash on NPCX7 */
 /* Flash is 1MB but reserve half for future use. */
-#define CONFIG_FLASH_SIZE (512 * 1024)
+#define CONFIG_FLASH_SIZE_BYTES (512 * 1024)
 #define CONFIG_SPI_FLASH_REGS
 #define CONFIG_SPI_FLASH_W25Q80 /* Internal SPI flash type. */
 
@@ -31,13 +36,12 @@
 #define CONFIG_BACKLIGHT_LID_ACTIVE_LOW
 #define CONFIG_BOARD_VERSION_CUSTOM
 #define CONFIG_CMD_AP_RESET_LOG
-#define CONFIG_EC_FEATURE_BOARD_OVERRIDE
 #define CONFIG_HIBERNATE_PSL
 #define CONFIG_HOSTCMD_LPC
 #define CONFIG_HOSTCMD_SKUID
 #define CONFIG_I2C
 #define CONFIG_I2C_BUS_MAY_BE_UNPOWERED
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_LOW_POWER_IDLE
 #define CONFIG_LOW_POWER_S0
 #define CONFIG_LTO
@@ -56,7 +60,6 @@
 
 #define CONFIG_BC12_DETECT_MAX14637
 #define CONFIG_CHARGER
-#define CONFIG_CHARGER_V2
 #define CONFIG_CHARGE_MANAGER
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 
@@ -94,28 +97,33 @@
 /*
  * On power-on, H1 releases the EC from reset but then quickly asserts and
  * releases the reset a second time. This means the EC sees 2 resets:
- * (1) power-on reset, (2) reset-pin reset. If we add a delay between reset (1)
- * and configuring GPIO output levels, then reset (2) will happen before the
- * end of the delay so we avoid extra output toggles.
+ * (1) power-on reset, (2) reset-pin reset. This config will
+ * allow the second reset to be treated as a power-on.
  */
-#define CONFIG_GPIO_INIT_POWER_ON_DELAY_MS 100
+#define CONFIG_BOARD_RESET_AFTER_POWER_ON
 
 #define CONFIG_KEYBOARD_BOARD_CONFIG
 #define CONFIG_KEYBOARD_COL2_INVERTED
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 
 #define CONFIG_USB_POWER_DELIVERY
-#define CONFIG_CMD_PD_CONTROL
+#define CONFIG_USB_PD_TCPMV1
+#define CONFIG_HOSTCMD_PD_CONTROL
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
 #define CONFIG_USB_PD_COMM_LOCKED
 #define CONFIG_USB_PD_DISCHARGE_PPC
+#define CONFIG_USB_PD_DP_HPD_GPIO
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_PD_TCPC_LOW_POWER
+#ifdef VARIANT_GRUNT_TCPC_0_ANX3429
 #define CONFIG_USB_PD_TCPM_ANX3429
+#elif defined(VARIANT_GRUNT_TCPC_0_ANX3447)
+#define CONFIG_USB_PD_TCPM_ANX7447
+#endif
 #define CONFIG_USB_PD_TCPM_MUX
 #define CONFIG_USB_PD_TCPM_PS8751
 #define CONFIG_USB_PD_TCPM_TCPCI
@@ -134,7 +142,6 @@
 
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY	30000 /* us */
-#define PD_VCONN_SWAP_DELAY		5000 /* us */
 
 #define PD_OPERATING_POWER_MW	15000
 #define PD_MAX_POWER_MW		45000
@@ -164,24 +171,26 @@
 #define I2C_PORT_POWER		NPCX_I2C_PORT0_0
 #define I2C_PORT_TCPC0		NPCX_I2C_PORT1_0
 #define I2C_PORT_TCPC1		NPCX_I2C_PORT2_0
-#define I2C_PORT_THERMAL	NPCX_I2C_PORT3_0
+#define I2C_PORT_THERMAL_AP	NPCX_I2C_PORT3_0
 #define I2C_PORT_SENSOR		NPCX_I2C_PORT7_0
 /* Accelerometer and Gyroscope are the same device. */
 #define I2C_PORT_ACCEL		I2C_PORT_SENSOR
 
 /* Sensors */
 #define CONFIG_MKBP_EVENT
-#define CONFIG_MKBP_USE_HOST_EVENT
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
 
 /* Thermal */
 #define CONFIG_TEMP_SENSOR_SB_TSI
 
+#ifndef VARIANT_GRUNT_NO_SENSORS
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO
 /* FIFO size is a power of 2. */
-#define CONFIG_ACCEL_FIFO 1024  /* TODO(teravest): Check this value. */
-
+#define CONFIG_ACCEL_FIFO_SIZE 256
 /* Depends on how fast the AP boots and typical ODRs. */
-#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO / 3)
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+#endif /* VARIANT_GRUNT_NO_SENSORS */
 
 #define USB_PD_PORT_ANX74XX	0
 #define USB_PD_PORT_PS8751	1
@@ -220,6 +229,7 @@ enum sensor_id {
 	LID_ACCEL,
 	BASE_ACCEL,
 	BASE_GYRO,
+	SENSOR_COUNT,
 };
 
 /*
@@ -246,6 +256,8 @@ void board_reset_pd_mcu(void);
 
 /* Common definition for the USB PD interrupt handlers. */
 void tcpc_alert_event(enum gpio_signal signal);
+void ppc_interrupt(enum gpio_signal signal);
+void anx74xx_cable_det_interrupt(enum gpio_signal signal);
 
 int board_get_version(void);
 int board_is_convertible(void);

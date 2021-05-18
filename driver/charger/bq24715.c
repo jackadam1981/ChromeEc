@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -49,15 +49,25 @@ static inline enum ec_error_list sbc_write(int chgnum, int cmd, int param)
 			   cmd, param);
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static enum ec_error_list bq24715_set_input_current(int chgnum,
 						    int input_current)
+=======
+static enum ec_error_list bq24715_set_input_current_limit(int chgnum,
+							  int input_current)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	return sbc_write(chgnum, BQ24715_INPUT_CURRENT,
 			 CURRENT_TO_REG(input_current, R_AC));
 }
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static enum ec_error_list bq24715_get_input_current(int chgnum,
 						    int *input_current)
+=======
+static enum ec_error_list bq24715_get_input_current_limit(int chgnum,
+							  int *input_current)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	int rv;
 	int reg;
@@ -209,7 +219,12 @@ static enum ec_error_list bq24715_post_init(int chgnum)
 	if (rv)
 		return rv;
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	rv = bq24715_set_input_current(chgnum, CONFIG_CHARGER_INPUT_CURRENT);
+=======
+	rv = bq24715_set_input_current_limit(chgnum,
+					     CONFIG_CHARGER_INPUT_CURRENT);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	return rv;
 }
 
@@ -242,8 +257,13 @@ const struct charger_drv bq24715_drv = {
 	.get_voltage = &bq24715_get_voltage,
 	.set_voltage = &bq24715_set_voltage,
 	.discharge_on_ac = &bq24715_discharge_on_ac,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	.set_input_current = &bq24715_set_input_current,
 	.get_input_current = &bq24715_get_input_current,
+=======
+	.set_input_current_limit = &bq24715_set_input_current_limit,
+	.get_input_current_limit = &bq24715_get_input_current_limit,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	.manufacturer_id = &bq24715_manufacturer_id,
 	.device_id = &bq24715_device_id,
 	.get_option = &bq24715_get_option,

@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -35,9 +35,9 @@
  */
 static void clear_databuf(void)
 {
-	volatile uint8_t dummy __attribute__((unused));
+	volatile uint8_t unused __attribute__((unused));
 	while (IS_BIT_SET(NPCX_SPI_STAT, NPCX_SPI_STAT_RBF))
-		dummy = NPCX_SPI_DATA;
+		unused = NPCX_SPI_DATA;
 }
 
 /**
@@ -68,13 +68,12 @@ DECLARE_HOOK(HOOK_FREQ_CHANGE, spi_freq_changed, HOOK_PRIO_FIRST);
 /**
  * Set SPI enabled.
  *
- * @spi_port port to act on. Only one port supported, one gpio.
+ * @spi_device SPI device to act on.
  * @param   enable enabled flag
  * @return  success
  */
-int spi_enable(int port, int enable)
+int spi_enable(const struct spi_device_t *spi_device, int enable)
 {
-	int i;
 	enum gpio_signal gpio;
 
 	if (enable) {
@@ -83,28 +82,21 @@ int spi_enable(int port, int enable)
 		/* GPIO No SPI Select */
 		CLEAR_BIT(NPCX_DEVALT(0), NPCX_DEVALT0_GPIO_NO_SPIP);
 
-		for (i = 0; i < spi_devices_used; i++) {
-			if (spi_devices[i].port != port)
-				continue;
-			gpio = spi_devices[i].gpio_cs;
-			/* Make sure CS# is a GPIO output mode. */
-			gpio_set_flags(gpio, GPIO_OUTPUT);
-			/* Make sure CS# is deselected */
-			gpio_set_level(gpio, 1);
-		}
+		gpio = spi_device->gpio_cs;
+		/* Make sure CS# is in GPIO output mode. */
+		gpio_set_flags(gpio, GPIO_OUTPUT);
+		/* Make sure CS# is deselected */
+		gpio_set_level(gpio, 1);
+
 		/* Enabling spi module */
 		SET_BIT(NPCX_SPI_CTL1, NPCX_SPI_CTL1_SPIEN);
 	} else {
 		/* Disabling spi module */
 		CLEAR_BIT(NPCX_SPI_CTL1, NPCX_SPI_CTL1_SPIEN);
-		for (i = 0; i < spi_devices_used; i++) {
-			if (spi_devices[i].port != port)
-				continue;
-			gpio = spi_devices[i].gpio_cs;
-			/* Make sure CS# is deselected */
-			gpio_set_level(gpio, 1);
-			gpio_set_flags(gpio, GPIO_ODR_HIGH);
-		}
+		gpio = spi_device->gpio_cs;
+		/* Make sure CS# is deselected */
+		gpio_set_level(gpio, 1);
+		gpio_set_flags(gpio, GPIO_ODR_HIGH);
 		/* Disabling spi module for gpio configuration */
 		gpio_config_module(MODULE_SPI, 0);
 		/* GPIO No SPI Select */
@@ -156,7 +148,7 @@ int spi_transaction(const struct spi_device_t *spi_device,
 		/* Waiting till reading is finished */
 		while (!IS_BIT_SET(NPCX_SPI_STAT, NPCX_SPI_STAT_RBF))
 			;
-		/* Reading the (dummy) data */
+		/* Reading the (unused) data */
 		clear_databuf();
 	}
 	CPRINTS("write end");
@@ -165,7 +157,7 @@ int spi_transaction(const struct spi_device_t *spi_device,
 		/* Making sure we can write */
 		while (IS_BIT_SET(NPCX_SPI_STAT, NPCX_SPI_STAT_BSY))
 			;
-		/* Write the (dummy) data */
+		/* Write the (unused) data */
 		NPCX_SPI_DATA =  0;
 		/* Wait till reading is finished */
 		while (!IS_BIT_SET(NPCX_SPI_STAT, NPCX_SPI_STAT_RBF))
@@ -196,7 +188,7 @@ static void spi_init(void)
 
 	/* Disabling spi module */
 	for (i = 0; i < spi_devices_used; i++)
-		spi_enable(spi_devices[i].port, 0);
+		spi_enable(&spi_devices[i], 0);
 
 	/* Disabling spi irq */
 	CLEAR_BIT(NPCX_SPI_CTL1, NPCX_SPI_CTL1_EIR);
@@ -249,7 +241,7 @@ static int command_spirom(int argc, char **argv)
 	uint8_t txsr1[] = {0x05};
 	uint8_t txsr2[] = {0x35};
 
-	spi_enable(CONFIG_SPI_FLASH_PORT, 1);
+	spi_enable(SPI_FLASH_DEVICE, 1);
 
 	printrx("Man/Dev ID", txmandev, sizeof(txmandev), 2);
 	printrx("JEDEC ID", txjedec, sizeof(txjedec), 3);
@@ -257,7 +249,7 @@ static int command_spirom(int argc, char **argv)
 	printrx("Status reg 1", txsr1, sizeof(txsr1), 1);
 	printrx("Status reg 2", txsr2, sizeof(txsr2), 1);
 
-	spi_enable(CONFIG_SPI_FLASH_PORT, 0);
+	spi_enable(SPI_FLASH_DEVICE, 0);
 
 	return EC_SUCCESS;
 }

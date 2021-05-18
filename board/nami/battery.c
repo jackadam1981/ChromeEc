@@ -52,7 +52,7 @@ static const struct battery_info info_2 = {
 	.voltage_max = 8700,
 	.voltage_normal = 7500,
 	.voltage_min = 6000,
-	.precharge_current = 373,
+	.precharge_current = 200,
 	.start_charging_min_c = 0,
 	.start_charging_max_c = 50,
 	.charging_min_c = 0,
@@ -354,7 +354,7 @@ static int battery_check_disconnect(void)
 
 	if (fuel_gauge == GAUGE_TYPE_UNKNOWN) {
 		fuel_gauge = get_gauge_ic();
-		CPRINTS("fuel_gauge=%d\n", fuel_gauge);
+		CPRINTS("fuel_gauge=%d", fuel_gauge);
 	}
 
 	switch (fuel_gauge) {

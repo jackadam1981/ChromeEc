@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -9,11 +9,24 @@
 /* CPU core BFD configuration */
 #include "core/cortex-m/config_core.h"
 
+/*
+ * Set the chip family version to 4 digits to keep the flexibility in case
+ * we need the minor version for chip variants in a family.
+ */
+#define NPCX_FAMILY_NPCX5        5000
+#define NPCX_FAMILY_NPCX7        7000
+#define NPCX_FAMILY_NPCX9        9000
+
 /* Features depend on chip family */
 #if defined(CHIP_FAMILY_NPCX5)
 #include "config_chip-npcx5.h"
+#define NPCX_FAMILY_VERSION      NPCX_FAMILY_NPCX5
 #elif defined(CHIP_FAMILY_NPCX7)
 #include "config_chip-npcx7.h"
+#define NPCX_FAMILY_VERSION      NPCX_FAMILY_NPCX7
+#elif defined(CHIP_FAMILY_NPCX9)
+#include "config_chip-npcx9.h"
+#define NPCX_FAMILY_VERSION      NPCX_FAMILY_NPCX9
 #else
 #error "Unsupported chip family"
 #endif
@@ -42,6 +55,8 @@
 #define IDLE_TASK_STACK_SIZE		672
 #define LARGER_TASK_STACK_SIZE		800
 #define VENTI_TASK_STACK_SIZE		928
+#define ULTRA_TASK_STACK_SIZE		1056
+#define TRENTA_TASK_STACK_SIZE		1184
 
 #define CHARGER_TASK_STACK_SIZE		800
 #define HOOKS_TASK_STACK_SIZE		800
@@ -57,6 +72,7 @@
 
 /* Optional features present on this chip */
 #define CONFIG_ADC
+#define CONFIG_RTC
 #define CONFIG_SWITCH
 #define CONFIG_MPU
 
@@ -65,7 +81,7 @@
 /* Default use UART1 as console */
 #define CONFIG_CONSOLE_UART    0
 
-#define GPIO_PIN(port, index) GPIO_##port, (1 << index)
+#define GPIO_PIN(port, index) GPIO_##port, BIT(index)
 #define GPIO_PIN_MASK(p, m) .port = GPIO_##p, .mask = (m)
 
 #endif  /* __CROS_EC_CONFIG_CHIP_H */

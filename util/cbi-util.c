@@ -20,11 +20,10 @@
 #include "cros_board_info.h"
 #include "crc8.h"
 
-#define ARGS_MASK_BOARD_VERSION		(1 << 0)
-#define ARGS_MASK_FILENAME		(1 << 1)
-#define ARGS_MASK_OEM_ID		(1 << 2)
-#define ARGS_MASK_SIZE			(1 << 3)
-#define ARGS_MASK_SKU_ID		(1 << 4)
+#define ARGS_MASK_BOARD_VERSION		BIT(0)
+#define ARGS_MASK_FILENAME		BIT(1)
+#define ARGS_MASK_SIZE			BIT(2)
+#define ARGS_MASK_SKU_ID		BIT(3)
 
 /* TODO: Set it by macro */
 const char cmd_name[] = "cbi-util";
@@ -41,6 +40,10 @@ enum {
 	OPT_FW_CONFIG,
 	OPT_PCB_SUPPLIER,
 	OPT_SSFC,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+	OPT_REWORK_ID,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	OPT_SIZE,
 	OPT_ERASE_BYTE,
 	OPT_SHOW_ALL,
@@ -58,6 +61,10 @@ static const struct option opts_create[] = {
 	{"fw_config", 1, 0, OPT_FW_CONFIG},
 	{"pcb_supplier", 1, 0, OPT_PCB_SUPPLIER},
 	{"ssfc", 1, 0, OPT_SSFC},
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+	{"rework_id", 1, 0, OPT_REWORK_ID},
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	{"size", 1, 0, OPT_SIZE},
 	{"erase_byte", 1, 0, OPT_ERASE_BYTE},
 	{NULL, 0, 0, 0}
@@ -80,6 +87,10 @@ static const char *field_name[] = {
 	"FW_CONFIG",
 	"PCB_SUPPLIER",
 	"SSFC",
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+	"REWORK_ID",
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 };
 BUILD_ASSERT(ARRAY_SIZE(field_name) == CBI_TAG_COUNT);
 
@@ -89,14 +100,24 @@ const char help_create[] =
 	"Required ARGS are:\n"
 	"  --file <file>              Path to output file\n"
 	"  --board_version <value>    Board version\n"
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	"  --oem_id <value>           OEM ID\n"
 	"  --sku_id <value>           SKU ID\n"
 	"  --size <size>              Size of output file in bytes\n"
 	"<value> must be a positive integer <= 0XFFFFFFFF and field size can\n"
 	"be optionally specified by <value:size> notation: e.g. 0xabcd:4.\n"
 	"<size> must be a positive integer <= 0XFFFF.\n"
+=======
+	"  --sku_id <value>           SKU ID\n"
+	"  --size <size>              Size of output file in bytes\n"
+	"\n"
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	"Optional ARGS are:\n"
 	"  --dram_part_num <string>   DRAM PART NUM\n"
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+	"  --oem_id <value>           OEM ID\n"
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	"  --oem_name <string>        OEM NAME\n"
 	"  --erase_byte <uint8>       Byte used for empty space. Default:0xff\n"
 	"  --format_version <uint16>  Data format version\n"
@@ -104,9 +125,17 @@ const char help_create[] =
 	"  --fw_config <value>        Firmware configuration bit-field\n"
 	"  --pcb_supplier <value>     PCB supplier\n"
 	"  --ssfc <value>             Second Source Factory Cache bit-field\n"
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	"\n"
 	"<value> must be a positive integer <= 0XFFFFFFFF and field size can\n"
 	"    be optionally specified by <value:size> notation: e.g. 0xabcd:4.\n"
+=======
+	"  --rework_id <lvalue>       REWORK_ID\n"
+	"\n"
+	"<value> must be a positive integer <= 0XFFFFFFFF, <lvalue> must be a\n"
+	"  positive integer <= 0xFFFFFFFFFFFFFFFF and field size can be\n"
+	"  optionally specified by <value:size> notation: e.g. 0xabcd:4.\n"
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	"<size> must be a positive integer <= 0XFFFF.\n"
 	"<string> is a string\n"
 	"\n";
@@ -124,6 +153,11 @@ const char help_show[] =
 
 struct integer_field {
 	uint32_t val;
+	int size;
+};
+
+struct long_integer_field {
+	uint64_t val;
 	int size;
 };
 
@@ -224,7 +258,7 @@ static int parse_integer_field(const char *arg, struct integer_field *f)
 	char *e;
 	char *ch;
 
-	val = strtoul(arg, &e, 0);
+	val = strtoull(arg, &e, 0);
 	if (val > UINT32_MAX || !*arg || (e && *e && *e != ':')) {
 		fprintf(stderr, "Invalid integer value\n");
 		return -1;
@@ -234,7 +268,7 @@ static int parse_integer_field(const char *arg, struct integer_field *f)
 	ch = strchr(arg, ':');
 	if (ch) {
 		ch++;
-		val = strtoul(ch, &e , 0);
+		val = strtoull(ch, &e, 0);
 		if (val < 1 || 4 < val || !*ch || (e && *e)) {
 			fprintf(stderr, "Invalid size suffix\n");
 			return -1;
@@ -253,6 +287,48 @@ static int parse_integer_field(const char *arg, struct integer_field *f)
 	return 0;
 }
 
+static int parse_uint64_field(const char *arg, struct long_integer_field *f)
+{
+	uint64_t val;
+	char *e;
+	char *ch;
+
+	val = strtoul(arg, &e, 0);
+	/* strtoul sets an errno for invalid input. If the value read is out of
+	 * range of representable values by an unsigned long int, the function
+	 * returns ULONG_MAX or ULONG_MIN and the errno is set to ERANGE.
+	 */
+	if (errno == ERANGE || !*arg || (e && *e && *e != ':')) {
+		fprintf(stderr, "Invalid integer value\n");
+		return -1;
+	}
+	f->val = val;
+
+	ch = strchr(arg, ':');
+	if (ch) {
+		ch++;
+		val = strtoul(ch, &e, 0);
+		if (val < 1 || 8 < val || !*ch || (e && *e)) {
+			fprintf(stderr, "Invalid size suffix\n");
+			return -1;
+		}
+		f->size = val;
+	} else {
+		if (f->val < UINT32_MAX)
+			f->size = estimate_field_size(f->val);
+		else
+			f->size = 8; /* assign default long int size */
+	}
+
+	if (f->size < 8 && (f->val > (1ull << f->size * 8))) {
+		fprintf(stderr, "Value (0x%llx) exceeds field size (%d)\n",
+			(unsigned long long)f->val, f->size);
+		return -1;
+	}
+
+	return 0;
+}
+
 static int cmd_create(int argc, char **argv)
 {
 	uint8_t *cbi;
@@ -264,6 +340,10 @@ static int cmd_create(int argc, char **argv)
 		struct integer_field fw_config;
 		struct integer_field pcb_supplier;
 		struct integer_field ssfc;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+		struct long_integer_field rework;
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		const char *dram_part_num;
 		const char *oem_name;
 	} bi;
@@ -294,7 +374,7 @@ static int cmd_create(int argc, char **argv)
 			set_mask |= ARGS_MASK_BOARD_VERSION;
 			break;
 		case OPT_ERASE_BYTE:
-			erase = strtoul(optarg, &e, 0);
+			erase = strtoull(optarg, &e, 0);
 			if (!*optarg || (e && *e)) {
 				fprintf(stderr, "Invalid --erase_byte\n");
 				return -1;
@@ -307,10 +387,9 @@ static int cmd_create(int argc, char **argv)
 		case OPT_OEM_ID:
 			if (parse_integer_field(optarg, &bi.oem))
 				return -1;
-			set_mask |= ARGS_MASK_OEM_ID;
 			break;
 		case OPT_SIZE:
-			val = strtoul(optarg, &e, 0);
+			val = strtoull(optarg, &e, 0);
 			if (val > UINT16_MAX || !*optarg || (e && *e)) {
 				fprintf(stderr, "Invalid --size\n");
 				return -1;
@@ -345,11 +424,18 @@ static int cmd_create(int argc, char **argv)
 			if (parse_integer_field(optarg, &bi.ssfc))
 				return -1;
 			break;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+		case OPT_REWORK_ID:
+			if (parse_uint64_field(optarg, &bi.rework))
+				return -1;
+			break;
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		}
 	}
 
 	if (set_mask != (ARGS_MASK_BOARD_VERSION | ARGS_MASK_FILENAME |
-			ARGS_MASK_OEM_ID | ARGS_MASK_SIZE | ARGS_MASK_SKU_ID)) {
+			ARGS_MASK_SIZE | ARGS_MASK_SKU_ID)) {
 		fprintf(stderr, "Missing required arguments\n");
 		print_help_create();
 		return -1;
@@ -376,6 +462,7 @@ static int cmd_create(int argc, char **argv)
 	p = cbi_set_data(p, CBI_TAG_PCB_SUPPLIER, &bi.pcb_supplier.val,
 			bi.pcb_supplier.size);
 	p = cbi_set_data(p, CBI_TAG_SSFC, &bi.ssfc.val, bi.ssfc.size);
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	if (bi.dram_part_num != NULL) {
 		p = cbi_set_data(p, CBI_TAG_DRAM_PART_NUM, bi.dram_part_num,
 				strlen(bi.dram_part_num) + 1);
@@ -384,17 +471,22 @@ static int cmd_create(int argc, char **argv)
 		p = cbi_set_data(p, CBI_TAG_OEM_NAME, bi.oem_name,
 				strlen(bi.oem_name) + 1);
 	}
+=======
+	p = cbi_set_data(p, CBI_TAG_REWORK_ID, &bi.rework.val, bi.rework.size);
+	p = cbi_set_string(p, CBI_TAG_DRAM_PART_NUM, bi.dram_part_num);
+	p = cbi_set_string(p, CBI_TAG_OEM_NAME, bi.oem_name);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 	h->total_size = p - cbi;
 	h->crc = cbi_crc8(h);
 
 	/* Output image */
 	rv = write_file(filename, cbi, size);
+	free(cbi);
 	if (rv) {
 		fprintf(stderr, "Unable to write CBI image to %s\n", filename);
 		return rv;
 	}
-	free(cbi);
 
 	fprintf(stderr, "CBI image is created successfully\n");
 
@@ -417,7 +509,8 @@ static void print_string(const uint8_t *buf, enum cbi_data_tag tag)
 
 static void print_integer(const uint8_t *buf, enum cbi_data_tag tag)
 {
-	uint32_t v;
+	uint64_t v;
+
 	struct cbi_data *d = cbi_find_tag(buf, tag);
 	const char *name;
 
@@ -436,12 +529,16 @@ static void print_integer(const uint8_t *buf, enum cbi_data_tag tag)
 	case 4:
 		v = *(uint32_t *)d->value;
 		break;
+	case 8:
+		v = *(uint64_t *)d->value;
+		break;
 	default:
 		printf("    %s: Integer of size %d not supported\n",
 		       name, d->size);
 		return;
 	}
-	printf("    %s: %u (0x%x, %u, %u)\n", name, v, v, d->tag, d->size);
+	printf("    %s: %llu (0x%llx, %u, %u)\n", name, (unsigned long long)v,
+		(unsigned long long)v, d->tag, d->size);
 }
 
 static int cmd_show(int argc, char **argv)
@@ -489,11 +586,13 @@ static int cmd_show(int argc, char **argv)
 
 	if (memcmp(h->magic, cbi_magic, sizeof(cbi_magic))) {
 		fprintf(stderr, "Invalid Magic\n");
+		free(buf);
 		return -1;
 	}
 
 	if (cbi_crc8(h) != h->crc) {
 		fprintf(stderr, "Invalid CRC\n");
+		free(buf);
 		return -1;
 	}
 
@@ -508,6 +607,10 @@ static int cmd_show(int argc, char **argv)
 	print_integer(buf, CBI_TAG_FW_CONFIG);
 	print_integer(buf, CBI_TAG_PCB_SUPPLIER);
 	print_integer(buf, CBI_TAG_SSFC);
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+	print_integer(buf, CBI_TAG_REWORK_ID);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	print_string(buf, CBI_TAG_DRAM_PART_NUM);
 	print_string(buf, CBI_TAG_OEM_NAME);
 

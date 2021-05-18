@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -18,6 +18,10 @@
 #include "throttle_ap.h"
 #include "timer.h"
 #include "util.h"
+
+#ifdef CONFIG_ZEPHYR
+#include "temp_sensor/temp_sensor.h"
+#endif
 
 /* Console output macros */
 #define CPUTS(outstr) cputs(CC_THERMAL, outstr)
@@ -42,12 +46,18 @@ int thermal_fan_percent(int low, int high, int cur)
 }
 
 /* The logic below is hard-coded for only three thresholds: WARN, HIGH, HALT.
- * This is just a sanity check to be sure we catch any changes in thermal.h
+ * This is just a validity check to be sure we catch any changes in thermal.h
  */
 BUILD_ASSERT(EC_TEMP_THRESH_COUNT == 3);
 
 /* Keep track of which thresholds have triggered */
 static cond_t cond_hot[EC_TEMP_THRESH_COUNT];
+
+/* thermal sensor read delay */
+#if defined(CONFIG_TEMP_SENSOR_POWER_GPIO) && \
+	defined(CONFIG_TEMP_SENSOR_FIRST_READ_DELAY_MS)
+static int first_read_delay = CONFIG_TEMP_SENSOR_FIRST_READ_DELAY_MS;
+#endif
 
 static void thermal_control(void)
 {
@@ -58,6 +68,19 @@ static void thermal_control(void)
 	int num_sensors_read;
 	int fmax;
 	int temp_fan_configured;
+
+#ifdef CONFIG_CUSTOM_FAN_CONTROL
+	int temp[TEMP_SENSOR_COUNT];
+#endif
+
+	/* add delay to ensure thermal sensor is ready when EC boot */
+#if defined(CONFIG_TEMP_SENSOR_POWER_GPIO) && \
+	defined(CONFIG_TEMP_SENSOR_FIRST_READ_DELAY_MS)
+	if (first_read_delay != 0) {
+		msleep(first_read_delay);
+		first_read_delay = 0;
+	}
+#endif
 
 	/* Get ready to count things */
 	memset(count_over, 0, sizeof(count_over));
@@ -72,6 +95,12 @@ static void thermal_control(void)
 
 		/* read one */
 		rv = temp_sensor_read(i, &t);
+
+#ifdef CONFIG_CUSTOM_FAN_CONTROL
+		/* Store all sensors value */
+		temp[i] = K_TO_C(t);
+#endif
+
 		if (rv != EC_SUCCESS)
 			continue;
 		else
@@ -119,8 +148,15 @@ static void thermal_control(void)
 		 * bringup of a new board, where we haven't debugged the I2C
 		 * bus to the sensors; forcing a shutdown in that case would
 		 * merely hamper board bringup.
+		 *
+		 * If in G3, then there is no need trigger an SMI event since
+		 * the AP is off and this can be an expected state if
+		 * temperature sensors are powered by a power rail that's only
+		 * on if the AP is out of G3. Note this could be 'ANY_OFF' as
+		 * well, but that causes the thermal unit test to fail.
 		 */
-		smi_sensor_failure_warning();
+		if (!chipset_in_state(CHIPSET_STATE_HARD_OFF))
+			smi_sensor_failure_warning();
 		return;
 	}
 
@@ -139,6 +175,13 @@ static void thermal_control(void)
 
 	if (cond_went_true(&cond_hot[EC_TEMP_THRESH_HALT])) {
 		CPRINTS("thermal SHUTDOWN");
+
+		/* Print temperature sensor values before shutting down AP */
+		if (IS_ENABLED(CONFIG_CMD_TEMP_SENSOR)) {
+			console_command_temps(1, NULL);
+			cflush();
+		}
+
 		chipset_force_shutdown(CHIPSET_SHUTDOWN_THERMAL);
 	} else if (cond_went_false(&cond_hot[EC_TEMP_THRESH_HALT])) {
 		/* We don't reboot automatically - the user has to push
@@ -167,13 +210,23 @@ static void thermal_control(void)
 
 	if (temp_fan_configured) {
 #ifdef CONFIG_FANS
-	/* TODO(crosbug.com/p/23797): For now, we just treat all fans the
-	 * same. It would be better if we could assign different thermal
-	 * profiles to each fan - in case one fan cools the CPU while another
-	 * cools the radios or battery.
-	 */
+#ifdef CONFIG_CUSTOM_FAN_CONTROL
+		for (i = 0; i < fan_get_count(); i++) {
+			if (!is_thermal_control_enabled(i))
+				continue;
+
+			board_override_fan_control(i, temp);
+		}
+#else
+		/* TODO(crosbug.com/p/23797): For now, we just treat all
+		 * fans the same. It would be better if we could assign
+		 * different thermal profiles to each fan - in case one
+		 * fan cools the CPU while another cools the radios or
+		 * battery.
+		 */
 		for (i = 0; i < fan_get_count(); i++)
 			fan_set_percent_needed(i, fmax);
+#endif
 #endif
 	}
 }
@@ -258,7 +311,8 @@ DECLARE_CONSOLE_COMMAND(thermalset, command_thermalset,
  * not version 0. Different structs, different meanings.
  */
 
-static int thermal_command_set_threshold(struct host_cmd_handler_args *args)
+static enum ec_status
+thermal_command_set_threshold(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_thermal_set_threshold_v1 *p = args->params;
 
@@ -273,7 +327,8 @@ DECLARE_HOST_COMMAND(EC_CMD_THERMAL_SET_THRESHOLD,
 		     thermal_command_set_threshold,
 		     EC_VER_MASK(1));
 
-static int thermal_command_get_threshold(struct host_cmd_handler_args *args)
+static enum ec_status
+thermal_command_get_threshold(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_thermal_get_threshold_v1 *p = args->params;
 	struct ec_thermal_config *r = args->response;

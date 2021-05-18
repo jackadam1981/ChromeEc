@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -210,3 +211,5 @@ struct vendor_cc_spi_hash_request {
 #define WPV_ATBOOT_ENABLE	(1 << 4)
 
 #endif /* __INCLUDE_TPM_VENDOR_CMDS_H */
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

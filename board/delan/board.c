@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /* Copyright 2018 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -237,3 +238,5 @@ static void board_kblight_init(void)
 	lm3630a_poweron();
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_kblight_init, HOOK_PRIO_DEFAULT);
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

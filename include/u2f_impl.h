@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /* Copyright 2017 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -119,3 +120,5 @@ unsigned u2f_custom_dispatch(uint8_t ins, struct apdu apdu, uint8_t *buf,
 			     unsigned *ret_len) __attribute__((weak));
 
 #endif /* __CROS_EC_U2F_IMPL_H */
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

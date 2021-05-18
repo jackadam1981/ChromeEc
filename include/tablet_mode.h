@@ -26,20 +26,54 @@ void tablet_set_mode(int mode);
 void tablet_disable(void);
 
 /**
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
  * Interrupt service routine for hall sensor.
+=======
+ * Interrupt service routine for gmr sensor.
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
  *
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
  * HALL_SENSOR_GPIO_L must be defined.
+=======
+ * GMR_TABLET_MODE_GPIO_L must be defined.
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
  *
  * @param signal: GPIO signal
  */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 void hall_sensor_isr(enum gpio_signal signal);
+=======
+void gmr_tablet_switch_isr(enum gpio_signal signal);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 /**
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
  * Disables the interrupt on GPIO connected to hall sensor. Additionally, it
  * disables the tablet mode switch sub-system and turns off tablet mode. This is
  * useful when the same firmware is shared between convertible and clamshell
  * devices to turn off hall sensor and tablet mode detection on clamshell.
+=======
+ * Disables the interrupt on GPIO connected to gmr sensor. Additionally, it
+ * disables the tablet mode switch sub-system and turns off tablet mode. This
+ * is useful when the same firmware is shared between convertible and clamshell
+ * devices to turn off gmr sensor's tablet mode detection on clamshell.
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
  */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 void hall_sensor_disable(void);
 
 #endif
+=======
+void gmr_tablet_switch_disable(void);
+
+/**
+ * This must be defined when CONFIG_GMR_TABLET_MODE_CUSTOM is defined. This
+ * allows a board to override the default behavior that determines if the
+ * 360 sensor is active: !gpio_get_level(GMR_TABLET_MODE_GPIO_L).
+ *
+ * Returns 1 if the 360 sensor is active; otherwise 0.
+ */
+int board_sensor_at_360(void);
+
+#endif  /* __CROS_EC_TABLET_MODE_H */
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

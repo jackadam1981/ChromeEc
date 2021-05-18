@@ -22,15 +22,16 @@
 #define CONFIG_HOSTCMD_DEBUG_MODE HCDEBUG_OFF
 
 /* ISH specific*/
-#define CONFIG_ISH_30
 #undef  CONFIG_DEBUG_ASSERT
 #define CONFIG_CLOCK_CRYSTAL
-#define CONFIG_ISH_UART_0
 /* EC */
-#define CONFIG_FLASH_SIZE 0x80000
+#define CONFIG_FLASH_SIZE_BYTES 0x80000
 #define CONFIG_FPU
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
+
+/* HID subsystem */
+#define CONFIG_HID_HECI
 
 /* I2C ports */
 #define I2C_PORT_TP ISH_I2C0

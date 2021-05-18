@@ -15,7 +15,11 @@
 #include "common.h"
 #include "cros_board_info.h"
 #include "driver/accel_kionix.h"
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #include "driver/accelgyro_bmi160.h"
+=======
+#include "driver/accelgyro_bmi_common.h"
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 #include "driver/accelgyro_icm426xx.h"
 #include "driver/accelgyro_icm_common.h"
 #include "driver/charger/bd9995x.h"
@@ -41,7 +45,7 @@
 #include "switch.h"
 #include "system.h"
 #include "tablet_mode.h"
-#include "tcpci.h"
+#include "tcpm/tcpci.h"
 #include "temp_sensor.h"
 #include "thermistor.h"
 #include "usb_charge.h"
@@ -132,18 +136,15 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_BATTERY] = {.name = "Battery",
 				 .type = TEMP_SENSOR_TYPE_BATTERY,
 				 .read = charge_get_battery_temp,
-				 .idx = 0,
-				 .action_delay_sec = 1},
+				 .idx = 0},
 	[TEMP_SENSOR_AMBIENT] = {.name = "Ambient",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_51k1_47k_4050b,
-				 .idx = ADC_TEMP_SENSOR_AMB,
-				 .action_delay_sec = 5},
+				 .idx = ADC_TEMP_SENSOR_AMB},
 	[TEMP_SENSOR_CHARGER] = {.name = "Charger",
 				 .type = TEMP_SENSOR_TYPE_BOARD,
 				 .read = get_temp_3v3_13k7_47k_4050b,
-				 .idx = ADC_TEMP_SENSOR_CHARGER,
-				 .action_delay_sec = 1},
+				 .idx = ADC_TEMP_SENSOR_CHARGER},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -185,7 +186,11 @@ const mat33_fp_t base_ar_cam_ref = {
 
 /* sensor private data */
 static struct kionix_accel_data g_kx022_data;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 static struct bmi160_drv_data_t g_bmi160_data;
+=======
+static struct bmi_drv_data_t g_bmi160_data;
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 static struct icm_drv_data_t g_icm426xx_data;
 
 /* Drivers */
@@ -200,9 +205,13 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_lid_mutex,
 	 .drv_data = &g_kx022_data,
 	 .port = I2C_PORT_SENSOR,
-	 .addr = KX022_ADDR1,
+	 .i2c_spi_addr_flags = KX022_ADDR1_FLAGS,
 	 .rot_standard_ref = NULL, /* Identity matrix. */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	 .default_range = 4, /* g */
+=======
+	 .default_range = 2, /* g */
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	 .min_frequency = KX022_ACCEL_MIN_FREQ,
 	 .max_frequency = KX022_ACCEL_MAX_FREQ,
 	 .config = {
@@ -226,11 +235,11 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = I2C_PORT_SENSOR,
-	 .addr = BMI160_ADDR0,
+	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 	 .rot_standard_ref = &base_standard_ref,
-	 .default_range = 4,  /* g */
-	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
-	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
+	 .default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+	 .min_frequency = BMI_ACCEL_MIN_FREQ,
+	 .max_frequency = BMI_ACCEL_MAX_FREQ,
 	 .config = {
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
@@ -254,11 +263,11 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = I2C_PORT_SENSOR,
-	 .addr = BMI160_ADDR0,
+	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = &base_standard_ref,
-	 .min_frequency = BMI160_GYRO_MIN_FREQ,
-	 .max_frequency = BMI160_GYRO_MAX_FREQ,
+	 .min_frequency = BMI_GYRO_MIN_FREQ,
+	 .max_frequency = BMI_GYRO_MAX_FREQ,
 	},
 	[VSYNC] = {
 	.name = "Camera VSYNC",
@@ -285,6 +294,7 @@ struct motion_sensor_t icm426xx_base_accel = {
 	 .mutex = &g_base_mutex,
 	 .drv_data = &g_icm426xx_data,
 	 .port = I2C_PORT_SENSOR,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	 .addr = ICM426XX_ADDR0_FLAGS,
 	 .rot_standard_ref = &base_icm_ref,
 	 .default_range = 4,  /* g */
@@ -315,6 +325,38 @@ struct motion_sensor_t icm426xx_base_gyro = {
 	 .drv_data = &g_icm426xx_data,
 	 .port = I2C_PORT_SENSOR,
 	 .addr = ICM426XX_ADDR0_FLAGS,
+=======
+	 .i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
+	 .rot_standard_ref = &base_icm_ref,
+	 .default_range = 4,  /* g */
+	 .min_frequency = ICM426XX_ACCEL_MIN_FREQ,
+	 .max_frequency = ICM426XX_ACCEL_MAX_FREQ,
+	 .config = {
+		 /* EC use accel for angle detection */
+		 [SENSOR_CONFIG_EC_S0] = {
+			.odr = 13000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		 },
+		 /* Sensor on for angle detection */
+		 [SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		 },
+	 },
+};
+
+struct motion_sensor_t icm426xx_base_gyro = {
+	 .name = "Base Gyro",
+	 .active_mask = SENSOR_ACTIVE_S0_S3,
+	 .chip = MOTIONSENSE_CHIP_ICM426XX,
+	 .type = MOTIONSENSE_TYPE_GYRO,
+	 .location = MOTIONSENSE_LOC_BASE,
+	 .drv = &icm426xx_drv,
+	 .mutex = &g_base_mutex,
+	 .drv_data = &g_icm426xx_data,
+	 .port = I2C_PORT_SENSOR,
+	 .i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = &base_icm_ref,
 	 .min_frequency = ICM426XX_GYRO_MIN_FREQ,
@@ -337,9 +379,13 @@ static int board_with_ar_cam(void)
 	/* SKU ID of Sparky360 with AR Cam: 26 */
 	return sku_id == 26;
 }
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 
 static int base_gyro_config;
 
+=======
+static int base_gyro_config;
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 static void board_update_sensor_config_from_sku(void)
 {
 	if (board_is_convertible()) {
@@ -355,7 +401,11 @@ static void board_update_sensor_config_from_sku(void)
 		gpio_enable_interrupt(GPIO_BASE_SIXAXIS_INT_L);
 	} else {
 		motion_sensor_count = 0;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		hall_sensor_disable();
+=======
+		gmr_tablet_switch_disable();
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		/* Base accel is not stuffed, don't allow line to float */
 		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,
 			       GPIO_INPUT | GPIO_PULL_DOWN);
@@ -416,7 +466,11 @@ static void board_usb_charge_mode_init(void)
 	 * Only overriding the USB_DISALLOW_SUSPEND_CHARGE in RO is enough because
 	 * USB_SYSJUMP_TAG preserves the settings to RW. And we should honor to it.
 	 */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	if (system_jumped_to_this_image())
+=======
+	if (system_jumped_late())
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		return;
 
 	/* Currently only blorb and droid support this feature. */
@@ -456,6 +510,7 @@ static void cbi_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, cbi_init, HOOK_PRIO_INIT_I2C + 1);
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 uint32_t board_override_feature_flags0(uint32_t flags0)
 {
 	/*
@@ -471,6 +526,47 @@ uint32_t board_override_feature_flags1(uint32_t flags1)
 {
 	return flags1;
 }
+=======
+__override uint32_t board_override_feature_flags0(uint32_t flags0)
+{
+	/*
+	 * Remove keyboard backlight feature for devices that don't support it.
+	 */
+	if (sku_id == 33 || sku_id == 34 || sku_id == 41 || sku_id == 42)
+		return flags0;
+	else
+		return (flags0 & ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));
+}
+
+static const struct ppc_config_t ppc_syv682x_port0 = {
+		.i2c_port = I2C_PORT_TCPC0,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
+};
+
+static const struct ppc_config_t ppc_syv682x_port1 = {
+		.i2c_port = I2C_PORT_TCPC1,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
+};
+
+static void board_setup_ppc(void)
+{
+	if (!support_syv_ppc())
+		return;
+
+	memcpy(&ppc_chips[USB_PD_PORT_TCPC_0],
+	       &ppc_syv682x_port0,
+	       sizeof(struct ppc_config_t));
+	memcpy(&ppc_chips[USB_PD_PORT_TCPC_1],
+	       &ppc_syv682x_port1,
+	       sizeof(struct ppc_config_t));
+
+	gpio_set_flags(GPIO_USB_PD_C0_INT_ODL, GPIO_INT_BOTH);
+	gpio_set_flags(GPIO_USB_PD_C1_INT_ODL, GPIO_INT_BOTH);
+}
+DECLARE_HOOK(HOOK_INIT, board_setup_ppc, HOOK_PRIO_INIT_I2C + 2);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 void board_hibernate_late(void) {
 
@@ -504,6 +600,7 @@ void lid_angle_peripheral_enable(int enable)
 
 void board_overcurrent_event(int port, int is_overcurrented)
 {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	/* Sanity check the port. */
 	if ((port < 0) || (port >= CONFIG_USB_PD_PORT_MAX_COUNT))
 		return;
@@ -540,6 +637,16 @@ static void board_setup_ppc(void)
 	gpio_set_flags(GPIO_USB_PD_C1_INT_ODL, GPIO_INT_BOTH);
 }
 DECLARE_HOOK(HOOK_INIT, board_setup_ppc, HOOK_PRIO_INIT_I2C + 2);
+=======
+	/* Check that port number is valid. */
+	if ((port < 0) || (port >= CONFIG_USB_PD_PORT_MAX_COUNT))
+		return;
+
+	/* Note that the level is inverted because the pin is active low. */
+	gpio_set_level(GPIO_USB_C_OC, !is_overcurrented);
+}
+
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 int ppc_get_alert_status(int port)
 {

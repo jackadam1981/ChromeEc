@@ -75,6 +75,7 @@ static void sspi_transmission_end(void)
 }
 
 /* We assume only one SPI port in the chip, one SPI device */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 int spi_enable(int port, int enable)
 {
 	if (enable) {
@@ -167,5 +168,101 @@ static void sspi_init(void)
 	for (i = 0; i < spi_devices_used; i++)
 		/* Disabling spi module */
 		spi_enable(spi_devices[i].port, 0);
+=======
+int spi_enable(const struct spi_device_t *spi_device, int enable)
+{
+	int port = spi_device->port;
+
+	if (enable) {
+		/*
+		 * bit[5:4]
+		 * 00b: SPI channel 0 and channel 1 are disabled.
+		 * 10b: SSCK/SMOSI/SMISO/SSCE1# are enabled.
+		 * 01b: SSCK/SMOSI/SMISO/SSCE0# are enabled.
+		 * 11b: SSCK/SMOSI/SMISO/SSCE1#/SSCE0# are enabled.
+		 */
+		if (port == SSPI_CH_CS1)
+			IT83XX_GPIO_GRC1 |= 0x20;
+		else
+			IT83XX_GPIO_GRC1 |= 0x10;
+
+		gpio_config_module(MODULE_SPI_MASTER, 1);
+	} else {
+		if (port == SSPI_CH_CS1)
+			IT83XX_GPIO_GRC1 &= ~0x20;
+		else
+			IT83XX_GPIO_GRC1 &= ~0x10;
+
+		gpio_config_module(MODULE_SPI_MASTER, 0);
+	}
+
+	return EC_SUCCESS;
+}
+
+int spi_transaction(const struct spi_device_t *spi_device,
+		const uint8_t *txdata, int txlen,
+		uint8_t *rxdata, int rxlen)
+{
+	int idx;
+	uint8_t port = spi_device->port;
+	static struct mutex spi_mutex;
+
+	mutex_lock(&spi_mutex);
+	/* bit[0]: Write cycle */
+	IT83XX_SSPI_SPICTRL2 &= ~0x04;
+	for (idx = 0x00; idx < txlen; idx++) {
+		IT83XX_SSPI_SPIDATA = txdata[idx];
+		if (port == SSPI_CH_CS1)
+			/* Write 1 to start the data transmission of CS1 */
+			IT83XX_SSPI_SPISTS |= 0x08;
+		else
+			/* Write 1 to start the data transmission of CS0 */
+			IT83XX_SSPI_SPISTS |= 0x10;
+	}
+
+	/* bit[1]: Read cycle */
+	IT83XX_SSPI_SPICTRL2 |= 0x04;
+	for (idx = 0x00; idx < rxlen; idx++) {
+		if (port == SSPI_CH_CS1)
+			/* Write 1 to start the data transmission of CS1 */
+			IT83XX_SSPI_SPISTS |= 0x08;
+		else
+			/* Write 1 to start the data transmission of CS0 */
+			IT83XX_SSPI_SPISTS |= 0x10;
+		rxdata[idx] = IT83XX_SSPI_SPIDATA;
+	}
+
+	sspi_transmission_end();
+	mutex_unlock(&spi_mutex);
+
+	return EC_SUCCESS;
+}
+
+static void sspi_init(void)
+{
+	int i;
+
+	clock_enable_peripheral(CGC_OFFSET_SSPI, 0, 0);
+	sspi_frequency(sspi_clk_8mhz);
+
+	/*
+	 * bit[5:3] Byte Width (BYTEWIDTH)
+	 * 000b: 8-bit transmission
+	 * 001b: 1-bit transmission
+	 * 010b: 2-bit transmission
+	 * 011b: 3-bit transmission
+	 * 100b: 4-bit transmission
+	 * 101b: 5-bit transmission
+	 * 110b: 6-bit transmission
+	 * 111b: 7-bit transmission
+	 *
+	 * bit[1] Blocking selection
+	 */
+	IT83XX_SSPI_SPICTRL2 |= 0x02;
+
+	for (i = 0; i < spi_devices_used; i++)
+		/* Disabling spi module */
+		spi_enable(&spi_devices[i], 0);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 DECLARE_HOOK(HOOK_INIT, sspi_init, HOOK_PRIO_INIT_SPI);

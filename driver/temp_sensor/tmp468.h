@@ -1,4 +1,4 @@
-/* Copyright (c) 2018 The Chromium OS Authors. All rights reserved.
+/* Copyright 2018 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -8,7 +8,7 @@
 #ifndef __CROS_EC_TMP468_H
 #define __CROS_EC_TMP468_H
 
-#define TMP468_I2C_ADDR (0x90 | I2C_FLAG_BIG_ENDIAN)
+#define TMP468_I2C_ADDR_FLAGS (0x48 | I2C_FLAG_BIG_ENDIAN)
 #define TMP468_SHIFT1 7
 
 #define TMP468_LOCAL			0x00
@@ -77,7 +77,7 @@
 #define TMP468_DEVICE_ID		0xfd
 #define TMP468_MANUFACTURER_ID		0xfe
 
-#define TMP468_SHUTDOWN			(1 << 5)
+#define TMP468_SHUTDOWN			BIT(5)
 
 enum tmp468_channel_id {
 	TMP468_CHANNEL_LOCAL,

@@ -39,6 +39,10 @@
  * #define CONFIG_MCHP_LFW_DEBUG
  */
 
+/*
+ * EC UART console on UART 0 or 1
+ */
+#define CONFIG_UART_CONSOLE 0
 
 /*
  * Override Boot-ROM JTAG mode
@@ -93,17 +97,17 @@
  * #define CONFIG_DEBUG_DISABLE_WRITE_BUFFER
  */
 
-/* New eSPI slave configuration items */
+/* New eSPI configuration items */
 
 /*
- * Maximum clock frequence eSPI EC slave advertises
+ * Maximum clock frequence eSPI EC advertises
  * Values in MHz are 20, 25, 33, 50, and 66
  */
 /* KBL + EVB fly-wire hook up only supports 20MHz */
 #define CONFIG_HOSTCMD_ESPI_EC_MAX_FREQ		20
 
 /*
- * EC eSPI slave advertises IO lanes
+ * EC eSPI advertises IO lanes
  * 0 = Single
  * 1 = Single and Dual
  * 2 = Single and Quad
@@ -120,12 +124,6 @@
  * bit[3] = 1 Flash channel
  */
 #define CONFIG_HOSTCMD_ESPI_EC_CHAN_BITMAP	0x0F
-
-/*
- * MEC17xx EVB + KBL RVP3 board uses eSPI default of
- * Platform Reset being a virtual wire.
- */
-#define CONFIG_HOSTCMD_ESPI_PLTRST_IS_VWIRE
 
 #define CONFIG_MCHP_ESPI_VW_SAVE_ON_SLEEP
 
@@ -150,7 +148,6 @@
 
 
 /* #define CONFIG_CHARGER */
-/* #define CONFIG_CHARGER_V2 */
 
 /* #define CONFIG_CHARGER_DISCHARGE_ON_AC */
 /* #define CONFIG_CHARGER_ISL9237 */
@@ -172,19 +169,24 @@
 #define CONFIG_CHIPSET_RESET_HOOK
 
 #define CONFIG_HOSTCMD_ESPI
-#define CONFIG_HOSTCMD_ESPI_VW_SLP_SIGNALS
+#define CONFIG_HOSTCMD_ESPI_VW_SLP_S3
+#define CONFIG_HOSTCMD_ESPI_VW_SLP_S4
 
 #define CONFIG_CLOCK_CRYSTAL
 #define CONFIG_EXTPOWER_GPIO
 /* #define CONFIG_HOSTCMD_PD */
 /* #define CONFIG_HOSTCMD_PD_PANIC */
 #define CONFIG_I2C
-#define CONFIG_I2C_MASTER
+#define CONFIG_I2C_CONTROLLER
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_LED_COMMON
+
+#ifdef CONFIG_ACCEL_KX022
 #define CONFIG_LID_ANGLE
-#define CONFIG_LID_ANGLE_SENSOR_BASE 0
-#define CONFIG_LID_ANGLE_SENSOR_LID 2
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#endif /* CONFIG_ACCEL_KX022 */
+
 #define CONFIG_LID_SWITCH
 /*
  * Enable MCHP Low Power Idle support
@@ -233,8 +235,10 @@
 #define CONFIG_USB_MUX_PI3USB30532
 #define CONFIG_USB_MUX_PS8740
 #define CONFIG_USB_POWER_DELIVERY
+#define CONFIG_USB_PD_TCPMV1
 #define CONFIG_USB_PD_ALT_MODE
 #define CONFIG_USB_PD_ALT_MODE_DFP
+#define CONFIG_USB_PD_DP_HPD_GPIO
 #define CONFIG_USB_PD_DUAL_ROLE
 #define CONFIG_USB_PD_LOGGING
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
@@ -270,10 +274,10 @@
  * Configure for smaller flash is OK for testing except
  * for SPI flash lock bit.
  */
- #define CONFIG_FLASH_SIZE 524288
+ #define CONFIG_FLASH_SIZE_BYTES 524288
  #define CONFIG_SPI_FLASH_W25X40
 /*
- * #define CONFIG_FLASH_SIZE 0x1000000
+ * #define CONFIG_FLASH_SIZE_BYTES 0x1000000
  * #define CONFIG_SPI_FLASH_W25Q128
  */
 
@@ -396,7 +400,7 @@
 #endif
 
 /* Ambient Light Sensor address */
-#define OPT3001_I2C_ADDR	OPT3001_I2C_ADDR1
+#define OPT3001_I2C_ADDR_FLAGS	OPT3001_I2C_ADDR1_FLAGS
 
 /* Modules we want to exclude */
 #undef CONFIG_CMD_HASH
@@ -419,19 +423,6 @@ enum adc_channel {
 	ADC_CH_COUNT
 };
 
-/* power signal definitions */
-enum power_signal {
-	X86_RSMRST_L_PWRGD = 0,
-	X86_SLP_S3_DEASSERTED,
-	X86_SLP_S4_DEASSERTED,
-	X86_SLP_SUS_DEASSERTED,
-	X86_PMIC_DPWROK,
-	X86_ALL_SYS_PWRGD,	/* MCHP mec1701_evb + SKL/KBL RVP3 */
-
-	/* Number of X86 signals */
-	POWER_SIGNAL_COUNT
-};
-
 enum temp_sensor_id {
 	TEMP_SENSOR_BATTERY,
 
@@ -443,6 +434,15 @@ enum temp_sensor_id {
 /*	TEMP_SENSOR_WIFI, */
 
 	TEMP_SENSOR_COUNT
+};
+
+enum sensor_id {
+	BASE_ACCEL,
+	BASE_GYRO,
+#ifdef CONFIG_ACCEL_KX022
+	LID_ACCEL,
+#endif
+	SENSOR_COUNT,
 };
 
 /* Light sensors */
@@ -461,7 +461,6 @@ enum als_id {
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 
 /* delay to turn on/off vconn */
-#define PD_VCONN_SWAP_DELAY 5000 /* us */
 
 /* Define typical operating power and max power */
 #define PD_OPERATING_POWER_MW 15000
@@ -479,14 +478,6 @@ enum als_id {
 
 /* Map I2C port to controller */
 int board_i2c_p2c(int port);
-
-/* Return the two slave addresses the specified
- * controller will respond to when controller
- * is acting as a slave.
- * b[6:0]  = b[7:1] of I2C address 1
- * b[14:8] = b[7:1] of I2C address 2
- */
-uint16_t board_i2c_slave_addrs(int controller);
 
 /* Reset PD MCU */
 void board_reset_pd_mcu(void);

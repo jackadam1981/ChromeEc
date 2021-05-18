@@ -32,6 +32,7 @@
  * address, mask, and disconnect value need to be provided.
  */
 const struct board_batt_params board_battery_info[] = {
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	/* SMP L17M3PB0 */
 	[BATTERY_SMP] = {
 		.fuel_gauge = {
@@ -87,6 +88,63 @@ const struct board_batt_params board_battery_info[] = {
 		},
 	},
 	/* Sunwoda L18D3PG1 */
+=======
+	/* SMP 5B10Q13163 */
+	[BATTERY_SMP] = {
+		.fuel_gauge = {
+			.manuf_name = "SMP",
+			.ship_mode = {
+				.reg_addr = 0x34,
+				.reg_data = { 0x0000, 0x1000 },
+			},
+			.fet = {
+				.reg_addr = 0x34,
+				.reg_mask = 0x0100,
+				.disconnect_val = 0x0100,
+			}
+		},
+		.batt_info = {
+			.voltage_max		= 13050, /* mV */
+			.voltage_normal		= 11250, /* mV */
+			.voltage_min		= 9000,  /* mV */
+			.precharge_current	= 186,	 /* mA */
+			.start_charging_min_c	= 0,
+			.start_charging_max_c	= 50,
+			.charging_min_c		= 0,
+			.charging_max_c		= 60,
+			.discharging_min_c	= -20,
+			.discharging_max_c	= 60,
+		},
+	},
+	/* LGC 5B10Q13162  */
+	[BATTERY_LGC] = {
+		.fuel_gauge = {
+			.manuf_name = "LGC",
+			.ship_mode = {
+				.reg_addr = 0x34,
+				.reg_data = { 0x0000, 0x1000 },
+			},
+			.fet = {
+				.reg_addr = 0x34,
+				.reg_mask = 0x0100,
+				.disconnect_val = 0x0100,
+			}
+		},
+		.batt_info = {
+			.voltage_max		= 13050, /* mV */
+			.voltage_normal		= 11400, /* mV */
+			.voltage_min		= 9000,  /* mV */
+			.precharge_current	= 181,	 /* mA */
+			.start_charging_min_c	= 0,
+			.start_charging_max_c	= 50,
+			.charging_min_c		= 0,
+			.charging_max_c		= 60,
+			.discharging_min_c	= -20,
+			.discharging_max_c	= 73,
+		},
+	},
+	/* Sunwoda L18D3PG1  */
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	[BATTERY_SUNWODA] = {
 		.fuel_gauge = {
 			.manuf_name = "SUNWODA",

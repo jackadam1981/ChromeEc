@@ -9,12 +9,13 @@
 #include "kmsc_chip.h"
 #include "registers.h"
 #include "task.h"
-#include "tcpm.h"
+#include "tcpm/tcpm.h"
 #include "usb_pd.h"
 #include "console.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #ifdef CONFIG_USB_PD_TCPM_ITE83XX
 /* Store each port last message id of received packet */
 static uint8_t message_id_last[USBPD_PORT_COUNT];
@@ -56,17 +57,42 @@ static int consume_repeat_message(int port)
 	return ret;
 }
 
+=======
+#if defined(CONFIG_USB_PD_TCPM_ITE_ON_CHIP)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 static void chip_pd_irq(enum usbpd_port port)
 {
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
 
 	/* check status */
+	if (IS_ENABLED(IT83XX_INTC_FAST_SWAP_SUPPORT) &&
+		IS_ENABLED(CONFIG_USB_PD_FRS_TCPC) &&
+		IS_ENABLED(CONFIG_USB_PD_REV30)) {
+		/*
+		 * FRS detection must handle first, because we need to short
+		 * the interrupt -> board_frs_handler latency-critical time.
+		 */
+		if (USBPD_IS_FAST_SWAP_DETECT(port)) {
+			/* clear detect FRS signal (cc to GND) status */
+			USBPD_CLEAR_FRS_DETECT_STATUS(port);
+			if (board_frs_handler)
+				board_frs_handler(port);
+			/* inform TCPMv2 to change state */
+			pd_got_frs_signal(port);
+		}
+	}
+
 	if (USBPD_IS_HARD_RESET_DETECT(port)) {
 		/* clear interrupt */
 		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 		/* Invalidate last received message id variable */
 		invalidate_last_message_id(port);
+=======
+		USBPD_SW_RESET(port);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		task_set_event(PD_PORT_TO_TASK_ID(port),
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 			PD_EVENT_TCPC_RESET, 0);
 	} else {
 		if (USBPD_IS_RX_DONE(port)) {
@@ -80,6 +106,53 @@ static void chip_pd_irq(enum usbpd_port port)
 			IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
 			task_set_event(PD_PORT_TO_TASK_ID(port),
 				TASK_EVENT_PHY_TX_DONE, 0);
+=======
+			       PD_EVENT_RX_HARD_RESET);
+	}
+
+	if (USBPD_IS_RX_DONE(port)) {
+		tcpm_enqueue_message(port);
+		/* clear RX done interrupt */
+		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
+	}
+
+	if (USBPD_IS_TX_DONE(port)) {
+#ifdef CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2
+		it8xxx2_clear_tx_error_status(port);
+		/* check TX status, clear by TX_DONE status too */
+		if (USBPD_IS_TX_ERR(port))
+			it8xxx2_get_tx_error_status(port);
+#endif
+		/* clear TX done interrupt */
+		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
+		task_set_event(PD_PORT_TO_TASK_ID(port),
+			       TASK_EVENT_PHY_TX_DONE);
+	}
+
+	if (IS_ENABLED(IT83XX_INTC_PLUG_IN_OUT_SUPPORT)) {
+		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
+			if (USBPD_IS_PLUG_IN(port))
+				/*
+				 * When tcpc detect type-c plug in:
+				 * 1)If we are sink, disable detect interrupt,
+				 * messages on cc line won't trigger interrupt.
+				 * 2)If we are source, then set plug out
+				 * detection.
+				 */
+				switch_plug_out_type(port);
+			else
+				/*
+				 * When tcpc detect type-c plug out:
+				 * switch to detect plug in.
+				 */
+				IT83XX_USBPD_TCDCR(port) &=
+					~USBPD_REG_PLUG_OUT_SELECT;
+
+			/* clear type-c device plug in/out detect interrupt */
+			IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+			task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		}
 #ifdef IT83XX_INTC_PLUG_IN_SUPPORT
 		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
@@ -106,6 +179,12 @@ static void chip_pd_irq(enum usbpd_port port)
 	}
 }
 #endif
+
+int __ram_code intc_get_ec_int(void)
+{
+	extern volatile int ec_int;
+	return ec_int;
+}
 
 void intc_cpu_int_group_5(void)
 {
@@ -181,7 +260,7 @@ void intc_cpu_int_group_12(void)
 		espi_vw_interrupt();
 		break;
 #endif
-#ifdef CONFIG_USB_PD_TCPM_ITE83XX
+#ifdef CONFIG_USB_PD_TCPM_ITE_ON_CHIP
 	case IT83XX_IRQ_USBPD0:
 		chip_pd_irq(USBPD_PORT_A);
 		break;
@@ -189,7 +268,17 @@ void intc_cpu_int_group_12(void)
 	case IT83XX_IRQ_USBPD1:
 		chip_pd_irq(USBPD_PORT_B);
 		break;
-#endif /* CONFIG_USB_PD_TCPM_ITE83XX */
+#ifdef CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2
+	case IT83XX_IRQ_USBPD2:
+		chip_pd_irq(USBPD_PORT_C);
+		break;
+#endif
+#endif
+#ifdef CONFIG_SPI
+	case IT83XX_IRQ_SPI_SLAVE:
+		spi_slv_int_handler();
+		break;
+#endif
 	default:
 		break;
 	}
@@ -206,6 +295,11 @@ void intc_cpu_int_group_7(void)
 	case IT83XX_IRQ_ADC:
 		adc_interrupt();
 		break;
+#ifdef CONFIG_ADC_VOLTAGE_COMPARATOR
+	case IT83XX_IRQ_V_COMP:
+		voltage_comparator_interrupt();
+		break;
+#endif
 #endif
 	default:
 		break;
@@ -219,9 +313,14 @@ void intc_cpu_int_group_6(void)
 	int intc_group_6 = intc_get_ec_int();
 
 	switch (intc_group_6) {
-#ifdef CONFIG_I2C
+#if defined(CONFIG_I2C_CONTROLLER) || defined(CONFIG_I2C_PERIPHERAL)
 	case IT83XX_IRQ_SMB_A:
-		i2c_interrupt(IT83XX_I2C_CH_A);
+#ifdef CONFIG_I2C_PERIPHERAL
+		if (IT83XX_SMB_SFFCTL & IT83XX_SMB_SAFE)
+			i2c_periph_interrupt(IT83XX_I2C_CH_A);
+		else
+#endif
+			i2c_interrupt(IT83XX_I2C_CH_A);
 		break;
 
 	case IT83XX_IRQ_SMB_B:
@@ -233,15 +332,30 @@ void intc_cpu_int_group_6(void)
 		break;
 
 	case IT83XX_IRQ_SMB_D:
-		i2c_interrupt(IT83XX_I2C_CH_D);
+#ifdef CONFIG_I2C_PERIPHERAL
+		if (!(IT83XX_I2C_CTR(3) & IT83XX_I2C_MODE))
+			i2c_periph_interrupt(IT83XX_I2C_CH_D);
+		else
+#endif
+			i2c_interrupt(IT83XX_I2C_CH_D);
 		break;
 
 	case IT83XX_IRQ_SMB_E:
-		i2c_interrupt(IT83XX_I2C_CH_E);
+#ifdef CONFIG_I2C_PERIPHERAL
+		if (!(IT83XX_I2C_CTR(0) & IT83XX_I2C_MODE))
+			i2c_periph_interrupt(IT83XX_I2C_CH_E);
+		else
+#endif
+			i2c_interrupt(IT83XX_I2C_CH_E);
 		break;
 
 	case IT83XX_IRQ_SMB_F:
-		i2c_interrupt(IT83XX_I2C_CH_F);
+#ifdef CONFIG_I2C_PERIPHERAL
+		if (!(IT83XX_I2C_CTR(1) & IT83XX_I2C_MODE))
+			i2c_periph_interrupt(IT83XX_I2C_CH_F);
+		else
+#endif
+			i2c_interrupt(IT83XX_I2C_CH_F);
 		break;
 #endif
 	default:

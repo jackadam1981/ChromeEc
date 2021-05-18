@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /* Copyright 2017 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -272,3 +273,5 @@ enum vendor_cmd_rc vc_u2f_apdu(enum vendor_cmd_cc code, void *body,
 	return VENDOR_RC_SUCCESS;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_U2F_APDU, vc_u2f_apdu);
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

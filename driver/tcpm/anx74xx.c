@@ -10,8 +10,8 @@
 #include "console.h"
 #include "anx74xx.h"
 #include "task.h"
-#include "tcpci.h"
-#include "tcpm.h"
+#include "tcpm/tcpci.h"
+#include "tcpm/tcpm.h"
 #include "timer.h"
 #include "usb_charge.h"
 #include "usb_mux.h"
@@ -22,6 +22,11 @@
 #if !defined(CONFIG_USB_PD_TCPM_TCPCI)
 #error "ANX74xx is using part of standard TCPCI control"
 #error "Please upgrade your board configuration"
+#endif
+
+#if defined(CONFIG_USB_PD_REV30)
+#error "ANX74xx chips were developed before PD 3.0 and aren't PD 3.0 compliant"
+#error "Please undefine PD 3.0.  See b/159253723 for details"
 #endif
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -45,15 +50,37 @@ struct anx_state {
 
 static struct anx_state anx[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /* Save the selected rp value */
 static int selected_rp[CONFIG_USB_PD_PORT_MAX_COUNT];
+=======
+#ifdef CONFIG_USB_PD_DECODE_SOP
+/* Save the message address */
+static int msg_sop[CONFIG_USB_PD_PORT_MAX_COUNT];
+#endif
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 static int anx74xx_tcpm_init(int port);
 
 static void anx74xx_tcpm_set_auto_good_crc(int port, int enable)
 {
-	tcpc_write(port, ANX74XX_REG_TX_AUTO_GOODCRC_2,
-		   enable ? ANX74XX_REG_REPLY_SOP_EN : 0);
+	int reply_sop_en = 0;
+
+	if (enable) {
+		reply_sop_en = ANX74XX_REG_REPLY_SOP_EN;
+#ifdef CONFIG_USB_PD_DECODE_SOP
+		/*
+		 * Only the VCONN Source is allowed to communicate
+		 * with the Cable Plugs.
+		 */
+		if (anx[port].vconn_en) {
+			reply_sop_en |= ANX74XX_REG_REPLY_SOP_1_EN |
+					ANX74XX_REG_REPLY_SOP_2_EN;
+		}
+#endif
+	}
+
+	tcpc_write(port, ANX74XX_REG_TX_AUTO_GOODCRC_2, reply_sop_en);
 }
 
 static void anx74xx_update_cable_det(int port, int mode)
@@ -209,16 +236,18 @@ static void anx74xx_tcpc_discharge_vbus(int port, int enable)
  */
 static uint64_t hpd_deadline[CONFIG_USB_PD_PORT_MAX_COUNT];
 
-void anx74xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
+void anx74xx_tcpc_update_hpd_status(const struct usb_mux *me,
+				    int hpd_lvl, int hpd_irq)
 {
 	int reg;
+	int port = me->usb_port;
 
-	mux_read(port, ANX74XX_REG_HPD_CTRL_0, &reg);
+	mux_read(me, ANX74XX_REG_HPD_CTRL_0, &reg);
 	if (hpd_lvl)
 		reg |= ANX74XX_REG_HPD_OUT_DATA;
 	else
 		reg &= ~ANX74XX_REG_HPD_OUT_DATA;
-	mux_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
+	mux_write(me, ANX74XX_REG_HPD_CTRL_0, reg);
 
 	if (hpd_irq) {
 		uint64_t now = get_time().val;
@@ -226,12 +255,12 @@ void anx74xx_tcpc_update_hpd_status(int port, int hpd_lvl, int hpd_irq)
 		if (now < hpd_deadline[port])
 			usleep(hpd_deadline[port] - now);
 
-		mux_read(port, ANX74XX_REG_HPD_CTRL_0, &reg);
+		mux_read(me, ANX74XX_REG_HPD_CTRL_0, &reg);
 		reg &= ~ANX74XX_REG_HPD_OUT_DATA;
-		mux_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
+		mux_write(me, ANX74XX_REG_HPD_CTRL_0, reg);
 		usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
 		reg |= ANX74XX_REG_HPD_OUT_DATA;
-		mux_write(port, ANX74XX_REG_HPD_CTRL_0, reg);
+		mux_write(me, ANX74XX_REG_HPD_CTRL_0, reg);
 	}
 	/* enforce 2-ms delay between HPD pulses */
 	hpd_deadline[port] = get_time().val + HPD_USTREAM_DEBOUNCE_LVL;
@@ -247,12 +276,13 @@ void anx74xx_tcpc_clear_hpd_status(int port)
 }
 
 #ifdef CONFIG_USB_PD_TCPM_MUX
-static int anx74xx_tcpm_mux_init(int port)
+static int anx74xx_tcpm_mux_init(const struct usb_mux *me)
 {
 	/* Nothing to do here, ANX initializes its muxes
-	 * as (MUX_USB_ENABLED | MUX_DP_ENABLED)
+	 * as (USB_PD_MUX_USB_ENABLED | USB_PD_MUX_DP_ENABLED)
 	 */
-	anx[port].mux_state = MUX_USB_ENABLED | MUX_DP_ENABLED;
+	anx[me->usb_port].mux_state = USB_PD_MUX_USB_ENABLED |
+				      USB_PD_MUX_DP_ENABLED;
 
 	return EC_SUCCESS;
 }
@@ -260,10 +290,11 @@ static int anx74xx_tcpm_mux_init(int port)
 static int anx74xx_tcpm_mux_enter_safe_mode(int port)
 {
 	int reg;
+	const struct usb_mux *me = &usb_muxes[port];
 
-	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(me, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg |
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_2, reg |
 		       ANX74XX_REG_MODE_TRANS))
 		return EC_ERROR_UNKNOWN;
 
@@ -274,10 +305,11 @@ static int anx74xx_tcpm_mux_enter_safe_mode(int port)
 static int anx74xx_tcpm_mux_exit_safe_mode(int port)
 {
 	int reg;
+	const struct usb_mux *me = &usb_muxes[port];
 
-	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(me, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg &
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_2, reg &
 		       ~ANX74XX_REG_MODE_TRANS))
 		return EC_ERROR_UNKNOWN;
 
@@ -288,12 +320,13 @@ static int anx74xx_tcpm_mux_exit_safe_mode(int port)
 static int anx74xx_tcpm_mux_exit(int port)
 {
 	int reg;
+	const struct usb_mux *me = &usb_muxes[port];
 
 	/*
 	 * Safe mode must be entered before any changes are made to the mux
-	 * settings used to enable ALT_DP mode. This funciton is called either
-	 * from anx74xx_tcpm_mux_set when TYPEC_MUX_NONE is selected as the new
-	 * mux state, or when both cc lines are determined to be
+	 * settings used to enable ALT_DP mode. This function is called either
+	 * from anx74xx_tcpm_mux_set when USB_PD_MUX_NONE is selected as the
+	 * new mux state, or when both cc lines are determined to be
 	 * TYPEC_CC_VOLT_OPEN. Therefore, safe mode must be entered and exited
 	 * here so that both entry paths are handled.
 	 */
@@ -301,18 +334,18 @@ static int anx74xx_tcpm_mux_exit(int port)
 		return EC_ERROR_UNKNOWN;
 
 	/* Disconnect aux from sbu */
-	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(me, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg & 0xf))
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_2, reg & 0xf))
 		return EC_ERROR_UNKNOWN;
 
 	/* Clear Bit[7:0] R_SWITCH */
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_1, 0x0))
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_1, 0x0))
 		return EC_ERROR_UNKNOWN;
 	/* Clear Bit[7:4] R_SWITCH_H */
-	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_5, &reg))
+	if (mux_read(me, ANX74XX_REG_ANALOG_CTRL_5, &reg))
 		return EC_ERROR_UNKNOWN;
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_5, reg & 0x0f))
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_5, reg & 0x0f))
 		return EC_ERROR_UNKNOWN;
 
 	/* Exit safe mode */
@@ -328,6 +361,7 @@ static int anx74xx_mux_aux_to_sbu(int port, int polarity, int enabled)
 	int reg;
 	const int aux_mask = ANX74XX_REG_AUX_SWAP_SET_CC2 |
 		ANX74XX_REG_AUX_SWAP_SET_CC1;
+	const struct usb_mux *me = &usb_muxes[port];
 
 	/*
 	 * Get the current value of analog_ctrl_2 register. Note, that safe mode
@@ -335,7 +369,7 @@ static int anx74xx_mux_aux_to_sbu(int port, int polarity, int enabled)
 	 * about setting the correct value for the upper 4 bits of analog_ctrl_2
 	 * here.
 	 */
-	if (mux_read(port, ANX74XX_REG_ANALOG_CTRL_2, &reg))
+	if (mux_read(me, ANX74XX_REG_ANALOG_CTRL_2, &reg))
 		return EC_ERROR_UNKNOWN;
 
 	/* Assume aux_p/n lines are not connected */
@@ -349,46 +383,61 @@ static int anx74xx_mux_aux_to_sbu(int port, int polarity, int enabled)
 			reg |= ANX74XX_REG_AUX_SWAP_SET_CC1;
 	}
 	/* Write new aux <-> sbu settings */
-	if (mux_write(port, ANX74XX_REG_ANALOG_CTRL_2, reg))
+	if (mux_write(me, ANX74XX_REG_ANALOG_CTRL_2, reg))
 		return EC_ERROR_UNKNOWN;
 
 	return EC_SUCCESS;
 }
 
-static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
+static int anx74xx_tcpm_mux_set(const struct usb_mux *me,
+				mux_state_t mux_state)
 {
-	int reg;
-	int pin_cfg = 0;
+	int ctrl5;
+	int ctrl1 = 0;
 	int rv;
-	int port = i2c_addr;
+	int port = me->usb_port;
 
-	if (!(mux_state & ~MUX_POLARITY_INVERTED)) {
+	if (!(mux_state & ~USB_PD_MUX_POLARITY_INVERTED)) {
 		anx[port].mux_state = mux_state;
 		return anx74xx_tcpm_mux_exit(port);
 	}
 
-	rv = mux_read(port, ANX74XX_REG_ANALOG_CTRL_5, &reg);
+	rv = mux_read(me, ANX74XX_REG_ANALOG_CTRL_5, &ctrl5);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
-	reg &= 0x0f;
+	ctrl5 &= 0x0f;
 
-	if (mux_state & MUX_USB_ENABLED) {
-		/* Set pin assignment D */
-		if (mux_state & MUX_POLARITY_INVERTED) {
-			pin_cfg = ANX74XX_REG_MUX_DP_MODE_BDF_CC2;
-			reg |= ANX74XX_REG_MUX_SSTX_B;
+	if (mux_state & USB_PD_MUX_USB_ENABLED) {
+		/* Connect USB SS switches */
+		if (mux_state & USB_PD_MUX_POLARITY_INVERTED) {
+			ctrl1 = ANX74XX_REG_MUX_SSRX_RX2;
+			ctrl5 |= ANX74XX_REG_MUX_SSTX_TX2;
 		} else {
-			pin_cfg = ANX74XX_REG_MUX_DP_MODE_BDF_CC1;
-			reg |= ANX74XX_REG_MUX_SSTX_A;
+			ctrl1 = ANX74XX_REG_MUX_SSRX_RX1;
+			ctrl5 |= ANX74XX_REG_MUX_SSTX_TX1;
 		}
-	} else if (mux_state & MUX_DP_ENABLED) {
+		if (mux_state & USB_PD_MUX_DP_ENABLED) {
+			/* Set pin assignment D */
+			if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
+				ctrl1 |= (ANX74XX_REG_MUX_ML0_RX1 |
+					  ANX74XX_REG_MUX_ML1_TX1);
+			else
+				ctrl1 |= (ANX74XX_REG_MUX_ML0_RX2 |
+					  ANX74XX_REG_MUX_ML1_TX2);
+		}
+		/* Keep ML0/ML1 unconnected if DP is not enabled */
+	} else if (mux_state & USB_PD_MUX_DP_ENABLED) {
 		/* Set pin assignment C */
-		if (mux_state & MUX_POLARITY_INVERTED) {
-			pin_cfg = ANX74XX_REG_MUX_DP_MODE_ACE_CC2;
-			reg |= ANX74XX_REG_MUX_ML2_B;
+		if (mux_state & USB_PD_MUX_POLARITY_INVERTED) {
+			ctrl1 = (ANX74XX_REG_MUX_ML0_RX1 |
+				 ANX74XX_REG_MUX_ML1_TX1 |
+				 ANX74XX_REG_MUX_ML3_RX2);
+			ctrl5 |= ANX74XX_REG_MUX_ML2_TX2;
 		} else {
-			pin_cfg = ANX74XX_REG_MUX_DP_MODE_ACE_CC1;
-			reg |= ANX74XX_REG_MUX_ML2_A;
+			ctrl1 = (ANX74XX_REG_MUX_ML0_RX2 |
+				 ANX74XX_REG_MUX_ML1_TX2 |
+				 ANX74XX_REG_MUX_ML3_RX1);
+			ctrl5 |= ANX74XX_REG_MUX_ML2_TX1;
 		}
 	} else if (!mux_state) {
 		return anx74xx_tcpm_mux_exit(port);
@@ -405,15 +454,16 @@ static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
 		return EC_ERROR_UNKNOWN;
 
 	/* Write updated pin assignment */
-	rv = mux_write(port, ANX74XX_REG_ANALOG_CTRL_1, pin_cfg);
+	rv = mux_write(me, ANX74XX_REG_ANALOG_CTRL_1, ctrl1);
 	/* Write Rswitch config bits */
-	rv |= mux_write(port, ANX74XX_REG_ANALOG_CTRL_5, reg);
+	rv |= mux_write(me, ANX74XX_REG_ANALOG_CTRL_5, ctrl5);
 	if (rv)
 		return EC_ERROR_UNKNOWN;
 
 	/* Configure DP aux to sbu settings */
-	if (anx74xx_mux_aux_to_sbu(port, mux_state & MUX_POLARITY_INVERTED,
-				   mux_state & MUX_DP_ENABLED))
+	if (anx74xx_mux_aux_to_sbu(port,
+				   mux_state & USB_PD_MUX_POLARITY_INVERTED,
+				   mux_state & USB_PD_MUX_DP_ENABLED))
 		return EC_ERROR_UNKNOWN;
 
 	/* Exit safe mode */
@@ -426,17 +476,18 @@ static int anx74xx_tcpm_mux_set(int i2c_addr, mux_state_t mux_state)
 }
 
 /* current mux state  */
-static int anx74xx_tcpm_mux_get(int port, mux_state_t *mux_state)
+static int anx74xx_tcpm_mux_get(const struct usb_mux *me,
+				mux_state_t *mux_state)
 {
-	*mux_state = anx[port].mux_state;
+	*mux_state = anx[me->usb_port].mux_state;
 
 	return EC_SUCCESS;
 }
 
 const struct usb_mux_driver anx74xx_tcpm_usb_mux_driver = {
-	.init = anx74xx_tcpm_mux_init,
-	.set = anx74xx_tcpm_mux_set,
-	.get = anx74xx_tcpm_mux_get,
+	.init = &anx74xx_tcpm_mux_init,
+	.set = &anx74xx_tcpm_mux_set,
+	.get = &anx74xx_tcpm_mux_get,
 };
 #endif /* CONFIG_USB_PD_TCPM_MUX */
 
@@ -606,7 +657,8 @@ static int anx74xx_check_cc_type(int cc_reg)
 	return cc;
 }
 
-static int anx74xx_tcpm_get_cc(int port, int *cc1, int *cc2)
+static int anx74xx_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
+	enum tcpc_cc_voltage_status *cc2)
 {
 	int rv = EC_SUCCESS;
 	int reg = 0;
@@ -664,8 +716,10 @@ static int anx74xx_rp_control(int port, int rp)
 
 static int anx74xx_tcpm_select_rp_value(int port, int rp)
 {
+	/* Keep track of current RP value */
+	tcpci_set_cached_rp(port, rp);
+
 	/* For ANX3429 cannot get cc correctly when Rp != USB_Default */
-	selected_rp[port] = rp;
 	return EC_SUCCESS;
 }
 
@@ -723,12 +777,13 @@ static int anx74xx_tcpm_set_cc(int port, int pull)
 	return rv;
 }
 
-static int anx74xx_tcpm_set_polarity(int port, int polarity)
+static int anx74xx_tcpm_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	int reg, mux_state, rv = EC_SUCCESS;
+	const struct usb_mux *me = &usb_muxes[port];
 
 	rv |= tcpc_read(port, ANX74XX_REG_CC_SOFTWARE_CTRL, &reg);
-	if (polarity) /* Inform ANX to use CC2 */
+	if (polarity_rm_dts(polarity)) /* Inform ANX to use CC2 */
 		reg &= ~ANX74XX_REG_SELECT_CC1;
 	else /* Inform ANX to use CC1 */
 		reg |= ANX74XX_REG_SELECT_CC1;
@@ -738,10 +793,10 @@ static int anx74xx_tcpm_set_polarity(int port, int polarity)
 
 	/* Update mux polarity */
 #ifdef CONFIG_USB_PD_TCPM_MUX
-	mux_state = anx[port].mux_state & ~MUX_POLARITY_INVERTED;
-	if (polarity)
-		mux_state |= MUX_POLARITY_INVERTED;
-	anx74xx_tcpm_mux_set(port, mux_state);
+	mux_state = anx[port].mux_state & ~USB_PD_MUX_POLARITY_INVERTED;
+	if (polarity_rm_dts(polarity))
+		mux_state |= USB_PD_MUX_POLARITY_INVERTED;
+	anx74xx_tcpm_mux_set(me, mux_state);
 #endif
 	return rv;
 }
@@ -765,6 +820,23 @@ static int anx74xx_tcpm_set_vconn(int port, int enable)
 	rv |= tcpc_write(port, ANX74XX_REG_INTP_VCONN_CTRL, reg);
 	anx[port].vconn_en = enable;
 
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	rv |= tcpc_read(port, ANX74XX_REG_TX_AUTO_GOODCRC_2, &reg);
+	if (rv)
+		return EC_ERROR_UNKNOWN;
+
+	if (reg & ANX74XX_REG_REPLY_SOP_EN) {
+		if (enable) {
+			reg |= ANX74XX_REG_REPLY_SOP_1_EN |
+				ANX74XX_REG_REPLY_SOP_2_EN;
+		} else {
+			reg &= ~(ANX74XX_REG_REPLY_SOP_1_EN |
+				 ANX74XX_REG_REPLY_SOP_2_EN);
+		}
+
+		tcpc_write(port, ANX74XX_REG_TX_AUTO_GOODCRC_2, reg);
+	}
+#endif
 	return rv;
 }
 
@@ -784,7 +856,7 @@ static int anx74xx_tcpm_set_rx_enable(int port, int enable)
 	if (enable) {
 		reg &= ~(ANX74XX_REG_IRQ_CC_MSG_INT);
 		anx74xx_tcpm_set_auto_good_crc(port, 1);
-		anx74xx_rp_control(port, selected_rp[port]);
+		anx74xx_rp_control(port, tcpci_get_cached_rp(port));
 	} else {
 		/* Disable RX message by masking interrupt */
 		reg |= (ANX74XX_REG_IRQ_CC_MSG_INT);
@@ -798,27 +870,32 @@ static int anx74xx_tcpm_set_rx_enable(int port, int enable)
 }
 
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-static int anx74xx_tcpm_get_vbus_level(int port)
+static bool anx74xx_tcpm_check_vbus_level(int port, enum vbus_level level)
 {
 	int reg = 0;
 
 	tcpc_read(port, ANX74XX_REG_ANALOG_STATUS, &reg);
-	return ((reg & ANX74XX_REG_VBUS_STATUS) ? 1 : 0);
+	if (level == VBUS_PRESENT)
+		return ((reg & ANX74XX_REG_VBUS_STATUS) ? 1 : 0);
+	else
+		return ((reg & ANX74XX_REG_VBUS_STATUS) ? 0 : 1);
 }
 #endif
 
 static int anx74xx_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 {
-	int reg = 0, rv = EC_SUCCESS;
-	int len = 0;
+	int reg;
+	int len;
 
 	/* Fetch the header */
-	rv |= tcpc_read16(port, ANX74XX_REG_PD_HEADER, &reg);
-	if (rv) {
+	if (tcpc_read16(port, ANX74XX_REG_PD_HEADER, &reg)) {
 		clear_recvd_msg_int(port);
 		return EC_ERROR_UNKNOWN;
 	}
 	*head = reg;
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	*head |= PD_HEADER_SOP(msg_sop[port]);
+#endif
 
 	len = PD_HEADER_CNT(*head) * 4;
 	if (!len) {
@@ -829,11 +906,7 @@ static int anx74xx_tcpm_get_message_raw(int port, uint32_t *payload, int *head)
 	/* Receive message : assuming payload have enough
 	 * memory allocated
 	 */
-	rv |= anx74xx_read_pd_obj(port, (uint8_t *)payload, len);
-	if (rv)
-		return EC_ERROR_UNKNOWN;
-
-	return rv;
+	return anx74xx_read_pd_obj(port, (uint8_t *)payload, len);
 }
 
 static int anx74xx_tcpm_transmit(int port, enum tcpm_transmit_type type,
@@ -943,12 +1016,19 @@ void anx74xx_tcpc_alert(int port)
 
 	if (reg & ANX74XX_REG_IRQ_CC_STATUS_INT)
 		/* CC status changed, wake task */
-		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC, 0);
+		task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC);
 
 	/* Read and clear extended alert register 1 */
 	reg = 0;
 	tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_1, &reg);
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_1, reg);
+
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	if (reg & ANX74XX_REG_EXT_SOP)
+		msg_sop[port] = PD_MSG_SOP;
+	else if (reg & ANX74XX_REG_EXT_SOP_PRIME)
+		msg_sop[port] = PD_MSG_SOP_PRIME;
+#endif
 
 	/* Check for Hard Reset done bit */
 	if (reg & ANX74XX_REG_ALERT_TX_HARD_RESETOK)
@@ -960,10 +1040,15 @@ void anx74xx_tcpc_alert(int port)
 	tcpc_read(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, &reg);
 	tcpc_write(port, ANX74XX_REG_IRQ_EXT_SOURCE_2, reg);
 
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	if (reg & ANX74XX_REG_EXT_SOP_PRIME_PRIME)
+		msg_sop[port] = PD_MSG_SOP_PRIME_PRIME;
+#endif
+
 	if (reg & ANX74XX_REG_EXT_HARD_RST) {
 		/* hard reset received */
-		pd_execute_hard_reset(port);
-		task_wake(PD_PORT_TO_TASK_ID(port));
+		task_set_event(PD_PORT_TO_TASK_ID(port),
+			       PD_EVENT_RX_HARD_RESET);
 	}
 }
 
@@ -1039,7 +1124,11 @@ static int anx74xx_tcpm_init(int port)
 }
 
 static int anx74xx_get_chip_info(int port, int live,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 			struct ec_response_pd_chip_info_v1 **chip_info)
+=======
+			struct ec_response_pd_chip_info_v1 *chip_info)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 {
 	int rv = tcpci_get_chip_info(port, live, chip_info);
 	int val;
@@ -1047,14 +1136,19 @@ static int anx74xx_get_chip_info(int port, int live,
 	if (rv)
 		return rv;
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	if ((*chip_info)->fw_version_number == 0 ||
 	    (*chip_info)->fw_version_number == -1 || live) {
+=======
+	if (chip_info->fw_version_number == 0 ||
+	    chip_info->fw_version_number == -1 || live) {
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		rv = tcpc_read(port, ANX74XX_REG_FW_VERSION, &val);
 
 		if (rv)
 			return rv;
 
-		(*chip_info)->fw_version_number = val;
+		chip_info->fw_version_number = val;
 	}
 
 #ifdef CONFIG_USB_PD_TCPM_ANX3429
@@ -1063,7 +1157,7 @@ static int anx74xx_get_chip_info(int port, int live,
 	 * doesn't occur for e-marked cables. See b/116255749#comment8 and
 	 * b/64752060#comment11
 	 */
-	(*chip_info)->min_req_fw_version_number = 0x16;
+	chip_info->min_req_fw_version_number = 0x16;
 #endif
 
 	return rv;
@@ -1083,11 +1177,14 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 	.release		= &anx74xx_tcpm_release,
 	.get_cc			= &anx74xx_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-	.get_vbus_level		= &anx74xx_tcpm_get_vbus_level,
+	.check_vbus_level	= &anx74xx_tcpm_check_vbus_level,
 #endif
 	.select_rp_value	= &anx74xx_tcpm_select_rp_value,
 	.set_cc			= &anx74xx_tcpm_set_cc,
 	.set_polarity		= &anx74xx_tcpm_set_polarity,
+#ifdef CONFIG_USB_PD_DECODE_SOP
+	.sop_prime_enable	= &tcpci_tcpm_sop_prime_enable,
+#endif
 	.set_vconn		= &anx74xx_tcpm_set_vconn,
 	.set_msg_header		= &anx74xx_tcpm_set_msg_header,
 	.set_rx_enable		= &anx74xx_tcpm_set_rx_enable,
@@ -1103,6 +1200,7 @@ const struct tcpm_drv anx74xx_tcpm_drv = {
 	.drp_toggle		= &anx74xx_tcpc_drp_toggle,
 	.enter_low_power_mode	= &anx74xx_enter_low_power_mode,
 #endif
+	.set_bist_test_mode	= &tcpci_set_bist_test_mode,
 };
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC

@@ -6,12 +6,15 @@
 /* Cheza board-specific configuration */
 
 #include "adc_chip.h"
+#include "als.h"
 #include "button.h"
 #include "charge_manager.h"
 #include "charge_state.h"
 #include "chipset.h"
 #include "extpower.h"
-#include "driver/accelgyro_bmi160.h"
+#include "driver/accelgyro_bmi_common.h"
+#include "driver/als_opt3001.h"
+#include "driver/charger/isl923x.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/anx74xx.h"
 #include "driver/tcpm/ps8xxx.h"
@@ -31,6 +34,7 @@
 #include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usbc_ocp.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -87,12 +91,12 @@ static void vbus1_evt(enum gpio_signal signal)
 
 static void usb0_evt(enum gpio_signal signal)
 {
-	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12, 0);
+	task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 }
 
 static void usb1_evt(enum gpio_signal signal)
 {
-	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12, 0);
+	task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
 }
 
 static void anx74xx_cable_det_handler(void)
@@ -110,7 +114,7 @@ static void anx74xx_cable_det_handler(void)
 	 * and if in normal mode, then there is no need to trigger a tcpc reset.
 	 */
 	if (cable_det && !reset_n)
-		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET, 0);
+		task_set_event(TASK_ID_PD_C0, PD_EVENT_TCPC_RESET);
 }
 DECLARE_DEFERRED(anx74xx_cable_det_handler);
 
@@ -129,7 +133,11 @@ static void ppc_interrupt(enum gpio_signal signal)
 static void usb1_oc_evt_deferred(void)
 {
 	/* Only port-1 has overcurrent GPIO interrupt */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	board_overcurrent_event(0, 1);
+=======
+	board_overcurrent_event(1, 1);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 DECLARE_DEFERRED(usb1_oc_evt_deferred);
 
@@ -202,10 +210,10 @@ BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 /* Power signal list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
-	[SDM845_AP_RST_L] = {
+	[SDM845_AP_RST_ASSERTED] = {
 		GPIO_AP_RST_L,
-		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
-		"AP_RST_L"},
+		POWER_SIGNAL_ACTIVE_LOW | POWER_SIGNAL_DISABLE_AT_BOOT,
+		"AP_RST_ASSERTED"},
 	[SDM845_PS_HOLD] = {
 		GPIO_PS_HOLD,
 		POWER_SIGNAL_ACTIVE_HIGH,
@@ -240,7 +248,7 @@ const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 struct ppc_config_t ppc_chips[] = {
 	{
 		.i2c_port = I2C_PORT_TCPC0,
-		.i2c_addr = SN5S330_ADDR0,
+		.i2c_addr_flags = SN5S330_ADDR0_FLAGS,
 		.drv = &sn5s330_drv
 	},
 	/*
@@ -259,6 +267,7 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_TCPC0,
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 			.addr = 0x50,
 		},
 		.drv = &anx74xx_tcpm_drv,
@@ -271,6 +280,28 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 			.addr = 0x16,
 		},
 		.drv = &ps8xxx_tcpm_drv,
+=======
+			.addr_flags = 0x28,
+		},
+		.drv = &anx74xx_tcpm_drv,
+		.flags = TCPC_FLAGS_ALERT_OD,
+	},
+	[USB_PD_PORT_PS8751] = {
+		.bus_type = EC_BUS_TYPE_I2C,
+		.i2c_info = {
+			.port = I2C_PORT_TCPC1,
+			.addr_flags = 0x0B,
+		},
+		.drv = &ps8xxx_tcpm_drv,
+	},
+};
+
+const struct charger_config_t chg_chips[] = {
+	{
+		.i2c_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
+		.drv = &isl923x_drv,
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	},
 };
 
@@ -281,23 +312,23 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
  * Redirect to anx74xx_tcpm_usb_mux_driver but override the get() function
  * to check the HPD_IRQ mask from virtual_usb_mux_driver.
  */
-static int port0_usb_mux_init(int port)
+static int port0_usb_mux_init(const struct usb_mux *me)
 {
-	return anx74xx_tcpm_usb_mux_driver.init(port);
+	return anx74xx_tcpm_usb_mux_driver.init(me);
 }
 
-static int port0_usb_mux_set(int i2c_addr, mux_state_t mux_state)
+static int port0_usb_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 {
-	return anx74xx_tcpm_usb_mux_driver.set(i2c_addr, mux_state);
+	return anx74xx_tcpm_usb_mux_driver.set(me, mux_state);
 }
 
-static int port0_usb_mux_get(int port, mux_state_t *mux_state)
+static int port0_usb_mux_get(const struct usb_mux *me, mux_state_t *mux_state)
 {
 	int rv;
 	mux_state_t virtual_mux_state;
 
-	rv = anx74xx_tcpm_usb_mux_driver.get(port, mux_state);
-	rv |= virtual_usb_mux_driver.get(port, &virtual_mux_state);
+	rv = anx74xx_tcpm_usb_mux_driver.get(me, mux_state);
+	rv |= virtual_usb_mux_driver.get(me, &virtual_mux_state);
 
 	if (virtual_mux_state & USB_PD_MUX_HPD_IRQ)
 		*mux_state |= USB_PD_MUX_HPD_IRQ;
@@ -317,32 +348,32 @@ const struct usb_mux_driver port0_usb_mux_driver = {
  * Redirect to tcpci_tcpm_usb_mux_driver but override the get() function
  * to check the HPD_IRQ mask from virtual_usb_mux_driver.
  */
-static int port1_usb_mux_init(int port)
+static int port1_usb_mux_init(const struct usb_mux *me)
 {
-	return tcpci_tcpm_usb_mux_driver.init(port);
+	return tcpci_tcpm_usb_mux_driver.init(me);
 }
 
-static int port1_usb_mux_set(int i2c_addr, mux_state_t mux_state)
+static int port1_usb_mux_set(const struct usb_mux *me, mux_state_t mux_state)
 {
-	return tcpci_tcpm_usb_mux_driver.set(i2c_addr, mux_state);
+	return tcpci_tcpm_usb_mux_driver.set(me, mux_state);
 }
 
-static int port1_usb_mux_get(int port, mux_state_t *mux_state)
+static int port1_usb_mux_get(const struct usb_mux *me, mux_state_t *mux_state)
 {
 	int rv;
 	mux_state_t virtual_mux_state;
 
-	rv = tcpci_tcpm_usb_mux_driver.get(port, mux_state);
-	rv |= virtual_usb_mux_driver.get(port, &virtual_mux_state);
+	rv = tcpci_tcpm_usb_mux_driver.get(me, mux_state);
+	rv |= virtual_usb_mux_driver.get(me, &virtual_mux_state);
 
 	if (virtual_mux_state & USB_PD_MUX_HPD_IRQ)
 		*mux_state |= USB_PD_MUX_HPD_IRQ;
 	return rv;
 }
 
-static int port1_usb_mux_enter_low_power(int port)
+static int port1_usb_mux_enter_low_power(const struct usb_mux *me)
 {
-	return tcpci_tcpm_usb_mux_driver.enter_low_power_mode(port);
+	return tcpci_tcpm_usb_mux_driver.enter_low_power_mode(me);
 }
 
 const struct usb_mux_driver port1_usb_mux_driver = {
@@ -352,12 +383,18 @@ const struct usb_mux_driver port1_usb_mux_driver = {
 	.enter_low_power_mode = &port1_usb_mux_enter_low_power,
 };
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+=======
+const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	{
+		.usb_port = 0,
 		.driver = &port0_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
 	{
+		.usb_port = 1,
 		.driver = &port1_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	}
@@ -393,10 +430,8 @@ DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 void board_tcpc_init(void)
 {
-	int port;
-
 	/* Only reset TCPC if not sysjump */
-	if (!system_jumped_to_this_image()) {
+	if (!system_jumped_late()) {
 		/* TODO(crosbug.com/p/61098): How long do we need to wait? */
 		board_reset_pd_mcu();
 	}
@@ -415,11 +450,16 @@ void board_tcpc_init(void)
 	 * Initialize HPD to low; after sysjump SOC needs to see
 	 * HPD pulse to enable video path
 	 */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
 		const struct usb_mux *mux = &usb_muxes[port];
 
 		mux->hpd_update(port, 0, 0);
 	}
+=======
+	for (int port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; ++port)
+		usb_mux_hpd_update(port, 0, 0);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C+1);
 
@@ -574,7 +614,7 @@ int board_set_active_charge_port(int port)
 
 	/* Enable requested charge port. */
 	if (board_vbus_sink_enable(port, 1)) {
-		CPRINTS("p%d: sink path enable failed.");
+		CPRINTS("p%d: sink path enable failed.", port);
 		return EC_ERROR_UNKNOWN;
 	}
 
@@ -617,7 +657,12 @@ uint16_t tcpc_get_alert_status(void)
 /* Mutexes */
 static struct mutex g_lid_mutex;
 
-static struct bmi160_drv_data_t g_bmi160_data;
+static struct bmi_drv_data_t g_bmi160_data;
+static struct opt3001_drv_data_t g_opt3001_data = {
+	.scale = 1,
+	.uscale = 0,
+	.offset = 0,
+};
 
 /* Matrix to rotate accelerometer into standard reference frame */
 const mat33_fp_t base_standard_ref = {
@@ -642,11 +687,11 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_lid_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = I2C_PORT_SENSOR,
-	 .addr = BMI160_ADDR0,
+	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 	 .rot_standard_ref = &base_standard_ref,
-	 .default_range = 4,  /* g */
-	 .min_frequency = BMI160_ACCEL_MIN_FREQ,
-	 .max_frequency = BMI160_ACCEL_MAX_FREQ,
+	 .default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+	 .min_frequency = BMI_ACCEL_MIN_FREQ,
+	 .max_frequency = BMI_ACCEL_MAX_FREQ,
 	 .config = {
 		 [SENSOR_CONFIG_EC_S0] = {
 			 .odr = 10000 | ROUND_UP_FLAG,
@@ -663,11 +708,31 @@ struct motion_sensor_t motion_sensors[] = {
 	 .mutex = &g_lid_mutex,
 	 .drv_data = &g_bmi160_data,
 	 .port = I2C_PORT_SENSOR,
-	 .addr = BMI160_ADDR0,
+	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = &base_standard_ref,
-	 .min_frequency = BMI160_GYRO_MIN_FREQ,
-	 .max_frequency = BMI160_GYRO_MAX_FREQ,
+	 .min_frequency = BMI_GYRO_MIN_FREQ,
+	 .max_frequency = BMI_GYRO_MAX_FREQ,
+	},
+	[LID_ALS] = {
+	 .name = "Light",
+	 .active_mask = SENSOR_ACTIVE_S0,
+	 .chip = MOTIONSENSE_CHIP_OPT3001,
+	 .type = MOTIONSENSE_TYPE_LIGHT,
+	 .location = MOTIONSENSE_LOC_LID,
+	 .drv = &opt3001_drv,
+	 .drv_data = &g_opt3001_data,
+	 .port = I2C_PORT_SENSOR,
+	 .i2c_spi_addr_flags = OPT3001_I2C_ADDR_FLAGS,
+	 .rot_standard_ref = NULL,
+	 .default_range = 0x10000, /* scale = 1; uscale = 0 */
+	 .min_frequency = OPT3001_LIGHT_MIN_FREQ,
+	 .max_frequency = OPT3001_LIGHT_MAX_FREQ,
+	 .config = {
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 1000,
+		},
+	 },
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);

@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /* Copyright 2018 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -406,3 +407,5 @@ const struct svdm_amode_fx supported_modes[] = {
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

@@ -11,6 +11,7 @@
 #include "common.h"
 #include "console.h"
 #include "driver/bc12/max14637.h"
+#include "driver/charger/isl923x.h"
 #include "driver/ppc/nx20p348x.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -28,26 +29,6 @@
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTFUSB(format, args...) cprintf(CC_USBCHARGE, format, ## args)
-
-/******************************************************************************/
-/* Power signal list.  Must match order of enum power_signal. */
-const struct power_signal_info power_signal_list[] = {
-#ifdef CONFIG_POWER_S0IX
-	{GPIO_PCH_SLP_S0_L,
-		POWER_SIGNAL_ACTIVE_HIGH | POWER_SIGNAL_DISABLE_AT_BOOT,
-		"SLP_S0_DEASSERTED"},
-#endif
-	{GPIO_PCH_SLP_S3_L,   POWER_SIGNAL_ACTIVE_HIGH, "SLP_S3_DEASSERTED"},
-	{GPIO_PCH_SLP_S4_L,   POWER_SIGNAL_ACTIVE_HIGH, "SLP_S4_DEASSERTED"},
-	{GPIO_SUSPWRDNACK,    POWER_SIGNAL_ACTIVE_HIGH,
-	 "SUSPWRDNACK_DEASSERTED"},
-
-	{GPIO_ALL_SYS_PGOOD,  POWER_SIGNAL_ACTIVE_HIGH, "ALL_SYS_PGOOD"},
-	{GPIO_RSMRST_L_PGOOD, POWER_SIGNAL_ACTIVE_HIGH, "RSMRST_L"},
-	{GPIO_PP3300_PG,      POWER_SIGNAL_ACTIVE_HIGH, "PP3300_PG"},
-	{GPIO_PP5000_PG,      POWER_SIGNAL_ACTIVE_HIGH, "PP5000_PG"},
-};
-BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
 /******************************************************************************/
 /* Keyboard scan setting */
@@ -96,6 +77,18 @@ const struct max14637_config_t max14637_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.flags = MAX14637_FLAGS_CHG_DET_ACTIVE_LOW,
 	},
 };
+
+/******************************************************************************/
+/* Charger Chip Configuration */
+#ifdef VARIANT_OCTOPUS_CHARGER_ISL9238
+const struct charger_config_t chg_chips[] = {
+	{
+		.i2c_port = I2C_PORT_CHARGER,
+		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
+		.drv = &isl923x_drv,
+	},
+};
+#endif
 
 /******************************************************************************/
 /* Chipset callbacks/hooks */
@@ -235,24 +228,28 @@ enum adc_channel board_get_vbus_adc(int port)
 
 void baseboard_tcpc_init(void)
 {
-	int port;
-
 	/* Only reset TCPC if not sysjump */
-	if (!system_jumped_to_this_image())
+	if (!system_jumped_late())
 		board_reset_pd_mcu();
 
 	/*
 	 * Initialize HPD to low; after sysjump SOC needs to see
 	 * HPD pulse to enable video path
 	 */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
 		const struct usb_mux *mux = &usb_muxes[port];
 
 		mux->hpd_update(port, 0, 0);
 	}
+=======
+	for (int port = 0; port < board_get_usb_pd_port_count(); ++port)
+		usb_mux_hpd_update(port, 0, 0);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 /* Called after the cbi_init (via +2) */
 DECLARE_HOOK(HOOK_INIT, baseboard_tcpc_init, HOOK_PRIO_INIT_I2C + 2);
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 
 void board_rtc_reset(void)
 {
@@ -260,11 +257,17 @@ void board_rtc_reset(void)
 	udelay(100);
 	gpio_set_level(GPIO_PCH_RTCRST, 0);
 }
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
 int board_set_active_charge_port(int port)
 {
 	int is_valid_port = (port >= 0 &&
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 			    port < CONFIG_USB_PD_PORT_MAX_COUNT);
+=======
+			    port < board_get_usb_pd_port_count());
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	int i;
 
 	if (!is_valid_port && port != CHARGE_PORT_NONE)
@@ -275,7 +278,8 @@ int board_set_active_charge_port(int port)
 		CPRINTSUSB("Disabling all charger ports");
 
 		/* Disable all ports. */
-		for (i = 0; i < ppc_cnt; i++) {
+		for (i = 0; (i < ppc_cnt) &&
+		    (i < board_get_usb_pd_port_count()); i++) {
 			/*
 			 * Do not return early if one fails otherwise we can
 			 * get into a boot loop assertion failure.
@@ -299,7 +303,8 @@ int board_set_active_charge_port(int port)
 	 * Turn off the other ports' sink path FETs, before enabling the
 	 * requested charge port.
 	 */
-	for (i = 0; i < ppc_cnt; i++) {
+	for (i = 0; (i < ppc_cnt) &&
+	    (i < board_get_usb_pd_port_count()); i++) {
 		if (i == port)
 			continue;
 
@@ -323,8 +328,12 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	 * Empirically, the charger seems to draw a little more current that
 	 * it is set to, so we reduce our limit by 5%.
 	 */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #if defined(VARIANT_OCTOPUS_CHARGER_ISL9238) || \
 	defined(CONFIG_CHARGER_BQ25710) || defined(CONFIG_CHARGER_ISL9238)
+=======
+#if defined(CONFIG_CHARGER_BQ25710) || defined(CONFIG_CHARGER_ISL9238)
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 	charge_ma = (charge_ma * 95) / 100;
 #endif
 	charge_set_input_current_limit(MAX(charge_ma,
@@ -371,7 +380,11 @@ void board_hibernate(void)
 	 * low power mode or open the SNK FET based on which signals wake up
 	 * the EC from hibernate.
 	 */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++) {
+=======
+	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 		if (!pd_is_vbus_present(port)) {
 #ifdef VARIANT_OCTOPUS_EC_ITE8320
 			/*
@@ -397,5 +410,9 @@ void board_hibernate(void)
 	 * with any PD contract renegotiation, and tcpm to put TCPC into low
 	 * power mode if required.
 	 */
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 	msleep(300);
+=======
+	msleep(1500);
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }

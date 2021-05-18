@@ -1,4 +1,4 @@
-/* Copyright (c) 2012 The Chromium OS Authors. All rights reserved.
+/* Copyright 2012 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -18,9 +18,6 @@
 #define CPUTS(outstr) cputs(CC_USBCHARGE, outstr)
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
-#define USB_SYSJUMP_TAG 0x5550 /* "UP" - Usb Port */
-#define USB_HOOK_VERSION 1
-
 #ifndef CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE
 #define CONFIG_USB_PORT_POWER_SMART_DEFAULT_MODE USB_CHARGE_MODE_SDP2
 #endif
@@ -29,11 +26,13 @@ struct charge_mode_t {
 	uint8_t mode:7;
 	uint8_t inhibit_charging_in_suspend:1;
 } __pack;
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 
 static struct charge_mode_t charge_mode[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT];
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 
-/* GPIOs to enable/disable USB ports. Board specific. */
-extern const int usb_port_enable[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT];
+static struct charge_mode_t charge_mode[CONFIG_USB_PORT_POWER_SMART_PORT_COUNT];
 
 #ifdef CONFIG_USB_PORT_POWER_SMART_CDP_SDP_ONLY
 /*
@@ -50,16 +49,16 @@ static void usb_charge_set_control_mode(int port_id, int mode)
 	 * port wins.  Also, only CTL1 can be set; the other pins are
 	 * hard-wired.
 	 */
-	gpio_set_level(GPIO_USB_CTL1, mode & 0x4);
+	gpio_or_ioex_set_level(GPIO_USB_CTL1, mode & 0x4);
 #else
 	if (port_id == 0) {
-		gpio_set_level(GPIO_USB1_CTL1, mode & 0x4);
-		gpio_set_level(GPIO_USB1_CTL2, mode & 0x2);
-		gpio_set_level(GPIO_USB1_CTL3, mode & 0x1);
+		gpio_or_ioex_set_level(GPIO_USB1_CTL1, mode & 0x4);
+		gpio_or_ioex_set_level(GPIO_USB1_CTL2, mode & 0x2);
+		gpio_or_ioex_set_level(GPIO_USB1_CTL3, mode & 0x1);
 	} else {
-		gpio_set_level(GPIO_USB2_CTL1, mode & 0x4);
-		gpio_set_level(GPIO_USB2_CTL2, mode & 0x2);
-		gpio_set_level(GPIO_USB2_CTL3, mode & 0x1);
+		gpio_or_ioex_set_level(GPIO_USB2_CTL1, mode & 0x4);
+		gpio_or_ioex_set_level(GPIO_USB2_CTL2, mode & 0x2);
+		gpio_or_ioex_set_level(GPIO_USB2_CTL3, mode & 0x1);
 	}
 #endif /* defined(CONFIG_USB_PORT_POWER_SMART_SIMPLE) */
 }
@@ -68,12 +67,12 @@ static void usb_charge_set_control_mode(int port_id, int mode)
 static void usb_charge_set_enabled(int port_id, int en)
 {
 	ASSERT(port_id < CONFIG_USB_PORT_POWER_SMART_PORT_COUNT);
-	gpio_set_level(usb_port_enable[port_id], en);
+	gpio_or_ioex_set_level(usb_port_enable[port_id], en);
 }
 
 static void usb_charge_set_ilim(int port_id, int sel)
 {
-	enum gpio_signal ilim_sel;
+	int ilim_sel;
 
 #if defined(CONFIG_USB_PORT_POWER_SMART_SIMPLE) ||	\
 	defined(CONFIG_USB_PORT_POWER_SMART_INVERTED)
@@ -88,7 +87,7 @@ static void usb_charge_set_ilim(int port_id, int sel)
 		ilim_sel = GPIO_USB2_ILIM_SEL;
 #endif
 
-	gpio_set_level(ilim_sel, sel);
+	gpio_or_ioex_set_level(ilim_sel, sel);
 }
 
 static void usb_charge_all_ports_ctrl(enum usb_charge_mode mode)
@@ -184,7 +183,8 @@ DECLARE_CONSOLE_COMMAND(usbchargemode, command_set_mode,
 /*****************************************************************************/
 /* Host commands */
 
-static int usb_charge_command_set_mode(struct host_cmd_handler_args *args)
+static enum ec_status
+usb_charge_command_set_mode(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_charge_set_mode *p = args->params;
 

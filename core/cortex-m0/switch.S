@@ -1,4 +1,4 @@
-/* Copyright (c) 2014 The Chromium OS Authors. All rights reserved.
+/* Copyright 2014 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -64,7 +64,7 @@ __switchto:
 .global __task_start
 .thumb_func
 __task_start:
-  ldr  r2,=scratchpad     @ area used as dummy thread stack for the first switch
+  ldr  r2,=scratchpad     @ area used as thread stack for the first switch
   movs r3, #2             @ use : priv. mode / thread stack / no floating point
   adds r2, #17*4          @ put the pointer at the top of the stack
   movs r1, #0             @ __Schedule parameter : re-schedule nothing

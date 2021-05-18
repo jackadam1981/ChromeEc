@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 The Chromium OS Authors. All rights reserved.
+ * Copyright 2015 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -161,24 +161,36 @@
 #define MAX_FLASH_SIZE                  0x03ffffff
 
 /* Chips: convert from name to index. */
-#define NPCX5M5G                        0
-#define NPCX5M6G                        1
-#define NPCX7M5                         2
-#define NPCX7M6                         3
-#define NPCX7M7                         4
+enum npcx_chip_ram_variant {
+	NPCX5M5G = 0,
+	NPCX5M6G = 1,
+	NPCX7M5 = 2,
+	NPCX7M6 = 3,
+	NPCX7M7 = 4,
+	NPCX9M3 = 5,
+	NPCX9M6 = 6,
+	NPCX_CHIP_RAM_VAR_NONE
+};
 
 #define DEFAULT_CHIP                    NPCX5M5G
 
+/* NPCX5 */
 #define NPCX5M5G_RAM_ADDR               0x100A8000
 #define NPCX5M5G_RAM_SIZE               0x20000
 #define NPCX5M6G_RAM_ADDR               0x10088000
 #define NPCX5M6G_RAM_SIZE               0x40000
+/* NPCX7 */
 #define NPCX7M5X_RAM_ADDR               0x100A8000
 #define NPCX7M5X_RAM_SIZE               0x20000
 #define NPCX7M6X_RAM_ADDR               0x10090000
 #define NPCX7M6X_RAM_SIZE               0x40000
 #define NPCX7M7X_RAM_ADDR               0x10070000
 #define NPCX7M7X_RAM_SIZE               0x60000
+/* NPCX9 */
+#define NPCX9M3X_RAM_ADDR               0x10080000
+#define NPCX9M3X_RAM_SIZE               0x50000
+#define NPCX9M6X_RAM_ADDR               0x10090000
+#define NPCX9M6X_RAM_SIZE               0x40000
 
 /*---------------------------------------------------------------------------
   Typedefs
@@ -269,6 +281,7 @@ int read_from_file(unsigned int offset,
 				   char *print_string);
 
 /* Nice Particular Printf - General */
+__attribute__((__format__(__printf__, 2, 3)))
 void my_printf(int error_level, char *fmt, ...);
 
 int str_cmp_no_case(const char *s1, const char *s2);

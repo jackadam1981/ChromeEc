@@ -13,6 +13,12 @@
  */
 extern const char __flash_dma_start;
 
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
+=======
+/* This symbol is the begin address of the __ilm0_ram_code section. */
+extern const char __ilm0_ram_code;
+
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 /* This symbol is the begin address of the text section. */
 extern const char __flash_text_start;
 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 /* Copyright 2016 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -215,3 +216,5 @@ void nvmem_clear_cache(void);
 #endif
 
 #endif /* __CROS_EC_NVMEM_UTILS_H */
+=======
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)

@@ -1,4 +1,4 @@
-/* Copyright (c) 2013 The Chromium OS Authors. All rights reserved.
+/* Copyright 2013 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
@@ -34,10 +34,13 @@ void task_abc(void *data)
 
 	while (1) {
 		wake_count[id]++;
-		if (id == 2 && wake_count[id] == repeat_count)
-			task_set_event(TASK_ID_CTS, TASK_EVENT_WAKE, 1);
-		else
-			task_set_event(next, TASK_EVENT_WAKE, 1);
+		if (id == 2 && wake_count[id] == repeat_count) {
+			task_set_event(TASK_ID_CTS, TASK_EVENT_WAKE);
+			task_wait_event(0);
+		} else {
+			task_set_event(next, TASK_EVENT_WAKE);
+			task_wait_event(0);
+		}
 	}
 }
 

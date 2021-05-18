@@ -5,6 +5,7 @@
 /* Meowth Fingerprint MCU configuration */
 
 #include "common.h"
+<<<<<<< HEAD   (e924cf Revert "garg: Add simplo 916QA141H battery")
 #include "console.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -78,5 +79,35 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_PCH_SLP_S0_L);
 	/* enable the SPI slave interface if the PCH is up */
 	hook_call_deferred(&ap_deferred_data, 0);
+=======
+#include "hooks.h"
+#include "registers.h"
+#include "spi.h"
+#include "system.h"
+#include "task.h"
+
+/**
+ * Disable restricted commands when the system is locked.
+ *
+ * @see console.h system.c
+ */
+int console_is_restricted(void)
+{
+	return system_is_locked();
+}
+
+#include "gpio_list.h"
+
+/* Initialize board. */
+static void board_init(void)
+{
+	if (IS_ENABLED(SECTION_IS_RW)) {
+		board_init_rw();
+	} else {
+		/* No suspend-based power management in RO. */
+		disable_sleep(SLEEP_MASK_AP_RUN);
+		hook_notify(HOOK_CHIPSET_RESUME);
+	}
+>>>>>>> BRANCH (d1db89 chgstv2: Check string validity)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
