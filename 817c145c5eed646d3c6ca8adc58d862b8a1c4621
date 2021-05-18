@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9eb8c126_dd63c40e",
+        "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-18T00:15:52Z",
+      "side": 1,
+      "message": "I apologize, I marked the wrong line number.  Please added enums for \"I2C_EVB_1\", \"I2C_EVB_2\", and \"I2C_OPT_4\".",
+      "parentUuid": "889f5ec6_ce1a2975",
+      "range": {
+        "startLine": 163,
+        "startChar": 16,
+        "endLine": 163,
+        "endChar": 32
+      },
+      "revId": "817c145c5eed646d3c6ca8adc58d862b8a1c4621",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f125048c_e36b60e9",
         "filename": "zephyr/projects/it8xxx2_evb/boards/riscv/it8xxx2_evb/it8xxx2_evb_defconfig",
         "patchSetId": 3
