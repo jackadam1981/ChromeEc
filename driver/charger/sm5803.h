@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_SM5803_H
 #define __CROS_EC_SM5803_H
 
+#include "common.h"
+
 /* Note: configure charger struct with CHARGER_FLAGS */
 #define SM5803_ADDR_MAIN_FLAGS		0x30
 #define SM5803_ADDR_MEAS_FLAGS		0x31
@@ -180,6 +182,9 @@ enum sm5803_gpio0_modes {
 #define SM5803_REG_VSYS_AVG_MEAS_MSB	0xCC
 #define SM5803_REG_VSYS_AVG_MEAS_LSB	0xCD
 #define SM5803_VSYS_MEAS_LSB		GENMASK(1, 0)
+
+/* VCHGPWR levels - The VCHGPWR levels increment in 23.4mV steps. */
+#define SM5803_REG_VCHG_PWR_MSB		0x4A
 
 /* Charger registers (address 0x32) */
 
@@ -381,6 +386,15 @@ enum ec_error_list sm5803_vbus_sink_enable(int chgnum, int enable);
 
 void sm5803_hibernate(int chgnum);
 void sm5803_interrupt(int chgnum);
+
+/**
+ * Return whether ACOK is high or low.
+ * 
+ * @param chgnum index into chg_chips table.
+ * @param acok will be set to true if ACOK is asserted, otherwise false.
+ * @return EC_SUCCESS, error otherwise.
+ */
+enum ec_error_list sm5803_is_acok(int chgnum, bool *acok);
 
 /* Expose low power mode functions */
 void sm5803_disable_low_power_mode(int chgnum);
