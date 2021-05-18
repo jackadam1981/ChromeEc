@@ -241,6 +241,16 @@ __override void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
 	break;
 	}
 
+	ccprintf("-----------------------------------------\n");
+	ccprintf("again:%d\n", cur_gain);
+	ccprintf("atime_us:%d\n", integration_time_us/1000);
+	ccprintf("n:%d\n", n);
+	ccprintf("R:%d\n", crgb_data[1]);
+	ccprintf("G:%d\n", crgb_data[2]);
+	ccprintf("B:%d\n", crgb_data[3]);
+	ccprintf("C:%d\n", crgb_data[0]);
+	ccprintf("lux:%d\n", xyz_data[1]);
+
 	if (xyz_data[1] < 0)
 		xyz_data[1] = 0;
 }
