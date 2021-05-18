@@ -165,6 +165,7 @@
 			gpios = <&gpio5 0 GPIO_OUT_LOW>;
 			enum-name = "GPIO_QSIP_ON";
 			label = "QSIP_ON";
+			no_config_after_sysjump;
 		};
 		hibernate_l {
 			gpios = <&gpio5 2 GPIO_OUT_HIGH>;
@@ -175,11 +176,13 @@
 			gpios = <&gpiod 5 GPIO_OUT_LOW>;
 			enum-name = "GPIO_SWITCHCAP_ON";
 			label = "SWITCHCAP_ON";
+			no_config_after_sysjump;
 		};
 		switchcap_on_l {
 			gpios = <&gpiod 5 GPIO_OUT_LOW>;
 			enum-name = "GPIO_SWITCHCAP_ON_L";
 			label = "SWITCHCAP_ON_L";
+			no_config_after_sysjump;
 		};
 		vbob_en {
 			gpios = <&gpiod 3 GPIO_OUT_LOW>;
@@ -189,6 +192,7 @@
 			gpios = <&gpioa 6 GPIO_OUT_LOW>;
 			enum-name = "GPIO_EN_PP3300_A";
 			label = "EN_PP3300_A";
+			no_config_after_sysjump;
 		};
 		en_pp5000_a {
 			gpios = <&gpio6 7 GPIO_OUT_LOW>;
