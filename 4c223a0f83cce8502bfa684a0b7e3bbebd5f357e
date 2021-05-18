@@ -16,6 +16,29 @@
       "message": "Thoughts on the naming? Is it too weird now, or still ok?",
       "revId": "4c223a0f83cce8502bfa684a0b7e3bbebd5f357e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7026bec_6c9cda82",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-18T21:09:08Z",
+      "side": 1,
+      "message": "I think I\u0027d go with this being kind of weird in the naming, since Vbus hasn\u0027t necessarily changed so much as we\u0027re using it now.\n\nCan/should we consider doing this from our board_set_active_charge_port()?  And is this necessary on top of the interrupts currently calling board_vbus_present_change()?",
+      "range": {
+        "startLine": 756,
+        "startChar": 3,
+        "endLine": 756,
+        "endChar": 28
+      },
+      "revId": "4c223a0f83cce8502bfa684a0b7e3bbebd5f357e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
