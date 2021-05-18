@@ -8,6 +8,8 @@
 #include "adc.h"
 #include "board_config.h"
 #include "cbi_fw_config.h"
+#include "charger/isl923x_public.h"
+#include "charger/sm5803.h"
 #include "chipset.h"
 #include "common.h"
 #include "extpower.h"
@@ -277,18 +279,23 @@ int board_is_i2c_port_powered(int port)
 
 int extpower_is_present(void)
 {
-	int vbus_present = 0;
 	int port;
+	int rv;
+	bool acok;
+	enum ec_error_list (*check_acok)(int port, bool *acok);
 
-	/*
-	 * Boards define pd_snk_is_vbus_provided() with something appropriate
-	 * for their hardware
-	 */
-	for (port = 0; port < board_get_usb_pd_port_count(); port++)
-		if (pd_get_power_role(port) == PD_ROLE_SINK)
-			vbus_present |= pd_snk_is_vbus_provided(port);
+	if (IS_ENABLED(CONFIG_CHARGER_RAA489000))
+		check_acok = raa489000_is_acok;
+	else if (IS_ENABLED(CONFIG_CHARGER_SM5803))
+		check_acok = sm5803_is_acok;
 
-	return vbus_present;
+	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+		rv = check_acok(port, &acok);
+		if ((rv == EC_SUCCESS) && acok)
+			return 1;
+	}
+
+	return 0;
 }
 
 __override uint32_t board_override_feature_flags0(uint32_t flags0)
