@@ -10,6 +10,9 @@
 
 #include "gpio.h"
 #include "gpio/gpio.h"
+#include "system.h"
+#include "panic.h"
+#include "sysjump.h"
 
 LOG_MODULE_REGISTER(gpio_shim, LOG_LEVEL_ERR);
 
@@ -26,6 +29,8 @@ struct gpio_config {
 	gpio_pin_t pin;
 	/* From DTS, excludes interrupts flags */
 	gpio_flags_t init_flags;
+	/* Pin will not be configured after sysjump is true */
+	bool no_config_after_sysjmp;
 };
 
 #define GPIO_CONFIG(id)                                                      \
@@ -37,6 +42,8 @@ struct gpio_config {
 				.dev_name = DT_LABEL(DT_PHANDLE(id, gpios)), \
 				.pin = DT_GPIO_PIN(id, gpios),               \
 				.init_flags = DT_GPIO_FLAGS(id, gpios),      \
+				.no_config_after_sysjmp =                    \
+					DT_PROP(id, no_config_after_sysjump) \
 			}, ),                                                \
 		())
 static const struct gpio_config configs[] = {
@@ -246,12 +253,28 @@ int gpio_get_default_flags(enum gpio_signal signal)
 
 static int init_gpios(const struct device *unused)
 {
+	bool sysjmp_occurred = false;
+	const struct jump_data *jdata = get_jump_data();
+
 	ARG_UNUSED(unused);
+
+	/* Determine if a sysjump has occurred */
+	if (jdata && jdata->magic == JUMP_DATA_MAGIC && jdata->version >= 1) {
+		sysjmp_occurred = true;
+	}
 
 	/* Loop through all GPIOs in device tree to set initial configuration */
 	for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
 		data[i].dev = device_get_binding(configs[i].dev_name);
 		int rv;
+
+		/*
+		 * Do not configure this pin if no_config_after_sysjmp is
+		 * true and a sysjump has occurred.
+		 */
+		if (sysjmp_occurred && configs[i].no_config_after_sysjmp) {
+			continue;
+		}
 
 		if (data[i].dev == NULL) {
 			LOG_ERR("Not found (%s)", configs[i].name);

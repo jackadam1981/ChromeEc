@@ -15,6 +15,11 @@ child-binding:
           description: |
             Human readable string describing the device (used as
             device_get_binding() argument)
+       no_config_after_sysjump:
+          required: false
+          type: boolean
+          description: |
+            Pin will not be configured after a sysjump
        "#gpio-cells":
           type: int
           required: false
