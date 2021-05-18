@@ -39,6 +39,30 @@
       },
       "revId": "4c223a0f83cce8502bfa684a0b7e3bbebd5f357e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57fdde5_5e4abfed",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-18T22:04:39Z",
+      "side": 1,
+      "message": "I can rename it then.\n\nInitially, that\u0027s where I had it, but to avoid copy/paste and new variants not including it, I decided to move it here.\n\nIt\u0027s still necessary as the renesas charger IC doesn\u0027t have the same sort of interrupt that the silicon mitus IC has.",
+      "parentUuid": "f7026bec_6c9cda82",
+      "range": {
+        "startLine": 756,
+        "startChar": 3,
+        "endLine": 756,
+        "endChar": 28
+      },
+      "revId": "4c223a0f83cce8502bfa684a0b7e3bbebd5f357e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
