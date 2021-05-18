@@ -59,8 +59,10 @@ static void tcpc_alert_event(enum gpio_signal signal)
 /******************************************************************************/
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
-	[ADC_BOARD_ID] =  {"BOARD_ID",  3300, 4096, 0, STM32_AIN(10)},
-	[ADC_EC_SKU_ID] = {"EC_SKU_ID", 3300, 4096, 0, STM32_AIN(8)},
+	[ADC_BOARD_ID] = { "BOARD_ID", 3300, 4096, 0, STM32_AIN(5),
+			   STM32_RANK(1) },
+	[ADC_EC_SKU_ID] = { "EC_SKU_ID", 3300, 4096, 0, STM32_AIN(15),
+			    STM32_RANK(2) },
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -68,12 +70,12 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"typec", 0, 400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
-	{"other", 1, 400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
+	{"other", 2, 400, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 const struct i2c_port_t i2c_bitbang_ports[] = {
-	{"battery", 2, 100, GPIO_I2C3_SCL, GPIO_I2C3_SDA, .drv = &bitbang_drv},
+	{"battery", 3, 100, GPIO_I2C4_SCL, GPIO_I2C4_SDA, .drv = &bitbang_drv},
 };
 const unsigned int i2c_bitbang_ports_used = ARRAY_SIZE(i2c_bitbang_ports);
 
@@ -161,7 +163,7 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 /* Charger config.  Start i2c address at 1, update during runtime */
 struct charger_config_t chg_chips[] = {
 	{
-		.i2c_port = 1,
+		.i2c_port = 2,
 		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
 		.drv = &isl923x_drv,
 	},
@@ -264,14 +266,21 @@ static void board_spi_enable(void)
 	 * left them there.
 	 */
 	gpio_config_module(MODULE_SPI_FLASH, 0);
+#ifdef CHIP_FAMILY_STM32L4
+	/* Enable clocks to SPI2 module. */
+	STM32_RCC_APB1ENR1 |= STM32_RCC_PB1_SPI2;
 
+	/* Reset SPI2 to clear state left over from the emmc slave. */
+	STM32_RCC_APB1RSTR1 |= STM32_RCC_PB1_SPI2;
+	STM32_RCC_APB1RSTR1 &= ~STM32_RCC_PB1_SPI2;
+#else
 	/* Enable clocks to SPI2 module. */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
 
 	/* Reset SPI2 to clear state left over from the emmc slave. */
 	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
 	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
-
+#endif
 	/* Reinitialize spi peripheral. */
 	spi_enable(&spi_devices[0], 1);
 
@@ -291,7 +300,11 @@ static void board_spi_disable(void)
 
 	/* Disable spi peripheral and clocks. */
 	spi_enable(&spi_devices[0], 0);
+#ifdef CHIP_FAMILY_STM32L4
+	STM32_RCC_APB1ENR1 &= ~STM32_RCC_PB1_SPI2;
+#else
 	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
 	     board_spi_disable,
@@ -430,6 +443,13 @@ struct motion_sensor_t motion_sensors[] = {
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
+
+void motion_interrupt(enum gpio_signal signal)
+{
+		bmi160_interrupt(signal);
+}
+
+
 const struct it8801_pwm_t it8801_pwm_channels[] = {
 	[IT8801_PWM_CH_KBLIGHT] = {.index = 4},
 };
@@ -472,10 +492,11 @@ static void sb_quick_charge_mode(int enable)
 /* Called on AP S0iX -> S0 transition */
 static void board_chipset_resume(void)
 {
-#ifndef VARIANT_KUKUI_NO_SENSORS
-	if (board_has_kb_backlight())
-		ioex_set_level(IOEX_KB_BL_EN, 1);
-#endif
+/* TODO: Check IOEX_KB_XX */
+/* #ifndef VARIANT_KUKUI_NO_SENSORS */
+/* if (board_has_kb_backlight()) */
+/* ioex_set_level(IOEX_KB_BL_EN, 1); */
+/* #endif */
 
 	/* Normal charge mode */
 	sb_quick_charge_mode(0);
@@ -486,10 +507,11 @@ DECLARE_HOOK(HOOK_INIT, board_chipset_resume, HOOK_PRIO_DEFAULT);
 /* Called on AP S0 -> S0iX transition */
 static void board_chipset_suspend(void)
 {
-#ifndef VARIANT_KUKUI_NO_SENSORS
-	if (board_has_kb_backlight())
-		ioex_set_level(IOEX_KB_BL_EN, 0);
-#endif
+/* TODO: Check IOEX_KB_XX */
+/* #ifndef VARIANT_KUKUI_NO_SENSORS */
+/* if (board_has_kb_backlight()) */
+/* ioex_set_level(IOEX_KB_BL_EN, 0); */
+/* #endif */
 
 	/* Quick charge mode */
 	sb_quick_charge_mode(1);
@@ -513,12 +535,12 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 int board_get_charger_i2c(void)
 {
 	/* TODO(b:138415463): confirm the bus allocation for future builds */
-	return board_get_version() == 1 ? 2 : 1;
+	return 2;
 }
 
 int board_get_battery_i2c(void)
 {
-	return board_get_version() >= 1 ? 2 : 1;
+	return 3;
 }
 
 #ifdef SECTION_IS_RW

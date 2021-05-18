@@ -672,8 +672,21 @@ static void spi_init(void)
 	STM32_RCC_APB2RSTR |= STM32_RCC_PB2_SPI1;
 	STM32_RCC_APB2RSTR &= ~STM32_RCC_PB2_SPI1;
 
+#ifdef CHIP_FAMILY_STM32L4
+#ifdef CONFIG_DMA
+	/* Enable DMA clock */
+	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN;
+#endif
+#endif
 	/* 40 MHz pin speed */
-	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xff00;
+	/*
+	 *
+	 * STM32_GPIO_OSPEEDR(GPIO_A) |= 0xff00;
+	 *
+	 */
+	/* PB3/4/5, PA15 */
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0x000000FC0;
+	STM32_GPIO_OSPEEDR(GPIO_A) |= 0xC00000000;
 
 	/* Enable clocks to SPI1 module */
 	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;

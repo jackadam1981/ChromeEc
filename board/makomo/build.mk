@@ -8,8 +8,8 @@
 #
 # STmicro STM32F098VC
 CHIP:=stm32
-CHIP_FAMILY:=stm32f0
-CHIP_VARIANT:=stm32f09x
+CHIP_FAMILY:=stm32l4
+CHIP_VARIANT:=stm32l431x
 BASEBOARD:=kukui
 
 board-y=battery.o board.o led.o
