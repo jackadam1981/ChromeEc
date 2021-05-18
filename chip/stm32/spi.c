@@ -678,6 +678,12 @@ static void spi_init(void)
 	/* Config SPI GPIO to high speed. This varies from board to board. */
 	board_set_stm32_spi_pin_speed();
 
+#ifdef CHIP_FAMILY_STM32L4
+#ifdef CONFIG_DMA
+	/* Enable DMA clock */
+	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN;
+#endif
+#endif
 	/* Enable clocks to SPI1 module */
 	STM32_RCC_APB2ENR |= STM32_RCC_PB2_SPI1;
 
