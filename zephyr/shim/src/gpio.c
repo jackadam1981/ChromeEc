@@ -10,6 +10,7 @@
 
 #include "gpio.h"
 #include "gpio/gpio.h"
+#include "system.h"
 
 LOG_MODULE_REGISTER(gpio_shim, LOG_LEVEL_ERR);
 
@@ -248,20 +249,27 @@ static int init_gpios(const struct device *unused)
 {
 	ARG_UNUSED(unused);
 
-	/* Loop through all GPIOs in device tree to set initial configuration */
-	for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
-		data[i].dev = device_get_binding(configs[i].dev_name);
-		int rv;
+	/* Do not reinitialize gpios on warm reboot */
+	if (!system_is_reboot_warm()) {
+		/*
+		 * Loop through all GPIOs in device tree to set initial
+		 * configuration
+		 */
+		for (size_t i = 0; i < ARRAY_SIZE(configs); ++i) {
+			data[i].dev = device_get_binding(configs[i].dev_name);
+			int rv;
 
-		if (data[i].dev == NULL) {
-			LOG_ERR("Not found (%s)", configs[i].name);
-		}
+			if (data[i].dev == NULL) {
+				LOG_ERR("Not found (%s)", configs[i].name);
+			}
 
-		rv = gpio_pin_configure(data[i].dev, configs[i].pin,
+			rv = gpio_pin_configure(data[i].dev, configs[i].pin,
 					configs[i].init_flags);
 
-		if (rv < 0) {
-			LOG_ERR("Config failed %s (%d)", configs[i].name, rv);
+			if (rv < 0) {
+				LOG_ERR("Config failed %s (%d)",
+							configs[i].name, rv);
+			}
 		}
 	}
 
