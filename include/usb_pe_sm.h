@@ -15,6 +15,7 @@
 enum pe_error {
 	ERR_RCH_CHUNKED,
 	ERR_RCH_MSG_REC,
+	ERR_RCH_CHUNK_WAIT_TIMEOUT,
 	ERR_TCH_CHUNKED,
 	ERR_TCH_XMIT,
 };
@@ -174,14 +175,6 @@ const char *pe_get_current_state(int port);
  * @return flag mask of the pe state machine
  */
 uint32_t pe_get_flags(int port);
-
-/**
- * Sets event for PE layer to report and triggers a notification up to the AP.
- *
- * @param port USB-C port number
- * @param event_mask of bits to set (PD_STATUS_EVENT_* events in ec_commands.h)
- */
-void pe_notify_event(int port, uint32_t event_mask);
 
 #endif /* __CROS_EC_USB_PE_H */
 
