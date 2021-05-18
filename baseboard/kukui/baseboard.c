@@ -23,6 +23,7 @@ void board_reset_pd_mcu(void)
 
 void board_config_pre_init(void)
 {
+#ifdef VARIANT_KUKUI_EC_STM32F098
 	STM32_RCC_AHBENR |= STM32_RCC_HB_DMA1;
 	/*
 	 * Remap USART1 and SPI2 DMA:
@@ -32,6 +33,26 @@ void board_config_pre_init(void)
 	 */
 	STM32_DMA_CSELR(STM32_DMAC_CH4) = (8 << 12) | (8 << 16) |
 					  (3 << 20) | (3 << 24);
+#elif defined(VARIANT_KUKUI_EC_STM32L431)
+#ifdef	CONFIG_DMA
+	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA1EN;
+	STM32_RCC_AHB1ENR |= STM32_RCC_AHB1ENR_DMA2EN;
+#endif
+	/*
+	 * Remap USART1 and SPI2 DMA:
+	 *
+	 * DMA2_CH=DMA1_CH+8
+	 *
+	 * Ch6 (DMA2): USART1_TX / Ch7: USART1_RX (0010)
+	 * Ch4 (DMA1): SPI2_RX   / Ch5: SPI2_TX (0010)
+	 *
+	 *    (*((volatile unsigned long *)(0x400200A8UL))) = 0x00011000;
+	 *    (*((volatile unsigned long *)(0x400204A8UL))) = 0x00200000;
+	 */
+
+	STM32_DMA_CSELR(STM32_DMAC_CH4) = (1 << 12) | (1 << 16);
+	STM32_DMA_CSELR(STM32_DMAC_CH14) = (2 << 20) | (2 << 24);
+#endif
 }
 
 enum kukui_board_version {
