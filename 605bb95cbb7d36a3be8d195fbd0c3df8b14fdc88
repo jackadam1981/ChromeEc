@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f66f29_60c133b7",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-05-18T22:56:17Z",
+      "side": 1,
+      "message": "I get different values for these\n\n2619\n2421\n2168 ....\n\nDo you know why these are different\n\n22.6 and 3.0 are the parameters I am using\n\nhttps://screenshot.googleplex.com/4tuRMenEmjJgU8A",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 7
+      },
+      "revId": "605bb95cbb7d36a3be8d195fbd0c3df8b14fdc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
