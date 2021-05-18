@@ -104,6 +104,24 @@
       "parentUuid": "a154b2a5_2d6834d0",
       "revId": "9c67cd542003621debd17a73dd0a91dc717bc6c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d48e2e94_f392bab8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-05-18T09:15:50Z",
+      "side": 1,
+      "message": "Thermistors with 13.7 kohm and 51.1 kohm in voltage divider are using table based on formula. I guess we can change it to \"by table\" version.",
+      "parentUuid": "666844f3_ef123b69",
+      "revId": "9c67cd542003621debd17a73dd0a91dc717bc6c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
