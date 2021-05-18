@@ -363,14 +363,22 @@ SECTIONS
         . = ALIGN(32);
         __iram_text_start = .;
 #else
+#ifdef CHIP_FAMILY_STM32L4
+        . = ALIGN(8);
+#else
         . = ALIGN(4);
+#endif
 #endif
         *(.iram.text)
 #ifdef CONFIG_MPU
         . = ALIGN(32);
         __iram_text_end = .;
 #else
+#ifdef CHIP_FAMILY_STM32L4
+        . = ALIGN(8);
+#else
         . = ALIGN(4);
+#endif
 #endif
         __data_end = .;
 
