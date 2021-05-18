@@ -26,7 +26,7 @@
 static const int _wake_up_delay_ms = 10;
 
 /* Device detection interval */
-static const int _detection_interval_ms = 100;
+static const int _detection_interval_ms = 500;
 
 /* Buffer size for i2c read & write */
 #define CTN730_MESSAGE_BUFFER_SIZE	0x20
@@ -35,6 +35,9 @@ static const int _detection_interval_ms = 100;
  * Static (Chip) Parameters
  */
 #define CTN730_I2C_ADDR			0x28
+
+/* Size of flash address space in bytes */
+#define CTN730_FLASH_ADDR_SIZE		3
 
 /* All commands are guaranteed to finish within 1 second. */
 #define CTN730_COMMAND_TIME_OUT		(1 * SECOND)
@@ -46,6 +49,9 @@ static const int _detection_interval_ms = 100;
 
 /* Instruction Codes */
 #define WLC_HOST_CTRL_RESET			0b000000
+#define WLC_HOST_CTRL_DL_OPEN_SESSION		0b000011
+#define WLC_HOST_CTRL_DL_COMMIT_SESSION		0b000100
+#define WLC_HOST_CTRL_DL_WRITE_FLASH		0b000101
 #define WLC_HOST_CTRL_DUMP_STATUS		0b001100
 #define WLC_HOST_CTRL_GENERIC_ERROR		0b001111
 #define WLC_HOST_CTRL_BIST			0b000110
@@ -56,12 +62,27 @@ static const int _detection_interval_ms = 100;
 #define WLC_CHG_CTRL_CHARGING_INFO		0b010101
 
 /* WLC_HOST_CTRL_RESET constants */
-#define WLC_HOST_CTRL_RESET_CMD_SIZE		1
-#define WLC_HOST_CTRL_RESET_RSP_SIZE		1
-#define WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE	0x00
-#define WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE	0x01
-#define WLC_HOST_CTRL_RESET_CMD_MODE_NORMAL	0x00
-#define WLC_HOST_CTRL_RESET_CMD_MODE_DOWNLOAD	0x01
+#define WLC_HOST_CTRL_RESET_CMD_SIZE			1
+#define WLC_HOST_CTRL_RESET_RSP_SIZE			1
+#define WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE		0x00
+#define WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE_SIZE	3
+#define WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE		0x01
+#define WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE_SIZE	2
+#define WLC_HOST_CTRL_RESET_REASON_INTENDED		0x00
+#define WLC_HOST_CTRL_RESET_REASON_CORRUPTED		0x01
+#define WLC_HOST_CTRL_RESET_REASON_UNRECOVERABLE	0x02
+#define WLC_HOST_CTRL_RESET_CMD_MODE_NORMAL		0x00
+#define WLC_HOST_CTRL_RESET_CMD_MODE_DOWNLOAD		0x01
+
+/* WLC_HOST_CTRL_DL_* constants */
+#define WLC_HOST_CTRL_DL_OPEN_SESSION_CMD_SIZE		2
+#define WLC_HOST_CTRL_DL_OPEN_SESSION_RSP_SIZE		1
+#define WLC_HOST_CTRL_DL_WRITE_FLASH_BLOCK_SIZE		128
+#define WLC_HOST_CTRL_DL_WRITE_FLASH_CMD_SIZE		\
+	(CTN730_FLASH_ADDR_SIZE + WLC_HOST_CTRL_DL_WRITE_FLASH_BLOCK_SIZE)
+#define WLC_HOST_CTRL_DL_WRITE_FLASH_RSP_SIZE		1
+#define WLC_HOST_CTRL_DL_COMMIT_SESSION_CMD_SIZE	4
+#define WLC_HOST_CTRL_DL_COMMIT_SESSION_RSP_SIZE	1
 
 /* WLC_CHG_CTRL_ENABLE constants */
 #define WLC_CHG_CTRL_ENABLE_CMD_SIZE		2
@@ -90,6 +111,8 @@ static const int _detection_interval_ms = 100;
 #define WLC_HOST_CTRL_DUMP_STATUS_CMD_SIZE	1
 
 /* WLC_CHG_CTRL_CHARGING_INFO constants */
+#define WLC_CHG_CTRL_CHARGING_INFO_CMD_SIZE	0
+#define WLC_CHG_CTRL_CHARGING_INFO_RSP_SIZE	2
 #define WLC_CHG_CTRL_CHARGING_INFO_EVT_SIZE	5
 
 /* Status Codes */
@@ -130,6 +153,12 @@ static const char *_text_instruction(uint8_t instruction)
 	switch (instruction) {
 	case WLC_HOST_CTRL_RESET:
 		return "RESET";
+	case WLC_HOST_CTRL_DL_OPEN_SESSION:
+		return "DL_OPEN";
+	case WLC_HOST_CTRL_DL_COMMIT_SESSION:
+		return "DL_COMMIT";
+	case WLC_HOST_CTRL_DL_WRITE_FLASH:
+		return "DL_WRITE";
 	case WLC_HOST_CTRL_DUMP_STATUS:
 		return "DUMP_STATUS";
 	case WLC_HOST_CTRL_GENERIC_ERROR:
@@ -205,6 +234,20 @@ static const char *_text_status_code(uint8_t code)
 	}
 }
 
+static const char *_text_reset_reason(uint8_t code)
+{
+	switch (code) {
+	case WLC_HOST_CTRL_RESET_REASON_INTENDED:
+		return "intended";
+	case WLC_HOST_CTRL_RESET_REASON_CORRUPTED:
+		return "corrupted";
+	case WLC_HOST_CTRL_RESET_REASON_UNRECOVERABLE:
+		return "unrecoverable";
+	default:
+		return "unknown";
+	}
+}
+
 static int _i2c_read(int i2c_port, uint8_t *in, int in_len)
 {
 	int rv;
@@ -250,6 +293,19 @@ static int _send_command(struct pchg *ctx, const struct ctn730_msg *cmd)
 	return rv;
 }
 
+static int ctn730_reset(struct pchg *ctx)
+{
+	gpio_set_level(GPIO_WLC_NRST_CONN, 0);
+	/*
+	 * Datasheet says minimum is 10 us. This is better not to be a sleep
+	 * especially if it's long (e.g. ~1 ms) since the PCHG state machine
+	 * may try to access the I2C bus, which is held low by ctn730.
+	 */
+	udelay(15);
+	gpio_set_level(GPIO_WLC_NRST_CONN, 1);
+	return EC_SUCCESS_IN_PROGRESS;
+}
+
 static int ctn730_init(struct pchg *ctx)
 {
 	uint8_t buf[CTN730_MESSAGE_BUFFER_SIZE];
@@ -259,7 +315,9 @@ static int ctn730_init(struct pchg *ctx)
 	cmd->message_type = CTN730_MESSAGE_TYPE_COMMAND;
 	cmd->instruction = WLC_HOST_CTRL_RESET;
 	cmd->length = WLC_HOST_CTRL_RESET_CMD_SIZE;
-	cmd->payload[0] = WLC_HOST_CTRL_RESET_CMD_MODE_NORMAL;
+	cmd->payload[0] = ctx->mode == PCHG_MODE_NORMAL
+			? WLC_HOST_CTRL_RESET_CMD_MODE_NORMAL
+			: WLC_HOST_CTRL_RESET_CMD_MODE_DOWNLOAD;
 
 	/* TODO: Run 1 sec timeout timer. */
 	rv = _send_command(ctx, cmd);
@@ -313,28 +371,79 @@ static int _process_payload_response(struct pchg *ctx, struct ctn730_msg *res)
 	if (IS_ENABLED(CTN730_DEBUG))
 		CPRINTS("Payload: %ph", HEX_BUF(buf, len));
 
+	ctx->event = PCHG_EVENT_NONE;
+
 	switch (res->instruction) {
 	case WLC_HOST_CTRL_RESET:
-		if (len != WLC_HOST_CTRL_RESET_RSP_SIZE
-				|| buf[0] != WLC_HOST_STATUS_OK)
+		if (len != WLC_HOST_CTRL_RESET_RSP_SIZE)
 			return EC_ERROR_UNKNOWN;
-		ctx->event = PCHG_EVENT_NONE;
+		if (buf[0] != WLC_HOST_STATUS_OK)
+			ctx->event = PCHG_EVENT_OTHER_ERROR;
+		break;
+	case WLC_HOST_CTRL_DL_OPEN_SESSION:
+		if (len != WLC_HOST_CTRL_DL_OPEN_SESSION_RSP_SIZE)
+			return EC_ERROR_UNKNOWN;
+		if (buf[0] != WLC_HOST_STATUS_OK) {
+			CPRINTS("FW open session failed for %s",
+				_text_status_code(buf[0]));
+			ctx->event = PCHG_EVENT_UPDATE_ERROR;
+			ctx->error |= PCHG_ERROR_MASK(PCHG_ERROR_FW_VERSION);
+		} else {
+			ctx->event = PCHG_EVENT_UPDATE_OPENED;
+		}
+		break;
+	case WLC_HOST_CTRL_DL_COMMIT_SESSION:
+		if (len != WLC_HOST_CTRL_DL_COMMIT_SESSION_RSP_SIZE)
+			return EC_ERROR_UNKNOWN;
+		if (buf[0] != WLC_HOST_STATUS_OK) {
+			CPRINTS("FW commit failed for %s",
+				_text_status_code(buf[0]));
+			ctx->event = PCHG_EVENT_UPDATE_ERROR;
+			ctx->error |= PCHG_ERROR_MASK(PCHG_ERROR_INVALID_FW);
+		} else {
+			ctx->event = PCHG_EVENT_UPDATE_CLOSED;
+		}
+		break;
+	case WLC_HOST_CTRL_DL_WRITE_FLASH:
+		if (len != WLC_HOST_CTRL_DL_WRITE_FLASH_RSP_SIZE)
+			return EC_ERROR_UNKNOWN;
+		if (buf[0] != WLC_HOST_STATUS_OK) {
+			CPRINTS("FW write failed for %s",
+				_text_status_code(buf[0]));
+			ctx->event = PCHG_EVENT_UPDATE_ERROR;
+			ctx->error |= PCHG_ERROR_MASK(PCHG_ERROR_WRITE_FLASH);
+		} else {
+			ctx->event = PCHG_EVENT_UPDATE_WRITTEN;
+		}
 		break;
 	case WLC_CHG_CTRL_ENABLE:
-		if (len != WLC_CHG_CTRL_ENABLE_RSP_SIZE
-				|| buf[0] != WLC_HOST_STATUS_OK)
+		if (len != WLC_CHG_CTRL_ENABLE_RSP_SIZE)
 			return EC_ERROR_UNKNOWN;
-		ctx->event = PCHG_EVENT_ENABLED;
+		if (buf[0] != WLC_HOST_STATUS_OK)
+			ctx->event = PCHG_EVENT_OTHER_ERROR;
+		else
+			ctx->event = PCHG_EVENT_ENABLED;
 		break;
 	case WLC_CHG_CTRL_DISABLE:
-		if (len != WLC_CHG_CTRL_DISABLE_RSP_SIZE
-				|| buf[0] != WLC_HOST_STATUS_OK)
+		if (len != WLC_CHG_CTRL_DISABLE_RSP_SIZE)
 			return EC_ERROR_UNKNOWN;
-		ctx->event = PCHG_EVENT_NONE;
+		if (buf[0] != WLC_HOST_STATUS_OK)
+			ctx->event = PCHG_EVENT_OTHER_ERROR;
+		else
+			ctx->event = PCHG_EVENT_DISABLED;
+		break;
+	case WLC_CHG_CTRL_CHARGING_INFO:
+		if (len != WLC_CHG_CTRL_CHARGING_INFO_RSP_SIZE)
+			return EC_ERROR_UNKNOWN;
+		if (buf[0] != WLC_HOST_STATUS_OK) {
+			ctx->event = PCHG_EVENT_OTHER_ERROR;
+		} else {
+			ctx->battery_percent = buf[1];
+			ctx->event = PCHG_EVENT_CHARGE_UPDATE;
+		}
 		break;
 	default:
 		CPRINTS("Received unknown response (%d)", res->instruction);
-		ctx->event = PCHG_EVENT_NONE;
 		break;
 	}
 
@@ -359,17 +468,27 @@ static int _process_payload_event(struct pchg *ctx, struct ctn730_msg *res)
 	if (IS_ENABLED(CTN730_DEBUG))
 		CPRINTS("Payload: %ph", HEX_BUF(buf, len));
 
+	ctx->event = PCHG_EVENT_NONE;
+
 	switch (res->instruction) {
 	case WLC_HOST_CTRL_RESET:
 		if (buf[0] == WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE) {
-			ctx->event = PCHG_EVENT_INITIALIZED;
+			if (len != WLC_HOST_CTRL_RESET_EVT_NORMAL_MODE_SIZE)
+				return EC_ERROR_INVAL;
+			ctx->event = PCHG_EVENT_IN_NORMAL;
+			ctx->fw_version = (uint16_t)buf[1] << 8 | buf[2];
+			CPRINTS("Normal Mode (FW=0x%02x.%02x)", buf[1], buf[2]);
 			/*
 			 * ctn730 isn't immediately ready for i2c write after
 			 * normal mode initialization (b:178096436).
 			 */
 			msleep(5);
 		} else if (buf[0] == WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE) {
-			ctx->event = PCHG_EVENT_NONE;
+			if (len != WLC_HOST_CTRL_RESET_EVT_DOWNLOAD_MODE_SIZE)
+				return EC_ERROR_INVAL;
+			CPRINTS("Download Mode (%s)",
+				_text_reset_reason(buf[1]));
+			ctx->event = PCHG_EVENT_RESET;
 		} else {
 			return EC_ERROR_INVAL;
 		}
@@ -453,6 +572,95 @@ static int ctn730_get_event(struct pchg *ctx)
 	return EC_ERROR_UNKNOWN;
 }
 
+static int ctn730_get_soc(struct pchg *ctx)
+{
+	struct ctn730_msg cmd;
+	int rv;
+
+	cmd.message_type = CTN730_MESSAGE_TYPE_COMMAND;
+	cmd.instruction = WLC_CHG_CTRL_CHARGING_INFO;
+	cmd.length = WLC_CHG_CTRL_CHARGING_INFO_CMD_SIZE;
+
+	rv = _send_command(ctx, &cmd);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS_IN_PROGRESS;
+}
+
+static int ctn730_update_open(struct pchg *ctx)
+{
+	uint8_t buf[sizeof(struct ctn730_msg)
+		    + WLC_HOST_CTRL_DL_OPEN_SESSION_CMD_SIZE];
+	struct ctn730_msg *cmd = (void *)buf;
+	uint32_t version = ctx->update.version;
+	int rv;
+
+	cmd->message_type = CTN730_MESSAGE_TYPE_COMMAND;
+	cmd->instruction = WLC_HOST_CTRL_DL_OPEN_SESSION;
+	cmd->length = WLC_HOST_CTRL_DL_OPEN_SESSION_CMD_SIZE;
+	cmd->payload[0] = (version >> 8) & 0xff;
+	cmd->payload[1] = version & 0xff;
+
+	rv = _send_command(ctx, cmd);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS_IN_PROGRESS;
+}
+
+static int ctn730_update_write(struct pchg *ctx)
+{
+	uint8_t buf[sizeof(struct ctn730_msg)
+		    + WLC_HOST_CTRL_DL_WRITE_FLASH_CMD_SIZE];
+	struct ctn730_msg *cmd = (void *)buf;
+	uint32_t *a = (void *)cmd->payload;
+	uint8_t *d = (void *)&cmd->payload[CTN730_FLASH_ADDR_SIZE];
+	int rv;
+
+	/* Address is 3 bytes. FW size must be a multiple of 128 bytes. */
+	if (ctx->update.addr & GENMASK(31, 24)
+		|| ctx->update.size != WLC_HOST_CTRL_DL_WRITE_FLASH_BLOCK_SIZE)
+		return EC_ERROR_INVAL;
+
+	cmd->message_type = CTN730_MESSAGE_TYPE_COMMAND;
+	cmd->instruction = WLC_HOST_CTRL_DL_WRITE_FLASH;
+	cmd->length = WLC_HOST_CTRL_DL_WRITE_FLASH_CMD_SIZE;
+
+	/* 4th byte will be overwritten by memcpy below. */
+	*a = ctx->update.addr;
+
+	/* Store data in payload with 0-padding for short blocks. */
+	memset(d, 0, WLC_HOST_CTRL_DL_WRITE_FLASH_BLOCK_SIZE);
+	memcpy(d, ctx->update.data, ctx->update.size);
+
+	rv = _send_command(ctx, cmd);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS_IN_PROGRESS;
+}
+
+static int ctn730_update_close(struct pchg *ctx)
+{
+	uint8_t buf[sizeof(struct ctn730_msg)
+		    + WLC_HOST_CTRL_DL_COMMIT_SESSION_CMD_SIZE];
+	struct ctn730_msg *cmd = (void *)buf;
+	uint32_t *crc32 = (void *)cmd->payload;
+	int rv;
+
+	cmd->message_type = CTN730_MESSAGE_TYPE_COMMAND;
+	cmd->instruction = WLC_HOST_CTRL_DL_COMMIT_SESSION;
+	cmd->length = WLC_HOST_CTRL_DL_COMMIT_SESSION_CMD_SIZE;
+	*crc32 = ctx->update.crc32;
+
+	rv = _send_command(ctx, cmd);
+	if (rv)
+		return rv;
+
+	return EC_SUCCESS_IN_PROGRESS;
+}
+
 /**
  * Send command in blocking loop
  *
@@ -516,9 +724,14 @@ exit:
 }
 
 const struct pchg_drv ctn730_drv = {
+	.reset = ctn730_reset,
 	.init = ctn730_init,
 	.enable = ctn730_enable,
 	.get_event = ctn730_get_event,
+	.get_soc = ctn730_get_soc,
+	.update_open = ctn730_update_open,
+	.update_write = ctn730_update_write,
+	.update_close = ctn730_update_close,
 };
 
 static int cc_ctn730(int argc, char **argv)

@@ -21,6 +21,11 @@
 #define CONFIG_USB_PD_PORT_MAX_COUNT 2
 #define CONFIG_USB_PORT_ENABLE_DYNAMIC
 
+#undef  PD_MAX_CURRENT_MA
+#define PD_MAX_CURRENT_MA	3000
+
+#define CONFIG_CHARGER_PROFILE_OVERRIDE
+
 /* USB-A config */
 #define GPIO_USB1_ILIM_SEL IOEX_USB_A0_CHARGE_EN_L
 #define GPIO_USB2_ILIM_SEL IOEX_USB_A1_CHARGE_EN_DB_L
@@ -42,7 +47,12 @@
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 
-
+/*
+ * Jelboz's battery takes several seconds to come back out of its disconnect
+ * state (~4 seconds on the unit I have, so give it a little more for margin).
+ */
+#undef CONFIG_POWER_BUTTON_INIT_TIMEOUT
+#define CONFIG_POWER_BUTTON_INIT_TIMEOUT 5
 
 /* GPIO mapping from board specific name to EC common name. */
 #define CONFIG_BATTERY_PRESENT_GPIO	GPIO_EC_BATT_PRES_ODL
@@ -121,8 +131,6 @@ enum usbc_port {
 /*****************************************************************************
  * CBI EC FW Configuration
  */
-#include "cbi_ec_fw_config.h"
-
 /**
  * SHUBOZ_MB_USBAC
  *	USB-A0  Speed: 5 Gbps
@@ -153,6 +161,8 @@ enum ec_cfg_usb_mb_type {
 enum ec_cfg_usb_db_type {
 	SHUBOZ_DB_D_OPT1_USBAC = 0,
 };
+
+#include "cbi_ec_fw_config.h"
 
 void board_reset_pd_mcu(void);
 

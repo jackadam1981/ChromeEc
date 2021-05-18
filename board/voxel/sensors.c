@@ -94,7 +94,7 @@ struct motion_sensor_t icm426xx_base_accel = {
 	.drv_data = &g_icm426xx_data,
 	.port = I2C_PORT_ACCEL,
 	.i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
-	.default_range = 4, /* g, enough for laptop */
+	.default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
 	.rot_standard_ref = &base_icm_ref,
 	.min_frequency = ICM426XX_ACCEL_MIN_FREQ,
 	.max_frequency = ICM426XX_ACCEL_MAX_FREQ,
@@ -207,14 +207,14 @@ unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 static void board_sensors_init(void)
 {
 	if (ec_cfg_has_tabletmode()) {
-		if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_ICM426XX) {
+		if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_BASE_ICM426XX) {
 			motion_sensors[BASE_ACCEL] = icm426xx_base_accel;
 			motion_sensors[BASE_GYRO] = icm426xx_base_gyro;
 			ccprints("BASE GYRO is ICM426XX");
 		} else
 			ccprints("BASE GYRO is BMI160");
 
-		if (get_cbi_ssfc_lid_sensor() == SSFC_SENSOR_KX022) {
+		if (get_cbi_ssfc_lid_sensor() == SSFC_SENSOR_LID_KX022) {
 			motion_sensors[LID_ACCEL] = kx022_lid_accel;
 			ccprints("LID_ACCEL is KX022");
 		} else
@@ -236,10 +236,10 @@ DECLARE_HOOK(HOOK_INIT, board_sensors_init, HOOK_PRIO_DEFAULT);
 void motion_interrupt(enum gpio_signal signal)
 {
 	switch (get_cbi_ssfc_base_sensor()) {
-	case SSFC_SENSOR_ICM426XX:
+	case SSFC_SENSOR_BASE_ICM426XX:
 		icm426xx_interrupt(signal);
 		break;
-	case SSFC_SENSOR_BMI160:
+	case SSFC_SENSOR_BASE_BMI160:
 	default:
 		bmi160_interrupt(signal);
 		break;
