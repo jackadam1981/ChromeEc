@@ -6,12 +6,15 @@
 #include <device.h>
 #include <drivers/cros_bbram.h>
 #include <drivers/cros_system.h>
+#include <ec_commands.h>
 #include <logging/log.h>
 
 #include "bbram.h"
 #include "common.h"
 #include "console.h"
 #include "cros_version.h"
+#include "panic.h"
+#include "sysjump.h"
 #include "system.h"
 #include "watchdog.h"
 
@@ -19,6 +22,9 @@
 #define BBRAM_REGION_PD1	DT_PATH(named_bbram_regions, pd1)
 #define BBRAM_REGION_PD2	DT_PATH(named_bbram_regions, pd2)
 #define BBRAM_REGION_TRY_SLOT	DT_PATH(named_bbram_regions, try_slot)
+
+/* Jump data (at end of RAM, or preceding panic data) */
+static struct jump_data *jdata;
 
 LOG_MODULE_REGISTER(shim_system, LOG_LEVEL_ERR);
 
@@ -315,3 +321,18 @@ static int system_preinitialize(const struct device *unused)
 
 SYS_INIT(system_preinitialize, PRE_KERNEL_1,
 	 CONFIG_PLATFORM_EC_SYSTEM_PRE_INIT_PRIORITY);
+
+int system_jumped(void)
+{
+	uintptr_t addr = get_panic_data_start();
+
+	if (!addr)
+		addr = CONFIG_RAM_BASE + CONFIG_RAM_SIZE;
+
+	jdata = (struct jump_data *)(addr - sizeof(struct jump_data));
+
+	if (jdata && jdata->magic == JUMP_DATA_MAGIC)
+		return 1;
+	else
+		return 0;
+}

@@ -657,6 +657,13 @@ uintptr_t system_get_fw_reset_vector(uintptr_t base);
  */
 int system_is_reboot_warm(void);
 
+/**
+ * Check if the EC performed a system jump.
+ *
+ * @return true if the EC system jumped, else false.
+ */
+int system_jumped(void);
+
 #ifdef CONFIG_EXTENDED_VERSION_INFO
 void system_print_extended_version_info(void);
 #else
