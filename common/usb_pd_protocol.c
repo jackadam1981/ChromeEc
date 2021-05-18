@@ -31,6 +31,7 @@
 #include "tcpm.h"
 #include "version.h"
 #include "vboot.h"
+#include "watchdog.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
@@ -2982,6 +2983,7 @@ void pd_task(void *u)
 #endif
 
 	while (1) {
+		watchdog_reload();
 #ifdef CONFIG_USB_PD_REV30
 		/* send any pending messages */
 		pd_ca_send_pending(port);
