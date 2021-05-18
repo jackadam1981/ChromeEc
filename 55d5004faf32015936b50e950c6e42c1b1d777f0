@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9166a50a_465b72d4",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-18T22:04:16Z",
+      "side": 1,
+      "message": "At 5V, 9V, and 15V, I\u0027m only seeing the one interrupt. Note that this is VCHGPWR and not CHG_DET.",
+      "parentUuid": "3c7d8b53_81dbaffe",
+      "revId": "55d5004faf32015936b50e950c6e42c1b1d777f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c3d93225_7f625d82",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-18T21:05:18Z",
       "side": 1,
       "message": "Still needed?",
+      "revId": "55d5004faf32015936b50e950c6e42c1b1d777f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "520fd9c3_af09162a",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-18T22:04:16Z",
+      "side": 1,
+      "message": "Went back and forth on this. I think it\u0027s not needed (and had removed it), but I forget the reason I put it back. It works either way, so I think I\u0027ll remove it again.",
+      "parentUuid": "c3d93225_7f625d82",
       "revId": "55d5004faf32015936b50e950c6e42c1b1d777f0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,30 @@
       "writtenOn": "2021-05-18T21:05:18Z",
       "side": 1,
       "message": "SM5803_FLOW1_MODE?",
+      "range": {
+        "startLine": 1501,
+        "startChar": 8,
+        "endLine": 1501,
+        "endChar": 15
+      },
+      "revId": "55d5004faf32015936b50e950c6e42c1b1d777f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e797e9da_d82ee876",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-18T22:04:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c323a510_ef617a40",
       "range": {
         "startLine": 1501,
         "startChar": 8,
