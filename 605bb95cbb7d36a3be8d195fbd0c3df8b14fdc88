@@ -70,6 +70,30 @@
       },
       "revId": "605bb95cbb7d36a3be8d195fbd0c3df8b14fdc88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c787ee17_f83fc159",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-05-19T15:12:33Z",
+      "side": 1,
+      "message": "Please check new version of the patch. It has updated table for 22.6 kohm 3.0 mV.",
+      "parentUuid": "37e736bb_2b2875ae",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 7
+      },
+      "revId": "605bb95cbb7d36a3be8d195fbd0c3df8b14fdc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
