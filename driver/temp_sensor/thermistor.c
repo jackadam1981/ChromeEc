@@ -3,7 +3,10 @@
  * found in the LICENSE file.
  */
 
-/* Common thermistor code for Chrome EC */
+/*
+ * Common thermistor code for Chrome EC. See ./thermistors.md for table of
+ * resistance of a 47kΩ B4050 thermistor
+ */
 
 #include "adc.h"
 #include "common.h"
