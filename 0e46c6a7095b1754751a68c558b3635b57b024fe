@@ -22,6 +22,30 @@
       },
       "revId": "0e46c6a7095b1754751a68c558b3635b57b024fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "461a892b_68ad8092",
+        "filename": "board/chronicler/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-05-19T06:42:13Z",
+      "side": 1,
+      "message": "After add CL:2905162 ,make BOARD\u003dchronicler passed.",
+      "parentUuid": "5c3fd8a5_0cd830ea",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "0e46c6a7095b1754751a68c558b3635b57b024fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
