@@ -16,6 +16,70 @@
       "message": "I see that the Zephyr GPIO driver doesn\u0027t permit setting GPIO_OUTPUT without also setting GPIO_OUTPUT_INIT_LOW or GPIO_OUTPUT_INIT_HIGH.  So this approach makes sense.\n\nAs an additional test, can you check the GPIO state before and after the sysjump?  I created this CL:2863946 that adds a \"gpiodebug\" command that dumps out all the NPCX GPIO related registers.  You could dump the registers before and after sysjump and do a diff.",
       "revId": "272f0f0629beb1f46b4d8b7bd2ac10f131779fac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "111d958b_722eccbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-19T16:31:50Z",
+      "side": 1,
+      "message": "This Zephyr restriction seems to be a problem. For the GPIO_OUTPUT, can we get the current GPIO level first and initialize it to the same level?",
+      "parentUuid": "ce3f5859_d5327a2d",
+      "revId": "272f0f0629beb1f46b4d8b7bd2ac10f131779fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf066a48_77921311",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-19T16:31:50Z",
+      "side": 1,
+      "message": "Does sysjumping to RW need to set the interrupt callback?",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 2
+      },
+      "revId": "272f0f0629beb1f46b4d8b7bd2ac10f131779fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b881a6_ec812ee2",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-19T16:31:50Z",
+      "side": 1,
+      "message": "Need it for RW? I can think of an example that a RW update wants to deprecate a GPIO pin to make it \"unused\".",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 2
+      },
+      "revId": "272f0f0629beb1f46b4d8b7bd2ac10f131779fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
