@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14882d44_fa24bf29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-19T20:59:34Z",
+      "side": 1,
+      "message": "I think no need to block this CL. We can file a bug to track this Zephyr limitation and see any better solution to keep the original behavior.",
+      "parentUuid": "a6830380_4164cf34",
+      "revId": "272f0f0629beb1f46b4d8b7bd2ac10f131779fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf066a48_77921311",
         "filename": "zephyr/shim/src/gpio.c",
         "patchSetId": 3
