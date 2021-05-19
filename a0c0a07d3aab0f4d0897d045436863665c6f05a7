@@ -43,6 +43,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9b6af806_3255b21c",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-05-19T15:54:15Z",
+      "side": 1,
+      "message": "Yes, but this is a cherry pick into a branch, if you want that changed, we should do it at ToT.",
+      "parentUuid": "0acc9850_10a70356",
+      "range": {
+        "startLine": 1203,
+        "startChar": 6,
+        "endLine": 1203,
+        "endChar": 48
+      },
+      "revId": "a0c0a07d3aab0f4d0897d045436863665c6f05a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f7ed527a_f66e5b16",
         "filename": "test/usb_pd_pdo_fixed_test.c",
         "patchSetId": 2
