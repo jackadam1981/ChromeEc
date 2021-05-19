@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3eed3b09_68fa4f51",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-19T19:17:43Z",
+      "side": 1,
+      "message": "I think we would still want to provide information about the number of sleep transitions that were performed even if using no failure detection. See comment below.",
+      "range": {
+        "startLine": 204,
+        "startChar": 1,
+        "endLine": 204,
+        "endChar": 23
+      },
+      "revId": "d381a7824da17e113e95f1121299a6cabeffb65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3469cc15_c2adb689",
         "filename": "power/host_sleep.c",
         "patchSetId": 1
@@ -32,6 +55,29 @@
       "side": 1,
       "message": "Good point. Maybe only for the \"Disable\" case?",
       "parentUuid": "3469cc15_c2adb689",
+      "revId": "d381a7824da17e113e95f1121299a6cabeffb65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a1aa431_9174306c",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-19T19:17:43Z",
+      "side": 1,
+      "message": "Rather than `on/off`, I am thinking that we should probably do something like:\n\n`host_slp_timeout [infinite | default | \u003cval\u003e]`\n\nEC can maintain state `host_slp_timeout_default` which is default initialized to CONFIG_SLEEP_TIMEOUT_MS.\n\nOn running this console command, EC will update `host_slp_timeout_default` as follows:\n\ninfinite --\u003e sets `host_slp_timeout_default` to `EC_HOST_SLEEP_TIMEOUT_INFINITE`\ndefault --\u003e sets `host_slp_timeout_default` to `CONFIG_SLEEP_TIMEOUT_MS`\n\u003cval\u003e --\u003e sets `host_slp_timeout_default` to \u003cval\u003e\n\nAnd then in rest of the code you don\u0027t need to add checks in each function, but simply update line 179 to:\n```\ntimeout \u003d host_slp_timeout_default;\n```\n\nThis ensures that the state machine still runs the same in all conditions and honors the EC default whenever host says use default. User would be expected to set the default using the console command before triggering S0ix suspend. This also ensures that we don\u0027t need special handling for other stuff exposed by EC as part of this host command (as commented above).",
+      "range": {
+        "startLine": 233,
+        "startChar": 3,
+        "endLine": 233,
+        "endChar": 15
+      },
       "revId": "d381a7824da17e113e95f1121299a6cabeffb65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
