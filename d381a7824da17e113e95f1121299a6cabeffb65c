@@ -16,6 +16,24 @@
       "message": "do we also need\nhook_call_deferred(\u0026sleep_transition_timeout_data, -1)\nhere?",
       "revId": "d381a7824da17e113e95f1121299a6cabeffb65c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "644c00f8_9247c2cc",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-05-19T03:52:58Z",
+      "side": 1,
+      "message": "Good point. Maybe only for the \"Disable\" case?",
+      "parentUuid": "3469cc15_c2adb689",
+      "revId": "d381a7824da17e113e95f1121299a6cabeffb65c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
