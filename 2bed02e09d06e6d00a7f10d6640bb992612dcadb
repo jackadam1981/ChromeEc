@@ -34,6 +34,24 @@
       "parentUuid": "87969941_1f70d553",
       "revId": "2bed02e09d06e6d00a7f10d6640bb992612dcadb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c7e446_122a0019",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2407,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T22:37:11Z",
+      "side": 1,
+      "message": "I\u0027ll let Aseda weigh in since he has more background, but from my point of view, if something is expected to be done at init-ish time, we should either be doing it from init or whatever the point is where we have enough information to provide it.  Ideally, we\u0027d cover all cases in as few locations as possible when setting it universally in init isn\u0027t an option.\n\nShould the port be seeded earlier in this path?  It looks like we took the Try.SRC route in this bug, which is how we avoided init in Unattached.SNK.  Can, for example, Attached.SRC authoritatively set up \"yes, this port has a limit of 0 since I\u0027m definitely not sinking\"?",
+      "parentUuid": "6a36e4cb_bdc2b56a",
+      "revId": "2bed02e09d06e6d00a7f10d6640bb992612dcadb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
