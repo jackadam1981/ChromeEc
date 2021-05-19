@@ -95,9 +95,17 @@ enum npcx_chip_id {
 /* RAM block size in npcx family (Unit: bytes) */
 #define NPCX_RAM_BLOCK_SIZE (32 * 1024)
 /* RAM block number in npcx7 series */
-#define NPCX7_RAM_BLOCK_NUM 12
+
+/* Calculate the number of RAM blocks:
+ * total RAM size = code ram + data ram + extra 2K for ROM functions
+ * divided by the block size 32k.
+ */
+#define SRAM0_SIZE DT_REG_SIZE(DT_NODELABEL(sram0))
+#define FLASH0_SIZE DT_REG_SIZE(DT_NODELABEL(flash0))
+#define NPCX7_RAM_BLOCK_NUM ((((SRAM0_SIZE + FLASH0_SIZE) / 1024) + 2) / 32)
+
 /* RAM block mask for power down in npcx7 series */
-#define NPCX7_RAM_BLOCK_PD_MASK (BIT(12) - 1)
+#define NPCX7_RAM_BLOCK_PD_MASK (BIT(NPCX7_RAM_BLOCK_NUM) - 1)
 /* Get saved reset flag address in battery-backed ram */
 #define BBRAM_SAVED_RESET_FLAG_ADDR                         \
 	(DT_REG_ADDR(DT_INST(0, nuvoton_npcx_cros_bbram)) + \
