@@ -16,6 +16,52 @@
       "message": "Brian, your CR+2 was lost when resolving merge conflicts. Please review again.",
       "revId": "a0c0a07d3aab0f4d0897d045436863665c6f05a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0acc9850_10a70356",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-05-19T15:46:06Z",
+      "side": 1,
+      "message": "since you are defining CONFIG_USB_PD_ONLY_FIXED_PDOS in the servo_v4 board file you don\u0027t really need this IS_ENABLED guard here (unless you plan on removing the define for a subset of compiles or something). Having the IS_ENABLED guard begs the question of when this is not enabled for servo_v4 board.\n\n\n---\nhere and in servo_v4p1",
+      "range": {
+        "startLine": 1203,
+        "startChar": 6,
+        "endLine": 1203,
+        "endChar": 48
+      },
+      "revId": "a0c0a07d3aab0f4d0897d045436863665c6f05a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7ed527a_f66e5b16",
+        "filename": "test/usb_pd_pdo_fixed_test.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-05-19T15:46:06Z",
+      "side": 1,
+      "message": "woot! Unit tests!!!!",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 44
+      },
+      "revId": "a0c0a07d3aab0f4d0897d045436863665c6f05a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
