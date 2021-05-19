@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43b9fc8d_afff20ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-19T17:20:56Z",
+      "side": 1,
+      "message": "some more comments now that I have had more time to go through it",
+      "revId": "4698c8c20a44c5519d4ddabc3f409e0d9f9f5c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f70f1450_349e2653",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-19T17:20:56Z",
+      "side": 1,
+      "message": "This needs a little more detail, at least three lines. Also, can we point to the docs here?\n\nI think it is emul_smart_battery.h",
+      "revId": "4698c8c20a44c5519d4ddabc3f409e0d9f9f5c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91c849bb_494af3b3",
+        "filename": "zephyr/include/emul/emul_smart_battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-19T17:20:56Z",
+      "side": 1,
+      "message": "I think we can omit _ptr",
+      "range": {
+        "startLine": 123,
+        "startChar": 17,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "4698c8c20a44c5519d4ddabc3f409e0d9f9f5c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b7cf913_72e004a8",
+        "filename": "zephyr/include/emul/emul_smart_battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-19T17:20:56Z",
+      "side": 1,
+      "message": "-",
+      "range": {
+        "startLine": 126,
+        "startChar": 51,
+        "endLine": 126,
+        "endChar": 52
+      },
+      "revId": "4698c8c20a44c5519d4ddabc3f409e0d9f9f5c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76095e5d_0b5d5682",
+        "filename": "zephyr/include/emul/emul_smart_battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-19T17:20:56Z",
+      "side": 1,
+      "message": "I think we can drop custom_\n\nI did wonder about suggesting to zephyr having an h_ prefix (for \u0027handler\u0027) for functions like this. But I haven\u0027t done it...so I think a _func suffix makes sense.",
+      "range": {
+        "startLine": 142,
+        "startChar": 14,
+        "endLine": 142,
+        "endChar": 35
+      },
+      "revId": "4698c8c20a44c5519d4ddabc3f409e0d9f9f5c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea8bdb83_81cecdf8",
+        "filename": "zephyr/include/emul/emul_smart_battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-19T17:20:56Z",
+      "side": 1,
+      "message": "write handler for SMBus messages",
+      "range": {
+        "startLine": 175,
+        "startChar": 14,
+        "endLine": 175,
+        "endChar": 47
+      },
+      "revId": "4698c8c20a44c5519d4ddabc3f409e0d9f9f5c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0ece89b_64472432",
+        "filename": "zephyr/include/emul/emul_smart_battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-19T17:20:56Z",
+      "side": 1,
+      "message": "Again I think we can drop custom_",
+      "range": {
+        "startLine": 182,
+        "startChar": 5,
+        "endLine": 182,
+        "endChar": 36
+      },
+      "revId": "4698c8c20a44c5519d4ddabc3f409e0d9f9f5c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51059922_e6ccc5a1",
+        "filename": "zephyr/include/emul/emul_smart_battery.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-19T17:20:56Z",
+      "side": 1,
+      "message": "G\n\n(we know it is a function)",
+      "range": {
+        "startLine": 209,
+        "startChar": 10,
+        "endLine": 209,
+        "endChar": 26
+      },
+      "revId": "4698c8c20a44c5519d4ddabc3f409e0d9f9f5c68",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
