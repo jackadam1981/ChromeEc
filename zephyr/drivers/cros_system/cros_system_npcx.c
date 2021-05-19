@@ -95,9 +95,17 @@ enum npcx_chip_id {
 /* RAM block size in npcx family (Unit: bytes) */
 #define NPCX_RAM_BLOCK_SIZE (32 * 1024)
 /* RAM block number in npcx7 series */
+
+#if defined(CONFIG_SOC_NPCX7M6FB) || defined(CONFIG_SOC_NPCX7M6FC)
+#define NPCX7_RAM_BLOCK_NUM 8
+#elif defined(CONFIG_SOC_NPCX7M7FC)
 #define NPCX7_RAM_BLOCK_NUM 12
+#else
+#error "Unknown NPCX chip variant"
+#endif
+
 /* RAM block mask for power down in npcx7 series */
-#define NPCX7_RAM_BLOCK_PD_MASK (BIT(12) - 1)
+#define NPCX7_RAM_BLOCK_PD_MASK (BIT(NPCX7_RAM_BLOCK_NUM) - 1)
 /* Get saved reset flag address in battery-backed ram */
 #define BBRAM_SAVED_RESET_FLAG_ADDR                         \
 	(DT_REG_ADDR(DT_INST(0, nuvoton_npcx_cros_bbram)) + \
