@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24582aea_871ef06d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-19T21:01:09Z",
+      "side": 1,
+      "message": "It looks like the Zephyr API provides two routines: gpio_pin_configure() and gpio_config(), both with the same parameters.  Only gpio_pin_configure() includes the assert requiring that GPIO_OUTPUT must also set GPIO_OUTPUT_INIT_LOW/GPIO_OUTPUT_INIT_HIGH.\n\nSo I think we can match the cros-ec implementation as follows:\n    if (warm_reset)\n        flags \u0026\u003d ~(GPIO_OUTPUT_INIT_LOW/GPIO_OUTPUT_INIT_HIGH);\n    gpio_config();",
+      "parentUuid": "14882d44_fa24bf29",
+      "revId": "272f0f0629beb1f46b4d8b7bd2ac10f131779fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf066a48_77921311",
         "filename": "zephyr/shim/src/gpio.c",
         "patchSetId": 3
