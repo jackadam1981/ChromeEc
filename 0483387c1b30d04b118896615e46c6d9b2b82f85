@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e354d1_7301490b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-05-19T21:01:33Z",
+      "side": 1,
+      "message": "please split this patch into mch chip support and intel board updates.",
+      "revId": "0483387c1b30d04b118896615e46c6d9b2b82f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be70699c_95e152d6",
+        "filename": "chip/mchp/registers.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-05-19T21:01:33Z",
+      "side": 1,
+      "message": "0x01 or use BIT(0) if the macro available at this level.",
+      "range": {
+        "startLine": 521,
+        "startChar": 40,
+        "endLine": 521,
+        "endChar": 41
+      },
+      "revId": "0483387c1b30d04b118896615e46c6d9b2b82f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f9f3179_374a0890",
+        "filename": "chip/mchp/registers.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-05-19T21:01:33Z",
+      "side": 1,
+      "message": "0x02 or BIT(1)",
+      "range": {
+        "startLine": 522,
+        "startChar": 40,
+        "endLine": 522,
+        "endChar": 41
+      },
+      "revId": "0483387c1b30d04b118896615e46c6d9b2b82f85",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
