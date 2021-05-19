@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce3f5859_d5327a2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-19T15:32:42Z",
+      "side": 1,
+      "message": "I see that the Zephyr GPIO driver doesn\u0027t permit setting GPIO_OUTPUT without also setting GPIO_OUTPUT_INIT_LOW or GPIO_OUTPUT_INIT_HIGH.  So this approach makes sense.\n\nAs an additional test, can you check the GPIO state before and after the sysjump?  I created this CL:2863946 that adds a \"gpiodebug\" command that dumps out all the NPCX GPIO related registers.  You could dump the registers before and after sysjump and do a diff.",
+      "revId": "272f0f0629beb1f46b4d8b7bd2ac10f131779fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
