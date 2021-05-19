@@ -4,10 +4,12 @@
  */
 
 #include "config.h"
+#include "console.h"
 #include "ec_commands.h"
 #include "hooks.h"
 #include "host_command.h"
 #include "power.h"
+#include "stdbool.h"
 #include "util.h"
 
 /* Console output macros */
@@ -110,6 +112,7 @@ void sleep_notify_transition(int check_state, int hook_id)
 static uint16_t sleep_signal_timeout;
 static uint32_t sleep_signal_transitions;
 static void (*sleep_timeout_callback)(void);
+static bool sleep_failure_detection_disabled;
 
 static void sleep_transition_timeout(void);
 DECLARE_DEFERRED(sleep_transition_timeout);
@@ -123,12 +126,18 @@ static void sleep_increment_transition(void)
 
 void sleep_suspend_transition(void)
 {
+	if (sleep_failure_detection_disabled)
+		return;
+
 	sleep_increment_transition();
 	hook_call_deferred(&sleep_transition_timeout_data, -1);
 }
 
 void sleep_resume_transition(void)
 {
+	if (sleep_failure_detection_disabled)
+		return;
+
 	sleep_increment_transition();
 
 	/*
@@ -159,6 +168,9 @@ void sleep_start_suspend(struct host_sleep_event_context *ctx,
 {
 	uint16_t timeout = ctx->sleep_timeout_ms;
 
+	if (sleep_failure_detection_disabled)
+		return;
+
 	sleep_timeout_callback = callback;
 	sleep_signal_transitions = 0;
 
@@ -183,6 +195,10 @@ void sleep_complete_resume(struct host_sleep_event_context *ctx)
 	 * if the the HOST_SLEEP_EVENT_S0IX_RESUME message arrives before
 	 * the CHIPSET task transitions to the POWER_S0ixS0 state.
 	 */
+
+	if (sleep_failure_detection_disabled)
+		return;
+
 	sleep_signal_timeout = 0;
 	hook_call_deferred(&sleep_transition_timeout_data, -1);
 	ctx->sleep_transitions = sleep_signal_transitions;
@@ -194,6 +210,29 @@ void sleep_reset_tracking(void)
 	sleep_signal_timeout = 0;
 	sleep_timeout_callback = NULL;
 }
+
+static int command_sleep_fail_detection(int argc, char **argv)
+{
+	int v;
+
+	if ((argc > 1) && parse_bool(argv[1], &v)) {
+		if (v)
+			sleep_failure_detection_disabled = false;
+		else
+			sleep_failure_detection_disabled = true;
+
+		sleep_reset_tracking();
+	}
+
+	ccprintf("Sleep failure detection %sabled\n",
+		sleep_failure_detection_disabled ? "dis" : "en");
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(sleepfaildetect, command_sleep_fail_detection,
+		"[ on | off ]",
+		"Turn power sleep failure detection on (default) or off");
+
 
 #else /* !CONFIG_POWER_SLEEP_FAILURE_DETECTION */
 
