@@ -1,0 +1,327 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65c22151_ea5a1c43",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "If we have the flash space for it, we should try supporting this on all chromebooks since we\u0027re \"shoulds\" for supporting it in general as hosts with multiple downstream ports, and also sinks which use PD power for charging.",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d64f8f70_435b4c5c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6853,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "I\u0027d suggest pe_sender_response_msg_entry() and pe_sender_response_msg_run() for flag/timer management, plus it\u0027ll restore your DPM request in the event of a discard",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae779b74_ff727b90",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6871,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "Should we skip to error recovery when we get a random data message, or are we counting on the timer timeout?",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a8812dd_110a5aff",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6872,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "Also check ext \u003d\u003d 0.  Long-term, (i.e. doesn\u0027t have to be in this stack) I wonder if it would help to have bool \"check control message\", \"check data message\" type helpers to ensure we\u0027re checking every applicable field.\n\nI suppose one could also argue we should check for SOP in case this is a random cable Accept",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b66f7859_3eba3fb2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6888,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "Not supported should be okay to receive, right?  At least, that\u0027s how I read the spec which I will improve in the future with an ECN...",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "245bc4b0_bb286476",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6890,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "Did you put an exception in pe_report_error() for this to go through to the state?",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15298ed6_7d018caf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6910,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "This seems to match the state description in the spec, but I think makes more sense from the description in 6.6.10.3 as probably being needed only after the Accept comes in.  Otherwise, why are we running this in error recovery?\n\nAnd then side question, is the spec trying to imply we check the timer in every state?  I assume that would mostly apply to the data reset states?",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1315c28_ea45ac0a",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6936,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "A pe_report_error exception will be needed for this state too",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "687b981e_dd6219c0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6940,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "nit: I\u0027ve been liking with the new timers how we tend to defensively disable them in exit states when they\u0027re no longer in use, but it\u0027s not strictly required",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b77c8b85_e42c0629",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6955,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "Note flag is left set intentionally?",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7720c1a9_257254d5",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6960,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "Also check for unexpected message interruptions, as I believe that would count as a protocol error leading to error recovery.  Just a guess based on the general theme of these states.",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e29369_1f46e5d7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6971,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "I definitely know the spec says to check this on exit, but I\u0027m not sure how well that will work with our state machines.  In this case, it seems like we\u0027ll leave a random TX complete flag for another state to process? \n\nShould we send it from this state and wait to exit until we\u0027ve cleared the TX complete?",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7a30f51_5c386738",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "Same as error request bit?",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adacd039_69287ecb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3556,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "What would you think about instead running this as a little state machine like the hard reset processing?  We don\u0027t generally add new states outside the spec, and as such end up with little PD related state machines hiding in the TC.  I\u0027m not saying it\u0027s perfect...\n\nI suppose the related and mostly tangential item we could discuss long-term would be whether we actually want to make the DPM handle these things.  Though honestly for things like this with very specific timings, I find it weird they\u0027re nebulously spec\u0027d into the DPM instead of being put into defined layer states.",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df0fd08a_ff69624e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3570,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "This might sound like a stupid question, but do we have circuitry set up to do this?  I know we run the SS lines through the muxes, but I thought I\u0027d only seen D+/D- going through protection ICs.  Though maybe it\u0027s different for Volteer with TCSS",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05c769d8_ac6383d2",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 3598,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "Should this also depend on whether we\u0027re the Vconn source?",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ebcdd7c_ea7fa013",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "10-20 ms",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33a11fed_3e55b03a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "160-240",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd1e2902_9d7cfc3a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-19T21:16:35Z",
+      "side": 1,
+      "message": "Move comment up",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
