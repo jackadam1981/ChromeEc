@@ -118,6 +118,30 @@
       },
       "revId": "605bb95cbb7d36a3be8d195fbd0c3df8b14fdc88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f403a50b_2f3dd725",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-05-19T22:45:59Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t see the upload  sooner. LGTM",
+      "parentUuid": "f82945b6_8a5647b3",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 7
+      },
+      "revId": "605bb95cbb7d36a3be8d195fbd0c3df8b14fdc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
