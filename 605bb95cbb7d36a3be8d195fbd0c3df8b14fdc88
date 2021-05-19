@@ -46,6 +46,30 @@
       },
       "revId": "605bb95cbb7d36a3be8d195fbd0c3df8b14fdc88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37e736bb_2b2875ae",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-05-19T14:47:52Z",
+      "side": 1,
+      "message": "Let\u0027s recalculate this table from the spreadsheet, since all of the others match the spreadsheet now.\n\nWe can add a md files that has all of the raw numbers that we used so other can use the same numbers in the future.",
+      "parentUuid": "d4126a83_7d6c7be6",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 7
+      },
+      "revId": "605bb95cbb7d36a3be8d195fbd0c3df8b14fdc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
