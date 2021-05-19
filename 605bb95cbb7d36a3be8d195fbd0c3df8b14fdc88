@@ -94,6 +94,30 @@
       },
       "revId": "605bb95cbb7d36a3be8d195fbd0c3df8b14fdc88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f82945b6_8a5647b3",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-05-19T15:40:03Z",
+      "side": 1,
+      "message": "Uploaded CL:2904831 to add the resistance table",
+      "parentUuid": "37e736bb_2b2875ae",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 7
+      },
+      "revId": "605bb95cbb7d36a3be8d195fbd0c3df8b14fdc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
