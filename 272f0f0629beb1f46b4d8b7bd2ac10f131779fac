@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a51d2500_4c693817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-19T18:31:17Z",
+      "side": 1,
+      "message": "I don\u0027t think this is defined behavior by the Zephyr GPIO API. When a pin is configured as an output I don\u0027t think the return value from gpio_pin_get_raw() is guaranteed match the actual pin state.",
+      "parentUuid": "111d958b_722eccbd",
+      "revId": "272f0f0629beb1f46b4d8b7bd2ac10f131779fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf066a48_77921311",
