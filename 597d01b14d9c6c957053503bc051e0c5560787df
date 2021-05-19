@@ -22,6 +22,30 @@
       },
       "revId": "597d01b14d9c6c957053503bc051e0c5560787df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6ca984d_fba47bee",
+        "filename": "zephyr/projects/asurada/hayato/include/gpio_map.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-19T17:31:51Z",
+      "side": 1,
+      "message": "This is fine here for now.  Please open a bug to create a driver to pull the power signal list from the devicetree.",
+      "parentUuid": "3c37c78e_fe372af1",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 2
+      },
+      "revId": "597d01b14d9c6c957053503bc051e0c5560787df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
