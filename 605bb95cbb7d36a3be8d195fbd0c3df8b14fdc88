@@ -22,6 +22,30 @@
       },
       "revId": "605bb95cbb7d36a3be8d195fbd0c3df8b14fdc88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4126a83_7d6c7be6",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-05-19T10:08:14Z",
+      "side": 1,
+      "message": "Resistance table from yours spreadsheet is slightly different than in pdf (https://www.murata.com/~/media/webrenewal/support/library/catalog/products/thermistor/ntc/r44e.ashx). When data from column \"NCpppWB473\" from page 15 are used, then result is exactly the same as current table for 22.6 3.0.\n\nDo you think we should align thermistor_data_22_47 to yours spreadsheet or use table from pdf to recalculate all other tables in this file? Or leave it as it is now?",
+      "parentUuid": "a4f66f29_60c133b7",
+      "range": {
+        "startLine": 210,
+        "startChar": 3,
+        "endLine": 210,
+        "endChar": 7
+      },
+      "revId": "605bb95cbb7d36a3be8d195fbd0c3df8b14fdc88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
