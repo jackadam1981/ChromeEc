@@ -211,6 +211,8 @@
 enum adc_channel {
 	ADC_TEMP_SENSOR_1_DDR_SOC,
 	ADC_TEMP_SENSOR_2_CHARGER,
+	ADC_TEMP_SENSOR_3_inductor,
+	ADC_TEMP_SENSOR_4_5G_area,
 	ADC_CH_COUNT
 };
 
