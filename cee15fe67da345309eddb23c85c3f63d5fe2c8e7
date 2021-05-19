@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b60c4e8_f3fa5333",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-05-19T22:10:41Z",
+      "side": 1,
+      "message": "My bad. It\u0027s ready for trying with some devices, but as you saw, the code is rough. For instance, I #ifdef out all the TC stuff in one of the later CLs.",
+      "parentUuid": "b8ac333f_970c1fee",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65c22151_ea5a1c43",
