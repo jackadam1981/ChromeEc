@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "567029e4_4ed2432e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-19T16:46:06Z",
+      "side": 1,
+      "message": "This looks good.\n\nIn future, in the case where you need tests that cannot be handled by a loop, I am pretty sure you could have a function with some args, with the zasserts in the function.\n",
+      "revId": "48f23bbf9a0587a8b7b94c456498c8a82955e2e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
