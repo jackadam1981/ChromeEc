@@ -22,6 +22,30 @@
       },
       "revId": "a7a73e3fdecb871ea02a3e830f25f67d4862307c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3acf1b6c_986df0db",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-19T23:10:44Z",
+      "side": 1,
+      "message": "its a dedicated SPI, but does different operation for alternate OS. We are re-purposing same chip for Chrome usage with minor stuffing options on the RVP",
+      "parentUuid": "89cb2eca_c52b7503",
+      "range": {
+        "startLine": 12,
+        "startChar": 35,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "a7a73e3fdecb871ea02a3e830f25f67d4862307c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
