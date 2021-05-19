@@ -67,6 +67,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "316edf9f_52b74066",
+        "filename": "board/servo_v4/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-05-19T22:51:46Z",
+      "side": 1,
+      "message": "Ha, I thought I verified this was on master. You definitely did the right thing by  not changing it. No need to go on master and change this.",
+      "parentUuid": "9b6af806_3255b21c",
+      "range": {
+        "startLine": 1203,
+        "startChar": 6,
+        "endLine": 1203,
+        "endChar": 48
+      },
+      "revId": "a0c0a07d3aab0f4d0897d045436863665c6f05a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f7ed527a_f66e5b16",
         "filename": "test/usb_pd_pdo_fixed_test.c",
         "patchSetId": 2
