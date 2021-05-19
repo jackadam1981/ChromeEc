@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b583ebf8_b0a4e195",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-19T23:02:54Z",
+      "side": 1,
+      "message": "This works on a Volteer board.",
+      "revId": "990ee2892957fede3a60b96c070be2483ed1fa2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bedebd5d_fde591ee",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-19T23:02:54Z",
+      "side": 1,
+      "message": "This needs to be gpio_config().  gpio_pin_configure() includes asserts that will fail.  https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/58b38fe6/include/drivers/gpio.h#564\n\nasserts must not be enabled in our builds",
+      "range": {
+        "startLine": 275,
+        "startChar": 7,
+        "endLine": 275,
+        "endChar": 25
+      },
+      "revId": "990ee2892957fede3a60b96c070be2483ed1fa2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
