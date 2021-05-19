@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5d65460_caf5b87f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-19T19:04:43Z",
+      "side": 1,
+      "message": "For Nuvoton, gpio_pin_get_raw() returns the pin state from the input data register.  I don\u0027t know if the input register value updates for pins that are configured as an output.  I\u0027ve seen GPIO implementations where once a pin is configured as an output, the input status is not defined.  For a warm reset, the GPIO registers should be unchanged.  Sam\u0027s experiment seems to confirm this, as the only register changes were to the GPIO input data register.",
+      "parentUuid": "75624317_28414770",
+      "revId": "272f0f0629beb1f46b4d8b7bd2ac10f131779fac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf066a48_77921311",

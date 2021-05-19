@@ -39,6 +39,30 @@
       },
       "revId": "a3c6dbff909e338f813df7cdc342142161ad82b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0131d8fa_cfc576fe",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-19T19:04:43Z",
+      "side": 1,
+      "message": "Based off the experiment of dumping all GPIO registers before and after the sysjump, the default configuration will be whatever was setup by RO.",
+      "parentUuid": "f3938bce_b79d7eae",
+      "range": {
+        "startLine": 266,
+        "startChar": 8,
+        "endLine": 267,
+        "endChar": 28
+      },
+      "revId": "a3c6dbff909e338f813df7cdc342142161ad82b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
