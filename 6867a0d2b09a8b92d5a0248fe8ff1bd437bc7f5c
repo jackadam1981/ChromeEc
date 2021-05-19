@@ -16,6 +16,40 @@
       "message": "This is ready for review, but I\u0027m still working on getting a clean FAFT_PD run before submitting.",
       "revId": "6867a0d2b09a8b92d5a0248fe8ff1bd437bc7f5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7838e93_45dc9d83",
+        "filename": "common/usb_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-05-19T21:55:48Z",
+      "side": 1,
+      "message": "We currently distinguish between our own port being PD-capable, and the partner being PD capable. The comments for pd_unknown suggest that it\u0027s about the partner, but the fact that the unknown flag can be cleared based on our own policy makes it a little ambiguous. It might benefit from more or clearer comments.",
+      "revId": "6867a0d2b09a8b92d5a0248fe8ff1bd437bc7f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01134ea9_a1a5d0f8",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-05-19T21:55:48Z",
+      "side": 1,
+      "message": "I\u0027m not sure I totally follow this.\n\nHere, the code indicates that the partner\u0027s PD capability is \"not unkown,\" which makes some sense if we\u0027ve disabled our own by policy. But in 2 of the places where tc_enable_pd is called (entry to Unattached states), the code immediately sets the flag again, indicating that the partner PD capabilities are \"unkown.\" This also makes some sense, since there is no partner that we know of at those times.\n\nThe other call sites for this function are\n1. When the SM restarts\n2. During task init\n3. Attached.SNK entry (en\u003d1)\n4. Attached.SRC entry\n5. During Attached.SRC (en\u003d1, after tVCONNStable)\n\nI think #1 is superseded by #2, and #2 is superseded by entry into the Unattached states. #4 will supersede the flag setting in Unattached.SRC. That stuff should happen before we\u0027re trying to set the mux or dealing with PD timeouts. The calls with en\u003d1 won\u0027t change the flag state.\n\nIt seems like you could get the same value for the \"unknown\" flag at relevant times by just setting it when entering the Unattached states and clearing it in tc_pd_connection. Or setting and clearing it in tc_pd_connection based on the value of en (en\u003d0 during PE init).",
+      "revId": "6867a0d2b09a8b92d5a0248fe8ff1bd437bc7f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
