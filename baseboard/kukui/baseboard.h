@@ -97,11 +97,24 @@
 /* define this if the board is jacuzzi family */
 #ifdef VARIANT_KUKUI_JACUZZI
 #define CONFIG_HOSTCMD_AP_SET_SKUID
+<<<<<<< HEAD   (73dd4c stm32: cherry-pick stm32l431 driver from main branch)
+=======
+/*
+ * IT81202 based boards are variant of jacuzzi and I/O expander isn't required
+ * on them.
+ */
+#if defined(VARIANT_KUKUI_EC_STM32F098) || defined(VARIANT_KUKUI_EC_STM32L431)
+>>>>>>> CHANGE (4ce368 munna: munna board with STM32L431 ec)
 #define CONFIG_IO_EXPANDER
 #define CONFIG_IO_EXPANDER_IT8801
 #define CONFIG_IO_EXPANDER_PORT_COUNT 1
 #define CONFIG_KEYBOARD_NOT_RAW
 #define CONFIG_KEYBOARD_BOARD_CONFIG
+<<<<<<< HEAD   (73dd4c stm32: cherry-pick stm32l431 driver from main branch)
+=======
+#endif
+
+>>>>>>> CHANGE (4ce368 munna: munna board with STM32L431 ec)
 #define CONFIG_KEYBOARD_COL2_INVERTED
 
 #define CONFIG_GMR_TABLET_MODE
@@ -253,12 +266,33 @@
 #define PD_MAX_CURRENT_MA     3000
 #endif
 
+<<<<<<< HEAD   (73dd4c stm32: cherry-pick stm32l431 driver from main branch)
+=======
+/* Optional for testing */
+#undef CONFIG_PECI
+#undef CONFIG_PSTORE
+
+#define CONFIG_TASK_PROFILING
+#define CONFIG_MKBP_USE_GPIO
+
+/*
+ * Variant EC defines. Pick one:
+ * VARIANT_KUKUI_EC_STM32F098
+ * VARIANT_KUKUI_EC_IT81202
+ * VARIANT_KUKUI_EC_STM32L431
+ */
+#if defined(VARIANT_KUKUI_EC_STM32F098) || defined(VARIANT_KUKUI_EC_STM32L431)
+>>>>>>> CHANGE (4ce368 munna: munna board with STM32L431 ec)
 /* Timer selection */
 #define TIM_CLOCK32  2
 #define TIM_WATCHDOG 7
 
 /* 48 MHz SYSCLK clock frequency */
+#ifdef VARIANT_KUKUI_EC_STM32L431
+#define CPU_CLOCK 80000000
+#else
 #define CPU_CLOCK 48000000
+#endif
 
 /* Optional for testing */
 #undef CONFIG_PECI
