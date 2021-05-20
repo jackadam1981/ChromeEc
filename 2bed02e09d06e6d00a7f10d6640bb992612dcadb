@@ -52,6 +52,24 @@
       "parentUuid": "6a36e4cb_bdc2b56a",
       "revId": "2bed02e09d06e6d00a7f10d6640bb992612dcadb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0be8d1f5_d8b3593c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2407,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-20T00:36:28Z",
+      "side": 1,
+      "message": "Seeding it at Attached.SRC does fix the problem too. I don\u0027t have any preference. Aseda, what place do you prefer?",
+      "parentUuid": "93c7e446_122a0019",
+      "revId": "2bed02e09d06e6d00a7f10d6640bb992612dcadb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
