@@ -6766,6 +6766,31 @@ struct ec_response_pchg_update {
 	uint32_t block_size;
 } __ec_align4;
 
+<<<<<<< HEAD   (f37d23 Homestar:LED:LED function realization)
+=======
+
+#define EC_CMD_DISPLAY_SOC 0x0137
+
+struct ec_response_display_soc {
+	int16_t display_soc;  /* Display charge in 10ths of a % (1000=100.0%) */
+	int16_t full_factor;  /* Full factor in 10ths of a % (1000=100.0%) */
+	int16_t shutdown_soc; /* Shutdown SoC in 10ths of a % (1000=100.0%) */
+} __ec_align2;
+
+
+#define EC_CMD_SET_BASE_STATE 0x0138
+
+struct ec_params_set_base_state {
+	uint8_t cmd;  /* enum ec_set_base_state_cmd */
+} __ec_align1;
+
+enum ec_set_base_state_cmd {
+	EC_SET_BASE_STATE_DETACH = 0,
+	EC_SET_BASE_STATE_ATTACH,
+	EC_SET_BASE_STATE_RESET,
+};
+
+>>>>>>> CHANGE (00d636 base_state: implement basestate host command)
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
