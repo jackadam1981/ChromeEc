@@ -9,12 +9,16 @@ set(BOARD_ROOT "${CMAKE_CURRENT_LIST_DIR}/..")
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(lazor)
 
-zephyr_library_include_directories(include)
-
 set(PLATFORM_EC_BASEBOARD "${PLATFORM_EC}/baseboard/trogdor" CACHE PATH
     "Path to the platform/ec baseboard directory")
 set(PLATFORM_EC_BOARD "${PLATFORM_EC}/board/lazor" CACHE PATH
   "Path to the platform/ec board directory")
+
+# Include board specific header files
+zephyr_library_include_directories(
+  include
+  "${PLATFORM_EC_BASEBOARD}"
+  "${PLATFORM_EC_BOARD}")
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
   "${PLATFORM_EC_BASEBOARD}/hibernate.c"
