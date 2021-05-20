@@ -1341,6 +1341,7 @@ void pe_message_sent(int port)
 void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 						int count)
 {
+#if 0
 	/* Copy VDM Header */
 	pe[port].vdm_data[0] = VDO(vid, ((vid & USB_SID_PD) == USB_SID_PD) ?
 				1 : (PD_VDO_CMD(cmd) <= CMD_ATTENTION),
@@ -1364,6 +1365,7 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 	pd_dpm_request(port, DPM_REQUEST_VDM);
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
+#endif
 }
 
 static void pe_handle_detach(void)
