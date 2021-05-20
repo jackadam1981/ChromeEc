@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0da5edd7_702e42d3",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-20T19:34:17Z",
+      "side": 1,
+      "message": "I misunderstood your suggestion.  I thought you were suggesting a name change to the flag only.  Let me look at pd_set_src_caps()",
+      "parentUuid": "12ddfb95_88b8066d",
+      "revId": "6867a0d2b09a8b92d5a0248fe8ff1bd437bc7f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01134ea9_a1a5d0f8",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
