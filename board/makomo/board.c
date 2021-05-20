@@ -59,8 +59,10 @@ static void tcpc_alert_event(enum gpio_signal signal)
 /******************************************************************************/
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
-	[ADC_BOARD_ID] =  {"BOARD_ID",  3300, 4096, 0, STM32_AIN(10)},
-	[ADC_EC_SKU_ID] = {"EC_SKU_ID", 3300, 4096, 0, STM32_AIN(8)},
+	[ADC_BOARD_ID] = {"BOARD_ID", 1800, 4096, 0, STM32_AIN(5),
+			   STM32_RANK(1)},
+	[ADC_EC_SKU_ID] = {"EC_SKU_ID", 1800, 4096, 0, STM32_AIN(15),
+			    STM32_RANK(2)},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
@@ -68,12 +70,12 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"typec", 0, 400, GPIO_I2C1_SCL, GPIO_I2C1_SDA},
-	{"other", 1, 400, GPIO_I2C2_SCL, GPIO_I2C2_SDA},
+	{"other", 2, 400, GPIO_I2C3_SCL, GPIO_I2C3_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 
 const struct i2c_port_t i2c_bitbang_ports[] = {
-	{"battery", 2, 100, GPIO_I2C3_SCL, GPIO_I2C3_SDA, .drv = &bitbang_drv},
+	{"battery", 3, 100, GPIO_I2C4_SCL, GPIO_I2C4_SDA, .drv = &bitbang_drv},
 };
 const unsigned int i2c_bitbang_ports_used = ARRAY_SIZE(i2c_bitbang_ports);
 
@@ -161,7 +163,7 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 /* Charger config.  Start i2c address at 1, update during runtime */
 struct charger_config_t chg_chips[] = {
 	{
-		.i2c_port = 1,
+		.i2c_port = 2,
 		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
 		.drv = &isl923x_drv,
 	},
@@ -264,14 +266,27 @@ static void board_spi_enable(void)
 	 * left them there.
 	 */
 	gpio_config_module(MODULE_SPI_FLASH, 0);
+#ifdef CHIP_FAMILY_STM32L4
+	/* Set I/O speed before AF configured */
+	/* EMMC SPI SLAVE: PB13/14/15 */
+	/* SENSORS SPI MASTER: PB10, PB12, PC2, PC3 */
+	STM32_GPIO_OSPEEDR(GPIO_B) |= 0xFF300000;
+	STM32_GPIO_OSPEEDR(GPIO_C) |= 0x000000F0;
 
+	/* Enable clocks to SPI2 module. */
+	STM32_RCC_APB1ENR1 |= STM32_RCC_PB1_SPI2;
+
+	/* Reset SPI2 to clear state left over from the emmc slave. */
+	STM32_RCC_APB1RSTR1 |= STM32_RCC_PB1_SPI2;
+	STM32_RCC_APB1RSTR1 &= ~STM32_RCC_PB1_SPI2;
+#else
 	/* Enable clocks to SPI2 module. */
 	STM32_RCC_APB1ENR |= STM32_RCC_PB1_SPI2;
 
 	/* Reset SPI2 to clear state left over from the emmc slave. */
 	STM32_RCC_APB1RSTR |= STM32_RCC_PB1_SPI2;
 	STM32_RCC_APB1RSTR &= ~STM32_RCC_PB1_SPI2;
-
+#endif
 	/* Reinitialize spi peripheral. */
 	spi_enable(&spi_devices[0], 1);
 
@@ -291,7 +306,11 @@ static void board_spi_disable(void)
 
 	/* Disable spi peripheral and clocks. */
 	spi_enable(&spi_devices[0], 0);
+#ifdef CHIP_FAMILY_STM32L4
+	STM32_RCC_APB1ENR1 &= ~STM32_RCC_PB1_SPI2;
+#else
 	STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_SPI2;
+#endif
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN,
 	     board_spi_disable,
@@ -513,12 +532,12 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, board_chipset_shutdown, HOOK_PRIO_DEFAULT);
 int board_get_charger_i2c(void)
 {
 	/* TODO(b:138415463): confirm the bus allocation for future builds */
-	return board_get_version() == 1 ? 2 : 1;
+	return I2C_PORT_CHARGER;
 }
 
 int board_get_battery_i2c(void)
 {
-	return board_get_version() >= 1 ? 2 : 1;
+	return I2C_PORT_BATTERY;
 }
 
 #ifdef SECTION_IS_RW
