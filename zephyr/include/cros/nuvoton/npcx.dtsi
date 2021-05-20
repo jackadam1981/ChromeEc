@@ -88,5 +88,12 @@
 			label = "FLASH_INTERFACE_UNIT0";
 			pinctrl-0 = <>;
 		};
+
+		dbg: dbg@400c3074 {
+			compatible = "nuvoton,npcx-cros-dbg";
+			reg = <0x400c3074 0x0C>;
+			label = "DBG";
+			status = "disabled";
+		};
 	};
 };

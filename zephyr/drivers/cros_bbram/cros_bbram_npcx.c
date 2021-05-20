@@ -111,14 +111,14 @@ static const struct cros_bbram_driver_api cros_bbram_npcx_driver_api = {
 
 static int bbram_npcx_init(const struct device *dev)
 {
-	const struct device *sys_dev = device_get_binding("CROS_SYSTEM");
-	int reset = cros_system_get_reset_cause(sys_dev);
-
-	if (reset == POWERUP) {
-		/* clear the status register when EC power-up*/
-		DRV_STATUS(dev) = NPCX_STATUS_IBBR | NPCX_STATUS_VSBY |
-				  NPCX_STATUS_VCC1;
-	}
+//	const struct device *sys_dev = device_get_binding("CROS_SYSTEM");
+//	int reset = cros_system_get_reset_cause(sys_dev);
+//
+//	if (reset == POWERUP) {
+//		/* clear the status register when EC power-up*/
+//		DRV_STATUS(dev) = NPCX_STATUS_IBBR | NPCX_STATUS_VSBY |
+//				  NPCX_STATUS_VCC1;
+//	}
 
 	return 0;
 }
