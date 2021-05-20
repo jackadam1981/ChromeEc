@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8fff021_42de9654",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-20T19:30:10Z",
+      "side": 1,
+      "message": "Probably add a brief comment explaining the purpose of this?  (i.e. init-ing things into the CBI vs. making init decisions based on CBI contents)",
+      "revId": "95e9df77d33d1b5b5f813a1fde842deb3fea674d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d305a232_a98ac3ce",
+        "filename": "baseboard/guybrush/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-20T19:30:10Z",
+      "side": 1,
+      "message": "nit: I definitely get caching the FW_CONFIG because you can end up referencing that a lot in runtime (ex. for every call to check how many PD ports you have when you support different DBs).  Not as sure about the payoff of caching the board version and sku id",
+      "revId": "95e9df77d33d1b5b5f813a1fde842deb3fea674d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
