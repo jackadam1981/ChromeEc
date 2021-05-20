@@ -249,6 +249,15 @@ const int usb_port_enable[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 
+void usb_a0_interrupt(enum gpio_signal signal)
+{
+	enum usb_charge_mode mode = gpio_get_level(signal) ?
+		USB_CHARGE_MODE_ENABLED : USB_CHARGE_MODE_DISABLED;
+
+	for (int i = 0; i < USB_PORT_COUNT; i++)
+		usb_charge_set_mode(i, mode, USB_ALLOW_SUSPEND_CHARGE);
+}
+
 static int board_ps8743_mux_set(const struct usb_mux *me,
 				mux_state_t mux_state)
 {
