@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a05a69_7ddab19f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-20T21:20:48Z",
+      "side": 1,
+      "message": "We could reword this a little bit. It\u0027s not that the initial state is Attached.SRC, but that we transition to Attached.SRC from Unattached.SNK via Try.SRC.",
+      "range": {
+        "startLine": 13,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 47
+      },
+      "revId": "4681599c61a54022c5da8e440c482bdb5111f866",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
