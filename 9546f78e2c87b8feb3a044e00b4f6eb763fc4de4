@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caf05ba1_57f99d96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-05-20T13:38:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5fcb50e4_181c1a68",
+      "revId": "9546f78e2c87b8feb3a044e00b4f6eb763fc4de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "17f32872_f2c2e939",
@@ -121,6 +139,24 @@
       "side": 1,
       "message": "port number here has dependency in i2c-stm32l4.c It has to be linked to correct port. \nLike port0 -\u003e hardware i2c1\nport2 -\u003e hardware i2c3\nChanging port number would make configuration incorrectly.",
       "parentUuid": "fcb7defb_e30c5c0f",
+      "revId": "9546f78e2c87b8feb3a044e00b4f6eb763fc4de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab673ec2_d9ac0aca",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-05-20T13:38:35Z",
+      "side": 1,
+      "message": "Ack, just checked the i2c_controller implementation, hole looks fine, but you need to add a `#define I2C_PORT_COUNT 4` in chip/stm32/config-stm32l431.h.",
+      "parentUuid": "75c42d9c_28d79a33",
       "revId": "9546f78e2c87b8feb3a044e00b4f6eb763fc4de4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -590,6 +626,30 @@
       "side": 1,
       "message": "Changing syntax as suggested would cause coding style error like below:\n\nERROR: trailing statements should be on next line\n#154: FILE: chip/stm32/adc-stm32l4.c:154:\n+\twhile (STM32_ADC1_CR \u0026 STM32_ADC1_CR_ADSTP);",
       "parentUuid": "fa578fb5_452ba15a",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 2
+      },
+      "revId": "9546f78e2c87b8feb3a044e00b4f6eb763fc4de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a1b08f_d5aefd52",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-05-20T13:38:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "28ac3239_1cafff62",
       "range": {
         "startLine": 155,
         "startChar": 0,
