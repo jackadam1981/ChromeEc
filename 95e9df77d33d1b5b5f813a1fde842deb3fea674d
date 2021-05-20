@@ -33,6 +33,24 @@
       "message": "nit: I definitely get caching the FW_CONFIG because you can end up referencing that a lot in runtime (ex. for every call to check how many PD ports you have when you support different DBs).  Not as sure about the payoff of caching the board version and sku id",
       "revId": "95e9df77d33d1b5b5f813a1fde842deb3fea674d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ecde392_802a9258",
+        "filename": "baseboard/guybrush/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-20T19:30:54Z",
+      "side": 1,
+      "message": "Nope, just noticed the next CL references board version every temperature call.  Totally worth it then",
+      "parentUuid": "d305a232_a98ac3ce",
+      "revId": "95e9df77d33d1b5b5f813a1fde842deb3fea674d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
