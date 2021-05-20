@@ -10,6 +10,7 @@
 #include "button.h"
 #include "chipset.h"
 #include "ec_tasks.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "keyboard_scan.h"
 #include "lpc.h"
@@ -19,12 +20,20 @@
 #include "zephyr_espi_shim.h"
 #include "ec_app_main.h"
 
+static void enable_led(void)
+{
+	gpio_set_level(GPIO_EC_CHG_LED_Y_C1, 1);
+	gpio_set_level(GPIO_EC_CHG_LED_B_C1, 1);
+}
+
 /* For testing purposes this is not named main. See main_shim.c for the real
  * main() function.
  */
 void ec_app_main(void)
 {
 	system_common_pre_init();
+
+	enable_led();
 
 	/*
 	 * Initialize reset logs. This needs to be done before any updates of
