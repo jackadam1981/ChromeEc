@@ -1,0 +1,28 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-gpios {
+		compatible = "named-gpios";
+
+		lid_open {
+			gpios = <&gpiod 2 GPIO_INPUT>;
+			enum-name = "GPIO_LID_OPEN";
+			label = "GPIO_LID_OPEN";
+		};
+
+		power_btn: power_btn {
+			gpios = <&gpio0 1 GPIO_INPUT>;
+			enum-name = "GPIO_POWER_BUTTON_L";
+			label = "GPIO_POWER_BUTTON";
+		};
+
+		wp_l {
+			gpios = <&gpioa 1 GPIO_INPUT>;
+			enum-name = "GPIO_WP_L";
+			label = "EC_WP_ODL";
+		};
+	};
+};
