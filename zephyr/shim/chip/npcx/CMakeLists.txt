@@ -15,3 +15,9 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_EXTERNAL_STORAGE
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_WORKAROUND_FLASH_DOWNLOAD_API
         system_download_from_flash.c)
 zephyr_library_sources_ifdef(CONFIG_PM_POLICY_APP     power_policy.c)
+
+if (DEFINED CONFIG_PLATFORM_EC_RO_HEADER)
+  set_property(GLOBAL APPEND PROPERTY extra_post_build_commands
+    COMMAND ${CMAKE_COMMAND} -E rename ${CONFIG_KERNEL_BIN_NAME}.npcx.bin zephyr.packed.bin
+  )
+endif()
