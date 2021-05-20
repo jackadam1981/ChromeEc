@@ -1,11 +1,12 @@
-/* Copyright 2018 The Chromium OS Authors. All rights reserved.
+<<<<<<< HEAD   (c82d4b Kakadu: add the support for ICM42607)
+=======
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
 
-/* Poppy/Soraka base detection code */
+/* Homestar base detection code */
 
-#include "acpi.h"
 #include "adc.h"
 #include "adc_chip.h"
 #include "board.h"
@@ -20,11 +21,12 @@
 #include "timer.h"
 #include "util.h"
 
-#define CPRINTS(format, args...) cprints(CC_USB, format, ## args)
-#define CPRINTF(format, args...) cprintf(CC_USB, format, ## args)
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 
 /* Base detection and debouncing */
-#define BASE_DETECT_DEBOUNCE_US (20 * MSEC)
+#define BASE_DETECT_EN_DEBOUNCE_US (350 * MSEC)
+#define BASE_DETECT_DIS_DEBOUNCE_US (20 * MSEC)
 
 /*
  * If the base status is unclear (i.e. not within expected ranges, read
@@ -33,25 +35,14 @@
 #define BASE_DETECT_RETRY_US (500 * MSEC)
 
 /*
- * rev0: Lid has 100K pull-up, base has 5.1K pull-down, so the ADC
- * value should be around 5.1/(100+5.1)*3300 = 160.
- * >=rev1: Lid has 604K pull-up, base has 30.1K pull-down, so the
+ * Lid has 604K pull-up, base has 30.1K pull-down, so the
  * ADC value should be around 30.1/(604+30.1)*3300 = 156
  *
- * We add a significant marging on the maximum value, due to noise on the line,
+ * We add a significant margin on the maximum value, due to noise on the line,
  * especially when PWM is active. See b/64193554 for details.
  */
 #define BASE_DETECT_MIN_MV 120
 #define BASE_DETECT_MAX_MV 300
-
-/*
- * When the base is connected in reverse, it presents a 100K pull-down,
- * so the ADC value should be around 100/(604+100)*3300 = 469
- *
- * TODO(b:64370797): Do something with these values.
- */
-#define BASE_DETECT_REVERSE_MIN_MV 450
-#define BASE_DETECT_REVERSE_MAX_MV 500
 
 /* Minimum ADC value to indicate base is disconnected for sure */
 #define BASE_DETECT_DISCONNECT_MIN_MV 1500
@@ -72,7 +63,6 @@ enum base_status {
 	BASE_UNKNOWN = 0,
 	BASE_DISCONNECTED = 1,
 	BASE_CONNECTED = 2,
-	BASE_CONNECTED_REVERSE = 3,
 };
 
 static enum base_status current_base_status;
@@ -94,15 +84,9 @@ static void base_detect_change(enum base_status status)
 		return;
 
 	CPRINTS("Base %sconnected", connected ? "" : "not ");
-	gpio_set_level(GPIO_PP3300_DX_BASE, connected);
+	gpio_set_level(GPIO_EN_BASE, connected);
 	tablet_set_mode(!connected);
 	current_base_status = status;
-
-	if (connected)
-		acpi_dptf_set_profile_num(DPTF_PROFILE_BASE_ATTACHED);
-	else
-		acpi_dptf_set_profile_num(DPTF_PROFILE_BASE_DETACHED);
-
 }
 
 /* Measure detection pin pulse duration (used to wake AP from deep S3). */
@@ -120,7 +104,6 @@ static void base_detect_deferred(void)
 	uint64_t time_now = get_time().val;
 	int v;
 	uint32_t tmp_pulse_width = pulse_width;
-	static int reverse_debounce = 1;
 
 	if (base_detect_debounce_time > time_now) {
 		hook_call_deferred(&base_detect_deferred_data,
@@ -133,29 +116,6 @@ static void base_detect_deferred(void)
 		return;
 
 	print_base_detect_value(v, tmp_pulse_width);
-
-	if (v >= BASE_DETECT_REVERSE_MIN_MV &&
-	    v <= BASE_DETECT_REVERSE_MAX_MV) {
-		/*
-		 * If we are unlucky when we sample the ADC, we may think that
-		 * the base is connected in reverse, while this may just be a
-		 * transient. Force debouncing a little longer in that case.
-		 */
-		if (current_base_status == BASE_CONNECTED_REVERSE)
-			return;
-
-		if (reverse_debounce == 0) {
-			base_detect_change(BASE_CONNECTED_REVERSE);
-			return;
-		}
-
-		reverse_debounce = 0;
-		hook_call_deferred(&base_detect_deferred_data,
-				   BASE_DETECT_DEBOUNCE_US);
-		return;
-	}
-	/* Reset reverse debounce */
-	reverse_debounce = 1;
 
 	if (v >= BASE_DETECT_MIN_MV && v <= BASE_DETECT_MAX_MV) {
 		if (current_base_status != BASE_CONNECTED) {
@@ -185,6 +145,12 @@ static inline int detect_pin_connected(enum gpio_signal det_pin)
 void base_detect_interrupt(enum gpio_signal signal)
 {
 	uint64_t time_now = get_time().val;
+	int debounce_us;
+
+	if (detect_pin_connected(signal))
+		debounce_us = BASE_DETECT_EN_DEBOUNCE_US;
+	else
+		debounce_us = BASE_DETECT_DIS_DEBOUNCE_US;
 
 	if (base_detect_debounce_time <= time_now) {
 		/*
@@ -201,8 +167,7 @@ void base_detect_interrupt(enum gpio_signal signal)
 		}
 		pulse_width = 0;
 
-		hook_call_deferred(&base_detect_deferred_data,
-				   BASE_DETECT_DEBOUNCE_US);
+		hook_call_deferred(&base_detect_deferred_data, debounce_us);
 	} else {
 		if (current_base_status == BASE_CONNECTED &&
 		    detect_pin_connected(signal) && !pulse_width &&
@@ -215,7 +180,7 @@ void base_detect_interrupt(enum gpio_signal signal)
 		}
 	}
 
-	base_detect_debounce_time = time_now + BASE_DETECT_DEBOUNCE_US;
+	base_detect_debounce_time = time_now + debounce_us;
 }
 
 static void base_enable(void)
@@ -223,15 +188,19 @@ static void base_enable(void)
 	/* Enable base detection interrupt. */
 	base_detect_debounce_time = get_time().val;
 	hook_call_deferred(&base_detect_deferred_data, 0);
-	gpio_enable_interrupt(GPIO_BASE_DET_A);
+	gpio_enable_interrupt(GPIO_BASE_DET_L);
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, base_enable, HOOK_PRIO_DEFAULT);
 
 static void base_disable(void)
 {
-	/* Disable base detection interrupt and disable power to base. */
-	gpio_disable_interrupt(GPIO_BASE_DET_A);
-	base_detect_change(BASE_DISCONNECTED);
+	/*
+	 * Disable base detection interrupt and disable power to base.
+	 * Set the state UNKNOWN so the next startup will initialize a
+	 * correct state and notify AP.
+	 */
+	gpio_disable_interrupt(GPIO_BASE_DET_L);
+	base_detect_change(BASE_UNKNOWN);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, base_disable, HOOK_PRIO_DEFAULT);
 
@@ -241,7 +210,7 @@ static void base_init(void)
 	 * If we jumped to this image and chipset is already in S0, enable
 	 * base.
 	 */
-	if (system_jumped_to_this_image() && chipset_in_state(CHIPSET_STATE_ON))
+	if (system_jumped_late() && chipset_in_state(CHIPSET_STATE_ON))
 		base_enable();
 }
 DECLARE_HOOK(HOOK_INIT, base_init, HOOK_PRIO_DEFAULT+1);
@@ -249,11 +218,11 @@ DECLARE_HOOK(HOOK_INIT, base_init, HOOK_PRIO_DEFAULT+1);
 void base_force_state(enum ec_set_base_state_cmd state)
 {
 	if (state == EC_SET_BASE_STATE_ATTACH) {
-		gpio_disable_interrupt(GPIO_BASE_DET_A);
+		gpio_disable_interrupt(GPIO_BASE_DET_L);
 		base_detect_change(BASE_CONNECTED);
 		CPRINTS("BD forced connected");
 	} else if (state == EC_SET_BASE_STATE_DETACH) {
-		gpio_disable_interrupt(GPIO_BASE_DET_A);
+		gpio_disable_interrupt(GPIO_BASE_DET_L);
 		base_detect_change(BASE_DISCONNECTED);
 		CPRINTS("BD forced disconnected");
 	} else {
@@ -261,3 +230,4 @@ void base_force_state(enum ec_set_base_state_cmd state)
 		CPRINTS("BD forced reset");
 	}
 }
+>>>>>>> CHANGE (00d636 base_state: implement basestate host command)
