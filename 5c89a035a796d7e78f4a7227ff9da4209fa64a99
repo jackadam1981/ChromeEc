@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9463bc69_f0216cc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-05-20T10:03:04Z",
+      "side": 1,
+      "message": "Pachset 5 adds comments to tests and replaces define with static function. Similar changes were proposed in thermistor test suite patch (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2886888), so I think it makes sense to introduce them here also.",
+      "revId": "5c89a035a796d7e78f4a7227ff9da4209fa64a99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
