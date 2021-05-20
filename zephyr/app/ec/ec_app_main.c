@@ -6,6 +6,9 @@
 #include <kernel.h>
 #include <sys/printk.h>
 #include <zephyr.h>
+#include <devicetree.h>
+#include <device.h>
+#include <drivers/gpio.h>
 
 #include "button.h"
 #include "chipset.h"
@@ -19,12 +22,23 @@
 #include "zephyr_espi_shim.h"
 #include "ec_app_main.h"
 
+static void enable_led(void)
+{
+	const struct device *dev = device_get_binding(DT_LABEL(DT_NODELABEL(gpioc)));
+
+	gpio_pin_set(dev, 2, GPIO_OUTPUT_LOW);
+	gpio_pin_set(dev, 3, GPIO_OUTPUT_LOW);
+	gpio_pin_set(dev, 4, GPIO_OUTPUT_LOW);
+}
+
 /* For testing purposes this is not named main. See main_shim.c for the real
  * main() function.
  */
 void ec_app_main(void)
 {
 	system_common_pre_init();
+
+	enable_led();
 
 	/*
 	 * Initialize reset logs. This needs to be done before any updates of
