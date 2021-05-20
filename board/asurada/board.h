@@ -122,5 +122,7 @@ enum pwm_channel {
 
 int board_accel_force_mode_mask(void);
 
+void usb_a0_interrupt(enum gpio_signal signal);
+
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */
