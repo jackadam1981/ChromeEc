@@ -39,6 +39,29 @@
       },
       "revId": "990ee2892957fede3a60b96c070be2483ed1fa2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c0e124_925f506e",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-05-20T23:22:31Z",
+      "side": 1,
+      "message": "For some reason, this code was causing a reset on a sysjump:\n[3.035100 Jumping to image RW]\n[3.039200 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\n*** Booting Zephyr OS build zephyr-v2.5.0-89-g58b38fe66d37  ***\n\n--- UART initialized after reboot ---\n[Image: RW, trogdor_zephyr_v2.0.8881+990ee2 2021-05-20 09:00:15 shurst@shurst2]\n[Reset cause: reset-pin]\n\nuart:~$ sysinfo\nReset flags: 0x00000002 (reset-pin)\nCopy:   RW\nJumped: no\nFlags:  unlocked\n\n\nBut with the patchset 8:\n\nUART initialized after sysjump]\n[Image: RW, trogdor_zephyr_v2.0.8881-b29d3d 2021-05-20 16:09:03 shurst@shurst2]\n[Reset cause: soft sysjump]\n\n uart:~$ sysinfo\nReset flags: 0x00000420 (soft sysjump)\nCopy:   RW\nJumped: yes\nFlags:  unlocked",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 11
+      },
+      "revId": "990ee2892957fede3a60b96c070be2483ed1fa2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
