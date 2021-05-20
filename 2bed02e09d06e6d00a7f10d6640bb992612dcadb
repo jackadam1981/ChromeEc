@@ -106,6 +106,24 @@
       "parentUuid": "6cb59ed3_72797773",
       "revId": "2bed02e09d06e6d00a7f10d6640bb992612dcadb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5670e879_9454e05c",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2407,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-20T21:12:36Z",
+      "side": 1,
+      "message": "Moved it to Attached.SRC.",
+      "parentUuid": "094d517b_bae36a25",
+      "revId": "2bed02e09d06e6d00a7f10d6640bb992612dcadb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
