@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad5746af_824bba52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-05-20T09:35:56Z",
+      "side": 1,
+      "message": "npcx",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 12
+      },
+      "revId": "c9f21c8e2e088258918393400620b299f1fa908a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10adad91_edfab55f",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-05-20T09:35:56Z",
+      "side": 1,
+      "message": "Currently, the memory related information can get from npcx7mnx.dtsi. flash0(code ram), sram0(data ram), extra 2K(reserved for ROM functions)",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "c9f21c8e2e088258918393400620b299f1fa908a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
