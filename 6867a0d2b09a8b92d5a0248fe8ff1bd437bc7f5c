@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12ddfb95_88b8066d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-20T19:15:33Z",
+      "side": 1,
+      "message": "Done like ACK or Done like, it turned out this isn\u0027t a viable plan to remove the need for an extra flag?  It looks like we call pd_set_src_caps() before tc_pd_connection() but I haven\u0027t tried coding it so I might have missed something in that suggestion.",
+      "parentUuid": "9de1ea7e_fefcd75b",
+      "revId": "6867a0d2b09a8b92d5a0248fe8ff1bd437bc7f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01134ea9_a1a5d0f8",
