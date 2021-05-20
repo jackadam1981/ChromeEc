@@ -244,11 +244,6 @@ static void board_chipset_suspend(void)
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
 /* USB-A */
-const int usb_port_enable[] = {
-	GPIO_EN_PP5000_USB_A0_VBUS,
-};
-BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
-
 static int board_ps8743_mux_set(const struct usb_mux *me,
 				mux_state_t mux_state)
 {
