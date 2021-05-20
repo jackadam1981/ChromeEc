@@ -57,6 +57,7 @@ static void board_init(void)
 	/* Enable motion sensor interrupt */
 	gpio_enable_interrupt(GPIO_BASE_IMU_INT_L);
 	gpio_enable_interrupt(GPIO_LID_ACCEL_INT_L);
+	gpio_enable_interrupt(GPIO_EN_PP3000_VMC_PMU);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -362,3 +363,9 @@ void board_usb_mux_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_INIT_I2C + 1);
+
+void usb_a0_interrupt(enum gpio_signal signal)
+{
+	gpio_set_level(GPIO_EN_PP5000_USB_A0_VBUS,
+		       gpio_get_level(signal));
+}
