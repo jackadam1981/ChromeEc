@@ -111,6 +111,10 @@ __override void board_check_extpower(void)
 	static int last_extpower_present;
 	int extpower_present = extpower_is_present();
 
+#ifdef GPIO_OTG_OVP_ENABLE
+	gpio_set_level(GPIO_OTG_OVP_ENABLE, extpower_present);
+#endif
+
 	if (last_extpower_present ^ extpower_present)
 		extpower_handle_update(extpower_present);
 

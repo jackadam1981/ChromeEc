@@ -59,6 +59,7 @@
 /* USB PD */
 #define CONFIG_USB_PD_PORT_MAX_COUNT 1
 #define CONFIG_USB_PD_TCPM_RAA489000
+#define GPIO_OTG_OVP_ENABLE	GPIO_EC_ACOK_OTG
 
 /* USB defines specific to external TCPCs */
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
