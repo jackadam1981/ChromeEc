@@ -39,6 +39,30 @@
       },
       "revId": "fe4ceeb07c68005b4d9888a45aed9c455877a775",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc01c73_c4eab6d0",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-05-21T06:40:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81b17a65_98c6caf4",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "fe4ceeb07c68005b4d9888a45aed9c455877a775",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
