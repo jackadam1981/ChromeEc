@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "184cb866_48e330f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-05-21T16:35:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d39ecb94_af9cbee2",
+      "range": {
+        "startLine": 10,
+        "startChar": 63,
+        "endLine": 10,
+        "endChar": 73
+      },
+      "revId": "29ed2ba2f61e8692c6e1af2c6ae2f63cc7220fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91db3541_baafecc3",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-05-20T19:47:41Z",
       "side": 1,
       "message": "Can you please add here that this is just a temporary workaround. EC_PCH_INT_ODL is critical for tight timestamping for sensors and so this should be reverted once the issue with single line for MKBP interrupts and wake is figured out.",
+      "revId": "29ed2ba2f61e8692c6e1af2c6ae2f63cc7220fd7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9994cdfb_fed31e87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-05-21T16:35:35Z",
+      "side": 1,
+      "message": "Right, this is a workaround to unblock entering S0ix, until the problem would be completely understood and properly fixed.",
+      "parentUuid": "91db3541_baafecc3",
       "revId": "29ed2ba2f61e8692c6e1af2c6ae2f63cc7220fd7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
