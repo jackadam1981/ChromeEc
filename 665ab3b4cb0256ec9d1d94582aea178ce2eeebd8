@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d13561_1b11b877",
+        "filename": "chip/stm32/clock-l4.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-05-21T07:37:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6881e4d6_507802f1",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 5
+      },
+      "revId": "665ab3b4cb0256ec9d1d94582aea178ce2eeebd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdfa6cc3_06f15fbd",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-20T13:38:35Z",
       "side": 1,
       "message": "use lower case: ob_lock",
+      "range": {
+        "startLine": 124,
+        "startChar": 12,
+        "endLine": 124,
+        "endChar": 19
+      },
+      "revId": "665ab3b4cb0256ec9d1d94582aea178ce2eeebd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f824ab1_b5bbefae",
+        "filename": "chip/stm32/flash-stm32g4-l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-05-21T07:37:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdfa6cc3_06f15fbd",
       "range": {
         "startLine": 124,
         "startChar": 12,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a60fb720_05a3627d",
+        "filename": "chip/stm32/flash-stm32g4-l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-05-21T07:37:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e0ca593_19089b60",
+      "revId": "665ab3b4cb0256ec9d1d94582aea178ce2eeebd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "061e9d4b_5fec7e8c",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-05-20T13:38:35Z",
       "side": 1,
       "message": "give these a name",
+      "range": {
+        "startLine": 136,
+        "startChar": 42,
+        "endLine": 136,
+        "endChar": 60
+      },
+      "revId": "665ab3b4cb0256ec9d1d94582aea178ce2eeebd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aedc4d2_812e9c5b",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-05-21T07:37:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "061e9d4b_5fec7e8c",
       "range": {
         "startLine": 136,
         "startChar": 42,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f4ba356_4299585f",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-05-21T07:37:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0886d2db_c7fa6f4f",
+      "range": {
+        "startLine": 345,
+        "startChar": 21,
+        "endLine": 345,
+        "endChar": 24
+      },
+      "revId": "665ab3b4cb0256ec9d1d94582aea178ce2eeebd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2205cf5f_7d0ab29c",
@@ -123,6 +237,24 @@
       "writtenOn": "2021-05-20T13:38:35Z",
       "side": 1,
       "message": "remove these lines if you really don\u0027t need them.",
+      "revId": "665ab3b4cb0256ec9d1d94582aea178ce2eeebd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "420e6c8c_ea1ab5dc",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-05-21T07:37:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2205cf5f_7d0ab29c",
       "revId": "665ab3b4cb0256ec9d1d94582aea178ce2eeebd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38b72a91_0152c7b8",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2224,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-05-21T07:37:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ba5f868_8fe9fdee",
+      "revId": "665ab3b4cb0256ec9d1d94582aea178ce2eeebd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c27487e_77d359b9",
@@ -157,6 +307,24 @@
       "writtenOn": "2021-05-20T13:38:35Z",
       "side": 1,
       "message": "please make sure this won\u0027t break other boards.\n\nmany boards set their own OSPEEDR inside board/, maybe we can follow their way.",
+      "revId": "665ab3b4cb0256ec9d1d94582aea178ce2eeebd8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "143fe0c8_821a61e8",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-05-21T07:37:49Z",
+      "side": 1,
+      "message": "I/O speed configuration is moved to board_spi_enable",
+      "parentUuid": "2c27487e_77d359b9",
       "revId": "665ab3b4cb0256ec9d1d94582aea178ce2eeebd8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
