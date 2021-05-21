@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75cd4746_abdcaf2c",
+        "filename": "chip/stm32/config-stm32g473xc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-05-21T19:27:36Z",
+      "side": 1,
+      "message": "Is it ok to have this be something like STM32_FLASH_DBANK_MODE and not make this a config option? It\u0027s applicable to the physical flash driver.",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "f623c71c61376b323f05085ff860d22c4aa1fba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
