@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf4121ac_f4ffc8ae",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-05-21T16:19:40Z",
+      "side": 1,
+      "message": "My guess is that CBI currently has ID\u003d0, right? In that case it doesn\u0027t really matter, but I would suggest changing this check to `get_board_id() \u003d\u003d 2`, as we will call this \"board ID 2\" and expect the ID to be 2.",
+      "revId": "4adf919bd5200212fe54de984342e5eb807bac05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
