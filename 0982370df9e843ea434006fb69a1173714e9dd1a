@@ -16,6 +16,24 @@
       "message": "Regarding NPCX7_RAM_BLOCK_PD_MASK, I\u0027m sorry that our datasheet has a typo in reset value of RAM_PD register. No matter npcx7m6fc or npcx7m7fc, the reset value of RAM_PD2 is 0x00. Therefore, I strongly suggest use \u0027BIT(12) - 1\u0027 instead. Nuvoton will introduce an integer property in device tree to present valid bit-depth in RAM_PDn registers later. Or we will have higher power consumption during hibernating.",
       "revId": "0982370df9e843ea434006fb69a1173714e9dd1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7071416a_7ab5eda7",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-05-21T07:43:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f0e8b1f_03fec88b",
+      "revId": "0982370df9e843ea434006fb69a1173714e9dd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
