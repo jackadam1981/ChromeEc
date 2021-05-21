@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dc8dd4f_289a3aff",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-21T15:42:31Z",
+      "side": 1,
+      "message": "1st I2C handles all GPIO configs? are you planning to split the 4 i/o-ports to 2 i/o0port each for each Type-C port?",
+      "range": {
+        "startLine": 155,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 15
+      },
+      "revId": "3ef5365187e3154b8b19feae69549a43a4b0eaf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d626d4fc_65b9bd56",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1782,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-21T15:42:31Z",
+      "side": 1,
+      "message": "submit this change in a separate CL",
+      "revId": "3ef5365187e3154b8b19feae69549a43a4b0eaf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
