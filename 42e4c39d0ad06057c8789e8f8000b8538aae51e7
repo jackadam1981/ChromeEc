@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8d1bddf_1edca434",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-05-21T08:49:07Z",
+      "side": 1,
+      "message": "Because volume up/down button position incorrect.\nModify volume up/down button GPIO setting base on schematic volume up/down net name define.\n(b\\185557799#12)",
+      "revId": "42e4c39d0ad06057c8789e8f8000b8538aae51e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
