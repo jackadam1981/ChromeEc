@@ -16,6 +16,24 @@
       "message": "My guess is that CBI currently has ID\u003d0, right? In that case it doesn\u0027t really matter, but I would suggest changing this check to `get_board_id() \u003d\u003d 2`, as we will call this \"board ID 2\" and expect the ID to be 2.",
       "revId": "4adf919bd5200212fe54de984342e5eb807bac05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d490e0d4_a9e644ed",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-05-21T22:43:11Z",
+      "side": 1,
+      "message": "CBI is board ID 1 for current boards.\n\ni think what you\u0027re asking for is to assert that the *gpio.inc\nrevision used matches the board revision. we don\u0027t have that and\ni\u0027m updating *gpio.inc to rev 2 incrementally.\n\nit doesn\u0027t really help to check for board ID 2 because what matters\nis the revision of *gpio.inc used as well. the assumption is that\nGPIO_xyx is always correct for the most recent \"ToT\" board. \n\nthe logic is this: given the latest *gpio.inc definitions,\nwe must use symbol GPIO_ID1_xyz to refer to the relevant GPIO pin\non board ID 1. on newer boards, use the customary GPIO_xyz symbol. \n\n* board ID 0 is not supported.\n* all the GPIO_ID1_* symbols and handling should be removed when we\n  decide to drop support for board ID 1.",
+      "parentUuid": "cf4121ac_f4ffc8ae",
+      "revId": "4adf919bd5200212fe54de984342e5eb807bac05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
