@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3568f0_54c3fe0c",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-05-21T06:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3551d258_b1087d97",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 18
+      },
+      "revId": "8d70f8d68c97853d95aed6fb4098f68935402211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ce8e738_7b41153e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c24fc14f_24194f29",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-05-21T06:15:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ce8e738_7b41153e",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "8d70f8d68c97853d95aed6fb4098f68935402211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "682b6f87_fe9183e9",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-05-20T15:26:41Z",
       "side": 1,
       "message": "How about rewriting as:\n#define NPCX7_RAM_BLOCK_NUM \\\n    ((SRAM0_SIZE + FLASH0_SIZE + KB(2)) / NPCX_RAM_BLOCK_SIZE)\n\nAlso, I think renaming NPCX7_RAM_BLOCK_NUM to NPCX7_RAM_BLOCK_COUNT would be clearer.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 76
+      },
+      "revId": "8d70f8d68c97853d95aed6fb4098f68935402211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c37eb59_31a6ebb5",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-05-21T06:15:52Z",
+      "side": 1,
+      "message": "Done, thanks. Somehow I missed the NPCX_RAM_BLOCK_SIZE define.",
+      "parentUuid": "682b6f87_fe9183e9",
       "range": {
         "startLine": 105,
         "startChar": 0,
