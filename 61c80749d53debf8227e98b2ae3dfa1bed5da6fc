@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c997b543_8031dce8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-21T23:19:05Z",
+      "side": 1,
+      "message": "This change makes sense to me. Let\u0027s see what Nuvoton thinks about it.\n\nAdding Caveh and Tim to ensure this does not cause any regression on Intel platforms too.",
+      "revId": "61c80749d53debf8227e98b2ae3dfa1bed5da6fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "54629319_606e3124",
         "filename": "chip/npcx/espi.c",
         "patchSetId": 1
