@@ -11,6 +11,9 @@ _driver_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 
 # Accelerometers
 driver-$(CONFIG_ACCEL_BMA255)+=accel_bma2x2.o
+driver-$(CONFIG_ACCEL_GYRO_BMI323) += bosch_bmi323/accelgyro_bmi3.o bosch_bmi323/bmi3x0.o accelgyro_bmi_common.o
+driver-$(CONFIG_ACCEL_BMA422) += bosch_bma422/accel_bma422.o bosch_bma422/bma422.o bosch_bma422/bma4.o accelgyro_bmi_common.o
+
 driver-$(CONFIG_ACCEL_KXCJ9)+=accel_kionix.o
 driver-$(CONFIG_ACCEL_KX022)+=accel_kionix.o
 driver-$(CONFIG_ACCELGYRO_LSM6DS0)+=accelgyro_lsm6ds0.o
@@ -78,7 +81,6 @@ driver-$(CONFIG_CHARGER_SM5803)+=charger/sm5803.o
 include $(_driver_cur_dir)fingerprint/build.mk
 
 # I/O expander
-driver-$(CONFIG_IO_EXPANDER_CCGXXF)+=ioexpander/ccgxxf.o
 driver-$(CONFIG_IO_EXPANDER_IT8801)+=ioexpander/it8801.o
 driver-$(CONFIG_IO_EXPANDER_NCT38XX)+=ioexpander/ioexpander_nct38xx.o
 driver-$(CONFIG_IO_EXPANDER_PCA9534)+=ioexpander/pca9534.o
@@ -170,7 +172,6 @@ driver-$(CONFIG_USBC_SS_MUX)+=usb_mux/usb_mux.o
 # USB muxes
 driver-$(CONFIG_USB_MUX_AMD_FP5)+=usb_mux/amd_fp5.o
 driver-$(CONFIG_USB_MUX_AMD_FP6)+=usb_mux/amd_fp6.o
-driver-$(CONFIG_USB_MUX_ANX3443)+=usb_mux/anx3443.o
 driver-$(CONFIG_USB_MUX_ANX7440)+=usb_mux/anx7440.o
 driver-$(CONFIG_USB_MUX_ANX7451)+=usb_mux/anx7451.o
 driver-$(CONFIG_USB_MUX_IT5205)+=usb_mux/it5205.o
