@@ -33,6 +33,29 @@
       "message": "holding off on +2 to give others a chance to review.",
       "revId": "28d7bac7a3704d764fd28800514efaeeadf0b5cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de24a4b5_290e4636",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-21T15:45:27Z",
+      "side": 1,
+      "message": "Should the JEN_HEN field also get set to 0110b so that the host is prevented from enabling JEN_HSL?\n\nNPCX7 could also clear JEN0_HEN.  I didn\u0027t check NPCX5.",
+      "range": {
+        "startLine": 838,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 0
+      },
+      "revId": "28d7bac7a3704d764fd28800514efaeeadf0b5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
