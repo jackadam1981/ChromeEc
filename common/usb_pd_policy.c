@@ -357,6 +357,8 @@ void pd_dfp_discovery_init(int port)
 	memset(&partner_amodes[port], 0, sizeof(partner_amodes[0]));
 }
 
+void pd_dfp_mode_init(int port) {}
+
 static int dfp_discover_ident(uint32_t *payload)
 {
 	payload[0] = VDO(USB_SID_PD, 1, CMD_DISCOVER_IDENT);
@@ -428,6 +430,7 @@ static int process_am_discover_ident_sop(int port, int cnt, uint32_t head,
 					 enum tcpm_sop_type *rtype)
 {
 	pd_dfp_discovery_init(port);
+	pd_dfp_mode_init(port);
 	dfp_consume_identity(port, TCPC_TX_SOP, cnt, payload);
 
 	if (IS_ENABLED(CONFIG_USB_PD_DECODE_SOP) && is_sop_prime_ready(port) &&
