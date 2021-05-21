@@ -445,9 +445,18 @@ void system_reset(int flags)
 
 		/* Ask the watchdog to trigger a hard reboot */
 		STM32_IWDG_KR = STM32_IWDG_KR_UNLOCK;
+
+		/*
+		 * Set prescaler value to default, without setting this,
+		 * following things can happen on STM32H7:
+		 * - "Reset cause: hard" is missing after hard reboot
+		 * - Hard reset is not performed immediately, in some cases
+		 *   it happens a few seconds after watchdog_trace() is called.
+		 */
+		STM32_IWDG_PR = 0;
 		STM32_IWDG_RLR = 0x1;
-		/* Wait for value to be reloaded. */
-		while (STM32_IWDG_SR & STM32_IWDG_SR_RVU)
+		/* Wait for reload and prescaler register to be reloaded. */
+		while (STM32_IWDG_SR & (STM32_IWDG_SR_RVU | STM32_IWDG_SR_PVU))
 			;
 		STM32_IWDG_KR = STM32_IWDG_KR_RELOAD;
 #endif
