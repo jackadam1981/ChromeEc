@@ -445,10 +445,24 @@ void system_reset(int flags)
 
 		/* Ask the watchdog to trigger a hard reboot */
 		STM32_IWDG_KR = STM32_IWDG_KR_UNLOCK;
-		STM32_IWDG_RLR = 0x1;
-		/* Wait for value to be reloaded. */
-		while (STM32_IWDG_SR & STM32_IWDG_SR_RVU)
-			;
+
+		/*
+		 * Set Reload Register to 1.
+		 * Sometimes, when IWDG_SR register changes value from
+		 * 0x2 to 0x0, IWDG_RLR still contains old value. In this case
+		 * try to set IWDG_RLR register again. If the register can't
+		 * be updated (not observed, but let's assume that it is
+		 * possible), IWDG will eventually reboot CPU since we are not
+		 * reloading it and there is no way to stop it.
+		 */
+		do {
+			STM32_IWDG_RLR = 0x1;
+			/* Wait for value to be updated. */
+			while (STM32_IWDG_SR & STM32_IWDG_SR_RVU)
+				;
+		} while (STM32_IWDG_RLR != 0x1);
+
+		/* Reload IWDG counter, also locks registers */
 		STM32_IWDG_KR = STM32_IWDG_KR_RELOAD;
 #endif
 		/* wait for the chip to reboot */
