@@ -86,6 +86,30 @@
       },
       "revId": "990ee2892957fede3a60b96c070be2483ed1fa2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74c809bc_9c47b99a",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-05-21T16:47:30Z",
+      "side": 1,
+      "message": "Could you investigate why causes the reset on a sysjump? like a separate bug.\n\nThe `system_get_reset_flags()` is used quite common in the EC code. I\u0027d like clarify no risk to use `system_get_reset_flags()`.",
+      "parentUuid": "a6c0e124_925f506e",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 11
+      },
+      "revId": "990ee2892957fede3a60b96c070be2483ed1fa2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
