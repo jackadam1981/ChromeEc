@@ -16,6 +16,29 @@
       "message": "Testing well on voxel for Benson",
       "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6030ec4e_683f2173",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6326,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-21T16:19:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure where I got the 1ms timing from PS_RDY to the first SOP\u0027 message from the partner.  The timing shown on http://issuetracker.google.com/163478172#comment15 indicates that there was about 10ms from the PS_RDY to the EC mistakenly intercepting the SOP\u0027 message.\n\nIf there really is a PD partner that sends SOP\u0027 only 1ms after PS_RDY, we could still have a race condition where the EC hasn\u0027t disabled SOP\u0027 before the partner sends SOP\u0027.\n\nIt seems like it\u0027t better to leave the SOP\u0027 disable in the PE_VCS_Evaluate_Swap and PE_VCS_Send_Swap states. Was there a reason for moving this here, other than trying to consolidate the code?",
+      "range": {
+        "startLine": 6311,
+        "startChar": 0,
+        "endLine": 6326,
+        "endChar": 0
+      },
+      "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
