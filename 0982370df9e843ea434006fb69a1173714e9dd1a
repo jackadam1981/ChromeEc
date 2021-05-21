@@ -34,6 +34,24 @@
       "parentUuid": "1f0e8b1f_03fec88b",
       "revId": "0982370df9e843ea434006fb69a1173714e9dd1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17bb5f68_b5632bc4",
+        "filename": "zephyr/drivers/cros_system/cros_system_npcx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-05-21T08:15:55Z",
+      "side": 1,
+      "message": "Thanks. I\u0027m working on adding a property to present valid bit-depth of RAM_PDn in pcc node on Zephyr. (Please refer https://github.com/zephyrproject-rtos/zephyr/pull/35523) Once it was landed, Nuvoton will add a CL to replace the constant value with DT macro.",
+      "parentUuid": "7071416a_7ab5eda7",
+      "revId": "0982370df9e843ea434006fb69a1173714e9dd1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
