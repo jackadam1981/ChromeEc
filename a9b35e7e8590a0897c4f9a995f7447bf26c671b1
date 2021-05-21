@@ -39,6 +39,30 @@
       },
       "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc80aa23_0b270a74",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6326,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-21T16:59:05Z",
+      "side": 1,
+      "message": "Consolidation, and it also covers the re-enable in more cases.  For example, if the partner interrupted before we could get our Accept through, we are still the Vconn source and can still send/receive SOP\u0027.  \n\nThis disable timing is essentially the same as the case where we send the swap request in current ToT.  For the case where we\u0027re accepting the partner\u0027s request, it delays our disable until we\u0027ve gotten TX complete, which will be a change I\u0027d guess on the order of 5ms.  I can dig more into the timing there and verify, plus double check what the theoretical fastest time would be for a partner to put out a PS_RDY.",
+      "parentUuid": "6030ec4e_683f2173",
+      "range": {
+        "startLine": 6311,
+        "startChar": 0,
+        "endLine": 6326,
+        "endChar": 0
+      },
+      "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
