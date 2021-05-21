@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6e987774_2cb6e382",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-21T23:38:16Z",
+      "side": 1,
+      "message": "Switched to using pd_get_src_cap_cnt() to determine if the partner has send source caps and resolved the PD capability state.",
+      "parentUuid": "0da5edd7_702e42d3",
+      "revId": "6867a0d2b09a8b92d5a0248fe8ff1bd437bc7f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "01134ea9_a1a5d0f8",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 2
