@@ -412,17 +412,12 @@ void espi_vw_evt_pltrst(void)
 
 	if (pltrst) {
 		/* PLTRST# deasserted */
-		/* Disable eSPI peripheral channel support first */
-		CLEAR_BIT(NPCX_ESPICFG, NPCX_ESPICFG_PCCHN_SUPP);
-
-		/* Enable eSPI peripheral channel */
-		SET_BIT(NPCX_ESPICFG, NPCX_ESPICFG_PCHANEN);
 
 		/* Initialize host settings */
 		host_register_init();
 
-		/* Re-enable eSPI peripheral channel support */
-		SET_BIT(NPCX_ESPICFG, NPCX_ESPICFG_PCCHN_SUPP);
+		/* eSPI peripheral channel is now ready */
+		SET_BIT(NPCX_ESPICFG, NPCX_ESPICFG_PCHANEN);
 	} else {
 		/* PLTRST# asserted */
 #ifdef CONFIG_CHIPSET_RESET_HOOK
