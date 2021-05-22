@@ -521,6 +521,27 @@ main() {
     exit "${EXIT_CONFIG}"
   fi
 
+  # If cros-ec is bound, ensure no processes are using it. This might be biod.
+  if [[ -c /dev/cros_fp ]]; then
+    if fuser /dev/cros_fp >/dev/null 2>&1; then
+      echo "WARNING: Another process has /dev/cros_fp open." >&2
+      echo "         Try 'stop biod' before running this script." >&2
+      echo "         See b/188985272." >&2
+    fi
+  else
+    echo "WARNING: The cros-ec driver was not bound on startup." >&2
+  fi
+
+  # If raw driver is bound, ensure no processes are using it. This might be a
+  # wedged stm32mon process spawned by this script.
+  if [[ -c "${DEVICE}" ]]; then
+    if fuser "${DEVICE}" >/dev/null 2>&1; then
+      echo "WARNING: Another process has ${DEVICE} open." >&2
+      echo "         Try 'fuser -k ${DEVICE}' before running this script." >&2
+      echo "         See b/188985272." >&2
+    fi
+  fi
+
   flash_fp_mcu_stm32 \
     "${TRANSPORT}"   \
     "${DEVICE}"      \
