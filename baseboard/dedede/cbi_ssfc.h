@@ -28,7 +28,8 @@ enum ec_ssfc_base_sensor {
 enum ec_ssfc_lid_sensor {
 	SSFC_SENSOR_LID_DEFAULT = 0,
 	SSFC_SENSOR_BMA255 = 1,
-	SSFC_SENSOR_KX022 = 2
+	SSFC_SENSOR_KX022 = 2,
+	SSFC_SENSOR_LIS2DWL = 3
 };
 
 /*
