@@ -1779,6 +1779,10 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus	= &tcpci_tcpc_discharge_vbus,
 #endif
+#ifdef CONFIG_USB_PD_AUTO_DISCHARGE_DISCONNECT_TCPC
+	.tcpc_enable_auto_discharge_disconnect =
+		&tcpci_tcpc_enable_auto_discharge_disconnect,
+#endif
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	.drp_toggle		= &tcpci_tcpc_drp_toggle,
 #endif
