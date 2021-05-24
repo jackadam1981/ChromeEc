@@ -56,6 +56,30 @@
       },
       "revId": "28d7bac7a3704d764fd28800514efaeeadf0b5cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efaf68bd_531b9fc8",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-24T02:33:22Z",
+      "side": 1,
+      "message": "This CL is the workaround to fix the issue:129908668. (i.e. JEN0 strap pin is strapped unexpectedly by the specific key combination.)\nWhen the JEN0 strap pin is strapped:\nNPCX5/NPCX7:\n - nJEN0_EN bit in DEVALT5 register is clear and JEN0_HSL bit in SIOCFD register \n   is set.\nNPCX9:\n - JEN_EN filed in JEN_CTL1 register is set to 0x09 and JEN0_HSL bit in SIOCFD register \n   is set.\nThis workaround is to revert the setting to disable the JTAG selection.\n\nWe are not sure if host has a chance to control the enabling/disabling of JTAG or not. So we don\u0027t touch the JEN_HEN.\nIf you think it is necessary, we can add it with another CL.",
+      "parentUuid": "de24a4b5_290e4636",
+      "range": {
+        "startLine": 838,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 0
+      },
+      "revId": "28d7bac7a3704d764fd28800514efaeeadf0b5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
