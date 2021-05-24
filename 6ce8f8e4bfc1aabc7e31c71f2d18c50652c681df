@@ -34,6 +34,24 @@
       "parentUuid": "69fc6f2c_492e1dda",
       "revId": "6ce8f8e4bfc1aabc7e31c71f2d18c50652c681df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7cf61c5_99391c4d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-24T23:12:23Z",
+      "side": 1,
+      "message": "That\u0027s a good point, let\u0027s restrict this to port 0 only.",
+      "parentUuid": "b35cabc7_4b05faea",
+      "revId": "6ce8f8e4bfc1aabc7e31c71f2d18c50652c681df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
