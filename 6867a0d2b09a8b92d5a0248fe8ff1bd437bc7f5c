@@ -142,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2abd362a_e3439d08",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-24T04:33:36Z",
+      "side": 1,
+      "message": "Excellent.  Reduces the flag bookkeeping :)",
+      "parentUuid": "6e987774_2cb6e382",
+      "revId": "6867a0d2b09a8b92d5a0248fe8ff1bd437bc7f5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01134ea9_a1a5d0f8",

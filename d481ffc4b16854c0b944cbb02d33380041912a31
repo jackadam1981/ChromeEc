@@ -16,6 +16,24 @@
       "message": "This fixes the hard reset when connecting a PD charger, but introduces a hard reset when connecting a DRP device.",
       "revId": "d481ffc4b16854c0b944cbb02d33380041912a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d016bc87_8d75b9d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-24T04:33:36Z",
+      "side": 1,
+      "message": "So there\u0027s still a significant delay when setting the USB?  Caveh, does this work well enough for brya for now?",
+      "parentUuid": "dc0b8eb5_694ba469",
+      "revId": "d481ffc4b16854c0b944cbb02d33380041912a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
