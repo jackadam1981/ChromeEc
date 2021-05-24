@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da26f11d_bb8caa18",
+        "filename": "baseboard/asurada/usb_port_power.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-24T13:08:46Z",
+      "side": 1,
+      "message": "It seems this is the main difference from the original file. Can we introduce a new config to address this?",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 1
+      },
+      "revId": "cfe65c1e0a62dcb92f87c5257290be5116438d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
