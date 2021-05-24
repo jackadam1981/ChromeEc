@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e73ceddd_c2a82469",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1264388
+      },
+      "writtenOn": "2021-05-24T12:29:22Z",
+      "side": 0,
+      "message": "This is needed in npcx5 as I already explained in the issue.\nIt seems that I need different code for \"npcx5\" and for \"chip  family \u003e\u003d npcx7\" like:\n#ifdef CHIP_FAMILY_NPCX5\n        ..use the original code.\n#else\n        ..use the code of this CL.                 \n#enedif",
+      "range": {
+        "startLine": 416,
+        "startChar": 2,
+        "endLine": 416,
+        "endChar": 51
+      },
+      "revId": "5bd7f9db4a51b995810894e72ebd218077a5059a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
