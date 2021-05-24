@@ -39,6 +39,24 @@
       "message": "submit this change in a separate CL",
       "revId": "3ef5365187e3154b8b19feae69549a43a4b0eaf5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "417d667a_7124fdaa",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1782,
+      "author": {
+        "id": 1491967
+      },
+      "writtenOn": "2021-05-24T09:56:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d626d4fc_65b9bd56",
+      "revId": "3ef5365187e3154b8b19feae69549a43a4b0eaf5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
