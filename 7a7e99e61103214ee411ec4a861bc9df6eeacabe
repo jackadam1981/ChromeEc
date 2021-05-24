@@ -34,6 +34,24 @@
       "parentUuid": "d86fece2_d183a4bd",
       "revId": "7a7e99e61103214ee411ec4a861bc9df6eeacabe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71603908_8aeafc47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-05-24T17:02:58Z",
+      "side": 1,
+      "message": "Looking at other directory (drivers/tcpm) and the linux policy, the prefix should be removed.",
+      "parentUuid": "600bb1ab_1e25fd61",
+      "revId": "7a7e99e61103214ee411ec4a861bc9df6eeacabe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
