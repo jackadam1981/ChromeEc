@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfc39007_589a63b6",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-05-24T12:01:18Z",
+      "side": 1,
+      "message": "How about printing list of processes that have /dev/cros_fp open?\nFollowing code can do that:\n```\nPIDS\u003d`fuser /dev/cros_fp 2\u003e /dev/null`\nfor PID in $PIDS; do\n  ps -p $PID -o comm\u003d\ndone\n```",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 42
+      },
+      "revId": "6f0acc7bb85859c316cef531d07dca4cea8965cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
