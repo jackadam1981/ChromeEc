@@ -52,6 +52,24 @@
       "parentUuid": "b35cabc7_4b05faea",
       "revId": "6ce8f8e4bfc1aabc7e31c71f2d18c50652c681df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe859e52_4c73de1c",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-05-24T23:20:06Z",
+      "side": 1,
+      "message": "Agreed. So long as there isn\u0027t anything strange like \"multi-port CCD\" or \"CCD on non-port 0\". But that is in the far future.\n\nI think \"port 0\" is a good enough safeguard until there is a dynamic \"port capability\" structure that maps logical topology \u003c-\u003e physical features.",
+      "parentUuid": "d7cf61c5_99391c4d",
+      "revId": "6ce8f8e4bfc1aabc7e31c71f2d18c50652c681df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
