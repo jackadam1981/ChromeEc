@@ -16,6 +16,24 @@
       "message": "If we are making the jump to rename the drivers, we should also create a directory per type: accel|accel_gyro|als|baro|...",
       "revId": "7a7e99e61103214ee411ec4a861bc9df6eeacabe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "600bb1ab_1e25fd61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-24T13:29:21Z",
+      "side": 1,
+      "message": "If accelerometer sensors are moved to driver/accel/ should the accel_ filename prefix be removed from these drivers?",
+      "parentUuid": "d86fece2_d183a4bd",
+      "revId": "7a7e99e61103214ee411ec4a861bc9df6eeacabe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
