@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fa067d4_6d59fefe",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1158,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-24T16:15:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75bff90a_d955fcd1",
+      "revId": "6250dabdd09eaa0a61616fc606b4ee47cd477871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a5ef4d9_13610d33",
@@ -83,6 +101,24 @@
       "writtenOn": "2021-05-13T19:58:50Z",
       "side": 1,
       "message": "This is a bit messy. Coreboot gets this version inside of it\u0027s ebuild: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/sys-boot/coreboot/coreboot-9999.ebuild;l\u003d173. EC can do the same, the only downside is EC is often built using just make.",
+      "revId": "6250dabdd09eaa0a61616fc606b4ee47cd477871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bbe9340_31ad5192",
+        "filename": "util/getversion.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-24T16:15:44Z",
+      "side": 1,
+      "message": "Leaving this here means it works for local make builds as well.",
+      "parentUuid": "4a5ef4d9_13610d33",
       "revId": "6250dabdd09eaa0a61616fc606b4ee47cd477871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
