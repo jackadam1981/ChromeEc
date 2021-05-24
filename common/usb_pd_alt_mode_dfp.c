@@ -1157,6 +1157,17 @@ __overridable int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		return -1;
 #endif
+
+    /*
+     * Enable logging of CCD line state CCD_MODE_ODL.
+     *
+     * SBU signals are used for CCD by isolating them from AUX through override
+     * fets. This condition helps in debugging unexpected AUX timeout issues by
+     * indicating the state of the CCD override fets.
+     */
+	if (!gpio_get_level(GPIO_CCD_MODE_ODL))
+		CPRINTS("WARNING: Tried to EnterMode DP with [CCD on AUX/SBU]");
+
 	/* Only enter mode if device is DFP_D capable */
 	if (mode_caps & MODE_DP_SNK) {
 		svdm_safe_dp_mode(port);
