@@ -110,6 +110,30 @@
       },
       "revId": "990ee2892957fede3a60b96c070be2483ed1fa2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee7ddfc_92c60be1",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-05-24T23:14:46Z",
+      "side": 1,
+      "message": "I looked into it a bit and found that calling check_reset_cause() while in RO, returns WATCHDOG_RST. Then panic_set_reason() is called which changes where the jump data is stored.\n\naddr \u003d get_panic_data_start();\nif (!addr)\n   addr \u003d CONFIG_RAM_BASE + CONFIG_RAM_SIZE;\n\nThen when in RW, we don\u0027t get a watchdog error, so panic_set_reason() is not called and the jump data is read from the wrong location, fooling the system into thinking a sysjump did not occur.\n\nAdding the following to fixed this problem:\n\nint system_is_reboot_warm(void)\n{\n        uint32_t reset_flags;\n\n        if (system_get_image_copy() \u003d\u003d EC_IMAGE_RO) {\n                return 0;\n        }\n\n...\n\nBut then I noticed that the reset flag pin is always being set in the cros_system_npcx_init function\n\n} else if (IS_BIT_SET(inst_scfg-\u003eRSTCTL, NPCX_RSTCTL_VCC1_RST_STS)) {\n                data-\u003ereset \u003d VCC1_RST_PIN;\n\nand this results in the is_reboot_warm function returning false.\n\n\nI noticed that the npcx chip uses a watchdog timeout to reset the chip but I can\u0027t say for sure this is why the WATCHDOG_RST is getting set or why the VCC1_RST_PIN is set.",
+      "parentUuid": "74c809bc_9c47b99a",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 11
+      },
+      "revId": "990ee2892957fede3a60b96c070be2483ed1fa2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
