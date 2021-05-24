@@ -153,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64dc9722_7a4dc04c",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 34
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-05-24T08:31:29Z",
+      "side": 1,
+      "message": "after discussion, changed this to softreset once in RO",
+      "parentUuid": "4d2691aa_65dea21f",
+      "range": {
+        "startLine": 79,
+        "startChar": 4,
+        "endLine": 79,
+        "endChar": 51
+      },
+      "revId": "1b0a46c21cb37b422225a360580e2d20fcc3da6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7415c01a_24f5cab9",
