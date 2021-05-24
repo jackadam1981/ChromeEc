@@ -22,6 +22,30 @@
       },
       "revId": "869326665bf3c3ae6e7b21f279eb405c1f146e54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f34aae_d8647774",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-05-24T18:39:39Z",
+      "side": 1,
+      "message": "I grepped for CHIP_FAMILY_NPCX5 and copied the current pattern.\n\nI don\u0027t think the symbol is defined either. I get the following:\n\nchip/npcx/espi.c:415:5: error: \u0027CHIP_FAMILY_NPCX5\u0027 undeclared (first use in this function); did you mean \u0027CHIP_FAMILY_NPCX9\u0027?",
+      "parentUuid": "9325f03b_ebdb3de4",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 30
+      },
+      "revId": "869326665bf3c3ae6e7b21f279eb405c1f146e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
