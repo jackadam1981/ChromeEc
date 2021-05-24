@@ -70,6 +70,24 @@
       "parentUuid": "d7cf61c5_99391c4d",
       "revId": "6ce8f8e4bfc1aabc7e31c71f2d18c50652c681df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f432c91c_e8f3b7fd",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-24T23:27:04Z",
+      "side": 1,
+      "message": "But actually, nami breaks this assumption. It has CCD on port 1. Let\u0027s then just print it regardless instead of trying to maintain a mapping of which port has CCD. It\u0027s still a good warning.\n\nBut still please add the brief description of why this is problematic.",
+      "parentUuid": "fe859e52_4c73de1c",
+      "revId": "6ce8f8e4bfc1aabc7e31c71f2d18c50652c681df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
