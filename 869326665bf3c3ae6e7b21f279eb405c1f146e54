@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9325f03b_ebdb3de4",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-24T17:56:01Z",
+      "side": 1,
+      "message": "Use run-time check?\n\n```\nif (CHIP_FAMILY_NPCX5) {\n} \n```",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 30
+      },
+      "revId": "869326665bf3c3ae6e7b21f279eb405c1f146e54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
