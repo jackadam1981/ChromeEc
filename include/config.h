@@ -4229,6 +4229,11 @@
 /* Define if discharge circuit is using PD discharge registers on TCPC. */
 #undef CONFIG_USB_PD_DISCHARGE_TCPC
 
+/* Define if auto discharge disconnect circuit is using PD discharge
+ * registers on TCPC.
+ */
+#undef CONFIG_USB_PD_AUTO_DISCHARGE_DISCONNECT_TCPC
+
 /* Define if discharge circuit is using PD discharge registers on PPC. */
 #undef CONFIG_USB_PD_DISCHARGE_PPC
 
@@ -5641,6 +5646,7 @@
 /* CCGXXF standard default defines */
 #if defined(CONFIG_USB_PD_TCPM_CCGXXF)
 #define CONFIG_USB_PD_DISCHARGE_TCPC
+#define CONFIG_USB_PD_AUTO_DISCHARGE_DISCONNECT_TCPC
 #define CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 #define CONFIG_USB_PD_PPC
 #define CONFIG_USB_PD_TCPC_LOW_POWER
