@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a929f66_782e6e1b",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1783,
+      "author": {
+        "id": 1496353
+      },
+      "writtenOn": "2021-05-24T19:56:42Z",
+      "side": 1,
+      "message": "it\u0027s tcpm_enable_auto_discharge_disconnect() in tcpm.h",
+      "parentUuid": "6b66b6fb_a586a6fd",
+      "range": {
+        "startLine": 1783,
+        "startChar": 2,
+        "endLine": 1783,
+        "endChar": 40
+      },
+      "revId": "6e3aae79328eae49dbf87fc9e0b62d70a79b41a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "982cb8f4_268a7595",
