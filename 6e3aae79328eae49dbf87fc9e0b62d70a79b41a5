@@ -3,6 +3,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6514b93_f94bb138",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-24T19:35:48Z",
+      "side": 1,
+      "message": "pls add details about the fix,",
+      "revId": "6e3aae79328eae49dbf87fc9e0b62d70a79b41a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2609c17_974ae545",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-24T19:35:48Z",
+      "side": 1,
+      "message": "#ifdef CONFIG_USB_PD_AUTO_DISCHARGE_DISCONNECT_TCPC",
+      "revId": "6e3aae79328eae49dbf87fc9e0b62d70a79b41a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b66b6fb_a586a6fd",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1783,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-24T19:35:48Z",
+      "side": 1,
+      "message": "looks like there is no calling function of this code.",
+      "range": {
+        "startLine": 1783,
+        "startChar": 2,
+        "endLine": 1783,
+        "endChar": 40
+      },
+      "revId": "6e3aae79328eae49dbf87fc9e0b62d70a79b41a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "982cb8f4_268a7595",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -14,6 +71,29 @@
       "writtenOn": "2021-05-24T17:57:42Z",
       "side": 1,
       "message": "nit:  \n       \n/*\n * nothing on the first line\n * in multi-line comments.\n */",
+      "revId": "6e3aae79328eae49dbf87fc9e0b62d70a79b41a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d535f728_3b996103",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 4235,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-24T19:35:48Z",
+      "side": 1,
+      "message": "other TCPCi drivers also using this function, need to define for them",
+      "range": {
+        "startLine": 4235,
+        "startChar": 7,
+        "endLine": 4235,
+        "endChar": 51
+      },
       "revId": "6e3aae79328eae49dbf87fc9e0b62d70a79b41a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
