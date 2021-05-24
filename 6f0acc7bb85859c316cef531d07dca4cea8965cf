@@ -22,6 +22,30 @@
       },
       "revId": "6f0acc7bb85859c316cef531d07dca4cea8965cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7741ec78_f8e1037f",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 4
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-24T23:23:17Z",
+      "side": 1,
+      "message": "I was hesitant to do make this original patch that verbose, since it wasn\u0027t that precise of an implementation. I have updated this mechanism to actually current and past users of all relevant driver files.\n\nIt prints out PIDs of conflicting processes.",
+      "parentUuid": "cfc39007_589a63b6",
+      "range": {
+        "startLine": 527,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 42
+      },
+      "revId": "6f0acc7bb85859c316cef531d07dca4cea8965cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
