@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3752fc90_478decbe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-05-25T20:47:30Z",
+      "side": 1,
+      "message": "I found that IWDG_RLR update is sometimes ignored (eg. during EC hardware unit tests). This patch improves hard reset procedure by making sure that IWDG_RLR register contains correct value.",
+      "revId": "2c67bad8ec422db324402d9bafe31190e5c2bcd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
