@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75396584_fe6ef999",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-05-25T05:47:17Z",
+      "side": 1,
+      "message": "Very good question. Parsing of garbage will terminate on line 214 and the \"usage\" line would be printed (tested that):\n Parameter 1 invalid\n Usage: sleeptimeout [default | infinite | \u003cmsec\u003e]\n\nMapping 0 to infinity is not straight-forward (why infinity as opposed to not changing it at all or mapping 0 to default?). I think it would be good enough to print error message in that case, without changing the timeout value. do you agree with that approach?",
+      "parentUuid": "a9fdaf55_0f130692",
+      "range": {
+        "startLine": 216,
+        "startChar": 31,
+        "endLine": 216,
+        "endChar": 34
+      },
+      "revId": "19fa5e8fabf9471fd8a7be05d56831c007cd64ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5bb0a0a7_02d5a400",
         "filename": "power/host_sleep.c",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2021-05-25T00:18:30Z",
       "side": 1,
       "message": "should we conditionally include this command?\nlots of commands get #ifdef\u0027d due to space constraints on\nmany boards.\n\nprobably default to off, enable on brya or if\nBRINGUP is defined.",
+      "revId": "19fa5e8fabf9471fd8a7be05d56831c007cd64ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da452d2_a2c514ae",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-05-25T05:47:17Z",
+      "side": 1,
+      "message": "This command is already conditionally included: only if CONFIG_POWER_SLEEP_FAILURE_DETECTION is defined, which is undefined for most of the platforms.",
+      "parentUuid": "5bb0a0a7_02d5a400",
       "revId": "19fa5e8fabf9471fd8a7be05d56831c007cd64ca",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
