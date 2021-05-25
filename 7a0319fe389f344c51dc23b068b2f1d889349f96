@@ -39,6 +39,30 @@
       },
       "revId": "7a0319fe389f344c51dc23b068b2f1d889349f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c2c7554_629e17cc",
+        "filename": "chip/stm32/flash-stm32g4-l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-05-25T01:09:40Z",
+      "side": 1,
+      "message": "I thought about doing this, but the issue is that 1 for this bit position means \"enabled\" and chips which don\u0027t support DBANK at all , don\u0027t have this bit defined, so I would imagine it would read as 1 even for category 2 flash devices that don\u0027t support DBANK.\n\nDBANK being defined or not is implicit in the flash page size config options, so this is not a feature that can be enabled dynamically and still have things work. So having this as a macro makes sense to me.",
+      "parentUuid": "fdcf015a_61746ac5",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 270,
+        "endChar": 16
+      },
+      "revId": "7a0319fe389f344c51dc23b068b2f1d889349f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
