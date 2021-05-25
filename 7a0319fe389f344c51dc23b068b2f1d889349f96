@@ -87,6 +87,30 @@
       },
       "revId": "7a0319fe389f344c51dc23b068b2f1d889349f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d50de4e_3858db5e",
+        "filename": "chip/stm32/flash-stm32g4-l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-05-25T15:42:23Z",
+      "side": 1,
+      "message": "We use a config option to describe the flash page size.\n#define CONFIG_FLASH_BANK_SIZE (2 * 1024)\n\nSo DBANK being enabled or not is implicit in this config option value. Yes,DBNAK could be disabled, but it requires writing to the option bytes itself to disable.",
+      "parentUuid": "323e5ff1_682ea739",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 270,
+        "endChar": 16
+      },
+      "revId": "7a0319fe389f344c51dc23b068b2f1d889349f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
