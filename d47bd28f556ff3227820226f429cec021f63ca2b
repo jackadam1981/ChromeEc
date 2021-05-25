@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb008526_34824a16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-25T15:42:22Z",
+      "side": 1,
+      "message": "The subject line usually starts with a component name (i.e. \u0027TCPMv2\u0027). You can get candidates from the commit history (of the file).",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "d47bd28f556ff3227820226f429cec021f63ca2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5efd498e_f2d2a149",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-05-25T02:29:22Z",
       "side": 1,
       "message": "Very close, just would like us to highlight the conflict.",
+      "revId": "d47bd28f556ff3227820226f429cec021f63ca2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cd48f1d_83ea7be5",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-25T15:42:22Z",
+      "side": 1,
+      "message": "nit: tab.",
+      "range": {
+        "startLine": 1161,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 4
+      },
       "revId": "d47bd28f556ff3227820226f429cec021f63ca2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
