@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "523b199d_8256c458",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-05-25T23:04:09Z",
+      "side": 1,
+      "message": "do you want \"\u003e\u003d\" since 0xffff is special (i.e. not 65535 ms).",
+      "range": {
+        "startLine": 216,
+        "startChar": 22,
+        "endLine": 216,
+        "endChar": 23
+      },
+      "revId": "8b2bff2b214b9f8a049ddf5a3c98f768bc499e57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
