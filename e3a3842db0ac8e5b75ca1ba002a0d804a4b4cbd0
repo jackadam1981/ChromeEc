@@ -51,6 +51,75 @@
       "message": "The third parameter of gpio_pin_set() is used for GPIO level. The related flag, GPIO_OUTPUT_LOW, will be configured properly in init_gpios() if they are the phandles of named-gpios node. (Please refer https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/shim/src/gpio.c#275)\n \nCould you add these pins into named-gpios node with GPIO_OUTPUT_LOW flag? Then, I suggest using the original gpio utility, gpio_set_level(), to set the current level of LED GPIOs.",
       "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a3f68e1_54639167",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-25T09:16:38Z",
+      "side": 1,
+      "message": "NPCX9M3F",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "397a072e_27f143ae",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-25T09:16:38Z",
+      "side": 1,
+      "message": "0x10080000",
+      "range": {
+        "startLine": 45,
+        "startChar": 35,
+        "endLine": 45,
+        "endChar": 45
+      },
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1616ea_c10eea4f",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-25T09:16:38Z",
+      "side": 1,
+      "message": "0x0000f800",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
