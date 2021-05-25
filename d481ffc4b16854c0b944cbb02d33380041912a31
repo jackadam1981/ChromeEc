@@ -70,6 +70,23 @@
       "parentUuid": "31c99c53_b5b03a40",
       "revId": "d481ffc4b16854c0b944cbb02d33380041912a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710ffbb9_3a9abe53",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-05-25T17:02:14Z",
+      "side": 1,
+      "message": "Nit: This would make more sense in the TC implementation file, since it is based on source cap contents.",
+      "revId": "d481ffc4b16854c0b944cbb02d33380041912a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
