@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "706b08d2_df8a0558",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-25T17:19:54Z",
+      "side": 1,
+      "message": "Move\n\nSee here\n\nhttps://chromium.googlesource.com/chromiumos/docs/+/main/contributing.md#commit-messages",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "e04d1a127648d70c78d91a2802b6ce740b09008a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8e70129_e6e26b72",
+        "filename": "zephyr/linker/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-05-25T17:19:54Z",
+      "side": 1,
+      "message": "Is RISC-V unique in this respect? If so, perhaps we should change it.",
+      "revId": "e04d1a127648d70c78d91a2802b6ce740b09008a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
