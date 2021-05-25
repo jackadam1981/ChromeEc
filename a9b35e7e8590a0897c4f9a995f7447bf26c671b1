@@ -87,6 +87,29 @@
       },
       "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3f8d55_7c7e7ab2",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6353,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-05-25T17:21:09Z",
+      "side": 1,
+      "message": "I don\u0027t think we can usefully send SOP\u0027 or SOP\u0027\u0027 Soft Reset here:\n* The cable shall not initiate traffic.\n* Even if it did, we shouldn\u0027t be able to receive SOP\u0027 or SOP\u0027\u0027 traffic right now.\n* Even if we received it, can we count on being able to send it after disabling SOP\u0027 reception? Does that depend on the TCPC?\n* Even if we send it, we shouldn\u0027t be able to receive the Accept, so we should expect to go into Hard Reset.\n* If, despite the above, we receive SOP\u0027 traffic, it\u0027s probably the port partner jumping the gun on enabling SOP\u0027. If we do SOP\u0027 Soft Reset in that situation, how will the port partner be expected to react?",
+      "range": {
+        "startLine": 6347,
+        "startChar": 3,
+        "endLine": 6353,
+        "endChar": 45
+      },
+      "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
