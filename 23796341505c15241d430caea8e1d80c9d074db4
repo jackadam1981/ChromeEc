@@ -22,6 +22,30 @@
       },
       "revId": "23796341505c15241d430caea8e1d80c9d074db4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a53c1f0b_801e9826",
+        "filename": "board/delbin/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-05-25T10:09:29Z",
+      "side": 1,
+      "message": "No. But I think we can add this condition if requested for future.\nIf you has any concern, I will remove this condition. Thanks.",
+      "parentUuid": "e4220b8a_6fe69704",
+      "range": {
+        "startLine": 151,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 28
+      },
+      "revId": "23796341505c15241d430caea8e1d80c9d074db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
