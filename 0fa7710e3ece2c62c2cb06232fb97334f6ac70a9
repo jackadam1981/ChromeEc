@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9cc5a30_7e967613",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-05-25T18:55:40Z",
+      "side": 1,
+      "message": "nit: You don\u0027t need this line.",
+      "range": {
+        "startLine": 1162,
+        "startChar": 2,
+        "endLine": 1163,
+        "endChar": 3
+      },
+      "revId": "0fa7710e3ece2c62c2cb06232fb97334f6ac70a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
