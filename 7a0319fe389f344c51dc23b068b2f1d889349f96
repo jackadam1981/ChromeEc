@@ -63,6 +63,30 @@
       },
       "revId": "7a0319fe389f344c51dc23b068b2f1d889349f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "323e5ff1_682ea739",
+        "filename": "chip/stm32/flash-stm32g4-l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-25T03:00:47Z",
+      "side": 1,
+      "message": "I was thinking more along the lines of the devices where it should be enabled (we\u0027ve defined the macro), ensure that it is. I haven\u0027t read the DS, but it sounds like it could be disabled. In essence, if we\u0027re saying that these chips _should_ have DBANK enabled, make sure that they actually do.",
+      "parentUuid": "5c2c7554_629e17cc",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 270,
+        "endChar": 16
+      },
+      "revId": "7a0319fe389f344c51dc23b068b2f1d889349f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
