@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88ae13af_b7828584",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-25T18:21:40Z",
+      "side": 1,
+      "message": "OK, I was able to flash the LEDs by commenting out the content of bbram_npcx_init but I\u0027m getting a fatal error:\n\n21-05-25 12:17:45.695 --- UART initialized after reboot ---\n21-05-25 12:17:45.697 [Image: RO, brya_zephyr_v2.0.8889+b910a3b4e 2021-05-20 10:42:38 peress@technodrome.c.googlers.com]\n21-05-25 12:17:45.704 [Reset cause: unknown]\n21-05-25 12:17:45.708 Fatal error: 0\n21-05-25 12:17:45.708   a1       \u003d 0x00000000\n21-05-25 12:17:45.712   a2       \u003d 0x00000001\n21-05-25 12:17:45.715   a3       \u003d 0x200C0A08\n21-05-25 12:17:45.715   a4       \u003d 0x41880148\n21-05-25 12:17:45.718   ip       \u003d 0x10088607\n21-05-25 12:17:45.721   lr       \u003d 0x1008357F\n21-05-25 12:17:45.721   pc       \u003d 0x41880148\n21-05-25 12:17:45.726   xpsr     \u003d 0x00000000",
+      "parentUuid": "d180c9eb_b6d0dbd2",
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d3828ba7_77eb824a",
         "filename": "zephyr/app/ec/ec_app_main.c",
         "patchSetId": 3
