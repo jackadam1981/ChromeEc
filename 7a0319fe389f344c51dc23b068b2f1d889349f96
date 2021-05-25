@@ -111,6 +111,30 @@
       },
       "revId": "7a0319fe389f344c51dc23b068b2f1d889349f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d22caa19_071197e1",
+        "filename": "chip/stm32/flash-stm32g4-l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-05-25T15:46:13Z",
+      "side": 1,
+      "message": "If dual-bank is disabled via option bytes, then none of the write protection could would without changing the flash driver quite a bit to handle a flash page being either 2k or 4k based on DB bit in option bytes being set or not.",
+      "parentUuid": "4d50de4e_3858db5e",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 270,
+        "endChar": 16
+      },
+      "revId": "7a0319fe389f344c51dc23b068b2f1d889349f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
