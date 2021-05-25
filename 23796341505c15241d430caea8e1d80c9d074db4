@@ -46,6 +46,30 @@
       },
       "revId": "23796341505c15241d430caea8e1d80c9d074db4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24abab8d_f3201e41",
+        "filename": "board/delbin/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-05-25T11:43:58Z",
+      "side": 1,
+      "message": "Got it. Maybe you can split another patch for this change.",
+      "parentUuid": "a53c1f0b_801e9826",
+      "range": {
+        "startLine": 151,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 28
+      },
+      "revId": "23796341505c15241d430caea8e1d80c9d074db4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
