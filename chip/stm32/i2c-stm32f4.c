@@ -938,6 +938,15 @@ static void i2c_event_handler(int port)
 				/* Reset host buffer */
 				rx_pending = 0;
 				tx_pending = 1;
+#ifdef CONFIG_BOARD_I2C_SLAVE_ADDR
+				if (addr == CONFIG_BOARD_I2C_SLAVE_ADDR) {
+					if (tx_index < tx_end)
+						STM32_I2C_DR(port) =
+							host_buffer[tx_index++];
+					else
+						STM32_I2C_DR(port) = 0xec;
+				}
+#endif
 			} else {
 				STM32_I2C_DR(port) = 0xec;
 			}
