@@ -39,6 +39,30 @@
       },
       "revId": "a100bef5b3ad874cf3ef3e6931e04c7ac1a3fe94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe13a9bc_ae3d4f4c",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-05-25T22:51:59Z",
+      "side": 1,
+      "message": "#2 is obsolete. 5/28 google schematics and spreadsheet say GPIOA7.",
+      "parentUuid": "31e5b061_219dd3bc",
+      "range": {
+        "startLine": 74,
+        "startChar": 37,
+        "endLine": 74,
+        "endChar": 46
+      },
+      "revId": "a100bef5b3ad874cf3ef3e6931e04c7ac1a3fe94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
