@@ -22,6 +22,30 @@
       },
       "revId": "c76358c6b92b3101f23f3919a0cc8c8797852bc2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69881edd_5d290e04",
+        "filename": "baseboard/mancomb/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-25T17:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d78ac47d_3712defd",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 11
+      },
+      "revId": "c76358c6b92b3101f23f3919a0cc8c8797852bc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
