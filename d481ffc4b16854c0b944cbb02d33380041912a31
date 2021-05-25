@@ -52,6 +52,24 @@
       "parentUuid": "d016bc87_8d75b9d7",
       "revId": "d481ffc4b16854c0b944cbb02d33380041912a31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a594337_cf3c2a53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-25T15:54:13Z",
+      "side": 1,
+      "message": "Does dock hot-plug work as well?  If so, I\u0027ll +2 so we can get this in while I work on the asynchrounous mux calls",
+      "parentUuid": "31c99c53_b5b03a40",
+      "revId": "d481ffc4b16854c0b944cbb02d33380041912a31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
