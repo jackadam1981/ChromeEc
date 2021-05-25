@@ -22,6 +22,30 @@
       },
       "revId": "6a402d5c77573ec88a605445b5effd967251a61c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c406db60_f73e9756",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-05-25T22:43:33Z",
+      "side": 1,
+      "message": "gerrit obviously parses it as you can click through and\npresubmit didn\u0027t complain either.\nnice thing is that you (hopefully) don\u0027t have to re-upload\nwith the assigned patch number. i just wish semantics were\nbetter when cherry picking to branches.\n\ni\u0027m willing to give it a try 😊",
+      "parentUuid": "d360dfb5_f1091ee4",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 52
+      },
+      "revId": "6a402d5c77573ec88a605445b5effd967251a61c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
