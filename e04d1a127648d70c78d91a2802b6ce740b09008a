@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2aea91af_8d1dc432",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-25T17:59:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "706b08d2_df8a0558",
+      "range": {
+        "startLine": 10,
+        "startChar": 43,
+        "endLine": 10,
+        "endChar": 49
+      },
+      "revId": "e04d1a127648d70c78d91a2802b6ce740b09008a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8e70129_e6e26b72",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-05-25T17:19:54Z",
       "side": 1,
       "message": "Is RISC-V unique in this respect? If so, perhaps we should change it.",
+      "revId": "e04d1a127648d70c78d91a2802b6ce740b09008a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e55eb5a4_83bbb03e",
+        "filename": "zephyr/linker/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-25T17:59:28Z",
+      "side": 1,
+      "message": "ROM_START: This option is currently only available on ARM Cortex-M, ARM Cortex-R, x86, ARC, and openisa_rv32m1.\n\nI am going to abandon this and have ITE either make an ITE specific linker script change or add the section generically to RISC-V",
+      "parentUuid": "e8e70129_e6e26b72",
       "revId": "e04d1a127648d70c78d91a2802b6ce740b09008a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
