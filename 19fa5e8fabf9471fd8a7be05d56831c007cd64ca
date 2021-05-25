@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9fdaf55_0f130692",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-05-25T00:18:30Z",
+      "side": 1,
+      "message": "2 part question. will parsing garbage return a value of 0?\nis a timeout value of 0 legit?\n\nP.S. would it be useful to map a user requested timeout of 0\nto EC_HOST_SLEEP_TIMEOUT_INFINITE?",
+      "range": {
+        "startLine": 216,
+        "startChar": 31,
+        "endLine": 216,
+        "endChar": 34
+      },
+      "revId": "19fa5e8fabf9471fd8a7be05d56831c007cd64ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb0a0a7_02d5a400",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-05-25T00:18:30Z",
+      "side": 1,
+      "message": "should we conditionally include this command?\nlots of commands get #ifdef\u0027d due to space constraints on\nmany boards.\n\nprobably default to off, enable on brya or if\nBRINGUP is defined.",
+      "revId": "19fa5e8fabf9471fd8a7be05d56831c007cd64ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
