@@ -46,6 +46,30 @@
       },
       "revId": "5bd7f9db4a51b995810894e72ebd218077a5059a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0624900_cdf862e2",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1264388
+      },
+      "writtenOn": "2021-05-25T01:49:49Z",
+      "side": 0,
+      "message": "The original code blcok has the assupmtion that the host will start any Peripheral Channel transaction when channel ready bit and channel support are both set.\nIf the host can follow it, the order should be fine.\nBut if the host cannot follow it, is better to swap the order.",
+      "parentUuid": "adceff10_aae222eb",
+      "range": {
+        "startLine": 416,
+        "startChar": 2,
+        "endLine": 416,
+        "endChar": 51
+      },
+      "revId": "5bd7f9db4a51b995810894e72ebd218077a5059a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
