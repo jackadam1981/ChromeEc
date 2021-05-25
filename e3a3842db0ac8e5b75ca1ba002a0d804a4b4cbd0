@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d180c9eb_b6d0dbd2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-25T16:56:50Z",
+      "side": 1,
+      "message": "Looking at enabling the CROS_SYSTEM_NPCX, if that\u0027s the path of least resistance for now I\u0027m OK with just enabling it and trying to fix this later.",
+      "parentUuid": "38db3b57_c10c5cce",
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3828ba7_77eb824a",
