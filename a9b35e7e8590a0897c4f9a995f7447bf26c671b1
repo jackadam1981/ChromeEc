@@ -134,6 +134,30 @@
       },
       "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b97670_f72fb2f6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6353,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-05-25T18:20:28Z",
+      "side": 1,
+      "message": "\u003e Yes, we shouldn\u0027t be receiving SOP\u0027 messages here unless we hit a narrow timing window of receiving something before this state\u0027s entry runs.  I think my general reasoning for using the SOP* of the incoming message is mostly that it\u0027s the behavior we should be doing from most states on non-interruptible AMS interruption and there\u0027s every chance this statement could be copy/pasted elsewhere in the future. \n\u003e \n\u003e We are enabling SOP\u0027 on our way out (and exit runs before entry), so a soft reset on SOP\u0027 should go alright, in the sense that we can send the reset and receive the Accept and carry on from there.\n\nAck.\n\n\u003e I\u0027m not sure what will happen if it\u0027s actually the partner sending SOP\u0027 because that means there would potentially be three of us in the SOP\u0027 conversation at once.  There\u0027s a Cable Plug field in the message header that indicates whether the partner or cable plug sent the message, but there are no specific guidelines given for what to do on a mismatch (unlike data role which requires Type-C error recovery on mismatch, and power role which explicitly says to not use it for verification).\n\nThings the port partner could do, off the top of my head:\n* Don\u0027t check Cable Plug, reply with Accept: Protocol Error on our end after the Soft Reset is done (from whichever Accept arrives second). This will happen while sending or waiting for capabilities, which I think should cause us to initiate another Soft Reset (although it looks like we will actually ignore an unexpected message in pe_snk_wait_for_capabilities_run?). If both sides keep responding to SOP\u0027, this could create an infinite loop.\n* Do check Cable Plug, consider it a protocol error, send Soft Reset: We\u0027ll Hard Reset. If the port partner\u0027s Soft Reset arrives after the cable plug\u0027s Accept, I think this devolves into something like the previous case.\n* Do check Cable Plug, perform Cable Reset: I don\u0027t think this would be compliant. But if the Cable Reset takes effect before the Accept goes out, it would probably lead to a failed Soft Reset and devolve to one of the previous cases.\n* Do check Cable Plug, perform Hard Reset: We\u0027ll Hard Reset.\n* Do check Cable plug, ignore: The partner will be out of sync with the cable, but it would have been anyway after the VCONN Swap. Partner may treat the lack of response to its unexpected message as a protocol error, which could lead to a subsequent SOP\u0027 Soft Reset per second case.\n* Do check Cable plug, silently perform soft reset: Partner ends up in sync with cable. I think this could devolve to the previous case WRT lack of response. This would be too smart by half, IMO. I hope no one is implementing this.\n\nI don\u0027t know if that points towards a clear solution. It seems like no matter what we do, we\u0027re heading for a bad scenario and really just hoping this never happens.",
+      "parentUuid": "e30a7d60_38d9a374",
+      "range": {
+        "startLine": 6347,
+        "startChar": 3,
+        "endLine": 6353,
+        "endChar": 45
+      },
+      "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
