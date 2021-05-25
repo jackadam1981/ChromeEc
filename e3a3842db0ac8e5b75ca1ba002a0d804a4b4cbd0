@@ -34,6 +34,23 @@
       "parentUuid": "8cd06a3d_671dee9a",
       "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3828ba7_77eb824a",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-05-25T08:30:50Z",
+      "side": 1,
+      "message": "The third parameter of gpio_pin_set() is used for GPIO level. The related flag, GPIO_OUTPUT_LOW, will be configured properly in init_gpios() if they are the phandles of named-gpios node. (Please refer https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/shim/src/gpio.c#275)\n \nCould you add these pins into named-gpios node with GPIO_OUTPUT_LOW flag? Then, I suggest using the original gpio utility, gpio_set_level(), to set the current level of LED GPIOs.",
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
