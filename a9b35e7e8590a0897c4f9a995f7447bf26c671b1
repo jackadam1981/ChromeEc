@@ -158,6 +158,30 @@
       },
       "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f482767_e1d8135d",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6353,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-25T21:22:44Z",
+      "side": 1,
+      "message": "\u003e Don\u0027t check Cable Plug, reply with Accept\n\nI would guess this is the most likely thing to happen.  If everyone soft resets correctly we\u0027d actually ignore the second Accept, because msgid resets on soft reset, thus both Accepts should have msgid of 0.  So I think we\u0027re relatively safe here. Note a SOP\u0027 soft reset shouldn\u0027t go back to an explicit contract negotiation. \n\n\u003e I don\u0027t know if that points towards a clear solution. It seems like no matter what we do, we\u0027re heading for a bad scenario and really just hoping this never happens.\n\nYeah, I\u0027d say that\u0027s a valid perspective on this.  A hard reset seems like the most reasonable reaction to a mismatch of Cable Plug, but I don\u0027t know that this CL should be re-determining spec behavior.  We\u0027re doing our \"Table 6-63 Response to an incoming Message (except VDM)\" duty for the moment at least and hoping that if it\u0027s a stray SOP\u0027 message it didn\u0027t come from an overexcited port partner.",
+      "parentUuid": "08b97670_f72fb2f6",
+      "range": {
+        "startLine": 6347,
+        "startChar": 3,
+        "endLine": 6353,
+        "endChar": 45
+      },
+      "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
