@@ -124,6 +124,24 @@
       "parentUuid": "69271b75_98a44e03",
       "revId": "6ce8f8e4bfc1aabc7e31c71f2d18c50652c681df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b2b039f_79f12995",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-05-25T16:46:21Z",
+      "side": 1,
+      "message": "* (TCPMv2) Enable logging of CCD line state CCD_MODE_ODL.\n\t *\n\t * DisplayPort Alternate mode requires that the SBU lines are used for \n\t * AUX communication. \n\t * However, in Chromebooks SBU signals are repurposed as USB2 signals\n\t * for CCD. This functionality is accomplished by override fets whose \n         * state is controlled by CCD_MODE_ODL. \n\t * \n\t * This condition helps in debugging unexpected AUX timeout issues by\n\t * indicating the state of the CCD override fets.",
+      "parentUuid": "cb501b19_47506d66",
+      "revId": "6ce8f8e4bfc1aabc7e31c71f2d18c50652c681df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
