@@ -16,6 +16,24 @@
       "message": "Mulin, would you be able to take a look at this? I\u0027m not able to get things working on the brya board. This change is a mash-up of two attempts to give you as much detail as possible. These 3 changes are based on-top of your 3 PRs for the npcx9.\n\nIn ec_app_main.c I tried turning on the 3 LEDs. I\u0027m fairly certain that these are the correct pins but I might be wrong. I also tried BIT(2), BIT(3), and BIT(4) in case I mis-understood the pin numbering.\n\nI also tried to set up the shell subsystem, but even though it seems to me that the uart1 is configured correctly, I\u0027m not able to get a working shell.\n\nAny input would be greatly appreciated.",
       "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e6b4a78_9a6ef2da",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-05-25T06:58:20Z",
+      "side": 1,
+      "message": "Got it. We will take a look at it. Any update will inform you ASAP.",
+      "parentUuid": "8cd06a3d_671dee9a",
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
