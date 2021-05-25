@@ -855,7 +855,7 @@ static void i2c_process_board_command(int read, int addr, int len)
 static void i2c_event_handler(int port)
 {
 	volatile uint32_t i2c_cr1;
-	volatile uint32_t i2c_sr2;
+	static volatile uint32_t i2c_sr2;
 	volatile uint32_t i2c_sr1;
 	static int rx_pending, buf_idx;
 	static uint16_t addr;
@@ -863,7 +863,6 @@ static void i2c_event_handler(int port)
 	volatile uint32_t dummy __attribute__((unused));
 
 	i2c_cr1 = STM32_I2C_CR1(port);
-	i2c_sr2 = STM32_I2C_SR2(port);
 	i2c_sr1 = STM32_I2C_SR1(port);
 
 	/*
@@ -881,34 +880,6 @@ static void i2c_event_handler(int port)
 					 STM32_I2C_SR1_BERR);
 	}
 
-	/* Transfer matched our slave address */
-	if (i2c_sr1 & STM32_I2C_SR1_ADDR) {
-		addr = ((i2c_sr2 & STM32_I2C_SR2_DUALF) ?
-			STM32_I2C_OAR2(port) : STM32_I2C_OAR1(port)) & 0xfe;
-		if (i2c_sr2 & STM32_I2C_SR2_TRA) {
-			/* Transmitter slave */
-			i2c_sr1 |= STM32_I2C_SR1_TXE;
-#ifdef CONFIG_BOARD_I2C_SLAVE_ADDR
-			if (!rx_pending && !tx_pending) {
-				tx_pending = 1;
-				i2c_process_board_command(1, addr, 0);
-			}
-#endif
-		} else {
-			/* Receiver slave */
-			buf_idx = 0;
-			rx_pending = 1;
-		}
-
-		/* Enable buffer interrupt to start receive/response */
-		STM32_I2C_CR2(port) |= STM32_I2C_CR2_ITBUFEN;
-		/* Clear ADDR bit */
-		dummy = STM32_I2C_SR1(port);
-		dummy = STM32_I2C_SR2(port);
-		/* Inhibit stop mode when addressed until STOPF flag is set */
-		disable_sleep(SLEEP_MASK_I2C_SLAVE);
-	}
-
 	/* I2C in slave transmitter */
 	if (i2c_sr2 & STM32_I2C_SR2_TRA) {
 		if (i2c_sr1 & (STM32_I2C_SR1_BTF | STM32_I2C_SR1_TXE)) {
@@ -922,29 +893,6 @@ static void i2c_event_handler(int port)
 					tx_end = 0;
 					tx_pending = 0;
 				}
-			} else if (rx_pending) {
-				host_i2c_resp_port = port;
-				/* Disable buffer interrupt */
-				STM32_I2C_CR2(port) &= ~STM32_I2C_CR2_ITBUFEN;
-#ifdef CONFIG_BOARD_I2C_SLAVE_ADDR
-				if (addr == CONFIG_BOARD_I2C_SLAVE_ADDR)
-					i2c_process_board_command(1, addr,
-								  buf_idx);
-				else
-#endif
-					i2c_process_command();
-				/* Reset host buffer */
-				rx_pending = 0;
-				tx_pending = 1;
-#ifdef CONFIG_BOARD_I2C_SLAVE_ADDR
-				if (addr == CONFIG_BOARD_I2C_SLAVE_ADDR) {
-					if (tx_index < tx_end)
-						STM32_I2C_DR(port) =
-							host_buffer[tx_index++];
-					else
-						STM32_I2C_DR(port) = 0xec;
-				}
-#endif
 			} else {
 				STM32_I2C_DR(port) = 0xec;
 			}
@@ -976,6 +924,58 @@ static void i2c_event_handler(int port)
 		enable_sleep(SLEEP_MASK_I2C_SLAVE);
 	}
 
+	/* Transfer matched our slave address */
+	if (i2c_sr1 & STM32_I2C_SR1_ADDR) {
+		/* Enable buffer interrupt to start receive/response */
+		STM32_I2C_CR2(port) |= STM32_I2C_CR2_ITBUFEN;
+		i2c_sr2 = STM32_I2C_SR2(port); /* also erases ADDR bit */
+		addr = ((i2c_sr2 & STM32_I2C_SR2_DUALF) ?
+			STM32_I2C_OAR2(port) : STM32_I2C_OAR1(port)) & 0xfe;
+		if (i2c_sr2 & STM32_I2C_SR2_TRA) {
+			/* Transmitter slave */
+			if (rx_pending) {
+				host_i2c_resp_port = port;
+				/* Disable buffer interrupt */
+				STM32_I2C_CR2(port) &= ~STM32_I2C_CR2_ITBUFEN;
+#ifdef CONFIG_BOARD_I2C_SLAVE_ADDR
+				if (addr == CONFIG_BOARD_I2C_SLAVE_ADDR)
+					i2c_process_board_command(1, addr,
+								  buf_idx);
+				else
+#endif
+					i2c_process_command();
+				/* Reset host buffer */
+				rx_pending = 0;
+				tx_pending = 1;
+			}
+#ifdef CONFIG_BOARD_I2C_SLAVE_ADDR
+			if (!rx_pending && !tx_pending) {
+				tx_pending = 1;
+				i2c_process_board_command(1, addr, 0);
+			}
+#endif
+		} else {
+			/* Receiver slave */
+			buf_idx = 0;
+			rx_pending = 1;
+		}
+		/* Should send the first byte! */
+#ifdef CONFIG_BOARD_I2C_SLAVE_ADDR
+		if (tx_pending && addr == CONFIG_BOARD_I2C_SLAVE_ADDR) {
+			if (tx_index < tx_end) {
+				STM32_I2C_DR(port) =
+					host_buffer[tx_index++];
+			} else {
+				STM32_I2C_DR(port) = 0xec;
+				tx_index = 0;
+				tx_end = 0;
+				tx_pending = 0;
+			}
+		}
+#endif
+		/* Inhibit stop mode when addressed until STOPF flag is set */
+		disable_sleep(SLEEP_MASK_I2C_SLAVE);
+	}
 	/* Enable again */
 	if (!(i2c_cr1 & STM32_I2C_CR1_PE))
 		STM32_I2C_CR1(port) |= STM32_I2C_CR1_PE;
