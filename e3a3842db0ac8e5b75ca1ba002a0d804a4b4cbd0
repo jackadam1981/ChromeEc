@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "736c8444_043faff5",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-25T16:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3828ba7_77eb824a",
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8a3f68e1_54639167",
@@ -83,6 +101,30 @@
       "writtenOn": "2021-05-25T09:16:38Z",
       "side": 1,
       "message": "NPCX9M3F",
+      "range": {
+        "startLine": 44,
+        "startChar": 20,
+        "endLine": 44,
+        "endChar": 28
+      },
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e23a9c_e75905e5",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-25T16:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8a3f68e1_54639167",
       "range": {
         "startLine": 44,
         "startChar": 20,
@@ -116,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ebe5ad3_40de3d3b",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-25T16:38:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "397a072e_27f143ae",
+      "range": {
+        "startLine": 45,
+        "startChar": 35,
+        "endLine": 45,
+        "endChar": 45
+      },
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d1616ea_c10eea4f",
@@ -129,6 +195,30 @@
       "writtenOn": "2021-05-25T09:16:38Z",
       "side": 1,
       "message": "0x0000f800",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46b2fad_441b5c72",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-25T16:38:21Z",
+      "side": 1,
+      "message": "DATA_RAM_SIZE too? I tried both and didn\u0027t notice a difference.",
+      "parentUuid": "4d1616ea_c10eea4f",
       "range": {
         "startLine": 48,
         "startChar": 24,
