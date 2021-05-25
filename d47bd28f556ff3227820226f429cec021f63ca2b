@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cad931a6_d4e6c9f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-05-25T20:01:31Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "e12e4e34_9fa7062f",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "d47bd28f556ff3227820226f429cec021f63ca2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5efd498e_f2d2a149",
@@ -78,6 +102,30 @@
       "writtenOn": "2021-05-25T15:42:22Z",
       "side": 1,
       "message": "nit: tab.",
+      "range": {
+        "startLine": 1161,
+        "startChar": 0,
+        "endLine": 1161,
+        "endChar": 4
+      },
+      "revId": "d47bd28f556ff3227820226f429cec021f63ca2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51038af6_b7f57f16",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-05-25T20:01:31Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "1cd48f1d_83ea7be5",
       "range": {
         "startLine": 1161,
         "startChar": 0,
