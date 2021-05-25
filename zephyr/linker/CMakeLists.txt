@@ -3,7 +3,12 @@
 # found in the LICENSE file.
 
 # Add the fixed sections to the output image.
-zephyr_linker_sources(ROM_START SORT_KEY 1 fixed-sections.ld)
+# NOTE: ROM_START is currently not available for RISCV
+if (DEFINED CONFIG_SOC_FAMILY_RISCV_ITE)
+  zephyr_linker_sources(RODATA SORT_KEY 1 fixed-sections.ld)
+else()
+  zephyr_linker_sources(ROM_START SORT_KEY 1 fixed-sections.ld)
+endif()
 
 # Support protection of part of the internal RAM
 zephyr_linker_sources(RWDATA SORT_KEY 1 iram_text.ld)
