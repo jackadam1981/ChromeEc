@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38db3b57_c10c5cce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-05-25T09:36:59Z",
+      "side": 1,
+      "message": "After removing the contain in bbram_npcx_init(), we can see the uart output. The CROS_SYSTEM is disabled in project setting. Maybe we need to add another dependency checking for cros BBRAM or directly fix it in bbram_npcx_init().",
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3828ba7_77eb824a",
