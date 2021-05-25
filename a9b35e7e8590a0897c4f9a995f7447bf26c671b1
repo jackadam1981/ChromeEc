@@ -110,6 +110,30 @@
       },
       "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30a7d60_38d9a374",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6353,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-25T17:36:42Z",
+      "side": 1,
+      "message": "Yes, we shouldn\u0027t be receiving SOP\u0027 messages here unless we hit a narrow timing window of receiving something before this state\u0027s entry runs.  I think my general reasoning for using the SOP* of the incoming message is mostly that it\u0027s the behavior we should be doing from most states on non-interruptible AMS interruption and there\u0027s every chance this statement could be copy/pasted elsewhere in the future. \n\nWe are enabling SOP\u0027 on our way out (and exit runs before entry), so a soft reset on SOP\u0027 should go alright, in the sense that we can send the reset and receive the Accept and carry on from there.  \n\nI\u0027m not sure what will happen if it\u0027s actually the partner sending SOP\u0027 because that means there would potentially be three of us in the SOP\u0027 conversation at once.  There\u0027s a Cable Plug field in the message header that indicates whether the partner or cable plug sent the message, but there are no specific guidelines given for what to do on a mismatch (unlike data role which requires Type-C error recovery on mismatch, and power role which explicitly says to not use it for verification).",
+      "parentUuid": "7e3f8d55_7c7e7ab2",
+      "range": {
+        "startLine": 6347,
+        "startChar": 3,
+        "endLine": 6353,
+        "endChar": 45
+      },
+      "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
