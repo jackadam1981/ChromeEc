@@ -106,6 +106,24 @@
       "parentUuid": "69fc6f2c_492e1dda",
       "revId": "6ce8f8e4bfc1aabc7e31c71f2d18c50652c681df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb501b19_47506d66",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-25T02:29:22Z",
+      "side": 1,
+      "message": "I\u0027d add somewhere that \"DisplayPort Alternate mode requires that the SBU lines are used for AUX communication. However, when we are using CCD, it\u0027s impossible for AUX communication to occur since the path is isolated and in use by CCD.\"",
+      "parentUuid": "69271b75_98a44e03",
+      "revId": "6ce8f8e4bfc1aabc7e31c71f2d18c50652c681df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
