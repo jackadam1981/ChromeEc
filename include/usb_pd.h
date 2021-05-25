@@ -334,22 +334,12 @@ struct svid_mode_data {
 	enum pd_discovery_state discovery;
 };
 
-struct svdm_amode_fx {
-	uint16_t svid;
-	int (*enter)(int port, uint32_t mode_caps);
-	int (*status)(int port, uint32_t *payload);
-	int (*config)(int port, uint32_t *payload);
-	void (*post_config)(int port);
-	int (*attention)(int port, uint32_t *payload);
-	void (*exit)(int port);
-};
-
 /* defined in <board>/usb_pd_policy.c */
 /* All UFP_U should have */
 extern const struct svdm_response svdm_rsp;
 /* All DFP_U should have */
-extern const struct svdm_amode_fx supported_modes[];
-extern const int supported_modes_cnt;
+extern const uint16_t supported_svids[];
+extern const int supported_svids_cnt;
 
 /* 4 entry rw_hash table of type-C devices that AP has firmware updates for. */
 #ifdef CONFIG_COMMON_RUNTIME
@@ -368,7 +358,6 @@ extern uint64_t svdm_hpd_deadline[];
 
 /* DFP data needed to support alternate mode entry and exit */
 struct svdm_amode_data {
-	const struct svdm_amode_fx *fx;
 	/* VDM object position */
 	int opos;
 	/* mode capabilities specific to SVID amode. */
@@ -670,112 +659,11 @@ struct pd_cable {
  */
 #define VDO_MODE_CNT_DISPLAYPORT 1
 
-/*
- * DisplayPort modes capabilities
- * -------------------------------
- * <31:24> : SBZ
- * <23:16> : UFP_D pin assignment supported
- * <15:8>  : DFP_D pin assignment supported
- * <7>     : USB 2.0 signaling (0b=yes, 1b=no)
- * <6>     : Plug | Receptacle (0b == plug, 1b == receptacle)
- * <5:2>   : xxx1: Supports DPv1.3, xx1x Supports USB Gen 2 signaling
- *           Other bits are reserved.
- * <1:0>   : signal direction ( 00b=rsv, 01b=sink, 10b=src 11b=both )
- */
-#define VDO_MODE_DP(snkp, srcp, usb, gdr, sign, sdir)			\
-	(((snkp) & 0xff) << 16 | ((srcp) & 0xff) << 8			\
-	 | ((usb) & 1) << 7 | ((gdr) & 1) << 6 | ((sign) & 0xF) << 2	\
-	 | ((sdir) & 0x3))
-
-#define MODE_DP_DFP_PIN_SHIFT 8
-#define MODE_DP_UFP_PIN_SHIFT 16
-
-/* Pin configs B/D/F support multi-function */
-#define MODE_DP_PIN_MF_MASK 0x2a
-/* Pin configs A/B support BR2 signaling levels */
-#define MODE_DP_PIN_BR2_MASK 0x3
-/* Pin configs C/D/E/F support DP signaling levels */
-#define MODE_DP_PIN_DP_MASK 0x3c
-/* Pin configs A/B/C/D/E/F */
-#define MODE_DP_PIN_CAPS_MASK 0x3f
-
-#define MODE_DP_V13  0x1
-#define MODE_DP_GEN2 0x2
-
-#define MODE_DP_SNK  0x1
-#define MODE_DP_SRC  0x2
-#define MODE_DP_BOTH 0x3
-
-#define MODE_DP_CABLE_SHIFT 6
-
-/*
- * Determine which pin assignments are valid for DP
- *
- * Based on whether the DP adapter identifies itself as a plug (permanently
- * attached cable) or a receptacle, the pin assignments may be in the DFP_D
- * field or the UFP_D field.
- *
- * Refer to DisplayPort Alt Mode On USB Type-C Standard version 1.0, table 5-2
- * depending on state of receptacle bit, use pins for DFP_D (if receptacle==0)
- * or UFP_D (if receptacle==1)
- * Also refer to DisplayPort Alt Mode Capabilities Clarification (4/30/2015)
- */
-#define PD_DP_PIN_CAPS(x) ((((x) >> MODE_DP_CABLE_SHIFT) & 0x1) \
-	? (((x) >> MODE_DP_UFP_PIN_SHIFT) & MODE_DP_PIN_CAPS_MASK) \
-	: (((x) >> MODE_DP_DFP_PIN_SHIFT) & MODE_DP_PIN_CAPS_MASK))
-
-/*
- * DisplayPort Status VDO
- * ----------------------
- * <31:9> : SBZ
- * <8>    : IRQ_HPD : 1 == irq arrived since last message otherwise 0.
- * <7>    : HPD state : 0 = HPD_LOW, 1 == HPD_HIGH
- * <6>    : Exit DP Alt mode: 0 == maintain, 1 == exit
- * <5>    : USB config : 0 == maintain current, 1 == switch to USB from DP
- * <4>    : Multi-function preference : 0 == no pref, 1 == MF preferred.
- * <3>    : enabled : is DPout on/off.
- * <2>    : power low : 0 == normal or LPM disabled, 1 == DP disabled for LPM
- * <1:0>  : connect status : 00b ==  no (DFP|UFP)_D is connected or disabled.
- *          01b == DFP_D connected, 10b == UFP_D connected, 11b == both.
- */
-#define VDO_DP_STATUS(irq, lvl, amode, usbc, mf, en, lp, conn)		\
-	(((irq) & 1) << 8 | ((lvl) & 1) << 7 | ((amode) & 1) << 6	\
-	 | ((usbc) & 1) << 5 | ((mf) & 1) << 4 | ((en) & 1) << 3	\
-	 | ((lp) & 1) << 2 | ((conn & 0x3) << 0))
-
-#define PD_VDO_DPSTS_MF_MASK BIT(4)
-
-#define PD_VDO_DPSTS_HPD_IRQ(x) (((x) >> 8) & 1)
-#define PD_VDO_DPSTS_HPD_LVL(x) (((x) >> 7) & 1)
-#define PD_VDO_DPSTS_MF_PREF(x) (((x) >> 4) & 1)
-
 /* Per DisplayPort Spec v1.3 Section 3.3 */
 #define HPD_USTREAM_DEBOUNCE_LVL (2*MSEC)
 #define HPD_USTREAM_DEBOUNCE_IRQ (250)
 #define HPD_DSTREAM_DEBOUNCE_IRQ (500)  /* between 500-1000us */
 
-/*
- * DisplayPort Configure VDO
- * -------------------------
- * <31:24> : SBZ
- * <23:16> : SBZ
- * <15:8>  : Pin assignment requested.  Choose one from mode caps.
- * <7:6>   : SBZ
- * <5:2>   : signalling : 1h == DP v1.3, 2h == Gen 2
- *           Oh is only for USB, remaining values are reserved
- * <1:0>   : cfg : 00 == USB, 01 == DFP_D, 10 == UFP_D, 11 == reserved
- */
-#define VDO_DP_CFG(pin, sig, cfg) \
-	(((pin) & 0xff) << 8 | ((sig) & 0xf) << 2 | ((cfg) & 0x3))
-
-#define PD_DP_CFG_DPON(x) (((x & 0x3) == 1) || ((x & 0x3) == 2))
-/*
- * Get the pin assignment mask
- * for backward compatibility, if it is null,
- * get the former sink pin assignment we used to be in <23:16>.
- */
-#define PD_DP_CFG_PIN(x) ((((x) >> 8) & 0xff) ? (((x) >> 8) & 0xff) \
-					      : (((x) >> 16) & 0xff))
 /*
  * ChromeOS specific PD device Hardware IDs. Used to identify unique
  * products and used in VDO_INFO. Note this field is 10 bits.
@@ -3168,16 +3056,14 @@ int svdm_get_hpd_gpio(int port);
 __override_proto void svdm_safe_dp_mode(int port);
 
 /**
- * Enter DisplayPort Alternate Mode.
- *
- * The default implementation will only enter DP Alt Mode if the SoC is on.
- * Also, it may notify the AP that the mode was entered.
+ * Construct enter DisplayPort Alternate Mode vdo
  *
  * @param port The PD port number
- * @param mode_caps Bitmask indicating DisplayPort mode capabilities
+ * @param payload Pointer to the PDO payload which is filled with DP enter mode
+ *                VDO information.
  * @return 0 if mode is entered, -1 otherwise.
  */
-__override_proto int svdm_enter_dp_mode(int port, uint32_t mode_caps);
+__override_proto int svdm_enter_dp_mode(int port, uint32_t *payload);
 
 /**
  * Construct a DP status response.
@@ -3219,102 +3105,6 @@ __override_proto void svdm_dp_post_config(int port);
  * @return 0 for NAK, 1 for ACK
  */
 __override_proto int svdm_dp_attention(int port, uint32_t *payload);
-
-/**
- * Exit DisplayPort Alternate Mode.
- *
- * @param port The PD port number
- */
-__override_proto void svdm_exit_dp_mode(int port);
-
-/* Google Firmware Update Alternate Mode */
-/**
- * Enter Google Firmware Update (GFU) Mode.
- *
- * @param port The PD port number
- * @param mode_caps Unused for GFU
- * @return 0 to enter the mode, -1 otherwise
- */
-__override_proto int svdm_enter_gfu_mode(int port, uint32_t mode_caps);
-
-/**
- * Exit Google Firmware Update Mode.
- *
- * @param port The PD port number
- */
-__override_proto void svdm_exit_gfu_mode(int port);
-
-/**
- * Called after successful entry into GFU Mode
- *
- * The default implementation sends VDO_CMD_READ_INFO.
- * @param port The PD port number
- * @param payload Unused for GFU
- * @return The number of VDOs
- */
-__override_proto int svdm_gfu_status(int port, uint32_t *payload);
-
-/**
- * Configure any pins needed for GFU Mode
- *
- * @param port The PD port number
- * @param payload Unused for GFU
- * @return The number of VDOs
- */
-__override_proto int svdm_gfu_config(int port, uint32_t *payload);
-
-/**
- * Called when an Attention Message is received
- *
- * @param port The PD port number
- * @param payload Unusued for GFU
- * @return The number of VDOs
- */
-__override_proto int svdm_gfu_attention(int port, uint32_t *payload);
-
-/* Thunderbolt-compatible Alternate Mode */
-/**
- * Enter Thunderbolt-compatible Mode.
- *
- * @param port The PD port number
- * @param mode_caps Unused
- * @return 0 on success else -1
- */
-__override_proto int svdm_tbt_compat_enter_mode(int port, uint32_t mode_caps);
-
-/**
- * Exit Thunderbolt-compatible Mode.
- *
- * @param port The PD port number
- */
-__override_proto void svdm_tbt_compat_exit_mode(int port);
-
-/**
- * Called to get Thunderbolt-compatible mode status
- *
- * @param port The PD port number
- * @param payload Unused
- * @return 0 on success else -1
- */
-__override_proto int svdm_tbt_compat_status(int port, uint32_t *payload);
-
-/**
- * Called to configure Thunderbolt-compatible mode
- *
- * @param port The PD port number
- * @param payload Unused
- * @return 0 on success else -1
- */
-__override_proto int svdm_tbt_compat_config(int port, uint32_t *payload);
-
-/**
- * Called when Thunderbolt-compatible Attention Message is received
- *
- * @param port The PD port number
- * @param payload Unusued
- * @return 0 on success else -1
- */
-__override_proto int svdm_tbt_compat_attention(int port, uint32_t *payload);
 
 /* Miscellaneous */
 

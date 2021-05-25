@@ -69,7 +69,7 @@ static void dump_pe(int port)
 		if (modep) {
 			mode_caps = modep->data->mode_vdo[modep->opos - 1];
 			ccprintf("MODE[%d]: svid:%04x caps:%08x\n", modep->opos,
-				 modep->fx->svid, mode_caps);
+				 modep->data->svid, mode_caps);
 		}
 	}
 }

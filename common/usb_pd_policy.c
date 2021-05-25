@@ -742,10 +742,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 				 * SVID.
 				 */
 				disable_tbt_compat_mode(port);
-				payload[0] = pd_dfp_enter_mode(
-					port, TCPC_TX_SOP, 0, 0);
-				if (payload[0])
-					rsize = 1;
+				rsize = svdm_enter_dp_mode(port, payload);
 			}
 			break;
 		case CMD_ENTER_MODE:
@@ -764,8 +761,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 							  0);
 
 				if (modep->opos) {
-					rsize = modep->fx->status(port,
-								  payload);
+					rsize = svdm_dp_status(port, payload);
 					payload[0] |= PD_VDO_OPOS(modep->opos);
 				}
 			}
@@ -775,13 +771,13 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 			   payload */
 			dfp_consume_attention(port, payload);
 			if (modep && modep->opos)
-				rsize = modep->fx->config(port, payload);
+				rsize = svdm_dp_config(port, payload);
 			else
 				rsize = 0;
 			break;
 		case CMD_DP_CONFIG:
-			if (modep && modep->opos && modep->fx->post_config)
-				modep->fx->post_config(port);
+			if (modep && modep->opos)
+				svdm_dp_post_config(port);
 			/* no response after DFPs ack */
 			rsize = 0;
 			break;

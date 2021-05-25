@@ -2381,17 +2381,17 @@ __maybe_unused static void exit_supported_alt_mode(int port)
 	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 		return;
 
-	for (i = 0; i < supported_modes_cnt; i++) {
+	for (i = 0; i < supported_svids_cnt; i++) {
 		int opos = pd_alt_mode(port, TCPC_TX_SOP,
-				supported_modes[i].svid);
+				supported_svids[i]);
 
 		if (opos > 0 &&
 		    pd_dfp_exit_mode(
-			    port, TCPC_TX_SOP, supported_modes[i].svid, opos)) {
+			    port, TCPC_TX_SOP, supported_svids[i], opos)) {
 			CPRINTS("C%d Exiting ALT mode with SVID = 0x%x", port,
-				supported_modes[i].svid);
+				supported_svids[i]);
 			usb_mux_set_safe_mode(port);
-			pd_send_vdm(port, supported_modes[i].svid,
+			pd_send_vdm(port, supported_svids[i],
 				    CMD_EXIT_MODE | VDO_OPOS(opos), NULL, 0);
 			/* Wait for an ACK from port-partner */
 			pd_vdm_send_state_machine(port);

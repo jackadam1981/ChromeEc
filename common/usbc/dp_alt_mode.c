@@ -136,8 +136,8 @@ void dp_vdm_acked(int port, enum tcpm_transmit_type type, int vdo_count,
 		dp_state[port] = DP_STATUS_ACKED;
 		break;
 	case DP_STATUS_ACKED:
-		if (modep && modep->opos && modep->fx->post_config)
-			modep->fx->post_config(port);
+		if (modep && modep->opos)
+			svdm_dp_post_config(port);
 		dp_state[port] = DP_ACTIVE;
 		CPRINTS("C%d: Entered DP mode", port);
 		break;
@@ -220,14 +220,11 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 	case DP_START:
 	case DP_ENTER_RETRY:
 		/* Enter the first supported mode for DisplayPort. */
-		vdm[0] = pd_dfp_enter_mode(port, TCPC_TX_SOP,
-				USB_SID_DISPLAYPORT, 0);
-		if (vdm[0] == 0)
+		vdo_count_ret = svdm_enter_dp_mode(port, vdm);
+
+		if (vdo_count_ret == 0)
 			return -1;
-		/* CMDT_INIT is 0, so this is a no-op */
-		vdm[0] |= VDO_CMDT(CMDT_INIT);
-		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
-		vdo_count_ret = 1;
+
 		if (dp_state[port] == DP_START)
 			CPRINTS("C%d: Attempting to enter DP mode", port);
 		break;
@@ -235,22 +232,18 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		if (!(modep && modep->opos))
 			return -1;
 
-		vdo_count_ret = modep->fx->status(port, vdm);
+		vdo_count_ret = svdm_dp_status(port, vdm);
 		if (vdo_count_ret == 0)
 			return -1;
-		vdm[0] |= PD_VDO_OPOS(modep->opos);
-		vdm[0] |= VDO_CMDT(CMDT_INIT);
-		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
 		break;
 	case DP_STATUS_ACKED:
 		if (!(modep && modep->opos))
 			return -1;
 
-		vdo_count_ret = modep->fx->config(port, vdm);
+		vdo_count_ret = svdm_dp_config(port, vdm);
+
 		if (vdo_count_ret == 0)
 			return -1;
-		vdm[0] |= VDO_CMDT(CMDT_INIT);
-		vdm[0] |= VDO_SVDM_VERS(pd_get_vdo_ver(port, TCPC_TX_SOP));
 		break;
 	case DP_ENTER_NAKED:
 	case DP_ACTIVE:
