@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee4215fe_7567d5e6",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-26T16:20:26Z",
+      "side": 1,
+      "message": "No need to clear TXIS?",
+      "revId": "decf661d2f19a64004bab18d168577928fd1bccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
