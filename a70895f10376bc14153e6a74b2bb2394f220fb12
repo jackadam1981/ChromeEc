@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade182ff_5beee065",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-26T15:51:26Z",
+      "side": 1,
+      "message": "You should probably enable CONFIG_CROS_SYSTEM_NPCX but otherwise looks good.",
+      "revId": "a70895f10376bc14153e6a74b2bb2394f220fb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64f79569_533ffede",
