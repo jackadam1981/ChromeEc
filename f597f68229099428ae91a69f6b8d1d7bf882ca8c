@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544144ce_4e12aed9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-26T05:33:05Z",
+      "side": 1,
+      "message": "Your change doesn\u0027t compile on all boards:\n    \ncommon/usb_pd_alt_mode_dfp.c: In function \u0027svdm_enter_dp_mode\u0027:\ncommon/usb_pd_alt_mode_dfp.c:1172:22: error: \u0027GPIO_CCD_MODE_ODL\u0027 undeclared (first use in this function); did you mean \u0027GPIO_EC_I2C3_SDA\u0027?\n  if (!gpio_get_level(GPIO_CCD_MODE_ODL))\n                      ^~~~~~~~~~~~~~~~~\n                      GPIO_EC_I2C3_SDA\ncommon/usb_pd_alt_mode_dfp.c:1172:22: note: each undeclared identifier is reported only once for each function it appears in\ncommon/usb_pd_alt_mode_dfp.c: At top level:\ncc1: error: unrecognized command line option \u0027-Wno-address-of-packed-member\u0027 [-Werror]\ncc1: all warnings being treated as errors\nmake[2]: *** [Makefile.rules:572: build/baklava/RW/common/usb_pd_alt_mode_dfp.o] Error 1\nmake[1]: *** [Makefile.rules:251: proj-baklava] Error 2\n\n\nThe reason is that not every target in the EC that uses this module defines that GPIO..",
+      "revId": "f597f68229099428ae91a69f6b8d1d7bf882ca8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
