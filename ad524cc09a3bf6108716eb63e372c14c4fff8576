@@ -39,6 +39,30 @@
       },
       "revId": "ad524cc09a3bf6108716eb63e372c14c4fff8576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c733555_bf2e21fc",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5718,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-05-26T15:16:06Z",
+      "side": 1,
+      "message": "nevermind,  I mixed the two _ON_CHIP configs up",
+      "parentUuid": "a65b9b1e_51529c01",
+      "range": {
+        "startLine": 5718,
+        "startChar": 8,
+        "endLine": 5718,
+        "endChar": 34
+      },
+      "revId": "ad524cc09a3bf6108716eb63e372c14c4fff8576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
