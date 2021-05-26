@@ -46,6 +46,30 @@
       },
       "revId": "ffddb72095d7481f956b21866d250cc92686986c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c514168_e573e9aa",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-05-26T20:09:18Z",
+      "side": 1,
+      "message": "heh fair enough 😊 let\u0027s look into this on P2, I\u0027m curious when it triggers",
+      "parentUuid": "69129a66_98293122",
+      "range": {
+        "startLine": 66,
+        "startChar": 48,
+        "endLine": 66,
+        "endChar": 58
+      },
+      "revId": "ffddb72095d7481f956b21866d250cc92686986c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
