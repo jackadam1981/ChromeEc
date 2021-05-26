@@ -80,6 +80,30 @@
       },
       "revId": "28d7bac7a3704d764fd28800514efaeeadf0b5cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96eee066_086679db",
+        "filename": "chip/npcx/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-05-26T17:15:35Z",
+      "side": 1,
+      "message": "It seems like a good security enhancement to also prevent the host from enabling JTAG when CONFIG_ENABLE_JTAG_SELECTION is not defined.\n\nI agree that this can be added as a follow up CL.",
+      "parentUuid": "efaf68bd_531b9fc8",
+      "range": {
+        "startLine": 838,
+        "startChar": 0,
+        "endLine": 840,
+        "endChar": 0
+      },
+      "revId": "28d7bac7a3704d764fd28800514efaeeadf0b5cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
