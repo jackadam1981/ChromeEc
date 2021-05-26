@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16bb2ff2_5cf1b360",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-05-26T14:47:48Z",
+      "side": 1,
+      "message": "You are right. During development it looked like even with \"depends\" this file was compiled, but it was probably some mistake on my side. Thanks",
+      "parentUuid": "65970a16_65f0ed08",
+      "range": {
+        "startLine": 373,
+        "startChar": 5,
+        "endLine": 373,
+        "endChar": 47
+      },
+      "revId": "d5e1b94ec3d518a11c2561fd7b243e5ae2ed2a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a92ecda_d74be187",
@@ -61,6 +85,54 @@
       "side": 1,
       "message": "I personally prefer this style",
       "parentUuid": "2a92ecda_d74be187",
+      "range": {
+        "startLine": 1003,
+        "startChar": 1,
+        "endLine": 1003,
+        "endChar": 47
+      },
+      "revId": "d5e1b94ec3d518a11c2561fd7b243e5ae2ed2a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d60e8f25_3fbffccf",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-05-26T14:47:48Z",
+      "side": 1,
+      "message": "Yes, this one is the prettiest. The other ones were due to my mistake, I thought that this file is compiled even with \"depends\".",
+      "parentUuid": "cc68fee5_752fd9ca",
+      "range": {
+        "startLine": 1003,
+        "startChar": 1,
+        "endLine": 1003,
+        "endChar": 47
+      },
+      "revId": "d5e1b94ec3d518a11c2561fd7b243e5ae2ed2a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4fd06c_bf90801c",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-05-26T14:47:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc68fee5_752fd9ca",
       "range": {
         "startLine": 1003,
         "startChar": 1,
