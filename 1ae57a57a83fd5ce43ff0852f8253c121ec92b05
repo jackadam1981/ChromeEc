@@ -1,0 +1,231 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23a3edad_6508679a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "short of re-testing all other families it is touching, the change could be far less intrusive",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36faf6ca_5784c38c",
+        "filename": "chip/stm32/adc_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "it\u0027s the same as above\nthe condition above should:\n#if defined(CHIP_FAMILY_STM32F0) || defined(CHIP_FAMILY_STM32L4)\n\nrather than duplicating here.",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3312027_554b22a1",
+        "filename": "chip/stm32/adc_chip.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "you don\u0027t need #ifdef around this kind of macro",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f125ce_130aacfb",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "useless change",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdac2f64_e0c0ac9b",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "useless changes",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628ac2d4_e4bdf2da",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "useless changes",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "200e7924_7eeaabe1",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "useless change",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d45af0c_9bfa12ea",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "useless change",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0509cada_a7714358",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "why not just aliasing STM32_IRQ_DMA1_CHANNEL to STM32_IRQ_DMA_CHANNEL and avoid this large ifdef",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d16eb27_dc8fedda",
+        "filename": "chip/stm32/registers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "we don\u0027t put #ifdef around some macros\nwhether they exist or not is not important",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e69f86ca_25d49347",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "your TEST\u003d is kind of short for such changes impacting all platforms",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ce8472_a13159ab",
+        "filename": "chip/stm32/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "as commented above, other families are picking the worst case not the nominal frequency",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6405f0c8_3607e7fd",
+        "filename": "chip/stm32/watchdog.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-05-26T13:36:54Z",
+      "side": 1,
+      "message": "there is no reason to duplicate this code",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 0
+      },
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
