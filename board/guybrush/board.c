@@ -9,6 +9,7 @@
 #include "common.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -89,6 +90,50 @@ static void board_init(void)
 	/* TODO */
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+__override int board_a1_ps8811_retimer_setup(void)
+{
+	int val;
+
+	/* Set channel A output swing */
+	RETURN_ERROR(i2c_read8(I2C_PORT_TCPC1,
+			       PS8811_I2C_ADDR_FLAGS3 + PS8811_REG_PAGE1,
+			       PS8811_REG1_USB_CHAN_A_SWING, &val));
+	val &= ~PS8811_CHAN_A_SWING_MASK;
+	val = 0x2 << PS8811_CHAN_A_SWING_SHIFT;
+	RETURN_ERROR(i2c_write8(I2C_PORT_TCPC1,
+				PS8811_I2C_ADDR_FLAGS3 + PS8811_REG_PAGE1,
+				PS8811_REG1_USB_CHAN_A_SWING, val));
+
+	/* Set channel B output swing */
+	RETURN_ERROR(i2c_read8(I2C_PORT_TCPC1,
+			       PS8811_I2C_ADDR_FLAGS3 + PS8811_REG_PAGE1,
+			       PS8811_REG1_USB_CHAN_B_SWING, &val));
+	val &= ~PS8811_CHAN_B_SWING_MASK;
+	val = 0x2 << PS8811_CHAN_B_SWING_SHIFT;
+	RETURN_ERROR(i2c_write8(I2C_PORT_TCPC1,
+				PS8811_I2C_ADDR_FLAGS3 + PS8811_REG_PAGE1,
+				PS8811_REG1_USB_CHAN_B_SWING, val));
+
+	/* Set de-emphasis to -6dB and pre-shoot to 3 dB */
+	RETURN_ERROR(i2c_read8(I2C_PORT_TCPC1,
+			       PS8811_I2C_ADDR_FLAGS3 + PS8811_REG_PAGE1,
+			       PS8811_REG1_USB_CHAN_B_DE_PS_LSB, &val));
+	val &= ~PS8811_CHAN_B_DE_PS_LSB_MASK;
+	val = 0x16 << PS8811_CHAN_B_DE_PS_LSB_SHIFT;
+	RETURN_ERROR(i2c_write8(I2C_PORT_TCPC1,
+				PS8811_I2C_ADDR_FLAGS3 + PS8811_REG_PAGE1,
+				PS8811_REG1_USB_CHAN_B_DE_PS_LSB, val));
+	RETURN_ERROR(i2c_read8(I2C_PORT_TCPC1,
+			       PS8811_I2C_ADDR_FLAGS3 + PS8811_REG_PAGE1,
+			       PS8811_REG1_USB_CHAN_B_DE_PS_MSB, &val));
+	val &= ~PS8811_CHAN_B_DE_PS_MSB_MASK;
+	val = 0x2 << PS8811_CHAN_B_DE_PS_MSB_SHIFT;
+	RETURN_ERROR(i2c_write8(I2C_PORT_TCPC1,
+				PS8811_I2C_ADDR_FLAGS3 + PS8811_REG_PAGE1,
+				PS8811_REG1_USB_CHAN_B_DE_PS_MSB, val));
+	return EC_SUCCESS;
+}
 
 /*
  * PS8818 set mux board tuning.
