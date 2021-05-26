@@ -107,6 +107,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34f8dcd2_6dfd516d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-26T05:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99d0dbe8_d15f83bb",
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3828ba7_77eb824a",
@@ -297,6 +315,30 @@
       "side": 1,
       "message": "It looks like not all of these configs are really used.",
       "parentUuid": "f46b2fad_441b5c72",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7550eaf6_2b228a39",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-26T05:11:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9cfc52e8_ca96c2e9",
       "range": {
         "startLine": 48,
         "startChar": 24,
