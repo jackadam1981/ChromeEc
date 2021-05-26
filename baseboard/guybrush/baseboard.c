@@ -832,9 +832,10 @@ void board_hibernate(void)
 	}
 }
 
-__overridable void board_a1_ps8811_retimer_setup(void)
+__overridable enum ec_error_list board_a1_ps8811_retimer_setup(void)
 {
 	CPRINTSUSB("A1: PS8811 retimer using default tuning");
+	return EC_SUCCESS;
 }
 
 static void baseboard_a1_ps8811_retimer_setup(void)
@@ -855,7 +856,9 @@ static void baseboard_a1_ps8811_retimer_setup(void)
 		return;
 	}
 	CPRINTSUSB("A1: PS8811 retimer detected");
-	board_a1_ps8811_retimer_setup();
+	rv = board_a1_ps8811_retimer_setup();
+	if (rv)
+		CPRINTSUSB("A1: Error during PS8811 setup rv:%d", rv);
 }
 
 __overridable void board_a1_anx7491_retimer_setup(void)
