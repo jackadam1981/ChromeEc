@@ -45,6 +45,30 @@
       },
       "revId": "d5e1b94ec3d518a11c2561fd7b243e5ae2ed2a79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc68fee5_752fd9ca",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-05-26T14:21:59Z",
+      "side": 1,
+      "message": "I personally prefer this style",
+      "parentUuid": "2a92ecda_d74be187",
+      "range": {
+        "startLine": 1003,
+        "startChar": 1,
+        "endLine": 1003,
+        "endChar": 47
+      },
+      "revId": "d5e1b94ec3d518a11c2561fd7b243e5ae2ed2a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
