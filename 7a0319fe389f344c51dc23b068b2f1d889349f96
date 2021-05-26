@@ -153,6 +153,30 @@
       },
       "revId": "7a0319fe389f344c51dc23b068b2f1d889349f96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93025d27_83aec3f8",
+        "filename": "chip/stm32/flash-stm32g4-l4.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-26T18:13:20Z",
+      "side": 1,
+      "message": "Understood.",
+      "parentUuid": "d22caa19_071197e1",
+      "range": {
+        "startLine": 270,
+        "startChar": 5,
+        "endLine": 270,
+        "endChar": 16
+      },
+      "revId": "7a0319fe389f344c51dc23b068b2f1d889349f96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
