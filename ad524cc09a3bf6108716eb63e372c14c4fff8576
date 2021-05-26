@@ -16,6 +16,29 @@
       "message": "Hi, this is a small improvement to ITE_ON_CHIP define.\nI have seen that you were reviewing similar change, so maybe you could look at this too, @Jett?",
       "revId": "ad524cc09a3bf6108716eb63e372c14c4fff8576",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a65b9b1e_51529c01",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5718,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-05-26T15:01:24Z",
+      "side": 1,
+      "message": "the order matters, this doesn\u0027t get defined until after we need it on line 5658\n\notherwise I do like this type of change!",
+      "range": {
+        "startLine": 5718,
+        "startChar": 8,
+        "endLine": 5718,
+        "endChar": 34
+      },
+      "revId": "ad524cc09a3bf6108716eb63e372c14c4fff8576",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
