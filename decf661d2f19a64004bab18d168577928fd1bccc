@@ -16,6 +16,24 @@
       "message": "No need to clear TXIS?",
       "revId": "decf661d2f19a64004bab18d168577928fd1bccc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c055254d_c2924e00",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-05-26T20:46:35Z",
+      "side": 1,
+      "message": "There isn\u0027t a corresponding bit for TXIS in the ICR register.",
+      "parentUuid": "ee4215fe_7567d5e6",
+      "revId": "decf661d2f19a64004bab18d168577928fd1bccc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
