@@ -22,6 +22,30 @@
       },
       "revId": "ffddb72095d7481f956b21866d250cc92686986c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69129a66_98293122",
+        "filename": "board/brya/generated-gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-05-26T04:06:12Z",
+      "side": 1,
+      "message": "understood - this is intentional until we\u0027re ready to use the pin.\nit\u0027s presently set up as \"PAD_NC(GPD2, NONE)\" on the AP side\nas well, so i assume it\u0027s not really going anywhere yet 😊\n\ni\u0027m OK with setting this up for GPIO_ODR_HIGH now if you prefer.",
+      "parentUuid": "f221bd03_4b98474b",
+      "range": {
+        "startLine": 66,
+        "startChar": 48,
+        "endLine": 66,
+        "endChar": 58
+      },
+      "revId": "ffddb72095d7481f956b21866d250cc92686986c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
