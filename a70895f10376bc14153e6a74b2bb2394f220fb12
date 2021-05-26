@@ -33,6 +33,24 @@
       "message": "After rebasing, this can enable, or it also will cause a fatal error for bbram init.",
       "revId": "a70895f10376bc14153e6a74b2bb2394f220fb12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c02d579_789c500b",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-26T17:55:39Z",
+      "side": 1,
+      "message": "Odd I didn\u0027t run into that, added this regardless.",
+      "parentUuid": "64f79569_533ffede",
+      "revId": "a70895f10376bc14153e6a74b2bb2394f220fb12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
