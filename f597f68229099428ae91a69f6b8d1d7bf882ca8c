@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40bb5638_8ddd31c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-05-26T19:28:09Z",
+      "side": 1,
+      "message": "sorry for that. yes I had seen some failures. But I was distracted by that config change I got. I thought that may be the reason. next time I will read closely.",
+      "parentUuid": "544144ce_4e12aed9",
+      "revId": "f597f68229099428ae91a69f6b8d1d7bf882ca8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f184336_6ce67bc8",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-05-26T06:23:35Z",
       "side": 1,
       "message": "You need to guard these by #ifdef GPIO_CCD_MODE_ODL ... #endif.",
+      "range": {
+        "startLine": 1172,
+        "startChar": 0,
+        "endLine": 1173,
+        "endChar": 66
+      },
+      "revId": "f597f68229099428ae91a69f6b8d1d7bf882ca8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b57a50ff_f250a1a7",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1173,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-05-26T19:28:09Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "8f184336_6ce67bc8",
       "range": {
         "startLine": 1172,
         "startChar": 0,
