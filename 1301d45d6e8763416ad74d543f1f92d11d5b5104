@@ -16,6 +16,24 @@
       "message": "nit: The AMS is still interruptible if we\u0027re sending not supported, I believe.  Also, is this still needed with the ready clear?",
       "revId": "1301d45d6e8763416ad74d543f1f92d11d5b5104",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a0c3747_7ebee8bb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 76
+      },
+      "lineNbr": 5079,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-05-26T20:45:42Z",
+      "side": 1,
+      "message": "I left the set where it was, and just added a clear here if it\u0027s going back to \u0027ready_state\u0027",
+      "parentUuid": "532a81f9_e8000bfa",
+      "revId": "1301d45d6e8763416ad74d543f1f92d11d5b5104",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
