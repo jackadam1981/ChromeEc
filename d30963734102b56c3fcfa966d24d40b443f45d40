@@ -16,6 +16,24 @@
       "message": "This is the same as the default value. Do you need this?",
       "revId": "d30963734102b56c3fcfa966d24d40b443f45d40",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b13b9393_fdb2e556",
+        "filename": "board/delbin/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-05-26T02:28:15Z",
+      "side": 1,
+      "message": "Remove it and verify pass. Thanks",
+      "parentUuid": "e6ac9097_0a4e5dc8",
+      "revId": "d30963734102b56c3fcfa966d24d40b443f45d40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
