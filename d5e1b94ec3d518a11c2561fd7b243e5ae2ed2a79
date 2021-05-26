@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65970a16_65f0ed08",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-26T14:14:08Z",
+      "side": 1,
+      "message": "I don\u0027t think this is needed since you have depends on in the Kconfig",
+      "range": {
+        "startLine": 373,
+        "startChar": 5,
+        "endLine": 373,
+        "endChar": 47
+      },
+      "revId": "d5e1b94ec3d518a11c2561fd7b243e5ae2ed2a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a92ecda_d74be187",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-26T14:14:08Z",
+      "side": 1,
+      "message": "Wrapping this with the if/endif basically just adds this depends, use one or the other.",
+      "range": {
+        "startLine": 1003,
+        "startChar": 1,
+        "endLine": 1003,
+        "endChar": 47
+      },
+      "revId": "d5e1b94ec3d518a11c2561fd7b243e5ae2ed2a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
