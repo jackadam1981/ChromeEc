@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52d8da48_6b143732",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-05-26T14:25:44Z",
+      "side": 1,
+      "message": "Maximum 72 columns in commit message",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 23,
+        "endChar": 72
+      },
+      "revId": "46540bce891adb235cd083998a5e558915dc6e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e89464_5bb8b0de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-05-26T14:25:44Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "46540bce891adb235cd083998a5e558915dc6e7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
