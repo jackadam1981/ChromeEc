@@ -42,6 +42,7 @@ static int get_battery_type(void)
 	for (i = 0; i < BATTERY_TYPE_COUNT; i++) {
 		const struct fuel_gauge_info * const fuel_gauge =
 			&board_battery_info[i].fuel_gauge;
+		char name[strlen(fuel_gauge->device_name)];
 
 		if (strcasecmp(manuf_name, fuel_gauge->manuf_name))
 			continue;
@@ -52,7 +53,8 @@ static int get_battery_type(void)
 						sizeof(device_name)))
 				continue;
 
-			if (strcasecmp(device_name, fuel_gauge->device_name))
+			if (strncasecmp(device_name, fuel_gauge->device_name,
+						ARRAY_SIZE(name)))
 				continue;
 		}
 
