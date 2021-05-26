@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "05265991_98eb3892",
         "filename": "/COMMIT_MSG",
@@ -20,8 +21,31 @@
         "endChar": 0
       },
       "revId": "4a13a6820af803fb5b6d18a3fca40d9cd4ca2ea4",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d55bcac7_54c1cc03",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-05-26T22:52:40Z",
+      "side": 1,
+      "message": "Okay, so I added a TC unit test for the detach when CC\u0027s go open as a source.  \n\nUnfortunately, testing the PR swap path specifically would require making a full-stack unit test since it\u0027s not used in the TC-only level test (since it has no PE to swap).  We do have the compliance unit tests going on the full stack, but there\u0027s no compliance test for \"detach during a PR swap\".  Soooooo, defer?",
+      "parentUuid": "05265991_98eb3892",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "4a13a6820af803fb5b6d18a3fca40d9cd4ca2ea4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
