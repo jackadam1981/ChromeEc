@@ -22,6 +22,30 @@
       },
       "revId": "cb507f1d12062dfe99f9aee1c3b6d6e2f65a8b5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c1789d_c55a3946",
+        "filename": "zephyr/include/cros/nuvoton/npcx7.dtsi",
+        "patchSetId": 5
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-26T03:01:18Z",
+      "side": 1,
+      "message": "The register to set JTAG　in npcx9 is changed to another offset (out of the range of DEVALTx). We cannot use the pinctrl-0 for it now. We are considering to extend our pinctrl driver not only for the DEVALTx registers in the future.\nAt this moment, we suggest not to decalre the dbg node for npcx9 in the dtsi file.\nI add a guard for jtag_init in the cros_system_npcx.c file in the CL:2918808.\nWith it, we can build zephyr EC succesfully when dbg node isn\u0027t declared.",
+      "parentUuid": "638c170a_c5668535",
+      "range": {
+        "startLine": 47,
+        "startChar": 1,
+        "endLine": 49,
+        "endChar": 2
+      },
+      "revId": "cb507f1d12062dfe99f9aee1c3b6d6e2f65a8b5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

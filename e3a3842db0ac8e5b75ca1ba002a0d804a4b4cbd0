@@ -281,6 +281,30 @@
       },
       "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cfc52e8_ca96c2e9",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-26T03:01:18Z",
+      "side": 1,
+      "message": "It looks like not all of these configs are really used.",
+      "parentUuid": "f46b2fad_441b5c72",
+      "range": {
+        "startLine": 48,
+        "startChar": 24,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "e3a3842db0ac8e5b75ca1ba002a0d804a4b4cbd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
