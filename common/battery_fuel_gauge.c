@@ -18,7 +18,12 @@
 /* Get type of the battery connected on the board */
 static int get_battery_type(void)
 {
-	char manuf_name[32], device_name[32];
+#ifdef DEVICE_LENGTH
+	char device_name[DEVICE_LENGTH];
+#else
+	char device_name[32];
+#endif
+	char manuf_name[32];
 	int i;
 	static enum battery_type battery_type = BATTERY_TYPE_COUNT;
 
