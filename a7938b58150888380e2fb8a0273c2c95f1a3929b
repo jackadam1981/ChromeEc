@@ -46,6 +46,30 @@
       },
       "revId": "a7938b58150888380e2fb8a0273c2c95f1a3929b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8c4aeeb_e9cc6120",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-05-27T07:19:16Z",
+      "side": 1,
+      "message": "thanks. for some reason i thought the support code walks\nthrough gpio_list to find these pins. added HIB_WAKE_LOW\nfor completeness.",
+      "parentUuid": "8d2399f8_17e2b6c3",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "a7938b58150888380e2fb8a0273c2c95f1a3929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
