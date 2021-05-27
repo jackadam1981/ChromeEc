@@ -43,6 +43,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ce22d65_fc89abf2",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-27T15:42:20Z",
+      "side": 1,
+      "message": "There is no ps8811.c at the moment since this is a simple non-mux retimer. It\u0027d be nice if we had a simple retimer driver interface. I\u0027ll create a ps8811.c and move the common methods into it.",
+      "parentUuid": "d554fb5c_9e3b654d",
+      "revId": "81cd5eeb84c60cdd667db3f3eaa88d317747ac60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dee5ff4_9797bbd7",
         "filename": "board/guybrush/board.c",
         "patchSetId": 1
@@ -54,6 +72,24 @@
       "writtenOn": "2021-05-27T15:12:43Z",
       "side": 1,
       "message": "nit: do we have descriptions of what these values mean?",
+      "revId": "81cd5eeb84c60cdd667db3f3eaa88d317747ac60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25b11904_3a6af502",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-27T15:42:20Z",
+      "side": 1,
+      "message": "It\u0027s pretty cryptic, but there\u0027s only 4 options. I\u0027ll create some constants.",
+      "parentUuid": "7dee5ff4_9797bbd7",
       "revId": "81cd5eeb84c60cdd667db3f3eaa88d317747ac60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
