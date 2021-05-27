@@ -1058,6 +1058,11 @@ static int tcpci_handle_fault(int port, int fault)
 				last_write_op[port].mask & 0xFFFF);
 	}
 
+	/* Report overcurrent to the OCP module if enabled */
+	if (IS_ENABLED(CONFIG_USBC_OCP) &&
+			(fault & TCPC_REG_FAULT_STATUS_VBUS_OVER_CURRENT))
+		pd_handle_overcurrent(port);
+
 	if (tcpc_config[port].drv->handle_fault)
 		rv = tcpc_config[port].drv->handle_fault(port, fault);
 
