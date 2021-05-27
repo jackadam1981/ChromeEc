@@ -24,6 +24,7 @@
 #include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "keyboard_raw.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -47,31 +48,14 @@
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
-static const struct ec_response_keybd_config zbu_new_kb = {
-	.num_top_row_keys = 10,
-	.action_keys = {
-		TK_BACK,
-		TK_REFRESH,
-		TK_FULLSCREEN,
-		TK_OVERVIEW,
-		TK_SNAPSHOT,
-		TK_BRIGHTNESS_DOWN,
-		TK_BRIGHTNESS_UP,
-		TK_VOL_MUTE,
-		TK_VOL_DOWN,
-		TK_VOL_UP,
-	},
-	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
-};
-
-static const struct ec_response_keybd_config zbu_old_kb = {
+static const struct ec_response_keybd_config volet_kb = {
 	.num_top_row_keys = 10,
 	.action_keys = {
 		TK_BACK,		/* T1 */
-		TK_FORWARD,		/* T2 */
-		TK_REFRESH,		/* T3 */
-		TK_FULLSCREEN,		/* T4 */
-		TK_OVERVIEW,		/* T5 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNAPSHOT,		/* T5 */
 		TK_BRIGHTNESS_DOWN,	/* T6 */
 		TK_BRIGHTNESS_UP,	/* T7 */
 		TK_VOL_MUTE,		/* T8 */
@@ -81,13 +65,10 @@ static const struct ec_response_keybd_config zbu_old_kb = {
 	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
 };
 
-__override
-const struct ec_response_keybd_config *board_vivaldi_keybd_config(void)
+__override const struct ec_response_keybd_config
+*board_vivaldi_keybd_config(void)
 {
-	if (get_board_id() > 2)
-		return &zbu_new_kb;
-	else
-		return &zbu_old_kb;
+	return &volet_kb;
 }
 
 /* Keyboard scan setting */
@@ -367,6 +348,9 @@ __override void board_cbi_init(void)
 {
 	setup_board_tcpc();
 	setup_board_ppc();
+
+	if ((!IS_ENABLED(TEST_BUILD) && !ec_cfg_has_numeric_pad()))
+		keyboard_raw_set_cols(KEYBOARD_COLS_NO_KEYPAD);
 }
 
 /******************************************************************************/
