@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a31d4ef8_58dd3d1c",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-27T20:29:08Z",
+      "side": 1,
+      "message": "nit: once per EC boot",
+      "revId": "25377402f44f1a19f5930ea4f22e8ac211c4be69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcfbaa8d_7fd24279",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-05-27T20:29:08Z",
+      "side": 1,
+      "message": "nit: I think this would read better if the condition checked for the exceptional case, i.e. BOOT_DEAD_BATTERY \u0026\u0026 TCPC_REG_POWER_STATUS_DEBUG_ACC_CON, then printed a debug statement, and set the register in the else case.",
+      "revId": "25377402f44f1a19f5930ea4f22e8ac211c4be69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
