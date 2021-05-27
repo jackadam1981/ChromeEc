@@ -40,6 +40,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "extpower.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 
@@ -290,6 +291,17 @@ __override void board_ocpc_init(struct ocpc_data *ocpc)
 	/* There's no provision to measure Isys */
 	ocpc->chg_flags[CHARGER_SECONDARY] |= OCPC_NO_ISYS_MEAS_CAP;
 }
+
+void board_adapter_out(void)
+{
+	/*
+	 * b/187967523: if adater out, we should set charge current limit
+	 * as 0 to make sure typeC C0 port can output normal.
+	 */
+	if (!extpower_is_present())
+		charger_set_current(CHARGER_PRIMARY, 0);
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_adapter_out, HOOK_PRIO_DEFAULT);
 
 __override void board_pulse_entering_rw(void)
 {
