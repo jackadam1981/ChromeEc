@@ -6,6 +6,18 @@
 
 Checks that the .config file provided does not introduce any new ad-hoc CONFIG
 options
+
+This tool is also present in U-Boot, so we should keep the two in sync.
+
+The tool supports two formats for the 'configs' file:
+
+   CONFIG_SOMETHING=xx
+
+and
+
+   #define CONFIG_SOMETHING xx
+
+Use the -d flag to select the second format.
 """
 
 import argparse
@@ -40,6 +52,8 @@ a corresponding Kconfig option for Zephyr"""
                         help='File containing list of allowed ad-hoc CONFIGs')
     parser.add_argument('-c', '--configs', type=str, default='.config',
                         help='File containing CONFIG options to check')
+    parser.add_argument('-d', '--use-defines', action='store_true',
+                        help='Lines in the configs file use #define')
     parser.add_argument(
         '-D', '--debug', action='store_true',
         help='Enabling debugging (provides a full traceback on error)')
@@ -94,7 +108,7 @@ class KconfigCheck:
         return sorted(list(set(configs) - set(kconfigs) - set(allowed)))
 
     @classmethod
-    def read_configs(cls, configs_file):
+    def read_configs(cls, configs_file, use_defines=False):
         """Read CONFIG options from a file
 
         The file consists of a number of lines, each containing a CONFIG
@@ -102,12 +116,31 @@ class KconfigCheck:
 
         Args:
             configs_file: Filename to read from (e.g. u-boot.cfg)
+            use_defines: True if each line of the file starts with #define
 
         Returns:
             List of CONFIG_xxx options found in the file, with the 'CONFIG_'
                 prefix removed
         """
         with open(configs_file, 'r') as inf:
+            configs = re.findall('%sCONFIG_([A-Za-z0-9_]*)%s' %
+                                 ((use_defines and '#define ' or ''),
+                                  (use_defines and ' ' or '')),
+                                 inf.read())
+        return configs
+
+    @classmethod
+    def read_allowed(cls, allowed_file):
+        """Read allowed CONFIG options from a file
+
+        Args:
+            allowed_file: Filename to read from
+
+        Returns:
+            List of CONFIG_xxx options found in the file, with the 'CONFIG_'
+                prefix removed
+        """
+        with open(allowed_file, 'r') as inf:
             configs = re.findall('CONFIG_([A-Za-z0-9_]*)', inf.read())
         return configs
 
@@ -166,7 +199,7 @@ class KconfigCheck:
         return kconfigs
 
     def find_new_adhoc_configs(self, configs_file, srcdir, allowed_file,
-                               prefix=''):
+                               prefix='', use_defines=False):
         """Find new ad-hoc configs in the configs_file
 
         Args:
@@ -175,14 +208,15 @@ class KconfigCheck:
             allowed_file: File containing allowed CONFIG options
             prefix: Prefix to strip from the start of each Kconfig
                 (e.g. 'PLATFORM_EC_')
+            use_defines: True if each line of the file starts with #define
         """
-        configs = self.read_configs(configs_file)
+        configs = self.read_configs(configs_file, use_defines)
         kconfigs = self.scan_kconfigs(srcdir, prefix)
-        allowed = self.read_configs(allowed_file)
+        allowed = self.read_allowed(allowed_file)
         new_adhoc = self.find_new_adhoc(configs, kconfigs, allowed)
         return new_adhoc
 
-    def do_check(self, configs_file, srcdir, allowed_file, prefix):
+    def do_check(self, configs_file, srcdir, allowed_file, prefix, use_defines):
         """Find new ad-hoc configs in the configs_file
 
         Args:
@@ -191,12 +225,13 @@ class KconfigCheck:
             allowed_file: File containing allowed CONFIG options
             prefix: Prefix to strip from the start of each Kconfig
                 (e.g. 'PLATFORM_EC_')
+            use_defines: True if each line of the file starts with #define
 
         Returns:
             Exit code: 0 if OK, 1 if a problem was found
         """
-        new_adhoc = self.find_new_adhoc_configs(configs_file, srcdir,
-                                                allowed_file, prefix)
+        new_adhoc = self.find_new_adhoc_configs(
+            configs_file, srcdir, allowed_file, prefix, use_defines)
         if new_adhoc:
             print("""Error:\tThe EC is in the process of migrating to Zephyr.
 \tZephyr uses Kconfig for configuration rather than ad-hoc #defines.
@@ -224,7 +259,7 @@ def main(argv):
     checker = KconfigCheck()
     if args.cmd == 'check':
         return checker.do_check(args.configs, args.srctree, args.allowed,
-                                args.prefix)
+                                args.prefix, args.use_defines)
     return 2
 
 
