@@ -65,7 +65,12 @@ a corresponding Kconfig option for Zephyr"""
     parser.add_argument('-s', '--srctree', type=str, default='zephyr/',
                         help='Path to source tree to look for Kconfigs')
 
-    subparsers = parser.add_subparsers(dest='cmd', required=True)
+    # The chroot uses a very old Python
+    if sys.version_info >= (3, 7):
+        subparsers = parser.add_subparsers(dest='cmd', required=True)
+    else:
+        subparsers = parser.add_subparsers(dest='cmd')
+        subparsers.required = True
     subparsers.add_parser('check', help='Check for new ad-hoc CONFIGs')
 
     return parser.parse_args(argv)
