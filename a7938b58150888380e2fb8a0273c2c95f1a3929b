@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94f5ead0_b192157d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-05-27T02:55:54Z",
+      "side": 1,
+      "message": "This is basically configuring the LID_OPEN and ACOK to wake on low-\u003ehigh transition. Currently, they are enabled as wake sources (hibernate_wake_pins in baseboard.c), but configured to wake on high-\u003elow.",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "a7938b58150888380e2fb8a0273c2c95f1a3929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
