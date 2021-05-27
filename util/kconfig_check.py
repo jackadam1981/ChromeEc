@@ -33,6 +33,9 @@ try:
 except ImportError:
     pass
 
+# Where we put the new config_allowed file
+NEW_ALLOWED_FNAME = '/tmp/new_config_allowed.txt'
+
 
 def parse_args(argv):
     """Parse the program arguments
@@ -106,6 +109,39 @@ class KconfigCheck:
             List of new CONFIG options, with the CONFIG_ prefix removed
         """
         return sorted(list(set(configs) - set(kconfigs) - set(allowed)))
+
+    @classmethod
+    def find_unneeded_adhoc(cls, kconfigs, allowed):
+        """Get a list of ad-hoc CONFIG options that now have Kconfig options
+
+        Arguments and return value should omit the 'CONFIG_' prefix, so
+        CONFIG_LTO should be provided as 'LTO'.
+
+        Args:
+            kconfigs: List of existing Kconfig options
+            allowed: List of allowed CONFIG options
+
+        Returns:
+            List of new CONFIG options, with the CONFIG_ prefix removed
+        """
+        return sorted(list(set(allowed) & set(kconfigs)))
+
+    @classmethod
+    def get_updated_adhoc(cls, unneeded_adhoc, allowed):
+        """Get a list of ad-hoc CONFIG options that are still needed
+
+        Arguments and return value should omit the 'CONFIG_' prefix, so
+        CONFIG_LTO should be provided as 'LTO'.
+
+        Args:
+            unneeded_adhoc: List of ad-hoc CONFIG options to remove
+            allowed: Current list of allowed CONFIG options
+
+        Returns:
+            New version of allowed CONFIG options, with the CONFIG_ prefix
+            removed
+        """
+        return sorted(list(set(allowed) - set(unneeded_adhoc)))
 
     @classmethod
     def read_configs(cls, configs_file, use_defines=False):
@@ -198,9 +234,9 @@ class KconfigCheck:
                     kconfigs += [name for kctype, _, name in found]
         return kconfigs
 
-    def find_new_adhoc_configs(self, configs_file, srcdir, allowed_file,
-                               prefix='', use_defines=False):
-        """Find new ad-hoc configs in the configs_file
+    def check_adhoc_configs(self, configs_file, srcdir, allowed_file,
+                            prefix='', use_defines=False):
+        """Find new and unneeded ad-hoc configs in the configs_file
 
         Args:
             configs_file: Filename containing CONFIG options to check
@@ -209,12 +245,23 @@ class KconfigCheck:
             prefix: Prefix to strip from the start of each Kconfig
                 (e.g. 'PLATFORM_EC_')
             use_defines: True if each line of the file starts with #define
+
+        Returns:
+            Tuple:
+                List of new ad-hoc CONFIG options (without 'CONFIG_' prefix)
+                List of ad-hoc CONFIG options (without 'CONFIG_' prefix) that
+                    are no-longer needed, since they now have an associated
+                    Kconfig
+                List of ad-hoc CONFIG options that are still needed, given the
+                    current state of the Kconfig options
         """
         configs = self.read_configs(configs_file, use_defines)
         kconfigs = self.scan_kconfigs(srcdir, prefix)
         allowed = self.read_allowed(allowed_file)
         new_adhoc = self.find_new_adhoc(configs, kconfigs, allowed)
-        return new_adhoc
+        unneeded_adhoc = self.find_unneeded_adhoc(kconfigs, allowed)
+        updated_adhoc = self.get_updated_adhoc(unneeded_adhoc, allowed)
+        return new_adhoc, unneeded_adhoc, updated_adhoc
 
     def do_check(self, configs_file, srcdir, allowed_file, prefix, use_defines):
         """Find new ad-hoc configs in the configs_file
@@ -230,7 +277,7 @@ class KconfigCheck:
         Returns:
             Exit code: 0 if OK, 1 if a problem was found
         """
-        new_adhoc = self.find_new_adhoc_configs(
+        new_adhoc, unneeded_adhoc, updated_adhoc = self.check_adhoc_configs(
             configs_file, srcdir, allowed_file, prefix, use_defines)
         if new_adhoc:
             print("""Error:\tThe EC is in the process of migrating to Zephyr.
@@ -248,6 +295,22 @@ Also see details in http://issuetracker.google.com/181253613
 To temporarily disable this, use: ALLOW_CONFIG=1 make ...
 """ % '\n'.join(['CONFIG_%s' % name for name in new_adhoc]), file=sys.stderr)
             return 1
+
+        if unneeded_adhoc:
+            with open(NEW_ALLOWED_FNAME, 'w') as out:
+                for config in updated_adhoc:
+                    print('CONFIG_%s' % config, file=out)
+            print("""Congratulations! The The following options are now in Kconfig:
+
+%s
+
+Please run this to update the list of allowed ad-hoc CONFIGs and include this
+update in your CL:
+
+   cp %s util/config_allowed.txt
+""" % ('\n'.join(['CONFIG_%s' % name for name in unneeded_adhoc]),
+       NEW_ALLOWED_FNAME))
+
         return 0
 
 
