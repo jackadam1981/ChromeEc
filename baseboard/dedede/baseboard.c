@@ -8,6 +8,7 @@
 #include "adc.h"
 #include "board_config.h"
 #include "cbi_fw_config.h"
+#include "charger.h"
 #include "charger/isl923x_public.h"
 #include "charger/sm5803.h"
 #include "chipset.h"
@@ -294,6 +295,9 @@ int extpower_is_present(void)
 		if ((rv == EC_SUCCESS) && acok)
 			return 1;
 	}
+
+	if (IS_ENABLED(CONFIG_CHARGER_RAA489000))
+		charger_set_current(0, 0);
 
 	return 0;
 }
