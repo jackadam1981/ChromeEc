@@ -23,6 +23,7 @@
 #define VDEC_CAP_H264_SLICE BIT(8)
 #define VDEC_CAP_VP8_FRAME BIT(9)
 #define VDEC_CAP_VP9_FRAME BIT(10)
+#define VDEC_CAP_NV12 BIT(11)
 
 /*
  * Video encoder supported capability:
