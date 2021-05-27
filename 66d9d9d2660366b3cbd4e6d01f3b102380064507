@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55cf757b_74099ef4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-05-27T06:19:46Z",
+      "side": 1,
+      "message": "video hardware",
+      "range": {
+        "startLine": 7,
+        "startChar": 26,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "66d9d9d2660366b3cbd4e6d01f3b102380064507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3281bd4e_3b2ac0bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-05-27T06:19:46Z",
+      "side": 1,
+      "message": "chip/mt8192_scp",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "66d9d9d2660366b3cbd4e6d01f3b102380064507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b9d6f73_339a8dfc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-05-27T06:19:46Z",
+      "side": 1,
+      "message": "Disables 4K capability because the platform doesn\u0027t support it temporarily.",
+      "revId": "66d9d9d2660366b3cbd4e6d01f3b102380064507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77c2e673_bf0f35d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-05-27T06:19:46Z",
+      "side": 1,
+      "message": "Also add:\nBUG\u003db:185977882",
+      "revId": "66d9d9d2660366b3cbd4e6d01f3b102380064507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
