@@ -19,6 +19,7 @@
 #include "driver/temp_sensor/thermistor.h"
 #include "driver/tcpm/raa489000.h"
 #include "driver/usb_mux/it5205.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "intc.h"
@@ -290,6 +291,17 @@ __override void board_ocpc_init(struct ocpc_data *ocpc)
 	/* There's no provision to measure Isys */
 	ocpc->chg_flags[CHARGER_SECONDARY] |= OCPC_NO_ISYS_MEAS_CAP;
 }
+
+void board_adapter_out(void)
+{
+	/*
+	 * b/187967523: if adater out, we should set charge current limit
+	 * as 0 to make sure typeC C0 port can output normal.
+	 */
+	if (!extpower_is_present())
+		charger_set_current(CHARGER_PRIMARY, 0);
+}
+DECLARE_HOOK(HOOK_AC_CHANGE, board_adapter_out, HOOK_PRIO_DEFAULT);
 
 __override void board_pulse_entering_rw(void)
 {
