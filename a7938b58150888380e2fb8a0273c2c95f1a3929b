@@ -22,6 +22,30 @@
       },
       "revId": "a7938b58150888380e2fb8a0273c2c95f1a3929b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d2399f8_17e2b6c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-05-27T03:09:25Z",
+      "side": 1,
+      "message": "Agree with it.\nGPIO_HIB_WAKE_HIGH flag is just an indication to configure the PSL input to Active-High (either high level or low-to-high transition depend on the PSL_Inx_EDG bit in PSL_CTS register.)",
+      "parentUuid": "94f5ead0_b192157d",
+      "range": {
+        "startLine": 7,
+        "startChar": 6,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "a7938b58150888380e2fb8a0273c2c95f1a3929b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
