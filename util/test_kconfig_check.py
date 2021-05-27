@@ -56,19 +56,27 @@ class KconfigCheck(unittest.TestCase):
                 kconfigs=['IN_KCONFIG'],
                 allowed=['OLD_ONE']))
 
-    def test_read_configs(self):
-        """Test KconfigCheck.read_configs()"""
+    def check_read_configs(self, use_defines):
         checker = kconfig_check.KconfigCheck()
         with tempfile.NamedTemporaryFile() as configs:
             with open(configs.name, 'w') as out:
-                out.write("""CONFIG_OLD_ONE=y
-NOT_A_CONFIG
-CONFIG_STRING="something"
-CONFIG_INT=123
-CONFIG_HEX=45ab
-""")
+                out.write("""{prefix}CONFIG_OLD_ONE{suffix}y
+{prefix}NOT_A_CONFIG{suffix}
+{prefix}CONFIG_STRING{suffix}"something"
+{prefix}CONFIG_INT{suffix}123
+{prefix}CONFIG_HEX{suffix}45ab
+""".format(prefix='#define ' if use_defines else '',
+           suffix=' ' if use_defines else '='))
             self.assertEqual(['OLD_ONE', 'STRING', 'INT', 'HEX'],
-                             checker.read_configs(configs.name))
+                             checker.read_configs(configs.name, use_defines))
+
+    def test_read_configs(self):
+        """Test KconfigCheck.read_configs()"""
+        self.check_read_configs(False)
+
+    def test_read_configs_defines(self):
+        """Test KconfigCheck.read_configs() containing #defines"""
+        self.check_read_configs(True)
 
     @classmethod
     def setup_srctree(cls, srctree):
@@ -78,21 +86,21 @@ CONFIG_HEX=45ab
             srctree: Directory to write to
         """
         with open(os.path.join(srctree, 'Kconfig'), 'w') as out:
-            out.write('''config PLATFORM_EC_MY_KCONFIG
+            out.write('''config %sMY_KCONFIG
 \tbool "my kconfig"
 
 rsource "subdir/Kconfig.wibble"
-''')
+''' % PREFIX)
         subdir = os.path.join(srctree, 'subdir')
         os.mkdir(subdir)
         with open(os.path.join(subdir, 'Kconfig.wibble'), 'w') as out:
-            out.write('menuconfig PLATFORM_EC_MENU_KCONFIG\n')
+            out.write('menuconfig %sMENU_KCONFIG\n' % PREFIX)
 
         # Add a directory which should be ignored
         bad_subdir = os.path.join(subdir, 'Kconfig')
         os.mkdir(bad_subdir)
         with open(os.path.join(bad_subdir, 'Kconfig.bad'), 'w') as out:
-            out.write('menuconfig PLATFORM_EC_BAD_KCONFIG')
+            out.write('menuconfig %sBAD_KCONFIG' % PREFIX)
 
     def test_scan_kconfigs(self):
         """Test KconfigCheck.scan_configs()"""
