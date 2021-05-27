@@ -610,6 +610,7 @@ int tcpci_tcpm_set_src_ctrl(int port, int enable)
 	int cmd = enable ? TCPC_REG_COMMAND_SRC_CTRL_HIGH :
 		TCPC_REG_COMMAND_SRC_CTRL_LOW;
 
+	CPRINTS("tcpci_tcpm_set_src_ctrl: %d %d", port, enable);
 	return tcpc_write(port, TCPC_REG_COMMAND, cmd);
 }
 #endif
