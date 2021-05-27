@@ -373,6 +373,10 @@ void system_reset(int flags)
 
 	chip_save_reset_flags(save_flags);
 
+	/* Flush and invalidate D-cache if cache enabled */
+	if (IS_ENABLED(CONFIG_ARMV7M_CACHE))
+		cpu_clean_invalidate_dcache();
+
 	if (flags & SYSTEM_RESET_HARD) {
 #ifdef CONFIG_SOFTWARE_PANIC
 		uint32_t reason, info;
