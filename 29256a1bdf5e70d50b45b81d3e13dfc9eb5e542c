@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94a6e486_774a245c",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-05-27T19:00:55Z",
+      "side": 1,
+      "message": "Updated this power handling file for Brya.\nVerified on Brya with this change.\nJira has logs  attached - https://jira.devtools.intel.com/browse/SYSCROS-58898",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 25
+      },
+      "revId": "29256a1bdf5e70d50b45b81d3e13dfc9eb5e542c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
