@@ -416,6 +416,10 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 					CPRINTS("OCPC: Precharge complete");
 					charger_set_voltage(CHARGER_SECONDARY,
 							    batt.voltage);
+
+					if (IS_ENABLED(CONFIG_CHARGER_RAA489000))
+						charger_set_current(CHARGER_PRIMARY,0);
+
 					ocpc->last_vsys = batt.voltage;
 					ocpc_precharge_enable(false);
 					ph = PHASE_CC;
