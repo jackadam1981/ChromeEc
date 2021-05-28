@@ -4249,7 +4249,7 @@ struct ec_params_i2c_write {
  * discharge the battery.
  */
 #define EC_CMD_CHARGE_CONTROL 0x0096
-#define EC_VER_CHARGE_CONTROL 1
+#define EC_VER_CHARGE_CONTROL 2
 
 enum ec_charge_control_mode {
 	CHARGE_CONTROL_NORMAL = 0,
@@ -4259,6 +4259,18 @@ enum ec_charge_control_mode {
 
 struct ec_params_charge_control {
 	uint32_t mode;  /* enum charge_control_mode */
+	/*
+	 * Lower and upper thresholds for for sustain battery. Added in v2.
+	 * Struct isn't named to avoid tainting foreign projects' name spaces.
+	 *
+	 * If charge mode is explicitly set (e.g. DISCHARGE), sustain battery
+	 * will be disabled. To go back to normal mode (and disable sustain
+	 * battery), set mode=NORMAL, lower=-1, upper=-1.
+	 */
+	struct {
+		int16_t lower;
+		int16_t upper;
+	} sustain_soc;
 } __ec_align4;
 
 /*****************************************************************************/
