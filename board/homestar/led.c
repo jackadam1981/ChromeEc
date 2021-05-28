@@ -83,7 +83,7 @@ static void board_led_set_battery(void)
 	battery_ticks++;
 
 	switch (charge_get_state()) {
-	case PWR_STATE_DISCHARGE:
+	case PWR_STATE_CHARGE:
 		if (chipset_in_state(CHIPSET_STATE_ON |
 					CHIPSET_STATE_ANY_SUSPEND |
 					CHIPSET_STATE_ANY_OFF)) {
@@ -100,7 +100,7 @@ static void board_led_set_battery(void)
 			}
 		}
 		break;
-	case PWR_STATE_CHARGE:
+	case PWR_STATE_DISCHARGE:
 		if (chipset_in_state(CHIPSET_STATE_ON)) {
 			/* S0, Green (soild on) */
 			color = LED_GREEN;
