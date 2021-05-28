@@ -128,7 +128,6 @@
 #define CONFIG_SYSTEM_UNLOCKED
 
 /* Optional features */
-#define CONFIG_CMD_HOSTCMD
 #undef CONFIG_CMD_MFALLOW
 
 /* Drivers */
