@@ -95,6 +95,9 @@
 #define SM5803_GPIO0_OPEN_DRAIN_EN	BIT(6)
 #define SM5803_CHG_DET_OPEN_DRAIN_EN	BIT(7)
 
+#define SM5803_REG_VBATSNSP_MEAS_MSB	0x40
+#define SM5803_REG_VBATSNSP_MEAS_LSB	0x41
+
 enum sm5803_gpio0_modes {
 	GPIO0_MODE_PROCHOT,
 	GPIO0_MODE_OUTPUT,
@@ -155,6 +158,22 @@ enum sm5803_gpio0_modes {
 
 #define SM5803_TINT_MAX_LEVEL		0xFF
 #define SM5803_TINT_MIN_LEVEL		0x00
+
+/*
+ * Set minimum thresholds for VBUS_PWR_LOW_TH interrupt generation
+ * 2S battery 9.4v
+ * 3S battery 14.1V VBUS_PWR MIN TH
+ */
+#define SM5803_VBUS_PWR_MINTH_3S_LEVEL 0x9B
+#define SM5803_VBUS_PWR_MINTH_2S_LEVEL 0x9B
+
+/*
+ * Set thresholds for VBATSNSP_MAX_TH GPADC interrupt generation
+ * 2S battery 9v
+ * 3S battery 13.3V
+ */
+#define SM5803_VBAT_SNSP_MAXTH_3S_LEVEL 0xD8
+#define SM5803_VBAT_SNSP_MAXTH_2S_LEVEL 0xDC
 
 /* IBAT levels - The IBAT levels increment in 7.32mA */
 #define SM5803_REG_IBAT_CHG_MEAS_MSB		0x44
