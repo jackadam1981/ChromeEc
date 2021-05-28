@@ -22,6 +22,29 @@
       },
       "revId": "29256a1bdf5e70d50b45b81d3e13dfc9eb5e542c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcc62b03_56e20388",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-05-28T05:40:29Z",
+      "side": 1,
+      "message": "make a common function intel_x86_recovery_mode_rtc_reset() in intel_x86.c and call from these function.\n\nif its working , publish to Google",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 25
+      },
+      "revId": "29256a1bdf5e70d50b45b81d3e13dfc9eb5e542c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
