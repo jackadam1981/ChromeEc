@@ -4249,7 +4249,7 @@ struct ec_params_i2c_write {
  * discharge the battery.
  */
 #define EC_CMD_CHARGE_CONTROL 0x0096
-#define EC_VER_CHARGE_CONTROL 1
+#define EC_VER_CHARGE_CONTROL 2
 
 enum ec_charge_control_mode {
 	CHARGE_CONTROL_NORMAL = 0,
@@ -4259,6 +4259,11 @@ enum ec_charge_control_mode {
 
 struct ec_params_charge_control {
 	uint32_t mode;  /* enum charge_control_mode */
+	/* For sustained charge (v2). The struct doesn't need to be exported. */
+	struct {
+		int16_t lower;
+		int16_t upper;
+	} sustained_charge;
 } __ec_align4;
 
 /*****************************************************************************/

@@ -91,6 +91,7 @@ static int manual_current;  /* Manual current override (-1 = no override) */
 static unsigned int user_current_limit = -1U;
 test_export_static timestamp_t shutdown_target_time;
 static timestamp_t precharge_start_time;
+static struct sustained_charge sustained_chg;
 
 /*
  * The timestamp when the battery charging current becomes stable.
@@ -1158,6 +1159,8 @@ static void dump_charge_state(void)
 		 battery_seems_to_be_disconnected);
 	ccprintf("battery_was_removed = %d\n", battery_was_removed);
 	ccprintf("debug output = %s\n", debugging ? "on" : "off");
+	ccprintf("sustained charge = %d ~ %d%%\n",
+		 sustained_chg.lower, sustained_chg.upper);
 #undef DUMP
 }
 
@@ -1657,6 +1660,9 @@ void charger_init(void)
 	 * their tasks. Make them ready first.
 	 */
 	battery_get_params(&curr.batt);
+
+	sustained_chg.lower = -1;
+	sustained_chg.upper = -1;
 }
 DECLARE_HOOK(HOOK_INIT, charger_init, HOOK_PRIO_DEFAULT);
 
@@ -2631,6 +2637,11 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 	if (rv != EC_SUCCESS)
 		return EC_RES_ERROR;
 
+	if (args->version >= 2) {
+		sustained_chg.lower = p->sustained_charge.lower;
+		sustained_chg.upper = p->sustained_charge.upper;
+	}
+
 #ifdef CONFIG_CHARGER_DISCHARGE_ON_AC
 #ifdef CONFIG_CHARGER_DISCHARGE_ON_AC_CUSTOM
 	rv = board_discharge_on_ac(p->mode == CHARGE_CONTROL_DISCHARGE);
@@ -2644,7 +2655,7 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_CHARGE_CONTROL, charge_command_charge_control,
-		     EC_VER_MASK(1));
+		     EC_VER_MASK(1) | EC_VER_MASK(2));
 
 static void reset_current_limit(void)
 {
