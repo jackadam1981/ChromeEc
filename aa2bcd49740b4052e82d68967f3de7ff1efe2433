@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc12163e_82da09a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-05-28T19:18:12Z",
+      "side": 1,
+      "message": "Watchdog path is different than panic/reset path, so we need to remember about cache flush.",
+      "revId": "aa2bcd49740b4052e82d68967f3de7ff1efe2433",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
