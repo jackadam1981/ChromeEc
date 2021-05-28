@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b772dafe_70c48e48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-05-28T01:45:36Z",
+      "side": 1,
+      "message": "I assume this needs to be done per charger IC? Or is the primary IC the only one affected?\n\nIf we only care about when there\u0027s no AC present in the system, then we should probably define a hook function that uses the `HOOK_AC_CHANGE` hook and check if extpower is present.\n\nThis as implemented, unconditionally sets the charging current for the primary charger to 0.",
+      "revId": "ffef34133d1862ae6635098bf1edc5b0fe2175b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
