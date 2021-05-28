@@ -91,6 +91,7 @@ static int manual_current;  /* Manual current override (-1 = no override) */
 static unsigned int user_current_limit = -1U;
 test_export_static timestamp_t shutdown_target_time;
 static timestamp_t precharge_start_time;
+static struct sustain_soc sustain_soc;
 
 /*
  * The timestamp when the battery charging current becomes stable.
@@ -1158,6 +1159,8 @@ static void dump_charge_state(void)
 		 battery_seems_to_be_disconnected);
 	ccprintf("battery_was_removed = %d\n", battery_was_removed);
 	ccprintf("debug output = %s\n", debugging ? "on" : "off");
+	ccprintf("Battery sustainer SoC = %d%% ~ %d%%\n",
+		 sustain_soc.lower, sustain_soc.upper);
 #undef DUMP
 }
 
@@ -1641,6 +1644,30 @@ static int battery_outside_charging_temperature(void)
 	return 0;
 }
 #endif
+
+static int sustain_soc_set(int16_t lower, int16_t upper)
+{
+	if (lower == -1 || upper == -1) {
+		CPRINTS("Battery sustainer is disabled");
+		sustain_soc.lower = -1;
+		sustain_soc.upper = -1;
+		return EC_SUCCESS;
+	}
+
+	if (lower < upper && 0 <= lower && upper <= 100) {
+		sustain_soc.lower = lower;
+		sustain_soc.upper = upper;
+		return EC_SUCCESS;
+	}
+
+	CPRINTS("Invalid param: %s(%d, %d)", __func__, lower, upper);
+	return EC_ERROR_INVAL;
+}
+
+static void sustain_soc_disable(void)
+{
+	sustain_soc_set(-1, -1);
+}
 
 /*****************************************************************************/
 /* Hooks */
@@ -2635,6 +2662,17 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 	if (rv != EC_SUCCESS)
 		return EC_RES_ERROR;
 
+	if (args->version >= 2) {
+		if (chg_ctl_mode == CHARGE_CONTROL_NORMAL) {
+			rv = sustain_soc_set(p->sustain_soc.lower,
+					     p->sustain_soc.upper);
+			if (rv)
+				return EC_RES_INVALID_PARAM;
+		} else {
+			sustain_soc_disable();
+		}
+	}
+
 #ifdef CONFIG_CHARGER_DISCHARGE_ON_AC
 #ifdef CONFIG_CHARGER_DISCHARGE_ON_AC_CUSTOM
 	rv = board_discharge_on_ac(p->mode == CHARGE_CONTROL_DISCHARGE);
@@ -2648,7 +2686,7 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_CHARGE_CONTROL, charge_command_charge_control,
-		     EC_VER_MASK(1));
+		     EC_VER_MASK(1) | EC_VER_MASK(2));
 
 static void reset_current_limit(void)
 {

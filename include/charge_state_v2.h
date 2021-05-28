@@ -51,6 +51,11 @@ struct charge_state_data {
 #endif
 };
 
+struct sustain_soc {
+	int16_t lower;
+	int16_t upper;
+};
+
 /**
  * Set the output current limit and voltage. This is used to provide power from
  * the charger chip ("OTG" mode).
