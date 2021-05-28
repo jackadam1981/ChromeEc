@@ -127,9 +127,6 @@
  */
 #define CONFIG_SYSTEM_UNLOCKED
 
-/* Optional features */
-#define CONFIG_CMD_HOSTCMD
-
 /* Drivers */
 /* USB Mux */
 #define CONFIG_USB_MUX_PI3USB30532
