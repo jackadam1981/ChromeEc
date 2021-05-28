@@ -87,6 +87,30 @@
       },
       "revId": "0783f186801eb06ea43bdd6721ac261b0108e3b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f6bef7_a1464b87",
+        "filename": "chip/stm32/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-05-28T22:00:00Z",
+      "side": 1,
+      "message": "\u003e Are you talking about `CONFIG_SOFTWARE_PANIC`? I don\u0027t see how it could fix stay-in-ro issue.\n\nNo, sorry. That was just a general comment about this patch.\n\n\u003e After every reboot (soft or hard) cache is disabled, so it is invalidated before use also. We need to disable caches during sysjump, because after invalidate, cache mechanism can load some parts of RAM + it won\u0027t be invalidated after jump.\n\nRight, understood. Just figured I would suggest flushing and disabling cache, so that we didn\u0027t need to worry about additional cache flushes in this function (like after writing bkpdata) before the CPU is reset (or if someone adds more persistent data after the cache flush).\n\n---\n\n\nAll ways are fine, but think we need to flash after writing this bkpdata. No?",
+      "parentUuid": "c8f3197d_35404848",
+      "range": {
+        "startLine": 382,
+        "startChar": 0,
+        "endLine": 392,
+        "endChar": 62
+      },
+      "revId": "0783f186801eb06ea43bdd6721ac261b0108e3b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
