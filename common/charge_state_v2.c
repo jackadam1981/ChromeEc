@@ -2698,15 +2698,12 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 		}
 	}
 
-#ifdef CONFIG_CHARGER_DISCHARGE_ON_AC
-#ifdef CONFIG_CHARGER_DISCHARGE_ON_AC_CUSTOM
-	rv = board_discharge_on_ac(p->mode == CHARGE_CONTROL_DISCHARGE);
-#else
+	if (!IS_ENABLED(CONFIG_CHARGER_DISCHARGE_ON_AC))
+		return EC_RES_SUCCESS;
+
 	rv = charger_discharge_on_ac(p->mode == CHARGE_CONTROL_DISCHARGE);
-#endif
 	if (rv != EC_SUCCESS)
 		return EC_RES_ERROR;
-#endif
 
 	return EC_RES_SUCCESS;
 }
@@ -2923,11 +2920,7 @@ static int command_chgstate(int argc, char **argv)
 						CHARGE_CONTROL_NORMAL);
 			if (rv)
 				return rv;
-#ifdef CONFIG_CHARGER_DISCHARGE_ON_AC_CUSTOM
-			rv = board_discharge_on_ac(val);
-#else
 			rv = charger_discharge_on_ac(val);
-#endif /* CONFIG_CHARGER_DISCHARGE_ON_AC_CUSTOM */
 			if (rv)
 				return rv;
 #endif /* CONFIG_CHARGER_DISCHARGE_ON_AC */
