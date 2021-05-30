@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b87a33b3_6ed47050",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-30T02:55:29Z",
+      "side": 1,
+      "message": "Do we ever need to handle the case where the file doesn\u0027t end with a newline? Looks like it would work, but not sure if it\u0027s worth testing.",
+      "range": {
+        "startLine": 125,
+        "startChar": 42,
+        "endLine": 125,
+        "endChar": 44
+      },
+      "revId": "5eb54ba2202e64ca9453ffedc7b44d53e6ed6b14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
