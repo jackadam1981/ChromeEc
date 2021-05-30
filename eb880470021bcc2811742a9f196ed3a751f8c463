@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d352afd2_68118741",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-30T02:49:20Z",
+      "side": 1,
+      "message": "Possible that this is my unfamiliarity with Python details, but I had to lookup and make sure that the order of ? and ? or ? is what I expected, can we add () to make it more explicit?",
+      "range": {
+        "startLine": 127,
+        "startChar": 34,
+        "endLine": 128,
+        "endChar": 63
+      },
+      "revId": "eb880470021bcc2811742a9f196ed3a751f8c463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7692b4f_803b42b9",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-30T02:49:20Z",
+      "side": 1,
+      "message": "use_defines\u003dFalse",
+      "range": {
+        "startLine": 75,
+        "startChar": 32,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "eb880470021bcc2811742a9f196ed3a751f8c463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "586b54ed_feebae16",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-30T02:49:20Z",
+      "side": 1,
+      "message": "use_defines\u003dTrue",
+      "range": {
+        "startLine": 79,
+        "startChar": 32,
+        "endLine": 79,
+        "endChar": 36
+      },
+      "revId": "eb880470021bcc2811742a9f196ed3a751f8c463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbb8e99f_e32d580b",
+        "filename": "util/test_kconfig_check.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-30T02:49:20Z",
+      "side": 1,
+      "message": "Should we stick with .format() to stay consistent? (same below)",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 12
+      },
+      "revId": "eb880470021bcc2811742a9f196ed3a751f8c463",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
