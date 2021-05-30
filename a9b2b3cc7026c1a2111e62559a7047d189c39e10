@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d726b7a_0d11c6c0",
+        "filename": "util/kconfig_check.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-05-30T02:43:30Z",
+      "side": 1,
+      "message": "Would it be possible to add a test that runs both code paths on our actual Kconfig and verifies that they return the same set?",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 23
+      },
+      "revId": "a9b2b3cc7026c1a2111e62559a7047d189c39e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
