@@ -51,7 +51,7 @@ struct charge_state_data {
 #endif
 };
 
-struct sustained_charge {
+struct sustain_soc {
 	int16_t lower;
 	int16_t upper;
 };
