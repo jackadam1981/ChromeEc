@@ -1675,6 +1675,20 @@ static int battery_outside_charging_temperature(void)
 }
 #endif
 
+static void sustain_battery_soc(void)
+{
+	/* If either AC or battery is not present, nothing to do. */
+	if (!curr.ac || curr.batt.is_present != BP_YES
+			|| !battery_sustainer_enabled())
+		return;
+
+	if (curr.batt.state_of_charge < sustain_soc.lower)
+		set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL);
+	else if (sustain_soc.upper < curr.batt.state_of_charge)
+		/* TODO: To aggressively discharge, need to stop AC current. */
+		set_chg_ctrl_mode(CHARGE_CONTROL_DISCHARGE);
+}
+
 /*****************************************************************************/
 /* Hooks */
 void charger_init(void)
@@ -1690,6 +1704,8 @@ void charger_init(void)
 	 * their tasks. Make them ready first.
 	 */
 	battery_get_params(&curr.batt);
+
+	battery_sustainer_disable();
 }
 DECLARE_HOOK(HOOK_INIT, charger_init, HOOK_PRIO_DEFAULT);
 
@@ -2099,6 +2115,7 @@ wait_for_it:
 		    (is_full != prev_full) ||
 		    (curr.state != prev_state) ||
 		    (curr.batt.display_charge != prev_disp_charge)) {
+			sustain_battery_soc();
 			show_charging_progress();
 			prev_charge = curr.batt.state_of_charge;
 			prev_disp_charge = curr.batt.display_charge;
@@ -2890,6 +2907,7 @@ static int command_chgstate(int argc, char **argv)
 {
 	int rv;
 	int val;
+	char *e;
 
 	if (argc > 1) {
 		if (!strcasecmp(argv[1], "idle")) {
@@ -2924,6 +2942,20 @@ static int command_chgstate(int argc, char **argv)
 				return EC_ERROR_PARAM_COUNT;
 			if (!parse_bool(argv[2], &debugging))
 				return EC_ERROR_PARAM2;
+		} else if (!strcasecmp(argv[1], "sustain")) {
+			int lower, upper;
+
+			if (argc <= 3)
+				return EC_ERROR_PARAM_COUNT;
+			lower = strtoi(argv[2], &e, 0);
+			if (*e)
+				return EC_ERROR_PARAM2;
+			upper = strtoi(argv[3], &e, 0);
+			if (*e)
+				return EC_ERROR_PARAM3;
+			rv = battery_sustainer_set(lower, upper);
+			if (rv)
+				return EC_ERROR_INVAL;
 		} else {
 			return EC_ERROR_PARAM1;
 		}
@@ -2933,7 +2965,8 @@ static int command_chgstate(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(chgstate, command_chgstate,
-			"[idle|discharge|debug on|off]",
+			"[idle|discharge|debug on|off]"
+			"\n[sustain <lower> <upper>]",
 			"Get/set charge state machine status");
 
 #ifdef CONFIG_EC_EC_COMM_BATTERY_CLIENT
