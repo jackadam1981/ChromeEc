@@ -16,6 +16,24 @@
       "message": "While SSFC in EC is still in baseboard level and not managed by Boxster config, we need some mechanisms here to remind EC not to claim the same bit range conflicted to another claim from variant layer of coreboot.\n\nFor example, when Cret claims bits 9-11 in variant of coreboot EC should not claim the same bit range for other component like charger even other device like Drawcia might be the one requested new charger. Otherwise, one day if Cret really needs to phase in second source of charger then bit range will conflict.\n\nOn the other hand, we can just claim bits 9-11 is for codec specifically because this bit range might be claimed as different component in other variants of Dedede. As a result, we might just leave the comment like \"Bits 9-11 were claimed per variant in coreboot for their own defined component.\"",
       "revId": "1fce6a6602fb2de09bed8fc20f28d2f4426dd496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43dc3906_8616e55c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2021-05-31T10:39:37Z",
+      "side": 1,
+      "message": "So, we only need to annotate bits 9-11 which is used for audio code in Cret coreboot, not defined directly, right?",
+      "parentUuid": "20a163f5_4f53cffe",
+      "revId": "1fce6a6602fb2de09bed8fc20f28d2f4426dd496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
