@@ -248,7 +248,8 @@ def hw_write_protect(enable: bool) -> None:
 
     cmd = [
         'dut-control',
-        'fw_wp_en' + ':' + state,
+        'fw_wp_en:on',
+        'fw_wp' + ':' + state,
         ]
     logging.debug('Running command: "%s"', ' '.join(cmd))
     subprocess.run(cmd).check_returncode()
