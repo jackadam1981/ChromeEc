@@ -1645,6 +1645,43 @@ static int battery_outside_charging_temperature(void)
 }
 #endif
 
+static void sustain_soc_disable(void)
+{
+	sustain_soc.lower = -1;
+	sustain_soc.upper = -1;
+}
+
+static int sustain_soc_set(int16_t lower, int16_t upper)
+{
+	if (sustain_soc.lower < sustain_soc.upper
+			&& 0 <= sustain_soc.lower && sustain_soc.upper <= 100) {
+		sustain_soc.lower = lower;
+		sustain_soc.upper = upper;
+		return EC_SUCCESS;
+	}
+
+	CPRINTS("Invalid param: %s(%d, %d)", __func__, lower, upper);
+	return EC_ERROR_INVAL;
+}
+
+static bool sustain_soc_enabled(void)
+{
+	return sustain_soc.lower != -1 && sustain_soc.upper != -1;
+}
+
+static void sustain_battery_soc(void)
+{
+	/* If both of AC and battery aren't present, nothing to do. */
+	if (!curr.ac || curr.batt.is_present != BP_YES
+			|| !sustain_soc_enabled())
+		return;
+
+	if (curr.batt.state_of_charge < sustain_soc.lower)
+		set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL);
+	else if (sustain_soc.upper < curr.batt.state_of_charge)
+		set_chg_ctrl_mode(CHARGE_CONTROL_DISCHARGE);
+}
+
 /*****************************************************************************/
 /* Hooks */
 void charger_init(void)
@@ -1660,6 +1697,8 @@ void charger_init(void)
 	 * their tasks. Make them ready first.
 	 */
 	battery_get_params(&curr.batt);
+
+	sustain_soc_disable();
 }
 DECLARE_HOOK(HOOK_INIT, charger_init, HOOK_PRIO_DEFAULT);
 
@@ -2073,6 +2112,7 @@ wait_for_it:
 		    (is_full != prev_full) ||
 		    (curr.state != prev_state) ||
 		    (curr.batt.display_charge != prev_disp_charge)) {
+			sustain_battery_soc();
 			show_charging_progress();
 			prev_charge = curr.batt.state_of_charge;
 			prev_disp_charge = curr.batt.display_charge;
@@ -2639,8 +2679,19 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 		return EC_RES_ERROR;
 
 	if (args->version >= 2) {
-		sustained_chg.lower = p->sustained_charge.lower;
-		sustained_chg.upper = p->sustained_charge.upper;
+		/*
+		 * If charge mode is explicitly set (e.g. DISCHARGE), make sure
+		 * sustain charge is disabled. To go back to normal mode (and
+		 * disable sustain charge), set mode=NORMAL, lower=-1, upper=-1.
+		 */
+		if (chg_ctl_mode == CHARGE_CONTROL_NORMAL) {
+			rv = sustain_soc_set(p->sustain_charge.lower,
+						p->sustain_charge.upper);
+			if (rv)
+				return EC_RES_INVALID_PARAM;
+		} else {
+			sustain_soc_disable();
+		}
 	}
 
 #ifdef CONFIG_CHARGER_DISCHARGE_ON_AC
@@ -2847,6 +2898,7 @@ static int command_chgstate(int argc, char **argv)
 {
 	int rv;
 	int val;
+	char *e;
 
 	if (argc > 1) {
 		if (!strcasecmp(argv[1], "idle")) {
@@ -2881,6 +2933,20 @@ static int command_chgstate(int argc, char **argv)
 				return EC_ERROR_PARAM_COUNT;
 			if (!parse_bool(argv[2], &debugging))
 				return EC_ERROR_PARAM2;
+		} else if (!strcasecmp(argv[1], "sustain")) {
+			int lower, upper;
+
+			if (argc <= 3)
+				return EC_ERROR_PARAM_COUNT;
+			lower = strtoi(argv[2], &e, 0);
+			if (*e)
+				return EC_ERROR_PARAM2;
+			upper = strtoi(argv[3], &e, 0);
+			if (*e)
+				return EC_ERROR_PARAM3;
+			rv = sustain_soc_set(lower, upper);
+			if (rv)
+				return EC_ERROR_INVAL;
 		} else {
 			return EC_ERROR_PARAM1;
 		}
@@ -2890,7 +2956,8 @@ static int command_chgstate(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(chgstate, command_chgstate,
-			"[idle|discharge|debug on|off]",
+			"[idle|discharge|debug on|off]"
+			"\n[sustain lower upper]",
 			"Get/set charge state machine status");
 
 #ifdef CONFIG_EC_EC_COMM_BATTERY_CLIENT
