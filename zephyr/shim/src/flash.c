@@ -282,70 +282,22 @@ int flash_physical_erase(int offset, int size)
 
 int flash_physical_get_protect(int bank)
 {
-	uint32_t addr = bank * CONFIG_FLASH_BANK_SIZE;
-
-	return flash_check_prot_reg(addr, CONFIG_FLASH_BANK_SIZE);
+	return cros_flash_physical_get_protect(cros_flash_dev, bank);
 }
 
 uint32_t flash_physical_get_protect_flags(void)
 {
-	uint32_t flags = 0;
-
-	/* Check if WP region is protected in status register */
-	if (flash_check_prot_reg(WP_BANK_OFFSET * CONFIG_FLASH_BANK_SIZE,
-				 WP_BANK_COUNT * CONFIG_FLASH_BANK_SIZE))
-		flags |= EC_FLASH_PROTECT_RO_AT_BOOT;
-
-	/*
-	 * TODO: If status register protects a range, but SRP0 is not set,
-	 * flags should indicate EC_FLASH_PROTECT_ERROR_INCONSISTENT.
-	 */
-	if (flag_prot_inconsistent)
-		flags |= EC_FLASH_PROTECT_ERROR_INCONSISTENT;
-
-	/* Read all-protected state from our shadow copy */
-	if (all_protected)
-		flags |= EC_FLASH_PROTECT_ALL_NOW;
-
-	return flags;
+	return cros_flash_physical_get_protect_flags(cros_flash_dev);
 }
 
 int flash_physical_protect_at_boot(uint32_t new_flags)
 {
-	int ret;
-
-	if ((new_flags & (EC_FLASH_PROTECT_RO_AT_BOOT |
-			  EC_FLASH_PROTECT_ALL_AT_BOOT)) == 0) {
-		/* Clear protection bits in status register */
-		return flash_set_status_for_prot(0, 0);
-	}
-
-	ret = flash_write_prot_reg(CONFIG_WP_STORAGE_OFF,
-				   CONFIG_WP_STORAGE_SIZE, 1);
-
-	/*
-	 * Set UMA_LOCK bit for locking all UMA transaction.
-	 * But we still can read directly from flash mapping address
-	 */
-	if (new_flags & EC_FLASH_PROTECT_ALL_AT_BOOT)
-		flash_uma_lock(1);
-
-	return ret;
+	return cros_flash_physical_protect_at_boot(cros_flash_dev, new_flags);
 }
 
 int flash_physical_protect_now(int all)
 {
-	if (all) {
-		/*
-		 * Set UMA_LOCK bit for locking all UMA transaction.
-		 * But we still can read directly from flash mapping address
-		 */
-		flash_uma_lock(1);
-	} else {
-		/* TODO: Implement RO "now" protection */
-	}
-
-	return EC_SUCCESS;
+	return cros_flash_physical_protect_now(cros_flash_dev, all);
 }
 
 int flash_physical_read(int offset, int size, char *data)
@@ -372,19 +324,6 @@ static int flash_dev_init(const struct device *unused)
 		return -ENODEV;
 	}
 	cros_flash_init(cros_flash_dev);
-
-	/*
-	 * Protect status registers of internal spi-flash if WP# is active
-	 * during ec initialization.
-	 */
-#ifdef CONFIG_WP_ACTIVE_HIGH
-	flash_protect_int_flash(gpio_get_level(GPIO_WP));
-#else
-	flash_protect_int_flash(!gpio_get_level(GPIO_WP_L));
-#endif /*CONFIG_WP_ACTIVE_HIGH */
-
-	/* Initialize UMA to unlocked */
-	flash_uma_lock(0);
 
 	return 0;
 }
