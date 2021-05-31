@@ -296,6 +296,7 @@
 
 /* Flash settings */
 #undef CONFIG_EXTERNAL_STORAGE
+#undef CONFIG_INTERNAL_STORAGE
 #undef CONFIG_MAPPED_STORAGE
 #undef CONFIG_FLASH_PSTATE
 #undef CONFIG_FLASH_SIZE_BYTES
@@ -308,11 +309,14 @@
 #define CONFIG_FLASH_SIZE_BYTES 0x0
 #endif
 /* TODO(b:176490413): use DT_PROP(DT_INST(inst, DT_DRV_COMPAT), size) ? */
-#define CONFIG_MAPPED_STORAGE_BASE 0x64000000
-#define CONFIG_FLASH_WRITE_SIZE		0x1  /* minimum write size */
-#define CONFIG_FLASH_WRITE_IDEAL_SIZE	256   /* one page size for write */
-#define CONFIG_FLASH_ERASE_SIZE	0x10000
-#define CONFIG_FLASH_BANK_SIZE		CONFIG_FLASH_ERASE_SIZE
+//#define CONFIG_MAPPED_STORAGE_BASE 0x64000000
+#define CONFIG_MAPPED_STORAGE_BASE      0x80000000
+/* minimum write size */
+#define CONFIG_FLASH_WRITE_SIZE         DT_PROP(DT_INST(0, soc_nv_flash), write_block_size)
+/* one page size for write */
+#define CONFIG_FLASH_WRITE_IDEAL_SIZE   256
+#define CONFIG_FLASH_ERASE_SIZE         DT_PROP(DT_INST(0, soc_nv_flash), erase_block_size)
+#define CONFIG_FLASH_BANK_SIZE          CONFIG_FLASH_ERASE_SIZE
 
 /* Internal, don't use outside this header */
 #define _BINMAN_RO_PATH DT_PATH(binman, wp_ro)
@@ -331,6 +335,10 @@
 
 #ifdef CONFIG_PLATFORM_EC_EXTERNAL_STORAGE
 #define CONFIG_EXTERNAL_STORAGE
+#endif
+
+#ifdef CONFIG_PLATFORM_EC_INTERNAL_STORAGE
+#define CONFIG_INTERNAL_STORAGE
 #endif
 
 #ifdef CONFIG_PLATFORM_EC_MAPPED_STORAGE

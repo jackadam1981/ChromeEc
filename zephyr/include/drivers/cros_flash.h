@@ -53,6 +53,15 @@ typedef int (*cros_flash_api_get_status_reg)(const struct device *dev,
 typedef int (*cros_flash_api_set_status_reg)(const struct device *dev,
 					     char *data);
 typedef int (*cros_flash_api_uma_lock)(const struct device *dev, bool enable);
+typedef int (*cros_flash_api_physical_get_protect)(const struct device *dev,
+						   int bank);
+typedef uint32_t
+(*cros_flash_api_physical_get_protect_flags)(const struct device *dev);
+typedef int (*cros_flash_api_physical_protect_at_boot)(const struct device *dev,
+						       uint32_t new_flags);
+typedef int (*cros_flash_api_physical_protect_now)(const struct device *dev,
+						   int all);
+
 
 __subsystem struct cros_flash_driver_api {
 	cros_flash_api_init init;
@@ -64,6 +73,11 @@ __subsystem struct cros_flash_driver_api {
 	cros_flash_api_get_status_reg get_status_reg;
 	cros_flash_api_set_status_reg set_status_reg;
 	cros_flash_api_uma_lock uma_lock;
+	cros_flash_api_physical_get_protect physical_get_protect;
+	cros_flash_api_physical_get_protect_flags physical_get_protect_flags;
+	cros_flash_api_physical_protect_at_boot physical_protect_at_boot;
+	cros_flash_api_physical_protect_now physical_protect_now;
+
 };
 
 /**
@@ -299,6 +313,107 @@ z_impl_cros_flash_uma_lock(const struct device *dev, bool enable)
 	}
 
 	return api->uma_lock(dev, enable);
+}
+
+/**
+ * @brief Write status registers of flash.
+ *
+ * @param dev Pointer to the device structure for the flash driver instance.
+ * @param data	        Buffer to store the value to write
+ *
+ * @return 0 If successful.
+ * @retval -ENOTSUP Not supported api function.
+ */
+__syscall int cros_flash_physical_get_protect(const struct device *dev,
+					      int bank);
+
+static inline int
+z_impl_cros_flash_physical_get_protect(const struct device *dev, int bank)
+{
+	const struct cros_flash_driver_api *api =
+		(const struct cros_flash_driver_api *)dev->api;
+
+	if (!api->physical_get_protect) {
+		return -ENOTSUP;
+	}
+
+	return api->physical_get_protect(dev, bank);
+}
+
+/**
+ * @brief Write status registers of flash.
+ *
+ * @param dev Pointer to the device structure for the flash driver instance.
+ * @param data	        Buffer to store the value to write
+ *
+ * @return 0 If successful.
+ * @retval -ENOTSUP Not supported api function.
+ */
+__syscall
+uint32_t cros_flash_physical_get_protect_flags(const struct device *dev);
+
+static inline uint32_t
+z_impl_cros_flash_physical_get_protect_flags(const struct device *dev)
+{
+	const struct cros_flash_driver_api *api =
+		(const struct cros_flash_driver_api *)dev->api;
+
+	if (!api->physical_get_protect_flags) {
+		return -ENOTSUP;
+	}
+
+	return api->physical_get_protect_flags(dev);
+}
+
+/**
+ * @brief Write status registers of flash.
+ *
+ * @param dev Pointer to the device structure for the flash driver instance.
+ * @param data	        Buffer to store the value to write
+ *
+ * @return 0 If successful.
+ * @retval -ENOTSUP Not supported api function.
+ */
+__syscall int cros_flash_physical_protect_at_boot(const struct device *dev,
+						  uint32_t new_flags);
+
+static inline int
+z_impl_cros_flash_physical_protect_at_boot(const struct device *dev,
+					   uint32_t new_flags)
+{
+	const struct cros_flash_driver_api *api =
+		(const struct cros_flash_driver_api *)dev->api;
+
+	if (!api->physical_protect_at_boot) {
+		return -ENOTSUP;
+	}
+
+	return api->physical_protect_at_boot(dev, new_flags);
+}
+
+/**
+ * @brief Write status registers of flash.
+ *
+ * @param dev Pointer to the device structure for the flash driver instance.
+ * @param data	        Buffer to store the value to write
+ *
+ * @return 0 If successful.
+ * @retval -ENOTSUP Not supported api function.
+ */
+__syscall int cros_flash_physical_protect_now(const struct device *dev,
+					      int all);
+
+static inline int
+z_impl_cros_flash_physical_protect_now(const struct device *dev, int all)
+{
+	const struct cros_flash_driver_api *api =
+		(const struct cros_flash_driver_api *)dev->api;
+
+	if (!api->physical_protect_now) {
+		return -ENOTSUP;
+	}
+
+	return api->physical_protect_now(dev, all);
 }
 
 /**
