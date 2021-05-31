@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "123b68b9_6f157558",
+        "filename": "driver/tcpm/rt1718s.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-05-31T13:12:07Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "639d02ae_5ec3dda1",
+      "range": {
+        "startLine": 136,
+        "startChar": 3,
+        "endLine": 136,
+        "endChar": 43
+      },
+      "revId": "2bad831613364b0320118ff768e8ae062fa52303",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31ce069e_4514bebf",
