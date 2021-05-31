@@ -40,6 +40,16 @@ enum ec_ssfc_usb_ss_mux {
 	SSFC_USB_SS_MUX_PI3USBX532 = 2,
 };
 
+/*
+ * Audio Codec (Bits 9-11)
+ */
+enum ec_ssfc_audio_codec {
+	SSFC_AUDIO_CODEC_DEFAULT = 0,
+	SSFC_AUDIO_CODEC_DA7219 = 1,
+	SSFC_AUDIO_CODEC_RT5682 = 2,
+	SSFC_AUDIO_CODEC_CS42l42 = 3,
+};
+
 union dedede_cbi_ssfc {
 	struct {
 		uint32_t base_sensor : 3;
