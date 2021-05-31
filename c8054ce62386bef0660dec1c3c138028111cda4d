@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bebb2e22_466122c8",
+        "filename": "board/volet/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-05-31T11:01:58Z",
+      "side": 1,
+      "message": "Could you please double check if there is any i2c devices connecting to this i2c bus? If not, please remove this #define and set the corresponding gpio pin to unused.",
+      "range": {
+        "startLine": 154,
+        "startChar": 27,
+        "endLine": 154,
+        "endChar": 43
+      },
+      "revId": "c8054ce62386bef0660dec1c3c138028111cda4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
