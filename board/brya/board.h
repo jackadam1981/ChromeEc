@@ -24,6 +24,9 @@
 
 #define CONFIG_MP2964
 
+/* Optional features */
+#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
+
 /* LED */
 #define CONFIG_LED_PWM
 #define CONFIG_LED_PWM_COUNT 2
