@@ -42,12 +42,16 @@
  *  b'11 - dfet : off / cfet : on
  *  The value b'10 is disconnect_val, so we can use b'01 for cfet_off_val
  */
+
+/* charging current is limited to 0.45C */
+#define CHARGING_CURRENT_45C 2804
+
 const struct board_batt_params board_battery_info[] = {
 	/* SDI Battery Information */
 	[BATTERY_SDI] = {
 		.fuel_gauge = {
 			.manuf_name = "SDI",
-			.device_name = "4432D53",
+			.device_name = "4404D62",
 			.ship_mode = {
 				.reg_addr = 0x00,
 				.reg_data = { 0x0010, 0x0010 },
@@ -62,45 +66,14 @@ const struct board_batt_params board_battery_info[] = {
 			}
 		},
 		.batt_info = {
-			.voltage_max            = 8760,
-			.voltage_normal         = 7720, /* mV */
+			.voltage_max            = 8800,
+			.voltage_normal         = 7700, /* mV */
 			.voltage_min            = 6000, /* mV */
 			.precharge_current      = 200,  /* mA */
 			.start_charging_min_c   = 0,
 			.start_charging_max_c   = 45,
 			.charging_min_c         = 0,
-			.charging_max_c         = 50,
-			.discharging_min_c      = -20,
-			.discharging_max_c      = 70,
-		},
-	},
-	/* SWD(Sunwoda) Battery Information */
-	[BATTERY_SWD] = {
-		.fuel_gauge = {
-			.manuf_name = "SWD",
-			.device_name = "4432W53",
-			.ship_mode = {
-				.reg_addr = 0x00,
-				.reg_data = { 0x0010, 0x0010 },
-			},
-			.fet = {
-				.mfgacc_support = 0,
-				.reg_addr = 0x00,
-				.reg_mask = 0xc000,
-				.disconnect_val = 0x8000,
-				.cfet_mask = 0xc000,
-				.cfet_off_val = 0x2000,
-			}
-		},
-		.batt_info = {
-			.voltage_max            = 8760,
-			.voltage_normal         = 7720, /* mV */
-			.voltage_min            = 6000, /* mV */
-			.precharge_current      = 200,  /* mA */
-			.start_charging_min_c   = 0,
-			.start_charging_max_c   = 45,
-			.charging_min_c         = 0,
-			.charging_max_c         = 50,
+			.charging_max_c         = 55,
 			.discharging_min_c      = -20,
 			.discharging_max_c      = 70,
 		},
@@ -112,18 +85,11 @@ const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_SDI;
 
 int charger_profile_override(struct charge_state_data *curr)
 {
-	int current;
-	int voltage;
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return 0;
 
-	current = curr->requested_current;
-	voltage = curr->requested_voltage;
-
-	voltage -= 100;
-	if (current > CHARGING_CURRENT_REDUCE)
-		current -= (current / 10);
-
-	curr->requested_voltage = MIN(curr->requested_voltage, voltage);
-	curr->requested_current = MIN(curr->requested_current, current);
+	if (curr->requested_current > CHARGING_CURRENT_45C)
+		curr->requested_current = CHARGING_CURRENT_45C;
 
 	return 0;
 }
