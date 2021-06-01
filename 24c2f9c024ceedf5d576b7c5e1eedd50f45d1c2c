@@ -33,6 +33,29 @@
       "message": "Hello Aseda, \nWe need you final approve to finalize this review.\nCould you please take a look.",
       "revId": "24c2f9c024ceedf5d576b7c5e1eedd50f45d1c2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2b816a6_9ac33091",
+        "filename": "driver/ioexpander/ccgxxf.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-01T21:19:33Z",
+      "side": 1,
+      "message": "Maybe we should leave a hint here and print an error message if this happens.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 0
+      },
+      "revId": "24c2f9c024ceedf5d576b7c5e1eedd50f45d1c2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
