@@ -16,6 +16,24 @@
       "message": "I wonder if we should just put TCPCI users in here as well if we handle it automatically.",
       "revId": "46082598d140a8dcf43efdfe1cc01eb65525e256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2da90d1_6156731f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-01T15:40:08Z",
+      "side": 1,
+      "message": "I wonder as well.  OCP detection is an optional feature for TCPCI, so not all chips implementing TCPCI will be capable of using/reporting it.  I\u0027d thought it was only part of TCPCI rev 2.0 but now that I\u0027ve looked up my cached 1.0 spec it\u0027s in there as well.  \n\nAt any rate, we could enable it to have it ready to go.  It would be taking up extra flash space and we wouldn\u0027t know whether the module could be used until runtime.  But if it doesn\u0027t run any boards out of space on ToT, then the extra flash shouldn\u0027t be too bad.",
+      "parentUuid": "130fac5a_e96e650f",
+      "revId": "46082598d140a8dcf43efdfe1cc01eb65525e256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
