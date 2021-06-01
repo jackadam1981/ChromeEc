@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "116fbc11_f5ec0961",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-01T15:53:42Z",
+      "side": 1,
+      "message": "We\u0027ll re-do this detection once per EC run, but we can only detect the dead battery once per boot on our first run.  \n\nIf we sysjump, this variable won\u0027t be carried over.  I think this should be okay based on manual sysjumps I\u0027ve done back and forth from the console.  We\u0027ve lost the dead battery boot information, but this is pretty much only a developer-applicable scenario.  The TCPC doesn\u0027t seem to experience the delay in CC line reporting once we\u0027ve already got a contract established and start fiddling with this bit.",
+      "parentUuid": "a31d4ef8_58dd3d1c",
+      "revId": "25377402f44f1a19f5930ea4f22e8ac211c4be69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcfbaa8d_7fd24279",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-05-27T20:29:08Z",
       "side": 1,
       "message": "nit: I think this would read better if the condition checked for the exceptional case, i.e. BOOT_DEAD_BATTERY \u0026\u0026 TCPC_REG_POWER_STATUS_DEBUG_ACC_CON, then printed a debug statement, and set the register in the else case.",
+      "revId": "25377402f44f1a19f5930ea4f22e8ac211c4be69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f433a19e_a3dc5e55",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-01T15:53:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcfbaa8d_7fd24279",
       "revId": "25377402f44f1a19f5930ea4f22e8ac211c4be69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
