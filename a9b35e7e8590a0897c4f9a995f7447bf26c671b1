@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d472edcc_8d8a08b3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6326,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-01T19:42:01Z",
+      "side": 1,
+      "message": "LGTM.",
+      "parentUuid": "2ad3b482_096408e6",
+      "range": {
+        "startLine": 6311,
+        "startChar": 0,
+        "endLine": 6326,
+        "endChar": 0
+      },
+      "revId": "a9b35e7e8590a0897c4f9a995f7447bf26c671b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e3f8d55_7c7e7ab2",
