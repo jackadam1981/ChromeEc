@@ -5,13 +5,7 @@
 
 #include "common.h"
 
-#include "driver/bc12/pi3usb9201_public.h"
-#include "driver/ppc/nx20p348x.h"
-#include "driver/ppc/syv682x_public.h"
-#include "driver/retimer/bb_retimer_public.h"
-#include "driver/tcpm/nct38xx.h"
-#include "driver/tcpm/ps8xxx_public.h"
-#include "driver/tcpm/tcpci.h"
+
 #include "fw_config.h"
 #include "hooks.h"
 #include "ioexpander.h"
@@ -21,12 +15,21 @@
 #include "usbc_ppc.h"
 #include "usb_mux.h"
 #include "usb_pd_tcpm.h"
+#include "driver/bc12/pi3usb9201_public.h"
+#include "driver/ppc/nx20p348x.h"
+#include "driver/ppc/syv682x_public.h"
+#include "driver/retimer/bb_retimer_public.h"
+#include "driver/retimer/kb800x.h"
+#include "driver/tcpm/nct38xx.h"
+#include "driver/tcpm/ps8xxx_public.h"
+#include "driver/tcpm/rt1715_public.h"
+#include "driver/tcpm/tcpci.h"
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
 /* USBC TCPC configuration */
-const struct tcpc_config_t tcpc_config[] = {
+struct tcpc_config_t tcpc_config[] = {
 	[USBC_PORT_C0] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
@@ -109,7 +112,31 @@ static const struct usb_mux usbc1_usb3_db_retimer = {
 	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 };
 
-const struct usb_mux usb_muxes[] = {
+static const struct usb_mux usbc1_usb4_kb8001_db_retimer = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &kb800x_usb_mux_driver,
+	.i2c_port = I2C_PORT_USB_C1_MUX,
+	.i2c_addr_flags = KB800X_I2C_ADDR0_FLAGS,
+};
+
+static const struct tcpc_config_t usbc1_tcpc_config_rt1716 = {
+	.bus_type = EC_BUS_TYPE_I2C,
+	.i2c_info = {
+		.port = I2C_PORT_USB_C1_TCPC,
+		.addr_flags = RT1715_I2C_ADDR_FLAGS,
+	},
+	.drv = &rt1715_tcpm_drv,
+	.flags = TCPC_FLAGS_TCPCI_REV2_0 |
+			TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V,
+};
+static const struct ppc_config_t usbc1_ppc_config_syv682b = {
+	.i2c_port = I2C_PORT_USB_C1_PPC,
+	.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+	.frs_en = GPIO_USB_C1_FRS_EN,
+	.drv = &syv682x_drv,
+};
+
+struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
 		.driver = &bb_usb_retimer,
@@ -184,6 +211,17 @@ void config_usb_db_type(void)
 	 * TODO(b/180434685): implement multiple DB types
 	 */
 
+	switch (db_type) {
+	case DB_USB4_KB8001:
+		usb_muxes[USBC_PORT_C1].next_mux =
+			&usbc1_usb4_kb8001_db_retimer;
+		tcpc_config[USBC_PORT_C1] = usbc1_tcpc_config_rt1716;
+		ppc_chips[USBC_PORT_C1] = usbc1_ppc_config_syv682b;
+		break;
+	default:
+		break;
+	};
+
 	CPRINTS("Configured USB DB type number is %d", db_type);
 }
 
@@ -225,6 +263,16 @@ __override void bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 		msleep(1);
 	}
 }
+
+struct kb800x_usb_control kb800x_control[] = {
+	[USBC_PORT_C0] = {
+	},
+	[USBC_PORT_C1] = {
+		.retimer_rst_gpio = GPIO_USB_C1_RT_RST_R_ODL,
+	},
+	[USBC_PORT_C2] = {
+	},
+};
 
 void board_reset_pd_mcu(void)
 {
@@ -370,6 +418,8 @@ void ppc_interrupt(enum gpio_signal signal)
 		case DB_USB3_PS8815:
 			nx20p348x_interrupt(USBC_PORT_C1);
 			break;
+		case DB_USB4_KB8001:
+			syv682x_interrupt(USBC_PORT_C1);
 		}
 		break;
 	case GPIO_USB_C2_PPC_INT_ODL:
