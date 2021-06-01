@@ -200,6 +200,27 @@ config PLATFORM_EC_USBC_RETIMER_INTEL_BB_RUNTIME_CONFIG
 	  factory. Without this, multiple EC images would need to be installed
 	  depending on the board.
 
+config PLATFORM_EC_USBC_RETIMER_KB800X
+	bool "Enable KB800X retimer"
+	help
+	  The Matterhorn KB8001 is a Universal Serial Bus (USB) Type-CTM 40 Gb/s
+	  multiprotocol switch and bidirectional Bit-Level Retimer (BLR) which
+	  supports:
+	    - Display Port: four unidirectional DP lanes
+	    - USB3.1 Gen1/2: one bi-directional USB lane
+	    - USB4/Thunderbolt: two bi-directional CIO lanes
+	    - Multifunction Display (MFD): two unidirectional lanes of DP and
+	      one bidirectional lane of USB3.1 Gen1/2
+
+config PLATFORM_EC_KB800X_XBAR
+	bool "Use custom remapping of HSIO XBAR"
+	depends on PLATFORM_EC_USBC_RETIMER_KB800X
+	default n
+	help
+	  Enable this to allow using a custom crossbar configuration for the HSIO
+	  lanes. The board_kb800x_xbar_override should be overridden if this is
+	  enabled.
+
 menuconfig PLATFORM_EC_USB_POWER_DELIVERY
 	bool "USB Type-C Power Delivery (PD)"
 	default y

@@ -168,6 +168,7 @@ driver-$(CONFIG_USBC_RETIMER_PI3HDX1204)+=retimer/pi3hdx1204.o
 driver-$(CONFIG_USBC_RETIMER_PS8802)+=retimer/ps8802.o
 driver-$(CONFIG_USBC_RETIMER_PS8818)+=retimer/ps8818.o
 driver-$(CONFIG_USBC_RETIMER_TUSB544)+=retimer/tusb544.o
+driver-$(CONFIG_USBC_RETIMER_KB800X)+=retimer/kb800x.o
 
 # USB mux high-level driver
 driver-$(CONFIG_USBC_SS_MUX)+=usb_mux/usb_mux.o
