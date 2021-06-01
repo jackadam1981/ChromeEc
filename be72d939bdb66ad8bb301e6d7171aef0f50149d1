@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcae269c_75ce2244",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1679,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-01T18:00:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a72638e7_dda2aedf",
+      "revId": "be72d939bdb66ad8bb301e6d7171aef0f50149d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cc53aa6_611ca78b",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07e1ee72_e28414f7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2947,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-01T18:00:18Z",
+      "side": 1,
+      "message": "I think so. Our implementation of strtoi stores the address of the first invalid  character of argv[2] in e. So, it can\u0027t be null. (If there is no invalid character, e should be pointing to the null char of argv[2].)",
+      "parentUuid": "4cc53aa6_611ca78b",
+      "revId": "be72d939bdb66ad8bb301e6d7171aef0f50149d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7914b6fd_3e408cb7",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-06-01T15:33:39Z",
       "side": 1,
       "message": "nit: [sustain \u003clower\u003e|\u003cupper\u003e]",
+      "revId": "be72d939bdb66ad8bb301e6d7171aef0f50149d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f624762_1d72e1e0",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2965,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-01T18:00:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7914b6fd_3e408cb7",
       "revId": "be72d939bdb66ad8bb301e6d7171aef0f50149d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
