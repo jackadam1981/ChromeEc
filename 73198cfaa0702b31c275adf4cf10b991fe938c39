@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd407b5c_8af25d5d",
+        "filename": "include/system.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-01T22:07:57Z",
+      "side": 1,
+      "message": "I prefer not to add it as a new public API, since there are some similar functions, like system_jumped_to_this_image(), system_jumped_late(). But these functions are broken for the reasons you discovered, i.e. jump data is read from a wrong location, right?\n\nMaking it a local static function in the zephyr/shim/src/gpio.c would be better, as a temporary solution. For the long term, switch to use one of the existing APIs.",
+      "range": {
+        "startLine": 659,
+        "startChar": 0,
+        "endLine": 665,
+        "endChar": 24
+      },
+      "revId": "73198cfaa0702b31c275adf4cf10b991fe938c39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
