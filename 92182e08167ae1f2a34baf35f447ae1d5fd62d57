@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85d2f583_9f69862d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-01T22:21:42Z",
+      "side": 1,
+      "message": "rebase, cleanup and split the CL for MCHP related code",
+      "revId": "92182e08167ae1f2a34baf35f447ae1d5fd62d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f594a8c9_cb29328d",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-01T22:21:42Z",
+      "side": 1,
+      "message": "undef in board.h",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 35
+      },
+      "revId": "92182e08167ae1f2a34baf35f447ae1d5fd62d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15707254_ce047c07",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-01T22:21:42Z",
+      "side": 1,
+      "message": "undef and redef in board.h",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "92182e08167ae1f2a34baf35f447ae1d5fd62d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
