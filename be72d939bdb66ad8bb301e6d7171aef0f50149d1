@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a72638e7_dda2aedf",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1679,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-06-01T15:33:39Z",
+      "side": 1,
+      "message": "nit: either AC or battery is not present ?",
+      "revId": "be72d939bdb66ad8bb301e6d7171aef0f50149d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc53aa6_611ca78b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2947,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-06-01T15:33:39Z",
+      "side": 1,
+      "message": "are you sure that e is never null here ?",
+      "revId": "be72d939bdb66ad8bb301e6d7171aef0f50149d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7914b6fd_3e408cb7",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2965,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-06-01T15:33:39Z",
+      "side": 1,
+      "message": "nit: [sustain \u003clower\u003e|\u003cupper\u003e]",
+      "revId": "be72d939bdb66ad8bb301e6d7171aef0f50149d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
