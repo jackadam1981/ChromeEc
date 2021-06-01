@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c33d273d_be872328",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1651,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-06-01T15:27:12Z",
+      "side": 1,
+      "message": "nit: SoC or SOC rather than soc",
+      "revId": "3a01fdce58b5fa29146148a646a69e91c21d77e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7de270a8_913df4f3",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2668,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-06-01T15:27:12Z",
+      "side": 1,
+      "message": "nit: sustain -\u003e sustained ?",
+      "revId": "3a01fdce58b5fa29146148a646a69e91c21d77e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "673921ca_13538b2c",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-06-01T15:27:12Z",
+      "side": 1,
+      "message": "why int16_t to store 0-100 and -1 ?",
+      "revId": "3a01fdce58b5fa29146148a646a69e91c21d77e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a670c076_4a419120",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 4263,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-06-01T15:27:12Z",
+      "side": 1,
+      "message": "nit: 2x \u0027for\u0027\nnit: soc -\u003e SOC",
+      "revId": "3a01fdce58b5fa29146148a646a69e91c21d77e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
