@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "256cfc1a_bed9a384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-01T23:45:20Z",
+      "side": 1,
+      "message": "Any idea why this failing:\nFAILED: zephyr/zephyr.elf zephyr/zephyr.lst zephyr/zephyr.stat zephyr/zephyr.exe\nld.lld: error: undefined symbol: get_jump_data\n",
+      "revId": "208f37ae2f22b6f46cbd423db4c34b5d7dfe0b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
