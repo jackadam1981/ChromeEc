@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d2918f2_d56c977b",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-06-01T13:53:12Z",
+      "side": 1,
+      "message": "Should this be tab indented to follow the rest of the file?\n\nIs GPIO_PACKET_MODE_EN the label you want to use or did you want to follow the rest of this DTS and make the label \"PACKET_MODE_EN\"?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "8040cbd0f3763b697adaf903232a973dccdb6884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
