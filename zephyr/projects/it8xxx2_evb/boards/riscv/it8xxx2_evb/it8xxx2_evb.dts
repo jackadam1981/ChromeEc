@@ -7,7 +7,9 @@
 
 #include <cros/ite/it8xxx2.dtsi>
 #include <dt-bindings/gpio_defines.h>
-#include <it8xxx2.dtsi>
+#include <riscv/it8xxx2.dtsi>
+/*include <dt-bindings/pwm/pwm.h>*/
+/*include <dt-bindings/pwm/it8xxx2_pwm.h>*/
 
 / {
 	model = "IT8XXX2 EV-Board";
@@ -179,6 +181,21 @@
 			label = "OPT_4";
 		};
 	};
+
+	named-pwms {
+		compatible = "named-pwms";
+		/* ledx = pwmx must use in order */
+		led0 {
+			pwms = <&pwm0 0 PWM_POLARITY_NORMAL>;
+			label = "LED0_GREEN";
+			frequency = <100>;
+		};
+		led1 {
+			pwms = <&pwm1 1 PWM_POLARITY_NORMAL>;
+			label = "LED1_BLUE";
+			frequency = <30000>;
+		};
+	};
 };
 
 &adc0 {
@@ -209,4 +226,16 @@
 	status = "okay";
 	current-speed = <115200>;
 	clock-frequency = <1804800>;
+};
+
+/* Green LED */
+&pwm0 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C4>;
+};
+
+/* Blue LED */
+&pwm1 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C6>;
 };

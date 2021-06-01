@@ -1,0 +1,44 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	named-pwms {
+		compatible = "named-pwms";
+		/* ledx = pwmx must use in order */
+		led0 {
+			pwms = <&pwm0 0 PWM_POLARITY_INVERTED>;
+			label = "LED0_BLUE";
+			frequency = <324>;
+		};
+		led1 {
+			pwms = <&pwm1 1 PWM_POLARITY_INVERTED>;
+			label = "LED1_GREEN";
+			frequency = <324>;
+		};
+		led2 {
+			pwms = <&pwm2 2 PWM_POLARITY_INVERTED>;
+			label = "LED2_RED";
+			frequency = <324>;
+		};
+	};
+};
+
+/* Blue LED */
+&pwm0 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C4>;
+};
+
+/* Green LED */
+&pwm1 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C4>;
+};
+
+/* Red LED */
+&pwm2 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C4>;
+};

@@ -4,6 +4,7 @@
  */
 
 #include <cros/binman.dtsi>
+/*include <riscv/it8xxx2.dtsi>*/
 
 / {
 	named-bbram-regions {
