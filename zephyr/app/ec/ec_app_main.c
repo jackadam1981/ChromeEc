@@ -14,6 +14,7 @@
 #include "keyboard_scan.h"
 #include "lpc.h"
 #include "system.h"
+#include "timer.h"
 #include "vboot.h"
 #include "watchdog.h"
 #include "zephyr_espi_shim.h"
@@ -24,6 +25,8 @@
  */
 void ec_app_main(void)
 {
+	timestamp_t init_time;
+
 	system_common_pre_init();
 
 	/*
@@ -88,6 +91,14 @@ void ec_app_main(void)
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOOKS)) {
 		hook_notify(HOOK_INIT);
 	}
+
+	/*
+	 * Print the init time.  Not completely accurate because it can't take
+	 * into account the time before timer_init(), but it'll at least catch
+	 * the majority of the time.
+	 */
+	init_time = get_time();
+	printk("[%d.%d Inits done]\n\n", init_time.le.hi, init_time.le.lo);
 
 	/* Start the EC tasks after performing all main initialization */
 	if (IS_ENABLED(CONFIG_SHIMMED_TASKS)) {
