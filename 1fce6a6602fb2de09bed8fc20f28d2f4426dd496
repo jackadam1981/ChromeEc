@@ -34,6 +34,24 @@
       "parentUuid": "20a163f5_4f53cffe",
       "revId": "1fce6a6602fb2de09bed8fc20f28d2f4426dd496",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b60e3e3_228d42c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-06-01T03:27:44Z",
+      "side": 1,
+      "message": "Yes, you are correct.\n\n\u003e Only cret board use SSFC bits 9-11 in coreboot for audio codec.\n\nMaybe we can consider [1] because in this way, we don\u0027t need to amend statement above later if more variants leverage this bits range.\n\n[1] One or more of variants in coreboot already claim the usage of SSFC bits 9-11.",
+      "parentUuid": "43dc3906_8616e55c",
+      "revId": "1fce6a6602fb2de09bed8fc20f28d2f4426dd496",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
