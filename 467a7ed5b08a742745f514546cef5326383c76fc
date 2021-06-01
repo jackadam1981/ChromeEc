@@ -22,6 +22,30 @@
       },
       "revId": "467a7ed5b08a742745f514546cef5326383c76fc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbf73d16_251ed230",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-01T22:22:59Z",
+      "side": 1,
+      "message": "Or the `cprintf(CC_SYSTEM, ...)` which is used in EC-OS.",
+      "parentUuid": "a5df8d3b_a08e81e9",
+      "range": {
+        "startLine": 101,
+        "startChar": 9,
+        "endLine": 101,
+        "endChar": 16
+      },
+      "revId": "467a7ed5b08a742745f514546cef5326383c76fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
