@@ -16,6 +16,24 @@
       "message": "We are seeing error while reading the ectool cbi get 0 (Referring Brya board). How to resolve this ?\nManaged in updating board version with the #define CONFIG_SYSTEM_UNLOCKED.\n\nPlease let us know, is there any other way to resolve the above issue?",
       "revId": "53b42c155805de608e4026cc5e067fd5da8a21ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e884dcd_8abe3151",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-01T21:56:37Z",
+      "side": 1,
+      "message": "CONFIG_SYSTEM_UNLOCKED is probably not the root cause of what you\u0027re\nseeing. please file a bug so the right people can investigate what\nyou\u0027re observing.",
+      "parentUuid": "2fa18a52_134a487d",
+      "revId": "53b42c155805de608e4026cc5e067fd5da8a21ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
