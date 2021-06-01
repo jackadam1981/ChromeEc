@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e2c22fd_417743ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-06-01T05:23:02Z",
+      "side": 1,
+      "message": "cc Gwendal and Jett because they strongly recommend not to probe sensor in the EC in order to decide which source was stuffed in this board in runtime and in user hand.",
+      "revId": "edc2839d0d6315c8f00280fd4fe523910c1bd939",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
