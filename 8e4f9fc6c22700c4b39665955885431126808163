@@ -16,6 +16,24 @@
       "message": "This makes the following if statement separated from the prior if statement (because battery_seems_to_be_disconnected \u003d 0 takes over the else block above). This doesn\u0027t look intended...",
       "revId": "8e4f9fc6c22700c4b39665955885431126808163",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21629f9a_1619c30c",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1001696
+      },
+      "writtenOn": "2021-06-01T16:48:29Z",
+      "side": 1,
+      "message": "I agree that the code is difficult to follow and I would implement it differently today given the chance. If CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD and CONFIG_BATTERY_REVIVE_DISCONNECT are mutually exclusive then we should make that more clear (maybe unify those into a single CONFIG option which can take multiple values). If not maybe a refactor is in order where we can remove unused CONFIG options (maybe CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD?). If not then we should reduce use of compile-time macros to make the control flow more understandable (e.g., instead of \"#ifdef CONFIG_BATTERY_REVIVE_DISCONNECT ...\" implement something like \"bool battery_revive_disconnect_supported() { #ifdef CONFIG_BATTERY_REVIVE_DISCONNECT return true; #else return false; #endif }\" and use that).\n\nIt sounds like you\u0027re concerned about the case where both CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD and CONFIG_BATTERY_REVIVE_DISCONNECT are defined. It\u0027s not obvious to me that things are broken in that case, on the other hand it\u0027s not obvious that things are WAI (for example, in theory, maybe \n battery_get_disconnect_state() can return BATTERY_DISCONNECTED despite the battery responding).",
+      "parentUuid": "527e48e1_7969b8f6",
+      "revId": "8e4f9fc6c22700c4b39665955885431126808163",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
