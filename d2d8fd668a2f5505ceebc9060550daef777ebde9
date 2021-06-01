@@ -16,6 +16,24 @@
       "message": "Has the UPSTREAM change merged?",
       "revId": "d2d8fd668a2f5505ceebc9060550daef777ebde9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64512246_00a4ccec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-06-01T20:18:05Z",
+      "side": 1,
+      "message": "I believe the upstream you are referring to is https://github.com/zephyrproject-rtos/zephyr/pull/35498 and that has not landed.",
+      "parentUuid": "28bb787e_5fce0716",
+      "revId": "d2d8fd668a2f5505ceebc9060550daef777ebde9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
