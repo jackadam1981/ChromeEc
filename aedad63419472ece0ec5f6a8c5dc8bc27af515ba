@@ -16,6 +16,24 @@
       "message": "This is what I did today, but it won\u0027t build because it\u0027s missing a few values that use to be defined in our core specific linker script: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/core/cortex-m/ec.lds.S;l\u003d171;drc\u003dfc1832097b9bbe40eb128828876803993a331ecb\n\nThe issue I\u0027m running into is not having __flash_lplfw_end and __flash_lplfw_start defined. I\u0027m also not seeing anything parallel in Zephyr\u0027s linker scripts. Any pointers to where to get these addresses?",
       "revId": "aedad63419472ece0ec5f6a8c5dc8bc27af515ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc53a7cc_ab5312f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-06-01T10:18:43Z",
+      "side": 1,
+      "message": "Hi Yuval,\nI think you can add the section of __flash_lplfw_end and __flash_lplfw_start in this file https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/linker/npcx-lfw.ld",
+      "parentUuid": "acd7dc20_ae9f6a3f",
+      "revId": "aedad63419472ece0ec5f6a8c5dc8bc27af515ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
