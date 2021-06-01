@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c4f6c6_258923a4",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2021-06-01T02:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b705ed4f_ba8724f8",
+      "range": {
+        "startLine": 34,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 23
+      },
+      "revId": "66442bbb63ae547507753682a647d22d1da8f6b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72cafd44_427222ce",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-05-20T22:50:06Z",
       "side": 1,
       "message": "what does the EC do when these values are not provided?\n\ni tried copy-pasting the limits from thermal_inductor and\n(understandably) ended up with thermal limits warnings on\nthe EC console.",
+      "range": {
+        "startLine": 343,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 3
+      },
+      "revId": "66442bbb63ae547507753682a647d22d1da8f6b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45cf33d_0fd9fe0c",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2021-06-01T02:40:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72cafd44_427222ce",
       "range": {
         "startLine": 343,
         "startChar": 0,
