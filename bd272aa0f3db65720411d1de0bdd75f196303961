@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d99faf_de3477d5",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-01T23:29:02Z",
+      "side": 1,
+      "message": "Sorry, typo. I meant `cprints(CC_SYSTEM, ...)`, so you don\u0027t need the \"[%pT]\" and PRINTF_TIMESTAMP_NOW.",
+      "range": {
+        "startLine": 97,
+        "startChar": 1,
+        "endLine": 97,
+        "endChar": 8
+      },
+      "revId": "bd272aa0f3db65720411d1de0bdd75f196303961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
