@@ -52,6 +52,24 @@
       "parentUuid": "cca15a98_27aa4d8c",
       "revId": "38d49d3e4cfe3f4bd1437df150cc2d4ed22634e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae7797cb_bcc8c9a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1379412
+      },
+      "writtenOn": "2021-06-01T06:54:35Z",
+      "side": 1,
+      "message": "A temporary EC image, with CONFIG_SYSTEM_UNLOCKED defined? I think the update is needed only once, for each board.",
+      "parentUuid": "7d9e4aca_c5d11f7f",
+      "revId": "38d49d3e4cfe3f4bd1437df150cc2d4ed22634e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
