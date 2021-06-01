@@ -16,6 +16,29 @@
       "message": "This sounds right and aligns with what Josie was seeing before.",
       "revId": "0e45564ba99ec800ff6024cedfbe0a96391e2a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da5c7337_36d17056",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-06-01T16:24:30Z",
+      "side": 1,
+      "message": "Are you sure we should be toggling just fw_wp instead of fw_wp_state?\n\nIt looks like we are using fw_wp_state in tast tests:\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/tast-tests/src/chromiumos/tast/remote/servo/methods.go;l\u003d496;drc\u003de807ff1de82af5de4c468560a8f4ba6054ced8a4",
+      "range": {
+        "startLine": 252,
+        "startChar": 9,
+        "endLine": 252,
+        "endChar": 14
+      },
+      "revId": "0e45564ba99ec800ff6024cedfbe0a96391e2a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
