@@ -22,6 +22,30 @@
       },
       "revId": "3b632a29c944a445c0e7a3b2201a5626e15f9791",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9695ad9_d18edbbb",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-01T18:29:52Z",
+      "side": 1,
+      "message": "I renamed the function.",
+      "parentUuid": "c61f054f_fc2d6438",
+      "range": {
+        "startLine": 325,
+        "startChar": 14,
+        "endLine": 325,
+        "endChar": 25
+      },
+      "revId": "3b632a29c944a445c0e7a3b2201a5626e15f9791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
