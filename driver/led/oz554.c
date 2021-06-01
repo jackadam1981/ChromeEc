@@ -75,20 +75,35 @@ static struct oz554_value oz554_conf[] = {
 };
 static const int oz554_conf_size = ARRAY_SIZE(oz554_conf);
 
+static void set_oz554_reg(void);
+DECLARE_DEFERRED(set_oz554_reg);
 static void set_oz554_reg(void)
 {
 	int i;
+	int rv;
+	static int retry_count;
 
 	for (i = 0; i < oz554_conf_size; ++i) {
-		int rv = i2c_write8(I2C_PORT_BACKLIGHT,
+		rv = i2c_write8(I2C_PORT_BACKLIGHT,
 				    I2C_ADDR_OZ554_FLAGS,
 				    oz554_conf[i].offset, oz554_conf[i].data);
 		if (rv) {
-			CPRINTS("Write OZ554 register %d failed rv=%d" , i, rv);
-			return;
+			CPRINTS("Write OZ554 register %d failed rv=%d retry=%d",
+					i, rv, retry_count);
+			break;
 		}
 	}
-	CPRINTS("Wrote OZ554 settings");
+
+	if (rv == 0) {
+		retry_count = 0;
+		CPRINTS("Wrote OZ554 settings");
+	}
+
+	if (rv && retry_count < 5) {
+		retry_count++;
+		hook_call_deferred(&set_oz554_reg_data,
+							500*MSEC);
+	}
 }
 
 static void backlight_enable_deferred(void)
