@@ -39,6 +39,30 @@
       },
       "revId": "0e45564ba99ec800ff6024cedfbe0a96391e2a50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde19dfb_7e6c5db9",
+        "filename": "test/run_device_tests.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-06-01T16:38:08Z",
+      "side": 1,
+      "message": "`fw_wp_state` uses `fw_wp_servoflex` driver\n```\n  \u003ccontrol\u003e\n    \u003cname\u003efw_wp_state\u003c/name\u003e\n    \u003cdoc\u003eUsed to turn fw wp off and on\u003c/doc\u003e\n    \u003cparams interface\u003d\"servo\" drv\u003d\"fw_wp_servoflex\" input_type\u003d\"str\"\n    fw_wp_vref\u003d\"pp1800\" /\u003e\n  \u003c/control\u003e\n```\n\nBut this driver calls `fw_wp_en` and `fw_wp` internally:\n```\n  def _force_on(self):\n    \"\"\"Force the firmware to write-protected.\"\"\"\n    if self._is_open_drain:\n      self._interface_set(\u0027fw_wp_od\u0027, \u0027on\u0027)\n    else:\n      self._interface_set(\u0027fw_wp_vref\u0027, self._fw_wp_vref)\n      self._interface_set(\u0027fw_wp_en\u0027, \u0027on\u0027)\n      self._interface_set(\u0027fw_wp\u0027, \u0027on\u0027)\n    \n  def _force_off(self):\n    \"\"\"Force the firmware to not write-protected.\"\"\"\n    if self._is_open_drain:\n      self._interface_set(\u0027fw_wp_od\u0027, \u0027off\u0027)\n    else:\n      self._interface_set(\u0027fw_wp_vref\u0027, self._fw_wp_vref)\n      self._interface_set(\u0027fw_wp_en\u0027, \u0027on\u0027)\n      self._interface_set(\u0027fw_wp\u0027, \u0027off\u0027)\n```\n\nIn my opinion, it\u0027s safer to use `fw_wp_state` so I\u0027m ok with changing that.",
+      "parentUuid": "da5c7337_36d17056",
+      "range": {
+        "startLine": 252,
+        "startChar": 9,
+        "endLine": 252,
+        "endChar": 14
+      },
+      "revId": "0e45564ba99ec800ff6024cedfbe0a96391e2a50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
