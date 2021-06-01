@@ -118,12 +118,20 @@ enum battery_type {
 	BATTERY_TYPE_COUNT,
 };
 
+<<<<<<< HEAD   (55e78c ctn730: Handle messages with no payload properly)
 int board_is_clamshell(void);
 
 /* Custom function to indicate if sourcing VBUS */
 int board_is_sourcing_vbus(int port);
 /* Enable VBUS sink for a given port */
 int board_vbus_sink_enable(int port, int enable);
+=======
+/* support factory keyboard test */
+#define CONFIG_KEYBOARD_FACTORY_TEST
+extern const int keyboard_factory_scan_pins[][2];
+extern const int keyboard_factory_scan_pins_used;
+
+>>>>>>> CHANGE (55f7cc Lazor: support factory keyboard test.)
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
