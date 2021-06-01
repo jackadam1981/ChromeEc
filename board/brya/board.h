@@ -90,7 +90,10 @@
 
 #define CONFIG_USB_PD_TCPM_PS8815
 #define CONFIG_USB_PD_TCPM_PS8815_FORCE_DID
+#define CONFIG_USB_PD_TCPM_RT1715
 #define CONFIG_USBC_RETIMER_INTEL_BB
+#define CONFIG_USBC_RETIMER_KB800X
+#define CONFIG_KB800X_CUSTOM_XBAR
 
 /* I2C speed console command */
 #define CONFIG_CMD_I2C_SPEED
@@ -100,6 +103,13 @@
 
 #define CONFIG_USBC_PPC_SYV682X
 #define CONFIG_USBC_PPC_NX20P3483
+
+/* FRS mechanism for the SYV682X+RT1716 configuration */
+#define CONFIG_USB_PD_FRS_PPC
+
+/* Supporting multiple DB types */
+#define CONFIG_USB_MUX_RUNTIME_CONFIG
+#define CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
 
 /* TODO: b/177608416 - measure and check these values on brya */
 #define PD_POWER_SUPPLY_TURN_ON_DELAY	30000 /* us */
