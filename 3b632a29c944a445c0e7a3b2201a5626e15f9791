@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c61f054f_fc2d6438",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-01T18:03:14Z",
+      "side": 1,
+      "message": "Nit: This implementation is not checking reboot warm. It checks the JUMP_DATA_MAGIC instead.",
+      "range": {
+        "startLine": 325,
+        "startChar": 14,
+        "endLine": 325,
+        "endChar": 25
+      },
+      "revId": "3b632a29c944a445c0e7a3b2201a5626e15f9791",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

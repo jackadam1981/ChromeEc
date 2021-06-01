@@ -134,6 +134,30 @@
       },
       "revId": "990ee2892957fede3a60b96c070be2483ed1fa2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cab1c05_7673e1a2",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-01T18:03:14Z",
+      "side": 1,
+      "message": "OK. Let\u0027s follow these issues up later.",
+      "parentUuid": "2ee7ddfc_92c60be1",
+      "range": {
+        "startLine": 328,
+        "startChar": 1,
+        "endLine": 339,
+        "endChar": 11
+      },
+      "revId": "990ee2892957fede3a60b96c070be2483ed1fa2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
