@@ -16,6 +16,132 @@
       "message": "can you review the CL.",
       "revId": "0f7c919fddea0042703447a2001db121379309a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda39e88_67e0da94",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-01T19:16:01Z",
+      "side": 1,
+      "message": "Can you add macros for these magic numbers? We have similar ones for the TINT threshold.",
+      "range": {
+        "startLine": 543,
+        "startChar": 35,
+        "endLine": 543,
+        "endChar": 39
+      },
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4bcc576_14180bd0",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-01T19:16:01Z",
+      "side": 1,
+      "message": "You need to read modify write this register, otherwise your changes are being lost.",
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d260d89d_c3d3abc4",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-01T19:16:01Z",
+      "side": 1,
+      "message": "Why are you multiplying by these numbers?",
+      "range": {
+        "startLine": 1223,
+        "startChar": 35,
+        "endLine": 1224,
+        "endChar": 24
+      },
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7560c41e_60a85efb",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-01T19:16:01Z",
+      "side": 1,
+      "message": "nit: try to keep lines under 80 cols.",
+      "range": {
+        "startLine": 1222,
+        "startChar": 0,
+        "endLine": 1224,
+        "endChar": 24
+      },
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2461c116_3df81fd0",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-01T19:16:01Z",
+      "side": 1,
+      "message": "Here too.",
+      "range": {
+        "startLine": 1229,
+        "startChar": 0,
+        "endLine": 1231,
+        "endChar": 24
+      },
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f149532_c2e44fd0",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-01T19:16:01Z",
+      "side": 1,
+      "message": "Use `sm5803_flow1_update`",
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
