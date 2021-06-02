@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46993e3d_b6278a75",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1994,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-06-02T13:51:27Z",
+      "side": 0,
+      "message": "this seems a functional change:\non platforms without CONFIG_BATTERY_REVIVE_DISCONNECT, \u0027battery_seems_disconnected\u0027 is no longer updated ?",
+      "revId": "40173450cda5970847ce3b7cbc7d5f9a4b832973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
