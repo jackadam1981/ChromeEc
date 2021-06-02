@@ -98,7 +98,7 @@ int read_rollback(int region, struct rollback_data *data)
 	offset = get_rollback_offset(region);
 
 	unlock_rollback();
-	if (flash_read(offset, sizeof(*data), (char *)data))
+	if (flash_read_cros(offset, sizeof(*data), (char *)data))
 		ret = EC_ERROR_UNKNOWN;
 	lock_rollback();
 
@@ -325,13 +325,13 @@ static int rollback_update(int32_t next_min_version,
 	}
 
 	unlock_rollback();
-	if (flash_erase(offset, erase_size)) {
+	if (flash_erase_cros(offset, erase_size)) {
 		ret = EC_ERROR_UNKNOWN;
 		lock_rollback();
 		goto out;
 	}
 
-	ret = flash_write(offset, sizeof(block), block);
+	ret = flash_write_cros(offset, sizeof(block), block);
 	lock_rollback();
 
 out:

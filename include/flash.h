@@ -296,7 +296,7 @@ int flash_dataptr(int offset, int size_req, int align, const char **ptrp);
  * @param size	        Number of bytes to write.
  * @param data          Destination buffer for data.  Must be 32-bit aligned.
  */
-int flash_read(int offset, int size, char *data);
+int flash_read_cros(int offset, int size, char *data);
 
 /**
  * Write to flash.
@@ -307,7 +307,7 @@ int flash_read(int offset, int size, char *data);
  * @param size	        Number of bytes to write.
  * @param data          Data to write to flash.  Must be 32-bit aligned.
  */
-int flash_write(int offset, int size, const char *data);
+int flash_write_cros(int offset, int size, const char *data);
 
 /**
  * Erase flash.
@@ -317,7 +317,7 @@ int flash_write(int offset, int size, const char *data);
  * @param offset	Flash offset to erase.
  * @param size	        Number of bytes to erase.
  */
-int flash_erase(int offset, int size);
+int flash_erase_cros(int offset, int size);
 
 /**
  * Return the flash protect state.
