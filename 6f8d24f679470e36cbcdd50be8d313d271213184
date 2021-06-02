@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f0a4f8_6cc62c9b",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T16:02:57Z",
+      "side": 1,
+      "message": "tcpc0_2 (This bus covers ports 0 and 2)",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f91eef8_434b48fa",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T16:02:57Z",
+      "side": 1,
+      "message": "TCPC0,2",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "621736f9_070f50ed",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T16:02:57Z",
+      "side": 1,
+      "message": "Need an entries for ppc0-2, retimer0-2, and ppc1/\n\n#define I2C_PORT_USB_C0_C2_PPC\tNPCX_I2C_PORT2_0\n\t{\n\t\t/* I2C2 */\n\t\t.name \u003d \"ppc0,2\",\n\t\t.port \u003d I2C_PORT_USB_C0_C2_PPC,\n\t\t.kbps \u003d 1000,\n\t\t.scl \u003d GPIO_EC_I2C_USB_C0_C2_PPC_BC_SCL,\n\t\t.sda \u003d GPIO_EC_I2C_USB_C0_C2_PPC_BC_SDA,\n\t},\n#define I2C_PORT_USB_C0_C2_MUX\tNPCX_I2C_PORT3_0\n\t{\n\t\t/* I2C3 */\n\t\t.name \u003d \"retimer0,2\",\n\t\t.port \u003d I2C_PORT_USB_C0_C2_MUX,\n\t\t.kbps \u003d 1000,\n\t\t.scl \u003d GPIO_EC_I2C_USB_C0_C2_RT_SCL,\n\t\t.sda \u003d GPIO_EC_I2C_USB_C0_C2_RT_SDA,\n\t},\n#define I2C_PORT_USB_C1_PPC\tNPCX_I2C_PORT6_1\n\t{\n\t\t/* I2C6 */\n\t\t.name \u003d \"ppc1\",\n\t\t.port \u003d I2C_PORT_USB_C1_PPC,\n\t\t.kbps \u003d 400,\n\t\t.scl \u003d GPIO_EC_I2C_USB_C1_MIX_SCL,\n\t\t.sda \u003d GPIO_EC_I2C_USB_C1_MIX_SDA,\n\t},",
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e34e1a_27c9cf0a",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T16:02:57Z",
+      "side": 1,
+      "message": "Should be I2C_BITRATE_FAST (400 kbps)",
+      "range": {
+        "startLine": 77,
+        "startChar": 20,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "355a3a2f_a9bc7a00",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T16:02:57Z",
+      "side": 1,
+      "message": "I2C_BITRATE_FAST_PLUS",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 40
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c58a2a0_6dada4f1",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T16:02:57Z",
+      "side": 1,
+      "message": "I2C_BITRATE_FAST_PLUS",
+      "range": {
+        "startLine": 87,
+        "startChar": 20,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba129a6e_afdc43aa",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T16:02:57Z",
+      "side": 1,
+      "message": "I2C_BITRATE_STANDARD",
+      "range": {
+        "startLine": 92,
+        "startChar": 20,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
