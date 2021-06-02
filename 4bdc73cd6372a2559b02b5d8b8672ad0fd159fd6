@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4018544a_59b13d0e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-02T17:35:38Z",
+      "side": 1,
+      "message": "We should split this up into 2 CLs: one for the common change, and another for the cret specific change.",
+      "revId": "4bdc73cd6372a2559b02b5d8b8672ad0fd159fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "070a981d_31a41608",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-02T17:35:38Z",
+      "side": 1,
+      "message": "We don\u0027t need to make a new array for this, just save the value. Plus it seems that the device_name member could be NULL.",
+      "revId": "4bdc73cd6372a2559b02b5d8b8672ad0fd159fd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
