@@ -70,6 +70,24 @@
       "parentUuid": "a017a74f_144502b0",
       "revId": "aedad63419472ece0ec5f6a8c5dc8bc27af515ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ef9970_b68fd45b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-06-02T06:29:02Z",
+      "side": 1,
+      "message": "Hi Yuval,\nIt seems that not all the codes of the workaround are added.\nYou should also need functions like system_mpu_config and __start_gdma.\nYou can refer to the CL:2435165 for more detail.",
+      "parentUuid": "7f18832d_f96baf36",
+      "revId": "aedad63419472ece0ec5f6a8c5dc8bc27af515ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
