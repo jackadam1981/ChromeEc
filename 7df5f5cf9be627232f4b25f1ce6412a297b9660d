@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2294885_4f8d586a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-02T22:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44afb355_8e80cb5b",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "7df5f5cf9be627232f4b25f1ce6412a297b9660d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1354ead4_a56c390d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89a0301_6a8daff7",
+        "filename": "board/it83xx_evb/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-02T22:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1354ead4_a56c390d",
+      "range": {
+        "startLine": 59,
+        "startChar": 63,
+        "endLine": 59,
+        "endChar": 80
+      },
+      "revId": "7df5f5cf9be627232f4b25f1ce6412a297b9660d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "527ff2b0_1aab1520",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-02T18:16:45Z",
       "side": 1,
       "message": "Nit: let\u0027s keep these comments aligned",
+      "range": {
+        "startLine": 59,
+        "startChar": 63,
+        "endLine": 59,
+        "endChar": 80
+      },
+      "revId": "7df5f5cf9be627232f4b25f1ce6412a297b9660d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58992fa9_7581b8fe",
+        "filename": "board/it8xxx2_evb/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-02T22:56:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "527ff2b0_1aab1520",
       "range": {
         "startLine": 59,
         "startChar": 63,
