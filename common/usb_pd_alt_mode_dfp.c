@@ -46,6 +46,10 @@ int dp_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 uint32_t dp_status[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* Console command multi-function preference set for a PD port. */
+
+int dp_port_mfmask[CONFIG_USB_PD_PORT_MAX_COUNT] = {0};
+
 __overridable const struct svdm_response svdm_rsp = {
 	.identity = NULL,
 	.svids = NULL,
@@ -190,7 +194,7 @@ int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 	pin_caps = PD_DP_PIN_CAPS(mode_caps);
 
 	/* if don't want multi-function then ignore those pin configs */
-	if (!PD_VDO_DPSTS_MF_PREF(status))
+	if (!PD_VDO_DPSTS_MF_PREF(status) || dp_port_mfmask[port])
 		pin_caps &= ~MODE_DP_PIN_MF_MASK;
 
 	/* TODO(crosbug.com/p/39656) revisit if DFP drives USB Gen 2 signals */
@@ -1215,7 +1219,8 @@ __overridable uint8_t get_dp_pin_mode(int port)
 
 static mux_state_t svdm_dp_get_mux_mode(int port)
 {
-	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
+	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]) &&
+			!dp_port_mfmask[port];
 	int pin_mode = get_dp_pin_mode(port);
 	/*
 	 * Multi-function operation is only allowed if that pin config is
@@ -1230,7 +1235,8 @@ static mux_state_t svdm_dp_get_mux_mode(int port)
 __overridable int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
-	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
+	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]) &&
+			!dp_port_mfmask[port];
 	uint8_t pin_mode = get_dp_pin_mode(port);
 	mux_state_t mux_mode = svdm_dp_get_mux_mode(port);
 
@@ -1469,3 +1475,28 @@ const struct svdm_amode_fx supported_modes[] = {
 #endif /* CONFIG_USB_PD_TBT_COMPAT_MODE */
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
+
+static int command_mfoverride(int argc, char **argv)
+{
+	char *e;
+	int port;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	port = strtoi(argv[1], &e, 10);
+	if (*e || port >= board_get_usb_pd_port_count())
+		return EC_ERROR_PARAM2;
+
+	if (!strcasecmp(argv[2], "on"))
+		dp_port_mfmask[port] = 1;
+	else if (!strcasecmp(argv[2], "off"))
+		dp_port_mfmask[port] = 0;
+	else
+		return EC_ERROR_PARAM1;
+
+	ccprintf("Port: %d multi function override is %s ", port, argv[2]);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(mfoverride, command_mfoverride, "port[0|1] [on | off]",
+		"Controls Multifunction choice during DP Altmode.");
