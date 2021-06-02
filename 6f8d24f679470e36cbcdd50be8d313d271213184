@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce516971_e2ecba6f",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27f0a4f8_6cc62c9b",
+      "range": {
+        "startLine": 29,
+        "startChar": 2,
+        "endLine": 29,
+        "endChar": 7
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f91eef8_434b48fa",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-02T16:02:57Z",
       "side": 1,
       "message": "TCPC0,2",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 17
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "048e5156_6c6fe61d",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f91eef8_434b48fa",
       "range": {
         "startLine": 32,
         "startChar": 12,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f81484_74ca5a22",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:54Z",
+      "side": 1,
+      "message": "Ack, I thought we were just trying to verify that the drivers work so I didn\u0027t do the whole thing.",
+      "parentUuid": "621736f9_070f50ed",
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56e34e1a_27c9cf0a",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-06-02T16:02:57Z",
       "side": 1,
       "message": "Should be I2C_BITRATE_FAST (400 kbps)",
+      "range": {
+        "startLine": 77,
+        "startChar": 20,
+        "endLine": 77,
+        "endChar": 40
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fcb5430_86df9a63",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56e34e1a_27c9cf0a",
       "range": {
         "startLine": 77,
         "startChar": 20,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e58c8d7_54294cc0",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "355a3a2f_a9bc7a00",
+      "range": {
+        "startLine": 82,
+        "startChar": 20,
+        "endLine": 82,
+        "endChar": 40
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c58a2a0_6dada4f1",
@@ -133,6 +247,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20119c5d_8c5e68fe",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c58a2a0_6dada4f1",
+      "range": {
+        "startLine": 87,
+        "startChar": 20,
+        "endLine": 87,
+        "endChar": 40
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba129a6e_afdc43aa",
@@ -146,6 +284,30 @@
       "writtenOn": "2021-06-02T16:02:57Z",
       "side": 1,
       "message": "I2C_BITRATE_STANDARD",
+      "range": {
+        "startLine": 92,
+        "startChar": 20,
+        "endLine": 92,
+        "endChar": 36
+      },
+      "revId": "6f8d24f679470e36cbcdd50be8d313d271213184",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96484dc_27f62e96",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba129a6e_afdc43aa",
       "range": {
         "startLine": 92,
         "startChar": 20,
