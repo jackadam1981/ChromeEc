@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5082a2a_a6f9893c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b765634_59bae2a0",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "58395d6a21eff3e6adf4da1db54efc5a54275f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7138f65c_b21ccbaf",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-02T16:27:59Z",
       "side": 1,
       "message": "Comment probably can be deleted.  If the pin number is meant to correspond to the keyboard connector, then these values aren\u0027t correct.  However, I don\u0027t think there is an value in noting the pin number here.  The alternate function label I think is sufficient documentation, so the KSIn/KSOn comments also isn\u0027t needed.",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 49
+      },
+      "revId": "58395d6a21eff3e6adf4da1db54efc5a54275f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c6b5550_d95db2dd",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7138f65c_b21ccbaf",
       "range": {
         "startLine": 76,
         "startChar": 33,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72b3c2c6_17b21634",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "008492f6_69f518a9",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "58395d6a21eff3e6adf4da1db54efc5a54275f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8a69371_3bab1aae",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-02T16:27:59Z",
       "side": 1,
       "message": "EC_PCH_INT_ODL",
+      "range": {
+        "startLine": 63,
+        "startChar": 12,
+        "endLine": 63,
+        "endChar": 20
+      },
+      "revId": "58395d6a21eff3e6adf4da1db54efc5a54275f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "974c8b4a_3051701a",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:43:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8a69371_3bab1aae",
       "range": {
         "startLine": 63,
         "startChar": 12,
