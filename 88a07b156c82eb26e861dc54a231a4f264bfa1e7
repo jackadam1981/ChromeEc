@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "115ddda3_4d0219cd",
+        "filename": "baseboard/kukui/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e48564_bf1f3d34",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 41
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2acdb025_94444865",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-01T01:19:04Z",
       "side": 1,
       "message": "use \n\n #ifdef",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 11
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "727a94b1_4259b237",
+        "filename": "baseboard/kukui/emmc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2acdb025_94444865",
       "range": {
         "startLine": 201,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37e0706e_f02a9aeb",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "debb22df_8a8c9a4f",
+      "range": {
+        "startLine": 62,
+        "startChar": 19,
+        "endLine": 62,
+        "endChar": 20
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1d7a364_43c77b7c",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-06-01T01:19:04Z",
       "side": 1,
       "message": "no space before a right curly bracket.",
+      "range": {
+        "startLine": 63,
+        "startChar": 19,
+        "endLine": 63,
+        "endChar": 20
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7249757a_566116c3",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1d7a364_43c77b7c",
       "range": {
         "startLine": 63,
         "startChar": 19,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57b8184e_b06335df",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b7b206f_0c57c2f3",
+      "range": {
+        "startLine": 64,
+        "startChar": 20,
+        "endLine": 64,
+        "endChar": 21
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dac023ba_645e07ec",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-06-01T01:19:04Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 65,
+        "startChar": 20,
+        "endLine": 65,
+        "endChar": 21
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b547d9a7_63af64bb",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dac023ba_645e07ec",
       "range": {
         "startLine": 65,
         "startChar": 20,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b295a17a_ff765b00",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12e1cfbf_7a030857",
+      "range": {
+        "startLine": 529,
+        "startChar": 8,
+        "endLine": 529,
+        "endChar": 9
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91630b1e_cce6d851",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-06-01T01:19:04Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 534,
+        "startChar": 8,
+        "endLine": 534,
+        "endChar": 9
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08d69f98_2c399ed9",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91630b1e_cce6d851",
       "range": {
         "startLine": 534,
         "startChar": 8,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1d6342_098baaae",
+        "filename": "board/makomo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c4dc783_87e712df",
+      "range": {
+        "startLine": 119,
+        "startChar": 22,
+        "endLine": 119,
+        "endChar": 26
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83db8cc9_29c8768b",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-06-01T01:19:04Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 123,
+        "startChar": 28,
+        "endLine": 123,
+        "endChar": 29
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b94c0e_66aab802",
+        "filename": "board/makomo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83db8cc9_29c8768b",
       "range": {
         "startLine": 123,
         "startChar": 28,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a92a0d03_37860a3b",
+        "filename": "board/makomo/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f1ca68d_25279c0a",
+      "range": {
+        "startLine": 124,
+        "startChar": 22,
+        "endLine": 124,
+        "endChar": 25
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d4c6ea7_bf180129",
@@ -284,6 +548,30 @@
       "writtenOn": "2021-06-01T01:19:04Z",
       "side": 1,
       "message": "Please do not use any of the ODM/OEM, build phases in the code.",
+      "range": {
+        "startLine": 40,
+        "startChar": 28,
+        "endLine": 40,
+        "endChar": 34
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea44767c_b4b026e3",
+        "filename": "board/makomo/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d4c6ea7_bf180129",
       "range": {
         "startLine": 40,
         "startChar": 28,
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62c52acb_4a143df1",
+        "filename": "board/makomo/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ea8b7ae_536a7540",
+      "range": {
+        "startLine": 41,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 34
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "642a238c_c8dc5107",
@@ -340,6 +652,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44524cb5_286c6c52",
+        "filename": "board/makomo/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "642a238c_c8dc5107",
+      "range": {
+        "startLine": 84,
+        "startChar": 39,
+        "endLine": 84,
+        "endChar": 40
+      },
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29f6258e_8c26502f",
@@ -353,6 +689,24 @@
       "writtenOn": "2021-06-01T01:19:04Z",
       "side": 1,
       "message": "drop this line.",
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf9378e0_dab751ab",
+        "filename": "board/makomo/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-02T08:26:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29f6258e_8c26502f",
       "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
