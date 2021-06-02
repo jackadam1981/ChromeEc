@@ -331,8 +331,14 @@ static inline int motion_sense_init(struct motion_sensor_t *sensor)
 	int ret, cnt = 3;
 
 	BUILD_ASSERT(SENSOR_COUNT < 32);
+#ifndef CONFIG_ZEPHYR
+	/*
+	 * On Zephyr this can be called in deferred task, so this assert
+	 * doesn't apply
+	 */
 	ASSERT((task_get_current() == TASK_ID_HOOKS) ||
 	       (task_get_current() == TASK_ID_CONSOLE));
+#endif /* CONFIG_ZEPHYR */
 
 	/* Initialize accelerometers. */
 	do {
@@ -382,7 +388,13 @@ static void motion_sense_switch_sensor_rate(void)
 	struct motion_sensor_t *sensor;
 	unsigned int sensor_setup_mask = 0;
 
+#ifndef CONFIG_ZEPHYR
+	/*
+	 * On Zephyr this can be called in deferred task, so this assert
+	 * doesn't apply
+	 */
 	ASSERT(task_get_current() == TASK_ID_HOOKS);
+#endif /* CONFIG_ZEPHYR */
 
 	for (i = 0; i < motion_sensor_count; ++i) {
 		sensor = &motion_sensors[i];
