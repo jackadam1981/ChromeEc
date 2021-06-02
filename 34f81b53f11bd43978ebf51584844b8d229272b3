@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f16f1063_b16d1096",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T23:11:51Z",
+      "side": 1,
+      "message": "Until we get the enums figured out, probably best to match the cros-ec name \"I2C_PORT_USB_C0_C2_TCPC\"",
+      "range": {
+        "startLine": 31,
+        "startChar": 16,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "34f81b53f11bd43978ebf51584844b8d229272b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406f237b_d9f3ec9e",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T23:11:51Z",
+      "side": 1,
+      "message": "I2C_PORT_USB_C1_TCPC",
+      "range": {
+        "startLine": 36,
+        "startChar": 16,
+        "endLine": 36,
+        "endChar": 30
+      },
+      "revId": "34f81b53f11bd43978ebf51584844b8d229272b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b619eb8_12a34967",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T23:11:51Z",
+      "side": 1,
+      "message": "\"retimer0_2\" extra \u0027t\u0027",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "34f81b53f11bd43978ebf51584844b8d229272b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
