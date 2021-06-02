@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35dded1_cd6be6df",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-06-02T04:23:10Z",
+      "side": 1,
+      "message": "need to implement a virtual handler that returns nothing for this index and add it to index_config[] above instead. otherwise, GetNvIndexConfig() goes out of bounds when accessing index_config[] for VIRTUAL_NV_INDEX_RMA_COUNTER",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 32
+      },
+      "revId": "cb1dd24737d983e6656a0d37f845e65fa16f9c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab0286e5_6bb3218d",
+        "filename": "board/cr50/tpm2/virtual_nvmem.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-06-02T04:23:10Z",
+      "side": 1,
+      "message": "do we need it in virtual range? we could define it outside of this range and don\u0027t change cr50 to support anything generic TPM2.0 specific.",
+      "range": {
+        "startLine": 28,
+        "startChar": 1,
+        "endLine": 29,
+        "endChar": 30
+      },
+      "revId": "cb1dd24737d983e6656a0d37f845e65fa16f9c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
