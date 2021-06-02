@@ -72,11 +72,29 @@ config PLATFORM_EC_EXTERNAL_STORAGE
 
 config PLATFORM_EC_MAPPED_STORAGE
 	bool "Flash is mapped into the EC's address space"
-	default y if SOC_FAMILY_NPCX
+	default y if SOC_FAMILY_NPCX || SOC_FAMILY_RISCV_ITE
 	help
 	  This indicates that the EC's flash is directly mapped into
 	  its address space. This makes it easier to read and write the flash.
 	  If this is not defined, the flash driver must implement
 	  flash_physical_read().
+
+config PLATFORM_EC_INTERNAL_STORAGE
+	bool "Flash is stored internal to the EC"
+	default y if SOC_FAMILY_RISCV_ITE
+	help
+	  This indicates that the EC code can reside on internal storage.
+	  CONFIG_INTERNAL_STORAGE implies XIP(eXecute-In-Place) semantics.
+	  i.e. code is being fetched directly from storage media.
+
+config PLATFORM_EC_FLASH_PSTATE
+	bool "Store persistent write protect for the flash inside"
+	default y if SOC_FAMILY_RISCV_ITE
+	help
+	  Store persistent write protect for the flash inside the flash data
+	  itself.  This allows ECs with internal flash to emulate something
+	  closer to a SPI flash write protect register.  If this is not
+	  defined, write protect state is maintained solely by the physical
+	  flash driver.
 
 endif # PLATFORM_EC_FLASH_CROS
