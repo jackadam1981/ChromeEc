@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7ef0e3c_422bc0fa",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2021-06-02T04:19:13Z",
+      "side": 1,
+      "message": "Above line 27 and 28 mapping information should match. Line 27 says ADC temperature sensor \"FAN\" and line 28 says \"CHARGER\". Here .name should be for FAN sensor.",
+      "range": {
+        "startLine": 28,
+        "startChar": 16,
+        "endLine": 28,
+        "endChar": 23
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba6bad4_a17a39d9",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2021-06-02T04:19:13Z",
+      "side": 1,
+      "message": "Above line 34 and 35 mapping information should match. Line 34 says ADC temperature sensor \"inductor\" and line 28 says \"fan_inlet\".  Here .name should be for charger/inductor sensor.",
+      "range": {
+        "startLine": 35,
+        "startChar": 16,
+        "endLine": 35,
+        "endChar": 25
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80593797_b0d1385b",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2021-06-02T04:19:13Z",
+      "side": 1,
+      "message": "Above line 277 and 278 mapping information should match. Line 277 says temperature sensor \"FAN\" and line 278 says \"Charger\". Here .name should be for FAN sensor.",
+      "range": {
+        "startLine": 278,
+        "startChar": 11,
+        "endLine": 278,
+        "endChar": 18
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6195d31d_b7c7accf",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2021-06-02T04:19:13Z",
+      "side": 1,
+      "message": "Above line 289 and 290 mapping information should match. Line 289 says temperature sensor \"5G_area\" and line 290 says \"Charger\". Here .name should be for 5G_area sensor.",
+      "range": {
+        "startLine": 290,
+        "startChar": 11,
+        "endLine": 290,
+        "endChar": 18
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cd84828_6f979a69",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2021-06-02T04:19:13Z",
+      "side": 1,
+      "message": "This should be corrected to thermal_fan because it is mapped to TEMP_SENSOR_2_FAN.",
+      "range": {
+        "startLine": 364,
+        "startChar": 31,
+        "endLine": 364,
+        "endChar": 39
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b667452_8c60b897",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2021-06-02T04:19:13Z",
+      "side": 1,
+      "message": "Instead of thermal_3, can we please use thermal_inductor.",
+      "range": {
+        "startLine": 365,
+        "startChar": 36,
+        "endLine": 365,
+        "endChar": 37
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc79ff55_df9b7f93",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2021-06-02T04:19:13Z",
+      "side": 1,
+      "message": "Instead of thermal_4, can we please use thermal_5G_area.",
+      "range": {
+        "startLine": 366,
+        "startChar": 35,
+        "endLine": 366,
+        "endChar": 36
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
