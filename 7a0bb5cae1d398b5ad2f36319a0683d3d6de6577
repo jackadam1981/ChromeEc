@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e0c6e8_27e1a6f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-02T17:50:58Z",
+      "side": 1,
+      "message": "Then you can reword this commit to be generic.",
+      "revId": "7a0bb5cae1d398b5ad2f36319a0683d3d6de6577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "8a082bf5_b92dd131",
@@ -14,6 +31,23 @@
       "writtenOn": "2021-06-02T08:14:58Z",
       "side": 1,
       "message": "hi Aseda:\nplease check the CL, thanks",
+      "revId": "7a0bb5cae1d398b5ad2f36319a0683d3d6de6577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "567eade8_f874405b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-02T17:50:58Z",
+      "side": 1,
+      "message": "chip specific ifdef\u0027s shouldn\u0027t really be in common code. This should be benign to do for all chargers.",
       "revId": "7a0bb5cae1d398b5ad2f36319a0683d3d6de6577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
