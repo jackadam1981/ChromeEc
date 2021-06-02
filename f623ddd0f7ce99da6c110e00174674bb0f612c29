@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3f53e38_e5735f49",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T23:06:13Z",
+      "side": 1,
+      "message": "Nit - drop \"gpio_\" prefix for consistency.",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "f623ddd0f7ce99da6c110e00174674bb0f612c29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
