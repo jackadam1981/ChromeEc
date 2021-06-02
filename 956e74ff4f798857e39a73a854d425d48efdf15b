@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be1f0ce5_76d7cc68",
+        "filename": "baseboard/kukui/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-06-02T11:37:53Z",
+      "side": 1,
+      "message": "Should we just call dma_init()?\ndam_init() seems a better implementation for this and also line #49 for VARIANT_KUKUI_EC_STM32F098.",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 47
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fce7aa5_d2184a44",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-06-02T11:37:53Z",
+      "side": 1,
+      "message": "#if defined(VARIANT_KUKUI_EC_STM32F098) || defined(VARIANT_KUKUI_EC_STM32L431)\n...\n#endif",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 33
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91560fe9_b51de2c8",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-06-02T11:37:53Z",
+      "side": 1,
+      "message": "seems that you removed \u0027#define CONFIG_COMMON_GPIO_SHORTNAMES\u0027 here.",
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9499b615_89a98f56",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-06-02T11:37:53Z",
+      "side": 1,
+      "message": "CPU_CLOCK is the only difference between VARIANT_KUKUI_EC_STM32L431 and VARIANT_KUKUI_EC_STM32F098.\n\nCan you try not to duplicate all these defines?",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 26
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81c37f65_4e1bdf1e",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-06-02T11:37:53Z",
+      "side": 1,
+      "message": "this should break the real makomo.",
+      "range": {
+        "startLine": 78,
+        "startChar": 13,
+        "endLine": 78,
+        "endChar": 14
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92bbaeb8_b40661e3",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-06-02T11:37:53Z",
+      "side": 1,
+      "message": "Do we need this? \nseems to be the same setting in baseboard/kukui/emmc.c:emmc_init_spi().",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 6
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db4bf02_2cc60c7f",
+        "filename": "board/makomo/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-06-02T11:37:53Z",
+      "side": 1,
+      "message": "this should break the real makomo (STM32F098). Please create a new board and define VARIANT_KUKUI_EC_STM32L431 for that board.",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62b52cf6_0f596d23",
+        "filename": "board/makomo/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-06-02T11:37:53Z",
+      "side": 1,
+      "message": "Do we need this?\nThis is already defined in baseboard/kukui/baseboard.h",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 26
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c5a1d0_752dfefc",
+        "filename": "board/makomo/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-06-02T11:37:53Z",
+      "side": 1,
+      "message": "Can you refine this?\nThe only difference is STM32_PLLN.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 6
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "944f5dba_9d4c23bc",
+        "filename": "board/makomo/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-06-02T11:37:53Z",
+      "side": 1,
+      "message": "These should not be related to change ec to STM32L431.\nIf we really need to undef them, please move them to seperate CLs.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 32
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
