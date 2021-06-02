@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0110f269_9f671327",
+        "filename": "board/volet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-06-02T09:24:35Z",
+      "side": 1,
+      "message": "I think you should add a new variable for the keyboard that doesn\u0027t include the numeric keypad (ie. the .capabilities \u003d KEYBD_CAP_SCRNLOCK_KEY,). In this function, you can switch the setting according to the ec_cfg_has_numeric_pad().",
+      "range": {
+        "startLine": 69,
+        "startChar": 9,
+        "endLine": 69,
+        "endChar": 17
+      },
+      "revId": "b969ea2d3bad14bc369471e2b28d2528d48b37b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
