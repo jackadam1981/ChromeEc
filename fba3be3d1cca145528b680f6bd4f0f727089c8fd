@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "860528b5_406562f2",
+        "filename": "board/primus/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-02T05:20:51Z",
+      "side": 1,
+      "message": "nit: here and in a few other places the board name can be replaced with \"Primus\" or just omitted (for example, in build.mk it can be just removed)",
+      "revId": "fba3be3d1cca145528b680f6bd4f0f727089c8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5943c2db_148406ef",
+        "filename": "board/primus/fw_config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-02T05:20:51Z",
+      "side": 1,
+      "message": "nit: update the link to brya/primus",
+      "revId": "fba3be3d1cca145528b680f6bd4f0f727089c8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
