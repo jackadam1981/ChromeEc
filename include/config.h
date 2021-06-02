@@ -1376,6 +1376,7 @@
 #define CONFIG_CMD_RETIMER
 #undef  CONFIG_CMD_BUTTON
 #define CONFIG_CMD_CBI
+#define CONFIG_CMD_MFALLOW
 /*
  * HAS_TASK_CHIPSET implies the GSC presence.
  * HAS_TASK_CONSOLE means UART console enabled.
