@@ -60,6 +60,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a737be1_9f518aab",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1220,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-02T23:02:06Z",
+      "side": 1,
+      "message": "Now that we\u0027re using 2S vs. 3S more outside the init, it would be a good idea to pull these checks into functions that return bool (ex. static bool is_platform_id_2s(uint32_t platform_id))",
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d260d89d_c3d3abc4",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
@@ -177,6 +194,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe217152_75d2c5f3",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-02T23:02:06Z",
+      "side": 1,
+      "message": "Would the interrupt have cleared on the read of int_reg earlier?",
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0f149532_c2e44fd0",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 1
@@ -188,6 +222,23 @@
       "writtenOn": "2021-06-01T19:16:01Z",
       "side": 1,
       "message": "Use `sm5803_flow1_update`",
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e2be174_858dd9b6",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-02T23:02:06Z",
+      "side": 1,
+      "message": "Why set to 0xDC for both 2S and 3S here?",
       "revId": "0f7c919fddea0042703447a2001db121379309a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
