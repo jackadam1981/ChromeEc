@@ -16,6 +16,24 @@
       "message": "I wonder if we can simply grab the length of the device name and then use strncasecmp instead.",
       "revId": "65f2b5f29e43144941ee50cc3406dca5f8179e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d39f2b9a_8c914cc0",
+        "filename": "common/battery_fuel_gauge.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2021-06-02T15:15:25Z",
+      "side": 1,
+      "message": "Yes, but I think we can compare it based on any length of device_name set in battey.c. Update in patch set 3.",
+      "parentUuid": "42ce06bf_845008fc",
+      "revId": "65f2b5f29e43144941ee50cc3406dca5f8179e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
