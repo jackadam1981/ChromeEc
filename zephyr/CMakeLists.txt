@@ -186,6 +186,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CHARGE_RAMP_SW
 
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CBI
                                                 "${PLATFORM_EC}/common/cbi.c")
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CBI_VIRTUAL
+                                                "${PLATFORM_EC}/common/cbi.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_CONSOLE_CMD_MEM
                                                 "${PLATFORM_EC}/common/memory_commands.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_DPTF
