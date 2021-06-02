@@ -589,7 +589,7 @@ int flash_is_erased(uint32_t offset, int size)
 	while (size) {
 		bsize = MIN(size, sizeof(buf));
 
-		if (flash_read(offset, bsize, (char *)buf))
+		if (flash_read_cros(offset, bsize, (char *)buf))
 			return 0;
 
 		size -= bsize;
@@ -606,7 +606,7 @@ int flash_is_erased(uint32_t offset, int size)
 	return 1;
 }
 
-int flash_read(int offset, int size, char *data)
+int flash_read_cros(int offset, int size, char *data)
 {
 #ifdef CONFIG_MAPPED_STORAGE
 	const char *src;
@@ -661,7 +661,7 @@ static void flash_abort_or_invalidate_hash(int offset, int size)
 #endif
 }
 
-int flash_write(int offset, int size, const char *data)
+int flash_write_cros(int offset, int size, const char *data)
 {
 	if (!flash_range_ok(offset, size, CONFIG_FLASH_WRITE_SIZE))
 		return EC_ERROR_INVAL;  /* Invalid range */
@@ -671,7 +671,7 @@ int flash_write(int offset, int size, const char *data)
 	return flash_physical_write(offset, size, data);
 }
 
-int flash_erase(int offset, int size)
+int flash_erase_cros(int offset, int size)
 {
 #ifndef CONFIG_FLASH_MULTIPLE_REGION
 	if (!flash_range_ok(offset, size, CONFIG_FLASH_ERASE_SIZE))
@@ -963,7 +963,7 @@ static struct ec_params_flash_erase_v1 erase_info;
 static void flash_erase_deferred(void)
 {
 	erase_rc = EC_RES_BUSY;
-	if (flash_erase(erase_info.params.offset, erase_info.params.size))
+	if (flash_erase_cros(erase_info.params.offset, erase_info.params.size))
 		erase_rc = EC_RES_ERROR;
 	else
 		erase_rc = EC_RES_SUCCESS;
@@ -1060,7 +1060,7 @@ static int command_flash_erase(int argc, char **argv)
 		return rv;
 
 	ccprintf("Erasing %d bytes at 0x%x...\n", size, offset);
-	return flash_erase(offset, size);
+	return flash_erase_cros(offset, size);
 }
 DECLARE_CONSOLE_COMMAND(flasherase, command_flash_erase,
 			"offset size",
@@ -1096,7 +1096,7 @@ static int command_flash_write(int argc, char **argv)
 		data[i] = i;
 
 	ccprintf("Writing %d bytes to 0x%x...\n", size, offset);
-	rv = flash_write(offset, size, data);
+	rv = flash_write_cros(offset, size, data);
 
 	/* Free the buffer */
 	shared_mem_release(data);
@@ -1130,7 +1130,7 @@ static int command_flash_read(int argc, char **argv)
 	}
 
 	/* Read the data */
-	if (flash_read(offset, size, data)) {
+	if (flash_read_cros(offset, size, data)) {
 		shared_mem_release(data);
 		return EC_ERROR_INVAL;
 	}
@@ -1327,7 +1327,7 @@ static enum ec_status flash_command_read(struct host_cmd_handler_args *args)
 	if (p->size > args->response_max)
 		return EC_RES_OVERFLOW;
 
-	if (flash_read(offset, p->size, args->response))
+	if (flash_read_cros(offset, p->size, args->response))
 		return EC_RES_ERROR;
 
 	args->response_size = p->size;
@@ -1360,7 +1360,7 @@ static enum ec_status flash_command_write(struct host_cmd_handler_args *args)
 		return EC_RES_ACCESS_DENIED;
 #endif
 
-	if (flash_write(offset, p->size, (const uint8_t *)(p + 1)))
+	if (flash_write_cros(offset, p->size, (const uint8_t *)(p + 1)))
 		return EC_RES_ERROR;
 
 	return EC_RES_SUCCESS;
@@ -1410,7 +1410,7 @@ static enum ec_status flash_command_erase(struct host_cmd_handler_args *args)
 		args->result = EC_RES_IN_PROGRESS;
 		host_send_response(args);
 #endif
-		if (flash_erase(offset, p->size))
+		if (flash_erase_cros(offset, p->size))
 			return EC_RES_ERROR;
 
 		break;
