@@ -153,19 +153,39 @@ config PLATFORM_EC_BYPASS_CBI_EEPROM_WP_CHECK
 	  regardless of the state of the hardware write protect.
 
 config PLATFORM_EC_CBI
-	bool "CBI EEPROM support"
-	depends on PLATFORM_EC_I2C
+	bool "Chromium OS Board Info (CBI) Support"
 	help
 	  Enables various Chromium OS Board Info (CBI) accessors as well as
 	  host and console commands. CBI is a means for accessing information
-	  about a board, typically written during the factory process.
-
-	  One must specify both I2C_PORT_EEPROM and I2C_ADDR_EEPROM_FLAGS to the
-	  CBI EEPROM's i2c port and 7-bit i2c address.
+	  about a board, typically set during the factory process.
 
 	  See here for information on CBI:
 
 	  https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md
+
+if PLATFORM_EC_CBI
+choice
+	prompt "CBI Type"
+	default "PLATFORM_EC_CBI_EEPROM"
+
+config PLATFORM_EC_CBI_EEPROM
+	bool "CBI EEPROM Support"
+	depends on PLATFORM_EC_I2C
+	help
+	  Enables CBI EEPROM, typically written during the factory process.
+
+	  One must specify both I2C_PORT_EEPROM and I2C_ADDR_EEPROM_FLAGS to the
+	  CBI EEPROM's i2c port and 7-bit i2c address.
+
+config PLATFORM_EC_CBI_VIRTUAL
+	bool "Virtual CBI support"
+	help
+	  Enables CBI for the boards without CBI EEPROM. While CBI is a means
+	  for accessing board information, the source of the information can
+	  be non-EEPROM (e.g. strapping pins).
+
+endchoice
+endif
 
 config PLATFORM_EC_CHIPSET_RESET_HOOK
 	bool "Provide a hook for when the AP resets"
