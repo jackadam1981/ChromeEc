@@ -21,6 +21,36 @@
 
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
+		i2c_sensor: sensor {
+			i2c-port = <&i2c0_0>;
+			enum-name = "I2C_PORT_SENSOR";
+			label = "SENSOR";
+		};
+		tcpc0 {
+			i2c-port = <&i2c1_0>;
+			enum-name = "I2C_PORT_TCPC0";
+			label = "TCPC0";
+		};
+		tcpc1 {
+			i2c-port = <&i2c4_1>;
+			enum-name = "I2C_PORT_TCPC1";
+			label = "TCPC1";
+		};
+		battery {
+			i2c-port = <&i2c5_0>;
+			enum-name = "I2C_PORT_BATTERY";
+			label = "BATTERY";
+		};
+		eeprom {
+			i2c-port = <&i2c7_0>;
+			enum-name = "I2C_PORT_EEPROM";
+			label = "EEPROM";
+		};
+		charger {
+			i2c-port = <&i2c7_0>;
+			enum-name = "I2C_PORT_CHARGER";
+			label = "EEPROM";
+		};
 	};
 
 	named-pwms {
@@ -40,4 +70,29 @@
 	status = "okay";
 	current-speed = <115200>;
 	pinctrl-0 = <&altj_cr_sin1_sl2 &altj_cr_sout1_sl2>;
+};
+
+&i2c0_0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c1_0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c4_1 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_STANDARD>;
+};
+
+&i2c5_0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
+};
+
+&i2c7_0 {
+	status = "okay";
+	clock-frequency = <I2C_BITRATE_FAST>;
 };
