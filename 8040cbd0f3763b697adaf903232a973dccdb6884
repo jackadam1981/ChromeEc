@@ -22,6 +22,30 @@
       },
       "revId": "8040cbd0f3763b697adaf903232a973dccdb6884",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5c77ebc_459abf1c",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T06:11:22Z",
+      "side": 1,
+      "message": "You know, I don\u0027t actually think we even need the label since we\u0027re not making a driver instance. I just never got around to verify my theory. Changing it to just PACKET_MODE_EN for now.",
+      "parentUuid": "2d2918f2_d56c977b",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 0
+      },
+      "revId": "8040cbd0f3763b697adaf903232a973dccdb6884",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
