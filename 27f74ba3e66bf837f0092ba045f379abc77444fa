@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "372e4c55_7ab11f7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-06-02T18:12:50Z",
+      "side": 1,
+      "message": "Nit: might be nice to fully spell it out in case someone\u0027s searching the commit logs to work out what happened to CONFIG_SPI_MASTER.",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "27f74ba3e66bf837f0092ba045f379abc77444fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
