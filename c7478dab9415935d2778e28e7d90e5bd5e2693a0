@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06fb795b_5f80691e",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T15:40:05Z",
+      "side": 1,
+      "message": "Change to lid_open or (gpio_lid_open).  This name should match the schematic.  If we want to prepend \"gpio_\" to the node reference that could be okay, but we should be consistent.\nI don\u0027t think prepending \"gpio_\" is necessary but I can see arguments for organizing the namespace.",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "c7478dab9415935d2778e28e7d90e5bd5e2693a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "606245c1_6781a741",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T15:40:05Z",
+      "side": 1,
+      "message": "Change to LID_OPEN",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "c7478dab9415935d2778e28e7d90e5bd5e2693a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0d62543_35c6e63c",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T15:40:05Z",
+      "side": 1,
+      "message": "Change to gsc_ec_pwr_btn_odl",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "c7478dab9415935d2778e28e7d90e5bd5e2693a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a5d7341_57e6c66f",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T15:40:05Z",
+      "side": 1,
+      "message": "Change to GSC_EC_PWR_BTN_ODL to match schematic name.",
+      "range": {
+        "startLine": 19,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "c7478dab9415935d2778e28e7d90e5bd5e2693a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19efb959_4b84c674",
+        "filename": "zephyr/projects/brya/brya/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T15:40:05Z",
+      "side": 1,
+      "message": "This is a duplicate entry.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 59
+      },
+      "revId": "c7478dab9415935d2778e28e7d90e5bd5e2693a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
