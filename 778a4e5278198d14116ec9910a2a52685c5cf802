@@ -34,6 +34,24 @@
       "parentUuid": "5e56348a_d15ba9d6",
       "revId": "778a4e5278198d14116ec9910a2a52685c5cf802",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6abc33c3_d20225b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-06-02T05:05:41Z",
+      "side": 1,
+      "message": "The CL here will not bring more effort to \"SSFC / FW_CONFIG limited to variants only\" so I intend to go in parallel for project needs and platform improvement. As a result, if there is no other objection then I will +2 this CL and make coreboot CLs rolling too to unblock project progress.",
+      "parentUuid": "4201eeea_db1d2ddb",
+      "revId": "778a4e5278198d14116ec9910a2a52685c5cf802",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
