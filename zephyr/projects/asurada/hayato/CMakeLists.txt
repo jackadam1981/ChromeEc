@@ -9,7 +9,13 @@ set(BOARD_ROOT "${CMAKE_CURRENT_LIST_DIR}/..")
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(hayato)
 
+zephyr_include_directories(include)
+
 set(PLATFORM_EC_BASEBOARD "${PLATFORM_EC}/baseboard/asurada" CACHE PATH
     "Path to the platform/ec baseboard directory")
+set(PLATFORM_EC_BOARD "${PLATFORM_EC}/board/hayato" CACHE PATH
+  "Path to the platform/ec board directory")
 
-zephyr_include_directories(include)
+# Board specific sensor implementation
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_MOTIONSENSE
+  "src/sensors.c")
