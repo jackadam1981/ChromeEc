@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0533394_5657fa7d",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T15:24:07Z",
+      "side": 1,
+      "message": "Nit - change to EC_GSC_PACKET_MODE to match schematic name and name from board/byra/generated-gpio.inc",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 26
+      },
+      "revId": "f6c849487d8f7cd1b452ff5a0e27cb0a1476bd4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
