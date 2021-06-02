@@ -16,6 +16,46 @@
       "message": "hi Aseda \u0026 Henry:\nplease help to reivew this cl for change no use pin, thanks",
       "revId": "7394bf7d58a581e357701cc24c192bf28ee12368",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf73302c_1c9483d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-06-02T15:48:32Z",
+      "side": 1,
+      "message": "LGTM, one suggestion on the indentation. Thanks! ",
+      "revId": "7394bf7d58a581e357701cc24c192bf28ee12368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60671ffa_c33d9975",
+        "filename": "board/blipper/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-06-02T15:48:32Z",
+      "side": 1,
+      "message": "nit: change the indentation? Thanks!",
+      "range": {
+        "startLine": 142,
+        "startChar": 50,
+        "endLine": 142,
+        "endChar": 54
+      },
+      "revId": "7394bf7d58a581e357701cc24c192bf28ee12368",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
