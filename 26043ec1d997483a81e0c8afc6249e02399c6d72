@@ -34,6 +34,24 @@
       "parentUuid": "716ccb7b_d92e1417",
       "revId": "26043ec1d997483a81e0c8afc6249e02399c6d72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2baf94_5f177fa5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-02T20:07:55Z",
+      "side": 1,
+      "message": "What would you think about potentially enabling the fault interrupt in general?  Then we\u0027d have an EC log anytime a fault is reported, even if not immediately paired with another interrupt.  I assume the primary downside would be if there\u0027s a chip with a faulty fault which fires too often.",
+      "parentUuid": "29a8347d_abccc451",
+      "revId": "26043ec1d997483a81e0c8afc6249e02399c6d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
