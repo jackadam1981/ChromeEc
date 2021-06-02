@@ -10,7 +10,7 @@
 #include "accelgyro.h"
 #include "common.h"
 #include "console.h"
-#include "driver/accel_lis2dw12.h"
+#include "accel_lis2dw12.h"
 #include "hooks.h"
 #include "hwtimer.h"
 #include "math_util.h"
