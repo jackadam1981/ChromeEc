@@ -167,6 +167,19 @@ config PLATFORM_EC_CBI
 
 	  https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md
 
+config PLATFORM_EC_CBI_VIRTUAL
+	bool "Virtual CBI support"
+	help
+	  Enables various Chromium OS Board Info (CBI) accessors as well as
+	  host and console commands for the boards without CBI EEPROM. CBI is
+	  a means for accessing board information while the source of the
+	  information can be non-EEPROM (e.g. strapping pins).
+
+	  See here for information on CBI:
+
+	  https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md
+
+
 config PLATFORM_EC_CHIPSET_RESET_HOOK
 	bool "Provide a hook for when the AP resets"
 	default y

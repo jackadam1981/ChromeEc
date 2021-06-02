@@ -5178,10 +5178,16 @@
 #undef CONFIG_EXTENDED_VERSION_INFO
 
 /*
- * Define this to enable Cros Board Info support. I2C_PORT_EEPROM and
- * I2C_ADDR_EEPROM_FLAGS must be defined as well.
+ * Define this to support Cros Board Info with EEPROM. I2C_PORT_EEPROM
+ * and I2C_ADDR_EEPROM_FLAGS must be defined as well.
  */
 #undef CONFIG_CROS_BOARD_INFO
+
+/*
+ * Define this to support virtual Cros Board Info without EEPROM.
+ * The board information comes from reading strapping pins instead.
+ */
+#undef CONFIG_CROS_BOARD_INFO_VIRTUAL
 
 /*****************************************************************************/
 /*

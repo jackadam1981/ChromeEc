@@ -10,6 +10,11 @@
 
 #include "baseboard.h"
 
+/* Test virtual CBI */
+#define CONFIG_CROS_BOARD_INFO_VIRTUAL
+#define CONFIG_CRC8
+#undef  CONFIG_CMD_CBI
+
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE_BYTES (512 * 1024)  /* 512KB internal spi flash */
 

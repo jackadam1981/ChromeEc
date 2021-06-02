@@ -112,6 +112,78 @@ void cbi_invalidate_cache(void)
 	cached_read_result = EC_ERROR_CBI_CACHE_INVALID;
 }
 
+__overridable int board_get_sku_id(void)
+{
+	return -1;
+}
+
+/*
+ * Substantiate the board information cache from non-EEPROM source
+ * (e.g. strapping pins).
+ */
+static int setup_virtual_board_info(void)
+{
+	int board_id = -1;
+	int sku_id = -1;
+
+#if defined(CONFIG_BOARD_VERSION_CUSTOM)
+	board_id = board_get_version();
+#elif defined(CONFIG_BOARD_VERSION_GPIO)
+	board_id = (!!gpio_get_level(GPIO_BOARD_VERSION1) << 0) |
+		   (!!gpio_get_level(GPIO_BOARD_VERSION2) << 1) |
+		   (!!gpio_get_level(GPIO_BOARD_VERSION3) << 2);
+#endif
+	sku_id = board_get_sku_id();
+
+	cbi_create();
+	cbi_set_board_info(CBI_TAG_BOARD_VERSION, (uint8_t *)&board_id,
+			   sizeof(int));
+	cbi_set_board_info(CBI_TAG_SKU_ID, (uint8_t *)&sku_id,
+			   sizeof(int));
+
+	return EC_SUCCESS;
+}
+
+static void cbi_remove_tag(void *const cbi, struct cbi_data *const d)
+{
+	struct cbi_header *const h = cbi;
+	const size_t size = sizeof(*d) + d->size;
+	const uint8_t *next = (uint8_t *)d + size;
+	const size_t bytes_after = ((uint8_t *)cbi + h->total_size) - next;
+
+	memmove(d, next, bytes_after);
+	h->total_size -= size;
+}
+
+int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf, uint8_t size)
+{
+	struct cbi_data *d;
+
+	d = cbi_find_tag(cbi, tag);
+
+	/* If we found the entry, but the size doesn't match, delete it */
+	if (d && d->size != size) {
+		cbi_remove_tag(cbi, d);
+		d = NULL;
+	}
+
+	if (!d) {
+		uint8_t *p;
+		/* Not found. Check if new item would fit */
+		if (sizeof(cbi) < head->total_size + sizeof(*d) + size)
+			return EC_ERROR_OVERFLOW;
+		/* Append new item */
+		p = cbi_set_data(&cbi[head->total_size], tag, buf, size);
+		head->total_size = p - cbi;
+	} else {
+		/* Overwrite existing item */
+		memcpy(d->value, buf, d->size);
+	}
+
+	return EC_SUCCESS;
+}
+
+#if !defined(CONFIG_CROS_BOARD_INFO_VIRTUAL)
 static int read_eeprom(uint8_t offset, uint8_t *in, int in_size)
 {
 	return i2c_read_block(I2C_PORT_EEPROM, I2C_ADDR_EEPROM_FLAGS,
@@ -167,88 +239,6 @@ static int do_read_board_info(void)
 	return EC_SUCCESS;
 }
 
-static int read_board_info(void)
-{
-	if (cached_read_result == EC_ERROR_CBI_CACHE_INVALID) {
-		cached_read_result = do_read_board_info();
-		if (cached_read_result)
-			/* On error (I2C or bad contents), retry a read */
-			cached_read_result = do_read_board_info();
-	}
-	/* Else, we already tried and know the result. Return the cached
-	 * error code immediately to avoid wasteful reads. */
-	return cached_read_result;
-}
-
-__attribute__((weak))
-int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
-{
-	return EC_SUCCESS;
-}
-
-int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
-{
-	const struct cbi_data *d;
-
-	if (read_board_info())
-		return EC_ERROR_UNKNOWN;
-
-	d = cbi_find_tag(cbi, tag);
-	if (!d)
-		/* Not found */
-		return EC_ERROR_UNKNOWN;
-	if (*size < d->size)
-		/* Insufficient buffer size */
-		return EC_ERROR_INVAL;
-
-	/* Clear the buffer in case len < *size */
-	memset(buf, 0, *size);
-	/* Copy the value */
-	memcpy(buf, d->value, d->size);
-	*size = d->size;
-
-	return cbi_board_override(tag, buf, size);
-}
-
-static void cbi_remove_tag(void *const cbi, struct cbi_data *const d)
-{
-	struct cbi_header *const h = cbi;
-	const size_t size = sizeof(*d) + d->size;
-	const uint8_t *next = (uint8_t *)d + size;
-	const size_t bytes_after = ((uint8_t *)cbi + h->total_size) - next;
-
-	memmove(d, next, bytes_after);
-	h->total_size -= size;
-}
-
-int cbi_set_board_info(enum cbi_data_tag tag, const uint8_t *buf, uint8_t size)
-{
-	struct cbi_data *d;
-
-	d = cbi_find_tag(cbi, tag);
-
-	/* If we found the entry, but the size doesn't match, delete it */
-	if (d && d->size != size) {
-		cbi_remove_tag(cbi, d);
-		d = NULL;
-	}
-
-	if (!d) {
-		uint8_t *p;
-		/* Not found. Check if new item would fit */
-		if (sizeof(cbi) < head->total_size + sizeof(*d) + size)
-			return EC_ERROR_OVERFLOW;
-		/* Append new item */
-		p = cbi_set_data(&cbi[head->total_size], tag, buf, size);
-		head->total_size = p - cbi;
-	} else {
-		/* Overwrite existing item */
-		memcpy(d->value, buf, d->size);
-	}
-
-	return EC_SUCCESS;
-}
-
 static int eeprom_is_write_protected(void)
 {
 #ifdef CONFIG_BYPASS_CBI_EEPROM_WP_CHECK
@@ -291,6 +281,103 @@ static int write_board_info(void)
 int cbi_write(void)
 {
 	return write_board_info();
+}
+
+static enum ec_status common_cbi_set(const struct __ec_align4
+							ec_params_set_cbi * p)
+{
+	/*
+	 * If we ultimately cannot write to the flash, then fail early unless
+	 * we are explicitly trying to write to the in-memory CBI only
+	 */
+	if (eeprom_is_write_protected() && !(p->flag & CBI_SET_NO_SYNC)) {
+		CPRINTS("Failed to write for WP");
+		return EC_RES_ACCESS_DENIED;
+	}
+
+#ifndef CONFIG_SYSTEM_UNLOCKED
+	/* These fields are not allowed to be reprogrammed regardless the
+	 * hardware WP state. They're considered as a part of the hardware. */
+	if (p->tag == CBI_TAG_BOARD_VERSION || p->tag == CBI_TAG_OEM_ID)
+		return EC_RES_ACCESS_DENIED;
+#endif
+
+	if (p->flag & CBI_SET_INIT) {
+		memset(cbi, 0, sizeof(cbi));
+		memcpy(head->magic, cbi_magic, sizeof(cbi_magic));
+		head->total_size = sizeof(*head);
+		cached_read_result = EC_SUCCESS;
+	} else {
+		if (read_board_info())
+			return EC_RES_ERROR;
+	}
+
+	if (cbi_set_board_info(p->tag, p->data, p->size))
+		return EC_RES_INVALID_PARAM;
+
+	/* Whether we're modifying existing data or creating new one,
+	 * we take over the format. */
+	head->major_version = CBI_VERSION_MAJOR;
+	head->minor_version = CBI_VERSION_MINOR;
+	head->crc = cbi_crc8(head);
+
+	/* Skip write if client asks so. */
+	if (p->flag & CBI_SET_NO_SYNC)
+		return EC_RES_SUCCESS;
+
+	/* We already checked write protect failure case. */
+	if (write_board_info())
+		return EC_RES_ERROR;
+
+	return EC_RES_SUCCESS;
+}
+#endif /* CONFIG_CROS_BOARD_INFO_VIRTUAL */
+
+static int read_board_info(void)
+{
+	if (cached_read_result == EC_ERROR_CBI_CACHE_INVALID) {
+#if defined(CONFIG_CROS_BOARD_INFO_VIRTUAL)
+		cached_read_result = setup_virtual_board_info();
+#else
+		cached_read_result = do_read_board_info();
+		if (cached_read_result)
+			/* On error (I2C or bad contents), retry a read */
+			cached_read_result = do_read_board_info();
+#endif
+	}
+	/* Else, we already tried and know the result. Return the cached
+	 * error code immediately to avoid wasteful reads. */
+	return cached_read_result;
+}
+
+__attribute__((weak))
+int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
+{
+	return EC_SUCCESS;
+}
+
+int cbi_get_board_info(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size)
+{
+	const struct cbi_data *d;
+
+	if (read_board_info())
+		return EC_ERROR_UNKNOWN;
+
+	d = cbi_find_tag(cbi, tag);
+	if (!d)
+		/* Not found */
+		return EC_ERROR_UNKNOWN;
+	if (*size < d->size)
+		/* Insufficient buffer size */
+		return EC_ERROR_INVAL;
+
+	/* Clear the buffer in case len < *size */
+	memset(buf, 0, *size);
+	/* Copy the value */
+	memcpy(buf, d->value, d->size);
+	*size = d->size;
+
+	return cbi_board_override(tag, buf, size);
 }
 
 int cbi_get_board_version(uint32_t *ver)
@@ -369,55 +456,6 @@ DECLARE_HOST_COMMAND(EC_CMD_GET_CROS_BOARD_INFO,
 		     hc_cbi_get,
 		     EC_VER_MASK(0));
 
-static enum ec_status common_cbi_set(const struct __ec_align4
-							ec_params_set_cbi * p)
-{
-	/*
-	 * If we ultimately cannot write to the flash, then fail early unless
-	 * we are explicitly trying to write to the in-memory CBI only
-	 */
-	if (eeprom_is_write_protected() && !(p->flag & CBI_SET_NO_SYNC)) {
-		CPRINTS("Failed to write for WP");
-		return EC_RES_ACCESS_DENIED;
-	}
-
-#ifndef CONFIG_SYSTEM_UNLOCKED
-	/* These fields are not allowed to be reprogrammed regardless the
-	 * hardware WP state. They're considered as a part of the hardware. */
-	if (p->tag == CBI_TAG_BOARD_VERSION || p->tag == CBI_TAG_OEM_ID)
-		return EC_RES_ACCESS_DENIED;
-#endif
-
-	if (p->flag & CBI_SET_INIT) {
-		memset(cbi, 0, sizeof(cbi));
-		memcpy(head->magic, cbi_magic, sizeof(cbi_magic));
-		head->total_size = sizeof(*head);
-		cached_read_result = EC_SUCCESS;
-	} else {
-		if (read_board_info())
-			return EC_RES_ERROR;
-	}
-
-	if (cbi_set_board_info(p->tag, p->data, p->size))
-		return EC_RES_INVALID_PARAM;
-
-	/* Whether we're modifying existing data or creating new one,
-	 * we take over the format. */
-	head->major_version = CBI_VERSION_MAJOR;
-	head->minor_version = CBI_VERSION_MINOR;
-	head->crc = cbi_crc8(head);
-
-	/* Skip write if client asks so. */
-	if (p->flag & CBI_SET_NO_SYNC)
-		return EC_RES_SUCCESS;
-
-	/* We already checked write protect failure case. */
-	if (write_board_info())
-		return EC_RES_ERROR;
-
-	return EC_RES_SUCCESS;
-}
-
 static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_set_cbi * p = args->params;
@@ -426,7 +464,11 @@ static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 	if (args->params_size < sizeof(*p) + p->size)
 		return EC_RES_INVALID_PARAM;
 
+#if defined(CONFIG_CROS_BOARD_INFO_VIRTUAL)
+	return EC_RES_ERROR;
+#else
 	return common_cbi_set(p);
+#endif
 }
 DECLARE_HOST_COMMAND(EC_CMD_SET_CROS_BOARD_INFO,
 		     hc_cbi_set,
