@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24f413e2_218e7b79",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06fb795b_5f80691e",
+      "range": {
+        "startLine": 10,
+        "startChar": 2,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "c7478dab9415935d2778e28e7d90e5bd5e2693a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "606245c1_6781a741",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-02T15:40:05Z",
       "side": 1,
       "message": "Change to LID_OPEN",
+      "range": {
+        "startLine": 13,
+        "startChar": 12,
+        "endLine": 13,
+        "endChar": 25
+      },
+      "revId": "c7478dab9415935d2778e28e7d90e5bd5e2693a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3a2cc80_06ca1127",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "606245c1_6781a741",
       "range": {
         "startLine": 13,
         "startChar": 12,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6483ff4b_6a6ae41c",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0d62543_35c6e63c",
+      "range": {
+        "startLine": 16,
+        "startChar": 2,
+        "endLine": 16,
+        "endChar": 11
+      },
+      "revId": "c7478dab9415935d2778e28e7d90e5bd5e2693a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a5d7341_57e6c66f",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea4a6585_5c0b5101",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a5d7341_57e6c66f",
+      "range": {
+        "startLine": 19,
+        "startChar": 12,
+        "endLine": 19,
+        "endChar": 29
+      },
+      "revId": "c7478dab9415935d2778e28e7d90e5bd5e2693a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19efb959_4b84c674",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-06-02T15:40:05Z",
       "side": 1,
       "message": "This is a duplicate entry.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 59
+      },
+      "revId": "c7478dab9415935d2778e28e7d90e5bd5e2693a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f1ab22_3b76e71c",
+        "filename": "zephyr/projects/brya/brya/include/gpio_map.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T21:42:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "19efb959_4b84c674",
       "range": {
         "startLine": 38,
         "startChar": 0,
