@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b765634_59bae2a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T16:27:59Z",
+      "side": 1,
+      "message": "Can you also test \"ksstate on\" and press keys.  I believe this will print changes to the keyboard matrix in real time.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 49
+      },
+      "revId": "58395d6a21eff3e6adf4da1db54efc5a54275f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7138f65c_b21ccbaf",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T16:27:59Z",
+      "side": 1,
+      "message": "Comment probably can be deleted.  If the pin number is meant to correspond to the keyboard connector, then these values aren\u0027t correct.  However, I don\u0027t think there is an value in noting the pin number here.  The alternate function label I think is sufficient documentation, so the KSIn/KSOn comments also isn\u0027t needed.",
+      "range": {
+        "startLine": 76,
+        "startChar": 33,
+        "endLine": 76,
+        "endChar": 49
+      },
+      "revId": "58395d6a21eff3e6adf4da1db54efc5a54275f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "008492f6_69f518a9",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T16:27:59Z",
+      "side": 1,
+      "message": "EC_PCH_WAKE_R_ODL to match schematic.",
+      "range": {
+        "startLine": 58,
+        "startChar": 12,
+        "endLine": 58,
+        "endChar": 24
+      },
+      "revId": "58395d6a21eff3e6adf4da1db54efc5a54275f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8a69371_3bab1aae",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-02T16:27:59Z",
+      "side": 1,
+      "message": "EC_PCH_INT_ODL",
+      "range": {
+        "startLine": 63,
+        "startChar": 12,
+        "endLine": 63,
+        "endChar": 20
+      },
+      "revId": "58395d6a21eff3e6adf4da1db54efc5a54275f65",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
