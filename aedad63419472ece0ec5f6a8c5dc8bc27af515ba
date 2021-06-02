@@ -52,6 +52,24 @@
       "parentUuid": "bc53a7cc_ab5312f7",
       "revId": "aedad63419472ece0ec5f6a8c5dc8bc27af515ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f18832d_f96baf36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T06:15:34Z",
+      "side": 1,
+      "message": "With the latest stack of changes it no longer freezes but instead boot loops with:\n\n21-06-02 00:13:56.293 uart:~$ sysjump RW\n21-06-02 00:14:00.313 [644.112100 Jumping to image RW]\n21-06-02 00:14:00.315 [644.115100 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\n21-06-02 00:14:00.322 Fatal error: 0\n21-06-02 00:14:00.322   a1       \u003d 0x10080171\n21-06-02 00:14:00.325   a2       \u003d 0x00004000\n21-06-02 00:14:00.330   a3       \u003d 0x100801CC\n21-06-02 00:14:00.330   a4       \u003d 0x40001561\n21-06-02 00:14:00.332   ip       \u003d 0x00000000\n21-06-02 00:14:00.336   lr       \u003d 0x100876DF\n21-06-02 00:14:00.336   pc       \u003d 0x40001560\n21-06-02 00:14:00.339   xpsr     \u003d 0x61000000\n21-06-02 00:14:01.715 *** Booting Zephyr OS build zephyr-v2.5.0-101-g7a99b4a3ee12  ***\n21-06-02 00:14:01.746 \n21-06-02 00:14:01.746 \n21-06-02 00:14:01.746 --- UART initialized after reboot ---\n21-06-02 00:14:01.749 [Image: RO, brya_zephyr_v2.0.8889+b910a3b4e 2021-05-20 10:42:38 peress@technodrome.c.googlers.com]\n21-06-02 00:14:01.759 [Reset cause: watchdog]\n21-06-02 00:14:01.763 [0.022900 VB Main]\n21-06-02 00:14:01.763 [0.023800 VB Ping Cr50]\n21-06-02 00:14:01.766 [0.026600 hash start 0x00040000 0x00031f18]\n21-06-02 00:14:01.771 \n21-06-02 00:14:01.771 \n21-06-02 00:14:01.771 uart[0.339700 hash done b24a5d309747afe034105395a946bb8de73d092be0fc0582ce37b27eccb54a93]\n21-06-02 00:14:02.084 [0.345800 VB Verifying hash]\n21-06-02 00:14:02.085 ���[0.357300 VB Received 0xec07]\n21-06-02 00:14:02.094 [0.358700 VB Hash mismatch]\n21-06-02 00:14:02.097 [0.361100 VB Enable USB-PD]\n21-06-02 00:14:02.101 [0.363500 VB Exit]\n21-06-02 00:14:02.107 Fatal error: 0\n21-06-02 00:14:02.107   a1       \u003d 0x00004C4D\n21-06-02 00:14:02.112   a2       \u003d 0x200C592C\n21-06-02 00:14:02.112   a3       \u003d 0x200C5928\n21-06-02 00:14:02.114   a4       \u003d 0x00000008\n21-06-02 00:14:02.119   ip       \u003d 0x00000016\n21-06-02 00:14:02.119   lr       \u003d 0x10086FCB\n21-06-02 00:14:02.120   pc       \u003d 0x10086F5A\n21-06-02 00:14:02.124   xpsr     \u003d 0x01000200",
+      "parentUuid": "a017a74f_144502b0",
+      "revId": "aedad63419472ece0ec5f6a8c5dc8bc27af515ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
