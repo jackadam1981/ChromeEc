@@ -34,6 +34,24 @@
       "parentUuid": "acd7dc20_ae9f6a3f",
       "revId": "aedad63419472ece0ec5f6a8c5dc8bc27af515ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a017a74f_144502b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-02T03:48:33Z",
+      "side": 1,
+      "message": "Done, but I\u0027m getting:\n\n21-06-01 21:44:32.664 uart:~$ sysjump RW\n21-06-01 21:44:47.764 [19.988700 Jumping to image RW]\n21-06-01 21:44:47.764 [19.991400 HC Suppressed: 0x97\u003d0 0x98\u003d0 0x113\u003d0 0x103\u003d0 0x115\u003d0 0x2b\u003d0 0x67\u003d0 0x121\u003d0]\n21-06-01 21:44:47.773 Fatal error: 0\n21-06-01 21:44:47.773   a1       \u003d 0x10086FC1\n21-06-01 21:44:47.776   a2       \u003d 0x00004000\n21-06-01 21:44:47.776   a3       \u003d 0x100801CC\n21-06-01 21:44:47.779   a4       \u003d 0x40001561\n21-06-01 21:44:47.783   ip       \u003d 0x00000000\n21-06-01 21:44:47.783   lr       \u003d 0x1008359B\n21-06-01 21:44:47.785   pc       \u003d 0x40001560\n21-06-01 21:44:47.789   xpsr     \u003d 0x61000000",
+      "parentUuid": "bc53a7cc_ab5312f7",
+      "revId": "aedad63419472ece0ec5f6a8c5dc8bc27af515ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
