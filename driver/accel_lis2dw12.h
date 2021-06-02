@@ -11,7 +11,7 @@
 #ifndef __CROS_EC_ACCEL_LIS2DW12_H
 #define __CROS_EC_ACCEL_LIS2DW12_H
 
-#include "driver/stm_mems_common.h"
+#include "stm_mems_common.h"
 
 /*
  * 7-bit address is 011000Xb. Where 'X' is determined
