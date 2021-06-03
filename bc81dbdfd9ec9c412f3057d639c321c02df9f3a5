@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f144bcc5_699c7bd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-03T21:32:27Z",
+      "side": 1,
+      "message": "+1. Since you\u0027re checking every second, I think it makes sense to leverage the HOOK_SECOND hook.",
+      "parentUuid": "90d3ee45_3478997e",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ee0dcec_eb87b531",
@@ -31,6 +49,29 @@
       "writtenOn": "2021-06-03T17:55:05Z",
       "side": 1,
       "message": "Adding Aseda in case he has suggestions for where this logic would make the most sense to run in terms of tasks",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e7aaedd_d4bc8946",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-03T21:32:27Z",
+      "side": 1,
+      "message": "Why is this limited to CHARGER_SOLO only?",
+      "range": {
+        "startLine": 115,
+        "startChar": 32,
+        "endLine": 115,
+        "endChar": 44
+      },
       "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -111,6 +152,98 @@
       "writtenOn": "2021-06-03T10:18:38Z",
       "side": 1,
       "message": "why? I thoufht argv[1] is a string",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c1bb507_5631274c",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-03T21:32:27Z",
+      "side": 1,
+      "message": "Perhaps consider validating the new constant values.",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 22
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de23a7c1_99870b98",
+        "filename": "include/apdo.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-03T21:32:27Z",
+      "side": 1,
+      "message": "typo: adaptive",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ae0931_3eb2d642",
+        "filename": "include/apdo.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-03T21:32:27Z",
+      "side": 1,
+      "message": "\u0027of\u0027 ?",
+      "range": {
+        "startLine": 33,
+        "startChar": 23,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45771306_fa24b31b",
+        "filename": "include/apdo.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-03T21:32:27Z",
+      "side": 1,
+      "message": "typo: evaluated",
+      "range": {
+        "startLine": 55,
+        "startChar": 31,
+        "endLine": 55,
+        "endChar": 39
+      },
       "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
