@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fa2309f_68a6645c",
+        "filename": "include/flash.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T23:35:48Z",
+      "side": 1,
+      "message": "Use the \"crec_\" prefix.  Also update all APIs in this file.\n\nFor example:\nint crec_flash_read()\nuint32 crec_flash_get_protect()",
+      "range": {
+        "startLine": 299,
+        "startChar": 4,
+        "endLine": 299,
+        "endChar": 19
+      },
+      "revId": "93f156a3141bc71e3b90556fe80def3a13e9eaa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
