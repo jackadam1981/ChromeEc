@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22a43628_188b490f",
+        "filename": "include/charge_state_v2.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-03T14:25:05Z",
+      "side": 1,
+      "message": "I think whether we use display percentage or not, int8_t is enough. Switching to int8_t.",
+      "parentUuid": "91bd043c_77b3d2b4",
+      "revId": "3a01fdce58b5fa29146148a646a69e91c21d77e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a670c076_4a419120",
