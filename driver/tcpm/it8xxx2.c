@@ -37,6 +37,20 @@
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+#ifdef CONFIG_ZEPHYR
+/* Use the Zepyrr names here. When upstreaming we can update this */
+#define IT83XX_GPIO_GPCRF4	GPCRF4
+#define IT83XX_GPIO_GPCRF5	GPCRF5
+#define IT83XX_GPIO_GPCRH1	GPCRH1
+#define IT83XX_GPIO_GPCRH2	GPCRH2
+#define IT83XX_GPIO_GPCRP0	IT83XX2_GPIO_GPCRP0
+#define IT83XX_GPIO_GPCRP1	IT83XX2_GPIO_GPCRP1
+#define IT83XX_IRQ_USBPD0	165
+#define IT83XX_IRQ_USBPD1	166
+#define IT83XX_IRQ_USBPD2	174
+#define USB_VID_ITE		0x048d
+#endif
+
 bool rx_en[IT83XX_USBPD_PHY_PORT_COUNT];
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 	bool sop_prime_en[IT83XX_USBPD_PHY_PORT_COUNT];

@@ -11,5 +11,15 @@ project(hayato)
 
 set(PLATFORM_EC_BASEBOARD "${PLATFORM_EC}/baseboard/asurada" CACHE PATH
     "Path to the platform/ec baseboard directory")
+set(PLATFORM_EC_BOARD "${PLATFORM_EC}/board/hayato" CACHE PATH
+  "Path to the platform/ec board directory")
 
 zephyr_include_directories(include)
+
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_USBC
+  "${PLATFORM_EC_BASEBOARD}/board_id.c"
+  "${PLATFORM_EC_BASEBOARD}/usbc_config.c"
+  "${PLATFORM_EC_BASEBOARD}/usb_pd_policy.c")
+
+zephyr_library_sources(
+  "${PLATFORM_EC_BOARD}/battery.c")

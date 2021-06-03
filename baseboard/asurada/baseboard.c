@@ -49,6 +49,8 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+#include "gpio_list.h"
+
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
