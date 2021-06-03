@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d97cddb9_9aaafcff",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-03T15:08:03Z",
+      "side": 1,
+      "message": "Can we extract this to a static inline function is_i2c_port_virtual_battery?",
+      "range": {
+        "startLine": 1233,
+        "startChar": 0,
+        "endLine": 1241,
+        "endChar": 6
+      },
+      "revId": "c827d00ebaca7524f653f8f65c440394ed696add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
