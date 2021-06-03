@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbc8d3fb_3c65cdb7",
+        "filename": "zephyr/shim/chip/npcx/include/system_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T17:38:19Z",
+      "side": 1,
+      "message": "This #ifdef can be deleted.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 55
+      },
+      "revId": "f7c3181bb616b4389af342055b30f15c71289b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab6f19dd_10a0bf4a",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T17:38:19Z",
+      "side": 1,
+      "message": "Change this to \n   if (!IS_ENABLED(CONFIG_PLATFORM_EC_WORKAROUND_FLASH_DOWNLOAD_API))\n       return;",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 55
+      },
+      "revId": "f7c3181bb616b4389af342055b30f15c71289b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7b1f4e_6f9df8fd",
+        "filename": "zephyr/shim/chip/npcx/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T17:38:19Z",
+      "side": 1,
+      "message": "I know this was copied from the chip/npcx/system-npcx9.c, but this sentence is incomplete and I can\u0027t parse it.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 0
+      },
+      "revId": "f7c3181bb616b4389af342055b30f15c71289b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
