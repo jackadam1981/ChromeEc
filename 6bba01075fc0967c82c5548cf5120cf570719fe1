@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a37b6c5_860469cd",
+        "filename": "board/brya/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T02:37:09Z",
+      "side": 1,
+      "message": "please capitalize all of these.",
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "264bc117_3889e91b",
+        "filename": "board/brya/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T02:37:09Z",
+      "side": 1,
+      "message": "prefer WWAN to match schematics naming.",
+      "range": {
+        "startLine": 215,
+        "startChar": 19,
+        "endLine": 215,
+        "endChar": 26
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7ef0e3c_422bc0fa",
         "filename": "board/brya/sensors.c",
         "patchSetId": 8
@@ -95,6 +135,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81dc7326_5216c915",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T02:37:09Z",
+      "side": 1,
+      "message": "i had issues with temp warnings on board ID 1 since it\nonly has 2 sensors. i\u0027m not seeing those warnings right\nnow, so i need to double check how they happened.\n\nin any case, i think it\u0027s better to limit this to 2\nentries to match board ID 1 while we need to support\nboth boards with the same EC image. we can rename\nthe 2 entries to match board ID 2.",
+      "range": {
+        "startLine": 362,
+        "startChar": 25,
+        "endLine": 362,
+        "endChar": 39
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0cd84828_6f979a69",
         "filename": "board/brya/sensors.c",
         "patchSetId": 8
@@ -157,6 +220,29 @@
         "startChar": 35,
         "endLine": 366,
         "endChar": 36
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed8f005_6c08c34b",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T02:37:09Z",
+      "side": 1,
+      "message": "we\u0027ll need to check against ID_1_TEMP_SENSOR_COUNT instead.\n(add new constant).",
+      "range": {
+        "startLine": 368,
+        "startChar": 43,
+        "endLine": 368,
+        "endChar": 60
       },
       "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
