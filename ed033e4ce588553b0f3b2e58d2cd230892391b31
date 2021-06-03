@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849a93a2_2fca258e",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1369,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T14:21:27Z",
+      "side": 1,
+      "message": "Update comment to note the requirement to use CONFIG_WDT_ITE_WARNING_LEADING_TIME_MS for the IT8xxx2 WDT driver.",
+      "range": {
+        "startLine": 1366,
+        "startChar": 0,
+        "endLine": 1369,
+        "endChar": 3
+      },
+      "revId": "ed033e4ce588553b0f3b2e58d2cd230892391b31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
