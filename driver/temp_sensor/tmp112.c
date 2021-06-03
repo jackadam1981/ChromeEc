@@ -20,6 +20,13 @@ static int temp_val_local[TMP112_NUM];
 
 static int raw_read16(int sensor, const int offset, int *data_ptr)
 {
+#ifdef CONFIG_I2C_BUS_MAY_BE_UNPOWERED
+	/*
+	 * Don't try to read if the port is unpowered
+	 */
+	if (!board_is_i2c_port_powered(tmp112_sensors[sensor].i2c_port))
+		return EC_ERROR_NOT_POWERED;
+#endif
 	return i2c_read16(tmp112_sensors[sensor].i2c_port,
 			  tmp112_sensors[sensor].i2c_addr_flags,
 			  offset, data_ptr);
@@ -87,7 +94,8 @@ static void tmp112_init(void)
 	clr_mask = BIT(7);
 
 	for (s = 0; s < TMP112_NUM; s++) {
-		raw_read16(s, TMP112_REG_CONF, &tmp);
+		if (raw_read16(s, TMP112_REG_CONF, &tmp) != EC_SUCCESS)
+			continue;
 		raw_write16(s, TMP112_REG_CONF, (tmp & ~clr_mask) | set_mask);
 	}
 }
