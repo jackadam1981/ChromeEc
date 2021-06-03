@@ -254,6 +254,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce86cfd6_9482f523",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T03:08:38Z",
+      "side": 1,
+      "message": "ok, found it. the compatibility issue is in\ncommon/thermal.c:thermal_control(). it iterates over TEMP_SENSOR_COUNT\nand if any of them are out of range, bad things might happen. since\nboard ID 1 only has 2 sensors, this is likely.\n\nlet\u0027s leave TEMP_SENSOR_COUNT at 2 and only define the first 2\nsensors while we need current board ID 1 devices to work.",
+      "parentUuid": "81dc7326_5216c915",
+      "range": {
+        "startLine": 362,
+        "startChar": 25,
+        "endLine": 362,
+        "endChar": 39
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0cd84828_6f979a69",
         "filename": "board/brya/sensors.c",
         "patchSetId": 8
