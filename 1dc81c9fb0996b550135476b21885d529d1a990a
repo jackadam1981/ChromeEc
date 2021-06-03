@@ -16,6 +16,24 @@
       "message": "What about PIN(8, 5)?",
       "revId": "1dc81c9fb0996b550135476b21885d529d1a990a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81f084b6_8ed4e2b8",
+        "filename": "board/trogdor/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-03T22:18:08Z",
+      "side": 1,
+      "message": "A good question. Though its name is GPIO85, the datasheet says the pin does not have output enable control, open-drain capability, weak pull-up, weak pull-down, or \"Drive Enable by VDD Present\". So we can\u0027t apply pull-up to that pin.",
+      "parentUuid": "c79d6125_d118280f",
+      "revId": "1dc81c9fb0996b550135476b21885d529d1a990a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
