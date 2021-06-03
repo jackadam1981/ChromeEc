@@ -16,6 +16,24 @@
       "message": "return;\nuntil Power on debug is complete don\u0027t shutdown the AP",
       "revId": "d5e2fb0f90fc58d6ede2e3c90201ce397e2c376c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a1a6647_b15f8166",
+        "filename": "power/icelake.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-03T17:03:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9b9ebad_008ffc30",
+      "revId": "d5e2fb0f90fc58d6ede2e3c90201ce397e2c376c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
