@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90d3ee45_3478997e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-03T17:55:05Z",
+      "side": 1,
+      "message": "What\u0027s the timing needed on the evaluation?  \n\nIt looks like the code will currently run in the sink ready state, which will be iterating every 5 ms.  If the timing doesn\u0027t need to be that tight, then it seems like it could make sense for this to happen in something like a separate system-wide task or the charging task or a hook.  Then that would use DPM requests to communicate to the PD task as needed.  And something like pd_set_max_voltage() is already in place to set a new maximum voltage, if that helps.",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ee0dcec_eb87b531",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-03T17:55:05Z",
+      "side": 1,
+      "message": "Adding Aseda in case he has suggestions for where this logic would make the most sense to run in terms of tasks",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d12472c_7ce40480",
         "filename": "common/apdo.c",
         "patchSetId": 3
@@ -77,6 +111,23 @@
       "writtenOn": "2021-06-03T10:18:38Z",
       "side": 1,
       "message": "why? I thoufht argv[1] is a string",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb691e39_d447ccc1",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4110,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-03T17:55:05Z",
+      "side": 1,
+      "message": "Don\u0027t forget the zephyr config additions :) https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md#how-to-shim-features",
       "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
