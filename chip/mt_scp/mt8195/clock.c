@@ -1,4 +1,4 @@
-/* Copyright 2020 The Chromium OS Authors. All rights reserved.
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  */
@@ -8,7 +8,6 @@
 #include <assert.h>
 #include <string.h>
 
-#include "clock_chip.h"
 #include "clock.h"
 #include "common.h"
 #include "console.h"
@@ -21,6 +20,14 @@
 #define CPRINTF(format, args...) cprintf(CC_CLOCK, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_CLOCK, format, ##args)
 
+enum scp_clock_source {
+	SCP_CLK_SYSTEM,
+	SCP_CLK_32K,
+	SCP_CLK_ULPOSC1,
+	SCP_CLK_ULPOSC2_LOW_SPEED,
+	SCP_CLK_ULPOSC2_HIGH_SPEED,
+};
+
 static struct opp_ulposc_cfg {
 	uint32_t osc;
 	uint32_t div;
@@ -28,22 +35,15 @@ static struct opp_ulposc_cfg {
 	uint32_t mod;
 	uint32_t cali;
 	uint32_t target_mhz;
+	uint32_t clk_div;
 } opp[] = {
 	{
-		.osc = 1, .target_mhz = 196, .div = 20, .fband = 10, .mod = 3,
-		.cali = 64,
+		.osc = 1, .target_mhz = 326, .clk_div = CLK_DIV_SEL2, .div = 19,
+		.fband = 10, .mod = 0, .cali = 64, /* 326MHz / 2 = 163MHz */
 	},
 	{
-		.osc = 0, .target_mhz = 260, .div = 14, .fband = 2, .mod = 0,
-		.cali = 64,
-	},
-	{
-		.osc = 1, .target_mhz = 280, .div = 20, .fband = 2, .mod = 0,
-		.cali = 64,
-	},
-	{
-		.osc = 1, .target_mhz = 360, .div = 20, .fband = 10, .mod = 0,
-		.cali = 64,
+		.osc = 1, .target_mhz = 360, .clk_div = CLK_DIV_SEL1, .div = 21,
+		.fband = 10, .mod = 0, .cali = 64, /* 360MHz / 1 = 360MHz */
 	},
 };
 
@@ -65,26 +65,31 @@ static inline void clock_busy_udelay(int usec)
 
 static void clock_ulposc_config_default(struct opp_ulposc_cfg *opp)
 {
-	unsigned int val = 0;
+	uint32_t val = 0;
 
+	/* set mod, div2_en = 0, cp_en = 0 */
+	val |= opp->mod << OSC_MOD_SHIFT;
 	/* set div */
 	val |= opp->div << OSC_DIV_SHIFT;
-	/* set F-band; I-band = 82 */
+	/* set F-band, I-band = 82 */
 	val |= (opp->fband << OSC_FBAND_SHIFT) | (82 << OSC_IBAND_SHIFT);
 	/* set calibration */
 	val |= opp->cali;
 	/* set control register 0 */
 	AP_ULPOSC_CON0(opp->osc) = val;
 
-	/* set mod */
-	val = opp->mod << OSC_MOD_SHIFT;
+	clock_busy_udelay(50);
+
+	/* bias = 65 */
+	val = 65 << OSC_BIAS_SHIFT;
 	/* rsv2 = 0, rsv1 = 41, cali_32k = 0 */
 	val |= 41 << OSC_RSV1_SHIFT;
 	/* set control register 1 */
 	AP_ULPOSC_CON1(opp->osc) = val;
 
-	/* bias = 64 */
-	AP_ULPOSC_CON2(opp->osc) = 64;
+	/* set settle time */
+	SCP_CLK_HIGH_VAL =
+		(SCP_CLK_HIGH_VAL & ~CLK_HIGH_VAL_MASK) | CLK_HIGH_VAL_VAL(2);
 }
 
 static void clock_ulposc_config_cali(struct opp_ulposc_cfg *opp,
@@ -96,6 +101,7 @@ static void clock_ulposc_config_cali(struct opp_ulposc_cfg *opp,
 	val &= ~OSC_CALI_MASK;
 	val |= cali_val;
 	AP_ULPOSC_CON0(opp->osc) = val;
+	opp->cali = cali_val;
 
 	clock_busy_udelay(50);
 }
@@ -105,11 +111,14 @@ static uint32_t clock_ulposc_measure_freq(uint32_t osc)
 	uint32_t result = 0;
 	int cnt;
 
+	/* Set ckgen_load_cnt: CLK26CALI_1[25:16] */
+	AP_CLK26CALI_1 = CFG_CKGEN_LOAD_CNT;
+
 	/* before select meter clock input, bit[1:0] = b00 */
 	AP_CLK_DBG_CFG = (AP_CLK_DBG_CFG & ~DBG_MODE_MASK) |
 			 DBG_MODE_SET_CLOCK;
 
-	/* select source, bit[21:16] = clk_src */
+	/* select monclk_ext2fqmtr_sel: AP_CLK_DBG_CFG[14:8] */
 	AP_CLK_DBG_CFG = (AP_CLK_DBG_CFG & ~DBG_BIST_SOURCE_MASK) |
 			 (osc == 0 ? DBG_BIST_SOURCE_ULPOSC1 :
 				     DBG_BIST_SOURCE_ULPOSC2);
@@ -119,29 +128,23 @@ static uint32_t clock_ulposc_measure_freq(uint32_t osc)
 			    MISC_METER_DIV_1;
 
 	/* enable frequency meter, without start */
-	AP_SCP_CFG_0 |= CFG_FREQ_METER_ENABLE;
+	AP_CLK26CALI_0 |= CFG_FREQ_METER_ENABLE;
 
 	/* trigger frequency meter start */
-	AP_SCP_CFG_0 |= CFG_FREQ_METER_RUN;
+	AP_CLK26CALI_0 |= CFG_FREQ_METER_RUN;
 
-	/*
-	 * Frequency meter counts cycles in 1 / (26 * 1024) second period.
-	 *   freq_in_hz = freq_counter * 26 * 1024
-	 *
-	 * The hardware takes 38us to count cycles. Delay up to 100us,
-	 * as clock_busy_udelay may not be accurate when sysclk is not 26Mhz
-	 * (e.g. when recalibrating/measuring after boot).
-	 */
-	for (cnt = 100; cnt > 0; --cnt) {
-		clock_busy_udelay(1);
-		if (!(AP_SCP_CFG_0 & CFG_FREQ_METER_RUN)) {
-			result = CFG_FREQ_COUNTER(AP_SCP_CFG_1);
+	clock_busy_udelay(45);
+
+	for (cnt = 10000; cnt > 0; --cnt) {
+		clock_busy_udelay(10);
+		if (!(AP_CLK26CALI_0 & CFG_FREQ_METER_RUN)) {
+			result = CFG_FREQ_COUNTER(AP_CLK26CALI_1);
 			break;
 		}
 	}
 
 	/* disable freq meter */
-	AP_SCP_CFG_0 &= ~CFG_FREQ_METER_ENABLE;
+	AP_CLK26CALI_0 &= ~CFG_FREQ_METER_ENABLE;
 
 	return result;
 }
@@ -152,7 +155,12 @@ static int clock_ulposc_is_calibrated(struct opp_ulposc_cfg *opp)
 	uint32_t curr, target;
 
 	curr = clock_ulposc_measure_freq(opp->osc);
-	target = opp->target_mhz * 1024 / 26;
+	target = opp->target_mhz * 512 / 26;
+
+#ifdef DEBUG
+	CPRINTF("osc:%u, target=%uMHz, curr=%uMHz, cali:%u\n",
+		opp->osc, opp->target_mhz, (curr * 26) / 512, opp->cali);
+#endif
 
 	/* check if calibrated value is in the range of target value +- 4% */
 	if (curr > (target * (1000 - CAL_MIS_RATE) / 1000) &&
@@ -165,7 +173,7 @@ static int clock_ulposc_is_calibrated(struct opp_ulposc_cfg *opp)
 static uint32_t clock_ulposc_process_cali(struct opp_ulposc_cfg *opp)
 {
 	uint32_t current_val = 0;
-	uint32_t target_val = opp->target_mhz * 1024 / 26;
+	uint32_t target_val = opp->target_mhz * 512 / 26;
 	uint32_t middle, min = 0, max = OSC_CALI_MASK;
 	uint32_t diff_by_min, diff_by_max, cal_result;
 
@@ -218,14 +226,31 @@ static void clock_high_enable(int osc)
 	case 0:
 		/* after 150us, enable ULPOSC */
 		clock_busy_udelay(150);
-		SCP_CLK_ENABLE |= CLK_HIGH_CG;
+		SCP_CLK_ENABLE |= CLK_HIGH_CG | CLK_HIGH_EN;
+
+		/* topck ulposc1 clk gating off */
+		AP_CLK_CFG_29_CLR = PDN_F_ULPOSC_CK;
+		/* select topck ulposc1 as scp clk parent */
+		AP_CLK_CFG_29_CLR = ULPOSC1_CLK_SEL;
+
+		AP_CLK_CFG_UPDATE3 = F_ULPOSC_CK_UPDATE;
+		clock_busy_udelay(50);
 		break;
 	case 1:
 		/* turn off ULPOSC2 high-core-disable switch */
 		SCP_CLK_ON_CTRL &= ~HIGH_CORE_DIS_SUB;
-		/* after 150us, turn on ULPOSC2 high core clock gate */
+		/* after 150us, scp requests ULPOSC2 high core clock */
 		clock_busy_udelay(150);
 		SCP_CLK_HIGH_CORE_CG |= HIGH_CORE_CG;
+		SCP_CLK_ENABLE &= ~CLK_HIGH_CG;
+		clock_busy_udelay(50);
+
+		/* topck ulposc2 clk gating off */
+		AP_CLK_CFG_29_CLR = PDN_F_ULPOSC_CORE_CK;
+		/* select topck ulposc2 as scp clk parent */
+		AP_CLK_CFG_29_CLR = ULPOSC2_CLK_SEL;
+
+		AP_CLK_CFG_UPDATE3 = F_ULPOSC_CORE_CK_UPDATE;
 		clock_busy_udelay(50);
 		break;
 	default:
@@ -237,12 +262,24 @@ static void clock_high_disable(int osc)
 {
 	switch (osc) {
 	case 0:
+		/* topck ulposc1 clk gating on */
+		AP_CLK_CFG_29_SET = PDN_F_ULPOSC_CK;
+		AP_CLK_CFG_UPDATE3 = F_ULPOSC_CK_UPDATE;
+		clock_busy_udelay(50);
+
+		/* scp doesn't request ulposc1 clk */
 		SCP_CLK_ENABLE &= ~CLK_HIGH_CG;
 		clock_busy_udelay(50);
 		SCP_CLK_ENABLE &= ~CLK_HIGH_EN;
 		clock_busy_udelay(50);
 		break;
 	case 1:
+		/* topck ulposc2 clk gating on */
+		AP_CLK_CFG_29_SET = PDN_F_ULPOSC_CORE_CK;
+		AP_CLK_CFG_UPDATE3 = F_ULPOSC_CORE_CK_UPDATE;
+		clock_busy_udelay(50);
+
+		/* scp doesn't request ulposc2 clk */
 		SCP_CLK_HIGH_CORE_CG &= ~HIGH_CORE_CG;
 		clock_busy_udelay(50);
 		SCP_CLK_ON_CTRL |= HIGH_CORE_DIS_SUB;
@@ -270,26 +307,53 @@ static void clock_calibrate_ulposc(struct opp_ulposc_cfg *opp)
 	/* Calibrate only if it is not accurate enough. */
 	if (!clock_ulposc_is_calibrated(opp))
 		opp->cali = clock_ulposc_process_cali(opp);
-
-#ifdef DEBUG
-	CPRINTF("osc:%u, target=%uMHz, cal:%u\n",
-		opp->osc, opp->target_mhz, opp->cali);
-#endif
 }
 
-void clock_select_clock(enum scp_clock_source src)
+static void clock_select_clock(enum scp_clock_source src)
 {
-	/*
-	 * DIV2 divider takes precedence over clock selection to prevent
-	 * over-clocking.
-	 */
-	if (src == SCP_CLK_ULPOSC1)
-		SCP_CLK_DIV_SEL = CLK_DIV_SEL2;
+	uint32_t i;
+	uint32_t sel;
 
-	SCP_CLK_SW_SEL = src;
-
-	if (src != SCP_CLK_ULPOSC1)
+	switch (src) {
+	case SCP_CLK_SYSTEM:
 		SCP_CLK_DIV_SEL = CLK_DIV_SEL1;
+		sel = CLK_SW_SEL_SYSTEM;
+		break;
+	case SCP_CLK_32K:
+		SCP_CLK_DIV_SEL = CLK_DIV_SEL1;
+		sel = CLK_SW_SEL_32K;
+		break;
+	case SCP_CLK_ULPOSC1:
+		SCP_CLK_DIV_SEL = CLK_DIV_SEL1;
+		sel = CLK_SW_SEL_ULPOSC1;
+		break;
+	case SCP_CLK_ULPOSC2_HIGH_SPEED:
+		/* parking at scp system clk until ulposc clk is ready */
+		SCP_CLK_SW_SEL = CLK_SW_SEL_SYSTEM;
+
+		sel = CLK_SW_SEL_ULPOSC2;
+		i = ARRAY_SIZE(opp) -1;
+
+		clock_ulposc_config_cali(&opp[i], opp[i].cali);
+		SCP_CLK_DIV_SEL = opp[i].clk_div;
+		break;
+	case SCP_CLK_ULPOSC2_LOW_SPEED:
+		/* parking at scp system clk until ulposc clk is ready */
+		SCP_CLK_SW_SEL = CLK_SW_SEL_SYSTEM;
+
+		sel = CLK_SW_SEL_ULPOSC2;
+		i = 0;
+
+		clock_ulposc_config_cali(&opp[i], opp[i].cali);
+		SCP_CLK_DIV_SEL = opp[i].clk_div;
+		break;
+	default:
+		SCP_CLK_DIV_SEL = CLK_DIV_SEL1;
+		sel = CLK_SW_SEL_SYSTEM;
+		break;
+	}
+
+	SCP_CLK_SW_SEL = sel;
 }
 
 __override void
@@ -298,19 +362,19 @@ power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 {
 	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
 		CPRINTS("AP suspend");
-		clock_select_clock(SCP_CLK_ULPOSC1);
+		clock_select_clock(SCP_CLK_ULPOSC2_LOW_SPEED);
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
 		CPRINTS("AP resume");
-		clock_select_clock(SCP_CLK_ULPOSC2);
+		clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED);
 	}
 }
 
 void clock_init(void)
 {
-	int i;
+	uint32_t i;
 
-	/* select default 26M system clock */
-	clock_select_clock(SCP_CLK_26M);
+	/* select scp system clock (default 26MHz) */
+	clock_select_clock(SCP_CLK_SYSTEM);
 
 	/* set VREQ to HW mode */
 	SCP_CPU_VREQ_CTRL = VREQ_SEL | VREQ_DVFS_SEL;
@@ -331,30 +395,29 @@ void clock_init(void)
 	/* turn off ULPOSC2 */
 	SCP_CLK_ON_CTRL |= HIGH_CORE_DIS_SUB;
 
-	/* calibrate ULPOSC */
+	/* calibrate ULPOSC2 */
 	for (i = 0; i < ARRAY_SIZE(opp); ++i)
 		clock_calibrate_ulposc(&opp[i]);
 
-	/* select ULPOSC2 high speed CPU clock */
-	clock_select_clock(SCP_CLK_ULPOSC2);
+	/* select ULPOSC2 high speed SCP clock */
+	clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED);
 
-	/* select BCLK to use ULPOSC1 / 8 = 260MHz / 8 = 32.5MHz */
+	/* select BCLK to use ULPOSC / 8 */
 	SCP_BCLK_CK_SEL = BCLK_CK_SEL_ULPOSC_DIV8;
 
 	/* enable default clock gate */
 	SCP_SET_CLK_CG |= CG_DMA_CH3 | CG_DMA_CH2 | CG_DMA_CH1 | CG_DMA_CH0 |
-		CG_I2C_MCLK | CG_MAD_MCLK | CG_AP2P_MCLK;
+			  CG_I2C_MCLK | CG_MAD_MCLK | CG_AP2P_MCLK;
 }
 
 #ifdef DEBUG
 int command_ulposc(int argc, char *argv[])
 {
-	int i;
+	uint32_t osc;
 
-	for (i = 0; i <= 1; ++i)
-		ccprintf("ULPOSC%u frequency: %u kHz\n",
-			 i + 1,
-			 clock_ulposc_measure_freq(i) * 26 * 1000 / 1024);
+	for (osc = 0; osc <= 1; ++osc)
+		ccprintf("ULPOSC%u frequency: %u kHz\n", osc + 1,
+			 clock_ulposc_measure_freq(osc) * 26 * 1000 / 512);
 
 	return EC_SUCCESS;
 }
