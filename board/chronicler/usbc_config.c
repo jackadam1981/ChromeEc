@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Volteer family-specific USB-C configuration */
+/* Chronicler family-specific USB-C configuration */
 #include "common.h"
 #include "cbi_ec_fw_config.h"
 #include "gpio.h"

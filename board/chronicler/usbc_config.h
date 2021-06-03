@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* volteer board-specific USB-C configuration */
+/* Chronicler board-specific USB-C configuration */
 
 #ifndef __CROS_EC_USBC_CONFIG_H
 #define __CROS_EC_USBC_CONFIG_H

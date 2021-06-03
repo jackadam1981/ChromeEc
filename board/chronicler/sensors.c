@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Volteer family-specific sensor configuration */
+/* Chronicler family-specific sensor configuration */
 #include "common.h"
 #include "accelgyro.h"
 #include "driver/accel_bma2x2_public.h"
