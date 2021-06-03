@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f80bffa5_b0927275",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T03:51:51Z",
+      "side": 1,
+      "message": "like boris mentioned, many references to the brya board need to change to primus.\n\nit\u0027s fine to have one patch that\u0027s auto-generated and basically a copy of the\nbrya files, but we need a patch submitted together with this one that does the\nname substitutions.\n\nfor example, the header guards like\n#ifndef __BOARD_BRYA_FW_CONFIG_H_\nreally need to be addressed before they cause problems.\n\nbug IDs that are brya specific need primus versions opened if they\nare still applicable, etc.",
+      "revId": "fba3be3d1cca145528b680f6bd4f0f727089c8fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "860528b5_406562f2",
