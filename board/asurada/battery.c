@@ -8,6 +8,7 @@
 #include "battery_smart.h"
 #include "charge_manager.h"
 #include "chipset.h"
+#include "common.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "system.h"

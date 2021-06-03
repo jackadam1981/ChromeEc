@@ -39,9 +39,6 @@
 #include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
 
-static void bc12_interrupt(enum gpio_signal signal);
-static void x_ec_interrupt(enum gpio_signal signal);
-
 #include "gpio_list.h"
 
 #define CPRINTSUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -393,7 +390,7 @@ static void hdmi_hpd_interrupt(enum gpio_signal signal)
 }
 
 /* HDMI/TYPE-C function shared subboard interrupt */
-static void x_ec_interrupt(enum gpio_signal signal)
+void x_ec_interrupt(enum gpio_signal signal)
 {
 	int sub = board_get_sub_board();
 
@@ -415,13 +412,6 @@ int ppc_get_alert_status(int port)
 
 	return 0;
 }
-
-static void baseboard_init(void)
-{
-	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
-	gpio_enable_interrupt(GPIO_AP_XHCI_INIT_DONE);
-}
-DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT-1);
 
 #ifdef CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
 enum adc_channel board_get_vbus_adc(int port)
