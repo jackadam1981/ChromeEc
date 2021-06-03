@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d12472c_7ce40480",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-03T10:18:38Z",
+      "side": 1,
+      "message": "I think this should be batt_mv?",
+      "range": {
+        "startLine": 149,
+        "startChar": 5,
+        "endLine": 149,
+        "endChar": 11
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4999d1d8_6bd485e2",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-03T10:18:38Z",
+      "side": 1,
+      "message": "binary or",
+      "range": {
+        "startLine": 179,
+        "startChar": 53,
+        "endLine": 179,
+        "endChar": 54
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d281f5c2_af32f409",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-03T10:18:38Z",
+      "side": 1,
+      "message": "no need because you already have `if (argc \u003d\u003d 1)` above, but you might need to check if argc \u003e\u003d 3 for some subcommands.",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b436f51_5b237dba",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-03T10:18:38Z",
+      "side": 1,
+      "message": "why? I thoufht argv[1] is a string",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
