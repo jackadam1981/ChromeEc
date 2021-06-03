@@ -16,6 +16,40 @@
       "message": "hi  Henry \u0026 aseda:\nplease help to review this cl for second lid sensor and base sensor. thanks",
       "revId": "f42d9749a72f8b0966e0e596024db50e681375db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14e0ce27_73ad3958",
+        "filename": "board/storo/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 647,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-03T03:25:48Z",
+      "side": 1,
+      "message": "nit: please add braces to the else clause.",
+      "revId": "f42d9749a72f8b0966e0e596024db50e681375db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64845f6b_41c21149",
+        "filename": "board/storo/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-03T03:25:48Z",
+      "side": 1,
+      "message": "nit: here as well.",
+      "revId": "f42d9749a72f8b0966e0e596024db50e681375db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
