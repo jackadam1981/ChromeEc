@@ -72,6 +72,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3eca8dd_acd7cc70",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5188,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-03T23:05:02Z",
+      "side": 1,
+      "message": "Yes, they are meant to be mutually exclusive. I\u0027ll add a check.",
+      "parentUuid": "18a4e379_6506f4eb",
+      "range": {
+        "startLine": 5188,
+        "startChar": 7,
+        "endLine": 5188,
+        "endChar": 37
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d6e65c40_b336a257",
         "filename": "util/config_allowed.txt",
         "patchSetId": 1
