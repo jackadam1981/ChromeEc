@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "311d069d_8b1d3101",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-03T03:19:44Z",
+      "side": 1,
+      "message": "Don\u0027t forget to mark comments as resolved please.",
+      "revId": "b13af745d634978db8e07eab580a1e2944324d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59b62dec_f865782d",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1810,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-03T03:19:44Z",
+      "side": 1,
+      "message": "Can you add a statement saying that this should be ok for all chargers?",
+      "revId": "b13af745d634978db8e07eab580a1e2944324d2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
