@@ -45,6 +45,30 @@
       },
       "revId": "0bacfe9cb12adc127ea0cd2dea12f95da41d1407",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cddd611_6ea849c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1401017
+      },
+      "writtenOn": "2021-06-03T03:01:54Z",
+      "side": 1,
+      "message": "Looks like it is for factory test. But I think we don\u0027t have factory branch for firmware. Factory usually use the firmware on the release image.",
+      "parentUuid": "2ab4b5e4_ac0dbcab",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "0bacfe9cb12adc127ea0cd2dea12f95da41d1407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
