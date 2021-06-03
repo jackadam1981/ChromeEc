@@ -27,6 +27,8 @@ static int fd = -1;
 #define ARRAY_SIZE(t) (sizeof(t) / sizeof(t[0]))
 #endif
 
+#define EC_COMMAND_RESULT_UNINITIALIZED 0xff
+
 static const char * const meanings[] = {
 	"SUCCESS",
 	"INVALID_COMMAND",
@@ -51,6 +53,50 @@ static const char * const meanings[] = {
 	"DUP_UNAVAILABLE",
 };
 
+/**
+ * Maps Linux errno to CrOS EC error.
+ * Returns 0 if no match found.
+ */
+static int cros_ec_map_errno(int _errno)
+{
+	/* Invert _errno if needed */
+	_errno = _errno < 0 ? -_errno : _errno;
+
+	switch (_errno) {
+	case EOPNOTSUPP:
+		return EC_RES_INVALID_COMMAND;
+	case EIO:
+		return EC_RES_ERROR;
+	case EINVAL:
+		return EC_RES_INVALID_PARAM;
+	case EACCES:
+		return EC_RES_ACCESS_DENIED;
+	case EPROTO:
+	case EBADMSG:
+		return EC_RES_INVALID_RESPONSE;
+	case ENOPROTOOPT:
+		return EC_RES_INVALID_VERSION;
+	case EINPROGRESS:
+		return EC_RES_IN_PROGRESS;
+	case ENODATA:
+		return EC_RES_UNAVAILABLE;
+	case ETIMEDOUT:
+		return EC_RES_TIMEOUT;
+	case EOVERFLOW:
+		return EC_RES_OVERFLOW;
+	case EBADR:
+		return EC_RES_INVALID_HEADER;
+	case EFBIG:
+		return EC_RES_RESPONSE_TOO_BIG;
+	case EFAULT:
+		return EC_RES_BUS_ERROR;
+	case EBUSY:
+		return EC_RES_BUSY;
+	default:
+		return 0;
+	}
+}
+
 static const char *strresult(int i)
 {
 	if (i < 0 || i >= ARRAY_SIZE(meanings))
@@ -69,7 +115,7 @@ static int ec_command_dev(int command, int version,
 
 	s_cmd.command = command;
 	s_cmd.version = version;
-	s_cmd.result = 0xff;
+	s_cmd.result = EC_COMMAND_RESULT_UNINITIALIZED;
 	s_cmd.outsize = outsize;
 	s_cmd.outdata = (uint8_t *)outdata;
 	s_cmd.insize = insize;
@@ -129,6 +175,7 @@ static int ec_command_dev_v2(int command, int version,
 			     void *indata, int insize)
 {
 	struct cros_ec_command_v2 *s_cmd;
+	uint32_t result;
 	int r;
 
 	assert(outsize == 0 || outdata != NULL);
@@ -141,30 +188,36 @@ static int ec_command_dev_v2(int command, int version,
 
 	s_cmd->command = command;
 	s_cmd->version = version;
-	s_cmd->result = 0xff;
+	s_cmd->result = EC_COMMAND_RESULT_UNINITIALIZED;
 	s_cmd->outsize = outsize;
 	s_cmd->insize = insize;
 	memcpy(s_cmd->data, outdata, outsize);
 
 	r = ioctl(fd, CROS_EC_DEV_IOCXCMD_V2, s_cmd);
+	result = s_cmd->result;
+
 	if (r < 0) {
+		/*
+		 * Newer CrOS EC driver does not set s_cmd->result on error.
+		 * In this case, infer a result from errno.
+		 */
+		if (result == EC_COMMAND_RESULT_UNINITIALIZED)
+			result = cros_ec_map_errno(errno);
 		fprintf(stderr, "ioctl %d, errno %d (%s), EC result %d (%s)\n",
-			r, errno, strerror(errno), s_cmd->result,
-			strresult(s_cmd->result));
-		if (errno == EAGAIN && s_cmd->result == EC_RES_IN_PROGRESS) {
-			s_cmd->command = EC_CMD_RESEND_RESPONSE;
-			r = ioctl(fd, CROS_EC_DEV_IOCXCMD_V2, &s_cmd);
-			fprintf(stderr,
-				"ioctl %d, errno %d (%s), EC result %d (%s)\n",
-				r, errno, strerror(errno), s_cmd->result,
-				strresult(s_cmd->result));
-		}
+			r, errno, strerror(errno), result, strresult(result));
+		r = -EECRESULT - result;
 	} else {
 		memcpy(indata, s_cmd->data, MIN(r, insize));
-		if (s_cmd->result != EC_RES_SUCCESS) {
-			fprintf(stderr, "EC result %d (%s)\n", s_cmd->result,
-				strresult(s_cmd->result));
-			r =  -EECRESULT - s_cmd->result;
+		/*
+		 * If the result is unexpectedly unset, default result to
+		 * EC_RES_UNAVAILABLE.
+		 */
+		if (result == EC_COMMAND_RESULT_UNINITIALIZED)
+			result = EC_RES_UNAVAILABLE;
+		if (result != EC_RES_SUCCESS) {
+			fprintf(stderr, "EC result %d (%s)\n", result,
+				strresult(result));
+			r = -EECRESULT - result;
 		}
 	}
 	free(s_cmd);
