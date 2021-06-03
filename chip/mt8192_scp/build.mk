@@ -17,7 +17,8 @@ chip-y+=system.o
 chip-y+=uart.o
 
 ifeq ($(BOARD), cherry_scp)
-	chip-y+=mt8195_clock.o
+	# chip-y+=mt8195_clock.o
+	chip-y+=clock_26M.o
 else
 	chip-y+=clock.o
 endif
