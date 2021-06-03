@@ -3,6 +3,207 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ada43c1b_b2245fbc",
+        "filename": "driver/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "please add in alphabetical order.",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9868842c_86065160",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "try to avoid CONFIG_ prefix for local macros that could\npotentially conflict with global symbols from config.h\nor Kconfig as the case may be. might this end up being\nboard specific?",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8300cb13_19e47135",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "should this be static?\nif not, there should be corresponding declarations in kb800x.h.",
+      "range": {
+        "startLine": 17,
+        "startChar": 12,
+        "endLine": 17,
+        "endChar": 28
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a38abfb_f8ef229d",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "should this be static?",
+      "range": {
+        "startLine": 19,
+        "startChar": 4,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3d81cb_c6edc5ae",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "sizeof",
+      "range": {
+        "startLine": 26,
+        "startChar": 66,
+        "endLine": 26,
+        "endChar": 67
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97c03e5e_3c824388",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "should this be static?",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 15
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f231857d_bf57b118",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "count is always 1 as used here. you can probably drop the arg,\nspecially since the write counterpart does not take a count.",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03a4792_f5186fe6",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "sizeof",
+      "range": {
+        "startLine": 37,
+        "startChar": 66,
+        "endLine": 37,
+        "endChar": 67
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7790bb48_83b56ce0",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "i don\u0027t think 2 extra levels of parens help readability here.",
+      "range": {
+        "startLine": 85,
+        "startChar": 60,
+        "endLine": 85,
+        "endChar": 62
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ecad3a6b_f9020a19",
         "filename": "driver/retimer/kb800x.c",
         "patchSetId": 1
@@ -26,6 +227,115 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "970d2e68_b88b6df5",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "consider turning some of these constructs into a lookup table.",
+      "range": {
+        "startLine": 100,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 2
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f689fa_6d0a607d",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "if you intend to fall through to the next case here,\nplease add a \"continue\" comment so we know it\u0027s not an oversight.",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a77fa39_4ba663c5",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "please turn this swizzle operation into a helper function;\nmight be a good candidate for a table lookup.",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 3
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70a0397d_a7d1014a",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "add a #define for this magic bit",
+      "range": {
+        "startLine": 300,
+        "startChar": 39,
+        "endLine": 300,
+        "endChar": 43
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c43dcf_767e9b5d",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "this might be better done by iterating over an array of init values.\nthe array can stay in memory mapped flash on some ECs to conserve\nmemory.\n\ncan these registers be given meaningful names?",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 325,
+        "endChar": 0
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a504cdf_5ad6e0b4",
         "filename": "driver/retimer/kb800x.c",
         "patchSetId": 1
@@ -42,6 +352,63 @@
         "startChar": 46,
         "endLine": 457,
         "endChar": 47
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60ce7549_53d289ff",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "hmm... assuming ls_en is active high rst active low:\n\ndoes this chip have a timing parameter from power-stable\nto reset release?\n\nthe comment on CONFIG_KB800X_POWER_ON_DELAY_MS indicates that\nthe following delay should be between these two GPIO enables.",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a7694e_f99294ef",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "is there a min. delay required between asserting reset and\nremoving power?",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e9c84c2_a6fc8ff1",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "could use !board_is_usb_pd_port_present(port)",
+      "range": {
+        "startLine": 495,
+        "startChar": 11,
+        "endLine": 495,
+        "endChar": 59
       },
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -89,6 +456,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1e64ba7_9092f7bd",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "this file should include gpio_signal.h",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d552dbab_f9a4f3f5",
         "filename": "driver/retimer/kb800x.h",
         "patchSetId": 1
@@ -112,6 +502,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2fc5ca37_9e021617",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "this file should include compile_time_macros.h",
+      "range": {
+        "startLine": 42,
+        "startChar": 27,
+        "endLine": 42,
+        "endChar": 30
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98b085a4_c4ee37ed",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "you could use GENMASK() here.",
+      "range": {
+        "startLine": 46,
+        "startChar": 28,
+        "endLine": 46,
+        "endChar": 32
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232fdcdc_fe8a099e",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "always protect macro args with parens.\n\nexample, if you call _PHY(8+0) here, ...",
+      "range": {
+        "startLine": 77,
+        "startChar": 46,
+        "endLine": 77,
+        "endChar": 47
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "15b424d0_b06c17f4",
         "filename": "driver/retimer/kb800x.h",
         "patchSetId": 1
@@ -128,6 +587,29 @@
         "startChar": 40,
         "endLine": 78,
         "endChar": 48
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd8c67d7_10f40f4c",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-03T05:54:06Z",
+      "side": 1,
+      "message": "i\u0027m not a big fan of arithmetic ops here if you\u0027re\nintending to select a bit field.\nmight as well use bit-and or shift ops.",
+      "range": {
+        "startLine": 78,
+        "startChar": 49,
+        "endLine": 78,
+        "endChar": 50
       },
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
