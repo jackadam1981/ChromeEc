@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a872ac34_04bf1530",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1687,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-03T17:28:15Z",
+      "side": 1,
+      "message": "nit: in terms of naming, this could be pd_ since it\u0027s safe to call from outside the PD task.  I haven\u0027t gotten up the stack more yet to check which task is calling it, but pe_ is generally intended to only be called from the TC or PRL",
+      "revId": "99671946acf2315b6d12da28b2867539c89b2b86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
