@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3712d4dc_d8a7464b",
+        "filename": "power/alderlake_slg4bd44540.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-06-03T07:20:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94a6e486_774a245c",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 256,
+        "endChar": 25
+      },
+      "revId": "29256a1bdf5e70d50b45b81d3e13dfc9eb5e542c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fcc62b03_56e20388",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-28T05:40:29Z",
       "side": 1,
       "message": "make a common function intel_x86_recovery_mode_rtc_reset() in intel_x86.c and call from these function.\n\nif its working , publish to Google",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 25
+      },
+      "revId": "29256a1bdf5e70d50b45b81d3e13dfc9eb5e542c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e4cd191_effc7486",
+        "filename": "power/icelake.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-06-03T07:20:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fcc62b03_56e20388",
       "range": {
         "startLine": 249,
         "startChar": 0,
