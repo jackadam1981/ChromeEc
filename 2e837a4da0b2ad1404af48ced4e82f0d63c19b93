@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb07d6e_82badca9",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T22:15:24Z",
+      "side": 1,
+      "message": "How about splitting this is up into multiple files:\ncbi.c /* Common CBI code */\ncbi_eeprom.c\ncbi_virtual.c",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5056ac86_73d5f54e",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5182,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T22:15:24Z",
+      "side": 1,
+      "message": "Might be worth changing this to CONFIG_CROS_BOARD_INFO_EEPROM as a separate change.",
+      "range": {
+        "startLine": 5182,
+        "startChar": 7,
+        "endLine": 5182,
+        "endChar": 29
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18a4e379_6506f4eb",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5188,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T22:15:24Z",
+      "side": 1,
+      "message": "CONFIG_CROS_BOARD_INFO and CONFIG_CROS_BOARD_INFO_VIRTUAL is mutually exclusive correct?  Add a check for this after line ~6070",
+      "range": {
+        "startLine": 5188,
+        "startChar": 7,
+        "endLine": 5188,
+        "endChar": 37
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e65c40_b336a257",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T22:15:24Z",
+      "side": 1,
+      "message": "See comment in Kconfig.",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 30
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "434bb7db_5610293c",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T22:15:24Z",
+      "side": 1,
+      "message": "Change the name to PLATFORM_EC_CROS_BOARD_INFO_VIRTUAL, then you won\u0027t need to add an entry into the allow list.\n\nPLATFORM_EC_CBI was added before we had a script to verify new config options also create a Kconfig entry.\n\nThis EEPROM CBI and Virtual CBI options should also be organized as a Kconfig \"choice\" so that only one option can be enabled.\n\ne.g\n\nconfig PLATFORM_EC_CBI\n    bool \"Chromium OS Board Info (CBI) Support\"\n    \nif PLATFORM_EC_CBI\n   \nchoice \"CBI Type\"\n\nconfig PLATFORM_EC_CROS_BOARD_INFO\n    bool \"CBI EEPROM support\"\n    \nconfig PLATFORM_EC_CROS_BOARD_INFO_VIRTUAL\n    bool \"Virtual CBI support\"\n    \nendchoice\nendif",
+      "range": {
+        "startLine": 170,
+        "startChar": 7,
+        "endLine": 170,
+        "endChar": 30
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
