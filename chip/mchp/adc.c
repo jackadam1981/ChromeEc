@@ -130,6 +130,17 @@ static void adc_init(void)
 	/* clear ADC sleep enable */
 	MCHP_PCR_SLP_DIS_DEV(MCHP_PCR_ADC);
 
+#ifdef CHIP_FAMILY_MEC172X
+	/*
+	 * MEC172x ADC is 12BIT resolution in default, reconfigure as 10BIT
+	 * to keep compatible with previous chips, otherwise ADC_READ_MAX
+	 * needs to be modified as 4095 from 1023
+	 */
+	MCHP_ADC_SAR_ADC_CTRL &= ~MCHP_ADC_SAC_RES_MSK;
+	MCHP_ADC_SAR_ADC_CTRL |= (MCHP_ADC_SAC_RES_10BIT
+				 | MCHP_ADC_SAC_RJ_10BIT);
+#endif
+
 	/* Activate ADC module */
 	MCHP_ADC_CTRL |= BIT(0);
 
