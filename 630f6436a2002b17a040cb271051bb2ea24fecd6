@@ -16,6 +16,23 @@
       "message": "Ptal. There should be no change in this patch except renamed function calls.",
       "revId": "630f6436a2002b17a040cb271051bb2ea24fecd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "117d342e_42a1377b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-06-03T15:28:46Z",
+      "side": 1,
+      "message": "TODO are now supposed to include a bug number ?\n\nBy the way, I don\u0027t understand what the TODO means here",
+      "revId": "630f6436a2002b17a040cb271051bb2ea24fecd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
