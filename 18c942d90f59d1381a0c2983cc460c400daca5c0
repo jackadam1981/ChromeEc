@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bad3435_e65318cf",
+        "filename": "zephyr/shim/chip/npcx/include/system_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T15:28:25Z",
+      "side": 1,
+      "message": "This probably should be CONFIG_SOC_SERIES_NPCX5 to match the zephyr naming convention.",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "18c942d90f59d1381a0c2983cc460c400daca5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
