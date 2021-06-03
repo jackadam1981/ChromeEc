@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4909ea6b_4f05595e",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-03T07:01:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "36db3b4c_13e3110d",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 39
+      },
+      "revId": "71dc34fe9fed9a5294651ca489df91ab43d9adf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db111d01_974b5d95",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-02T23:23:15Z",
       "side": 1,
       "message": "This should be CONFIG_PLATFORM_EC_KEYBOARD_PROTOCOL_8042 for Intel platforms.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 43
+      },
+      "revId": "71dc34fe9fed9a5294651ca489df91ab43d9adf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f969bd_259c9244",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-03T07:01:22Z",
+      "side": 1,
+      "message": "I went ahead and made the swap to 8042 and removed the MKBP events, but I\u0027m getting a crash with this configuration.\n\n21-06-03 00:59:12.060 ��Fatal error: 0\n21-06-03 00:59:12.100   a1       \u003d 0x00000000\n21-06-03 00:59:12.104   a2       \u003d 0x200C04FC\n21-06-03 00:59:12.104   a3       \u003d 0x00000001\n21-06-03 00:59:12.107   a4       \u003d 0x02100D7E\n21-06-03 00:59:12.111   ip       \u003d 0x00000000\n21-06-03 00:59:12.111   lr       \u003d 0x100852B5\n21-06-03 00:59:12.114   pc       \u003d 0x02100D7E\n21-06-03 00:59:12.116   xpsr     \u003d 0x00000000\n\nThe only guess I had was that this brings in the HAS_TASK_KEYPROTO configuration and that maybe something was blowing up in the init. I added a return as the first thing in the init function to avoid actually running anything and I got the exact same error. Any thoughts?",
+      "parentUuid": "db111d01_974b5d95",
       "range": {
         "startLine": 33,
         "startChar": 0,
