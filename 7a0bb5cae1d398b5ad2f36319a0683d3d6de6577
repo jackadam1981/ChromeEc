@@ -50,6 +50,24 @@
       "message": "chip specific ifdef\u0027s shouldn\u0027t really be in common code. This should be benign to do for all chargers.",
       "revId": "7a0bb5cae1d398b5ad2f36319a0683d3d6de6577",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87883382_8229dc75",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-03T04:03:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "567eade8_f874405b",
+      "revId": "7a0bb5cae1d398b5ad2f36319a0683d3d6de6577",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
