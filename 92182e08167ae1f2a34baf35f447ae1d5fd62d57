@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0591b9_5d8526af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-03T17:01:32Z",
+      "side": 1,
+      "message": "split adc.c and config_chip.h onto CL:2935558",
+      "parentUuid": "85d2f583_9f69862d",
+      "revId": "92182e08167ae1f2a34baf35f447ae1d5fd62d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f594a8c9_cb29328d",
@@ -125,6 +143,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "15707254_ce047c07",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "92182e08167ae1f2a34baf35f447ae1d5fd62d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d78b90_25277432",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-03T17:01:32Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "7e3125c6_d8fd7b3d",
       "range": {
         "startLine": 12,
         "startChar": 0,
