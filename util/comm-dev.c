@@ -51,6 +51,40 @@ static const char * const meanings[] = {
 	"DUP_UNAVAILABLE",
 };
 
+static const int cros_ec_errno_map[] = {
+	[EOPNOTSUPP] = EC_RES_INVALID_COMMAND,
+	[EIO] = EC_RES_ERROR,
+	[EINVAL] = EC_RES_INVALID_PARAM,
+	[EACCES] = EC_RES_ACCESS_DENIED,
+	[EPROTO] = EC_RES_INVALID_RESPONSE,
+	[ENOPROTOOPT] = EC_RES_INVALID_VERSION,
+	[EBADMSG] = EC_RES_INVALID_RESPONSE,
+	[EINPROGRESS] = EC_RES_IN_PROGRESS,
+	[ENODATA] = EC_RES_UNAVAILABLE,
+	[ETIMEDOUT] = EC_RES_TIMEOUT,
+	[EOVERFLOW] = EC_RES_OVERFLOW,
+	[EBADR] = EC_RES_INVALID_HEADER,
+	[EFBIG] = EC_RES_RESPONSE_TOO_BIG,
+	[EFAULT] = EC_RES_BUS_ERROR,
+	[EBUSY] = EC_RES_BUSY,
+};
+
+/**
+ * Maps Linux errno to CrOS EC error.
+ * Returns 0 if no match found.
+ */
+static int cros_ec_map_errno(int _errno)
+{
+	/* Invert _errno if needed */
+	_errno = _errno < 0 ? -_errno : _errno;
+
+	if (_errno < ARRAY_SIZE(cros_ec_errno_map))
+		return cros_ec_errno_map[_errno];
+
+	return 0;
+}
+
+
 static const char *strresult(int i)
 {
 	if (i < 0 || i >= ARRAY_SIZE(meanings))
@@ -148,24 +182,15 @@ static int ec_command_dev_v2(int command, int version,
 
 	r = ioctl(fd, CROS_EC_DEV_IOCXCMD_V2, s_cmd);
 	if (r < 0) {
-		fprintf(stderr, "ioctl %d, errno %d (%s), EC result %d (%s)\n",
-			r, errno, strerror(errno), s_cmd->result,
-			strresult(s_cmd->result));
-		if (errno == EAGAIN && s_cmd->result == EC_RES_IN_PROGRESS) {
+		fprintf(stderr, "ioctl %d, errno %d (%s)\n", r, errno,
+			strerror(errno));
+		if (errno == EAGAIN) {
 			s_cmd->command = EC_CMD_RESEND_RESPONSE;
 			r = ioctl(fd, CROS_EC_DEV_IOCXCMD_V2, &s_cmd);
-			fprintf(stderr,
-				"ioctl %d, errno %d (%s), EC result %d (%s)\n",
-				r, errno, strerror(errno), s_cmd->result,
-				strresult(s_cmd->result));
+			fprintf(stderr, "ioctl %d, errno %d (%s)\n", r, errno,
+				strerror(errno));
 		}
-	} else {
-		memcpy(indata, s_cmd->data, MIN(r, insize));
-		if (s_cmd->result != EC_RES_SUCCESS) {
-			fprintf(stderr, "EC result %d (%s)\n", s_cmd->result,
-				strresult(s_cmd->result));
-			r =  -EECRESULT - s_cmd->result;
-		}
+		r = -EECRESULT - cros_ec_map_errno(errno);
 	}
 	free(s_cmd);
 
