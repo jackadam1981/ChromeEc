@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b18e8f36_3e7e52dd",
+        "filename": "zephyr/shim/chip/npcx/system_download_from_flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T17:44:54Z",
+      "side": 1,
+      "message": "cros-ec implements this identically for  NPCX5, NPCX7, and NPXC9.",
+      "range": {
+        "startLine": 36,
+        "startChar": 42,
+        "endLine": 36,
+        "endChar": 47
+      },
+      "revId": "4bb44291dc60d4a9cdccde6a456c0dd7bd11f40c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
