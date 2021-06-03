@@ -180,6 +180,9 @@
 /* Enabling USB4 mode */
 #define CONFIG_USB_PD_USB4
 
+/* Enable AP driven USB mode */
+#define CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY
+
 /* Retimer */
 #define CONFIG_USBC_RETIMER_FW_UPDATE
 
