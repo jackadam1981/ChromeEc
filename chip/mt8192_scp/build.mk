@@ -10,12 +10,17 @@ CORE:=riscv-rv32i
 
 # Required chip modules
 chip-y+=cache.o
-chip-y+=clock.o
 chip-y+=gpio.o
 chip-y+=intc.o
 chip-y+=memmap.o
 chip-y+=system.o
 chip-y+=uart.o
+
+ifeq ($(BOARD), cherry_scp)
+	chip-y+=mt8195_clock.o
+else
+	chip-y+=clock.o
+endif
 
 ifeq ($(CONFIG_IPI),y)
 $(out)/RW/chip/$(CHIP)/ipi_table.o: $(out)/ipi_table_gen.inc
