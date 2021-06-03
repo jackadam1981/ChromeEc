@@ -7,6 +7,7 @@
 #include <logging/log.h>
 
 #include "system.h"
+#include "system_chip.h"
 
 #define GET_BBRAM_OFFSET(node) \
 	DT_PROP(DT_PATH(named_bbram_regions, node), offset)
@@ -63,6 +64,42 @@ void chip_bbram_status_check(void)
 	}
 }
 
+/*
+ * Configure address 0x40001600 (Low Power RAM) in the the MPU
+ * (Memory Protection Unit) as a "regular" memory
+ */
+void system_mpu_config(void)
+{
+#ifdef CONFIG_PLATFORM_EC_WORKAROUND_FLASH_DOWNLOAD_API
+	/*
+	 * npcx9 Rev.1 has the problem for download_from_flash API.
+	 * Workwaroud it by by the system_download_from_flash function
+	 * in the suspend RAM like npcx5.
+	 */
+	/* Enable MPU */
+	CPU_MPU_CTRL = 0x7;
+
+	/* Create a new MPU Region to allow execution from low-power ram */
+	CPU_MPU_RNR  = REGION_CHIP_RESERVED;
+	CPU_MPU_RASR = CPU_MPU_RASR & 0xFFFFFFFE; /* Disable region */
+	CPU_MPU_RBAR = CONFIG_LPRAM_BASE;         /* Set region base address */
+	/*
+	 * Set region size & attribute and enable region
+	 * [31:29] - Reserved.
+	 * [28]    - XN (Execute Never) = 0
+	 * [27]    - Reserved.
+	 * [26:24] - AP                 = 011 (Full access)
+	 * [23:22] - Reserved.
+	 * [21:19,18,17,16] - TEX,S,C,B = 001000 (Normal memory)
+	 * [15:8]  - SRD                = 0 (Subregions enabled)
+	 * [7:6]   - Reserved.
+	 * [5:1]   - SIZE               = 01001 (1K)
+	 * [0]     - ENABLE             = 1 (enabled)
+	 */
+	CPU_MPU_RASR = 0x03080013;
+#endif /* CONFIG_PLATFORM_EC_WORKAROUND_FLASH_DOWNLOAD_API */
+}
+
 static int chip_system_init(const struct device *unused)
 {
 	ARG_UNUSED(unused);
@@ -79,6 +116,8 @@ static int chip_system_init(const struct device *unused)
 
 	/* check the BBRAM status */
 	chip_bbram_status_check();
+
+	system_mpu_config();
 
 	return 0;
 }
