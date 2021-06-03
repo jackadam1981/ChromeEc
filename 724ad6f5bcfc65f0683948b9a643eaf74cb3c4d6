@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83fceb7c_16f7dba4",
+        "filename": "include/usb_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-03T17:29:15Z",
+      "side": 1,
+      "message": "Typo?",
+      "range": {
+        "startLine": 137,
+        "startChar": 60,
+        "endLine": 137,
+        "endChar": 69
+      },
+      "revId": "724ad6f5bcfc65f0683948b9a643eaf74cb3c4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa885c56_f1549647",
+        "filename": "include/usb_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-03T17:29:15Z",
+      "side": 1,
+      "message": "Is -1 better? Passing 0 may be confused with designating 0mV.",
+      "range": {
+        "startLine": 137,
+        "startChar": 55,
+        "endLine": 137,
+        "endChar": 56
+      },
+      "revId": "724ad6f5bcfc65f0683948b9a643eaf74cb3c4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
