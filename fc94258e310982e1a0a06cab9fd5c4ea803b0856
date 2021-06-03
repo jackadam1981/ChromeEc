@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6b8f44a_787725ff",
+        "filename": "board/volet/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-06-03T08:07:45Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "c3b33f7c_b48e291f",
+      "range": {
+        "startLine": 104,
+        "startChar": 43,
+        "endLine": 104,
+        "endChar": 64
+      },
+      "revId": "fc94258e310982e1a0a06cab9fd5c4ea803b0856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d23ca976_175bd4b7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-03T06:50:57Z",
       "side": 1,
       "message": "Please sort this.",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 43
+      },
+      "revId": "fc94258e310982e1a0a06cab9fd5c4ea803b0856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "577cb88f_ae45269b",
+        "filename": "board/volet/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-06-03T08:07:45Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "d23ca976_175bd4b7",
       "range": {
         "startLine": 359,
         "startChar": 0,
