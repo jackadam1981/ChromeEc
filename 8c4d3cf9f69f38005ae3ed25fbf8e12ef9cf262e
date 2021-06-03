@@ -16,6 +16,52 @@
       "message": "Please check it again. Thanks.",
       "revId": "8c4d3cf9f69f38005ae3ed25fbf8e12ef9cf262e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d773e0d9_3c62b0ff",
+        "filename": "zephyr/include/cros/nuvoton/npcx.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T17:21:50Z",
+      "side": 1,
+      "message": "What does this pin number refer to?  It\u0027s not the ball reference on the NPCX package.\n\nThe comment can probably be deleted because the \u0026alt reference is already clear which keyboard signal is configured.",
+      "range": {
+        "startLine": 82,
+        "startChar": 41,
+        "endLine": 82,
+        "endChar": 46
+      },
+      "revId": "8c4d3cf9f69f38005ae3ed25fbf8e12ef9cf262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0c253d_a3cee35c",
+        "filename": "zephyr/include/cros/nuvoton/npcx.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-03T17:21:50Z",
+      "side": 1,
+      "message": "KSO_02 needs to be excluded this pin is inverted when using the H1 security chip.  Because this file is only used on Chromebooks, it\u0027s probably okay to exclude KSO_02 by default.  The board dts file can override the pinctrl-0 node if CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED is disabled.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 44
+      },
+      "revId": "8c4d3cf9f69f38005ae3ed25fbf8e12ef9cf262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
