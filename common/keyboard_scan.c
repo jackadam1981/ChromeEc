@@ -618,6 +618,15 @@ static int check_keys_changed(uint8_t *state)
 	return any_pressed;
 }
 
+static uint8_t keyboard_mask_refresh;
+__overridable uint8_t board_keyboard_row_refresh(void)
+{
+	if (IS_ENABLED(CONFIG_KEYBOARD_REFRESH_ROW3))
+		return 3;
+	else
+		return 2;
+}
+
 #ifdef CONFIG_KEYBOARD_BOOT_KEYS
 /*
  * Returns mask of the boot keys that are pressed, with at most the keys used
