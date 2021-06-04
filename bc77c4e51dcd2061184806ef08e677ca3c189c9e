@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b64fe1ff_a6965244",
+        "filename": "zephyr/projects/asurada/hayato/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-04T17:56:51Z",
+      "side": 1,
+      "message": "This should be \"zephyr_library_include_directories\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "bc77c4e51dcd2061184806ef08e677ca3c189c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
