@@ -15,7 +15,7 @@ const struct pwm_t pwm_channels[] = {
 		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
 		.freq = 4800,
 	},
-	[PWM_CH_LED3] = {
+	[PWM_CH_TKP_A_LED_N] = {
 		.channel = 1,
 		.flags = PWM_CONFIG_ACTIVE_LOW | PWM_CONFIG_DSLEEP,
 		.freq = 4800,
@@ -59,8 +59,8 @@ static void board_pwm_init(void)
 	pwm_set_duty(PWM_CH_LED1, 50);
 	pwm_enable(PWM_CH_LED2, 1);
 	pwm_set_duty(PWM_CH_LED2, 50);
-	pwm_enable(PWM_CH_LED3, 1);
-	pwm_set_duty(PWM_CH_LED3, 50);
+	pwm_enable(PWM_CH_TKP_A_LED_N, 1);
+	pwm_set_duty(PWM_CH_TKP_A_LED_N, 50);
 	pwm_enable(PWM_CH_LED4, 1);
 	pwm_set_duty(PWM_CH_LED4, 50);
 

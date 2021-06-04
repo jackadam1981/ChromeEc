@@ -18,6 +18,7 @@
 #include "lid_switch.h"
 #include "power_button.h"
 #include "power.h"
+#include "pwm.h"
 #include "switch.h"
 #include "tablet_mode.h"
 #include "throttle_ap.h"
@@ -48,10 +49,8 @@ static void board_chipset_resume(void)
 {
 	/* Allow keyboard backlight to be enabled */
 
-	if (get_board_id() == 1)
-		gpio_set_level(GPIO_ID_1_EC_KB_BL_EN, 1);
-	else
-		gpio_set_level(GPIO_EC_KB_BL_EN_L, 0);
+	pwm_set_duty(PWM_CH_KBLIGHT, 0);
+
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -60,10 +59,7 @@ static void board_chipset_suspend(void)
 {
 	/* Turn off the keyboard backlight if it's on. */
 
-	if (get_board_id() == 1)
-		gpio_set_level(GPIO_ID_1_EC_KB_BL_EN, 0);
-	else
-		gpio_set_level(GPIO_EC_KB_BL_EN_L, 1);
+	pwm_set_duty(PWM_CH_KBLIGHT, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
