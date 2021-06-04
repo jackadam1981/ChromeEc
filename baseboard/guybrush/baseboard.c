@@ -933,6 +933,13 @@ static void baseboard_chipset_resume(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 
+static void baseboard_chipset_startup(void)
+{
+	tmp112_init();
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, baseboard_chipset_startup,
+	     HOOK_PRIO_DEFAULT);
+
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	switch (port) {
