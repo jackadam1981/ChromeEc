@@ -275,6 +275,24 @@
       "parentUuid": "42644cba_1b59017e",
       "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b27551c_a85de759",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-06-04T19:59:21Z",
+      "side": 1,
+      "message": "I think override is the correct term here. In a way there are 2 things being controlled.\n\n1) override is on/off\n2) if override is on, then request 2 or 4 lane mode",
+      "parentUuid": "04221e94_69f340a3",
+      "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
