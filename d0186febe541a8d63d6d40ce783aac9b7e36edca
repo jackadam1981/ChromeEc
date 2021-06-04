@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b75e69_91fd195d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2021-06-04T08:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d559fce1_fd5b0673",
+      "revId": "d0186febe541a8d63d6d40ce783aac9b7e36edca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d9f7b72_6ea6a3c4",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-03T02:37:09Z",
       "side": 1,
       "message": "i think CHARGER is more descriptive here\nand still matches the naming in the schematics.",
+      "range": {
+        "startLine": 214,
+        "startChar": 19,
+        "endLine": 214,
+        "endChar": 27
+      },
+      "revId": "d0186febe541a8d63d6d40ce783aac9b7e36edca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ca670ae_b6d43e55",
+        "filename": "board/brya/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2021-06-04T08:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d9f7b72_6ea6a3c4",
       "range": {
         "startLine": 214,
         "startChar": 19,

@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f51cb4ba_3e4733c6",
+        "filename": "board/brya/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2021-06-04T08:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a37b6c5_860469cd",
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "264bc117_3889e91b",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-03T02:37:09Z",
       "side": 1,
       "message": "prefer WWAN to match schematics naming.",
+      "range": {
+        "startLine": 215,
+        "startChar": 19,
+        "endLine": 215,
+        "endChar": 26
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a10001_02f6c30a",
+        "filename": "board/brya/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2021-06-04T08:56:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "264bc117_3889e91b",
       "range": {
         "startLine": 215,
         "startChar": 19,
