@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d2a4d29_e409eb8f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "First pass on header file.",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ada43c1b_b2245fbc",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-06-03T05:54:06Z",
       "side": 1,
       "message": "try to avoid CONFIG_ prefix for local macros that could\npotentially conflict with global symbols from config.h\nor Kconfig as the case may be. might this end up being\nboard specific?",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f27ee2f0_4699348e",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "+1\n\nIf this is something that will need to be set differently by different users of this driver, then it should be defined as config item in config.h/Kconfig.",
+      "parentUuid": "9868842c_86065160",
       "range": {
         "startLine": 15,
         "startChar": 8,
@@ -479,6 +520,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6f764698_be36d560",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "Since the register names/locations and the meanings of the bit fields are a bit spread out in the datasheet, can you cite the tables where one would find each piece of information in the code?",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d552dbab_f9a4f3f5",
         "filename": "driver/retimer/kb800x.h",
         "patchSetId": 1
@@ -496,6 +554,91 @@
         "endLine": 25,
         "endChar": 35
       },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1469ad71_e04cab11",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "Nit: The name of this register in the datasheet is mcx_protocol. Can you name this macro KB800X_REG_MCX_PROTOCOL to better correspond to the datasheet? (Similar comment for the other registers.)",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaf8df58_8aca92e9",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "How about using BIT()/GENMASK() for the \"protocol\" and \"orientation\" field values to be consistent with \"reset\"?",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec2532c3_5b7ceef4",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "It looks from the datasheet like this indicates USB4. What is \"CIO\"?",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d218fa5_ec4ce512",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "Does bit 0x2 (DFP vs UFP?) only matter for DP mode?",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7acfa59b_ba090150",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "Can you point to documentation for the \"CIO\" fields?",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -542,6 +685,23 @@
         "endLine": 46,
         "endChar": 32
       },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04851f0_f81b3377",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "This should be added to config.h as well as Kconfig. Same goes for CONFIG_USBC_RETIMER_KB800X and any other config items used by this new code.",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -611,6 +771,81 @@
         "endLine": 78,
         "endChar": 50
       },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41eb5f2a_1140785c",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "cd8c67d7_10f40f4c",
+      "range": {
+        "startLine": 78,
+        "startChar": 49,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9f0cdae_435a6775",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "1. Stick these register definitions up with the others. It\u0027s OK if they get defined when CONFIG_KB800X_XBAR isn\u0027t set.\n2. Put them in address order.\n3. Can you briefly describe what the abbreviations mean/what registers control?",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a94522c7_0fd48995",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "I might suggest providing a slightly more declarative interface for board code, something like\n struct kb800x_lanes {\n  kb800x_ss_lane ss_lanes[KB800X_PHY_LANE_COUNT];\n }\n \n // board.c\n struct kb800x_lanes lanes \u003d {\n  [B0] \u003d RX0,\n  // ...\n }\n\nThen the driver init code can read the lane settings from the structure.",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2751b47_3894af48",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T18:58:32Z",
+      "side": 1,
+      "message": "Comment what config item is being tested, e.g.\n #endif /* CONFIG_KB800X_XBAR */",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
