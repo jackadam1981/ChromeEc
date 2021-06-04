@@ -1,4 +1,4 @@
-# Embedded Controller (EC)
+# Embedded Controller (EC) 
 
 [TOC]
 
