@@ -6,6 +6,7 @@
 /* Clocks, PLL and power settings */
 
 #include <assert.h>
+#include <panic.h>
 #include <string.h>
 
 #include "clock.h"
@@ -161,6 +162,8 @@ static int clock_ulposc_is_calibrated(struct opp_ulposc_cfg *opp)
 
 	curr = clock_ulposc_measure_freq(opp->osc);
 	target = opp->target_mhz * 1024 / 26;
+
+    panic_printf("curr %x target %x\n", curr, target);
 
 	/* check if calibrated value is in the range of target value +- 4% */
 	if (curr > (target * (1000 - CAL_MIS_RATE) / 1000) &&
