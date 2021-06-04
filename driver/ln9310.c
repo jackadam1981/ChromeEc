@@ -415,6 +415,11 @@ void ln9310_init(void)
 		      LN9310_TIMER_OP_SELF_SYNC_EN_MASK,
 		      LN9310_TIMER_OP_SELF_SYNC_EN_ON);
 
+	/* Disable auto recovery options */
+	field_update8(LN9310_REG_RECOVERY_CTRL,
+		      LN9310_AUTO_RECOVER_MASK,
+		      LN9310_AUTO_RECOVER_OFF);
+
 	/*
 	 * Use VIN for VDR, not EXT_5V. The following usleep will give
 	 * circuit time to settle.
