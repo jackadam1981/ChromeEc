@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac01f384_f5d5eba6",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-04T14:44:04Z",
+      "side": 1,
+      "message": "This means new ectool isn\u0027t compatible with previous kernels, right? We probably want to make an announcement.",
+      "range": {
+        "startLine": 193,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 44
+      },
+      "revId": "cba489bd6b88604ec359a51c2d544e866a05cd64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
