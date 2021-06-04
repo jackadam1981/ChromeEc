@@ -257,6 +257,24 @@
       "parentUuid": "37e5601f_23db7ba0",
       "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04221e94_69f340a3",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-04T18:29:28Z",
+      "side": 1,
+      "message": "That command syntax is fine, but I think the print should still be updated.",
+      "parentUuid": "42644cba_1b59017e",
+      "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
