@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "56d4683b_5149dca7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-04T00:13:45Z",
+      "side": 1,
+      "message": "Doe these functions all need to be relocated? It\u0027s harder to see what\u0027s being changed.",
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfb07d6e_82badca9",
@@ -42,6 +59,75 @@
         "startLine": 156,
         "startChar": 0,
         "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "831eefa1_0d87b29e",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-04T00:13:45Z",
+      "side": 1,
+      "message": "You need to make this return error.",
+      "range": {
+        "startLine": 256,
+        "startChar": 11,
+        "endLine": 256,
+        "endChar": 27
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c03a3aa8_3b84568f",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-04T00:13:45Z",
+      "side": 1,
+      "message": "Can you use IS_ENABLED?",
+      "range": {
+        "startLine": 346,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 43
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b930ba2_47f0159b",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-04T00:13:45Z",
+      "side": 1,
+      "message": "Can you please use IS_ENABLED(CONFIG_CROS_BOARD_INFO_VIRTUAL)?",
+      "range": {
+        "startLine": 476,
+        "startChar": 0,
+        "endLine": 476,
         "endChar": 43
       },
       "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
