@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0d48758_9104067a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-04T00:36:01Z",
+      "side": 1,
+      "message": "Well, it\u0027s hard to deal with the dependencies on the static functions...\nTo make things clearer, I\u0027ll try to factor out cbi_eeprom.c and cbi_virtual.c as Keith suggested.",
+      "parentUuid": "56d4683b_5149dca7",
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfb07d6e_82badca9",
@@ -78,6 +96,30 @@
       "writtenOn": "2021-06-04T00:13:45Z",
       "side": 1,
       "message": "You need to make this return error.",
+      "range": {
+        "startLine": 256,
+        "startChar": 11,
+        "endLine": 256,
+        "endChar": 27
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc7e7a15_7fa4fb5b",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-04T00:36:01Z",
+      "side": 1,
+      "message": "write_board_info() should not be called if CONFIG_CROS_BOARD_INFO_VIRTUAL is enabled.",
+      "parentUuid": "831eefa1_0d87b29e",
       "range": {
         "startLine": 256,
         "startChar": 11,
