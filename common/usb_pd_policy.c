@@ -922,10 +922,18 @@ int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload)
 		if (system_get_image_copy() != EC_IMAGE_RO)
 			break;
 		pd_log_event(PD_EVENT_ACC_RW_ERASE, 0, 0, NULL);
+<<<<<<< HEAD   (e4a94e Vilboz:undef hibernate psl and keep KSI3 high in deep sleep)
 		flash_offset = CONFIG_EC_WRITABLE_STORAGE_OFF +
 			       CONFIG_RW_STORAGE_OFF;
 		flash_physical_erase(CONFIG_EC_WRITABLE_STORAGE_OFF +
 				     CONFIG_RW_STORAGE_OFF, CONFIG_RW_SIZE);
+=======
+		flash_offset =
+			CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF;
+		crec_flash_physical_erase(CONFIG_EC_WRITABLE_STORAGE_OFF +
+					  CONFIG_RW_STORAGE_OFF,
+					  CONFIG_RW_SIZE);
+>>>>>>> CHANGE (670bd7 include/flash: rename the APIs)
 		rw_flash_changed = 1;
 		break;
 	case VDO_CMD_FLASH_WRITE:
@@ -934,9 +942,15 @@ int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload)
 		    (flash_offset < CONFIG_EC_WRITABLE_STORAGE_OFF +
 				    CONFIG_RW_STORAGE_OFF))
 			break;
+<<<<<<< HEAD   (e4a94e Vilboz:undef hibernate psl and keep KSI3 high in deep sleep)
 		flash_physical_write(flash_offset, 4*(cnt - 1),
 				     (const char *)(payload+1));
 		flash_offset += 4*(cnt - 1);
+=======
+		crec_flash_physical_write(flash_offset, 4 * (cnt - 1),
+				     (const char *)(payload + 1));
+		flash_offset += 4 * (cnt - 1);
+>>>>>>> CHANGE (670bd7 include/flash: rename the APIs)
 		rw_flash_changed = 1;
 		break;
 	case VDO_CMD_ERASE_SIG:
@@ -947,7 +961,7 @@ int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload)
 			/* zeroes the area containing the RSA signature */
 			for (offset = FW_RW_END - RSANUMBYTES;
 			     offset < FW_RW_END; offset += 4)
-				flash_physical_write(offset, 4,
+				crec_flash_physical_write(offset, 4,
 						     (const char *)&zero);
 		}
 		break;

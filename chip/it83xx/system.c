@@ -248,6 +248,18 @@ void system_reset(int flags)
 		cflush();
 	}
 
+<<<<<<< HEAD   (e4a94e Vilboz:undef hibernate psl and keep KSI3 high in deep sleep)
+=======
+#if defined(CONFIG_PRESERVE_LOGS) && defined(CONFIG_IT83XX_HARD_RESET_BY_GPG1)
+	/* Saving EC logs into flash before reset. */
+	crec_flash_physical_erase(CHIP_FLASH_PRESERVE_LOGS_BASE,
+		CHIP_FLASH_PRESERVE_LOGS_SIZE);
+	crec_flash_physical_write(CHIP_FLASH_PRESERVE_LOGS_BASE,
+		(uintptr_t)__preserved_logs_size, __preserved_logs_start);
+	BRAM_EC_LOG_STATUS = EC_LOG_SAVED_IN_FLASH;
+#endif
+
+>>>>>>> CHANGE (670bd7 include/flash: rename the APIs)
 	/* Disable interrupts to avoid task swaps during reboot. */
 	interrupt_disable();
 
