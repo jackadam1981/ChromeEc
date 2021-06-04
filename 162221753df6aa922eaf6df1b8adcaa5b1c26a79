@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b3e20b_20d596ca",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-04T03:43:27Z",
+      "side": 1,
+      "message": "for (;mux !\u003d NULL; mux \u003d mux-\u003enext_mux) {",
+      "range": {
+        "startLine": 551,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 39
+      },
+      "revId": "162221753df6aa922eaf6df1b8adcaa5b1c26a79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
