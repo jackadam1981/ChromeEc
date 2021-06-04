@@ -273,6 +273,13 @@ config PLATFORM_EC_DP_REDRIVER_TDP142
 	  Include a driver for the Texas Instruments TDP142 DisplayPort linear
 	  redriver chip.
 
+config PLATFORM_EC_EMULATED_SYSRQ
+	bool "Emulate sysrq events to AP"
+	default n
+	help
+	  Support for sending emulated sysrq events to AP (on designs with a
+	  keyboard, sysrq is passed as normal key presses).
+
 menuconfig PLATFORM_EC_ESPI
 	bool "eSPI"
 	depends on ESPI && AP
