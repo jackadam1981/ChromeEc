@@ -93,6 +93,30 @@
       },
       "revId": "4ba6ed00fd9ff0a9d981c407c54e574248646870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf93ebe_87dc632e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-04T21:45:28Z",
+      "side": 1,
+      "message": "this check is already done at line 535 through 542",
+      "parentUuid": "84047d68_1a9b2fe4",
+      "range": {
+        "startLine": 561,
+        "startChar": 2,
+        "endLine": 561,
+        "endChar": 39
+      },
+      "revId": "4ba6ed00fd9ff0a9d981c407c54e574248646870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
