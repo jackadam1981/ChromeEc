@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f29583b_a000dc65",
+        "filename": "board/npcx9_evb/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-04T21:37:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82d3db55_804bebe0",
+      "revId": "748e57e9c0a21d645e2c278469ea0ba98049fc6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "19e04cac_bad8a4b4",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e85863c1_7a5ab8fc",
+        "filename": "board/npcx9_evb/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-04T21:37:50Z",
+      "side": 1,
+      "message": "Ooooo, I like it",
+      "parentUuid": "19e04cac_bad8a4b4",
+      "revId": "748e57e9c0a21d645e2c278469ea0ba98049fc6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c53b178_6cc62a27",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-06-04T14:21:14Z",
       "side": 1,
       "message": "nit: This could be simplified with raw_field_update16 -\u003e i2c_field_update16",
+      "revId": "748e57e9c0a21d645e2c278469ea0ba98049fc6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "849784eb_e8535d80",
+        "filename": "driver/temp_sensor/tmp112.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-04T21:37:50Z",
+      "side": 1,
+      "message": "I think since we have one set mask and one clear mask, it\u0027s two calls either way.  So I\u0027ll just leave it as-is for now",
+      "parentUuid": "2c53b178_6cc62a27",
       "revId": "748e57e9c0a21d645e2c278469ea0ba98049fc6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
