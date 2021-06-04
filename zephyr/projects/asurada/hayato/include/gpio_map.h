@@ -31,9 +31,13 @@
 	GPIO_INT(GPIO_LID_OPEN,						\
 		 GPIO_INT_EDGE_BOTH, lid_interrupt)			\
 	GPIO_INT(GPIO_POWER_BUTTON_L,					\
-		 GPIO_INT_EDGE_BOTH, power_button_interrupt)
-
-
+		 GPIO_INT_EDGE_BOTH, power_button_interrupt)		\
+	GPIO_INT(GPIO_USB_C0_PPC_INT_ODL,				\
+		 GPIO_INT_EDGE_BOTH, ppc_interrupt)			\
+	GPIO_INT(GPIO_USB_C0_BC12_INT_ODL,				\
+		 GPIO_INT_EDGE_FALLING, bc12_interrupt)			\
+	GPIO_INT(GPIO_USB_C1_BC12_INT_L,				\
+		 GPIO_INT_EDGE_FALLING, bc12_interrupt)
 
 #define GPIO_EN_PP5000 GPIO_EN_PP5000_A
 
