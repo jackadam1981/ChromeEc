@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83cb6e41_14efa586",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-04T22:31:51Z",
+      "side": 1,
+      "message": "just delete the line\n\nBut won\u0027t this change the behaviour on volteer?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "6c51f0104f2806ee410e0f1a0bf1eee7f08ba26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
