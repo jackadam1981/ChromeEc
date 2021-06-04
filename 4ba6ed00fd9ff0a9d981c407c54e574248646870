@@ -141,6 +141,30 @@
       },
       "revId": "4ba6ed00fd9ff0a9d981c407c54e574248646870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7145cacc_fc829f25",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-04T22:03:51Z",
+      "side": 1,
+      "message": "ACK, done",
+      "parentUuid": "938f3a6e_523be4b9",
+      "range": {
+        "startLine": 561,
+        "startChar": 2,
+        "endLine": 561,
+        "endChar": 39
+      },
+      "revId": "4ba6ed00fd9ff0a9d981c407c54e574248646870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
