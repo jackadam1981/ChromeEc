@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38bfd5a6_1ae378c4",
+        "filename": "driver/temp_sensor/tmp112.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-04T14:28:24Z",
+      "side": 1,
+      "message": "Should this also return EC_ERROR_NOT_POWERED when not powered?",
+      "revId": "b6b831fee2ba09c9fe7ff6a13baece539a9549cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f17cfff_731c3df4",
+        "filename": "driver/temp_sensor/tmp112.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-04T14:28:24Z",
+      "side": 1,
+      "message": "Should this just be \u0027if (rv)\u0027?",
+      "revId": "b6b831fee2ba09c9fe7ff6a13baece539a9549cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
