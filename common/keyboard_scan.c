@@ -715,8 +715,21 @@ const uint8_t *keyboard_scan_get_state(void)
 	return debounced_state;
 }
 
+static uint8_t keyboard_mask_refresh;
+__overridable uint8_t board_keyboard_row_refresh(void)
+{
+	if (IS_ENABLED(CONFIG_KEYBOARD_REFRESH_ROW3))
+		return 3;
+	else
+		return 2;
+}
+
 void keyboard_scan_init(void)
 {
+
+	keyboard_mask_refresh = KEYBOARD_ROW_TO_MASK(
+		board_keyboard_row_refresh());
+
 	/* Configure GPIO */
 	keyboard_raw_init();
 
