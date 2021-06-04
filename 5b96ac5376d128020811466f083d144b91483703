@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcfac859_e5240c6c",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-04T23:09:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "958cfe9c_d7d1f697",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 278,
+        "endChar": 8
+      },
+      "revId": "5b96ac5376d128020811466f083d144b91483703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d7f7a8e_8a89296e",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-04T22:32:50Z",
       "side": 1,
       "message": "I think this could use more explanation...what is sysrq? Why would we want to send emulated events?",
+      "revId": "5b96ac5376d128020811466f083d144b91483703",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9280fc24_10ae20b6",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-04T23:09:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d7f7a8e_8a89296e",
       "revId": "5b96ac5376d128020811466f083d144b91483703",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
