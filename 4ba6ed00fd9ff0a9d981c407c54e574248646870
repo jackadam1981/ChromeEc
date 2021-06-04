@@ -117,6 +117,30 @@
       },
       "revId": "4ba6ed00fd9ff0a9d981c407c54e574248646870",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "938f3a6e_523be4b9",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-06-04T21:58:12Z",
+      "side": 1,
+      "message": "535-542 only search for first bb retimer. the usb_mux list has virtual mux as last one, and without checking, it will go to virtual mux and try to read not-existing i2c.",
+      "parentUuid": "abf93ebe_87dc632e",
+      "range": {
+        "startLine": 561,
+        "startChar": 2,
+        "endLine": 561,
+        "endChar": 39
+      },
+      "revId": "4ba6ed00fd9ff0a9d981c407c54e574248646870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
