@@ -48,10 +48,8 @@ static void board_chipset_resume(void)
 {
 	/* Allow keyboard backlight to be enabled */
 
-	if (get_board_id() == 1)
-		gpio_set_level(GPIO_ID_1_EC_KB_BL_EN, 1);
-	else
-		gpio_set_level(GPIO_EC_KB_BL_EN_L, 0);
+	/* We don't have KB_BL_EN now. Checking with EE */
+
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
