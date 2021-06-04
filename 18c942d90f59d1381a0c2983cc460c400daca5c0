@@ -22,6 +22,30 @@
       },
       "revId": "18c942d90f59d1381a0c2983cc460c400daca5c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d480365c_a9b4b64c",
+        "filename": "zephyr/shim/chip/npcx/include/system_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-04T17:46:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bad3435_e65318cf",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 29
+      },
+      "revId": "18c942d90f59d1381a0c2983cc460c400daca5c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
