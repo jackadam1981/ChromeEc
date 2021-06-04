@@ -94,6 +94,30 @@
       },
       "revId": "cba489bd6b88604ec359a51c2d544e866a05cd64",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c19d54c_8e7c1c96",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1146659
+      },
+      "writtenOn": "2021-06-04T22:20:24Z",
+      "side": 1,
+      "message": "Good point. I guess the kernel code bails out in that case and doesn\u0027t fill out the data structure. Your suggestion should work, though (map error code if s_cmd-\u003eresult \u003d\u003d 0xff).",
+      "parentUuid": "15395297_1748492b",
+      "range": {
+        "startLine": 193,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 44
+      },
+      "revId": "cba489bd6b88604ec359a51c2d544e866a05cd64",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
