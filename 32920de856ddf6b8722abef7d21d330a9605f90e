@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa056e5f_ff5011ef",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-04T22:31:12Z",
+      "side": 1,
+      "message": "It defaults to n anyway, so should drop this, to avoid confusing people",
+      "range": {
+        "startLine": 548,
+        "startChar": 1,
+        "endLine": 548,
+        "endChar": 10
+      },
+      "revId": "32920de856ddf6b8722abef7d21d330a9605f90e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
