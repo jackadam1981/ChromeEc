@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9295eed_bd08b45c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-04T17:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d142bfab_bc1996d4",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "617ac767_eee56873",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5378b68_047cf0d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-04T17:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5756c155_6f58e9fa",
+      "range": {
+        "startLine": 15,
+        "startChar": 34,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9994ab37_e4d54ab5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-04T17:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "617ac767_eee56873",
+      "range": {
+        "startLine": 15,
+        "startChar": 10,
+        "endLine": 15,
+        "endChar": 16
+      },
+      "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74f24dc6_91f53e79",
@@ -83,6 +155,24 @@
       "writtenOn": "2021-06-04T03:20:02Z",
       "side": 1,
       "message": "nit: extra newline",
+      "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32c85e11_39b876b3",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-04T17:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74f24dc6_91f53e79",
       "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31ac8929_f30c2401",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-04T17:32:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a3c909d_1004f7d0",
+      "range": {
+        "startLine": 1497,
+        "startChar": 9,
+        "endLine": 1497,
+        "endChar": 24
+      },
+      "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37e5601f_23db7ba0",
@@ -123,6 +237,24 @@
       "writtenOn": "2021-06-04T03:20:02Z",
       "side": 1,
       "message": "Instead of saying \"enabled\" or \"disabled\", what do you think about \"allowed\" and \"forbidden\" or \"force disabled\"?",
+      "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42644cba_1b59017e",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-04T17:32:55Z",
+      "side": 1,
+      "message": "How about\n\nmfignore [on|off]",
+      "parentUuid": "37e5601f_23db7ba0",
       "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
