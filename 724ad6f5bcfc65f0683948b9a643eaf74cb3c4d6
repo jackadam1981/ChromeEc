@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59d86a44_1a478f16",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-04T16:43:06Z",
+      "side": 1,
+      "message": "What\u0027s the primary advantage you see of specifying a voltage here in the find PDO API?  I think re-setting the max voltage had been how boards had previously essentially designated their preferred voltage when needed through pd_set_external_voltage_limit().   That has some advantage of being safe and easy to do outside the PD task.  But I an also see an argument for clarity by picking it directly rather than through the max ceiling, which is more roundabout.",
+      "revId": "724ad6f5bcfc65f0683948b9a643eaf74cb3c4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83fceb7c_16f7dba4",
         "filename": "include/usb_common.h",
         "patchSetId": 2
@@ -37,6 +54,30 @@
       "writtenOn": "2021-06-03T17:29:15Z",
       "side": 1,
       "message": "Is -1 better? Passing 0 may be confused with designating 0mV.",
+      "range": {
+        "startLine": 137,
+        "startChar": 55,
+        "endLine": 137,
+        "endChar": 56
+      },
+      "revId": "724ad6f5bcfc65f0683948b9a643eaf74cb3c4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d2a1896_d8acb192",
+        "filename": "include/usb_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-04T16:43:06Z",
+      "side": 1,
+      "message": "Agreed, -1 would be more clear",
+      "parentUuid": "fa885c56_f1549647",
       "range": {
         "startLine": 137,
         "startChar": 55,
