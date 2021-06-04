@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3331cc53_38c89059",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-04T21:02:16Z",
+      "side": 1,
+      "message": "not needed?",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 523,
+        "endChar": 21
+      },
+      "revId": "4ba6ed00fd9ff0a9d981c407c54e574248646870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dd94293_1445deec",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-04T21:02:16Z",
+      "side": 1,
+      "message": "not needed anymore, BB retimer can be cascaded only with another BB retimer",
+      "range": {
+        "startLine": 561,
+        "startChar": 2,
+        "endLine": 561,
+        "endChar": 39
+      },
+      "revId": "4ba6ed00fd9ff0a9d981c407c54e574248646870",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
