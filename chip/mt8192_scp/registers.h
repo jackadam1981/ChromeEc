@@ -161,15 +161,25 @@
 #define SCP_CORE0_WDT_CUR_VAL		REG32(SCP_REG_BASE + 0x3003C)
 
 /* INTC */
+#ifdef BOARD_CHERRY_SCP
+#define SCP_INTC_IRQ_POL0		0xef001f20
+#define SCP_INTC_IRQ_POL1		0x044001dd
+#define SCP_INTC_IRQ_POL2		0xffffdfe0
+#define SCP_INTC_IRQ_POL3		0xfffffff3
+#define SCP_INTC_GRP_LEN		4
+#define SCP_INTC_IRQ_COUNT		127
+#else
 #define SCP_INTC_IRQ_POL0		0xef001f20
 #define SCP_INTC_IRQ_POL1		0x0800001d
 #define SCP_INTC_IRQ_POL2		0x00000020
+#define SCP_INTC_GRP_LEN		3
+#define SCP_INTC_IRQ_COUNT		96
+#endif
 #define SCP_INTC_WORD(irq)		((irq) >> 5) /* word length = 2^5 */
 #define SCP_INTC_BIT(irq)		((irq) & 0x1F) /* bit shift =LSB[0:4] */
 #define SCP_INTC_GRP_COUNT		15
-#define SCP_INTC_GRP_LEN		3
 #define SCP_INTC_GRP_GAP		4
-#define SCP_INTC_IRQ_COUNT		96
+
 #define SCP_CORE0_INTC_IRQ_BASE		(SCP_REG_BASE + 0x32000)
 #define SCP_CORE0_INTC_IRQ_STA(w) \
 		REG32_ADDR(SCP_CORE0_INTC_IRQ_BASE + 0x0010)[(w)]
@@ -407,6 +417,117 @@
 #define SCP_IRQ_SPI0			29
 #define SCP_IRQ_SPI1			30
 #define SCP_IRQ_SPI2			31
+
+#ifdef BOARD_CHERRY_SCP
+/* 32 */
+#define SCP_IRQ_NEW_INFRA_SYS_CIRQ	32
+#define SCP_IRQ_DBG			33
+#define SCP_IRQ_GCE			34
+#define SCP_IRQ_MDP_GCE			35
+/* 36 */
+#define SCP_IRQ_VDEC			36
+#define SCP_IRQ_WDT			37
+#define SCP_IRQ_VDEC_LAT		38
+#define SCP_IRQ_VDEC1			39
+/* 40 */
+#define SCP_IRQ_VDEC1_LAT		40
+#define SCP_IRQ_INFRA			41
+#define SCP_IRQ_CLK_CTRL_CORE		42
+#define SCP_IRQ_CLK_CTRL2_CORE		43
+/* 44 */
+#define SCP_IRQ_CLK_CTRL2		44
+#define SCP_IRQ_GIPC_IN4		45 /* HALT */
+#define SCP_IRQ_PERIBUS_TIMEOUT		46
+#define SCP_IRQ_INFRABUS_TIMEOUT	47
+/* 48 */
+#define SCP_IRQ_MET0			48
+#define SCP_IRQ_MET1			49
+#define SCP_IRQ_MET2			50
+#define SCP_IRQ_MET3			51
+/* 52 */
+#define SCP_IRQ_AP_WDT			52
+#define SCP_IRQ_L2TCM_SEC_VIO		53
+#define SCP_IRQ_VDEC_INT_LINE_CNT	54
+#define SCP_IRQ_VOW_DATAIN		55
+/* 56 */
+#define SCP_IRQ_I3C0_IBI_WAKE		56
+#define SCP_IRQ_I3C1_IBI_WAKE		57
+#define SCP_IRQ_VENC			58
+#define SCP_IRQ_APU_ENGINE		59
+/* 60 */
+#define SCP_IRQ_MBOX0			60
+#define SCP_IRQ_MBOX1			61
+#define SCP_IRQ_MBOX2			62
+#define SCP_IRQ_MBOX3			63
+/* 64 */
+#define SCP_IRQ_MBOX4			64
+#define SCP_IRQ_SYS_CLK_REQ		65
+#define SCP_IRQ_BUS_REQ			66
+#define SCP_IRQ_APSRC_REQ		67
+/* 68 */
+#define SCP_IRQ_APU_MBOX		68
+#define SCP_IRQ_DEVAPC_SECURE_VIO	69
+#define SCP_IRQ_CAMSYS_29		70
+#define SCP_IRQ_CAMSYS_28		71
+/* 72 */
+#define SCP_IRQ_CAMSYS_5		72
+#define SCP_IRQ_CAMSYS_4		73
+#define SCP_IRQ_CAMSYS_3		74
+#define SCP_IRQ_CAMSYS_2		75
+/* 76 */
+#define SCP_IRQ_HDMIRX_PM_DVI_SQH	76
+#define SCP_IRQ_HDMIRX_RESERVED		77
+#define SCP_IRQ_NNA0_0			78
+#define SCP_IRQ_NNA0_1			79
+/* 80 */
+#define SCP_IRQ_NNA0_2			80
+#define SCP_IRQ_NNA1_0			81
+#define SCP_IRQ_NNA1_1			82
+#define SCP_IRQ_NNA1_2			83
+/* 84 */
+#define SCP_IRQ_JPEGENC			84
+#define SCP_IRQ_JPEGDEC			85
+#define SCP_IRQ_JPEGDEC_C2		86
+#define SCP_IRQ_VENC_C1			87
+/* 88 */
+#define SCP_IRQ_JPEGENC_C1		88
+#define SCP_IRQ_JPEGDEC_C1		89
+#define SCP_IRQ_HDMITX			90
+#define SCP_IRQ_HDMI2			91
+/* 92 */
+#define SCP_IRQ_EARC			92
+#define SCP_IRQ_CEC			93
+#define SCP_IRQ_HDMI_DEV_DET		94
+#define SCP_IRQ_HDMIRX_OUT_ARM_PHY	95
+/* 96 */
+#define SCP_IRQ_I2C2			96
+#define SCP_IRQ_I2C3			97
+#define SCP_IRQ_I3C2_IBI_WAKE		98
+#define SCP_IRQ_I3C3_IBI_WAKE		99
+/* 100 */
+#define SCP_IRQ_SYS_I2C_0		100
+#define SCP_IRQ_SYS_I2C_1		101
+#define SCP_IRQ_SYS_I2C_2		102
+#define SCP_IRQ_SYS_I2C_3		103
+/* 104 */
+#define SCP_IRQ_SYS_I2C_4		104
+#define SCP_IRQ_SYS_I2C_5		105
+#define SCP_IRQ_SYS_I2C_6		106
+#define SCP_IRQ_SYS_I2C_7		107
+/* 108 */
+#define SCP_IRQ_DISP2ADSP_0		108
+#define SCP_IRQ_DISP2ADSP_1		109
+#define SCP_IRQ_DISP2ADSP_2		110
+#define SCP_IRQ_DISP2ADSP_3		111
+/* 112 */
+#define SCP_IRQ_DISP2ADSP_4		112
+#define SCP_IRQ_VDO1_DISP_MON2ADSP_0	113
+#define SCP_IRQ_VDO1_DISP_MON2ADSP_1	114
+#define SCP_IRQ_VDO1_DISP_MON2ADSP_2	115
+/* 116 */
+#define SCP_IRQ_GCE1_SECURE		116
+#define SCP_IRQ_GCE_SECURE		117
+#else
 /* 32 */
 #define SCP_IRQ_NEW_INFRA_SYS_CIRQ	32
 #define SCP_IRQ_DBG			33
@@ -476,5 +597,6 @@
 #define SCP_IRQ_I2C_DMA2		91
 /* 92 */
 #define SCP_IRQ_I2C_DMA3		92
+#endif
 
 #endif /* __CROS_EC_REGISTERS_H */

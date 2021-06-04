@@ -11,15 +11,16 @@ CORE:=riscv-rv32i
 # Required chip modules
 chip-y+=cache.o
 chip-y+=gpio.o
-chip-y+=intc.o
 chip-y+=memmap.o
 chip-y+=system.o
 chip-y+=uart.o
 
 ifeq ($(BOARD), cherry_scp)
 	chip-y+=mt8195_clock.o
+	chip-y+=mt8195_intc.o
 else
 	chip-y+=clock.o
+	chip-y+=intc.o
 endif
 
 ifeq ($(CONFIG_IPI),y)
