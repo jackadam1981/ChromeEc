@@ -344,21 +344,3 @@ static void board_resume(void)
 		gpio_set_level(GPIO_EN_5V_USM, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_resume, HOOK_PRIO_DEFAULT);
-
-__override int syv682x_board_is_syv682c(int port)
-{
-	return board_get_version() > 2;
-}
-
-void board_usb_mux_init(void)
-{
-	if (board_get_sub_board() == SUB_BOARD_TYPEC) {
-		ps8743_tune_usb_eq(&usb_muxes[1],
-				   PS8743_USB_EQ_TX_12_8_DB,
-				   PS8743_USB_EQ_RX_12_8_DB);
-		ps8743_write(&usb_muxes[1],
-				   PS8743_REG_HS_DET_THRESHOLD,
-				   PS8743_USB_HS_THRESH_NEG_10);
-	}
-}
-DECLARE_HOOK(HOOK_INIT, board_usb_mux_init, HOOK_PRIO_INIT_I2C + 1);

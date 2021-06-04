@@ -32,4 +32,6 @@ enum board_sub_board {
  */
 int board_get_version(void);
 
+void ppc_interrupt(enum gpio_signal signal);
+
 #endif
