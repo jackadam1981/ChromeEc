@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "070d1a53_bef930cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-04T18:17:36Z",
+      "side": 1,
+      "message": "Minor nit for using static inline, I\u0027m going to go ahead and give it a +2 so feel free to submit without waiting for another review.",
+      "revId": "d3afdbe421d546cd4f4602ecdb1b92fa36be1803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7780ca86_82105067",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-04T18:17:36Z",
+      "side": 1,
+      "message": "I think this will get optimized better with `static inline`",
+      "range": {
+        "startLine": 1163,
+        "startChar": 4,
+        "endLine": 1163,
+        "endChar": 31
+      },
+      "revId": "d3afdbe421d546cd4f4602ecdb1b92fa36be1803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
