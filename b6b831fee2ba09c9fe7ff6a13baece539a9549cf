@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bb02d41_1a56b2cc",
+        "filename": "driver/temp_sensor/tmp112.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-04T21:39:39Z",
+      "side": 1,
+      "message": "Yeah, we\u0027ll add it here too.  I feel like the alternative would be something akin to tracking a power GPIO for the sensor and verifying that GPIO is on, but for us the power rail and i2c rail turn off at the same time, and this is already defined and ready to use.",
+      "parentUuid": "38bfd5a6_1ae378c4",
+      "revId": "b6b831fee2ba09c9fe7ff6a13baece539a9549cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f17cfff_731c3df4",
@@ -31,6 +49,41 @@
       "writtenOn": "2021-06-04T14:28:24Z",
       "side": 1,
       "message": "Should this just be \u0027if (rv)\u0027?",
+      "revId": "b6b831fee2ba09c9fe7ff6a13baece539a9549cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec60eab8_973e1ce5",
+        "filename": "driver/temp_sensor/tmp112.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-04T21:39:39Z",
+      "side": 1,
+      "message": "Sure can be.  I honestly can\u0027t find a reason this would be less than 0 in the i2c code, but perhaps it was different back in aught\u002716",
+      "parentUuid": "0f17cfff_731c3df4",
+      "revId": "b6b831fee2ba09c9fe7ff6a13baece539a9549cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfdd310b_54cdbed0",
+        "filename": "driver/temp_sensor/tmp112.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-04T21:39:39Z",
+      "side": 1,
+      "message": "As a side note, I find it slightly weird that we always return success regardless of whether we\u0027ve ever contacted the sensor, but it seems harmless and matches the other sensors I\u0027ve looked at that use HOOK_SECOND to poll.",
       "revId": "b6b831fee2ba09c9fe7ff6a13baece539a9549cf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
