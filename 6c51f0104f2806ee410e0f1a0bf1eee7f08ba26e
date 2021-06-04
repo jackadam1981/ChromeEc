@@ -22,6 +22,30 @@
       },
       "revId": "6c51f0104f2806ee410e0f1a0bf1eee7f08ba26e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d29cbb4_0dc9f929",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-04T23:08:19Z",
+      "side": 1,
+      "message": "Deleted it.\n\nIt matches the EC-OS setting. In EC-OS, it is default to N and the Volteer board doesn\u0027t explicitly enable this CONFIG.",
+      "parentUuid": "83cb6e41_14efa586",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 10
+      },
+      "revId": "6c51f0104f2806ee410e0f1a0bf1eee7f08ba26e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
