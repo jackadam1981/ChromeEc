@@ -41,9 +41,13 @@
 	GPIO_INT(GPIO_LID_ACCEL_INT_L,					\
 		 GPIO_INT_EDGE_FALLING, lis2dw12_interrupt)		\
 	GPIO_INT(GPIO_TABLET_MODE_L,					\
-		 GPIO_INT_EDGE_BOTH, gmr_tablet_switch_isr)
-
-
+		 GPIO_INT_EDGE_BOTH, gmr_tablet_switch_isr)		\
+	GPIO_INT(GPIO_USB_C0_PPC_INT_ODL,				\
+		 GPIO_INT_EDGE_BOTH, ppc_interrupt)			\
+	GPIO_INT(GPIO_USB_C0_BC12_INT_ODL,				\
+		 GPIO_INT_EDGE_FALLING, bc12_interrupt)			\
+	GPIO_INT(GPIO_USB_C1_BC12_INT_L,				\
+		 GPIO_INT_EDGE_FALLING, bc12_interrupt)
 
 #define GPIO_EN_PP5000 GPIO_EN_PP5000_A
 
