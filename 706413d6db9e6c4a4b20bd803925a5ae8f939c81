@@ -222,6 +222,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2866bcf9_51aa386b",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "Nit: This name could be more expressive.",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eced958_ec000b2f",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "Is there a table in the datasheet corresponding to this mapping?",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7790bb48_83b56ce0",
         "filename": "driver/retimer/kb800x.c",
         "patchSetId": 1
@@ -268,6 +308,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "63baa0f2_dfe91900",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "Do you need to clear the current EB setting while setting the new one?",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "970d2e68_b88b6df5",
         "filename": "driver/retimer/kb800x.c",
         "patchSetId": 1
@@ -285,6 +342,23 @@
         "endLine": 117,
         "endChar": 2
       },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfa8a429_0f0c5323",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "Is there documentation for when this shifting needs to happen?",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -331,6 +405,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5263291d_3f568d5e",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "Nit: It sounds like this should never link in a normal build, so my preference would be that it exist as a table in a comment indicating the default mapping.",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "70a0397d_a7d1014a",
         "filename": "driver/retimer/kb800x.c",
         "patchSetId": 1
@@ -370,6 +461,167 @@
         "startChar": 1,
         "endLine": 325,
         "endChar": 0
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b834fdcb_5a7ae852",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "+1 for meaningful names. Any description we can get of what is actually being done here would be valuable. (What will happen if you don\u0027t do them? Do they need to be done in this specific order? What is it about them that needs to be done every state change?)",
+      "parentUuid": "a6c43dcf_767e9b5d",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 325,
+        "endChar": 0
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cb9b653_11ff9418",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "Nit: I would put the USB3 common next to the USB3 specific and the DP common next to the DP specific.",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346ae081_ad31a88d",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "Same note as above. Any documentation at all would be helpful. If we can\u0027t get any, the next best thing would be a link to a bug where Kandou says, \"You need to do this stuff at this time.\"",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1fa7e16_3091524f",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "It seems like this is the same operation that is being done in the common function for DP. Can this also be moved into the common function?",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 37
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93b501a9_2ebd28be",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "Nit: Remove extra parens",
+      "range": {
+        "startLine": 387,
+        "startChar": 6,
+        "endLine": 387,
+        "endChar": 7
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31767b30_76ea7652",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "What happens if the CPU does apply the pullup?",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5484de_55aae82a",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "It looks like there end up being a number of checks to mux_state and similar init flows in the USB3 and DP paths in this function. How about this?\n1. Check if USB is enabled -\u003e USB3 init\n2. Check if DP is enabled -\u003e DP init\n3. Choose protocol register value based on both bits\n4. Write protocol register\n\nI think that might allow you to drop the non-\"common\" layer of indirection in the init functions.",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b71c5b09_849243de",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "Nit: Remove extra parens",
+      "range": {
+        "startLine": 440,
+        "startChar": 39,
+        "endLine": 440,
+        "endChar": 40
       },
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -886,6 +1138,23 @@
         "endLine": 206,
         "endChar": 65
       },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "409183a3_efe36031",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-04T20:20:18Z",
+      "side": 1,
+      "message": "Nit: It might be clearer to have something like \"custom\" or \"remap\" in the name. I initially thought this config controlled whether the crossbar was used at all. (Even though that wouldn\u0027t make sense.)",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
