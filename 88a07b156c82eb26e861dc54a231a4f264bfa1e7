@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e91db847_88b409d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-04T04:17:32Z",
+      "side": 1,
+      "message": "Done\nFiles under board/makomo/ has been resumed. \nMoving the modifications into board/stm32l431-100e/\nThe board name is temporal and will be changed once new board name is ready.",
+      "parentUuid": "a7d295f3_e627acc6",
+      "revId": "88a07b156c82eb26e861dc54a231a4f264bfa1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5e48564_bf1f3d34",
