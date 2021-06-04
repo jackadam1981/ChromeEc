@@ -61,6 +61,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c022853_43eec8ec",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-04T15:51:33Z",
+      "side": 1,
+      "message": "So I was thinking more along the lines of APIs like we have in driver/retimer/nb7v904m.h or driver/retimer/nb7v904m.h, where the API is taking a concept like \"set this gain please\" and translating it into the registers in the function.  But clearly there are also ample examples of code just directly exporting the ps8818 calls in guybrush\u0027s board file.  So it\u0027s your call which direction to go there since it doesn\u0027t seem we have a consistent standard.",
+      "parentUuid": "3ce22d65_fc89abf2",
+      "revId": "81cd5eeb84c60cdd667db3f3eaa88d317747ac60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dee5ff4_9797bbd7",
         "filename": "board/guybrush/board.c",
         "patchSetId": 1
@@ -90,6 +108,24 @@
       "side": 1,
       "message": "It\u0027s pretty cryptic, but there\u0027s only 4 options. I\u0027ll create some constants.",
       "parentUuid": "7dee5ff4_9797bbd7",
+      "revId": "81cd5eeb84c60cdd667db3f3eaa88d317747ac60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8ab7d20_886398fa",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-04T15:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25b11904_3a6af502",
       "revId": "81cd5eeb84c60cdd667db3f3eaa88d317747ac60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
