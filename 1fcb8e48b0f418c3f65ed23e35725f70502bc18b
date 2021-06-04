@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d935f8e3_1b2d2a85",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-06-04T20:27:18Z",
+      "side": 1,
+      "message": "Calling usleep() (everything which causes context switch) when interrupts are disabled leads to Forced Hard Fault, at least on Cortex-M7.\n\nAdding Aseda as a reviewer because this issue could be widespread, not only on STM32H7. Found that flash support for STM32L also uses usleep().",
+      "revId": "1fcb8e48b0f418c3f65ed23e35725f70502bc18b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
