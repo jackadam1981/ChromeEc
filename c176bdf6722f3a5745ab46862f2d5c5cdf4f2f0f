@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "68222df6_9150752c",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-04T15:50:28Z",
+      "side": 1,
+      "message": "range",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 7
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eca8014b_3033e9d7",
         "filename": "zephyr/Kconfig.battery",
         "patchSetId": 1
@@ -82,6 +105,190 @@
         "startChar": 2,
         "endLine": 1,
         "endChar": 4
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f15eea5_2a4f6911",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-04T15:50:28Z",
+      "side": 1,
+      "message": "This should depend on PLATFORM_EC_USBC_PPC_SYV682X",
+      "range": {
+        "startLine": 745,
+        "startChar": 7,
+        "endLine": 745,
+        "endChar": 35
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b231554_7e6b9214",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-04T15:50:28Z",
+      "side": 1,
+      "message": "Delete the prompt text, otherwise this can be set from prj.conf.",
+      "range": {
+        "startLine": 937,
+        "startChar": 6,
+        "endLine": 937,
+        "endChar": 23
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc08e44_7e8d358d",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-04T15:50:28Z",
+      "side": 1,
+      "message": "select instead of depends?",
+      "range": {
+        "startLine": 1068,
+        "startChar": 1,
+        "endLine": 1068,
+        "endChar": 11
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "208afb02_fa6993e6",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-04T15:50:28Z",
+      "side": 1,
+      "message": "select?",
+      "range": {
+        "startLine": 1076,
+        "startChar": 1,
+        "endLine": 1076,
+        "endChar": 11
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9ce98d2_d6930c63",
+        "filename": "zephyr/get_cfg.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-04T15:50:28Z",
+      "side": 1,
+      "message": "Do you intend to land this script?  Right now it only supports the hayato board. The value of the script is pretty short term, so maybe just rename the script to get_hayato_cfg.sh",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5493dbb1_1da6ddf4",
+        "filename": "zephyr/projects/asurada/hayato/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-04T15:50:28Z",
+      "side": 1,
+      "message": "0x5053\nhttps://source.corp.google.com/piper///depot/google3/hardware/standards/usb/product_ids/chromeos_generic.textpb;rcl\u003d370096781;l\u003d586",
+      "range": {
+        "startLine": 68,
+        "startChar": 27,
+        "endLine": 68,
+        "endChar": 33
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ce69167_4fb88718",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-04T15:50:28Z",
+      "side": 1,
+      "message": "Note this is a change from cros-ec behavior that only automatically enabled CONFIG_USBC_PPC for 3 of the PPC drivers: https://chromium.googlesource.com/chromiumos/platform/ec/+/e407e3be/include/config.h#5608\n\nHowever, I run make buildall and checked that all platforms that enable a PPC driver also always have CONFIG_USBC_PPC enabled.",
+      "range": {
+        "startLine": 927,
+        "startChar": 0,
+        "endLine": 927,
+        "endChar": 23
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd9ce0a_a2b7b942",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-04T15:50:28Z",
+      "side": 1,
+      "message": "Extra #",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
       },
       "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
