@@ -16,6 +16,80 @@
       "message": "hi Aseda, Henry:\nthis cl modify the redriver setting,please help to review it , thanks",
       "revId": "27da5177257b3dfdaf109577cc822419c005736e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e5d7e67_5d16457a",
+        "filename": "board/storo/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-05T04:16:24Z",
+      "side": 1,
+      "message": "please place on the same line as the previous brace.",
+      "revId": "27da5177257b3dfdaf109577cc822419c005736e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fed47a2_d03babe7",
+        "filename": "board/storo/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-05T04:16:24Z",
+      "side": 1,
+      "message": "here as well.",
+      "revId": "27da5177257b3dfdaf109577cc822419c005736e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84324a88_3af8d945",
+        "filename": "board/storo/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-05T04:16:24Z",
+      "side": 1,
+      "message": "nit: add braces to this case.",
+      "revId": "27da5177257b3dfdaf109577cc822419c005736e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8bf4ae3_dbb48074",
+        "filename": "board/storo/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-05T04:16:24Z",
+      "side": 1,
+      "message": "It seems that this is constant for any case; it might be better to pull it out to prevent repeating yourself.",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 37
+      },
+      "revId": "27da5177257b3dfdaf109577cc822419c005736e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
