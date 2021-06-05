@@ -16,6 +16,23 @@
       "message": "Hi Caveh, Can you help to review this CL? Because it is CQ-depended on  https://chrome-internal-review.googlesource.com/3879851.",
       "revId": "9193901a3584e33debde609d063a3aeb27fc8d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4a955e5_f368accc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-05T07:57:33Z",
+      "side": 1,
+      "message": "This CL will build failed on GPIO GPIO_USB_C0_C2_TCPC_RST_ODL/ GPIO_EC_KB_BL_EN_L/ GPIO_ID_1_EC_BATT_PRES_ODL.",
+      "revId": "9193901a3584e33debde609d063a3aeb27fc8d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
