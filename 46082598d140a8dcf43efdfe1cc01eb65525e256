@@ -34,6 +34,24 @@
       "parentUuid": "130fac5a_e96e650f",
       "revId": "46082598d140a8dcf43efdfe1cc01eb65525e256",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1ed2b90_ea57a4cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-05T00:01:22Z",
+      "side": 1,
+      "message": "Okay, generally enabled for TCPCI now that we got some bytes free on older boards :)",
+      "parentUuid": "b2da90d1_6156731f",
+      "revId": "46082598d140a8dcf43efdfe1cc01eb65525e256",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
