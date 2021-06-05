@@ -52,6 +52,24 @@
       "parentUuid": "29a8347d_abccc451",
       "revId": "26043ec1d997483a81e0c8afc6249e02399c6d72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "745ebad3_7beca5ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-05T00:02:29Z",
+      "side": 1,
+      "message": "Okay, fault status alert always enabled and we\u0027re using the dev caps to determine if we should be reporting this fault.  I don\u0027t think we\u0027d expect the fault set if a device isn\u0027t capable, but this seems like a safe check to have.",
+      "parentUuid": "0a2baf94_5f177fa5",
+      "revId": "26043ec1d997483a81e0c8afc6249e02399c6d72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
