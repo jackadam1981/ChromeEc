@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16f1e0b6_9eee7286",
+        "filename": "board/storo/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-05T11:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e5d7e67_5d16457a",
+      "revId": "27da5177257b3dfdaf109577cc822419c005736e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fed47a2_d03babe7",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-06-05T04:16:24Z",
       "side": 1,
       "message": "here as well.",
+      "revId": "27da5177257b3dfdaf109577cc822419c005736e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f09dbffc_313f37be",
+        "filename": "board/storo/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-05T11:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fed47a2_d03babe7",
       "revId": "27da5177257b3dfdaf109577cc822419c005736e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb5975ee_9f1f0ee9",
+        "filename": "board/storo/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-05T11:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84324a88_3af8d945",
+      "revId": "27da5177257b3dfdaf109577cc822419c005736e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8bf4ae3_dbb48074",
@@ -82,6 +136,30 @@
       "writtenOn": "2021-06-05T04:16:24Z",
       "side": 1,
       "message": "It seems that this is constant for any case; it might be better to pull it out to prevent repeating yourself.",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 37
+      },
+      "revId": "27da5177257b3dfdaf109577cc822419c005736e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "682d3b9c_c0191f5d",
+        "filename": "board/storo/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-05T11:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8bf4ae3_dbb48074",
       "range": {
         "startLine": 282,
         "startChar": 0,
