@@ -9,6 +9,7 @@
 #include "common.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_bmi160.h"
+#include "driver/accel_bma422.h"
 #include "driver/retimer/ps8818.h"
 #include "extpower.h"
 #include "gpio.h"
@@ -24,10 +25,12 @@
 #include "gpio_list.h" /* Must come after other header files. */
 
 /* Lid Sensor mutex */
+static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 /* Lid accel private data */
 static struct bmi_drv_data_t g_bmi160_data;
+static struct bma422_accel_drv_data g_bma422_data;
 
 /* Matrix to rotate accelrator into standard reference frame */
 const mat33_fp_t base_standard_ref = {
@@ -37,6 +40,34 @@ const mat33_fp_t base_standard_ref = {
 };
 
 struct motion_sensor_t motion_sensors[] = {
+	[LID_ACCEL] = {
+		.name = "Lid Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMA422,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &bma422_accel_drv,
+		.mutex = &g_lid_mutex,
+		.drv_data = &g_bma422_data,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = BMA422_ADDR0_FLAGS,
+		.rot_standard_ref = &base_standard_ref,
+		.min_frequency = BMI_ACCEL_MIN_FREQ, /* TODO */
+		.max_frequency = BMI_ACCEL_MAX_FREQ, /* TODO */
+		.default_range = 2, /* g, enough for laptop. */
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+			/* Sensor on in S3 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 10000 | ROUND_UP_FLAG,
+				.ec_rate = 0,
+			},
+		},
+	},
 	[BASE_ACCEL] = {
 		.name = "Base Accel",
 		.active_mask = SENSOR_ACTIVE_S0_S3,

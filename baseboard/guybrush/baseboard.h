@@ -315,6 +315,7 @@ enum sensor_id {
 	BASE_ACCEL = 0,
 	BASE_GYRO,
 	SENSOR_COUNT,
+	LID_ACCEL,
 };
 
 /* PWM Channels */
