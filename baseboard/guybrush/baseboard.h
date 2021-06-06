@@ -314,6 +314,7 @@ enum temp_sensor_id {
 enum sensor_id {
 	BASE_ACCEL = 0,
 	BASE_GYRO,
+	LID_ACCEL,
 	SENSOR_COUNT,
 };
 
