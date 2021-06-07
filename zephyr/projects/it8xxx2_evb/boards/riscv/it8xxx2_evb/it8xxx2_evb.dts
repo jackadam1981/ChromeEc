@@ -179,6 +179,21 @@
 			label = "OPT_4";
 		};
 	};
+
+	named-pwms {
+		compatible = "named-pwms";
+		/* ledx = pwmx must use in order, should needn't */
+		fan {
+			pwms = <&pwm0 0 PWM_POLARITY_NORMAL>;
+			label = "TEST_FAN";
+			frequency = <30000>;
+		};
+		with_flag {
+			pwms = <&pwm1 1 PWM_POLARITY_INVERTED>;
+			label = "TEST_FLAG";
+			frequency = <100>;
+		};
+	};
 };
 
 &adc0 {
@@ -209,4 +224,16 @@
 	status = "okay";
 	current-speed = <115200>;
 	clock-frequency = <1804800>;
+};
+
+/* TEST FAN */
+&pwm0 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C4>;
+};
+
+/* TEST FLAG */
+&pwm1 {
+	status = "okay";
+	prescaler-cx = <PWM_PRESCALER_C6>;
 };
