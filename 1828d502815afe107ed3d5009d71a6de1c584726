@@ -329,6 +329,24 @@
       "parentUuid": "1ad5c543_a516b33b",
       "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dd0d216_f751b521",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-07T18:26:32Z",
+      "side": 1,
+      "message": "mfoverride on --\u003e we ignore MF bit and we ask for assignment C\nmfoverride off --\u003e we honor MF bit and we ask assignment C or D.\n\nNathan the case you were mentioning, is when 2-lanes of DP connected in the dock and USB 2 lanes are not connected correct?",
+      "parentUuid": "2b27551c_a85de759",
+      "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
