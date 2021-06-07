@@ -88,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af75d89_edc51c09",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-06-07T22:36:59Z",
+      "side": 1,
+      "message": "Changed to match datasheet.",
+      "parentUuid": "556dee0e_25aac4a1",
+      "range": {
+        "startLine": 575,
+        "startChar": 32,
+        "endLine": 575,
+        "endChar": 37
+      },
+      "revId": "1c76a272088e6a3673e3b94fe0c701df92ae24e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa8c2c33_0035902e",
@@ -101,6 +125,30 @@
       "writtenOn": "2021-06-07T16:46:35Z",
       "side": 1,
       "message": "Same concept here - is the register contents are best viewed in hex - any need to keep the decimal output?",
+      "range": {
+        "startLine": 576,
+        "startChar": 10,
+        "endLine": 576,
+        "endChar": 14
+      },
+      "revId": "1c76a272088e6a3673e3b94fe0c701df92ae24e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79653e1b_e2a07a96",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-06-07T22:36:59Z",
+      "side": 1,
+      "message": "Hex value is the one we actually used, so remove decimal output.",
+      "parentUuid": "fa8c2c33_0035902e",
       "range": {
         "startLine": 576,
         "startChar": 10,
