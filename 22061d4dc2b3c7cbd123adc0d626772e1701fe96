@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60aa85b2_f0a341fa",
+        "filename": "chip/mchp/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-07T18:27:26Z",
+      "side": 1,
+      "message": "size in comments is different than the actual size.\nAny history for adding 1024 size? other competitors have lesser size",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 47
+      },
+      "revId": "22061d4dc2b3c7cbd123adc0d626772e1701fe96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
