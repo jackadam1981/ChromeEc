@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2241fc48_5406582e",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-07T16:35:44Z",
+      "side": 1,
+      "message": "Need to update the function name (and remove all the LN9310 related code). The LN9310 is not used when using VBOB.",
+      "range": {
+        "startLine": 49,
+        "startChar": 5,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "c5c848702cdb256a35f12f16c77910b9242293b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
