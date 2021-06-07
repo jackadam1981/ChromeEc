@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30729b83_46b606f0",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-07T09:06:29Z",
+      "side": 1,
+      "message": "Remove impossible condition.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 5
+      },
+      "revId": "e835f5d078581452e6821550b741d300b0b7f05c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

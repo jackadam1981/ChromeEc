@@ -370,6 +370,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "83465764_a03163ab",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-07T09:06:29Z",
+      "side": 1,
+      "message": "To lower the impact to other platforms, \n#ifdef CHIP_FAMILY_STM32L4 is added. Only STM32L4 family would take such effect.",
+      "parentUuid": "15c4f0b0_45fa5cc6",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "21ce8472_a13159ab",
         "filename": "chip/stm32/watchdog.c",
         "patchSetId": 5
