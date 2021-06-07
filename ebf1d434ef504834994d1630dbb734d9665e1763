@@ -16,6 +16,24 @@
       "message": "instead of this change how about making below changes in adc_chip.h.\n\n#ifdef CHIP_FAMILY_MEC172X\n#define ADC_READ_MAX 4095\n#else\n#define ADC_READ_MAX 1023\n#endif",
       "revId": "ebf1d434ef504834994d1630dbb734d9665e1763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c1167c6_e906a165",
+        "filename": "chip/mchp/adc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-07T18:53:50Z",
+      "side": 1,
+      "message": "either way is functional.\ndo you think that is a better idea to keep 10bit adc, same as other chips and vendors?",
+      "parentUuid": "cc69bb2f_72ff1515",
+      "revId": "ebf1d434ef504834994d1630dbb734d9665e1763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
