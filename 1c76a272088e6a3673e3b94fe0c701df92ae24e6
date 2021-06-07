@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f604309_e63bfcf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-07T16:46:35Z",
+      "side": 1,
+      "message": "LGTM - you can cleanup the console output if you want.",
+      "revId": "1c76a272088e6a3673e3b94fe0c701df92ae24e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a97f5e0_0c7acdcc",
@@ -43,6 +60,52 @@
         "startChar": 0,
         "endLine": 540,
         "endChar": 2
+      },
+      "revId": "1c76a272088e6a3673e3b94fe0c701df92ae24e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "556dee0e_25aac4a1",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-07T16:46:35Z",
+      "side": 1,
+      "message": "Nit - the register offsets are documented only as decimal values (0-7) in the datasheet.  There\u0027s probably no need to check the hex value.",
+      "range": {
+        "startLine": 575,
+        "startChar": 32,
+        "endLine": 575,
+        "endChar": 37
+      },
+      "revId": "1c76a272088e6a3673e3b94fe0c701df92ae24e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa8c2c33_0035902e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-07T16:46:35Z",
+      "side": 1,
+      "message": "Same concept here - is the register contents are best viewed in hex - any need to keep the decimal output?",
+      "range": {
+        "startLine": 576,
+        "startChar": 10,
+        "endLine": 576,
+        "endChar": 14
       },
       "revId": "1c76a272088e6a3673e3b94fe0c701df92ae24e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
