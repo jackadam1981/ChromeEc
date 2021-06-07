@@ -311,6 +311,24 @@
       "parentUuid": "2b27551c_a85de759",
       "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22c7964f_d842ede9",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-06-07T17:38:23Z",
+      "side": 1,
+      "message": "I was in error: MF_PREF being set to 0 should mask/hide any MF pins.\n\nIt is only if MF_PREF being 1 will the MSB logic trigger.\n\nWhich in turn, in buggy DUT, will fall through to PinC.\n\nThe only bug I can envision is a MF\u003d0,Pin\u003dD dock. This would not function.",
+      "parentUuid": "1ad5c543_a516b33b",
+      "revId": "1828d502815afe107ed3d5009d71a6de1c584726",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
