@@ -16,6 +16,24 @@
       "message": "I think the error should be printed even in the NOT_POWERED case.",
       "revId": "5d2e102b61adc4913a73d1ace9f9189ac494b4df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a42594c3_c12b87bd",
+        "filename": "driver/temp_sensor/tmp112.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-07T15:54:38Z",
+      "side": 1,
+      "message": "I could go either way.  It\u0027ll be permanent init spam for guybrush to print on error, but it is good feedback for a board which does not realize that init is occurring in a location with the i2c rails up.  We can probably reduce our board version 1 spam by moving init to the guybrush board so we can version check before calling it.",
+      "parentUuid": "f1eb9e8a_bd028993",
+      "revId": "5d2e102b61adc4913a73d1ace9f9189ac494b4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
