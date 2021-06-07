@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c17f99a0_cd37761d",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-07T18:26:37Z",
+      "side": 1,
+      "message": "This could use a longer description.  What does STM (ST micro?) and MEMS stand for?  Also needs a closing period.\n\nIf this is meant to just be a helper symbol (e.g. a symbol that the user can\u0027t enable directly, but drivers that require it must enable this), then the synopsis text on the type field should be deleted.\n\nSee https://chromium.googlesource.com/chromiumos/platform/ec/+/ecbd1339/zephyr/Kconfig.usbc#128\n for an example.",
+      "range": {
+        "startLine": 82,
+        "startChar": 3,
+        "endLine": 82,
+        "endChar": 46
+      },
+      "revId": "569b47369996902ab2b274b86780ec56b1f9d795",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

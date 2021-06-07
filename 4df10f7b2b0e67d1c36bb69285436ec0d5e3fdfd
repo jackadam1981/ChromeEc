@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6cdcd4a_03ebde98",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-07T18:26:37Z",
+      "side": 1,
+      "message": "This should be \"select\".  The LIS2W12 driver requires the STM MEMs common driver, correct?\n\nWith \"imply\", a user can do this:\nCONFIG_PLATFORM_EC_ACCEL_LIS2DW12\u003dy\nCONFIG_PLATFORM_EC_STM_MEMS_COMMON\u003dn",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "4df10f7b2b0e67d1c36bb69285436ec0d5e3fdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
