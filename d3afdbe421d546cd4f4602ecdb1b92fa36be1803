@@ -39,6 +39,30 @@
       },
       "revId": "d3afdbe421d546cd4f4602ecdb1b92fa36be1803",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d90f7f_55be3131",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-06-07T09:29:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7780ca86_82105067",
+      "range": {
+        "startLine": 1163,
+        "startChar": 4,
+        "endLine": 1163,
+        "endChar": 31
+      },
+      "revId": "d3afdbe421d546cd4f4602ecdb1b92fa36be1803",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
