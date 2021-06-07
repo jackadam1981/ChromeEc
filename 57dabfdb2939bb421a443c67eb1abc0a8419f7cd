@@ -33,6 +33,63 @@
       "message": "Hi Aseda Henry Edaward,\nplease help to review this cl, this cl adds a new lid sensor driver,DA217. \nThe manufacturer does not currently have an account, if there is any problem, I can sync feedback.thanks",
       "revId": "57dabfdb2939bb421a443c67eb1abc0a8419f7cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49683013_ec3c1c00",
+        "filename": "driver/accel_da217.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-07T08:12:45Z",
+      "side": 1,
+      "message": "remove one whitespace",
+      "range": {
+        "startLine": 49,
+        "startChar": 9,
+        "endLine": 49,
+        "endChar": 10
+      },
+      "revId": "57dabfdb2939bb421a443c67eb1abc0a8419f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc1b472e_7a4893d0",
+        "filename": "driver/accel_da217.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-07T08:12:45Z",
+      "side": 1,
+      "message": "#include \"accelgyro.h\"\n\nsince you used struct accelgyro_saved_data_t here.",
+      "revId": "57dabfdb2939bb421a443c67eb1abc0a8419f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a505d38d_f2016d65",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-07T08:12:45Z",
+      "side": 1,
+      "message": "please also add this config into zephyr",
+      "revId": "57dabfdb2939bb421a443c67eb1abc0a8419f7cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
