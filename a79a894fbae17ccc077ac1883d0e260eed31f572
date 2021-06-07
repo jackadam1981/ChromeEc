@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba492c38_d3cc3f66",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-07T16:43:23Z",
+      "side": 1,
+      "message": "We\u0027re going to need this for a few drivers, thoughts about adding CONFIG_PLATFORM_EC_STM_MEMS_COMMON which will be automatically selected by setting CONFIG_PLATFORM_EC_ACCEL_LIS2DW12?",
+      "range": {
+        "startLine": 138,
+        "startChar": 49,
+        "endLine": 138,
+        "endChar": 88
+      },
+      "revId": "a79a894fbae17ccc077ac1883d0e260eed31f572",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
