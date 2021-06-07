@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c096425_adc69cf3",
+        "filename": "zephyr/include/cros/nuvoton/npcx.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-06-07T02:07:28Z",
+      "side": 1,
+      "message": "This refers to GPIOXX. I removed the comment here.",
+      "parentUuid": "d773e0d9_3c62b0ff",
+      "range": {
+        "startLine": 82,
+        "startChar": 41,
+        "endLine": 82,
+        "endChar": 46
+      },
+      "revId": "8c4d3cf9f69f38005ae3ed25fbf8e12ef9cf262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e0c253d_a3cee35c",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-03T17:21:50Z",
       "side": 1,
       "message": "KSO_02 needs to be excluded this pin is inverted when using the H1 security chip.  Because this file is only used on Chromebooks, it\u0027s probably okay to exclude KSO_02 by default.  The board dts file can override the pinctrl-0 node if CONFIG_PLATFORM_EC_KEYBOARD_COL2_INVERTED is disabled.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 44
+      },
+      "revId": "8c4d3cf9f69f38005ae3ed25fbf8e12ef9cf262e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "437edd6a_764bd681",
+        "filename": "zephyr/include/cros/nuvoton/npcx.dtsi",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-06-07T02:07:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1e0c253d_a3cee35c",
       "range": {
         "startLine": 92,
         "startChar": 0,
