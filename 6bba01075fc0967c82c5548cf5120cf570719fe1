@@ -480,6 +480,30 @@
       },
       "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e182ac_7789d774",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2021-06-07T03:43:46Z",
+      "side": 1,
+      "message": "I have some ideas to ask.\n\nhope we can change it to 2, or use ifdef determine  P1 and P2.\ncan i use \u0027BUILD_ASSERT(ARRAY_SIZE(thermal_params) \u003e\u003d TEMP_SENSOR_COUNT)\u0027?\nIf neither,what to do it?\n\nThe define of P1 and P2 sensor adc is different, will it affect their test?",
+      "parentUuid": "3ed8f005_6c08c34b",
+      "range": {
+        "startLine": 368,
+        "startChar": 43,
+        "endLine": 368,
+        "endChar": 60
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
