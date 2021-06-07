@@ -70,6 +70,24 @@
       "parentUuid": "616d7322_1c118d22",
       "revId": "ebf1d434ef504834994d1630dbb734d9665e1763",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd2f01b_e560d90b",
+        "filename": "chip/mchp/adc.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-07T22:22:04Z",
+      "side": 1,
+      "message": "added following in adc_chip.h to support MEC172x, its ADC is 12BIT resolution in default.\n#define ADC_READ_MAX 4095",
+      "parentUuid": "75d28e92_defcf150",
+      "revId": "ebf1d434ef504834994d1630dbb734d9665e1763",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
