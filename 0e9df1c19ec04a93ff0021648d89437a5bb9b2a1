@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "199e0162_8c1c255f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-07T05:36:30Z",
+      "side": 1,
+      "message": "I\u0027ve narrowed down the crash I was running into with the keyboard to this subset of changes which enabled eSPI. I\u0027m open to any suggestions, I haven\u0027t been able to find anything that looks wrong with enabling eSPI as long as we have GPIO_EC_PCH_WAKE_ODL set up correctly (which AFAICT it is). The crash is:\n\n21-06-06 23:15:18.579 �Fatal error: 0\n21-06-06 23:15:18.619   a1       \u003d 0x00000000\n21-06-06 23:15:18.619   a2       \u003d 0x200C0038\n21-06-06 23:15:18.621   a3       \u003d 0x00000001\n21-06-06 23:15:18.625   a4       \u003d 0x02100D7E\n21-06-06 23:15:18.625   ip       \u003d 0x00000000\n21-06-06 23:15:18.627   lr       \u003d 0x1008447B\n21-06-06 23:15:18.632   pc       \u003d 0x02100D7E\n21-06-06 23:15:18.632   xpsr     \u003d 0x00000000\n",
+      "revId": "0e9df1c19ec04a93ff0021648d89437a5bb9b2a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
