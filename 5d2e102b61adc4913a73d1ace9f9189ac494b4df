@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1eb9e8a_bd028993",
+        "filename": "driver/temp_sensor/tmp112.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-07T13:05:11Z",
+      "side": 1,
+      "message": "I think the error should be printed even in the NOT_POWERED case.",
+      "revId": "5d2e102b61adc4913a73d1ace9f9189ac494b4df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
