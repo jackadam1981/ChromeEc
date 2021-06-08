@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "199d9378_d452f155",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-08T15:42:44Z",
+      "side": 1,
+      "message": "Sorry for the back and forth, should this be `select`?",
+      "range": {
+        "startLine": 674,
+        "startChar": 1,
+        "endLine": 674,
+        "endChar": 27
+      },
+      "revId": "3accf9d0863fcd3a049fee309cb8c30a4ac21a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
