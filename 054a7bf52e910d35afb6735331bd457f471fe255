@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd201ec9_0fbb4927",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-08T17:44:37Z",
+      "side": 1,
+      "message": "This name could be more descriptive.  Something like bool dp_mf_ignore maybe?  Or bool dp_mf_override to match the command",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59598cce_ff6e9401",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-08T17:44:37Z",
+      "side": 1,
+      "message": "nit: no need to list [0 | 1] for the ports.  Plus we have a 3-port board now too :)",
+      "range": {
+        "startLine": 1501,
+        "startChar": 61,
+        "endLine": 1501,
+        "endChar": 66
+      },
+      "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
