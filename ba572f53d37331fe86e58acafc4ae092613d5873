@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "17f5b472_33a47dfd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-08T20:42:28Z",
+      "side": 1,
+      "message": "tested on ADLRVP, temps console command works\n\u003e temps\n  Ambient             : 300 K \u003d 27 C  34%\n  DDR                 : 299 K \u003d 26 C  31%\n  Skin                : 301 K \u003d 28 C  37%\n  VR                  : 297 K \u003d 24 C  25%",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "ba572f53d37331fe86e58acafc4ae092613d5873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "7ba7e67d_3dcb188a",
