@@ -21,6 +21,10 @@
 	#error "Define EC chip variant"
 #endif
 
+#define I2C_ADDR_EEPROM_FLAGS   0x50
+#define I2C_PORT_EEPROM         IT83XX_I2C_CH_B
+#define CONFIG_CROS_BOARD_INFO
+
 /*
  * Allow dangerous commands.
  * TODO: Remove this config before production.
