@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f62bac89_c5d1357a",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-08T17:39:59Z",
+      "side": 1,
+      "message": "Can we add a print somewhere if there\u0027s no valid EC EFS 2 version \"no valid ec efs version\" or something? It shouldn\u0027t happen. It\u0027d just make it more obvious if it does.",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 40
+      },
+      "revId": "358d66355290e6f58a13b57a46c0cc6ab7c679a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "265e487a_fc121b2c",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-08T17:39:59Z",
+      "side": 1,
+      "message": "Can you add a comment here about why this is backwards compatible? AP doesn\u0027t support the verified mode, but it only cares that the mode is not NO_BOOT. EC_EFS_BOOT_MODE_NORMAL, EC_EFS_BOOT_MODE_RO, and EC_EFS_BOOT_MODE_VERIFIED are all acceptable boot values with EC EFS 2.0.",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 43
+      },
+      "revId": "358d66355290e6f58a13b57a46c0cc6ab7c679a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f938b395_c28809ae",
+        "filename": "include/vboot.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-08T17:39:59Z",
+      "side": 1,
+      "message": "Update this comment. What was RECOVERY flag before?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 25
+      },
+      "revId": "358d66355290e6f58a13b57a46c0cc6ab7c679a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
