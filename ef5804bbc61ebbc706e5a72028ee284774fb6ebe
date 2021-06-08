@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0a1603_6a6f615c",
+        "filename": "board/primus/board.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-08T05:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60ef269a_05bf0a18",
+      "range": {
+        "startLine": 52,
+        "startChar": 30,
+        "endLine": 52,
+        "endChar": 31
+      },
+      "revId": "ef5804bbc61ebbc706e5a72028ee284774fb6ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99f9e9a5_eccb20f4",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78ca1356_af56cba7",
+        "filename": "board/primus/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-08T05:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99f9e9a5_eccb20f4",
+      "range": {
+        "startLine": 245,
+        "startChar": 30,
+        "endLine": 245,
+        "endChar": 36
+      },
+      "revId": "ef5804bbc61ebbc706e5a72028ee284774fb6ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f44b7980_a8e7e333",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-07T17:53:10Z",
       "side": 1,
       "message": "nit: alignment",
+      "range": {
+        "startLine": 248,
+        "startChar": 15,
+        "endLine": 248,
+        "endChar": 20
+      },
+      "revId": "ef5804bbc61ebbc706e5a72028ee284774fb6ebe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29874344_d1cd95ab",
+        "filename": "board/primus/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-08T05:46:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f44b7980_a8e7e333",
       "range": {
         "startLine": 248,
         "startChar": 15,
