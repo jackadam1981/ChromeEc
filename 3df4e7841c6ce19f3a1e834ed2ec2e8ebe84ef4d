@@ -87,6 +87,30 @@
       },
       "revId": "3df4e7841c6ce19f3a1e834ed2ec2e8ebe84ef4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02937bbc_0519ba68",
+        "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-08T23:50:26Z",
+      "side": 1,
+      "message": "+1 to leave for now.  Plus we hope to eventually drop the enum properties.",
+      "parentUuid": "b40c3d58_430ad1f9",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 16
+      },
+      "revId": "3df4e7841c6ce19f3a1e834ed2ec2e8ebe84ef4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
