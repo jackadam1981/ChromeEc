@@ -16,6 +16,24 @@
       "message": "The CL merge conflict.\nWe check the CL(2793851) is not cherry pick to firmware branch.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2793851\n",
       "revId": "163088db080c990baa037244b9ea3faae5023346",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c836381c_d23495a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-08T11:48:27Z",
+      "side": 1,
+      "message": "cherry-picked in https://crrev.com/c/2944520.\n\nplease rebase your CL after the above one merged, thanks.",
+      "parentUuid": "5c2ea262_971c940e",
+      "revId": "163088db080c990baa037244b9ea3faae5023346",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
