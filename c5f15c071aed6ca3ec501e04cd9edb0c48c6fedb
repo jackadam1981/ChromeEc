@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1eea8f_602e4410",
+        "filename": "baseboard/intelrvp/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-08T21:47:22Z",
+      "side": 1,
+      "message": "nit: \n1. move to https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/baseboard/intelrvp/adlrvp.h#20\n2. EEPROM \u0026 board ID are on same I2C, to avoid board level changes on all ADLRVP SKU use this macro\n#define I2C_PORT_EEPROM     I2C_PORT_PCA9555_BOARD_ID_GPIO",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 0
+      },
+      "revId": "c5f15c071aed6ca3ec501e04cd9edb0c48c6fedb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
