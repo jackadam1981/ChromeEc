@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0facb04_4b7fdbcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-08T21:28:37Z",
+      "side": 1,
+      "message": "Can you provide documentation for the fan and the thermal limits on the bug?",
+      "revId": "7d918a7d1f0c57eee041be56deb7a539012e5f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaa1f10b_4a0aea53",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-08T21:28:37Z",
+      "side": 1,
+      "message": "Please update the comment to match the new settings below.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "7d918a7d1f0c57eee041be56deb7a539012e5f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
