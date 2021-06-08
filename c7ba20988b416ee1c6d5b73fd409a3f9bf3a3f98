@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f2f2c7_a761b27c",
+        "filename": "driver/tcpm/it83xx_pd.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-08T15:49:04Z",
+      "side": 1,
+      "message": "These are now visible if !CONFIG_USB_PD_TCPM_DRIVER_IT83XX \u0026\u0026 !CONFIG_USB_PD_TCPM_DRIVER_IT8XX2 is that OK?",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 55
+      },
+      "revId": "c7ba20988b416ee1c6d5b73fd409a3f9bf3a3f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7e92af1_1a9047bd",
+        "filename": "include/driver/tcpm/it8xxx2_pd_public.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-08T15:49:04Z",
+      "side": 1,
+      "message": "nit: missing /* __CROS_EC_DRIVER_TCPM_IT8XXX2_PD_PUBLIC_H */",
+      "range": {
+        "startLine": 12,
+        "startChar": 1,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "c7ba20988b416ee1c6d5b73fd409a3f9bf3a3f98",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
