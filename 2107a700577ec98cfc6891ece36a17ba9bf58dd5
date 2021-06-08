@@ -16,6 +16,29 @@
       "message": "this is in response to your requests in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2944617",
       "revId": "2107a700577ec98cfc6891ece36a17ba9bf58dd5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fffff49a_5000eff6",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-08T23:42:08Z",
+      "side": 1,
+      "message": "Modify to follow the convention of other helper symbols:\n\nThis should be enabled by drivers that use this common framework. It cannot be set otherwise, even in prj.conf.",
+      "range": {
+        "startLine": 84,
+        "startChar": 20,
+        "endLine": 85,
+        "endChar": 22
+      },
+      "revId": "2107a700577ec98cfc6891ece36a17ba9bf58dd5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
