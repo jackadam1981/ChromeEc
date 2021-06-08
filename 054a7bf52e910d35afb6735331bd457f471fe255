@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1fa8e95_5d46e9c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-06-08T21:59:25Z",
+      "side": 1,
+      "message": "That might be out of scope of this CL.\n\n(Also, could briefly force the same by running `ectool pdsetmode $PORT 0xff01 1 0 ; ectool pdsetmode $PORT 0xff01 1 1`; proper muxing remains to be verified.)\n\n\n(Or just `pd $PORT hard`)\n\nWe currently expediently need a method to reliably test DP enumeration. This is that abrupt CL.\n\nWould suggest keeping future elegant solutions for a later date, and validate full support of \"Configure USB\" VDM:Attention message at later time.\n\nBut fully deferring to Owners; just my thoughts.",
+      "parentUuid": "f3aca97b_f5bab7fd",
+      "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd201ec9_0fbb4927",
