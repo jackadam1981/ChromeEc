@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66dbdc32_a5771ff8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-08T15:53:27Z",
+      "side": 1,
+      "message": "minor nit, LGTM otherwise",
+      "revId": "6a6013e0a7e8ab0303d3635eebee10a299229903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e5eda42_348c5d8e",
+        "filename": "zephyr/dts/bindings/i2c/cros-ec-i2c-port-base.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-08T15:53:27Z",
+      "side": 1,
+      "message": "nit: ordering, these should come after I2C_PORT_POWER",
+      "range": {
+        "startLine": 23,
+        "startChar": 5,
+        "endLine": 24,
+        "endChar": 19
+      },
+      "revId": "6a6013e0a7e8ab0303d3635eebee10a299229903",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
