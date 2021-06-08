@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c2beaf7_69a638ae",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-08T23:12:32Z",
+      "side": 1,
+      "message": "Should you use DEVICE_DT_INST_DEFINE here instead?\n\nSee https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/388d4602/doc/guides/dts/howtos.rst#466",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 13
+      },
+      "revId": "8c776463bb4108d10f45543cf4d633c5d12be8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
