@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd948e14_8c048101",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "addresses and values will effectively be pointers, so just declare them as pointers.",
+      "range": {
+        "startLine": 275,
+        "startChar": 22,
+        "endLine": 275,
+        "endChar": 31
+      },
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d8e532_3b85d052",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Is there a DS/app note section reference for this that you could put in a comment?",
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d5aca29_c84fade6",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Do you know what the worst case is for number of register writes involved in a set_state call? Could the latency approach a time scale relevant to PD protocol?",
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0312972d_8516cb66",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Nit: The stuff in this section doesn\u0027t have linkage. You could harmlessly remove the #ifdef CONFIG_KB800X_CUSTOM_XBAR for this part.",
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

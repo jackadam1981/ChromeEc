@@ -124,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddb43ccb_adf3eab4",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "331a39de_40926139",
+      "range": {
+        "startLine": 15,
+        "startChar": 8,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8300cb13_19e47135",
@@ -453,6 +477,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea175bd_32107f77",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "92c26f24_9466c423",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 25
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1eced958_ec000b2f",
@@ -484,6 +532,24 @@
       "side": 1,
       "message": "Kind of but it is not in the published datasheet.",
       "parentUuid": "1eced958_ec000b2f",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3fe4caf_d56d6d6a",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "If there is a place engineers can go to read about it, e.g. app note section number, bug comment, it would be good to reference it in the code tables above (patchset 2).",
+      "parentUuid": "1cd104f6_e8e61e17",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -617,6 +683,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bae566c_6319e84d",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d0c27af_ec172e6b",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "970d2e68_b88b6df5",
@@ -671,6 +755,24 @@
       "side": 1,
       "message": "This is needed when you\u0027re using the elastic buffer in the reverse orientation.",
       "parentUuid": "bfa8a429_0f0c5323",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826fefa8_77002039",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Is there a datasheet or app note section you could reference in a comment?",
+      "parentUuid": "db1668ce_2e3e9ee1",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -788,6 +890,24 @@
       "side": 1,
       "message": "I like the suggestion to change this to a declaration.",
       "parentUuid": "5263291d_3f568d5e",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad118ef5_0a9eb009",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2c9e863d_884706d2",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -912,6 +1032,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "384c57bc_af1132c9",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "WRT docs, can you reference the relevant sections of the Programming Guide for the addresses and values above? That won\u0027t provide much insight, but at least people will be able to tell that they\u0027ve reached the end of the trail.\n\nWRT structure, IMO the advantage of defining a structure would be that the addresses and values are lined up in the code. I would guess that that would use more memory, because the 8-bit values would end up 16-bit aligned. I\u0027m not up on the specific alignment behaviors of our ECs. If you\u0027re inclined to try it, you can see the effects on RAM and flash with\n make savesizes\n\n(before changing code) and\n make newsizes\n\n(after rebuilding with changed code).",
+      "parentUuid": "4220c561_d588b77c",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 325,
+        "endChar": 0
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1cb9b653_11ff9418",
         "filename": "driver/retimer/kb800x.c",
         "patchSetId": 1
@@ -980,6 +1124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "349cd85d_e3d2d26b",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5a61e59c_eabf3e6f",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1fa7e16_3091524f",
@@ -1017,6 +1179,30 @@
       "side": 1,
       "message": "it could but then we would write this register twice when doing DPMF - the polarity setting is the same for DP and DPMF, but is not the same for USB3 and DPMF.",
       "parentUuid": "e1fa7e16_3091524f",
+      "range": {
+        "startLine": 349,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 37
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c3deb83_fe8eb183",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack. I guess you could pass the partial calculation for the value around, but that would make the function more complicated.",
+      "parentUuid": "fa2a5392_e5a3bc33",
       "range": {
         "startLine": 349,
         "startChar": 0,
@@ -1076,6 +1262,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f8e54a8_f77f8166",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "I see now that the next layer of parens was also extra.",
+      "parentUuid": "5d51d5db_9a5a20ad",
+      "range": {
+        "startLine": 387,
+        "startChar": 6,
+        "endLine": 387,
+        "endChar": 7
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31767b30_76ea7652",
         "filename": "driver/retimer/kb800x.c",
         "patchSetId": 1
@@ -1105,6 +1315,24 @@
       "side": 1,
       "message": "There would be a double pullup - which is fine. We really shouldn\u0027t do this in that case, but since the synchronization is completely handled by the EC (captive link), we should be fine.",
       "parentUuid": "31767b30_76ea7652",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1ea68e6_12fda21d",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ea7de5e8_2ce68f40",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1649,6 +1877,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "923ac207_5202b5a0",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d111c474_fee30169",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaf8df58_8aca92e9",
@@ -1680,6 +1926,24 @@
       "side": 1,
       "message": "Because this is defined as a numeric field in the register spec, not a boolean. Is there a performance difference?",
       "parentUuid": "eaf8df58_8aca92e9",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "642fd49f_94706524",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack. No performance difference.",
+      "parentUuid": "9bf1700a_445c6547",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1719,6 +1983,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7abe3298_fec144ca",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d438576_1d02b71d",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d218fa5_ec4ce512",
@@ -1750,6 +2032,24 @@
       "side": 1,
       "message": "yes for retimers this only matters for DP; because of how the lanes are organized a usb3 retimer is by nature bidirectional.",
       "parentUuid": "8d218fa5_ec4ce512",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b525867_980bf434",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5039b5a_9477c263",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1914,6 +2214,24 @@
       "side": 1,
       "message": "Yeah - Boris also commented that too. I had it in the next patch in this patchset by accident; I\u0027ll include it in this one.",
       "parentUuid": "b04851f0_f81b3377",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "013a3f6d_7486825f",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6737b406_e826476e",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -2083,6 +2401,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0d4c204_fe808e7f",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "\u003e Is there a style/performance opinion when it comes to checking against enums?\n\nI don\u0027t think this code should be vulnerable in its intended use, but be aware that if the integer type that the compiler chooses for the enum would result in a signed-to-unsigned comparison or assigning a value the enum can\u0027t represent to an enum-typed variable, you can get some weird, maybe undefined behavior. Basically, if you\u0027re going to use -1 as a meaningful value of an enum variable, then define a value for that enum with -1. As long as you\u0027re assigning enums to enums and comparing enums to enums, you should be good.\n\nNo style/performance issues, IMO.",
+      "parentUuid": "64fbcfbb_8093f150",
+      "range": {
+        "startLine": 78,
+        "startChar": 49,
+        "endLine": 78,
+        "endChar": 50
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9f0cdae_435a6775",
@@ -2184,6 +2526,24 @@
       "side": 1,
       "message": "oops! thanks.",
       "parentUuid": "c2751b47_3894af48",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "635cebc8_11904e54",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "Ack. IMO, if the gap between the #if and #endif is less than ~.5 screen length (as this is as of patchset 2), commenting the #endif is optional.",
+      "parentUuid": "fcfca423_1feb2f62",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -2301,6 +2661,24 @@
       "side": 1,
       "message": "I agree. I added \u0027custom\u0027",
       "parentUuid": "409183a3_efe36031",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c448213d_6883b778",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-08T02:38:49Z",
+      "side": 1,
+      "message": "IIUC, making this configurable is just to save flash space, right? If it fits on volteer, which requires it and is one of the higher-pressure boards, I might lean towards just having that code always compile (and allow for some kind of empty default config that will leave the crossbar as is).",
+      "parentUuid": "3d1f0483_acf62fa1",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
