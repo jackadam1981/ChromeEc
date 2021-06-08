@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "738e0b07_4428d321",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-08T15:45:33Z",
+      "side": 1,
+      "message": "Minor nit, but LGTM",
+      "revId": "a0494258b2fa11c1314fd0f2b487e53bd1d626b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "908a153c_74688900",
+        "filename": "include/driver/bc12/mt6360_public.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-08T15:45:33Z",
+      "side": 1,
+      "message": "nit: missing /* __CROS_EC_DRIVER_BC12_MT6360_PUBLIC_H */",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "a0494258b2fa11c1314fd0f2b487e53bd1d626b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
