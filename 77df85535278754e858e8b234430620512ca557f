@@ -16,6 +16,29 @@
       "message": "BTW, this patch doesn\u0027t \u0027enable\u0027 EFS2.1. cr50 will remain to support EFS2.0.",
       "revId": "77df85535278754e858e8b234430620512ca557f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "512673fe_0d5e9308",
+        "filename": "test/test_config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-08T19:12:13Z",
+      "side": 1,
+      "message": "Define another ec-comm test that runs 2.1 tests.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 141,
+        "endChar": 6
+      },
+      "revId": "77df85535278754e858e8b234430620512ca557f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
