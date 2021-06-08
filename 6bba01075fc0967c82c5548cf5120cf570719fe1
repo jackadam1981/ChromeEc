@@ -504,6 +504,30 @@
       },
       "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d0a201e_57adc5cc",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-08T23:39:14Z",
+      "side": 1,
+      "message": "if we were to use #ifdef, then we would need separate EC images\nfor the two boards. we are trying to avoid this very much.\n\nare are aware of this limitation.\nhttps://issuetracker.google.com/189906146#comment6\n\nthe defines for the ADC channels can be different because we don\u0027t\nreally use them yet - we are waiting for calibration data before enabling\non them to control the fan speed and throttling.\n\nlet\u0027s define the ADC channels for the latest board and check the reported\nvoltages are reasonable on the new board. it\u0027s OK if the names of the first\n2 channels don\u0027t match the older board. the two new channels will report\nbad values on the old board, but that\u0027s OK - we just need them to be good\non the new board.",
+      "parentUuid": "73e182ac_7789d774",
+      "range": {
+        "startLine": 368,
+        "startChar": 43,
+        "endLine": 368,
+        "endChar": 60
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
