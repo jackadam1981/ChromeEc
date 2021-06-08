@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "597fb0bd_4909b919",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-08T21:08:26Z",
+      "side": 1,
+      "message": "nit: could set a pointer in the switch and call board_init field after the switch as long as it\u0027s filled in and all",
+      "revId": "15c30d4da2b667b9ad0562cf6e1e4b560d5c2b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
