@@ -1220,6 +1220,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c81ee04_ce766fec",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-08T00:34:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48a7281f_95602b12",
+      "range": {
+        "startLine": 457,
+        "startChar": 46,
+        "endLine": 457,
+        "endChar": 47
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60ce7549_53d289ff",
@@ -1368,6 +1392,24 @@
       "side": 1,
       "message": "I guess it would write whatever random value is in the next register address.\n\nAdded the check that we need 5 arguments when doing a \u0027w\u0027 operation.",
       "parentUuid": "8062309c_1ee87698",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fe730a5_4997a137",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-08T00:34:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1434bec9_83a793b7",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1579,6 +1621,30 @@
       "side": 1,
       "message": "I had it and the names got too long, so I went back to leaving out the mcx (every single register has mcx...)",
       "parentUuid": "1469ad71_e04cab11",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82319c56_17cbf7f0",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-08T00:34:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ec40300_93e06cb2",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 35
+      },
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
