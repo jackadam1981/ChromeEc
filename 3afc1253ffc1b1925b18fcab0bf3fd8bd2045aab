@@ -22,6 +22,30 @@
       },
       "revId": "3afc1253ffc1b1925b18fcab0bf3fd8bd2045aab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2078d309_cbdfce06",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T21:59:00Z",
+      "side": 1,
+      "message": "This will be updated in CL:2935059 when we introduce CONFIG_PLATFORM_EC_CBI_EEPROM and CONFIG_PLATFORM_EC_CBI_VIRTUAL to zephyr/Kconfig.\n\nAs of now, we only have CONFIG_PLATFORM_EC_CBI in zephyr/Kconfig.",
+      "parentUuid": "864aebe4_b924a7a2",
+      "range": {
+        "startLine": 1325,
+        "startChar": 7,
+        "endLine": 1325,
+        "endChar": 29
+      },
+      "revId": "3afc1253ffc1b1925b18fcab0bf3fd8bd2045aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
