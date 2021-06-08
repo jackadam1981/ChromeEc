@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "573738d8_a0dedc8f",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-06-08T18:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f62bac89_c5d1357a",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 40
+      },
+      "revId": "358d66355290e6f58a13b57a46c0cc6ab7c679a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "265e487a_fc121b2c",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27393ba0_bf250a58",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-06-08T18:59:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "265e487a_fc121b2c",
+      "range": {
+        "startLine": 303,
+        "startChar": 1,
+        "endLine": 303,
+        "endChar": 43
+      },
+      "revId": "358d66355290e6f58a13b57a46c0cc6ab7c679a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f938b395_c28809ae",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-08T17:39:59Z",
       "side": 1,
       "message": "Update this comment. What was RECOVERY flag before?",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 25
+      },
+      "revId": "358d66355290e6f58a13b57a46c0cc6ab7c679a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f98cfff0_8de45454",
+        "filename": "include/vboot.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-06-08T18:59:40Z",
+      "side": 1,
+      "message": "RECOVERY flag was once considered in EFS2.0 but soon it was dropped.\nThe boot mode is just enum, rather than a set of bit flags. Removing all comments.",
+      "parentUuid": "f938b395_c28809ae",
       "range": {
         "startLine": 65,
         "startChar": 0,
