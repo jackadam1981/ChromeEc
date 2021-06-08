@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6079ae_3af2c56b",
+        "filename": "board/chronicler/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-08T21:09:14Z",
+      "side": 1,
+      "message": "Chronicler",
+      "range": {
+        "startLine": 5,
+        "startChar": 37,
+        "endLine": 5,
+        "endChar": 44
+      },
+      "revId": "16bd0323205baa3e6289b9d92fd1bee1bc34d8db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba59f7b_91165a8b",
+        "filename": "board/chronicler/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-08T21:09:14Z",
+      "side": 1,
+      "message": "Use the enum led_port type instead of int.",
+      "range": {
+        "startLine": 48,
+        "startChar": 34,
+        "endLine": 48,
+        "endChar": 42
+      },
+      "revId": "16bd0323205baa3e6289b9d92fd1bee1bc34d8db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd4271a2_e11c2ea3",
+        "filename": "board/chronicler/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-08T21:09:14Z",
+      "side": 1,
+      "message": "Change to Chronicler throughout the file.",
+      "range": {
+        "startLine": 142,
+        "startChar": 30,
+        "endLine": 142,
+        "endChar": 35
+      },
+      "revId": "16bd0323205baa3e6289b9d92fd1bee1bc34d8db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
