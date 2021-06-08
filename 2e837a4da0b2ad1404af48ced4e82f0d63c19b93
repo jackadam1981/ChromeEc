@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c12d31c3_d858ffe5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T01:34:56Z",
+      "side": 1,
+      "message": "Done - rename the configs to CONFIG_CBI_EEPROM and CONFIG_CBI_VIRTUAL.",
+      "parentUuid": "8a61e120_6048f1cc",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "56d4683b_5149dca7",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -108,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf288754_fa11cea4",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T01:34:56Z",
+      "side": 1,
+      "message": "If we want to split this file to cbi.c, cbi_eeprom.c, and cbi_virtual.c, we\u0027ll need to create a few interfaces for accessing the static variables:\n\nstatic int cached_read_result \u003d EC_ERROR_CBI_CACHE_INVALID;\nstatic uint8_t cbi[CBI_EEPROM_SIZE];\nstatic struct cbi_header * const head \u003d (struct cbi_header *)cbi;\n\nSo I think it\u0027s better to keep a single file. WDYT?",
+      "parentUuid": "0cfe8415_58a7f3e5",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "831eefa1_0d87b29e",
         "filename": "common/cbi.c",
         "patchSetId": 1
@@ -153,6 +201,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4460d3e_c327628d",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T01:34:56Z",
+      "side": 1,
+      "message": "I return error in cbi_write() instead.",
+      "parentUuid": "bc7e7a15_7fa4fb5b",
+      "range": {
+        "startLine": 256,
+        "startChar": 11,
+        "endLine": 256,
+        "endChar": 27
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c03a3aa8_3b84568f",
@@ -166,6 +238,30 @@
       "writtenOn": "2021-06-04T00:13:45Z",
       "side": 1,
       "message": "Can you use IS_ENABLED?",
+      "range": {
+        "startLine": 346,
+        "startChar": 4,
+        "endLine": 346,
+        "endChar": 43
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "110f716f_088f7f88",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T01:34:56Z",
+      "side": 1,
+      "message": "do_read_board_info() is not defined when CONFIG_CBI_VIRTUAL is enabled.\nsetup_virtual_board_info() is not defined when CONFIG_CBI_EEPROM is enabled.\n\nSo I have to explicitly do pre-processor.",
+      "parentUuid": "c03a3aa8_3b84568f",
       "range": {
         "startLine": 346,
         "startChar": 4,
@@ -201,6 +297,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e3b75f8_6d5e9aeb",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T01:34:56Z",
+      "side": 1,
+      "message": "common_cbi_set() is not defined when CONFIG_CBI_VIRTUAL is enabled.\nSo I have to explicitly do pre-processor.",
+      "parentUuid": "0b930ba2_47f0159b",
+      "range": {
+        "startLine": 476,
+        "startChar": 0,
+        "endLine": 476,
+        "endChar": 43
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5056ac86_73d5f54e",
         "filename": "include/config.h",
         "patchSetId": 1
@@ -212,6 +332,30 @@
       "writtenOn": "2021-06-03T22:15:24Z",
       "side": 1,
       "message": "Might be worth changing this to CONFIG_CROS_BOARD_INFO_EEPROM as a separate change.",
+      "range": {
+        "startLine": 5182,
+        "startChar": 7,
+        "endLine": 5182,
+        "endChar": 29
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09cf08ce_6250bc6f",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5182,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T01:34:56Z",
+      "side": 1,
+      "message": "Done. See CL:2945792.",
+      "parentUuid": "5056ac86_73d5f54e",
       "range": {
         "startLine": 5182,
         "startChar": 7,
@@ -269,6 +413,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc4cf49_43d77cd9",
+        "filename": "include/config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5188,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T01:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3eca8dd_acd7cc70",
+      "range": {
+        "startLine": 5188,
+        "startChar": 7,
+        "endLine": 5188,
+        "endChar": 37
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6e65c40_b336a257",
@@ -292,6 +460,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6859eff1_5a9a1217",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T01:34:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6e65c40_b336a257",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 30
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "434bb7db_5610293c",
@@ -305,6 +497,30 @@
       "writtenOn": "2021-06-03T22:15:24Z",
       "side": 1,
       "message": "Change the name to PLATFORM_EC_CROS_BOARD_INFO_VIRTUAL, then you won\u0027t need to add an entry into the allow list.\n\nPLATFORM_EC_CBI was added before we had a script to verify new config options also create a Kconfig entry.\n\nThis EEPROM CBI and Virtual CBI options should also be organized as a Kconfig \"choice\" so that only one option can be enabled.\n\ne.g\n\nconfig PLATFORM_EC_CBI\n    bool \"Chromium OS Board Info (CBI) Support\"\n    \nif PLATFORM_EC_CBI\n   \nchoice \"CBI Type\"\n\nconfig PLATFORM_EC_CROS_BOARD_INFO\n    bool \"CBI EEPROM support\"\n    \nconfig PLATFORM_EC_CROS_BOARD_INFO_VIRTUAL\n    bool \"Virtual CBI support\"\n    \nendchoice\nendif",
+      "range": {
+        "startLine": 170,
+        "startChar": 7,
+        "endLine": 170,
+        "endChar": 30
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01044895_a44df4e7",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T01:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "434bb7db_5610293c",
       "range": {
         "startLine": 170,
         "startChar": 7,
