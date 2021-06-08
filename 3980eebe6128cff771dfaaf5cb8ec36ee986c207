@@ -68,6 +68,24 @@
       "message": "QQ: why we only merge the CL to firmware branch? (https://crrev.com/c/2944518)",
       "revId": "3980eebe6128cff771dfaaf5cb8ec36ee986c207",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e7f497_98183c8a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-08T09:55:47Z",
+      "side": 1,
+      "message": "lijen prefer to test this CL with a upreved firmware in M92 to see if this fix the unknown IRQ issue.",
+      "parentUuid": "171278fe_f3285d1e",
+      "revId": "3980eebe6128cff771dfaaf5cb8ec36ee986c207",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
