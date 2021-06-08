@@ -103,6 +103,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2a14bc3_bcbb093e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T23:16:07Z",
+      "side": 1,
+      "message": "The concept looks similar to what I\u0027m about to do.\n\nI plan to generalize \"cbi.c\" to be the data layer.\nThe storage driver will be handled by cbi_eeprom.c and cbi_virtual.c.\n\nWill update this patch soon (after I\u0027m back from the vacation).",
+      "parentUuid": "92800d84_ff1a2d7b",
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfb07d6e_82badca9",
         "filename": "common/cbi.c",
         "patchSetId": 1
@@ -186,6 +204,30 @@
       "side": 1,
       "message": "I think splitting up CBI into 3 files still makes sense.  I\u0027m always in favor of code that reduces or eliminates #ifdefs.  You really only need 2 interface functions, one to get/set the cached_read_result and one to find the location of the cbi storage.\nYou don\u0027t need a routine for both cbi and head since they point to the same thing.",
       "parentUuid": "bf288754_fa11cea4",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "2e837a4da0b2ad1404af48ced4e82f0d63c19b93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a486b309_283168fd",
+        "filename": "common/cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-08T23:16:07Z",
+      "side": 1,
+      "message": "OK, sounds good.\nI will do the split soon (after I\u0027m back from the vacation).",
+      "parentUuid": "78950ce8_3d7c7fe9",
       "range": {
         "startLine": 156,
         "startChar": 0,
