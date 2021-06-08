@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62bacb3b_4cbf0e53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-08T22:17:10Z",
+      "side": 1,
+      "message": "Thanks for making the change I suggested. But I missed it will break the previous rev hardware. Please check my latest comment which is a safer approach.",
+      "revId": "eb430593e1707f4bcd2b6a877ff7b09401ebaa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6404fe8e_335da453",
+        "filename": "board/lazor/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-08T22:17:10Z",
+      "side": 1,
+      "message": "Don\u0027t need this change. Please check my other comments.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 63
+      },
+      "revId": "eb430593e1707f4bcd2b6a877ff7b09401ebaa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "691e6fa4_c17f6401",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-08T22:17:10Z",
+      "side": 1,
+      "message": "uses",
+      "range": {
+        "startLine": 19,
+        "startChar": 17,
+        "endLine": 19,
+        "endChar": 20
+      },
+      "revId": "eb430593e1707f4bcd2b6a877ff7b09401ebaa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "868d0eba_6a510b63",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-08T22:17:10Z",
+      "side": 1,
+      "message": "uses",
+      "range": {
+        "startLine": 21,
+        "startChar": 19,
+        "endLine": 21,
+        "endChar": 22
+      },
+      "revId": "eb430593e1707f4bcd2b6a877ff7b09401ebaa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18b6fb75_792587af",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-08T22:17:10Z",
+      "side": 1,
+      "message": "This change will break the previous rev hardware. I think a safer approach is to check the board ID in addition. For example, in this function,\n    return board_is_clamshell() \u0026\u0026 system_get_board_version() \u003e\u003d x;\n\nThe board_has_ln9310() still needs to be kept. But make a different condition, i.e.\n    return board_is_clamshell() \u0026\u0026 system_get_board_version() \u003c x;\n\nSince the decision tree is now no longer a binary, non-trivial, please create another function board_has_da9313() which is:\n    return !board_is_clamshell();",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "eb430593e1707f4bcd2b6a877ff7b09401ebaa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c88b56ef_84feed26",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-08T22:17:10Z",
+      "side": 1,
+      "message": "Please keep the original LN9310 logic and use the new board_has_da9313() function, like\n    } else if (board_has_ln9310()) {\n        ...\n    } else if (board_has_da9313()) {\n        ...\n    }",
+      "range": {
+        "startLine": 29,
+        "startChar": 3,
+        "endLine": 29,
+        "endChar": 9
+      },
+      "revId": "eb430593e1707f4bcd2b6a877ff7b09401ebaa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b467267d_33e0a96f",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-08T22:17:10Z",
+      "side": 1,
+      "message": "Similar here and the following functions. Keep the original LN9310 logic, like\n   if (board_uses_buck_ic())\n       ...\n   else if (board_has_ln9310())\n       ...\n   else if (board_has_da9313())\n       ...",
+      "range": {
+        "startLine": 50,
+        "startChar": 24,
+        "endLine": 50,
+        "endChar": 25
+      },
+      "revId": "eb430593e1707f4bcd2b6a877ff7b09401ebaa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39dd2280_ca4cdb1b",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-08T22:17:10Z",
+      "side": 1,
+      "message": "Use {} for multi-line statement, both the if-clause, the if-else clause, and the else-clause.",
+      "range": {
+        "startLine": 66,
+        "startChar": 24,
+        "endLine": 66,
+        "endChar": 25
+      },
+      "revId": "eb430593e1707f4bcd2b6a877ff7b09401ebaa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
