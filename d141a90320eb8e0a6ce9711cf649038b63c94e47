@@ -22,6 +22,30 @@
       },
       "revId": "d141a90320eb8e0a6ce9711cf649038b63c94e47",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22ddf0a6_1ddc0aba",
+        "filename": "zephyr/projects/brya/boards/arm/brya/brya.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-08T06:00:35Z",
+      "side": 1,
+      "message": "It doesn\u0027t, I copied the other instances we have which I agree is a bit odd. The line is https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/zephyr/drivers/cros_kb_raw/cros_kb_raw_npcx.c;l\u003d233;drc\u003d80cacc3d251ba738e2c8e6a84305ac06395898ef where it is used and you can see we don\u0027t check the status. cl:2931750 moves this to a common npcx.dtsi and leaves out the status completely. I created b:190457512 to track cleaning up the driver.",
+      "parentUuid": "5ba5f139_a25810dd",
+      "range": {
+        "startLine": 116,
+        "startChar": 13,
+        "endLine": 116,
+        "endChar": 21
+      },
+      "revId": "d141a90320eb8e0a6ce9711cf649038b63c94e47",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
