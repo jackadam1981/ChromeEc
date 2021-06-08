@@ -5,85 +5,218 @@
 
 /* Primus specific PWM LED settings. */
 
+#include "battery.h"
+#include "charge_manager.h"
+#include "charge_state.h"
+#include "chipset.h"
+#include "cros_board_info.h"
 #include "common.h"
 #include "ec_commands.h"
-#include "led_pwm.h"
+#include "extpower.h"
+#include "gpio.h"
+#include "hooks.h"
+#include "led_common.h"
 #include "pwm.h"
+#include "timer.h"
 #include "util.h"
+#define CPRINTS(format, args...) cprints(CC_LED, format, ## args)
 
-/* TODO(b/190637023)
- * Need to implement specific LED feature for Primus.
- */
+#define LED_ON_LVL 100
+#define LED_OFF_LVL 0
+#define LED_BAT_S3_OFF_TIME_MS 3000
+#define LED_BAT_S3_TICK_MS 50
+
+#define TICKS_STEP1_BRIGHTER 0
+#define TICKS_STEP2_DIMMER 20
+#define TICKS_STEP3_OFF 40
+
+#define LED_TOTAL_TICKS 6
+
+#define LED_ONE_SEC	(1000 / HOOK_TICK_INTERVAL_MS)
+#define LED_LOGO_ON_TICK 0.25
+#define LED_LOGO_OFF_TICK 0.25
+#define LED_OFF         EC_LED_COLOR_COUNT
+
+static int plug_ac;
+static int ticks1;
+
 const enum ec_led_id supported_led_ids[] = {
-	EC_LED_ID_LEFT_LED,
-	EC_LED_ID_RIGHT_LED,
+	EC_LED_ID_BATTERY_LED,
+	EC_LED_ID_POWER_LED
 };
-
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
-/*
- * We only have a white and an amber LED, so setting any other colour results in
- * both LEDs being off.
- */
-struct pwm_led led_color_map[EC_LED_COLOR_COUNT] = {
-				/* Amber, White */
-	[EC_LED_COLOR_RED]    = {   0,   0 },
-	[EC_LED_COLOR_GREEN]  = {   0,   0 },
-	[EC_LED_COLOR_BLUE]   = {   0,   0 },
-	[EC_LED_COLOR_YELLOW] = {   0,   0 },
-	[EC_LED_COLOR_WHITE]  = {   0, 100 },
-	[EC_LED_COLOR_AMBER]  = {  100,  0 },
-};
+void led_set_color_battery(enum ec_led_colors color)
+{
+	switch (color) {
+	case EC_LED_COLOR_AMBER:
+		pwm_set_duty(PWM_CH_LED1, LED_ON_LVL);
+		pwm_set_duty(PWM_CH_LED2, LED_OFF_LVL);
+		break;
+	case EC_LED_COLOR_WHITE:
+		pwm_set_duty(PWM_CH_LED2, LED_ON_LVL);
+		pwm_set_duty(PWM_CH_LED1, LED_OFF_LVL);
+		break;
+	default: /* LED_OFF and other unsupported colors */
+		pwm_set_duty(PWM_CH_LED1, LED_OFF_LVL);
+		pwm_set_duty(PWM_CH_LED2, LED_OFF_LVL);
+		break;
+	}
+}
 
-/* Two logical LEDs with amber and white channels. */
-struct pwm_led pwm_leds[CONFIG_LED_PWM_COUNT] = {
-	{
-		.ch0 = PWM_CH_LED1,
-		.ch1 = PWM_CH_LED2,
-		.ch2 = PWM_LED_NO_CHANNEL,
-		.enable = &pwm_enable,
-		.set_duty = &pwm_set_duty,
-	},
-	{
-		.ch0 = PWM_CH_TKP_A_LED_N,
-		.ch1 = PWM_CH_LED4,
-		.ch2 = PWM_LED_NO_CHANNEL,
-		.enable = &pwm_enable,
-		.set_duty = &pwm_set_duty,
-	},
-};
+static void led_set_battery(void)
+{
+	switch (charge_get_state()) {
+	case PWR_STATE_CHARGE:
+		/* Always indicate when charging, even in suspend. */
+		led_set_color_battery(EC_LED_COLOR_AMBER);
+		break;
+	case PWR_STATE_DISCHARGE:
+		led_set_color_battery(LED_OFF);
+		break;
+	case PWR_STATE_CHARGE_NEAR_FULL:
+		led_set_color_battery(EC_LED_COLOR_WHITE);
+		break;
+	default:
+		/* Other states don't alter LED behavior */
+		break;
+	}
+}
+
+void led_set_color_power(enum ec_led_colors color)
+{
+	if (color == EC_LED_COLOR_RED)
+		pwm_set_duty(PWM_CH_TKP_A_LED_N, LED_ON_LVL);
+	else
+		/* LED_OFF and unsupported colors */
+		pwm_set_duty(PWM_CH_TKP_A_LED_N, LED_OFF_LVL);
+}
+
+static void led_set_power(void)
+{
+	static int ticks;
+	/* Count how many times we enter this loop when plug in AC */
+	static int counts;
+	static int color;
+	/* Record on or off phase */
+	int phase;
+	/* Total on/off duration in a period */
+	static uint8_t period;
+	static uint8_t led_logo_on_tick;
+	static uint8_t led_logo_off_tick;
+
+	led_logo_on_tick = LED_LOGO_ON_TICK * LED_ONE_SEC;
+	led_logo_off_tick = LED_LOGO_OFF_TICK * LED_ONE_SEC;
+
+	if (plug_ac) {
+
+		if (counts > LED_TOTAL_TICKS) {
+			/* Clear this flag once on/off repeat 3 times */
+			plug_ac = 0;
+			return;
+		}
+
+		period = led_logo_on_tick + led_logo_off_tick;
+		phase = ticks < led_logo_on_tick ?
+								0 : 1;
+		ticks = (ticks + 1) % period;
+		color = phase == 1 ?
+				EC_LED_COLOR_RED : LED_OFF;
+		led_set_color_power(color);
+
+		counts++;
+
+	} else if (chipset_in_state(CHIPSET_STATE_ON) && !plug_ac)
+		led_set_color_power(EC_LED_COLOR_RED);
+	else if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		led_set_color_power(LED_OFF);
+
+	/* Set plug_ac for initial connection of power
+	 * Check AC_PRESENT
+	 * enter led_set_power first time
+	 * counts is smaller than 6, which means we didn't flick LED 3 times.
+	 */
+	if (extpower_is_present() && (!plug_ac || counts <= LED_TOTAL_TICKS)) {
+		plug_ac = 1;
+	} else if (!extpower_is_present()) {
+		plug_ac = 0;
+		counts = 0;
+	}
+}
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
-	memset(brightness_range, '\0',
-	       sizeof(*brightness_range) * EC_LED_COLOR_COUNT);
-	brightness_range[EC_LED_COLOR_AMBER] = 100;
-	brightness_range[EC_LED_COLOR_WHITE] = 100;
+	if (led_id == EC_LED_ID_BATTERY_LED) {
+		brightness_range[EC_LED_COLOR_AMBER] = 1;
+		brightness_range[EC_LED_COLOR_WHITE] = 1;
+	} else if (led_id == EC_LED_ID_POWER_LED) {
+		brightness_range[EC_LED_COLOR_RED] = 1;
+	}
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 {
-	enum pwm_led_id pwm_id;
-
-	/* Convert ec_led_id to pwm_led_id. */
-	switch (led_id) {
-	case EC_LED_ID_LEFT_LED:
-		pwm_id = PWM_LED0;
-		break;
-	case EC_LED_ID_RIGHT_LED:
-		pwm_id = PWM_LED1;
-		break;
-	default:
-		return EC_ERROR_UNKNOWN;
+	if (led_id == EC_LED_ID_BATTERY_LED) {
+		if (brightness[EC_LED_COLOR_AMBER] != 0)
+			led_set_color_battery(LED_AMBER);
+		else if (brightness[EC_LED_COLOR_WHITE] != 0)
+			led_set_color_battery(LED_WHITE);
+		else
+			led_set_color_battery(LED_OFF);
+	} else if (led_id == EC_LED_ID_POWER_LED) {
+		if (brightness[EC_LED_COLOR_RED] != 0)
+			led_set_color_power(EC_LED_COLOR_RED);
+		else
+			led_set_color_power(LED_OFF);
 	}
-
-	if (brightness[EC_LED_COLOR_WHITE])
-		set_pwm_led_color(pwm_id, EC_LED_COLOR_WHITE);
-	else if (brightness[EC_LED_COLOR_AMBER])
-		set_pwm_led_color(pwm_id, EC_LED_COLOR_AMBER);
-	else
-		/* Otherwise, the "color" is "off". */
-		set_pwm_led_color(pwm_id, -1);
 
 	return EC_SUCCESS;
 }
+
+/* Called by hook task every 200 ms */
+static void led_tick(void)
+{
+	if (led_auto_control_is_enabled(EC_LED_ID_POWER_LED))
+		led_set_power();
+	if (led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
+		led_set_battery();
+}
+DECLARE_HOOK(HOOK_TICK, led_tick, HOOK_PRIO_DEFAULT);
+
+
+static void suspend_led_update_deferred(void);
+DECLARE_DEFERRED(suspend_led_update_deferred);
+
+static void suspend_led_update_deferred(void)
+{
+	int delay = LED_BAT_S3_TICK_MS * MSEC;
+
+	ticks1++;
+
+	/* 1s gradual on, 1s gradual off, 3s off */
+	if (ticks1 <= TICKS_STEP2_DIMMER) {
+		led_set_color_power(EC_LED_COLOR_WHITE);
+	} else if (ticks1 <= TICKS_STEP3_OFF) {
+		led_set_color_power(LED_OFF);
+	} else {
+		ticks1 = TICKS_STEP1_BRIGHTER;
+		delay = LED_BAT_S3_OFF_TIME_MS * MSEC;
+	}
+
+	hook_call_deferred(&suspend_led_update_deferred_data, delay);
+}
+
+static void suspend_led_init(void)
+{
+	ticks1 = TICKS_STEP2_DIMMER;
+
+	hook_call_deferred(&suspend_led_update_deferred_data, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, suspend_led_init, HOOK_PRIO_DEFAULT);
+
+static void suspend_led_deinit(void)
+{
+	hook_call_deferred(&suspend_led_update_deferred_data, -1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, suspend_led_deinit, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, suspend_led_deinit, HOOK_PRIO_DEFAULT);
