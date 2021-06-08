@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e457d27_38ffd8a2",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-08T15:39:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f063a8c_4f735094",
+      "range": {
+        "startLine": 235,
+        "startChar": 13,
+        "endLine": 235,
+        "endChar": 20
+      },
+      "revId": "d425d92f8d55dbf1a6fd3d1560db59e9bd609896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "638c1131_6cbfcb60",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-08T06:46:57Z",
       "side": 1,
       "message": "This is a device name. Do we want to use the node ID for that?",
+      "range": {
+        "startLine": 236,
+        "startChar": 14,
+        "endLine": 236,
+        "endChar": 18
+      },
+      "revId": "d425d92f8d55dbf1a6fd3d1560db59e9bd609896",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bd38aed_b28839eb",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-08T15:39:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "638c1131_6cbfcb60",
       "range": {
         "startLine": 236,
         "startChar": 14,
