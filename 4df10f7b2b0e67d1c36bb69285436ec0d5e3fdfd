@@ -22,6 +22,30 @@
       },
       "revId": "4df10f7b2b0e67d1c36bb69285436ec0d5e3fdfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "429d9dab_f2c9d4bd",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-06-08T16:48:00Z",
+      "side": 1,
+      "message": "Addressed in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2947227",
+      "parentUuid": "e6cdcd4a_03ebde98",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "4df10f7b2b0e67d1c36bb69285436ec0d5e3fdfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
