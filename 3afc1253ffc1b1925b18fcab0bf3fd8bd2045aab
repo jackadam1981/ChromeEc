@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "864aebe4_b924a7a2",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-08T19:35:44Z",
+      "side": 1,
+      "message": "You should also change this KConfig to match: CONFIG_PLATFORM_EC_CBI_EEPROM.",
+      "range": {
+        "startLine": 1325,
+        "startChar": 7,
+        "endLine": 1325,
+        "endChar": 29
+      },
+      "revId": "3afc1253ffc1b1925b18fcab0bf3fd8bd2045aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
