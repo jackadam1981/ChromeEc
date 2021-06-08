@@ -16,6 +16,24 @@
       "message": "Remove generate-gpio.inc which is for Byra, we don\u0027t use it on Gimble.",
       "revId": "996872aef6a65f03dcebb9f552b1e2485cedaad8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f77195c2_678f7c1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2021-06-08T09:01:15Z",
+      "side": 1,
+      "message": "\u003e Remove generate-gpio.inc which is for Byra, we don\u0027t use it on Gimble.\n\nMistake comment, please ignore.",
+      "parentUuid": "29483ff2_057af20a",
+      "revId": "996872aef6a65f03dcebb9f552b1e2485cedaad8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
