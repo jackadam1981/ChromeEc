@@ -63,6 +63,30 @@
       },
       "revId": "3df4e7841c6ce19f3a1e834ed2ec2e8ebe84ef4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b40c3d58_430ad1f9",
+        "filename": "zephyr/dts/bindings/adc/named-adc.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-06-08T18:44:48Z",
+      "side": 1,
+      "message": "My quick grep shows it in a number of platforms. I suggest leaving it as is until the day these platforms are no longer supported... but just my opinion.",
+      "parentUuid": "17aa9557_a162bfc0",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 16
+      },
+      "revId": "3df4e7841c6ce19f3a1e834ed2ec2e8ebe84ef4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
