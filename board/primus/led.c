@@ -5,12 +5,43 @@
 
 /* Waddledoo specific PWM LED settings. */
 
+#include "charge_manager.h"
 #include "common.h"
 #include "ec_commands.h"
+#include "gpio.h"
+#include "led_common.h"
+#include "led_onoff_states.h"
 #include "led_pwm.h"
 #include "pwm.h"
 #include "util.h"
 
+
+#define LED_ON_LVL 0
+#define LED_OFF_LVL 1
+
+__override const int led_charge_lvl_1 = 5;
+
+__override const int led_charge_lvl_2 = 95;
+
+__override struct led_descriptor
+      led_bat_state_table[LED_NUM_STATES][LED_NUM_PHASES] = {
+  [STATE_CHARGING_LVL_1]       = {{EC_LED_COLOR_AMBER, LED_INDEFINITE} },
+  [STATE_CHARGING_LVL_2]       = {{EC_LED_COLOR_AMBER, LED_INDEFINITE} },
+  [STATE_CHARGING_FULL_CHARGE] = {{EC_LED_COLOR_WHITE, LED_INDEFINITE} },
+  [STATE_DISCHARGE_S0]       = {{LED_OFF,  LED_INDEFINITE} },
+  [STATE_DISCHARGE_S3]       = {{EC_LED_COLOR_RED,  LED_INDEFINITE},
+                                {LED_OFF,       3 * LED_ONE_SEC} },
+  [STATE_DISCHARGE_S5]         = {{EC_LED_COLOR_RED,  LED_INDEFINITE} },        
+};
+
+__override const struct led_descriptor
+    led_pwr_state_table[PWR_LED_NUM_STATES][LED_NUM_PHASES] = {
+  [PWR_LED_STATE_ON]           =  {{EC_LED_COLOR_RED, LED_INDEFINITE} },
+  [PWR_LED_STATE_SUSPEND_AC]   =  {{EC_LED_COLOR_WHITE,  1 * LED_ONE_SEC},
+    {LED_OFF,             0.25 * LED_ONE_SEC} },
+  [PWR_LED_STATE_OFF]           = {
+    {LED_OFF,             LED_INDEFINITE} },
+};
 const enum ec_led_id supported_led_ids[] = {
 	EC_LED_ID_LEFT_LED,
 	EC_LED_ID_RIGHT_LED,
