@@ -22,6 +22,30 @@
       },
       "revId": "3accf9d0863fcd3a049fee309cb8c30a4ac21a57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64ad26f_3e75b200",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-08T23:37:05Z",
+      "side": 1,
+      "message": "\u0027select\u0027 should only be used for helper symbols.\nhttps://docs.zephyrproject.org/latest/guides/kconfig/tips.html#select-pitfalls\nBecause there are additional I2C configs (CONFIG_I2C_DEBUG, CONFIG_I2C_DEBUG_PASSTHRU), it probably makes sense to create Kconfig.i2c and then wrap all three options with \"if PLATFORM_EC_I2C\".  This can be done as a follow up CL.",
+      "parentUuid": "199d9378_d452f155",
+      "range": {
+        "startLine": 674,
+        "startChar": 1,
+        "endLine": 674,
+        "endChar": 27
+      },
+      "revId": "3accf9d0863fcd3a049fee309cb8c30a4ac21a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
