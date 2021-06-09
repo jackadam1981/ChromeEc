@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29ee331d_1d7f7b5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-06-09T19:43:49Z",
+      "side": 1,
+      "message": "I had to replace IS_ENABLED with #ifdef because stm32f07x (hoho board for example) is based on cortex-m0 and it doesn\u0027t have \u0027cpu_disable_caches\u0027 symbol declared.",
+      "revId": "5629e4d1fcabd5b264b2fa2d562543019a74782e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
