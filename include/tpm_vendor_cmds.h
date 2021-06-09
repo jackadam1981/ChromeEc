@@ -260,6 +260,7 @@ enum ap_ro_check_vc_errors {
 	ARCVE_FLASH_ERASE_FAILED = 8,
 	ARCVE_TOO_MANY_RANGES = 9,
 	ARCVE_NOT_PROGRAMMED = 10,
+	ARCVE_FLASH_READ_FAILED = 11,
 };
 
 /* Structure for VENDOR_CC_SPI_HASH request which follows tpm_header */
