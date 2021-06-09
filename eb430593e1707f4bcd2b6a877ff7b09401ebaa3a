@@ -112,6 +112,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ee34838_d9587fb5",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-06-09T08:02:08Z",
+      "side": 1,
+      "message": "Current all board ids are assigned for ln9310.\nWe can\u0027t use board id for board_use_buck_ic.\nWe might keep using board_has_ln9310 to check support ln9310 or buck ic.",
+      "parentUuid": "18b6fb75_792587af",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "eb430593e1707f4bcd2b6a877ff7b09401ebaa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c88b56ef_84feed26",
         "filename": "board/lazor/switchcap.c",
         "patchSetId": 5
