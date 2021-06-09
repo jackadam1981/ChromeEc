@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb06499_5ef221dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-09T18:11:08Z",
+      "side": 1,
+      "message": "What do you think of this approach?  The goal is that the \u003cboard_defconfig\u003e file only needs to change CONFIG_SOC_NPCX7M6FC\u003dy to CONFIG_SOC_NPCX7M7FC\u003dy to switch the EC chipset variant.\n",
+      "revId": "d16a3f5c1e9d740d008bf853ba5903a84161d088",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
