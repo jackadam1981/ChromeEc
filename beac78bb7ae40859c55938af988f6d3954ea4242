@@ -22,6 +22,30 @@
       },
       "revId": "beac78bb7ae40859c55938af988f6d3954ea4242",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a21164a9_77aea681",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-06-09T18:41:44Z",
+      "side": 1,
+      "message": "Oh good point, did not realize we were returning it. Went for return 0, seems like it makes the code path easier to understand to me.",
+      "parentUuid": "c7c7d2f5_9e9b97a9",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "beac78bb7ae40859c55938af988f6d3954ea4242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
