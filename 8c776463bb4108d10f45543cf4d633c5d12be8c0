@@ -22,6 +22,30 @@
       },
       "revId": "8c776463bb4108d10f45543cf4d633c5d12be8c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d7c56d_cc5b0783",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-09T02:51:31Z",
+      "side": 1,
+      "message": "We could if you\u0027d like, DEVICE_DT_INST_DEFINE is useful when we have to create N driver instances, in this case there\u0027s ever only exactly 1 so I didn\u0027t see the need.",
+      "parentUuid": "0c2beaf7_69a638ae",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 13
+      },
+      "revId": "8c776463bb4108d10f45543cf4d633c5d12be8c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
