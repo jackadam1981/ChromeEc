@@ -79,6 +79,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5aafeea2_a57acad8",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-09T03:33:12Z",
+      "side": 1,
+      "message": "I still think we should use \"allow\" somewhere here. The essence of what this command is doing is either allowing multi-function mode to be enabled or forbidding it.",
+      "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59598cce_ff6e9401",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 3
