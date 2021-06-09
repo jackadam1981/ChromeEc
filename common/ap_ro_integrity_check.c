@@ -226,9 +226,15 @@ static int verify_ap_ro_check_space(void)
  *  0 if AP RO verification is supported.
  *  ARCVE_NOT_PROGRAMMED if the hash is not programmed.
  *  ARCVE_FLASH_READ_FAILED if there was an error reading the hash.
+ *  ARCVE_BOARD_ID_BLOCKED if ap ro verification is disabled for the board's rlz
  */
 int ap_ro_check_unsupported(int add_flash_event)
 {
+
+	if (ap_ro_board_id_blocked()) {
+		CPRINTS("%s: BID blocked", __func__);
+		return ARCVE_BOARD_ID_BLOCKED;
+	}
 
 	if (p_chk->header.num_ranges == (uint16_t)~0) {
 		CPRINTS("%s: RO verification not programmed", __func__);
@@ -310,14 +316,13 @@ static enum vendor_cmd_rc vc_get_ap_ro_hash(enum vendor_cmd_cc code,
 		return VENDOR_RC_BOGUS_ARGS;
 
 	rv = ap_ro_check_unsupported(false);
-	if (rv == ARCVE_NOT_PROGRAMMED) {
-		*response_size = 1;
-		*response = ARCVE_NOT_PROGRAMMED;
-		return VENDOR_RC_INTERNAL_ERROR;
-	}
 	if (rv == ARCVE_FLASH_READ_FAILED)
 		return VENDOR_RC_READ_FLASH_FAIL;
-
+	if (rv) {
+		*response_size = 1;
+		*response = rv;
+		return VENDOR_RC_INTERNAL_ERROR;
+	}
 	*response_size = SHA256_DIGEST_SIZE;
 	memcpy(buf, p_chk->payload.digest, *response_size);
 
@@ -345,10 +350,11 @@ static int ap_ro_info_cmd(int argc, char **argv)
 	}
 #endif
 	rv = ap_ro_check_unsupported(false);
-	if (rv == ARCVE_NOT_PROGRAMMED)
-		return EC_SUCCESS;
 	if (rv == ARCVE_FLASH_READ_FAILED)
 		return EC_ERROR_CRC; /* No verification possible. */
+	/* All other AP RO verificaiton unsupported reasons are fine */
+	if (rv)
+		return EC_SUCCESS;
 
 	ccprintf("sha256 hash %ph\n",
 		 HEX_BUF(p_chk->payload.digest, sizeof(p_chk->payload.digest)));

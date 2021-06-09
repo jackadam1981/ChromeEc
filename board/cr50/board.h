@@ -502,6 +502,7 @@ enum nvmem_users {
 #define CONFIG_RW_B
 
 #define CONFIG_AP_RO_VERIFICATION
+#define CONFIG_AP_RO_VERIFICATION_BLOCK_BOARD_IDS
 #define CONFIG_SPI_HASH
 
 /* Firmware upgrade options. */
