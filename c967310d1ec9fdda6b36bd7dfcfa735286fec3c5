@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e89c153_719433ff",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1360210
+      },
+      "writtenOn": "2021-06-09T15:34:03Z",
+      "side": 1,
+      "message": "May I know why \"intel_x86_rtc_reset\" has to be part of the loop when system transitioning to g3 from S5?",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "c967310d1ec9fdda6b36bd7dfcfa735286fec3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
