@@ -9,6 +9,7 @@
  * by a24-bit address. There is no provision for error reporting at this level.
  */
 
+#include "ap_ro_integrity_check.h"
 #include "byteorder.h"
 #include "console.h"
 #include "extension.h"
@@ -889,6 +890,9 @@ static void tpm_reset_now(int wipe_first)
 		task_set_event(waiting_for_reset, TPM_EVENT_RESET, 0);
 		waiting_for_reset = TASK_ID_INVALID;
 	}
+
+	/* Clear the AP RO verification status. */
+	ap_ro_device_reset();
 
 	cprints(CC_TASK, "%s: done", __func__);
 
