@@ -420,7 +420,7 @@ config PLATFORM_EC_MKBP_EVENT
 
 config PLATFORM_EC_MPU
 	bool "Support Memory-Protection Unit (MPU)"
-	depends on CPU_CORTEX_M && CPU_HAS_MPU
+	depends on CPU_CORTEX_M && CONFIG_MPU
 	default y
 	help
 	  This enables support a Memory-Protection Unit which can limit access
