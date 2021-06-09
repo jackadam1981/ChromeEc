@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54cd13c5_10c0e045",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-06-09T17:01:32Z",
+      "side": 1,
+      "message": "I\u0027m re-pushing this patch, hoping to close b/158477297.\nInstead of enabling this per each new platform, I like to suggest to disable per platform by choice.\nTo @adlr: Would it be acceptable to FPS? If not, please guide me where to put \u0027#undef CONFIG_CMD_CHARGEN\u0027 to opt out in FPS build.\n\n",
+      "revId": "12e8089f764e803cd2153675bf2f5f773f28aa36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
