@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf1f4926_16ee2d3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-06-09T19:07:01Z",
+      "side": 1,
+      "message": "Worth pointing out that the MPU config is actually not going to be effective until https://github.com/zephyrproject-rtos/zephyr/pull/35957 is merged, though there\u0027s no build dependency between the two.",
+      "revId": "fef3931fc89ecec8c5b629a45228c04c4902ac2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
