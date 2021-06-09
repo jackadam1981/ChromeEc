@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35fee0b3_95c35c99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-09T18:54:20Z",
+      "side": 1,
+      "message": "Please put the following files into a separate CL because they are not related to the LED support:\n    cbi.c\n    sensors.c\n    usbc_config.h\n    usbc_config.c",
+      "revId": "869fc4385d9cf5385cbea61037f4244d5a03f37f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
