@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0562305a_80ab8953",
+        "filename": "board/primus/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-09T06:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52d28dcb_e9081365",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 87
+      },
+      "revId": "9ad89d68315bb97ae6c0cad8ae9f3635a68b93a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d0b8d59_9e645de9",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-09T06:35:07Z",
       "side": 1,
       "message": "remove this comment (i was wrong when i put it there\nin the original file).",
+      "range": {
+        "startLine": 355,
+        "startChar": 3,
+        "endLine": 355,
+        "endChar": 32
+      },
+      "revId": "9ad89d68315bb97ae6c0cad8ae9f3635a68b93a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a9f2351_5d77d507",
+        "filename": "board/primus/sensors.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-09T06:53:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d0b8d59_9e645de9",
       "range": {
         "startLine": 355,
         "startChar": 3,
