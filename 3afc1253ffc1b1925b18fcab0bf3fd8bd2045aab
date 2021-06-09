@@ -46,6 +46,30 @@
       },
       "revId": "3afc1253ffc1b1925b18fcab0bf3fd8bd2045aab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ec7821_b57389f1",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-09T18:48:51Z",
+      "side": 1,
+      "message": "My concern is that the check_allowed.sh script will throw an error because it tries to match up cros-ec configs that start with CONFIG_\u003cname\u003e with a Kconfig that starts with CONFIG_PLATFORM_EC_\u003cname\u003e.  If buildall is passing, then you can make the change in the predecessor CL.",
+      "parentUuid": "2078d309_cbdfce06",
+      "range": {
+        "startLine": 1325,
+        "startChar": 7,
+        "endLine": 1325,
+        "endChar": 29
+      },
+      "revId": "3afc1253ffc1b1925b18fcab0bf3fd8bd2045aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
