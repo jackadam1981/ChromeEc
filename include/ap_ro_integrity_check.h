@@ -8,6 +8,12 @@
 
 #include "flash_log.h"
 
+enum ap_ro_status {
+	AP_RO_NOT_RUN = 0,
+	AP_RO_PASS,
+	AP_RO_FAIL,
+	AP_RO_UNSUPPORTED,
+};
 /*
  * validate_ap_ro: based on information saved in an H1 RO flash page verify
  * contents of the AP flash.
@@ -36,5 +42,10 @@ int ap_ro_board_id_blocked(void);
 #else
 static inline int ap_ro_board_id_blocked(void) { return 0; }
 #endif
+
+/*
+ * ap_ro_device_reset: Clear AP RO verification state on a new boot.
+ */
+void ap_ro_device_reset(void);
 
 #endif /* ! __CR50_INCLUDE_AP_RO_INTEGRITY_CHECK_H */
