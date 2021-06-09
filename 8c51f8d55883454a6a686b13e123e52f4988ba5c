@@ -16,6 +16,24 @@
       "message": "General question about Primus. As far as I see there will be one dual-color LED on a side (left or right?) and one on the logo. What should be the expected behavior of that Logo LED?\n\nI\u0027m asking because the 2 LEDs on Brya are on the sides and they show the charging state together (orange\u003d\u003dcharging, white\u003d\u003dcharged). This is probably not what you expect from the Logo LED (TKP_A_LED_N) and the Power LED (LED4), so you might want to just toggle them ON/OFF during boot/shutdown and control them separately from the charging LED. \nAlso, those LEDs are controlled by `ectool led [right|left] \u003ccolor\u003e` now, you might want to change it in led.c depending on the actual location. \n",
       "revId": "8c51f8d55883454a6a686b13e123e52f4988ba5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b59aecb_e22e298a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-09T23:57:27Z",
+      "side": 1,
+      "message": "Thanks for reminding this, I will add those LED feature into another CL and I already created another issue for implement LED. Also add a TODO in led.c",
+      "parentUuid": "a3959b58_f895532b",
+      "revId": "8c51f8d55883454a6a686b13e123e52f4988ba5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
