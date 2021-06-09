@@ -87,6 +87,41 @@
       "parentUuid": "fbe62a25_df74382c",
       "revId": "12e8089f764e803cd2153675bf2f5f773f28aa36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ad7e139_4947f27a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-09T22:09:55Z",
+      "side": 1,
+      "message": "Sorry, I thought I had submitted this comment.",
+      "revId": "12e8089f764e803cd2153675bf2f5f773f28aa36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d89b48_59f4f2eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-09T22:09:55Z",
+      "side": 1,
+      "message": "You could use the macro, HAS_TASK_CHIPSET to guard this. The chipset task signifies that there\u0027s an SoC with which the EC participates in power sequencing. That\u0027s one signal that there would be Cr50 present on this system.",
+      "parentUuid": "1f536513_85fa3824",
+      "revId": "12e8089f764e803cd2153675bf2f5f773f28aa36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
