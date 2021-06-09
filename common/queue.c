@@ -2,7 +2,7 @@
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
  *
- * Queue data structure implementation.
+ * Queue data structure implementation...
  */
 #include "console.h"
 #include "queue.h"
