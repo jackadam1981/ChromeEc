@@ -22,6 +22,30 @@
       },
       "revId": "c967310d1ec9fdda6b36bd7dfcfa735286fec3c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b92b115_d3a3a75b",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-09T18:40:21Z",
+      "side": 1,
+      "message": "This signal is used to reset the PCH registers in the RTC well.  According to the Intel documentation, this signal should not be pulled low in the S0 to S5 states, so this code asserts the reset after S5 exit.",
+      "parentUuid": "4e89c153_719433ff",
+      "range": {
+        "startLine": 111,
+        "startChar": 3,
+        "endLine": 111,
+        "endChar": 22
+      },
+      "revId": "c967310d1ec9fdda6b36bd7dfcfa735286fec3c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
