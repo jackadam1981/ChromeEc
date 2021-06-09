@@ -552,6 +552,30 @@
       },
       "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9569311e_8c29f366",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-09T06:20:11Z",
+      "side": 1,
+      "message": "no, please remove the changes to thermal_params[] from this patch - we\u0027ll\nhave to do that in a later patch as as we can\u0027t increase TEMP_SENSOR_COUNT\nright now.\n\nwe can change the names of TEMP_SENSOR_1_* and TEMP_SENSOR_2_* to match the new board.\n\nwe can update adc_channels[] for the new board and we\ncan use the adc command to test the sensors.",
+      "parentUuid": "d88efaea_65acc6aa",
+      "range": {
+        "startLine": 368,
+        "startChar": 43,
+        "endLine": 368,
+        "endChar": 60
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
