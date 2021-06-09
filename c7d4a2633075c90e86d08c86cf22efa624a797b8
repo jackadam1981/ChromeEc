@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "197d3a5f_8b41627c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-09T19:25:09Z",
+      "side": 1,
+      "message": "This goes against the guidance provided by the vendor. Note that in other boards which use this charger IC / TCPC, we are explicitly disabling the ASGATE in board_set_active_charge_port. Have you considered modifying your board\u0027s implementation? Look at madoo for an example.",
+      "revId": "c7d4a2633075c90e86d08c86cf22efa624a797b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
