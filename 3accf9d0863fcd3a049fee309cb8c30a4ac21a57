@@ -46,6 +46,30 @@
       },
       "revId": "3accf9d0863fcd3a049fee309cb8c30a4ac21a57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f41f003_a49fa315",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-06-09T06:21:26Z",
+      "side": 1,
+      "message": "Yes, I2C_PASSTHRU_RESTRICTED is not enabled for all platforms which have I2C, so select shouldn\u0027t be used here.",
+      "parentUuid": "c64ad26f_3e75b200",
+      "range": {
+        "startLine": 674,
+        "startChar": 1,
+        "endLine": 674,
+        "endChar": 27
+      },
+      "revId": "3accf9d0863fcd3a049fee309cb8c30a4ac21a57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
