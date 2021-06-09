@@ -264,6 +264,8 @@ static const struct option_container cmd_line_options[] = {
 	{{"any", no_argument, NULL, 'a'},
 	 "Try any interfaces to find Cr50"
 	 " (-d, -s, -t are all ignored)"},
+	{{"get_apro_boot_status", no_argument, NULL, 'B'},
+	 "get the stored ap ro boot state"},
 	{{"binvers", no_argument, NULL, 'b'},
 	 "Report versions of Cr50 image's "
 	 "RW and RO headers, do not update"},
@@ -2272,6 +2274,49 @@ static int process_get_apro_hash(struct transfer_descriptor *td)
 	return 0;
 }
 
+static int process_get_apro_boot_status(struct transfer_descriptor *td)
+{
+	size_t response_size;
+	uint8_t response;
+	const char * const desc = "Getting AP RO status";
+	int rv = 0;
+
+	response_size = sizeof(response);
+
+	rv = send_vendor_command(td, VENDOR_CC_GET_AP_RO_STATUS, NULL, 0,
+				 &response, &response_size);
+	if (rv != VENDOR_RC_SUCCESS) {
+		fprintf(stderr, "Error %d in %s\n", rv, desc);
+		return update_error;
+	}
+	if (response_size != 1) {
+		fprintf(stderr, "Unexpected response size %zd while %s\n",
+			response_size, desc);
+		return update_error;
+	}
+
+	/* Print the response and meaning, as in 'enum boot_mode'. */
+	printf("AP RO status = %d: ", response);
+	switch (response) {
+	case 0:
+		printf("not run\n");
+		break;
+	case 1:
+		printf("pass\n");
+		break;
+	case 2:
+		printf("FAIL\n");
+		break;
+	case 3:
+		printf("unsupported\n");
+		break;
+	default:
+		fprintf(stderr, "unknown status\n");
+		return update_error;
+	}
+
+	return 0;
+}
 
 static int process_get_boot_mode(struct transfer_descriptor *td)
 {
@@ -2977,6 +3022,7 @@ int main(int argc, char *argv[])
 	int try_all_transfer = 0;
 	int tpm_mode = 0;
 	int get_apro_hash = 0;
+	int get_apro_boot_status = 0;
 	bool show_machine_output = false;
 	int tstamp = 0;
 	const char *tstamp_arg = NULL;
@@ -3000,6 +3046,7 @@ int main(int argc, char *argv[])
 	 */
 	const struct options_map omap[] = {
 		{ 'b', &binary_vers },
+		{ 'B', &get_apro_boot_status },
 		{ 'c', &corrupt_inactive_rw },
 		{ 'f', &show_fw_ver },
 		{ 'g', &get_boot_mode},
@@ -3194,6 +3241,7 @@ int main(int argc, char *argv[])
 	    !ccd_unlock &&
 	    !corrupt_inactive_rw &&
 	    !get_apro_hash &&
+	    !get_apro_boot_status &&
 	    !get_boot_mode &&
 	    !get_flog &&
 	    !get_endorsement_seed &&
@@ -3313,6 +3361,9 @@ int main(int argc, char *argv[])
 
 	if (get_apro_hash)
 		exit(process_get_apro_hash(&td));
+
+	if (get_apro_boot_status)
+		exit(process_get_apro_boot_status(&td));
 
 	if (get_boot_mode)
 		exit(process_get_boot_mode(&td));
