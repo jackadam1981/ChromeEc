@@ -16,6 +16,24 @@
       "message": "I fixed misleading comment suggesting that write to backup registers is cached. Actually it\u0027s not cached (they are in peripheral domain).",
       "revId": "33984be471d02d146357f8202e3ed16799c28a36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1413524_d6d7384f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-06-09T16:23:56Z",
+      "side": 1,
+      "message": "Roger that. Thank you for the clarification!",
+      "parentUuid": "782da655_f89bf5a7",
+      "revId": "33984be471d02d146357f8202e3ed16799c28a36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
