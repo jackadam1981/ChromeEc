@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7c7d2f5_9e9b97a9",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-09T18:26:26Z",
+      "side": 1,
+      "message": "We probably should set rv \u003d 0 in this path. No callers currently check the return value, but good to guard against this in the future.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 41
+      },
+      "revId": "beac78bb7ae40859c55938af988f6d3954ea4242",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
