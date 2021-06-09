@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf321c5_295692e4",
+        "filename": "board/primus/pwm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-09T06:58:33Z",
+      "side": 1,
+      "message": "no fans here, right?",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "c1aae5c351d58bbd2509af88145a618f0eae91da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "362ee853_6b91fbd0",
+        "filename": "board/primus/pwm.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-09T06:58:33Z",
+      "side": 1,
+      "message": "would it make more sense to use KBLIGHT_LED_ON_LVL here?",
+      "range": {
+        "startLine": 63,
+        "startChar": 34,
+        "endLine": 63,
+        "endChar": 36
+      },
+      "revId": "c1aae5c351d58bbd2509af88145a618f0eae91da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
