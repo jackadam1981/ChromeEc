@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13002def_769f4fcb",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1397,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-09T23:14:31Z",
+      "side": 1,
+      "message": "If we\u0027re going to enable this just based on the console task, then I don\u0027t think we need to check for the chipset task then. Nearly every board will have a console task.",
+      "revId": "e64e77bddf09c45016a0893a4d611039dfcef026",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
