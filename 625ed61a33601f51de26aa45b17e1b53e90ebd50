@@ -16,6 +16,23 @@
       "message": "No problem.",
       "revId": "625ed61a33601f51de26aa45b17e1b53e90ebd50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a4677b_d74a8c09",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-06-09T23:57:01Z",
+      "side": 1,
+      "message": "Thanks, Aseda!\n\n@hesling, PTAL, let us know if you have FPMCU boards that should not include this UART console command. For now, Haven and FPMCU are not connected, but future GSCs will support FPMCU UART, and we like to run UART stress test for this connection as well (in future).",
+      "revId": "625ed61a33601f51de26aa45b17e1b53e90ebd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
