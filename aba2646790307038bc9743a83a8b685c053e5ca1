@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e71eb37_4692cdc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-09T15:31:25Z",
+      "side": 1,
+      "message": "Hi Jian, you need to set\n\n#define CONFIG_BATTERY_EXPORT_DISPLAY_SOC\n#undef CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE\n#define CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE 2\n\nto get the LED color match the display battery percentage (number visible to the user). Please refer to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2876165.",
+      "revId": "aba2646790307038bc9743a83a8b685c053e5ca1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
