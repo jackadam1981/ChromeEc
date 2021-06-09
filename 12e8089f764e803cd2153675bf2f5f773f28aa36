@@ -69,6 +69,24 @@
       "message": "Hey all, I\u0027m not familiar w/ this code. Please let me know if I\u0027m specifically needed (owners, etc)",
       "revId": "12e8089f764e803cd2153675bf2f5f773f28aa36",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d12358b_5ae37f93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-06-09T22:07:53Z",
+      "side": 1,
+      "message": "This patch adds thee UART console command, \u0027chargen\u0027, and it might affect FPS FW(RW) size. \nFor now, H1+Cr50 is not connected to FPS, so it is not necessary, but will be so in future with OpenTitan (or with Dauntless).",
+      "parentUuid": "fbe62a25_df74382c",
+      "revId": "12e8089f764e803cd2153675bf2f5f773f28aa36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
