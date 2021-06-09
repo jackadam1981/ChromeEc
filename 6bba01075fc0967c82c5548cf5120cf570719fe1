@@ -528,6 +528,30 @@
       },
       "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d88efaea_65acc6aa",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1302511
+      },
+      "writtenOn": "2021-06-09T02:36:24Z",
+      "side": 1,
+      "message": "Hi Caveh,\nSo does that mean leaving this change as it is right now is fine?\n\nSecondly, do we still have to separate ADC from thermal setting? If we change the name of ADC 2, we would still have to modify some of the thermal settings(names mostly). I think either way is fine, what do you think?",
+      "parentUuid": "2d0a201e_57adc5cc",
+      "range": {
+        "startLine": 368,
+        "startChar": 43,
+        "endLine": 368,
+        "endChar": 60
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
