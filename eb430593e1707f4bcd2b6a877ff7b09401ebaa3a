@@ -136,6 +136,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5bde8caa_2f95294c",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-09T17:18:38Z",
+      "side": 1,
+      "message": "Did you mean SKU ID? The code uses SKU ID to differentiate.\n * SKU_ID 0~3: DA9310\n * SKU_ID 4~6: LN9310 or Buck IC\n\nThe BRD_ID depends on the build phase. The hardware of the previous builds are already shipped to people. Their hardware won\u0027t be reworked to add the Buck IC. We should keep their firmware still working. A safer way is to check:\n * previous BRD_ID: LN9310\n * current BRD_ID: Buck IC\n\nSo the code has 3 functions:\n * board_has_da9313(): SKU_ID 0~3\n * board_has_ln9310(): SKU_ID 4~6 \u0026\u0026 previous BRD_ID\n * board_uses_buck_ic(): SKU_ID 4~6 \u0026\u0026 current BRD_ID\n\nRight?",
+      "parentUuid": "9ee34838_d9587fb5",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "eb430593e1707f4bcd2b6a877ff7b09401ebaa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c88b56ef_84feed26",
         "filename": "board/lazor/switchcap.c",
         "patchSetId": 5
