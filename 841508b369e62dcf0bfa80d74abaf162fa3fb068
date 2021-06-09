@@ -16,6 +16,29 @@
       "message": "Carry forward +2 from Wai-Hong Tam.  Only a commit message change and white space change in this patchset.",
       "revId": "841508b369e62dcf0bfa80d74abaf162fa3fb068",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5dc20d0_fec4ee77",
+        "filename": "zephyr/Kconfig.console",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-09T00:02:42Z",
+      "side": 1,
+      "message": "The spaces in this line and the following lines too.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 1
+      },
+      "revId": "841508b369e62dcf0bfa80d74abaf162fa3fb068",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
