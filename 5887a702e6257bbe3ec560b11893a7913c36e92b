@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c6e90f3_c2fdd7e8",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-09T19:30:12Z",
+      "side": 1,
+      "message": "It feels kind of weird to have gingerbread named functions in the baseboard.  Should this be prefaced by \"board\" or \"no_ppc\" or something more general?",
+      "revId": "5887a702e6257bbe3ec560b11893a7913c36e92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e464c1be_4796578f",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-09T19:30:12Z",
+      "side": 1,
+      "message": "I\u0027d much, much, much rather see this as an API call into the TCPC driver.  It can be one specific to the TCPC if needed in terms of naming (ex. sm5803_set_gpio0_level() from my own coding past).  But in general, I\u0027m not a fan of i2c commands being present outside the driver code.  It makes life harder if it turns out later we need something like a mutex around a R/M/W due to multiple task accesses.",
+      "revId": "5887a702e6257bbe3ec560b11893a7913c36e92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2352361e_e12d7f37",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-09T19:30:12Z",
+      "side": 1,
+      "message": "Remove the comment block TODO?",
+      "revId": "5887a702e6257bbe3ec560b11893a7913c36e92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
