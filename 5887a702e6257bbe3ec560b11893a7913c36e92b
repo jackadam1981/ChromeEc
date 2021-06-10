@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce775f4c_1d062d53",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-06-10T18:27:38Z",
+      "side": 1,
+      "message": "I understand and agree with your overall point. However, I\u0027m not sure that in this case, it\u0027s either necessary, or really makes anything cleaner. The PS8805 driver is ps8xxx.c. This driver is already a mixture of TCPCI standard accesses and some paraade specific entry points. The gpio register access is independent of things like the address pin. So it needs a different ps8805 read/write routine anyway.\n\nThe other complicating factor (in my opinion) is that I expect the functions in this driver to be called via struct tcpm_drv methods, but in this case it would just be some ps8xxx_tcpm_set_level/ps8xxx_tcpm_set_level functions.",
+      "parentUuid": "e464c1be_4796578f",
+      "revId": "5887a702e6257bbe3ec560b11893a7913c36e92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2352361e_e12d7f37",
         "filename": "board/gingerbread/board.c",
         "patchSetId": 1
