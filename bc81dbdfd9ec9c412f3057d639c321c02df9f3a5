@@ -192,6 +192,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "188a7c5b_08db5711",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-10T10:11:29Z",
+      "side": 1,
+      "message": "Just confirmed with Tony that currently OCPC not supporting dual input source yet, so I\u0027ll add the support in the next patchset.",
+      "parentUuid": "77c7b2a7_83c466da",
+      "range": {
+        "startLine": 115,
+        "startChar": 32,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d12472c_7ce40480",
         "filename": "common/apdo.c",
         "patchSetId": 3
