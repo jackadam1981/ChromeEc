@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc475ef4_7dceded7",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-06-10T18:52:54Z",
+      "side": 1,
+      "message": "I changed these to c1_ps8805_ which I think is a more descriptive name.",
+      "parentUuid": "7c6e90f3_c2fdd7e8",
+      "revId": "5887a702e6257bbe3ec560b11893a7913c36e92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e464c1be_4796578f",
         "filename": "baseboard/honeybuns/usbc_support.c",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "writtenOn": "2021-06-09T19:30:12Z",
       "side": 1,
       "message": "Remove the comment block TODO?",
+      "revId": "5887a702e6257bbe3ec560b11893a7913c36e92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e7f97bd_c1d2872e",
+        "filename": "board/gingerbread/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-06-10T18:52:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2352361e_e12d7f37",
       "revId": "5887a702e6257bbe3ec560b11893a7913c36e92b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
