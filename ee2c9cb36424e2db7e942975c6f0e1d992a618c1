@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "389d59b6_13d3e656",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-06-10T18:38:46Z",
+      "side": 1,
+      "message": "Putting the initial value, which is non-zero in EFS2.1.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 39
+      },
+      "revId": "ee2c9cb36424e2db7e942975c6f0e1d992a618c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a1efd34_0ca20694",
+        "filename": "common/ec_efs.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-06-10T18:38:46Z",
+      "side": 1,
+      "message": "Re-ordered the enum name texts.",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "ee2c9cb36424e2db7e942975c6f0e1d992a618c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b1b90a9_4eae09c1",
+        "filename": "include/vboot.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-06-10T18:38:46Z",
+      "side": 1,
+      "message": "They are re-defined, per go/ec-efs2 and b/180927027#comment41.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 55
+      },
+      "revId": "ee2c9cb36424e2db7e942975c6f0e1d992a618c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
