@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c108c42_bc281f02",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-10T06:07:24Z",
+      "side": 1,
+      "message": "Sorry, can we add a little bit more explanation about the background for the change. Essentially, the reason that this is needed is that there are boards which share the same EC image that have been wired differently with respect to the keyboard row on which the refresh key lives.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "c97de736486716fa41f92b2d4bc062a944141423",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
