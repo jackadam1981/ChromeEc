@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14986ed4_08e7eb53",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-10T18:10:47Z",
+      "side": 1,
+      "message": "Should we keep these in order by reg or by name? Seems like there should be some logical ordering.",
+      "range": {
+        "startLine": 187,
+        "startChar": 1,
+        "endLine": 195,
+        "endChar": 3
+      },
+      "revId": "2336fd78a7d7b87916801301538375700c36d7c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc30c79c_622b71b9",
+        "filename": "zephyr/test/drivers/src/bma2x2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-10T18:10:47Z",
+      "side": 1,
+      "message": "Should this be an error instead of just returning?",
+      "range": {
+        "startLine": 533,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 29
+      },
+      "revId": "2336fd78a7d7b87916801301538375700c36d7c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
