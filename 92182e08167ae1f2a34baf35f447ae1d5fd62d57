@@ -74,6 +74,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a7606010_9c7a346a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-10T17:14:24Z",
+      "side": 1,
+      "message": "rebase your code base in host machine\nrepo sync .\napply patch again",
+      "parentUuid": "5ead0990_aba2da99",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "92182e08167ae1f2a34baf35f447ae1d5fd62d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "85d2f583_9f69862d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
