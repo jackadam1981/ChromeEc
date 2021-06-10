@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bb38bad_432b6d1e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-10T17:51:59Z",
+      "side": 1,
+      "message": "The existing `dut-control uservo_pwr_en` can do the same thing, right? The servo v4 exposes its I2C bus over USB. Servod can access the I2C bus to modify the IO-expander setting.",
+      "revId": "2353fd604079d318796289d3a55bd4cbfccab292",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
