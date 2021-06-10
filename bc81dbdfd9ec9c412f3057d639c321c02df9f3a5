@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2acc7719_fe06e8bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-10T08:30:04Z",
+      "side": 1,
+      "message": "Agreed, evaluating the load per second should be enough. I\u0027ll separate the request out of pe_snk_ready_run.",
+      "parentUuid": "f144bcc5_699c7bd1",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ee0dcec_eb87b531",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-06-03T21:32:27Z",
       "side": 1,
       "message": "Why is this limited to CHARGER_SOLO only?",
+      "range": {
+        "startLine": 115,
+        "startChar": 32,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ada6cad_846f9e6c",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-10T08:30:04Z",
+      "side": 1,
+      "message": "Dual chargers will be supported later.",
+      "parentUuid": "8e7aaedd_d4bc8946",
       "range": {
         "startLine": 115,
         "startChar": 32,
