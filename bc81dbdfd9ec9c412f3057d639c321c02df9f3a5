@@ -120,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f33f21a_652fab07",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-10T08:41:43Z",
+      "side": 1,
+      "message": "But from what I can gather, the only requirements thus far seem to be:\n- obtaining input power\n- checking nominal battery voltage\n- checking PDO offered\n\nNone of that should prohibit OCPC systems from leveraging this. Or am I missing something?",
+      "parentUuid": "7ada6cad_846f9e6c",
+      "range": {
+        "startLine": 115,
+        "startChar": 32,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d12472c_7ce40480",
         "filename": "common/apdo.c",
         "patchSetId": 3
