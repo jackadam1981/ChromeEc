@@ -16,6 +16,41 @@
       "message": "I had to replace IS_ENABLED with #ifdef because stm32f07x (hoho board for example) is based on cortex-m0 and it doesn\u0027t have \u0027cpu_disable_caches\u0027 symbol declared.",
       "revId": "5629e4d1fcabd5b264b2fa2d562543019a74782e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68f81850_da706f24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-06-10T00:39:34Z",
+      "side": 1,
+      "message": "Ohh. I see. Since it isn\u0027t using the coretex-m core, it doesn\u0027t have the cache functions pre-declared. The stm32 libs span across m0 and ms.",
+      "parentUuid": "29ee331d_1d7f7b5b",
+      "revId": "5629e4d1fcabd5b264b2fa2d562543019a74782e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4cc771c_186d8961",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-06-10T00:39:34Z",
+      "side": 1,
+      "message": "This is fine",
+      "revId": "5629e4d1fcabd5b264b2fa2d562543019a74782e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
