@@ -6,7 +6,6 @@
 #include "common.h"
 
 #include "driver/bc12/pi3usb9201_public.h"
-#include "driver/ppc/nx20p348x.h"
 #include "driver/ppc/syv682x_public.h"
 #include "driver/retimer/bb_retimer_public.h"
 #include "driver/tcpm/rt1715.h"
