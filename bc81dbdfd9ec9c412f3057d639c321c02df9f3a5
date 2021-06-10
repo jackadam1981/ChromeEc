@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87495cf4_43c394fd",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-10T09:44:26Z",
+      "side": 1,
+      "message": "Yes, this should not be hard, but I am currently not having any of the OCPC system device in hands, so I\u0027ll do that later when I am able to access one.",
+      "parentUuid": "4f33f21a_652fab07",
+      "range": {
+        "startLine": 115,
+        "startChar": 32,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d12472c_7ce40480",
         "filename": "common/apdo.c",
         "patchSetId": 3
