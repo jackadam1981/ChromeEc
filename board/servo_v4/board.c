@@ -575,3 +575,19 @@ static void board_init(void)
 	hook_call_deferred(&ccd_measure_sbu_data, 1000 * MSEC);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+static int cmd_uservo(int argc, char *argv[])
+{
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "on"))
+		write_ioexpander(0, 7, 1);
+	else if (!strcasecmp(argv[1], "off"))
+		write_ioexpander(0, 7, 0);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(uservo, cmd_uservo,
+			"uservo <\"on\"|\"off\">",
+			"Enable or Disable uservo");

@@ -500,6 +500,22 @@ static void board_init(void)
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 #ifdef SECTION_IS_RO
+static int cmd_uservo(int argc, char *argv[])
+{
+	if (argc < 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	if (!strcasecmp(argv[1], "on"))
+		ec_uservo_power_en(1);
+	else if (!strcasecmp(argv[1], "off"))
+		ec_uservo_power_en(0);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(uservo, cmd_uservo,
+			"uservo <\"on\"|\"off\">",
+			"Enable or Disable uservo");
+
 void tick_event(void)
 {
 	static int i = 0;
