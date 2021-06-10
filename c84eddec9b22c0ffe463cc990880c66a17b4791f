@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84ccaaf7_141d7b2e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-10T19:58:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "786b6c7c_0f44a9b9",
+      "range": {
+        "startLine": 791,
+        "startChar": 6,
+        "endLine": 791,
+        "endChar": 23
+      },
+      "revId": "c84eddec9b22c0ffe463cc990880c66a17b4791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8657bdd_e7445235",
@@ -43,6 +67,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8565471_3859c47f",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-10T19:58:30Z",
+      "side": 1,
+      "message": "So it\u0027s easy to use AP RO verification without it.\nI guess cr50 is the only board that will ever use it, so I can disable it.",
+      "parentUuid": "d8657bdd_e7445235",
+      "revId": "c84eddec9b22c0ffe463cc990880c66a17b4791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2ef2696_b6d14dd8",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 3
@@ -54,6 +96,30 @@
       "writtenOn": "2021-06-10T00:55:41Z",
       "side": 1,
       "message": "the original code is sort of messed up here,\n\nmaybe FLASH_READ_FAILED should be processed the same as the rest of the errors - putting the actual code in *response and returning INTERNAL_ERROR, just a thought.",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 2
+      },
+      "revId": "c84eddec9b22c0ffe463cc990880c66a17b4791f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab00649f_edc5f948",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-10T19:58:30Z",
+      "side": 1,
+      "message": "Sounds good. I implemented this in a followup CL.\ncrrev/c/2954320",
+      "parentUuid": "d2ef2696_b6d14dd8",
       "range": {
         "startLine": 319,
         "startChar": 0,
