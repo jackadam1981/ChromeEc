@@ -184,6 +184,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3fd8da5_58a457e7",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-10T02:29:59Z",
+      "side": 1,
+      "message": "Let\u0027s move the discussion to the bug.",
+      "parentUuid": "29b9e4de_9d93b989",
+      "range": {
+        "startLine": 22,
+        "startChar": 28,
+        "endLine": 22,
+        "endChar": 29
+      },
+      "revId": "eb430593e1707f4bcd2b6a877ff7b09401ebaa3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c88b56ef_84feed26",
         "filename": "board/lazor/switchcap.c",
         "patchSetId": 5
