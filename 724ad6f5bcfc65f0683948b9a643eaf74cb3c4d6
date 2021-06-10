@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a005040_e65fa99c",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-10T19:06:38Z",
+      "side": 1,
+      "message": "That\u0027s fair, though would you anticipate boards still maintaining their own PDO selections in addition to this new feature?",
+      "parentUuid": "31af10d4_4af9a96e",
+      "revId": "724ad6f5bcfc65f0683948b9a643eaf74cb3c4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83fceb7c_16f7dba4",
         "filename": "include/usb_common.h",
         "patchSetId": 2
