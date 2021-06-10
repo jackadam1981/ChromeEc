@@ -22,6 +22,30 @@
       },
       "revId": "397cf3290541522f82b0b002079ede376573a683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb40f7e1_7477d43a",
+        "filename": "zephyr/projects/asurada/hayato/include/gpio_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-06-10T20:34:37Z",
+      "side": 1,
+      "message": "It looks like you either need one or more than one common C file to add the interrupt handlers in to.",
+      "parentUuid": "d62efa6a_f10347f5",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "397cf3290541522f82b0b002079ede376573a683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
