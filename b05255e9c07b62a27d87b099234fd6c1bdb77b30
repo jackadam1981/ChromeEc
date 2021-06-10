@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb5f9c9_22bbcc86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-10T23:48:03Z",
+      "side": 1,
+      "message": "Note, the CONFIG_NPCX_HEADER options can\u0027t be moved just yet.  The various \"choice\" options need to be given explicit names before the default values can be set in Kconfig.npcx7",
+      "revId": "b05255e9c07b62a27d87b099234fd6c1bdb77b30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
