@@ -22,6 +22,30 @@
       },
       "revId": "767893689a6007e9f5f2b79bcd79ae589afae9ec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "960f1335_c68893b1",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-06-10T20:04:35Z",
+      "side": 0,
+      "message": "Added a TODO in volteer DTS so this does not get lost. I assigned the bug to you in case I missed what you were requesting.",
+      "parentUuid": "7654063c_56cdd44e",
+      "range": {
+        "startLine": 179,
+        "startChar": 16,
+        "endLine": 179,
+        "endChar": 37
+      },
+      "revId": "767893689a6007e9f5f2b79bcd79ae589afae9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
