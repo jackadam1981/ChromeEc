@@ -168,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "77c7b2a7_83c466da",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-10T09:57:33Z",
+      "side": 1,
+      "message": "...also I am not fully clear how should we hanlde multiple power inputs in the OCPC system, so I\u0027ll test that when I have a device.",
+      "parentUuid": "87495cf4_43c394fd",
+      "range": {
+        "startLine": 115,
+        "startChar": 32,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3d12472c_7ce40480",
         "filename": "common/apdo.c",
         "patchSetId": 3
