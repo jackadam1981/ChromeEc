@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1421aaaf_8aaf31f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-10T01:00:49Z",
+      "side": 1,
+      "message": "make buildall is done. Modifications in registers-stm32l4.h are added for STM32L4x6 compatible.\n\nbuildall completed successfully!\nSmallest free spaces in RO flash (bytes):\nsamus_pd  :    244\nservo_v4  :    292\nzinger    :    384\nSmallest free spaces in RW flash (bytes):\nsamus_pd  :    644\nvolteer_apmodeentry:    880\nzinger    :    928\nTightest boards\u0027 RW RAM images, bytes free:\nwhiskers  :    244\nminimuffin:    276\nzinger    :    276\n",
+      "revId": "28bc967fb6b68b703fcf534c0fe4a9e10c1dedd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
