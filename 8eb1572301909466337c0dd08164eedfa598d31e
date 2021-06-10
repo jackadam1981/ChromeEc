@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "165f662d_d5c0115c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-10T20:42:26Z",
+      "side": 1,
+      "message": "When ec.bin is built, I don\u0027t think cros_fwid is determined. So, you need to write cros_fwid to ec.RW.bin when ec.RW.bin is packaged in coreboot.rom. Have you made a corresponding change in the ebuild script (i.e. chromeos-bootimage)? How are you going to locate cros_fwid in ec.RW.bin (by FMAP)?",
+      "revId": "8eb1572301909466337c0dd08164eedfa598d31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
