@@ -33,6 +33,24 @@
       "message": "Thanks, Aseda!\n\n@hesling, PTAL, let us know if you have FPMCU boards that should not include this UART console command. For now, Haven and FPMCU are not connected, but future GSCs will support FPMCU UART, and we like to run UART stress test for this connection as well (in future).",
       "revId": "625ed61a33601f51de26aa45b17e1b53e90ebd50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7b3e654_9f40c710",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-06-10T01:05:44Z",
+      "side": 1,
+      "message": "It should be safe to enable the chargen command for the FPMCUs, but do note that both FPMCU boards do no have the CHIPSET task.\n\n```\nmake BOARD\u003dhatch_fp print-defines|grep HAS_TASK\n```",
+      "parentUuid": "47a4677b_d74a8c09",
+      "revId": "625ed61a33601f51de26aa45b17e1b53e90ebd50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
