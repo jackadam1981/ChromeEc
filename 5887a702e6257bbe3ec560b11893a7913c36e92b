@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e607277_fb1d355b",
+        "filename": "baseboard/honeybuns/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-10T21:23:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc475ef4_7dceded7",
+      "revId": "5887a702e6257bbe3ec560b11893a7913c36e92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e464c1be_4796578f",
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "I added get/set methods in driver/tcpm/ps8xxx.c and have modified these functions to use those methods.",
       "parentUuid": "ce775f4c_1d062d53",
+      "revId": "5887a702e6257bbe3ec560b11893a7913c36e92b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da2d50d_4444f8a8",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-10T21:23:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55c965b6_8df97f57",
       "revId": "5887a702e6257bbe3ec560b11893a7913c36e92b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
