@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31af10d4_4af9a96e",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-10T05:44:05Z",
+      "side": 1,
+      "message": "AFAIK there are some boards might regulate the maximum voltage in different charging stages (e.g. scarlet/dru/kukui force the maximum voltage at 5V when battery SoC is 99%, asurada/hayato at 9V), and I\u0027d like to prevent from ping-ponging prempting each other in different tasks. The designated voltage should be capped by the maxmium voltage and won\u0027t violate the original flow.",
+      "parentUuid": "59d86a44_1a478f16",
+      "revId": "724ad6f5bcfc65f0683948b9a643eaf74cb3c4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83fceb7c_16f7dba4",
         "filename": "include/usb_common.h",
         "patchSetId": 2
