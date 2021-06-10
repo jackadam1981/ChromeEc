@@ -51,6 +51,24 @@
       "message": "This change is already in the parent CL.",
       "revId": "3544a39c9c6c0ac2f0a2d52c6d2afd9ade44d949",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79731296_7a4e0916",
+        "filename": "common/keyboard_scan.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-06-10T06:36:08Z",
+      "side": 1,
+      "message": "update to Set7",
+      "parentUuid": "e873ea62_f0450474",
+      "revId": "3544a39c9c6c0ac2f0a2d52c6d2afd9ade44d949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
