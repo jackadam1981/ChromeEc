@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27546b0f_366c9290",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-06-10T18:53:26Z",
+      "side": 1,
+      "message": "I had to also override pd_check_vbus_level to enable this config option.",
+      "revId": "c830a764c78129876cd1afab777ca46c29048a40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
