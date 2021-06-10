@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9126f84a_5e5902ca",
+        "filename": "baseboard/asurada/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-06-10T19:37:35Z",
+      "side": 1,
+      "message": "Moved above #ifndef and made the common header conditional based on the same __ASSEMBLER__ to give the same behavior",
+      "parentUuid": "73b1b605_24df8b04",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 184,
+        "endChar": 29
+      },
+      "revId": "767893689a6007e9f5f2b79bcd79ae589afae9ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7f71f86_4eeb7130",
