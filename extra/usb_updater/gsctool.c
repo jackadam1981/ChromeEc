@@ -2250,9 +2250,16 @@ static int process_get_apro_hash(struct transfer_descriptor *td)
 				 &response, &response_size);
 
 	if (response_size == 1) {
+		printf("get hash error: %d\n", response[0]);
 		switch (response[0]) {
 		case ARCVE_NOT_PROGRAMMED:
 			printf("AP RO hash unprogrammed\n");
+			return 0;
+		case ARCVE_FLASH_READ_FAILED:
+			printf("flash read failed\n");
+			return 0;
+		case ARCVE_BOARD_ID_BLOCKED:
+			printf("board id blocked\n");
 			return 0;
 		default:
 			fprintf(stderr, "unexpected error %d %s\n", response[0],
