@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f0f5a20_26e7e41a",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-06-10T06:28:12Z",
+      "side": 1,
+      "message": "Check with EE, the board_version was fixed.",
+      "parentUuid": "199acd7d_2ba95d25",
+      "revId": "3544a39c9c6c0ac2f0a2d52c6d2afd9ade44d949",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e873ea62_f0450474",
