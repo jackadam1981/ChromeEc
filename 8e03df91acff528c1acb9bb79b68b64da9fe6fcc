@@ -16,6 +16,23 @@
       "message": "Please \"resolve\" the pending comments.",
       "revId": "8e03df91acff528c1acb9bb79b68b64da9fe6fcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cc2736e_dd3251cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-06-10T15:06:27Z",
+      "side": 1,
+      "message": "Error message: \nError: The EC is in the process of migrating to Zephyr.\n\tZephyr uses Kconfig for configuration rather than\n\tad-hoc #defines.\n\tAny new EC CONFIG options must ALSO be added to Zephyr\n\tso that new functionality is available in Zephyr also.\n\tThe following new ad-hoc CONFIG options were detected:\n\n  CC      RO/common/adc.o\nCONFIG_USBC_PPC_STUB\nCONFIG_USB_PD_VBUS_ALERT_TCPC\n\nPlease add these via Kconfig instead. Find a suitable Kconfig\nfile in zephyr/ and add a \u0027config\u0027 or \u0027menuconfig\u0027 option.\nAlso see details in http://issuetracker.google.com/181253613\n\nI\u0027m not familiar with trogdor EC, please help to check/try or guide. Thanks. ",
+      "revId": "8e03df91acff528c1acb9bb79b68b64da9fe6fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
