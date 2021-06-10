@@ -54,6 +54,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ed5de15_c9926cbc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-10T18:07:32Z",
+      "side": 1,
+      "message": "We should pick a different name than APDO - that is already a term in USB-PD, and it stands for \u0027Augmented Power Delivery Object\u0027, not \u0027Adaptive Power Delivery Object\u0027 as it is used here.\n\nIronically - this CL will pave the way to enabling APDOs I guess, which will make this doubly confusing.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ee0dcec_eb87b531",
@@ -67,6 +90,29 @@
       "writtenOn": "2021-06-03T17:55:05Z",
       "side": 1,
       "message": "Adding Aseda in case he has suggestions for where this logic would make the most sense to run in terms of tasks",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69168ebd_4ae8adb9",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-10T18:07:32Z",
+      "side": 1,
+      "message": "This is pretty naive, it will depend on the HW configuration since not all chargers have behavior like this - it kind of looks like the goal here is to stay in the buck-boost region always which is not always best.\n\nAnd really I would like if this was extendable to power as well. IE, even with 4S we want do do 5V when charging at \u003c1W - switcher efficiency hurts at lower currents to stay OOA.\n\nThat said I think this is an acceptable default. Could this or some equivalent function be overrideable by the board? We\u0027ll also need to pass the power. I was kind of picturing have a declarative way to do this, IE we have a lookup table for which power ranges map to which voltages which can be overwritten on a board-to-board basis if needed. Like what you have directly below in a comment. I don\u0027t think we need to base it on the current battery voltage until we move to PPS, having the nominal voltage is enough.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
       "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
