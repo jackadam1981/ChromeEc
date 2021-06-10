@@ -181,6 +181,14 @@ void usleep(unsigned us)
 		return;
 	}
 
+	/* If in interrupt context or interrupts are disabled, use udelay() */
+	if (!is_interrupt_enabled() || in_interrupt_context()) {
+		ccprints("WARNING! Called %s() with disabled interrupts or "
+			 "from interrupt context. Please fix this!", __func__);
+		udelay(us);
+		return;
+	}
+
 	ASSERT(us);
 	do {
 		evt |= task_wait_event(us);
