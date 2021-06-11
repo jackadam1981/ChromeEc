@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7461aed_42db340b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-06-11T07:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b0cc644_299ca3d1",
+      "range": {
+        "startLine": 7,
+        "startChar": 10,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "82d47c276d632e655cc29130bb77087a94f22f50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab341789_498d0faf",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f62ea05_b7a366e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-06-11T07:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab341789_498d0faf",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "82d47c276d632e655cc29130bb77087a94f22f50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "220586a8_6a57425c",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-11T03:13:51Z",
       "side": 1,
       "message": "Please add note to explain, like\n  Limozeen\u0027s BRD_ID is not monotonically increasing. 4 is the earliest revision.",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "82d47c276d632e655cc29130bb77087a94f22f50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4685b3cd_d786589a",
+        "filename": "board/lazor/hibernate.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-06-11T07:04:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "220586a8_6a57425c",
       "range": {
         "startLine": 28,
         "startChar": 14,
