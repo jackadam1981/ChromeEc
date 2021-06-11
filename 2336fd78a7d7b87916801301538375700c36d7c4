@@ -45,6 +45,30 @@
       },
       "revId": "2336fd78a7d7b87916801301538375700c36d7c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "787e3eab_9d62b2cf",
+        "filename": "zephyr/test/drivers/src/bma2x2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T13:13:01Z",
+      "side": 1,
+      "message": "What would a real chip do? I expect it would ignore the request.",
+      "parentUuid": "dc30c79c_622b71b9",
+      "range": {
+        "startLine": 533,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 29
+      },
+      "revId": "2336fd78a7d7b87916801301538375700c36d7c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
