@@ -166,6 +166,11 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 	return EC_SUCCESS;
 }
 
+int task_is_hooks(void)
+{
+	return task_get_current() == TASK_ID_HOOKS ? 1 : 0;
+}
+
 void hook_task(void *u)
 {
 	/* Periodic hooks will be called first time through the loop */

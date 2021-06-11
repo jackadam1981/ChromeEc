@@ -34,6 +34,11 @@ int hook_call_deferred(const struct deferred_data *data, int us)
 	return rv;
 }
 
+int task_is_hooks(void)
+{
+	return k_current_get() == &k_sys_work_q.thread ? 1 : 0;
+}
+
 static struct zephyr_shim_hook_list *hook_registry[HOOK_TYPE_COUNT];
 
 void zephyr_shim_setup_hook(enum hook_type type, void (*routine)(void),

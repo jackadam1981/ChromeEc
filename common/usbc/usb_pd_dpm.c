@@ -465,7 +465,7 @@ static void balance_source_ports(void)
 	uint32_t removed_ports, new_ports;
 	static bool deferred_waiting;
 
-	if (task_get_current() == TASK_ID_HOOKS)
+	if (task_is_hooks())
 		deferred_waiting = false;
 
 	/*

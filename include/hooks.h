@@ -311,6 +311,14 @@ struct deferred_data {
 int hook_call_deferred(const struct deferred_data *data, int us);
 
 /**
+ * Check if code is running in hooks task context.
+ *
+ * @return 1 if in hooks task context.
+ * @return 0 if not in hooks task context.
+ */
+int task_is_hooks(void);
+
+/**
  * Register a hook routine.
  *
  * NOTE: Hook routines must be careful not to leave resources locked which may

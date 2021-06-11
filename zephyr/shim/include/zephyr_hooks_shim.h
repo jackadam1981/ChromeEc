@@ -26,6 +26,11 @@ struct deferred_data {
  */
 int hook_call_deferred(const struct deferred_data *data, int us);
 
+/**
+ * See include/hooks.h for documentation.
+ */
+int task_is_hooks(void);
+
 #define DECLARE_DEFERRED(routine)                                    \
 	K_DELAYED_WORK_DEFINE(routine##_work_data,                   \
 			      (void (*)(struct k_work *))routine);   \
