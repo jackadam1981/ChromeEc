@@ -453,6 +453,39 @@ static void power_button_changed(void)
 }
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, power_button_changed, HOOK_PRIO_DEFAULT);
 
+static void suspend_hang_detected(void)
+{
+	CPRINTS("Warning: Detected sleep hang! Waking host up!");
+	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+}
+
+__override void power_chipset_handle_host_sleep_event(
+		enum host_sleep_event state,
+		struct host_sleep_event_context *ctx)
+{
+	CPRINTS("Handle sleep: %d", state);
+
+	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
+		/*
+		 * Indicate to power state machine that a new host event for
+		 * S3 suspend has been received and so chipset suspend
+		 * notification needs to be sent to listeners.
+		 */
+		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
+		sleep_start_suspend(ctx, suspend_hang_detected);
+
+	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
+		/*
+		 * Wake up chipset task and indicate to power state machine that
+		 * listeners need to be notified of chipset resume.
+		 */
+		sleep_set_notify(SLEEP_NOTIFY_RESUME);
+		task_wake(TASK_ID_CHIPSET);
+		sleep_complete_resume(ctx);
+
+	}
+}
+
 #ifdef CONFIG_LID_SWITCH
 static void lid_changed(void)
 {
