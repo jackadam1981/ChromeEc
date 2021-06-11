@@ -16,6 +16,24 @@
       "message": "Printing SPI bytes sounds like a useful debugging feature that can be reused in future. Can we add some option to flash_fp_mcu which will dump SPI bytes?",
       "revId": "e4cde401c3de4dfd9ad90d46b80d9dbfc5df4a80",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de2c7537_2ad75eef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-06-11T19:06:08Z",
+      "side": 1,
+      "message": "Oh that\u0027s fair. I think that might be better for a follow up CL.\n\nWe could either:\n\n* Pull this in as a feature for the next rev of this script, which would be written in python. Since, we can use a proper logger and message severity.\n* Or, if you think it is more urgent, we could adapt this into a flash_fp_mcu flag in a followup CL.",
+      "parentUuid": "14354428_25e7aec6",
+      "revId": "e4cde401c3de4dfd9ad90d46b80d9dbfc5df4a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
