@@ -75,13 +75,19 @@ static int init_pwms(const struct device *unused)
 			rv = -ENODEV;
 			continue;
 		}
-
+		LOG_ERR("pwm_configs[%d], dev (%s), pin (%d), flags (%d), freq (%d)",
+			i, pwm->name, pwm->pin, pwm->flags, pwm->freq);
 		/*
 		 * TODO - check that devicetree frequency is less than 1/2
 		 * max frequency from the chip driver.
 		 */
 		pwm->period_us = USECS_PER_SEC / pwm->freq;
 	}
+
+	pwm_set_duty(PWM_CH_FAN /*ch7*/, 50 /*percent*/);
+
+	pwm_set_duty(PWM_CH_WITH_DSLEEP_FLAG /*ch0*/, 50 /*percent*/);
+	//pwm_enable(PWM_CH_WITH_DSLEEP_FLAG /*ch0*/, 0 /*enabled*/);
 
 	return rv;
 }
@@ -170,8 +176,8 @@ void pwm_set_duty(enum pwm_channel ch, int percent)
 
 	pwm->pulse_us = DIV_ROUND_NEAREST(pwm->period_us * percent, 100);
 
-	LOG_DBG("PWM %s set percent (%d), pulse %d", pwm->name, percent,
-		pwm->pulse_us);
+	LOG_ERR("PWM %s set percent (%d), pulse %d us, perod %d us", pwm->name, percent,
+		pwm->pulse_us, pwm->period_us);
 
 	rv = pwm_pin_set_usec(pwm->dev, pwm->pin, pwm->period_us, pwm->pulse_us,
 			      pwm->flags);
