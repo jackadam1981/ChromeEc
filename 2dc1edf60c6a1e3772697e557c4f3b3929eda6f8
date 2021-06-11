@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5249bcc_1dfad9c9",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-11T15:07:21Z",
+      "side": 1,
+      "message": "What are we actually looking at for the failure here?  Is the mux not turned on because its power rails or i2c lines aren\u0027t active in a certain power state?  Can this leave us in an inconsistent state where one mux is set but its corresponding retimer isn\u0027t?",
+      "revId": "2dc1edf60c6a1e3772697e557c4f3b3929eda6f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
