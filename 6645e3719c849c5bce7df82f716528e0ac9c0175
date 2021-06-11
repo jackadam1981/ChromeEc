@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "509c4261_6cc67c9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-11T20:58:39Z",
+      "side": 1,
+      "message": "Please make another CL for the Trogdor firmware branch. You need to modify the cherry-pick CL a bit as the firmware branch is now different from the main branch; some conflict happens.",
+      "revId": "6645e3719c849c5bce7df82f716528e0ac9c0175",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
