@@ -16,6 +16,24 @@
       "message": "As noted on the bug, I like your idea of modifying the zephyr implementation of task_get_current() to return check if k_current_get \u003d\u003d k_sys_work_q.thread.",
       "revId": "2dae9892ac78eb8ffa4d7de381ecd1e046539cea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27db18bb_1a12230a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-06-11T14:51:57Z",
+      "side": 1,
+      "message": "Please review new version of this patch.",
+      "parentUuid": "b4d845b9_42d7c376",
+      "revId": "2dae9892ac78eb8ffa4d7de381ecd1e046539cea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
