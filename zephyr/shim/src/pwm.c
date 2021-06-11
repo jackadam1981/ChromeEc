@@ -60,6 +60,8 @@ static int init_pwms(const struct device *unused)
 {
 	struct pwm_config *pwm;
 	int rv = 0;
+	int percent = 50;
+	enum pwm_channel ch = PWM_CH_WITH_DSLEEP_FLAG;
 
 	ARG_UNUSED(unused);
 
@@ -76,12 +78,40 @@ static int init_pwms(const struct device *unused)
 			continue;
 		}
 
+		LOG_ERR("pwm_configs[%d]", i);
+		LOG_ERR("dev (%s)", pwm->name);
+		LOG_ERR("pin (%d)", pwm->pin);
+		LOG_ERR("flags (%d)", pwm->flags);
+		LOG_ERR("freq (%d)", pwm->freq);
+
 		/*
 		 * TODO - check that devicetree frequency is less than 1/2
 		 * max frequency from the chip driver.
 		 */
 		pwm->period_us = USECS_PER_SEC / pwm->freq;
 	}
+
+	//pwm_set_duty(PWM_CH_FAN /*ch7*/, 50 /*percent*/);
+	//pwm_enable(PWM_CH_FAN /*ch7*/, 0 /*enabled*/);
+	//pwm_enable(PWM_CH_FAN /*ch7*/, 1 /*enabled*/);
+
+	//pwm_set_duty(PWM_CH_WITH_DSLEEP_FLAG /*ch0*/, 50 /*percent*/);
+	pwm = pwm_lookup(ch);
+
+	pwm->pulse_us = DIV_ROUND_NEAREST(pwm->period_us * percent, 100);
+
+	LOG_ERR("PWM %s set percent (%d), pulse %d", pwm->name, percent,
+		pwm->pulse_us);
+
+	rv = pwm_pin_set_usec(pwm->dev, pwm->pin, pwm->period_us, pwm->pulse_us,
+			      pwm->flags);
+
+	if (rv)
+		LOG_ERR("pwm_pin_set_usec() failed %s (%d)", pwm->name, rv);
+
+
+	//pwm_enable(PWM_CH_WITH_DSLEEP_FLAG /*ch0*/, 0 /*enabled*/);
+	//pwm_enable(PWM_CH_WITH_DSLEEP_FLAG /*ch0*/, 1 /*enabled*/);
 
 	return rv;
 }
@@ -90,7 +120,7 @@ static int init_pwms(const struct device *unused)
 #endif
 SYS_INIT(init_pwms, PRE_KERNEL_1, CONFIG_PLATFORM_EC_PWM_INIT_PRIORITY);
 
-static struct pwm_config* pwm_lookup(enum pwm_channel ch)
+struct pwm_config* pwm_lookup(enum pwm_channel ch)
 {
 	__ASSERT(ch < ARRAY_SIZE(pwm_configs), "Invalid PWM channel %d", ch);
 

@@ -23,4 +23,8 @@ enum pwm_channel {
 
 #endif /* named_pwms */
 
+void pwm_enable(enum pwm_channel ch, int enabled);
+void pwm_set_duty(enum pwm_channel ch, int percent);
+struct pwm_config* pwm_lookup(enum pwm_channel ch);
+
 #endif /* ZEPHYR_SHIM_INCLUDE_PWM_PWM_H_ */
