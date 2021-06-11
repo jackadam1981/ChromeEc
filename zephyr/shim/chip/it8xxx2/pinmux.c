@@ -20,6 +20,8 @@ static int it8xxx2_pinmux_init(const struct device *dev)
 	pinmux_pin_set(portb, 0, IT8XXX2_PINMUX_FUNC_3);
 	/* SOUT0 */
 	pinmux_pin_set(portb, 1, IT8XXX2_PINMUX_FUNC_3);
+	/* Pullup SIN0 to received data */
+	pinmux_pin_pullup(portb, 0, PINMUX_PULLUP_ENABLE);
 #endif
 
 	return 0;
