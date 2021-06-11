@@ -170,6 +170,24 @@ void chipset_reset(enum chipset_reset_reason reason)
 	GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 1);
 }
 
+static void power_reset_host_sleep_state(void)
+{
+	power_set_host_sleep_state(HOST_SLEEP_EVENT_DEFAULT_RESET);
+	sleep_reset_tracking();
+	power_chipset_handle_host_sleep_event(HOST_SLEEP_EVENT_DEFAULT_RESET,
+					      NULL);
+}
+
+static void handle_chipset_reset(void)
+{
+	if (chipset_in_state(CHIPSET_STATE_SUSPEND)) {
+		CPRINTS("Chipset reset: exit s3");
+		power_reset_host_sleep_state();
+		task_wake(TASK_ID_CHIPSET);
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESET, handle_chipset_reset, HOOK_PRIO_FIRST);
+
 enum power_state power_chipset_init(void)
 {
 	int exit_hard_off = 1;
@@ -350,6 +368,11 @@ enum power_state power_handle_state(enum power_state state)
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
 
+		/*
+		 * Clearing the sleep failure detection tracking on the path
+		 * to S0 to handle any reset conditions.
+		 */
+		power_reset_host_sleep_state();
 		/* Power up to next state */
 		return POWER_S3;
 
@@ -361,6 +384,8 @@ enum power_state power_handle_state(enum power_state state)
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_RESUME);
+
+		sleep_resume_transition();
 
 		/*
 		 * Disable idle task deep sleep. This means that the low
@@ -374,6 +399,8 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_S0S3:
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SUSPEND);
+
+		sleep_suspend_transition();
 
 		/*
 		 * Enable idle task deep sleep. Allow the low power idle task
@@ -452,6 +479,39 @@ static void power_button_changed(void)
 	}
 }
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, power_button_changed, HOOK_PRIO_DEFAULT);
+
+static void suspend_hang_detected(void)
+{
+	CPRINTS("Warning: Detected sleep hang! Waking host up!");
+	host_set_single_event(EC_HOST_EVENT_HANG_DETECT);
+}
+
+__override void power_chipset_handle_host_sleep_event(
+		enum host_sleep_event state,
+		struct host_sleep_event_context *ctx)
+{
+	CPRINTS("Handle sleep: %d", state);
+
+	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
+		/*
+		 * Indicate to power state machine that a new host event for
+		 * S3 suspend has been received and so chipset suspend
+		 * notification needs to be sent to listeners.
+		 */
+		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
+		sleep_start_suspend(ctx, suspend_hang_detected);
+
+	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
+		/*
+		 * Wake up chipset task and indicate to power state machine that
+		 * listeners need to be notified of chipset resume.
+		 */
+		sleep_set_notify(SLEEP_NOTIFY_RESUME);
+		task_wake(TASK_ID_CHIPSET);
+		sleep_complete_resume(ctx);
+
+	}
+}
 
 #ifdef CONFIG_LID_SWITCH
 static void lid_changed(void)
