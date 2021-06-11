@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c29c2e4f_c0c10946",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-11T05:30:36Z",
+      "side": 1,
+      "message": "Right, I think for the above projects, they could remove the voltage override when this series merged. Let\u0027s drop this and see if we have the need again in the future.",
+      "parentUuid": "6a005040_e65fa99c",
+      "revId": "724ad6f5bcfc65f0683948b9a643eaf74cb3c4d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83fceb7c_16f7dba4",
         "filename": "include/usb_common.h",
         "patchSetId": 2
