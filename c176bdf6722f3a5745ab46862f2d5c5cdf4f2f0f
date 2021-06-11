@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6aa3ae3_6696df1e",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68222df6_9150752c",
+      "range": {
+        "startLine": 124,
+        "startChar": 3,
+        "endLine": 124,
+        "endChar": 7
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eca8014b_3033e9d7",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-03T21:54:35Z",
       "side": 1,
       "message": "ISL9238 Rev C",
+      "range": {
+        "startLine": 141,
+        "startChar": 15,
+        "endLine": 141,
+        "endChar": 22
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e16d64fb_0fc038b5",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eca8014b_3033e9d7",
       "range": {
         "startLine": 141,
         "startChar": 15,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6db04239_24abc20c",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a60defca_20f22351",
+      "range": {
+        "startLine": 146,
+        "startChar": 27,
+        "endLine": 146,
+        "endChar": 34
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d23478b8_49016a7e",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "800dee5d_97b87246",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d23478b8_49016a7e",
+      "range": {
+        "startLine": 1,
+        "startChar": 2,
+        "endLine": 1,
+        "endChar": 4
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f15eea5_2a4f6911",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-06-04T15:50:28Z",
       "side": 1,
       "message": "This should depend on PLATFORM_EC_USBC_PPC_SYV682X",
+      "range": {
+        "startLine": 745,
+        "startChar": 7,
+        "endLine": 745,
+        "endChar": 35
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec3ce45_ad422628",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f15eea5_2a4f6911",
       "range": {
         "startLine": 745,
         "startChar": 7,
@@ -158,6 +278,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "30868be2_d4eaddc2",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "At the moment I need it to be. With \u0027select\u0027 I get into trouble, a bit like this:\n\nhttps://docs.zephyrproject.org/latest/guides/kconfig/tips.html#select-pitfalls",
+      "parentUuid": "5b231554_7e6b9214",
+      "range": {
+        "startLine": 937,
+        "startChar": 6,
+        "endLine": 937,
+        "endChar": 23
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "efc08e44_7e8d358d",
         "filename": "zephyr/Kconfig.usbc",
         "patchSetId": 1
@@ -169,6 +313,30 @@
       "writtenOn": "2021-06-04T15:50:28Z",
       "side": 1,
       "message": "select instead of depends?",
+      "range": {
+        "startLine": 1068,
+        "startChar": 1,
+        "endLine": 1068,
+        "endChar": 11
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42c9ee82_9d98935c",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "efc08e44_7e8d358d",
       "range": {
         "startLine": 1068,
         "startChar": 1,
@@ -192,6 +360,30 @@
       "writtenOn": "2021-06-04T15:50:28Z",
       "side": 1,
       "message": "select?",
+      "range": {
+        "startLine": 1076,
+        "startChar": 1,
+        "endLine": 1076,
+        "endChar": 11
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21c86be0_5281791b",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "208afb02_fa6993e6",
       "range": {
         "startLine": 1076,
         "startChar": 1,
@@ -227,6 +419,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e99759de_79208085",
+        "filename": "zephyr/get_cfg.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "OK I\u0027ll have a think about it",
+      "parentUuid": "e9ce98d2_d6930c63",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 78
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5493dbb1_1da6ddf4",
         "filename": "zephyr/projects/asurada/hayato/prj.conf",
         "patchSetId": 1
@@ -238,6 +454,30 @@
       "writtenOn": "2021-06-04T15:50:28Z",
       "side": 1,
       "message": "0x5053\nhttps://source.corp.google.com/piper///depot/google3/hardware/standards/usb/product_ids/chromeos_generic.textpb;rcl\u003d370096781;l\u003d586",
+      "range": {
+        "startLine": 68,
+        "startChar": 27,
+        "endLine": 68,
+        "endChar": 33
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "601212ae_57f237f2",
+        "filename": "zephyr/projects/asurada/hayato/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5493dbb1_1da6ddf4",
       "range": {
         "startLine": 68,
         "startChar": 27,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dde54b3_27bb41cd",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "Yes it is effectively the same thing. We just didn\u0027t notice it before.",
+      "parentUuid": "2ce69167_4fb88718",
+      "range": {
+        "startLine": 927,
+        "startChar": 0,
+        "endLine": 927,
+        "endChar": 23
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cd9ce0a_a2b7b942",
@@ -284,6 +548,30 @@
       "writtenOn": "2021-06-04T15:50:28Z",
       "side": 1,
       "message": "Extra #",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "c176bdf6722f3a5745ab46862f2d5c5cdf4f2f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f5e306_e5aec3e9",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:41:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cd9ce0a_a2b7b942",
       "range": {
         "startLine": 1,
         "startChar": 1,
