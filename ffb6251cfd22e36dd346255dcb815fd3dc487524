@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe3d3528_4f8c29e5",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-11T21:47:30Z",
+      "side": 1,
+      "message": "nit: if you want to keep the \"style\" of this function, this might be changed to `if (rv)`",
+      "range": {
+        "startLine": 495,
+        "startChar": 7,
+        "endLine": 495,
+        "endChar": 21
+      },
+      "revId": "ffb6251cfd22e36dd346255dcb815fd3dc487524",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
