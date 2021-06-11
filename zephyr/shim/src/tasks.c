@@ -79,6 +79,12 @@ task_id_t task_get_current(void)
 			return i;
 		}
 	}
+
+	/* Hooks ID should be returned for deferred calls */
+	if (k_current_get() == &k_sys_work_q.thread) {
+		return TASK_ID_HOOKS;
+	}
+
 	__ASSERT(false, "Task index out of bound");
 	return 0;
 }
