@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cec5692d_7ff108fe",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-11T22:02:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd948e14_8c048101",
+      "range": {
+        "startLine": 275,
+        "startChar": 22,
+        "endLine": 275,
+        "endChar": 31
+      },
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9d8e532_3b85d052",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-08T02:38:49Z",
       "side": 1,
       "message": "Is there a DS/app note section reference for this that you could put in a comment?",
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72fced6e_912467ec",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-11T22:02:44Z",
+      "side": 1,
+      "message": "This was recently conveyed over email, I don\u0027t think they\u0027ve updated the datasheet yet. It needs to be though.",
+      "parentUuid": "e9d8e532_3b85d052",
       "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -60,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f2b8372_c3a62fc7",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-11T22:02:44Z",
+      "side": 1,
+      "message": "I could attempt to measure this. But this shouldn\u0027t be part of the PD protocol. You\u0027d know better than I, but the mux configuration *should* be separate from other PD comms.\n\nIf we assume 400kbps (actually more like 600k) then its about 8+16+8+8\u003d40 bits per write, so I guess 10k writes per second? So we\u0027re on the order of ms for the \u003c100 writes we do.",
+      "parentUuid": "4d5aca29_c84fade6",
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0312972d_8516cb66",
         "filename": "driver/retimer/kb800x.h",
         "patchSetId": 2
@@ -71,6 +131,24 @@
       "writtenOn": "2021-06-08T02:38:49Z",
       "side": 1,
       "message": "Nit: The stuff in this section doesn\u0027t have linkage. You could harmlessly remove the #ifdef CONFIG_KB800X_CUSTOM_XBAR for this part.",
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3b745d6_83434007",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-11T22:02:44Z",
+      "side": 1,
+      "message": "Is that good style? These things shouldn\u0027t be used if we don\u0027t define this, so wouldn\u0027t it be better to throw a compile error if they were?",
+      "parentUuid": "0312972d_8516cb66",
       "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
