@@ -101,6 +101,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "de1b292f_523d4dfe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-11T05:27:05Z",
+      "side": 1,
+      "message": "Thanks for catching this. We were using \u0027dynamic\u0027 at first, and Mark though the naming isn\u0027t quite accurate, and he prefered \u0027adaptive\u0027. I am fine to name this back since it\u0027s actually collided with Augmented PDO.",
+      "parentUuid": "06952a9a_ddbdb112",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1ee0dcec_eb87b531",
