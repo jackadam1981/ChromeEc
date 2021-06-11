@@ -69,6 +69,30 @@
       },
       "revId": "2336fd78a7d7b87916801301538375700c36d7c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aebe7949_b3458b81",
+        "filename": "zephyr/test/drivers/src/bma2x2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-06-11T13:51:27Z",
+      "side": 1,
+      "message": "`exp_rate` is value we expect that driver will set for given `rate` and rounding `rnd`. The switch case convert `exp_rate` to value which we expect that was written by driver to device register. `BMA2x2_BW_*` defines are in range `[0x8-0xf]`. Real hardware will treat values smaller than 0x8 as 0x8 and greater than 0xf as 0xf, but it is not recommended to use that behaviour (for compatibility with other BMA* devices).\n\nUsing different values for `exp_rate` doesn\u0027t make sense, because driver should never set rate not supported by the BMA255 accelerometer.\n\nIf `exp_rate` is not one of values from switch case, then it is error in unit test, not in driver. I may add here assert with appropriate message.",
+      "parentUuid": "787e3eab_9d62b2cf",
+      "range": {
+        "startLine": 533,
+        "startChar": 2,
+        "endLine": 533,
+        "endChar": 29
+      },
+      "revId": "2336fd78a7d7b87916801301538375700c36d7c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -16,6 +16,24 @@
       "message": "As a general comment, I wonder if it is possible to incorporate more useful behaviour in the emulator so that the custom functions are not needed so much?",
       "revId": "4d700db7b5071ccf2771b58eeddda95979de61dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b527b2f3_ade05c3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-06-11T13:51:27Z",
+      "side": 1,
+      "message": "I think implementing fail on given register read/write in emulator itself maybe useful, because it is used in almost all tests and it is generic enough. `emul_read/write_calib_func` and `emul_read_reset` are highly specific, so I think it is better to keep them as custom functions.",
+      "parentUuid": "246178fa_90118818",
+      "revId": "4d700db7b5071ccf2771b58eeddda95979de61dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
