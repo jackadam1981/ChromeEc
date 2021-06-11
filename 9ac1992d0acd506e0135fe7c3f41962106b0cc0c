@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a377b47_e8dec5ab",
+        "filename": "board/lazor/sku.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-11T03:01:15Z",
+      "side": 1,
+      "message": "Don\u0027t need too many (), just:\n  return get_model() \u003d\u003d LIMOZEEN \u0026\u0026 system_get_board_version() \u003d\u003d 0;\n\nDo it in the following function too.",
+      "range": {
+        "startLine": 95,
+        "startChar": 8,
+        "endLine": 95,
+        "endChar": 10
+      },
+      "revId": "9ac1992d0acd506e0135fe7c3f41962106b0cc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8752af46_a6208c2b",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-11T03:01:15Z",
+      "side": 1,
+      "message": "Add {} for consistency.",
+      "range": {
+        "startLine": 81,
+        "startChar": 31,
+        "endLine": 81,
+        "endChar": 32
+      },
+      "revId": "9ac1992d0acd506e0135fe7c3f41962106b0cc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06aa5cbb_9ae7e8db",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-11T03:01:15Z",
+      "side": 1,
+      "message": "Please add an else clause to show an error message, like\n  CPRINTS(\"ERROR: No switchcap solution\");",
+      "range": {
+        "startLine": 82,
+        "startChar": 24,
+        "endLine": 82,
+        "endChar": 25
+      },
+      "revId": "9ac1992d0acd506e0135fe7c3f41962106b0cc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d59e96b_3636bf41",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-11T03:01:15Z",
+      "side": 1,
+      "message": "Add {}",
+      "range": {
+        "startLine": 88,
+        "startChar": 23,
+        "endLine": 88,
+        "endChar": 24
+      },
+      "revId": "9ac1992d0acd506e0135fe7c3f41962106b0cc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9560dab8_c0e0d02b",
+        "filename": "board/lazor/switchcap.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-11T03:01:15Z",
+      "side": 1,
+      "message": "Add {}",
+      "range": {
+        "startLine": 93,
+        "startChar": 31,
+        "endLine": 93,
+        "endChar": 32
+      },
+      "revId": "9ac1992d0acd506e0135fe7c3f41962106b0cc0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
