@@ -152,6 +152,23 @@ __overridable int bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 	return EC_SUCCESS;
 }
 
+/*
+ * If the cascaded retimer topology is used, they share common load switch and
+ * reset pin hence no need to call the bb_retimer_power_handle() again if the
+ * 1st retimer's power status has already changed.
+ */
+static int bb_retimer_on_off_handle(const struct usb_mux *me, int on_off)
+{
+	static int bb_on_off[CONFIG_USB_PD_PORT_MAX_COUNT];
+
+	/* No change in power state */
+	if (bb_on_off[me->usb_port] == on_off)
+		return EC_SUCCESS;
+
+	bb_on_off[me->usb_port] = on_off;
+	return bb_retimer_power_handle(me, on_off);
+}
+
 static void retimer_set_state_dfp(int port, mux_state_t mux_state,
 				  uint32_t *set_retimer_con)
 {
@@ -470,7 +487,7 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state)
 
 static int retimer_low_power_mode(const struct usb_mux *me)
 {
-	bb_retimer_power_handle(me, 0);
+	bb_retimer_on_off_handle(me, 0);
 	return EC_SUCCESS;
 }
 
@@ -487,11 +504,11 @@ static int retimer_init(const struct usb_mux *me)
 	/* Burnside Bridge is powered by main AP rail */
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_ANY_OFF)) {
 		/* Ensure reset is asserted while chip is not powered */
-		bb_retimer_power_handle(me, 0);
+		bb_retimer_on_off_handle(me, 0);
 		return EC_ERROR_NOT_POWERED;
 	}
 
-	rv = bb_retimer_power_handle(me, 1);
+	rv = bb_retimer_on_off_handle(me, 1);
 	if (rv != EC_SUCCESS)
 		return rv;
 
