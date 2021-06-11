@@ -46,6 +46,54 @@
       },
       "revId": "397cf3290541522f82b0b002079ede376573a683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8db65713_dea5f54c",
+        "filename": "zephyr/projects/asurada/hayato/include/gpio_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:39:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb40f7e1_7477d43a",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "397cf3290541522f82b0b002079ede376573a683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c71f6cba_7d5003e2",
+        "filename": "zephyr/projects/asurada/hayato/include/gpio_map.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-11T23:39:20Z",
+      "side": 1,
+      "message": "I\u0027ve update this CL to just add them to a header file",
+      "parentUuid": "fb40f7e1_7477d43a",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "397cf3290541522f82b0b002079ede376573a683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
