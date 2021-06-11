@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14354428_25e7aec6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-06-11T08:24:37Z",
+      "side": 1,
+      "message": "Printing SPI bytes sounds like a useful debugging feature that can be reused in future. Can we add some option to flash_fp_mcu which will dump SPI bytes?",
+      "revId": "e4cde401c3de4dfd9ad90d46b80d9dbfc5df4a80",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
