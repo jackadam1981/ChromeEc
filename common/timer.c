@@ -336,9 +336,15 @@ static int command_wait(int argc, char **argv)
 	return EC_SUCCESS;
 }
 /* Typically a large delay (e.g. 3s) will cause a reset */
+#if defined(CONFIG_ZEPHYR) && defined(CONFIG_HAS_TASK_HPCC)
+DECLARE_HIGH_PRIORITY_CONSOLE_COMMAND(waitms, command_wait,
+			"HP msec",
+			"HP Busy-wait for msec (large delays will reset)");
+#else
 DECLARE_CONSOLE_COMMAND(waitms, command_wait,
 			"msec",
 			"Busy-wait for msec (large delays will reset)");
+#endif /* CONFIG_ZEPHYR and CONFIG_HAS_TASK_HPCC */
 #endif
 
 #ifdef CONFIG_CMD_FORCETIME
