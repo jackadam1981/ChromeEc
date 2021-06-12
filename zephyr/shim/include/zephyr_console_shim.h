@@ -18,50 +18,42 @@
  * @argv:		The NULL-terminated list of arguments.
  * @help_str:		The help string to display when "-h" is passed.
  * @argdesc:		The string describing the arguments to the command.
- * @high_priority	If true, the command is executed at the highest
- *			priority.
  *
  * Return: the return value from the handler.
  */
 int zshim_run_ec_console_command(int (*handler)(int argc, char **argv),
 				 const struct shell *shell, size_t argc,
 				 char **argv, const char *help_str,
-				 const char *argdesc, bool high_priority);
+				 const char *argdesc);
 
 /* Internal wrappers for DECLARE_CONSOLE_COMMAND_* macros. */
 #define _ZEPHYR_SHELL_COMMAND_SHIM_2(NAME, ROUTINE_ID, ARGDESC, HELP,	\
-					WRAPPER_ID, HIGH_PRIORITY)	\
+				     WRAPPER_ID)			\
 	static int WRAPPER_ID(const struct shell *shell, size_t argc,        \
 			      char **argv)                                   \
 	{                                                                    \
 		return zshim_run_ec_console_command(ROUTINE_ID, shell, argc, \
-						    argv, HELP, ARGDESC,     \
-						    HIGH_PRIORITY);          \
+						    argv, HELP, ARGDESC);    \
 	}                                                                    \
 	SHELL_CMD_ARG_REGISTER(NAME, NULL, HELP, WRAPPER_ID, 0,              \
 			       SHELL_OPT_ARG_MAX)
 
-#define _ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE_ID, ARGDESC, HELP, \
-				HIGH_PRIORITY) \
+#define _ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE_ID, ARGDESC, HELP)   \
 	_ZEPHYR_SHELL_COMMAND_SHIM_2(NAME, ROUTINE_ID, ARGDESC, HELP, \
-				     UTIL_CAT(zshim_wrapper_, ROUTINE_ID), \
-				     HIGH_PRIORITY)
+				     UTIL_CAT(zshim_wrapper_, ROUTINE_ID))
 
 /* These macros mirror the macros provided by the CrOS EC. */
 #define DECLARE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP) \
-	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP, false)
-/* This macro creates a console command that executes at the highest priority */
-#define DECLARE_HIGH_PRIORITY_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP) \
-	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP, true)
+	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP)
 
 /*
  * TODO(jrosenth): implement flags and restricted commands?  We just
  * discard this in the shim layer for now.
  */
 #define DECLARE_CONSOLE_COMMAND_FLAGS(NAME, ROUTINE, ARGDESC, HELP, FLAGS) \
-	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP, false)
+	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP)
 #define DECLARE_SAFE_CONSOLE_COMMAND(NAME, ROUTINE, ARGDESC, HELP) \
-	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP, false)
+	_ZEPHYR_SHELL_COMMAND_SHIM(NAME, ROUTINE, ARGDESC, HELP)
 
 /**
  * console_buf_notify_char() - Notify the console host command buffer

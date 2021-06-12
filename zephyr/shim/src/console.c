@@ -21,42 +21,6 @@ static struct k_poll_signal shell_uninit_signal;
 static struct k_poll_signal shell_init_signal;
 RING_BUF_DECLARE(rx_buffer, CONFIG_UART_RX_BUF_SIZE);
 
-#ifdef CONFIG_HAS_TASK_HPCC
-/* High Priority Console Command (HPCC) */
-K_THREAD_STACK_DEFINE(hpcc_stack_area, CONFIG_TASK_HPCC_STACK_SIZE);
-static k_tid_t hpcc_tid;
-static struct k_thread hpcc_data;
-
-struct hpcc_execute_t {
-	int (*handler)(int argc, char **argv);
-	int argc;
-	char **argv;
-};
-
-struct hpcc_return_t {
-	int ret;
-};
-
-static struct k_fifo hpcc_execute_fifo;
-static struct k_fifo hpcc_return_fifo;
-static struct hpcc_execute_t hpcc_execute;
-static struct hpcc_return_t *hpcc_return;
-
-void high_priority_console_cmd_task(void *exe_fifo, void *ret_fifo, void *un)
-{
-	struct hpcc_execute_t *exe;
-	struct hpcc_return_t ret;
-	struct k_fifo *cmd_exe_fifo = (struct k_fifo *)exe_fifo;
-	struct k_fifo *cmd_ret_fifo = (struct k_fifo *)ret_fifo;
-
-	while (1) {
-		exe = k_fifo_get(cmd_exe_fifo, K_FOREVER);
-		ret.ret = exe->handler(exe->argc, exe->argv);
-		k_fifo_put(cmd_ret_fifo, &ret);
-	}
-}
-#endif /* CONFIG_HAS_TASK_HPCC */
-
 static void uart_rx_handle(const struct device *dev)
 {
 	static uint8_t scratch;
@@ -192,7 +156,7 @@ void uart_shell_start(void)
 int zshim_run_ec_console_command(int (*handler)(int argc, char **argv),
 				 const struct shell *shell, size_t argc,
 				 char **argv, const char *help_str,
-				 const char *argdesc, bool high_priority)
+				 const char *argdesc)
 {
 	ARG_UNUSED(shell);
 
@@ -208,38 +172,8 @@ int zshim_run_ec_console_command(int (*handler)(int argc, char **argv),
 		}
 	}
 
-#ifdef CONFIG_HAS_TASK_HPCC
-	if (high_priority) {
-		hpcc_execute.handler = handler;
-		hpcc_execute.argc = argc;
-		hpcc_execute.argv = argv;
-		k_fifo_put(&hpcc_execute_fifo, &hpcc_execute);
-		hpcc_return = k_fifo_get(&hpcc_return_fifo, K_FOREVER);
-		return hpcc_return->ret;
-	} else {
-		return handler(argc, argv);
-	}
-#else
 	return handler(argc, argv);
-#endif /* CONFIG_HAS_TASK_HPCC */
 }
-
-#ifdef CONFIG_HAS_TASK_HPCC
-static int init_high_priority_console_cmd_task(const struct device *unused)
-{
-	/* Initialize high priority console command fifos */
-	k_fifo_init(&hpcc_execute_fifo);
-	k_fifo_init(&hpcc_return_fifo);
-
-	/* Create high priority console command task */
-	hpcc_tid = k_thread_create(&hpcc_data, hpcc_stack_area,
-			K_THREAD_STACK_SIZEOF(hpcc_stack_area),
-			high_priority_console_cmd_task,
-			&hpcc_execute_fifo, &hpcc_return_fifo, NULL,
-			K_HIGHEST_APPLICATION_THREAD_PRIO, 0, K_NO_WAIT);
-	return 0;
-} SYS_INIT(init_high_priority_console_cmd_task, APPLICATION, 40);
-#endif /* CONFIG_HAS_TASK_HPCC */
 
 #if defined(CONFIG_CONSOLE_CHANNEL) && DT_NODE_EXISTS(DT_PATH(ec_console))
 #define EC_CONSOLE DT_PATH(ec_console)

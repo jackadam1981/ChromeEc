@@ -6,23 +6,6 @@
 
 menu "Tasks"
 
-config HAS_TASK_HPCC
-	bool "HPCC task"
-	help
-	  This enables the high priority console command task. It
-	  allows the execution of console commands to run at a
-	  higher priority than the zephyr shell.
-
-if HAS_TASK_HPCC
-
-config TASK_HPCC_STACK_SIZE
-	int "Stack size"
-	default 500
-	help
-	  The stack size of the high priority console command task.
-
-endif #HAS_TASK_HPCC
-
 config HAS_TASK_CHARGER
 	bool "Charger task"
 	depends on PLATFORM_EC_BATTERY
