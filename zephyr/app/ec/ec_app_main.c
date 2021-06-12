@@ -5,6 +5,7 @@
 
 #include <kernel.h>
 #include <sys/printk.h>
+#include <shell/shell_uart.h>
 #include <zephyr.h>
 
 #include "button.h"
@@ -87,6 +88,15 @@ void ec_app_main(void)
 	/* Call init hooks before main tasks start */
 	if (IS_ENABLED(CONFIG_PLATFORM_EC_HOOKS)) {
 		hook_notify(HOOK_INIT);
+	}
+
+
+	/* Increase priority of shell thread. */
+	{
+		static const struct shell *shell;
+
+		shell = shell_backend_uart_get_ptr();
+		k_thread_priority_set(shell->ctx->tid, -1);
 	}
 
 	/*
