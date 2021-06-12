@@ -1305,9 +1305,16 @@ static int command_sysjump(int argc, char **argv)
 	jump_to_image(addr);
 	return EC_SUCCESS;
 }
+#ifdef CONFIG_ZEPHYR
+DECLARE_HIGH_PRIORITY_CONSOLE_COMMAND(sysjump, command_sysjump,
+			"[RO | RW | A | B | addr | disable]",
+			"Jump to a system image or address");
+
+#else
 DECLARE_CONSOLE_COMMAND(sysjump, command_sysjump,
 			"[RO | RW | A | B | addr | disable]",
 			"Jump to a system image or address");
+#endif
 #endif
 
 static int command_reboot(int argc, char **argv)
