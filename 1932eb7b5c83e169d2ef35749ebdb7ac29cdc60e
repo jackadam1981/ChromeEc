@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1faa00dc_8aa56173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-14T16:30:55Z",
+      "side": 1,
+      "message": "WIP CL. Any idea on how to initialize the macros in prj.conf",
+      "revId": "1932eb7b5c83e169d2ef35749ebdb7ac29cdc60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c9b7e8c_0e5a420f",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-14T16:30:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure how to initialize these. The following doesn\u0027t work:\n\n(BIT(EC_MKBP_EVENT_KEY_MATRIX) | \\\n\t\t BIT(EC_MKBP_EVENT_HOST_EVENT) | \\\n\t\t BIT(EC_MKBP_EVENT_SENSOR_FIFO))",
+      "range": {
+        "startLine": 46,
+        "startChar": 47,
+        "endLine": 46,
+        "endChar": 48
+      },
+      "revId": "1932eb7b5c83e169d2ef35749ebdb7ac29cdc60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
