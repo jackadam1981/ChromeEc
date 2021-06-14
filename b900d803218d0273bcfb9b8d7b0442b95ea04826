@@ -22,6 +22,30 @@
       },
       "revId": "b900d803218d0273bcfb9b8d7b0442b95ea04826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1934ab_79e34b32",
+        "filename": "include/driver/accel_bma2x2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-06-14T09:41:12Z",
+      "side": 1,
+      "message": "I followed pattern which was in this file already:\n- value of define of BMA register address (*_ADDR) starts at column 45\n- value of define of register fields (e.g. BW mask and possible BW values) starts at column 41\n\nDo you think it would be better to have same indents in all of defines?",
+      "parentUuid": "3d0b0d4f_3c1ebba1",
+      "range": {
+        "startLine": 30,
+        "startChar": 32,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "b900d803218d0273bcfb9b8d7b0442b95ea04826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
