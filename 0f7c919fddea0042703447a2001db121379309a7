@@ -229,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade3c99e_df1adad4",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-14T22:47:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e025182_b210753f",
+      "range": {
+        "startLine": 1223,
+        "startChar": 35,
+        "endLine": 1224,
+        "endChar": 24
+      },
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2461c116_3df81fd0",
@@ -328,6 +352,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a3318b0_101d3775",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1244,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-14T22:47:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28b74019_520fd0d6",
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e2be174_858dd9b6",
@@ -359,6 +401,24 @@
       "side": 1,
       "message": "that was a mistake. fixed it.",
       "parentUuid": "1e2be174_858dd9b6",
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6697990a_80680b83",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-14T22:47:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49581ab2_7575b81e",
       "revId": "0f7c919fddea0042703447a2001db121379309a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
