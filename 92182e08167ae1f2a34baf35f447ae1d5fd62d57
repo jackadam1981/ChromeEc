@@ -122,6 +122,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d664d655_12dc3546",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-14T17:14:05Z",
+      "side": 1,
+      "message": "repo sync to get latest public repo;\ncherry-pick CL:2891908;\nfix conflicting file: build.mk under intelrvp;\nupload again;\nfix Merge-Conflict;",
+      "parentUuid": "47753771_77d2c16c",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 8
+      },
+      "revId": "92182e08167ae1f2a34baf35f447ae1d5fd62d57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "85d2f583_9f69862d",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
