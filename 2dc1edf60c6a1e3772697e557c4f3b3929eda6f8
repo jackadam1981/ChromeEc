@@ -16,6 +16,24 @@
       "message": "What are we actually looking at for the failure here?  Is the mux not turned on because its power rails or i2c lines aren\u0027t active in a certain power state?  Can this leave us in an inconsistent state where one mux is set but its corresponding retimer isn\u0027t?",
       "revId": "2dc1edf60c6a1e3772697e557c4f3b3929eda6f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827814fe_39ff0c81",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-14T06:06:42Z",
+      "side": 1,
+      "message": "in the case of brya board ID 1 specifically, the burnside bridge is held\nin reset when it should not be. we can detect this by looking at the state of\nthe reset GPIO. yes, if we have stacked muxes, they could theoretically get\nout of sync and the API doesn\u0027t really handle partial failures like that.\non brya, with the burnside bridge in reset, it doesn\u0027t really matter what\nthe state of other mux (TCSS) is - the signals won\u0027t get through the BB.\n\nthe main benefit of adding error detection/handling here is that we will\nhave fewer cases in the PD stack where we miss timing requirements due\nto relatively long timeouts in underlying code.\n\nP.S. we are \"fixing\" brya in the next board spin.",
+      "parentUuid": "d5249bcc_1dfad9c9",
+      "revId": "2dc1edf60c6a1e3772697e557c4f3b3929eda6f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
