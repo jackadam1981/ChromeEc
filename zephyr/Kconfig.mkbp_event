@@ -22,6 +22,16 @@ config PLATFORM_EC_MKBP_USE_HOST_EVENT
     help
       Select to send MKBP events via host event.
 
+config PLATFORM_EC_MKBP_HOST_EVENT_WAKEUP_MASK
+    int "MKBP host event wakeup mask"
+    help
+      If using MKBP to send host events, with this option, we can define the host
+      events that should wake the system in suspend. Some examples are:
+        EC_HOST_EVENT_MASK(EC_HOST_EVENT_LID_OPEN)
+        EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEY_PRESSED)
+      The only things that should be in this mask are:
+        EC_HOST_EVENT_MASK(EC_HOST_EVENT_*)
+
 config PLATFORM_EC_MKBP_USE_GPIO_AND_HOST_EVENT
     bool "Use GPIO and host event"
     help
