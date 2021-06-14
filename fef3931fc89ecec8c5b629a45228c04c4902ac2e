@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72107f43_23471427",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-06-14T10:18:39Z",
+      "side": 1,
+      "message": "You are right! Sorry added this last while testing the patch would work without MPU support and did not realize the symbol was wrong.\n\nMPU without PLATFORM_EC_MPU may be useful, the current implementation is CORTEX_M specific but the MPU config option is not, so it may come in handy for other architectures to get stack protection while we add arch specific support for turning regions on and off.\n\nWith that in mind, changed to depend on CPU_CORTEX_M and select MPU.\n\nThanks for spotting this.",
+      "parentUuid": "e40c487c_9a850540",
+      "range": {
+        "startLine": 423,
+        "startChar": 28,
+        "endLine": 423,
+        "endChar": 38
+      },
+      "revId": "fef3931fc89ecec8c5b629a45228c04c4902ac2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44315d1c_3531bcd8",
         "filename": "zephyr/shim/src/mpu.c",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-11T16:56:39Z",
       "side": 1,
       "message": "Looking at our other code I believe we now allow `for (int index` in zephyr code.",
+      "range": {
+        "startLine": 17,
+        "startChar": 6,
+        "endLine": 17,
+        "endChar": 11
+      },
+      "revId": "fef3931fc89ecec8c5b629a45228c04c4902ac2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a6a94fd_7b771c56",
+        "filename": "zephyr/shim/src/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-06-14T10:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44315d1c_3531bcd8",
       "range": {
         "startLine": 17,
         "startChar": 6,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-11T16:56:39Z",
       "side": 1,
       "message": "Same here",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "fef3931fc89ecec8c5b629a45228c04c4902ac2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4864bbb_5a6a69ef",
+        "filename": "zephyr/shim/src/mpu.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-06-14T10:18:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1af19b03_40aaeacf",
       "range": {
         "startLine": 31,
         "startChar": 6,
