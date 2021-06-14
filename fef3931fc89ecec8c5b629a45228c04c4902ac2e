@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33380a66_abb7d35a",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-06-14T15:28:38Z",
+      "side": 1,
+      "message": "Oh I think it needs to be ARM_MPU right now, and then when we\u0027ll get this for other arch we can revisit and make it a select ... if ... thing.",
+      "parentUuid": "72107f43_23471427",
+      "range": {
+        "startLine": 423,
+        "startChar": 28,
+        "endLine": 423,
+        "endChar": 38
+      },
+      "revId": "fef3931fc89ecec8c5b629a45228c04c4902ac2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44315d1c_3531bcd8",
