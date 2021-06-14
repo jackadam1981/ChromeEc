@@ -85,6 +85,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21ff5e7d_407fce6a",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "Nit: Unless the data sheet update is as good as done, I would copy the email into a bug comment and reference the comment here for the time being.",
+      "parentUuid": "72fced6e_912467ec",
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d5aca29_c84fade6",
         "filename": "driver/retimer/kb800x.c",
         "patchSetId": 2
@@ -114,6 +132,24 @@
       "side": 1,
       "message": "I could attempt to measure this. But this shouldn\u0027t be part of the PD protocol. You\u0027d know better than I, but the mux configuration *should* be separate from other PD comms.\n\nIf we assume 400kbps (actually more like 600k) then its about 8+16+8+8\u003d40 bits per write, so I guess 10k writes per second? So we\u0027re on the order of ms for the \u003c100 writes we do.",
       "parentUuid": "4d5aca29_c84fade6",
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5743edae_a7e4a29b",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "Sounds good. Right now, we do mux sets as blocking events. That has caused some problems recently, and we\u0027re thinking about changing the architecture. But there are some cases where mux settings legitimately need to sync with PD traffic (mode entry/exit). If ~10 ms is an upper bound for this part, that should be OK.",
+      "parentUuid": "5f2b8372_c3a62fc7",
       "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -149,6 +185,24 @@
       "side": 1,
       "message": "Is that good style? These things shouldn\u0027t be used if we don\u0027t define this, so wouldn\u0027t it be better to throw a compile error if they were?",
       "parentUuid": "0312972d_8516cb66",
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57ada782_b372ba22",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "A serious attempt to use the crossbar with the config not defined will causes a compiler error for referencing ss_lanes. An unserious attempt that uses these enums and macros but doesn\u0027t modify the data structure would slip through the cracks, but IMO the extra #ifdef to catch this type of error isn\u0027t quite worth it.\n\nBut it\u0027s still just a nit, so do whatever seems best to you.",
+      "parentUuid": "d3b745d6_83434007",
       "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

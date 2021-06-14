@@ -572,6 +572,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2892deb_a0a2f911",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f4c058bd_0ee983c2",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7790bb48_83b56ce0",
@@ -833,6 +851,24 @@
       "side": 1,
       "message": "No - I\u0027ve asked them to add this though. For now it is just the EVB gui.",
       "parentUuid": "826fefa8_77002039",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a69207d_ddef55b9",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d9e793ab_3a1121b8",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1138,6 +1174,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1768e356_f3db16d0",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "70c9bfc0_5fd33b4b",
+      "range": {
+        "startLine": 306,
+        "startChar": 1,
+        "endLine": 325,
+        "endChar": 0
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cb9b653_11ff9418",
@@ -1392,6 +1452,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d466f36_e7ab7516",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "321d140f_86283a8d",
+      "range": {
+        "startLine": 387,
+        "startChar": 6,
+        "endLine": 387,
+        "endChar": 7
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31767b30_76ea7652",
@@ -1476,6 +1560,24 @@
       "side": 1,
       "message": "Hmm - yeah that might be cleaner. Alright I moved the protocol writes into this main set_state function and removed the \u0027common\u0027 functions. I did the same for CIO to stay consistent.",
       "parentUuid": "fd5484de_55aae82a",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fefac9f_5929f38c",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "554cf2ff_6837b565",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -1921,6 +2023,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e18aad1_d0fd50bc",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9f67bbc4_4e9da181",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d552dbab_f9a4f3f5",
@@ -2235,6 +2355,24 @@
       "side": 1,
       "message": "This is in the addendum to the programming guide, ping me if you want the drive link.",
       "parentUuid": "7acfa59b_ba090150",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef379dbf_82e09b0b",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "597a1fee_7de327d9",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -2645,6 +2783,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3979961d_3a450d80",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18c02dfa_42ce868c",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2751b47_3894af48",
@@ -2847,6 +3003,24 @@
       "side": 1,
       "message": "Yes to save space. I don\u0027t think we will use it on many boards, and it does take up quite a bit. Just checked and this option saves ~600 bytes.\n\nOriginally I had to turn a bunch of stuff off on Volteer to get this to fit - looks like somebody has done some cleanup and it fits comfortably now.",
       "parentUuid": "c448213d_6883b778",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c68de59_8f23df62",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-14T23:04:47Z",
+      "side": 1,
+      "message": "I removed the command-line help text. That\u0027s a pretty brutal definition of \"cleanup.\" 😊",
+      "parentUuid": "c7db05c8_42777fff",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
