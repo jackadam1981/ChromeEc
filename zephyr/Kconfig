@@ -418,6 +418,94 @@ config PLATFORM_EC_MKBP_EVENT
 
       This requires a MKBP event delivery method(GPIO, HOST_EVENT, and etc)
 
+config PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	bool "MKBP event wakeup mask"
+	  depends on PLATFORM_EC_MKBP_EVENT
+	help
+	  Enables the event system that's used to wakeup the system in suspend.
+	  Some examples are:
+	    PLATFORM_EC_MKBP_EVENT_KEY_MATRIX
+	    PLATFORM_EC_MKBP_EVENT_SWITCH
+
+config PLATFORM_EC_MKBP_EVENT_KEY_MATRIX
+	bool "EC MKBP Key Matrix Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  Keyboard matrix changed. The event data is the new matrix state.
+
+config PLATFORM_EC_MKBP_EVENT_HOST_EVENT
+	bool "EC MKBP Host Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  New host event. The event data is 4 bytes of host event flags.
+
+config PLATFORM_EC_MKBP_EVENT_SENSOR_FIFO
+	bool "EC MKBP Sensor FIFO Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  New Sensor FIFO data. The event data is fifo_info structure.
+
+config PLATFORM_EC_MKBP_EVENT_BUTTON
+	bool "EC MKBP Button Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  The state of the non-matrixed buttons have changed.
+
+config PLATFORM_EC_MKBP_EVENT_SWITCH
+	bool "EC MKBP Switch Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  The state of the switches have changed.
+
+config PLATFORM_EC_MKBP_EVENT_FINGERPRINT
+	bool "EC MKBP Fingerprint Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  New Fingerprint sensor event, the event data is fp_events bitmap.
+
+config PLATFORM_EC_MKBP_EVENT_SYSRQ
+	bool "EC MKBP SYSRQ Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  Sysrq event: send emulated sysrq. The event data is sysrq,
+	  corresponding to the key to be pressed.
+
+config PLATFORM_EC_MKBP_EVENT_HOST_EVENT64
+	bool "EC MKBP HOST Event64"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  New 64-bit host event. The event data is 8 bytes of host event flags.
+
+config PLATFORM_EC_MKBP_EVENT_CEC_EVENT
+	bool "EC MKBP CEC Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  Notify the AP that something happened on CEC
+
+config PLATFORM_EC_MKBP_EVENT_CEC_MESSAGE
+	bool "EC MKBP CEC Message Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  Send an incoming CEC message to the AP
+
+config PLATFORM_EC_MKBP_EVENT_DP_ALT_MODE_ENTERED
+	bool "EC DP ALT Mode Enterted Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  We have entered DisplayPort Alternate Mode on a Type-C port.
+
+config PLATFORM_EC_MKBP_EVENT_ONLINE_CALIBRATION
+	bool "EC MKBP Online Calibration Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  New online calibration values are available.
+
+config PLATFORM_EC_MKBP_EVENT_PCHG
+	bool "EC MKBP PCHG Event"
+	depends on PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+	help
+	  Peripheral device charger event
+
 config PLATFORM_EC_MPU
 	bool "Support Memory-Protection Unit (MPU)"
 	depends on CPU_CORTEX_M
