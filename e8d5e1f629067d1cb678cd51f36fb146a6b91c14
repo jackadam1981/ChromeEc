@@ -1,0 +1,314 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2be6862_a9209880",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "is its a initial board, please add all the basic tests that are performed",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc2ab4d_62357d7d",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "this is MECC specific, we can modify it once MECC1.1 is available.\nfor now, dont change anything on this file.\n\ndo below things in board.h for all these\n#undef ***\n#define ***",
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cefb014_231599ff",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "mchp, change it in all files",
+      "range": {
+        "startLine": 6,
+        "startChar": 16,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be943d11_2799c1cb",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "nit: remove, refer adlrvpp_ite, need it for I/O expander even if Type-C port is not defined",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b9edb4c_479f5bda",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "add #if defined(HAS_TASK_PD_C1)",
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0702b8c3_327a1bd5",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "1. add rationale behind this change.\n2. make it a override function\n3. simple return controller number like below, no need to do shift operations\nswitch(port) {\n  xyx:\n     return abc;\n}",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 1
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baf4cca1_53e135ad",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "by defualt remove, manually define when debugging",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe4127f7_3bf49f61",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "not needed, default all are enabled",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb1108d4_dee63235",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c4c6c6b_4211ddd9",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 30
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bb91401_a2a843a0",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "needed? use the variable i2c_ports_used",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 25
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0106647a_6957a706",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "nit: remove, refer adlrvpp_ite, need it for I/O expander even if Type-C port is not defined",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 27
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ebe500e_691cf1b9",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "nit: remove, refer adlrvpp_ite, need it for I/O expander even if Type-C port is not defined",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 27
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdffc261_eebc2714",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 19
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-14T18:02:46Z",
+      "side": 1,
+      "message": "nit: refer adlrvpp_ite, we modified the ifdefs for easy adding or removing tasks.\nwill be useful if we plan to test all Typec-C ports",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
