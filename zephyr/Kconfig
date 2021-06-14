@@ -418,6 +418,16 @@ config PLATFORM_EC_MKBP_EVENT
 
       This requires a MKBP event delivery method(GPIO, HOST_EVENT, and etc)
 
+config PLATFORM_EC_MKBP_EVENT_WAKEUP_MASK
+    int "MKBP event wakeup mask"
+    depends on PLATFORM_EC_MKBP_EVENT
+    help
+      Define which MKBP events should wakeup the system in suspend. Some
+      examples are:
+        EC_MKBP_EVENT_KEY_MATRIX
+        EC_MKBP_EVENT_SWITCH
+      The only things that should be in this mask are EC_MKBP_EVENT_*.
+
 config PLATFORM_EC_MPU
 	bool "Support Memory-Protection Unit (MPU)"
 	depends on CPU_CORTEX_M && CPU_HAS_MPU
