@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e2c64ec_0967dc4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-14T23:12:19Z",
+      "side": 1,
+      "message": "Yes. \nthere are two cases.\n1 - this command is run before USBC plugged in. then mfignore comes into picture from the start.\n\n2 - dock is already plugged in and assignment D was accepted. which means USB enumeration was USB3 and DP Aux 2-lane was negotiated.\n\nnow mfignore was run. But in this case, typeC need to be unplugged to initiate new 4-lane Aux negotiation. \nsame thing happens when we are in assignment C want to go back to Assignment D. USB need to reenumerated to USB3.\n\nMy understanding is initiating DP Aux negotiation and USB renumeration from EC context is not there now.",
+      "parentUuid": "c1fa8e95_5d46e9c4",
+      "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cd201ec9_0fbb4927",
@@ -67,6 +85,30 @@
       "writtenOn": "2021-06-08T17:44:37Z",
       "side": 1,
       "message": "This name could be more descriptive.  Something like bool dp_mf_ignore maybe?  Or bool dp_mf_override to match the command",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "373873e0_07067a3d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-14T23:12:19Z",
+      "side": 1,
+      "message": "is dp_port_mf_allow ok?\n\nwe want to do this per port so that other port is still normal. it could be very handy if we are testing a machine where one port is configured to allow so it does 2-lane other port does not so it does 4-lane.",
+      "parentUuid": "cd201ec9_0fbb4927",
       "range": {
         "startLine": 51,
         "startChar": 4,
@@ -96,6 +138,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9bbbac0b_96ad1b30",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-14T23:12:19Z",
+      "side": 1,
+      "message": "would mfallow be ok?",
+      "parentUuid": "5aafeea2_a57acad8",
+      "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59598cce_ff6e9401",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 3
@@ -107,6 +167,30 @@
       "writtenOn": "2021-06-08T17:44:37Z",
       "side": 1,
       "message": "nit: no need to list [0 | 1] for the ports.  Plus we have a 3-port board now too :)",
+      "range": {
+        "startLine": 1501,
+        "startChar": 61,
+        "endLine": 1501,
+        "endChar": 66
+      },
+      "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24cf3ec0_b89c0c08",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1501,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-14T23:12:19Z",
+      "side": 1,
+      "message": "ah I see ok.",
+      "parentUuid": "59598cce_ff6e9401",
       "range": {
         "startLine": 1501,
         "startChar": 61,
