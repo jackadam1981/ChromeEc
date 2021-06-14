@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "503212be_8b2ccc5f",
+        "filename": "zephyr/shim/src/mpu.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-14T16:30:19Z",
+      "side": 1,
+      "message": "In another CL, it looks like PLATFORM_EC_MPU depends on this being on a cortex-m, this file belongs under shim/core/cortex-m/ and not under the common shim/src/",
+      "revId": "4b476faefd636189c70f22286d2286c397420d2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
