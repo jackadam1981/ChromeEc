@@ -34,6 +34,24 @@
       "parentUuid": "d5249bcc_1dfad9c9",
       "revId": "2dc1edf60c6a1e3772697e557c4f3b3929eda6f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "285407f5_56b56a11",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-14T20:01:15Z",
+      "side": 1,
+      "message": "Okay, so I\u0027m assuming this isn\u0027t a case we expect to hit on stable hardware.  Should a failure like this still spam the console in some way to ensure we aren\u0027t quietly ignoring hardware bugs in early development?",
+      "parentUuid": "827814fe_39ff0c81",
+      "revId": "2dc1edf60c6a1e3772697e557c4f3b3929eda6f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
