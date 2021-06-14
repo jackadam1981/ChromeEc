@@ -46,6 +46,30 @@
       },
       "revId": "b900d803218d0273bcfb9b8d7b0442b95ea04826",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35f1e491_c87777f9",
+        "filename": "include/driver/accel_bma2x2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-06-14T15:42:38Z",
+      "side": 1,
+      "message": "I can\u0027t find anything relevant in any style guide. But the pattern I see in the existing code is that everything is aligned to column 45 except for some mistakes.\n\nPersonally I would align each block to one char past the longest name, like the golang formatter would do.",
+      "parentUuid": "3f1934ab_79e34b32",
+      "range": {
+        "startLine": 30,
+        "startChar": 32,
+        "endLine": 30,
+        "endChar": 40
+      },
+      "revId": "b900d803218d0273bcfb9b8d7b0442b95ea04826",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
