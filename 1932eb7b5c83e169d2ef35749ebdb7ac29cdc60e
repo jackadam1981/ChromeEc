@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7496880_6ecf0516",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-14T16:58:34Z",
+      "side": 1,
+      "message": "Is it better to configure the host event/MKBP event wake mask through dt, like what we did for the console channel mask, b/180421120?",
+      "revId": "1932eb7b5c83e169d2ef35749ebdb7ac29cdc60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c9b7e8c_0e5a420f",
