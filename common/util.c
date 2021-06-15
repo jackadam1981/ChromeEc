@@ -699,3 +699,68 @@ void wait_for_ready(volatile uint32_t *reg, uint32_t enable, uint32_t ready)
 	while (!(*reg & ready))
 		;
 }
+
+int convert_base3_to_binary_first(int base3, int nbits)
+{
+	int num = base3;
+	int divisor = 1;
+	int binary_below = 0;
+	int has_z = 0;
+	int index;
+	int digit;
+
+	/*
+	 * Compute the divisor for the MSB in the base3 system.
+	 * For example, if nbits == 3, meaning the number has 3 digits, the
+	 * divisor for the MSB is 3^2 = 9.
+	 */
+	index = nbits - 1;
+	while (index--)
+		divisor *= 3;
+
+	/* Loop through every ternary digit, from MSB to LSB. */
+	index = nbits;
+	while (index--) {
+		digit = num / divisor;
+		num = num % divisor;
+		divisor /= 3;
+
+		/*
+		 * We loop through ternary digit from MSB to LSB. We determine
+		 * the amount of numbers that can be represented with only
+		 * binary digits (no Z) whose value in the normal ternary system
+		 * is lower than the one we are parsing. Counting from the left,
+		 * we add 2^i for any '1' digit to account for the binary
+		 * numbers whose values would be below it if all following
+		 * digits we parsed would be '0'. As soon as we find a '2' digit
+		 * we can total the remaining binary numbers below as 2^(i+1)
+		 * because we know that all binary representations counting only
+		 * this and following digits must have values below our number
+		 * (since 1xxx is always smaller than 2xxx).
+		 *
+		 * Example: 1 0 2 1 (counting from the left / most significant)
+		 * '1' at 3^3: Add 2^3 = 8 to account for binaries 0000-0111
+		 * '0' at 3^2: Ignore (not all binaries 1000-1100 are below us)
+		 * '2' at 3^1: Add 2^(1+1) = 4 to account for binaries 1000-1011
+		 * Stop adding for lower digits (3^0), all already accounted
+		 * now. We know that there can be no binary numbers 1020-102X.
+		 */
+		switch (digit) {
+		case 0: /* Ignore '0' digits. */
+			break;
+		case 1:	/* Account for binaries 0 to 2^index - 1. */
+			binary_below += 1 << index;
+			break;
+		case 2:	/* Account for binaries 0 to 2^(index+1) - 1. */
+			binary_below += 1 << (index + 1);
+			has_z = 1;
+		}
+
+		/* Stop adding for lower digits. */
+		if (has_z)
+			return base3 + (1 << nbits) - binary_below;
+	}
+
+	/* binary_below is normal binary system value if !has_z. */
+	return binary_below;
+}

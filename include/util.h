@@ -328,6 +328,17 @@ static inline uint64_t mulaa32(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
  */
 void wait_for_ready(volatile uint32_t *reg, uint32_t enable, uint32_t ready);
 
+/**
+ * Convert a number, which is in a normal ternary number system, to a
+ * non-standard ternary number system where the first 2^n natural numbers are
+ * represented as they would be in a binary system (without any Z digits).
+ *
+ * @param base3		Number in a ternary number system (or called base 3).
+ * @param nbits		Total number of bits (ternary bits)
+ * @return Number in the binary-first ternary number system.
+ */
+int convert_base3_to_binary_first(int base3, int nbits);
+
 #ifdef __cplusplus
 }
 #endif
