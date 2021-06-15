@@ -70,6 +70,30 @@
       },
       "revId": "3afc1253ffc1b1925b18fcab0bf3fd8bd2045aab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a090d9b_8e68d36b",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1325,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-15T21:39:04Z",
+      "side": 1,
+      "message": "You\u0027re right. We should match CONFIG_PLATFORM_EC_CBI_EEPROM here otherwise check_allowed.sh will throw an error. Done.",
+      "parentUuid": "91ec7821_b57389f1",
+      "range": {
+        "startLine": 1325,
+        "startChar": 7,
+        "endLine": 1325,
+        "endChar": 29
+      },
+      "revId": "3afc1253ffc1b1925b18fcab0bf3fd8bd2045aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
