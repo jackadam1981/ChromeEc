@@ -16,6 +16,69 @@
       "message": "Rough draft / work in progress, uploading for early review / discussion.",
       "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c37ebd93_bebb7a33",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-15T07:57:58Z",
+      "side": 1,
+      "message": "I copied this whole function from emul_bma255.c from crrev.com/c/2933301\nShould we try to design some common code for emulating I2C chips with registers before creating too many more emulators that duplicate this?",
+      "range": {
+        "startLine": 121,
+        "startChar": 11,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39c7442_5651f225",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-15T07:57:58Z",
+      "side": 1,
+      "message": "How do I run the test and see the LOG_DBG output i2c_dump_msgs produces?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 14
+      },
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2e8386_06c3c924",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-15T07:57:58Z",
+      "side": 1,
+      "message": "Changed the address of the 2nd PI3USB9201 since I2C_PORT_USB_C0 and I2C_PORT_USB_C1 are the same in the driver test. Probably just need to have a single PI3USB9201 somehow?",
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
