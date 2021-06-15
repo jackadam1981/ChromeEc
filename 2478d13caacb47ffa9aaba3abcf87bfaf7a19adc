@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a54891_d8c40b45",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-15T00:00:27Z",
+      "side": 1,
+      "message": "use simple int or enum ec_error_list\nif you want to be more pedantic.\n\nP.S. there are times i avoid using enum ec_error_list in\nglobal header files because we end up with some complex\ncircular dependencies.",
+      "range": {
+        "startLine": 287,
+        "startChar": 1,
+        "endLine": 287,
+        "endChar": 8
+      },
+      "revId": "2478d13caacb47ffa9aaba3abcf87bfaf7a19adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
