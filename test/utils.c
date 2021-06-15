@@ -471,6 +471,43 @@ test_static int test_safe_memcmp(void)
 	return EC_SUCCESS;
 }
 
+<<<<<<< HEAD   (4ad821 Homestar:TCPM:remove needless argument)
+=======
+test_static int test_alignment_log2(void)
+{
+	TEST_EQ(alignment_log2(1), 0, "%d");
+	TEST_EQ(alignment_log2(2), 1, "%d");
+	TEST_EQ(alignment_log2(5), 0, "%d");
+	TEST_EQ(alignment_log2(0x10070000), 16, "%d");
+	TEST_EQ(alignment_log2(0x80000000), 31, "%d");
+	return EC_SUCCESS;
+}
+
+test_static int test_binary_first_base3_from_bits(void)
+{
+	int n0[] = {0, 0, 0};  /* LSB first */
+	int n7[] = {1, 1, 1};
+	int n8[] = {2, 0, 0};
+	int n9[] = {2, 1, 0};
+	int n10[] = {0, 2, 0};
+	int n11[] = {1, 2, 0};
+	int n18[] = {0, 0, 2};
+	int n26[] = {2, 2, 2};
+	int n38[] = {1, 2, 0, 1};
+
+	TEST_EQ(binary_first_base3_from_bits(n0, ARRAY_SIZE(n0)), 0, "%d");
+	TEST_EQ(binary_first_base3_from_bits(n7, ARRAY_SIZE(n7)), 7, "%d");
+	TEST_EQ(binary_first_base3_from_bits(n8, ARRAY_SIZE(n8)), 8, "%d");
+	TEST_EQ(binary_first_base3_from_bits(n9, ARRAY_SIZE(n9)), 9, "%d");
+	TEST_EQ(binary_first_base3_from_bits(n10, ARRAY_SIZE(n10)), 10, "%d");
+	TEST_EQ(binary_first_base3_from_bits(n11, ARRAY_SIZE(n11)), 11, "%d");
+	TEST_EQ(binary_first_base3_from_bits(n18, ARRAY_SIZE(n18)), 18, "%d");
+	TEST_EQ(binary_first_base3_from_bits(n26, ARRAY_SIZE(n26)), 26, "%d");
+	TEST_EQ(binary_first_base3_from_bits(n38, ARRAY_SIZE(n38)), 38, "%d");
+	return EC_SUCCESS;
+}
+
+>>>>>>> CHANGE (504216 util: Add function to convert binary first base3 number)
 void run_test(int argc, char **argv)
 {
 	test_reset();
@@ -491,6 +528,11 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_bytes_are_trivial);
 	RUN_TEST(test_is_aligned);
 	RUN_TEST(test_safe_memcmp);
+<<<<<<< HEAD   (4ad821 Homestar:TCPM:remove needless argument)
+=======
+	RUN_TEST(test_alignment_log2);
+	RUN_TEST(test_binary_first_base3_from_bits);
+>>>>>>> CHANGE (504216 util: Add function to convert binary first base3 number)
 
 	test_print_result();
 }
