@@ -83,6 +83,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fdfebbdc_2a7c7fb3",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-15T19:36:36Z",
+      "side": 1,
+      "message": "Copied over from emul_bma255.c.\nI think we should try removing the mutex from the emulators and instead solve any problems this reveals in another way. Either the I2C layer should solve it, or the EC code being tested needs the mutex, or something similar.",
+      "parentUuid": "301fa09f_2d8a6669",
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f59a34f6_b5628ab3",
         "filename": "zephyr/test/drivers/src/main.c",
         "patchSetId": 1
@@ -94,6 +112,24 @@
       "writtenOn": "2021-06-15T17:21:46Z",
       "side": 1,
       "message": "need to undo this before final submit?",
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c07b5c3_f977cde2",
+        "filename": "zephyr/test/drivers/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-15T19:36:36Z",
+      "side": 1,
+      "message": "Yes, just hacked out temporarily to remove noise and focus on test_suite_bc12.\nI don\u0027t know of a way to control which test suites are run from the command line.",
+      "parentUuid": "f59a34f6_b5628ab3",
       "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
