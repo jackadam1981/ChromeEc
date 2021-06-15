@@ -33,6 +33,24 @@
       "message": "you should most likely remove this file as\nthis tuning is probably not relevant to your board.\n\ncheck with MPS if the part you\u0027ll be using will require\nany adjustment at boot time.",
       "revId": "00c7bdfac4f69354863050c3a2ed1147fd655780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b181e7bc_3a3ad8f4",
+        "filename": "board/gimble/tune_mp2964.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-15T08:06:01Z",
+      "side": 1,
+      "message": "Hi Caveh,\nWe will check with MPS, once we don\u0027t need it, I will drop this one on following CL. Thanks.",
+      "parentUuid": "726ba653_64e9debc",
+      "revId": "00c7bdfac4f69354863050c3a2ed1147fd655780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
