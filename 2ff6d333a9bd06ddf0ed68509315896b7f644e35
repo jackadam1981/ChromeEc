@@ -45,6 +45,30 @@
       },
       "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b781e1c_9cdd74ea",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-15T18:52:26Z",
+      "side": 1,
+      "message": "Oh right I was going to ask what we should do about this.\n\nSome systems pulse TPM_RST_L twice when they reset. If we clear the ap ro verification state while TPM_RST_L is being debounced, then cr50 will never keep the AP RO verification state on these systems. It\u0027ll get cleared immediately during the second pulse.\n\nDo you think this is reasonable? We can also discuss this on the bug.",
+      "parentUuid": "1301cf63_edcb4986",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
