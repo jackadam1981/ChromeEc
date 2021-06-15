@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1dac68f_fb00e212",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-15T23:02:03Z",
+      "side": 1,
+      "message": "They are both retimers, so there\u0027s some relation I guess.",
+      "parentUuid": "6b368af7_a07e60d0",
+      "range": {
+        "startLine": 1091,
+        "startChar": 7,
+        "endLine": 1091,
+        "endChar": 39
+      },
+      "revId": "b5bde45caf101b1e856a0ce5dbe6816dc5ce601e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c10aa40_d6b6c180",
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "I think what you have is fine. We sometimes put new ones near existing ones if it is obviously related, but it is not necessary.",
       "parentUuid": "8c10aa40_d6b6c180",
+      "revId": "b5bde45caf101b1e856a0ce5dbe6816dc5ce601e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3500c83_7bcdcf3c",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1623,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-15T23:02:03Z",
+      "side": 1,
+      "message": "Moved next to CONFIG_USBC_RETIMER_INTEL_BB since the configs were also moved in Kconfig.usbc.",
+      "parentUuid": "a052cc22_f0c7ddaa",
       "revId": "b5bde45caf101b1e856a0ce5dbe6816dc5ce601e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
