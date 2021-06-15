@@ -68,6 +68,30 @@
       },
       "revId": "fb45e346bf97054addfc981cfc2bfd1fbe1857ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62bea48f_bb6714e2",
+        "filename": "board/primus/usbc_config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-15T08:40:00Z",
+      "side": 1,
+      "message": "Yes, the schematics use C0 and C2. I think change all C2 to C1 is a better way for fit the EC code. I will add comment to note we use C1 in EC code and C2 in schematics.",
+      "parentUuid": "0509d0e8_8010d5a2",
+      "range": {
+        "startLine": 15,
+        "startChar": 11,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "fb45e346bf97054addfc981cfc2bfd1fbe1857ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
