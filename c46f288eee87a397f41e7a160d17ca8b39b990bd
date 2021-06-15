@@ -16,6 +16,23 @@
       "message": "Hi, all: the related PR is merged. Please check this CL. Thanks.",
       "revId": "c46f288eee87a397f41e7a160d17ca8b39b990bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bec9835_f240f7e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-15T15:26:21Z",
+      "side": 1,
+      "message": "Can you please add a UPSTREAM: tag and also a link to the upstream commit?\n\nE.g. use: git cherry-pick -x",
+      "revId": "c46f288eee87a397f41e7a160d17ca8b39b990bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
