@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6b368af7_a07e60d0",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 2
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-15T21:57:53Z",
+      "side": 1,
+      "message": "We do have PLATFORM_EC_USBC_RETIMER_INTEL_BB\n\nI\u0027m not sure it is related though, since that is some sort of internal thing, I think.\n\nBut if it is related, then these should go next to it.",
+      "range": {
+        "startLine": 1091,
+        "startChar": 7,
+        "endLine": 1091,
+        "endChar": 39
+      },
+      "revId": "b5bde45caf101b1e856a0ce5dbe6816dc5ce601e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c10aa40_d6b6c180",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 2
@@ -14,6 +37,24 @@
       "writtenOn": "2021-06-14T20:05:36Z",
       "side": 1,
       "message": "I\u0027m pretty unclear on the intended organization of these files, but should these go by CONFIG_USBC_RETIMER_INTEL_BB?  Or are we always going for \"newest config last\"?",
+      "revId": "b5bde45caf101b1e856a0ce5dbe6816dc5ce601e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a052cc22_f0c7ddaa",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1623,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-15T21:57:53Z",
+      "side": 1,
+      "message": "I think what you have is fine. We sometimes put new ones near existing ones if it is obviously related, but it is not necessary.",
+      "parentUuid": "8c10aa40_d6b6c180",
       "revId": "b5bde45caf101b1e856a0ce5dbe6816dc5ce601e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
