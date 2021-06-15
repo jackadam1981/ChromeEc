@@ -52,6 +52,24 @@
       "parentUuid": "827814fe_39ff0c81",
       "revId": "2dc1edf60c6a1e3772697e557c4f3b3929eda6f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d42f283_7d856a94",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-15T01:03:24Z",
+      "side": 1,
+      "message": "my private testing version of this patch does have additional\ndiagnostics - some of which i can include here. in practice,\nthe timing was OK.\n\nmy only concern is that console spam may also compromise our\ntiming budget and send us back to square one.\nwhen i reviewed the original twinkie captures from brya with nathan,\nhe mentioned we only have 15ms to respond to GoodCRC.",
+      "parentUuid": "285407f5_56b56a11",
+      "revId": "2dc1edf60c6a1e3772697e557c4f3b3929eda6f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
