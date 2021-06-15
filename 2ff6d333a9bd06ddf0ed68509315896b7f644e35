@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72dbc1e6_3ab6e9c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-15T18:36:56Z",
+      "side": 1,
+      "message": "is it three or four (listed below)",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1301cf63_edcb4986",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-15T18:36:56Z",
+      "side": 1,
+      "message": "why does this have to be qualified by !tpm_reset_in_progress() ?",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
