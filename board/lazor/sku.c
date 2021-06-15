@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "sku.h"
 #include "system.h"
+#include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
@@ -29,6 +30,16 @@ static const char *const model_name[] = {
 	"LIMOZEEN",
 	"UNKNOWN",
 };
+
+int board_get_version(void)
+{
+	int base3 = 0;
+
+	base3 += gpio_get_ternary(GPIO_BOARD_VERSION1);
+	base3 += gpio_get_ternary(GPIO_BOARD_VERSION2) * 3;
+	base3 += gpio_get_ternary(GPIO_BOARD_VERSION3) * 9;
+	return convert_base3_to_binary_first(base3, 3);
+}
 
 static enum board_model get_model(void)
 {
