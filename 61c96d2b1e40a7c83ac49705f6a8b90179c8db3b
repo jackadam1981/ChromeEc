@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86eface_91aaac21",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2253,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-15T18:54:22Z",
+      "side": 1,
+      "message": "maybe change this to \u0027get hash rc: %d\u0027 (without newline) and drop \u0027%d %s\u0027 from line 2265 and drop the \u0027desc\u0027 variable?",
+      "revId": "61c96d2b1e40a7c83ac49705f6a8b90179c8db3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
