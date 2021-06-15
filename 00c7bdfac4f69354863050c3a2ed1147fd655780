@@ -69,6 +69,24 @@
       "parentUuid": "b181e7bc_3a3ad8f4",
       "revId": "00c7bdfac4f69354863050c3a2ed1147fd655780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8b0ee6_520daf32",
+        "filename": "board/gimble/tune_mp2964.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-15T08:24:18Z",
+      "side": 1,
+      "message": "Got it. There will be also a following CL to remove checking board_id in gimble/.\nThanks.",
+      "parentUuid": "2b2d2516_59d634e0",
+      "revId": "00c7bdfac4f69354863050c3a2ed1147fd655780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
