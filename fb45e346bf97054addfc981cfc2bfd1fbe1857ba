@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1534cef1_a4e950d6",
+        "filename": "board/primus/i2c.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-15T07:20:12Z",
+      "side": 1,
+      "message": "i\u0027d suggest reducing these to 400KHz for bringup and creating\na bug to check the signals with a scope before raising\nto 1MHz.",
+      "range": {
+        "startLine": 16,
+        "startChar": 10,
+        "endLine": 16,
+        "endChar": 14
+      },
+      "revId": "fb45e346bf97054addfc981cfc2bfd1fbe1857ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0509d0e8_8010d5a2",
         "filename": "board/primus/usbc_config.h",
         "patchSetId": 14
