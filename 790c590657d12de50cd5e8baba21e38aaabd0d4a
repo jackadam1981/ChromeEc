@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bddd0677_b0bbaf58",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-15T23:24:42Z",
+      "side": 1,
+      "message": "Outside the scope of this CL, but why not a hook?",
+      "revId": "790c590657d12de50cd5e8baba21e38aaabd0d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afe489a9_f354a50e",
+        "filename": "driver/tcpm/nct38xx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-15T23:24:42Z",
+      "side": 1,
+      "message": "nit: Note that this should be called from board_reset_pd_mcu",
+      "revId": "790c590657d12de50cd5e8baba21e38aaabd0d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
