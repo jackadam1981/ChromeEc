@@ -192,10 +192,7 @@ __override int bb_retimer_power_handle(const struct usb_mux *me, int on_off)
 	enum ioex_signal rst_signal;
 
 	if (me->usb_port == USBC_PORT_C0) {
-		if (get_board_id() == 1)
-			rst_signal = IOEX_ID_1_USB_C0_RT_RST_ODL;
-		else
-			rst_signal = IOEX_USB_C0_RT_RST_ODL;
+		rst_signal = IOEX_USB_C0_RT_RST_ODL;
 	} else if (me->usb_port == USBC_PORT_C2) {
 		rst_signal = IOEX_USB_C2_RT_RST_ODL;
 	} else {
@@ -231,20 +228,14 @@ void board_reset_pd_mcu(void)
 {
 	enum gpio_signal tcpc_rst;
 
-	if (get_board_id() == 1)
-		tcpc_rst = GPIO_ID_1_USB_C0_C2_TCPC_RST_ODL;
-	else
-		tcpc_rst = GPIO_USB_C0_C2_TCPC_RST_ODL;
+	tcpc_rst = GPIO_USB_C0_TCPC_RST_ODL;
 
 	/*
 	 * TODO(b/179648104): figure out correct timing
 	 */
 
 	gpio_set_level(tcpc_rst, 0);
-	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
-		gpio_set_level(GPIO_USB_C1_RST_ODL, 0);
-		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 0);
-	}
+	gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 0);
 
 	/*
 	 * delay for power-on to reset-off and min. assertion time
@@ -253,10 +244,7 @@ void board_reset_pd_mcu(void)
 	msleep(20);
 
 	gpio_set_level(tcpc_rst, 1);
-	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
-		gpio_set_level(GPIO_USB_C1_RST_ODL, 1);
-		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 1);
-	}
+	gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 1);
 
 	/* wait for chips to come up */
 
@@ -279,20 +267,15 @@ static void board_tcpc_init(void)
 
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C2_PPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
 
 	/* Enable TCPC interrupts. */
-	gpio_enable_interrupt(GPIO_USB_C0_C2_TCPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
+	gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
 
 	/* Enable BC1.2 interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C2_BC12_INT_ODL);
-
-	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
-		gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
-		gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
-		gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
-	}
+	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);	
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
@@ -300,7 +283,7 @@ uint16_t tcpc_get_alert_status(void)
 {
 	uint16_t status = 0;
 
-	if (gpio_get_level(GPIO_USB_C0_C2_TCPC_INT_ODL) == 0)
+	if (gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL) == 0)
 		status |= PD_STATUS_TCPC_ALERT_0 | PD_STATUS_TCPC_ALERT_2;
 
 	if ((ec_cfg_usb_db_type() != DB_USB_ABSENT) &&
@@ -317,15 +300,13 @@ int ppc_get_alert_status(int port)
 	else if ((port == USBC_PORT_C1) &&
 		 (ec_cfg_usb_db_type() != DB_USB_ABSENT))
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
-	else if (port == USBC_PORT_C2)
-		return gpio_get_level(GPIO_USB_C2_PPC_INT_ODL) == 0;
 	return 0;
 }
 
 void tcpc_alert_event(enum gpio_signal signal)
 {
 	switch (signal) {
-	case GPIO_USB_C0_C2_TCPC_INT_ODL:
+	case GPIO_USB_C0_TCPC_INT_ODL:
 		schedule_deferred_pd_interrupt(USBC_PORT_C0);
 		break;
 	case GPIO_USB_C1_TCPC_INT_ODL:
@@ -349,9 +330,6 @@ void bc12_interrupt(enum gpio_signal signal)
 			break;
 		task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
 		break;
-	case GPIO_USB_C2_BC12_INT_ODL:
-		task_set_event(TASK_ID_USB_CHG_P2, USB_CHG_EVENT_BC12);
-		break;
 	default:
 		break;
 	}
@@ -372,9 +350,6 @@ void ppc_interrupt(enum gpio_signal signal)
 			nx20p348x_interrupt(USBC_PORT_C1);
 			break;
 		}
-		break;
-	case GPIO_USB_C2_PPC_INT_ODL:
-		syv682x_interrupt(USBC_PORT_C2);
 		break;
 	default:
 		break;
