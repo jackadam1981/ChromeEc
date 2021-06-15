@@ -328,6 +328,37 @@ static inline uint64_t mulaa32(uint32_t a, uint32_t b, uint32_t c, uint32_t d)
  */
 void wait_for_ready(volatile uint32_t *reg, uint32_t enable, uint32_t ready);
 
+/**
+ * Convert a number, which is in a normal ternary number system, to a
+ * non-standard ternary number system where the first 2^n natural numbers are
+ * represented as they would be in a binary system (without any Z digits) and
+ * the following 3^n-2^n numbers use the remaining ternary representations in
+ * the normal ternary system order (skipping the values that were already used
+ * up).
+ *
+ * This function is useful for converting BOARd ID, which is initially used a
+ * binary and later decided to switch to tri-state after some revisions have
+ * already been built.
+ *
+ * Example: For nbits = 2 we get the following representation:
+ *
+ *   Number      X1     X0
+ *     0          0      0
+ *     1          0      1
+ *     2          1      0
+ *     3          1      1	// Start counting ternaries back at 0 after this
+ *     4          0      2	// Skipping 00 and 01 which are already used up
+ *     5          1      2	// Skipping 10 and 11 which are already used up
+ *     6          2      0
+ *     7          2      1
+ *     8          2      2
+ *
+ * @param base3		Number in a normal ternary number system.
+ * @param nbits		Total number of bits (ternary bits)
+ * @return Number in the binary-first ternary number system.
+ */
+int convert_base3_to_binary_first(int base3, int nbits);
+
 #ifdef __cplusplus
 }
 #endif

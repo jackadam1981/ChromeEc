@@ -481,6 +481,20 @@ test_static int test_alignment_log2(void)
 	return EC_SUCCESS;
 }
 
+test_static int test_convert_base3_to_binary_first(void)
+{
+	TEST_EQ(convert_base3_to_binary_first(0, 3), 0, "%d");
+	TEST_EQ(convert_base3_to_binary_first(13, 3), 7, "%d");
+	TEST_EQ(convert_base3_to_binary_first(2, 3), 8, "%d");
+	TEST_EQ(convert_base3_to_binary_first(5, 3), 9, "%d");
+	TEST_EQ(convert_base3_to_binary_first(6, 3), 10, "%d");
+	TEST_EQ(convert_base3_to_binary_first(7, 3), 11, "%d");
+	TEST_EQ(convert_base3_to_binary_first(18, 3), 18, "%d");
+	TEST_EQ(convert_base3_to_binary_first(26, 3), 26, "%d");
+	TEST_EQ(convert_base3_to_binary_first(34, 4), 38, "%d");
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, char **argv)
 {
 	test_reset();
@@ -502,6 +516,7 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_is_aligned);
 	RUN_TEST(test_safe_memcmp);
 	RUN_TEST(test_alignment_log2);
+	RUN_TEST(test_convert_base3_to_binary_first);
 
 	test_print_result();
 }
