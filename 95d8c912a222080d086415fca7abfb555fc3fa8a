@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d3f623e_54ae26a1",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-15T18:43:35Z",
+      "side": 1,
+      "message": "this list is sorted by long option.",
+      "revId": "95d8c912a222080d086415fca7abfb555fc3fa8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98ef62ec_6c18a9e9",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 2298,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-15T18:43:35Z",
+      "side": 1,
+      "message": "this actually is enum ap_ro_status.\n\nif you include ap_ro_integrity_check.h you can use the enum directly.",
+      "range": {
+        "startLine": 2298,
+        "startChar": 43,
+        "endLine": 2298,
+        "endChar": 56
+      },
+      "revId": "95d8c912a222080d086415fca7abfb555fc3fa8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
