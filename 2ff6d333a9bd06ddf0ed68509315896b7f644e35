@@ -69,6 +69,30 @@
       },
       "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92aea11c_14a20e58",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-15T19:33:02Z",
+      "side": 1,
+      "message": "yes, protecting from dual pulse is necessary, but maybe it makes more sense to invoke ap_ro_device_reset() from the debounced TPM reset code?",
+      "parentUuid": "5b781e1c_9cdd74ea",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
