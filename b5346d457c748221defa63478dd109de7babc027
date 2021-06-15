@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17c22761_6694b2b5",
+        "filename": "fuzz/pchg_fuzz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-15T18:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ba4cd54_996fcbaa",
+      "revId": "b5346d457c748221defa63478dd109de7babc027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cae5a5e0_853ea900",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "85028129_9ac9d561",
+        "filename": "fuzz/pchg_fuzz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-15T18:24:04Z",
+      "side": 1,
+      "message": "It\u0027s meant to give the PCHG task a chance to run.",
+      "parentUuid": "cae5a5e0_853ea900",
+      "revId": "b5346d457c748221defa63478dd109de7babc027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fb77c89_73cf9ef5",
         "filename": "include/peripheral_charger.h",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2021-06-15T07:07:42Z",
       "side": 1,
       "message": "nit: it might be nice to put some kind of comment/separator saying to keep this one at the end (ie it\u0027s not so obvious that this is not a MODE but just the end mark)",
+      "revId": "b5346d457c748221defa63478dd109de7babc027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb1f8f5_73219a0e",
+        "filename": "include/peripheral_charger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-15T18:24:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fb77c89_73cf9ef5",
       "revId": "b5346d457c748221defa63478dd109de7babc027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
