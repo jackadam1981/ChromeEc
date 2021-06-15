@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2985fe_8f005d0c",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-15T23:31:58Z",
+      "side": 0,
+      "message": "If NCT38XX_RESET_POST_DELAY_MS isn\u0027t needed it should probably be removed so it does not cause confusion. We could just substitute 0 reset_pd_port on zork boards.",
+      "revId": "790c590657d12de50cd5e8baba21e38aaabd0d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
