@@ -51,6 +51,24 @@
       "parentUuid": "726ba653_64e9debc",
       "revId": "00c7bdfac4f69354863050c3a2ed1147fd655780",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b2d2516_59d634e0",
+        "filename": "board/gimble/tune_mp2964.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-15T08:12:28Z",
+      "side": 1,
+      "message": "just a reminder, this code checks for\nget_board_id() \u003d\u003d 1\nwhich won\u0027t match if you\u0027re starting with board ID 0.",
+      "parentUuid": "b181e7bc_3a3ad8f4",
+      "revId": "00c7bdfac4f69354863050c3a2ed1147fd655780",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
