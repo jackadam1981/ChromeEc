@@ -33,6 +33,23 @@
       "message": "Can you please add a UPSTREAM: tag and also a link to the upstream commit?\n\nE.g. use: git cherry-pick -x",
       "revId": "c46f288eee87a397f41e7a160d17ca8b39b990bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2e76259_71507ea0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-15T18:10:22Z",
+      "side": 1,
+      "message": "Do we need this? I ran into this also when updating to v2.6 but there\u0027s a much simpler solution from what I can tell. We can just update the packer for the npcx (which is what I\u0027ve done locally). I\u0027m still waiting on https://chrome-internal-review.googlesource.com/c/chromeos/manifest-internal/+/3904822 to merge before I can push any of these changes.",
+      "revId": "c46f288eee87a397f41e7a160d17ca8b39b990bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
