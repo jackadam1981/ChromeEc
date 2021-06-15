@@ -6,3 +6,10 @@ config EMUL_SMART_BATTERY
 	bool "Smart Battery emulator"
 	help
 	  Enable the Smart Battery emulator. This driver use emulated I2C bus.
+
+config EMUL_BC12_DETECT_PI3USB9201
+	bool "PI3USB9201 emulator"
+	help
+	  Enable the PI3USB9201 emulator. PI3USB9201 is a BC1.2 charger
+	  detector/advertiser. The emulator supports reading and writing the
+	  4 I2C registers of the PI3USB9201 using the emulated I2C bus.
