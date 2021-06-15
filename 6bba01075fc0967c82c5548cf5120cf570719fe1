@@ -318,6 +318,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a25eca3_30e283f8",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-15T08:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce86cfd6_9482f523",
+      "range": {
+        "startLine": 362,
+        "startChar": 25,
+        "endLine": 362,
+        "endChar": 39
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cd84828_6f979a69",
@@ -592,6 +616,30 @@
       "side": 1,
       "message": "With patch 12, we\u0027re able to use `ectool adcread 0~3` under VT2 and `adc` in ec console, and get the name correct with \"some\" values.",
       "parentUuid": "9569311e_8c29f366",
+      "range": {
+        "startLine": 368,
+        "startChar": 43,
+        "endLine": 368,
+        "endChar": 60
+      },
+      "revId": "6bba01075fc0967c82c5548cf5120cf570719fe1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b914d3_6bc5a709",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-15T08:22:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b465715_82978df3",
       "range": {
         "startLine": 368,
         "startChar": 43,
