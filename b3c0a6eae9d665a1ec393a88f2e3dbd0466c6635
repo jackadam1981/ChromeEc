@@ -16,6 +16,52 @@
       "message": "Any more thoughts on these?",
       "revId": "b3c0a6eae9d665a1ec393a88f2e3dbd0466c6635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10873679_48681138",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-15T17:53:42Z",
+      "side": 1,
+      "message": "this should be static, and should be using enum  ap_ro_check_vc_errors for return value type (you can adde a no_error element to the enum).",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 230,
+        "endChar": 3
+      },
+      "revId": "b3c0a6eae9d665a1ec393a88f2e3dbd0466c6635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9abb260c_71adb2a0",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-15T17:53:42Z",
+      "side": 1,
+      "message": "this and line 350 check should be (rv !\u003d success)..\n\njust in case the set of return values of ap_ro_check_unsupported() changes.",
+      "range": {
+        "startLine": 318,
+        "startChar": 8,
+        "endLine": 318,
+        "endChar": 34
+      },
+      "revId": "b3c0a6eae9d665a1ec393a88f2e3dbd0466c6635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
