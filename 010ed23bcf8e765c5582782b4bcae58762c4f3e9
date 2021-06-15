@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "962a6e39_c6f65f86",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-15T01:40:36Z",
+      "side": 1,
+      "message": "nit: use `cprints` as `ccprints` is only used for the console channel.",
+      "range": {
+        "startLine": 186,
+        "startChar": 2,
+        "endLine": 186,
+        "endChar": 10
+      },
+      "revId": "010ed23bcf8e765c5582782b4bcae58762c4f3e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
