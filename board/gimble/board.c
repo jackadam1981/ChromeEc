@@ -48,10 +48,10 @@ static void board_chipset_resume(void)
 {
 	/* Allow keyboard backlight to be enabled */
 
-	if (get_board_id() == 1)
-		gpio_set_level(GPIO_ID_1_EC_KB_BL_EN, 1);
-	else
-		gpio_set_level(GPIO_EC_KB_BL_EN_L, 0);
+	/* TODO(b/190783131)
+	 * Need to implement specific keyboard backlight control method.
+	 */
+	
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
@@ -60,10 +60,10 @@ static void board_chipset_suspend(void)
 {
 	/* Turn off the keyboard backlight if it's on. */
 
-	if (get_board_id() == 1)
-		gpio_set_level(GPIO_ID_1_EC_KB_BL_EN, 0);
-	else
-		gpio_set_level(GPIO_EC_KB_BL_EN_L, 1);
+	/* TODO(b/190783131)
+	 * Need to implement specific keyboard backlight control method.
+	 */
+	
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
 
@@ -105,10 +105,7 @@ enum battery_present battery_hw_present(void)
 {
 	enum gpio_signal batt_pres;
 
-	if (get_board_id() == 1)
-		batt_pres = GPIO_ID_1_EC_BATT_PRES_ODL;
-	else
-		batt_pres = GPIO_EC_BATT_PRES_ODL;
+	batt_pres = GPIO_EC_BATT_PRES_ODL;
 
 	/* The GPIO is low when the battery is physically present */
 	return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
@@ -154,7 +151,7 @@ static void board_id_1_reclaim_adc(void)
 	 * The pin gets set to ADC7 in HOOK_PRIO_INIT_ADC, so we simply
 	 * need to set it back to GPIOE1.
 	 */
-	gpio_set_flags(GPIO_ID_1_EC_BATT_PRES_ODL, GPIO_INPUT);
+	
 	gpio_set_alternate_function(GPIO_PORT_E, BIT(1), GPIO_ALT_FUNC_NONE);
 }
 DECLARE_HOOK(HOOK_INIT, board_id_1_reclaim_adc, HOOK_PRIO_INIT_ADC + 1);
