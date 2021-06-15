@@ -67,8 +67,7 @@
 #define PD_POWER_SUPPLY_TURN_ON_DELAY  160000  /* us */
 #define PD_POWER_SUPPLY_TURN_OFF_DELAY 250000 /* us */
 
-/* b/2230219: 15V has better charging performance than 20V */
-#define PD_MAX_VOLTAGE_MV 15000
+#define PD_MAX_VOLTAGE_MV 20000
 #else
 #error Must define a VARIANT_KUKUI_CHARGER
 #endif /* VARIANT_KUKUI_CHARGER */
