@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f240231_4a787083",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-16T20:45:45Z",
+      "side": 1,
+      "message": "Yeah, I think that sounds good.  And yes, it makes sense to keep it per-port for testing.  Developers love being able to toggle things per-port :)",
+      "parentUuid": "373873e0_07067a3d",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5aafeea2_a57acad8",
         "filename": "common/usb_pd_alt_mode_dfp.c",
         "patchSetId": 3
