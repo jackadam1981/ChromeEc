@@ -16,6 +16,29 @@
       "message": "Hello Reviewers,\nCan we land this?\n\nI\u0027ve checked that CrOS booting and recovery with each version of Cr50 (EFS2.0 and EFS2.1).\nHowever, Cr50 still will remain supporting EFS2.0 as default.\n\n",
       "revId": "467f93ac2a08bc580eb897bd0348abce6e27ef20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f470832_ee688ae2",
+        "filename": "include/vboot.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-16T15:38:34Z",
+      "side": 1,
+      "message": "One last question. Why are these grouped in this order?\n\nEC_EFS_BOOT_MODE_VERIFIED and EC_EFS_BOOT_MODE_NORMAL are the good to boot state right? Can we group those at the start and move the TRUSTED_RO to the end?\n\nUp to you.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 55
+      },
+      "revId": "467f93ac2a08bc580eb897bd0348abce6e27ef20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
