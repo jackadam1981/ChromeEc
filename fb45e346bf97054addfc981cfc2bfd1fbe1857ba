@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcbedd17_0280409a",
+        "filename": "board/primus/gpio.inc",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-16T05:59:08Z",
+      "side": 1,
+      "message": "the _ODL suffix on the signal name suggests this is is an open-drain\nsignal, but you\u0027re configuring it as push-pull.\n\nif you really want open-drain, use GPIO_ODR_LOW. OR-in PULL_UP since there is no external pull.\n\neither is probably OK... unless the device on the other side doesn\u0027t\nlike a hard pull up. maybe check with the EE to see what they\nprefer.",
+      "parentUuid": "2ff1a1d1_988bfd9a",
+      "range": {
+        "startLine": 76,
+        "startChar": 64,
+        "endLine": 76,
+        "endChar": 76
+      },
+      "revId": "fb45e346bf97054addfc981cfc2bfd1fbe1857ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1534cef1_a4e950d6",
         "filename": "board/primus/i2c.c",
         "patchSetId": 14
