@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b65c8e_43b4b8cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1283719
+      },
+      "writtenOn": "2021-06-16T01:41:47Z",
+      "side": 1,
+      "message": "Hello Reviewers,\nCan we land this?\n\nI\u0027ve checked that CrOS booting and recovery with each version of Cr50 (EFS2.0 and EFS2.1).\nHowever, Cr50 still will remain supporting EFS2.0 as default.\n\n",
+      "revId": "467f93ac2a08bc580eb897bd0348abce6e27ef20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
