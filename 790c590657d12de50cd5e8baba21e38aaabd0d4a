@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "030131ae_bfa562d4",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-16T17:03:36Z",
+      "side": 1,
+      "message": "Any particular hook you have in mind? \n\nBesides our special case, I think the typical spot for resetting the TCPCs is either in early board init when tasks aren\u0027t running yet (which I don\u0027t see us doing, but octopus did anytime a battery was present), or as a part of a cold EC reboot right before we go down.  So I\u0027d guess there hasn\u0027t been a lot of need for a \"TCPCs reset\" type of hook so far.",
+      "parentUuid": "bddd0677_b0bbaf58",
+      "revId": "790c590657d12de50cd5e8baba21e38aaabd0d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "afe489a9_f354a50e",
         "filename": "driver/tcpm/nct38xx.h",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-15T23:24:42Z",
       "side": 1,
       "message": "nit: Note that this should be called from board_reset_pd_mcu",
+      "revId": "790c590657d12de50cd5e8baba21e38aaabd0d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd610705_b5a247a7",
+        "filename": "driver/tcpm/nct38xx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-16T17:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afe489a9_f354a50e",
       "revId": "790c590657d12de50cd5e8baba21e38aaabd0d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
