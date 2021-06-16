@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2ff1a1d1_988bfd9a",
+        "filename": "board/primus/gpio.inc",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-16T04:16:17Z",
+      "side": 1,
+      "message": "Do you mean change to GPIO_SEL_1P8V | GPIO_PULL_UP | GPIO_LOW will make more sense?\nYes, this GPIO only support 1.8V.",
+      "parentUuid": "ed2d0e29_47c6944d",
+      "range": {
+        "startLine": 76,
+        "startChar": 64,
+        "endLine": 76,
+        "endChar": 76
+      },
+      "revId": "fb45e346bf97054addfc981cfc2bfd1fbe1857ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1534cef1_a4e950d6",
         "filename": "board/primus/i2c.c",
         "patchSetId": 14
