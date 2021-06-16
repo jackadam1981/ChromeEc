@@ -51,6 +51,24 @@
       "parentUuid": "6cc2736e_dd3251cb",
       "revId": "8e03df91acff528c1acb9bb79b68b64da9fe6fcc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d4f1f1e_8cc74fa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-16T17:57:45Z",
+      "side": 1,
+      "message": "Henry/Yunlong:\n\nI think you misunderstood the error message.\n\nThe real error firmware-ec-cq caught is:\n\nboard/pazquel/gpio.inc:16:18: error: \"TROGDOR_REV1\" is not defined, evaluates to 0 [-Werror\u003dundef]\n #if BOARD_REV \u003e\u003d TROGDOR_REV1\n\n...and Yunlong has fixed it in patch set 4.\n\nThe error Henry pointed out popped up when building cherry (another board).\nSo please ignore it.\n\nAlso, I don\u0027t think we need to update trogdor_defconfig in this patch?\nI don\u0027t see any problem building pazquel when trogdor_defconfig is not updated.",
+      "parentUuid": "bf08a82c_20c9f50f",
+      "revId": "8e03df91acff528c1acb9bb79b68b64da9fe6fcc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
