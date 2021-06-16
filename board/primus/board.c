@@ -12,6 +12,7 @@
 #include "console.h"
 #include "fw_config.h"
 #include "hooks.h"
+#include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power_button.h"
 #include "power.h"
@@ -28,6 +29,12 @@
 #define KBLIGHT_LED_ON_LVL 100
 #define KBLIGHT_LED_OFF_LVL 0
 
+static const uint8_t actual_key_mask[KEYBOARD_COLS_MAX] = {
+	0x01, 0x68, 0xbd, 0x03, 0x7e, 0xff, 0xff,
+	0xff, 0xff, 0x03, 0xfd, 0x48, 0x03, 0xff,
+	0xf7, 0x16  /* full set */
+};
+
 /******************************************************************************/
 /* USB-A charging control */
 
@@ -41,6 +48,15 @@ BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
 __override void board_cbi_init(void)
 {
 	config_usb_db_type();
+}
+
+void board_config_pre_init(void)
+{
+	int i;
+
+	/* override the keyscan key mask */
+	for (i = 0; i < KEYBOARD_COLS_MAX; ++i)
+		keyscan_config.actual_key_mask[i] = actual_key_mask[i];
 }
 
 /* Called on AP S3 -> S0 transition */
