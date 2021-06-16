@@ -164,6 +164,13 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR		10
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
 
+/* Keyboard defines */
+#define CONFIG_KEYBOARD_CUSTOMIZATION
+#define CONFIG_KEYBOARD_DEBUG
+
+/* Enbale board_config_pre_init() */
+#define CONFIG_BOARD_PRE_INIT
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"	/* needed by registers.h */

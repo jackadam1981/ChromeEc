@@ -23,3 +23,4 @@ board-y+=pwm.o
 board-y+=sensors.o
 board-y+=tune_mp2964.o
 board-y+=usbc_config.o
+board-$(CONFIG_KEYBOARD_CUSTOMIZATION)+=keyboard_customization.o
