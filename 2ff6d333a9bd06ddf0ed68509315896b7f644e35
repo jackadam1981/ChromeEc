@@ -141,6 +141,30 @@
       },
       "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0101adc6_e77eaeb1",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-16T23:35:41Z",
+      "side": 1,
+      "message": "why does it have to be cleared on the falling edge of TPM_RST_L? The AP does not start communicating until TPM_RST_L is deasserted.\n\nI am just a bit concerned that we might skip calling ap_ro_device_reset() for whatever reason, this is it seems more reliable to me to always call ti when TPM reset programming is completing.",
+      "parentUuid": "884e5be5_e0c08264",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
