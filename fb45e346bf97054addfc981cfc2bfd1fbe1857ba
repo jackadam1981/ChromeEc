@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed2d0e29_47c6944d",
+        "filename": "board/primus/gpio.inc",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-16T03:16:59Z",
+      "side": 1,
+      "message": "this is confusing since the signal is call *_ODL.\nwould it make more sense to turn on the internal pull-up\ninstead of driving the signal?\ni assume that\u0027ll pull up to 1.8v and not 3.3v?",
+      "parentUuid": "5b549aa2_237b30cd",
+      "range": {
+        "startLine": 76,
+        "startChar": 64,
+        "endLine": 76,
+        "endChar": 76
+      },
+      "revId": "fb45e346bf97054addfc981cfc2bfd1fbe1857ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1534cef1_a4e950d6",
         "filename": "board/primus/i2c.c",
         "patchSetId": 14
