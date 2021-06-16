@@ -5,6 +5,7 @@
  * Test CBI
  */
 
+#include "cbi_eeprom.h"
 #include "common.h"
 #include "console.h"
 #include "cros_board_info.h"
@@ -260,7 +261,7 @@ DECLARE_EC_TEST(test_bad_crc)
 		   offsetof(struct cbi_header, crc), &crc);
 	i2c_write8(I2C_PORT_EEPROM, I2C_ADDR_EEPROM_FLAGS,
 		   offsetof(struct cbi_header, crc), ++crc);
-	cbi_invalidate_cache();
+	cbi_set_cache_state(EC_ERROR_CBI_CACHE_INVALID);
 	size = sizeof(d8);
 	zassert_equal(cbi_get_board_info(tag, &d8, &size), EC_ERROR_UNKNOWN,
 		      NULL);
