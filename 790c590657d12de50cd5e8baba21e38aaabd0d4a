@@ -34,6 +34,24 @@
       "parentUuid": "ef2985fe_8f005d0c",
       "revId": "790c590657d12de50cd5e8baba21e38aaabd0d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51f1fb57_4ff684f9",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-06-16T18:21:21Z",
+      "side": 0,
+      "message": "to stay generic, does it hurt anything to this? The define is a constant and if it is 0 the code will optimize out but leaves that option just in case we do need it at some point...\n\nif (NCT38XX_RESET_POST_DELAY_MS !\u003d 0)\n        msleep(NCT38XX_RESET_POST_DELAY_MS);\nnct38xx_reset_notify(port);",
+      "parentUuid": "8b6db336_bdc3989c",
+      "revId": "790c590657d12de50cd5e8baba21e38aaabd0d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
