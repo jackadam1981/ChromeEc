@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "736d0bf6_8bc53d90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-16T16:40:33Z",
+      "side": 1,
+      "message": "Hi Jian, can you set\n\n#define CONFIG_BATTERY_EXPORT_DISPLAY_SOC\n#undef CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE\n#define CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE 2\n\nto get the LED color match the display battery percentage (number visible to the user). Please refer to crrev/2876165.",
+      "revId": "7c77d03e7a6fbd61692b15a29121c2ab3c6f7ddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
