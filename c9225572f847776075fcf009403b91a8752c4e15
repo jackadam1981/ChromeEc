@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "891e0e7a_a1a12b40",
+        "filename": "board/spherion/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-06-16T06:01:43Z",
+      "side": 1,
+      "message": "update to Set3",
+      "parentUuid": "0b567d1d_529a7cf2",
+      "range": {
+        "startLine": 92,
+        "startChar": 3,
+        "endLine": 92,
+        "endChar": 7
+      },
+      "revId": "c9225572f847776075fcf009403b91a8752c4e15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "663ed962_b35d0273",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da93b73d_9bb20920",
+        "filename": "board/spherion/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-06-16T06:01:43Z",
+      "side": 1,
+      "message": "update to Set3",
+      "parentUuid": "663ed962_b35d0273",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 95,
+        "endChar": 7
+      },
+      "revId": "c9225572f847776075fcf009403b91a8752c4e15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0861c30f_6e52c8fd",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-06-15T08:24:02Z",
       "side": 1,
       "message": "Remove this if not used.",
+      "revId": "c9225572f847776075fcf009403b91a8752c4e15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce30c91_84007a93",
+        "filename": "board/spherion/battery.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-06-16T06:01:43Z",
+      "side": 1,
+      "message": "update to Set3",
+      "parentUuid": "0861c30f_6e52c8fd",
       "revId": "c9225572f847776075fcf009403b91a8752c4e15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
