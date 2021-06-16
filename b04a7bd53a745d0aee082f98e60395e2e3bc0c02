@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60d632a4_c43be01c",
+        "filename": "common/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-16T00:43:02Z",
+      "side": 1,
+      "message": "I believe this works but you\u0027re doing a lot of divisions here, it\u0027s probably going to waste quite a few more cycles than necessary. Why don\u0027t you reuse the coreboot algorithm so you can avoid first multiplying the numbers into normal base 3 to then divide them back out again? You don\u0027t need to tie it directly in the GPIO library if you don\u0027t want to (although you could, I mean you\u0027re just calling a common gpio_get_ternary() function too), you could instead just do something like this:\n\n int binary_first_base3_from_bits(int *bits, int nbits)\n {\n   int binary_below \u003d 0;\n   int has_z \u003d 0;\n   int i;\n   int base3 \u003d 0;\n   \n   for (i \u003d nbits - 1; i \u003e\u003d 0; i--) {\n     base3 \u003d (base3 * 3) + bits[i];\n     \n     if (!has_z) {\n       switch (bits[i]) {\n       case 0:\n         break;\n       case 1:\n         binary_below +\u003d 1 \u003c\u003c i;\n       case 2:\n         binary_below +\u003d 1 \u003c\u003c (i + 1);\n         has_z \u003d 1;\n       }\n   }\n   \n   if (has_z)\n     return base3 + (1 \u003c\u003c nbits) - binary_below;\n   else\n     return binary_below;\n }\n \nand then for Lazor you would do:\n\n int board_get_version(void)\n {\n   int bits[3];\n   \n   bits[0] \u003d gpio_get_ternary(GPIO_BOARD_VERSION1);\n   bits[1] \u003d gpio_get_ternary(GPIO_BOARD_VERSION2);\n   bits[2] \u003d gpio_get_ternary(GPIO_BOARD_VERSION3);\n   \n   return binary_first_base3_from_bits(bits, ARRAY_SIZE(bits));\n }",
+      "revId": "b04a7bd53a745d0aee082f98e60395e2e3bc0c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55b36709_4b7bef20",
+        "filename": "common/util.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-06-16T00:43:02Z",
+      "side": 1,
+      "message": "nit: If you\u0027re doing it like this you could just return here, then you wouldn\u0027t need has_z",
+      "revId": "b04a7bd53a745d0aee082f98e60395e2e3bc0c02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
