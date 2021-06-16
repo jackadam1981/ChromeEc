@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1fc0944_bae2d131",
+        "filename": "fuzz/pchg_fuzz.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-06-16T07:42:21Z",
+      "side": 1,
+      "message": "looked at it, run_test is forced in the highest priority task, I did not remember this point.\nHere we would want something more deterministic to avoid test flakiness ?\n(on loaded builders, I wouldn\u0027t assume 1ms will always make the cut)\nif having run_test at a lower priority than PCHG is not possible, we should have some task_wait_event here.",
+      "parentUuid": "85028129_9ac9d561",
+      "revId": "b5346d457c748221defa63478dd109de7babc027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fb77c89_73cf9ef5",
         "filename": "include/peripheral_charger.h",
         "patchSetId": 1
