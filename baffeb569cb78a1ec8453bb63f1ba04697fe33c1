@@ -16,6 +16,24 @@
       "message": "Should we add another CL to use board_get_version()\u003d\u003d8 to prevent this workaround?",
       "revId": "baffeb569cb78a1ec8453bb63f1ba04697fe33c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a590a2_0cf622bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-16T14:07:29Z",
+      "side": 1,
+      "message": "What did you mean? 8 \u003e 5, the workaround is skipped.",
+      "parentUuid": "4cc39eb9_de575072",
+      "revId": "baffeb569cb78a1ec8453bb63f1ba04697fe33c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
