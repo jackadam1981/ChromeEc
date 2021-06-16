@@ -82,4 +82,13 @@ typedef int64_t            int_fast64_t;
 #define INT64_MAX INT64_C(9223372036854775807)
 #endif
 
+/* Added by BST for compilation*/
+#define INT8_C(val)		val
+#define UINT8_C(val)		val
+#define INT16_C(val)		val
+#define UINT16_C(val)		val
+
+#define INT32_C(val)		val
+#define UINT32_C(val)		val##U
+
 #endif /* __CROS_EC_STDINT_H__ */

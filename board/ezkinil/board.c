@@ -5,6 +5,9 @@
 
 #include "adc.h"
 #include "adc_chip.h"
+
+#include "board.h"
+
 #include "button.h"
 #include "charge_state_v2.h"
 #include "cros_board_info.h"
@@ -39,6 +42,10 @@
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 
+#include "driver/bosch_bmi323/accelgyro_bmi3.h"
+#include "driver/bosch_bma422/bma422.h"
+
+
 #include "gpio_list.h"
 
 static int board_ver;
@@ -48,8 +55,8 @@ static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
 /* sensor private data */
-static struct kionix_accel_data g_kx022_data;
-static struct bmi_drv_data_t g_bmi160_data;
+static struct bma422_accel_drv_data g_bma422_data;
+static struct bmi323_drv_data g_bmi323_data;
 static struct icm_drv_data_t g_icm426xx_data;
 
 /* Matrix to rotate accelrator into standard reference frame */
@@ -74,18 +81,18 @@ struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
 	 .name = "Lid Accel",
 	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_KX022,
+	 .chip = MOTIONSENSE_CHIP_BMA422,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &kionix_accel_drv,
+	 .drv = &bma422_drv,
 	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_kx022_data,
+	 .drv_data = &g_bma422_data,//TODO:Change this
 	 .port = I2C_PORT_SENSOR,
-	 .i2c_spi_addr_flags = KX022_ADDR1_FLAGS,
+	 .i2c_spi_addr_flags = BMA4_I2C_ADDR_SECONDARY,
 	 .rot_standard_ref = &lid_standard_ref,
 	 .default_range = 2, /* g, enough for laptop. */
-	 .min_frequency = KX022_ACCEL_MIN_FREQ,
-	 .max_frequency = KX022_ACCEL_MAX_FREQ,
+	 .min_frequency = BMI_ACCEL_MIN_FREQ,
+	 .max_frequency = BMI_ACCEL_MAX_FREQ,
 	 .config = {
 		 /* EC use accel for angle detection */
 		 [SENSOR_CONFIG_EC_S0] = {
@@ -102,14 +109,14 @@ struct motion_sensor_t motion_sensors[] = {
 	[BASE_ACCEL] = {
 	 .name = "Base Accel",
 	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .chip = MOTIONSENSE_CHIP_BMI323,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &bmi160_drv,
+	 .drv = &bmi3_drv,
 	 .mutex = &g_base_mutex,
-	 .drv_data = &g_bmi160_data,
+	 .drv_data = &g_bmi323_data,
 	 .port = I2C_PORT_SENSOR,
-	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+	 .i2c_spi_addr_flags = BMI3_ADDR_I2C_PRIM,
 	 .default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
 	 .rot_standard_ref = &base_standard_ref,
 	 .min_frequency = BMI_ACCEL_MIN_FREQ,
@@ -130,14 +137,14 @@ struct motion_sensor_t motion_sensors[] = {
 	[BASE_GYRO] = {
 	 .name = "Base Gyro",
 	 .active_mask = SENSOR_ACTIVE_S0_S3,
-	 .chip = MOTIONSENSE_CHIP_BMI160,
+	 .chip = MOTIONSENSE_CHIP_BMI323,
 	 .type = MOTIONSENSE_TYPE_GYRO,
 	 .location = MOTIONSENSE_LOC_BASE,
-	 .drv = &bmi160_drv,
+	 .drv = &bmi3_drv,
 	 .mutex = &g_base_mutex,
-	 .drv_data = &g_bmi160_data,
+	 .drv_data = &g_bmi323_data,
 	 .port = I2C_PORT_SENSOR,
-	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+	 .i2c_spi_addr_flags = BMI3_ADDR_I2C_PRIM,
 	 .default_range = 1000, /* dps */
 	 .rot_standard_ref = &base_standard_ref,
 	 .min_frequency = BMI_GYRO_MIN_FREQ,
@@ -309,7 +316,7 @@ void motion_interrupt(enum gpio_signal signal)
 		break;
 	case BASE_GYRO_BMI160:
 	default:
-		bmi160_interrupt(signal);
+		bmi323_interrupt(signal);
 		break;
 	}
 }

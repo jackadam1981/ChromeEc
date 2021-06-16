@@ -11,6 +11,9 @@ _driver_cur_dir:=$(dir $(lastword $(MAKEFILE_LIST)))
 
 # Accelerometers
 driver-$(CONFIG_ACCEL_BMA255)+=accel_bma2x2.o
+driver-$(CONFIG_ACCEL_GYRO_BMI323) += bosch_bmi323/accelgyro_bmi3.o accelgyro_bmi_common.o
+driver-$(CONFIG_ACCEL_BMA422) += bosch_bma422/accel_bma422.o bosch_bma422/bma422.o bosch_bma422/bma4.o accelgyro_bmi_common.o
+
 driver-$(CONFIG_ACCEL_KXCJ9)+=accel_kionix.o
 driver-$(CONFIG_ACCEL_KX022)+=accel_kionix.o
 driver-$(CONFIG_ACCELGYRO_LSM6DS0)+=accelgyro_lsm6ds0.o
@@ -26,7 +29,6 @@ driver-$(CONFIG_SYNC)+=sync.o
 driver-$(CONFIG_ACCEL_LIS2DW_COMMON)+=accel_lis2dw12.o stm_mems_common.o
 driver-$(CONFIG_ACCEL_LIS2DS)+=accel_lis2ds.o stm_mems_common.o
 driver-$(CONFIG_ACCELGYRO_ICM426XX)+=accelgyro_icm426xx.o accelgyro_icm_common.o
-driver-$(CONFIG_ACCELGYRO_ICM42607)+=accelgyro_icm42607.o accelgyro_icm_common.o
 
 # BC1.2 Charger Detection Devices
 driver-$(CONFIG_BC12_DETECT_MAX14637)+=bc12/max14637.o
@@ -75,14 +77,10 @@ driver-$(CONFIG_CHARGER_RT9467)+=charger/rt946x.o
 driver-$(CONFIG_CHARGER_SY21612)+=charger/sy21612.o
 driver-$(CONFIG_CHARGER_SM5803)+=charger/sm5803.o
 
-# DP Redrivers
-driver-$(CONFIG_DP_REDRIVER_TDP142)+=retimer/tdp142.o
-
 # Fingerprint Sensors
 include $(_driver_cur_dir)fingerprint/build.mk
 
 # I/O expander
-driver-$(CONFIG_IO_EXPANDER_CCGXXF)+=ioexpander/ccgxxf.o
 driver-$(CONFIG_IO_EXPANDER_IT8801)+=ioexpander/it8801.o
 driver-$(CONFIG_IO_EXPANDER_NCT38XX)+=ioexpander/ioexpander_nct38xx.o
 driver-$(CONFIG_IO_EXPANDER_PCA9534)+=ioexpander/pca9534.o
@@ -154,7 +152,6 @@ driver-$(CONFIG_USB_PD_TCPM_PS8805)+=tcpm/ps8xxx.o
 driver-$(CONFIG_USB_PD_TCPM_PS8815)+=tcpm/ps8xxx.o
 driver-$(CONFIG_USB_PD_TCPM_TUSB422)+=tcpm/tusb422.o
 driver-$(CONFIG_USB_PD_TCPM_RT1715)+=tcpm/rt1715.o
-driver-$(CONFIG_USB_PD_TCPM_RT1718S)+=tcpm/rt1718s.o
 driver-$(CONFIG_USB_PD_TCPM_NCT38XX)+=tcpm/nct38xx.o
 driver-$(CONFIG_USB_PD_TCPM_RAA489000)+=tcpm/raa489000.o
 driver-$(CONFIG_USB_PD_TCPM_FUSB307)+=tcpm/fusb307.o
@@ -175,7 +172,6 @@ driver-$(CONFIG_USBC_SS_MUX)+=usb_mux/usb_mux.o
 # USB muxes
 driver-$(CONFIG_USB_MUX_AMD_FP5)+=usb_mux/amd_fp5.o
 driver-$(CONFIG_USB_MUX_AMD_FP6)+=usb_mux/amd_fp6.o
-driver-$(CONFIG_USB_MUX_ANX3443)+=usb_mux/anx3443.o
 driver-$(CONFIG_USB_MUX_ANX7440)+=usb_mux/anx7440.o
 driver-$(CONFIG_USB_MUX_ANX7451)+=usb_mux/anx7451.o
 driver-$(CONFIG_USB_MUX_IT5205)+=usb_mux/it5205.o
@@ -193,7 +189,6 @@ driver-$(CONFIG_USB_HUB_GL3590)+=gl3590.o
 
 # Type-C Power Path Controllers (PPC)
 driver-$(CONFIG_USBC_PPC_AOZ1380)+=ppc/aoz1380.o
-driver-$(CONFIG_USBC_PPC_RT1718S)+=ppc/rt1718s.o
 driver-$(CONFIG_USBC_PPC_SN5S330)+=ppc/sn5s330.o
 ifeq ($(CONFIG_USBC_PPC_NX20P3481)$(CONFIG_USBC_PPC_NX20P3483),y)
 driver-y += ppc/nx20p348x.o
