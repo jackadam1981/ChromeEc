@@ -10,6 +10,8 @@
 #include "common.h"
 #include "ec_commands.h"
 
+#define EC_ERROR_CBI_CACHE_INVALID	EC_ERROR_INTERNAL_FIRST
+
 #define CBI_VERSION_MAJOR	0
 #define CBI_VERSION_MINOR	0
 #define CBI_EEPROM_SIZE		256
@@ -161,13 +163,31 @@ int cbi_board_override(enum cbi_data_tag tag, uint8_t *buf, uint8_t *size);
  */
 int cbi_set_fw_config(uint32_t fw_config);
 
-#ifdef TEST_BUILD
 /**
- * Test only declarations. Firmware shouldn't need them.
+ * Get the state of the cached Cros Board Info
+ *
+ * @return EC_SUCCESS to indicate the in-memory CBI is valid
+ *         EC_ERROR_CBI_CACHE_INVALID otherwise
+ */
+int cbi_get_cache_state(void);
+
+/**
+ * Set the state of the cached Cros Board Info
+ *
+ * @param state EC_SUCCESS or EC_ERROR_CBI_CACHE_INVALID
+ */
+void cbi_set_cache_state(int state);
+
+/**
+ * Get the memory address of the CBI cache
+ *
+ * @return Pointer to the head of the CBI cache
+ */
+uint8_t *cbi_get_cache(void);
+
+/**
+ * Initialize CBI cache
  */
 int cbi_create(void);
-int cbi_write(void);
-void cbi_invalidate_cache(void);
-#endif
 
 #endif /* __CROS_EC_CROS_BOARD_INFO_H */
