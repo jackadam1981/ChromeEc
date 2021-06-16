@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78d5582_48c65f35",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1322146
+      },
+      "writtenOn": "2021-06-16T16:30:58Z",
+      "side": 1,
+      "message": "N/A for now.",
+      "parentUuid": "c35dded1_cd6be6df",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 32
+      },
+      "revId": "cb1dd24737d983e6656a0d37f845e65fa16f9c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab0286e5_6bb3218d",
