@@ -16,6 +16,24 @@
       "message": "nit: If you can spare the SRAM I\u0027d consider caching this the way coreboot does. You\u0027re wasting 200us every time you read this from scratch (which btw seems really overkill, coreboot has been using 10us for a while and we\u0027ve never seen any issues with it... I doubt your pull resistors are that much higher Ohm than ours).",
       "revId": "e11758701ab4b5ad2b700100c5d0d998634c8f1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3de6518_255e11e1",
+        "filename": "board/lazor/sku.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-16T02:16:32Z",
+      "side": 1,
+      "message": "Agree. I cached the value.",
+      "parentUuid": "7c3239da_a784f0a1",
+      "revId": "e11758701ab4b5ad2b700100c5d0d998634c8f1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
