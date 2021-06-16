@@ -16,6 +16,24 @@
       "message": "If NCT38XX_RESET_POST_DELAY_MS isn\u0027t needed it should probably be removed so it does not cause confusion. We could just substitute 0 reset_pd_port on zork boards.",
       "revId": "790c590657d12de50cd5e8baba21e38aaabd0d4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b6db336_bdc3989c",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 697,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-16T17:03:54Z",
+      "side": 0,
+      "message": "I feel like there was an intent to have it so we could maintain a generic reset function since some other TCPCs need a delay after (ex. ANX3447). But we could essentially remove it since we\u0027re not multi-sourcing TCPCs here or on zork that I see. That can also reduce potential pitfalls, as I quickly discovered that msleep will assert if you\u0027ve passed it a 0 accidentally. \n\nI should probably update the zork boards to notify too, shouldn\u0027t I?",
+      "parentUuid": "ef2985fe_8f005d0c",
+      "revId": "790c590657d12de50cd5e8baba21e38aaabd0d4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
