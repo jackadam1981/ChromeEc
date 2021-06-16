@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aeb1fa3_87be040e",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-16T20:38:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f4d6ccd_b18ea602",
+      "range": {
+        "startLine": 778,
+        "startChar": 0,
+        "endLine": 778,
+        "endChar": 72
+      },
+      "revId": "30e311f64547e9b31cd05ed6c02d62ea5d3f81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05ddbc76_78f45b16",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-15T18:15:44Z",
       "side": 1,
       "message": "this should be limited to the scope of ap_ro_board_id_blocked()",
+      "range": {
+        "startLine": 780,
+        "startChar": 0,
+        "endLine": 781,
+        "endChar": 29
+      },
+      "revId": "30e311f64547e9b31cd05ed6c02d62ea5d3f81fc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b51b1efa_960c2be6",
+        "filename": "board/cr50/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-16T20:38:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05ddbc76_78f45b16",
       "range": {
         "startLine": 780,
         "startChar": 0,
