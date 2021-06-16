@@ -50,6 +50,42 @@
       "message": "Do we need this? I ran into this also when updating to v2.6 but there\u0027s a much simpler solution from what I can tell. We can just update the packer for the npcx (which is what I\u0027ve done locally). I\u0027m still waiting on https://chrome-internal-review.googlesource.com/c/chromeos/manifest-internal/+/3904822 to merge before I can push any of these changes.",
       "revId": "c46f288eee87a397f41e7a160d17ca8b39b990bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c91879a0_f0e5e1f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-06-16T02:20:17Z",
+      "side": 1,
+      "message": "UPSTREAM PR (CL:2942532) changes the name of output bin to \u0027${CONFIG_KERNEL_BIN_NAME}.npcx.bin\u0027. It moved the output name setting to Kconfig. We don\u0027t need to set the output binary name on every board.cmake anymore. If we need land CL:2942532 to chromeos-v2.5, ec side should modify for it. The name of RO image should match the name of the pack input target. So we need to change the binary output name(default zephyr.npcx.bin) or, as you say, modify the packer input target directly.",
+      "parentUuid": "d2e76259_71507ea0",
+      "revId": "c46f288eee87a397f41e7a160d17ca8b39b990bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25b798ee_f2d939c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-06-16T02:20:17Z",
+      "side": 1,
+      "message": "This is ec repo, isn\u0027t zephyr repo. The related upstream CL is CL:2942532. I modified the CL let it more clear.",
+      "parentUuid": "5bec9835_f240f7e7",
+      "revId": "c46f288eee87a397f41e7a160d17ca8b39b990bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
