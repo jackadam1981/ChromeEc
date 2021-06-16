@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca82a32_5a0290d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-16T16:42:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72dbc1e6_3ab6e9c0",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 28
+      },
+      "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1301cf63_edcb4986",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "yes, protecting from dual pulse is necessary, but maybe it makes more sense to invoke ap_ro_device_reset() from the debounced TPM reset code?",
       "parentUuid": "5b781e1c_9cdd74ea",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "884e5be5_e0c08264",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-16T16:42:46Z",
+      "side": 1,
+      "message": "We need to clear this on the falling edge of TPM_RST_L. The TPM reset code happens on the rising edge.\n\nIf we clear it on the rising edge, it\u0027ll get cleared immediately when cr50 releases EC_RST_L after verifying RO.\n\ntpm_rst_asserted is the only code we have that runs on the falling edge.",
+      "parentUuid": "92aea11c_14a20e58",
       "range": {
         "startLine": 116,
         "startChar": 2,
