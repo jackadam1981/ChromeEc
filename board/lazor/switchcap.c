@@ -40,6 +40,8 @@ static void switchcap_init(void)
 		 * shutdown the switchcap when sysjump to RW.
 		 */
 		gpio_set_flags(GPIO_SWITCHCAP_ON, GPIO_OUTPUT);
+	} else if (board_has_buck_ic()) {
+		CPRINTS("Use Buck IC");
 	} else if (board_has_ln9310()) {
 		CPRINTS("Use switchcap: LN9310");
 
@@ -78,8 +80,6 @@ static void switchcap_init(void)
 			gpio_set_level(GPIO_SWITCHCAP_ON_L, 1);
 			ln9310_init();
 		}
-	} else if (board_has_buck_ic()) {
-		CPRINTS("Use Buck IC");
 	} else {
 		CPRINTS("ERROR: No switchcap solution");
 	}
@@ -90,11 +90,11 @@ void board_set_switchcap_power(int enable)
 {
 	if (board_has_da9313()) {
 		gpio_set_level(GPIO_SWITCHCAP_ON, enable);
+	} else if (board_has_buck_ic()) {
+		gpio_set_level(GPIO_VBOB_EN, enable);
 	} else if (board_has_ln9310()) {
 		gpio_set_level(GPIO_SWITCHCAP_ON_L, !enable);
 		ln9310_software_enable(enable);
-	} else if (board_has_buck_ic()) {
-		gpio_set_level(GPIO_VBOB_EN, enable);
 	}
 }
 
@@ -102,20 +102,21 @@ int board_is_switchcap_enabled(void)
 {
 	if (board_has_da9313())
 		return gpio_get_level(GPIO_SWITCHCAP_ON);
-	else if (board_has_ln9310())
-		return !gpio_get_level(GPIO_SWITCHCAP_ON_L);
+	else if (board_has_buck_ic())
+		/* Board has buck ic*/
+		return gpio_get_level(GPIO_VBOB_EN);
 
-	/* Board has buck ic*/
-	return gpio_get_level(GPIO_VBOB_EN);
+	/* Board has ln9310 */
+	return !gpio_get_level(GPIO_SWITCHCAP_ON_L);
 }
 
 int board_is_switchcap_power_good(void)
 {
 	if (board_has_da9313())
 		return gpio_get_level(GPIO_DA9313_GPIO0);
-	else if (board_has_ln9310())
-		return ln9310_power_good();
+	else if (board_has_buck_ic())
+		/* Board has buck ic no way to check POWER GOOD */
+		return 1;
 
-	/* Board has buck ic no way to check POWER GOOD */
-	return 1;
+	return ln9310_power_good();
 }
