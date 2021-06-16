@@ -16,6 +16,24 @@
       "message": "with \"nocturne SDK\" you mean the toolchain as used on the nocturne firmware branch?",
       "revId": "d8718b4e2698a19ac9372635d6f5046814848d1e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6574ef32_18daa499",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-06-16T14:58:00Z",
+      "side": 1,
+      "message": "I mean \u0027cros_sdk\u0027 initialized with \u0027repo init -b firmware-nocturne-10984.B\u0027, but yes it\u0027s about the toolchain.",
+      "parentUuid": "307a8133_84abe9ca",
+      "revId": "d8718b4e2698a19ac9372635d6f5046814848d1e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
