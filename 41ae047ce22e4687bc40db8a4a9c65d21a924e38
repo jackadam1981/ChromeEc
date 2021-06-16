@@ -87,6 +87,29 @@
       "message": "Yunlong, did y",
       "revId": "41ae047ce22e4687bc40db8a4a9c65d21a924e38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1be590e_85244a49",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-16T17:58:22Z",
+      "side": 1,
+      "message": "Where does this change come from?\nDo you see any build failures without adding this change?",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 31
+      },
+      "revId": "41ae047ce22e4687bc40db8a4a9c65d21a924e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
