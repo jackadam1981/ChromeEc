@@ -8,11 +8,6 @@
 #ifndef __CROS_EC_BOARD_H
 #define __CROS_EC_BOARD_H
 
-/*
- * Early primus boards are not set up for vivaldi
- */
-#undef CONFIG_KEYBOARD_VIVALDI
-
 /* Baseboard features */
 #include "baseboard.h"
 
@@ -168,6 +163,13 @@
 #define CONFIG_8042_AUX
 #define CONFIG_PS2
 #define CONFIG_CMD_PS2
+
+/* Keyboard defines */
+#define CONFIG_KEYBOARD_CUSTOMIZATION
+#define CONFIG_KEYBOARD_DEBUG
+
+/* Enbale board_config_pre_init() */
+#define CONFIG_BOARD_PRE_INIT
 
 #ifndef __ASSEMBLER__
 
