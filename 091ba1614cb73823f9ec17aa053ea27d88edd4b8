@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e8749f_e67a198b",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-16T17:04:31Z",
+      "side": 1,
+      "message": "New port is checked for NONE above.  This checks for whether our last port was none, as it will be in early boot or if a customer had unplugged a charger.  Both should be safe scenarios to continue with no reset, I\u0027m 90% sure.",
+      "parentUuid": "dfcbec02_7099123e",
+      "revId": "091ba1614cb73823f9ec17aa053ea27d88edd4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4a7c821_19d5e03a",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-15T23:39:00Z",
       "side": 1,
       "message": "When will the system check this again?",
+      "revId": "091ba1614cb73823f9ec17aa053ea27d88edd4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e72082c_775cf1d3",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-16T17:04:31Z",
+      "side": 1,
+      "message": "At the moment, whenever the charge manager tries to change our port again.  So if capabilities update, or if someone plugs or unplugs something.  \n\nWe could set up a deferred function to check if we have more battery and ask the charge manager to refresh later.  The current approach counts on this being relatively unlikely for a customer to hit, and also counts on them impatiently plugging and unplugging the second charger at some point after we have a small amount of battery.",
+      "parentUuid": "d4a7c821_19d5e03a",
       "revId": "091ba1614cb73823f9ec17aa053ea27d88edd4b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
