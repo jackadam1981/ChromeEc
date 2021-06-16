@@ -72,12 +72,20 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	return EC_SUCCESS;
 }
 
+static int led_get_charge_percent(void)
+{
+	if (IS_ENABLED(CONFIG_BATTERY_EXPORT_DISPLAY_SOC))
+		return DIV_ROUND_NEAREST(charge_get_display_charge(), 10);
+	else
+		return charge_get_percent();
+}
+
 static void board_led_set_battery(void)
 {
 	static int battery_ticks;
 	int color = LED_OFF;
 	int period = 0;
-	int percent = charge_get_percent();
+	int percent = led_get_charge_percent();
 	uint32_t chflags = charge_get_flags();
 
 	battery_ticks++;
