@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "24a46e83_d9871092",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1510127
+      },
+      "writtenOn": "2021-06-16T08:39:06Z",
+      "side": 1,
+      "message": "I will pay attention to verify the patch and reply in time.\nI modified the gpio.inc.\nDoes build_allowed.sh need to be changed and submitted?",
+      "parentUuid": "8802eaf7_48494647",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "41ae047ce22e4687bc40db8a4a9c65d21a924e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "80923ec4_edf75f02",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
