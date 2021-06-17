@@ -16,6 +16,24 @@
       "message": "I don\u0027t know the purpose of this CL. If we set the Zephyr shell thread the same priority as the EC-OS console task, you don\u0027t need this feature, right?\n\nWhat I understand is the Zephyr shell thread is the lowest priority, this CL creates a highest priority task `init_high_priority_console_cmd_task` and moves the console command execution to this highest priority task. I don\u0027t like this extra complexity, which seems unnecessary.\n\nAnd this new introduced task is outside of the existing task framework and has an exception of getting the highest priority. This highest priority may block other critical tasks, like PD interrupts, and creates new multitask problems that EC-OS hasn\u0027t exercised.",
       "revId": "a13191d58a6666e008e05747fd67dc967d8c5067",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ffe90d6_0aefa70a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-17T16:57:36Z",
+      "side": 1,
+      "message": "I was thinking that increasing the Zephyr shell priority could create other issues. For example, the Zephyr logging and other functionality were implemented knowing that the Zephyr shell executes at the lowest priority. To mitigate potential issues, I thought it better to just run a select few EC console commands at the higher priority. But if everyone is okay with increasing the shell priority, we can just do that.",
+      "parentUuid": "e2907132_775b5cb4",
+      "revId": "a13191d58a6666e008e05747fd67dc967d8c5067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
