@@ -208,10 +208,10 @@ void fp_task(void)
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(get_fp_sensor_type()));
 
-#ifdef HAVE_FP_PRIVATE_DRIVER
 	/* Reset and initialize the sensor IC */
 	fp_sensor_init();
 
+#ifdef HAVE_FP_PRIVATE_DRIVER
 	while (1) {
 		uint32_t evt;
 		enum finger_state st = FINGER_NONE;
