@@ -138,6 +138,23 @@ static int command_cable(int argc, char **argv)
 	cable_mode_resp.raw_value =
 		pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
 
+	ccprintf("Cable naming convention: ");
+	if (ptype == IDH_PTYPE_ACABLE) {
+		if (pd_get_vdo_ver(port, TCPC_TX_SOP_PRIME) >= VDM_VER20 &&
+		    disc->identity.product_t1.a_rev30.vdo_ver >=
+							VDO_VERSION_1_3)
+			ccprintf("USB4 active cable\n");
+		else if (cable_mode_resp.tbt_rounded ==
+					TBT_GEN3_GEN4_ROUNDED_NON_ROUNDED)
+			ccprintf("Delta bridge ridge(DBR) cable\n");
+		else
+			ccprintf("Mission bridge ridge(MBR) cable\n");
+	} else {
+		if (cable_mode_resp.tbt_active_passive == TBT_CABLE_ACTIVE)
+			ccprintf("Cooper bridge ridge(CBR) cable\n");
+		else
+			ccprintf("Thundebolt/USB4 Passive cable\n");
+	}
 
 	/* Cable revision */
 	ccprintf("Cable Rev: %d.0\n", cable_rev + 1);
