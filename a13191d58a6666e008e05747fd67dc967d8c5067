@@ -52,6 +52,24 @@
       "parentUuid": "8ffe90d6_0aefa70a",
       "revId": "a13191d58a6666e008e05747fd67dc967d8c5067",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2166dea5_89c7e3b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-17T19:43:01Z",
+      "side": 1,
+      "message": "I am not sure the Zephyr shell is used like EC-OS does, like the heavy use for the test system and tooling (servod). Our use case needs the shell be executed in a high priority (just lower the keyscan task for quick user responds and the PD tasks). Lowering the shell task may delay the command response and tends to be more flaky when running our tests/tools. Splitting the shell execution into 2 tasks, like this CL which handles over the execution to a highest priority task, doesn\u0027t change the fundamental that the shell task is still executed in the lowest priority.\n\nAgree with Simon. We can first fix the several commands which are affected immediately. And keep monitoring our tests/tools are happy with this lowest priority shell.",
+      "parentUuid": "93adcf64_87e249df",
+      "revId": "a13191d58a6666e008e05747fd67dc967d8c5067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
