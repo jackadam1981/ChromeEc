@@ -149,6 +149,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4090bb4b_c1af3a11",
+        "filename": "driver/accel_da217.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-06-17T13:49:14Z",
+      "side": 1,
+      "message": "Assuming the resolution is set in init(), given this driver does not change it, we can return a constant.",
+      "parentUuid": "92be9b18_0db2a834",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 1
+      },
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e47eaca4_3342f4da",
         "filename": "driver/accel_da217.h",
         "patchSetId": 7
