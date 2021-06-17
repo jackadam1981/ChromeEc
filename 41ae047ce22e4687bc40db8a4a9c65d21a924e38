@@ -110,6 +110,30 @@
       },
       "revId": "41ae047ce22e4687bc40db8a4a9c65d21a924e38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e209f07b_082b63ad",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor_defconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1510127
+      },
+      "writtenOn": "2021-06-17T02:35:47Z",
+      "side": 1,
+      "message": "I have deleted it.\nI thought it was a suggestion.",
+      "parentUuid": "e1be590e_85244a49",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 31
+      },
+      "revId": "41ae047ce22e4687bc40db8a4a9c65d21a924e38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
