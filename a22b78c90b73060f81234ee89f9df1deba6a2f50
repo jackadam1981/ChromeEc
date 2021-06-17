@@ -22,6 +22,30 @@
       },
       "revId": "a22b78c90b73060f81234ee89f9df1deba6a2f50",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0f66f88_af3c322f",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-17T21:43:46Z",
+      "side": 1,
+      "message": "the sleep is after the counter check, so the original timeout\nwas 40ms.",
+      "parentUuid": "994e08b6_f357ae1c",
+      "range": {
+        "startLine": 39,
+        "startChar": 29,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "a22b78c90b73060f81234ee89f9df1deba6a2f50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
