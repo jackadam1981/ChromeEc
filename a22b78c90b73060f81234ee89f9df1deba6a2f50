@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "994e08b6_f357ae1c",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-17T21:35:24Z",
+      "side": 1,
+      "message": "can we make it 6?\nwith this we will have additional 20ms buffer to wake the shared SPI retimer like the original code",
+      "range": {
+        "startLine": 39,
+        "startChar": 29,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "a22b78c90b73060f81234ee89f9df1deba6a2f50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
