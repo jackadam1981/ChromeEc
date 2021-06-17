@@ -36,11 +36,13 @@
 /* There was a finger on the sensor when calibrating finger detect */
 #define FPC_INTERNAL_FINGER_DFD FPC_ERROR_INTERNAL_38
 
+#ifdef HAVE_FP_PRIVATE_DRIVER
 /*
  * The sensor context is uncached as it contains the SPI buffers,
  * the binary library assumes that it is aligned.
  */
 static uint8_t ctx[FP_SENSOR_CONTEXT_SIZE] __uncached __aligned(4);
+#endif
 static bio_sensor_t bio_sensor;
 static uint8_t enroll_ctx[FP_ALGORITHM_ENROLLMENT_SIZE];
 
@@ -142,7 +144,7 @@ static uint8_t fpc_read_clear_int(void)
  * - EC_ERROR_HW_INTERNAL on failure (and |errors| variable is updated where
  *   appropriate).
  */
-static int fpc_pulse_hw_reset(void)
+__maybe_unused static int fpc_pulse_hw_reset(void)
 {
 	int ret;
 	int rc = EC_SUCCESS;
@@ -177,6 +179,7 @@ static int fpc_pulse_hw_reset(void)
 /* Reset and initialize the sensor IC */
 int fp_sensor_init(void)
 {
+#ifdef HAVE_FP_PRIVATE_DRIVER
 	int res;
 	int attempt;
 
@@ -243,6 +246,7 @@ int fp_sensor_init(void)
 	CPRINTS("Sensor create: 0x%x", res);
 	if (res < 0)
 		errors |= FP_ERROR_INIT_FAIL;
+#endif
 
 	/* Go back to low power */
 	fp_sensor_low_power();
