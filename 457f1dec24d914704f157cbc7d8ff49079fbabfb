@@ -101,6 +101,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e71da81_bbbe80d5",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-17T18:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21ff5e7d_407fce6a",
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d5aca29_c84fade6",
@@ -203,6 +221,24 @@
       "side": 1,
       "message": "A serious attempt to use the crossbar with the config not defined will causes a compiler error for referencing ss_lanes. An unserious attempt that uses these enums and macros but doesn\u0027t modify the data structure would slip through the cracks, but IMO the extra #ifdef to catch this type of error isn\u0027t quite worth it.\n\nBut it\u0027s still just a nit, so do whatever seems best to you.",
       "parentUuid": "d3b745d6_83434007",
+      "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffadec93_a1bde97b",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-17T18:35:23Z",
+      "side": 1,
+      "message": "Good points. I removed this directive.",
+      "parentUuid": "57ada782_b372ba22",
       "revId": "457f1dec24d914704f157cbc7d8ff49079fbabfb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

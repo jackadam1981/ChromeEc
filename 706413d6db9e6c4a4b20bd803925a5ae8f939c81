@@ -383,6 +383,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "179c06d9_3824ce92",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-17T18:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b28cb391_c19dc15c",
+      "range": {
+        "startLine": 31,
+        "startChar": 6,
+        "endLine": 31,
+        "endChar": 11
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c03a4792_f5186fe6",
@@ -637,6 +661,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cec8f6f_37abb202",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-17T18:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01488f06_08b5a02a",
+      "range": {
+        "startLine": 85,
+        "startChar": 60,
+        "endLine": 85,
+        "endChar": 62
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecad3a6b_f9020a19",
@@ -674,6 +722,30 @@
       "side": 1,
       "message": "it is, i ended up not including it due to the high number of register operations originally, which made this very tedious. But we removed a lot of writes recently so I can add those back.",
       "parentUuid": "ecad3a6b_f9020a19",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 12
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98b96e94_9de360be",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-17T18:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e23635fc_91538c77",
       "range": {
         "startLine": 87,
         "startChar": 1,
@@ -1759,6 +1831,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c9ceb66_6de2bb1e",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-17T18:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8f58b33_20e5d3ee",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48a7694e_f99294ef",
@@ -1790,6 +1880,24 @@
       "side": 1,
       "message": "like above it should be handled by the sequencing logic. But there is.",
       "parentUuid": "48a7694e_f99294ef",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bab2366b_1fab86b9",
+        "filename": "driver/retimer/kb800x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-17T18:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5f383b4_f7ca65e3",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -2595,6 +2703,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "421e807a_e0c2f8ad",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-17T18:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b0490ef_922d7f01",
+      "range": {
+        "startLine": 77,
+        "startChar": 46,
+        "endLine": 77,
+        "endChar": 47
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15b424d0_b06c17f4",
@@ -2732,6 +2864,30 @@
         "startChar": 49,
         "endLine": 78,
         "endChar": 50
+      },
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3114e4f8_d1a66f97",
+        "filename": "driver/retimer/kb800x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-17T18:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16b528c1_7c0b63dc",
+      "range": {
+        "startLine": 78,
+        "startChar": 40,
+        "endLine": 78,
+        "endChar": 48
       },
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -2909,6 +3065,24 @@
       "side": 1,
       "message": "oops! this was included in the next patch, I\u0027ll move it here.",
       "parentUuid": "059770b1_be788516",
+      "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88068e51_ab26bfd3",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-17T18:35:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c23f6ea4_ad124db2",
       "revId": "706413d6db9e6c4a4b20bd803925a5ae8f939c81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
