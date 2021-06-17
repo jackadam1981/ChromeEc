@@ -213,6 +213,30 @@
       },
       "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bc053ca_c8fb3f5b",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-17T17:26:58Z",
+      "side": 1,
+      "message": "Sorry I didn\u0027t see your last comment. I just uploaded a patch that does ap_ro_device_reset from tpm_reset_now.\n\nI am not sure which way is better. I can go back to the patch set 6 version.",
+      "parentUuid": "75caecf4_0d45aa27",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
