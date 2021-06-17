@@ -138,6 +138,13 @@ int fpc_check_hwid(void)
 	return EC_SUCCESS;
 }
 
+void fpc_sensor_enable(void)
+{
+	gpio_set_level(GPIO_FP_RST_ODL, 1);
+	gpio_set_level(GPIO_DIVIDER_HIGHSIDE, 1);
+	usleep(MSEC);
+}
+
 /* Reset and initialize the sensor IC */
 int fp_sensor_init(void)
 {

@@ -34,6 +34,9 @@ typedef struct {
 int fp_sensor_maintenance(uint8_t *image_data,
 			  fp_sensor_info_t *fp_sensor_info);
 
+/* Enable FPC sensor */
+void fpc_sensor_enable(void);
+
 /* Read the HWID from the sensor. */
 int fpc_check_hwid(void);
 
