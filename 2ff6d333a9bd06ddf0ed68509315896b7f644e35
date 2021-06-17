@@ -237,6 +237,30 @@
       },
       "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66e60c68_55b36c1c",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-17T17:45:20Z",
+      "side": 1,
+      "message": "Actually patchset 7 wont behave correctly if AP RO verification is triggered while the device is debouncing TPM_RST_L.",
+      "parentUuid": "2bc053ca_c8fb3f5b",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
