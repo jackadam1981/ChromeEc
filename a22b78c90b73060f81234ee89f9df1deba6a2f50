@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "436ed828_75253728",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-17T23:34:07Z",
+      "side": 1,
+      "message": "WOW it is really tricky to understand the calculation here, it used to be 2 cycles 20ms each (but the \"retry\" was 3) and now it is 4 cycles of 10ms, but the retry is 5. It might be easier to understand if RETRY would reflect the actual amount of retries (not including the first try), e.g.:\n\n#define BB_RETIMER_I2C_RETRY  (4)\n\nand\n\n",
+      "revId": "a22b78c90b73060f81234ee89f9df1deba6a2f50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "994e08b6_f357ae1c",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "the sleep is after the counter check, so the original timeout\nwas 40ms.",
       "parentUuid": "994e08b6_f357ae1c",
+      "range": {
+        "startLine": 39,
+        "startChar": 29,
+        "endLine": 39,
+        "endChar": 30
+      },
+      "revId": "a22b78c90b73060f81234ee89f9df1deba6a2f50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a8814b6_a28d4786",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-17T23:34:07Z",
+      "side": 1,
+      "message": "WOW it is really tricky to understand the calculation here, it used to be 2 cycles of 20ms each (but the \"retry\" was 3) and now it is 4 cycles of 10ms, but the \"retry\" is 5. It might be easier to understand if RETRY would reflect the actual amount of retries (not including the first try), e.g.:\n\n#define BB_RETIMER_I2C_RETRY  4\n\nand later on \n\nif (++retry \u003e BB_RETIMER_I2C_RETRY)\n\nmeaning 4 retries of 10ms each. Just an idea how to improve it for future readers...",
+      "parentUuid": "c0f66f88_af3c322f",
       "range": {
         "startLine": 39,
         "startChar": 29,
