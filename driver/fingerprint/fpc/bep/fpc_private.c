@@ -141,7 +141,9 @@ int fpc_check_hwid(void)
 /* Reset and initialize the sensor IC */
 int fp_sensor_init(void)
 {
+#ifdef HAVE_FP_PRIVATE_DRIVER
 	int rc;
+#endif
 
 	/* The dragonclaw development board needs this enabled to enable the
 	 * AND gate (U10) to CS. Production boards could disable this to save
@@ -149,6 +151,7 @@ int fp_sensor_init(void)
 	 */
 	gpio_set_level(GPIO_DIVIDER_HIGHSIDE, 1);
 
+#ifdef HAVE_FP_PRIVATE_DRIVER
 	/* Print the binary libfpbep.a library version */
 	CPRINTS("FPC libfpbep.a %s", fp_sensor_get_version());
 
@@ -170,6 +173,12 @@ int fp_sensor_init(void)
 		errors |= FP_ERROR_INIT_FAIL;
 		CPRINTS("Error: bio_algorithm_init() failed, result=%d", rc);
 	}
+
+#else /* !HAVE_FP_PRIVATE_DRIVER */
+	gpio_set_level(GPIO_FP_RST_ODL, 1);
+	udelay(MSEC);
+
+#endif /* HAVE_FP_PRIVATE_DRIVER */
 
 	/* Go back to low power */
 	fp_sensor_low_power();
