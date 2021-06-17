@@ -16,6 +16,23 @@
       "message": "Hi Googler, can you please help to review this CL?",
       "revId": "3505756ee28ef10652806d515e589fae4003f298",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65b1b9f9_d9262c94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-06-17T17:17:25Z",
+      "side": 1,
+      "message": "If this is what the create_initial_ec_image script does and it compiles, then LGTM",
+      "revId": "3505756ee28ef10652806d515e589fae4003f298",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
