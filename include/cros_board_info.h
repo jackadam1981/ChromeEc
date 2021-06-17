@@ -188,6 +188,6 @@ uint8_t *cbi_get_cache(void);
 /**
  * Initialize CBI cache
  */
-int cbi_create(void);
+void cbi_create(void);
 
 #endif /* __CROS_EC_CROS_BOARD_INFO_H */

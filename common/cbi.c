@@ -98,19 +98,15 @@ uint8_t *cbi_get_cache(void)
 	return cbi;
 }
 
-int cbi_create(void)
+void cbi_create(void)
 {
-	struct cbi_header * const h = (struct cbi_header *)cbi;
-
 	memset(cbi, 0, sizeof(cbi));
-	memcpy(h->magic, cbi_magic, sizeof(cbi_magic));
-	h->total_size = sizeof(*h);
-	h->major_version = CBI_VERSION_MAJOR;
-	h->minor_version = CBI_VERSION_MINOR;
-	h->crc = cbi_crc8(h);
+	memcpy(head->magic, cbi_magic, sizeof(cbi_magic));
+	head->total_size = sizeof(*head);
+	head->major_version = CBI_VERSION_MAJOR;
+	head->minor_version = CBI_VERSION_MINOR;
+	head->crc = cbi_crc8(head);
 	cached_read_result = EC_SUCCESS;
-
-	return EC_SUCCESS;
 }
 
 __attribute__((weak))
