@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c851b294_b0e373bc",
+        "filename": "driver/accel_da217.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-17T07:06:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e066e42_7e974296",
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba357ddb_e267fb90",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7dc25e2_dc912a69",
+        "filename": "driver/accel_da217.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-17T07:06:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba357ddb_e267fb90",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 0
+      },
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca62c439_115b07da",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-06-09T02:31:44Z",
       "side": 1,
       "message": "This should actually query and return the resolution.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 1
+      },
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92be9b18_0db2a834",
+        "filename": "driver/accel_da217.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-17T07:06:56Z",
+      "side": 1,
+      "message": "like bma2x2.c this field set to 12",
+      "parentUuid": "ca62c439_115b07da",
       "range": {
         "startLine": 73,
         "startChar": 0,
@@ -121,6 +187,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa1c685d_016e8625",
+        "filename": "driver/accel_da217.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-17T07:06:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be55e7ea_09e40c1b",
+      "range": {
+        "startLine": 6,
+        "startChar": 9,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19580cef_34ff4f5a",
+        "filename": "driver/accel_da217.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-17T07:06:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e47eaca4_3342f4da",
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3499685a_cde45895",
@@ -134,6 +242,24 @@
       "writtenOn": "2021-06-09T02:31:44Z",
       "side": 1,
       "message": "nit: Please spell out mask and use the GENMASK(...) macro.",
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "debad837_2fb5c91a",
+        "filename": "driver/accel_da217.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-17T07:06:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3499685a_cde45895",
       "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -201,6 +327,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e83e1ce2_3b55bbba",
+        "filename": "driver/accel_da217.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-17T07:06:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cce56152_ed4bd684",
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0757b35_0adeb4f5",
@@ -214,6 +358,24 @@
       "writtenOn": "2021-06-09T02:31:44Z",
       "side": 1,
       "message": "I believe this is incorrect as well.",
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "492d95f2_5b062599",
+        "filename": "driver/accel_da217.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-17T07:06:56Z",
+      "side": 1,
+      "message": "change this to DA217_POWER_ON_VALUE and DA217_POWER_OFF_VALUE",
+      "parentUuid": "a0757b35_0adeb4f5",
       "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
