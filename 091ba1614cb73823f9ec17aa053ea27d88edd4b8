@@ -87,6 +87,24 @@
       "parentUuid": "3e72082c_775cf1d3",
       "revId": "091ba1614cb73823f9ec17aa053ea27d88edd4b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9149346_80f0f406",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-17T16:51:52Z",
+      "side": 1,
+      "message": "Cool.  I thought of one more optimization to do when we\u0027re transitioning to None when a port had a dead battery boot, but I\u0027ll make it a follow-up CL",
+      "parentUuid": "94a4c2cd_316419fe",
+      "revId": "091ba1614cb73823f9ec17aa053ea27d88edd4b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
