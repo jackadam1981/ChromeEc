@@ -124,6 +124,12 @@ int fpc_check_hwid(void)
 	return EC_SUCCESS;
 }
 
+void fpc_sensor_enable(void)
+{
+	gpio_set_level(GPIO_FP_RST_ODL, 1);
+	usleep(MSEC);
+}
+
 static uint8_t fpc_read_clear_int(void)
 {
 	spi_buf[0] = FPC_CMD_INT_CLR;
