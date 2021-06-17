@@ -13,8 +13,10 @@
 test_static int test_fp_check_hwid(void)
 {
 	/* TODO(b/187134801): modify fpc_check_hwid() to return the hwid. */
-	if (IS_ENABLED(SECTION_IS_RW))
+	if (IS_ENABLED(SECTION_IS_RW)) {
+		fpc_sensor_enable();
 		TEST_EQ(fpc_check_hwid(), EC_SUCCESS, "%d");
+	}
 
 	return EC_SUCCESS;
 }
