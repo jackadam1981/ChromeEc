@@ -189,6 +189,30 @@
       },
       "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75caecf4_0d45aa27",
+        "filename": "board/cr50/ap_state.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-17T17:12:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9b3a06b7_dbadc5f9",
+      "range": {
+        "startLine": 116,
+        "startChar": 2,
+        "endLine": 116,
+        "endChar": 20
+      },
+      "revId": "2ff6d333a9bd06ddf0ed68509315896b7f644e35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
