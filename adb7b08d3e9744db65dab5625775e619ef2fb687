@@ -111,6 +111,29 @@
       },
       "revId": "adb7b08d3e9744db65dab5625775e619ef2fb687",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d60e2efe_1543ef42",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-18T18:09:17Z",
+      "side": 1,
+      "message": "ok, maybe change this to \u0027unused\u0027?\n\nand please describe in the patch description the reason to keep this in the list.",
+      "range": {
+        "startLine": 191,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 14
+      },
+      "revId": "adb7b08d3e9744db65dab5625775e619ef2fb687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
