@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b531aed_d2668e25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-18T22:11:19Z",
+      "side": 1,
+      "message": "Mary, is anything else necessary to be done for this pin (DIOA14/SPI_CS_L) when it is disconnected from the SPI controller? gpio.inc defines this pin as both input and output, does it have to be switched off as the output when SPI is not in use?",
+      "revId": "1a2c14d5e1e500e9f55dd08731050c7a4e60c800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
