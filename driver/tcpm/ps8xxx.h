@@ -112,4 +112,6 @@ int ps8805_gpio_set_level(int port, enum ps8805_gpio signal, int level);
  */
 int ps8805_gpio_get_level(int port, enum ps8805_gpio signal, int *level);
 
+__override_proto void board_ps8xxx_tcpc_init(int port);
+
 #endif /* defined(__CROS_EC_USB_PD_TCPM_PS8XXX_H) */
