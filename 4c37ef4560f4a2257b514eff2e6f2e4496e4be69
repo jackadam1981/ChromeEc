@@ -16,6 +16,23 @@
       "message": "Hi Aseda:\nplease help to check this CL for clearing trickle charge bit. thanks",
       "revId": "4c37ef4560f4a2257b514eff2e6f2e4496e4be69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f530e6a_3b55e47e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-18T18:26:14Z",
+      "side": 1,
+      "message": "We shouldn\u0027t put it here, we should probably do it from `ocpc_reset`. We may need to add an API for charger specific reset actions.",
+      "revId": "4c37ef4560f4a2257b514eff2e6f2e4496e4be69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
