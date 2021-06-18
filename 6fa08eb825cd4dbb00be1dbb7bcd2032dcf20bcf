@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07bb2aca_2510233c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-18T00:54:17Z",
+      "side": 1,
+      "message": "I\u0027m not personally that familiar with the BB retimer or its topologies. Keith or Caveh might be able to comment in more detail.\n\nThis change is aimed at cascaded retimers going through the same state change in sequence. Is there a potential change in behavior if there are consecutive state changes to the same retimer that don\u0027t change the power state? Or would that be a no-op handle_power_state as well?",
+      "revId": "6fa08eb825cd4dbb00be1dbb7bcd2032dcf20bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "854297d9_03277030",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-18T00:54:17Z",
+      "side": 1,
+      "message": "This works, but it would be more in line with our typical style to\n1. Put the static structure at file scope, above the function definitions.\n2. Use bool\n3. Call the function parameter en or enable",
+      "revId": "6fa08eb825cd4dbb00be1dbb7bcd2032dcf20bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
