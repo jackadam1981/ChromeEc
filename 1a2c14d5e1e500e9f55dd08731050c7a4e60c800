@@ -34,6 +34,24 @@
       "parentUuid": "9b531aed_d2668e25",
       "revId": "1a2c14d5e1e500e9f55dd08731050c7a4e60c800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e04c655_59b64f69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-18T22:30:22Z",
+      "side": 1,
+      "message": "It looks like the spi controller disables the gpio output when spi is disabled. Just confirm that GPIO0_GPIO9 doesn\u0027t show up in the gpiocfg output after flashing. I don\u0027t think you need to do anything else.\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/cr50_stab/chip/g/spi_controller.c#233",
+      "parentUuid": "3285f1c3_758eac67",
+      "revId": "1a2c14d5e1e500e9f55dd08731050c7a4e60c800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
