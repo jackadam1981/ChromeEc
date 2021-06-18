@@ -39,6 +39,30 @@
       },
       "revId": "adb7b08d3e9744db65dab5625775e619ef2fb687",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa0683c2_91ed526c",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-18T17:29:13Z",
+      "side": 1,
+      "message": "I think we need to keep a line in CAP_INFO_DATA so the strings will line up with the capability values.\n\nI could rename it, so the name is shorter.",
+      "parentUuid": "c740a0bf_c7730dc3",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "adb7b08d3e9744db65dab5625775e619ef2fb687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
