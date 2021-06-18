@@ -87,6 +87,30 @@
       },
       "revId": "adb7b08d3e9744db65dab5625775e619ef2fb687",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba2b16e6_579eb1b4",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-18T17:55:29Z",
+      "side": 1,
+      "message": "Yeah there\u0027s a bitmask after Capabilities in the ccd output. If you chagne CAP_I2C, it\u0027ll change bit 15.\n\nI think it makes it more clear the that capabilites after placeholder correspond with the correct bit.\n\nAlso I think with how we use cap_info right now we can\u0027t just leave cap_info[14] empty.",
+      "parentUuid": "ed57fafd_84e7b2fd",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "adb7b08d3e9744db65dab5625775e619ef2fb687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
