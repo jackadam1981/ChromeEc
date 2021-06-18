@@ -16,6 +16,24 @@
       "message": "Mary, is anything else necessary to be done for this pin (DIOA14/SPI_CS_L) when it is disconnected from the SPI controller? gpio.inc defines this pin as both input and output, does it have to be switched off as the output when SPI is not in use?",
       "revId": "1a2c14d5e1e500e9f55dd08731050c7a4e60c800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3285f1c3_758eac67",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-18T22:25:45Z",
+      "side": 1,
+      "message": "I think we need to clear GPIO OUTEN when SPI is idle. Which I think can be done with gpio_set_flags(GPIO_INPUT).\n\nTo confirm the setup is correct check that GPIO0_GPIO9 doesn\u0027t show up in gpiocfg and make sure both of these lines are in the pinmux output.\n40060098: DIOA14  10  IN  GPIO0_GPIO9\n\n4006011c: GPIO0_GPIO9   11  DIOA14",
+      "parentUuid": "9b531aed_d2668e25",
+      "revId": "1a2c14d5e1e500e9f55dd08731050c7a4e60c800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
