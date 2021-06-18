@@ -237,6 +237,18 @@ int raa489000_init(int port)
 	if (rv)
 		CPRINTS("c%d: failed to set Vbus Target Voltage", port);
 
+	/* Disable trickle charge */
+	if (IS_ENABLED(CONFIG_OCPC) && (port == 0)) {
+		i2c_port = tcpc_config[port].i2c_info.port;
+		rv = i2c_read16(i2c_port, ISL923X_ADDR_FLAGS,
+				RAA489000_REG_CONTROL10, &regval);
+		regval &= ~RAA489000_C10_ENABLE_DVC_TRICKLE_CHARGE;
+		rv |= i2c_write16(i2c_port, ISL923X_ADDR_FLAGS,
+				RAA489000_REG_CONTROL10, regval);
+		if (rv)
+			CPRINTS("c%d: failed to disable trickle charge", port);
+	}
+
 	return rv;
 }
 
