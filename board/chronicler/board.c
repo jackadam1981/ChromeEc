@@ -8,6 +8,7 @@
 #include "button.h"
 #include "common.h"
 #include "accelgyro.h"
+#include "battery_smart.h"
 #include "cbi_ec_fw_config.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi260.h"
@@ -222,4 +223,26 @@ const int keyboard_factory_scan_pins[][2] = {
 
 const int keyboard_factory_scan_pins_used =
 			ARRAY_SIZE(keyboard_factory_scan_pins);
+
+static void battery_operation_status_check(void)
+{
+	int rv, cmd, reg;
+	uint8_t data[6];
+
+	/* Get the lowest 16bits of the OperationStatus() data */
+	rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
+			SB_ALT_MANUFACTURER_ACCESS, data, sizeof(data));
+
+	reg = data[2] | data[3] << 8;
+	cmd = data[0] | data[1] << 8;
+
+	if (rv)
+		CPRINTS("Battery OperationStatus(0x%04x) read fail!", PARAM_OPERATION_STATUS);
+	else
+		CPRINTS("Battery OperationStatus(0x%04x) lowest 16bits: 0x%04x ", cmd, reg);
+
+	return;
+}
+DECLARE_HOOK(HOOK_SECOND, battery_operation_status_check, HOOK_PRIO_DEFAULT);
+
 #endif
