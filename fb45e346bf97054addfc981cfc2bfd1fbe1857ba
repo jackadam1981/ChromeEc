@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65a150b9_f43fd192",
+        "filename": "board/primus/gpio.inc",
+        "patchSetId": 14
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-18T05:29:32Z",
+      "side": 1,
+      "message": "After check with EE and Intel, we can\u0027t use 1.8V gpio for USB_C2_RT_RST_ODL. So move it to GPO32 and name it USB_C1_RT_RST_ODL. Also EE added a external pull-up for this pin, so I set it to GPIO_ODR_LOW.",
+      "parentUuid": "bcbedd17_0280409a",
+      "range": {
+        "startLine": 76,
+        "startChar": 64,
+        "endLine": 76,
+        "endChar": 76
+      },
+      "revId": "fb45e346bf97054addfc981cfc2bfd1fbe1857ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1534cef1_a4e950d6",
