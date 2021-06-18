@@ -51,6 +51,23 @@
       "parentUuid": "1e54974b_5af778d0",
       "revId": "674dff338f7acfd0a47cd60966e804a1a71a8ab7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e84bef7b_69a0b68b",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-18T22:15:51Z",
+      "side": 1,
+      "message": "is it safe to assume that the board starts with the\nBB powered down?",
+      "revId": "674dff338f7acfd0a47cd60966e804a1a71a8ab7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
