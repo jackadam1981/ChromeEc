@@ -233,6 +233,13 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, kb_backlight_disable, HOOK_PRIO_DEFAULT);
  * virtual_usb_mux_driver so the AP gets notified of mux changes and updates
  * the TCSS configuration on state changes.
  */
+__override void board_ps8xxx_tcpc_init(int port)
+{
+	tcpc_addr_write(port, PS8751_I2C_ADDR1_P1_FLAGS,
+		PS8815_REG_DP_EQ_SETTING,
+		PS8815_DPEQ_LOSS_UP_10DB << PS8815_REG_DP_EQ_COMP_SHIFT);
+}
+
 static const struct usb_mux usbc1_usb3_db_retimer = {
 	.usb_port = USBC_PORT_C1,
 	.driver = &tcpci_tcpm_usb_mux_driver,
