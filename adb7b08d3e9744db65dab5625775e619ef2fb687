@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dec228fd_c9d14fa5",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-18T18:27:06Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba2b16e6_579eb1b4",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "adb7b08d3e9744db65dab5625775e619ef2fb687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d60e2efe_1543ef42",
@@ -126,6 +150,30 @@
       "writtenOn": "2021-06-18T18:09:17Z",
       "side": 1,
       "message": "ok, maybe change this to \u0027unused\u0027?\n\nand please describe in the patch description the reason to keep this in the list.",
+      "range": {
+        "startLine": 191,
+        "startChar": 3,
+        "endLine": 191,
+        "endChar": 14
+      },
+      "revId": "adb7b08d3e9744db65dab5625775e619ef2fb687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56ece427_7a2c5ec5",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-18T18:27:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d60e2efe_1543ef42",
       "range": {
         "startLine": 191,
         "startChar": 3,
