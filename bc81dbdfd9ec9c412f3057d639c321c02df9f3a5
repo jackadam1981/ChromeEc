@@ -127,6 +127,48 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "18b28cad_7d73af07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "Separate the calls/evluations to dps_task.",
+      "parentUuid": "2acc7719_fe06e8bc",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8af2399d_0a50128e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "Renamed as DPS (short for Dynamic PDO Selection). Was thinkg of APS, but this would conflict to the existing console command APS(hutdown).",
+      "parentUuid": "de1b292f_523d4dfe",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1ee0dcec_eb87b531",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -155,6 +197,30 @@
       "writtenOn": "2021-06-10T18:07:32Z",
       "side": 1,
       "message": "This is pretty naive, it will depend on the HW configuration since not all chargers have behavior like this - it kind of looks like the goal here is to stay in the buck-boost region always which is not always best.\n\nAnd really I would like if this was extendable to power as well. IE, even with 4S we want do do 5V when charging at \u003c1W - switcher efficiency hurts at lower currents to stay OOA.\n\nThat said I think this is an acceptable default. Could this or some equivalent function be overrideable by the board? We\u0027ll also need to pass the power. I was kind of picturing have a declarative way to do this, IE we have a lookup table for which power ranges map to which voltages which can be overwritten on a board-to-board basis if needed. Like what you have directly below in a comment. I don\u0027t think we need to base it on the current battery voltage until we move to PPS, having the nominal voltage is enough.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "068d0b97_7b42af24",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "The initial idea of Tony and I was thinking of a table as well, but we think it can be reduced to comparing the voltage deltas. \n\nI add dps_config which contains an member for is_more_efficient override. Can you check if that fulfills your need?",
+      "parentUuid": "69168ebd_4ae8adb9",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -308,6 +374,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "787d2d9d_b28bb066",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "188a7c5b_08db5711",
+      "range": {
+        "startLine": 115,
+        "startChar": 32,
+        "endLine": 115,
+        "endChar": 44
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d12472c_7ce40480",
@@ -321,6 +411,30 @@
       "writtenOn": "2021-06-03T10:18:38Z",
       "side": 1,
       "message": "I think this should be batt_mv?",
+      "range": {
+        "startLine": 149,
+        "startChar": 5,
+        "endLine": 149,
+        "endChar": 11
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b50b4275_fc1fb360",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d12472c_7ce40480",
       "range": {
         "startLine": 149,
         "startChar": 5,
@@ -354,6 +468,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "837df8ac_662cfbd3",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4999d1d8_6bd485e2",
+      "range": {
+        "startLine": 179,
+        "startChar": 53,
+        "endLine": 179,
+        "endChar": 54
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d281f5c2_af32f409",
@@ -367,6 +505,24 @@
       "writtenOn": "2021-06-03T10:18:38Z",
       "side": 1,
       "message": "no need because you already have `if (argc \u003d\u003d 1)` above, but you might need to check if argc \u003e\u003d 3 for some subcommands.",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a49ed26b_162f11be",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d281f5c2_af32f409",
       "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -388,6 +544,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b63e0aa_cf21c690",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "dropped.",
+      "parentUuid": "7b436f51_5b237dba",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c1bb507_5631274c",
@@ -401,6 +575,30 @@
       "writtenOn": "2021-06-03T21:32:27Z",
       "side": 1,
       "message": "Perhaps consider validating the new constant values.",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 22
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f206ce8_0e226647",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c1bb507_5631274c",
       "range": {
         "startLine": 305,
         "startChar": 0,
@@ -434,6 +632,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43a6467f_0891ccf7",
+        "filename": "include/apdo.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de23a7c1_99870b98",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8ae0931_3eb2d642",
@@ -447,6 +669,30 @@
       "writtenOn": "2021-06-03T21:32:27Z",
       "side": 1,
       "message": "\u0027of\u0027 ?",
+      "range": {
+        "startLine": 33,
+        "startChar": 23,
+        "endLine": 33,
+        "endChar": 25
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8001fa7_363ec31a",
+        "filename": "include/apdo.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8ae0931_3eb2d642",
       "range": {
         "startLine": 33,
         "startChar": 23,
@@ -480,6 +726,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fbd66d0_ca5b01f2",
+        "filename": "include/apdo.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "deleted the comment.",
+      "parentUuid": "45771306_fa24b31b",
+      "range": {
+        "startLine": 55,
+        "startChar": 31,
+        "endLine": 55,
+        "endChar": 39
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb691e39_d447ccc1",
@@ -493,6 +763,24 @@
       "writtenOn": "2021-06-03T17:55:05Z",
       "side": 1,
       "message": "Don\u0027t forget the zephyr config additions :) https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_shim.md#how-to-shim-features",
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "465cec9e_3580e492",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4110,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-18T08:43:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb691e39_d447ccc1",
       "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
