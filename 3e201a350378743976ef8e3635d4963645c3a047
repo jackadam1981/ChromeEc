@@ -16,6 +16,24 @@
       "message": "Please also populate cfet_mask and cfet_off_val",
       "revId": "3e201a350378743976ef8e3635d4963645c3a047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "832b73cb_13d42ef5",
+        "filename": "board/magolor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-06-18T07:27:52Z",
+      "side": 1,
+      "message": "mfgacc_support \u003d1 ; has enable it",
+      "parentUuid": "dc72eb8a_9e58b2a9",
+      "revId": "3e201a350378743976ef8e3635d4963645c3a047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
