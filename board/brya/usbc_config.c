@@ -161,13 +161,25 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
  */
 
 struct ioexpander_config_t ioex_config[] = {
-	[IOEX_C0_NCT38XX] = {
+	[IOEX_ID_2_C0_NCT38XX] = {
 		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
 		.i2c_addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
 		.drv = &nct38xx_ioexpander_drv,
 		.flags = IOEX_FLAGS_DISABLED,
 	},
-	[IOEX_C2_NCT38XX] = {
+	[IOEX_ID_2_C2_NCT38XX] = {
+		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
+		.i2c_addr_flags = NCT38XX_I2C_ADDR2_1_FLAGS,
+		.drv = &nct38xx_ioexpander_drv,
+		.flags = IOEX_FLAGS_DISABLED,
+	},
+	[IOEX_ID_1_C0_NCT38XX] = {
+		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
+		.i2c_addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
+		.drv = &nct38xx_ioexpander_drv,
+		.flags = IOEX_FLAGS_DISABLED,
+	},
+	[IOEX_ID_1_C2_NCT38XX] = {
 		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
 		.i2c_addr_flags = NCT38XX_I2C_ADDR2_1_FLAGS,
 		.drv = &nct38xx_ioexpander_drv,
@@ -195,9 +207,12 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		if (get_board_id() == 1)
 			rst_signal = IOEX_ID_1_USB_C0_RT_RST_ODL;
 		else
-			rst_signal = IOEX_USB_C0_RT_RST_ODL;
+			rst_signal = IOEX_ID_2_USB_C0_RT_RST_ODL;
 	} else if (me->usb_port == USBC_PORT_C2) {
-		rst_signal = IOEX_USB_C2_RT_RST_ODL;
+		if (get_board_id() == 1)
+			rst_signal = IOEX_ID_1_USB_C2_RT_RST_ODL;
+		else
+			rst_signal = IOEX_ID_2_USB_C2_RT_RST_ODL;
 	} else {
 		return EC_ERROR_INVAL;
 	}
@@ -277,18 +292,41 @@ void board_reset_pd_mcu(void)
 	msleep(50);
 }
 
+static void enable_ioex(int ioex)
+{
+	ioex_config[ioex].flags &= ~IOEX_FLAGS_DISABLED;
+	ioex_init(ioex);
+}
+
 static void board_tcpc_init(void)
 {
+#if 0
 	int i;
+#endif
 
 	/* Don't reset TCPCs after initial reset */
 	if (!system_jumped_late()) {
 		board_reset_pd_mcu();
 
+		/*
+		 * These IO expander pins are implemented using the
+		 * C0/C2 TCPC, so they must be set up after the TCPC has
+		 * been taken out of reset.
+		 */
+#if 0
 		for (i = 0; i < CONFIG_IO_EXPANDER_PORT_COUNT; ++i) {
 			ioex_config[i].flags &= ~IOEX_FLAGS_DISABLED;
 			ioex_init(i);
 		}
+#else
+		if (get_board_id() == 1) {
+			enable_ioex(IOEX_ID_1_C0_NCT38XX);
+			enable_ioex(IOEX_ID_1_C2_NCT38XX);
+		} else {
+			enable_ioex(IOEX_ID_2_C0_NCT38XX);
+			enable_ioex(IOEX_ID_2_C2_NCT38XX);
+		}
+#endif
 	}
 
 	/* Enable PPC interrupts. */
