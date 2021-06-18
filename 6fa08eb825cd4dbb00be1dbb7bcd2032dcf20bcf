@@ -33,6 +33,29 @@
       "message": "This works, but it would be more in line with our typical style to\n1. Put the static structure at file scope, above the function definitions.\n2. Use bool\n3. Call the function parameter en or enable",
       "revId": "6fa08eb825cd4dbb00be1dbb7bcd2032dcf20bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4aad58_dba2061a",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-06-18T08:29:30Z",
+      "side": 1,
+      "message": "retimer_init:\n  chipset_in_or_transitioning_to_state time bb_retimer_on_off_handle(me, 0); is called. But this function returns EC_SUCESS without calling the function bb_retimer_power_handle(me, 0); There may be some more scenarios.\n\nIf my comment is valid, fix as follows:\n    initialize the bb_on_off[me-\u003eusb_port] to 2 instead of 0",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 162,
+        "endChar": 21
+      },
+      "revId": "6fa08eb825cd4dbb00be1dbb7bcd2032dcf20bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
