@@ -670,6 +670,11 @@ void ocpc_reset(struct ocpc_data *ocpc)
 			batt.voltage);
 		charger_set_voltage(ocpc->active_chg_chip, batt.voltage);
 	}
+
+	/*
+	 * See(b:191347747) when ocpc reset, ocpc precharge should reset too.
+	 */
+	ocpc_precharge_enable(false);
 }
 
 static void ocpc_set_pid_constants(void)
