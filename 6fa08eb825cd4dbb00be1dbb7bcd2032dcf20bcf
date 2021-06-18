@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9617a4f_4b0693ff",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-18T18:46:30Z",
+      "side": 1,
+      "message": "done, moved to adlrvp.c",
+      "parentUuid": "ef5ff578_b0dcc91d",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "6fa08eb825cd4dbb00be1dbb7bcd2032dcf20bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "854297d9_03277030",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 5
@@ -77,6 +101,48 @@
         "endLine": 162,
         "endChar": 21
       },
+      "revId": "6fa08eb825cd4dbb00be1dbb7bcd2032dcf20bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a508de3_8c264e4e",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-18T18:46:30Z",
+      "side": 1,
+      "message": "good point, moved to board file hence it can be handled in board specific code",
+      "parentUuid": "5a4aad58_dba2061a",
+      "range": {
+        "startLine": 162,
+        "startChar": 12,
+        "endLine": 162,
+        "endChar": 21
+      },
+      "revId": "6fa08eb825cd4dbb00be1dbb7bcd2032dcf20bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bab237c2_3703a012",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-18T18:46:30Z",
+      "side": 1,
+      "message": "done submitted a CL:2973375",
+      "parentUuid": "854297d9_03277030",
       "revId": "6fa08eb825cd4dbb00be1dbb7bcd2032dcf20bcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
