@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c740a0bf_c7730dc3",
+        "filename": "include/ccd_config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-18T17:19:29Z",
+      "side": 1,
+      "message": "why does this have to be kept in the enum and mentioned in the .md file?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "adb7b08d3e9744db65dab5625775e619ef2fb687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
