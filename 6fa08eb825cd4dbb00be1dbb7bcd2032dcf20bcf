@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef5ff578_b0dcc91d",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-18T09:01:08Z",
+      "side": 1,
+      "message": "you\u0027re describing very board specific behavior here.\nthat means this code should really go into a bb_retimer_power_handle() override.",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 43
+      },
+      "revId": "6fa08eb825cd4dbb00be1dbb7bcd2032dcf20bcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "854297d9_03277030",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 5
