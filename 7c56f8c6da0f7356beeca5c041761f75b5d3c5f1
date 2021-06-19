@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "032140bf_406910ee",
+        "filename": "board/gimble/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-19T04:05:33Z",
+      "side": 1,
+      "message": "Update the comments",
+      "revId": "7c56f8c6da0f7356beeca5c041761f75b5d3c5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e25ea416_6a2d7070",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-19T04:05:33Z",
+      "side": 1,
+      "message": "If ALS is not present - this section can be removed",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "7c56f8c6da0f7356beeca5c041761f75b5d3c5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec9e0916_c9b9a39a",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-19T04:05:33Z",
+      "side": 1,
+      "message": "and this",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 3
+      },
+      "revId": "7c56f8c6da0f7356beeca5c041761f75b5d3c5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
