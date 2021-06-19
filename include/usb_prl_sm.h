@@ -11,7 +11,14 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 #include "usb_sm.h"
+#include "timer.h"
 
+/**
+ * Returns TX success time stamp.
+ *
+ * @return the time stamp of TCPC tx success.
+ **/
+timestamp_t get_tcpc_tx_success_ts(void);
 
 /**
  * Returns true if Protocol Layer State Machine is in run mode
