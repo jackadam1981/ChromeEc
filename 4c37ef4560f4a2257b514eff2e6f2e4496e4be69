@@ -33,6 +33,24 @@
       "message": "We shouldn\u0027t put it here, we should probably do it from `ocpc_reset`. We may need to add an API for charger specific reset actions.",
       "revId": "4c37ef4560f4a2257b514eff2e6f2e4496e4be69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa73b222_1c5ffbcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-19T02:36:22Z",
+      "side": 1,
+      "message": "great, i will abandon this cl.",
+      "parentUuid": "4f530e6a_3b55e47e",
+      "revId": "4c37ef4560f4a2257b514eff2e6f2e4496e4be69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
