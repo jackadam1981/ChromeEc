@@ -86,6 +86,24 @@
       "parentUuid": "5bec9835_f240f7e7",
       "revId": "c46f288eee87a397f41e7a160d17ca8b39b990bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0269b84c_1b27a092",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-20T02:31:48Z",
+      "side": 1,
+      "message": "I merged a change that just sets a new name for the 2.5 branch to be compatible with 2.6.\n\nI\u0027ve yet to be able to fully boot using 2.6 on Limozeen but as soon as I do we\u0027ll have boards start to migrate and eventually drop 2.5.",
+      "parentUuid": "c91879a0_f0e5e1f3",
+      "revId": "c46f288eee87a397f41e7a160d17ca8b39b990bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
