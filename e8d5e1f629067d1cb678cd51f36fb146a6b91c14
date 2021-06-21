@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1df11b6c_b46778cc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 19
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-21T20:00:44Z",
+      "side": 1,
+      "message": "updated tested functions in patch20",
+      "parentUuid": "c2be6862_a9209880",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 42
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bc2ab4d_62357d7d",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-14T18:02:46Z",
       "side": 1,
       "message": "this is MECC specific, we can modify it once MECC1.1 is available.\nfor now, dont change anything on this file.\n\ndo below things in board.h for all these\n#undef ***\n#define ***",
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c05d169_a7c95cb8",
+        "filename": "baseboard/intelrvp/mchp_ec.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-21T20:00:44Z",
+      "side": 1,
+      "message": "added #undef / #define in board.h\nbut still keeps #ifndef CHIP_VARIANT_MEC1727SZ in mchp_ec.h, otherwise redefinitions are complained by compliler.\n\ndone in patch 20",
+      "parentUuid": "6bc2ab4d_62357d7d",
       "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -87,6 +129,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9bfe4c2_d868aa65",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-21T20:00:44Z",
+      "side": 1,
+      "message": "removed\ndone in patch20",
+      "parentUuid": "be943d11_2799c1cb",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b9edb4c_479f5bda",
@@ -100,6 +166,24 @@
       "writtenOn": "2021-06-14T18:02:46Z",
       "side": 1,
       "message": "add #if defined(HAS_TASK_PD_C1)",
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3fb1ff8_ec29780c",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-21T20:00:44Z",
+      "side": 1,
+      "message": "added\ndone in patch20",
+      "parentUuid": "4b9edb4c_479f5bda",
       "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -163,6 +247,30 @@
       "writtenOn": "2021-06-14T18:02:46Z",
       "side": 1,
       "message": "not needed, default all are enabled",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c05adeb_7dab1175",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-21T20:00:44Z",
+      "side": 1,
+      "message": "removed\ndone in patch20",
+      "parentUuid": "fe4127f7_3bf49f61",
       "range": {
         "startLine": 24,
         "startChar": 0,
@@ -265,6 +373,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea5eebe_f0783de8",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-21T20:00:44Z",
+      "side": 1,
+      "message": "removed\ndone in patch20",
+      "parentUuid": "0106647a_6957a706",
+      "range": {
+        "startLine": 160,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 27
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2ebe500e_691cf1b9",
@@ -288,6 +420,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2665ca_01299e2d",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-21T20:00:44Z",
+      "side": 1,
+      "message": "removed\ndone in patch20",
+      "parentUuid": "2ebe500e_691cf1b9",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 27
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdffc261_eebc2714",
@@ -301,6 +457,30 @@
       "writtenOn": "2021-06-14T18:02:46Z",
       "side": 1,
       "message": "nit: refer adlrvpp_ite, we modified the ifdefs for easy adding or removing tasks.\nwill be useful if we plan to test all Typec-C ports",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c2db01_ba922cd7",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 19
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-21T20:00:44Z",
+      "side": 1,
+      "message": "done in patch20\n\nTested: Port0 only; Port0 \u0026 1 both; Port0~Port3 - pass compilation.",
+      "parentUuid": "cdffc261_eebc2714",
       "range": {
         "startLine": 45,
         "startChar": 0,
