@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5f36548_e02b06e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-21T22:37:25Z",
+      "side": 1,
+      "message": "This was my initial approach but I didn\u0027t know how to get the shell\u0027s tid. But I must have been tired that day because I could have used k_current_get. Is everyone in consensus about temporarily increasing the priority of the shell thread? Also, should this be done for all commands or just the the select few?",
+      "parentUuid": "0c915465_dd8dcbef",
+      "revId": "a13191d58a6666e008e05747fd67dc967d8c5067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c20bfd8e_8f6b6c28",
         "filename": "zephyr/shim/include/zephyr_console_shim.h",
         "patchSetId": 2
