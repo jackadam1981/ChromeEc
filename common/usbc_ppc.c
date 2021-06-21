@@ -14,17 +14,18 @@
 #include "usbc_ppc.h"
 #include "util.h"
 
-#ifndef TEST_BUILD
+#if 1
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 #else
 #define CPRINTF(args...)
 #define CPRINTS(args...)
+#error "TEST build"
 #endif
 
 int ppc_prints(const char *string, int port)
 {
-#ifndef TEST_BUILD
+#if 1
 	return CPRINTS("ppc p%d %s", port, string);
 #else
 	return 0;
@@ -33,7 +34,7 @@ int ppc_prints(const char *string, int port)
 
 int ppc_err_prints(const char *string, int port, int error)
 {
-#ifndef TEST_BUILD
+#if 1
 	return CPRINTS("ppc p%d %s (%d)", port, string, error);
 #else
 	return 0;
@@ -47,6 +48,7 @@ int ppc_init(int port)
 	int rv = EC_ERROR_UNIMPLEMENTED;
 	const struct ppc_config_t *ppc;
 
+	CPRINTS("PPC init");
 	if ((port < 0) || (port >= ppc_cnt)) {
 		CPRINTS("%s(%d) Invalid port!", __func__, port);
 		return EC_ERROR_INVAL;
@@ -54,6 +56,7 @@ int ppc_init(int port)
 
 	ppc = &ppc_chips[port];
 	if (ppc->drv->init) {
+		CPRINTS("PPC init: function");
 		rv = ppc->drv->init(port);
 		if (rv)
 			ppc_err_prints("init failed!", port, rv);
@@ -75,8 +78,10 @@ int ppc_is_sourcing_vbus(int port)
 	}
 
 	ppc = &ppc_chips[port];
-	if (ppc->drv->is_sourcing_vbus)
+	if (ppc->drv->is_sourcing_vbus) {
 		rv = ppc->drv->is_sourcing_vbus(port);
+		CPRINTS("Driver check: %d", rv);
+	}
 
 	return rv;
 }
@@ -234,8 +239,10 @@ int ppc_vbus_source_enable(int port, int enable)
 	}
 
 	ppc = &ppc_chips[port];
-	if (ppc->drv->vbus_source_enable)
+	if (ppc->drv->vbus_source_enable) {
 		rv = ppc->drv->vbus_source_enable(port, enable);
+		CPRINTS("Driver enable: %d", rv);
+	}
 
 	return rv;
 }

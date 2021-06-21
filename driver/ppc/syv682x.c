@@ -183,12 +183,14 @@ static int syv682x_vbus_source_enable(int port, int enable)
 		return rv;
 
 	if (enable) {
+		CPRINTS("Enabling VBUS");
 		/* Select 5V path and turn on channel */
 		regval &= ~(SYV682X_CONTROL_1_CH_SEL |
 			    SYV682X_CONTROL_1_PWR_ENB);
 		/* Disable HV Sink path */
 		regval |= SYV682X_CONTROL_1_HV_DR;
 	} else if (flags[port] & SYV682X_FLAGS_SOURCE_ENABLED) {
+		CPRINTS("Disabling VBUS");
 		/*
 		 * For the disable case, make sure that VBUS was being sourced
 		 * prior to disabling the source path. Because the source/sink
@@ -718,14 +720,17 @@ static int syv682x_init(int port)
 	int status, control_1;
 	enum tcpc_rp_value initial_current_limit;
 
+	CPRINTS("SYV682 init");
 	rv = read_reg(port, SYV682X_STATUS_REG, &status);
 	if (rv)
 		return rv;
 
+	CPRINTS("Read status");
 	rv = read_reg(port, SYV682X_CONTROL_1_REG, &control_1);
 	if (rv)
 		return rv;
 	atomic_clear(&sink_ocp_count[port]);
+	CPRINTS("Read control1");
 
 	/*
 	 * Disable FRS prior to configuring the power paths
@@ -735,6 +740,7 @@ static int syv682x_init(int port)
 
 	if (!syv682x_is_sink(control_1)
 		|| (status & SYV682X_STATUS_VSAFE_0V)) {
+		CPRINTS("Not sink or vsafe0v");
 		/*
 		 * Disable both power paths,
 		 * set HV_ILIM to 3.3A,
@@ -750,6 +756,7 @@ static int syv682x_init(int port)
 		if (rv)
 			return rv;
 	} else {
+		CPRINTS("dead battery or contract");
 		/* Dead battery mode, or an existing PD contract is in place */
 		rv = syv682x_vbus_sink_enable(port, 1);
 		if (rv)

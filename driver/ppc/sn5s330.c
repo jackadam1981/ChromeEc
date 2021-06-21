@@ -186,6 +186,8 @@ static int sn5s330_init(int port)
 	const int i2c_port  = ppc_chips[port].i2c_port;
 	const uint16_t i2c_addr_flags = ppc_chips[port].i2c_addr_flags;
 
+	CPRINTS("SN5S330 init");
+
 #ifdef CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT
 	/* Set the sourcing current limit value. */
 	switch (CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT) {
