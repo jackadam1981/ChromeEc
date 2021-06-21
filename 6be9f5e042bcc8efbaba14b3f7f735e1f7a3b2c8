@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5488dc85_7caa01d8",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-21T23:05:03Z",
+      "side": 1,
+      "message": "PLATFORM_EC_EXTERNAL_STORAGE and PLATFORM_EC_INTERNAL_STORAGE are mutually exclusive.  These options should be organized as a choice:\n\nchoice PLATFORM_EC_STORAGE_TYPE\n       prompt \"Code storage type\"\n       default PLATFORM_EC_EXTERNAL_STORAGE if SOC_FAMILY_NPCX\n       default PLATFORM_EC_INTERNAL_STORAGE if SOC_FAMILY_RISCV_ITE\n       help\n         Sets the EC code storage type. \n\nconfig PLATFORM_EC_EXTERNAL_STORAGE\n    ...\n\nconfig PLATFORM_EC_INTERNAL_STORAGE\n    ...\n\nendchoice",
+      "range": {
+        "startLine": 82,
+        "startChar": 7,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "6be9f5e042bcc8efbaba14b3f7f735e1f7a3b2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca96bc35_17c8b32d",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-21T23:05:03Z",
+      "side": 1,
+      "message": "Avoid referencing the legacy cros-ec CONFIG names in the Kconfig help.\n\nSuggest changing \"CONFIG_INTERNAL_STORAGE implies\" to \"This option implies\".",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "6be9f5e042bcc8efbaba14b3f7f735e1f7a3b2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecff15c4_48fbb225",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-21T23:05:03Z",
+      "side": 1,
+      "message": "Delete this line - it only applies to npcx/flash_chip.h",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 62
+      },
+      "revId": "6be9f5e042bcc8efbaba14b3f7f735e1f7a3b2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
