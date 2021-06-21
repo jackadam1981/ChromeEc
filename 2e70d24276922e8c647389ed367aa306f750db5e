@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93997d70_89389da9",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-21T19:09:00Z",
+      "side": 1,
+      "message": "See comment on parent CL.  Mapping DECLARE_HIGH_PRIORITY_CONSOLE_COMMAND directly to DECLARE_CONSOLE_COMMAND when HPCC isn\u0027t supported eliminates to duplicate the console help.",
+      "range": {
+        "startLine": 1308,
+        "startChar": 0,
+        "endLine": 1308,
+        "endChar": 59
+      },
+      "revId": "2e70d24276922e8c647389ed367aa306f750db5e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
