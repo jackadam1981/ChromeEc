@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59d4d46b_73fe54eb",
+        "filename": "board/chronicler/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-21T17:56:32Z",
+      "side": 1,
+      "message": "It is preferred to check the XDSG bit instead of the DSG bit in the OperationStatus.  So use reg_mask \u003d 0x2000 and disconnect_val \u003d 0x2000.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "ae2a8ceb4d71aae18ddb44ece361679207834fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f76953_b3214182",
+        "filename": "board/chronicler/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-21T17:56:32Z",
+      "side": 1,
+      "message": "The datasheet isn\u0027t all in English, but I see the Charging section lists 4 temperature ranges: 0-10, 10-15, 15-45, and 45-55.\nWhy is start_chargning_min_c set to 5 C, and not 0 C (or 10 C)?\nWhy is charging_max_c set to 50 C and not 55 C?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 25
+      },
+      "revId": "ae2a8ceb4d71aae18ddb44ece361679207834fa9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
