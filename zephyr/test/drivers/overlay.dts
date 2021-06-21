@@ -178,4 +178,11 @@
 		cycle-count = <99>;
 		version = "BATTERY_SPEC_VER_1_1_WITH_PEC";
 	};
+
+	syv682x_emul: syv682x@57 {
+		compatible = "zephyr,syv682x";
+		status = "okay";
+		reg = <0x1f>;
+		label = "SYV682X_EMUL";
+	};
 };

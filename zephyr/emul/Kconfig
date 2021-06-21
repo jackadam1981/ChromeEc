@@ -6,3 +6,8 @@ config EMUL_SMART_BATTERY
 	bool "Smart Battery emulator"
 	help
 	  Enable the Smart Battery emulator. This driver use emulated I2C bus.
+
+config EMUL_PPC_SYV682X
+	bool "Silergy SYV682x PPC emulator"
+	help
+	  Enable the SYV682x emulator. This driver uses the emulated I2C bus.
