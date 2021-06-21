@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee60b9ec_721a457f",
+        "filename": "board/gimble/board.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-21T22:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a383d369_dc0e5808",
+      "revId": "7c56f8c6da0f7356beeca5c041761f75b5d3c5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e25ea416_6a2d7070",
@@ -83,6 +101,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc9066ae_cdef4da1",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-21T22:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1145958e_c8dff398",
+      "range": {
+        "startLine": 56,
+        "startChar": 12,
+        "endLine": 109,
+        "endChar": 0
+      },
+      "revId": "7c56f8c6da0f7356beeca5c041761f75b5d3c5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec9e0916_c9b9a39a",
@@ -120,6 +162,30 @@
       "side": 1,
       "message": "Done.",
       "parentUuid": "ec9e0916_c9b9a39a",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 3
+      },
+      "revId": "7c56f8c6da0f7356beeca5c041761f75b5d3c5f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f630500a_3ecf2be1",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-21T22:57:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d452d8b8_582290ba",
       "range": {
         "startLine": 198,
         "startChar": 0,
