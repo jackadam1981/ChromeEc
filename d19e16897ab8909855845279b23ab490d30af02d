@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0d698fa9_50ed324c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-21T01:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bac5b37c_cbe04267",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "d19e16897ab8909855845279b23ab490d30af02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b3f63714_971d2925",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -71,6 +95,30 @@
       "writtenOn": "2021-06-19T17:47:23Z",
       "side": 1,
       "message": "Can we elaborate a little bit here? Perhaps say something along the lines of \"When linear precharge is enabled, it may affect the charging behaviour from the primary charger IC. Therefore as a part of the reset process, we need to disable linear precharge.\"",
+      "range": {
+        "startLine": 675,
+        "startChar": 21,
+        "endLine": 675,
+        "endChar": 70
+      },
+      "revId": "d19e16897ab8909855845279b23ab490d30af02d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a399bd_ce5288a7",
+        "filename": "common/ocpc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-21T01:20:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2783194_5a9d6dc7",
       "range": {
         "startLine": 675,
         "startChar": 21,
