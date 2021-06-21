@@ -16,6 +16,24 @@
       "message": "Updated to use the new symbols from upstream",
       "revId": "ff50d5feeb48ab562512dac836db81d00d510d37",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cead22b_62ed34a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-06-21T22:44:32Z",
+      "side": 1,
+      "message": "by which I mean:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/2976876",
+      "parentUuid": "190f60c8_54276282",
+      "revId": "ff50d5feeb48ab562512dac836db81d00d510d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
