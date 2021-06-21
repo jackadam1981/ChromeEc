@@ -16,6 +16,23 @@
       "message": "Ping - can anyone help review this patch?",
       "revId": "51237d7a0567339fe5ff8e05de0ef9dcc476f76a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "622f6e38_dc8fdee5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-21T20:01:00Z",
+      "side": 1,
+      "message": "I still think crrev/c/2340222 is cleaner. It basically separates CBI into data access layer (datablob) and media access layer (eeprom, gpio, flash) using this interface:\n\nconst struct datablob_driver eeprom_drv \u003d {\n\t.save \u003d eeprom_write,\n\t.load \u003d eeprom_read,\n\t.is_protected \u003d eeprom_is_write_protected,\n};",
+      "revId": "51237d7a0567339fe5ff8e05de0ef9dcc476f76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
