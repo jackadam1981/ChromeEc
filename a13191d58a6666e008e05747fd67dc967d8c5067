@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15bbe6bd_412a34cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-21T23:46:41Z",
+      "side": 1,
+      "message": "I\u0027m inclined for you to submit this as is (with the parameter change to an enum). And to test changing the shell priority on the fly for select commands as a later CL.",
+      "parentUuid": "b5f36548_e02b06e5",
+      "revId": "a13191d58a6666e008e05747fd67dc967d8c5067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c20bfd8e_8f6b6c28",
         "filename": "zephyr/shim/include/zephyr_console_shim.h",
         "patchSetId": 2
