@@ -70,6 +70,70 @@
       "parentUuid": "93adcf64_87e249df",
       "revId": "a13191d58a6666e008e05747fd67dc967d8c5067",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c915465_dd8dcbef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-21T19:07:27Z",
+      "side": 1,
+      "message": "Another potential option here that doesn\u0027t require a separate thread and would save RAM space - the high-priority console commands could temporarily increase the priority of the shell thread during execution using k_thread_priority_set().",
+      "parentUuid": "2166dea5_89c7e3b3",
+      "revId": "a13191d58a6666e008e05747fd67dc967d8c5067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c20bfd8e_8f6b6c28",
+        "filename": "zephyr/shim/include/zephyr_console_shim.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-21T19:07:27Z",
+      "side": 1,
+      "message": "This parameter would be better as an enum.\n\nenum shell_priority {\n     NORMAL_PRIORITY,\n     HIGH_PRIORITY\n}\n\nThen the console command macros become:\n\n#define DECLARE_CONSOLE_COMMAND(...) \\\n  _ZEPHYR_SHELL_COMMAND_SHIM(..., NORMAL_PRIORITY)\n#define DECLARE_HIGH_PRIORITY_CONSOLE_COMMAND(...) \\\n  _ZEPHYR_SHELL_COMMAND_SHIM(..., HIGH_PRIORITY)",
+      "range": {
+        "startLine": 29,
+        "startChar": 26,
+        "endLine": 29,
+        "endChar": 44
+      },
+      "revId": "a13191d58a6666e008e05747fd67dc967d8c5067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2263b8c_c273e6cb",
+        "filename": "zephyr/shim/include/zephyr_console_shim.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-21T19:07:27Z",
+      "side": 1,
+      "message": "I suggest adding a check for CONFIG_HAS_TASK_HPCC here.  If CONFIG_HAS_TASK_HPCC is not defined, map DECLARE_HIGH_PRIORITY_CONSOLE_COMMAND to DECLARE_CONSOLE_COMMAND.\n\nI also suggest in include/console.h always mapping DECLARE_HIGH_PRIORITY_CONSOLE_COMMAND to DECLARE_CONSOLE_COMMAND.  This will make the child CL cleaner and you won\u0027t need #ifdefs in system.c.",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 45
+      },
+      "revId": "a13191d58a6666e008e05747fd67dc967d8c5067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
