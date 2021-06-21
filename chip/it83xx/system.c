@@ -159,6 +159,10 @@ static void check_reset_cause(void)
 		chip_save_reset_flags(0);
 	}
 
+	if (flags & EC_RESET_FLAG_HIBERNATE)
+		flags = EC_RESET_FLAG_POWER_ON | EC_RESET_FLAG_WAKE_PIN |
+			EC_RESET_FLAG_HIBERNATE;
+
 	system_set_reset_flags(flags);
 
 	/* Clear PD contract recorded in bram if this is a power-on reset. */
