@@ -111,6 +111,9 @@
 /* Enable i2ctrace command */
 #define CONFIG_I2C_DEBUG
 
+/* Assert CCD when a debug device is connected */
+#define CONFIG_ASSERT_CCD_MODE_ON_DTS_CONNECT
+
 /* EC Modules */
 #define CONFIG_ADC
 #define CONFIG_CRC8
