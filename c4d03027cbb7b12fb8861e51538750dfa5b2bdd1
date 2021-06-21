@@ -16,6 +16,40 @@
       "message": "I have not yet tested this CL. I will do that on monday.\n\nI am not completely clear about timer logic work. especially conversion from usec to msec. I will try to understand that tomorrow. If there are any obvious mistakes please let me know.",
       "revId": "c4d03027cbb7b12fb8861e51538750dfa5b2bdd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "906aecf4_3a4a5a65",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2014,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-21T16:58:25Z",
+      "side": 1,
+      "message": "I think you can use time_since32() since we don\u0027t expect this to be more than 2-5 ms.  That\u0027ll give you the return in us and then we also have PD_T_SENDER_RESPONSE in units of us so you can just subtract it easily. \n\nIt can be a little weird because we have that formatting of timers being `#define PD_T_SENDER_RESPONSE        (24*MSEC)`, but the MSEC is just multiplying by 1000 to calculate the define in terms of us, while keeping it easy to read.",
+      "revId": "c4d03027cbb7b12fb8861e51538750dfa5b2bdd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aada613_79b2d140",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-21T16:58:25Z",
+      "side": 1,
+      "message": "This will need to be per-port and could probably be a part of protocol_layer_tx",
+      "revId": "c4d03027cbb7b12fb8861e51538750dfa5b2bdd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
