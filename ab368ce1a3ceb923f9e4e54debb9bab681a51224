@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cf48019_cc67a213",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-22T15:05:24Z",
+      "side": 1,
+      "message": "This will break many of the USB4/TBT use cases.  The event EC_HOST_EVENT_USB_MUX was changed to be a \"dark resume\" wake source so that internal mux on TGL is can kept in a good state with the retimers controlled by the EC.",
+      "revId": "ab368ce1a3ceb923f9e4e54debb9bab681a51224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
