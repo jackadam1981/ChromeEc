@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8dae7a23_97e7bc1a",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T20:40:51Z",
+      "side": 1,
+      "message": "Logic is correct, verified 3 ports (2 type c ports) and 5 ports (4 type c ports) cases on platform, port number can be assigned to individual controller correctly.",
+      "revId": "3ec924248c0f004f7f18bbe9fae41a858677daba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83c193ad_8af0cf75",
+        "filename": "chip/mchp/i2c_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T20:40:51Z",
+      "side": 1,
+      "message": "i.e. one controller controls multiple ports, so port switching functionality is requested.",
+      "revId": "3ec924248c0f004f7f18bbe9fae41a858677daba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
