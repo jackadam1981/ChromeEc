@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "018710e5_28c759f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-22T21:45:51Z",
+      "side": 1,
+      "message": "replaced parameter name \u0027final\u0027 wich happens to be a C++/11 reserved word with \u0027deassert_cs\"",
+      "revId": "f5e5288f5e199dad91263a6d0c19011fadfb41d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
