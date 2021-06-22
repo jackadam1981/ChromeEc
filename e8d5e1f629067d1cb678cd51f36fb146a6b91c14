@@ -259,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5952410f_8e516d75",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T17:33:09Z",
+      "side": 1,
+      "message": "__overridable int board_i2c_p2c(int port)\nthis function only works as port number is same as controller number in hardware design specifically, e.g.\nPort0 -\u003e controller 0;\nPort1 -\u003e controller 1;\nPort2 -\u003e controller 2;\nand so on...",
+      "parentUuid": "98c44882_83b4a850",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 1
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baf4cca1_53e135ad",
