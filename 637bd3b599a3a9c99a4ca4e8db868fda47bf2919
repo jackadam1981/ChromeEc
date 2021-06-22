@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d239a028_80dc3841",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-22T19:47:27Z",
+      "side": 1,
+      "message": "Delete this as the CL no longer creates high priority console commands.",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 12
+      },
+      "revId": "637bd3b599a3a9c99a4ca4e8db868fda47bf2919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4574cb66_d8f084a0",
@@ -14,6 +37,52 @@
       "writtenOn": "2021-06-22T19:29:05Z",
       "side": 1,
       "message": "Here\u0027s the temporary fix. I\u0027ve been mentoring Udaya on working with Zephyr and generating a PR of this change seemed perfect for him, so I\u0027ve assigned this task to him. ",
+      "revId": "637bd3b599a3a9c99a4ca4e8db868fda47bf2919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9bf2a66_709933b5",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-22T19:47:27Z",
+      "side": 1,
+      "message": "Create a bug for the generating the upstream issue, so that this code can be deleted once the upstream PR lands.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 41
+      },
+      "revId": "637bd3b599a3a9c99a4ca4e8db868fda47bf2919",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da5ed415_29cd2d72",
+        "filename": "zephyr/app/ec/ec_app_main.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-22T19:47:27Z",
+      "side": 1,
+      "message": "Better to use K_HIGHEST_APPLICATION_THREAD_PRIO here.  -1 is only valid if cooperative threads are enabled.",
+      "range": {
+        "startLine": 99,
+        "startChar": 41,
+        "endLine": 99,
+        "endChar": 43
+      },
       "revId": "637bd3b599a3a9c99a4ca4e8db868fda47bf2919",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
