@@ -73,6 +73,21 @@
 #define RT1718S_UNLOCK_PW_1				0xF1
 
 #define RT1718S_RT2_SYS_CTRL5				0xF210
+
+#define RT1718S_VBUS_VOL_TO_REG(_vol)			((_vol) < 5 ? 0 : \
+							(_vol) > 20 ? 15 : \
+							(_vol) - 5)
+
+enum rt1718s_vbus_ovp_sel {
+	rt1718s_ovp_sel_5,
+	rt1718s_ovp_sel_10,
+	rt1718s_ovp_sel_15,
+	rt1718s_ovp_sel_20,
+};
+#define RT1718S_RT2_VBUS_VOL_CTRL			0xF213
+#define RT1718S_RT2_VBUS_OVP_SEL			(BIT(5) | BIT(4))
+#define RT1718S_RT2_VBUS_VOL_SEL			0x0F
+
 #define RT1718S_RT2_VBUS_OCRC_EN			0xF214
 #define RT1718S_RT2_VBUS_OCRC_EN_VBUS_OCP1_EN		BIT(0)
 #define RT1718S_RT2_VBUS_OCP_CTRL1			0xF216
