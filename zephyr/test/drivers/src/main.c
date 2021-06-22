@@ -21,10 +21,12 @@ void test_main(void)
 	ec_app_main();
 
 	/* Test suites to run after ec_app_main.*/
+#if 0
 	test_suite_battery();
 	test_suite_cbi();
 	test_suite_smart_battery();
 	test_suite_thermistor();
 	test_suite_temp_sensor();
+#endif
 	test_suite_ppc();
 }
