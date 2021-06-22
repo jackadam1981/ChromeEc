@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a2dbdab_764d31d3",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T23:50:08Z",
+      "side": 1,
+      "message": "Magic number should be USB_SPI_FEATURE_FULL_DUPLEX_SUPPORTED.",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd9f2958_3efe00d4",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T23:50:08Z",
+      "side": 1,
+      "message": "Wrong error code. This path should be USB_SPI_RX_UNEXPECTED_PACKET, not USB_SPI_UNKNOWN_ERROR",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4eebfd2_567a1dd7",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T23:50:08Z",
+      "side": 1,
+      "message": "This isn\u0027t actually an error in the original implementation, one of the reasons is we may add future packets to Flashrom. transfer_index and transfer_size are used to identify when both invalid packets are delivered and the packet miss conditions.\n\nDepending on the value of packet_id, this should be a USB_SPI_RX_UNEXPECTED_PACKET.",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "061428d3_4ca44f27",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T23:50:08Z",
+      "side": 1,
+      "message": "read_count needs to be compared against the USB_SPI_FULL_DUPLEX_ENABLED state as well since feature_bitmap\u0027s USB_SPI_FEATURE_FULL_DUPLEX_SUPPORTED is set. Flashrom will send UINT16_MAX down when using full duplex mode and that value gets cast to SPI_READBACK_ALL later on.",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0bdb217_001ff558",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T23:50:08Z",
+      "side": 1,
+      "message": "Depending on the path, this should be USB_SPI_READ_COUNT_INVALID or USB_SPI_WRITE_COUNT_INVALID",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b36ba06_f0555d74",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T23:50:08Z",
+      "side": 1,
+      "message": "Should be USB_SPI_WRITE_COUNT_INVALID",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbead785_b17a6594",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T23:50:08Z",
+      "side": 1,
+      "message": "This should be either USB_SPI_READ_COUNT_INVALID or USB_SPI_WRITE_COUNT_INVALID not 0x8004. Actually this error didn\u0027t exist before so should really be a new error code USB_SPI_READ_WRITE_COUNT_INVALID \u003d 0x000A.",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b935bff8_b605ca07",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T23:50:08Z",
+      "side": 1,
+      "message": "Should be USB_SPI_RX_UNEXPECTED_PACKET",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea39a9c_9be60653",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T23:50:08Z",
+      "side": 1,
+      "message": "This should be the USB_SPI_RX_UNEXPECTED_PACKET error code which is actually missing from the STM32 implementation. That hasn\u0027t been a problem yet because there\u0027s a several of other state validations that will fail if a packet is missed or duplicated but good to know.",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

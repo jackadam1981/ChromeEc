@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71ff869f_54df5cc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T23:50:08Z",
+      "side": 1,
+      "message": "My point is there are unnecessary differences between these implementations. Naming conventions have changed in variables, structs, and enums, and a lot of named fields have been replaced with magic numbers. These will make it more difficult to map one to another when comparing both code bases or even ensure this one is correct. There\u0027s spaces where it\u0027s simply not following the protocol missing paths or returning the incorrect error codes.\n\nOther points there are large code changes for instance process_raiden_packet() is now handling a lot more tasks, the large conditional block switched from being based on the packet_id field to the state so many of the cases look very different. There are a few spots where I can see that interacting with the streaming and buffered change but largely in those state transitions I mentioned earlier.\n\nThe STM32 version was intended to be easy to migrate into a common code base. 2/3\u0027s of that file was not platform specific with the STM32 peripheral interface functions for USB and SPI clearly separated and labeled to make the migration easier. There are a few spots that needed to be changed because the buffer was removed in the common code, but they\u0027re relatively self contained locations related to the buffer addressing and chip select rails along with the loss of a USB_SPI_PKT_ID_CMD_RESTART_RESPONSE operation.",
+      "parentUuid": "224ad699_1ffe45b1",
+      "revId": "ba52101e5dada84479edcdc949a9a823653533b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f4240c2_e9d3f18b",

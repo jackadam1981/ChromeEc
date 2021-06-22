@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31889307_410d8123",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T23:50:08Z",
+      "side": 0,
+      "message": "The SPI_READBACK_ALL case is missing.",
+      "revId": "f5e5288f5e199dad91263a6d0c19011fadfb41d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
