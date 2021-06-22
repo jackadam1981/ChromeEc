@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a35700b3_3793afa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-22T16:30:16Z",
+      "side": 1,
+      "message": "Worked on my drawcia.  CCD_MODE_L was asserted when servo_v4 was plugged into C0 but not when it was in C1.  \n\nAseda, any concerns or objections to enabling this? ",
+      "revId": "e1b41556da7baaa53473d494175a0b386431c5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
