@@ -22,6 +22,30 @@
       },
       "revId": "d7ddcec30f89e56bdbc58ffe9eebd95c0fe278d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "623b9b1b_05786324",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-22T17:14:43Z",
+      "side": 1,
+      "message": "yes, I am going to update spiflash to use the V2 protocol, this is not urgent as they are not currently building new images.",
+      "parentUuid": "41e0b2f7_b544d939",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 44
+      },
+      "revId": "d7ddcec30f89e56bdbc58ffe9eebd95c0fe278d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
