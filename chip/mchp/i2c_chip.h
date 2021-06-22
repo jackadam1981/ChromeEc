@@ -17,6 +17,9 @@ extern "C" {
 /*
  * function returns the controller for I2C
  * if there is a special assignment, function board.c can override this.
+ *
+ * Note: Use the board specific assignment when the I2C ports used are
+ * greater than MCHP_I2C_CTRL_MAX.
  */
 __override_proto int board_i2c_p2c(int port);
 
