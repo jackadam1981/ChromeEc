@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26a42af7_d5a9e2b9",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-22T06:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5488dc85_7caa01d8",
+      "range": {
+        "startLine": 82,
+        "startChar": 7,
+        "endLine": 82,
+        "endChar": 35
+      },
+      "revId": "6be9f5e042bcc8efbaba14b3f7f735e1f7a3b2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca96bc35_17c8b32d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e76ae71_54fb4536",
+        "filename": "zephyr/Kconfig.flash",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-22T06:07:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca96bc35_17c8b32d",
+      "range": {
+        "startLine": 87,
+        "startChar": 3,
+        "endLine": 87,
+        "endChar": 26
+      },
+      "revId": "6be9f5e042bcc8efbaba14b3f7f735e1f7a3b2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecff15c4_48fbb225",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-06-21T23:05:03Z",
       "side": 1,
       "message": "Delete this line - it only applies to npcx/flash_chip.h",
+      "range": {
+        "startLine": 321,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 62
+      },
+      "revId": "6be9f5e042bcc8efbaba14b3f7f735e1f7a3b2c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6113a598_cf738a3c",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-22T06:07:50Z",
+      "side": 1,
+      "message": "Because the function of spi_flash_## is used in shim\\src\\flash.c, the define cannot be removed in this CL.\nIn the relation chain(CL:2891674), the related functions of spi_flash_## in shim\\src\\flash.c have moved to the cros_flash_npcx.c, so CONFIG_SPI_FLASH_W25Q80 can be removed.",
+      "parentUuid": "ecff15c4_48fbb225",
       "range": {
         "startLine": 321,
         "startChar": 0,
