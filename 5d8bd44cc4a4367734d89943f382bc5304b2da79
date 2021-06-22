@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cd75a4c_238dc43b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-22T00:59:19Z",
+      "side": 1,
+      "message": "Is this a viable solution for the EC_MKBP_EVENT_WAKEUP_MASK before I implement something similar for EC_MKBP_HOST_EVENT_WAKEUP_MASK.\n\nI didn\u0027t think using DT was the correct approach for this.",
+      "revId": "5d8bd44cc4a4367734d89943f382bc5304b2da79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
