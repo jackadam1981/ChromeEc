@@ -167,6 +167,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb2e926e_e84dbe2b",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T21:11:45Z",
+      "side": 1,
+      "message": "agree",
+      "parentUuid": "7c6f6440_3dbc689d",
+      "range": {
+        "startLine": 6,
+        "startChar": 9,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18ca04b3_e9ff55e8",
         "filename": "board/adlrvpp_mchp1727/board.h",
         "patchSetId": 21
@@ -237,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "691e4217_b7ab2531",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T21:11:45Z",
+      "side": 1,
+      "message": "agree, will update\n\n#define I2C_CONTROLLER_COUNT\tMCHP_I2C_CTRL_MAX\n#define I2C_PORT_COUNT\t\tMCHP_I2C_PORT_COUNT\n\nand move to registers-mec172x.h",
+      "parentUuid": "21215f5c_9e2c55d9",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 25
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0b13be71_0e671db6",
         "filename": "board/adlrvpp_mchp1727/gpio.inc",
         "patchSetId": 21
@@ -248,6 +296,30 @@
       "writtenOn": "2021-06-22T18:50:47Z",
       "side": 1,
       "message": "better to move it up along with other interrupts?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aa9b8ae_007c92a8",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T21:11:45Z",
+      "side": 1,
+      "message": "agree\nsince copied from other file originally",
+      "parentUuid": "0b13be71_0e671db6",
       "range": {
         "startLine": 79,
         "startChar": 0,
@@ -283,6 +355,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d10e4883_4e0b04e4",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T21:11:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "584833e6_97bb446f",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 68
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5839781b_c7225e83",
         "filename": "board/adlrvpp_mchp1727/gpio.inc",
         "patchSetId": 21
@@ -306,6 +402,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d7d010c_f8ab56a4",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T21:11:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5839781b_c7225e83",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 71
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a1f2a835_f185ce7c",
         "filename": "board/adlrvpp_mchp1727/gpio.inc",
         "patchSetId": 21
@@ -317,6 +437,30 @@
       "writtenOn": "2021-06-22T18:50:47Z",
       "side": 1,
       "message": "Better to Move it up under other interrupts?",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 0
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d1690f_68dcd2bb",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T21:11:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a1f2a835_f185ce7c",
       "range": {
         "startLine": 167,
         "startChar": 0,
