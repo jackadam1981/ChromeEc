@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3425762_fa8bfe27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T19:10:33Z",
+      "side": 1,
+      "message": "This source has shared components shared in 3 different projects when this is complete. Flashrom and the EC implementation share a good portion of the interfaces in their respective projects to keep that simpler. There\u0027s a lot of minor changes that will make that harder to maintain like renaming fields and other operations are going to make comparison with diff tools impossible so if a problem is fixed in one, it\u0027s more likely to be missed in another project. For instance loading the 2 sources in Beyond Compare yielded no useful matches.\n\nThere\u0027s going to be a non-insignificant number of changes from the need to remove the memory buffer. On STM32 at least, the start and stop transmissions were a large portion of the additional delay but Cr50 may be more memory limited. A streaming use case wasn\u0027t a use case considered in the original design so some changes are expected but I think those could be localized in the usb_spi_fill_usb_packet() and usb_spi_read_usb_packet() functions with the memcpy() operations effectively replaced by SPI transfers with the CS lines asserted and deasserted on the mode transitions between config-\u003estate-\u003emode\u0027s state transitions between USB_SPI_MODE_START_SPI and USB_SPI_MODE_IDLE.",
+      "revId": "ba52101e5dada84479edcdc949a9a823653533b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f4240c2_e9d3f18b",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-22T19:10:33Z",
+      "side": 1,
+      "message": "These defines should be USB_SPI_MAX_WRITE_COUNT and USB_SPI_MAX_READ_COUNT.",
+      "revId": "ba52101e5dada84479edcdc949a9a823653533b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
