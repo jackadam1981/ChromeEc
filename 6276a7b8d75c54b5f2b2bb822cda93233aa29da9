@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b4ca0ba_577a4d07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-22T21:07:59Z",
+      "side": 1,
+      "message": "Any other tests I should run?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "6276a7b8d75c54b5f2b2bb822cda93233aa29da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01ee09bc_ec1b9380",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-22T21:07:59Z",
+      "side": 1,
+      "message": "Is there anything I need to be careful of with dcrypto/trng.c and tpm2/trng.c?",
+      "range": {
+        "startLine": 104,
+        "startChar": 16,
+        "endLine": 104,
+        "endChar": 20
+      },
+      "revId": "6276a7b8d75c54b5f2b2bb822cda93233aa29da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ffe058a_c4d044ce",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-22T21:07:59Z",
+      "side": 1,
+      "message": "I\u0027m not sure about the best way to do this. WDYT",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "6276a7b8d75c54b5f2b2bb822cda93233aa29da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
