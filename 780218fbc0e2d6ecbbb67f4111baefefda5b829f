@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c6f6440_3dbc689d",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-06-22T18:50:47Z",
+      "side": 1,
+      "message": "Better to add ADL-P-RVP-MEC1727 to be more specific in all files?",
+      "range": {
+        "startLine": 6,
+        "startChar": 9,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "18ca04b3_e9ff55e8",
         "filename": "board/adlrvpp_mchp1727/board.h",
         "patchSetId": 21
@@ -88,6 +111,121 @@
         "startChar": 0,
         "endLine": 66,
         "endChar": 19
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21215f5c_9e2c55d9",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-06-22T18:50:47Z",
+      "side": 1,
+      "message": "Won\u0027t this count be increased to 5 in the case of #if defined(HAS_TASK_PD_C2) ?\nMay be better to define it as #define I2C_PORT_COUNT I2C_CHAN_COUNT ?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 25
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b13be71_0e671db6",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-06-22T18:50:47Z",
+      "side": 1,
+      "message": "better to move it up along with other interrupts?",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "584833e6_97bb446f",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-06-22T18:50:47Z",
+      "side": 1,
+      "message": "Move up.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 68
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5839781b_c7225e83",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-06-22T18:50:47Z",
+      "side": 1,
+      "message": "Move up.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 71
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1f2a835_f185ce7c",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-06-22T18:50:47Z",
+      "side": 1,
+      "message": "Better to Move it up under other interrupts?",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 0
       },
       "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
