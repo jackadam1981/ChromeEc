@@ -70,6 +70,24 @@
       "parentUuid": "6e04c655_59b64f69",
       "revId": "1a2c14d5e1e500e9f55dd08731050c7a4e60c800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "777dbf6c_cc2b3854",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-22T14:49:56Z",
+      "side": 1,
+      "message": "The spi controller isn\u0027t connected, but the gpio is. I just want to confirm the gpio is not driving DIOA14.\nBefore GPIO0_GPIO9 was just GPIO_INPUT. Now the controller makes it ODR_HIGH. \nI\u0027m pretty sure gpiocfg will show output isn\u0027t enabled since the controller leaves it deasserted. We just need to confirm this.\n\nIf you set SPI_CS_L to 0 after flashing the AP, then it\u0027ll show up in the gpiocfg output.",
+      "parentUuid": "73fb9f67_138d9af3",
+      "revId": "1a2c14d5e1e500e9f55dd08731050c7a4e60c800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
