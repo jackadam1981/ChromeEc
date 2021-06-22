@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45613dc6_2a15fe2e",
+        "filename": "chip/mchp/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 941,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-22T21:43:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8dae7a23_97e7bc1a",
+      "revId": "3ec924248c0f004f7f18bbe9fae41a858677daba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83c193ad_8af0cf75",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-22T20:40:51Z",
       "side": 1,
       "message": "i.e. one controller controls multiple ports, so port switching functionality is requested.",
+      "revId": "3ec924248c0f004f7f18bbe9fae41a858677daba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22549a50_3d5a3dcb",
+        "filename": "chip/mchp/i2c_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-22T21:43:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83c193ad_8af0cf75",
       "revId": "3ec924248c0f004f7f18bbe9fae41a858677daba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
