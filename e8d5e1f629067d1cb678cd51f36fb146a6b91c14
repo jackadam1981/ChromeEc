@@ -106,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30c3ad35_553c4b49",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T17:27:46Z",
+      "side": 1,
+      "message": "changed\ndone in patch21",
+      "parentUuid": "0cefb014_231599ff",
+      "range": {
+        "startLine": 6,
+        "startChar": 16,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "be943d11_2799c1cb",
@@ -211,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98c44882_83b4a850",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T17:27:46Z",
+      "side": 1,
+      "message": "changed\ndone in patch21",
+      "parentUuid": "0702b8c3_327a1bd5",
+      "range": {
+        "startLine": 115,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 1
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baf4cca1_53e135ad",
@@ -224,6 +272,30 @@
       "writtenOn": "2021-06-14T18:02:46Z",
       "side": 1,
       "message": "by defualt remove, manually define when debugging",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1383f0a5_2c52aefb",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T17:27:46Z",
+      "side": 1,
+      "message": "removed in production code\ndone in patch21",
+      "parentUuid": "baf4cca1_53e135ad",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -304,6 +376,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3c552d_1c87d9ea",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T17:27:46Z",
+      "side": 1,
+      "message": "yes, it is needed in:\nspi_flash_reg.c(40):#if defined(CONFIG_SPI_FLASH_W25X40) || defined(CONFIG_SPI_FLASH_GD25Q41B)\n\nbut removed CONFIG_FLASH_SIZE_BYTES which is defined in config_chip.h",
+      "parentUuid": "bb1108d4_dee63235",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 31
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c4c6c6b_4211ddd9",
@@ -327,6 +423,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d5d1d7d_3d0f905d",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T17:27:46Z",
+      "side": 1,
+      "message": "yes, it is needed in: chip/mchp/i2c.c cdata[I2C_CONTROLLER_COUNT];",
+      "parentUuid": "0c4c6c6b_4211ddd9",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 30
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bb91401_a2a843a0",
@@ -340,6 +460,30 @@
       "writtenOn": "2021-06-14T18:02:46Z",
       "side": 1,
       "message": "needed? use the variable i2c_ports_used",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 25
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e62c9cd_9035fd8c",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-22T17:27:46Z",
+      "side": 1,
+      "message": "there are 2 places using I2C_PORT_COUNT\n\n1: chip/mchp/i2c.c\n__overridable int board_i2c_p2c(int port)\n{\n\tif (port \u003c 0 || port \u003e\u003d I2C_PORT_COUNT)\n}\ncan be replaced with i2c_ports_used here;\n\n2: common/i2c_controller.c\n  static uint8_t port_protected[I2C_PORT_COUNT + I2C_BITBANG_PORT_COUNT];\ncan not be replaced here.\n\nNote:\n/* I2C ports \u0026 Configs */\n#define I2C_CONTROLLER_COUNT\t3\n#define I2C_PORT_COUNT\t\t3\n\nkeep in board.h file, advantage is explictly to highlight how many controllers \u0026 ports are applied in this board design.",
+      "parentUuid": "7bb91401_a2a843a0",
       "range": {
         "startLine": 138,
         "startChar": 0,
