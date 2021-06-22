@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8118b4e_00feab9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-22T19:35:16Z",
+      "side": 1,
+      "message": "Can you also create an include/power/mt8192.h and de-duplicate this enum:\n\nenum power_signal {\n\tPMIC_PWR_GOOD,\n\tAP_IN_S3_L,\n\tAP_WDT_ASSERTED,\n\tPOWER_SIGNAL_COUNT,\n};\n\nb:188674805 is still needed so that the device tree can be used to define the specific GPIO mapped to each power signal in the list above.\n",
+      "revId": "b27beec6898943ac1c0c37da9921269cedea9758",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
