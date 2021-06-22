@@ -1249,6 +1249,10 @@ void typec_select_src_current_limit_rp(int port, enum tcpc_rp_value rp)
 	if (IS_ATTACHED_SRC(port))
 		TC_SET_FLAG(port, TC_FLAGS_UPDATE_CURRENT);
 }
+__overridable int typec_get_default_current_limit_rp(int port)
+{
+	return CONFIG_USB_PD_PULLUP;
+}
 void typec_select_src_collision_rp(int port, enum tcpc_rp_value rp)
 {
 	tc[port].select_collision_rp = rp;
@@ -1449,7 +1453,8 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 	 * Update the Rp Value. We don't need to update CC lines though as that
 	 * happens in below set_state transition.
 	 */
-	typec_select_src_current_limit_rp(port, CONFIG_USB_PD_PULLUP);
+	typec_select_src_current_limit_rp(port,
+		typec_get_default_current_limit_rp(port));
 
 	/* Disable if restart failed, otherwise start in default state. */
 	set_state_tc(port, res ? TC_DISABLED : start_state);
@@ -2189,7 +2194,8 @@ static void tc_unattached_snk_entry(const int port)
 	 */
 	tcpm_debug_detach(port);
 	typec_select_pull(port, TYPEC_CC_RD);
-	typec_select_src_current_limit_rp(port, CONFIG_USB_PD_PULLUP);
+	typec_select_src_current_limit_rp(port,
+		typec_get_default_current_limit_rp(port));
 	typec_update_cc(port);
 
 
@@ -2749,7 +2755,8 @@ static void tc_unattached_src_entry(const int port)
 	 */
 	tcpm_debug_detach(port);
 	typec_select_pull(port, TYPEC_CC_RP);
-	typec_select_src_current_limit_rp(port, CONFIG_USB_PD_PULLUP);
+	typec_select_src_current_limit_rp(port,
+		typec_get_default_current_limit_rp(port));
 	typec_update_cc(port);
 
 	prev_data_role = tc[port].data_role;
@@ -3426,7 +3433,9 @@ static void tc_try_src_entry(const int port)
 	 * ground through Rp.
 	 */
 	typec_select_pull(port, TYPEC_CC_RP);
-	typec_select_src_current_limit_rp(port, CONFIG_USB_PD_PULLUP);
+
+	typec_select_src_current_limit_rp(port,
+		typec_get_default_current_limit_rp(port));
 
 	/* Apply Rp */
 	typec_update_cc(port);
