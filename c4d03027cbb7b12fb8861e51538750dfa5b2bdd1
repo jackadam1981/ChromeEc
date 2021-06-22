@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a5a84a31_fe502feb",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2014,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-22T04:41:54Z",
+      "side": 1,
+      "message": "addressed it",
+      "parentUuid": "906aecf4_3a4a5a65",
+      "revId": "c4d03027cbb7b12fb8861e51538750dfa5b2bdd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aada613_79b2d140",
         "filename": "common/usbc/usb_prl_sm.c",
         "patchSetId": 1
@@ -48,6 +66,24 @@
       "writtenOn": "2021-06-21T16:58:25Z",
       "side": 1,
       "message": "This will need to be per-port and could probably be a part of protocol_layer_tx",
+      "revId": "c4d03027cbb7b12fb8861e51538750dfa5b2bdd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b625bcc7_59b489aa",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-22T04:41:54Z",
+      "side": 1,
+      "message": "sure will fix that",
+      "parentUuid": "6aada613_79b2d140",
       "revId": "c4d03027cbb7b12fb8861e51538750dfa5b2bdd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
