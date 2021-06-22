@@ -70,6 +70,24 @@
       "parentUuid": "bf0e1aec_acc4e59c",
       "revId": "3e201a350378743976ef8e3635d4963645c3a047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dfbab75_a2eb4d17",
+        "filename": "board/magolor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-22T05:40:34Z",
+      "side": 1,
+      "message": "The CFET mask is for *charging* though and not discharging. If this is like the BQ40Z family of fuel gauges, there should be a complimentary XCHG bit.",
+      "parentUuid": "c003b4df_df0aab76",
+      "revId": "3e201a350378743976ef8e3635d4963645c3a047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
