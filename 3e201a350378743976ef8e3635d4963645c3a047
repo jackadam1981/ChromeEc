@@ -52,6 +52,24 @@
       "parentUuid": "832b73cb_13d42ef5",
       "revId": "3e201a350378743976ef8e3635d4963645c3a047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c003b4df_df0aab76",
+        "filename": "board/magolor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-06-22T05:16:08Z",
+      "side": 1,
+      "message": "CFET mask hasn\u0027t been defined, the OperationStatus(DSG) bit.  This bit only indicates if battery is currently discharging.  A better check is to use the OperationStatus(XDSG) bit - which reports when the battery has disabled dicharging.",
+      "parentUuid": "bf0e1aec_acc4e59c",
+      "revId": "3e201a350378743976ef8e3635d4963645c3a047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
