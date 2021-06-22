@@ -34,6 +34,24 @@
       "parentUuid": "8cd75a4c_238dc43b",
       "revId": "5d8bd44cc4a4367734d89943f382bc5304b2da79",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02e48345_c6063b18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-22T16:43:44Z",
+      "side": 1,
+      "message": "I kinda thought this was more software configuration than hardware but to avoid/repeat a long discussion, I\u0027ll implement as Devicetree.",
+      "parentUuid": "925c1288_e4a33fc2",
+      "revId": "5d8bd44cc4a4367734d89943f382bc5304b2da79",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
