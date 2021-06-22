@@ -251,7 +251,11 @@ static void set_initial_pwrbtn_state(void)
 #ifdef CONFIG_BRINGUP
 	pwrbtn_state = PWRBTN_STATE_IDLE;
 #else
+#ifdef CONFIG_LID_CLOSED_NO_AUTO_POWER_ON
+	pwrbtn_state = lid_is_open() ? PWRBTN_STATE_INIT_ON : PWRBTN_STATE_IDLE;
+#else
 	pwrbtn_state = PWRBTN_STATE_INIT_ON;
+#endif
 #endif
 	CPRINTS("PB %s",
 		pwrbtn_state == PWRBTN_STATE_INIT_ON ? "init-on" : "idle");

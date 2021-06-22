@@ -2308,6 +2308,9 @@
  */
 #undef CONFIG_LID_SWITCH_GPIO_LIST
 
+/* No auto power on if lid is closed. */
+#undef CONFIG_LID_CLOSED_NO_AUTO_POWER_ON
+
 /*
  * Support for turning the lightbar power rails on briefly when the AP is off.
  * Enabling this requires implementing the board-specific lb_power() function
