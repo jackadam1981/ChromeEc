@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5192d41_9e629b7f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2014,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-22T23:01:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5a84a31_fe502feb",
+      "revId": "c4d03027cbb7b12fb8861e51538750dfa5b2bdd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6aada613_79b2d140",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "sure will fix that",
       "parentUuid": "6aada613_79b2d140",
+      "revId": "c4d03027cbb7b12fb8861e51538750dfa5b2bdd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d408057e_910caa20",
+        "filename": "common/usbc/usb_prl_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-22T23:01:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b625bcc7_59b489aa",
       "revId": "c4d03027cbb7b12fb8861e51538750dfa5b2bdd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
