@@ -16,6 +16,24 @@
       "message": "These signals should belong to power/mt8192.c, rather than it8xxx2.c.",
       "revId": "ba6eac081e5b4982346dc63059b4513786b379f7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0dc84af_df30f4dc",
+        "filename": "power/it8xxx2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-06-22T17:48:43Z",
+      "side": 0,
+      "message": "Thanks.\nFixed in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2980111",
+      "parentUuid": "6a7bb5a8_2212435d",
+      "revId": "ba6eac081e5b4982346dc63059b4513786b379f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
