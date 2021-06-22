@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "834c2bcd_1864159e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-22T00:13:51Z",
+      "side": 1,
+      "message": "I am hesitant to use this kind of complicated solutions.\n\nThe simple solutions I prefer are like:\n(a) Assign the Zephyr shell thread the same priority as EC-OS. This task priority is well-exercised in EC-OS for many years.\n(b) Like Simon suggested, fix the Zephyr implementation of `waitms` and `crash watchdog`, like disabling the interrupt, disabling the task scheduling, or setting the task priority to highest, etc. It complies the Zephyr usage.\n\nIf you insist to move this solution forward, my comments are:\n* make the HPCC task creation the same as other tasks, like an entry in `zephyr/shim/include/shimmed_task_id.h`, not an ad-hoc creation in `console.c`, which is hard to track.\n* set the HPCC priority the same as EC-OS\u0027s console task, not the highest priority, which may block other critical tasks.\n* treat all console commands the same way; all switching execution to HPCC. If just switch the 2 commands to HPCC task, why just do the above (b)?",
+      "parentUuid": "15bbe6bd_412a34cf",
+      "revId": "a13191d58a6666e008e05747fd67dc967d8c5067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c20bfd8e_8f6b6c28",
         "filename": "zephyr/shim/include/zephyr_console_shim.h",
         "patchSetId": 2
