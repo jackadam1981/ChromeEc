@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd558808_cdc79c76",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-22T17:58:44Z",
+      "side": 1,
+      "message": "Comment mis-matches description of return as Vbus*input current?",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27d2cd41_69d13322",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-22T17:58:44Z",
+      "side": 1,
+      "message": "nit: could be simplified to charge_get_active_chg_chip() which works both for OCPC and not OCPC",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d82d1016_6f921f8e",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-22T17:58:44Z",
+      "side": 1,
+      "message": "nit: comment no longer applicable",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e7ad57_6f05e9fc",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-22T17:58:44Z",
+      "side": 1,
+      "message": "I wonder if it would be more clear to store the stabilized time since it appears both this function and the task itself are playing with the timeout value?",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f93a7178_2735c372",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-22T17:58:44Z",
+      "side": 1,
+      "message": "It seems like this task could be re-structured a bit for clarity.  Most tasks centralize their waits at the top (or for the charger_task, bottom) of their loop so you can clearly see where they wait and how long they wait for.  This also helps if you decide you\u0027ll need events since it would provide a central spot to retrieve the events received while waiting.",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fff41da_389e6e2e",
+        "filename": "include/dps.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-22T17:58:44Z",
+      "side": 1,
+      "message": "nit: specify units for the returned voltage",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ddcbd0a_55e49fd4",
+        "filename": "include/dps.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-22T17:58:44Z",
+      "side": 1,
+      "message": "Should this be externally available to tasks, or only available to the console command?",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5e30583_cd2d3716",
+        "filename": "include/dps.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-22T17:58:44Z",
+      "side": 1,
+      "message": "This description doesn\u0027t seem to match where the call location is in the PD task.  It seems to instead be the case that we call this function every entry of SNK_Ready, which would include instances where we had been off servicing unrelated messages (swaps, capability queries, VDM queries, etc.).  \n\nIt\u0027s also called on ports where we may be sinking, but not actively charging (ex. if connected to a DRP device we won\u0027t charge from, or if we have 2 chargers plugged in for some reason).\n\nI\u0027m not totally certain if this could be more gracefully called from either the charge manager code, or in another location of the PD task (pe_snk_transition_snk?) with a check on whether we\u0027re an active charge port.  If we found the correct edge location where this only triggers if we have a new active port contract, then I also wonder if the new contract flag could be removed and simplify this interface as well.",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
