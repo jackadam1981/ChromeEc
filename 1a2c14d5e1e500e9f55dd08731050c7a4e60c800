@@ -52,6 +52,24 @@
       "parentUuid": "3285f1c3_758eac67",
       "revId": "1a2c14d5e1e500e9f55dd08731050c7a4e60c800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73fb9f67_138d9af3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-22T14:39:04Z",
+      "side": 1,
+      "message": "but in this patch SPI controller is not connected to the ball/gpio, right?",
+      "parentUuid": "6e04c655_59b64f69",
+      "revId": "1a2c14d5e1e500e9f55dd08731050c7a4e60c800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
