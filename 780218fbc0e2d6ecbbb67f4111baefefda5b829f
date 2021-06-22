@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88f0479b_6a48b89c",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-22T18:14:47Z",
+      "side": 1,
+      "message": "this is still not clear",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 51
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3c9dcee_ea2bd07c",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-22T18:14:47Z",
+      "side": 1,
+      "message": "nit: \ncase I2C_PORT_CHARGER\n\ncase I2C_PORT_TYPEC_0\nso on",
+      "range": {
+        "startLine": 122,
+        "startChar": 6,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17a01a76_8cf6dacc",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-22T18:14:47Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 27
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18ca04b3_e9ff55e8",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-22T18:14:47Z",
+      "side": 1,
+      "message": "bring it to line 13 so that no changes are needed on mchp_ec.h",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

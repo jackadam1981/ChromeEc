@@ -471,6 +471,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c6254c_33281058",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-22T18:14:47Z",
+      "side": 1,
+      "message": "looks like I2C_CONTROLLER_COUNT is chip specific not board specific.\nshould it go in registers-mec172x.h ?",
+      "parentUuid": "1d5d1d7d_3d0f905d",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 30
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7bb91401_a2a843a0",
@@ -508,6 +532,30 @@
       "side": 1,
       "message": "there are 2 places using I2C_PORT_COUNT\n\n1: chip/mchp/i2c.c\n__overridable int board_i2c_p2c(int port)\n{\n\tif (port \u003c 0 || port \u003e\u003d I2C_PORT_COUNT)\n}\ncan be replaced with i2c_ports_used here;\n\n2: common/i2c_controller.c\n  static uint8_t port_protected[I2C_PORT_COUNT + I2C_BITBANG_PORT_COUNT];\ncan not be replaced here.\n\nNote:\n/* I2C ports \u0026 Configs */\n#define I2C_CONTROLLER_COUNT\t3\n#define I2C_PORT_COUNT\t\t3\n\nkeep in board.h file, advantage is explictly to highlight how many controllers \u0026 ports are applied in this board design.",
       "parentUuid": "7bb91401_a2a843a0",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 25
+      },
+      "revId": "e8d5e1f629067d1cb678cd51f36fb146a6b91c14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32433179_2b070868",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-22T18:14:47Z",
+      "side": 1,
+      "message": "this is also chip specific, can go in registers-mec172x.h\n#define I2C_PORT_COUNT MCHP_I2C_PORT_COUNT",
+      "parentUuid": "4e62c9cd_9035fd8c",
       "range": {
         "startLine": 138,
         "startChar": 0,
