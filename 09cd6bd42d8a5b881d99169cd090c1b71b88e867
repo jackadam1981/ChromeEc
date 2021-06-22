@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "832bd10d_4fb94dd4",
+        "filename": "board/trogdor/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-22T23:09:32Z",
+      "side": 1,
+      "message": "Nit - can you put each file on it\u0027s own line?\n\nboard-y\u003dbattery.o\nboard-y\u003dboard.o\n..etc",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "09cd6bd42d8a5b881d99169cd090c1b71b88e867",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
