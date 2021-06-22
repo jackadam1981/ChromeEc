@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "224ad699_1ffe45b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-22T22:02:27Z",
+      "side": 1,
+      "message": "Brian, I am not sure what I should to to address this comment. This is in a different branch (cr50_stab vs main) and for a different chip (h1 vs stm32). \n\nNote that there also is a Rust implementaion in the Ti50 project ;).\n\nIt is possible to unify protocol implementation and move it to ./common, but I am not sure if stm32 SPI controller  would provide the necessary API, and even then there would be two implementaions in two different branches.\n\n\u003e There\u0027s going to be a non-insignificant number of changes from the need to remove the memory buffer. \n\nI am not sure I follow: this patch does not require any additional memory buffers, which is an advantage for Cr50 which is pretty strained for both ROM and RAM.",
+      "parentUuid": "d3425762_fa8bfe27",
+      "revId": "ba52101e5dada84479edcdc949a9a823653533b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f4240c2_e9d3f18b",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-22T19:10:33Z",
       "side": 1,
       "message": "These defines should be USB_SPI_MAX_WRITE_COUNT and USB_SPI_MAX_READ_COUNT.",
+      "revId": "ba52101e5dada84479edcdc949a9a823653533b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8939afd_8c2d3f5f",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-22T22:02:27Z",
+      "side": 1,
+      "message": "modified declarations in usb_spi.h",
+      "parentUuid": "8f4240c2_e9d3f18b",
       "revId": "ba52101e5dada84479edcdc949a9a823653533b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
