@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16d7cfd6_0f49bdb3",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T05:07:24Z",
+      "side": 1,
+      "message": "nit: can we use lower case and underscores to separate the words?",
+      "range": {
+        "startLine": 73,
+        "startChar": 11,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "d2aabbbc0d52fdc59a4d466f0b7d6f76f7d2b1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2054505_bce5962a",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T05:07:24Z",
+      "side": 1,
+      "message": "nit: change to an enum and use all caps.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 30
+      },
+      "revId": "d2aabbbc0d52fdc59a4d466f0b7d6f76f7d2b1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7628183e_8910eb1a",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T05:07:24Z",
+      "side": 1,
+      "message": "please try to keep the lines under 80 cols.",
+      "revId": "d2aabbbc0d52fdc59a4d466f0b7d6f76f7d2b1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "569dc0e9_81ec1dc0",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T05:07:24Z",
+      "side": 1,
+      "message": "nit: please add newlines after each break.",
+      "revId": "d2aabbbc0d52fdc59a4d466f0b7d6f76f7d2b1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
