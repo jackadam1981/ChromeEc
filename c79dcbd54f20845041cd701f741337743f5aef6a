@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95bafa2e_e8309d64",
+        "filename": "board/trogdor/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-23T18:18:34Z",
+      "side": 1,
+      "message": "Thanks for catching it. I missed it while reordering the CLs.",
+      "parentUuid": "c116829f_b251c786",
+      "range": {
+        "startLine": 166,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 0
+      },
+      "revId": "c79dcbd54f20845041cd701f741337743f5aef6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ae8e700_b816e85e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-22T23:16:46Z",
       "side": 1,
       "message": "This is missing from the original in board.c\n\n\tmsleep(PS8805_FW_INIT_DELAY_MS);",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 1
+      },
+      "revId": "c79dcbd54f20845041cd701f741337743f5aef6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20215fb5_ce2e19e2",
+        "filename": "board/trogdor/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-23T18:18:34Z",
+      "side": 1,
+      "message": "Not sure why I missed it. I rechecked the diff again.",
+      "parentUuid": "4ae8e700_b816e85e",
       "range": {
         "startLine": 209,
         "startChar": 0,
