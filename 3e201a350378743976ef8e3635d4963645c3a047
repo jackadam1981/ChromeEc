@@ -88,6 +88,24 @@
       "parentUuid": "c003b4df_df0aab76",
       "revId": "3e201a350378743976ef8e3635d4963645c3a047",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "267785a1_426d8749",
+        "filename": "board/magolor/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-06-23T02:25:00Z",
+      "side": 1,
+      "message": "OK, XCHG (Bit 14) has defined this status Charging disabled bit, update the code, thanks",
+      "parentUuid": "4dfbab75_a2eb4d17",
+      "revId": "3e201a350378743976ef8e3635d4963645c3a047",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
