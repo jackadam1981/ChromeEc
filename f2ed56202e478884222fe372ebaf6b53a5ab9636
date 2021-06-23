@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed04784_07a2a6a8",
+        "filename": "driver/accel_bma422.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "nit: newline after copyright",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "730172ac_d082b072",
+        "filename": "driver/accel_bma422.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "I see 0x18 and 0x19 in the datasheet. Can you add both here.",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8624c8ec_187f5b7a",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "This is equivelent to BMA4_RANGE_TO_REG(BMA4_RANGE_TO_REG(range)) \u003c range. Is this intentional. Maybe explain in comment.",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1d9ad50_6db3e244",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "Consider using i2c_field_update8 to simplify this code.",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2761a0cf_51cf455b",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "A loop for 3 values seems pointless to me, but I see the same pattern in other drivers.",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e6c9b53_88e7bde2",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "RETURN_ERROR macro could be used here.",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5138b0f0_7c127252",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "Someone should write a one line mutex lock wrapper, like RETURN_ERROR.",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14fa95c1_c3fd4bcf",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "nit: change val to chip_id for readability.",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ef0a74_b7d00713",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "Could this be:\nif (s-\u003echip !\u003d MOTIONSENSE_CHIP_BMA422 || chip_id !\u003d BMA422_CHIP_ID)\n   return EC_ERROR_ACCESS_DENIED",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "034e1443_980f0f1e",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "Access denied is not the error I\u0027d expect when attempting to use a driver with the wrong chip. I\u0027d expect EC_ERROR_INVAL EC_ERROR_HW_INTERNAL",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d037245f_3c2ab08d",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "consider i2c_field_update8 or similar.",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61446530_46d329cd",
+        "filename": "driver/accel_bma4xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-23T14:53:37Z",
+      "side": 1,
+      "message": "This header applies to all BMA4xx chips right?",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
