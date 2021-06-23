@@ -40,6 +40,12 @@
 #define CONFIG_BATTERY_REVIVE_DISCONNECT
 #define CONFIG_BATTERY_FUEL_GAUGE
 #define CONFIG_BATTERY_VENDOR_PARAM
+<<<<<<< HEAD   (f099ba Pico: Initial EC image)
+=======
+
+/* Enable PD3.0 */
+#define CONFIG_USB_PD_REV30
+>>>>>>> CHANGE (3aa4dd chgstv2: Unify power-on and shutdown battery thresholds)
 
 /* BC 1.2 Charger */
 #define CONFIG_BC12_DETECT_PI3USB9201
