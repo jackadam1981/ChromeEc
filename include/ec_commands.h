@@ -6513,6 +6513,11 @@ enum tcpc_cc_polarity {
 
 #define PD_STATUS_EVENT_SOP_DISC_DONE		BIT(0)
 #define PD_STATUS_EVENT_SOP_PRIME_DISC_DONE	BIT(1)
+<<<<<<< HEAD   (19cf18 Lazor: support factory keyboard test.)
+=======
+#define PD_STATUS_EVENT_HARD_RESET		BIT(2)
+#define PD_STATUS_EVENT_DISCONNECTED		BIT(3)
+>>>>>>> CHANGE (61dc92 Typec: Add disconnected status event)
 
 /*
  * Encode and decode for BCD revision response
