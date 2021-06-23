@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0771ff41_5ea32d31",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-23T06:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16d7cfd6_0f49bdb3",
+      "range": {
+        "startLine": 73,
+        "startChar": 11,
+        "endLine": 73,
+        "endChar": 30
+      },
+      "revId": "d2aabbbc0d52fdc59a4d466f0b7d6f76f7d2b1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2054505_bce5962a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-23T05:07:24Z",
       "side": 1,
       "message": "nit: change to an enum and use all caps.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 30
+      },
+      "revId": "d2aabbbc0d52fdc59a4d466f0b7d6f76f7d2b1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5c6ee43_27400cd4",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-23T06:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2054505_bce5962a",
       "range": {
         "startLine": 74,
         "startChar": 0,
@@ -64,6 +112,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1eb7acd_7e62928c",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-23T06:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7628183e_8910eb1a",
+      "revId": "d2aabbbc0d52fdc59a4d466f0b7d6f76f7d2b1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "569dc0e9_81ec1dc0",
@@ -77,6 +143,24 @@
       "writtenOn": "2021-06-23T05:07:24Z",
       "side": 1,
       "message": "nit: please add newlines after each break.",
+      "revId": "d2aabbbc0d52fdc59a4d466f0b7d6f76f7d2b1e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddf3a6e6_e5cd31f4",
+        "filename": "board/sasukette/battery.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-06-23T06:25:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "569dc0e9_81ec1dc0",
       "revId": "d2aabbbc0d52fdc59a4d466f0b7d6f76f7d2b1e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
