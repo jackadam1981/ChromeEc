@@ -1,0 +1,337 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38e5571e_e9e53179",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "typo: \u0027Support\u0027",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f56e0495_9ec88ddd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "nit: \u0027evaluate\u0027",
+      "range": {
+        "startLine": 13,
+        "startChar": 23,
+        "endLine": 13,
+        "endChar": 32
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "501b4c5a_1bed9788",
+        "filename": "common/dps.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "Public function documentation should live in the header file. (here and others)",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 3
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f790ca0b_f2b273a1",
+        "filename": "common/dps.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "nit: not needed",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 11
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "830f93bb_26639383",
+        "filename": "common/dps.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "Use board_get_usb_pd_port_count() as some boards may return something less than the macro.",
+      "range": {
+        "startLine": 196,
+        "startChar": 21,
+        "endLine": 196,
+        "endChar": 49
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9eb8561_ff17d8fb",
+        "filename": "common/dps.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "Use UPDATE_CANDIDATE?",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 254,
+        "endChar": 0
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91fd4308_7cbeeca2",
+        "filename": "common/dps.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "Use board_get_usb_pd_port_count here as well.",
+      "range": {
+        "startLine": 308,
+        "startChar": 21,
+        "endLine": 308,
+        "endChar": 49
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7d1aef8_bc738fe3",
+        "filename": "common/dps.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "Here as well.",
+      "range": {
+        "startLine": 370,
+        "startChar": 21,
+        "endLine": 370,
+        "endChar": 49
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3a376e2_a345db6a",
+        "filename": "common/dps.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "EC_ERROR_PARAM_COUNT?",
+      "range": {
+        "startLine": 508,
+        "startChar": 10,
+        "endLine": 508,
+        "endChar": 25
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e19f6b_6a7e49a4",
+        "filename": "common/dps.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "You could fold this into the previous conditional as well. I think you\u0027d want to return EC_ERROR_PARAM2 here as well since there\u0027s an issue with \"holder\".",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 25
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "305cce70_6987352f",
+        "filename": "common/dps.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f7f1d47_e864c734",
+        "filename": "common/dps.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "I think the same logic for returning PARAM2 holds for the following as well.",
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c558b69_e038fbb0",
+        "filename": "include/dps.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "typo: higher power",
+      "range": {
+        "startLine": 27,
+        "startChar": 39,
+        "endLine": 27,
+        "endChar": 47
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13001fb2_343c225a",
+        "filename": "include/dps.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "typo: \u0027stabilized\u0027",
+      "range": {
+        "startLine": 31,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 18
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f2ead2_24a92114",
+        "filename": "include/dps.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-23T22:01:13Z",
+      "side": 1,
+      "message": "typo: \u0027evaluation\u0027",
+      "range": {
+        "startLine": 33,
+        "startChar": 15,
+        "endLine": 33,
+        "endChar": 24
+      },
+      "revId": "c618b15726709d776ee428e3e383c84fffc16005",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
