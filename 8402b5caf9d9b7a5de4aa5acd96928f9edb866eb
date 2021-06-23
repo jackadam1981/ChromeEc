@@ -46,6 +46,30 @@
       },
       "revId": "8402b5caf9d9b7a5de4aa5acd96928f9edb866eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f64b6e_fb9cbea6",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1353785
+      },
+      "writtenOn": "2021-06-23T04:19:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "03d747c3_61f79bdb",
+      "range": {
+        "startLine": 112,
+        "startChar": 29,
+        "endLine": 112,
+        "endChar": 30
+      },
+      "revId": "8402b5caf9d9b7a5de4aa5acd96928f9edb866eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
