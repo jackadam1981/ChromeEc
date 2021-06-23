@@ -39,6 +39,24 @@
       "message": "can you pls publish fix for MEC15xx series too?",
       "revId": "9ad12c51d2996bdda4c17fe4255597203e871e7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1d50ce7_7300f032",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-23T18:48:32Z",
+      "side": 1,
+      "message": "I can fix sklrvp_mchp board\nalso fix adlrvpp_mchp1521 board, just validate to pass build?",
+      "parentUuid": "ee688ce6_9acfe607",
+      "revId": "9ad12c51d2996bdda4c17fe4255597203e871e7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
