@@ -23,8 +23,9 @@
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
-#if !defined(CONFIG_ACCELGYRO_BMI160) && !defined(CONFIG_ACCELGYRO_BMI260)
-#error "Must use either BMI160 or BMI260"
+#if !defined(CONFIG_ACCELGYRO_BMI160) && !defined(CONFIG_ACCELGYRO_BMI260) \
+&& !defined(CONFIG_ACCEL_BMA422)
+#error "Must use any of the following: BMI160 BMI260 BMA422"
 #endif
 
 #if defined(CONFIG_ACCELGYRO_BMI260) && !defined(CONFIG_ACCELGYRO_BMI160)
