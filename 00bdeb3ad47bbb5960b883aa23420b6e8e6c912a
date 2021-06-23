@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abaf56d3_266951de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-06-23T04:42:24Z",
+      "side": 1,
+      "message": "This needs update,",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "00bdeb3ad47bbb5960b883aa23420b6e8e6c912a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8e5fb6_f7c132e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-06-23T04:42:24Z",
+      "side": 1,
+      "message": "There should be a bug to track the revert of this CL.",
+      "revId": "00bdeb3ad47bbb5960b883aa23420b6e8e6c912a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f283ff3_80103401",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-06-23T04:42:24Z",
+      "side": 1,
+      "message": "I will let Caveh and Tim decide how they want to handle this for brya.",
+      "revId": "00bdeb3ad47bbb5960b883aa23420b6e8e6c912a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
