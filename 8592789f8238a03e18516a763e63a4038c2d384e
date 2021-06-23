@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b163e7c_9db35bd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-23T18:17:50Z",
+      "side": 1,
+      "message": "once",
+      "range": {
+        "startLine": 15,
+        "startChar": 25,
+        "endLine": 15,
+        "endChar": 35
+      },
+      "revId": "8592789f8238a03e18516a763e63a4038c2d384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56ab3291_2d7e55f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-23T18:17:50Z",
+      "side": 1,
+      "message": "in Coreboot?",
+      "range": {
+        "startLine": 15,
+        "startChar": 61,
+        "endLine": 15,
+        "endChar": 62
+      },
+      "revId": "8592789f8238a03e18516a763e63a4038c2d384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0969fd81_5ef64934",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-06-23T18:17:50Z",
+      "side": 1,
+      "message": "nit: add the below line so that we know this comment is for below config.\n/* #define CONFIG_BOARD_HAS_RTC_RESET */",
+      "revId": "8592789f8238a03e18516a763e63a4038c2d384e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
