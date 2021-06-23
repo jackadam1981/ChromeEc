@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb77bec3_9c177ef6",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-23T18:53:25Z",
+      "side": 1,
+      "message": "removed this routine.\ndone in patch 23",
+      "parentUuid": "88bc16e9_bb480a69",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 51
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3c9dcee_ea2bd07c",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "f3c9dcee_ea2bd07c",
+      "range": {
+        "startLine": 122,
+        "startChar": 6,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5283e584_b3aad468",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-23T18:53:25Z",
+      "side": 1,
+      "message": "removed it\ndone in patch 23",
+      "parentUuid": "88264818_09633135",
       "range": {
         "startLine": 122,
         "startChar": 6,
@@ -142,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97b7392d_16609e17",
+        "filename": "board/adlrvpp_mchp1727/board.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-23T18:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "055b320e_ce73f2da",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 27
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c6f6440_3dbc689d",
@@ -179,6 +251,30 @@
       "side": 1,
       "message": "agree",
       "parentUuid": "7c6f6440_3dbc689d",
+      "range": {
+        "startLine": 6,
+        "startChar": 9,
+        "endLine": 6,
+        "endChar": 23
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97fae31c_3c492d46",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-23T18:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb2e926e_e84dbe2b",
       "range": {
         "startLine": 6,
         "startChar": 9,
@@ -236,6 +332,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55026454_54c0c063",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-23T18:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "240849a2_fca8bbfc",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 19
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21215f5c_9e2c55d9",
@@ -273,6 +393,30 @@
       "side": 1,
       "message": "agree, will update\n\n#define I2C_CONTROLLER_COUNT\tMCHP_I2C_CTRL_MAX\n#define I2C_PORT_COUNT\t\tMCHP_I2C_PORT_COUNT\n\nand move to registers-mec172x.h",
       "parentUuid": "21215f5c_9e2c55d9",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 25
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcc45037_dc88e18c",
+        "filename": "board/adlrvpp_mchp1727/board.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-23T18:53:25Z",
+      "side": 1,
+      "message": "created CL:2982390",
+      "parentUuid": "691e4217_b7ab2531",
       "range": {
         "startLine": 123,
         "startChar": 0,
@@ -330,6 +474,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92ea19c2_c2fb672b",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-23T18:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9aa9b8ae_007c92a8",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 80
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "584833e6_97bb446f",
@@ -367,6 +535,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "584833e6_97bb446f",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 68
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf481c95_047f9a18",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-23T18:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d10e4883_4e0b04e4",
       "range": {
         "startLine": 99,
         "startChar": 0,
@@ -424,6 +616,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "251839c3_693b5916",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-23T18:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d7d010c_f8ab56a4",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 71
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1f2a835_f185ce7c",
@@ -461,6 +677,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "a1f2a835_f185ce7c",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 0
+      },
+      "revId": "780218fbc0e2d6ecbbb67f4111baefefda5b829f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6183984_2f5e5e40",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 21
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-06-23T18:53:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d1690f_68dcd2bb",
       "range": {
         "startLine": 167,
         "startChar": 0,
