@@ -10,6 +10,8 @@
 
 #include "baseboard.h"
 
+#define CONFIG_HOSTCMD_AP_SET_SKUID
+
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE_BYTES (512 * 1024) /* 512KB internal spi flash */
 
@@ -42,11 +44,18 @@
 
 /* Sensors */
 #define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
+
 /* BMI160 Base accel/gyro */
 #define CONFIG_ACCELGYRO_BMI160
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
+
+/* BMI323 Base accel/gyro */
+#define CONFIG_ACCELGYRO_BMI3XX
+
+#define CONFIG_ACCELGYRO_BMI3XX_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+
 #define OPT3001_I2C_ADDR_FLAGS OPT3001_I2C_ADDR1_FLAGS
 
 /* BMA253 lid accel */

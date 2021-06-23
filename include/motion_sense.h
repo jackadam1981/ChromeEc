@@ -292,6 +292,7 @@ int sensor_init_done(struct motion_sensor_t *sensor);
  *
  */
 void sensor_board_proc_double_tap(void);
+void motion_sense_push_raw_xyz(struct motion_sensor_t *s);
 
 /*
  * There are 4 variables that represent the number of sensors:
