@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ca53d4_d3a1a5a0",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T09:30:47Z",
+      "side": 1,
+      "message": "CHANNEL",
+      "range": {
+        "startLine": 44,
+        "startChar": 22,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "72d71df2d48bec538021fe9856e6c9757b9af137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff69313_4ff40c5c",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T09:30:47Z",
+      "side": 1,
+      "message": "initialized",
+      "range": {
+        "startLine": 45,
+        "startChar": 13,
+        "endLine": 45,
+        "endChar": 22
+      },
+      "revId": "72d71df2d48bec538021fe9856e6c9757b9af137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dc35623_1f25a01d",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T09:30:47Z",
+      "side": 1,
+      "message": "use whitespace",
+      "range": {
+        "startLine": 203,
+        "startChar": 35,
+        "endLine": 203,
+        "endChar": 36
+      },
+      "revId": "72d71df2d48bec538021fe9856e6c9757b9af137",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
