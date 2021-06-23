@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a81504_8928c5d2",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-23T16:46:54Z",
+      "side": 1,
+      "message": "Can you clean this up?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "0b840971ddfa9a634ded03f4de7f6e6f6c852ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0c1a67f_db962c0e",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-23T16:46:54Z",
+      "side": 1,
+      "message": "This is the heard of the data access layer. Can you put this in common/cbi.c? A cbi-gpio driver can return a hardcoded header. CRC check can be skipped if cbi_config.storage_type \u003d\u003d CBI_STORAGE_TYPE_GPIO.\n\nThat\u0027ll allow us to create non-volatile data storage on flash. It will use the CBI data format but not used for CBI.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 2
+      },
+      "revId": "0b840971ddfa9a634ded03f4de7f6e6f6c852ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff377ac_951997b3",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-23T16:46:54Z",
+      "side": 1,
+      "message": "How about \u0027cbi_config\u0027?",
+      "range": {
+        "startLine": 135,
+        "startChar": 34,
+        "endLine": 135,
+        "endChar": 52
+      },
+      "revId": "0b840971ddfa9a634ded03f4de7f6e6f6c852ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bb34b99_bb1f67a2",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-23T16:46:54Z",
+      "side": 1,
+      "message": "nit: CBI_STORAGE_TYPE_EEPROM is more consistent with the rest of the code.",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 11
+      },
+      "revId": "0b840971ddfa9a634ded03f4de7f6e6f6c852ba4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
