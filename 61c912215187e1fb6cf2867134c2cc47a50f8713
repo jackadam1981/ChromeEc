@@ -33,6 +33,24 @@
       "message": "This is needed because for normal build, FP sensor is enabled during initialization:\n- For bloonchipper, binary blob calls fpc_sensor_spi_reset() to enable sensor\n- For dartmonkey, FP sensor is enabled as part of fpc_pulse_hw_reset() which is called from fp_sensor_init()",
       "revId": "61c912215187e1fb6cf2867134c2cc47a50f8713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9bb70cf_4ef352cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-06-23T12:44:21Z",
+      "side": 1,
+      "message": "Also, FP_RST_ODL pin is not set to high (as we can see in board/dartmonkey/gpio_rw.inc or board/bloonchipper/gpio_rw.inc), because EC doesn\u0027t change level of gpio pin after warm reset (sysjump counts too).",
+      "parentUuid": "0c7ef2ef_f86af32a",
+      "revId": "61c912215187e1fb6cf2867134c2cc47a50f8713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
