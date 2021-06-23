@@ -22,6 +22,30 @@
       },
       "revId": "66ce39de648e93c6659c72ca96e73c7047462ab4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbceb95d_544b6ca4",
+        "filename": "board/homestar/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-23T23:41:02Z",
+      "side": 1,
+      "message": "I\u0027ll try to cherry pick those CLs. If they don\u0027t merge cleanly, I\u0027ll revert the change. Thanks,",
+      "parentUuid": "b7e081bf_a45c2b04",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 46
+      },
+      "revId": "66ce39de648e93c6659c72ca96e73c7047462ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
