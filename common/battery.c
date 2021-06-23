@@ -664,7 +664,7 @@ void battery_compensate_params(struct batt_params *batt)
 		batt->display_charge = 1000;
 }
 
-#ifdef CONFIG_BATTERY_EXPORT_DISPLAY_SOC
+#if defined(CONFIG_BATTERY_EXPORT_DISPLAY_SOC) && defined(CONFIG_CHARGER)
 static enum ec_status battery_display_soc(struct host_cmd_handler_args *args)
 {
 	struct ec_response_display_soc *r = args->response;
