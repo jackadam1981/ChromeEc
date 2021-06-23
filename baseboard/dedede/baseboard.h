@@ -129,8 +129,11 @@
 #define CONFIG_CHARGER
 #define CONFIG_CHARGER_DISCHARGE_ON_AC
 #define CONFIG_CHARGER_INPUT_CURRENT 256
+<<<<<<< HEAD
 #define CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON 1
 #define CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON 15001
+=======
+>>>>>>> 3aa4dd2c4a (chgstv2: Unify power-on and shutdown battery thresholds)
 #define CONFIG_USB_CHARGER
 #define CONFIG_TRICKLE_CHARGING
 
