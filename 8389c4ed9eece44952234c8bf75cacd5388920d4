@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ace6def_6f2b729f",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-23T13:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd558808_cdc79c76",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27d2cd41_69d13322",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ea7ac7_5ec7bc96",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-23T13:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27d2cd41_69d13322",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d82d1016_6f921f8e",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-06-22T17:58:44Z",
       "side": 1,
       "message": "nit: comment no longer applicable",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a2581b3_15df61ff",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-23T13:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d82d1016_6f921f8e",
       "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4dcb558e_de79d63a",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-23T13:00:53Z",
+      "side": 1,
+      "message": "I prefer using timeout value as the \u0027timeout\u0027 can be updated timely even when the dps_task is waiting.",
+      "parentUuid": "a1e7ad57_6f05e9fc",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f93a7178_2735c372",
         "filename": "common/dps.c",
         "patchSetId": 10
@@ -88,6 +160,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2c22440_6e8c2259",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-23T13:00:53Z",
+      "side": 1,
+      "message": "Done, please check if this aligns to your expectation.",
+      "parentUuid": "f93a7178_2735c372",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2fff41da_389e6e2e",
         "filename": "include/dps.h",
         "patchSetId": 10
@@ -99,6 +189,24 @@
       "writtenOn": "2021-06-22T17:58:44Z",
       "side": 1,
       "message": "nit: specify units for the returned voltage",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1b9fb56_c9780820",
+        "filename": "include/dps.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-23T13:00:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fff41da_389e6e2e",
       "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +230,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b6147b25_92dc6527",
+        "filename": "include/dps.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-23T13:00:53Z",
+      "side": 1,
+      "message": "Right, we probably have no user for this function for now, I\u0027ll unepxose it.",
+      "parentUuid": "5ddcbd0a_55e49fd4",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5e30583_cd2d3716",
         "filename": "include/dps.h",
         "patchSetId": 10
@@ -133,6 +259,24 @@
       "writtenOn": "2021-06-22T17:58:44Z",
       "side": 1,
       "message": "This description doesn\u0027t seem to match where the call location is in the PD task.  It seems to instead be the case that we call this function every entry of SNK_Ready, which would include instances where we had been off servicing unrelated messages (swaps, capability queries, VDM queries, etc.).  \n\nIt\u0027s also called on ports where we may be sinking, but not actively charging (ex. if connected to a DRP device we won\u0027t charge from, or if we have 2 chargers plugged in for some reason).\n\nI\u0027m not totally certain if this could be more gracefully called from either the charge manager code, or in another location of the PD task (pe_snk_transition_snk?) with a check on whether we\u0027re an active charge port.  If we found the correct edge location where this only triggers if we have a new active port contract, then I also wonder if the new contract flag could be removed and simplify this interface as well.",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6f86c32_345227bf",
+        "filename": "include/dps.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-23T13:00:53Z",
+      "side": 1,
+      "message": "I\u0027ll update the function comment.\n\nAgreed, it seems pe_snk_transistion_snk would be a better location. I\u0027ll move this function and drop the NEW_CONTRACT flag.",
+      "parentUuid": "f5e30583_cd2d3716",
       "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
