@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "785b7cf0_c29cb63c",
+        "filename": "chip/stm32/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T09:04:03Z",
+      "side": 1,
+      "message": "please document the unit of this variable using\n\n#define HAL_IWDG_DEFAULT_TIMEOUT_MS ...",
+      "revId": "fa3750f8c91fef7d42f738baf95374149c960535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ff0f54_822c9ead",
+        "filename": "chip/stm32/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T09:04:03Z",
+      "side": 1,
+      "message": "remove whitespace",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "fa3750f8c91fef7d42f738baf95374149c960535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
