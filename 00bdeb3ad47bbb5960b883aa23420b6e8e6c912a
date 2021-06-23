@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "02cc0bd0_58b8fb7e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1353785
+      },
+      "writtenOn": "2021-06-23T05:00:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "abaf56d3_266951de",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "00bdeb3ad47bbb5960b883aa23420b6e8e6c912a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b8e5fb6_f7c132e8",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-06-23T04:42:24Z",
       "side": 1,
       "message": "There should be a bug to track the revert of this CL.",
+      "revId": "00bdeb3ad47bbb5960b883aa23420b6e8e6c912a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "277caace_c1cb171b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1353785
+      },
+      "writtenOn": "2021-06-23T05:00:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0b8e5fb6_f7c132e8",
       "revId": "00bdeb3ad47bbb5960b883aa23420b6e8e6c912a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
