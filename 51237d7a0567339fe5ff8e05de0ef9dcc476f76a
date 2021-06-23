@@ -33,6 +33,24 @@
       "message": "I still think crrev/c/2340222 is cleaner. It basically separates CBI into data access layer (datablob) and media access layer (eeprom, gpio, flash) using this interface:\n\nconst struct datablob_driver eeprom_drv \u003d {\n\t.save \u003d eeprom_write,\n\t.load \u003d eeprom_read,\n\t.is_protected \u003d eeprom_is_write_protected,\n};",
       "revId": "51237d7a0567339fe5ff8e05de0ef9dcc476f76a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3f5b778_ba4cf816",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-23T02:08:01Z",
+      "side": 1,
+      "message": "As the proposed change intends to leave the CBI cache data in the data access layer (cbi.c, instead of cbi_eeprom.c), we probably can\u0027t directly apply crrev/c/2340222 as is.\n\nBut I agree it\u0027s cleaner to describe the storage driver as function pointers, so I fix this patch accordingly.\nCan you take a look at the latest patch set?",
+      "parentUuid": "622f6e38_dc8fdee5",
+      "revId": "51237d7a0567339fe5ff8e05de0ef9dcc476f76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
