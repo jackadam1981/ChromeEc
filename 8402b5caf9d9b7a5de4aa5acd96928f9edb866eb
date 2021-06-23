@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00268711_2e2c6169",
+        "filename": "power/intel_x86.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1003000
+      },
+      "writtenOn": "2021-06-23T03:54:58Z",
+      "side": 1,
+      "message": "This change impacts all Intel platforms and not just brya. If you are looking to temporarily disable this functionality, I think you can de-select CONFIG_BOARD_HAS_RTC_RESET for brya.",
+      "range": {
+        "startLine": 112,
+        "startChar": 29,
+        "endLine": 112,
+        "endChar": 30
+      },
+      "revId": "8402b5caf9d9b7a5de4aa5acd96928f9edb866eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
