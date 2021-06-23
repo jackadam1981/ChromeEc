@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cccd84fa_1ba78154",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "Brian, thank you for thorough review, I addressed most of your comments.\n\nBut still, note that this is not meant to be a generic implementation, this is chip/g specific and is residing only in the cr50_stab branch.\n\nThe main branch implementation is not generic, it is for stm32. On top of that it requires an allocation of a buffer to reassemble received packets before writing data to the SPI chip. I don\u0027t see a value in copying by hand some source code which is wrong for the purpose and then hacking it to fit the purpose.\n\nShould there have been a truly generic implementation in common/ in the main branch I would have tried to adopt it, can we agree that I\u0027d do it if such an implementation gets created?",
+      "revId": "846394f0cd3e0da15c0e66ac603c887bd92f3133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

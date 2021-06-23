@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05600192_04f89cfd",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "In fact there is no need to advertise the full duplex capability, changed the field to zero.",
+      "parentUuid": "1a2dbdab_764d31d3",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e16c5c0a_3ce1209b",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-22T23:53:57Z",
       "side": 1,
       "message": "USB_SPI_UNKNOWN_ERROR bitflag used to identify when an EC status code does not map correctly in the usb_spi_map_error() function not as an offset to known USB_SPI error codes.",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cee30524_1ab20416",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "yes, this somewhat was a leftover of the debug process, changed the function to prepare a response containing the passed in packet ID.",
+      "parentUuid": "e16c5c0a_3ce1209b",
       "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "377e07c5_7a493177",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "This chip would never have more than one interface, but I agree that keeping these static variables in the structure is cleaner. Moved these variables and the protocol state into the structure.",
+      "parentUuid": "54efe40d_2e71d1db",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd9f2958_3efe00d4",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-06-22T23:50:08Z",
       "side": 1,
       "message": "Wrong error code. This path should be USB_SPI_RX_UNEXPECTED_PACKET, not USB_SPI_UNKNOWN_ERROR",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcb919c9_e0a6c911",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "I interpret \u0027unexpected packet\u0027 as a valid packet with an unexpected packet ID field, this is clearly a case of something completely broken, it should be reported differently.",
+      "parentUuid": "bd9f2958_3efe00d4",
       "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c92ecc4_b4d6aec4",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "This is an error for this implementation, it does not support any other types of packets in this state. Changed to send back USB_SPI_RX_INEXPECTED_PACKET.",
+      "parentUuid": "a4eebfd2_567a1dd7",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "061428d3_4ca44f27",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-06-22T23:50:08Z",
       "side": 1,
       "message": "read_count needs to be compared against the USB_SPI_FULL_DUPLEX_ENABLED state as well since feature_bitmap\u0027s USB_SPI_FEATURE_FULL_DUPLEX_SUPPORTED is set. Flashrom will send UINT16_MAX down when using full duplex mode and that value gets cast to SPI_READBACK_ALL later on.",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "132f74d1_5f007fdd",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "Actually Cr50 does not support full duplex, I changed the config response.\n\nAlso, I don\u0027t see flashrom doing anything with USB_SPI_FEATURE_FULL_DUPLEX_SUPPORTED, neither in chromeos nor in upstream trees.",
+      "parentUuid": "061428d3_4ca44f27",
       "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bcde9fc_43fdaead",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0bdb217_001ff558",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b36ba06_f0555d74",
@@ -133,6 +259,24 @@
       "writtenOn": "2021-06-22T23:50:08Z",
       "side": 1,
       "message": "Should be USB_SPI_WRITE_COUNT_INVALID",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5add456_7a225a71",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b36ba06_f0555d74",
       "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +300,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fefbb6cf_c2e33a18",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "I can\u0027t think of a situation where the host would send a write block exceeding USB pakcket payload size and then request a read - can you think of a Flash SPI chip requiring this kind of transaction?\n\nChanged return value to USB_SPI_WRITE_COUNT_INVALID",
+      "parentUuid": "cbead785_b17a6594",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b935bff8_b605ca07",
         "filename": "chip/g/usb_spi.c",
         "patchSetId": 4
@@ -167,6 +329,24 @@
       "writtenOn": "2021-06-22T23:50:08Z",
       "side": 1,
       "message": "Should be USB_SPI_RX_UNEXPECTED_PACKET",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e10c6e5b_501d777a",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b935bff8_b605ca07",
       "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -188,6 +368,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "276640a1_3a0758ca",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "Changed to return UNEXPECTED_PACKET, but IMO this is a protocol deficiency: it would be good to let the host know what has been received and what was expected.",
+      "parentUuid": "dea39a9c_9be60653",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4410e37_6a17fef9",
@@ -201,6 +399,24 @@
       "writtenOn": "2021-06-23T00:34:25Z",
       "side": 1,
       "message": "I\u0027m not quite following where these sizes are coming from. If the goal is to maximize the alignment of packets to USB transfers then these results should have formulas mapping that matches these formulas:\n\nUSB_SPI_MAX_WRITE_COUNT \u003d USB_SPI_PAYLOAD_SIZE_V2_START + (N * USB_SPI_PAYLOAD_SIZE_V2_CONTINUE) \u003d 58 + N * 60\n\nUSB_SPI_MAX_READ_COUNT \u003d USB_SPI_PAYLOAD_SIZE_V2_RESPONSE + (N * USB_SPI_PAYLOAD_SIZE_V2_CONTINUE) \u003d 60 * N\n\nYou don\u0027t need to calculate the maximum size of the USB_SPI_MAX_WRITE_COUNT for 256 byte arrays, for instance the Servo Micros think that their max USB_SPI_MAX_WRITE_COUNT and USB_SPI_MAX_READ_COUNT counts are equal to 298 for simplicity with the shared buffer. When it\u0027s writing an entire data page it simply does `256 + header` size requests.\n\nThe 5 byte offset should also not be removed. Flashrom has different interfaces depending on the chip that is detected. Those drivers treat the the max_spi_write_count and max_spi_read_count inconsistently with some regarding it as the maximum transfer size and others regarding it as the maximum payload size.",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90d7d35d_3a4be478",
+        "filename": "chip/g/usb_spi.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 1,
+      "message": "the flashrom calcultion for read count is in fact incorrect, it should not be deducting the command size from the read count, as the command is sent as a write part of the transaction, the read part of the transaction is pure read data.\n\nI picked this size to make sure that there is no truncated packets. For write couunt max it is important that the value is not below the size which would allow to send a full SPI page, as you mention, so this calculation is pretty loose, as described.\n\nMoved these dcalarations into usb_spi.c to have access to the payload size values.",
+      "parentUuid": "e4410e37_6a17fef9",
       "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

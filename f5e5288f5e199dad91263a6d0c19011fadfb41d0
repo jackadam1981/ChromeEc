@@ -16,6 +16,24 @@
       "message": "The SPI_READBACK_ALL case is missing.",
       "revId": "f5e5288f5e199dad91263a6d0c19011fadfb41d0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34fbc37_2c29a4ab",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-23T02:09:49Z",
+      "side": 0,
+      "message": "yes, because it is not required for the Cr50 use case.",
+      "parentUuid": "31889307_410d8123",
+      "revId": "f5e5288f5e199dad91263a6d0c19011fadfb41d0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
