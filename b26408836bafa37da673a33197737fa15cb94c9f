@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5910fb3_93631556",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-23T15:35:19Z",
+      "side": 1,
+      "message": "Nit: This CL is an OK way of customizing the config per board. I might prefer an overridable structure that contains the EQ settings we want, and ps88xx_tcpc_init applies them. That way, the board implementers don\u0027t have to worry about writing TCPC registers, and they don\u0027t have unlimited latitude to mess with TCPC settings.",
+      "revId": "b26408836bafa37da673a33197737fa15cb94c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2129e6ef_c6b6d042",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-06-23T15:35:19Z",
+      "side": 1,
+      "message": "Nit: \"Hook\" is a term of art in the EC codebase that doesn\u0027t apply here.\n\nHow about, \"Allow boards to customize PS88xx init\"?",
+      "range": {
+        "startLine": 116,
+        "startChar": 7,
+        "endLine": 116,
+        "endChar": 11
+      },
+      "revId": "b26408836bafa37da673a33197737fa15cb94c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
