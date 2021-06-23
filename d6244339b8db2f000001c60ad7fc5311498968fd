@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a521ed4_b556d1ca",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-23T00:34:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8ddb1b60_1540d5e8",
+      "revId": "d6244339b8db2f000001c60ad7fc5311498968fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb93641b_24c24753",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-22T23:01:50Z",
       "side": 1,
       "message": "prefix with \"prl_\" since it calls into the PRL layer from another layer (similar to prl_is_running() below)",
+      "revId": "d6244339b8db2f000001c60ad7fc5311498968fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef35c25_163df68e",
+        "filename": "include/usb_prl_sm.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-23T00:34:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eb93641b_24c24753",
       "revId": "d6244339b8db2f000001c60ad7fc5311498968fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
