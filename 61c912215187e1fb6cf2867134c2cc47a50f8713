@@ -16,6 +16,23 @@
       "message": "Hi!\n\nThis is small patch serieswhich fixes \u0027fpsensor_hw\u0027 EC hardware unit test on dartmonkey and bloonchipper.",
       "revId": "61c912215187e1fb6cf2867134c2cc47a50f8713",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c7ef2ef_f86af32a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-06-23T12:36:15Z",
+      "side": 1,
+      "message": "This is needed because for normal build, FP sensor is enabled during initialization:\n- For bloonchipper, binary blob calls fpc_sensor_spi_reset() to enable sensor\n- For dartmonkey, FP sensor is enabled as part of fpc_pulse_hw_reset() which is called from fp_sensor_init()",
+      "revId": "61c912215187e1fb6cf2867134c2cc47a50f8713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
