@@ -16,6 +16,155 @@
       "message": "1. Add #include \"uart.h\" in clock-stm32l4.c\n2. Clean up the unsolved comment.",
       "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f63d9e41_07753dd4",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T08:58:37Z",
+      "side": 1,
+      "message": "idle_dsleep_time_us is unsigned, use %llu",
+      "range": {
+        "startLine": 1085,
+        "startChar": 51,
+        "endLine": 1085,
+        "endChar": 54
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb59b13b_190d0626",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T08:58:37Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 1087,
+        "startChar": 51,
+        "endLine": 1087,
+        "endChar": 54
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23b48eb_60602ee5",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T08:58:37Z",
+      "side": 1,
+      "message": "use whitespace",
+      "range": {
+        "startLine": 136,
+        "startChar": 17,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c785988_5135e70d",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T08:58:37Z",
+      "side": 1,
+      "message": "__maybe_unused int freq;",
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7360b849_e1b38a31",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T08:58:37Z",
+      "side": 1,
+      "message": "rearrange this block to avoid the strange curly brackets:\n\nif (IS_ENABLED(CHIP_FAMILY_STM32L4) \u0026\u0026 freq \u003e 64000000) {\n  // new code\n} else {\n  // old code\n}",
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7611581_ec7960b6",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T08:58:37Z",
+      "side": 1,
+      "message": "is upper case intended?",
+      "range": {
+        "startLine": 441,
+        "startChar": 4,
+        "endLine": 441,
+        "endChar": 6
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79f63322_d549eb40",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-23T08:58:37Z",
+      "side": 1,
+      "message": "indent these lines",
+      "range": {
+        "startLine": 1771,
+        "startChar": 0,
+        "endLine": 1772,
+        "endChar": 38
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
