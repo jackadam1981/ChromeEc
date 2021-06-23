@@ -179,6 +179,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "192f6637_490809a6",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-23T01:44:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2660a838_956a1568",
+      "revId": "9546f78e2c87b8feb3a044e00b4f6eb763fc4de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8273eeef_69efd7ca",
@@ -332,6 +350,24 @@
       "writtenOn": "2021-05-19T08:28:46Z",
       "side": 1,
       "message": "Kuten, could you help clarify this pin?",
+      "revId": "9546f78e2c87b8feb3a044e00b4f6eb763fc4de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a5c7450_b0992e3e",
+        "filename": "board/makomo/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-23T01:44:28Z",
+      "side": 1,
+      "message": "This gpio.inc does not exist in this CL now.",
+      "parentUuid": "ac3ec380_fc006321",
       "revId": "9546f78e2c87b8feb3a044e00b4f6eb763fc4de4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

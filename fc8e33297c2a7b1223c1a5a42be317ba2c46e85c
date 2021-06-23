@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c77d78d_9e03a45b",
+        "filename": "chip/stm32/adc-stm32l4.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-23T01:44:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cfcbcf8_56a11a1b",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 41
+      },
+      "revId": "fc8e33297c2a7b1223c1a5a42be317ba2c46e85c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea40d5c2_d35b97ea",

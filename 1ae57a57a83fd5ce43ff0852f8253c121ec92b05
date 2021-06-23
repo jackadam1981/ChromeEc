@@ -123,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "666eb3eb_bf961e5c",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-23T01:44:28Z",
+      "side": 1,
+      "message": "@Vincent\nI will set this comment and the followings as done since it is necessary before sending CL to gerrit.",
+      "parentUuid": "b97cd734_16e1efa8",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdac2f64_e0c0ac9b",
@@ -154,6 +172,24 @@
       "side": 1,
       "message": "same reason as above\nWARNING: Prefer \u0027unsigned int\u0027 to bare use of \u0027unsigned\u0027\n#132: FILE: chip/stm32/dma.c:132:\n+static void prepare_channel(enum dma_channel channel, unsigned count,",
       "parentUuid": "cdac2f64_e0c0ac9b",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c428569_cce7648e",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-23T01:44:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac698366_78c55974",
       "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -193,6 +229,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c002c8a7_2d7da62c",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-23T01:44:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e54ebe3_d8673092",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "200e7924_7eeaabe1",
@@ -224,6 +278,24 @@
       "side": 1,
       "message": "same reason : coding style check",
       "parentUuid": "200e7924_7eeaabe1",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83c77c85_454975f3",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-23T01:44:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38f5f650_fad0c2ad",
       "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -263,6 +335,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4acd2bc_4dae2fae",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-23T01:44:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21fd1361_2dd42efd",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0509cada_a7714358",
@@ -294,6 +384,24 @@
       "side": 1,
       "message": "STM32_IRQ_DMA1_CHANNEL is now renamed as STM32_IRQ_DMA_CHANNEL_ in registers-stm32l4.h",
       "parentUuid": "0509cada_a7714358",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "963952ff_0355956b",
+        "filename": "chip/stm32/dma.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-23T01:44:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "389ff208_870d97f1",
       "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -382,6 +490,24 @@
       "side": 1,
       "message": "To lower the impact to other platforms, \n#ifdef CHIP_FAMILY_STM32L4 is added. Only STM32L4 family would take such effect.",
       "parentUuid": "15c4f0b0_45fa5cc6",
+      "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f4edb38_13c91ea3",
+        "filename": "chip/stm32/uart.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-23T01:44:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83465764_a03163ab",
       "revId": "1ae57a57a83fd5ce43ff0852f8253c121ec92b05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
