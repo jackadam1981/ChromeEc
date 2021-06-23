@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7e081bf_a45c2b04",
+        "filename": "board/homestar/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-23T23:32:23Z",
+      "side": 1,
+      "message": "Daisuke, the Trogdor firmware doesn\u0027t have your recent refactoring CLs that EC passes the display SoC to powerd. So the CONFIG_BATTERY_EXPORT_DISPLAY_SOC just does nothing. EC and powerd both calculate the SoC.\n\nAnd changing CONFIG_BATT_HOST_SHUTDOWN_PERCENTAGE from the default 4% to 2% makes the EC calculation different from the powerd calculation. EC now uses 2% as the display:0%, but powerd still uses 4% as the display:0%. So they show different display SoC.\n\nI think we should revert the CL and use the old way.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 46
+      },
+      "revId": "66ce39de648e93c6659c72ca96e73c7047462ab4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
