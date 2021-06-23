@@ -2601,6 +2601,11 @@ enum motionsensor_chip {
 	MOTIONSENSE_CHIP_BMI260 = 24,
 	MOTIONSENSE_CHIP_ICM426XX = 25,
 	MOTIONSENSE_CHIP_ICM42607 = 26,
+<<<<<<< HEAD   (0a1d88 board/pazquel/board.c: Format with clang-format)
+=======
+	MOTIONSENSE_CHIP_BMA422 = 27,
+	MOTIONSENSE_CHIP_BMI323 = 28,
+>>>>>>> CHANGE (845f3a driver: bmi3xx: Add support for BMI323 sensor)
 	MOTIONSENSE_CHIP_MAX,
 };
 

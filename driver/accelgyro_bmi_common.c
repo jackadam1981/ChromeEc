@@ -23,6 +23,14 @@
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
+<<<<<<< HEAD   (0a1d88 board/pazquel/board.c: Format with clang-format)
+=======
+#if !defined(CONFIG_ACCELGYRO_BMI160) && !defined(CONFIG_ACCELGYRO_BMI260) \
+&& !defined(CONFIG_ACCELGYRO_BMI3XX)
+#error "Must use following sensors BMI160 BMI260 BMI3XX"
+#endif
+
+>>>>>>> CHANGE (845f3a driver: bmi3xx: Add support for BMI323 sensor)
 #if defined(CONFIG_ACCELGYRO_BMI260) && !defined(CONFIG_ACCELGYRO_BMI160)
 #define V(s_) 1
 #elif defined(CONFIG_ACCELGYRO_BMI160) && !defined(CONFIG_ACCELGYRO_BMI260)
