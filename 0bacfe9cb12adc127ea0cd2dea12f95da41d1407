@@ -141,6 +141,30 @@
       },
       "revId": "0bacfe9cb12adc127ea0cd2dea12f95da41d1407",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a2a2a3_58d927f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-23T18:36:55Z",
+      "side": 1,
+      "message": "The bug b/162912625 is not related. Please file a new bug and state why this CL is needed, like giving some background to the audiences like me who are not familiar with the factory process.",
+      "parentUuid": "528c6c9f_da396862",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "0bacfe9cb12adc127ea0cd2dea12f95da41d1407",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
