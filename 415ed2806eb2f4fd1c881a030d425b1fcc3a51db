@@ -16,6 +16,29 @@
       "message": "Eric, Ting,\n\n\n    Thanks for the review. Modification is done accordingly.",
       "revId": "415ed2806eb2f4fd1c881a030d425b1fcc3a51db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2cc0ee_ad12c089",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-24T06:41:05Z",
+      "side": 1,
+      "message": "remove this #ifdef. otherwise line 296 won\u0027t compile",
+      "range": {
+        "startLine": 273,
+        "startChar": 0,
+        "endLine": 273,
+        "endChar": 26
+      },
+      "revId": "415ed2806eb2f4fd1c881a030d425b1fcc3a51db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
