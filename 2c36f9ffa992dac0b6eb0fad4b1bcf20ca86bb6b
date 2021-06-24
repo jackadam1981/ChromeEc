@@ -561,6 +561,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81cacf7f_72187298",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T06:14:26Z",
+      "side": 1,
+      "message": "This modification brings compile error when CONFIG_WATCHDOG_PERIOD_MS is set larger than 6.5 second. I will revert it and try another way.",
+      "parentUuid": "cb6fd297_cab4f220",
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7611581_ec7960b6",
         "filename": "chip/stm32/registers-stm32l4.h",
         "patchSetId": 12
