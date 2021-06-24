@@ -16,6 +16,52 @@
       "message": "This seems to work except for the missing functionality I describe here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2985821/1/zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
       "revId": "c542fb6c4f3da099ee6e84026b1d220c2a453aa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd45abf2_b346ec6d",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-24T21:50:56Z",
+      "side": 1,
+      "message": "Please mention the actual wake mask should be defined in dt.",
+      "range": {
+        "startLine": 425,
+        "startChar": 37,
+        "endLine": 425,
+        "endChar": 40
+      },
+      "revId": "c542fb6c4f3da099ee6e84026b1d220c2a453aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a0a2fe_97c3cd13",
+        "filename": "zephyr/dts/bindings/cros_mkbp_event/ec-mkbp-event.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-24T21:50:56Z",
+      "side": 1,
+      "message": "The host event also shares this node. Pick a name more general, not specific for the MKBP event ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "c542fb6c4f3da099ee6e84026b1d220c2a453aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
