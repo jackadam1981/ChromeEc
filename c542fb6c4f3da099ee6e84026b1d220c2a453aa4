@@ -62,6 +62,29 @@
       },
       "revId": "c542fb6c4f3da099ee6e84026b1d220c2a453aa4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1d8922_5281d1b6",
+        "filename": "zephyr/include/dt-bindings/ec_mkbp_event_defines.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-24T23:12:20Z",
+      "side": 1,
+      "message": "The convention in the Zephyr code is to have the public header file include the dt-binding header file to avoid duplicate definitions.  However, ec_commands.h is shared with the kernel so we can\u0027t do that.\n\nThe comments on the individual fields in this file should be removed, and you should add a note that the source of truth is from include/ec_commands.h",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 70
+      },
+      "revId": "c542fb6c4f3da099ee6e84026b1d220c2a453aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
