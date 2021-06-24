@@ -8,7 +8,7 @@
 #include "button.h"
 #include "common.h"
 #include "driver/accelgyro_bmi_common.h"
-#include "driver/accelgyro_bmi160.h"
+#include "driver/accelgyro_bmi323.h"
 #include "driver/accel_bma422.h"
 #include "driver/retimer/ps8811.h"
 #include "driver/retimer/ps8818.h"
@@ -26,19 +26,19 @@
 
 #include "gpio_list.h" /* Must come after other header files. */
 
-/* Lid Sensor mutex */
+/* Motion sensor mutex */
 static struct mutex g_lid_mutex;
 static struct mutex g_base_mutex;
 
-/* Lid accel private data */
-static struct bmi_drv_data_t g_bmi160_data;
+/* Motion sensor private data */
+static struct bmi3xx_drv_data g_bmi323_data;
 static struct accelgyro_saved_data_t g_bma422_data;
 
 /* Matrix to rotate accelrator into standard reference frame */
 const mat33_fp_t base_standard_ref = {
-	{ 0, FLOAT_TO_FP(-1), 0},
-	{ FLOAT_TO_FP(1), 0, 0},
-	{ 0, 0, FLOAT_TO_FP(1)}
+	{ FLOAT_TO_FP(-1), 0, 0},
+	{ 0, FLOAT_TO_FP(1),  0},
+	{ 0, 0,  FLOAT_TO_FP(-1)}
 };
 
 const mat33_fp_t lid_standard_ref = {
@@ -51,14 +51,14 @@ struct motion_sensor_t motion_sensors[] = {
 	[BASE_ACCEL] = {
 		.name = "Base Accel",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_BMI160,
+		.chip = MOTIONSENSE_CHIP_BMI323,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &bmi160_drv,
+		.drv = &bmi3xx_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = &g_bmi160_data,
+		.drv_data = &g_bmi323_data,
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+		.i2c_spi_addr_flags = BMI3_ADDR_I2C_PRIM,
 		.rot_standard_ref = &base_standard_ref,
 		.min_frequency = BMI_ACCEL_MIN_FREQ,
 		.max_frequency = BMI_ACCEL_MAX_FREQ,
@@ -107,14 +107,14 @@ struct motion_sensor_t motion_sensors[] = {
 	[BASE_GYRO] = {
 		.name = "Base Gyro",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_BMI160,
+		.chip = MOTIONSENSE_CHIP_BMI323,
 		.type = MOTIONSENSE_TYPE_GYRO,
 		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &bmi160_drv,
+		.drv = &bmi3xx_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = &g_bmi160_data,
+		.drv_data = &g_bmi323_data,
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+		.i2c_spi_addr_flags = BMI3_ADDR_I2C_PRIM,
 		.default_range = 1000, /* dps */
 		.rot_standard_ref = &base_standard_ref,
 		.min_frequency = BMI_GYRO_MIN_FREQ,
@@ -249,7 +249,7 @@ void motion_interrupt(enum gpio_signal signal)
 		break;
 	case GPIO_6AXIS_INT_L:
 	default:
-		bmi160_interrupt(signal);
+		bmi3xx_interrupt(signal);
 		break;
 	}
 }
