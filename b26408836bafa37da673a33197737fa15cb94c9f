@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23aeeb48_c7298cfc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-06-24T03:12:26Z",
+      "side": 1,
+      "message": "From my perspective, add an overridable structure is OK if this method has used more often. However, this case we only have EQ setting with PS8815 (without internal mux), I think this method is not only apply with ps8815 EQ setting but also for ps8xxx series if boards want to apply other settings.",
+      "parentUuid": "b5910fb3_93631556",
+      "revId": "b26408836bafa37da673a33197737fa15cb94c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2129e6ef_c6b6d042",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-23T15:35:19Z",
       "side": 1,
       "message": "Nit: \"Hook\" is a term of art in the EC codebase that doesn\u0027t apply here.\n\nHow about, \"Allow boards to customize PS88xx init\"?",
+      "range": {
+        "startLine": 116,
+        "startChar": 7,
+        "endLine": 116,
+        "endChar": 11
+      },
+      "revId": "b26408836bafa37da673a33197737fa15cb94c9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97f99907_7bb883e0",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-06-24T03:12:26Z",
+      "side": 1,
+      "message": "OK, that\u0027s would be great.",
+      "parentUuid": "2129e6ef_c6b6d042",
       "range": {
         "startLine": 116,
         "startChar": 7,
