@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e76d8e61_ec6d29d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-24T03:35:16Z",
+      "side": 1,
+      "message": "It seems there are some checks can be found out with upload hooks, please ensure the repo upload hooks are checked before your submission.",
+      "revId": "fa3750f8c91fef7d42f738baf95374149c960535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "785b7cf0_c29cb63c",
@@ -14,6 +31,52 @@
       "writtenOn": "2021-06-23T09:04:03Z",
       "side": 1,
       "message": "please document the unit of this variable using\n\n#define HAL_IWDG_DEFAULT_TIMEOUT_MS ...",
+      "revId": "fa3750f8c91fef7d42f738baf95374149c960535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ad2ff9_83e2845a",
+        "filename": "chip/stm32/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-24T03:35:16Z",
+      "side": 1,
+      "message": "use space instead.",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "fa3750f8c91fef7d42f738baf95374149c960535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd32bce_06edca60",
+        "filename": "chip/stm32/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-24T03:35:16Z",
+      "side": 1,
+      "message": "use space instead.",
+      "range": {
+        "startLine": 75,
+        "startChar": 31,
+        "endLine": 75,
+        "endChar": 32
+      },
       "revId": "fa3750f8c91fef7d42f738baf95374149c960535",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
