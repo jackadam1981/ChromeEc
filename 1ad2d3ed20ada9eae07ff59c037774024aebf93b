@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3766dec8_2062fe2e",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-24T21:34:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "124a6fa8_799ae1f2",
+      "revId": "1ad2d3ed20ada9eae07ff59c037774024aebf93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b7add7f_46d14848",
@@ -60,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a534d7d_b47eeec9",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4264,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-24T21:34:06Z",
+      "side": 1,
+      "message": "I would like to use it also for chgstate console command. Also, it\u0027s nice to keep this next to enum ec_charge_control_mode. It more likely to be kept in sync when the enum is changed (than having it in ectool.c). We can call it CROS_EC_CHARGE_MODE_TEXT instead to reduce the chance of conflict (but I didn\u0027t do so, following other defines in the file).",
+      "parentUuid": "0b7add7f_46d14848",
+      "range": {
+        "startLine": 4260,
+        "startChar": 0,
+        "endLine": 4264,
+        "endChar": 2
+      },
+      "revId": "1ad2d3ed20ada9eae07ff59c037774024aebf93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5994de98_04cf87df",
         "filename": "include/ec_commands.h",
         "patchSetId": 8
@@ -71,6 +113,24 @@
       "writtenOn": "2021-06-03T15:26:57Z",
       "side": 1,
       "message": "still worth mentioning this is \u0027State of Charge\u0027 and the unit is percentage.",
+      "revId": "1ad2d3ed20ada9eae07ff59c037774024aebf93b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f288835d_8fa0c5e0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 4278,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-24T21:34:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5994de98_04cf87df",
       "revId": "1ad2d3ed20ada9eae07ff59c037774024aebf93b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
