@@ -671,6 +671,25 @@ static int check_chipid(struct common_hnd *chnd)
 	return 0;
 }
 
+/* Disable GPH1 and GPH2's DB 5.1K resistor. */
+static int dbgr_disable_db_5p1k(struct common_hnd *chnd)
+{
+	int ret = 0;
+
+	if (chnd->dbgr_addr_3bytes)
+		ret = i2c_write_byte(chnd, 0x80, 0xf0);
+	ret |= i2c_write_byte(chnd, 0x2f, 0x38);
+	ret |= i2c_write_byte(chnd, 0x2e, 0x06);
+	ret |= i2c_write_byte(chnd, 0x30, 0x66);
+
+	if (ret < 0)
+		fprintf(stderr, "DISABLE DB 5.1K RESISTOR FAILED\n");
+	else
+		printf("DB 5.1K disabled\n");
+
+	return ret;
+}
+
 /* DBGR Reset */
 static int dbgr_reset(struct common_hnd *chnd, unsigned char val)
 {
@@ -689,6 +708,8 @@ static int dbgr_reset(struct common_hnd *chnd, unsigned char val)
 	ret |= i2c_write_byte(chnd, 0x27, 0x80);
 	if (ret < 0)
 		fprintf(stderr, "DBGR RESET FAILED\n");
+
+	dbgr_disable_db_5p1k(chnd);
 
 	return 0;
 }
@@ -2345,6 +2366,8 @@ int main(int argc, char **argv)
 
 	/* Turn off power rails by reset GPIOs to default (input). */
 	dbgr_reset_gpio(&chnd);
+
+	dbgr_disable_db_5p1k(&chnd);
 
 	check_flashid(&chnd);
 
