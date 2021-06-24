@@ -412,6 +412,11 @@ int ppc_get_alert_status(int port)
 #ifdef CONFIG_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
 enum adc_channel board_get_vbus_adc(int port)
 {
+
+#ifdef BOARD_HAYATO
+	if (board_get_version() < 4)
+		return ADC_VBUS_C0;
+#endif
 	if (port == 0)
 		return  ADC_VBUS_C0;
 	if (port == 1)
