@@ -10,7 +10,6 @@
 
 #include "common.h"
 #include "ec_commands.h"
-#include "gpio.h"
 #include "i2c.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
@@ -386,7 +385,7 @@ static inline int tcpm_set_frs_enable(int port, int enable)
 }
 #endif /* defined(CONFIG_USB_PD_FRS_TCPC) */
 
-#else
+#else /* CONFIG_USB_PD_TCPC */
 
 /**
  * Initialize TCPM driver and wait for TCPC readiness.
@@ -519,7 +518,7 @@ int tcpm_transmit(int port, enum tcpm_transmit_type type, uint16_t header,
  */
 void tcpc_alert(int port);
 
-#endif
+#endif /* CONFIG_USB_PD_TCPC */
 
 /**
  * Gets the next waiting RX message.
