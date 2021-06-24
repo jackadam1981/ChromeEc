@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab99f806_b86d45c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-24T02:25:17Z",
+      "side": 1,
+      "message": "They\u0027re both statemachine systems but this implementation has collapsed things into just the RAIDEN_IDLE and RAIDEN_WRITING modes.\n\nThe rust implementation also has bugs and isn\u0027t following the spec described and has areas where it breaks it. I wasn\u0027t added as a reviewer when it was submitted.\n\nWe have an implementation which has been running in labs for over a year now with very few reported problems. This version has added multiple problems, reduced functionality, and is completely unique from existing implementations so will be harder to maintain because a bug fix or feature added to one will not translate into the other implementation easily.",
+      "parentUuid": "5a4d32fe_8f2388d1",
+      "revId": "ba52101e5dada84479edcdc949a9a823653533b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f4240c2_e9d3f18b",
         "filename": "chip/g/usb_spi.c",
         "patchSetId": 1

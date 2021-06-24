@@ -16,6 +16,41 @@
       "message": "Brian, thank you for thorough review, I addressed most of your comments.\n\nBut still, note that this is not meant to be a generic implementation, this is chip/g specific and is residing only in the cr50_stab branch.\n\nThe main branch implementation is not generic, it is for stm32. On top of that it requires an allocation of a buffer to reassemble received packets before writing data to the SPI chip. I don\u0027t see a value in copying by hand some source code which is wrong for the purpose and then hacking it to fit the purpose.\n\nShould there have been a truly generic implementation in common/ in the main branch I would have tried to adopt it, can we agree that I\u0027d do it if such an implementation gets created?",
       "revId": "846394f0cd3e0da15c0e66ac603c887bd92f3133",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "619c50ed_06b76ef6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-24T02:25:17Z",
+      "side": 1,
+      "message": "I know it\u0027s not common code, but 2/3\u0027s of the file is platform agnostic and the 2 largest changes to the platform agnostic section have to do with the point where the chip select rails are asserted and if there\u0027s a memcpy vs spi transfer when processing each packet.\n\nMy concern is long term maintainability. The more the code bases diverge, the harder it will be to apply a fix between them and the more likely that one version will introduce bugs. Neither implementation is bug free, this CL helped me catch one in the other implementation, but it also would have added quite a few others because so much was rewritten.\n\nIf you\u0027d like, I can implement a version of the original interface sharing 90% of the same platform code with the ability to support either a buffered or non-buffered approach. I am very happy to do this because this will help developers like me maintain support for the protocols. Consistency will make our lives easier in the long run.",
+      "parentUuid": "cccd84fa_1ba78154",
+      "revId": "846394f0cd3e0da15c0e66ac603c887bd92f3133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb81347f_27590110",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-24T02:25:17Z",
+      "side": 1,
+      "message": "Calculating exact sizes and adjusting offsets is not improving performance.\n\nIf the Flashchip is using one of the drivers with the JEDEC spec and containing the 5 byte buff then the efficiency will be near 100%. If it is following a driver that doesn\u0027t have the the final packet will be 5 bytes smaller.\n(33+(59/64))/34 \u003d 99.8% efficiency\n\nOn the other hand, JEDEC drivers with this bug will attempt to write 35 packets of data with the final packet only having 5 bytes of useful data.\n(34+(5/64))/35 \u003d 97.4% efficiency\n\nRight now the bug and the quick and dirty correction for the bug are both located in the Flashrom project, that\u0027s a self contained location. If there\u0027s a different but similar bug which requires 6 bytes of offset or the bug in the JEDEC implementation is fixed, we\u0027re not going to end up with random interfaces adding or subtracting a magic number because there\u0027s an idea that it\u0027ll save a few milliseconds during each flash on specific chips.\n\nSame argument can be made for the USB_SPI_MAX_WRITE_COUNT where it should really just be START_PAYLOAD_SIZE + N*CONT_PAYLOAD_SIZE. The flash drivers are aware of data alignment and their protocol limitations, in addition there are multiple flash protocols. You\u0027ve hardcoded an optimization for one type of driver interface when a dozen exist and more will be added later on.",
+      "revId": "846394f0cd3e0da15c0e66ac603c887bd92f3133",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

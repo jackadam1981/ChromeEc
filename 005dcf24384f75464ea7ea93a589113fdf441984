@@ -141,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c322ab_af90fe73",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-24T02:25:17Z",
+      "side": 1,
+      "message": "In that case a new field should be added to usb_spi_error\u0027s enum and it should be propagated to the other projects later on.",
+      "parentUuid": "dcb919c9_e0a6c911",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4eebfd2_567a1dd7",
@@ -318,6 +336,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e05976e1_fc7bc3ad",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-24T02:25:17Z",
+      "side": 1,
+      "message": "Any flash protocols which return status codes after writing a block of data would violate it. That is a perfectly valid interface for Flashrom, there isn\u0027t even a way to communicate to Flash drivers that the max read and max write length is potentially variable depending on how many bytes you use on either state.\n\nThe Flashrom project supports about 585 different Flashchips with a dozen different protocol implementations. This check would create a situation where Servo like flashing systems C2D2/ServoMicro a chip without issue, but then a developer will be dealing with a Cr50 interface that is violating the both the protocol spec and the limits it told the flash drivers and needs special treatment.",
+      "parentUuid": "fefbb6cf_c2e33a18",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b935bff8_b605ca07",
         "filename": "chip/g/usb_spi.c",
         "patchSetId": 4
@@ -382,6 +418,24 @@
       "side": 1,
       "message": "Changed to return UNEXPECTED_PACKET, but IMO this is a protocol deficiency: it would be good to let the host know what has been received and what was expected.",
       "parentUuid": "dea39a9c_9be60653",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9112e266_d4660e42",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-24T02:25:17Z",
+      "side": 1,
+      "message": "That\u0027s fair. There is a data payload that could be added but no mechanism exists to log the byte array if it had payload data.\n\nFlashrom holds onto the handle for the USB SPI endpoints so nothing else should be interacting with the interface for the duration of the transfer and details about the packets transferred along with the point where the errors are returned are logged by raiden_debug_spi.c and the format allows a combination of EC, USB_SPI, and LibUSB error codes to be mapped to unique values. That combined with information about how much of the transfer has succeeded and how many times it did so is a fairly comprehensive view which allows most USB errors to be distinguished and the status_code is not updated after it has reported a failed value until the transfers have been restarted so we don\u0027t end up with the first error code over written.",
+      "parentUuid": "276640a1_3a0758ca",
       "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
