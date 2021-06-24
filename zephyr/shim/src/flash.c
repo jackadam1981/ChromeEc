@@ -17,7 +17,7 @@
 
 LOG_MODULE_REGISTER(shim_flash, LOG_LEVEL_ERR);
 
-#define CROS_FLASH_DEV DT_LABEL(DT_NODELABEL(fiu0))
+#define CROS_FLASH_NODE DT_NODELABEL(fiu0)
 static const struct device *cros_flash_dev;
 
 static int all_protected; /* Has all-flash protection been requested? */
@@ -366,9 +366,9 @@ static int flash_dev_init(const struct device *unused)
 {
 	ARG_UNUSED(unused);
 
-	cros_flash_dev = device_get_binding(CROS_FLASH_DEV);
+	cros_flash_dev = DEVICE_DT_GET(CROS_FLASH_NODE);
 	if (!cros_flash_dev) {
-		LOG_ERR("Fail to find %s", CROS_FLASH_DEV);
+		LOG_ERR("Error: device %s is not ready", cros_flash_dev->name);
 		return -ENODEV;
 	}
 	cros_flash_init(cros_flash_dev);
