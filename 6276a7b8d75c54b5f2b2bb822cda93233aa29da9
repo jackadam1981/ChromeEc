@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2408f60c_951d2c2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-24T17:27:03Z",
+      "side": 1,
+      "message": "can you try running crypto tests?",
+      "parentUuid": "5b4ca0ba_577a4d07",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 21
+      },
+      "revId": "6276a7b8d75c54b5f2b2bb822cda93233aa29da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "2e5affe0_e9f95332",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01a2149c_6dd1b0a5",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-24T17:27:03Z",
+      "side": 1,
+      "message": "I don\u0027t think so, the .o files go in their respective directories.",
+      "parentUuid": "01ee09bc_ec1b9380",
+      "range": {
+        "startLine": 104,
+        "startChar": 16,
+        "endLine": 104,
+        "endChar": 20
+      },
+      "revId": "6276a7b8d75c54b5f2b2bb822cda93233aa29da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ffe058a_c4d044ce",
@@ -118,6 +166,30 @@
       "side": 1,
       "message": "let it be as it is. I\u0027ll check if it is actually needed. Some functions became obsolete after WebAuthn implementation.",
       "parentUuid": "5ffe058a_c4d044ce",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "6276a7b8d75c54b5f2b2bb822cda93233aa29da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "394205cf_27a72f92",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-24T17:27:03Z",
+      "side": 1,
+      "message": "this should work as only one at a time  will be set to \u0027y\u0027",
+      "parentUuid": "74deb1bd_9059cf23",
       "range": {
         "startLine": 31,
         "startChar": 0,
