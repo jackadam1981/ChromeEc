@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83d0aa40_7e0b1fac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-24T18:46:14Z",
+      "side": 1,
+      "message": "This seems to work except for the missing functionality I describe here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2985821/1/zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+      "revId": "c542fb6c4f3da099ee6e84026b1d220c2a453aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
