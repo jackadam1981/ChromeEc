@@ -20,6 +20,132 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cabbb711_743222b1",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-24T03:04:06Z",
+      "side": 1,
+      "message": "drop this line.",
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "288746a3_5ff6e329",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-24T03:04:06Z",
+      "side": 1,
+      "message": "\u0027ret\u0027 is usually used for return value, use other naming instead?",
+      "range": {
+        "startLine": 124,
+        "startChar": 10,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "614dc048_18cb333d",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-24T03:04:06Z",
+      "side": 1,
+      "message": "You could return this if condition early here since there is only one statement left in the end, (or you could use a goto) and drop the \u0027else\u0027 part.",
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "001e0788_eb69987c",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-24T03:04:06Z",
+      "side": 1,
+      "message": "This comment can be one-line.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 5
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f6dd786_d11c3e55",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-24T03:04:06Z",
+      "side": 1,
+      "message": "spaces around \u0027/\u0027",
+      "range": {
+        "startLine": 632,
+        "startChar": 58,
+        "endLine": 632,
+        "endChar": 59
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5ce6651_5f52d34a",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-24T03:04:06Z",
+      "side": 1,
+      "message": "spaces around \u0027/\u0027",
+      "range": {
+        "startLine": 632,
+        "startChar": 39,
+        "endLine": 632,
+        "endChar": 40
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f63d9e41_07753dd4",
         "filename": "chip/stm32/clock-stm32l4.c",
         "patchSetId": 12
@@ -162,6 +288,29 @@
         "startChar": 0,
         "endLine": 1772,
         "endChar": 38
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8ac33bf_a836037c",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-06-24T03:04:06Z",
+      "side": 1,
+      "message": "drop this tab.",
+      "range": {
+        "startLine": 1817,
+        "startChar": 21,
+        "endLine": 1817,
+        "endChar": 22
       },
       "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
