@@ -24,6 +24,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e5affe0_e9f95332",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-06-24T16:00:24Z",
+      "side": 1,
+      "message": "I mean +2. Btw, will need to change use of cryptoc too - most of used code from it is in FIPS boundary.",
+      "revId": "6276a7b8d75c54b5f2b2bb822cda93233aa29da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01ee09bc_ec1b9380",
@@ -60,6 +77,30 @@
       "writtenOn": "2021-06-22T21:07:59Z",
       "side": 1,
       "message": "I\u0027m not sure about the best way to do this. WDYT",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 43
+      },
+      "revId": "6276a7b8d75c54b5f2b2bb822cda93233aa29da9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74deb1bd_9059cf23",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-06-24T16:00:24Z",
+      "side": 1,
+      "message": "let it be as it is. I\u0027ll check if it is actually needed. Some functions became obsolete after WebAuthn implementation.",
+      "parentUuid": "5ffe058a_c4d044ce",
       "range": {
         "startLine": 31,
         "startChar": 0,
