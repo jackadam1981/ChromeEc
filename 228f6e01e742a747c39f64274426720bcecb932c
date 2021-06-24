@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8516a9e_c3219f80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T08:43:34Z",
+      "side": 1,
+      "message": "This CL will be dropped, since DMA clock is enabled in DMA_init().",
+      "revId": "228f6e01e742a747c39f64274426720bcecb932c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1923788a_655789c7",
@@ -18,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22f25ad3_70806f2d",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T08:43:34Z",
+      "side": 1,
+      "message": "According to Eric\u0027s comment, this CL will be dropped.",
+      "parentUuid": "1923788a_655789c7",
+      "revId": "228f6e01e742a747c39f64274426720bcecb932c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7518cebb_9908d98e",
@@ -31,6 +66,30 @@
       "writtenOn": "2021-06-24T06:37:53Z",
       "side": 1,
       "message": "This is already done in dma_init (and spi_init() gets called every SPI transaction), do we need to toggle this everytime?",
+      "range": {
+        "startLine": 678,
+        "startChar": 0,
+        "endLine": 678,
+        "endChar": 47
+      },
+      "revId": "228f6e01e742a747c39f64274426720bcecb932c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "568a2688_b24a3fcd",
+        "filename": "chip/stm32/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T08:43:34Z",
+      "side": 1,
+      "message": "Agreed. DMA clock should be managed in dma_init(). This CL will be dropped.",
+      "parentUuid": "7518cebb_9908d98e",
       "range": {
         "startLine": 678,
         "startChar": 0,
