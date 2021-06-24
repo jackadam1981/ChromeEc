@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6b00d5f_3235d90f",
+        "filename": "driver/accel_bma422.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-24T06:24:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ed04784_07a2a6a8",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "730172ac_d082b072",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-23T14:53:37Z",
       "side": 1,
       "message": "I see 0x18 and 0x19 in the datasheet. Can you add both here.",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c49101_f67eec7e",
+        "filename": "driver/accel_bma422.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-24T06:24:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "730172ac_d082b072",
       "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa448bda_0644f4f1",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-24T06:24:13Z",
+      "side": 1,
+      "message": "Added a comment. On if rnd (rounding) flag is set, we should set it to nearest level.",
+      "parentUuid": "8624c8ec_187f5b7a",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b1d9ad50_6db3e244",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-06-23T14:53:37Z",
       "side": 1,
       "message": "Consider using i2c_field_update8 to simplify this code.",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a572d548_6d533f50",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-24T06:24:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1d9ad50_6db3e244",
       "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +177,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "ee5b8836_029e6041",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-24T06:24:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e6c9b53_88e7bde2",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5138b0f0_7c127252",
         "filename": "driver/accel_bma4xx.c",
         "patchSetId": 1
@@ -137,6 +227,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f429071b_d944ee12",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-24T06:24:13Z",
+      "side": 1,
+      "message": "That variable is used multiple times int this function. I will make it reg_val to make it clear",
+      "parentUuid": "14fa95c1_c3fd4bcf",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71ef0a74_b7d00713",
@@ -150,6 +258,24 @@
       "writtenOn": "2021-06-23T14:53:37Z",
       "side": 1,
       "message": "Could this be:\nif (s-\u003echip !\u003d MOTIONSENSE_CHIP_BMA422 || chip_id !\u003d BMA422_CHIP_ID)\n   return EC_ERROR_ACCESS_DENIED",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6ad03f6_9dadd82f",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-24T06:24:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71ef0a74_b7d00713",
       "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -171,6 +297,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9955db_6103e00e",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-24T06:24:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "034e1443_980f0f1e",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d037245f_3c2ab08d",
@@ -188,6 +332,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "703e8580_073644cd",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-24T06:24:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d037245f_3c2ab08d",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61446530_46d329cd",
@@ -201,6 +363,24 @@
       "writtenOn": "2021-06-23T14:53:37Z",
       "side": 1,
       "message": "This header applies to all BMA4xx chips right?",
+      "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c1360a1_73cf675b",
+        "filename": "driver/accel_bma4xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-24T06:24:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "61446530_46d329cd",
       "revId": "f2ed56202e478884222fe372ebaf6b53a5ab9636",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
