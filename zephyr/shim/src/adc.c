@@ -7,7 +7,7 @@
 #include "adc.h"
 #include "zephyr_adc.h"
 
-#define ADC_DEV DT_LABEL(DT_NODELABEL(adc0))
+#define ADC_NODE DT_NODELABEL(adc0)
 const struct device *adc_dev;
 
 #define HAS_NAMED_ADC_CHANNELS DT_NODE_EXISTS(DT_INST(0, named_adc_channels))
@@ -35,7 +35,7 @@ const struct adc_t adc_channels[] = { DT_FOREACH_CHILD(
 static int init_device_bindings(const struct device *device)
 {
 	ARG_UNUSED(device);
-	adc_dev = device_get_binding(ADC_DEV);
+	adc_dev = DEVICE_DT_GET(ADC_NODE);
 
 #if HAS_NAMED_ADC_CHANNELS
 	for (int i = 0; i < ARRAY_SIZE(adc_channels); i++)
