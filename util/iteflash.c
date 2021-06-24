@@ -690,6 +690,12 @@ static int dbgr_reset(struct common_hnd *chnd, unsigned char val)
 	if (ret < 0)
 		fprintf(stderr, "DBGR RESET FAILED\n");
 
+	if (chnd->dbgr_addr_3bytes)
+		ret = i2c_write_byte(chnd, 0x80, 0xf0);
+	ret |= i2c_write_byte(chnd, 0x2f, 0x38);
+	ret |= i2c_write_byte(chnd, 0x2e, 0x06);
+	ret |= i2c_write_byte(chnd, 0x30, 0x66);
+
 	return 0;
 }
 
