@@ -11,6 +11,13 @@
  */
 
 /*
+ * BOARD VERSION (32 bits)
+ */
+#define BOARD_VERSION_PROTO_0			1
+#define BOARD_VERSION_PROTO_1			2
+#define BOARD_VERSION_PROTO_2			3
+
+/*
  * USB Daughter Board (2 bits)
  */
 #define FW_CONFIG_USB_DB_OFFSET			0
@@ -24,7 +31,7 @@
 #define FW_CONFIG_FORM_FACTOR_OFFSET		2
 #define FW_CONFIG_FORM_FACTOR_WIDTH		1
 #define FW_CONFIG_FORM_FACTOR_CLAMSHELL		0
-#define FW_CONFIG_FORM_FACTOR_CONVERTIABLE	1
+#define FW_CONFIG_FORM_FACTOR_CONVERTIBLE	1
 
 /*
  * Keyboard Backlight (1 bit)
