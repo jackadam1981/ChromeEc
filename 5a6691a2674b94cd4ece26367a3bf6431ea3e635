@@ -51,6 +51,24 @@
       "parentUuid": "e80585cb_18798ddc",
       "revId": "5a6691a2674b94cd4ece26367a3bf6431ea3e635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6596a74b_50b24c1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360210
+      },
+      "writtenOn": "2021-06-24T19:28:05Z",
+      "side": 1,
+      "message": "I raised the crosbug(b/191901404) to reselect the flag later.",
+      "parentUuid": "c5379f7e_4a668dde",
+      "revId": "5a6691a2674b94cd4ece26367a3bf6431ea3e635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
