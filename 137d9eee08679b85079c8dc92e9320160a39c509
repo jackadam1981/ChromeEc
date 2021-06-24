@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "649909ed_947f6683",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-24T23:22:51Z",
+      "side": 1,
+      "message": "This CL has a dependency on PR https://github.com/zephyrproject-rtos/zephyr/pull/35565.  Please create an UPSTREAM change and add a Cq-Depend on this CL.",
+      "revId": "137d9eee08679b85079c8dc92e9320160a39c509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
