@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9ecd1a52_b21239f1",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-06-24T02:39:05Z",
+      "side": 1,
+      "message": "I\u0027m a bit confused by this. The full duplex mode was explicitly added to the USB SPI protocol for the chip/g implementation. It\u0027s one of the few additions from this protocol that wasn\u0027t originally present in the other.\n\nIt looks like this was one of the requirements with the mn50 implementation.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/437627/",
+      "parentUuid": "05600192_04f89cfd",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e16c5c0a_3ce1209b",
         "filename": "chip/g/usb_spi.c",
         "patchSetId": 4
