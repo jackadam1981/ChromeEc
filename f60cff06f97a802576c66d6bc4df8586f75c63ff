@@ -16,6 +16,24 @@
       "message": "Shouldn\u0027t be needed since this is also in usb_prl_sm.h",
       "revId": "f60cff06f97a802576c66d6bc4df8586f75c63ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee1134e_56986029",
+        "filename": "include/mock/usb_prl_mock.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-24T22:10:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "00bffcb2_6e6df835",
+      "revId": "f60cff06f97a802576c66d6bc4df8586f75c63ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
