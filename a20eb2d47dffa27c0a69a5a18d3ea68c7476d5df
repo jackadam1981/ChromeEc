@@ -50,6 +50,40 @@
       "message": "raw_write8 has 450 usec delay. Is a raw_field_update8 needed for BMA422?",
       "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d00c59_655cf085",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-24T18:51:06Z",
+      "side": 1,
+      "message": "Should rate be odr to be more consistent? Rnd should be `bool round` so it\u0027s not confused with random.",
+      "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb6b79f_ca7c3b2b",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-24T18:51:06Z",
+      "side": 1,
+      "message": "Could replace with raw_field_update8.",
+      "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
