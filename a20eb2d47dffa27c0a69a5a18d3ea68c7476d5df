@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ee544b_8bd2aa3c",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-24T16:08:26Z",
+      "side": 1,
+      "message": "range_reg would be more clear IMO.",
+      "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "545ffcec_d377cabd",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-24T16:08:26Z",
+      "side": 1,
+      "message": "I think this is supposed to be BMA4_REG_TO_RANGE.",
+      "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a4ad6ef_d479e191",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-24T16:08:26Z",
+      "side": 1,
+      "message": "raw_write8 has 450 usec delay. Is a raw_field_update8 needed for BMA422?",
+      "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
