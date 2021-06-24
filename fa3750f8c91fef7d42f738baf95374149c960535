@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4999c7e_ec026844",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T07:42:26Z",
+      "side": 1,
+      "message": "Indeed, these check should not pass repo upload hook. However, I did have the repo upload check done every time.",
+      "parentUuid": "e76d8e61_ec6d29d2",
+      "revId": "fa3750f8c91fef7d42f738baf95374149c960535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "785b7cf0_c29cb63c",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b9e575_b058ddc5",
+        "filename": "chip/stm32/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T07:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "785b7cf0_c29cb63c",
+      "revId": "fa3750f8c91fef7d42f738baf95374149c960535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8ad2ff9_83e2845a",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-06-24T03:35:16Z",
       "side": 1,
       "message": "use space instead.",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 4
+      },
+      "revId": "fa3750f8c91fef7d42f738baf95374149c960535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dc54994_5ffd7ac5",
+        "filename": "chip/stm32/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T07:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8ad2ff9_83e2845a",
       "range": {
         "startLine": 74,
         "startChar": 3,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb1edd90_7d253234",
+        "filename": "chip/stm32/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T07:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cd32bce_06edca60",
+      "range": {
+        "startLine": 75,
+        "startChar": 31,
+        "endLine": 75,
+        "endChar": 32
+      },
+      "revId": "fa3750f8c91fef7d42f738baf95374149c960535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73ff0f54_822c9ead",
@@ -94,6 +178,30 @@
       "writtenOn": "2021-06-23T09:04:03Z",
       "side": 1,
       "message": "remove whitespace",
+      "range": {
+        "startLine": 84,
+        "startChar": 1,
+        "endLine": 84,
+        "endChar": 3
+      },
+      "revId": "fa3750f8c91fef7d42f738baf95374149c960535",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07d2cd14_ac1dec63",
+        "filename": "chip/stm32/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T07:42:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73ff0f54_822c9ead",
       "range": {
         "startLine": 84,
         "startChar": 1,
