@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "143ce3b0_1f4e574c",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-24T08:05:53Z",
+      "side": 1,
+      "message": "4, but only 2 entries?\n\nis this array only valid for the TKP_A_LED, then?",
+      "range": {
+        "startLine": 59,
+        "startChar": 38,
+        "endLine": 59,
+        "endChar": 39
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
