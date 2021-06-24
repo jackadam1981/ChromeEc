@@ -33,6 +33,24 @@
       "message": "Please also file a bug to disable this W/A around later ",
       "revId": "5a6691a2674b94cd4ece26367a3bf6431ea3e635",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5379f7e_4a668dde",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-24T19:04:01Z",
+      "side": 1,
+      "message": "good idea. i am afraid this referenced bug\nmay accicentally get closed in a bug scrub without reverting this patch.",
+      "parentUuid": "e80585cb_18798ddc",
+      "revId": "5a6691a2674b94cd4ece26367a3bf6431ea3e635",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
