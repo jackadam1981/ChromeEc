@@ -17,6 +17,7 @@
 #include "fan_chip.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "keyboard_8042.h"
 #include "lid_switch.h"
 #include "power.h"
 #include "power_button.h"
@@ -191,6 +192,36 @@ const struct pwm_t pwm_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+/******************************************************************************/
+/* keyboard config */
+static const struct ec_response_keybd_config main_kb = {
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+
+		//TK_REFRESH,		/* T2 */	// Fail
+		//TK_FULLSCREEN,	/* T3 */
+
+		TK_FULLSCREEN,		/* T3 */	// PASS
+		TK_REFRESH,		/* T2 */
+
+		TK_OVERVIEW,		/* T4 */
+		TK_SNAPSHOT,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_VOL_MUTE,		/* T8 */
+		TK_VOL_DOWN,		/* T9 */
+		TK_VOL_UP,		/* T10 */
+	},
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
+};
+
+__override const struct ec_response_keybd_config
+*board_vivaldi_keybd_config(void)
+{
+	return &main_kb;
+}
 
 /******************************************************************************/
 /* keyboard factory test */
