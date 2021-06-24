@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31ccf732_8f8b61f0",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-24T18:59:39Z",
+      "side": 1,
+      "message": "I started looking into this actually. USB_SPI_MAX_READ_COUNT is used in special H1 firmware images used during personalization, there is a way around it, or we could leave perso targets on RaidenV1.\n\nI think this should be dropped from V2 if nobody else is using it.",
+      "parentUuid": "9ecd1a52_b21239f1",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e16c5c0a_3ce1209b",
         "filename": "chip/g/usb_spi.c",
         "patchSetId": 4
@@ -173,6 +191,24 @@
       "side": 1,
       "message": "In that case a new field should be added to usb_spi_error\u0027s enum and it should be propagated to the other projects later on.",
       "parentUuid": "dcb919c9_e0a6c911",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c8cedfe_6df6cae0",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-24T18:59:39Z",
+      "side": 1,
+      "message": "ok, let me add an error for this.",
+      "parentUuid": "e3c322ab_af90fe73",
       "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -366,6 +402,24 @@
       "side": 1,
       "message": "Any flash protocols which return status codes after writing a block of data would violate it. That is a perfectly valid interface for Flashrom, there isn\u0027t even a way to communicate to Flash drivers that the max read and max write length is potentially variable depending on how many bytes you use on either state.\n\nThe Flashrom project supports about 585 different Flashchips with a dozen different protocol implementations. This check would create a situation where Servo like flashing systems C2D2/ServoMicro a chip without issue, but then a developer will be dealing with a Cr50 interface that is violating the both the protocol spec and the limits it told the flash drivers and needs special treatment.",
       "parentUuid": "fefbb6cf_c2e33a18",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "177149eb_9fffba00",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-24T18:59:39Z",
+      "side": 1,
+      "message": "Are there SPI flash devices like this used in Chrome OS? This is not the case as far as I can tell, so I don\u0027t see a need to complicate the client implementation with a feature it does not require.\n\nShould a SPI flash chip like this be introduced, this processing mode could be added.",
+      "parentUuid": "e05976e1_fc7bc3ad",
       "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
