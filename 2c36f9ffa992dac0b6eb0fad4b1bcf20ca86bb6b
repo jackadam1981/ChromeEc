@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9489f37d_f5992ba7",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cabbb711_743222b1",
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "288746a3_5ff6e329",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-06-24T03:04:06Z",
       "side": 1,
       "message": "\u0027ret\u0027 is usually used for return value, use other naming instead?",
+      "range": {
+        "startLine": 124,
+        "startChar": 10,
+        "endLine": 124,
+        "endChar": 13
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3286c970_bb28094b",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "288746a3_5ff6e329",
       "range": {
         "startLine": 124,
         "startChar": 10,
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c25ba1d3_d6e67738",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "614dc048_18cb333d",
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "001e0788_eb69987c",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-06-24T03:04:06Z",
       "side": 1,
       "message": "This comment can be one-line.",
+      "range": {
+        "startLine": 312,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 5
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "847d560e_e495b2e5",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "001e0788_eb69987c",
       "range": {
         "startLine": 312,
         "startChar": 0,
@@ -144,6 +228,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d796f3f9_e278ad1f",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f6dd786_d11c3e55",
+      "range": {
+        "startLine": 632,
+        "startChar": 58,
+        "endLine": 632,
+        "endChar": 59
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fedec705_d2377cf7",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5ce6651_5f52d34a",
+      "range": {
+        "startLine": 632,
+        "startChar": 39,
+        "endLine": 632,
+        "endChar": 40
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f63d9e41_07753dd4",
@@ -157,6 +289,54 @@
       "writtenOn": "2021-06-23T08:58:37Z",
       "side": 1,
       "message": "idle_dsleep_time_us is unsigned, use %llu",
+      "range": {
+        "startLine": 1085,
+        "startChar": 51,
+        "endLine": 1085,
+        "endChar": 54
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "621a385a_e1276822",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f63d9e41_07753dd4",
+      "range": {
+        "startLine": 1085,
+        "startChar": 51,
+        "endLine": 1085,
+        "endChar": 54
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7113e0ef_d87ebae0",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f63d9e41_07753dd4",
       "range": {
         "startLine": 1085,
         "startChar": 51,
@@ -190,6 +370,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef40c8b6_c31a071a",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb59b13b_190d0626",
+      "range": {
+        "startLine": 1087,
+        "startChar": 51,
+        "endLine": 1087,
+        "endChar": 54
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6395ad8e_9f86870d",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1087,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb59b13b_190d0626",
+      "range": {
+        "startLine": 1087,
+        "startChar": 51,
+        "endLine": 1087,
+        "endChar": 54
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e23b48eb_60602ee5",
@@ -203,6 +431,54 @@
       "writtenOn": "2021-06-23T08:58:37Z",
       "side": 1,
       "message": "use whitespace",
+      "range": {
+        "startLine": 136,
+        "startChar": 17,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecf73696_2c709f29",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e23b48eb_60602ee5",
+      "range": {
+        "startLine": 136,
+        "startChar": 17,
+        "endLine": 136,
+        "endChar": 18
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01af086e_466760be",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e23b48eb_60602ee5",
       "range": {
         "startLine": 136,
         "startChar": 17,
@@ -230,6 +506,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82d72437_3aa2c5f2",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c785988_5135e70d",
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7360b849_e1b38a31",
@@ -247,6 +541,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb6fd297_cab4f220",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7360b849_e1b38a31",
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7611581_ec7960b6",
@@ -260,6 +572,30 @@
       "writtenOn": "2021-06-23T08:58:37Z",
       "side": 1,
       "message": "is upper case intended?",
+      "range": {
+        "startLine": 441,
+        "startChar": 4,
+        "endLine": 441,
+        "endChar": 6
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82737fd1_c0bc4016",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "No, it will be fixed.",
+      "parentUuid": "a7611581_ec7960b6",
       "range": {
         "startLine": 441,
         "startChar": 4,
@@ -293,6 +629,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c73e8e0_b8e5c4a4",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79f63322_d549eb40",
+      "range": {
+        "startLine": 1771,
+        "startChar": 0,
+        "endLine": 1772,
+        "endChar": 38
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8ac33bf_a836037c",
@@ -306,6 +666,30 @@
       "writtenOn": "2021-06-24T03:04:06Z",
       "side": 1,
       "message": "drop this tab.",
+      "range": {
+        "startLine": 1817,
+        "startChar": 21,
+        "endLine": 1817,
+        "endChar": 22
+      },
+      "revId": "2c36f9ffa992dac0b6eb0fad4b1bcf20ca86bb6b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a5f0388_21b32e97",
+        "filename": "chip/stm32/registers-stm32l4.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 1817,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-24T03:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8ac33bf_a836037c",
       "range": {
         "startLine": 1817,
         "startChar": 21,
