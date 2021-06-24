@@ -33,6 +33,24 @@
       "message": "This seems like it\u0027ll work. As an aside, we should adjust the conditional where `pd_is_battery_capable` compares against to match the other battery percentage limits. Right now it\u0027s tied to a Try.Src threshold, but if I recall correctly we\u0027re disabling Try.Src entirely. I think it\u0027d be better if that threshold matched the state of charge at which we would start to shut the system down.\n\nLet me know your thoughts.",
       "revId": "c05c7eb83717de5809fcf83582a5efe7345394ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7b8d257_c6a2c757",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-24T17:18:29Z",
+      "side": 1,
+      "message": "Ideally, I\u0027d like `pd_is_battery_capable` to always reflect \"I really don\u0027t have the battery to lose my Vbus right now\", since that\u0027s generally how we use it.  We absolutely could rename and remove the tie to Try.SRC since that\u0027s just one instance where we need to decide if Vbus can be sacrificed. \n\nI\u0027m not sure how that would tie to the thresholds for shutdown and such though.  Default Try.SRC level is 5%, but our default thresholds for booting or shutting down look like they\u0027re 2%.  But conceptually, it seems like both could represent the same \"I\u0027m okay without AC\" type of threshold.  If I had to guess at the discrepancy, I\u0027d assume the defaults were either tuned based on different systems, or that Try.SRC is really more of a \"luxury\" in that we don\u0027t really need to be doing it and can therefore wait until we\u0027re at a more secure position.  We could start a bug discussion on this if unification seems promising.  \n\nOne other option I\u0027d been considering was moving away from CONFIGs more towards board-overridable functions for determining boot since mancomb had been considering supporting different SoC TDPs on the same image with a FW_CONFIG field.  But the chromebox case would have been easier since it doesn\u0027t involve our enigmatic charge_prevent_power_on() logic.",
+      "parentUuid": "4be80c6f_ffc5f61d",
+      "revId": "c05c7eb83717de5809fcf83582a5efe7345394ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
