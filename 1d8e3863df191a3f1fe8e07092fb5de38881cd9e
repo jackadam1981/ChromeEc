@@ -16,6 +16,29 @@
       "message": "hwtimer32.c is updated. ",
       "revId": "1d8e3863df191a3f1fe8e07092fb5de38881cd9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6de99180_23bbe3d9",
+        "filename": "chip/stm32/hwtimer32.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-06-24T07:41:38Z",
+      "side": 1,
+      "message": "sorry, found a better way.\n\nreplace this by `freq` and remove the `__maybe_unused` in line 273.",
+      "range": {
+        "startLine": 303,
+        "startChar": 4,
+        "endLine": 303,
+        "endChar": 26
+      },
+      "revId": "1d8e3863df191a3f1fe8e07092fb5de38881cd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
