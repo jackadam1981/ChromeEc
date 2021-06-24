@@ -14,3 +14,15 @@ CPPFLAGS+=-Ichip/$(CHIP)/$(CHIP_VARIANT)
 dirs-y+=chip/$(CHIP)/$(CHIP_VARIANT)
 include chip/$(CHIP)/$(CHIP_VARIANT)/build.mk
 endif
+
+ifeq ($(CHIP_VARIANT),mt8192)
+CPPFLAGS+=-Ichip/$(CHIP)/$(CHIP_VARIANT)
+dirs-y+=chip/$(CHIP)/$(CHIP_VARIANT)
+include chip/$(CHIP)/$(CHIP_VARIANT)/build.mk
+endif
+
+ifeq ($(CHIP_VARIANT),mt8195)
+CPPFLAGS+=-Ichip/$(CHIP)/mt8192
+dirs-y+=chip/$(CHIP)/mt8192
+include chip/$(CHIP)/mt8192/build.mk
+endif
