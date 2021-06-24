@@ -8,6 +8,7 @@
 #include <cros/nuvoton/npcx7.dtsi>
 #include <dt-bindings/adc/adc.h>
 #include <dt-bindings/gpio_defines.h>
+#include <dt-bindings/ec_mkbp_event_defines.h>
 #include <nuvoton/npcx7m7fc.dtsi>
 
 / {
@@ -34,6 +35,31 @@
 		compatible = "ec-console";
 
 		disabled = "hostcmd";
+	};
+
+	ec-mkbp-host-event-wakeup-mask {
+		compatible = "ec-mkbp-event";
+		wakeup-mask = <(EC_HOST_EVENT_LID_OPEN | \
+				EC_HOST_EVENT_POWER_BUTTON | \
+				EC_HOST_EVENT_AC_CONNECTED | \
+				EC_HOST_EVENT_AC_DISCONNECTED | \
+				EC_HOST_EVENT_HANG_DETECT | \
+				EC_HOST_EVENT_RTC | \
+				EC_HOST_EVENT_MODE_CHANGE | \
+				EC_HOST_EVENT_DEVICE)>;
+	};
+
+	ec-mkbp-event-wakeup-mask {
+		compatible = "ec-mkbp-event";
+#if CONFIG_HAS_TASK_KEYSCAN
+
+		wakeup-mask = <(EC_MKBP_EVENT_KEY_MATRIX | \
+				EC_MKBP_EVENT_HOST_EVENT | \
+				EC_MKBP_EVENT_SENSOR_FIFO)>;
+#else
+		wakeup-mask = <(EC_MKBP_EVENT_HOST_EVENT | \
+				EC_MKBP_EVENT_SENSOR_FIFO)>;
+#endif
 	};
 
 	named-i2c-ports {
