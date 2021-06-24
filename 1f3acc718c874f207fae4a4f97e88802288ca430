@@ -16,6 +16,24 @@
       "message": "please help this Cls to merge firmware branch firmware-dedede-13606.B-master",
       "revId": "1f3acc718c874f207fae4a4f97e88802288ca430",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c4862c5_604bade8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-24T15:30:13Z",
+      "side": 1,
+      "message": "Already merged here: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2983994",
+      "parentUuid": "734040d4_e9dc7b23",
+      "revId": "1f3acc718c874f207fae4a4f97e88802288ca430",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
