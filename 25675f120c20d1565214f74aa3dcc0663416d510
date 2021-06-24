@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "de76ff75_68674118",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-24T20:49:45Z",
+      "side": 1,
+      "message": "only used in suspend_led_update_deferred, please move it there",
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc23da55_408852f3",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-24T20:49:45Z",
+      "side": 1,
+      "message": "welcome to remove :)",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "143ce3b0_1f4e574c",
         "filename": "board/primus/led.c",
         "patchSetId": 12
@@ -43,6 +83,139 @@
         "startChar": 38,
         "endLine": 59,
         "endChar": 39
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f7bc74_7c042fde",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-24T20:49:45Z",
+      "side": 1,
+      "message": "to eliminate the confusion this array can be renamed to indicate that it is only used by the LOGO LED, for example `power_led_color_to_brightness`",
+      "parentUuid": "72abaaa6_598bb89b",
+      "range": {
+        "startLine": 59,
+        "startChar": 38,
+        "endLine": 59,
+        "endChar": 39
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd231a80_91c2790d",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-24T20:49:45Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be EC_LED_COLOR_RED?",
+      "range": {
+        "startLine": 107,
+        "startChar": 17,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2317437a_2d1a851d",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-24T20:49:45Z",
+      "side": 1,
+      "message": "why not using led_set_color_power(LED_RED) here,\n and\nled_set_color_power(LED_OFF) in the \"else\" case?",
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e67c19f_c213806b",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-24T20:49:45Z",
+      "side": 1,
+      "message": "There is no reason to have blink_ticks and power_ticks, both are used only if extpower_is_present. Please consider merging them to simplify the logic.",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 12
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ce0e05f_cde85e53",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-24T20:49:45Z",
+      "side": 1,
+      "message": "this is not a cycle, better to use \"if\"\n\nalso, when charging, `blink_ticks` will overflow eventually and the LED will start blinking (for all the negative values of `signed int blink_ticks`). This will happen after 32k iterations of 0.2 sec, which is roughly 2 hours",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 7
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d003026_5fb6bd16",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-24T20:49:45Z",
+      "side": 1,
+      "message": "Worth explaining what is happening here. Can you please add a comment?",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 25
       },
       "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
