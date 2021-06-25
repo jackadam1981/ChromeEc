@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aedfc69_d56f243f",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-25T17:11:10Z",
+      "side": 1,
+      "message": "Check device_is_ready?",
+      "range": {
+        "startLine": 269,
+        "startChar": 6,
+        "endLine": 269,
+        "endChar": 25
+      },
+      "revId": "11d8be8cc6bc84dd853e669d1a94cbeaeff5ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
