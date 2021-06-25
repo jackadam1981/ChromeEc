@@ -34,6 +34,24 @@
       "parentUuid": "7fb96ad9_55960755",
       "revId": "f6c1ec1774175a0582197e236ac9113cca3f0cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0d120e0_fd8b0ca3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T19:44:07Z",
+      "side": 1,
+      "message": "I can give it a shot.  \n\nWhile I was poking around Volteer\u0027s PPC to understand their FRS support more, I did notice that syv682x_vbus_source_enable() is essentially performing the same logic as our board code, except it has a more accurate knowledge of the Vbus sourcing since the PPC itself is handling the FRS signal.",
+      "parentUuid": "25bc64fa_372b1b2d",
+      "revId": "f6c1ec1774175a0582197e236ac9113cca3f0cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
