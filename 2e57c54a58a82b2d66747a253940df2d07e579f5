@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3ac958_d850f0d6",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-25T21:57:38Z",
+      "side": 1,
+      "message": "\u003e \"assymmetrical\" is a possible misspelling of \"asymmetrical\".\n\nPlease fix.",
+      "parentUuid": "167e3482_10c26a52",
+      "range": {
+        "startLine": 59,
+        "startChar": 24,
+        "endLine": 59,
+        "endChar": 37
+      },
+      "revId": "2e57c54a58a82b2d66747a253940df2d07e579f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
