@@ -255,6 +255,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1958fd2a_d24149e7",
+        "filename": "common/apdo.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-25T21:52:42Z",
+      "side": 1,
+      "message": "Yeah - as I said it is a bit naive (which isn\u0027t necessarily bad). The trickle charging case isn\u0027t addressed by this at all though. And this won\u0027t hold as we go to EPR, AVS, PPS, etc. Although that will need a lot of other changes anyway.\n\nIdeally what I would like someday is a LUT that we extract from each device using a script and INAs on the buck-boost. Then we paste that into the usbc_config.c file.\n\nI think what you have here does satisfy that.",
+      "parentUuid": "d06eb6e2_1f2f9782",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 1
+      },
+      "revId": "bc81dbdfd9ec9c412f3057d639c321c02df9f3a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8e7aaedd_d4bc8946",
