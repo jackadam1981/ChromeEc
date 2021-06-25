@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "67abd15d_b8423196",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-25T08:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de76ff75_68674118",
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cc23da55_408852f3",
         "filename": "board/primus/led.c",
         "patchSetId": 12
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-24T20:49:45Z",
       "side": 1,
       "message": "welcome to remove :)",
+      "range": {
+        "startLine": 40,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "509009b8_dc1d75bd",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-25T08:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc23da55_408852f3",
       "range": {
         "startLine": 40,
         "startChar": 3,
@@ -112,6 +154,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f0def3_4a771e57",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-25T08:36:10Z",
+      "side": 1,
+      "message": "I changed to use pwm_set_duty(PWM_CH_TKP_A_LED_N, LED_ON_LVL); to avoid color_brightness.",
+      "parentUuid": "50f7bc74_7c042fde",
+      "range": {
+        "startLine": 59,
+        "startChar": 38,
+        "endLine": 59,
+        "endChar": 39
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd231a80_91c2790d",
@@ -125,6 +191,30 @@
       "writtenOn": "2021-06-24T20:49:45Z",
       "side": 1,
       "message": "Shouldn\u0027t that be EC_LED_COLOR_RED?",
+      "range": {
+        "startLine": 107,
+        "startChar": 17,
+        "endLine": 107,
+        "endChar": 35
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1698ff60_b2c8ab96",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-25T08:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd231a80_91c2790d",
       "range": {
         "startLine": 107,
         "startChar": 17,
@@ -152,6 +242,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a727e71_e4958c48",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-25T08:36:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2317437a_2d1a851d",
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e67c19f_c213806b",
@@ -165,6 +273,30 @@
       "writtenOn": "2021-06-24T20:49:45Z",
       "side": 1,
       "message": "There is no reason to have blink_ticks and power_ticks, both are used only if extpower_is_present. Please consider merging them to simplify the logic.",
+      "range": {
+        "startLine": 148,
+        "startChar": 1,
+        "endLine": 148,
+        "endChar": 12
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e49154df_6119c6b6",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-25T08:36:10Z",
+      "side": 1,
+      "message": "I followed led_onoff_states.c and modified a version.",
+      "parentUuid": "1e67c19f_c213806b",
       "range": {
         "startLine": 148,
         "startChar": 1,
@@ -198,6 +330,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d164768e_2605db9e",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-25T08:36:10Z",
+      "side": 1,
+      "message": "Already remove that and provide a new one.",
+      "parentUuid": "4ce0e05f_cde85e53",
+      "range": {
+        "startLine": 156,
+        "startChar": 2,
+        "endLine": 156,
+        "endChar": 7
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d003026_5fb6bd16",
@@ -211,6 +367,30 @@
       "writtenOn": "2021-06-24T20:49:45Z",
       "side": 1,
       "message": "Worth explaining what is happening here. Can you please add a comment?",
+      "range": {
+        "startLine": 196,
+        "startChar": 4,
+        "endLine": 196,
+        "endChar": 25
+      },
+      "revId": "25675f120c20d1565214f74aa3dcc0663416d510",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ecf3f37_ab817ba9",
+        "filename": "board/primus/led.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-25T08:36:10Z",
+      "side": 1,
+      "message": "Remove this one since we don\u0027t have this definition.",
+      "parentUuid": "2d003026_5fb6bd16",
       "range": {
         "startLine": 196,
         "startChar": 4,
