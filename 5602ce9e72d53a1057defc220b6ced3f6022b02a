@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9706c1ae_b9d49d53",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-06-25T16:33:55Z",
+      "side": 1,
+      "message": "Sent an upstream patch out to change NPCX_CLK_CTRL_NAME to NPCX_CLK_CTRL_NODE set to DT_NODELABEL(pcc). Can either wait for that or change it later.\n\nhttps://github.com/zephyrproject-rtos/zephyr/pull/36557",
+      "range": {
+        "startLine": 494,
+        "startChar": 59,
+        "endLine": 494,
+        "endChar": 62
+      },
+      "revId": "5602ce9e72d53a1057defc220b6ced3f6022b02a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
