@@ -31,11 +31,11 @@ int pd_check_vconn_swap(int port)
 void pd_power_supply_reset(int port)
 {
 	/*
-	 * Don't need to shutoff VBus if we are not sourcing it
-	 * TODO: Ensure Vbus sourcing is being disabled appropriately to
-	 *       avoid invalid TC states
+	 * Don't need to shutoff Vbus if we are not sourcing it.  Since the PPC
+	 * perception of Vbus sourcing relies on cached flags, it's most
+	 * reliable to consult the TCPC power control register instead.
 	 */
-	if (ppc_is_sourcing_vbus(port)) {
+	if (tcpm_get_src_ctrl(port)) {
 		/* Disable VBUS. */
 		ppc_vbus_source_enable(port, 0);
 
@@ -74,7 +74,7 @@ int pd_set_power_supply_ready(int port)
 /* Used by Vbus discharge common code with CONFIG_USB_PD_DISCHARGE */
 int board_vbus_source_enabled(int port)
 {
-	return ppc_is_sourcing_vbus(port);
+	return tcpm_get_src_ctrl(port);
 }
 
 /* Used by USB charger task with CONFIG_USB_PD_5V_EN_CUSTOM */
