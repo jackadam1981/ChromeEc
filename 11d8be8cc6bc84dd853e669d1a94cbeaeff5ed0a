@@ -22,6 +22,30 @@
       },
       "revId": "11d8be8cc6bc84dd853e669d1a94cbeaeff5ed0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a095e38b_0edd1d88",
+        "filename": "zephyr/shim/src/gpio.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-06-25T17:38:13Z",
+      "side": 1,
+      "message": "Yeah!",
+      "parentUuid": "3aedfc69_d56f243f",
+      "range": {
+        "startLine": 269,
+        "startChar": 6,
+        "endLine": 269,
+        "endChar": 25
+      },
+      "revId": "11d8be8cc6bc84dd853e669d1a94cbeaeff5ed0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
