@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb08b8a_67ac1763",
+        "filename": "board/primus/led.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-25T23:34:34Z",
+      "side": 1,
+      "message": "Those are constants, i would suggest to #define them, something like:\n#define  LED_LOGO_TICK_SEC   0.25 * LED_ONE_SEC\n\n(single define because they are the same, eliminating led_logo_on_tick, led_logo_off_tick, LED_LOGO_ON_TICK, LED_LOGO_OFF_TICK)",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 53
+      },
+      "revId": "b898e6747e7e2fe27330b00b45b92d4c9473749f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e49ff352_de929d69",
+        "filename": "board/primus/led.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-25T23:34:34Z",
+      "side": 1,
+      "message": "Also a constant, welcome to #define on top of this file...",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 8
+      },
+      "revId": "b898e6747e7e2fe27330b00b45b92d4c9473749f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51cec859_bb309d1c",
+        "filename": "board/primus/led.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-25T23:34:34Z",
+      "side": 1,
+      "message": "will be always true here",
+      "range": {
+        "startLine": 127,
+        "startChar": 47,
+        "endLine": 127,
+        "endChar": 58
+      },
+      "revId": "b898e6747e7e2fe27330b00b45b92d4c9473749f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b985896_96f6f967",
+        "filename": "board/primus/led.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-25T23:34:34Z",
+      "side": 1,
+      "message": "Q: I don\u0027t understand... How is the gradual change achieved here?",
+      "range": {
+        "startLine": 194,
+        "startChar": 7,
+        "endLine": 194,
+        "endChar": 14
+      },
+      "revId": "b898e6747e7e2fe27330b00b45b92d4c9473749f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc27804_adbe172f",
+        "filename": "board/primus/led.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-25T23:34:34Z",
+      "side": 1,
+      "message": "Q: What is the purpose of this initialization?",
+      "revId": "b898e6747e7e2fe27330b00b45b92d4c9473749f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
