@@ -279,6 +279,33 @@ static int nct3807_handle_fault(int port, int fault)
 	return rv;
 }
 
+__maybe_unused static int nct3807_set_frs_enable(int port, int enable)
+{
+	/*
+	 * 2.2.7 Fast Role Swap (FRS)
+	 *
+	 * "Also note that before enabling the FRS functionality, the Port
+	 * Manager must set VBUS_SINK_DISCONNECT_THRESHOLD register to 0000h
+	 * and either disable Vbus presence detection or mask the Alert from
+	 * the Vbus Present status bit."
+	 */
+	if (enable)
+		RETURN_ERROR(tcpc_write16(port,
+					  TCPC_REG_VBUS_SINK_DISCONNECT_THRESH,
+					  0x0000));
+	else
+		RETURN_ERROR(tcpc_write16(port,
+				TCPC_REG_VBUS_SINK_DISCONNECT_THRESH,
+				TCPC_REG_VBUS_SINK_DISCONNECT_THRESH_DEFAULT));
+
+	RETURN_ERROR(tcpc_update8(port,
+				  TCPC_REG_POWER_STATUS_MASK,
+				  TCPC_REG_POWER_STATUS_VBUS_PRES,
+				  enable ? MASK_CLR : MASK_SET));
+
+	return tcpci_tcpc_fast_role_swap_enable(port, enable);
+}
+
 const struct tcpm_drv nct38xx_tcpm_drv = {
 	.init			= &nct38xx_tcpm_init,
 	.release		= &tcpci_tcpm_release,
@@ -320,7 +347,7 @@ const struct tcpm_drv nct38xx_tcpm_drv = {
 #endif
 	.set_bist_test_mode	= &tcpci_set_bist_test_mode,
 #ifdef CONFIG_USB_PD_FRS_TCPC
-	.set_frs_enable         = &tcpci_tcpc_fast_role_swap_enable,
+	.set_frs_enable         = &nct3807_set_frs_enable,
 #endif
 	.handle_fault		= &nct3807_handle_fault,
 };
