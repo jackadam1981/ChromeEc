@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeff538d_7fd179c2",
+        "filename": "zephyr/shim/src/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-06-25T17:38:09Z",
+      "side": 1,
+      "message": "ah, missed it! had to add the log stuff as well",
+      "parentUuid": "6fc622ba_ad1c890b",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "7ccced5cd42618f6f8fce7d332c223cdfbdece32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c1ce8f5_973afb91",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-25T17:06:40Z",
       "side": 1,
       "message": "Should this be device_is_ready?",
+      "range": {
+        "startLine": 545,
+        "startChar": 6,
+        "endLine": 545,
+        "endChar": 14
+      },
+      "revId": "7ccced5cd42618f6f8fce7d332c223cdfbdece32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04604295_56ce3a0f",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-06-25T17:38:09Z",
+      "side": 1,
+      "message": "yes, thanks for spotting this",
+      "parentUuid": "2c1ce8f5_973afb91",
       "range": {
         "startLine": 545,
         "startChar": 6,
