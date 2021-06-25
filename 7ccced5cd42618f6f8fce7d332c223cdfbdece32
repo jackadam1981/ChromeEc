@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f32a856_6fa9bb33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-06-25T16:36:07Z",
+      "side": 1,
+      "message": "There\u0027s one more in zephyr/shim/src/flash.c, but that does not work for ITE based boards right now cause there\u0027s no corresponding flash driver. Will update it once a driver is available.",
+      "revId": "7ccced5cd42618f6f8fce7d332c223cdfbdece32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
