@@ -16,6 +16,24 @@
       "message": "in case of failure, the previous behavior was different ?\nit would set chg_ctl_mode regardless.\n\nNot sure which impact this change has.",
       "revId": "0c02cc13625ad89e464c74d49c6a7278afab0d3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b8cdc50_6cd2d13b",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-25T15:25:02Z",
+      "side": 1,
+      "message": "I made the variable changes atomic.\n\nExactly... I\u0027ve been fighting to figure out the expected behavior of the undocumented code...",
+      "parentUuid": "ed0ab971_5b6f003e",
+      "revId": "0c02cc13625ad89e464c74d49c6a7278afab0d3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
