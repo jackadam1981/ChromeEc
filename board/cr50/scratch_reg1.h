@@ -81,9 +81,8 @@
 #define BOARD_NO_INA_SUPPORT             BIT(19)
 
 /*
- * The board allows commands to stop TPM (Wilco, Campfire, etc.)
+ * Bit20 is available.
  */
-#define BOARD_ALLOW_CHANGE_TPM_MODE       BIT(20)
 
 /*
  * The board supports EC-CR50 communication.
@@ -112,7 +111,6 @@
  * updated if additional strap related properties are added.
  */
 #define BOARD_ALL_PROPERTIES ( \
-	BOARD_ALLOW_CHANGE_TPM_MODE | \
 	BOARD_CCD_REC_LID_PIN_MASK | \
 	BOARD_CLOSED_LOOP_RESET | \
 	BOARD_CLOSED_SOURCE_SET1 | \
