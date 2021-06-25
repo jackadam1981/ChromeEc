@@ -26,7 +26,6 @@ GPIO_INT(USB_C0_PPC_INT_ODL,             PIN(6, 2), GPIO_INT_FALLING, ppc_interr
 GPIO_INT(USB_C0_RT_INT_ODL,              PIN(B, 1), GPIO_INT_FALLING, retimer_interrupt)
 GPIO_INT(USB_C1_BC12_INT_ODL,            PIN(5, 0), GPIO_INT_FALLING, bc12_interrupt)
 GPIO_INT(USB_C1_PPC_INT_ODL,             PIN(F, 5), GPIO_INT_FALLING, ppc_interrupt)
-GPIO_INT(USB_C1_RT_INT_ODL,              PIN(A, 0), GPIO_INT_FALLING, retimer_interrupt)
 GPIO_INT(USB_C1_TCPC_INT_ODL,            PIN(A, 2), GPIO_INT_FALLING, tcpc_alert_event)
 GPIO_INT(USB_C2_BC12_INT_ODL,            PIN(8, 3), GPIO_INT_FALLING, bc12_interrupt)
 GPIO_INT(USB_C2_PPC_INT_ODL,             PIN(7, 0), GPIO_INT_FALLING, ppc_interrupt)
@@ -57,7 +56,7 @@ GPIO(EC_I2C_USB_C1_MIX_SDA,          PIN(E, 3), GPIO_INPUT)
 GPIO(EC_I2C_USB_C1_TCPC_SCL,         PIN(F, 3), GPIO_INPUT)
 GPIO(EC_I2C_USB_C1_TCPC_SDA,         PIN(F, 2), GPIO_INPUT)
 GPIO(EC_KB_BL_EN_L,                  PIN(8, 6), GPIO_OUT_HIGH)
-GPIO(EC_PCHHOT_ODL,                  PIN(7, 4), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(EC_PCHHOT_ODL,                  PIN(7, 4), GPIO_INPUT)
 GPIO(EC_PCH_INT_ODL,                 PIN(B, 0), GPIO_ODR_HIGH)
 GPIO(EC_PCH_PWR_BTN_ODL,             PIN(C, 1), GPIO_ODR_HIGH)
 GPIO(EC_PCH_RSMRST_L,                PIN(A, 6), GPIO_OUT_LOW)
@@ -74,6 +73,7 @@ GPIO(SYS_RST_ODL,                    PIN(C, 5), GPIO_ODR_HIGH)
 GPIO(USB_C0_C2_TCPC_RST_ODL,         PIN(A, 7), GPIO_ODR_LOW)
 GPIO(USB_C1_FRS_EN,                  PIN(9, 4), GPIO_OUT_LOW)
 GPIO(USB_C1_RST_ODL,                 PIN(9, 6), GPIO_ODR_LOW)
+GPIO(USB_C1_RT_INT_ODL,              PIN(A, 0), GPIO_INPUT)
 GPIO(USB_C1_RT_RST_R_ODL,            PIN(0, 2), GPIO_ODR_LOW)
 GPIO(VCCST_PWRGD_OD,                 PIN(A, 4), GPIO_ODR_LOW)
 
@@ -99,7 +99,7 @@ ALTERNATE(PIN_MASK(C, 0x1c), 0, MODULE_PWM, 0)               /* GPIOC4/PWM2, GPI
 
 /* ADC alternate functions */
 ALTERNATE(PIN_MASK(3, 0x10), 0, MODULE_ADC, 0)               /* GPIO34/PS2_DAT2/ADC6 */
-ALTERNATE(PIN_MASK(4, 0x30), 0, MODULE_ADC, 0)               /* GPIO45/ADC0, GPIO44/ADC1 */
+ALTERNATE(PIN_MASK(4, 0x34), 0, MODULE_ADC, 0)               /* GPIO42/ADC3/RI_L, GPIO45/ADC0, GPIO44/ADC1 */
 ALTERNATE(PIN_MASK(E, 0x02), 0, MODULE_ADC, 0)               /* GPIOE1/ADC7 */
 
 /* KB alternate functions */
