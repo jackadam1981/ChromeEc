@@ -16,6 +16,24 @@
       "message": "This is looking good with the FRS CLs, but let me know if there\u0027s a test case I should be doing to confirm I don\u0027t regress the initial reason we had the PPC check in our power supply reset code. ",
       "revId": "f6c1ec1774175a0582197e236ac9113cca3f0cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25bc64fa_372b1b2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-25T18:13:49Z",
+      "side": 1,
+      "message": "Do you mean the \"Don\u0027t need to shutoff VBus if we are not sourcing it\"?\nI think it would be nice to get rid of that since I think it diverges from most other platforms.\nMy memory is we added it on Zork while working around problems with auto-discharge-disconnect.\nNow that we have a better understanding of the NCT3807 perhaps it is no longer needed.\nAnd it looks like brya does not have this check and is using NCT3807.",
+      "parentUuid": "7fb96ad9_55960755",
+      "revId": "f6c1ec1774175a0582197e236ac9113cca3f0cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
