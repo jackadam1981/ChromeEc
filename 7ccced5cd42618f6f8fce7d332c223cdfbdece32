@@ -16,6 +16,52 @@
       "message": "There\u0027s one more in zephyr/shim/src/flash.c, but that does not work for ITE based boards right now cause there\u0027s no corresponding flash driver. Will update it once a driver is available.",
       "revId": "7ccced5cd42618f6f8fce7d332c223cdfbdece32",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc622ba_ad1c890b",
+        "filename": "zephyr/shim/src/adc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-25T17:06:40Z",
+      "side": 1,
+      "message": "No need to check device_is_ready here?",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 35
+      },
+      "revId": "7ccced5cd42618f6f8fce7d332c223cdfbdece32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c1ce8f5_973afb91",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 545,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-25T17:06:40Z",
+      "side": 1,
+      "message": "Should this be device_is_ready?",
+      "range": {
+        "startLine": 545,
+        "startChar": 6,
+        "endLine": 545,
+        "endChar": 14
+      },
+      "revId": "7ccced5cd42618f6f8fce7d332c223cdfbdece32",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
