@@ -16,6 +16,23 @@
       "message": "blast from past.. this alert code looks nice but does noting useful afaict and is actually harmful once you, for instance, enable the TEMP sensor (which I need for cr52..)",
       "revId": "43532bdc20c287b3a41ca34eedcf47477049eb8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7d499dc_7bdc4fed",
+        "filename": "chip/g/alerts.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-25T17:53:27Z",
+      "side": 1,
+      "message": "just noticed this in my to do stack.\n\nIf still needed - please wrap to fit into 80 cols.",
+      "revId": "43532bdc20c287b3a41ca34eedcf47477049eb8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
