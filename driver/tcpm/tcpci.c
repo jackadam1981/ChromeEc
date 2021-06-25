@@ -715,10 +715,29 @@ int tcpci_tcpm_set_rx_enable(int port, int enable)
 #ifdef CONFIG_USB_PD_FRS_TCPC
 int tcpci_tcpc_fast_role_swap_enable(int port, int enable)
 {
-	return tcpc_update8(port,
+	/*
+	 * TCPCI Specification, Revision 2.0, Version 1.2
+	 * Figure 4-14
+	 *
+	 * "Write PC.FastRoleSwapEnable = 1b
+	 *  Write PC.AutoDischargeDisconnect = 0b
+	 *  Write RECEIVE_DETECT.MessageDisableDisconnect = 0b"
+	 *
+	 * MessageDisableDisconnect is default of 0 and unchanged by this driver
+	 * currently.
+	 */
+	RETURN_ERROR(tcpc_update8(port,
 		     TCPC_REG_POWER_CTRL,
 		     TCPC_REG_POWER_CTRL_FRS_ENABLE,
-		     (enable) ? MASK_SET : MASK_CLR);
+		     (enable) ? MASK_SET : MASK_CLR));
+
+	/* Skipping ADD clear - makes NCT3807 CC reads Open? */
+	/*
+	 * Re-enable ADD?  Needed if disabling due to not enough FRS current
+	 * mid-connection, but not needed in other disable situations (ex.
+	 * detach, mid-FR swap).  It certainly complicates matters.
+	 */
+	return EC_SUCCESS;
 }
 #endif
 
