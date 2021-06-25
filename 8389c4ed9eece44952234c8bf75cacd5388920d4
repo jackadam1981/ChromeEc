@@ -141,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e01baaec_320c65a4",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4dcb558e_de79d63a",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f93a7178_2735c372",
@@ -172,6 +190,24 @@
       "side": 1,
       "message": "Done, please check if this aligns to your expectation.",
       "parentUuid": "f93a7178_2735c372",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec96717c_73bef563",
+        "filename": "common/dps.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 1,
+      "message": "I like the new structure, it\u0027s much easier to see where the task waits are happening.  Thanks!",
+      "parentUuid": "f2c22440_6e8c2259",
       "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -246,6 +282,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7189454e_eda5ce3d",
+        "filename": "include/dps.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6147b25_92dc6527",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5e30583_cd2d3716",
@@ -277,6 +331,24 @@
       "side": 1,
       "message": "I\u0027ll update the function comment.\n\nAgreed, it seems pe_snk_transistion_snk would be a better location. I\u0027ll move this function and drop the NEW_CONTRACT flag.",
       "parentUuid": "f5e30583_cd2d3716",
+      "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed46710_47250ab1",
+        "filename": "include/dps.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6f86c32_345227bf",
       "revId": "8389c4ed9eece44952234c8bf75cacd5388920d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

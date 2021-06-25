@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdd16666_2960a18c",
+        "filename": "util/config_allowed.txt",
+        "patchSetId": 13
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 0,
+      "message": "I think CONFIG_USB_PD_DYNAMIC_SRC_CAP is a separate feature that servo_v4 uses.  \n\nIf I understood the zephyr documentation, the new CONFIG_USB_PD_DPS should go into one of the zephyr/Kconfig files.  Looks like there\u0027s a zephyr/Kconfig.usbc that would probably make the most sense",
+      "revId": "959abd2ca1b541ebaf469b706bcd8ebd9c759e51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

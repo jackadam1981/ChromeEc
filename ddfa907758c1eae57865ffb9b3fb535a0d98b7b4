@@ -1,0 +1,129 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17778b8d_9c753518",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 1,
+      "message": "nit: comment what scope the dps_lock applies to (ex. changes to the dps_config, changes to the adaptive_mv, ...)",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9062fce_8c5ac106",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 1,
+      "message": "Why does this look at all the ports?  Isn\u0027t the active charge port the only one that\u0027s relevant?",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c90b6f25_75d96245",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 1,
+      "message": "Same question here.  Are we selecting a new active port through this function?  Or are we sticking with what the charge manager already picked?",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78dd3bc9_cd2af6d9",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 1,
+      "message": "Are these flags ever read and acted upon by the task, or just set/cleared as debut info for the DPS console command?",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94765b88_fd64e76c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 3124,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 1,
+      "message": "Probably leave a comment explaining why it\u0027s necessary to wake the task",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "332d69aa_9b44f227",
+        "filename": "include/dps.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 1,
+      "message": "Could be stored in the source file now that flags aren\u0027t being set outside the task",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66f77956_f2fa1098",
+        "filename": "include/dps.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-25T21:17:16Z",
+      "side": 1,
+      "message": "nit: could be updated to reflect we went with \"dynamic\" naming",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
