@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b8bba5b_7198c0e4",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-25T17:45:07Z",
+      "side": 1,
+      "message": "Should this be bma_read8 or bma422_read8?\n\nAlso, why not pass const struct motion_sensor_t *s and unpack the port and address here?",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ef99d75_892db680",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-25T17:45:07Z",
+      "side": 1,
+      "message": "Why not make this exactly 450us?",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39489727_8dbc87ae",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-25T17:45:07Z",
+      "side": 1,
+      "message": "Update is more common than set. Although I do see bmi_set_reg8 used in accelgyro_bmi_common. Your choice.",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f141916_fbd69f99",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-25T17:45:07Z",
+      "side": 1,
+      "message": "RETURN_ERROR should wrap the actual function call, then you can delete the ret variable in this function.",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cecf86ea_b91ff3f3",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-25T17:45:07Z",
+      "side": 1,
+      "message": "return bmi_write(...",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe2976b_a7c9269c",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-25T17:45:07Z",
+      "side": 1,
+      "message": "Is a mutex lock needed here?",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74f4217a_5819a402",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-25T17:45:07Z",
+      "side": 1,
+      "message": "RETURN_ERROR should wrap the function call.",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8790c6_e6a9fb2f",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-25T17:45:07Z",
+      "side": 1,
+      "message": "Mutex lock?",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7edd8bed_fbc899fe",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-25T17:45:07Z",
+      "side": 1,
+      "message": "Move this unlock up and out of this block and delete the unlock below.",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
