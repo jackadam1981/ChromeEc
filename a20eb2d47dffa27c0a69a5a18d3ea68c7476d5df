@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "09f8f53a_c31802f5",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-25T01:32:45Z",
+      "side": 1,
+      "message": "Sure",
+      "parentUuid": "f1ee544b_8bd2aa3c",
+      "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "545ffcec_d377cabd",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-24T16:08:26Z",
       "side": 1,
       "message": "I think this is supposed to be BMA4_REG_TO_RANGE.",
+      "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f4a9506_7f85dda1",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-25T01:32:45Z",
+      "side": 1,
+      "message": "Cleaning this function. Agree, That variable name was confusing me",
+      "parentUuid": "545ffcec_d377cabd",
       "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c75957a0_a0f5b227",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-25T01:32:45Z",
+      "side": 1,
+      "message": "bmi_common apis should take care of this.",
+      "parentUuid": "3a4ad6ef_d479e191",
+      "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5d00c59_655cf085",
@@ -69,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e169a2bf_99054097",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-25T01:32:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b5d00c59_655cf085",
+      "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afb6b79f_ca7c3b2b",
@@ -82,6 +154,24 @@
       "writtenOn": "2021-06-24T18:51:06Z",
       "side": 1,
       "message": "Could replace with raw_field_update8.",
+      "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d72d0a7_466602c1",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-25T01:32:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "afb6b79f_ca7c3b2b",
       "revId": "a20eb2d47dffa27c0a69a5a18d3ea68c7476d5df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
