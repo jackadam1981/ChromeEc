@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "780f98f0_e8d5f5d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-25T18:45:27Z",
+      "side": 1,
+      "message": "This is just for making ectool in R92 match the change made in EC. ectool will be compatible with old and new EC (with or without this patch).",
+      "revId": "2ae77409debf37c9257b9e50d014f4ba9b714ab0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
