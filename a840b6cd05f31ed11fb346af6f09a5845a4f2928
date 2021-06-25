@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3af0ebbc_07ce52d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-06-25T12:15:16Z",
+      "side": 1,
+      "message": "Zephyr tasks test uses custom tasks list. Because of that it has no hooks task defined. I decided to add ifdef around code returning TASK_ID_HOOKS for k_sys_work_q.thread, to resolve problem with undefined symbol TASK_ID_HOOKS. Additionally, tasks test explicitly set CONFIG_HAS_TASK_HOOKS\u003dn, because this test doesn\u0027t create hooks task. ",
+      "revId": "a840b6cd05f31ed11fb346af6f09a5845a4f2928",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
