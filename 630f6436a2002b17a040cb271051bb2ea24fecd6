@@ -33,6 +33,24 @@
       "message": "TODO are now supposed to include a bug number ?\n\nBy the way, I don\u0027t understand what the TODO means here",
       "revId": "630f6436a2002b17a040cb271051bb2ea24fecd6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de3c92a_9c57781a",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1688,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-25T06:39:41Z",
+      "side": 1,
+      "message": "The TODO has been addressed.",
+      "parentUuid": "117d342e_42a1377b",
+      "revId": "630f6436a2002b17a040cb271051bb2ea24fecd6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
