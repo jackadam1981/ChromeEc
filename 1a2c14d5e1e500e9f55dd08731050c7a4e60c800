@@ -88,6 +88,24 @@
       "parentUuid": "73fb9f67_138d9af3",
       "revId": "1a2c14d5e1e500e9f55dd08731050c7a4e60c800",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d5012e_4d61d8db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-25T18:36:09Z",
+      "side": 1,
+      "message": "yes, I just confirmed, when CS is asserted GPIO9 is enabled as input, when CS is deasserted GPIO9 is not enabled.",
+      "parentUuid": "777dbf6c_cc2b3854",
+      "revId": "1a2c14d5e1e500e9f55dd08731050c7a4e60c800",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
