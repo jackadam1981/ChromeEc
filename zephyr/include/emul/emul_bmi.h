@@ -57,6 +57,7 @@
 #define BMI_EMUL_GYR_Z		5
 
 #define BMI_EMUL_160		1
+#define BMI_EMUL_260		2
 
 /**
  * Acceleration 1g in internal emulator units. It is helpful for using
@@ -117,6 +118,7 @@ struct bmi_emul_type_data {
 };
 
 const struct bmi_emul_type_data *get_bmi160_emul_type_data(void);
+const struct bmi_emul_type_data *get_bmi260_emul_type_data(void);
 
 void bmi_emul_flush_fifo(struct i2c_emul *emul, bool tag_time, bool header);
 
