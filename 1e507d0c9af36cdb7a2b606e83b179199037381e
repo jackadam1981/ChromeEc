@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dfc091c_fb939665",
+        "filename": "common/cbi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-26T17:02:30Z",
+      "side": 1,
+      "message": "Can you check WP here: if (cbi_config.drv-\u003eis_protected()) ...? It\u0027s a common check we want to enforce.",
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc10a53a_10b7c588",
+        "filename": "common/cbi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-26T17:02:30Z",
+      "side": 1,
+      "message": "cbi_invalidate_cache()?",
+      "range": {
+        "startLine": 310,
+        "startChar": 2,
+        "endLine": 310,
+        "endChar": 38
+      },
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f113a61e_d0b543e7",
+        "filename": "common/cbi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-26T17:02:30Z",
+      "side": 1,
+      "message": "Hmm... I think cbi_create wasn\u0027t called intentionally. If we return at line 351, we used to have a wrong CRC. With this change, we would get a good CRC.",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 15
+      },
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2367046_d0566cb5",
+        "filename": "common/cbi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-26T17:02:30Z",
+      "side": 1,
+      "message": "nit: We may want cbi_get_cache_status(). That\u0027ll allow us to check the cache status in a unit test.",
+      "range": {
+        "startLine": 417,
+        "startChar": 5,
+        "endLine": 417,
+        "endChar": 17
+      },
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "464faf10_c6d8623e",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-26T17:02:30Z",
+      "side": 1,
+      "message": "nit: if (IS_ENABLED(CONFIG_BYPASS_CBI_EEPROM_WP_CHECK)) {...",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35641d50_1d702c98",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-26T17:02:30Z",
+      "side": 1,
+      "message": "nit: I believe an enum would increase readability.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
