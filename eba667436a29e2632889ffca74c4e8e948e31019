@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18bebbe4_90e7ee64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-26T05:49:38Z",
+      "side": 1,
+      "message": "I\u0027ve almost gotten the coreboot SDK to build a file from the CHRE but I\u0027m getting an error which I\u0027m wondering if it could be from the SDK...\n\nIn file included from /mnt/host/source/src/third_party/zephyr/main/v2.6/include/sys/cbprintf_internal.h:55,\nfrom /mnt/host/source/src/third_party/zephyr/main/v2.6/include/sys/cbprintf.h:38,\nfrom /mnt/host/source/src/third_party/zephyr/main/v2.6/include/logging/log_msg2.h:11,\nfrom /mnt/host/source/src/third_party/zephyr/main/v2.6/include/logging/log_msg.h:12,\nfrom /mnt/host/source/src/third_party/zephyr/main/v2.6/include/logging/log_core.h:9,\nfrom /mnt/host/source/src/third_party/zephyr/main/v2.6/include/logging/log.h:11,\nfrom /mnt/host/source/src/platform/ec/zephyr/subsys/chre/include/chre/target_platform/log.h:9,\nfrom /mnt/host/source/src/third_party/chre/platform/include/chre/platform/log.h:35,\nfrom /mnt/host/source/src/third_party/chre/platform/include/chre/platform/assert.h:20,\nfrom /mnt/host/source/src/third_party/chre/core/sensor_type.cc:19:\n/mnt/host/source/src/third_party/zephyr/main/v2.6/include/sys/cbprintf_cxx.h:17:19: error: conflicting declaration of C function \u0027int z_cbprintf_cxx_is_pchar(const char*)\u0027\n\nIt basically complains about the function overloading of z_cbprintf_cxx_is_pchar(). I looked through the include stack above and made sure that none of the includes are contained inside of an `extern \"C\"` block that would cause it to link as C code.\n\nI\u0027ve also tried installing the Zephyr SDK from https://docs.zephyrproject.org/latest/getting_started/installation_linux.html (Using the stable 0.12.4 release) and found that this CL does build successfully. So I believe that the error is in the coreboot_sdk (or possibly that there\u0027s a flag I\u0027m not aware of that needs to be passed).",
+      "revId": "eba667436a29e2632889ffca74c4e8e948e31019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
