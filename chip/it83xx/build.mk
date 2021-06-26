@@ -33,6 +33,7 @@ chip-$(CONFIG_HOSTCMD_ESPI)+=espi.o
 chip-$(CONFIG_SPI_CONTROLLER)+=spi_master.o
 chip-$(CONFIG_SPI)+=spi.o
 chip-$(CONFIG_PECI)+=peci.o
+chip-$(CONFIG_USB_PD_TCPM_ITE_ON_CHIP)+=pd_intc.o
 ifndef CONFIG_KEYBOARD_NOT_RAW
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
 endif

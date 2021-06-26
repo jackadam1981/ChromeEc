@@ -51,6 +51,8 @@
 #define IT83XX_IRQ_USBPD1	IT8XXX2_IRQ_USBPD1
 #define IT83XX_IRQ_USBPD2	IT8XXX2_IRQ_USBPD2
 #define USB_VID_ITE		0x048d
+
+extern void chip_pd_irq(enum usbpd_port port);
 #endif
 
 bool rx_en[IT83XX_USBPD_PHY_PORT_COUNT];
@@ -827,6 +829,10 @@ static void it8xxx2_init(enum usbpd_port port, int role)
 	*usbpd_ctrl_regs[port].cc1 = cc_config;
 	*usbpd_ctrl_regs[port].cc2 = cc_config;
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
+#ifdef CONFIG_ZEPHYR
+	IRQ_CONNECT(IT8XXX2_IRQ_USBPD1, 0, chip_pd_irq, USBPD_PORT_B, 0);
+	IRQ_CONNECT(IT8XXX2_IRQ_USBPD0, 0, chip_pd_irq, USBPD_PORT_A, 0);
+#endif
 	task_enable_irq(usbpd_ctrl_regs[port].irq);
 	USBPD_START(port);
 	/*
