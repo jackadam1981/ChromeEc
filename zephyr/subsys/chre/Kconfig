@@ -1,0 +1,52 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menuconfig CHRE
+	bool "Context Hub Runtime Environment"
+	select CPLUSPLUS
+
+if CHRE
+
+config CHRE_MESSAGE_TO_HOST_MAX_SIZE
+	int "Maximum message size to send to the host (bytes)"
+	default 4000 if SOC_POSIX
+	default 128
+	help
+	  Defines the maximum message size that can be sent to the host.
+
+choice CHRE_MINIMUM_LOG_LEVEL
+	prompt "Select the default minimum log level"
+	default CHRE_MINIMUM_LOG_LEVEL_WARN
+	help
+	  The lowers log level that should print. Any logs with higher levels
+	  than this one will be removed at compile time.
+
+config CHRE_MINIMUM_LOG_LEVEL_MUTE
+	bool "Mute all CHRE logging"
+
+config CHRE_MINIMUM_LOG_LEVEL_ERROR
+	bool "Log CHRE errors"
+
+config CHRE_MINIMUM_LOG_LEVEL_WARN
+	bool "Log CHRE warnings and errors"
+
+config CHRE_MINIMUM_LOG_LEVEL_INFO
+	bool "Log CHRE info, warnings, and errors"
+
+config CHRE_MINIMUM_LOG_LEVEL_DEBUG
+	bool "Log CHRE debug, info, warnings, and errors"
+
+config CHRE_MINIMUM_LOG_LEVEL_VERBOSE
+	bool "Enable all CHRE logging"
+
+endchoice # CHRE_MINIMUM_LOG_LEVEL
+
+config CHRE_ASSERTIONS
+	bool "Enable CHRE assertions"
+	default false
+	help
+	  When enabled, CHRE will include various assertions which will trigger
+	  calls to chreAbort if resolve to false.
+
+endif # CHRE
