@@ -754,6 +754,89 @@ void switch_plug_out_type(enum usbpd_port port)
 	it8xxx2_tcpm_switch_plug_out_type(port);
 }
 
+#ifdef CONFIG_ZEPHYR
+#include "tcpm/tcpm.h"
+#define IT83XX_INTC_PLUG_IN_OUT_SUPPORT
+static const int __pd_port[2] = {0, 1};
+static void chip_pd_irq(const int *arg)
+{
+	int port = arg[0];
+
+	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
+
+	/* check status */
+	if (IS_ENABLED(IT83XX_INTC_FAST_SWAP_SUPPORT) &&
+		IS_ENABLED(CONFIG_USB_PD_FRS_TCPC) &&
+		IS_ENABLED(CONFIG_USB_PD_REV30)) {
+		/*
+		 * FRS detection must handle first, because we need to short
+		 * the interrupt -> board_frs_handler latency-critical time.
+		 */
+		if (USBPD_IS_FAST_SWAP_DETECT(port)) {
+			/* clear detect FRS signal (cc to GND) status */
+			USBPD_CLEAR_FRS_DETECT_STATUS(port);
+			if (board_frs_handler)
+				board_frs_handler(port);
+			/* inform TCPMv2 to change state */
+			pd_got_frs_signal(port);
+		}
+	}
+
+	if (USBPD_IS_HARD_RESET_DETECT(port)) {
+		/* clear interrupt */
+		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_HARD_RESET_DETECT;
+		USBPD_SW_RESET(port);
+		task_set_event(PD_PORT_TO_TASK_ID(port),
+			       PD_EVENT_RX_HARD_RESET);
+	}
+
+	if (USBPD_IS_RX_DONE(port)) {
+		tcpm_enqueue_message(port);
+		/* clear RX done interrupt */
+		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_RX_DONE;
+	}
+
+	if (USBPD_IS_TX_DONE(port)) {
+#ifdef CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2
+		it8xxx2_clear_tx_error_status(port);
+		/* check TX status, clear by TX_DONE status too */
+		if (USBPD_IS_TX_ERR(port))
+			it8xxx2_get_tx_error_status(port);
+#endif
+		/* clear TX done interrupt */
+		IT83XX_USBPD_ISR(port) = USBPD_REG_MASK_MSG_TX_DONE;
+		task_set_event(PD_PORT_TO_TASK_ID(port),
+			       TASK_EVENT_PHY_TX_DONE);
+	}
+
+	if (IS_ENABLED(IT83XX_INTC_PLUG_IN_OUT_SUPPORT)) {
+		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
+			if (USBPD_IS_PLUG_IN(port))
+				/*
+				 * When tcpc detect type-c plug in:
+				 * 1)If we are sink, disable detect interrupt,
+				 * messages on cc line won't trigger interrupt.
+				 * 2)If we are source, then set plug out
+				 * detection.
+				 */
+				switch_plug_out_type(port);
+			else
+				/*
+				 * When tcpc detect type-c plug out:
+				 * switch to detect plug in.
+				 */
+				IT83XX_USBPD_TCDCR(port) &=
+					~USBPD_REG_PLUG_OUT_SELECT;
+
+			/* clear type-c device plug in/out detect interrupt */
+			IT83XX_USBPD_TCDCR(port) |=
+				USBPD_REG_PLUG_IN_OUT_DETECT_STAT;
+			task_set_event(PD_PORT_TO_TASK_ID(port), PD_EVENT_CC);
+		}
+	}
+}
+#endif
+
 static void it8xxx2_init(enum usbpd_port port, int role)
 {
 	uint8_t cc_config = (port == USBPD_PORT_C ?
@@ -827,6 +910,10 @@ static void it8xxx2_init(enum usbpd_port port, int role)
 	*usbpd_ctrl_regs[port].cc1 = cc_config;
 	*usbpd_ctrl_regs[port].cc2 = cc_config;
 	task_clear_pending_irq(usbpd_ctrl_regs[port].irq);
+#ifdef CONFIG_ZEPHYR
+	IRQ_CONNECT(IT8XXX2_IRQ_USBPD1, 0, chip_pd_irq, &__pd_port[1], 0);
+	IRQ_CONNECT(IT8XXX2_IRQ_USBPD0, 0, chip_pd_irq, &__pd_port[0], 0);
+#endif
 	task_enable_irq(usbpd_ctrl_regs[port].irq);
 	USBPD_START(port);
 	/*
