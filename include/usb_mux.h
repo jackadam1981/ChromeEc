@@ -250,6 +250,7 @@ void usb_mux_flip(int port);
  */
 void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq);
 
+<<<<<<< HEAD
 /**
  * Port information about retimer firmware update support.
  *
@@ -279,4 +280,6 @@ bool usb_mux_get_disconnect_latch_flag(int port);
  */
 void usb_mux_set_disconnect_latch_flag(int port, bool enable);
 
+=======
+>>>>>>> parent of affbf150d... usb_mux: Send missed disconnect mode in S3/S0ix
 #endif
