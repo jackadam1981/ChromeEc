@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e1226f2_4b4e4843",
+        "filename": "common/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T04:59:28Z",
+      "side": 1,
+      "message": "Got it. Thanks for recommending them. More the merrier\n\nRealizing that this is for the driver and not for the variant, changing it to BMA4XX",
+      "parentUuid": "ede12918_5fcf4dae",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 24,
+        "endChar": 28
+      },
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4b8bba5b_7198c0e4",
         "filename": "driver/accel_bma4xx.c",
         "patchSetId": 6
