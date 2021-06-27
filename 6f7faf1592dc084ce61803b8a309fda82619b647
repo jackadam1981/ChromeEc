@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5c35745_52951612",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T02:55:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4b8bba5b_7198c0e4",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ef99d75_892db680",
@@ -54,6 +72,24 @@
       "writtenOn": "2021-06-25T17:45:07Z",
       "side": 1,
       "message": "Why not make this exactly 450us?",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "651ae342_84c4f436",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T02:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ef99d75_892db680",
       "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -75,6 +111,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d26cfbf8_7043d289",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T02:55:58Z",
+      "side": 1,
+      "message": "Set is used for this in other drivers as well. IMHO let\u0027s keep it.",
+      "parentUuid": "39489727_8dbc87ae",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f141916_fbd69f99",
@@ -88,6 +142,24 @@
       "writtenOn": "2021-06-25T17:45:07Z",
       "side": 1,
       "message": "RETURN_ERROR should wrap the actual function call, then you can delete the ret variable in this function.",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67224031_4d503138",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T02:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f141916_fbd69f99",
       "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -109,6 +181,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f39f695_4cf11d49",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T02:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cecf86ea_b91ff3f3",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fe2976b_a7c9269c",
@@ -122,6 +212,24 @@
       "writtenOn": "2021-06-25T17:45:07Z",
       "side": 1,
       "message": "Is a mutex lock needed here?",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26fc8154_408d553e",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T02:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4fe2976b_a7c9269c",
       "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -143,6 +251,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32ca00da_dfbe4273",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T02:55:58Z",
+      "side": 1,
+      "message": "Using if(ret) since mutex unlock is needed here.",
+      "parentUuid": "74f4217a_5819a402",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e8790c6_e6a9fb2f",
@@ -156,6 +282,24 @@
       "writtenOn": "2021-06-25T17:45:07Z",
       "side": 1,
       "message": "Mutex lock?",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd641e4c_037cb2e1",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T02:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e8790c6_e6a9fb2f",
       "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -177,6 +321,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07b95984_dcb67811",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T02:55:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7edd8bed_fbc899fe",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76fc7b53_32c15e14",
@@ -194,6 +356,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1535e0e_00ec1716",
+        "filename": "driver/accel_bma4xx.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T02:55:58Z",
+      "side": 1,
+      "message": "Agree. Fixed.",
+      "parentUuid": "76fc7b53_32c15e14",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5753ec09_705a1bc7",
@@ -207,6 +387,24 @@
       "writtenOn": "2021-06-25T20:27:57Z",
       "side": 1,
       "message": "Not sure what this is?",
+      "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86908e65_6348536c",
+        "filename": "driver/accel_bma4xx.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-06-27T02:55:58Z",
+      "side": 1,
+      "message": "This is from Bosch github for Auxiliary sensor selection macro.\n\nThe header is matching their github, lets keep it.",
+      "parentUuid": "5753ec09_705a1bc7",
       "revId": "6f7faf1592dc084ce61803b8a309fda82619b647",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
