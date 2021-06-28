@@ -288,6 +288,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1603f477_f8f3a9ca",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-28T22:28:39Z",
+      "side": 1,
+      "message": "The herobrine_npcx7 hardware is actually a Trogdor board (Trogdor rev2) but swaps the SoC-related part to a different SoC (partitioning the board). Trogdor vs Lazor is a reference design vs an OEM device. So they are very similar. We usually just carry everything over from a reference design to an OEM device, or from one OEM device to another OEM device.",
+      "parentUuid": "9a7d3b59_83097580",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 36
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12fe416c_38e42e62",
         "filename": "zephyr/projects/herobrine/herobrine_npcx7/src/i2c.c",
         "patchSetId": 4
