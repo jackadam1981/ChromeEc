@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31c28027_fc238a9c",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T18:39:39Z",
+      "side": 1,
+      "message": "https://docs.zephyrproject.org/latest/reference/logging/index.html?highlight\u003dlogging\n\nSee \"Global Options\"",
+      "parentUuid": "1097948a_8cd700b2",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 14
+      },
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "301fa09f_2d8a6669",
         "filename": "zephyr/emul/emul_pi3usb9201.c",
         "patchSetId": 1
