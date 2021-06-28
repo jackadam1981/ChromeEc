@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbf8aa2a_aaad0bfb",
+        "filename": "board/primus/led.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-28T20:38:30Z",
+      "side": 1,
+      "message": "If I understand correctly this number depends on LED_BAT_S3_TICK_MS, like this:\n#define TICKS_STEP2_DIMMER    (1000 / LED_BAT_S3_TICK_MS)\nalso\n#define TICKS_STEP3_OFF    TICKS_STEP2_DIMMER + (1000 / LED_BAT_S3_TICK_MS)\nor just \n#define TICKS_STEP3_OFF   2 * TICKS_STEP2_DIMMER",
+      "revId": "0ee15a192f33b4824425a8a4322425f818857e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a3935e9_62fafe93",
+        "filename": "board/primus/led.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-28T20:38:30Z",
+      "side": 1,
+      "message": "I meant that those variables are not needed anymore. \"Defined\" constants could be used instead (lines 114, 116)",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 104,
+        "endChar": 50
+      },
+      "revId": "0ee15a192f33b4824425a8a4322425f818857e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e539cbbb_5530622b",
+        "filename": "board/primus/led.c",
+        "patchSetId": 26
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-28T20:38:30Z",
+      "side": 1,
+      "message": "nit: new line is not necessary here",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 8
+      },
+      "revId": "0ee15a192f33b4824425a8a4322425f818857e10",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
