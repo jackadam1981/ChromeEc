@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85b05fe0_e44ce678",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-28T21:43:23Z",
+      "side": 1,
+      "message": "Sorry to mention. The patchset 1 is a simple copy of trogdor/lazor (no modification). You can use the patchset 1 to compare the diff between the Lazor and the Trogdor COB. The diff is just tens of lines.",
+      "parentUuid": "afb5c286_66bf82e8",
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6ab7ed4_8abc2164",
@@ -87,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6312183a_851aed24",
+        "filename": "zephyr/projects/herobrine/boards/arm/herobrine/herobrine.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-28T21:43:23Z",
+      "side": 1,
+      "message": "Yes, will do it later, i.e. crrev.com/c/2993219",
+      "parentUuid": "10a0c1a8_596db845",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "023d87fe_120634ea",
@@ -123,6 +165,30 @@
       "writtenOn": "2021-06-28T21:30:23Z",
       "side": 1,
       "message": "These should not exist (herobrine, by design, will not have a platform/ec board or baseboard)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4dd9b37_bb60d5af",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-28T21:43:23Z",
+      "side": 1,
+      "message": "Will do it later. As the bringup will have both EC-OS and Zephyr images, the EC-OS code will exist for a while. We can decouple it later, like after the hardware is stable.",
+      "parentUuid": "7a510cbb_d1bf5d57",
       "range": {
         "startLine": 13,
         "startChar": 0,
