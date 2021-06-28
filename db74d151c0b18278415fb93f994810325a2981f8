@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f106769_0f2ec050",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-28T19:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a680df56_bd87da0e",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 27
+      },
+      "revId": "db74d151c0b18278415fb93f994810325a2981f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7a6165d9_d9df15a8",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-06-24T21:51:03Z",
       "side": 1,
       "message": "Move it to the CL:2985820. This CL is for lazor only.",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 0
+      },
+      "revId": "db74d151c0b18278415fb93f994810325a2981f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d6ecc4_a032bad4",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-28T19:21:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a6165d9_d9df15a8",
       "range": {
         "startLine": 444,
         "startChar": 0,
