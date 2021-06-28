@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "ec_commands.h"
+#include "gpio.h"
 #include "i2c.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"

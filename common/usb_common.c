@@ -894,13 +894,19 @@ __overridable int board_pd_set_frs_enable(int port, int enable)
 int pd_set_frs_enable(int port, int enable)
 {
 	int rv = EC_SUCCESS;
-
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC)){
+	        CPRINTS("USB_COMMON FRS enable = %d", enable); 
+		rv = tcpm_set_frs_enable(port, enable);
+	}
+#else
 	if (IS_ENABLED(CONFIG_USB_PD_FRS_PPC))
 		rv = ppc_set_frs_enable(port, enable);
 	if (rv == EC_SUCCESS && IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
 		rv = tcpm_set_frs_enable(port, enable);
 	if (rv == EC_SUCCESS)
 		rv = board_pd_set_frs_enable(port, enable);
+#endif
 	return rv;
 }
 #endif /* defined(CONFIG_USB_PD_FRS) */

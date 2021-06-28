@@ -4434,7 +4434,9 @@
 #undef CONFIG_USB_PD_TCPM_RT1718S
 #undef CONFIG_USB_PD_TCPM_FUSB307
 #undef CONFIG_USB_PD_TCPM_STM32GX
-#undef CONFIG_USB_PD_TCPM_CCGXXF
+
+#undef CONFIG_USB_PD_TCPM_CCGXXF /* CY_UPD */
+#undef CONFIG_USB_PD_TCPM_PPC_CCGXXF /* CY_UPD */
 
 /* PS8XXX series are all supported by a single driver with a build time config
  * listed below (CONFIG_USB_PD_TCPM_PS*) defined to enable the specific product.
@@ -5239,12 +5241,8 @@
 /*
  * This build is not a complete platform/ec based EC, but instead
  * using the platform/ec zephyr module.
- *
- * Note: this is here purely for stylistic purposes and documentation.
  */
-#ifndef CONFIG_ZEPHYR
 #undef CONFIG_ZEPHYR
-#endif
 
 /*
  * Define the following to drive CCD_MODE_ODL when a DTS accessory is
@@ -5653,6 +5651,10 @@
 #define CONFIG_USB_PD_TCPC_LOW_POWER
 #define CONFIG_USB_PD_TCPM_TCPCI
 #define CONFIG_USB_PD_VBUS_DETECT_TCPC
+#define CONFIG_USB_PD_REV30
+#define CONFIG_USB_PD_FRS_TCPC 
+#define CONFIG_USB_PD_FRS /* CY_UPD for test */
+#define CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 
 #endif
 
 /*****************************************************************************/

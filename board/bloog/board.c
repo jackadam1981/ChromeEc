@@ -59,7 +59,7 @@ static void ppc_interrupt(enum gpio_signal signal)
 		break;
 
 	case GPIO_USB_PD_C1_INT_ODL:
-		nx20p348x_interrupt(1);
+	/* CY_UPD: ppc int pin NC at CY board. nx20p348x_interrupt(1);*/
 		break;
 
 	default:
