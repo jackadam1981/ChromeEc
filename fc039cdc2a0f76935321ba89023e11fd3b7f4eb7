@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c2c8dba_a126f751",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T17:49:34Z",
+      "side": 1,
+      "message": "+1, and this should go upstream.",
+      "parentUuid": "c37ebd93_bebb7a33",
+      "range": {
+        "startLine": 121,
+        "startChar": 11,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a39c7442_5651f225",
         "filename": "zephyr/emul/emul_pi3usb9201.c",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-15T07:57:58Z",
       "side": 1,
       "message": "How do I run the test and see the LOG_DBG output i2c_dump_msgs produces?",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 14
+      },
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a1b785e_43c70c85",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T17:49:34Z",
+      "side": 1,
+      "message": "You need to add CONFIG_LOG\u003dy to prj.conf.",
+      "parentUuid": "a39c7442_5651f225",
       "range": {
         "startLine": 139,
         "startChar": 1,

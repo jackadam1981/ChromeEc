@@ -3,6 +3,138 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3cc41db_819001cc",
+        "filename": "zephyr/dts/bindings/emul/zephyr,pi3usb9201.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T17:49:34Z",
+      "side": 1,
+      "message": "Should this include \"emul\" in the name?  I see the upstream drivers use \"zephyr,adc-emul\", \"zephyr,-gpio-emul\", etc.",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cdefe77_0ac8d374",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T17:49:34Z",
+      "side": 1,
+      "message": "Expand this help to either describe what PI3USB9201 (BC1.2 charging-type detector) or some details about the capabilities of the emulator.",
+      "range": {
+        "startLine": 13,
+        "startChar": 67,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "077d8ff0_b82b7b5c",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T17:49:34Z",
+      "side": 1,
+      "message": "uses",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 50
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db061964_81b93439",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T17:49:34Z",
+      "side": 1,
+      "message": "Can you open a bug to move this emulator upstream once the real driver driver is moved upstream?",
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6f56cd3_af9d0101",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T17:49:34Z",
+      "side": 1,
+      "message": "Create a macro for this check. EMUL_REG_IS_VALID() or something similar.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 38
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e7d79b2_bcb8b1c3",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T17:49:34Z",
+      "side": 1,
+      "message": "Can this be combined with pi3usb9201_emul_set_reg()?  Seems redundant having two routines for both read and writes to the emulated register set.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 1
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc6cb2e1_9e0f23a2",
         "filename": "zephyr/test/drivers/src/bc12.c",
         "patchSetId": 2
@@ -44,6 +176,75 @@
         "startChar": 13,
         "endLine": 32,
         "endChar": 20
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8466c48a_9f3d570a",
+        "filename": "zephyr/test/drivers/src/bc12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T17:49:34Z",
+      "side": 1,
+      "message": "used on USB-C and USB-A ports",
+      "range": {
+        "startLine": 80,
+        "startChar": 63,
+        "endLine": 81,
+        "endChar": 14
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "878a1d97_39356bb7",
+        "filename": "zephyr/test/drivers/src/bc12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T17:49:34Z",
+      "side": 1,
+      "message": "Suggest adding subroutines to separate host mode and client mode checks.",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "629e5a69_0d96e30d",
+        "filename": "zephyr/test/drivers/src/bc12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T17:49:34Z",
+      "side": 1,
+      "message": "Duplicate this for client mode DCP and SDP cases.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 0
       },
       "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
