@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7307bb9f_fc4a59a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-06-28T07:46:44Z",
+      "side": 1,
+      "message": "If you want, but it\u0027s not obvious to me why this check shouldn\u0027t be at the beginning of `_process_payload_event()` (which is using the uninitialized byte regardless of the size)\n",
+      "revId": "a47cb61f77ec4e8a03dc0c8aa595515922a2f916",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
