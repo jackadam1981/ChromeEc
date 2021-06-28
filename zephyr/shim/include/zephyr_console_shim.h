@@ -59,8 +59,9 @@ int zshim_run_ec_console_command(int (*handler)(int argc, char **argv),
  * console_buf_notify_char() - Notify the console host command buffer
  * of a new character on the console.
  *
- * @c:			The character that appeared on the console.
+ * @s:			The pointer to the string.
+ * @len:		The size of the string.
  */
-void console_buf_notify_char(char c);
+void console_buf_notify_chars(const char *s, size_t len);
 
 #endif  /* __CROS_EC_ZEPHYR_CONSOLE_SHIM_H */
