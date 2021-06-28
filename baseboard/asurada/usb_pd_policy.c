@@ -154,6 +154,10 @@ int pd_snk_is_vbus_provided(int port)
 	static int vbus_prev[CONFIG_USB_PD_PORT_MAX_COUNT];
 	int vbus;
 
+	if (IS_ENABLED(CONFIG_ZEPHYR) &&
+	    IS_ENABLED(CONFIG_PLATFORM_EC_USB_PD_VBUS_DETECT_PPC))
+		return ppc_is_vbus_present(port);
+
 	if ((IS_ENABLED(BOARD_HAYATO) && board_get_version() < 4) ||
 	    (IS_ENABLED(BOARD_SPHERION) && board_get_version() < 1))
 		return ppc_is_vbus_present(port);
