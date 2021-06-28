@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6ab7ed4_8abc2164",
+        "filename": "zephyr/projects/herobrine/boards/arm/herobrine/Kconfig.board",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-28T21:30:23Z",
+      "side": 1,
+      "message": "BOARD_HEROBRINE_NPCX",
+      "range": {
+        "startLine": 10,
+        "startChar": 7,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afb933ae_2b028c4f",
+        "filename": "zephyr/projects/herobrine/boards/arm/herobrine/Kconfig.defconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-28T21:30:23Z",
+      "side": 1,
+      "message": "herobrine_npcx",
+      "range": {
+        "startLine": 8,
+        "startChar": 10,
+        "endLine": 8,
+        "endChar": 19
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10a0c1a8_596db845",
+        "filename": "zephyr/projects/herobrine/boards/arm/herobrine/herobrine.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-28T21:30:23Z",
+      "side": 1,
+      "message": "will we have a separate Zephyr board_dir for each EC chip variant?\n\nI.e., boards/arm/herobrine_npcx, boards/riscv/herobrine_ite, etc?\n\nIf so, we should account that here.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "023d87fe_120634ea",
+        "filename": "zephyr/projects/herobrine/boards/arm/herobrine/herobrine.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-28T21:30:23Z",
+      "side": 1,
+      "message": "Herobrine NPCX",
+      "range": {
+        "startLine": 14,
+        "startChar": 26,
+        "endLine": 14,
+        "endChar": 36
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a510cbb_d1bf5d57",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-28T21:30:23Z",
+      "side": 1,
+      "message": "These should not exist (herobrine, by design, will not have a platform/ec board or baseboard)",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 44
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ccd9e5d3_ca7b4d92",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-28T21:30:23Z",
+      "side": 1,
+      "message": "Any board support files should be located in this directory, instead of a platform/ec board/basewboard directory",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 0
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09858f51_383c1341",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/motionsense.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-28T21:30:23Z",
+      "side": 1,
+      "message": "sensors should be a separate CL ... keep the initial CL minimal",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 3
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a7d3b59_83097580",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-28T21:30:23Z",
+      "side": 1,
+      "message": "All of this needs moved to another CL.\n\nThe initial CL needs to be basic UART function only, no GPIO, features etc.\n\nThe documented bringup procedure is here: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_poc_device_bringup.md#initial-bringup\n\n\n(of course, this document is geared towards a PoC device... we will need to modify slightly)",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 36
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12fe416c_38e42e62",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/src/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-28T21:30:23Z",
+      "side": 1,
+      "message": "i2c needs moved to another CL",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 1
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27ca2ecb_50e25601",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/src/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-28T21:30:23Z",
+      "side": 1,
+      "message": "lid angle needs split to another CL",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cdc05e6_a4934113",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/zmake.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-28T21:30:23Z",
+      "side": 1,
+      "message": "herobrine_npcx",
+      "range": {
+        "startLine": 5,
+        "startChar": 7,
+        "endLine": 5,
+        "endChar": 16
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
