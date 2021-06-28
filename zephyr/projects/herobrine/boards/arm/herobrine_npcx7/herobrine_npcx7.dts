@@ -11,7 +11,7 @@
 #include <nuvoton/npcx7m7fc.dtsi>
 
 / {
-	model = "Google Herobrine Baseboard";
+	model = "Google Herobrine NPCX7 Baseboard";
 
 	aliases {
 		i2c-0 = &i2c0_0;
