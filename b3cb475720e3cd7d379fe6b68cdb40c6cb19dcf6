@@ -16,6 +16,24 @@
       "message": "Hi Sue, Could you help run suspend_stress_test to verify this CL on Cozmo? Thanks.",
       "revId": "b3cb475720e3cd7d379fe6b68cdb40c6cb19dcf6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cce8ca94_62e3d876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-06-28T02:21:36Z",
+      "side": 1,
+      "message": "Yes. I ran \"suspend_stress_test -c 9000\" and pass the test.",
+      "parentUuid": "baf7f5e9_a91030fa",
+      "revId": "b3cb475720e3cd7d379fe6b68cdb40c6cb19dcf6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
