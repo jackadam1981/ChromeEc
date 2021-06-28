@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2495a27_052dc53c",
+        "filename": "common/cbi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-28T22:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dfc091c_fb939665",
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc10a53a_10b7c588",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "215c3440_d0a671d7",
+        "filename": "common/cbi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-28T22:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc10a53a_10b7c588",
+      "range": {
+        "startLine": 310,
+        "startChar": 2,
+        "endLine": 310,
+        "endChar": 38
+      },
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f113a61e_d0b543e7",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-06-26T17:02:30Z",
       "side": 1,
       "message": "Hmm... I think cbi_create wasn\u0027t called intentionally. If we return at line 351, we used to have a wrong CRC. With this change, we would get a good CRC.",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 15
+      },
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35f2e04e_34e79795",
+        "filename": "common/cbi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-28T22:30:47Z",
+      "side": 1,
+      "message": "I see. Let\u0027s roll back to the original version.",
+      "parentUuid": "f113a61e_d0b543e7",
       "range": {
         "startLine": 345,
         "startChar": 2,
@@ -106,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ef5c2fa_828b7082",
+        "filename": "common/cbi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-28T22:30:47Z",
+      "side": 1,
+      "message": "I assume cache status has been implicitly checked when calling cbi_get_board_info() in the current test/cbi.c?\n\nI guess we can implement cbi_get_cache_status() whenever we have a unit test that requires it.\nWDYT?",
+      "parentUuid": "e2367046_d0566cb5",
+      "range": {
+        "startLine": 417,
+        "startChar": 5,
+        "endLine": 417,
+        "endChar": 17
+      },
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "464faf10_c6d8623e",
         "filename": "common/cbi_eeprom.c",
         "patchSetId": 9
@@ -117,6 +207,30 @@
       "writtenOn": "2021-06-26T17:02:30Z",
       "side": 1,
       "message": "nit: if (IS_ENABLED(CONFIG_BYPASS_CBI_EEPROM_WP_CHECK)) {...",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 40
+      },
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e2f118_e23a2088",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-28T22:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "464faf10_c6d8623e",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -140,6 +254,30 @@
       "writtenOn": "2021-06-26T17:02:30Z",
       "side": 1,
       "message": "nit: I believe an enum would increase readability.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6627aec8_a250df0c",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-06-28T22:30:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35641d50_1d702c98",
       "range": {
         "startLine": 13,
         "startChar": 0,
