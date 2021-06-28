@@ -15,7 +15,11 @@
 #ifndef CC_DEFAULT
 #define CC_DEFAULT CC_ALL
 #endif
+#ifndef CONFIG_ZEPHYR
 static uint32_t channel_mask = CC_DEFAULT;
+#else
+uint32_t channel_mask = CC_DEFAULT;
+#endif
 static uint32_t channel_mask_saved = CC_DEFAULT;
 
 /*
@@ -65,6 +69,7 @@ void console_channel_disable(const char *name)
 }
 #endif /* CONFIG_CONSOLE_CHANNEL */
 
+#ifndef CONFIG_ZEPHYR
 /*****************************************************************************/
 /* Channel-based console output */
 
@@ -140,6 +145,7 @@ void cflush(void)
 	uart_flush_output();
 }
 
+#endif/* CONFIG_ZEPHYR */
 /*****************************************************************************/
 /* Console commands */
 
