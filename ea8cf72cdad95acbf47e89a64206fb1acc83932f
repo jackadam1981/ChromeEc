@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e47768_c0277ead",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-28T18:38:55Z",
+      "side": 1,
+      "message": "I split this CL into 2: one to deprecate the AP_RST_REQ (crrev.com/c/2993210), which needs to be merged soon, for Herobrine, which doesn\u0027t have AP_RST_REQ.And and this one to deprecate the long warm reset.",
+      "revId": "ea8cf72cdad95acbf47e89a64206fb1acc83932f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
