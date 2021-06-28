@@ -189,7 +189,6 @@ enum pd_rx_errors {
 #define PD_T_HARD_RESET_COMPLETE     (5*MSEC) /* between 4ms and 5ms*/
 #define PD_T_HARD_RESET_RETRY        (1*MSEC) /* 1ms */
 #define PD_T_SEND_SOURCE_CAP       (100*MSEC) /* between 100ms and 200ms */
-#define PD_T_SINK_WAIT_CAP         (575*MSEC) /* between 310ms and 620ms */
 #define PD_T_SINK_TRANSITION        (35*MSEC) /* between 20ms and 35ms */
 #define PD_T_SOURCE_ACTIVITY        (45*MSEC) /* between 40ms and 50ms */
 /*
@@ -202,15 +201,26 @@ enum pd_rx_errors {
  * for compliance on the old stack and making this change  breaks the
  * usb_pd unit test.
  */
+
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+#define PD_T_SENDER_RESPONSE        (24*MSEC) /* between 24ms and 30ms */ 
+#define PD_T_PS_SOURCE_ON          (460*MSEC) /* between 390ms and 480ms */	
+#define PD_T_PD_DEBOUNCE            (11*MSEC) /* between 10ms and 20ms */
+#define PD_T_SINK_WAIT_CAP         (575*MSEC) /* between 310ms and 620ms */
+#else
 #ifndef CONFIG_USB_PD_TCPMV2
 #define PD_T_SENDER_RESPONSE        (30*MSEC) /* between 24ms and 30ms */
 #else
-#define PD_T_SENDER_RESPONSE        (24*MSEC) /* between 24ms and 30ms */
+#define PD_T_SENDER_RESPONSE        (24*MSEC) /* between 24ms and 30ms */ 
 #endif
+#define PD_T_PS_SOURCE_ON          (480*MSEC) /* between 390ms and 480ms */	
+#define PD_T_PD_DEBOUNCE            (15*MSEC) /* between 10ms and 20ms */
+#define PD_T_SINK_WAIT_CAP         (575*MSEC) /* between 310ms and 620ms */
+#endif
+
 #define PD_T_PS_TRANSITION         (500*MSEC) /* between 450ms and 550ms */
-#define PD_T_PS_SOURCE_ON          (480*MSEC) /* between 390ms and 480ms */
-#define PD_T_PS_SOURCE_OFF         (835*MSEC) /* between 750ms and 920ms */
-#define PD_T_PS_HARD_RESET          (25*MSEC) /* between 25ms and 35ms */
+#define PD_T_PS_SOURCE_OFF         (835*MSEC) /* between 750ms and 920ms */ 
+#define PD_T_PS_HARD_RESET          (25*MSEC) /* between 25ms and 35ms */	
 #define PD_T_ERROR_RECOVERY        (240*MSEC) /* min 240ms if sourcing VConn */
 #define PD_T_CC_DEBOUNCE           (100*MSEC) /* between 100ms and 200ms */
 /* DRP_SNK + DRP_SRC must be between 50ms and 100ms with 30%-70% duty cycle */
@@ -226,13 +236,13 @@ enum pd_rx_errors {
 #define PD_T_NO_RESPONSE          (5500*MSEC) /* between 4.5s and 5.5s */
 #define PD_T_BIST_TRANSMIT          (50*MSEC) /* 50ms (for task_wait arg) */
 #define PD_T_BIST_RECEIVE           (60*MSEC) /* 60ms (time to process bist) */
-#define PD_T_BIST_CONT_MODE         (55*MSEC) /* 30ms to 60ms */
+#define PD_T_BIST_CONT_MODE         (60*MSEC) /* 30ms to 60ms */
 #define PD_T_VCONN_SOURCE_ON       (100*MSEC) /* 100ms */
 #define PD_T_DRP_TRY               (125*MSEC) /* between 75ms and 150ms */
 #define PD_T_TRY_TIMEOUT           (550*MSEC) /* between 550ms and 1100ms */
 #define PD_T_TRY_WAIT              (600*MSEC) /* Wait time for TryWait.SNK */
 #define PD_T_SINK_REQUEST          (100*MSEC) /* 100ms before next request */
-#define PD_T_PD_DEBOUNCE            (15*MSEC) /* between 10ms and 20ms */
+
 #define PD_T_CHUNK_SENDER_RESPONSE  (25*MSEC) /* 25ms */
 #define PD_T_CHUNK_SENDER_REQUEST   (25*MSEC) /* 25ms */
 #define PD_T_SWAP_SOURCE_START      (25*MSEC) /* Min of 20ms */

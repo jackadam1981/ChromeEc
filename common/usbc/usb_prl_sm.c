@@ -589,6 +589,11 @@ static void prl_init(int port)
 	prl_tx[port].ctx = cleared;
 	set_state_prl_tx(port, PRL_TX_PHY_LAYER_RESET);
 
+	/* TCPM rx buffer can contain pending msgs from prev. contract */
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 
+	tcpm_clear_pending_messages(port);
+#endif
+
 	if (IS_ENABLED(CONFIG_USB_PD_EXTENDED_MESSAGES)) {
 		rch[port].ctx = cleared;
 		set_state_rch(port, RCH_WAIT_FOR_MESSAGE_FROM_PROTOCOL_LAYER);

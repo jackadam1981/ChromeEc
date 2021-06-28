@@ -11,6 +11,7 @@
 #include "driver/ppc/nx20p348x.h"
 #include "driver/tcpm/anx7447.h"
 #include "driver/tcpm/ps8xxx.h"
+#include "driver/tcpm/ccgxxf.h"
 #include "driver/tcpm/tcpci.h"
 #include "driver/tcpm/tcpm.h"
 #include "gpio.h"
@@ -50,7 +51,8 @@ const struct tcpc_config_t tcpc_config[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 			.port = I2C_PORT_TCPC1,
 			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
 		},
-		.drv = &ps8xxx_tcpm_drv,
+		.drv = &tcpci_tcpm_drv, /* &tcpci_tcpm_drv,  &ps8xxx_tcpm_drv, */
+		.flags = TCPC_FLAGS_TCPCI_REV2_0,
 	},
 };
 
@@ -81,7 +83,7 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[USB_PD_PORT_TCPC_1] = {
 		.usb_port = USB_PD_PORT_TCPC_1,
 		.driver = &tcpci_tcpm_usb_mux_driver,
-		.hpd_update = &ps8xxx_tcpc_update_hpd_status,
+		/*.hpd_update = &ps8xxx_tcpc_update_hpd_status,  CY_UPD */
 	}
 };
 
@@ -95,8 +97,9 @@ struct ppc_config_t ppc_chips[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 	[USB_PD_PORT_TCPC_1] = {
 		.i2c_port = I2C_PORT_TCPC1,
-		.i2c_addr_flags = NX20P3483_ADDR2_FLAGS,
-		.drv = &nx20p348x_drv,
+		.i2c_addr_flags = PS8751_I2C_ADDR1_FLAGS,/* CY_UPD  */
+		/* CY_UPD .i2c_addr_flags = NX20P3483_ADDR2_FLAGS,*/
+		.drv = &ccgxxf_ppc_drv, /* CY_UPD *&nx20p348x_drv,*/
 	},
 };
 unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
@@ -126,7 +129,7 @@ void variant_tcpc_init(void)
 {
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_PD_C0_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_PD_C1_INT_ODL);
+	//gpio_enable_interrupt(GPIO_USB_PD_C1_INT_ODL); /* CY_UPD */
 
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_MUX_INT_ODL);

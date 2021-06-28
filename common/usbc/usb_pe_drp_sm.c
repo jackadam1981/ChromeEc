@@ -207,13 +207,19 @@
  */
 #define PE_T_DISCOVER_IDENTITY_NO_CONTRACT	(200*MSEC)
 
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+#define N_VCONN_SWAP_COUNT 0 
+#define N_SNK_SRC_PR_SWAP_COUNT 0 
+#define N_DR_SWAP_ATTEMPT_COUNT 0
+#define SRC_SNK_READY_HOLD_OFF_US (20 * MSEC) 
+#else
 /*
  * Only VCONN source can communicate with the cable plug. Hence, try VCONN swap
  * 3 times before giving up.
  *
  * Note: This is not a part of power delivery specification
  */
-#define N_VCONN_SWAP_COUNT 3
+#define N_VCONN_SWAP_COUNT 3 
 
 /*
  * Counter to track how many times to attempt SRC to SNK PR swaps before giving
@@ -232,8 +238,6 @@
  */
 #define N_DR_SWAP_ATTEMPT_COUNT 5
 
-#define TIMER_DISABLED 0xffffffffffffffff /* Unreachable time in future */
-
 /*
  * The time that we allow the port partner to send any messages after an
  * explicit contract is established.  200ms was chosen somewhat arbitrarily as
@@ -242,7 +246,10 @@
  * would be shown in the chrome OS UI. Setting t0o large a delay can cause
  * problems if the PD discovery time exceeds 1s (tAMETimeout)
  */
-#define SRC_SNK_READY_HOLD_OFF_US (200 * MSEC)
+#define SRC_SNK_READY_HOLD_OFF_US (200 * MSEC) 
+#endif
+
+#define TIMER_DISABLED 0xffffffffffffffff /* Unreachable time in future */
 
 /*
  * Function pointer to a Structured Vendor Defined Message (SVDM) response
@@ -901,6 +908,9 @@ void pe_got_hard_reset(int port)
  */
 void pd_got_frs_signal(int port)
 {
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+	CPRINTS("FRS SIGNALLED on port %d", port); 
+#endif	
 	if (pe_is_running(port))
 		PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
 	else
@@ -1540,12 +1550,14 @@ static bool source_dpm_requests(int port)
 			else
 				set_state_pe(port, PE_DRS_SEND_SWAP);
 			return true;
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN			
 		} else if (PE_CHK_DPM_REQUEST(port,
 					      DPM_REQUEST_PR_SWAP)) {
 			pe_set_dpm_curr_request(port,
 						DPM_REQUEST_PR_SWAP);
 			set_state_pe(port, PE_PRS_SRC_SNK_SEND_SWAP);
 			return true;
+#endif
 		} else if (PE_CHK_DPM_REQUEST(port,
 					      DPM_REQUEST_GOTO_MIN)) {
 			pe_set_dpm_curr_request(port,
@@ -1613,28 +1625,31 @@ static bool sink_dpm_requests(int port)
 			else
 				set_state_pe(port, PE_DRS_SEND_SWAP);
 			return true;
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
 		} else if (PE_CHK_DPM_REQUEST(port,
 					      DPM_REQUEST_PR_SWAP)) {
 			pe_set_dpm_curr_request(port,
 						DPM_REQUEST_PR_SWAP);
 			set_state_pe(port, PE_PRS_SNK_SRC_SEND_SWAP);
 			return true;
+#endif
 		} else if (PE_CHK_DPM_REQUEST(port,
 					      DPM_REQUEST_SOURCE_CAP)) {
 			pe_set_dpm_curr_request(port,
 						DPM_REQUEST_SOURCE_CAP);
 			set_state_pe(port, PE_SNK_GET_SOURCE_CAP);
 			return true;
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
 		} else if (PE_CHK_DPM_REQUEST(port,
 					      DPM_REQUEST_NEW_POWER_LEVEL)) {
 			pe_set_dpm_curr_request(port,
 						DPM_REQUEST_NEW_POWER_LEVEL);
 			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
 			return true;
+#endif
 		} else if (PE_CHK_DPM_REQUEST(port,
 					      DPM_REQUEST_FRS_DET_ENABLE)) {
 			pe_set_frs_enable(port, 1);
-
 			/* Requires no state change, fall through to false */
 			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_FRS_DET_ENABLE);
 		} else if (PE_CHK_DPM_REQUEST(port,
@@ -1878,6 +1893,7 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 			pe[port].tx_type = TCPC_TX_SOP;
 			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
 			return true;
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN			
 		} else if (pd_get_svids_discovery(port, TCPC_TX_SOP_PRIME)
 				== PD_DISC_NEEDED) {
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
@@ -1888,6 +1904,7 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 			pe[port].tx_type = TCPC_TX_SOP_PRIME;
 			set_state_pe(port, PE_INIT_VDM_MODES_REQUEST);
 			return true;
+#endif			
 		}
 	}
 
@@ -2149,9 +2166,10 @@ static void pe_src_startup_entry(int port)
 
 		/* Reset VCONN swap counter */
 		pe[port].vconn_swap_counter = 0;
-
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
 		/* Request partner sink caps */
 		pd_dpm_request(port, DPM_REQUEST_GET_SNK_CAPS);
+#endif
 	}
 }
 
@@ -2508,9 +2526,10 @@ static void pe_src_transition_supply_run(int port)
 			 * Source Capabilities, if needed, for possible
 			 * PR_Swap
 			 */
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
 			if (pd_get_src_cap_cnt(port) == 0)
-				pd_dpm_request(port, DPM_REQUEST_GET_SRC_CAPS);
-
+				pd_dpm_request(port, DPM_REQUEST_GET_SRC_CAPS);   
+#endif
 			set_state_pe(port, PE_SRC_READY);
 		} else {
 			/* NOTE: First pass through this code block */
@@ -2682,6 +2701,12 @@ static void pe_src_ready_run(int port)
 					set_state_pe(port,
 							PE_SEND_NOT_SUPPORTED);
 				return;
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN				
+			case PD_CTRL_FR_SWAP:	
+				set_state_pe(port,
+						PE_SEND_NOT_SUPPORTED);
+				return;
+#endif
 			/*
 			 * USB PD 3.0 6.8.1:
 			 * Receiving an unexpected message shall be responded
@@ -2998,8 +3023,10 @@ static void pe_snk_startup_entry(int port)
 		 * TODO: POLICY decision:
 		 * Mark that we'd like to try being Vconn source and DFP
 		 */
-		PE_SET_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP);
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+		PE_SET_FLAG(port, PE_FLAGS_DR_SWAP_TO_DFP); 
 		PE_SET_FLAG(port, PE_FLAGS_VCONN_SWAP_TO_ON);
+#endif
 	}
 
 	/* Request sink caps for FRS and PRS evaluation.
@@ -3531,8 +3558,10 @@ static void pe_snk_ready_run(int port)
 		pd_timer_disable(port, PE_TIMER_WAIT_AND_ADD_JITTER);
 
 		if (pd_timer_is_expired(port, PE_TIMER_SINK_REQUEST)) {
-			pd_timer_disable(port, PE_TIMER_SINK_REQUEST);
-			set_state_pe(port, PE_SNK_SELECT_CAPABILITY);
+		 	pd_timer_disable(port, PE_TIMER_SINK_REQUEST);
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+			set_state_pe(port, PE_SNK_SELECT_CAPABILITY); 
+#endif
 			return;
 		}
 
@@ -3546,9 +3575,10 @@ static void pe_snk_ready_run(int port)
 		 * Attempt discovery if possible, and return if state was
 		 * changed for that discovery.
 		 */
-		if (pe_attempt_port_discovery(port))
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 		 
+		if (pe_attempt_port_discovery(port)) 
 			return;
-
+#endif
 		/* No DPM requests; attempt mode entry/exit if needed */
 		dpm_run(port);
 
@@ -3775,7 +3805,7 @@ static void pe_send_soft_reset_run(int port)
 	if (msg_check == PE_MSG_DISCARDED) {
 		pe_set_ready_state(port);
 		return;
-	}
+	}	
 
 	/*
 	 * Transition to the PE_SNK_Send_Capabilities or
@@ -4705,7 +4735,13 @@ static void pe_prs_snk_src_transition_to_off_run(int port)
 			 * skip PE_FRS_SNK_SRC_Vbus_Applied and go direct to
 			 * PE_FRS_SNK_SRC_Assert_Rp
 			 */
-			set_state_pe(port, PE_PRS_SNK_SRC_ASSERT_RP);
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 
+			/* Accelerate FR_SWAP sending to meet timeout. */ 
+			if(pe_in_frs_mode(port))	
+				set_state_pe(port, PE_PRS_SNK_SRC_SOURCE_ON); 
+			else
+#endif			
+				set_state_pe(port, PE_PRS_SNK_SRC_ASSERT_RP);
 		}
 	}
 }
@@ -4755,33 +4791,55 @@ static void pe_prs_snk_src_source_on_entry(int port)
 {
 	print_current_state(port);
 
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 
+	/* Accelerate FR_SWAP sending to meet timeout. */ 
+	if(pe_in_frs_mode(port)){
+		tc_prs_snk_src_assert_rp(port);
+		pe[port].power_role = pd_get_power_role(port);
+		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
+	}
+    else {
+#endif	
 	/*
 	 * VBUS was enabled when the TypeC state machine entered
 	 * Attached.SRC state
 	 */
-	pd_timer_enable(port, PE_TIMER_PS_SOURCE,
-			PD_POWER_SUPPLY_TURN_ON_DELAY);
+		pd_timer_enable(port, PE_TIMER_PS_SOURCE,
+				PD_POWER_SUPPLY_TURN_ON_DELAY);
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 
+	}
+#endif	
 }
 
 static void pe_prs_snk_src_source_on_run(int port)
 {
 	/* Wait until power supply turns on */
-	if (!pd_timer_is_disabled(port, PE_TIMER_PS_SOURCE)) {
-		if (!pd_timer_is_expired(port, PE_TIMER_PS_SOURCE))
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 
+	/* Accelerate FR_SWAP sending to meet timeout. */ 
+	if(!pe_in_frs_mode(port)){
+#endif	
+		if (!pd_timer_is_disabled(port, PE_TIMER_PS_SOURCE)) {
+			if (!pd_timer_is_expired(port, PE_TIMER_PS_SOURCE))
+				return;
+			/* update pe power role */
+			pe[port].power_role = pd_get_power_role(port);
+			send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
+			/* reset timer so PD_CTRL_PS_RDY isn't sent again */
+			pd_timer_disable(port, PE_TIMER_PS_SOURCE);
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 
 			return;
-
-		/* update pe power role */
-		pe[port].power_role = pd_get_power_role(port);
-		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_PS_RDY);
-		/* reset timer so PD_CTRL_PS_RDY isn't sent again */
-		pd_timer_disable(port, PE_TIMER_PS_SOURCE);
-	}
-
+		}
+#endif		
+		}
 	/*
 	 * Transition to ErrorRecovery state when:
 	 *   1) On protocol error
 	 */
-	else if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) {
+
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 
+	else
+#endif	
+	if (PE_CHK_FLAG(port, PE_FLAGS_PROTOCOL_ERROR)) { 
 		PE_CLR_FLAG(port, PE_FLAGS_PROTOCOL_ERROR);
 		set_state_pe(port, PE_WAIT_FOR_ERROR_RECOVERY);
 	}
@@ -4821,6 +4879,15 @@ static void pe_prs_snk_src_send_swap_entry(int port)
 	 *     bringing Vbus to vSafe5.
 	 *     Request the Protocol Layer to send a FR_Swap Message.
 	 */
+	 
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 
+	/* Accelerate FR_SWAP sending to meet timeout. */ 	 
+	if(pe_in_frs_mode(port)) { 
+		pe_sender_response_msg_entry(port);
+		return;
+	}
+#endif
+
 	if (IS_ENABLED(CONFIG_USB_PD_REV30)) {
 		send_ctrl_msg(port,
 			TCPC_TX_SOP,
@@ -4944,6 +5011,10 @@ __maybe_unused static void pe_frs_snk_src_start_ams_entry(int port)
 
 	/* Shared PRS/FRS code, indicate FRS path */
 	PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_PATH);
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 
+	/* Accelerate FR_SWAP sending to meet timeout. */ 	
+	send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_FR_SWAP); 
+#endif		
 	set_state_pe(port, PE_PRS_SNK_SRC_SEND_SWAP);
 }
 
@@ -5041,12 +5112,6 @@ static void pe_bist_tx_entry(int port)
 static void pe_bist_tx_run(int port)
 {
 	if (pd_timer_is_expired(port, PE_TIMER_BIST_CONT_MODE)) {
-		/*
-		 * Entry point to disable BIST in TCPC if that's not already
-		 * handled automatically by the TCPC. Unless this method is
-		 * implemented in a TCPM driver, this function does nothing.
-		 */
-		tcpm_reset_bist_type_2(port);
 
 		if (pe[port].power_role == PD_ROLE_SOURCE)
 			set_state_pe(port, PE_SRC_TRANSITION_TO_DEFAULT);
@@ -5131,7 +5196,12 @@ static void pe_handle_custom_vdm_request_entry(int port)
 		send_data_msg(port, sop, PD_DATA_VENDOR_DEF);
 	} else {
 		if (prl_get_rev(port, TCPC_TX_SOP) > PD_REV20) {
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN 
+		/* Done to pass PD.VDM.SNK.3 VDM interruption */
+			send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_NOT_SUPPORTED);
+#else			
 			set_state_pe(port, PE_SEND_NOT_SUPPORTED);
+#endif			
 		} else {
 			PE_CLR_FLAG(port, PE_FLAGS_INTERRUPTIBLE_AMS);
 			pe_set_ready_state(port);

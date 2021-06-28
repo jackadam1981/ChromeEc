@@ -10,8 +10,11 @@
 #ifndef __CROS_EC_DRIVER_TCPM_CCGXXF_H
 #define __CROS_EC_DRIVER_TCPM_CCGXXF_H
 
+extern const struct tcpm_drv ccgxxf_tcpm_drv;
+extern const struct ppc_drv ccgxxf_ppc_drv;
+
 #define CCGXXF_I2C_ADDR1_FLAGS	0x0B
-#define CCGXXF_I2C_ADDR2_FLAGS	0x40
+#define CCGXXF_I2C_ADDR2_FLAGS	0x1B
 #define CCGXXF_I2C_ADDR3_FLAGS	0x42
 
 /* CCGXXF built in I/O expander definitions */

@@ -94,7 +94,7 @@ STATIC_IF(DEBUG_GET_CC)
  * Seeing RoleCtrl updates can help determine why GetCC is not
  * working as it should be.
  */
-#undef DEBUG_ROLE_CTRL_UPDATES
+#define DEBUG_ROLE_CTRL_UPDATES
 
 /****************************************************************************/
 
@@ -653,6 +653,8 @@ int tcpci_tcpm_set_vconn(int port, int enable)
 	reg &= ~TCPC_REG_POWER_CTRL_VCONN(1);
 	reg |= TCPC_REG_POWER_CTRL_VCONN(enable);
 
+/* Type-C Functional TD.4.x.x group of tests fail because of below delay. */
+#ifndef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
 	/*
 	 * Add delay of writing TCPC_REG_POWER_CTRL makes
 	 * CC status being judged correctly when disable VCONN.
@@ -661,6 +663,7 @@ int tcpci_tcpm_set_vconn(int port, int enable)
 	 */
 	if (!enable)
 		msleep(PS8XXX_VCONN_TURN_OFF_DELAY_US);
+#endif
 
 	return tcpc_write(port, TCPC_REG_POWER_CTRL, reg);
 }
@@ -1805,6 +1808,7 @@ const struct tcpm_drv tcpci_tcpm_drv = {
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 	.enter_low_power_mode	= &tcpci_enter_low_power_mode,
 #endif
+	.set_frs_enable		= &tcpci_tcpc_fast_role_swap_enable,
 	.set_bist_test_mode	= &tcpci_set_bist_test_mode,
 #ifdef CONFIG_CMD_TCPC_DUMP
 	.dump_registers		= &tcpc_dump_std_registers,

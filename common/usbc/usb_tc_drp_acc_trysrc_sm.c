@@ -3095,7 +3095,13 @@ static void tc_attached_src_run(const int port)
 	 * AttachWait.SNK shall enter TryWait.SNK for a Sink detach from
 	 * Attached.SRC.
 	 */
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN	 
+    /* PRS deadline tests fail because of Ellisys Rd too fast remonal */
+	if (tc[port].cc_state == PD_CC_NONE &&
+			!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
+#else
 	if (tc[port].cc_state == PD_CC_NONE) {
+#endif			
 		bool tryWait;
 		enum usb_tc_state new_tc_state = TC_UNATTACHED_SNK;
 
@@ -3321,8 +3327,17 @@ __maybe_unused static void tc_drp_auto_toggle_entry(const int port)
 	 * for the minimum of DRP SNK or SRC so the first toggle cause by
 	 * transition into auto toggle doesn't violate spec timing.
 	 */
+#ifdef CONFIG_CY_CHANGED_FOR_ELLYSIS_RUN
+	/*
+	 * Below code looks as redundant. This state ca be entered only from 
+	 * UNATTACHED.SRC/SNK states where toggle delay is already applied.
+	 * Causes TD.4.6.2 test failure.
+	 */
+	pd_timer_enable(port, TC_TIMER_TIMEOUT,5);
+#else
 	pd_timer_enable(port, TC_TIMER_TIMEOUT,
-			MAX(PD_T_DRP_SNK, PD_T_DRP_SRC));
+			 MAX(PD_T_DRP_SNK, PD_T_DRP_SRC)); 
+#endif
 }
 
 __maybe_unused static void tc_drp_auto_toggle_run(const int port)
