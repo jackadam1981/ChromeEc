@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a957a60d_fce5d06a",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-28T22:54:11Z",
+      "side": 1,
+      "message": "There\u0027s a lot of nesting here. Usually it\u0027s cleaner to return early on error. The mutex makes this more complicated. I think a goto may make sense here. e.g. goto err_unlock;",
+      "revId": "7638436743adbdb220ac5b20d70f25f22cdb21a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c7dc4a_4d85140d",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-28T22:54:11Z",
+      "side": 1,
+      "message": "Please move the macros after the basic defines.",
+      "revId": "7638436743adbdb220ac5b20d70f25f22cdb21a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
