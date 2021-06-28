@@ -2,9 +2,9 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-if BOARD_HEROBRINE
+if BOARD_HEROBRINE_NPCX7
 
 config BOARD
-	default "herobrine"
+	default "herobrine_npcx7"
 
-endif # BOARD_HEROBRINE
+endif # BOARD_HEROBRINE_NPCX7
