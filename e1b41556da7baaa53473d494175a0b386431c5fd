@@ -33,6 +33,24 @@
       "message": "I guess it\u0027s alright. I\u0027m assuming this is because Cr50 is missing detecting debug accessories? I\u0027m not aware of any incidents on our platform, but this shouldn\u0027t hurt.\n\nWe should at least add the motivation to the referenced bug.",
       "revId": "e1b41556da7baaa53473d494175a0b386431c5fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82919504_a326e01b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-06-28T16:53:21Z",
+      "side": 1,
+      "message": "https://b.corp.google.com/issues/190189242#comment1 Updated with links to discussions on the motivation. That being said, I also haven\u0027t seen the case of servoV4 sourcing 3.0A not being detected by cr50.",
+      "parentUuid": "f980bca7_3cd091f4",
+      "revId": "e1b41556da7baaa53473d494175a0b386431c5fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
