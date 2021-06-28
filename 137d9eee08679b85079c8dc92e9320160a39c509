@@ -16,6 +16,24 @@
       "message": "This CL has a dependency on PR https://github.com/zephyrproject-rtos/zephyr/pull/35565.  Please create an UPSTREAM change and add a Cq-Depend on this CL.",
       "revId": "137d9eee08679b85079c8dc92e9320160a39c509",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c39c5ced_c4b1d1d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-28T06:35:22Z",
+      "side": 1,
+      "message": "Cq-Depend is only added to this CL in order to make the upstream flash driver landed first.",
+      "parentUuid": "649909ed_947f6683",
+      "revId": "137d9eee08679b85079c8dc92e9320160a39c509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
