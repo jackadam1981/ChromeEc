@@ -99,6 +99,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "485bbbbc_6b2d712a",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-28T16:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdfebbdc_2a7c7fb3",
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f59a34f6_b5628ab3",
@@ -130,6 +148,24 @@
       "side": 1,
       "message": "Yes, just hacked out temporarily to remove noise and focus on test_suite_bc12.\nI don\u0027t know of a way to control which test suites are run from the command line.",
       "parentUuid": "f59a34f6_b5628ab3",
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa6372fe_ebb7de98",
+        "filename": "zephyr/test/drivers/src/main.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-28T16:46:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c07b5c3_f977cde2",
       "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
