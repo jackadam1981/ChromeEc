@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "08ad017b_97479be2",
+        "filename": "board/primus/led.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-28T02:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bb08b8a_67ac1763",
+      "range": {
+        "startLine": 106,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 53
+      },
+      "revId": "b898e6747e7e2fe27330b00b45b92d4c9473749f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e49ff352_de929d69",
         "filename": "board/primus/led.c",
         "patchSetId": 18
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-25T23:34:34Z",
       "side": 1,
       "message": "Also a constant, welcome to #define on top of this file...",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 8
+      },
+      "revId": "b898e6747e7e2fe27330b00b45b92d4c9473749f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f9865e9_a18efb31",
+        "filename": "board/primus/led.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-28T02:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e49ff352_de929d69",
       "range": {
         "startLine": 117,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f851777_5786cf92",
+        "filename": "board/primus/led.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-28T02:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51cec859_bb309d1c",
+      "range": {
+        "startLine": 127,
+        "startChar": 47,
+        "endLine": 127,
+        "endChar": 58
+      },
+      "revId": "b898e6747e7e2fe27330b00b45b92d4c9473749f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b985896_96f6f967",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a800e7_64f91fa3",
+        "filename": "board/primus/led.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-28T02:23:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b985896_96f6f967",
+      "range": {
+        "startLine": 194,
+        "startChar": 7,
+        "endLine": 194,
+        "endChar": 14
+      },
+      "revId": "b898e6747e7e2fe27330b00b45b92d4c9473749f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acc27804_adbe172f",
@@ -106,6 +202,24 @@
       "writtenOn": "2021-06-25T23:34:34Z",
       "side": 1,
       "message": "Q: What is the purpose of this initialization?",
+      "revId": "b898e6747e7e2fe27330b00b45b92d4c9473749f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0497dcac_13993988",
+        "filename": "board/primus/led.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-28T02:23:34Z",
+      "side": 1,
+      "message": "Because logo led will be on in S0, I will expect it will keep on when enter suspend.\n\nIf this initialization didn\u0027t set, the logo led will turn off shortly and gradual on. I think this is not expected.",
+      "parentUuid": "acc27804_adbe172f",
       "revId": "b898e6747e7e2fe27330b00b45b92d4c9473749f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
