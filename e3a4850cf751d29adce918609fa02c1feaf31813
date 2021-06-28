@@ -16,6 +16,46 @@
       "message": "Tom, could you take another look before I submit?",
       "revId": "e3a4850cf751d29adce918609fa02c1feaf31813",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14e4b1ae_3781e99a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-28T22:32:02Z",
+      "side": 1,
+      "message": "Just a nit.",
+      "revId": "e3a4850cf751d29adce918609fa02c1feaf31813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb3decf_091117e4",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-28T22:32:02Z",
+      "side": 1,
+      "message": "Use spaces",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 428,
+        "endChar": 1
+      },
+      "revId": "e3a4850cf751d29adce918609fa02c1feaf31813",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
