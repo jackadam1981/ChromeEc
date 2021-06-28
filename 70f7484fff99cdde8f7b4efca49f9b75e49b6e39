@@ -16,6 +16,24 @@
       "message": "squash this ... we haven\u0027t landed the CL that made the name originally, so it can be part of that",
       "revId": "70f7484fff99cdde8f7b4efca49f9b75e49b6e39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d420b30e_ab9aea47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-28T22:13:49Z",
+      "side": 1,
+      "message": "I was not aware the need of multiple zephyr boards when I made the CL:2987912. The CL:2987912 carries over the same EC-OS baseboard/board concept, i.e.\n * EC-OS baseboard: herobrine -\u003e Zephyr board: herobrine\n * EC-OS board: herobrine_npcx7 -\u003e Zephyr project: herobrine_npcx7\n\nUntil I made the NPCX9 support, CL:2993220. The 1:1 mapping baseboard concept is not longer valid. I have to create a different Zephyr board, to support a different chip architecture. So this CL is needed.\n\nSquashing two CLs also work. But seems to add too much change to the CL:2987912, hardware difference + concept change.",
+      "parentUuid": "76bb4b13_0016d59f",
+      "revId": "70f7484fff99cdde8f7b4efca49f9b75e49b6e39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
