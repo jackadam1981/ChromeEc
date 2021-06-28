@@ -16,6 +16,24 @@
       "message": "I think we\u0027d had this in the board.h files before, right?  Should we remove those in favor of centralizing?",
       "revId": "a5fd526e6da1594497d9f10628cc860d1ab2773e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78f3dfb_34c6780e",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-28T23:15:59Z",
+      "side": 1,
+      "message": "Yeah, looks like there are a couple^W a lot around. Removed.",
+      "parentUuid": "29f7643f_0a44b320",
+      "revId": "a5fd526e6da1594497d9f10628cc860d1ab2773e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
