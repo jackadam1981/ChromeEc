@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f7643f_0a44b320",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-28T22:50:48Z",
+      "side": 1,
+      "message": "I think we\u0027d had this in the board.h files before, right?  Should we remove those in favor of centralizing?",
+      "revId": "a5fd526e6da1594497d9f10628cc860d1ab2773e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
