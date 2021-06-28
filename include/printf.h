@@ -77,6 +77,14 @@
 __stdlib_compat int vfnprintf(int (*addchar)(void *context, int c),
 			      void *context, const char *format, va_list args);
 
+#ifdef CONFIG_ZEPHYR
+#define EC_SNPRINTF ec_snprintf
+#define EC_VSNPRINTF ec_vsnprintf
+#else
+#define EC_SNPRINTF snprintf
+#define EC_VSNPRINTF vsnprintf
+#endif
+
 /**
  * Print formatted outut to a string.
  *
@@ -88,7 +96,8 @@ __stdlib_compat int vfnprintf(int (*addchar)(void *context, int c),
  * @return EC_SUCCESS, or EC_ERROR_OVERFLOW if the output was truncated.
  */
 __attribute__((__format__(__printf__, 3, 4)))
-__stdlib_compat int snprintf(char *str, size_t size, const char *format, ...);
+__stdlib_compat int EC_SNPRINTF(char *str, size_t size, const char *format,
+				...);
 
 /**
  * Print formatted output to a string.
@@ -102,8 +111,8 @@ __stdlib_compat int snprintf(char *str, size_t size, const char *format, ...);
  * @return The string length written to str, or a negative value on error.
  *         The negative values can be -EC_ERROR_INVAL or -EC_ERROR_OVERFLOW.
  */
-__stdlib_compat int vsnprintf(char *str, size_t size, const char *format,
-			      va_list args);
+__stdlib_compat int EC_VSNPRINTF(char *str, size_t size, const char *format,
+				 va_list args);
 
 #endif  /* !HIDE_EC_STDLIB */
 
