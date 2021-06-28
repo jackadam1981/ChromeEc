@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "695a397f_691c10a9",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-28T19:21:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd45abf2_b346ec6d",
+      "range": {
+        "startLine": 425,
+        "startChar": 37,
+        "endLine": 425,
+        "endChar": 40
+      },
+      "revId": "c542fb6c4f3da099ee6e84026b1d220c2a453aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48a0a2fe_97c3cd13",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c9532b6_e814dd13",
+        "filename": "zephyr/dts/bindings/cros_mkbp_event/ec-mkbp-event.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-28T19:21:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48a0a2fe_97c3cd13",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "c542fb6c4f3da099ee6e84026b1d220c2a453aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d1d8922_5281d1b6",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-24T23:12:20Z",
       "side": 1,
       "message": "The convention in the Zephyr code is to have the public header file include the dt-binding header file to avoid duplicate definitions.  However, ec_commands.h is shared with the kernel so we can\u0027t do that.\n\nThe comments on the individual fields in this file should be removed, and you should add a note that the source of truth is from include/ec_commands.h",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 70
+      },
+      "revId": "c542fb6c4f3da099ee6e84026b1d220c2a453aa4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cc0fcdc_b7417a17",
+        "filename": "zephyr/include/dt-bindings/ec_mkbp_event_defines.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-06-28T19:21:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1d8922_5281d1b6",
       "range": {
         "startLine": 13,
         "startChar": 0,
