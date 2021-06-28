@@ -194,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4cf3858_4d97affa",
+        "filename": "common/cbi.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-06-28T23:10:09Z",
+      "side": 1,
+      "message": "I think it\u0027s better to check the cache state explicitly in a unit test (in a separate CL).",
+      "parentUuid": "7ef5c2fa_828b7082",
+      "range": {
+        "startLine": 417,
+        "startChar": 5,
+        "endLine": 417,
+        "endChar": 17
+      },
+      "revId": "1e507d0c9af36cdb7a2b606e83b179199037381e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "464faf10_c6d8623e",
