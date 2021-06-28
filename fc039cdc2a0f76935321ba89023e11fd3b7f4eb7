@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1097948a_8cd700b2",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-28T18:00:29Z",
+      "side": 1,
+      "message": "Thanks! Do you happen to know if that is documented anywhere? I looked and failed to find it.",
+      "parentUuid": "6a1b785e_43c70c85",
+      "range": {
+        "startLine": 139,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 14
+      },
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "301fa09f_2d8a6669",
         "filename": "zephyr/emul/emul_pi3usb9201.c",
         "patchSetId": 1
