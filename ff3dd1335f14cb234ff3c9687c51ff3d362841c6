@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "369788f3_29687440",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T20:52:36Z",
+      "side": 1,
+      "message": "I think this is backwards.  Bit set in this mask are the events that will wake the AP.  If mask\u003d0, then no events wake the AP.\n\nBoth of these new config options need additional text to describe the two masks are different.  See the description in config.h for inspiration.",
+      "range": {
+        "startLine": 425,
+        "startChar": 6,
+        "endLine": 425,
+        "endChar": 69
+      },
+      "revId": "ff3dd1335f14cb234ff3c9687c51ff3d362841c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d44e1d32_6fff4f7f",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T20:52:36Z",
+      "side": 1,
+      "message": "\"set in the devicetree by the wakeup-mask property of the ec-mkbp-event-wakeup-mask node\".",
+      "range": {
+        "startLine": 426,
+        "startChar": 14,
+        "endLine": 426,
+        "endChar": 78
+      },
+      "revId": "ff3dd1335f14cb234ff3c9687c51ff3d362841c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be9317c1_9651784d",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T20:52:36Z",
+      "side": 1,
+      "message": "\"set in the devicetree by the wakeup-mask property of the ec-mkbp-host-event-wakeup-mask node\".",
+      "range": {
+        "startLine": 433,
+        "startChar": 18,
+        "endLine": 434,
+        "endChar": 24
+      },
+      "revId": "ff3dd1335f14cb234ff3c9687c51ff3d362841c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78bb3381_34998f20",
+        "filename": "zephyr/dts/bindings/cros_mkbp_event/ec-mkbp-event.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T20:52:36Z",
+      "side": 1,
+      "message": "This needs a longer description.  \"Define the MKBP or host events that will wake up the application processor from suspend mode.\"\n\nAdding an example of both the MKBP event mask and host event would be good.",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 31
+      },
+      "revId": "ff3dd1335f14cb234ff3c9687c51ff3d362841c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f413aafd_071733bb",
+        "filename": "zephyr/include/dt-bindings/ec_mkbp_event_defines.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-28T20:52:36Z",
+      "side": 1,
+      "message": "You should add \"_MASK\" or \"_BIT\" to all the names in this file.  As is, these names conflict with the enums ec_mkbp_event and host_event_code.\n\nHowever, the compile time evaluation will differ whether a file includes ec_commands.h or this file.\n\nUsing the same name for both will likely confuse future developers.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 39
+      },
+      "revId": "ff3dd1335f14cb234ff3c9687c51ff3d362841c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
