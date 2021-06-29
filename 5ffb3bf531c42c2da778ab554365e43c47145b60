@@ -16,6 +16,29 @@
       "message": "Hi Aseda:   \nfor sasukette, the Z-state power consumption is also high,and we will disable ADC function at Z-state, \nHW will also change the CC OVP solution. please help to check this cl, thanks ",
       "revId": "5ffb3bf531c42c2da778ab554365e43c47145b60",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1436e746_d147754f",
+        "filename": "board/sasukette/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-29T19:02:22Z",
+      "side": 1,
+      "message": "typo: \u0027board\u0027",
+      "range": {
+        "startLine": 207,
+        "startChar": 43,
+        "endLine": 207,
+        "endChar": 48
+      },
+      "revId": "5ffb3bf531c42c2da778ab554365e43c47145b60",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
