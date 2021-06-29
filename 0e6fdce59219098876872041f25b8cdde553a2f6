@@ -16,6 +16,24 @@
       "message": "LGTM",
       "revId": "0e6fdce59219098876872041f25b8cdde553a2f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8eb5f368_d72a8534",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-29T14:45:42Z",
+      "side": 1,
+      "message": "Cool.  And you\u0027d like to have the AP fully in charge of clearing the disconnect event, or are there times you\u0027d like the EC to clear it?",
+      "parentUuid": "7d05b234_5415fda6",
+      "revId": "0e6fdce59219098876872041f25b8cdde553a2f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
