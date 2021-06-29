@@ -263,21 +263,6 @@ static int cros_flash_npcx_program_bytes(const struct device *dev,
 	return ret;
 }
 
-/* cros ec flash api functions */
-static int cros_flash_npcx_init(const struct device *dev)
-{
-	const struct cros_flash_npcx_config *const config = DRV_CONFIG(dev);
-	struct cros_flash_npcx_data *data = DRV_DATA(dev);
-
-	/* initialize mutux for flash interface controller */
-	k_sem_init(&data->lock_sem, 1, 1);
-
-	/* Configure pin-mux for FIU device */
-	npcx_pinctrl_mux_configure(config->alts_list, config->alts_size, 1);
-
-	return 0;
-}
-
 static int cros_flash_npcx_read(const struct device *dev, int offset, int size,
 				char *dst_data)
 {
@@ -306,11 +291,33 @@ static int cros_flash_npcx_read(const struct device *dev, int offset, int size,
 	return ret;
 }
 
+static int flash_check_prot_range(unsigned int offset, unsigned int bytes)
+{
+	/* Invalid value */
+	if (offset + bytes > CONFIG_FLASH_SIZE_BYTES)
+		return EC_ERROR_INVAL;
+
+	/* Check if ranges overlap */
+	if (MAX(addr_prot_start, offset) <
+	    MIN(addr_prot_start + addr_prot_length, offset + bytes))
+		return EC_ERROR_ACCESS_DENIED;
+
+	return EC_SUCCESS;
+}
+
 static int cros_flash_npcx_write(const struct device *dev, int offset, int size,
 				 const char *src_data)
 {
 	struct cros_flash_npcx_data *const data = DRV_DATA(dev);
 	int ret = 0;
+
+	/* check protection */
+	if (all_protected)
+		return EC_ERROR_ACCESS_DENIED;
+
+	/* check protection */
+	if (flash_check_prot_range(offset, size))
+		return EC_ERROR_ACCESS_DENIED;
 
 	/* Is write protection enabled? */
 	if (data->write_protectied) {
@@ -353,6 +360,14 @@ static int cros_flash_npcx_erase(const struct device *dev, int offset, int size)
 	const struct cros_flash_npcx_config *const config = DRV_CONFIG(dev);
 	struct cros_flash_npcx_data *const data = DRV_DATA(dev);
 	int ret = 0;
+
+	/* check protection */
+	if (all_protected)
+		return EC_ERROR_ACCESS_DENIED;
+
+	/* check protection */
+	if (flash_check_prot_range(offset, size))
+		return EC_ERROR_ACCESS_DENIED;
 
 	/* Is write protection enabled? */
 	if (data->write_protectied) {
@@ -659,6 +674,34 @@ static int flash_write_prot_reg(const struct device *dev, unsigned int offset,
 		sr1 |= SPI_FLASH_SR1_SRP0;
 
 	return flash_set_status_for_prot(dev, sr1, sr2);
+}
+
+/* cros ec flash api functions */
+static int cros_flash_npcx_init(const struct device *dev)
+{
+	const struct cros_flash_npcx_config *const config = DRV_CONFIG(dev);
+	struct cros_flash_npcx_data *data = DRV_DATA(dev);
+
+	/* initialize mutux for flash interface controller */
+	k_sem_init(&data->lock_sem, 1, 1);
+
+	/* Configure pin-mux for FIU device */
+	npcx_pinctrl_mux_configure(config->alts_list, config->alts_size, 1);
+
+	/*
+	 * Protect status registers of internal spi-flash if WP# is active
+	 * during ec initialization.
+	 */
+#ifdef CONFIG_WP_ACTIVE_HIGH
+	flash_protect_int_flash(dev, gpio_get_level(GPIO_WP));
+#else
+	flash_protect_int_flash(dev, !gpio_get_level(GPIO_WP_L));
+#endif /*CONFIG_WP_ACTIVE_HIGH */
+
+	/* Initialize UMA to unlocked */
+	flash_uma_lock(dev, 0);
+
+	return 0;
 }
 
 /* cros ec flash driver registration */
