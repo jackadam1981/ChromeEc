@@ -424,6 +424,9 @@ void ppc_interrupt(enum gpio_signal signal)
 		case DB_USB3_PS8815:
 			nx20p348x_interrupt(USBC_PORT_C1);
 			break;
+		case DB_USB4_KB8001:
+			syv682x_interrupt(USBC_PORT_C1);
+			break;
 		}
 		break;
 	case GPIO_USB_C2_PPC_INT_ODL:
@@ -458,6 +461,9 @@ __override int board_pd_set_frs_enable(int port, int enable)
 			/* Only board ID 1 needs GPIO control */
 			return EC_SUCCESS;
 		}
+		break;
+	case DB_USB4_KB8001:
+		/* KB8001 DB needs GPIO control */
 		break;
 	default:
 		/* Other DBs do not need GPIO control */
