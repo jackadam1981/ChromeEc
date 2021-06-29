@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbbd5f1_3c5f9693",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-29T23:28:23Z",
+      "side": 1,
+      "message": "you\u0027ll need CONFIG_USB_PD_FRS_PPC enabled for this to work.\n\nbased on b/183127346, i was under the assumption that we would\nbe using CONFIG_USB_PD_FRS_TCPC instead. thoughts?",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 8
+      },
+      "revId": "cf8fd77c5cfbc2523b38a554d2d506ec0392b06a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
