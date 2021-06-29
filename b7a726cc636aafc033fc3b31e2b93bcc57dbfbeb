@@ -334,6 +334,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55995898_7ee86fcd",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-29T22:55:52Z",
+      "side": 1,
+      "message": "I broke this CL down into multiple steps:\n * CL:2994753, for Trogdor Zephyr support, which addresses the hardware difference, between Trogdor and Lazor;\n * CL:2994754, for initial Herobrine-NPCX7 image, which is the same hardware as Trogdor, but swaps the SoC part; basically no EC firmware change is needed, except the next CL;\n * CL:2994755, to use the new SC7280 power sequence.\n\nIf you have any concern, we can schedule a meeting to talk about it.",
+      "parentUuid": "29a76131_f4fbcea1",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 36
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12fe416c_38e42e62",
