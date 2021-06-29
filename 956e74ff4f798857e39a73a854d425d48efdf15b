@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b3bdc5d_8e61479d",
+        "filename": "baseboard/kukui/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-29T01:03:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a0988cf_2b34a1cd",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 47
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fce7aa5_d2184a44",
@@ -126,6 +150,24 @@
       "side": 1,
       "message": "I did not see #define CONFIG_COMMON_GPIO_SHORTNAMES here. Is it a new config to add here?",
       "parentUuid": "91560fe9_b51de2c8",
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a6de36d_f691ac20",
+        "filename": "baseboard/kukui/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-29T01:03:56Z",
+      "side": 1,
+      "message": "Rebase again. Should be no problem",
+      "parentUuid": "46aaf3ae_022b1ea9",
       "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -224,6 +266,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "159b7ffd_a45176b5",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-29T01:03:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "351094b6_06a158c1",
+      "range": {
+        "startLine": 78,
+        "startChar": 13,
+        "endLine": 78,
+        "endChar": 14
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92bbaeb8_b40661e3",
@@ -261,6 +327,30 @@
       "side": 1,
       "message": "Yes. \nemmc.c initializes SPI1. SPI2 clock initialization is here.",
       "parentUuid": "92bbaeb8_b40661e3",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 289,
+        "endChar": 6
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fee87a50_08d281e0",
+        "filename": "board/makomo/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-29T01:03:56Z",
+      "side": 1,
+      "message": "@Chen-Tsung,\n\nDo you see another place for SPI2 initialization",
+      "parentUuid": "9efc25c6_440a251e",
       "range": {
         "startLine": 276,
         "startChar": 0,
@@ -449,6 +539,30 @@
       "side": 1,
       "message": "On the schematics, TABLET_MODE_L is not connected to STM32L431 anymore. Thus those 4 configurations were undefined. \n\nThis change will be discarded and move into a separate CL.",
       "parentUuid": "944f5dba_9d4c23bc",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 32
+      },
+      "revId": "956e74ff4f798857e39a73a854d425d48efdf15b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "676c33f1_124a999a",
+        "filename": "board/makomo/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-06-29T01:03:56Z",
+      "side": 1,
+      "message": "Modification has been removed.",
+      "parentUuid": "9875113b_03441403",
       "range": {
         "startLine": 48,
         "startChar": 0,
