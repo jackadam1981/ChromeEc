@@ -116,6 +116,24 @@
       "parentUuid": "7163fdb6_186ac887",
       "revId": "5b43cab9d8307d0ac2d24607710e828d308ea30d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a7bcf9_51f5116d",
+        "filename": "board/primus/led.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-06-29T08:38:26Z",
+      "side": 1,
+      "message": "yes, i think it\u0027ll be a simpler and more stable implementation.",
+      "parentUuid": "a713757c_2388c7e0",
+      "revId": "5b43cab9d8307d0ac2d24607710e828d308ea30d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
