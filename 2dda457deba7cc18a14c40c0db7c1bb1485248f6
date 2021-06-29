@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f416254_e19256db",
+        "filename": "zephyr/dts/bindings/emul/zephyr,pi3usb9201.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-29T01:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3cc41db_819001cc",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cdefe77_0ac8d374",
@@ -70,6 +94,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75082714_36851372",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-29T01:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cdefe77_0ac8d374",
+      "range": {
+        "startLine": 13,
+        "startChar": 67,
+        "endLine": 13,
+        "endChar": 68
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a97c74_16cc056b",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-29T01:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "077d8ff0_b82b7b5c",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 13,
+        "endChar": 50
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db061964_81b93439",
@@ -83,6 +155,24 @@
       "writtenOn": "2021-06-28T17:49:34Z",
       "side": 1,
       "message": "Can you open a bug to move this emulator upstream once the real driver driver is moved upstream?",
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c7a745_b7f7422e",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-29T01:21:56Z",
+      "side": 1,
+      "message": "Created b/192303435",
+      "parentUuid": "db061964_81b93439",
       "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e58fc1d_21677ae9",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-29T01:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d6f56cd3_af9d0101",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 38
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e7d79b2_bcb8b1c3",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-06-28T17:49:34Z",
       "side": 1,
       "message": "Can this be combined with pi3usb9201_emul_set_reg()?  Seems redundant having two routines for both read and writes to the emulated register set.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 1
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08786756_055b875b",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-29T01:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e7d79b2_bcb8b1c3",
       "range": {
         "startLine": 77,
         "startChar": 0,
@@ -157,6 +295,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9115a970_98c9c83d",
+        "filename": "zephyr/test/drivers/src/bc12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-29T01:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc6cb2e1_9e0f23a2",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cb19d31_974e5ec2",
@@ -171,6 +333,30 @@
       "side": 1,
       "message": "\u003e \"regiter\" is a possible misspelling of \"register\".\n\nPlease fix.",
       "parentUuid": "2974efa9_9a30ea0c",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "952c6ba8_a28f2965",
+        "filename": "zephyr/test/drivers/src/bc12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-29T01:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cb19d31_974e5ec2",
       "range": {
         "startLine": 32,
         "startChar": 13,
@@ -252,6 +438,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce1c8a5b_3f6d8224",
+        "filename": "zephyr/test/drivers/src/bc12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-29T01:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1202af8a_a8d68bed",
+      "range": {
+        "startLine": 80,
+        "startChar": 63,
+        "endLine": 81,
+        "endChar": 14
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "878a1d97_39356bb7",
@@ -275,6 +485,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7c87b38_9f13694f",
+        "filename": "zephyr/test/drivers/src/bc12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-29T01:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "878a1d97_39356bb7",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 32
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "629e5a69_0d96e30d",
@@ -288,6 +522,30 @@
       "writtenOn": "2021-06-28T17:49:34Z",
       "side": 1,
       "message": "Duplicate this for client mode DCP and SDP cases.",
+      "range": {
+        "startLine": 182,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 0
+      },
+      "revId": "2dda457deba7cc18a14c40c0db7c1bb1485248f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3850e7e5_0982f0eb",
+        "filename": "zephyr/test/drivers/src/bc12.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-29T01:21:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "629e5a69_0d96e30d",
       "range": {
         "startLine": 182,
         "startChar": 0,
