@@ -34,3 +34,9 @@ CONFIG_CLOCK_CONTROL=y
 
 # WATCHDOG configuration
 CONFIG_WATCHDOG=y
+
+# Shell
+# Adjusted to the longest print message from the timer_info command
+CONFIG_SHELL_PRINTF_BUFF_SIZE=130
+# Selected experimentally to handle large blocks of data to print
+CONFIG_SHELL_BACKEND_SERIAL_TX_RING_BUFFER_SIZE=1024
