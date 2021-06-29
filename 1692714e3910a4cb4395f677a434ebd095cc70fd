@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a4b5a55_3e6cae44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-29T19:01:01Z",
+      "side": 1,
+      "message": "redid with mfallow\nso logic need to be changed because mfallow default is true.\n\ntested on lenovo dock with twinkie and ec console.",
+      "revId": "1692714e3910a4cb4395f677a434ebd095cc70fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

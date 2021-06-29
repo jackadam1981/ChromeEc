@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a88708c_da24f9e8",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-29T19:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f240231_4a787083",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 18
+      },
+      "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aafeea2_a57acad8",
@@ -174,6 +198,24 @@
       "side": 1,
       "message": "would mfallow be ok?",
       "parentUuid": "5aafeea2_a57acad8",
+      "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "faf23674_03503040",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-06-29T19:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bbbac0b_96ad1b30",
       "revId": "054a7bf52e910d35afb6735331bd457f471fe255",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
