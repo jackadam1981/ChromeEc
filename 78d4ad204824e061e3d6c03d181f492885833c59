@@ -22,6 +22,30 @@
       },
       "revId": "78d4ad204824e061e3d6c03d181f492885833c59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b45f566_80d37785",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 15
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 0,
+      "message": "CONFIG_PLATFORM_EC_SPI_FLASH_REGS is defined in this file to include this spi_flash_reg.c. Does this spi_flash_reg.c still need to be added here?",
+      "parentUuid": "395787f6_7e2dc171",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 88
+      },
+      "revId": "78d4ad204824e061e3d6c03d181f492885833c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "20e857d0_a3575f0e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47219377_4a3692af",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 27
+      },
+      "revId": "c485036ec8fec4232bd11acbbfbeb440442fdda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "5f7375fe_12bc50cb",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 15
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8443aca2_f523c848",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0519354d_1e92d84b",
+      "revId": "c485036ec8fec4232bd11acbbfbeb440442fdda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4031731_da84fb46",
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f945037e_4f49c144",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4031731_da84fb46",
+      "revId": "c485036ec8fec4232bd11acbbfbeb440442fdda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c3e0822e_1abc1f1c",
@@ -88,6 +148,30 @@
       "writtenOn": "2021-06-29T01:42:42Z",
       "side": 1,
       "message": "Leave the name as cros_flash_npcx_get_status_reg() and modify the callers below to match.",
+      "range": {
+        "startLine": 398,
+        "startChar": 11,
+        "endLine": 398,
+        "endChar": 36
+      },
+      "revId": "c485036ec8fec4232bd11acbbfbeb440442fdda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57971f02_c987cdbf",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3e0822e_1abc1f1c",
       "range": {
         "startLine": 398,
         "startChar": 11,
@@ -121,6 +205,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b48339df_d3ed980c",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "380ee945_9c294e2d",
+      "range": {
+        "startLine": 419,
+        "startChar": 11,
+        "endLine": 419,
+        "endChar": 36
+      },
+      "revId": "c485036ec8fec4232bd11acbbfbeb440442fdda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbb32757_daca3382",
@@ -134,6 +242,30 @@
       "writtenOn": "2021-06-29T01:42:42Z",
       "side": 1,
       "message": "Leave the name as cros_flash_npcx_write_protection_set()",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 68
+      },
+      "revId": "c485036ec8fec4232bd11acbbfbeb440442fdda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2463ec21_1ec59ba7",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbb32757_daca3382",
       "range": {
         "startLine": 442,
         "startChar": 0,
@@ -167,6 +299,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57e41563_f0060ffc",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25c0df98_acb596a9",
+      "range": {
+        "startLine": 461,
+        "startChar": 11,
+        "endLine": 461,
+        "endChar": 45
+      },
+      "revId": "c485036ec8fec4232bd11acbbfbeb440442fdda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "894c5836_f0e814a6",
@@ -180,6 +336,30 @@
       "writtenOn": "2021-06-29T01:42:42Z",
       "side": 1,
       "message": "Leave name as cros_flash_npcx_uma_lock()",
+      "range": {
+        "startLine": 466,
+        "startChar": 11,
+        "endLine": 466,
+        "endChar": 30
+      },
+      "revId": "c485036ec8fec4232bd11acbbfbeb440442fdda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0661ecdf_f3e62dce",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "894c5836_f0e814a6",
       "range": {
         "startLine": 466,
         "startChar": 11,
@@ -215,6 +395,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9a54554_c2c3e178",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 1,
+      "message": "Move this routine to shim/flash.c. No compile errors for ITE.",
+      "parentUuid": "bbb4423c_401acb24",
+      "range": {
+        "startLine": 479,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 0
+      },
+      "revId": "c485036ec8fec4232bd11acbbfbeb440442fdda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da2d414f_87e7d9af",
         "filename": "zephyr/shim/src/flash.c",
         "patchSetId": 15
@@ -226,6 +430,30 @@
       "writtenOn": "2021-06-29T01:42:42Z",
       "side": 1,
       "message": "Keep the calls to crec_flash_lock_mapped_storage().  This function is already stubbed out if CONFIG_EXTERNAL_STORAGE is not defined.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 64
+      },
+      "revId": "c485036ec8fec4232bd11acbbfbeb440442fdda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4e95f24_7b7bb341",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da2d414f_87e7d9af",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -249,6 +477,30 @@
       "writtenOn": "2021-06-29T01:42:42Z",
       "side": 1,
       "message": "Put calls back in for crec_flash_lock_mapped_storage()",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "c485036ec8fec4232bd11acbbfbeb440442fdda2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "127aa841_e631a1f5",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-29T09:49:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e90e8be_4a5810d0",
       "range": {
         "startLine": 60,
         "startChar": 8,
