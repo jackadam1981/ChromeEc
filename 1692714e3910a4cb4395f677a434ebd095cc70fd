@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "61bd4d40_a94a0fd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-29T19:53:23Z",
+      "side": 1,
+      "message": "nit: This is a bit long. Aim for 50 cols wide subject lines and no trailing punctuation.\n\nFor example, \n    \n    dp_alt_mode_dfp: Add `mfallow` command",
+      "revId": "1692714e3910a4cb4395f677a434ebd095cc70fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0a4b5a55_3e6cae44",
@@ -14,6 +31,80 @@
       "writtenOn": "2021-06-29T19:01:01Z",
       "side": 1,
       "message": "redid with mfallow\nso logic need to be changed because mfallow default is true.\n\ntested on lenovo dock with twinkie and ec console.",
+      "revId": "1692714e3910a4cb4395f677a434ebd095cc70fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc4d2129_17eb8ce9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-29T19:53:23Z",
+      "side": 1,
+      "message": "Nearly there, just a couple nits.",
+      "revId": "1692714e3910a4cb4395f677a434ebd095cc70fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad04a06_b8893f24",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-29T19:53:23Z",
+      "side": 1,
+      "message": "nit: nothing on the first line in multi-line comments.",
+      "revId": "1692714e3910a4cb4395f677a434ebd095cc70fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9c0ae88_7cf56d5c",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-29T19:53:23Z",
+      "side": 1,
+      "message": "I don\u0027t think this is necessary.",
+      "range": {
+        "startLine": 204,
+        "startChar": 33,
+        "endLine": 204,
+        "endChar": 41
+      },
+      "revId": "1692714e3910a4cb4395f677a434ebd095cc70fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32e9c5a6_a28b3e79",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-06-29T19:53:23Z",
+      "side": 1,
+      "message": "nit: nothing on the first line in multi-line comments.",
       "revId": "1692714e3910a4cb4395f677a434ebd095cc70fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
