@@ -40,4 +40,12 @@ config PLATFORM_EC_STACKOVERFLOW
 	  This can be used to check that stack-overflow detection is working
 	  as expected.
 
+config PLATFORM_EC_BACKUP_PANIC_DATA_ON_RESET
+	bool "Save panic data in backup RAM when rebooting"
+	default n
+	help
+	  When enabled, panic data will be saved always on reboot. This option
+	  is useful when memory is wiped after reboot or to workaround bugs in
+	  RO that causes panic data to be lost.
+
 endif # PLATFORM_EC_PANIC

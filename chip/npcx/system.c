@@ -983,6 +983,11 @@ void system_reset(int flags)
 	/* Store flags to battery backed RAM. */
 	chip_save_reset_flags(save_flags);
 
+	/* Save panic data if necessary */
+	if (IS_ENABLED(CONFIG_CHIP_PANIC_BACKUP) &&
+	    IS_ENABLED(CONFIG_BACKUP_PANIC_DATA_ON_RESET))
+	    chip_panic_data_backup();
+
 	/* If WAIT_EXT is set, then allow 10 seconds for external reset */
 	if (flags & SYSTEM_RESET_WAIT_EXT) {
 		int i;

@@ -1501,6 +1501,16 @@
 #undef CONFIG_CHIP_PANIC_BACKUP
 
 /*
+ * Define this to save panic data always on reboot. This is useful because some
+ * EC RO (eg. nocturne) doesn't preserve panic data during PMIC reset (which
+ * clears memory). This happens when RO was compiled with
+ * CONFIG_CHIPSET_HAS_PLATFORM_PMIC_RESET option set, but without
+ * CONFIG_CHIP_PANIC_BACKUP option set (eg. on nocturne). Saved panic data will
+ * be restored by EC RW after sysjump to RW.
+ */
+#undef CONFIG_BACKUP_PANIC_DATA_ON_RESET
+
+/*
  * Provide the default GPIO abstraction layer.
  * You want this unless you are doing a really tiny firmware.
  */
