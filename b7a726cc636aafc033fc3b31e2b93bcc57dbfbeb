@@ -312,6 +312,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "29a76131_f4fbcea1",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/prj.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-29T21:11:58Z",
+      "side": 1,
+      "message": "If we share a lot in common, we should just locate ourselves in the trogdor directory. The zephyr projects weren\u0027t designed for copy-paste coding like in platform/ec ... i.e., we have documented bringup procedures, and it isn\u0027t to copy/paste.",
+      "parentUuid": "1603f477_f8f3a9ca",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 36
+      },
+      "revId": "b7a726cc636aafc033fc3b31e2b93bcc57dbfbeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12fe416c_38e42e62",
         "filename": "zephyr/projects/herobrine/herobrine_npcx7/src/i2c.c",
         "patchSetId": 4
