@@ -34,6 +34,24 @@
       "parentUuid": "7d05b234_5415fda6",
       "revId": "0e6fdce59219098876872041f25b8cdde553a2f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5844e91_45960246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-06-29T18:47:26Z",
+      "side": 1,
+      "message": "Currently, the AP unregisters a partner/cable when the PD_CONTROL response indicates a device is disconnected. So, we\u0027re  (AP) not going to be doing anything with the event other than clearing it.\n\nDoes the event bit persist till a new partner is connected?",
+      "parentUuid": "8eb5f368_d72a8534",
+      "revId": "0e6fdce59219098876872041f25b8cdde553a2f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
