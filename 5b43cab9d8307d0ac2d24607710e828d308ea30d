@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32968a4e_a2568deb",
+        "filename": "board/primus/led.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-29T08:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe809058_3b7bf267",
+      "revId": "5b43cab9d8307d0ac2d24607710e828d308ea30d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e9f6ef1_87edfd26",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24626dee_e57e171c",
+        "filename": "board/primus/led.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-29T08:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e9f6ef1_87edfd26",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "5b43cab9d8307d0ac2d24607710e828d308ea30d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7163fdb6_186ac887",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-06-29T07:54:36Z",
       "side": 1,
       "message": "i was just looking at how we have done similar things on other platforms.\ncommon/lightbar.c is an example of somewhat more complicated lighting\ncontrol.\n\ni think it\u0027s better to set up a dedicated thread to perform the\nlighting effects you\u0027re implementing here by chaining deferred\ncalls.\n\nit\u0027s probably OK to leave the task implementation under primus\nto start but keep in mind that there\u0027s a good chance similar devices\nwill want to reuse the implementation in the future so avoid anything\nthat\u0027s primus specific like LED number assignments, etc.",
+      "revId": "5b43cab9d8307d0ac2d24607710e828d308ea30d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a713757c_2388c7e0",
+        "filename": "board/primus/led.c",
+        "patchSetId": 30
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-06-29T08:28:34Z",
+      "side": 1,
+      "message": "Thanks Caveh, do you mean we can change to task base led control like lightbar.c?",
+      "parentUuid": "7163fdb6_186ac887",
       "revId": "5b43cab9d8307d0ac2d24607710e828d308ea30d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
