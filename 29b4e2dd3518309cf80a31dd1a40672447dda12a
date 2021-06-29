@@ -16,6 +16,23 @@
       "message": "Reviewers, you can use the patchset 1 to compare the diff.",
       "revId": "29b4e2dd3518309cf80a31dd1a40672447dda12a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7db0963_55440f7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-06-29T22:59:03Z",
+      "side": 1,
+      "message": "Missing the wakemask change.",
+      "revId": "29b4e2dd3518309cf80a31dd1a40672447dda12a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
