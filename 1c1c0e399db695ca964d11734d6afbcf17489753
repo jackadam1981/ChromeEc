@@ -34,6 +34,23 @@
       "parentUuid": "182bc2d8_b9047c94",
       "revId": "1c1c0e399db695ca964d11734d6afbcf17489753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "914c208e_a7c73ddc",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1737,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-06-29T21:42:54Z",
+      "side": 1,
+      "message": "Is this correct? This sets charge control to idle when we drop below sustain_soc.upper, not when it reaches sustain_soc.lower. This means we are not discharging down to sustain_soc.lower if it is not equal to sustain_soc.upper.",
+      "revId": "1c1c0e399db695ca964d11734d6afbcf17489753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
