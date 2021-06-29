@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "395787f6_7e2dc171",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 15
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-29T01:42:42Z",
+      "side": 0,
+      "message": "The routines in this file are still called by cros_flash_npcx.c.  I believe this file should still be included in the build.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 88
+      },
+      "revId": "78d4ad204824e061e3d6c03d181f492885833c59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
