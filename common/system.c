@@ -1336,9 +1336,14 @@ static int command_reboot(int argc, char **argv)
 
 	if (flags & SYSTEM_RESET_HARD)
 		ccputs("Hard-");
-	if (flags & SYSTEM_RESET_WAIT_EXT)
+	if (flags & SYSTEM_RESET_WAIT_EXT) {
+		uint32_t save_flags = 0;
+		/* Handle saving common reset flags. */
+		system_encode_save_flags(flags, &save_flags);
+		/* Store flags to battery backed RAM. */
+		chip_save_reset_flags(save_flags);
 		ccputs("Waiting for ext reset!\n\n\n");
-	else
+	} else
 		ccputs("Rebooting!\n\n\n");
 	cflush();
 
