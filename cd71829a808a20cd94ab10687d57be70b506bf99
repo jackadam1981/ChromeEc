@@ -94,6 +94,30 @@
       },
       "revId": "cd71829a808a20cd94ab10687d57be70b506bf99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbe74ea6_825156f5",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-30T20:18:47Z",
+      "side": 1,
+      "message": "I think it just highlights that it needs to be a part of BOARD_ALL_PROPERTIES. I guess if the comment is clear enough, then someone will probably notice in the future.",
+      "parentUuid": "4d683119_3301fc54",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "cd71829a808a20cd94ab10687d57be70b506bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
