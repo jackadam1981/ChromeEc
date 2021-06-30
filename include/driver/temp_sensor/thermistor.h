@@ -72,7 +72,7 @@ int ncp15wb_calculate_temp(uint16_t adc);
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int get_temp_3v3_13k7_47k_4050b(int idx_adc, int *temp_ptr);
+int get_temp_3v3_13k7_47k_4050b_mk(int idx_adc, int *temp_ptr);
 #endif
 
 #ifdef CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
@@ -90,7 +90,7 @@ int get_temp_3v3_13k7_47k_4050b(int idx_adc, int *temp_ptr);
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int get_temp_3v3_51k1_47k_4050b(int idx_adc, int *temp_ptr);
+int get_temp_3v3_51k1_47k_4050b_mk(int idx_adc, int *temp_ptr);
 #endif
 
 #ifdef CONFIG_STEINHART_HART_6V0_51K1_47K_4050B
@@ -108,7 +108,7 @@ int get_temp_3v3_51k1_47k_4050b(int idx_adc, int *temp_ptr);
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int get_temp_6v0_51k1_47k_4050b(int idx_adc, int *temp_ptr);
+int get_temp_6v0_51k1_47k_4050b_mk(int idx_adc, int *temp_ptr);
 #endif
 
 #ifdef CONFIG_STEINHART_HART_3V0_22K6_47K_4050B
@@ -126,7 +126,7 @@ int get_temp_6v0_51k1_47k_4050b(int idx_adc, int *temp_ptr);
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int get_temp_3v0_22k6_47k_4050b(int idx_adc, int *temp_ptr);
+int get_temp_3v0_22k6_47k_4050b_mk(int idx_adc, int *temp_ptr);
 #endif
 
 #ifdef CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
@@ -144,7 +144,7 @@ int get_temp_3v0_22k6_47k_4050b(int idx_adc, int *temp_ptr);
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int get_temp_3v3_30k9_47k_4050b(int idx_adc, int *temp_ptr);
+int get_temp_3v3_51k1_47k_4050b_mk(int idx_adc, int *temp_ptr);
 #endif
 
 #endif  /* __CROS_EC_TEMP_SENSOR_THERMISTOR_NCP15WB_H */

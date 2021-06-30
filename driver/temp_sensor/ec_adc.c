@@ -40,7 +40,7 @@ static int get_temp(int idx, int *temp_ptr)
 	return EC_SUCCESS;
 }
 
-int ec_adc_get_val(int idx, int *temp_ptr)
+int ec_adc_get_val_mk(int idx, int *temp_ptr)
 {
 	int ret;
 	int temp_c;
@@ -50,7 +50,7 @@ int ec_adc_get_val(int idx, int *temp_ptr)
 
 	ret = get_temp(idx, &temp_c);
 	if (ret == EC_SUCCESS)
-		*temp_ptr = C_TO_K(temp_c);
+		*temp_ptr = CELSIUS_TO_MILLI_KELVIN(temp_c);
 
 	return ret;
 }

@@ -164,14 +164,14 @@ DECLARE_HOOK(HOOK_SECOND, tmp006_poll, HOOK_PRIO_TEMP_SENSOR);
 /* Interface to the rest of the EC */
 
 /* This just returns Tdie */
-static int tmp006_read_die_temp_k(const struct tmp006_data_t *tdata,
+static int tmp006_read_die_temp_mk(const struct tmp006_data_t *tdata,
 				  int *temp_ptr)
 {
 	if (tdata->fail)
 		return EC_ERROR_UNKNOWN;
 
 	/* Tdie reg is signed 1/128 degrees C, resolution 1/32 degrees */
-	*temp_ptr = (int)tdata->t_raw0 / 128 + 273;
+	*temp_ptr = CELSIUS_TO_MILLI_KELVIN((int)tdata->t_raw0 / 128);
 	return EC_SUCCESS;
 }
 
@@ -179,7 +179,7 @@ static int tmp006_read_die_temp_k(const struct tmp006_data_t *tdata,
  * This uses Tdie and Vobj and a bunch of magic parameters to calculate the
  * object temperature, Tobj.
  */
-static int tmp006_read_object_temp_k(struct tmp006_data_t *tdata,
+static int tmp006_read_object_temp_mk(struct tmp006_data_t *tdata,
 				     int *temp_ptr)
 {
 	float tdie, vobj;
@@ -228,13 +228,13 @@ static int tmp006_read_object_temp_k(struct tmp006_data_t *tdata,
 	tobj_filtered = tdata->e0 * tobj + tdata->e1 * tdata->tobj1;
 	tdata->tobj1 = tobj;
 
-	/* return integer degrees K */
-	*temp_ptr = tobj_filtered;
+	/* return integer degrees Millikelvin */
+	*temp_ptr = CELSIUS_TO_MILLI_KELVIN(tobj_filtered);
 
 	return EC_SUCCESS;
 }
 
-int tmp006_get_val(int idx, int *temp_ptr)
+int tmp006_get_val_mk(int idx, int *temp_ptr)
 {
 	/*
 	 * Note: idx is a thermal sensor index, where the top N-1 bits are the
@@ -256,9 +256,9 @@ int tmp006_get_val(int idx, int *temp_ptr)
 
 	/* Check the low bit to determine which temperature to read. */
 	if ((idx & 0x1) == 0)
-		return tmp006_read_die_temp_k(tdata, temp_ptr);
+		return tmp006_read_die_temp_mk(tdata, temp_ptr);
 	else
-		return tmp006_read_object_temp_k(tdata, temp_ptr);
+		return tmp006_read_object_temp_mk(tdata, temp_ptr);
 }
 
 /*****************************************************************************/

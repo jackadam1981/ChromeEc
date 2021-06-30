@@ -41,6 +41,6 @@
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int sb_tsi_get_val(int idx, int *temp_ptr);
+int sb_tsi_get_val_mk(int idx, int *temp_ptr);
 
 #endif  /* __CROS_EC_SB_TSI_H */

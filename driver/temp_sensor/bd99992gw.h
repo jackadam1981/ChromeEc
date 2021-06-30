@@ -85,6 +85,6 @@ enum bd99992gw_adc_channel {
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int bd99992gw_get_val(int idx, int *temp_ptr);
+int bd99992gw_get_val_mk(int idx, int *temp_ptr);
 
 #endif  /* __CROS_EC_TEMP_SENSOR_BD99992GW_H */

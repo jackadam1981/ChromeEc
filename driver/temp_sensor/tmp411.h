@@ -104,11 +104,11 @@ enum tmp411_channel_id {
  *
  * @param idx		Index to read. Idx indicates whether to read die
  *			temperature or external temperature.
- * @param temp_ptr	Destination for temperature in K.
+ * @param temp_ptr	Destination for temperature in Millkelvin.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int tmp411_get_val(int idx, int *temp_ptr);
+int tmp411_get_val_mk(int idx, int *temp_ptr);
 
 /**
  * Power control function of tmp411 temperature sensor.

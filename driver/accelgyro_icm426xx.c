@@ -790,7 +790,7 @@ static int icm426xx_read(const struct motion_sensor_t *s, intv3_t v)
 	return EC_SUCCESS;
 }
 
-static int icm426xx_read_temp(const struct motion_sensor_t *s, int *temp_ptr)
+static int icm426xx_read_temp_mk(const struct motion_sensor_t *s, int *temp_ptr)
 {
 	int val, ret;
 
@@ -806,7 +806,7 @@ static int icm426xx_read_temp(const struct motion_sensor_t *s, int *temp_ptr)
 	if (val == ICM426XX_INVALID_DATA)
 		return EC_ERROR_NOT_POWERED;
 
-	*temp_ptr = C_TO_K((val * 100) / 13248 + 25);
+	*temp_ptr = CELSIUS_TO_MILLI_KELVIN((val * 100) / 13248 + 25);
 	return EC_SUCCESS;
 }
 
@@ -966,7 +966,7 @@ out_unlock:
 const struct accelgyro_drv icm426xx_drv = {
 	.init = icm426xx_init,
 	.read = icm426xx_read,
-	.read_temp = icm426xx_read_temp,
+	.read_temp_mk = icm426xx_read_temp_mk,
 	.set_range = icm426xx_set_range,
 	.get_resolution = icm_get_resolution,
 	.set_data_rate = icm426xx_set_data_rate,

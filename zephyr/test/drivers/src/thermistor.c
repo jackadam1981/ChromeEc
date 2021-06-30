@@ -74,19 +74,19 @@ static void test_thermistor_power_pin(void)
 	zassert_ok(gpio_emul_input_set(gpio_dev, GPIO_PG_EC_DSW_PWROK_PORT, 0),
 		   NULL);
 	zassert_equal(EC_ERROR_NOT_POWERED,
-		      get_temp_3v3_13k7_47k_4050b(
+		      get_temp_3v3_13k7_47k_4050b_mk(
 					ADC_CHANNEL_3V3_13K7_47K_4050B, &temp),
 		      NULL);
 	zassert_equal(EC_ERROR_NOT_POWERED,
-		      get_temp_3v3_30k9_47k_4050b(
+		      get_temp_3v3_51k1_47k_4050b_mk(
 					ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
 		      NULL);
 	zassert_equal(EC_ERROR_NOT_POWERED,
-		      get_temp_3v3_51k1_47k_4050b(
+		      get_temp_3v3_51k1_47k_4050b_mk(
 					ADC_CHANNEL_3V3_51K1_47K_4050B, &temp),
 		      NULL);
 	zassert_equal(EC_ERROR_NOT_POWERED,
-		      get_temp_3v0_22k6_47k_4050b(
+		      get_temp_3v0_22k6_47k_4050b_mk(
 					ADC_CHANNEL_3V0_22K6_47K_4050B, &temp),
 		      NULL);
 
@@ -94,19 +94,19 @@ static void test_thermistor_power_pin(void)
 	zassert_ok(gpio_emul_input_set(gpio_dev, GPIO_PG_EC_DSW_PWROK_PORT, 1),
 		   NULL);
 	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_13k7_47k_4050b(
+		      get_temp_3v3_13k7_47k_4050b_mk(
 					ADC_CHANNEL_3V3_13K7_47K_4050B, &temp),
 		      NULL);
 	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_30k9_47k_4050b(
+		      get_temp_3v3_51k1_47k_4050b_mk(
 					ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
 		      NULL);
 	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_51k1_47k_4050b(
+		      get_temp_3v3_51k1_47k_4050b_mk(
 					ADC_CHANNEL_3V3_51K1_47K_4050B, &temp),
 		      NULL);
 	zassert_equal(EC_SUCCESS,
-		      get_temp_3v0_22k6_47k_4050b(
+		      get_temp_3v0_22k6_47k_4050b_mk(
 					ADC_CHANNEL_3V0_22K6_47K_4050B, &temp),
 		      NULL);
 
@@ -146,19 +146,19 @@ static void test_thermistor_adc_read_error(void)
 		   "adc_emul_value_func_set() failed");
 
 	zassert_equal(EC_ERROR_UNKNOWN,
-		      get_temp_3v3_13k7_47k_4050b(
+		      get_temp_3v3_13k7_47k_4050b_mk(
 					ADC_CHANNEL_3V3_13K7_47K_4050B, &temp),
 		      NULL);
 	zassert_equal(EC_ERROR_UNKNOWN,
-		      get_temp_3v3_30k9_47k_4050b(
+		      get_temp_3v3_51k1_47k_4050b_mk(
 					ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
 		      NULL);
 	zassert_equal(EC_ERROR_UNKNOWN,
-		      get_temp_3v3_51k1_47k_4050b(
+		      get_temp_3v3_51k1_47k_4050b_mk(
 					ADC_CHANNEL_3V3_51K1_47K_4050B, &temp),
 		      NULL);
 	zassert_equal(EC_ERROR_UNKNOWN,
-		      get_temp_3v0_22k6_47k_4050b(
+		      get_temp_3v0_22k6_47k_4050b_mk(
 					ADC_CHANNEL_3V0_22K6_47K_4050B, &temp),
 		      NULL);
 }
@@ -305,9 +305,10 @@ static void test_thermistor_3v3_30k9_47k_4050b(void)
 	for (temp_expected = 273; temp_expected <= 373; temp_expected++) {
 		state.temp_expected = temp_expected;
 		zassert_equal(EC_SUCCESS,
-			      get_temp_3v3_30k9_47k_4050b(
+			      get_temp_3v3_51k1_47k_4050b_mk(
 					ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
 			      NULL);
+		temp = MILLI_KELVIN_TO_KELVIN(temp);
 		zassert_within(temp_expected, temp, TEMP_EPS,
 			       "Expected %d*K, got %d*K", temp_expected, temp);
 	}
@@ -318,6 +319,7 @@ static void test_thermistor_3v3_30k9_47k_4050b(void)
 		      get_temp_3v3_30k9_47k_4050b(
 				ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
 		      NULL);
+	temp = MILLI_KELVIN_TO_KELVIN(temp);
 	zassert_equal(273, temp, "Expected %d*K, got %d*K", 273, temp);
 
 	/* Temperatures above 100*C should be reported as 100*C */
@@ -326,6 +328,7 @@ static void test_thermistor_3v3_30k9_47k_4050b(void)
 		      get_temp_3v3_30k9_47k_4050b(
 				ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
 		      NULL);
+	temp = MILLI_KELVIN_TO_KELVIN(temp);
 	zassert_equal(373, temp, "Expected %d*K, got %d*K", 373, temp);
 }
 

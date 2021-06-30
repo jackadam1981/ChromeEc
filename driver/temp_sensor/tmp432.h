@@ -111,7 +111,7 @@ enum tmp432_channel_id {
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int tmp432_get_val(int idx, int *temp_ptr);
+int tmp432_get_val_mk(int idx, int *temp_ptr);
 
 /**
  * Power control function of tmp432 temperature sensor.

@@ -61,7 +61,7 @@ static int first_read_delay = CONFIG_TEMP_SENSOR_FIRST_READ_DELAY_MS;
 
 static void thermal_control(void)
 {
-	int i, j, t, rv, f;
+	int i, j, temp_k, rv, f;
 	int count_over[EC_TEMP_THRESH_COUNT];
 	int count_under[EC_TEMP_THRESH_COUNT];
 	int num_valid_limits[EC_TEMP_THRESH_COUNT];
@@ -94,11 +94,11 @@ static void thermal_control(void)
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
 
 		/* read one */
-		rv = temp_sensor_read(i, &t);
+		rv = temp_sensor_read_k(i, &temp_k);
 
 #ifdef CONFIG_CUSTOM_FAN_CONTROL
 		/* Store all sensors value */
-		temp[i] = K_TO_C(t);
+		temp[i] = K_TO_C(temp_k);
 #endif
 
 		if (rv != EC_SUCCESS)
@@ -112,12 +112,12 @@ static void thermal_control(void)
 			int release = thermal_params[i].temp_host_release[j];
 			if (limit) {
 				num_valid_limits[j]++;
-				if (t > limit) {
+				if (temp_k > limit) {
 					count_over[j]++;
 				} else if (release) {
-					if (t < release)
+					if (temp_k < release)
 						count_under[j]++;
-				} else if (t < limit) {
+				} else if (temp_k < limit) {
 					count_under[j]++;
 				}
 			}
@@ -128,7 +128,7 @@ static void thermal_control(void)
 		    thermal_params[i].temp_fan_max) {
 			f = thermal_fan_percent(thermal_params[i].temp_fan_off,
 						thermal_params[i].temp_fan_max,
-						t);
+						temp_k);
 			if (f > fmax)
 				fmax = f;
 

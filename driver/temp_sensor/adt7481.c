@@ -67,20 +67,20 @@ static int adt7481_set_temp(const int offset, int temp)
 }
 #endif
 
-int adt7481_get_val(int idx, int *temp_ptr)
+int adt7481_get_val_mk(int idx, int *temp_ptr)
 {
 	if (!has_power())
 		return EC_ERROR_NOT_POWERED;
 
 	switch (idx) {
 	case ADT7481_IDX_LOCAL:
-		*temp_ptr = temp_val_local;
+		*temp_ptr = temp_val_local*1000;
 		break;
 	case ADT7481_IDX_REMOTE1:
-		*temp_ptr = temp_val_remote1;
+		*temp_ptr = temp_val_remote1*1000;
 		break;
 	case ADT7481_IDX_REMOTE2:
-		*temp_ptr = temp_val_remote2;
+		*temp_ptr = temp_val_remote2*1000;
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;

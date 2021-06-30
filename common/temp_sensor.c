@@ -19,7 +19,17 @@
 #include "temp_sensor/temp_sensor.h"
 #endif
 
-int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
+int temp_sensor_read_k(enum temp_sensor_id id, int *temp_ptr)
+{
+	int rv;
+	int temp_mk;
+
+	rv = temp_sensor_read_mk(id, &temp_mk);
+	*temp_ptr = ROUND_DIVIDE(temp_mk, 1000);
+	return rv;
+}
+
+int temp_sensor_read_mk(enum temp_sensor_id id, int *temp_ptr)
 {
 	const struct temp_sensor_t *sensor;
 
@@ -27,7 +37,7 @@ int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
 		return EC_ERROR_INVAL;
 	sensor = temp_sensors + id;
 
-	return sensor->read(sensor->idx, temp_ptr);
+	return sensor->read_mk(sensor->idx, temp_ptr);
 }
 
 static void update_mapped_memory(void)
@@ -46,7 +56,7 @@ static void update_mapped_memory(void)
 			 EC_TEMP_SENSOR_B_ENTRIES)
 			break;
 
-		switch (temp_sensor_read(i, &t)) {
+		switch (temp_sensor_read_k(i, &t)) {
 		case EC_ERROR_NOT_POWERED:
 			*mptr = EC_TEMP_SENSOR_NOT_POWERED;
 			break;
@@ -109,7 +119,7 @@ int console_command_temps(int argc, char **argv)
 
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
 		ccprintf("  %-20s: ", temp_sensors[i].name);
-		rv = temp_sensor_read(i, &t);
+		rv = temp_sensor_read_k(i, &t);
 		if (rv)
 			rv1 = rv;
 

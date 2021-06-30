@@ -108,9 +108,9 @@ const int usb_port_enable[USB_PORT_COUNT] = {
  *     src/mainboard/google/${board}/acpi/dptf.asl
  */
 const struct temp_sensor_t temp_sensors[] = {
-	{"TMP431_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	{"TMP431_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val_mk,
 			TMP432_IDX_LOCAL},
-	{"TMP431_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	{"TMP431_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val_mk,
 			TMP432_IDX_REMOTE1},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);

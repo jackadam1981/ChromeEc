@@ -38,10 +38,10 @@ static int cpu_shutdown;
 static int fan_pct;
 static int no_temps_read;
 
-int mock_temp_get_val(int idx, int *temp_ptr)
+int mock_temp_get_val_mk(int idx, int *temp_ptr)
 {
 	if (mock_temp[idx] >= 0) {
-		*temp_ptr = mock_temp[idx];
+		*temp_ptr = CELSIUS_TO_MILLI_KELVIN(mock_temp[idx]);
 		return EC_SUCCESS;
 	}
 

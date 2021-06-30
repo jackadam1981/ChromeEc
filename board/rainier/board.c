@@ -89,11 +89,11 @@ BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 #ifdef CONFIG_TEMP_SENSOR_TMP432
 /* Temperature sensors data; must be in same order as enum temp_sensor_id. */
 const struct temp_sensor_t temp_sensors[] = {
-	{"TMP432_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	{"TMP432_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val_mk,
 		TMP432_IDX_LOCAL, 4},
-	{"TMP432_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	{"TMP432_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val_mk,
 		TMP432_IDX_REMOTE1, 4},
-	{"TMP432_Sensor_2", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	{"TMP432_Sensor_2", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val_mk,
 		TMP432_IDX_REMOTE2, 4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);

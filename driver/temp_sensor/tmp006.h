@@ -38,6 +38,6 @@ extern const struct tmp006_t tmp006_sensors[];
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int tmp006_get_val(int idx, int *temp_ptr);
+int tmp006_get_val_mk(int idx, int *temp_ptr);
 
 #endif  /* __CROS_EC_TMP006_H */

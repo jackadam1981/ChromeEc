@@ -533,7 +533,7 @@ static const struct thermistor_info thermistor_info = {
 	.data = thermistor_data,
 };
 
-static int board_get_temp(int idx, int *temp_k)
+static int board_get_temp_mk(int idx, int *temp_k)
 {
 	/* idx is the sensor index set below in temp_sensors[] */
 	int mv = adc_read_channel(
@@ -544,14 +544,14 @@ static int board_get_temp(int idx, int *temp_k)
 		return -1;
 
 	temp_c = thermistor_linear_interpolate(mv, &thermistor_info);
-	*temp_k = C_TO_K(temp_c);
+	*temp_k = CELSIUS_TO_MILLI_KELVIN(temp_c);
 	return 0;
 }
 
 const struct temp_sensor_t temp_sensors[] = {
-	{"Charger", TEMP_SENSOR_TYPE_BOARD, board_get_temp, 0},
-	{"SOC", TEMP_SENSOR_TYPE_BOARD, board_get_temp, 1},
-	{"CPU", TEMP_SENSOR_TYPE_CPU, sb_tsi_get_val, 0},
+	{"Charger", TEMP_SENSOR_TYPE_BOARD, board_get_temp_mk, 0},
+	{"SOC", TEMP_SENSOR_TYPE_BOARD, board_get_temp_mk, 1},
+	{"CPU", TEMP_SENSOR_TYPE_CPU, sb_tsi_get_val_mk, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
