@@ -33,6 +33,24 @@
       "message": "@Ruibin, can you pull chip_pd_irq() into a separate file.\nSo cros-ec and zephyr are both able to build it.\nThank you.",
       "revId": "2318d17d1b32480e4bd790cc77eb5abfd05dc6ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ece65547_eadbe268",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-06-30T09:45:43Z",
+      "side": 1,
+      "message": "OK. Are my changes also in this CL?",
+      "parentUuid": "bbcc847a_63abae60",
+      "revId": "2318d17d1b32480e4bd790cc77eb5abfd05dc6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
