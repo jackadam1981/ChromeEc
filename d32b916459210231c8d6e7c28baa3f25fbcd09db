@@ -16,6 +16,24 @@
       "message": "If this does not break Zork I\u0027m good with this change.",
       "revId": "d32b916459210231c8d6e7c28baa3f25fbcd09db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f033c1d8_06e5cd6f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-06-30T17:47:39Z",
+      "side": 1,
+      "message": "Sounds good :D\n\nZork will need its own version of these if it ever wants to enable FRS, which it should be able to do based on our guybrush results. It would also need to come with a pretty big branch update to include all the FRS fixes we found working on volteer though.",
+      "parentUuid": "e0509737_babb9e96",
+      "revId": "d32b916459210231c8d6e7c28baa3f25fbcd09db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
