@@ -16,6 +16,29 @@
       "message": "PTAL",
       "revId": "f4c397887c55cef9bbc7e6f477d5defdcb0ae8bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e315cf20_db742d70",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-30T20:48:00Z",
+      "side": 1,
+      "message": "Does anything set the tpm mode to ENABLED? Do we need to set the tpm mode back to TPM_MODE_ENABLED_TENTATIVE during tpm resets?",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "f4c397887c55cef9bbc7e6f477d5defdcb0ae8bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
