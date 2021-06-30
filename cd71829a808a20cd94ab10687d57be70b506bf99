@@ -22,6 +22,30 @@
       },
       "revId": "cd71829a808a20cd94ab10687d57be70b506bf99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07c31202_f46f313e",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-30T19:43:05Z",
+      "side": 1,
+      "message": "Looks like we can\u0027t use it in the future - how about I just add a comment to this respect?",
+      "parentUuid": "b41c6e36_5bbccc7a",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "cd71829a808a20cd94ab10687d57be70b506bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
