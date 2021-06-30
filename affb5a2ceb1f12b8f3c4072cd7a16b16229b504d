@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40cb860_ecf71316",
+        "filename": "zephyr/projects/herobrine/boards/arm/herobrine_npcx9/herobrine_npcx9_defconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T16:44:55Z",
+      "side": 1,
+      "message": "Can you create zephyr/ec/chip/Kconfig.npcx9 and setup the correct defaults for NPCX9?  We did this for npcx7 and it really cleans up this file.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "affb5a2ceb1f12b8f3c4072cd7a16b16229b504d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
