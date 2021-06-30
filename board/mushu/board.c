@@ -413,37 +413,37 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_CHARGER] = {
 		.name = "CHARGER",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v3_30k9_47k_4050b,
+		.read_k = get_temp_3v3_30k9_47k_4050b,
 		.idx = ADC_TEMP_SENSOR_1
 	},
 	[TEMP_5V] = {
 		.name = "5V",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v3_30k9_47k_4050b,
+		.read_k = get_temp_3v3_30k9_47k_4050b,
 		.idx = ADC_TEMP_SENSOR_2
 	},
 	[TEMP_GPU] = {
 		.name = "GPU",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_R19ME4070,
+		.read_k = get_temp_R19ME4070,
 		.idx = R19ME4070_LOCAL
 	},
 	[TEMP_F75303_LOCAL] = {
 		.name = "F75303_Local",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = f75303_get_val,
+		.read_k = f75303_get_val,
 		.idx = F75303_IDX_LOCAL
 	},
 	[TEMP_F75303_GPU] = {
 		.name = "F75303_GPU",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = f75303_get_val,
+		.read_k = f75303_get_val,
 		.idx = F75303_IDX_REMOTE1
 	},
 	[TEMP_F75303_GPU_POWER] = {
 		.name = "F75303_GPU_Power",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = f75303_get_val,
+		.read_k = f75303_get_val,
 		.idx = F75303_IDX_REMOTE2
 	},
 };

@@ -85,7 +85,7 @@ int charger_profile_override(struct charge_state_data *curr)
 
 	/* charge control if outside of allowable temperature range */
 	if (curr->state == ST_CHARGE) {
-		temp_sensor_read(TEMP_SENSOR_CHARGER, &charger_temp);
+		temp_sensor_read_k(TEMP_SENSOR_CHARGER, &charger_temp);
 		charger_temp_c = K_TO_C(charger_temp);
 		if (charger_temp_c > 52)
 			curr->requested_current = MIN(curr->requested_current,

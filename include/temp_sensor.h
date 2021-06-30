@@ -33,10 +33,20 @@ struct temp_sensor_t {
 	const char *name;
 	/* Temperature sensor type. */
 	enum temp_sensor_type type;
-	/* Read sensor value in K into temp_ptr; return non-zero if error. */
-	int (*read)(int idx, int *temp_ptr);
+	/*
+	 * Read sensor value in degrees Kelvin into temp_k_ptr.
+	 * return non-zero if error.
+	 * read_k may be left unimplemented if read_mk is implemented.
+	 */
+	int (*read_k)(int idx, int *temp_k_ptr);
 	/* Index among the same kind of sensors. */
 	int idx;
+	/*
+	 * Read sensor value in degrees Millikelvin into temp_mk_ptr.
+	 * Return non-zero if error.
+	 * read_mk is required for temp_sensor_read_mk.
+	 */
+	int (*read_mk)(int idx, int *temp_mk_ptr);
 };
 
 #ifdef CONFIG_TEMP_SENSOR
@@ -55,7 +65,18 @@ extern const struct temp_sensor_t temp_sensors[];
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr);
+int temp_sensor_read_k(enum temp_sensor_id id, int *temp_k_ptr);
+
+/**
+ * Get the most recently measured temperature (in Millikelvin) for the sensor.
+ *
+ * @param id		Sensor ID
+ * @param temp_ptr	Destination for temperature
+ *
+ * @return EC_SUCCESS, or non-zero if error.
+ *	   EC_ERROR_UNIMPLEMENTED if read_mk is not implemented for the sensor.
+ */
+int temp_sensor_read_mk(enum temp_sensor_id id, int *temp_mk_ptr);
 
 /**
  * Console command to print temperature sensor values

@@ -31,39 +31,39 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SNS_AMBIENT] = {
 		.name = "Ambient",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v0_22k6_47k_4050b,
+		.read_k = get_temp_3v0_22k6_47k_4050b,
 		.idx = ADC_TEMP_SNS_AMBIENT,
 	},
 	[TEMP_SNS_BATTERY] = {
 		.name = "Battery",
 		.type = TEMP_SENSOR_TYPE_BATTERY,
-		.read = charge_get_battery_temp,
+		.read_k = charge_get_battery_temp,
 		.idx = 0,
 	},
 	[TEMP_SNS_DDR] = {
 		.name = "DDR",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v0_22k6_47k_4050b,
+		.read_k = get_temp_3v0_22k6_47k_4050b,
 		.idx = ADC_TEMP_SNS_DDR,
 	},
 #ifdef CONFIG_PECI
 	[TEMP_SNS_PECI] = {
 		.name = "PECI",
 		.type = TEMP_SENSOR_TYPE_CPU,
-		.read = peci_temp_sensor_get_val,
+		.read_k = peci_temp_sensor_get_val,
 		.idx = 0,
 	},
 #endif /* CONFIG_PECI */
 	[TEMP_SNS_SKIN] = {
 		.name = "Skin",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v0_22k6_47k_4050b,
+		.read_k = get_temp_3v0_22k6_47k_4050b,
 		.idx = ADC_TEMP_SNS_SKIN,
 	},
 	[TEMP_SNS_VR] = {
 		.name = "VR",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v0_22k6_47k_4050b,
+		.read_k = get_temp_3v0_22k6_47k_4050b,
 		.idx = ADC_TEMP_SNS_VR,
 	},
 };

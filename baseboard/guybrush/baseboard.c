@@ -203,31 +203,31 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_SOC] = {
 		.name = "SOC",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_soc_temp,
+		.read_k = board_get_soc_temp,
 		.idx = ADC_TEMP_SENSOR_SOC,
 	},
 	[TEMP_SENSOR_CHARGER] = {
 		.name = "Charger",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v3_30k9_47k_4050b,
+		.read_k = get_temp_3v3_30k9_47k_4050b,
 		.idx = ADC_TEMP_SENSOR_CHARGER,
 	},
 	[TEMP_SENSOR_MEMORY] = {
 		.name = "Memory",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_memory_temp,
+		.read_k = board_get_memory_temp,
 		.idx = ADC_TEMP_SENSOR_MEMORY,
 	},
 	[TEMP_SENSOR_CPU] = {
 		.name = "CPU",
 		.type = TEMP_SENSOR_TYPE_CPU,
-		.read = sb_tsi_get_val,
+		.read_k = sb_tsi_get_val,
 		.idx = 0,
 	},
 	[TEMP_SENSOR_AMBIENT] = {
 		.name = "Ambient",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = tmp112_get_val,
+		.read_k = tmp112_get_val,
 		.idx = TMP112_AMB,
 	},
 };

@@ -60,6 +60,10 @@
 
 /* USB Type C and USB PD defines */
 #undef CONFIG_USB_PD_TCPMV1
+
+/* Remove PRL state names to free flash space */
+#define CONFIG_USB_PD_DEBUG_LEVEL 2
+
 /*
  * Enable TCPMv2. Use default PD 2.0 operation because we have a
  * parade PS8751 TCPC

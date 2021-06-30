@@ -64,7 +64,7 @@ static void bd99992gw_init(void)
 
 	/* Mark active channels from the board temp sensor table */
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i)
-		if (temp_sensors[i].read == bd99992gw_get_val)
+		if (temp_sensors[i].read_k == bd99992gw_get_val)
 			active_channels[active_channel_count++] =
 				temp_sensors[i].idx;
 
