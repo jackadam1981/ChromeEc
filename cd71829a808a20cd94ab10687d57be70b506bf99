@@ -46,6 +46,30 @@
       },
       "revId": "cd71829a808a20cd94ab10687d57be70b506bf99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ce42c3_380812fe",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-30T19:53:02Z",
+      "side": 1,
+      "message": "We could use it in the future as long as it\u0027s cleared after the update.",
+      "parentUuid": "07c31202_f46f313e",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "cd71829a808a20cd94ab10687d57be70b506bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
