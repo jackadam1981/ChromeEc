@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dea25711_251e6670",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-30T19:04:02Z",
+      "side": 1,
+      "message": "It seems like this duplicates a lot of code from console_output.c\n\nHow did it compare to keep that code and just manage the diff with \"ifdef CONFIG_ZEPHYR\" instead?",
+      "revId": "7c1bdb15155e073dc695241f1ac3251176221b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5e5e0be_099bc790",
