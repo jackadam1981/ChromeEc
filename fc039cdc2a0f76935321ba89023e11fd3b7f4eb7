@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c42e1ea_6f063ec3",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-30T17:06:06Z",
+      "side": 1,
+      "message": "Leaving this for future CL.",
+      "parentUuid": "7c2c8dba_a126f751",
+      "range": {
+        "startLine": 121,
+        "startChar": 11,
+        "endLine": 121,
+        "endChar": 35
+      },
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a39c7442_5651f225",
@@ -303,6 +327,24 @@
       "writtenOn": "2021-06-15T07:57:58Z",
       "side": 1,
       "message": "Changed the address of the 2nd PI3USB9201 since I2C_PORT_USB_C0 and I2C_PORT_USB_C1 are the same in the driver test. Probably just need to have a single PI3USB9201 somehow?",
+      "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fb2265b_e227be35",
+        "filename": "zephyr/test/drivers/src/stubs.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-30T17:06:06Z",
+      "side": 1,
+      "message": "Leaving this for future CL.",
+      "parentUuid": "be2e8386_06c3c924",
       "revId": "fc039cdc2a0f76935321ba89023e11fd3b7f4eb7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

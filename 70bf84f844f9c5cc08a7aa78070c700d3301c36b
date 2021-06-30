@@ -39,6 +39,30 @@
       },
       "revId": "70bf84f844f9c5cc08a7aa78070c700d3301c36b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "848d3170_531a6c97",
+        "filename": "zephyr/test/drivers/src/bc12.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-06-30T17:06:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52a5aded_303dfb19",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "70bf84f844f9c5cc08a7aa78070c700d3301c36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
