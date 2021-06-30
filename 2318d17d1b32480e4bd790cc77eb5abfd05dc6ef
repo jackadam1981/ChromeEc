@@ -16,6 +16,23 @@
       "message": "Dino, can this be resubmitted as a non-hack?",
       "revId": "2318d17d1b32480e4bd790cc77eb5abfd05dc6ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbcc847a_63abae60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-06-30T09:40:26Z",
+      "side": 1,
+      "message": "@Ruibin, can you pull chip_pd_irq() into a separate file.\nSo cros-ec and zephyr are both able to build it.\nThank you.",
+      "revId": "2318d17d1b32480e4bd790cc77eb5abfd05dc6ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
