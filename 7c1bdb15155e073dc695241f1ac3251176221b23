@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5e5e0be_099bc790",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T18:55:34Z",
+      "side": 1,
+      "message": "Replace with shell_zephyr.",
+      "range": {
+        "startLine": 242,
+        "startChar": 15,
+        "endLine": 242,
+        "endChar": 41
+      },
+      "revId": "7c1bdb15155e073dc695241f1ac3251176221b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "759878f8_1f3bf8dc",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T18:55:34Z",
+      "side": 1,
+      "message": "Rename \"s\" to \"output_buffer\" so it\u0027s clearer what this is doing.\n\nYou should also pass the length of the buffer into this routine.  As is, overflows will corrupt the stack before your assert at line 325.\n\nHow about setting up a struct for the context that stores the buffer address and length?  This way sprintf_out() can avoid a buffer overflow.\n\nYou can then also put a common assert in this function instead of separate ones for cprintf and cprints.",
+      "range": {
+        "startLine": 253,
+        "startChar": 23,
+        "endLine": 253,
+        "endChar": 30
+      },
+      "revId": "7c1bdb15155e073dc695241f1ac3251176221b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aef799b4_bdc3d20f",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T18:55:34Z",
+      "side": 1,
+      "message": "USB console is only supported for non-EC boards (servo, twinkie, etc), which won\u0027t switch to Zephyr at the moment.\n\nI think you can drop all the USB console references.  You could add a build assert that neither CONFIG_USB_CONSOLE or CONFIG_USB_CONSOLE_STREAM are defined in this file.",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 0
+      },
+      "revId": "7c1bdb15155e073dc695241f1ac3251176221b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
