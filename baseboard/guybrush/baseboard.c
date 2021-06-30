@@ -191,7 +191,7 @@ const struct adc_t adc_channels[] = {
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 
 /* Temp Sensors */
-static int board_get_memory_temp(int, int *);
+static int board_get_memory_temp_mk(int, int *);
 
 const struct tmp112_sensor_t tmp112_sensors[] = {
 	{ I2C_PORT_SENSOR, TMP112_I2C_ADDR_FLAGS0 },
@@ -203,31 +203,31 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_SOC] = {
 		.name = "SOC",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_soc_temp,
+		.read_mk = board_get_soc_temp_mk,
 		.idx = ADC_TEMP_SENSOR_SOC,
 	},
 	[TEMP_SENSOR_CHARGER] = {
 		.name = "Charger",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v3_30k9_47k_4050b,
+		.read_mk = get_temp_3v3_30k9_47k_4050b_mk,
 		.idx = ADC_TEMP_SENSOR_CHARGER,
 	},
 	[TEMP_SENSOR_MEMORY] = {
 		.name = "Memory",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_memory_temp,
+		.read_mk = board_get_memory_temp_mk,
 		.idx = ADC_TEMP_SENSOR_MEMORY,
 	},
 	[TEMP_SENSOR_CPU] = {
 		.name = "CPU",
 		.type = TEMP_SENSOR_TYPE_CPU,
-		.read = sb_tsi_get_val,
+		.read_mk = sb_tsi_get_val_mk,
 		.idx = 0,
 	},
 	[TEMP_SENSOR_AMBIENT] = {
 		.name = "Ambient",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = tmp112_get_val,
+		.read_mk = tmp112_get_val_mk,
 		.idx = TMP112_AMB,
 	},
 };
@@ -811,11 +811,11 @@ void bc12_interrupt(enum gpio_signal signal)
 	}
 }
 
-static int board_get_memory_temp(int idx, int *temp_k)
+static int board_get_memory_temp_mk(int idx, int *temp_k)
 {
 	if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
 		return EC_ERROR_NOT_POWERED;
-	return get_temp_3v3_30k9_47k_4050b(idx, temp_k);
+	return get_temp_3v3_30k9_47k_4050b_mk(idx, temp_k);
 }
 
 /**

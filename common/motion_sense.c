@@ -1134,7 +1134,7 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 		}
 		if (args->version >= 4) {
 			if (IS_ENABLED(CONFIG_ONLINE_CALIB) &&
-			    sensor->drv->read_temp)
+			    sensor->drv->read_temp_mk)
 				out->info_4.flags |=
 					MOTION_SENSE_CMD_INFO_FLAG_ONLINE_CALIB;
 			args->response_size = sizeof(out->info_4);

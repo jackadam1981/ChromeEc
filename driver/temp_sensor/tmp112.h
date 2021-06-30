@@ -38,11 +38,11 @@ extern const struct tmp112_sensor_t tmp112_sensors[];
  * @param idx		Index to read, from board's enum tmp112_sensor
  *			definition
  *
- * @param temp_ptr	Destination for temperature in K.
+ * @param temp_ptr	Destination for temperature in Millikelvin.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int tmp112_get_val(int idx, int *temp_ptr);
+int tmp112_get_val_mk(int idx, int *temp_ptr);
 
 /**
  * Init the sensors.  Note, this will run automatically on HOOK_INIT, but is

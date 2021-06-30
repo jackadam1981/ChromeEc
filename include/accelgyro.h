@@ -41,10 +41,10 @@ struct accelgyro_drv {
 	 * Read the sensor's current internal temperature.
 	 *
 	 * @param s Pointer to sensor data.
-	 * @param temp Pointer to store temperature in degrees Kelvin.
+	 * @param temp Pointer to store temperature in degrees Millikelvin.
 	 * @return EC_SUCCESS if successful, non-zero if error.
 	 */
-	int (*read_temp)(const struct motion_sensor_t *s, int *temp);
+	int (*read_temp_mk)(const struct motion_sensor_t *s, int *temp);
 
 	/**
 	 * Setter method for the sensor range. The sensor range

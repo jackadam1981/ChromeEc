@@ -21,14 +21,14 @@ static int oti502_read_block(const int offset, uint8_t *data, int len)
 			 offset, data, len);
 }
 
-int oti502_get_val(int idx, int *temp_ptr)
+int oti502_get_val_mk(int idx, int *temp_ptr)
 {
 	switch (idx) {
 	case OTI502_IDX_AMBIENT:
-		*temp_ptr = temp_val_ambient;
+		*temp_ptr = temp_val_ambient*1000;
 		break;
 	case OTI502_IDX_OBJECT:
-		*temp_ptr = temp_val_object;
+		*temp_ptr = temp_val_object*1000;
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;

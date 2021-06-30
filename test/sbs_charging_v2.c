@@ -451,9 +451,9 @@ static int test_external_funcs(void)
 	TEST_ASSERT(!charge_want_shutdown());
 	TEST_ASSERT(charge_get_percent() == 50);
 	temp = 0;
-	rv = charge_get_battery_temp(0, &temp);
+	rv = charge_get_battery_temp_mk(0, &temp);
 	TEST_ASSERT(rv == EC_SUCCESS);
-	TEST_ASSERT(K_TO_C(temp) == 25);
+	TEST_ASSERT(MILLI_KELVIN_TO_CELSIUS(temp) == 25);
 
 	return EC_SUCCESS;
 }

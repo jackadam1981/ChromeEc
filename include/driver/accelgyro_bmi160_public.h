@@ -23,7 +23,7 @@
 extern const struct accelgyro_drv bmi160_drv;
 
 void bmi160_interrupt(enum gpio_signal signal);
-int bmi160_get_sensor_temp(int idx, int *temp_ptr);
+int bmi160_get_sensor_temp_mk(int idx, int *temp_ptr);
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_ACCEL
 extern struct i2c_stress_test_dev bmi160_i2c_stress_test_dev;

@@ -141,11 +141,11 @@ int charge_prevent_power_on(int power_button_pressed);
  * Get the last polled battery/charger temperature.
  *
  * @param idx		Sensor index to read.
- * @param temp_ptr	Destination for temperature in K.
+ * @param temp_ptr	Destination for temperature in Millikelvin.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int charge_get_battery_temp(int idx, int *temp_ptr);
+int charge_get_battery_temp_mk(int idx, int *temp_ptr);
 
 /**
  * Get the pointer to the battery parameters we saved in charge state.

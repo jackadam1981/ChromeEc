@@ -47,11 +47,11 @@ struct peci_data {
  * Get the last polled value of the PECI temp sensor.
  *
  * @param idx		Sensor index to read.
- * @param temp_ptr	Destination for temperature in K.
+ * @param temp_ptr	Destination for temperature in Millikelvin.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int peci_temp_sensor_get_val(int idx, int *temp_ptr);
+int peci_temp_sensor_get_val_mk(int idx, int *temp_ptr);
 
 /**
  * Start a PECI transaction

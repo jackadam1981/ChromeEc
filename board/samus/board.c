@@ -174,21 +174,21 @@ BUILD_ASSERT(ARRAY_SIZE(tmp006_sensors) == TMP006_COUNT);
 
 /* Temperature sensors data; must be in same order as enum temp_sensor_id. */
 const struct temp_sensor_t temp_sensors[] = {
-	{"PECI", TEMP_SENSOR_TYPE_CPU, peci_temp_sensor_get_val, 0},
-	{"ECInternal", TEMP_SENSOR_TYPE_BOARD, chip_temp_sensor_get_val, 0},
-	{"I2C-Charger-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val, 0},
-	{"I2C-Charger-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val, 1},
-	{"I2C-CPU-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val, 2},
-	{"I2C-CPU-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val, 3},
-	{"I2C-Left C-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val, 4},
-	{"I2C-Left C-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val, 5},
-	{"I2C-Right C-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val, 6},
-	{"I2C-Right C-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val, 7},
-	{"I2C-Right D-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val, 8},
-	{"I2C-Right D-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val, 9},
-	{"I2C-Left D-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val, 10},
-	{"I2C-Left D-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val, 11},
-	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp, 0},
+	{"PECI", TEMP_SENSOR_TYPE_CPU, peci_temp_sensor_get_val_mk, 0},
+	{"ECInternal", TEMP_SENSOR_TYPE_BOARD, chip_temp_sensor_get_val_mk, 0},
+	{"I2C-Charger-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val_mk, 0},
+	{"I2C-Charger-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val_mk, 1},
+	{"I2C-CPU-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val_mk, 2},
+	{"I2C-CPU-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val_mk, 3},
+	{"I2C-Left C-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val_mk, 4},
+	{"I2C-Left C-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val_mk, 5},
+	{"I2C-Right C-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val_mk, 6},
+	{"I2C-Right C-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val_mk, 7},
+	{"I2C-Right D-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val_mk, 8},
+	{"I2C-Right D-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val_mk, 9},
+	{"I2C-Left D-Die", TEMP_SENSOR_TYPE_BOARD, tmp006_get_val_mk, 10},
+	{"I2C-Left D-Object", TEMP_SENSOR_TYPE_CASE, tmp006_get_val_mk, 11},
+	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp_mk, 0},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 

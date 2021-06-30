@@ -50,7 +50,7 @@ static const uint8_t adc_result[] = {
 	(((result) - ADC_DISCREET_RANGE_START_RESULT) * 3 + 16) / 32)
 
 /* Convert ADC result (10 bit) to temperature in celsius */
-int ncp15wb_calculate_temp(uint16_t adc)
+int ncp15wb_calculate_temp_c(uint16_t adc)
 {
 	int temp;
 	int head, tail, mid;

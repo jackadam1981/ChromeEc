@@ -2563,13 +2563,13 @@ test_mockable int charge_get_display_charge(void)
 	return curr.batt.display_charge;
 }
 
-int charge_get_battery_temp(int idx, int *temp_ptr)
+int charge_get_battery_temp_mk(int idx, int *temp_ptr)
 {
 	if (curr.batt.flags & BATT_FLAG_BAD_TEMPERATURE)
 		return EC_ERROR_UNKNOWN;
 
-	/* Battery temp is 10ths of degrees K, temp wants degrees K */
-	*temp_ptr = curr.batt.temperature / 10;
+	/* Battery temp is 10ths of degrees K, temp wants degrees Millikelvin */
+	*temp_ptr = curr.batt.temperature * 100;
 	return EC_SUCCESS;
 }
 

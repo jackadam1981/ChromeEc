@@ -64,7 +64,7 @@ static void bd99992gw_init(void)
 
 	/* Mark active channels from the board temp sensor table */
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i)
-		if (temp_sensors[i].read == bd99992gw_get_val)
+		if (temp_sensors[i].read_mk == bd99992gw_get_val_mk)
 			active_channels[active_channel_count++] =
 				temp_sensors[i].idx;
 
@@ -106,10 +106,10 @@ DECLARE_HOOK(HOOK_INIT, bd99992gw_init, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, bd99992gw_init, HOOK_PRIO_DEFAULT);
 
 /* Convert ADC result to temperature in celsius */
-static int bd99992gw_get_temp(uint16_t adc)
+static int bd99992gw_get_temp_c(uint16_t adc)
 {
 #ifdef CONFIG_THERMISTOR_NCP15WB
-	return ncp15wb_calculate_temp(adc);
+	return ncp15wb_calculate_temp_c(adc);
 #else
 #error "Unknown thermistor for bd99992gw"
 	return 0;
@@ -117,7 +117,7 @@ static int bd99992gw_get_temp(uint16_t adc)
 }
 
 /* Get temperature from requested sensor */
-int bd99992gw_get_val(int idx, int *temp_ptr)
+int bd99992gw_get_val_mk(int idx, int *temp_ptr)
 {
 	uint16_t adc;
 	int i, read, ret;
@@ -162,7 +162,7 @@ int bd99992gw_get_val(int idx, int *temp_ptr)
 	adc |= read << 2;
 
 	/* Convert temperature to C / K */
-	*temp_ptr = C_TO_K(bd99992gw_get_temp(adc));
+	*temp_ptr = CELSIUS_TO_MILLI_KELVIN(bd99992gw_get_temp_c(adc));
 
 	/* Clear interrupts */
 	ret = raw_write8(BD99992GW_REG_ADC1INT, BD99992GW_ADC1INT_RND);

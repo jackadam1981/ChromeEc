@@ -41,7 +41,7 @@ const struct power_signal_info power_signal_list[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
-int board_get_temp(int idx, int *temp_k)
+int board_get_temp_mk(int idx, int *temp_mk)
 {
 	int mv;
 	int temp_c;
@@ -68,7 +68,7 @@ int board_get_temp(int idx, int *temp_k)
 		return EC_ERROR_INVAL;
 
 	temp_c = thermistor_linear_interpolate(mv, &thermistor_info);
-	*temp_k = C_TO_K(temp_c);
+	*temp_mk = CELSIUS_TO_MILLI_KELVIN(temp_c);
 	return EC_SUCCESS;
 }
 
@@ -94,19 +94,19 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_CHARGER] = {
 		.name = "Charger",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_temp,
+		.read_mk = board_get_temp_mk,
 		.idx = TEMP_SENSOR_CHARGER,
 	},
 	[TEMP_SENSOR_SOC] = {
 		.name = "SOC",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_temp,
+		.read_mk = board_get_temp_mk,
 		.idx = TEMP_SENSOR_SOC,
 	},
 	[TEMP_SENSOR_CPU] = {
 		.name = "CPU",
 		.type = TEMP_SENSOR_TYPE_CPU,
-		.read = sb_tsi_get_val,
+		.read_mk = sb_tsi_get_val_mk,
 		.idx = 0,
 	},
 };

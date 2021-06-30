@@ -151,14 +151,14 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9281_chips) ==
  */
 const struct temp_sensor_t temp_sensors[] = {
 #ifdef CONFIG_TEMP_SENSOR_TMP432
-	{"TMP432_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	{"TMP432_Internal", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val_mk,
 		TMP432_IDX_LOCAL},
-	{"TMP432_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	{"TMP432_Sensor_1", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val_mk,
 		TMP432_IDX_REMOTE1},
-	{"TMP432_Sensor_2", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val,
+	{"TMP432_Sensor_2", TEMP_SENSOR_TYPE_BOARD, tmp432_get_val_mk,
 		TMP432_IDX_REMOTE2},
 #endif
-	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp,
+	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp_mk,
 		0},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);

@@ -287,7 +287,7 @@ int board_discharge_on_ac(int enabled);
 #define CONFIG_THERMISTOR
 #define CONFIG_THERMISTOR_NCP15WB
 #define I2C_PORT_THERMAL 0
-int ncp15wb_calculate_temp(uint16_t adc);
+int ncp15wb_calculate_temp_c(uint16_t adc);
 #endif
 
 #ifdef TEST_FAN

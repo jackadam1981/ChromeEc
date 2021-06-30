@@ -716,12 +716,12 @@ int bmi_read(const struct motion_sensor_t *s, intv3_t v)
 	return EC_SUCCESS;
 }
 
-int bmi_read_temp(const struct motion_sensor_t *s, int *temp_ptr)
+int bmi_read_temp_mk(const struct motion_sensor_t *s, int *temp_ptr)
 {
-	return bmi_get_sensor_temp(s - motion_sensors, temp_ptr);
+	return bmi_get_sensor_temp_mk(s - motion_sensors, temp_ptr);
 }
 
-int bmi_get_sensor_temp(int idx, int *temp_ptr)
+int bmi_get_sensor_temp_mk(int idx, int *temp_ptr)
 {
 	struct motion_sensor_t *s = &motion_sensors[idx];
 	int16_t temp;
@@ -734,7 +734,7 @@ int bmi_get_sensor_temp(int idx, int *temp_ptr)
 	if (ret || temp == BMI_INVALID_TEMP)
 		return EC_ERROR_NOT_POWERED;
 
-	*temp_ptr = C_TO_K(23 + ((temp + 256) >> 9));
+	*temp_ptr = CELSIUS_TO_MILLI_KELVIN(23 + ((temp + 256) >> 9));
 	return 0;
 }
 

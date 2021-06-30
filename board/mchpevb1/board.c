@@ -86,8 +86,8 @@
  */
 static int smart_batt_temp;
 static int ds1624_temp;
-static int sb_temp(int idx, int *temp_ptr);
-static int ds1624_get_val(int idx, int *temp_ptr);
+static int sb_temp_mk(int idx, int *temp_ptr);
+static int ds1624_get_val_mk(int idx, int *temp_ptr);
 static void board_spi_enable(void);
 static void board_spi_disable(void);
 
@@ -380,10 +380,10 @@ void board_reset_pd_mcu(void)
 /*
  *
  */
-static int therm_get_val(int idx, int *temp_ptr)
+static int therm_get_val_mk(int idx, int *temp_ptr)
 {
 	if (temp_ptr != NULL) {
-		*temp_ptr = adc_read_channel(idx);
+		*temp_ptr = adc_read_channel(idx) * 1000;
 		return EC_SUCCESS;
 	}
 
@@ -393,22 +393,22 @@ static int therm_get_val(int idx, int *temp_ptr)
 #ifdef CONFIG_TEMP_SENSOR
 #if 0 /* Chromebook design uses ADC in BD99992GW PMIC */
 const struct temp_sensor_t temp_sensors[] = {
-	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp, 0, 4},
+	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp_mk 0, 4},
 
 	/* These BD99992GW temp sensors are only readable in S0 */
-	{"Ambient", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"Ambient", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val_mk,
 		BD99992GW_ADC_CHANNEL_SYSTHERM0, 4},
-	{"Charger", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"Charger", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val_mk,
 		BD99992GW_ADC_CHANNEL_SYSTHERM1, 4},
-	{"DRAM", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"DRAM", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val_mk,
 		BD99992GW_ADC_CHANNEL_SYSTHERM2, 4},
-	{"Wifi", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"Wifi", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val_mk,
 		BD99992GW_ADC_CHANNEL_SYSTHERM3, 4},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 #else /* mec1701_evb test I2C and EC ADC */
 /*
- * battery charge_get_battery_temp requires charger task running.
+ * battery charge_get_battery_temp_mk requires charger task running.
  * OR can we call into driver/battery/smart.c
  * int sb_read(int cmd, int *param)
  * sb_read(SB_TEMPERATURE, &batt_new.temperature)
@@ -418,9 +418,9 @@ BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
  * a static global in this module.
  */
 const struct temp_sensor_t temp_sensors[] = {
-	{"Battery", TEMP_SENSOR_TYPE_BATTERY, sb_temp, 0},
-	{"Ambient", TEMP_SENSOR_TYPE_BOARD, ds1624_get_val, 0},
-	{"Case", TEMP_SENSOR_TYPE_CASE, therm_get_val, (int)ADC_CASE},
+	{"Battery", TEMP_SENSOR_TYPE_BATTERY, sb_temp_mk, 0},
+	{"Ambient", TEMP_SENSOR_TYPE_BOARD, ds1624_get_val_mk, 0},
+	{"Case", TEMP_SENSOR_TYPE_CASE, therm_get_val_mk, (int)ADC_CASE},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 #endif
@@ -770,7 +770,7 @@ static void board_handle_reboot(void)
 DECLARE_HOOK(HOOK_INIT, board_handle_reboot, HOOK_PRIO_FIRST);
 
 
-static int sb_temp(int idx, int *temp_ptr)
+static int sb_temp_mk(int idx, int *temp_ptr)
 {
 	if (idx != 0)
 		return EC_ERROR_PARAM1;
@@ -778,12 +778,12 @@ static int sb_temp(int idx, int *temp_ptr)
 	if (temp_ptr == NULL)
 		return EC_ERROR_PARAM2;
 
-	*temp_ptr = smart_batt_temp;
+	*temp_ptr = smart_batt_temp * 1000;
 
 	return EC_SUCCESS;
 }
 
-static int ds1624_get_val(int idx, int *temp_ptr)
+static int ds1624_get_val_mk(int idx, int *temp_ptr)
 {
 	if (idx != 0)
 		return EC_ERROR_PARAM1;
@@ -791,7 +791,7 @@ static int ds1624_get_val(int idx, int *temp_ptr)
 	if (temp_ptr == NULL)
 		return EC_ERROR_PARAM2;
 
-	*temp_ptr = ds1624_temp;
+	*temp_ptr = ds1624_temp * 1000;
 
 	return EC_SUCCESS;
 }

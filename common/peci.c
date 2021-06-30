@@ -49,7 +49,7 @@ static int peci_get_cpu_temp(int *cpu_temp)
 	return EC_SUCCESS;
 }
 
-int peci_temp_sensor_get_val(int idx, int *temp_ptr)
+int peci_temp_sensor_get_val_mk(int idx, int *temp_ptr)
 {
 	int i, rv;
 
@@ -65,7 +65,7 @@ int peci_temp_sensor_get_val(int idx, int *temp_ptr)
 		if (!rv)
 			break;
 	}
-
+	*temp_ptr *= 1000;
 	return rv;
 }
 

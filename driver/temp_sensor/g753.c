@@ -66,14 +66,14 @@ static int set_temp(const int offset, int temp)
 }
 #endif
 
-int g753_get_val(int idx, int *temp_ptr)
+int g753_get_val_mk(int idx, int *temp_ptr)
 {
 	if (!has_power())
 		return EC_ERROR_NOT_POWERED;
 
 	switch (idx) {
 	case G753_IDX_INTERNAL:
-		*temp_ptr = temp_val_local;
+		*temp_ptr = temp_val_local * 1000;
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;

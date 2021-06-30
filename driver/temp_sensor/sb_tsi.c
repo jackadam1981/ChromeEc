@@ -23,7 +23,7 @@ static int raw_read8(const int offset, int *data_ptr)
 			 offset, data_ptr);
 }
 
-int sb_tsi_get_val(int idx, int *temp_ptr)
+int sb_tsi_get_val_mk(int idx, int *temp_ptr)
 {
 	int ret;
 	/* There is only one temp sensor on the FT4 */
@@ -36,6 +36,6 @@ int sb_tsi_get_val(int idx, int *temp_ptr)
 	ret = raw_read8(SB_TSI_TEMP_H, temp_ptr);
 	if (ret)
 		return ret;
-	*temp_ptr = C_TO_K(*temp_ptr);
+	*temp_ptr = CELSIUS_TO_MILLI_KELVIN(*temp_ptr);
 	return EC_SUCCESS;
 }

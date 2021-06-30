@@ -570,7 +570,7 @@ const struct accelgyro_drv bmi260_drv = {
 	.set_scale = bmi_set_scale,
 	.get_offset = bmi_get_offset,
 	.perform_calib = perform_calib,
-	.read_temp = bmi_read_temp,
+	.read_temp_mk = bmi_read_temp_mk,
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = irq_handler,
 #endif
