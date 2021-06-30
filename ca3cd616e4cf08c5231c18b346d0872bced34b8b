@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc22ee5_8744f6b0",
+        "filename": "board/gimble/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-30T20:30:42Z",
+      "side": 1,
+      "message": "can be moved to \"unused\" section in the bottom of this file",
+      "revId": "ca3cd616e4cf08c5231c18b346d0872bced34b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "304bf9ba_2342ce9d",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-30T20:30:42Z",
+      "side": 1,
+      "message": "Please create a separate b/ to track calibration for Redrix.\nSame on line 52.",
+      "revId": "ca3cd616e4cf08c5231c18b346d0872bced34b8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
