@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1913265_e17d7de7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T18:59:42Z",
+      "side": 1,
+      "message": "This needs to r",
+      "revId": "a184806726fcc066dc7f9bf404c3a5bc61f910c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc52bec3_076be12e",
+        "filename": "zephyr/shim/src/console_buffer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T18:59:42Z",
+      "side": 1,
+      "message": "Nit - change this return of the mutex fails.  Then you can get rid of an indentation level.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 53
+      },
+      "revId": "a184806726fcc066dc7f9bf404c3a5bc61f910c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
