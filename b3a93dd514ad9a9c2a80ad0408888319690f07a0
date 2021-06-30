@@ -85,6 +85,52 @@
       },
       "revId": "b3a93dd514ad9a9c2a80ad0408888319690f07a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6bfebac_25088686",
+        "filename": "zephyr/projects/trogdor/trogdor/src/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-30T20:57:45Z",
+      "side": 1,
+      "message": "split into a separate CL ... sensors shouldn\u0027t be brought up in the initial bringup CL",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "b3a93dd514ad9a9c2a80ad0408888319690f07a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07213932_02344675",
+        "filename": "zephyr/projects/trogdor/trogdor/zmake.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-30T20:57:45Z",
+      "side": 1,
+      "message": "sensors and battery to separate CLs",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 19
+      },
+      "revId": "b3a93dd514ad9a9c2a80ad0408888319690f07a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
