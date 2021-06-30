@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "548d1f4a_2297e1a8",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-30T16:48:37Z",
+      "side": 1,
+      "message": "you might want to align this at a 4 byte boundary",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "49903436600b71066c1e72525fb00872129c5549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
