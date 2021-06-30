@@ -507,6 +507,7 @@ __override void power_chipset_handle_host_sleep_event(
 		 * S3 suspend has been received and so chipset suspend
 		 * notification needs to be sent to listeners.
 		 */
+		gpio_set_level(GPIO_NC_GPI7, 1);
 		sleep_set_notify(SLEEP_NOTIFY_SUSPEND);
 		sleep_start_suspend(ctx, suspend_hang_detected);
 
@@ -515,6 +516,7 @@ __override void power_chipset_handle_host_sleep_event(
 		 * Wake up chipset task and indicate to power state machine that
 		 * listeners need to be notified of chipset resume.
 		 */
+		gpio_set_level(GPIO_NC_GPI7, 0);
 		sleep_set_notify(SLEEP_NOTIFY_RESUME);
 		task_wake(TASK_ID_CHIPSET);
 		sleep_complete_resume(ctx);
