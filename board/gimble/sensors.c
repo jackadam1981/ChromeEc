@@ -156,13 +156,13 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_1_DDR_SOC] = {
 		.name = "DDR and SOC",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v3_30k9_47k_4050b,
+		.read_mk = get_temp_3v3_30k9_47k_4050b_mk,
 		.idx = ADC_TEMP_SENSOR_1_DDR_SOC
 	},
 	[TEMP_SENSOR_2_CHARGER] = {
 		.name = "Charger",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v3_30k9_47k_4050b,
+		.read_mk = get_temp_3v3_30k9_47k_4050b_mk,
 		.idx = ADC_TEMP_SENSOR_2_CHARGER
 	},
 };

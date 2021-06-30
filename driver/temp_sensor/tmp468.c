@@ -62,13 +62,13 @@ static int tmp468_shutdown(uint8_t want_shutdown)
 	return EC_SUCCESS;
 }
 
-int tmp468_get_val(int idx, int *temp_ptr)
+int tmp468_get_val_mk(int idx, int *temp_ptr)
 {
 	if(!has_power())
 		return EC_ERROR_NOT_POWERED;
 
 	if (idx < TMP468_CHANNEL_COUNT) {
-		*temp_ptr = C_TO_K(temp_val[idx]);
+		*temp_ptr = CELSIUS_TO_MILLI_KELVIN(temp_val[idx]);
 		return EC_SUCCESS;
 	}
 

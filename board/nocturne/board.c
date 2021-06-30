@@ -581,7 +581,7 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	};
 }
 
-static int read_gyro_sensor_temp(int idx, int *temp_ptr)
+static int read_gyro_sensor_temp_mk(int idx, int *temp_ptr)
 {
 	/*
 	 * The gyro is only powered in S0, so don't go and read it if the AP is
@@ -590,23 +590,23 @@ static int read_gyro_sensor_temp(int idx, int *temp_ptr)
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		return EC_ERROR_NOT_POWERED;
 
-	return bmi160_get_sensor_temp(idx, temp_ptr);
+	return bmi160_get_sensor_temp_mk(idx, temp_ptr);
 }
 
 const struct temp_sensor_t temp_sensors[] = {
-	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp, 0},
+	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp_mk, 0},
 
 	/* These BD99992GW temp sensors are only readable in S0 */
-	{"Ambient", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"Ambient", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val_mk,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM0},
-	{"Charger", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"Charger", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val_mk,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM1},
-	{"DRAM", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"DRAM", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val_mk,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM2},
-	{"eMMC", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val,
+	{"eMMC", TEMP_SENSOR_TYPE_BOARD, bd99992gw_get_val_mk,
 	 BD99992GW_ADC_CHANNEL_SYSTHERM3},
 	/* The Gyro temperature sensor is only readable in S0. */
-	{"Gyro", TEMP_SENSOR_TYPE_BOARD, read_gyro_sensor_temp, LID_GYRO}
+	{"Gyro", TEMP_SENSOR_TYPE_BOARD, read_gyro_sensor_temp_mk, LID_GYRO}
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 

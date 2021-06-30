@@ -38,10 +38,10 @@ static int cpu_shutdown;
 static int fan_pct;
 static int no_temps_read;
 
-int mock_temp_get_val(int idx, int *temp_ptr)
+int mock_temp_get_val_mk(int idx, int *temp_ptr)
 {
 	if (mock_temp[idx] >= 0) {
-		*temp_ptr = mock_temp[idx];
+		*temp_ptr = mock_temp[idx] * 1000;
 		return EC_SUCCESS;
 	}
 
@@ -514,10 +514,10 @@ static int test_ncp15wb_adc_to_temp(void)
 	 * decrease.
 	 */
 	i = LOW_ADC_TEST_VALUE;
-	temp = ncp15wb_calculate_temp(i);
+	temp = ncp15wb_calculate_temp_c(i);
 
 	while (--i > HIGH_ADC_TEST_VALUE) {
-		new_temp = ncp15wb_calculate_temp(i);
+		new_temp = ncp15wb_calculate_temp_c(i);
 		TEST_ASSERT(new_temp == temp ||
 			    new_temp == temp + 1);
 		temp = new_temp;
@@ -525,7 +525,7 @@ static int test_ncp15wb_adc_to_temp(void)
 
 	/* Verify several datapoints are within 1C accuracy */
 	for (i = 0; i < ARRAY_SIZE(adc_temp_datapoints); ++i) {
-		temp = ncp15wb_calculate_temp(adc_temp_datapoints[i].adc);
+		temp = ncp15wb_calculate_temp_c(adc_temp_datapoints[i].adc);
 		ASSERT(temp >= adc_temp_datapoints[i].temp - 1 &&
 		       temp <= adc_temp_datapoints[i].temp + 1);
 	}

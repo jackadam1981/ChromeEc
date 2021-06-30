@@ -818,7 +818,7 @@ err_unlock:
 	return ret;
 }
 
-static int read_temp(const struct motion_sensor_t *s, int *temp)
+static int read_temp_mk(const struct motion_sensor_t *s, int *temp)
 {
 	int ret;
 	uint8_t raw[2];
@@ -828,7 +828,7 @@ static int read_temp(const struct motion_sensor_t *s, int *temp)
 	if (ret != EC_SUCCESS)
 		return ret;
 
-	*temp = C_TO_K(25 + (int)raw[1]);
+	*temp = CELSIUS_TO_MILLI_KELVIN(25 + (int)raw[1]);
 
 	return EC_SUCCESS;
 }
@@ -840,7 +840,7 @@ const struct accelgyro_drv lsm6dsm_drv = {
 	.get_resolution = st_get_resolution,
 	.set_data_rate = lsm6dsm_set_data_rate,
 	.get_data_rate = st_get_data_rate,
-	.read_temp = read_temp,
+	.read_temp_mk = read_temp_mk,
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 #ifdef CONFIG_ACCEL_INTERRUPTS

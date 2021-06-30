@@ -31,10 +31,10 @@ enum f75303_index {
  *
  * @param idx	Index to read. Idx indicates whether to read die
  *		temperature or external temperature.
- * @param temp	Destination for temperature in K.
+ * @param temp	Destination for temperature in Millikelvin.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int f75303_get_val(int idx, int *temp);
+int f75303_get_val_mk(int idx, int *temp);
 
 #endif  /* __CROS_EC_F75303_H */

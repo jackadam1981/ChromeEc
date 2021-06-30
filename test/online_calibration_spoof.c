@@ -23,15 +23,15 @@ int mkbp_send_event(uint8_t event_type)
  * Mocked driver (can be re-used for all sensors).
  */
 
-static int mock_read_temp(const struct motion_sensor_t *s, int *temp)
+static int mock_read_temp_mk(const struct motion_sensor_t *s, int *temp)
 {
 	if (temp)
-		*temp = 200;
+		*temp = CELSIUS_TO_MILLI_KELVIN(200);
 	return EC_SUCCESS;
 }
 
 static struct accelgyro_drv mock_sensor_driver = {
-	.read_temp = mock_read_temp,
+	.read_temp_mk = mock_read_temp_mk,
 };
 
 /*

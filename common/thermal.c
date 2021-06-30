@@ -94,7 +94,7 @@ static void thermal_control(void)
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
 
 		/* read one */
-		rv = temp_sensor_read(i, &t);
+		rv = temp_sensor_read_k(i, &t);
 
 #ifdef CONFIG_CUSTOM_FAN_CONTROL
 		/* Store all sensors value */

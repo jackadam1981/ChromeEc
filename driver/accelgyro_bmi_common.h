@@ -284,10 +284,10 @@ int bmi_enable_fifo(const struct motion_sensor_t *s, int enable);
 int bmi_read(const struct motion_sensor_t *s, intv3_t v);
 
 /* Read temperature of sensor s */
-int bmi_read_temp(const struct motion_sensor_t *s, int *temp_ptr);
+int bmi_read_temp_mk(const struct motion_sensor_t *s, int *temp_ptr);
 
 /* Read temperature of sensor idx */
-int bmi_get_sensor_temp(int idx, int *temp_ptr);
+int bmi_get_sensor_temp_mk(int idx, int *temp_ptr);
 
 /*
  * Get the normalized rate according to input rate and input rnd

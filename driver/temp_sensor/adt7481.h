@@ -142,11 +142,11 @@ enum adt7481_channel_id {
  *
  * @param idx		Index to read. Idx indicates whether to read die
  *			temperature or external temperature.
- * @param temp_ptr	Destination for temperature in K.
+ * @param temp_ptr	Destination for temperature in Millikelvin.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int adt7481_get_val(int idx, int *temp_ptr);
+int adt7481_get_val_mk(int idx, int *temp_ptr);
 
 /**
  * Power control function of ADT7481 temperature sensor.

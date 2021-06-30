@@ -27,14 +27,14 @@ struct mock_read_temp_result {
 
 static struct mock_read_temp_result *mock_read_temp_results;
 
-static int mock_read_temp(const struct motion_sensor_t *s, int *temp)
+static int mock_read_temp_mk(const struct motion_sensor_t *s, int *temp)
 {
 	struct mock_read_temp_result *ptr = mock_read_temp_results;
 
 	while (ptr) {
 		if (ptr->s == s) {
 			if (ptr->ret == EC_SUCCESS)
-				*temp = ptr->temp;
+				*temp = CELSIUS_TO_MILLI_KELVIN(ptr->temp);
 			ptr->used_count++;
 			return ptr->ret;
 		}
@@ -45,7 +45,7 @@ static int mock_read_temp(const struct motion_sensor_t *s, int *temp)
 }
 
 static struct accelgyro_drv mock_sensor_driver = {
-	.read_temp = mock_read_temp,
+	.read_temp_mk = mock_read_temp_mk,
 };
 
 static struct accel_cal_algo base_accel_cal_algos[] = {

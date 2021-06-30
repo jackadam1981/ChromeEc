@@ -44,10 +44,10 @@
  *
  * @param idx		Index to read. Idx indicates whether to read die
  *			temperature or external temperature.
- * @param temp_ptr	Destination for temperature in K.
+ * @param temp_ptr	Destination for temperature in Millikelvin.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int g753_get_val(int idx, int *temp_ptr);
+int g753_get_val_mk(int idx, int *temp_ptr);
 
 #endif  /* __CROS_EC_G753_H */

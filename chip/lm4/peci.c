@@ -50,7 +50,7 @@ int peci_get_cpu_temp(void)
 	return v >> 6;
 }
 
-int peci_temp_sensor_get_val(int idx, int *temp_ptr)
+int peci_temp_sensor_get_val_mk(int idx, int *temp_ptr)
 {
 	int sum = 0;
 	int success_cnt = 0;
@@ -77,7 +77,7 @@ int peci_temp_sensor_get_val(int idx, int *temp_ptr)
 	if (success_cnt < 2)
 		return EC_ERROR_UNKNOWN;
 
-	*temp_ptr = sum / success_cnt;
+	*temp_ptr = (sum / success_cnt) * 1000;
 	return EC_SUCCESS;
 }
 

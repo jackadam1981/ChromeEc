@@ -13,7 +13,7 @@
 #include "util.h"
 
 /* Get temperature from requested sensor */
-static int get_temp(int idx, int *temp_ptr)
+static int get_temp_c(int idx, int *temp_ptr)
 {
 	int temp_raw = 0;
 
@@ -31,7 +31,7 @@ static int get_temp(int idx, int *temp_ptr)
 	 *  3. define it on board.h
 	 */
 #ifdef CONFIG_THERMISTOR_NCP15WB
-	*temp_ptr = ncp15wb_calculate_temp((uint16_t) temp_raw);
+	*temp_ptr = ncp15wb_calculate_temp_c((uint16_t) temp_raw);
 #else
 #error "Unknown thermistor for ec_adc"
 	return EC_ERROR_UNKNOWN;
@@ -40,7 +40,7 @@ static int get_temp(int idx, int *temp_ptr)
 	return EC_SUCCESS;
 }
 
-int ec_adc_get_val(int idx, int *temp_ptr)
+int ec_adc_get_val_mk(int idx, int *temp_ptr)
 {
 	int ret;
 	int temp_c;
@@ -50,7 +50,7 @@ int ec_adc_get_val(int idx, int *temp_ptr)
 
 	ret = get_temp(idx, &temp_c);
 	if (ret == EC_SUCCESS)
-		*temp_ptr = C_TO_K(temp_c);
+		*temp_ptr = CELSIUS_TO_MILLI_KELVIN(temp_c);
 
 	return ret;
 }

@@ -37,17 +37,17 @@ static int get_temp(const int offset, int *temp)
 	return EC_SUCCESS;
 }
 
-int f75303_get_val(int idx, int *temp)
+int f75303_get_val_mk(int idx, int *temp)
 {
 	if (idx < 0 || F75303_IDX_COUNT <= idx)
 		return EC_ERROR_INVAL;
 
 	if (fake_temp[idx] != -1) {
-		*temp = C_TO_K(fake_temp[idx]);
+		*temp = CELSIUS_TO_MILLI_KELVIN(fake_temp[idx]);
 		return EC_SUCCESS;
 	}
 
-	*temp = temps[idx];
+	*temp = temps[idx] * 1000;
 	return EC_SUCCESS;
 }
 

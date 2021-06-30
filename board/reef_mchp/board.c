@@ -542,7 +542,7 @@ static const struct thermistor_info charger_thermistor_info = {
 	.data = charger_thermistor_data,
 };
 
-int board_get_charger_temp(int idx, int *temp_ptr)
+int board_get_charger_temp_mk(int idx, int *temp_ptr)
 {
 	int mv = adc_read_channel(MCHP_ADC_CH(0));
 
@@ -551,7 +551,7 @@ int board_get_charger_temp(int idx, int *temp_ptr)
 
 	*temp_ptr = thermistor_linear_interpolate(mv,
 		&charger_thermistor_info);
-	*temp_ptr = C_TO_K(*temp_ptr);
+	*temp_ptr = CELSIUS_TO_MILLI_KELVIN(*temp_ptr);
 	return 0;
 }
 
@@ -583,7 +583,7 @@ static const struct thermistor_info amb_thermistor_info = {
 	.data = amb_thermistor_data,
 };
 
-int board_get_ambient_temp(int idx, int *temp_ptr)
+int board_get_ambient_temp_mk(int idx, int *temp_ptr)
 {
 	int mv = adc_read_channel(MCHP_ADC_CH(1));
 
@@ -592,7 +592,7 @@ int board_get_ambient_temp(int idx, int *temp_ptr)
 
 	*temp_ptr = thermistor_linear_interpolate(mv,
 		&amb_thermistor_info);
-	*temp_ptr = C_TO_K(*temp_ptr);
+	*temp_ptr = CELSIUS_TO_MILLI_KELVIN(*temp_ptr);
 	return 0;
 }
 
@@ -602,9 +602,9 @@ int board_get_ambient_temp(int idx, int *temp_ptr)
  * delay from read to taking action
  */
 const struct temp_sensor_t temp_sensors[] = {
-	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp, 0},
-	{"Ambient", TEMP_SENSOR_TYPE_BOARD, board_get_ambient_temp, 0},
-	{"Charger", TEMP_SENSOR_TYPE_BOARD, board_get_charger_temp, 1},
+	{"Battery", TEMP_SENSOR_TYPE_BATTERY, charge_get_battery_temp_mk, 0},
+	{"Ambient", TEMP_SENSOR_TYPE_BOARD, board_get_ambient_temp_mk, 0},
+	{"Charger", TEMP_SENSOR_TYPE_BOARD, board_get_charger_temp_mk, 1},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 

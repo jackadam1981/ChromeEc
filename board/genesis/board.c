@@ -191,7 +191,7 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_CORE] = {
 		.name = "Core",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = get_temp_3v3_30k9_47k_4050b,
+		.read_mk = get_temp_3v3_30k9_47k_4050b_mk,
 		.idx = ADC_TEMP_SENSOR_1,
 	},
 };

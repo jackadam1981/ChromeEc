@@ -355,11 +355,11 @@ uint16_t tcpc_get_alert_status(void)
  * F75303_Remote1 is near CPU, and F75303_Remote2 is near 5V power IC.
  */
 const struct temp_sensor_t temp_sensors[TEMP_SENSOR_COUNT] = {
-	{"F75303_Local", TEMP_SENSOR_TYPE_BOARD, f75303_get_val,
+	{"F75303_Local", TEMP_SENSOR_TYPE_BOARD, f75303_get_val_mk,
 		F75303_IDX_LOCAL},
-	{"F75303_Remote1", TEMP_SENSOR_TYPE_CPU, f75303_get_val,
+	{"F75303_Remote1", TEMP_SENSOR_TYPE_CPU, f75303_get_val_mk,
 		F75303_IDX_REMOTE1},
-	{"F75303_Remote2", TEMP_SENSOR_TYPE_BOARD, f75303_get_val,
+	{"F75303_Remote2", TEMP_SENSOR_TYPE_BOARD, f75303_get_val_mk,
 		F75303_IDX_REMOTE2},
 };
 

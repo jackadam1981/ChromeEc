@@ -64,17 +64,17 @@ static int tmp411_set_temp(const int offset, int temp)
 }
 #endif
 
-int tmp411_get_val(int idx, int *temp_ptr)
+int tmp411_get_val_mk(int idx, int *temp_ptr)
 {
 	if (!has_power())
 		return EC_ERROR_NOT_POWERED;
 
 	switch (idx) {
 	case TMP411_IDX_LOCAL:
-		*temp_ptr = temp_val_local;
+		*temp_ptr = temp_val_local * 1000;
 		break;
 	case TMP411_IDX_REMOTE1:
-		*temp_ptr = temp_val_remote1;
+		*temp_ptr = temp_val_remote1 * 1000;
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;

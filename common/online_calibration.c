@@ -35,7 +35,7 @@ static int get_temperature(struct motion_sensor_t *sensor, int *temp)
 	struct online_calib_data *entry = sensor->online_calib_data;
 	uint32_t now;
 
-	if (sensor->drv->read_temp == NULL)
+	if (sensor->drv->read_temp_mk == NULL)
 		return EC_ERROR_UNIMPLEMENTED;
 
 	now = __hw_clock_source_read();
@@ -43,10 +43,10 @@ static int get_temperature(struct motion_sensor_t *sensor, int *temp)
 	    time_until(entry->last_temperature_timestamp, now) >
 		    CONFIG_TEMP_CACHE_STALE_THRES) {
 		int t;
-		int rc = sensor->drv->read_temp(sensor, &t);
+		int rc = sensor->drv->read_temp_mk(sensor, &t);
 
 		if (rc == EC_SUCCESS) {
-			entry->last_temperature = t;
+			entry->last_temperature = MILLI_KELVIN_TO_CELSIUS(t);
 			entry->last_temperature_timestamp = now;
 		} else {
 			return rc;

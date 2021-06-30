@@ -747,7 +747,7 @@ const struct accelgyro_drv bmi160_drv = {
 	.set_scale = bmi_set_scale,
 	.get_offset = bmi_get_offset,
 	.perform_calib = perform_calib,
-	.read_temp = bmi_read_temp,
+	.read_temp_mk = bmi_read_temp_mk,
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = irq_handler,
 #endif
@@ -776,7 +776,7 @@ struct i2c_stress_test_dev bmi160_i2c_stress_test_dev = {
  * TODO(chingkang): Replace bmi160_get_sensor_temp in some board config to
  *                  bmi_get_sensor_temp. Then, remove this definition.
  */
-int bmi160_get_sensor_temp(int idx, int *temp_ptr)
+int bmi160_get_sensor_temp_mk(int idx, int *temp_ptr)
 {
-	return bmi_get_sensor_temp(idx, temp_ptr);
+	return bmi_get_sensor_temp_mk(idx, temp_ptr);
 }
