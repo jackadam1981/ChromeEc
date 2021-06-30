@@ -22,6 +22,30 @@
       },
       "revId": "cf8fd77c5cfbc2523b38a554d2d506ec0392b06a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2494b3d0_6a8d6089",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-06-30T19:27:02Z",
+      "side": 1,
+      "message": "ah - you\u0027re right. tbh FRS was an afterthought. this is the exact same configuration we have on Volteer though. Tested and it does work.\n\nCONFIG_USB_PD_FRS_TCPC is used when the TCPC detects the FRS signal, and CONFIG_USB_PD_FRS_PPC is used when the PPC does. For this configuration (RT1715+SYV682B), the PPC is the only one with the ability to detect FRS AFAIK. For the PS8815, the TCPC can so that is done differently.\n\nSince brya has both configurations, we\u0027ll need to make some changes to support both simultaneously on 1 board.",
+      "parentUuid": "3cbbd5f1_3c5f9693",
+      "range": {
+        "startLine": 135,
+        "startChar": 2,
+        "endLine": 135,
+        "endChar": 8
+      },
+      "revId": "cf8fd77c5cfbc2523b38a554d2d506ec0392b06a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
