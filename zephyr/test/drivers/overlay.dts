@@ -68,6 +68,11 @@
 			enum-name = "I2C_PORT_ACCEL";
 			label = "ACCEL";
 		};
+		i2c_sensor: sensor {
+			i2c-port = <&i2c0>;
+			enum-name = "I2C_PORT_SENSOR";
+			label = "SENSOR";
+		};
 	};
 
 	named-batteries {
@@ -158,6 +163,64 @@
 			adc = <&adc_fan>;
 		};
 	};
+
+	/*
+	 * Declare mutexes used by sensor drivers.
+	 * A mutex node is used to create an instance of mutex_t.
+	 * A mutex node is referenced by a sensor node if the
+	 * corresponding sensor driver needs to use the
+	 * instance of the mutex.
+	 */
+	motionsense-mutex {
+		compatible = "cros-ec,motionsense-mutex";
+		mutex_bmi260: bmi260-mutex {
+			label = "BMI260_MUTEX";
+		};
+	};
+
+	/*
+	 * Driver specific data. A driver-specific data can be shared with
+	 * different motion sensors while they are using the same driver.
+	 */
+	motionsense-sensor-data {
+		bmi260_data: bmi260-drv-data {
+			compatible = "cros-ec,drvdata-bmi260";
+			status = "okay";
+		};
+	};
+
+	/*
+	 * List of motion sensors that creates motion_sensors array.
+	 * The label "lid_accel" and "base_accel" are used to indicate
+	 * motion sensor IDs for lid angle calculation.
+	 */
+	motionsense-sensor {
+		base_accel: base-accel {
+			compatible = "cros-ec,bmi260-accel";
+			status = "okay";
+
+			label = "Base Accel";
+			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&mutex_bmi260>;
+			port = <&i2c_sensor>;
+			drv-data = <&bmi260_data>;
+			default-range = <4>;
+			i2c-spi-addr-flags = "BMI260_ADDR0_FLAGS";
+		};
+
+		base-gyro {
+			compatible = "cros-ec,bmi260-gyro";
+			status = "okay";
+
+			label = "Base Gyro";
+			location = "MOTIONSENSE_LOC_BASE";
+			mutex = <&mutex_bmi260>;
+			port = <&i2c_sensor>;
+			drv-data = <&bmi260_data>;
+			default-range = <1000>; /* dps */
+			i2c-spi-addr-flags = "BMI260_ADDR0_FLAGS";
+		};
+	};
 };
 
 &gpio0 {
@@ -192,5 +255,16 @@
 		error-on-ro-write;
 		error-on-reserved-bit-write;
 		error-on-msb-first-access;
+	};
+
+	accel_bmi260: bmi260@68 {
+		compatible = "zephyr,bmi";
+		reg = <0x68>;
+		label = "BMI260";
+		device-model = "BMI_EMUL_260";
+		error-on-ro-write;
+		error-on-wo-read;
+		error-on-reserved-bit-write;
+		simulate-command-exec-time;
 	};
 };
