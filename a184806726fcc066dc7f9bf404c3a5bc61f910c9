@@ -18,6 +18,47 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "511e5562_ac4c316f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-30T19:06:38Z",
+      "side": 1,
+      "message": "? ... missed something?",
+      "parentUuid": "a1913265_e17d7de7",
+      "revId": "a184806726fcc066dc7f9bf404c3a5bc61f910c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "641388b4_39cc313e",
+        "filename": "zephyr/shim/include/zephyr_console_shim.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-30T19:06:38Z",
+      "side": 1,
+      "message": "string ... or \"bytes\"",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 21
+      },
+      "revId": "a184806726fcc066dc7f9bf404c3a5bc61f910c9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc52bec3_076be12e",
