@@ -558,25 +558,25 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_CHARGER] = {
 		.name = "Charger",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_temp,
+		.read_k = board_get_temp,
 		.idx = TEMP_SENSOR_CHARGER,
 	},
 	[TEMP_SENSOR_5V_REGULATOR] = {
 		.name = "5V_REGULATOR",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_temp,
+		.read_k = board_get_temp,
 		.idx = TEMP_SENSOR_5V_REGULATOR,
 	},
 	[TEMP_SENSOR_CPU] = {
 		.name = "CPU",
 		.type = TEMP_SENSOR_TYPE_CPU,
-		.read = sb_tsi_get_val,
+		.read_k = sb_tsi_get_val,
 		.idx = 0,
 	},
 	[TEMP_SENSOR_SSD] = {
 		.name = "SSD",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = tmp432_get_val,
+		.read_k = tmp432_get_val,
 		.idx = TMP432_IDX_LOCAL,
 	},
 };

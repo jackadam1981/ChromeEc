@@ -215,11 +215,31 @@
 	UINT32_FROM_BYTES((data)[(msb_index) + 3], (data)[(msb_index) + 2], \
 			  (data)[(msb_index) + 1], (data)[(msb_index)])
 
-/* There isn't really a better place for this */
+/*
+ * This is equivalent to round_divide from math_utils in macro form.
+ * This is needed because some chips cannot build with math_utils.
+ * Note that as a macro expansion, this may have side effects if args include
+ * function calls, which is why round_divide is preferred.
+ */
+#define ROUND_DIVIDE(dividend, divisor)                     \
+	(((dividend) > 0) ^ ((divisor) > 0) ?               \
+		       ((int64_t)(dividend) - (divisor) / 2) / (divisor) : \
+		       ((int64_t)(dividend) + (divisor) / 2) / (divisor))
+
+/* TODO: Move temp macros to temp_sensor.h */
 #define C_TO_K(temp_c) ((temp_c) + 273)
 #define K_TO_C(temp_c) ((temp_c) - 273)
+/* TODO: Deprecate DECI_KELVIN and use MILLI_KELVIN everywhere it is used */
 #define CELSIUS_TO_DECI_KELVIN(temp_c) ((temp_c) * 10 + 2731)
 #define DECI_KELVIN_TO_CELSIUS(temp_dk) ((temp_dk - 2731) / 10)
+#define MILLI_KELVIN_TO_MILLI_CELSIUS(temp_mk) ((temp_mk) - 273150)
+#define MILLI_CELSIUS_TO_MILLI_KELVIN(temp_mc) ((temp_mc) + 273150)
+#define MILLI_KELVIN_TO_KELVIN(temp_mk) ((int32_t)ROUND_DIVIDE((temp_mk), 1000))
+#define KELVIN_TO_MILLI_KELVIN(temp_k) ((temp_k) * 1000)
+#define CELSIUS_TO_MILLI_KELVIN(temp_c) \
+	(MILLI_CELSIUS_TO_MILLI_KELVIN((temp_c) * 1000))
+#define MILLI_KELVIN_TO_CELSIUS(temp_mk) \
+	((int32_t)ROUND_DIVIDE(MILLI_KELVIN_TO_MILLI_CELSIUS(temp_mk), 1000))
 
 /* Calculate a value with error margin considered. For example,
  * TARGET_WITH_MARGIN(X, 5) returns X' where X' * 100.5% is almost equal to

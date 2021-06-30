@@ -94,19 +94,19 @@ const struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_CHARGER] = {
 		.name = "Charger",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_temp,
+		.read_k = board_get_temp,
 		.idx = TEMP_SENSOR_CHARGER,
 	},
 	[TEMP_SENSOR_SOC] = {
 		.name = "SOC",
 		.type = TEMP_SENSOR_TYPE_BOARD,
-		.read = board_get_temp,
+		.read_k = board_get_temp,
 		.idx = TEMP_SENSOR_SOC,
 	},
 	[TEMP_SENSOR_CPU] = {
 		.name = "CPU",
 		.type = TEMP_SENSOR_TYPE_CPU,
-		.read = sb_tsi_get_val,
+		.read_k = sb_tsi_get_val,
 		.idx = 0,
 	},
 };
