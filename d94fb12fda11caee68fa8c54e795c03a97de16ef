@@ -16,6 +16,24 @@
       "message": "This routine should remain grouped with the other API functions  cros_flash_npcx_read(), cros_flash_npcx_write(), and cros_flash_npcx_erase().\n\nEither create forward prototypes for flash_protect_int_flash() and flash_uma_lock() so that cros_flash_npcx_init() can remain at 266, or move the other API routines after cros_flash_npcx_init() here at line 680.",
       "revId": "d94fb12fda11caee68fa8c54e795c03a97de16ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4095be65_e0cb0813",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-06-30T01:49:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a110108_a2adf963",
+      "revId": "d94fb12fda11caee68fa8c54e795c03a97de16ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
