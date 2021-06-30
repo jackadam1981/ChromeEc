@@ -16,6 +16,23 @@
       "message": "Added .bss.fips in this revision",
       "revId": "5e707da14000e2e923f348f2029ba3892a1662a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "578050b3_fb22c01d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-30T17:08:38Z",
+      "side": 1,
+      "message": "why do you need to separate .bss in a special section, when is it going to be used explicitly?",
+      "revId": "5e707da14000e2e923f348f2029ba3892a1662a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
