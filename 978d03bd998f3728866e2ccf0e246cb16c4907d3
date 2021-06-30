@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e711c96_548b02d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-06-30T20:23:59Z",
+      "side": 1,
+      "message": "Looks good, but you\u0027ll probably need to update GPIOs (in a previous CL) and rebase this CL before landing ",
+      "revId": "978d03bd998f3728866e2ccf0e246cb16c4907d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
