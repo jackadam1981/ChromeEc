@@ -94,7 +94,6 @@
 #define BMA4_FOC_ACC_CONF_VAL			0xB7
 
 #define BMA4_NV_CONFIG_ADDR			0x70
-#define BMA4_NV_ACCEL_OFFSET_POS		3
 #define BMA4_NV_ACCEL_OFFSET_MSK		0x08
 
 #define BMA4_OFFSET_0_ADDR			0x71
@@ -125,6 +124,19 @@
 #define BMA4_12_BIT_RESOLUTION			12
 #define BMA4_14_BIT_RESOLUTION			14
 #define BMA4_16_BIT_RESOLUTION			16
+
+/*
+ * The max positive value of accel data is 0x07FF, equal to range(g)
+ * So, in order to get +1g, divide the 0x07FF by range
+ */
+#define BMA4_ACC_DATA_PLUS_1G(range)		(0x07FF / (range))
+#define BMA4_ACC_DATA_MINUS_1G(range)		(-BMA4_ACC_DATA_PLUS_1G(range))
+
+/* For offset registers 1LSB - 3.9mg */
+#define BMA4_OFFSET_ACC_MULTI_MG		(3900 * 1000)
+#define BMA4_OFFSET_ACC_DIV_MG			1000000
+
+#define BMA4_FOC_SAMPLE_LIMIT			128
 
 /* Min and Max sampling frequency in mHz */
 #define BMA4_ACCEL_MIN_FREQ	12500
