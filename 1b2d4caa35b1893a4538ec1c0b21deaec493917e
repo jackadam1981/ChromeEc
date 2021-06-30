@@ -16,6 +16,29 @@
       "message": "Reviewers, you can use the patchset 1 to compare the diff.",
       "revId": "1b2d4caa35b1893a4538ec1c0b21deaec493917e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0cf7a31_aaf80fb4",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx7/prj.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T16:38:35Z",
+      "side": 1,
+      "message": "Is this true?  If not, please open a bug to fix this as another CL.",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 68
+      },
+      "revId": "1b2d4caa35b1893a4538ec1c0b21deaec493917e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
