@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8849883_a12226f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-06-30T23:48:12Z",
+      "side": 1,
+      "message": "This CL seems to cause compilation errors om L4xx chips other than L476, please look into it.",
+      "revId": "59b286058cf184e1dfc8b8332aa8adc811d8221d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a59ea57_9caf92b3",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-06-30T23:48:12Z",
+      "side": 1,
+      "message": "STM32_PLLM and STM32_PLLR are #defined as zero on all chips, except STM32L476.  This means that for all other L4xx chips, this line is a compile-time division by zero, which GCC treats as a compilation error.",
+      "range": {
+        "startLine": 375,
+        "startChar": 11,
+        "endLine": 375,
+        "endChar": 34
+      },
+      "revId": "59b286058cf184e1dfc8b8332aa8adc811d8221d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
