@@ -318,6 +318,8 @@ void clock_enable_module(enum module_id module, int enable)
 	static uint32_t clock_mask;
 	int new_mask;
 
+	ccprintf("clock_enable_module(%d, %d)\n", module, enable);
+
 	if (enable)
 		new_mask = clock_mask | BIT(module);
 	else
