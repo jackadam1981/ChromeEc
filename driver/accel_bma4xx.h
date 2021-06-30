@@ -126,6 +126,19 @@
 #define BMA4_14_BIT_RESOLUTION			14
 #define BMA4_16_BIT_RESOLUTION			16
 
+/*
+ * The max positive value of accel data is 0x07FF, equal to range(g)
+ * So, in order to get +1g, divide the 0x07FF by range
+ */
+#define BMA4_ACC_DATA_PLUS_1G(range)		(0x07FF / (range))
+#define BMA4_ACC_DATA_MINUS_1G(range)		(-BMA4_ACC_DATA_PLUS_1G(range))
+
+/* For offset registers 1LSB - 3.9mg */
+#define BMA4_OFFSET_ACC_MULTI_MG		(3900 * 1000)
+#define BMA4_OFFSET_ACC_DIV_MG			1000000
+
+#define BMA4_FOC_SAMPLE_LIMIT			128
+
 /* Min and Max sampling frequency in mHz */
 #define BMA4_ACCEL_MIN_FREQ	12500
 #define BMA4_ACCEL_MAX_FREQ	MOTION_MAX_SENSOR_FREQUENCY(1600000, 6250)
