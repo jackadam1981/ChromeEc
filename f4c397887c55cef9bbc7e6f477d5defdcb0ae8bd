@@ -39,6 +39,30 @@
       },
       "revId": "f4c397887c55cef9bbc7e6f477d5defdcb0ae8bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff967077_99eda7a5",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-30T21:35:22Z",
+      "side": 1,
+      "message": "the idea at the time was that setting TPM mode is possible only once after powercycle. \n\nIf the AP wants to prevent setting mode to \u0027DISABLED\", it should send the command to set the mode to ENABLED.",
+      "parentUuid": "e315cf20_db742d70",
+      "range": {
+        "startLine": 49,
+        "startChar": 6,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "f4c397887c55cef9bbc7e6f477d5defdcb0ae8bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
