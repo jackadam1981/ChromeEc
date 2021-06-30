@@ -16,6 +16,23 @@
       "message": "Can you check stack sizes after this change?",
       "revId": "ef4c087637d7ffd0597f8cd2215bac82145c4a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bd1f992_9a07e2e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-06-30T19:00:31Z",
+      "side": 1,
+      "message": "Can we just default it in kconfig?\n\n  config SHELL_PRINTF_BUFF_SIZE\n          default 130",
+      "revId": "ef4c087637d7ffd0597f8cd2215bac82145c4a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
