@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69c5c1bc_803c9bd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T15:30:42Z",
+      "side": 1,
+      "message": "LGTM - one nit.",
+      "revId": "70bf84f844f9c5cc08a7aa78070c700d3301c36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52a5aded_303dfb19",
+        "filename": "zephyr/test/drivers/src/bc12.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T15:30:42Z",
+      "side": 1,
+      "message": "Nit - prefer declared initialization.  e.g.\n[CHG_OTHER\u003d \u003d { .supplier \u003d CHARGE_SUPPLIER_OTHER, .current_limit \u003d 500 }",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "70bf84f844f9c5cc08a7aa78070c700d3301c36b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
