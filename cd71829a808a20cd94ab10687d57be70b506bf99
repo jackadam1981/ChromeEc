@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b41c6e36_5bbccc7a",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-06-30T19:34:48Z",
+      "side": 1,
+      "message": "We need bit 20 to be a part of BOARD_ALL_PROPERTIES if we want it to be available.\n\nFlags that are a part of BOARD_ALL_PROPERTIES are cleared after reset, so we can guarantee updates will clear the flag.\n\nIf someone adds a new flag in this position that\u0027s not a part of BOARD_ALL_PROPERTIES, then it could still be set to 1 because an old cr50 image set it.\n\nI think we should rename BOARD_ALLOW_CHANGE_TPM_MODE to BOARD_UNUSED, keep BOARD_UNUSED in BOARD_ALL_PROPERTIES, and add a comment. This was used, so it may be set to 1. Any new flag that uses bit 20 must be a part of BOARD_ALL_PROPERTIES to ensure any old flag settings are cleared after the cr50 update.",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "cd71829a808a20cd94ab10687d57be70b506bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
