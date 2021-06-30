@@ -16,6 +16,24 @@
       "message": "Seems like we should have a test for this",
       "revId": "341ffc7b1386bdef81bd4ff5dcb2f7333c945deb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0dc6aaeb_07581cdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-06-30T16:17:30Z",
+      "side": 1,
+      "message": "Agreed, I think a stronger effort to create a solid pattern for testing is in order. At this point I\u0027m not yet sure what the best approach for testing shimmed code is.",
+      "parentUuid": "ce706d12_0eabe769",
+      "revId": "341ffc7b1386bdef81bd4ff5dcb2f7333c945deb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
