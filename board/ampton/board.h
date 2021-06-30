@@ -63,6 +63,8 @@
 
 #define CONFIG_USB_MUX_RUNTIME_CONFIG
 
+#define CONFIG_LID_CLOSED_NO_AUTO_POWER_ON
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
