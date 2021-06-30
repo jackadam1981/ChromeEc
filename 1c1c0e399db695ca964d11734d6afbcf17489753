@@ -69,6 +69,24 @@
       "parentUuid": "914c208e_a7c73ddc",
       "revId": "1c1c0e399db695ca964d11734d6afbcf17489753",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60c6d15c_510587f5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 1737,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-06-30T01:42:37Z",
+      "side": 1,
+      "message": "We need discharge for what lower \u003c soc \u003c upper when lower !\u003d upper. We only want idle when lower \u003d\u003d upper \u003d\u003d soc. This will match the behavior of battery learning (for when lower !\u003d upper), which is what we want. We\u0027re doing this since capacitors will produce an audible pitch on certain systems, which is when we\u0027ll have lower !\u003d upper.",
+      "parentUuid": "bfd70b1e_5013fd70",
+      "revId": "1c1c0e399db695ca964d11734d6afbcf17489753",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
