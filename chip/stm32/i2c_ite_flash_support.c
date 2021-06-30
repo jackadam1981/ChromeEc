@@ -236,8 +236,9 @@ static int command_enable_ite_dfu(int argc, char **argv)
 		return EC_ERROR_ACCESS_DENIED;
 
 	/* Enable peripheral clocks. */
-	STM32_RCC_APB2ENR |=
-		STM32_RCC_APB2ENR_TIM16EN | STM32_RCC_APB2ENR_TIM17EN;
+	/* STM32_RCC_APB2ENR |=
+	 *	STM32_RCC_APB2ENR_TIM16EN | STM32_RCC_APB2ENR_TIM17EN;
+	 */
 
 	/* Reset timer registers which are not otherwise set below. */
 	STM32_TIM_CR2(16) = 0x0000;
@@ -330,8 +331,9 @@ static int command_enable_ite_dfu(int argc, char **argv)
 	STM32_TIM_CR1(17) = 0x0000;
 
 	/* Disable peripheral clocks. */
-	STM32_RCC_APB2ENR &=
-		~(STM32_RCC_APB2ENR_TIM16EN | STM32_RCC_APB2ENR_TIM17EN);
+	/* STM32_RCC_APB2ENR &=
+	 *	~(STM32_RCC_APB2ENR_TIM16EN | STM32_RCC_APB2ENR_TIM17EN);
+	 */
 
 	return cprint_ite_chip_id();
 }
