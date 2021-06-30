@@ -16,6 +16,75 @@
       "message": "Fixed the wakeup change.",
       "revId": "b3a93dd514ad9a9c2a80ad0408888319690f07a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32237fff_9f7c80a5",
+        "filename": "zephyr/projects/trogdor/trogdor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T16:32:07Z",
+      "side": 1,
+      "message": "This doesn\u0027t appear to be needed for Trogdor.  Trogdor doesn\u0027t support the ln9310 switchcap.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "b3a93dd514ad9a9c2a80ad0408888319690f07a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e06e48b_45b93e0e",
+        "filename": "zephyr/projects/trogdor/trogdor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T16:32:07Z",
+      "side": 1,
+      "message": "I don\u0027t think any of these are needed.  cros-ec configures I2C signals as GPIO for bus recovery.  Zephyr-EC doesn\u0027t support this mechanism - it\u0027s up the individual device driver to perform recovery.",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 0
+      },
+      "revId": "b3a93dd514ad9a9c2a80ad0408888319690f07a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de393651_b2938bbf",
+        "filename": "zephyr/projects/trogdor/trogdor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-06-30T16:32:07Z",
+      "side": 1,
+      "message": "Also need to add the SPI signals on GPIO46, GPIO47, GPIO53, GPIO55",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 37
+      },
+      "revId": "b3a93dd514ad9a9c2a80ad0408888319690f07a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
