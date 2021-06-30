@@ -70,6 +70,30 @@
       },
       "revId": "cd71829a808a20cd94ab10687d57be70b506bf99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d683119_3301fc54",
+        "filename": "board/cr50/scratch_reg1.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-06-30T19:59:09Z",
+      "side": 1,
+      "message": "should it be then included in the list when it starts being used next time?\n\nI don\u0027t understand why it needs to be included in the mask if it is not used. And I looked at the code to see where it gets cleared, looks like it is going to be enough to add it to the mask when it gets a new meaning, no?",
+      "parentUuid": "e4ce42c3_380812fe",
+      "range": {
+        "startLine": 84,
+        "startChar": 12,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "cd71829a808a20cd94ab10687d57be70b506bf99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
