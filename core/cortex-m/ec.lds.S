@@ -395,8 +395,62 @@ SECTIONS
      * much. */
     __hey_flash_used = LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION);
 
+<<<<<<< HEAD   (124d6f Munna: Remove tablet mode function)
 #ifdef CONFIG_FLASH_PHYSICAL
     ASSERT((FW_SIZE(SECTION)
+=======
+#ifdef CONFIG_CHIP_DATA_IN_INIT_ROM
+	/*
+	 * .data is ROM resident, last section in the EC image is the .rodata
+	 * section.
+	 */
+	#define FLASH_USED_END	(LOADADDR(.rodata) + SIZEOF(.rodata))
+#else
+	/*
+	 * .data is included in the EC image and copied to RAM by the loader.
+	 */
+	#define FLASH_USED_END	(LOADADDR(.data) + SIZEOF(.data))
+#endif
+
+	/*
+	 * __flash_used is used in flash free calculations by the makefile.
+	 * __image_size is stored in the struct image_data header and used
+	 * in hash calcuations.
+	 */
+	__flash_used = FLASH_USED_END - ORIGIN(EC_IMAGE_LMA_MEM_REGION);
+#ifndef CONFIG_CHIP_INIT_ROM_REGION
+#if !(defined(SECTION_IS_RW) && (CONFIG_FLASH_WRITE_SIZE > 4))
+	__image_size = __flash_used;
+#else
+	.rw_image_size_alignment :
+	{
+		. = ORIGIN(FLASH) + __flash_used;
+		BYTE(0xFF);
+		. = ALIGN (CONFIG_FLASH_WRITE_SIZE);
+	} > FLASH = 0xFF
+
+	__image_size = __flash_used + SIZEOF(.rw_image_size_alignment);
+#endif
+#endif /* CONFIG_CHIP_INIT_ROM_REGION */
+
+#ifdef CONFIG_FLASH_CROS
+        /*
+         * These linker labels are just for analysis and not used in the code.
+         */
+	__config_flash_size = CONFIG_FLASH_SIZE_BYTES;
+	__config_ro_size = CONFIG_RO_SIZE;
+	__config_ec_protected_storage_size = CONFIG_EC_PROTECTED_STORAGE_SIZE;
+	__config_rw_size = CONFIG_RW_SIZE;
+	__config_ec_writable_storage_size = CONFIG_EC_WRITABLE_STORAGE_SIZE;
+#endif
+
+	/*
+	 * The linker won't notice if the .data section is too big to fit,
+	 * apparently because we're sending it into IRAM, not FLASH.
+	 * Verify that all sections linked into the FLASH region will fit.
+	 */
+	ASSERT((LENGTH(EC_IMAGE_LMA_MEM_REGION)
+>>>>>>> CHANGE (b01198 cortex-m/ec.lds.S: Add padding to manage RW image size)
 #if defined(CONFIG_RWSIG) && defined(SECTION_IS_RO)
         - CONFIG_RO_PUBKEY_SIZE
 #endif
