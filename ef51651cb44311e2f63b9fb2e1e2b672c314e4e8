@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1500fb16_31c97b24",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-01T17:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed601a76_4b452c7c",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 29
+      },
+      "revId": "ef51651cb44311e2f63b9fb2e1e2b672c314e4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b9efbfa_904b2281",
@@ -149,6 +173,24 @@
       "side": 1,
       "message": "Initially sensor setting is stored\n\ncalibration recommended setting is set in set_foc_config and after calculating offsets it is written in perform_accel_foc and the saved\n\nThen stored setting is applied back.",
       "parentUuid": "0d119596_8d0be523",
+      "revId": "ef51651cb44311e2f63b9fb2e1e2b672c314e4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c7b3685_44b6c897",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-01T17:33:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3e2f7fc_e699dd10",
       "revId": "ef51651cb44311e2f63b9fb2e1e2b672c314e4e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
