@@ -324,18 +324,6 @@ uint16_t tcpc_get_alert_status(void)
 	return status;
 }
 
-int ppc_get_alert_status(int port)
-{
-	if (port == USBC_PORT_C0)
-		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
-	else if ((port == USBC_PORT_C1) &&
-		 (ec_cfg_usb_db_type() != DB_USB_ABSENT))
-		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
-	else if (port == USBC_PORT_C2)
-		return gpio_get_level(GPIO_USB_C2_PPC_INT_ODL) == 0;
-	return 0;
-}
-
 void tcpc_alert_event(enum gpio_signal signal)
 {
 	switch (signal) {
