@@ -10,7 +10,9 @@ set(BOARD_ROOT "${CMAKE_CURRENT_LIST_DIR}/..")
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 project(hayato)
 
-zephyr_library_include_directories(include)
+zephyr_library_include_directories(
+  include
+  "${PLATFORM_EC}/driver/tcpm/")
 
 set(PLATFORM_EC_BASEBOARD "${PLATFORM_EC}/baseboard/asurada" CACHE PATH
     "Path to the platform/ec baseboard directory")
