@@ -16,6 +16,24 @@
       "message": "I would advise to take the latest \"generated\" from brya folder as a reference. You can do it now, or later on, but there definitely are a few good changes there.",
       "revId": "018f9ca901843a805cb2b3529fbf4d730cc04cee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd737815_5f9aaef3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-07-01T00:39:50Z",
+      "side": 1,
+      "message": "I will take a look what changes on \"generated\" from brya. Will have a patch later for gpio configuration. Otherwise, I saw many CLs have been merged from brya. I will synchronize them.",
+      "parentUuid": "9bcb2c58_a5c77c20",
+      "revId": "018f9ca901843a805cb2b3529fbf4d730cc04cee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
