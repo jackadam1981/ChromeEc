@@ -33,6 +33,24 @@
       "message": "is the corresponding Kernel change merged/needed?\ncan you pls move to baseboard/intelrvp/adlrvp.h ?",
       "revId": "e45e60b31b88871ad76158c6f98f9fdeeb9579ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91de1c3c_69036817",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-07-01T04:19:12Z",
+      "side": 1,
+      "message": "CPFE ADL RVP OS is good; I verified with it.\nThis config in other platforms are included board level. Do we want to apply this to all adl rvp if in baseboard?",
+      "parentUuid": "62047c91_5d1325bd",
+      "revId": "e45e60b31b88871ad76158c6f98f9fdeeb9579ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
