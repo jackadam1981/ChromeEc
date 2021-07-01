@@ -51,6 +51,24 @@
       "parentUuid": "62047c91_5d1325bd",
       "revId": "e45e60b31b88871ad76158c6f98f9fdeeb9579ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d51c062b_d6d70de5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-07-01T07:39:50Z",
+      "side": 1,
+      "message": "Is the corresponding Kernel change applicable to both ADL P \u0026 ADL M skus?\nIf so, we will need this change in baseboard/intelrvp/adlrvp.h",
+      "parentUuid": "91de1c3c_69036817",
+      "revId": "e45e60b31b88871ad76158c6f98f9fdeeb9579ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
