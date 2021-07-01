@@ -22,6 +22,30 @@
       },
       "revId": "49903436600b71066c1e72525fb00872129c5549",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64c40c6b_d42dfb83",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-01T05:52:44Z",
+      "side": 1,
+      "message": "good point!",
+      "parentUuid": "548d1f4a_2297e1a8",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 35
+      },
+      "revId": "49903436600b71066c1e72525fb00872129c5549",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
