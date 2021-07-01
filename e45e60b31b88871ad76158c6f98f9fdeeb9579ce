@@ -140,6 +140,24 @@
       "parentUuid": "20a1ee1d_8d60e9e0",
       "revId": "e45e60b31b88871ad76158c6f98f9fdeeb9579ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a99d3d4f_b7be8ad2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-07-01T20:38:59Z",
+      "side": 1,
+      "message": "yes all use adlrvp.h, and all external vendors download OS from CPFE",
+      "parentUuid": "95e8cc98_19b38958",
+      "revId": "e45e60b31b88871ad76158c6f98f9fdeeb9579ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
