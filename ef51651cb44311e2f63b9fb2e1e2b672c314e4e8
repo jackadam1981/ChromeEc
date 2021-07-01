@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ed601a76_4b452c7c",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1511082
+      },
+      "writtenOn": "2021-07-01T17:25:56Z",
+      "side": 1,
+      "message": "This needs to be called in perform_accel_foc without mutex lock and in set_offstet with mutex lock.\n\nAlso set_offset has input as int16_t* as per framework but for perform_accel_foc i needed intv3_t",
+      "parentUuid": "14555b39_a449939e",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 29
+      },
+      "revId": "ef51651cb44311e2f63b9fb2e1e2b672c314e4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b9efbfa_904b2281",
         "filename": "driver/accel_bma4xx.c",
         "patchSetId": 1
@@ -71,6 +95,24 @@
       "writtenOn": "2021-07-01T05:19:56Z",
       "side": 1,
       "message": "other drivers are setting range and offset here, i assume we are doing it in set_foc_config?",
+      "revId": "ef51651cb44311e2f63b9fb2e1e2b672c314e4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3e2f7fc_e699dd10",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1511082
+      },
+      "writtenOn": "2021-07-01T17:25:56Z",
+      "side": 1,
+      "message": "Initially sensor setting is stored\n\ncalibration recommended setting is set in set_foc_config and after calculating offsets it is written in perform_accel_foc and the saved\n\nThen stored setting is applied back.",
+      "parentUuid": "0d119596_8d0be523",
       "revId": "ef51651cb44311e2f63b9fb2e1e2b672c314e4e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
