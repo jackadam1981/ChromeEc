@@ -63,6 +63,30 @@
       },
       "revId": "81574cb1bc2432812cbba70b33961fbc22c6fe72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b38dc69_d0b632e4",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-07-01T23:02:42Z",
+      "side": 1,
+      "message": "My intuition was that the emulator should have the same compatible string as the real device, i.e. no \"-emul.\" But in Ed\u0027s CL, it was suggested that the \"-emul\" be added based on upstream practices. So I gave it a shot.",
+      "parentUuid": "d8e84c6b_11f0d0ee",
+      "range": {
+        "startLine": 204,
+        "startChar": 23,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "81574cb1bc2432812cbba70b33961fbc22c6fe72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
