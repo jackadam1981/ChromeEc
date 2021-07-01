@@ -15,6 +15,7 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "ec_commands.h"
+#include "stdbool.h"
 #include "timer.h"
 
 #ifdef CONFIG_ZEPHYR
@@ -62,6 +63,18 @@ void system_common_pre_init(void);
  * @return Non zero if manual recovery is detected or zero otherwise.
  */
 int system_is_manual_recovery(void);
+
+/**
+ * Set a flag indicating system is in recovery mode.
+ */
+void system_enter_manual_recovery(void);
+
+/**
+ * Set a flag indicating system left recovery mode.
+ *
+ * WARNING: You most likely shouldn't call this.
+ */
+void system_exit_manual_recovery(void);
 
 /**
  * Make sure AP shutdown completely, before call system_hibernate

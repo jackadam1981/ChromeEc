@@ -275,6 +275,7 @@ static void host_events_atomic_or(host_event_t *e, host_event_t m)
 static void host_events_atomic_clear(host_event_t *e, host_event_t m)
 {
 	uint32_t *ptr = (uint32_t *)e;
+	ccprintf("%s: 0x%016" PRIx64 "\n", __func__, m);
 
 	atomic_clear_bits(ptr, (uint32_t)m);
 #ifdef CONFIG_HOST_EVENT64
@@ -329,6 +330,9 @@ void host_set_events(host_event_t mask)
 		return;
 
 	HOST_EVENT_CPRINTS("event set", mask);
+
+	if (mask & EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY))
+		system_enter_manual_recovery();
 
 	host_events_atomic_or(&events, mask);
 	host_events_atomic_or(&events_copy_b, mask);
