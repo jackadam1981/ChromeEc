@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14555b39_a449939e",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-01T05:19:56Z",
+      "side": 1,
+      "message": "can this be done using set_offset?",
+      "range": {
+        "startLine": 70,
+        "startChar": 11,
+        "endLine": 70,
+        "endChar": 29
+      },
+      "revId": "ef51651cb44311e2f63b9fb2e1e2b672c314e4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9efbfa_904b2281",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-01T05:19:56Z",
+      "side": 1,
+      "message": "space",
+      "revId": "ef51651cb44311e2f63b9fb2e1e2b672c314e4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "325f6e0e_92ae2cac",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-01T05:19:56Z",
+      "side": 1,
+      "message": "space",
+      "revId": "ef51651cb44311e2f63b9fb2e1e2b672c314e4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d119596_8d0be523",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-01T05:19:56Z",
+      "side": 1,
+      "message": "other drivers are setting range and offset here, i assume we are doing it in set_foc_config?",
+      "revId": "ef51651cb44311e2f63b9fb2e1e2b672c314e4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6b23cc4_e890cc7d",
+        "filename": "driver/accel_bma4xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-01T05:19:56Z",
+      "side": 1,
+      "message": "positive",
+      "range": {
+        "startLine": 129,
+        "startChar": 11,
+        "endLine": 129,
+        "endChar": 19
+      },
+      "revId": "ef51651cb44311e2f63b9fb2e1e2b672c314e4e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
