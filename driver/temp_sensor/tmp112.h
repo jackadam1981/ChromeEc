@@ -42,7 +42,8 @@ extern const struct tmp112_sensor_t tmp112_sensors[];
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int tmp112_get_val(int idx, int *temp_ptr);
+int tmp112_get_val_k(int idx, int *temp_ptr);
+int tmp112_get_val_mk(int idx, int *temp_ptr);
 
 /**
  * Init the sensors.  Note, this will run automatically on HOOK_INIT, but is
