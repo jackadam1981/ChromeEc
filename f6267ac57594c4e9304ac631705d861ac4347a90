@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7410b5b_5047c02e",
+        "filename": "include/system.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-01T22:41:42Z",
+      "side": 1,
+      "message": "I like the warning. Can you also say that this should only be call right before a reset (so we know when a good time to call it is).",
+      "range": {
+        "startLine": 74,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 48
+      },
+      "revId": "f6267ac57594c4e9304ac631705d861ac4347a90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
