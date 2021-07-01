@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d67b637b_226a4b0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-01T18:29:04Z",
+      "side": 1,
+      "message": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c:30:24: error: \u0027DT_CHOSEN_ZEPHYR_FLASH_CONTROLLER_LABEL\u0027 undeclared (first use in this function)",
+      "revId": "71438dcaadb3469cd41010f35579a91201bfab20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5f1daec_c5b3ff0a",
         "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
         "patchSetId": 7
