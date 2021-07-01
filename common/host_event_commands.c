@@ -330,6 +330,9 @@ void host_set_events(host_event_t mask)
 
 	HOST_EVENT_CPRINTS("event set", mask);
 
+	if (mask & EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY))
+		system_enter_manual_recovery();
+
 	host_events_atomic_or(&events, mask);
 	host_events_atomic_or(&events_copy_b, mask);
 
