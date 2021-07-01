@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae7e2b4f_363890ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-01T19:57:02Z",
+      "side": 1,
+      "message": "this seems like a breakage in upstream v2.6\n\nBoth -D and the environ def should work\n\ncan you send a patch upstream to fix this?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "ded6371e33f8e834997d3128d58aa0fb688c6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4157ed4_6cb4161f",
+        "filename": "zephyr/zmake/tests/test_toolchains.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-01T19:57:02Z",
+      "side": 1,
+      "message": "imports need sorted\n\n(you can run isort to fix this automatically)",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 37
+      },
+      "revId": "ded6371e33f8e834997d3128d58aa0fb688c6783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
