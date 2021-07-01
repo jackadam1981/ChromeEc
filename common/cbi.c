@@ -100,6 +100,11 @@ void cbi_invalidate_cache(void)
 	cache_status = CBI_CACHE_STATUS_INVALID;
 }
 
+int cbi_get_cache_status(void)
+{
+	return cache_status;
+}
+
 static int do_cbi_read(void)
 {
 	CPRINTS("Reading board info");
