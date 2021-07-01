@@ -64,6 +64,18 @@ void system_common_pre_init(void);
 int system_is_manual_recovery(void);
 
 /**
+ * Set a flag indicating system is in recovery mode.
+ */
+void system_enter_manual_recovery(void);
+
+/**
+ * Set a flag indicating system left recovery mode.
+ *
+ * WARNING: You most likely shouldn't call this.
+ */
+void system_exit_manual_recovery(void);
+
+/**
  * Make sure AP shutdown completely, before call system_hibernate
  */
 void system_enter_hibernate(uint32_t seconds, uint32_t microseconds);
