@@ -135,6 +135,30 @@
       },
       "revId": "81574cb1bc2432812cbba70b33961fbc22c6fe72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "602da58a_114d11f1",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-07-01T23:21:17Z",
+      "side": 1,
+      "message": "\u003e Yep, you need to also change DT_DRV_COMPAT but confusingly the \"-\" changes to \"_\"\n\nI figured there was something like that, but I grepped for pi3usb9201-emul, didn\u0027t find anything, and gave up. Not really a fan of APIs that involve defining macros that you never directly use, either, but I guess that\u0027s the Zephyr way.\n\nNow that it builds with the -emul, should I have that or go back to just syv682x?",
+      "parentUuid": "78807c86_d4cc80ad",
+      "range": {
+        "startLine": 204,
+        "startChar": 23,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "81574cb1bc2432812cbba70b33961fbc22c6fe72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
