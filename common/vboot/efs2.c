@@ -328,8 +328,10 @@ void hook_shutdown(void)
 	 * filtered out by system_is_in_rw (e.g. system_common_shutdown,
 	 * check_pending_cutoff).
 	 */
-	if (system_is_in_rw())
+	if (!system_is_manual_recovery())
 		return;
+
+	system_exit_manual_recovery();
 
 	/*
 	 * We can't reset here because it'll completely tear down the power
