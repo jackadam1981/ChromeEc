@@ -356,7 +356,7 @@ void sbu_fault_interrupt(enum ioex_signal signal);
 void baseboard_en_pwr_pcore_s0(enum gpio_signal signal);
 void baseboard_en_pwr_s0(enum gpio_signal signal);
 
-int board_get_soc_temp(int idx, int *temp_k);
+int board_get_soc_temp_mk(int idx, int *temp_mk);
 
 /* CBI utility functions */
 uint32_t get_sku_id(void);
