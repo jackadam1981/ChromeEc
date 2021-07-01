@@ -54,7 +54,7 @@ static int dynamic_mv;
 static uint32_t flag;
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, "DPS " format, ##args)
-#define CPRINTS(format, args...) cprints(CC_USBPD, "DPS " format, ##args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, "\033[31mDPS " format "\033[m", ##args)
 
 __overridable struct dps_config_t dps_config = {
 	.k_less_pwr = K_LESS_PWR,
@@ -233,6 +233,8 @@ struct pdo_candidate {
 		cand->port = new_port; \
 		cand->mv = new_mv; \
 		cand->mw = new_mw; \
+		if (debug_level) \
+			CPRINTS("UpdateCand %dmW %dmV", new_mw, new_mv); \
 	} while (0)
 
 /*
@@ -331,6 +333,8 @@ static bool has_new_power_request(struct pdo_candidate *cand)
 					UPDATE_CANDIDATE(i, mv, mw);
 				} else if (input_pwr <= mw && efficient) {
 					UPDATE_CANDIDATE(i, mv, mw);
+				} else {
+					CPRINTS("skip more");
 				}
 			} else {
 				int adjust_pwr =
@@ -355,6 +359,8 @@ static bool has_new_power_request(struct pdo_candidate *cand)
 					    adjust_pwr >= input_pwr &&
 					    efficient)) {
 					UPDATE_CANDIDATE(i, mv, mw);
+				} else {
+					CPRINTS("skip less");
 				}
 			}
 		}
