@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b52ecfaf_828cec65",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-07-01T09:51:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67d94995_f4375162",
+      "range": {
+        "startLine": 169,
+        "startChar": 52,
+        "endLine": 169,
+        "endChar": 61
+      },
+      "revId": "2536ddbf2e10c5005e61a13c5ce54c183f2978a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "386a14a0_37202d32",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-01T09:16:16Z",
       "side": 1,
       "message": "I am not sure if this is the correct fix.\n\nAre the STM32L4 the only chips that would configure OSC_PLL?",
+      "range": {
+        "startLine": 170,
+        "startChar": 8,
+        "endLine": 170,
+        "endChar": 18
+      },
+      "revId": "2536ddbf2e10c5005e61a13c5ce54c183f2978a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a78f9ac_a729c554",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-07-01T09:51:59Z",
+      "side": 1,
+      "message": "Other STM32 has hard coded setting and does not have flexibility to change the PLL frequency.\n\nThis is the smallest change to be compatible with previous STM32L476 series.",
+      "parentUuid": "386a14a0_37202d32",
       "range": {
         "startLine": 170,
         "startChar": 8,
