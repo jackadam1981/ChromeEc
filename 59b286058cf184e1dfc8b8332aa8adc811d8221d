@@ -35,6 +35,59 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc05c892_4b062fb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-07-01T08:28:03Z",
+      "side": 1,
+      "message": "Another CL to remove this worry is provided.",
+      "parentUuid": "b845b0a6_3cca5aa3",
+      "revId": "59b286058cf184e1dfc8b8332aa8adc811d8221d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bdf8191_0ad21c3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-07-01T08:28:03Z",
+      "side": 1,
+      "message": "Thanks for the comment. Before this CL, PLLM / PLLN / PLLR was introduced into clock-stm32l4.c. Currently there are only two STM32L4 MCU; STM32L476 and STM32L431. In these projects PLLM /PLLN / PLLR are re-defined in board.h accordingly. There should be no concern about the division by zero error.",
+      "parentUuid": "f8849883_a12226f0",
+      "revId": "59b286058cf184e1dfc8b8332aa8adc811d8221d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ad62fb0_02243900",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-07-01T08:28:03Z",
+      "side": 1,
+      "message": "A new CL 2999412 is submitted to remove such worry.",
+      "revId": "59b286058cf184e1dfc8b8332aa8adc811d8221d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a59ea57_9caf92b3",
@@ -48,6 +101,30 @@
       "writtenOn": "2021-06-30T23:48:12Z",
       "side": 1,
       "message": "STM32_PLLM and STM32_PLLR are #defined as zero on all chips, except STM32L476.  This means that for all other L4xx chips, this line is a compile-time division by zero, which GCC treats as a compilation error.",
+      "range": {
+        "startLine": 375,
+        "startChar": 11,
+        "endLine": 375,
+        "endChar": 34
+      },
+      "revId": "59b286058cf184e1dfc8b8332aa8adc811d8221d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3478b1_fa6a71dc",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-07-01T08:28:03Z",
+      "side": 1,
+      "message": "STM32_PLLx will be redefined as 1 to remove such worry. Another CL will be created.",
+      "parentUuid": "5a59ea57_9caf92b3",
       "range": {
         "startLine": 375,
         "startChar": 11,
