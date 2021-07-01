@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b9a8b38_d2a59bb8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-01T12:54:08Z",
+      "side": 1,
+      "message": "That was my first attempt, but it didn\u0027t look good. Anyway, the current implementation differs significantly.",
+      "parentUuid": "dea25711_251e6670",
+      "revId": "7c1bdb15155e073dc695241f1ac3251176221b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5e5e0be_099bc790",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-06-30T18:55:34Z",
       "side": 1,
       "message": "Replace with shell_zephyr.",
+      "range": {
+        "startLine": 242,
+        "startChar": 15,
+        "endLine": 242,
+        "endChar": 41
+      },
+      "revId": "7c1bdb15155e073dc695241f1ac3251176221b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "886ec090_77d5ceec",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-01T12:54:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e5e0be_099bc790",
       "range": {
         "startLine": 242,
         "startChar": 15,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a5716e2_8eb9d244",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-01T12:54:08Z",
+      "side": 1,
+      "message": "I used CrosEC\u0027s snprintf functions instead.",
+      "parentUuid": "759878f8_1f3bf8dc",
+      "range": {
+        "startLine": 253,
+        "startChar": 23,
+        "endLine": 253,
+        "endChar": 30
+      },
+      "revId": "7c1bdb15155e073dc695241f1ac3251176221b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aef799b4_bdc3d20f",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-06-30T18:55:34Z",
       "side": 1,
       "message": "USB console is only supported for non-EC boards (servo, twinkie, etc), which won\u0027t switch to Zephyr at the moment.\n\nI think you can drop all the USB console references.  You could add a build assert that neither CONFIG_USB_CONSOLE or CONFIG_USB_CONSOLE_STREAM are defined in this file.",
+      "range": {
+        "startLine": 315,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 0
+      },
+      "revId": "7c1bdb15155e073dc695241f1ac3251176221b23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a72cf7d_c9e107b6",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-01T12:54:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aef799b4_bdc3d20f",
       "range": {
         "startLine": 315,
         "startChar": 0,
