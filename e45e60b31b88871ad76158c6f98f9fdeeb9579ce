@@ -69,6 +69,24 @@
       "parentUuid": "91de1c3c_69036817",
       "revId": "e45e60b31b88871ad76158c6f98f9fdeeb9579ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8157bd3_d4377ff6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-07-01T15:31:12Z",
+      "side": 1,
+      "message": "OS is same for all SKU hence adding in adlrvp.h is safe",
+      "parentUuid": "d51c062b_d6d70de5",
+      "revId": "e45e60b31b88871ad76158c6f98f9fdeeb9579ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
