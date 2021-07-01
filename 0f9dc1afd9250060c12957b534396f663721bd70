@@ -34,6 +34,23 @@
       "parentUuid": "a63f8c60_38a85ceb",
       "revId": "0f9dc1afd9250060c12957b534396f663721bd70",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "838cb49b_b889130b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-01T22:56:15Z",
+      "side": 1,
+      "message": "Guybrush can settle into S5 before forced hibernation:\n21-07-01 16:53:58.536 [34.238773 charge force shutdown due to critical battery]\n21-07-01 16:53:58.541 [34.239187 chipset_force_shutdown()]\n...\n21-07-01 16:53:59.823 [35.519407 VB Timeout]\n21-07-01 16:53:59.826 [35.524842 VB Failed to verify RW (0xec05)]\n21-07-01 16:53:59.830 [35.525269 VB show_critical_error]\n21-07-01 16:53:59.834 RTC: 0x000032a0 (12960.00 s)\n21-07-01 16:53:59.836 [35.525849 power state 1 \u003d S5, in 0x0011]\n21-07-01 16:54:00.539 [36.239002 Hibernate due to critical battery]\n",
+      "revId": "0f9dc1afd9250060c12957b534396f663721bd70",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
