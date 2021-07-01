@@ -33,6 +33,42 @@
       "message": "Can we just default it in kconfig?\n\n  config SHELL_PRINTF_BUFF_SIZE\n          default 130",
       "revId": "ef4c087637d7ffd0597f8cd2215bac82145c4a3f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e577c603_4643fc77",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-01T12:59:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "3bd1f992_9a07e2e5",
+      "revId": "ef4c087637d7ffd0597f8cd2215bac82145c4a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93b57539_66e3768a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-01T12:59:09Z",
+      "side": 1,
+      "message": "Generally the sizes of threads the same. Most threads uses ~20 bytes more of the stack. There is one thread which uses 80 bytes more.\nI used THREAD_ANALYZER for that summary.\n\nFrom the build system, the usage of the memory rises from(for Lazor):\n```\nFLASH:      193372 B       512 KB     36.88%\nSRAM:       48280 B        62 KB     76.05%\n```\nto\n```\nFLASH:      193828 B       512 KB     36.97%\nSRAM:       49488 B        62 KB     77.95%\n```",
+      "parentUuid": "cf0871f5_7bb6aa6c",
+      "revId": "ef4c087637d7ffd0597f8cd2215bac82145c4a3f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
