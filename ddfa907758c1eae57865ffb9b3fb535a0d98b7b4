@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7db8107_ff47e84f",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-01T12:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17778b8d_9c753518",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f9062fce_8c5ac106",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-06-25T21:17:16Z",
       "side": 1,
       "message": "Why does this look at all the ports?  Isn\u0027t the active charge port the only one that\u0027s relevant?",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47ada17_9ef2f3a3",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-01T12:59:51Z",
+      "side": 1,
+      "message": "For a rare case that there are multiple chargers plug-in and we can decide which PDO is more efficient and sink from it.",
+      "parentUuid": "f9062fce_8c5ac106",
       "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3b61f448_03ae8890",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-01T12:59:51Z",
+      "side": 1,
+      "message": "\u003e Are we selecting a new active port through this function? \n\nYes.",
+      "parentUuid": "c90b6f25_75d96245",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78dd3bc9_cd2af6d9",
         "filename": "common/dps.c",
         "patchSetId": 13
@@ -65,6 +119,24 @@
       "writtenOn": "2021-06-25T21:17:16Z",
       "side": 1,
       "message": "Are these flags ever read and acted upon by the task, or just set/cleared as debut info for the DPS console command?",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "050e106a_453209f4",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-01T12:59:51Z",
+      "side": 1,
+      "message": "Some of them are for debug purpose (e.g. DPS_FLAG_SAMPLED), and some of them are used in the task.",
+      "parentUuid": "78dd3bc9_cd2af6d9",
       "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0a1266d_41698ab9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 3124,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-01T12:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94765b88_fd64e76c",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "332d69aa_9b44f227",
@@ -103,6 +193,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff0b5b8a_744daaa4",
+        "filename": "include/dps.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-01T12:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "332d69aa_9b44f227",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66f77956_f2fa1098",
@@ -116,6 +224,30 @@
       "writtenOn": "2021-06-25T21:17:16Z",
       "side": 1,
       "message": "nit: could be updated to reflect we went with \"dynamic\" naming",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 28
+      },
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34b30402_eaf54108",
+        "filename": "include/dps.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-01T12:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66f77956_f2fa1098",
       "range": {
         "startLine": 56,
         "startChar": 4,
