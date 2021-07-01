@@ -54,7 +54,7 @@ static int dynamic_mv;
 static uint32_t flag;
 
 #define CPRINTF(format, args...) cprintf(CC_USBPD, "DPS " format, ##args)
-#define CPRINTS(format, args...) cprints(CC_USBPD, "DPS " format, ##args)
+#define CPRINTS(format, args...) cprints(CC_USBPD, "\033[31mDPS " format "\033[m", ##args)
 
 __overridable struct dps_config_t dps_config = {
 	.k_less_pwr = K_LESS_PWR,
@@ -233,6 +233,8 @@ struct pdo_candidate {
 		cand->port = new_port; \
 		cand->mv = new_mv; \
 		cand->mw = new_mw; \
+		if (debug_level) \
+			CPRINTS("UpdateCand %dmW %dmV", new_mw, new_mv); \
 	} while (0)
 
 /*
@@ -294,9 +296,11 @@ static bool has_new_power_request(struct pdo_candidate *cand)
 		is_near_limit(input_curr, MIN(last_ma, input_curr_limit));
 
 	if (debug_level)
-		CPRINTS("C%d limit=%d last (%dmW %dmV) input (%dmW %dmV %dmA)",
-			active_port, near_pwr_limit, last_pwr, last_mv,
-			input_pwr, vbus, input_curr);
+		CPRINTS("C%d limit(pwr,curr)=(%d,%d) last (%dmW %dmV) input (%dmW %dmV %dmA)",
+			active_port, is_near_limit(input_pwr, last_pwr),
+			is_near_limit(input_curr,
+				      MIN(last_ma, input_curr_limit)),
+			last_pwr, last_mv, input_pwr, vbus, input_curr);
 
 	/*
 	 * input power might be insufficient, force it to negotiate a more
@@ -304,11 +308,15 @@ static bool has_new_power_request(struct pdo_candidate *cand)
 	 */
 	if (near_pwr_limit) {
 		flag |= DPS_FLAG_NEED_MORE_PWR;
-		if (!fake_enabled)
+		if (!fake_enabled) {
 			input_pwr = last_pwr + 1;
+			if (debug_level)
+				CPRINTS("altered input_pwr=%d", input_pwr);
+		}
 	} else {
 		flag &= ~DPS_FLAG_NEED_MORE_PWR;
 	}
+
 
 	for (int i = 0; i < board_get_usb_pd_port_count(); ++i) {
 		const uint32_t * const src_caps = pd_get_src_caps(i);
@@ -339,6 +347,8 @@ static bool has_new_power_request(struct pdo_candidate *cand)
 					UPDATE_CANDIDATE(i, mv, mw);
 				} else if (input_pwr <= mw && efficient) {
 					UPDATE_CANDIDATE(i, mv, mw);
+				} else {
+					CPRINTS("skip more");
 				}
 			} else {
 				int adjust_pwr =
@@ -363,6 +373,8 @@ static bool has_new_power_request(struct pdo_candidate *cand)
 					    adjust_pwr >= input_pwr &&
 					    efficient)) {
 					UPDATE_CANDIDATE(i, mv, mw);
+				} else {
+					CPRINTS("skip less");
 				}
 			}
 		}
