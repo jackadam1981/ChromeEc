@@ -110,6 +110,30 @@
       },
       "revId": "2536ddbf2e10c5005e61a13c5ce54c183f2978a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b4423de_1ca4cff8",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-07-01T15:30:42Z",
+      "side": 1,
+      "message": "This surely seems to be the smallest change that makes the code compile on all STM32L4xx chips.  However, I cannot say whether this is the best way, compare to say, enclosing some parts of the code added to stm32_configure_pll() inside a condition like this:\n#if STM32_PLLM \u0026\u0026 STM32_PLLN \u0026\u0026 STM32_PLLR\n\nThen the chips that do not support dynamic setting of the PLL would keep the defines at zero, and avoid having the code compiled that deals with dynamic settings.",
+      "parentUuid": "2a78f9ac_a729c554",
+      "range": {
+        "startLine": 170,
+        "startChar": 8,
+        "endLine": 170,
+        "endChar": 18
+      },
+      "revId": "2536ddbf2e10c5005e61a13c5ce54c183f2978a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
