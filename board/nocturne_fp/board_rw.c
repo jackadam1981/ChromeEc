@@ -88,12 +88,7 @@ void board_init_rw(void)
 {
 	enum fp_sensor_spi_select spi_select = get_fp_sensor_spi_select();
 
-	ccprints("FP_SPI_SEL: %s", fp_sensor_spi_select_to_str(spi_select));
-
 	spi_configure(spi_select);
-
-	ccprints("TRANSPORT_SEL: %s",
-		 fp_transport_type_to_str(get_fp_transport_type()));
 
 	/* Use SPI select as a proxy for running on the icetower dev board. */
 	if (spi_select == FP_SENSOR_SPI_SELECT_DEVELOPMENT)
