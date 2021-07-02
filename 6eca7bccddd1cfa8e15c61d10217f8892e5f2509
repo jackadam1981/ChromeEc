@@ -16,6 +16,24 @@
       "message": "I think we are going to merge the change instead so no need for cherry-pick?",
       "revId": "6eca7bccddd1cfa8e15c61d10217f8892e5f2509",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aba9fa97_65196a78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-07-02T18:22:41Z",
+      "side": 1,
+      "message": "I haven\u0027t done a merge yet, so keep cherry-picking board fixes for now. I\u0027ll CC all the SIEs on my first merge CL.",
+      "parentUuid": "422944ba_63757a8b",
+      "revId": "6eca7bccddd1cfa8e15c61d10217f8892e5f2509",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
