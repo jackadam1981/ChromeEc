@@ -16,6 +16,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
+#include "cros_board_info.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
 #include "driver/accelgyro_icm_common.h"
@@ -147,6 +148,23 @@ static const struct ec_response_keybd_config magpie_keybd = {
 	.capabilities = KEYBD_CAP_SCRNLOCK_KEY | KEYBD_CAP_NUMERIC_KEYPAD,
 };
 
+static const struct ec_response_keybd_config magma_keybd = {
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNAPSHOT,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_VOL_MUTE,		/* T8 */
+		TK_VOL_DOWN,		/* T9 */
+		TK_VOL_UP,		/* T10 */
+	},
+	.capabilities = KEYBD_CAP_SCRNLOCK_KEY | KEYBD_CAP_NUMERIC_KEYPAD,
+};
+
 __override
 uint8_t board_keyboard_row_refresh(void)
 {
@@ -159,8 +177,17 @@ uint8_t board_keyboard_row_refresh(void)
 __override const struct ec_response_keybd_config
 *board_vivaldi_keybd_config(void)
 {
-	if (get_cbi_fw_config_numeric_pad())
-		return &magpie_keybd;
+	static uint32_t sku_id;
+
+	cbi_get_sku_id(&sku_id);
+
+	if (get_cbi_fw_config_numeric_pad()) {
+		if (sku_id == 0xD0000 || sku_id == 0xD0001
+		    || sku_id == 0xD0002 || sku_id == 0xD0003)
+			return &magma_keybd;
+		else
+			return &magpie_keybd;
+	}
 	else {
 		if (system_get_board_version() >= 5)
 			return &magister_keybd;
