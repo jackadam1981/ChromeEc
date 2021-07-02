@@ -183,6 +183,30 @@
       },
       "revId": "81574cb1bc2432812cbba70b33961fbc22c6fe72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fe60a0f_72b4a223",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-07-02T16:04:04Z",
+      "side": 1,
+      "message": "Ack. Does that mean that the yaml file should also have -emul in the name?",
+      "parentUuid": "cae40ee0_f97361c6",
+      "range": {
+        "startLine": 204,
+        "startChar": 23,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "81574cb1bc2432812cbba70b33961fbc22c6fe72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
