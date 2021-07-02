@@ -26,3 +26,6 @@ isort --check .
 
 # Check black formatting.
 black --check .
+
+# Check flake8 reports no issues.
+flake8 .
