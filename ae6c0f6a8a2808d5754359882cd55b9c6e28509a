@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df554bd9_58fd741f",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-07-02T19:39:50Z",
+      "side": 1,
+      "message": "given you need the {} block, maybe you can use `if (IS_DEFINED(CONFIG_CHARGER)) {` here ?",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 2
+      },
+      "revId": "ae6c0f6a8a2808d5754359882cd55b9c6e28509a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
