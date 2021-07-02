@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c33d9c49_83ecea26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-02T20:50:20Z",
+      "side": 1,
+      "message": "We can use system_get_board_version(). But we\u0027ll need to be very careful about not defining CONFIG_BOARD_VERSION_CBI when CONFIG_CBI_GPIO is defined.\n(We should probably add a build-time config check for this.)\n\nsystem_get_sku_id() is designed to allow AP to retrieve ap_sku_id (which AP told EC earlier via EC_CMD_SET_SKU_ID). The API is used to worked around the cases where the source of sku_id comes from AP. I personally hope we can eventually deprecate this API and make EC the source of hardware configs in all platforms.",
+      "parentUuid": "d0127d1b_da5cf49d",
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6ee726d_46092992",
         "filename": "common/cbi_gpio.c",
         "patchSetId": 2
