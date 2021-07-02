@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "75f138af_112cbc57",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-02T05:44:59Z",
+      "side": 1,
+      "message": "Another question:\nI guess write size does not always implies alignment?\n\nFor example, stm32l15x has defined CONFIG_FLASH_WRITE_SIZE \u003d 0x0080.\nDoes this means it needs 128 byte align?",
+      "range": {
+        "startLine": 503,
+        "startChar": 56,
+        "endLine": 503,
+        "endChar": 79
+      },
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e83de80_cf54600d",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 2
