@@ -43,6 +43,16 @@ enum ec_ssfc_edp_phy_alt_tuning {
 #define SSFC_EDP_PHY_ALT_TUNING_OFFSET 4
 #define SSFC_EDP_PHY_ALT_TUNING_MASK GENMASK(5, 4)
 
+/*
+ * TypeC port 1 secondary MUX (Bits 6-7)
+ */
+enum ec_ssfc_c1_secondary_mux {
+	ec_ssfc_c1_secondary_mux_tusb544 = 0,
+	ec_ssfc_c1_secondary_mux_ps8818 = 1,
+};
+#define SSFC_C1_SECONDARY_MUX_OFFSET 6
+#define SSFC_C1_SECONDARY_MUX_MASK GENMASK(7, 6)
+
 /**
  * Get the Base sensor type from SSFC_CONFIG.
  *
@@ -59,5 +69,10 @@ enum ec_ssfc_spkr_auto_mode get_cbi_ssfc_spkr_auto_mode(void);
  * Get the eDP PHY alternate tuning from SSFC.
  */
 enum ec_ssfc_edp_phy_alt_tuning get_cbi_ssfc_edp_phy_alt_tuning(void);
+
+/**
+ * Get the C1 usb mux from SSFC.
+ */
+enum ec_ssfc_c1_secondary_mux get_cbi_ssfc_c1_secondary_mux(void);
 
 #endif /* _ZORK_CBI_SSFC__H_ */
