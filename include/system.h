@@ -33,6 +33,9 @@
 #define interrupt_disable_all() interrupt_disable()
 #endif /* CONFIG_ZEPHYR */
 
+/* Optional per-board implementation to read board version. */
+__overridable int board_get_version(void);
+
 /* Per chip implementation to save/read raw EC_RESET_FLAG_ flags. */
 void chip_save_reset_flags(uint32_t flags);
 uint32_t chip_read_reset_flags(void);
