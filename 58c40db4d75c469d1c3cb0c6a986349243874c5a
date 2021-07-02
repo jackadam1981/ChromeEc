@@ -205,6 +205,24 @@
       "parentUuid": "d3dcac6d_5d78500b",
       "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70979839_e23f5d12",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1512242
+      },
+      "writtenOn": "2021-07-02T09:55:34Z",
+      "side": 1,
+      "message": "OK. Got your point. Since STM32L431 used in new Munna does not define CONFIG_CHIP_INIT_ROM_REGION so I does not consider it at all.\n\nCan I simply add a #else part for CONFIG_CHIP_INIT_ROM_REGION from line 616 and then put my modification (line 618-627) into this #else part?\n\nIt looks to me STM32L431 is the first case (which has chance to get into production) hitting such alignment issue and honestly my proposal is kind of specific for STM32L431 even I know RW file size alignment with CONFIG_FLASH_WRITE_SIZE needs to be managed for all chips.\n\nMy proposal has two targets:\n\n1. Fix this issue for STM32L431 for Munna.\n2. Highlight this issue to Google.\n\nI think honestly I am not in the right position to make this linker script fully cover all chips since I still do not have a big picture of this linker script in the perspective of all chips. May I focus on target #1 at this moment and perhaps some other better candidate to work on further improvement?",
+      "parentUuid": "564522bb_3a8389f0",
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
