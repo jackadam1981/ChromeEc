@@ -145,6 +145,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "edfc30f8_82daf89a",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1379,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-02T22:20:48Z",
+      "side": 1,
+      "message": "oh ok got it. when I saw chipset, I thought it was a different section. did not look at the whole file how it was organized. sorry about that.",
+      "parentUuid": "5a2452a7_18834534",
+      "revId": "309563ee68bd5abadc7db4146591ee63c4ade3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "314796a4_eca0badb",
         "filename": "include/config.h",
         "patchSetId": 7
@@ -156,6 +174,24 @@
       "writtenOn": "2021-07-02T17:42:30Z",
       "side": 1,
       "message": "I mean to down here. These are all part of the same section.",
+      "revId": "309563ee68bd5abadc7db4146591ee63c4ade3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "514bceb6_d59c1e1b",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1439,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-02T22:20:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "314796a4_eca0badb",
       "revId": "309563ee68bd5abadc7db4146591ee63c4ade3c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
