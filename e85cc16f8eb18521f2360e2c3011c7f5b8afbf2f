@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c9b7c3_e432ed10",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-02T23:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb2b896d_df530b21",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36dcc9bf_d0f666aa",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-02T20:35:25Z",
       "side": 1,
       "message": "ret is not checked for success.",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d08190_4098021d",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-02T23:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "36dcc9bf_d0f666aa",
       "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9128ecab_9e195e38",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-02T23:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1796b42_0ce01a84",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1090602_2a0152c9",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-07-02T20:35:25Z",
       "side": 1,
       "message": "\u003e\u003e 4",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a5b9afc_070e17c5",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-02T23:15:49Z",
+      "side": 1,
+      "message": "Not sure if shifting of signed types will help here because the result depends on how compiler chooses to represent types and how it performs shifts. Divider should be safer operation here.",
+      "parentUuid": "c1090602_2a0152c9",
       "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +158,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e1b9de2_f45d5d26",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-02T23:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31ae2933_66f8ab33",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d0fc710_a398b993",
@@ -99,6 +189,24 @@
       "writtenOn": "2021-07-02T20:35:25Z",
       "side": 1,
       "message": "Why not merge with the above line.",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "320ef7f9_bc03437e",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-02T23:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d0fc710_a398b993",
       "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -120,6 +228,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "905b287b_29363ad1",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-02T23:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "767231dd_f18f3a83",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e2e0ba3c_eca1f458",
@@ -133,6 +259,24 @@
       "writtenOn": "2021-07-02T20:35:25Z",
       "side": 1,
       "message": "nit: val -\u003d 256;",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1032deb_ec7d995a",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-02T23:15:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2e0ba3c_eca1f458",
       "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

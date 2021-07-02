@@ -16,6 +16,24 @@
       "message": "Why did this get removed?",
       "revId": "c1e58c1dec591dafa40b9f2a95e84ecba83a6254",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14f393e5_ce331161",
+        "filename": "driver/accel_bma4xx.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-02T23:15:49Z",
+      "side": 0,
+      "message": "This is one bit for which MASK already exists. I added it back to match the bosch files",
+      "parentUuid": "43b33a62_f0fd88e0",
+      "revId": "c1e58c1dec591dafa40b9f2a95e84ecba83a6254",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
