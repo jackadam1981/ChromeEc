@@ -63,6 +63,13 @@ void console_channel_disable(const char *name)
 	if (index >= 0 && index != CC_COMMAND)
 		channel_mask &= ~CC_MASK(index);
 }
+
+bool console_channel_is_disabled(enum console_channel channel)
+{
+	if (!(CC_MASK(channel) & channel_mask))
+		return true;
+	return false;
+}
 #endif /* CONFIG_CONSOLE_CHANNEL */
 
 /*****************************************************************************/
@@ -74,7 +81,7 @@ int cputs(enum console_channel channel, const char *outstr)
 
 #ifdef CONFIG_CONSOLE_CHANNEL
 	/* Filter out inactive channels */
-	if (!(CC_MASK(channel) & channel_mask))
+	if (console_channel_is_disabled(channel))
 		return EC_SUCCESS;
 #endif
 
@@ -91,7 +98,7 @@ int cprintf(enum console_channel channel, const char *format, ...)
 
 #ifdef CONFIG_CONSOLE_CHANNEL
 	/* Filter out inactive channels */
-	if (!(CC_MASK(channel) & channel_mask))
+	if (console_channel_is_disabled(channel))
 		return EC_SUCCESS;
 #endif
 
@@ -113,7 +120,7 @@ int cprints(enum console_channel channel, const char *format, ...)
 
 #ifdef CONFIG_CONSOLE_CHANNEL
 	/* Filter out inactive channels */
-	if (!(CC_MASK(channel) & channel_mask))
+	if (console_channel_is_disabled(channel))
 		return EC_SUCCESS;
 #endif
 

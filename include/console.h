@@ -10,6 +10,7 @@
 
 #include "common.h"
 #include "config.h"
+#include <stdbool.h>
 
 #ifdef CONFIG_ZEPHYR
 #include "zephyr_console_shim.h"
@@ -135,6 +136,15 @@ void console_channel_enable(const char *name);
  * @param name		Console channel name
  */
 void console_channel_disable(const char *name);
+
+/**
+ * Check if channel is disabled.
+ *
+ * @param channel	Output channel
+ *
+ * @return true if channel is disabled, true if not.
+ */
+bool console_channel_is_disabled(enum console_channel channel);
 
 /**
  * Put a string to the console channel.
