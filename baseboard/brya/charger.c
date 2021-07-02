@@ -33,6 +33,7 @@ int board_set_active_charge_port(int port)
 {
 	int is_valid_port = board_is_usb_pd_port_present(port);
 	int i;
+	int rv;
 
 	if (port == CHARGE_PORT_NONE) {
 		CPRINTSUSB("Disabling all charger ports");
@@ -73,9 +74,10 @@ int board_set_active_charge_port(int port)
 	}
 
 	/* Enable requested charge port. */
-	if (ppc_vbus_sink_enable(port, 1)) {
-		CPRINTSUSB("C%d: sink path enable failed.", port);
-		return EC_ERROR_UNKNOWN;
+	rv = ppc_vbus_sink_enable(port, 1);
+	if (rv != EC_SUCCESS) {
+		CPRINTSUSB("C%d: sink path enable failed (rv %d).", port, rv);
+		return rv;
 	}
 
 	return EC_SUCCESS;
