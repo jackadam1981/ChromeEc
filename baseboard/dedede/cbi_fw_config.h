@@ -57,6 +57,13 @@ enum fw_config_tablet_mode_type {
 #define FW_CONFIG_TABLET_MODE_OFFSET		10
 #define FW_CONFIG_TABLET_MODE_MASK		GENMASK(10, 10)
 
+/*
+ * Keyboard layout (1 bit)
+ */
+enum fw_config_kb_layout_mode_type {
+	KEYBOARD_DEFAULT = 0,
+	KEYBOARD_VIVALDI = 1,
+};
 #define FW_CONFIG_KB_LAYOUT_OFFSET		12
 #define FW_CONFIG_KB_LAYOUT_MASK		GENMASK(13, 12)
 
@@ -76,6 +83,6 @@ enum fw_config_tablet_mode_type get_cbi_fw_config_tablet_mode(void);
 enum fw_config_numeric_pad_type get_cbi_fw_config_numeric_pad(void);
 enum fw_config_hdmi_type get_cbi_fw_config_hdmi(void);
 
-int get_cbi_fw_config_keyboard(void);
+enum fw_config_kb_layout_mode_type get_cbi_fw_config_keyboard(void);
 
 #endif /* _DEDEDE_CBI_FW_CONFIG__H_ */
