@@ -22,6 +22,30 @@
       },
       "revId": "5cadf1611c71b63b278b0ccb6ef5c309881d33f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b6af2be_8b1e3074",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-02T20:22:16Z",
+      "side": 1,
+      "message": "It will prevent problematic strategies from being submitted.\n\nfor example, suppose someone creates a strategy which heavily relies on multiple levels of .filter(...) to generate the inputs, when instead they should be using higher-level strategies... this will prevent stategies which take too long to generate examples from being submitted.",
+      "parentUuid": "468c35b7_e0332b87",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "5cadf1611c71b63b278b0ccb6ef5c309881d33f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
