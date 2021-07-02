@@ -46,6 +46,30 @@
       },
       "revId": "660811397bce943f9c1edf624ac7a7de3daf132d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80198b0a_ec0d68a7",
+        "filename": "common/cbi.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-02T19:25:01Z",
+      "side": 1,
+      "message": "For example,\n\n\tif (cache_status !\u003d CBI_CACHE_STATUS_SYNCED) {\n\t\tccprintf(\"Cannot Read CBI (Error %d)\\n\", cache_status);\n\t\treturn;\n\t}\n\nshould be\n\n\tif (cbi_get_cache_status() !\u003d CBI_CACHE_STATUS_SYNCED) {\n\t\tccprintf(\"Cannot Read CBI (Error %d)\\n\", cbi_get_cache_status());\n\t\treturn;\n\t}",
+      "parentUuid": "d61f96b9_febaf889",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 24
+      },
+      "revId": "660811397bce943f9c1edf624ac7a7de3daf132d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
