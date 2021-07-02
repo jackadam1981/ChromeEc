@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2eb0cbe8_e3ae0cda",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-02T09:17:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db0f4deb_81410ccf",
+      "range": {
+        "startLine": 503,
+        "startChar": 56,
+        "endLine": 503,
+        "endChar": 79
+      },
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e83de80_cf54600d",
@@ -143,6 +167,24 @@
       "side": 1,
       "message": "But my modification has nothing to do with `#ifndef CONFIG_CHIP_DATA_IN_INIT_ROM`.",
       "parentUuid": "3e83de80_cf54600d",
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "564522bb_3a8389f0",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-02T09:17:20Z",
+      "side": 1,
+      "message": "Ah sorry, I copied the wrong line..\nI meant CONFIG_CHIP_INIT_ROM_REGION.\n\nSince you overwrite the value of __image_size at line 612~614.\nIf CONFIG_CHIP_INIT_ROM_REGION is defined, the aligned image size should look like \n   LENGTH(FLASH) + SIZEOF(.init_rom) + SIZEOF(.rw_image_size_alignment) (and an optional + SIZEOF(.data))",
+      "parentUuid": "d3dcac6d_5d78500b",
       "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
