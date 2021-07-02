@@ -22,6 +22,53 @@
       },
       "revId": "52730cc9f71b391277186c4e0b477d4bb8fb6ebb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a07a87_fae8ff6e",
+        "filename": "common/console_output.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-02T16:26:13Z",
+      "side": 1,
+      "message": "See my comment below ...\n\nprovide an inline def in header for !CONFIG_CONSOLE_CHANNEL and no call sites will have to use either ifdef or is enabled",
+      "parentUuid": "d08d2572_2ef70af7",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 29
+      },
+      "revId": "52730cc9f71b391277186c4e0b477d4bb8fb6ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "487c1d7a_ee486676",
+        "filename": "include/console.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-02T16:26:13Z",
+      "side": 1,
+      "message": "provide a static inline stub for the case that the console channel system is disabled... this makes it so callers no longer need to ifdef/is_enabled all the call sites\n\n #ifdef CONFIG_CONSOLE_CHANNEL\n bool console....;\n #else\n static inline bool console_channel_is_disabled(int ignore)\n {\n         return false;\n }\n #endif",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 63
+      },
+      "revId": "52730cc9f71b391277186c4e0b477d4bb8fb6ebb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
