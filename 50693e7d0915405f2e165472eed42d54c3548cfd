@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "57075524_694eb7e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-02T21:30:54Z",
+      "side": 1,
+      "message": "Hi Philip,\n\nIt looks to me that we don\u0027t need CONFIG_CBI_GPIO (or this patch) if we use system_get_board_version. It kind of explains how we can handle both board_version from CBI and board_version from GPIO:\n\n  int system_get_board_version(void)\n  {\n  #if defined(CONFIG_BOARD_VERSION_CUSTOM)\n  \treturn board_get_version();\n  #elif defined(CONFIG_BOARD_VERSION_GPIO)\n  \treturn\n  \t\t(!!gpio_get_level(GPIO_BOARD_VERSION1) \u003c\u003c 0) |\n  \t\t(!!gpio_get_level(GPIO_BOARD_VERSION2) \u003c\u003c 1) |\n  \t\t(!!gpio_get_level(GPIO_BOARD_VERSION3) \u003c\u003c 2);\n  #elif defined(CONFIG_BOARD_VERSION_CBI)\n  \tcbi_get_board_version(\u0026version);\n  \treturn version;\n  #else\n  \treturn 0;\n  #endif\n  }\n\n\nI assume we can do similar for sku_id with a minor change. Basically, I don\u0027t see why we want to treat the GPIO based board_version as a CBI storage. WDYT?\n\n--------- \u003e8 ----------\n\nFor further simplification \u0026 clean-up, we can do:\n\n  __overridable int board_get_version(void)\n  {\n  #ifdef(CONFIG_BOARD_VERSION_GPIO)\n\treturn (!!gpio_get_level(GPIO_BOARD_VERSION1) \u003c\u003c 0) |\n  \t\t(!!gpio_get_level(GPIO_BOARD_VERSION2) \u003c\u003c 1) |\n  \t\t(!!gpio_get_level(GPIO_BOARD_VERSION3) \u003c\u003c 2);\n  #else\n  \treturn 0;\n  #endif\n  }\n  \t\t\n  int system_get_board_version(void)\n  {\n  \tif (IS_ENABLED(CONFIG_BOARD_VERSION_CBI)) {\n  \t\tcbi_get_board_version(\u0026version);\n  \t\treturn version;  \t\n  \t} else {\n  \t\treturn board_get_version();\n  \t}\n  }\n  \nWe don\u0027t need CONFIG_BOARD_VERSION_CUSTOM (because we use __overridable).",
+      "parentUuid": "c33d9c49_83ecea26",
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6ee726d_46092992",
         "filename": "common/cbi_gpio.c",
         "patchSetId": 2
