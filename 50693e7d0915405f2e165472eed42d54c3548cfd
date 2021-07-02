@@ -57,6 +57,30 @@
       },
       "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0e9391b_9ad393c9",
+        "filename": "common/cbi_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-02T20:52:34Z",
+      "side": 1,
+      "message": "It looks like cbi_set_board_info() always returns EC_SUCCESS?",
+      "parentUuid": "f6ee726d_46092992",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
