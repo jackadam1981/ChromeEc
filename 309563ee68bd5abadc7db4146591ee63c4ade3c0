@@ -109,6 +109,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e7d87afe_377f57f7",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1379,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-02T18:41:19Z",
+      "side": 1,
+      "message": "oh I thought commands which are optional to be included in board.h need to be listed here. what does optional refere here?\nI can move it down.",
+      "parentUuid": "f8dd0760_95cc9217",
+      "revId": "309563ee68bd5abadc7db4146591ee63c4ade3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "314796a4_eca0badb",
         "filename": "include/config.h",
         "patchSetId": 7
