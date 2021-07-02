@@ -6,6 +6,7 @@
 #include "adc.h"
 #include "adc_chip.h"
 #include "button.h"
+#include "cbi_ssfc.h"
 #include "charge_state_v2.h"
 #include "cros_board_info.h"
 #include "driver/accelgyro_bmi_common.h"
@@ -336,10 +337,11 @@ void motion_interrupt(enum gpio_signal signal)
  * USB-C MUX/Retimer dynamic configuration
  */
 
+int board_usbc1_retimer_inhpd = IOEX_USB_C1_HPD_IN_DB;
+
 static void setup_mux(void)
 {
-	if (ec_config_has_usbc1_retimer_tusb544()) {
-		ccprints("C1 TUSB544 detected");
+	if (ec_config_has_usbc1_retimer_on_hdmi_db()) {
 		/*
 		 * Main MUX is FP5, secondary MUX is TUSB544
 		 *
@@ -349,8 +351,16 @@ static void setup_mux(void)
 		memcpy(&usb_muxes[USBC_PORT_C1],
 		       &usbc1_amd_fp5_usb_mux,
 		       sizeof(struct usb_mux));
-		/* Set the TUSB544 as the secondary MUX */
-		usb_muxes[USBC_PORT_C1].next_mux = &usbc1_tusb544;
+
+		if (get_cbi_ssfc_c1_usb_mux() == ec_ssfc_c1_usb_mux_ps8818) {
+			ccprints("C1 PS8818 detected");
+			/* Set the PS8818 as the secondary MUX */
+			usb_muxes[USBC_PORT_C1].next_mux = &usbc1_ps8818;
+		} else {
+			ccprints("C1 TUSB544 detected");
+			/* Set the TUSB544 as the secondary MUX */
+			usb_muxes[USBC_PORT_C1].next_mux = &usbc1_tusb544;
+		}
 	} else if (ec_config_has_usbc1_retimer_ps8743()) {
 		ccprints("C1 PS8743 detected");
 		/*
