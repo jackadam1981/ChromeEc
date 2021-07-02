@@ -22,6 +22,30 @@
       },
       "revId": "32a99bba036ee019b2ab6e478548a12a441cab9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f871844_4e2f3c69",
+        "filename": "zephyr/zmake/run_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-02T18:02:04Z",
+      "side": 1,
+      "message": "No longer necessary as the CPU won\u0027t be extremely taxed during execution (when we were running in parallel with ninja and all that).\n\nSo hypothesis timings will work nicely again and we can re-enable all of it 😊",
+      "parentUuid": "a37a241b_a12f8e35",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "32a99bba036ee019b2ab6e478548a12a441cab9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
