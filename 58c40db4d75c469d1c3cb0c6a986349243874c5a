@@ -16,6 +16,23 @@
       "message": "Hi Ting, could you help to review the CL, thanks.",
       "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e83de80_cf54600d",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-02T04:55:08Z",
+      "side": 1,
+      "message": "do we need `#ifndef CONFIG_CHIP_DATA_IN_INIT_ROM` here?\n\nwhat will happen if CONFIG_CHIP_DATA_IN_INIT_ROM is defined?",
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
