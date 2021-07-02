@@ -46,6 +46,30 @@
       },
       "revId": "32a99bba036ee019b2ab6e478548a12a441cab9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46857162_13fd3bbb",
+        "filename": "zephyr/zmake/run_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-02T18:22:07Z",
+      "side": 1,
+      "message": "I\u0027m gonna let Simon weigh in on this, I know he got a bit frustrated with these errors. Turning off the health warnings still allows hypothesis to keep working, just avoids a few checks. I\u0027m in favor of still removing those checks in the CQ.",
+      "parentUuid": "0f871844_4e2f3c69",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "32a99bba036ee019b2ab6e478548a12a441cab9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
