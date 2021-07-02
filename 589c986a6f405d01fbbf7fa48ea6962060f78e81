@@ -16,6 +16,121 @@
       "message": "Move #define to it83xx_pd.h, it\u0027s more reasonable. ",
       "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb6b9890_2830b91d",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-02T15:33:28Z",
+      "side": 1,
+      "message": "Use IS_ENABLED(CONFIG_ZEPHYR)",
+      "range": {
+        "startLine": 815,
+        "startChar": 0,
+        "endLine": 815,
+        "endChar": 20
+      },
+      "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e34dd901_8a67e972",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-02T15:33:28Z",
+      "side": 1,
+      "message": "Why are both port interrupts connected here.\n\nCan you connect the IRQ only for the current port?\n\nIRQ_CONNECT(usbpd_ctrl_regs[port].irq, 0, chip_pd_irq, port, 0);",
+      "range": {
+        "startLine": 816,
+        "startChar": 0,
+        "endLine": 818,
+        "endChar": 1
+      },
+      "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5c99768_329dd0b2",
+        "filename": "driver/tcpm/ite_pd_intc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-02T15:33:28Z",
+      "side": 1,
+      "message": "Delete the #ifdef so the function prototype is always available.  This is recommended by the Zephyr API guidelines.\n\nAdd a comment block describing the routine, parameters, return value, and note that it requires CONFIG_USB_PD_TCPM_ITE_ON_CHIP.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cbee90b_8e9def3b",
+        "filename": "driver/tcpm/ite_pd_intc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-02T15:33:28Z",
+      "side": 1,
+      "message": "extern is not needed.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a865f25_1b86a599",
+        "filename": "zephyr/projects/asurada/hayato/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-02T15:33:28Z",
+      "side": 1,
+      "message": "What C file requires this?  If there is a specific enum/struct/prototype needed, can you add it to include/driver/tcpm/it8xxx2_pd_public.h instead?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
