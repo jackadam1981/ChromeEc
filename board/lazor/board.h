@@ -10,6 +10,9 @@
 
 #include "baseboard.h"
 
+#define CONFIG_CRC8
+#define CONFIG_CBI_GPIO
+
 /* Internal SPI flash on NPCX7 */
 #define CONFIG_FLASH_SIZE_BYTES (512 * 1024)  /* 512KB internal spi flash */
 
