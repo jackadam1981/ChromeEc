@@ -80,6 +80,9 @@
  */
 #define CONFIG_FLASH_READOUT_PROTECTION_AS_PSTATE
 
+/*-------------------------------------------------------------------------*
+ * UART Console Setup
+ *-------------------------------------------------------------------------*/
 /* the UART console is on USART1 */
 #undef CONFIG_UART_CONSOLE
 #define CONFIG_UART_CONSOLE 1
@@ -87,6 +90,21 @@
 #define CONFIG_UART_TX_DMA_PH DMAMUX1_REQ_USART1_TX
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 2048
+
+/*-------------------------------------------------------------------------*
+ * USART Transport Setup
+ *-------------------------------------------------------------------------*/
+/* Enable USART host commands */
+#define CONFIG_USART_HOST_COMMAND
+/* Enable USART and USART1 stream */
+#define CONFIG_STREAM_USART
+#define CONFIG_STREAM_USART2
+/* Allocate and configure hw instance of USART */
+#undef CONFIG_UART_HOST_COMMAND_HW
+#define CONFIG_UART_HOST_COMMAND_HW usart2_hw
+/* Set baud rate of USART */
+#undef CONFIG_UART_HOST_COMMAND_BAUD_RATE
+#define CONFIG_UART_HOST_COMMAND_BAUD_RATE 3000000
 
 /* Optional features */
 #undef CONFIG_ADC
