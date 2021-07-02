@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edad7312_a24fd5bd",
+        "filename": "zephyr/shim/src/tasks.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-02T15:13:41Z",
+      "side": 1,
+      "message": "This is ITE specific.  This needs to be guarded with CONFIG_ITE_IT8XXX2_INTC.",
+      "range": {
+        "startLine": 312,
+        "startChar": 1,
+        "endLine": 312,
+        "endChar": 19
+      },
+      "revId": "d4feae29d408b57d4e7e6241cff0b5a8978c0677",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
