@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc1d1bb7_1c0a3dbf",
+        "filename": "common/printf.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-02T16:26:47Z",
+      "side": 1,
+      "message": "This comment needs to go away now that the ifdef is gone",
+      "range": {
+        "startLine": 466,
+        "startChar": 0,
+        "endLine": 469,
+        "endChar": 3
+      },
+      "revId": "9ca8a7b68516d3cde5632866d5ef1acdd2722162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c5b80b60_7f0fd110",
         "filename": "zephyr/shim/src/console.c",
         "patchSetId": 5
@@ -14,6 +37,30 @@
       "writtenOn": "2021-07-02T15:02:33Z",
       "side": 1,
       "message": "Use IS_ENABLED()",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 29
+      },
+      "revId": "9ca8a7b68516d3cde5632866d5ef1acdd2722162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7325c862_f31e10ef",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-02T16:26:47Z",
+      "side": 1,
+      "message": "see parent CL ... inline def may be better",
+      "parentUuid": "c5b80b60_7f0fd110",
       "range": {
         "startLine": 278,
         "startChar": 0,
