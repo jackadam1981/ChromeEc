@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eb4b815_13405e1c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-02T09:35:36Z",
+      "side": 1,
+      "message": "The test is surely not enough to cover the change. I could help to test on some other chips, but in the mean time could you ensure all symbols in the board/*/*/ec.R{O,W}.smap are valid?",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "084491b6ac88192c78af4abf6f8a807ec079d21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4f222d_8016866c",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-02T09:35:36Z",
+      "side": 1,
+      "message": "please indent this section with tabs.",
+      "revId": "084491b6ac88192c78af4abf6f8a807ec079d21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbd34105_48635f6f",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-02T09:35:36Z",
+      "side": 1,
+      "message": "We should try to aggregate the related sections together. We should move this part (and rename section name to .fill to align the naming with CONFIG_CHIP_INIT_ROM_REGION part) to above before line 476, and use EC_IMAGE_LMA_MEM_REGION instead rather than FLASH.",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 0
+      },
+      "revId": "084491b6ac88192c78af4abf6f8a807ec079d21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

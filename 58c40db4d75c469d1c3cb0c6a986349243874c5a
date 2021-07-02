@@ -187,6 +187,24 @@
       "parentUuid": "d3dcac6d_5d78500b",
       "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49202216_c0953ef4",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-02T09:35:36Z",
+      "side": 1,
+      "message": "I think Ting means that the __image_size would be redefined if this is not properly guarded. \n\nThe code should be guarded by !CONFIG_CHIP_INIT_ROM_REGION.",
+      "parentUuid": "d3dcac6d_5d78500b",
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
