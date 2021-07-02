@@ -51,6 +51,24 @@
       "message": "nit: Please keep in alphabetical order",
       "revId": "309563ee68bd5abadc7db4146591ee63c4ade3c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dd7c3eb_6cbfed3e",
+        "filename": "include/config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 1379,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-02T03:05:38Z",
+      "side": 1,
+      "message": "so should I move #define CONFIG_CMD_RETIMER after #define CONFIG_CMD_MFALLOW?\nI put it in optional commands location because some boards can choose to #undef.\nthere are bunch of command in below lines.\n\nor should I still go ahead and insert in the alphabetical order instead of at optional commands place.",
+      "parentUuid": "4b92a073_00c302d9",
+      "revId": "309563ee68bd5abadc7db4146591ee63c4ade3c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
