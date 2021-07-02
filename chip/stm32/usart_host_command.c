@@ -16,6 +16,7 @@
 #include "usart_rx_dma.h"
 #include "usart_host_command.h"
 #include "usart-stm32f4.h"
+#include "usart-stm32h7.h"
 #include "util.h"
 
 /* Console output macros */
@@ -495,6 +496,8 @@ size_t usart_host_command_rx_append_data(struct usart_config const *config,
 
 	/* Once the header is received, store the datalen */
 	static int usart_in_datalen;
+
+	CPRINTS("*** Bhanu: Data in");
 
 	/*
 	 * Host can send extra bytes than in header data_len
