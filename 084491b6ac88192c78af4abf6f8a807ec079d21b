@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee1cb83f_d5346286",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1512242
+      },
+      "writtenOn": "2021-07-02T10:08:37Z",
+      "side": 1,
+      "message": "Request makes sense. Will do. Here is what I\u0027m going to do:\n\n1. Run make buildall w/ patchset3\n2. Collect board/*/*/ec.R{O,W}.smap\n3. Run make buildall w/o patchset\n4. Collect board/*/*/ec.R{O,W}.smap\n5. Use Beyond Compare (over Windows) to compare #2 and #4\n\nSince buildall really takes time so I need some more time to work on it. Will probably provide update next Monday.",
+      "parentUuid": "5eb4b815_13405e1c",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "084491b6ac88192c78af4abf6f8a807ec079d21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef4f222d_8016866c",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 3
