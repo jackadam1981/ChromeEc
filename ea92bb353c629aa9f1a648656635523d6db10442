@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6791a810_6965b138",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-02T20:46:44Z",
+      "side": 1,
+      "message": "Added a call to system_exit_manual_recovery in system_common_shutdown.",
+      "revId": "ea92bb353c629aa9f1a648656635523d6db10442",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
