@@ -135,19 +135,24 @@ static int nx20p348x_vbus_sink_enable(int port, int enable)
 {
 	int status;
 	int rv;
-	int control = enable ? NX20P348X_SWITCH_CONTROL_HVSNK : 0;
+//	const int sw_sts = enable ? NX20P348X_SWITCH_STATUS_HVSNK : 0;
 
 	enable = !!enable;
 
-	if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3481))
-		rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, control);
-	else if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3483))
+	if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3481)) {
+		const int sw_ctrl = enable ? NX20P3481_SWITCH_CONTROL_HVSNK : 0;
+
+		rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, sw_ctrl);
+	} else if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3483)) {
 		/*
 		 * We cannot use an EC GPIO for EN_SNK since an EC reset
 		 * will float the GPIO thus browning out the board (without
 		 * a battery).
 		 */
 		rv = tcpm_set_snk_ctrl(port, enable);
+	} else {
+		rv = EC_ERROR_UNIMPLEMENTED;
+	}
 	if (rv)
 		return rv;
 
@@ -162,7 +167,17 @@ static int nx20p348x_vbus_sink_enable(int port, int enable)
 	if (rv)
 		return rv;
 
-	return (status & NX20P348X_SWITCH_CONTROL_HVSNK) == control ?
+#if 1
+	if (!!(status & NX20P348X_SWITCH_STATUS_HVSNK) != enable) {
+		int reg;
+
+		ccprintf("%s: status 0x%02x\n", __func__, status);
+		read_reg(port, NX20P348X_INTERRUPT2_REG, &reg);
+		ccprintf("%s: INT2 0x%02x\n", __func__, reg);
+	}
+#endif
+
+	return !!(status & NX20P348X_SWITCH_STATUS_HVSNK) == enable ?
 		EC_SUCCESS : EC_ERROR_UNKNOWN;
 }
 
@@ -171,19 +186,24 @@ static int nx20p348x_vbus_source_enable(int port, int enable)
 	int status;
 	int rv;
 	uint8_t previous_flags = flags[port];
-	int control = enable ? NX20P348X_SWITCH_CONTROL_5VSRC : 0;
+//	int control = enable ? NX20P348X_SWITCH_CONTROL_5VSRC : 0;
 
 	enable = !!enable;
 
-	if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3481))
-		rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, control);
-	else if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3483))
+	if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3481)) {
+		const int sw_ctrl = enable ? NX20P3481_SWITCH_CONTROL_5VSRC : 0;
+
+		rv = write_reg(port, NX20P348X_SWITCH_CONTROL_REG, sw_ctrl);
+	} else if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3483)) {
 		/*
 		 * For parity's sake, we should not use an EC GPIO for
 		 * EN_SRC since we cannot use it for EN_SNK (for brown
 		 * out reason listed above).
 		 */
 		rv = tcpm_set_src_ctrl(port, enable);
+	} else {
+		rv = EC_ERROR_UNIMPLEMENTED;
+	}
 	if (rv)
 		return rv;
 
@@ -207,7 +227,7 @@ static int nx20p348x_vbus_source_enable(int port, int enable)
 			flags[port] = previous_flags;
 			return rv;
 		}
-		if ((status & NX20P348X_SWITCH_STATUS_MASK) != control) {
+		if (!!(status & NX20P348X_SWITCH_STATUS_MASK) != enable) {
 			flags[port] = previous_flags;
 			return EC_ERROR_UNKNOWN;
 		}
@@ -233,9 +253,9 @@ static int nx20p348x_init(int port)
 	/* Mask interrupts for interrupt 1 register */
 	mask = ~(NX20P348X_INT1_OC_5VSRC | NX20P348X_INT1_SC_5VSRC |
 		 NX20P348X_INT1_RCP_5VSRC | NX20P348X_INT1_DBEXIT_ERR);
-#if defined(CONFIG_USBC_PPC_NX20P3481) || defined(CONFIG_USBC_PPC_NX20P3483)
+#if defined(CONFIG_USBC_PPC_NX20P3481)
 	/* Unmask Fast Role Swap detect interrupt */
-	mask &= ~NX20P348X_INT1_FRS_DET;
+	mask &= ~NX20P3481_INT1_FRS_DET;
 #endif
 	rv = write_reg(port, NX20P348X_INTERRUPT1_MASK_REG, mask);
 	if (rv)
@@ -249,7 +269,11 @@ static int nx20p348x_init(int port)
 	rv = read_reg(port, NX20P348X_DEVICE_STATUS_REG, &mode);
 	if (rv)
 		return rv;
-	mode &= NX20P348X_DEVICE_MODE_MASK;
+
+	if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3481))
+		mode &= NX20P3481_DEVICE_MODE_MASK;
+	else if (IS_ENABLED(CONFIG_USBC_PPC_NX20P3483))
+		mode &= NX20P3483_DEVICE_MODE_MASK;
 
 	/* Check if dead battery mode is active. */
 	if (mode == NX20P348X_MODE_DEAD_BATTERY) {
@@ -379,6 +403,10 @@ static void nx20p348x_handle_interrupt(int port)
 	 * action if any can be taken.
 	 */
 	read_reg(port, NX20P348X_INTERRUPT2_REG, &reg);
+	if (reg != 0)
+		ccprintf("%s: INT2 0x%02x\n", __func__, reg);
+	if (reg & NX20P348X_INT2_RCP_HVSNK)
+		ccprintf("%s: INT2.RCP_HVSNK\n", __func__);
 }
 
 static void nx20p348x_irq_deferred(void)
