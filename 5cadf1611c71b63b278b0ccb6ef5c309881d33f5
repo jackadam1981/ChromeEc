@@ -46,6 +46,30 @@
       },
       "revId": "5cadf1611c71b63b278b0ccb6ef5c309881d33f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebdcc77c_c81fb31e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-02T21:12:46Z",
+      "side": 1,
+      "message": "As before, I\u0027ll let Simon be the tie breaker on this.\n\nMy take is that in the example you provided we should be catching that in code review not in CQ. Also, in many cases (as we\u0027ve seen) committing something like you describe might pass CQ when it is first added and only flake later down the road. So turning on the health check doesn\u0027t really prevent these cases, just the most extreme ones which I would hope we can catch by just looking at the code.",
+      "parentUuid": "6b6af2be_8b1e3074",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 18
+      },
+      "revId": "5cadf1611c71b63b278b0ccb6ef5c309881d33f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
