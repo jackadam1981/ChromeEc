@@ -94,6 +94,30 @@
       },
       "revId": "32a99bba036ee019b2ab6e478548a12a441cab9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29e6b184_27e2bc35",
+        "filename": "zephyr/zmake/run_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-02T19:34:33Z",
+      "side": 1,
+      "message": "Done (gets disabled in the follow-up CL)",
+      "parentUuid": "1c5417a9_fa050f73",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "32a99bba036ee019b2ab6e478548a12a441cab9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
