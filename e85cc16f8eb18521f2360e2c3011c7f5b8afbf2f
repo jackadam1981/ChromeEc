@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2b896d_df530b21",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-02T20:35:25Z",
+      "side": 1,
+      "message": "0x80 mask should be defined in header.",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36dcc9bf_d0f666aa",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-02T20:35:25Z",
+      "side": 1,
+      "message": "ret is not checked for success.",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1796b42_0ce01a84",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-02T20:35:25Z",
+      "side": 1,
+      "message": "ret is not checked for success.",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1090602_2a0152c9",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-02T20:35:25Z",
+      "side": 1,
+      "message": "\u003e\u003e 4",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31ae2933_66f8ab33",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-02T20:35:25Z",
+      "side": 1,
+      "message": "Can this function continue when wait_and_read_data fails?",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d0fc710_a398b993",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-02T20:35:25Z",
+      "side": 1,
+      "message": "Why not merge with the above line.",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "767231dd_f18f3a83",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-02T20:35:25Z",
+      "side": 1,
+      "message": "RETURN_ERROR",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2e0ba3c_eca1f458",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-02T20:35:25Z",
+      "side": 1,
+      "message": "nit: val -\u003d 256;",
+      "revId": "e85cc16f8eb18521f2360e2c3011c7f5b8afbf2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
