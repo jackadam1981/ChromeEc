@@ -184,71 +184,104 @@ BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
 
+/* The default fixed precision type, fp_t, uses 16 bits for both the fractional
+ * and integer parts, limiting its range to [-32K, 32K]. This is insufficient
+ * for the calculations in tcs3400_translate_to_xyz(), so define new fixed
+ * point operations that only use 12 bits for the fractional part and don't
+ * truncate results to 32 bits.
+ */
+#define INT_TO_FIXED_12(x)   ((int32_t)(x) << 12)
+#define FLOAT_TO_FIXED_12(x) ((int32_t)((x) * (float)(1 << 12)))
+#define FIXED_12_MUL(x, y)   (((int64_t)(x) * (y)) >> 12)
+#define FIXED_12_TO_INT(x)   ((x) >> 12)
+
 __override void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
 				     int32_t *crgb_data, int32_t *xyz_data)
 {
-	int n, cur_gain;
-	fp_t n_interval, rgbc_sum;
-	int integration_time_us;
 	struct tcs_saturation_t *sat_p =
-				&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
+		&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
 
-	cur_gain = (1 << (2 * sat_p->again));
+	int32_t cur_gain = (1 << (2 * sat_p->again));
 
-	integration_time_us =
+	int32_t integration_time_us =
 		tcs3400_get_integration_time(sat_p->atime);
 
-	/* n_interval = (G+B)/C, to use different coefficient*/
-	if (crgb_data[0] != 0)
-		n_interval = INT_TO_FP(crgb_data[2]+crgb_data[3])/crgb_data[0];
-	else
-		n_interval = FLOAT_TO_FP(0.692); /* set default n = 2 */
+	int32_t c_coeff, r_coeff, g_coeff, b_coeff, sum_coeff;
+	int64_t crgb_sum;
 
-	if (n_interval < FLOAT_TO_FP(0.692))
-		n = 1;
-	else if (n_interval >= FLOAT_TO_FP(0.692) &&
-			n_interval < FLOAT_TO_FP(1.012))
-		n = 2;
-	else
-		n = 3;
+	int32_t n = 2;
+
+	/* n_interval = (G+B)/C, to use different coefficients */
+	if (crgb_data[0] != 0) {
+		int32_t gb_sum =
+			INT_TO_FIXED_12(crgb_data[2]) +
+			INT_TO_FIXED_12(crgb_data[3]);
+		int32_t n_interval = gb_sum / crgb_data[0];
+
+		if (n_interval < FLOAT_TO_FIXED_12(0.692))
+			n = 1;
+		else if (n_interval >= FLOAT_TO_FIXED_12(0.692) &&
+				n_interval < FLOAT_TO_FIXED_12(1.012))
+			n = 2;
+		else
+			n = 3;
+	}
 
 	switch (n) {
 	case 1:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.009)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(0.056)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(2.735)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.903));
-
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(799.797), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
+		c_coeff   = FLOAT_TO_FIXED_12(0.009);
+		r_coeff   = FLOAT_TO_FIXED_12(0.056);
+		g_coeff   = FLOAT_TO_FIXED_12(2.735);
+		b_coeff   = FLOAT_TO_FIXED_12(-1.903);
+		sum_coeff = FLOAT_TO_FIXED_12(799.797);
 	break;
 	case 2:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.202)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(-1.1)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(8.692)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-7.068));
-
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(801.347), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
+		c_coeff   = FLOAT_TO_FIXED_12(0.202);
+		r_coeff   = FLOAT_TO_FIXED_12(-1.1);
+		g_coeff   = FLOAT_TO_FIXED_12(8.692);
+		b_coeff   = FLOAT_TO_FIXED_12(-7.068);
+		sum_coeff = FLOAT_TO_FIXED_12(801.347);
 	break;
 	case 3:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(-0.661)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(1.334)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(1.095)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.821));
-
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(795.574), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
-	break;
-	default:
+		c_coeff   = FLOAT_TO_FIXED_12(-0.661);
+		r_coeff   = FLOAT_TO_FIXED_12(1.334);
+		g_coeff   = FLOAT_TO_FIXED_12(1.095);
+		b_coeff   = FLOAT_TO_FIXED_12(-1.821);
+		sum_coeff = FLOAT_TO_FIXED_12(795.574);
 	break;
 	}
 
-	if (xyz_data[1] < 0)
-		xyz_data[1] = 0;
+	/* Each element of crgb_data is bounded by 2^16.
+	 * Absolute value of each c/r/g/b_coeff is bounded by 9 * 2^12 = 2^16.
+	 * Absolute value of crgb_sum is bounded by 2^16 * 2^16 * 4 = 2^34.
+	 */
+	crgb_sum =
+		(int64_t)crgb_data[0] * c_coeff +
+		(int64_t)crgb_data[1] * r_coeff +
+		(int64_t)crgb_data[2] * g_coeff +
+		(int64_t)crgb_data[3] * b_coeff;
+
+	/* sum_coeff is bounded by 802 * 2^12 = 2^22.
+	 *
+	 * Intermediate value during multiplication is bounded
+	 * by 2^34 * 2^22 = 2^60. Final resiult is bounded by
+	 * 2^60 / 2^12 = 2^48.
+	 */
+	crgb_sum = FIXED_12_MUL(crgb_sum, sum_coeff);
+
+	crgb_sum /= integration_time_us * cur_gain / 1000;
+
+	crgb_sum = FIXED_12_TO_INT(crgb_sum);
+
+	/* Some C/R/G/B coefficients are negative, so clamp at zero. */
+	if (crgb_sum < 0)
+		crgb_sum = 0;
+
+	/* Clamp at int16 max to avoid overflow in xyz_data[1] */
+	if (crgb_sum > INT16_MAX)
+		crgb_sum = INT16_MAX;
+
+	xyz_data[1] = crgb_sum;
 }
 
 static void ppc_interrupt(enum gpio_signal signal)
