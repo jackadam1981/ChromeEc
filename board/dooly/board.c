@@ -187,68 +187,104 @@ DECLARE_DEFERRED(power_monitor);
 __override void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
 				     int32_t *crgb_data, int32_t *xyz_data)
 {
-	int n, cur_gain;
-	fp_t n_interval, rgbc_sum;
-	int integration_time_us;
 	struct tcs_saturation_t *sat_p =
-				&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
+		&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
 
-	cur_gain = (1 << (2 * sat_p->again));
+	int cur_gain = (1 << (2 * sat_p->again));
 
-	integration_time_us =
+	int integration_time_us =
 		tcs3400_get_integration_time(sat_p->atime);
 
-	/* n_interval = (G+B)/C, to use different coefficient*/
-	if (crgb_data[0] != 0)
-		n_interval = INT_TO_FP(crgb_data[2]+crgb_data[3])/crgb_data[0];
-	else
-		n_interval = FLOAT_TO_FP(0.692); /* set default n = 2 */
+	fp_t c_coeff, r_coeff, g_coeff, b_coeff, sum_coeff;
+	fp_inter_t rgbc_sum;
 
-	if (n_interval < FLOAT_TO_FP(0.692))
-		n = 1;
-	else if (n_interval >= FLOAT_TO_FP(0.692) &&
-			n_interval < FLOAT_TO_FP(1.012))
-		n = 2;
-	else
-		n = 3;
+	int n = 2;
+
+	/* n_interval = (G+B)/C, to use different coefficients */
+	if (crgb_data[0] != 0) {
+		/* Use fp_inter_t here as fp_t is not big enough */
+		fp_inter_t gb_sum = crgb_data[2] + crgb_data[3];
+		fp_inter_t n_interval = (gb_sum << FP_BITS) / crgb_data[0];
+
+		if (n_interval < FLOAT_TO_FP(0.692))
+			n = 1;
+		else if (n_interval >= FLOAT_TO_FP(0.692) &&
+				n_interval < FLOAT_TO_FP(1.012))
+			n = 2;
+		else
+			n = 3;
+	}
 
 	switch (n) {
 	case 1:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.009)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(0.056)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(2.735)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.903));
-
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(799.797), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
+		c_coeff   = FLOAT_TO_FP(0.009);
+		r_coeff   = FLOAT_TO_FP(0.056);
+		g_coeff   = FLOAT_TO_FP(2.735);
+		b_coeff   = FLOAT_TO_FP(-1.903);
+		sum_coeff = FLOAT_TO_FP(799.797);
 	break;
 	case 2:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.202)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(-1.1)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(8.692)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-7.068));
-
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(801.347), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
+		c_coeff   = FLOAT_TO_FP(0.202);
+		r_coeff   = FLOAT_TO_FP(-1.1);
+		g_coeff   = FLOAT_TO_FP(8.692);
+		b_coeff   = FLOAT_TO_FP(-7.068);
+		sum_coeff = FLOAT_TO_FP(801.347);
 	break;
 	case 3:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(-0.661)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(1.334)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(1.095)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.821));
-
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(795.574), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
-	break;
-	default:
+		c_coeff   = FLOAT_TO_FP(-0.661);
+		r_coeff   = FLOAT_TO_FP(1.334);
+		g_coeff   = FLOAT_TO_FP(1.095);
+		b_coeff   = FLOAT_TO_FP(-1.821);
+		sum_coeff = FLOAT_TO_FP(795.574);
 	break;
 	}
 
-	if (xyz_data[1] < 0)
-		xyz_data[1] = 0;
+	/* Each element of crgb_data is bounded by 2^16.
+	 *
+	 * With the left shift of FP_BITS, each
+	 * c/r/g/b_coeff is bounded by 9 * 2^16 = 2^20.
+	 *
+	 * rgbc_sum is bounded by 2^16 * 2^20 * 4 = 2^38.
+	 */
+	rgbc_sum =
+		(fp_inter_t)crgb_data[0] * c_coeff +
+		(fp_inter_t)crgb_data[1] * r_coeff +
+		(fp_inter_t)crgb_data[2] * g_coeff +
+		(fp_inter_t)crgb_data[3] * b_coeff;
+
+	/* Assume rgbc_sum is still only bounded by 2^38 */
+	rgbc_sum /= integration_time_us * cur_gain / 1000;
+
+	/* Throw away 1 bit to ensure nothing overflows.
+	 * rgbc_sum is now bounded by 2^37.
+	 */
+	rgbc_sum >>= 1;
+
+	/* After the left shift by FP_BITS, sum_coeff is bounded
+	 * by 802 * 2^16 = 2^26.
+	 *
+	 * rgbc_sum is now bounded by 2^37 * 2^26 = 2^63.
+	 */
+	rgbc_sum *= sum_coeff;
+
+	/* Multiplying by two fp_t values (c/r/g/b_coeff and
+	 * sum_coeff) resulted in the actual value of rgbc_sum
+	 * being scaled by 2^FP_BITS twice, or 2^32 in total.
+	 *
+	 * The previous right shift reduced that to 2^31, so
+	 * divide by 2^31 to obtain the integer part.
+	 */
+	rgbc_sum >>= (FP_BITS * 2 - 1);
+
+	/* Clamp at 0 since some channels have negative coefficients. */
+	if (rgbc_sum < 0)
+		rgbc_sum = 0;
+
+	/* Saturate at signed int16 max value */
+	if (rgbc_sum > 0x7FFF)
+		rgbc_sum = 0x7FFF;
+
+	xyz_data[1] = rgbc_sum;
 }
 
 static void ppc_interrupt(enum gpio_signal signal)
