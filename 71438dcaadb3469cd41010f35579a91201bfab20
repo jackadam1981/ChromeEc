@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b5089b49_3c7898db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-02T15:34:43Z",
+      "side": 1,
+      "message": "The build is failing because DT_CHOSEN_ZEPHYR_FLASH_CONTROLLER_LABEL is not defined in at least one of the builds. This has to be fixed in order for this to get through CQ",
+      "parentUuid": "3eb37dfc_a8903eaa",
+      "revId": "71438dcaadb3469cd41010f35579a91201bfab20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5f1daec_c5b3ff0a",
         "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
         "patchSetId": 7
