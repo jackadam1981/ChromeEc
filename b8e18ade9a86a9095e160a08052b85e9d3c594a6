@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7101d5e2_ef1ee17d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-02T00:46:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9664b2d3_851c3f87",
+      "revId": "b8e18ade9a86a9095e160a08052b85e9d3c594a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f80fcc96_f5c45420",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-01T23:30:56Z",
       "side": 1,
       "message": "With the changed attributes, I believe we can use the IS_ENABLED(...) macro instead.",
+      "revId": "b8e18ade9a86a9095e160a08052b85e9d3c594a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9efe2fc6_a89256af",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-02T00:46:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f80fcc96_f5c45420",
       "revId": "b8e18ade9a86a9095e160a08052b85e9d3c594a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
