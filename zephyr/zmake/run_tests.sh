@@ -20,3 +20,6 @@ export PYTHONPATH="${PWD}"
 
 # Run pytest.
 pytest .
+
+# Check import sorting.
+isort --check .
