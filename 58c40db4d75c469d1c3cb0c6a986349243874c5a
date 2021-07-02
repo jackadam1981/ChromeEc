@@ -66,6 +66,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db0f4deb_81410ccf",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1512242
+      },
+      "writtenOn": "2021-07-02T08:54:43Z",
+      "side": 1,
+      "message": "I am afraid flash write size DOES mean file size alignment necessary.\n\nWhen RO is asked by HOST to update RW, flash_command_write() is called so we have the following main processes inside:\n\n\tflash_command_write()\n\t\tflash_command_write()\n\t\t\tflash_range_ok()\n\nIn flash_range_ok(), we see three arguments: offset, size and CONFIG_FLASH_WRITE_SIZE. If RW image file size is not aligned with CONFIG_FLASH_WRITE_SIZE, flash_range_ok() returns 0. More precisely in this case, flash_range_ok() returns 0 because the following check fails:\n\n\t(offset | size_req) \u0026 (align - 1)\n\nTaking a real case as shown in #14 of BUG\u003db:188117811 for example, RW image size \u003d 121036 bytes and CONFIG_FLASH_WRITE_SIZE \u003d 8. To update this RW, flash_command_write will be executed several times and each time flash_command_write is asked to program 528-byte except the last run. In the last run of flash_command_write, only 124-byte remains and this is where flash_range_ok returns 0. Because 124-byte ends up 4-byte remained which is not able to be programmed when programming unit is CONFIG_FLASH_WRITE_SIZE \u003d 8.\n\nThis is the reason why I think alignment necessary. Back to your question of stm32l15x, I would change CONFIG_FLASH_WRITE_SIZE to 0x04 from 0x0080 according to datasheet. I am not sure why it is 0x0080 for stm32l15x. If it was really 0x0080, however, the file size NEEDs to be 0x0080 alignment based on my explanation above.",
+      "parentUuid": "75f138af_112cbc57",
+      "range": {
+        "startLine": 503,
+        "startChar": 56,
+        "endLine": 503,
+        "endChar": 79
+      },
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c69260a_dfaabd84",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1512242
+      },
+      "writtenOn": "2021-07-02T08:54:43Z",
+      "side": 1,
+      "message": "Fully agree. Simply wanted to play it safe 😊\n\nHere is patchset #3.",
+      "parentUuid": "1d1091d0_4c888de1",
+      "range": {
+        "startLine": 503,
+        "startChar": 32,
+        "endLine": 503,
+        "endChar": 51
+      },
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e83de80_cf54600d",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 2
@@ -77,6 +125,24 @@
       "writtenOn": "2021-07-02T04:55:08Z",
       "side": 1,
       "message": "do we need `#ifndef CONFIG_CHIP_DATA_IN_INIT_ROM` here?\n\nwhat will happen if CONFIG_CHIP_DATA_IN_INIT_ROM is defined?",
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3dcac6d_5d78500b",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1512242
+      },
+      "writtenOn": "2021-07-02T08:54:43Z",
+      "side": 1,
+      "message": "But my modification has nothing to do with `#ifndef CONFIG_CHIP_DATA_IN_INIT_ROM`.",
+      "parentUuid": "3e83de80_cf54600d",
       "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
