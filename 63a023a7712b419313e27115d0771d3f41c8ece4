@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ce8e4de_73a67751",
+        "filename": "board/ezkinil/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-07-02T17:07:25Z",
+      "side": 1,
+      "message": "I suggest don\u0027t change ec_config_has_usbc1_retimer_tusb544 to ec_config_has_usbc1_retimer_on_hdmi_db.\nInstead, just check SSFC before FW_CONFIG.\nIf SSFC mux field is set, use it to set C1 mux and ignore FW_CONFIG mux field.\nIf SSFC mux field is not set, then use FW_CONFIG mux field to set C1 mux.",
+      "range": {
+        "startLine": 344,
+        "startChar": 1,
+        "endLine": 364,
+        "endChar": 2
+      },
+      "revId": "63a023a7712b419313e27115d0771d3f41c8ece4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
