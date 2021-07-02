@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b42f245_122a34b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-02T21:41:52Z",
+      "side": 1,
+      "message": "The cleanup for system_get_board_version() looks good. I can make the change as a prerequisite patch for this patch.\n\nI think the benefit of enabling GPIO-based CBI is mostly on AP side.\nIn the future, AP can always use CBI as the unified protocol to retrieve hardware configs from EC regardless of x86 or ARM.",
+      "parentUuid": "57075524_694eb7e5",
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6ee726d_46092992",
         "filename": "common/cbi_gpio.c",
         "patchSetId": 2
