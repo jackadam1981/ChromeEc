@@ -184,71 +184,75 @@ BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
 
+/* The default fixed precision representation (fp_t) uses 16 bits for the
+ * integer and fractional parts, limiting its range to [-32K, 32K]. This is
+ * insufficient for the calculations in tcs3400_translate_to_xyz(), so these
+ * macros povide fixed point operations with 32 bits for the integer and
+ * fractional parts.
+ */
+#define INT_TO_FP64(x)      ((int64_t)(x) << 32)
+#define FP64_TO_INT(x)      ((x) >> 32)
+#define FLOAT_TO_FP64(x)    ((int64_t)((x) * (float)(1LL << 32)))
+#define MUL_FP64_FP64(x, y) (((x) * (y)) >> 32)
+#define MUL_INT_FP64(x, y)  ((x) * (y))
+
 __override void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
-				     int32_t *crgb_data, int32_t *xyz_data)
+					 int32_t *crgb_data, int32_t *xyz_data)
 {
-	int n, cur_gain;
-	fp_t n_interval, rgbc_sum;
-	int integration_time_us;
 	struct tcs_saturation_t *sat_p =
-				&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
+		&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
 
-	cur_gain = (1 << (2 * sat_p->again));
-
-	integration_time_us =
+	int32_t cur_gain = (1 << (2 * sat_p->again));
+	int32_t integration_time_us =
 		tcs3400_get_integration_time(sat_p->atime);
 
-	/* n_interval = (G+B)/C, to use different coefficient*/
-	if (crgb_data[0] != 0)
-		n_interval = INT_TO_FP(crgb_data[2]+crgb_data[3])/crgb_data[0];
-	else
-		n_interval = FLOAT_TO_FP(0.692); /* set default n = 2 */
+	int64_t c_coeff, r_coeff, g_coeff, b_coeff;
+	int64_t result;
 
-	if (n_interval < FLOAT_TO_FP(0.692))
-		n = 1;
-	else if (n_interval >= FLOAT_TO_FP(0.692) &&
-			n_interval < FLOAT_TO_FP(1.012))
-		n = 2;
-	else
-		n = 3;
+	/* Use different coefficients based on n_interval = (G+B)/C */
+	int64_t gb_sum = INT_TO_FP64(crgb_data[2]) +
+			 INT_TO_FP64(crgb_data[3]);
+	int64_t n_interval = gb_sum / MAX(crgb_data[0], 1);
 
-	switch (n) {
-	case 1:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.009)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(0.056)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(2.735)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.903));
+	if (n_interval < FLOAT_TO_FP64(0.692)) {
+		const float scale = 799.797;
 
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(799.797), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
-	break;
-	case 2:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.202)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(-1.1)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(8.692)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-7.068));
+		c_coeff = FLOAT_TO_FP64(0.009  * scale);
+		r_coeff = FLOAT_TO_FP64(0.056  * scale);
+		g_coeff = FLOAT_TO_FP64(2.735  * scale);
+		b_coeff = FLOAT_TO_FP64(-1.903 * scale);
+	} else if (n_interval < FLOAT_TO_FP64(1.012)) {
+		const float scale = 801.347;
 
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(801.347), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
-	break;
-	case 3:
-		rgbc_sum =
-			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(-0.661)) +
-			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(1.334)) +
-			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(1.095)) +
-			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.821));
+		c_coeff = FLOAT_TO_FP64(0.202  * scale);
+		r_coeff = FLOAT_TO_FP64(-1.1   * scale);
+		g_coeff = FLOAT_TO_FP64(8.692  * scale);
+		b_coeff = FLOAT_TO_FP64(-7.068 * scale);
+	} else {
+		const float scale = 795.574;
 
-		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(795.574), rgbc_sum
-			/ (int)(integration_time_us * cur_gain / 1000ULL)));
-	break;
-	default:
-	break;
+		c_coeff = FLOAT_TO_FP64(-0.661 * scale);
+		r_coeff = FLOAT_TO_FP64(1.334  * scale);
+		g_coeff = FLOAT_TO_FP64(1.095  * scale);
+		b_coeff = FLOAT_TO_FP64(-1.821 * scale);
 	}
 
-	if (xyz_data[1] < 0)
-		xyz_data[1] = 0;
+	result = MUL_INT_FP64(crgb_data[0], c_coeff) +
+		 MUL_INT_FP64(crgb_data[1], r_coeff) +
+		 MUL_INT_FP64(crgb_data[2], g_coeff) +
+		 MUL_INT_FP64(crgb_data[3], b_coeff);
+
+	result = FP64_TO_INT(result);
+
+	/* Adjust for exposure time and sensor gain */
+	result /= MAX(integration_time_us * cur_gain / 1000, 1);
+
+	/* Some C/R/G/B coefficients are negative, result could possibly be
+	 * negative, clamp at zero.
+	 *
+	 * Clamp at int16 max value to avoid overflow in xyz_data[1].
+	 */
+	xyz_data[1] = MIN(MAX(result, 0), INT16_MAX);
 }
 
 static void ppc_interrupt(enum gpio_signal signal)
