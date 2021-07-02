@@ -56,6 +56,30 @@
       },
       "revId": "7d918a7d1f0c57eee041be56deb7a539012e5f0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8caa775b_7cf329e5",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-02T19:35:11Z",
+      "side": 1,
+      "message": "This comment should be updated to reference the FQB_Thermal Table_v02 found in bug b/190087114.",
+      "parentUuid": "aaa1f10b_4a0aea53",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "7d918a7d1f0c57eee041be56deb7a539012e5f0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
