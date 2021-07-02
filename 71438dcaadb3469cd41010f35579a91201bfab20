@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3eb37dfc_a8903eaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-07-02T01:25:20Z",
+      "side": 1,
+      "message": "Are you building hayato on this CL?(This CL can only build it8xxx2_evb)\nBecause the asurada\u0027s dts needs to add the as follows CL to build successfully.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2991399/6\n\nDT_CHOSEN_ZEPHYR_FLASH_CONTROLLER_LABEL is defined by\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2991399/6/zephyr/projects/asurada/boards/riscv/asurada/asurada.dts",
+      "parentUuid": "d67b637b_226a4b0a",
+      "revId": "71438dcaadb3469cd41010f35579a91201bfab20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5f1daec_c5b3ff0a",
         "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
         "patchSetId": 7
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-01T14:23:01Z",
       "side": 1,
       "message": "For future cleanup, consider moving this routine and other routines that access GCTRL registers into an ITE driver located in the Zephyr upstream driver area: drivers/soc/riscv/ riscv-ite",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 0
+      },
+      "revId": "71438dcaadb3469cd41010f35579a91201bfab20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aff79c20_6bd3ccbf",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-07-02T01:25:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5f1daec_c5b3ff0a",
       "range": {
         "startLine": 53,
         "startChar": 0,
