@@ -32,6 +32,11 @@ static const char *const model_name[] = {
 	"UNKNOWN",
 };
 
+__override uint32_t board_get_sku_id(void)
+{
+	return board_get_version();
+}
+
 int board_get_version(void)
 {
 	if (brd_id == -1) {
