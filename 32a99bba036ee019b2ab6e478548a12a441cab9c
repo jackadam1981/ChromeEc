@@ -70,6 +70,30 @@
       },
       "revId": "32a99bba036ee019b2ab6e478548a12a441cab9c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c5417a9_fa050f73",
+        "filename": "zephyr/zmake/run_tests.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-02T18:34:34Z",
+      "side": 1,
+      "message": "Yes it caused a lot of pain. I\u0027m a little reluctant to try again so soon.\n\nLet\u0027s keep it disabled for this initial CL, then add a second CL to enable it. Then we can submit both CLs and only need to revert the (entire) second one if we see problems again.\n\nPutting it another way, CLs should do one thing. This one introduces a shell script, so it should do so without changing the behaviour.",
+      "parentUuid": "46857162_13fd3bbb",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "32a99bba036ee019b2ab6e478548a12a441cab9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
