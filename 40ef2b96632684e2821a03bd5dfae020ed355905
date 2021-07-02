@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eea0d712_80cfa78b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2021-07-02T08:56:16Z",
+      "side": 1,
+      "message": "And please refer to the log: http://sheets/1KK7VnicWjo9M62bJ_sofjYFXhohbi7ghVuw9Qxg9Vjk#gid\u003d776866005",
+      "revId": "40ef2b96632684e2821a03bd5dfae020ed355905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f335932_d7bb8b0f",
+        "filename": "common/dps.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1106760
+      },
+      "writtenOn": "2021-07-02T08:56:16Z",
+      "side": 1,
+      "message": "Is it possible to use moving average here? Maybe start from 3MA, smooth the input data to have a stable control.",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 143,
+        "endChar": 34
+      },
+      "revId": "40ef2b96632684e2821a03bd5dfae020ed355905",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
