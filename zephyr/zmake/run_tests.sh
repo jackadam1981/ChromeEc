@@ -23,3 +23,6 @@ pytest .
 
 # Check import sorting.
 isort --check .
+
+# Check black formatting.
+black --check .

@@ -20,13 +20,13 @@ def third_party_module(name, checkout):
     # TODO(b/180531609): version "v2.5" below is a misnomer, as these
     # modules are actually compatible with all kernel versions.  Drop
     # v2.5 from the manifest checkout path and remove it from here.
-    return checkout / 'src' / 'third_party' / 'zephyr' / name / 'v2.5'
+    return checkout / "src" / "third_party" / "zephyr" / name / "v2.5"
 
 
 known_modules = {
-    'hal_stm32': third_party_module,
-    'cmsis': third_party_module,
-    'ec': lambda name, checkout: (checkout / 'src' / 'platform' / 'ec'),
+    "hal_stm32": third_party_module,
+    "cmsis": third_party_module,
+    "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
 }
 
 
@@ -66,7 +66,7 @@ def locate_from_directory(directory):
 
     for name in known_modules:
         modpath = (directory / name).resolve()
-        if (modpath / 'zephyr' / 'module.yml').is_file():
+        if (modpath / "zephyr" / "module.yml").is_file():
             result[name] = modpath
 
     return result
@@ -95,6 +95,7 @@ def setup_module_symlinks(output_dir, modules):
 
     if module_links:
         return build_config.BuildConfig(
-            cmake_defs={'ZEPHYR_MODULES': ';'.join(map(str, module_links))})
+            cmake_defs={"ZEPHYR_MODULES": ";".join(map(str, module_links))}
+        )
     else:
         return build_config.BuildConfig()
