@@ -134,6 +134,30 @@
       },
       "revId": "2536ddbf2e10c5005e61a13c5ce54c183f2978a6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3e4c13_cf3d3475",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-07-02T01:53:45Z",
+      "side": 1,
+      "message": "PLL setting on all STM32 are configurable. User can select PLL or other source as sys clock according to the requirement.\n\nPLL design in STM32F0 is very simple and far different from other STM32 families, like L4 / F4 / H7 / G0 / G4. There is no PLL M/N/P/Q/R parameters in STM32F0, but exists in other families. It could be the reason why PLL of STM32F0 is hard coded in souce code. In any case, PLL parameters M/N/R should not be 0.",
+      "parentUuid": "1b4423de_1ca4cff8",
+      "range": {
+        "startLine": 170,
+        "startChar": 8,
+        "endLine": 170,
+        "endChar": 18
+      },
+      "revId": "2536ddbf2e10c5005e61a13c5ce54c183f2978a6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
