@@ -5170,6 +5170,9 @@
  */
 #undef CONFIG_CBI_EEPROM
 
+/* Define this to support Cros Board Info from GPIO. */
+#undef CONFIG_CBI_GPIO
+
 /*****************************************************************************/
 /*
  * ISH config defaults
@@ -6373,6 +6376,10 @@
 #error "CONFIG_BYPASS_CBI_EEPROM_WP_CHECK is only permitted " \
 	"when CONFIG_SYSTEM_UNLOCK is also enabled."
 #endif /* CONFIG_BYPASS_CBI_EEPROM_WP_CHECK && !CONFIG_SYSTEM_UNLOCK */
+
+#if defined(CONFIG_CBI_EEPROM) && defined(CONFIG_CBI_GPIO)
+#error "CONFIG_CBI_EEPROM and CONFIG_CBI_GPIO are mutually exclusive."
+#endif
 
 #if !defined(CONFIG_ZEPHYR) && !defined(CONFIG_ACCELGYRO_ICM_COMM_SPI) && \
 	!defined(CONFIG_ACCELGYRO_ICM_COMM_I2C)

@@ -48,6 +48,7 @@ enum cbi_cache_status {
 
 enum cbi_storage_type {
 	CBI_STORAGE_TYPE_EEPROM = 0,
+	CBI_STORAGE_TYPE_GPIO = 1
 };
 
 /*
