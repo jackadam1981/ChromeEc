@@ -86,6 +86,30 @@
       },
       "revId": "084491b6ac88192c78af4abf6f8a807ec079d21b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9a036bf_768f1090",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1512242
+      },
+      "writtenOn": "2021-07-02T10:25:03Z",
+      "side": 1,
+      "message": "If I move the whole .rw_image_size_alignment section to line 475, does it mean I cannot use __flash_used which appears in line 501?\n\nAnd regarding rename to .fill, there is already a .fill there. So, you mean \"merge\" or rename?",
+      "parentUuid": "dbd34105_48635f6f",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 0
+      },
+      "revId": "084491b6ac88192c78af4abf6f8a807ec079d21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
