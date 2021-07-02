@@ -231,6 +231,30 @@
       },
       "revId": "81574cb1bc2432812cbba70b33961fbc22c6fe72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bff96ad_e36a1faf",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-07-02T20:35:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "815e2421_83403097",
+      "range": {
+        "startLine": 204,
+        "startChar": 23,
+        "endLine": 204,
+        "endChar": 30
+      },
+      "revId": "81574cb1bc2432812cbba70b33961fbc22c6fe72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
