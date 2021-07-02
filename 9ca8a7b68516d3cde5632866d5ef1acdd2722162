@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5b80b60_7f0fd110",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-02T15:02:33Z",
+      "side": 1,
+      "message": "Use IS_ENABLED()",
+      "range": {
+        "startLine": 278,
+        "startChar": 0,
+        "endLine": 278,
+        "endChar": 29
+      },
+      "revId": "9ca8a7b68516d3cde5632866d5ef1acdd2722162",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
