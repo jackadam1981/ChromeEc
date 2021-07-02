@@ -147,6 +147,12 @@ enum battery_type {
 	BATTERY_TYPE_COUNT,
 };
 
+/* Keyboard layout */
+enum fw_config_kb_layout_mode_type {
+	KEYBOARD_DEFAULT = 0,
+	KEYBOARD_VIVALDI = 1,
+};
+
 #ifdef CONFIG_KEYBOARD_FACTORY_TEST
 extern const int keyboard_factory_scan_pins[][2];
 extern const int keyboard_factory_scan_pins_used;
