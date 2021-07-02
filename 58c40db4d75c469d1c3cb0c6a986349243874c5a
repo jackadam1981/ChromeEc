@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d1091d0_4c888de1",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-02T05:32:26Z",
+      "side": 1,
+      "message": "I think we shouldn\u0027t check CHIP_STM32, since this is purely alignment issue that could happen at all the chips that need 8-byte alignment.",
+      "range": {
+        "startLine": 503,
+        "startChar": 32,
+        "endLine": 503,
+        "endChar": 51
+      },
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e83de80_cf54600d",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 2
