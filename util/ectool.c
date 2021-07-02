@@ -7477,6 +7477,7 @@ int cmd_charge_control(int argc, char *argv[])
 		return -1;
 	}
 
+	p.cmd = EC_CHARGE_CONTROL_CMD_SET;
 	if (!strcasecmp(argv[1], "normal")) {
 		p.mode = CHARGE_CONTROL_NORMAL;
 	} else if (!strcasecmp(argv[1], "idle")) {
