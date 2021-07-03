@@ -70,6 +70,30 @@
       },
       "revId": "336f026db35a29f706be9a8108a3e86073e2a9a4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d59cd4f_ea6a6bd1",
+        "filename": "board/magolor/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1293911
+      },
+      "writtenOn": "2021-07-03T09:15:53Z",
+      "side": 1,
+      "message": "typo \nproto \u0026 evt board version is 5",
+      "parentUuid": "343644ca_b74909f1",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 48
+      },
+      "revId": "336f026db35a29f706be9a8108a3e86073e2a9a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
