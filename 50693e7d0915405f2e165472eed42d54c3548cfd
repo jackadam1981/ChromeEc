@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7b5d2021_970de518",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-03T00:55:51Z",
+      "side": 1,
+      "message": "\u003e Also, with this change, we can also deprecate some host commands, like EC_CMD_GET_SKU_ID, EC_CMD_SET_SKU_ID, EC_CMD_GET_BOARD_VERSION, as EC_CMD_SET_CROS_BOARD_INFO and EC_CMD_GET_CROS_BOARD_INFO should be sufficient.\n\nYeah, if that clean-up is also coming together, I agree CONFIG_CBI_GPIO is better. One caveat is that we waste uint8_t cbi[CBI_IMAGE_SIZE]. I hope you\u0027ll take care of it too?",
+      "parentUuid": "f416b29f_2b345361",
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6ee726d_46092992",
         "filename": "common/cbi_gpio.c",
         "patchSetId": 2
