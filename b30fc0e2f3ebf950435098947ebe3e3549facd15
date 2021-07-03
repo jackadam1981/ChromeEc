@@ -16,6 +16,24 @@
       "message": "Should we apply to Ampton first? (enable this option in child CL)\nSince we introduce this option the first time.",
       "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aecaef97_75780328",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2021-07-03T14:42:32Z",
+      "side": 1,
+      "message": "We can apply Apel/Ampton/Nospike, and we will do FAFT test",
+      "parentUuid": "f3b2592b_00e17b4d",
+      "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
