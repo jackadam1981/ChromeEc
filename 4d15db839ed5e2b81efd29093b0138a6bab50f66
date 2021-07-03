@@ -63,6 +63,30 @@
       },
       "revId": "4d15db839ed5e2b81efd29093b0138a6bab50f66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "059591b6_3ea1fd8d",
+        "filename": "common/i2c_wedge.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-07-03T01:22:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "adf88461_8b04b97f",
+      "range": {
+        "startLine": 328,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 24
+      },
+      "revId": "4d15db839ed5e2b81efd29093b0138a6bab50f66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
