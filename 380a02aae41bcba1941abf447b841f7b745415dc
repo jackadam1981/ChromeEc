@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c3f1aa4_5c21513f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-03T00:50:10Z",
+      "side": 1,
+      "message": "nice clean-up. Only two nits. Thanks.",
+      "revId": "380a02aae41bcba1941abf447b841f7b745415dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd95e9c9_436b956f",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 824,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-03T00:50:10Z",
+      "side": 1,
+      "message": "Can you do\n\n  #else\n    return 0;\n  #endif\n  \nfor courtesy? I haven\u0027t seen back-to-back returns.",
+      "range": {
+        "startLine": 823,
+        "startChar": 0,
+        "endLine": 824,
+        "endChar": 10
+      },
+      "revId": "380a02aae41bcba1941abf447b841f7b745415dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92a8f874_0b9f7357",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 835,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-03T00:50:10Z",
+      "side": 1,
+      "message": "Can you put this inside the if statement below?",
+      "range": {
+        "startLine": 835,
+        "startChar": 1,
+        "endLine": 835,
+        "endChar": 10
+      },
+      "revId": "380a02aae41bcba1941abf447b841f7b745415dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
