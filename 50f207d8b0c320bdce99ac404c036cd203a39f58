@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a5d9fa_07bf5181",
+        "filename": "chip/g/spi_controller.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-07-03T01:35:46Z",
+      "side": 1,
+      "message": "so, we never actually include this file from anywhere? and no need to do spi_master.h -\u003e spi_controller.h",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "50f207d8b0c320bdce99ac404c036cd203a39f58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
