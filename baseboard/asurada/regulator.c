@@ -4,7 +4,11 @@
  */
 
 #include "common.h"
+#ifdef CONFIG_ZEPHYR
+#include "bc12/mt6360_public.h"
+#else
 #include "driver/bc12/mt6360.h"
+#endif
 
 /* SD Card */
 int board_regulator_get_info(uint32_t index, char *name,
