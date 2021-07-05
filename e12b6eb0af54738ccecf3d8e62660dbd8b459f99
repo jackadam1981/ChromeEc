@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a8ff2d_53e33035",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-07-05T15:16:05Z",
+      "side": 1,
+      "message": "Hi. It looks like this commit introduced a regression in PD FAFTs (at least on lazor and nocturne).\nI have provided more details in the ticket: https://buganizer.corp.google.com/issues/192353324#comment2",
+      "revId": "e12b6eb0af54738ccecf3d8e62660dbd8b459f99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
