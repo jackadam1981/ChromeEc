@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86e816e6_4cf5f5fb",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-07-05T09:55:02Z",
+      "side": 1,
+      "message": "Here gets a problem:\nIf I don\u0027t add braces { }, it shows \"error: \u0027else\u0027 without a previous \u0027if\u0027\" when zmake hayato.\nIf I add braces { }, it shows \"WARNING: braces {} are not necessary for any arm of this statement\" when run hook scripts of repo upload.",
+      "range": {
+        "startLine": 816,
+        "startChar": 27,
+        "endLine": 816,
+        "endChar": 28
+      },
+      "revId": "e6ffbb54842107285d9122ab7a8827beff5138e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
