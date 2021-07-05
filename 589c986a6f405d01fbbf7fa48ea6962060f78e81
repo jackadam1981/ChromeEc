@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0004f15a_2fc0caf5",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 815,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-07-05T09:42:13Z",
+      "side": 1,
+      "message": "If use IS_ENABLED(CONFIG_ZEPHYR) and make BOARD\u003dasurada -j -B, it shows error: implicit declaration of function \u0027IRQ_CONNECT\u0027. IRQ_CONNECT macro isn\u0027t declaration in cros_ec.",
+      "parentUuid": "cb6b9890_2830b91d",
+      "range": {
+        "startLine": 815,
+        "startChar": 0,
+        "endLine": 815,
+        "endChar": 20
+      },
+      "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e34dd901_8a67e972",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-02T15:33:28Z",
       "side": 1,
       "message": "Why are both port interrupts connected here.\n\nCan you connect the IRQ only for the current port?\n\nIRQ_CONNECT(usbpd_ctrl_regs[port].irq, 0, chip_pd_irq, port, 0);",
+      "range": {
+        "startLine": 816,
+        "startChar": 0,
+        "endLine": 818,
+        "endChar": 1
+      },
+      "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6fd13de_153c8408",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-07-05T09:42:13Z",
+      "side": 1,
+      "message": "When I changed to \nIRQ_CONNECT(usbpd_ctrl_regs[port].irq, 0, chip_pd_irq, port, 0);,\nit shows error: initializer element is not constan.\n\nI find a note in IRQ_CONNECT:\nAlthough this routine is invoked at run-time, all of its arguments must be\ncomputable by the compiler at build time.\nSo how about changes in patchset4 ?",
+      "parentUuid": "e34dd901_8a67e972",
       "range": {
         "startLine": 816,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a3bc779_fe123568",
+        "filename": "driver/tcpm/ite_pd_intc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-07-05T09:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5c99768_329dd0b2",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 37
+      },
+      "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cbee90b_8e9def3b",
@@ -110,6 +182,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96596e96_c99bd7b5",
+        "filename": "driver/tcpm/ite_pd_intc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-07-05T09:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cbee90b_8e9def3b",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 6
+      },
+      "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a865f25_1b86a599",
@@ -123,6 +219,30 @@
       "writtenOn": "2021-07-02T15:33:28Z",
       "side": 1,
       "message": "What C file requires this?  If there is a specific enum/struct/prototype needed, can you add it to include/driver/tcpm/it8xxx2_pd_public.h instead?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 32
+      },
+      "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff4dc538_e00e1dfe",
+        "filename": "zephyr/projects/asurada/hayato/CMakeLists.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-07-05T09:42:13Z",
+      "side": 1,
+      "message": "It can\u0027t find the file of \"it83xx_pd.h\" when zmake hayato, so I added this directory. But I\u0027m testing zmake and it needn\u0027t now.",
+      "parentUuid": "4a865f25_1b86a599",
       "range": {
         "startLine": 15,
         "startChar": 0,
