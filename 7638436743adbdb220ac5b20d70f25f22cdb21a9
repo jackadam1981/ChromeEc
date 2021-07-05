@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "02005332_6ff4af65",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1511082
+      },
+      "writtenOn": "2021-07-05T18:56:09Z",
+      "side": 1,
+      "message": "Can I create a macro like this ?\n\n/* Call a function, unlock the mutex and return the error value unless it returns EC_SUCCESS */\n#define RETURN_ERR_UNLOCK(fn) do {        \\\n\tint error \u003d (fn);                 \\\n\tif (error !\u003d EC_SUCCESS) {        \\\n\t\tmutex_unlock(s-\u003emutex);   \\\n\t\treturn error;             \\\n\t}                                 \\\n} while (0)",
+      "parentUuid": "a957a60d_fce5d06a",
+      "revId": "7638436743adbdb220ac5b20d70f25f22cdb21a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09c7dc4a_4d85140d",
         "filename": "driver/accelgyro_bmi3xx.h",
         "patchSetId": 10
