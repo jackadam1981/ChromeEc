@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "146d0cb3_87914558",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1512242
+      },
+      "writtenOn": "2021-07-05T01:44:41Z",
+      "side": 1,
+      "message": "After running the test you requested, the following is what I found. I also attached the raw material in #31 of https://partnerissuetracker.corp.google.com/u/5/issues/188117811\n\n1. For boards using non-STM32 chip, smap files stay the same\n2. For boards using STM32 chip, symbols stay the same except __image_size\n3. For board \"discovery\" which uses stm32l15x w/ CONFIG_FLASH_WRITE_SIZE\u003d0x80, before applying patchset mod(__image_size, CONFIG_FLASH_WRITE_SIZE)\u003d(0x702C,0x80)\u003d44, and after applying patchset mod(__image_size, CONFIG_FLASH_WRITE_SIZE)\u003d(0x7080,0x80)\u003d0. This means patchset3 DOES make RW image size aligned with CONFIG_FLASH_WRITE_SIZE.",
+      "parentUuid": "ee1cb83f_d5346286",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "084491b6ac88192c78af4abf6f8a807ec079d21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef4f222d_8016866c",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 3
