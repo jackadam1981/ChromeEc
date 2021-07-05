@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10f36f1e_4aa3dd36",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-07-05T08:27:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69056d8c_2604c810",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 3
+      },
+      "revId": "7e02c3ab51afda454753698e40b20e18da369783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bdf7577a_40d1f82d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-02T19:35:11Z",
       "side": 1,
       "message": "This is the same settings as thermal_cpu.  I suggest you create two data structures:\n   thermal_config_with_fan    (Used for temp sensor 1)\n   thermal_config_without_fan (Used for temp sensor 2, 3, 4)",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 0
+      },
+      "revId": "7e02c3ab51afda454753698e40b20e18da369783",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8273ad0a_aa678019",
+        "filename": "board/chronicler/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-07-05T08:27:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bdf7577a_40d1f82d",
       "range": {
         "startLine": 103,
         "startChar": 0,
