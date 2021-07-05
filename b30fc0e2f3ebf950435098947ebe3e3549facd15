@@ -51,6 +51,23 @@
       "message": "LGTM, waiting for Eric to review again since new patchset changed the code too. Thanks. \n",
       "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a80737a_45984280",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-07-05T07:19:37Z",
+      "side": 1,
+      "message": "One corner case here I can imagine is about gbb flag - GBB_FLAG_DISABLE_LID_SHUTDOWN - for example, when this gbb flag is set, we expect depthcharge should ignore the shutdown request due to lid_close event which is implemented.\n\nNow if we add this check here without honor to gbb flag above then I am afraid we break the expectation of GBB_FLAG_DISABLE_LID_SHUTDOWN?",
+      "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
