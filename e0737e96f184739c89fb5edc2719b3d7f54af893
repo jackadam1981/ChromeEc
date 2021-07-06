@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c810bc2_65153b43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-06T08:40:17Z",
+      "side": 1,
+      "message": "The IRQ definitions are referenced by other modules, for example, hrtimer.c to implement IRQ handler.\n\nIf I do inline the intc_regs.h to intc.h, it looks like that I have to include intc.h in registers.h or in modules need IRQ definitions. \n\nThe side-effect of this action is defining the static IRQ table in intc.h in multiple locations. \n\nis it ok?",
+      "parentUuid": "87770c16_bc2af1b4",
+      "revId": "e0737e96f184739c89fb5edc2719b3d7f54af893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c85822a_23cc794e",
         "filename": "chip/mt_scp/mt8192/intc.h",
         "patchSetId": 2
