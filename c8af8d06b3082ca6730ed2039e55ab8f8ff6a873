@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0804a1f8_fa6c5677",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-06T16:55:12Z",
+      "side": 1,
+      "message": "nit: This struct can be as big as the largest error code * four. It\u0027s ok now but if the cros ec driver adds something large, it\u0027ll bloat suddenly. I\u0027ve seen discussion on how to reduce the OS image a few times. So, I think it\u0027ll give us peace of mind to use switch case EOPNOTSUPP: ... case EIO: ....",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "c8af8d06b3082ca6730ed2039e55ab8f8ff6a873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e55bd686_a1e3e5ef",
         "filename": "util/comm-dev.c",
         "patchSetId": 2
@@ -32,6 +55,47 @@
       "side": 1,
       "message": "The retry conditions are a bit unclear. \n\nOld Kernel:\nr \u003c 0 \u0026\u0026 errno \u003d\u003d EAGAIN \u0026\u0026 result \u003d\u003d EC_RES_IN_PROGRESS\n\nNew Kernel:\nr \u003c 0 \u0026\u0026 errno \u003d\u003d EAGAIN \u0026\u0026 result \u003d\u003d EC_COMMAND_RESULT_UNINITIALIZED\n\nOr should we check errno \u003d\u003d EINPROGRESS on new kernel? Is it always safe to retry, if so loosening the retry condition should be ok.",
       "parentUuid": "e55bd686_a1e3e5ef",
+      "revId": "c8af8d06b3082ca6730ed2039e55ab8f8ff6a873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49f68fbb_90376c8b",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-06T16:55:12Z",
+      "side": 1,
+      "message": "hmm... I think there is a non-negligible chance of a race that the previous command result is actually from another process running somewhere on the system. Is the driver clever enough to distinguish EC_CMD_RESEND_RESPONSE by PID? If so, I agree it\u0027s benign to request a resend thus \u0027r\u003c0 \u0026\u0026 errno \u003d\u003d EAGAIN\u0027 should be good for both versions.\n\nIf not, I\u0027m not sure why we even use EC_CMD_RESEND_RESPONSE at all. (Thus, using it in more cases sounds a bad idea.)\n\nThere is no way to probe the driver version? Without it, I think whatever we do would generate obscure code. I think ample comment is highly appreciated.\n\nIf not, EINPROGRESS sounds like a solution.",
+      "parentUuid": "3487c365_0ee8feb7",
+      "revId": "c8af8d06b3082ca6730ed2039e55ab8f8ff6a873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b0df37b_19d2e96a",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-06T16:55:12Z",
+      "side": 1,
+      "message": "Can you please add a comment explaining this?",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 31
+      },
       "revId": "c8af8d06b3082ca6730ed2039e55ab8f8ff6a873",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
