@@ -86,6 +86,24 @@
       "parentUuid": "3a80737a_45984280",
       "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4445b15_0d241c14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-07-06T02:12:56Z",
+      "side": 1,
+      "message": "* As I know, GBB_FLAG_DISABLE_LID_SHUTDOWN will be leveraged in factory flow as well while checking functionality of lid switch. And the definition of this GBB flag is to disable shutdown due to lid close.\n\n* Could you show me the URL for this requirement? As I heard before, Plugging AC is a wakup-source of ChromeOS.",
+      "parentUuid": "8d8a32cb_bc30ea16",
+      "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
