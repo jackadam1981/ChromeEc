@@ -87,6 +87,7 @@ int charger_profile_override(struct charge_state_data *curr)
 {
 	static timestamp_t chargeCnt;
 	int bat_temp_c = (curr->batt.temperature - 2731) / 10;
+	uint32_t reg;
 
 	/*
 	 *	start charge temp control
@@ -241,6 +242,25 @@ int charger_profile_override(struct charge_state_data *curr)
 	} else {
 		swelling_flag = 0;
 		chargeCnt.val = 0;
+	}
+
+	if (curr->state == ST_IDLE) {
+
+		/*
+		 * disable Bgate to avoid little current charge
+		 * at stop charge state
+		 */
+		charger_get_option(&reg);
+		reg |= 0x00400000;
+		charger_set_option(reg);
+	} else {
+
+		/*
+		 * enable normal operation at other charge state
+		 */
+		charger_get_option(&reg);
+		reg &= ~0x00400000;
+		charger_set_option(reg);
 	}
 
 	return 0;
