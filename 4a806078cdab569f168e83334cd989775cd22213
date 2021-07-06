@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d28d85f8_f472fd38",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 2066,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-06T00:51:17Z",
+      "side": 0,
+      "message": "This else isn\u0027t necessary because there is goto above it.",
+      "range": {
+        "startLine": 2066,
+        "startChar": 3,
+        "endLine": 2066,
+        "endChar": 10
+      },
+      "revId": "4a806078cdab569f168e83334cd989775cd22213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
