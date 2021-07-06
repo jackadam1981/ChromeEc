@@ -1710,7 +1710,7 @@ static int battery_outside_charging_temperature(void)
 
 
 	if ((batt_temp_c >= max_c) ||
-		 (batt_temp_c <= min_c)) {
+		 (batt_temp_c < min_c)) {
 		return 1;
 	}
 	return 0;

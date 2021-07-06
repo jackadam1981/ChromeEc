@@ -86,7 +86,7 @@ enum swelling_data {
 int charger_profile_override(struct charge_state_data *curr)
 {
 	static timestamp_t chargeCnt;
-	int bat_temp_c = (curr->batt.temperature - 2731) / 10;
+	int bat_temp_c = (curr->batt.temperature - 2731);
 	uint32_t reg;
 
 	/*
@@ -98,7 +98,7 @@ int charger_profile_override(struct charge_state_data *curr)
 	 */
 	if (curr->ac != prev_ac) {
 		if (curr->ac) {
-			if ((bat_temp_c <= 0) || (bat_temp_c >= 45))
+			if ((bat_temp_c <= 0) || (bat_temp_c >= 450))
 				charger_flag = 1;
 		}
 		prev_ac = curr->ac;
@@ -111,7 +111,7 @@ int charger_profile_override(struct charge_state_data *curr)
 		curr->state = ST_IDLE;
 	}
 
-	if ((bat_temp_c > 0) && (bat_temp_c < 45))
+	if ((bat_temp_c > 0) && (bat_temp_c < 450))
 		charger_flag = 0;
 
 /*
@@ -145,14 +145,14 @@ int charger_profile_override(struct charge_state_data *curr)
 		 * battery swelling trigger condition
 		 */
 		if (curr->batt.voltage < 8300) {
-			if (bat_temp_c < 5)
+			if (bat_temp_c < 50)
 				swelling_flag = SWELLING_TRIGGER_5;
-			else if (bat_temp_c < 15)
+			else if (bat_temp_c < 150)
 				swelling_flag = SWELLING_TRIGGER_15;
 
-			if (bat_temp_c >= 50)
+			if (bat_temp_c >= 500)
 				swelling_flag = SWELLING_TRIGGER_50;
-			else if (bat_temp_c >= 45) {
+			else if (bat_temp_c >= 450) {
 				if (!(swelling_flag & SWELLING_TRIGGER_50))
 					swelling_flag = SWELLING_TRIGGER_45;
 			}
@@ -162,11 +162,11 @@ int charger_profile_override(struct charge_state_data *curr)
 		 * battery swelling recovery condition
 		 */
 		if (swelling_flag) {
-			if ((bat_temp_c >= 10) && (bat_temp_c < 20))
+			if ((bat_temp_c >= 100) && (bat_temp_c < 200))
 				swelling_flag = SWELLING_RECOVERY_10;
-			else if ((bat_temp_c >= 20) && (bat_temp_c < 43))
+			else if ((bat_temp_c >= 200) && (bat_temp_c < 430))
 				swelling_flag = SWELLING_RECOVERY_20;
-			else if ((bat_temp_c >= 43) && (bat_temp_c < 45))
+			else if ((bat_temp_c >= 430) && (bat_temp_c < 450))
 				swelling_flag = SWELLING_RECOVERY_50;
 		}
 
