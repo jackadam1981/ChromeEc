@@ -104,6 +104,24 @@
       "parentUuid": "8d8a32cb_bc30ea16",
       "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae2a6081_d0ae3dcf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2021-07-06T02:37:11Z",
+      "side": 1,
+      "message": "1.So is it failed when test lid switch? I will check this factory flow.But I think when lid close, AP can shutdown to save power since user can not use chromebook in lid close.\n\n2.https://chromeos.google.com/partner/dlm/docs/latest-requirements/chromebook.html\nI search Wake Sources and Battery Life, and deep sleep define Note: AC insert must wake EC but not AP",
+      "parentUuid": "a4445b15_0d241c14",
+      "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
