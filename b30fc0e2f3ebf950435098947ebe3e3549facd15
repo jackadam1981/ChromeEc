@@ -122,6 +122,24 @@
       "parentUuid": "a4445b15_0d241c14",
       "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e89c9b_83e28b0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-07-06T10:36:44Z",
+      "side": 1,
+      "message": "1. GBB_FLAG_DISABLE_LID_SHUTDOWN is designed to disable shutdown caused by lid_switch and factory flow enabled this flag is a use case (mainly?). I agree that normally AP can shutdown to save power while lid closed as you mentioned but the purpose here is for debugging or factory flow in design.\n\n2. As I know, the definition of deep sleep is ACPI_S5 instead of EC hibernation.\n    * For ACPI_S5, I agree that AC insertion should wake up EC only instead of AP.\n    * But in EC hibernation and in case of Octopus, it looks like the EC will be power off. As a result, while AC inserts, the EC will power on from scratch then trigger the path in this CL to power on AP as well.\n    \nMaybe partner can file another issue to check with our product manager so we can confirm the behavior of EC hibernation (which differs to deep sleep / ACPI_S5)?",
+      "parentUuid": "ae2a6081_d0ae3dcf",
+      "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
