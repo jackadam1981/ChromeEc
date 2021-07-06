@@ -115,6 +115,7 @@
 /* EC Modules */
 #define CONFIG_ADC
 #define CONFIG_CRC8
+#define CONFIG_DPTF
 #define CONFIG_HOSTCMD_ESPI
 #define CONFIG_HOSTCMD_EVENTS
 #define CONFIG_I2C
