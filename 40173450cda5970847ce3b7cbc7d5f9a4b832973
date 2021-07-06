@@ -22,6 +22,30 @@
       },
       "revId": "40173450cda5970847ce3b7cbc7d5f9a4b832973",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb2c6ce2_e443413c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-06T00:09:08Z",
+      "side": 1,
+      "message": "It\u0027s a little bit hard to see (that\u0027s why it\u0027s probably been unnoticed) but currently this block:\n\n  \t\tbattery_seems_to_be_disconnected \u003d\n\t\t\tbattery_get_disconnect_state() \u003d\u003d\n\t\t\tBATTERY_DISCONNECTED;\n\nis disconnecting \u0027else\u0027 at line 2085 and \u0027if\u0027 at line 2097. Since there is no brace after \u0027else\u0027, this block terminates the if sentence starting from line 2077. The \u0027if\u0027 sentence at line 2097 starts as new. We need one of these two revival blocks not both.",
+      "parentUuid": "08e39f20_8c63a462",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "40173450cda5970847ce3b7cbc7d5f9a4b832973",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
