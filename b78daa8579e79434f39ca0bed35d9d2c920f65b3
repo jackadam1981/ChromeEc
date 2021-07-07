@@ -16,6 +16,24 @@
       "message": "nm, I didn\u0027t notice the comment /* Note: MUST match ADC SOC as they share an idx value */",
       "revId": "b78daa8579e79434f39ca0bed35d9d2c920f65b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "331ed209_0a827f44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-07T15:47:18Z",
+      "side": 1,
+      "message": "We can go with this approach if it seems more clear for follower boards though.  Up to you.",
+      "parentUuid": "fd7d00d3_09548364",
+      "revId": "b78daa8579e79434f39ca0bed35d9d2c920f65b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
