@@ -335,6 +335,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f9625bc_296b77d7",
+        "filename": "driver/accel_da217.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-07-07T06:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cf42dd1_5e927a52",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9290259_7be3218d",
@@ -348,6 +372,30 @@
       "writtenOn": "2021-06-09T02:31:44Z",
       "side": 1,
       "message": "This seems incorrect as well.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1adafef1_4445789a",
+        "filename": "driver/accel_da217.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-07-07T06:34:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9290259_7be3218d",
       "range": {
         "startLine": 35,
         "startChar": 0,
