@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ca9a9a3_3f7e5a7e",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-07T22:36:54Z",
+      "side": 1,
+      "message": "nit: The -1 doesn\u0027t appear to be mentioned in the above comment description for the formula",
+      "range": {
+        "startLine": 183,
+        "startChar": 34,
+        "endLine": 183,
+        "endChar": 36
+      },
+      "revId": "351a3ba895006b5894e27b6e9e356b4074c86e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e75404ca_e003c1cc",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-07T22:36:54Z",
+      "side": 1,
+      "message": "Does any of this need to be mutex protected?",
+      "revId": "351a3ba895006b5894e27b6e9e356b4074c86e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c9ba870_bd693a48",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-07T22:36:54Z",
+      "side": 1,
+      "message": "I\u0027m not certain I totally understand this?  It looks like bma4_set_reg8() will be updating the register with: \n(old value \u0026 ~BMA4_NV_ACCEL_OFFSET_MSK) | BMA4_ENABLE\n-\u003e (old value \u0026 ~0x08) | 1\n\nReferencing the data sheet on Drive, this would be clearing acc_off_en and setting spi_en?  Please let me know if I\u0027m misreading something here.",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 34
+      },
+      "revId": "351a3ba895006b5894e27b6e9e356b4074c86e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b693ca0f_c81e6c41",
+        "filename": "driver/accel_bma4xx.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-07T22:36:54Z",
+      "side": 1,
+      "message": "nit: unused and slightly confusingly named?",
+      "revId": "351a3ba895006b5894e27b6e9e356b4074c86e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
