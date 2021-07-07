@@ -73,14 +73,6 @@ from the Chromium OS chroot:
     ./chromite/bin/cros_sdk
     ```
 
-1.  Set up your board:
-
-    ```bash
-    setup_board --board=$BOARD
-    ```
-
-    (ex. `setup_board --board=glados`)
-
 1.  Build EC:
 
     ```bash
