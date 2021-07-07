@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00211d35_f9cc02f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-07-07T09:55:33Z",
+      "side": 1,
+      "message": "I am okay with the changes in chip/mt_scp/rv32i_common/intc.c.\n\nBut my original intent is:\n- extract the anonymous struct declaration to intc.h.\n- define the irqs in {mt8192, mt8195}/intc.c\nwhich would change some rv32i_common/intc.c code.\n\nLet\u0027s use the version to share between MT8192/MT8195.  I will do the refactor later.",
+      "revId": "293fced38235297b4fcdfd722bca280fb4c07dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
