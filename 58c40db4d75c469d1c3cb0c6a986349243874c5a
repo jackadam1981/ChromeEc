@@ -223,6 +223,24 @@
       "parentUuid": "564522bb_3a8389f0",
       "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6888837_a4a7d252",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 618,
+      "author": {
+        "id": 1512242
+      },
+      "writtenOn": "2021-07-07T02:20:27Z",
+      "side": 1,
+      "message": "Output section .rw_image_size_agligment and __image_size are guarded in patchset4.",
+      "parentUuid": "70979839_e23f5d12",
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
