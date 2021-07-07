@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f070a440_66f2af47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-07T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c7ece06_2e6b9a37",
+      "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27347cfb_ef6b068d",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-05T06:36:20Z",
       "side": 1,
       "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de2b25e_a20c6982",
+        "filename": "chip/mt_scp/mt8192/clock_regs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-07T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27347cfb_ef6b068d",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "52dbdae1_41bafb7f",
+        "filename": "chip/mt_scp/mt8192/clock_regs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-07T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78dcaa5f_f85f91b9",
+      "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e09cf414_fd78619f",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffd5f541_de8fcba3",
+        "filename": "chip/mt_scp/mt8192/clock_regs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-07T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e09cf414_fd78619f",
+      "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4360db6_b680ce8b",
@@ -88,6 +166,30 @@
       "writtenOn": "2021-07-05T06:36:20Z",
       "side": 1,
       "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e713f5aa_607c2ede",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-07T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4360db6_b680ce8b",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -144,6 +246,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2652d74_97f799b5",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-07T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9990e4c8_ed2741af",
+      "range": {
+        "startLine": 315,
+        "startChar": 57,
+        "endLine": 315,
+        "endChar": 76
+      },
+      "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b4b1172f_da617d73",
@@ -157,6 +283,30 @@
       "writtenOn": "2021-07-05T06:36:20Z",
       "side": 1,
       "message": "2021",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f8f3b7a_5fb6a32b",
+        "filename": "chip/mt_scp/mt8195/clock_regs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-07T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b1172f_da617d73",
       "range": {
         "startLine": 1,
         "startChar": 13,
@@ -184,6 +334,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca1f8212_4bd7efaa",
+        "filename": "chip/mt_scp/mt8195/clock_regs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-07T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80770dd1_d1b22ce0",
+      "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0df68c7d_1bfe47a3",
@@ -197,6 +365,24 @@
       "writtenOn": "2021-07-05T06:36:20Z",
       "side": 1,
       "message": "Insert a blank line before line 22.",
+      "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a574a5_a6064675",
+        "filename": "chip/mt_scp/mt8195/clock_regs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-07T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0df68c7d_1bfe47a3",
       "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -218,6 +404,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d277ca9_7bbb1901",
+        "filename": "chip/mt_scp/rv32i_common/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-07T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d350cf68_4f57ae85",
+      "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc1c12ab_49b1306d",
@@ -231,6 +435,24 @@
       "writtenOn": "2021-07-05T06:36:20Z",
       "side": 1,
       "message": "Move before \"IRQ numbers\" (line 215).",
+      "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8197a5b_3cc4ea72",
+        "filename": "chip/mt_scp/rv32i_common/registers.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-07T06:08:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc1c12ab_49b1306d",
       "revId": "6173e44cd7c911e38ea3eeb6bfc59419c733aaaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
