@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cee29376_559c7d40",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 817,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-07T17:59:58Z",
+      "side": 1,
+      "message": "Add a prototype for this routine to include/system.h.",
+      "range": {
+        "startLine": 817,
+        "startChar": 0,
+        "endLine": 817,
+        "endChar": 41
+      },
+      "revId": "380a02aae41bcba1941abf447b841f7b745415dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cd95e9c9_436b956f",
         "filename": "common/system.c",
         "patchSetId": 2
