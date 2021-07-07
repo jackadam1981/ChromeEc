@@ -51,4 +51,18 @@ const struct device *i2c_get_device_for_port(const int port);
  */
 int i2c_get_port_from_remote_port(int remote_port);
 
+/**
+ * @brief Get soc's i2c port number where i2c device is connected to.
+ *
+ * This function translate a i2c port enum value (enum-name property listed in
+ * named-i2c-ports) to soc's i2c port. Devices which are connected to the
+ * same port of soc should have the same number.
+ *
+ * @param enum_port i2c port enum value.
+ * @return i2c port of soc used in mutex_lock().
+ *         -1 if physical port is not defined or i2c port number is out of
+ *         port_mutex space.
+ */
+int i2c_get_physical_port(int enum_port);
+
 #endif /* ZEPHYR_CHROME_I2C_I2C_H */
