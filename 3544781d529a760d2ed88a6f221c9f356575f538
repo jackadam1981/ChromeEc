@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7201c557_4cb46d5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-07-07T13:43:14Z",
+      "side": 1,
+      "message": "Hi Aseda Henry：   \nplease help to this cl, We found that the charger register was not ready when the AC_ok was first detected, so when the adapter is inserted in the G3 state, there will be a certain delay in the charging state. We try to increase the AC OK detection to fix this problem.",
+      "revId": "3544781d529a760d2ed88a6f221c9f356575f538",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
