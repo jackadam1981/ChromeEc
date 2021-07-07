@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "666aac74_6ca815ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-07-07T03:04:20Z",
+      "side": 1,
+      "message": "No.\n\n- Still inline intc_regs.h to {mt8192,mt8195}/intc.h.\n- Declare the irqs in {mt8192,mt8195}/intc.h.\n- Move the irqs definitions to {mt8192,mt8195}/intc.c.",
+      "parentUuid": "5c810bc2_65153b43",
+      "revId": "e0737e96f184739c89fb5edc2719b3d7f54af893",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4c85822a_23cc794e",
         "filename": "chip/mt_scp/mt8192/intc.h",
         "patchSetId": 2
