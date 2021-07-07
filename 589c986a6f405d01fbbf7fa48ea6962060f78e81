@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "51fb238b_a4fadccd",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 818,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-07T18:11:27Z",
+      "side": 1,
+      "message": "Can you use irq_connect_dynamic() instead?",
+      "parentUuid": "c6fd13de_153c8408",
+      "range": {
+        "startLine": 816,
+        "startChar": 0,
+        "endLine": 818,
+        "endChar": 1
+      },
+      "revId": "589c986a6f405d01fbbf7fa48ea6962060f78e81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e5c99768_329dd0b2",
         "filename": "driver/tcpm/ite_pd_intc.h",
         "patchSetId": 3
