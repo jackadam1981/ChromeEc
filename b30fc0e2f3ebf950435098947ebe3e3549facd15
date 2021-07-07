@@ -193,6 +193,24 @@
       "parentUuid": "87208fe9_a7785aba",
       "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb00fba5_1f27831d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-07-07T12:49:44Z",
+      "side": 1,
+      "message": "* Please honor to the definition of GBB_FLAG_DISABLE_LID_SHUTDOWN no matter how you think the use case might not be leveraged by your side.\n* Please note that the root cause is why AP can\u0027t shutdown correctly instead of this CL.\n* As I understand, plugging AC will power on the DUT in this case so if you need to change this requirement, as I mentioned, you can file an issue to ask our PM to amend the requirement.",
+      "parentUuid": "4c01387b_fb472c69",
+      "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
