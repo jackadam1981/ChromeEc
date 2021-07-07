@@ -833,6 +833,14 @@ static void charge_manager_refresh(void)
 
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
+
+		/*
+		 *TOOL(b:192638664)-We hope to check the adapter
+		 *status again here.
+		 */
+		if (IS_ENABLED(CONFIG_EXTPOWER))
+			board_check_extpower();
+
 	}
 
 	/*
