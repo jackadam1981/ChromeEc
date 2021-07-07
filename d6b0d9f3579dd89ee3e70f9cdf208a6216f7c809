@@ -171,6 +171,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c499c5c6_2766c30c",
+        "filename": "driver/accel_da217.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-07-07T03:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4090bb4b_c1af3a11",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 1
+      },
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e47eaca4_3342f4da",
@@ -400,6 +424,24 @@
       "side": 1,
       "message": "change this to DA217_POWER_ON_VALUE and DA217_POWER_OFF_VALUE",
       "parentUuid": "a0757b35_0adeb4f5",
+      "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e038ad7_f1754cbd",
+        "filename": "driver/accel_da217.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-07-07T03:47:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "492d95f2_5b062599",
       "revId": "d6b0d9f3579dd89ee3e70f9cdf208a6216f7c809",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
