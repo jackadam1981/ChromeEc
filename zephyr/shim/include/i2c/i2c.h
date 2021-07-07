@@ -51,4 +51,6 @@ const struct device *i2c_get_device_for_port(const int port);
  */
 int i2c_get_port_from_remote_port(int remote_port);
 
+int i2c_get_physical_port(int port);
+
 #endif /* ZEPHYR_CHROME_I2C_I2C_H */
