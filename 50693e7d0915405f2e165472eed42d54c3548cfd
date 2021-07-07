@@ -164,6 +164,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b9100a00_be098088",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-07T21:38:24Z",
+      "side": 1,
+      "message": "Because CONFIG_CBI_GPIO implies that only the CBI_TAG_BOARD_VERSION and CBI_TAG_SKU_ID tags will be saved (each of which is uint32_t), you can reduce the static allocation of the CBI area to:\n    sizeof(struct cbi_header) + 2 * (sizeof(struct cbi_data) + sizeof(uint32_t))",
+      "parentUuid": "166b6e3b_2f58ef48",
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6ee726d_46092992",
         "filename": "common/cbi_gpio.c",
         "patchSetId": 2
