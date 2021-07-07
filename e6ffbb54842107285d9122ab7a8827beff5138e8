@@ -22,6 +22,30 @@
       },
       "revId": "e6ffbb54842107285d9122ab7a8827beff5138e8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5eca3d9_f665178a",
+        "filename": "driver/tcpm/it8xxx2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 816,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-07T17:10:58Z",
+      "side": 1,
+      "message": "If this is due to IRQ_CONNECT not expanding to a single instruction, it could be changed to have the {} in that expansion... or you can leave this as is and make sure no other issues are in the hook script while doing repo upload and then do it with --no-verify and then it will push it through.  Don\u0027t get in a habit of just doing that to avoid getting rid of the problems but this will get past things that are really just a misunderstanding from the hook.",
+      "parentUuid": "86e816e6_4cf5f5fb",
+      "range": {
+        "startLine": 816,
+        "startChar": 27,
+        "endLine": 816,
+        "endChar": 28
+      },
+      "revId": "e6ffbb54842107285d9122ab7a8827beff5138e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
