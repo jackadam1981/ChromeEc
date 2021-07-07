@@ -1,0 +1,3 @@
+#ifdef CONFIG_PLATFORM_EC_HOSTCMD
+Z_ITERABLE_SECTION_ROM(host_command, 4)
+#endif
