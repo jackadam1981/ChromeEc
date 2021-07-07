@@ -182,6 +182,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60d309d4_3746c533",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-07T22:06:36Z",
+      "side": 1,
+      "message": "Hm, I think I just need to define different CBI_IMAGE_SIZE based on different configs. Will do it shortly.",
+      "parentUuid": "b9100a00_be098088",
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6ee726d_46092992",
         "filename": "common/cbi_gpio.c",
         "patchSetId": 2
