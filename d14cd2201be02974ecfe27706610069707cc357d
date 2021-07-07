@@ -16,6 +16,24 @@
       "message": "This modifies the tag field in the branch with make buildall -j. That doesn\u0027t happen on TOT. I\u0027ll look into why.",
       "revId": "d14cd2201be02974ecfe27706610069707cc357d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6161fd2f_c69e4d48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-07T18:59:53Z",
+      "side": 1,
+      "message": "cr50_stab copies the manifest to /tmp/ and modifies the tag there. The prepvt branch doesn\u0027t have this. \n\n+SIGNER_MANIFEST :\u003d $(shell mktemp /tmp/h1.signer.XXXXXX)\n\nchip/g/build.mk is actually pretty different from cr50_stab. I don\u0027t know if I should work on resolving these differences now. Do we need this change in the next prepvt image?\n\nWe probably need this change.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/1017238",
+      "parentUuid": "967e14fd_c297922d",
+      "revId": "d14cd2201be02974ecfe27706610069707cc357d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
