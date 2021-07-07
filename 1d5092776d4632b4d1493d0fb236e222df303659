@@ -16,6 +16,29 @@
       "message": "lgtm, but should also be approved by someone who more regularly interacts with the code base.",
       "revId": "1d5092776d4632b4d1493d0fb236e222df303659",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82a046ca_35baeb42",
+        "filename": "driver/fingerprint/fpc/libfp/fpc_private.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-07T21:24:53Z",
+      "side": 1,
+      "message": "See crrev.com/c/2968964/1/driver/fingerprint/fpc/bep/fpc_private.c#146",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "1d5092776d4632b4d1493d0fb236e222df303659",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
