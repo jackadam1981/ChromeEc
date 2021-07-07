@@ -83,6 +83,10 @@ static int i2c_port_is_locked(int port)
 	if (port < 0)
 		return 0;
 
+#ifdef CONFIG_ZEPHYR
+	port = i2c_get_physical_port(port);
+#endif
+
 	return (i2c_port_active_list >> port) & 1;
 }
 
@@ -286,6 +290,10 @@ void i2c_lock(int port, int lock)
 #endif
 	if (port < 0 || port >= ARRAY_SIZE(port_mutex))
 		return;
+
+#ifdef CONFIG_ZEPHYR
+	port = i2c_get_physical_port(port);
+#endif
 
 	if (lock) {
 		uint32_t irq_lock_key;

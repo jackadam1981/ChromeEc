@@ -50,3 +50,8 @@ properties:
     description:
       Human readable string describing the device (used as device_get_binding()
       argument).
+  physical-port:
+    type: int
+    required: true
+    description:
+      Chip's i2c port number used by mutex.
