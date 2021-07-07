@@ -175,6 +175,24 @@
       "parentUuid": "05e89c9b_83e28b0c",
       "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c01387b_fb472c69",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1316058
+      },
+      "writtenOn": "2021-07-07T08:55:41Z",
+      "side": 1,
+      "message": "2.Can we modify EC hibernation in case of Octopus like this\u003d\u003e\n EC will be power off. As a result, while AC inserts, the EC will power on from scratch then trigger the path , but not to power on AP to save power.",
+      "parentUuid": "87208fe9_a7785aba",
+      "revId": "b30fc0e2f3ebf950435098947ebe3e3549facd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
