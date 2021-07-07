@@ -17,6 +17,8 @@
 
 #define INIT_REMOTE_PORTS(id) \
 	i2c_remote_ports[I2C_PORT(id)] = DT_PROP_OR(id, remote_port, -1);
+#define INIT_PHYSICAL_PORTS(id) \
+	i2c_physical_ports[I2C_PORT(id)] = DT_PROP_OR(id, physical_port, -1);
 
 #define I2C_CONFIG_GPIO(id, type) \
 	DT_ENUM_UPPER_TOKEN(DT_CHILD(DT_CHILD(id, config), type), enum_name)
@@ -41,6 +43,7 @@ const struct i2c_port_t i2c_ports[] = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 static int i2c_remote_ports[I2C_PORT_COUNT];
+static int i2c_physical_ports[I2C_PORT_COUNT];
 
 int i2c_get_line_levels(int port)
 {
@@ -54,6 +57,7 @@ static int init_device_bindings(const struct device *device)
 	ARG_UNUSED(device);
 	DT_FOREACH_CHILD(DT_PATH(named_i2c_ports), INIT_DEV_BINDING)
 	DT_FOREACH_CHILD(DT_PATH(named_i2c_ports), INIT_REMOTE_PORTS)
+	DT_FOREACH_CHILD(DT_PATH(named_i2c_ports), INIT_PHYSICAL_PORTS)
 	return 0;
 }
 SYS_INIT(init_device_bindings, POST_KERNEL, 51);
@@ -74,4 +78,9 @@ int i2c_get_port_from_remote_port(int remote_port)
 
 	/* Remote port is not defined, return -1 to signal the problem */
 	return -1;
+}
+
+int i2c_get_physical_port(int port)
+{
+	return i2c_physical_ports[port];
 }
