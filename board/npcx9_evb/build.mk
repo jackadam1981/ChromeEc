@@ -16,3 +16,4 @@ CHIP_FAMILY:=npcx9
 CHIP_VARIANT:=npcx9m3f
 
 board-y=board.o
+board-y+=keyboard.o
