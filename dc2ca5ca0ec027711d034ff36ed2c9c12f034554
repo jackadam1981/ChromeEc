@@ -22,6 +22,30 @@
       },
       "revId": "dc2ca5ca0ec027711d034ff36ed2c9c12f034554",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f803338f_bd1af854",
+        "filename": "baseboard/kukui/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-07-07T01:46:47Z",
+      "side": 1,
+      "message": "No. dma_init must be called before DMA channel select.",
+      "parentUuid": "addfe222_573ab284",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 6
+      },
+      "revId": "dc2ca5ca0ec027711d034ff36ed2c9c12f034554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
