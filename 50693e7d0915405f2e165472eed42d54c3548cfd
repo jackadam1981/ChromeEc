@@ -146,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "166b6e3b_2f58ef48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-07T20:47:02Z",
+      "side": 1,
+      "message": "It appears that our EC OS does not support malloc...? Daisuke, do you have any suggestions to work around the waste of CBI_IMAGE_SIZE in the case of GPIO?",
+      "parentUuid": "8d840963_bb5145ec",
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6ee726d_46092992",
         "filename": "common/cbi_gpio.c",
         "patchSetId": 2
