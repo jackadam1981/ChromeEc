@@ -833,6 +833,10 @@ static void charge_manager_refresh(void)
 
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
+
+		if (IS_ENABLED(CONFIG_EXTPOWER))
+			board_check_extpower();
+
 	}
 
 	/*
