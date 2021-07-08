@@ -7,10 +7,8 @@
 #include "console.h"
 #include "fpsensor_detect.h"
 #include "gpio.h"
-#include "hooks.h"
 #include "registers.h"
 #include "spi.h"
-#include "system.h"
 #include "task.h"
 #include "usart_host_command.h"
 #include "util.h"
@@ -18,45 +16,6 @@
 #ifndef SECTION_IS_RW
 #error "This file should only be built for RW."
 #endif
-
-/*
- * Some platforms have a broken SLP_S0_L signal (stuck to 0 in S0)
- * if set, ignore it and only uses SLP_S3_L for the AP state.
- */
-static bool broken_slp;
-
-static void ap_deferred(void)
-{
-	/*
-	 * Behavior:
-	 * AP Active  (ex. Intel S0):   SLP_L is 1
-	 * AP Suspend (ex. Intel S0ix): SLP_L is 0
-	 * The alternative SLP_ALT_L should be pulled high at all the times.
-	 *
-	 * Legacy Intel behavior:
-	 * in S3:   SLP_ALT_L is 0 and SLP_L is X.
-	 * in S0ix: SLP_ALT_L is 1 and SLP_L is 0.
-	 * in S0:   SLP_ALT_L is 1 and SLP_L is 1.
-	 * in S5/G3, the FP MCU should not be running.
-	 */
-	int running = gpio_get_level(GPIO_SLP_ALT_L) &&
-		      (gpio_get_level(GPIO_SLP_L) || broken_slp);
-
-	if (running) { /* S0 */
-		disable_sleep(SLEEP_MASK_AP_RUN);
-		hook_notify(HOOK_CHIPSET_RESUME);
-	} else { /* S0ix/S3 */
-		hook_notify(HOOK_CHIPSET_SUSPEND);
-		enable_sleep(SLEEP_MASK_AP_RUN);
-	}
-}
-DECLARE_DEFERRED(ap_deferred);
-
-/* PCH power state changes */
-void slp_event(enum gpio_signal signal)
-{
-	hook_call_deferred(&ap_deferred_data, 0);
-}
 
 /* SPI devices */
 struct spi_device_t spi_devices[] = {
@@ -81,30 +40,6 @@ static void configure_fp_sensor_spi(void)
 
 void board_init_rw(void)
 {
-	enum fp_transport_type ret_transport = get_fp_transport_type();
-
-	if (ret_transport == FP_TRANSPORT_TYPE_UART) {
-		/*
-		 * The Zork variants currently have a broken SLP_S0_L signal
-		 * (stuck to 0 in S0). For now, unconditionally ignore it here
-		 * as they are the only UART users and the AP has no S0ix state.
-		 * TODO(b/174695987) once the RW AP firmware has been updated
-		 * on all those machines, remove this workaround.
-		 */
-		broken_slp = true;
-	}
-
 	/* Configure and enable SPI as master for FP sensor */
 	configure_fp_sensor_spi();
-
-	/* Enable interrupt on PCH power signals */
-	gpio_enable_interrupt(GPIO_SLP_ALT_L);
-	gpio_enable_interrupt(GPIO_SLP_L);
-
-	/*
-	 * Enable the SPI slave interface if the PCH is up.
-	 * Do not use hook_call_deferred(), because ap_deferred() will be
-	 * called after tasks with priority higher than HOOK task (very late).
-	 */
-	ap_deferred();
 }
