@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b2ba62_96507e35",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-07-08T01:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "239b9ffd_126adc62",
+      "range": {
+        "startLine": 94,
+        "startChar": 6,
+        "endLine": 94,
+        "endChar": 7
+      },
+      "revId": "00c6ab95e3a8641033aeda3d568a7363edc4ab09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e2455ba_1510c0ab",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-07T18:43:00Z",
       "side": 1,
       "message": "nit: I think it would be safe to \u0027and\u0027 with the wanted flags than clearing unwanted flags.\n\nreturn usb_mux_get(port) \u0026 (USB_PD_MUX_NONE | USB_PD_MUX_USB_ENABLED **)",
+      "revId": "00c6ab95e3a8641033aeda3d568a7363edc4ab09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a31bd75_0ce16a84",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-07-08T01:09:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e2455ba_1510c0ab",
       "revId": "00c6ab95e3a8641033aeda3d568a7363edc4ab09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
