@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3cd01a6_a07c8133",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-08T23:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0f823b5_88126a61",
+      "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7e440dd_21e63477",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45c335f7_0c9d4df1",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-08T23:33:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7e440dd_21e63477",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 57
+      },
+      "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b42b0a0_dea000ad",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-07-08T22:57:20Z",
       "side": 1,
       "message": "Historically, I thought this debug accessory control was important to ensure servo can power role swap with this TCPC.  However, it would take some buganizer/git digging to confirm what test cases you should run to verify this isn\u0027t causing further servo woes since I moved the control around fairly recently.",
+      "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7c7633_b4d445ea",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-08T23:33:46Z",
+      "side": 1,
+      "message": "Just want to clarify: This CL is a fix for hardware issue in Brya P1 build, it is not intended for broader future use.",
+      "parentUuid": "3b42b0a0_dea000ad",
       "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
