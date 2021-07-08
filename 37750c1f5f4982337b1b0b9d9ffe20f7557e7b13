@@ -16,6 +16,24 @@
       "message": "Do we want to be able to support earlier board versions?  I believe we can read our CBI version and update these things dynamically in runtime (ex. you can reference Bobba\u0027s board for an example of a board that had to do this)",
       "revId": "37750c1f5f4982337b1b0b9d9ffe20f7557e7b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05f9c802_4645948c",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-08T01:46:41Z",
+      "side": 1,
+      "message": "Currently BMI323 is only POR for guybrush. go/guybrush-skus. IMHO, can we do dynamic implementation if follower devices need them?",
+      "parentUuid": "85def86e_3301d652",
+      "revId": "37750c1f5f4982337b1b0b9d9ffe20f7557e7b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
