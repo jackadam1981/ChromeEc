@@ -1,3 +1,7 @@
+#ifdef CONFIG_PLATFORM_EC_HOOKS
+ITERABLE_SECTION_ROM(zephyr_shim_hook_list, 4)
+#endif
+
 #ifdef CONFIG_PLATFORM_EC_HOSTCMD
 ITERABLE_SECTION_ROM(host_command, 4)
 #endif
