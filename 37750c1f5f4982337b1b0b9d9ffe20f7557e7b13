@@ -34,6 +34,24 @@
       "parentUuid": "85def86e_3301d652",
       "revId": "37750c1f5f4982337b1b0b9d9ffe20f7557e7b13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb1d2745_db5a1c8b",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:31:27Z",
+      "side": 1,
+      "message": "I mean, are we concerned about losing accel/gyro functionality on the earlier board versions?  It seems like we could either set up the correct base accel based on board version, or we could zero out the number of accel chips if we\u0027re on a board version which has the BMI160 to prevent weird errors from occurring.",
+      "parentUuid": "05f9c802_4645948c",
+      "revId": "37750c1f5f4982337b1b0b9d9ffe20f7557e7b13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
