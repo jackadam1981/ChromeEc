@@ -46,6 +46,30 @@
       },
       "revId": "0b4090d477f0fcd3e92ec6f23fb509afcac9ce2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f9d20e1_17b3db3f",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-08T16:39:21Z",
+      "side": 1,
+      "message": "Is it done? I\u0027m still seeing a change for system_get_sku_id. I think it should go to a separate CL.",
+      "parentUuid": "e891ed6d_7fc66277",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "0b4090d477f0fcd3e92ec6f23fb509afcac9ce2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
