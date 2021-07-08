@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf4166f5_0670cab1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-08T19:51:21Z",
+      "side": 1,
+      "message": "This change is causing a build failure on the delbin_npcx796fc build because the image size is too big.\n\nPlease delete the delbin_npcx796fc if it is no longer needed.",
+      "revId": "99d7f7f8d8185a37bccd817067a77bde7d3f167b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
