@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c626451_298893db",
+        "filename": "board/careena/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-08T23:34:33Z",
+      "side": 1,
+      "message": "At first, I was thinking that we may want to check that the temps are still ok before de-asserting, but it looks like this will run before the thermal control loop does, so this should be perfectly fine.",
+      "revId": "01e7265d6a26ecc65d67cc56bc721ab4a30b95cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
