@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe56caef_3d5d6dd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-08T11:50:39Z",
+      "side": 1,
+      "message": "I verified sudo emerge ec-devutils works now. I had to add back some utils files as described in the patch description.",
+      "revId": "9ff8ea323bd486c0fa820362e6770e6773baf51d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
