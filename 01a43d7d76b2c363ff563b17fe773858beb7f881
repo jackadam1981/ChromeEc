@@ -39,6 +39,23 @@
       },
       "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b42b0a0_dea000ad",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T22:57:20Z",
+      "side": 1,
+      "message": "Historically, I thought this debug accessory control was important to ensure servo can power role swap with this TCPC.  However, it would take some buganizer/git digging to confirm what test cases you should run to verify this isn\u0027t causing further servo woes since I moved the control around fairly recently.",
+      "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
