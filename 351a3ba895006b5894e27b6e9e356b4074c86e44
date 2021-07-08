@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b86640ee_9c2e0f9b",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-08T01:24:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca9a9a3_3f7e5a7e",
+      "range": {
+        "startLine": 183,
+        "startChar": 34,
+        "endLine": 183,
+        "endChar": 36
+      },
+      "revId": "351a3ba895006b5894e27b6e9e356b4074c86e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e75404ca_e003c1cc",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-07T22:36:54Z",
       "side": 1,
       "message": "Does any of this need to be mutex protected?",
+      "revId": "351a3ba895006b5894e27b6e9e356b4074c86e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab2fbaed_8b715237",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-08T01:24:08Z",
+      "side": 1,
+      "message": "Since these functions are used before init, we will not need mutexes. Looks like other drivers are following the same idea.",
+      "parentUuid": "e75404ca_e003c1cc",
       "revId": "351a3ba895006b5894e27b6e9e356b4074c86e44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba5f8dde_36d4c39c",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-08T01:24:08Z",
+      "side": 1,
+      "message": "you are right. Something about that function always confuses me. \nTo make it more legible and easy to use, I have changed all instances of bma4_set_reg8 with (val \u003c\u003c POS regs).",
+      "parentUuid": "2c9ba870_bd693a48",
+      "range": {
+        "startLine": 313,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 34
+      },
+      "revId": "351a3ba895006b5894e27b6e9e356b4074c86e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b693ca0f_c81e6c41",
@@ -77,6 +143,24 @@
       "writtenOn": "2021-07-07T22:36:54Z",
       "side": 1,
       "message": "nit: unused and slightly confusingly named?",
+      "revId": "351a3ba895006b5894e27b6e9e356b4074c86e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "386d5c8e_a3203683",
+        "filename": "driver/accel_bma4xx.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-08T01:24:08Z",
+      "side": 1,
+      "message": "agree! removed",
+      "parentUuid": "b693ca0f_c81e6c41",
       "revId": "351a3ba895006b5894e27b6e9e356b4074c86e44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
