@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f823b5_88126a61",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-08T22:49:48Z",
+      "side": 1,
+      "message": "i\u0027d suggest separating this file into its own patch to\nseparate the interface definition from its use.",
+      "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7e440dd_21e63477",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-08T22:49:48Z",
+      "side": 1,
+      "message": "i think it\u0027s ok to just use \"C%d: NO_DEBUG_ACC_CONTROL\".\nshould be easier to spot in the logs and longer strings\ntend to be our code size enemy.",
+      "range": {
+        "startLine": 70,
+        "startChar": 16,
+        "endLine": 70,
+        "endChar": 57
+      },
+      "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
