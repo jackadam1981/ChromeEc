@@ -70,6 +70,30 @@
       },
       "revId": "0b4090d477f0fcd3e92ec6f23fb509afcac9ce2e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41b4e44c_b04b6871",
+        "filename": "common/system.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-08T17:25:37Z",
+      "side": 1,
+      "message": "I should\u0027ve removed all changes for system_get_sku_id:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3004112/5..8\n\nAm I still missing anything?",
+      "parentUuid": "3f9d20e1_17b3db3f",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 1
+      },
+      "revId": "0b4090d477f0fcd3e92ec6f23fb509afcac9ce2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
