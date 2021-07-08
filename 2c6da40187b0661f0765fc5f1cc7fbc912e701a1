@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34e9accb_29306d57",
+        "filename": "board/delbin/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-08T02:51:41Z",
+      "side": 1,
+      "message": "is this 100 * MSEC?",
+      "range": {
+        "startLine": 73,
+        "startChar": 3,
+        "endLine": 73,
+        "endChar": 18
+      },
+      "revId": "2c6da40187b0661f0765fc5f1cc7fbc912e701a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
