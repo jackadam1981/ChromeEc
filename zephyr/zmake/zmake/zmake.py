@@ -210,6 +210,7 @@ class Zmake:
         test_after_configure=False,
         bringup=False,
         coverage=False,
+        conf_files=[]
     ):
         """Set up a build directory to later be built by "zmake build"."""
         project = zmake.project.Project(project_dir)
@@ -277,6 +278,10 @@ class Zmake:
         if coverage:
             base_config |= zmake.build_config.BuildConfig(
                 kconfig_defs={"CONFIG_COVERAGE": "y"}
+            )
+        if conf_files:
+            base_config |= zmake.build_config.BuildConfig(
+                    kconfig_files=conf_files
             )
 
         if not build_dir.exists():

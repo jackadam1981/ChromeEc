@@ -142,6 +142,13 @@ def main(argv=None):
         dest="coverage",
         help="Enable CONFIG_COVERAGE Kconfig.",
     )
+    configure.add_argument(
+        '--conf-file',
+        type=pathlib.Path,
+        action='append',
+        dest='conf_files',
+        help='Add a Kconfig file to the build'
+    )
 
     build = sub.add_parser("build")
     build.add_argument(
