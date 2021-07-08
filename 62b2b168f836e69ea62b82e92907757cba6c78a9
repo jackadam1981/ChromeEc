@@ -1,0 +1,387 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "706f9040_e4c96d14",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "nit: could add orientation mask",
+      "range": {
+        "startLine": 65,
+        "startChar": 29,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448b1bc2_291001d7",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "nit: could define an ORIENTATION_EN for this register",
+      "range": {
+        "startLine": 201,
+        "startChar": 17,
+        "endLine": 201,
+        "endChar": 21
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a36e4c32_11c4c296",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "Does the FIFO always start with a general sync word?  I wasn\u0027t clear from the datasheet.  If it does start with a general sync word, should we be validating it?",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 23
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba6f98ec_5d2a1808",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "Already TODONE? :)",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2c41b74_23bf15ba",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "nit: checkpatch should disallow comments on the first line of a multi-line block",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d0b3d1c_9a50e55e",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "FOC_TRY_COUNT?",
+      "range": {
+        "startLine": 626,
+        "startChar": 19,
+        "endLine": 626,
+        "endChar": 20
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d9912e3_c3fbeb58",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "FOC_DELAY?",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baa38752_e9fdbce5",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "ARRAY_SIZE() macro could be used here",
+      "range": {
+        "startLine": 1025,
+        "startChar": 14,
+        "endLine": 1025,
+        "endChar": 20
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "399a6142_ee5b716d",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "Does this walk off the end of the array if you send in a value larger than the last range (ex. 40 for an accel range)?",
+      "range": {
+        "startLine": 1040,
+        "startChar": 26,
+        "endLine": 1040,
+        "endChar": 36
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9823675_46ff5ed3",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "Should we leave the sensor in low power mode if the ODR is 0?",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074e5577_7dffae87",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "What does this flag mean?",
+      "range": {
+        "startLine": 1172,
+        "startChar": 18,
+        "endLine": 1172,
+        "endChar": 42
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0a7f4a_927638aa",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "What do these chip IDs represent?",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0703f5d1_d335200a",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "32G doesn\u0027t appear to be an option on the datasheet",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12c7f5a4_7c7b6399",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "Option doesn\u0027t appear to be present in the datasheet.  It lists 0, 3, 4, and 7",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b7b7d8d_256cca43",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "Datasheet ends at 4 as the last option",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39b4ada4_c4b4198a",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "FEATURE_EVENT_EXT?",
+      "range": {
+        "startLine": 122,
+        "startChar": 8,
+        "endLine": 122,
+        "endChar": 33
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f410d23_0cd4c0b8",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "Couldn\u0027t find this one in the datasheet.  I was guessing it would be in IO_INT_CTRL like the ones above?",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42655d5d_0bf05d5f",
+        "filename": "include/config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "Should this config be referenced in the driver to pick the INT output if it\u0027s present in config.h?",
+      "range": {
+        "startLine": 247,
+        "startChar": 7,
+        "endLine": 247,
+        "endChar": 42
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "018c308c_82e79451",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 15
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:27:21Z",
+      "side": 1,
+      "message": "Today, I finally learned what IMU stands for :D",
+      "range": {
+        "startLine": 77,
+        "startChar": 50,
+        "endLine": 78,
+        "endChar": 14
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
