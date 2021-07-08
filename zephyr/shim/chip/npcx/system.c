@@ -43,6 +43,32 @@ uint32_t chip_read_reset_flags(void)
 	return flags;
 }
 
+int system_set_scratchpad(uint32_t value)
+{
+	if (bbram_dev == NULL) {
+		LOG_ERR("bbram_dev doesn't binding");
+		return -1;
+	}
+
+	return cros_bbram_write(bbram_dev, GET_BBRAM_OFFSET(scratchpad),
+			 GET_BBRAM_SIZE(scratchpad), (uint8_t *)&value);
+}
+
+uint32_t system_get_scratchpad(void)
+{
+	uint32_t value;
+
+	if (bbram_dev == NULL) {
+		LOG_ERR("bbram_dev doesn't binding");
+		return -1;
+	}
+
+	cros_bbram_read(bbram_dev, GET_BBRAM_OFFSET(scratchpad),
+			GET_BBRAM_SIZE(scratchpad), (uint8_t *)&value);
+
+	return value;
+}
+
 void chip_bbram_status_check(void)
 {
 	if (!bbram_dev) {
