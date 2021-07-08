@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb39eb4c_e0a12bba",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-08T07:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63c3635b_7d40cf8c",
+      "revId": "55fea93f279bafa04e0f22fbc392b14ad1d5c217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58e7d1ec_a62d33cd",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-07T09:45:57Z",
       "side": 1,
       "message": "A switch ... case ... for each enum scp_clock_source would make it looks better.",
+      "revId": "55fea93f279bafa04e0f22fbc392b14ad1d5c217",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "674acefb_1ec805f9",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-08T07:19:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58e7d1ec_a62d33cd",
       "revId": "55fea93f279bafa04e0f22fbc392b14ad1d5c217",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
