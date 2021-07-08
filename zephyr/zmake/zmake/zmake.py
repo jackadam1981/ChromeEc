@@ -201,7 +201,7 @@ class Zmake:
     def configure(self, project_dir, build_dir=None,
                   toolchain=None, ignore_unsupported_zephyr_version=False,
                   build_after_configure=False, test_after_configure=False,
-                  bringup=False, coverage=False):
+                  bringup=False, coverage=False, conf_files=[]):
         """Set up a build directory to later be built by "zmake build"."""
         project = zmake.project.Project(project_dir)
         supported_versions = project.config.supported_zephyr_versions
@@ -261,6 +261,9 @@ class Zmake:
         if coverage:
             base_config |= zmake.build_config.BuildConfig(
                 kconfig_defs={'CONFIG_COVERAGE': 'y'})
+        if conf_files:
+            base_config |= zmake.build_config.BuildConfig(
+                    kconfig_files=conf_files)
 
         if not build_dir.exists():
             build_dir = build_dir.mkdir()
