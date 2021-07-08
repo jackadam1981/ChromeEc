@@ -148,6 +148,60 @@ EXTRAVERSION =
     return recs, tmpname
 
 
+class TestConfigs(unittest.TestCase):
+    """Test configs passed in by commandline"""
+    def setUp(self):
+        self.tempdir = tempfile.TemporaryDirectory()
+        self.zephyr_base_dir = pathlib.Path(self.tempdir.name)
+        with open(os.path.join(self.tempdir.name, 'VERSION'), 'w') as fd:
+                fd.write('''VERSION_MAJOR = 2
+VERSION_MINOR = 5
+PATCHLEVEL = 0
+VERSION_TWEAK = 0
+EXTRAVERSION =
+''')
+
+    def tearDown(self):
+        self.tempdir.cleanup()
+
+    @patch(
+            'zmake.version.get_version_string', return_value='123'
+    )
+    @patch('zmake.multiproc._logging_loop')
+    @patch.object(zmake.project, 'Project',
+                  return_value=FakeProject())
+    def test_conf_files(self, *_):
+        """Test passing --conf-file when configuring a project"""
+        proc_mock = mock.Mock()
+        proc_mock.wait = mock.MagicMock(return_value=0)
+        popen_mock = mock.Mock(return_value=proc_mock)
+        jobserver_mock = mock.Mock()
+        jobserver_mock.popen = popen_mock
+        zephyr_base_mock = mock.Mock()
+        zmk = zm.Zmake(jobserver=jobserver_mock, zephyr_base=zephyr_base_mock)
+        zephyr_base_mock.resolve = mock.Mock(return_value=self.zephyr_base_dir)
+        build_dir = pathlib.Path('build')
+        conf_file = pathlib.Path('/path/to/file.conf')
+        zmk.configure(self.zephyr_base_dir,
+                      build_dir=build_dir,
+                      conf_files=[conf_file])
+        expected_build_conf_files = list(map(lambda t: str(
+            (build_dir / 'kconfig-build-{}.conf'.format(t)).resolve()),
+                                             ['ro', 'rw']))
+        self.assertEqual(len(popen_mock.call_args_list), 2)
+        for idx, call in enumerate(popen_mock.call_args_list):
+            args, *_ = call
+            conf_file_def_regex = re.compile(r'-DCONF_FILE=(.*)')
+            conf_files = list(filter(
+                lambda item: conf_file_def_regex.match(str(item)),
+                args[0]))
+            self.assertEqual(len(conf_files), 1)
+            conf_files = conf_file_def_regex.match(conf_files[0]).group(1)
+            conf_files = conf_files.split(';')
+            self.assertEqual(sorted(conf_files), sorted(
+                    [expected_build_conf_files[idx], str(conf_file)]))
+
+
 class TestFilters(unittest.TestCase):
     """Test filtering of stdout and stderr"""
 
