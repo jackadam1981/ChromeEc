@@ -16,6 +16,9 @@ endif()
 
 set(PLATFORM_EC "${ZEPHYR_CURRENT_MODULE_DIR}" CACHE PATH
     "Path to the platform/ec repo.")
+set(THIRD_PARTY "${CMAKE_CURRENT_SOURCE_DIR}/../../../third_party" CACHE PATH
+    "Path to the third_party repo.")
+
 # Zephyr 2.3 will set ZEPHYR_CURRENT_MODULE_DIR to the directory of the
 # CMakeLists.txt file, whereas 2.4 will set it to the actual module
 # directory.  Try to detect the condition by searching for
@@ -98,6 +101,8 @@ endif()
 add_subdirectory("app")
 add_subdirectory("drivers")
 add_subdirectory("emul")
+add_subdirectory("subsys")
+
 
 add_subdirectory_ifdef(CONFIG_PLATFORM_EC "shim")
 # Creates a phony target all.libraries in case you only want to build the
