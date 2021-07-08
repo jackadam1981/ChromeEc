@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb21e8db_0018a1f4",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-07-08T10:21:14Z",
+      "side": 1,
+      "message": "The switch can just assign div and sel.\n\nAfter the switch .. case .., write them to registers.\n\nE.g.:\n\nswitch (...) {\n  case XXX:\n    div \u003d XXX;\n    sel \u003d XXX;\n  ...\n}\n\nSCP_CLK_DIV_SEL \u003d div;\nSCP_CLK_SW_SEL \u003d sel;",
+      "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16ba9a2f_65709f53",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-07-08T10:21:14Z",
+      "side": 1,
+      "message": "It should call\nSCP_CLK_DIV_SEL \u003d CLK_DIV_SEL1;\nbefore it.\n\n\nOr maybe just call clock_select_clock(SCP_CLK_SYSTEM) is more clear.",
+      "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac606be4_4352d00e",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-07-08T10:21:14Z",
+      "side": 1,
+      "message": "Need a space between - and 1.",
+      "range": {
+        "startLine": 335,
+        "startChar": 22,
+        "endLine": 335,
+        "endChar": 24
+      },
+      "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a93a3e_454e060c",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-07-08T10:21:14Z",
+      "side": 1,
+      "message": "i is ugly here.\n\n\nHow about define 2 symbols and:\n\nenum {\n  ULPOSC2_LOW_SPEED,\n  ULPOSC2_HIGH_SPEED,\n};\n\nstatic struct opp_ulposc_cfg {\n...\n} opp[] \u003d {\n  [ULPOSC2_LOW_SPEED] \u003d { ... },\n  [ULPOSC2_HIGH_SPEED] \u003d { ... },\n};\n\n\nUse the symbol to select here.",
+      "range": {
+        "startLine": 335,
+        "startChar": 2,
+        "endLine": 335,
+        "endChar": 3
+      },
+      "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4db84dbe_9a598939",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-07-08T10:21:14Z",
+      "side": 1,
+      "message": "Same here.",
+      "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
