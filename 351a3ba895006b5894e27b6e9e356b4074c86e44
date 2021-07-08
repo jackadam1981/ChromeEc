@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe1996a2_2d4bb4a7",
+        "filename": "driver/accel_bma4xx.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-08T17:53:56Z",
+      "side": 1,
+      "message": "I thought these were used when we get MOTIONSENSE_CMD_PERFORM_CALIB? So it seems like it would be after init time and running from the host command task.  Though I\u0027m unsure why other drivers don\u0027t use a mutex with that call structure",
+      "parentUuid": "ab2fbaed_8b715237",
+      "revId": "351a3ba895006b5894e27b6e9e356b4074c86e44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c9ba870_bd693a48",
