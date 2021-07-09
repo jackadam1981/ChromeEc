@@ -16,6 +16,24 @@
       "message": "The build failures are now because source code that calls snprintf() directly can\u0027t find the snprintf() prototype.\n\nThis change is also causing some of the tests to fail with return code (-11) (EINVAL?).",
       "revId": "0040307a67a1b9b7eeec58c40bbb97cc68bf7da4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b68944ca_7b8843bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-09T10:12:25Z",
+      "side": 1,
+      "message": "Thanks, I initially thought it is an issue with CQ.",
+      "parentUuid": "3bf09a49_6af23f43",
+      "revId": "0040307a67a1b9b7eeec58c40bbb97cc68bf7da4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
