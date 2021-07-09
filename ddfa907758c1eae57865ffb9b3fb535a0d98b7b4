@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a0e96c07_bae3681e",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-09T15:13:37Z",
+      "side": 1,
+      "message": "Would you mind pointing me to the part of the DPS code which will trigger the charge manager to select a new active port? I definitely see where the selected port will go through to the PD task and cause a new capability selection.  I think I\u0027m just missing how that will trigger the charge_manager to call board_set_active_charge_port() on that port.",
+      "parentUuid": "3b61f448_03ae8890",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78dd3bc9_cd2af6d9",
         "filename": "common/dps.c",
         "patchSetId": 13
@@ -137,6 +155,24 @@
       "side": 1,
       "message": "Some of them are for debug purpose (e.g. DPS_FLAG_SAMPLED), and some of them are used in the task.",
       "parentUuid": "78dd3bc9_cd2af6d9",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f93648_7b0d07fc",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-09T15:13:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "050e106a_453209f4",
       "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
