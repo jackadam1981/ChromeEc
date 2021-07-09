@@ -7,8 +7,6 @@
 #include "button.h"
 #include "cros_board_info.h"
 #include "charge_state.h"
-#include "driver/accel_lis2dw12.h"
-#include "driver/accelgyro_lsm6dsm.h"
 #include "driver/bc12/pi3usb9201.h"
 #include "driver/ppc/aoz1380.h"
 #include "driver/ppc/nx20p348x.h"
@@ -45,6 +43,7 @@ int I2C_PORT_BATTERY = I2C_PORT_BATTERY_V1;
 
 #include "gpio_list.h"
 
+<<<<<<< HEAD   (a1f2b6 TCPMv2: Don't cflush in CC_OPEN with battery)
 #ifdef HAS_TASK_MOTIONSENSE
 
 /* Motion sensors */
@@ -148,6 +147,8 @@ unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 #endif /* HAS_TASK_MOTIONSENSE */
 
+=======
+>>>>>>> CHANGE (d0af5d Reland "dirinboz: remove imu sensors")
 /*****************************************************************************
  * Retimers
  */
@@ -484,6 +485,7 @@ static void setup_fw_config(void)
 	ioex_enable_interrupt(IOEX_USB_C0_SBU_FAULT_ODL);
 	ioex_enable_interrupt(IOEX_USB_C1_SBU_FAULT_DB_ODL);
 
+<<<<<<< HEAD   (a1f2b6 TCPMv2: Don't cflush in CC_OPEN with battery)
 	if (ec_config_has_lid_angle_tablet_mode()) {
 		/* Enable Gyro interrupts */
 		gpio_enable_interrupt(GPIO_6AXIS_INT_L);
@@ -495,6 +497,8 @@ static void setup_fw_config(void)
 		gpio_set_flags(GPIO_6AXIS_INT_L, GPIO_INPUT | GPIO_PULL_DOWN);
 	}
 
+=======
+>>>>>>> CHANGE (d0af5d Reland "dirinboz: remove imu sensors")
 	/*
 	 * If keyboard is US2(KB_LAYOUT_1), we need translate right ctrl
 	 * to backslash(\|) key.
