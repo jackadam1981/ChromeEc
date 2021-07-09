@@ -299,6 +299,10 @@ static void board_connect_c0_sbu_deferred(void)
 		ioex_set_level(IOEX_USB_C0_USB_MUX_CNTRL_1, 0);
 		ioex_set_level(IOEX_USB_C0_USB_MUX_CNTRL_0, 0);
 	} else {
+		CPRINTS("*****%s debug device is attached***********",
+			pd_get_power_role(TYPE_C_PORT_0) == PD_ROLE_SINK ?
+			"Servo V4C/SuzyQ" : "Intel");
+
 		/* Set the SBU lines to CCD mode on TCPC-AIC */
 		ioex_set_level(IOEX_USB_C0_USB_MUX_CNTRL_1, 1);
 		ioex_set_level(IOEX_USB_C0_USB_MUX_CNTRL_0, 0);
