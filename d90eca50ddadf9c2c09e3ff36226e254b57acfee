@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b7bd099_0abffabf",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-09T02:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb21e8db_0018a1f4",
+      "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "16ba9a2f_65709f53",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-08T10:21:14Z",
       "side": 1,
       "message": "It should call\nSCP_CLK_DIV_SEL \u003d CLK_DIV_SEL1;\nbefore it.\n\n\nOr maybe just call clock_select_clock(SCP_CLK_SYSTEM) is more clear.",
+      "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7477ad48_6bab9dd0",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-09T02:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16ba9a2f_65709f53",
       "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +117,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdebd954_94930fb5",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-09T02:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4a93a3e_454e060c",
+      "range": {
+        "startLine": 335,
+        "startChar": 2,
+        "endLine": 335,
+        "endChar": 3
+      },
+      "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4572c261_44b8641c",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-09T02:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac606be4_4352d00e",
+      "range": {
+        "startLine": 335,
+        "startChar": 22,
+        "endLine": 335,
+        "endChar": 24
+      },
+      "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4db84dbe_9a598939",
@@ -94,6 +178,24 @@
       "writtenOn": "2021-07-08T10:21:14Z",
       "side": 1,
       "message": "Same here.",
+      "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a0ff62_7afc0584",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-07-09T02:37:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4db84dbe_9a598939",
       "revId": "d90eca50ddadf9c2c09e3ff36226e254b57acfee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
