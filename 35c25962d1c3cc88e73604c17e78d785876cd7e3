@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4050f26_8dea92db",
+        "filename": "board/berknip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-09T14:08:29Z",
+      "side": 1,
+      "message": "G3 and S0?",
+      "range": {
+        "startLine": 396,
+        "startChar": 34,
+        "endLine": 396,
+        "endChar": 36
+      },
+      "revId": "35c25962d1c3cc88e73604c17e78d785876cd7e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2626651c_b2114f82",
+        "filename": "board/berknip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-09T14:08:29Z",
+      "side": 1,
+      "message": "G3 and S0?",
+      "range": {
+        "startLine": 406,
+        "startChar": 34,
+        "endLine": 406,
+        "endChar": 36
+      },
+      "revId": "35c25962d1c3cc88e73604c17e78d785876cd7e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f327e78_35049707",
+        "filename": "board/berknip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-09T14:08:29Z",
+      "side": 1,
+      "message": "Does it make sense to debounce this by keeping state from not in S5 to being in S5 transitions? On the transition, mark the state change but return EC_ERROR_NOT_POWERED one more time.  Maybe this will eat up the false 100C reading",
+      "range": {
+        "startLine": 418,
+        "startChar": 1,
+        "endLine": 420,
+        "endChar": 24
+      },
+      "revId": "35c25962d1c3cc88e73604c17e78d785876cd7e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
