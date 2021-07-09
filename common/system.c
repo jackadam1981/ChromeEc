@@ -80,11 +80,6 @@ uint32_t idle_disabled;
 #ifdef CONFIG_HOSTCMD_AP_SET_SKUID
 static uint32_t ap_sku_id;
 
-uint32_t system_get_sku_id(void)
-{
-	return ap_sku_id;
-}
-
 #define AP_SKUID_SYSJUMP_TAG		0x4153 /* AS */
 #define AP_SKUID_HOOK_VERSION		1
 
@@ -117,6 +112,20 @@ static void ap_sku_id_restore_state(void)
 }
 DECLARE_HOOK(HOOK_INIT, ap_sku_id_restore_state, HOOK_PRIO_DEFAULT);
 #endif
+
+__overridable uint32_t board_get_sku_id(void)
+{
+	return 0;
+}
+
+uint32_t system_get_sku_id(void)
+{
+#ifdef CONFIG_HOSTCMD_AP_SET_SKUID
+	return ap_sku_id;
+#else
+	return board_get_sku_id();
+#endif
+}
 
 /**
  * Return the program memory address where the image `copy` begins or should
