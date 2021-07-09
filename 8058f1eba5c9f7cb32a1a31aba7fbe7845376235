@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eb18c7b_3c1ece29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-07-09T18:47:44Z",
+      "side": 1,
+      "message": "I verified that get_snk_cap messages are no longer being sent and our partner noted improved performance, compared to before.",
+      "revId": "8058f1eba5c9f7cb32a1a31aba7fbe7845376235",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
