@@ -134,6 +134,24 @@
       "parentUuid": "6a7c7633_b4d445ea",
       "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82595bbc_c1b90e5a",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-09T15:26:18Z",
+      "side": 1,
+      "message": "I\u0027m referring to b/160253746 and this CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2282691\n\nSo you may expect to see problems interacting with servo when it switches from a source to a sink device, for example like FAFT tends to do.  You could probably run though something like FAFT setup to see if it looks like brya has the same issue zork did.",
+      "parentUuid": "39ec0de5_de709172",
+      "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
