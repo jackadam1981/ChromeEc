@@ -392,15 +392,21 @@ int board_get_temp(int idx, int *temp_k)
 		channel = ADC_TEMP_SENSOR_CHARGER;
 		break;
 	case TEMP_SENSOR_SOC:
-		/* thermistor is not powered in G3 */
-		if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+		/*
+		 * thermistor is not powered in G3
+		 * and will get abnormal value when get in S5
+		 */
+		if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 			return EC_ERROR_NOT_POWERED;
 
 		channel = ADC_TEMP_SENSOR_SOC;
 		break;
 	case TEMP_SENSOR_5V_REGULATOR:
-		/* thermistor is not powered in G3 */
-		if (chipset_in_state(CHIPSET_STATE_HARD_OFF))
+		/*
+		 * thermistor is not powered in G3
+		 * and will get abnormal value when get in S5
+		 */
+		if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 			return EC_ERROR_NOT_POWERED;
 
 		channel = ADC_TEMP_SENSOR_5V_REGULATOR;
