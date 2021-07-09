@@ -81,11 +81,13 @@ static void prochot_input_deferred(void)
 {
 	int prochot_in;
 
+#ifndef CONFIG_ZEPHYR
 	/*
 	 * Shouldn't be possible, but better to protect against buffer
 	 * overflow
 	 */
 	ASSERT(signal_is_gpio(gpio_prochot_in));
+#endif
 
 	prochot_in = gpio_get_level(gpio_prochot_in);
 
