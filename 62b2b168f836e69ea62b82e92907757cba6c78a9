@@ -717,6 +717,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "aead4280_232cc2db",
+        "filename": "include/config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T07:48:11Z",
+      "side": 1,
+      "message": "https://ee-schematics.teams.x20web.corp.google.com/monkey_island/guybrush/proto_0/reference/guybrush_proto_0_26322fce2b7714b91e81e1cfe6dfdc2cb1f6415b.html#page25,TP182\n\nINT2 is not connected to anything and neither is used on board. We can implement this later, as and when needed.",
+      "parentUuid": "42655d5d_0bf05d5f",
+      "range": {
+        "startLine": 247,
+        "startChar": 7,
+        "endLine": 247,
+        "endChar": 42
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "018c308c_82e79451",
         "filename": "zephyr/Kconfig.sensor_devices",
         "patchSetId": 15
