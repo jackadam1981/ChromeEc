@@ -16,6 +16,23 @@
       "message": "Thanks Keith for the quick response \u0026 review!",
       "revId": "da22f5d5eb7e7a808bb6cc577fe28317eb4ea8dc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11bd70b1_1b6e7cf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-09T03:57:43Z",
+      "side": 1,
+      "message": "The CQ error doesn\u0027t make sense to me as this patch shouldn\u0027t affect samus_pd image size.\n\nAnyway, I just merged another CL to squeeze more space for samus_pd:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3016411\n\nNow let\u0027s try to push in this CL again.",
+      "revId": "da22f5d5eb7e7a808bb6cc577fe28317eb4ea8dc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
