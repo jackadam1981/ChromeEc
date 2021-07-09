@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7aaef7b_abb3414e",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-09T22:43:12Z",
+      "side": 1,
+      "message": "nit: Please use IS_ENABLED. You can let the definition out of the #ifdef CONFIG_HOSTCMD_AP_SET_SKUID ... #endif:\n\n  80 static uint32_t ap_sku_id;\n  81 #ifdef CONFIG_HOSTCMD_AP_SET_SKUID",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "6062b1bbcbb8f69926961f23fb94690933dc515b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
