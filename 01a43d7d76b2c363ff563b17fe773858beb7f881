@@ -152,6 +152,24 @@
       "parentUuid": "39ec0de5_de709172",
       "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "470eacbe_d1fd2c12",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-09T22:50:46Z",
+      "side": 1,
+      "message": "I\u0027ve asked our partners to try FAFT PD with this change (+enabling the config flag for Brya), so far it looks OK. Do you recommend to try a full FAFT run?",
+      "parentUuid": "82595bbc_c1b90e5a",
+      "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
