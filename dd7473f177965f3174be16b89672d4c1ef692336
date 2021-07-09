@@ -46,6 +46,30 @@
       },
       "revId": "dd7473f177965f3174be16b89672d4c1ef692336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19f61609_c26f7629",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-09T13:57:59Z",
+      "side": 1,
+      "message": "That is too bad that this is not a common DTS entry. I would hate to break other devices and not sure I would suggest making all of them common.\n\nIf you do it the other way would you have to change other devices to add physical_port?",
+      "parentUuid": "7c911d69_097b66fb",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 70
+      },
+      "revId": "dd7473f177965f3174be16b89672d4c1ef692336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
