@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "368a98c7_04dfab19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-09T00:18:04Z",
+      "side": 1,
+      "message": "nit: Perhaps reference the exact TCPC. e.g. \"The NCT38xx TCPC ...\" But also, this is very specific to your board and it may be better suited for that commit. This can just describe the introduction of the flag.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "5b57a729bf4912e29c23761c09b844405456a2ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
