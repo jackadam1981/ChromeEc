@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cd81961_23989ccb",
+        "filename": "board/pirika/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-09T21:14:15Z",
+      "side": 1,
+      "message": "This option has a typo, it should be CONFIG_CPU_PROCHOT_ACTIVE_LOW (note the option should end in \u0027W\u0027).",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 36
+      },
+      "revId": "e32d244db05fc5fb4f2d3643418282c668d6fd45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
