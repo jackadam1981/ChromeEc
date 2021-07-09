@@ -22,6 +22,30 @@
       },
       "revId": "dd7473f177965f3174be16b89672d4c1ef692336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c911d69_097b66fb",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-07-09T10:00:06Z",
+      "side": 1,
+      "message": "Yes. Patch3 worked fine.\nBut property of port-num is applied to it8xxx2 only.",
+      "parentUuid": "ae57aa87_bbd196b1",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 70
+      },
+      "revId": "dd7473f177965f3174be16b89672d4c1ef692336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
