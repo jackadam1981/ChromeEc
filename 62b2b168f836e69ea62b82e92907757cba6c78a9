@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b0ab218_b422ed2a",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "706f9040_e4c96d14",
+      "range": {
+        "startLine": 65,
+        "startChar": 29,
+        "endLine": 65,
+        "endChar": 33
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "448b1bc2_291001d7",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-08T17:27:21Z",
       "side": 1,
       "message": "nit: could define an ORIENTATION_EN for this register",
+      "range": {
+        "startLine": 201,
+        "startChar": 17,
+        "endLine": 201,
+        "endChar": 21
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "523e67f7_7b6d54c9",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "448b1bc2_291001d7",
       "range": {
         "startLine": 201,
         "startChar": 17,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "22353532_df344cbd",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Yes, it does. Its referred to as Dummy bytes :)  Bosch has validated this as well.",
+      "parentUuid": "a36e4c32_11c4c296",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 23
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba6f98ec_5d2a1808",
@@ -87,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1b63d51_ae200630",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba6f98ec_5d2a1808",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2c41b74_23bf15ba",
@@ -100,6 +190,24 @@
       "writtenOn": "2021-07-08T17:27:21Z",
       "side": 1,
       "message": "nit: checkpatch should disallow comments on the first line of a multi-line block",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbf30f0f_2a8ae420",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b2c41b74_23bf15ba",
       "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -127,6 +235,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6211aab_af2b788a",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d0b3d1c_9a50e55e",
+      "range": {
+        "startLine": 626,
+        "startChar": 19,
+        "endLine": 626,
+        "endChar": 20
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d9912e3_c3fbeb58",
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5836b48c_fde415c3",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d9912e3_c3fbeb58",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baa38752_e9fdbce5",
@@ -157,6 +307,30 @@
       "writtenOn": "2021-07-08T17:27:21Z",
       "side": 1,
       "message": "ARRAY_SIZE() macro could be used here",
+      "range": {
+        "startLine": 1025,
+        "startChar": 14,
+        "endLine": 1025,
+        "endChar": 20
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be5515ce_761255fc",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1025,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "baa38752_e9fdbce5",
       "range": {
         "startLine": 1025,
         "startChar": 14,
@@ -192,6 +366,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e51cedb_4a80ea9d",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Latchia, can you please check this.",
+      "parentUuid": "399a6142_ee5b716d",
+      "range": {
+        "startLine": 1040,
+        "startChar": 26,
+        "endLine": 1040,
+        "endChar": 36
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9823675_46ff5ed3",
         "filename": "driver/accelgyro_bmi3xx.c",
         "patchSetId": 15
@@ -203,6 +401,24 @@
       "writtenOn": "2021-07-08T17:27:21Z",
       "side": 1,
       "message": "Should we leave the sensor in low power mode if the ODR is 0?",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "900aa614_b3ccf469",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Latchia, can you please check this.",
+      "parentUuid": "c9823675_46ff5ed3",
       "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -230,6 +446,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d545994b_89668fe9",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1172,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "This is from Bosch ref code. https://chromium.googlesource.com/chromiumos/platform/ec/+/master/driver/accelgyro_bmi160.c#570. \n\nSame is set in BMI160 and BMI260",
+      "parentUuid": "074e5577_7dffae87",
+      "range": {
+        "startLine": 1172,
+        "startChar": 18,
+        "endLine": 1172,
+        "endChar": 42
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e0a7f4a_927638aa",
@@ -243,6 +483,24 @@
       "writtenOn": "2021-07-08T17:27:21Z",
       "side": 1,
       "message": "What do these chip IDs represent?",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa57564f_a10ad495",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "This is not used. removed",
+      "parentUuid": "1e0a7f4a_927638aa",
       "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -266,6 +524,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9705c54f_1897bf75",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Latchia, can you please check this. He has access to internal datasheet.\n\nThis is also used in driver",
+      "parentUuid": "0703f5d1_d335200a",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "12c7f5a4_7c7b6399",
         "filename": "driver/accelgyro_bmi3xx.h",
         "patchSetId": 15
@@ -283,6 +559,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c2eb6aff_4c02f472",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Latchia, can you please check this. Latchia, can you please check this. He has access to internal datasheet.",
+      "parentUuid": "12c7f5a4_7c7b6399",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1b7b7d8d_256cca43",
         "filename": "driver/accelgyro_bmi3xx.h",
         "patchSetId": 15
@@ -294,6 +588,24 @@
       "writtenOn": "2021-07-08T17:27:21Z",
       "side": 1,
       "message": "Datasheet ends at 4 as the last option",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "732609e0_caae2963",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Latchia, can you please check this. Latchia, can you please check this. He has access to internal datasheet.",
+      "parentUuid": "1b7b7d8d_256cca43",
       "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -321,6 +633,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5699965e_dd174556",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39b4ada4_c4b4198a",
+      "range": {
+        "startLine": 122,
+        "startChar": 8,
+        "endLine": 122,
+        "endChar": 33
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f410d23_0cd4c0b8",
@@ -334,6 +670,24 @@
       "writtenOn": "2021-07-08T17:27:21Z",
       "side": 1,
       "message": "Couldn\u0027t find this one in the datasheet.  I was guessing it would be in IO_INT_CTRL like the ones above?",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc2c0f4_99f144af",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Latchia, can you please check this. Latchia, can you please check this. He has access to internal datasheet.",
+      "parentUuid": "4f410d23_0cd4c0b8",
       "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -374,6 +728,30 @@
       "writtenOn": "2021-07-08T17:27:21Z",
       "side": 1,
       "message": "Today, I finally learned what IMU stands for :D",
+      "range": {
+        "startLine": 77,
+        "startChar": 50,
+        "endLine": 78,
+        "endChar": 14
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a83407d_98f2d477",
+        "filename": "zephyr/Kconfig.sensor_devices",
+        "patchSetId": 15
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T02:45:04Z",
+      "side": 1,
+      "message": "Ha ha. Me too, learning a lot working on this driver",
+      "parentUuid": "018c308c_82e79451",
       "range": {
         "startLine": 77,
         "startChar": 50,
