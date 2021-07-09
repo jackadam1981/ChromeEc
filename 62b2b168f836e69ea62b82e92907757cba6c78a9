@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "41bf2df0_68168565",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-09T15:48:52Z",
+      "side": 1,
+      "message": "So should the parser expect to validate the sync bytes at the beginning of parsing?",
+      "parentUuid": "22353532_df344cbd",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 23
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba6f98ec_5d2a1808",
         "filename": "driver/accelgyro_bmi3xx.c",
         "patchSetId": 15
