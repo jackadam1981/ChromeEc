@@ -22,6 +22,47 @@
       },
       "revId": "b6b162ddb7588313a26a24ed8d501118b27589e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87da7d83_11c32e24",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T20:33:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "443350cd_85b39c7c",
+      "range": {
+        "startLine": 632,
+        "startChar": 9,
+        "endLine": 632,
+        "endChar": 11
+      },
+      "revId": "b6b162ddb7588313a26a24ed8d501118b27589e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee0de80_780abd86",
+        "filename": "include/config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T20:33:30Z",
+      "side": 1,
+      "message": "remove it",
+      "revId": "b6b162ddb7588313a26a24ed8d501118b27589e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

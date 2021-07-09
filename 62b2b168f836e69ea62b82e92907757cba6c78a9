@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb0f1d41_bbb2d7d1",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T20:33:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da4012db_a9744554",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 23
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba6f98ec_5d2a1808",
@@ -436,6 +460,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62f34c39_fffb2adf",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T20:33:30Z",
+      "side": 1,
+      "message": "Done by limiting loop to sens_size - 1.",
+      "parentUuid": "8e51cedb_4a80ea9d",
+      "range": {
+        "startLine": 1040,
+        "startChar": 26,
+        "endLine": 1040,
+        "endChar": 36
+      },
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9823675_46ff5ed3",
@@ -484,6 +532,24 @@
       "writtenOn": "2021-07-09T18:35:01Z",
       "side": 1,
       "message": "Yes I should remove the power mode related code in the set_range call.\n\nThus we need to have accelinit , accelrate  and then only we can read the sensor data, Thats fine right ?",
+      "parentUuid": "900aa614_b3ccf469",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3711fa_ad82773b",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T20:33:30Z",
+      "side": 1,
+      "message": "meeting notes: Lets remove it to match bmi260",
       "parentUuid": "900aa614_b3ccf469",
       "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -606,6 +672,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0303fbbf_47b2a6ab",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T20:33:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9705c54f_1897bf75",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12c7f5a4_7c7b6399",
@@ -641,6 +725,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a00fcca_78c8d8ed",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T20:33:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2eb6aff_4c02f472",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b7b7d8d_256cca43",
@@ -672,6 +774,24 @@
       "side": 1,
       "message": "Latchia, can you please check this. Latchia, can you please check this. He has access to internal datasheet.",
       "parentUuid": "1b7b7d8d_256cca43",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62fd7187_8fdee76e",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T20:33:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "732609e0_caae2963",
       "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -754,6 +874,24 @@
       "side": 1,
       "message": "Latchia, can you please check this. Latchia, can you please check this. He has access to internal datasheet.",
       "parentUuid": "4f410d23_0cd4c0b8",
+      "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bc8eb7c_b27514c2",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-09T20:33:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cc2c0f4_99f144af",
       "revId": "62b2b168f836e69ea62b82e92907757cba6c78a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
