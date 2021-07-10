@@ -22,6 +22,30 @@
       },
       "revId": "6062b1bbcbb8f69926961f23fb94690933dc515b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ebd1cc8_04e11f61",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-10T16:56:48Z",
+      "side": 1,
+      "message": "Done. One quick question: Why do we prefer IS_ENABLE to #ifdef?",
+      "parentUuid": "e7aaef7b_abb3414e",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "6062b1bbcbb8f69926961f23fb94690933dc515b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
