@@ -22,6 +22,30 @@
       },
       "revId": "fec2720da1750b0932399f82de2cdfe6077d3211",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b83db7a_a73cb9ca",
+        "filename": "zephyr/dts/bindings/emul/zephyr,bmi.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-12T12:01:48Z",
+      "side": 1,
+      "message": "Fixed description",
+      "parentUuid": "0f45ed11_d31c1f13",
+      "range": {
+        "startLine": 5,
+        "startChar": 13,
+        "endLine": 5,
+        "endChar": 42
+      },
+      "revId": "fec2720da1750b0932399f82de2cdfe6077d3211",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
