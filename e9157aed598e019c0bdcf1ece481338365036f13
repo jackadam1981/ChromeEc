@@ -16,6 +16,24 @@
       "message": "What about adding temp_mk_ptr to read:\n\nint (*read)(int idx, int *temp_k_ptr, int *temp_mk_ptr);\n\nYou don\u0027t have to change existing board.\nFor existing sensors, return 0 if temp_mk_ptr is requested. When reads with only K precision, don\u0027t even ask for mK.",
       "revId": "e9157aed598e019c0bdcf1ece481338365036f13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22fedd50_f2c0dee2",
+        "filename": "include/temp_sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-12T13:33:25Z",
+      "side": 1,
+      "message": "This may be simpler. I\u0027ll probably open a separate CL for better comparison. Returning 0 for temp_mk_ptr could be error prone. read is almost always called via temp_sensor_read in temp_sensor.c so the risk is limited.",
+      "parentUuid": "35e0d7c5_77dfd478",
+      "revId": "e9157aed598e019c0bdcf1ece481338365036f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
