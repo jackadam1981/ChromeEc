@@ -23,6 +23,13 @@
 
 LOG_MODULE_REGISTER(cros_shi, LOG_LEVEL_ERR);
 
+#define DEV_PINMUX     DEVICE_DT_GET(DT_PHANDLE \
+	(DT_NODELABEL(pinctrl_shi), pinctrls))
+#define DEV_PIN        DT_PHA(DT_PHANDLE_BY_IDX \
+	(DT_DRV_INST(0), pinctrl_0, 0), pinctrls, pin)
+#define DEV_ALT_FUNC   DT_PHA(DT_PHANDLE_BY_IDX \
+	(DT_DRV_INST(0), pinctrl_0, 0), pinctrls, alt_func)
+
 #define SPI_RX_MAX_FIFO_SIZE 256
 #define SPI_TX_MAX_FIFO_SIZE 256
 
@@ -320,12 +327,8 @@ static int cros_shi_ite_init(const struct device *dev)
 	/* SPI slave controller enable (after settings are ready) */
 	IT83XX_SPI_SPISGCR = IT83XX_SPI_SPISCEN;
 
-#if DT_NODE_HAS_STATUS(DT_NODELABEL(pinmuxm), okay)
-	const struct device *portm = DEVICE_DT_GET(DT_NODELABEL(pinmuxm));
-
 	/* Ensure spi chip select alt function is enabled. */
-	pinmux_pin_set(portm, 5, IT8XXX2_PINMUX_FUNC_1);
-#endif
+	pinmux_pin_set(DEV_PINMUX, DEV_PIN, DEV_ALT_FUNC);
 
 	/* Enable SPI slave interrupt */
 	IRQ_CONNECT(DT_INST_IRQN(0), 0, shi_ite_int_handler, 0, 0);
