@@ -70,6 +70,30 @@
       },
       "revId": "6062b1bbcbb8f69926961f23fb94690933dc515b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea1849c_7aa4b8da",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-12T16:42:38Z",
+      "side": 1,
+      "message": "I see. Thanks for the explanation!",
+      "parentUuid": "007794e1_e2ac3c6a",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "6062b1bbcbb8f69926961f23fb94690933dc515b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
