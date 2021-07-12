@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39fe044_72cf80a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-12T17:06:36Z",
+      "side": 1,
+      "message": "I\u0027m not actually sure this change is necessary or the direction we want to go.\n\nWhy not just create a new project directory (volteer_chre) for this which has CONFIG_CHRE\u003dy in the prj.conf?",
+      "revId": "b4f10dd4ecd05a64c6b381661604f5037d678bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adcb658e_16c94d4e",
