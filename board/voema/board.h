@@ -44,6 +44,9 @@
 /* Sensors */
 /* BMA253 accelerometer in base */
 #define CONFIG_ACCEL_BMA255
+#define CONFIG_ACCELGYRO_ICM426XX
+#define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 #define CONFIG_ACCEL_KX022
 
 /* TCS3400 ALS */
@@ -177,6 +180,7 @@ enum sensor_id {
 	BASE_ACCEL,
 	CLEAR_ALS,
 	RGB_ALS,
+	BASE_GYRO,
 	SENSOR_COUNT,
 };
 
@@ -187,6 +191,7 @@ enum usbc_port {
 };
 
 void board_reset_pd_mcu(void);
+void motion_interrupt(enum gpio_signal signal);
 
 extern const int keyboard_factory_scan_pins[][2];
 extern const int keyboard_factory_scan_pins_used;
