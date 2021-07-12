@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "481b05eb_938ad607",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1506,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-12T21:21:25Z",
+      "side": 1,
+      "message": "Rob, I uploaded PS6, which upgrades EC_CMD_GET_VERSION.",
+      "parentUuid": "24d3d7ff_0c10fe6b",
+      "range": {
+        "startLine": 1506,
+        "startChar": 21,
+        "endLine": 1506,
+        "endChar": 41
+      },
+      "revId": "306216dc6cbaca3c955152eb0a25095f835c5f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e1cfcd82_69c0fc6d",
         "filename": "util/ectool.c",
         "patchSetId": 3

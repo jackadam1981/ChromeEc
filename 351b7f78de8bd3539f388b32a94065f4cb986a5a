@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b138a00_2163dcd1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-12T21:21:25Z",
+      "side": 1,
+      "message": "Do we need the date field? Since the field allocated for cros_fwid is 32 bytes, we can\u0027t use a long board name and we can\u0027t use the sub-minor version.\n\nI think the date field is redundant. How about the following?\n\n  * board_name: 16\n  * _: 1\n  * major: 6\n  * .: 1\n  * minor: 3\n  * .: 1\n  * sub-minor: 3\n  * \\0: 1\n\nThe board name field is also redundant but not always, I think because we sometimes use a fw image named baseboard for a variant.",
+      "range": {
+        "startLine": 19,
+        "startChar": 41,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9d114d8_3df002a8",
+        "filename": "board/oak/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-12T21:21:25Z",
+      "side": 1,
+      "message": "What\u0027s wrong with Oak? If it\u0027s a space issue, can you remove some console commands, instead?",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f3dfd4_bf6c2c97",
+        "filename": "include/cros_version.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-12T21:21:25Z",
+      "side": 1,
+      "message": "This isn\u0027t wrapped by CONFIG_CROS_FWID_VERSION. Would the code not defining it work ok? I see some sizeof(struct image_data) in a few places.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
