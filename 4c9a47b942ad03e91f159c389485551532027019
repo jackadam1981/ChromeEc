@@ -16,6 +16,24 @@
       "message": "Could we instead add a shim implementation for signal_is_gpio() that returns true?",
       "revId": "4c9a47b942ad03e91f159c389485551532027019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6df9e17_d07f5c41",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-07-12T09:54:53Z",
+      "side": 1,
+      "message": "Yeah good point.",
+      "parentUuid": "f9201451_9c75ac86",
+      "revId": "4c9a47b942ad03e91f159c389485551532027019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
