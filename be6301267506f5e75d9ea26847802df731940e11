@@ -33,6 +33,75 @@
       "message": "Friendly ping.",
       "revId": "be6301267506f5e75d9ea26847802df731940e11",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26908206_c6203002",
+        "filename": "board/redrix/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-12T23:44:48Z",
+      "side": 1,
+      "message": "no space in the name.",
+      "range": {
+        "startLine": 63,
+        "startChar": 16,
+        "endLine": 63,
+        "endChar": 17
+      },
+      "revId": "be6301267506f5e75d9ea26847802df731940e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32b844e0_420d9c2d",
+        "filename": "board/redrix/i2c.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-12T23:44:48Z",
+      "side": 1,
+      "message": "suggest starting with 400KHz until you have verified your board\ncan do 1MHz.",
+      "range": {
+        "startLine": 65,
+        "startChar": 10,
+        "endLine": 65,
+        "endChar": 14
+      },
+      "revId": "be6301267506f5e75d9ea26847802df731940e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e43c5c_d04816a9",
+        "filename": "board/redrix/usbc_config.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-12T23:44:48Z",
+      "side": 1,
+      "message": "please open a bug to check timing on redrix.",
+      "range": {
+        "startLine": 186,
+        "startChar": 11,
+        "endLine": 186,
+        "endChar": 20
+      },
+      "revId": "be6301267506f5e75d9ea26847802df731940e11",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
