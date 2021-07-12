@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc7af88_17047935",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-12T16:39:40Z",
+      "side": 1,
+      "message": "Is this comment accurate?  I don\u0027t really know python so I might just not understand this code.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 66
+      },
+      "revId": "b4f10dd4ecd05a64c6b381661604f5037d678bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35fed2b1_e39626ad",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-12T16:39:40Z",
+      "side": 1,
+      "message": "I think this is clearer if specify this adds a Kconfig file to the build.",
+      "range": {
+        "startLine": 111,
+        "startChar": 33,
+        "endLine": 111,
+        "endChar": 62
+      },
+      "revId": "b4f10dd4ecd05a64c6b381661604f5037d678bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
