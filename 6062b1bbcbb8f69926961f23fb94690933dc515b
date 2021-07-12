@@ -46,6 +46,30 @@
       },
       "revId": "6062b1bbcbb8f69926961f23fb94690933dc515b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "007794e1_e2ac3c6a",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-12T16:37:13Z",
+      "side": 1,
+      "message": "It allows indentation, which makes the code a little more readable. Additionally, you don\u0027t need to wrap static variables or functions to avoid \"unused-static-variable-or-function\" errors. AFAIK, there is no disadvantage. Hence, it\u0027s used in the repo as much as possible.",
+      "parentUuid": "9ebd1cc8_04e11f61",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "6062b1bbcbb8f69926961f23fb94690933dc515b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
