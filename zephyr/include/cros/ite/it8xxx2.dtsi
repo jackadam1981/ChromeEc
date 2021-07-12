@@ -56,6 +56,10 @@
 			label = "SHI";
 			interrupts = <171 0>;
 			interrupt-parent = <&intc>;
+			pinctrl-0 = <&pinctrl_shi0   /* GPM0 */
+				     &pinctrl_shi1   /* GPM1 */
+				     &pinctrl_shi2   /* GPM4 */
+				     &pinctrl_shi3>; /* GPM5 */
 		};
 
 		fiu0: cros-flash@80000000 {
