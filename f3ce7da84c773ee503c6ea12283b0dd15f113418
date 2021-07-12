@@ -24,6 +24,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca9c160_10d0e37f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-12T18:34:18Z",
+      "side": 1,
+      "message": "Please verify the board with BM253 still work.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "f3ce7da84c773ee503c6ea12283b0dd15f113418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "feb0ed2e_5138b72a",
@@ -59,6 +82,29 @@
         "startChar": 7,
         "endLine": 628,
         "endChar": 28
+      },
+      "revId": "f3ce7da84c773ee503c6ea12283b0dd15f113418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe3a17b5_ad9795e3",
+        "filename": "board/pompom/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-12T18:34:18Z",
+      "side": 1,
+      "message": "Better to check the LIS2DWL is probable. If not, you can still assign it to the LIS2DWL setting but show an error.",
+      "range": {
+        "startLine": 630,
+        "startChar": 30,
+        "endLine": 630,
+        "endChar": 47
       },
       "revId": "f3ce7da84c773ee503c6ea12283b0dd15f113418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
