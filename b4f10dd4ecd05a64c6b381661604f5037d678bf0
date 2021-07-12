@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "adcb658e_16c94d4e",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-12T17:04:43Z",
+      "side": 1,
+      "message": "zmake uses pytest, please use it (not unittest)",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 37
+      },
+      "revId": "b4f10dd4ecd05a64c6b381661604f5037d678bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cc7af88_17047935",
         "filename": "zephyr/zmake/tests/test_zmake.py",
         "patchSetId": 2
