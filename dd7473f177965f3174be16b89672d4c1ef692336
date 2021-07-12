@@ -94,6 +94,30 @@
       },
       "revId": "dd7473f177965f3174be16b89672d4c1ef692336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49fe3fb4_017b38a7",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-12T15:25:22Z",
+      "side": 1,
+      "message": "It is still too bad i2c-port was not defined in a consistent way but this does solve the issue of not needing to add another field that really should not be needed.  I am OK with this.",
+      "parentUuid": "b4d43abe_6c49ad4f",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 70
+      },
+      "revId": "dd7473f177965f3174be16b89672d4c1ef692336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
