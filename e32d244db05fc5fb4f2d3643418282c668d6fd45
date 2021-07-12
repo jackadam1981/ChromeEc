@@ -22,6 +22,30 @@
       },
       "revId": "e32d244db05fc5fb4f2d3643418282c668d6fd45",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad528680_3d3f4025",
+        "filename": "board/pirika/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1477142
+      },
+      "writtenOn": "2021-07-12T10:14:20Z",
+      "side": 1,
+      "message": "Created a new CL to remove #define CONFIG_CPU_PROCHOT_ACTIVE_LO because #define CONFIG_CPU_PROCHOT_ACTIVE_LOW has been defined in /baseboard/dedede/baseboard.h.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3020306",
+      "parentUuid": "9cd81961_23989ccb",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 83,
+        "endChar": 36
+      },
+      "revId": "e32d244db05fc5fb4f2d3643418282c668d6fd45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
