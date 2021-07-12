@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33b9e2c5_51c0d0ff",
+        "filename": "board/copano/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2021-07-12T04:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0abcfa1_06b3435b",
+      "range": {
+        "startLine": 30,
+        "startChar": 3,
+        "endLine": 30,
+        "endChar": 9
+      },
+      "revId": "4a431f99f3ec54b20a0029f68acf67844fffd027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6721c139_ac1bb36d",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-12T03:03:37Z",
       "side": 1,
       "message": "insert new line",
+      "revId": "4a431f99f3ec54b20a0029f68acf67844fffd027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a834fafb_a7caee5b",
+        "filename": "board/copano/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1461467
+      },
+      "writtenOn": "2021-07-12T04:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6721c139_ac1bb36d",
       "revId": "4a431f99f3ec54b20a0029f68acf67844fffd027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
