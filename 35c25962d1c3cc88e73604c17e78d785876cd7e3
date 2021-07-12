@@ -68,6 +68,30 @@
       },
       "revId": "35c25962d1c3cc88e73604c17e78d785876cd7e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ba77ba1_7bf27e0e",
+        "filename": "board/berknip/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-07-12T06:53:53Z",
+      "side": 1,
+      "message": "I upload patch 2, to ignore adc temperature reading when transition/in S5.",
+      "parentUuid": "1f327e78_35049707",
+      "range": {
+        "startLine": 418,
+        "startChar": 1,
+        "endLine": 420,
+        "endChar": 24
+      },
+      "revId": "35c25962d1c3cc88e73604c17e78d785876cd7e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
