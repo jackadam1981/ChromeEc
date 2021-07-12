@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbff11c_a05469f7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-12T18:28:31Z",
+      "side": 1,
+      "message": "Please don\u0027t mention about any schedule and business decision in a public CL. You can post the background in the private bug so the reviewers know the reason.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "f3ce7da84c773ee503c6ea12283b0dd15f113418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "feb0ed2e_5138b72a",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-07-12T01:11:39Z",
       "side": 1,
       "message": "This change will verify after we get the sample and rework.",
+      "revId": "f3ce7da84c773ee503c6ea12283b0dd15f113418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b660c72b_df39ee56",
+        "filename": "board/pompom/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-12T18:28:31Z",
+      "side": 1,
+      "message": "The detection happens in S5. Is the sensor powered in S5?",
+      "range": {
+        "startLine": 627,
+        "startChar": 7,
+        "endLine": 628,
+        "endChar": 28
+      },
       "revId": "f3ce7da84c773ee503c6ea12283b0dd15f113418",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
