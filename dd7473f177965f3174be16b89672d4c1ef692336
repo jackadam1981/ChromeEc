@@ -70,6 +70,30 @@
       },
       "revId": "dd7473f177965f3174be16b89672d4c1ef692336",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4d43abe_6c49ad4f",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-07-12T10:05:44Z",
+      "side": 1,
+      "message": "Patch4 is a draft which won\u0027t break boards that are not implemented physical_port.  And it also makes mutex_lock in i2c_lock works under the situation where two or more i2c devices are connected to the same i2c port.\nWhat do you think?",
+      "parentUuid": "19f61609_c26f7629",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 70
+      },
+      "revId": "dd7473f177965f3174be16b89672d4c1ef692336",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
