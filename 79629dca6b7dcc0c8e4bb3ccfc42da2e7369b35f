@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7ec3abb_99aec4a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-12T20:01:29Z",
+      "side": 1,
+      "message": "overall looks good, just need to add more files",
+      "revId": "79629dca6b7dcc0c8e4bb3ccfc42da2e7369b35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d415096f_bae970e3",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-12T20:01:29Z",
+      "side": 1,
+      "message": "we also need to add board/cr50/u2f.c and third_party/cryptoc",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "79629dca6b7dcc0c8e4bb3ccfc42da2e7369b35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
