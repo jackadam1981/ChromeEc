@@ -44,6 +44,11 @@
 /* Sensors */
 /* BMA253 accelerometer in base */
 #define CONFIG_ACCEL_BMA255
+#ifndef BOARD_VOEMA_NPCX796FC
+#define CONFIG_ACCELGYRO_ICM426XX
+#define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+#endif
 #define CONFIG_ACCEL_KX022
 
 /* TCS3400 ALS */
@@ -175,6 +180,9 @@ enum pwm_channel {
 enum sensor_id {
 	LID_ACCEL = 0,
 	BASE_ACCEL,
+#ifndef BOARD_VOEMA_NPCX796FC
+	BASE_GYRO,
+#endif
 	CLEAR_ALS,
 	RGB_ALS,
 	SENSOR_COUNT,
@@ -187,6 +195,9 @@ enum usbc_port {
 };
 
 void board_reset_pd_mcu(void);
+#ifndef BOARD_VOEMA_NPCX796FC
+void motion_interrupt(enum gpio_signal signal);
+#endif
 
 extern const int keyboard_factory_scan_pins[][2];
 extern const int keyboard_factory_scan_pins_used;
