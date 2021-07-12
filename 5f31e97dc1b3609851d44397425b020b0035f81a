@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d83614d_3c1d299a",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-12T06:40:29Z",
+      "side": 1,
+      "message": "The problem is crgb_data[2] + crgb_data[1] can be greater than 1 \u003c\u003c 16, but I assume crgb_data[2] and crgb_data[1] are each less than 1 \u003c\u003c 16.\n\nIn that case, we can do n_interval \u003d FP_DIV(INT_TO_FP(crgb_data[2]), INT_TO_FP(crgb_data[0])) + FP_DIV(INT_TO_FP(crgb_data[1]), INT_TO_FP(crgb_data[0]))\n\nGiven we save 15 bits after the decimal point, dividing before addition is not as bad with fp_t as it is with integer.\nSee if it can help below.",
+      "revId": "5f31e97dc1b3609851d44397425b020b0035f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d868ca8e_01435454",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-12T06:40:29Z",
+      "side": 1,
+      "message": "It won\u0027t work if fp_t is a real float.",
+      "revId": "5f31e97dc1b3609851d44397425b020b0035f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34bb5511_97ce95bb",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-12T06:40:29Z",
+      "side": 1,
+      "message": "won\u0027t work when EC support floats.",
+      "revId": "5f31e97dc1b3609851d44397425b020b0035f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
