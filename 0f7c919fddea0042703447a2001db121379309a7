@@ -100,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34caafdf_ca2af39d",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-12T22:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73319665_655d0fe8",
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a737be1_9f518aab",
@@ -313,6 +331,24 @@
       "writtenOn": "2021-06-02T23:02:06Z",
       "side": 1,
       "message": "Would the interrupt have cleared on the read of int_reg earlier?",
+      "revId": "0f7c919fddea0042703447a2001db121379309a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ecc0427_523e0ae1",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-12T22:21:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe217152_75d2c5f3",
       "revId": "0f7c919fddea0042703447a2001db121379309a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
