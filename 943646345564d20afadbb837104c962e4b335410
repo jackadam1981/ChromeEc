@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a112633b_41443eee",
+        "filename": "board/homestar/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330491
+      },
+      "writtenOn": "2021-07-13T02:33:34Z",
+      "side": 0,
+      "message": "as we know it should be used for WLC on Coachz，Homestar has no this keypart.\nor is there any others device for attached on EC will used this flag on Homestar, i am not quite sure on this. IIUC, it can be remove, otherwise, just keep it.",
+      "parentUuid": "3e5341ce_306ffb93",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "943646345564d20afadbb837104c962e4b335410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b72b8aa6_55e04183",
         "filename": "board/homestar/board.h",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-12T21:05:30Z",
       "side": 0,
       "message": "Why remove the CONFIG_GMR_TABLET_MODE? a separated CL?",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 30
+      },
+      "revId": "943646345564d20afadbb837104c962e4b335410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7211b5e7_68c1bdb1",
+        "filename": "board/homestar/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1330491
+      },
+      "writtenOn": "2021-07-13T02:33:34Z",
+      "side": 0,
+      "message": "ya, will separate a new CL and re-base this.",
+      "parentUuid": "b72b8aa6_55e04183",
       "range": {
         "startLine": 66,
         "startChar": 8,
