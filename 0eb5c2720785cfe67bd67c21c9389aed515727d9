@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f66fdcc6_af7ae2ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T19:04:44Z",
+      "side": 1,
+      "message": "Mostly nits on the naming.  But there is one bug for the I2C4 alternate signal setup.",
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c7d8f19_12898f09",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T19:04:44Z",
+      "side": 1,
+      "message": "CHG_ACOK_OD",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14b1ff0a_6322a889",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T19:04:44Z",
+      "side": 1,
+      "message": "MB_POWER_GOOD",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8e632c0_0e90db36",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T19:04:44Z",
+      "side": 1,
+      "message": "AP_EC_INT_L",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f8b2e3d_1e50ff1f",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T19:04:44Z",
+      "side": 1,
+      "message": "TP_INT_GATE",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9916387f_d131e0fc",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T19:04:44Z",
+      "side": 1,
+      "message": "DP_HOT_PLUG_DET_R",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "883c1598_91747179",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T19:04:44Z",
+      "side": 1,
+      "message": "These shouldn\u0027t be needed.  The signals are only ever used as PWM.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 0
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02876510_4699febf",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T19:04:44Z",
+      "side": 1,
+      "message": "Not needed - signals are only used for ADC function.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "761d4f14_0f016224",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T19:04:44Z",
+      "side": 1,
+      "message": "Group should be F",
+      "range": {
+        "startLine": 164,
+        "startChar": 19,
+        "endLine": 164,
+        "endChar": 20
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
