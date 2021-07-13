@@ -85,6 +85,70 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6038969_3940619e",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-13T20:14:54Z",
+      "side": 1,
+      "message": "It looks like this is populating the whole ANA_EN_REG1 register, so I\u0027d guess ANA_EN_REG1_INIT_3S?",
+      "parentUuid": "b4faa4d7_e9815646",
+      "range": {
+        "startLine": 510,
+        "startChar": 3,
+        "endLine": 510,
+        "endChar": 4
+      },
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4b3efaf_17beb671",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-13T20:14:54Z",
+      "side": 1,
+      "message": "Should just write here.  No need to or in any previous bits since the threshold takes up the whole register",
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02d6a9c4_fd6f6598",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-13T20:14:54Z",
+      "side": 1,
+      "message": "Add a register define if we don\u0027t already have one.  We tend to allow a lot of magic numbers in the \"init\" sections since that\u0027s how we receive our inits and it makes update deltas easy to see, but we usually have defines set for registers elsewhere.",
+      "range": {
+        "startLine": 1145,
+        "startChar": 35,
+        "endLine": 1145,
+        "endChar": 39
+      },
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba302a13_51b8fb5e",
         "filename": "driver/charger/sm5803.h",
         "patchSetId": 3
