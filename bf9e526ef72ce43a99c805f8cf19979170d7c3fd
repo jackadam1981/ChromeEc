@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0b87e9f_47d46598",
+        "filename": "board/redrix/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-07-13T08:21:29Z",
+      "side": 1,
+      "message": "Need set GPIO73/TA2 to ALT function.",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 9
+      },
+      "revId": "bf9e526ef72ce43a99c805f8cf19979170d7c3fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
