@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "16b82baf_ff36b5a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-13T21:58:18Z",
+      "side": 1,
+      "message": "Can we go back to this comment:\n\n\u003e I\u0027m not actually sure this change is necessary or the direction we want to go.\n\u003e \n\u003e Why not just create a new project directory (volteer_chre) for this which has CONFIG_CHRE\u003dy in the prj.conf?\n\nI still think making a volteer_chre project is the cleanest way to do it",
+      "parentUuid": "e39fe044_72cf80a7",
+      "revId": "b4f10dd4ecd05a64c6b381661604f5037d678bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adcb658e_16c94d4e",
         "filename": "zephyr/zmake/tests/test_zmake.py",
         "patchSetId": 2
