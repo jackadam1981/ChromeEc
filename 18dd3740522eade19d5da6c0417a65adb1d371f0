@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13d15ab4_3186d7e0",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2969,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-13T20:40:12Z",
+      "side": 1,
+      "message": "As we discussed on chat, TC_TIMER_CC_DEBOUNCE would likely be better to use since TC_TIMER_TIMEOUT is being used for hard reset transitions within this state",
+      "revId": "18dd3740522eade19d5da6c0417a65adb1d371f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bb6590a_33b0371a",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3062,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-13T20:40:12Z",
+      "side": 1,
+      "message": "We could probably enable the timer for all connection paths, with a quote from the TCPCI spec as to why we\u0027re adding this debounce (since it\u0027s outside the usual Type-C spec dictated debounces we do)",
+      "revId": "18dd3740522eade19d5da6c0417a65adb1d371f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
