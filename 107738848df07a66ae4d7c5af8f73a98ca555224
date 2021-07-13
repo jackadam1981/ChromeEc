@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcbef384_cb045c7d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-07-13T08:33:40Z",
+      "side": 1,
+      "message": "Hi,\n  We found that this CL will break the hibernation and deep sleep behavior.\nI creates an issue to track it:\nhttps://partnerissuetracker.corp.google.com/u/3/issues/193482737\nCould you help to take a look at it?",
+      "revId": "107738848df07a66ae4d7c5af8f73a98ca555224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
