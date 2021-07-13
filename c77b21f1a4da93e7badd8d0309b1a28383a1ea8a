@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a1d9a91_c8e1b254",
+        "filename": "board/herobrine_npcx9/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T19:08:46Z",
+      "side": 1,
+      "message": "Normally I would insist on declared initialization (.name \u003d \"power\", .port \u003d I2C_PORT_POWER, etc).  Since this file is hopefully short lived and not used by Zephyr builds, it\u0027s fine.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 0
+      },
+      "revId": "c77b21f1a4da93e7badd8d0309b1a28383a1ea8a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
