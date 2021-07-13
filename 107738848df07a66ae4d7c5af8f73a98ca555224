@@ -34,6 +34,24 @@
       "parentUuid": "bcbef384_cb045c7d",
       "revId": "107738848df07a66ae4d7c5af8f73a98ca555224",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd1cb98_9037d486",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-13T13:21:02Z",
+      "side": 1,
+      "message": "Can you verify if this fix work for you?\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3024264",
+      "parentUuid": "47baa7d7_608fba70",
+      "revId": "107738848df07a66ae4d7c5af8f73a98ca555224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
