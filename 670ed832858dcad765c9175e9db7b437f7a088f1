@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9675cbd7_c32e8fc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377776
+      },
+      "writtenOn": "2021-07-13T07:15:06Z",
+      "side": 1,
+      "message": "Hi Udaya, the code is OK, please uase different word instead of VBUS (see comments)",
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4fb442f_a09c28a4",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1377776
+      },
+      "writtenOn": "2021-07-13T07:15:06Z",
+      "side": 1,
+      "message": "VBUS word is misleading.",
+      "range": {
+        "startLine": 510,
+        "startChar": 3,
+        "endLine": 510,
+        "endChar": 4
+      },
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba302a13_51b8fb5e",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1377776
+      },
+      "writtenOn": "2021-07-13T07:15:06Z",
+      "side": 1,
+      "message": "I would not use the word VBUS it is misleading.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 43
+      },
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
