@@ -218,5 +218,7 @@ enum pwm_channel {
 
 void board_reset_pd_mcu(void);
 
+void usb_a0_interrupt(enum gpio_signal signal);
+
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BASEBOARD_H */
