@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e653ef_7eea0c6f",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-13T02:20:48Z",
+      "side": 1,
+      "message": "GYRO is a \"must\" requirement for the convertible device and the SSFC is for the second source. So, i would suggest to put the icm426xx setting here by default and switch the setting based on the different board version in baseboard_sensors_init() and motion_interrupt()",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 3
+      },
+      "revId": "9770f911b9809de7ba4ae456f33ff8e4d4279a45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
