@@ -2964,6 +2964,10 @@ static void tc_attached_src_entry(const int port)
 			/* Apply Rp */
 			typec_update_cc(port);
 
+			pd_timer_enable(port,
+					TC_TIMER_TIMEOUT,
+					PD_T_SRC_DISCONNECT);
+
 			/*
 			 * Maintain VCONN supply state, whether ON or OFF, and
 			 * its data role / usb mux connections. Do not
@@ -3054,6 +3058,8 @@ static void tc_attached_src_entry(const int port)
 
 		/* Apply Rp */
 		typec_update_cc(port);
+
+		pd_timer_enable(port, TC_TIMER_TIMEOUT, PD_T_SRC_DISCONNECT);
 	}
 
 	/* Inform PPC and OCP module that a sink is connected. */
@@ -3102,10 +3108,13 @@ static void tc_attached_src_run(const int port)
 	 * AttachWait.SNK shall enter TryWait.SNK for a Sink detach from
 	 * Attached.SRC.
 	 */
-	if (tc[port].cc_state == PD_CC_NONE &&
-			!TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS)) {
+	if (tc[port].cc_state == PD_CC_NONE) {
 		bool tryWait;
 		enum usb_tc_state new_tc_state = TC_UNATTACHED_SNK;
+
+		if (!pd_timer_is_expired(port, TC_TIMER_TIMEOUT) &&
+		    TC_CHK_FLAG(port, TC_FLAGS_PR_SWAP_IN_PROGRESS))
+			return;
 
 		if (IS_ENABLED(CONFIG_USB_PD_TRY_SRC))
 			tryWait = is_try_src_enabled(port) &&
