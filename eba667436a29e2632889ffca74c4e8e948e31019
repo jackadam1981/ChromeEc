@@ -34,6 +34,24 @@
       "parentUuid": "18bebbe4_90e7ee64",
       "revId": "eba667436a29e2632889ffca74c4e8e948e31019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b5fcd2_0b29be9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-13T19:02:34Z",
+      "side": 1,
+      "message": "This is building for now with the zephyr toolchain which is enough to commit and start building on. We can move to the default coreboot-sdk when it finishes migration to v11",
+      "parentUuid": "0eb61fe7_ff639c45",
+      "revId": "eba667436a29e2632889ffca74c4e8e948e31019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
