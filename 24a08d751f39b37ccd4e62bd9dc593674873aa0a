@@ -105,6 +105,24 @@
       "parentUuid": "33f622cc_cfbbf7d7",
       "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2324e101_d6adcef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-07-13T18:15:55Z",
+      "side": 1,
+      "message": "When a variant converts symlink into files for variant specific changes, won\u0027t there be a conflict if the files are in baseboard directory as well?",
+      "parentUuid": "89d6fd19_5cec3a57",
+      "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
