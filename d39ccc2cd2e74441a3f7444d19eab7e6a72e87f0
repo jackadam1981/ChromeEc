@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52891859_3b83a2c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-13T23:11:55Z",
+      "side": 1,
+      "message": "Firstly I feel we should hold off on CHRE for now. It isn\u0027t really needed until next year and right now we need to make sure that herobrine is successful. The second priority would be emulators and making that successful.\n\nAs to the CL I can see it both ways. I wonder if we could pick a board to move over to CHRE (like volteer?) and just do it? But in the meantime this approach seem reasonable.",
+      "revId": "d39ccc2cd2e74441a3f7444d19eab7e6a72e87f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
