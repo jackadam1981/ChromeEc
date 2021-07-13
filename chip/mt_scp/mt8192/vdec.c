@@ -51,6 +51,13 @@ void vdec_msg_handler(void *data) {}
 void vdec_core_msg_handler(void *data) {}
 #endif
 
+int vdec_get_capability(void)
+{
+	return VDEC_CAP_MM21 | VDEC_CAP_H264_SLICE |
+		VCODEC_CAPABILITY_4K_DISABLED |
+		VDEC_CAP_VP8_FRAME | VDEC_CAP_VP9_FRAME;
+}
+
 static void vdec_h264_ipi_handler(int id, void *data, uint32_t len)
 {
 	struct vdec_msg rsv_msg;
