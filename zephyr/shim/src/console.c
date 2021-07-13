@@ -225,7 +225,12 @@ void uart_write_char(char c)
 
 void uart_flush_output(void)
 {
+	const struct device *dev =
+		device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME);
+
 	shell_process(shell_zephyr);
+	while (!uart_irq_tx_complete(dev))
+		;
 }
 
 void uart_tx_flush(void)
