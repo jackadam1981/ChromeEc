@@ -16,6 +16,23 @@
       "message": "I made sure the build is working correctly with these changes. I am not sure if there are any tests that I need to run.",
       "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75b035d9_c583d606",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-07-13T00:48:41Z",
+      "side": 1,
+      "message": "Instead of copying the same files all over the place -- perhaps we can use symbolic link for now then make a real copy when the variant specific change is needed?\n ",
+      "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
