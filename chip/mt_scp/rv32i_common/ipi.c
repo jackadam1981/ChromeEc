@@ -29,6 +29,13 @@ static struct ipc_shared_obj *const ipi_recv_buf =
 
 static uint32_t disable_irq_count, saved_int_mask;
 
+#ifndef HAVE_PRIVATE_MT_SCP
+int vdec_get_capability(void)
+{
+	return 0;
+}
+#endif
+
 void ipi_disable_irq(void)
 {
 	if (atomic_read_add(&disable_irq_count, 1) == 0)
@@ -128,8 +135,7 @@ static void ipi_enable_deferred(void)
 	scp_run.signaled = 1;
 	strncpy(scp_run.fw_ver, system_get_version(EC_IMAGE_RW),
 		SCP_FW_VERSION_LEN);
-	scp_run.dec_capability = VCODEC_CAPABILITY_4K_DISABLED | VDEC_CAP_MM21 | VDEC_CAP_H264_SLICE |
-				 VDEC_CAP_VP8_FRAME | VDEC_CAP_VP9_FRAME;
+	scp_run.dec_capability = vdec_get_capability();
 	scp_run.enc_capability = VENC_CAP_4K;
 
 	ret = ipi_send(SCP_IPI_INIT, (void *)&scp_run, sizeof(scp_run), 1);

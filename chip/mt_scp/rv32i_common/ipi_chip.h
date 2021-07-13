@@ -74,6 +74,9 @@ void ipi_disable_irq(void);
 /* Enable IPI IRQ. */
 void ipi_enable_irq(void);
 
+/* Get decoder capability. */
+int vdec_get_capability(void);
+
 /* IPI tables */
 extern void (*const ipi_handler_table[])(int32_t, void *, uint32_t);
 extern int *const ipi_wakeup_table[];
