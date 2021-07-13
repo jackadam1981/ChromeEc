@@ -170,6 +170,24 @@
       "parentUuid": "82595bbc_c1b90e5a",
       "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcdad54a_cd7026a2",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-13T00:58:19Z",
+      "side": 1,
+      "message": "If FAFT PD passes, that seems like a pretty sufficient smoke test.",
+      "parentUuid": "470eacbe_d1fd2c12",
+      "revId": "01a43d7d76b2c363ff563b17fe773858beb7f881",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
