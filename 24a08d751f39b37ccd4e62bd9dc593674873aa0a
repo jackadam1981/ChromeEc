@@ -123,6 +123,24 @@
       "parentUuid": "89d6fd19_5cec3a57",
       "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f14b06_a3d6643e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-07-13T19:04:56Z",
+      "side": 1,
+      "message": "I don\u0027t think so, the files in baseboard will not be used (i.e. being pulled-in by makefile), the sym-links (or copies) in variants will be used instead?",
+      "parentUuid": "2324e101_d6adcef8",
+      "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
