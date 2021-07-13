@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e950cd12_564a2492",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2021-07-13T01:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acbff11c_a05469f7",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 62
+      },
+      "revId": "f3ce7da84c773ee503c6ea12283b0dd15f113418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9ca9c160_10d0e37f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-12T18:34:18Z",
       "side": 1,
       "message": "Please verify the board with BM253 still work.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "f3ce7da84c773ee503c6ea12283b0dd15f113418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f95aff99_077698fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2021-07-13T01:16:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ca9c160_10d0e37f",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-07-12T18:28:31Z",
       "side": 1,
       "message": "The detection happens in S5. Is the sensor powered in S5?",
+      "range": {
+        "startLine": 627,
+        "startChar": 7,
+        "endLine": 628,
+        "endChar": 28
+      },
+      "revId": "f3ce7da84c773ee503c6ea12283b0dd15f113418",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ade685f7_4bd6e11a",
+        "filename": "board/pompom/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2021-07-13T01:16:26Z",
+      "side": 1,
+      "message": "Yes, the sensor\u0027s power rail is PP1800. It can be read in S5 state.\nI can read the sensor value in S5 state via EC console command \"i2cxfer\".",
+      "parentUuid": "b660c72b_df39ee56",
       "range": {
         "startLine": 627,
         "startChar": 7,
