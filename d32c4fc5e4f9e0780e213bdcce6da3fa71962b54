@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9bd4132_4a7ed5e5",
+        "filename": "board/redrix/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-07-13T01:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d3ed3ba_c86e596c",
+      "range": {
+        "startLine": 46,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 1
+      },
+      "revId": "d32c4fc5e4f9e0780e213bdcce6da3fa71962b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28030f99_7d41862e",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-12T23:48:53Z",
       "side": 1,
       "message": "open a bug to check timing on redrix.",
+      "range": {
+        "startLine": 230,
+        "startChar": 11,
+        "endLine": 230,
+        "endChar": 20
+      },
+      "revId": "d32c4fc5e4f9e0780e213bdcce6da3fa71962b54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09358831_074dae4d",
+        "filename": "board/redrix/usbc_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-07-13T01:41:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28030f99_7d41862e",
       "range": {
         "startLine": 230,
         "startChar": 11,
