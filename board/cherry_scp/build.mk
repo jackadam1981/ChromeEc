@@ -9,3 +9,5 @@
 CHIP:=mt_scp
 CHIP_VARIANT:=mt8195
 BASEBOARD:=mtscp-rv32i
+
+board-y+=demo.o
