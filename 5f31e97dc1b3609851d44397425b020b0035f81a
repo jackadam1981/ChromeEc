@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7d47acf_34a0ad8d",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1383392
+      },
+      "writtenOn": "2021-07-13T09:35:16Z",
+      "side": 1,
+      "message": "The elements of crgb_data are unsigned 16-bit integers, so storing them as signed integers requires at least 17 bits to avoid overflow. However the fixed point implementation only allocates 16 bits to the integer part, so any occurrence of INT_TO_FP(crgb_data[0..3])) is unsafe, e.g.\n\u003e INT_TO_FP(65535) \u003d INT_TO_FP(0xFFFF) \u003d 0xFFFF0000 \u003d -65536.\n\nI\u0027ve switched the code over to 12-bit fixed precision in the latest patchset which avoids this problem.",
+      "parentUuid": "6d83614d_3c1d299a",
+      "revId": "5f31e97dc1b3609851d44397425b020b0035f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d868ca8e_01435454",
         "filename": "board/dooly/board.c",
         "patchSetId": 4
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cdfa8995_a975c82d",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1383392
+      },
+      "writtenOn": "2021-07-13T09:35:16Z",
+      "side": 1,
+      "message": "I don\u0027t think we\u0027ll ever need to support an EC with a FPU, but I do think this code is unclear. I was trying to avoid reimplementing more of the fixed point library than I needed to, but I\u0027ve dropped the use of fp_t and fp_inter_t in the latest patch set.\n\nThat also allowed me to pick a better split between integer and fractional parts (20.12 vs 16.16) allowing some other operations to be simplified.",
+      "parentUuid": "d868ca8e_01435454",
+      "revId": "5f31e97dc1b3609851d44397425b020b0035f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34bb5511_97ce95bb",
         "filename": "board/dooly/board.c",
         "patchSetId": 4
@@ -48,6 +84,24 @@
       "writtenOn": "2021-07-12T06:40:29Z",
       "side": 1,
       "message": "won\u0027t work when EC support floats.",
+      "revId": "5f31e97dc1b3609851d44397425b020b0035f81a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3868284_7008bef3",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1383392
+      },
+      "writtenOn": "2021-07-13T09:35:16Z",
+      "side": 1,
+      "message": "ditto",
+      "parentUuid": "34bb5511_97ce95bb",
       "revId": "5f31e97dc1b3609851d44397425b020b0035f81a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
