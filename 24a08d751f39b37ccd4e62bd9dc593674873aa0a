@@ -69,6 +69,24 @@
       "parentUuid": "12d98718_26704ab8",
       "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33f622cc_cfbbf7d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-07-13T17:42:08Z",
+      "side": 1,
+      "message": "According to [comment #8](https://buganizer.corp.google.com/issues/187694527#comment8) in the bug, it was decided to remove it from baseboard and make it per variant.",
+      "parentUuid": "21ae6d2b_0907becd",
+      "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
