@@ -33,6 +33,24 @@
       "message": "Instead of copying the same files all over the place -- perhaps we can use symbolic link for now then make a real copy when the variant specific change is needed?\n ",
       "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d98718_26704ab8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-07-13T17:28:07Z",
+      "side": 1,
+      "message": "Idea is to remove the files from baseboard directory and also provide framework for variants to configure/edit those files according to requirements. If we create symlinks, where do you suggest original files exist? Is there a possibility some variants might not use SSFC bits at all?",
+      "parentUuid": "75b035d9_c583d606",
+      "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
