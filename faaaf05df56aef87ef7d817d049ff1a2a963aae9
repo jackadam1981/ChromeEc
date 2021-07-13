@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51b5b855_9fbf62b2",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-13T16:37:19Z",
+      "side": 1,
+      "message": "prefer a comprehension to list(map(lambda...))\n\nsee https://google.github.io/styleguide/pyguide.html#210-lambda-functions",
+      "range": {
+        "startLine": 188,
+        "startChar": 36,
+        "endLine": 188,
+        "endChar": 55
+      },
+      "revId": "faaaf05df56aef87ef7d817d049ff1a2a963aae9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
