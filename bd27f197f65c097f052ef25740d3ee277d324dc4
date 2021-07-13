@@ -22,6 +22,30 @@
       },
       "revId": "bd27f197f65c097f052ef25740d3ee277d324dc4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4262a4d_943df019",
+        "filename": "zephyr/include/emul/emul_bmi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-13T11:21:28Z",
+      "side": 1,
+      "message": "It was done using defines, but enum works better here. Changed in patchset 7.",
+      "parentUuid": "f93babf3_e747a551",
+      "range": {
+        "startLine": 346,
+        "startChar": 48,
+        "endLine": 346,
+        "endChar": 51
+      },
+      "revId": "bd27f197f65c097f052ef25740d3ee277d324dc4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
