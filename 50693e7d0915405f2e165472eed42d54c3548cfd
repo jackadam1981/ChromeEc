@@ -360,6 +360,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6e2dbde_2170ed92",
+        "filename": "common/cbi_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T23:26:54Z",
+      "side": 1,
+      "message": "My mistake, I saw the int return and was assuming it was following the EC_SUCCESS model.  Probably the better fix would be to change the .is_protected return type to bool.  This can be done as a follow up CL.",
+      "parentUuid": "750ceaac_0a6bac95",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03af4d16_39803b9c",
         "filename": "zephyr/Kconfig",
         "patchSetId": 2
@@ -395,6 +419,30 @@
       "side": 1,
       "message": "Added a name to the choice. But I removed the default.\n\nThis way we allow the boards to:\n(1) select PLATFORM_EC_CBI_EEPROM OR\n(2) select PLATFORM_EC_CBI_GPIO OR\n(3) select neither PLATFORM_EC_CBI_EEPROM or PLATFORM_EC_CBI_GPIO (i.e. do not support CBI)\n\nSo we don\u0027t need an independent config to show if the board supports CBI or not.\n\nWDYT?",
       "parentUuid": "03af4d16_39803b9c",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 6
+      },
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1676c2cf_0afd8b75",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T23:26:54Z",
+      "side": 1,
+      "message": "I\u0027m good with this.",
+      "parentUuid": "5a434b32_736ef30e",
       "range": {
         "startLine": 167,
         "startChar": 0,
