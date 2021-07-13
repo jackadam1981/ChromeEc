@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60cd69d1_b5794ea3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-13T23:04:48Z",
+      "side": 1,
+      "message": "I was just thinking back to this today. I think that under your new layout it would make the most sense having a baseboard and just a few configs for volteer/ and volteer_chre/. The reason I reverted my original volteer_chre/ is that it required copying or creating a bunch of symlinks to the volteer/ project. I would like to guarantee (as much as possible) that the two builds are the same except the swap for the sensor framework.",
+      "parentUuid": "16b82baf_ff36b5a6",
+      "revId": "b4f10dd4ecd05a64c6b381661604f5037d678bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "adcb658e_16c94d4e",
         "filename": "zephyr/zmake/tests/test_zmake.py",
         "patchSetId": 2
