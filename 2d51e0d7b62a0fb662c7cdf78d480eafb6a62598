@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c434c7c2_094098d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-13T22:24:58Z",
+      "side": 1,
+      "message": "I bet those 2 are not necessary as well:\n#define CONFIG_CMD_ACCELS\n#define CONFIG_CMD_ACCEL_INFO\n",
+      "revId": "2d51e0d7b62a0fb662c7cdf78d480eafb6a62598",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
