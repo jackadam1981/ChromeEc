@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c3bf35_198bb8cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-13T20:34:58Z",
+      "side": 1,
+      "message": "I\u0027d prefer we continue to not rely on the PR swap flag since any bug in the PE clearing this flag can cause us to leave Vbus hot on disconnection, which is a big spec violation. ",
+      "revId": "f4efa6bcc9a03bb8b81230f101f1a89ae2de5966",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
