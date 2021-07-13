@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "519b9ddb_f8da7a55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-07-13T06:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69888d78_fedf188c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "d8f52838637f5703cc02961ac7e635f0de4a13b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8f5eebc_6131db20",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-13T03:34:59Z",
       "side": 1,
       "message": "Typo: Trogdor\n\nMove the line before BUG\u003d.",
+      "range": {
+        "startLine": 15,
+        "startChar": 7,
+        "endLine": 15,
+        "endChar": 13
+      },
+      "revId": "d8f52838637f5703cc02961ac7e635f0de4a13b9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3aaecf_e967c4f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-07-13T06:32:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8f5eebc_6131db20",
       "range": {
         "startLine": 15,
         "startChar": 7,
