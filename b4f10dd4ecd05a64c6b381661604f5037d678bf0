@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15544944_4446ac7c",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-13T04:33:32Z",
+      "side": 1,
+      "message": "The class below uses unittest, it there any risk mixing the two in the same test file?",
+      "parentUuid": "adcb658e_16c94d4e",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 37
+      },
+      "revId": "b4f10dd4ecd05a64c6b381661604f5037d678bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2cc7af88_17047935",
         "filename": "zephyr/zmake/tests/test_zmake.py",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-12T16:39:40Z",
       "side": 1,
       "message": "Is this comment accurate?  I don\u0027t really know python so I might just not understand this code.",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 66
+      },
+      "revId": "b4f10dd4ecd05a64c6b381661604f5037d678bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a53c7112_44a7fa28",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-13T04:33:32Z",
+      "side": 1,
+      "message": "Oops, slipped through.",
+      "parentUuid": "2cc7af88_17047935",
       "range": {
         "startLine": 170,
         "startChar": 0,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-07-12T16:39:40Z",
       "side": 1,
       "message": "I think this is clearer if specify this adds a Kconfig file to the build.",
+      "range": {
+        "startLine": 111,
+        "startChar": 33,
+        "endLine": 111,
+        "endChar": 62
+      },
+      "revId": "b4f10dd4ecd05a64c6b381661604f5037d678bf0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9111e38_b9f42f4a",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-13T04:33:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35fed2b1_e39626ad",
       "range": {
         "startLine": 111,
         "startChar": 33,
