@@ -198,6 +198,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5fb6e63_ad517453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-13T01:09:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60d309d4_3746c533",
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6ee726d_46092992",
@@ -269,6 +287,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58f42b50_e359c895",
+        "filename": "common/cbi_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-13T01:09:52Z",
+      "side": 1,
+      "message": "Ah, you\u0027re right.\nI overlooked it earlier.\nFixed.",
+      "parentUuid": "def0a563_22a0af5c",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 20
+      },
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6d79d5f9_46bb5a3b",
@@ -282,6 +324,30 @@
       "writtenOn": "2021-07-07T17:35:23Z",
       "side": 1,
       "message": "Return EC_ERROR_ACCESS_DENIED instead.",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "750ceaac_0a6bac95",
+        "filename": "common/cbi_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-13T01:09:52Z",
+      "side": 1,
+      "message": "But it does not match our definition of is_protected() function.\nSee eeprom_is_write_protected() as an example - it returns either 1 or 0.\n\nOr do you think we should change the definition of is_protected() function and update eeprom_is_write_protected()?",
+      "parentUuid": "6d79d5f9_46bb5a3b",
       "range": {
         "startLine": 58,
         "startChar": 8,
@@ -317,6 +383,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5a434b32_736ef30e",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-13T01:09:52Z",
+      "side": 1,
+      "message": "Added a name to the choice. But I removed the default.\n\nThis way we allow the boards to:\n(1) select PLATFORM_EC_CBI_EEPROM OR\n(2) select PLATFORM_EC_CBI_GPIO OR\n(3) select neither PLATFORM_EC_CBI_EEPROM or PLATFORM_EC_CBI_GPIO (i.e. do not support CBI)\n\nSo we don\u0027t need an independent config to show if the board supports CBI or not.\n\nWDYT?",
+      "parentUuid": "03af4d16_39803b9c",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 6
+      },
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9e48af1_aef9dc96",
         "filename": "zephyr/Kconfig",
         "patchSetId": 2
@@ -328,6 +418,30 @@
       "writtenOn": "2021-07-07T17:35:23Z",
       "side": 1,
       "message": "depends on PLATFORM_EC_I2C \u0026\u0026 PLATFORM_EC_BOARD_VERSION_CBI",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 27
+      },
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d33201ee_4beb20a2",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-13T01:09:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9e48af1_aef9dc96",
       "range": {
         "startLine": 173,
         "startChar": 1,
@@ -355,6 +469,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5458e0_2669bd36",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-13T01:09:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c30e92d_aea2ffb3",
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "770ac489_93be4afc",
@@ -368,6 +500,30 @@
       "writtenOn": "2021-07-07T17:35:23Z",
       "side": 1,
       "message": "Please expand this help.  Document that this provides the board version value defined by the PLATFORM_EC_BOARD_VERSION_GPIO or PLATFORM_EC_BOARD_VERSION_CUSTOM options.",
+      "range": {
+        "startLine": 183,
+        "startChar": 0,
+        "endLine": 183,
+        "endChar": 60
+      },
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57421383_4720dfb2",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-13T01:09:52Z",
+      "side": 1,
+      "message": "PLATFORM_EC_BOARD_VERSION_CUSTOM was removed by 2c37de83. Anyway, I added more description for PLATFORM_EC_CBI_GPIO.",
+      "parentUuid": "770ac489_93be4afc",
       "range": {
         "startLine": 183,
         "startChar": 0,
