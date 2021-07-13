@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb50932_70f25844",
+        "filename": "board/voema/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-13T12:29:40Z",
+      "side": 1,
+      "message": "Why do you need to put the BASE_GYRO under BASE_ACCEL? I think you can put BASE_GYRO under RGB_ALS.",
+      "range": {
+        "startLine": 181,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 11
+      },
+      "revId": "8bfa7f3606f85ef81a0e19f3f0fa93145c182be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0331ec76_cab28b34",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-13T12:29:40Z",
+      "side": 1,
+      "message": "If putting the BASE_GYRO under RGB_ALS is okay, then you don\u0027t need this.",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 2
+      },
+      "revId": "8bfa7f3606f85ef81a0e19f3f0fa93145c182be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99516ad9_30dd7ed1",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-13T12:29:40Z",
+      "side": 1,
+      "message": "IIUC, you need to change the MB layout for the new sensor. So, please use board_id to switch the setting.",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 47
+      },
+      "revId": "8bfa7f3606f85ef81a0e19f3f0fa93145c182be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
