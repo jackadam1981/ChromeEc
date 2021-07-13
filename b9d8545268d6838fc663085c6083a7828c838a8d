@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "040e4aee_96e70a42",
+        "filename": "baseboard/trogdor/power.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T16:41:15Z",
+      "side": 1,
+      "message": "For the power on case, this maintains the same sequence as before: 3.3V on followed by 5V on.\n\nHowever, for the power off case, the previous code has this sequence:\n1. shutdown PMIC\n2. turn of switchcap\n3. turn off 3.3V\n4. Turn off 5V\n\nWith your change, the 3.3V rail is now turns off after the 5V rail.  I don\u0027t know enough about the QCOM power sequencing to know if this is ok.",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "b9d8545268d6838fc663085c6083a7828c838a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
