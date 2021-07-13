@@ -39,7 +39,6 @@ void cache_init(void)
 			mpu_en |= BIT(i);
 		}
 	}
-#ifndef BOARD_CHERRY_SCP
 	/* enable mpu entries */
 	write_csr(CSR_MPU_ENTRY_EN, mpu_en);
 
@@ -48,7 +47,6 @@ void cache_init(void)
 
 	/* fence */
 	asm volatile ("fence.i" ::: "memory");
-#endif
 }
 
 #ifdef DEBUG
