@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58222561_cad8bf7c",
+        "filename": "zephyr/projects/trogdor/trogdor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-13T04:16:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32237fff_9f7c80a5",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "b3a93dd514ad9a9c2a80ad0408888319690f07a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e06e48b_45b93e0e",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "753a6039_4aabeab0",
+        "filename": "zephyr/projects/trogdor/trogdor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-13T04:16:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e06e48b_45b93e0e",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 0
+      },
+      "revId": "b3a93dd514ad9a9c2a80ad0408888319690f07a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "de393651_b2938bbf",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-30T16:32:07Z",
       "side": 1,
       "message": "Also need to add the SPI signals on GPIO46, GPIO47, GPIO53, GPIO55",
+      "range": {
+        "startLine": 375,
+        "startChar": 0,
+        "endLine": 375,
+        "endChar": 37
+      },
+      "revId": "b3a93dd514ad9a9c2a80ad0408888319690f07a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "779dc412_d3b213c5",
+        "filename": "zephyr/projects/trogdor/trogdor/gpio.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-13T04:16:05Z",
+      "side": 1,
+      "message": "This is a good question. Checked the data sheet. These GPIOs are powered by V_HIF. When the V_HIF supply is 1.8V, the signal levels match 1.8V. It is not configurable, like switching between 3.3V and 1.8V. There is no Low-Voltage GPIO Control register for these GPIOs.\n\nThe EC-OS gpio.inc:\n   ALTERNATE(PIN_MASK(4, 0xC0), 1, MODULE_SPI, GPIO_SEL_1P8V)\n   ALTERNATE(PIN_MASK(5, 0x28), 1, MODULE_SPI, GPIO_SEL_1P8V)\n\nactually does nothing, as no mapping to a valid Low-Voltage GPIO Control register. I will remove the GPIO_SEL_1P8V flag from the gpio.inc config.",
+      "parentUuid": "de393651_b2938bbf",
       "range": {
         "startLine": 375,
         "startChar": 0,
