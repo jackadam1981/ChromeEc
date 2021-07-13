@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9893ee13_8351285f",
+        "filename": "board/homestar/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-07-13T06:35:14Z",
+      "side": 0,
+      "message": "ok,separated a new CL.",
+      "parentUuid": "3faec5b0_c00938d5",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 27
+      },
+      "revId": "943646345564d20afadbb837104c962e4b335410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b72b8aa6_55e04183",
@@ -119,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f895e2_af526a00",
+        "filename": "board/homestar/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-07-13T06:35:14Z",
+      "side": 0,
+      "message": "ok,separated a new CL.",
+      "parentUuid": "7211b5e7_68c1bdb1",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 30
+      },
+      "revId": "943646345564d20afadbb837104c962e4b335410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e5f768c3_f7317718",
@@ -132,6 +180,30 @@
       "writtenOn": "2021-07-12T21:05:30Z",
       "side": 0,
       "message": "Move it to a separated CL?",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 47
+      },
+      "revId": "943646345564d20afadbb837104c962e4b335410",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e086d543_0145ca4a",
+        "filename": "board/homestar/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-07-13T06:35:14Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "e5f768c3_f7317718",
       "range": {
         "startLine": 76,
         "startChar": 0,
