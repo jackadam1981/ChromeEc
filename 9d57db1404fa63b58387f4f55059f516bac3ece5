@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "480a420c_97215194",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1038,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-13T11:26:29Z",
+      "side": 1,
+      "message": "This is conversion from Celsius to Kelvins. Changed to use C_TO_K macro.",
+      "parentUuid": "2fdf5672_3a92f95c",
+      "range": {
+        "startLine": 1038,
+        "startChar": 17,
+        "endLine": 1038,
+        "endChar": 20
+      },
+      "revId": "9d57db1404fa63b58387f4f55059f516bac3ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "83734b96_c44dffc0",
         "filename": "zephyr/test/drivers/src/bmi260.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-12T17:24:51Z",
       "side": 1,
       "message": "I\u0027m not a fan of . before */ and this one isn\u0027t even a sentence :-)",
+      "range": {
+        "startLine": 1517,
+        "startChar": 60,
+        "endLine": 1517,
+        "endChar": 61
+      },
+      "revId": "9d57db1404fa63b58387f4f55059f516bac3ece5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b582aa9a_3d2bd169",
+        "filename": "zephyr/test/drivers/src/bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1517,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-13T11:26:29Z",
+      "side": 1,
+      "message": "Removed . before */ for single line comments",
+      "parentUuid": "83734b96_c44dffc0",
       "range": {
         "startLine": 1517,
         "startChar": 60,
