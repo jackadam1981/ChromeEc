@@ -87,6 +87,24 @@
       "parentUuid": "21ae6d2b_0907becd",
       "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89d6fd19_5cec3a57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-07-13T18:12:14Z",
+      "side": 1,
+      "message": "If most variants have their own specific changes it\u0027ll end up like that -- each variant has its own copies, even with sym-links being used from the start. But if that\u0027s not the case, we reduce quite a bit of duplication.",
+      "parentUuid": "33f622cc_cfbbf7d7",
+      "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
