@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd1f66e1_91e7bcf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-13T18:24:56Z",
+      "side": 1,
+      "message": "You should define CONFIG_HIBERNATE_PSL in the board.h file and add CONFIG_PLATFORM_EC_HIBERNATE_PSL to the Kconfig for the zephyr build.",
+      "revId": "5e5cffe52e016b38a5acc74dd5cea09ddad75262",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
