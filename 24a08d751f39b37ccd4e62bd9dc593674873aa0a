@@ -51,6 +51,24 @@
       "parentUuid": "75b035d9_c583d606",
       "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21ae6d2b_0907becd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-07-13T17:38:31Z",
+      "side": 1,
+      "message": "I\u0027m thinking more about keeping the files in baseboard, then with the sym-links in variant point to them. Only copy/modify them when the variant specific changes are needed?\n\nIn this case it\u0027s much easier to differentiate (i.e. local copy means there\u0027re variant specific changes), IMO.",
+      "parentUuid": "12d98718_26704ab8",
+      "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
