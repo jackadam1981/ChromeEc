@@ -414,8 +414,12 @@ int ocpc_config_secondary_charger(int *desired_input_current,
 				}
 				if (timestamp_expired(precharge_exit, NULL)) {
 					CPRINTS("OCPC: Precharge complete");
-					charger_set_voltage(CHARGER_SECONDARY,
-							    batt.voltage);
+					if(batt.voltage < battery_get_info()->voltage_min)
+						charger_set_voltage(CHARGER_SECONDARY,
+								battery_get_info()->voltage_min);
+					else
+						charger_set_voltage(CHARGER_SECONDARY,
+								batt.voltage);
 					ocpc->last_vsys = batt.voltage;
 					ocpc_precharge_enable(false);
 					ph = PHASE_CC;
@@ -668,7 +672,11 @@ void ocpc_reset(struct ocpc_data *ocpc)
 	if (ocpc->active_chg_chip > CHARGER_PRIMARY && batt.voltage > 0) {
 		CPRINTS("OCPC: C%d Init VSYS to %dmV", ocpc->active_chg_chip,
 			batt.voltage);
-		charger_set_voltage(ocpc->active_chg_chip, batt.voltage);
+		if(batt.voltage < battery_get_info()->voltage_min)
+			charger_set_voltage(ocpc->active_chg_chip, 
+					battery_get_info()->voltage_min);
+		else
+			charger_set_voltage(ocpc->active_chg_chip, batt.voltage);
 	}
 
 	/*
