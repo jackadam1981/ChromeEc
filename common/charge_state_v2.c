@@ -2248,8 +2248,12 @@ wait_for_it:
 			}
 		} else {
 #ifndef CONFIG_CHARGER_MAINTAIN_VBAT
-			curr.requested_voltage = charger_closest_voltage(
-				curr.batt.voltage + info->voltage_step);
+			if(curr.batt.voltage > batt_info->voltage_min)
+                                curr.requested_voltage = charger_closest_voltage(
+                                        curr.batt.voltage + info->voltage_step);
+                        else
+                                curr.requested_voltage = charger_closest_voltage(
+                                        batt_info->voltage_min + info->voltage_step);
 			curr.requested_current = -1;
 #endif
 #ifdef CONFIG_EC_EC_COMM_BATTERY_SERVER
