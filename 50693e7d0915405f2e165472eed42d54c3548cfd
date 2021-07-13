@@ -452,6 +452,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7bbfb93_506a1172",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-13T20:53:23Z",
+      "side": 1,
+      "message": "Adding PLATFORM_EC_BOARD_VERSION_CBI will cause a dependency loop.\nProbably not a good idea.",
+      "parentUuid": "d33201ee_4beb20a2",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 173,
+        "endChar": 27
+      },
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c30e92d_aea2ffb3",
@@ -483,6 +507,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "5c30e92d_aea2ffb3",
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b9398a_4c7288dd",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-13T20:53:23Z",
+      "side": 1,
+      "message": "Gee, it causes a dependency loop.\nI have to remove this in ps #4.",
+      "parentUuid": "4e5458e0_2669bd36",
       "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
