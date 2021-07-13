@@ -16,6 +16,24 @@
       "message": "Would it make sense to refactor this at some point to take advantage of common tests between these two emulators?",
       "revId": "7464e9ee1967042ba8f82a9b9e8f796744f15b5b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5967adac_23628fab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-13T11:46:06Z",
+      "side": 1,
+      "message": "I think, with proper design of common tests we could share 50% of code between bmi160 and bmi260. For most functions setup and fail conditions are different, but checking successful results is the same.",
+      "parentUuid": "5438ceb0_3fe4eaa1",
+      "revId": "7464e9ee1967042ba8f82a9b9e8f796744f15b5b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
