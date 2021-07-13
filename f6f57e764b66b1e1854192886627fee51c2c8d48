@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d193d3e3_86c023e6",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-13T23:41:56Z",
+      "side": 1,
+      "message": "nit: this statement is not required anymore",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 7
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d009eac_2fe26ded",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-13T23:41:56Z",
+      "side": 1,
+      "message": "nit: This is a \"timeout\" case, so maybe EC_ERROR_TIMEOUT would be slightly more meaningful here. \nSame on line 274",
+      "range": {
+        "startLine": 233,
+        "startChar": 17,
+        "endLine": 233,
+        "endChar": 24
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc98fb56_846d96c3",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-13T23:41:56Z",
+      "side": 1,
+      "message": "A question about this status - how could it possibly be enabled?\nIf I understand correctly, to enable it SRC_SEL should be set to 1 in Switch Control Reg (02h), but I don\u0027t see this value ever defined for NX20P3483 (something like NX20P3483_SWITCH_CONTROL_HVSRC). If that bit is not set - it will always default to 5V src, no?..",
+      "range": {
+        "startLine": 264,
+        "startChar": 7,
+        "endLine": 264,
+        "endChar": 36
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
