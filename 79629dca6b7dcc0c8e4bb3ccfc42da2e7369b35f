@@ -39,6 +39,30 @@
       },
       "revId": "79629dca6b7dcc0c8e4bb3ccfc42da2e7369b35f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45b24aaf_3746ebad",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-13T15:53:20Z",
+      "side": 1,
+      "message": "I added u2f. I\u0027ll add cryptoc in a followup CL since it involves modifying common/build.mk",
+      "parentUuid": "d415096f_bae970e3",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "79629dca6b7dcc0c8e4bb3ccfc42da2e7369b35f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
