@@ -69,6 +69,24 @@
       "parentUuid": "d9611f9d_b496f571",
       "revId": "26ae5d21a839da3b74e715f32e41ad13c63675a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa5e6a04_f44aa04b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-14T16:09:13Z",
+      "side": 1,
+      "message": "I think the change is reasonable and improves the code health.  I don\u0027t think this specific change makes sense to guard behind a CONFIG option.",
+      "parentUuid": "c5dfbb9b_c39a9abe",
+      "revId": "26ae5d21a839da3b74e715f32e41ad13c63675a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
