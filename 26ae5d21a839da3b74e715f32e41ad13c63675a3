@@ -16,6 +16,24 @@
       "message": "I suppose this increase code size...does that matter?",
       "revId": "26ae5d21a839da3b74e715f32e41ad13c63675a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9611f9d_b496f571",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-14T15:51:17Z",
+      "side": 1,
+      "message": "Yes, code size is increased:\n- accelgyro_bmi_common.c.obj +404 bytes  (old size 47208b)\n- accelgyro_bmi_260.c.obj    +32 bytes   (old size 44536b)\n- accelgyro_bmi_160.c.obj    +100 bytes  (old size 34176b)\n\nI don\u0027t know if this increase in size is acceptable.",
+      "parentUuid": "787831e0_bc6660d0",
+      "revId": "26ae5d21a839da3b74e715f32e41ad13c63675a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
