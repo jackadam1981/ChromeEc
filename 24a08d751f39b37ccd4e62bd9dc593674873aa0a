@@ -141,6 +141,23 @@
       "parentUuid": "2324e101_d6adcef8",
       "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a59a8f8_632e7306",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-07-14T13:04:17Z",
+      "side": 1,
+      "message": "* Is magolor board not listed here?\n* USB SuperSpeed Mux type from SSFC_CONFIG is leveraged by sasuke only so we can remove it from all other boards of Dedede especially for Magolor which defined the same bits range in coreboot side.\n* Regarding symlink or not, my personal opinion is to make the real copy for each board and reason would be\n    * partners might edit the symlink directly to the file in baseboard instead of making a copy later.\n    * we don\u0027t need to pay communication effort later about please make a copy if you would be like to add new SSFC bis because it can be per variant now.\n    * Brya makes fw_config.[h|c] to each board already.",
+      "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
