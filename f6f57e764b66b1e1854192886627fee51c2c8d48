@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a9b1d5_94b13e40",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-14T23:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e5249ef_a1faadb1",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d193d3e3_86c023e6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-13T23:41:56Z",
       "side": 1,
       "message": "nit: this statement is not required anymore",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 7
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5f6161e_20def183",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-14T23:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d193d3e3_86c023e6",
       "range": {
         "startLine": 168,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37fc373_2b1ef156",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-14T23:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cd40007_10d1c342",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 32
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d009eac_2fe26ded",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-13T23:41:56Z",
       "side": 1,
       "message": "nit: This is a \"timeout\" case, so maybe EC_ERROR_TIMEOUT would be slightly more meaningful here. \nSame on line 274",
+      "range": {
+        "startLine": 233,
+        "startChar": 17,
+        "endLine": 233,
+        "endChar": 24
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b7ad6f1_fde1fd2b",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-14T23:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d009eac_2fe26ded",
       "range": {
         "startLine": 233,
         "startChar": 17,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65557649_aa4c4a58",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-14T23:50:17Z",
+      "side": 1,
+      "message": "ya, it does seem like these *SRC_STS bits are mutually exclusive.\ni think this check is correct and if we ever enable the high\nvoltage-out path, it\u0027ll still be correct.",
+      "parentUuid": "cc98fb56_846d96c3",
+      "range": {
+        "startLine": 264,
+        "startChar": 7,
+        "endLine": 264,
+        "endChar": 36
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a64ebd7_fde8d5f0",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d7badbd_3933e5fa",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-14T23:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a64ebd7_fde8d5f0",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 38
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a0b5810_5aa385c7",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-07-14T14:27:08Z",
       "side": 1,
       "message": "Use IS_ENABLED",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 32
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49d39e10_45752565",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-14T23:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a0b5810_5aa385c7",
       "range": {
         "startLine": 412,
         "startChar": 0,
