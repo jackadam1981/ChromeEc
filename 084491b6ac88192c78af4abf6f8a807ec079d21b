@@ -127,6 +127,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "64df706a_34a368c2",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1512242
+      },
+      "writtenOn": "2021-07-14T13:15:00Z",
+      "side": 1,
+      "message": "Patchset 5 removes indent of #if/#endif.",
+      "parentUuid": "dc22ed4b_3debbd19",
+      "revId": "084491b6ac88192c78af4abf6f8a807ec079d21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbd34105_48635f6f",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 3
