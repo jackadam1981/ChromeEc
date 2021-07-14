@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4fc0852b_752f3b55",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-14T03:23:06Z",
+      "side": 1,
+      "message": "If you put the BASE_GYRO under RGB_ALS, you can set the motion_sensor_count instead of using an empty data.",
+      "parentUuid": "3cd5f4b6_6b1c74ce",
+      "range": {
+        "startLine": 305,
+        "startChar": 0,
+        "endLine": 306,
+        "endChar": 2
+      },
+      "revId": "8bfa7f3606f85ef81a0e19f3f0fa93145c182be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "99516ad9_30dd7ed1",
         "filename": "board/voema/sensors.c",
         "patchSetId": 3
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "We already support SSFC for choose accel sensor, do we still need to use board_id to switch setting?\nOr we can use board_id to set correct sensor count?\nPVT support gyro sensor count, DVT and older not support gyro sensor count?",
       "parentUuid": "99516ad9_30dd7ed1",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 47
+      },
+      "revId": "8bfa7f3606f85ef81a0e19f3f0fa93145c182be3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc41af09_c2a60ae0",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-14T03:23:06Z",
+      "side": 1,
+      "message": "Yes, i think you can use the board_id to set the sensor count. I don\u0027t think this change is a kind of SSFC because the gyro is the hard requirement for the convertible.",
+      "parentUuid": "a9fd4b8a_1a1ac878",
       "range": {
         "startLine": 326,
         "startChar": 0,
