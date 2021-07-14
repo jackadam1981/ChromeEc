@@ -24,6 +24,12 @@ rsource "chip/Kconfig.npcx7"
 
 endif # SOC_SERIES_NPCX7
 
+if SOC_SERIES_NPCX9
+
+rsource "chip/Kconfig.npcx9"
+
+endif # SOC_SERIES_NPCX9
+
 config LTO
 	bool "Link Time Optimization (LTO)"
 	default y if !SOC_POSIX
