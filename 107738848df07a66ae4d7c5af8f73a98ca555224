@@ -52,6 +52,23 @@
       "parentUuid": "47baa7d7_608fba70",
       "revId": "107738848df07a66ae4d7c5af8f73a98ca555224",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a4922d_97ba2b6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-07-14T06:42:46Z",
+      "side": 1,
+      "message": "Hi Dawid,\n\nWith or without this changes, PD task prints the same amounts pd state messages when running. But with this changes let us increase about 70ms printout latency when we respond \"request\" message to source on board asurada, and this latency let us out of spec defined 24~30ms, then adapter send hard reset to us. I create an issue on traker and attach pd logs there:\nhttps://partnerissuetracker.corp.google.com/u/0/issues/193585176\nCould you take a look why this changes makes a long printout latency? thanks !",
+      "revId": "107738848df07a66ae4d7c5af8f73a98ca555224",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
