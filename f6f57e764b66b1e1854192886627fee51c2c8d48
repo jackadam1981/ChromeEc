@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e5249ef_a1faadb1",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-14T14:27:08Z",
+      "side": 1,
+      "message": "I would not guard this. Allow the compiler/linker to decide which functions are being used and optimize out those that are not.  __maybe_unused may be needed if there are errors.",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 32
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d193d3e3_86c023e6",
         "filename": "driver/ppc/nx20p348x.c",
         "patchSetId": 3
@@ -19,6 +42,29 @@
         "startChar": 1,
         "endLine": 168,
         "endChar": 7
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cd40007_10d1c342",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-14T14:27:08Z",
+      "side": 1,
+      "message": "I would not guard this. Allow the compiler/linker to decide which functions are being used and optimize out those that are not.  __maybe_unused may be needed if there are errors.",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 32
       },
       "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -65,6 +111,52 @@
         "startChar": 7,
         "endLine": 264,
         "endChar": 36
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a64ebd7_fde8d5f0",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-14T14:27:08Z",
+      "side": 1,
+      "message": "Use IS_ENABLED",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 38
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0b5810_5aa385c7",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-14T14:27:08Z",
+      "side": 1,
+      "message": "Use IS_ENABLED",
+      "range": {
+        "startLine": 412,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 32
       },
       "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
