@@ -22,6 +22,30 @@
       },
       "revId": "29d652893e498e2856c706df4a7ae8d42555b4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d104522_440a0b5d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-14T16:52:47Z",
+      "side": 1,
+      "message": "The \u0027else\u0027 at line 2085 can consume only one statement since it doesn\u0027t have a curly brace. So, it\u0027s (unintentionally) closed by \u0027battery_seems_to_be_disconnected \u003d ...\u0027, which was inserted by crrev.com/c/210343. I think it should be closed by the code wrapped by CONFIG_BATTERY_REVIVE_DISCONNECT.\n\nOr maybe you understand this but you\u0027re saying the CL description isn\u0027t good?",
+      "parentUuid": "07647abc_fd0e68a2",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "29d652893e498e2856c706df4a7ae8d42555b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
