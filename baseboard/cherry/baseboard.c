@@ -52,7 +52,7 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
-static void bc12_interrupt(enum gpio_signal signal);
+static __maybe_unused void bc12_interrupt(enum gpio_signal signal);
 static void ppc_interrupt(enum gpio_signal signal);
 
 #include "gpio_list.h"
@@ -156,10 +156,12 @@ struct bc12_config bc12_ports[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 
 static void bc12_interrupt(enum gpio_signal signal)
 {
+#ifdef BOARD_CHERRY
 	if (signal == GPIO_USB_C0_BC12_INT_ODL)
 		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 	else
 		task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
+#endif
 }
 
 static void ppc_interrupt(enum gpio_signal signal)
@@ -522,6 +524,8 @@ void lid_angle_peripheral_enable(int enable)
 
 static void baseboard_init(void)
 {
+#ifdef BOARD_CHERRY
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
+#endif
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT-1);
