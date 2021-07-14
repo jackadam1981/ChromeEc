@@ -16,6 +16,29 @@
       "message": "We verified that the CL can fix the issue fro deep sleep and hibernate.\nThank you for fixing it.",
       "revId": "c0830116e0518b1107ab7d8cb472de737110ef82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb36768c_6faa7b72",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-07-14T06:24:56Z",
+      "side": 1,
+      "message": "One nit.\nMaybe we can implement this checking loop in the uart_tx_flush function below and call it here.\nAs in the original Cros EC, uart_tx_flush does the same check like this.",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 233,
+        "endChar": 3
+      },
+      "revId": "c0830116e0518b1107ab7d8cb472de737110ef82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
