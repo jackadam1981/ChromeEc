@@ -34,6 +34,41 @@
       "parentUuid": "787831e0_bc6660d0",
       "revId": "26ae5d21a839da3b74e715f32e41ad13c63675a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eec1ad5c_6f0988fe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-14T15:55:21Z",
+      "side": 1,
+      "message": "Keith - any thoughts on the code-size question?",
+      "revId": "26ae5d21a839da3b74e715f32e41ad13c63675a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5dfbb9b_c39a9abe",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-14T15:55:21Z",
+      "side": 1,
+      "message": "Me neither - is there a CONFIG option we could put this behind, perhaps?\n\nAnyway I think it is reasonable to submit this and figure out those details later. I\u0027ll add Keith",
+      "parentUuid": "d9611f9d_b496f571",
+      "revId": "26ae5d21a839da3b74e715f32e41ad13c63675a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
