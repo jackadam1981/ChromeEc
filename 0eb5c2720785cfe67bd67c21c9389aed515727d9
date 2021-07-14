@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf3b8f19_39624ab9",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-14T03:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c7d8f19_12898f09",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 16
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14b1ff0a_6322a889",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-13T19:04:44Z",
       "side": 1,
       "message": "MB_POWER_GOOD",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 19
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4f438cb_f4eeadcb",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-14T03:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14b1ff0a_6322a889",
       "range": {
         "startLine": 36,
         "startChar": 9,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "016f5dd8_35f375a7",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-14T03:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8e632c0_0e90db36",
+      "range": {
+        "startLine": 53,
+        "startChar": 5,
+        "endLine": 53,
+        "endChar": 13
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f8b2e3d_1e50ff1f",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-07-13T19:04:44Z",
       "side": 1,
       "message": "TP_INT_GATE",
+      "range": {
+        "startLine": 64,
+        "startChar": 5,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0de6fb3e_7c3d5028",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-14T03:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f8b2e3d_1e50ff1f",
       "range": {
         "startLine": 64,
         "startChar": 5,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df411c0_19e952ac",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-14T03:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9916387f_d131e0fc",
+      "range": {
+        "startLine": 71,
+        "startChar": 5,
+        "endLine": 71,
+        "endChar": 20
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "883c1598_91747179",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-07-13T19:04:44Z",
       "side": 1,
       "message": "These shouldn\u0027t be needed.  The signals are only ever used as PWM.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 0
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20672820_8ccfaf1b",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-14T03:45:02Z",
+      "side": 1,
+      "message": "Something I defined every pin though some of them are just unnecessary. Removed them anyway.",
+      "parentUuid": "883c1598_91747179",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd0cd669_0c2e08e4",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-14T03:45:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02876510_4699febf",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 0
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "761d4f14_0f016224",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-07-13T19:04:44Z",
       "side": 1,
       "message": "Group should be F",
+      "range": {
+        "startLine": 164,
+        "startChar": 19,
+        "endLine": 164,
+        "endChar": 20
+      },
+      "revId": "0eb5c2720785cfe67bd67c21c9389aed515727d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66968fb3_9e4c0bce",
+        "filename": "board/herobrine_npcx9/gpio.inc",
+        "patchSetId": 6
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-14T03:45:02Z",
+      "side": 1,
+      "message": "Thanks for catching it.",
+      "parentUuid": "761d4f14_0f016224",
       "range": {
         "startLine": 164,
         "startChar": 19,
