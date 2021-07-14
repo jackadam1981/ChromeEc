@@ -22,6 +22,30 @@
       },
       "revId": "b9d8545268d6838fc663085c6083a7828c838a8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a85033_ed4c994c",
+        "filename": "baseboard/trogdor/power.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-14T00:05:18Z",
+      "side": 1,
+      "message": "The sequence of turning off 3.3V first or 5V first doesn\u0027t matter.\n\nThe 3.3V rail supplies the EDP, USB hub, audio codec, sensors, trackpad, and figerprint. The 5V rail supplies the USB-A, speaker amp, and kb backlight. They are the peripherals of AP. As long as the AP is off (the switchcap is off), turning off which one first doesn\u0027t matter.",
+      "parentUuid": "040e4aee_96e70a42",
+      "range": {
+        "startLine": 16,
+        "startChar": 5,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "b9d8545268d6838fc663085c6083a7828c838a8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
