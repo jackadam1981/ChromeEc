@@ -158,6 +158,24 @@
       "message": "* Is magolor board not listed here?\n* USB SuperSpeed Mux type from SSFC_CONFIG is leveraged by sasuke only so we can remove it from all other boards of Dedede especially for Magolor which defined the same bits range in coreboot side.\n* Regarding symlink or not, my personal opinion is to make the real copy for each board and reason would be\n    * partners might edit the symlink directly to the file in baseboard instead of making a copy later.\n    * we don\u0027t need to pay communication effort later about please make a copy if you would be like to add new SSFC bis because it can be per variant now.\n    * Brya makes fw_config.[h|c] to each board already.",
       "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "659c9921_3c86b55b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-07-14T19:04:42Z",
+      "side": 1,
+      "message": "\u003e* partners might edit the symlink directly to the file in baseboard instead of making a copy later.\n\nI think reviewers can point that out, though.\n\n\u003e* Brya makes fw_config.[h|c] to each board already.\n\nTrue, it\u0027d be easier if that\u0027s been done from the start.\n\nMy thought is that if only few devices deviate from the \"common\" definitions then it\u0027s worthwhile to keep it common. If that\u0027s not the case then we might as well split them up...\n\nThanks.",
+      "parentUuid": "9a59a8f8_632e7306",
+      "revId": "24a08d751f39b37ccd4e62bd9dc593674873aa0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
