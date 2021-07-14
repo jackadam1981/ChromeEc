@@ -382,6 +382,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6be592cd_cbfcc6df",
+        "filename": "common/cbi_gpio.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-14T01:34:18Z",
+      "side": 1,
+      "message": "SG. I will do a follow-up CL.",
+      "parentUuid": "f6e2dbde_2170ed92",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 9
+      },
+      "revId": "50693e7d0915405f2e165472eed42d54c3548cfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03af4d16_39803b9c",

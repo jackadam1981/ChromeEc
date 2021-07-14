@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "38398c86_c5a8156a",
+        "filename": "board/lazor/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-14T01:34:18Z",
+      "side": 1,
+      "message": "Ah, my bad. I accidentally added my testing code into this CL. board/lazor/* shouldn\u0027t be committed at all. Let me fix it.",
+      "parentUuid": "46a2b863_4671fe2e",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "ebe4ed85f386c8d0e35765a2930bb2f81b4235d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d7a2d13_f18f01fd",
         "filename": "board/lazor/sku.c",
         "patchSetId": 4
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-13T23:26:54Z",
       "side": 1,
       "message": "Also for testing?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "ebe4ed85f386c8d0e35765a2930bb2f81b4235d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0a0bed9_e1225e9f",
+        "filename": "board/lazor/sku.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-14T01:34:18Z",
+      "side": 1,
+      "message": "Yes, my bad. Let me remove it.",
+      "parentUuid": "0d7a2d13_f18f01fd",
       "range": {
         "startLine": 35,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "65529d55_0ff48802",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-14T01:34:18Z",
+      "side": 1,
+      "message": "If we want to update crc in cbi_gpio.c, we\u0027ll need a new API. It\u0027s probably easier to skip the crc check for gpio-based CBI.",
+      "parentUuid": "fcf978d8_3b3ad69f",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 56
+      },
+      "revId": "ebe4ed85f386c8d0e35765a2930bb2f81b4235d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d6190da_d9a36fdc",
         "filename": "common/cbi_gpio.c",
         "patchSetId": 4
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-13T23:26:54Z",
       "side": 1,
       "message": "Can you change the prefix of the routines in this file from \"gpio_\" to \"cbi_gpio_\"? Makes it clearer that these routines are distinct from the GPIO API.",
+      "range": {
+        "startLine": 16,
+        "startChar": 11,
+        "endLine": 16,
+        "endChar": 16
+      },
+      "revId": "ebe4ed85f386c8d0e35765a2930bb2f81b4235d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47a09340_6765b2fd",
+        "filename": "common/cbi_gpio.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-14T01:34:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8d6190da_d9a36fdc",
       "range": {
         "startLine": 16,
         "startChar": 11,
