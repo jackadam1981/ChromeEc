@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe45718e_97ca6ac5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-07-14T09:19:53Z",
+      "side": 1,
+      "message": "munna board was tested. Due to SPI protocol issue, this communication between AP and EC would not work on main branch. No communication issue is found on on firmware-kukui.12573B branch. \n\nAccording to #3 comment by ShouChieh, ToT is no no longer maintained. To me it is not the issue of this CL.\nhttps://partnerissuetracker.corp.google.com/u/1/issues/188117811#comment3",
+      "parentUuid": "6629ec5e_685af15f",
+      "revId": "dc2ca5ca0ec027711d034ff36ed2c9c12f034554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "addfe222_573ab284",
