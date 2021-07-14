@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a985a32b_d4cac25e",
+        "filename": "baseboard/cherry/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-07-14T09:51:26Z",
+      "side": 1,
+      "message": "USB_C0_BC12_INT_ODL(GPI5) is also defined in Tomato",
+      "revId": "2aaa108091dd682f2565e7bbb7c1a6e52ce43ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7a1e33a_c9748110",
+        "filename": "baseboard/cherry/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-07-14T09:51:26Z",
+      "side": 1,
+      "message": "USB_C0_BC12_INT_ODL(GPI5) is also defined in Tomato",
+      "revId": "2aaa108091dd682f2565e7bbb7c1a6e52ce43ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56309633_344fb1d1",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-07-14T09:51:26Z",
+      "side": 1,
+      "message": "Sorry about correcting EC pin assignment as: https://docs.google.com/spreadsheets/d/1cvEpJqFbzjNqFvZtHZ3DFdfQpvWYUmwUjxjzN-arGaY/edit#gid\u003d0\u0026range\u003dT72\n\nUSB_C0_BC12_INT_ODL(from MT6360) is moved to GPI5 in Tomato.",
+      "revId": "2aaa108091dd682f2565e7bbb7c1a6e52ce43ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0893a7f_4c00e02a",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-07-14T09:51:26Z",
+      "side": 1,
+      "message": "As above, should be USB_C0_BC12_INT_ODL",
+      "revId": "2aaa108091dd682f2565e7bbb7c1a6e52ce43ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
