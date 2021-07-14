@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adc7591d_a8f0ff55",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1875,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-07-14T15:04:50Z",
+      "side": 1,
+      "message": "now that a previous CL moved this at line 2078, you don\u0027t want a second copy here ?",
+      "range": {
+        "startLine": 1874,
+        "startChar": 0,
+        "endLine": 1875,
+        "endChar": 58
+      },
+      "revId": "ad4fc306e5579570d8be9c63869dedcee52bf994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ba6fadd_aeccd5d1",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1888,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-07-14T15:04:50Z",
+      "side": 1,
+      "message": "this part has a functional change ?\nyou can no longer enter this clause if CONFIG_BATTERY_REVIVE_DISCONNECT is set ?",
+      "range": {
+        "startLine": 1887,
+        "startChar": 0,
+        "endLine": 1888,
+        "endChar": 50
+      },
+      "revId": "ad4fc306e5579570d8be9c63869dedcee52bf994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
