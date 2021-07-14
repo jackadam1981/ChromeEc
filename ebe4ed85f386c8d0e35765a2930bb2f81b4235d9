@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76088dd5_2e95bcfe",
+        "filename": "board/lazor/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-14T01:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38398c86_c5a8156a",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "ebe4ed85f386c8d0e35765a2930bb2f81b4235d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d7a2d13_f18f01fd",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Yes, my bad. Let me remove it.",
       "parentUuid": "0d7a2d13_f18f01fd",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 0
+      },
+      "revId": "ebe4ed85f386c8d0e35765a2930bb2f81b4235d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2eaa9de_50259a96",
+        "filename": "board/lazor/sku.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-14T01:35:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0a0bed9_e1225e9f",
       "range": {
         "startLine": 35,
         "startChar": 0,
