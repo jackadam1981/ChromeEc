@@ -36,6 +36,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "351c04ce_1fa96080",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377776
+      },
+      "writtenOn": "2021-07-14T16:00:26Z",
+      "side": 1,
+      "message": "Hi Udaya,\nI\u0027ve tested the code, it works. The OVP is detected by the GPADC.",
+      "parentUuid": "8d66773c_167f0da3",
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e614a21_815e2b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377776
+      },
+      "writtenOn": "2021-07-14T16:00:26Z",
+      "side": 1,
+      "message": "Hi Udaya,\nI\u0027ve reproduced the OVP event on the Chromebook, the code is OK. The GPADC measurement triggers the interrupt related to the cross of VBATSNSP_HIGH_TH.\n",
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4fb442f_a09c28a4",
