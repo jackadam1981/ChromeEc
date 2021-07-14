@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba2a99a2_61d37b0e",
+        "filename": "common/cbi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-14T15:30:15Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "65529d55_0ff48802",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 56
+      },
+      "revId": "ebe4ed85f386c8d0e35765a2930bb2f81b4235d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d6190da_d9a36fdc",
