@@ -51,6 +51,42 @@
       "parentUuid": "cdc3b0f9_9c8621a5",
       "revId": "fb99f29fd73f34c6609d78544195cdced700778b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bd6e3ad_9f05aa42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-15T20:20:19Z",
+      "side": 1,
+      "message": "Thanks for the link. I will change to align with the Zephyr convention.",
+      "parentUuid": "eeb6dff9_3a72617c",
+      "revId": "fb99f29fd73f34c6609d78544195cdced700778b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64b3edbc_a8c0571f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-15T20:20:19Z",
+      "side": 1,
+      "message": "The second CL results a configure error, complaining about \"defined without a type\". It is because, like Wealian said, the Zephyr kconfig.cmake does a ARCH-target sourcing. But our zephyr/app/ec/Kconfig does an unconditional sourcing. For example, in the asurada project, which is a non-ARM ARCH, the Zephyr upstream doesn\u0027t source the soc/arm/nuvoton_npcx/Kconfig, which defines the type, but the our zephyr/app/ec/Kconfig just defines the default value, without the type. A configure error happens.\n\nThe NPCX_HEADER_* are the first ones defined in the Zephyr soc/ directory. Other existing configs are not. So it hits this problem.\n\nA quick solution would be changing our zephyr/app/ec/Kconfig  to do a ARCH-target sourcing. So it aligns what the Zephyr upstream does.",
+      "parentUuid": "a8a6f8da_2eeb5bd6",
+      "revId": "fb99f29fd73f34c6609d78544195cdced700778b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
