@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab17ff0b_269e33ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-07-15T00:50:22Z",
+      "side": 1,
+      "message": "As I understand, variant is the term for coreboot but from EC side, board is the term.",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "4c62c67273b34e9b92543e5b44ad1a151ee00f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bb4e2d_62893502",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-07-15T00:50:22Z",
+      "side": 1,
+      "message": "Maybe we can also record what components are kept to all boards like sensors and what specific component is kept for what board like usb mux for sasuke only.",
+      "revId": "4c62c67273b34e9b92543e5b44ad1a151ee00f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "736c1e63_a2235c1f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-07-15T00:50:22Z",
+      "side": 1,
+      "message": "firmware-dedede-13606.B",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "4c62c67273b34e9b92543e5b44ad1a151ee00f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "696148d0_e531e315",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-07-15T00:50:22Z",
+      "side": 1,
+      "message": "Since there is no build target for dedede, maybe we can verify them by `make buildall` at least.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "4c62c67273b34e9b92543e5b44ad1a151ee00f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
