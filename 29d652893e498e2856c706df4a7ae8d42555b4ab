@@ -46,6 +46,30 @@
       },
       "revId": "29d652893e498e2856c706df4a7ae8d42555b4ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd5a223_2aba66a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1296031
+      },
+      "writtenOn": "2021-07-15T12:00:13Z",
+      "side": 1,
+      "message": "the join/separated was unclear to me in the wording.\n\nMaybe you should explicitly state that the else statement was broken as you did above.",
+      "parentUuid": "7d104522_440a0b5d",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "29d652893e498e2856c706df4a7ae8d42555b4ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
