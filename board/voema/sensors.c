@@ -134,33 +134,6 @@ struct motion_sensor_t kx022_lid_accel = {
 	},
 };
 
-struct motion_sensor_t kx022_basse_accel = {
-	.name = "Base Accel",
-	.active_mask = SENSOR_ACTIVE_S0_S3,
-	.chip = MOTIONSENSE_CHIP_KX022,
-	.type = MOTIONSENSE_TYPE_ACCEL,
-	.location = MOTIONSENSE_LOC_BASE,
-	.drv = &kionix_accel_drv,
-	.mutex = &g_lid_accel_mutex,
-	.drv_data = &g_kx022_base_data,
-	.port = I2C_PORT_SENSOR,
-	.i2c_spi_addr_flags = KX022_ADDR1_FLAGS,
-	.rot_standard_ref = &base_standard_ref,
-	.min_frequency = KX022_ACCEL_MIN_FREQ,
-	.max_frequency = KX022_ACCEL_MAX_FREQ,
-	.default_range = 2, /* g, to support tablet mode */
-	.config = {
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-		},
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-		},
-	},
-};
-
 struct motion_sensor_t motion_sensors[] = {
 	[LID_ACCEL] = {
 		.name = "Lid Accel",
@@ -311,10 +284,7 @@ static void baseboard_sensors_init(void)
 	gpio_enable_interrupt(GPIO_EC_ALS_RGB_INT_L);
 	gpio_enable_interrupt(GPIO_EC_MB_ACCEL_INT_L);
 
-	if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_BASE_KX022) {
-		motion_sensors[BASE_ACCEL] = kx022_basse_accel;
-		ccprints("BASE_ACCEL is KX022");
-	} else if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_BASE_ICM426XX)
+	if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_BASE_ICM426XX)
 		ccprints("BASE GYRO is ICM426XX");
 
 	if (system_get_board_version() <= 2) {
