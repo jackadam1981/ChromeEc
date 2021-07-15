@@ -22,7 +22,17 @@
 #include "lpc.h"
 #include "port80.h"
 #include "power.h"
+#ifdef CONFIG_SOC_FAMILY_NPCX
 #include "soc_espi.h"
+#else
+/* DO NOT MERGE: this is a stub to avoid a larger refactor while testing. */
+#define NPCX_ACPI_TYPE_POS 0
+#define NPCX_ACPI_DATA_POS 0
+#define NPCX_8042_EVT_POS 0
+#define NPCX_8042_EVT_IBF 0
+#define NPCX_8042_DATA_POS 0
+#define NPCX_8042_TYPE_POS 0
+#endif
 #include "task.h"
 #include "timer.h"
 #include "zephyr_espi_shim.h"
@@ -197,11 +207,11 @@ int espi_vw_disable_wire_int(enum espi_vw_signal signal)
 uint8_t *lpc_get_memmap_range(void)
 {
 	uint32_t lpc_memmap = 0;
+	int result = espi_read_lpc_request(espi_dev, EACPI_GET_SHARED_MEMORY,
+					   &lpc_memmap);
 
-	if (espi_read_lpc_request(espi_dev, EACPI_GET_SHARED_MEMORY,
-				  &lpc_memmap) != 0) {
-		LOG_ERR("Get lpc_memmap failed!\n");
-	}
+	if (result != EC_SUCCESS)
+		LOG_ERR("Get lpc_memmap failed (%d)!\n", result);
 
 	return (uint8_t *)lpc_memmap;
 }
@@ -414,7 +424,7 @@ static enum ec_status lpc_get_protocol_info(struct host_cmd_handler_args *args)
 
 	args->response_size = sizeof(*r);
 
-	return EC_SUCCESS;
+	return EC_RES_SUCCESS;
 }
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, lpc_get_protocol_info,
 		     EC_VER_MASK(0));
