@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d60706cd_3a1fd56b",
+        "filename": "baseboard/cherry/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-15T07:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a985a32b_d4cac25e",
+      "revId": "2aaa108091dd682f2565e7bbb7c1a6e52ce43ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7a1e33a_c9748110",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-14T09:51:26Z",
       "side": 1,
       "message": "USB_C0_BC12_INT_ODL(GPI5) is also defined in Tomato",
+      "revId": "2aaa108091dd682f2565e7bbb7c1a6e52ce43ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36001cca_c404a247",
+        "filename": "baseboard/cherry/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-15T07:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7a1e33a_c9748110",
       "revId": "2aaa108091dd682f2565e7bbb7c1a6e52ce43ec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df46c068_4e587271",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-15T07:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56309633_344fb1d1",
+      "revId": "2aaa108091dd682f2565e7bbb7c1a6e52ce43ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0893a7f_4c00e02a",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-07-14T09:51:26Z",
       "side": 1,
       "message": "As above, should be USB_C0_BC12_INT_ODL",
+      "revId": "2aaa108091dd682f2565e7bbb7c1a6e52ce43ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f17b42e_8beacd24",
+        "filename": "board/cherry/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-15T07:45:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0893a7f_4c00e02a",
       "revId": "2aaa108091dd682f2565e7bbb7c1a6e52ce43ec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
