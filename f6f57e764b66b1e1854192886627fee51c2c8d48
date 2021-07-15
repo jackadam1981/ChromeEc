@@ -236,6 +236,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aac64509_90522763",
+        "filename": "driver/ppc/nx20p348x.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-15T00:10:54Z",
+      "side": 1,
+      "message": "Right, I was just curious about the missing setting (and even definition) of CONTROL SRC_SEL bit.",
+      "parentUuid": "65557649_aa4c4a58",
+      "range": {
+        "startLine": 264,
+        "startChar": 7,
+        "endLine": 264,
+        "endChar": 36
+      },
+      "revId": "f6f57e764b66b1e1854192886627fee51c2c8d48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a64ebd7_fde8d5f0",
