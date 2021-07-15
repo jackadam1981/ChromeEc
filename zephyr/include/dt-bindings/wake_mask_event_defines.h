@@ -19,6 +19,8 @@
  * defined in this file.
  */
 
+#define EC_HOST_EVENT_MASK(event) ((event) >> 1)
+
 #define MKBP_EVENT_KEY_MATRIX		BIT(0)
 #define MKBP_EVENT_HOST_EVENT		BIT(1)
 #define MKBP_EVENT_SENSOR_FIFO		BIT(2)
