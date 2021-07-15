@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57eface8_fe90e10d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-15T17:31:41Z",
+      "side": 1,
+      "message": "Looks good with one update",
+      "revId": "3e45bbc2cdada8f189d3cd45f03f237f861fef30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e903e9_60812997",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-15T17:31:41Z",
+      "side": 1,
+      "message": "update comment?",
+      "range": {
+        "startLine": 462,
+        "startChar": 46,
+        "endLine": 463,
+        "endChar": 35
+      },
+      "revId": "3e45bbc2cdada8f189d3cd45f03f237f861fef30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
