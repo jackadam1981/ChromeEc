@@ -33,6 +33,24 @@
       "message": "I would like to add npcx7m6fb \u0026 npcx9m6f in the files. However, apply the second CL will break other vendor builds. The NPCX header config is in soc folder. Zephyr include soc folder by soc architecture(https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/refs/heads/chromeos-v2.5/cmake/kconfig.cmake#19). The soc using different architecture will show the config error. One solution would be adding an arm architecture folder \u0026 include default config by `orsource \"chip/$(ARCH)/Kconfig.npcx7\" `",
       "revId": "fb99f29fd73f34c6609d78544195cdced700778b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a6f8da_2eeb5bd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-15T19:13:10Z",
+      "side": 1,
+      "message": "The Kconfig if/endif apparently isn\u0027t a real pre-processor check.  The if \"label\" block apparently just adds a \u0027depends on \"label\"` to everything in the block.\n\nWe may want more control than the architecture level.  Howe about using ${SOC_FAMILY}?\n\nThis would require this folder organization:\n    zephyr/app/ec/chip/nuvoton_npcx/Kconfig*\n    zephyr/app/ec/chip/riscv-ite/Kconfig*",
+      "parentUuid": "cdc3b0f9_9c8621a5",
+      "revId": "fb99f29fd73f34c6609d78544195cdced700778b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
