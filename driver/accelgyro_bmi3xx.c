@@ -34,9 +34,8 @@
 STATIC_IF(CONFIG_BMI_ORIENTATION_SENSOR)
 void irq_set_orientation(struct motion_sensor_t *s);
 
-STATIC_IF(ACCELGYRO_BMI3XX_INT_ENABLE)
-volatile uint32_t last_interrupt_timestamp;
-static uint8_t bmi3_buffer[BMI3_FIFO_BUFFER];
+/* Allocate buffer for data and i2c sync bytes */
+static uint8_t bmi3_buffer[BMI3_FIFO_BUFFER + 2];
 
 static inline int bmi3_read_n(const struct motion_sensor_t *s, const int reg,
 			      uint8_t *data_ptr, const int len)
@@ -113,19 +112,28 @@ void bmi3xx_interrupt(enum gpio_signal signal)
 static int enable_fifo(const struct motion_sensor_t *s, int enable)
 {
 	/* Set FIFO config to enable accel gyro data */
-	uint8_t reg_data[2] = {0, 0};
+	uint8_t reg_data[4];
 	struct bmi_drv_data_t *data = BMI_GET_DATA(s);
 
-	reg_data[0] = 0;
+	RETURN_ERROR(bmi3_read_n(s, BMI3_REG_FIFO_CONF, reg_data, 4));
 
 	if (enable) {
-		reg_data[1] = BMI3_FIFO_ACC_EN | BMI3_FIFO_GYR_EN;
+		if (s->type == MOTIONSENSE_TYPE_ACCEL)
+			reg_data[3] |= BMI3_FIFO_ACC_EN;
+		else
+			reg_data[3] |=  BMI3_FIFO_GYR_EN;
+
 		data->flags |= 1 << (s->type + BMI_FIFO_FLAG_OFFSET);
 	} else {
+		if (s->type == MOTIONSENSE_TYPE_ACCEL)
+			reg_data[3] &= ~BMI3_FIFO_ACC_EN;
+		else
+			reg_data[3] &=  ~BMI3_FIFO_GYR_EN;
+
 		data->flags &= ~(1 << (s->type + BMI_FIFO_FLAG_OFFSET));
 	}
 
-	return bmi3_write_n(s, BMI3_REG_FIFO_CONF, reg_data, 2);
+	return bmi3_write_n(s, BMI3_REG_FIFO_CONF, &reg_data[2], 2);
 }
 
 static int config_interrupt(const struct motion_sensor_t *s)
@@ -223,9 +231,7 @@ int bmi3_parse_fifo_data(struct motion_sensor_t *s,
 	uint16_t data_lsb, data_msb;
 
 	/* Variable to store I2C sync data which will get in FIFO data */
-	uint16_t i2c_sync_data;
-
-	uint16_t fifo_size = 0;
+	uint16_t i2c_sync_data, fifo_size = 0;
 
 	struct ec_response_motion_sensor_data vect;
 
@@ -236,6 +242,8 @@ int bmi3_parse_fifo_data(struct motion_sensor_t *s,
 	uint8_t sens_cnt = 0, reg_data[2];
 
 	struct bmi_drv_data_t *data = BMI_GET_DATA(s);
+
+	intv3_t v;
 
 	if (s->type != MOTIONSENSE_TYPE_ACCEL)
 		return EC_SUCCESS;
@@ -384,15 +392,16 @@ int bmi3_parse_fifo_data(struct motion_sensor_t *s,
 				struct motion_sensor_t *sens_output =
 					s + sens_cnt;
 
-				/* TODO:NORMALISE */
+				v[X] = raw_data[sens_cnt].x;
+				v[Y] = raw_data[sens_cnt].y;
+				v[Z] = raw_data[sens_cnt].z;
 
-				vect.data[X] = raw_data[sens_cnt].x;
-				vect.data[Y] = raw_data[sens_cnt].y;
-				vect.data[Z] = raw_data[sens_cnt].z;
+				rotate(v, *s->rot_standard_ref, v);
 
+				vect.data[X] = v[X];
+				vect.data[Y] = v[Y];
+				vect.data[Z] = v[Z];
 				vect.flags = 0;
-
-				/* TODO:check this s-motion_sensors */
 				vect.sensor_num = sens_cnt;
 
 				motion_sense_fifo_stage_data(&vect, sens_output,
@@ -453,9 +462,21 @@ static int irq_handler(struct motion_sensor_t *s, uint32_t *event)
 		 */
 		fifo_frame.available_fifo_len = (fifo_fill_level * 2) + 2;
 
+		/*
+		 * If fill level is greater than buffer size then wrap it to
+		 * buffer size.
+		 */
+		if (fifo_frame.available_fifo_len > ARRAY_SIZE(bmi3_buffer))
+			CPRINTS("unexpected large FIFO: %d",
+				fifo_frame.available_fifo_len);
+
+		fifo_frame.available_fifo_len =
+					MIN(fifo_frame.available_fifo_len,
+					    ARRAY_SIZE(bmi3_buffer));
+
 		/* Read FIFO data */
 		ret = bmi3_read_n(s, BMI3_REG_FIFO_DATA, bmi3_buffer,
-					fifo_fill_level);
+					fifo_frame.available_fifo_len);
 
 		bmi3_parse_fifo_data(s, &fifo_frame, last_interrupt_timestamp);
 		has_read_fifo = 1;
@@ -979,17 +1000,19 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 
 	/* Set the accel/gyro configurations. */
 	ret = bmi3_write_n(s, BMI3_REG_ACC_CONF + s->type, &reg_data[2], 2);
-
-	if (ret == EC_SUCCESS) {
-		saved_data->odr = normalized_rate;
-
-		/*
-		 * FIFO start collecting events.
-		 * They will be discarded if AP does not want them.
-		 */
-		if (IS_ENABLED(ACCELGYRO_BMI3XX_INT_ENABLE) && (rate > 0))
-			ret = enable_fifo(s, 1);
+	if (ret) {
+		mutex_unlock(s->mutex);
+		return ret;
 	}
+
+	saved_data->odr = normalized_rate;
+
+	/*
+	 * If rate is non zero, FIFO start collecting events.
+	 * They will be discarded if AP does not want them.
+	 */
+	if (rate > 0)
+		ret = enable_fifo(s, 1);
 
 	mutex_unlock(s->mutex);
 	return ret;
