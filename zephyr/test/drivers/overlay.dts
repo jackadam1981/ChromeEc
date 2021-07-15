@@ -34,6 +34,11 @@
 			enum-name = "GPIO_PG_EC_DSW_PWROK";
 			label = "PG_EC_DSW_PWROK";
 		};
+		ec_pch_wake_odl {
+			gpios = <&gpio0 5 GPIO_ODR_HIGH>;
+			enum-name = "GPIO_EC_PCH_WAKE_ODL";
+			label = "EC_PCH_WAKE_ODL";
+		};
 	};
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
@@ -157,6 +162,15 @@
 			temp_host_release_high = <65>;
 			adc = <&adc_fan>;
 		};
+	};
+
+	espi0_emul: espi@300 {
+		status = "okay";
+		compatible = "zephyr,espi-emul-controller";
+		reg = <0x300 4>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		label = "ESPI_0";
 	};
 };
 

@@ -22,7 +22,17 @@
 #include "lpc.h"
 #include "port80.h"
 #include "power.h"
+#ifdef CONFIG_SOC_FAMILY_NPCX
 #include "soc_espi.h"
+#else
+/* DO NOT MERGE: this is a stub to avoid a larger refactor while testing. */
+#define NPCX_ACPI_TYPE_POS 0
+#define NPCX_ACPI_DATA_POS 0
+#define NPCX_8042_EVT_POS 0
+#define NPCX_8042_EVT_IBF 0
+#define NPCX_8042_DATA_POS 0
+#define NPCX_8042_TYPE_POS 0
+#endif
 #include "task.h"
 #include "timer.h"
 #include "zephyr_espi_shim.h"
