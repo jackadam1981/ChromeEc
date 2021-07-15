@@ -394,11 +394,23 @@ flash_fp_mcu_stm32() {
   fi
   gpio unexport "${gpio_boot0}" "${gpio_nrst}"
 
-  # wait for FP MCU to come back up (including RWSIG delay)
-  sleep 2
-
   # Put back cros_fp driver if transport is SPI
   if [[ "${transport}" != "UART" ]]; then
+    # Dartmonkey's RO has an flashprotect logic issue that forces reboot loops
+    # when SW-WP is enabled and HW-WP is disabled. It is avoided if a POR is
+    # detected. We force a POR here to ensure we avoid this reboot loop.
+    # See to b/146428434.
+    if [[ "${gpio_pwren}" -gt 0 ]]; then
+      gpio export "${gpio_pwren}"
+      gpio out    "${gpio_pwren}"
+      gpio 0      "${gpio_pwren}"
+      sleep 0.5
+      gpio 1      "${gpio_pwren}"
+      # wait for FP MCU to come back up (including RWSIG delay)
+      sleep 2
+      gpio unexport "${gpio_pwren}"
+    fi
+
     klog "Binding cros-ec driver"
     echo "" > "/sys/bus/spi/devices/${deviceid}/driver_override"
     echo "${deviceid}" > /sys/bus/spi/drivers/cros-ec-spi/bind
