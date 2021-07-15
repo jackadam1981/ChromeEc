@@ -32,6 +32,11 @@
 #define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_CMD_BUTTON
 
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_UPDATE
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+
 /* Work around hardware issues by delaying hibernate for a couple of months */
 #undef CONFIG_HIBERNATE_DELAY_SEC
 #define CONFIG_HIBERNATE_DELAY_SEC (3600 * 24 * 60)
