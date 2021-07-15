@@ -16,6 +16,52 @@
       "message": "Hi Wai-Hong,\n\ncould you help to review this CL? Thanks.",
       "revId": "5a021101f3047cf0c814f7095816b4a59a3eb7a7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "576f0477_fe890d97",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-15T21:04:37Z",
+      "side": 1,
+      "message": "Why add this check? The below HOOK_* define when the function is called.",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 9
+      },
+      "revId": "5a021101f3047cf0c814f7095816b4a59a3eb7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c77c9b_03077662",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-15T21:04:37Z",
+      "side": 1,
+      "message": "When using BMI160, this if condition is true; this seems to be an expected behavior, not a fail.\n\nYou may merge this if condition to the following if clause.",
+      "range": {
+        "startLine": 385,
+        "startChar": 2,
+        "endLine": 385,
+        "endChar": 27
+      },
+      "revId": "5a021101f3047cf0c814f7095816b4a59a3eb7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
