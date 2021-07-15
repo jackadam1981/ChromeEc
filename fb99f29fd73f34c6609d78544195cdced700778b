@@ -16,6 +16,23 @@
       "message": "Overall this looks good, I do have one concern. If you look at https://docs.zephyrproject.org/2.3.0/guides/kconfig/tips.html#lack-of-conditional-includes, doing something like we have below can be hard to refactor later. If you look at various Kconfig files in the Zephyr tree you\u0027ll see that rsource and source are used without wrappers. The wrapping is done inside the Kconfig file. This means that if the conditions specific to the Kconfig change, they change at the include target, not the parent Kconfig. For example...\n\nKconfig:\n  if SOC_SERIES_NPCX9\n  rsource \"chip/Kconfig.npcx9\"\n  endif # SOC_SERIES_NPCX9\n\nBecomes...\n  rsource \"chip/Kconfig.npcx9\"\n\nThen, Kconfig.npcx9 is wrapped with:\n  if SOC_SERIES_NPCX9\n  ...\n  endif # SOC_SERIES_NPCX9\n  \nNow I see that there\u0027s already precedence for the current approach, I\u0027m happy with a cleanup taking place in a following CL.",
       "revId": "fb99f29fd73f34c6609d78544195cdced700778b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdc3b0f9_9c8621a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-07-15T07:50:38Z",
+      "side": 1,
+      "message": "I would like to add npcx7m6fb \u0026 npcx9m6f in the files. However, apply the second CL will break other vendor builds. The NPCX header config is in soc folder. Zephyr include soc folder by soc architecture(https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/refs/heads/chromeos-v2.5/cmake/kconfig.cmake#19). The soc using different architecture will show the config error. One solution would be adding an arm architecture folder \u0026 include default config by `orsource \"chip/$(ARCH)/Kconfig.npcx7\" `",
+      "revId": "fb99f29fd73f34c6609d78544195cdced700778b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
