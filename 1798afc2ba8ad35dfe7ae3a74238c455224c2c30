@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f421feed_d6be8684",
+        "filename": "zephyr/include/dt-bindings/wake_mask_event_defines.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-07-15T15:49:15Z",
+      "side": 1,
+      "message": "This adjustment occurs in the host_set_single_event function defined in host_event_commands.c.\n\n#define HOST_EVENT_32BIT_MASK(x)        (1UL \u003c\u003c ((x) - 1))\nstatic void host_event_set_bit(host_event_t *ev, uint8_t bit)",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "1798afc2ba8ad35dfe7ae3a74238c455224c2c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
