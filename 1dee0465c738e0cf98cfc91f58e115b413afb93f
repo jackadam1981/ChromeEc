@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9f00282_08653516",
+        "filename": "board/gooey/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-07-15T03:24:00Z",
+      "side": 1,
+      "message": "sorry to miss it.\nI correct it as patchset4.",
+      "parentUuid": "ed615085_f52cdbff",
+      "range": {
+        "startLine": 13,
+        "startChar": 24,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "1dee0465c738e0cf98cfc91f58e115b413afb93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52472b91_10d0e78c",
@@ -81,6 +105,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae4246be_3d611d09",
+        "filename": "board/gooey/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-07-15T03:24:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52472b91_10d0e78c",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "1dee0465c738e0cf98cfc91f58e115b413afb93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fbefcf6f_432ec97d",
@@ -94,6 +142,30 @@
       "writtenOn": "2021-07-14T21:00:48Z",
       "side": 1,
       "message": "gooey?",
+      "range": {
+        "startLine": 69,
+        "startChar": 56,
+        "endLine": 69,
+        "endChar": 61
+      },
+      "revId": "1dee0465c738e0cf98cfc91f58e115b413afb93f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2971fbe4_e73b5d9c",
+        "filename": "board/gooey/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-07-15T03:24:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbefcf6f_432ec97d",
       "range": {
         "startLine": 69,
         "startChar": 56,
