@@ -70,3 +70,8 @@ struct jump_data *get_jump_data(void)
 {
 	return NULL;
 }
+
+void system_reset(int flags)
+{
+	__builtin_unreachable();
+}
