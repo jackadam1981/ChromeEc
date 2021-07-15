@@ -12,6 +12,8 @@
 #include "common.h"
 #include "ec_commands.h"
 
+#include "driver/fingerprint/fpsensor.h"
+
 #ifndef SPI_FP_DEVICE
 #define SPI_FP_DEVICE (&spi_devices[0])
 #endif
