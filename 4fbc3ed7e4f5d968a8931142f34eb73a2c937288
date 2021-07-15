@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5f651d_11abafd1",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-15T04:57:55Z",
+      "side": 1,
+      "message": "Why do you need to add a space here? Same as below.",
+      "range": {
+        "startLine": 193,
+        "startChar": 2,
+        "endLine": 193,
+        "endChar": 3
+      },
+      "revId": "4fbc3ed7e4f5d968a8931142f34eb73a2c937288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "befffc2a_8bda661f",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-15T04:57:55Z",
+      "side": 1,
+      "message": "As i mentioned early, bma255 are unacceptable under SSFC scope. Please move this to line 325. ie.\n\nif (system_get_board_version() \u003c\u003d 2) {\n\tmotion_sensor_count \u003d SENSOR_COUNT - 1;\n\tmotion_sensors[BASE_ACCEL] \u003d bma255_base_accel;\n\tccprints(\"BASE_ACCEL is BMA253\");\n}",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 35
+      },
+      "revId": "4fbc3ed7e4f5d968a8931142f34eb73a2c937288",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
