@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6931335b_9f943c69",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1875,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-15T17:01:44Z",
+      "side": 1,
+      "message": "Done. No, we don\u0027t.",
+      "parentUuid": "adc7591d_a8f0ff55",
+      "range": {
+        "startLine": 1874,
+        "startChar": 0,
+        "endLine": 1875,
+        "endChar": 58
+      },
+      "revId": "ad4fc306e5579570d8be9c63869dedcee52bf994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2ba6fadd_aeccd5d1",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 21
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-14T15:04:50Z",
       "side": 1,
       "message": "this part has a functional change ?\nyou can no longer enter this clause if CONFIG_BATTERY_REVIVE_DISCONNECT is set ?",
+      "range": {
+        "startLine": 1887,
+        "startChar": 0,
+        "endLine": 1888,
+        "endChar": 50
+      },
+      "revId": "ad4fc306e5579570d8be9c63869dedcee52bf994",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f7c4ba_c49756e5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 21
+      },
+      "lineNbr": 1888,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-15T17:01:44Z",
+      "side": 1,
+      "message": "Done. Fixed.",
+      "parentUuid": "2ba6fadd_aeccd5d1",
       "range": {
         "startLine": 1887,
         "startChar": 0,
