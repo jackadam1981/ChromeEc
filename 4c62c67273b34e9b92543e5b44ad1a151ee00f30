@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b511bc84_3834c569",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-07-15T21:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab17ff0b_269e33ad",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 49
+      },
+      "revId": "4c62c67273b34e9b92543e5b44ad1a151ee00f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28bb4e2d_62893502",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-15T00:50:22Z",
       "side": 1,
       "message": "Maybe we can also record what components are kept to all boards like sensors and what specific component is kept for what board like usb mux for sasuke only.",
+      "revId": "4c62c67273b34e9b92543e5b44ad1a151ee00f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc7d8976_6aa6392b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-07-15T21:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28bb4e2d_62893502",
       "revId": "4c62c67273b34e9b92543e5b44ad1a151ee00f30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afa824fd_3142eb09",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-07-15T21:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "736c1e63_a2235c1f",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 11
+      },
+      "revId": "4c62c67273b34e9b92543e5b44ad1a151ee00f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "696148d0_e531e315",
@@ -77,6 +143,30 @@
       "writtenOn": "2021-07-15T00:50:22Z",
       "side": 1,
       "message": "Since there is no build target for dedede, maybe we can verify them by `make buildall` at least.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 17
+      },
+      "revId": "4c62c67273b34e9b92543e5b44ad1a151ee00f30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08116f5a_73badf17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-07-15T21:33:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "696148d0_e531e315",
       "range": {
         "startLine": 15,
         "startChar": 5,
