@@ -3811,6 +3811,7 @@ void tc_usb_firmware_fw_update_limited_run(int port)
 void tc_usb_firmware_fw_update_run(int port)
 {
 	TC_SET_FLAG(port, TC_FLAGS_USB_RETIMER_FW_UPDATE_RUN);
+	pd_timer_disable(port, TC_TIMER_LOW_POWER_TIME);
 	tc_start_event_loop(port);
 }
 
