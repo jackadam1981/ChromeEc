@@ -1166,6 +1166,29 @@ static int init(struct motion_sensor_t *s)
 	if (reg_data[2] != BMI323_CHIP_ID)
 		return EC_ERROR_HW_INTERNAL;
 
+	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
+		/* Reset bmi3 device */
+		reg_data[0] = (uint8_t)(BMI3_CMD_SOFT_RESET
+					& BMI3_SET_LOW_BYTE);
+		reg_data[1] = (uint8_t)((BMI3_CMD_SOFT_RESET
+					 & BMI3_SET_HIGH_BYTE) >> 8);
+
+		RETURN_ERROR(bmi3_write_n(s, BMI3_REG_CMD, reg_data, 2));
+
+		/* Delay of 2ms after soft reset*/
+		msleep(2);
+
+		/* Enable feature engine bit */
+		reg_data[0] = BMI3_ENABLE;
+		reg_data[1] = 0;
+
+		RETURN_ERROR(bmi3_write_n(s, BMI3_REG_FEATURE_ENGINE_GLOB_CTRL,
+					  reg_data, 2));
+
+		if (IS_ENABLED(CONFIG_ACCEL_INTERRUPTS))
+			RETURN_ERROR(config_interrupt(s));
+	}
+
 	for (i = X; i <= Z; i++)
 		saved_data->scale[i] = MOTION_SENSE_DEFAULT_SCALE;
 
