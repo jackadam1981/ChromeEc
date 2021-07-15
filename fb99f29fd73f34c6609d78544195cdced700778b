@@ -87,6 +87,42 @@
       "parentUuid": "a8a6f8da_2eeb5bd6",
       "revId": "fb99f29fd73f34c6609d78544195cdced700778b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a26c970a_e681c311",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-15T20:50:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bd6e3ad_9f05aa42",
+      "revId": "fb99f29fd73f34c6609d78544195cdced700778b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dd09d3f_b9ec57ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-15T20:50:19Z",
+      "side": 1,
+      "message": "I made the fix in CL:3032867.",
+      "parentUuid": "64b3edbc_a8c0571f",
+      "revId": "fb99f29fd73f34c6609d78544195cdced700778b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
