@@ -22,6 +22,52 @@
       },
       "revId": "1798afc2ba8ad35dfe7ae3a74238c455224c2c30",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d0da0ee_605edc80",
+        "filename": "zephyr/include/dt-bindings/wake_mask_event_defines.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-15T17:37:58Z",
+      "side": 1,
+      "message": "tab",
+      "range": {
+        "startLine": 22,
+        "startChar": 33,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "1798afc2ba8ad35dfe7ae3a74238c455224c2c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b706497_8160e183",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-15T17:37:58Z",
+      "side": 1,
+      "message": "You should not need the \\ on each line",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "1798afc2ba8ad35dfe7ae3a74238c455224c2c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
