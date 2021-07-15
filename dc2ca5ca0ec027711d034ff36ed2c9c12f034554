@@ -81,6 +81,52 @@
       },
       "revId": "dc2ca5ca0ec027711d034ff36ed2c9c12f034554",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e96dae2_5af36244",
+        "filename": "board/munna/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2021-07-15T03:27:51Z",
+      "side": 1,
+      "message": "use ACCEL_MK_SPI_ADDR_FLAGS() in main branch",
+      "range": {
+        "startLine": 415,
+        "startChar": 24,
+        "endLine": 415,
+        "endChar": 47
+      },
+      "revId": "dc2ca5ca0ec027711d034ff36ed2c9c12f034554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42020a52_d578fc2c",
+        "filename": "board/munna/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2021-07-15T03:27:51Z",
+      "side": 1,
+      "message": "use ACCEL_MK_SPI_ADDR_FLAGS() in main branch",
+      "range": {
+        "startLine": 443,
+        "startChar": 24,
+        "endLine": 443,
+        "endChar": 47
+      },
+      "revId": "dc2ca5ca0ec027711d034ff36ed2c9c12f034554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
