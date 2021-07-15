@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e982c5_9e6d1202",
+        "filename": "zephyr/app/ec/chip/Kconfig.npcx",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-15T19:13:16Z",
+      "side": 1,
+      "message": "Setting the config option like this results in the following in the .config file:\n\nCONFIG_NPCX_HEADER_SPI_MAX_CLOCK\u003d50    // From this file\nCONFIG_NPCX_HEADER_SPI_MAX_CLOCK_20\u003dy  // Default choice automatically set\n\nTo fix this, the SPI clock choice defined here (https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/0356c821/soc/arm/nuvoton_npcx/Kconfig#30) needs to be given a label.\n\nFor instance:\n\nchoice NPCX_HEADER_SPI_MAX_CLOCK_CHOICE\n    default NPCX_HEADER_SPI_MAX_CLOCK_20\n    help\n       ...\n       \nendchoice\n\nThen to change the default, this file can use:\n\nconfig NPCX_HEADER_SPI_MAX_CLOCK_CHOICE\n    default NPCX_HEADER_SPI_MAX_CLOCK_50\n    \nThis can be cleaned up after fixing the Kconfig upstream.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "02b431669df3b4ea24a5c3160693dca336257ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d4f89cc_2c2a932f",
+        "filename": "zephyr/app/ec/chip/Kconfig.npcx",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-15T19:13:16Z",
+      "side": 1,
+      "message": "Also needs a label added to the choice upstream.",
+      "range": {
+        "startLine": 16,
+        "startChar": 7,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "02b431669df3b4ea24a5c3160693dca336257ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ec3c3eb_c90e6521",
+        "filename": "zephyr/app/ec/chip/Kconfig.npcx",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-15T19:13:16Z",
+      "side": 1,
+      "message": "Also needs a label upstream.",
+      "range": {
+        "startLine": 19,
+        "startChar": 7,
+        "endLine": 19,
+        "endChar": 45
+      },
+      "revId": "02b431669df3b4ea24a5c3160693dca336257ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
