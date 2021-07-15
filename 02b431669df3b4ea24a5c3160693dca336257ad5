@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fe7c771c_7eca76fb",
+        "filename": "zephyr/app/ec/chip/Kconfig.npcx",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-15T21:17:00Z",
+      "side": 1,
+      "message": "Agree.\n\n+whliao@nuvoton, could you make this upstream fix?",
+      "parentUuid": "c7e982c5_9e6d1202",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "02b431669df3b4ea24a5c3160693dca336257ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d4f89cc_2c2a932f",
         "filename": "zephyr/app/ec/chip/Kconfig.npcx",
         "patchSetId": 1
