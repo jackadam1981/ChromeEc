@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb66d85e_fe6831b4",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-15T10:15:06Z",
+      "side": 1,
+      "message": "use `.rot_standard_ref \u003d NULL` for identity matrix here.",
+      "range": {
+        "startLine": 179,
+        "startChar": 1,
+        "endLine": 179,
+        "endChar": 44
+      },
+      "revId": "c89f3c4e5a73d18963b1d60cc92badd0b61a5ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4aa4730_0beb3493",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-15T10:15:06Z",
+      "side": 1,
+      "message": "Is this intended? Other boards use HOOK_INIT here.",
+      "range": {
+        "startLine": 356,
+        "startChar": 13,
+        "endLine": 356,
+        "endChar": 33
+      },
+      "revId": "c89f3c4e5a73d18963b1d60cc92badd0b61a5ce6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
