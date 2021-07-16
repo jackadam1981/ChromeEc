@@ -16,6 +16,24 @@
       "message": "+Abe -- shall we get the cherry-pick in, or wait for the merge to pull it in? I am guessing maybe you\u0027re in the middle of the merge?\n\nThanks.",
       "revId": "c55711272d6b3f8820626c9d4aff9f31201429a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbb2f0bd_1cf2b3c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-07-16T16:49:30Z",
+      "side": 1,
+      "message": "Go ahead and cherry pick. I don\u0027t think it will have a significant impact on the merge.",
+      "parentUuid": "330cab19_62a3d527",
+      "revId": "c55711272d6b3f8820626c9d4aff9f31201429a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
