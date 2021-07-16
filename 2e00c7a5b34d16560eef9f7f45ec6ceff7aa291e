@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6ef86d9_cbac6bd5",
+        "filename": "baseboard/volteer/cbi_ssfc.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-07-16T00:55:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1089dc9e_2fba7bfb",
+      "range": {
+        "startLine": 23,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "2e00c7a5b34d16560eef9f7f45ec6ceff7aa291e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c26b38d_a03eac53",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "927f7c35_f491d56b",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-07-16T00:55:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c26b38d_a03eac53",
+      "range": {
+        "startLine": 340,
+        "startChar": 2,
+        "endLine": 340,
+        "endChar": 7
+      },
+      "revId": "2e00c7a5b34d16560eef9f7f45ec6ceff7aa291e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42025032_94b12815",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-15T17:02:24Z",
       "side": 1,
       "message": "Move this outside the switch statement, and change to a check of (system_get_board_version() \u003c\u003d 2).",
+      "range": {
+        "startLine": 341,
+        "startChar": 6,
+        "endLine": 341,
+        "endChar": 29
+      },
+      "revId": "2e00c7a5b34d16560eef9f7f45ec6ceff7aa291e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bbe3f09_e28b2f09",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-07-16T00:55:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42025032_94b12815",
       "range": {
         "startLine": 341,
         "startChar": 6,
