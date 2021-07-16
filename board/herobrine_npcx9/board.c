@@ -31,6 +31,8 @@
 
 #include "gpio_list.h"
 
+static uint8_t sku_id;
+
 /* Wake-up pins for hibernate */
 const enum gpio_signal hibernate_wake_pins[] = {
 	GPIO_LID_OPEN,
@@ -121,6 +123,28 @@ const struct pwm_t pwm_channels[] = {
 	[PWM_CH_DISPLIGHT] = { .channel = 5, .flags = 0, .freq = 4800 },
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
+
+/* Read SKU ID from GPIO and initialize variables for board variants */
+static void sku_id_init(void)
+{
+	uint8_t val = 0;
+
+	if (gpio_get_level(GPIO_SKU_ID0))
+		val |= 0x01;
+	if (gpio_get_level(GPIO_SKU_ID1))
+		val |= 0x02;
+	if (gpio_get_level(GPIO_SKU_ID2))
+		val |= 0x04;
+
+	sku_id = val;
+	CPRINTS("SKU ID: %u", sku_id);
+}
+DECLARE_HOOK(HOOK_INIT, sku_id_init, HOOK_PRIO_INIT_I2C + 1);
+
+__override uint32_t board_get_sku_id(void)
+{
+	return sku_id;
+}
 
 /* Initialize board. */
 static void board_init(void)
