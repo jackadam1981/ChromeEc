@@ -122,6 +122,30 @@
       },
       "revId": "833a8ea2a542126829ce2c4c58e14b1923b835a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba27687b_271436f4",
+        "filename": "board/herobrine_npcx7/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-16T19:46:42Z",
+      "side": 1,
+      "message": "Conversion done. PTAL. If we want to enable tri-state-GPIO-based BRDID by default, we can update board_get_version() in the common code later in a separate CL.",
+      "parentUuid": "a293de5e_1d8b495e",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "833a8ea2a542126829ce2c4c58e14b1923b835a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
