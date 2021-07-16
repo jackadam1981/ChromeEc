@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d08907f0_3b2f3cd4",
+        "filename": "zephyr/app/ec/chip/Kconfig.npcx",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-07-16T09:51:53Z",
+      "side": 1,
+      "message": "Let wait the upstream merge.\nPR: https://github.com/zephyrproject-rtos/zephyr/pull/36999\nCL:3034783",
+      "parentUuid": "34788725_5a202800",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "02b431669df3b4ea24a5c3160693dca336257ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d4f89cc_2c2a932f",
         "filename": "zephyr/app/ec/chip/Kconfig.npcx",
         "patchSetId": 1
