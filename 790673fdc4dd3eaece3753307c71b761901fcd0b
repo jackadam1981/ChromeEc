@@ -16,6 +16,24 @@
       "message": "We can submit this now to make sure we\u0027re not crashing systems.  \n\nI\u0027ll be curious to see whether this can pass CTS with tight timstamps on.  And also curious to know why we don\u0027t hit this issue with the BMI160 if it\u0027s using similar ODRs.  ",
       "revId": "790673fdc4dd3eaece3753307c71b761901fcd0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec08115f_a446ceeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-16T08:50:42Z",
+      "side": 1,
+      "message": "Agree. That is the intent \"to make it work\". We are working on optimizing it.",
+      "parentUuid": "321ed0b5_e94b59b4",
+      "revId": "790673fdc4dd3eaece3753307c71b761901fcd0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
