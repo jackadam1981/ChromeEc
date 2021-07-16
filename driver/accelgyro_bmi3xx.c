@@ -1141,6 +1141,14 @@ static int init(struct motion_sensor_t *s)
 	/* This driver requires a mutex */
 	ASSERT(s->mutex);
 
+	/*
+	 * BMI3xx driver only supports MOTIONSENSE_TYPE_ACCEL and
+	 * MOTIONSENSE_TYPE_GYR0
+	 */
+	if (s->type != MOTIONSENSE_TYPE_ACCEL
+	    && s->type != MOTIONSENSE_TYPE_GYRO)
+		return EC_ERROR_UNIMPLEMENTED;
+
 	/* Read chip id */
 	RETURN_ERROR(bmi3_read_n(s, BMI3_REG_CHIP_ID, reg_data, 4));
 
