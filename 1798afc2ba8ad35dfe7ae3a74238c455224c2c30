@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "352cf6fb_e1d6f7ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-16T07:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fdb6a02_5019d7fc",
+      "revId": "1798afc2ba8ad35dfe7ae3a74238c455224c2c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f421feed_d6be8684",
@@ -88,6 +106,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee433839_ab6e03c6",
+        "filename": "zephyr/include/dt-bindings/wake_mask_event_defines.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-16T07:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "207b04b5_33a6b5f9",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 48
+      },
+      "revId": "1798afc2ba8ad35dfe7ae3a74238c455224c2c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ad4a9a6_660b5def",
+        "filename": "zephyr/include/dt-bindings/wake_mask_event_defines.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-16T07:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d0da0ee_605edc80",
+      "range": {
+        "startLine": 22,
+        "startChar": 33,
+        "endLine": 22,
+        "endChar": 34
+      },
+      "revId": "1798afc2ba8ad35dfe7ae3a74238c455224c2c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b706497_8160e183",
@@ -101,6 +167,30 @@
       "writtenOn": "2021-07-15T17:37:58Z",
       "side": 1,
       "message": "You should not need the \\ on each line",
+      "range": {
+        "startLine": 42,
+        "startChar": 18,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "1798afc2ba8ad35dfe7ae3a74238c455224c2c30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ccec27a_45516cb6",
+        "filename": "zephyr/projects/trogdor/boards/arm/trogdor/trogdor.dts",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-07-16T07:08:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b706497_8160e183",
       "range": {
         "startLine": 42,
         "startChar": 18,
