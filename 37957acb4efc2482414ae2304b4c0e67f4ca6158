@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82cd8560_3ff2e1aa",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-16T20:55:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "232ec97a_56a55077",
+      "revId": "37957acb4efc2482414ae2304b4c0e67f4ca6158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b925258_5b0408e1",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-16T17:05:50Z",
       "side": 1,
       "message": "Do you think this would make sense in baseboard as well guarded by HAS_TASK_MOTIONSENSE?\n\nI usually see: \n        if (tablet_get_mode())\n                enable \u003d 0;\n\nhere as well when we have the GMR sensor for the board as well.",
+      "revId": "37957acb4efc2482414ae2304b4c0e67f4ca6158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6879a47_8fe9b7d5",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-07-16T20:55:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b925258_5b0408e1",
       "revId": "37957acb4efc2482414ae2304b4c0e67f4ca6158",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
