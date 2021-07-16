@@ -14,6 +14,7 @@
 #include <drivers/pinmux.h>
 #include <dt-bindings/pinctrl/it8xxx2-pinctrl.h>
 
+#include "chipset.h"
 #include "console.h"
 #include "host_command.h"
 
@@ -105,25 +106,37 @@ static void spi_bad_received_data(int count)
 
 static void spi_response_host_data(uint8_t *out_msg_addr, int tx_size)
 {
-	/* Tx FIFO reset and count monitor reset */
-	IT83XX_SPI_TXFCR = IT83XX_SPI_TXFR | IT83XX_SPI_TXFCMR;
-	/* CPU Tx FIFO1 and FIFO2 access */
-	IT83XX_SPI_TXRXFAR = IT83XX_SPI_CPUTFA;
+	unsigned int key = irq_lock();
 
-	for (int i = 0; i < tx_size; i += 4) {
-		/* Write response data from out_msg buffer to Tx FIFO */
-		IT83XX_SPI_CPUWTFDB0 = *(uint32_t *)(out_msg_addr + i);
+	if (shi_state != SPI_STATE_PROCESSING) {
+		/*
+		 * AP deasserted CS due to timeout of waiting for a
+		 * valid packet response from the EC.
+		 */
+		CPRINTS("Request is dropped due to AP deasserted CS");
+	} else {
+		/* Tx FIFO reset and count monitor reset */
+		IT83XX_SPI_TXFCR = IT83XX_SPI_TXFR | IT83XX_SPI_TXFCMR;
+		/* CPU Tx FIFO1 and FIFO2 access */
+		IT83XX_SPI_TXRXFAR = IT83XX_SPI_CPUTFA;
+
+		for (int i = 0; i < tx_size; i += 4) {
+			/* Write response data from out_msg buffer to Tx FIFO */
+			IT83XX_SPI_CPUWTFDB0 = *(uint32_t *)(out_msg_addr + i);
+		}
+
+		/*
+		 * After writing data to Tx FIFO is finished, this bit will
+		 * be to indicate the SPI slave controller.
+		 */
+		IT83XX_SPI_TXFCR = IT83XX_SPI_TXFS;
+		/* End Tx FIFO access */
+		IT83XX_SPI_TXRXFAR = 0;
+		/* SPI slave read Tx FIFO */
+		IT83XX_SPI_FCR = IT83XX_SPI_SPISRTXF;
 	}
 
-	/*
-	 * After writing data to Tx FIFO is finished, this bit will
-	 * be to indicate the SPI slave controller.
-	 */
-	IT83XX_SPI_TXFCR = IT83XX_SPI_TXFS;
-	/* End Tx FIFO access */
-	IT83XX_SPI_TXRXFAR = 0;
-	/* SPI slave read Tx FIFO */
-	IT83XX_SPI_FCR = IT83XX_SPI_SPISRTXF;
+	irq_unlock(key);
 }
 
 /*
@@ -234,8 +247,14 @@ static void shi_ite_int_handler(const void *arg)
 	 * EC responded data, then AP ended the transaction.
 	 */
 	if (IT83XX_SPI_ISR & IT83XX_SPI_ENDDETECTINT) {
+		/* write clear slave status */
+		IT83XX_SPI_RX_VLISR = IT83XX_SPI_RVLI;
+		/* End CPU access Rx FIFO to clock in bytes from AP again */
+		IT83XX_SPI_TXRXFAR = 0;
 		/* Ready to receive */
 		spi_set_state(SPI_STATE_READY_TO_RECV);
+		/* Tx FIFO reset and count monitor reset */
+		IT83XX_SPI_TXFCR = IT83XX_SPI_TXFR | IT83XX_SPI_TXFCMR;
 		/*
 		 * Once there is no SPI active, enable idle task deep
 		 * sleep bit of SPI in S3 or lower.
@@ -258,6 +277,16 @@ static void shi_ite_int_handler(const void *arg)
 		spi_parse_header();
 	}
 
+}
+
+void spi_event(enum gpio_signal signal)
+{
+	if (chipset_in_state(CHIPSET_STATE_ON)) {
+		/* Move to processing state */
+		spi_set_state(SPI_STATE_PROCESSING);
+		/* Disable idle task deep sleep bit of SPI in S0. */
+		/* TODO(b:185176098): disable_sleep(SLEEP_MASK_SPI); */
+	}
 }
 
 /*
@@ -330,6 +359,9 @@ static int cros_shi_ite_init(const struct device *dev)
 	/* Enable SPI slave interrupt */
 	IRQ_CONNECT(DT_INST_IRQN(0), 0, shi_ite_int_handler, 0, 0);
 	irq_enable(DT_INST_IRQN(0));
+
+	/* Enable SPI chip select pin interrupt */
+	gpio_enable_interrupt(GPIO_SPI0_CS);
 
 	return 0;
 }
