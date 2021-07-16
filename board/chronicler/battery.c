@@ -51,7 +51,11 @@ const struct board_batt_params board_battery_info[] = {
 			.voltage_max		= 13200, /* mV */
 			.voltage_normal		= 11550, /* mV */
 			.voltage_min		= 9000,  /* mV */
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 			.precharge_current	= 88,	 /* mA */
+=======
+			.precharge_current	= 128,	 /* mA */
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 			.start_charging_min_c	= 0,
 			.start_charging_max_c	= 45,
 			.charging_min_c		= 0,

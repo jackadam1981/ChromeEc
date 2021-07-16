@@ -11,6 +11,7 @@
 #include "charge_state_v2.h"
 #include "charger.h"
 #include "console.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -752,8 +753,11 @@ static void charge_manager_refresh(void)
 			trigger_ocpc_reset();
 		}
 
-		if (board_set_active_charge_port(new_port) == EC_SUCCESS)
+		if (board_set_active_charge_port(new_port) == EC_SUCCESS) {
+			if (IS_ENABLED(CONFIG_EXTPOWER))
+				board_check_extpower();
 			break;
+		}
 
 		/* 'Dont charge' request must be accepted. */
 		ASSERT(new_port != CHARGE_PORT_NONE);
@@ -829,6 +833,13 @@ static void charge_manager_refresh(void)
 
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
+
+		/*
+		 * (b:192638664) We try to check AC OK again to avoid
+		 * unsuccessful detection in the initial detection.
+		 */
+		if (IS_ENABLED(CONFIG_EXTPOWER))
+			board_check_extpower();
 	}
 
 	/*
@@ -889,6 +900,10 @@ static void charge_manager_refresh(void)
 			uint32_t pdo;
 			uint32_t max_voltage;
 			uint32_t max_current;
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
+=======
+			uint32_t unused;
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 			/*
 			 * Check if new voltage/current is different
 			 * than requested. If yes, send new power request
@@ -906,7 +921,12 @@ static void charge_manager_refresh(void)
 			pd_find_pdo_index(pd_get_src_cap_cnt(updated_new_port),
 					  pd_get_src_caps(updated_new_port),
 					  pd_get_max_voltage(), &pdo);
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 			pd_extract_pdo_power(pdo, &max_current, &max_voltage);
+=======
+			pd_extract_pdo_power(pdo, &max_current, &max_voltage,
+					     &unused);
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 			if (charge_voltage != max_voltage ||
 			    charge_current_uncapped != max_current)
 				pd_set_new_power_request(updated_new_port);

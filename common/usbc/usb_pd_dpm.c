@@ -431,12 +431,15 @@ void dpm_run(int port)
  * them
  */
 static uint32_t		max_current_claimed;
-static mutex_t		max_current_claimed_lock;
+K_MUTEX_DEFINE(max_current_claimed_lock);
 
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 #ifdef CONFIG_ZEPHYR
 static bool		dpm_mutex_initialized;
 #endif
 
+=======
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 /* Ports with PD sink needing > 1.5 A */
 static uint32_t sink_max_pdo_requested;
 /* Ports with FRS source needing > 1.5 A */
@@ -468,6 +471,7 @@ static void balance_source_ports(void)
 {
 	uint32_t removed_ports, new_ports;
 	static bool deferred_waiting;
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 
 	if (task_get_current() == TASK_ID_HOOKS)
 		deferred_waiting = false;
@@ -478,13 +482,18 @@ static void balance_source_ports(void)
 	 */
 	if (deferred_waiting)
 		return;
+=======
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 
-#ifdef CONFIG_ZEPHYR
-	if (!dpm_mutex_initialized) {
-		(void)k_mutex_init(&max_current_claimed_lock);
-		dpm_mutex_initialized = true;
-	}
-#endif
+	if (task_get_current() == TASK_ID_HOOKS)
+		deferred_waiting = false;
+
+	/*
+	 * Ignore balance attempts while we're waiting for a downgraded port to
+	 * finish the downgrade.
+	 */
+	if (deferred_waiting)
+		return;
 
 	mutex_lock(&max_current_claimed_lock);
 
@@ -509,7 +518,11 @@ static void balance_source_ports(void)
 			int rem_non_pd = LOWEST_PORT(non_pd_sink_max_requested &
 						     max_current_claimed);
 			typec_select_src_current_limit_rp(rem_non_pd,
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 							  CONFIG_USB_PD_PULLUP);
+=======
+				typec_get_default_current_limit_rp(rem_non_pd));
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 			max_current_claimed &= ~BIT(rem_non_pd);
 
 			/* Wait tSinkAdj before using current */
@@ -550,7 +563,11 @@ static void balance_source_ports(void)
 			int rem_non_pd = LOWEST_PORT(non_pd_sink_max_requested &
 						     max_current_claimed);
 			typec_select_src_current_limit_rp(rem_non_pd,
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 							  CONFIG_USB_PD_PULLUP);
+=======
+				typec_get_default_current_limit_rp(rem_non_pd));
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 			max_current_claimed &= ~BIT(rem_non_pd);
 
 			/* Wait tSinkAdj before using current */
@@ -588,9 +605,6 @@ unlock:
 /* Process port's first Sink_Capabilities PDO for port current consideration */
 void dpm_evaluate_sink_fixed_pdo(int port, uint32_t vsafe5v_pdo)
 {
-	if (CONFIG_USB_PD_3A_PORTS == 0)
-		return;
-
 	/* Verify partner supplied valid vSafe5V fixed object first */
 	if ((vsafe5v_pdo & PDO_TYPE_MASK) != PDO_TYPE_FIXED)
 		return;
@@ -661,7 +675,12 @@ void dpm_remove_sink(int port)
 	atomic_clear_bits(&non_pd_sink_max_requested, BIT(port));
 
 	/* Restore selected default Rp on the port */
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 	typec_select_src_current_limit_rp(port, CONFIG_USB_PD_PULLUP);
+=======
+	typec_select_src_current_limit_rp(port,
+		typec_get_default_current_limit_rp(port));
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 
 	balance_source_ports();
 }
@@ -684,7 +703,7 @@ void dpm_remove_source(int port)
 
 /*
  * Note: all ports receive the 1.5 A source offering until they are found to
- * match a criteria on the 3.0 A priority list (ex. though sink capability
+ * match a criteria on the 3.0 A priority list (ex. through sink capability
  * probing), at which point they will be offered a new 3.0 A source capability.
  */
 __overridable int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
@@ -708,7 +727,11 @@ int dpm_get_source_current(const int port)
 
 	if (max_current_claimed & BIT(port))
 		return 3000;
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 	else if (CONFIG_USB_PD_PULLUP == TYPEC_RP_1A5)
+=======
+	else if (typec_get_default_current_limit_rp(port) == TYPEC_RP_1A5)
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 		return 1500;
 	else
 		return 500;

@@ -97,6 +97,7 @@ test_static int finish_src_discovery(int startup_cable_probes)
 		   PD_ROLE_SINK, PD_ROLE_UFP, 0);
 
 	/*
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 	 * Expect GET_SINK_CAP, reply with a simple Sink Cap since sink partners
 	 * must support this message.
 	 */
@@ -110,6 +111,8 @@ test_static int finish_src_discovery(int startup_cable_probes)
 		   PDO_FIXED(5000, 500, PDO_FIXED_COMM_CAP));
 
 	/*
+=======
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 	 * Cable identity discovery is attempted 6 times total. 1 was done
 	 * above, so expect 5 more now.
 	 */

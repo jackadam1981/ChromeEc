@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 /* Copyright 2019 The Chromium OS Authors. All rights reserved.
  * Use of this source code is governed by a BSD-style license that can be
  * found in the LICENSE file.
@@ -349,3 +350,5 @@ extern uint32_t sku;
 #endif /* !__ASSEMBLER__ */
 
 #endif /* __CROS_EC_BOARD_H */
+=======
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)

@@ -45,10 +45,13 @@
  * through the EC jump to RW and PD upgrade.
  */
 #define MIN_BATTERY_FOR_PD_UPGRADE_MAH 100 /* mAH */
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 
 __overridable void board_vbus_present_change(void)
 {
 }
+=======
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 
 #if defined(CONFIG_CMD_PD) && defined(CONFIG_CMD_PD_FLASH)
 int hex8tou32(char *str, uint32_t *val)
@@ -348,6 +351,21 @@ __overridable uint8_t board_get_usb_pd_port_count(void)
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
+=======
+__overridable bool board_is_usb_pd_port_present(int port)
+{
+	/*
+	 * Use board_get_usb_pd_port_count() instead of checking
+	 * CONFIG_USB_PD_PORT_MAX_COUNT directly here for legacy boards
+	 * that implement board_get_usb_pd_port_count() but do not
+	 * implement board_is_usb_pd_port_present().
+	 */
+
+	return (port >= 0) && (port < board_get_usb_pd_port_count());
+}
+
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 __overridable bool board_is_dts_port(int port)
 {
 	return true;
@@ -944,6 +962,26 @@ static int command_tcpc_dump(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(tcpci_dump, command_tcpc_dump, "<Type-C port>",
 			"dump the TCPC regs");
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
+
+void pd_srccaps_dump(int port)
+{
+	int i;
+	const uint32_t *const srccaps = pd_get_src_caps(port);
+
+	for (i = 0; i < pd_get_src_cap_cnt(port); ++i) {
+		uint32_t max_ma, max_mv, min_mv;
+
+		pd_extract_pdo_power(srccaps[i], &max_ma, &max_mv, &min_mv);
+
+		if ((srccaps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
+			if (IS_ENABLED(CONFIG_USB_PD_REV30))
+				ccprintf("%d: %dmV-%dmV/%dmA\n", i, min_mv,
+					 max_mv, max_ma);
+		} else {
+			ccprintf("%d: %dmV/%dmA\n", i, max_mv, max_ma);
+		}
+	}
+}
 
 int pd_build_alert_msg(uint32_t *msg, uint32_t *len, enum pd_power_role pr)
 {
