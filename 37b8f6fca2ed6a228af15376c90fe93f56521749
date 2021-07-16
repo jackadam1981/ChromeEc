@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4afb870_0f3baec7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-16T19:55:00Z",
+      "side": 1,
+      "message": "LGTM pending Yuval\u0027s suggestions.",
+      "revId": "37b8f6fca2ed6a228af15376c90fe93f56521749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d692543_028bf8ca",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-07-16T15:47:31Z",
       "side": 1,
       "message": "I don\u0027t think this is needed because it\u0027s already wrapped with `if` which adds a depends.",
+      "range": {
+        "startLine": 8,
+        "startChar": 24,
+        "endLine": 8,
+        "endChar": 39
+      },
+      "revId": "37b8f6fca2ed6a228af15376c90fe93f56521749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48e6cde7_3236e125",
+        "filename": "zephyr/projects/npcx_evb/boards/arm/npcx_evb/Kconfig.defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-16T19:55:00Z",
+      "side": 1,
+      "message": "Yuval is correct.  The if/endif constructs implicitly add a depends statement on every option inside the block.",
+      "parentUuid": "5d692543_028bf8ca",
       "range": {
         "startLine": 8,
         "startChar": 24,
