@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "790f55cb_2eb09dd0",
+        "filename": "zephyr/projects/npcx_evb/boards/arm/npcx_evb/npcx7_evb.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-16T15:41:34Z",
+      "side": 1,
+      "message": "Is there a way to condition these on /CONFIG_SOC_NPCX7(M6FB|M6FC|M7FC)/?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "37b8f6fca2ed6a228af15376c90fe93f56521749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
