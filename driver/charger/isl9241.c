@@ -46,7 +46,7 @@
 static int learn_mode;
 
 /* Mutex for CONTROL1 register, that can be updated from multiple tasks. */
-static mutex_t control1_mutex;
+K_MUTEX_DEFINE(control1_mutex);
 
 /* Charger parameters */
 static const struct charger_info isl9241_charger_info = {
@@ -376,11 +376,13 @@ static void isl9241_init(int chgnum)
 #ifdef CONFIG_ISL9241_SWITCHING_FREQ
 	int ctl_val;
 #endif
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 
 	const struct battery_info *bi = battery_get_info();
+=======
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 
-	/* Init the mutex for ZephyrOS (nop for non-Zephyr builds) */
-	(void)k_mutex_init(&control1_mutex);
+	const struct battery_info *bi = battery_get_info();
 
 	/*
 	 * Set the MaxSystemVoltage to battery maximum,

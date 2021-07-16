@@ -114,6 +114,7 @@ test_export_static int command_pd(int argc, char **argv)
 				return EC_ERROR_PARAM3;
 		} else if (!strcasecmp(argv[2], "dualrole")) {
 			if (argc < 4) {
+				cflush();
 				ccprintf("dual-role toggling: ");
 				switch (pd_get_dual_role(port)) {
 				case PD_DRP_TOGGLE_ON:
@@ -131,6 +132,7 @@ test_export_static int command_pd(int argc, char **argv)
 				case PD_DRP_FORCE_SOURCE:
 					ccprintf("force source\n");
 					break;
+				cflush();
 				}
 			} else {
 				if (!strcasecmp(argv[3], "on"))
@@ -155,6 +157,7 @@ test_export_static int command_pd(int argc, char **argv)
 	}
 
 	if (!strcasecmp(argv[2], "state")) {
+		cflush();
 		ccprintf("Port C%d CC%d, %s - Role: %s-%s",
 		port, pd_get_polarity(port) + 1,
 		pd_comm_is_enabled(port) ? "Enable" : "Disable",
@@ -175,6 +178,15 @@ test_export_static int command_pd(int argc, char **argv)
 				pe_get_flags(port));
 		else
 			ccprintf("\n");
+
+		cflush();
+	} else if (!strcasecmp(argv[2], "srccaps")) {
+		pd_srccaps_dump(port);
+	}
+
+	if (IS_ENABLED(CONFIG_CMD_PD_TIMER) &&
+	    !strcasecmp(argv[2], "timer")) {
+		pd_timer_dump(port);
 	}
 
 	if (IS_ENABLED(CONFIG_CMD_PD_TIMER) &&
@@ -191,6 +203,10 @@ DECLARE_CONSOLE_COMMAND(pd, command_pd,
 	"\ntrysrc [0|1|2]"
 #endif
 	"\n\t<port> state"
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
+=======
+	"\n\t<port> srccaps"
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 #ifdef CONFIG_CMD_PD_TIMER
 	"\n\t<port> timer"
 #endif /* CONFIG_CMD_PD_TIMER */

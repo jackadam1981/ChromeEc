@@ -9,6 +9,10 @@
 #include "console.h"
 #include "dptf.h"
 #include "ec_commands.h"
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
+=======
+#include "fan.h"
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"

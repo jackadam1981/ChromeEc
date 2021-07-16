@@ -153,6 +153,7 @@ extern const struct usb_mux_driver it5205_usb_mux_driver;
 extern const struct usb_mux_driver pi3usb3x532_usb_mux_driver;
 extern const struct usb_mux_driver ps8740_usb_mux_driver;
 extern const struct usb_mux_driver ps8743_usb_mux_driver;
+extern const struct usb_mux_driver ps8822_usb_mux_driver;
 extern const struct usb_mux_driver tcpm_usb_mux_driver;
 extern const struct usb_mux_driver tusb1064_usb_mux_driver;
 extern const struct usb_mux_driver virtual_usb_mux_driver;
@@ -251,6 +252,7 @@ void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq);
 
 /**
  * Port information about retimer firmware update support.
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
  *
  * @return which ports support retimer firmware update
  *         Bits[7:0]: represent PD ports 0-7;
@@ -263,19 +265,15 @@ int usb_mux_retimer_fw_update_port_info(void);
 /**
  * Get the disconnect latch flag so that the Kernel Mux driver doesn't
  * miss the unnoticed disconnection status.
+=======
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
  *
- * @param port port number.
- * @return status of disconnect latch flag
+ * @return which ports support retimer firmware update
+ *         Bits[7:0]: represent PD ports 0-7;
+ *         each bit
+ *         = 1, this port supports retimer firmware update;
+ *         = 0, not support.
  */
-bool usb_mux_get_disconnect_latch_flag(int port);
-
-/**
- * Set the disconnect latch flag if the Type-C devices are disconnected and
- * the information is not yet updated to Kernel Mux driver.
- *
- * @param port port number
- * @param enable whether to enable or disable the disconnect latch flag
- */
-void usb_mux_set_disconnect_latch_flag(int port, bool enable);
+int usb_mux_retimer_fw_update_port_info(void);
 
 #endif

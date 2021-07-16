@@ -1,3 +1,4 @@
+<<<<<<< HEAD   (b489fc collis: gyro sensor add 2nd source icm-40608)
 # Copyright 2020 The Chromium OS Authors. All rights reserved.
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
@@ -54,3 +55,5 @@ zephyr_sources_ifdef(CONFIG_PLATFORM_EC_USBC
 # Fan stub requires on PWM support.  Remove once full fan support
 # is available.
 zephyr_sources_ifdef(CONFIG_PLATFORM_EC_PWM  "src/fan.c")
+=======
+>>>>>>> BRANCH (d97b73 vilboz: adjust dynamic changing charge current)
