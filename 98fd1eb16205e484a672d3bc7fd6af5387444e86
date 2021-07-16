@@ -16,6 +16,24 @@
       "message": "[refactoring suggestion]\nIt might be helpful to reduce the nesting level in this function. The function can be terminated if led_auto_control_is_enabled() is false, so I suggest to separate that check.\nAlso, it will be easier to read if all the PWM writes are done in one place.  Something like the following snippet. Welcome to use none/part/all of it. \n \n```\n__override void led_set_color_battery(enum ec_led_colors color)\n{\n\tint port;\n\n\t/* There are four battery leds, LED1/LED2 are on MB side and \n\t * LED3/LED4 are on DB side. All leds are OFF by default */\n\tint led1_duty, led2_duty, led3_duty, led4_duty;\n\tled1_duty \u003d led2_duty \u003d led3_duty \u003d led4_duty \u003d BAT_LED_OFF_LVL;\n\n\tif (!led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))\n\t\treturn;\n\t\n\t/* Check which port is the charging port,\n\t * and turn on the corresponding led. */\n\tport \u003d charge_manager_get_active_charge_port();\n\tswitch (port) {\n\tcase LED_SIDESEL_MB_PORT:\n\t\tswitch (color) {\n\t\tcase EC_LED_COLOR_AMBER:\n\t\t\tled1_duty \u003d BAT_LED_ON_LVL;\n\t\t\tbreak;\n\t\tcase EC_LED_COLOR_WHITE:\n\t\t\tled2_duty \u003d BAT_LED_ON_LVL;\n\t\t\tbreak;\n\t\tdefault: /* LED_OFF and other unsupported colors */\n\t\t\tbreak;\n\t\t}\n\tcase LED_SIDESEL_DB_PORT:\n\t\tswitch (color) {\n\t\tcase EC_LED_COLOR_AMBER:\n\t\t\tled3_duty \u003d BAT_LED_ON_LVL;\n\t\t\tbreak;\n\t\tcase EC_LED_COLOR_WHITE:\n\t\t\tled4_duty \u003d BAT_LED_ON_LVL;\n\t\t\tbreak;\n\t\tdefault: /* LED_OFF and other unsupported colors */\n\t\t\tbreak;\n\t\t}\n\tdefault: /* Unknown charging port */ \n\t\tbreak;\n\t}\n\n\tpwm_set_duty(PWM_CH_LED1, led1_duty);\n\tpwm_set_duty(PWM_CH_LED2, led2_duty);\n\tpwm_set_duty(PWM_CH_LED3, led3_duty);\n\tpwm_set_duty(PWM_CH_LED4, led4_duty);\n}\n```",
       "revId": "98fd1eb16205e484a672d3bc7fd6af5387444e86",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d8b25e4_495c8c5b",
+        "filename": "board/gimble/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-16T00:53:52Z",
+      "side": 1,
+      "message": "Thank you Boris. Your advise is more clear on leds control.",
+      "parentUuid": "9b3d5a1d_aa255e76",
+      "revId": "98fd1eb16205e484a672d3bc7fd6af5387444e86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
