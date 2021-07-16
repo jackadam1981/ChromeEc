@@ -16,6 +16,52 @@
       "message": "clang disable unused function warning here:\nhttps://chromium.googlesource.com/chromiumos/third_party/zephyr/+/refs/heads/chromeos-v2.5/cmake/compiler/clang/compiler_flags.cmake#88",
       "revId": "243685e35a7ec6911b4499702677ecfa5dfc68bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bed86d80_33664f40",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-16T17:49:17Z",
+      "side": 1,
+      "message": "Use #else here.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "243685e35a7ec6911b4499702677ecfa5dfc68bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a182c0dc_f0ca8f05",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-16T17:49:17Z",
+      "side": 1,
+      "message": "Add /* __clang__ */",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "243685e35a7ec6911b4499702677ecfa5dfc68bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
