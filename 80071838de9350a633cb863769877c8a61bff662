@@ -33,6 +33,29 @@
       "message": "Hi Keith, this patch is general solution. could you review it?",
       "revId": "80071838de9350a633cb863769877c8a61bff662",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd80fc0d_3a00c050",
+        "filename": "common/usbc/usb_retimer_fw_update.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-16T15:11:56Z",
+      "side": 1,
+      "message": "Add a macro to ec_commands.h for this set of bits.  That file serves as the documentation for the EC to AP communication.",
+      "range": {
+        "startLine": 96,
+        "startChar": 29,
+        "endLine": 100,
+        "endChar": 27
+      },
+      "revId": "80071838de9350a633cb863769877c8a61bff662",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
