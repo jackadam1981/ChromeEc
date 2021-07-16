@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "665a4982_0f58d873",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-07-16T19:13:44Z",
+      "side": 1,
+      "message": "Pardon me, I\u0027m not familiar with the style of how/where these ids are supposed to be read. Shouldn\u0027t there be a global EC function/library that does this reading of the ids? Where is the board id read for example, I would expect that code to be the same.",
+      "revId": "833a8ea2a542126829ce2c4c58e14b1923b835a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa07fac_0dc4d7f9",
+        "filename": "board/herobrine_npcx7/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-07-16T19:13:44Z",
+      "side": 1,
+      "message": "This seems to be in binary only, no HiZ support.\n\nThe recent experiences (b/190027674#comment44) tell me we should probably implement/test HiZ from the beginning so we don\u0027t have surprises when these stuffings are implemented wrong (eg: missing both resistors, values too high).",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "833a8ea2a542126829ce2c4c58e14b1923b835a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
