@@ -16,6 +16,23 @@
       "message": "Sue, for a little more flexibility with future SSFC changes, I suggest change to avoid using 0 value, and small naming change.\nSo then the code would change to:\n\n/*\n * TypeC port 1 MUX (Bits 6-7)\n */\nenum ec_ssfc_c1_mux {\n\tSSFC_C1_MUX_NONE    \u003d 0,\n\tSSFC_C1_MUX_TUSB544 \u003d 1,\n\tSSFC_C1_MUX_PS8818  \u003d 2,\n};\n#define SSFC_C1_MUX_OFFSET 6\n#define SSFC_C1_MUX_MASK GENMASK(7, 6)\n\n\nenum ec_ssfc_c1_mux get_cbi_ssfc_c1_mux(void);\n\nenum ec_ssfc_c1_mux get_cbi_ssfc_c1_mux(void)\n{\n\treturn (cached_ssfc \u0026 SSFC_C1_MUX_MASK) \u003e\u003e\n\t\tSSFC_C1_MUX_OFFSET;\n}\n\nstatic void setup_mux(void)\n{\n\tenum ec_ssfc_c1_mux mux \u003d get_cbi_ssfc_c1_mux();\n\n\tif (mux \u003d\u003d SSFC_C1_MUX_NONE \u0026\u0026 ec_config_has_usbc1_retimer_tusb544())\n\t\tmux \u003d SSFC_C1_MUX_TUSB544;\n\n\tif (mux \u003d\u003d SSFC_C1_MUX_PS8818) {\n\t\t...\n\t} else if (mux \u003d\u003d SSFC_C1_MUX_TUSB544) {\n\t\t...\n\t} else if (ec_config_has_usbc1_retimer_ps8743()) {\n\t\t...\n\t}\n}\n",
       "revId": "424a3df426111e23768e916d10add5aa063708f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae45875f_2325b517",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-07-16T17:34:25Z",
+      "side": 1,
+      "message": "Also, please remove \"Work In Progress\" once you are ready to submit this.",
+      "revId": "424a3df426111e23768e916d10add5aa063708f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
