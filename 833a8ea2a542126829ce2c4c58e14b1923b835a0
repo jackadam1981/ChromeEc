@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4893f56e_56c40a54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-07-16T19:35:47Z",
+      "side": 1,
+      "message": "Maybe some/all of my comments are beyond this CL (more general cleanliness and improving the common code). Otherwise, in isolation, this new behavior seems ok enough to land.",
+      "revId": "833a8ea2a542126829ce2c4c58e14b1923b835a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aa07fac_0dc4d7f9",
@@ -73,6 +90,30 @@
       "side": 1,
       "message": "OK, I\u0027ll move to HiZ-based implementation.",
       "parentUuid": "5aa07fac_0dc4d7f9",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "833a8ea2a542126829ce2c4c58e14b1923b835a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a293de5e_1d8b495e",
+        "filename": "board/herobrine_npcx7/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-07-16T19:35:47Z",
+      "side": 1,
+      "message": "Oh wow, the common board id has a similar problem with no HiZ reading (https://chromium.git.corp.google.com/chromiumos/platform/ec/+/b86dfea40060ba8e5037ba5cb3ea971b28ec541c/common/system.c#118). Maybe it\u0027s ok to keep it the same (but I would still think we should upgrade both to also do HiZ, maybe a flag to activate it, default on).",
+      "parentUuid": "696c57af_2b86d987",
       "range": {
         "startLine": 131,
         "startChar": 0,
