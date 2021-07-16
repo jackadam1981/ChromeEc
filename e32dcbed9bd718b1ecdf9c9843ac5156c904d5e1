@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "570bf6a5_e1b79060",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-16T17:34:59Z",
+      "side": 1,
+      "message": "Restructure this as:\n\nif (system_get_baord_version() \u003c\u003d 2)\n    /* BMA253 sensor *?\nelse\n    /* TODO: If a SSFC for the base sensor is added, add the check here */\n    ccprints(\"BASE sensor is ICM426XX\");",
+      "range": {
+        "startLine": 287,
+        "startChar": 0,
+        "endLine": 296,
+        "endChar": 0
+      },
+      "revId": "e32dcbed9bd718b1ecdf9c9843ac5156c904d5e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
