@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1364a0a2_b60a2464",
+        "filename": "zephyr/projects/npcx_evb/boards/arm/npcx_evb/Kconfig.board",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-16T15:43:17Z",
+      "side": 1,
+      "message": "Should this be a choice? Seems like should always be one or the other.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 28
+      },
+      "revId": "8b2ac3e0327b44d1b175e3e61126188c1aa6832b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
