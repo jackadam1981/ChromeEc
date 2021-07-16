@@ -22,6 +22,30 @@
       },
       "revId": "068f8e9aa9c79a0cc474ea73282e6d3fad98f91e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "189560a8_384c4651",
+        "filename": "baseboard/herobrine/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-16T21:18:11Z",
+      "side": 1,
+      "message": "CBI depends on CRC8.",
+      "parentUuid": "a4739036_aaa4ed8a",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 19
+      },
+      "revId": "068f8e9aa9c79a0cc474ea73282e6d3fad98f91e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
