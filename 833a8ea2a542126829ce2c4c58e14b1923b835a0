@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fe4a6d8_7099cff5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-16T19:27:04Z",
+      "side": 1,
+      "message": "For BRDID, we have:\nhttps://chromium.git.corp.google.com/chromiumos/platform/ec/+/b86dfea40060ba8e5037ba5cb3ea971b28ec541c/common/system.c#831\n\nHowever, the way we access SKUID is even more diversified than BRDID. \nAs of now, we have to leave it to per-board customization: https://chromium.git.corp.google.com/chromiumos/platform/ec/+/b86dfea40060ba8e5037ba5cb3ea971b28ec541c/common/system.c#118",
+      "parentUuid": "665a4982_0f58d873",
+      "revId": "833a8ea2a542126829ce2c4c58e14b1923b835a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5aa07fac_0dc4d7f9",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-16T19:13:44Z",
       "side": 1,
       "message": "This seems to be in binary only, no HiZ support.\n\nThe recent experiences (b/190027674#comment44) tell me we should probably implement/test HiZ from the beginning so we don\u0027t have surprises when these stuffings are implemented wrong (eg: missing both resistors, values too high).",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 14
+      },
+      "revId": "833a8ea2a542126829ce2c4c58e14b1923b835a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "696c57af_2b86d987",
+        "filename": "board/herobrine_npcx7/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-16T19:27:04Z",
+      "side": 1,
+      "message": "OK, I\u0027ll move to HiZ-based implementation.",
+      "parentUuid": "5aa07fac_0dc4d7f9",
       "range": {
         "startLine": 131,
         "startChar": 0,
