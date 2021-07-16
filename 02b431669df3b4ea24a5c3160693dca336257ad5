@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "34788725_5a202800",
+        "filename": "zephyr/app/ec/chip/Kconfig.npcx",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-07-16T05:50:56Z",
+      "side": 1,
+      "message": "OK, we will prepare the PR.",
+      "parentUuid": "fe7c771c_7eca76fb",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 11
+      },
+      "revId": "02b431669df3b4ea24a5c3160693dca336257ad5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6d4f89cc_2c2a932f",
         "filename": "zephyr/app/ec/chip/Kconfig.npcx",
         "patchSetId": 1
