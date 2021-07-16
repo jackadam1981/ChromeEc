@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "340c2bee_658c645c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-16T17:17:26Z",
+      "side": 1,
+      "message": "nit: it\u0027s an error return, rather than an ASSERT.  ASSERT will crash the EC, and we can do that if we think the error case is serious enough",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "53fae8f2c5c8c73f2a0731a9ca8a57730997940e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
