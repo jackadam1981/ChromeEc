@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cf3b13a_8010f9af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-16T01:59:43Z",
+      "side": 1,
+      "message": "I think it\u0027d be a little bit cleaner if this CL added the implementation for all the cores. And then the follow up CLs would be the actual bug fixes. Right now, they\u0027re kind of squashed into a single commit.",
+      "revId": "d2d778b37a8da313c467fdcafd1b2f12a5b77370",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
