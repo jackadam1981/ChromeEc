@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "114e642e_246079a1",
+        "filename": "board/primus/led.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-16T21:03:59Z",
+      "side": 1,
+      "message": "PWM_CH_LED4",
+      "range": {
+        "startLine": 97,
+        "startChar": 15,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "0246714494e7a51da8914030d56f63ffa82d1710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26314c32_8bd0b2d3",
+        "filename": "board/primus/led.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-16T21:03:59Z",
+      "side": 1,
+      "message": "[refactor suggestion]\nThere are a few variable that serve the same purpose (`color` and `phase` for example). \nHere is a  suggestion of how this function can be simplified, feel free to use all/part/none of it. \n```\n#define AC_DISCONNECTED (-1)\n\nstatic void led_set_power(void)\n{\n\tstatic int plug_ac_countdown;\n\tstatic int ticks;\n\n\tif (plug_ac_countdown \u003e 0) {\n\t\tticks \u003d (ticks + 1) % (int)PERIOD;\n\t\tplug_ac_countdown--;\n\n\t\tif (ticks \u003c (int)LED_LOGO_TICK_SEC)\n\t\t\tled_set_color_power(LED_OFF);\n\t\telse\n\t\t\tled_set_color_power(LED_ON);\n\t\n\t} else if (chipset_in_state(CHIPSET_STATE_ON))\n\t\tled_set_color_power(LED_ON);\n\telse if (chipset_in_state(CHIPSET_STATE_ANY_OFF))\n\t\tled_set_color_power(LED_OFF);\n\n\t/* Check AC_PRESENT */\n\tif (!extpower_is_present())\n\t\tplug_ac_countdown \u003d AC_DISCONNECTED;\n\telse if (plug_ac_countdown \u003d\u003d AC_DISCONNECTED) \n\t\t/* AC power was plugged in (previous state was \"disconnected\"),\n\t\t * set plug_ac_countdown for amount of ticks left\n\t         */\n\t\tplug_ac_countdown \u003d LED_TOTAL_TICKS;\n}\n```",
+      "revId": "0246714494e7a51da8914030d56f63ffa82d1710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
