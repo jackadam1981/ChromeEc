@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb01fc4_e0f4c943",
+        "filename": "board/redrix/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-16T01:26:54Z",
+      "side": 1,
+      "message": "i\u0027d prefer to see LED management implemented in a dedicated LED task\ninstead of overloading the hook task.",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 12
+      },
+      "revId": "6785b238c9d996d5007eb892b8adb2ade5e65e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
