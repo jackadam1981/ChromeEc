@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "232ec97a_56a55077",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-16T17:05:50Z",
+      "side": 1,
+      "message": "nit: So I hadn\u0027t seen a baseboard use HAS_TASK_MOTIONSENSE before to separate out defines, but if we have it then we could move all the sensor defines into it.  It seems nice and neat that way",
+      "revId": "37957acb4efc2482414ae2304b4c0e67f4ca6158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b925258_5b0408e1",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-16T17:05:50Z",
+      "side": 1,
+      "message": "Do you think this would make sense in baseboard as well guarded by HAS_TASK_MOTIONSENSE?\n\nI usually see: \n        if (tablet_get_mode())\n                enable \u003d 0;\n\nhere as well when we have the GMR sensor for the board as well.",
+      "revId": "37957acb4efc2482414ae2304b4c0e67f4ca6158",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
