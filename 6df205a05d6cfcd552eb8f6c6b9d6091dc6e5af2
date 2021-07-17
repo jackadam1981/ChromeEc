@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80545151_f34665d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-07-17T04:51:54Z",
+      "side": 1,
+      "message": "Changed.",
+      "parentUuid": "318904ee_7d86e0cb",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "6df205a05d6cfcd552eb8f6c6b9d6091dc6e5af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aeed5f23_f3f65a1b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-16T03:21:49Z",
       "side": 1,
       "message": "nit: reframe it for better readability",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 65
+      },
+      "revId": "6df205a05d6cfcd552eb8f6c6b9d6091dc6e5af2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a1b5278_67ef1997",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-07-17T04:51:54Z",
+      "side": 1,
+      "message": "Changed",
+      "parentUuid": "aeed5f23_f3f65a1b",
       "range": {
         "startLine": 9,
         "startChar": 1,
