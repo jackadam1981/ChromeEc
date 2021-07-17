@@ -570,10 +570,9 @@ static bool fips_self_integrity(void)
 	SHA256_hw_hash(&__fips_module_start, module_length, &digest);
 
 #ifdef CR50_DEV
-	CPRINTS("Stored:   %ph",
-		HEX_BUF(fips_integrity.b8, SHA256_DIGEST_SIZE));
-	CPRINTS("Computed: %ph",
-		HEX_BUF(digest.b8, SHA256_DIGEST_SIZE));
+	CPRINTS("Stored, %ph, computed %ph",
+		HEX_BUF(fips_integrity.b8, sizeof(fips_integrity)),
+		HEX_BUF(digest.b8, sizeof(digest)));
 #endif
 
 	return DCRYPTO_equals(fips_integrity.b8, digest.b8, sizeof(digest));
