@@ -154,12 +154,6 @@ static void ps8815_reset(void)
 {
 	int val;
 
-	gpio_set_level(ps8xxx_rst_odl, 0);
-	msleep(GENERIC_MAX(PS8XXX_RESET_DELAY_MS,
-			   PS8815_PWR_H_RST_H_DELAY_MS));
-	gpio_set_level(ps8xxx_rst_odl, 1);
-	msleep(PS8815_FW_INIT_DELAY_MS);
-
 	CPRINTS("%s: patching ps8815 registers", __func__);
 
 	if (i2c_read8(I2C_PORT_USB_C1_TCPC,
@@ -177,8 +171,26 @@ static void ps8815_reset(void)
 
 void board_reset_pd_mcu(void)
 {
+	/* Port0 */
+	gpio_set_level(GPIO_USB_C0_TCPC_RST_ODL, 0);
+	gpio_set_level(ps8xxx_rst_odl, 0);
+	msleep(GENERIC_MAX(PS8XXX_RESET_DELAY_MS,
+			   PS8815_PWR_H_RST_H_DELAY_MS));
+		
+	/*
+	 * delay for power-on to reset-off and min. assertion time
+	 */
+	msleep(20);
+	gpio_set_level(GPIO_USB_C0_TCPC_RST_ODL, 1);
+	gpio_set_level(ps8xxx_rst_odl, 1);
+	msleep(PS8815_FW_INIT_DELAY_MS);
+
+	/* Port1 */
 	ps8815_reset();
 	usb_mux_hpd_update(USBC_PORT_C1, 0, 0);
+
+	/* wait for chips to come up */
+	msleep(50);
 }
 
 static void board_tcpc_init(void)
