@@ -15,7 +15,7 @@
 #include "system_chip.h"
 #include "task.h"
 #include "timer.h"
-#include "u2f_impl.h"
+#include "u2f.h"
 
 #define CPRINTS(format, args...) cprints(CC_RBOX, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_RBOX, format, ## args)
@@ -308,6 +308,39 @@ static void power_button_init(void)
 DECLARE_HOOK(HOOK_INIT, power_button_init, HOOK_PRIO_DEFAULT);
 #endif  /* CONFIG_U2F */
 
+/* ---- physical presence (using the laptop power button) ---- */
+
+static timestamp_t last_press;
+
+/* how long do we keep the last button press as valid presence */
+#define PRESENCE_TIMEOUT (10 * SECOND)
+
+void power_button_record(void)
+{
+	if (ap_is_on() && rbox_powerbtn_is_pressed()) {
+		last_press = get_time();
+#ifdef CR50_DEV
+		CPRINTS("record pp");
+#endif
+	}
+}
+
+enum touch_state pop_check_presence(int consume)
+{
+	int recent = ((last_press.val > 0) &&
+		      ((get_time().val - last_press.val) < PRESENCE_TIMEOUT));
+
+#ifdef CR50_DEV
+	if (recent)
+		CPRINTS("User presence: consumed %d", consume);
+#endif
+	if (consume)
+		last_press.val = 0;
+
+	/* user physical presence on the power button */
+	return recent ? POP_TOUCH_YES : POP_TOUCH_NO;
+}
+
 void board_physical_presence_enable(int enable)
 {
 #ifndef CONFIG_U2F
@@ -363,4 +396,5 @@ static enum vendor_cmd_rc vc_get_pwr_btn(enum vendor_cmd_cc code,
 	return VENDOR_RC_SUCCESS;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_GET_PWR_BTN, vc_get_pwr_btn);
+
 

@@ -338,7 +338,7 @@ size_t DCRYPTO_asn1_pubp(uint8_t *buf, const p256_int *x, const p256_int *y);
 int DCRYPTO_x509_verify(const uint8_t *cert, size_t len,
 			const struct RSA *ca_pub_key);
 
-/* Generate U2F Certificate and sign it
+/* Generate U2F Certificate and sign it.
  * Use ECDSA with NIST P-256 curve, and SHA2-256 digest
  * @param d: key handle, used for NIST SP 800-90A HMAC DRBG
  * @param pk_x, pk_y: public key
