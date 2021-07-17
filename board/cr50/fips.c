@@ -571,8 +571,8 @@ static bool fips_self_integrity(void)
 
 #ifdef CR50_DEV
 	CPRINTS("Stored, %ph, computed %ph",
-		HEX_BUF(fips_integrity, sizeof(fips_integrity)),
-		HEX_BUF(digest, sizeof(digest)));
+		HEX_BUF(fips_integrity.b8, sizeof(fips_integrity)),
+		HEX_BUF(digest.b8, sizeof(digest)));
 #endif
 
 	return DCRYPTO_equals(fips_integrity.b8, digest.b8, sizeof(digest));

@@ -20,7 +20,7 @@
 #include "shared_mem.h"
 #include "system.h"
 #include "tpm_nvmem_ops.h"
-#include "u2f_impl.h"
+#include "u2f_cmds.h"
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ##args)
 
@@ -59,7 +59,7 @@ static void fips_print_status(void)
 }
 DECLARE_HOOK(HOOK_INIT, fips_print_status, HOOK_PRIO_INIT_PRINT_FIPS_STATUS);
 
-#ifdef CRYPTO_TEST_SETUP
+#if defined(CRYPTO_TEST_SETUP) || defined(CR50_DEV)
 static const uint8_t k_salt = NVMEM_VAR_G2F_SALT;
 
 /* Can't include TPM2 headers, so just define constant locally. */
@@ -74,6 +74,22 @@ static void u2f_zeroize_non_fips(void)
 	setvar(&k_salt, sizeof(k_salt), NULL, 0);
 	/* Remove U2F keys and wipe all deleted objects. */
 	nvmem_erase_tpm_data_selective(u2fobjs);
+}
+
+static void print_u2f_keys_status(void)
+{
+	struct u2f_state state;
+
+	CPRINTS("U2F HMAC len: %u, U2F Entropy len: %u, U2F try load:%u",
+		read_tpm_nvmem_size(TPM_HIDDEN_U2F_KEK),
+		read_tpm_nvmem_size(TPM_HIDDEN_U2F_KH_SALT),
+		u2f_try_load_state(&state));
+}
+
+static void u2f_keys(void)
+{
+	CPRINTS("U2F state %x", (uintptr_t)u2f_get_state());
+	print_u2f_keys_status();
 }
 
 /* Set U2F keys to old or new version. */
@@ -93,10 +109,6 @@ static void fips_set_u2f_keys(bool active)
 		write_tpm_nvmem_hidden(TPM_HIDDEN_U2F_KH_SALT, sizeof(random),
 				       random, 1);
 	} else {
-		/**
-		 * TODO(sukhomlinov): Implement new key generation after merging
-		 * https://crrev.com/c/3034852 and adding FIPS key gen.
-		 */
 		u2f_zeroize_non_fips();
 	}
 	system_reset(EC_RESET_FLAG_SECURITY);
@@ -118,11 +130,17 @@ static int cmd_fips_status(int argc, char **argv)
 			fips_print_test_time();
 			fips_print_mode();
 		}
-#ifdef CRYPTO_TEST_SETUP
+#if defined(CRYPTO_TEST_SETUP) || defined(CR50_DEV)
 		else if (!strncmp(argv[1], "new", 3))
 			fips_set_u2f_keys(true); /* we can reboot here... */
 		else if (!strncmp(argv[1], "old", 3))
 			fips_set_u2f_keys(false); /* we can reboot here... */
+		else if (!strncmp(argv[1], "u2f", 3))
+			print_u2f_keys_status();
+		else if (!strncmp(argv[1], "gen", 3))
+			u2f_keys();
+#endif
+#ifdef CRYPTO_TEST_SETUP
 		else if (!strncmp(argv[1], "trng", 4))
 			fips_break_cmd = FIPS_BREAK_TRNG;
 		else if (!strncmp(argv[1], "sha", 3))
@@ -135,7 +153,7 @@ static int cmd_fips_status(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(
 	fips, cmd_fips_status,
 #ifdef CRYPTO_TEST_SETUP
-	"[test | new | old | trng | sha]",
+	"[test | new | old | u2f | gen | trng | sha]",
 	"Report FIPS status, switch U2F key, run tests, simulate errors");
 #else
 	"[test]", "Report FIPS status, run tests");
