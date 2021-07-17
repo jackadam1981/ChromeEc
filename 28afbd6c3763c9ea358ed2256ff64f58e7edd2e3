@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a9277216_00a5d2a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-07-17T02:46:38Z",
+      "side": 1,
+      "message": "I verified on Voxel DVT with CPFE 13892 OS and Coreboot.",
+      "parentUuid": "7b43b2e0_55bc5135",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 67
+      },
+      "revId": "28afbd6c3763c9ea358ed2256ff64f58e7edd2e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3f4f7b3c_a913e4a8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
