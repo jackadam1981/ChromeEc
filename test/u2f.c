@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "u2f.h"
 #include "test_util.h"
 #include "u2f_impl.h"
 
@@ -26,8 +27,7 @@ int DCRYPTO_ladder_random(void *output)
 
 int DCRYPTO_x509_gen_u2f_cert_name(const p256_int *d, const p256_int *pk_x,
 				   const p256_int *pk_y, const p256_int *serial,
-				   const char *name, uint8_t *cert,
-				   const int n)
+				   const char *name, uint8_t *cert, const int n)
 {
 	/* Return the size of certificate, 0 means error. */
 	return 0;
@@ -42,8 +42,7 @@ int dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg, const p256_int *key,
 	return 1;
 }
 
-void hmac_drbg_init_rfc6979(struct drbg_ctx *ctx,
-			    const p256_int *key,
+void hmac_drbg_init_rfc6979(struct drbg_ctx *ctx, const p256_int *key,
 			    const p256_int *message)
 {
 	memset(ctx, 0, sizeof(struct drbg_ctx));
@@ -76,6 +75,45 @@ const uint8_t *DCRYPTO_HMAC_final(LITE_HMAC_CTX *ctx)
 	return SHA256_final(&ctx->hash);
 }
 
+bool u2f_generate(const struct u2f_state *state, const uint8_t *user,
+		  const uint8_t *origin, const uint8_t *authTimeSecretHash,
+		  union u2f_key_handle_variant *kh, uint8_t kh_version,
+		  struct u2f_ec_point *pubKey)
+{
+	return true;
+}
+
+bool u2f_authorize_keyhandle(const struct u2f_state *state,
+			     const union u2f_key_handle_variant *kh,
+			     uint8_t kh_version, const uint8_t *user,
+			     const uint8_t *origin)
+{
+	return true;
+}
+
+bool u2f_sign(const struct u2f_state *state,
+	      const union u2f_key_handle_variant *kh, uint8_t kh_version,
+	      const uint8_t *user, const uint8_t *origin, const uint8_t *hash,
+	      struct u2f_signature *sig)
+{
+	return true;
+}
+
+int g2f_attestation_cert_serial(const struct u2f_state *state,
+				const uint8_t *serial, uint8_t *buf)
+{
+	return 256;
+}
+
+bool u2f_attest(const struct u2f_state *state,
+		const union u2f_key_handle_variant *kh, uint8_t kh_version,
+		const uint8_t *user, const uint8_t *origin,
+		const struct u2f_ec_point *public_key, const uint8_t *data,
+		size_t data_size, struct u2f_signature *sig)
+{
+	return true;
+}
+
 /******************************************************************************/
 /* Mock implementations of U2F functionality.
  */
@@ -83,15 +121,14 @@ static int presence;
 
 static struct u2f_state state;
 
-struct u2f_state *get_state(void)
+struct u2f_state *u2f_get_state(void)
 {
 	return &state;
 }
 
 enum touch_state pop_check_presence(int consume)
 {
-	enum touch_state ret = presence ?
-		POP_TOUCH_YES : POP_TOUCH_NO;
+	enum touch_state ret = presence ? POP_TOUCH_YES : POP_TOUCH_NO;
 
 	if (consume)
 		presence = 0;
@@ -123,10 +160,8 @@ test_static int test_u2f_generate_no_require_presence(void)
 	memset(buffer, 0, sizeof(buffer));
 	req->flags = 0;
 	presence = 0;
-	ret = u2f_generate(
-		VENDOR_CC_U2F_GENERATE, &buffer,
-		sizeof(struct u2f_generate_req),
-		&response_size);
+	ret = u2f_generate_cmd(VENDOR_CC_U2F_GENERATE, &buffer,
+			       sizeof(struct u2f_generate_req), &response_size);
 
 	TEST_ASSERT(ret == VENDOR_RC_SUCCESS);
 	return EC_SUCCESS;
@@ -141,20 +176,16 @@ test_static int test_u2f_generate_require_presence(void)
 	memset(buffer, 0, sizeof(buffer));
 	req->flags = U2F_AUTH_FLAG_TUP;
 	presence = 0;
-	ret = u2f_generate(
-		VENDOR_CC_U2F_GENERATE, &buffer,
-		sizeof(struct u2f_generate_req),
-		&response_size);
+	ret = u2f_generate_cmd(VENDOR_CC_U2F_GENERATE, &buffer,
+			       sizeof(struct u2f_generate_req), &response_size);
 	TEST_ASSERT(ret == VENDOR_RC_NOT_ALLOWED);
 
 	memset(buffer, 0, sizeof(buffer));
 	req->flags = U2F_AUTH_FLAG_TUP;
 	response_size = sizeof(struct u2f_generate_resp);
 	presence = 1;
-	ret = u2f_generate(
-		VENDOR_CC_U2F_GENERATE, &buffer,
-		sizeof(struct u2f_generate_req),
-		&response_size);
+	ret = u2f_generate_cmd(VENDOR_CC_U2F_GENERATE, &buffer,
+			       sizeof(struct u2f_generate_req), &response_size);
 	TEST_ASSERT(ret == VENDOR_RC_SUCCESS);
 
 	return EC_SUCCESS;
