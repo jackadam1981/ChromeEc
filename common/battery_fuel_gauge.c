@@ -26,12 +26,16 @@ static int get_battery_type(void)
 	 * If battery_type is not the default value, then can return here
 	 * as there is no need to query the fuel gauge.
 	 */
+	CPRINTS("[SC] battery_type=%d", battery_type);
 	if (battery_type != BATTERY_TYPE_COUNT)
 		return battery_type;
 
+
 	/* Get the manufacturer name. If can't read then just exit */
-	if (battery_manufacturer_name(manuf_name, sizeof(manuf_name)))
+	if (battery_manufacturer_name(manuf_name, sizeof(manuf_name))) {
+		CPRINTS("print manuf_name=%s", manuf_name);
 		return battery_type;
+	}
 
 	/*
 	 * Compare the manufacturer name read from the fuel gauge to the
