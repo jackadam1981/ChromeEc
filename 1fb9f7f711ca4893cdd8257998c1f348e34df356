@@ -22,6 +22,52 @@
       },
       "revId": "1fb9f7f711ca4893cdd8257998c1f348e34df356",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ddfa2ee5_03277a3e",
+        "filename": "board/redrix/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-19T23:43:03Z",
+      "side": 1,
+      "message": "suggest using an unsigned type.\nfrankly, i\u0027d have to check what the % operator does when\nthis goes negative. easy to avoid.",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 11
+      },
+      "revId": "1fb9f7f711ca4893cdd8257998c1f348e34df356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c42a5f_9654814c",
+        "filename": "board/redrix/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-19T23:43:03Z",
+      "side": 1,
+      "message": "suggest using an unsigned type.",
+      "range": {
+        "startLine": 208,
+        "startChar": 8,
+        "endLine": 208,
+        "endChar": 11
+      },
+      "revId": "1fb9f7f711ca4893cdd8257998c1f348e34df356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
