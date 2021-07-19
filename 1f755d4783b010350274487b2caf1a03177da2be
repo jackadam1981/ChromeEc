@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c04f66c2_644ebb2e",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-19T05:43:28Z",
+      "side": 1,
+      "message": "Separating the else part to line 617 would make it harder to read.\n\nCould you move the else part here?",
+      "revId": "1f755d4783b010350274487b2caf1a03177da2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

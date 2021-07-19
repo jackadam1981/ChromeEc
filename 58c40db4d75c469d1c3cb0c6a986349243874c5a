@@ -136,6 +136,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2c15e5d_64f07256",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 503,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-19T05:43:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0c69260a_dfaabd84",
+      "range": {
+        "startLine": 503,
+        "startChar": 32,
+        "endLine": 503,
+        "endChar": 51
+      },
+      "revId": "58c40db4d75c469d1c3cb0c6a986349243874c5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e83de80_cf54600d",

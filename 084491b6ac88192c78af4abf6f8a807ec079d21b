@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8aa6d39_e9c83c78",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-19T05:43:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "146d0cb3_87914558",
+      "range": {
+        "startLine": 22,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "084491b6ac88192c78af4abf6f8a807ec079d21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef4f222d_8016866c",
@@ -143,6 +167,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee8edc0_66d3a342",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-19T05:43:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "64df706a_34a368c2",
+      "revId": "084491b6ac88192c78af4abf6f8a807ec079d21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbd34105_48635f6f",
@@ -180,6 +222,30 @@
       "side": 1,
       "message": "If I move the whole .rw_image_size_alignment section to line 475, does it mean I cannot use __flash_used which appears in line 501?\n\nAnd regarding rename to .fill, there is already a .fill there. So, you mean \"merge\" or rename?",
       "parentUuid": "dbd34105_48635f6f",
+      "range": {
+        "startLine": 618,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 0
+      },
+      "revId": "084491b6ac88192c78af4abf6f8a807ec079d21b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb3af3be_481ad7e1",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-19T05:43:28Z",
+      "side": 1,
+      "message": "The comment is missing the location in the latest commit, I\u0027ll put my comment below.",
+      "parentUuid": "c9a036bf_768f1090",
       "range": {
         "startLine": 618,
         "startChar": 0,
