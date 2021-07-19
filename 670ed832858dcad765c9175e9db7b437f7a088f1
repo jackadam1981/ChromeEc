@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "990b3c6f_2f3613c8",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-19T23:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adb164b6_82170c17",
+      "range": {
+        "startLine": 510,
+        "startChar": 3,
+        "endLine": 510,
+        "endChar": 4
+      },
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4b3efaf_17beb671",
@@ -219,6 +243,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b74de86a_8e198025",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-19T23:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "869f0ecc_10e6e78b",
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02d6a9c4_fd6f6598",
@@ -232,6 +274,30 @@
       "writtenOn": "2021-07-13T20:14:54Z",
       "side": 1,
       "message": "Add a register define if we don\u0027t already have one.  We tend to allow a lot of magic numbers in the \"init\" sections since that\u0027s how we receive our inits and it makes update deltas easy to see, but we usually have defines set for registers elsewhere.",
+      "range": {
+        "startLine": 1145,
+        "startChar": 35,
+        "endLine": 1145,
+        "endChar": 39
+      },
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31622f77_c8ac2959",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-19T23:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02d6a9c4_fd6f6598",
       "range": {
         "startLine": 1145,
         "startChar": 35,
@@ -303,6 +369,30 @@
       "side": 1,
       "message": "changed to\n#define SM5803_VBAT_PWR_MINTH_3S_LEVEL 0x9B\n#define SM5803_VBAT_PWR_MINTH_2S_LEVEL 0x9B",
       "parentUuid": "b358359e_3ae58a86",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 43
+      },
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2899af6_07a94003",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-19T23:12:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fe9f576_6508cb01",
       "range": {
         "startLine": 167,
         "startChar": 0,
