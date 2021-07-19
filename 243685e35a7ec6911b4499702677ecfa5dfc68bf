@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07c5ae0c_de685830",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-07-19T10:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bed86d80_33664f40",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "243685e35a7ec6911b4499702677ecfa5dfc68bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a182c0dc_f0ca8f05",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-16T17:49:17Z",
       "side": 1,
       "message": "Add /* __clang__ */",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "243685e35a7ec6911b4499702677ecfa5dfc68bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d99f3ee1_2076849e",
+        "filename": "zephyr/shim/include/zephyr_host_command.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-07-19T10:59:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a182c0dc_f0ca8f05",
       "range": {
         "startLine": 62,
         "startChar": 1,
