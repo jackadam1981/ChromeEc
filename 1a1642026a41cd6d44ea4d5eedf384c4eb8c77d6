@@ -22,6 +22,30 @@
       },
       "revId": "1a1642026a41cd6d44ea4d5eedf384c4eb8c77d6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "473bcf94_31fe8a28",
+        "filename": "board/herobrine_npcx9/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-19T22:46:04Z",
+      "side": 1,
+      "message": "Or better define a dts entry on the Zephyr shim layer, which overrides the board_get_sku_id(), so no separate C file. The algorithm can be a propriety, like \"base2\", \"binary_first_base3\", etc. This work is qualified to be a dedicated bug.",
+      "parentUuid": "3d8b788e_d99af7bc",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 1
+      },
+      "revId": "1a1642026a41cd6d44ea4d5eedf384c4eb8c77d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
