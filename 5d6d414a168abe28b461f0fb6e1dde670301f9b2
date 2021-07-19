@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2f016427_e01a46ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-07-19T08:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f31f61a_d7349071",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "5d6d414a168abe28b461f0fb6e1dde670301f9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "116bcb32_05f13c9f",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-19T07:52:28Z",
       "side": 1,
       "message": "(CONFIG_FLASH_SIZE_BYTES - CONFIG_RW_MEM_OFF - CONFIG_RW_STORAGE_OFF) if you want to use all remaining space.",
+      "range": {
+        "startLine": 61,
+        "startChar": 32,
+        "endLine": 61,
+        "endChar": 39
+      },
+      "revId": "5d6d414a168abe28b461f0fb6e1dde670301f9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25845b34_b703d8f7",
+        "filename": "chip/stm32/config-stm32l431.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1511958
+      },
+      "writtenOn": "2021-07-19T08:50:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff9ea1f_4f31441c",
       "range": {
         "startLine": 61,
         "startChar": 32,
