@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f31f61a_d7349071",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-19T07:52:28Z",
+      "side": 1,
+      "message": "BRANCH\u003dkukui",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "5d6d414a168abe28b461f0fb6e1dde670301f9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "116bcb32_05f13c9f",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-07-19T06:06:15Z",
       "side": 1,
       "message": "This CL changes flash layout due to RW size increase during these months.",
+      "revId": "5d6d414a168abe28b461f0fb6e1dde670301f9b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ff9ea1f_4f31441c",
+        "filename": "chip/stm32/config-stm32l431.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-19T07:52:28Z",
+      "side": 1,
+      "message": "(CONFIG_FLASH_SIZE_BYTES - CONFIG_RW_MEM_OFF - CONFIG_RW_STORAGE_OFF) if you want to use all remaining space.",
+      "range": {
+        "startLine": 61,
+        "startChar": 32,
+        "endLine": 61,
+        "endChar": 39
+      },
       "revId": "5d6d414a168abe28b461f0fb6e1dde670301f9b2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
