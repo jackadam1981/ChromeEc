@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a751c332_2ef806f6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-07-19T01:02:18Z",
+      "side": 1,
+      "message": "I submitted a ticket.",
+      "parentUuid": "1771cb7b_a1d8b1fd",
+      "range": {
+        "startLine": 32,
+        "startChar": 4,
+        "endLine": 32,
+        "endChar": 8
+      },
+      "revId": "5c7651b8103489504aa007f66d4a77a6d5830b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6b4d845b_513d428e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "623d5837_ba83a2c1",
+        "filename": "board/redrix/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-07-19T01:02:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b4d845b_513d428e",
+      "range": {
+        "startLine": 232,
+        "startChar": 15,
+        "endLine": 232,
+        "endChar": 16
+      },
+      "revId": "5c7651b8103489504aa007f66d4a77a6d5830b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61d7ae82_b1c2c1f0",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-07-16T21:47:13Z",
       "side": 1,
       "message": "can the LED task move down to the bottom of this list\nsince it\u0027s probably the lest critical of these tasks?",
+      "revId": "5c7651b8103489504aa007f66d4a77a6d5830b69",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcaf9e59_cdef252d",
+        "filename": "board/redrix/ec.tasklist",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-07-19T01:02:18Z",
+      "side": 1,
+      "message": "OK. sure.",
+      "parentUuid": "61d7ae82_b1c2c1f0",
       "revId": "5c7651b8103489504aa007f66d4a77a6d5830b69",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
