@@ -97,6 +97,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7c747a5d_11dad6d8",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-19T21:43:07Z",
+      "side": 1,
+      "message": "The current implementation of the host command protocol doesn\u0027t seem prone to a race.\n\nIIUC, host_send_response (in host_commands.c) sets command_pending to 1 when a command handler returns IN_PROGRESS. A command handler (running in the HC task) later finishes a command and calls host_send_response (again), which sets saved_result. This is the value returned by EC_CMD_RESEND_RESPONSE.\n\nIf the host sends another command before RESEND_RESPONSE, the previous result is lost. So, I can\u0027t convince myself the current implementation is handling IN_PROGRESS in a race-free fashion.\n\nMaybe the kernel serializes host commands? That is, the kernel takes care of IN_PROGRESS (as done by send_command in cros_ec_proto.c). If so, we don\u0027t need to handle IN_PROGRESS in a user process, do we? Regardless, this seems a bad design since a slow command (e.g. flash erase) can block the channel. \n\nI see some code in the kernel and the EC, which blocks another command by using a status register (e.g. ec_response_timed_out using EC_LPC_STATUS_BUSY_MASK) but this is just arbitrating the bus access (at the physical layer). It doesn\u0027t help us avoid races around IN_PROGRESS.\n\n------------ \u003e8 ------------\nHow do I want to fix/change everything? I think we should discard RESEND_RESPONSE. Each command returning IN_PROGRESS should support some sort of GET_STATUS command as well. I don\u0027t think IN_PROGRESS can/should be handled at the common protocol layer.",
+      "parentUuid": "360f5d82_dcceec4f",
+      "revId": "c8af8d06b3082ca6730ed2039e55ab8f8ff6a873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b0df37b_19d2e96a",
         "filename": "util/comm-dev.c",
         "patchSetId": 2
