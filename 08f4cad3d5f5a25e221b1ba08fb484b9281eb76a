@@ -22,6 +22,29 @@
       },
       "revId": "08f4cad3d5f5a25e221b1ba08fb484b9281eb76a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15e46afc_c94780f1",
+        "filename": "board/redrix/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-19T23:24:56Z",
+      "side": 1,
+      "message": "how did we get from DYNAPACK to DANAPACK?\ni see some other boards did it this way as well,\nbut that seems strange.\n\nwhat is battery called in the manufacturer\u0027s datasheet?",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 21
+      },
+      "revId": "08f4cad3d5f5a25e221b1ba08fb484b9281eb76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
