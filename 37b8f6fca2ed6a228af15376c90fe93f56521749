@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bf3ac99_c818d0c3",
+        "filename": "zephyr/projects/npcx_evb/boards/arm/npcx_evb/Kconfig.defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-07-19T11:04:12Z",
+      "side": 1,
+      "message": "I removed the BOARD_NPCX_EVB wrap. Thanks.",
+      "parentUuid": "48e6cde7_3236e125",
+      "range": {
+        "startLine": 8,
+        "startChar": 24,
+        "endLine": 8,
+        "endChar": 39
+      },
+      "revId": "37b8f6fca2ed6a228af15376c90fe93f56521749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "790f55cb_2eb09dd0",
         "filename": "zephyr/projects/npcx_evb/boards/arm/npcx_evb/npcx7_evb.dts",
         "patchSetId": 1
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Now that I saw how the next CL builds on this I think I have a better suggestion.\n\nLooking at how the zephyr code uses .dtsi files it\u0027s a bottom up approach. So I would suggest that we change the Kconfig.defconfig to:\n\nif BOARD_NPCX_EVB\nconfig BOARD\n    default \"npcx7_m6fb_evb\" if SOC_NPCX7M6FB\n    default \"npcx7_m6fc_evb\" if SOC_NPCX7M6FC\n    default \"npcx7_m7fc_evb\" if SOC_NPCX7M7FC\nendif # BOARD_NPCX_EVB\n\nThen keep this dts converted to dtsi, but also create:\nnpcx7_m6fb_evb.dts which includes npcx7_evb.dtsi and currently does nothing else.",
       "parentUuid": "790f55cb_2eb09dd0",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "37b8f6fca2ed6a228af15376c90fe93f56521749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8143148_790bbf5a",
+        "filename": "zephyr/projects/npcx_evb/boards/arm/npcx_evb/npcx7_evb.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-07-19T11:04:12Z",
+      "side": 1,
+      "message": "The board is defined in `zmake.yaml`. When project configuration, the board will be passed to cmake as a parameter (e.g., -DBOARD\u003dnpcx7_evb). The dts \u0026 _defconfig are loaded by ${BOARD} parameter. The `config BOARD` string doesn\u0027t use for the build system. If we define all chips which support zephyr, it needs to maintain a lot chip_evb.dts \u0026 chip_defconfig in board folder. Currently, we don\u0027t find a method to reuse _defconfig. It will generate a lot of duplicate code. So we prefer it as CL do, or we can choose one chip in chip series (e.g., npcx7m6fc_evb) \u0026 remove the list.",
+      "parentUuid": "7d937135_ad8e722b",
       "range": {
         "startLine": 11,
         "startChar": 0,
