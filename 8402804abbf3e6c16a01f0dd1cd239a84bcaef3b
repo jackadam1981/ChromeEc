@@ -22,6 +22,30 @@
       },
       "revId": "8402804abbf3e6c16a01f0dd1cd239a84bcaef3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8449a0f4_b44241cf",
+        "filename": "board/homestar/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2021-07-19T06:49:25Z",
+      "side": 0,
+      "message": "OK. I create a issue and CL to explain this. Hope you can help to review, thanks!\nhttps://issuetracker.google.com/194023320\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3034508",
+      "parentUuid": "d5273d74_ed762b62",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 58
+      },
+      "revId": "8402804abbf3e6c16a01f0dd1cd239a84bcaef3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

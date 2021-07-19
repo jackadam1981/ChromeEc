@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "606823a7_7f695f5c",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2021-07-19T06:49:25Z",
+      "side": 1,
+      "message": "According to https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2623870/comments/89e0dd42_42b77e39 , add this check is make sure that lid_accelgyro_config is not set at first time running board_detect_motionsensor function in HOOK_INIT when sensor is not power on. Then in HOOK_CHIPSET_STARTUP, lid_accelgyro_config can be set correctly.",
+      "parentUuid": "576f0477_fe890d97",
+      "range": {
+        "startLine": 377,
+        "startChar": 0,
+        "endLine": 378,
+        "endChar": 9
+      },
+      "revId": "5a021101f3047cf0c814f7095816b4a59a3eb7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78c77c9b_03077662",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-15T21:04:37Z",
       "side": 1,
       "message": "When using BMI160, this if condition is true; this seems to be an expected behavior, not a fail.\n\nYou may merge this if condition to the following if clause.",
+      "range": {
+        "startLine": 385,
+        "startChar": 2,
+        "endLine": 385,
+        "endChar": 27
+      },
+      "revId": "5a021101f3047cf0c814f7095816b4a59a3eb7a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38399e22_1470a80e",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2021-07-19T06:49:25Z",
+      "side": 1,
+      "message": "According to analys the history modification about this if condition in other projects(aleena, juniper), I think it is a unnecessary CPRINTS, because the following if clause can recognize the sensor clearly. So this can be deleted.",
+      "parentUuid": "78c77c9b_03077662",
       "range": {
         "startLine": 385,
         "startChar": 2,
