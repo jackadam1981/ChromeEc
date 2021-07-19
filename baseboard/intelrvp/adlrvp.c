@@ -22,6 +22,9 @@
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 
+/* Variable to identify ADL M RVP. Default board is ADL-P RVP. */
+static int board_adlm_rvp;
+
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 	[TYPE_C_PORT_0] = {
@@ -342,7 +345,6 @@ static void configure_retimer_usbmux(void)
 			= &soc_side_bb_retimer1_usb_mux;
 #endif
 		break;
-
 	/* Add additional board SKUs */
 
 	default:
@@ -351,6 +353,29 @@ static void configure_retimer_usbmux(void)
 }
 DECLARE_HOOK(HOOK_INIT, configure_retimer_usbmux, HOOK_PRIO_INIT_I2C + 1);
 
+
+#if 1
+static void re_configure_tasks(void)
+{
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+	case ADLP_DDR5_RVP_SKU_BOARD_ID:
+	case ADLP_LP5_T4_RVP_SKU_BOARD_ID:
+		board_adlm_rvp = 1;
+		task_disable_task(TASK_ID_PD_C2);
+		task_disable_task(TASK_ID_PD_C3);
+		task_disable_task(TASK_ID_PD_INT_C2);
+		task_disable_task(TASK_ID_PD_INT_C3);
+		CPRINTS("PTOM:Tasks disabled!");
+		break;
+	default:
+		break;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, re_configure_tasks, HOOK_PRIO_INIT_I2C + 1);
+#endif
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
@@ -426,3 +451,33 @@ __override bool board_is_tbt_usb4_port(int port)
 
 	return tbt_usb4;
 }
+
+#if 1
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	if (board_adlm_rvp)
+		return (CONFIG_USB_PD_PORT_MAX_COUNT - 2);
+	else
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
+#endif
+
+#if 1
+__override int board_get_i2c_ports_used(void)
+{
+	if (board_adlm_rvp)
+		return (I2C_CHAN_COUNT - 2);
+	else
+		return i2c_ports_used;
+}
+#endif
+
+#if 1
+__override uint8_t board_get_ioex_port_count(void)
+{
+	if (board_adlm_rvp)
+		return (CONFIG_IO_EXPANDER_PORT_COUNT - 2);
+	else
+		return CONFIG_IO_EXPANDER_PORT_COUNT;
+}
+#endif
