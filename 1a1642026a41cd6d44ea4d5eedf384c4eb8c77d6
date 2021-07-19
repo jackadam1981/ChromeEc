@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d8b788e_d99af7bc",
+        "filename": "board/herobrine_npcx9/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-19T22:22:02Z",
+      "side": 1,
+      "message": "It works on the EC-OS image, but the Zephyr image doesn\u0027t link the board.c. Better to move it to a separate file, so it can be linked, like the board/lazor/sku.c. You can do it in a follow-up CL.",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 1
+      },
+      "revId": "1a1642026a41cd6d44ea4d5eedf384c4eb8c77d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
