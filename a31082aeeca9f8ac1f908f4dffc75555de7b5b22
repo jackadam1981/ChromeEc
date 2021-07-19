@@ -16,6 +16,23 @@
       "message": "This is last patch for fpsensor_hw unit tests.\n\nInstead of playing hard game with HAVE_FP_PRIVATE_DRIVER, I just moved enabling DIVIDER_HIGHSIDE to board_init_rw().\n\nIt was also necessary to move print from fp_task(), but I think it\u0027s not a problem.",
       "revId": "a31082aeeca9f8ac1f908f4dffc75555de7b5b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "599ee4d8_c5f737ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-07-19T12:12:51Z",
+      "side": 1,
+      "message": "Verified by running unit tests on bloonchipper/dartmonkey.\nPrivate build was verified on jinlon and voxel.",
+      "revId": "a31082aeeca9f8ac1f908f4dffc75555de7b5b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
