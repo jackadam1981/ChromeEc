@@ -2398,16 +2398,21 @@ int charge_prevent_power_on(int power_button_pressed)
 	    battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED ||
 #endif
 	    current_batt_params->state_of_charge <
-		CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON)
-		prevent_power_on = 1;
+		CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON) {
+			CPRINTS("[SC] 1: prevent_power_on = 1");
+			prevent_power_on = 1;
+		}
 
 #if defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON) && \
 	defined(CONFIG_CHARGE_MANAGER)
 	/* However, we can power on if a sufficient charger is present. */
 	if (prevent_power_on) {
 		if (charge_manager_get_power_limit_uw() >=
-		    CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON * 1000)
-			prevent_power_on = 0;
+		    CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON * 1000) {
+				CPRINTS("[SC] 1.5: prevent_power_on = 0");
+				prevent_power_on = 0;
+			}
+			
 #if defined(CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON_WITH_BATT) && \
 	defined(CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC)
 		else if (charge_manager_get_power_limit_uw() >=
@@ -2417,8 +2422,11 @@ int charge_prevent_power_on(int power_button_pressed)
 							BATTERY_NOT_DISCONNECTED
 #endif
 		    && (current_batt_params->state_of_charge >=
-			CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC))
-			prevent_power_on = 0;
+			CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON_WITH_AC)) {
+				CPRINTS("[SC] 2: prevent_power_on = 0");
+				prevent_power_on = 0;
+			}
+
 #endif
 	}
 #endif /* CONFIG_CHARGE_MANAGER && CONFIG_CHARGER_MIN_POWER_MW_FOR_POWER_ON */
@@ -2434,6 +2442,7 @@ int charge_prevent_power_on(int power_button_pressed)
 #endif
 				     ));
 #endif /* CONFIG_CHARGER_MIN_BAT_PCT_FOR_POWER_ON */
+	CPRINTS("[SC] 3: prevent_power_on = %d", prevent_power_on);
 
 #ifdef CONFIG_CHARGE_MANAGER
 	/* Always prevent power on until charge current is initialized */
@@ -2441,6 +2450,8 @@ int charge_prevent_power_on(int power_button_pressed)
 	    (charge_manager_get_charger_current() ==
 	     CHARGE_CURRENT_UNINITIALIZED))
 		prevent_power_on = 1;
+
+	CPRINTS("[SC] 4: prevent_power_on = %d", prevent_power_on);
 #ifdef CONFIG_BATTERY_HW_PRESENT_CUSTOM
 	/*
 	 * If battery is NOT physically present then prevent power on until
@@ -2454,6 +2465,7 @@ int charge_prevent_power_on(int power_button_pressed)
 	    )
 		prevent_power_on = 1;
 #endif /* CONFIG_BATTERY_HW_PRESENT_CUSTOM */
+		CPRINTS("[SC] 5: prevent_power_on = %d", prevent_power_on);
 #endif /* CONFIG_CHARGE_MANAGER */
 
 	/*
@@ -2466,7 +2478,7 @@ int charge_prevent_power_on(int power_button_pressed)
 	if (!current_batt_params->is_present && !curr.ac)
 		prevent_power_on = 1;
 #endif /* CONFIG_SYSTEM_UNLOCKED */
-
+	CPRINTS("[SC] 6: prevent_power_on = %d", prevent_power_on);
 	return prevent_power_on;
 }
 
