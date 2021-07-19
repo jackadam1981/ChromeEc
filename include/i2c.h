@@ -590,4 +590,10 @@ enum i2c_freq i2c_get_freq(int port);
 /* Find the matching port in i2c_ports[] table. */
 const struct i2c_port_t *get_i2c_port(const int port);
 
+/**
+ * Get board specific count of i2c ports used
+ *
+ */
+__override_proto int board_get_i2c_ports_used(void);
+
 #endif  /* __CROS_EC_I2C_H */
