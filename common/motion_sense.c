@@ -184,7 +184,10 @@ int motion_sense_set_data_rate(struct motion_sensor_t *sensor)
 		 * In case the AP want to run the sensors faster than it can,
 		 * be sure we don't see the ratio to 0.
 		 */
-		sensor->oversampling_ratio = MAX(1, odr / ap_odr_mhz);
+		if (motion_sensor_in_forced_mode(sensor))
+			sensor->oversampling_ratio = MAX(1, ec_odr_mhz / ap_odr_mhz);
+		else
+			sensor->oversampling_ratio = MAX(1, odr / ap_odr_mhz);
 	else
 		sensor->oversampling_ratio = 0;
 
