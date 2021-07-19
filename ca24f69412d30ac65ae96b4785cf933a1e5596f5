@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704693a7_bd0e6296",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-19T22:23:12Z",
+      "side": 1,
+      "message": "EC_RES_IN_PROGRESS has been deprecated a long time ago (it was used for flashing rom). Beside it is handled in the kernel at very low level, user space will not see it.",
+      "revId": "ca24f69412d30ac65ae96b4785cf933a1e5596f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
