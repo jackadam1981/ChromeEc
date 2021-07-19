@@ -10,7 +10,7 @@
 #include "common.h"
 #include "util.h"
 
-const struct board_batt_params board_battery_info[] = {
+struct board_batt_params board_battery_info[] = {
 	/*
 	 * Getac Battery (Getac SMP-HHP-408) Information
 	 * Fuel gauge: BQ40Z50-R3

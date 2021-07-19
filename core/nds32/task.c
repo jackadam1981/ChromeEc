@@ -671,7 +671,7 @@ void task_print_list(void)
 			stackused -= sizeof(uint32_t);
 
 		ccprintf("%4d %c %-16s %08x %11.6lld  %3d/%3d\n", i, is_ready,
-			 task_names[i], tasks[i].events, tasks[i].runtime,
+			task_names[i], tasks[i].events, tasks[i].runtime,
 			 stackused, tasks_init[i].stack_size);
 		cflush();
 	}
