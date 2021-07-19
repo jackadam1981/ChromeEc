@@ -163,4 +163,12 @@ const char *ioex_get_name(enum ioex_signal signal);
  */
 int signal_is_ioex(int signal);
 
+/**
+ * Get board specific ioexpander count in a single Add In Card
+ *
+ * @return <= CONFIG_IO_EXPANDER_PORT_COUNT if configured in board file,
+ *         else return CONFIG_IO_EXPANDER_PORT_COUNT
+ */
+__override_proto uint8_t board_get_ioex_port_count(void);
+
 #endif /* __CROS_EC_IOEXPANDER_H */

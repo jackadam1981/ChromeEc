@@ -109,7 +109,7 @@ const struct i2c_port_t *get_i2c_port(const int port)
 	 */
 	if (task_start_called()) {
 		/* Find the matching port in i2c_ports[] table. */
-		for (i = 0; i < i2c_ports_used; i++) {
+		for (i = 0; i < board_get_i2c_ports_used(); i++) {
 			if (i2c_ports[i].port == port)
 				return &i2c_ports[i];
 		}
@@ -1562,7 +1562,7 @@ static int command_i2cprotect(int argc, char **argv)
 	if (argc == 1) {
 		int i, port;
 
-		for (i = 0; i < i2c_ports_used; i++) {
+		for (i = 0; i < board_get_i2c_ports_used(); i++) {
 			port = i2c_ports[i].port;
 			ccprintf("Port %d: %s\n", port,
 			   port_protected[port] ? "Protected" : "Unprotected");
@@ -1640,7 +1640,7 @@ static int command_scan(int argc, char **argv)
 	const struct i2c_port_t *i2c_port;
 
 	if (argc == 1) {
-		for (port = 0; port < i2c_ports_used; port++)
+		for (port = 0; port < board_get_i2c_ports_used(); port++)
 			scan_bus(i2c_ports[port].port, i2c_ports[port].name);
 
 		if (IS_ENABLED(CONFIG_I2C_BITBANG))
@@ -2072,3 +2072,9 @@ DECLARE_CONSOLE_COMMAND(i2ctest, command_i2ctest,
 			"i2ctest count|udelay|dev",
 			"I2C stress test");
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
+
+__overridable int board_get_i2c_ports_used(void)
+{
+	return i2c_ports_used;
+}
+

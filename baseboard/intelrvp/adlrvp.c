@@ -5,6 +5,7 @@
 
 /* Intel ADLRVP board-specific common configuration */
 
+#include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
@@ -22,6 +23,12 @@
 
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
+
+/* Variable to identify ADL M/N RVP. Default board is ADL-P RVP. */
+static int board_adl_m_n_rvp;
+
+/* battery 2S config */
+extern struct board_batt_params board_battery2S_info[];
 
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
@@ -356,13 +363,51 @@ static void configure_retimer_usbmux(void)
 			= &soc_side_bb_retimer1_usb_mux;
 #endif
 		break;
-
 	/* Add additional board SKUs */
 
 	default:
 		break;
 	}
 }
+
+static void identify_board_to_reconfigure(void)
+{
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+		board_adl_m_n_rvp = 1;
+		break;
+	default:
+		break;
+	}
+}
+
+static void reconfigure_battery_info(void)
+{
+	if (board_adl_m_n_rvp) {
+		board_battery_info[BATTERY_GETAC_SMP_HHP_408].batt_info =
+		board_battery2S_info[BATTERY_GETAC_SMP_HHP_408].batt_info;
+		CPRINTS("Battery info reconfigured!");
+	}
+}
+
+#ifdef VARIANT_INTELRVP_EC_IT8320
+static void disable_unwanted_tasks(void)
+{
+	if (board_adl_m_n_rvp) {
+		task_disable_task(TASK_ID_PD_C2);
+		task_disable_task(TASK_ID_PD_C3);
+		task_disable_task(TASK_ID_PD_INT_C2);
+		task_disable_task(TASK_ID_PD_INT_C3);
+		CPRINTS("Tasks disabled!");
+	}
+
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, disable_unwanted_tasks, HOOK_PRIO_FIRST);
+#endif
 
 /******************************************************************************/
 /* PWROK signal configuration */
@@ -456,4 +501,52 @@ __override void board_pre_task_i2c_peripheral_init(void)
 
 	/* Configure board specific retimer & mux */
 	configure_retimer_usbmux();
+
+	/* Identify board type */
+	identify_board_to_reconfigure();
+
+	/*reconfigure battery based on board */
+	reconfigure_battery_info();
+}
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	if (board_adl_m_n_rvp)
+		return (CONFIG_USB_PD_PORT_MAX_COUNT - 2);
+	else
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
+
+__override int board_get_i2c_ports_used(void)
+{
+	if (board_adl_m_n_rvp)
+		return (I2C_CHAN_COUNT - 2);
+	else
+		return i2c_ports_used;
+}
+
+__override uint8_t board_get_ioex_port_count(void)
+{
+	if (board_adl_m_n_rvp)
+		return (CONFIG_IO_EXPANDER_PORT_COUNT - 2);
+	else
+		return CONFIG_IO_EXPANDER_PORT_COUNT;
+}
+
+__overridable uint8_t board_get_charge_port_count(void)
+{
+	if (board_adl_m_n_rvp)
+		return ((CONFIG_USB_PD_PORT_MAX_COUNT - 2) +
+				CONFIG_DEDICATED_CHARGE_PORT_COUNT);
+	else
+		return (CONFIG_USB_PD_PORT_MAX_COUNT +
+				CONFIG_DEDICATED_CHARGE_PORT_COUNT);
+}
+
+__overridable uint8_t board_get_dedicated_charge_port(void)
+{
+	if (board_adl_m_n_rvp)
+		return (DEDICATED_CHARGE_PORT - 2);
+	else
+		return DEDICATED_CHARGE_PORT;
 }

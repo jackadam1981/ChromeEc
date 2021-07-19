@@ -60,7 +60,7 @@ static int init_vdm_attention_mutex(const struct device *dev)
 
 	ARG_UNUSED(dev);
 
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
+	for (port = 0; port < board_get_usb_pd_port_count(); port++)
 		k_mutex_init(&dpm[port].vdm_attention_mutex);
 
 	return 0;

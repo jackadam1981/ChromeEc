@@ -765,6 +765,9 @@
  */
 #undef CONFIG_BOARD_VERSION_GPIO
 
+/* Config to indicate board identity is decided at runtime */
+#undef CONFIG_BOARD_ID_ON_RUNTIME
+
 /* EC responses to a board defined I2C address */
 #undef CONFIG_BOARD_I2C_ADDR_FLAGS
 

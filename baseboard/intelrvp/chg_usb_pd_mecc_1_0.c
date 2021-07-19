@@ -31,7 +31,7 @@ static void baseboard_tcpc_init(void)
 	if (!system_jumped_late())
 		board_reset_pd_mcu();
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 		/* Enable PPC interrupts. */
 		if (tcpc_aic_gpios[i].ppc_intr_handler)
 			gpio_enable_interrupt(tcpc_aic_gpios[i].ppc_alert);
@@ -47,7 +47,7 @@ void tcpc_alert_event(enum gpio_signal signal)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 		/* No alerts for embdeded TCPC */
 		if (tcpc_config[i].bus_type == EC_BUS_TYPE_EMBEDDED)
 			continue;
@@ -65,7 +65,7 @@ uint16_t tcpc_get_alert_status(void)
 	int i;
 
 	/* Check which port has the ALERT line set */
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 		/* No alerts for embdeded TCPC */
 		if (tcpc_config[i].bus_type == EC_BUS_TYPE_EMBEDDED)
 			continue;
@@ -90,7 +90,7 @@ void ppc_interrupt(enum gpio_signal signal)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 		if (tcpc_aic_gpios[i].ppc_intr_handler &&
 			signal == tcpc_aic_gpios[i].ppc_alert) {
 			tcpc_aic_gpios[i].ppc_intr_handler(i);
