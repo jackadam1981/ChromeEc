@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4da0dbd_762412fc",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-19T22:46:16Z",
+      "side": 1,
+      "message": "What is the saved_conf used for here?",
+      "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef8f73ca_44fa658c",
         "filename": "driver/accelgyro_bmi3xx.c",
         "patchSetId": 1
@@ -37,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5858840e_644f1d45",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-19T22:46:16Z",
+      "side": 1,
+      "message": "Yes.  \"1\u003dOK, 0\u003dNot OK\".  Though it wouldn\u0027t hurt to add the notes from the datasheet either here or in the header since it\u0027s only valid to check when the above check has passed. \n\nIf we get 0, should we return an error here?  Or could it set later?",
+      "parentUuid": "ef8f73ca_44fa658c",
+      "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fa76878_766c7f47",
         "filename": "driver/accelgyro_bmi3xx.c",
         "patchSetId": 1
@@ -48,6 +83,40 @@
       "writtenOn": "2021-07-19T14:15:19Z",
       "side": 1,
       "message": "Should this be wrapped in RETURN_ERROR too?",
+      "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de65d17_5e0cfb34",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-19T22:46:16Z",
+      "side": 1,
+      "message": "Not sure what the point of the extra read is?",
+      "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f4989f2_e7aab6ad",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-19T22:46:16Z",
+      "side": 1,
+      "message": "Probably include a comment explaining the difference in power mode between this and gyro?",
       "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
