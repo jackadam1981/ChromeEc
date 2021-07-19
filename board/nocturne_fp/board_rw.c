@@ -104,6 +104,9 @@ void board_init_rw(void)
 	ccprints("TRANSPORT_SEL: %s",
 		 fp_transport_type_to_str(get_fp_transport_type()));
 
+	ccprints("FP_SENSOR_SEL: %s",
+		 fp_sensor_type_to_str(get_fp_sensor_type()));
+
 	/* Use SPI select as a proxy for running on the icetower dev board. */
 	if (spi_select == FP_SENSOR_SPI_SELECT_DEVELOPMENT)
 		gpio_slp_alt_l = GPIO_SLP_ALT_DEV_L;

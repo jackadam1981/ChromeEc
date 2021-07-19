@@ -106,6 +106,15 @@ void board_init_rw(void)
 	/* Configure and enable SPI as master for FP sensor */
 	configure_fp_sensor_spi();
 
+	ccprints("FP_SENSOR_SEL: %s",
+		 fp_sensor_type_to_str(get_fp_sensor_type()));
+
+	/* The dragonclaw development board needs this enabled to enable the
+	 * AND gate (U10) to CS. Production boards could disable this to save
+	 * power since it's only needed for initial detection on those boards.
+	 */
+	gpio_set_level(GPIO_DIVIDER_HIGHSIDE, 1);
+
 	/* Enable interrupt on PCH power signals */
 	gpio_enable_interrupt(GPIO_SLP_ALT_L);
 	gpio_enable_interrupt(GPIO_SLP_L);
