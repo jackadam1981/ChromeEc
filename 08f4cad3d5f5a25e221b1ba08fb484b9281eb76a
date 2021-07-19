@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e5ca409_318f7a5e",
+        "filename": "board/redrix/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-19T22:13:52Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be `.device_name`?",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "08f4cad3d5f5a25e221b1ba08fb484b9281eb76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
