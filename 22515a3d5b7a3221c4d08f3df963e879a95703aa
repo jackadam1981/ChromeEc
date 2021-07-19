@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0421757_790299f7",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-19T18:24:18Z",
+      "side": 1,
+      "message": "Initialize it to a value. If the below icm_read8() has an error (the ICM chip not present), this variable leaves changed so it is some unknown number in the stack. It has a chance that the below if condition (val \u003d\u003d ICM42607_CHIP_ICM42607P) is true and results a wrong decision.",
+      "range": {
+        "startLine": 374,
+        "startChar": 5,
+        "endLine": 374,
+        "endChar": 8
+      },
+      "revId": "22515a3d5b7a3221c4d08f3df963e879a95703aa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
