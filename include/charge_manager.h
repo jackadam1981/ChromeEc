@@ -323,4 +323,18 @@ __override_proto
 void board_fill_source_power_info(int port,
 				  struct ec_response_usb_pd_power_info *r);
 
+/**
+ * Get board specific charge port counts
+ *
+ * @return charge port count based on board type.
+ */
+__override_proto uint8_t board_get_charge_port_count(void);
+
+/**
+ * Get board specific dedicated charge port
+ *
+ * @return dedicated charge port based on board type.
+ */
+__override_proto uint8_t board_get_dedicated_charge_port(void);
+
 #endif /* __CROS_EC_CHARGE_MANAGER_H */

@@ -5,6 +5,7 @@
 
 /* Intel ADLRVP board-specific common configuration */
 
+#include "battery_fuel_gauge.h"
 #include "bb_retimer.h"
 #include "charger.h"
 #include "common.h"
@@ -21,6 +22,9 @@
 
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
+
+/* Variable to identify ADL M RVP. Default board is ADL-P RVP. */
+static int board_adlm_rvp;
 
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
@@ -342,7 +346,6 @@ static void configure_retimer_usbmux(void)
 			= &soc_side_bb_retimer1_usb_mux;
 #endif
 		break;
-
 	/* Add additional board SKUs */
 
 	default:
@@ -350,6 +353,48 @@ static void configure_retimer_usbmux(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, configure_retimer_usbmux, HOOK_PRIO_INIT_I2C + 1);
+
+
+#if 1
+static void identify_board_to_reconfigure(void)
+{
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+		board_adlm_rvp = 1;
+
+		/* Reconfigure voltage info of battery */
+		board_battery_info[BATTERY_GETAC_SMP_HHP_408]
+		.batt_info.voltage_max = 8800;
+		board_battery_info[BATTERY_GETAC_SMP_HHP_408]
+		.batt_info.voltage_normal = 7700;
+		board_battery_info[BATTERY_GETAC_SMP_HHP_408]
+		.batt_info.voltage_min = 6000;
+
+		CPRINTS("PTOM_M_BID set!");
+		break;
+	default:
+		break;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, identify_board_to_reconfigure, HOOK_PRIO_INIT_I2C);
+#endif
+
+#ifdef VARIANT_INTELRVP_EC_IT8320
+static void disable_unwanted_tasks(void)
+{
+	if (board_adlm_rvp) {
+		task_disable_task(TASK_ID_PD_C2);
+		task_disable_task(TASK_ID_PD_C3);
+		task_disable_task(TASK_ID_PD_INT_C2);
+		task_disable_task(TASK_ID_PD_INT_C3);
+		CPRINTS("PTOM:Tasks disabled!");
+	}
+
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, disable_unwanted_tasks, HOOK_PRIO_FIRST);
+#endif
 
 /******************************************************************************/
 /* PWROK signal configuration */
@@ -426,3 +471,47 @@ __override bool board_is_tbt_usb4_port(int port)
 
 	return tbt_usb4;
 }
+
+#if 1
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	if (board_adlm_rvp)
+		return (CONFIG_USB_PD_PORT_MAX_COUNT - 2);
+	else
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
+
+__override int board_get_i2c_ports_used(void)
+{
+	if (board_adlm_rvp)
+		return (I2C_CHAN_COUNT - 2);
+	else
+		return i2c_ports_used;
+}
+
+__override uint8_t board_get_ioex_port_count(void)
+{
+	if (board_adlm_rvp)
+		return (CONFIG_IO_EXPANDER_PORT_COUNT - 2);
+	else
+		return CONFIG_IO_EXPANDER_PORT_COUNT;
+}
+
+__overridable uint8_t board_get_charge_port_count(void)
+{
+	if (board_adlm_rvp)
+		return ((CONFIG_USB_PD_PORT_MAX_COUNT - 2) +
+				CONFIG_DEDICATED_CHARGE_PORT_COUNT);
+	else
+		return (CONFIG_USB_PD_PORT_MAX_COUNT +
+				CONFIG_DEDICATED_CHARGE_PORT_COUNT);
+}
+
+__overridable uint8_t board_get_dedicated_charge_port(void)
+{
+	if (board_adlm_rvp)
+		return (DEDICATED_CHARGE_PORT - 2);
+	else
+		return DEDICATED_CHARGE_PORT;
+}
+#endif
