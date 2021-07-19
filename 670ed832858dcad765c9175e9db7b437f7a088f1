@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "adb164b6_82170c17",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-19T22:01:04Z",
+      "side": 1,
+      "message": "changed to \nSM5803_VBAT_PWR_MINTH_2S_LEVEL\nand SM5803_VBAT_PWR_MINTH_3S_LEVEL\n\nto be consistent with \nSM5803_VBAT_SNSP_MAXTH_2S_LEVEL",
+      "parentUuid": "d6038969_3940619e",
+      "range": {
+        "startLine": 510,
+        "startChar": 3,
+        "endLine": 510,
+        "endChar": 4
+      },
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4b3efaf_17beb671",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 3
@@ -155,6 +179,24 @@
       "writtenOn": "2021-07-13T20:14:54Z",
       "side": 1,
       "message": "Should just write here.  No need to or in any previous bits since the threshold takes up the whole register",
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9539f51_5d943d61",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-19T22:01:04Z",
+      "side": 1,
+      "message": "I am not sure I understand threshold takes up the whole register. I am just trying to set a bit here. so that is why try to read and or it.\n\n#define SM5803_REG_INT2_REQ\t\t0x06\n#define SM5803_REG_INT2_EN\t\t0x0B\n#define SM5803_INT2_VBATSNSP\t\tBIT(0)\n#define SM5803_INT2_IBAT_DISCHG\t\tBIT(1)\n#define SM5803_INT2_IBAT_CHG\t\tBIT(2)\n#define SM5803_INT2_IBUS\t\tBIT(3)\n#define SM5803_INT2_VBUS\t\tBIT(4)\n#define SM5803_INT2_VCHGPWR\t\tBIT(5)\n#define SM5803_INT2_VSYS\t\tBIT(6)\n#define SM5803_INT2_TINT\t\tBIT(7)",
+      "parentUuid": "a4b3efaf_17beb671",
       "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -219,6 +261,30 @@
       "side": 1,
       "message": "why is Vbus misleading?\n\nwould replacing with Vbat would be ok?",
       "parentUuid": "ba302a13_51b8fb5e",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 43
+      },
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe9f576_6508cb01",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-19T22:01:04Z",
+      "side": 1,
+      "message": "changed to\n#define SM5803_VBAT_PWR_MINTH_3S_LEVEL 0x9B\n#define SM5803_VBAT_PWR_MINTH_2S_LEVEL 0x9B",
+      "parentUuid": "b358359e_3ae58a86",
       "range": {
         "startLine": 167,
         "startChar": 0,
