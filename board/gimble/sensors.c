@@ -24,9 +24,16 @@ const struct adc_t adc_channels[] = {
 		.factor_div = ADC_READ_MAX + 1,
 		.shift = 0,
 	},
-	[ADC_TEMP_SENSOR_2_CHARGER] = {
-		.name = "TEMP_CHARGER",
+	[ADC_TEMP_SENSOR_2_FAN] = {
+		.name = "TEMP_FAN",
 		.input_ch = NPCX_ADC_CH1,
+		.factor_mul = ADC_MAX_VOLT,
+		.factor_div = ADC_READ_MAX + 1,
+		.shift = 0,
+	},
+	[ADC_TEMP_SENSOR_3_CHARGER] = {
+		.name = "TEMP_CHARGER",
+		.input_ch = NPCX_ADC_CH6,
 		.factor_mul = ADC_MAX_VOLT,
 		.factor_div = ADC_READ_MAX + 1,
 		.shift = 0,
@@ -147,11 +154,17 @@ const struct temp_sensor_t temp_sensors[] = {
 		.read = get_temp_3v3_30k9_47k_4050b,
 		.idx = ADC_TEMP_SENSOR_1_DDR_SOC
 	},
-	[TEMP_SENSOR_2_CHARGER] = {
+	[TEMP_SENSOR_2_FAN] = {
+		.name = "Fan",
+		.type = TEMP_SENSOR_TYPE_BOARD,
+		.read = get_temp_3v3_30k9_47k_4050b,
+		.idx = ADC_TEMP_SENSOR_2_FAN
+	},
+	[TEMP_SENSOR_3_CHARGER] = {
 		.name = "Charger",
 		.type = TEMP_SENSOR_TYPE_BOARD,
 		.read = get_temp_3v3_30k9_47k_4050b,
-		.idx = ADC_TEMP_SENSOR_2_CHARGER
+		.idx = ADC_TEMP_SENSOR_3_CHARGER
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
@@ -203,6 +216,7 @@ static const struct ec_thermal_config thermal_inductor = {
 /* this should really be "const" */
 struct ec_thermal_config thermal_params[] = {
 	[TEMP_SENSOR_1_DDR_SOC] = thermal_cpu,
-	[TEMP_SENSOR_2_CHARGER]	= thermal_inductor,
+	[TEMP_SENSOR_2_FAN]	= thermal_inductor,
+	[TEMP_SENSOR_3_CHARGER]	= thermal_inductor,
 };
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
