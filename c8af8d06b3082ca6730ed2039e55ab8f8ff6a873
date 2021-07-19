@@ -79,6 +79,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "360f5d82_dcceec4f",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-19T17:56:23Z",
+      "side": 1,
+      "message": "Looking at https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/host_command.c;l\u003d151 and crosbug.com/p/23806: Looks like overlapping HCs should be ignored. Also https://b.corp.google.com/issues/35528282#comment4 says \"we synchronize all commands through the kernel\" so in theory this should prevent overlapping host commands. \n\nI think https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/upstream/drivers/platform/chrome/cros_ec_proto.c;l\u003d213 should be updated to return EINPROGRESS.\n\nThen we can simplify the retry to be:\nr \u003c 0 \u0026\u0026 (result \u003d\u003d EC_RES_IN_PROGRESS || errno \u003d\u003d EINPROGRESS).",
+      "parentUuid": "49f68fbb_90376c8b",
+      "revId": "c8af8d06b3082ca6730ed2039e55ab8f8ff6a873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3b0df37b_19d2e96a",
         "filename": "util/comm-dev.c",
         "patchSetId": 2
