@@ -203,6 +203,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "869f0ecc_10e6e78b",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-19T22:12:06Z",
+      "side": 1,
+      "message": "Sorry, I misread the register name here and thought it was the threshold set.  \n\nIt does seem like this could be combined with the INT2_EN read/modify/write below",
+      "parentUuid": "d9539f51_5d943d61",
+      "revId": "670ed832858dcad765c9175e9db7b437f7a088f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02d6a9c4_fd6f6598",
         "filename": "driver/charger/sm5803.c",
         "patchSetId": 3
