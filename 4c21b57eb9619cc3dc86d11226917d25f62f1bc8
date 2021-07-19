@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74aad2c4_14df85a1",
+        "filename": "baseboard/intelrvp/chg_usb_pd_mecc_1_0.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-07-19T15:50:31Z",
+      "side": 0,
+      "message": "-Tried using macro which can change at run time, like \n\n#define CONFIG_USB_PD_PORT_MAX_COUNT ((adlm_rvp_set)? 2 : 4 )\n\nwhere adlm_rvp_set is the variable that decides the RVP at run time.\n\nBut it is throwing error.\n\n-Another trial is to replace macro with a function , but that too threw some error at compile time.\n\n+#ifdef __GNUC__\n+#pragma GCC diagnostic ignored \"-Wundef\"\n+#pragma GCC diagnostic push\n+#endif\n+\n+int adlp_bid_set \u003d 1;\n+\n+\n+int usb_pd_count(void)\n+{\n+ if(adlp_bid_set)\n+\t return 4;\n+ else\n+\t return 2;\n+}\n+#define CONFIG_USB_PD_PORT_MAX_COUNT usbpdcount()\n\n+#ifdef __GNUC__\n+#pragma GCC diagnostic pop\n+#endif",
+      "range": {
+        "startLine": 34,
+        "startChar": 17,
+        "endLine": 34,
+        "endChar": 45
+      },
+      "revId": "4c21b57eb9619cc3dc86d11226917d25f62f1bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

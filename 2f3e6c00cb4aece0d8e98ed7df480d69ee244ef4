@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5795251_d37bed20",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-07-19T15:50:31Z",
+      "side": 1,
+      "message": "just for the purpose of testing.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 35
+      },
+      "revId": "2f3e6c00cb4aece0d8e98ed7df480d69ee244ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "455a674c_403c355e",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-07-19T15:50:31Z",
+      "side": 1,
+      "message": "Al tasks are getting enabled after this.  But irrespective, of all tasks enabled, only 2 typec ports, 4 i2c channels \u0026 2 ioex ports are getting detected.\nI need to check further , on where this can be called, if tsaks needs to be disabled.",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 377,
+        "endChar": 68
+      },
+      "revId": "2f3e6c00cb4aece0d8e98ed7df480d69ee244ef4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
