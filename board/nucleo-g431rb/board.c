@@ -32,3 +32,8 @@ static void led_second(void)
 }
 DECLARE_HOOK(HOOK_SECOND, led_second, HOOK_PRIO_DEFAULT);
 
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

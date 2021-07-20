@@ -177,3 +177,9 @@ const struct adc_t adc_channels[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

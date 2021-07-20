@@ -10,3 +10,8 @@
 /* To define the gpio_list[] instance. */
 #include "gpio_list.h"
 
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

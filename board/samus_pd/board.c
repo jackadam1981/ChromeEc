@@ -618,3 +618,9 @@ host_event_status_host_cmd(struct host_cmd_handler_args *args)
 }
 DECLARE_HOST_COMMAND(EC_CMD_PD_HOST_EVENT_STATUS, host_event_status_host_cmd,
 			EC_VER_MASK(0));
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

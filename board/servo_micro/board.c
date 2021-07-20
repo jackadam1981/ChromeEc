@@ -448,3 +448,9 @@ static void board_jump(void)
 	usb_spi_enable(&usb_spi, 0);
 }
 DECLARE_HOOK(HOOK_SYSJUMP, board_jump, HOOK_PRIO_DEFAULT);
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

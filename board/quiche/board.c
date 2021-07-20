@@ -417,3 +417,9 @@ static int command_dplane(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(dplane, command_dplane,
 			"<2 | 4>",
 			"MST lane control.");
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

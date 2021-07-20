@@ -37,3 +37,9 @@ const struct i2c_port_t i2c_ports[]  = {
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);
 #endif
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

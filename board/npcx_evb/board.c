@@ -138,3 +138,9 @@ struct keyboard_scan_config keyscan_config = {
 		0xa4, 0xff, 0xf6, 0x55, 0xfa, 0xc8  /* full set */
 	},
 };
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}
