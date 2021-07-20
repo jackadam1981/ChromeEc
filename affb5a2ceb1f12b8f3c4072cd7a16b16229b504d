@@ -46,6 +46,30 @@
       },
       "revId": "affb5a2ceb1f12b8f3c4072cd7a16b16229b504d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae032df_340e70aa",
+        "filename": "zephyr/projects/herobrine/boards/arm/herobrine_npcx9/herobrine_npcx9_defconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-20T18:41:07Z",
+      "side": 1,
+      "message": "Forgot to reply. It was done in CL:3029002.",
+      "parentUuid": "d02115fc_8973d2ed",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "affb5a2ceb1f12b8f3c4072cd7a16b16229b504d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
