@@ -259,7 +259,7 @@ static void set_initial_pwrbtn_state(void)
 	}
 
 #ifdef CONFIG_BRINGUP
-	pwrbtn_state = PWRBTN_STATE_IDLE;
+	pwrbtn_state = PWRBTN_STATE_INIT_ON;
 #else
 	pwrbtn_state = PWRBTN_STATE_INIT_ON;
 #endif
