@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "01773813_b7b13272",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-20T13:13:50Z",
+      "side": 1,
+      "message": "Thanks for the notice, I missed the implementation of charge_manager. (wasn\u0027t fully tested the route, they need special setup of the chargers.)",
+      "parentUuid": "a0e96c07_bae3681e",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78dd3bc9_cd2af6d9",
         "filename": "common/dps.c",
         "patchSetId": 13
