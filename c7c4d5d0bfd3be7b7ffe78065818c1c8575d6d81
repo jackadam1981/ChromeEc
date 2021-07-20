@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c817dab_abb9ca46",
+        "filename": "include/host_command.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-20T19:39:12Z",
+      "side": 1,
+      "message": "Are you sure you want this here and not in a host_command_emul.h or something like that?",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 27
+      },
+      "revId": "c7c4d5d0bfd3be7b7ffe78065818c1c8575d6d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "501145e7_e61957de",
+        "filename": "zephyr/shim/src/espi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-20T19:39:12Z",
+      "side": 1,
+      "message": "I think you meant to remove this.",
+      "range": {
+        "startLine": 28,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "c7c4d5d0bfd3be7b7ffe78065818c1c8575d6d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cc53fa9_ace3f7f6",
+        "filename": "zephyr/test/drivers/src/espi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-20T19:39:12Z",
+      "side": 1,
+      "message": "This test doesn\u0027t appear to actually use the espi emulator at all. Am I missing something here?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "c7c4d5d0bfd3be7b7ffe78065818c1c8575d6d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
