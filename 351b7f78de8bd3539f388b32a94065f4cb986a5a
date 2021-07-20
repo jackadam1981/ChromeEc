@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c5f5e059_10f4653d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-20T20:26:56Z",
+      "side": 1,
+      "message": "Hmm... I think 64 (for RO) + 64 (for RW) are too much for smaller ROMs. \n\nWhat does non-official build exactly mean in our context? Do the major and minor mean anything for non-official builds? I\u0027m wondering if we can omit major and minor (e.g. guybrush_2021_05_20_163) for non-official builds.\n\nUsing a marker also sounds reasonable to me. (e.g. \u00279999\u0027 to mimic what ebuilds do). \n\nFYI: We use \u0027+\u0027 to mark a dirty build (e.g. guybrush_v2.0.8770+f47439f75 v.s. guybrush_v2.0.8770-f47439f75). It means the image includes a local change.",
+      "parentUuid": "3f917055_d3ee9d41",
+      "range": {
+        "startLine": 19,
+        "startChar": 41,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9d114d8_3df002a8",
         "filename": "board/oak/board.h",
         "patchSetId": 6
