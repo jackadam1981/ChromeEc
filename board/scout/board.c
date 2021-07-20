@@ -108,7 +108,68 @@ static void port_ocp_interrupt(enum gpio_signal signal)
 {
 	hook_call_deferred(&update_5v_usage_data, 0);
 }
+/******************************************************************************/
+/*
+ * Barrel jack power supply handling
+ *
+ * EN_PPVAR_BJ_ADP_L must default active to ensure we can power on when the
+ * barrel jack is connected, and the USB-C port can bring the EC up fine in
+ * dead-battery mode. Both the USB-C and barrel jack switches do reverse
+ * protection, so we're safe to turn one on then the other off- but we should
+ * only do that if the system is off since it might still brown out.
+ */
 
+/*
+ * Barrel-jack power adapter ratings.
+ */
+static const struct {
+	int voltage;
+	int current;
+} bj_power[] = {
+	{ /* 0 - 135W (default) */
+	.voltage = 19500,
+	.current = 6920
+	},
+};
+static struct {
+	int voltage;
+	int current;
+} available_charge = { 0 };
+
+#define ADP_DEBOUNCE_MS		1000  /* Debounce time for BJ plug/unplug */
+/* Debounced connection state of the barrel jack */
+static int8_t adp_connected = -1;
+static void adp_connect_deferred(void)
+{
+	int connected = !gpio_get_level(GPIO_BJ_ADP_PRESENT_L);
+
+	/* Debounce */
+	if (connected == adp_connected)
+		return;
+
+	available_charge.voltage = bj_power[0].voltage;
+	available_charge.current = bj_power[0].current;
+
+	CPRINTS("Available charge Volt=%d mV, Curr=%d mA",
+		available_charge.voltage,
+		available_charge.current);
+
+	adp_connected = connected;
+}
+DECLARE_DEFERRED(adp_connect_deferred);
+
+/* IRQ for BJ plug/unplug. It shouldn't be called if BJ is the power source. */
+void adp_connect_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&adp_connect_deferred_data, ADP_DEBOUNCE_MS * MSEC);
+}
+
+static void adp_state_init(void)
+{
+	/* Report charge state from the barrel jack. */
+	adp_connect_deferred();
+}
+DECLARE_HOOK(HOOK_INIT, adp_state_init, HOOK_PRIO_CHARGE_MANAGER_INIT + 1);
 /******************************************************************************/
 
 #include "gpio_list.h" /* Must come after other header files. */
@@ -463,6 +524,8 @@ DECLARE_HOOK(HOOK_INIT, setup_thermal, HOOK_PRIO_DEFAULT - 1);
 static void power_monitor(void)
 {
 	static uint32_t current_state;
+	static uint32_t history[POWER_READINGS];
+	static uint8_t index;
 	int32_t delay;
 	uint32_t new_state = 0, diff;
 	int32_t headroom_5v = PWR_MAX - base_5v_power;
@@ -478,7 +541,70 @@ static void power_monitor(void)
 		 */
 		delay = 20 * MSEC;
 	} else {
+		int32_t charger_mw;
+
 		delay = POWER_DELAY_MS * MSEC;
+		/*
+		 * Get current charger limit (in mw).
+		 * If not configured yet, skip.
+		 */
+		charger_mw = available_charge.voltage *
+				available_charge.current / 1000;
+		if (charger_mw != 0) {
+			int32_t gap, total, max, power;
+			int i;
+
+			/*
+			 * Read power usage.
+			 */
+			power = (adc_read_channel(ADC_VBUS) *
+				 adc_read_channel(ADC_PPVAR_IMON)) /
+				 1000;
+			/* Init power table */
+			if (history[0] == 0) {
+				for (i = 0; i < POWER_READINGS; i++)
+					history[i] = power;
+			}
+			/*
+			 * Update the power readings and
+			 * calculate the average and max.
+			 */
+			history[index] = power;
+			index = (index + 1) % POWER_READINGS;
+			total = 0;
+			max = history[0];
+			for (i = 0; i < POWER_READINGS; i++) {
+				total += history[i];
+				if (history[i] > max)
+					max = history[i];
+			}
+			/*
+			 * For barrel-jack supplies, the rating can be
+			 * exceeded briefly, so use the average.
+			 */
+			power = total / POWER_READINGS;
+			/*
+			 * Calculate gap, and if negative, power
+			 * demand is exceeding configured power budget, so
+			 * throttling is required to reduce the demand.
+			 */
+			gap = charger_mw - power;
+			/*
+			 * Limiting type-A power.
+			 */
+			if (gap <= 0) {
+				new_state |= THROT_TYPE_A;
+				headroom_5v += PWR_FRONT_HIGH - PWR_FRONT_LOW;
+				if (!(current_state & THROT_TYPE_A))
+					gap += POWER_GAIN_TYPE_A;
+			}
+			/*
+			 * As a last resort, turn on PROCHOT to
+			 * throttle the CPU.
+			 */
+			if (gap <= 0)
+				new_state |= THROT_PROCHOT;
+		}
 	}
 	/*
 	 * Check the 5v power usage and if necessary,
@@ -532,6 +658,7 @@ static void power_monitor(void)
 	if (diff & THROT_PROCHOT) {
 		int prochot = (new_state & THROT_PROCHOT) ? 0 : 1;
 
+		CPRINTS("gpio_set_level EC_PROCHOT_ODL=%d", prochot);
 		gpio_set_level(GPIO_EC_PROCHOT_ODL, prochot);
 	}
 	if (diff & THROT_TYPE_A) {
