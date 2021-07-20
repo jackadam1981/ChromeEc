@@ -797,3 +797,9 @@ static int cmd_trigger_dfu(int argc, char *argv[])
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(dfu, cmd_trigger_dfu, NULL, NULL);
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

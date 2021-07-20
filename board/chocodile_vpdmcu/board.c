@@ -68,3 +68,9 @@ void tcpc_alert_clear(int port)
 {
 	/* Do nothing */
 }
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

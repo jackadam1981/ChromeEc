@@ -513,3 +513,9 @@ static void board_init(void)
 	gpio_enable_interrupt(GPIO_BUTTON_L);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

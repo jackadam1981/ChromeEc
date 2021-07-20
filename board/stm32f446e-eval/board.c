@@ -89,3 +89,8 @@ void board_config_post_gpio_init(void)
 	GPIO_SET_HS(C,  7);
 }
 
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

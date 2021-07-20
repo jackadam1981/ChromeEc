@@ -124,3 +124,9 @@ static void board_init(void)
 	i2c_xfer(0, 0, NULL, 0, &tmp, 1);
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

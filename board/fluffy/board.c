@@ -404,3 +404,9 @@ void show_output_voltage_on_leds(void)
 	hook_call_deferred(&show_output_voltage_on_leds_data,
 			   500 * MSEC);
 }
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

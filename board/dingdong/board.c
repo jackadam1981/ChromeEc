@@ -186,3 +186,9 @@ const struct bos_context bos_ctx = {
 	.descp = (void *)&bos_desc,
 	.size = sizeof(struct my_bos),
 };
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

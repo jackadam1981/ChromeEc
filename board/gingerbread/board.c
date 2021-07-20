@@ -353,3 +353,9 @@ void board_debug_gpio(enum debug_gpio trigger, int level, int pulse_usec)
 		break;
 	}
 }
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}

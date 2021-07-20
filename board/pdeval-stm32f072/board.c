@@ -78,3 +78,9 @@ uint16_t tcpc_get_alert_status(void)
 
 	return status;
 }
+
+/* Board is always powered */
+int extpower_is_present(void)
+{
+	return 1;
+}
