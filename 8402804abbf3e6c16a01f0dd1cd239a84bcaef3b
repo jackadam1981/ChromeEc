@@ -22,6 +22,30 @@
       },
       "revId": "8402804abbf3e6c16a01f0dd1cd239a84bcaef3b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e88a968_1e8ffe7b",
+        "filename": "board/homestar/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2021-07-20T09:50:20Z",
+      "side": 0,
+      "message": "No need the gesture detection, it has been deleted.",
+      "parentUuid": "91546dd8_0f19af9b",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 32
+      },
+      "revId": "8402804abbf3e6c16a01f0dd1cd239a84bcaef3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
