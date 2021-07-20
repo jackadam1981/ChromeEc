@@ -53,14 +53,14 @@ K_MUTEX_DEFINE(g_base_accel_mutex);
 static struct stprivate_data g_lis2dw12_data;
 static struct lsm6dso_data lsm6dso_data;
 
-/* TODO(b/184779333): calibrate the orientation matrix on later board stage */
+/* TODO: calibrate the orientation matrix on later board stage */
 static const mat33_fp_t lid_standard_ref = {
 	{ 0, FLOAT_TO_FP(1), 0},
 	{ FLOAT_TO_FP(1), 0, 0},
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 
-/* TODO(b/184779743): verify orientation matrix */
+/* TODO: verify orientation matrix */
 static const mat33_fp_t base_standard_ref = {
 	{ FLOAT_TO_FP(1), 0, 0},
 	{ 0, FLOAT_TO_FP(-1), 0},
@@ -79,7 +79,7 @@ static struct als_drv_data_t g_tcs3400_data = {
 };
 
 /*
- * TODO: b/184702900 need to calibrate ALS/RGB sensor. At default settings,
+ * TODO: need to calibrate ALS/RGB sensor. At default settings,
  * shining phone flashlight on sensor pegs all readings at 0xFFFF.
  */
 static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
@@ -284,7 +284,7 @@ const struct temp_sensor_t temp_sensors[] = {
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
 /*
- * TODO(b/180681346): update for Alder Lake/brya
+ * TODO: update for Alder Lake/Teako
  *
  * Tiger Lake specifies 100 C as maximum TDP temperature.  THRMTRIP# occurs at
  * 130 C.  However, sensor is located next to DDR, so we need to use the lower
@@ -303,7 +303,7 @@ static const struct ec_thermal_config thermal_cpu = {
 };
 
 /*
- * TODO(b/180681346): update for Alder Lake/brya
+ * TODO: update for Alder Lake/Teako
  *
  * Inductor limits - used for both charger and PP3300 regulator
  *
