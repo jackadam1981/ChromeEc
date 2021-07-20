@@ -13,6 +13,7 @@
 #include "cpu.h"
 #include "cros_board_info.h"
 #include "dma.h"
+#include "extpower.h"
 #include "flash.h"
 #include "gpio.h"
 #include "hooks.h"
@@ -1039,6 +1040,20 @@ void system_enter_hibernate(uint32_t seconds, uint32_t microseconds)
 {
 	if (!IS_ENABLED(CONFIG_HIBERNATE))
 		return;
+
+	/*
+	 * If AC is present, don't hibernate since it might trigger an
+	 * immediate wake up since AC is present, resulting in an AP reboot.
+	 * Hibernate when AC is present never occurs in normal circumstantces,
+	 * this is to prevent an action triggered by developers.
+	 * See: b/192259035
+	 */
+#ifdef CONFIG_EXTPOWER
+	if (extpower_is_present()) {
+		CPRINTS("AC adapter present, not hibernating");
+		return;
+	}
+#endif
 
 	/*
 	 * If chipset is already off, then call system_hibernate directly. Else,
