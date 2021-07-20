@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98f009af_17e71d77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-20T18:19:53Z",
+      "side": 1,
+      "message": "how much does the image grow, please mention it in this description.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 28
+      },
+      "revId": "59aebad19d38887b0052549d01ee5ec925d0018f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "463d3c3d_1e2e5397",
+        "filename": "board/cr50/dcrypto/fips_module.ld",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-20T18:19:53Z",
+      "side": 1,
+      "message": "please keep 80 cols restriction.",
+      "revId": "59aebad19d38887b0052549d01ee5ec925d0018f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdf0e81b_2d4648ca",
+        "filename": "board/cr50/dcrypto/fips_module.ld",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-20T18:19:53Z",
+      "side": 1,
+      "message": "why is it necessary to sort?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 16
+      },
+      "revId": "59aebad19d38887b0052549d01ee5ec925d0018f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6579a31f_d95d646c",
+        "filename": "board/cr50/dcrypto/fips_module.ld",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-20T18:19:53Z",
+      "side": 1,
+      "message": "are these sections going to be merged with the rest of the code? If not - do you need to change the init code to include these sections too?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 2
+      },
+      "revId": "59aebad19d38887b0052549d01ee5ec925d0018f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73783c37_3aa871cb",
+        "filename": "board/cr50/dcrypto/fips_module.ld",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-20T18:19:53Z",
+      "side": 1,
+      "message": "what RISC-V?",
+      "range": {
+        "startLine": 66,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "59aebad19d38887b0052549d01ee5ec925d0018f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
