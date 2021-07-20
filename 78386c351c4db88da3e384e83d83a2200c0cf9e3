@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f23ded55_da5bd885",
+        "filename": "zephyr/boards/arm/herobrine_npcx9/board.cmake",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-20T17:59:57Z",
+      "side": 1,
+      "message": "Good know. Removed this file.",
+      "parentUuid": "5390817e_976ef68a",
+      "revId": "78386c351c4db88da3e384e83d83a2200c0cf9e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e53e1a2f_dde7a9a5",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-20T04:44:25Z",
       "side": 1,
       "message": "Do we really need to support v2.5?",
+      "range": {
+        "startLine": 11,
+        "startChar": 4,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "78386c351c4db88da3e384e83d83a2200c0cf9e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7a94faf_ee3918b6",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/zmake.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-20T17:59:57Z",
+      "side": 1,
+      "message": "Removed it.",
+      "parentUuid": "e53e1a2f_dde7a9a5",
       "range": {
         "startLine": 11,
         "startChar": 4,
