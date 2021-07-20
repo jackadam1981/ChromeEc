@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fee95de_1a66bedd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-07-20T02:28:56Z",
+      "side": 1,
+      "message": "This was tested on Jinlon to make sure the operation task as expected.",
+      "parentUuid": "3b7f57bb_fe64cad0",
+      "range": {
+        "startLine": 34,
+        "startChar": 33,
+        "endLine": 34,
+        "endChar": 39
+      },
+      "revId": "1fb9f7f711ca4893cdd8257998c1f348e34df356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ddfa2ee5_03277a3e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91860bff_5a559b3e",
+        "filename": "board/redrix/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-07-20T02:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddfa2ee5_03277a3e",
+      "range": {
+        "startLine": 162,
+        "startChar": 8,
+        "endLine": 162,
+        "endChar": 11
+      },
+      "revId": "1fb9f7f711ca4893cdd8257998c1f348e34df356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26c42a5f_9654814c",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-19T23:43:03Z",
       "side": 1,
       "message": "suggest using an unsigned type.",
+      "range": {
+        "startLine": 208,
+        "startChar": 8,
+        "endLine": 208,
+        "endChar": 11
+      },
+      "revId": "1fb9f7f711ca4893cdd8257998c1f348e34df356",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b5f15fe_7e62887d",
+        "filename": "board/redrix/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-07-20T02:28:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26c42a5f_9654814c",
       "range": {
         "startLine": 208,
         "startChar": 8,
