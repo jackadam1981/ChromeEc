@@ -16,6 +16,91 @@
       "message": "i\u0027m still working on tests, but overall this is split between u2f command processing and u2f crypto which should work for FIPS cert. I\u0027d appreciate to take a preliminary look. ",
       "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1a56dd6_3b7b26b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-20T18:10:57Z",
+      "side": 1,
+      "message": "not much substance in the comments, just trying to understand the intentions of this patch. \n\nA more detailed patch description would help.",
+      "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7af3c56_9f8186d1",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-20T18:10:57Z",
+      "side": 1,
+      "message": "remove the extra added line",
+      "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c10f7c0f_81e7038e",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-20T18:10:57Z",
+      "side": 1,
+      "message": "why is this file changing so much?\n\nMoving code around for the purposes of rearranging it and changing the logic should be in separate patches.",
+      "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "775c8403_65589fbb",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-20T18:10:57Z",
+      "side": 1,
+      "message": "not related to this change.",
+      "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ca24d4_6118e68d",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-20T18:10:57Z",
+      "side": 1,
+      "message": "the same comment: why is this file changing so drastically?",
+      "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
