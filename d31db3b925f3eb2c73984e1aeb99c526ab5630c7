@@ -34,6 +34,24 @@
       "parentUuid": "d9a65d14_0030aaa7",
       "revId": "d31db3b925f3eb2c73984e1aeb99c526ab5630c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "316f5a0a_ba53a47f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-20T16:44:56Z",
+      "side": 1,
+      "message": "why don\u0027t you stop blocking this patch then, the bug will remain open, and consolidation with the main stm32 implementation could still happen in the future.",
+      "parentUuid": "11fd4e15_d5f3975a",
+      "revId": "d31db3b925f3eb2c73984e1aeb99c526ab5630c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
