@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a134dde_c53d9713",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-20T03:47:24Z",
+      "side": 1,
+      "message": "Yeah.. Do we still need to support the voema_npcx796fc build? Or maybe can use BOARD_VOEMA_NPCX796FC to rule out some unnecessary code.",
+      "parentUuid": "b3f7ac03_a90e8353",
+      "revId": "2d6561258a4588849d7ca04e6a2f4035044d3d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37f12bb2_1c7d7dcf",
