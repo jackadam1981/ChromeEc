@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18c75775_425f00cd",
+        "filename": "board/redrix/battery.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-07-20T02:33:33Z",
+      "side": 1,
+      "message": "No, we don\u0027t need to identify device name.",
+      "parentUuid": "2e5ca409_318f7a5e",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 14
+      },
+      "revId": "08f4cad3d5f5a25e221b1ba08fb484b9281eb76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15e46afc_c94780f1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-19T23:24:56Z",
       "side": 1,
       "message": "how did we get from DYNAPACK to DANAPACK?\ni see some other boards did it this way as well,\nbut that seems strange.\n\nwhat is battery called in the manufacturer\u0027s datasheet?",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 225,
+        "endChar": 21
+      },
+      "revId": "08f4cad3d5f5a25e221b1ba08fb484b9281eb76a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d17ff165_35dea2f0",
+        "filename": "board/redrix/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-07-20T02:33:33Z",
+      "side": 1,
+      "message": "Thank you for hitting this point. I think this is really copy-paste for other boards. It should be called DYNAPACK. I will have another patch to fix other boards.",
+      "parentUuid": "15e46afc_c94780f1",
       "range": {
         "startLine": 225,
         "startChar": 1,
