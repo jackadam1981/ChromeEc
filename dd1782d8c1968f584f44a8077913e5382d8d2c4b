@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e16eb6_96d55934",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-20T21:50:02Z",
+      "side": 1,
+      "message": "Some places have \"Teako\" and some have \"Taeko\" - I\u0027m not sure which is the correct one, but please stick to one name.",
+      "revId": "dd1782d8c1968f584f44a8077913e5382d8d2c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25df6ec2_20b5f15a",
+        "filename": "board/taeko/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-20T21:50:02Z",
+      "side": 1,
+      "message": "please create a separate bug",
+      "range": {
+        "startLine": 96,
+        "startChar": 11,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "dd1782d8c1968f584f44a8077913e5382d8d2c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16495466_07ae78e9",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-07-20T21:50:02Z",
+      "side": 1,
+      "message": "Create a separate bug please",
+      "range": {
+        "startLine": 287,
+        "startChar": 10,
+        "endLine": 287,
+        "endChar": 19
+      },
+      "revId": "dd1782d8c1968f584f44a8077913e5382d8d2c4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
