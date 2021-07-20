@@ -22,6 +22,30 @@
       },
       "revId": "259d9cb534a487429669cfebc5b180a86e8c1755",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41dc4bb5_164e11a3",
+        "filename": "board/redrix/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-07-20T04:17:45Z",
+      "side": 1,
+      "message": "Yes, for FAN2.",
+      "parentUuid": "d4fc71a2_997a2de8",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 78
+      },
+      "revId": "259d9cb534a487429669cfebc5b180a86e8c1755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
