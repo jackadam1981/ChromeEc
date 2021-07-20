@@ -206,6 +206,30 @@
       },
       "revId": "37b8f6fca2ed6a228af15376c90fe93f56521749",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ec1f3f1_4a0bb1aa",
+        "filename": "zephyr/projects/npcx_evb/boards/arm/npcx_evb/npcx7_evb.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-07-20T09:15:14Z",
+      "side": 1,
+      "message": "The difference in \"npcx7m6fb, m7fc, m6fb\" \u0026 \"npcx9m6, m3\" are the memory size. The memory config is already defined in dts or kconfig.  For the chip supporting zephyr, npcx7m6fc \u0026 npcx9m6f are the smallest sizes of memory. If they can build for evb, other chips should be able to build.",
+      "parentUuid": "6c58ce7e_f6bc0456",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "37b8f6fca2ed6a228af15376c90fe93f56521749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
