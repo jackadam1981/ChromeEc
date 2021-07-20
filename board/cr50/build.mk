@@ -115,11 +115,13 @@ endif
 ifneq ($(fips-y),)
 RW_BD_OUT=$(out)/RW/$(BDIR)
 FIPS_MODULE=dcrypto/fips_module.o
+FIPS_LD_SCRIPT=$(BDIR)/dcrypto/fips_module.ld
 RW_FIPS_OBJS=$(patsubst %.o, $(RW_BD_OUT)/%.o, $(fips-y))
 
 $(RW_BD_OUT)/$(FIPS_MODULE): $(RW_FIPS_OBJS)
 	@echo "  LD      $(notdir $@)"
-	$(Q)$(CC) $(CFLAGS) --static -Wl,--relocatable -Wl,-Map=$@.map -o $@ $^
+	$(Q)$(CC) $(CFLAGS) --static -Wl,--relocatable\
+		-Wl,-T $(FIPS_LD_SCRIPT) -Wl,-Map=$@.map -o $@ $^
 
 board-y+= $(FIPS_MODULE)
 endif
