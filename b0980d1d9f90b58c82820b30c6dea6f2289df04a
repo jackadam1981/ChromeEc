@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db65f257_667715c4",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 3814,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-07-20T21:35:24Z",
+      "side": 1,
+      "message": "I think the more natural way to do this is to call pd_prevent_low_power_mode (and then call it again after the update is done).",
+      "revId": "b0980d1d9f90b58c82820b30c6dea6f2289df04a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
