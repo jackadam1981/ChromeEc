@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c76b35cb_562c8c68",
+        "filename": "zephyr/projects/npcx_evb/boards/arm/npcx_evb/Kconfig.defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-20T05:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bf3ac99_c818d0c3",
+      "range": {
+        "startLine": 8,
+        "startChar": 24,
+        "endLine": 8,
+        "endChar": 39
+      },
+      "revId": "37b8f6fca2ed6a228af15376c90fe93f56521749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "790f55cb_2eb09dd0",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "The board is defined in `zmake.yaml`. When project configuration, the board will be passed to cmake as a parameter (e.g., -DBOARD\u003dnpcx7_evb). The dts \u0026 _defconfig are loaded by ${BOARD} parameter. The `config BOARD` string doesn\u0027t use for the build system. If we define all chips which support zephyr, it needs to maintain a lot chip_evb.dts \u0026 chip_defconfig in board folder. Currently, we don\u0027t find a method to reuse _defconfig. It will generate a lot of duplicate code. So we prefer it as CL do, or we can choose one chip in chip series (e.g., npcx7m6fc_evb) \u0026 remove the list.",
       "parentUuid": "7d937135_ad8e722b",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "37b8f6fca2ed6a228af15376c90fe93f56521749",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c58ce7e_f6bc0456",
+        "filename": "zephyr/projects/npcx_evb/boards/arm/npcx_evb/npcx7_evb.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-20T05:49:52Z",
+      "side": 1,
+      "message": "I see what you mean about duplicates, but my concern/question is such:\n\n- Say we have a new board using the npcx7_evb (which I understand to be an evaluation board) as a baseline and extends it. Could there possibly be any issues with the extending board needing the m7fc instead of the currently included m6fc chip?",
+      "parentUuid": "d8143148_790bbf5a",
       "range": {
         "startLine": 11,
         "startChar": 0,
