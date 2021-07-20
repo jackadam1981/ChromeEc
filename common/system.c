@@ -1037,8 +1037,20 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 
 void system_enter_hibernate(uint32_t seconds, uint32_t microseconds)
 {
+	uint8_t *memmap_flags;
+
 	if (!IS_ENABLED(CONFIG_HIBERNATE))
 		return;
+
+	/*
+	 * If AC is present, don't hibernate since it might trigger an immediate
+	 * wake up since AC is present, resulting in AP reboot. See: http://b/192259035
+	 */
+	memmap_flags = host_get_memmap(EC_MEMMAP_BATT_FLAG);
+	if (*memmap_flags & EC_BATT_FLAG_AC_PRESENT) {
+		ccprintf("AC adapter present, not hibernating\n");
+		return;
+	}
 
 	/*
 	 * If chipset is already off, then call system_hibernate directly. Else,
