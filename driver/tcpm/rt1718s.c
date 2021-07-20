@@ -61,6 +61,17 @@ int rt1718s_update_bits8(int port, int reg, int mask, int val)
 	return rt1718s_write8(port, reg, reg_val);
 }
 
+int rt1718s_write16(int port, int reg, int val)
+{
+	if (reg > 0xFF) {
+		return i2c_write_offset16(
+			tcpc_config[port].i2c_info.port,
+			tcpc_config[port].i2c_info.addr_flags,
+			reg, val, 2);
+	}
+	return tcpc_write16(port, reg, val);
+}
+
 static int rt1718s_sw_reset(int port)
 {
 	int rv;
@@ -333,6 +344,73 @@ static int rt1718s_enter_low_power_mode(int port)
 	RETURN_ERROR(rt1718s_write8(port, RT1718S_RT2_SBU_CTRL_01, 0));
 
 	return tcpci_enter_low_power_mode(port);
+}
+
+
+
+int rt1718s_get_adc(int port, enum rt1718s_adc_channel channel, int *adc_val)
+{
+	static struct mutex adc_lock;
+	int rv;
+	int adc_data_h, adc_data_l;
+	const int max_wait_times = 6;
+
+	if (in_interrupt_context()) {
+		CPRINTS("Err: use ADC in IRQ");
+		return EC_ERROR_INVAL;
+        }
+
+	mutex_lock(&adc_lock);
+
+	/* Start ADC conversation */
+	rv = rt1718s_write16(port, RT1718S_ADC_CTRL_01, BIT(channel));
+	if (rv)
+		goto out;
+
+	for (int i = 0; i < max_wait_times; i++) {
+		int adc_done;
+
+		msleep(35);
+		rv = rt1718s_read8(port, RT1718S_RT_INT6, &adc_done);
+		if (rv)
+			goto out;
+		if (adc_done & RT1718S_RT_INT6_INT_ADC_DONE)
+			break;
+		if (i == max_wait_times - 1) {
+			CPRINTS("conversion fail channel=%d", channel);
+			rv = EC_ERROR_TIMEOUT;
+			goto out;
+		}
+	}
+
+	/* Read ADC data */
+	rv = rt1718s_read8(port, RT1718S_ADC_CHX_VOL_H(channel), &adc_data_h);
+	if (rv)
+		goto out;
+	rv = rt1718s_read8(port, RT1718S_ADC_CHX_VOL_L(channel), &adc_data_l);
+	if (rv)
+		goto out;
+
+	if (!rv) {
+		*adc_val = (adc_data_h << 8) + adc_data_l;
+
+		/*
+		 * The resolution of VBUS1 ADC is 12.5mV,
+		 * other channels are 4mV.
+		 */
+		if (channel == RT1718S_ADC_VBUS1)
+			*adc_val = *adc_val * 125 / 10;
+		else
+			*adc_val *= 4;
+	}
+
+out:
+	/* Cleanup: disable adc and clear interrupt. Error ignored. */
+	rt1718s_write16(port, RT1718S_ADC_CTRL_01, 0);
+	rt1718s_write8(port, RT1718S_RT_INT6, RT1718S_RT_INT6_INT_ADC_DONE);
+
+	mutex_unlock(&adc_lock);
+	return rv;
 }
 
 /* RT1718S is a TCPCI compatible port controller */
