@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10686393_9cb18718",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-20T23:57:12Z",
+      "side": 1,
+      "message": "nit: keep under 80 cols.",
+      "revId": "a0b109dc3238d8b22b055860a5641d5ba89b3ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2189b683_0a38a71d",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1047,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-20T23:57:12Z",
+      "side": 1,
+      "message": "I\u0027d also add that hibernating with AC present will never happen under normal circumstances, so prevent it from occuring if it\u0027s forcibly attempted.",
+      "range": {
+        "startLine": 1046,
+        "startChar": 0,
+        "endLine": 1047,
+        "endChar": 80
+      },
+      "revId": "a0b109dc3238d8b22b055860a5641d5ba89b3ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe7fa6d1_c36b02f6",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-20T23:57:12Z",
+      "side": 1,
+      "message": "I\u0027d recommend using `extpower_is_present()` instead. You\u0027ll have to guard around it though for `CONFIG_EXTPOWER`. Also, use the IS_ENABLED(...) macro if possible.",
+      "range": {
+        "startLine": 1049,
+        "startChar": 0,
+        "endLine": 1050,
+        "endChar": 47
+      },
+      "revId": "a0b109dc3238d8b22b055860a5641d5ba89b3ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c164fa86_351388a8",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1051,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-20T23:57:12Z",
+      "side": 1,
+      "message": "nit: use the CPRINTS macro as that will use the system console channel. `ccprintf` is only used for console command channel.",
+      "range": {
+        "startLine": 1051,
+        "startChar": 2,
+        "endLine": 1051,
+        "endChar": 10
+      },
+      "revId": "a0b109dc3238d8b22b055860a5641d5ba89b3ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
