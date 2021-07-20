@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8160f79e_f37d2a3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1297914
+      },
+      "writtenOn": "2021-07-20T12:33:42Z",
+      "side": 1,
+      "message": "Modified the sensor slave address and verified on rework unit.\nBoth BMA253 and LIS2DWL can get the lid value via ectool motionsense.",
+      "revId": "d1629885750a069b943e817cdeccb4e797165d2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
