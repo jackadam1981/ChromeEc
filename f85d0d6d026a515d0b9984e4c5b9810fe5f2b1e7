@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da3783dd_c18ddac9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-20T02:37:29Z",
+      "side": 1,
+      "message": "Bossen,\n\nI think we can merge this to firmware branch only since the firmware on main branch won\u0027t be used, and we can prevent the flash size issue on main branch.",
+      "revId": "f85d0d6d026a515d0b9984e4c5b9810fe5f2b1e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
