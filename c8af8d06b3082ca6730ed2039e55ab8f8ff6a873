@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c8596d8_62b9ad58",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-20T01:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0804a1f8_fa6c5677",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 2
+      },
+      "revId": "c8af8d06b3082ca6730ed2039e55ab8f8ff6a873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e55bd686_a1e3e5ef",
@@ -113,6 +137,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19d54337_858184bc",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-20T01:24:17Z",
+      "side": 1,
+      "message": "Gwendal mentioned in his comment that EC_RES_IN_PROGRESS is deprecated. So let\u0027s just simplify this and remove the retry logic completely. Retrying exactly once wasn\u0027t very robust to begin with. \n\nI\u0027ll open a bug for deprecating EC_RES_IN_PROGRESS and another for deprecating EC_CMD_RESEND_RESPONSE.",
+      "parentUuid": "7c747a5d_11dad6d8",
+      "revId": "c8af8d06b3082ca6730ed2039e55ab8f8ff6a873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b0df37b_19d2e96a",
@@ -126,6 +168,30 @@
       "writtenOn": "2021-07-06T16:55:12Z",
       "side": 1,
       "message": "Can you please add a comment explaining this?",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 31
+      },
+      "revId": "c8af8d06b3082ca6730ed2039e55ab8f8ff6a873",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c21f572_50dafe03",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-20T01:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b0df37b_19d2e96a",
       "range": {
         "startLine": 202,
         "startChar": 0,
