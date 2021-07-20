@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e81b5dc_2af0f8f6",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-20T20:36:14Z",
+      "side": 1,
+      "message": "I\u0027m sorry but could you remind me why the newer driver doesn\u0027t set c_cmd-\u003eresult on error? I think it should. Otherwise, we would need to do the translation everywhere. Am I missing something?",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
