@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb34aadd_0b3e7cc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-20T07:38:06Z",
+      "side": 1,
+      "message": "i\u0027m still working on tests, but overall this is split between u2f command processing and u2f crypto which should work for FIPS cert. I\u0027d appreciate to take a preliminary look. ",
+      "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
