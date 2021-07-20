@@ -68,6 +68,30 @@
       },
       "revId": "c7c4d5d0bfd3be7b7ffe78065818c1c8575d6d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8523a02e_593ce2dd",
+        "filename": "zephyr/test/drivers/src/espi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-20T19:54:17Z",
+      "side": 1,
+      "message": "Sorry, was so excited that I finally got this to work that I removed the WIP a bit early. I need to upstream a few changes to the espi emulator first for this to work. It uses http://cs/chromeos_public/src/third_party/zephyr/main/v2.6/drivers/espi/espi_emul.c under the hood to get the shared memory.",
+      "parentUuid": "2cc53fa9_ace3f7f6",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "c7c4d5d0bfd3be7b7ffe78065818c1c8575d6d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
