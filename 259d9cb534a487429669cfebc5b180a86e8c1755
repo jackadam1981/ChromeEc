@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4fc71a2_997a2de8",
+        "filename": "board/redrix/gpio.inc",
+        "patchSetId": 10
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-20T04:11:02Z",
+      "side": 1,
+      "message": "are you using PWM7 for something?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 78
+      },
+      "revId": "259d9cb534a487429669cfebc5b180a86e8c1755",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
