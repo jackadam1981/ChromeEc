@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3f7ac03_a90e8353",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-07-20T02:07:53Z",
+      "side": 1,
+      "message": "CQ failure,\n\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld:build/voema_npcx796fc/RW/ec.RW.lds:3947 cannot move location counter backwards (from 00000000100c037c to 00000000100bffff)\ncollect2: error: ld returned 1 exit status\nmake[2]: *** [Makefile.rules:542: build/voema_npcx796fc/RW/ec.RW.elf] Error 1\nmake[1]: *** [Makefile.rules:249: proj-voema_npcx796fc] Error 2\nmake[1]: *** Waiting for unfinished jobs....\n\nSeems to me there\u0027s issue on the size?",
+      "revId": "2d6561258a4588849d7ca04e6a2f4035044d3d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37f12bb2_1c7d7dcf",
