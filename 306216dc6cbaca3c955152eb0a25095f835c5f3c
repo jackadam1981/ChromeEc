@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f414eab_fb796ac4",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1506,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-20T16:43:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "481b05eb_938ad607",
+      "range": {
+        "startLine": 1506,
+        "startChar": 21,
+        "endLine": 1506,
+        "endChar": 41
+      },
+      "revId": "306216dc6cbaca3c955152eb0a25095f835c5f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1cfcd82_69c0fc6d",
@@ -133,6 +157,30 @@
       "writtenOn": "2021-05-20T23:47:47Z",
       "side": 1,
       "message": "This\u0027ll get noisy. Can we just not print it and the fields if the EC doesn\u0027t know how to handle it?",
+      "range": {
+        "startLine": 1090,
+        "startChar": 0,
+        "endLine": 1091,
+        "endChar": 8
+      },
+      "revId": "306216dc6cbaca3c955152eb0a25095f835c5f3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77a34003_51d8f1a0",
+        "filename": "util/ectool.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1091,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-20T16:43:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1cfcd82_69c0fc6d",
       "range": {
         "startLine": 1090,
         "startChar": 0,

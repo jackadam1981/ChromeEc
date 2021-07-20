@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f917055_d3ee9d41",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-20T16:43:28Z",
+      "side": 1,
+      "message": "Sub-minor (aka CHROMOS_PATCH) is set to the date for non official builds. If we set this to 0 for non-official builds there will be two side effects. The fwid will not exactly match the value reported by bios and OS. It will not be immediately obvious that it\u0027s a non-official build. This can still be mostly inferred from user/hostname in the BUILD string. \n\nPossible solutions:\n* Add a dedicated field indicating if it\u0027s an official build, or append an indicator to the BUILD string, e.g. NON-OFFICIAL 2021-05-20 16:43:18.657 robbarnes@robbarnes0\n* Make the fwid field 64 bytes\n* Instead of setting sub-minor to 0, set it to something that indicates it\u0027s a non-official build, e.g. guybrush_13434.0.999 | guybrush_13434.0.loc | guybrush_13434.0.xxx",
+      "parentUuid": "4b138a00_2163dcd1",
+      "range": {
+        "startLine": 19,
+        "startChar": 41,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9d114d8_3df002a8",
         "filename": "board/oak/board.h",
         "patchSetId": 6
@@ -60,6 +84,30 @@
       "writtenOn": "2021-07-12T21:21:25Z",
       "side": 1,
       "message": "This isn\u0027t wrapped by CONFIG_CROS_FWID_VERSION. Would the code not defining it work ok? I see some sizeof(struct image_data) in a few places.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f04db3c4_ce11d24a",
+        "filename": "include/cros_version.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-20T16:43:28Z",
+      "side": 1,
+      "message": "I see the size checked in system_get_image_data (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/system.c;l\u003d755), are you seeing it  checked anywhere else?",
+      "parentUuid": "a4f3dfd4_bf6c2c97",
       "range": {
         "startLine": 32,
         "startChar": 0,
