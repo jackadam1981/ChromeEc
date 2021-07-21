@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9507124c_8d5f9c2a",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-21T01:37:52Z",
+      "side": 1,
+      "message": "We try to avoid the following if possible:\n    \n#ifdef CONFIG_OPTION\n    foo_bar();\n#endif\n\nBut instead, we should prefer this:\n    \nif (IS_ENABLED(CONFIG_OPTION))\n    foo_bar();",
+      "parentUuid": "668a469f_4a814035",
+      "range": {
+        "startLine": 1049,
+        "startChar": 0,
+        "endLine": 1050,
+        "endChar": 47
+      },
+      "revId": "a0b109dc3238d8b22b055860a5641d5ba89b3ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c164fa86_351388a8",
         "filename": "common/system.c",
         "patchSetId": 2
