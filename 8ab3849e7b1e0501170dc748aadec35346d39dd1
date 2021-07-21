@@ -87,6 +87,30 @@
       },
       "revId": "8ab3849e7b1e0501170dc748aadec35346d39dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d831e9f_edea0cdd",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-21T21:56:54Z",
+      "side": 1,
+      "message": "Line 95 will clear the custom-ro_objs from the board directory. I\u0027d need to touch more code. \n\nI could create custom-board-ro_objs-y and then add that to custom-ro_objs-y here.",
+      "parentUuid": "ce5e60f1_39ba9a63",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "8ab3849e7b1e0501170dc748aadec35346d39dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
