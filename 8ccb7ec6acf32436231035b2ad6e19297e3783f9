@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e86c26d0_789168d9",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-21T01:40:23Z",
+      "side": 1,
+      "message": "This causes a style upload error, but I\u0027m just moving it around in the file. Should I fix it? I kind of don\u0027t think we should touch this code too much.\n\n    /mnt/host/source/src/repohooks/checkpatch.pl errors/warnings\n    \n    WARNING: else is not generally useful after a break or return\n    #199: FILE: board/cr50/dcrypto/util.c:152:\n    +\t\treturn memcpy(dest, src, len);\n    +\t} else {\n    \n    total: 0 errors, 1 warnings, 238 lines checked\n    \n    NOTE: For some of the reported defects, checkpatch may be able to\n          mechanically convert to the typical style using --fix or --fix-inplace.\n    \n    Your patch has style problems, please review.",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "8ccb7ec6acf32436231035b2ad6e19297e3783f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
