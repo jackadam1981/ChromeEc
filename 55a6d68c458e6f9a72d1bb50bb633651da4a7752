@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db24a257_5aed7c40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T12:29:06Z",
+      "side": 1,
+      "message": "code is generic. Both ARM \u0026 Dauntless provide HW clz instruction which is very useful and improves performance.",
+      "parentUuid": "f24f263a_20be1d23",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 51
+      },
+      "revId": "55a6d68c458e6f9a72d1bb50bb633651da4a7752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58bf60c6_4c5e4a0a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-20T18:23:00Z",
       "side": 1,
       "message": "a more thorough test is required.",
+      "range": {
+        "startLine": 20,
+        "startChar": 5,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "55a6d68c458e6f9a72d1bb50bb633651da4a7752",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cfcc8e8_39c1cb12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T12:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58bf60c6_4c5e4a0a",
       "range": {
         "startLine": 20,
         "startChar": 5,
