@@ -16,6 +16,24 @@
       "message": "Separating the else part to line 617 would make it harder to read.\n\nCould you move the else part here?",
       "revId": "1f755d4783b010350274487b2caf1a03177da2be",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eea551b_2ec4e2cc",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 505,
+      "author": {
+        "id": 1512242
+      },
+      "writtenOn": "2021-07-21T06:31:50Z",
+      "side": 1,
+      "message": "Done by patchset 6.\nTested by running make BOARD\u003dstm32l476g-eval and checking smap as well as checking readelf -a.",
+      "parentUuid": "c04f66c2_644ebb2e",
+      "revId": "1f755d4783b010350274487b2caf1a03177da2be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
