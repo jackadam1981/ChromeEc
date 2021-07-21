@@ -118,6 +118,20 @@ enum nct38xx_boot_type nct38xx_get_boot_type(int port);
  */
 void nct38xx_reset_notify(int port);
 
+/* NCT38XX I/O pins & ports that can be referenced in gpio.inc */
+enum nct38xx_io_pins {
+	NCT38XX_GPIO2 = 2,
+	NCT38XX_GPIO3 = 3,
+	NCT38XX_GPIO4 = 4,
+	NCT38XX_GPIO6 = 6,
+	NCT38XX_GPIO7 = 7,
+};
+
+/* NCT38XX has single I/O port per TCPC port */
+enum nct38xx_io_ports {
+	NCT38XX_PORT_0,
+};
+
 extern const struct ioexpander_drv nct38xx_ioexpander_drv;
 
 #endif /* defined(__CROS_EC_USB_PD_TCPM_NCT38XX_H) */
