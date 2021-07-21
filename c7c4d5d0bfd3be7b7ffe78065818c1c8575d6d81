@@ -164,6 +164,30 @@
       },
       "revId": "c7c4d5d0bfd3be7b7ffe78065818c1c8575d6d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd9c6cd_181c60d8",
+        "filename": "zephyr/test/drivers/src/espi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-07-21T20:44:05Z",
+      "side": 1,
+      "message": "Ok, I see. The code to handle the interrupt and read the host command lives in chip specific code, so we\u0027ll need a different test to catch that code, but that doesn\u0027t matter here.",
+      "parentUuid": "c46d7813_26e5627d",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "c7c4d5d0bfd3be7b7ffe78065818c1c8575d6d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
