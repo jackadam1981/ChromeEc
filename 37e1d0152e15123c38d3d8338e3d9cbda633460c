@@ -16,6 +16,23 @@
       "message": "ty, fixed! could PTALA?",
       "revId": "37e1d0152e15123c38d3d8338e3d9cbda633460c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "919ced57_ff126d1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-21T18:51:20Z",
+      "side": 1,
+      "message": "Also, you can run `make buildall` in the root of the EC repo in the chroot to build all the targets.",
+      "revId": "37e1d0152e15123c38d3d8338e3d9cbda633460c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
