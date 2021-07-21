@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fd701a43_9bd5fe94",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-21T04:55:23Z",
+      "side": 1,
+      "message": "Makefile.rules has the same rule, so I drop the one in common/build.mk.",
+      "parentUuid": "16ddba41_d7d0b91d",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "5e6203eed8093bd17eb0346d2ce461676862dfc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "99b96e57_10b7faf0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
