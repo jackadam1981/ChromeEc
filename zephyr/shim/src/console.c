@@ -274,7 +274,9 @@ static void zephyr_print(const char *buff, size_t size)
 	if (k_is_in_isr() || shell_zephyr->ctx->state != SHELL_STATE_ACTIVE)
 		printk("%s", buff);
 	else {
+		k_sched_lock();
 		shell_fprintf(shell_zephyr, SHELL_NORMAL, "%s", buff);
+		k_sched_unlock();
 		if (IS_ENABLED(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE))
 			console_buf_notify_chars(buff, size);
 	}
