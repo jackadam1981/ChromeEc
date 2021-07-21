@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e544a25d_715d0970",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T13:39:02Z",
+      "side": 1,
+      "message": "So, I spent some time to go function by function and identify source of growth. List of functions in the commit message. Some functions can be eliminated as they aren\u0027t used. Say, there was AES-GCM, but I just excluded it from list of objects, and most of FIPS functions will be used.",
+      "revId": "f15824d36bdbc2854b42caa64d84f4dd5a4f3e58",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
