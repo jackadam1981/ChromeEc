@@ -34,6 +34,24 @@
       "parentUuid": "63a0cd7d_e246c3cf",
       "revId": "50395b9c299764012dc9642c6ecef224e16f51c2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ed6cec4_ca9b279c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-21T17:30:08Z",
+      "side": 1,
+      "message": "Fixed by removing CRYPTOLIB from dirs and adding board/cr50/dcrypto/cryptoc",
+      "parentUuid": "3fd1c382_e5b7a5d9",
+      "revId": "50395b9c299764012dc9642c6ecef224e16f51c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
