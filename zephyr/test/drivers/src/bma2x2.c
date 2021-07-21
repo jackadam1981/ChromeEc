@@ -13,6 +13,7 @@
 #include "accelgyro.h"
 #include "motion_sense.h"
 #include "driver/accel_bma2x2.h"
+#include "test_framework.h"
 
 /** How accurate comparision of vectors should be. */
 #define V_EPS 8
@@ -22,7 +23,7 @@
 #define BMA_ORD DT_DEP_ORD(EMUL_LABEL)
 
 /** Mutex for test motion sensor  */
-static mutex_t sensor_mutex;
+K_MUTEX_DEFINE(sensor_mutex);
 
 /** Rotation used in some tests */
 static const mat33_fp_t test_rotation = {
@@ -897,18 +898,11 @@ static void test_bma_get_resolution(void)
 	zassert_equal(12, ms.drv->get_resolution(&ms), NULL);
 }
 
-void test_suite_bma2x2(void)
-{
-	k_mutex_init(&sensor_mutex);
-
-	ztest_test_suite(bma2x2,
-			 ztest_user_unit_test(test_bma_get_offset),
-			 ztest_user_unit_test(test_bma_set_offset),
-			 ztest_user_unit_test(test_bma_set_range),
-			 ztest_user_unit_test(test_bma_init),
-			 ztest_user_unit_test(test_bma_rate),
-			 ztest_user_unit_test(test_bma_read),
-			 ztest_user_unit_test(test_bma_perform_calib),
-			 ztest_user_unit_test(test_bma_get_resolution));
-	ztest_run_test_suite(bma2x2);
-}
+register_test_suite(bma2x2, false, ztest_user_unit_test(test_bma_get_offset),
+		    ztest_user_unit_test(test_bma_set_offset),
+		    ztest_user_unit_test(test_bma_set_range),
+		    ztest_user_unit_test(test_bma_init),
+		    ztest_user_unit_test(test_bma_rate),
+		    ztest_user_unit_test(test_bma_read),
+		    ztest_user_unit_test(test_bma_perform_calib),
+		    ztest_user_unit_test(test_bma_get_resolution));
