@@ -63,6 +63,30 @@
       },
       "revId": "8ab3849e7b1e0501170dc748aadec35346d39dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce5e60f1_39ba9a63",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-21T20:45:35Z",
+      "side": 1,
+      "message": "linking in this makefile a file from board directory does not seem right.\n\nCan this be added in board/cr50/build.mk instead?\n\nWhat happens with the rest of H1 based boards, how do they build the RO?",
+      "parentUuid": "a7fa4c7e_be22b2ec",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "8ab3849e7b1e0501170dc748aadec35346d39dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
