@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "413b5559_67364bc1",
+        "filename": "board/cr50/power_button.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T19:35:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7af3c56_9f8186d1",
+      "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c10f7c0f_81e7038e",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-07-20T18:10:57Z",
       "side": 1,
       "message": "why is this file changing so much?\n\nMoving code around for the purposes of rearranging it and changing the logic should be in separate patches.",
+      "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96f7f740_6dcca0dd",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T19:35:59Z",
+      "side": 1,
+      "message": "it was a spaghetti code, had to untangle it cleanly. It\u0027s hard to do it in separate CLs.\nbasically I had to move U2F state management into common/u2f, and all crypto code into board/cr50/u2f from command processing. This resulted in many new functions added. Actually it became closer to what it was before WebAuthn addition.",
+      "parentUuid": "c10f7c0f_81e7038e",
       "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e49e141_b73f211c",
+        "filename": "chip/g/dcrypto/dcrypto.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T19:35:59Z",
+      "side": 1,
+      "message": "not even sure how I made it.",
+      "parentUuid": "775c8403_65589fbb",
+      "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1ca24d4_6118e68d",
@@ -99,6 +153,24 @@
       "writtenOn": "2021-07-20T18:10:57Z",
       "side": 1,
       "message": "the same comment: why is this file changing so drastically?",
+      "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6b1ccf1_280b900f",
+        "filename": "common/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T19:35:59Z",
+      "side": 1,
+      "message": "I replaced direct calls to low-level crypto with calls to newly added u2f_* crypto functions",
+      "parentUuid": "f1ca24d4_6118e68d",
       "revId": "81f17f9c7eb3f7924bfeb3bb0f133ada39cca375",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

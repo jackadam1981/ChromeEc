@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbddc092_0966a972",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T19:35:59Z",
+      "side": 1,
+      "message": "Intention of patch is to split U2F code into 2 parts:\n1) Outside FIPS module: TPM2 command processing - parsing operands, invoking crypto,generating response + U2F state management\n2) Crypto implementation which resides in FIPS module",
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
