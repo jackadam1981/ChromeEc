@@ -111,6 +111,30 @@
       },
       "revId": "8ab3849e7b1e0501170dc748aadec35346d39dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06172602_5f0d2be9",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-21T22:01:49Z",
+      "side": 1,
+      "message": "sure, either this, or just change line 95 to be \u0027custom-ro-objs +\u003d\u0027",
+      "parentUuid": "4d831e9f_edea0cdd",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "8ab3849e7b1e0501170dc748aadec35346d39dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
