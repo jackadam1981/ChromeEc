@@ -6,6 +6,7 @@
 #include "cache.h"
 #include "registers.h"
 #include "stdint.h"
+#include "config_chip.h"
 
 /*
  * Map SCP address (bits 31~28) to AP address
@@ -37,9 +38,10 @@
 #define REMAP_ADDR_LSB_MASK		(BIT(REMAP_ADDR_SHIFT) - 1)
 #define REMAP_ADDR_MSB_MASK		((~0) << REMAP_ADDR_SHIFT)
 #define MAP_INVALID 0xff
+#define MAP_SRAM 0xee
 
 static const uint8_t addr_map[16] = {
-	MAP_INVALID,	/* SRAM */
+	MAP_SRAM,	/* SRAM */
 	0x5,		/* ext_addr_0x1 */
 	0x7,		/* ext_addr_0x2 */
 	MAP_INVALID,	/* no ext_addr_0x3 */
@@ -107,8 +109,14 @@ int memmap_scp_to_ap(uintptr_t scp_addr, uintptr_t *ap_addr)
 
 	if (addr_map[i] == MAP_INVALID)
 		return EC_ERROR_INVAL;
-
-	*ap_addr = (scp_addr & REMAP_ADDR_LSB_MASK) |
-		(addr_map[i] << REMAP_ADDR_SHIFT);
+	else if (addr_map[i] == MAP_SRAM) {
+		if (scp_addr < 0x200000)
+			*ap_addr =  CONFIG_PROGRAM_MEMORY_BASE_LOAD + scp_addr;
+		else
+			return EC_ERROR_INVAL;
+	} else {
+		*ap_addr = (scp_addr & REMAP_ADDR_LSB_MASK) |
+			(addr_map[i] << REMAP_ADDR_SHIFT);
+	}
 	return EC_SUCCESS;
 }
