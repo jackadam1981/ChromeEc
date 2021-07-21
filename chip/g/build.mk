@@ -108,6 +108,9 @@ custom-ro_objs-y += chip/g/uart.o
 custom-ro_objs-y += chip/g/uartn.o
 custom-ro_objs-y += common/printf.o
 custom-ro_objs-y += common/util.o
+ifneq ($(CONFIG_FIPS_UTIL),)
+custom-ro_objs-$(BOARD_CR50) += board/cr50/dcrypto/util.o
+endif
 custom-ro_objs-y += core/cortex-m/init.o
 custom-ro_objs-y += core/cortex-m/vecttable.o
 custom-ro_objs-y += core/cortex-m/panic.o
