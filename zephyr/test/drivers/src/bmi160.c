@@ -13,6 +13,7 @@
 #include "motion_sense_fifo.h"
 #include "driver/accelgyro_bmi160.h"
 #include "driver/accelgyro_bmi_common.h"
+#include "test_framework.h"
 
 #define BMI_ORD			DT_DEP_ORD(DT_NODELABEL(accel_bmi160))
 #define BMI_ACC_SENSOR_ID	SENSOR_ID(DT_NODELABEL(ms_bmi160_accel))
@@ -1821,26 +1822,22 @@ static void test_bmi_gyr_fifo(void)
 		      NULL);
 }
 
-void test_suite_bmi160(void)
-{
-	ztest_test_suite(bmi160,
-			 ztest_user_unit_test(test_bmi_acc_get_offset),
-			 ztest_user_unit_test(test_bmi_gyr_get_offset),
-			 ztest_user_unit_test(test_bmi_acc_set_offset),
-			 ztest_user_unit_test(test_bmi_gyr_set_offset),
-			 ztest_user_unit_test(test_bmi_acc_set_range),
-			 ztest_user_unit_test(test_bmi_gyr_set_range),
-			 ztest_user_unit_test(test_bmi_get_resolution),
-			 ztest_user_unit_test(test_bmi_acc_rate),
-			 ztest_user_unit_test(test_bmi_gyr_rate),
-			 ztest_user_unit_test(test_bmi_scale),
-			 ztest_user_unit_test(test_bmi_read_temp),
-			 ztest_user_unit_test(test_bmi_acc_read),
-			 ztest_user_unit_test(test_bmi_gyr_read),
-			 ztest_user_unit_test(test_bmi_acc_perform_calib),
-			 ztest_user_unit_test(test_bmi_gyr_perform_calib),
-			 ztest_user_unit_test(test_bmi_init),
-			 ztest_user_unit_test(test_bmi_acc_fifo),
-			 ztest_user_unit_test(test_bmi_gyr_fifo));
-	ztest_run_test_suite(bmi160);
-}
+register_test_suite(bmi160, false,
+		    ztest_user_unit_test(test_bmi_acc_get_offset),
+		    ztest_user_unit_test(test_bmi_gyr_get_offset),
+		    ztest_user_unit_test(test_bmi_acc_set_offset),
+		    ztest_user_unit_test(test_bmi_gyr_set_offset),
+		    ztest_user_unit_test(test_bmi_acc_set_range),
+		    ztest_user_unit_test(test_bmi_gyr_set_range),
+		    ztest_user_unit_test(test_bmi_get_resolution),
+		    ztest_user_unit_test(test_bmi_acc_rate),
+		    ztest_user_unit_test(test_bmi_gyr_rate),
+		    ztest_user_unit_test(test_bmi_scale),
+		    ztest_user_unit_test(test_bmi_read_temp),
+		    ztest_user_unit_test(test_bmi_acc_read),
+		    ztest_user_unit_test(test_bmi_gyr_read),
+		    ztest_user_unit_test(test_bmi_acc_perform_calib),
+		    ztest_user_unit_test(test_bmi_gyr_perform_calib),
+		    ztest_user_unit_test(test_bmi_init),
+		    ztest_user_unit_test(test_bmi_acc_fifo),
+		    ztest_user_unit_test(test_bmi_gyr_fifo));

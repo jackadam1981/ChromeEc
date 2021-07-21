@@ -15,6 +15,7 @@
 #include "battery.h"
 #include "extpower.h"
 #include "stubs.h"
+#include "test_framework.h"
 
 #include <logging/log.h>
 LOG_MODULE_REGISTER(test_drivers_bc12, LOG_LEVEL_DBG);
@@ -281,9 +282,4 @@ static void test_bc12_pi3usb9201(void)
 	}
 }
 
-void test_suite_bc12(void)
-{
-	ztest_test_suite(bc12,
-			 ztest_user_unit_test(test_bc12_pi3usb9201));
-	ztest_run_test_suite(bc12);
-}
+register_test_suite(bc12, false, ztest_user_unit_test(test_bc12_pi3usb9201));
