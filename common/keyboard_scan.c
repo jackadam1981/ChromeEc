@@ -496,6 +496,16 @@ static int has_ghosting(const uint8_t *state)
 	return 0;
 }
 
+/* Inform keyboard module if scanning is enabled */
+static void key_state_changed(int row, int col, uint8_t state)
+{
+	if (!keyboard_scan_is_enabled())
+		return;
+
+	/* No-op for protocols that require full keyboard matrix (e.g. MKBP). */
+	keyboard_state_changed(row, col, !!(state & BIT(row)));
+}
+
 /**
  * Update keyboard state using low-level interface to read keyboard.
  *
@@ -526,6 +536,7 @@ static int check_keys_changed(uint8_t *state)
 	/* Check for changes between previous scan and this one */
 	for (c = 0; c < keyboard_cols; c++) {
 		int diff;
+		int d = new_state[c] ^ state[c];
 
 		/* Clear debouncing flag, if sufficient time has elapsed. */
 		for (i = 0; i < KEYBOARD_ROWS && debouncing[c]; i++) {
@@ -536,25 +547,29 @@ static int check_keys_changed(uint8_t *state)
 					keyscan_config.debounce_up_us))
 				continue;  /* Not done debouncing */
 			debouncing[c] &= ~BIT(i);
+			if (IS_ENABLED(CONFIG_KEYBOARD_STRICT_DEBOUNCE)) {
+				if (d & BIT(i)) {
+					any_change = 1;
+					key_state_changed(i, c, new_state[c]);
+				}
+				/* This guarantees diff[c] & BIT(i) = 0. */
+				state[c] ^= d & BIT(i);
+			}
 		}
 
 		/* Recognize change in state, unless debounce in effect. */
 		diff = (new_state[c] ^ state[c]) & ~debouncing[c];
 		if (!diff)
 			continue;
+
 		for (i = 0; i < KEYBOARD_ROWS; i++) {
 			if (!(diff & BIT(i)))
 				continue;
 			scan_edge_index[c][i] = scan_time_index;
-			any_change = 1;
 
-			/* Inform keyboard module if scanning is enabled */
-			if (keyboard_scan_is_enabled()) {
-				/* This is no-op for protocols that require a
-				 * full keyboard matrix (e.g., MKBP).
-				 */
-				keyboard_state_changed(
-					i, c, !!(new_state[c] & BIT(i)));
+			if (!IS_ENABLED(CONFIG_KEYBOARD_STRICT_DEBOUNCE)) {
+				any_change = 1;
+				key_state_changed(i, c, new_state[c]);
 			}
 		}
 
@@ -565,7 +580,8 @@ static int check_keys_changed(uint8_t *state)
 		 * (up or down), the state bits are only updated if the
 		 * edge was not suppressed due to debouncing.
 		 */
-		state[c] ^= diff;
+		if (!IS_ENABLED(CONFIG_KEYBOARD_STRICT_DEBOUNCE))
+			state[c] ^= diff;
 	}
 
 	if (any_change) {
@@ -723,6 +739,16 @@ const uint8_t *keyboard_scan_get_state(void)
 
 void keyboard_scan_init(void)
 {
+	if (IS_ENABLED(CONFIG_KEYBOARD_STRICT_DEBOUNCE) &&
+	    keyscan_config.debounce_down_us != keyscan_config.debounce_up_us) {
+		/*
+		 * strict debouncer requires down and up time to be equal.
+		 * If not, disable keyscan (instead of crashing by assert).
+		 */
+		CPRINTS("KB ERROR: Debounce times not equal");
+		return;
+	}
+
 	/* Configure refresh key matrix */
 	keyboard_mask_refresh = KEYBOARD_ROW_TO_MASK(
 		board_keyboard_row_refresh());
