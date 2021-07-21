@@ -46,6 +46,30 @@
       },
       "revId": "97d76108f3d70e8905d2d2b57e46196a727697e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29bcecb2_a740548a",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1053,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-21T17:25:26Z",
+      "side": 1,
+      "message": "I think I need to go back to the `#ifdef ...`\n\nGot compiler error from the builder:\n\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: build/nucleo-f072rb/RW/common/system.o: in function `system_enter_hibernate\u0027:\n/mnt/host/source/src/platform/ec/common/system.c:1051: undefined reference to `extpower_is_present\u0027",
+      "parentUuid": "caeb09fc_b008f6a1",
+      "range": {
+        "startLine": 1053,
+        "startChar": 13,
+        "endLine": 1053,
+        "endChar": 29
+      },
+      "revId": "97d76108f3d70e8905d2d2b57e46196a727697e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
