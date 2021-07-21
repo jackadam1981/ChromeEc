@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2ba05c_23735165",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-21T23:43:26Z",
+      "side": 1,
+      "message": "There were so many boards that required the \"extpower_is_present()\".\n\nI\u0027m not familiar with most of the boards... I noticed that most of them are not even ChromeOS boards, but just EC used for something else, like Servo Micro.\n\nI\u0027m assuming that all these boards require external powerl... but I\u0027m not 100% sure about this.\n\n\nI guess I should double-check one-by-one... but where can I get more info about these boards?\n\ne.g: Baklava seems to be a dock station, but besides that, I couldn\u0027t find details about it... it might work without ext power.",
+      "revId": "c6f93357a5811b17374fa19cdec63ecd6585b9df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
