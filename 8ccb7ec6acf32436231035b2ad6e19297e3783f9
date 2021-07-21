@@ -22,6 +22,30 @@
       },
       "revId": "8ccb7ec6acf32436231035b2ad6e19297e3783f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05648b1e_9ea7ac77",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-21T20:09:45Z",
+      "side": 1,
+      "message": "I would fix it, especially since the fix would now show the diff to this patch and it will be easy to see that this is mostly a whitespace only change.",
+      "parentUuid": "e86c26d0_789168d9",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "8ccb7ec6acf32436231035b2ad6e19297e3783f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
