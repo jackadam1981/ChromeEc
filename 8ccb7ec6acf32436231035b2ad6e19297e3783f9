@@ -46,6 +46,30 @@
       },
       "revId": "8ccb7ec6acf32436231035b2ad6e19297e3783f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b73c5052_06501c2c",
+        "filename": "common/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-21T20:27:28Z",
+      "side": 1,
+      "message": "It will also involve moving line 138 through 146 around due to mixed declarations in the code.\n\nMaybe those are why the else is there?",
+      "parentUuid": "05648b1e_9ea7ac77",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 2
+      },
+      "revId": "8ccb7ec6acf32436231035b2ad6e19297e3783f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
