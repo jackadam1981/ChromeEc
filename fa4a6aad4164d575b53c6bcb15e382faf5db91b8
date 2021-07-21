@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6629a1f5_a1b347aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-21T23:36:31Z",
+      "side": 1,
+      "message": "i\u0027m not sure it makes a lot of sense to define generic constants\nthat resolve to obvious values. this is the only place they\nare used and anything outside of this file will use the descriptive\nGPIO signal name generated from here.\n\nit might make more sense to replace\nEXPIN(instance, 0, pin) with\nEXPIN_NCT38XX(instance, pin) or\nNCT38XX_EXPIN(instance, pin)\nhere.",
+      "revId": "fa4a6aad4164d575b53c6bcb15e382faf5db91b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
