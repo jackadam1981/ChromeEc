@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abee958c_84cc2cec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1302633
+      },
+      "writtenOn": "2021-07-21T21:41:20Z",
+      "side": 1,
+      "message": "Normal Mode\n        EC in RW | 0x0000005b |     high |      high\n\nRecovery Mode\n        EC in RW | 0x0000005b |     high |      low",
+      "revId": "be3e204a25f2dbfbc7308139a464dac4521a1e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
