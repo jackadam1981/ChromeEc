@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f53711a3_30f45244",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-21T16:05:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbae8496_1ea4f331",
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "0cc13f20_d12b5c61",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -69,6 +87,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bb396d9_8e143b51",
+        "filename": "zephyr/test/drivers/include/test_framework.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-21T16:05:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "92001d66_00bb5e6d",
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e45d16c6_cbccaf45",
@@ -82,6 +118,30 @@
       "writtenOn": "2021-07-21T14:17:13Z",
       "side": 1,
       "message": "Do we need these dots after everything?",
+      "range": {
+        "startLine": 24,
+        "startChar": 44,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fefe06e3_92de618d",
+        "filename": "zephyr/test/drivers/include/test_framework.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-21T16:05:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e45d16c6_cbccaf45",
       "range": {
         "startLine": 24,
         "startChar": 44,
@@ -117,6 +177,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac0fa303_88a6218e",
+        "filename": "zephyr/test/drivers/include/test_framework.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-21T16:05:21Z",
+      "side": 1,
+      "message": "I was trying to keep it simple at first. I was thinking of following up with moving this into a `struct test_state` and in main.c having the run function take a function pointer like `bool (*predicate)(const struct test_state*)`. This would abstract away the test run condition and we\u0027d be able to add/change them without large effects to the code.\n\nWould you like me to do that in this CL?",
+      "parentUuid": "62bcd9a5_0eab9b8f",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48464949_0ad958f0",
         "filename": "zephyr/test/drivers/include/test_framework.h",
         "patchSetId": 2
@@ -128,6 +212,30 @@
       "writtenOn": "2021-07-21T14:17:13Z",
       "side": 1,
       "message": "blank line after decls?",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "71f5093b_f4489fa8",
+        "filename": "zephyr/test/drivers/include/test_framework.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-21T16:05:21Z",
+      "side": 1,
+      "message": "repo upload\u0027s checks complain about the blank line.",
+      "parentUuid": "48464949_0ad958f0",
       "range": {
         "startLine": 44,
         "startChar": 2,
@@ -151,6 +259,24 @@
       "writtenOn": "2021-07-21T14:17:13Z",
       "side": 1,
       "message": "Seems like an unrelated change for a separate commit",
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b69bf190_7b193ad1",
+        "filename": "zephyr/test/drivers/src/bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-21T16:05:21Z",
+      "side": 1,
+      "message": "Sorry, clang-format and I didn\u0027t catch it when running `git add`",
+      "parentUuid": "a59ecbf2_e60b7761",
       "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
