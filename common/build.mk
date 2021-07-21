@@ -245,6 +245,7 @@ endif
 $(out)/cryptoc/libcryptoc.a:
 	$(call quiet,cryptolib,CRYPTOLIB)
 
+ifneq ($(CONFIG_FIPS_CLIB),y)
 # Link RO and RW against cryptoc.
 $(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(out)/RO/ec.RO.elf $(out)/RO/ec.RO_B.elf: $(out)/cryptoc/libcryptoc.a
@@ -253,6 +254,7 @@ $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/cryptoc/libcryptoc.a
 # Host test executables (including fuzz tests).
 $(out)/$(PROJECT).exe: LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(out)/$(PROJECT).exe: $(out)/cryptoc/libcryptoc.a
+endif
 endif
 
 include $(_common_dir)mock/build.mk
