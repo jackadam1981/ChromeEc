@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43ba6128_f0338493",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-21T19:09:40Z",
+      "side": 1,
+      "message": "do you need this to be a variable or can use use\nGPIO_USB_C1_RT_RST_R_ODL directly in the code?\n\nthis depends on whether your C1 is a daughter board\nor is different on some SKUs.",
+      "range": {
+        "startLine": 151,
+        "startChar": 24,
+        "endLine": 151,
+        "endChar": 38
+      },
+      "revId": "e2d31b7c15eee195e8b44d5829e9e584d539bdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df797416_5433a5c0",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-21T19:09:40Z",
+      "side": 1,
+      "message": "are these still needed on the ps8815 used in your build?",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 44
+      },
+      "revId": "e2d31b7c15eee195e8b44d5829e9e584d539bdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92cf6392_82831712",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-21T19:09:40Z",
+      "side": 1,
+      "message": "PS8815_PWR_H_RST_H_DELAY_MS,\nbut we still have b/179648104 open to confirm the timings.",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 10
+      },
+      "revId": "e2d31b7c15eee195e8b44d5829e9e584d539bdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78aaafdd_822d2a86",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-21T19:09:40Z",
+      "side": 1,
+      "message": "PS8815_PWR_H_RST_H_DELAY_MS\nthat constant is currently 40ms, is that OK here?",
+      "range": {
+        "startLine": 193,
+        "startChar": 8,
+        "endLine": 193,
+        "endChar": 10
+      },
+      "revId": "e2d31b7c15eee195e8b44d5829e9e584d539bdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
