@@ -224,6 +224,7 @@ $(out)/rma_key_from_blob.h: board/$(BOARD)/$(BLOB_FILE) util/bin2h.sh
 endif
 
 # Build and link against libcryptoc.
+ifneq ($(CONFIG_FIPS_CLIB),y)
 ifeq ($(CONFIG_LIBCRYPTOC),y)
 CRYPTOCLIB := $(realpath ../../third_party/cryptoc)
 ifneq ($(BOARD),host)
@@ -253,6 +254,7 @@ $(out)/RW/ec.RW.elf $(out)/RW/ec.RW_B.elf: $(out)/cryptoc/libcryptoc.a
 # Host test executables (including fuzz tests).
 $(out)/$(PROJECT).exe: LDFLAGS_EXTRA += $(CRYPTOC_LDFLAGS)
 $(out)/$(PROJECT).exe: $(out)/cryptoc/libcryptoc.a
+endif
 endif
 
 include $(_common_dir)mock/build.mk

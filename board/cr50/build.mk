@@ -10,6 +10,7 @@ CHIP:=g
 CHIP_FAMILY:=cr50
 CHIP_VARIANT ?= cr50_fpga
 
+
 # This file is included twice by the Makefile, once to determine the CHIP info
 # and then again after defining all the CONFIG_ and HAS_TASK variables. We use
 # a guard so that recipe definitions and variable extensions only happen the
@@ -108,6 +109,42 @@ board-y += tpm2/virtual_nvmem.o
 board-y += tpm_nvmem_ops.o
 board-y += wp.o
 
+ifeq ($(CONFIG_FIPS_CLIB),y)
+CRYPTOC_PATH := ../../third_party/cryptoc
+CRYPTOCLIB := $(realpath $(CRYPTOC_PATH))
+
+CFLAGS += -I$(CRYPTOCLIB)/include
+CFLAGS += -I$(CRYPTOCLIB)
+
+# Sources from third_party/cryptolib
+cryptolib-y = hmac.o
+cryptolib-y += md5.o
+cryptolib-y += p256.o
+cryptolib-y += p256_ec.o
+cryptolib-y += p256_ecdsa.o
+cryptolib-y += p256_prng.o
+cryptolib-y += sha.o
+cryptolib-y += sha224.o
+cryptolib-y += sha256.o
+ifeq ($(CONFIG_UPTO_SHA512),y)
+cryptolib-y += sha384.o
+cryptolib-y += sha512.o
+endif
+cryptolib-y += util.o
+
+# Put the cryptolib objects in a cryptoc build directory.
+dirs-y += $(BDIR)/dcrypto/cryptoc
+CRYPTOC_OUT=$(out)/RW/$(BDIR)/dcrypto/cryptoc
+CLIB_OBJS=$(patsubst %.o, dcrypto/cryptoc/%.o, $(cryptolib-y))
+
+$(CRYPTOC_OUT)/%.o: $(CRYPTOCLIB)/%.c
+	$(call quiet,c_to_o,CC     )
+
+fips-y += $(CLIB_OBJS)
+endif
+
+
+
 ifneq ($(H1_RED_BOARD),)
 CPPFLAGS += -DH1_RED_BOARD=$(EMPTY)
 endif
@@ -117,7 +154,6 @@ ifneq ($(fips-y),)
 RW_BD_OUT=$(out)/RW/$(BDIR)
 FIPS_MODULE=dcrypto/fips_module.o
 RW_FIPS_OBJS=$(patsubst %.o, $(RW_BD_OUT)/%.o, $(fips-y))
-
 $(RW_BD_OUT)/$(FIPS_MODULE): $(RW_FIPS_OBJS)
 	@echo "  LD      $(notdir $@)"
 	$(Q)$(CC) $(CFLAGS) --static -Wl,--relocatable -Wl,-Map=$@.map -o $@ $^
