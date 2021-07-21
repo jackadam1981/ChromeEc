@@ -725,7 +725,7 @@ struct ec_thermal_config thermal_params[] = {
 BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 /* This callback disables keyboard when convertibles are fully open */
-__override void lid_angle_peripheral_enable(int enable)
+void lid_angle_peripheral_enable(int enable)
 {
 	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
 
