@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbae8496_1ea4f331",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-21T14:17:13Z",
+      "side": 1,
+      "message": "Line is too long",
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0cc13f20_d12b5c61",
@@ -14,6 +31,109 @@
       "writtenOn": "2021-07-21T14:13:06Z",
       "side": 1,
       "message": "this should go upstream first I think, perhaps applying it to an existing test suite",
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92001d66_00bb5e6d",
+        "filename": "zephyr/test/drivers/include/test_framework.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-21T14:17:13Z",
+      "side": 1,
+      "message": "Needs comments of members",
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e45d16c6_cbccaf45",
+        "filename": "zephyr/test/drivers/include/test_framework.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-21T14:17:13Z",
+      "side": 1,
+      "message": "Do we need these dots after everything?",
+      "range": {
+        "startLine": 24,
+        "startChar": 44,
+        "endLine": 24,
+        "endChar": 45
+      },
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62bcd9a5_0eab9b8f",
+        "filename": "zephyr/test/drivers/include/test_framework.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-21T14:17:13Z",
+      "side": 1,
+      "message": "Perhaps that should be a flags word or something, so you can use an enum ZTEST_BEFORE_MAIN\n\nI think false and true are a bit obscure at least until you get to know the meaning",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48464949_0ad958f0",
+        "filename": "zephyr/test/drivers/include/test_framework.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-21T14:17:13Z",
+      "side": 1,
+      "message": "blank line after decls?",
+      "range": {
+        "startLine": 44,
+        "startChar": 2,
+        "endLine": 44,
+        "endChar": 8
+      },
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a59ecbf2_e60b7761",
+        "filename": "zephyr/test/drivers/src/bmi160.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-21T14:17:13Z",
+      "side": 1,
+      "message": "Seems like an unrelated change for a separate commit",
       "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
