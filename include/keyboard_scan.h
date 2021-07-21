@@ -12,7 +12,7 @@
 #include "compile_time_macros.h"
 #include "keyboard_config.h"
 
-struct keyboard_scan_config {
+__override_proto struct keyboard_scan_config {
 	/* Delay between setting up output and waiting for it to settle */
 	uint16_t output_settle_us;
 	/* Times for debouncing key-down and key-up */
