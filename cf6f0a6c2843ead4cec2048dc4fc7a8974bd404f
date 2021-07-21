@@ -16,6 +16,24 @@
       "message": "The chip/XXX/espi.c files look the same. Is there a need to have copies for this? Maybe a single chip/common/espi.c that has overrideable definitions of these functions that serve the majority of platform needs and then allow the chip/XXX/espi.c to override if it is needed?",
       "revId": "cf6f0a6c2843ead4cec2048dc4fc7a8974bd404f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abe876a5_d38dab70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-21T19:51:02Z",
+      "side": 1,
+      "message": "hate the default of resolved on main comments 😞",
+      "parentUuid": "98bbe412_1d8e5e71",
+      "revId": "cf6f0a6c2843ead4cec2048dc4fc7a8974bd404f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
