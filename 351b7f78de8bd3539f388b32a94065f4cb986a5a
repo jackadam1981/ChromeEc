@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "97d88e10_51eee376",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-21T18:31:03Z",
+      "side": 1,
+      "message": "The build_release recipe sets the CHROMEOS_OFFICIAL flag: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:infra/recipes/recipes/build_release.py;l\u003d39. For non-official builds, major and minor version is still useful. It will match the version of the last repo sync (specifically, the last time https://source.corp.google.com/chromeos_public/src/third_party/chromiumos-overlay/chromeos/config/chromeos_version.sh?q\u003dCHROMEOS_VERSION.sh was synced). So you get a hint of what a non-official build is based on. Sub-minor (CHROMEOS_PATCH) does not matter for non-official builds AFAICT.\n\nSince + is already in the ec build version, I don\u0027t think it needs to be indicated in the fwid too. \n\nHow about removing the year, i.e. guybrush_13983.0.05_20_1631? There\u0027s still risk of truncation, but it\u0027s much less likely.",
+      "parentUuid": "c5f5e059_10f4653d",
+      "range": {
+        "startLine": 19,
+        "startChar": 41,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9d114d8_3df002a8",
         "filename": "board/oak/board.h",
         "patchSetId": 6
