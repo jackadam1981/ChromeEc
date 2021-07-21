@@ -16,6 +16,29 @@
       "message": "Hi Aseda, Henry:  according to oem request, we will remove the base sensor at clamshell board.please help to review this CL, thanks",
       "revId": "18a527ff65e8aaf20601aef67de85e660f571dce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07d8c4c4_8c1ee018",
+        "filename": "board/storo/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-21T01:30:25Z",
+      "side": 1,
+      "message": "nit: don\u0027t use ccprints here. Use cprints instead with the CC_SYSTEM channel.",
+      "range": {
+        "startLine": 756,
+        "startChar": 4,
+        "endLine": 756,
+        "endChar": 12
+      },
+      "revId": "18a527ff65e8aaf20601aef67de85e660f571dce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
