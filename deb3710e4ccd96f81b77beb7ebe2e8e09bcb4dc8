@@ -16,6 +16,108 @@
       "message": "Note: I\u0027ve refactored this a bit more, some of my previous comments will be slightly inaccurate.",
       "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e894803e_d506df16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-21T07:24:55Z",
+      "side": 1,
+      "message": "Looks cleaner. Some nits remain.",
+      "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8143b722_1a19e611",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-21T07:24:55Z",
+      "side": 1,
+      "message": "It does not seem to be used. Beside, you likely overflow here.",
+      "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c044c289_7a8c810d",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-21T07:24:55Z",
+      "side": 1,
+      "message": "In theory, you can overflow here, but when used, y is around ~1600 max (2^(11+32)) and x is less than 2^16.",
+      "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "665d532b_5ec2b512",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-21T07:24:55Z",
+      "side": 1,
+      "message": "Use a typedef (fp64_t) instead of of int64_t when used a fixed precision integer, to be sure were always compare them with other fp64_t.",
+      "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3398e07b_e8710f5c",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-21T07:24:55Z",
+      "side": 1,
+      "message": "Why do you need to convert here? You can do it after the division.",
+      "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ec5306_89f2e5af",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-21T07:24:55Z",
+      "side": 1,
+      "message": "Do the conversion back to _INT here.",
+      "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
