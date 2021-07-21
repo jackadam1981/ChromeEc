@@ -22,6 +22,30 @@
       },
       "revId": "336218d12109bee2724fba3a42e192a09ff7aa8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b056a341_471ae253",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T19:58:17Z",
+      "side": 1,
+      "message": "they extensively check some bn* functions, notably bn_div. I updated it about a year ago to be able to discover error in bn_div which was detected during FIPS tests - https://crrev.com/c/2223147",
+      "parentUuid": "4476ec7f_11356ab3",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "336218d12109bee2724fba3a42e192a09ff7aa8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
