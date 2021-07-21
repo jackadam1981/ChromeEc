@@ -22,6 +22,30 @@
       },
       "revId": "a1939eed1e33c2a50e985fc9bf52c23a439186eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "513e38b7_9b5e7efd",
+        "filename": "chip/it83xx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-21T10:40:47Z",
+      "side": 0,
+      "message": "Oh... I see. There\u0027s another \u0027ch\u0027 accessing below.",
+      "parentUuid": "cf0e0a13_37835198",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "a1939eed1e33c2a50e985fc9bf52c23a439186eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
