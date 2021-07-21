@@ -32,9 +32,13 @@ static int tusb1064_write(const struct usb_mux *me, uint8_t reg, uint8_t val)
 }
 
 /* Writes control register to set switch mode */
-static int tusb1064_set_mux(const struct usb_mux *me, mux_state_t mux_state)
+static int tusb1064_set_mux(const struct usb_mux *me, mux_state_t mux_state,
+			    bool *ack_required)
 {
 	int reg = REG_GENERAL_STATIC_BITS;
+
+	/* This driver does not use host command ACKs */
+	*ack_required = false;
 
 	if (mux_state & USB_PD_MUX_USB_ENABLED)
 		reg |= REG_GENERAL_CTLSEL_USB3;
@@ -72,6 +76,7 @@ static int tusb1064_init(const struct usb_mux *me)
 {
 	int res;
 	uint8_t reg;
+	bool unused;
 
 	/* Default to "Floating Pin" DP Equalization */
 	reg = TUSB1064_DP1EQ(TUSB1064_DP_EQ_RX_10_0_DB) |
@@ -87,7 +92,7 @@ static int tusb1064_init(const struct usb_mux *me)
 		return res;
 
 	/* Disconnect USB3.1 and DP */
-	res = tusb1064_set_mux(me, USB_PD_MUX_NONE);
+	res = tusb1064_set_mux(me, USB_PD_MUX_NONE, &unused);
 	if (res)
 		return res;
 
