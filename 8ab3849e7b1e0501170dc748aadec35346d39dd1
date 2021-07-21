@@ -135,6 +135,30 @@
       },
       "revId": "8ab3849e7b1e0501170dc748aadec35346d39dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87810f11_1ec3a2d0",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-21T22:08:31Z",
+      "side": 1,
+      "message": "Ah that\u0027s also a good idea. I created custom-board-ro_objs-y and added it to custom-ro_objs-y in the main makefile. I\u0027m fine with either.\n\nDo you have a preference?",
+      "parentUuid": "06172602_5f0d2be9",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "8ab3849e7b1e0501170dc748aadec35346d39dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
