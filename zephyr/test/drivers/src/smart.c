@@ -12,6 +12,7 @@
 
 #include "battery.h"
 #include "battery_smart.h"
+#include "test_framework.h"
 
 #define BATTERY_ORD	DT_DEP_ORD(DT_NODELABEL(battery))
 
@@ -296,14 +297,10 @@ static void test_battery_get_params(void)
 	zassert_equal(flags, batt.flags, "0x%x != 0x%x", flags, batt.flags);
 }
 
-void test_suite_smart_battery(void)
-{
-	ztest_test_suite(smart_battery,
-			 ztest_user_unit_test(test_battery_getters),
-			 ztest_user_unit_test(test_battery_status),
-			 ztest_user_unit_test(test_battery_wait_for_stable),
-			 ztest_user_unit_test(test_battery_manufacture_date),
-			 ztest_user_unit_test(test_battery_time_at_rate),
-			 ztest_user_unit_test(test_battery_get_params));
-	ztest_run_test_suite(smart_battery);
-}
+register_test_suite(smart_battery, false,
+		    ztest_user_unit_test(test_battery_getters),
+		    ztest_user_unit_test(test_battery_status),
+		    ztest_user_unit_test(test_battery_wait_for_stable),
+		    ztest_user_unit_test(test_battery_manufacture_date),
+		    ztest_user_unit_test(test_battery_time_at_rate),
+		    ztest_user_unit_test(test_battery_get_params));
