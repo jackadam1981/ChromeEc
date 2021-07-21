@@ -1265,7 +1265,7 @@ function flash_it83xx() {
 
 		# Enable i2c bus on C2D2 at 400kbps
 		servo_save_add "i2c_ec_bus_speed"
-		dut_control_or_die i2c_ec_bus_speed:400
+		dut_control_or_die i2c_ec_bus_speed:100
 
 		# We need to swing the DUT-side muxes to I2C instead of UART.
 		# This is done by convention with EC_FLASH_SELECT pin from H1
