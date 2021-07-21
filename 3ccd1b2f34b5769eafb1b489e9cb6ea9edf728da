@@ -22,6 +22,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e681015_882a39cf",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-21T14:32:08Z",
+      "side": 1,
+      "message": "Here\u0027s where the result is dumped in the cros_ec-chardev driver: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/next/drivers/platform/chrome/cros_ec_chardev.c;l\u003d305. It looks like this has always been part of the driver, so I don\u0027t know why this just started causing issues recently. It may be related to the switch from cros_ec_cmd_xfer to cros_ec_cmd_xfer_status.",
+      "parentUuid": "2e81b5dc_2af0f8f6",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
