@@ -11,6 +11,7 @@
 
 #include "stubs.h"
 #include "usbc_ppc.h"
+#include "test_framework.h"
 
 #define SYV682X_ORD DT_DEP_ORD(DT_NODELABEL(syv682x_emul))
 
@@ -43,9 +44,4 @@ static void test_ppc_syv682x(void)
 	test_ppc_syv682x_vbus_enable();
 }
 
-void test_suite_ppc(void)
-{
-	ztest_test_suite(ppc,
-			 ztest_user_unit_test(test_ppc_syv682x));
-	ztest_run_test_suite(ppc);
-}
+register_test_suite(ppc, false, ztest_user_unit_test(test_ppc_syv682x));

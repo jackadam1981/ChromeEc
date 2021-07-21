@@ -9,6 +9,7 @@
 #include <drivers/gpio/gpio_emul.h>
 
 #include "battery.h"
+#include "test_framework.h"
 
 #define GPIO_BATT_PRES_ODL_PATH DT_PATH(named_gpios, ec_batt_pres_odl)
 #define GPIO_BATT_PRES_ODL_PORT DT_GPIO_PIN(GPIO_BATT_PRES_ODL_PATH, gpios)
@@ -27,9 +28,5 @@ static void test_battery_is_present_gpio(void)
 	zassert_equal(BP_NO, battery_is_present(), NULL);
 }
 
-void test_suite_battery(void)
-{
-	ztest_test_suite(battery,
-			 ztest_user_unit_test(test_battery_is_present_gpio));
-	ztest_run_test_suite(battery);
-}
+register_test_suite(battery, false,
+		    ztest_user_unit_test(test_battery_is_present_gpio));

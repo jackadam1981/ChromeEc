@@ -12,6 +12,7 @@
 
 #include "common.h"
 #include "../driver/temp_sensor/thermistor.h"
+#include "test_framework.h"
 
 
 #define GPIO_PG_EC_DSW_PWROK_PATH DT_PATH(named_gpios, pg_ec_dsw_pwrok)
@@ -431,26 +432,20 @@ static void test_thermistor_3v0_22k6_47k_4050b(void)
 	zassert_equal(373, temp, "Expected %d*K, got %d*K", 373, temp);
 }
 
-void test_suite_thermistor(void)
+void test_power_pin_set(void)
 {
 	const struct device *dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_PG_EC_DSW_PWROK_PATH, gpios));
 
 	zassert_not_null(dev, NULL);
-	/* Before tests make sure that power pin is set. */
 	zassert_ok(gpio_emul_input_set(dev, GPIO_PG_EC_DSW_PWROK_PORT, 1),
 		   NULL);
-
-	ztest_test_suite(thermistor,
-			 ztest_user_unit_test(test_thermistor_power_pin),
-			 ztest_user_unit_test(test_thermistor_adc_read_error),
-			 ztest_user_unit_test(
-					test_thermistor_3v3_13k7_47k_4050b),
-			 ztest_user_unit_test(
-					test_thermistor_3v3_30k9_47k_4050b),
-			 ztest_user_unit_test(
-					test_thermistor_3v3_51k1_47k_4050b),
-			 ztest_user_unit_test(
-					test_thermistor_3v0_22k6_47k_4050b));
-	ztest_run_test_suite(thermistor);
 }
+
+register_test_suite(thermistor, false, ztest_user_unit_test(test_power_pin_set),
+		    ztest_user_unit_test(test_thermistor_power_pin),
+		    ztest_user_unit_test(test_thermistor_adc_read_error),
+		    ztest_user_unit_test(test_thermistor_3v3_13k7_47k_4050b),
+		    ztest_user_unit_test(test_thermistor_3v3_30k9_47k_4050b),
+		    ztest_user_unit_test(test_thermistor_3v3_51k1_47k_4050b),
+		    ztest_user_unit_test(test_thermistor_3v0_22k6_47k_4050b));
