@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de6b1cf4_c0d26161",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T19:46:35Z",
+      "side": 1,
+      "message": "few nits, and I\u0027d rename CONFIG_FIPS_CLIB into CONFIG_FIPS_CRYPTOC to make it clear",
+      "revId": "73daf278a93e18ed35688f98d570be6ab744c18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925ed715_89404bb3",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T19:46:35Z",
+      "side": 1,
+      "message": "extra line?",
+      "revId": "73daf278a93e18ed35688f98d570be6ab744c18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aedba98_911a4e66",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-21T19:46:35Z",
+      "side": 1,
+      "message": "may be call it CONFIG_FIPS_CRYPTOC? CLIB is a bit confusing",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 24
+      },
+      "revId": "73daf278a93e18ed35688f98d570be6ab744c18f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
