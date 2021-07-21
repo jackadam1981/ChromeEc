@@ -16,6 +16,23 @@
       "message": "Hi Aseda, could you PTAL?",
       "revId": "a9a92e5d38967331215dd0d4a51b8cb7620ec4fe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "220a8801_00c23077",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-21T23:41:37Z",
+      "side": 1,
+      "message": "I like this, but now I want us to save it and put in our pocket haha 😊\n\nTypically the way we free up space on boards is by first removing optional console commands from the board\u0027s board.h file. Once those have been sufficiently pruned, we can also turn on link-time optimization, enable short GPIO names, etc. I\u0027d like to leave this until we\u0027ve exhausted the other options first.",
+      "revId": "a9a92e5d38967331215dd0d4a51b8cb7620ec4fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
