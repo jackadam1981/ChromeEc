@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e183e3f6_35ef30fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-21T13:52:52Z",
+      "side": 1,
+      "message": "Fixed by adding board/cr50/dcrypto/util.o to the ro objs",
+      "parentUuid": "cb1e0985_86597a29",
+      "revId": "9959e56dbca0578f3f399b7e078ce7f39cd8bdb8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3bb8eb2d_f2589e54",
