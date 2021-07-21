@@ -33,6 +33,24 @@
       "message": "Verified by running unit tests on bloonchipper/dartmonkey.\nPrivate build was verified on jinlon and voxel.",
       "revId": "a31082aeeca9f8ac1f908f4dffc75555de7b5b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "257f5581_6f9ce33a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-21T21:51:47Z",
+      "side": 1,
+      "message": "In general, we would like to keep sensor driver stuff in the common FP code and the dragonclaw high divider issue in hatch_fp.\n\nI do see you point about not wanting to complicate a simple matter, but this also omits nucleo-dartmonkey.\n\nWhat do you think about something like crrev.com/c/3044409 ?",
+      "parentUuid": "9c9cef40_4030a4ab",
+      "revId": "a31082aeeca9f8ac1f908f4dffc75555de7b5b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
