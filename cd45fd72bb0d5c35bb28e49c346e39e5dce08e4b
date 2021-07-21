@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf9d3b70_ccf61bc1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-21T14:01:22Z",
+      "side": 1,
+      "message": "Removed safe_memcmp from the boundary since it\u0027s not needed",
+      "revId": "cd45fd72bb0d5c35bb28e49c346e39e5dce08e4b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
