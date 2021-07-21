@@ -39,6 +39,30 @@
       },
       "revId": "8ab3849e7b1e0501170dc748aadec35346d39dd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7fa4c7e_be22b2ec",
+        "filename": "chip/g/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-21T20:20:40Z",
+      "side": 1,
+      "message": "What do you mean comment out strlen and memset in printf.c and launch.c?",
+      "parentUuid": "1d20e465_01531820",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "8ab3849e7b1e0501170dc748aadec35346d39dd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
