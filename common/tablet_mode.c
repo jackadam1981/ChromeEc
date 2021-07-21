@@ -20,7 +20,7 @@
  * Other code modules assume that notebook mode (i.e. tablet_mode = false) at
  * startup
  */
-static bool tablet_mode;
+static uint32_t tablet_mode;
 
 /*
  * Console command can force the value of tablet_mode. If tablet_mode_force is
@@ -39,7 +39,7 @@ static bool disabled;
 
 int tablet_get_mode(void)
 {
-	return tablet_mode;
+	return !!tablet_mode;
 }
 
 static inline void print_tablet_mode(void)
@@ -61,13 +61,20 @@ static void notify_tablet_mode_change(void)
 
 }
 
-void tablet_set_mode(int mode)
+void tablet_set_mode(int mode, uint32_t trigger)
 {
+	uint32_t new_mode;
+
 	/* If tablet_mode is forced via a console command, ignore set. */
 	if (tablet_mode_forced)
 		return;
 
-	if (tablet_mode == !!mode)
+	if (mode)
+		new_mode = tablet_mode | trigger;
+	else
+		new_mode = tablet_mode & ~trigger;
+
+	if (!tablet_mode == !new_mode)
 		return;
 
 	if (disabled) {
@@ -81,14 +88,14 @@ void tablet_set_mode(int mode)
 		return;
 	}
 
-	tablet_mode = !!mode;
+	tablet_mode = new_mode;
 
 	notify_tablet_mode_change();
 }
 
 void tablet_disable(void)
 {
-	tablet_mode = false;
+	tablet_mode = 0;
 	disabled = true;
 }
 
@@ -131,7 +138,7 @@ static void gmr_tablet_switch_interrupt_debounce(void)
 	 */
 
 	if (!IS_ENABLED(CONFIG_LID_ANGLE) || gmr_sensor_at_360)
-		tablet_set_mode(gmr_sensor_at_360);
+		tablet_set_mode(gmr_sensor_at_360, TABLET_TRIGGER_LID);
 
 	if (IS_ENABLED(CONFIG_LID_ANGLE_UPDATE) && gmr_sensor_at_360)
 		lid_angle_peripheral_enable(0);
@@ -182,10 +189,10 @@ static int command_settabletmode(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 
 	if (argv[1][0] == 'o' && argv[1][1] == 'n') {
-		tablet_mode = true;
+		tablet_mode = TABLET_TRIGGER_LID;
 		tablet_mode_forced = true;
 	} else if (argv[1][0] == 'o' && argv[1][1] == 'f') {
-		tablet_mode = false;
+		tablet_mode = 0;
 		tablet_mode_forced = true;
 	} else if (argv[1][0] == 'r') {
 		tablet_mode_forced = false;
