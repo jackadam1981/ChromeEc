@@ -86,6 +86,7 @@ endif
 endif
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/x509.o
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/trng.o
+fips-${CONFIG_FIPS_BOUNDARY} += dcrypto/util.o
 
 board-y += tpm2/NVMem.o
 board-y += tpm2/aes.o
