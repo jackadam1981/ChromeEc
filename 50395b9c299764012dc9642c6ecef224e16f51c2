@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63a0cd7d_e246c3cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-21T16:00:16Z",
+      "side": 1,
+      "message": "For some reason this creates some extra cryptoc directories. They\u0027re all empty except for ./build/cr50/RW/board/cr50/dcrypto/cryptoc\n\n./build/cr50/RO/mnt/host/source/src/third_party/cryptoc\n./build/cr50/RW/mnt/host/source/src/third_party/cryptoc\n./build/cr50/RW/board/cr50/dcrypto/cryptoc\n./build/cr50/gen/mnt/host/source/src/third_party/cryptoc\n",
+      "revId": "50395b9c299764012dc9642c6ecef224e16f51c2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
