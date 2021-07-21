@@ -8,6 +8,7 @@
 
 #include "ec_commands.h"
 #include "host_command.h"
+#include "test_framework.h"
 
 static void test_host_command_get_protocol_info(void)
 {
@@ -26,9 +27,5 @@ static void test_host_command_get_protocol_info(void)
 	zassert_equal(response.flags, 0, NULL);
 }
 
-void test_suite_espi(void)
-{
-	ztest_test_suite(espi, ztest_user_unit_test(
-				       test_host_command_get_protocol_info));
-	ztest_run_test_suite(espi);
-}
+register_test_suite(espi, false,
+		    ztest_user_unit_test(test_host_command_get_protocol_info));

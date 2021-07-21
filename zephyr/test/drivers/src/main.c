@@ -6,35 +6,29 @@
 #include <zephyr.h>
 #include <ztest.h>
 #include "ec_app_main.h"
+#include "test_framework.h"
 
-extern void test_suite_battery(void);
-extern void test_suite_cbi(void);
-extern void test_suite_smart_battery(void);
-extern void test_suite_thermistor(void);
-extern void test_suite_temp_sensor(void);
-extern void test_suite_bma2x2(void);
-extern void test_suite_bc12(void);
-extern void test_suite_ppc(void);
-extern void test_suite_bmi260(void);
-extern void test_suite_bmi160(void);
-extern void test_suite_espi(void);
+struct test_node *test_head;
+
+static void execute_tests(bool before_main)
+{
+	struct test_node *node = test_head;
+
+	while (node) {
+		/* Skip tests that don't match current condition. */
+		if (node->before_main == before_main)
+			z_ztest_run_test_suite(node->name, node->suite);
+		node = node->next;
+	}
+}
 
 void test_main(void)
 {
 	/* Test suites to run before ec_app_main.*/
+	execute_tests(true);
 
 	ec_app_main();
 
 	/* Test suites to run after ec_app_main.*/
-	test_suite_battery();
-	test_suite_cbi();
-	test_suite_smart_battery();
-	test_suite_thermistor();
-	test_suite_temp_sensor();
-	test_suite_bma2x2();
-	test_suite_bc12();
-	test_suite_ppc();
-	test_suite_bmi260();
-	test_suite_bmi160();
-	test_suite_espi();
+	execute_tests(false);
 }

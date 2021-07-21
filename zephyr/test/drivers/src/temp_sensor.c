@@ -15,6 +15,7 @@
 #include "common.h"
 #include "temp_sensor.h"
 #include "temp_sensor/temp_sensor.h"
+#include "test_framework.h"
 
 #define GPIO_PG_EC_DSW_PWROK_PATH DT_PATH(named_gpios, pg_ec_dsw_pwrok)
 #define GPIO_PG_EC_DSW_PWROK_PORT DT_GPIO_PIN(GPIO_PG_EC_DSW_PWROK_PATH, gpios)
@@ -114,19 +115,18 @@ static void test_temp_sensor_read(void)
 	check_valid_temperature(adc_dev, TEMP_SENSOR_PP3300_REGULATOR);
 }
 
-void test_suite_temp_sensor(void)
+static void test_power_pin_set(void)
 {
 	const struct device *dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_PG_EC_DSW_PWROK_PATH, gpios));
 
 	zassert_not_null(dev, NULL);
-	/* Before tests make sure that power pin is set. */
 	zassert_ok(gpio_emul_input_set(dev, GPIO_PG_EC_DSW_PWROK_PORT, 1),
 		   NULL);
-
-	ztest_test_suite(temp_sensor,
-			 ztest_user_unit_test(test_temp_sensor_wrong_id),
-			 ztest_user_unit_test(test_temp_sensor_adc_error),
-			 ztest_user_unit_test(test_temp_sensor_read));
-	ztest_run_test_suite(temp_sensor);
 }
+
+register_test_suite(temp_sensor, false,
+		    ztest_user_unit_test(test_power_pin_set),
+		    ztest_user_unit_test(test_temp_sensor_wrong_id),
+		    ztest_user_unit_test(test_temp_sensor_adc_error),
+		    ztest_user_unit_test(test_temp_sensor_read));

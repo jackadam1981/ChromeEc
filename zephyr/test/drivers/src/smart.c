@@ -12,8 +12,9 @@
 
 #include "battery.h"
 #include "battery_smart.h"
+#include "test_framework.h"
 
-#define BATTERY_ORD	DT_DEP_ORD(DT_NODELABEL(battery))
+#define BATTERY_ORD DT_DEP_ORD(DT_NODELABEL(battery))
 
 /** Test all simple getters */
 static void test_battery_getters(void)
@@ -39,8 +40,8 @@ static void test_battery_getters(void)
 	zassert_equal(EC_SUCCESS, battery_full_charge_capacity(&word), NULL);
 	zassert_equal(bat->full_cap, word, "%d != %d", bat->full_cap, word);
 	zassert_equal(EC_SUCCESS, battery_cycle_count(&word), NULL);
-	zassert_equal(bat->cycle_count, word, "%d != %d",
-		      bat->cycle_count, word);
+	zassert_equal(bat->cycle_count, word, "%d != %d", bat->cycle_count,
+		      word);
 	zassert_equal(EC_SUCCESS, battery_design_capacity(&word), NULL);
 	zassert_equal(bat->design_cap, word, "%d != %d", bat->design_cap, word);
 	zassert_equal(EC_SUCCESS, battery_design_voltage(&word), NULL);
@@ -49,14 +50,14 @@ static void test_battery_getters(void)
 	zassert_equal(bat->sn, word, "%d != %d", bat->sn, word);
 	zassert_equal(EC_SUCCESS, get_battery_manufacturer_name(block, 32),
 		      NULL);
-	zassert_mem_equal(block, bat->mf_name, bat->mf_name_len,
-			  "%s != %s", block, bat->mf_name);
+	zassert_mem_equal(block, bat->mf_name, bat->mf_name_len, "%s != %s",
+			  block, bat->mf_name);
 	zassert_equal(EC_SUCCESS, battery_device_name(block, 32), NULL);
-	zassert_mem_equal(block, bat->dev_name, bat->dev_name_len,
-			  "%s != %s", block, bat->dev_name);
+	zassert_mem_equal(block, bat->dev_name, bat->dev_name_len, "%s != %s",
+			  block, bat->dev_name);
 	zassert_equal(EC_SUCCESS, battery_device_chemistry(block, 32), NULL);
-	zassert_mem_equal(block, bat->dev_chem, bat->dev_chem_len,
-			  "%s != %s", block, bat->dev_chem);
+	zassert_mem_equal(block, bat->dev_chem, bat->dev_chem_len, "%s != %s",
+			  block, bat->dev_chem);
 	word = battery_get_avg_current();
 	zassert_equal(bat->avg_cur, word, "%d != %d", bat->avg_cur, word);
 
@@ -296,14 +297,10 @@ static void test_battery_get_params(void)
 	zassert_equal(flags, batt.flags, "0x%x != 0x%x", flags, batt.flags);
 }
 
-void test_suite_smart_battery(void)
-{
-	ztest_test_suite(smart_battery,
-			 ztest_user_unit_test(test_battery_getters),
-			 ztest_user_unit_test(test_battery_status),
-			 ztest_user_unit_test(test_battery_wait_for_stable),
-			 ztest_user_unit_test(test_battery_manufacture_date),
-			 ztest_user_unit_test(test_battery_time_at_rate),
-			 ztest_user_unit_test(test_battery_get_params));
-	ztest_run_test_suite(smart_battery);
-}
+register_test_suite(smart_battery, false,
+		    ztest_user_unit_test(test_battery_getters),
+		    ztest_user_unit_test(test_battery_status),
+		    ztest_user_unit_test(test_battery_wait_for_stable),
+		    ztest_user_unit_test(test_battery_manufacture_date),
+		    ztest_user_unit_test(test_battery_time_at_rate),
+		    ztest_user_unit_test(test_battery_get_params));
