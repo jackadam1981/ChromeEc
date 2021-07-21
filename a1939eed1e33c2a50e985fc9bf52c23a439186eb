@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf0e0a13_37835198",
+        "filename": "chip/it83xx/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-21T10:39:34Z",
+      "side": 0,
+      "message": "Not really understand how could this make difference for the index accessing case?\n\nThough it\u0027s not a correctly casted value, but the pwm_channels[ch].channel should still return a value in [0, 127], and it should be covered by the range of enum pwm_channel. Is the assigned value out-of-range? Do I miss anything?",
+      "range": {
+        "startLine": 70,
+        "startChar": 1,
+        "endLine": 70,
+        "endChar": 3
+      },
+      "revId": "a1939eed1e33c2a50e985fc9bf52c23a439186eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
