@@ -235,7 +235,7 @@ static void panic_show_extra(const struct panic_data *pdata)
  */
 static void panic_show_process_stack(const struct panic_data *pdata)
 {
-	panic_printf("\n=========== Process Stack Contents ===========");
+	panic_printf("\n===== Process Stack Contents =====");
 	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID) {
 		uint32_t psp = get_process_stack_position(pdata);
 		int i;
