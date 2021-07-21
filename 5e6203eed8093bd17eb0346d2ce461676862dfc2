@@ -50,6 +50,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "62c4dc62_d514c94a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-21T05:46:32Z",
+      "side": 1,
+      "message": "I mean the duplicated one is in util/build.mk\n\nutil/build.mk\n71:build-util-bin-y +\u003d gen_emmc_transfer_data\n74:$(out)/util/gen_emmc_transfer_data: BUILD_LDFLAGS +\u003d -DSECTION_IS_RO\u003d$(EMPTY)\n\ncommon/build.mk\n251:build-util-bin-y +\u003d gen_emmc_transfer_data\n254:$(out)/util/gen_emmc_transfer_data: BUILD_LDFLAGS +\u003d -DSECTION_IS_RO\u003d$(EMPTY)",
+      "parentUuid": "fd701a43_9bd5fe94",
+      "range": {
+        "startLine": 9,
+        "startChar": 31,
+        "endLine": 9,
+        "endChar": 46
+      },
+      "revId": "5e6203eed8093bd17eb0346d2ce461676862dfc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "99b96e57_10b7faf0",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
