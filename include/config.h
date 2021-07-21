@@ -2801,6 +2801,12 @@
 #undef CONFIG_KEYBOARD_KEYPAD
 
 /*
+ * Enable strict debouncer. A strict debouncer waits until debounce is done
+ * before registering key up/down.
+ */
+#undef CONFIG_KEYBOARD_STRICT_DEBOUNCE
+
+/*
  * Enable the 8042 AUX port. This is typically used for PS/2 mouse devices.
  * You will need to implement send_aux_data_to_device and lpc_aux_put_char.
  */
