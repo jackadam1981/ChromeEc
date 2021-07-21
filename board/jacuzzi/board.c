@@ -326,6 +326,25 @@ static void board_init(void)
 
 	/* Enable BC12 interrupt */
 	gpio_enable_interrupt(GPIO_BC12_EC_INT_ODL);
+<<<<<<< HEAD   (54a6c5 Homestar:BACKLIGHT:Remove CONFIG_BACKLIGHT_LID)
+=======
+
+	board_version = board_get_version();
+	if (board_version == 8 || board_version == 9) {
+		/* Disable motion sense. */
+#ifndef VARIANT_KUKUI_NO_SENSORS
+		motion_sensor_count = 0;
+		gpio_disable_interrupt(GPIO_ACCEL_INT_ODL);
+		gpio_set_flags(GPIO_ACCEL_INT_ODL,
+			       GPIO_INPUT | GPIO_PULL_DOWN);
+#endif /* !VARIANT_KUKUI_NO_SENSORS */
+		/* Disable tablet mode. */
+		tablet_set_mode(0, TABLET_TRIGGER_LID);
+		gmr_tablet_switch_disable();
+		gpio_set_flags(GPIO_TABLET_MODE_L,
+			       GPIO_INPUT | GPIO_PULL_UP);
+	}
+>>>>>>> CHANGE (e8f646 tablet_mode: Fix the race condition of setting the tablet mo)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
