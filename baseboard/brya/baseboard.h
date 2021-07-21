@@ -11,7 +11,13 @@
 /*
  * By default, enable all console messages excepted HC
  */
-#define CC_DEFAULT     (CC_ALL & ~(BIT(CC_HOSTCMD)))
+#define CC_DEFAULT     (CC_ALL & ~(BIT(CC_HOSTCMD) |	\
+				   BIT(CC_ACCEL) |	\
+				   BIT(CC_EVENTS) |	\
+				   BIT(CC_KEYBOARD) |	\
+				   BIT(CC_LPC) |	\
+				   BIT(CC_DPTF) |	\
+				   0))
 
 /* NPCX9 config */
 #define NPCX9_PWM1_SEL    1  /* GPIO C2 is used as PWM1. */
