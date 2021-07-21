@@ -46,6 +46,30 @@
       },
       "revId": "b0b09b0d67b6b02a8ff243571bbb8faeade88759",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8e0061_b9744843",
+        "filename": "zephyr/dts/bindings/i2c/cros-ec-i2c-port-base.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-21T14:32:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f677b2b_610e446b",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 0
+      },
+      "revId": "b0b09b0d67b6b02a8ff243571bbb8faeade88759",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
