@@ -16,6 +16,7 @@
 #include "driver/accel_lis2dw12.h"
 #include "driver/accelgyro_lsm6dso.h"
 #include "driver/als_tcs3400.h"
+#include "driver/tcpm/nct38xx.h"
 #include "fw_config.h"
 #include "hooks.h"
 #include "lid_switch.h"
