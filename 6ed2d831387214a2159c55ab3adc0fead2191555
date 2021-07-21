@@ -22,6 +22,30 @@
       },
       "revId": "6ed2d831387214a2159c55ab3adc0fead2191555",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dbdc3c1_db103799",
+        "filename": "board/redrix/fw_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-07-21T17:33:48Z",
+      "side": 1,
+      "message": "Can you upload the CL for the config.star change, as I think this CL will depend on it?",
+      "parentUuid": "e6df3b70_cb0b1e80",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 39
+      },
+      "revId": "6ed2d831387214a2159c55ab3adc0fead2191555",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
