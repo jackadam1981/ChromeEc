@@ -22,6 +22,30 @@
       },
       "revId": "b1ce442f9cfd6bf37ab82d38b616670e2591015f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0735555b_d9f900ee",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-22T16:07:42Z",
+      "side": 1,
+      "message": "wouldn\u0027t the linker drop unused code?\n\nI\u0027m not saying we should be adding unused modules here, just curios if this  really has a size impact.",
+      "parentUuid": "d369cb84_85e477e8",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "b1ce442f9cfd6bf37ab82d38b616670e2591015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
