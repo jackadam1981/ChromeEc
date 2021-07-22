@@ -46,6 +46,30 @@
       },
       "revId": "b1ce442f9cfd6bf37ab82d38b616670e2591015f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e1265f5_42506e69",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-22T16:41:47Z",
+      "side": 1,
+      "message": "not for fips module - it\u0027s all combined into single section so removing individual functions would be impossible. Also, note that FIPS module will be built separately and checked-in as object file and associated sha256 digests for A \u0026 B placements.",
+      "parentUuid": "0735555b_d9f900ee",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "b1ce442f9cfd6bf37ab82d38b616670e2591015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
