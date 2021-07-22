@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98100258_8fceb658",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-07-22T08:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "391b2d57_97e4f4ab",
+      "range": {
+        "startLine": 92,
+        "startChar": 1,
+        "endLine": 93,
+        "endChar": 37
+      },
+      "revId": "be57b2c21bdaa7f881fe767cc7b0d6fa1462a363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ee4849f_7d2861b2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "387a9971_877dc6c1",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-07-22T08:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ee4849f_7d2861b2",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 37
+      },
+      "revId": "be57b2c21bdaa7f881fe767cc7b0d6fa1462a363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35f717e1_858aebcf",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-21T18:36:54Z",
       "side": 1,
       "message": "would move this declaration to common code since you use it outside of the shim layer",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 41
+      },
+      "revId": "be57b2c21bdaa7f881fe767cc7b0d6fa1462a363",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a5f9192_39fbdc19",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-07-22T08:45:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35f717e1_858aebcf",
       "range": {
         "startLine": 54,
         "startChar": 0,
