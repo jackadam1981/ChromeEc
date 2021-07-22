@@ -5167,6 +5167,13 @@
  */
 #undef CONFIG_CBI_EEPROM
 
+/*
+ * Define this if the EC has exclusive control over the CBI EEPROM WP signal.
+ * The accompanying hardware must ensure that the CBI WP gets latched and is
+ * only reset when EC_RST_ODL is asserted.
+ */
+#undef CONFIG_EC_OWNS_CBI_WP
+
 /* Define this to support Cros Board Info from GPIO. */
 #undef CONFIG_CBI_GPIO
 
@@ -6357,8 +6364,17 @@
 #define ALS_COUNT 0
 #endif /* CONFIG_ALS */
 
+
+/*
+ * If the EC has exclusive control over CBI EEPROM WP, don't consult the main
+ * flash WP.
+ */
+#ifdef CONFIG_EC_OWNS_CBI_WP
+#define CONFIG_BYPASS_CBI_EEPROM_WP_CHECK
+#endif
+
 #if defined(CONFIG_BYPASS_CBI_EEPROM_WP_CHECK) && \
-	!defined(CONFIG_SYSTEM_UNLOCKED)
+	!defined(CONFIG_SYSTEM_UNLOCKED) && !defined(CONFIG_EC_OWNS_CBI_WP)
 #error "CONFIG_BYPASS_CBI_EEPROM_WP_CHECK is only permitted " \
 	"when CONFIG_SYSTEM_UNLOCK is also enabled."
 #endif /* CONFIG_BYPASS_CBI_EEPROM_WP_CHECK && !CONFIG_SYSTEM_UNLOCK */
