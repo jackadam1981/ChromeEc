@@ -22,6 +22,30 @@
       },
       "revId": "37cb962ce21b44904fb561968bdedde6050339bd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4988d35e_62d8a6d2",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-22T05:16:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ca78853_f32bfeed",
+      "range": {
+        "startLine": 178,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 4
+      },
+      "revId": "37cb962ce21b44904fb561968bdedde6050339bd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
