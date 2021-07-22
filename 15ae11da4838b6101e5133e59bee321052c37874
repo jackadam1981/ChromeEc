@@ -16,6 +16,29 @@
       "message": "Adding stub to compute sha256 digest, but need to add digest computation during build.",
       "revId": "15ae11da4838b6101e5133e59bee321052c37874",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "800855d1_e6f81797",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-22T22:31:48Z",
+      "side": 1,
+      "message": "how about printing this only if the check fails.",
+      "range": {
+        "startLine": 595,
+        "startChar": 1,
+        "endLine": 597,
+        "endChar": 35
+      },
+      "revId": "15ae11da4838b6101e5133e59bee321052c37874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
