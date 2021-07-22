@@ -16,6 +16,23 @@
       "message": "This bug didn\u0027t impact dedede, because only PWM  channel 0 is enabled. But it should still be fixed.",
       "revId": "dabeb0e4fb299ded30c172bc690d0928a2801978",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9f7f8ca_0a9c6b7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-22T15:55:42Z",
+      "side": 1,
+      "message": "We perform merge-commits once a week on the dedede branch, and so I expect it\u0027ll be picked up in the next merge-commit ",
+      "revId": "dabeb0e4fb299ded30c172bc690d0928a2801978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
