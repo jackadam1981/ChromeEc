@@ -16,6 +16,24 @@
       "message": "Hi Henry,\n\nIs is ok to use this FW_CONFIG?",
       "revId": "08ad80b103fd4b6df491fbd18bb6cbeea1ff524f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd0edf30_d745cf58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-07-22T09:22:42Z",
+      "side": 1,
+      "message": "There is no FW_CONFIG defined for this. can you file an issue to describe the detail required and background first? Thanks!",
+      "parentUuid": "3d8b6d5c_e9c51635",
+      "revId": "08ad80b103fd4b6df491fbd18bb6cbeea1ff524f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
