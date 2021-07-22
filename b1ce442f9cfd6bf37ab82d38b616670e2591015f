@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d369cb84_85e477e8",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-22T13:11:59Z",
+      "side": 1,
+      "message": "i doubt this one is needed. it\u0027s better to check which sources are actually needed and drop those unused to reduce size. I\u0027ll probably switch to cleaned versions of sources.\nSay, we don\u0027t use software P-256 code at all, probably don\u0027t need sha224.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "b1ce442f9cfd6bf37ab82d38b616670e2591015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
