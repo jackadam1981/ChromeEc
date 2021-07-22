@@ -12,6 +12,7 @@
 #include "common.h"
 #include "core/cortex-m/cpu.h"
 #include "cros_board_info.h"
+#include "driver/als_tcs3400.h"
 #include "driver/ina3221.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -39,6 +40,174 @@
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+/* Sensors */
+
+/* TCS3400 private data */
+static struct als_drv_data_t g_tcs3400_data = {
+	.als_cal.scale = 1,
+	.als_cal.uscale = 0,
+	.als_cal.offset = 0,
+	.als_cal.channel_scale = {
+		.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kc */
+		.cover_scale = ALS_CHANNEL_SCALE(1.0),     /* CT */
+	},
+};
+static struct tcs3400_rgb_drv_data_t g_tcs3400_rgb_data = {
+	/*
+	 * TODO: calculate the actual coefficients and scaling factors
+	 */
+	.calibration.rgb_cal[X] = {
+		.offset = 0,
+		.scale = {
+			.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kr */
+			.cover_scale = ALS_CHANNEL_SCALE(1.0)
+		},
+		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(0),
+		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(0),
+		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(0),
+		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(0),
+	},
+	.calibration.rgb_cal[Y] = {
+		.offset = 0,
+		.scale = {
+			.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kg */
+			.cover_scale = ALS_CHANNEL_SCALE(1.0)
+		},
+		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(0),
+		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(0),
+		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(0),
+		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(0.1),
+	},
+	.calibration.rgb_cal[Z] = {
+		.offset = 0,
+		.scale = {
+			.k_channel_scale = ALS_CHANNEL_SCALE(1.0), /* kb */
+			.cover_scale = ALS_CHANNEL_SCALE(1.0)
+		},
+		.coeff[TCS_RED_COEFF_IDX] = FLOAT_TO_FP(0),
+		.coeff[TCS_GREEN_COEFF_IDX] = FLOAT_TO_FP(0),
+		.coeff[TCS_BLUE_COEFF_IDX] = FLOAT_TO_FP(0),
+		.coeff[TCS_CLEAR_COEFF_IDX] = FLOAT_TO_FP(0),
+	},
+	.calibration.irt = INT_TO_FP(1),
+	.saturation.again = TCS_DEFAULT_AGAIN,
+	.saturation.atime = TCS_DEFAULT_ATIME,
+};
+
+const mat33_fp_t screen_standard_ref = {
+	{ 0, FLOAT_TO_FP(1), 0},
+	{ FLOAT_TO_FP(1), 0,  0},
+	{ 0, 0, FLOAT_TO_FP(-1)}
+};
+
+struct motion_sensor_t motion_sensors[] = {
+	[CLEAR_ALS] = {
+		.name = "Clear Light",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_TCS3400,
+		.type = MOTIONSENSE_TYPE_LIGHT,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &tcs3400_drv,
+		.drv_data = &g_tcs3400_data,
+		.port = I2C_PORT_SENSORS,
+		.i2c_spi_addr_flags = TCS3400_I2C_ADDR_FLAGS,
+		.rot_standard_ref = NULL,
+		.default_range = 0x10000, /* scale = 1x, uscale = 0 */
+		.min_frequency = TCS3400_LIGHT_MIN_FREQ,
+		.max_frequency = TCS3400_LIGHT_MAX_FREQ,
+		.config = {
+			/* Run ALS sensor in S0 */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 1000,
+			},
+		},
+	},
+	[RGB_ALS] = {
+		.name = "RGB Light",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_TCS3400,
+		.type = MOTIONSENSE_TYPE_LIGHT_RGB,
+		.location = MOTIONSENSE_LOC_LID,
+		.drv = &tcs3400_rgb_drv,
+		.drv_data = &g_tcs3400_rgb_data,
+		.rot_standard_ref = NULL,
+		.default_range = 0x10000, /* scale = 1x, uscale = 0 */
+	},
+};
+const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+/* ALS instances when LPC mapping is needed. Each entry directs to a sensor. */
+const struct motion_sensor_t *motion_als_sensors[] = {
+	&motion_sensors[CLEAR_ALS],
+};
+BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
+
+__override void tcs3400_translate_to_xyz(struct motion_sensor_t *s,
+				     int32_t *crgb_data, int32_t *xyz_data)
+{
+	int n, cur_gain;
+	fp_t n_interval, rgbc_sum;
+	int integration_time_us;
+	struct tcs_saturation_t *sat_p =
+				&(TCS3400_RGB_DRV_DATA(s+1)->saturation);
+
+	cur_gain = (1 << (2 * sat_p->again));
+
+	integration_time_us =
+		tcs3400_get_integration_time(sat_p->atime);
+
+	/* n_interval = (G+B)/C, to use different coefficient*/
+	if (crgb_data[0] != 0)
+		n_interval = INT_TO_FP(crgb_data[2]+crgb_data[3])/crgb_data[0];
+	else
+		n_interval = FLOAT_TO_FP(0.692); /* set default n = 2 */
+
+	if (n_interval < FLOAT_TO_FP(0.692))
+		n = 1;
+	else if (n_interval >= FLOAT_TO_FP(0.692) &&
+			n_interval < FLOAT_TO_FP(1.012))
+		n = 2;
+	else
+		n = 3;
+
+	switch (n) {
+	case 1:
+		rgbc_sum =
+			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.009)) +
+			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(0.056)) +
+			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(2.735)) +
+			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.903));
+
+		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(799.797), rgbc_sum
+			/ (int)(integration_time_us * cur_gain / 1000ULL)));
+	break;
+	case 2:
+		rgbc_sum =
+			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(0.202)) +
+			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(-1.1)) +
+			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(8.692)) +
+			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-7.068));
+
+		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(801.347), rgbc_sum
+			/ (int)(integration_time_us * cur_gain / 1000ULL)));
+	break;
+	case 3:
+		rgbc_sum =
+			fp_mul(INT_TO_FP(crgb_data[0]), FLOAT_TO_FP(-0.661)) +
+			fp_mul(INT_TO_FP(crgb_data[1]), FLOAT_TO_FP(1.334)) +
+			fp_mul(INT_TO_FP(crgb_data[2]), FLOAT_TO_FP(1.095)) +
+			fp_mul(INT_TO_FP(crgb_data[3]), FLOAT_TO_FP(-1.821));
+
+		xyz_data[1] = FP_TO_INT(fp_mul(FLOAT_TO_FP(795.574), rgbc_sum
+			/ (int)(integration_time_us * cur_gain / 1000ULL)));
+	break;
+	default:
+	break;
+	}
+
+	if (xyz_data[1] < 0)
+		xyz_data[1] = 0;
+}
 
 static void power_monitor(void);
 DECLARE_DEFERRED(power_monitor);
