@@ -88,6 +88,24 @@
       "parentUuid": "2e8c6645_3c7825ad",
       "revId": "cf6f0a6c2843ead4cec2048dc4fc7a8974bd404f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddc3ace3_982df35b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-22T15:43:40Z",
+      "side": 1,
+      "message": "Denis Brockus, 9 min, Edited\nMy first thought was using DeviceTree to store the ESPI values in a generic manner that could be pulled out when needed.  The other thought would be to have a common espi header that had a preprocessor decision tree that said if NPCX then include soc_espi.h and define new names that are common else if POSIX then define all of these. In that the outcome would be to create a generic non-POSIX_ and non-NCPX_ set of constants that could be used in a generic manner in a single set of routines and not have to duplicate them based on the define naming used NPCX and POSIX\n\nYuval Peress, 6 min\nRight, so http://cs/chromeos_public/src/third_party/zephyr/main/v2.6/soc/arm/nuvoton_npcx/common/soc_espi.h is where the soc_espi.h lives for the npcx\nSo Zephyr already adds the include directory based on the SOC\n\nDenis Brockus, 5 min\nif NPCX\n    #include soc_espi.h\n    #define CMN_ACPI_TYPE_POS NPCX_ACPI_TYPE_POS\n    ....\n\nYuval Peress, 4 min\nIn theory we could try to add soc/posix/common/soc_espi.h in Zephyr, then also rename the values to drop the NPCX_ prefix\n\nDenis Brockus, 4 min, Edited\nThey should have used DT. That was short sighted, IMO\n\nYuval Peress, 3 min\nThough I\u0027m not 100% sure that all posix boards will want the same value (going back to DT like you said would have solved that)\n\nDenis Brockus, 3 min\nThis is where the lazy definition of the functions come in\nDT is the right way to go\nThe common would address the majority of the needs and overrides will take over beyond that for the exceptions\n\nYuval Peress, 1 min\nOK, so thought...\n1. I\u0027ll merge what I have\n2. I\u0027ll send a patch upstream to move these values to DT under http://cs/chromeos_public/src/third_party/zephyr/main/v2.6/dts/bindings/espi/espi-controller.yaml (or possibly get nuvoton to do it)\n3. I\u0027ll migrate our code to use DT\n\nDenis Brockus, Now\nPerfect",
+      "parentUuid": "e5f8815a_18b41e49",
+      "revId": "cf6f0a6c2843ead4cec2048dc4fc7a8974bd404f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
