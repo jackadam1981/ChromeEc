@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1cb3077_ed12506c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-22T16:09:08Z",
+      "side": 1,
+      "message": "Want a review from dennis or keith as well",
+      "revId": "0df7f58fb47885053f342e7184e67712a9ccf95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ee767bc_f510e330",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-22T16:09:08Z",
+      "side": 1,
+      "message": "in the future we should consider static initialization ... ok for now since it keeps the style already here",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 70
+      },
+      "revId": "0df7f58fb47885053f342e7184e67712a9ccf95c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
