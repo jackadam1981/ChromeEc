@@ -1,0 +1,72 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * Test CBI EEPROM WP
+ */
+
+#include "common.h"
+#include "console.h"
+#include "cros_board_info.h"
+#include "ec_commands.h"
+#include "gpio.h"
+#include "i2c.h"
+#include "system.h"
+#include "test_util.h"
+#include "util.h"
+
+static int system_locked;
+
+static void test_setup(void)
+{
+	/* Make sure that write protect is disabled */
+#ifdef CONFIG_WP_ACTIVE_HIGH
+	gpio_set_level(GPIO_WP, 0);
+#else
+	gpio_set_level(GPIO_WP_L, 1);
+#endif /* CONFIG_WP_ACTIVE_HIGH */
+	gpio_set_level(GPIO_EC_CBI_WP, 0);
+	system_locked = 0;
+}
+
+static void test_teardown(void)
+{
+}
+
+int system_is_locked(void)
+{
+	return system_locked;
+}
+
+DECLARE_EC_TEST(test_wp)
+{
+	int cbi_wp;
+
+	zassert_equal(system_is_locked(), 0, NULL);
+
+	cbi_set_eeprom_wp();
+	cbi_wp = gpio_get_level(GPIO_EC_CBI_WP);
+	zassert_equal(cbi_wp, 0, NULL);
+
+	/* Enable write protect and verify that EC_CBI_WP would be asserted */
+	if (IS_ENABLED(CONFIG_WP_ACTIVE_HIGH))
+		gpio_set_level(GPIO_WP, 1);
+	else
+		gpio_set_level(GPIO_WP, 0);
+	/* Asserting WP would make the system locked. */
+	system_locked = 1;
+	cbi_set_eeprom_wp();
+	cbi_wp = gpio_get_level(GPIO_EC_CBI_WP);
+	zassert_equal(cbi_wp, 1, NULL);
+
+	return EC_SUCCESS;
+}
+
+TEST_SUITE(test_suite_cbi_wp)
+{
+	ztest_test_suite(test_cbi_wp,
+			 ztest_unit_test_setup_teardown(test_wp,
+							test_setup,
+							test_teardown));
+	ztest_run_test_suite(test_cbi_wp);
+}
