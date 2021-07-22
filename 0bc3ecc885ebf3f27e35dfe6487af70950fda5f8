@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "db34aa07_02133a85",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-22T18:59:09Z",
+      "side": 1,
+      "message": "What to you mean same group?",
+      "parentUuid": "34ab6651_e4f40943",
+      "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4debbc22_bc026fce",
         "filename": "zephyr/subsys/chre/CMakeLists.txt",
         "patchSetId": 16
@@ -48,6 +66,24 @@
       "writtenOn": "2021-07-22T17:29:47Z",
       "side": 1,
       "message": "Where is it used? How do we know the list of config variable we need to define to get CHRE working? Is it scalable?",
+      "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceb995e7_4508f85c",
+        "filename": "zephyr/subsys/chre/CMakeLists.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-22T18:59:09Z",
+      "side": 1,
+      "message": "There\u0027s a small list of these associated with each release. Long term the subsys would:\n1. Have a Kconfig that gives us the path to the CHRE project (in our case it would be src/third_party/chre)\n2. Check the version of the CHRE we\u0027re building (this would be upstream to allow people to build against different versions). Then load CMake rules specific to that version.\n\nCurrently I believe that there are only a handfull of these that need to be done (roughly in the order of 5-7 from scanning over code-search).\n\nIdeally, long term, CHRE would support the builds internally and we wouldn\u0027t need to have these wrappers. Though even with their current release cadence, these wrappers should be fairly minimal.",
+      "parentUuid": "4debbc22_bc026fce",
       "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -69,6 +105,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "656398a6_2cc97549",
+        "filename": "zephyr/subsys/chre/Kconfig",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-22T18:59:09Z",
+      "side": 1,
+      "message": "There\u0027s no real reason, I was just trying to keep the memory footprint small until we actually used it. The default on Android is 4k, I suppose we should just leave it there and tweak per board if needed.",
+      "parentUuid": "3accf055_b04f777f",
+      "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1a9de6d_8127abef",
@@ -82,6 +136,24 @@
       "writtenOn": "2021-07-22T17:29:47Z",
       "side": 1,
       "message": "Set it to true, at least for now.",
+      "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b287de64_5d8befc6",
+        "filename": "zephyr/subsys/chre/Kconfig",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-22T18:59:09Z",
+      "side": 1,
+      "message": "Setting this to true will result in having to compile other .cc files which I was trying to avoid for now. This will be enabled for the board once Intel gets the following CLs to include the other sources.",
+      "parentUuid": "f1a9de6d_8127abef",
       "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
