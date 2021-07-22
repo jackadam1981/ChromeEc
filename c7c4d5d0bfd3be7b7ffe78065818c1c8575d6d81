@@ -188,6 +188,30 @@
       },
       "revId": "c7c4d5d0bfd3be7b7ffe78065818c1c8575d6d81",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51407cd7_61c71252",
+        "filename": "zephyr/test/drivers/src/espi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-22T02:44:47Z",
+      "side": 1,
+      "message": "Right, the main point of this is to find the simplest host command and make sure we can execute that code path. This should pave the path to more host command tests.",
+      "parentUuid": "dbd9c6cd_181c60d8",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 47
+      },
+      "revId": "c7c4d5d0bfd3be7b7ffe78065818c1c8575d6d81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
