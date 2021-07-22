@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8152b4df_bddb0076",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2021-07-22T09:23:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "335dec4a_02b80436",
+      "revId": "1f1da5bd80d821d8403f552454b96d7fa70d9c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "086a02d3_1d214b75",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-07-22T08:49:40Z",
       "side": 1,
       "message": "why HOOK_PRIO_INIT_ADC + 2?",
+      "range": {
+        "startLine": 521,
+        "startChar": 51,
+        "endLine": 521,
+        "endChar": 73
+      },
+      "revId": "1f1da5bd80d821d8403f552454b96d7fa70d9c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ec8985_3d3c45e2",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2021-07-22T09:23:11Z",
+      "side": 1,
+      "message": "I reference from other board, such as aleea, kindred and kakadu, but I am not very sure why.\nthe HOOK_PRIO_INIT_ADC \u003d HOOK_PRIO_DEFAULT, so should we use HOOK_PRIO_DEFAULT or HOOK_PRIO_DEFAULT + 2 ?\nCould you give me some suggestions?",
+      "parentUuid": "086a02d3_1d214b75",
       "range": {
         "startLine": 521,
         "startChar": 51,
