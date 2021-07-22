@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da66ad77_e4eca8f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-07-22T06:11:58Z",
+      "side": 1,
+      "message": "This bug didn\u0027t impact dedede, because only PWM  channel 0 is enabled. But it should still be fixed.",
+      "revId": "dabeb0e4fb299ded30c172bc690d0928a2801978",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
