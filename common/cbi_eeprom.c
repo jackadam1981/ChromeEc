@@ -9,6 +9,7 @@
 #include "cros_board_info.h"
 #include "gpio.h"
 #include "i2c.h"
+#include "system.h"
 #include "timer.h"
 #include "util.h"
 
@@ -62,6 +63,20 @@ static int eeprom_write(uint8_t *cbi)
 
 	return EC_SUCCESS;
 }
+
+#ifdef CONFIG_EC_OWNS_CBI_WP
+void cbi_set_eeprom_wp(void)
+{
+	int wp = 0;
+
+	if (system_is_locked()) {
+		CPRINTS("WP: 1");
+		wp = 1;
+	}
+
+	gpio_set_level(GPIO_EC_CBI_WP, wp);
+}
+#endif /* CONFIG_EC_OWNS_CBI_WP */
 
 const struct cbi_storage_driver eeprom_drv = {
 	.store = eeprom_write,
