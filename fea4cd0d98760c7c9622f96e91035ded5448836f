@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22e3d639_b1dcb4ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-22T17:37:07Z",
+      "side": 1,
+      "message": "We need to modify zephyr/Kconfig.keyboard as well and remove config PLATFORM_EC_KEYBOARD_BOARD_CONFIG. ",
+      "revId": "fea4cd0d98760c7c9622f96e91035ded5448836f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d16a84b_fd3826ad",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-22T17:37:07Z",
+      "side": 1,
+      "message": "Should we remove this then?",
+      "revId": "fea4cd0d98760c7c9622f96e91035ded5448836f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
