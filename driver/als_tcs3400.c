@@ -518,6 +518,7 @@ static int tcs3400_post_events(struct motion_sensor_t *s,
 
 void tcs3400_interrupt(enum gpio_signal signal)
 {
+	CPRINTS("tcs3400_interrupt");
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO))
 		last_interrupt_timestamp = __hw_clock_source_read();
 
