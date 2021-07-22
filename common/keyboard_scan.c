@@ -546,6 +546,7 @@ static int check_keys_changed(uint8_t *state)
 					keyscan_config.debounce_up_us))
 				continue;  /* Not done debouncing */
 			debouncing[c] &= ~BIT(i);
+			ccprintf("  Debounce end for c=%d r=%d\n", c, i);
 
 			if (!IS_ENABLED(CONFIG_KEYBOARD_STRICT_DEBOUNCE))
 				continue;
@@ -570,6 +571,7 @@ static int check_keys_changed(uint8_t *state)
 			if (!(diff & BIT(i)))
 				continue;
 			scan_edge_index[c][i] = scan_time_index;
+			ccprintf("  Debounce start for c=%d r=%d\n", c, i);
 
 			if (!IS_ENABLED(CONFIG_KEYBOARD_STRICT_DEBOUNCE)) {
 				any_change = 1;
