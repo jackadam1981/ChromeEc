@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c3a208e_610b13f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-22T23:38:49Z",
+      "side": 1,
+      "message": "Thanks for the explanation.\n\nI assume 1631 reads 16:31? Then, I would vote on truncating time. That is, we\u0027ll get guybrush_13983.0.2021_05_20. It\u0027s hard to remember what\u0027s in a build made a year ago than what\u0027s in a build made a few hours ago.",
+      "parentUuid": "97d88e10_51eee376",
+      "range": {
+        "startLine": 19,
+        "startChar": 41,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9d114d8_3df002a8",
         "filename": "board/oak/board.h",
         "patchSetId": 6
