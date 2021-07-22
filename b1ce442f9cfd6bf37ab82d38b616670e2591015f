@@ -70,6 +70,30 @@
       },
       "revId": "b1ce442f9cfd6bf37ab82d38b616670e2591015f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88778db5_d328e3ba",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-22T16:52:13Z",
+      "side": 1,
+      "message": "why combining into a single section would prevent the linker from dropping unused code?",
+      "parentUuid": "1e1265f5_42506e69",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "b1ce442f9cfd6bf37ab82d38b616670e2591015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
