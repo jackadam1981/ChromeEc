@@ -217,6 +217,17 @@ void cbi_invalidate_cache(void);
  */
 int cbi_get_cache_status(void);
 
+/**
+ * Set the CBI EEPROM WP
+ *
+ * This function assumes that the EC has exclusive control over the CBI EEPROM
+ * WP signal (GPIO_EC_CBI_WP).  This function will set the CBI EEPROM WP
+ * according to `system_is_locked()`.  Note that once the WP is set, the EC must
+ * be reset via EC_RST_ODL in order for the WP to become unset.
+ */
+void cbi_set_eeprom_wp(void);
+
+
 #ifdef TEST_BUILD
 /**
  * Write the locally cached CBI to EEPROM.
