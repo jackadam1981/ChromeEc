@@ -70,6 +70,24 @@
       "parentUuid": "367a954b_4c582f67",
       "revId": "cf6f0a6c2843ead4cec2048dc4fc7a8974bd404f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5f8815a_18b41e49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-22T04:11:07Z",
+      "side": 1,
+      "message": "Lets chat tomorrow, I want to make sure I understand what you have in mind. For me, since the NPCX values are defined in an include file from Zephyr, but the same doesn\u0027t exist for POSIX I had to either create a #define mapping header which gets included based on the SOC, something like (for npcx):\n\n  #define ACPI_TYPE_POS NPCX_ACPI_TYPE_POS\n\nThis would bring all the values down to a common ACPI_TYPE_POS which can be used in the common logic. This seems just as ugly, so maybe there\u0027s something better I\u0027m missing.",
+      "parentUuid": "2e8c6645_3c7825ad",
+      "revId": "cf6f0a6c2843ead4cec2048dc4fc7a8974bd404f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
