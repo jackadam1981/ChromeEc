@@ -16,6 +16,46 @@
       "message": "Hi Ting, could you help to review the CL, thanks.",
       "revId": "1f1da5bd80d821d8403f552454b96d7fa70d9c57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "335dec4a_02b80436",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-22T08:49:40Z",
+      "side": 1,
+      "message": "Use `.rot_standard_ref \u003d NULL,` for identity matrix",
+      "revId": "1f1da5bd80d821d8403f552454b96d7fa70d9c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "086a02d3_1d214b75",
+        "filename": "board/fennel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-22T08:49:40Z",
+      "side": 1,
+      "message": "why HOOK_PRIO_INIT_ADC + 2?",
+      "range": {
+        "startLine": 521,
+        "startChar": 51,
+        "endLine": 521,
+        "endChar": 73
+      },
+      "revId": "1f1da5bd80d821d8403f552454b96d7fa70d9c57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
