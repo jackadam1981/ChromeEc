@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd2133af_6129a584",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-22T20:11:14Z",
+      "side": 1,
+      "message": "I found a bug. The bitmask was not updated if the new value is boolean equal to the old value. The new patchset fixes it.",
+      "revId": "fec86e4fb115e21ba488741788b24073592cd456",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
