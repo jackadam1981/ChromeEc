@@ -16,6 +16,74 @@
       "message": "I\u0027m ready for this to merge so we can hand this off to Intel to keep adding to the subsys/chre",
       "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ab6651_e4f40943",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-22T17:29:47Z",
+      "side": 1,
+      "message": "Will most likely break minilayout, let\u0027s be sure third_party/chre is in the same group as platform/ec.",
+      "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4debbc22_bc026fce",
+        "filename": "zephyr/subsys/chre/CMakeLists.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-22T17:29:47Z",
+      "side": 1,
+      "message": "Where is it used? How do we know the list of config variable we need to define to get CHRE working? Is it scalable?",
+      "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3accf055_b04f777f",
+        "filename": "zephyr/subsys/chre/Kconfig",
+        "patchSetId": 16
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-22T17:29:47Z",
+      "side": 1,
+      "message": "why so low?",
+      "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1a9de6d_8127abef",
+        "filename": "zephyr/subsys/chre/Kconfig",
+        "patchSetId": 16
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-22T17:29:47Z",
+      "side": 1,
+      "message": "Set it to true, at least for now.",
+      "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
