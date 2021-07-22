@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 
+#define LOG_LEVEL CONFIG_I2C_LOG_LEVEL
+#include <logging/log.h>
+LOG_MODULE_REGISTER(ppc);
 #include <zephyr.h>
 #include <ztest.h>
 #include <ztest_assert.h>
@@ -45,10 +48,13 @@ static void test_ppc_syv682x_interrupt(void)
 	uint8_t reg;
 
         syv682x_emul_set_reg(emul, SYV682X_STATUS_REG, SYV682X_STATUS_INT_MASK);
+        syv682x_emul_get_reg(emul, SYV682X_STATUS_REG, &reg);
+        LOG_INF("Before interrupt reg %d", reg);
         syv682x_interrupt(syv682x_port);
         msleep(15);
         zassert_ok(syv682x_emul_get_reg(emul, SYV682X_STATUS_REG, &reg),
                         "Couldn't read status register");
+        LOG_INF("After interrupt reg %d", reg);
         zassert_equal(reg & SYV682X_STATUS_INT_MASK, 0x0,
                         "Interrupt handled but status bits still set");
 }

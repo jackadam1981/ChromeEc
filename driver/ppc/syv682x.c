@@ -616,12 +616,14 @@ static void syv682x_interrupt_delayed(int port, int delay)
 {
 	atomic_or(&irq_pending, BIT(port));
 	hook_call_deferred(&syv682x_irq_deferred_data, delay * MSEC);
+        CPRINTS("Scheduled deferred in %d ms", delay);
 }
 
 void syv682x_interrupt(int port)
 {
 	/* FRS timings require <15ms response to an FRS event */
 	syv682x_interrupt_delayed(port, 0);
+        CPRINTS("Actual ISR");
 }
 
 /*
@@ -717,6 +719,9 @@ static int syv682x_init(int port)
 	int regval;
 	int status, control_1;
 	enum tcpc_rp_value initial_current_limit;
+
+        CPRINTS("syv682x_init");
+        panic("TESTTESTTEST");
 
 	rv = read_reg(port, SYV682X_STATUS_REG, &status);
 	if (rv)

@@ -13,6 +13,7 @@
 #include <logging/log.h>
 LOG_MODULE_REGISTER(syv682x);
 #include <string.h>
+#include <ztest_assert.h>
 
 #include "emul/emul_syv682x.h"
 
@@ -83,8 +84,9 @@ static int syv682x_emul_transfer(struct i2c_emul *emul, struct i2c_msg *msgs,
 	const struct syv682x_emul_cfg *cfg;
 	struct syv682x_emul_data *data;
 	unsigned int len;
-	int ret, i, reg;
+	int ret, reg;
 	bool read;
+	uint8_t *buf;
 
 	data = CONTAINER_OF(emul, struct syv682x_emul_data, emul);
 	cfg = data->cfg;
@@ -114,8 +116,23 @@ static int syv682x_emul_transfer(struct i2c_emul *emul, struct i2c_msg *msgs,
 			LOG_ERR("Unexpected read msgs");
 			return -EIO;
 		}
-		return syv682x_emul_get_reg(emul, msgs[0].buf[0],
-				&msgs[1].buf[0]);
+
+		reg = msgs[0].buf[0];
+		buf = &msgs[1].buf[0];
+		ret = syv682x_emul_get_reg(emul, reg, buf);
+
+		switch (reg) {
+		/* These registers are clear-on-read. */
+		case SYV682X_STATUS_REG:
+		case SYV682X_CONTROL_4_REG:
+			LOG_INF("Clearing register %d", reg);
+			syv682x_emul_set_reg(emul, reg, 0);
+			break;
+		default:
+			break;
+		}
+
+		return ret;
 	} else {
 		LOG_ERR("Unexpected num_msgs");
 		return -EIO;
