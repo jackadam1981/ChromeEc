@@ -52,6 +52,24 @@
       "parentUuid": "abe876a5_d38dab70",
       "revId": "cf6f0a6c2843ead4cec2048dc4fc7a8974bd404f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e8c6645_3c7825ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-22T03:15:23Z",
+      "side": 1,
+      "message": "It works the way it is. There are ways to conditionally compile in for the all/nothing option. I just hate to see a proliferation of the same code over and over.  I will CR+2. If you think what I am saying makes any sense then adjust otherwise send it through",
+      "parentUuid": "367a954b_4c582f67",
+      "revId": "cf6f0a6c2843ead4cec2048dc4fc7a8974bd404f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
