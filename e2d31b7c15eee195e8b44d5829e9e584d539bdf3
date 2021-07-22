@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f064cdc_8ae5fdda",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-22T03:49:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43ba6128_f0338493",
+      "range": {
+        "startLine": 151,
+        "startChar": 24,
+        "endLine": 151,
+        "endChar": 38
+      },
+      "revId": "e2d31b7c15eee195e8b44d5829e9e584d539bdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df797416_5433a5c0",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-21T19:09:40Z",
       "side": 1,
       "message": "are these still needed on the ps8815 used in your build?",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 44
+      },
+      "revId": "e2d31b7c15eee195e8b44d5829e9e584d539bdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a8c84dd_759480e7",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-22T03:49:58Z",
+      "side": 1,
+      "message": "I got Parade reply. \"Please keep it for now. We will check after bring up.\"",
+      "parentUuid": "df797416_5433a5c0",
       "range": {
         "startLine": 159,
         "startChar": 1,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae5ee3bd_60386847",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-22T03:49:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92cf6392_82831712",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 10
+      },
+      "revId": "e2d31b7c15eee195e8b44d5829e9e584d539bdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78aaafdd_822d2a86",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-07-21T19:09:40Z",
       "side": 1,
       "message": "PS8815_PWR_H_RST_H_DELAY_MS\nthat constant is currently 40ms, is that OK here?",
+      "range": {
+        "startLine": 193,
+        "startChar": 8,
+        "endLine": 193,
+        "endChar": 10
+      },
+      "revId": "e2d31b7c15eee195e8b44d5829e9e584d539bdf3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75bc9a07_4f231658",
+        "filename": "board/gimble/usbc_config.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-22T03:49:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78aaafdd_822d2a86",
       "range": {
         "startLine": 193,
         "startChar": 8,
