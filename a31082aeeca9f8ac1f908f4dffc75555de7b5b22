@@ -51,6 +51,24 @@
       "parentUuid": "9c9cef40_4030a4ab",
       "revId": "a31082aeeca9f8ac1f908f4dffc75555de7b5b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a028bc0_d41c1ad4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-07-22T07:21:46Z",
+      "side": 1,
+      "message": "I see that we don\u0027t need to disable DIVIDER_HIGHSIDE at the end of `get_fp_transport_type()`. I will take it into account and modify this patch.",
+      "parentUuid": "257f5581_6f9ce33a",
+      "revId": "a31082aeeca9f8ac1f908f4dffc75555de7b5b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
