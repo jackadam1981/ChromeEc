@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b54c5672_bd08c0b7",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-22T23:31:11Z",
+      "side": 0,
+      "message": "This is not right... \u0027r\u0027 needs to be recalculated if r \u003d\u003d 0 (as done at line 167). So, this part is already kind of broken.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 3
+      },
+      "revId": "4c21b57eb9619cc3dc86d11226917d25f62f1bc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

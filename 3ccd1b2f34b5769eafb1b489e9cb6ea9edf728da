@@ -46,6 +46,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9143f1f_f9550bed",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-22T23:31:11Z",
+      "side": 1,
+      "message": "IIUC, we should return -errno if r \u003c 0 or return -EECRESULT - result if r \u003d\u003d 0.\n\nI think we shouldn\u0027t translate errno to EC_RES_ (line 205 and 216) because existing ectool commands may behave unexpectedly. For example, a ectool command may think EC_RES_ERROR is from the EC but it could be actually EIO.",
+      "parentUuid": "1e681015_882a39cf",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
