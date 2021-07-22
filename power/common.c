@@ -866,6 +866,8 @@ void power_signal_interrupt(enum gpio_signal signal)
 #endif
 
 	SIGLOG(signal);
+	if (signal == 11)
+		gpio_set_level(GPIO_GPIO86, 1);
 
 	/* Shadow signals and compare with our desired signal state. */
 	power_update_signals();
