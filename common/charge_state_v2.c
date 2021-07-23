@@ -1735,16 +1735,11 @@ static void sustain_battery_soc(void)
 		if (sustain_soc.upper < soc)
 			mode = CHARGE_CONTROL_DISCHARGE;
 		break;
-	case CHARGE_CONTROL_IDLE:
+	case CHARGE_CONTROL_DISCHARGE:
 		/* discharging naturally */
 		if (soc < sustain_soc.lower)
 			/* TODO: Charge slowly */
 			mode = CHARGE_CONTROL_NORMAL;
-		break;
-	case CHARGE_CONTROL_DISCHARGE:
-		/* discharging rapidly (discharge_on_ac) */
-		if (soc < sustain_soc.upper)
-			mode = CHARGE_CONTROL_IDLE;
 		break;
 	default:
 		return;
