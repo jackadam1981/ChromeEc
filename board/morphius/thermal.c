@@ -499,9 +499,9 @@ void thermal_protect(void)
 		int rv1, rv2;
 		int thermal_sensor1, thermal_sensor2;
 
-		rv1 = temp_sensor_read(TEMP_SENSOR_5V_REGULATOR,
+		rv1 = temp_sensor_read_k(TEMP_SENSOR_5V_REGULATOR,
 				       &thermal_sensor1);
-		rv2 = temp_sensor_read(TEMP_SENSOR_CPU,
+		rv2 = temp_sensor_read_k(TEMP_SENSOR_CPU,
 				       &thermal_sensor2);
 
 		if (rv2 == EC_SUCCESS) {

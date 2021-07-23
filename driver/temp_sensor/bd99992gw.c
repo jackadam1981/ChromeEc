@@ -117,11 +117,13 @@ static int bd99992gw_get_temp(uint16_t adc)
 }
 
 /* Get temperature from requested sensor */
-int bd99992gw_get_val(int idx, int *temp_ptr)
+int bd99992gw_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	uint16_t adc;
 	int i, read, ret;
 	enum bd99992gw_adc_channel channel;
+
+	*temp_mk_ptr = 0;
 
 	/* ADC unit is only functional in S0 */
 	if (!chipset_in_state(CHIPSET_STATE_ON))
@@ -162,7 +164,7 @@ int bd99992gw_get_val(int idx, int *temp_ptr)
 	adc |= read << 2;
 
 	/* Convert temperature to C / K */
-	*temp_ptr = C_TO_K(bd99992gw_get_temp(adc));
+	*temp_k_ptr = C_TO_K(bd99992gw_get_temp(adc));
 
 	/* Clear interrupts */
 	ret = raw_write8(BD99992GW_REG_ADC1INT, BD99992GW_ADC1INT_RND);

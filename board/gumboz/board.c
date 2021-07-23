@@ -561,7 +561,7 @@ int charger_profile_override(struct charge_state_data *curr)
 	static int limit_usbc_power_backup;
 	enum tcpc_rp_value rp;
 
-	rv = temp_sensor_read(TEMP_SENSOR_CHARGER, &thermal_sensor_temp);
+	rv = temp_sensor_read_k(TEMP_SENSOR_CHARGER, &thermal_sensor_temp);
 
 	if (rv != EC_SUCCESS)
 		return 0;

@@ -23,7 +23,7 @@ static int raw_read8(const int offset, int *data_ptr)
 			 offset, data_ptr);
 }
 
-int sb_tsi_get_val(int idx, int *temp_ptr)
+int sb_tsi_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	int ret;
 	/* There is only one temp sensor on the FT4 */
@@ -33,9 +33,10 @@ int sb_tsi_get_val(int idx, int *temp_ptr)
 	if (!chipset_in_state(CHIPSET_STATE_ON))
 		return EC_ERROR_NOT_POWERED;
 	/* Read the value over I2C */
-	ret = raw_read8(SB_TSI_TEMP_H, temp_ptr);
+	ret = raw_read8(SB_TSI_TEMP_H, temp_k_ptr);
 	if (ret)
 		return ret;
-	*temp_ptr = C_TO_K(*temp_ptr);
+	*temp_k_ptr = C_TO_K(*temp_k_ptr);
+	*temp_mk_ptr = -1;
 	return EC_SUCCESS;
 }

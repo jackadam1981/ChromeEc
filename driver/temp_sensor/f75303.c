@@ -37,17 +37,19 @@ static int get_temp(const int offset, int *temp)
 	return EC_SUCCESS;
 }
 
-int f75303_get_val(int idx, int *temp)
+int f75303_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	if (idx < 0 || F75303_IDX_COUNT <= idx)
 		return EC_ERROR_INVAL;
 
+	/* Millikelvin is not supported */
+	*temp_mk_ptr = -1;
+
 	if (fake_temp[idx] != -1) {
-		*temp = C_TO_K(fake_temp[idx]);
+		*temp_k_ptr = C_TO_K(fake_temp[idx]);
 		return EC_SUCCESS;
 	}
-
-	*temp = temps[idx];
+	*temp_k_ptr = temps[idx];
 	return EC_SUCCESS;
 }
 

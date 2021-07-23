@@ -29,12 +29,14 @@ enum f75303_index {
 /**
  * Get the last polled value of a sensor.
  *
- * @param idx	Index to read. Idx indicates whether to read die
- *		temperature or external temperature.
- * @param temp	Destination for temperature in K.
+ * @param idx		Index to read. Idx indicates whether to read die
+ *			temperature or external temperature.
+ * @param temp_k_ptr	Destination for temperature in K.
+ * @param temp_mk_ptr	Destination for temperature in Millikelvin.
+ *			Set to -1 if millikelivn is not supported.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int f75303_get_val(int idx, int *temp);
+int f75303_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr);
 
 #endif  /* __CROS_EC_F75303_H */

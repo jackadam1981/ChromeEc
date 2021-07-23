@@ -81,10 +81,12 @@ enum bd99992gw_adc_channel {
  * Get the latest value from the sensor.
  *
  * @param idx		ADC channel to read.
- * @param temp_ptr	Destination for temperature in K.
+ * @param temp_k_ptr	Destination for temperature in K.
+ * @param temp_mk_ptr	Destination for temperature in Millikelvin.
+ *			Set to -1 if millikelivn is not supported.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int bd99992gw_get_val(int idx, int *temp_ptr);
+int bd99992gw_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr);
 
 #endif  /* __CROS_EC_TEMP_SENSOR_BD99992GW_H */

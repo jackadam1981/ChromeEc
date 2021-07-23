@@ -18,6 +18,8 @@
 
 #define CONFIG_HOSTCMD_ESPI
 #undef CONFIG_CMD_MFALLOW
+/* Removed to save flash space */
+#undef CONFIG_CMD_TEMP_SENSOR
 
 
 #undef CONFIG_UART_TX_BUF_SIZE

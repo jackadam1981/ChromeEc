@@ -22,14 +22,13 @@
 #define ADC_DEVICE_NODE		DT_NODELABEL(adc0)
 #define ADC_CHANNELS_NUM	DT_PROP(DT_NODELABEL(adc0), nchannels)
 
-/** Test error code when invalid sensor is passed to temp_sensor_read() */
+/** Test error code when invalid sensor is passed to temp_sensor_read_k() */
 static void test_temp_sensor_wrong_id(void)
 {
-	int temp;
+	int temp_k;
 
-	zassert_equal(EC_ERROR_INVAL, temp_sensor_read(TEMP_SENSOR_COUNT,
-						       &temp),
-		      NULL);
+	zassert_equal(EC_ERROR_INVAL,
+		      temp_sensor_read_k(TEMP_SENSOR_COUNT, &temp_k), NULL);
 }
 
 /** Test error code when temp_sensor_read() is called with powered off ADC */
@@ -37,7 +36,7 @@ static void test_temp_sensor_adc_error(void)
 {
 	const struct device *gpio_dev =
 		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_PG_EC_DSW_PWROK_PATH, gpios));
-	int temp;
+	int temp_k;
 
 	zassert_not_null(gpio_dev, "Cannot get GPIO device");
 
@@ -49,13 +48,13 @@ static void test_temp_sensor_adc_error(void)
 		   NULL);
 
 	zassert_equal(EC_ERROR_NOT_POWERED,
-		      temp_sensor_read(TEMP_SENSOR_CHARGER, &temp), NULL);
+		      temp_sensor_read_k(TEMP_SENSOR_CHARGER, &temp_k), NULL);
 	zassert_equal(EC_ERROR_NOT_POWERED,
-		      temp_sensor_read(TEMP_SENSOR_DDR_SOC, &temp), NULL);
+		      temp_sensor_read_k(TEMP_SENSOR_DDR_SOC, &temp_k), NULL);
 	zassert_equal(EC_ERROR_NOT_POWERED,
-		      temp_sensor_read(TEMP_SENSOR_FAN, &temp), NULL);
+		      temp_sensor_read_k(TEMP_SENSOR_FAN, &temp_k), NULL);
 	zassert_equal(EC_ERROR_NOT_POWERED,
-		      temp_sensor_read(TEMP_SENSOR_PP3300_REGULATOR, &temp),
+		      temp_sensor_read_k(TEMP_SENSOR_PP3300_REGULATOR, &temp_k),
 		      NULL);
 
 	/* power ADC */
@@ -72,21 +71,22 @@ static int adc_error_func(const struct device *dev, unsigned int channel,
 
 /**
  * Set valid response only for ADC channel connected with tested sensor.
- * Check if temp_sensor_read() from tested sensor returns EC_SUCCESS and
+ * Check if temp_sensor_read_k() from tested sensor returns EC_SUCCESS and
  * valid temperature. Set invalid response on ADC channel for next test.
  */
 static void check_valid_temperature(const struct device *adc_dev, int sensor)
 {
-	int temp;
+	int temp_k;
 
 	/* ADC channel of tested sensor return valid value */
 	zassert_ok(adc_emul_const_value_set(adc_dev, temp_sensors[sensor].idx,
 					    1000),
 		   "adc_emul_const_value_set() failed (sensor %d)", sensor);
-	zassert_equal(EC_SUCCESS, temp_sensor_read(sensor, &temp), NULL);
-	zassert_within(temp, 273 + 50, 51,
-		       "Expected temperature in 0*C-100*C, got %d*C (sensor %d)",
-		       temp - 273, sensor);
+	zassert_equal(EC_SUCCESS, temp_sensor_read_k(sensor, &temp_k), NULL);
+	zassert_within(
+		temp_k, C_TO_K(50), 51,
+		"Expected temperature in 0*C-100*C, got %d*C (sensor %d)",
+		K_TO_C(temp_k), sensor);
 	/* Return error on ADC channel of tested sensor */
 	zassert_ok(adc_emul_value_func_set(adc_dev, temp_sensors[sensor].idx,
 					   adc_error_func, NULL),

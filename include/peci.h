@@ -48,10 +48,12 @@ struct peci_data {
  *
  * @param idx		Sensor index to read.
  * @param temp_ptr	Destination for temperature in K.
+ * @param temp_mk_ptr	Destination for temperature in Millikelvin.
+ *			Set to -1 if Millli K is not supported.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int peci_temp_sensor_get_val(int idx, int *temp_ptr);
+int peci_temp_sensor_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr);
 
 /**
  * Start a PECI transaction

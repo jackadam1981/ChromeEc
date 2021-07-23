@@ -234,7 +234,7 @@ static int tmp006_read_object_temp_k(struct tmp006_data_t *tdata,
 	return EC_SUCCESS;
 }
 
-int tmp006_get_val(int idx, int *temp_ptr)
+int tmp006_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	/*
 	 * Note: idx is a thermal sensor index, where the top N-1 bits are the
@@ -254,11 +254,14 @@ int tmp006_get_val(int idx, int *temp_ptr)
 			EC_ERROR_NOT_POWERED;
 	}
 
+	/* Millikelvin is not supported */
+	*temp_mk_ptr = -1;
+
 	/* Check the low bit to determine which temperature to read. */
 	if ((idx & 0x1) == 0)
-		return tmp006_read_die_temp_k(tdata, temp_ptr);
+		return tmp006_read_die_temp_k(tdata, temp_k_ptr);
 	else
-		return tmp006_read_object_temp_k(tdata, temp_ptr);
+		return tmp006_read_object_temp_k(tdata, temp_k_ptr);
 }
 
 /*****************************************************************************/

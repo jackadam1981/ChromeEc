@@ -566,7 +566,7 @@ int charger_profile_override(struct charge_state_data *curr)
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		return 0;
 
-	temp_sensor_read(TEMP_SENSOR_CHARGER, &thermal_sensor_temp);
+	temp_sensor_read_k(TEMP_SENSOR_CHARGER, &thermal_sensor_temp);
 
 	if (thermal_sensor_temp > prev_thermal_sensor_temp) {
 		if (thermal_sensor_temp > C_TO_K(63))
