@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a80bb931_931efaf4",
+        "filename": "test/tpm_test/tpmtest.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-23T20:04:20Z",
+      "side": 1,
+      "message": "Is the indentation of this and the following lines inconsistent? I can\u0027t tell if it\u0027s just a gerrit thing.",
+      "revId": "95d65ce6f8617ca572259f7b8b7df14c532b3cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e052bf26_16fd25f4",
+        "filename": "test/tpm_test/u2f_test.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-07-23T20:04:20Z",
+      "side": 1,
+      "message": "Is 65 correct? Why isn\u0027t it 64?",
+      "range": {
+        "startLine": 25,
+        "startChar": 27,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "95d65ce6f8617ca572259f7b8b7df14c532b3cb2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
