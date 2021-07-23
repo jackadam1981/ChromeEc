@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa8d34e4_5f244bc9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-23T22:56:57Z",
+      "side": 1,
+      "message": "Alternatively, we could probably make sure we query sink caps first and only ask for source caps if the partner reports DRP.  But that requires more policy coordination in the PE than we currently have. ",
+      "revId": "fb3aae6066670a4f7f02ecedd1ee9ad37bf5ed8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
