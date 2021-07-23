@@ -148,6 +148,9 @@
 /* CBI */
 #define CONFIG_CBI_EEPROM
 #define CONFIG_BOARD_VERSION_CBI
+#if KEEBY_VARIANT
+#define CONFIG_EC_OWNS_CBI_WP
+#endif
 
 /* Charger */
 #define CONFIG_CHARGE_MANAGER
