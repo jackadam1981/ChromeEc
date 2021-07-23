@@ -11,6 +11,9 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+/* Save some flash space, ~4700 bytes */
+#define CONFIG_CHIP_INIT_ROM_REGION
+
 #define CONFIG_POWER_BUTTON
 #define CONFIG_KEYBOARD_PROTOCOL_8042
 #define CONFIG_LED_COMMON
