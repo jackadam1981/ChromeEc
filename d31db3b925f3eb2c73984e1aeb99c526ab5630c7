@@ -52,6 +52,24 @@
       "parentUuid": "11fd4e15_d5f3975a",
       "revId": "d31db3b925f3eb2c73984e1aeb99c526ab5630c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "291eedd9_1775c4ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-07-23T19:54:50Z",
+      "side": 1,
+      "message": "In it\u0027s current form, this patch will:\n\n* Add a set of behaviors that will break the contract that is negotiated between the host and the device ends. It does not respect the max write/read limits that it is telling the host to obey. Flashrom is not designed to support different read and write limits and we\u0027re just hopping that this path will never cause problems.\n\n* Reduce the functionality that was added specifically to the Cr50 for customization to the point that that workflow will now require an added step of reprogramming the Cr50.\n\n* Add burden to the teams who need to support it.\n\nThat\u0027s several solid losses there. We have 7 year support cycles for platforms so we can\u0027t rely on firmware updates. Someone in 2028 could easily be dealing with a device that is running this and at that point the record of this is going to be very difficult to track down.\n\nFlashing times are bad and this does improve them. But this is an element of our tool infrastructure and problems there add far greater cost. I don\u0027t think that the cost benefits justifies a incomplete implementation. Identification of problems today is far cheaper than 5 years from now when one of the defects hits us.",
+      "parentUuid": "316f5a0a_ba53a47f",
+      "revId": "d31db3b925f3eb2c73984e1aeb99c526ab5630c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
