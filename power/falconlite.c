@@ -62,7 +62,7 @@
 #define GPIO_AP_SHUTDOWN_REQ	GPIO_AP_IN_SLEEP_L
 #define FCL_AP_SHUTDOWN_REQ	FCL_AP_IN_SLEEP
 
-static enum host_sleep_event ap_sleep_event;
+__maybe_unused static enum host_sleep_event ap_sleep_event;
 
 /* Power signal list. Must match order of enum power_signal. */
 const struct power_signal_info power_signal_list[] = {
@@ -253,7 +253,7 @@ enum power_state power_chipset_init(void)
 	if (reset_flags & EC_RESET_FLAG_SYSJUMP) {
 		if ((power_get_signals() & IN_ALL_S0) == IN_ALL_S0) {
 			disable_sleep(SLEEP_MASK_AP_RUN);
-			power_signal_enable_interrupt(GPIO_AP_EC_WATCHDOG_L);
+			/** power_signal_enable_interrupt(GPIO_AP_EC_WATCHDOG_L); */
 			CPRINTS("already in S0");
 			return POWER_S0;
 		}
@@ -360,7 +360,7 @@ static void power_seq_run(const struct power_seq_op *power_seq_ops,
 enum power_state power_handle_state(enum power_state state)
 {
 	/* Retry S5->S3 transition, if not zero. */
-	static int s5s3_retry;
+	/* static int s5s3_retry; */
 	/* AP decided to shut down): transition to S5, G3. */
 	static int ap_shutdown;
 
@@ -377,7 +377,7 @@ enum power_state power_handle_state(enum power_state state)
 			return POWER_S5G3;
 		} else if (!forcing_shutdown) {
 			/* Powering up. */
-			s5s3_retry = 1;
+			/* s5s3_retry = 1; */
 			return POWER_S5S3;
 		}
 
@@ -387,15 +387,16 @@ enum power_state power_handle_state(enum power_state state)
 		 */
 		return POWER_S5;
 	case POWER_S3:
-		if (power_has_signals(IN_AP_SHUTDOWN_REQ) || forcing_shutdown)
-			return POWER_S3S5;
-		else if (ap_sleep_event == HOST_SLEEP_EVENT_S3_RESUME)
-			return POWER_S3S0;
-		break;
+		/* if (power_has_signals(IN_AP_SHUTDOWN_REQ) || forcing_shutdown)
+		 *         return POWER_S3S5;
+		 * else if (ap_sleep_event == HOST_SLEEP_EVENT_S3_RESUME)
+		 *         return POWER_S3S0;
+		 * break; */
+		 return POWER_S3S0;
 	case POWER_S0:
-		if (ap_sleep_event == HOST_SLEEP_EVENT_S3_SUSPEND ||
-			!power_has_signals(IN_ALL_S0))
-			return POWER_S0S3;
+		/* if (ap_sleep_event == HOST_SLEEP_EVENT_S3_SUSPEND ||
+		 *         !power_has_signals(IN_ALL_S0))
+		 *         return POWER_S0S3; */
 		break;
 	case POWER_G3S5:
 		forcing_shutdown = 0;
@@ -403,11 +404,13 @@ enum power_state power_handle_state(enum power_state state)
 		power_seq_run(g3s5_power_seq, ARRAY_SIZE(g3s5_power_seq));
 
 		/* Power up to next state, or go back */
-		if (power_get_signals() & IN_PG_S5)
-			return POWER_S5;
-		else
-			return POWER_G3;
-		break;
+		/* if (power_get_signals() & IN_PG_S5)
+		 *         return POWER_S5;
+		 * else
+		 *         return POWER_G3;
+		 * break; */
+		/* keep booting, skip checking */
+		 return POWER_S5;
 	case POWER_S5S3:
 		hook_notify(HOOK_CHIPSET_PRE_INIT);
 
@@ -418,29 +421,29 @@ enum power_state power_handle_state(enum power_state state)
 		 * (it may take 2 attempts on restart after we use
 		 * force reset).
 		 */
-		if (!power_has_signals(IN_ALL_S3)) {
-			if (s5s3_retry) {
-				s5s3_retry = 0;
-				return POWER_S5S3;
-			}
-			/* Give up, go back to G3. */
-			return POWER_S5G3;
-		}
-
+/*                 if (!power_has_signals(IN_ALL_S3)) {
+ *                         if (s5s3_retry) {
+ *                                 s5s3_retry = 0;
+ *                                 return POWER_S5S3;
+ *                         }
+ *                         [> Give up, go back to G3. <]
+ *                         return POWER_S5G3;
+ *                 }
+ *  */
 		/* Release AP reset and waits for AP pulling WDT up. */
-		power_signal_enable_interrupt(GPIO_AP_EC_WATCHDOG_L);
+		/** power_signal_enable_interrupt(GPIO_AP_EC_WATCHDOG_L); */
 
 		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 1);
 
-		if (power_wait_mask_signals_timeout(0, IN_AP_WDT,
-						    AP_EC_WDT_TIMEOUT)) {
-			if (s5s3_retry) {
-				s5s3_retry = 0;
-				return POWER_S5S3;
-			}
-			/* Give up, go back to G3. */
-			return POWER_S5G3;
-		}
+		/* if (power_wait_mask_signals_timeout(0, IN_AP_WDT,
+		 *                                     AP_EC_WDT_TIMEOUT)) {
+		 *         if (s5s3_retry) {
+		 *                 s5s3_retry = 0;
+		 *                 return POWER_S5S3;
+		 *         }
+		 *         [> Give up, go back to G3. <]
+		 *         return POWER_S5G3;
+		 * } */
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_STARTUP);
@@ -450,8 +453,8 @@ enum power_state power_handle_state(enum power_state state)
 
 	case POWER_S3S5:
 		/* PMIC has shutdown, transition to G3. */
-		if (power_get_signals() & FCL_AP_SHUTDOWN_REQ)
-			ap_shutdown = 1;
+		/* if (power_get_signals() & FCL_AP_SHUTDOWN_REQ)
+		 *         ap_shutdown = 1; */
 
 		/* Call hooks before we remove power rails */
 		hook_notify(HOOK_CHIPSET_SHUTDOWN);
@@ -463,7 +466,7 @@ enum power_state power_handle_state(enum power_state state)
 		GPIO_SET_LEVEL(GPIO_SYS_RST_ODL, 0);
 		if (power_wait_signals_timeout(IN_AP_WDT, AP_EC_WDT_TIMEOUT))
 			CPRINTS("Timeout waitting AP watchdog, force if off");
-		power_signal_disable_interrupt(GPIO_AP_EC_WATCHDOG_L);
+		/** power_signal_disable_interrupt(GPIO_AP_EC_WATCHDOG_L); */
 
 		power_seq_run(s3s5_power_seq, ARRAY_SIZE(s3s5_power_seq));
 
@@ -499,10 +502,10 @@ enum power_state power_handle_state(enum power_state state)
 	case POWER_S3S0:
 		power_seq_run(s3s0_power_seq, ARRAY_SIZE(s3s0_power_seq));
 
-		if (power_wait_signals(IN_ALL_S0)) {
-			chipset_force_shutdown(CHIPSET_SHUTDOWN_WAIT);
-			return POWER_S0S3;
-		}
+		/* if (power_wait_signals(IN_ALL_S0)) {
+		 *         chipset_force_shutdown(CHIPSET_SHUTDOWN_WAIT);
+		 *         return POWER_S0S3;
+		 * } */
 
 		/* Call hooks now that rails are up */
 		hook_notify(HOOK_CHIPSET_RESUME);

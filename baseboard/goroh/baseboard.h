@@ -156,6 +156,9 @@
 #define CONFIG_KEYBOARD_PROTOCOL_MKBP
 #define CONFIG_MKBP_USE_GPIO
 
+/* Hack */
+#define CONFIG_POWER_BUTTON_IGNORE_LID
+
 /* Define the host events which are allowed to wakeup AP in S3. */
 #define CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK                   \
 	(EC_HOST_EVENT_MASK(EC_HOST_EVENT_AC_CONNECTED) |    \
