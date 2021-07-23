@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c6077a3_9ee5b86f",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-23T00:28:21Z",
+      "side": 1,
+      "message": "I was thinking to only print it in the set case so as to not mislead people. With the latch in place, even though it could be set to 0, it won\u0027t actually be deasserted on the CBI EEPROM.",
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
