@@ -16,6 +16,7 @@
 #include "keyboard_scan.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "motion_sense.h"
 #include "task.h"
 #include "tablet_mode.h"
 #include "util.h"
@@ -287,6 +288,20 @@ const struct motion_sensor_t *motion_als_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 
+#ifndef BOARD_VOEMA_NPCX796FC
+static bool sensor_not_in_force_mode;
+
+__override bool board_sensor_not_in_force_mode(
+		const struct motion_sensor_t *sensor)
+{
+	if (sensor_not_in_force_mode) {
+		if (!strcasecmp(sensor->name, "Base Accel"))
+			return true;
+	}
+	return false;
+}
+#endif
+
 static void baseboard_sensors_init(void)
 {
 	/* Enable interrupt for the TCS3400 color light sensor */
@@ -301,10 +316,15 @@ static void baseboard_sensors_init(void)
 		gpio_enable_interrupt(GPIO_EC_MB_ACCEL_INT_L);
 		motion_sensors[BASE_ACCEL] = icm_base_accel;
 		motion_sensors[BASE_GYRO] = icm_base_gyro;
+		sensor_not_in_force_mode = true;
 		ccprints("BASE ACCEL/GYRO is ICM426XX");
-	} else
-#endif
+	} else {
+		sensor_not_in_force_mode = false;
 		ccprints("BASE_ACCEL is BMA253");
+	}
+#else
+	ccprints("BASE_ACCEL is BMA253");
+#endif
 
 	if (get_cbi_ssfc_lid_sensor() == SSFC_SENSOR_LID_KX022) {
 		motion_sensors[LID_ACCEL] = kx022_lid_accel;
