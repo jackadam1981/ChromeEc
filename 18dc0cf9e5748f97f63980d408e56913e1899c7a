@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71de0128_501df598",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-07-23T20:04:19Z",
+      "side": 1,
+      "message": "Tasks are getting disabled with this placemnt.\nBut, even if all tasks are enabled also, no: of usb pd ports are managing to run the only relevant pd tasks. so , disabling of tasks is not really relevant.\nAlso , other boards adlrvpp_mchp1727 \u0026 adlrvpp_mchp1521 building will also cause issue as they have  dependency on adlrvp.c file.\nIn case, if this needs to be added, then corresponding bids of mchp boards also will be required to disable tasks.",
+      "range": {
+        "startLine": 395,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 76
+      },
+      "revId": "18dc0cf9e5748f97f63980d408e56913e1899c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

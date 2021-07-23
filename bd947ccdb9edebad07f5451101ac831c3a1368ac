@@ -41,6 +41,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7af3f1dc_35fb41e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-07-23T20:04:19Z",
+      "side": 1,
+      "message": "saw changes w.rt to battery only in code.\nFan config looks same for both P \u0026 M.",
+      "parentUuid": "ad547081_6247acb4",
+      "revId": "bd947ccdb9edebad07f5451101ac831c3a1368ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03f51eae_67fab1a1",
@@ -60,6 +78,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a848d73_83bc5ecb",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-07-23T20:04:19Z",
+      "side": 1,
+      "message": "OK. Without modification in this file, i saw continous I2C resets observed on chnanel 4 \u0026 3 on ADL-M board. So, if we neednot require this file modification, corresponding mica card of M will need pull up to prevent floating.\nAs HW rework was not done \u0026 tested, i have kept this chnage for the time being.\nSo, in that case of removal from this file, is it required to move common\nfunction -__overridable int board_get_i2c_ports_used() from this comon file to chip/it83xx/i2c.c  to be more specific usage by that ec alone..?",
+      "parentUuid": "03f51eae_67fab1a1",
+      "revId": "bd947ccdb9edebad07f5451101ac831c3a1368ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc6eb711_d7d4dc2b",
         "filename": "common/ioexpander.c",
         "patchSetId": 3
@@ -71,6 +107,30 @@
       "writtenOn": "2021-07-21T22:30:36Z",
       "side": 1,
       "message": "need to change this to  \"HOOK_PRIO_INIT_I2C + 2\" so need a overridable function as well",
+      "range": {
+        "startLine": 208,
+        "startChar": 43,
+        "endLine": 208,
+        "endChar": 65
+      },
+      "revId": "bd947ccdb9edebad07f5451101ac831c3a1368ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ef65277_494d82d4",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-07-23T20:04:19Z",
+      "side": 1,
+      "message": "Actually, with DECLARE_HOOK(HOOK_INIT, identify_board_to_reconfigure, HOOK_PRIO_INIT_I2C +1);\nalso, this hook function- ioex_init_default() seems to be called after setting bid variable.\nJust to be sure ioex_init_default() is not called early before tat, now i have moved priority of identify_board_to_reconfigure to HOOK_PRIO_INIT_I2C .\nIsn\u0027t this fine, instead of making chnge in this file, as this file may have other board dependencies?",
+      "parentUuid": "fc6eb711_d7d4dc2b",
       "range": {
         "startLine": 208,
         "startChar": 43,
