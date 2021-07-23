@@ -16,6 +16,7 @@
 #include "keyboard_scan.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "system.h"
 #include "task.h"
 #include "tablet_mode.h"
 #include "util.h"
@@ -277,6 +278,16 @@ const struct motion_sensor_t *motion_als_sensors[] = {
 	&motion_sensors[CLEAR_ALS],
 };
 BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
+
+#ifndef BOARD_VOEMA_NPCX796FC
+int board_accel_force_mode_mask(void)
+{
+	if (system_get_board_version() <= 2)
+		return (BIT(LID_ACCEL) | BIT(CLEAR_ALS) | BIT(BASE_ACCEL));
+	else
+		return (BIT(LID_ACCEL) | BIT(CLEAR_ALS));
+}
+#endif
 
 static void baseboard_sensors_init(void)
 {
