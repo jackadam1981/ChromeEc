@@ -1,6 +1,46 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd440a8_feb543a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-23T01:10:04Z",
+      "side": 1,
+      "message": "We probably need to update https://chromium.googlesource.com/chromiumos/docs/+/master/design_docs/cros_board_info.md.\n\nI also think it\u0027s better to update test/cbi.c (here or in a separate CL).",
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4af6f4fb_746addb3",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-23T01:10:04Z",
+      "side": 1,
+      "message": "nit: Not sure OWN is the best word here. EC can only set it. It owns half of it? I think it\u0027s ok to say CONFIG_EEPROM_CBI_WP and defer the explanation to the comment and cros_board_info.md.",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c6077a3_9ee5b86f",
@@ -14,6 +54,70 @@
       "writtenOn": "2021-07-23T00:28:21Z",
       "side": 1,
       "message": "I was thinking to only print it in the set case so as to not mislead people. With the latch in place, even though it could be set to 0, it won\u0027t actually be deasserted on the CBI EEPROM.",
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a479b626_a1f6a249",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-23T01:10:04Z",
+      "side": 1,
+      "message": "We come here in RO/RW or we latch it only in RO?",
+      "parentUuid": "6c6077a3_9ee5b86f",
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4bef379_737d6c46",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-23T01:10:04Z",
+      "side": 1,
+      "message": "If you use the dependency, we only need to check CONFIG_EC_OWNS_CBI_WP here.",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 38
+      },
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3574f17_9495d907",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5175,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-23T01:10:04Z",
+      "side": 1,
+      "message": "This macro means something iff CONFIG_CBI_EEPROM is defined, right? Why don\u0027t we check it and #error if CONFIG_CBI_EEPROM isn\u0027t defined? And we probably need _EEPROM_ in the name.",
+      "range": {
+        "startLine": 5175,
+        "startChar": 7,
+        "endLine": 5175,
+        "endChar": 28
+      },
       "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
