@@ -120,6 +120,46 @@
       },
       "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ae6008e_b1d88779",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6379,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-23T03:48:19Z",
+      "side": 1,
+      "message": "I think we need to change this as well for the CONFIG_EC_OWNS_CBI_WP",
+      "range": {
+        "startLine": 6379,
+        "startChar": 2,
+        "endLine": 6379,
+        "endChar": 44
+      },
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a18459b_a0fa1224",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-23T03:48:19Z",
+      "side": 1,
+      "message": "remove this line?",
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
