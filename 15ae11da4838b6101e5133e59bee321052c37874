@@ -63,6 +63,30 @@
       },
       "revId": "15ae11da4838b6101e5133e59bee321052c37874",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24aab4ac_88c452b9",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-23T20:48:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "af6ee995_a63c82a1",
+      "range": {
+        "startLine": 595,
+        "startChar": 1,
+        "endLine": 597,
+        "endChar": 35
+      },
+      "revId": "15ae11da4838b6101e5133e59bee321052c37874",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
