@@ -16,6 +16,24 @@
       "message": "if you think you\u0027ll need to be able to reset each TCPC\nindividually, this is probably OK.\n\notherwise, consider resetting both chips at the same time like\nthe original code. it\u0027ll take half as long.",
       "revId": "6a1ad9c07fd91ec8f4b9eba2f38e606fdd472b24",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7e8e92_676ec79d",
+        "filename": "board/redrix/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-07-23T06:20:08Z",
+      "side": 1,
+      "message": "Definitely true. thank you. I changed back to original code.",
+      "parentUuid": "60196a9a_11aa8ac6",
+      "revId": "6a1ad9c07fd91ec8f4b9eba2f38e606fdd472b24",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
