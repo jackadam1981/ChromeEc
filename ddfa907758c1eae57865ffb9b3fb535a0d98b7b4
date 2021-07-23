@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88525c40_fbd3af04",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-23T17:11:33Z",
+      "side": 1,
+      "message": "Okay.  I\u0027d say that if we\u0027re going to check all ports, then we need to have a method to change the active charge port.  Otherwise, it would be less complex to only check the active port even if it means missing out on a better PDO from an inactive port.",
+      "parentUuid": "01773813_b7b13272",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78dd3bc9_cd2af6d9",
         "filename": "common/dps.c",
         "patchSetId": 13
