@@ -47,6 +47,78 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de8ce697_bdb75623",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-07-23T03:18:10Z",
+      "side": 1,
+      "message": "I had amend it",
+      "parentUuid": "3c15dcc3_c877cb54",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "bae6d13cb3b677b95321fa455252a60b496d7520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05c455de_df59124b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-07-23T03:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2d99d6f_c3e6f046",
+      "range": {
+        "startLine": 9,
+        "startChar": 52,
+        "endLine": 9,
+        "endChar": 54
+      },
+      "revId": "bae6d13cb3b677b95321fa455252a60b496d7520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "579451b7_3c7761e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-07-23T03:18:10Z",
+      "side": 1,
+      "message": "I had amend it.Pls review. 😊",
+      "parentUuid": "3c15dcc3_c877cb54",
+      "range": {
+        "startLine": 9,
+        "startChar": 40,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "bae6d13cb3b677b95321fa455252a60b496d7520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ac166a2_4907d785",
@@ -60,6 +132,30 @@
       "writtenOn": "2021-07-22T16:40:06Z",
       "side": 1,
       "message": "Please a comment to explain why.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 6
+      },
+      "revId": "bae6d13cb3b677b95321fa455252a60b496d7520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef053d9_f4e02dba",
+        "filename": "board/homestar/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-07-23T03:18:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ac166a2_4907d785",
       "range": {
         "startLine": 62,
         "startChar": 0,
