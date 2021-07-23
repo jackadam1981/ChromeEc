@@ -12,7 +12,9 @@
 #include "common.h"
 #include "console.h"
 #include "cros_version.h"
+#include "gpio.h"
 #include "system.h"
+#include "util.h"
 #include "watchdog.h"
 
 #define BBRAM_REGION_PD0	DT_PATH(named_bbram_regions, pd0)
@@ -320,3 +322,79 @@ static int system_preinitialize(const struct device *unused)
 
 SYS_INIT(system_preinitialize, PRE_KERNEL_1,
 	 CONFIG_PLATFORM_EC_SYSTEM_PRE_INIT_PRIORITY);
+
+#define READ_PIN_FROM_PHANDLE(node_id, prop, idx) \
+	gpio_get_ternary(GPIO_SIGNAL(DT_PHANDLE_BY_IDX(node_id, prop, idx))),
+
+#define CONVERT_FUNCTION_EVAL(system, bits, nbits) \
+	system##_from_bits(bits, nbits)
+#define CONVERT_FUNCTION(system, bits, nbits) \
+	CONVERT_FUNCTION_EVAL(system, bits, nbits)
+
+__override uint32_t board_get_sku_id(void)
+{
+	static uint32_t sku_id = (uint32_t)-1;
+
+	if (sku_id == (uint32_t)-1) {
+		int bits[] = {
+#if DT_NODE_EXISTS(DT_PATH(sku))
+			DT_FOREACH_PROP_ELEM(DT_PATH(sku),
+					bits,
+					READ_PIN_FROM_PHANDLE)
+#endif
+		};
+
+		if (sizeof(bits) == 0)
+			return (uint32_t)-1;
+
+		sku_id = CONVERT_FUNCTION(DT_ENUM_TOKEN(DT_PATH(sku), system),
+				bits,
+				ARRAY_SIZE(bits));
+	}
+
+	return sku_id;
+}
+
+int command_sku(int argc, char *argv[])
+{
+	uint32_t sku_id = system_get_sku_id();
+
+	ccprintf("SKU ID: %d\n", (int)sku_id);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(sku, command_sku, "", "");
+
+__override int board_get_version(void)
+{
+	static int board_version = -1;
+
+	if (board_version == -1) {
+		int bits[] = {
+#if DT_NODE_EXISTS(DT_PATH(sku))
+			DT_FOREACH_PROP_ELEM(DT_PATH(board),
+					bits,
+					READ_PIN_FROM_PHANDLE)
+#endif
+		};
+
+		if (sizeof(bits) == 0)
+			return -1;
+
+		board_version = CONVERT_FUNCTION(
+					DT_ENUM_TOKEN(DT_PATH(board), system),
+					bits,
+					ARRAY_SIZE(bits)
+				);
+	}
+
+	return board_version;
+}
+
+int command_board(int argc, char *argv[])
+{
+	int board_version = system_get_board_version();
+
+	ccprintf("Board version: %d\n", board_version);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(board, command_board, "", "");

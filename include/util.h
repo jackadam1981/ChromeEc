@@ -336,7 +336,7 @@ void wait_for_ready(volatile uint32_t *reg, uint32_t enable, uint32_t ready);
  * the normal ternary system order (skipping the values that were already used
  * up).
  *
- * This function is useful for converting BOARd ID, which is initially used a
+ * This function is useful for converting BOARD ID, which is initially used a
  * binary and later decided to switch to tri-state after some revisions have
  * already been built.
  *
@@ -358,6 +358,10 @@ void wait_for_ready(volatile uint32_t *reg, uint32_t enable, uint32_t ready);
  * @return Number in the binary-first ternary number system.
  */
 int binary_first_base3_from_bits(int *bits, int nbits);
+
+int binary_from_bits(int *bits, int nbits);
+
+int ternary_from_bits(int *bits, int nbits);
 
 #ifdef __cplusplus
 }
