@@ -19,9 +19,14 @@
 #define CONFIG_HOSTCMD_ESPI
 #undef CONFIG_CMD_MFALLOW
 
-
 #undef CONFIG_UART_TX_BUF_SIZE
 #define CONFIG_UART_TX_BUF_SIZE 4096
+
+/* Reduce flash usage */
+#undef  CONFIG_CMD_ACCELSPOOF
+#undef  CONFIG_CMD_CHARGER_DUMP
+#undef  CONFIG_CMD_PPC_DUMP
+#define CONFIG_USB_PD_DEBUG_LEVEL 2
 
 /* Keyboard features */
 #define CONFIG_PWM_KBLIGHT
