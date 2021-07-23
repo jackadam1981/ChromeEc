@@ -29,7 +29,7 @@
 #define GPIO_USB2_ILIM_SEL IOEX_USB_A1_CHARGE_EN_DB_L
 
 /* LED */
-#undef CONFIG_LED_ONOFF_STATE
+#undef CONFIG_LED_ONOFF_STATES
 
 /* GPIO mapping from board specific name to EC common name. */
 #define CONFIG_BATTERY_PRESENT_GPIO	GPIO_EC_BATT_PRES_ODL
