@@ -180,27 +180,39 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 	return EC_SUCCESS;
 }
 
-void board_reset_pd_mcu(void)
+static void reset_nct38xx_port(int port)
 {
-	/*
-	 * TODO(b/193461268): figure out correct timing
-	 */
+	enum gpio_signal reset_gpio;
 
-	gpio_set_level(GPIO_USB_C0_TCPC_RST_ODL, 0);
-	gpio_set_level(GPIO_USB_C1_TCPC_RST_ODL, 0);
+	if (port == USBC_PORT_C0)
+		reset_gpio = GPIO_USB_C0_TCPC_RST_ODL;
+	else if (port == USBC_PORT_C1)
+		reset_gpio = GPIO_USB_C1_TCPC_RST_ODL;
+	else
+		/* Invalid port: do nothing */
+		return;
+
+	gpio_set_level(reset_gpio, 0);
 
 	/*
 	 * delay for power-on to reset-off and min. assertion time
 	 */
-
-	msleep(20);
-
-	gpio_set_level(GPIO_USB_C0_TCPC_RST_ODL, 1);
-	gpio_set_level(GPIO_USB_C1_TCPC_RST_ODL, 1);
+	msleep(NCT38XX_RESET_HOLD_DELAY_MS);
+	gpio_set_level(reset_gpio, 1);
+	nct38xx_reset_notify(port);
 
 	/* wait for chips to come up */
+	if (NCT38XX_RESET_POST_DELAY_MS != 0)
+		msleep(NCT38XX_RESET_POST_DELAY_MS);
+}
 
-	msleep(50);
+void board_reset_pd_mcu(void)
+{
+	/* Reset TCPC0 */
+	reset_nct38xx_port(USBC_PORT_C0);
+
+	/* Reset TCPC1 */
+	reset_nct38xx_port(USBC_PORT_C1);
 }
 
 static void board_tcpc_init(void)
