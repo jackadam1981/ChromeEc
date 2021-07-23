@@ -16,6 +16,7 @@
 #include "keyboard_scan.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "motion_sense.h"
 #include "system.h"
 #include "task.h"
 #include "tablet_mode.h"
@@ -311,6 +312,18 @@ const struct motion_sensor_t *motion_als_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(motion_als_sensors) == ALS_COUNT);
 
+static bool sensor_not_in_force_mode;
+
+__override bool board_sensor_not_in_force_mode(
+		const struct motion_sensor_t *sensor)
+{
+	if (sensor_not_in_force_mode) {
+		if (!strcasecmp(sensor->name, "Base Accel"))
+			return true;
+	}
+	return false;
+}
+
 static void baseboard_sensors_init(void)
 {
 	/* Enable interrupt for the TCS3400 color light sensor */
@@ -325,6 +338,7 @@ static void baseboard_sensors_init(void)
 		motion_sensor_count = SENSOR_COUNT - 1;
 		motion_sensors[BASE_ACCEL] = bma255_base_accel;
 		gpio_disable_interrupt(GPIO_EC_MB_ACCEL_INT_L);
+		sensor_not_in_force_mode = false;
 #endif
 		ccprints("BASE_ACCEL is BMA253");
 	} else {
@@ -332,8 +346,10 @@ static void baseboard_sensors_init(void)
 		 * TODO: If a SSFC for the base sensor is added, add the check
 		 * here.
 		 */
-		if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_BASE_ICM426XX)
+		if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_BASE_ICM426XX) {
+			sensor_not_in_force_mode = true;
 			ccprints("BASE GYRO is ICM426XX");
+		}
 	}
 
 	if (get_cbi_ssfc_lid_sensor() == SSFC_SENSOR_LID_KX022) {
