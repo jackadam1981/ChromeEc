@@ -66,14 +66,18 @@ static int set_temp(const int offset, int temp)
 }
 #endif
 
-int g753_get_val(int idx, int *temp_ptr)
+int g753_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	if (!has_power())
 		return EC_ERROR_NOT_POWERED;
 
+	/* Millikelvin is not supported */
+	if (temp_mk_ptr != NULL)
+		return EC_ERROR_INVAL;
+
 	switch (idx) {
 	case G753_IDX_INTERNAL:
-		*temp_ptr = temp_val_local;
+		*temp_k_ptr = temp_val_local;
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;

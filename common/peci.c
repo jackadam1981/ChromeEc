@@ -49,9 +49,13 @@ static int peci_get_cpu_temp(int *cpu_temp)
 	return EC_SUCCESS;
 }
 
-int peci_temp_sensor_get_val(int idx, int *temp_ptr)
+int peci_temp_sensor_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	int i, rv;
+
+	/* Millikelvin is not supported */
+	if (temp_mk_ptr != NULL)
+		return EC_ERROR_INVAL;
 
 	if (!chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_STANDBY))
 		return EC_ERROR_NOT_POWERED;
@@ -61,7 +65,7 @@ int peci_temp_sensor_get_val(int idx, int *temp_ptr)
 	 * invalid or failed to obtain.
 	 */
 	for (i = 0; i < 2; i++) {
-		rv = peci_get_cpu_temp(temp_ptr);
+		rv = peci_get_cpu_temp(temp_k_ptr);
 		if (!rv)
 			break;
 	}

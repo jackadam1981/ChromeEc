@@ -41,7 +41,7 @@ const struct power_signal_info power_signal_list[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(power_signal_list) == POWER_SIGNAL_COUNT);
 
-int board_get_temp(int idx, int *temp_k)
+int board_get_temp(int idx, int *temp_k, int *temp_mk)
 {
 	int mv;
 	int temp_c;

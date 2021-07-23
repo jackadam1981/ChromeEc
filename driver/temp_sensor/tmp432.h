@@ -107,11 +107,14 @@ enum tmp432_channel_id {
  *
  * @param idx		Index to read. Idx indicates whether to read die
  *			temperature or external temperature.
- * @param temp_ptr	Destination for temperature in K.
+ * @param temp_k_ptr	Destination for temperature in K.
+ * @param temp_mk_ptr	Optional destination for temperature in mK.
+ *			Leave NULL if not required.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
+ *	   EC_ERROR_INVAL if temp_mk_ptr not NULL and mK not supported.
  */
-int tmp432_get_val(int idx, int *temp_ptr);
+int tmp432_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr);
 
 /**
  * Power control function of tmp432 temperature sensor.

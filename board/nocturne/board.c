@@ -581,7 +581,7 @@ void board_overcurrent_event(int port, int is_overcurrented)
 	};
 }
 
-static int read_gyro_sensor_temp(int idx, int *temp_ptr)
+static int read_gyro_sensor_temp(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	/*
 	 * The gyro is only powered in S0, so don't go and read it if the AP is
@@ -590,7 +590,7 @@ static int read_gyro_sensor_temp(int idx, int *temp_ptr)
 	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
 		return EC_ERROR_NOT_POWERED;
 
-	return bmi160_get_sensor_temp(idx, temp_ptr);
+	return bmi160_get_sensor_temp(idx, temp_k_ptr, temp_mk_ptr);
 }
 
 const struct temp_sensor_t temp_sensors[] = {

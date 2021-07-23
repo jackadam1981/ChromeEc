@@ -533,12 +533,16 @@ static const struct thermistor_info thermistor_info = {
 	.data = thermistor_data,
 };
 
-static int board_get_temp(int idx, int *temp_k)
+static int board_get_temp(int idx, int *temp_k, int *temp_mk)
 {
 	/* idx is the sensor index set below in temp_sensors[] */
 	int mv = adc_read_channel(
 		idx ? ADC_TEMP_SENSOR_SOC : ADC_TEMP_SENSOR_CHARGER);
 	int temp_c;
+
+	/* Millikelvin is not supported */
+	if (temp_mk != NULL)
+		return EC_ERROR_INVAL;
 
 	if (mv < 0)
 		return -1;

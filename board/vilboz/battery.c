@@ -413,7 +413,7 @@ int charger_profile_override(struct charge_state_data *curr)
 
 	current = curr->requested_current;
 
-	rv = temp_sensor_read(TEMP_SENSOR_CHARGER, &thermal_sensor0);
+	rv = temp_sensor_read_k(TEMP_SENSOR_CHARGER, &thermal_sensor0);
 	chg_temp_c = K_TO_C(thermal_sensor0);
 
 	if (rv != EC_SUCCESS)

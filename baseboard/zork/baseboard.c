@@ -269,7 +269,7 @@ void board_print_temps(void)
 
 	cprintf(CC_THERMAL, "[%pT ", PRINTF_TIMESTAMP_NOW);
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
-		rv = temp_sensor_read(i, &t);
+		rv = temp_sensor_read_k(i, &t);
 		if (rv == EC_SUCCESS)
 			cprintf(CC_THERMAL, "%s=%dK (%dC) ",
 				temp_sensors[i].name, t, K_TO_C(t));

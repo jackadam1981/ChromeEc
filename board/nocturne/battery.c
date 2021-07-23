@@ -125,7 +125,7 @@ static int should_stopcharge(void)
 	 * temperature.
 	 */
 	if (chipset_in_state(CHIPSET_STATE_ON) &&
-	    !temp_sensor_read(TEMP_SENSOR_DRAM, &t_dram) &&
+	    !temp_sensor_read_k(TEMP_SENSOR_DRAM, &t_dram) &&
 	    (t_dram >= DRAM_STOPCHARGE_TEMP_K))
 		return 1;
 	else

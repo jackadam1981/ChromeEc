@@ -343,7 +343,7 @@ static void board_chipset_startup(void)
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_chipset_startup,
 	     HOOK_PRIO_DEFAULT);
 
-int board_get_soc_temp(int idx, int *temp_k)
+int board_get_soc_temp(int idx, int *temp_k, int *temp_mk)
 {
 	uint32_t board_version = get_board_version();
 
@@ -351,9 +351,10 @@ int board_get_soc_temp(int idx, int *temp_k)
 		return EC_ERROR_NOT_POWERED;
 
 	if (board_version == 1)
-		return get_temp_3v3_30k9_47k_4050b(ADC_TEMP_SENSOR_SOC, temp_k);
+		return get_temp_3v3_30k9_47k_4050b(ADC_TEMP_SENSOR_SOC, temp_k,
+						   temp_mk);
 
-	return tmp112_get_val(idx, temp_k);
+	return tmp112_get_val(idx, temp_k, temp_mk);
 }
 
 #ifndef TEST_BUILD

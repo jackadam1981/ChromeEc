@@ -33,8 +33,15 @@ struct temp_sensor_t {
 	const char *name;
 	/* Temperature sensor type. */
 	enum temp_sensor_type type;
-	/* Read sensor value in K into temp_ptr; return non-zero if error. */
-	int (*read)(int idx, int *temp_ptr);
+	/*
+	 * Read sensor value in mK into temp_ptk and mK in temp_mk_ptr.
+	 * Leave temp_mk_ptr NULL if not required.
+	 * Returns 0 on success, non-zero on error.
+	 * Returns EC_ERROR_INVAL if temp_mk_ptr is not NULL and mK is not
+	 * supported by sensor.
+	 * Sensor must support > 1 K resolution for mK support.
+	 */
+	int (*read)(int idx, int *temp_k_ptr, int *temp_mk_ptr);
 	/* Index among the same kind of sensors. */
 	int idx;
 };
@@ -51,11 +58,25 @@ extern const struct temp_sensor_t temp_sensors[];
  * Get the most recently measured temperature (in degrees K) for the sensor.
  *
  * @param id		Sensor ID
- * @param temp_ptr	Destination for temperature
+ * @param temp_k_ptr	Destination for temperature in degrees K
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr);
+int temp_sensor_read_k(enum temp_sensor_id id, int *temp_k_ptr);
+
+/**
+ * Get the most recently measured temperature (in degrees millikelivn) for
+ * the sensor.
+ *
+ * @param id		Sensor ID
+ * @param temp_k_ptr	Destination for temperature in kelvin.
+ * @param temp_mk_ptr	Optional destination for temperature in mK.
+ *			Leave NULL if not required.
+ *
+ * @return EC_SUCCESS if successful, non-zero if error.
+ *	   EC_ERROR_INVAL if temp_mk_ptr not NULL and mK not supported.
+ */
+int temp_sensor_read_mk(enum temp_sensor_id id, int *temp_mk_ptr);
 
 /**
  * Console command to print temperature sensor values

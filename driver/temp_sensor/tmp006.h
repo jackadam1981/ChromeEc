@@ -34,10 +34,13 @@ extern const struct tmp006_t tmp006_sensors[];
  * @param idx		Index to read.  The low bit in idx indicates whether
  *			to read die temperature or object temperature.  The
  *			other bits serve as internal index to tmp006 module.
- * @param temp_ptr	Destination for temperature in K.
+ * @param temp_k_ptr	Destination for temperature in K.
+ * @param temp_mk_ptr	Optional destination for temperature in mK.
+ *			Leave NULL if not required.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
+ *	   EC_ERROR_INVAL if temp_mk_ptr not NULL and mK not supported.
  */
-int tmp006_get_val(int idx, int *temp_ptr);
+int tmp006_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr);
 
 #endif  /* __CROS_EC_TMP006_H */

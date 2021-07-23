@@ -37,10 +37,13 @@
  * Get the value of a sensor in K.
  *
  * @param idx		Index to read. Only 0 is valid for sb_tsi.
- * @param temp_ptr	Destination for temperature in K.
+ * @param temp_k_ptr	Destination for temperature in K.
+ * @param temp_mk_ptr	Optional destination for temperature in mK.
+ *			Leave NULL if not required.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
+ *	   EC_ERROR_INVAL if temp_mk_ptr not NULL and mK not supported.
  */
-int sb_tsi_get_val(int idx, int *temp_ptr);
+int sb_tsi_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr);
 
 #endif  /* __CROS_EC_SB_TSI_H */

@@ -70,12 +70,16 @@ static inline int tmp112_reg_to_c(int16_t reg)
 	return tmp / 1000;
 }
 
-int tmp112_get_val(int idx, int *temp_ptr)
+int tmp112_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
+	/* Millikelvin is not supported */
+	if (temp_mk_ptr != NULL)
+		return EC_ERROR_INVAL;
+
 	if (idx >= TMP112_COUNT)
 		return EC_ERROR_INVAL;
 
-	*temp_ptr = temp_val_local[idx];
+	*temp_k_ptr = temp_val_local[idx];
 	return EC_SUCCESS;
 }
 
