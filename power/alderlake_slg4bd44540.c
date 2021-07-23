@@ -194,6 +194,7 @@ static void all_sys_pwrgd_pass_thru(void)
 		CPRINTS("SEQ_EC_ALL_SYS_PG is %d", sys_pg);
 
 	if (sys_pg == 0) {
+		CPRINTS("[SC] SEQ_EC_ALL_SYS_PG is 0, ap_off");
 		ap_off();
 		return;
 	}
@@ -223,16 +224,20 @@ static void all_sys_pwrgd_pass_thru(void)
 	/* Enable PCH_SYS_PWROK. */
 
 	sys_pok = gpio_get_level(GPIO_EC_PCH_SYS_PWROK);
+	CPRINTS("[SC] get EC_PCH_SYS_PWROK=%d", gpio_get_level(GPIO_EC_PCH_SYS_PWROK));
 	if (sys_pok == 0) {
 		msleep(SYS_PWROK_DELAY_MS);
+		CPRINTS("[SC] if EC_PCH_SYS_PWROK=0, delay 45ms");
 		/* Check if we lost power while waiting. */
 		sys_pg = gpio_get_level(GPIO_SEQ_EC_ALL_SYS_PG);
+		CPRINTS("[SC] get SEQ_EC_ALL_SYS_PG=%d", gpio_get_level(GPIO_SEQ_EC_ALL_SYS_PG));
 		if (sys_pg == 0) {
 			CPRINTS("SEQ_EC_ALL_SYS_PG deasserted, "
 				"shutting AP off!");
 			ap_off();
 			return;
 		}
+		CPRINTS("[SC] set EC_PCH_SYS_PWROK=1");
 		GPIO_SET_LEVEL(GPIO_EC_PCH_SYS_PWROK, 1);
 		/* PCH will now release PLT_RST */
 	}
