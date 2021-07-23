@@ -433,3 +433,52 @@ static void board_chipset_resume(void)
 		pwm_enable(PWM_CH_DISPLIGHT, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+__override int board_get_version(void)
+{
+	static int brd_id = -1;
+
+	if (brd_id == -1) {
+		int bits[3];
+
+		bits[0] = gpio_get_ternary(GPIO_BOARD_VERSION1);
+		bits[1] = gpio_get_ternary(GPIO_BOARD_VERSION2);
+		bits[2] = gpio_get_ternary(GPIO_BOARD_VERSION3);
+		brd_id = binary_first_base3_from_bits(bits, ARRAY_SIZE(bits));
+	}
+	return brd_id;
+}
+
+int command_board(int argc, char *argv[])
+{
+	int board_id = system_get_board_version();
+
+	ccprintf("Board ID: %d\n", board_id);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(board, command_board, "", "");
+
+__override uint32_t board_get_sku_id(void)
+{
+	int sku_id = -1;
+
+	if (sku_id == -1) {
+		int bits[3];
+
+		bits[0] = gpio_get_ternary(GPIO_SKU_ID0);
+		bits[1] = gpio_get_ternary(GPIO_SKU_ID1);
+		bits[2] = gpio_get_ternary(GPIO_SKU_ID2);
+		sku_id = binary_first_base3_from_bits(bits, ARRAY_SIZE(bits));
+	}
+
+	return (uint32_t)sku_id;
+}
+
+int command_sku(int argc, char *argv[])
+{
+	uint32_t sku_id = system_get_sku_id();
+
+	ccprintf("SKU ID: %d\n", (int)sku_id);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(sku, command_sku, "", "");
