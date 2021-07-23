@@ -12,6 +12,7 @@
 #include "accelgyro.h"
 #include "console.h"
 #include "accelgyro_bmi_common.h"
+#include "driver/accelgyro_bmi220.h"
 #include "mag_bmm150.h"
 #include "mag_lis2mdl.h"
 #include "i2c.h"
@@ -24,15 +25,15 @@
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
 #if !defined(CONFIG_ACCELGYRO_BMI160) && !defined(CONFIG_ACCELGYRO_BMI260) \
-&& !defined(CONFIG_ACCELGYRO_BMI3XX)
-#error "Must use following sensors BMI160 BMI260 BMI3XX"
+&& !defined(CONFIG_ACCELGYRO_BMI3XX) && !defined(CONFIG_ACCELGYRO_BMI220)
+#error "Must use following sensors BMI160 BMI220 BMI260 BMI3XX"
 #endif
 
 #if defined(CONFIG_ACCELGYRO_BMI260) && !defined(CONFIG_ACCELGYRO_BMI160)
 #define V(s_) 1
 #elif defined(CONFIG_ACCELGYRO_BMI160) && !defined(CONFIG_ACCELGYRO_BMI260)
 #define V(s_) 0
-#else
+#elif defined(CONFIG_ACCELGYRO_BMI220)
 #define V(s_) ((s_)->chip == MOTIONSENSE_CHIP_BMI260)
 #endif
 /* Index for which table to use. */
@@ -56,6 +57,12 @@ const struct bmi_accel_param_pair g_ranges[][4] = {
 	  {8,  BMI260_GSEL_8G},
 	  {16, BMI260_GSEL_16G} },
 #endif
+#ifdef CONFIG_ACCELGYRO_BMI220
+	{ {2,  BMI220_GSEL_2G},
+	  {4,  BMI220_GSEL_4G},
+	  {8,  BMI220_GSEL_8G},
+	  {16, BMI220_GSEL_16G} },
+#endif
 };
 
 /*
@@ -76,6 +83,13 @@ const struct bmi_accel_param_pair dps_ranges[][5] = {
 	  {500,  BMI260_DPS_SEL_500},
 	  {1000, BMI260_DPS_SEL_1000},
 	  {2000, BMI260_DPS_SEL_2000} },
+#endif
+#ifdef CONFIG_ACCELGYRO_BMI220
+	{ {125,  BMI220_DPS_SEL_125},
+	  {250,  BMI220_DPS_SEL_250},
+	  {500,  BMI220_DPS_SEL_500},
+	  {1000, BMI220_DPS_SEL_1000},
+	  {2000, BMI220_DPS_SEL_2000} },
 #endif
 };
 
