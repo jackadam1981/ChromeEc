@@ -89,11 +89,17 @@ static int init_sensor_mutex(const struct device *dev)
 }
 SYS_INIT(init_sensor_mutex, POST_KERNEL, 50);
 #endif /* CONFIG_ZEPHYR */
-
+__overridable bool board_sensor_not_in_force_mode(
+		const struct motion_sensor_t *sensor)
+{
+	return false;
+}
 static inline int motion_sensor_in_forced_mode(
 		const struct motion_sensor_t *sensor)
 {
 #ifdef CONFIG_ACCEL_FORCE_MODE_MASK
+	if (board_sensor_not_in_force_mode(sensor))
+		return 0;
 	/* Sensor not in force mode, its irq_handler is getting data. */
 	if (!(CONFIG_ACCEL_FORCE_MODE_MASK & (1 << (sensor - motion_sensors))))
 		return 0;

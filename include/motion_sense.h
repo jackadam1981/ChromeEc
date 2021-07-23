@@ -294,6 +294,9 @@ int sensor_init_done(struct motion_sensor_t *sensor);
  */
 void sensor_board_proc_double_tap(void);
 
+__override_proto bool board_sensor_not_in_force_mode(
+		const struct motion_sensor_t *sensor);
+
 /*
  * There are 4 variables that represent the number of sensors:
  * SENSOR_COUNT: The number of available motion sensors in board.
