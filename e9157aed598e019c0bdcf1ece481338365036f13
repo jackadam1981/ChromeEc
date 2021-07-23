@@ -34,6 +34,24 @@
       "parentUuid": "35e0d7c5_77dfd478",
       "revId": "e9157aed598e019c0bdcf1ece481338365036f13",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30b2083_9ab88872",
+        "filename": "include/temp_sensor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-23T22:48:30Z",
+      "side": 1,
+      "message": "Here\u0027s the alternative approach you suggested, PTAL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3050271",
+      "parentUuid": "22fedd50_f2c0dee2",
+      "revId": "e9157aed598e019c0bdcf1ece481338365036f13",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
