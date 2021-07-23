@@ -22,12 +22,12 @@
 #define ADC_DEVICE_NODE		DT_NODELABEL(adc0)
 #define ADC_CHANNELS_NUM	DT_PROP(DT_NODELABEL(adc0), nchannels)
 
-/** Test error code when invalid sensor is passed to temp_sensor_read() */
+/** Test error code when invalid sensor is passed to temp_sensor_read_k() */
 static void test_temp_sensor_wrong_id(void)
 {
 	int temp;
 
-	zassert_equal(EC_ERROR_INVAL, temp_sensor_read(TEMP_SENSOR_COUNT,
+	zassert_equal(EC_ERROR_INVAL, temp_sensor_read_k(TEMP_SENSOR_COUNT,
 						       &temp),
 		      NULL);
 }

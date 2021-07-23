@@ -21,14 +21,17 @@ static int oti502_read_block(const int offset, uint8_t *data, int len)
 			 offset, data, len);
 }
 
-int oti502_get_val(int idx, int *temp_ptr)
+int oti502_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
+	/* Millikelvin is not supported */
+	*temp_mk_ptr = -1;
+
 	switch (idx) {
 	case OTI502_IDX_AMBIENT:
-		*temp_ptr = temp_val_ambient;
+		*temp_k_ptr = temp_val_ambient;
 		break;
 	case OTI502_IDX_OBJECT:
-		*temp_ptr = temp_val_object;
+		*temp_k_ptr = temp_val_object;
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;

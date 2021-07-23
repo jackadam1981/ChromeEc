@@ -611,11 +611,14 @@ const struct fan_t fans[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(fans) == FAN_CH_COUNT);
 
-int board_get_temp(int idx, int *temp_k)
+int board_get_temp(int idx, int *temp_k, int *temp_mk)
 {
 	int mv;
 	int temp_c;
 	enum adc_channel channel;
+
+	/* Millikelvin is not supported */
+	*temp_mk = -1;
 
 	/* idx is the sensor index set in board temp_sensors[] */
 	switch (idx) {

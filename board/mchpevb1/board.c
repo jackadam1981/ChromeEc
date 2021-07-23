@@ -86,8 +86,8 @@
  */
 static int smart_batt_temp;
 static int ds1624_temp;
-static int sb_temp(int idx, int *temp_ptr);
-static int ds1624_get_val(int idx, int *temp_ptr);
+static int sb_temp(int idx, int *temp_k_ptr, int *temp_mk_ptr);
+static int ds1624_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr);
 static void board_spi_enable(void);
 static void board_spi_disable(void);
 
@@ -380,14 +380,18 @@ void board_reset_pd_mcu(void)
 /*
  *
  */
-static int therm_get_val(int idx, int *temp_ptr)
+static int therm_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
-	if (temp_ptr != NULL) {
-		*temp_ptr = adc_read_channel(idx);
-		return EC_SUCCESS;
-	}
+	if (temp_k_ptr == NULL)
+		return EC_ERROR_PARAM2;
+	if (temp_mk_ptr == NULL)
+		return EC_ERROR_PARAM3;
 
-	return EC_ERROR_PARAM2;
+	/* Millikelvin is not supported */
+	*temp_mk_ptr = -1;
+	*temp_k_ptr = adc_read_channel(idx);
+
+	return EC_SUCCESS;
 }
 
 #ifdef CONFIG_TEMP_SENSOR
@@ -770,28 +774,38 @@ static void board_handle_reboot(void)
 DECLARE_HOOK(HOOK_INIT, board_handle_reboot, HOOK_PRIO_FIRST);
 
 
-static int sb_temp(int idx, int *temp_ptr)
+static int sb_temp(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	if (idx != 0)
 		return EC_ERROR_PARAM1;
 
-	if (temp_ptr == NULL)
+	if (temp_k_ptr == NULL)
 		return EC_ERROR_PARAM2;
 
-	*temp_ptr = smart_batt_temp;
+	if (temp_mk_ptr == NULL)
+		return EC_ERROR_PARAM3;
+
+	/* Millikelvin is not supported */
+	*temp_mk_ptr = -1;
+
+	*temp_k_ptr = smart_batt_temp;
 
 	return EC_SUCCESS;
 }
 
-static int ds1624_get_val(int idx, int *temp_ptr)
+static int ds1624_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	if (idx != 0)
 		return EC_ERROR_PARAM1;
 
-	if (temp_ptr == NULL)
+	if (temp_k_ptr == NULL)
 		return EC_ERROR_PARAM2;
+	if (temp_mk_ptr == NULL)
+		return EC_ERROR_PARAM3;
 
-	*temp_ptr = ds1624_temp;
+	/* Millikelvin is not supported */
+	*temp_mk_ptr = -1;
+	*temp_k_ptr = ds1624_temp;
 
 	return EC_SUCCESS;
 }

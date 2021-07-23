@@ -89,7 +89,7 @@ static void current_update(void)
 	static int Uptime;
 	static int Dntime;
 
-	rv = temp_sensor_read(TEMP_SENSOR_CHARGER, &t);
+	rv = temp_sensor_read_k(TEMP_SENSOR_CHARGER, &t);
 	if (rv != EC_SUCCESS)
 		return;
 

@@ -35,9 +35,11 @@ extern const struct tmp006_t tmp006_sensors[];
  *			to read die temperature or object temperature.  The
  *			other bits serve as internal index to tmp006 module.
  * @param temp_ptr	Destination for temperature in K.
+ * @param temp_mk_ptr	Destination for temperature in Millikelvin.
+ *			Set to -1 if millikelivn is not supported.
  *
  * @return EC_SUCCESS if successful, non-zero if error.
  */
-int tmp006_get_val(int idx, int *temp_ptr);
+int tmp006_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr);
 
 #endif  /* __CROS_EC_TMP006_H */

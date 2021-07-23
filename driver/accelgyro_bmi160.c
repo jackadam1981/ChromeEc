@@ -784,7 +784,9 @@ struct i2c_stress_test_dev bmi160_i2c_stress_test_dev = {
  * TODO(chingkang): Replace bmi160_get_sensor_temp in some board config to
  *                  bmi_get_sensor_temp. Then, remove this definition.
  */
-int bmi160_get_sensor_temp(int idx, int *temp_ptr)
+int bmi160_get_sensor_temp(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
-	return bmi_get_sensor_temp(idx, temp_ptr);
+	/* Millikelvin is not supported */
+	*temp_mk_ptr = -1;
+	return bmi_get_sensor_temp(idx, temp_k_ptr);
 }

@@ -542,16 +542,17 @@ static const struct thermistor_info charger_thermistor_info = {
 	.data = charger_thermistor_data,
 };
 
-int board_get_charger_temp(int idx, int *temp_ptr)
+int board_get_charger_temp(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	int mv = adc_read_channel(MCHP_ADC_CH(0));
 
 	if (mv < 0)
 		return -1;
-
-	*temp_ptr = thermistor_linear_interpolate(mv,
+	/* Millikelvin is not supported */
+	*temp_mk_ptr = -1;
+	*temp_k_ptr = thermistor_linear_interpolate(mv,
 		&charger_thermistor_info);
-	*temp_ptr = C_TO_K(*temp_ptr);
+	*temp_k_ptr = C_TO_K(*temp_k_ptr);
 	return 0;
 }
 
@@ -583,16 +584,16 @@ static const struct thermistor_info amb_thermistor_info = {
 	.data = amb_thermistor_data,
 };
 
-int board_get_ambient_temp(int idx, int *temp_ptr)
+int board_get_ambient_temp(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	int mv = adc_read_channel(MCHP_ADC_CH(1));
 
 	if (mv < 0)
 		return -1;
-
-	*temp_ptr = thermistor_linear_interpolate(mv,
-		&amb_thermistor_info);
-	*temp_ptr = C_TO_K(*temp_ptr);
+	/* Millikelvin is not supported */
+	*temp_mk_ptr = -1;
+	*temp_k_ptr = thermistor_linear_interpolate(mv, &amb_thermistor_info);
+	*temp_k_ptr = C_TO_K(*temp_k_ptr);
 	return 0;
 }
 

@@ -19,12 +19,14 @@ static void chip_temp_sensor_poll(void)
 }
 DECLARE_HOOK(HOOK_SECOND, chip_temp_sensor_poll, HOOK_PRIO_TEMP_SENSOR);
 
-int chip_temp_sensor_get_val(int idx, int *temp_ptr)
+int chip_temp_sensor_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	if (last_val == ADC_READ_ERROR)
 		return EC_ERROR_UNKNOWN;
 
-	*temp_ptr = last_val;
+	/* Millikelvin is not supported */
+	*temp_mk_ptr = -1;
+	*temp_k_ptr = last_val;
 
 	return EC_SUCCESS;
 }

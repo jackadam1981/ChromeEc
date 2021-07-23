@@ -139,7 +139,7 @@ static void thermal_control_dptf(void)
 
 	/* go through all the sensors */
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
-		rv = temp_sensor_read(i, &t);
+		rv = temp_sensor_read_k(i, &t);
 		if (rv != EC_SUCCESS)
 			continue;
 		else

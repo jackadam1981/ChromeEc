@@ -9,6 +9,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "host_command.h"
+#include "math_util.h"
 #include "task.h"
 #include "temp_sensor.h"
 #include "thermal.h"
@@ -19,15 +20,31 @@
 #include "temp_sensor/temp_sensor.h"
 #endif
 
-int temp_sensor_read(enum temp_sensor_id id, int *temp_ptr)
+int temp_sensor_read_k(enum temp_sensor_id id, int *temp_k_ptr)
 {
 	const struct temp_sensor_t *sensor;
+	int temp_mk_unused;
 
 	if (id < 0 || id >= TEMP_SENSOR_COUNT)
 		return EC_ERROR_INVAL;
 	sensor = temp_sensors + id;
 
-	return sensor->read(sensor->idx, temp_ptr);
+	return sensor->read(sensor->idx, temp_k_ptr, &temp_mk_unused);
+}
+
+int temp_sensor_read_mk(enum temp_sensor_id id, int *temp_mk_ptr)
+{
+	const struct temp_sensor_t *sensor;
+	int temp_k_unused;
+
+	if (id < 0 || id >= TEMP_SENSOR_COUNT)
+		return EC_ERROR_INVAL;
+	sensor = temp_sensors + id;
+
+	RETURN_ERROR(sensor->read(sensor->idx, &temp_k_unused, temp_mk_ptr));
+	if (*temp_mk_ptr < 0)
+		return EC_ERROR_UNIMPLEMENTED;
+	return EC_SUCCESS;
 }
 
 static void update_mapped_memory(void)
@@ -46,7 +63,7 @@ static void update_mapped_memory(void)
 			 EC_TEMP_SENSOR_B_ENTRIES)
 			break;
 
-		switch (temp_sensor_read(i, &t)) {
+		switch (temp_sensor_read_k(i, &t)) {
 		case EC_ERROR_NOT_POWERED:
 			*mptr = EC_TEMP_SENSOR_NOT_POWERED;
 			break;
@@ -104,18 +121,26 @@ DECLARE_HOOK(HOOK_INIT, temp_sensor_init, HOOK_PRIO_DEFAULT);
 #ifdef CONFIG_CMD_TEMP_SENSOR
 int console_command_temps(int argc, char **argv)
 {
-	int t, i;
-	int rv, rv1 = EC_SUCCESS;
+	int temp_mk, temp_mc, i;
+	int rv = EC_SUCCESS;
 
 	for (i = 0; i < TEMP_SENSOR_COUNT; ++i) {
 		ccprintf("  %-20s: ", temp_sensors[i].name);
-		rv = temp_sensor_read(i, &t);
-		if (rv)
-			rv1 = rv;
+		/* Prefer millikelvin resolution if implemented */
+		rv = temp_sensor_read_mk(i, &temp_mk);
+		if (rv) {
+			int temp_k;
+
+			rv = temp_sensor_read_k(i, &temp_k);
+			temp_mk = KELVIN_TO_MILLI_KELVIN(temp_k);
+		}
+		temp_mc = MILLI_KELVIN_TO_MILLI_CELSIUS(temp_mk);
 
 		switch (rv) {
 		case EC_SUCCESS:
-			ccprintf("%d K = %d C", t, K_TO_C(t));
+			ccprintf("%3d.%03d K = %3d.%03d C",
+				 temp_mk/1000, temp_mk%1000,
+				 temp_mc/1000, ABS(temp_mc)%1000);
 #ifdef CONFIG_THROTTLE_AP
 			if (thermal_params[i].temp_fan_off &&
 			    thermal_params[i].temp_fan_max)
@@ -123,7 +148,8 @@ int console_command_temps(int argc, char **argv)
 					 thermal_fan_percent(
 						 thermal_params[i].temp_fan_off,
 						 thermal_params[i].temp_fan_max,
-						 t));
+						 MILLI_KELVIN_TO_KELVIN(
+							 temp_mk)));
 #endif
 			ccprintf("\n");
 			break;
@@ -138,7 +164,7 @@ int console_command_temps(int argc, char **argv)
 		}
 	}
 
-	return rv1;
+	return rv;
 }
 DECLARE_CONSOLE_COMMAND(temps, console_command_temps,
 			NULL,

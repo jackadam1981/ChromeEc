@@ -123,9 +123,11 @@ static const struct thermistor_info thermistor_info_51_47 = {
 	.data = thermistor_data_51_47,
 };
 
-int get_temp_3v3_51k1_47k_4050b(int idx_adc, int *temp_ptr)
+int get_temp_3v3_51k1_47k_4050b(int idx_adc, int *temp_k_ptr, int *temp_mk_ptr)
 {
-	return thermistor_get_temperature(idx_adc, temp_ptr,
+	/* Millikelvin not supported by sensor */
+	*temp_mk_ptr = -1;
+	return thermistor_get_temperature(idx_adc, temp_k_ptr,
 			&thermistor_info_51_47);
 }
 #endif /* CONFIG_STEINHART_HART_3V3_51K1_47K_4050B */
@@ -159,9 +161,11 @@ static const struct thermistor_info thermistor_info_13_47 = {
 	.data = thermistor_data_13_47,
 };
 
-int get_temp_3v3_13k7_47k_4050b(int idx_adc, int *temp_ptr)
+int get_temp_3v3_13k7_47k_4050b(int idx_adc,  int *temp_k_ptr, int *temp_mk_ptr)
 {
-	return thermistor_get_temperature(idx_adc, temp_ptr,
+	/* Millikelvin not supported by sensor */
+	*temp_mk_ptr = -1;
+	return thermistor_get_temperature(idx_adc, temp_k_ptr,
 			&thermistor_info_13_47);
 }
 #endif /* CONFIG_STEINHART_HART_3V3_13K7_47K_4050B */
@@ -195,9 +199,11 @@ static const struct thermistor_info thermistor_info_6v0_51_47 = {
 	.data = thermistor_data_6v0_51_47,
 };
 
-int get_temp_6v0_51k1_47k_4050b(int idx_adc, int *temp_ptr)
+int get_temp_6v0_51k1_47k_4050b(int idx_adc,  int *temp_k_ptr, int *temp_mk_ptr)
 {
-	return thermistor_get_temperature(idx_adc, temp_ptr,
+	/* Millikelvin not supported by sensor */
+	*temp_mk_ptr = -1;
+	return thermistor_get_temperature(idx_adc, temp_k_ptr,
 			&thermistor_info_6v0_51_47);
 }
 #endif /* CONFIG_STEINHART_HART_6V0_51K1_47K_4050B */
@@ -231,9 +237,11 @@ static const struct thermistor_info thermistor_info_22_47 = {
 	.data = thermistor_data_22_47,
 };
 
-int get_temp_3v0_22k6_47k_4050b(int idx_adc, int *temp_ptr)
+int get_temp_3v0_22k6_47k_4050b(int idx_adc, int *temp_k_ptr, int *temp_mk_ptr)
 {
-	return thermistor_get_temperature(idx_adc, temp_ptr,
+	/* Millikelvin not supported by sensor */
+	*temp_mk_ptr = -1;
+	return thermistor_get_temperature(idx_adc, temp_k_ptr,
 			&thermistor_info_22_47);
 }
 #endif /* CONFIG_STEINHART_HART_3V0_22K6_47K_4050B */
@@ -264,9 +272,11 @@ static const struct thermistor_info thermistor_info_31_47 = {
 	.data = thermistor_data_31_47,
 };
 
-int get_temp_3v3_30k9_47k_4050b(int idx_adc, int *temp_ptr)
+int get_temp_3v3_30k9_47k_4050b(int idx_adc, int *temp_k_ptr, int *temp_mk_ptr)
 {
-	return thermistor_get_temperature(idx_adc, temp_ptr,
+	/* Millikelvin not supported by sensor */
+	*temp_mk_ptr = -1;
+	return thermistor_get_temperature(idx_adc, temp_k_ptr,
 			&thermistor_info_31_47);
 }
 #endif /* CONFIG_STEINHART_HART_3V3_30K9_47K_4050B */

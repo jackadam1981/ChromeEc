@@ -70,20 +70,23 @@ static int tmp432_set_temp(const int offset, int temp)
 }
 #endif
 
-int tmp432_get_val(int idx, int *temp_ptr)
+int tmp432_get_val(int idx, int *temp_k_ptr, int *temp_mk_ptr)
 {
 	if (!has_power())
 		return EC_ERROR_NOT_POWERED;
 
+	/* Millikelvin not supported */
+	*temp_mk_ptr = -1;
+
 	switch (idx) {
 	case TMP432_IDX_LOCAL:
-		*temp_ptr = temp_val_local;
+		*temp_k_ptr = temp_val_local;
 		break;
 	case TMP432_IDX_REMOTE1:
-		*temp_ptr = temp_val_remote1;
+		*temp_k_ptr = temp_val_remote1;
 		break;
 	case TMP432_IDX_REMOTE2:
-		*temp_ptr = temp_val_remote2;
+		*temp_k_ptr = temp_val_remote2;
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;
@@ -259,7 +262,7 @@ static void print_temps(
 
 static int print_status(void)
 {
-	int value, i;
+	int temp_k, temp_mk_unused, i;
 
 	print_temps("Local", TMP432_LOCAL,
 		    TMP432_LOCAL_THERM_LIMIT,
@@ -285,22 +288,22 @@ static int print_status(void)
 			continue;
 		}
 
-		if (tmp432_get_val(i, &value) == EC_SUCCESS)
-			ccprintf("%d C or %d K\n", (value - 273), value);
+		if (tmp432_get_val(i, &temp_k, &temp_mk_unused) == EC_SUCCESS)
+			ccprintf("%d C or %d K\n", (temp_k - 273), temp_k);
 		else
 			ccprintf("Access error\n");
 	}
 
 	ccprintf("\n");
 
-	if (raw_read8(TMP432_STATUS, &value) == EC_SUCCESS)
-		ccprintf("STATUS:  %pb\n", BINARY_VALUE(value, 8));
+	if (raw_read8(TMP432_STATUS, &temp_k) == EC_SUCCESS)
+		ccprintf("STATUS:  %pb\n", BINARY_VALUE(temp_k, 8));
 
-	if (raw_read8(TMP432_CONFIGURATION1_R, &value) == EC_SUCCESS)
-		ccprintf("CONFIG1: %pb\n", BINARY_VALUE(value, 8));
+	if (raw_read8(TMP432_CONFIGURATION1_R, &temp_k) == EC_SUCCESS)
+		ccprintf("CONFIG1: %pb\n", BINARY_VALUE(temp_k, 8));
 
-	if (raw_read8(TMP432_CONFIGURATION2_R, &value) == EC_SUCCESS)
-		ccprintf("CONFIG2: %pb\n", BINARY_VALUE(value, 8));
+	if (raw_read8(TMP432_CONFIGURATION2_R, &temp_k) == EC_SUCCESS)
+		ccprintf("CONFIG2: %pb\n", BINARY_VALUE(temp_k, 8));
 
 	return EC_SUCCESS;
 }
