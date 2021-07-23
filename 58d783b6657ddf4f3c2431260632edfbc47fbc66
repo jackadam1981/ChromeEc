@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb617ce_0794bfdd",
+        "filename": "board/hatch_fp/fpsensor_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-23T18:06:28Z",
+      "side": 1,
+      "message": "I think we want to isolate this issue to RW only.\n\nI think we can just wrap this gpio set in RO only block, or drop the change to this file completely.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "58d783b6657ddf4f3c2431260632edfbc47fbc66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

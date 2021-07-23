@@ -87,6 +87,24 @@
       "parentUuid": "1a028bc0_d41c1ad4",
       "revId": "a31082aeeca9f8ac1f908f4dffc75555de7b5b22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f1177dd_ead5b3a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-23T18:06:28Z",
+      "side": 1,
+      "message": "Haha, sounds good, but there was one case that I forgot about. This change extends the issue into the RO image (fpsensor_detect.c), when the RO image doesn\u0027t even know about the fp sensor itself.",
+      "parentUuid": "dfe7fc44_fe5cf00f",
+      "revId": "a31082aeeca9f8ac1f908f4dffc75555de7b5b22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
