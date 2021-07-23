@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "46715463_9945da91",
+        "filename": "board/goroh/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1251537
+      },
+      "writtenOn": "2021-07-23T08:15:40Z",
+      "side": 1,
+      "message": "External pull-up at R382.",
+      "range": {
+        "startLine": 12,
+        "startChar": 56,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "624560405927289d9b40023bc7c37a3bd3820210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fd84b7ab_287ad792",
         "filename": "board/goroh/gpio.inc",
         "patchSetId": 5
