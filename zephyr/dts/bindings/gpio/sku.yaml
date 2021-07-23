@@ -1,0 +1,19 @@
+description: Defines board version and sku id gpios
+
+compatible: cros-ec,sku
+
+properties:
+  bits:
+    type: phandles
+    required: true
+    description: GPIO list to read, LSB to MSB
+
+  system:
+    type: string
+    description:
+      Numeral system.
+    enum:
+      - binary
+      - binary_first_base3
+      - ternary
+
