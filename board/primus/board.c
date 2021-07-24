@@ -106,3 +106,13 @@ enum battery_present battery_hw_present(void)
 	/* The GPIO is low when the battery is physically present */
 	return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
 }
+
+static void gpio_reclaim(void)
+{
+	/* As we define CONFIG_PS2, it will set GPIO37 into PS2 mode
+	 * when gpio_pre_init(), so set it back to GPIO.
+	 */
+	gpio_set_flags(GPIO_EC_PCH_SYS_PWROK, GPIO_OUT_LOW);
+	gpio_set_alternate_function(GPIO_PORT_3, BIT(7), GPIO_ALT_FUNC_NONE);
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, gpio_reclaim, HOOK_PRIO_DEFAULT);
