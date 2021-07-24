@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94bd02b3_98f1a7ce",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1383392
+      },
+      "writtenOn": "2021-07-24T07:04:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8143b722_1a19e611",
+      "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c044c289_7a8c810d",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-07-21T07:24:55Z",
       "side": 1,
       "message": "In theory, you can overflow here, but when used, y is around ~1600 max (2^(11+32)) and x is less than 2^16.",
+      "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2b3b4f4_7811e993",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1383392
+      },
+      "writtenOn": "2021-07-24T07:04:33Z",
+      "side": 1,
+      "message": "Ack wrt the bounds on the inputs ensuring overflow can\u0027t occur.\n\nI used a macro to show that the multiplication between different types (int and fp) was intentional and correct, but I think it\u0027s easier to read as an inline multiplication and a comment can provide sufficient explanation instead.",
+      "parentUuid": "c044c289_7a8c810d",
       "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -86,6 +122,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f14331_f469966a",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1383392
+      },
+      "writtenOn": "2021-07-24T07:04:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "665d532b_5ec2b512",
+      "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3398e07b_e8710f5c",
@@ -103,6 +157,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bdb9fa7_85c01006",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1383392
+      },
+      "writtenOn": "2021-07-24T07:04:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3398e07b_e8710f5c",
+      "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69ec5306_89f2e5af",
@@ -116,6 +188,24 @@
       "writtenOn": "2021-07-21T07:24:55Z",
       "side": 1,
       "message": "Do the conversion back to _INT here.",
+      "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d66077_688ecf47",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1383392
+      },
+      "writtenOn": "2021-07-24T07:04:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69ec5306_89f2e5af",
       "revId": "deb3710e4ccd96f81b77beb7ebe2e8e09bcb4dc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
