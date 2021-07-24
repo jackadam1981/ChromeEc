@@ -22,6 +22,30 @@
       },
       "revId": "83bc2ebb0d8c1094a3eddbb84326757f8f3d7d67",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01fff6e6_090927b6",
+        "filename": "board/lazor/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-07-24T12:22:07Z",
+      "side": 1,
+      "message": "It should be static as is in board_get_version. My fault",
+      "parentUuid": "f054f60d_51c2dd68",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 466,
+        "endChar": 0
+      },
+      "revId": "83bc2ebb0d8c1094a3eddbb84326757f8f3d7d67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
