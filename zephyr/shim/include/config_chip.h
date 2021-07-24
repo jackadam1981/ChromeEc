@@ -85,6 +85,9 @@
 #undef CONFIG_CRC8
 #define CONFIG_CRC8
 
+#undef CONFIG_POWER_COMMON
+#define CONFIG_POWER_COMMON
+
 /*
  * This is not used by the Zephyr code.
  * Define it here to reduce the delta from the ECOS CONFIG.
