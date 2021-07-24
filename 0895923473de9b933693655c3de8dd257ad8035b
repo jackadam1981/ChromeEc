@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23d6fe60_8c9d7b0d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1383392
+      },
+      "writtenOn": "2021-07-24T07:18:05Z",
+      "side": 1,
+      "message": "I\u0027ve tested the code works as expected, but we should consider how this will affect screen brightness ramping based on the lux value. See b/179960346#comment17.",
+      "revId": "0895923473de9b933693655c3de8dd257ad8035b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
