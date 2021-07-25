@@ -23,6 +23,30 @@
       },
       "revId": "8d7f696c636717e6ffc4539fe67711da3fe94ae7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a2157a0_8e7dc99c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-25T20:19:37Z",
+      "side": 1,
+      "message": "Fixed between patchsets 3 and 4, though I also realized that I should remove the PRL string comment as that was already done :)",
+      "parentUuid": "d13ed665_13d745fe",
+      "range": {
+        "startLine": 10,
+        "startChar": 17,
+        "endLine": 10,
+        "endChar": 26
+      },
+      "revId": "8d7f696c636717e6ffc4539fe67711da3fe94ae7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
