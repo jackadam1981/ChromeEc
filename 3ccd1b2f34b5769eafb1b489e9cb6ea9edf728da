@@ -70,6 +70,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecf7d4da_fcf8393d",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-26T17:43:30Z",
+      "side": 1,
+      "message": "ectool commands are behaving unexpectedly now (b/188956438). The change in cros_ec_proto.c to map result to Linux errno means we will never get r \u003d\u003d 0 \u0026\u0026 msg-\u003eresult \u003d\u003d EC_RES_* here. \n\nOptions AFAICT\n1) Map errno to cros ec result (this CL)\n2) Roll back change to map result to Linux errno in cros_ec_proto.c\n3) Always retain result in cros_ec_chardev.c, even on error\n4) Refactor ectool to check for errno instead of \u0027-EECRESULT - result\u0027",
+      "parentUuid": "a9143f1f_f9550bed",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
