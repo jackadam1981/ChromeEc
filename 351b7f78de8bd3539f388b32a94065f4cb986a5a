@@ -122,6 +122,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fceaf013_725b41a8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-26T23:43:38Z",
+      "side": 1,
+      "message": "Latest patch generates \"guybrush_13983.0.21_05_20\", the year is also abbreviated. \n\nWe need a way to identify when then non-active image copy does not include FWID so we don\u0027t attempt to read it. I added a 4 byte cookie3, but there may be better ways to handle this. It would have been best if image_data had a structure version embedded from the beginning. Another option would be to tweak cookie1/2 but I\u0027m not sure if tools external to the EC are keying on these cookies.",
+      "parentUuid": "4c3a208e_610b13f2",
+      "range": {
+        "startLine": 19,
+        "startChar": 41,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9d114d8_3df002a8",
         "filename": "board/oak/board.h",
         "patchSetId": 6
@@ -133,6 +157,30 @@
       "writtenOn": "2021-07-12T21:21:25Z",
       "side": 1,
       "message": "What\u0027s wrong with Oak? If it\u0027s a space issue, can you remove some console commands, instead?",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ace4c1cd_2b7791c1",
+        "filename": "board/oak/board.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-26T23:43:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9d114d8_3df002a8",
       "range": {
         "startLine": 14,
         "startChar": 7,
