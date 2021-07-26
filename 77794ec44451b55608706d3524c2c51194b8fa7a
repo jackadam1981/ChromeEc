@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a229814a_4fa89a52",
+        "filename": "board/primus/board.h",
+        "patchSetId": 38
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-26T21:26:32Z",
+      "side": 1,
+      "message": "quick question, does this comment line up?",
+      "range": {
+        "startLine": 189,
+        "startChar": 24,
+        "endLine": 189,
+        "endChar": 50
+      },
+      "revId": "77794ec44451b55608706d3524c2c51194b8fa7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e05b76_d981adf8",
+        "filename": "board/primus/led.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-26T21:26:32Z",
+      "side": 1,
+      "message": "could you divide by 4 to avoid floating point altogether?\nor cast this expression to (int) if this won\u0027t be exactly\n0.25 in some cases?",
+      "range": {
+        "startLine": 39,
+        "startChar": 27,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "77794ec44451b55608706d3524c2c51194b8fa7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d91b6cc_a82d60c7",
+        "filename": "board/primus/led.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-26T21:26:32Z",
+      "side": 1,
+      "message": "does this line up? it\u0027s sometimes hard to tell in gerrit.",
+      "range": {
+        "startLine": 45,
+        "startChar": 21,
+        "endLine": 45,
+        "endChar": 45
+      },
+      "revId": "77794ec44451b55608706d3524c2c51194b8fa7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9722dac_883a626d",
+        "filename": "board/primus/led.c",
+        "patchSetId": 38
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-26T21:26:32Z",
+      "side": 1,
+      "message": "this should move to the logoled_task as well.",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 1
+      },
+      "revId": "77794ec44451b55608706d3524c2c51194b8fa7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
