@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "089f47b2_a48df7cf",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-07-26T23:14:57Z",
+      "side": 1,
+      "message": "Nit, probably not worth changing: Wouldn\u0027t it make more sense if src_cap_count were -1 to indicate that we haven\u0027t gotten source caps yet and 0 to indicate that we consider the partner to have 0 source caps for whatever reason?",
+      "revId": "9459734d485865b80b58776a8aeac3d7c48641f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
