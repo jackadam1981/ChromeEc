@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f5048c2_7b7b5691",
+        "filename": "board/asurada/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:04Z",
+      "side": 1,
+      "message": "this is accidentally commited. This file is asurada/board.h",
+      "parentUuid": "b28b806b_9f387fec",
+      "range": {
+        "startLine": 124,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 32
+      },
+      "revId": "624560405927289d9b40023bc7c37a3bd3820210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d29d169f_a8590609",
@@ -70,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f15ffb7d_52d61fb1",
+        "filename": "board/goroh/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46715463_9945da91",
+      "range": {
+        "startLine": 12,
+        "startChar": 56,
+        "endLine": 12,
+        "endChar": 68
+      },
+      "revId": "624560405927289d9b40023bc7c37a3bd3820210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd84b7ab_287ad792",
@@ -83,6 +131,30 @@
       "writtenOn": "2021-07-23T06:42:49Z",
       "side": 1,
       "message": "Perhaps I\u0027m missing something? \nWe have external pull-up (R517) for this pin.",
+      "range": {
+        "startLine": 38,
+        "startChar": 58,
+        "endLine": 38,
+        "endChar": 72
+      },
+      "revId": "624560405927289d9b40023bc7c37a3bd3820210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "de791680_e513f226",
+        "filename": "board/goroh/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd84b7ab_287ad792",
       "range": {
         "startLine": 38,
         "startChar": 58,
@@ -116,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "786416f0_46610ca6",
+        "filename": "board/goroh/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b69ee062_529b5b54",
+      "range": {
+        "startLine": 40,
+        "startChar": 58,
+        "endLine": 40,
+        "endChar": 72
+      },
+      "revId": "624560405927289d9b40023bc7c37a3bd3820210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d0b9a86a_f42575e1",
@@ -129,6 +225,30 @@
       "writtenOn": "2021-07-23T06:42:49Z",
       "side": 1,
       "message": "IIUC GPM6 is powered by VCC pin inside of the EC (see GCR29 in the ds), which is why I use the same 1.8V as external pullup source for this pin.\nIn this case I\u0027m not sure if you\u0027d need to set GPIO_SEL_1P8V here..",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 51
+      },
+      "revId": "624560405927289d9b40023bc7c37a3bd3820210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c114bcc5_e5b2c8e9",
+        "filename": "board/goroh/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0b9a86a_f42575e1",
       "range": {
         "startLine": 59,
         "startChar": 0,
@@ -162,6 +282,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d82e4837_2058a615",
+        "filename": "board/goroh/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6617ea38_b5aa8a4b",
+      "range": {
+        "startLine": 63,
+        "startChar": 53,
+        "endLine": 63,
+        "endChar": 68
+      },
+      "revId": "624560405927289d9b40023bc7c37a3bd3820210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b8336cb5_764c749c",
@@ -175,6 +319,30 @@
       "writtenOn": "2021-07-23T06:42:49Z",
       "side": 1,
       "message": "The Vih for RT9740 load switch is 1.4V, I\u0027d suggest just use 3.3V I/O here.",
+      "range": {
+        "startLine": 64,
+        "startChar": 53,
+        "endLine": 64,
+        "endChar": 68
+      },
+      "revId": "624560405927289d9b40023bc7c37a3bd3820210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "daa71c15_fc9c9960",
+        "filename": "board/goroh/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8336cb5_764c749c",
       "range": {
         "startLine": 64,
         "startChar": 53,
@@ -254,6 +422,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ddcf6c5_fc6917fe",
+        "filename": "board/goroh/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5f7bb30_1184b38c",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 78
+      },
+      "revId": "624560405927289d9b40023bc7c37a3bd3820210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "327ec5af_0504d2a3",
@@ -267,6 +459,30 @@
       "writtenOn": "2021-07-23T06:42:49Z",
       "side": 1,
       "message": "Question: do we need to specify this is a Tachometer input in gpio.inc?",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 51
+      },
+      "revId": "624560405927289d9b40023bc7c37a3bd3820210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33bcefcb_dbcbc594",
+        "filename": "board/goroh/gpio.inc",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:04Z",
+      "side": 1,
+      "message": "No, this is not needed.",
+      "parentUuid": "327ec5af_0504d2a3",
       "range": {
         "startLine": 95,
         "startChar": 0,
