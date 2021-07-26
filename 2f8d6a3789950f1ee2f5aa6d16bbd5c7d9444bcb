@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "186e8a9b_4eb0d3f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2021-07-26T03:17:07Z",
+      "side": 1,
+      "message": "We are plan to import the RT1715 into kukui branch,\nthe driver of RT1715 will call the tcpc_update,\nso we need this CL to build pass.\nPlease help to review the CL, thanks.",
+      "revId": "2f8d6a3789950f1ee2f5aa6d16bbd5c7d9444bcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
