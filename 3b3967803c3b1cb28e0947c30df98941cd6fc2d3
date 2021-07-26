@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d584b94_061936f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-07-26T09:32:51Z",
+      "side": 1,
+      "message": "wrong prefix",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "3b3967803c3b1cb28e0947c30df98941cd6fc2d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "858f41f7_5f36606d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-07-26T09:32:51Z",
+      "side": 1,
+      "message": "Try to use English sentences.",
+      "revId": "3b3967803c3b1cb28e0947c30df98941cd6fc2d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37aa7093_1a6811ac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-07-26T09:32:51Z",
+      "side": 1,
+      "message": "BRANCH\u003d\nBUG\u003d\nTEST\u003d",
+      "revId": "3b3967803c3b1cb28e0947c30df98941cd6fc2d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d31a524_dcfa91db",
+        "filename": "baseboard/mtscp-rv32i/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-07-26T09:32:51Z",
+      "side": 1,
+      "message": "Will it have side effect on MT8192 SCP?",
+      "range": {
+        "startLine": 19,
+        "startChar": 52,
+        "endLine": 19,
+        "endChar": 62
+      },
+      "revId": "3b3967803c3b1cb28e0947c30df98941cd6fc2d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
