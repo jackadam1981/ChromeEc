@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45dcfc94_b44c52be",
+        "filename": "baseboard/guybrush/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-26T16:09:20Z",
+      "side": 1,
+      "message": "I\u0027m guessing we\u0027d want this at board-level.  At least, it doesn\u0027t look like every board typically implements this",
+      "revId": "5a6ae5ed87599110abe1674ec60e9b4c01cd9f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f5a6205_72668224",
+        "filename": "board/guybrush/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-26T16:09:20Z",
+      "side": 1,
+      "message": "Any idea why these aren\u0027t generally in a common .h file?  It seems like if keyboard_scan.c is going to make assumptions about how to traverse this, then that makes it common",
+      "revId": "5a6ae5ed87599110abe1674ec60e9b4c01cd9f57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
