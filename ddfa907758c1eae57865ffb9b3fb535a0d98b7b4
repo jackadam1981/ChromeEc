@@ -162,6 +162,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e5e86126_93198448",
+        "filename": "common/dps.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T02:03:49Z",
+      "side": 1,
+      "message": "Yes, this is added in the patchset 17 in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2897064/17/common/charge_manager.c",
+      "parentUuid": "88525c40_fbd3af04",
+      "revId": "ddfa907758c1eae57865ffb9b3fb535a0d98b7b4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78dd3bc9_cd2af6d9",
         "filename": "common/dps.c",
         "patchSetId": 13
