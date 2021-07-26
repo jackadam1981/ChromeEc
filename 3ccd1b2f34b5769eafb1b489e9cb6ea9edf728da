@@ -118,6 +118,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2d60fa8_80fc9bed",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-26T18:53:14Z",
+      "side": 1,
+      "message": "I believe ectool sub-commands need direct access to EC_RES_*. Direct access means EC_RES_ error code shouldn\u0027t be erased, generated, or translated by the kernel or comm-dev.c. IIUC, option 3 seems the right direction. This design allows EC engineers to mind only the EC host command implementation and ectool.",
+      "parentUuid": "7e23648d_0934c990",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
