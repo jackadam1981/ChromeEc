@@ -142,6 +142,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "92584bfd_03359fe6",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-26T19:01:23Z",
+      "side": 1,
+      "message": "To be clear, it\u0027s unconventional to do #3 (i.e., both report an error *and* return data from kernel to user space). I guess if user space cooperates (by ensuring it zeroes out the result before the ioctl(), and then only trusting the result if it\u0027s non-zero -- for compatibility with older kernels) it could work...\n\nIs this on Rob to do, I guess?",
+      "parentUuid": "f2d60fa8_80fc9bed",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
