@@ -254,14 +254,16 @@ def hw_write_protect(enable: bool) -> None:
     subprocess.run(cmd).check_returncode()
 
 
-def build(test_name: str, board_name: str) -> None:
-    """Build specified test for specified board."""
+def build(tests: List[TestConfig], board_name: str) -> None:
+    """Build all test binaries for specified board."""
     cmd = [
         'make',
         'BOARD=' + board_name,
-        'test-' + test_name,
         '-j',
     ]
+
+    for test in tests:
+        cmd.append('test-'+test.name)
 
     logging.debug('Running command: "%s"', ' '.join(cmd))
     subprocess.run(cmd).check_returncode()
@@ -443,10 +445,10 @@ def main():
     test_list = get_test_list(board_config, args.tests)
     logging.debug('Running tests: %s', [t.name for t in test_list])
 
-    for test in test_list:
-        # build test binary
-        build(test.name, args.board)
+    # build test binaries
+    build(test_list, args.board)
 
+    for test in test_list:
         # flash test binary
         # TODO(b/158327221): First attempt to flash fails after
         #  flash_write_protect test is run; works after second attempt.
