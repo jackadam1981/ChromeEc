@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1dd792c4_4889b94f",
+        "filename": "board/primus/ec.tasklist",
+        "patchSetId": 36
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-26T02:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c2cc574_c475068e",
+      "revId": "0246714494e7a51da8914030d56f63ffa82d1710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "114e642e_246079a1",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-16T21:03:59Z",
       "side": 1,
       "message": "PWM_CH_LED4",
+      "range": {
+        "startLine": 97,
+        "startChar": 15,
+        "endLine": 97,
+        "endChar": 20
+      },
+      "revId": "0246714494e7a51da8914030d56f63ffa82d1710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a3b008_51362718",
+        "filename": "board/primus/led.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-26T02:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "114e642e_246079a1",
       "range": {
         "startLine": 97,
         "startChar": 15,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b662dee_04f81fdf",
+        "filename": "board/primus/led.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-26T02:46:20Z",
+      "side": 1,
+      "message": "Thank you Boris. I copied them all.",
+      "parentUuid": "26314c32_8bd0b2d3",
+      "revId": "0246714494e7a51da8914030d56f63ffa82d1710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fcee253_7d4fbe3d",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-07-16T21:38:57Z",
       "side": 1,
       "message": "try to avoid hook_call_deferred to implement your LED timers.\nyou should be able to manage the delays here\nand call the led update routine.",
+      "range": {
+        "startLine": 241,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 21
+      },
+      "revId": "0246714494e7a51da8914030d56f63ffa82d1710",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e63d88_56d78caf",
+        "filename": "board/primus/led.c",
+        "patchSetId": 36
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-26T02:46:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fcee253_7d4fbe3d",
       "range": {
         "startLine": 241,
         "startChar": 3,
