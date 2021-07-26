@@ -34,17 +34,33 @@
 #define CONFIG_UART_TX_REQ_CH STM32_REQ_USART2_TX
 #define CONFIG_UART_RX_REQ_CH STM32_REQ_USART2_RX
 
-#define CONFIG_ACCELGYRO_BMI160
+#define CONFIG_ACCELGYRO_ICM40608
+#define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_ACCELGYRO_ICM40608_INT_EVENT TASK_EVENT_CUSTOM(4)
+
+/* Enable sensor fifo, must also define the _SIZE and _THRES */
+#define CONFIG_ACCEL_FIFO_EN
+#define CONFIG_ACCEL_FIFO 512
+/* FIFO size is in power of 2. */
+#define CONFIG_ACCEL_FIFO_SIZE 512
+/* Depends on how fast the AP boots and typical ODRs */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+
 #define CONFIG_CMD_ACCELS
 #define CONFIG_CMD_ACCEL_INFO
 #define CONFIG_CMD_FLASH
+#define CONFIG_CMD_HOSTCMD
+
 
 /* I2C ports configuration */
 #define CONFIG_I2C_MASTER
 #define CONFIG_I2C_DEBUG
-#define I2C_PORT_MASTER 1
-#define I2C_PORT_SLAVE 0        /* needed for DMAC macros (ugh) */
+#define I2C_PORT_MAIN 1
+#define I2C_PORT_SECOND 0        /* needed for DMAC macros (ugh) */
 #define I2C_PORT_ACCEL I2C_PORT_MASTER
+
+#define CONFIG_MKBP_EVENT
+#define CONFIG_MKBP_USE_GPIO
 
 #ifndef __ASSEMBLER__
 
