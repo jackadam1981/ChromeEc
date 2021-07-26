@@ -94,6 +94,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e23648d_0934c990",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-07-26T17:59:27Z",
+      "side": 1,
+      "message": "How important is it for ectool that have the precise EC-side error codes? Would #4 lose a lot of useful precision?\n\nIt\u0027s pretty hard to both use standard errno codes *and* encode non-standard EC results (e.g., #3) -- we\u0027d have to figure out some convention for telling user space that despite the negative errno, we *did* pass it some other data.\n\n...which I think suggests either #1 or #2 are in order.\n\nWe could probably do #2 without totally reverting the kernel change: we could make the chardev ioctl() a special case.",
+      "parentUuid": "ecf7d4da_fcf8393d",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
