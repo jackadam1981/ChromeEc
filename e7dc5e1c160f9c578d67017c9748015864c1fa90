@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b76ead4_91a1ab56",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "should be after.",
+      "parentUuid": "b501eaf0_16706005",
+      "range": {
+        "startLine": 112,
+        "startChar": 36,
+        "endLine": 112,
+        "endChar": 41
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31cacf2e_b2ac33ed",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-26T03:02:47Z",
       "side": 1,
       "message": "4ms",
+      "range": {
+        "startLine": 132,
+        "startChar": 24,
+        "endLine": 132,
+        "endChar": 25
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45dd0215_9a176609",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31cacf2e_b2ac33ed",
       "range": {
         "startLine": 132,
         "startChar": 24,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c96697_03aef2e2",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2168c1ef_9798ada6",
+      "range": {
+        "startLine": 133,
+        "startChar": 27,
+        "endLine": 133,
+        "endChar": 28
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fc96613_fa0ac4b2",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-07-26T03:02:47Z",
       "side": 1,
       "message": "4ms",
+      "range": {
+        "startLine": 134,
+        "startChar": 22,
+        "endLine": 134,
+        "endChar": 23
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dda39df_6ac115c7",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fc96613_fa0ac4b2",
       "range": {
         "startLine": 134,
         "startChar": 22,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36599fea_a6f5a8dd",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96173468_9a48b026",
+      "range": {
+        "startLine": 135,
+        "startChar": 27,
+        "endLine": 135,
+        "endChar": 28
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f52f86e_bb82cf8a",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-07-26T03:02:47Z",
       "side": 1,
       "message": "4ms",
+      "range": {
+        "startLine": 138,
+        "startChar": 27,
+        "endLine": 138,
+        "endChar": 28
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff540623_fe1df353",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f52f86e_bb82cf8a",
       "range": {
         "startLine": 138,
         "startChar": 27,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12cd01f2_51533836",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46f34684_fa6b67d2",
+      "range": {
+        "startLine": 145,
+        "startChar": 24,
+        "endLine": 145,
+        "endChar": 25
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10328cce_d43c8e31",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-07-23T16:15:03Z",
       "side": 1,
       "message": "The power-up sequence expects PP1800_VDDIO_PMC to rise prior to PP0800_VDD_PMC, can we set the delay here as 4ms?",
+      "range": {
+        "startLine": 148,
+        "startChar": 31,
+        "endLine": 148,
+        "endChar": 32
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85192157_b4e848aa",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10328cce_d43c8e31",
       "range": {
         "startLine": 148,
         "startChar": 31,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf41d642_46a0c02a",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ce82864_88bd2eb9",
+      "range": {
+        "startLine": 150,
+        "startChar": 31,
+        "endLine": 150,
+        "endChar": 32
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5332c778_d8d5552b",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-07-23T16:15:03Z",
       "side": 1,
       "message": "nit: S5S3",
+      "range": {
+        "startLine": 153,
+        "startChar": 40,
+        "endLine": 153,
+        "endChar": 44
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "880a58cc_a3822945",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5332c778_d8d5552b",
       "range": {
         "startLine": 153,
         "startChar": 40,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73a0bbd_b5fc1efe",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21c35d76_2269b4d1",
+      "range": {
+        "startLine": 158,
+        "startChar": 24,
+        "endLine": 158,
+        "endChar": 25
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe255f77_711914c8",
@@ -284,6 +548,30 @@
       "writtenOn": "2021-07-23T16:15:03Z",
       "side": 1,
       "message": "nit: 4ms for cleaner separation from PP3300_S3 group, even though the requirement only specifies VDD_DDR to come up after VDD_SOC.",
+      "range": {
+        "startLine": 160,
+        "startChar": 22,
+        "endLine": 160,
+        "endChar": 23
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9938ac68_749648fa",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe255f77_711914c8",
       "range": {
         "startLine": 160,
         "startChar": 22,
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "570c7812_f175abde",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74348886_542d5cce",
+      "range": {
+        "startLine": 161,
+        "startChar": 27,
+        "endLine": 161,
+        "endChar": 28
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc41d1e1_e706cad5",
@@ -330,6 +642,30 @@
       "writtenOn": "2021-07-23T16:15:03Z",
       "side": 1,
       "message": "8ms, to be well delayed from VDD1/VDD2 ramping up.",
+      "range": {
+        "startLine": 162,
+        "startChar": 24,
+        "endLine": 162,
+        "endChar": 25
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1717149_10a1d9c3",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc41d1e1_e706cad5",
       "range": {
         "startLine": 162,
         "startChar": 24,
@@ -363,6 +699,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70bfbf50_b937172a",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d96d553_9909b751",
+      "range": {
+        "startLine": 164,
+        "startChar": 27,
+        "endLine": 164,
+        "endChar": 28
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c1f1704_da8881de",
@@ -376,6 +736,30 @@
       "writtenOn": "2021-07-26T03:02:47Z",
       "side": 1,
       "message": "4ms",
+      "range": {
+        "startLine": 175,
+        "startChar": 31,
+        "endLine": 175,
+        "endChar": 32
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c047f59_5c25ca70",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c1f1704_da8881de",
       "range": {
         "startLine": 175,
         "startChar": 31,
@@ -409,6 +793,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13780643_5276ec17",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c9c3911_4db52126",
+      "range": {
+        "startLine": 176,
+        "startChar": 22,
+        "endLine": 176,
+        "endChar": 23
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a2a7e59_e05e1ee1",
@@ -422,6 +830,30 @@
       "writtenOn": "2021-07-26T03:02:47Z",
       "side": 1,
       "message": "4ms",
+      "range": {
+        "startLine": 178,
+        "startChar": 33,
+        "endLine": 178,
+        "endChar": 34
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96883f73_c5b2a494",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2a7e59_e05e1ee1",
       "range": {
         "startLine": 178,
         "startChar": 33,
@@ -455,6 +887,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28e7cb09_7a3dbf4d",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84146b57_0a3cc75e",
+      "range": {
+        "startLine": 180,
+        "startChar": 24,
+        "endLine": 180,
+        "endChar": 25
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68656b2e_f71d5c3c",
@@ -468,6 +924,30 @@
       "writtenOn": "2021-07-26T03:02:47Z",
       "side": 1,
       "message": "10ms",
+      "range": {
+        "startLine": 181,
+        "startChar": 24,
+        "endLine": 181,
+        "endChar": 25
+      },
+      "revId": "e7dc5e1c160f9c578d67017c9748015864c1fa90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c078e5a0_4ba543b4",
+        "filename": "power/falconlite.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-26T08:42:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68656b2e_f71d5c3c",
       "range": {
         "startLine": 181,
         "startChar": 24,
