@@ -16,6 +16,23 @@
       "message": "Hi Aseda, could you PTAL? Thanks!",
       "revId": "180c334607c3c60b4446fb5cee357cfb86c93ae4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "529c77ea_acd3ffc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-26T21:56:59Z",
+      "side": 1,
+      "message": "\u003e Patch Set 1: Code-Review+2\n\u003e \n\u003e By voting Code-Review+2 the following files are now code-owner approved by \u003cGERRIT_ACCOUNT_1125984\u003e:\n\u003e * board/mushu/board.h\n\u003e \n\nThanks. Not needed for the moment since some else already freed some flash space with this CL:\n\nhttps://crrev.com/c/3048516",
+      "revId": "180c334607c3c60b4446fb5cee357cfb86c93ae4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
