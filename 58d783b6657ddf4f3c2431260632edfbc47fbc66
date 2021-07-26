@@ -22,6 +22,30 @@
       },
       "revId": "58d783b6657ddf4f3c2431260632edfbc47fbc66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22fa1b55_4e7f4f69",
+        "filename": "board/hatch_fp/fpsensor_detect.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-07-26T10:26:01Z",
+      "side": 1,
+      "message": "I dropped the change in this file. It doesn\u0027t break fpsensor_hw unit test.",
+      "parentUuid": "fcb617ce_0794bfdd",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 4
+      },
+      "revId": "58d783b6657ddf4f3c2431260632edfbc47fbc66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
