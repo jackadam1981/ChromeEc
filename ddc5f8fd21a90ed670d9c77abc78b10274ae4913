@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12409e59_074919f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-07-26T09:24:39Z",
+      "side": 1,
+      "message": "Hi Yuval,\nI create a PR:37194 to remove the NPCX_* macro for KBC/ACPI event data and use the structure instead.\nThis commit follows the PR to use the structure to access it.\n",
+      "revId": "ddc5f8fd21a90ed670d9c77abc78b10274ae4913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
