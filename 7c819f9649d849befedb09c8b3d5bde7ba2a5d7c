@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a52397c1_895bc556",
+        "filename": "board/voema/board.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-07-26T17:55:01Z",
+      "side": 1,
+      "message": "Should be in #ifndef BOARD_VOEMA_NPCX796FC ... #endif block.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 47
+      },
+      "revId": "7c819f9649d849befedb09c8b3d5bde7ba2a5d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ceadc8b9_578a1018",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-07-26T17:55:01Z",
+      "side": 1,
+      "message": "Should be in #ifndef BOARD_VOEMA_NPCX796FC ... #endif block.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 2
+      },
+      "revId": "7c819f9649d849befedb09c8b3d5bde7ba2a5d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e2de54b_39e2a949",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-07-26T17:55:01Z",
+      "side": 1,
+      "message": "The logic here is a bit unclear to me. If the sensor is not SSFC_SENSOR_BASE_KX022 nor SSFC_SENSOR_BASE_ICM426XX is there any action?",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 36
+      },
+      "revId": "7c819f9649d849befedb09c8b3d5bde7ba2a5d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
