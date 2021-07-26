@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5aa70e_888a5e7d",
+        "filename": "zephyr/dts/bindings/emul/zephyr,tcs3400.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-26T21:55:54Z",
+      "side": 1,
+      "message": "brief note about the TCS3400 would be helpful",
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64e8f875_c427a630",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-26T21:55:54Z",
+      "side": 1,
+      "message": "light sensor\n\nplease describe what features are supported in the emulator",
+      "range": {
+        "startLine": 40,
+        "startChar": 22,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83d8674f_1ec9b1df",
+        "filename": "zephyr/emul/emul_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-26T21:55:54Z",
+      "side": 1,
+      "message": "how about red, green, blue?\n\nWhat is c?\n\nI am just not a big fan of single-char vars except for loops",
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24eba499_968c461d",
+        "filename": "zephyr/emul/emul_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-26T21:55:54Z",
+      "side": 1,
+      "message": "Is there any chance that the msb_reg is always (lsb_reg | 1) ?\n\nIf so, then you could just call it reg and allow either one to be passed in here.\n\nIt seems a big wonky in the callers below that you need to pass reg - 1.\n\nBut if not, it is OK as it is.",
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21fe0577_941fd2d8",
+        "filename": "zephyr/emul/emul_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-26T21:55:54Z",
+      "side": 1,
+      "message": "read",
+      "range": {
+        "startLine": 608,
+        "startChar": 18,
+        "endLine": 608,
+        "endChar": 24
+      },
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c87f9b5_19a80ec3",
+        "filename": "zephyr/emul/emul_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-26T21:55:54Z",
+      "side": 1,
+      "message": "write",
+      "range": {
+        "startLine": 732,
+        "startChar": 15,
+        "endLine": 732,
+        "endChar": 20
+      },
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a94d62a0_8a66767d",
+        "filename": "zephyr/emul/emul_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-26T21:55:54Z",
+      "side": 1,
+      "message": "I did suggest that we make the emulators into devices, but upstream was not keen on the idea.\n\nWhat do you think?",
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a04fe9a9_1a475aec",
+        "filename": "zephyr/include/emul/emul_tcs3400.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-26T21:55:54Z",
+      "side": 1,
+      "message": "devicetree\n\nas that seems to be what Zephyr uses",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b166090_7089f28e",
+        "filename": "zephyr/include/emul/emul_tcs3400.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-26T21:55:54Z",
+      "side": 1,
+      "message": "What do these two mean?",
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
