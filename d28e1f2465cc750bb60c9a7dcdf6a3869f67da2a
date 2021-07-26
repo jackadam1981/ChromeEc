@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68ec7e1e_14c8f878",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2021-07-26T11:32:20Z",
+      "side": 1,
+      "message": "We are plan to import the RT1715 into kukui branch,\nthere is an issue that cc status is abnormal during debug.\nCherry-pick this CL will solve this issue.\nSo please help to review the CL, thanks.",
+      "revId": "d28e1f2465cc750bb60c9a7dcdf6a3869f67da2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
