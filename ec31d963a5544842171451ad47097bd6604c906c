@@ -1,0 +1,259 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adfe8217_9e83524c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "BRANCH has to be set to rammus (None is for the main dev branch, not firmware ones)",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bfcf2ef_9e7aaafd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "Hello,\n\nthis is not necessary to upload nucleo board integration. This is not really useful.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70b9612e_a15dbf2b",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "ret \u003d 0 is useless here.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85e8d466_2aa69f0d",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "Do not use ret \u003d here, since we have to ignore the result (this configuration can lead to interference on the bus)",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c82ae0d_30c2b407",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "Check the return value here",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf65e761_d6130bb0",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "ret \u003d 0 is useless here.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "367ce70f_6b2392c7",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "Formatting issue, delete tabulation.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9b8c356_8192b903",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "Avoid print that are expensive.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aa6bf36_cefe7623",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "Avoid print that are expensive.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50df0051_4b85a6be",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "Avoid print that are expensive.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2138d93_502cbc02",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "Keep this one which is useful.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71ac16e6_76bc7fc3",
+        "filename": "driver/accelgyro_icm40608.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "I2C addresses are 0x68 and 0x69",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9472ba53_b99ebfab",
+        "filename": "driver/accelgyro_icm40608.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "If this is shifted I2C adress, it should be d2.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea49c095_e08e03bd",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "Better do the shift here (\u003c\u003c 1) and use standard I2C addresses 0x68, 0x69.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e38d806d_220005e9",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-26T20:33:32Z",
+      "side": 1,
+      "message": "Formatting issue, delete tabulation.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
