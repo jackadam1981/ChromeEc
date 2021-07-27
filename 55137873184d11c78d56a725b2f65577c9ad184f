@@ -16,6 +16,24 @@
       "message": "We still need CHARGE_CONTROL_IDLE when lower \u003d\u003d upper.",
       "revId": "55137873184d11c78d56a725b2f65577c9ad184f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b430ae1b_81e518b2",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1738,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T22:49:24Z",
+      "side": 0,
+      "message": "Done.",
+      "parentUuid": "dcb546d5_9c7cff76",
+      "revId": "55137873184d11c78d56a725b2f65577c9ad184f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
