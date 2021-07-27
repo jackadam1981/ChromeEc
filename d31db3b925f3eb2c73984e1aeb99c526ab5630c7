@@ -70,6 +70,24 @@
       "parentUuid": "316f5a0a_ba53a47f",
       "revId": "d31db3b925f3eb2c73984e1aeb99c526ab5630c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d3058a0_84ab636b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-27T22:37:38Z",
+      "side": 1,
+      "message": "I respectfully disagree:\n\n- read and write happens under host control, the DUT in fact will support much longer freads and writes than advertised. Attempts to write data longer that the SPI flash chip page will fail without causing any problems.\n\nflashrom supports different read and write limits, it has two separate values for these: https://chromium.googlesource.com/chromiumos/third_party/flashrom/+/fc80b831/raiden_debug_spi.c#442\n\n- the special functionality you mention was never supported by flashrom and never will be, it should not be part of the V2 (or V1 to that matter).\n\n- I don\u0027t see this as a burden to the teams - two different branches support two different protocol implementations, each one taking advantage of the available hardware. Different sets of people work on these different products. In any case this protocol is not a rocket science, the implementation is easy to understand.\n\nThe immediate gain of speeding up SPI flash programming by factor of four of five is a valid reason to proceed IMO.",
+      "parentUuid": "291eedd9_1775c4ae",
+      "revId": "d31db3b925f3eb2c73984e1aeb99c526ab5630c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

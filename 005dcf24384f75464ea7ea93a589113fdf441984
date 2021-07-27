@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37ccfa14_72de4609",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-27T22:37:38Z",
+      "side": 1,
+      "message": "after looking into it for some more time, I think the right thing to do is to separate flashrom and GSC bootstrap use.\n\nGSC bootstrap which indeed requires concurrent sending and receiving of data also requires a certain protocol encapsulation, of which flashrom is not aware and does not have to be aware, there is a dedicated utility for GSC bootstrapping.\n\nWith this in mind, I modified the patch to keep V1 for the bootstrap use case (not used in Chrome OS/Cr50), and add V2 for supporting faster flashrom operation.",
+      "parentUuid": "31ccf732_8f8b61f0",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e16c5c0a_3ce1209b",
@@ -420,6 +438,24 @@
       "side": 1,
       "message": "Are there SPI flash devices like this used in Chrome OS? This is not the case as far as I can tell, so I don\u0027t see a need to complicate the client implementation with a feature it does not require.\n\nShould a SPI flash chip like this be introduced, this processing mode could be added.",
       "parentUuid": "e05976e1_fc7bc3ad",
+      "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbe533fa_d160bf1b",
+        "filename": "chip/g/usb_spi.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-27T22:37:38Z",
+      "side": 1,
+      "message": "this question remains open: what are flash chips which require reads after long writes? Does any of Chrome OS devices use any of those chips? Can you please add a link to such device?",
+      "parentUuid": "177149eb_9fffba00",
       "revId": "005dcf24384f75464ea7ea93a589113fdf441984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },

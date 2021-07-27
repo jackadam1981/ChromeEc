@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7132fcf7_2850972b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-27T22:37:38Z",
+      "side": 1,
+      "message": "I spent some time looking into update of the GSC bootstrapping utility to run protocol version V2 and decided against it: its use is pretty limited, on top of that there are many installations in the field which will keep requiring V1, and GCS platform owners are very reluctant to accept changes to the utility for supporting V2, V1 is completely adequate.\n\nWith this in mind I changed this patch to keep V1 and V2 implementations, using V2 in Cr50 and V1 in other H1 based boards.",
+      "revId": "33a812cd65aa2e64769c5fe5f6c653b7c11cff6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
