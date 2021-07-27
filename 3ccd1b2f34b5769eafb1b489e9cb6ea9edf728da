@@ -166,6 +166,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73f706eb_bbe4e5e0",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T17:24:01Z",
+      "side": 1,
+      "message": "To clarify, the request is preserve the result on error here: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/kernel/next/drivers/platform/chrome/cros_ec_chardev.c;l\u003d305. Then return the result here as -EECRESULT - result.\n\nPseudo code:\nif (r \u003c 0) {\n  if (result !\u003d EC_COMMAND_RESULT_UNINITIALIZED)\n    return -EECRESULT - result;\n  return r;\n} else {\n  if (result \u003d\u003d EC_COMMAND_RESULT_UNINITIALIZED)\n    // Unexpected!!!\n    return -1;\n  if (result !\u003d EC_RES_SUCCESS)\n    return -EECRESULT - result;\n  return 0;\n}\n\nI can handle platform/ec changes. It\u0027d be helpful to get someone else to assist with the kernel changes.",
+      "parentUuid": "92584bfd_03359fe6",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
