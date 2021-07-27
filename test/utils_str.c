@@ -260,6 +260,33 @@ static int test_snprintf(void)
 	TEST_CHECK(strncmp(buffer, "1234", sizeof(buffer)));
 }
 
+static int test_strcspn(void)
+{
+	const char str1[] = "abc";
+	const char str2[] = "This is a string\nwith newlines!";
+
+	TEST_ASSERT(strcspn(str1, "a") == 0);
+	TEST_ASSERT(strcspn(str1, "b") == 1);
+	TEST_ASSERT(strcspn(str1, "c") == 2);
+	TEST_ASSERT(strcspn(str1, "ccc") == 2);
+	TEST_ASSERT(strcspn(str1, "cba") == 0);
+	TEST_ASSERT(strcspn(str1, "cb") == 1);
+	TEST_ASSERT(strcspn(str1, "bc") == 1);
+	TEST_ASSERT(strcspn(str1, "cbc") == 1);
+	TEST_ASSERT(strcspn(str1, "z") == strlen(str1));
+	TEST_ASSERT(strcspn(str1, "xyz") == strlen(str1));
+	TEST_ASSERT(strcspn(str1, "") == strlen(str1));
+
+	TEST_ASSERT(strcspn(str2, " ") == 4);
+	TEST_ASSERT(strcspn(str2, "\n") == 16);
+	TEST_ASSERT(strcspn(str2, "\n ") == 4);
+	TEST_ASSERT(strcspn(str2, "!") == strlen(str2)-1);
+	TEST_ASSERT(strcspn(str2, "z") == strlen(str2));
+	TEST_ASSERT(strcspn(str2, "z!") == strlen(str2)-1);
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, char **argv)
 {
 	test_reset();
@@ -279,6 +306,7 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_strncasecmp);
 	RUN_TEST(test_atoi);
 	RUN_TEST(test_snprintf);
+	RUN_TEST(test_strcspn);
 
 	test_print_result();
 }

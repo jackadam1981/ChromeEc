@@ -19,6 +19,25 @@ __stdlib_compat size_t strlen(const char *s)
 	return len;
 }
 
+__stdlib_compat size_t strcspn(const char *s, const char *reject)
+{
+	size_t i;
+	size_t reject_len = strlen(reject);
+
+	for (i = 0; s[i] != 0; i++) {
+		int found = 0;
+
+		for (size_t j = 0; j < reject_len; j++) {
+			if (s[i] == reject[j]) {
+				found = 1;
+				break;
+			}
+		}
+		if (found)
+			break;
+	}
+	return i;
+}
 
 __stdlib_compat size_t strnlen(const char *s, size_t maxlen)
 {
@@ -207,7 +226,7 @@ __stdlib_compat unsigned long long int strtoull(const char *nptr, char **endptr,
 			*endptr = (char *)nptr - 1;
 		return result;
 	}
-	
+
 	base = find_base(base, &c, &nptr);
 
 	while (c) {
