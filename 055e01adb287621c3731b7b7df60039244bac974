@@ -39,6 +39,30 @@
       },
       "revId": "055e01adb287621c3731b7b7df60039244bac974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b031629_4d6d1d82",
+        "filename": "include/config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 2805,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T22:06:38Z",
+      "side": 1,
+      "message": "Done. I don\u0027t think we want to pick one or the other. Both have pros and cons. I expect OEMs to make a choice. Blipper chooses a strict debouncer, for example.",
+      "parentUuid": "3f0794f6_888103fe",
+      "range": {
+        "startLine": 2804,
+        "startChar": 28,
+        "endLine": 2805,
+        "endChar": 34
+      },
+      "revId": "055e01adb287621c3731b7b7df60039244bac974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
