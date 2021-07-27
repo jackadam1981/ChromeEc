@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "527eee1d_9fb66d1a",
+        "filename": "baseboard/kukui/baseboard.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-07-27T07:12:39Z",
+      "side": 1,
+      "message": "Remove the sapce to keep comments aligned.\nalso line #111, #112.",
+      "range": {
+        "startLine": 110,
+        "startChar": 8,
+        "endLine": 110,
+        "endChar": 9
+      },
+      "revId": "240312f1264109e92af12f34ae7576c0f4e9f446",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
