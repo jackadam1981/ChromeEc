@@ -597,8 +597,13 @@ static void fw_config_tablet_mode(void)
 
 static void board_extpower(void)
 {
-	int extpower_present = extpower_is_present();
+	int extpower_present;
+
+	if (charge_manager_get_charger_voltage() >= 5000)
+		extpower_present = extpower_is_present();
+	else
+		extpower_present = 0;
 
 	gpio_set_level(GPIO_EC_ACOK_OTG, extpower_present);
 }
-DECLARE_HOOK(HOOK_AC_CHANGE, board_extpower, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_SECOND, board_extpower, HOOK_PRIO_DEFAULT);
