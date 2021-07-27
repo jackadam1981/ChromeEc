@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "36b48726_395bd51a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-07-27T16:17:32Z",
+      "side": 1,
+      "message": "I believe a better way to verify this patch is to check what `battery` ec command reports.\nCan you do it?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 50
+      },
+      "revId": "bb6c06c292cd38ad301edbcb224b9b02e44c815b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4d8f70f4_fc0acaa5",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
