@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c6bd9fa_8fa010bd",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-27T12:07:49Z",
+      "side": 1,
+      "message": "Remove print here.",
+      "revId": "eb0eb04d58196691e8fc1b82a16a5e4cc6b43f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16805d72_09cc7698",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-27T12:07:49Z",
+      "side": 1,
+      "message": "Delete 1 blank line. 1 line is sufficient.",
+      "revId": "eb0eb04d58196691e8fc1b82a16a5e4cc6b43f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce0d83ae_34c5560f",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-27T12:07:49Z",
+      "side": 1,
+      "message": "Delete print",
+      "revId": "eb0eb04d58196691e8fc1b82a16a5e4cc6b43f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad356a43_a231ff5a",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-27T12:07:49Z",
+      "side": 1,
+      "message": "Add parentheses around _addr variable to avoid potential macro problem.\n((_addr) \u003c\u003c 1)",
+      "revId": "eb0eb04d58196691e8fc1b82a16a5e4cc6b43f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "485238a8_be0a1332",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-07-27T12:07:49Z",
+      "side": 1,
+      "message": "Make this internal function static.",
+      "revId": "eb0eb04d58196691e8fc1b82a16a5e4cc6b43f9f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
