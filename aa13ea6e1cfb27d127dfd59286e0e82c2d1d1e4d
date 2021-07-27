@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94e4af7b_33845303",
+        "filename": "board/primus/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-27T01:45:22Z",
+      "side": 1,
+      "message": "is this true? if i\u0027m reading the npcx code correctly, then CONFIG_PS2\nonly selects PS2_CLK2 instead of ADC5 as the ALT function for this\npin without actually switching the pin to ALT mode.\nif you don\u0027t enable the ALT function on the pin, it remains a GPIO.",
+      "range": {
+        "startLine": 112,
+        "startChar": 53,
+        "endLine": 112,
+        "endChar": 61
+      },
+      "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
