@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f97438bc_3100cd99",
+        "filename": "board/voema/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-27T07:28:27Z",
+      "side": 1,
+      "message": "Gwendal, I referred to this code: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/motion_sense.c;l\u003d607\n\nIf my reading is correct, it looks like the requirement of the accel/gryo must strictly follow the order. ie. accel must be put to index 0,1 and gryo to index 2.\n\nCould we remove the restriction like this?\nstatic void update_sense_data(uint8_t *lpc_status, int *psample_id)\n{\n...\n\td \u003d 0;\n\ta \u003d 0;\n\tfor (s \u003d 0; s \u003c motion_sensor_count; s++) {\n\t\tsensor \u003d \u0026motion_sensors[s];\n\t\tif (sensor-\u003etype \u003d\u003d MOTIONSENSE_TYPE_ACCEL)\n\t\t\td \u003d a++;\n\t\telse if (sensor-\u003etype \u003d\u003d MOTIONSENSE_TYPE_GYRO)\n\t\t\td \u003d 2;\n\t\tASSERT(d \u003c\u003d 2);\n\n\t\tfor (i \u003d X; i \u003c\u003d Z; i++)\n\t\t\tlpc_data[1 + i + 3 * d] \u003d\n\t\t\t\tec_motion_sensor_clamp_i16(sensor-\u003exyz[i]);\n\t}\n}",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 6
+      },
+      "revId": "42df9a17c7fb435fb28f1645ae0accca777f8e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0fb8d74_9ed772ca",
         "filename": "board/voema/sensors.c",
         "patchSetId": 15
