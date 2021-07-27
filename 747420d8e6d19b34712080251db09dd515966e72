@@ -22,6 +22,30 @@
       },
       "revId": "747420d8e6d19b34712080251db09dd515966e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01e6f8c8_1d554de8",
+        "filename": "board/gimble/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-27T00:53:35Z",
+      "side": 1,
+      "message": "Should I add it to led_onoff_states.h?\nextern const int led_charge_lvl_1;\nextern const int led_charge_lvl_2;",
+      "parentUuid": "33878dd6_5613116d",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "747420d8e6d19b34712080251db09dd515966e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
