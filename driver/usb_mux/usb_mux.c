@@ -33,6 +33,9 @@ static int enable_debug_prints;
  */
 static uint32_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* Coordinate mux accesses by-port among the tasks */
+static struct mutex mux_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
+
 /* Device is in low power mode. */
 #define USB_MUX_FLAG_IN_LPM		BIT(0)
 
@@ -76,6 +79,9 @@ static int configure_mux(int port,
 		mux_state_t lcl_state;
 		const struct usb_mux_driver *drv = mux_ptr->driver;
 		bool ack_required = false;
+
+		/* Action time!  Lock this mux */
+		mutex_lock(&mux_lock[port]);
 
 		switch (config) {
 		case USB_MUX_INIT:
@@ -149,6 +155,9 @@ static int configure_mux(int port,
 			}
 
 		}
+
+		/* Unlock before any host command waits */
+		mutex_unlock(&mux_lock[port]);
 
 		if (ack_required) {
 			/* This should only be called from the PD task */
