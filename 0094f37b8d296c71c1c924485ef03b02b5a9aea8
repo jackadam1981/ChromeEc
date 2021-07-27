@@ -39,6 +39,30 @@
       },
       "revId": "0094f37b8d296c71c1c924485ef03b02b5a9aea8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b9e340c_433e7372",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-07-27T05:03:14Z",
+      "side": 1,
+      "message": "yes. this is not a scaling register.\nrefer to this register\ndatasheet is here\nhttps://b.corp.google.com/issues/182373694#comment16\n\nANA_EN_REG1 (0x21)\n\nbriefly\n0x1001 1011\n\n7th bit - CLS_DISABLE\n6:5 bit - UV_VBAT_SET  \n4th bit - UV_VBAT_EN\n3rd bit - BAT_SHRT_EN\n2:1 bits - OV_VBAT_SET  (01 \u003d 9.2V-9.6V for 2S and 13.5V-14.1V for 3S)\n0 th bit - OV_VBAT_EN \n\nthat is why both have the same value. hardware comparator has +/-5% tolerance.\npreviously when the value was set to (2:1 bits) 00, they were false tripping 2S battery 8.8V-9.2V.",
+      "parentUuid": "e5c5836e_e44d6b8c",
+      "range": {
+        "startLine": 170,
+        "startChar": 39,
+        "endLine": 170,
+        "endChar": 43
+      },
+      "revId": "0094f37b8d296c71c1c924485ef03b02b5a9aea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
