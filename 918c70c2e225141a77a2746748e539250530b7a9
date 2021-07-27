@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a499d8_da6883b6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-27T17:16:01Z",
+      "side": 1,
+      "message": "Thanks for adding!",
+      "revId": "918c70c2e225141a77a2746748e539250530b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d397d0c_b2ce5cc9",
+        "filename": "test/kb_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-27T17:16:01Z",
+      "side": 1,
+      "message": "how long is this key stroke \"held\"? It looks like it is only held instaneously until  we verify it. Shouldn\u0027t we hold it for 100ms (or something like that)?",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 19
+      },
+      "revId": "918c70c2e225141a77a2746748e539250530b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d9cf89c_e7d02d01",
+        "filename": "test/kb_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-27T17:16:01Z",
+      "side": 1,
+      "message": "it is also probably worth verifying that all of the other key_state_change values are 0 (here and other tests)",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 1
+      },
+      "revId": "918c70c2e225141a77a2746748e539250530b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
