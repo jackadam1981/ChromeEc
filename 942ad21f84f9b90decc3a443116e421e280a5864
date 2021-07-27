@@ -22,6 +22,30 @@
       },
       "revId": "942ad21f84f9b90decc3a443116e421e280a5864",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70f78394_331c2044",
+        "filename": "common/vboot_hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-27T21:35:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4b9c6c6_4b4f98f2",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 36
+      },
+      "revId": "942ad21f84f9b90decc3a443116e421e280a5864",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
