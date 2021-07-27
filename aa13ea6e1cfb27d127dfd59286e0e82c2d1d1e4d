@@ -46,6 +46,30 @@
       },
       "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d1ebf2a_54cf42e7",
+        "filename": "board/primus/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-27T04:24:32Z",
+      "side": 1,
+      "message": "In Primus, I defined GPIO37 as gpio GPIO_OUT_LOW and defined GPIO62/GPIO63 as PS2 ALT function and set CONFIG_PS2. After that, I found GPIO37 can not pull high using gpio_set_level(GPIO_37, 1).",
+      "parentUuid": "6219d9c1_973b7a6c",
+      "range": {
+        "startLine": 112,
+        "startChar": 53,
+        "endLine": 112,
+        "endChar": 61
+      },
+      "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
