@@ -70,6 +70,30 @@
       },
       "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a25bb5a4_9d15c829",
+        "filename": "board/primus/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-07-27T05:32:34Z",
+      "side": 1,
+      "message": "Your observation is correct. When CONFIG_PS2 is defined, the ATL entry for GPIO37 (and also GPIO34) are defined as PS2 function. In gpio.inc of Primus, I see GPIO34 is selected to ALT function (ADC). Unfortunately, when CONFIG_PS2 is defined, it is eventually selected to PS/2 and it will also influence GPIO37 as they share the same configuration bit.\nTo fix it, I perfer to remove the ALT entry for PS2-2 (ans also PS2-3)  in the gpio_chip-npcx9.h. However, it will restrict the hardware circuit implementation (i.e. only PS2-0 and PS2-1 can connect to AUX device).\n\n@caveh What do you think about my suggestion above? I looks like only PS2-0 (on Morphius) and PS2-1(Primus) are used in whole EC boards.",
+      "parentUuid": "4d1ebf2a_54cf42e7",
+      "range": {
+        "startLine": 112,
+        "startChar": 53,
+        "endLine": 112,
+        "endChar": 61
+      },
+      "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
