@@ -22,6 +22,30 @@
       },
       "revId": "ad789cf02f94fbe415615b49bbe1377f71af15cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61d52fc7_9311278f",
+        "filename": "zephyr/projects/volteer/volteer/chre.conf",
+        "patchSetId": 17
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-27T19:30:01Z",
+      "side": 1,
+      "message": "I abandoned that CL since we were moving forward with the variant redesign that Jack will be implementing. I\u0027m going to change this CL to a WIP while we wait for clarity from Zephyr if they\u0027ll be taking on the project upstream. This chre.conf will be migrated once Jack implements the changes to zmake that will allow inheritance.",
+      "parentUuid": "e84c63ae_67a2d2e5",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "ad789cf02f94fbe415615b49bbe1377f71af15cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
