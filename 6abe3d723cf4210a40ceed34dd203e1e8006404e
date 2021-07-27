@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c55b9024_8027621e",
+        "filename": "zephyr/dts/bindings/emul/zephyr,tcs3400.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-27T12:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a5aa70e_888a5e7d",
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64e8f875_c427a630",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-07-26T21:55:54Z",
       "side": 1,
       "message": "light sensor\n\nplease describe what features are supported in the emulator",
+      "range": {
+        "startLine": 40,
+        "startChar": 22,
+        "endLine": 40,
+        "endChar": 30
+      },
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9867ec2_c7328e8c",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-27T12:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64e8f875_c427a630",
       "range": {
         "startLine": 40,
         "startChar": 22,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2735673_374bba1c",
+        "filename": "zephyr/emul/emul_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-27T12:48:08Z",
+      "side": 1,
+      "message": "Changed these names. \u0027c\u0027 stands for clear light sensor.",
+      "parentUuid": "83d8674f_1ec9b1df",
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24eba499_968c461d",
@@ -75,6 +135,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a1481e3_a39df577",
+        "filename": "zephyr/emul/emul_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-27T12:48:08Z",
+      "side": 1,
+      "message": "Indeed LSB and MSB differs only last bit. Changed this function to use this feature.",
+      "parentUuid": "24eba499_968c461d",
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21fe0577_941fd2d8",
@@ -88,6 +166,30 @@
       "writtenOn": "2021-07-26T21:55:54Z",
       "side": 1,
       "message": "read",
+      "range": {
+        "startLine": 608,
+        "startChar": 18,
+        "endLine": 608,
+        "endChar": 24
+      },
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb961b62_9a4482dc",
+        "filename": "zephyr/emul/emul_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-27T12:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21fe0577_941fd2d8",
       "range": {
         "startLine": 608,
         "startChar": 18,
@@ -121,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4c9572_016583ac",
+        "filename": "zephyr/emul/emul_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-27T12:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c87f9b5_19a80ec3",
+      "range": {
+        "startLine": 732,
+        "startChar": 15,
+        "endLine": 732,
+        "endChar": 20
+      },
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a94d62a0_8a66767d",
@@ -134,6 +260,24 @@
       "writtenOn": "2021-07-26T21:55:54Z",
       "side": 1,
       "message": "I did suggest that we make the emulators into devices, but upstream was not keen on the idea.\n\nWhat do you think?",
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb66b44a_d5793e8e",
+        "filename": "zephyr/emul/emul_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-27T12:48:08Z",
+      "side": 1,
+      "message": "I am not very familiar with zephyr device API and what benefits would we have if emulators have device structure. If only reason for this is to have nicer emulator getter than this function, then there is option to make the i2c_emul_find() function from zephyrOS/drivers/i2c/i2c_emul.c a public API and use it instead.",
+      "parentUuid": "a94d62a0_8a66767d",
       "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -161,6 +305,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4816de_a97f5fbe",
+        "filename": "zephyr/include/emul/emul_tcs3400.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-27T12:48:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a04fe9a9_1a475aec",
+      "range": {
+        "startLine": 28,
+        "startChar": 14,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1b166090_7089f28e",
@@ -174,6 +342,24 @@
       "writtenOn": "2021-07-26T21:55:54Z",
       "side": 1,
       "message": "What do these two mean?",
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e386763_b5bda034",
+        "filename": "zephyr/include/emul/emul_tcs3400.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-07-27T12:48:08Z",
+      "side": 1,
+      "message": "Added comment for these defines. They are used in calculations of current sensor value that depends on ATIME and CONTROL registers set by driver.",
+      "parentUuid": "1b166090_7089f28e",
       "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
