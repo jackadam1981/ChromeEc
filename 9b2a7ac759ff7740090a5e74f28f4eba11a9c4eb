@@ -219,6 +219,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a5eabbb_bde4f13b",
+        "filename": "zephyr/test/drivers/include/test_framework.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-07-27T04:40:34Z",
+      "side": 1,
+      "message": "Waiting on https://github.com/zephyrproject-rtos/zephyr/pull/37192 now",
+      "parentUuid": "ac0fa303_88a6218e",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 14
+      },
+      "revId": "9b2a7ac759ff7740090a5e74f28f4eba11a9c4eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "48464949_0ad958f0",
         "filename": "zephyr/test/drivers/include/test_framework.h",
         "patchSetId": 2
