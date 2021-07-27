@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b76a828_4080a544",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T02:57:19Z",
+      "side": 1,
+      "message": "I think it\u0027s ok to use cookie1 for struct version. I think cookie1 and 2 are for manual binary inspection. The struct is placed after the vector table. So, it\u0027s locatable without cookies.\n\nI don\u0027t think we have a script or code which relies on these cookies for normal operation. Even if there is one, that\u0027s not a good design in my opinion. So, such code or a script should be fixed.\n\nec_commands.h is the single place where we put contract for external code. If cookie1 were used by external code, ec_commands.h would have CROS_EC_IMAGE_DATA_COOKIE1.",
+      "parentUuid": "fceaf013_725b41a8",
+      "range": {
+        "startLine": 19,
+        "startChar": 41,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9d114d8_3df002a8",
         "filename": "board/oak/board.h",
         "patchSetId": 6

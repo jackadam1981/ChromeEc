@@ -1,0 +1,212 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e28e23f3_1e8d8465",
+        "filename": "board/oak/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T02:57:19Z",
+      "side": 1,
+      "message": "Now we can have this for oak, right?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7adda591_5fef1aaf",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T02:57:19Z",
+      "side": 1,
+      "message": "If it works, please use if (IS_ENABLED(CHIP_HAS_RO_B)).",
+      "range": {
+        "startLine": 1282,
+        "startChar": 7,
+        "endLine": 1282,
+        "endChar": 20
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75bdf8ce_fc7f19c4",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T02:57:19Z",
+      "side": 1,
+      "message": "If it works, please use if (IS_ENABLED(CONFIG_RW_B)).",
+      "range": {
+        "startLine": 1304,
+        "startChar": 0,
+        "endLine": 1304,
+        "endChar": 18
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05151df6_07525299",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1566,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T02:57:19Z",
+      "side": 1,
+      "message": "nit: Let\u0027s use offsetof() for peace of mind: offsetof(struct ec_response_get_version, cros_fwid_rw).",
+      "range": {
+        "startLine": 1566,
+        "startChar": 44,
+        "endLine": 1566,
+        "endChar": 59
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2dc5fd9_2ce42a8b",
+        "filename": "common/util.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T02:57:19Z",
+      "side": 1,
+      "message": "Could you put this in a separate CL and add a unit test in test/utils.c?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d200b46f_fe87cbdd",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T02:57:19Z",
+      "side": 1,
+      "message": "If it\u0027s 0, why don\u0027t we print \"\"?\n\n  printf(\"RO cros fwid:  %s\\n\", strlen(r.cros_fwid_ro) ? r.cros_fwid_ro:\"\");\n  \nIf you are concerned about the backward compatibility, we can skip line 1108 through 1112 if cmdver \u003d\u003d 0.",
+      "range": {
+        "startLine": 1108,
+        "startChar": 5,
+        "endLine": 1108,
+        "endChar": 27
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12eb6d5_5c38d118",
+        "filename": "util/getversion.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T02:57:19Z",
+      "side": 1,
+      "message": "Hmm... Not sure if this is the most robust way. Isn\u0027t there any env var to make the path less prone to dir moves?",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 71
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0773d650_aea5ad6a",
+        "filename": "util/getversion.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T02:57:19Z",
+      "side": 1,
+      "message": "\u003e info: Double quote to prevent globbing and word splitting.\n\u003e \n\u003e https://github.com/koalaman/shellcheck/wiki/SC2086\n\nPlease fix.",
+      "parentUuid": "2faad850_525af946",
+      "range": {
+        "startLine": 217,
+        "startChar": 9,
+        "endLine": 217,
+        "endChar": 32
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36d70acb_f2cff61c",
+        "filename": "util/getversion.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-27T02:57:19Z",
+      "side": 1,
+      "message": "Do you think it\u0027s useful to put something here?",
+      "range": {
+        "startLine": 228,
+        "startChar": 30,
+        "endLine": 228,
+        "endChar": 34
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
