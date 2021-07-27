@@ -206,6 +206,8 @@ const char help_str[] =
 	"      Set the color of an LED or query brightness range\n"
 	"  lightbar [CMDS]\n"
 	"      Various lightbar control commands\n"
+	"  mfallow <port> <true | false\n"
+	"      Controls Multifunction choice during DP Altmode."
 	"  mkbpget <buttons|switches>\n"
 	"      Get MKBP buttons/switches supported mask and current state\n"
 	"  mkbpwakemask <get|set> <event|hostevent> [mask]\n"
@@ -8945,6 +8947,56 @@ static int cmd_keyconfig(int argc, char *argv[])
 	return 0;
 }
 
+static int cmd_mfallow(int argc, char *argv[])
+{
+	struct ec_params_mfallow p;
+	struct ec_response_pchg_count rcnt;
+	int port, port_count;
+	char *endptr;
+	int rv;
+
+	if (argc < 3) {
+		fprintf(stderr, "Usage: %s <port> <true | false\n", argv[0]);
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_PCHG_COUNT, 0, NULL, 0, &rcnt, sizeof(rcnt));
+	if (rv < 0) {
+		fprintf(stderr, "\nFailed to get port count: %d\n", rv);
+		return rv;
+	}
+	port_count = rcnt.port_count;
+
+	if (argc == 1) {
+		/* Usage.1 */
+		printf("%d\n", port_count);
+		return 0;
+	}
+
+	port = strtol(argv[1], &endptr, 0);
+	if ((endptr && *endptr) || port >= port_count) {
+		fprintf(stderr, "\nBad port index: %s\n", argv[1]);
+		return -1;
+	}
+
+	p.port = port;
+
+	if (!strcasecmp(argv[2], "true"))
+		p.mf_allow = 1;
+	else if (!strcasecmp(argv[2], "false"))
+		p.mf_allow = 0;
+	else {
+		fprintf(stderr, "Invalid param: '%s'\n", argv[2]);
+		return -1;
+	}
+
+	rv = ec_command(EC_CMD_DP_MF_ALLOW, 0, &p, sizeof(p), NULL, 0);
+	if (rv < 0)
+		return rv;
+	printf("Success.\n");
+	return 0;
+}
+
 static const char * const mkbp_button_strings[] = {
 	[EC_MKBP_POWER_BUTTON] = "Power",
 	[EC_MKBP_VOL_UP] = "Volume up",
@@ -9703,7 +9755,6 @@ static int cmd_pchg(int argc, char *argv[])
 	port = strtol(argv[1], &e, 0);
 	if ((e && *e) || port >= port_count) {
 		fprintf(stderr, "\nBad port index: %s\n", argv[1]);
-		cmd_pchg_help(argv[0]);
 		return -1;
 	}
 
@@ -10745,6 +10796,7 @@ const struct command commands[] = {
 	{"kbpress", cmd_kbpress},
 	{"keyconfig", cmd_keyconfig},
 	{"keyscan", cmd_keyscan},
+	{"mfallow", cmd_mfallow},
 	{"mkbpget", cmd_mkbp_get},
 	{"mkbpwakemask", cmd_mkbp_wake_mask},
 	{"motionsense", cmd_motionsense},

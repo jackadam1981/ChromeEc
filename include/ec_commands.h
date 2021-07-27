@@ -392,7 +392,6 @@ extern "C" {
 #define EC_ACPI_MEM_TBMD_MASK          0x1
 #define EC_ACPI_MEM_DDPN_SHIFT         1
 #define EC_ACPI_MEM_DDPN_MASK          0x7
-
 /*
  * Report device features. Uses the same format as the host command, except:
  *
@@ -5632,6 +5631,16 @@ struct ec_response_usb_pd_power_info {
 #define EC_CMD_CHARGE_PORT_COUNT 0x0105
 struct ec_response_charge_port_count {
 	uint8_t port_count;
+} __ec_align1;
+
+/*
+ *
+ *
+ */
+#define EC_CMD_DP_MF_ALLOW 0x010F
+struct ec_params_mfallow {
+	uint8_t port;
+	uint8_t mf_allow;
 } __ec_align1;
 
 /* Write USB-PD device FW */
