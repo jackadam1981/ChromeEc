@@ -66,6 +66,9 @@
 #define GPIO_SWITCHCAP_PG GPIO_SWITCHCAP_GPIO_1
 #define GPIO_ACOK_OD GPIO_CHG_ACOK_OD
 
+#define CONFIG_BATTERY_DEVICE_CHEMISTRY "LION"
+#define CONFIG_BATTERY_FUEL_GAUGE
+#define CONFIG_BATTERY_REVIVE_DISCONNECT
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
@@ -92,6 +95,10 @@ enum pwm_channel {
 	PWM_CH_COUNT
 };
 
+enum battery_type {
+	BATTERY_BMSPow,
+	BATTERY_TYPE_COUNT,
+};
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
