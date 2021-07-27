@@ -16,6 +16,29 @@
       "message": "Hi Tam, Bob, could you help review this? Thanks a lot!",
       "revId": "48d53be47bcbb8300e7c27ace6b879c52cb5e46c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da70a6f4_e79a3845",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-07-27T05:54:32Z",
+      "side": 1,
+      "message": "In theory, we need to take care of the previous board settings. So can we directly change it like this?",
+      "range": {
+        "startLine": 453,
+        "startChar": 1,
+        "endLine": 453,
+        "endChar": 26
+      },
+      "revId": "48d53be47bcbb8300e7c27ace6b879c52cb5e46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
