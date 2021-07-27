@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d98a7ee_769e927e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-27T22:34:32Z",
+      "side": 1,
+      "message": "Thanks for putting the test and code together!\n\nJust a few more minor test comment. Code look good though!",
+      "revId": "abcb66b7970ed6ee1eb79376ac713422e8c3d25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "862c965c_55855e9a",
+        "filename": "test/kb_scan.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-27T22:34:32Z",
+      "side": 1,
+      "message": "how long is this key stroke \"held\"? It looks like it is only held instaneously until  we verify it. Shouldn\u0027t we hold it for 100ms (or something like that)?\n\n___\nmock_key(1, 1, 0) isn\u0027t called. So, the key is pressed and left pressed.\n___\n\nAh, I see, that happens in expect_keychange. It holds it for KEYDOWN_DELAY_MS. It is a little subtle here at the call site that you are expecting that. It seems like it should be more explicit here in the test since you are trying to verify a long key press still registers.\n\nIt looks like you are just verifying this instantly after no wait, and then I would expect the key to not be registered yet",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 47
+      },
+      "revId": "abcb66b7970ed6ee1eb79376ac713422e8c3d25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "306512f1_eaa2544d",
+        "filename": "test/kb_scan.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-27T22:34:32Z",
+      "side": 1,
+      "message": "it is also probably worth verifying that all of the other key_state_change values are 0 (here and other tests)\n\n--\nThat\u0027s checked by expect_keychange (i.e. fifo_add_count).\n\n--\n\nIt only verifies that fifo_add_count is greater than old count, but not by how much. We could have extra key presses in the other col/rows.\n\nIt sounds like you could assert that TEST_EQ(fifo_add_count, 1, \"%d\");",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 42
+      },
+      "revId": "abcb66b7970ed6ee1eb79376ac713422e8c3d25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce4bd4fe_29ff9e0f",
+        "filename": "test/kb_scan.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-27T22:34:32Z",
+      "side": 1,
+      "message": "I didn\u0027t catch it at first, but all of these should use the TEST_EQ or TEST_NE to make it easier to debug a failing test (those macros print out more debugging help)",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 12
+      },
+      "revId": "abcb66b7970ed6ee1eb79376ac713422e8c3d25c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
