@@ -63,6 +63,30 @@
       },
       "revId": "0094f37b8d296c71c1c924485ef03b02b5a9aea8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28c3cd44_572c508d",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-27T05:10:24Z",
+      "side": 1,
+      "message": "Ah, I was looking at meas reg 0x21 instead of chg. My mistake.",
+      "parentUuid": "2b9e340c_433e7372",
+      "range": {
+        "startLine": 170,
+        "startChar": 39,
+        "endLine": 170,
+        "endChar": 43
+      },
+      "revId": "0094f37b8d296c71c1c924485ef03b02b5a9aea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
