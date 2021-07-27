@@ -260,6 +260,33 @@ static int test_snprintf(void)
 	TEST_CHECK(strncmp(buffer, "1234", sizeof(buffer)));
 }
 
+static int test_strcspn(void)
+{
+	const char str1[] = "abc";
+	const char str2[] = "This is a string\nwith newlines!";
+
+	TEST_EQ(strcspn(str1, "a"), 0lu, "%lu");
+	TEST_EQ(strcspn(str1, "b"), 1lu, "%lu");
+	TEST_EQ(strcspn(str1, "c"), 2lu, "%lu");
+	TEST_EQ(strcspn(str1, "ccc"), 2lu, "%lu");
+	TEST_EQ(strcspn(str1, "cba"), 0lu, "%lu");
+	TEST_EQ(strcspn(str1, "cb"), 1lu, "%lu");
+	TEST_EQ(strcspn(str1, "bc"), 1lu, "%lu");
+	TEST_EQ(strcspn(str1, "cbc"), 1lu, "%lu");
+	TEST_EQ(strcspn(str1, "z"), strlen(str1), "%lu");
+	TEST_EQ(strcspn(str1, "xyz"), strlen(str1), "%lu");
+	TEST_EQ(strcspn(str1, ""), strlen(str1), "%lu");
+
+	TEST_EQ(strcspn(str2, " "), 4lu, "%lu");
+	TEST_EQ(strcspn(str2, "\n"), 16lu, "%lu");
+	TEST_EQ(strcspn(str2, "\n "), 4lu, "%lu");
+	TEST_EQ(strcspn(str2, "!"), strlen(str2)-1, "%lu");
+	TEST_EQ(strcspn(str2, "z"), strlen(str2), "%lu");
+	TEST_EQ(strcspn(str2, "z!"), strlen(str2)-1, "%lu");
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, char **argv)
 {
 	test_reset();
@@ -279,6 +306,7 @@ void run_test(int argc, char **argv)
 	RUN_TEST(test_strncasecmp);
 	RUN_TEST(test_atoi);
 	RUN_TEST(test_snprintf);
+	RUN_TEST(test_strcspn);
 
 	test_print_result();
 }
