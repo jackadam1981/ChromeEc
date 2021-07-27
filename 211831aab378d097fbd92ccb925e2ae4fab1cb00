@@ -39,6 +39,29 @@
       "message": "remove this line",
       "revId": "211831aab378d097fbd92ccb925e2ae4fab1cb00",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ae1fc4_85a511dc",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-27T13:28:18Z",
+      "side": 1,
+      "message": "Do you verify this? I think this will make the runtime error? Could you please double check it?",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 3
+      },
+      "revId": "211831aab378d097fbd92ccb925e2ae4fab1cb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
