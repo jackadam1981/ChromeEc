@@ -68,6 +68,30 @@
       },
       "revId": "7c819f9649d849befedb09c8b3d5bde7ba2a5d7c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8e05f12_a8deff0a",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-07-27T00:39:30Z",
+      "side": 1,
+      "message": "Ah, the change is done in other CL in the stack (CL:3029802).",
+      "parentUuid": "2e2de54b_39e2a949",
+      "range": {
+        "startLine": 353,
+        "startChar": 0,
+        "endLine": 354,
+        "endChar": 36
+      },
+      "revId": "7c819f9649d849befedb09c8b3d5bde7ba2a5d7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
