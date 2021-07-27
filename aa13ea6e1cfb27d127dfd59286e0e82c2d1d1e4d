@@ -94,6 +94,30 @@
       },
       "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d084f52c_4cf15dca",
+        "filename": "board/primus/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-27T06:22:21Z",
+      "side": 1,
+      "message": "wow, i\u0027m glad i looped you in. i didn\u0027t realize these two pins shared\na single ALT control bit for PS2.\n\nso ya, maybe CONFIG_PS2 should be enhanced to allow controlling PS2 ports\nindividually so pins that are not used for PS2 in a design are not forced into PS2 mode.\n\nlooks like PS2_CL2/DAT2 and PS2_CL3 would be affected. can we add a\nconfig option to enable PS2-2 and PS3-3 explicitly? since no board\nappears to be using PS2-2 or PS2-3, just default to disabled.\nif some design ends up needing PS2-2 or PS2-3, they can explicitly\nenable the config for that port.\n\nit\u0027s probably OK to add the config to chip/npcx/config_chip*.h.\nthis is obscure enough that it does not need to be in\ninclude/config.h:\n\n#undef NPCX_PS2_MODULE_2\n#undef NPCX_PS2_MODULE_3\n\nfeel free to suggest a better name 😊",
+      "parentUuid": "a25bb5a4_9d15c829",
+      "range": {
+        "startLine": 112,
+        "startChar": 53,
+        "endLine": 112,
+        "endChar": 61
+      },
+      "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
