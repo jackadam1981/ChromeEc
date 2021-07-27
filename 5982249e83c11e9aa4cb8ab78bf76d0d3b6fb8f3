@@ -22,6 +22,30 @@
       },
       "revId": "5982249e83c11e9aa4cb8ab78bf76d0d3b6fb8f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73bb2a25_d013676d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-27T20:26:50Z",
+      "side": 1,
+      "message": "Very fair point. I can definitely change in the commit description, but I\u0027d rather keep this change concise. I can post a followup CL to change in code too.",
+      "parentUuid": "827a948c_6ca17c4b",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "5982249e83c11e9aa4cb8ab78bf76d0d3b6fb8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
