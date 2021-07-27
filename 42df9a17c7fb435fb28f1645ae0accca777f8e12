@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0fb8d74_9ed772ca",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-27T05:58:17Z",
+      "side": 1,
+      "message": "Could you please use the IS_ENABLED(BOARD_VOEMA) instead of using the #ifndef?\n\nFor example, you can change the code like this:\n\nelse if (IS_ENABLED(BOARD_VOEMA) \u0026\u0026 get_cbi_ssfc_base_sensor() \u003d\u003d SSFC_SENSOR_BASE_ICM426XX) {\n\t\tgpio_enable_interrupt(GPIO_EC_MB_ACCEL_INT_L);\n\t\tmotion_sensors[BASE_ACCEL] \u003d icm_base_accel;\n\t\tmotion_sensors[BASE_GYRO] \u003d icm_base_gyro;\n\t\tccprints(\"BASE ACCEL/GYRO is ICM426XX\");\n\t\t\nWith this change, you don\u0027t need to wrap the code with `#ifndef BOARD_VOEMA_NPCX796FC` and can let the compiler to optimize the code. It should be working. Please try it.",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 6
+      },
+      "revId": "42df9a17c7fb435fb28f1645ae0accca777f8e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
