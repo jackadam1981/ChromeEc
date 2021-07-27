@@ -45,6 +45,30 @@
       },
       "revId": "42df9a17c7fb435fb28f1645ae0accca777f8e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2577fd4e_23de2a79",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-07-27T07:39:21Z",
+      "side": 1,
+      "message": "It will cause build error when build voema_npcx796fc.\nicm_base_accel and icm_base_gyro is undeclared in voema_npcx796fc.",
+      "parentUuid": "a0fb8d74_9ed772ca",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 6
+      },
+      "revId": "42df9a17c7fb435fb28f1645ae0accca777f8e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
