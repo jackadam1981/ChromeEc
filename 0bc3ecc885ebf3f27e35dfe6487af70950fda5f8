@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "137e9363_10214acb",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 16
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-27T14:38:07Z",
+      "side": 1,
+      "message": "I think the third_party/chre in full.xml needs to add the \"firmware\" group to match platform/ec.\nhttp://cs/chromeos_public/manifest/full.xml?l\u003d207\u0026rcl\u003dc34386c4a70f57d9f4fa901d6c6ce53b90cafbd9",
+      "parentUuid": "db34aa07_02133a85",
+      "revId": "0bc3ecc885ebf3f27e35dfe6487af70950fda5f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4debbc22_bc026fce",
         "filename": "zephyr/subsys/chre/CMakeLists.txt",
         "patchSetId": 16
