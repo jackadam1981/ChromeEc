@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c234f24b_d5ae984d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-27T16:34:58Z",
+      "side": 1,
+      "message": "I am not sure if the vectors start at base or if an offset needs to be added to get to the reset vector",
+      "revId": "1a1ce3219a3482fe92471943da747c725de88e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
