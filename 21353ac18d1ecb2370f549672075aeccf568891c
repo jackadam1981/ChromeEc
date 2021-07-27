@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4366459c_74ef389b",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-27T23:45:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4af6f4fb_746addb3",
+      "range": {
+        "startLine": 67,
+        "startChar": 16,
+        "endLine": 67,
+        "endChar": 22
+      },
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c6077a3_9ee5b86f",
@@ -78,6 +102,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a6c95b7_fd8fb70d",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-27T23:45:53Z",
+      "side": 1,
+      "message": "We could set it from RW.",
+      "parentUuid": "a479b626_a1f6a249",
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4bef379_737d6c46",
         "filename": "common/main.c",
         "patchSetId": 2
@@ -89,6 +131,30 @@
       "writtenOn": "2021-07-23T01:10:04Z",
       "side": 1,
       "message": "If you use the dependency, we only need to check CONFIG_EC_OWNS_CBI_WP here.",
+      "range": {
+        "startLine": 178,
+        "startChar": 5,
+        "endLine": 179,
+        "endChar": 38
+      },
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a65df3_cc2c201e",
+        "filename": "common/main.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-27T23:45:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4bef379_737d6c46",
       "range": {
         "startLine": 178,
         "startChar": 5,
@@ -112,6 +178,30 @@
       "writtenOn": "2021-07-23T01:10:04Z",
       "side": 1,
       "message": "This macro means something iff CONFIG_CBI_EEPROM is defined, right? Why don\u0027t we check it and #error if CONFIG_CBI_EEPROM isn\u0027t defined? And we probably need _EEPROM_ in the name.",
+      "range": {
+        "startLine": 5175,
+        "startChar": 7,
+        "endLine": 5175,
+        "endChar": 28
+      },
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9edd09f5_27d8858d",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5175,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-27T23:45:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3574f17_9495d907",
       "range": {
         "startLine": 5175,
         "startChar": 7,
@@ -147,6 +237,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d574e9e1_926c7036",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6369,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-27T23:45:53Z",
+      "side": 1,
+      "message": "I\u0027ve added it to the comment where the option is introduced.",
+      "parentUuid": "ddd52898_92152732",
+      "range": {
+        "startLine": 6369,
+        "startChar": 40,
+        "endLine": 6369,
+        "endChar": 53
+      },
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ae6008e_b1d88779",
         "filename": "include/config.h",
         "patchSetId": 2
@@ -170,6 +284,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27ff3386_a307bf64",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6379,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-27T23:45:53Z",
+      "side": 1,
+      "message": "It\u0027s already been changed? If CONFIG_EC_OWNS_CBI_WP is defined, this check is skipped. We will always want to bypass the check regardless of CONFIG_SYSTEM_UNLOCKED.",
+      "parentUuid": "3ae6008e_b1d88779",
+      "range": {
+        "startLine": 6379,
+        "startChar": 2,
+        "endLine": 6379,
+        "endChar": 44
+      },
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a18459b_a0fa1224",
         "filename": "include/cros_board_info.h",
         "patchSetId": 2
@@ -181,6 +319,24 @@
       "writtenOn": "2021-07-23T03:48:19Z",
       "side": 1,
       "message": "remove this line?",
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e982600_5adcfacf",
+        "filename": "include/cros_board_info.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-27T23:45:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a18459b_a0fa1224",
       "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
