@@ -122,6 +122,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d785987c_e56efe7e",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 808,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:31:05Z",
+      "side": 1,
+      "message": "Fixed formatting issue on patch3",
+      "parentUuid": "367ce70f_6b2392c7",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c9b8c356_8192b903",
         "filename": "driver/accelgyro_icm40608.c",
         "patchSetId": 2
