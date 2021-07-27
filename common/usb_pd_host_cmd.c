@@ -140,6 +140,8 @@ DECLARE_HOST_COMMAND(EC_CMD_USB_PD_SET_AMODE,
 		     hc_remote_pd_set_amode,
 		     EC_VER_MASK(0));
 
+
+
 static enum ec_status hc_remote_pd_discovery(struct host_cmd_handler_args *args)
 {
 	const uint8_t *port = args->params;

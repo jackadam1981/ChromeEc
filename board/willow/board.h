@@ -48,6 +48,8 @@
 
 #define CONFIG_USB_MUX_IT5205
 
+#undef CONFIG_CMD_MFALLOW
+
 /* Motion Sensors */
 #ifndef VARIANT_KUKUI_NO_SENSORS
 #define CONFIG_ACCEL_KX022	/* Lid accel */
