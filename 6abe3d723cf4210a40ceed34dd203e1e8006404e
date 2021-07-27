@@ -284,6 +284,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d6a6c0c_f9914150",
+        "filename": "zephyr/emul/emul_tcs3400.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-07-27T16:37:42Z",
+      "side": 1,
+      "message": "The original reason was so we could put the emulators in the devicetree. This would make it easier to configure the different emulators. But we seem to be going OK for now.\n\nPlease keep it in mind as we could revisit it down the track.",
+      "parentUuid": "fb66b44a_d5793e8e",
+      "revId": "6abe3d723cf4210a40ceed34dd203e1e8006404e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a04fe9a9_1a475aec",
         "filename": "zephyr/include/emul/emul_tcs3400.h",
         "patchSetId": 2
