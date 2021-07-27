@@ -550,6 +550,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6416929c_8b59781a",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T12:20:19Z",
+      "side": 1,
+      "message": "Added unknown WHO_AM_I print statement",
+      "parentUuid": "3d63c8cd_1517169a",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "71ac16e6_76bc7fc3",
         "filename": "driver/accelgyro_icm40608.h",
         "patchSetId": 2
