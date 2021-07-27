@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae3fd82c_744ff7db",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-07-27T06:21:29Z",
+      "side": 1,
+      "message": "For each phase before PVT, the hardware with two componets",
+      "revId": "48d53be47bcbb8300e7c27ace6b879c52cb5e46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da70a6f4_e79a3845",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-07-27T05:54:32Z",
       "side": 1,
       "message": "In theory, we need to take care of the previous board settings. So can we directly change it like this?",
+      "range": {
+        "startLine": 453,
+        "startChar": 1,
+        "endLine": 453,
+        "endChar": 26
+      },
+      "revId": "48d53be47bcbb8300e7c27ace6b879c52cb5e46c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8506c4b_440e4c08",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1438826
+      },
+      "writtenOn": "2021-07-27T06:21:29Z",
+      "side": 1,
+      "message": "In the current code, there is no compatibility between PS8805 and PS8755. In each phase before PVT, both ICs are included in the hardware. Considering the previous phases, there are more DUTs using PS8805, so set the product id to PS8805 directly.",
+      "parentUuid": "da70a6f4_e79a3845",
       "range": {
         "startLine": 453,
         "startChar": 1,
