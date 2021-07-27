@@ -22,6 +22,30 @@
       },
       "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6219d9c1_973b7a6c",
+        "filename": "board/primus/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-07-27T02:57:09Z",
+      "side": 1,
+      "message": "It is true for the pin with only one ALT function.\nHowever, if it is complete not true if a pin has multiple ALT functions.\nAs GPIO34/GPIO37 is a multi-function pin (i.e. ADC or PS2), the ALT function\ntable entry is guarded by \"#ifdef CONFIG_PS2\" to determine if the ALT entry is ADC or PS2. See more detail:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/chip/npcx/gpio_chip-npcx9.h#215.",
+      "parentUuid": "94e4af7b_33845303",
+      "range": {
+        "startLine": 112,
+        "startChar": 53,
+        "endLine": 112,
+        "endChar": 61
+      },
+      "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
