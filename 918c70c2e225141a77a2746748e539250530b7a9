@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c54a4eb_7d15fcbd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-27T22:29:42Z",
+      "side": 1,
+      "message": "Please squash this into the parent commit (i.e. submit the test and code change in the same CL)",
+      "revId": "918c70c2e225141a77a2746748e539250530b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d397d0c_b2ce5cc9",
         "filename": "test/kb_scan.c",
         "patchSetId": 6
@@ -55,6 +72,30 @@
       "side": 1,
       "message": "mock_key(1, 1, 0) isn\u0027t called. So, the key is pressed and left pressed.",
       "parentUuid": "5d397d0c_b2ce5cc9",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 19
+      },
+      "revId": "918c70c2e225141a77a2746748e539250530b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8634fc9b_1a05d9d4",
+        "filename": "test/kb_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-27T22:29:42Z",
+      "side": 1,
+      "message": "Ah, I see, that happens in expect_keychange. It holds it for KEYDOWN_DELAY_MS. It is a little subtle here at the call site that you are expecting that. It seems like it should be more explicit here in the test since you are trying to verify a long key press still registers.\n\nIt looks like you are just verifying this instantly after no wait, and then I would expect the key to not be registered yet",
+      "parentUuid": "7648280b_7284703e",
       "range": {
         "startLine": 247,
         "startChar": 0,
@@ -107,6 +148,53 @@
         "startChar": 1,
         "endLine": 250,
         "endChar": 1
+      },
+      "revId": "918c70c2e225141a77a2746748e539250530b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef597da_3a3957cc",
+        "filename": "test/kb_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-27T22:29:42Z",
+      "side": 1,
+      "message": "It only verifies that fifo_add_count is greater than old count, but not by how much. We could have extra key presses in the other col/rows.\n\nIt sounds like you could assert that TEST_EQ(fifo_add_count, 1, \"%d\");",
+      "parentUuid": "a7562015_9392e15c",
+      "range": {
+        "startLine": 249,
+        "startChar": 1,
+        "endLine": 250,
+        "endChar": 1
+      },
+      "revId": "918c70c2e225141a77a2746748e539250530b7a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b010b46_ece192ac",
+        "filename": "test/kb_scan.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1259838
+      },
+      "writtenOn": "2021-07-27T22:29:42Z",
+      "side": 1,
+      "message": "I didnt\u0027 catch it at first, but all of these should use the TEST_EQ or TEST_NE to make it easier to debug a failing test (those macros print out more debugging help)",
+      "range": {
+        "startLine": 259,
+        "startChar": 1,
+        "endLine": 259,
+        "endChar": 12
       },
       "revId": "918c70c2e225141a77a2746748e539250530b7a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
