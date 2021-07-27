@@ -1529,4 +1529,22 @@ static int command_mfallow(int argc, char **argv)
 
 DECLARE_CONSOLE_COMMAND(mfallow, command_mfallow, "port [true | false]",
 		"Controls Multifunction choice during DP Altmode.");
+
+static enum ec_status hc_remote_pd_mf_allow(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_mfallow *p = args->params;
+
+	ccprintf("Port: %d multi function allowed is %d ",
+		p->port, p->mf_allow);
+
+	if (p->port >= board_get_usb_pd_port_count())
+		return EC_RES_INVALID_PARAM;
+
+	dp_port_mf_allow[p->port] = p->mf_allow ? true : false;
+
+	return EC_RES_SUCCESS;
+}
+DECLARE_HOST_COMMAND(EC_CMD_DP_MF_ALLOW,
+		      hc_remote_pd_mf_allow,
+		      EC_VER_MASK(0));
 #endif
