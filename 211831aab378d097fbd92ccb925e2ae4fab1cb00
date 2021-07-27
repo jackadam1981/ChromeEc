@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b370c47_3cc9a67a",
+        "filename": "board/voema/gpio.inc",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-27T10:50:42Z",
+      "side": 1,
+      "message": "should be space instead of tab",
+      "range": {
+        "startLine": 32,
+        "startChar": 23,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "211831aab378d097fbd92ccb925e2ae4fab1cb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "010648d5_cc5b3ba9",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-27T10:50:42Z",
+      "side": 1,
+      "message": "remove this line",
+      "revId": "211831aab378d097fbd92ccb925e2ae4fab1cb00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
