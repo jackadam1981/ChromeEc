@@ -22,6 +22,30 @@
       },
       "revId": "f351cfefbe78644ac3cf3229eb9cecaeb444a066",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cb23043_c973637c",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-27T22:31:08Z",
+      "side": 1,
+      "message": "I see b:179900857 has already been created to make this more generic.\n\nI\u0027ve added a comment on that bug to also handle the refactor of system_run_image_copy_with_flags().  But the help text for this Kconfig still needs to be fixed.",
+      "parentUuid": "df16cd15_0100588a",
+      "range": {
+        "startLine": 34,
+        "startChar": 29,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "f351cfefbe78644ac3cf3229eb9cecaeb444a066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
