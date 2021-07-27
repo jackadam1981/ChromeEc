@@ -16,6 +16,29 @@
       "message": "Looks good, I\u0027ll just give Aseda a chance to look over it as well",
       "revId": "0094f37b8d296c71c1c924485ef03b02b5a9aea8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5c5836e_e44d6b8c",
+        "filename": "driver/charger/sm5803.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-27T03:51:28Z",
+      "side": 1,
+      "message": "Is this supposed to be the same as the value for 2S?",
+      "range": {
+        "startLine": 170,
+        "startChar": 39,
+        "endLine": 170,
+        "endChar": 43
+      },
+      "revId": "0094f37b8d296c71c1c924485ef03b02b5a9aea8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
