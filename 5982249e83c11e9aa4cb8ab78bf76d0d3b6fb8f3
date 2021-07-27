@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "827a948c_6ca17c4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-07-27T08:58:55Z",
+      "side": 1,
+      "message": "Could you change values to 0x82 and 0x92. Before I looked into code I thought it was decimal, not hex which is a bit confusing.",
+      "range": {
+        "startLine": 10,
+        "startChar": 15,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "5982249e83c11e9aa4cb8ab78bf76d0d3b6fb8f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
