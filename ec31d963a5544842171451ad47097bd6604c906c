@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d0102b_c4ae28f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "modified",
+      "parentUuid": "adfe8217_9e83524c",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5bfcf2ef_9e7aaafd",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d2e6d983_8b56a876",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 801,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "70b9612e_a15dbf2b",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85e8d466_2aa69f0d",
         "filename": "driver/accelgyro_icm40608.c",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2021-07-26T20:33:32Z",
       "side": 1,
       "message": "Do not use ret \u003d here, since we have to ignore the result (this configuration can lead to interference on the bus)",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a88b17c_7f340a06",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "removed ret \u003d",
+      "parentUuid": "85e8d466_2aa69f0d",
       "revId": "ec31d963a5544842171451ad47097bd6604c906c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +142,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c8842b11_342e45ef",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 804,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "Added ret check code at patch3",
+      "parentUuid": "6c82ae0d_30c2b407",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf65e761_d6130bb0",
         "filename": "driver/accelgyro_icm40608.c",
         "patchSetId": 2
@@ -99,6 +171,24 @@
       "writtenOn": "2021-07-26T20:33:32Z",
       "side": 1,
       "message": "ret \u003d 0 is useless here.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8267f10a_be9d1e7f",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "bf65e761_d6130bb0",
       "revId": "ec31d963a5544842171451ad47097bd6604c906c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -157,6 +247,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10ff1efd_6ed0a6e2",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "c9b8c356_8192b903",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5aa6bf36_cefe7623",
         "filename": "driver/accelgyro_icm40608.c",
         "patchSetId": 2
@@ -168,6 +276,24 @@
       "writtenOn": "2021-07-26T20:33:32Z",
       "side": 1,
       "message": "Avoid print that are expensive.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33e562cd_7bcd3408",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "5aa6bf36_cefe7623",
       "revId": "ec31d963a5544842171451ad47097bd6604c906c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -191,6 +317,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a152deca_c7a54fcb",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "50df0051_4b85a6be",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d2138d93_502cbc02",
         "filename": "driver/accelgyro_icm40608.c",
         "patchSetId": 2
@@ -202,6 +346,24 @@
       "writtenOn": "2021-07-26T20:33:32Z",
       "side": 1,
       "message": "Keep this one which is useful.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d1cb077_248c2769",
+        "filename": "driver/accelgyro_icm40608.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 857,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "removed",
+      "parentUuid": "d2138d93_502cbc02",
       "revId": "ec31d963a5544842171451ad47097bd6604c906c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -225,6 +387,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "302bf36b_91b5cc3b",
+        "filename": "driver/accelgyro_icm40608.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "Changed to 0x68 and also changed ICM40608_I2C_ADDRESS with shift 1 bit",
+      "parentUuid": "71ac16e6_76bc7fc3",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9472ba53_b99ebfab",
         "filename": "driver/accelgyro_icm40608.h",
         "patchSetId": 2
@@ -236,6 +416,24 @@
       "writtenOn": "2021-07-26T20:33:32Z",
       "side": 1,
       "message": "If this is shifted I2C adress, it should be d2.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0fb7ae6_de48e042",
+        "filename": "driver/accelgyro_icm40608.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "Changed",
+      "parentUuid": "9472ba53_b99ebfab",
       "revId": "ec31d963a5544842171451ad47097bd6604c906c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -259,6 +457,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d7242005_172f0093",
+        "filename": "driver/accelgyro_icm_common.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "added \u003c\u003c 1 for shift",
+      "parentUuid": "ea49c095_e08e03bd",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e38d806d_220005e9",
         "filename": "driver/accelgyro_icm_common.h",
         "patchSetId": 2
@@ -270,6 +486,24 @@
       "writtenOn": "2021-07-26T20:33:32Z",
       "side": 1,
       "message": "Formatting issue, delete tabulation.",
+      "revId": "ec31d963a5544842171451ad47097bd6604c906c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e48b71a_0d38a299",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-27T08:34:24Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "e38d806d_220005e9",
       "revId": "ec31d963a5544842171451ad47097bd6604c906c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
