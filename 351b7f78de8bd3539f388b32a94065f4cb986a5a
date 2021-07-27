@@ -170,6 +170,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "53d788d9_e8e1bb4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T23:29:21Z",
+      "side": 1,
+      "message": "Actually COOKIE1/2 cannot be changed. It\u0027s checked in system_get_image_data. This will cause a failure when the active image is old and the non-active image new. \n\nI added COOKIE3, but I\u0027m only using the top 3 bytes, so the first byte can be used to version in the future.",
+      "parentUuid": "5b76a828_4080a544",
+      "range": {
+        "startLine": 19,
+        "startChar": 41,
+        "endLine": 19,
+        "endChar": 55
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9d114d8_3df002a8",
         "filename": "board/oak/board.h",
         "patchSetId": 6
@@ -252,6 +276,30 @@
       "side": 1,
       "message": "I see the size checked in system_get_image_data (https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/ec/common/system.c;l\u003d755), are you seeing it  checked anywhere else?",
       "parentUuid": "a4f3dfd4_bf6c2c97",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 20
+      },
+      "revId": "351b7f78de8bd3539f388b32a94065f4cb986a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "733a7435_995eb34e",
+        "filename": "include/cros_version.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T23:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f04db3c4_ce11d24a",
       "range": {
         "startLine": 32,
         "startChar": 0,

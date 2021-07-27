@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37943332_5e2f1554",
+        "filename": "board/oak/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T23:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e28e23f3_1e8d8465",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 31
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7adda591_5fef1aaf",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-27T02:57:19Z",
       "side": 1,
       "message": "If it works, please use if (IS_ENABLED(CHIP_HAS_RO_B)).",
+      "range": {
+        "startLine": 1282,
+        "startChar": 7,
+        "endLine": 1282,
+        "endChar": 20
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fd962cf_a9b52a81",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1282,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T23:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7adda591_5fef1aaf",
       "range": {
         "startLine": 1282,
         "startChar": 7,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "947d02cf_40616d6e",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T23:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75bdf8ce_fc7f19c4",
+      "range": {
+        "startLine": 1304,
+        "startChar": 0,
+        "endLine": 1304,
+        "endChar": 18
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05151df6_07525299",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "578f8051_a51c015c",
+        "filename": "common/system.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1566,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T23:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05151df6_07525299",
+      "range": {
+        "startLine": 1566,
+        "startChar": 44,
+        "endLine": 1566,
+        "endChar": 59
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2dc5fd9_2ce42a8b",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-07-27T02:57:19Z",
       "side": 1,
       "message": "Could you put this in a separate CL and add a unit test in test/utils.c?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0aa43a3_a3efce56",
+        "filename": "common/util.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T23:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2dc5fd9_2ce42a8b",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1518fe42_4da1ee21",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T23:29:21Z",
+      "side": 1,
+      "message": "There are four scenarios that need to be handled. \n\n1) command version \u003d\u003d 0 -- Skip cros fwid output\n2) stand-alone ec build outside of cros_sdk -- \"CROS_FWID_MISSING\"\n3) non-active image does not have cros fwid -- \"CROS_FWID_MISSING\"\n4) CONFIG_CROS_FWID_VERSION is disabled -- Skip cros fwid output\n\nAdded clause in ectool for #1. Added #2 to getversion.sh. Added #3 to system_get_cros_fwid in system.c. Keeping strlen check in ectool.c for #4 (could switch to CROS_FWID_MISSING if that makes more sense).",
+      "parentUuid": "d200b46f_fe87cbdd",
+      "range": {
+        "startLine": 1108,
+        "startChar": 5,
+        "endLine": 1108,
+        "endChar": 27
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e12eb6d5_5c38d118",
         "filename": "util/getversion.sh",
         "patchSetId": 7
@@ -152,6 +296,30 @@
       "writtenOn": "2021-07-27T02:57:19Z",
       "side": 1,
       "message": "Hmm... Not sure if this is the most robust way. Isn\u0027t there any env var to make the path less prone to dir moves?",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 71
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0264da4e_4234fec3",
+        "filename": "util/getversion.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T23:29:21Z",
+      "side": 1,
+      "message": "Changed to an absolute path from mnt/host/source instead of a relative path from this script. This follows what\u0027s done by other scripts that reference chromeos_version.sh. If the path to chromeos_version.sh changes this script will break, but so will the other scripts, so it should be obvious.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:infra/recipes/recipe_modules/cros_version/api.py;l\u003d14\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/factory/devtools/mk/toolkit_version.sh;l\u003d13\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/sys-boot/coreboot/coreboot-9999.ebuild;l\u003d181",
+      "parentUuid": "e12eb6d5_5c38d118",
       "range": {
         "startLine": 28,
         "startChar": 26,
@@ -186,6 +354,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b08a50d8_39aef202",
+        "filename": "util/getversion.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T23:29:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0773d650_aea5ad6a",
+      "range": {
+        "startLine": 217,
+        "startChar": 9,
+        "endLine": 217,
+        "endChar": 32
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "36d70acb_f2cff61c",
@@ -199,6 +391,30 @@
       "writtenOn": "2021-07-27T02:57:19Z",
       "side": 1,
       "message": "Do you think it\u0027s useful to put something here?",
+      "range": {
+        "startLine": 228,
+        "startChar": 30,
+        "endLine": 228,
+        "endChar": 34
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0380290_a86b552d",
+        "filename": "util/getversion.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-27T23:29:21Z",
+      "side": 1,
+      "message": "CROS_FWID_MISSING?",
+      "parentUuid": "36d70acb_f2cff61c",
       "range": {
         "startLine": 228,
         "startChar": 30,
