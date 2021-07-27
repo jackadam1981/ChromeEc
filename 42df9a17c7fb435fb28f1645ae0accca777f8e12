@@ -69,6 +69,30 @@
       },
       "revId": "42df9a17c7fb435fb28f1645ae0accca777f8e12",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed2c695d_3187dce1",
+        "filename": "board/voema/sensors.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-27T07:46:29Z",
+      "side": 1,
+      "message": "Do you remove all of the `#ifndef BOARD_VOEMA_NPCX796FC` from the code except the path for the `motion_interrupt()`?",
+      "parentUuid": "2577fd4e_23de2a79",
+      "range": {
+        "startLine": 326,
+        "startChar": 0,
+        "endLine": 332,
+        "endChar": 6
+      },
+      "revId": "42df9a17c7fb435fb28f1645ae0accca777f8e12",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
