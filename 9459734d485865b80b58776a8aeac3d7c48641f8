@@ -16,6 +16,24 @@
       "message": "Nit, probably not worth changing: Wouldn\u0027t it make more sense if src_cap_count were -1 to indicate that we haven\u0027t gotten source caps yet and 0 to indicate that we consider the partner to have 0 source caps for whatever reason?",
       "revId": "9459734d485865b80b58776a8aeac3d7c48641f8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfc93bd4_835c96bc",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-27T15:05:33Z",
+      "side": 1,
+      "message": "Either one kind of makes about the same amount of sense?  I think I lean towards 0 for not-yet-probed just because we tend to go for 0\u0027s on init generally.  As long as we\u0027re consistent internally and report both as 0 to anyone outside the task then I think we\u0027re okay.",
+      "parentUuid": "089f47b2_a48df7cf",
+      "revId": "9459734d485865b80b58776a8aeac3d7c48641f8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
