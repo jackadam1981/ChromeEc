@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df16cd15_0100588a",
+        "filename": "zephyr/Kconfig.system",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-27T21:27:18Z",
+      "side": 1,
+      "message": "system_get_fw_reset_vector is a chip defined function, not a board defined function.\n\nLooking at system_run_image_copy_with_flags(), we may want to convert this to a Kconfig choice.\n\nchoice PLATFORM_EC_SYSJUMP_TYPE\n     default PLATFORM_EC_SYSJUMP_BOOTROM if PLATFORM_EC_EXTERNAL_STORAGE\n     default PLATFORM_EC_SYSJUMP_CHIP_DEFINED if SOC_FAMILY_RISCV_ITE\n     default PLATFORM_EC_SYSJUMP_ARM\n \nPLATFORM_EC_SYSJUMP_BOOTROM: Chip bootrom code used for sysjump. Required for ECs that execute code in RAM.\nPLATFORM_EC_SYSJUMP_CHIP_DEFINED: Chip defined reset vector\nPLATFORM_EC_SYSJUMP_ARM: Standard ARM reset vector (reset vector address expected to be located at 4 byte offset into the image).\n\nThis would require renaming CONFIG_FW_RESET_VECTOR to CONFIG_SYSJUMP_CHIP_DEFINED.  And a minor refactor of system_run_image_copy_with_flags() to use the new config names.",
+      "range": {
+        "startLine": 34,
+        "startChar": 29,
+        "endLine": 34,
+        "endChar": 43
+      },
+      "revId": "f351cfefbe78644ac3cf3229eb9cecaeb444a066",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
