@@ -33,6 +33,24 @@
       "message": "This should be added as an API to the cros_system driver, and the shim to call that driver can be added to zephyr/shim/src/system.c",
       "revId": "1a1ce3219a3482fe92471943da747c725de88e99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43496b47_5b953fb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-27T22:15:13Z",
+      "side": 1,
+      "message": "Currently, this function is only defined for ITE and is guarded via the CONFIG_FW_RESET_VECTOR option.\n\nb:179900857 has been opened to clean some of this up.  Let\u0027s modify the cros_system driver as part of that effort.",
+      "parentUuid": "e97d4130_a0b264bd",
+      "revId": "1a1ce3219a3482fe92471943da747c725de88e99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
