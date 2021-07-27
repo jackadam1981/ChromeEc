@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "332d9412_4301bb11",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-07-27T23:19:30Z",
+      "side": 1,
+      "message": "What happens if CHARGE_CONTROL_IDLE doesn\u0027t work for whatever reason (or soc goes up due to a change in temperature), and we go above sustain_soc.upper? Is this a case that we should handle?",
+      "revId": "17c7aa45c6c71fec9dc7b3ea172333e7e911bdcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
