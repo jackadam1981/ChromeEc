@@ -46,6 +46,10 @@ static struct mutex mux_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
 static task_id_t ack_task[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	[0 ... CONFIG_USB_PD_PORT_MAX_COUNT - 1] = TASK_ID_INVALID };
 
+static void perform_mux_set(int port, mux_state_t mux_mode,
+			    enum usb_switch usb_mode, int polarity);
+static void perform_mux_hpd_update(int port, mux_state_t hpd_state);
+
 enum mux_config_type {
 	USB_MUX_INIT,
 	USB_MUX_LOW_POWER,
@@ -67,6 +71,119 @@ static int init_mux_mutex(const struct device *dev)
 }
 SYS_INIT(init_mux_mutex, POST_KERNEL, 50);
 #endif /* CONFIG_ZEPHYR */
+
+/* Define a USB mux task ID for the purpose of linking */
+#ifndef HAS_TASK_USB_MUX
+#define TASK_ID_USB_MUX TASK_ID_INVALID
+#endif
+
+/*
+ * USB mux task
+ *
+ * Since USB mux sets can take extended periods of time (on the order of 100s of
+ * ms for some muxes), run a small task to complete those mux sets in order to
+ * not block the PD task.  Run HPD sets from this task as well, since they
+ * should be sequenced behind setting up the mux pins for DP.
+ */
+
+/* Note: Set up queue depth as power of 2 for bitwise magic */
+#define MUX_QUEUE_DEPTH		BIT(CONFIG_USB_PD_PORT_MAX_COUNT)
+#define MUX_QUEUE_DEPTH_MASK	(MUX_QUEUE_DEPTH - 1)
+
+struct mux_queue_entry {
+	int port;
+	enum mux_config_type type;
+	mux_state_t mux_mode;		/* For both HPD and mux set */
+	enum usb_switch usb_config;	/* Set only */
+	int polarity;			/* Set only */
+};
+
+struct mux_task_queue {
+	struct mutex queue_lock;
+
+	/*
+	 * Incrementing integers which must be masked by the queue depth to
+	 * index into the queue.
+	 */
+	int head;
+	int tail;
+
+	struct mux_queue_entry entries[MUX_QUEUE_DEPTH];
+};
+
+/*
+ * Note: test builds won't optimize out the mux task code and thereby require
+ * the queue to link
+ */
+#ifndef TEST_BUILD
+STATIC_IF(HAS_TASK_USB_MUX)
+	struct mux_task_queue mux_queue;
+#else
+	static struct mux_task_queue mux_queue;
+#endif
+
+__maybe_unused static void mux_task_enqueue(int port, enum mux_config_type type,
+					    mux_state_t mux_mode,
+					    enum usb_switch usb_config,
+					    int polarity)
+{
+	if (!IS_ENABLED(HAS_TASK_USB_MUX))
+		return;
+
+	mutex_lock(&mux_queue.queue_lock);
+
+	/* Add to queue as long as we have space */
+	if ((mux_queue.head - mux_queue.tail) < MUX_QUEUE_DEPTH) {
+		int new = mux_queue.head & MUX_QUEUE_DEPTH_MASK;
+
+		mux_queue.entries[new].port = port;
+		mux_queue.entries[new].type = type;
+		mux_queue.entries[new].mux_mode = mux_mode;
+		mux_queue.entries[new].usb_config = usb_config;
+		mux_queue.entries[new].polarity = polarity;
+
+		mux_queue.head++;
+
+		task_wake(TASK_ID_USB_MUX);
+	} else {
+		CPRINTS("Error: Dropping port %d mux %d", port, type);
+	}
+
+	mutex_unlock(&mux_queue.queue_lock);
+}
+
+__maybe_unused void usb_mux_task(void *u)
+{
+	while (1) {
+		struct mux_queue_entry const *next;
+
+		if (mux_queue.head == mux_queue.tail) {
+			task_wait_event(-1);
+		} else {
+			/*
+			 * Process our tail item.  Leave it in the queue until
+			 * we've completed its operation.
+			 */
+			next = &mux_queue.entries[mux_queue.tail &
+				MUX_QUEUE_DEPTH_MASK];
+
+			if (next->type == USB_MUX_SET_MODE)
+				perform_mux_set(next->port, next->mux_mode,
+						next->usb_config,
+						next->polarity);
+			else if (next->type == USB_MUX_HPD_UPDATE)
+				perform_mux_hpd_update(next->port,
+						       next->mux_mode);
+			else
+				CPRINTS("Error: Unknown mux task type: %d",
+					next->type);
+
+			mutex_lock(&mux_queue.queue_lock);
+			mux_queue.tail++;
+			mutex_unlock(&mux_queue.queue_lock);
+		}
+	}
+}
 
 /* Configure the MUX */
 static int configure_mux(int port,
@@ -180,8 +297,15 @@ static int configure_mux(int port,
 		mutex_unlock(&mux_lock[port]);
 
 		if (ack_required) {
-			/* This should only be called from the PD task */
-			assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
+			/*
+			 * This should only be called from the PD task or usb
+			 * mux task
+			 */
+			if (IS_ENABLED(HAS_TASK_USB_MUX))
+				assert(task_get_current() == TASK_ID_USB_MUX);
+			else
+				assert(port ==
+				       TASK_ID_TO_PD_PORT(task_get_current()));
 
 			/*
 			 * Note: This task event could be generalized for more
@@ -261,21 +385,13 @@ void usb_mux_init(int port)
 		atomic_clear_bits(&flags[port], USB_MUX_FLAG_IN_LPM);
 }
 
-/*
- * TODO(crbug.com/505480): Setting muxes often involves I2C transcations,
- * which can block. Consider implementing an asynchronous task.
- */
-void usb_mux_set(int port, mux_state_t mux_mode,
-		 enum usb_switch usb_mode, int polarity)
+static void perform_mux_set(int port, mux_state_t mux_mode,
+			    enum usb_switch usb_mode, int polarity)
 {
 	mux_state_t mux_state;
 	const int should_enter_low_power_mode =
 		(mux_mode == USB_PD_MUX_NONE &&
 		usb_mode == USB_SWITCH_DISCONNECT);
-
-	if (port >= board_get_usb_pd_port_count()) {
-		return;
-	}
 
 	/* Perform initialization if not initialized yet */
 	if (!(flags[port] & USB_MUX_FLAG_INIT))
@@ -315,6 +431,45 @@ void usb_mux_set(int port, mux_state_t mux_mode,
 	 */
 	if (should_enter_low_power_mode)
 		enter_low_power_mode(port);
+}
+
+void usb_mux_set(int port, mux_state_t mux_mode,
+		 enum usb_switch usb_mode, int polarity)
+{
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
+	/* Block if we have no mux task, but otherwise queue it up and return */
+	if (IS_ENABLED(HAS_TASK_USB_MUX))
+		mux_task_enqueue(port, USB_MUX_SET_MODE, mux_mode,
+				 usb_mode, polarity);
+	else
+		perform_mux_set(port,  mux_mode, usb_mode, polarity);
+}
+
+bool usb_mux_set_completed(int port)
+{
+	bool sets_pending = false;
+	int i;
+
+	/* No mux task, no items waiting to process */
+	if (!IS_ENABLED(HAS_TASK_USB_MUX))
+		return true;
+
+	/* Lock the queue so we can scroll through the items left to do */
+	mutex_lock(&mux_queue.queue_lock);
+
+	for (i = mux_queue.tail; i < mux_queue.head; i++) {
+		struct mux_queue_entry const *check =
+				&mux_queue.entries[i & MUX_QUEUE_DEPTH_MASK];
+
+		if (check->port == port && check->type == USB_MUX_SET_MODE)
+			sets_pending = true;
+	}
+
+	mutex_unlock(&mux_queue.queue_lock);
+
+	return !sets_pending;
 }
 
 mux_state_t usb_mux_get(int port)
@@ -364,14 +519,9 @@ void usb_mux_flip(int port)
 	configure_mux(port, USB_MUX_SET_MODE, &mux_state);
 }
 
-void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
+static void perform_mux_hpd_update(int port, mux_state_t hpd_state)
 {
-	mux_state_t mux_state = (hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
-				(hpd_irq ? USB_PD_MUX_HPD_IRQ : 0);
-
-	if (port >= board_get_usb_pd_port_count()) {
-		return;
-	}
+	mux_state_t get_state;
 
 	/* Perform initialization if not initialized yet */
 	if (!(flags[port] & USB_MUX_FLAG_INIT))
@@ -380,13 +530,29 @@ void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
 	if (exit_low_power_mode(port) != EC_SUCCESS)
 		return;
 
-	configure_mux(port, USB_MUX_HPD_UPDATE, &mux_state);
+	configure_mux(port, USB_MUX_HPD_UPDATE, &hpd_state);
 
-	if (!configure_mux(port, USB_MUX_GET_MODE, &mux_state)) {
-		mux_state |= (hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
-			(hpd_irq ? USB_PD_MUX_HPD_IRQ : 0);
-		configure_mux(port, USB_MUX_SET_MODE, &mux_state);
+	/* TODO(b/195773400): See if this can be removed */
+	if (!configure_mux(port, USB_MUX_GET_MODE, &get_state)) {
+		get_state |= hpd_state;
+		configure_mux(port, USB_MUX_SET_MODE, &get_state);
 	}
+}
+
+void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq)
+{
+	mux_state_t mux_state = (hpd_lvl ? USB_PD_MUX_HPD_LVL : 0) |
+				(hpd_irq ? USB_PD_MUX_HPD_IRQ : 0);
+
+	if (port >= board_get_usb_pd_port_count())
+		return;
+
+	/* Send to the mux task if present to maintain sequencing with sets */
+	if (IS_ENABLED(HAS_TASK_USB_MUX))
+		mux_task_enqueue(port, USB_MUX_HPD_UPDATE, mux_state,
+				 0, 0);
+	else
+		perform_mux_hpd_update(port, mux_state);
 }
 
 int usb_mux_retimer_fw_update_port_info(void)
