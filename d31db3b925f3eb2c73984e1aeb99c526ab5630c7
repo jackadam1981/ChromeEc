@@ -106,6 +106,24 @@
       "parentUuid": "5d3058a0_84ab636b",
       "revId": "d31db3b925f3eb2c73984e1aeb99c526ab5630c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7670e9da_f7712df8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-07-28T18:02:59Z",
+      "side": 1,
+      "message": "after talking to Vadim I think I understand the issue better now.\n\nthe protocol implementation by Vadim (a) is not based on the common codebase and (b) has a limitation of supporting writes only up to a certain size for write-read transactions. \n\nfor (a): so, it\u0027s not a question of different protocol specs, it\u0027s  question of different implementation of the same spec, and the spec is indeed the same in both cases (except for (b) below), having a different code for cr50 is required to deal with embedded limitations we have on cr50 (we are limited in sram and flash size) + we need to be as zero-copy as possible for performance reasons (CCD flashrom speed is important). so, having a 2nd implementation in this case makes sense. if there is a common implementation in the future that drops the need for an intermediate buffer, we can switch to that. \n\nfor (b): there are currently no flash chips used by chromebooks with H1 that require read-after-write (and as such write-read transactions with write part bigger than a singe chunk). not having the code that handles this unnecessary situation is important for cr50 (we are very hard-pressed on flash size, so we cut dead code whenever possible). if a chromebook with a flash chip that requires this mode is ever added, *then* we can add this support for cr50 implementation of the protocol spec. this is not the 1st time when supporting a new chromebook model requires changes in cr50 (straps is the simplest example of why we might need to change cr50 for new models) and we do have update to min cr50 version as a required step at chromebook factory. so, if this functionality ever becomes needed, it can be added w/o issues. \n\ngiven (a) and (b) and the importance of CCD flash speedup discussed above, let\u0027s land the improvement. in terms of maintaining that protocol implementation for cr50, it would be done by cr50 team in any case. nobody else can debug and make changes to cr50 code anyways if an issue is discovered or new features need to be supported. so, we are not affecting maintainability by having a separate implementation.",
+      "parentUuid": "469d3954_50873661",
+      "revId": "d31db3b925f3eb2c73984e1aeb99c526ab5630c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
