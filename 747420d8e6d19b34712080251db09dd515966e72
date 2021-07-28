@@ -94,6 +94,30 @@
       },
       "revId": "747420d8e6d19b34712080251db09dd515966e72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80307087_2d391149",
+        "filename": "board/gimble/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-28T02:48:38Z",
+      "side": 1,
+      "message": "Got it. I will create another CL for it. I will `make buildall` it before I submit the CL.",
+      "parentUuid": "6308ac88_939d883d",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 43
+      },
+      "revId": "747420d8e6d19b34712080251db09dd515966e72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
