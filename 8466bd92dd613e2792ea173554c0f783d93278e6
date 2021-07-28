@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdd9327e_21a745d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T20:45:08Z",
+      "side": 1,
+      "message": "Can you please also add a test in test/flash_write_protect.c?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "8466bd92dd613e2792ea173554c0f783d93278e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4281ac8e_b1ecf028",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T20:45:08Z",
+      "side": 1,
+      "message": "Is this not EC_FLASH_PROTECT_RO_NOW? I think we toggle SW WP on dogfood devices remotely (to lock CBI).",
+      "range": {
+        "startLine": 954,
+        "startChar": 6,
+        "endLine": 954,
+        "endChar": 36
+      },
+      "revId": "8466bd92dd613e2792ea173554c0f783d93278e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
