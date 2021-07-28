@@ -16,6 +16,24 @@
       "message": "What happens if CHARGE_CONTROL_IDLE doesn\u0027t work for whatever reason (or soc goes up due to a change in temperature), and we go above sustain_soc.upper? Is this a case that we should handle?",
       "revId": "17c7aa45c6c71fec9dc7b3ea172333e7e911bdcd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a3259e0_741ff0e9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1746,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-07-28T20:30:16Z",
+      "side": 1,
+      "message": "If charge control idle doesn\u0027t work, we may just end up charging to max battery. We test that charge control idle works properly, so this shouldn\u0027t occur, except in rare instances where hardware may be at fault.",
+      "parentUuid": "332d9412_4301bb11",
+      "revId": "17c7aa45c6c71fec9dc7b3ea172333e7e911bdcd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
