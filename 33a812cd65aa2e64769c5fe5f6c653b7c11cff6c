@@ -66,6 +66,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ab2d652_3af69617",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-07-28T20:45:50Z",
+      "side": 1,
+      "message": "Vadim, can you add a description of the read count limits changing depending on the transaction write count.\n\n    if transaction_write_count \u003e START_PAYLOAD_SIZE:\n        max_read \u003d 0\n    else:\n        max_read \u003d USB_SPI_PKT_ID_RSP_USB_SPI_CONFIG\u0027s max_read",
+      "revId": "33a812cd65aa2e64769c5fe5f6c653b7c11cff6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "828c91fc_12625f05",
         "filename": "chip/g/usb_spi_v2.c",
         "patchSetId": 7
