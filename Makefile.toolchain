@@ -74,7 +74,10 @@ CFLAGS_TEST=$(if $(TEST_BUILD),-DTEST_BUILD=$(EMPTY) \
                        -fno-experimental-new-pass-manager -DTEST_FUZZ=$(EMPTY))
 CFLAGS_COVERAGE=$(if $(TEST_COVERAGE),--coverage \
 				      -DTEST_COVERAGE=$(EMPTY),)
-CFLAGS_HOSTTEST=$(if $(TEST_HOSTTEST),-DTEST_HOSTTEST=$(EMPTY),) -Iinclude/driver
+# Build host tests in 32-bit mode for a better chance of catching things like
+# 64-bit write tearing.
+CFLAGS_HOSTTEST=$(if $(TEST_HOSTTEST),-DTEST_HOSTTEST=$(EMPTY),) \
+                -Iinclude/driver -m32
 CFLAGS_DEFINE=-DOUTDIR=$(out)/$(BLD) -DCHIP=$(CHIP) -DBOARD_TASKFILE=$(_tsk_lst_file) \
               -DBOARD=$(BOARD) -DCORE=$(CORE) -DPROJECT=$(PROJECT) \
               -DCHIP_VARIANT=$(CHIP_VARIANT) -DCHIP_FAMILY=$(UC_CHIP_FAMILY) \
@@ -147,7 +150,7 @@ LDFLAGS=-nostdlib -g -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
 BUILD_LDFLAGS=$(LIBFTDIUSB_LDLIBS)
 HOST_LDFLAGS=$(LIBFTDIUSB_LDLIBS)
 HOST_TEST_LDFLAGS=-Wl,-T core/host/host_exe.lds -lrt -pthread -rdynamic -lm\
-		  -fuse-ld=bfd \
+		  -fuse-ld=bfd -m32 \
 		  $(if $(TEST_COVERAGE), --coverage,) \
 		  $(if $(TEST_ASAN), -fsanitize=address) \
 		  $(if $(TEST_MSAN), -fsanitize=memory) \
