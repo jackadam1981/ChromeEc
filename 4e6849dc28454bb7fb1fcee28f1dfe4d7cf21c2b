@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cf0303f_b607654e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-28T21:09:27Z",
+      "side": 1,
+      "message": "sorry for the churn, I meant to consolidate usb_spi.h before finalizing this, so I did now.\n\nWill re-test the final image for various H1 firmware supporting bot V1 and V2.",
+      "revId": "4e6849dc28454bb7fb1fcee28f1dfe4d7cf21c2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

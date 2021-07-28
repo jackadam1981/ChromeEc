@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "c64ee412_a4515239",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-28T21:09:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29a70f93_2191c98d",
+      "range": {
+        "startLine": 7,
+        "startChar": 27,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "33a812cd65aa2e64769c5fe5f6c653b7c11cff6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7132fcf7_2850972b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab20729_b2943e18",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-28T21:09:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cb2885e_f45d2a5e",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "33a812cd65aa2e64769c5fe5f6c653b7c11cff6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ab2d652_3af69617",
@@ -77,6 +125,24 @@
       "writtenOn": "2021-07-28T20:45:50Z",
       "side": 1,
       "message": "Vadim, can you add a description of the read count limits changing depending on the transaction write count.\n\n    if transaction_write_count \u003e START_PAYLOAD_SIZE:\n        max_read \u003d 0\n    else:\n        max_read \u003d USB_SPI_PKT_ID_RSP_USB_SPI_CONFIG\u0027s max_read",
+      "revId": "33a812cd65aa2e64769c5fe5f6c653b7c11cff6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b9a8d2_b3277486",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-28T21:09:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab2d652_3af69617",
       "revId": "33a812cd65aa2e64769c5fe5f6c653b7c11cff6c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +170,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "693151d4_c91bec35",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-28T21:09:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "828c91fc_12625f05",
+      "range": {
+        "startLine": 312,
+        "startChar": 21,
+        "endLine": 312,
+        "endChar": 25
+      },
+      "revId": "33a812cd65aa2e64769c5fe5f6c653b7c11cff6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4c4e110_71d0585f",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-07-28T18:02:59Z",
       "side": 1,
       "message": "typo",
+      "range": {
+        "startLine": 313,
+        "startChar": 20,
+        "endLine": 313,
+        "endChar": 28
+      },
+      "revId": "33a812cd65aa2e64769c5fe5f6c653b7c11cff6c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5a299a3_eee24d76",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-28T21:09:27Z",
+      "side": 1,
+      "message": "I actually removed the CONFIG_STREAM_SIGNATURE block as Cr50 does not need to support it and spiflash uses V1 of the protocol.",
+      "parentUuid": "a4c4e110_71d0585f",
       "range": {
         "startLine": 313,
         "startChar": 20,
