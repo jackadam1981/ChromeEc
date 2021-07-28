@@ -142,6 +142,30 @@
       },
       "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9774b003_885b9681",
+        "filename": "board/primus/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-28T02:40:53Z",
+      "side": 1,
+      "message": "Hi CH, can you share the CL link with me once you have created? This will impact primus power on because GPIO37 in primus is PCH_SYS_PWROK. We may need it be merged sonner. Thank you.",
+      "parentUuid": "3b7e6eae_ef7a2624",
+      "range": {
+        "startLine": 112,
+        "startChar": 53,
+        "endLine": 112,
+        "endChar": 61
+      },
+      "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
