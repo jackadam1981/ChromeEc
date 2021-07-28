@@ -190,6 +190,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edc0248b_09726da1",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T01:17:58Z",
+      "side": 1,
+      "message": "\u003e it\u0027s unconventional to do #3 (i.e., both report an error *and* return data from kernel to user space)\n\nAnd we return only one value to a sub-command (i.e. -EECRESULT - result or r).\n\nIt\u0027s not clear to me why we need the kernel to interpret EC_RES_* (and make ioctl return r \u003c 0). For example, cros_ec_get_host_event_wake_mask does:\n\n\tret \u003d send_command(ec_dev, msg);\n\tif (ret \u003e\u003d 0) {\n\t\tif (msg-\u003eresult \u003d\u003d EC_RES_INVALID_COMMAND)\n\t\t\treturn -EOPNOTSUPP;\n\t\tif (msg-\u003eresult !\u003d EC_RES_SUCCESS)\n\t\t\treturn -EPROTO;\n\t}\n\nI feel it\u0027s not kernel\u0027s business. The kernel should focus on handling errors, which happen within the kernel (e.g. failure in resource allocation). IIUC, once send_command returns successfully, the kernel should return r \u003d 0. There is no more resource to allocate, right? Thus, there is no such case as r \u003c 0 AND result !\u003d EC_RES_UNINITIALIZED.\n\nI don\u0027t know everything about ioctl but am I missing anything?",
+      "parentUuid": "73f706eb_bbe4e5e0",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
