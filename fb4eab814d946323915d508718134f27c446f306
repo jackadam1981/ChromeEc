@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "712d5233_9fbf3dca",
+        "filename": "core/host/timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-28T21:30:14Z",
+      "side": 1,
+      "message": "On the one hand, it feels slightly odd that this would start boot_time.val at 0-0xFFFFFFF0.  On the other, I assume the math works out so it\u0027s fine?",
+      "revId": "fb4eab814d946323915d508718134f27c446f306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
