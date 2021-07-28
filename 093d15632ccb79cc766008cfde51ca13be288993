@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbd3bf77_9ec8efa8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-07-28T22:01:09Z",
+      "side": 1,
+      "message": "Makes sense, though it may be worth double checking with the vendor whether this is expected behavior.  From the bug title, are we using this driver for a SM chip?  Are they the same vendor as the NX chip, or just a compatible register set? ",
+      "revId": "093d15632ccb79cc766008cfde51ca13be288993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
