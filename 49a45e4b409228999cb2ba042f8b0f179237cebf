@@ -16,6 +16,24 @@
       "message": "#else ?",
       "revId": "49a45e4b409228999cb2ba042f8b0f179237cebf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff9bc9b6_7061e8cf",
+        "filename": "baseboard/cherry/baseboard.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-07-28T08:54:20Z",
+      "side": 1,
+      "message": "no need, cherry also need mt6360 driver",
+      "parentUuid": "a10cf9be_43464901",
+      "revId": "49a45e4b409228999cb2ba042f8b0f179237cebf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
