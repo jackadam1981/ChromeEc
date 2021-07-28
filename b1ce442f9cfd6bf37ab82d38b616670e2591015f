@@ -94,6 +94,30 @@
       },
       "revId": "b1ce442f9cfd6bf37ab82d38b616670e2591015f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f80bf26_7a75c1c6",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-28T16:45:00Z",
+      "side": 1,
+      "message": "Linker can only drop at section level, say -ffunction-section place each function in it\u0027s own. LTO also implies it. When it\u0027s a single section, it means some relocations are resolved within - offsets already computed, and there are no marks on ending of the function.",
+      "parentUuid": "88778db5_d328e3ba",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 20
+      },
+      "revId": "b1ce442f9cfd6bf37ab82d38b616670e2591015f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
