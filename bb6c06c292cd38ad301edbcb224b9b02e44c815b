@@ -64,6 +64,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28b62f1d_ed9dde4a",
+        "filename": "board/pazquel/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-07-28T03:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86355a6d_1645d056",
+      "range": {
+        "startLine": 12,
+        "startChar": 14,
+        "endLine": 12,
+        "endChar": 16
+      },
+      "revId": "bb6c06c292cd38ad301edbcb224b9b02e44c815b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cd7984c_30c943ca",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-07-27T16:16:31Z",
       "side": 1,
       "message": "Add /* Battery */ above.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 46
+      },
+      "revId": "bb6c06c292cd38ad301edbcb224b9b02e44c815b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bece973_c57ab671",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-07-28T03:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cd7984c_30c943ca",
       "range": {
         "startLine": 69,
         "startChar": 0,
@@ -110,6 +158,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8167650_df60f95f",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-07-28T03:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d665c0ae_89650b31",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 40
+      },
+      "revId": "bb6c06c292cd38ad301edbcb224b9b02e44c815b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e8eed50_d7f945d3",
@@ -123,6 +195,30 @@
       "writtenOn": "2021-07-27T16:16:31Z",
       "side": 1,
       "message": "Full uppercase is preferred for enum type.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 16
+      },
+      "revId": "bb6c06c292cd38ad301edbcb224b9b02e44c815b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c04b94_2aedf8a1",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-07-28T03:17:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e8eed50_d7f945d3",
       "range": {
         "startLine": 99,
         "startChar": 0,
