@@ -945,6 +945,18 @@ int crec_flash_set_protect(uint32_t mask, uint32_t flags)
 		rv = crec_flash_physical_protect_now(0);
 		if (rv)
 			retval = rv;
+
+#ifdef CONFIG_EEPROM_CBI_WP
+		/*
+		 * Enable the CBI EEPROM WP immediately if HW WP is asserted and
+		 * we're now protecting the RO region with SW WP.
+		 */
+		if (EC_FLASH_PROTECT_GPIO_ASSERTED &
+		    crec_flash_get_protect()) {
+			cprints(CC_SYSTEM, "CBI WP: 1");
+			gpio_set_level(GPIO_EC_CBI_WP, 1);
+		}
+#endif /* CONFIG_EEPROM_CBI_WP */
 	}
 
 	/* 5 - Commit ALL_NOW. */
