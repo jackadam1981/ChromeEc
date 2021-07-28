@@ -8,6 +8,7 @@ project(drivers)
 
 # Include the local test directory for shimmed_test_tasks.h
 zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}")
+zephyr_include_directories("${CMAKE_CURRENT_SOURCE_DIR}/include")
 zephyr_include_directories("${PLATFORM_EC}/driver/ppc/")
 
 FILE(GLOB test_sources src/*.c)

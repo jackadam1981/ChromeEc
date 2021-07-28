@@ -721,7 +721,6 @@ static int syv682x_init(int port)
 	enum tcpc_rp_value initial_current_limit;
 
         CPRINTS("syv682x_init");
-        panic("TESTTESTTEST");
 
 	rv = read_reg(port, SYV682X_STATUS_REG, &status);
 	if (rv)
