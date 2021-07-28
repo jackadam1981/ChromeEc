@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129df6a0_2ced1267",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-28T20:34:46Z",
+      "side": 1,
+      "message": "I believe the more appropriate place for this is core/host/build.mk in CFLAGS_CPU\n\notherwise it looks fine to me",
+      "range": {
+        "startLine": 80,
+        "startChar": 32,
+        "endLine": 80,
+        "endChar": 37
+      },
+      "revId": "704fd8eecbae0ea9fdd23b1824b01985b5119b2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
