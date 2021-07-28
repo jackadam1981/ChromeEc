@@ -16,6 +16,24 @@
       "message": "On the one hand, it feels slightly odd that this would start boot_time.val at 0-0xFFFFFFF0.  On the other, I assume the math works out so it\u0027s fine?",
       "revId": "fb4eab814d946323915d508718134f27c446f306",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7766d50_dcd49d2c",
+        "filename": "core/host/timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-07-28T23:16:21Z",
+      "side": 1,
+      "message": "Correct. I had originally just set boot_time itself to 0xFFFFFFF0, but then I realized with timer_init() getting called that everyone using get_time() was still seeing values starting at 0. I want the callers to be the ones experiencing the rollover, so this seemed like the sanest way to get there. It also lets any test who really wants to start at 0 do that.",
+      "parentUuid": "712d5233_9fbf3dca",
+      "revId": "fb4eab814d946323915d508718134f27c446f306",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
