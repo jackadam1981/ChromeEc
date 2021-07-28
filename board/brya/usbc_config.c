@@ -268,6 +268,19 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 	return EC_SUCCESS;
 }
 
+__override int bb_retimer_reset(const struct usb_mux *me)
+{
+	/*
+	 * Refer comments 12,16 of b:193402306
+	 */
+	bb_retimer_power_enable(me, false);
+	msleep(5);
+	bb_retimer_power_enable(me, true);
+	msleep(25);
+
+	return EC_SUCCESS;
+}
+
 void board_reset_pd_mcu(void)
 {
 	enum gpio_signal tcpc_rst;
