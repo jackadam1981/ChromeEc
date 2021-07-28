@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3650f948_661a1a6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-07-28T10:13:29Z",
+      "side": 1,
+      "message": "can we also pass U2F FAFT test before landing?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 17
+      },
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "fbddc092_0966a972",
@@ -14,6 +37,98 @@
       "writtenOn": "2021-07-21T19:35:59Z",
       "side": 1,
       "message": "Intention of patch is to split U2F code into 2 parts:\n1) Outside FIPS module: TPM2 command processing - parsing operands, invoking crypto,generating response + U2F state management\n2) Crypto implementation which resides in FIPS module",
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41adff99_51af59ed",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-07-28T10:13:29Z",
+      "side": 1,
+      "message": "nit: drop () around key_handle_header",
+      "range": {
+        "startLine": 71,
+        "startChar": 36,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1df01d06_769acc0a",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-07-28T10:13:29Z",
+      "side": 1,
+      "message": "why does this command have to be cr50-specific? is it because of supporting non-zero kh_version option?",
+      "range": {
+        "startLine": 186,
+        "startChar": 5,
+        "endLine": 186,
+        "endChar": 17
+      },
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87b88149_1787497a",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-07-28T10:13:29Z",
+      "side": 1,
+      "message": "we already have kh_version here. why did we have to move some cr50-specific code to u2f_sign() which is now in board/cr50, but leave other cr50-specific code (like handling kh_version) here, in the common code.\n\nwe should \n\n1) either make kh_version a common feature and handle here. then we don\u0027t need to push u2f_sign() into board/cr50, just the underlying utility functions like dcrypto/random should be in board/cr50\n\n2) or move this entire function to board/cr50 and let other boards implement their own versions of u2f.\n\ncan we do #1? if not, what\u0027s the problem?",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 20
+      },
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6884ab3_af2ec148",
+        "filename": "test/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-07-28T10:13:29Z",
+      "side": 1,
+      "message": "doesn\u0027t having empty handlers here partially defeat the purpose of the tests below? u2f_generate_cmd calls u2f_generate internally, which is supposed to properly call dcrypto functions to get randoms and generate the keyhandle. now it just does nothing, and the tests below don\u0027t check the code that creates the handle.\n\nas defined now, these functions now belong to the \"Mock implementations of U2F functionality\" section below.\n\ninstead, we want to use u2f_generate() etc implementations from board/cr50/u2f.c and mock out the functions that they call (like fips_generate_random). maybe this test/u2f.c shall be moved/duplicated with the right functions in board/cr50 specific tests",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 17
+      },
       "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
