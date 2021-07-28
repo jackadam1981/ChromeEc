@@ -16,6 +16,24 @@
       "message": "Sorry I am late to the party.  But I have this question:\n\nWhy do we want to support registering keystrokes only after debounce period is over?  It adds unnecessary delay, and as far as I recall, the debounce period for releasing a key is longer than the debounce period for pressing a key, leading to situations in which events can \"overtake\" each other.  E.g. if one depress shift, then press and release the letter I, then release shift, then press and release the letter F, expeting the word \"If\".   Instead, what could happen is getting \"IF\", with the second letter capitalized, if the debouncing of releasing shift took longer than debounce of subsequent depressing of \"F\".\n\nSee b/172225560 for more context.",
       "revId": "f73fa8e9069e72848d977f5427afe8c30df4e77a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a620e040_6b211ef8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T21:34:16Z",
+      "side": 1,
+      "message": "Hi Jes, your questions/concerns seem answered in the comment in config.h (above #undef CONFIG_KEYBOARD_STRICT_DEBOUNCE). Can you take a look at it and come back if you still have a concern?",
+      "parentUuid": "9b008c83_a66f931d",
+      "revId": "f73fa8e9069e72848d977f5427afe8c30df4e77a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
