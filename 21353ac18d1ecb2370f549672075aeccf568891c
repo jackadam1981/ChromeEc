@@ -136,6 +136,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c393492b_3b3b498c",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-28T19:44:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5545745f_da2618ff",
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4bef379_737d6c46",
@@ -362,6 +380,30 @@
       "side": 1,
       "message": "If someone define CONFIG_BYPASS_CBI_EEPROM_WP_CHECK but not define CONFIG_EEPROM_CBI_WP, the output error message will be:\n\nCONFIG_BYPASS_CBI_EEPROM_WP_CHECK is only permitted when CONFIG_SYSTEM_UNLOCK is also enabled.\n\nmaybe can change to: \nCONFIG_BYPASS_CBI_EEPROM_WP_CHECK is only permitted when CONFIG_SYSTEM_UNLOCK or CONFIG_EEPROM_CBI_WP is also enabled.",
       "parentUuid": "27ff3386_a307bf64",
+      "range": {
+        "startLine": 6379,
+        "startChar": 2,
+        "endLine": 6379,
+        "endChar": 44
+      },
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e02c3332_c70cf2af",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6379,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-28T19:44:45Z",
+      "side": 1,
+      "message": "Ah, the text. Got it.",
+      "parentUuid": "4e72964c_0bfb0404",
       "range": {
         "startLine": 6379,
         "startChar": 2,
