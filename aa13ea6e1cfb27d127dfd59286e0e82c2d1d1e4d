@@ -214,6 +214,30 @@
       },
       "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51cd7a54_b191d39d",
+        "filename": "board/primus/board.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-28T05:47:08Z",
+      "side": 1,
+      "message": "Verified CL:3058151 works, abandon this CL.",
+      "parentUuid": "a1b5c30b_9bce044c",
+      "range": {
+        "startLine": 112,
+        "startChar": 53,
+        "endLine": 112,
+        "endChar": 61
+      },
+      "revId": "aa13ea6e1cfb27d127dfd59286e0e82c2d1d1e4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
