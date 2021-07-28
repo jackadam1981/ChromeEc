@@ -39,6 +39,53 @@
       },
       "revId": "4e64307b265c3ec981dc84ec49c640ab87806dac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c91044aa_7675558c",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T18:46:07Z",
+      "side": 1,
+      "message": "I think we can\u0027t because of GPIO_EC_CBI_WP.",
+      "parentUuid": "d0e36e76_87f36e79",
+      "range": {
+        "startLine": 949,
+        "startChar": 0,
+        "endLine": 949,
+        "endChar": 27
+      },
+      "revId": "4e64307b265c3ec981dc84ec49c640ab87806dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da8f3b18_3844d29f",
+        "filename": "common/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 957,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T18:46:07Z",
+      "side": 1,
+      "message": "Can we let cbi_set_eeprom_wp do this instead or it\u0027s not safe (due to system_is_locked)?",
+      "range": {
+        "startLine": 957,
+        "startChar": 3,
+        "endLine": 957,
+        "endChar": 37
+      },
+      "revId": "4e64307b265c3ec981dc84ec49c640ab87806dac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
