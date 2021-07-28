@@ -259,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "183cb9ad_4f1a0668",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6369,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-28T08:33:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d574e9e1_926c7036",
+      "range": {
+        "startLine": 6369,
+        "startChar": 40,
+        "endLine": 6369,
+        "endChar": 53
+      },
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ae6008e_b1d88779",
@@ -296,6 +320,30 @@
       "side": 1,
       "message": "It\u0027s already been changed? If CONFIG_EC_OWNS_CBI_WP is defined, this check is skipped. We will always want to bypass the check regardless of CONFIG_SYSTEM_UNLOCKED.",
       "parentUuid": "3ae6008e_b1d88779",
+      "range": {
+        "startLine": 6379,
+        "startChar": 2,
+        "endLine": 6379,
+        "endChar": 44
+      },
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e72964c_0bfb0404",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 6379,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-07-28T08:33:21Z",
+      "side": 1,
+      "message": "If someone define CONFIG_BYPASS_CBI_EEPROM_WP_CHECK but not define CONFIG_EEPROM_CBI_WP, the output error message will be:\n\nCONFIG_BYPASS_CBI_EEPROM_WP_CHECK is only permitted when CONFIG_SYSTEM_UNLOCK is also enabled.\n\nmaybe can change to: \nCONFIG_BYPASS_CBI_EEPROM_WP_CHECK is only permitted when CONFIG_SYSTEM_UNLOCK or CONFIG_EEPROM_CBI_WP is also enabled.",
+      "parentUuid": "27ff3386_a307bf64",
       "range": {
         "startLine": 6379,
         "startChar": 2,
