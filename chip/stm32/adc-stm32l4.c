@@ -41,7 +41,7 @@ struct adc_profile_t {
 #define ADC_ENABLE_TIMEOUT_US		200000U
 #define ADC_CONVERSION_TIMEOUT_US	200000U
 
-#define NUMBER_OF_ADC_CHANNEL   2
+#define NUMBER_OF_ADC_CHANNEL   4
 uint8_t adc1_initialized;
 #endif
 
@@ -212,6 +212,10 @@ int adc_read_channel(enum adc_channel ch)
 		value = STM32_ADC1_JDR1;
 	if (adc->rank == 2)
 		value = STM32_ADC1_JDR2;
+	if (adc->rank == 3)
+		value = STM32_ADC1_JDR3;
+	if (adc->rank == 4)
+		value = STM32_ADC1_JDR4;
 
 	mutex_unlock(&adc_lock);
 
