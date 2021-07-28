@@ -50,7 +50,7 @@ const struct tcpm_drv rt1715_tcpm_drv = {
 	.release = &tcpci_tcpm_release,
 	.get_cc = &tcpci_tcpm_get_cc,
 #ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-	.check_vbus_level = &tcpci_tcpm_check_vbus_level,
+	.get_vbus_level = &tcpci_tcpm_get_vbus_level,
 #endif
 	.select_rp_value = &tcpci_tcpm_select_rp_value,
 	.set_cc = &tcpci_tcpm_set_cc,
@@ -64,8 +64,6 @@ const struct tcpm_drv rt1715_tcpm_drv = {
 #ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 	.tcpc_discharge_vbus = &tcpci_tcpc_discharge_vbus,
 #endif
-	.tcpc_enable_auto_discharge_disconnect =
-		&tcpci_tcpc_enable_auto_discharge_disconnect,
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	.drp_toggle = &tcpci_tcpc_drp_toggle,
 #endif

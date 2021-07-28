@@ -61,6 +61,7 @@ GPIO(I2C4_SDA,             PIN(C, 4),  GPIO_ODR_HIGH)
 /* Analog pins */
 GPIO(BOARD_ID,             PIN(A, 0),  GPIO_ANALOG)
 GPIO(EC_SKU_ID,            PIN(B, 0),  GPIO_ANALOG)
+GPIO(ADC_VBUS,             PIN(A, 7),  GPIO_ANALOG)
 
 /* Other input pins */
 GPIO(WP_L,                 PIN(C, 8),  GPIO_INPUT) /* EC_FLASH_WP_ODL */
@@ -68,7 +69,6 @@ GPIO(BOOT0,                PIN(H, 3),  GPIO_INPUT)
 GPIO(CCD_MODE_ODL,         PIN(A, 1),  GPIO_INPUT)
 
 /* Other output pins */
-GPIO(EC_BATT_PRES_ODL,     PIN(A, 7),  GPIO_INPUT)
 GPIO(EC_BL_EN_OD,          PIN(A, 13), GPIO_ODR_HIGH)
 GPIO(EN_USBA_5V,           PIN(C, 14), GPIO_OUT_LOW)
 GPIO(EC_SENSOR_SPI_MISO,   PIN(C, 2),  GPIO_INPUT)
@@ -87,7 +87,7 @@ IOEX(PWR_LED_WHITE_L,      EXPIN(0, 1, 4), GPIO_OUT_HIGH)
 IOEX(BAT_LED_GREEN_FULL_L, EXPIN(0, 1, 3), GPIO_OUT_HIGH)
 IOEX(BAT_LED_RED_L,        EXPIN(0, 1, 2), GPIO_OUT_HIGH)
 IOEX(KB_BL_EN,             EXPIN(0, 0, 7), GPIO_OUT_LOW)
-
+IOEX(EC_BATT_PRES_ODL,     EXPIN(0, 2, 1), GPIO_INPUT)
 /*
  * TODO(b:138352732): On IT88801 expander, To be readded once IT8801 driver and
  * gpio expander framework has landed.

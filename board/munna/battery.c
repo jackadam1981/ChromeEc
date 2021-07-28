@@ -6,6 +6,7 @@
 #include "battery.h"
 #include "battery_fuel_gauge.h"
 #include "gpio.h"
+#include "ioexpander.h"
 
 const struct board_batt_params board_battery_info[] = {
 	/* LGC L20L3PG2, Gauge IC: RAJ240047A20DNP. */
@@ -100,5 +101,7 @@ const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_LGC;
 
 enum battery_present battery_hw_present(void)
 {
-	return gpio_get_level(GPIO_EC_BATT_PRES_ODL) ? BP_NO : BP_YES;
+	int val;
+	ioex_get_level(IOEX_EC_BATT_PRES_ODL, &val);
+	return val ? BP_NO : BP_YES;
 }
