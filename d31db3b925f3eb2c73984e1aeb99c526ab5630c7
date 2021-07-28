@@ -88,6 +88,24 @@
       "parentUuid": "291eedd9_1775c4ae",
       "revId": "d31db3b925f3eb2c73984e1aeb99c526ab5630c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "469d3954_50873661",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-07-28T17:16:53Z",
+      "side": 1,
+      "message": "\u003e Reduce the functionality that was added specifically to the Cr50 for customization to the point that that workflow will now require an added step of reprogramming the Cr50.\n\nsorry, I don\u0027t quite understand the point. does it mean that we are replacing one cr50-specific customization with a different cr50-specific customization? but the 2nd one is better (faster)? why is that an issue?\n\n\u003e We have 7 year support cycles for platforms so we can\u0027t rely on firmware updates.\n\nit\u0027s actually 8 years. and we continue designing devices with H1/cr50, so it\u0027s 8 years not from today, but from 1-2-3 or more years into the future when the last H1-based design is done. \n\nin practice long support windows mean that cr50 firmware is guaranteed to be updated multiple times (we currently update cr50 with every OS AU). so, we actually can rely on cr50 updates (OS boot process updates and force-reboots if cr50 is older than the image distributed with the OS revision). they also mean we can\u0027t just freeze the protocols that we used at launch and need to have a way to improve them to avoid stagnating for 10+ years.\n\nI\u0027m quite possibly misunderstanding the point above. but in any case I do want to find a way to land this improvement. cr50 CCD is our main method of debug for chromebooks, used from early bringup stages. with growing AP/EC image sizes, the flashing speed becomes more and more important. and 4x speedup is significant.\n\nmy understanding of the issue is the need to carefully document the updated protocol and possibly create a new protocol version that cr50 can advertise to differentiate form other protocol versions. doing this would ensure that the knowledge of the protocol is not lost if we need to further modify something 5 or 10 years into the future. so, let\u0027s document the protocol option to preserve the knowledge and land this improvement.",
+      "parentUuid": "5d3058a0_84ab636b",
+      "revId": "d31db3b925f3eb2c73984e1aeb99c526ab5630c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
