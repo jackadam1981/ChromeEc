@@ -16,6 +16,24 @@
       "message": "Makes sense, though it may be worth double checking with the vendor whether this is expected behavior.  From the bug title, are we using this driver for a SM chip?  Are they the same vendor as the NX chip, or just a compatible register set? ",
       "revId": "093d15632ccb79cc766008cfde51ca13be288993",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "544868fe_94127647",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-28T23:43:57Z",
+      "side": 1,
+      "message": "i do have an email thread open to discuss the discrepancy between the\ntwo registers with SM as well as getting\nthem partner account(s) so they can participate in the associated bug.\n\nbrya uses the SM part, but it\u0027s supposed to be compatible with the NXP part.\n\ni\u0027ll wait to hear from SM before submitting this patch.",
+      "parentUuid": "dbd3bf77_9ec8efa8",
+      "revId": "093d15632ccb79cc766008cfde51ca13be288993",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
