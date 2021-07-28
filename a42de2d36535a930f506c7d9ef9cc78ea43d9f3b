@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f20a54d_764ccae1",
+        "filename": "zephyr/boards/riscv/asurada/asurada_defconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-28T15:42:52Z",
+      "side": 1,
+      "message": "These settings are common to all boards using the IT8xxx2.  Please move these settings into zephyr/app/ec/chip/riscv/riscv-ite/Kconfig.it8xxx2\n\nFollow the example from zephyr/app/ec/chip/arm/nuvton_npcx/Kconfig.npcx\n\nThis should be done as a follow up CL.",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 107,
+        "endChar": 0
+      },
+      "revId": "a42de2d36535a930f506c7d9ef9cc78ea43d9f3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
