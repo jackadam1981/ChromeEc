@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a65009_52b692ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-07-28T09:47:44Z",
+      "side": 1,
+      "message": "The build failure should be fixed by https://chromium-review.googlesource.com/c/chromiumos/overlays/chromiumos-overlay/+/3056696.\nWaiting crrev/c/3056696 get merged.",
+      "revId": "e7ad26ff43eadcd6ad76e33eb6aefcb902fba251",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
