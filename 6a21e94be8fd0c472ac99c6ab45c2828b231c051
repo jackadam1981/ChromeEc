@@ -16,6 +16,24 @@
       "message": "think this gets pulled in from CFLAGS_CPU?",
       "revId": "6a21e94be8fd0c472ac99c6ab45c2828b231c051",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d18ef6_843032e1",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 2
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-07-28T23:09:10Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem to. Makefile.rules just has this:\n\ncmd_exe \u003d $(CC) $(ro-objs) $(HOST_TEST_LDFLAGS) $(LDFLAGS_EXTRA) -o $@\n\nI see a couple lines above, LDFLAGS has CFLAGS_CPU explicitly added. I could append $CFLAGS_CPU to HOST_TEST_LDFLAGS. Is that better? \n\nSome of the ideas seem confused here. We seem to have all three of the classic GCC build/host/(target) definitions, but smudge them together in a confusing way. Are we planning to be able to cross-compile the tests? If so, why are \"target\" variables like CFLAGS_CPU and LDFLAGS_EXTRA ending up in a final object that\u0027s linked with HOST_TEST_LDFLAGS? If we\u0027re not planning to cross-compile the tests, why is there a distinction between BUILD and HOST?\n\nAnyway I guess this will all go away someday anyway. Let me know what\u0027s correct here.",
+      "parentUuid": "4e886bfa_3e585f12",
+      "revId": "6a21e94be8fd0c472ac99c6ab45c2828b231c051",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
