@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c8c8c5_4d28b5c9",
+        "filename": "test/usb_typec_drp_acc_trysrc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 706,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-28T21:41:12Z",
+      "side": 1,
+      "message": "might as well change 15ul to 15. i don\u0027t think we\u0027re concerned\nabout overflowing (15 * MSEC) here and \"ul\" would have the same\noverflow characteristics on ILP32 as defaulting to int, so it\u0027s\nkind of superfluous.\n\neven better, use (uint64_t)15 so you get a compile time 64-bit mult.",
+      "range": {
+        "startLine": 706,
+        "startChar": 2,
+        "endLine": 706,
+        "endChar": 38
+      },
+      "revId": "78f4b43863946b6b753284d9a8587d0d68740ec4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
