@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9e5d462_6fbd0105",
+        "filename": "zephyr/drivers/cros_shi/Kconfig",
+        "patchSetId": 6
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-07-28T09:06:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adf533c4_0361b93f",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 65
+      },
+      "revId": "cfb321fe97bdeae9a7d76d11725e8ccb71ca69e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "985ca03b_cd13377d",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7179ebb6_1065dc31",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-07-28T09:06:47Z",
+      "side": 1,
+      "message": "This PR adds the shared macro to access the pinctrl_0 property.\nhttps://github.com/zephyrproject-rtos/zephyr/pull/37271",
+      "parentUuid": "985ca03b_cd13377d",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 0
+      },
+      "revId": "cfb321fe97bdeae9a7d76d11725e8ccb71ca69e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0f24e79_46690f59",
         "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
         "patchSetId": 6
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-27T20:57:21Z",
       "side": 1,
       "message": "Why is the default 52?  Are there restrictions on the init order?  If so, please add some build time checks to validate CONFIG_CROS_SHI_IT8XXX2_INIT_PRIORITY.",
+      "range": {
+        "startLine": 396,
+        "startChar": 8,
+        "endLine": 396,
+        "endChar": 45
+      },
+      "revId": "cfb321fe97bdeae9a7d76d11725e8ccb71ca69e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51ac8259_2d11b122",
+        "filename": "zephyr/drivers/cros_shi/cros_shi_it8xxx2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-07-28T09:06:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0f24e79_46690f59",
       "range": {
         "startLine": 396,
         "startChar": 8,
