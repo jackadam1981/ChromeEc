@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c305ce82_b91963cf",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T20:52:08Z",
+      "side": 1,
+      "message": "You can create another API (e.g. cbi_latch_eeprom_wp) or make main() check system_is_locked (then call cbi_set_eeprom_wp). That\u0027ll allow crec_flash_set_protect to call the API.\n\n(Sorry that\u0027ll make you change the unit test.)",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "490cedc37da8611bbacf257d2e538a85367a3507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
