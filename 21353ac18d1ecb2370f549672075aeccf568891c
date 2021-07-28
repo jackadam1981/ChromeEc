@@ -120,6 +120,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5545745f_da2618ff",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T16:27:34Z",
+      "side": 1,
+      "message": "nit: Maybe we should say \"WP latched\" for clarification.",
+      "parentUuid": "9a6c95b7_fd8fb70d",
+      "revId": "21353ac18d1ecb2370f549672075aeccf568891c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d4bef379_737d6c46",
         "filename": "common/main.c",
         "patchSetId": 2

@@ -16,6 +16,98 @@
       "message": "It looks like the docs is in another repo, so I\u0027ll do that in a follow up CL.",
       "revId": "6ffefa96bab0e64b870fc9316746599c13c2bc56",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5219d168_f50d1b46",
+        "filename": "common/system.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T16:27:34Z",
+      "side": 1,
+      "message": "I think we\u0027re using system_is_locked in chip/host/system.c for tests.",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 13
+      },
+      "revId": "6ffefa96bab0e64b870fc9316746599c13c2bc56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1df045c_fbd0f676",
+        "filename": "test/cbi_wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T16:27:34Z",
+      "side": 1,
+      "message": "Not sure about this one either.",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 21
+      },
+      "revId": "6ffefa96bab0e64b870fc9316746599c13c2bc56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bffd8a4_20bc7224",
+        "filename": "test/cbi_wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T16:27:34Z",
+      "side": 1,
+      "message": "i2c?",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 15
+      },
+      "revId": "6ffefa96bab0e64b870fc9316746599c13c2bc56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90f414b2_30591fe7",
+        "filename": "test/cbi_wp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-28T16:27:34Z",
+      "side": 1,
+      "message": "I think we don\u0027t need to handle this case. This is deterministically not possible because of #define CONFIG_WP_ACTIVE_HIGH in board/host/board.h.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "6ffefa96bab0e64b870fc9316746599c13c2bc56",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
