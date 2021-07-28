@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "447aedfc_5c1a92eb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-07-28T07:05:54Z",
+      "side": 1,
+      "message": "This patch is not for check-in. It is WA resolving the TBT lane bonding issue in AP mode. This issue is not seen in K0 silicon. Until we get Brya with K0 silicon we need this WA patch in BKC EC binary. This helps thunderbolt certification testing with enabled AP mode. This also helps several other TCSS issues.",
+      "revId": "45ffccf9294eb7cea4da7458f61a6aad69614aa8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
