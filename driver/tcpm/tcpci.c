@@ -221,6 +221,18 @@ static int clear_power_status_mask(int port)
 	return tcpc_write(port, TCPC_REG_POWER_STATUS_MASK, 0);
 }
 
+void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable)
+{
+	if (IS_ENABLED(DEBUG_AUTO_DISCHARGE_DISCONNECT))
+		CPRINTS("C%d: AutoDischargeDisconnect %sABLED",
+			port, enable ? "EN" : "DIS");
+
+	tcpc_update8(port,
+		     TCPC_REG_POWER_CTRL,
+		     TCPC_REG_POWER_CTRL_AUTO_DISCHARGE_DISCONNECT,
+		     (enable) ? MASK_SET : MASK_CLR);
+}
+
 int tcpci_tcpm_get_cc(int port, enum tcpc_cc_voltage_status *cc1,
 	enum tcpc_cc_voltage_status *cc2)
 {
