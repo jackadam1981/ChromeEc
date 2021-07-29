@@ -70,6 +70,24 @@
       "parentUuid": "38904507_5a7f4fed",
       "revId": "e62d6bf93680a3d8617dbcfaa059ca6b4662c7d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19caa106_69289521",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-29T20:49:46Z",
+      "side": 1,
+      "message": "This is for enabling the host command... I am going to abandon this CR and if I need to enable the host command, I will do what you suggest",
+      "parentUuid": "d53cc4f0_04e40885",
+      "revId": "e62d6bf93680a3d8617dbcfaa059ca6b4662c7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
