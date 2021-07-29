@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fecce736_eda41cdf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-29T20:22:33Z",
+      "side": 1,
+      "message": "It can be simpler: we can override CONFIG_ACCEL_FORCE_MODE_MASK with a function.\nSee crrev.com/2610744.",
+      "revId": "6ec8fe6d406d191fa1506b782ac21baeb9e1912f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
