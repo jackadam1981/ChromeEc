@@ -22,6 +22,23 @@
       },
       "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0012751c_61aef743",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-29T16:54:13Z",
+      "side": 1,
+      "message": "side note here ...\n\nrand() % n will be biased towards small numbers (modulo bias)\n\nwe should consider changing that to (rand() / (float)RAND_MAX) * n\n\nfor this generator RAND_MAX is 32768",
+      "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
