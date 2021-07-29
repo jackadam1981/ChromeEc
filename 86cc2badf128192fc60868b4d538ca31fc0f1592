@@ -39,6 +39,24 @@
       "message": "side note here ...\n\nrand() % n will be biased towards small numbers (modulo bias)\n\nwe should consider changing that to (rand() / (float)RAND_MAX) * n\n\nfor this generator RAND_MAX is 32768",
       "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d3a95a7_9daab9d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-29T17:47:44Z",
+      "side": 1,
+      "message": "interesting, I never thought about this bias, it is good to know! (I just looked it up 😊)\n\nFrankly, it is a bad idea to use rand() in test to start with, but we do want to try random values, so I went for it.",
+      "parentUuid": "0012751c_61aef743",
+      "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
