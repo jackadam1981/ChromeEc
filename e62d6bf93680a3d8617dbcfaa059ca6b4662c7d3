@@ -52,6 +52,24 @@
       "parentUuid": "c2b95652_355fc3b3",
       "revId": "e62d6bf93680a3d8617dbcfaa059ca6b4662c7d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d53cc4f0_04e40885",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-29T20:25:48Z",
+      "side": 1,
+      "message": "I actually think you just want to drop the ifdef on line 1641",
+      "parentUuid": "38904507_5a7f4fed",
+      "revId": "e62d6bf93680a3d8617dbcfaa059ca6b4662c7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
