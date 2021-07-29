@@ -22,6 +22,52 @@
       },
       "revId": "e2d2dd3c55ed6f9076972e190bc6fdb69d384b49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79bd397a_84edf1bf",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2021-07-29T19:11:36Z",
+      "side": 1,
+      "message": "Since KBDILLUMTOGGLE is a new key, we should also add that here and emits its scancode instead of trying to piggyback on existing keys.",
+      "range": {
+        "startLine": 61,
+        "startChar": 25,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "e2d2dd3c55ed6f9076972e190bc6fdb69d384b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39ef2e7a_e2e70639",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2021-07-29T19:11:36Z",
+      "side": 1,
+      "message": "Please also add SCANCODE_KBDILLUMTOGGLE here as a new key.",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "e2d2dd3c55ed6f9076972e190bc6fdb69d384b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
