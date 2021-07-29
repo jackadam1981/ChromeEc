@@ -76,6 +76,12 @@
 #define SMCLK_POST_LEVEL 0
 #define SMDAT_POST_LEVEL 0
 
+static uint8_t supported_chipid1[] = {
+	0x83, /* 83xx */
+	0x12, /* 81202 */
+	0x13, /* 81302 */
+};
+
 /* The caller should hold the i2c_lock() for ite_dfu_config.i2c_port. */
 static int ite_i2c_read_register(uint8_t register_offset, uint8_t *output)
 {
@@ -217,12 +223,13 @@ unlock:
 
 	/*
 	 * IT8320_eflash_SMBus_Programming_Guide.pdf says it is an error if
-	 * CHIPID1 != 0x83.
+	 * unsupported chipid.
 	 */
-	if (chipid1[0] != 0x83)
-		ret = EC_ERROR_HW_INTERNAL;
+	for (int i = 0; i < ARRAY_SIZE(supported_chipid1); i++)
+		if (chipid1[0] == supported_chipid1[i])
+			return ret;
 
-	return ret;
+	return EC_ERROR_HW_INTERNAL;
 }
 
 /* Enable ITE direct firmware update (DFU) mode. */
