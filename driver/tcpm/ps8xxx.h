@@ -80,6 +80,12 @@
 #define PS8815_AUX_INTERCEPTION_DISABLE		BIT(1)
 
 /*
+ * PS8805 register to distinguish chip revision
+ * bit 7-4: 1010b is A3 chip, 0000b is A2 chip
+ */
+#define PS8805_P0_REG_CHIP_REVISION		0x62
+
+/*
  * PS8805 GPIO control register. Note the device I2C address of 0x1A is
  * independent of the ADDR pin on the chip, and not the same address being used
  * for TCPCI functions.

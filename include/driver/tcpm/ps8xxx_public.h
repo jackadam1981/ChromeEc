@@ -11,6 +11,7 @@
 struct usb_mux;
 
 /* I2C interface */
+#define PS8751_I2C_ADDR1_P0_FLAGS 0x08
 #define PS8751_I2C_ADDR1_P1_FLAGS 0x09
 #define PS8751_I2C_ADDR1_P2_FLAGS 0x0A
 #define PS8751_I2C_ADDR1_FLAGS    0x0B	/* P3 */
