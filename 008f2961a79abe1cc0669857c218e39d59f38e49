@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aa28e29_1e00a9cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-07-29T02:43:20Z",
+      "side": 1,
+      "message": "It seems the bug isn\u0027t directly related to this CL? Did you find this out while testing 64-bit values in __deferred_until?",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 15
+      },
+      "revId": "008f2961a79abe1cc0669857c218e39d59f38e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
