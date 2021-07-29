@@ -16,6 +16,23 @@
       "message": "verified+1 for asurada and drawcia.\n\nVijay@ please click verified+1 once you verified this CL on ADL-RVP.",
       "revId": "3312677c6ad90bc674bf82c5c37342d4e0ad2529",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d181f87b_90a0610f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-07-29T16:30:33Z",
+      "side": 1,
+      "message": "tested on ADL RVP, no more I2C errors observed ",
+      "revId": "3312677c6ad90bc674bf82c5c37342d4e0ad2529",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
