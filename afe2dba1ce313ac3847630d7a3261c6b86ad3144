@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff7884d_5a29e4e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-07-29T18:05:59Z",
+      "side": 1,
+      "message": "This CL was originally in platform2, but I think it might be best placed in ec for now. This is where the flash_fp_mcu script currently lives.\n\nThe longer reason is that this script will primarily be interfacing with the FPMCU. If it starts interfacing with biod and other platform2 services, we can reconsider.",
+      "revId": "afe2dba1ce313ac3847630d7a3261c6b86ad3144",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
