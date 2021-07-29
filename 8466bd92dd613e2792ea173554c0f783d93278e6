@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2dfa2e2_9383a779",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-29T02:19:05Z",
+      "side": 1,
+      "message": "I did, but it seems that the target test doesn\u0027t work at all. When I flash, I get no output on the UART.",
+      "parentUuid": "fdd9327e_21a745d9",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 4
+      },
+      "revId": "8466bd92dd613e2792ea173554c0f783d93278e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4281ac8e_b1ecf028",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-28T20:45:08Z",
       "side": 1,
       "message": "Is this not EC_FLASH_PROTECT_RO_NOW? I think we toggle SW WP on dogfood devices remotely (to lock CBI).",
+      "range": {
+        "startLine": 954,
+        "startChar": 6,
+        "endLine": 954,
+        "endChar": 36
+      },
+      "revId": "8466bd92dd613e2792ea173554c0f783d93278e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0115675e_f76f4dde",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-29T02:19:05Z",
+      "side": 1,
+      "message": "We\u0027re in the branch for `EC_FLASH_PROTECT_RO_NOW`. This is trying to follow the same logic that `system_is_locked` does which takes into account HW WP. If HW WP is deasserted, the system is not locked, so it must be asserted along with SW WP in order for us to set the CBI WP.",
+      "parentUuid": "4281ac8e_b1ecf028",
       "range": {
         "startLine": 954,
         "startChar": 6,
