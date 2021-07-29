@@ -34,6 +34,23 @@
       "parentUuid": "65bad82d_8b08ecae",
       "revId": "1bf7a7514c9eb32c401378565816c5b551ea6ef3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "511784d0_5a682af5",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-29T21:24:25Z",
+      "side": 1,
+      "message": "I was thinking of making temp_mk optional.\n\nIf !NULL and called in a function that does not support it, return an error.\n\nIf NULL don\u0027t report mK, even if supported.\n\nThis way, we don\u0027t have to add temp_sensor_read_k(), just temp_sensor_read(..., NULL).",
+      "revId": "1bf7a7514c9eb32c401378565816c5b551ea6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
