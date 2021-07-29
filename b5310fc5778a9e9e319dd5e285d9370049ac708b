@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46b23c35_5cb02546",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-29T18:11:28Z",
+      "side": 1,
+      "message": "Move this new code before the above ps8815 case.",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 42
+      },
+      "revId": "b5310fc5778a9e9e319dd5e285d9370049ac708b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b469db3_a432aeca",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-29T18:11:28Z",
+      "side": 1,
+      "message": "The register offset is not like the bug (b/193099851#comment7) said, i.e. address 0x12, offset f3~f0  is 0x88050A03 vs 0x8800A02. Please explain.\n\nAnd define the 0x08 and 0x62 as constants.",
+      "range": {
+        "startLine": 543,
+        "startChar": 31,
+        "endLine": 543,
+        "endChar": 41
+      },
+      "revId": "b5310fc5778a9e9e319dd5e285d9370049ac708b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34bbb347_7bc525bc",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-29T18:11:28Z",
+      "side": 1,
+      "message": "Move it before the PS8815 case.",
+      "range": {
+        "startLine": 595,
+        "startChar": 0,
+        "endLine": 595,
+        "endChar": 42
+      },
+      "revId": "b5310fc5778a9e9e319dd5e285d9370049ac708b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87bcccef_153b352f",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4557,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-29T18:11:28Z",
+      "side": 1,
+      "message": "Move it before the PS8815 case. So they are sorted.",
+      "range": {
+        "startLine": 4553,
+        "startChar": 0,
+        "endLine": 4557,
+        "endChar": 42
+      },
+      "revId": "b5310fc5778a9e9e319dd5e285d9370049ac708b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
