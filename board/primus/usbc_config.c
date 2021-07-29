@@ -152,6 +152,9 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		 * retimer_init() function ensures power is up before calling
 		 * this function.
 		 */
+		if (me->usb_port == USBC_PORT_C1)
+			usleep(200);
+
 		gpio_set_level(rst_signal, 1);
 		/*
 		 * Allow 1ms time for the retimer to power up lc_domain
