@@ -16,6 +16,24 @@
       "message": "If a board provides a custom board_get_version function, they should not define CONFIG_BOARD_VERSION_GPIO",
       "revId": "e62d6bf93680a3d8617dbcfaa059ca6b4662c7d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2b95652_355fc3b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-07-29T20:22:47Z",
+      "side": 1,
+      "message": "This is for when CONFIG_BOARD_VERSION_GPIO is enabled and __overridable board_get_version is overridden and does not use GPIO_BOARD_VERSIONx definitions... they should not be forced to create bogus defines to satisfy the unused __overridable function.",
+      "parentUuid": "c2de588b_8dcf1403",
+      "revId": "e62d6bf93680a3d8617dbcfaa059ca6b4662c7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
