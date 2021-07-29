@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf916511_e063399c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-07-29T17:41:47Z",
+      "side": 1,
+      "message": "Please change setup_mux like this:\n\n\tstatic void setup_mux(void)\n\t{\n\t\tenum ec_ssfc_c1_mux mux \u003d get_cbi_ssfc_c1_mux();\n\n\t\tif (mux \u003d\u003d SSFC_C1_MUX_NONE \u0026\u0026 ec_config_has_usbc1_retimer_tusb544())\n\t\t\tmux \u003d SSFC_C1_MUX_TUSB544;\n\n\t\tif (mux \u003d\u003d SSFC_C1_MUX_PS8818) {\n\t\t\t...\n\t\t} else if (mux \u003d\u003d SSFC_C1_MUX_TUSB544) {\n\t\t\t...\n\t\t} else if (ec_config_has_usbc1_retimer_ps8743()) {\n\t\t\t...\n\t\t}\n\t}\n\nThis should work correctly for all the possible settings of ec_ssfc_c1_mux.\n",
+      "revId": "7afd4a01083b543bc512f300f51bd1e41b90c2d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
