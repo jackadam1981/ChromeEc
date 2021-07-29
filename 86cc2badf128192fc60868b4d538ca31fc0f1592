@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "816df429_070cd92f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-07-29T19:12:08Z",
+      "side": 1,
+      "message": "My hypothesis is it\u0027s hard to get 5 allocations at any one time given a random sequence of allocates and frees. I think we were getting lucky with the seed when compiling for 64-bits, but less lucky when compiling for 32-bits. I think the seed doesn\u0027t vary per-run to avoid flakes. Here\u0027s an approximation of how many allocs you can get when you alloc size rand % n, though it\u0027s not quite the same as the test since the test randomly does additional frees and allocs:\n\nhttps://paste.googleplex.com/6653229610827776\n$ python myrand.py\nMean: 1.802900 stddev: 0.919639\n\nSo if you do rand() % n allocs until you exhaust your heap of size n, on average you will get only 1.8 allocations. The heap size in both 32 and 64-bits seems to be 0x8680.",
+      "parentUuid": "45c2ee25_1f793ffc",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0012751c_61aef743",
