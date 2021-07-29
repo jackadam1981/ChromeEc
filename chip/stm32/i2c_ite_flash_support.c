@@ -217,9 +217,9 @@ unlock:
 
 	/*
 	 * IT8320_eflash_SMBus_Programming_Guide.pdf says it is an error if
-	 * CHIPID1 != 0x83.
+	 * CHIPID1 != 0x83 (it8320) and CHIPID1 != 0x12 (it81xx2).
 	 */
-	if (chipid1[0] != 0x83)
+	if (chipid1[0] != 0x83 && chipid1[0] != 0x12)
 		ret = EC_ERROR_HW_INTERNAL;
 
 	return ret;
