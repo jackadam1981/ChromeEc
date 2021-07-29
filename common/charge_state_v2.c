@@ -1990,6 +1990,7 @@ void charger_task(void *u)
 					prev_ac = curr.ac;
 			} else {
 				/* Some things are only meaningful on AC */
+				ccprints("##########set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL)##########");
 				set_chg_ctrl_mode(CHARGE_CONTROL_NORMAL);
 				battery_seems_dead = 0;
 				prev_ac = curr.ac;
@@ -2742,6 +2743,7 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 	if (args->version >= 2) {
 		if (p->cmd == EC_CHARGE_CONTROL_CMD_SET) {
 			if (get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL) {
+				ccprints("##########get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL##########");
 				rv = battery_sustainer_set(
 						p->sustain_soc.lower,
 						p->sustain_soc.upper);
