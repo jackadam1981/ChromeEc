@@ -123,6 +123,10 @@
 /* System has back-lit keyboard */
 #define CONFIG_PWM_KBLIGHT
 
+/* Keyboard features */
+#define CONFIG_KEYBOARD_VIVALDI
+#define CONFIG_KEYBOARD_REFRESH_ROW3
+
 /* I2C Bus Configuration */
 
 #define I2C_PORT_SENSOR		NPCX_I2C_PORT0_0
@@ -178,6 +182,7 @@
 #define CONFIG_CHARGE_RAMP_SW
 #define CONFIG_CHARGER_SENSE_RESISTOR		10
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
+
 
 #ifndef __ASSEMBLER__
 
