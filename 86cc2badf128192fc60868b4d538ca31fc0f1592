@@ -120,6 +120,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "00caa50a_55c9d700",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-07-29T23:55:12Z",
+      "side": 1,
+      "message": "It may. I\u0027m struggling to fully reason about it because it\u0027s a multi-level thing, more complicated than my simple script. You roll the dice to figure out what action to take, then roll the dice again (sorta) if you won the first roll to figure out if you can get a new allocation. Then you see if given 12 slots and 500000 chances whether you can get up to 5 allocations. As an alternative, increasing the number of slots would also skew the first roll towards \"try to allocate\", which might help you get to 5.\n\nI\u0027ll try your suggestion and see what happens.",
+      "parentUuid": "5d2fa07d_fc52397a",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0012751c_61aef743",
