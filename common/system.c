@@ -829,7 +829,14 @@ int system_get_image_used(enum ec_image copy)
  */
 __overridable int board_get_version(void)
 {
-#ifdef CONFIG_BOARD_VERSION_GPIO
+	/*
+	 * Don't require boards that override this function to define
+	 * GPIO_BOARD_VERSIONx
+	 */
+#if defined(CONFIG_BOARD_VERSION_GPIO) && \
+	defined(GPIO_BOARD_VERSION1) && \
+	defined(GPIO_BOARD_VERSION2) && \
+	defined(GPIO_BOARD_VERSION3)
 	return (!!gpio_get_level(GPIO_BOARD_VERSION1) << 0) |
 	       (!!gpio_get_level(GPIO_BOARD_VERSION2) << 1) |
 	       (!!gpio_get_level(GPIO_BOARD_VERSION3) << 2);
