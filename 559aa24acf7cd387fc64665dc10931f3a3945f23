@@ -39,6 +39,30 @@
       },
       "revId": "559aa24acf7cd387fc64665dc10931f3a3945f23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c26356cb_b3248e4f",
+        "filename": "core/cortex-m0/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-29T02:24:58Z",
+      "side": 1,
+      "message": "You could put them in cpu.h, however you\u0027ll still have to duplicate them as each core has its own cpu.h.",
+      "parentUuid": "476b1052_8281b925",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "559aa24acf7cd387fc64665dc10931f3a3945f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
