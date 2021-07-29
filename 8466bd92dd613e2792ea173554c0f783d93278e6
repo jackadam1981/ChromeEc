@@ -117,6 +117,30 @@
       },
       "revId": "8466bd92dd613e2792ea173554c0f783d93278e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ab1a6d_65a4f80d",
+        "filename": "common/flash.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 954,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-29T19:13:21Z",
+      "side": 1,
+      "message": "L945 shows that we\u0027d only enter this section if EC_FLASH_PROTECT_RO_NOW is set.\n\nIn addition to enabling SW WP, I\u0027m also checking that HW WP is enabled before latching the CBI EEPROM WP. This is the same logic that `system_is_locked` uses to decide if the system is locked.",
+      "parentUuid": "222250a3_c0facb78",
+      "range": {
+        "startLine": 954,
+        "startChar": 6,
+        "endLine": 954,
+        "endChar": 36
+      },
+      "revId": "8466bd92dd613e2792ea173554c0f783d93278e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

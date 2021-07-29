@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "35a0dd33_b7b41df4",
+        "filename": "baseboard/dedede/baseboard.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-29T19:13:21Z",
+      "side": 1,
+      "message": "Needed this for the intel_x86_pwrok_signal definition when building the target test.",
+      "parentUuid": "6ea32752_b8c27472",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "679f4192e4c6aa74432f50ae9b2f77be63f9316f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11b42a0c_f53ce8f6",
         "filename": "common/flash.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-29T15:52:47Z",
       "side": 1,
       "message": "Now you can use IS_ENABLED.",
+      "range": {
+        "startLine": 950,
+        "startChar": 7,
+        "endLine": 950,
+        "endChar": 27
+      },
+      "revId": "679f4192e4c6aa74432f50ae9b2f77be63f9316f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b31fec4a_e6635c50",
+        "filename": "common/flash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-29T19:13:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11b42a0c_f53ce8f6",
       "range": {
         "startLine": 950,
         "startChar": 7,
