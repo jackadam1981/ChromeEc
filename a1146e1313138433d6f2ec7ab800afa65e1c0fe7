@@ -16,6 +16,23 @@
       "message": "Looks good now, thanks.",
       "revId": "a1146e1313138433d6f2ec7ab800afa65e1c0fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b701e8e1_c3a5cff0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-29T18:29:48Z",
+      "side": 1,
+      "message": "We usually do driver development on the main branch not a release branch, then cherry-pick the changes.\n\nIn particular, accelgyro_icm_common can be traced from crrev.com/c/2317888 and 2215751.\n\nRegarding ICM-40608 support, can it be derived from accelgyro_icm426xx? Comparing accelgyro_icm40608.c accelgyro_icm426xx.c, I see a lot of commonality. When I replace 0608 with 26XX or 26xx in the new files they look very similar to icm426xx.",
+      "revId": "a1146e1313138433d6f2ec7ab800afa65e1c0fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
