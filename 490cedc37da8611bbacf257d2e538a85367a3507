@@ -22,6 +22,30 @@
       },
       "revId": "490cedc37da8611bbacf257d2e538a85367a3507",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12fb145f_fb1ad184",
+        "filename": "common/cbi_eeprom.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-07-29T02:19:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c305ce82_b91963cf",
+      "range": {
+        "startLine": 68,
+        "startChar": 5,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "490cedc37da8611bbacf257d2e538a85367a3507",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
