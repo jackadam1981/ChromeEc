@@ -150,6 +150,8 @@ enum scancode_values {
 	SCANCODE_NEXT_TRACK = 0xe04d,		/* e019 in codeset 1 */
 	SCANCODE_PREV_TRACK = 0xe015,		/* e010 in codeset 1 */
 	SCANCODE_PLAY_PAUSE = 0xe054,		/* e01a in codeset 1 */
+	SCANCODE_MICMUTE = 0xe05b,		/* e01b in codeset 1 */
+	SCANCODE_KBDILLUMTOGGLE = 0xe05d,	/* e02b in codeset 1 */
 
 	SCANCODE_UP = 0xe075,
 	SCANCODE_DOWN = 0xe072,
