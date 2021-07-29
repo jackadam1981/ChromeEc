@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c04b1cad_695f089c",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-29T22:24:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06e75e1f_5b961061",
+      "range": {
+        "startLine": 117,
+        "startChar": 23,
+        "endLine": 117,
+        "endChar": 33
+      },
+      "revId": "d2e91c22fd671461dffd21590fa065c0220e4693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf6932eb_d3dfa5af",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-29T11:32:08Z",
       "side": 1,
       "message": "Just for curious, why not use i2c_controller_int_handler?",
+      "range": {
+        "startLine": 759,
+        "startChar": 0,
+        "endLine": 759,
+        "endChar": 32
+      },
+      "revId": "d2e91c22fd671461dffd21590fa065c0220e4693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65cadaf6_4b0f6d97",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-29T22:24:31Z",
+      "side": 1,
+      "message": "Done\n\ni\u0027m only making changes that can be verified with compare_build.sh\nin this pass, but we could merge i2c_controller_int_handler() with handle_interrupt().",
+      "parentUuid": "bf6932eb_d3dfa5af",
       "range": {
         "startLine": 759,
         "startChar": 0,
