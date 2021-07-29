@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d2fa07d_fc52397a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-29T22:29:38Z",
+      "side": 1,
+      "message": "this is not obvious, but shmem_size() returns the size of the largest currently allocatable chunk, so normalizing rand() output by this value guarantees to yield a size which can be allocated.\n\nAnd if there is no memory to allocate left, the code should skip attempts of allocating zero bytes, some memory would be released on next iterations.\n\nWill this not work?",
+      "parentUuid": "a4bdccaa_f92a0b75",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0012751c_61aef743",
