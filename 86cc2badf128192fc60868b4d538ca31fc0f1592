@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4bdccaa_f92a0b75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-07-29T22:21:55Z",
+      "side": 1,
+      "message": "I\u0027m not a pro statistics person, but I think refreshing shmem_size each iteration suffers from the same problem because the challenge is still to carve 5 randomly sized slices out of the pie without ever running out of pie. Refreshing the size each iteration probably does probably help in cases where we wasted our 500000 iterations trying to hit a small value out of 0x8680. But doesn\u0027t help if 3 or 4 slices end up neatly filling the whole pie. I don\u0027t quite have the math chops on me to know if shrinking the range like that makes it more or less likely that you\u0027ll fill the pie early. Maybe it\u0027s a little better?\n\nI should have shared the results of my python script when attempting allocations of at most shmem_size / 2:\n\n$ python3 myrand.py\nMean: 3.850000 stddev: 1.267778\n\nWith my change, you have 500000 chances (divided roughly by the number of iterations it takes you to do one of the \"attempts\" in my script) to get \u003c 1 standard deviation better than the mean. The odds here are way better than before, where you had to get \u003e3 standard deviations better than the mean. This is still probabilistic, but don\u0027t forget the random seed doesn\u0027t change, so you pretty much know by running once if the test is going to always pass or always fail.\n\nThe test seems tolerant of allocation failures, so I think the allocs of size 0 just get quietly ignored. We could add 1 to our random size to ensure it\u0027s always valid?",
+      "parentUuid": "e58ffbe5_283ef0bd",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0012751c_61aef743",
