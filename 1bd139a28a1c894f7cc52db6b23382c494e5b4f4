@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "db7b9134_066f043f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-29T20:53:49Z",
+      "side": 1,
+      "message": "This is a problem that could happen to any convertible on a table with a magnet.\nWe should consider putting the fix in tablet_set_mode().",
+      "revId": "1bd139a28a1c894f7cc52db6b23382c494e5b4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78741caf_7f8f2bd3",
@@ -66,6 +83,23 @@
       "writtenOn": "2021-03-30T19:29:24Z",
       "side": 1,
       "message": "Nit: This function could be organized with less nesting using early returns for the checks on lid_angle.",
+      "revId": "1bd139a28a1c894f7cc52db6b23382c494e5b4f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4ebcfbb_1775f038",
+        "filename": "board/voema/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-07-29T20:53:49Z",
+      "side": 1,
+      "message": "Use a define for 300: FLIPPED_360_ZONE_LID_ANGLE could be redefined into a .h.",
       "revId": "1bd139a28a1c894f7cc52db6b23382c494e5b4f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
