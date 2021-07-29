@@ -22,6 +22,30 @@
       },
       "revId": "008f2961a79abe1cc0669857c218e39d59f38e49",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e0e8b79_4abe33d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-07-29T15:41:01Z",
+      "side": 1,
+      "message": "Correct, I found this when I tried to compile the EC host tests in 32-bit mode (the next CL up in this stack). My goal with that effort is to expose 32-bit bugs like torn reads/writes to the test environment. This one was the most complicated issue that fell out of that :) Thanks for reviewing.",
+      "parentUuid": "8aa28e29_1e00a9cd",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 15
+      },
+      "revId": "008f2961a79abe1cc0669857c218e39d59f38e49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
