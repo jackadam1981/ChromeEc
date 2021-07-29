@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf6932eb_d3dfa5af",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-07-29T11:32:08Z",
+      "side": 1,
+      "message": "Just for curious, why not use i2c_controller_int_handler?",
+      "range": {
+        "startLine": 759,
+        "startChar": 0,
+        "endLine": 759,
+        "endChar": 32
+      },
+      "revId": "d2e91c22fd671461dffd21590fa065c0220e4693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
