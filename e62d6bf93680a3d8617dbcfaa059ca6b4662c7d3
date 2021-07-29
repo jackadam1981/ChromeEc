@@ -34,6 +34,24 @@
       "parentUuid": "c2de588b_8dcf1403",
       "revId": "e62d6bf93680a3d8617dbcfaa059ca6b4662c7d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38904507_5a7f4fed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-07-29T20:23:54Z",
+      "side": 1,
+      "message": "if it is overridden, don\u0027t enable CONFIG_BOARD_VERSION_GPIO",
+      "parentUuid": "c2b95652_355fc3b3",
+      "revId": "e62d6bf93680a3d8617dbcfaa059ca6b4662c7d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
