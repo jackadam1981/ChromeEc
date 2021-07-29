@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c2ee25_1f793ffc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-29T16:42:17Z",
+      "side": 1,
+      "message": "I don\u0027t understand why this size reduction is necessary. It should be possible to allocate any size within the limit, as long as  there is no other allocations, once the buffer is freed the entire heap should be available.\n\nwhy compiling for 32 bits would make any difference?",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
