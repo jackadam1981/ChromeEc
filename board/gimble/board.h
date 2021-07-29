@@ -30,7 +30,11 @@
 /* BMA253 accelerometer in lid */
 #define CONFIG_ACCEL_BMA255
 
+/* BMA422 accelerometer in lid */
+#define CONFIG_ACCEL_BMA4XX
+
 #define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_ACCELGYRO_LSM6DSM /* Base accel/gyro */
 #define CONFIG_ACCELGYRO_BMI160	/* Base accel/gyro */
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
