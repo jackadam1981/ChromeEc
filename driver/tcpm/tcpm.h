@@ -418,4 +418,5 @@ int tcpm_has_pending_message(int port);
  */
 void tcpm_clear_pending_messages(int port);
 
+void tcpci_tcpc_enable_auto_discharge_disconnect(int port, int enable);
 #endif
