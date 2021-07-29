@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "e58ffbe5_283ef0bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-29T20:39:48Z",
+      "side": 1,
+      "message": "hmm, I misread your original comments and thought that the buffer was freed between allocations.\n\nNow I looked at the code, you are right, this way of picking allocation size is wrong. The suggested fix is also flaky though: it might start failing again next time the underlying rand() behavior changes.\n\nHow about moving\n\nint shmem_size \u003d shared_mem_size();\n\nfrom line 213 into the while loop after line 216?\n\nAnother problem with this test on top of what Jack mentioned as I see now is that alloc_size could be set to zero in line 256, which would trigger error return value in line 262. It should be just skipped, in the following iterations some memory will be freed.",
+      "parentUuid": "816df429_070cd92f",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0012751c_61aef743",
