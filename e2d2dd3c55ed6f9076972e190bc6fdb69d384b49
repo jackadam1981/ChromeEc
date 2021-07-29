@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fa07756_25206a58",
+        "filename": "board/gimble/keyboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2021-07-29T18:54:22Z",
+      "side": 1,
+      "message": "Is this a TBD in future, because I doubt that TK_KBD_BKLIGHT_DOWN will behave as the keyboard backlight toggle?",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "e2d2dd3c55ed6f9076972e190bc6fdb69d384b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
