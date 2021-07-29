@@ -9,6 +9,7 @@
 #ifndef __CROS_EC_USB_PD_TCPM_PS8XXX_H
 #define __CROS_EC_USB_PD_TCPM_PS8XXX_H
 
+<<<<<<< HEAD   (0f51df bland: initial commit)
 /* I2C interface */
 #define PS8751_I2C_ADDR1_P1_FLAGS 0x09
 #define PS8751_I2C_ADDR1_P2_FLAGS 0x0A
@@ -17,6 +18,9 @@
 #define PS8751_I2C_ADDR3_FLAGS    0x2B
 #define PS8751_I2C_ADDR4_FLAGS    0x4B
 
+=======
+#define PS8751_P3_TO_P0_FLAGS(p3_flags)	((p3_flags) - 3)
+>>>>>>> CHANGE (feafc7 ps8xxx: patch ps8805 A3 chip Device ID)
 #define PS8751_P3_TO_P1_FLAGS(p3_flags)	((p3_flags) - 2)
 
 /* Minimum Delay for reset assertion */
@@ -101,7 +105,54 @@
 /* Vendor defined registers */
 #define PS8815_P1_REG_HW_REVISION		0xF0
 
+<<<<<<< HEAD   (0f51df bland: initial commit)
 extern const struct tcpm_drv ps8xxx_tcpm_drv;
+=======
+/*
+ * Below register is defined from Parade PS8815 Register Table,
+ * See b:189587527 for more detail.
+ */
+
+/* Displayport related settings */
+#define PS8815_REG_DP_EQ_SETTING		0xF8
+#define PS8815_AUTO_EQ_DISABLE			BIT(7)
+#define PS8815_DPEQ_LOSS_UP_21DB		0x09
+#define PS8815_DPEQ_LOSS_UP_20DB		0x08
+#define PS8815_DPEQ_LOSS_UP_19DB		0x07
+#define PS8815_DPEQ_LOSS_UP_18DB		0x06
+#define PS8815_DPEQ_LOSS_UP_17DB		0x05
+#define PS8815_DPEQ_LOSS_UP_16DB		0x04
+#define PS8815_DPEQ_LOSS_UP_13DB		0x03
+#define PS8815_DPEQ_LOSS_UP_12DB		0x02
+#define PS8815_DPEQ_LOSS_UP_10DB		0x01
+#define PS8815_DPEQ_LOSS_UP_9DB			0x00
+#define PS8815_REG_DP_EQ_COMP_SHIFT		3
+#define PS8815_AUX_INTERCEPTION_DISABLE		BIT(1)
+
+/*
+ * PS8805 register to distinguish chip revision
+ * bit 7-4: 1010b is A3 chip, 0000b is A2 chip
+ */
+#define PS8805_P0_REG_CHIP_REVISION		0x62
+
+/*
+ * PS8805 GPIO control register. Note the device I2C address of 0x1A is
+ * independent of the ADDR pin on the chip, and not the same address being used
+ * for TCPCI functions.
+ */
+#define PS8805_VENDOR_DEFINED_I2C_ADDR		0x1A
+#define PS8805_REG_GPIO_CONTROL		0x21
+#define PS8805_REG_GPIO_0			BIT(7)
+#define PS8805_REG_GPIO_1			BIT(5)
+#define PS8805_REG_GPIO_2			BIT(6)
+
+enum ps8805_gpio {
+	PS8805_GPIO_0,
+	PS8805_GPIO_1,
+	PS8805_GPIO_2,
+	PS8805_GPIO_NUM,
+};
+>>>>>>> CHANGE (feafc7 ps8xxx: patch ps8805 A3 chip Device ID)
 
 /**
  * Board specific callback to judge and provide which chip source of PS8XXX
