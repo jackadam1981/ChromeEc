@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "478dc2bf_d0f7d2e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-07-29T06:50:55Z",
+      "side": 1,
+      "message": "For historical purposes, noting `tRpValueChange` from Type-C spec is applicable.\n\nThis may be 0-5ms (BMC idle) or 10-20ms (not BMC idle).\n\nTCPCI spec further constrains this value, and above is upper bound from higher layers (not accounting for overhead like i2c transaction and processing time).\n",
+      "revId": "ef75b89e05691b1a5a60d2f265a707f9966293e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
