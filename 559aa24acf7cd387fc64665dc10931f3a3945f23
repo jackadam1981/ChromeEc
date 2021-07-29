@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dee425b_f4fe43e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T00:34:31Z",
+      "side": 1,
+      "message": "Hi Aseda, could you PTAL? ty!",
+      "revId": "559aa24acf7cd387fc64665dc10931f3a3945f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "476b1052_8281b925",
+        "filename": "core/cortex-m0/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1202079
+      },
+      "writtenOn": "2021-07-29T00:34:31Z",
+      "side": 1,
+      "message": "kind of lame that I have to duplicate the defines.\n\nwhat would be a good place where I can put ARM-only #defines ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 26
+      },
+      "revId": "559aa24acf7cd387fc64665dc10931f3a3945f23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
