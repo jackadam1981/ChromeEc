@@ -168,6 +168,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a14331bd_be04c224",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1260470
+      },
+      "writtenOn": "2021-07-30T16:09:47Z",
+      "side": 1,
+      "message": "Right, I don\u0027t have any trouble passing all the bits except for the high one trying to get 5 allocations, which seems to chew through all 500000 iterations.\n\nI tried your suggestion, and I can pass except for BIT(11):\n\tif (!candidate) {\n\t\tset_map_bit(BIT(11));\n\t\treturn EC_ERROR_BUSY;\n\t}\n\t\nIf I add an explicit test before the loop for a size that\u0027s too big like below, then we can pass:\n\tif (shared_mem_acquire(shared_mem_size() + 1, \u0026shptr) !\u003d EC_ERROR_BUSY) {\n\t\tccprintf(\"Humongous allocation succeeded that should not have\");\n\t\ttest_fail();\n\t}\n\t\nI also have to be careful not to mod by zero. Do you prefer this solution?",
+      "parentUuid": "1b9e5231_ed2cc683",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0012751c_61aef743",
