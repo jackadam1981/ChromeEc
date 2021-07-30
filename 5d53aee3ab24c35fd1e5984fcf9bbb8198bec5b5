@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "144ad497_ce8010b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-30T17:56:53Z",
+      "side": 1,
+      "message": "I\u0027d like Parade to comment on this issue before submitting this workaround.",
+      "revId": "5d53aee3ab24c35fd1e5984fcf9bbb8198bec5b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87c252db_3560a4e9",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-30T17:56:53Z",
+      "side": 1,
+      "message": "Line length too long.\n\nPlease make sure you are running the pre-submit checks using either \"repo upload\" to push your change which runs the check automatically, or you can run the presubmit manually with \"/mnt/host/depot_tools/presubmit_support.py\" inside the chroot and \"~/depot_tools/presubmit_support.py\" outside the chroot.",
+      "range": {
+        "startLine": 673,
+        "startChar": 0,
+        "endLine": 673,
+        "endChar": 68
+      },
+      "revId": "5d53aee3ab24c35fd1e5984fcf9bbb8198bec5b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed36721_4d11fc64",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-07-30T17:56:53Z",
+      "side": 1,
+      "message": "It would be better to poll the FW_VER register for specific amount of time instead of retry count.\n\nHowever, I\u0027d like Parade to comment on the behavior of this register and whether there is a better workaround.",
+      "range": {
+        "startLine": 675,
+        "startChar": 0,
+        "endLine": 677,
+        "endChar": 0
+      },
+      "revId": "5d53aee3ab24c35fd1e5984fcf9bbb8198bec5b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
