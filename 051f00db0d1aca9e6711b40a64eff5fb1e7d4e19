@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "262d6538_e2535002",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1150214
+      },
+      "writtenOn": "2021-07-30T18:37:07Z",
+      "side": 1,
+      "message": "I assume care was taken to select these scancodes (i.e. they don\u0027t clash with any existing standard key scan code). Please consult with dtor@ if in doubt.",
+      "range": {
+        "startLine": 154,
+        "startChar": 27,
+        "endLine": 154,
+        "endChar": 42
+      },
+      "revId": "051f00db0d1aca9e6711b40a64eff5fb1e7d4e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
