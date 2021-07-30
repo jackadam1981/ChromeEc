@@ -25,7 +25,6 @@ const char *const dcrypto_app_names[] = {
 static void name_hash(enum dcrypto_appid appid,
 		      uint32_t digest[SHA256_DIGEST_WORDS])
 {
-	LITE_SHA256_CTX ctx;
 	const char *name = dcrypto_app_names[appid];
 	size_t x;
 
@@ -44,9 +43,7 @@ static void name_hash(enum dcrypto_appid appid,
 		return;
 	}
 
-	DCRYPTO_SHA256_init(&ctx, 0);
-	HASH_update(&ctx, name, strlen(name));
-	memcpy(digest, HASH_final(&ctx), SHA256_DIGEST_SIZE);
+	DCRYPTO_SHA256_hash(name, strlen(name), (uint8_t *)digest);
 
 	/* The digests were originally endian swapped because xxd was used to
 	 * print them so this operation is needed to keep the derived keys the

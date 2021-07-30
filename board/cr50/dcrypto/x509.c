@@ -425,7 +425,7 @@ int DCRYPTO_x509_gen_u2f_cert_name(const p256_int *d, const p256_int *pk_x,
 				   const char *name, uint8_t *cert, const int n)
 {
 	struct asn1 ctx = {cert, 0};
-	HASH_CTX sha;
+	struct sha256_ctx sha;
 	p256_int h, r, s;
 	struct drbg_ctx drbg;
 
@@ -514,8 +514,8 @@ int DCRYPTO_x509_gen_u2f_cert_name(const p256_int *d, const p256_int *pk_x,
 
 	/* Sign all of cert body */
 	DCRYPTO_SHA256_init(&sha, 0);
-	HASH_update(&sha, body, (ctx.p + ctx.n) - body);
-	p256_from_bin(HASH_final(&sha), &h);
+	SHA256_update(&sha, body, (ctx.p + ctx.n) - body);
+	p256_from_bin(SHA256_final(&sha), &h);
 	hmac_drbg_init_rfc6979(&drbg, d, &h);
 	if (!dcrypto_p256_ecdsa_sign(&drbg, d, &h, &r, &s))
 		return 0;

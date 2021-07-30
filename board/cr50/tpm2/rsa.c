@@ -396,10 +396,10 @@ CRYPT_RESULT _cpri__GenerateKeyRSA(
 	} else
 #endif
 	{
-		LITE_HMAC_CTX hmac;
+		struct hmac_sha256_ctx hmac;
 
 		DCRYPTO_HMAC_SHA256_init(&hmac, seed->buffer, seed->size);
-		HASH_update(&hmac.hash, "RSA", 4);
+		HMAC_SHA256_update(&hmac, "RSA", 4);
 		memcpy(local_seed.t.buffer, DCRYPTO_HMAC_final(&hmac),
 			local_seed.t.size);
 	}
