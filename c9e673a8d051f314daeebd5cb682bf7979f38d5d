@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b16a9859_56942b4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-07-30T22:50:17Z",
+      "side": 1,
+      "message": "besides different (but well tested) SHA implementations all other changes are just related to type names changes and stronger type checking. I avoided typedefs used by cryptoc, so had to manually fix types. While other boards still builds, I switched board/host to use cr50\u0027s API and updated tests. For U2F tests amount of mocking needed dropped as real SHA/HMAC/DRBG can be used on host now due to refactoring which will be later used for better testing.\n\nThis CL also enables HW HMAC support I plan to add soon.",
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
