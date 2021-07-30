@@ -51,6 +51,24 @@
       "message": "I was thinking of making temp_mk optional.\n\nIf !NULL and called in a function that does not support it, return an error.\n\nIf NULL don\u0027t report mK, even if supported.\n\nThis way, we don\u0027t have to add temp_sensor_read_k(), just temp_sensor_read(..., NULL).",
       "revId": "1bf7a7514c9eb32c401378565816c5b551ea6ef3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5bc66a7_6c816c92",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-07-30T20:06:32Z",
+      "side": 1,
+      "message": "This has the risk of null reference panic if the temp sensor driver developer forgets to check for null, but I guess this isn\u0027t any more burden than setting the sensor to -1. \n\nIMO keeping temp_sensor_read_k and temp_sensor_read_mk as separate functions will be less error prone. Typically a developer is wanting just K or mK. The behavior of temp_sensor_read is non-obvious without reading the function description. Of course the read method in the temp driver does exactly this, but this is only done to simplify backward compatibility.",
+      "parentUuid": "511784d0_5a682af5",
+      "revId": "1bf7a7514c9eb32c401378565816c5b551ea6ef3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
