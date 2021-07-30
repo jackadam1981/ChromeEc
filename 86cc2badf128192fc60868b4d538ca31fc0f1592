@@ -144,6 +144,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b9e5231_ed2cc683",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-30T00:17:12Z",
+      "side": 1,
+      "message": "Actually, the test finishes not after 5 allocations, it finishes after all main function branches are taken, which makes \n\n(test_map \u0026 ALL_PATHS_MASK) \u003d\u003d ALL_PATHS_MASK)\n\ncondition true.\n\nthere are 24 bits in the ALL_PATHS_MASK, and not each allocation causes a hit on a new bit, so the test could be going for quite a few loops.",
+      "parentUuid": "00caa50a_55c9d700",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0012751c_61aef743",
