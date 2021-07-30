@@ -646,6 +646,7 @@ __maybe_unused static void ps8815_transmit_buffer_workaround_check(int port)
 	switch (val) {
 	case 0x0a00:
 	case 0x0a01:
+	case 0x0a02:
 		ps8815_role_control_delay[port] = true;
 		break;
 	default:
@@ -658,15 +659,24 @@ __maybe_unused static void ps8815_disable_rp_detect_workaround_check(int port)
 	int val;
 	int rv;
 	int reg;
+	int retry = 0;
 
 	ps8815_disable_rp_detect[port] = false;
 	ps8815_disconnected[port] = true;
 
 	reg = get_reg_by_product(port, REG_FW_VER);
-	rv = tcpc_read(port, reg, &val);
-	if (rv != EC_SUCCESS)
-		return;
-
+	while (1) {
+		rv = tcpc_read(port, reg, &val);
+		if (rv != EC_SUCCESS)
+			return;
+		/* In PS8815A2, REG_FW_VER may return 0 at first read,
+		 * it will cause rp detect disable even FW_VER is not 0
+		 * in the end.
+		 */
+		if (val != 0 || retry > 100)
+			break;
+		retry++;
+	}
 	/*
 	 * RP detect is a problem in firmware version 0x10 and older.
 	 */
