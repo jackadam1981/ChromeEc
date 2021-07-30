@@ -45,6 +45,40 @@
       },
       "revId": "e82bda8efd21df37045ca09f1bb9f5a301c8f250",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9fef9ea_d927add3",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-07-30T05:29:44Z",
+      "side": 1,
+      "message": "probably the above function call also can be under line 55 condition check. This has to be done after correcting the identified issue in line 55 comment. if not done never goes disconnect mode. More testing required with this change.",
+      "revId": "e82bda8efd21df37045ca09f1bb9f5a301c8f250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6be5c2a0_1f932e7f",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-07-30T05:29:44Z",
+      "side": 1,
+      "message": "(1). virtual_mux_state is initialized to 0. For the disconnect mode i.e value is 0.\nSo previous Mux state and current Mux state both will be  0, in this scenario the above condition check won\u0027t satisfy. So for the first disconnect mode the PD is not waiting for ACK. The impact of this may be nothing but the code is not as per expectation.\n\n(2). We may not get Ack from AP for reboot NDA case. So PD state machine needs to waits 100 msec for each port. Is it ok ?",
+      "revId": "e82bda8efd21df37045ca09f1bb9f5a301c8f250",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
