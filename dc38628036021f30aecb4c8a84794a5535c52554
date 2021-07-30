@@ -34,6 +34,24 @@
       "parentUuid": "325b981e_aea41e35",
       "revId": "dc38628036021f30aecb4c8a84794a5535c52554",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73e97add_11d4055d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-07-30T02:16:07Z",
+      "side": 1,
+      "message": "The differences between it81202 and it81302 are:\n- chip id\n- it81302 have extra two GPIO gropus (K and L)",
+      "parentUuid": "17be81cc_b9cd5b1e",
+      "revId": "dc38628036021f30aecb4c8a84794a5535c52554",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
