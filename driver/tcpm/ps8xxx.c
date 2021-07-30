@@ -646,6 +646,7 @@ __maybe_unused static void ps8815_transmit_buffer_workaround_check(int port)
 	switch (val) {
 	case 0x0a00:
 	case 0x0a01:
+	case 0x0a02:
 		ps8815_role_control_delay[port] = true;
 		break;
 	default:
@@ -682,9 +683,14 @@ static int ps8xxx_tcpm_init(int port)
 	int status;
 
 	product_id[port] = board_get_ps8xxx_product_id(port);
-
 	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8815)) {
 		ps8815_transmit_buffer_workaround_check(port);
+		/* Time between the cable plug in and read
+		 * FW version, the delay time only 0.7ms.
+		 * The delay time of recovery from low power must
+		 * be greater than 10ms.
+		 */
+		msleep(PS8815_FW_INIT_DELAY_MS);
 		ps8815_disable_rp_detect_workaround_check(port);
 	}
 
