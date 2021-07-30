@@ -4,9 +4,12 @@
  *
  * Battery pack vendor provided charging profile
  */
+#include "battery.h"
 #include "battery_fuel_gauge.h"
+#include "battery_smart.h"
 #include "charge_state.h"
 #include "common.h"
+#include "util.h"
 
 /*
  * Battery info for lalala battery types. Note that the fields
@@ -67,3 +70,23 @@ const struct board_batt_params board_battery_info[] = {
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_SDI;
+
+int charger_profile_override(struct charge_state_data *curr)
+{
+	curr->requested_voltage += 100;
+
+	return 0;
+}
+
+enum ec_status charger_profile_override_get_param(uint32_t param,
+				uint32_t *value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
+enum ec_status charger_profile_override_set_param(uint32_t param,
+				uint32_t value)
+{
+	return EC_RES_INVALID_PARAM;
+}
+
