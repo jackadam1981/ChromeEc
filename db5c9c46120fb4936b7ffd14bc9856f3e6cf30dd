@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f00b0db9_875a0be2",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-07-30T19:50:39Z",
+      "side": 1,
+      "message": "nit: I think this is redundant, too. WDYT?",
+      "range": {
+        "startLine": 85,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 16
+      },
+      "revId": "db5c9c46120fb4936b7ffd14bc9856f3e6cf30dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
