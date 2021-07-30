@@ -218,11 +218,11 @@ int g2f_individual_keypair(p256_int *d, p256_int *pk_x, p256_int *pk_y)
 
 	/* Generate unbiased private key */
 	while (!DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d, buf)) {
-		HASH_CTX sha;
+		struct sha256_ctx sha;
 
 		DCRYPTO_SHA256_init(&sha, 0);
-		HASH_update(&sha, buf, sizeof(buf));
-		memcpy(buf, HASH_final(&sha), sizeof(buf));
+		HASH_update((union hash_ctx *)&sha, buf, sizeof(buf));
+		memcpy(buf, HASH_final((union hash_ctx *)&sha), sizeof(buf));
 	}
 
 	return EC_SUCCESS;

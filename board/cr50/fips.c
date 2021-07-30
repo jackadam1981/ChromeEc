@@ -150,7 +150,7 @@ void fips_throw_err(enum fips_status err)
 /* KAT for SHA256, test values from OpenSSL. */
 static bool fips_sha256_kat(void)
 {
-	struct HASH_CTX ctx;
+	struct sha256_ctx ctx;
 
 	static const uint8_t in[] = /* "etaonrishd" */ { 0x65, 0x74, 0x61, 0x6f,
 							 0x6e, 0x72, 0x69, 0x73,
@@ -162,15 +162,15 @@ static bool fips_sha256_kat(void)
 				       0x50, 0x4f, 0x47, 0x57 };
 
 	DCRYPTO_SHA256_init(&ctx, 0);
-	HASH_update(&ctx, in, sizeof(in));
+	SHA256_update(&ctx, in, sizeof(in));
 	return !(fips_break_cmd == FIPS_BREAK_SHA256) &&
-	       (memcmp(HASH_final(&ctx), ans, SHA256_DIGEST_SIZE) == 0);
+	       (memcmp(SHA256_final(&ctx), ans, SHA256_DIGEST_SIZE) == 0);
 }
 
 /* KAT for HMAC-SHA256, test values from OpenSSL. */
 static bool fips_hmac_sha256_kat(void)
 {
-	LITE_HMAC_CTX ctx;
+	struct hmac_sha256_ctx ctx;
 
 	static const uint8_t k[SHA256_DIGEST_SIZE] =
 		/* "etaonrishd" */ { 0x65, 0x74, 0x61, 0x6f, 0x6e, 0x72, 0x69,
@@ -188,7 +188,7 @@ static bool fips_hmac_sha256_kat(void)
 				       0xff, 0xda, 0x24, 0xf4 };
 
 	DCRYPTO_HMAC_SHA256_init(&ctx, k, sizeof(k));
-	HASH_update(&ctx.hash, in, sizeof(in));
+	HMAC_SHA256_update(&ctx, in, sizeof(in));
 	return !(fips_break_cmd == FIPS_BREAK_HMAC_SHA256) &&
 	       (memcmp(DCRYPTO_HMAC_final(&ctx), ans, SHA256_DIGEST_SIZE) == 0);
 }

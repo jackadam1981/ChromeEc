@@ -68,16 +68,16 @@ fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/compare.o
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/dcrypto_runtime.o
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/gcm.o
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/hkdf.o
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/hmac.o
+fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/hmac_sw.o
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/hmac_drbg.o
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/key_ladder.o
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/p256.o
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/p256_ec.o
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/rsa.o
+fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/sha_hw.o
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/sha1.o
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/sha256.o
 ifeq ($(CONFIG_UPTO_SHA512),y)
-fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/sha384.o
 ifeq ($(CONFIG_DCRYPTO_SHA512),y)
 fips-${CONFIG_DCRYPTO_BOARD} += dcrypto/dcrypto_sha512.o
 else

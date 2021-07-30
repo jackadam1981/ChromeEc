@@ -31,12 +31,26 @@ static inline uint64_t be64toh(uint64_t in)
 {
 	return __builtin_bswap64(in);
 }
+#else
+
+static inline uint16_t be16toh(uint16_t in)
+{
+	return in;
+}
+static inline uint32_t be32toh(uint32_t in)
+{
+	return in;
+}
+static inline uint64_t be64toh(uint64_t in)
+{
+	return in;
+}
+
+#endif  /* __BYTE_ORDER__  == __ORDER_LITTLE_ENDIAN__ */
 
 #define htobe16 be16toh
 #define htobe32 be32toh
 #define htobe64 be64toh
-
-#endif  /* __BYTE_ORDER__  == __ORDER_LITTLE_ENDIAN__ */
 
 #ifdef __cplusplus
 }

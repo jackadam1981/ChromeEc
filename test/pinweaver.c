@@ -7,7 +7,6 @@
 
 #include <dcrypto.h>
 #include <nvmem_vars.h>
-#include <sha256.h>
 #include <stdint.h>
 #include <string.h>
 #include <timer.h>
@@ -885,37 +884,37 @@ void rand_bytes(void *buffer, size_t len)
 /* Mock implementations of Dcrypto functionality.
  */
 
-void HASH_update(struct HASH_CTX *ctx, const void *data, size_t len)
+void HASH_update(union hash_ctx *ctx, const void *data, size_t len)
 {
 	if (MOCK_hash_update_cb)
 		MOCK_hash_update_cb(data, len);
 	if (ctx)
-		SHA256_update(ctx, data, len);
+		SHA256_sw_update(&ctx->sha256, data, len);
 }
 
-uint8_t *HASH_final(struct HASH_CTX *ctx)
+const uint8_t *HASH_final(union hash_ctx *ctx)
 {
 	++MOCK_DECRYPTO_release_counter;
-	return SHA256_final(ctx);
+	return SHA256_sw_final(&ctx->sha256);
 }
 
-void DCRYPTO_SHA256_init(LITE_SHA256_CTX *ctx, uint32_t sw_required)
+void DCRYPTO_SHA256_init(struct sha256_ctx *ctx, uint32_t sw_required)
 {
-	SHA256_init(ctx);
+	SHA256_sw_init(ctx);
 	++MOCK_DECRYPTO_init_counter;
 }
 
-void DCRYPTO_HMAC_SHA256_init(LITE_HMAC_CTX *ctx, const void *key,
+void DCRYPTO_HMAC_SHA256_init(struct hmac_sha256_ctx *ctx, const void *key,
 			      unsigned int len)
 {
 	TEST_ASRT_NORET(len == sizeof(EMPTY_TREE.hmac_key));
 	TEST_ASRT_NORET(memcmp(key, EMPTY_TREE.hmac_key,
 			       sizeof(EMPTY_TREE.hmac_key)) == 0);
-	SHA256_init(&ctx->hash);
+	SHA256_sw_init(&ctx->hash);
 	++MOCK_DECRYPTO_init_counter;
 }
 
-const uint8_t *DCRYPTO_HMAC_final(LITE_HMAC_CTX *ctx)
+const uint8_t *DCRYPTO_HMAC_final(struct hmac_sha256_ctx *ctx)
 {
 	++MOCK_DECRYPTO_release_counter;
 	return MOCK_hmac;
