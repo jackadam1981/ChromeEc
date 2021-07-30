@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c94a9a5_007de3a0",
+        "filename": "chip/it83xx/spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1289152
+      },
+      "writtenOn": "2021-07-30T17:35:33Z",
+      "side": 1,
+      "message": "Nit: is there any point abbreviating this? \"Periph\" isn\u0027t a particularly common abbreviation, and it only saves four characters — I\u0027m not sure it\u0027s worth the loss of clarity.",
+      "range": {
+        "startLine": 63,
+        "startChar": 2,
+        "endLine": 63,
+        "endChar": 18
+      },
+      "revId": "e4cd9821d7cbb5cb1ef81ace06a22b073e85f29d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
