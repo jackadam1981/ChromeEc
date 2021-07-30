@@ -192,6 +192,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "68c3ac71_b58f9b0b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-07-30T17:23:37Z",
+      "side": 1,
+      "message": "ah, right, when moving the size assignment into the loop we never try allocating too much. But then again we want to test this \u0027too much\u0027 allocation not only when this is a single large buffer, but also when there are already some allocations active.\n\nNow, having thought about this and after you refreshing my memory I tend to agree that your original suggestion was the best one, I suggest you go back to it, maybe with a better patch description explaining the rationale.\n\nSorry for this all churn 😊",
+      "parentUuid": "a14331bd_be04c224",
+      "range": {
+        "startLine": 13,
+        "startChar": 47,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "86cc2badf128192fc60868b4d538ca31fc0f1592",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0012751c_61aef743",
