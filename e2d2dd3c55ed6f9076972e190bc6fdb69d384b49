@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eab81d9_79fb8389",
+        "filename": "board/gimble/keyboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-30T02:46:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fa07756_25206a58",
+      "range": {
+        "startLine": 37,
+        "startChar": 26,
+        "endLine": 37,
+        "endChar": 51
+      },
+      "revId": "e2d2dd3c55ed6f9076972e190bc6fdb69d384b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79bd397a_84edf1bf",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a0e6b3_e88274bb",
+        "filename": "common/keyboard_vivaldi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-30T02:46:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79bd397a_84edf1bf",
+      "range": {
+        "startLine": 61,
+        "startChar": 25,
+        "endLine": 61,
+        "endChar": 50
+      },
+      "revId": "e2d2dd3c55ed6f9076972e190bc6fdb69d384b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39ef2e7a_e2e70639",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-29T19:11:36Z",
       "side": 1,
       "message": "Please also add SCANCODE_KBDILLUMTOGGLE here as a new key.",
+      "range": {
+        "startLine": 153,
+        "startChar": 1,
+        "endLine": 153,
+        "endChar": 18
+      },
+      "revId": "e2d2dd3c55ed6f9076972e190bc6fdb69d384b49",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80635209_8af5091c",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-07-30T02:46:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39ef2e7a_e2e70639",
       "range": {
         "startLine": 153,
         "startChar": 1,
