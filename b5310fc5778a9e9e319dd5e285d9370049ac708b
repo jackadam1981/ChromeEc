@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6a7bf7a_ac6912cc",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-07-30T17:30:49Z",
+      "side": 1,
+      "message": "Please fix the registers according to the updated programming guide.",
+      "parentUuid": "5b469db3_a432aeca",
+      "range": {
+        "startLine": 543,
+        "startChar": 31,
+        "endLine": 543,
+        "endChar": 41
+      },
+      "revId": "b5310fc5778a9e9e319dd5e285d9370049ac708b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "34bbb347_7bc525bc",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 3
