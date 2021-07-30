@@ -51,6 +51,24 @@
       "parentUuid": "b701e8e1_c3a5cff0",
       "revId": "a1146e1313138433d6f2ec7ab800afa65e1c0fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "920b87a1_f185a24b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-07-30T15:18:40Z",
+      "side": 1,
+      "message": "And if you meaning that cherry pick icm_common.* and icm426xx.* from main branch and modify that commit for this branch, I will do. Please confirm",
+      "parentUuid": "489b75b5_1b936273",
+      "revId": "a1146e1313138433d6f2ec7ab800afa65e1c0fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
