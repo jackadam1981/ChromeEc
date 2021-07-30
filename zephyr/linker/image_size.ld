@@ -4,7 +4,7 @@
  */
 
 #if defined(CONFIG_CPU_CORTEX_M) || defined(CONFIG_CPU_CORTEX_R) || \
-	defined(CONFIG_CPU_CORTEX_A)
+	defined(CONFIG_CPU_CORTEX_A) || defined(CONFIG_RISCV)
 __image_size = _flash_used;
 #else
 /*
