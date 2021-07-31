@@ -22,6 +22,30 @@
       },
       "revId": "288c1eb6e2807f1f268bad12be7654497fbc7871",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5daa526_3ee8f0ed",
+        "filename": "chip/it83xx/intc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-07-31T01:07:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47863d50_4ef824b1",
+      "range": {
+        "startLine": 48,
+        "startChar": 5,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "288c1eb6e2807f1f268bad12be7654497fbc7871",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
