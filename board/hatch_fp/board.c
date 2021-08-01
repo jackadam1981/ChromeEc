@@ -14,6 +14,8 @@
 #include "task.h"
 #include "usart_host_command.h"
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+
 /**
  * Disable restricted commands when the system is locked.
  *
@@ -49,6 +51,7 @@ static void ap_deferred(void)
 	int running = gpio_get_level(GPIO_SLP_ALT_L) &&
 		      (gpio_get_level(GPIO_SLP_L) || broken_slp);
 
+	CPRINTS("Changing sleep state to %s", running?"running":"suspend");
 	if (running) { /* S0 */
 		disable_sleep(SLEEP_MASK_AP_RUN);
 		hook_notify(HOOK_CHIPSET_RESUME);
