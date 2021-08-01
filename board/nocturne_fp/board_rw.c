@@ -19,6 +19,8 @@
 #error "This file should only be built for RW."
 #endif
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+
 /**
  * Disable restricted commands when the system is locked.
  *
@@ -60,6 +62,7 @@ static void ap_deferred(void)
 	int running = gpio_get_level(gpio_slp_alt_l) &&
 		      gpio_get_level(GPIO_SLP_L);
 
+	CPRINTS("Changing sleep state to %s", running?"running":"suspend");
 	if (running) { /* AP is S0 */
 		disable_sleep(SLEEP_MASK_AP_RUN);
 		hook_notify(HOOK_CHIPSET_RESUME);
