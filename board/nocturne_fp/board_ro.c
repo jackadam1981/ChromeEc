@@ -5,6 +5,7 @@
 /* Meowth Fingerprint MCU configuration */
 
 #include "common.h"
+#include "console.h"
 #include "hooks.h"
 #include "registers.h"
 #include "spi.h"
@@ -15,6 +16,7 @@
 #error "This file should only be built for RO."
 #endif
 
+#define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 
 /**
  * Disable restricted commands when the system is locked.
@@ -45,6 +47,7 @@ static void ap_deferred(void)
 	int running = gpio_get_level(GPIO_SLP_ALT_L) &&
 		      gpio_get_level(GPIO_SLP_L);
 
+	CPRINTS("Changing sleep state to %s", running?"running":"suspend");
 	if (running) { /* AP is S0 */
 		disable_sleep(SLEEP_MASK_AP_RUN);
 		hook_notify(HOOK_CHIPSET_RESUME);
