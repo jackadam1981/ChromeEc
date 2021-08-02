@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8cbf944_16a066fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-02T21:54:50Z",
+      "side": 1,
+      "message": "Thanks Michał. This dts format looks very clear and organized.",
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c315ae_5b2edcc2",
+        "filename": "zephyr/dts/bindings/gpio/sku.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-02T21:54:50Z",
+      "side": 1,
+      "message": "Is there any other term which can describe both \"board_id\" and \"sku_id\"? Philip, do you have any suggestion? \"cbi_gpio_id\"?",
+      "range": {
+        "startLine": 3,
+        "startChar": 20,
+        "endLine": 3,
+        "endChar": 23
+      },
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
