@@ -5,11 +5,13 @@
 
 /* Physical fans. These are logically separate from pwm_channels. */
 
+#include "chipset.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
 #include "fan_chip.h"
 #include "fan.h"
+#include "gpio.h"
 #include "hooks.h"
 #include "pwm.h"
 
@@ -62,9 +64,15 @@ const struct fan_t fans[FAN_CH_COUNT] = {
 static void fan_slow(void)
 {
 	const int duty_pct = 33;
-
+	if (!chipset_in_state(CHIPSET_STATE_ON)) {
+		gpio_set_level(GPIO_EN_PP5000_FAN, 0);
+		pwm_enable(PWM_CH_FAN, 0);
+		pwm_set_duty(PWM_CH_FAN, 0);
+		ccprints("%s: speed off1 %d%%", __func__, duty_pct);
+		return;
+	}
 	ccprints("%s: speed %d%%", __func__, duty_pct);
-
+	gpio_set_level(GPIO_EN_PP5000_FAN, 1);
 	pwm_enable(PWM_CH_FAN, 1);
 	pwm_set_duty(PWM_CH_FAN, duty_pct);
 }
@@ -72,9 +80,15 @@ static void fan_slow(void)
 static void fan_max(void)
 {
 	const int duty_pct = 100;
-
+	if (!chipset_in_state(CHIPSET_STATE_ON)) {
+		gpio_set_level(GPIO_EN_PP5000_FAN, 0);
+		pwm_enable(PWM_CH_FAN, 0);
+		pwm_set_duty(PWM_CH_FAN, 0);
+		ccprints("%s: speed off %d%%", __func__, duty_pct);
+		return;
+	}
 	ccprints("%s: speed %d%%", __func__, duty_pct);
-
+	gpio_set_level(GPIO_EN_PP5000_FAN, 1);
 	pwm_enable(PWM_CH_FAN, 1);
 	pwm_set_duty(PWM_CH_FAN, duty_pct);
 }
@@ -84,5 +98,5 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, fan_slow, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, fan_slow, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_RESET, fan_max, HOOK_PRIO_FIRST);
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, fan_max, HOOK_PRIO_DEFAULT);
-
+DECLARE_HOOK(HOOK_SECOND, fan_max, HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_FANS */
