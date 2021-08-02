@@ -46,6 +46,30 @@
       },
       "revId": "051f00db0d1aca9e6711b40a64eff5fb1e7d4e19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1f8ef9b_0dfeec7d",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-02T01:32:34Z",
+      "side": 1,
+      "message": "Done.\n\nhttps://review.coreboot.org/c/coreboot/+/56709. This CL also need to modify, too. I will wait EC CL is CR+2 and then modify the coreboot.",
+      "parentUuid": "ef9ff3cf_f969fe24",
+      "range": {
+        "startLine": 154,
+        "startChar": 27,
+        "endLine": 154,
+        "endChar": 42
+      },
+      "revId": "051f00db0d1aca9e6711b40a64eff5fb1e7d4e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
