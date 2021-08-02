@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a5eb853_e6de4eef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-02T22:21:39Z",
+      "side": 1,
+      "message": "I agree, these functions should move to zephyr/shim/src/system.c because the cros_bbram API already handles the chip specific code.",
+      "parentUuid": "ba8f2dcd_3f73dca7",
+      "revId": "3eef4be6cfc958366bbd3b23e9d3f54d6102d3e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "09866186_9c78ee14",
         "filename": "zephyr/shim/chip/npcx/system.c",
         "patchSetId": 1
