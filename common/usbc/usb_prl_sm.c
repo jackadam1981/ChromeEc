@@ -1239,6 +1239,7 @@ static void prl_tx_snk_pending_run(const int port)
 	 */
 	tcpm_get_cc(port, &cc1, &cc2);
 	if (cc1 == TYPEC_CC_VOLT_RP_3_0 || cc2 == TYPEC_CC_VOLT_RP_3_0 ||
+	    cc1 == TYPEC_CC_VOLT_RP_1_5 || cc2 == TYPEC_CC_VOLT_RP_1_5 ||
 	    pe_in_frs_mode(port)) {
 		/*
 		 * We clear the pending XMIT flag here right before we send so
