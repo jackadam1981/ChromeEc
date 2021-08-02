@@ -16,6 +16,24 @@
       "message": "please separate this patch into two: one for common code and one for gimble.",
       "revId": "6195fd26edfe92ecde238b5a928d67abadb70e9b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e45f36e_e870a4a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-02T00:00:02Z",
+      "side": 1,
+      "message": "Done. CL(https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3065245/1) for gimble.",
+      "parentUuid": "a2c12fee_37ec6b55",
+      "revId": "6195fd26edfe92ecde238b5a928d67abadb70e9b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
