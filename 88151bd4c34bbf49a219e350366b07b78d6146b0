@@ -34,6 +34,24 @@
       "parentUuid": "e4d69874_2cf4d4d4",
       "revId": "88151bd4c34bbf49a219e350366b07b78d6146b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a818f820_fa94daea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-02T20:52:40Z",
+      "side": 1,
+      "message": "you\u0027ll want to remove this long before FSI to give plenty of time\nto test the system in the configuration it will be shipped to\ncustomers and have time to fix them without delaying FSI.\n\nif you\u0027re not expecting significant changes in EFS2 or GSC configuration\n(other than switching from \"pre-pvt\" to production firmware\non the GSC between build phases, i\u0027d do it for the next feasible\nbuild phase.",
+      "parentUuid": "489e4dea_5bee5643",
+      "revId": "88151bd4c34bbf49a219e350366b07b78d6146b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
