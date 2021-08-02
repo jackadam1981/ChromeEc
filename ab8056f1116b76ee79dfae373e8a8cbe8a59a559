@@ -16,6 +16,24 @@
       "message": "Should this be part of platform/ec instead of cr50 since it\u0027s for stm32? It looks like it\u0027s for servo micro.",
       "revId": "ab8056f1116b76ee79dfae373e8a8cbe8a59a559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee82f42_ede14c1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-02T14:47:36Z",
+      "side": 1,
+      "message": "Actually maybe we should pick this change to remove it. It looks like it was removed from platform/ec because nothing uses it.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2425983",
+      "parentUuid": "de45f7d7_8ef312a6",
+      "revId": "ab8056f1116b76ee79dfae373e8a8cbe8a59a559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
