@@ -16,6 +16,23 @@
       "message": "Fails on nami due to b/195235710",
       "revId": "1476d15025a8d6c028427ee3fbec302f8feebc54",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "718c5e00_050eeae8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-02T11:49:54Z",
+      "side": 1,
+      "message": "The drawback of this is that nami and nocturne print repeatedly in s0ix. See b/195254342.",
+      "revId": "1476d15025a8d6c028427ee3fbec302f8feebc54",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
