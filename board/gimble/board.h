@@ -15,6 +15,9 @@
  */
 #undef CONFIG_KEYBOARD_VIVALDI
 
+/* Remove it before qualify the firmware */
+#define CONFIG_SYSTEM_UNLOCKED
+
 /* Baseboard features */
 #include "baseboard.h"
 
