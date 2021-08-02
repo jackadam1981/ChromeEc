@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c052f2a_a99d19ba",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-02T22:16:22Z",
+      "side": 1,
+      "message": "We\u0027re no longer tagging the modules with the version information.  chromeos-v2.5 and chromeos-v2.6 point to the same commit:\n\n$ git rev-parse cros/chromeos-v2.5\nc3bd2094f92d574377f7af2aec147ae181aa5f8e\n$ git rev-parse cros/chromeos-v2.6\nc3bd2094f92d574377f7af2aec147ae181aa5f8e\n\nSo I don\u0027t think you need to create subdirectories for the modules.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 113
+      },
+      "revId": "cdd42765b0841a682948cb791947e01c39f6253d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
