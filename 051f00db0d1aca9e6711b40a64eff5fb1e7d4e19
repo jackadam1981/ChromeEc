@@ -22,6 +22,30 @@
       },
       "revId": "051f00db0d1aca9e6711b40a64eff5fb1e7d4e19",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef9ff3cf_f969fe24",
+        "filename": "include/keyboard_8042_sharedlib.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1113814
+      },
+      "writtenOn": "2021-08-02T00:55:59Z",
+      "side": 1,
+      "message": "I\u0027d suggest we keep it consistent with SCANCODE_KBD_BKLIGHT_DOWN/SCANCODE_KBD_BKLIGHT_UP and call it SCANCODE_KBD_BKLIGHT_TOGGLE. Also let\u0027s fill the gaps in the standard table sequentially, and use e01e as the set 1 scancode for it.",
+      "parentUuid": "262d6538_e2535002",
+      "range": {
+        "startLine": 154,
+        "startChar": 27,
+        "endLine": 154,
+        "endChar": 42
+      },
+      "revId": "051f00db0d1aca9e6711b40a64eff5fb1e7d4e19",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
