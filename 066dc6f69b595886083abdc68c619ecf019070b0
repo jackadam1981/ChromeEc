@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b3d2e20_97be68f4",
+        "filename": "board/pazquel/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-08-02T02:16:40Z",
+      "side": 1,
+      "message": "gauge datasheet RAJ240045_STDFW_v1.08_2.pdf already upload .\n\ncutoff can work .\n\n\u003e battery\n  Status:    0x00e0 FULL DCHG INIT\n  Param flags:00000002\n  Temp:      0x0bc8 \u003d 301.6 K (28.5 C)\n  V:         0x21cf \u003d 8655 mV\n  V-desired: 0x0000 \u003d 0 mV\n  I:         0x0000 \u003d 0 mA\n  I-desired: 0x0000 \u003d 0 mA\n  Charging:  Not Allowed\n  Charge:    100 %\n    Display: 100.0 %\n  Manuf:     BMSPow\n  Device:    SG20\n  Chem:      GF\n  Serial:    0x0007\n  V-design:  0x1db0 \u003d 7600 mV\n  Mode:      0x0000\n  Abs charge:99 %\n  Remaining: 5624 mAh\n  Cap-full:  5650 mAh\n    Design:  5650 mAh\n  Time-full: 0h:0\n    Empty:   0h:0\n  full_factor:0.97\n  shutdown_soc:4 %\n\n\u003e cutoff\n[230687.655972 Battery cut off]\n\u003e [230688.046449 charge problem: batt params, 0x0 -\u003e 0x17fc after 230688.046169s]\n[230688.048396 event set 0x0000000000400000]\n[230688.049099 Battery 0% (Display 0.0 %) / ??h:?? to full, not accepting current]\n\n\n\u003e battery\n  Status:    (error)\n  Param flags:000017fc\n  Temp:      0x0000 \u003d 0.0 K (-273.1 C)\n  V:         0x0000 \u003d 0 mV\n  V-desired: 0x0000 \u003d 0 mV\n  I:         0x0000 \u003d 0 mA\n  I-desired: 0x0000 \u003d 0 mA\n  Charging:  Not Allowed\n  Charge:    0 %\n    Display: 0.0 %\n  Manuf:     (error)\n  Device:    (error)\n  Chem:      (error)\n  Serial:    (error)\n  V-design:  (error)\n  Mode:      (error)\n  Abs charge:(error)\n  Remaining: (error)\n  Cap-full:  (error)\n    Design:  (error)\n  Time-full: (error)\n    Empty:   (error)\n  full_factor:0.97\n  shutdown_soc:4 %",
+      "parentUuid": "e6cfeeb3_bdcc6e6e",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "066dc6f69b595886083abdc68c619ecf019070b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38d08c09_6f56f208",
@@ -60,6 +84,30 @@
       "writtenOn": "2021-07-30T17:56:09Z",
       "side": 1,
       "message": "The info doesn\u0027t seem to match the battery spec you attached in the bug.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 4
+      },
+      "revId": "066dc6f69b595886083abdc68c619ecf019070b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bcb7c1a_75ab53b4",
+        "filename": "board/pazquel/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-08-02T02:16:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "38d08c09_6f56f208",
       "range": {
         "startLine": 26,
         "startChar": 0,
