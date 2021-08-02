@@ -16,6 +16,24 @@
       "message": "@Aseda for approval on adopting the normal Chromium OS python rules.\n\nDo note that we currently don\u0027t have any upload hook enabled in EC that would actually enforce this pylintrc. We should consider enabling them for python files. Until then, this is more for people who want to be pedantic.",
       "revId": "b1d173ba2ab0d877cdbea925e4f218b2de49c338",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d6e5055_5a17428a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-02T16:36:29Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s fine. Adding a hook would be nice as you\u0027ve mentioned as well.",
+      "parentUuid": "cacbcf5e_f78e3239",
+      "revId": "b1d173ba2ab0d877cdbea925e4f218b2de49c338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
