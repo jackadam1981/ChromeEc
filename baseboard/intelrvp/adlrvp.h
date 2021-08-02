@@ -127,6 +127,8 @@
  * the timer value to support more type-c ports.
  */
 #ifdef VARIANT_INTELRVP_EC_IT8320
+#undef PLL_CLOCK
+#define PLL_CLOCK 96000000
 #if defined(HAS_TASK_PD_C2) && defined(HAS_TASK_PD_C3)
 #undef CONFIG_WATCHDOG_PERIOD_MS
 #define CONFIG_WATCHDOG_PERIOD_MS 4000
