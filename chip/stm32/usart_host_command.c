@@ -468,6 +468,9 @@ static void usart_host_command_reset(void)
  */
 void usart_host_command_init(void)
 {
+#if 0
+	int i = 0;
+#endif
 	/* USART host command layer starts in DISABLED state */
 	current_state = USART_HOST_CMD_STATE_DISABLED;
 
@@ -481,6 +484,18 @@ void usart_host_command_init(void)
 
 	/* Move to ready state */
 	current_state = USART_HOST_CMD_READY_TO_RX;
+
+#if 0
+	for (i=0;i<100;i++)
+	{
+		usart_out_buffer[i]=i;
+		ccprints("%d",i);
+	};
+
+	ccprints("usart_host_command_init");
+
+	usart_tx_start(&tl_usart);
+#endif
 }
 
 /*

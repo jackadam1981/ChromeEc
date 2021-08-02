@@ -31,12 +31,13 @@ void usart_rx_dma_init(struct usart_config const *config)
 			    STM32_DMA_CCR_CIRC),
 	};
 
-	if (IS_ENABLED(CHIP_FAMILY_STM32F4))
+	//if (IS_ENABLED(CHIP_FAMILY_STM32F4))
 		options.flags |= STM32_DMA_CCR_CHANNEL(STM32_REQ_USART1_RX);
 
 	STM32_USART_CR1(base) |= STM32_USART_CR1_RXNEIE;
 	STM32_USART_CR1(base) |= STM32_USART_CR1_RE;
 	STM32_USART_CR3(base) |= STM32_USART_CR3_DMAR;
+	ccprints("usart_rx_dma_init STM32_USART_CR1 0x%x 0x%x 0x%x",STM32_USART_CR1(base),STM32_USART_CR2(base),STM32_USART_CR3(base));
 
 	dma_config->state->index     = 0;
 	dma_config->state->max_bytes = 0;
@@ -56,6 +57,8 @@ static void usart_rx_dma_interrupt_common(
 	size_t     old_index = dma_config->state->index;
 	size_t     new_bytes = 0;
 	size_t     added     = 0;
+
+		ccprints("usart_rx_dma_interrupt_common new_index %d  old_index %d new_bytes %d",new_index,old_index,new_bytes);
 
 	if (new_index > old_index) {
 		new_bytes = new_index - old_index;

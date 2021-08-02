@@ -24,6 +24,7 @@ void usart_init(struct usart_config const *config)
 	 * to configure the USART.
 	 */
 	*(config->hw->clock_register) |= config->hw->clock_enable;
+	ccprints("usart_init clock_register 0x%x",*(config->hw->clock_register));
 
 	/*
 	 * For STM32F3, A delay of 1 APB clock cycles is needed before we
@@ -77,6 +78,10 @@ void usart_init(struct usart_config const *config)
 	 * succeed.
 	 */
 	STM32_USART_CR1(base) |= STM32_USART_CR1_UE;
+
+	ccprints("usart_init STM32_USART_CR1 0x%x 0x%x 0x%x 0x%x",STM32_USART_CR1(base),STM32_USART_CR2(base),STM32_USART_CR3(base),STM32_USART_BRR(base));
+
+	ccprints("usart_init config irq 0x%x index 0x%x baud %d",config->hw->irq, config->hw->index, config->baud);
 }
 
 void usart_shutdown(struct usart_config const *config)
