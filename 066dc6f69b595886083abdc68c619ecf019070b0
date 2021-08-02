@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93193299_bd264a72",
+        "filename": "board/pazquel/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-08-02T21:02:16Z",
+      "side": 1,
+      "message": "Do you see \"Batt disconnected\" message in EC console?\nIf not, it\u0027s probably not 100% working...\n\nPlease check if the fet information is correct.",
+      "parentUuid": "9b3d2e20_97be68f4",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "066dc6f69b595886083abdc68c619ecf019070b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38d08c09_6f56f208",
         "filename": "board/pazquel/battery.c",
         "patchSetId": 4

@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219c93e6_011d2af5",
+        "filename": "board/pazquel/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-08-02T21:02:16Z",
+      "side": 1,
+      "message": "Is it correct?\nI can\u0027t find this info in the gauge datasheet.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "9853356c2c2ee535494f9db66d271ad82cfd5090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7733459_dc4d6619",
+        "filename": "board/pazquel/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-08-02T21:02:16Z",
+      "side": 1,
+      "message": "The datasheet says it\u0027s 60.",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "9853356c2c2ee535494f9db66d271ad82cfd5090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
