@@ -79,11 +79,6 @@
 #define PD_MAX_CURRENT_MA	3000
 #define PD_MAX_VOLTAGE_MV	20000
 
-/* Enabling Thunderbolt-compatible mode */
-#define CONFIG_USB_PD_TBT_COMPAT_MODE
-
-/* Enabling USB4 mode */
-#define CONFIG_USB_PD_USB4
 #define USBC_PORT_C0_BB_RETIMER_I2C_ADDR	0x40
 #define USBC_PORT_C1_BB_RETIMER_I2C_ADDR	0x40
 
