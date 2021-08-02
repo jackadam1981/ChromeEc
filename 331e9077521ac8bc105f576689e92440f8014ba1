@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c5ca629_00b0bac6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-08-02T18:08:52Z",
+      "side": 1,
+      "message": "I am suspecting the Rp detection failure at TCPC which could be leading to this issue. Still raised a patch with my observations. There is a partner bug available for this 194366270. ",
+      "revId": "331e9077521ac8bc105f576689e92440f8014ba1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
