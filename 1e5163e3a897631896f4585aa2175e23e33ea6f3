@@ -16,6 +16,23 @@
       "message": "Can you help me merge the CL? thanks.",
       "revId": "1e5163e3a897631896f4585aa2175e23e33ea6f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74d90976_a1ccd57f",
+        "filename": "board/cappy2/battery.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-02T16:34:00Z",
+      "side": 1,
+      "message": "Can we make this a bit more narrow? I\u0027m assuming the charge request is 8700mV? Can we only apply this to that case?\n\ne.g.    \nif (cur-\u003erequested_voltage \u003d\u003d 8700)\n        cur-\u003erequested_voltage \u003d 8800;\n        \nUnless there\u0027s a range?",
+      "revId": "1e5163e3a897631896f4585aa2175e23e33ea6f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
