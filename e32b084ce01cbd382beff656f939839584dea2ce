@@ -22,6 +22,30 @@
       },
       "revId": "e32b084ce01cbd382beff656f939839584dea2ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e225fe8_626c760c",
+        "filename": "zephyr/projects/npcx_evb/npcx7/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-08-02T06:39:03Z",
+      "side": 1,
+      "message": "This is used to filter out the tachometer underflow information by the log level setting(https://chromium.googlesource.com/chromiumos/third_party/zephyr/+/refs/heads/chromeos-v2.6/drivers/sensor/nuvoton_tach_npcx/tach_nuvoton_npcx.c#266). When EC is power-on, there is no edge on the pin of the tachometer until the fan is triggered. It makes the console fill with `TACH_1 is underflow!`. We do not always connect a fan on our evb, so we prefer default doesn\u0027t display it. For original ecos, this is also blocked by `DEBUG_FAN`.",
+      "parentUuid": "fe50b602_826dfa3c",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 29
+      },
+      "revId": "e32b084ce01cbd382beff656f939839584dea2ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
