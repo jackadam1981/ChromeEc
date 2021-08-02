@@ -36,6 +36,10 @@ static uint32_t flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 /* Coordinate mux accesses by-port among the tasks */
 static struct mutex mux_lock[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* Coordinate which task requires an ACK event */
+static task_id_t ack_task[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+	[0 ... CONFIG_USB_PD_PORT_MAX_COUNT - 1] = TASK_ID_INVALID };
+
 /* Device is in low power mode. */
 #define USB_MUX_FLAG_IN_LPM		BIT(0)
 
@@ -122,6 +126,9 @@ static int configure_mux(int port,
 					break;
 			}
 
+			if (ack_required)
+				ack_task[port] = task_get_current();
+
 			/* Apply board specific setting */
 			if (mux_ptr->board_set)
 				rv = mux_ptr->board_set(mux_ptr, lcl_state);
@@ -164,6 +171,8 @@ static int configure_mux(int port,
 			assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
 			task_wait_event_mask(PD_EVENT_AP_MUX_DONE, 100*MSEC);
+			ack_task[port] = TASK_ID_INVALID;
+
 			usleep(12.5 * MSEC);
 		}
 	}
@@ -477,7 +486,8 @@ static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 	if (!IS_ENABLED(CONFIG_USB_MUX_AP_ACK_REQUEST))
 		return EC_RES_INVALID_COMMAND;
 
-	task_set_event(PD_PORT_TO_TASK_ID(p->port), PD_EVENT_AP_MUX_DONE);
+	if (ack_task[p->port] != TASK_ID_INVALID)
+		task_set_event(ack_task[p->port], PD_EVENT_AP_MUX_DONE);
 
 	return EC_RES_SUCCESS;
 }
