@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6ca294d_db154f48",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-02T22:16:44Z",
+      "side": 1,
+      "message": "It only works when the chip uses the I2C ADDR1. A more scaleable way is to define a PS8751_P3_TO_P1_FLAGS macro and translate it from tcpc_config[port].i2c_info.addr_flags to get a `p0_addr`. It will work in case the I2C flag changes, like using a different stripping.",
+      "range": {
+        "startLine": 507,
+        "startChar": 31,
+        "endLine": 507,
+        "endChar": 56
+      },
+      "revId": "f981802425365a649fb1a44c97c822abbfdc1d53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
