@@ -16,6 +16,24 @@
       "message": "i\u0027m OK with setting CONFIG_SYSTEM_UNLOCKED, but keep in mind that the system\nwon\u0027t be \"locked\" in any case until flash is write protected, GSC is locked down, etc.\nso you should be able to remove this fairly soon.\n\ni\u0027m curious why you would want to set BOARD_ID. that\u0027s usually a very confusing\nthing to do. do you expect BOARD_ID to not be programmed correct for the build?",
       "revId": "88151bd4c34bbf49a219e350366b07b78d6146b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "489e4dea_5bee5643",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-02T07:53:05Z",
+      "side": 1,
+      "message": "The purpose will be our factory will do factory test before each phase SMT. Ex. They will configure BOARD_ID as 1 and run all factory test before release factory bundle to factory.\n\nI also remove CONFIG_SYSTEM_UNLOCKED on eldrid before FSI, it that OK to remove it before FSI on gimble, too?",
+      "parentUuid": "e4d69874_2cf4d4d4",
+      "revId": "88151bd4c34bbf49a219e350366b07b78d6146b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
