@@ -17,6 +17,7 @@
 #include "driver/ppc/sn5s330_public.h"
 #include "driver/ppc/syv682x_public.h"
 #include "driver/retimer/bb_retimer_public.h"
+#include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/ps8xxx_public.h"
 #include "driver/tcpm/rt1715_public.h"
 #include "driver/tcpm/tusb422_public.h"
@@ -280,6 +281,14 @@ __override bool board_is_tbt_usb4_port(int port)
 	 */
 	return ((port == USBC_PORT_C1)
 		&& ((usb_db == DB_USB4_GEN2) || (usb_db == DB_USB4_GEN3)));
+}
+
+__override void board_ps8xxx_tcpc_init(int port)
+{
+	/* Set Displayport EQ loss up to 10dB */
+	tcpc_addr_write(port, PS8751_I2C_ADDR1_P1_FLAGS,
+		PS8815_REG_DP_EQ_SETTING,
+		PS8815_DPEQ_LOSS_UP_10DB << PS8815_REG_DP_EQ_COMP_SHIFT);
 }
 
 static void ps8815_reset(void)
