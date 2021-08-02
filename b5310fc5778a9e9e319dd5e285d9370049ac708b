@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd12fa87_0c4b46e1",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-08-02T01:18:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46b23c35_5cb02546",
+      "range": {
+        "startLine": 537,
+        "startChar": 0,
+        "endLine": 537,
+        "endChar": 42
+      },
+      "revId": "b5310fc5778a9e9e319dd5e285d9370049ac708b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b469db3_a432aeca",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94a24ea8_712d3148",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-08-02T01:18:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6a7bf7a_ac6912cc",
+      "range": {
+        "startLine": 543,
+        "startChar": 31,
+        "endLine": 543,
+        "endChar": 41
+      },
+      "revId": "b5310fc5778a9e9e319dd5e285d9370049ac708b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34bbb347_7bc525bc",
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa12942c_b8a9f077",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-08-02T01:18:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34bbb347_7bc525bc",
+      "range": {
+        "startLine": 595,
+        "startChar": 0,
+        "endLine": 595,
+        "endChar": 42
+      },
+      "revId": "b5310fc5778a9e9e319dd5e285d9370049ac708b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87bcccef_153b352f",
@@ -107,6 +179,30 @@
       "writtenOn": "2021-07-29T18:11:28Z",
       "side": 1,
       "message": "Move it before the PS8815 case. So they are sorted.",
+      "range": {
+        "startLine": 4553,
+        "startChar": 0,
+        "endLine": 4557,
+        "endChar": 42
+      },
+      "revId": "b5310fc5778a9e9e319dd5e285d9370049ac708b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91cd1c48_2429dc8b",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4557,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-08-02T01:18:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87bcccef_153b352f",
       "range": {
         "startLine": 4553,
         "startChar": 0,
