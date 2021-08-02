@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4d7e660_877b20bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-02T16:49:58Z",
+      "side": 1,
+      "message": "nit: add details about why this is needed",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "499588d7293ec1bce43d8a8d75765a2a1c9f397c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24162ab3_b99dce37",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-02T16:49:58Z",
+      "side": 1,
+      "message": "nit: this is already in brya code, add details for the fix\n\nTODO (b:\u003cbug number\u003e): details",
+      "range": {
+        "startLine": 274,
+        "startChar": 4,
+        "endLine": 274,
+        "endChar": 70
+      },
+      "revId": "499588d7293ec1bce43d8a8d75765a2a1c9f397c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5da3f9a9_2384be43",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-02T16:49:58Z",
+      "side": 1,
+      "message": "nit: add generic comment remove Brya specific details",
+      "range": {
+        "startLine": 373,
+        "startChar": 4,
+        "endLine": 373,
+        "endChar": 70
+      },
+      "revId": "499588d7293ec1bce43d8a8d75765a2a1c9f397c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
