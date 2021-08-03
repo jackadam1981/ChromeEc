@@ -16,6 +16,23 @@
       "message": "host command for setting mfallow.",
       "revId": "a5ef26ff0841b54471729f21475829f0f8a01c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9b2c07b_dc8040f0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5640,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-03T17:47:53Z",
+      "side": 1,
+      "message": "I\u0027m not totally certain what to think of this as a host command... On the one hand, it allows developers without an EC console to still change mfallow which could be nice.  On the other, is this command something we\u0027d really want the kernel or other entities to be using? \n\nAlso, I\u0027m not sure if this region represents a gap we can add to, or a gap created by deprecating old commands?  It might take a journey into the git history to figure out which option it is.",
+      "revId": "a5ef26ff0841b54471729f21475829f0f8a01c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
