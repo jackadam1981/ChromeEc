@@ -14,6 +14,7 @@
 #include "flash.h"
 #include "host_command.h"
 #include "system.h"
+#include "watchdog.h"
 
 LOG_MODULE_REGISTER(cros_flash, LOG_LEVEL_ERR);
 
@@ -184,12 +185,33 @@ static int cros_flash_it8xxx2_erase(const struct device *dev, int offset,
 				    int size)
 {
 	struct cros_flash_it8xxx2_data *const data = DRV_DATA(dev);
+	int ret = 0;
+	unsigned int key;
 
 	if (data->all_protected) {
 		return -EACCES;
 	}
+	/* critical section with interrupts off */
+	key = irq_lock();
+	/* Always use sector erase command */
+	for (; size > 0; size -= CONFIG_FLASH_ERASE_SIZE) {
+		ret = flash_erase(flash_controller, offset,
+			CONFIG_FLASH_ERASE_SIZE);
+		if (ret)
+			break;
 
-	return flash_erase(flash_controller, offset, size);
+		offset += CONFIG_FLASH_ERASE_SIZE;
+		/*
+		 * If requested erase size is too large at one time on KGD
+		 * flash, we need to reload watchdog to prevent the reset.
+		 */
+		if (size > 0x10000)
+			watchdog_reload();
+	}
+	/* restore interrupts */
+	irq_unlock(key);
+
+	return ret;
 }
 
 static int cros_flash_it8xxx2_get_protect(const struct device *dev, int bank)
