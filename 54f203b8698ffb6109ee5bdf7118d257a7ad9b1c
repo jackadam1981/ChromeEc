@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2257357_b26f3f63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-03T17:43:24Z",
+      "side": 1,
+      "message": "Looks good!  Just one suggestion to avoid confusion with the code in the future",
+      "revId": "54f203b8698ffb6109ee5bdf7118d257a7ad9b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "409f37f0_0aef6484",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2106,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-03T17:43:24Z",
+      "side": 1,
+      "message": "Suspended flag must be set here since it\u0027s only cleared on exit from this state, so there\u0027s no need to check it",
+      "revId": "54f203b8698ffb6109ee5bdf7118d257a7ad9b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
