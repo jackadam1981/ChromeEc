@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "268a4101_6a08800d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-08-03T11:37:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4d7e660_877b20bd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "499588d7293ec1bce43d8a8d75765a2a1c9f397c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24162ab3_b99dce37",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "49c6fbe9_a5bc02eb",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-08-03T11:37:34Z",
+      "side": 1,
+      "message": "Thanks for the comments. More comments are added at the function caller side.",
+      "parentUuid": "24162ab3_b99dce37",
+      "range": {
+        "startLine": 274,
+        "startChar": 4,
+        "endLine": 274,
+        "endChar": 70
+      },
+      "revId": "499588d7293ec1bce43d8a8d75765a2a1c9f397c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5da3f9a9_2384be43",
         "filename": "driver/retimer/bb_retimer.c",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-02T16:49:58Z",
       "side": 1,
       "message": "nit: add generic comment remove Brya specific details",
+      "range": {
+        "startLine": 373,
+        "startChar": 4,
+        "endLine": 373,
+        "endChar": 70
+      },
+      "revId": "499588d7293ec1bce43d8a8d75765a2a1c9f397c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e05bc176_1b6d2d69",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-08-03T11:37:34Z",
+      "side": 1,
+      "message": "Thanks for the comments. More comments are added at the function caller side.",
+      "parentUuid": "5da3f9a9_2384be43",
       "range": {
         "startLine": 373,
         "startChar": 4,
