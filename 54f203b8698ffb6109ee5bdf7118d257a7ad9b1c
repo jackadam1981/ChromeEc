@@ -33,6 +33,24 @@
       "message": "Suspended flag must be set here since it\u0027s only cleared on exit from this state, so there\u0027s no need to check it",
       "revId": "54f203b8698ffb6109ee5bdf7118d257a7ad9b1c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fb6183b_f30bcd78",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2106,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-08-03T21:00:41Z",
+      "side": 1,
+      "message": "Removed.",
+      "parentUuid": "409f37f0_0aef6484",
+      "revId": "54f203b8698ffb6109ee5bdf7118d257a7ad9b1c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
