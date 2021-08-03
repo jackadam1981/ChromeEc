@@ -290,6 +290,11 @@ int extpower_is_present(void)
 		check_acok = sm5803_is_acok;
 
 	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+		/* For sm5803, check if PD power role is sink first */
+		if (check_acok == sm5803_is_acok &&
+			pd_get_power_role(port) != PD_ROLE_SINK)
+			continue;
+
 		rv = check_acok(port, &acok);
 		if ((rv == EC_SUCCESS) && acok)
 			return 1;
