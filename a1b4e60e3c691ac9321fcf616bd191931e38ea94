@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6963ebc2_12338f77",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1221,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-03T09:19:12Z",
+      "side": 1,
+      "message": "Per TCPCI spec `4.4.2 ALERT Register (Normative)`, this will not de-assert the RX_BUF_OVF alert. Only RX_STATUS will if both are cleared in one I2C write.\n\nHowever, TCPCI does not explicitly state RX_STATUS is set on overflow. An excessive unchunked message may not fit in the RX buffer, but would cause an overflow.\n\nExample:\n\n* TCPC FIFO 128 bytes. RX_BUF populated with 126 byte message. RX_STATUS set.\n* Assume ALERT# interrupt handler hasn\u0027t fired yet.\n* New 4 byte message arrives. RX overflows. RX_BUF_OVF is set.\n* Assume ALERT# handler now fires and begins running.\n\nOr:\n\n* TCPC FIFO 128 bytes. RX_BUF unpopulated/empty. RX_STATUS unset.\n* New 160 byte message arrives. RX overflows. RX_BUF_OVF is set.\n* Assume ALERT# handler fires. (Now RX_STATUS bit is undefined/anomalous.)\n\nLogic must be robust enough to acknowledge the overflow, without flushing the RX buffer. Merely adding RX_BUF_OVF as conditional to L1226 while() loop may not achieve this.",
+      "range": {
+        "startLine": 1221,
+        "startChar": 2,
+        "endLine": 1221,
+        "endChar": 64
+      },
+      "revId": "a1b4e60e3c691ac9321fcf616bd191931e38ea94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dbe411d8_2f5cb2a8",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 7
