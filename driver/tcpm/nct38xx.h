@@ -75,7 +75,15 @@
 #define NCT38XX_REG_VBC_FAULT_CTL_VC_OVP_OFF	(1 << 5)
 
 #define NCT38XX_RESET_HOLD_DELAY_MS	1
-#define NCT38XX_RESET_POST_DELAY_MS	0
+
+/*
+ * From the datasheet (section 4.4.2 Reset Timing) as following:
+ * NCT3808 (dual port): 3ms maximal.
+ * NCT3807 (single port): 1.5ms maximal.
+ */
+
+#define NCT3807_RESET_POST_DELAY_MS	2
+#define NCT3808_RESET_POST_DELAY_MS	3
 
 extern const struct tcpm_drv nct38xx_tcpm_drv;
 
