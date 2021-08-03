@@ -87,6 +87,24 @@
       "parentUuid": "03395d41_61ec5345",
       "revId": "40894dac8e58352e77d191a3a2b1b5cbe2991aa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4031da_a17fe604",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-03T08:38:28Z",
+      "side": 1,
+      "message": "CL has been overhauled to handle OVF register appropriately here (and in other places where RX is cleared; they must be cleared together per TCPCI).\n\nIt also now handles cases where \"other events come in background while we\u0027re de-queuing the TCPC RX FIFO\". See comment on L1292.",
+      "parentUuid": "ac12d81f_adae632a",
+      "revId": "40894dac8e58352e77d191a3a2b1b5cbe2991aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
