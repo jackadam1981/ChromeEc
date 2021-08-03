@@ -16,6 +16,24 @@
       "message": "is there a way we can increase EC speed?",
       "revId": "7d4aa5ee2332e3759e9695be521e31b3f1184827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "240b6db5_719becfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-08-03T00:47:42Z",
+      "side": 1,
+      "message": "Change PLL to 96mHz will speed ec up:\n#undef PLL_CLOCK\n#define PLL_CLOCK 96000000",
+      "parentUuid": "c8bed60e_db1428eb",
+      "revId": "7d4aa5ee2332e3759e9695be521e31b3f1184827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
