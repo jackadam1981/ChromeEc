@@ -51,6 +51,24 @@
       "parentUuid": "f8ff27df_111de104",
       "revId": "40894dac8e58352e77d191a3a2b1b5cbe2991aa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03395d41_61ec5345",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-03T05:49:27Z",
+      "side": 1,
+      "message": "Reconsidering:\n\nWe may be stuck in this while() loop for milliseconds. CC_STATUS events may be received in the midst of RX packet overflow. This would get wiped along with the RX packets.\n\nIt may be safer to clear the TCPC_REG_ALERT_RX_STATUS + TCPC_REG_ALERT_RX_BUF_OVF bits ONLY, then allow other handlers (L1224 and below) to proceed.\n\nMissing a CC_STATUS event would cause a state desynch for certain.",
+      "parentUuid": "7c734c4b_180a3d57",
+      "revId": "40894dac8e58352e77d191a3a2b1b5cbe2991aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
