@@ -90,12 +90,18 @@ SYS_INIT(init_mux_mutex, POST_KERNEL, 50);
 #define MUX_QUEUE_DEPTH		BIT(CONFIG_USB_PD_PORT_MAX_COUNT)
 #define MUX_QUEUE_DEPTH_MASK	(MUX_QUEUE_DEPTH - 1)
 
+/* Define in order to enable debug info about how long the queue takes */
+#undef DEBUG_MUX_QUEUE_TIME
+
 struct mux_queue_entry {
 	int port;
 	enum mux_config_type type;
 	mux_state_t mux_mode;		/* For both HPD and mux set */
 	enum usb_switch usb_config;	/* Set only */
 	int polarity;			/* Set only */
+#ifdef DEBUG_MUX_QUEUE_TIME
+	timestamp_t enqueued_time;
+#endif
 };
 
 struct mux_task_queue {
@@ -142,6 +148,9 @@ __maybe_unused static void mux_task_enqueue(int port, enum mux_config_type type,
 		mux_queue.entries[next].usb_config = usb_config;
 		mux_queue.entries[next].polarity = polarity;
 
+#ifdef DEBUG_MUX_QUEUE_TIME
+		mux_queue.entries[next].enqueued_time = get_time();
+#endif
 		mux_queue.head++;
 
 		task_wake(TASK_ID_USB_MUX);
@@ -173,6 +182,10 @@ __maybe_unused void usb_mux_task(void *u)
 			next = &mux_queue.entries[mux_queue.tail &
 				MUX_QUEUE_DEPTH_MASK];
 
+#ifdef DEBUG_MUX_QUEUE_TIME
+			CPRINTS("C%d: Starting mux set queued %d us ago",
+				next->port, time_since32(next->enqueued_time));
+#endif
 			if (next->type == USB_MUX_SET_MODE)
 				perform_mux_set(next->port, next->mux_mode,
 						next->usb_config,
@@ -184,6 +197,10 @@ __maybe_unused void usb_mux_task(void *u)
 				CPRINTS("Error: Unknown mux task type: %d",
 					next->type);
 
+#ifdef DEBUG_MUX_QUEUE_TIME
+			CPRINTS("C%d: Completed mux set queued %d us ago",
+				next->port, time_since32(next->enqueued_time));
+#endif
 			mutex_lock(&mux_queue.queue_lock);
 			mux_queue.tail++;
 			mutex_unlock(&mux_queue.queue_lock);
