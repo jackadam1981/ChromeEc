@@ -7,6 +7,7 @@
 
 #include <drivers/cros_flash.h>
 #include <drivers/flash.h>
+#include <drivers/watchdog.h>
 #include <kernel.h>
 #include <logging/log.h>
 #include <soc.h>
@@ -183,13 +184,34 @@ static int cros_flash_it8xxx2_write(const struct device *dev, int offset,
 static int cros_flash_it8xxx2_erase(const struct device *dev, int offset,
 				    int size)
 {
+	const struct device *wdt = DEVICE_DT_GET(DT_NODELABEL(twd0));
 	struct cros_flash_it8xxx2_data *const data = DRV_DATA(dev);
+	int ret = 0;
+
+	if (!device_is_ready(wdt))
+		LOG_ERR("Error: device %s is not ready", wdt->name);
 
 	if (data->all_protected) {
 		return -EACCES;
 	}
 
-	return flash_erase(flash_controller, offset, size);
+	/* Always use sector erase command */
+	for (; size > 0; size -= CONFIG_FLASH_ERASE_SIZE) {
+		ret = flash_erase(flash_controller, offset,
+			CONFIG_FLASH_ERASE_SIZE);
+		if (ret)
+			break;
+
+		offset += CONFIG_FLASH_ERASE_SIZE;
+		/*
+		 * If requested erase size is too large at one time on KGD
+		 * flash, we need to reload watchdog to prevent the reset.
+		 */
+		if (size > 0x10000)
+			wdt_feed(wdt, 0);
+	}
+
+	return ret;
 }
 
 static int cros_flash_it8xxx2_get_protect(const struct device *dev, int bank)
