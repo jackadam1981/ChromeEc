@@ -209,6 +209,16 @@ static int cros_flash_it8xxx2_erase(const struct device *dev, int offset,
 		 */
 		if (size > 0x10000)
 			wdt_feed(wdt, 0);
+		/*
+		 * EC still need to handle AP's EC_CMD_GET_COMMS_STATUS command
+		 * during erasing.
+		 */
+#if defined(HAS_TASK_HOSTCMD) && defined(CONFIG_HOST_COMMAND_STATUS)
+	/*
+	 * TODO(b/195342437): we need use soft irq to trigger spi slave
+	 * interrupt, but zephyr does not support it.
+	 */
+#endif
 	}
 
 	return ret;
