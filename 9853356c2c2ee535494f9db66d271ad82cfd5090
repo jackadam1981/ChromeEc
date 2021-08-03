@@ -45,6 +45,30 @@
       },
       "revId": "9853356c2c2ee535494f9db66d271ad82cfd5090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88c286c_5b6caf03",
+        "filename": "board/pazquel/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-08-03T07:52:12Z",
+      "side": 1,
+      "message": "already change to 60",
+      "parentUuid": "a7733459_dc4d6619",
+      "range": {
+        "startLine": 36,
+        "startChar": 25,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "9853356c2c2ee535494f9db66d271ad82cfd5090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
