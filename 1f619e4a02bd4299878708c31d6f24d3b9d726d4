@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a52d2d1_98ca5044",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1178,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-03T05:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f6c7056_0057696c",
+      "range": {
+        "startLine": 1178,
+        "startChar": 9,
+        "endLine": 1178,
+        "endChar": 10
+      },
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1bc8b620_88006e99",
@@ -178,6 +202,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "318e0e6c_599868f8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1179,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-03T05:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f62fe2df_4a039d5c",
+      "range": {
+        "startLine": 1179,
+        "startChar": 6,
+        "endLine": 1179,
+        "endChar": 35
+      },
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf444d08_4fc62fd9",
@@ -263,6 +311,30 @@
       "side": 1,
       "message": "Roger. Adding comment now.",
       "parentUuid": "761cb91a_ff2e3748",
+      "range": {
+        "startLine": 1181,
+        "startChar": 4,
+        "endLine": 1181,
+        "endChar": 16
+      },
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03113d5_50bd4be7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-03T05:19:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "addccf7e_1e8bb76c",
       "range": {
         "startLine": 1181,
         "startChar": 4,
@@ -376,6 +448,24 @@
       "side": 1,
       "message": "Could not find documentation in TCPCI spec. \"FIFO\" is only mentioned twice.\n\nFurthermore, it seems TCPC may not be honoring some requirements from TCPCI 2.0v1.\n\n\u003e 4.7.4 Receiving SOP* USB PD Messages with Less than or Equal to 128 Data Bytes\n\u003e \n\u003e  If an overflow has occurred, the TCPC will have set the\n\u003e ALERT.RxBufferOverflow register, therefore the TCPC will not send the GoodCRC to\n\u003e other received messages until the TCPM clears the Message Received alert.\n\u003e \n\u003e The TCPM should always clear the Rx Buffer Overflow and Message Received bits at the\n\u003e same time. Otherwise there could be a scenario where the Rx Buffer Overflow bit\n\u003e remains set even though the TCPM has just cleared one of the messages in the buffer. \n\n(1) I do not see any mention at all of TCPC_REG_ALERT_RX_BUF_OVF beyond the tcpci.h header file. Or handling/clearing of `ALERT.RxBufferOverflow` in our EC codebase. This seems to be an architectural deficiency unrelated to this CL.\n\n[go/cs \"TCPC_REG_ALERT_RX_BUF_OVF\" ec + \"TCPC_ALERT_RX_BUF_OVF\" kernel]\n\n(2) I do not see any method in Vendor-Proprietary TCPC datasheets on how to clear this internal FIFO. Another architectural deficiency.\n\nThe suggested method for \"port suspend\" should involve: (a) disabling SOP* message reception via RxDetect register (b) setting CC Hi-Z Disabled state [yes, killing connection] (c) flushing the message queue manually or resetting the TCPC [as necessary] (d) turning off interrupt handler on EC pin for TCPC [and hope it\u0027s not shared].\n\nCurrently we do not do (a) (b) (c) or (d). That is beyond the scope of this emergent CL.",
       "parentUuid": "13041ebe_4e9c2749",
+      "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "994e9136_e05eb9c3",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-03T05:19:33Z",
+      "side": 1,
+      "message": "Flushing the TCPC FIFO is beyond the scope of this CL.\n\nWe can address it later as needed.",
+      "parentUuid": "8ff84f90_d3f88871",
       "revId": "1f619e4a02bd4299878708c31d6f24d3b9d726d4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
