@@ -52,6 +52,24 @@
       "parentUuid": "240b6db5_719becfd",
       "revId": "7d4aa5ee2332e3759e9695be521e31b3f1184827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c7f24c8_b95bb107",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-08-03T02:32:54Z",
+      "side": 1,
+      "message": "No. 96 mHz is the maximum supported core clock.\n\nCalculating the hash of 0x0002e2d8 byte should be completed in 400~500 ms.\nCan I have full log?",
+      "parentUuid": "a836268d_d4ec7b96",
+      "revId": "7d4aa5ee2332e3759e9695be521e31b3f1184827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
