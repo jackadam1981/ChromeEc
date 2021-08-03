@@ -17,15 +17,8 @@
 /* the UART console is on USART1 (PA9/PA10) */
 #define CONFIG_UART_CONSOLE 1
 
-#ifdef BOARD_ZINGER
 #define CONFIG_USB_PD_HW_DEV_ID_BOARD_MAJOR USB_PD_HW_DEV_ID_ZINGER
 #define CONFIG_USB_PD_HW_DEV_ID_BOARD_MINOR 1
-#elif defined(BOARD_MINIMUFFIN)
-#define CONFIG_USB_PD_HW_DEV_ID_BOARD_MAJOR USB_PD_HW_DEV_ID_MINIMUFFIN
-#define CONFIG_USB_PD_HW_DEV_ID_BOARD_MINOR 0
-#else
-#error "Board does not have a USB-PD HW Device ID"
-#endif
 
 /* Optional features */
 #undef CONFIG_COMMON_GPIO
@@ -79,13 +72,8 @@
 #define UARTN_BASE STM32_USART_BASE(CONFIG_UART_CONSOLE)
 
 /* USB configuration */
-#if defined(BOARD_ZINGER)
 #define CONFIG_USB_PID 0x5012
 #define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
-#elif defined(BOARD_MINIMUFFIN)
-#define CONFIG_USB_PID 0x5013
-#define CONFIG_USB_BCD_DEV 0x0001 /* v 0.01 */
-#endif
 
 #ifndef __ASSEMBLER__
 

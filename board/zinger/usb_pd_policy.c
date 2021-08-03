@@ -89,11 +89,7 @@ static timestamp_t fault_deadline;
 #define ADC_TO_VOLT_MV(vbus) ((vbus)*VOLT_DIV*VDDA_MV/ADC_SCALE)
 
 /* Max current */
-#if defined(BOARD_ZINGER)
 #define RATED_CURRENT 3000
-#elif defined(BOARD_MINIMUFFIN)
-#define RATED_CURRENT 2250
-#endif
 
 /* Max current : 20% over rated current */
 #define MAX_CURRENT VBUS_MA(RATED_CURRENT * 6/5)
