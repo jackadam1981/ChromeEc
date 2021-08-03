@@ -70,8 +70,10 @@ void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd);
  * @param vdo_count The number of VDOs in vdm; must be at least VDO_MAX_SIZE
  * @param vdm       The VDM payload to be sent; output; must point to at least
  *                  VDO_MAX_SIZE elements
+ * @param wait_mux  Request that the DPM wait on sending a VDM because a mux set
+ *		    is pending
  * @return          The number of VDOs written to VDM or -1 to indicate error
  */
-int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm);
+int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm, bool *wait_mux);
 
 #endif  /* __CROS_EC_USB_DP_ALT_MODE_H */
