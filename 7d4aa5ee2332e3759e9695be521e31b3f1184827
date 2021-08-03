@@ -34,6 +34,24 @@
       "parentUuid": "c8bed60e_db1428eb",
       "revId": "7d4aa5ee2332e3759e9695be521e31b3f1184827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a836268d_d4ec7b96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-03T00:51:00Z",
+      "side": 1,
+      "message": "Thank you Dino, is there a Turbo mode as well \"clock_enable_module(MODULE_FAST_CPU, 1)\"? EC is slow in calculating the hash and does WDT.\n\n21-08-02 17:28:46.337 [19.941686 VB hook_shutdown]\n21-08-02 17:28:46.344 [19.945147 VB Ping Cr50]\n21-08-02 17:28:46.344 [19.950254 hash start 0x00040000 0x0002e2d8]\n21-08-02 17:28:49.630 Pre-WDT warning! IPC:0000f36e LP:f40cc217 TASK_ID:3\n21-08-02 17:28:49.669 Pre-WDT warning! IPC:0000f260 LP:008d6400 TASK_ID:3\n21-08-02 17:28:49.700 Pre-WDT warning! IPC:0000b7ce LP:0001fd1a TASK_ID:10",
+      "parentUuid": "240b6db5_719becfd",
+      "revId": "7d4aa5ee2332e3759e9695be521e31b3f1184827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
