@@ -33,6 +33,24 @@
       "message": "(self) CR-1: The `while` loop at L1175 may cause us to \"spin in place\" while additional TCPC events (such as overflow) occur under us. This means the Extended alert read from L1148 may \"no longer be valid\". L1219 logic will be borked.\n\nThis suggests we need to \"start from the top\" again at L1195. We cannot merely add a blind read/clear Extended at L1194. There may be important data in there.\n\nMay I ask your thoughts on this potential \"state desynch\" risk?",
       "revId": "40894dac8e58352e77d191a3a2b1b5cbe2991aa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c734c4b_180a3d57",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-03T05:28:40Z",
+      "side": 1,
+      "message": "In interest of not letting \"perfect be enemy of good\", deferring handling but leaving comment in place.",
+      "parentUuid": "f8ff27df_111de104",
+      "revId": "40894dac8e58352e77d191a3a2b1b5cbe2991aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
