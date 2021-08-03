@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90588b71_a7bbb182",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T16:01:57Z",
+      "side": 1,
+      "message": "See the next CL.  Put the lock/unlock around the flash_erase() call only.",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 18
+      },
+      "revId": "09cf83d408a613a974dd5ce156be6623e2c3685a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ca954bad_1d7eb260",
         "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
         "patchSetId": 2
