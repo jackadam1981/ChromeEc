@@ -980,13 +980,6 @@ int enter_tbt_compat_mode(int port, enum tcpci_msg_type sop,
 		     VDO_CMDT(CMDT_INIT) |
 		     VDO_SVDM_VERS(pd_get_vdo_ver(port, enter_mode_sop));
 
-	/*
-	 * Enter safe mode before sending Enter mode SOP/SOP'/SOP''
-	 * Ref: Tiger Lake Platform PD Controller Interface Requirements for
-	 * Integrated USB C, section A.1.2 TBT as DFP.
-	 */
-	usb_mux_set_safe_mode(port);
-
 	/* For TBT3 Cable Enter Mode Command, number of Objects is 1 */
 	if ((sop == TCPCI_MSG_SOP_PRIME) ||
 	    (sop == TCPCI_MSG_SOP_PRIME_PRIME))
@@ -1232,7 +1225,7 @@ __overridable uint8_t get_dp_pin_mode(int port)
 	return pd_dfp_dp_get_pin_mode(port, dp_status[port]);
 }
 
-static mux_state_t svdm_dp_get_mux_mode(int port)
+mux_state_t svdm_dp_get_mux_mode(int port)
 {
 	int pin_mode = get_dp_pin_mode(port);
 	/* Default dp_port_mf_allow is true */
@@ -1280,8 +1273,11 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
 	 * disconnect the superspeed signals here, before the pins are
 	 * re-configured to DisplayPort (in svdm_dp_post_config, when we receive
 	 * the config ack).
+	 *
+	 * Note that TCPMv2 will actually perform this MUX set in the DPM.
 	 */
-	if (mux_mode == USB_PD_MUX_DP_ENABLED)
+	if (!IS_ENABLED(CONFIG_USB_PD_TCPMV2) &&
+					mux_mode == USB_PD_MUX_DP_ENABLED)
 		usb_mux_set_safe_mode(port);
 
 	payload[0] = VDO(USB_SID_DISPLAYPORT, 1,
