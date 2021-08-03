@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a674ff2_c7839887",
+        "filename": "docs/reducing_ec_image_size.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T19:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e243d7f6_7979095c",
+      "range": {
+        "startLine": 3,
+        "startChar": 11,
+        "endLine": 3,
+        "endChar": 20
+      },
+      "revId": "9858c5b93ec6ac8d791eab16a640ba86d020c4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09d5fe89_bc29b9a4",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-30T16:09:15Z",
       "side": 1,
       "message": "kernel?",
+      "range": {
+        "startLine": 13,
+        "startChar": 68,
+        "endLine": 13,
+        "endChar": 73
+      },
+      "revId": "9858c5b93ec6ac8d791eab16a640ba86d020c4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf3cc596_e10932cb",
+        "filename": "docs/reducing_ec_image_size.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T19:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09d5fe89_bc29b9a4",
       "range": {
         "startLine": 13,
         "startChar": 68,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abb9f1db_b3f464bd",
+        "filename": "docs/reducing_ec_image_size.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T19:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c769e167_f0601c8e",
+      "range": {
+        "startLine": 22,
+        "startChar": 3,
+        "endLine": 22,
+        "endChar": 7
+      },
+      "revId": "9858c5b93ec6ac8d791eab16a640ba86d020c4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33e41fab_f0143e90",
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3db15dc_9442a78c",
+        "filename": "docs/reducing_ec_image_size.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T19:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33e41fab_f0143e90",
+      "revId": "9858c5b93ec6ac8d791eab16a640ba86d020c4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3b54d86_98c8eac3",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-07-30T21:23:44Z",
       "side": 1,
       "message": "Is there a bug for adding this feature to zmake? If so, it might be good to reference it here in a comment or even the text.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 3
+      },
+      "revId": "9858c5b93ec6ac8d791eab16a640ba86d020c4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e4f552c_4b77df78",
+        "filename": "docs/reducing_ec_image_size.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T19:48:43Z",
+      "side": 1,
+      "message": "Already supported by Zephyr, I just hadn\u0027t filled it out.",
+      "parentUuid": "a3b54d86_98c8eac3",
       "range": {
         "startLine": 83,
         "startChar": 0,
@@ -190,6 +304,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4b3e70a_ad4a5846",
+        "filename": "docs/reducing_ec_image_size.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T19:48:43Z",
+      "side": 1,
+      "message": "I left as required for the moment.",
+      "parentUuid": "bf108155_e4bd192b",
+      "range": {
+        "startLine": 205,
+        "startChar": 34,
+        "endLine": 205,
+        "endChar": 82
+      },
+      "revId": "9858c5b93ec6ac8d791eab16a640ba86d020c4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7883d5f_fbb2e930",
+        "filename": "docs/reducing_ec_image_size.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T19:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0975c908_5e26c292",
+      "range": {
+        "startLine": 205,
+        "startChar": 60,
+        "endLine": 205,
+        "endChar": 62
+      },
+      "revId": "9858c5b93ec6ac8d791eab16a640ba86d020c4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "766448a1_a547ae87",
@@ -203,6 +365,24 @@
       "writtenOn": "2021-07-30T21:23:44Z",
       "side": 1,
       "message": "Nit: Line length",
+      "revId": "9858c5b93ec6ac8d791eab16a640ba86d020c4b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a99a21c_38402f14",
+        "filename": "docs/reducing_ec_image_size.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T19:48:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "766448a1_a547ae87",
       "revId": "9858c5b93ec6ac8d791eab16a640ba86d020c4b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
