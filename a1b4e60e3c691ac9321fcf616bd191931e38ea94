@@ -69,6 +69,30 @@
       },
       "revId": "a1b4e60e3c691ac9321fcf616bd191931e38ea94",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05e19dc8_3cce06c0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-03T09:38:24Z",
+      "side": 1,
+      "message": "Per similar invocation in crrev/c/2576452 , I believe this is the correct function.",
+      "parentUuid": "dbe411d8_2f5cb2a8",
+      "range": {
+        "startLine": 1292,
+        "startChar": 2,
+        "endLine": 1292,
+        "endChar": 39
+      },
+      "revId": "a1b4e60e3c691ac9321fcf616bd191931e38ea94",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
