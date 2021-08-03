@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca954bad_1d7eb260",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T14:48:10Z",
+      "side": 1,
+      "message": "This should be guarded with IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG).",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "09cf83d408a613a974dd5ce156be6623e2c3685a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
