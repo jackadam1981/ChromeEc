@@ -70,6 +70,24 @@
       "parentUuid": "a836268d_d4ec7b96",
       "revId": "7d4aa5ee2332e3759e9695be521e31b3f1184827",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "081b3d69_0ab55a83",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-08-03T18:08:52Z",
+      "side": 1,
+      "message": "Attached full ec log with reboot issue \u0026 with WDT fix as well as with ec speed fix in cross bug mentioned -b:195406641 \n\nObserved below changes:\nWhen PLL is increased,\n hash start 0x00040000 0x0002e468]\n[10.579430 hash done 117c0a16e3c2689e2093579ba26689da1151a7929e7b187684103ca7fd377cad]\n\nWhen WDT is increased:\nhash start 0x00040000 0x0002e464]\n[14.136665 hash done 388039ef26673c379c6bbe2ea7502dcc648d249841be1d28f9cb0b7812db9ac9]",
+      "parentUuid": "5c7f24c8_b95bb107",
+      "revId": "7d4aa5ee2332e3759e9695be521e31b3f1184827",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
