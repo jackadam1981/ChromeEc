@@ -87,6 +87,7 @@ static int tbt_prints(const char *string, int port)
 /* The states of Thunderbolt negotiation */
 enum tbt_states {
 	TBT_START = 0,
+	TBT_SET_SAFE_STATE,
 	TBT_ENTER_SOP,
 	TBT_ACTIVE,
 	TBT_EXIT_SOP,
@@ -458,12 +459,13 @@ static bool tbt_mode_is_supported(int port, int vdo_count)
 }
 
 int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
-		enum tcpm_transmit_type *tx_type)
+		enum tcpm_transmit_type *tx_type, bool *wait_mux)
 {
 	struct svdm_amode_data *modep;
 	int vdo_count_ret = 0;
 	union tbt_mode_resp_cable cable_mode_resp;
 
+	*wait_mux = false;
 	*tx_type = TCPC_TX_SOP;
 
 	if (vdo_count < VDO_MAX_SIZE)
@@ -479,6 +481,18 @@ int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
 		else
 			tbt_prints("retry to enter mode", port);
 
+		/*
+		 * Enter safe mode before sending Enter mode SOP/SOP'/SOP''
+		 * Ref: Tiger Lake Platform PD Controller Interface
+		 * Requirements for Integrated USB C, section A.1.2 TBT as DFP.
+		 */
+		usb_mux_set_safe_mode(port);
+
+		*wait_mux = true;
+		tbt_state[port] = TBT_SET_SAFE_STATE;
+		return 0;
+	case TBT_SET_SAFE_STATE:
+		/* DPM will only call this after safe state set is done */
 		cable_mode_resp.raw_value =
 			pd_get_tbt_mode_vdo(port, TCPC_TX_SOP_PRIME);
 

@@ -96,9 +96,11 @@ void intel_vdm_naked(int port, enum tcpm_transmit_type type, uint8_t vdm_cmd);
  * @param vdm       The VDM payload to be sent; output; must point to at least
  *                  VDO_MAX_SIZE elements
  * @param tx_type   Transmit type(SOP, SOP', SOP'') for next VDM to be sent
+ * @param wait_mux  Request that the DPM wait on sending a VDM because a mux set
+ *		    is pending
  * @return          The number of VDOs written to VDM or -1 to indicate error
  */
 int tbt_setup_next_vdm(int port, int vdo_count, uint32_t *vdm,
-		enum tcpm_transmit_type *tx_type);
+		enum tcpm_transmit_type *tx_type, bool *wait_mux);
 
 #endif

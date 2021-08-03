@@ -69,6 +69,7 @@ enum mux_config_type {
  */
 
 /* Note: Set up queue depth as power of 2 for bitwise magic */
+
 #define MUX_QUEUE_DEPTH		BIT(CONFIG_USB_PD_PORT_MAX_COUNT)
 #define MUX_QUEUE_DEPTH_MASK	(MUX_QUEUE_DEPTH - 1)
 
