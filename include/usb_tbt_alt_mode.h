@@ -105,5 +105,4 @@ void intel_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd);
 enum dpm_msg_setup_status tbt_setup_next_vdm(int port, int *vdo_count,
 					     uint32_t *vdm,
 					     enum tcpci_msg_type *tx_type);
-
 #endif
