@@ -31,6 +31,7 @@ enum dp_states {
 	DP_ENTER_ACKED,
 	DP_ENTER_NAKED,
 	DP_STATUS_ACKED,
+	DP_SET_SAFE_STATE,
 	DP_ACTIVE,
 	DP_ENTER_RETRY,
 	DP_INACTIVE,
@@ -45,7 +46,7 @@ static enum dp_states dp_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 static const uint8_t state_vdm_cmd[DP_STATE_COUNT] = {
 	[DP_START] = CMD_ENTER_MODE,
 	[DP_ENTER_ACKED] = CMD_DP_STATUS,
-	[DP_STATUS_ACKED] = CMD_DP_CONFIG,
+	[DP_SET_SAFE_STATE] = CMD_DP_CONFIG,
 	[DP_ACTIVE] = CMD_EXIT_MODE,
 	[DP_ENTER_NAKED] = CMD_EXIT_MODE,
 	[DP_ENTER_RETRY] = CMD_ENTER_MODE,
@@ -135,7 +136,7 @@ void dp_vdm_acked(int port, enum tcpci_msg_type type, int vdo_count,
 		dfp_consume_attention(port, vdm);
 		dp_state[port] = DP_STATUS_ACKED;
 		break;
-	case DP_STATUS_ACKED:
+	case DP_SET_SAFE_STATE:
 		if (modep && modep->opos && modep->fx->post_config)
 			modep->fx->post_config(port);
 		dp_state[port] = DP_ACTIVE;
@@ -207,11 +208,13 @@ void dp_vdm_naked(int port, enum tcpci_msg_type type, uint8_t vdm_cmd)
 	}
 }
 
-int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
+int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm, bool *wait_mux)
 {
 	const struct svdm_amode_data *modep = pd_get_amode_data(port,
 			TCPCI_MSG_SOP, USB_SID_DISPLAYPORT);
 	int vdo_count_ret;
+
+	*wait_mux = false;
 
 	if (vdo_count < VDO_MAX_SIZE)
 		return -1;
@@ -246,6 +249,18 @@ int dp_setup_next_vdm(int port, int vdo_count, uint32_t *vdm)
 		if (!(modep && modep->opos))
 			return -1;
 
+		if (!get_dp_pin_mode(port))
+			return -1;
+
+		dp_state[port] = DP_SET_SAFE_STATE;
+
+		if (svdm_dp_get_mux_mode(port) == USB_PD_MUX_DP_ENABLED) {
+			usb_mux_set_safe_mode(port);
+			*wait_mux = true;
+			return 0;
+		}
+		/* Fall through if no mux set is needed */
+	case DP_SET_SAFE_STATE:
 		vdo_count_ret = modep->fx->config(port, vdm);
 		if (vdo_count_ret == 0)
 			return -1;

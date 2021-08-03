@@ -18,6 +18,7 @@
 #include "tcpm/tcpm.h"
 #include "usb_dp_alt_mode.h"
 #include "usb_mode.h"
+#include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_dpm.h"
 #include "usb_pd_tcpm.h"
@@ -234,6 +235,7 @@ static void dpm_attempt_mode_entry(int port)
 	enum tcpci_msg_type tx_type = TCPCI_MSG_SOP;
 	bool enter_mode_requested =
 		IS_ENABLED(CONFIG_USB_PD_REQUIRE_AP_MODE_ENTRY) ?  false : true;
+	bool wait_requested = false;
 
 	if (pd_get_data_role(port) != PD_ROLE_DFP) {
 		if (DPM_CHK_FLAG(port, DPM_FLAG_ENTER_DP |
@@ -276,6 +278,14 @@ static void dpm_attempt_mode_entry(int port)
 		return;
 	}
 
+	/*
+	 * If muxes are still settling, then wait on our next VDM.  We must
+	 * ensure we correctly sequence actions such as USB safe state with TBT
+	 * entry or DP configuration.
+	 */
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX) && !usb_mux_set_completed(port))
+		return;
+
 	/* Check if port, port partner and cable support USB4. */
 	if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
 	    board_is_tbt_usb4_port(port) &&
@@ -288,7 +298,8 @@ static void dpm_attempt_mode_entry(int port)
 		 */
 		if (tbt_cable_entry_required_for_usb4(port)) {
 			vdo_count = tbt_setup_next_vdm(port,
-				ARRAY_SIZE(vdm), vdm, &tx_type);
+				ARRAY_SIZE(vdm), vdm, &tx_type,
+				&wait_requested);
 		} else {
 			pd_dpm_request(port, DPM_REQUEST_ENTER_USB);
 			return;
@@ -303,7 +314,7 @@ static void dpm_attempt_mode_entry(int port)
 			dpm_mode_entry_requested(port, TYPEC_MODE_TBT)) {
 		enter_mode_requested = true;
 		vdo_count = tbt_setup_next_vdm(port,
-			ARRAY_SIZE(vdm), vdm, &tx_type);
+			ARRAY_SIZE(vdm), vdm, &tx_type, &wait_requested);
 	}
 
 	/* If not, check if they support DisplayPort alt mode. */
@@ -312,8 +323,13 @@ static void dpm_attempt_mode_entry(int port)
 				USB_SID_DISPLAYPORT) &&
 	    dpm_mode_entry_requested(port, TYPEC_MODE_DP)) {
 		enter_mode_requested = true;
-		vdo_count = dp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm);
+		vdo_count = dp_setup_next_vdm(port, ARRAY_SIZE(vdm), vdm,
+					      &wait_requested);
 	}
+
+	/* Not ready to send a VDM, check again next cycle */
+	if (vdo_count == 0 && wait_requested)
+		return;
 
 	/*
 	 * If the PE didn't discover any supported (requested) alternate mode,
@@ -358,6 +374,7 @@ static void dpm_attempt_mode_exit(int port)
 	uint32_t vdm = 0;
 	int vdo_count = 0;
 	enum tcpci_msg_type tx_type = TCPCI_MSG_SOP;
+	bool unused;
 
 	if (IS_ENABLED(CONFIG_USB_PD_USB4) &&
 	    enter_usb_entry_is_done(port)) {
@@ -374,10 +391,11 @@ static void dpm_attempt_mode_exit(int port)
 		CPRINTS("C%d: TBT teardown", port);
 		tbt_exit_mode_request(port);
 		vdo_count = tbt_setup_next_vdm(port, VDO_MAX_SIZE, &vdm,
-					&tx_type);
+					&tx_type, &unused);
 	} else if (dp_is_active(port)) {
 		CPRINTS("C%d: DP teardown", port);
-		vdo_count = dp_setup_next_vdm(port, VDO_MAX_SIZE, &vdm);
+		vdo_count = dp_setup_next_vdm(port, VDO_MAX_SIZE, &vdm,
+					      &unused);
 	} else {
 		/* Clear exit mode request */
 		dpm_clear_mode_exit_request(port);
