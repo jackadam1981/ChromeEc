@@ -69,6 +69,24 @@
       "parentUuid": "7c734c4b_180a3d57",
       "revId": "40894dac8e58352e77d191a3a2b1b5cbe2991aa5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac12d81f_adae632a",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-03T06:11:42Z",
+      "side": 1,
+      "message": "Followup:\n\nWe do not currently handle `TCPC_REG_ALERT_RX_BUF_OVF` anywhere. CL will need to be expanded to accommodate to do that properly.\n\nAlso, as suspected, we have to \"start tcpci_tcpc_alert() from the top\" by virtue of having `tcpm_alert_status(port, \u0026alert)` at L1179. We have no idea if new (non-RX packet) events have occurred while we\u0027re spinning in the `while()` loop.\n\n* For example, `TCPC_REG_ALERT_FAULT` may have been set.\n\nDepending if `tcpci_tcpc_alert()` is edge-triggered or level-triggered, we may need a callback to kick the function off from the top.\n\nAssistance is requested for the proper approach.",
+      "parentUuid": "03395d41_61ec5345",
+      "revId": "40894dac8e58352e77d191a3a2b1b5cbe2991aa5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
