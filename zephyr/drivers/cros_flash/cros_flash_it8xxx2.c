@@ -212,6 +212,16 @@ static int cros_flash_it8xxx2_erase(const struct device *dev, int offset,
 		 */
 		if (IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG) && (size > 0x10000))
 			watchdog_reload();
+		/*
+		 * EC still need to handle AP's EC_CMD_GET_COMMS_STATUS command
+		 * during erasing.
+		 */
+		if (IS_ENABLED(HAS_TASK_HOSTCMD) &&
+			IS_ENABLED(CONFIG_HOST_COMMAND_STATUS)) {
+			if (IT83XX_SPI_RX_VLISR & IT83XX_SPI_RVLI) {
+				irq_enable(DT_IRQN(DT_NODELABEL(shi)));
+			}
+		}
 	}
 	/* Restore interrupts */
 	if (IS_ENABLED(CONFIG_ITE_IT8XXX2_INTC)) {
