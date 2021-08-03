@@ -16,6 +16,46 @@
       "message": "besides different (but well tested) SHA implementations all other changes are just related to type names changes and stronger type checking. I avoided typedefs used by cryptoc, so had to manually fix types. While other boards still builds, I switched board/host to use cr50\u0027s API and updated tests. For U2F tests amount of mocking needed dropped as real SHA/HMAC/DRBG can be used on host now due to refactoring which will be later used for better testing.\n\nThis CL also enables HW HMAC support I plan to add soon.",
       "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b9c7ee9_68ff2259",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-03T21:38:19Z",
+      "side": 1,
+      "message": "I just started looking, but want to share this comment right away, I think this change would greatly increase code robustness.",
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "822ebe29_a6f38528",
+        "filename": "board/cr50/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-03T21:38:19Z",
+      "side": 1,
+      "message": "since you are changing API, why not declare a structure containing the digest. Passing pointers and expecting both the caller and the callee to know the size is very brittle.",
+      "range": {
+        "startLine": 46,
+        "startChar": 41,
+        "endLine": 46,
+        "endChar": 59
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
