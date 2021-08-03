@@ -52,6 +52,24 @@
       "parentUuid": "489e4dea_5bee5643",
       "revId": "88151bd4c34bbf49a219e350366b07b78d6146b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d5adaec_607b5932",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-03T01:32:56Z",
+      "side": 1,
+      "message": "I think we can abandon this one since our cbi will pre-flash and factory team will use it and won\u0027t use the ectool cbi set the BOARD_ID.",
+      "parentUuid": "a818f820_fa94daea",
+      "revId": "88151bd4c34bbf49a219e350366b07b78d6146b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
