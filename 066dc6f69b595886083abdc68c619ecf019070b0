@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9a108a77_f555bd86",
+        "filename": "board/pazquel/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-08-03T16:50:40Z",
+      "side": 1,
+      "message": "So that\u0027s a problem.\n\nTo make battery_get_fet_status_regval() function correctly, please fill out the correct fet info.",
+      "parentUuid": "070d6d06_6c9030f2",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "066dc6f69b595886083abdc68c619ecf019070b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "38d08c09_6f56f208",
         "filename": "board/pazquel/battery.c",
         "patchSetId": 4
