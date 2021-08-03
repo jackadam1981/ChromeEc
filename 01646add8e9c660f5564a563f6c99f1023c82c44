@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18e25e9d_5abfdfad",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T15:53:23Z",
+      "side": 1,
+      "message": "Change this to:\n\n\"Return in-progress status for slow host commands\"",
+      "range": {
+        "startLine": 739,
+        "startChar": 7,
+        "endLine": 739,
+        "endChar": 75
+      },
+      "revId": "01646add8e9c660f5564a563f6c99f1023c82c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55178675_a55b9683",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T15:53:23Z",
+      "side": 1,
+      "message": "Fix the line lengths.",
+      "range": {
+        "startLine": 742,
+        "startChar": 0,
+        "endLine": 748,
+        "endChar": 45
+      },
+      "revId": "01646add8e9c660f5564a563f6c99f1023c82c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1fe0cba_ca6df907",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T15:53:23Z",
+      "side": 1,
+      "message": "Can you reduce the critical section to just this call?\n\nThen I think you can avoid having to need a software triggered interrupt.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 0
+      },
+      "revId": "01646add8e9c660f5564a563f6c99f1023c82c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d6ae91c_80e238f8",
+        "filename": "zephyr/projects/asurada/hayato/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-03T15:53:23Z",
+      "side": 1,
+      "message": "This should be submitted as a separate CL.",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 40
+      },
+      "revId": "01646add8e9c660f5564a563f6c99f1023c82c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
