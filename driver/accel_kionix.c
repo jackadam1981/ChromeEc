@@ -680,6 +680,18 @@ const struct accelgyro_drv kionix_accel_drv = {
 	.get_offset = get_offset,
 };
 
+int detect_kx022(const int i2c_port)
+{
+	int device_id = 0, ret;
+	/* Read sensor chip id*/
+	ret = i2c_read8(i2c_port, KX022_ADDR0_FLAGS, KX022_WHOAMI, &device_id);
+
+	if (device_id == KX022_WHO_AM_I_VAL)
+		return 1;
+
+	return 0;
+}
+
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_ACCEL
 struct i2c_stress_test_dev kionix_i2c_stress_test_dev = {
 	.reg_info = {
