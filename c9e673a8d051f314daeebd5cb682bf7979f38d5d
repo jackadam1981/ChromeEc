@@ -165,6 +165,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25bbae35_350e32ba",
+        "filename": "board/cr50/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T17:01:44Z",
+      "side": 1,
+      "message": "yes, I would define a structure to have a single element, the uint8_t array.\n\nMake this structure a field of other structures if possible, and have an extra memcpy in places where it is not possible. This might cause some code increase, but would make the interface much safer.",
+      "parentUuid": "47217f6c_c9d8db20",
+      "range": {
+        "startLine": 46,
+        "startChar": 41,
+        "endLine": 46,
+        "endChar": 59
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59659d66_f4bbe17d",
         "filename": "board/cr50/dcrypto/hmac_sw.c",
         "patchSetId": 2
@@ -388,6 +412,30 @@
       "side": 1,
       "message": "Placement of fields is checked in hmacsha2.h though. and hash_ctx_t is a union of sha1_ctx by design. What kind of check would be appropriate? sizeof(hash_ctx_t) \u003e\u003d sizeof(struct sha1_ctx)?",
       "parentUuid": "a6eb26ab_fc6258ed",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 76
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "223686e8_5af56c89",
+        "filename": "board/cr50/dcrypto/sha1.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T17:01:44Z",
+      "side": 1,
+      "message": "yes, and that the buffer is at the same offset in both structures (or is it what you mention is checked in hmacsha2.h?)",
+      "parentUuid": "bf841a7c_a3aa8a6a",
       "range": {
         "startLine": 52,
         "startChar": 3,
@@ -635,6 +683,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4d61fc7_c70b04fe",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T17:01:44Z",
+      "side": 1,
+      "message": "but what happens if HW is not available? One would think that the caller always prefers hardware, and software is a fallback. Why not hide this from the caller completely? Or are there cases where software is preferrable?",
+      "parentUuid": "9333004f_61fa0f31",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 24
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8036fa43_1bff48d5",
         "filename": "builtin/endian.h",
         "patchSetId": 2
@@ -694,6 +766,30 @@
       "side": 1,
       "message": "I suspect LE is needed for host builds for host-side testing now",
       "parentUuid": "5355dfb4_43efa99d",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8948a6fe_2898d6d1",
+        "filename": "builtin/endian.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T17:01:44Z",
+      "side": 1,
+      "message": "LE is sure needed for both host and target. I don\u0027t understand why BE is needed, is this ever built when __BYTE_ORDER__  !\u003d __ORDER_LITTLE_ENDIAN__ ?",
+      "parentUuid": "f6ae570f_06fffdb5",
       "range": {
         "startLine": 35,
         "startChar": 0,
