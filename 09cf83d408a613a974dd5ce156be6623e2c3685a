@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9cf7249_3b25541b",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-08-04T09:33:26Z",
+      "side": 1,
+      "message": "Change irq_lock() to ite_intc_save_and_disable_interrupts. After that, SHI interrupt can be enabled.",
+      "parentUuid": "90588b71_a7bbb182",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 18
+      },
+      "revId": "09cf83d408a613a974dd5ce156be6623e2c3685a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca954bad_1d7eb260",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-03T14:48:10Z",
       "side": 1,
       "message": "This should be guarded with IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG).",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "09cf83d408a613a974dd5ce156be6623e2c3685a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e28d3e2e_5499363e",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-08-04T09:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca954bad_1d7eb260",
       "range": {
         "startLine": 204,
         "startChar": 0,
