@@ -1280,7 +1280,7 @@ static void show_charging_progress(void)
 }
 
 /* Calculate if battery is full based on whether it is accepting charge */
-static int calc_is_full(void)
+test_mockable static int calc_is_full(void)
 {
 	static int __bss_slow ret;
 
@@ -2168,6 +2168,9 @@ wait_for_it:
 
 		/* And the EC console */
 		is_full = calc_is_full();
+		/* Call battery sustain when battery is full */
+		if (is_full)
+			sustain_battery_soc();
 		if ((!(curr.batt.flags & BATT_FLAG_BAD_STATE_OF_CHARGE) &&
 		    curr.batt.state_of_charge != prev_charge) ||
 #ifdef CONFIG_EC_EC_COMM_BATTERY_CLIENT
