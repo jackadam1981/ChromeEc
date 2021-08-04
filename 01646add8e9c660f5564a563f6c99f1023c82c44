@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5be97224_e9aca9c2",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 739,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-08-04T10:36:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18e25e9d_5abfdfad",
+      "range": {
+        "startLine": 739,
+        "startChar": 7,
+        "endLine": 739,
+        "endChar": 75
+      },
+      "revId": "01646add8e9c660f5564a563f6c99f1023c82c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55178675_a55b9683",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80ce2d05_2f16c8eb",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-08-04T10:36:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55178675_a55b9683",
+      "range": {
+        "startLine": 742,
+        "startChar": 0,
+        "endLine": 748,
+        "endChar": 45
+      },
+      "revId": "01646add8e9c660f5564a563f6c99f1023c82c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1fe0cba_ca6df907",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-03T15:53:23Z",
       "side": 1,
       "message": "Can you reduce the critical section to just this call?\n\nThen I think you can avoid having to need a software triggered interrupt.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 0
+      },
+      "revId": "01646add8e9c660f5564a563f6c99f1023c82c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8dc51c9_09dcd26a",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_it8xxx2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-08-04T10:36:20Z",
+      "side": 1,
+      "message": "Change irq_lock() to ite_intc_save_and_disable_interrupts.",
+      "parentUuid": "f1fe0cba_ca6df907",
       "range": {
         "startLine": 198,
         "startChar": 0,
@@ -107,6 +179,30 @@
       "side": 1,
       "message": "when this is enabled, shouldn\u0027t this be \"y\"?",
       "parentUuid": "8d6ae91c_80e238f8",
+      "range": {
+        "startLine": 119,
+        "startChar": 0,
+        "endLine": 119,
+        "endChar": 40
+      },
+      "revId": "01646add8e9c660f5564a563f6c99f1023c82c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a62cbad0_60c749db",
+        "filename": "zephyr/projects/asurada/hayato/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-08-04T10:36:20Z",
+      "side": 1,
+      "message": "separated to:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3070798/2",
+      "parentUuid": "766090f1_ffeeaea9",
       "range": {
         "startLine": 119,
         "startChar": 0,
