@@ -69,6 +69,19 @@ properties:
       Indicates a function to detect the presence of an alternative sensor
     enum:
     - detect_kx022
+  interrupt-func:
+    required: false
+    type: string
+    description:
+      Indicates a function that should be called during the GPIO motion sensor
+      interrupt. It should be used if there is the possibility of runtime
+      detection of an alternative motion sensor.
+    enum:
+    - bmi160_interrupt
+    - icm426xx_interrupt
+    - icm42607_interrupt
+    - bmi3xx_interrupt
+    - lsm6dsm_interrupt
 
 #
 # examples:
