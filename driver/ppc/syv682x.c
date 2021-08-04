@@ -372,11 +372,11 @@ static int syv682x_handle_control_4_interrupt(int port, int regval)
 	 * for simplicity. If this happens return an error since this isn't
 	 * recoverable.
 	 */
-	if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
-		ppc_prints("VBAT or CC OVP!", port);
-		syv682x_init(port);
-		pd_handle_cc_overvoltage(port);
-		return EC_ERROR_UNKNOWN;
+	//if (regval & SYV682X_CONTROL_4_VBAT_OVP) {
+	//	ppc_prints("VBAT or CC OVP!", port);
+	//	syv682x_init(port);
+	//	pd_handle_cc_overvoltage(port);
+	//	return EC_ERROR_UNKNOWN;
 	}
 	return EC_SUCCESS;
 }
