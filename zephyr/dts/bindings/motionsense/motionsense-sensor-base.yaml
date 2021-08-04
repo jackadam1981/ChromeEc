@@ -68,6 +68,8 @@ properties:
     description:
       Gain selection for the ADC channel. Source of valid gain settings is
       "enum adc_gain" found in <zephyr-base>/include/drivers/adc.h
+    enum:
+    - detect_kx022
 
 #
 # examples:

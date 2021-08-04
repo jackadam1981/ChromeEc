@@ -10,8 +10,8 @@
 
 #include "common.h"
 #include "accelgyro.h"
-#include "driver/accel_kx022.h"
-#include "driver/accel_kxcj9.h"
+#include "accel_kx022.h"
+#include "accel_kxcj9.h"
 
 /*
  * Struct for pairing an engineering value with the register value for a
