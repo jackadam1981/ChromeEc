@@ -77,9 +77,6 @@ __override void led_set_color_battery(enum ec_led_colors color)
 
 	led1_duty = led2_duty = led3_duty = led4_duty = BAT_LED_OFF_LVL;
 
-	if (!led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED))
-		return;
-
 	/* Check which port is the charging port,
 	 * and turn on the corresponding led.
 	 */
@@ -111,6 +108,21 @@ __override void led_set_color_battery(enum ec_led_colors color)
 		break;
 	default: /* Unknown charging port */
 		break;
+	}
+
+	if (!led_auto_control_is_enabled(EC_LED_ID_BATTERY_LED)) {
+		switch (color) {
+		case EC_LED_COLOR_AMBER:
+			led1_duty = BAT_LED_ON_LVL;
+			led3_duty = BAT_LED_ON_LVL;
+			break;
+		case EC_LED_COLOR_WHITE:
+			led2_duty = BAT_LED_ON_LVL;
+			led4_duty = BAT_LED_ON_LVL;
+			break;
+		default: /* LED_OFF and other unsupported colors */
+			break;
+		}
 	}
 
 	pwm_set_duty(PWM_CH_LED1, led1_duty);
