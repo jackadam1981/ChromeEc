@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85b042dd_55bb8855",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-04T21:50:50Z",
+      "side": 1,
+      "message": "Can you help me understand what problem is being fixed?\n\n\u0027ectool chargecontrol discharge\u0027 sends EC_CHARGE_CONTROL_CMD_SET and CHARGE_CONTROL_DISCHARGE. Given that, charge_command_charge_control disables the sustainer (by battery_sustainer_disable) then sets the mode to discharge (by set_chg_ctrl_mode).",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "2dd30aff9e6faf7bcf22b0d8e0cf248dea2b97ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
