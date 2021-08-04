@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "7945cef0_45cd4a70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-04T00:09:17Z",
+      "side": 1,
+      "message": "LGTM.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "9574b2747eccbbf4e8fc2fa23306990b802ed48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd75a1e3_cd56fc8e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-04T00:09:17Z",
+      "side": 1,
+      "message": "Can we keep (some of) these peripheral devices? Yes, we\u0027re annoyed by them (in ToT) and inclined to remove their low ceilings but they\u0027re working as a gatekeeper, helping CrOS EC stay as a small OS. Once they\u0027re gone, we\u0027ll probably bloat the code till we find the next smallest board. Eventually, we\u0027ll end up so big like OS \u0027(put name)\u0027 that can fit only in a beefy EC.\n\nI think we should pick one peripheral board to demonstrate how small OS can be and keep it as a gatekeeper. We can build it differently to show how to fit it in 64kb and 128kb and what features can be kept.",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "9574b2747eccbbf4e8fc2fa23306990b802ed48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a9dbbdb_464918d6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-04T00:09:17Z",
+      "side": 1,
+      "message": "LGTM.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "9574b2747eccbbf4e8fc2fa23306990b802ed48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ccdc7a2e_843da582",
