@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "360a4421_44847ad0",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-04T08:41:30Z",
+      "side": 1,
+      "message": "this check is only valid for the ps8815a1.\nwe do not know if the ps8815a2 has the same bug\nor in which firmware version number.",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 674,
+        "endChar": 17
+      },
+      "revId": "828bae1aa760a7044fd094c93b986768d5a01453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
