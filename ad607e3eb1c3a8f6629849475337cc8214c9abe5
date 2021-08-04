@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29f13ab0_89a88df8",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-04T19:50:31Z",
+      "side": 1,
+      "message": "Please add a prototype to bb_retimer_public.h.  You can follow the example of the bb_retimer_power_enable() prototype.",
+      "range": {
+        "startLine": 370,
+        "startChar": 0,
+        "endLine": 370,
+        "endChar": 60
+      },
+      "revId": "ad607e3eb1c3a8f6629849475337cc8214c9abe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
