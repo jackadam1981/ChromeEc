@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36e400c6_09971fd2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2021-08-04T07:03:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "350cca09_623421ab",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "2810e289f2cd0b1997f3c1bb2c06dc1d986ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "417097f3_3018a2df",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d0b43cb_a5435617",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2021-08-04T07:03:16Z",
+      "side": 1,
+      "message": "Irui will help to do this in the future.",
+      "parentUuid": "417097f3_3018a2df",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 11
+      },
+      "revId": "2810e289f2cd0b1997f3c1bb2c06dc1d986ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a88dd89_e3e7ac5e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -60,6 +108,24 @@
       "writtenOn": "2021-08-04T06:12:24Z",
       "side": 1,
       "message": "Let\u0027s move the _get_capability() to video.c.\n\nThe declaration and the bit definition to video.h.",
+      "revId": "2810e289f2cd0b1997f3c1bb2c06dc1d986ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62b6b1fc_128f8f19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2021-08-04T07:03:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a88dd89_e3e7ac5e",
       "revId": "2810e289f2cd0b1997f3c1bb2c06dc1d986ad093",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -89,6 +155,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48bc620c_757a291b",
+        "filename": "chip/mt_scp/rv32i_common/ipi.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2021-08-04T07:03:16Z",
+      "side": 1,
+      "message": "Irui will help to do this in the future.",
+      "parentUuid": "83586a4b_a1c58d83",
+      "range": {
+        "startLine": 139,
+        "startChar": 26,
+        "endLine": 139,
+        "endChar": 37
+      },
+      "revId": "2810e289f2cd0b1997f3c1bb2c06dc1d986ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31ab0226_85cb5b0b",
         "filename": "chip/mt_scp/rv32i_common/ipi_chip.h",
         "patchSetId": 6
@@ -100,6 +190,30 @@
       "writtenOn": "2021-08-04T06:12:24Z",
       "side": 1,
       "message": "Move them too.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "2810e289f2cd0b1997f3c1bb2c06dc1d986ad093",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed7a1126_ed80674e",
+        "filename": "chip/mt_scp/rv32i_common/ipi_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2021-08-04T07:03:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31ab0226_85cb5b0b",
       "range": {
         "startLine": 17,
         "startChar": 0,
