@@ -413,10 +413,10 @@ static void nx20p348x_handle_interrupt(int port)
 	}
 
 	/* Check for 5V OC interrupt */
-	if (reg & NX20P348X_INT1_OC_5VSRC) {
-		ppc_prints("detected Vbus overcurrent!", port);
-		pd_handle_overcurrent(port);
-	}
+	//if (reg & NX20P348X_INT1_OC_5VSRC) {
+	//	ppc_prints("detected Vbus overcurrent!", port);
+	//	pd_handle_overcurrent(port);
+	//}
 
 	/* Check for Vbus reverse current protection */
 	if (reg & NX20P348X_INT1_RCP_5VSRC)
