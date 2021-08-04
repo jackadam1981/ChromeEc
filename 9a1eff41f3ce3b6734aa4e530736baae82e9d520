@@ -33,6 +33,92 @@
       "message": "ping",
       "revId": "9a1eff41f3ce3b6734aa4e530736baae82e9d520",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95d9c040_b2683298",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-04T17:49:30Z",
+      "side": 1,
+      "message": "So we\u0027ll let DPS take priority over an override port?",
+      "range": {
+        "startLine": 681,
+        "startChar": 4,
+        "endLine": 681,
+        "endChar": 44
+      },
+      "revId": "9a1eff41f3ce3b6734aa4e530736baae82e9d520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08d25aa5_c61d6263",
+        "filename": "common/dps.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-04T17:49:30Z",
+      "side": 1,
+      "message": "Should the \"port\" input affect the function\u0027s output?",
+      "revId": "9a1eff41f3ce3b6734aa4e530736baae82e9d520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "315de210_295cc089",
+        "filename": "common/dps.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-04T17:49:30Z",
+      "side": 1,
+      "message": "of the active charge port",
+      "range": {
+        "startLine": 156,
+        "startChar": 26,
+        "endLine": 156,
+        "endChar": 41
+      },
+      "revId": "9a1eff41f3ce3b6734aa4e530736baae82e9d520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db661f6d_b58e9519",
+        "filename": "common/dps.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-04T17:49:30Z",
+      "side": 1,
+      "message": "Not a parameter in the function definition",
+      "range": {
+        "startLine": 160,
+        "startChar": 2,
+        "endLine": 160,
+        "endChar": 30
+      },
+      "revId": "9a1eff41f3ce3b6734aa4e530736baae82e9d520",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
