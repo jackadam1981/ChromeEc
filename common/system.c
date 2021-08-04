@@ -1174,6 +1174,7 @@ DECLARE_HOST_COMMAND(EC_CMD_SYSINFO, host_command_sysinfo,
 static int command_scratchpad(int argc, char **argv)
 {
 	int rv = EC_SUCCESS;
+	uint32_t scratchpad_value;
 
 	if (argc == 2) {
 		char *e;
@@ -1183,7 +1184,11 @@ static int command_scratchpad(int argc, char **argv)
 		rv = system_set_scratchpad(s);
 	}
 
-	ccprintf("Scratchpad: 0x%08x\n", system_get_scratchpad());
+	rv = system_get_scratchpad(&scratchpad_value);
+	if (rv)
+		ccprintf("Error reading scratchpad register (%d)\n", rv);
+	else
+		ccprintf("Scratchpad: 0x%08x\n", scratchpad_value);
 	return rv;
 }
 DECLARE_CONSOLE_COMMAND(scratchpad, command_scratchpad,

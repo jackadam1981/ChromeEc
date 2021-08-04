@@ -94,7 +94,10 @@ static void fail_and_clean_up(void)
 
 void run_test(int argc, char **argv)
 {
-	uint32_t state = system_get_scratchpad();
+	uint32_t state;
+
+	if (system_get_scratchpad(&state))
+		fail_and_clean_up();
 
 	test_reset();
 
