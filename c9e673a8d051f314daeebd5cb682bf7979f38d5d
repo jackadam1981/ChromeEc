@@ -35,6 +35,46 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7474059c_8a1994a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "I have not looked closely at the tests yet.",
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25da4212_c103879e",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "I don\u0027t remember why we have to define SHA512_SUPPORT instead of using CONFIG_UPTO_SHA512 directly...",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "822ebe29_a6f38528",
@@ -53,6 +93,282 @@
         "startChar": 41,
         "endLine": 46,
         "endChar": 59
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59659d66_f4bbe17d",
+        "filename": "board/cr50/dcrypto/hmac_sw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "I know this is a close copy of what was there before, but it would be slightly more efficient add this memset()after line 46 and limit the size to the tails space not filled with the input data.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d78c48d_15f17e47",
+        "filename": "board/cr50/dcrypto/hmac_sw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "utf8 symbols in the comment, not sure if this is legit in C, could make some text processing utilities unhappy?",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "242a9a41_e18dff25",
+        "filename": "board/cr50/dcrypto/hmacsha2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "do we still care about SHA1?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62fce412_7cc0a93a",
+        "filename": "board/cr50/dcrypto/hmacsha2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "here and in the following definitions this array size should be the appropriate XXX_BLOCK_WORDS value.\n\nAlso, you could define a macro to declare these structures.",
+      "range": {
+        "startLine": 73,
+        "startChar": 16,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6eb26ab_fc6258ed",
+        "filename": "board/cr50/dcrypto/sha1.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "there should be a build time assert for this.",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 76
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "292fd020_8d655f3f",
+        "filename": "board/cr50/dcrypto/sha1.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "here and in other memcpy() invocation size should be sizeof(ctx-\u003estate) i.e. sizeof(destination).",
+      "range": {
+        "startLine": 75,
+        "startChar": 31,
+        "endLine": 75,
+        "endChar": 48
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d9443e1_5261edf9",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "there should be some time limit in this case, if exceeded an error should be logged, reported on the console, and the H1 rebooted.\n \n Not ideal, but still better then just watchdog for no clear reason.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9989c65_42989957",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "this typecast is not needed.",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bdc4c1_43668ec4",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "pointers to int should be typecasted to uintptr_t",
+      "range": {
+        "startLine": 75,
+        "startChar": 20,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02710454_4ce27308",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "why is the explicit DCRYPTO_xxx API needed? This entry point will not even try using hardware if sw_required is set.\n\nWhy would the caller does not always want to use hardware if it is available?\n\nIs it possible to have the init function always call dcrypto_grab_sha_hw() and then go hw or sw path depending on the result? The rest would fall into place, no?",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 24
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8036fa43_1bff48d5",
+        "filename": "builtin/endian.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "why is this necessary?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d879007d_07911b97",
+        "filename": "chip/host/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-04T03:33:17Z",
+      "side": 1,
+      "message": "why is this necessary - doesn\u0027t the local code provide all what\u0027s needed for crypto?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
       },
       "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
