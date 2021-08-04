@@ -86,6 +86,24 @@
       "message": "I\u0027m not part of Chrome OS anymore.",
       "revId": "a1146e1313138433d6f2ec7ab800afa65e1c0fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d359f252_e4406369",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-04T03:55:52Z",
+      "side": 1,
+      "message": "Yes, merging these CL and fixes them for the branch will work: this way, if we find a bug in icm_common for instance, we know we will need to fix that branch too.\n\nMention in the commit messages the code conflicts with CONFLICT: ... so that the reviewer will know what to look for.",
+      "parentUuid": "920b87a1_f185a24b",
+      "revId": "a1146e1313138433d6f2ec7ab800afa65e1c0fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
