@@ -67,6 +67,8 @@ properties:
     type: string
     description:
       Indicates a function to detect the presence of an alternative sensor
+    enum:
+    - detect_kx022
 
 #
 # examples:
