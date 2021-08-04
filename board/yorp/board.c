@@ -214,6 +214,7 @@ void board_hibernate_late(void) {
 }
 
 #ifndef TEST_BUILD
+<<<<<<< HEAD   (caf383 driver: add ICM-42607 driver support)
 /* This callback disables keyboard when convertibles are fully open */
 void lid_angle_peripheral_enable(int enable)
 {
@@ -229,6 +230,8 @@ void lid_angle_peripheral_enable(int enable)
 }
 
 
+=======
+>>>>>>> CHANGE (2eb53a lid_angle: Create a common callback for lid angle changes)
 static void post_old_board_warning(void)
 {
 	uint32_t board_id = 0;
