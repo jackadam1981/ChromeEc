@@ -3,7 +3,8 @@
  * found in the LICENSE file.
  */
 
-#include "accel_kx022.h"
+#include "../driver/accel_kx022.h"
+#include "../driver/accel_kionix.h"
 
 /*
  * CREATE_SENSOR_DATA which is defined in motionsense_sensors.c is
