@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "328c473c_9b858b1c",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-08-04T07:56:16Z",
+      "side": 1,
+      "message": "Made this disabling of tasks functn specific to ITE  alone, as Mchp board files dont\u0027t recognize PD_C2 \u0026 PD_C3 , as they have only 2 pd tasks.",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 33
+      },
+      "revId": "e445fb8a38c67f5deb9ac676e2f6b70345d00b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe5beebd_d5ed9620",
+        "filename": "core/nds32/task.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-08-04T07:56:16Z",
+      "side": 1,
+      "message": "Added this to see, if specific tasks are disabled, on checking using taskinfo.\nIt is better to have this variable, as well ads part of taskinfo.",
+      "range": {
+        "startLine": 664,
+        "startChar": 2,
+        "endLine": 664,
+        "endChar": 57
+      },
+      "revId": "e445fb8a38c67f5deb9ac676e2f6b70345d00b6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

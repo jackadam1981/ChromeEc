@@ -39,6 +39,30 @@
       },
       "revId": "18dc0cf9e5748f97f63980d408e56913e1899c7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae726534_0c8c8708",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-08-04T07:56:16Z",
+      "side": 1,
+      "message": "Enabled this functn, as FAFT  may have dependency on tasks enabled/disabled.\nNote: Even after disabling specific tasks, the tasks still remain defined \u0026 is ready state for getting enabled at any time.",
+      "parentUuid": "71de0128_501df598",
+      "range": {
+        "startLine": 395,
+        "startChar": 1,
+        "endLine": 396,
+        "endChar": 76
+      },
+      "revId": "18dc0cf9e5748f97f63980d408e56913e1899c7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
