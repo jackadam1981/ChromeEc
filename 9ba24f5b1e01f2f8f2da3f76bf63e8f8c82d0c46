@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4875d40b_d25dfc96",
+        "filename": "board/gimble/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-04T22:55:51Z",
+      "side": 1,
+      "message": "nit: add newline",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 1
+      },
+      "revId": "9ba24f5b1e01f2f8f2da3f76bf63e8f8c82d0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bdaef46_6cdb41ad",
+        "filename": "board/gimble/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-04T22:55:51Z",
+      "side": 1,
+      "message": "While this function only operates on TEMP_SENSOR_1_DDR_SOC sensor, it changes the temp values for all the sensors on lines 114-115. This can lead to future bugs. To avoid that I propose to change lines 114-115 to:\n`prev_temp[TEMP_SENSOR_1_DDR_SOC] \u003d temp[TEMP_SENSOR_1_DDR_SOC];`\n \nI would also suggest to parameterize this function with temp_sensor_id and use it instead of TEMP_SENSOR_1_DDR_SOC define.",
+      "revId": "9ba24f5b1e01f2f8f2da3f76bf63e8f8c82d0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "553c3c9a_792af4b4",
+        "filename": "board/gimble/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-04T22:55:51Z",
+      "side": 1,
+      "message": "nit: better to move this line right below fan_table definition",
+      "revId": "9ba24f5b1e01f2f8f2da3f76bf63e8f8c82d0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5add59_3c699b49",
+        "filename": "board/gimble/thermal.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-04T22:55:51Z",
+      "side": 1,
+      "message": "FAN_CH(fan)",
+      "range": {
+        "startLine": 131,
+        "startChar": 20,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "9ba24f5b1e01f2f8f2da3f76bf63e8f8c82d0c46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
