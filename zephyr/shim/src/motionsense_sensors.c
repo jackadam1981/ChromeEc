@@ -369,9 +369,40 @@ DECLARE_HOOK(HOOK_INIT, sensor_enable_irqs, HOOK_PRIO_DEFAULT);
 #endif
 
 /* Handle the alternative motion sensors */
-#define REPLACE_ALT_MOTION_SENSOR(new_id, old_id) \
-	motion_sensors[SENSOR_ID(old_id)] =       \
-		motion_sensors_alt[SENSOR_ID(new_id)];
+
+/* Declare the interrupt functions */
+#define DECLARE_INTERRUPT_FUNC_MOTION_SENSOR_ID(id)          \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, interrupt_func),    \
+		    (void DT_ENUM_TOKEN(id, interrupt_func)( \
+			     enum gpio_signal signal);),     \
+		    ())
+
+#if DT_NODE_EXISTS(SENSOR_ALT_NODE)
+DT_FOREACH_CHILD(SENSOR_ALT_NODE, DECLARE_INTERRUPT_FUNC_MOTION_SENSOR_ID)
+#endif
+
+#if DT_NODE_EXISTS(SENSOR_NODE)
+DT_FOREACH_CHILD(SENSOR_NODE, DECLARE_INTERRUPT_FUNC_MOTION_SENSOR_ID)
+#endif
+
+static void (*base_accel_interrupt)(enum gpio_signal signal) = COND_CODE_1(
+	DT_NODE_HAS_PROP(SENSOR_BASE_ACCEL_NODE_ID, interrupt_func),
+	(DT_ENUM_TOKEN(SENSOR_BASE_ACCEL_NODE_ID, interrupt_func)), (NULL));
+
+#define REPLACE_ALT_MOTION_SENSOR(new_id, old_id)                             \
+	do {                                                                  \
+		motion_sensors[SENSOR_ID(old_id)] =                           \
+			motion_sensors_alt[SENSOR_ID(new_id)];                \
+		/* When replacing the base accel sensor use
+		 * a new interrupt routine */                                 \
+		if (SENSOR_ID(old_id) ==                                      \
+		    SENSOR_ID(SENSOR_BASE_ACCEL_NODE_ID)) {                   \
+			COND_CODE_1(DT_NODE_HAS_PROP(new_id, interrupt_func), \
+				    (base_accel_interrupt = DT_ENUM_TOKEN(    \
+					     new_id, interrupt_func);),       \
+				    ())                                       \
+		}                                                             \
+	} while (0);
 
 #define CHECK_AND_REPLACE_ALT_MOTION_SENSOR(id)                        \
 	do {                                                           \
@@ -430,4 +461,10 @@ void board_detect_motionsensor(void)
 #if DT_NODE_EXISTS(SENSOR_ALT_NODE)
 	DT_FOREACH_CHILD(SENSOR_ALT_NODE, DETECT_ALT_MOTION_SENSOR_ID)
 #endif
+}
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	if (base_accel_interrupt)
+		base_accel_interrupt(signal);
 }
