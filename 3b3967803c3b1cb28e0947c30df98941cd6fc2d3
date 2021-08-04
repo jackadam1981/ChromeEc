@@ -163,6 +163,30 @@
       },
       "revId": "3b3967803c3b1cb28e0947c30df98941cd6fc2d3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00e00be5_55219116",
+        "filename": "baseboard/mtscp-rv32i/baseboard.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1319018
+      },
+      "writtenOn": "2021-08-04T05:54:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80939f0c_586f420d",
+      "range": {
+        "startLine": 19,
+        "startChar": 52,
+        "endLine": 19,
+        "endChar": 62
+      },
+      "revId": "3b3967803c3b1cb28e0947c30df98941cd6fc2d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
