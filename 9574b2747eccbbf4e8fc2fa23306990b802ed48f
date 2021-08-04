@@ -49,6 +49,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cd8ee323_56ff1cfb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-04T00:22:10Z",
+      "side": 1,
+      "message": "if we do go forward with deleting these, let\u0027s not lump\nthem all into \"samus auxiliary firmware\". zinger, for\nexample, is a stand-alone PD charger.",
+      "revId": "9574b2747eccbbf4e8fc2fa23306990b802ed48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a9dbbdb_464918d6",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
