@@ -100,4 +100,12 @@ enum sensor_alt_id {
 		SENSOR_INFO_NODE))
 #endif
 
+/**
+ * @brief Detect and replace alternative sensors
+ *
+ * Detect alternative sensors defined in the DTS with a function pointed by
+ * the detect-func property and replace it in the motons_sensors array.
+ */
+void board_detect_motionsensor(void);
+
 #endif /* __CROS_EC_MOTIONSENSE_SENSORS_H */
