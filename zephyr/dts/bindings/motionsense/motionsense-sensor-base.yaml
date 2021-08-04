@@ -62,6 +62,12 @@ properties:
     type: phandle
     description: phandle to CBI SSGC value indicating that the sensor
       should be used
+  detect-func:
+    required: false
+    type: string
+    description:
+      Gain selection for the ADC channel. Source of valid gain settings is
+      "enum adc_gain" found in <zephyr-base>/include/drivers/adc.h
 
 #
 # examples:
