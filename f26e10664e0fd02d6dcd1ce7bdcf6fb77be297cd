@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a8200db_0fcf5e53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1418277
+      },
+      "writtenOn": "2021-08-04T16:48:22Z",
+      "side": 1,
+      "message": "Both devices are exposed after turning `offline` mode on and initiating a `rescan`.\nBoth devices can be flashed by writing the firmware binary to the\n/sys/bus/thunderbolt/devices/0-0\\:$x.1/nvm_non_active$y/nvmem sysfs entry, then\nwriting `1` to the /sys/bus/thunderbolt/devices/0-0\\:$x.1/nvm_authenticate sysfs entry.",
+      "revId": "f26e10664e0fd02d6dcd1ce7bdcf6fb77be297cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
