@@ -191,6 +191,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17d6845_6fe8717e",
+        "filename": "board/pazquel/battery.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-08-04T06:09:35Z",
+      "side": 1,
+      "message": "after change , and see the message as follow\n\u003e cutoff\n[43.394069 Battery cut off]\n\u003e [44.163402 Batt disconnected: reg 0x0010 mask 0x0003 disc 0x0000]\n[44.164078 found battery in disconnect state]",
+      "parentUuid": "7034dd79_aefaf675",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "066dc6f69b595886083abdc68c619ecf019070b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38d08c09_6f56f208",
