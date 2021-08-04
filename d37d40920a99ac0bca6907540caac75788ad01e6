@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ab37ca_6a1c7987",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-04T13:29:48Z",
+      "side": 1,
+      "message": "Cherry pick from main branch\n\nLimitations\n\ncommon/motion_sense.c +102\nQUEUE_NULL using CONFIG_ACCEL_FIFO as a size of queue.\nSo added CONFIG_ACCEL_FIFO_EN definition for check FIFO enable\n\naccelgyro_saved_data_t in accelgyro.h doesn\u0027t have scale member.\nSo removed scale related codes\n\nMOTION_MAX_SENSOR_FREQUENCY doesn\u0027t exist in rammus branch",
+      "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
