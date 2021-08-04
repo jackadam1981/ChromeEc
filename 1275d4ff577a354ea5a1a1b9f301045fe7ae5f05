@@ -68,6 +68,24 @@
       "parentUuid": "edf654ba_22c68d9c",
       "revId": "1275d4ff577a354ea5a1a1b9f301045fe7ae5f05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10b57100_cf7aac66",
+        "filename": "zephyr/shim/chip/npcx/espi.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-08-04T03:16:19Z",
+      "side": 1,
+      "message": "Oh wow, this is what I was worried about with our versions.\n\nI think that #1 is too complicated, I\u0027m worried there are other dependencies that will be hard to find and I really don\u0027t want to establish this as a pattern (otherwise why even have versions).\n\n#2 is possible and is likely the easiest, but I also don\u0027t like it as a pattern, we shouldn\u0027t need to update ALL the boards every time we uprev, otherwise again, why even have versions?\n\nThere\u0027s a 3rd option, I added a macro a while back `IS_ZEPHYR_VERSION(major, minor)` to be able to run code differently on different versions of Zephyr.\n\nHow hard would it be to use that here?",
+      "parentUuid": "ae199bd3_d00c56f4",
+      "revId": "1275d4ff577a354ea5a1a1b9f301045fe7ae5f05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
