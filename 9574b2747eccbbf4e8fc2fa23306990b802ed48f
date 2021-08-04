@@ -166,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a0f6393_d96cd376",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-04T19:09:40Z",
+      "side": 1,
+      "message": "Jack, can we move the removal of dingdong, hoho, minimuffin, zinger to a separate CL? It\u0027s easier for me to do +2 without them. I think we should keep zinger (as an AC adapter reference), hoho (as an video adapter reference), and samus_pd (as an TCPC reference).",
+      "parentUuid": "3cfff380_16a376a8",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "9574b2747eccbbf4e8fc2fa23306990b802ed48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a9dbbdb_464918d6",
