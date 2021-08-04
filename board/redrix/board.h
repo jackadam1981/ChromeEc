@@ -27,8 +27,17 @@
 /* Sensors */
 #define CONFIG_ACCEL_BMA255		/* Lid accel */
 #define CONFIG_ACCELGYRO_LSM6DSM	/* Base accel */
+
+/*
+ * b:195377407: Since we have unexpected exception on npcx9 with
+ * lsm6dsm interrupt mode. To prevent EC in the boot loop, remove the
+ * BASE_ACCEL INT temporary. Please revert this patch once we have
+ * final solution.
+ */
+#if 0
 #define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+#endif
 #define CONFIG_LID_ANGLE
 #define CONFIG_LID_ANGLE_SENSOR_BASE	BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID	LID_ACCEL
@@ -49,7 +58,7 @@
 
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK \
-	(BIT(LID_ACCEL) | BIT(CLEAR_ALS))
+	(BIT(LID_ACCEL) | BIT(BASE_ACCEL) | BIT(CLEAR_ALS))
 
 #define CONFIG_ACCEL_INTERRUPTS
 
