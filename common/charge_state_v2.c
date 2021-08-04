@@ -2757,7 +2757,11 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 
 	if (args->version >= 2) {
 		if (p->cmd == EC_CHARGE_CONTROL_CMD_SET) {
+<<<<<<< HEAD   (d74f95 driver/tcs3400: Set timestamp when emulating interrupt)
 			if (chg_ctl_mode == CHARGE_CONTROL_NORMAL) {
+=======
+			if (p->mode == CHARGE_CONTROL_NORMAL) {
+>>>>>>> CHANGE (f60c31 chgstv2: rework "charge_command_charge_control()")
 				rv = battery_sustainer_set(
 						p->sustain_soc.lower,
 						p->sustain_soc.upper);
