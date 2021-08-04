@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96e38f1d_9894d917",
+        "filename": "board/brya/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-08-04T15:22:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "112eff19_850f4fdc",
+      "range": {
+        "startLine": 274,
+        "startChar": 4,
+        "endLine": 274,
+        "endChar": 39
+      },
+      "revId": "6396dd0ba6b06606b736fd0f48a5ee3c9907899e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aa90e36_797a882f",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-03T20:03:00Z",
       "side": 1,
       "message": "nit: Not needed, or, just use the same comment as in usbc_config.c",
+      "range": {
+        "startLine": 372,
+        "startChar": 1,
+        "endLine": 374,
+        "endChar": 4
+      },
+      "revId": "6396dd0ba6b06606b736fd0f48a5ee3c9907899e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6b9c2b5_95f32781",
+        "filename": "driver/retimer/bb_retimer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-08-04T15:22:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa90e36_797a882f",
       "range": {
         "startLine": 372,
         "startChar": 1,
