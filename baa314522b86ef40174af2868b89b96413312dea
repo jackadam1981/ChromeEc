@@ -130,6 +130,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "beaee705_11b439d0",
+        "filename": "zephyr/dts/bindings/gpio/sku.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-04T20:55:21Z",
+      "side": 1,
+      "message": "\"gpio-id\" sounds good. I am just aware that the compatible string uses \"hyphen\" instead of \"underscore\".\n\nSome boards use ADC for the board ID. Another \"cros-ec,adc-id\" will be needed.",
+      "parentUuid": "6221e7ab_83184a33",
+      "range": {
+        "startLine": 3,
+        "startChar": 20,
+        "endLine": 3,
+        "endChar": 23
+      },
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "103fa140_d8bac2fe",
         "filename": "zephyr/dts/bindings/gpio/sku.yaml",
         "patchSetId": 3
