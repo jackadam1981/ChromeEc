@@ -46,6 +46,30 @@
       },
       "revId": "828bae1aa760a7044fd094c93b986768d5a01453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c6cfc9d_fa81d993",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-04T23:50:58Z",
+      "side": 1,
+      "message": "Should we just skip \"disable rp detect\" when using ps8815a2?",
+      "parentUuid": "6ad0b825_61737672",
+      "range": {
+        "startLine": 671,
+        "startChar": 1,
+        "endLine": 674,
+        "endChar": 17
+      },
+      "revId": "828bae1aa760a7044fd094c93b986768d5a01453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
