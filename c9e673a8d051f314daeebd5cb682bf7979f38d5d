@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ad2e910_c0107cfa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "thanks a lot for comments! I\u0027ll address it soon in next version.",
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "25da4212_c103879e",
@@ -65,6 +82,30 @@
       "writtenOn": "2021-08-04T03:33:17Z",
       "side": 1,
       "message": "I don\u0027t remember why we have to define SHA512_SUPPORT instead of using CONFIG_UPTO_SHA512 directly...",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aadf242_c6045e58",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "I think it was for cryptoc. Good point, I\u0027ll switch to CONFIG_UPTO_SHA512 directly",
+      "parentUuid": "25da4212_c103879e",
       "range": {
         "startLine": 143,
         "startChar": 0,
@@ -100,6 +141,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47217f6c_c9d8db20",
+        "filename": "board/cr50/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "how would you do that? typedefs aren\u0027t allowed by code style. pack it in struct or union? using structs is inconvenient - in many cases resulting digest goes somewhere inside other buffer of uint8_t[], so many casts.",
+      "parentUuid": "822ebe29_a6f38528",
+      "range": {
+        "startLine": 46,
+        "startChar": 41,
+        "endLine": 46,
+        "endChar": 59
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "59659d66_f4bbe17d",
         "filename": "board/cr50/dcrypto/hmac_sw.c",
         "patchSetId": 2
@@ -111,6 +176,30 @@
       "writtenOn": "2021-08-04T03:33:17Z",
       "side": 1,
       "message": "I know this is a close copy of what was there before, but it would be slightly more efficient add this memset()after line 46 and limit the size to the tails space not filled with the input data.",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fb45348_cb30f726",
+        "filename": "board/cr50/dcrypto/hmac_sw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "computing that position always take code size toll (note, len can be larger  than opad, but when it is, I\u0027ll use digest of the key), but saves typically around 24 cycles (8 32-bit words, 3 cycles to write each). I\u0027m not sure it worth it. Switching to HW HMAC for SHA256 and probably will make it even less useful in many cases. I was also testing wherever I can prefill with 0x36, and xor key on top, but it also is less efficient code size wise - need to handle unaligned key use case which is common.",
+      "parentUuid": "59659d66_f4bbe17d",
       "range": {
         "startLine": 32,
         "startChar": 1,
@@ -146,6 +235,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ef97dd20_47a8c4b6",
+        "filename": "board/cr50/dcrypto/hmac_sw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "it seems legit. universal character names in source code allowed since C99 https://en.cppreference.com/w/c/language/history, I recall plenty of comments in Russian, and UTF-8 encoding is not that different.",
+      "parentUuid": "4d78c48d_15f17e47",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "242a9a41_e18dff25",
         "filename": "board/cr50/dcrypto/hmacsha2.h",
         "patchSetId": 2
@@ -157,6 +270,30 @@
       "writtenOn": "2021-08-04T03:33:17Z",
       "side": 1,
       "message": "do we still care about SHA1?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b8c15c7_9308bdf5",
+        "filename": "board/cr50/dcrypto/hmacsha2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "unfortunately we have to support it for TPM2",
+      "parentUuid": "242a9a41_e18dff25",
       "range": {
         "startLine": 15,
         "startChar": 0,
@@ -192,6 +329,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c01b666e_4f176f91",
+        "filename": "board/cr50/dcrypto/hmacsha2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "good point. Will do.",
+      "parentUuid": "62fce412_7cc0a93a",
+      "range": {
+        "startLine": 73,
+        "startChar": 16,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6eb26ab_fc6258ed",
         "filename": "board/cr50/dcrypto/sha1.c",
         "patchSetId": 2
@@ -215,6 +376,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bf841a7c_a3aa8a6a",
+        "filename": "board/cr50/dcrypto/sha1.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "Placement of fields is checked in hmacsha2.h though. and hash_ctx_t is a union of sha1_ctx by design. What kind of check would be appropriate? sizeof(hash_ctx_t) \u003e\u003d sizeof(struct sha1_ctx)?",
+      "parentUuid": "a6eb26ab_fc6258ed",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 76
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "292fd020_8d655f3f",
         "filename": "board/cr50/dcrypto/sha1.c",
         "patchSetId": 2
@@ -226,6 +411,30 @@
       "writtenOn": "2021-08-04T03:33:17Z",
       "side": 1,
       "message": "here and in other memcpy() invocation size should be sizeof(ctx-\u003estate) i.e. sizeof(destination).",
+      "range": {
+        "startLine": 75,
+        "startChar": 31,
+        "endLine": 75,
+        "endChar": 48
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "421be236_92e7fd55",
+        "filename": "board/cr50/dcrypto/sha1.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "292fd020_8d655f3f",
       "range": {
         "startLine": 75,
         "startChar": 31,
@@ -261,6 +470,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7cfcaa38_cd8ccf62",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "this code is moved from http://cs/chromeos_public/src/platform/cr50/board/cr50/dcrypto/sha256.c?l\u003d56 as is. Unfortunately git refuses to treat that it was \u0027move\u0027 due to amount of changes.",
+      "parentUuid": "9d9443e1_5261edf9",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e9989c65_42989957",
         "filename": "board/cr50/dcrypto/sha_hw.c",
         "patchSetId": 2
@@ -284,6 +517,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1f99689_5b005ddf",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "same comment - code was moved from earlier. I can fix it.",
+      "parentUuid": "e9989c65_42989957",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "28bdc4c1_43668ec4",
         "filename": "board/cr50/dcrypto/sha_hw.c",
         "patchSetId": 2
@@ -295,6 +552,30 @@
       "writtenOn": "2021-08-04T03:33:17Z",
       "side": 1,
       "message": "pointers to int should be typecasted to uintptr_t",
+      "range": {
+        "startLine": 75,
+        "startChar": 20,
+        "endLine": 75,
+        "endChar": 28
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f064bf59_41fc3028",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28bdc4c1_43668ec4",
       "range": {
         "startLine": 75,
         "startChar": 20,
@@ -330,6 +611,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9333004f_61fa0f31",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "In many cases caller wants HW, but it may be unavailable. DCRYPTO_xxx chooses the best available. I didn\u0027t change API signature for original call. I suppose it\u0027s possible to drop it, just need to find out how it was used earlier.",
+      "parentUuid": "02710454_4ce27308",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 24
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8036fa43_1bff48d5",
         "filename": "builtin/endian.h",
         "patchSetId": 2
@@ -353,6 +658,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5355dfb4_43efa99d",
+        "filename": "builtin/endian.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "i need function to be defined for little endian too. I\u0027m not sure why there was no error earlier - may be function weren\u0027t actually used.",
+      "parentUuid": "8036fa43_1bff48d5",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d879007d_07911b97",
         "filename": "chip/host/build.mk",
         "patchSetId": 2
@@ -364,6 +693,30 @@
       "writtenOn": "2021-08-04T03:33:17Z",
       "side": 1,
       "message": "why is this necessary - doesn\u0027t the local code provide all what\u0027s needed for crypto?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d2d511f_27aabfc9",
+        "filename": "chip/host/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-04T04:25:50Z",
+      "side": 1,
+      "message": "-lcrypto is for OpenSSL used for tests (AES implementation).",
+      "parentUuid": "d879007d_07911b97",
       "range": {
         "startLine": 20,
         "startChar": 0,
