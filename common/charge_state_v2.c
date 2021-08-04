@@ -2741,6 +2741,10 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 
 	if (args->version >= 2) {
 		if (p->cmd == EC_CHARGE_CONTROL_CMD_SET) {
+			rv = set_chg_ctrl_mode(p->mode);
+			if (rv != EC_SUCCESS)
+				return EC_RES_ERROR;
+
 			if (get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL) {
 				rv = battery_sustainer_set(
 						p->sustain_soc.lower,
@@ -2762,10 +2766,6 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 			return EC_RES_INVALID_PARAM;
 		}
 	}
-
-	rv = set_chg_ctrl_mode(p->mode);
-	if (rv != EC_SUCCESS)
-		return EC_RES_ERROR;
 
 	return EC_RES_SUCCESS;
 }
