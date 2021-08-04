@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbbd57a5_8294c171",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-08-04T10:00:04Z",
+      "side": 1,
+      "message": "This was missing an upstream patch v2.5, added that, updated cq-depend and rebased, should go through now.",
+      "revId": "d1dae0fb1bff554f5ff5c3562eae1ee61f49d8d6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
