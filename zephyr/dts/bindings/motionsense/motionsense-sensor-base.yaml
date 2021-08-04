@@ -62,6 +62,11 @@ properties:
     type: phandle
     description: phandle to CBI SSGC value indicating that the sensor
       should be used
+  detect-func:
+    required: false
+    type: string
+    description:
+      Indicates a function to detect the presence of an alternative sensor
 
 #
 # examples:

@@ -401,3 +401,37 @@ void motion_sensors_init_alt(void)
 }
 
 DECLARE_HOOK(HOOK_INIT, motion_sensors_init_alt, HOOK_PRIO_INIT_I2C + 1);
+
+/* Declare the detect functions */
+#define DECLARE_DETECT_ALT_MOTION_SENSOR_ID(id)                    \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, detect_func),             \
+		    (bool DT_ENUM_TOKEN(id, detect_func)(          \
+			     int i2c_port, uint16_t addr_flags);), \
+		    ())
+
+#if DT_NODE_EXISTS(SENSOR_ALT_NODE)
+DT_FOREACH_CHILD(SENSOR_ALT_NODE, DECLARE_DETECT_ALT_MOTION_SENSOR_ID)
+#endif
+
+#define DETECT_AND_REPLACE_ALT_MOTION_SENSOR(id)                    \
+	do {                                                        \
+		if (DT_ENUM_TOKEN(id, detect_func)(                 \
+			    motion_sensors_alt[SENSOR_ID(id)].port, \
+			    motion_sensors_alt[SENSOR_ID(id)]       \
+				    .i2c_spi_addr_flags)) {         \
+			REPLACE_ALT_MOTION_SENSOR(                  \
+				id, DT_PHANDLE(id, alternate_for))  \
+		}                                                   \
+	} while (0);
+
+#define DETECT_ALT_MOTION_SENSOR_ID(id)                           \
+	COND_CODE_1(UTIL_AND(DT_NODE_HAS_PROP(id, alternate_for), \
+			     DT_NODE_HAS_PROP(id, detect_func)),  \
+		    (DETECT_AND_REPLACE_ALT_MOTION_SENSOR(id)), ())
+
+void motion_sensors_detect_alt(void)
+{
+#if DT_NODE_EXISTS(SENSOR_ALT_NODE)
+	DT_FOREACH_CHILD(SENSOR_ALT_NODE, DETECT_ALT_MOTION_SENSOR_ID)
+#endif
+}
