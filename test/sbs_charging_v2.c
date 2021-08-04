@@ -28,6 +28,7 @@ static int is_force_discharge;
 static int is_hibernated;
 static int override_voltage, override_current, override_usec;
 static int display_soc;
+static int is_full_enabled;
 
 /* The simulation doesn't really hibernate, so we must reset this ourselves */
 extern timestamp_t shutdown_target_time;
@@ -140,6 +141,11 @@ static int charge_control(enum ec_charge_control_mode mode)
 __override int charge_get_display_charge(void)
 {
 	return display_soc;
+}
+
+__override int calc_is_full(void)
+{
+	return is_full_enabled;
 }
 
 /* Setup init condition */
@@ -791,6 +797,11 @@ static int test_battery_sustainer(void)
 	wait_charging_state();
 	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL);
 
+	/* Battrey is full */
+	is_full_enabled = 1;
+	wait_charging_state();
+	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_DISCHARGE);
+
 	/* Disable sustainer */
 	p.cmd = EC_CHARGE_CONTROL_CMD_SET;
 	p.mode = CHARGE_CONTROL_NORMAL;
@@ -802,6 +813,7 @@ static int test_battery_sustainer(void)
 
 	/* This time, mode will stay in NORMAL even when upper < SoC. */
 	display_soc = 810;
+	is_full_enabled = 0;
 	wait_charging_state();
 	TEST_ASSERT(get_chg_ctrl_mode() == CHARGE_CONTROL_NORMAL);
 
