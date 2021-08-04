@@ -402,6 +402,8 @@ void motion_sensors_init_alt(void)
 
 DECLARE_HOOK(HOOK_INIT, motion_sensors_init_alt, HOOK_PRIO_INIT_I2C + 1);
 
+static void (*accel_interrupt)(enum gpio_signal signal) = NULL;
+
 /* Declare the detect functions */
 #define DECLARE_DETECT_ALT_MOTION_SENSOR_ID(id)        \
 	COND_CODE_1(DT_NODE_HAS_PROP(id, detect_func), \
@@ -430,4 +432,10 @@ void board_detect_motionsensor(void)
 #if DT_NODE_EXISTS(SENSOR_ALT_NODE)
 	DT_FOREACH_CHILD(SENSOR_ALT_NODE, DETECT_ALT_MOTION_SENSOR_ID)
 #endif
+}
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	if(accel_interrupt)
+		accel_interrupt(signal);
 }
