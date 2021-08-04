@@ -164,6 +164,7 @@
 			rot-standard-ref = <&lid_rot_ref>;
 			drv-data = <&kx022_data>;
 			alternate-for = <&lid_accel>;
+			detect-func = "detect_kx022";
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
