@@ -85,6 +85,47 @@
       "message": "@intel, do you still need to be able to build these ancient RVPs on ToT?\n",
       "revId": "9574b2747eccbbf4e8fc2fa23306990b802ed48f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9320267_5f906f1f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-04T00:13:17Z",
+      "side": 1,
+      "message": "not needed anymore\npls delete this board also https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/board/glkrvp_ite/",
+      "parentUuid": "ccdc7a2e_843da582",
+      "revId": "9574b2747eccbbf4e8fc2fa23306990b802ed48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "becbfe12_2cb67295",
+        "filename": "util/flash_ec",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-04T00:13:17Z",
+      "side": 1,
+      "message": "nit: pls remove this also",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 7
+      },
+      "revId": "9574b2747eccbbf4e8fc2fa23306990b802ed48f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
