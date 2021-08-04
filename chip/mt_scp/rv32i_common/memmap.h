@@ -28,4 +28,5 @@ int memmap_ap_to_scp(uintptr_t ap_addr, uintptr_t *scp_addr);
  */
 int memmap_scp_to_ap(uintptr_t scp_addr, uintptr_t *ap_addr);
 
+int dma_memset(uintptr_t scp_addr, uint8_t value, uint32_t size);
 #endif /* #ifndef __CROS_EC_MEMMAP_H */

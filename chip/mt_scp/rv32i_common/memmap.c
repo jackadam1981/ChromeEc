@@ -6,6 +6,7 @@
 #include "cache.h"
 #include "registers.h"
 #include "stdint.h"
+#include "console.h"
 
 /*
  * Map SCP address (bits 31~28) to AP address
@@ -111,4 +112,51 @@ int memmap_scp_to_ap(uintptr_t scp_addr, uintptr_t *ap_addr)
 	*ap_addr = (scp_addr & REMAP_ADDR_LSB_MASK) |
 		(addr_map[i] << REMAP_ADDR_SHIFT);
 	return EC_SUCCESS;
+}
+
+int dma_memset(uintptr_t scp_addr, uint8_t value, uint32_t size)
+{
+	uintptr_t ap_addr;
+	int ret = EC_SUCCESS;
+
+	if (size >= AP_CQDMA_LEN_MAX)
+		return EC_ERROR_INVAL;
+
+	/* remap to ap view */
+	ret = memmap_scp_to_ap(scp_addr, &ap_addr);
+	if (ret != EC_SUCCESS)
+		return ret;
+
+#ifdef DEBUG
+	ccprintf("dma scp %x ap %x value %x sz %x\n", scp_addr, ap_addr, value, size);
+#endif
+
+	/* reset dma */
+#ifdef DEBUG
+	ccprintf("reset dma...\n");
+#endif
+	AP_CQDMA_RST = AP_CQDMA_WARM_RST;
+	while (AP_CQDMA_EN == AP_CQDMA_RUN);
+
+	AP_CQDMA_CON = AP_CQDMA_CON_FIXED;
+	AP_CQDMA_SRC = value | (value << 8) | (value << 16) | (value << 24);
+	AP_CQDMA_DST = ap_addr;
+	AP_CQDMA_LEN = size;
+
+#ifdef DEBUG
+	ccprintf("dma reg: con %x src %x dst %x len %x\n",
+		AP_CQDMA_CON,
+		AP_CQDMA_SRC,
+		AP_CQDMA_DST,
+		AP_CQDMA_LEN);
+#endif
+
+	/* start dma */
+#ifdef DEBUG
+	ccprintf("start dma...\n");
+#endif
+	AP_CQDMA_EN = AP_CQDMA_RUN;
+	while (AP_CQDMA_EN == AP_CQDMA_RUN);
+
+	return ret;
 }
