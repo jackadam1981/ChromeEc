@@ -18,6 +18,69 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f8a35af_41e1957d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-04T14:22:38Z",
+      "side": 1,
+      "message": "Can you also split out the board specific changes to separate CL?",
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cba839db_affb549f",
+        "filename": "common/util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-04T14:22:38Z",
+      "side": 1,
+      "message": "I think we\u0027re at the point where we should unify the common/util.c and zephyr/shim/src/util.c.\n\nDo you have the cycles to take on b:177096231?",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 760,
+        "endChar": 42
+      },
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaa243a0_06dd8ff9",
+        "filename": "include/util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-04T14:22:38Z",
+      "side": 1,
+      "message": "Needs a Doxygen block.",
+      "range": {
+        "startLine": 362,
+        "startChar": 4,
+        "endLine": 362,
+        "endChar": 20
+      },
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78c315ae_5b2edcc2",
@@ -37,6 +100,70 @@
         "endLine": 3,
         "endChar": 23
       },
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6221e7ab_83184a33",
+        "filename": "zephyr/dts/bindings/gpio/sku.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-04T14:22:38Z",
+      "side": 1,
+      "message": "How about just \"gpio_id\"?",
+      "parentUuid": "78c315ae_5b2edcc2",
+      "range": {
+        "startLine": 3,
+        "startChar": 20,
+        "endLine": 3,
+        "endChar": 23
+      },
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103fa140_d8bac2fe",
+        "filename": "zephyr/dts/bindings/gpio/sku.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-04T14:22:38Z",
+      "side": 1,
+      "message": "Please add some help describing the valid systems.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f953e8f_cd11fb94",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-04T14:22:38Z",
+      "side": 1,
+      "message": "Put this code into a new file.  Eventually we\u0027ll want this to be a proper Zephyr driver.",
       "revId": "baa314522b86ef40174af2868b89b96413312dea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
