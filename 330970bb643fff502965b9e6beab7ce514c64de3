@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9e29643_4bcf4ae6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-04T18:00:48Z",
+      "side": 1,
+      "message": "Can you also confirm (and add TEST\u003d) there is no regression for the AC signal? It looks like there was a fix to make a device boot without a battery.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "330970bb643fff502965b9e6beab7ce514c64de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9cc3f07b_d31c5158",
@@ -14,6 +37,29 @@
       "writtenOn": "2021-08-04T12:06:32Z",
       "side": 1,
       "message": "Hi Aseda,\n\nLook like currently is_acok method is not work on discharging on AC. Can we rollback to old method for SM5803?",
+      "revId": "330970bb643fff502965b9e6beab7ce514c64de3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28bef8dd_009d70e8",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1611,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-04T18:00:48Z",
+      "side": 1,
+      "message": "nit: *acok \u003d !!(reg \u0026\u003d SM5803_STATUS1_CHG_DET);",
+      "range": {
+        "startLine": 1607,
+        "startChar": 0,
+        "endLine": 1611,
+        "endChar": 15
+      },
       "revId": "330970bb643fff502965b9e6beab7ce514c64de3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
