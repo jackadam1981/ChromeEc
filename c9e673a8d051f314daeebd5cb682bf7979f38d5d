@@ -682,6 +682,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f6ae570f_06fffdb5",
+        "filename": "builtin/endian.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-04T04:35:53Z",
+      "side": 1,
+      "message": "I suspect LE is needed for host builds for host-side testing now",
+      "parentUuid": "5355dfb4_43efa99d",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d879007d_07911b97",
         "filename": "chip/host/build.mk",
         "patchSetId": 2
