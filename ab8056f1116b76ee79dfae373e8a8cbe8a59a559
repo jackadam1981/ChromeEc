@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9782aff_fe3b0ebe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-04T15:50:10Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s a good question. Ah, it looks like it just sends and receives some bytes with the servo_micro usb-spi endpoints. I\u0027m not quite sure, but I was interested in using it as a starter for implementing host-command interface over the usb-spi interface.\n\nI +2\u0027ed Mary\u0027s CL to remove the script, but any pointers on implementing host-cmd over the servo_micro usb-spi inetrface?\n\nLooks like there is the raiden driver in flashrom and some mentions of raiden elsewhere.",
+      "parentUuid": "60e8d17a_e7c50245",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 0
+      },
+      "revId": "ab8056f1116b76ee79dfae373e8a8cbe8a59a559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de45f7d7_8ef312a6",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -55,6 +79,24 @@
       "side": 1,
       "message": "Actually maybe we should pick this change to remove it. It looks like it was removed from platform/ec because nothing uses it.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2425983",
       "parentUuid": "de45f7d7_8ef312a6",
+      "revId": "ab8056f1116b76ee79dfae373e8a8cbe8a59a559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13ffed9d_0ac77f13",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-04T15:50:10Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s fine. It is a good starter for using usb lib in python, but I\u0027ll just copy it outside of the repo.",
+      "parentUuid": "3ee82f42_ede14c1b",
       "revId": "ab8056f1116b76ee79dfae373e8a8cbe8a59a559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
