@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0840d2b6_fb54e640",
+        "filename": "board/pazquel/battery.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-08-05T02:00:11Z",
+      "side": 1,
+      "message": "In EC console , can see the log\n\ncutoff\n\n[43.394069 Battery cut off]\n\n[44.163402 Batt disconnected: reg 0x0010 mask 0x0003 disc 0x0000]\n\n[44.164078 found battery in disconnect state]",
+      "parentUuid": "5d321354_4cdc4e9b",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 29
+      },
+      "revId": "9853356c2c2ee535494f9db66d271ad82cfd5090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7733459_dc4d6619",
