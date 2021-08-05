@@ -12,3 +12,4 @@ baseboard-y+=board_id.o
 baseboard-y+=regulator.o
 baseboard-y+=usbc_config.o
 baseboard-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_policy.o
+baseboard-y+=../../driver/charger/bq25790.o

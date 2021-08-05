@@ -68,8 +68,6 @@ __override void board_hibernate_late(void)
 	if (IS_ENABLED(BOARD_ASURADA) && board_get_version() <= 1)
 		return;
 
-	isl9238c_hibernate(CHARGER_SOLO);
-
 	gpio_set_level(GPIO_EN_SLP_Z, 1);
 
 	/* should not reach here */
@@ -144,3 +142,12 @@ void lid_angle_peripheral_enable(int enable)
 	}
 }
 #endif
+
+int extpower_is_present(void)
+{
+	return 1;
+}
+
+void extpower_interrupt(enum gpio_signal signal)
+{
+}
