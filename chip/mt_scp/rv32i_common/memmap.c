@@ -114,7 +114,7 @@ int memmap_scp_to_ap(uintptr_t scp_addr, uintptr_t *ap_addr)
 	return EC_SUCCESS;
 }
 
-int dma_memset(uintptr_t scp_addr, uint8_t value, uint32_t size)
+int dma_async_memset(uintptr_t scp_addr, uint8_t value, uint32_t size)
 {
 	uintptr_t ap_addr;
 	int ret = EC_SUCCESS;
@@ -156,7 +156,25 @@ int dma_memset(uintptr_t scp_addr, uint8_t value, uint32_t size)
 	ccprintf("start dma...\n");
 #endif
 	AP_CQDMA_EN = AP_CQDMA_RUN;
+
+	return ret;
+}
+
+void dma_async_wait_done(void)
+{
 	while (AP_CQDMA_EN == AP_CQDMA_RUN);
+}
+
+
+int dma_memset(uintptr_t scp_addr, uint8_t value, uint32_t size)
+{
+	int ret;
+
+	ret = dma_async_memset(scp_addr, value, size);
+	if (ret != 0)
+		return ret;
+
+	dma_async_wait_done();
 
 	return ret;
 }
