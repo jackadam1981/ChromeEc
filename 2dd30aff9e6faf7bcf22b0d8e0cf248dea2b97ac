@@ -22,6 +22,30 @@
       },
       "revId": "2dd30aff9e6faf7bcf22b0d8e0cf248dea2b97ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "296e503e_164d45ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-08-05T01:26:33Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\n\u0027battery_sustainer_disable\u0027 will be run if \u0027get_chg_ctrl_mode\u0027 returns that chg_ctl_mode is not CHARGE_CONTROL_NORMAL, but chg_ctl_mode is set to CHARGE_CONTROL_NORMAL by default in \u0027charger_task\u0027. Therefore, \u0027set_chg_ctrl_mode\u0027 have to be run before the judgement of whether to run \u0027battery_sustainer_set\u0027 or \u0027battery_sustainer_disable\u0027. Otherwise, the battery sustain will be enabled when \u0027ectool chargecontrol discharge\u0027 is given at the moment the chg_ctl_mode is CHARGE_CONTROL_NORMAL.\n\nThanks!",
+      "parentUuid": "85b042dd_55bb8855",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "2dd30aff9e6faf7bcf22b0d8e0cf248dea2b97ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
