@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba420fb7_9a3a7437",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-05T06:37:16Z",
+      "side": 1,
+      "message": "Can you verify that this is not set when sourcing 5V?",
+      "range": {
+        "startLine": 1607,
+        "startChar": 19,
+        "endLine": 1607,
+        "endChar": 41
+      },
+      "revId": "e0ef0ba63fe072580ae53ce1bef300b38f700b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
