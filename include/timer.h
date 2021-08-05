@@ -177,4 +177,6 @@ static inline int time_after(uint32_t a, uint32_t b)
 	return time_until(a, b) < 0;
 }
 
+void save_timestamp(int slot, int is_end);
+void dump_timestamp(void);
 #endif  /* __CROS_EC_TIMER_H */

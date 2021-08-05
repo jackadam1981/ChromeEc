@@ -16,6 +16,8 @@
 #include "hwtimer.h"
 #include "registers.h"
 #include "task.h"
+#include "timer.h"
+#include "console.h"
 
 #define TIMER_SYSTEM 5
 #define TIMER_EVENT 3
@@ -219,3 +221,37 @@ static void irq_group6_handler(void)
 	}
 }
 DECLARE_IRQ(6, irq_group6_handler, 0);
+
+#define SLOT_NUM 20
+struct {
+	int used;
+	timestamp_t start;
+	timestamp_t end;
+} slots[SLOT_NUM];
+
+void save_timestamp(int slot, int is_end)
+{
+	if (slot > SLOT_NUM)
+		return;
+
+	if (is_end == 0) {
+		slots[slot].start = get_time();
+		slots[slot].used = 1;
+	}
+	else
+		slots[slot].end = get_time();
+}
+
+void dump_timestamp(void)
+{
+	int i;
+	for (i = 0; i < SLOT_NUM; i++)
+	{
+		if (slots[i].used == 1) {
+			ccprintf("[%d] diff %u\n",
+				i,
+				slots[i].end.le.lo - slots[i].start.le.lo);
+		}
+		slots[i].used = 0;
+	}
+}
