@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7acbc45_ae58fc42",
+        "filename": "driver/tcpm/nct38xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-05T08:19:45Z",
+      "side": 1,
+      "message": "is this intended to be the delay between taking chip out\nof reset and being operational?\n\nsimilar to\n#define PS8815_FW_INIT_DELAY_MS 40\nin\ninclude/driver/tcpm/ps8xxx_public.h?\n\nif this chip simply needs 1ms to come out of reset,\ni think it\u0027s OK to just define it as 1ms here.\n\nif there are other factors - like a huge RC delay on the board\nthat slows this donw, that\u0027s another story. then, a slow rise\ntime may violate chip timing 😐",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 35
+      },
+      "revId": "7d0b42aa348b7bb922cad5e690b5691a150df7da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
