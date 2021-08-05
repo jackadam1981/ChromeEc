@@ -138,6 +138,9 @@ void usb_charger_task(void *u)
 	if (port >= board_get_usb_pd_port_count())
 		return;
 
+	if (port == 1)
+		return;
+
 	ASSERT(bc12_ports[port].drv->usb_charger_task);
 	bc12_ports[port].drv->usb_charger_task(port);
 }

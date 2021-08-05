@@ -29,7 +29,7 @@
 			reg = <1>;
 			bc12 {
 				compatible = "richtek,rt9490-bc12";
-				status = "okay";
+				status = "disabled";
 			};
 			ppc {
 				compatible = "silergy,syv682x";

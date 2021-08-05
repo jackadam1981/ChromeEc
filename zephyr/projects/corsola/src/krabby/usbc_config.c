@@ -12,7 +12,7 @@
 #include "charge_manager.h"
 #include "charger.h"
 #include "console.h"
-#include "driver/charger/rt9490.h"
+#include "driver/charger/bq25790.h"
 #include "driver/ppc/rt1739.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/usb_mux/tusb1064.h"
@@ -32,8 +32,8 @@
 const struct charger_config_t chg_chips[] = {
 	{
 		.i2c_port = I2C_PORT_CHARGER,
-		.i2c_addr_flags = RT9490_ADDR_FLAGS,
-		.drv = &rt9490_drv,
+		.i2c_addr_flags = 0x6B,
+		.drv = &bq25790_drv,
 	},
 };
 
@@ -44,7 +44,7 @@ void c0_bc12_interrupt(enum gpio_signal signal)
 
 void c1_bc12_interrupt(enum gpio_signal signal)
 {
-	rt9490_interrupt(1);
+	/* rt9490_interrupt(1); */
 }
 
 
