@@ -16,6 +16,24 @@
       "message": "Small question - where is lsm6dsm coming from? I don\u0027t see it on Redrix schematics (bmi160 is there) and Brya reference has lsm6dso (note the last letter). Can you please clarify?",
       "revId": "a09c42fb82e465d41961589ebcb1417ff47a94ff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bad2244_80dbabdd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-08-05T23:11:49Z",
+      "side": 1,
+      "message": "please see b:193744971 for more detal. this is pin to pin with bmi160, however, I think the schematic need to be updated from our HW.",
+      "parentUuid": "e708a7f5_2173064e",
+      "revId": "a09c42fb82e465d41961589ebcb1417ff47a94ff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
