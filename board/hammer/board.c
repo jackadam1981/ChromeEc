@@ -331,8 +331,8 @@ __override int board_write_serial(const char *serialno)
 static const struct ec_response_keybd_config zed_kb = {
 	.num_top_row_keys = 10,
 	.action_keys = {
-		TK_BACK,
-		TK_REFRESH,
+		TK_MICMUTE,
+		TK_KBD_BKLIGHT_TOGGLE,
 		TK_FULLSCREEN,
 		TK_OVERVIEW,
 		TK_SNAPSHOT,
