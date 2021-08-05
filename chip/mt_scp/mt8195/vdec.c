@@ -55,7 +55,7 @@ int vdec_get_capability(void)
 {
 	int dec_capability = VDEC_CAP_MT21C | VDEC_CAP_MM21 |
 		VDEC_CAP_H264_SLICE | VDEC_CAP_VP8_FRAME |
-		VDEC_CAP_VP9_FRAME;
+		VDEC_CAP_VP9_FRAME | VDEC_CAP_IRQ_IN_SCP;
 
 	return dec_capability;
 }
