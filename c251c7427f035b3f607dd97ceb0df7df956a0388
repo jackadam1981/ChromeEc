@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dbf97cd_14833f2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-08-05T09:31:45Z",
+      "side": 1,
+      "message": "patch 3 is an alternative method to make __image_size work if we are not able to get __flash_used symbol form riscv\u0027s linker scritp (https://github.com/zephyrproject-rtos/zephyr/pull/37388)",
+      "revId": "c251c7427f035b3f607dd97ceb0df7df956a0388",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
