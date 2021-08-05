@@ -170,7 +170,9 @@ int spi_flash_read(uint8_t *buf_usr, unsigned int offset, unsigned int bytes)
 			read_size);
 		if (ret != EC_SUCCESS)
 			break;
+#ifndef CHIP_FAMILY_MEC172X
 		msleep(1);
+#endif
 	}
 	return ret;
 }
