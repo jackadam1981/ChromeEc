@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "494acdde_6f631786",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-05T17:12:01Z",
+      "side": 1,
+      "message": "Did \u0027make run-sbs_charging_v2\u0027 pass?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "6debdcb1735d1da29da745922d1217bc7bf86c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bfb1f861_a9ac35e8",
@@ -14,6 +37,70 @@
       "writtenOn": "2021-08-05T12:04:17Z",
       "side": 1,
       "message": "I have updated this condition in the test/sbs_charging_v2.c, but I\u0027m not sure if it is proper for the test case.",
+      "revId": "6debdcb1735d1da29da745922d1217bc7bf86c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc427028_48eab30f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-05T17:12:01Z",
+      "side": 1,
+      "message": "If run-sbs_charging_v2 passes, it\u0027s ok. I\u0027ll move the sustainer unit-test to a separate file (after your patch is submitted) so that we won\u0027t accidentally influence other tests by mocked calc_is_full.\n\nIf it\u0027s not certain, please revert to Patchset 1. Sorry for the inconvenience.",
+      "parentUuid": "bfb1f861_a9ac35e8",
+      "revId": "6debdcb1735d1da29da745922d1217bc7bf86c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d605364d_70caee07",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-05T17:12:01Z",
+      "side": 1,
+      "message": "Does this work? I thought we need to make it global.",
+      "range": {
+        "startLine": 1283,
+        "startChar": 14,
+        "endLine": 1283,
+        "endChar": 20
+      },
+      "revId": "6debdcb1735d1da29da745922d1217bc7bf86c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8234d1_2155a9fa",
+        "filename": "test/sbs_charging_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-05T17:12:01Z",
+      "side": 1,
+      "message": "I think we should add \u0027is_full_enabled \u003d 0\u0027 here.",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 23
+      },
       "revId": "6debdcb1735d1da29da745922d1217bc7bf86c93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
