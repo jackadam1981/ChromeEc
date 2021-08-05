@@ -20,6 +20,7 @@ common-$(CONFIG_ACCELGYRO_ICM42607)+=math_util.o
 common-$(CONFIG_ACCELGYRO_LSM6DS0)+=math_util.o
 common-$(CONFIG_ACCELGYRO_LSM6DSM)+=math_util.o
 common-$(CONFIG_ACCELGYRO_LSM6DSO)+=math_util.o
+common-$(CONFIG_ACCELGYRO_LSM6DSTQ)+=math_util.o
 common-$(CONFIG_ACCEL_FIFO)+=motion_sense_fifo.o
 common-$(CONFIG_ACCEL_BMA255)+=math_util.o
 common-$(CONFIG_ACCEL_BMA4XX)+=math_util.o

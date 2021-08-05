@@ -364,7 +364,8 @@ static int wait_switchcap_power_good(int enable)
 	/*
 	 * Check the timeout case. Just show a message. More check later
 	 * will switch the power state.
-	 */
+	TODO: Remove this back as this will make SC7180 to not function.
+	Currently the PMIC has no switch cap for SC7280.
 	if (enable != board_is_switchcap_power_good()) {
 		if (enable)
 			CPRINTS("SWITCHCAP NO POWER GOOD!");
@@ -372,6 +373,7 @@ static int wait_switchcap_power_good(int enable)
 			CPRINTS("SWITCHCAP STILL POWER GOOD!");
 		return EC_ERROR_UNKNOWN;
 	}
+	*/
 	return EC_SUCCESS;
 }
 
