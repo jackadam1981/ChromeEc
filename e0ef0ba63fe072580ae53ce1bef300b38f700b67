@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "33e20df4_ce0d42ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-08-05T11:47:41Z",
+      "side": 1,
+      "message": "Hi Domenico,\n\nIs the CHG_DET bit set only when sinking while not set when sourcing?\n",
+      "revId": "e0ef0ba63fe072580ae53ce1bef300b38f700b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba420fb7_9a3a7437",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "Hi Aseda,\n\nThanks for reminding me the sourcing situation! I checked this bit was not set when sourcing 5V by USB-C to A dongle.",
       "parentUuid": "ba420fb7_9a3a7437",
+      "range": {
+        "startLine": 1607,
+        "startChar": 19,
+        "endLine": 1607,
+        "endChar": 41
+      },
+      "revId": "e0ef0ba63fe072580ae53ce1bef300b38f700b67",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b9be4c5_36af6046",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-08-05T11:47:41Z",
+      "side": 1,
+      "message": "Hi Domenico,\n\nIs the CHG_DET bit set only when sinking while not set when sourcing?",
+      "parentUuid": "47af3d03_1f1c3211",
       "range": {
         "startLine": 1607,
         "startChar": 19,
