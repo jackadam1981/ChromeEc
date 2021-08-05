@@ -34,6 +34,24 @@
       "parentUuid": "98225c84_dace5d90",
       "revId": "3d2ea6b5178c479756eb8770d0ef60b52762d3a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82db8f91_d504016d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-05T06:54:14Z",
+      "side": 1,
+      "message": "Could we check charge_manager_get_active_charge_port() !\u003d -1? Or pd_is_connected()?",
+      "parentUuid": "a00f05eb_50444de2",
+      "revId": "3d2ea6b5178c479756eb8770d0ef60b52762d3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
