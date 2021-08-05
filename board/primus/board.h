@@ -182,8 +182,7 @@ enum sensor_id {
 };
 
 enum battery_type {
-	BATTERY_POWER_TECH,
-	BATTERY_LGC011,
+	BATTERY_SUNWODA,
 	BATTERY_TYPE_COUNT
 };
 
