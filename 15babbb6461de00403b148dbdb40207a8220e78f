@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1942fd3_bd52de2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-08-05T17:34:12Z",
+      "side": 1,
+      "message": "Flagging for posterity:\n\nDP AltMode Specification V2.0, Citations/Diagrams:\n\n(1) [Remain in USB Configuration, Wait for Interrupt]\n    [DisplayPort Connected at UFP_U?]\n    Figure 5-2: DFP_U DisplayPort Alt Mode Discovery and Entry\n(2) [UFP_U USB Configuration Wait State]\n    [Remain in USB Configuration, Wait for DP Local Connection Status Change \u003cor\u003e Command from DFP_U]\n    Figure 5-7: UFP_U DisplayPort Alt Mode Discovery and Entry\n    Figure 5-8: UFP_U USB Configuration Wait State\n\nVDM:Attention (and contained UFP_D and HPD bits) are valid/expected any time after EnterMode. Note the \u003cor\u003e. This is useful for (optionally) entering DP mode -- but due to reported remote UFP_D/HPD state -- opting not to fully Configure.\n\nIn short: EnterMode allows virtual remote HPD tracking, for policy layer decisions (such as explicitly needed by crrev/c/2537157). By not reporting data until *after* Configure, we hide Host visibility into this optional policy input data.\n\nQuoting:\n\n\u003e During this state, the UFP_U may detect a change in connection status on its DP side (e.g., a\n\u003e DP Source or Sink device is attached, or a change in HPD state or an IRQ_HPD) and consequently\n\u003e generate an Attention Command request toward the DFP_U. When entering the USB Wait state\n\u003e after receiving a DisplayPort Enter Mode Command request, the UFP_U shall wait to receive a\n\u003e DisplayPort Status command from the DFP_U, and then provide its status in its response. The\n\u003e UFP_U shall not generate an Attention Command request until a subsequent state change.",
+      "revId": "15babbb6461de00403b148dbdb40207a8220e78f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
