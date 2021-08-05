@@ -22,6 +22,30 @@
       },
       "revId": "4e43aa9c02c8cbad7c2cd7b62187758bb2baf325",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "136f527d_87f6318b",
+        "filename": "common/spi_flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-05T17:19:24Z",
+      "side": 1,
+      "message": "ACK, this follows same rule, macro \"CHIP_FAMILY_MEC172X\" related with chip should not be in common code level. thanks.",
+      "parentUuid": "5a346d3f_c5332b64",
+      "range": {
+        "startLine": 173,
+        "startChar": 8,
+        "endLine": 173,
+        "endChar": 27
+      },
+      "revId": "4e43aa9c02c8cbad7c2cd7b62187758bb2baf325",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
