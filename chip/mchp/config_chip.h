@@ -150,6 +150,14 @@
 #define CONFIG_PROGRAM_MEMORY_BASE	0x000E0000
 #endif
 
+/*
+ * Redefine SPI flash read wait time per mchp chip
+ */
+#if defined(CHIP_FAMILY_MEC172X)
+#undef CONFIG_SPI_FLASH_READ_WAIT_MS
+#define CONFIG_SPI_FLASH_READ_WAIT_MS 0
+#endif
+
 #include "config_flash_layout.h"
 
 /************************************************************************/
