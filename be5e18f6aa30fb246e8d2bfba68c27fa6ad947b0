@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dfb5f87_f3f26102",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-05T22:00:33Z",
+      "side": 1,
+      "message": "I think all we need is \u0027p-\u003emode\u0027 here.",
+      "range": {
+        "startLine": 2748,
+        "startChar": 7,
+        "endLine": 2748,
+        "endChar": 26
+      },
+      "revId": "be5e18f6aa30fb246e8d2bfba68c27fa6ad947b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

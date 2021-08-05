@@ -46,6 +46,30 @@
       },
       "revId": "2dd30aff9e6faf7bcf22b0d8e0cf248dea2b97ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e8ac6f3_1467e19d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-05T22:00:33Z",
+      "side": 1,
+      "message": "Hi Tommy,\n\nI think what\u0027s wrong is:\n\n2748\tif (get_chg_ctrl_mode() \u003d\u003d CHARGE_CONTROL_NORMAL) {\n\nThis should be:\n\n\tif (p-\u003emode \u003d\u003d CHARGE_CONTROL_NORMAL) {\n\ncan you revert the other changes and test it again?",
+      "parentUuid": "296e503e_164d45ef",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "2dd30aff9e6faf7bcf22b0d8e0cf248dea2b97ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
