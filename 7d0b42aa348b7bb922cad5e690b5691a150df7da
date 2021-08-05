@@ -22,6 +22,30 @@
       },
       "revId": "7d0b42aa348b7bb922cad5e690b5691a150df7da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4eaddc76_12108955",
+        "filename": "driver/tcpm/nct38xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-08-05T08:43:41Z",
+      "side": 1,
+      "message": "Yes, this is similar to PS8815_FW_INIT_DELAY_MS.\n\nYou are right. I think 1ms is OK for nct38xx. However,\nthe ioex_init() is hooked with HOOK_PRIO_INIT_I2C + 1 and reset pd mcu in HOOK_PRIO_INIT_CHIPSET as well. This is at the same time. or Could we move reset mcu before ioex_init(). 😊",
+      "parentUuid": "a7acbc45_ae58fc42",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 35
+      },
+      "revId": "7d0b42aa348b7bb922cad5e690b5691a150df7da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
