@@ -16,6 +16,24 @@
       "message": "This seems like it\u0027s just papering over an issue. Have you determined why the AC_CHANGE hook isn\u0027t getting triggered?",
       "revId": "3d2ea6b5178c479756eb8770d0ef60b52762d3a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a00f05eb_50444de2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1262393
+      },
+      "writtenOn": "2021-08-05T06:33:16Z",
+      "side": 1,
+      "message": "It is not AC_CHANGE hook not triggered, because the safety test will short Q1008 H-side in \"DC mode\", which will cause VBUS to be higher than 3.6V and cause RAA48900 0x4D bit14(AC status) trigger high, “EC_ACOK_OTG” keep high to disable OVP circuit function (b/188567172#comment24).\nSo we must add one more condition to check that is \"Real Adapter connect\", so we use charge_manager_get_charger_voltage for checking. But when AC_CHANGE hook is trigger, it is not mean can get voltage from charge_manager_get_charger_voltage. So using HOOK_SECOND to instead.",
+      "parentUuid": "98225c84_dace5d90",
+      "revId": "3d2ea6b5178c479756eb8770d0ef60b52762d3a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
