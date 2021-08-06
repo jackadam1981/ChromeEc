@@ -599,6 +599,13 @@ config PLATFORM_EC_SWITCH
           This also enables the "mmapinfo" console command to report the current
           state of all switches.
 
+config PLATFORM_EC_SWITCHCAP_GPIO
+    bool "GPIO controlled switchcap"
+    help
+      Enable support for the GPIO controlled switchcap.
+      Pins used for controlling the switchcap must be defined in board's
+      device tree.
+
 config PLATFORM_EC_SWITCHCAP_LN9310
 	bool "LN9310 switchcap driver"
 	depends on PLATFORM_EC_I2C
