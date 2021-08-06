@@ -117,6 +117,30 @@
       },
       "revId": "333e664042a28bc83102376d5bf0e8af0bcd9d20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bb91b3f_5bf2fae4",
+        "filename": "test/utils_str.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-06T18:45:50Z",
+      "side": 1,
+      "message": "How is it broken? Can we fix it? It\u0027s not ideal that we can\u0027t use TEST_EQ any more.",
+      "parentUuid": "d088d10e_ac1cd466",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 12
+      },
+      "revId": "333e664042a28bc83102376d5bf0e8af0bcd9d20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
