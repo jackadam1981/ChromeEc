@@ -16,5 +16,4 @@ board-y+=board.o
 board-y+=hibernate.o
 board-y+=led.o
 board-y+=sku.o
-board-y+=switchcap.o
 board-y+=usbc_config.o
