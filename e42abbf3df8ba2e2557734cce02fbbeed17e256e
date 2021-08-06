@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a6a904b_65772483",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-08-06T06:42:08Z",
+      "side": 1,
+      "message": "The result of \u0027make run-sbs_charging_v2\u0027 is shown as following:\n\n```\n  BUILD   host-sbs_charging_v2\nmake[1]: \u0027build/host/sbs_charging_v2/sbs_charging_v2.exe\u0027 is up to date.\n  TEST    run-sbs_charging_v2\nNo flash storage found. Initializing to 0xff.\nNo RAM data found. Initializing to 0x00.\nStack trace of task 4 (CHARGER):\n#0  /lib64/libpthread.so.0(+0x10d1c) [0x7f0e7dec0d1c]\n    ??:0\n#1  /lib64/libpthread.so.0(+0xb980) [0x7f0e7debb980]\n    ??:0\n#2  /lib64/libpthread.so.0(pthread_cond_wait+0x18e) [0x7f0e7debd78e]\n    ??:0\n#3  build/host/sbs_charging_v2/sbs_charging_v2.exe(task_wait_event+0x6a) [0x418e34]\n    /home/tommy/trunk/src/platform/ec/core/host/task.c:225\n#4  build/host/sbs_charging_v2/sbs_charging_v2.exe(charger_task+0x549) [0x40e983]\n    /home/tommy/trunk/src/platform/ec/common/charge_state_v2.c:2353\n#5  build/host/sbs_charging_v2/sbs_charging_v2.exe(_task_start_impl+0x4a) [0x418eb8]\n    /home/tommy/trunk/src/platform/ec/core/host/task.c:466 (discriminator 1)\n#6  /lib64/libpthread.so.0(+0x744a) [0x7f0e7deb744a]\n    ??:0\n#7  /lib64/libc.so.6(clone+0x3f) [0x7f0e7dbf430f]\n    ??:0\nsbs_charging_v2 passed! (0.138 seconds)\n```",
+      "revId": "e42abbf3df8ba2e2557734cce02fbbeed17e256e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f737402_f031c8e2",
+        "filename": "test/sbs_charging_v2.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 802,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-08-06T06:42:08Z",
+      "side": 1,
+      "message": "I found we have to add this condition to make the sustainer work correctly since we are mocking the battery is full.",
+      "range": {
+        "startLine": 802,
+        "startChar": 1,
+        "endLine": 802,
+        "endChar": 20
+      },
+      "revId": "e42abbf3df8ba2e2557734cce02fbbeed17e256e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
