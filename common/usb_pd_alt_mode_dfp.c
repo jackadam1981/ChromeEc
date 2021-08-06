@@ -1270,7 +1270,7 @@ __overridable int svdm_dp_config(int port, uint32_t *payload)
 	if (!pin_mode)
 		return 0;
 
-	CPRINTS("pin_mode: %x, mf: %d, mux: %d", pin_mode, mf_pref, mux_mode);
+	CPRINTS("dp_config pin_mode: %x, mf: %d, mux: %d", pin_mode, mf_pref, mux_mode);
 
 	/*
 	 * Place the USB Type-C pins that are to be re-configured to DisplayPort
@@ -1307,6 +1307,8 @@ int svdm_get_hpd_gpio(int port)
 __overridable void svdm_dp_post_config(int port)
 {
 	mux_state_t mux_mode = svdm_dp_get_mux_mode(port);
+
+	CPRINTS("dp_post_config mux: %d", mux_mode);
 	/* Connect the SBU and USB lines to the connector. */
 	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
 		ppc_set_sbu(port, 1);

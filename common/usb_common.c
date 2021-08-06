@@ -460,6 +460,11 @@ enum pd_drp_next_states drp_auto_toggle_next_state(
 
 mux_state_t get_mux_mode_to_set(int port)
 {
+	if (port == 0) {
+		mux_state_t mux_state = usb_mux_get(port);
+		ccprints("get mux mode to set: mux_state = 0x%x", mux_state);
+	}
+
 	/*
 	 * If the SoC is down, then we disconnect the MUX to save power since
 	 * no one cares about the data lines.
@@ -521,6 +526,8 @@ void set_usb_mux_with_current_data_role(int port)
 		enum usb_switch usb_switch_mode =
 				(mux_mode == USB_PD_MUX_NONE) ?
 				USB_SWITCH_DISCONNECT : USB_SWITCH_CONNECT;
+		if (port == 0)
+			ccprints("set mux with data role: mux_mode = 0x%x, usb2 = 0x%x", mux_mode, usb_switch_mode);
 
 		usb_mux_set(port, mux_mode, usb_switch_mode,
 				polarity_rm_dts(pd_get_polarity(port)));

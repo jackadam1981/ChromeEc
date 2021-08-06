@@ -242,9 +242,10 @@ void usb_mux_set(int port, mux_state_t mux_mode,
 	if (configure_mux(port, USB_MUX_SET_MODE, &mux_state))
 		return;
 
-	if (enable_debug_prints)
+	//if (enable_debug_prints)
+	if (port == 0)
 		CPRINTS(
-		     "usb/dp mux: port(%d) typec_mux(%d) usb2(%d) polarity(%d)",
+		     "set usb mux: port(%d) typec_mux(%d) usb2(%d) polarity(%d)",
 		     port, mux_mode, usb_mode, polarity);
 
 	/*
@@ -394,6 +395,25 @@ static int command_typec(int argc, char **argv)
 			!!(mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED),
 			!!(mux_state & USB_PD_MUX_USB4_ENABLED));
 
+		if (!(mux_state & USB_PD_MUX_DP_ENABLED)) {
+			usb_mux_set(port,
+				USB_PD_MUX_DP_ENABLED,
+				USB_SWITCH_CONNECT,
+				polarity_rm_dts(pd_get_polarity(port)));
+
+			mux_state = usb_mux_get(port);
+			ccprintf("Port %d: USB=%d DP=%d POLARITY=%s HPD_IRQ=%d "
+				"HPD_LVL=%d SAFE=%d TBT=%d USB4=%d\n", port,
+				!!(mux_state & USB_PD_MUX_USB_ENABLED),
+				!!(mux_state & USB_PD_MUX_DP_ENABLED),
+				mux_state & USB_PD_MUX_POLARITY_INVERTED ?
+					"INVERTED" : "NORMAL",
+				!!(mux_state & USB_PD_MUX_HPD_IRQ),
+				!!(mux_state & USB_PD_MUX_HPD_LVL),
+				!!(mux_state & USB_PD_MUX_SAFE_MODE),
+				!!(mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED),
+				!!(mux_state & USB_PD_MUX_USB4_ENABLED));
+		}
 		return EC_SUCCESS;
 	}
 
