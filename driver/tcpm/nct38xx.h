@@ -9,6 +9,8 @@
 #ifndef __CROS_EC_USB_PD_TCPM_NCT38XX_H
 #define __CROS_EC_USB_PD_TCPM_NCT38XX_H
 
+#include "ioexpander.h"
+
 /* Chip variant ID (Part number)  */
 #define NCT38XX_VARIANT_MASK               0x1C
 #define NCT38XX_VARIANT_3807               0x0
@@ -92,8 +94,21 @@ void nct38xx_ioex_handle_alert(int ioex);
 /*
  * Check which IO's interrupt event is triggered. If any, call its
  * registered interrupt handler.
+ *
+ * @param typec_port	USB-C port number
+ * @return EC_SUCCESS on success else error
  */
-int nct38xx_ioex_event_handler(int ioex);
+int nct38xx_ioex_event_handler(int typec_port);
+
+/*
+ * Board level function to map Type-C port to IOEX port
+ *
+ * @param typec_port	USB-C port number
+ * @param ioex_p	Pointer to I/O expander structure
+ * @return IOEX port number
+ */
+__override_proto int board_nct38xx_ioex_typec_to_ioex_port(int typec_port,
+			struct ioexpander_config_t *ioex_p);
 
 enum nct38xx_boot_type {
 	NCT38XX_BOOT_UNKNOWN,

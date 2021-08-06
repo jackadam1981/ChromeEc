@@ -374,13 +374,38 @@ static int nct38xx_ioex_enable_interrupt(int ioex, int port, int mask,
 					reg, val);
 }
 
-int nct38xx_ioex_event_handler(int ioex)
+/* Map Type-C port to IOEX port */
+__overridable int board_nct38xx_ioex_typec_to_ioex_port(int typec_port,
+			struct ioexpander_config_t *ioex_p)
+{
+	int i;
+
+	/* Map Type-C port to IOEX port */
+	for (i = 0; i < CONFIG_IO_EXPANDER_PORT_COUNT; i++) {
+		if (ioex_config[i].drv == &nct38xx_ioexpander_drv &&
+			ioex_config[i].i2c_host_port ==
+				tcpc_config[typec_port].i2c_info.port &&
+			ioex_config[i].i2c_addr_flags ==
+				tcpc_config[typec_port].i2c_info.addr_flags) {
+			ioex_p = &ioex_config[i];
+			break;
+		}
+	}
+
+	return i;
+}
+
+int nct38xx_ioex_event_handler(int typec_port)
 {
 	int reg, int_status, int_mask;
 	int i, j, total_port;
 	const struct ioex_info *g;
-	struct ioexpander_config_t *ioex_p = &ioex_config[ioex];
+	struct ioexpander_config_t *ioex_p = NULL;
 	int rv = 0;
+	int ioex = board_nct38xx_ioex_typec_to_ioex_port(typec_port, ioex_p);
+
+	if (!ioex_p)
+		return EC_ERROR_INVAL;
 
 	int_mask = chip_data[ioex].int_mask[0] | (
 				chip_data[ioex].int_mask[1] << 8);
