@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "964f0a10_98a2d49c",
+        "filename": "board/pdeval-stm32f072/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-06T21:42:47Z",
+      "side": 1,
+      "message": "Add a comment here that direct calls to the mux driver are deprecated.",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 44
+      },
+      "revId": "70bb6acd32876d974eb9df9a251420ffc3c84687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c407820_3e34315f",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-06T21:42:47Z",
+      "side": 1,
+      "message": "Same here - deprecated usage.",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 63
+      },
+      "revId": "70bb6acd32876d974eb9df9a251420ffc3c84687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58d51fa9_be268d78",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-06T21:42:47Z",
+      "side": 1,
+      "message": "Local calls within the same driver seems like an acceptable bypass of the USB mux API.",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 53
+      },
+      "revId": "70bb6acd32876d974eb9df9a251420ffc3c84687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eab06576_7b2b121e",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-06T21:42:47Z",
+      "side": 1,
+      "message": "This could be generalized further to support ACKs from something besides the host.  For instance, a slow I2C based mux could generate an interrupt to indicate completion of a mux change.\n\nFor now a comment here is probably sufficient to indicate this future work.",
+      "range": {
+        "startLine": 144,
+        "startChar": 24,
+        "endLine": 144,
+        "endChar": 44
+      },
+      "revId": "70bb6acd32876d974eb9df9a251420ffc3c84687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afba434c_2ad277ad",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-06T21:42:47Z",
+      "side": 1,
+      "message": "Same with this - this delay is tied to the TCSS, so this could be added into the usb_mux struct.  But add a comment for now that this delay is required by the Intel internal mux/TCSS.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 23
+      },
+      "revId": "70bb6acd32876d974eb9df9a251420ffc3c84687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
