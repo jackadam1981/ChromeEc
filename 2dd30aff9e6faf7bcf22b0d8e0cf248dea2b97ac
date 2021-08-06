@@ -70,6 +70,30 @@
       },
       "revId": "2dd30aff9e6faf7bcf22b0d8e0cf248dea2b97ac",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f5dd23_b28b3384",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-08-06T02:51:13Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\nGot it! We need to check if to enable or disable the battery sustain before set_chg_ctrl_mode. I will update the CL according to your suggestion.\n\nThanks!",
+      "parentUuid": "2e8ac6f3_1467e19d",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "2dd30aff9e6faf7bcf22b0d8e0cf248dea2b97ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
