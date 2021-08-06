@@ -16,6 +16,91 @@
       "message": "Cherry pick from main branch\n\nLimitations\n\ncommon/motion_sense.c +102\nQUEUE_NULL using CONFIG_ACCEL_FIFO as a size of queue.\nSo added CONFIG_ACCEL_FIFO_EN definition for check FIFO enable\n\naccelgyro_saved_data_t in accelgyro.h doesn\u0027t have scale member.\nSo removed scale related codes\n\nMOTION_MAX_SENSOR_FREQUENCY doesn\u0027t exist in rammus branch",
       "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86b31691_078b3347",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-08-06T08:16:43Z",
+      "side": 1,
+      "message": "Beware there are errors that prevent the code from compiling correctly.",
+      "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18b81cc5_e80f5fca",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-08-06T08:16:43Z",
+      "side": 1,
+      "message": "Better move this one after definition of I2C_FLAG_ADDR_IS_SPI for readability.",
+      "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d8a4cfc_a5b424c5",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-08-06T08:16:43Z",
+      "side": 1,
+      "message": "Strange indentation with spaces here.",
+      "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae8c8d2e_d9138848",
+        "filename": "driver/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-08-06T08:16:43Z",
+      "side": 1,
+      "message": "Bad define and bad file name here.",
+      "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dd3ddd4_ebcf1df3",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-08-06T08:16:43Z",
+      "side": 1,
+      "message": "Bad define here (ICM426XX)",
+      "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
