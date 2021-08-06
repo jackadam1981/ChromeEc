@@ -16,6 +16,24 @@
       "message": "This change doesn\u0027t seem to have any relation to the bug.  CONFIG_USB_PD_TCPM_RT1715 is also defined by baseboard/volteer/baseboard.h, so I expect there are no changes to the volet EC image with and without this CL.\n\nIt\u0027s find to delete CONFIG_USB_PD_TCPM_RT1715 from volet/board.h as general cleanup, but the commit message should not reference the bug.",
       "revId": "b6932a8f1b022fc24f37204605295b47e84504e9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aecbc40a_b03b4279",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-06T16:43:44Z",
+      "side": 1,
+      "message": "+1 to what Keith said. I\u0027ve closed the bug based on discussion there.",
+      "parentUuid": "9f5ba35e_f206ca87",
+      "revId": "b6932a8f1b022fc24f37204605295b47e84504e9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
