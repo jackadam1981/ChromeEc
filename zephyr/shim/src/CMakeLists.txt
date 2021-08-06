@@ -32,6 +32,8 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_MOTIONSENSE
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_PANIC       panic.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_PWM         pwm.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_RTC         rtc.c)
+zephyr_library_sources_ifdef(CONFIG_AP_ARM_QUALCOMM_SC7180  switchcap.c)
+zephyr_library_sources_ifdef(CONFIG_AP_ARM_QUALCOMM_SC7200  switchcap.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_TEMP_SENSOR temp_sensors.c
                                                             thermal.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_TIMER       hwtimer.c)
