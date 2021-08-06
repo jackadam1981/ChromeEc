@@ -16,6 +16,52 @@
       "message": "Hi Dino, can you pls share feedback?\nWe don\u0027t have the H/W yet, I am preparing code for the MECC1.1",
       "revId": "941cd7eed679e8f25987483d07002389626c10cc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aea9ca6a_b02d7e9a",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-08-06T06:56:05Z",
+      "side": 1,
+      "message": "Use KSIIER (keyboard scan in interrupt enable register) here.\n\nPlease also add these code before this line to clear pending interrup:\nif (enable)\nit8801_write(IT8801_REG_KSIEER, 0xff);",
+      "range": {
+        "startLine": 187,
+        "startChar": 25,
+        "endLine": 187,
+        "endChar": 31
+      },
+      "revId": "941cd7eed679e8f25987483d07002389626c10cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0a677c8_667228e2",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-08-06T06:56:05Z",
+      "side": 1,
+      "message": "We should configure interrupt trigger type here (reg: 0xa ~ 0x1d).\nHigh level function will call \".enable_interrupt\"  api to enable gpio interrupt later.",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 403,
+        "endChar": 2
+      },
+      "revId": "941cd7eed679e8f25987483d07002389626c10cc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
