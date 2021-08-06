@@ -93,6 +93,30 @@
       },
       "revId": "333e664042a28bc83102376d5bf0e8af0bcd9d20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d088d10e_ac1cd466",
+        "filename": "test/utils_str.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-06T14:35:48Z",
+      "side": 1,
+      "message": "This is causing build warnings (errors) when cross compiling. I think it needs to be TEST_ASSERT to avoid these warnings.",
+      "parentUuid": "0d06d239_82ca70da",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 12
+      },
+      "revId": "333e664042a28bc83102376d5bf0e8af0bcd9d20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
