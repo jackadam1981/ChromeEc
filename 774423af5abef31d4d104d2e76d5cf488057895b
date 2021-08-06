@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "982bed4a_5eaf95d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-06T17:33:23Z",
+      "side": 1,
+      "message": "AFAIK, this is safe to remove. A complete cleanup should include the logic in build.mk/board.h. There\u0027s also a Coreboot target for this.\n\nThere are a few other references in other places, but I think they are mostly generated.",
+      "revId": "774423af5abef31d4d104d2e76d5cf488057895b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
