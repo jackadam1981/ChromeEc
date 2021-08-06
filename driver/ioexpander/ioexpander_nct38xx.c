@@ -374,11 +374,18 @@ static int nct38xx_ioex_enable_interrupt(int ioex, int port, int mask,
 					reg, val);
 }
 
-int nct38xx_ioex_event_handler(int ioex)
+/* Map Type-C port to IOEX port */
+__overridable int board_map_nct38xx_tcpc_port_to_ioex(int port)
+{
+	return port;
+}
+
+int nct38xx_ioex_event_handler(int port)
 {
 	int reg, int_status, int_mask;
 	int i, j, total_port;
 	const struct ioex_info *g;
+	int ioex = board_map_nct38xx_tcpc_port_to_ioex(port);
 	struct ioexpander_config_t *ioex_p = &ioex_config[ioex];
 	int rv = 0;
 
