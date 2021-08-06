@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be67f2ad_7e0b7e75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-06T19:56:39Z",
+      "side": 1,
+      "message": "This was the least awkward way I could think of to introduce the mux waits, but the DP path still feels relatively awkward.  Let me know if you have inspiration for a better approach",
+      "revId": "def21b739b1b3c1e048d7bb0a9f9ff1f1895fe88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
