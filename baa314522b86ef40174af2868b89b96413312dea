@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef12ab69_87c2c278",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-08-06T14:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f8a35af_41e1957d",
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cba839db_affb549f",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a496614_fc000ce1",
+        "filename": "common/util.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 760,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-08-06T14:48:54Z",
+      "side": 1,
+      "message": "Sure, I can take it",
+      "parentUuid": "cba839db_affb549f",
+      "range": {
+        "startLine": 760,
+        "startChar": 0,
+        "endLine": 760,
+        "endChar": 42
+      },
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eaa243a0_06dd8ff9",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-08-04T14:22:38Z",
       "side": 1,
       "message": "Needs a Doxygen block.",
+      "range": {
+        "startLine": 362,
+        "startChar": 4,
+        "endLine": 362,
+        "endChar": 20
+      },
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d87a9ac_8693793f",
+        "filename": "include/util.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-08-06T14:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eaa243a0_06dd8ff9",
       "range": {
         "startLine": 362,
         "startChar": 4,
@@ -154,6 +220,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1e86bea_98359e3d",
+        "filename": "zephyr/dts/bindings/gpio/sku.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-08-06T14:48:54Z",
+      "side": 1,
+      "message": "I have made modifications to prepare support for other compatibles like \"adc-id\", but I think it would need a talk, because maybe it\u0027s worth using the same \"driver\" but different \"numeral system\", like \"analog_from_bits\" or something. It depends if we want a few little files or one \"medium-size\" multi-functional",
+      "parentUuid": "beaee705_11b439d0",
+      "range": {
+        "startLine": 3,
+        "startChar": 20,
+        "endLine": 3,
+        "endChar": 23
+      },
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "103fa140_d8bac2fe",
         "filename": "zephyr/dts/bindings/gpio/sku.yaml",
         "patchSetId": 3
@@ -165,6 +255,30 @@
       "writtenOn": "2021-08-04T14:22:38Z",
       "side": 1,
       "message": "Please add some help describing the valid systems.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 21
+      },
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0631d0a5_a6b9ce56",
+        "filename": "zephyr/dts/bindings/gpio/sku.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-08-06T14:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "103fa140_d8bac2fe",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -188,6 +302,24 @@
       "writtenOn": "2021-08-04T14:22:38Z",
       "side": 1,
       "message": "Put this code into a new file.  Eventually we\u0027ll want this to be a proper Zephyr driver.",
+      "revId": "baa314522b86ef40174af2868b89b96413312dea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d08dbe9_6ffd2ae3",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-08-06T14:48:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f953e8f_cd11fb94",
       "revId": "baa314522b86ef40174af2868b89b96413312dea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
