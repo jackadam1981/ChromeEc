@@ -379,8 +379,24 @@ int nct38xx_ioex_event_handler(int ioex)
 	int reg, int_status, int_mask;
 	int i, j, total_port;
 	const struct ioex_info *g;
-	struct ioexpander_config_t *ioex_p = &ioex_config[ioex];
+	struct ioexpander_config_t *ioex_p = NULL;
 	int rv = 0;
+
+	/* Map Type-C port to IOEX port */
+	for (i = 0; i < CONFIG_IO_EXPANDER_PORT_COUNT; i++) {
+		if (ioex_config[i].drv == &nct38xx_ioexpander_drv &&
+			tcpc_config[ioex].i2c_info.port ==
+					ioex_config[i].i2c_host_port &&
+			tcpc_config[ioex].i2c_info.addr_flags ==
+					ioex_config[i].i2c_addr_flags) {
+			ioex_p = &ioex_config[i];
+			ioex = i;
+			break;
+		}
+	}
+
+	if (!ioex_p)
+		return EC_ERROR_INVAL;
 
 	int_mask = chip_data[ioex].int_mask[0] | (
 				chip_data[ioex].int_mask[1] << 8);
