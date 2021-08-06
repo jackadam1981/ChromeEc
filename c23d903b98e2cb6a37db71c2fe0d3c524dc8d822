@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d2928ac_b74fa394",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-06T21:51:25Z",
+      "side": 1,
+      "message": "Can hpd_update be moved into struct usb_mux_driver as part of this change?",
+      "range": {
+        "startLine": 143,
+        "startChar": 16,
+        "endLine": 143,
+        "endChar": 26
+      },
+      "revId": "c23d903b98e2cb6a37db71c2fe0d3c524dc8d822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d8db2b_886f5a16",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-06T21:51:25Z",
+      "side": 1,
+      "message": "While you\u0027re here, you could consider changing these parameters to enums so it\u0027s clearer what callers are doing.\n\ne.g.\nusb_mux_hpd_update(port, 1, 0);\n\nbecomes\nusb_mux_hpd_update(port, HPD_LVL_HIGH, HPD_IRQ_CLEAR)",
+      "range": {
+        "startLine": 329,
+        "startChar": 34,
+        "endLine": 329,
+        "endChar": 58
+      },
+      "revId": "c23d903b98e2cb6a37db71c2fe0d3c524dc8d822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
