@@ -22,6 +22,8 @@
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+static int nx20p348x_dump(int port);
+
 static uint32_t irq_pending; /* Bitmask of ports signaling an interrupt. */
 
 #define NX20P348X_DB_EXIT_FAIL_THRESHOLD 10
@@ -212,16 +214,24 @@ __maybe_unused static int nx20p3481_vbus_source_enable(int port, int enable)
 __maybe_unused static int nx20p3483_vbus_sink_enable(int port, int enable)
 {
 	int rv;
+	int sw;
 
 	enable = !!enable;
+
+	ccprintf("%s: C%d: enable %d\n", __func__, port, enable);
 
 	if (enable) {
 		/*
 		 * VBUS Discharge must be off in sink mode.
 		 */
 		rv = nx20p348x_discharge_vbus(port, 0);
-		if (rv)
+		if (rv) {
+
+			ccprintf("%s: C%d: nx20p348x_discharge_vbus err %d\n",
+				 __func__, port, rv);
+
 			return rv;
+		}
 	}
 
 	/*
@@ -230,12 +240,14 @@ __maybe_unused static int nx20p3483_vbus_sink_enable(int port, int enable)
 	 * a battery).
 	 */
 	rv = tcpm_set_snk_ctrl(port, enable);
-	if (rv)
+	if (rv) {
+
+			ccprintf("%s: C%d: tcpm_set_snk_ctrl err %d\n", __func__, port, rv);
+
 		return rv;
+	}
 
 	for (int i = 0; i < NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC; ++i) {
-		int sw;
-
 		rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &sw);
 		if (rv != EC_SUCCESS)
 			return rv;
@@ -243,6 +255,32 @@ __maybe_unused static int nx20p3483_vbus_sink_enable(int port, int enable)
 			return EC_SUCCESS;
 		msleep(1);
 	}
+
+	ccprintf("%s: C%d: enable %d, TIMEOUT after %d ms, SW 0x%02x\n",
+		 __func__,
+		 port, enable,
+		 NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC, sw);
+
+	for (int i = 0; i < 100; ++i) {
+		rv = read_reg(port, NX20P348X_SWITCH_STATUS_REG, &sw);
+		if (rv != EC_SUCCESS)
+			return rv;
+		if (!!(sw & NX20P348X_SWITCH_STATUS_HVSNK) == enable) {
+
+			ccprintf("%s: C%d: enable %d, success after 25+%d ms\n",
+				 __func__,
+				 port, enable, i);
+
+			return EC_SUCCESS;
+		}
+		msleep(1);
+	}
+
+	ccprintf("%s: C%d: enable %d, TIMEOUT after extra 100 ms, SW 0x%02x\n",
+		 __func__,
+		 port, enable, sw);
+
+	nx20p348x_dump(port);
 
 	return EC_ERROR_TIMEOUT;
 }
@@ -252,6 +290,8 @@ __maybe_unused static int nx20p3483_vbus_source_enable(int port, int enable)
 	int rv;
 
 	enable = !!enable;
+
+	ccprintf("%s: C%d: enable %d\n", __func__, port, enable);
 
 	/*
 	 * For parity's sake, we should not use an EC GPIO for
@@ -285,6 +325,13 @@ __maybe_unused static int nx20p3483_vbus_source_enable(int port, int enable)
 		msleep(1);
 	}
 
+	ccprintf("%s: C%d: enable %d, TIMEOUT after %d ms\n",
+		 __func__,
+		 port, enable,
+		 NX20P348X_SWITCH_STATUS_DEBOUNCE_MSEC);
+
+	nx20p348x_dump(port);
+
 	return EC_ERROR_TIMEOUT;
 }
 
@@ -297,7 +344,8 @@ static int nx20p348x_init(int port)
 	enum tcpc_rp_value initial_current_limit;
 
 	/* Mask interrupts for interrupt 2 register */
-	mask = ~NX20P348X_INT2_EN_ERR;
+//	mask = ~NX20P348X_INT2_EN_ERR;
+	mask = 0;
 	rv = write_reg(port, NX20P348X_INTERRUPT2_MASK_REG, mask);
 	if (rv)
 		return rv;
@@ -309,6 +357,7 @@ static int nx20p348x_init(int port)
 		/* Unmask Fast Role Swap detect interrupt */
 		mask &= ~NX20P3481_INT1_FRS_DET;
 	}
+	mask = 0;
 	rv = write_reg(port, NX20P348X_INTERRUPT1_MASK_REG, mask);
 	if (rv)
 		return rv;
@@ -381,6 +430,8 @@ static void nx20p348x_handle_interrupt(int port)
 	 * automatically cleared by reading.
 	 */
 	read_reg(port, NX20P348X_INTERRUPT1_REG, &reg);
+	if (reg != 0)
+		ccprintf("%s: INT1 0x%02x\n", __func__, reg);
 
 	/* Check for DBEXIT error */
 	if (reg & NX20P348X_INT1_DBEXIT_ERR) {
@@ -459,6 +510,8 @@ static void nx20p348x_handle_interrupt(int port)
 	 * action if any can be taken.
 	 */
 	read_reg(port, NX20P348X_INTERRUPT2_REG, &reg);
+	if (reg != 0)
+		ccprintf("%s: INT2 0x%02x\n", __func__, reg);
 }
 
 static void nx20p348x_irq_deferred(void)
