@@ -500,6 +500,16 @@ mux_state_t get_mux_mode_to_set(int port)
 	    !pd_get_partner_usb_comm_capable(port))
 		return USB_PD_MUX_NONE;
 
+	/*
+	 * If we have connected to the PD partner device, then keep the mux
+	 * setting that we have configured.
+	 */
+	if (IS_ENABLED(CONFIG_USB_PD_DUAL_ROLE) &&
+	    pd_is_connected(port) &&
+	    pd_capable(port) &&
+	    pd_get_partner_usb_comm_capable(port))
+		return usb_mux_get(port);
+
 	/* Otherwise connect mux since we are in S3+ */
 	return USB_PD_MUX_USB_ENABLED;
 }
