@@ -27,7 +27,6 @@ zephyr_library_sources(
   "${PLATFORM_EC_BOARD}/battery.c"
   "${PLATFORM_EC_BOARD}/hibernate.c"
   "${PLATFORM_EC_BOARD}/sku.c"
-  "${PLATFORM_EC_BOARD}/switchcap.c"
   "${PLATFORM_EC_BOARD}/usbc_config.c")
 
 # Board specific implementation

@@ -7,6 +7,7 @@ dts-overlays:
   - gpio.dts
   - battery.dts
   - motionsense.dts
+  - switchcap.dts
 supported-zephyr-versions:
   - v2.5
   - v2.6
