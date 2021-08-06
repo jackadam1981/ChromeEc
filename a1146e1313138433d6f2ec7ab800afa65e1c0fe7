@@ -104,6 +104,41 @@
       "parentUuid": "920b87a1_f185a24b",
       "revId": "a1146e1313138433d6f2ec7ab800afa65e1c0fe7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b1535fe_7b4cb34a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-06T07:38:18Z",
+      "side": 1,
+      "message": "Created new CL\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3068851",
+      "revId": "a1146e1313138433d6f2ec7ab800afa65e1c0fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e67f29f_12d9a123",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-06T07:38:18Z",
+      "side": 1,
+      "message": "Thank you. I will create cherry pick based commit :)",
+      "parentUuid": "d359f252_e4406369",
+      "revId": "a1146e1313138433d6f2ec7ab800afa65e1c0fe7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
