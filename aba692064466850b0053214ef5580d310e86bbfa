@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c678e0d5_897909d0",
+        "filename": "test/sbs_charging_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-06T17:00:47Z",
+      "side": 1,
+      "message": "nit: can use a bool",
+      "range": {
+        "startLine": 31,
+        "startChar": 7,
+        "endLine": 31,
+        "endChar": 10
+      },
+      "revId": "aba692064466850b0053214ef5580d310e86bbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce7b579_a60ecfa2",
+        "filename": "test/sbs_charging_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-06T17:00:47Z",
+      "side": 1,
+      "message": "This is actually very close to the string that gets printed when an entire test suite passes (\"Pass!\").  Do you think the difference of only the punctuation might confuse someone looking at the output that the whole test passed?",
+      "range": {
+        "startLine": 779,
+        "startChar": 11,
+        "endLine": 779,
+        "endChar": 15
+      },
+      "revId": "aba692064466850b0053214ef5580d310e86bbfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
