@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12f17473_a7d9723d",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-06T21:57:23Z",
+      "side": 1,
+      "message": "Mutex needs to be initialized for Zephyr.\n\nExample here: https://chromium.googlesource.com/chromiumos/platform/ec/+/6e9c1b3a/common/usbc/usb_pd_dpm.c#63\n\nIf you have a single mutex (not an array), you can use K_MUTEX_DEFINE.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 59
+      },
+      "revId": "8fef030d02d7740b8c0da2b36ed069431fbcc19c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
