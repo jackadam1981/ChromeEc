@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "736f7c43_0043598d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-08-06T06:17:38Z",
+      "side": 1,
+      "message": "OK, I\u0027ll update the CL according to your suggestion and check if \u0027make run-sbs_charging_v2\u0027 pass.\n\nThanks!",
+      "parentUuid": "494acdde_6f631786",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 4
+      },
+      "revId": "6debdcb1735d1da29da745922d1217bc7bf86c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "bfb1f861_a9ac35e8",
@@ -84,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3522c00_4fab0425",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-08-06T06:17:38Z",
+      "side": 1,
+      "message": "ACK, \u0027calc_is_full\u0027 is now defined with __attribute__((weak)) to make it can be overridden in other code. We need to make it global.",
+      "parentUuid": "d605364d_70caee07",
+      "range": {
+        "startLine": 1283,
+        "startChar": 14,
+        "endLine": 1283,
+        "endChar": 20
+      },
+      "revId": "6debdcb1735d1da29da745922d1217bc7bf86c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ad8234d1_2155a9fa",
         "filename": "test/sbs_charging_v2.c",
         "patchSetId": 3
@@ -95,6 +143,30 @@
       "writtenOn": "2021-08-05T17:12:01Z",
       "side": 1,
       "message": "I think we should add \u0027is_full_enabled \u003d 0\u0027 here.",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "6debdcb1735d1da29da745922d1217bc7bf86c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d824ef1f_78ef1a0f",
+        "filename": "test/sbs_charging_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-08-06T06:17:38Z",
+      "side": 1,
+      "message": "ACK, since \u0027is_full_enabled\u0027 will judge whether to force the battery full state during sbs_charging_v2, we need to reset this variable.",
+      "parentUuid": "ad8234d1_2155a9fa",
       "range": {
         "startLine": 36,
         "startChar": 12,
