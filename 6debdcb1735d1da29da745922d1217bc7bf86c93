@@ -83,6 +83,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbcffcc_6c67e2e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-06T16:47:43Z",
+      "side": 1,
+      "message": "I found the sustainer also doesn\u0027t get immediately enabled when AC is already present. I think we should call sustain_battery_soc unconditionally. It\u0027ll return immediately if the display SoC (or is_full) hasn\u0027t changed. Please take a look at (and try) Patchset 5.\n\nI added new unit tests in crrev/c/3078401.",
+      "parentUuid": "fc427028_48eab30f",
+      "revId": "6debdcb1735d1da29da745922d1217bc7bf86c93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d605364d_70caee07",
