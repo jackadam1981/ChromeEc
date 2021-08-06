@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f607a90_e059842f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-06T13:45:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5c69739_9a91dc4e",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 9
+      },
+      "revId": "b1de34082b9ee19a61ad4efc0bab38553860f5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57294172_dc265551",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44e18402_4519219a",
+        "filename": "chip/mchp/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-06T13:45:55Z",
+      "side": 1,
+      "message": "done.",
+      "parentUuid": "57294172_dc265551",
+      "range": {
+        "startLine": 154,
+        "startChar": 3,
+        "endLine": 154,
+        "endChar": 50
+      },
+      "revId": "b1de34082b9ee19a61ad4efc0bab38553860f5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77d18773_069cc3f9",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-05T21:29:29Z",
       "side": 1,
       "message": "nit: #ifdef",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 11
+      },
+      "revId": "b1de34082b9ee19a61ad4efc0bab38553860f5ec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd606c66_15672bed",
+        "filename": "chip/mchp/config_chip.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-06T13:45:55Z",
+      "side": 1,
+      "message": "\" #if defined(CHIP_FAMILY_MEC172X) \" is used in in this file, ideally keep consistent. also check whole CrOS code, both \"#if defined()\" and \"#ifdef\" have been used. this should be ok.",
+      "parentUuid": "77d18773_069cc3f9",
       "range": {
         "startLine": 156,
         "startChar": 0,
