@@ -156,6 +156,7 @@ common-$(CONFIG_TEMP_SENSOR)+=temp_sensor.o
 common-$(CONFIG_THROTTLE_AP)+=thermal.o throttle_ap.o
 common-$(CONFIG_THROTTLE_AP_ON_BAT_DISCHG_CURRENT)+=throttle_ap.o
 common-$(CONFIG_THROTTLE_AP_ON_BAT_VOLTAGE)+=throttle_ap.o
+common-$(CONFIG_AMD_STT)+=amd_stt.o
 common-$(CONFIG_USB_CHARGER)+=usb_charger.o
 common-$(CONFIG_USB_CONSOLE_STREAM)+=usb_console_stream.o
 common-$(CONFIG_USB_I2C)+=usb_i2c.o
