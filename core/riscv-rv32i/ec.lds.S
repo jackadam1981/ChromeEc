@@ -315,11 +315,8 @@ SECTIONS
 		. = ALIGN(16);
 		__global_pointer$ = .;
 		*(.sbss)
-		. = ALIGN(4);
-		/* Rest of .bss takes care of its own alignment */
-		*(.bss)
-		*(.bss.slow)
 
+		*(.bss.mdp)
 		/*
 		 * Reserve space for deferred function firing times.
 		 * Each time is a uint64_t, each func is a 32-bit pointer,
@@ -442,6 +439,10 @@ SECTIONS
 	 * we need an explicltly NOLOAD.
 	 */
 	.dram.bss(NOLOAD) : {
+		. = ALIGN(4);
+		/* Rest of .bss takes care of its own alignment */
+		*(.bss)
+		*(.bss.slow)
 		. = ALIGN(4);
 		__dram_bss_start = .;
 		*(SORT(.dram.bss*))

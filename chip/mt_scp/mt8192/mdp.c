@@ -10,6 +10,7 @@
 #include "registers.h"
 #include "task.h"
 #include "util.h"
+#include "link_defs.h"
 
 #define CPRINTF(format, args...) cprintf(CC_IPI, format, ##args)
 #define CPRINTS(format, args...) cprints(CC_IPI, format, ##args)
@@ -57,6 +58,7 @@ DECLARE_IPI(SCP_IPI_MDP_INIT, mdp_ipi_handler, 0);
 DECLARE_IPI(SCP_IPI_MDP_FRAME, mdp_ipi_handler, 0);
 DECLARE_IPI(SCP_IPI_MDP_DEINIT, mdp_ipi_handler, 0);
 
+__SECTION(dram.text)
 void mdp_service_task(void *u)
 {
 	struct mdp_msg_service rsv_msg;
