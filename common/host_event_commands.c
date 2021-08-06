@@ -328,7 +328,7 @@ void host_set_events(host_event_t mask)
 	if (!((events & mask) != mask || (events_copy_b & mask) != mask))
 		return;
 
-	HOST_EVENT_CPRINTS("event set", mask);
+	//HOST_EVENT_CPRINTS("event set", mask);
 
 	if (!IS_ENABLED(CONFIG_ZTEST) &&
 		(mask & EC_HOST_EVENT_MASK(EC_HOST_EVENT_KEYBOARD_RECOVERY)))

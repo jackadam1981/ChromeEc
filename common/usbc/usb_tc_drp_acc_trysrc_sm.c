@@ -838,8 +838,10 @@ void tc_pd_connection(int port, int en)
 		 * devices, without data capability are not marked as having
 		 * USB.
 		 */
-		if (new_pd_capable)
+		if (new_pd_capable) {
+			ccprints("tc pd connection");
 			set_usb_mux_with_current_data_role(port);
+		}
 	} else {
 		TC_CLR_FLAG(port, TC_FLAGS_PARTNER_PD_CAPABLE);
 		/* If a PD device isn't attached then enable deep sleep */
@@ -1763,8 +1765,10 @@ void tc_set_data_role(int port, enum pd_data_role role)
 	prev_data_role = tc[port].data_role;
 	tc[port].data_role = role;
 
-	if (IS_ENABLED(CONFIG_USBC_SS_MUX))
+	if (IS_ENABLED(CONFIG_USBC_SS_MUX)) {
+		ccprints("tc set data role");
 		set_usb_mux_with_current_data_role(port);
+	}
 
 	/*
 	 * Run any board-specific code for role swap (e.g. setting OTG signals
@@ -1894,6 +1898,7 @@ __maybe_unused static void handle_new_power_state(int port)
 	 * or the alternate mode configuration.
 	 */
 	if (TC_CHK_FLAG(port, TC_FLAGS_UPDATE_USB_MUX)) {
+		ccprints("handle new power state");
 		TC_CLR_FLAG(port, TC_FLAGS_UPDATE_USB_MUX);
 		set_usb_mux_with_current_data_role(port);
 	}
