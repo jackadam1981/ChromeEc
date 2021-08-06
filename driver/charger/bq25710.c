@@ -199,6 +199,25 @@ static int bq25710_adc_start(int chgnum, int adc_en_mask)
 		raw_read16(chgnum, BQ25710_REG_ADC_OPTION, &reg);
 	} while (--tries_left && (reg & BQ25710_ADC_OPTION_ADC_START));
 
+
+	if (1 && (reg & BQ25710_ADC_OPTION_ADC_START)) {
+		ccprintf("%s: ADC_OPTION_ADC_START set, trying longer\n"
+			 "    low power mode was %d\n"
+			 "    ================================\n",
+			 __func__, mode);
+
+		tries_left = BQ25710_ADC_OPTION_ADC_CONV_MS;
+		do {
+			msleep(4);
+			raw_read16(chgnum, BQ25710_REG_ADC_OPTION, &reg);
+		} while (--tries_left && (reg & BQ25710_ADC_OPTION_ADC_START));
+		ccprintf("%s: success on try %d * 2ms + %d * 4ms\n", __func__,
+			 BQ25710_ADC_OPTION_ADC_CONV_MS,
+			 (BQ25710_ADC_OPTION_ADC_CONV_MS - tries_left));
+		cflush();
+	}
+
+
 	/* ADC reading attempt complete, go back to low power mode */
 	if (bq25710_set_low_power_mode(chgnum, mode))
 		return EC_ERROR_UNKNOWN;
@@ -505,7 +524,9 @@ static enum ec_error_list bq25710_get_vbus_voltage(int chgnum, int port,
 
 error:
 	if (rv)
-		CPRINTF("Could not read VBUS ADC! Error: %d\n", rv);
+		CPRINTF("Could not read VBUS ADC! Error: %d\n"
+			"================================"
+			"================================\n", rv);
 	return rv;
 }
 #endif
