@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0562dd85_cb3f64b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-08-06T02:43:07Z",
+      "side": 1,
+      "message": "This CL requires the below PR to work properly:\nhttps://github.com/zephyrproject-rtos/zephyr/pull/37364\n\nBecause this CL won\u0027t break build so I am going to land it.",
+      "revId": "a946649ddd0aa4bed3b437c3e36e40b510df2131",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
