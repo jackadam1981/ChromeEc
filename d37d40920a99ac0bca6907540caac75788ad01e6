@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "316038c6_99e72509",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-08-06T10:15:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7093f5c_8a4ede73",
+      "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d8a4cfc_a5b424c5",
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "Removed incorrect white spaces",
       "parentUuid": "0d8a4cfc_a5b424c5",
+      "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89114485_043ef34b",
+        "filename": "driver/accelgyro_icm_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-08-06T10:15:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0578e481_e0005f0b",
       "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -140,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdb4bb83_45d18ba1",
+        "filename": "driver/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-08-06T10:15:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fd77577_cd679b0e",
+      "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dd3ddd4_ebcf1df3",
@@ -171,6 +225,24 @@
       "side": 1,
       "message": "Fixed",
       "parentUuid": "4dd3ddd4_ebcf1df3",
+      "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "178f6f7e_9ca01cad",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1446307
+      },
+      "writtenOn": "2021-08-06T10:15:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81fd794c_43f911c9",
       "revId": "d37d40920a99ac0bca6907540caac75788ad01e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
