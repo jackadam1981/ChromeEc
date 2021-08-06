@@ -36,8 +36,6 @@
 		 power_button_interrupt)                                      \
 	GPIO_INT(GPIO_VOLUME_DOWN_L, GPIO_INT_EDGE_BOTH, button_interrupt)    \
 	GPIO_INT(GPIO_VOLUME_UP_L, GPIO_INT_EDGE_BOTH, button_interrupt)      \
-	GPIO_INT(GPIO_SWITCHCAP_PG_INT_L, GPIO_INT_EDGE_FALLING,              \
-		 ln9310_interrupt)                                            \
 	GPIO_INT(GPIO_AP_RST_L, GPIO_INT_EDGE_BOTH, chipset_ap_rst_interrupt) \
 	GPIO_INT(GPIO_AP_SUSPEND, GPIO_INT_EDGE_BOTH, power_signal_interrupt) \
 	GPIO_INT(GPIO_DEPRECATED_AP_RST_REQ, GPIO_INT_EDGE_BOTH,              \
