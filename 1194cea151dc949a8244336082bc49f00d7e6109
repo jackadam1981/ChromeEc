@@ -34,6 +34,47 @@
       "parentUuid": "35446b4a_f207564f",
       "revId": "1194cea151dc949a8244336082bc49f00d7e6109",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd9636ca_9d4e108c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-07T04:03:52Z",
+      "side": 1,
+      "message": "Downloading your patch, wasn\u0027t able to repeat locally... perhaps it was unrelated an another CQ run will tell",
+      "parentUuid": "009b0022_916e023f",
+      "revId": "1194cea151dc949a8244336082bc49f00d7e6109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da15fbfe_d7d8e0f4",
+        "filename": "common/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-07T04:03:52Z",
+      "side": 1,
+      "message": "this is now always being discarded, since we always set rv below\n\nif we fail to set, we should not silently ignore that",
+      "range": {
+        "startLine": 1184,
+        "startChar": 2,
+        "endLine": 1184,
+        "endChar": 7
+      },
+      "revId": "1194cea151dc949a8244336082bc49f00d7e6109",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
