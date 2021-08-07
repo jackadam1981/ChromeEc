@@ -447,6 +447,9 @@ $(out)/$(PROJECT).hex: $(out)/$(PROJECT).bin
 $(out)/%.vbprik2 $(out)/%.vbpubk2: $(PEM)
 	$(call quiet,key_extract,KEY    )
 
+$(out)/RW/%.flat.prefips: $(out)/RW/%.elf  $(out)/RW/%.smap
+	$(call quiet,ec_elf_to_flat,OBJCOPY)
+
 $(out)/RW/%.flat.sig: $(out)/RW/%.flat $(out)/key.vbprik2
 	$(call quiet,rsasign_rwsig,SIGN   )
 
