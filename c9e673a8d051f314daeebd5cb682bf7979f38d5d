@@ -116,6 +116,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "78f73a31_967f1614",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7aadf242_c6045e58",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "822ebe29_a6f38528",
@@ -187,6 +211,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8558d685_a1c4a1e9",
+        "filename": "board/cr50/dcrypto/app_key.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "There is some odd build issue causing \u0027RO\u0027 build to fail if I change signature for this function. So, I opted with defining different APIs (SHA256_hw_*) instead to resolve this conflict. Interestingly if I remove declaration of DCRYPTO_SHA256_hash it works.\n\n  CC      RO/chip/g/loader/launch.o\nchip/g/loader/launch.c: In function \u0027tryLaunch\u0027:\nchip/g/loader/launch.c:80:4: error: passing argument 3 of \u0027DCRYPTO_SHA256_hash\u0027 from incompatible pointer type [-Werror\u003dincompatible-pointer-types]\n    (uint8_t *) hashes.img_hash);\n    ^~~~~~~~~~~~~~~~~~~~~~~~~~~",
+      "parentUuid": "25bbae35_350e32ba",
+      "range": {
+        "startLine": 46,
+        "startChar": 41,
+        "endLine": 46,
+        "endChar": 59
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "59659d66_f4bbe17d",
@@ -224,6 +272,30 @@
       "side": 1,
       "message": "computing that position always take code size toll (note, len can be larger  than opad, but when it is, I\u0027ll use digest of the key), but saves typically around 24 cycles (8 32-bit words, 3 cycles to write each). I\u0027m not sure it worth it. Switching to HW HMAC for SHA256 and probably will make it even less useful in many cases. I was also testing wherever I can prefill with 0x36, and xor key on top, but it also is less efficient code size wise - need to handle unaligned key use case which is common.",
       "parentUuid": "59659d66_f4bbe17d",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 33,
+        "endChar": 29
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05dc2508_15a27b86",
+        "filename": "board/cr50/dcrypto/hmac_sw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fb45348_cb30f726",
       "range": {
         "startLine": 32,
         "startChar": 1,
@@ -281,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7179805c_ffe2fa47",
+        "filename": "board/cr50/dcrypto/hmac_sw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef97dd20_47a8c4b6",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 48,
+        "endChar": 15
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "242a9a41_e18dff25",
@@ -328,6 +424,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64e5f6d5_4b3c5f40",
+        "filename": "board/cr50/dcrypto/hmacsha2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0b8c15c7_9308bdf5",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62fce412_7cc0a93a",
@@ -365,6 +485,30 @@
       "side": 1,
       "message": "good point. Will do.",
       "parentUuid": "62fce412_7cc0a93a",
+      "range": {
+        "startLine": 73,
+        "startChar": 16,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e66f86cf_4af68b19",
+        "filename": "board/cr50/dcrypto/hmacsha2.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "actually it\u0027s XXX_DIGEST_WORDS",
+      "parentUuid": "c01b666e_4f176f91",
       "range": {
         "startLine": 73,
         "startChar": 16,
@@ -436,6 +580,30 @@
       "side": 1,
       "message": "yes, and that the buffer is at the same offset in both structures (or is it what you mention is checked in hmacsha2.h?)",
       "parentUuid": "bf841a7c_a3aa8a6a",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 76
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05442331_543db387",
+        "filename": "board/cr50/dcrypto/sha1.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "vtable is checked to be the same. buffer \u0026 state are at different locations for each kind - this is intentionally to save space if larger hash is not needed. SHA224 \u003d\u003d SHA256 \u0026 SHA384\u003d\u003dSHA512 with difference in initialization values.",
+      "parentUuid": "223686e8_5af56c89",
       "range": {
         "startLine": 52,
         "startChar": 3,
@@ -540,6 +708,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "743c281e_7772c41f",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cfcaa38_cd8ccf62",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9989c65_42989957",
@@ -577,6 +769,30 @@
       "side": 1,
       "message": "same comment - code was moved from earlier. I can fix it.",
       "parentUuid": "e9989c65_42989957",
+      "range": {
+        "startLine": 71,
+        "startChar": 21,
+        "endLine": 71,
+        "endChar": 38
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ea59cf_873ceb65",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f1f99689_5b005ddf",
       "range": {
         "startLine": 71,
         "startChar": 21,
@@ -705,6 +921,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "365e30c4_ef499b20",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "It was quite messy API usage. In few cases software version was forced (TPM2 Hash operations). I made XXX_sw_init() and XXX_hw_init() the latter fall back to sw if hw is not available.",
+      "parentUuid": "b4d61fc7_c70b04fe",
+      "range": {
+        "startLine": 214,
+        "startChar": 5,
+        "endLine": 214,
+        "endChar": 24
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8036fa43_1bff48d5",
@@ -800,6 +1040,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba776b6b_1e53b7b4",
+        "filename": "builtin/endian.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "removed. seems we use ARM in LE mode...",
+      "parentUuid": "8948a6fe_2898d6d1",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d879007d_07911b97",
@@ -837,6 +1101,30 @@
       "side": 1,
       "message": "-lcrypto is for OpenSSL used for tests (AES implementation).",
       "parentUuid": "d879007d_07911b97",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "c9e673a8d051f314daeebd5cb682bf7979f38d5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "158c94f8_c15f2f6d",
+        "filename": "chip/host/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-07T02:13:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d2d511f_27aabfc9",
       "range": {
         "startLine": 20,
         "startChar": 0,
