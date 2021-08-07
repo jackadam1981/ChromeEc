@@ -12,7 +12,6 @@
 #include "console.h"
 #include "accelgyro_bmi_common.h"
 #include "accelgyro_bmi260.h"
-#include "bmi260/accelgyro_bmi260_config_tbin.h"
 #include "hwtimer.h"
 #include "i2c.h"
 #include "init_rom.h"
@@ -23,6 +22,16 @@
 #include "timer.h"
 #include "util.h"
 #include "watchdog.h"
+
+/* BMI220/BMI260 firmware binary */
+#if defined(CONFIG_ACCELGYRO_BMI220)
+#include "bmi220/accelgyro_bmi220_config_tbin.h"
+const char *g_bmi260_config_tbin = g_bmi220_config_tbin;
+const unsigned int g_bmi260_config_tbin_len = g_bmi220_config_tbin_len;
+#elif defined(CONFIG_ACCELGYRO_BMI260)
+#include "bmi260/accelgyro_bmi260_config_tbin.h"
+#endif /* CONFIG_ACCELGYRO_BMI220 */
+
 
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
@@ -543,8 +552,14 @@ static int init(struct motion_sensor_t *s)
 	if (ret)
 		return EC_ERROR_UNKNOWN;
 
+#ifdef CONFIG_ACCELGYRO_BMI220
+	if (tmp != BMI220_CHIP_ID)
+		return EC_ERROR_ACCESS_DENIED;
+#else
 	if (tmp != BMI260_CHIP_ID_MAJOR)
 		return EC_ERROR_ACCESS_DENIED;
+#endif
+
 
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
 		struct bmi_drv_data_t *data = BMI_GET_DATA(s);

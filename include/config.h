@@ -119,6 +119,7 @@
 #undef CONFIG_ACCEL_LIS2DW_AS_BASE
 
 #undef CONFIG_ACCELGYRO_BMI160
+#undef CONFIG_ACCELGYRO_BMI220
 #undef CONFIG_ACCELGYRO_BMI260
 #undef CONFIG_ACCELGYRO_BMI3XX
 #undef CONFIG_ACCELGYRO_ICM426XX
@@ -5329,6 +5330,14 @@
 #include "config_chip.h"
 #include "board.h"
 
+/*
+ * BMI220 is a BMI260 variant with different device major ID and firmware.
+ */
+#ifdef CONFIG_ACCELGYRO_BMI220
+#define CONFIG_ACCELGYRO_BMI260
+#endif
+
+/******************************************************************************/
 /*
  * Define CONFIG_HOST_ESPI_VW_POWER_SIGNAL if any power signals from the host
  * are configured as virtual wires.

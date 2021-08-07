@@ -24,15 +24,17 @@
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
 #if !defined(CONFIG_ACCELGYRO_BMI160) && !defined(CONFIG_ACCELGYRO_BMI260) \
-&& !defined(CONFIG_ACCELGYRO_BMI3XX)
-#error "Must use following sensors BMI160 BMI260 BMI3XX"
+&& !defined(CONFIG_ACCELGYRO_BMI220) && !defined(CONFIG_ACCELGYRO_BMI3XX)
+#error "Must use following sensors BMI160 BMI220 BMI260 BMI3XX"
 #endif
 
 #if defined(CONFIG_ACCELGYRO_BMI260) && !defined(CONFIG_ACCELGYRO_BMI160)
 #define V(s_) 1
 #elif defined(CONFIG_ACCELGYRO_BMI160) && !defined(CONFIG_ACCELGYRO_BMI260)
 #define V(s_) 0
-#else
+#elif defined(CONFIG_ACCELGYRO_BMI220)
+#define V(s_) ((s_)->chip == MOTIONSENSE_CHIP_BMI220)
+#elif defined(CONFIG_ACCELGYRO_BMI260)
 #define V(s_) ((s_)->chip == MOTIONSENSE_CHIP_BMI260)
 #endif
 /* Index for which table to use. */
