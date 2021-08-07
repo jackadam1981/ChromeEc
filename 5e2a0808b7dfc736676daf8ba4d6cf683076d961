@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2be81482_a1ee687a",
+        "filename": "board/nocturne_fp/build.mk",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-07T03:03:49Z",
+      "side": 0,
+      "message": "By not explicitly setting board-y, later inclusions keep the incorrect fpsensor_detect.o value.\n\n----\n\nThe first inclusion is just to get CHIP and other primitive variables. The later inclusions will have proper HAS_MOCK_FPSENSOR_DETECT variable set.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 7
+      },
+      "revId": "5e2a0808b7dfc736676daf8ba4d6cf683076d961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
