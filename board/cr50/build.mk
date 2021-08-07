@@ -140,6 +140,13 @@ $(RW_BD_OUT)/$(FIPS_MODULE): $(RW_FIPS_OBJS)
 		-Wl,-T $(FIPS_LD_SCRIPT) -Wl,-Map=$@.map -o $@ $^
 	$(Q)$(OBJDUMP) -th $@ > $@.sym
 
+$(out)/RW/%.fips.checksum: $(out)/RW/%.elf $(out)/RW/%.flat.prefips
+	./util/get_fips_fingerprint.sh $(OBJCOPY) $^
+
+# Add dependencies to inject the checksum
+$(out)/RW/ec.RW_B.flat: $(out)/RW/ec.RW_B.fips.checksum
+$(out)/RW/ec.RW.flat: $(out)/RW/ec.RW.fips.checksum
+
 board-y+= $(FIPS_MODULE)
 endif
 
