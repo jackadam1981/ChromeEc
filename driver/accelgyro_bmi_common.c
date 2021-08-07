@@ -32,7 +32,9 @@
 #define V(s_) 1
 #elif defined(CONFIG_ACCELGYRO_BMI160) && !defined(CONFIG_ACCELGYRO_BMI260)
 #define V(s_) 0
-#else
+#elif defined(CONFIG_ACCELGYRO_BMI220)
+#define V(s_) ((s_)->chip == MOTIONSENSE_CHIP_BMI220)
+#elif defined(CONFIG_ACCELGYRO_BMI260)
 #define V(s_) ((s_)->chip == MOTIONSENSE_CHIP_BMI260)
 #endif
 /* Index for which table to use. */
