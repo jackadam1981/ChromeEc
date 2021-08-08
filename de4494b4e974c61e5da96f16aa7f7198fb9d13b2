@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f71d8aa_25704558",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-08T21:17:17Z",
+      "side": 1,
+      "message": "will move to separate CL to make CRYPTO_TEST work again. Looks like linker script broke DRBG test commands too, and GCM is being tested.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "de4494b4e974c61e5da96f16aa7f7198fb9d13b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a07be1d5_114ef865",
+        "filename": "board/cr50/dcrypto/hmacsha2.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-08T21:17:17Z",
+      "side": 1,
+      "message": "Add BUILD_ASSERT(sizeof(struct sha256_digest) \u003d\u003d SHA256_DIGEST_SIZE) and similar for other types to be sure no aligning issues involved and we can copy digest directly from struct sha256_digest *",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 2
+      },
+      "revId": "de4494b4e974c61e5da96f16aa7f7198fb9d13b2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
