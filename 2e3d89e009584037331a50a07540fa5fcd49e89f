@@ -16,6 +16,24 @@
       "message": "nit: sustain_soc.upper \u003c\u003d soc\n\nRight now, sustain_soc.upper is the upper limit - 1.",
       "revId": "2e3d89e009584037331a50a07540fa5fcd49e89f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a4c1cb1_e33161c9",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-08-09T20:36:20Z",
+      "side": 0,
+      "message": "Can this be addressed actually? By using upper \u003c soc and soc \u003c lower, we have an implicit range of 2% charge.",
+      "parentUuid": "01c981f8_e17879f6",
+      "revId": "2e3d89e009584037331a50a07540fa5fcd49e89f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
