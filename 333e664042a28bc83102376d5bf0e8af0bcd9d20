@@ -141,6 +141,30 @@
       },
       "revId": "333e664042a28bc83102376d5bf0e8af0bcd9d20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ee6d36c_886a6c15",
+        "filename": "test/utils_str.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-09T03:06:22Z",
+      "side": 1,
+      "message": "Fixed the issue. The integer literals needed to be cast as (size_t) since size_t isn\u0027t \u0027unsigned long\u0027 on all systems.",
+      "parentUuid": "5bb91b3f_5bf2fae4",
+      "range": {
+        "startLine": 268,
+        "startChar": 1,
+        "endLine": 268,
+        "endChar": 12
+      },
+      "revId": "333e664042a28bc83102376d5bf0e8af0bcd9d20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
