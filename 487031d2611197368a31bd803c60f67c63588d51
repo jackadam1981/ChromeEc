@@ -103,6 +103,23 @@
       "parentUuid": "3e507cff_941fa3fd",
       "revId": "487031d2611197368a31bd803c60f67c63588d51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f1b122f_63860d8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1176029
+      },
+      "writtenOn": "2021-08-09T03:44:58Z",
+      "side": 1,
+      "message": "check with sheriff to allow the CQ and +2 first then update the owners to align ToT as second step. ",
+      "revId": "487031d2611197368a31bd803c60f67c63588d51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
