@@ -34,6 +34,24 @@
       "parentUuid": "01c981f8_e17879f6",
       "revId": "2e3d89e009584037331a50a07540fa5fcd49e89f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a1df544_8f09d2af",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1735,
+      "author": {
+        "id": 1001880
+      },
+      "writtenOn": "2021-08-09T21:27:57Z",
+      "side": 0,
+      "message": "Sorry, made an off by one error. The effective range is ~1%, which is fine.",
+      "parentUuid": "5a4c1cb1_e33161c9",
+      "revId": "2e3d89e009584037331a50a07540fa5fcd49e89f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
