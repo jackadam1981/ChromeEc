@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49352e48_a4763efa",
+        "filename": "board/redrix/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-09T06:27:55Z",
+      "side": 1,
+      "message": "this is a special workaround to handle brya.\nthis should not be needed in general.\nit should be sufficient to implement board_is_dts_port()\nfor redrix.",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "a6098b5bc102ed5709569f54db9cdb7df344c253",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
