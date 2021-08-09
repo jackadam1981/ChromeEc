@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "437b178a_42e1a603",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-09T16:42:16Z",
+      "side": 1,
+      "message": "I\u0027m not completely certain I understand the code path we need to take to require this condition.  Would you mind elaborating?",
+      "revId": "d261c473dac4bb6142002f0067fd9174bfe01b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
