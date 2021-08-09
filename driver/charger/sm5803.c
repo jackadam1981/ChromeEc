@@ -1597,33 +1597,30 @@ static enum ec_error_list sm5803_get_option(int chgnum, int *option)
 enum ec_error_list sm5803_is_acok(int chgnum, bool *acok)
 {
 	int rv;
-	enum sm5803_charger_modes mode;
-	int reg;
+	int reg, vbus_mv;
 
-	rv = chg_read8(chgnum, SM5803_REG_FLOW1, &reg);
+	rv = main_read8(chgnum, SM5803_REG_STATUS1, &reg);
+
 	if (rv)
 		return rv;
 
-	/* The charger mode is contained in the last 2 bits. */
-	reg &= SM5803_FLOW1_MODE;
-	mode = (enum sm5803_charger_modes)reg;
-
 	/* If we're not sinking, then AC can't be OK. */
-	if (mode != CHARGER_MODE_SINK) {
+	if (!(reg & SM5803_STATUS1_CHG_DET)) {
 		*acok = false;
 		return EC_SUCCESS;
 	}
 
 	/*
-	 * Okay, we're sinking.  Check that VCHGPWR has some voltage.  This
+	 * Check that VBUS has some voltage. This
 	 * should indicate that the path is good.
 	 */
-	rv = meas_read8(chgnum, SM5803_REG_VCHG_PWR_MSB, &reg);
+	rv = charger_get_vbus_voltage(chgnum, &vbus_mv);
+
 	if (rv)
 		return rv;
 
-	/* Assume that ACOK would be asserted if VCHGPWR is higher than ~4V. */
-	*acok = reg >= SM5803_VBUS_HIGH_LEVEL;
+	/* Assume that ACOK would be asserted if VBUS is higher than ~4V. */
+	*acok = vbus_mv >= 4000;
 
 	return EC_SUCCESS;
 }
