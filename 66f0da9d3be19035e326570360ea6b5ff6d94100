@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "190f7c6b_43ea695d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-09T17:49:24Z",
+      "side": 1,
+      "message": "s/temporarily/a temporary/",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4208097e_0557a996",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-09T17:49:24Z",
+      "side": 1,
+      "message": "s/clear/clearer/",
+      "range": {
+        "startLine": 19,
+        "startChar": 27,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e4f7f7_07df63d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-09T17:49:24Z",
+      "side": 1,
+      "message": "s/handlers/handles/",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "9a8d518b_dfc43fb0",
@@ -14,6 +83,69 @@
       "writtenOn": "2021-08-09T17:19:38Z",
       "side": 1,
       "message": "fixing some discovered issues",
+      "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12eaa5a5_7bcba6be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-09T17:49:24Z",
+      "side": 1,
+      "message": "a few nits and a question",
+      "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e18b5c6_86295ba9",
+        "filename": "board/cr50/dcrypto/fips_module.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-09T17:49:24Z",
+      "side": 1,
+      "message": "I don\u0027t fully understand how this wokrs/what\u0027s the intention.\n\nAren\u0027t all extension commands descriptors supposed to be in the same table, which is defined in core/cortex-m/ec.lds.S? \n\nWhy is the aboce duplication necessary?",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb43b8e_aa7665b4",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-09T17:49:24Z",
+      "side": 1,
+      "message": "when is this going to be removed? Please open a bug if there is not one opened yet and mention it in a TODO in the comment.",
+      "range": {
+        "startLine": 133,
+        "startChar": 25,
+        "endLine": 133,
+        "endChar": 51
+      },
       "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
