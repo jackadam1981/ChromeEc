@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffc89bcd_db9ba84f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-08-09T04:02:22Z",
+      "side": 1,
+      "message": "Dear Philip:\n     The product specification already update System Status Indication\n     LED behavior:\nCharging\t| Red on (S0/S3/S5)\nFull Charged\t| Blue on (S0/S3/S5)\nDischarging S3\t| Red on 1 sec, off 3 sec\nDischarging S5\t| off\nError\t\t| Red on 1 sec, off 1 sec\nDischarging S0\t| Blue on\nFactory mode\t| Blue on 2 sec, Red on 2 sec",
+      "parentUuid": "bf5b88d1_089962b8",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 68
+      },
+      "revId": "c6143afed95ee062daa5353eaf4bf9a90d2a815d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69badc43_24754e41",
