@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf36bd8b_4893098b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-09T17:23:22Z",
+      "side": 1,
+      "message": "Because you\u0027re renaming CONFIG_KEYBOARD_KSO_HIGH_DRIVE for zephyr builds, please also add CONFIG_KEYBOARD_KSO_HIGH_DRIVE to the unused section of zephyr/shim/include/config_chip.h and delete from util/config_allowed.txt.",
+      "revId": "2b1271aed3128813885ce661e68f53ec10eab06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
