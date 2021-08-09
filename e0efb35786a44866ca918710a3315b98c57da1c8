@@ -22,6 +22,30 @@
       },
       "revId": "e0efb35786a44866ca918710a3315b98c57da1c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa22a04f_0cb0044a",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-09T23:18:12Z",
+      "side": 1,
+      "message": "So over the course of this stack we go from using the PD task to using the USB mux task.  While we\u0027re transitioning the boards over to the mux task, I\u0027d like to keep the code supporting both paths, which is why I went with the task ID implementation.\n\nI haven\u0027t checked yet whether all the virtual mux boards have the space for the USB mux task.  If they do, we could switch over everyone to the mux task and then turn this into a bool for the mux task.  If any boards can\u0027t do that (or if we don\u0027t think volteer will be picking up this stack in its entirety in the FW branch), it may be safer to keep the task ID.",
+      "parentUuid": "7712de1b_074848f9",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 0
+      },
+      "revId": "e0efb35786a44866ca918710a3315b98c57da1c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
