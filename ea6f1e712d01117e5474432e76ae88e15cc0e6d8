@@ -22,6 +22,30 @@
       },
       "revId": "ea6f1e712d01117e5474432e76ae88e15cc0e6d8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47e810b2_65f9a7e8",
+        "filename": "zephyr/shim/src/hooks.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-08-09T16:49:45Z",
+      "side": 1,
+      "message": "Yeah I kicked few ideas around on how to use the sorted nature of iterables to get rid of the lst field and move the structures in ROM. The ideal scenario would be to get the instances sorted by hooktype (which they are with this, although by hook name, not enum value) and then by priority, so that we could just map the first entry by type and then go through the list in sequence until the type changes or we hit the _list_end. The problem is that we can only do direct #define substitution here, so that would not work with cases like:\n\nDECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);\n\nTo make that work we\u0027d have to rework all the \"enum hook_priority\" and make them #defines rather than enum, and add some extra priority level to avoid having cases like the one above. Could look into it, but I\u0027d say it\u0027s worth a separate series just for it.",
+      "parentUuid": "5471e6cb_f46e6e18",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 0
+      },
+      "revId": "ea6f1e712d01117e5474432e76ae88e15cc0e6d8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
