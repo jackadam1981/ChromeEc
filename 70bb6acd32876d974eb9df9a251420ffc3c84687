@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "297f849d_7e771f58",
+        "filename": "board/pdeval-stm32f072/usb_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-09T23:17:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "964f0a10_98a2d49c",
+      "range": {
+        "startLine": 228,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 44
+      },
+      "revId": "70bb6acd32876d974eb9df9a251420ffc3c84687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c407820_3e34315f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-06T21:42:47Z",
       "side": 1,
       "message": "Same here - deprecated usage.",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 63
+      },
+      "revId": "70bb6acd32876d974eb9df9a251420ffc3c84687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cc24f4a_801abe2a",
+        "filename": "board/vilboz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-09T23:17:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c407820_3e34315f",
       "range": {
         "startLine": 438,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c91f5c89_cd83cd54",
+        "filename": "driver/tcpm/anx7447.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-09T23:17:25Z",
+      "side": 1,
+      "message": "Agreed and noted",
+      "parentUuid": "58d51fa9_be268d78",
+      "range": {
+        "startLine": 395,
+        "startChar": 0,
+        "endLine": 395,
+        "endChar": 53
+      },
+      "revId": "70bb6acd32876d974eb9df9a251420ffc3c84687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eab06576_7b2b121e",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28cfa302_a1695316",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-09T23:17:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eab06576_7b2b121e",
+      "range": {
+        "startLine": 144,
+        "startChar": 24,
+        "endLine": 144,
+        "endChar": 44
+      },
+      "revId": "70bb6acd32876d974eb9df9a251420ffc3c84687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "afba434c_2ad277ad",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-08-06T21:42:47Z",
       "side": 1,
       "message": "Same with this - this delay is tied to the TCSS, so this could be added into the usb_mux struct.  But add a comment for now that this delay is required by the Intel internal mux/TCSS.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 23
+      },
+      "revId": "70bb6acd32876d974eb9df9a251420ffc3c84687",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "421e68a3_3439e782",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-09T23:17:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afba434c_2ad277ad",
       "range": {
         "startLine": 145,
         "startChar": 0,
