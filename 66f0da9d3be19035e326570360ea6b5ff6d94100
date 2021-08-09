@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afafe3d3_8157ef30",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-09T17:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "190f7c6b_43ea695d",
+      "range": {
+        "startLine": 14,
+        "startChar": 8,
+        "endLine": 14,
+        "endChar": 19
+      },
+      "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4208097e_0557a996",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "87392d27_614a42a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-09T17:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4208097e_0557a996",
+      "range": {
+        "startLine": 19,
+        "startChar": 27,
+        "endLine": 19,
+        "endChar": 32
+      },
+      "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7e4f7f7_07df63d1",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-09T17:49:24Z",
       "side": 1,
       "message": "s/handlers/handles/",
+      "range": {
+        "startLine": 20,
+        "startChar": 4,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e334d04_e3a4b651",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-09T17:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7e4f7f7_07df63d1",
       "range": {
         "startLine": 20,
         "startChar": 4,
@@ -127,6 +199,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "75fb2ef4_44aeec09",
+        "filename": "board/cr50/dcrypto/fips_module.ld",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-09T17:58:19Z",
+      "side": 1,
+      "message": "I move all .rodata.* from FIPS module into .rodata.fips section to have it combined and at fixed offsets. Except for special sections used by EC OS which are like \u0027interfaces\u0027 to FIPS module - what to call. in core/ec.ld.S .rodata.extensioncmds is handled so that it\u0027s start and end offsets are marked with symbols. Unlike other sections it doesn\u0027t use wildcards for input sections, so I have to name section properly. And I can\u0027t just do nothing as otherwise it will be combined with .rodata and won\u0027t be used to find extension commands.",
+      "parentUuid": "2e18b5c6_86295ba9",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 2
+      },
+      "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2cb43b8e_aa7665b4",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-08-09T17:49:24Z",
       "side": 1,
       "message": "when is this going to be removed? Please open a bug if there is not one opened yet and mention it in a TODO in the comment.",
+      "range": {
+        "startLine": 133,
+        "startChar": 25,
+        "endLine": 133,
+        "endChar": 51
+      },
+      "revId": "66f0da9d3be19035e326570360ea6b5ff6d94100",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc922d5_00dff36f",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-09T17:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2cb43b8e_aa7665b4",
       "range": {
         "startLine": 133,
         "startChar": 25,
