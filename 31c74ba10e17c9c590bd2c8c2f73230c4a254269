@@ -34,6 +34,24 @@
       "parentUuid": "279baf4f_c6790c76",
       "revId": "31c74ba10e17c9c590bd2c8c2f73230c4a254269",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f31daa3_aaf756a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-08-09T16:30:39Z",
+      "side": 1,
+      "message": "It\u0027s certainly feasible, the EC commands are defined as actual #defines and not as an enum, so we can do substitutions in the name and have them sorted by the linker. For example right now the symbol has the enum name:\n\n0x100a8864 \u003c_cros_hcmd_EC_CMD_ADC_READ\u003e: ...\n0x100a8874 \u003c_cros_hcmd_EC_CMD_BATTERY_CUT_OFF+4\u003e: ...\n0x100a8884 \u003c_cros_hcmd_EC_CMD_CHARGE_CONTROL+8\u003e: ...\n0x100a8894 \u003c_cros_hcmd_EC_CMD_CHARGE_PORT_COUNT\u003e: ...\n\nbut if I change the define to nest again we can get the actual value, and then they get sorted based on it:\n\n0x100a8864 \u003c_cros_hcmd_0x0000\u003e: 268961823       0       1       268961799\n0x100a8874 \u003c_cros_hcmd_0x0001+4\u003e:       1       1       269030433       2\n0x100a8884 \u003c_cros_hcmd_0x0002+8\u003e:       1       268961749       3       1\n0x100a8894 \u003c_cros_hcmd_0x0004\u003e: 269019151       4       1       269019185\n0x100a88a4 \u003c_cros_hcmd_0x0005+4\u003e:       5       1       269027149       6\n0x100a88b4 \u003c_cros_hcmd_0x0006+8\u003e:       1       268961673       8       3\n0x100a88c4 \u003c_cros_hcmd_0x000A\u003e: 268964393       10      1       269015683\n0x100a88d4 \u003c_cros_hcmd_0x000B+4\u003e:       11      1       268964341       13\n\nThe problem is that then we\u0027d be relying on those defines being in a consistent format (unless there\u0027s some linker or precompiler feature that I missed), so we would probably want some validation check as well. I think it\u0027s a good potential followup.",
+      "parentUuid": "385b2d3e_00ff5d36",
+      "revId": "31c74ba10e17c9c590bd2c8c2f73230c4a254269",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
