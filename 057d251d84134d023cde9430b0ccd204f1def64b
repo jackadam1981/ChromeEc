@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e674acc_db2e659a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-09T17:47:10Z",
+      "side": 1,
+      "message": "Change to:\nCONFIG_USB_PD_TCPM_RT1715 is already defined by the volteer baseboard header.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "057d251d84134d023cde9430b0ccd204f1def64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac4c302b_dd1d8697",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-09T17:47:10Z",
+      "side": 1,
+      "message": "LGTM, ready to submit after commit message fix.",
+      "revId": "057d251d84134d023cde9430b0ccd204f1def64b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
