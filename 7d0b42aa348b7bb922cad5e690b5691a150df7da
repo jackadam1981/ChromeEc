@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d6e63a76_5569d887",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-09T23:03:35Z",
+      "side": 1,
+      "message": "1. If you add a new CONFIG - it should be added to a couple of places (zephyr/kconfig, ec/include/config.h) \n2. Instead of changing the driver, a delay can be added in usbc_config.c of the board you\u0027re working on\n3. We are curious what should be the after-reset delay, maybe we should change the default for NCT38XX_RESET_POST_DELAY_MS. This change will affect all the boards that use NCT38XX, so we asked Nuvoton to clarify the boot time after reset. Hope you can access this bug - b/195984594 ",
+      "revId": "7d0b42aa348b7bb922cad5e690b5691a150df7da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7acbc45_ae58fc42",
         "filename": "driver/tcpm/nct38xx.h",
         "patchSetId": 1
