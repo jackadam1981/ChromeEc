@@ -214,13 +214,7 @@ config PLATFORM_EC_CONSOLE_CMD_HCDEBUG
 
 	    hcdebug [off | normal | every | params]
 
-	    off    - No host command debug messages are shown.
-	    normal - Display host commands receieved from the AP. Repeated
-	             commands are shown with a "+" and "++" symbol.
-	    every  - Display all host commands received from the AP, including
-	             repeated commands.
-	    params - Display all host commands and the parameters received from
-	             the AP.
+	  See PLATFORM_EC_HOSTCMD_DEBUG_MODE_DEFAULT for more detail.
 
 config PLATFORM_EC_CONSOLE_CMD_MEM
 	bool "Console command: md, rw"
@@ -390,6 +384,20 @@ config PLATFORM_EC_HOSTCMD_REGULATOR
 	  Enable host commands (EC_CMD_REGULATOR_) for controlling voltage
 	  regulator. The board should also implement board functions defined in
 	  include/regulator.h.
+
+config PLATFORM_EC_HOSTCMD_DEBUG_MODE_DEFAULT
+	int "Host command debug mode to use at startup"
+	depends on PLATFORM_EC_HOSTCMD
+	default 1
+	help
+	  Sets the value of the host command debug mode to use on startup.
+	    0 - off    - No host command debug messages are shown.
+	    1 - normal - Display host commands receieved from the AP. Repeated
+			 commands are shown with a "+" and "++" symbol.
+	    2 - every  - Display all host commands received from the AP,
+			 including repeated commands.
+	    3 - params - Display all host commands and the parameters received
+			 from the AP.
 
 config PLATFORM_EC_I2C
 	bool "I2C shim"
