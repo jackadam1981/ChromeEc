@@ -214,6 +214,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1dea8387_9a73271a",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-10T22:09:33Z",
+      "side": 1,
+      "message": "I forgot this sat, and it\u0027s not clear who\u0027s supposed to guide this in general (I didn\u0027t write any patches that broke or fixed things here -- I\u0027m just reviewing):\n\n@Rob: you might need to ask someone in particular if you want their help. e.g., maybe Guenter can help partially undo his change. (See below.)\n\n@Daisuke: My understanding is that for the most part, the kernel changes were concerning in-kernel users -- for in-kernel users, we never want to expose EC error codes beyond the edges of the EC API. So for example, when a cros-ec RTC driver exposes errors to user space because we failed to program the alarm correctly, then we want a Linux error code, not an EC error code. There is no case where we care what the precise EC error code was. Most other cases are similar.\n\nYou found one counter-example: cros_ec_get_host_event_wake_mask().\n\n\u003e I don\u0027t know everything about ioctl but am I missing anything?\n\nWell, for one, ioctl() has always reported error here, so to do otherwise would be a breaking change. (As in, the Thou Shalt Not Break User Space kind.)\n\nIn the same vein, apparently this was a breaking change, and we didn\u0027t realize it:\nhttps://git.kernel.org/linus/0d080459e813ce8076f183cc73a4c9b64a39a4d8\nSo IMO, we should just partially revert it -- we can go back to the old non-standard error reporting mechanism, at least for ioctl().\n\nI don\u0027t really buy your \"resource allocation\" argument. The kernel abstracts lots of things away from its users, including the fact that there are tons of ways that an EC-based operation can fail even if the underlying transport succeeds. An error is an error -- we shouldn\u0027t say the ioctl() succeeded if the EC choked on it, IMO. (Similarly, we don\u0027t say that, for example, a WiFi operation succeeded just because the PCIe bus transmitted the operation -- if the chip firmware choked because the arguments are invalid, we\u0027d still want to report \"EINVAL\" or \"ERANGE\" or similar, as appropriate.)",
+      "parentUuid": "edc0248b_09726da1",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
