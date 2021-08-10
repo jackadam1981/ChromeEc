@@ -385,7 +385,7 @@ config PLATFORM_EC_HOSTCMD_REGULATOR
 	  regulator. The board should also implement board functions defined in
 	  include/regulator.h.
 
-config PLATFORM_EC_HOSTCMD_DEBUG_MODE_DEFAULT
+config PLATFORM_EC_HOSTCMD_DEBUG_MODE
 	int "Host command debug mode to use at startup"
 	depends on PLATFORM_EC_HOSTCMD
 	default 1
