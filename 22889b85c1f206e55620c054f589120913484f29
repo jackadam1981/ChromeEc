@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5377e170_32766b3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-08-10T23:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b531504_ce3ecef4",
+      "revId": "22889b85c1f206e55620c054f589120913484f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbaf5b2b_0f72e0c6",
@@ -49,6 +67,30 @@
       "writtenOn": "2021-08-10T22:51:32Z",
       "side": 1,
       "message": "Name this PLATFORM_EC_HOSTCMD_DEBUG_MODE instead (remove _DEFAULT).  The config checking script looks for Kconfig name that just adds \"PLATFORM_EC_\" to the existing name from config.h",
+      "range": {
+        "startLine": 388,
+        "startChar": 7,
+        "endLine": 388,
+        "endChar": 45
+      },
+      "revId": "22889b85c1f206e55620c054f589120913484f29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36bc344b_9e0c31b7",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-08-10T23:10:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbaf5b2b_0f72e0c6",
       "range": {
         "startLine": 388,
         "startChar": 7,
