@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed68ff20_fbb7b7e2",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-10T22:50:33Z",
+      "side": 1,
+      "message": "do in a separate CL",
+      "revId": "892dac375ad588a4b66bf56028e3cc7c6f132cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0163abc_35ccde1a",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-10T22:50:33Z",
+      "side": 1,
+      "message": "separate CL",
+      "revId": "892dac375ad588a4b66bf56028e3cc7c6f132cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dbccfc1_d2e7ce0f",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-10T22:50:33Z",
+      "side": 1,
+      "message": "separate CL",
+      "revId": "892dac375ad588a4b66bf56028e3cc7c6f132cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec863574_50e09215",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-10T22:50:33Z",
+      "side": 1,
+      "message": "while you\u0027re fixing up style in the follow on, mind fixing up this if to have braces since the else does?",
+      "revId": "892dac375ad588a4b66bf56028e3cc7c6f132cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -142,6 +142,30 @@
       },
       "revId": "f1495c4981c840901da40d3889cb7bfbef156285",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb1b2dc3_1ee31923",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-10T22:50:33Z",
+      "side": 1,
+      "message": "sorry for the super nit :D",
+      "parentUuid": "ce12887a_37a6e9e7",
+      "range": {
+        "startLine": 277,
+        "startChar": 4,
+        "endLine": 277,
+        "endChar": 12
+      },
+      "revId": "f1495c4981c840901da40d3889cb7bfbef156285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
