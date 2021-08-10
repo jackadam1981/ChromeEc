@@ -70,6 +70,30 @@
       },
       "revId": "f1495c4981c840901da40d3889cb7bfbef156285",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a37449_8159154c",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-08-10T22:40:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4a2fb13a_250a3be4",
+      "range": {
+        "startLine": 277,
+        "startChar": 4,
+        "endLine": 277,
+        "endChar": 12
+      },
+      "revId": "f1495c4981c840901da40d3889cb7bfbef156285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
