@@ -118,6 +118,30 @@
       },
       "revId": "f1495c4981c840901da40d3889cb7bfbef156285",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce12887a_37a6e9e7",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-08-10T22:47:15Z",
+      "side": 1,
+      "message": "was working on the follow on... didn\u0027t know you wanted me to fix part and then later get the rest.",
+      "parentUuid": "0929a400_fbd2f4fb",
+      "range": {
+        "startLine": 277,
+        "startChar": 4,
+        "endLine": 277,
+        "endChar": 12
+      },
+      "revId": "f1495c4981c840901da40d3889cb7bfbef156285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
