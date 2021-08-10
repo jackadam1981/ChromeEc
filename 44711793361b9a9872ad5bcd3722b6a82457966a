@@ -51,6 +51,75 @@
       "parentUuid": "138787bc_bd38f877",
       "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8706f74_9beecece",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-10T22:08:05Z",
+      "side": 1,
+      "message": "stale comment. so, we never need multi-threaded behavior?",
+      "range": {
+        "startLine": 210,
+        "startChar": 20,
+        "endLine": 211,
+        "endChar": 37
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da2e8477_9cdfd386",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-10T22:08:05Z",
+      "side": 1,
+      "message": "naming nit: why _hw in the name? it auto-detects, can we name it SHA256_init()? same for all functions below: SHA1_hw_hash -\u003e SHA1_hash\n\niiuc already was discussed somewhere in previous comments. if so, my vote is for dropping \"hw\" from the names. btw, why add to the patch by renaming DCRYPTO_sha256_xxx into SHA256_hw_xxx? (and then creating function alias still to provide the old name). iiuc all we wanted to do with the interface is drop sw_required from DCRYPTO_SHA256_init. or am I wrong?",
+      "range": {
+        "startLine": 220,
+        "startChar": 11,
+        "endLine": 220,
+        "endChar": 14
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "396ff034_8b1f0604",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-10T22:08:05Z",
+      "side": 1,
+      "message": "what if there\u0027s a operation started between _init() and _hash() that results in hw_busy \u003d\u003d 1 by the time we call _hash()? then we initialize the structure for hw use and then do software hash operation with it.\n\nif we want to use this auto-detection, I suspect we need to encode if it is a hw-initialize or sw-initialized context in the context itself. ofc, if the code was always like that it\u0027s ok to keep it - we are not making it worse. but sounds like a potential bug. or is it what\u0027s meant by \"multi-threaded behavior\" - that there cannot be any ops between _init() and _hash() and _final()?",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 27
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
