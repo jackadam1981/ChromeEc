@@ -340,13 +340,14 @@ DECLARE_SAFE_CONSOLE_COMMAND(dcrypto_test, command_dcrypto_test, "",
 
 #define ECDSA_TEST_SLEEP_DELAY_IN_US 1000000
 
+
 static const p256_int r_golden = {
-	.a = { 0xebc04580, 0x996c8634, 0xeaff3cd6, 0x4af33b39, 0xa17da3fb,
-	       0x2c9054f4, 0x3b4dfb95, 0xb3bf339c },
+	.a = { 0xa918fd46, 0x36f61243, 0x30608192, 0x95e62228, 0x7d9ccf9b,
+	       0x2ad33fde, 0xa5568c91, 0x9f26c459 },
 };
 static const p256_int s_golden = {
-	.a = { 0xac457a6d, 0x8ca854ea, 0xa5877cc1, 0x17bd44f2, 0x77c4c11a,
-	       0xd55d07a0, 0x1efb1274, 0x94afb5c9 },
+	.a = { 0x0fa2e621, 0xb6df8c03, 0xb159c682, 0x26658b70, 0xbcf87d1e,
+	       0xe9d87a06, 0x28cd4d66, 0x6f439884 },
 };
 
 static int call_on_bigger_stack(uint32_t stack,
@@ -389,15 +390,11 @@ static int ecdsa_sign_go(p256_int *r, p256_int *s)
 	hmac_drbg_init(&drbg, r->a, sizeof(r->a), NULL, 0, NULL, 0);
 
 	/* pick a key */
-	ret = dcrypto_p256_pick(&drbg, &tmp);
-	if (ret) {
+	if (p256_hmac_drbg_generate(&drbg, &tmp) != HMAC_DRBG_SUCCESS) {
 		/* to be consistent with ecdsa_sign error return */
-		ret = 0;
-		goto exit;
+		drbg_exit(&drbg);
+		return 0;
 	}
-
-	/* add 1 */
-	p256_add_d(&tmp, 1, &d);
 
 	/* drbg_reseed with entropy and message */
 	hmac_drbg_reseed(&drbg, r->a, sizeof(r->a), s->a, sizeof(s->a), NULL,
@@ -405,7 +402,6 @@ static int ecdsa_sign_go(p256_int *r, p256_int *s)
 
 	ret = dcrypto_p256_ecdsa_sign(&drbg, &d, &message, r, s);
 
-exit:
 	drbg_exit(&drbg);
 	return ret;
 }
