@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e788840f_846c132b",
+        "filename": "board/cr50/dcrypto/sha1.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-10T03:24:23Z",
+      "side": 1,
+      "message": "ok, will update it. memcpy() is actually more compact than setting constants one after another.",
+      "parentUuid": "4ea7ef64_426c6bda",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "faecc0b4c8b3cbf23d0390a0915aefba155831a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "04f9076d_0c5a4e52",
         "filename": "board/cr50/dcrypto/sha_hw.c",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-10T02:49:27Z",
       "side": 1,
       "message": "please keep function name on the same line with the return type - makes code browsing a bit easier.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 53
+      },
+      "revId": "faecc0b4c8b3cbf23d0390a0915aefba155831a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5400a6ce_082c31eb",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-10T03:24:23Z",
+      "side": 1,
+      "message": "i\u0027d like too. it\u0027s clang-format. I found how to change this behavior, but need to adjust settings.",
+      "parentUuid": "04f9076d_0c5a4e52",
       "range": {
         "startLine": 147,
         "startChar": 0,
@@ -77,6 +125,30 @@
       "writtenOn": "2021-08-10T02:49:27Z",
       "side": 1,
       "message": "I still don\u0027t understand why do you need distinct sw and hw APIs? Why can there be a single API which during init grabs the hardware, if available, or goes the software way if the hw is taken. The rest of the operations would follow the pointers set by the init function. Why can this not work?",
+      "range": {
+        "startLine": 221,
+        "startChar": 5,
+        "endLine": 221,
+        "endChar": 19
+      },
+      "revId": "faecc0b4c8b3cbf23d0390a0915aefba155831a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2faa4ae2_da391b41",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-10T03:24:23Z",
+      "side": 1,
+      "message": "Because our build system somehow mix and match dcrypto.h when building RO part - it use board\u0027s dcrypto.h with chip/g/dcrypto code and it fails to compile. I tried to find where it happens, but it seems deep in the rules.",
+      "parentUuid": "9043a639_2a4c6ffb",
       "range": {
         "startLine": 221,
         "startChar": 5,
