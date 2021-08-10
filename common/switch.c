@@ -22,13 +22,11 @@
 
 static uint8_t *memmap_switches;
 
-/**
- * Update status of non-debounced switches.
- *
+/*
  * Note that deferred functions are called in the same context as lid and
  * power button changes, so we don't need a mutex.
  */
-static void switch_update(void)
+void switch_update(void)
 {
 	static uint8_t prev;
 

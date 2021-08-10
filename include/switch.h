@@ -22,4 +22,9 @@ void switch_interrupt(enum gpio_signal signal);
 static inline void switch_interrupt(enum gpio_signal signal) { }
 #endif  /* !CONFIG_SWITCH */
 
+/**
+ * Update status of non-debounced switches.
+ */
+void switch_update(void);
+
 #endif  /* __CROS_EC_SWITCH_H */
