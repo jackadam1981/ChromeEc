@@ -233,3 +233,21 @@ __attribute__((weak)) void gpio_set_wakepin(enum gpio_signal signal,
 }
 
 /*****************************************************************************/
+
+__overridable int board_wp_gpio_get_level(void)
+{
+#ifdef CONFIG_WP_ACTIVE_HIGH
+	return gpio_get_level(GPIO_WP)
+#else
+	return !gpio_get_level(GPIO_WP_L);
+#endif
+}
+
+__overridable void wp_gpio_enable_interrupt(void)
+{
+#ifdef CONFIG_WP_ACTIVE_HIGH
+	gpio_enable_interrupt(GPIO_WP);
+#else
+	gpio_enable_interrupt(GPIO_WP_L);
+#endif
+}

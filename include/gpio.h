@@ -404,4 +404,16 @@ int signal_is_gpio(int signal);
  */
 void gpio_set_wakepin(enum gpio_signal signal, uint32_t flags);
 
+/**
+ * Overridable function to get the write protect GPIO level
+ *
+ * @return Write protect GPIO status
+ */
+__override_proto int board_wp_gpio_get_level(void);
+
+/**
+ * Overridable function to enable write protect GPIO interrupt
+ */
+__override_proto void wp_gpio_enable_interrupt(void);
+
 #endif  /* __CROS_EC_GPIO_H */

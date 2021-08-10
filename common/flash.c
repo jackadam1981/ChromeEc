@@ -747,11 +747,8 @@ uint32_t crec_flash_get_protect(void)
 	/* Read write protect GPIO */
 #ifdef CONFIG_WP_ALWAYS
 	flags |= EC_FLASH_PROTECT_GPIO_ASSERTED;
-#elif defined(CONFIG_WP_ACTIVE_HIGH)
-	if (gpio_get_level(GPIO_WP))
-		flags |= EC_FLASH_PROTECT_GPIO_ASSERTED;
 #else
-	if (!gpio_get_level(GPIO_WP_L))
+	if (board_wp_gpio_get_level())
 		flags |= EC_FLASH_PROTECT_GPIO_ASSERTED;
 #endif
 
