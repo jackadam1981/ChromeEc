@@ -197,13 +197,6 @@ static int rt1718s_init(int port)
 		need_sw_reset = false;
 	}
 
-	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
-		/* Set vbus frs low unmasked, Rx frs unmasked */
-		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT_MASK1,
-					RT1718S_RT_MASK1_M_VBUS_FRS_LOW |
-					RT1718S_RT_MASK1_M_RX_FRS,
-					0xFF));
-
 
 	RETURN_ERROR(rt1718s_bc12_init(port));
 
@@ -328,22 +321,51 @@ static void rt1718s_bc12_usb_charger_task(const int port)
 
 void rt1718s_vendor_defined_alert(int port)
 {
-	int rv, value;
+	int rv, int6;
 
 	/* Process BC12 alert */
-	rv = rt1718s_read8(port, RT1718S_RT_INT6, &value);
+	rv = rt1718s_read8(port, RT1718S_RT_INT6, &int6);
 	if (rv)
 		return;
 
 	/* clear BC12 alert */
-	rv = rt1718s_write8(port, RT1718S_RT_INT6, value);
+	rv = rt1718s_write8(port, RT1718S_RT_INT6, int6);
 	if (rv)
 		return;
 
 	/* check snk done */
-	if (value & RT1718S_RT_INT6_INT_BC12_SNK_DONE)
+	if (int6 & RT1718S_RT_INT6_INT_BC12_SNK_DONE)
 		task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
 			       USB_CHG_EVENT_BC12);
+
+	if (IS_ENABLED(CONFIG_USB_PD_FRS)) {
+		int int1, mask1;
+
+		rv = rt1718s_read8(port, RT1718S_RT_INT1, &int1);
+		if (rv)
+			return;
+		rv = rt1718s_read8(port, RT1718S_RT_MASK1, &mask1);
+		if (rv)
+			return;
+
+		if (int1)
+			CPRINTS("\x1b[1;31mint1 = %02x\x1b[m", int1);
+
+		if (int1 & BIT(6) & mask1) {
+			CPRINTS("\x1b[1;31mpd_got_frs_signal\x1b[m");
+			pd_got_frs_signal(port);
+			rv = rt1718s_write8(port, RT1718S_RT_INT1, 0b11000000);
+			if (rv)
+				return;
+		}
+		{
+			int old_gp1, old_gp2;
+
+			rt1718s_read8(port, RT1718S_GPIO1_CTRL, &old_gp1);
+			rt1718s_read8(port, RT1718S_GPIO2_CTRL, &old_gp2);
+			CPRINTS("\x1b[1;32mpd_got_frs_signal %02X %02X\x1b[m", old_gp1, old_gp2);
+		}
+	}
 
 	/* clear the alerts from rt1718s_workaround() */
 	rv = rt1718s_write8(port, RT1718S_RT_INT2, 0xFF);

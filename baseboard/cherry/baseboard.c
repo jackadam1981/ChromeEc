@@ -382,9 +382,17 @@ int rt1718s_gpio_ctrl(enum rt1718s_gpio_state state)
 {
 	const int port = 1;
 
+	{
+		int old_gp1, old_gp2;
+
+		rt1718s_read8(port, RT1718S_GPIO1_CTRL, &old_gp1);
+		rt1718s_read8(port, RT1718S_GPIO2_CTRL, &old_gp2);
+		CPRINTS("\x1b[1;32mrt1718s_gpio_ctrl %02X %02X\x1b[m", old_gp1, old_gp2);
+	}
 	switch (state) {
 	case RT1718S_GPIO_DISABLED:
 		/* gpio1 high, gpio2 low */
+		CPRINTS("\x1b[1;32mRT1718S_GPIO_DISABLED\x1b[m");
 		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO1_CTRL,
 				RT1718S_GPIOX_CTRL_GPIOX_O, 0xFF));
 		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO2_CTRL,
@@ -392,6 +400,7 @@ int rt1718s_gpio_ctrl(enum rt1718s_gpio_state state)
 		break;
 	case RT1718S_GPIO_ENABLE_SINK:
 		/* gpio1/2 low */
+		CPRINTS("\x1b[1;32mRT1718S_GPIO_SINK\x1b[m");
 		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO1_CTRL,
 				RT1718S_GPIOX_CTRL_GPIOX_O, 0x00));
 		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO2_CTRL,
@@ -399,6 +408,7 @@ int rt1718s_gpio_ctrl(enum rt1718s_gpio_state state)
 		break;
 	case RT1718S_GPIO_ENABLE_SOURCE:
 		/* gpio1/2 high */
+		CPRINTS("\x1b[1;32mRT1718S_GPIO_SOURCE\x1b[m");
 		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO1_CTRL,
 				RT1718S_GPIOX_CTRL_GPIOX_O, 0xFF));
 		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO2_CTRL,
@@ -411,16 +421,22 @@ int rt1718s_gpio_ctrl(enum rt1718s_gpio_state state)
 
 __override int board_rt1718s_init(int port)
 {
-	/* set GPIO1 is push pull, as output, output low. */
+	/* set GPIO 1~3 as push pull, as output, output low. */
 	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO1_CTRL,
 			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE |
 			RT1718S_GPIOX_CTRL_GPIOX_O,
 			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE));
-	/* set GPIO2 is push pull, as output, output low. */
 	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO2_CTRL,
 			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE |
 			RT1718S_GPIOX_CTRL_GPIOX_O,
 			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE));
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO3_CTRL,
+			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE |
+			RT1718S_GPIOX_CTRL_GPIOX_O,
+			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE));
+
+	RETURN_ERROR(rt1718s_update_bits8(port, 0xEA, BIT(6), 0xFF));
+	RETURN_ERROR(rt1718s_update_bits8(port, 0xEB, BIT(6), 0xFF));
 
 	/* Turn on SBU switch */
 	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT2_SBU_CTRL_01,
@@ -485,6 +501,7 @@ int board_set_active_charge_port(int port)
 	int i;
 	bool is_valid_port = (port == 0 || port == 1);
 
+	CPRINTS("\x1b[1;33mboard_set_active_charge_port %d\x1b[m", port);
 	if (!is_valid_port && port != CHARGE_PORT_NONE)
 		return EC_ERROR_INVAL;
 
@@ -597,3 +614,20 @@ static void baseboard_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT - 1);
+
+__override int board_pd_set_frs_enable(int port, int enable)
+{
+	int mask_action = enable ? 0xFF : 0;
+
+	if (port == 0)
+		return EC_SUCCESS;
+
+	CPRINTS("\x1b[1;33mboard_pd_set_frs_enable(%d, %d)\x1b[m", port, enable);
+	RETURN_ERROR(rt1718s_update_bits8(port, 0xCE,
+			BIT(2) | BIT(3),
+			mask_action));
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO3_CTRL,
+			RT1718S_GPIOX_CTRL_GPIOX_O, mask_action));
+
+	return EC_SUCCESS;
+}
