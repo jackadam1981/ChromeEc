@@ -1016,6 +1016,9 @@ void tpm_task(void *u)
 		}
 
 		command_code = be32toh(tpmh->command_code);
+		cprints(CC_TASK, "%s: received fifo command 0x%04x",
+			__func__, command_code);
+
 		CPRINTF("%s: received fifo command 0x%04x\n",
 			__func__, command_code);
 
@@ -1044,6 +1047,15 @@ void tpm_task(void *u)
 				       response_size);
 			} else {
 #ifdef ENABLE_TPM
+				/* test command timeout when user login */
+				if (command_code == 0x16b) {
+					static int first_time = 1;
+
+					if (first_time) {
+						msleep(300 * 1000);
+						first_time = 0;
+					}
+				}
 				ExecuteCommand(tpm_.fifo_write_index,
 					       (uint8_t *)tpmh,
 					       &response_size,
