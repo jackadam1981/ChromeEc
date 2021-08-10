@@ -7,6 +7,7 @@
 
 #include "adc_chip.h"
 #include "button.h"
+#include "cbi_ssfc.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "charger.h"
@@ -37,6 +38,7 @@
 #include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_flags.h"
 #include "usb_pd_tcpm.h"
 
 #define CPRINTUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -381,6 +383,29 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	},
 };
 
+static void board_enable_usb_pd_flags(void)
+{
+	CPRINTS("USB PD Flags:");
+	if (get_cbi_ssfc_charger_type() == SSFC_CHARGER_RAA489000)
+	{
+		CPRINTS("Charger Type: RAA489000");
+		set_usb_pd_vbus_detect(USB_PD_VBUS_DETECT_TCPC);
+		set_usb_pd_discharge(USB_PD_DISCHARGE_TCPC);
+
+		CPRINTS("USB_PD_DETECT: TCPC");
+		CPRINTS("USB_PD_DISCHARGE: TCPC");
+	}
+	else if (get_cbi_ssfc_charger_type() == SSFC_CHARGER_SM5803)
+	{
+		CPRINTS("Charger Type: SM5803");
+		set_usb_pd_vbus_detect(USB_PD_VBUS_DETECT_CHARGER);
+		set_usb_pd_discharge(USB_PD_DISCHARGE_GPIO);
+
+		CPRINTS("USB_PD_DETECT: CHARGER");
+		CPRINTS("USB_PD_DISCHARGE: GPIO");
+	}
+}
+
 void board_init(void)
 {
 	int on;
@@ -405,6 +430,7 @@ void board_init(void)
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
 			      CHIPSET_STATE_SOFT_OFF);
 	board_power_5v_enable(on);
+	board_enable_usb_pd_flags();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
