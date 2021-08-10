@@ -60,7 +60,7 @@
 	named-i2c-ports {
 		compatible = "named-i2c-ports";
 
-		power {
+		i2c_power: power {
 			i2c-port = <&i2c0_0>;
 			enum-name = "I2C_PORT_POWER";
 			label = "POWER";
