@@ -901,6 +901,8 @@ int pd_set_frs_enable(int port, int enable)
 		rv = tcpm_set_frs_enable(port, enable);
 	if (rv == EC_SUCCESS)
 		rv = board_pd_set_frs_enable(port, enable);
+	CPRINTS("\x1b[1;31mpd_set_frs_enable(%d, %d) -> %d\x1b[m",
+			port, enable, rv);
 	return rv;
 }
 #endif /* defined(CONFIG_USB_PD_FRS) */

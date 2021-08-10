@@ -411,13 +411,16 @@ int rt1718s_gpio_ctrl(enum rt1718s_gpio_state state)
 
 __override int board_rt1718s_init(int port)
 {
-	/* set GPIO1 is push pull, as output, output low. */
+	/* set GPIO 1~3 as push pull, as output, output low. */
 	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO1_CTRL,
 			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE |
 			RT1718S_GPIOX_CTRL_GPIOX_O,
 			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE));
-	/* set GPIO2 is push pull, as output, output low. */
 	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO2_CTRL,
+			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE |
+			RT1718S_GPIOX_CTRL_GPIOX_O,
+			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE));
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_GPIO3_CTRL,
 			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE |
 			RT1718S_GPIOX_CTRL_GPIOX_O,
 			RT1718S_GPIOX_OD_N | RT1718S_GPIOX_OE));
@@ -597,3 +600,12 @@ static void baseboard_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT - 1);
+
+__override int board_pd_set_frs_enable(int port, int enable)
+{
+	if (port == 0)
+		return EC_SUCCESS;
+
+	return rt1718s_update_bits8(port, RT1718S_GPIO3_CTRL,
+			RT1718S_GPIOX_CTRL_GPIOX_O, enable ? 0xFF : 0);
+}
