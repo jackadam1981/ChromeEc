@@ -446,6 +446,8 @@ def main():
   # Make sure the servo MCU is in RO
   print("===== Rebooting =====")
   do_with_retries(select, tinys, 'ro')
+  # Perform additional reboot to free USB/UART resources, taken by tiny servod.
+  tinys.pty._issue_cmd("reboot")
 
   print("===== Finished =====")
 
