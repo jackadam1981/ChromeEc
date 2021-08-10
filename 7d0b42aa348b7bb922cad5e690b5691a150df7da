@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9f558b8_cbdb997d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-10T01:59:55Z",
+      "side": 1,
+      "message": "sorry about the access issue. we filed that bug against \"brya\" because\nthis is something we should clarify in the reference design. we limit\naccess to any specific bug to a single ODM. we could create a new bug\nfor quanta, but i think it\u0027ll be confusing because all the info would\nneed to be duplicated. we will update brya when we have the details\nfrom novoton.",
+      "parentUuid": "7ab340b1_91478e99",
+      "revId": "7d0b42aa348b7bb922cad5e690b5691a150df7da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7acbc45_ae58fc42",
         "filename": "driver/tcpm/nct38xx.h",
         "patchSetId": 1
