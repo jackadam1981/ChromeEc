@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb729c01_cd3b14a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-10T02:49:27Z",
+      "side": 1,
+      "message": "thank you for fixing the API to use fixed size structures, this is a tedious massive change, but it will improve robustness of the code.\n\nA few more comments.",
+      "revId": "faecc0b4c8b3cbf23d0390a0915aefba155831a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea7ef64_426c6bda",
+        "filename": "board/cr50/dcrypto/sha1.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-10T02:49:27Z",
+      "side": 1,
+      "message": "does not look like it is done, should be sizeof(ctx-\u003estate)\n\nThere is a lot of memcpy invocations being added by this patch ;)",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "faecc0b4c8b3cbf23d0390a0915aefba155831a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f9076d_0c5a4e52",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-10T02:49:27Z",
+      "side": 1,
+      "message": "please keep function name on the same line with the return type - makes code browsing a bit easier.",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 53
+      },
+      "revId": "faecc0b4c8b3cbf23d0390a0915aefba155831a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9043a639_2a4c6ffb",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-10T02:49:27Z",
+      "side": 1,
+      "message": "I still don\u0027t understand why do you need distinct sw and hw APIs? Why can there be a single API which during init grabs the hardware, if available, or goes the software way if the hw is taken. The rest of the operations would follow the pointers set by the init function. Why can this not work?",
+      "range": {
+        "startLine": 221,
+        "startChar": 5,
+        "endLine": 221,
+        "endChar": 19
+      },
+      "revId": "faecc0b4c8b3cbf23d0390a0915aefba155831a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
