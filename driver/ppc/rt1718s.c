@@ -10,6 +10,7 @@
 #include "console.h"
 #include "driver/ppc/rt1718s.h"
 #include "driver/tcpm/tcpci.h"
+#include "hooks.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -183,6 +184,29 @@ static int rt1718s_set_polarity(int port, int polarity)
 }
 #endif
 
+#ifdef CONFIG_USB_PD_FRS_PPC
+static int rt1718s_set_frs_enable(int port, int enable)
+{
+	/*
+	 * Use write instead of update to save 2 i2c read.
+	 * Assume other bits are at their reset value.
+	 */
+	int frs_ctrl2 = 0x10, vbus_ctrl_en = 0x3F;
+
+	if (enable) {
+		frs_ctrl2 |= RT1718S_FRS_CTRL2_RX_FRS_EN;
+		frs_ctrl2 |= RT1718S_FRS_CTRL2_VBUS_FRS_EN;
+
+		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO2_VBUS_PATH_EN;
+		vbus_ctrl_en |= RT1718S_VBUS_CTRL_EN_GPIO1_VBUS_PATH_EN;
+	}
+
+	RETURN_ERROR(write_reg(port, RT1718S_FRS_CTRL2, frs_ctrl2));
+	RETURN_ERROR(write_reg(port, RT1718S_VBUS_CTRL_EN, vbus_ctrl_en));
+	return EC_SUCCESS;
+}
+#endif
+
 const struct ppc_drv rt1718s_ppc_drv = {
 	.init = &rt1718s_init,
 	.is_sourcing_vbus = &rt1718s_is_sourcing_vbus,
@@ -201,5 +225,8 @@ const struct ppc_drv rt1718s_ppc_drv = {
 #endif
 #ifdef CONFIG_USBC_PPC_VCONN
 	.set_vconn = &tcpci_tcpm_set_vconn,
+#endif
+#ifdef CONFIG_USB_PD_FRS_PPC
+	.set_frs_enable = rt1718s_set_frs_enable,
 #endif
 };
