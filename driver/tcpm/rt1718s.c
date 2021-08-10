@@ -47,6 +47,17 @@ int rt1718s_read8(int port, int reg, int *val)
 	return tcpc_read(port, reg, val);
 }
 
+int rt1718s_read16(int port, int reg, int *val)
+{
+	if (reg > 0xFF) {
+		return i2c_read_offset16(
+			tcpc_config[port].i2c_info.port,
+			tcpc_config[port].i2c_info.addr_flags,
+			reg, val, 2);
+	}
+	return tcpc_read16(port, reg, val);
+}
+
 int rt1718s_update_bits8(int port, int reg, int mask, int val)
 {
 	int reg_val;
@@ -384,6 +395,19 @@ static int rt1718s_enter_low_power_mode(int port)
 	return tcpci_enter_low_power_mode(port);
 }
 #endif
+
+int rt1718s_get_vbus_voltage(int port)
+{
+	int voltage;
+
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT2_ADC_CTRL_1,
+					  RT1718S_RT2_ADC_CH00_EN, 0xFF));
+	RETURN_ERROR(rt1718s_read16(port, RT1718S_RT2_ADC_CH00_VOL, &voltage));
+
+	voltage = voltage * 12.5;
+
+	return voltage;
+}
 
 /* RT1718S is a TCPCI compatible port controller */
 const struct tcpm_drv rt1718s_tcpm_drv = {

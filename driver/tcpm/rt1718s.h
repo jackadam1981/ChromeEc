@@ -156,12 +156,20 @@
 #define RT1718S_RT2_BC12_SRC_FUNC_SRC_MODE_SEL_BC12_DCP	0x20
 #define RT1718S_RT2_BC12_SRC_FUNC_WAIT_VBUS_ON		BIT(0)
 
+#define RT1718S_RT2_ADC_CTRL_1				0xF2A0
+#define RT1718S_RT2_ADC_CH00_EN				BIT(0)
+
+/* VBUS1, 12.5mV/LSB */
+#define RT1718S_RT2_ADC_CH00_VOL			0xF2A6
+
 extern const struct tcpm_drv rt1718s_tcpm_drv;
 extern const struct bc12_drv rt1718s_bc12_drv;
 
 int rt1718s_write8(int port, int reg, int val);
 int rt1718s_read8(int port, int reg, int *val);
+int rt1718s_read16(int port, int reg, int *val);
 int rt1718s_update_bits8(int port, int reg, int mask, int val);
+int rt1718s_get_vbus_voltage(int port);
 __override_proto int board_rt1718s_init(int port);
 
 #endif /* __CROS_EC_USB_PD_TCPM_MT6370_H */
