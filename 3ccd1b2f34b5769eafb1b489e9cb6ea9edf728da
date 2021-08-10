@@ -238,6 +238,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "112c4a51_292fc99d",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-10T22:43:12Z",
+      "side": 1,
+      "message": "\u003e Well, for one, ioctl() has always reported error here, so to do otherwise would be a breaking change. (As in, the Thou Shalt Not Break User Space kind.)\n\nActually: I\u0027m lost. There are no specific references here about what exactly broke -- did anyone bisect (or similar) and point at a specific commit? IIUC, it\u0027s this commit that was the problem:\n\nhttps://git.kernel.org/linus/413dda8f2c6f1ba90e93ba7b4214b1d8cf8ec171\nplatform/chrome: cros_ec_chardev: Use cros_ec_cmd_xfer_status helper\n\nSo the simple answer is that we should go back to that behavior, which involves undoing a few things to reintroduce the cros_ec_cmd_xfer() helper.",
+      "parentUuid": "1dea8387_9a73271a",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
