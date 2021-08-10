@@ -4,9 +4,17 @@
  */
 
 / {
+	/*
 	switchcap {
 		compatible = "switchcap-gpio";
 		enable-pin = <&gpio_switchcap_en>;
 		power-good-pin = <&gpio_switchcap_power_good>;
+	};
+	*/
+	switchcap {
+		compatible = "switchcap-ln9310";
+		enable-l-pin = <&gpio_switchcap_en>;
+		port = <&i2c_power>;
+		addr-flags = "LN9310_I2C_ADDR_0_FLAGS";
 	};
 };
