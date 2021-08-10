@@ -1,0 +1,74 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13884efd_4128fbca",
+        "filename": "zephyr/dts/bindings/keyboard/cros-keyscan.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-10T16:46:34Z",
+      "side": 1,
+      "message": "Use standard copyright style, no SPDX identifiers:\n\n # Copyright 2021 The Chromium OS Authors. All rights reserved.\n # Use of this source code is governed by a BSD-style license that can be\n # found in the LICENSE file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 37
+      },
+      "revId": "3172b04cf96a0d3035a4369371fbf70f4a97ea81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf2a4398_80ffcf50",
+        "filename": "zephyr/dts/bindings/keyboard/cros-keyscan.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-10T16:46:34Z",
+      "side": 1,
+      "message": "But it\u0027s used in common code? (src/shim/keyscan.c)?",
+      "range": {
+        "startLine": 4,
+        "startChar": 12,
+        "endLine": 4,
+        "endChar": 26
+      },
+      "revId": "3172b04cf96a0d3035a4369371fbf70f4a97ea81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0df8651d_3e3a9c76",
+        "filename": "zephyr/shim/src/keyscan.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-10T16:46:34Z",
+      "side": 1,
+      "message": "\u003e \"defaul\" is a possible misspelling of \"default\".\n\nPlease fix.",
+      "parentUuid": "6cc6a4b4_b7ad81f8",
+      "range": {
+        "startLine": 22,
+        "startChar": 16,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "3172b04cf96a0d3035a4369371fbf70f4a97ea81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
