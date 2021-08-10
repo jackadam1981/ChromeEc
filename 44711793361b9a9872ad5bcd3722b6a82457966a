@@ -16,6 +16,23 @@
       "message": "addressed comments and rebased",
       "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "138787bc_bd38f877",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-10T18:11:44Z",
+      "side": 1,
+      "message": "Ok, I\u0027ll let Andrey call the SW vs HW API, I think one should be enough, and the fact that HW silently falls back to SW does not make things clearer.\n\nPlease re-run the tests before uploading.",
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
