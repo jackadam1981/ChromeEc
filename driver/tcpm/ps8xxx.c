@@ -75,7 +75,7 @@ static uint16_t product_id[CONFIG_USB_PD_PORT_MAX_COUNT];
  *
  * See b/171430855 for details.
  */
-static bool ps8815_role_control_delay[CONFIG_USB_PD_PORT_MAX_COUNT];
+static uint8_t ps8xxx_role_control_delay_ms[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 /*
  * b/178664884, on PS8815, firmware revision 0x10 and older can report an
@@ -436,6 +436,15 @@ static int ps8xxx_tcpm_release(int port)
 	return tcpci_tcpm_release(port);
 }
 
+static void ps8xxx_role_control_delay(int port)
+{
+	int delay;
+
+	delay = ps8xxx_role_control_delay_ms[port];
+	if (delay)
+		msleep(delay);
+}
+
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 static int ps8xxx_set_role_ctrl(int port, enum tcpc_drp drp,
 	enum tcpc_rp_value rp, enum tcpc_cc_pull pull)
@@ -448,8 +457,7 @@ static int ps8xxx_set_role_ctrl(int port, enum tcpc_drp drp,
 	 * b/171430855 delay 1 ms after ROLE_CONTROL updates to prevent
 	 * transmit buffer corruption
 	 */
-	if (ps8815_role_control_delay[port])
-		msleep(1);
+	ps8xxx_role_control_delay(port);
 
 	return rv;
 }
@@ -667,16 +675,14 @@ static int ps8xxx_dci_disable(int port)
 	return EC_ERROR_INVAL;
 }
 
-__maybe_unused static void ps8815_transmit_buffer_workaround_check(int port)
+__maybe_unused static int ps8815_transmit_buffer_workaround_check(int port)
 {
 	int p1_addr;
 	int val;
 	int status;
 
-	ps8815_role_control_delay[port] = false;
-
 	if (product_id[port] != PS8815_PRODUCT_ID)
-		return;
+		return EC_SUCCESS;
 
 	/* P1 registers are always accessible on PS8815 */
 	p1_addr = PS8751_P3_TO_P1_FLAGS(tcpc_config[port].i2c_info.addr_flags);
@@ -684,16 +690,18 @@ __maybe_unused static void ps8815_transmit_buffer_workaround_check(int port)
 	status = tcpc_addr_read16(port, p1_addr, PS8815_P1_REG_HW_REVISION,
 				  &val);
 	if (status != EC_SUCCESS)
-		return;
+		return status;
 
 	switch (val) {
 	case 0x0a00:
 	case 0x0a01:
-		ps8815_role_control_delay[port] = true;
+		ps8xxx_role_control_delay_ms[port] = 1;
 		break;
 	default:
 		break;
 	}
+
+	return EC_SUCCESS;
 }
 
 __maybe_unused static int ps8815_disable_rp_detect_workaround_check(int port)
@@ -729,7 +737,9 @@ static int ps8xxx_tcpm_init(int port)
 	product_id[port] = board_get_ps8xxx_product_id(port);
 
 	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8815)) {
-		ps8815_transmit_buffer_workaround_check(port);
+		status = ps8815_transmit_buffer_workaround_check(port);
+		if (status != EC_SUCCESS)
+			return status;
 		status = ps8815_disable_rp_detect_workaround_check(port);
 		if (status != EC_SUCCESS)
 			return status;
@@ -804,8 +814,7 @@ static int ps8xxx_tcpm_set_cc(int port, int pull)
 	 * b/171430855 delay 1 ms after ROLE_CONTROL updates to prevent
 	 * transmit buffer corruption
 	 */
-	if (ps8815_role_control_delay[port])
-		msleep(1);
+	ps8xxx_role_control_delay(port);
 
 	return rv;
 }
