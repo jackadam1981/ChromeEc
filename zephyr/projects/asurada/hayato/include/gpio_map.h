@@ -42,7 +42,7 @@
 	GPIO_INT(GPIO_POWER_BUTTON_L,					\
 		 GPIO_INT_EDGE_BOTH, power_button_interrupt)		\
 	GPIO_INT(GPIO_EC_IMU_INT_L,					\
-		 GPIO_INT_EDGE_FALLING, bmi160_interrupt)		\
+		 GPIO_INT_EDGE_FALLING, motion_interrupt)		\
 	GPIO_INT(GPIO_LID_ACCEL_INT_L,					\
 		 GPIO_INT_EDGE_FALLING, lis2dw12_interrupt)		\
 	GPIO_INT(GPIO_TABLET_MODE_L,					\

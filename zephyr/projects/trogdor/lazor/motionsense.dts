@@ -120,6 +120,7 @@
 			port = <&i2c_sensor>;
 			rot-standard-ref = <&base_rot_ref>;
 			drv-data = <&bmi160_data>;
+			interrupt-func = "bmi160_interrupt";
 			configs {
 				compatible =
 					"cros-ec,motionsense-sensor-config";
