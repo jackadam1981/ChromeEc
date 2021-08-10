@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e4a229b_f59bffd3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-08-10T23:05:43Z",
+      "side": 1,
+      "message": "I think this CL may create problem for Volteer build since delbin_npcx796fc is still being referenced in project\u0027s config.star. ",
+      "revId": "e8a3fc5d8dbc070aa1c08381ce25dac1c294d1bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
