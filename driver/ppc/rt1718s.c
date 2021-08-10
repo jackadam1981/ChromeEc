@@ -10,6 +10,7 @@
 #include "console.h"
 #include "driver/ppc/rt1718s.h"
 #include "driver/tcpm/tcpci.h"
+#include "hooks.h"
 #include "usbc_ppc.h"
 #include "util.h"
 
@@ -183,6 +184,15 @@ static int rt1718s_set_polarity(int port, int polarity)
 }
 #endif
 
+static int rt1718s_set_frs_enable(int port, int enable)
+{
+	RETURN_ERROR(write_reg(port, RT1718S_FRS_CTRL2,
+				enable ? 0x58 : 0x10));
+	RETURN_ERROR(write_reg(port, 0xEC,
+				enable ? 0xFF : 0x3F));
+	return EC_SUCCESS;
+}
+
 const struct ppc_drv rt1718s_ppc_drv = {
 	.init = &rt1718s_init,
 	.is_sourcing_vbus = &rt1718s_is_sourcing_vbus,
@@ -202,4 +212,5 @@ const struct ppc_drv rt1718s_ppc_drv = {
 #ifdef CONFIG_USBC_PPC_VCONN
 	.set_vconn = &tcpci_tcpm_set_vconn,
 #endif
+	.set_frs_enable = rt1718s_set_frs_enable,
 };

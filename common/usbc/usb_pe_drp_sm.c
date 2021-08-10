@@ -905,6 +905,7 @@ void pd_got_frs_signal(int port)
 		PE_SET_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_SIGNALED);
 	else
 		pd_set_error_recovery(port);
+	CPRINTS("\x1b[1;31m%s %d\x1b[m", __func__, port);
 
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
