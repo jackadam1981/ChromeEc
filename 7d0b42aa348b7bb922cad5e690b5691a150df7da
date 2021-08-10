@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ab340b1_91478e99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-08-10T01:45:25Z",
+      "side": 1,
+      "message": "I cannot access the bug. I am wating the confirm once Nuvton feedbacked. Look likes the single channel and dual channel after-reset delay are not the same.",
+      "parentUuid": "d6e63a76_5569d887",
+      "revId": "7d0b42aa348b7bb922cad5e690b5691a150df7da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a7acbc45_ae58fc42",
         "filename": "driver/tcpm/nct38xx.h",
         "patchSetId": 1
