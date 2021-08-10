@@ -203,6 +203,7 @@ void pd_power_supply_reset(int port)
 {
 	int prev_en;
 
+	CPRINTS("pd_power_supply_reset");
 	prev_en = ppc_is_sourcing_vbus(port);
 
 	/* Disable VBUS. */
@@ -229,6 +230,7 @@ int pd_set_power_supply_ready(int port)
 {
 	int rv;
 
+	CPRINTS("pd_power_supply_ready");
 	/* Disable charging. */
 	rv = ppc_vbus_sink_enable(port, 0);
 	if (rv)
