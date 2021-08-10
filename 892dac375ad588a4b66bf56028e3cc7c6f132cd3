@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1730ad0_11e13e89",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-08-10T23:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed68ff20_fbb7b7e2",
+      "revId": "892dac375ad588a4b66bf56028e3cc7c6f132cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0163abc_35ccde1a",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-10T22:50:33Z",
       "side": 1,
       "message": "separate CL",
+      "revId": "892dac375ad588a4b66bf56028e3cc7c6f132cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ade73d_ed4f6ed2",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-08-10T23:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0163abc_35ccde1a",
       "revId": "892dac375ad588a4b66bf56028e3cc7c6f132cd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -52,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5bf0c5a_a419ccfb",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-08-10T23:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5dbccfc1_d2e7ce0f",
+      "revId": "892dac375ad588a4b66bf56028e3cc7c6f132cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec863574_50e09215",
@@ -65,6 +119,24 @@
       "writtenOn": "2021-08-10T22:50:33Z",
       "side": 1,
       "message": "while you\u0027re fixing up style in the follow on, mind fixing up this if to have braces since the else does?",
+      "revId": "892dac375ad588a4b66bf56028e3cc7c6f132cd3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecc39023_a0b60ce7",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-08-10T23:02:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec863574_50e09215",
       "revId": "892dac375ad588a4b66bf56028e3cc7c6f132cd3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
