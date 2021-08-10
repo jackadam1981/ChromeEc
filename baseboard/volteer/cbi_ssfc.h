@@ -44,7 +44,7 @@ union volteer_cbi_ssfc {
 		enum ec_ssfc_base_sensor base_sensor : 3;
 		enum ec_ssfc_lid_sensor lid_sensor : 3;
 		enum ec_ssfc_lightbar lightbar : 2;
-		uint32_t reserved_2 : 24;
+		uint32_t reserved_2 : 26;
 	};
 	uint32_t raw_value;
 };

@@ -27,6 +27,7 @@ DECLARE_HOOK(HOOK_INIT, cbi_ssfc_init, HOOK_PRIO_FIRST);
 
 enum ec_ssfc_base_sensor get_cbi_ssfc_base_sensor(void)
 {
+
 	return cached_ssfc.base_sensor;
 }
 
@@ -38,4 +39,4 @@ enum ec_ssfc_lid_sensor get_cbi_ssfc_lid_sensor(void)
 enum ec_ssfc_lightbar get_cbi_ssfc_lightbar(void)
 {
 	return cached_ssfc.lightbar;
-}
+
