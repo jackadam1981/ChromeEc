@@ -168,6 +168,7 @@ ifneq ($(CONFIG_USB_PD_TCPMV1),)
 common-$(CONFIG_USB_POWER_DELIVERY)+=usb_pd_protocol.o usb_pd_policy.o
 endif
 common-$(CONFIG_USB_PD_DUAL_ROLE)+=usb_pd_dual_role.o
+common-$(CONFIG_USB_PD_FLAGS)+=usb_pd_flags.o
 common-$(CONFIG_USB_PD_HOST_CMD)+=usb_pd_host_cmd.o
 common-$(CONFIG_USB_PD_CONSOLE_CMD)+=usb_pd_console_cmd.o
 endif

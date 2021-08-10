@@ -29,6 +29,7 @@
 #include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_flags.h"
 #include "usb_pd_tcpm.h"
 #include "usb_pd_tcpc.h"
 #include "usbc_ocp.h"
@@ -1570,10 +1571,8 @@ static void handle_data_request(int port, uint32_t head,
 		if ((pd[port].task_state == PD_STATE_SNK_DISCOVERY)
 			|| (pd[port].task_state == PD_STATE_SNK_TRANSITION)
 			|| (pd[port].task_state == PD_STATE_SNK_REQUESTED)
-#ifdef CONFIG_USB_PD_VBUS_DETECT_NONE
-			|| (pd[port].task_state ==
-			    PD_STATE_SNK_HARD_RESET_RECOVER)
-#endif
+			|| ((get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_NONE) &&
+				(pd[port].task_state == PD_STATE_SNK_HARD_RESET_RECOVER))
 			|| (pd[port].task_state == PD_STATE_SNK_READY)) {
 #ifdef CONFIG_USB_PD_REV30
 			/*
@@ -2852,9 +2851,8 @@ void pd_task(void *u)
 #ifdef CONFIG_USB_PD_DUAL_ROLE
 	uint64_t next_role_swap = PD_T_DRP_SNK;
 	uint8_t saved_flgs = 0;
-#ifndef CONFIG_USB_PD_VBUS_DETECT_NONE
-	int snk_hard_reset_vbus_off = 0;
-#endif
+	if (get_usb_pd_vbus_detect() != USB_PD_VBUS_DETECT_NONE)
+		int snk_hard_reset_vbus_off = 0;
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
 	const int auto_toggle_supported = tcpm_auto_toggle_supported(port);
 #endif
@@ -4097,28 +4095,29 @@ void pd_task(void *u)
 		case PD_STATE_SNK_HARD_RESET_RECOVER:
 			if (pd[port].last_state != pd[port].task_state)
 				pd[port].flags |= PD_FLAGS_CHECK_IDENTITY;
-#ifdef CONFIG_USB_PD_VBUS_DETECT_NONE
-			/*
-			 * Can't measure vbus state so this is the maximum
-			 * recovery time for the source.
-			 */
-			if (pd[port].last_state != pd[port].task_state)
-				set_state_timeout(port, get_time().val +
-						  PD_T_SAFE_0V +
-						  PD_T_SRC_RECOVER_MAX +
-						  PD_T_SRC_TURN_ON,
-						  PD_STATE_SNK_DISCONNECTED);
-#else
+			if (get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_NONE) {
+				/*
+				 * Can't measure vbus state so this is the maximum
+				 * recovery time for the source.
+				 */
+				if (pd[port].last_state != pd[port].task_state)
+					set_state_timeout(port, get_time().val +
+							  PD_T_SAFE_0V +
+							  PD_T_SRC_RECOVER_MAX +
+							  PD_T_SRC_TURN_ON,
+							  PD_STATE_SNK_DISCONNECTED);
+			} else {
 			/* Wait for VBUS to go low and then high*/
-			if (pd[port].last_state != pd[port].task_state) {
-				snk_hard_reset_vbus_off = 0;
-				set_state_timeout(port,
-						  get_time().val +
-						  PD_T_SAFE_0V,
-						  hard_reset_count <
-						    PD_HARD_RESET_COUNT ?
-						     PD_STATE_HARD_RESET_SEND :
-						     PD_STATE_SNK_DISCOVERY);
+				if (pd[port].last_state != pd[port].task_state) {
+					snk_hard_reset_vbus_off = 0;
+					set_state_timeout(port,
+							  get_time().val +
+							  PD_T_SAFE_0V,
+							  hard_reset_count <
+							    PD_HARD_RESET_COUNT ?
+							     PD_STATE_HARD_RESET_SEND :
+							     PD_STATE_SNK_DISCOVERY);
+				}
 			}
 
 			if (!pd_is_vbus_present(port) &&

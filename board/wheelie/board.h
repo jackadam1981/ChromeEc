@@ -25,6 +25,7 @@
 #define CONFIG_CHARGER_SM5803		/* C0 and C1: Charger */
 #define CONFIG_FPU			/* For charger calculations */
 #define CONFIG_USB_PD_VBUS_DETECT_CHARGER
+#define CONFIG_USB_PD_VBUS_DETECT_GPIO
 #define CONFIG_USB_PD_5V_CHARGER_CTRL
 #define CONFIG_CHARGER_OTG
 #undef  CONFIG_CHARGER_SINGLE_CHIP
@@ -78,6 +79,9 @@
 #define I2C_PORT_USB_MUX I2C_PORT_USB_C0	/* Required for ITE Mux */
 
 #define CONFIG_USBC_RETIMER_TUSB544		/* C1 Redriver: TUSB544 */
+
+/*  USB PD Run-time flags */
+#define CONFIG_USB_PD_RUNTIME_FLAGS
 
 #ifndef __ASSEMBLER__
 
