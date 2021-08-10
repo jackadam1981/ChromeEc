@@ -16,6 +16,24 @@
       "message": "I\u0027m not completely certain I understand the code path we need to take to require this condition.  Would you mind elaborating?",
       "revId": "d261c473dac4bb6142002f0067fd9174bfe01b78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6b66600_d8603443",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-08-10T03:22:09Z",
+      "side": 1,
+      "message": "Steps to reproduce issue:\nNothing connect to pd port in S0 -\u003e apshutdown -\u003e connect dongle with AC and VGA in G3 (VGA connect to a monitor) -\u003e power button power on -\u003e DP doesn\u0027t output\n\nEC logs was posted in tracker #22 \"fail.txt\". I found that after we recieve DP config Ack and set usb mux USB_PD_MUX_USB_ENABLE and USB_PD_MUX_DP_ENABLE, then the hook function pd_chipset_startup() will be called and set the PD_EVENT_POWER_STATE_CHANGE event. finally in handle_new_power_state(), we get only USB_PD_MUX_USB_ENABLE mode and set it to mux. So DP is disabled and there isn\u0027t DP output.\n\nI think it needs a condition to check if the mux was configured or not, if yes, then we keep the setting; if not, then we can init it. But about this if condition, I\u0027m not sure it\u0027s appropriate or not.",
+      "parentUuid": "437b178a_42e1a603",
+      "revId": "d261c473dac4bb6142002f0067fd9174bfe01b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
