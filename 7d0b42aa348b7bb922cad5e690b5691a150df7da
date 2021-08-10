@@ -152,6 +152,53 @@
       },
       "revId": "7d0b42aa348b7bb922cad5e690b5691a150df7da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc871ca3_43cdcd30",
+        "filename": "driver/tcpm/nct38xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-10T21:25:33Z",
+      "side": 1,
+      "message": "i suspect that any use of the nc38xx as a TCPC and an io expander\nwill require IOEX_FLAGS_DISABLED in the ioex_config. you just\ncan\u0027t have 2 independent subsystems controlling the same reset\npin. on brya, the tcpc init explicitly enables the ioex portion\nof the chip to avoid chaos.",
+      "parentUuid": "4eaddc76_12108955",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 35
+      },
+      "revId": "7d0b42aa348b7bb922cad5e690b5691a150df7da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ef5c2e_05c34b3d",
+        "filename": "driver/tcpm/nct38xx.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-10T21:25:33Z",
+      "side": 1,
+      "message": "we should remove this and replace it with\n\nNCT3807_RESET_POST_DELAY_MS\nNCT3808_RESET_POST_DELAY_MS\n\nwith the values from the datasheet.\n\nwe may have to round up 1.5ms to 2ms.\n\njust a thought:\nset NCT38XX_RESET_POST_DELAY_MS to 3ms to cover all known chips.\nadd NCT3807_RESET_POST_DELAY_MS 2ms for boards that want to\noptimize that extra 1ms out of their reset path.",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 35
+      },
+      "revId": "7d0b42aa348b7bb922cad5e690b5691a150df7da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
