@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c805fd8a_e61448a8",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-10T22:35:53Z",
+      "side": 1,
+      "message": "move to next line\n\n /*\n  * On some ...\n  * ...\n  */\n  \nhttps://www.kernel.org/doc/html/v5.12/process/coding-style.html#commenting",
+      "range": {
+        "startLine": 277,
+        "startChar": 4,
+        "endLine": 277,
+        "endChar": 12
+      },
+      "revId": "f1495c4981c840901da40d3889cb7bfbef156285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
