@@ -205,6 +205,30 @@
       },
       "revId": "faecc0b4c8b3cbf23d0390a0915aefba155831a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "946f74f8_6f91d6ef",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-10T16:52:09Z",
+      "side": 1,
+      "message": "Not to do it because of the failure to build RO which is not even used seems a very unfortunate reason not to make the code simpler. Let me try, maybe I can figure it out.",
+      "parentUuid": "a98397c0_6922c550",
+      "range": {
+        "startLine": 221,
+        "startChar": 5,
+        "endLine": 221,
+        "endChar": 19
+      },
+      "revId": "faecc0b4c8b3cbf23d0390a0915aefba155831a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
