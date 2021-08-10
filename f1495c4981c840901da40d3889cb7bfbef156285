@@ -94,6 +94,30 @@
       },
       "revId": "f1495c4981c840901da40d3889cb7bfbef156285",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0929a400_fbd2f4fb",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-10T22:43:00Z",
+      "side": 1,
+      "message": "please fix this comment style ... sloppy style in existing code does not let you bypass the style guide",
+      "parentUuid": "36a37449_8159154c",
+      "range": {
+        "startLine": 277,
+        "startChar": 4,
+        "endLine": 277,
+        "endChar": 12
+      },
+      "revId": "f1495c4981c840901da40d3889cb7bfbef156285",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
