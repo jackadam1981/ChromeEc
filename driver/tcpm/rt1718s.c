@@ -197,13 +197,11 @@ static int rt1718s_init(int port)
 		need_sw_reset = false;
 	}
 
-	if (IS_ENABLED(CONFIG_USB_PD_FRS_TCPC))
-		/* Set vbus frs low unmasked, Rx frs unmasked */
-		RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT_MASK1,
-					RT1718S_RT_MASK1_M_VBUS_FRS_LOW |
-					RT1718S_RT_MASK1_M_RX_FRS,
-					0xFF));
-
+	/* Set vbus frs low unmasked, Rx frs unmasked */
+	RETURN_ERROR(rt1718s_update_bits8(port, RT1718S_RT_MASK1,
+				/* RT1718S_RT_MASK1_M_VBUS_FRS_LOW | */
+				RT1718S_RT_MASK1_M_RX_FRS,
+				0xFF));
 
 	RETURN_ERROR(rt1718s_bc12_init(port));
 
@@ -328,31 +326,50 @@ static void rt1718s_bc12_usb_charger_task(const int port)
 
 void rt1718s_vendor_defined_alert(int port)
 {
-	int rv, value;
+	int rv, int6;
+
+	if (IS_ENABLED(CONFIG_USB_PD_FRS)) {
+		int int1;
+
+		rv = rt1718s_read8(port, RT1718S_RT_INT1, &int1);
+		if (rv)
+			return;
+		rv = rt1718s_write8(port, RT1718S_RT_INT1, 0b11000000);
+		if (rv)
+			return;
+
+		if ((int1 & BIT(6))) {
+			pd_got_frs_signal(port);
+
+			/* ignore other interrupts for fast processing */
+			tcpc_write16(port, TCPC_REG_ALERT, TCPC_REG_ALERT_VENDOR_DEF);
+			return;
+		}
+	}
 
 	/* Process BC12 alert */
-	rv = rt1718s_read8(port, RT1718S_RT_INT6, &value);
+	rv = rt1718s_read8(port, RT1718S_RT_INT6, &int6);
 	if (rv)
 		return;
 
-	/* clear BC12 alert */
-	rv = rt1718s_write8(port, RT1718S_RT_INT6, value);
-	if (rv)
-		return;
+	if (int6) {
+		/* clear BC12 alert */
+		rv = rt1718s_write8(port, RT1718S_RT_INT6, int6);
+		if (rv)
+			return;
 
-	/* check snk done */
-	if (value & RT1718S_RT_INT6_INT_BC12_SNK_DONE)
-		task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
-			       USB_CHG_EVENT_BC12);
+		/* check snk done */
+		if (int6 & RT1718S_RT_INT6_INT_BC12_SNK_DONE)
+			task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
+				       USB_CHG_EVENT_BC12);
+	}
 
 	/* clear the alerts from rt1718s_workaround() */
 	rv = rt1718s_write8(port, RT1718S_RT_INT2, 0xFF);
 	if (rv)
 		return;
 	/* ES1 workaround: disable Vconn discharge */
-	rv = rt1718s_update_bits8(port, RT1718S_SYS_CTRL2,
-			RT1718S_SYS_CTRL2_VCONN_DISCHARGE_EN,
-			0);
+	rv = rt1718s_write8(port, RT1718S_SYS_CTRL2, 0x87);
 	if (rv)
 		return;
 
@@ -366,7 +383,9 @@ static void rt1718s_alert(int port)
 	tcpc_read16(port, TCPC_REG_ALERT, &alert);
 	if (alert & TCPC_REG_ALERT_VENDOR_DEF)
 		rt1718s_vendor_defined_alert(port);
-	tcpci_tcpc_alert(port);
+
+	if (alert & ~TCPC_REG_ALERT_VENDOR_DEF)
+		tcpci_tcpc_alert(port);
 }
 
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
