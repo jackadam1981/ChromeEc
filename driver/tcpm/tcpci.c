@@ -21,6 +21,7 @@
 #include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_flags.h"
 #include "usb_pd_tcpc.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
@@ -321,14 +322,22 @@ static int init_alert_mask(int port)
 	 * Create mask of alert events that will cause the TCPC to
 	 * signal the TCPM via the Alert# gpio line.
 	 */
-	mask = TCPC_REG_ALERT_TX_SUCCESS | TCPC_REG_ALERT_TX_FAILED |
-		TCPC_REG_ALERT_TX_DISCARDED | TCPC_REG_ALERT_RX_STATUS |
-		TCPC_REG_ALERT_RX_HARD_RST | TCPC_REG_ALERT_CC_STATUS |
-		TCPC_REG_ALERT_FAULT
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-		| TCPC_REG_ALERT_POWER_STATUS
-#endif
-		;
+	if (get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_TCPC) {
+		mask = TCPC_REG_ALERT_TX_SUCCESS | TCPC_REG_ALERT_TX_FAILED |
+			TCPC_REG_ALERT_TX_DISCARDED | TCPC_REG_ALERT_RX_STATUS |
+			TCPC_REG_ALERT_RX_HARD_RST | TCPC_REG_ALERT_CC_STATUS |
+			TCPC_REG_ALERT_FAULT
+			| TCPC_REG_ALERT_POWER_STATUS
+			;
+		CPRINTS("mask with VBUS DETECT TCPC: 0x%X", mask);
+	} else {
+		mask = TCPC_REG_ALERT_TX_SUCCESS | TCPC_REG_ALERT_TX_FAILED |
+			TCPC_REG_ALERT_TX_DISCARDED | TCPC_REG_ALERT_RX_STATUS |
+			TCPC_REG_ALERT_RX_HARD_RST | TCPC_REG_ALERT_CC_STATUS |
+			TCPC_REG_ALERT_FAULT
+			;
+		CPRINTS("mask without VBUS DETECT TCPC: 0x%X", mask);
+	}
 
 	/* TCPCI Rev2 includes SAFE0V alerts */
 	if (TCPC_FLAGS_VSAFE0V(tcpc_config[port].flags))
@@ -361,11 +370,17 @@ static int init_power_status_mask(int port)
 	uint8_t mask;
 	int rv;
 
-#ifdef CONFIG_USB_PD_VBUS_DETECT_TCPC
-	mask = TCPC_REG_POWER_STATUS_VBUS_PRES;
-#else
-	mask = 0;
-#endif
+	if (get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_TCPC)
+	{
+		mask = TCPC_REG_POWER_STATUS_VBUS_PRES;
+		CPRINTS("Power Status mask with VBUS DETECT TCPC enabled: 0x%X", mask);
+	}
+	else
+	{
+		mask = 0;
+		CPRINTS("Power Status mask without VBUS DETECT TCPC: 0x0");
+	}
+
 	rv = tcpc_write(port, TCPC_REG_POWER_STATUS_MASK , mask);
 
 	return rv;
@@ -1142,7 +1157,7 @@ static void tcpci_check_vbus_changed(int port, int alert, uint32_t *pd_event)
 			tcpc_vbus[port] = BIT(VBUS_SAFE0V);
 		}
 
-		if (IS_ENABLED(CONFIG_USB_PD_VBUS_DETECT_TCPC) &&
+		if ((get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_TCPC) &&
 		    IS_ENABLED(CONFIG_USB_CHARGER)) {
 			/* Update charge manager with new VBUS state */
 			usb_charger_vbus_change(port,

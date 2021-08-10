@@ -34,3 +34,8 @@ enum ec_ssfc_lid_sensor get_cbi_ssfc_lid_sensor(void)
 {
 	return (enum ec_ssfc_lid_sensor) cached_ssfc.lid_sensor;
 }
+
+enum ec_ssfc_charger_type get_cbi_ssfc_charger_type(void)
+{
+	return (enum ec_ssfc_charger_type) cached_ssfc.charger_type;
+}

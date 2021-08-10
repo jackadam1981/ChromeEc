@@ -22,8 +22,17 @@
 #include "task.h"
 #include "usb_charge.h"
 #include "usb_pd.h"
+#include "usb_pd_flags.h"
 #include "usbc_ppc.h"
 #include "util.h"
+
+#ifdef CONFIG_COMMON_RUNTIME
+#define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
+#else
+#define CPRINTS(format, args...)
+#define CPRINTF(format, args...)
+#endif
 
 static void update_vbus_supplier(int port, int vbus_level)
 {
@@ -81,11 +90,13 @@ void usb_charger_vbus_change(int port, int vbus_level)
 		usb_charger_reset_charge(port);
 #endif
 
-#if (defined(CONFIG_USB_PD_VBUS_DETECT_CHARGER) \
-	|| defined(CONFIG_USB_PD_VBUS_DETECT_PPC))
-	/* USB PD task */
-	task_wake(PD_PORT_TO_TASK_ID(port));
-#endif
+	if ((get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_CHARGER) ||
+		(get_usb_pd_vbus_detect() == USB_PD_VBUS_DETECT_PPC))
+	{
+		CPRINTS("VBUS_DETECT: CHARGER, Task_Wake called");
+		/* USB PD task */
+		task_wake(PD_PORT_TO_TASK_ID(port));
+	}
 }
 
 void usb_charger_reset_charge(int port)
