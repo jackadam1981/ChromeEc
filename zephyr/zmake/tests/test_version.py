@@ -52,7 +52,7 @@ def _setup_example_repos(tmp_path):
             "board": "foo",
             "toolchain": "bar",
             "output-type": "raw",
-            "supported-zephyr-versions": ["v2.5"],
+            "supported-zephyr-versions": ["v2.6"],
         },
     )
     # Has one commit.
@@ -86,7 +86,7 @@ def test_version_string(tmp_path):
     project, zephyr_base, modules = _setup_example_repos(tmp_path)
     assert (
         version.get_version_string(project, zephyr_base, modules)
-        == "prj_v2.5.4-mod1:02fd7a,mod2:b5991f,os:2c65cb"
+        == "prj_v2.6.4-mod1:02fd7a,mod2:b5991f,os:2c65cb"
     )
 
 
@@ -94,5 +94,5 @@ def test_version_string_static(tmp_path):
     project, zephyr_base, modules = _setup_example_repos(tmp_path)
     assert (
         version.get_version_string(project, zephyr_base, modules, static=True)
-        == "prj_v2.5.0-STATIC"
+        == "prj_v2.6.0-STATIC"
     )
