@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77f2ea13_6a1051a2",
+        "filename": "board/cr50/dcrypto/sha1.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-10T16:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e788840f_846c132b",
+      "range": {
+        "startLine": 76,
+        "startChar": 30,
+        "endLine": 76,
+        "endChar": 48
+      },
+      "revId": "faecc0b4c8b3cbf23d0390a0915aefba155831a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04f9076d_0c5a4e52",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Because our build system somehow mix and match dcrypto.h when building RO part - it use board\u0027s dcrypto.h with chip/g/dcrypto code and it fails to compile. I tried to find where it happens, but it seems deep in the rules.",
       "parentUuid": "9043a639_2a4c6ffb",
+      "range": {
+        "startLine": 221,
+        "startChar": 5,
+        "endLine": 221,
+        "endChar": 19
+      },
+      "revId": "faecc0b4c8b3cbf23d0390a0915aefba155831a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a98397c0_6922c550",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-10T16:21:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2faa4ae2_da391b41",
       "range": {
         "startLine": 221,
         "startChar": 5,
