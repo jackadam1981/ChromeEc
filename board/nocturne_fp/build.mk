@@ -12,7 +12,7 @@ CHIP_VARIANT:=stm32h7x3
 # Don't forget that the board build.mk is included more than once to allow
 # conditional variables to be realized. This means that we need to redefine all
 # variable or the "+=" lines will compound.
-board-y=
+#board-y=
 board-rw=ro_workarounds.o board_rw.o
 board-ro=board_ro.o
 # If we're mocking the sensor detection for testing (so we can test
