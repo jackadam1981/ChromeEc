@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38f8933a_49a4e474",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-10T23:16:18Z",
+      "side": 1,
+      "message": "agree regarding comment - left over. when we need context to be saved, we will use SHA256_sw_init() instead. SHA256_hw_init() tries hardware, but fall back to software in hw is busy.",
+      "parentUuid": "b8706f74_9beecece",
+      "range": {
+        "startLine": 210,
+        "startChar": 20,
+        "endLine": 211,
+        "endChar": 37
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da2e8477_9cdfd386",
@@ -101,6 +125,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "140ef970_29ec5d90",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-10T23:16:18Z",
+      "side": 1,
+      "message": "It\u0027s a building system issue. When \u0027RO\u0027 firmware is built it mixes new dcrypto.h header and old code from chip/g/dcrypto. It is somewhere implicitly done in the building rules. So, to avoid build issues I added function with different name for different signature. Vadim wanted to take a look into it. So far I don\u0027t see this as big issue - function parameters changed, so new name is ok.",
+      "parentUuid": "da2e8477_9cdfd386",
+      "range": {
+        "startLine": 220,
+        "startChar": 11,
+        "endLine": 220,
+        "endChar": 14
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "396ff034_8b1f0604",
         "filename": "board/cr50/dcrypto/sha_hw.c",
         "patchSetId": 5
@@ -112,6 +160,30 @@
       "writtenOn": "2021-08-10T22:08:05Z",
       "side": 1,
       "message": "what if there\u0027s a operation started between _init() and _hash() that results in hw_busy \u003d\u003d 1 by the time we call _hash()? then we initialize the structure for hw use and then do software hash operation with it.\n\nif we want to use this auto-detection, I suspect we need to encode if it is a hw-initialize or sw-initialized context in the context itself. ofc, if the code was always like that it\u0027s ok to keep it - we are not making it worse. but sounds like a potential bug. or is it what\u0027s meant by \"multi-threaded behavior\" - that there cannot be any ops between _init() and _hash() and _final()?",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 27
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8137efc8_d41f2fa2",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-10T23:16:18Z",
+      "side": 1,
+      "message": "it is encoded in the context by setting one or another vtable.",
+      "parentUuid": "396ff034_8b1f0604",
       "range": {
         "startLine": 242,
         "startChar": 1,
