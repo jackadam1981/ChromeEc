@@ -16,6 +16,24 @@
       "message": "Because you\u0027re renaming CONFIG_KEYBOARD_KSO_HIGH_DRIVE for zephyr builds, please also add CONFIG_KEYBOARD_KSO_HIGH_DRIVE to the unused section of zephyr/shim/include/config_chip.h and delete from util/config_allowed.txt.",
       "revId": "2b1271aed3128813885ce661e68f53ec10eab06f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab501c8_cec31e93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-08-10T06:21:52Z",
+      "side": 1,
+      "message": "The check_allowed.sh doesn\u0027t seem able to detect the unused section. Removing it from config_allowed.txt causes an error, so I don\u0027t remove it from config_allowed.txt at this CL.",
+      "parentUuid": "cf36bd8b_4893098b",
+      "revId": "2b1271aed3128813885ce661e68f53ec10eab06f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
