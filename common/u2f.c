@@ -6,7 +6,6 @@
 /* APDU dispatcher and U2F command handlers. */
 
 #include "console.h"
-#include "cryptoc/p256.h"
 
 #ifndef TEST_BUILD
 #include "cryptoc/sha256.h"
