@@ -717,11 +717,49 @@ __maybe_unused static int ps8815_disable_rp_detect_workaround_check(int port)
 __overridable void board_ps8xxx_tcpc_init(int port)
 {}
 
+static int ps8xxx_lpm_recovery_delay(int port)
+{
+	int val;
+	int status;
+	int fw_reg;
+	int i;
+
+	fw_reg = get_reg_by_product(port, REG_FW_VER);
+
+	for (i = 0; i < PS8815_FW_INIT_DELAY_MS; ++i) {
+		status = tcpc_read(port, fw_reg, &val);
+		if (status != EC_SUCCESS)
+			return status;
+		if (val != 0)
+			break;
+		msleep(1);
+	}
+
+	if (val == 0) {
+		ccprintf("================\n"
+			 "%s: C%d: got FW_VER 0x%02x after %d ms\n", __func__,
+			 port, val, PS8815_FW_INIT_DELAY_MS);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	if (0) {
+		ccprintf("================\n"
+			 "%s: C%d: got FW_VER 0x%02x after %d ms\n",
+			 __func__, port, val, i);
+	}
+
+	return EC_SUCCESS;
+}
+
 static int ps8xxx_tcpm_init(int port)
 {
 	int status;
 
 	product_id[port] = board_get_ps8xxx_product_id(port);
+
+	status = ps8xxx_lpm_recovery_delay(port);
+	if (status != EC_SUCCESS)
+		return status;
 
 	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8815)) {
 		ps8815_transmit_buffer_workaround_check(port);
