@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a0d6e53_0ef24f28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-11T23:00:06Z",
+      "side": 1,
+      "message": "Should it be under driver or common?  I can see an argument for either, though it\u0027s a little weird having it committed as a driver in the title under common",
+      "revId": "b48f53f925268e2f70f911c98ad563b4dc097daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79301c53_efa05092",
+        "filename": "common/amd_stt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-11T23:00:06Z",
+      "side": 1,
+      "message": "nit: could be an enum",
+      "range": {
+        "startLine": 39,
+        "startChar": 32,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "b48f53f925268e2f70f911c98ad563b4dc097daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
