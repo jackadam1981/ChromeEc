@@ -11,6 +11,7 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "driver/charger/bq25710.h"
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "hooks.h"
