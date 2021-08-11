@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b76471b_2d630ea0",
+        "filename": "board/nipperkin/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-11T21:50:43Z",
+      "side": 1,
+      "message": "i will keep this for now.",
+      "parentUuid": "0fed38b6_99a4f1d4",
+      "revId": "65fe26b3e18534d592f25ada8095a5a8c1d0dac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "10436324_5ef65de1",
@@ -49,6 +67,24 @@
       "writtenOn": "2021-08-11T14:33:26Z",
       "side": 1,
       "message": "Can we remove BMI160 for nipperkin?",
+      "revId": "65fe26b3e18534d592f25ada8095a5a8c1d0dac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "620291a6_6df61f38",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-11T21:50:43Z",
+      "side": 1,
+      "message": "sure!",
+      "parentUuid": "10436324_5ef65de1",
       "revId": "65fe26b3e18534d592f25ada8095a5a8c1d0dac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -70,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7b5b56e_56031fdb",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-11T21:50:43Z",
+      "side": 1,
+      "message": "Sure!",
+      "parentUuid": "bb0e42c7_cc2014d9",
+      "revId": "65fe26b3e18534d592f25ada8095a5a8c1d0dac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dd2a3975_fcbb69b4",
@@ -83,6 +137,24 @@
       "writtenOn": "2021-08-11T14:33:26Z",
       "side": 1,
       "message": "TODO bug is no longer relevant.",
+      "revId": "65fe26b3e18534d592f25ada8095a5a8c1d0dac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3143ba99_01a123cd",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-11T21:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dd2a3975_fcbb69b4",
       "revId": "65fe26b3e18534d592f25ada8095a5a8c1d0dac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ceee5b4b_68a6a141",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-11T21:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c8d44ae_57c9b8f1",
+      "revId": "65fe26b3e18534d592f25ada8095a5a8c1d0dac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64e2b69a_159bd82d",
@@ -121,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfb094f4_6ea2d557",
+        "filename": "board/nipperkin/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-11T21:50:43Z",
+      "side": 1,
+      "message": "good catch. they are CLAMSHELL only. I will remove these.",
+      "parentUuid": "64e2b69a_159bd82d",
+      "revId": "65fe26b3e18534d592f25ada8095a5a8c1d0dac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4940efb4_17f9b358",
@@ -134,6 +242,24 @@
       "writtenOn": "2021-08-11T14:33:26Z",
       "side": 1,
       "message": "I\u0027m pretty sure only Parade retimers need to be supported for nipperkin.",
+      "revId": "65fe26b3e18534d592f25ada8095a5a8c1d0dac2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0267aea_4feaa1ac",
+        "filename": "board/nipperkin/board_fw_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-11T21:50:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4940efb4_17f9b358",
       "revId": "65fe26b3e18534d592f25ada8095a5a8c1d0dac2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
