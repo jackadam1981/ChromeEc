@@ -33,6 +33,40 @@
       "message": "Hi Henry \u0026 Aseda： \nplease help to check this cl for BMI220 support, thanks",
       "revId": "e8f3f993e92e4f501f401a96db943689d6d27e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaee7742_49b8e7f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511082
+      },
+      "writtenOn": "2021-08-11T10:17:37Z",
+      "side": 1,
+      "message": "\nThe following change to rename BMI260 as BMI2XX is suggested from Bosch. Please provide your feedback and help us in integrating BMI220.\n\nThanks 😊",
+      "revId": "e8f3f993e92e4f501f401a96db943689d6d27e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "488cd283_59347c1f",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1511082
+      },
+      "writtenOn": "2021-08-11T10:17:37Z",
+      "side": 1,
+      "message": "Current Scenario:\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n- BMI260 Drivers are modified to support BMI220 sensor\n- Customer has to use the following macros in his board.h file to enable BMI220\n\n\"\"\"\n#define CONFIG_ACCELGYRO_BMI260\n#define CONFIG_ACCELGYRO_BMI220\n\"\"\"\n\nSuggestion : \n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\n- Both the BMI220 and BMI260 macros are enabled here but we suggest to rename BMI260 as BMI2XX and add BMI220 as a variant.\n\n- This will help to integrate our future variants as well and the board.h file should be like this at end :\n\n\"\"\"\n#define CONFIG_ACCELGYRO_BMI2XX\n#define CONFIG_ACCELGYRO_BMI220\n\"\"\"",
+      "revId": "e8f3f993e92e4f501f401a96db943689d6d27e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
