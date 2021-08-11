@@ -6,6 +6,7 @@
 #include "battery.h"
 #include "button.h"
 #include "charge_ramp.h"
+#include "charge_state_v2.h"
 #include "charger.h"
 #include "common.h"
 #include "compile_time_macros.h"
@@ -130,3 +131,17 @@ static void board_init(void)
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+__override void board_set_charge_limit(int port, int supplier, int charge_ma,
+			    int max_ma, int charge_mv)
+{
+	/*
+	 * Follow OEM request to limit the input current to
+	 * 90% negotiated limit.
+	 */
+	charge_ma = charge_ma * 90 / 100;
+
+	charge_set_input_current_limit(MAX(charge_ma,
+					CONFIG_CHARGER_INPUT_CURRENT),
+					charge_mv);
+}
