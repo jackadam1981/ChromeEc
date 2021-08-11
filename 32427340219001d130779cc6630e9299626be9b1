@@ -34,6 +34,24 @@
       "parentUuid": "8e0f7d81_c7b88b5a",
       "revId": "32427340219001d130779cc6630e9299626be9b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6adf142f_cb87afeb",
+        "filename": "driver/ioexpander/ioexpander_nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-08-11T02:46:59Z",
+      "side": 1,
+      "message": "I also think it should be properer to do the mapping here (in the tcpc driver but ioex driver):\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/driver/tcpm/nct38xx.c#271",
+      "parentUuid": "155997ae_43301dce",
+      "revId": "32427340219001d130779cc6630e9299626be9b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
