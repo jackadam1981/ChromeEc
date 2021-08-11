@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8cd1269_2f82b724",
+        "filename": "board/gimble/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-11T21:48:51Z",
+      "side": 1,
+      "message": "~",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 10
+      },
+      "revId": "d5cd10c5d0d5129fec9d401ba2eab55c24967d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3ae225cf_25e02352",
         "filename": "board/gimble/board.c",
         "patchSetId": 8
@@ -14,6 +37,75 @@
       "writtenOn": "2021-08-11T20:58:20Z",
       "side": 1,
       "message": "Please add the failure case, e.g. print something like \"Failed reading from BQ25710\"",
+      "revId": "d5cd10c5d0d5129fec9d401ba2eab55c24967d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5046c669_98e93483",
+        "filename": "board/gimble/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-11T21:48:51Z",
+      "side": 1,
+      "message": "try to avoid direct register acesses.\nplease implement this in the driver itself. have the driver provide\na function to set the voltage.\n\ni see the register definition is different between the bq25710\nand bq25720 so the function name should indicate it\u0027s for\nthe bq25720.\n\nthe function argument should be the desired voltage.\nthe unit can be deci-volts if you want to pass the exact value\nor milivols if that unit is awkward and have the driver divide by 100.",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "d5cd10c5d0d5129fec9d401ba2eab55c24967d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8e0c4b_1e9e6c74",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-11T21:48:51Z",
+      "side": 1,
+      "message": "should not be needed.",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 46
+      },
+      "revId": "d5cd10c5d0d5129fec9d401ba2eab55c24967d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e7047c_f1ce574d",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-11T21:48:51Z",
+      "side": 1,
+      "message": "it may be more useful to have a BQ25720_MIN_SYSTEM_VOLTAGE_SHIFT\nconstant, then take the requested voltage in deci-volts and shift\nby that amount to encode for the register.\n\nin any case, the mask should be (15,8).",
+      "range": {
+        "startLine": 129,
+        "startChar": 41,
+        "endLine": 129,
+        "endChar": 54
+      },
       "revId": "d5cd10c5d0d5129fec9d401ba2eab55c24967d08",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
