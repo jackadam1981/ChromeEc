@@ -102,6 +102,14 @@ static inline enum ec_error_list raw_read16(int chgnum, int offset, int *value)
 			  offset, value);
 }
 
+#if defined(CONFIG_CHARGER_BQ25720)
+static inline int min_system_voltage_to_reg(int voltage)
+{
+	return (voltage / BQ25710_MIN_SYSTEM_VOLTAGE_STEP_MV) <<
+			BQ25710_MIN_SYSTEM_VOLTAGE_SHIFT;
+}
+#endif
+
 static inline enum ec_error_list raw_write16(int chgnum, int offset, int value)
 {
 	return i2c_write16(chg_chips[chgnum].i2c_port,
@@ -521,6 +529,16 @@ static enum ec_error_list bq25710_set_option(int chgnum, int option)
 	/* There are 4 option registers, but we only need the first for now. */
 	return raw_write16(chgnum, BQ25710_REG_CHARGE_OPTION_0, option);
 }
+
+#if defined(CONFIG_CHARGER_BQ25720)
+int bq25710_set_min_system_voltage(int chgnum, int mv)
+{
+	int reg;
+
+	reg = min_system_voltage_to_reg(mv);
+	return raw_write16(chgnum, BQ25710_REG_MIN_SYSTEM_VOLTAGE, reg);
+}
+#endif
 
 #ifdef CONFIG_CHARGE_RAMP_HW
 
