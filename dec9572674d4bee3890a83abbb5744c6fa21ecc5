@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "caff4d5c_2f18b4bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-08-11T21:37:24Z",
+      "side": 1,
+      "message": "Changing the ordering to match with the spec and keep NCT3807 happy sounds good to me.\n\nAdd Denis since he wrestled with ordering of ADD on Zork.\n\nI guess adding a test for this might be hard, since the ordering is changing but everything still happens in a single state transition.\n",
+      "revId": "dec9572674d4bee3890a83abbb5744c6fa21ecc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
