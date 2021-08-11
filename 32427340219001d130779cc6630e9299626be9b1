@@ -16,6 +16,24 @@
       "message": "isn\u0027t this kind of backwards? nct38xx.c:nct38xx_tcpc_alert()\nshould probably be doing the mapping from tcpc port number\nto ioex number.",
       "revId": "32427340219001d130779cc6630e9299626be9b1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "155997ae_43301dce",
+        "filename": "driver/ioexpander/ioexpander_nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-11T02:12:00Z",
+      "side": 1,
+      "message": "Looks like TCPM driver is generating the interrupt hence tcpc_port to ioex_port mapping\n \nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/driver/tcpm/nct38xx.c#273",
+      "parentUuid": "8e0f7d81_c7b88b5a",
+      "revId": "32427340219001d130779cc6630e9299626be9b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
