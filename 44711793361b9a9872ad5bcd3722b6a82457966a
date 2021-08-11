@@ -192,6 +192,30 @@
       },
       "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8bdd7bb_d5261ad3",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-11T19:29:11Z",
+      "side": 1,
+      "message": "sorry, can you point to it please? does dcrypto_sha256_init() save a vtable? why do we need SHA256_hw_hash then if dcrypto_sha_hash() should come from a vtable?\n\nmy point was that SHA256_hw_init can do dcrypto_sha256_init(), while a subsequent SHA256_hw_hash - SHA256_sw_hash() [which iiuc is incompatible with the prep done by dcrypto_sha256_init]",
+      "parentUuid": "8137efc8_d41f2fa2",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 27
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
