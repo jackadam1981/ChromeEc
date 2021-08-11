@@ -16,6 +16,23 @@
       "message": "Changing the ordering to match with the spec and keep NCT3807 happy sounds good to me.\n\nAdd Denis since he wrestled with ordering of ADD on Zork.\n\nI guess adding a test for this might be hard, since the ordering is changing but everything still happens in a single state transition.\n",
       "revId": "dec9572674d4bee3890a83abbb5744c6fa21ecc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48511989_cb3b7838",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2982,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-08-11T21:38:36Z",
+      "side": 1,
+      "message": "Not really related to this CL, but is there a big chunk of duplicated code here that could be moved into a function?",
+      "revId": "dec9572674d4bee3890a83abbb5744c6fa21ecc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
