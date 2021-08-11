@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "675c4408_42b1c0d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-11T04:32:20Z",
+      "side": 1,
+      "message": "Overall looks in right direction. I think most important is to be sure that hashes match with what cr50 computes and that we can inject it into image and make self-integrity to pass.\n\nWe will need to split calculation of actual hashes in the image from injection of hashes. At first we will recompute hashes at every build, but then would have to only inject precomputed hashes for prebuilt fips_module.o.",
+      "revId": "bc03a15741ccfb07035f51050527ef798e557318",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
