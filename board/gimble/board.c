@@ -11,6 +11,7 @@
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "driver/charger/bq25710.h"
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "hooks.h"
@@ -113,6 +114,23 @@ enum battery_present battery_hw_present(void)
 	/* The GPIO is low when the battery is physically present */
 	return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
 }
+
+static void board_init(void)
+{
+	int reg;
+
+	if (i2c_read16(I2C_PORT_CHARGER, BQ25710_SMBUS_ADDR1_FLAGS,
+		       BQ25710_REG_MIN_SYSTEM_VOLTAGE, &reg) == EC_SUCCESS) {
+		/* BIT7~BIT0 are Reserved */
+		reg &= !BQ25720_MIN_SYSTEM_VOLTAGE_MASK;
+		reg = (BQ25720_MIN_SYSTEM_VOLTAGE_12800 |
+				BQ25720_MIN_SYSTEM_VOLTAGE_400);
+		if (i2c_write16(I2C_PORT_CHARGER, BQ25710_SMBUS_ADDR1_FLAGS,
+			    BQ25710_REG_MIN_SYSTEM_VOLTAGE, reg))
+			CPRINTS("Failed to set bq25720 ");
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
 __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
