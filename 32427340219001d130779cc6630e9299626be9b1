@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e0f7d81_c7b88b5a",
+        "filename": "driver/ioexpander/ioexpander_nct38xx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-11T02:08:53Z",
+      "side": 1,
+      "message": "isn\u0027t this kind of backwards? nct38xx.c:nct38xx_tcpc_alert()\nshould probably be doing the mapping from tcpc port number\nto ioex number.",
+      "revId": "32427340219001d130779cc6630e9299626be9b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
