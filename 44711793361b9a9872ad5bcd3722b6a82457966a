@@ -216,6 +216,30 @@
       },
       "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f84a327b_140a10eb",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-11T23:47:05Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3064201/5/board/cr50/dcrypto/sha_hw.c#171\nand line 185.\n\nFor SHA256_sw_hash() vtable is not needed - it\u0027s a one shot operation with no context. Either done in hardware or in software.",
+      "parentUuid": "c8bdd7bb_d5261ad3",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 27
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
