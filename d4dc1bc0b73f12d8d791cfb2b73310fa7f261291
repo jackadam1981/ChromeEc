@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d291299_f32c9179",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1618,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-11T18:50:18Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this still be VCHG_PWR? VCHG_PWR is *after* the FETs instead of VBUS which is just at the connector.",
+      "range": {
+        "startLine": 1613,
+        "startChar": 0,
+        "endLine": 1618,
+        "endChar": 0
+      },
+      "revId": "d4dc1bc0b73f12d8d791cfb2b73310fa7f261291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
