@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b6eb491_d672e693",
+        "filename": "driver/tcpm/nct38xx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-11T23:34:24Z",
+      "side": 1,
+      "message": "might as well create a block\n{\nint ioexport;\n\nioexport \u003d ...\n...\n}",
+      "range": {
+        "startLine": 277,
+        "startChar": 1,
+        "endLine": 280,
+        "endChar": 46
+      },
+      "revId": "4213c60267683b5edad5697806ddba7e92087733",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
