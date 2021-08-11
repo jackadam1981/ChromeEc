@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ae225cf_25e02352",
+        "filename": "board/gimble/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-11T20:58:20Z",
+      "side": 1,
+      "message": "Please add the failure case, e.g. print something like \"Failed reading from BQ25710\"",
+      "revId": "d5cd10c5d0d5129fec9d401ba2eab55c24967d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
