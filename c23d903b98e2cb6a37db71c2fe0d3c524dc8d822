@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2645428_86849711",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-11T15:42:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be0bd5bf_842cba01",
+      "range": {
+        "startLine": 143,
+        "startChar": 16,
+        "endLine": 143,
+        "endChar": 26
+      },
+      "revId": "c23d903b98e2cb6a37db71c2fe0d3c524dc8d822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90d8db2b_886f5a16",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Yeah, that could be nice.  What would you think between an independent enum, versus re-using the USB_PD_MUX_HPD_* values?",
       "parentUuid": "90d8db2b_886f5a16",
+      "range": {
+        "startLine": 329,
+        "startChar": 34,
+        "endLine": 329,
+        "endChar": 58
+      },
+      "revId": "c23d903b98e2cb6a37db71c2fe0d3c524dc8d822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb435f2b_b21bfb7f",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-11T15:42:31Z",
+      "side": 1,
+      "message": "Having only one define is preferred, but the bitmask is clumsy.  I guess adding de-assert definitions would help:\n\n#define USB_PD_MUX_HPD_IRQ            BIT(3) /* HPD IRQ is asserted */\n#define USB_PD_MUX_HPD_IRQ_DEASSERTED 0\n#define USB_PD_MUX_HPD_LVL            BIT(4) /* HPD level is asserted */\n#define USB_PD_MUX_HPD_LVL_DEASSERTED 0\n\nThen the prototype becomes \nvoid usb_mux_hpd_update(int port, mux_state_t hpd_state)\n\nThen this call:\n    usb_mux_hpd_update(port, 1, 0);\n   \nBecomes:\n    usb_mux_hpd_update(port, USB_PD_MUX_HPD_LVL | \n        USB_PD_MUX_HPD_IRQ_DEASSERTED);",
+      "parentUuid": "ea2a0ea3_d73a61a4",
       "range": {
         "startLine": 329,
         "startChar": 34,
