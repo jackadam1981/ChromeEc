@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3db5d044_b3678466",
+        "filename": "driver/tcpm/nct38xx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-11T21:17:57Z",
+      "side": 1,
+      "message": "this is confusing. the datasheet specifies the chip will come out\nof reset within 3 ms, hence \"maximum\", but that means this is\nalso the \"minimum\" requirement for the delay.",
+      "range": {
+        "startLine": 81,
+        "startChar": 28,
+        "endLine": 81,
+        "endChar": 35
+      },
+      "revId": "0f30bcdea46ab9bdf76193f7f1d7546d3074438e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
