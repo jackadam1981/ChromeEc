@@ -118,6 +118,22 @@
 						BQ25720_VMIN_AP_VSYS_TH2_SHIFT)
 #endif
 
+#if defined(CONFIG_CHARGER_BQ25720)
+#define BQ25710_MIN_SYSTEM_VOLTAGE_STEP_MV	100
+#define BQ25710_MIN_SYSTEM_VOLTAGE_SHIFT	8
+#endif
+
 extern const struct charger_drv bq25710_drv;
+
+#if defined(CONFIG_CHARGER_BQ25720)
+/**
+ * Set VSYS_MIN
+ *
+ * @param chgnum: Index into charger chips
+ * @param mv: min system voltage in mV
+ * @return EC_SUCCESS or error
+ */
+int bq25710_set_min_system_voltage(int chgnum, int mv);
+#endif
 
 #endif /* __CROS_EC_BQ25710_H */
