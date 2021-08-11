@@ -16,6 +16,24 @@
       "message": "I don\u0027t see this moving to board.c?",
       "revId": "dad30a521858c7b75ada2f6c87b515e782ecfd09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06fbeab0_605db8f8",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-11T22:25:25Z",
+      "side": 0,
+      "message": "https://source.corp.google.com/chromeos_public/src/platform/ec/board/guybrush/board.c;l\u003d327\n\nI looked at other projects and they don\u0027t have a separate init routine for interrupts like baseboard. Should we add one. I feel line 327 in board.c should work. Let me know.",
+      "parentUuid": "4676390a_305ed8ee",
+      "revId": "dad30a521858c7b75ada2f6c87b515e782ecfd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
