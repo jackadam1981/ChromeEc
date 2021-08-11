@@ -16,6 +16,24 @@
       "message": "Hi Vijay,\nYou don\u0027t have this if you match the port index in tcpc_config and ioex_config. Do you see a difficilty to match them on your board?\nIf you really need to remap the TCPC port index to IOEX port index, how about create a weak function like:\n__overridable int board_map_nct38xx_tcpc_port_to_ioex(int port)\n{\n        return port;\n}\nThen you can override this function on your board level driver if the port indexs are different.\n\nAdd Caveh and Edward who have used nct38xx for IOEX on a real platform to comment. \n    ",
       "revId": "f8cc48ef4c0f1fd8efd8d21d76841f67e4122965",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7972d91_01a04e6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-11T02:06:35Z",
+      "side": 1,
+      "message": "Hi CH,\nThank you for the feedback, I have updated the code.\nIt\u0027s not yet tested as H/W is not ready yet. Will mark verified once done",
+      "parentUuid": "d695f1a7_cd7dffe3",
+      "revId": "f8cc48ef4c0f1fd8efd8d21d76841f67e4122965",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
