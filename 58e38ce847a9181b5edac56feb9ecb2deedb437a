@@ -131,6 +131,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "301eb6de_f729a496",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-11T21:21:41Z",
+      "side": 1,
+      "message": "let\u0027s wait for the next patchset to mark as done",
+      "parentUuid": "d7d784d6_eae121c3",
+      "range": {
+        "startLine": 71,
+        "startChar": 36,
+        "endLine": 71,
+        "endChar": 55
+      },
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1df01d06_769acc0a",
         "filename": "board/cr50/u2f.c",
         "patchSetId": 3
@@ -166,6 +190,30 @@
       "side": 1,
       "message": "it\u0027s because crypto API is board specific. here I put all crypto stuff, while in common it\u0027s only command processing and use of board specific stuff. Other boards in theory can implement very different algorithms for hw-bound key handles \u0026 key gen approach.",
       "parentUuid": "1df01d06_769acc0a",
+      "range": {
+        "startLine": 186,
+        "startChar": 5,
+        "endLine": 186,
+        "endChar": 17
+      },
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a90d1b4c_6876af4d",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-11T21:21:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "46d4a752_508e631b",
       "range": {
         "startLine": 186,
         "startChar": 5,
@@ -213,6 +261,30 @@
       "side": 1,
       "message": "Basically for FIPS I need to isolate crypto stuff in library. Command processing is not crypto-specific, but it use crypto API - u2f_generate(), etc\nand we actually made #1 - kh_version - a common feature, and thats why it\u0027s in common. However, its interpretation is trickier - we didn\u0027t actually have version in command request now, and it\u0027s implied by size of request, so special handling here. That was due to no version was present in original code and was added later for WebAuthn changes.\nHowever, crypto implementation - say, specific choice of HMAC, internal construction of key_handle is board specific.\n\nI think currently it\u0027s pretty clean separation of crypto code from non-crypto code.",
       "parentUuid": "87b88149_1787497a",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 20
+      },
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f2b7b63_b73dc64a",
+        "filename": "common/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-11T21:21:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cc81b3ef_a3d8817b",
       "range": {
         "startLine": 235,
         "startChar": 1,
