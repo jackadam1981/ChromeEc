@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "530f9b1d_87a677f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-08-11T21:43:20Z",
+      "side": 1,
+      "message": "An idea for testing: you could make the simulated TCPC complain about VBUS being enabled before ADD (so more like the NCT3807).",
+      "parentUuid": "caff4d5c_2f18b4bc",
+      "revId": "dec9572674d4bee3890a83abbb5744c6fa21ecc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48511989_cb3b7838",
