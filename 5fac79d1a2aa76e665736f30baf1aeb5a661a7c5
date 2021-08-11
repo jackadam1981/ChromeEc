@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db5c5da_0652eab6",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2844,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-08-11T14:23:22Z",
+      "side": 1,
+      "message": "In case when auto drop toggle mode is not supported in driver,the drp_state continoues to be in PD_DRP_TOGGLE_ON state even when state is switched from tc_snk_unattached to tc_src_unattached. It is also safer to cross check that cc lines are still open in this condition under tc_src_unattached() along with drp state. But all this check condition is required only when low power entry config is enabled. Hence, this condition is added here.",
+      "range": {
+        "startLine": 2843,
+        "startChar": 2,
+        "endLine": 2844,
+        "endChar": 29
+      },
+      "revId": "5fac79d1a2aa76e665736f30baf1aeb5a661a7c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
