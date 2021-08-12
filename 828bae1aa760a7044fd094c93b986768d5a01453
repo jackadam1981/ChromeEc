@@ -140,6 +140,30 @@
       },
       "revId": "828bae1aa760a7044fd094c93b986768d5a01453",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f5a2aa5_59058293",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-12T10:58:23Z",
+      "side": 1,
+      "message": "i\u0027ve uploaded my WIP patchset for reference:\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3084331\n\nthis is actually a pretty hairy problem and it seems to gets\neven more noticeable when you \"application\" firmware update on the ps8815.",
+      "parentUuid": "6a7143da_e1be6f20",
+      "range": {
+        "startLine": 694,
+        "startChar": 9,
+        "endLine": 694,
+        "endChar": 32
+      },
+      "revId": "828bae1aa760a7044fd094c93b986768d5a01453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
