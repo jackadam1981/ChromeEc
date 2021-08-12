@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fe7b14_7a9ea78e",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 3
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-12T19:04:23Z",
+      "side": 1,
+      "message": "These should be made a choice as they are mutually exclusive.  Also make sure to label the choice so that defconfig files can set a default choice.",
+      "range": {
+        "startLine": 602,
+        "startChar": 0,
+        "endLine": 610,
+        "endChar": 0
+      },
+      "revId": "8eda284d06cc8b8f195bb2b79e3819d0b6567cc2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
