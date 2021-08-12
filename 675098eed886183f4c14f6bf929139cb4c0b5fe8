@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91fb7c21_dcf8a693",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-12T18:36:42Z",
+      "side": 1,
+      "message": "The lazor board apparently had to support two types of switchcaps in the same image.  This isn\u0027t supported by this CL.\nTom - do you anticipate that boards will 2nd source the switchap moving forward? I suppose we can update the switchcap for that use case as needed.",
+      "revId": "675098eed886183f4c14f6bf929139cb4c0b5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "85cd58f2_0979f794",
