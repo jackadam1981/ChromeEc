@@ -5,19 +5,28 @@
 
 #include <device.h>
 #include <drivers/watchdog.h>
+#include <drivers/timer/system_timer.h>
 #include <logging/log.h>
 #include <zephyr.h>
 
 #include "config.h"
 #include "hooks.h"
 #include "watchdog.h"
+#include "task.h"
 
 LOG_MODULE_REGISTER(watchdog_shim, LOG_LEVEL_ERR);
 
 static void wdt_warning_handler(const struct device *wdt_dev, int channel_id)
 {
+	uint32_t var;
+
+	__asm__ volatile ("csrr %0, mepc" : "=r"(var));
+
 	/* TODO(b/176523207): watchdog warning message */
 	printk("Watchdog deadline is close!\n");
+	printk("MEPC:%08x TASK_ID:%d\n", var, task_get_current());
+
+	//evt_timer_log();
 }
 
 int watchdog_init(void)
