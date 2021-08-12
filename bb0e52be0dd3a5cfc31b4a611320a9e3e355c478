@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "764c8acd_488a98d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-08-12T17:51:38Z",
+      "side": 1,
+      "message": "Please fix the indentation.",
+      "revId": "bb0e52be0dd3a5cfc31b4a611320a9e3e355c478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e228ac_e876c9b3",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-08-12T17:51:38Z",
+      "side": 1,
+      "message": "The description doesn\u0027t make sense. Please compare the actual_key_mask with the common code and explain the difference.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 38
+      },
+      "revId": "bb0e52be0dd3a5cfc31b4a611320a9e3e355c478",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
