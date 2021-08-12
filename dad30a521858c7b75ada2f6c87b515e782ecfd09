@@ -34,6 +34,24 @@
       "parentUuid": "4676390a_305ed8ee",
       "revId": "dad30a521858c7b75ada2f6c87b515e782ecfd09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7f2b88d_cdf9f116",
+        "filename": "baseboard/guybrush/baseboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-12T17:58:09Z",
+      "side": 0,
+      "message": "Oh, we\u0027re already double enabling it.  That should be fine then",
+      "parentUuid": "06fbeab0_605db8f8",
+      "revId": "dad30a521858c7b75ada2f6c87b515e782ecfd09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
