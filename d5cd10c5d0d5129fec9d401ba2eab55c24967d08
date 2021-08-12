@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "136ca54e_0d3fe39e",
+        "filename": "board/gimble/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-12T04:21:40Z",
+      "side": 1,
+      "message": "Won\u0027t use this anymore.",
+      "parentUuid": "d8cd1269_2f82b724",
+      "range": {
+        "startLine": 125,
+        "startChar": 9,
+        "endLine": 125,
+        "endChar": 10
+      },
+      "revId": "d5cd10c5d0d5129fec9d401ba2eab55c24967d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ae225cf_25e02352",
@@ -64,6 +88,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37392f4_6603c3fe",
+        "filename": "board/gimble/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-12T04:21:40Z",
+      "side": 1,
+      "message": "I removed that line and use bq25710_set_min_system_voltage instead.",
+      "parentUuid": "3ae225cf_25e02352",
+      "revId": "d5cd10c5d0d5129fec9d401ba2eab55c24967d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "116665f0_1f26710a",
+        "filename": "board/gimble/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-12T04:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5046c669_98e93483",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 2
+      },
+      "revId": "d5cd10c5d0d5129fec9d401ba2eab55c24967d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c8e0c4b_1e9e6c74",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31533ce_6598d7e3",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-12T04:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c8e0c4b_1e9e6c74",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 128,
+        "endChar": 46
+      },
+      "revId": "d5cd10c5d0d5129fec9d401ba2eab55c24967d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39e7047c_f1ce574d",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-08-11T21:48:51Z",
       "side": 1,
       "message": "it may be more useful to have a BQ25720_MIN_SYSTEM_VOLTAGE_SHIFT\nconstant, then take the requested voltage in deci-volts and shift\nby that amount to encode for the register.\n\nin any case, the mask should be (15,8).",
+      "range": {
+        "startLine": 129,
+        "startChar": 41,
+        "endLine": 129,
+        "endChar": 54
+      },
+      "revId": "d5cd10c5d0d5129fec9d401ba2eab55c24967d08",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b63c826_88c85082",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-12T04:21:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39e7047c_f1ce574d",
       "range": {
         "startLine": 129,
         "startChar": 41,
