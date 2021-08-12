@@ -115,6 +115,13 @@ enum battery_present battery_hw_present(void)
 	return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
 }
 
+static void board_init(void)
+{
+	/* The PPVAR_SYS must same as battery voltage(3 cells * 4.4V) */
+	bq25710_set_min_system_voltage(CHARGER_SOLO, 13200);
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
 __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
