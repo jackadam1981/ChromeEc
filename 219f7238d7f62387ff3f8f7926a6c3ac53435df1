@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8052c730_88a8b8a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-12T23:48:59Z",
+      "side": 1,
+      "message": "Not pushed board files to this commit, Will add",
+      "parentUuid": "8ec6fac9_a8071db4",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e518ad9_f8466cad",
         "filename": "/COMMIT_MSG",
         "patchSetId": 6
@@ -48,6 +66,24 @@
       "writtenOn": "2021-08-12T21:37:39Z",
       "side": 1,
       "message": "Cherry-pick should be the same Change-Id, so that gerrit can follow:\nI83fe48abc6aa9cde86576a777ac4272d90fac597",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bf841ff_f381121d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-12T23:48:59Z",
+      "side": 1,
+      "message": "I will change",
+      "parentUuid": "7e518ad9_f8466cad",
       "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -88,6 +124,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "99fb84ed_330f48bc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-12T23:48:59Z",
+      "side": 1,
+      "message": "This branch is older than current main branch and I cannot find read_temp element in accelgyro_drv struct in accelgyro.h file what has definition of accelgyro_drv. So I removed icm426xx_read_temp function in accelgyro_icm426xx.c file. Also added some macros in accelgyro_icm_common.h for port main branch code to this branch",
+      "parentUuid": "786a3496_9bcd9ecd",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d43c91ac_4de22eed",
         "filename": "driver/accelgyro_icm426xx.c",
         "patchSetId": 6
@@ -99,6 +153,24 @@
       "writtenOn": "2021-08-12T21:37:39Z",
       "side": 1,
       "message": "Should it be CONFIG_ACCEL_FIFO instead?",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaa5eb2f_6c6d368f",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-12T23:48:59Z",
+      "side": 1,
+      "message": "This is defined caused by below reason.\n\ncommon/motion_sense.c +102\nQUEUE_NULL using CONFIG_ACCEL_FIFO as a size of queue.\nSo added CONFIG_ACCEL_FIFO_EN definition for check FIFO enable",
+      "parentUuid": "d43c91ac_4de22eed",
       "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -122,6 +194,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70282024_f13a0f82",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-12T23:48:59Z",
+      "side": 1,
+      "message": "Added this in board file and will push board file to this commit",
+      "parentUuid": "5db58207_b936c047",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d985c8d_0a17c1e7",
         "filename": "include/config.h",
         "patchSetId": 6
@@ -139,6 +229,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79fe4f08_98eb8b7e",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-12T23:48:59Z",
+      "side": 1,
+      "message": "I cannot show cherry pick link what you share.",
+      "parentUuid": "5d985c8d_0a17c1e7",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7a82d706_e9367a48",
         "filename": "include/config.h",
         "patchSetId": 6
@@ -150,6 +258,24 @@
       "writtenOn": "2021-08-12T21:37:39Z",
       "side": 1,
       "message": "Why is it needed?",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a93aba97_96db86a6",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2452,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-12T23:48:59Z",
+      "side": 1,
+      "message": "I will remove that undef.",
+      "parentUuid": "7a82d706_e9367a48",
       "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
