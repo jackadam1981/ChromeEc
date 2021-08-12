@@ -696,7 +696,7 @@ __maybe_unused static void ps8815_transmit_buffer_workaround_check(int port)
 	}
 }
 
-__maybe_unused static void ps8815_disable_rp_detect_workaround_check(int port)
+__maybe_unused static int ps8815_disable_rp_detect_workaround_check(int port)
 {
 	int val;
 	int rv;
@@ -708,13 +708,15 @@ __maybe_unused static void ps8815_disable_rp_detect_workaround_check(int port)
 	reg = get_reg_by_product(port, REG_FW_VER);
 	rv = tcpc_read(port, reg, &val);
 	if (rv != EC_SUCCESS)
-		return;
+		return rv;
 
 	/*
 	 * RP detect is a problem in firmware version 0x10 and older.
 	 */
 	if (val <= 0x10)
 		ps8815_disable_rp_detect[port] = true;
+
+	return EC_SUCCESS;
 }
 
 __overridable void board_ps8xxx_tcpc_init(int port)
@@ -728,7 +730,9 @@ static int ps8xxx_tcpm_init(int port)
 
 	if (IS_ENABLED(CONFIG_USB_PD_TCPM_PS8815)) {
 		ps8815_transmit_buffer_workaround_check(port);
-		ps8815_disable_rp_detect_workaround_check(port);
+		status = ps8815_disable_rp_detect_workaround_check(port);
+		if (status != EC_SUCCESS)
+			return status;
 	}
 
 	board_ps8xxx_tcpc_init(port);
