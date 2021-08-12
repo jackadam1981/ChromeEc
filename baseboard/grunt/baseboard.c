@@ -281,12 +281,19 @@ static uint32_t sku_id;
 
 static int ps8751_tune_mux(int port)
 {
+<<<<<<< HEAD   (fc00c6 careena: Deassert PROCHOT on sysjump)
 	/* Tune USB mux registers for treeya's port 1 Rx measurement.
 	 * nuwani board same as treeya board.
 	 */
 	if (((sku_id >= 0xa0) && (sku_id <= 0xaf)) ||
 		((sku_id >= 0xd0) && (sku_id <= 0xdf)))
 		mux_write(port, PS8XXX_REG_MUX_USB_C2SS_EQ, 0x40);
+=======
+	/* Tune USB mux registers for treeya's port 1 Rx measurement */
+	if (((sku_id >= 0xa0) && (sku_id <= 0xaf)) ||
+	   sku_id == 0xbe || sku_id == 0xbf)
+		mux_write(me, PS8XXX_REG_MUX_USB_C2SS_EQ, 0x40);
+>>>>>>> CHANGE (721b08 treeya: add skuid 0xbe, 0xbf for treeya360)
 
 	return EC_SUCCESS;
 }
@@ -772,10 +779,17 @@ int board_is_convertible(void)
 {
 	/* Grunt: 6 */
 	/* Kasumi360: 82 */
+<<<<<<< HEAD   (fc00c6 careena: Deassert PROCHOT on sysjump)
 	/* Treeya360: a8-af */
 	/* Nuwani360: d8 */
 	return (sku_id == 6 || sku_id == 82 || sku_id == 0xd8 ||
 		((sku_id >= 0xa8) && (sku_id <= 0xaf)));
+=======
+	/* Treeya360: a8-af, be, bf*/
+	return (sku_id == 6 || sku_id == 82 ||
+		((sku_id >= 0xa8) && (sku_id <= 0xaf)) ||
+		sku_id == 0xbe || sku_id == 0xbf);
+>>>>>>> CHANGE (721b08 treeya: add skuid 0xbe, 0xbf for treeya360)
 }
 
 int board_is_lid_angle_tablet_mode(void)
@@ -796,7 +810,11 @@ uint32_t board_override_feature_flags0(uint32_t flags0)
 	    sku_id == 40 || sku_id == 41 ||
 	    sku_id == 44 || sku_id == 45 ||
 	    ((sku_id >= 0xa0) && (sku_id <= 0xaf)) ||
+<<<<<<< HEAD   (fc00c6 careena: Deassert PROCHOT on sysjump)
 	    ((sku_id >= 0xd0) && (sku_id <= 0xdf)))
+=======
+		sku_id == 0xbe || sku_id == 0xbf)
+>>>>>>> CHANGE (721b08 treeya: add skuid 0xbe, 0xbf for treeya360)
 		return (flags0 & ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));
 	else
 		return flags0;
