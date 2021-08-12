@@ -20,6 +20,47 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1994e2d5_957df303",
+        "filename": "board/cr50/dcrypto/dcrypto_p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-12T04:32:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a01362d_30683c1e",
+      "revId": "3563506a0ab433c6614d9b96a461e466bbcab7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e50a76_c2840fb7",
+        "filename": "board/cr50/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-12T04:32:33Z",
+      "side": 1,
+      "message": "ack :) missed in patchset 1",
+      "range": {
+        "startLine": 392,
+        "startChar": 36,
+        "endLine": 392,
+        "endChar": 38
+      },
+      "revId": "3563506a0ab433c6614d9b96a461e466bbcab7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "74d29a3b_bcd8c86d",
         "filename": "board/cr50/dcrypto/p256.c",
         "patchSetId": 4
@@ -31,6 +72,30 @@
       "writtenOn": "2021-08-11T23:51:14Z",
       "side": 1,
       "message": "this saves quite a bit as avoids packing/unpacking unaligned words.",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "3563506a0ab433c6614d9b96a461e466bbcab7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7062c954_4eb157e2",
+        "filename": "board/cr50/dcrypto/p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-12T04:32:33Z",
+      "side": 1,
+      "message": "1) so, both digits in p256 and bytes in each digit are reverted when going little-endian \u003c-\u003e big-endian? are digits supposed to be reverted - pre-CL to_bin/from_bin didn\u0027t seem to be doing that.\n2) nit: extract this cycle into a revert_bytes() function?",
+      "parentUuid": "74d29a3b_bcd8c86d",
       "range": {
         "startLine": 114,
         "startChar": 1,
@@ -54,6 +119,30 @@
       "writtenOn": "2021-08-12T04:15:12Z",
       "side": 1,
       "message": "and caller somehow didn\u0027t check return code... the only use case now checks return code, so it\u0027s more a fool-proof.",
+      "range": {
+        "startLine": 167,
+        "startChar": 38,
+        "endLine": 167,
+        "endChar": 56
+      },
+      "revId": "3563506a0ab433c6614d9b96a461e466bbcab7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa7ed57b_4dc03ae3",
+        "filename": "board/cr50/dcrypto/p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-12T04:32:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "753f22f8_bf791382",
       "range": {
         "startLine": 167,
         "startChar": 38,
