@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76aff550_4b567e3e",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-12T04:35:48Z",
+      "side": 1,
+      "message": "so, do you plan to remove the leftover comment?",
+      "parentUuid": "38f8933a_49a4e474",
+      "range": {
+        "startLine": 210,
+        "startChar": 20,
+        "endLine": 211,
+        "endChar": 37
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da2e8477_9cdfd386",
         "filename": "board/cr50/dcrypto/sha_hw.c",
         "patchSetId": 5
@@ -137,6 +161,30 @@
       "side": 1,
       "message": "It\u0027s a building system issue. When \u0027RO\u0027 firmware is built it mixes new dcrypto.h header and old code from chip/g/dcrypto. It is somewhere implicitly done in the building rules. So, to avoid build issues I added function with different name for different signature. Vadim wanted to take a look into it. So far I don\u0027t see this as big issue - function parameters changed, so new name is ok.",
       "parentUuid": "da2e8477_9cdfd386",
+      "range": {
+        "startLine": 220,
+        "startChar": 11,
+        "endLine": 220,
+        "endChar": 14
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a8ef406_704a3eac",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-12T04:35:48Z",
+      "side": 1,
+      "message": "you mean SHA256_init is already taken? then ok to use SHA256_hw_init. that naming nit was a nit. from reading the code the sw-fallback approach is obvious.",
+      "parentUuid": "140ef970_29ec5d90",
       "range": {
         "startLine": 220,
         "startChar": 11,
@@ -232,6 +280,30 @@
       "side": 1,
       "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3064201/5/board/cr50/dcrypto/sha_hw.c#171\nand line 185.\n\nFor SHA256_sw_hash() vtable is not needed - it\u0027s a one shot operation with no context. Either done in hardware or in software.",
       "parentUuid": "c8bdd7bb_d5261ad3",
+      "range": {
+        "startLine": 242,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 27
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ddcc07_6eb4263a",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-12T04:35:48Z",
+      "side": 1,
+      "message": "ack. got it.",
+      "parentUuid": "f84a327b_140a10eb",
       "range": {
         "startLine": 242,
         "startChar": 1,
