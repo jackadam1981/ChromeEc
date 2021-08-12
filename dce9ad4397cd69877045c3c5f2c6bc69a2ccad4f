@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fbbcc8a_7263d287",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-12T16:56:53Z",
+      "side": 1,
+      "message": "Note that the analogous CL for Elemi was probably a workaround and didn\u0027t address the root cause of something getting stuck in the PE. I\u0027m comfortable with the idea of making this change for Chronicler anyway, since the PE issue hasn\u0027t been debugged yet.\n\nI\u0027d like to see evidence that this is helpful, though. Is there some test that fails without this change and passes with it? Perhaps the same test that was performed for Elemi in b:186079130? If so, please describe it in the TEST\u003d line of the commit message.",
+      "revId": "dce9ad4397cd69877045c3c5f2c6bc69a2ccad4f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
