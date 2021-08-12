@@ -1,6 +1,57 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "0396b08a_068081d0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-12T21:37:39Z",
+      "side": 1,
+      "message": "Add b:192817920 as well to track this change.",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ec6fac9_a8071db4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-12T21:37:39Z",
+      "side": 1,
+      "message": "How can you do this test if you are not modifying any board file?",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e518ad9_f8466cad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-12T21:37:39Z",
+      "side": 1,
+      "message": "Cherry-pick should be the same Change-Id, so that gerrit can follow:\nI83fe48abc6aa9cde86576a777ac4272d90fac597",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "0c6f9008_23e8f8c6",
@@ -14,6 +65,91 @@
       "writtenOn": "2021-08-06T10:15:24Z",
       "side": 1,
       "message": "Looks good to me now.",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "786a3496_9bcd9ecd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-12T21:37:39Z",
+      "side": 1,
+      "message": "You will need to cherry pick crrev.com/c/2374647 as well.\n\nThe cherry pick was not clean: this CL has 1717 lines, the original 1729.\nCan you add a CONFLICT section of what you needed to change?",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d43c91ac_4de22eed",
+        "filename": "driver/accelgyro_icm426xx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-12T21:37:39Z",
+      "side": 1,
+      "message": "Should it be CONFIG_ACCEL_FIFO instead?",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db58207_b936c047",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-12T21:37:39Z",
+      "side": 1,
+      "message": "This is not part of the original CL, not even on head.",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d985c8d_0a17c1e7",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-12T21:37:39Z",
+      "side": 1,
+      "message": "If this variable is needed, you need to pull crrev.com/1704164 (at least partially), but that may lead to a lot of other pulls.",
+      "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a82d706_e9367a48",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 2452,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-12T21:37:39Z",
+      "side": 1,
+      "message": "Why is it needed?",
       "revId": "219f7238d7f62387ff3f8f7926a6c3ac53435df1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
