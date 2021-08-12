@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d24ea85b_4235031f",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-08-12T02:29:54Z",
+      "side": 1,
+      "message": "Should we let high level code to decide that when to enable an interrupt？\nTo prevent firing an unexpected interrupt during initialization.",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 21
+      },
+      "revId": "e2066405134a3e065a9d141611a7775f68fb9477",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
