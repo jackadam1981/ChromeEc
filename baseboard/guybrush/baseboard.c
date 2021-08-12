@@ -1008,6 +1008,18 @@ static void baseboard_chipset_resume(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 
+static void baseboard_chipset_hard_off(void)
+{
+	/*
+	 * The ANX7451 will default into USB mode after powering off, so ensure
+	 * it gets reset as we turn back on to avoid unnecessary current draw.
+	 */
+	if (board_get_usb_c1_mux() == USB_C1_MUX_ANX7451)
+		usb_mux_clear_state(USBC_PORT_C1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_HARD_OFF, baseboard_chipset_hard_off,
+	     HOOK_PRIO_DEFAULT);
+
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	switch (port) {
