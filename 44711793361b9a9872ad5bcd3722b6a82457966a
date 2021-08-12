@@ -195,6 +195,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "237a5176_7dc25895",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-12T14:13:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "140ef970_29ec5d90",
+      "range": {
+        "startLine": 220,
+        "startChar": 11,
+        "endLine": 220,
+        "endChar": 14
+      },
+      "revId": "44711793361b9a9872ad5bcd3722b6a82457966a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "396ff034_8b1f0604",
