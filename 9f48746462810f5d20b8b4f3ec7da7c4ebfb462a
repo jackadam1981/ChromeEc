@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ead3a8ae_c8099456",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-12T16:07:47Z",
+      "side": 1,
+      "message": "Use bool.",
+      "range": {
+        "startLine": 683,
+        "startChar": 0,
+        "endLine": 683,
+        "endChar": 3
+      },
+      "revId": "9f48746462810f5d20b8b4f3ec7da7c4ebfb462a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cef3b51d_1b3e90a6",
+        "filename": "driver/accel_kionix.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 687,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-12T16:07:47Z",
+      "side": 1,
+      "message": "See the parent CL, This sensor supports two different device addresses, so this device address should be passed in.",
+      "range": {
+        "startLine": 687,
+        "startChar": 27,
+        "endLine": 687,
+        "endChar": 44
+      },
+      "revId": "9f48746462810f5d20b8b4f3ec7da7c4ebfb462a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
