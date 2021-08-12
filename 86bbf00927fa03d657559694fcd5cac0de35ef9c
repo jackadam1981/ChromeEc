@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a7bc1c_d338ea02",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-12T06:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12ab4a7d_2841cc52",
+      "range": {
+        "startLine": 105,
+        "startChar": 1,
+        "endLine": 105,
+        "endChar": 35
+      },
+      "revId": "86bbf00927fa03d657559694fcd5cac0de35ef9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ee315f3_e2384da6",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-12T05:38:40Z",
       "side": 1,
       "message": "\"voltage_mv\" or \"mv\" or add documentation for the function.",
+      "range": {
+        "startLine": 106,
+        "startChar": 48,
+        "endLine": 106,
+        "endChar": 55
+      },
+      "revId": "86bbf00927fa03d657559694fcd5cac0de35ef9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a06c867_025273f2",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-12T06:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ee315f3_e2384da6",
       "range": {
         "startLine": 106,
         "startChar": 48,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "144ac556_840f91c9",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-12T06:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c67efd3_c31e57e4",
+      "range": {
+        "startLine": 533,
+        "startChar": 0,
+        "endLine": 533,
+        "endChar": 35
+      },
+      "revId": "86bbf00927fa03d657559694fcd5cac0de35ef9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acf06e9e_623ad6e6",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-12T05:38:40Z",
       "side": 1,
       "message": "it might be good to structure similar to:\n\n/* ADC conversion time ins ms */\n#if defined(CONFIG_CHARGER_BQ25720)\n#define BQ25710_ADC_OPTION_ADC_CONV_MS\t\t25\n#elif defined(CONFIG_CHARGER_BQ25710)\n#define BQ25710_ADC_OPTION_ADC_CONV_MS\t\t10\n#else\n#error Only the BQ25720 and BQ25710 are supported by bq25710 driver.\n#endif",
+      "range": {
+        "startLine": 122,
+        "startChar": 8,
+        "endLine": 122,
+        "endChar": 15
+      },
+      "revId": "86bbf00927fa03d657559694fcd5cac0de35ef9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2da3d77f_5cbd602b",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-12T06:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acf06e9e_623ad6e6",
       "range": {
         "startLine": 122,
         "startChar": 8,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54e847db_39b31e51",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-12T06:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90cc9b6f_29292117",
+      "range": {
+        "startLine": 123,
+        "startChar": 8,
+        "endLine": 123,
+        "endChar": 15
+      },
+      "revId": "86bbf00927fa03d657559694fcd5cac0de35ef9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e950ec30_39b1131b",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-08-12T05:38:40Z",
       "side": 1,
       "message": "this one doesn\u0027t need to be inside the #ifdef.",
+      "range": {
+        "startLine": 136,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "86bbf00927fa03d657559694fcd5cac0de35ef9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fe1d6fd_1de07b31",
+        "filename": "driver/charger/bq25710.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-12T06:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e950ec30_39b1131b",
       "range": {
         "startLine": 136,
         "startChar": 4,
