@@ -108,6 +108,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "62340526_afa4c73e",
+        "filename": "board/cr50/dcrypto/p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-12T17:56:08Z",
+      "side": 1,
+      "message": "1) correct. original code is a bit over-complicated for the simple le\u003c-\u003ebe case where you just need to inverse bytes (ok, BE order of BE digits to p256\u0027s LE order of LE digits). However, on BE architectures it won\u0027t be like that as p256 would use LE order of BE 32-bit \u0027digits\u0027, so for that unused path let the old code remains - we are on LE ARM.\n2) the 4 instruction loop generated for this snippet is smaller that function call with 3 parameters unless inlined. I\u0027ll check if inlined implementation is not worse. but, if inlined - no difference spotted.",
+      "parentUuid": "7062c954_4eb157e2",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 115,
+        "endChar": 17
+      },
+      "revId": "3563506a0ab433c6614d9b96a461e466bbcab7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "753f22f8_bf791382",
         "filename": "board/cr50/dcrypto/p256.c",
         "patchSetId": 4
