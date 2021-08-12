@@ -14,6 +14,7 @@
 #include "flash.h"
 #include "host_command.h"
 #include "system.h"
+#include "time.h"
 #include "watchdog.h"
 
 LOG_MODULE_REGISTER(cros_flash, LOG_LEVEL_ERR);
@@ -194,6 +195,8 @@ static int cros_flash_it8xxx2_erase(const struct device *dev, int offset,
 {
 	struct cros_flash_it8xxx2_data *const data = DRV_DATA(dev);
 	int ret = 0;
+	uint64_t __now;
+	int size_raw = size;
 
 	if (data->all_protected) {
 		return -EACCES;
@@ -214,6 +217,7 @@ static int cros_flash_it8xxx2_erase(const struct device *dev, int offset,
 		IS_ENABLED(CONFIG_HOST_COMMAND_STATUS)) {
 		irq_enable(DT_IRQN(DT_NODELABEL(shi)));
 	}
+	__now = get_time().val;
 	/* Always use sector erase command */
 	for (; size > 0; size -= CONFIG_FLASH_ERASE_SIZE) {
 		ret = flash_erase(flash_controller, offset,
@@ -229,10 +233,13 @@ static int cros_flash_it8xxx2_erase(const struct device *dev, int offset,
 		if (IS_ENABLED(CONFIG_PLATFORM_EC_WATCHDOG) && (size > 0x10000))
 			watchdog_reload();
 	}
+	__now = get_time().val - __now;
 	/* Restore interrupts */
 	if (IS_ENABLED(CONFIG_ITE_IT8XXX2_INTC)) {
 		ite_intc_restore_interrupts();
 	}
+
+	ccprintf("!!! erase 0x%x bytes take %.3lld (ms) !!!\n",size_raw, __now);
 
 	return ret;
 }
