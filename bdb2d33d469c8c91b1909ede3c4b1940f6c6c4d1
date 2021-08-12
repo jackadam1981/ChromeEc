@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a10f870_006f7222",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-12T16:07:28Z",
+      "side": 1,
+      "message": "This should also pass in motion_sensors_alt[SENSOR_ID(id)].i2c_spi_addr to each detect routine.",
+      "range": {
+        "startLine": 416,
+        "startChar": 6,
+        "endLine": 417,
+        "endChar": 46
+      },
+      "revId": "bdb2d33d469c8c91b1909ede3c4b1940f6c6c4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "674391a3_7de79a15",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-12T16:07:28Z",
+      "side": 1,
+      "message": "I don\u0027t think board_detect_motionsensor() is needed.  I think you can just put this code into the existing motion_sensors_init_alt() function.",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 6
+      },
+      "revId": "bdb2d33d469c8c91b1909ede3c4b1940f6c6c4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
