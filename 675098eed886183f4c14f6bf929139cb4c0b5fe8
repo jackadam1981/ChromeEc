@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85cd58f2_0979f794",
+        "filename": "zephyr/dts/bindings/switchcap/switchcap-ln9310.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-12T18:28:53Z",
+      "side": 1,
+      "message": "Drop the required field, and setup a default to LN9310_I2C_ADDR_0_FLAGS.  This matches what we\u0027ve done with sensor devices.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "675098eed886183f4c14f6bf929139cb4c0b5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
