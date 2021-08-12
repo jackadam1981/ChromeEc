@@ -5,6 +5,7 @@
 
 #include <device.h>
 #include <drivers/watchdog.h>
+#include <drivers/timer/system_timer.h>
 #include <logging/log.h>
 #include <zephyr.h>
 
@@ -18,6 +19,8 @@ static void wdt_warning_handler(const struct device *wdt_dev, int channel_id)
 {
 	/* TODO(b/176523207): watchdog warning message */
 	printk("Watchdog deadline is close!\n");
+
+	evt_timer_log();
 }
 
 int watchdog_init(void)

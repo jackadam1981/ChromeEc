@@ -135,9 +135,9 @@ static int configure_mux(int port,
 		}
 	}
 
-	if (rv)
-		CPRINTS("mux config:%d, port:%d, rv:%d",
-			config, port, rv);
+	//if (rv)
+		//CPRINTS("mux config:%d, port:%d, rv:%d",
+		//	config, port, rv);
 
 	return rv;
 }
@@ -162,7 +162,7 @@ static int exit_low_power_mode(int port)
 		usb_mux_init(port);
 
 	if (!(flags[port] & USB_MUX_FLAG_INIT)) {
-		CPRINTS("C%d: USB_MUX_FLAG_INIT not set", port);
+		//CPRINTS("C%d: USB_MUX_FLAG_INIT not set", port);
 		return EC_ERROR_UNKNOWN;
 	}
 
