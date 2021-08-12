@@ -764,9 +764,10 @@ int board_is_convertible(void)
 {
 	/* Grunt: 6 */
 	/* Kasumi360: 82 */
-	/* Treeya360: a8-af */
+	/* Treeya360: a8-af, be, bf*/
 	return (sku_id == 6 || sku_id == 82 ||
-		((sku_id >= 0xa8) && (sku_id <= 0xaf)));
+		((sku_id >= 0xa8) && (sku_id <= 0xaf)) ||
+		sku_id == 0xbe || sku_id == 0xbf);
 }
 
 int board_is_lid_angle_tablet_mode(void)
@@ -785,7 +786,8 @@ __override uint32_t board_override_feature_flags0(uint32_t flags0)
 	    sku_id == 32 || sku_id == 33 ||
 	    sku_id == 40 || sku_id == 41 ||
 	    sku_id == 44 || sku_id == 45 ||
-	    ((sku_id >= 0xa0) && (sku_id <= 0xaf)))
+	    ((sku_id >= 0xa0) && (sku_id <= 0xaf)) ||
+		sku_id == 0xbe || sku_id == 0xbf)
 		return (flags0 & ~EC_FEATURE_MASK_0(EC_FEATURE_PWM_KEYB));
 	else
 		return flags0;
