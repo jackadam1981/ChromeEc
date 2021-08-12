@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a01362d_30683c1e",
+        "filename": "board/cr50/dcrypto/dcrypto_p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-12T04:15:12Z",
+      "side": 1,
+      "message": "take a look here. ecdsa_sign() won\u0027t report success if DRBG failed.",
+      "revId": "3563506a0ab433c6614d9b96a461e466bbcab7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74d29a3b_bcd8c86d",
@@ -19,6 +36,29 @@
         "startChar": 1,
         "endLine": 115,
         "endChar": 17
+      },
+      "revId": "3563506a0ab433c6614d9b96a461e466bbcab7ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "753f22f8_bf791382",
+        "filename": "board/cr50/dcrypto/p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-12T04:15:12Z",
+      "side": 1,
+      "message": "and caller somehow didn\u0027t check return code... the only use case now checks return code, so it\u0027s more a fool-proof.",
+      "range": {
+        "startLine": 167,
+        "startChar": 38,
+        "endLine": 167,
+        "endChar": 56
       },
       "revId": "3563506a0ab433c6614d9b96a461e466bbcab7ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"

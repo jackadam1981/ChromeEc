@@ -117,6 +117,30 @@
       },
       "revId": "cfb14a23f51d5fbdd336a61f90e889e220e93bea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0568dca6_326fc5cd",
+        "filename": "board/cr50/dcrypto/p256.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-12T04:15:12Z",
+      "side": 1,
+      "message": "next_fast_random is used for blinding/shredding stale data only. if DRBG fails, the caller will see this is the case ( and don\u0027t return successful return code for signing - https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3087833/4/board/cr50/dcrypto/dcrypto_p256.c#840 - this is the only place where this function is currently used. I plan though to use it in FIPS-friendly U2F Generate/Sign since it\u0027s common code snippet.\nother use cases - replacement for memset(). It\u0027s just faster than rand() and allows code to run on host().",
+      "parentUuid": "0eb1fdbc_1ea290ba",
+      "range": {
+        "startLine": 33,
+        "startChar": 16,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "cfb14a23f51d5fbdd336a61f90e889e220e93bea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
