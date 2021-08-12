@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826e308c_266b1062",
+        "filename": "zephyr/shim/src/motionsense_driver/kx022-drvinfo.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-12T16:11:50Z",
+      "side": 1,
+      "message": "I don\u0027t think \"../\" is needed here.  The platform/ec/include directory should already be in the include path.",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "7ec05445cafa159f5c276d5284acab19443aae4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
