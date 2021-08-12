@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a922a036_1cc1d26b",
+        "filename": "zephyr/projects/npcx_evb/npcx7/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-12T20:40:28Z",
+      "side": 1,
+      "message": "For cros-ec builds, the AC_PRESENT GPIO is GPIO74 for non-PSL mode and GPIOD2 for PSL mode.  This is only supporting the PSL configuration, or has the board design changed?",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "5dd6e1e9a38b1a768c21bee4abc53a8cafae946d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdbce430_96b16206",
+        "filename": "zephyr/projects/npcx_evb/npcx7/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-12T20:40:28Z",
+      "side": 1,
+      "message": "The comment in npcx7_evb/gpio.inc indicates that pullup/pulldown is disabled when the pin is configured for PSL mode.",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "5dd6e1e9a38b1a768c21bee4abc53a8cafae946d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
