@@ -261,4 +261,10 @@ void usb_mux_hpd_update(int port, int hpd_lvl, int hpd_irq);
  */
 int usb_mux_retimer_fw_update_port_info(void);
 
+/**
+ * Clear internal tracking for mux's init and LPM state
+ *
+ * @param port USB-C port number
+ */
+void usb_mux_clear_state(int port);
 #endif

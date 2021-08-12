@@ -357,6 +357,15 @@ static void mux_chipset_reset(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, mux_chipset_reset, HOOK_PRIO_DEFAULT);
 
+/*
+ * Allow the clearing of a mux's state if it has power cycled and is no longer
+ * init'd or in LPM.
+ */
+void usb_mux_clear_state(int port)
+{
+	flags[port] = 0;
+}
+
 #ifdef CONFIG_CMD_TYPEC
 static int command_typec(int argc, char **argv)
 {
