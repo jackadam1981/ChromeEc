@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50cf47f6_45061dcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-08-12T18:44:14Z",
+      "side": 1,
+      "message": "On the buganizer there was an information that this implementation should support only one type of switchcap on board, as most boards don\u0027t have multiple ones.\nI see that during the refactor I have missed this one. If you enable LN9310, there will be an error when there\u0027s no device tree node. It should probably check, and when there\u0027s no DT node, code shouldn\u0027t be included and custom implementation must be done in board-specific code. (As was in patchset 1 😞 )",
+      "parentUuid": "91fb7c21_dcf8a693",
+      "revId": "675098eed886183f4c14f6bf929139cb4c0b5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85cd58f2_0979f794",
         "filename": "zephyr/dts/bindings/switchcap/switchcap-ln9310.yaml",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-12T18:28:53Z",
       "side": 1,
       "message": "Drop the required field, and setup a default to LN9310_I2C_ADDR_0_FLAGS.  This matches what we\u0027ve done with sensor devices.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 18
+      },
+      "revId": "675098eed886183f4c14f6bf929139cb4c0b5fe8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b76682_4da6fcf1",
+        "filename": "zephyr/dts/bindings/switchcap/switchcap-ln9310.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-08-12T18:44:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85cd58f2_0979f794",
       "range": {
         "startLine": 20,
         "startChar": 0,
