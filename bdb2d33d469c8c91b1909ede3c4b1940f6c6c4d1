@@ -45,6 +45,30 @@
       },
       "revId": "bdb2d33d469c8c91b1909ede3c4b1940f6c6c4d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c41fc8de_d28555d5",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-12T16:58:31Z",
+      "side": 1,
+      "message": "Looking at the CL that enables this on Lazor, I see we need to verify that the board has sensors.  Generating I2C transactions on an inactive bus could cause problems, so the board code needs to call this.\n\nYou change the name to motion_sensors_detect_alt().  The \"board_\" prefix implies that this function can be overridden with board specific code.\n\nIf we can generalize the code to detect clamshell/convertible, then we should be able  move this code into motions_sensors_init_alt().",
+      "parentUuid": "674391a3_7de79a15",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 6
+      },
+      "revId": "bdb2d33d469c8c91b1909ede3c4b1940f6c6c4d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
