@@ -121,14 +121,13 @@ static void board_connect_c0_sbu(enum gpio_signal s)
 __override struct keyboard_scan_config keyscan_config = {
 	/* Use 80 us, because KSO_02 passes through the H1. */
 	.output_settle_us = 80,
-	/*
-	 * Unmask 0x08 in [0] (KSO_00/KSI_03, the new location of Search key);
-	 * as it still uses the legacy location (KSO_01/KSI_00).
-	 */
-	.actual_key_mask = {
-		0x14, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
-		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca
-	},
+ /* Unmask 0x01 in [1] (KSO_01/KSI_00, the old location of Search key); */
+ /* as it uses the new location (KSO_00/KSI_03). And T11 key, which maps */
+ /* to KSO_01/KSI_00, is not there. */
+	 .actual_key_mask = {
+	 0x1c, 0xfe, 0xff, 0xff, 0xff, 0xf5, 0xff,
+	 0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca
+	 },
 	/* Other values should be the same as the default configuration. */
 	.debounce_down_us = 9 * MSEC,
 	.debounce_up_us = 30 * MSEC,
