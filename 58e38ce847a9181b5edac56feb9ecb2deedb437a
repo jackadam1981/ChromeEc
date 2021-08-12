@@ -99,6 +99,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b667f90a_84d0982c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-12T18:03:20Z",
+      "side": 1,
+      "message": "yes, i\u0027m waiting cryptoc removal stuff to land to rebase it.",
+      "parentUuid": "3f32caca_dc8261dc",
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcb2161b_e9256986",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-12T18:03:20Z",
+      "side": 1,
+      "message": "i\u0027m waiting cryptoc removal stuff to land to rebase it.",
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41adff99_51af59ed",
@@ -349,6 +384,30 @@
       "side": 1,
       "message": "i\u0027ll try to make this work.",
       "parentUuid": "e6884ab3_af2ec148",
+      "range": {
+        "startLine": 78,
+        "startChar": 5,
+        "endLine": 78,
+        "endChar": 17
+      },
+      "revId": "58e38ce847a9181b5edac56feb9ecb2deedb437a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76cf6f6f_4ec7751c",
+        "filename": "test/u2f.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-12T18:03:20Z",
+      "side": 1,
+      "message": "i hope once SHA \u0026 p256 changes lands, I\u0027ll be able to make host emulation more capable and support actual signing \u0026 verification, to make tests better. Basically instead of mocking functions provide software implementations.",
+      "parentUuid": "d54bb635_26208767",
       "range": {
         "startLine": 78,
         "startChar": 5,
