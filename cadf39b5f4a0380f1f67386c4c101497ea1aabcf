@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "704eb52c_b70571b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-12T17:22:41Z",
+      "side": 1,
+      "message": "I\u0027m not quite following this:\n\n1. If this is a problem in Unattached.SRC, wouldn\u0027t the same problem exist in Unattached.SNK?\n2. What does it mean to be in low power mode if DRP AutoToggle is not supported? (I\u0027m unfamiliar with TCPCs like this.)\n3. Based on the description of the problem in the commit message, it sounds like the solution would be to set drp_state differently on a state transition based on the result of something like tcpm_auto_toggle_supported(). But it looks like this change is keeping drp_state the same while changing the criteria for a TC state transition. Can you elaborate on how this fixes the issue?",
+      "revId": "cadf39b5f4a0380f1f67386c4c101497ea1aabcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
