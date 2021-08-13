@@ -657,6 +657,11 @@ static int ps8xxx_get_chip_info(int port, int live,
 		chip_info->device_id = val;
 	}
 #endif
+#if 0
+	rv = ps8xxx_lpm_recovery_delay(port);
+	if (rv != EC_SUCCESS)
+		return rv;
+#endif
 	reg = get_reg_by_product(port, REG_FW_VER);
 	rv = tcpc_read(port, reg, &val);
 	if (rv != EC_SUCCESS)
