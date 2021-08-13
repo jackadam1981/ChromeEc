@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbd69d9_3a69aaa6",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T17:22:00Z",
+      "side": 1,
+      "message": "svdm_dp_config was already being called from the DPM in TCPMv2, so maybe there is a better way to describe the distinction here.",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da6ad61f_171644c9",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T17:22:00Z",
+      "side": 1,
+      "message": "If you just delete this if clause, it will presumably break DP mode on TCPMv1, which is only supported on Servo v4, which does not support DP mode. People might never notice. 😊",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5d9c05b_7d89ecd7",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T17:22:00Z",
+      "side": 1,
+      "message": "If the mux is already in safe mode when this state runs, then TBT_SET_SAFE_STATE seems like an odd name for it.",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bade965c_8c1fd687",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T17:22:00Z",
+      "side": 1,
+      "message": "Do these calls need to be included in this change?",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d6613fd_f464ac61",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T17:22:00Z",
+      "side": 1,
+      "message": "Possibly out of scope: We may be getting to the point where *_setup_next_vdm should take vdo_count as an output parameter and return an enum to indicate its various statuses instead of stuffing special statuses in-band with its return value.",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
