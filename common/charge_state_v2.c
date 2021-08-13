@@ -1879,7 +1879,6 @@ static void revive_battery(int *need_static)
 		 * Battery is in disconnect state. Apply a
 		 * current to kick it out of this state.
 		 */
-		CPRINTS("found battery in disconnect state");
 		curr.requested_voltage = batt_info->voltage_max;
 		curr.requested_current = batt_info->precharge_current;
 	} else if (curr.state == ST_PRECHARGE
