@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e8bec434_2e9eb0f6",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-13T17:25:46Z",
+      "side": 1,
+      "message": "What would you envision?\n\nI\u0027d originally though I might be able to find a way for the mux driver itself (ex. the ANX driver in this case) to know that it needs the muxes set again.  However, the board is the one who knows which port has which mux and when they turn off, so it seemed to make sense there.  We do have drivers that assume their power states are tied to certain chipset states, but I\u0027m not sure that\u0027s quite the right approach since it\u0027s not a property of the chip but the board and its power rail choices. \n\nI still wonder why more muxes don\u0027t end up needing this, but perhaps they start up in a lower power mode and don\u0027t affect the power draw numbers.  Or they\u0027re compensating internally like the AMD mux code has to with the chipset reset.  \n\nIf we think this could be generally applicable to all boards, we could have usb_mux do an internal state clear on G3.  Or a config to indicate it\u0027s needed.",
+      "parentUuid": "1fb18864_cf19469e",
+      "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91160edb_e4157d3d",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-13T15:42:59Z",
       "side": 1,
       "message": "Probably should use atomic_clear() for consistency with other writes to flags[].",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 17
+      },
+      "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e62f96_80dea222",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-13T17:25:46Z",
+      "side": 1,
+      "message": "Yeah, we could go that route.  Setting a uint32_t to 0 is essentially atomic since there\u0027s no read/modify/write, right? Just for my reference\n\nAny preference between still clearing all flags, or just clearing the ones I know I care about (init and LPM)?",
+      "parentUuid": "91160edb_e4157d3d",
       "range": {
         "startLine": 366,
         "startChar": 0,
