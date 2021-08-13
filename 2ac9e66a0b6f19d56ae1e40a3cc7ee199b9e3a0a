@@ -16,6 +16,23 @@
       "message": "ugh, still not sure why owners are required for nocturne_fp when I don\u0027t see an owners file.",
       "revId": "2ac9e66a0b6f19d56ae1e40a3cc7ee199b9e3a0a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55100a4e_6c5d56f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-13T17:28:43Z",
+      "side": 1,
+      "message": "Do you happen to know why nocturne_fp changes still require OWNERS approval when there\u0027s no OWNERS file?",
+      "revId": "2ac9e66a0b6f19d56ae1e40a3cc7ee199b9e3a0a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
