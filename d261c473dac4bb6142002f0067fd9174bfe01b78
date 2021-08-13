@@ -34,6 +34,24 @@
       "parentUuid": "437b178a_42e1a603",
       "revId": "d261c473dac4bb6142002f0067fd9174bfe01b78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448d7347_d0540585",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T17:48:54Z",
+      "side": 1,
+      "message": "I have some questions about the if condition here, but it might be overall more natural to deal with this condition in handle_new_power_state, since that code already has direct access to the PD state that this condition depends on.",
+      "parentUuid": "e6b66600_d8603443",
+      "revId": "d261c473dac4bb6142002f0067fd9174bfe01b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
