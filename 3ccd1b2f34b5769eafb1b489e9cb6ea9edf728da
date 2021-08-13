@@ -310,6 +310,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575013c1_2506e34d",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1132414
+      },
+      "writtenOn": "2021-08-13T16:52:04Z",
+      "side": 1,
+      "message": "\u003e Reverting 0d080459e813 would break all in-kernel users depending on it\n\nI said \"partially\" -- I think your test CL is what I had in mind, if I could convince myself I had my head on straight. I think my head is on straight now. (I was really mixed up thinking 0d080459e813 was the problem at first.)\n\n\u003e In this context, note that cros_ec_cmd_xfer_status() is currently wrong anyway - it ignores errors from send_command() and instead uses cros_ec_map_error() to determine error codes from the EC. It should return immediately if send_command() fails, and not try to map anything.\n\nYep. We\u0027re probably lucky that all users will pre-initialize the message struct to all-zero, and so an untouched -\u003eresult field still maps to 0 (and so we ignore it).",
+      "parentUuid": "6cf52b9b_15c692ca",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
