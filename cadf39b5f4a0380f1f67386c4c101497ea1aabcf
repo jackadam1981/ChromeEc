@@ -34,6 +34,24 @@
       "parentUuid": "704eb52c_b70571b1",
       "revId": "cadf39b5f4a0380f1f67386c4c101497ea1aabcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4a9aacb_bfe7a7ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T18:04:10Z",
+      "side": 1,
+      "message": "\u003e looks like commit is little confusing I will update it.\n\u003e 1. Yes device wont enter low power mode in both the cases\nThen should a similar fix be applied to tc_unattached_snk_run?\n\u003e 2. CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE is not supported by IT83xx \u0026 FUSB302.\nWhat I meant is this: What does a TCPC like that do in LPM? How should the TCPC or the EC decide to exit LPM in that case?\n\u003e 3. Once SOC is in active state PD_DRP_TOGGLE_ON is set hence even when no device is connected TCPC wont go into low power mode\nAnd you\u0027re saying this is the desired behavior for a TCPC that doesn\u0027t support DRP AutoToggle?\n\nI think I might have some idea of what you\u0027re getting at: For a TCPC that doesn\u0027t support DRP AutoToggle, the only appropriate time to go into LPM is when the AP is off. Because it doesn\u0027t toggle in LPM, it has no way to get out of LPM by itself. Therefore, this change doesn\u0027t or shouldn\u0027t let it enter LPM once the AP is on.\n\nIs that close to an accurate summary of the point of this change?",
+      "parentUuid": "14052419_cbd8160d",
+      "revId": "cadf39b5f4a0380f1f67386c4c101497ea1aabcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
