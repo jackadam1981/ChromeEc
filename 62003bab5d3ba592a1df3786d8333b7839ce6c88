@@ -83,6 +83,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c61947b3_f0535ca9",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T16:36:18Z",
+      "side": 1,
+      "message": "Nit: Isn\u0027t the head/front the end that you\u0027re supposed to remove from, and the tail/back is the end that you\u0027re supposed to insert to?",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6a6c550_bfb58889",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 4
