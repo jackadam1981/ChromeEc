@@ -114,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d289b29f_664f7b07",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-13T19:55:45Z",
+      "side": 1,
+      "message": "I don\u0027t think this makes sense to be honest: the vast majority of CONGFIG_xxx flags is undefed in config.h, there is no reason to undef them in board.h file again.",
+      "parentUuid": "420da2ad_1886f3a5",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 28
+      },
+      "revId": "302794e3dc3c03f4154cd2bc5dcefc1ecf968e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bf77b92a_8f30656a",
         "filename": "board/cr50/dcrypto/dcrypto_sha512.c",
         "patchSetId": 3
@@ -154,6 +178,52 @@
         "startChar": 0,
         "endLine": 685,
         "endChar": 1
+      },
+      "revId": "302794e3dc3c03f4154cd2bc5dcefc1ecf968e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a72a844_8dbcca0d",
+        "filename": "board/cr50/dcrypto/sha512.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-13T19:55:45Z",
+      "side": 1,
+      "message": "why is this change necessary in this patch?",
+      "range": {
+        "startLine": 245,
+        "startChar": 1,
+        "endLine": 275,
+        "endChar": 6
+      },
+      "revId": "302794e3dc3c03f4154cd2bc5dcefc1ecf968e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bf19001_88019ce0",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1392,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-13T19:55:45Z",
+      "side": 1,
+      "message": "this should be an undef - no need to define it for all boards.",
+      "range": {
+        "startLine": 1392,
+        "startChar": 1,
+        "endLine": 1392,
+        "endChar": 30
       },
       "revId": "302794e3dc3c03f4154cd2bc5dcefc1ecf968e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
