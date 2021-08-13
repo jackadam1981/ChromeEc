@@ -16,6 +16,24 @@
       "message": "This pattern was copied from other mux drivers. I wonder if they are also broken in the same way. Specifically ps8802, ps8818, amd_fp5, amd_fp6, and anx3443.",
       "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5342dbe_bc98d950",
+        "filename": "driver/usb_mux/anx7451.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-08-13T16:03:25Z",
+      "side": 0,
+      "message": "I sort of remember this and thought there was startup issue with Zork that needed to return that all was OK if the chipset was off and the mux was not being used.\n\nAre you sure this is what you want to do?",
+      "parentUuid": "8e0a2e7e_3215bdd8",
+      "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
