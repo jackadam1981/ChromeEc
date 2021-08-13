@@ -1299,6 +1299,13 @@ void tcpci_tcpc_alert(int port)
  *
  * Once it's called, the chip info will be stored in cache, which can be
  * accessed by tcpm_get_chip_info without worrying about chip states.
+ *
+ * truth table:
+ *     cached AND !live  !chip_info      NOP
+ *     cached AND !live   chip_info      return cache
+ *
+ *    !cached  OR live  !chip_info       cache VID,PID,DID
+ *    !cached  OR live   chip_info       cache VID,PID,DID, return cache
  */
 int tcpci_get_chip_info(int port, int live,
 			struct ec_response_pd_chip_info_v1 *chip_info)
@@ -1313,7 +1320,6 @@ int tcpci_get_chip_info(int port, int live,
 		return EC_ERROR_INVAL;
 
 	i = &cached_info[port];
-
 
 	/* If already cached && live data is not asked, return cached value */
 	if (i->vendor_id && !live) {
