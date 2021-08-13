@@ -1,0 +1,181 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23c1ff83_797b2139",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T16:24:05Z",
+      "side": 1,
+      "message": "I take it that we do not have some kind of generic efficient queue structure macro in this codebase. I guess that\u0027s probably for the best but still somehow disappointing.",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e6ffbe2_15325ba7",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T16:24:05Z",
+      "side": 1,
+      "message": "Should this ever happen?",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ec33ba_503cec12",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T16:24:05Z",
+      "side": 1,
+      "message": "Does this need to be masked?",
+      "range": {
+        "startLine": 136,
+        "startChar": 6,
+        "endLine": 136,
+        "endChar": 37
+      },
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "500c1d95_838a2f64",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T16:24:05Z",
+      "side": 1,
+      "message": "My code doesn\u0027t compile in C++, because it doesn\u0027t belong in C++. https://youtu.be/4YBxeDN4tbk?t\u003d84 😊",
+      "range": {
+        "startLine": 137,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6a6c550_bfb58889",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T16:24:05Z",
+      "side": 1,
+      "message": "This could be inside the else.",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 37
+      },
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f4f0fe6_4de692b5",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T16:24:05Z",
+      "side": 1,
+      "message": "Do you need to synchronize around this check?",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9028c5e_4c9886e0",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T16:24:05Z",
+      "side": 1,
+      "message": "My kingdom for an iterator.",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a30f3a8_1a5b5fd4",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T16:24:05Z",
+      "side": 1,
+      "message": "Maybe I\u0027m forgetting my type rules, but isn\u0027t this the same as const struct mux_queue_entry? That would be more typical.",
+      "range": {
+        "startLine": 463,
+        "startChar": 25,
+        "endLine": 463,
+        "endChar": 30
+      },
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a80bdd13_75615d40",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-13T16:24:05Z",
+      "side": 1,
+      "message": "Probably doesn\u0027t make much difference, but at this point, you know the result and could bail out early.",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
