@@ -161,6 +161,8 @@
 #define CONFIG_DCRYPTO_BOARD
 #define CONFIG_UPTO_SHA512
 #define CONFIG_DCRYPTO_RSA_SPEEDUP
+#undef CONFIG_LIBCRYPTOC
+#undef CONFIG_DCRYPTO
 
 /* Implement custom udelay, due to usec hwtimer imprecision. */
 #define CONFIG_HW_SPECIFIC_UDELAY

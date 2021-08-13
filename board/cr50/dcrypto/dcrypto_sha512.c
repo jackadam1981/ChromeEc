@@ -7,8 +7,6 @@
 #include "internal.h"
 #include "registers.h"
 
-#include "cryptoc/sha512.h"
-
 #ifdef CRYPTO_TEST_SETUP
 
 /* test and benchmark */
@@ -499,8 +497,8 @@ static void dcrypto_SHA512_setup(void)
 	dcrypto_imem_load(0, IMEM_dcrypto, ARRAY_SIZE(IMEM_dcrypto));
 }
 
-static void dcrypto_SHA512_Transform(LITE_SHA512_CTX *ctx, const uint32_t *buf,
-				     size_t nwords)
+static void dcrypto_SHA512_Transform(struct sha512_ctx *ctx,
+				     const uint32_t *buf, size_t nwords)
 {
 	int result = 0;
 	struct DMEM_sha512 *p512 =
@@ -543,12 +541,11 @@ static void dcrypto_SHA512_Transform(LITE_SHA512_CTX *ctx, const uint32_t *buf,
 	END_PROFILE(t_transform)
 }
 
-static void dcrypto_SHA512_update(LITE_SHA512_CTX *ctx, const void *data,
-				  size_t len)
+void SHA512_hw_update(struct sha512_ctx *ctx, const void *data, size_t len)
 {
-	int i = (int) (ctx->count & (sizeof(ctx->buf) - 1));
-	const uint8_t *p = (const uint8_t *) data;
-	uint8_t *d = &ctx->buf[i];
+	int i = (int)(ctx->count & (sizeof(ctx->b8) - 1));
+	const uint8_t *p = (const uint8_t *)data;
+	uint8_t *d = &ctx->b8[i];
 
 	ctx->count += len;
 
@@ -556,28 +553,27 @@ static void dcrypto_SHA512_update(LITE_SHA512_CTX *ctx, const void *data,
 	dcrypto_SHA512_setup();
 
 	/* Take fast path for 32-bit aligned 1KB inputs */
-	if (i == 0 && len == 1024 && (((intptr_t) data) & 3) == 0) {
-		dcrypto_SHA512_Transform(ctx, (const uint32_t *) data, 8 * 32);
+	if (i == 0 && len == 1024 && (((intptr_t)data) & 3) == 0) {
+		dcrypto_SHA512_Transform(ctx, (const uint32_t *)data, 8 * 32);
 	} else {
-		if (len <= sizeof(ctx->buf) - i) {
+		if (len <= sizeof(ctx->b8) - i) {
 			memcpy(d, p, len);
-			if (len == sizeof(ctx->buf) - i) {
+			if (len == sizeof(ctx->b8) - i) {
 				dcrypto_SHA512_Transform(
-				    ctx, (uint32_t *) (ctx->buf), 32);
+					ctx, (uint32_t *)(ctx->b8), 32);
 			}
 		} else {
-			memcpy(d, p, sizeof(ctx->buf) - i);
-			dcrypto_SHA512_Transform(ctx, (uint32_t *) (ctx->buf),
-						 32);
-			d = ctx->buf;
-			len -= (sizeof(ctx->buf) - i);
-			p += (sizeof(ctx->buf) - i);
-			while (len >= sizeof(ctx->buf)) {
-				memcpy(d, p, sizeof(ctx->buf));
-				p += sizeof(ctx->buf);
-				len -= sizeof(ctx->buf);
+			memcpy(d, p, sizeof(ctx->b8) - i);
+			dcrypto_SHA512_Transform(ctx, ctx->b32, 32);
+			d = ctx->b8;
+			len -= (sizeof(ctx->b8) - i);
+			p += (sizeof(ctx->b8) - i);
+			while (len >= sizeof(ctx->b8)) {
+				memcpy(d, p, sizeof(ctx->b8));
+				p += sizeof(ctx->b8);
+				len -= sizeof(ctx->b8);
 				dcrypto_SHA512_Transform(
-				    ctx, (uint32_t *) (ctx->buf), 32);
+					ctx, (uint32_t *)(ctx->b8), 32);
 			}
 			/* Leave remainder in ctx->buf */
 			memcpy(d, p, len);
@@ -586,11 +582,11 @@ static void dcrypto_SHA512_update(LITE_SHA512_CTX *ctx, const void *data,
 	dcrypto_unlock();
 }
 
-static const uint8_t *dcrypto_SHA512_final(LITE_SHA512_CTX *ctx)
+struct sha512_digest *SHA512_hw_final(struct sha512_ctx *ctx)
 {
 	uint64_t cnt = ctx->count * 8;
-	int i = (int) (ctx->count & (sizeof(ctx->buf) - 1));
-	uint8_t *p = &ctx->buf[i];
+	int i = (int) (ctx->count & (sizeof(ctx->b8) - 1));
+	uint8_t *p = &ctx->b8[i];
 
 	*p++ = 0x80;
 	i++;
@@ -598,15 +594,15 @@ static const uint8_t *dcrypto_SHA512_final(LITE_SHA512_CTX *ctx)
 	dcrypto_init_and_lock();
 	dcrypto_SHA512_setup();
 
-	if (i > sizeof(ctx->buf) - 16) {
-		memset(p, 0, sizeof(ctx->buf) - i);
-		dcrypto_SHA512_Transform(ctx, (uint32_t *) (ctx->buf), 32);
+	if (i > sizeof(ctx->b8) - 16) {
+		memset(p, 0, sizeof(ctx->b8) - i);
+		dcrypto_SHA512_Transform(ctx, ctx->b32, 32);
 		i = 0;
-		p = ctx->buf;
+		p = ctx->b8;
 	}
 
-	memset(p, 0, sizeof(ctx->buf) - 8 - i);
-	p += sizeof(ctx->buf) - 8 - i;
+	memset(p, 0, sizeof(ctx->b8) - 8 - i);
+	p += sizeof(ctx->b8) - 8 - i;
 
 	for (i = 0; i < 8; ++i) {
 		uint8_t tmp = (uint8_t)(cnt >> 56);
@@ -614,9 +610,9 @@ static const uint8_t *dcrypto_SHA512_final(LITE_SHA512_CTX *ctx)
 		*p++ = tmp;
 	}
 
-	dcrypto_SHA512_Transform(ctx, (uint32_t *) (ctx->buf), 32);
+	dcrypto_SHA512_Transform(ctx, ctx->b32, 32);
 
-	p = ctx->buf;
+	p = ctx->b8;
 	for (i = 0; i < 8; i++) {
 		uint64_t tmp = ctx->state[i];
 		*p++ = (uint8_t)(tmp >> 56);
@@ -630,28 +626,40 @@ static const uint8_t *dcrypto_SHA512_final(LITE_SHA512_CTX *ctx)
 	}
 
 	dcrypto_unlock();
-	return ctx->buf;
+	return &ctx->digest;
 }
 
-const uint8_t *DCRYPTO_SHA512_hash(const void *data, size_t len,
-				   uint8_t *digest)
-{
-	LITE_SHA512_CTX ctx;
+BUILD_ASSERT(sizeof(union hash_ctx) >= sizeof(struct sha512_ctx));
 
-	DCRYPTO_SHA512_init(&ctx);
-	dcrypto_SHA512_update(&ctx, data, len);
-	memcpy(digest, dcrypto_SHA512_final(&ctx), SHA512_DIGEST_SIZE);
+static void SHA512_hw_init_as_hash(union hash_ctx *const ctx)
+	__alias(SHA512_hw_init);
+static void SHA512_hw_update_as_hash(union hash_ctx *const ctx,
+				     const void *data, size_t len)
+	__alias(SHA512_hw_update);
+static const union sha_digests *SHA512_final_as_hash(union hash_ctx *const ctx)
+	__alias(SHA512_hw_final);
+
+const struct sha512_digest *SHA512_hw_hash(const void *data, size_t len,
+					   struct sha512_digest *digest)
+{
+	struct sha512_ctx ctx;
+
+	SHA512_hw_init(&ctx);
+	SHA512_hw_update(&ctx, data, len);
+	memcpy(digest, SHA512_hw_final(&ctx), SHA512_DIGEST_SIZE);
 
 	return digest;
 }
 
-static const HASH_VTAB dcrypto_SHA512_VTAB = {
-    DCRYPTO_SHA512_init, dcrypto_SHA512_update, dcrypto_SHA512_final,
-    DCRYPTO_SHA512_hash, SHA512_DIGEST_SIZE};
-
-void DCRYPTO_SHA512_init(LITE_SHA512_CTX *ctx)
+void SHA512_hw_init(struct sha512_ctx *ctx)
 {
-	SHA512_init(ctx);
+	static const struct hash_vtable dcrypto_SHA512_VTAB = {
+		SHA512_hw_init_as_hash,	  SHA512_hw_update_as_hash,
+		SHA512_final_as_hash,	  HMAC_sw_final,
+		SHA512_DIGEST_SIZE,	  SHA512_BLOCK_SIZE,
+		sizeof(struct sha512_ctx)
+	};
+	SHA512_sw_init(ctx); /* reuse initial state. */
 	ctx->f = &dcrypto_SHA512_VTAB;
 }
 
@@ -660,10 +668,10 @@ void DCRYPTO_SHA512_init(LITE_SHA512_CTX *ctx)
 static uint32_t msg[256]; // 1KB
 static int msg_len;
 static int msg_loops;
-static LITE_SHA512_CTX sw;
-static LITE_SHA512_CTX hw;
-static const uint8_t *sw_digest;
-static const uint8_t *hw_digest;
+static struct sha512_ctx sw;
+static struct sha512_ctx hw;
+static const struct sha512_digest *sw_digest;
+static const struct sha512_digest *hw_digest;
 static uint32_t t_sw;
 static uint32_t t_hw;
 
@@ -677,29 +685,29 @@ static void run_sha512_cmd(void)
 	t_hw = 0;
 
 	START_PROFILE(t_sw)
-	SHA512_init(&sw);
+	SHA512_sw_init(&sw);
 	for (i = 0; i < msg_loops; ++i) {
-		HASH_update(&sw, msg, msg_len);
+		SHA512_update(&sw, msg, msg_len);
 	}
-	sw_digest = HASH_final(&sw);
+	sw_digest = SHA512_final(&sw);
 	END_PROFILE(t_sw)
 
 	START_PROFILE(t_hw)
-	DCRYPTO_SHA512_init(&hw);
+	SHA512_hw_init(&hw);
 	for (i = 0; i < msg_loops; ++i) {
-		HASH_update(&hw, msg, msg_len);
+		SHA512_update(&hw, msg, msg_len);
 	}
-	hw_digest = HASH_final(&hw);
+	hw_digest = SHA512_final(&hw);
 	END_PROFILE(t_hw)
 
 	ccprintf("sw(%u):\n", t_sw);
-	for (i = 0; i < 64; ++i)
-		ccprintf("%02x", sw_digest[i]);
+	for (i = 0; i < SHA512_DIGEST_SIZE; ++i)
+		ccprintf("%02x", sw_digest->b8[i]);
 	ccprintf("\n");
 
 	ccprintf("hw(%u/%u/%u):\n", t_hw, t_transform, t_dcrypto);
-	for (i = 0; i < 64; ++i)
-		ccprintf("%02x", hw_digest[i]);
+	for (i = 0; i < SHA512_DIGEST_SIZE; ++i)
+		ccprintf("%02x", hw_digest->b8[i]);
 	ccprintf("\n");
 
 	task_set_event(TASK_ID_CONSOLE, TASK_EVENT_CUSTOM_BIT(0), 0);
@@ -742,13 +750,13 @@ static void run_sha512_test(void)
 	for (i = 0; i < 129; ++i) {
 		memset(msg, i, i);
 
-		SHA512_init(&sw);
-		HASH_update(&sw, msg, i);
-		sw_digest = HASH_final(&sw);
+		SHA512_sw_init(&sw);
+		SHA512_update(&sw, msg, i);
+		sw_digest = SHA512_final(&sw);
 
-		DCRYPTO_SHA512_init(&hw);
-		HASH_update(&hw, msg, i);
-		hw_digest = HASH_final(&hw);
+		SHA512_hw_init(&hw);
+		SHA512_update(&hw, msg, i);
+		hw_digest = SHA512_final(&hw);
 
 		if (memcmp(sw_digest, hw_digest, SHA512_DIGEST_SIZE) != 0) {
 			ccprintf("sha512 self-test fail at %d!\n", i);
