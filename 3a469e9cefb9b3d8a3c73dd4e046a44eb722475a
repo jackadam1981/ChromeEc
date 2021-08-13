@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a35d80_b0acd125",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-13T18:53:10Z",
+      "side": 1,
+      "message": "Lgtm. One question re use of drbg (and the need for its test) in U2F.",
+      "revId": "3a469e9cefb9b3d8a3c73dd4e046a44eb722475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48631893_4efdf935",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 642,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-13T18:53:10Z",
+      "side": 1,
+      "message": "is this still the case?",
+      "range": {
+        "startLine": 642,
+        "startChar": 32,
+        "endLine": 642,
+        "endChar": 48
+      },
+      "revId": "3a469e9cefb9b3d8a3c73dd4e046a44eb722475a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
