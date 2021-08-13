@@ -68,10 +68,10 @@
 
 /*
  * SN5S30 PPC supports up to 24V VBUS source and sink, however passive USB-C
- * cables only support up to 60W.
+ * cables only support up to 45W.
  */
 #define PD_OPERATING_POWER_MW	15000
-#define PD_MAX_POWER_MW		60000
+#define PD_MAX_POWER_MW		45000
 #define PD_MAX_CURRENT_MA	3000
 #define PD_MAX_VOLTAGE_MV	20000
 
