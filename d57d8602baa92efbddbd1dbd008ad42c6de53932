@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8558592a_06db954a",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-13T17:35:04Z",
+      "side": 1,
+      "message": "Actually, now that I\u0027ve typed it out I might like the option of a CONFIG in usb_mux to clear state.  \n\nI think hypothetically we\u0027d need this on our other mux anyway if we had a connection which is sink/DFP with no alternate modes and we go through G3.  But I can\u0027t seem to test this theory because even my dongle with no HDMI or DP sockets is apparently presenting the DP alternate mode (which has its own path to set muxes back up on startup)",
+      "parentUuid": "e8bec434_2e9eb0f6",
+      "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91160edb_e4157d3d",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 1
