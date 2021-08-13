@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f4f6d930_751cf5c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-13T19:38:07Z",
+      "side": 1,
+      "message": "CONFIG_DCRYPTO_SHA512. It exists for long time and documented in include/config.h - https://source.corp.google.com/chromeos_public/src/platform/cr50/include/config.h;l\u003d1380",
+      "parentUuid": "7affec0d_dd18e769",
+      "range": {
+        "startLine": 20,
+        "startChar": 62,
+        "endLine": 21,
+        "endChar": 10
+      },
+      "revId": "302794e3dc3c03f4154cd2bc5dcefc1ecf968e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "559debb9_4098e137",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "420da2ad_1886f3a5",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-13T19:38:07Z",
+      "side": 1,
+      "message": "yes. this option is documented in include/config.h actually. Here I just explicitly added it for clarity. It is #undef by default, so no actual change, except that it\u0027s easier to observe.\n\nhttps://source.corp.google.com/chromeos_public/src/platform/cr50/include/config.h;l\u003d1380",
+      "parentUuid": "0d094cb7_7108a50a",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 28
+      },
+      "revId": "302794e3dc3c03f4154cd2bc5dcefc1ecf968e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf77b92a_8f30656a",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-08-13T19:03:38Z",
       "side": 1,
       "message": "does it mean we always include SHA512?\ndid we have it in cr50 before?",
+      "range": {
+        "startLine": 655,
+        "startChar": 0,
+        "endLine": 685,
+        "endChar": 1
+      },
+      "revId": "302794e3dc3c03f4154cd2bc5dcefc1ecf968e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70dce4a0_a30ef9a3",
+        "filename": "board/cr50/dcrypto/dcrypto_sha512.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 685,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-13T19:38:07Z",
+      "side": 1,
+      "message": "1. We had software SHA2-384/512 support for many years (CONFIG_UPTO_SHA512)\n2. This file is linked conditionally in CONFIG_DCRYPTO_SHA512 is set\n3. When it is linked - it provides accelerated version, and you may choose to drop software implementation altogether,so sw will use hw, since unlike SHA2-256 - context is stored in memory. If it\u0027s not linked, software only versions are used.\n4. Dcrypto\u0027s support existed for long time, used by some private boards, but never used in cr50.",
+      "parentUuid": "bf77b92a_8f30656a",
       "range": {
         "startLine": 655,
         "startChar": 0,
