@@ -262,6 +262,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3bd69a0_6fd96970",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-13T14:51:59Z",
+      "side": 1,
+      "message": "I also don\u0027t own any of the patches involved here and I don\u0027t have kernel experience, so I don\u0027t have a strong opinion either way. The genesis is simply the test in b/188956438 breaking. I am not aware of anything else broken because of this, but I suspect it could be causing unnoticed issues. I agree that reintroducing cros_ec_cmd_xfer would effectively fix this issue (option 2 above).\n\nGuenter, do you have a preference?",
+      "parentUuid": "112c4a51_292fc99d",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
