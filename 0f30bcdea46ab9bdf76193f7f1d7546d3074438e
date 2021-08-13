@@ -22,6 +22,30 @@
       },
       "revId": "0f30bcdea46ab9bdf76193f7f1d7546d3074438e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e6b5cf8_7aa63f33",
+        "filename": "driver/tcpm/nct38xx.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-08-13T02:57:49Z",
+      "side": 1,
+      "message": "OK, I chagned format to avoid confused.",
+      "parentUuid": "3db5d044_b3678466",
+      "range": {
+        "startLine": 81,
+        "startChar": 28,
+        "endLine": 81,
+        "endChar": 35
+      },
+      "revId": "0f30bcdea46ab9bdf76193f7f1d7546d3074438e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
