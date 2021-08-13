@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1fb18864_cf19469e",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-13T15:46:05Z",
+      "side": 1,
+      "message": "Could this be an optional property of usb_mux_driver instead?",
+      "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91160edb_e4157d3d",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 1
