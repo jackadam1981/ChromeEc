@@ -22,6 +22,30 @@
       },
       "revId": "7ec05445cafa159f5c276d5284acab19443aae4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b436d245_09ecb0bc",
+        "filename": "zephyr/shim/src/motionsense_driver/kx022-drvinfo.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-08-13T11:36:48Z",
+      "side": 1,
+      "message": "Unfortunately, accel_kx022.h is in ec/driver directory, not in ec/include/driver, so \"../\" is necessary here.",
+      "parentUuid": "826e308c_266b1062",
+      "range": {
+        "startLine": 6,
+        "startChar": 10,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "7ec05445cafa159f5c276d5284acab19443aae4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
