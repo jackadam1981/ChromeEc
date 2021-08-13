@@ -22,6 +22,30 @@
       },
       "revId": "d4dc1bc0b73f12d8d791cfb2b73310fa7f261291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3dbcc85_87788e81",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1618,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-08-13T02:25:55Z",
+      "side": 1,
+      "message": "Could we use connecotor VBUS? Look like the VCHG_PWR will drop to 0 while discharing on AC.",
+      "parentUuid": "5d291299_f32c9179",
+      "range": {
+        "startLine": 1613,
+        "startChar": 0,
+        "endLine": 1618,
+        "endChar": 0
+      },
+      "revId": "d4dc1bc0b73f12d8d791cfb2b73310fa7f261291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
