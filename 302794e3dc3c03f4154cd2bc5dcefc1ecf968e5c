@@ -160,6 +160,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c753bda3_ac22350f",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-13T21:29:20Z",
+      "side": 1,
+      "message": "yeah, I saw. I was ok either way since there\u0027s a number of #defines/#undefs in board.h in any case",
+      "parentUuid": "02e55fb5_6fc48c16",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 28
+      },
+      "revId": "302794e3dc3c03f4154cd2bc5dcefc1ecf968e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bf77b92a_8f30656a",
