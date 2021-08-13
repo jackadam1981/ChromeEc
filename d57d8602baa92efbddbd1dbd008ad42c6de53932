@@ -52,6 +52,24 @@
       "parentUuid": "f5342dbe_bc98d950",
       "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9afa1c56_a596f807",
+        "filename": "driver/usb_mux/anx7451.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-08-13T17:59:18Z",
+      "side": 0,
+      "message": "I can\u0027t say there was more bad things... just the ugly that you have already found.\n\nIs your MUX tied to the same power bus as the AP? If that is the case then at least your chip powers at that and there would be no reason to set it back to none again.",
+      "parentUuid": "c50c1cf1_6fcd3ffc",
+      "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
