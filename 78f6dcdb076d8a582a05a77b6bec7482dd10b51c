@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f05665_e569bfe5",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-13T14:48:14Z",
+      "side": 1,
+      "message": "Can you update this comment to read more like the commit message?  The commit message description is much more detailed.  \n\nOn my first read of this comment, it was unclear which delay was \"supposed to be 10ms\" especially because PS8XXX_I2C_RECOVERY_DELAY_MS is already set to 10ms.",
+      "range": {
+        "startLine": 590,
+        "startChar": 0,
+        "endLine": 596,
+        "endChar": 0
+      },
+      "revId": "78f6dcdb076d8a582a05a77b6bec7482dd10b51c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
