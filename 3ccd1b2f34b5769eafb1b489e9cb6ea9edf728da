@@ -286,6 +286,30 @@
       },
       "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cf52b9b_15c692ca",
+        "filename": "util/comm-dev.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1146659
+      },
+      "writtenOn": "2021-08-13T16:13:22Z",
+      "side": 1,
+      "message": "Reverting 0d080459e813 would break all in-kernel users depending on it, so all callers of cros_ec_cmd_xfer_status() would have to be examined and updated accordingly. I personally don\u0027t think that would be a good idea.\nIt would make more sense to re-introduce cros_ec_cmd_xfer() and specifically use it for ioctls. In this context, note that cros_ec_cmd_xfer_status() is currently wrong anyway - it ignores errors from send_command() and instead uses cros_ec_map_error() to determine error codes from the EC. It should return immediately if send_command() fails, and not try to map anything.",
+      "parentUuid": "f3bd69a0_6fd96970",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 45
+      },
+      "revId": "3ccd1b2f34b5769eafb1b489e9cb6ea9edf728da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
