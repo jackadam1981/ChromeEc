@@ -112,3 +112,8 @@ int memmap_scp_to_ap(uintptr_t scp_addr, uintptr_t *ap_addr)
 		(addr_map[i] << REMAP_ADDR_SHIFT);
 	return EC_SUCCESS;
 }
+
+int dma_memset(uintptr_t scp_addr, uint8_t value, uint32_t size)
+{
+	return 0;
+}
