@@ -45,6 +45,54 @@
       },
       "revId": "5dd6e1e9a38b1a768c21bee4abc53a8cafae946d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1f2ae76_19d19261",
+        "filename": "zephyr/projects/npcx_evb/npcx7/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-08-13T08:34:28Z",
+      "side": 1,
+      "message": "For PSL_INx pins, they are still configured to GPIOs at init. and will switch to PSL Input function at the time EC wants to enter hibernate. \nFor non-PSL mode hibernate, any GPIO with interrupt cabipility can set to the hibernate wakeup source. I think the intension to use different pins in cros-ec build is to emphisize that the PSL mode cannot support the internal PU/PD.",
+      "parentUuid": "a922a036_1cc1d26b",
+      "range": {
+        "startLine": 20,
+        "startChar": 12,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "5dd6e1e9a38b1a768c21bee4abc53a8cafae946d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27f910c9_381ff06e",
+        "filename": "zephyr/projects/npcx_evb/npcx7/gpio.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-08-13T08:34:28Z",
+      "side": 1,
+      "message": "I removed the internal PU/PD  to prevent from confusing.",
+      "parentUuid": "bdbce430_96b16206",
+      "range": {
+        "startLine": 20,
+        "startChar": 35,
+        "endLine": 20,
+        "endChar": 47
+      },
+      "revId": "5dd6e1e9a38b1a768c21bee4abc53a8cafae946d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
