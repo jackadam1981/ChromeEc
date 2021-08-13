@@ -1384,6 +1384,13 @@
  */
 #undef CONFIG_UPTO_SHA512
 
+/**
+ * Make sw version of SHA2-512/384 equal to hw(dcrypto).
+ * Unlike SHA2-256, dcrypto implementation of SHA2-512/384 allows to save
+ * context, so can fully replace software implementation.
+ */
+#define CONFIG_SHA512_HW_EQ_SW
+
 /*
  * When enabled ignore version et al during fw upgrade for chip/g.
  */
