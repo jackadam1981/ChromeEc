@@ -151,7 +151,7 @@ static struct {
 BUILD_ASSERT(ARRAY_SIZE(irqs) == SCP_INTC_IRQ_COUNT);
 #endif
 
-#ifdef BOARD_CHERRY_SCP
+#if defined(BOARD_CHERRY_SCP) || defined(BOARD_DRAGONFRUIT_SCP_CORE0)
 static struct {
 	uint8_t group;
 } irqs[SCP_INTC_IRQ_COUNT] = {
