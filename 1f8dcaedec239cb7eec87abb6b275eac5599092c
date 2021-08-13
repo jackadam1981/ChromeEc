@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a25302c5_b0222c11",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-13T16:06:02Z",
+      "side": 1,
+      "message": "LGTM, just needs an update to the comment.",
+      "revId": "1f8dcaedec239cb7eec87abb6b275eac5599092c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3068e44_fd9e5c4c",
+        "filename": "board/collis/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-13T16:06:02Z",
+      "side": 1,
+      "message": "Update the comment to indicate Collis only requires support up to 45W.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 0
+      },
+      "revId": "1f8dcaedec239cb7eec87abb6b275eac5599092c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
