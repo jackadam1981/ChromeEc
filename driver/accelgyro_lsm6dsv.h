@@ -21,6 +21,10 @@
 #define LSM6DSV_FUNC_CFG_ACC_ADDR	0x01
 #define LSM6DSV_FUNC_CFG_EN_MASK	0x80
 
+/* Interrupt configuration */
+#define LSM6DSV_IF_CFG			0x03
+#define LSM6DSV_H_LACTIVE		0x10
+
 /* Who Am I */
 #define LSM6DSV_WHO_AM_I_REG		0x0f
 #define LSM6DSV_WHO_AM_I		0x70
@@ -51,7 +55,7 @@
 #define LSM6DSV_QVAR_C_ZIN_0_MASK	0x10
 
 #define LSM6DSV_CTRL10_ADDR		0x19
-#define LSM6DSV_TIMESTAMP_EN    	0x20
+#define LSM6DSV_TIMESTAMP_EN		0x20
 
 #define LSM6DSV_STATUS_REG		0x1e
 
@@ -165,7 +169,7 @@ static inline uint8_t lsm6dsv_accel_fs_reg(int fs)
 {
 	uint8_t ret;
 
-	switch(fs) {
+	switch (fs) {
 	case 2:
 		ret = LSM6DSV_ACCEL_FS_2G_VAL;
 		break;
@@ -190,8 +194,8 @@ static inline uint8_t lsm6dsv_accel_fs_reg(int fs)
 #define LSM6DSV_GYRO_FS_MASK		0x0f
 
 /* Minimal Gyro range in mDPS */
-#define LSM6DSV_GYRO_FS_MIN_VAL_MDPS 	((8750 << 15) / 1000)
-#define LSM6DSV_GYRO_FS_MAX_REG_VAL 	3
+#define LSM6DSV_GYRO_FS_MIN_VAL_MDPS		((8750 << 15) / 1000)
+#define LSM6DSV_GYRO_FS_MAX_REG_VAL		3
 
 /* Gyro reg value for Full Scale selection in DPS */
 #define LSM6DSV_GYRO_FS_REG(_fs) \
@@ -202,8 +206,8 @@ static inline uint8_t lsm6dsv_accel_fs_reg(int fs)
 	((LSM6DSV_GYRO_FS_MIN_VAL_MDPS << (_reg)) / 1000)
 
 /* FS register address/mask for Acc/Gyro sensors */
-#define LSM6DSV_RANGE_REG(_sensor)  	(LSM6DSV_ACCEL_FS_ADDR + (_sensor))
-#define LSM6DSV_RANGE_MASK  		0x0c
+#define LSM6DSV_RANGE_REG(_sensor)		(LSM6DSV_ACCEL_FS_ADDR + (_sensor))
+#define LSM6DSV_RANGE_MASK			0x0c
 
 /* Status register bit for Acc/Gyro/Qvar data ready */
 enum lsm6dsv_status {
@@ -219,7 +223,7 @@ enum lsm6dsv_status {
 #define LSM6DSV_STS_QVARDA_MASK		0x08
 
 /* Sensor resolution in number of bits: fixed 16 bit */
-#define LSM6DSV_RESOLUTION      	16
+#define LSM6DSV_RESOLUTION		16
 
 /* Aggregate private data for all supported sensor (Acc, Gyro) */
 struct lsm6dsv_data {

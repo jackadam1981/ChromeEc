@@ -23,9 +23,9 @@
 /* QVAR configuration */
 #define LSM6DSV_QVAR_IN_FIFO
 #define LSM6DSV_OUT_QVAR_SIZE		2
-#define LSM6DSV_QVAR_BATCH_FILT 	0
-#define LSM6DSV_QVAR_BATCH_FEAT 	1
-#define LSM6DSV_QVAR_BATCH_MODE 	LSM6DSV_QVAR_BATCH_FEAT
+#define LSM6DSV_QVAR_BATCH_FILT		0
+#define LSM6DSV_QVAR_BATCH_FEAT		1
+#define LSM6DSV_QVAR_BATCH_MODE		LSM6DSV_QVAR_BATCH_FEAT
 
 #define CPRINTS(format, args...) cprints(CC_ACCEL, format, ## args)
 
@@ -64,7 +64,7 @@ static uint32_t halfbits_to_floatbits(uint16_t h)
 		/* normalized */
 		/* Just need to adjust the exponent and shift */
 		return f_sgn + (((uint32_t)(h & 0x7fffu) + 0x1c000u) << 13);
-    }
+	}
 }
 
 /* Converts half float to float */
@@ -311,7 +311,7 @@ static void push_fifo_data(struct motion_sensor_t *main_s, uint8_t *fifo,
 
 	sensor = main_s + index;
 
-	switch(type) {
+	switch (type) {
 	case MOTIONSENSE_TYPE_ACCEL:
 	case MOTIONSENSE_TYPE_GYRO:
 		/* Apply precision, sensitivity and rotation. */
@@ -481,7 +481,7 @@ static int set_range(struct motion_sensor_t *s, int range, int rnd)
 			newrange = LSM6DSV_ACCEL_FS_MAX_VAL;
 
 		reg_val = LSM6DSV_XL_FS_REG(newrange);
-	} else {
+	} else if (s->type == MOTIONSENSE_TYPE_GYRO) {
 		/* Adjust and check rounded value for Gyro. */
 		reg_val = LSM6DSV_GYRO_FS_REG(range);
 		if (rnd && (range > LSM6DSV_GYRO_NORMALIZE_FS(reg_val)))
@@ -491,6 +491,9 @@ static int set_range(struct motion_sensor_t *s, int range, int rnd)
 			reg_val = LSM6DSV_GYRO_FS_MAX_REG_VAL;
 
 		newrange = LSM6DSV_GYRO_NORMALIZE_FS(reg_val);
+	} else {
+		CPRINTS("%s skip setrange", s->name);
+		return EC_RES_SUCCESS;
 	}
 
 	mutex_lock(s->mutex);
@@ -502,7 +505,7 @@ static int set_range(struct motion_sensor_t *s, int range, int rnd)
 
 	mutex_unlock(s->mutex);
 
-	return EC_SUCCESS;
+	return err;
 }
 
 /**
@@ -516,6 +519,13 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	int ret, normalized_rate = 0;
 	struct stprivate_data *data = LSM6DSV_GET_DATA(s);
 	uint8_t ctrl_reg, reg_val = 0;
+
+	/*
+	 * QVar sensor is tied to the acceleromter ODR.
+	 * Return success to set the sampling ratio.
+	 */
+	if (s->type == MOTIONSENSE_TYPE_PROX)
+		return EC_RES_SUCCESS;
 
 	ctrl_reg = LSM6DSV_ODR_REG(s->type);
 	if (rate > 0) {
@@ -546,6 +556,13 @@ static int set_data_rate(const struct motion_sensor_t *s, int rate, int rnd)
 	mutex_unlock(s->mutex);
 
 	return ret;
+}
+
+static int get_data_rate(const struct motion_sensor_t *s)
+{
+	if (s->type == MOTIONSENSE_TYPE_PROX)
+		return st_get_data_rate(s - 2);
+	return st_get_data_rate(s);
 }
 
 static int is_data_ready(const struct motion_sensor_t *s, int *ready)
@@ -603,7 +620,7 @@ static int read(const struct motion_sensor_t *s, intv3_t v)
 		return EC_SUCCESS;
 	}
 
-	switch(s->type) {
+	switch (s->type) {
 	case MOTIONSENSE_TYPE_ACCEL:
 		ret = st_raw_read_n_noinc(s->port, s->i2c_spi_addr_flags,
 					  LSM6DSV_ACCEL_OUT_X_L_ADDR,
@@ -672,8 +689,12 @@ static int init(struct motion_sensor_t *s)
 			goto err_unlock;
 
 		/*
-		 * Output data not updated until have been read.
 		 * Require interrupt to be active low.
+		 */
+		ret = st_write_data_with_mask(s, LSM6DSV_IF_CFG,
+				LSM6DSV_H_LACTIVE, 1);
+		/*
+		 * Output data not updated until have been read.
 		 */
 		ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
 				    LSM6DSV_CTRL3_ADDR,
@@ -717,7 +738,7 @@ const struct accelgyro_drv lsm6dsv_drv = {
 	.set_range = set_range,
 	.get_resolution = st_get_resolution,
 	.set_data_rate = set_data_rate,
-	.get_data_rate = st_get_data_rate,
+	.get_data_rate = get_data_rate,
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 #ifdef CONFIG_ACCEL_INTERRUPTS
