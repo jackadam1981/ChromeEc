@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27e89d89_af0dc8ef",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-14T04:56:54Z",
+      "side": 1,
+      "message": "Beautiful, done",
+      "parentUuid": "630a685f_45a2e245",
+      "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91160edb_e4157d3d",
@@ -133,6 +151,30 @@
       "side": 1,
       "message": "On a single core system, atomic_clear() is equivalent to setting the variable directly to 0.  Using atomic_clear() is really defensive coding if ever we switched to a SMP implementation.\n\nIt\u0027s probably best to just clear the INIT and LPM flags.  If another flag is added, it may not be obvious that board code might clear it.",
       "parentUuid": "63e62f96_80dea222",
+      "range": {
+        "startLine": 366,
+        "startChar": 0,
+        "endLine": 366,
+        "endChar": 17
+      },
+      "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed80bcc9_c0e99f78",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-14T04:56:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79849200_fad84449",
       "range": {
         "startLine": 366,
         "startChar": 0,
