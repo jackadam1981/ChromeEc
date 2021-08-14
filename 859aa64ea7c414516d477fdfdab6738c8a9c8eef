@@ -22,6 +22,30 @@
       },
       "revId": "859aa64ea7c414516d477fdfdab6738c8a9c8eef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3cc1eb5_58d06aa1",
+        "filename": "include/driver/tcpm/ps8xxx_public.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-14T00:47:01Z",
+      "side": 1,
+      "message": "not really, ps8815_reset() is primarily about controlling\nthe platform specific reset GPIOs.",
+      "parentUuid": "d03695c1_b79acd74",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 31
+      },
+      "revId": "859aa64ea7c414516d477fdfdab6738c8a9c8eef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
