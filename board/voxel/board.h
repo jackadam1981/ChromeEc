@@ -43,13 +43,13 @@
 #define CONFIG_PWM_KBLIGHT
 
 /* Sensors */
-#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
 /* BMI160 Base accel/gyro */
-#define CONFIG_ACCELGYRO_BMI160
-#define CONFIG_ACCELGYRO_ICM426XX	/* Base accel second source*/
-#define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
-	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
-#define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
+/* LSM6DSV accel/gyro/prox in base */
+#define CONFIG_ACCELGYRO_LSM6DSV
+#define LSM6DSV_QVAR_IN_FIFO
+#define CONFIG_ACCEL_LSM6DSV_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 
 /* Lid operates in forced mode, base in FIFO */
@@ -181,6 +181,7 @@ enum sensor_id {
 	LID_ACCEL = 0,
 	BASE_ACCEL,
 	BASE_GYRO,
+	BASE_PROX,
 	SENSOR_COUNT,
 };
 
@@ -191,8 +192,6 @@ enum usbc_port {
 };
 
 void board_reset_pd_mcu(void);
-
-void motion_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
