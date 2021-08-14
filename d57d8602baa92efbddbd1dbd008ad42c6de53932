@@ -70,6 +70,24 @@
       "parentUuid": "c50c1cf1_6fcd3ffc",
       "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d37d4b_b6438248",
+        "filename": "driver/usb_mux/anx7451.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-14T04:57:14Z",
+      "side": 0,
+      "message": "I was so so close to suppressing the mux error print on NOT_POWERED, but found one driver with the retimer power tied to a GPIO.  So we\u0027ll keep it there for that case where there\u0027s no other obvious EC prints to tell you the mux is off.",
+      "parentUuid": "9afa1c56_a596f807",
+      "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
