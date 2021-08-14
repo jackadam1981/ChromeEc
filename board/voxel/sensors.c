@@ -6,14 +6,11 @@
 /* Volteer family-specific sensor configuration */
 #include "common.h"
 #include "accelgyro.h"
+#include "driver/accelgyro_lsm6dsv.h"
 #include "cbi_ec_fw_config.h"
 #include "cbi_ssfc.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accel_kionix.h"
-#include "driver/accelgyro_bmi_common.h"
-#include "driver/accelgyro_bmi160.h"
-#include "driver/accelgyro_icm_common.h"
-#include "driver/accelgyro_icm426xx.h"
 #include "driver/als_tcs3400.h"
 #include "driver/sync.h"
 #include "keyboard_scan.h"
@@ -34,25 +31,12 @@ static struct accelgyro_saved_data_t g_bma253_data;
 static struct kionix_accel_data g_kx022_data;
 
 /* BMI160 private data */
-static struct bmi_drv_data_t g_bmi160_data;
-static struct icm_drv_data_t g_icm426xx_data;
+static struct lsm6dsv_data lsm6dsv_data;
 
 /* Rotation matrix for the lid accelerometer */
 static const mat33_fp_t lid_standard_ref = {
 	{ FLOAT_TO_FP(-1), 0, 0},
 	{ 0, FLOAT_TO_FP(-1), 0},
-	{ 0, 0, FLOAT_TO_FP(1)}
-};
-
-const mat33_fp_t base_standard_ref = {
-	{ 0, FLOAT_TO_FP(1), 0},
-	{ FLOAT_TO_FP(-1), 0, 0},
-	{ 0, 0, FLOAT_TO_FP(1)}
-};
-
-static const mat33_fp_t base_icm_ref = {
-	{ FLOAT_TO_FP(1), 0, 0},
-	{ 0, FLOAT_TO_FP(1), 0},
 	{ 0, 0, FLOAT_TO_FP(1)}
 };
 
@@ -81,52 +65,6 @@ struct motion_sensor_t kx022_lid_accel = {
 			.odr = 10000 | ROUND_UP_FLAG,
 		},
 	},
-};
-
-struct motion_sensor_t icm426xx_base_accel = {
-	.name = "Base Accel",
-	.active_mask = SENSOR_ACTIVE_S0_S3,
-	.chip = MOTIONSENSE_CHIP_ICM426XX,
-	.type = MOTIONSENSE_TYPE_ACCEL,
-	.location = MOTIONSENSE_LOC_BASE,
-	.drv = &icm426xx_drv,
-	.mutex = &g_base_mutex,
-	.drv_data = &g_icm426xx_data,
-	.port = I2C_PORT_ACCEL,
-	.i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
-	.default_range = 4, /* g, to meet CDD 7.3.1/C-1-4 reqs.*/
-	.rot_standard_ref = &base_icm_ref,
-	.min_frequency = ICM426XX_ACCEL_MIN_FREQ,
-	.max_frequency = ICM426XX_ACCEL_MAX_FREQ,
-	.config = {
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S0] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
-		},
-		/* EC use accel for angle detection */
-		[SENSOR_CONFIG_EC_S3] = {
-			.odr = 10000 | ROUND_UP_FLAG,
-			.ec_rate = 100 * MSEC,
-		},
-	},
-};
-
-struct motion_sensor_t icm426xx_base_gyro = {
-	.name = "Base Gyro",
-	.active_mask = SENSOR_ACTIVE_S0_S3,
-	.chip = MOTIONSENSE_CHIP_ICM426XX,
-	.type = MOTIONSENSE_TYPE_GYRO,
-	.location = MOTIONSENSE_LOC_BASE,
-	.drv = &icm426xx_drv,
-	.mutex = &g_base_mutex,
-	.drv_data = &g_icm426xx_data,
-	.port = I2C_PORT_ACCEL,
-	.i2c_spi_addr_flags = ICM426XX_ADDR0_FLAGS,
-	.default_range = 1000, /* dps */
-	.rot_standard_ref = &base_icm_ref,
-	.min_frequency = ICM426XX_GYRO_MIN_FREQ,
-	.max_frequency = ICM426XX_GYRO_MAX_FREQ,
 };
 
 struct motion_sensor_t motion_sensors[] = {
@@ -159,17 +97,16 @@ struct motion_sensor_t motion_sensors[] = {
 	[BASE_ACCEL] = {
 		.name = "Base Accel",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_BMI160,
+		.chip = MOTIONSENSE_CHIP_LSM6DSV,
 		.type = MOTIONSENSE_TYPE_ACCEL,
 		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &bmi160_drv,
+		.drv = &lsm6dsv_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = &g_bmi160_data,
+		.drv_data = LSM6DSV_ST_DATA(lsm6dsv_data, LSM6DSV_FIFO_DEV_ACCEL),
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
-		.rot_standard_ref = &base_standard_ref,
-		.min_frequency = BMI_ACCEL_MIN_FREQ,
-		.max_frequency = BMI_ACCEL_MAX_FREQ,
+		.i2c_spi_addr_flags = LSM6DSV_ADDR0_FLAGS,
+		.min_frequency = LSM6DSV_ODR_MIN_VAL,
+		.max_frequency = LSM6DSV_ODR_MAX_VAL,
 		.default_range = 4, /* g */
 		.config = {
 			/* EC use accel for angle detection */
@@ -184,22 +121,35 @@ struct motion_sensor_t motion_sensors[] = {
 			},
 		},
 	},
-
 	[BASE_GYRO] = {
 		.name = "Base Gyro",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_BMI160,
+		.chip = MOTIONSENSE_CHIP_LSM6DSV,
 		.type = MOTIONSENSE_TYPE_GYRO,
 		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &bmi160_drv,
+		.drv = &lsm6dsv_drv,
 		.mutex = &g_base_mutex,
-		.drv_data = &g_bmi160_data,
+		.drv_data = LSM6DSV_ST_DATA(lsm6dsv_data, LSM6DSV_FIFO_DEV_GYRO),
 		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
+		.i2c_spi_addr_flags = LSM6DSV_ADDR0_FLAGS,
 		.default_range = 1000, /* dps */
-		.rot_standard_ref = &base_standard_ref,
-		.min_frequency = BMI_GYRO_MIN_FREQ,
-		.max_frequency = BMI_GYRO_MAX_FREQ,
+		.min_frequency = LSM6DSV_ODR_MIN_VAL,
+		.max_frequency = LSM6DSV_ODR_MAX_VAL,
+	},
+	[BASE_PROX] = {
+		.name = "Base QVar",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_LSM6DSV,
+		.type = MOTIONSENSE_TYPE_PROX,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &lsm6dsv_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = LSM6DSV_ST_DATA(lsm6dsv_data, LSM6DSV_FIFO_DEV_QVAR),
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = LSM6DSV_ADDR0_FLAGS,
+		.default_range = 1, /* Does not seems to be used. */
+		.min_frequency = LSM6DSV_ODR_MIN_VAL,
+		.max_frequency = LSM6DSV_ODR_MAX_VAL,
 	},
 };
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
@@ -207,13 +157,6 @@ unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 static void board_sensors_init(void)
 {
 	if (ec_cfg_has_tabletmode()) {
-		if (get_cbi_ssfc_base_sensor() == SSFC_SENSOR_BASE_ICM426XX) {
-			motion_sensors[BASE_ACCEL] = icm426xx_base_accel;
-			motion_sensors[BASE_GYRO] = icm426xx_base_gyro;
-			ccprints("BASE GYRO is ICM426XX");
-		} else
-			ccprints("BASE GYRO is BMI160");
-
 		if (get_cbi_ssfc_lid_sensor() == SSFC_SENSOR_LID_KX022) {
 			motion_sensors[LID_ACCEL] = kx022_lid_accel;
 			ccprints("LID_ACCEL is KX022");
@@ -233,15 +176,3 @@ static void board_sensors_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_sensors_init, HOOK_PRIO_DEFAULT);
 
-void motion_interrupt(enum gpio_signal signal)
-{
-	switch (get_cbi_ssfc_base_sensor()) {
-	case SSFC_SENSOR_BASE_ICM426XX:
-		icm426xx_interrupt(signal);
-		break;
-	case SSFC_SENSOR_BASE_BMI160:
-	default:
-		bmi160_interrupt(signal);
-		break;
-	}
-}
