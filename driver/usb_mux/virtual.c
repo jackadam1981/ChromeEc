@@ -29,8 +29,6 @@ static mux_state_t virtual_mux_state[CONFIG_USB_PD_PORT_MAX_COUNT];
 static inline void virtual_mux_update_state(int port, mux_state_t mux_state,
 					    bool *ack_required)
 {
-	mux_state_t previous_mux_state = virtual_mux_state[port];
-
 	virtual_mux_state[port] = mux_state;
 
 	/*
@@ -56,16 +54,7 @@ static inline void virtual_mux_update_state(int port, mux_state_t mux_state,
 	 * remain in the same state for achieving proper safe state
 	 * terminations.
 	 */
-
-	/* TODO(b/186777984): Wait for an ACK for all mux state change */
-
-	if ((!(previous_mux_state & USB_PD_MUX_SAFE_MODE) &&
-	     (mux_state & USB_PD_MUX_SAFE_MODE)) ||
-	   ((previous_mux_state & USB_PD_MUX_SAFE_MODE) &&
-	    !(mux_state & USB_PD_MUX_SAFE_MODE)) ||
-	   ((previous_mux_state != USB_PD_MUX_NONE) &&
-	    (mux_state == USB_PD_MUX_NONE)))
-		*ack_required = true;
+	*ack_required = true;
 }
 
 static int virtual_init(const struct usb_mux *me)
