@@ -178,6 +178,8 @@ def main(argv):
     parser.add_argument('--strategy_option', '-X',
                         help=('The strategy option for the chosen merge '
                               'strategy'))
+    parser.add_argument('--remove_owners', '-r', action='store_true',
+                        help='Remove non-root OWNERS level files if present')
 
     opts = parser.parse_args(argv)
 
@@ -232,6 +234,29 @@ def main(argv):
     if opts.strategy_option:
         arglist.append('-X' + opts.strategy_option)
     subprocess.run(arglist, check=True)
+
+    # Prune OWNERS files if desired
+    if opts.remove_owners:
+        prunelist = []
+        for root, dirs, files in os.walk('.'):
+            for name in dirs:
+                if 'build' in name:
+                    continue
+            for name in files:
+                if "OWNERS" in name:
+                    print("Adding '" + name + "' to prunelist")
+                    prunelist.append(os.path.join(root, name))
+        
+        # Remove the top level OWNERS file from the prunelist.
+        try:
+            prunelist.remove('./OWNERS')
+        except ValueError:
+            pass
+
+        if prunelist:
+            print("Not merging the following OWNERS files:")
+            for path in prunelist:
+                print("  " + path)
 
     print("Generating commit message...")
     branch = subprocess.run(['git', 'rev-parse', '--abbrev-ref', 'HEAD'],
