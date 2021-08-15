@@ -141,6 +141,30 @@
       },
       "revId": "c23d903b98e2cb6a37db71c2fe0d3c524dc8d822",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb8ce174_aeedd75e",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T05:57:10Z",
+      "side": 1,
+      "message": "Okay, check out the follow-on CLs.  \n\nQuestion: what\u0027s the deal with ./zephyr/projects/herobrine/herobrine_npcx9/src/usbc_config.c?  Is it a separate copy, or sync\u0027d to the EC copy for this board?  Should I be updating it?  Since buildall passed, I hadn\u0027t noticed it while working on the HPD API changes but it looks like it has calls that need updated",
+      "parentUuid": "bb435f2b_b21bfb7f",
+      "range": {
+        "startLine": 329,
+        "startChar": 34,
+        "endLine": 329,
+        "endChar": 58
+      },
+      "revId": "c23d903b98e2cb6a37db71c2fe0d3c524dc8d822",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

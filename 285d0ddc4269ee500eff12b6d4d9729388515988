@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure why hpd_lvl and hpd_irq are ints as parameters, but these lines of code would be simpler if the local variables were bools, and you just assigned the result of the bit ops to them (converting it to 1 or 0). The ? 1 : 0 feels a bit odd to me.",
       "revId": "285d0ddc4269ee500eff12b6d4d9729388515988",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eca763f4_9d83c865",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T05:57:10Z",
+      "side": 1,
+      "message": "Bit masks for everyone!  You know, in the follow on CLs",
+      "parentUuid": "a7812adb_e80b3e6c",
+      "revId": "285d0ddc4269ee500eff12b6d4d9729388515988",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
