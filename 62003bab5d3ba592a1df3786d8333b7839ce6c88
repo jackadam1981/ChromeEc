@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "550416ce_a32e2237",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T06:00:10Z",
+      "side": 1,
+      "message": "Actually, we do have a common/queue.c, but we\u0027d have to spend time running memcpy into the queue and it didn\u0027t have great support for scrolling through the items to check.",
+      "parentUuid": "23c1ff83_797b2139",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e6ffbe2_15325ba7",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5c982f7d_68eb6d8c",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T06:00:10Z",
+      "side": 1,
+      "message": "Nope, but I was aiming to minimize the ifdef\u0027s needed for compiling.  Or are you thinking ASSERT should go here?",
+      "parentUuid": "6e6ffbe2_15325ba7",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e0ec33ba_503cec12",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 4
@@ -48,6 +84,30 @@
       "writtenOn": "2021-08-13T16:24:05Z",
       "side": 1,
       "message": "Does this need to be masked?",
+      "range": {
+        "startLine": 136,
+        "startChar": 6,
+        "endLine": 136,
+        "endChar": 37
+      },
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89457fbb_d84a466f",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T06:00:10Z",
+      "side": 1,
+      "message": "Nope.  Head and tail should always be no more than the queue depth from each other if we\u0027re adding correctly",
+      "parentUuid": "e0ec33ba_503cec12",
       "range": {
         "startLine": 136,
         "startChar": 6,
@@ -81,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba88649_a469dcdb",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T06:00:10Z",
+      "side": 1,
+      "message": "I can\u0027t lie, I forget C++ is a thing.  But we can be C++ friendly 😜",
+      "parentUuid": "500c1d95_838a2f64",
+      "range": {
+        "startLine": 137,
+        "startChar": 6,
+        "endLine": 137,
+        "endChar": 9
+      },
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c61947b3_f0535ca9",
@@ -100,6 +184,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2cddf09_60c72a58",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T06:00:10Z",
+      "side": 1,
+      "message": "Stackexchange generally agrees with you, though there\u0027s a delightful justification for this scheme as being like a dog where you insert at the head and remove at the tail.  Also, it\u0027s the scheme the TCPCI queue uses which I shamelessly copied",
+      "parentUuid": "c61947b3_f0535ca9",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6a6c550_bfb58889",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 4
@@ -111,6 +213,30 @@
       "writtenOn": "2021-08-13T16:24:05Z",
       "side": 1,
       "message": "This could be inside the else.",
+      "range": {
+        "startLine": 158,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 37
+      },
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3699a48c_22d9ced5",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T06:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6a6c550_bfb58889",
       "range": {
         "startLine": 158,
         "startChar": 2,
@@ -140,6 +266,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e5b18c6a_bf13aa84",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T06:00:10Z",
+      "side": 1,
+      "message": "Sure, let\u0027s go mutex crazy",
+      "parentUuid": "3f4f0fe6_4de692b5",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b9028c5e_4c9886e0",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 4
@@ -151,6 +295,24 @@
       "writtenOn": "2021-08-13T16:24:05Z",
       "side": 1,
       "message": "My kingdom for an iterator.",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2b3e023_f2baa0f9",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T06:00:10Z",
+      "side": 1,
+      "message": "I don\u0027t remember a ton about C++ iterators, but I do remember them being a huge pain to type out :)",
+      "parentUuid": "b9028c5e_4c9886e0",
       "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -178,6 +340,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "718c3bca_08b7436b",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T06:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a30f3a8_1a5b5fd4",
+      "range": {
+        "startLine": 463,
+        "startChar": 25,
+        "endLine": 463,
+        "endChar": 30
+      },
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a80bdd13_75615d40",
@@ -191,6 +377,24 @@
       "writtenOn": "2021-08-13T16:24:05Z",
       "side": 1,
       "message": "Probably doesn\u0027t make much difference, but at this point, you know the result and could bail out early.",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "482878bc_4f46c676",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T06:00:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a80bdd13_75615d40",
       "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
