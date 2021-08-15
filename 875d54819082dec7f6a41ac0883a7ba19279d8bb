@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5fda90_0e137600",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-15T06:12:12Z",
+      "side": 1,
+      "message": "We probably still have work to do before this can be committed.  I can get tast to pass on voxel, but when we get a lot of Attention VDMs from a monitor the EC logs start looking ugly: \n\n[158.326457 Error: Dropping port 1 mux 5]\n[158.334807 Error: Dropping port 1 mux 5]\n[158.341151 C1: Completed mux set queued 199760 us ago]\n[158.341724 C1: Starting mux set queued 145013 us ago]\n[158.342246 event set 0x0000000008000000]\n[158.342979 event clear 0x0000000008000000]\n[158.343334 ACPI query \u003d 28]\n[158.348534 event set 0x0000000008000000]\n[158.350093 event clear 0x0000000008000000]\n[158.350448 ACPI query \u003d 28]\n[158.366507 C1: PE_VDM_Response]\n[158.366954 C1: PE_SNK_Ready]\n[158.370880 Error: Dropping port 1 mux 5]\n[158.377809 Error: Dropping port 1 mux 5]\n[158.408608 C1: PE_VDM_Response]\n[158.409048 Error: Dropping port 1 mux 5]\n[158.409469 C1: PE_SNK_Ready]\n[158.451351 C1: PE_VDM_Response]\n[158.451793 Error: Dropping port 1 mux 5]\n[158.452213 C1: PE_SNK_Ready]\n[158.466553 C1: Completed mux set queued 269841 us ago]\n[158.467125 C1: Starting mux set queued 227798 us ago]\n\nI think we\u0027ll need to look at b/195773400 to try reducing the latency here, but I wonder if we\u0027ll need more reductions than that.  ",
+      "revId": "875d54819082dec7f6a41ac0883a7ba19279d8bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
