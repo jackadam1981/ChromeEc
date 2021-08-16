@@ -3,18 +3,23 @@
  * found in the LICENSE file.
  */
 
+#include "adc.h"
+#include "adc_chip.h"
 #include "battery.h"
+#include "battery_smart.h"
 #include "button.h"
 #include "charge_ramp.h"
 #include "charger.h"
 #include "common.h"
 #include "compile_time_macros.h"
 #include "console.h"
+#include "driver/charger/bq25710.h"
 #include "fw_config.h"
 #include "gpio.h"
 #include "gpio_signal.h"
 #include "hooks.h"
 #include "keyboard_8042_sharedlib.h"
+#include "i2c.h"
 #include "lid_switch.h"
 #include "power_button.h"
 #include "power.h"
@@ -116,3 +121,85 @@ static void keyboard_init(void)
 	set_scancode_set2(0, 11, get_scancode_set2(3, 9));
 }
 DECLARE_HOOK(HOOK_INIT, keyboard_init, HOOK_PRIO_DEFAULT);
+static void bq25720_init(void)
+{
+	int reg;
+	/* Step1, set 0x12 bit4=1 */
+	if (i2c_read16(I2C_PORT_CHARGER, BQ25710_SMBUS_ADDR1_FLAGS,
+		       BQ25710_REG_CHARGE_OPTION_0, &reg) == EC_SUCCESS) {
+		reg |= BQ25710_CHARGE_OPTION_0_IADP_GAIN;
+	}else
+		CPRINTS("Failed to read bq25720");
+
+	if (i2c_write16(I2C_PORT_CHARGER, BQ25710_SMBUS_ADDR1_FLAGS,
+				BQ25710_REG_CHARGE_OPTION_0, reg))
+		CPRINTS("Failed to set bq25720");
+}
+DECLARE_HOOK(HOOK_INIT, bq25720_init, HOOK_PRIO_DEFAULT);
+
+static void assert_prochot(void)
+{
+	int IDPM;
+	int V_acpacn;
+	int V_iadpt;
+	int I_adpt;
+	int W_adpt;
+	int total_W;
+
+	int battery_voltage;
+	int battery_capacity;
+	int battery_max_continue_discharge;
+	int battery_design_voltage;
+	int battery_design_capacity;
+	int battery_design_wattage;
+
+	if (!extpower_is_present())
+		return;
+
+	/* Step2. calculate V_iadpt */
+	IDPM = ((PD_MAX_POWER_MW * 97 / 100) / 20); //mA, we need to use W, not mW
+	//CPRINTS("IDPM=%dmA", IDPM);
+
+	V_acpacn = IDPM * CONFIG_CHARGER_SENSE_RESISTOR / 1000; //mV, 10m ohm
+	//CPRINTS("Vacpacn=%dmV", V_acpacn);
+
+	V_iadpt = V_acpacn * 40; //mV
+	//CPRINTS("V_iadpt=%dmV", V_iadpt);
+
+	/* Step3. read battery voltage/ current */
+	sb_read(SB_VOLTAGE, &battery_voltage);
+	//CPRINTS("battery_voltage=%dmV", battery_voltage);
+
+	sb_read(SB_REMAINING_CAPACITY, &battery_capacity);
+	//CPRINTS("battery_capacity=%dmAh", battery_capacity);
+
+	battery_max_continue_discharge = (battery_voltage * battery_capacity) / 1000; //convert to mW
+	//CPRINTS("battery_max_continue_discharge=%dmWh", battery_max_continue_discharge);
+
+	I_adpt = adc_read_channel(ADC_IADPT);
+	//CPRINTS("I_adpt=%dmA", I_adpt);
+
+	W_adpt = (V_iadpt * I_adpt) / 1000;
+	//CPRINTS("W_adpt=%dmW", W_adpt);
+
+	sb_read(SB_DESIGN_VOLTAGE, &battery_design_voltage);
+	//CPRINTS("battery_design_voltage=%dmV", battery_design_voltage);
+	sb_read(SB_FULL_CHARGE_CAPACITY, &battery_design_capacity);
+	//CPRINTS("battery_design_capacity=%dmAh", battery_design_capacity);
+
+	battery_design_wattage = (battery_design_voltage * battery_design_capacity) / 1000;
+	//CPRINTS("battery_design_wattage=%dmWh", battery_design_wattage);
+
+	total_W = W_adpt + battery_max_continue_discharge;
+	//CPRINTS("total_W=%d", total_W);
+	//CPRINTS("PD_MAX_POWER_MW + battery_max_continue_discharge=%d", PD_MAX_POWER_MW + battery_design_wattage);
+	if(total_W > (PD_MAX_POWER_MW + battery_design_wattage)) {
+		CPRINTS("assert prochot");
+		gpio_set_level(GPIO_EC_PROCHOT_ODL, 0);
+	}
+	else if(total_W < (PD_MAX_POWER_MW + (battery_design_wattage*90/100))) {
+		CPRINTS("de-assert prochot");
+		gpio_set_level(GPIO_EC_PROCHOT_ODL, 1);
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, assert_prochot, HOOK_PRIO_DEFAULT);
