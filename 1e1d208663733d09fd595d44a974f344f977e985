@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a36e0027_11aaf731",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-16T18:51:04Z",
+      "side": 1,
+      "message": "LGTM, make sure you get any zephyr builds.  You can run \"zmake testall\" to run the same tests as the firmware-zephyr-cq.  Make sure you do a full repo sync and update_chroot first.",
+      "revId": "1e1d208663733d09fd595d44a974f344f977e985",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
