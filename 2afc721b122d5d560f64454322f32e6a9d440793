@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "017601af_e5788a95",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-16T15:48:16Z",
+      "side": 1,
+      "message": "Should be NULL.",
+      "range": {
+        "startLine": 609,
+        "startChar": 34,
+        "endLine": 609,
+        "endChar": 35
+      },
+      "revId": "2afc721b122d5d560f64454322f32e6a9d440793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
