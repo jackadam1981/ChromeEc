@@ -2691,6 +2691,8 @@ void pd_rx_disable_monitoring(int port);
 /* get time since last RX edge interrupt */
 uint64_t get_time_since_last_edge(int port);
 
+void ucpd_start_bist_test_mode(void);
+
 /**
  * Deinitialize the hardware used for PD.
  *
