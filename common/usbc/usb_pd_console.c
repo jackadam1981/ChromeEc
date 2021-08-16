@@ -97,6 +97,9 @@ test_export_static int command_pd(int argc, char **argv)
 			return EC_SUCCESS;
 		} else if (!strcasecmp(argv[2], "hard")) {
 			pd_dpm_request(port, DPM_REQUEST_HARD_RESET_SEND);
+		} else if (!strcasecmp(argv[2], "ping")) {
+			ccprintf("pd[%d]: starting ping request!\n", port);
+			pd_dpm_request(port, DPM_REQUEST_SEND_PING);
 		} else if (!strcasecmp(argv[2], "soft")) {
 			pd_dpm_request(port, DPM_REQUEST_SOFT_RESET_SEND);
 		} else if (!strcasecmp(argv[2], "swap")) {
