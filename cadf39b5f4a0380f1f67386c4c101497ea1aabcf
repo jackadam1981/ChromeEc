@@ -70,6 +70,24 @@
       "parentUuid": "d4a9aacb_bfe7a7ed",
       "revId": "cadf39b5f4a0380f1f67386c4c101497ea1aabcf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d61d3bd_5bf48d3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-08-16T17:51:34Z",
+      "side": 1,
+      "message": "Just adding few more points:\n1)Then should a similar fix be applied to tc_unattached_snk_run?\n---If in unattached_snk_run, there is already a condition that checks for below and switches to TC_UNATTACHED_SRC.\nif (drp_state[port] \u003d\u003d PD_DRP_TOGGLE_RUN)\n set_state_tc(port, TC_UNATTACHED_SRC);\nSo ,from unattached_snk, it comes to tc_unattached_src based on drp_state,and  it again checks for drp_state \u0026 cc lines \u0026 assures to enter low power mode.\nHence, this way, with this code change,LPM entry in   both unattached_snk \u0026 unattached_src are taken care \n\n2)  What does a TCPC like that do in LPM? How should the TCPC or the EC decide to exit LPM in that case?\n---In TCPMV2, it didnt seem to have handled the case of TCPM drivers that doesn\u0027t support CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE . For instance, in FUSB, for it\u0027s entry to Low power mode, certain registers must be changed in the driver code. But the trigger point to this LPM mode entry initiation  was missing in the code.",
+      "parentUuid": "fc6fb2a9_4386979d",
+      "revId": "cadf39b5f4a0380f1f67386c4c101497ea1aabcf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
