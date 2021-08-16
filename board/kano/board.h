@@ -39,8 +39,8 @@
 #define CONFIG_LED_PWM_LOW_BATT_COLOR EC_LED_COLOR_AMBER
 
 /* Sensors */
-#define CONFIG_ACCELGYRO_LSM6DSO	/* Base accel */
-#define CONFIG_ACCEL_LSM6DSO_INT_EVENT \
+#define CONFIG_ACCELGYRO_ICM426XX	/* Base accel */
+#define CONFIG_ACCELGYRO_ICM426XX_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
 
 /* Enable sensor fifo, must also define the _SIZE and _THRES */
@@ -55,12 +55,10 @@
 
 /* Lid accel */
 #define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_UPDATE
 #define CONFIG_LID_ANGLE_SENSOR_BASE	BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID	LID_ACCEL
-#define CONFIG_ACCEL_LIS2DWL
-#define CONFIG_ACCEL_LIS2DW_AS_BASE
-#define CONFIG_ACCEL_LIS2DW12_INT_EVENT \
-	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
+#define CONFIG_ACCEL_KX022
 
 #define CONFIG_ACCEL_INTERRUPTS
 
@@ -163,6 +161,8 @@
 
 #define I2C_ADDR_MP2964_FLAGS	0x20
 
+#define I2C_PORT_ACCEL              I2C_PORT_SENSORS
+
 /*
  * see b/174768555#comment22
  */
@@ -256,6 +256,8 @@ enum mft_channel {
 	MFT_CH_0 = 0,
 	MFT_CH_COUNT
 };
+
+void motion_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
