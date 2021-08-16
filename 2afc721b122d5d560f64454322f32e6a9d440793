@@ -22,6 +22,52 @@
       },
       "revId": "2afc721b122d5d560f64454322f32e6a9d440793",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b792b5e7_709781f2",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-16T20:41:09Z",
+      "side": 1,
+      "message": "EC_ERROR_TIMEOUT",
+      "range": {
+        "startLine": 610,
+        "startChar": 10,
+        "endLine": 610,
+        "endChar": 26
+      },
+      "revId": "2afc721b122d5d560f64454322f32e6a9d440793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42718b33_88617156",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-16T20:41:09Z",
+      "side": 1,
+      "message": "nit: this is the \"init\" function, so it might be better to say \"C%d: init failed at LPM recovery\"",
+      "range": {
+        "startLine": 775,
+        "startChar": 16,
+        "endLine": 775,
+        "endChar": 28
+      },
+      "revId": "2afc721b122d5d560f64454322f32e6a9d440793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
