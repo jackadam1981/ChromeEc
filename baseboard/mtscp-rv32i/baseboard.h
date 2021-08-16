@@ -45,11 +45,19 @@
 
 #define SCP_IPI_NS_SERVICE 0xFF
 
+#ifdef CHIP_VARIANT_MT8195_CORE1
+/* Access DRAM through cached access */
+#define CONFIG_DRAM_BASE 0x11400000
+/* Shared memory address in AP physical address space. */
+#define CONFIG_DRAM_BASE_LOAD 0x51400000
+#define CONFIG_DRAM_SIZE 0x01400000 /* 20 MB */
+#else
 /* Access DRAM through cached access */
 #define CONFIG_DRAM_BASE 0x10000000
 /* Shared memory address in AP physical address space. */
 #define CONFIG_DRAM_BASE_LOAD 0x50000000
 #define CONFIG_DRAM_SIZE 0x01400000 /* 20 MB */
+#endif
 
 /* MPU settings */
 #define NR_MPU_ENTRIES 16
