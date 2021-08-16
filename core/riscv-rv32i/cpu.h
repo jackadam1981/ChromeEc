@@ -46,6 +46,14 @@ static inline uint32_t get_mcause(void)
 	return ret;
 }
 
+static inline uint32_t get_mhartid(void)
+{
+	uint32_t ret;
+
+	asm volatile ("csrr %0, mhartid" : "=r"(ret));
+	return ret;
+}
+
 /* Generic CPU core initialization */
 void cpu_init(void);
 extern uint32_t ec_reset_lp;
