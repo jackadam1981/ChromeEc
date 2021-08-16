@@ -79,6 +79,8 @@ enum ucpd_state {
 #define UCPD_EVT_HR_FAIL        BIT(7)
 #define UCPD_EVT_RX_GOOD_CRC    BIT(8)
 #define UCPD_EVT_RX_MSG         BIT(9)
+#define UCPD_EVT_BIST_START     BIT(10)
+#define UCPD_EVT_BIST_NEXT      BIT(11)
 
 #define UCPD_T_RECEIVE_US (1 * MSEC)
 
@@ -123,6 +125,10 @@ static enum ucpd_state ucpd_tx_state;
 static int msg_id_match;
 static int tx_retry_count;
 static int tx_retry_max;
+static int tx_bist_active;
+static int tx_bist_msg_count;
+static int tx_bist_ack_count;
+static int tx_bist_delay_us;
 
 static int ucpd_txorderset[] = {
 	TX_ORDERSET_SOP,
@@ -143,6 +149,11 @@ static int ucpd_rx_msg_active;
 static bool ucpd_rx_bist_mode;
 
 #ifdef CONFIG_STM32G4_UCPD_DEBUG
+/* BIST Test Mode defines */
+#define BIST_TEST_MODE_MSG_MAX 32
+#define BIST_TEST_MODE_DATA_OBJ 6
+static int bist_msg_id;
+
 /* Defines and macros for ucpd state logging */
 #define TX_STATE_LOG_LEN BIT(5)
 #define TX_STATE_LOG_MASK (TX_STATE_LOG_LEN - 1)
@@ -877,6 +888,74 @@ static void ucpd_task_log_dump(void)
 }
 #endif
 
+static void ucpd_generate_bist_msg(int port)
+{
+	uint32_t const bist_msg[7] = {BDO_MODE_TEST_DATA, 0, 0, 0, 0, 0, 0};
+	uint16_t header;
+	enum tcpci_msg_type type = TCPCI_MSG_SOP;
+	int len;
+
+	header= PD_HEADER(
+		PD_DATA_BIST,
+		pd_get_power_role(port),
+		pd_get_data_role(port),
+		bist_msg_id,
+		ARRAY_SIZE(bist_msg),
+		2, /* PD Rev 3.0 */
+		0);
+
+	CPRINTS("ucpd: bist generator: BDO = %x, %x", bist_msg[0],
+		BDO_MODE_TEST_DATA);
+	/* Length in bytes = (4 * object len) + 2 header byes */
+	len = (PD_HEADER_CNT(header) << 2) + 2;
+
+	/* Store tx msg info in TCPM msg descriptor */
+	ucpd_tx_buffers[TX_MSG_TCPM].msg_len = len;
+	ucpd_tx_buffers[TX_MSG_TCPM].type = type;
+	ucpd_tx_buffers[TX_MSG_TCPM].data.header = header;
+	/* Copy msg objects to ucpd data buffer, after 2 header bytes */
+	memcpy(ucpd_tx_buffers[TX_MSG_TCPM].data.msg + 2, (uint8_t *)bist_msg,
+	       len - 2);
+
+	/* Update msg id and BIST test message counter */
+	bist_msg_id = (bist_msg_id + 1) & 0x7;
+	tx_bist_msg_count++;
+
+	/* Indicate bist test message is pending */
+	ucpd_tx_request |= MSG_TCPM_MASK;
+}
+
+static void ucpd_manage_bist_test_mode(int port, int ack)
+{
+	int delay = tx_bist_delay_us ? tx_bist_delay_us : 5 * MSEC;
+	if (!tx_bist_active)
+		return;
+
+	if (ack) {
+		board_debug_gpio(TRIGGER_2, 1, 500);
+		tx_bist_ack_count++;
+	}
+
+	usleep(delay);
+
+	if (tx_bist_msg_count < BIST_TEST_MODE_MSG_MAX) {
+		ucpd_generate_bist_msg(port);
+	} else {
+		tx_bist_active = 0;
+		CPRINTS("ucpd: BIST Mode End: delay = %d %d sent, %d ack'd",
+			delay, tx_bist_msg_count, tx_bist_ack_count);
+		CPRINTS("requesting port partner hard reset!");
+		pd_execute_hard_reset(port);
+		task_set_event(PD_PORT_TO_TASK_ID(port), TASK_EVENT_WAKE);
+	}
+}
+
+void ucpd_start_bist_test_mode(void)
+{
+	CPRINTS("ucpd: Starting BIST Test Mode!");
+	task_set_event(TASK_ID_UCPD, UCPD_EVT_BIST_START);
+}
+
 static void ucpd_manage_tx(int port, int evt)
 {
 	enum ucpd_tx_msg msg_src = TX_MSG_NONE;
@@ -885,6 +964,15 @@ static void ucpd_manage_tx(int port, int evt)
 	enum ucpd_state enter = ucpd_tx_state;
 	int req = ucpd_tx_request;
 #endif
+
+	if (evt & UCPD_EVT_BIST_START && ucpd_tx_state == STATE_IDLE) {
+		bist_msg_id = msg_id_match;
+		tx_bist_active = 1;
+		tx_bist_msg_count = 0;
+		tx_bist_ack_count = 0;
+		ucpd_manage_bist_test_mode(port, 0);
+		board_debug_gpio(TRIGGER_1, 1, 2*MSEC);
+	}
 
 	if (evt & UCPD_EVT_HR_REQ) {
 		/*
@@ -1006,6 +1094,7 @@ static void ucpd_manage_tx(int port, int evt)
 #ifdef CONFIG_STM32G4_UCPD_DEBUG
 			ucpd_log_mark_crc();
 #endif
+			ucpd_manage_bist_test_mode(port, 1);
 		} else if ((evt & UCPD_EVT_RX_GOOD_CRC) ||
 			   (evt & TASK_EVENT_TIMER)) {
 			/* GoodCRC w/out match or timeout waiting */
@@ -1013,10 +1102,12 @@ static void ucpd_manage_tx(int port, int evt)
 				ucpd_set_tx_state(STATE_ACTIVE_TCPM);
 				msg_src = TX_MSG_TCPM;
 				tx_retry_count++;
+				board_debug_gpio(TRIGGER_1, 1, 500);
 			} else {
 				ucpd_set_tx_state(STATE_IDLE);
 				pd_transmit_complete(port,
 						     TCPC_TX_COMPLETE_FAILED);
+				ucpd_manage_bist_test_mode(port, 0);
 			}
 		} else if (evt & UCPD_EVT_RX_MSG) {
 			/*
@@ -1553,8 +1644,18 @@ static int command_ucpd(int argc, char **argv)
 		/* Need to initiate via DPM to have a timer */
 		/* TODO(b/182861002): uncomment when Gingerbread has
 		 * full PD support landed.
-		 * pd_dpm_request(port, DPM_REQUEST_BIST_TX);
+		 *
 		 */
+		if (argc == 3) {
+			val = strtoi(argv[2], &e, 10);
+			if (val < 0)
+				val = 0;
+			tx_bist_delay_us = val;
+		}
+		CPRINTS("starting BIST test pattern! delay = %d usec",
+			tx_bist_delay_us);
+		task_set_event(TASK_ID_UCPD, UCPD_EVT_BIST_START);
+		//pd_dpm_request(1, DPM_REQUEST_BIST_TX);
 	} else if (!strcasecmp(argv[1], "hard")) {
 		stm32gx_ucpd_transmit(port, TCPCI_MSG_TX_HARD_RESET, 0,
 				      &tx_data);
