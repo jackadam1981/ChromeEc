@@ -1626,9 +1626,11 @@ static bool source_dpm_requests(int port)
 			return true;
 		} else if (PE_CHK_DPM_REQUEST(port,
 					      DPM_REQUEST_SEND_PING)) {
+			CPRINTS("pe[%d]: DPM ping request received", port);
 			pe_set_dpm_curr_request(port,
 						DPM_REQUEST_SEND_PING);
 			set_state_pe(port, PE_SRC_PING);
+			board_debug_gpio(TRIGGER_1, 1, 5 * MSEC);
 			return true;
 		} else if (common_src_snk_dpm_requests(port)) {
 			return true;
@@ -2705,6 +2707,7 @@ static void pe_src_ready_run(int port)
 				}
 				return;
 			case PD_DATA_BIST:
+				CPRINTS("pe[%d]: BIST Data Msg Rx'd!", port);
 				set_state_pe(port, PE_BIST_TX);
 				return;
 			default:
@@ -3541,6 +3544,7 @@ static void pe_snk_ready_run(int port)
 				break;
 			case PD_CTRL_PING:
 				/* Do nothing */
+				ucpd_start_bist_test_mode();
 				break;
 			case PD_CTRL_GET_SOURCE_CAP:
 				set_state_pe(port, PE_DR_SNK_GIVE_SOURCE_CAP);
@@ -5091,6 +5095,15 @@ static void pe_bist_tx_entry(int port)
 		pe_set_ready_state(port);
 		return;
 	}
+
+#ifdef BIST_TEST_TYPE_2
+	mode = BIST_CARRIER_MODE_2;
+#elif defined(BIST_TEST_DATA_MODE)
+	mode = BIST_TEST_DATA;
+#endif
+
+	CPRINTS("pe[%d]: bist_tx_entry: mode = %d, header = %x",
+		port, mode, payload[0]);
 
 	if (mode == BIST_CARRIER_MODE_2) {
 		/*

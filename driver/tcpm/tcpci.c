@@ -896,6 +896,7 @@ int tcpm_enqueue_message(const int port)
 		&q->buffer[q->head & CACHE_DEPTH_MASK];
 
 	if (q->head - q->tail == CACHE_DEPTH) {
+		board_debug_gpio(TRIGGER_1, 1, 500);
 		CPRINTS("C%d RX EC Buffer full!", port);
 		return EC_ERROR_OVERFLOW;
 	}
@@ -903,6 +904,7 @@ int tcpm_enqueue_message(const int port)
 	/* Blank any old message, just in case. */
 	memset(head, 0, sizeof(*head));
 	/* Call the raw driver without caching */
+	board_debug_gpio(TRIGGER_2, 1, 250);
 	rv = tcpc_config[port].drv->get_message_raw(port, head->payload,
 						    &head->header);
 	if (rv) {
@@ -1113,6 +1115,11 @@ enum ec_error_list tcpci_set_bist_test_mode(const int port,
 			enable ? MASK_SET : MASK_CLR);
 	rv |= tcpc_update16(port, TCPC_REG_ALERT_MASK,
 			TCPC_REG_ALERT_RX_STATUS, enable ? MASK_CLR : MASK_SET);
+
+	if (enable)
+		board_debug_gpio(TRIGGER_1, 1, 4 * MSEC);
+
+	CPRINTS("tcpc[%d]: bist test mode enable = %d", port, enable);
 	return rv;
 }
 
