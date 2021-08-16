@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd33ec7d_4a2907ab",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-16T15:52:47Z",
+      "side": 1,
+      "message": "I see there is also a PS8805 force DID. So this can remain.  But we should consider making both checks guard on the chip type only.",
+      "parentUuid": "c0fcbee0_fcfcb1f2",
+      "range": {
+        "startLine": 528,
+        "startChar": 0,
+        "endLine": 528,
+        "endChar": 42
+      },
+      "revId": "bcfc3ab94a25a82a27d213afb4d90bbb15e3c1e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8dce8d9_1fcb78cf",
