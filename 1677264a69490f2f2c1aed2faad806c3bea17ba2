@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15dd411c_034a2c89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-16T23:48:00Z",
+      "side": 1,
+      "message": "This change doesn\u0027t work as intended because during boot EN_PP5000_FAN is reset to 0 and FAN doesn\u0027t spin at all. WIP",
+      "revId": "1677264a69490f2f2c1aed2faad806c3bea17ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
