@@ -16,6 +16,24 @@
       "message": "Do you also need to check for the new sku_id values here?",
       "revId": "055f58d89fecd55f91ea977501d888431987e16d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a6960d0_1d3116b5",
+        "filename": "baseboard/grunt/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1485637
+      },
+      "writtenOn": "2021-08-16T08:34:34Z",
+      "side": 1,
+      "message": "Yes, I modify patch2 to do it.",
+      "parentUuid": "b2dd8e16_d18d55be",
+      "revId": "055f58d89fecd55f91ea977501d888431987e16d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
