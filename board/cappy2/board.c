@@ -16,6 +16,7 @@
 #include "driver/charger/isl923x.h"
 #include "driver/tcpm/raa489000.h"
 #include "driver/temp_sensor/thermistor.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "keyboard_raw.h"
@@ -361,3 +362,19 @@ const struct temp_sensor_t temp_sensors[] = {
 			   .idx = ADC_TEMP_SENSOR_3},
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
+
+static void check_battery(void)
+{
+	static int last_battery_info;
+
+	if (last_battery_info != battery_is_present()) {
+		last_battery_info = battery_is_present();
+
+		if (last_battery_info) {
+			if (extpower_is_present())
+				hook_notify(HOOK_AC_CHANGE);
+
+		}
+	}
+}
+DECLARE_HOOK(HOOK_SECOND, check_battery, HOOK_PRIO_DEFAULT);
