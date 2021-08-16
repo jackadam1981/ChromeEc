@@ -7,5 +7,5 @@
 #
 
 CHIP:=mt_scp
-CHIP_VARIANT:=mt8195
+CHIP_VARIANT:=mt8195_core1
 BASEBOARD:=mtscp-rv32i
