@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9414fb_9e2064ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-16T03:17:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a0d6e53_0ef24f28",
+      "revId": "b48f53f925268e2f70f911c98ad563b4dc097daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "79301c53_efa05092",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-11T23:00:06Z",
       "side": 1,
       "message": "nit: could be an enum",
+      "range": {
+        "startLine": 39,
+        "startChar": 32,
+        "endLine": 39,
+        "endChar": 48
+      },
+      "revId": "b48f53f925268e2f70f911c98ad563b4dc097daa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0fb8b5b_d40a481c",
+        "filename": "common/amd_stt.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-16T03:17:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79301c53_efa05092",
       "range": {
         "startLine": 39,
         "startChar": 32,
