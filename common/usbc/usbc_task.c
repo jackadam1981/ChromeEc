@@ -117,6 +117,7 @@ static int pd_task_timeout(int port)
 static bool pd_task_loop(int port)
 {
 	/* wait for next event/packet or timeout expiration */
+	//const uint32_t evt = task_wait_event(-1);
 	const uint32_t evt = task_wait_event(pd_task_timeout(port));
 
 	/* Manage expired PD Timers on timeouts */
