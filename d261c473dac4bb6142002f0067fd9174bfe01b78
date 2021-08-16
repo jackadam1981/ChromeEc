@@ -52,6 +52,24 @@
       "parentUuid": "e6b66600_d8603443",
       "revId": "d261c473dac4bb6142002f0067fd9174bfe01b78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2370b956_08dd010c",
+        "filename": "common/usb_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-08-16T02:16:56Z",
+      "side": 1,
+      "message": "Thank you for your reply. Yes, but Eric have created CL https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3093347 for the same issue, after it lands I will abandon this.",
+      "parentUuid": "448d7347_d0540585",
+      "revId": "d261c473dac4bb6142002f0067fd9174bfe01b78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
