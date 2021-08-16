@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b601d794_3dd61854",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-16T16:26:20Z",
+      "side": 1,
+      "message": "This seems like a distinction without a difference. What about something like PREPARE_ENTER_MODE (since this state decides which _ENTER state to enter)?",
+      "parentUuid": "79ee7f99_cf0b07e9",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bade965c_8c1fd687",
         "filename": "common/usbc/tbt_alt_mode.c",
         "patchSetId": 4
@@ -119,6 +137,24 @@
       "side": 1,
       "message": "Yup, good catch.  We need to order our exit modes as well and I missed that the first round through.  Any idea why we\u0027re setting it several times instead of just before the SOP exit mode?",
       "parentUuid": "bade965c_8c1fd687",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab74729_c59e07ec",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-16T16:26:20Z",
+      "side": 1,
+      "message": "IIRC, the spec\u0027s AMS diagrams only show one stage of Exit Mode, and they show the mux being set to safe mode. Therefore, a strict reading of the spec would suggest setting safe mode during the Exit Mode AMS for each of SOP, SOP\u0027, and SOP\u0027\u0027. It\u0027s a similar situation for Enter Mode, and I think this code originally had that too. I think we later took it out because it seemed pointless, possibly prompted by some weird interaction with the TCSS or by Intel\u0027s flowchart.",
+      "parentUuid": "eea8158f_d853943b",
       "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
