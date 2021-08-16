@@ -16,6 +16,24 @@
       "message": "I\u0027m okay with this, Dai, do you have any safety concerns? What\u0027s the \"worst\" that could happen if someone misuses one of those v4p1 Brian?",
       "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7bd483f_95e755e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-08-16T20:55:27Z",
+      "side": 1,
+      "message": "This had previously been tested with the 3A cables and earlier Servo_v4p1\u0027s that used the smaller shunt resistors under a continuous 90W load. That\u0027s a worst case situation combining both a sustained high load and the lowest rated components. There was no indication of overheating within the Servo_V4p1.\n\nThis has also already been deployed to ToT so most of the Servo_V4p1 images have already been operating with this change. The change will also have no impact on DUTs that request the lower 60W and 3A current limits.",
+      "parentUuid": "50f823da_a1eb4009",
+      "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
