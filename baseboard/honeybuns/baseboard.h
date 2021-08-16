@@ -169,6 +169,7 @@ enum usb_strings {
 
 #define CONFIG_MP4245
 #define USB_HUB_OCP_RESET_MSEC (10 * MSEC)
+#define CONFIG_PS8805_FLASH_A2
 
 #else /* RO Specific Config Options */
 
