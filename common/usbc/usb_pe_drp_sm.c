@@ -5944,6 +5944,15 @@ static void pe_vdm_request_dpm_exit(int port)
 	 */
 	if (!PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_CONTINUE))
 		pe[port].tx_type = TCPC_TX_INVALID;
+
+	/* Treat a response timeout as a NAK to avoid the DPM trying again. */
+	if (PE_CHK_FLAG(port, PE_FLAGS_VDM_REQUEST_TIMEOUT)) {
+		PE_CLR_FLAG(port, PE_FLAGS_VDM_REQUEST_TIMEOUT);
+		dpm_vdm_naked(port, pe[port].tx_type,
+				PD_VDO_VID(pe[port].vdm_data[0]),
+				PD_VDO_CMD(pe[port].vdm_data[0]));
+	}
+
 }
 
 /**
