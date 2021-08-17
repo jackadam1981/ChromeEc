@@ -189,6 +189,12 @@ static void sub_usb_c1_interrupt(enum gpio_signal s)
 	hook_call_deferred(&check_c1_line_data, INT_RECHECK_US);
 }
 
+static void c0_ccsbu_ovp_interrupt(enum gpio_signal s)
+{
+	cprints(CC_USBPD, "C0: CC OVP, SBU OVP, or thermal event");
+	pd_handle_cc_overvoltage(0);
+}
+
 #include "gpio_list.h"
 
 /* ADC channels */
