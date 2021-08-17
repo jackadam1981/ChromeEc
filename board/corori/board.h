@@ -33,6 +33,8 @@
 
 /* GPIO for C1 interrupts, for baseboard use */
 #define GPIO_USB_C1_INT_ODL GPIO_SUB_USB_C1_INT_ODL
+#define GPIO_EC_PWR_BTN_ODL GPIO_EC_PWR_BTN_ODL_R
+#define GPIO_LID_360_L GPIO_LID_360_R_L
 
 /* Keyboard */
 
@@ -109,6 +111,7 @@
 #define CONFIG_ACCEL_FIFO
 #define CONFIG_ACCEL_FIFO_SIZE 256	/* Must be a power of 2 */
 #define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+#define GPIO_LID_OPEN GPIO_LID_OPEN_R
 
 #define CONFIG_ACCEL_INTERRUPTS
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \

@@ -26,16 +26,20 @@ GPIO_INT(PG_PP1050_ST_OD,	 PIN(4, 2), GPIO_INT_BOTH, power_signal_interrupt)
 
 /* USB-C interrupts */
 GPIO_INT(USB_C0_INT_ODL,	 PIN(6, 2), GPIO_INT_FALLING | GPIO_PULL_UP, usb_c0_interrupt)
-GPIO_INT(SUB_USB_C1_INT_ODL,	 PIN(F, 5), GPIO_INT_FALLING | GPIO_PULL_UP, sub_usb_c1_interrupt)
+GPIO_INT(SUB_USB_C1_INT_ODL,	 PIN(F, 5), GPIO_INT_FALLING | GPIO_PULL_UP, sub_usb_c1_interrupt) /*Enable PS8209 HDMI 3.3V power rail*/
+GPIO_INT(USB_C0_CCSBU_OVP_ODL,	PIN(A, 2), GPIO_INT_FALLING | GPIO_PULL_UP, c0_ccsbu_ovp_interrupt) /* Fault protection */
 
 /* Button interrupts */
-GPIO_INT(EC_PWR_BTN_ODL,	 PIN(0, 1), GPIO_INT_BOTH | GPIO_PULL_UP, power_button_interrupt)
+GPIO_INT(EC_PWR_BTN_ODL_R,	 PIN(0, 1), GPIO_INT_BOTH | GPIO_PULL_UP, power_button_interrupt)
+GPIO_INT(VOLDN_BTN_ODL,		 PIN(4, 0), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
+GPIO_INT(VOLUP_BTN_ODL,		 PIN(7, 3), GPIO_INT_BOTH | GPIO_PULL_UP, button_interrupt)
 
 /* Other interrupts */
-GPIO_INT(LID_OPEN,		 PIN(D, 2), GPIO_INT_BOTH, lid_interrupt)
+GPIO_INT(LID_OPEN_R,		 PIN(D, 2), GPIO_INT_BOTH, lid_interrupt)
 GPIO_INT(EC_WP_OD,		 PIN(A, 1), GPIO_INT_BOTH, switch_interrupt)
 GPIO_INT(BASE_SIXAXIS_INT_L,	 PIN(5, 6), GPIO_INT_FALLING | GPIO_SEL_1P8V, motion_interrupt)
-GPIO_INT(LID_360_L,		 PIN(9, 5), GPIO_INT_BOTH, gmr_tablet_switch_isr)
+GPIO_INT(LID_360_R_L,		 PIN(9, 5), GPIO_INT_BOTH, gmr_tablet_switch_isr)
+GPIO(LID_OPEN_STATUS_R, PIN(8, 6), GPIO_INPUT | GPIO_PULL_UP)
 
 /* I2C Ports */
 GPIO(EC_I2C_EEPROM_SCL,	      PIN(B, 3), GPIO_INPUT)
@@ -65,6 +69,7 @@ GPIO(EN_KB_BL,		PIN(6, 0), GPIO_OUT_LOW)
 GPIO(EN_BL_OD,		PIN(D, 3), GPIO_ODR_LOW)
 GPIO(EC_CBI_WP,		PIN(E, 5), GPIO_OUT_LOW)
 
+
 /* LED */
 GPIO(LED_B_ODL,                  PIN(C, 2), GPIO_OUT_HIGH)        /* PWM_CH_LED2_BLUE */
 GPIO(LED_G_ODL,                  PIN(C, 3), GPIO_OUT_HIGH)        /* PWM_CH_LED1_GREEN */
@@ -93,7 +98,7 @@ GPIO(HDMI_SEL_L,	     PIN(7, 2), GPIO_OUT_HIGH)
 GPIO(EC_BATTERY_PRES_ODL,    PIN(E, 1), GPIO_INPUT)
 GPIO(USB_A0_CHARGE_EN_L, PIN(3, 7), GPIO_OUT_HIGH)	/* Enable A0 1.5A Charging */
 GPIO(USB_A1_CHARGE_EN_L, PIN(F, 3), GPIO_OUT_HIGH)	/* Enable A1 1.5A Charging */
-GPIO(EN_USB_A0_VBUS,	 PIN(4, 1), GPIO_OUT_LOW)		/* Enable A1 5V Charging */
+GPIO(EN_USB_A0_VBUS,	 PIN(4, 1), GPIO_OUT_LOW)		/* PP5000_USB Enable pin of logic iC */
 GPIO(EN_USB_A1_VBUS,	 PIN(F, 2), GPIO_OUT_LOW)		/* Enable A1 5V Charging */
 /*
  * Lalala doesn't have these physical pins coming to the EC but uses other
@@ -102,8 +107,10 @@ GPIO(EN_USB_A1_VBUS,	 PIN(F, 2), GPIO_OUT_LOW)		/* Enable A1 5V Charging */
 UNIMPLEMENTED(AC_PRESENT)
 UNIMPLEMENTED(PG_EC_DSW_PWROK)
 UNIMPLEMENTED(PG_EC_ALL_SYS_PWRGD)
-UNIMPLEMENTED(VOLDN_BTN_ODL)
-UNIMPLEMENTED(VOLUP_BTN_ODL)
+
+
+/* TODO(b:189073350):Different Power Charger solution and  not used this pin change to test point*/
+UNIMPLEMENTED(IMVP9_PE)
 
 /* Alternate Functions */
 /* ADC */
@@ -131,15 +138,16 @@ ALTERNATE(PIN_MASK(3, 0x48), 0, MODULE_I2C, 0)   /* I2C5 */
 ALTERNATE(PIN_MASK(9, 0x07), 0, MODULE_I2C, 0)   /* I2C2, I2C1 SCL */
 ALTERNATE(PIN_MASK(8, 0x80), 0, MODULE_I2C, 0)   /* I2C1 SDA */
 
+GPIO(EC_ACOK_OTG, PIN(C, 0), GPIO_OUT_LOW)  /* OTG-OVP protect enable */
+
 /* NC pins, enable internal pull-up to avoid floating state. */
 GPIO(GPIO32_NC, PIN(3, 2), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(GPIO35_NC, PIN(3, 5), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(GPIO57_NC, PIN(5, 7), GPIO_INPUT | GPIO_PULL_UP)
+GPIO(GPIO75_NC, PIN(7, 5), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(GPIO81_NC, PIN(8, 1), GPIO_INPUT | GPIO_PULL_UP)
-GPIO(GPIO86_NC, PIN(8, 6), GPIO_INPUT | GPIO_PULL_UP)
-GPIO(GPIOC0_NC, PIN(C, 0), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(GPIOD0_NC, PIN(D, 0), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(GPIOD1_NC, PIN(D, 1), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(GPIOD6_NC, PIN(D, 6), GPIO_INPUT | GPIO_PULL_UP)
 GPIO(GPIOE0_NC, PIN(E, 0), GPIO_INPUT | GPIO_PULL_UP)
-GPIO(GPIO40_NC, PIN(4, 0), GPIO_INPUT | GPIO_PULL_UP)
+
