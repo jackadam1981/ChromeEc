@@ -189,6 +189,13 @@ static void sub_usb_c1_interrupt(enum gpio_signal s)
 	hook_call_deferred(&check_c1_line_data, INT_RECHECK_US);
 }
 
+static void pen_detect_interrupt(enum gpio_signal s)
+{
+	int pen_detect = !gpio_get_level(GPIO_PEN_DET_ODL);
+
+	gpio_set_level(GPIO_EN_PP5000_PEN, pen_detect);
+}
+
 #include "gpio_list.h"
 
 /* ADC channels */
@@ -625,11 +632,14 @@ void board_init(void)
 		gpio_set_flags(GPIO_BASE_SIXAXIS_INT_L,
 		GPIO_INPUT | GPIO_PULL_DOWN);
 	}
-
+	gpio_enable_interrupt(GPIO_PEN_DET_ODL);
 	/* Turn on 5V if the system is on, otherwise turn it off. */
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
 			      CHIPSET_STATE_SOFT_OFF);
 	board_power_5v_enable(on);
+
+	if (!gpio_get_level(GPIO_PEN_DET_ODL))
+		gpio_set_level(GPIO_EN_PP5000_PEN, 1);
 
 	/* Initialize THERMAL */
 	setup_thermal();
