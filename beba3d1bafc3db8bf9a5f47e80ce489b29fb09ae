@@ -16,6 +16,24 @@
       "message": "This seems like a reasonable work around for short term but ITE still plans to determine and try to fix why zephyr-ec has this problem and cros-ec does not, correct?",
       "revId": "beba3d1bafc3db8bf9a5f47e80ce489b29fb09ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a9c94d_b1f37c54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-08-17T04:01:23Z",
+      "side": 1,
+      "message": "We have similar sector erase time as cros-ec after apply the CL.\n\ntest with this patch: CL:3098116\nuart:~$ flasherase 0x40000 0x1000                         \nErasing 4096 bytes at 0x40000...                          \n[47.504821 hash invalidated 0x00040000 0x00001000]        \n[47.509521 hash abort]                                    \n!!! erase 0x1000 bytes take 49.439 (ms) !!!\n(Erase a sector which its contents aren\u0027t all 0xff )\nuart:~$ flasherase 0x40000 0x1000                         \nErasing 4096 bytes at 0x40000...                          \n!!! erase 0x1000 bytes take 36.743 (ms) !!!\n(Erase a sector which its contents are all 0xff )       \nuart:~$ \n\nI posted cros-ec sector erase time in CL:3086889 are:\nOn cros-ec:\nErase a sector which its contents aren\u0027t all 0xff will take about 49ms.\nErase a sector which its contents are all 0xff will take about 32ms.\n\nBecause the erase time depends on how fast SPI die (it81202\u0027s SPI die is GD25WQ80E and its typical sector erase time is 100ms) process the command. EC have to wait until the busy bit is cleared after erase command were sent. And it seems that different sector content/address will have different erase time on the SPI die.\n\nI also tried to enlarge total flash size to 768KB, the erase time is still enough. So if 512KB isn\u0027t enough for the use case, we can increase the size to 768KB.",
+      "parentUuid": "8cc3f39f_85f50be7",
+      "revId": "beba3d1bafc3db8bf9a5f47e80ce489b29fb09ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
