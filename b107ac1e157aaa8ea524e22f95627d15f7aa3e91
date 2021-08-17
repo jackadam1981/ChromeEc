@@ -16,6 +16,23 @@
       "message": "yuhsuan, are you comfortable giving CR+2 here?",
       "revId": "b107ac1e157aaa8ea524e22f95627d15f7aa3e91",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14e10f3a_74988f08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269379
+      },
+      "writtenOn": "2021-08-17T02:00:54Z",
+      "side": 1,
+      "message": "Hi Martin, just want to make sure whether we should only add 0xbe,0xbf or add 0xb8-0xbf like the https://chromium-review.googlesource.com/c/chromiumos/platform/depthcharge/+/3092413 does?",
+      "revId": "b107ac1e157aaa8ea524e22f95627d15f7aa3e91",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
