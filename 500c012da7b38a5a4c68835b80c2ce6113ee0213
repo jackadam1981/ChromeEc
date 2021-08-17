@@ -16,6 +16,24 @@
       "message": "Add comment \"TK_* enum is 1-indexed\" here.",
       "revId": "500c012da7b38a5a4c68835b80c2ce6113ee0213",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3617260c_db709c6d",
+        "filename": "chip/stm32/usb_hid_keyboard.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-08-17T09:40:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdea783e_2f906918",
+      "revId": "500c012da7b38a5a4c68835b80c2ce6113ee0213",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
