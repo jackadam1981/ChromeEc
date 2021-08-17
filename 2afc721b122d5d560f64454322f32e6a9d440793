@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85f51975_87369c3f",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-17T00:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "017601af_e5788a95",
+      "range": {
+        "startLine": 609,
+        "startChar": 34,
+        "endLine": 609,
+        "endChar": 35
+      },
+      "revId": "2afc721b122d5d560f64454322f32e6a9d440793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b792b5e7_709781f2",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9714fed_4e64a215",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-17T00:26:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b792b5e7_709781f2",
+      "range": {
+        "startLine": 610,
+        "startChar": 10,
+        "endLine": 610,
+        "endChar": 26
+      },
+      "revId": "2afc721b122d5d560f64454322f32e6a9d440793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42718b33_88617156",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-16T20:41:09Z",
       "side": 1,
       "message": "nit: this is the \"init\" function, so it might be better to say \"C%d: init failed at LPM recovery\"",
+      "range": {
+        "startLine": 775,
+        "startChar": 16,
+        "endLine": 775,
+        "endChar": 28
+      },
+      "revId": "2afc721b122d5d560f64454322f32e6a9d440793",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8f01511_731e0dc6",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-17T00:26:42Z",
+      "side": 1,
+      "message": "Done\n\nit\u0027s always a challenge to balance brevity for \"code\" size\nconsiderations vs. traceability.",
+      "parentUuid": "42718b33_88617156",
       "range": {
         "startLine": 775,
         "startChar": 16,
