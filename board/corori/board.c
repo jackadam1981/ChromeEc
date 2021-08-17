@@ -68,7 +68,6 @@ DECLARE_DEFERRED(ps8762_chaddr_deferred);
 /* USB-A Configuration */
 const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_USB_A0_VBUS,
-	GPIO_EN_USB_A1_VBUS,
 };
 
 /* Keyboard scan setting */
@@ -187,6 +186,12 @@ static void sub_usb_c1_interrupt(enum gpio_signal s)
 
 	/* Check the line again in 5ms */
 	hook_call_deferred(&check_c1_line_data, INT_RECHECK_US);
+}
+
+static void c0_ccsbu_ovp_interrupt(enum gpio_signal s)
+{
+	cprints(CC_USBPD, "C0: CC OVP, SBU OVP, or thermal event");
+	pd_handle_cc_overvoltage(0);
 }
 
 #include "gpio_list.h"
