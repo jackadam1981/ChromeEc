@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cc0ec7d_dc1db1f9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-17T18:01:48Z",
+      "side": 1,
+      "message": "LGTM. I added some nits, but you can submit without any other changes if you\u0027re in a hurry.",
+      "revId": "4d3acfa1c040c1d9a54077aa43cf4662783722f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a6e9b0f_4c749f1f",
+        "filename": "board/chronicler/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-17T18:01:48Z",
+      "side": 1,
+      "message": "Nit: Same comment as below re: variables for port and address.",
+      "revId": "4d3acfa1c040c1d9a54077aa43cf4662783722f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97cc5ace_4541448e",
+        "filename": "board/chronicler/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-17T18:01:48Z",
+      "side": 1,
+      "message": "Nit: These lines could be a bit shorter if you declared const variables for the port and address, which are the same for every i2c_write8 call.",
+      "revId": "4d3acfa1c040c1d9a54077aa43cf4662783722f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb606a0_29e4d1b0",
+        "filename": "board/chronicler/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-17T18:01:48Z",
+      "side": 1,
+      "message": "Nit: Can you add a comment at the top of this function like this?: \"Adjust USB3 settings to improve signal integrity. See b/194985848.\"\n\nThat way, it will be more obvious to future readers where these settings came from.",
+      "revId": "4d3acfa1c040c1d9a54077aa43cf4662783722f7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
