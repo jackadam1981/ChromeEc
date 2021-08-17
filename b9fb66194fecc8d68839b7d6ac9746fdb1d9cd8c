@@ -22,6 +22,30 @@
       },
       "revId": "b9fb66194fecc8d68839b7d6ac9746fdb1d9cd8c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1336b46_56f292fc",
+        "filename": "board/servo_v4p1/usb_pd_policy.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1442982
+      },
+      "writtenOn": "2021-08-17T13:27:38Z",
+      "side": 1,
+      "message": "Yes, exactly. In current servo_v4p1 design you either enable FASTBOOT path or uServo USB port. This is some area for improvements for servo_v5 hardware.\n\nBy default, uServo port will be enabled. Only if the user explicitly enable CC_FASTBOOT_DFP then uServo is disabled.",
+      "parentUuid": "9188b48e_9a73c23a",
+      "range": {
+        "startLine": 826,
+        "startChar": 6,
+        "endLine": 826,
+        "endChar": 36
+      },
+      "revId": "b9fb66194fecc8d68839b7d6ac9746fdb1d9cd8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
