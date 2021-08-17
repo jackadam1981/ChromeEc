@@ -31,7 +31,6 @@
 /* Keyboard */
 
 #define CONFIG_KEYBOARD_KEYPAD
-#define CONFIG_PWM_KBLIGHT
 
 /* LED defines */
 #define CONFIG_LED_ONOFF_STATES
@@ -114,7 +113,6 @@
 #define CONFIG_GMR_TABLET_MODE
 
 /* Volume Button feature */
-#define CONFIG_ADC_BUTTONS
 #define CONFIG_VOLUME_BUTTONS
 #define GPIO_VOLUME_UP_L GPIO_VOLUP_BTN_ODL
 #define GPIO_VOLUME_DOWN_L GPIO_VOLDN_BTN_ODL
@@ -127,7 +125,6 @@
 enum adc_channel {
 	ADC_TEMP_SENSOR_1,     /* ADC0 */
 	ADC_TEMP_SENSOR_2,     /* ADC1 */
-	ADC_SUB_ANALOG,	       /* ADC2 */
 	ADC_VSNS_PP3300_A,     /* ADC9 */
 	ADC_CH_COUNT
 };
