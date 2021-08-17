@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d5a7c3_f2c7a396",
+        "filename": "board/kano/generated-gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-17T07:38:35Z",
+      "side": 1,
+      "message": "you should merge this file into gpio.c since you\u0027re\nnot auto-generating this file.\n\ndo the merge in a separate CL.",
+      "revId": "4ec7c06ddc70d9550df8134494de6ffa895c82be",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
