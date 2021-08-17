@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a06d3209_d144990c",
+        "filename": "zephyr/shim/include/zephyr_console_shim.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-17T00:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ff5ae90_94089364",
+      "range": {
+        "startLine": 49,
+        "startChar": 28,
+        "endLine": 49,
+        "endChar": 31
+      },
+      "revId": "0bda845e2c0c2593deec98e556b7037a96a5f92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20155c50_e7ec5585",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-16T19:58:24Z",
       "side": 1,
       "message": "IS_ENABLED?",
+      "range": {
+        "startLine": 172,
+        "startChar": 1,
+        "endLine": 172,
+        "endChar": 6
+      },
+      "revId": "0bda845e2c0c2593deec98e556b7037a96a5f92f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "799fcfd3_df73a1ad",
+        "filename": "zephyr/shim/src/console.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-17T00:12:52Z",
+      "side": 1,
+      "message": "Unfortunately, because the underlying struct changes, this has to be #ifdef.",
+      "parentUuid": "20155c50_e7ec5585",
       "range": {
         "startLine": 172,
         "startChar": 1,
