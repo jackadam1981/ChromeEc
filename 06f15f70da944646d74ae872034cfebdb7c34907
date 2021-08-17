@@ -16,6 +16,24 @@
       "message": "Nit: Since it seems like this is a case not many people are thinking about, it might be helpful to have comments before these snippets like\n /* Enter low power mode for TCPCs that do not support DRP Autotoggle. */",
       "revId": "06f15f70da944646d74ae872034cfebdb7c34907",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6baa7ad1_4824295f",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 2846,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-17T19:29:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "442a66ec_98d2b960",
+      "revId": "06f15f70da944646d74ae872034cfebdb7c34907",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
