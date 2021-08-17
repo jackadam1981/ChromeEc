@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f341586_1dd8d198",
+        "filename": "board/kano/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-17T07:54:12Z",
+      "side": 1,
+      "message": "i think you actually want to remove C1 and rename C2 to C1?",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "832ab5f4e9581c4850a3af68e31f9c027f743de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
