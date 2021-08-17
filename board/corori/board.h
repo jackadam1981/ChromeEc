@@ -37,7 +37,6 @@
 /* Keyboard */
 
 #define CONFIG_KEYBOARD_KEYPAD
-#define CONFIG_PWM_KBLIGHT
 
 /* LED defines */
 #define CONFIG_LED_ONOFF_STATES
@@ -146,7 +145,6 @@ enum chg_id {
 enum adc_channel {
 	ADC_TEMP_SENSOR_1,     /* ADC0 */
 	ADC_TEMP_SENSOR_2,     /* ADC1 */
-	ADC_SUB_ANALOG,	       /* ADC2 */
 	ADC_VSNS_PP3300_A,     /* ADC9 */
 	ADC_CH_COUNT
 };
