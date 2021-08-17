@@ -16,6 +16,24 @@
       "message": "jrt@ isn\u0027t genesis a closer starting point for moonbuggy than scout?",
       "revId": "d86a4363e68c4405b10ca8fcef4756ffb1f56676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98d31f1d_780efa5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2021-08-17T21:39:24Z",
+      "side": 1,
+      "message": "Yes, genesis would be a closer starting point given it has an i350, PoE, and HDMI ingest.\n\nIt\u0027s not that much EC configuration though and deserves a full audit of the GPIO pins anyway. I\u0027m fine with forking from scout as the \"newest\" fork.",
+      "parentUuid": "e3972f6f_51b02bf6",
+      "revId": "d86a4363e68c4405b10ca8fcef4756ffb1f56676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
