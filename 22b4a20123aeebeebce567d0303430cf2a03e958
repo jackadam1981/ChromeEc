@@ -34,6 +34,24 @@
       "parentUuid": "7ab612df_85c94d6f",
       "revId": "22b4a20123aeebeebce567d0303430cf2a03e958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d247ec6_81283940",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-18T22:18:50Z",
+      "side": 1,
+      "message": "\u003e And the spi flash buffer works, right?\n\nWhat buffer? the MUX?\n\nVerified flashing AP works, on both the AP-on (rebooting) and the AP-off cases.",
+      "parentUuid": "d221799a_c0b0f0b7",
+      "revId": "22b4a20123aeebeebce567d0303430cf2a03e958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
