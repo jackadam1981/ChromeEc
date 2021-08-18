@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "19f20aec_658eed00",
+        "filename": "board/kano/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-18T02:46:38Z",
+      "side": 1,
+      "message": "In my opinion I2C_PORT_ACCEL is the way to go. Let\u0027s see what Caveh says.",
+      "parentUuid": "b4036576_77a7f7ff",
+      "revId": "235b589518035884a735c2dbbf958c52b1d2bbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6ac094b_5c8e8064",
         "filename": "board/kano/sensors.c",
         "patchSetId": 2
@@ -85,6 +103,24 @@
       "side": 1,
       "message": "No verify yet.\nBut it use same position as voxel.",
       "parentUuid": "f6ac094b_5c8e8064",
+      "revId": "235b589518035884a735c2dbbf958c52b1d2bbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "209a64d1_c5e5d85c",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-18T02:46:38Z",
+      "side": 1,
+      "message": "Please open a bug to calibrate rotation matrixes for kano then.",
+      "parentUuid": "83a5e0dc_20b361bd",
       "revId": "235b589518035884a735c2dbbf958c52b1d2bbbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
