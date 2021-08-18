@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcabc767_667f9c29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-18T17:08:51Z",
+      "side": 1,
+      "message": "a few nits.",
+      "revId": "432ffb3441f468fee26194830251179750e031a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae5cf97_85b1ebd0",
+        "filename": "board/cr50/dcrypto/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-18T17:08:51Z",
+      "side": 1,
+      "message": "usually comment in the .h file is enough, if you want to keep this one - please add the return value format description.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 112,
+        "endChar": 3
+      },
+      "revId": "432ffb3441f468fee26194830251179750e031a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68474c50_9630c59f",
+        "filename": "board/cr50/dcrypto/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-18T17:08:51Z",
+      "side": 1,
+      "message": "is this supposed to be persistent or does it have to be cleared once the error has been injected?",
+      "range": {
+        "startLine": 120,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 19
+      },
+      "revId": "432ffb3441f468fee26194830251179750e031a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "555c4feb_aad9abc4",
+        "filename": "board/cr50/dcrypto/trng.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-18T17:08:51Z",
+      "side": 1,
+      "message": "should this be \u0027try at max TRNG_RESET_COUNT\u0027 ?",
+      "range": {
+        "startLine": 125,
+        "startChar": 41,
+        "endLine": 125,
+        "endChar": 54
+      },
+      "revId": "432ffb3441f468fee26194830251179750e031a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
