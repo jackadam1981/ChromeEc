@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae81cab_bd5af5de",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-18T04:31:28Z",
+      "side": 1,
+      "message": "How do you test tast and ectool? Are you connecting the STM32F411 board to a real chromebook using an i2c bus?",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6000b181_9d416a93",
@@ -14,6 +31,74 @@
       "writtenOn": "2021-08-17T10:25:35Z",
       "side": 1,
       "message": "So sorry about create new CL for fix incorrect change ID issue.\nThis commit is based on \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3070802/9\nLook like owner cannot comment in codes, so I cannot transfer reviewer\u0027s comments to current commit.\n\nFixed list after code review\n\n1. Added codes of ectools of crrev.com/c/2374647\n\nCommit message\n2. Added CONFLICT section for explain why removed read_temp function\n3. Added b:192817920 to bug tag of commit message\n4. Fixed incorrect change id by create new CL\n5. Added board files\n\ninclude/config.h and driver/accelgyro_icm426xx.c\n6. Removed CONFIG_ACCEL_FIFO_EN due to that definition is not necessary\n    Changed IS_ENABLED(CONFIG_ACCEL_FIFO) to #ifdef CONFIG_ACCEL_FIFO like other\n    drivers in firmware-rammus-11275.B branch\n7. Removed CONFIG_ACCEL_FIFO_SIZE due to that definition is not necessary\n8. REmoved CONFIG_MKBP_USE_GPIO due to that definition is not necessary\n\n\n",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "022e75db_c60a9720",
+        "filename": "board/nucleo-f411re/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-18T04:31:28Z",
+      "side": 1,
+      "message": "Why are you defining this SPI port when you are using the i2c port in the motion_sensor array?",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1558b82_0b69530e",
+        "filename": "board/nucleo-f411re/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-18T04:31:28Z",
+      "side": 1,
+      "message": "Cherry pick https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2374648/1 separately instead of merging 3 Cls into one.",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cae6a421_53606f65",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2414,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-18T04:31:28Z",
+      "side": 1,
+      "message": "It should be 25, otherwise ectool from main branch will not name the sensor properly.\nYou cherry-pick https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2374647\n\nit was not part of the orignal CL, it should have been in the conflict section.",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7d39cbb_e5cfd555",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4342,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-18T04:31:28Z",
+      "side": 1,
+      "message": "Part of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2374647, cherry-pick that CL instead.",
       "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
