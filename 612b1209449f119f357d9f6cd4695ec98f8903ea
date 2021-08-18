@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ac04d76_3337096e",
+        "filename": "chip/mchp/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-18T22:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6de690ec_80da8310",
+      "range": {
+        "startLine": 77,
+        "startChar": 23,
+        "endLine": 77,
+        "endChar": 69
+      },
+      "revId": "612b1209449f119f357d9f6cd4695ec98f8903ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5f40357_888c13eb",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "a5f40357_888c13eb",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "612b1209449f119f357d9f6cd4695ec98f8903ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39033f1a_06160c6b",
+        "filename": "chip/mchp/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-18T22:06:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "042f66b5_85e68981",
       "range": {
         "startLine": 84,
         "startChar": 26,
