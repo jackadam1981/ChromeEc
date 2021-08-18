@@ -367,6 +367,20 @@ uint16_t board_get_ps8xxx_product_id(int port)
 	return 0;
 }
 
+bool check_is_ps8755_chip(int port)
+{
+	int reg_sm = 0xFF;
+	bool is_ps8755 = false;
+
+	if (i2c_read8(port, PS8755_REG_SM_ADDR, PS8755_REG_SM_OFFSET, &reg_sm)
+	    == 0) {
+		if (reg_sm == PS8755_REG_SM_VALUE)
+			is_ps8755 = true;
+	}
+
+	return is_ps8755;
+}
+
 void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me,
 				   int hpd_lvl, int hpd_irq)
 {

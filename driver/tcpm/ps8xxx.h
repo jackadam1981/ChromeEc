@@ -45,6 +45,10 @@
 
 #define PS8XXX_P1_REG_MUX_USB_DCI_CFG           0x4B
 
+#define PS8755_REG_SM_ADDR	0x08
+#define PS8755_REG_SM_OFFSET	0x06
+#define PS8755_REG_SM_VALUE	0x80
+
 #if defined(CONFIG_USB_PD_TCPM_PS8751)
 /* Vendor defined registers */
 #define PS8XXX_REG_VENDOR_ID_L                  0x00
@@ -123,6 +127,8 @@ int ps8805_gpio_set_level(int port, enum ps8805_gpio signal, int level);
  * @return EC_SUCCESS if I2C accesses are successful
  */
 int ps8805_gpio_get_level(int port, enum ps8805_gpio signal, int *level);
+
+bool check_is_ps8755_chip(int port);
 
 /*
  * Allow boards to customize for PS8XXX initial if board has
