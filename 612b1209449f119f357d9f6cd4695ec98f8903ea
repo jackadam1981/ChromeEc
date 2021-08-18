@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6de690ec_80da8310",
+        "filename": "chip/mchp/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-18T19:25:28Z",
+      "side": 1,
+      "message": "Yes, it is compatible with other chips, since either CONFIG_FANS is undefined or RPM-PWM block is not functional on other board, adlrvpp_mchp1727 is first board to support RPM-PWM block fan auto-control feature.\n\nWill define one macro: FAN_DRIVER_SETTING_SHIFT",
+      "parentUuid": "31ece551_e35f1ec8",
+      "range": {
+        "startLine": 77,
+        "startChar": 23,
+        "endLine": 77,
+        "endChar": 69
+      },
+      "revId": "612b1209449f119f357d9f6cd4695ec98f8903ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a5f40357_888c13eb",
         "filename": "chip/mchp/fan.c",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-18T16:14:24Z",
       "side": 1,
       "message": "MAX_FAN_DRIVER_SETTING_SHIFT",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "612b1209449f119f357d9f6cd4695ec98f8903ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "042f66b5_85e68981",
+        "filename": "chip/mchp/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-18T19:25:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a5f40357_888c13eb",
       "range": {
         "startLine": 84,
         "startChar": 26,
