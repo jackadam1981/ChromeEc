@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3fe1be38_dd17df70",
+        "filename": "baseboard/intelrvp/mchp_ec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-18T19:37:07Z",
+      "side": 1,
+      "message": "ok, will change to #ifdef",
+      "parentUuid": "e5af37fe_69ef471f",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 11
+      },
+      "revId": "da2fb401959b9299cfa8e1f0fd1b3fa23bc67ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "75cd7844_da13e1a6",
         "filename": "baseboard/intelrvp/mchp_ec.c",
         "patchSetId": 4
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fd05499_9aa70c3b",
+        "filename": "baseboard/intelrvp/mchp_ec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-18T19:37:07Z",
+      "side": 1,
+      "message": "In MCHP chip, as RPM based Fan Control Algorithm via RPM-PWM hardware block is used in design, dedicated PWM_HW_CH_0 \u0026 TACH_HW_CH_0 (i.e. GPIO053/GPWM0 \u0026 GPIO050/GTACH0) pins must be used, it is not selectable.",
+      "parentUuid": "75cd7844_da13e1a6",
+      "range": {
+        "startLine": 83,
+        "startChar": 13,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "da2fb401959b9299cfa8e1f0fd1b3fa23bc67ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe2b1d13_79bd4884",
         "filename": "board/adlrvpp_mchp1727/gpio.inc",
         "patchSetId": 4
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-18T16:18:10Z",
       "side": 1,
       "message": "nit:\n\n  /*\n   * Alternate pins for RPM-FAN control\n   *\n   * GPIO050/GTACH0 \u003d CPU_TACHO_FAN",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 2
+      },
+      "revId": "da2fb401959b9299cfa8e1f0fd1b3fa23bc67ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f045cc52_a5e9089f",
+        "filename": "board/adlrvpp_mchp1727/gpio.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-18T19:37:07Z",
+      "side": 1,
+      "message": "will update",
+      "parentUuid": "fe2b1d13_79bd4884",
       "range": {
         "startLine": 188,
         "startChar": 0,
