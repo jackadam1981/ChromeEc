@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "72e6eaa3_e5c53dec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-18T00:52:09Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3084331\nhas landed. do you still need this patch?",
+      "revId": "828bae1aa760a7044fd094c93b986768d5a01453",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ddf07198_9224ba24",
         "filename": "driver/tcpm/ps8xxx.c",
         "patchSetId": 4
