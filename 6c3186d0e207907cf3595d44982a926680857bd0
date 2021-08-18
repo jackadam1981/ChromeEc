@@ -22,6 +22,30 @@
       },
       "revId": "6c3186d0e207907cf3595d44982a926680857bd0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e13155_e250eed8",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-18T20:01:06Z",
+      "side": 0,
+      "message": "Ack",
+      "parentUuid": "e9d5a663_0d97317c",
+      "range": {
+        "startLine": 40,
+        "startChar": 32,
+        "endLine": 40,
+        "endChar": 77
+      },
+      "revId": "6c3186d0e207907cf3595d44982a926680857bd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
