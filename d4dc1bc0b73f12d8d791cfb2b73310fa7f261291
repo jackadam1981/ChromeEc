@@ -70,6 +70,30 @@
       },
       "revId": "d4dc1bc0b73f12d8d791cfb2b73310fa7f261291",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ed63156_f234c590",
+        "filename": "driver/charger/sm5803.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1618,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-18T18:29:42Z",
+      "side": 1,
+      "message": "Revisiting this, I think if AC present simply indicates that an adapter is present on any port, I think this is fine.",
+      "parentUuid": "9d683db1_cd333092",
+      "range": {
+        "startLine": 1613,
+        "startChar": 0,
+        "endLine": 1618,
+        "endChar": 0
+      },
+      "revId": "d4dc1bc0b73f12d8d791cfb2b73310fa7f261291",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
