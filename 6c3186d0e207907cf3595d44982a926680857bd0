@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9d5a663_0d97317c",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-18T19:47:15Z",
+      "side": 0,
+      "message": "I think we need to move back to the TPM2 BSS memory area so TPM_MODE_ENABLED gets cleared during tpm reset. tpm_rst_deasserted already skips tpm reset if tpm mode is disabled. It does a hard reset instead which will clear it.\n\nRight now TPM_MODE_ENABLED doesn\u0027t get cleared until something resets cr50.",
+      "range": {
+        "startLine": 40,
+        "startChar": 32,
+        "endLine": 40,
+        "endChar": 77
+      },
+      "revId": "6c3186d0e207907cf3595d44982a926680857bd0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
