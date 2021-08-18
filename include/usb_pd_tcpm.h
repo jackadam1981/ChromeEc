@@ -65,7 +65,7 @@ static inline enum tcpc_cc_polarity polarity_rm_dts(
 	return (enum tcpc_cc_polarity)(polarity & BIT(0));
 }
 
-enum tcpm_transmit_type {
+enum tcpm_sop_type {
 	TCPC_TX_SOP = 0,
 	TCPC_TX_SOP_PRIME = 1,
 	TCPC_TX_SOP_PRIME_PRIME = 2,
@@ -302,7 +302,7 @@ struct tcpm_drv {
 	 *
 	 * @return EC_SUCCESS or error
 	 */
-	int (*transmit)(int port, enum tcpm_transmit_type type, uint16_t header,
+	int (*transmit)(int port, enum tcpm_sop_type type, uint16_t header,
 					const uint32_t *data);
 
 	/**
