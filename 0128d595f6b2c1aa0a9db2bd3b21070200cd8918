@@ -16,6 +16,24 @@
       "message": "is there another patch in flight that puts your RVP in BOARDS_NPCX_INT_SPI?\notherwise i\u0027m not seeing how this enables your use case.",
       "revId": "0128d595f6b2c1aa0a9db2bd3b21070200cd8918",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc3daffc_609116be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-18T01:16:24Z",
+      "side": 1,
+      "message": "Done.\nsubmitted CL:3102298\nSorry I was too early to upload this CL",
+      "parentUuid": "c2400016_cf3a68ad",
+      "revId": "0128d595f6b2c1aa0a9db2bd3b21070200cd8918",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
