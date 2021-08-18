@@ -22,6 +22,30 @@
       },
       "revId": "832ab5f4e9581c4850a3af68e31f9c027f743de7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19713f23_0a937365",
+        "filename": "board/kano/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-08-18T01:12:11Z",
+      "side": 1,
+      "message": "Kano is remove C2. And C1 change to same as C0.",
+      "parentUuid": "7f341586_1dd8d198",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "832ab5f4e9581c4850a3af68e31f9c027f743de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
