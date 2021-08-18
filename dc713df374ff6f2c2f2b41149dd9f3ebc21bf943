@@ -34,6 +34,24 @@
       "parentUuid": "aab87555_805bc0df",
       "revId": "dc713df374ff6f2c2f2b41149dd9f3ebc21bf943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70f9722_c86ac277",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-18T21:59:40Z",
+      "side": 1,
+      "message": "Ack. Will create a follow-up CL for the constant names.",
+      "parentUuid": "452f2a94_a3ed5339",
+      "revId": "dc713df374ff6f2c2f2b41149dd9f3ebc21bf943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
