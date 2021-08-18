@@ -79,6 +79,7 @@
 
 #define PS8XXX_P1_REG_MUX_USB_DCI_CFG           0x4B
 
+<<<<<<< HEAD   (b8b8e6 pazquel: Detect the Refresh key at row 3)
 /* NOTE: The Product ID will read as 0x8803 if the firmware has malfunctioned in
  * 8705, 8755 and 8805.
  */
@@ -87,6 +88,10 @@
 #define PS8755_PRODUCT_ID 0x8755
 #define PS8805_PRODUCT_ID 0x8805
 #define PS8815_PRODUCT_ID 0x8815
+=======
+#define PS8755_P0_REG_SM			0x06
+#define PS8755_P0_REG_SM_VALUE			0x80
+>>>>>>> CHANGE (5180bf Homestar: Distinguish PS8755 with hidden register)
 
 #if defined(CONFIG_USB_PD_TCPM_PS8751)
 /* Vendor defined registers */
@@ -128,8 +133,26 @@ uint16_t board_get_ps8xxx_product_id(int port);
 void ps8xxx_tcpc_update_hpd_status(const struct usb_mux *me,
 				   int hpd_lvl, int hpd_irq);
 
+<<<<<<< HEAD   (b8b8e6 pazquel: Detect the Refresh key at row 3)
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_TCPC
 extern struct i2c_stress_test_dev ps8xxx_i2c_stress_test_dev;
 #endif /* defined(CONFIG_CMD_I2C_STRESS_TEST_TCPC) */
+=======
+/**
+ * Check if the chip is PS8755
+ *
+ * @param port: The Type-C port number.
+ * @return true if hidden register sm is 0x80
+ */
+bool check_ps8755_chip(int port);
+
+/*
+ * Allow boards to customize for PS8XXX initial if board has
+ * specific settings.
+ *
+ * @param port: The Type-C port number.
+ */
+__override_proto void board_ps8xxx_tcpc_init(int port);
+>>>>>>> CHANGE (5180bf Homestar: Distinguish PS8755 with hidden register)
 
 #endif /* defined(__CROS_EC_USB_PD_TCPM_PS8XXX_H) */
