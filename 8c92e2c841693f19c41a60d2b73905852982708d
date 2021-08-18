@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd58fe84_f66d35ef",
+        "filename": "board/primus/led.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-18T17:20:34Z",
+      "side": 1,
+      "message": "Those 2 checks can be replaced by \n```\nif (!chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) \n```",
+      "revId": "8c92e2c841693f19c41a60d2b73905852982708d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
