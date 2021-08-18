@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4036576_77a7f7ff",
+        "filename": "board/kano/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-08-18T01:20:02Z",
+      "side": 1,
+      "message": "This is needed for define CONFIG_ACCELGYRO_ICM_COMM_I2C.\nOr I should define it in board.h rather than define I2C_PORT_ACCEL?",
+      "parentUuid": "90d11800_bb94665d",
+      "revId": "235b589518035884a735c2dbbf958c52b1d2bbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6ac094b_5c8e8064",
         "filename": "board/kano/sensors.c",
         "patchSetId": 2
@@ -49,6 +67,24 @@
       "writtenOn": "2021-08-17T20:39:54Z",
       "side": 1,
       "message": "Is that matrix verified?",
+      "revId": "235b589518035884a735c2dbbf958c52b1d2bbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83a5e0dc_20b361bd",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-08-18T01:20:02Z",
+      "side": 1,
+      "message": "No verify yet.\nBut it use same position as voxel.",
+      "parentUuid": "f6ac094b_5c8e8064",
       "revId": "235b589518035884a735c2dbbf958c52b1d2bbbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
