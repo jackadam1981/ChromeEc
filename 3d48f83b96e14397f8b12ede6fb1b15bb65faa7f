@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af8c29c0_cd04183b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-08-18T13:48:56Z",
+      "side": 1,
+      "message": "prevent",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "3d48f83b96e14397f8b12ede6fb1b15bb65faa7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a866e7dc_0df447ba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-08-18T13:48:56Z",
+      "side": 1,
+      "message": "Use b:184793035",
+      "revId": "3d48f83b96e14397f8b12ede6fb1b15bb65faa7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e20f60ba_4d006634",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-08-18T13:48:56Z",
+      "side": 1,
+      "message": "Please rebase to the bottom most and V+1 if you have verified.",
+      "revId": "3d48f83b96e14397f8b12ede6fb1b15bb65faa7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d5c8449_00501c49",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1275795
+      },
+      "writtenOn": "2021-08-18T13:48:56Z",
+      "side": 1,
+      "message": "Use 4 variables to store the original values.",
+      "revId": "3d48f83b96e14397f8b12ede6fb1b15bb65faa7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
