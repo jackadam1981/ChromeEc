@@ -171,7 +171,8 @@ static void suspend_led_update(void)
 {
 	while (1) {
 		tick++;
-		if (chipset_in_state(CHIPSET_STATE_ON))
+		if (chipset_in_state(CHIPSET_STATE_ON) || 
+			chipset_in_state(CHIPSET_STATE_ANY_OFF))
 			break;
 
 		/* 1s gradual on, 1s gradual off, 3s off */
