@@ -32,17 +32,21 @@ static void disable_tpm(void)
 DECLARE_DEFERRED(disable_tpm);
 
 /*
- * tpm_mode can be set only once after a hardware reset, to either
- * TPM_MODE_ENABLED or TPM_MODE_DISABLED.
+ * Set TPM mode to TPM_MODE_ENABLED or TPM_MODE_DISABLED once per tpm reset.
  *
- * This allows the AP to make sure that TPM can't be disabled by setting mode
- * to TPM_MODE_ENABLED during start up.
+ * If mode is set to TPM_MODE_ENABLED, it can't be set to DISABLED until the
+ * AP resets.
  *
  * If mode is set to TPM_MODE_DISABLED, the AP loses the ability to
  * communicate with the TPM until next TPM reset (which will trigger the H1
  * hardware reset in that case).
+ *
+ * On TPM reset event, tpm_reset_now() in tpm_registers.c clears TPM2 BSS memory
+ * area. By placing s_tpm_mode in TPM2 BSS area, TPM mode value shall be
+ * "TPM_MODE_ENABLED_TENTATIVE" on every TPM reset events. If the TPM is
+ * disabled, cr50 needs to do a hard reset instead of resetting the tpm.
  */
-static enum tpm_modes s_tpm_mode;
+static enum tpm_modes s_tpm_mode __attribute__((section(".bss.Tpm2_common")));
 
 static enum vendor_cmd_rc process_tpm_mode(struct vendor_cmd_params *p)
 {
