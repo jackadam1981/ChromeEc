@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1590e7f_2b6a2415",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-18T04:38:58Z",
+      "side": 1,
+      "message": "I tested STMF411 board to Raspberry Pi 4b(ChromeOS) using i2c bus",
+      "parentUuid": "cae81cab_bd5af5de",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "6000b181_9d416a93",
@@ -54,6 +72,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48573f01_d1eaae5e",
+        "filename": "board/nucleo-f411re/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-18T04:38:58Z",
+      "side": 1,
+      "message": "SPI related codes are blocked by #ifdef CONFIG_SPI_ACCEL_PORT.\nBut look like unnecessary. I will remove that",
+      "parentUuid": "022e75db_c60a9720",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c1558b82_0b69530e",
         "filename": "board/nucleo-f411re/board.h",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2021-08-18T04:31:28Z",
       "side": 1,
       "message": "Cherry pick https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2374648/1 separately instead of merging 3 Cls into one.",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c1ca117_48f7766f",
+        "filename": "board/nucleo-f411re/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-18T04:38:58Z",
+      "side": 1,
+      "message": "Is there any guide of cherry pick multi commit to one commit?.\nSo sorry about asking this..",
+      "parentUuid": "c1558b82_0b69530e",
       "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
