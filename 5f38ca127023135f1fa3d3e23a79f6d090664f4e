@@ -16,6 +16,24 @@
       "message": "How long do we want to keep around the cros-ec build for herobrine?",
       "revId": "5f38ca127023135f1fa3d3e23a79f6d090664f4e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff292d2_15f0ce30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-18T22:25:01Z",
+      "side": 1,
+      "message": "Probably wait other function teams, like wifi, gfx, power, start working on their jobs, meaning they are not aware of the EC existence. Expect 2 weeks after they receive the hardware.",
+      "parentUuid": "2e48e915_44e46707",
+      "revId": "5f38ca127023135f1fa3d3e23a79f6d090664f4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
