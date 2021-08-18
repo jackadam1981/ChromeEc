@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f51e8318_1c7d2c0c",
+        "filename": "zephyr/Kconfig.keyboard",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-18T15:59:20Z",
+      "side": 1,
+      "message": "do we want \"default y if PLATFORM_EC_KEYBOARD_VIVALDI\"?",
+      "range": {
+        "startLine": 112,
+        "startChar": 7,
+        "endLine": 112,
+        "endChar": 14
+      },
+      "revId": "9c6bbedf8e379d1fedc7c6832faebd57420e5872",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
