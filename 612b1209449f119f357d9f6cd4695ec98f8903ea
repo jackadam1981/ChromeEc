@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31ece551_e35f1ec8",
+        "filename": "chip/mchp/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-18T16:14:24Z",
+      "side": 1,
+      "message": "This is very different from the previous code. Is the backward compatibility ok?\n\nWe should probably \"#define MAX_FAN_DRIVER_SETTING_SHIFT 6\" (and optionally you can derive MAX_FAN_DRIVER_SETTING from MAX_FAN_DRIVER_SETTING_SHIFT using GENMASK macro).",
+      "range": {
+        "startLine": 77,
+        "startChar": 23,
+        "endLine": 77,
+        "endChar": 69
+      },
+      "revId": "612b1209449f119f357d9f6cd4695ec98f8903ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5f40357_888c13eb",
+        "filename": "chip/mchp/fan.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-18T16:14:24Z",
+      "side": 1,
+      "message": "MAX_FAN_DRIVER_SETTING_SHIFT",
+      "range": {
+        "startLine": 84,
+        "startChar": 26,
+        "endLine": 84,
+        "endChar": 27
+      },
+      "revId": "612b1209449f119f357d9f6cd4695ec98f8903ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
