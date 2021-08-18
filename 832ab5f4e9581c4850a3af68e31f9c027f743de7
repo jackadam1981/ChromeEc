@@ -46,6 +46,30 @@
       },
       "revId": "832ab5f4e9581c4850a3af68e31f9c027f743de7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f75aa850_1143d8b6",
+        "filename": "board/kano/usbc_config.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-18T01:24:57Z",
+      "side": 1,
+      "message": "cool, i think it\u0027ll be simpler to just remove the\n[USBC_PORT_C1] \u003d ... configs since they apply to a chips you don\u0027t use.\nthen, just change \"[USB_PORT_C2]\" to \"[USB_PORT_C1]\".",
+      "parentUuid": "19713f23_0a937365",
+      "range": {
+        "startLine": 40,
+        "startChar": 27,
+        "endLine": 40,
+        "endChar": 38
+      },
+      "revId": "832ab5f4e9581c4850a3af68e31f9c027f743de7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
