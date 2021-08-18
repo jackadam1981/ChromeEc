@@ -16,6 +16,24 @@
       "message": "Future site of naming bike shed 😊\n\nYou might reasonably point out that the names of these constants no longer match the name of the enum or their intended purpose. However, it is not obvious to me what they should be changed to.\n\n1. Hard Reset, Cable Reset, and BIST carrier mode responses are not packets, so SOP is not technically the category to which they belong. (This applies to the enum name as well.) Per the PD spec, the symbols on the wire corresponding to these types of data are all \"ordered sets.\" However, the TCPM code never directly interacts with ordered sets represented as such, and our codebase only refers to the concept of an ordered set in some non-TCPCI drivers. It seems too obscure to be a good choice here.\n2. If SOP is the category, that would suggest enum names like TCPC_SOP_SOP, which is awkward.\n3. In the absence of a named category, the natural name for the first constant might be something like TCPC_SOP or TCPCI_SOP. This might be too short for readers to intuit its context.\n4. The natural analog to TCPC_SOP would be something like TCPC_HARD_RESET, which might be even harder to grok.\n\nWDYT?",
       "revId": "dc713df374ff6f2c2f2b41149dd9f3ebc21bf943",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "452f2a94_a3ed5339",
+        "filename": "include/usb_pd_tcpm.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-18T21:40:30Z",
+      "side": 1,
+      "message": "I think the TCPCI_ prefix is a good choice for the message types that are shared by transmit and receive.  For the TX only types, use TCPCI_TX_. \n\nWe could go the route of naming the enum \"tcpci_message_type\" or \"tcpci_msg_type\", and use enum names TCPCI_MSG_SOP, TCPCI_MSG_TX_HARD_RESET.\n\nThis CL chain is good step forward.",
+      "parentUuid": "aab87555_805bc0df",
+      "revId": "dc713df374ff6f2c2f2b41149dd9f3ebc21bf943",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
