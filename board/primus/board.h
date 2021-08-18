@@ -182,6 +182,10 @@ enum sensor_id {
 
 enum battery_type {
 	BATTERY_SUNWODA,
+<<<<<<< HEAD   (08a831 Merge remote-tracking branch cros/main into firmware-keeby-1)
+=======
+	BATTERY_SMP,
+>>>>>>> BRANCH (110f90 TCPM: Remove enum pd_msg_type)
 	BATTERY_TYPE_COUNT
 };
 

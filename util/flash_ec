@@ -121,6 +121,13 @@ BOARDS_NPCX_7M7X_JTAG=(
 )
 
 BOARDS_NPCX_SPI=(
+<<<<<<< HEAD   (08a831 Merge remote-tracking branch cros/main into firmware-keeby-1)
+=======
+)
+
+BOARDS_NPCX_INT_SPI=(
+	adlrvpp_npcx
+>>>>>>> BRANCH (110f90 TCPM: Remove enum pd_msg_type)
 )
 
 BOARDS_SPI_1800MV=(
@@ -306,6 +313,10 @@ fi
 
 if $(in_array "${BOARDS_NPCX_SPI[@]}" "${BOARD}"); then
 	SUPPORTED_CHIPS+=("npcx_spi")
+fi
+
+if $(in_array "${BOARDS_NPCX_INT_SPI[@]}" "${BOARD}"); then
+	SUPPORTED_CHIPS+=("npcx_int_spi")
 fi
 
 if $(in_array "${BOARDS_IT83XX[@]}" "${BOARD}"); then

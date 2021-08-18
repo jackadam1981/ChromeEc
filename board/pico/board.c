@@ -85,6 +85,11 @@ struct motion_sensor_t motion_sensors[] = {
 	 .port = I2C_PORT_SENSORS,
 	 .i2c_spi_addr_flags = KX022_ADDR1_FLAGS,
 	 .rot_standard_ref = &lid_standard_ref,
+<<<<<<< HEAD   (08a831 Merge remote-tracking branch cros/main into firmware-keeby-1)
+=======
+	 .min_frequency = KX022_ACCEL_MIN_FREQ,
+	 .max_frequency = KX022_ACCEL_MAX_FREQ,
+>>>>>>> BRANCH (110f90 TCPM: Remove enum pd_msg_type)
 	 .default_range = 2, /* g, enough to calculate lid angle. */
 	 .config = {
 		/* EC use accel for angle detection */
@@ -207,7 +212,7 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 /* I2C ports */
 const struct i2c_port_t i2c_ports[] = {
 	{"typec",   IT83XX_I2C_CH_C, 400, GPIO_I2C_C_SCL, GPIO_I2C_C_SDA},
-	{"other",   IT83XX_I2C_CH_B, 100, GPIO_I2C_B_SCL, GPIO_I2C_B_SDA},
+	{"sensor",  IT83XX_I2C_CH_B, 400, GPIO_I2C_B_SCL, GPIO_I2C_B_SDA},
 	{"battery", IT83XX_I2C_CH_A, 100, GPIO_I2C_A_SCL, GPIO_I2C_A_SDA},
 };
 const unsigned int i2c_ports_used = ARRAY_SIZE(i2c_ports);

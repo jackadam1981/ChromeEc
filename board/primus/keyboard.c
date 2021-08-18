@@ -20,7 +20,11 @@ __override struct keyboard_scan_config keyscan_config = {
 	.poll_timeout_us = 100 * MSEC,
 	.actual_key_mask = {
 		0x1c, 0xff, 0xff, 0xff, 0xff, 0xf5, 0xff,
+<<<<<<< HEAD   (08a831 Merge remote-tracking branch cros/main into firmware-keeby-1)
 		0xa4, 0xff, 0xfe, 0x55, 0xfa, 0xca  /* full set */
+=======
+		0xa4, 0xff, 0xfe, 0x55, 0xfb, 0xca  /* full set */
+>>>>>>> BRANCH (110f90 TCPM: Remove enum pd_msg_type)
 	},
 };
 
