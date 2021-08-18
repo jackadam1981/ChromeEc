@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd3f1128_92ead29d",
+        "filename": "board/bugzzy/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-18T05:52:27Z",
+      "side": 1,
+      "message": "I only see 2?",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "9f7f6e100c9546d535f9f24379421c0a914c0cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa2da8c_e2dd147d",
+        "filename": "board/bugzzy/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-18T05:52:27Z",
+      "side": 1,
+      "message": "nit: nothing on first line in multi-line comments.",
+      "revId": "9f7f6e100c9546d535f9f24379421c0a914c0cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f39457_6d0f623b",
+        "filename": "board/bugzzy/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-18T05:52:27Z",
+      "side": 1,
+      "message": "bugzzy?",
+      "range": {
+        "startLine": 82,
+        "startChar": 12,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "9f7f6e100c9546d535f9f24379421c0a914c0cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
