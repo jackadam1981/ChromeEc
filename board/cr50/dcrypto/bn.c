@@ -8,18 +8,10 @@
 #endif
 
 #include "dcrypto.h"
+#include "fips.h"
 #include "internal.h"
 
 #include "trng.h"
-
-
-#include <assert.h>
-
-#ifdef CONFIG_WATCHDOG
-extern void watchdog_reload(void);
-#else
-static inline void watchdog_reload(void) { }
-#endif
 
 void bn_init(struct LITE_BIGNUM *b, void *buf, size_t len)
 {
@@ -29,8 +21,7 @@ void bn_init(struct LITE_BIGNUM *b, void *buf, size_t len)
 
 void DCRYPTO_bn_wrap(struct LITE_BIGNUM *b, void *buf, size_t len)
 {
-	/* Only word-multiple sized buffers accepted. */
-	assert((len & 0x3) == 0);
+	/* Note: only word-multiple sized buffers accepted. */
 	b->dmax = len / LITE_BN_BYTES;
 	b->d = (struct access_helper *) buf;
 }
@@ -310,7 +301,7 @@ static void bn_compute_RR(struct LITE_BIGNUM *RR, const struct LITE_BIGNUM *N)
 	/* Repeat 2 * R % N, log2(R) times. */
 	for (i = 0; i < N->dmax * LITE_BN_BITS2; i++) {
 		if (bn_lshift(RR))
-			assert(bn_sub(RR, N) == -1);
+			bn_sub(RR, N); /* should always borrow == -1. */
 		if (bn_gte(RR, N))
 			bn_sub(RR, N);
 	}
@@ -370,7 +361,9 @@ static void bn_modexp_internal(struct LITE_BIGNUM *output,
 		 * TODO(ngm): may be unnecessary with
 		 * a faster implementation.
 		 */
-		watchdog_reload();
+#ifdef CONFIG_WATCHDOG
+		fips_vtable->watchdog_reload();
+#endif
 	}
 
 	bn_mont_mul(output, NULL, &acc, nprime, N);     /* Convert out. */
