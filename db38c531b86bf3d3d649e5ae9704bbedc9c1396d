@@ -16,6 +16,52 @@
       "message": "Diana is OOO, anyone else available to review this? ",
       "revId": "db38c531b86bf3d3d649e5ae9704bbedc9c1396d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e476c4b_5ade0e71",
+        "filename": "include/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-19T22:04:34Z",
+      "side": 1,
+      "message": "Is that some boards cannot build with math_utils, or there are boards don\u0027t link in math_utils?  I see there math_utils.o is compiled for boards that use sensors, or boards that define CONFIG_MATH_UTIL.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 66
+      },
+      "revId": "db38c531b86bf3d3d649e5ae9704bbedc9c1396d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08160606_a8087180",
+        "filename": "include/common.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-19T22:04:34Z",
+      "side": 1,
+      "message": "Nit - there is inconsistent white space around the math operations.  I prefer the single space around operators.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 0
+      },
+      "revId": "db38c531b86bf3d3d649e5ae9704bbedc9c1396d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
