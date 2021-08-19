@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91ff69ff_c94977c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-08-19T02:56:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af8c29c0_cd04183b",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 34
+      },
+      "revId": "3d48f83b96e14397f8b12ede6fb1b15bb65faa7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a866e7dc_0df447ba",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-08-18T13:48:56Z",
       "side": 1,
       "message": "Use b:184793035",
+      "revId": "3d48f83b96e14397f8b12ede6fb1b15bb65faa7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb0e7b48_ce35f287",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-08-19T02:56:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a866e7dc_0df447ba",
       "revId": "3d48f83b96e14397f8b12ede6fb1b15bb65faa7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -71,6 +113,24 @@
       "writtenOn": "2021-08-18T13:48:56Z",
       "side": 1,
       "message": "Use 4 variables to store the original values.",
+      "revId": "3d48f83b96e14397f8b12ede6fb1b15bb65faa7f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "055749e3_349e08e7",
+        "filename": "chip/mt_scp/mt8195/clock.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1470933
+      },
+      "writtenOn": "2021-08-19T02:56:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d5c8449_00501c49",
       "revId": "3d48f83b96e14397f8b12ede6fb1b15bb65faa7f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
