@@ -16,6 +16,24 @@
       "message": "To do this, please modify config.star so both are in sync.",
       "revId": "79faf4845a89307a3ee7970d3ccf8983b325bbfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7beac0d7_deb45e14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1187265
+      },
+      "writtenOn": "2021-08-19T01:21:01Z",
+      "side": 1,
+      "message": "Hi YH,\nHere the daughter board USB definition in config.star\ndaughter_board \u003d program.topos.DB_USB3_ACTIVE,\nI think if already done for chronicler.",
+      "parentUuid": "45447637_ec4f4f5c",
+      "revId": "79faf4845a89307a3ee7970d3ccf8983b325bbfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
