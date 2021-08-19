@@ -16,6 +16,46 @@
       "message": "LGTM but would like someone with more python knowledge to review.",
       "revId": "88e1d10d0a68ad66c3d9c8220fec4b3d1eb09e8b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a407d4d5_68d1c1a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-08-19T00:35:19Z",
+      "side": 1,
+      "message": "LGTM, one small ask but I\u0027ll +2 when resolved.",
+      "revId": "88e1d10d0a68ad66c3d9c8220fec4b3d1eb09e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd1e5876_3d55ead0",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-08-19T00:35:19Z",
+      "side": 1,
+      "message": "Can we start the output with something along the lines of:\n\n/* Generated file, do not edit */",
+      "range": {
+        "startLine": 135,
+        "startChar": 4,
+        "endLine": 135,
+        "endChar": 10
+      },
+      "revId": "88e1d10d0a68ad66c3d9c8220fec4b3d1eb09e8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
