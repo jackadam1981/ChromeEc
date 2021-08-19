@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cdd6c6_931cca0f",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2021-08-19T18:39:07Z",
+      "side": 1,
+      "message": "nit: comparison to 0 is redundant for a truthiness test (could just be `or opts.verbose` to test for non-zero)",
+      "range": {
+        "startLine": 121,
+        "startChar": 41,
+        "endLine": 121,
+        "endChar": 57
+      },
+      "revId": "d0a22015fdf655ffabcd009e6d9865f5c2024adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
