@@ -24,6 +24,7 @@ static uint8_t init_done, tx_started;
 
 void uart_init(void)
 {
+#if (UARTN < SCP_UART_COUNT)
 	const uint32_t baud_rate = CONFIG_UART_BAUD_RATE;
 	const uint32_t uart_clock = 26000000;
 	const uint32_t div = DIV_ROUND_NEAREST(uart_clock, baud_rate * 16);
@@ -49,7 +50,6 @@ void uart_init(void)
 	/* Enable received data interrupt */
 	UART_IER(UARTN) |= UART_IER_RDI;
 
-#if (UARTN < SCP_UART_COUNT)
 	task_enable_irq(UART_TX_IRQ(UARTN));
 	task_enable_irq(UART_RX_IRQ(UARTN));
 #endif
@@ -149,7 +149,7 @@ DECLARE_IRQ(UART_INTC_GROUP, uart_irq_handler, 0);
 #error "APUART task hasn't defined in ec.tasklist."
 #endif
 
-void uart_task(void)
+void uart_task(void *u)
 {
 	while (1) {
 		if (uart_rx_available() || tx_started)

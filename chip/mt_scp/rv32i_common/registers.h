@@ -206,6 +206,8 @@
 #define AP_GPIO_MODE20_SET		REG32(AP_GPIO_BASE + 0x0444)
 #define AP_GPIO_MODE20_CLR		REG32(AP_GPIO_BASE + 0x0448)
 
+#define SCP_UART2_BASE			(AP_GPIO_BASE + 0x1001100)
+
 #include "clock_regs.h"
 
 #endif /* __CROS_EC_REGISTERS_H */
