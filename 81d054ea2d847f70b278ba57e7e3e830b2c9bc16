@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3679f709_1fcaa1e6",
+        "filename": "board/cr50/tpm2/tpm_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-19T00:27:36Z",
+      "side": 1,
+      "message": "can you clarify this with something like\n\n\u0027once TPM is disabled, even though TPM reset would clear this field the TPM will not become fully operational because crypto hardware needs to be rstarted. A Cr50 reboot is required to restore TPM operation.\u0027\n\nor along these lines to make it easier next time we need to look at this code.",
+      "range": {
+        "startLine": 46,
+        "startChar": 59,
+        "endLine": 47,
+        "endChar": 13
+      },
+      "revId": "81d054ea2d847f70b278ba57e7e3e830b2c9bc16",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
