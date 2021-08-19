@@ -34,6 +34,24 @@
       "parentUuid": "83428350_62fa52a2",
       "revId": "9bbfd5fef40d18795ae9e57fc2741077fb5c1eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b8819e0_316e6eee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-08-19T17:37:55Z",
+      "side": 1,
+      "message": "I\u0027m not sure I agree with this being an anti-pattern. This is very common in other applications as well where the underlying API can change. This is very common in Android and Web. Use to be common on server code but is not less common since a lot of it uses docker.\n\nMy take on this:\n1. If we\u0027re committing to only ever supporting 1 version of Zephyr then we should get rid of the version name under the directory zephyr/main/v?.? and that\u0027s perfectly fine. We could even move to a zephyr/main/current and zephyr/main/next model just to allow upreving to be smoothing (in which case we should support IS_ZEPHYR_NEXT)\n2. If we plan on letting old boards/builds remain building against older versions of Zephyr (which I think we\u0027ll have to when we start cutting release branches) then I think we need to leave IS_ZEPHYR_VERSION as well as add new GT/LT/GTE/LTE.\n\nI\u0027ll let the other reviewers weigh in, but I think that this will be needed long term and should (especially because it already is here) remain as the pattern.",
+      "parentUuid": "9ec85719_7c258c69",
+      "revId": "9bbfd5fef40d18795ae9e57fc2741077fb5c1eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
