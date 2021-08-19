@@ -70,6 +70,24 @@
       "parentUuid": "9b8819e0_316e6eee",
       "revId": "9bbfd5fef40d18795ae9e57fc2741077fb5c1eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86f68333_5f8fa9a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-08-19T18:01:13Z",
+      "side": 1,
+      "message": "Sure, for an arbitrary API lets use this example:\n\n- v1 uses API 1.0\n  api_call(...);\n  \n- API 1 changes in v1.1 (we\u0027ll now call it API 2)\n  #if ZEPHYR_IS_NEWER_THAN(1, 0)\n    api_call2(...);\n  #else\n    api_call(...);\n  #endif\n\n- API 2 changes in v1.2 (we\u0027ll now call it API 3)\n  #if ZEPHYR_IS_NEWER_THAN(1, 1)\n    api_call3(...);\n  #elif ZEPHYR_IS(1, 1)\n    api_call2(...);\n  #else\n    api_call(...);\n  #endif\n  \nI think that long term we\u0027ll need all the comparators. Yes, we can do away with IS by having both GT/LT, but that could be said for \u003d\u003d. I think overall it\u0027s already there and I don\u0027t see the need to remove it. It\u0027s better to add functionality as we need it.",
+      "parentUuid": "67e0f390_93c98ac2",
+      "revId": "9bbfd5fef40d18795ae9e57fc2741077fb5c1eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
