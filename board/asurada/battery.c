@@ -14,7 +14,7 @@
 #include "usb_pd.h"
 
 const struct board_batt_params board_battery_info[] = {
-	[BATTERY_C235] = {
+	[BATTERY_AS3GWRC3KA_C235_41] = {
 		.fuel_gauge = {
 			.manuf_name = "AS3GWRc3KA",
 			.device_name = "C235-41",
@@ -44,4 +44,4 @@ const struct board_batt_params board_battery_info[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
-const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_C235;
+const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_AS3GWRC3KA_C235_41;

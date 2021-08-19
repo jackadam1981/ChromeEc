@@ -101,7 +101,7 @@
 #include "registers.h"
 
 enum battery_type {
-	BATTERY_C235,
+	BATTERY_AS3GWRC3KA_C235_41,
 	BATTERY_TYPE_COUNT,
 };
 
