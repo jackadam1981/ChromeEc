@@ -151,6 +151,9 @@
 #define CONFIG_ACCEL_INTERRUPTS
 #endif
 
+/* Fan */
+#define CONFIG_FANS 1
+
 /* SPI / Host Command */
 #define CONFIG_SPI
 
