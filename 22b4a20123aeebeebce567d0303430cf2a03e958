@@ -88,6 +88,23 @@
       "parentUuid": "ff70332f_9dd92132",
       "revId": "22b4a20123aeebeebce567d0303430cf2a03e958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f20796b_d4928c86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-19T16:34:53Z",
+      "side": 1,
+      "message": "The herobrine_npcx7 still needs the old functions. We probably don\u0027t need the herobrine_npcx7 image. I will wait 2 more weeks and then remove the herobrine_npcx7 support.",
+      "revId": "22b4a20123aeebeebce567d0303430cf2a03e958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
