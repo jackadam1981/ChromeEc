@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9149001_e9a6e5b7",
+        "filename": "baseboard/intelrvp/mchp_ec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-19T19:31:43Z",
+      "side": 1,
+      "message": "PWM_HW_CH_4 \u003d 4, right? Can you explain why PWM_HW_CH_4 can\u0027t be used instead of 4? If 4 isn\u0027t available, why do we keep it?",
+      "parentUuid": "754cd189_e51fa2a4",
+      "range": {
+        "startLine": 83,
+        "startChar": 13,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "da2fb401959b9299cfa8e1f0fd1b3fa23bc67ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe2b1d13_79bd4884",
