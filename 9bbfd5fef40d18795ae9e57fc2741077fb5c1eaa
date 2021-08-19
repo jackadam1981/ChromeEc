@@ -52,6 +52,24 @@
       "parentUuid": "9ec85719_7c258c69",
       "revId": "9bbfd5fef40d18795ae9e57fc2741077fb5c1eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e0f390_93c98ac2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-19T17:40:18Z",
+      "side": 1,
+      "message": "Can you give an example of something that only applies to an *exact version number*?\n\nWe should have something like ZEPHYR_IS_NEWER_THAN(x, y) inestad.",
+      "parentUuid": "9b8819e0_316e6eee",
+      "revId": "9bbfd5fef40d18795ae9e57fc2741077fb5c1eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
