@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3da1eb7_d31c643a",
+        "filename": "board/bugzzy/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-08-19T00:29:17Z",
+      "side": 1,
+      "message": "There are 3 LEDs(R,G,B).",
+      "parentUuid": "bd3f1128_92ead29d",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "9f7f6e100c9546d535f9f24379421c0a914c0cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aa2da8c_e2dd147d",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "efd55e23_13b3f2bc",
+        "filename": "board/bugzzy/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-08-19T00:29:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa2da8c_e2dd147d",
+      "revId": "9f7f6e100c9546d535f9f24379421c0a914c0cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "18f39457_6d0f623b",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-08-18T05:52:27Z",
       "side": 1,
       "message": "bugzzy?",
+      "range": {
+        "startLine": 82,
+        "startChar": 12,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "9f7f6e100c9546d535f9f24379421c0a914c0cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0cdb213_9ae87747",
+        "filename": "board/bugzzy/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-08-19T00:29:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18f39457_6d0f623b",
       "range": {
         "startLine": 82,
         "startChar": 12,
