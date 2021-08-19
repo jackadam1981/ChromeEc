@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e3c9bf2_9df7be1d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-19T17:54:22Z",
+      "side": 1,
+      "message": "what\u0027s USM? Can you provide a brief description?",
+      "range": {
+        "startLine": 7,
+        "startChar": 17,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "12dd73a981180516cd3da563346a4913bd77368b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bf0e953_4e519b32",
+        "filename": "board/spherion/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-19T17:54:22Z",
+      "side": 1,
+      "message": "This is in conflict with your new pin.",
+      "revId": "12dd73a981180516cd3da563346a4913bd77368b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
