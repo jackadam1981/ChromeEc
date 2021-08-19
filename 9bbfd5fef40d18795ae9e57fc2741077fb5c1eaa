@@ -106,6 +106,24 @@
       "parentUuid": "86f68333_5f8fa9a5",
       "revId": "9bbfd5fef40d18795ae9e57fc2741077fb5c1eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffbbb110_42cfbe23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-08-19T18:51:25Z",
+      "side": 1,
+      "message": "I\u0027m going to leave this up to Keith as the second reviewer.\n\nMy rationale is that:\n1. The macro is already there, it sets the pattern for checking the version and where that check is defined.\n2. It doesn\u0027t takes up space in the image.\n3. It already went through code review and was approved, deleting it doesn\u0027t make sense, but I agree that as needed we should be adding GT/LT/GTE/LTE macros.",
+      "parentUuid": "078196eb_3021ad71",
+      "revId": "9bbfd5fef40d18795ae9e57fc2741077fb5c1eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
