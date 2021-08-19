@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3429c4cb_df7209fa",
+        "filename": "board/helios/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-08-19T04:32:14Z",
+      "side": 1,
+      "message": "`.ec_rate \u003d 100 * MSEC`\n?",
+      "revId": "20e765824006397ff4d59e1edd1e04080f9f128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44e2139d_6cfefab6",
+        "filename": "board/helios/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-08-19T04:32:14Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this one be `HOOK_PRIO_INIT_I2C + 1` ?",
+      "range": {
+        "startLine": 384,
+        "startChar": 50,
+        "endLine": 384,
+        "endChar": 67
+      },
+      "revId": "20e765824006397ff4d59e1edd1e04080f9f128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
