@@ -33,6 +33,24 @@
       "message": "I\u0027m having some difficulty reviewing this change. It\u0027s rather large, and I\u0027m not at all familiar with this code base. (I reviewed u2fd code in the past, but never anything cr50, I think.) I\u0027m happy to work through it if you want, but perhaps Mary\u0027s and Andrey\u0027s review suffice? They\u0027re actual owners after all. :) ",
       "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6a02a11_d359ee70",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-19T23:57:14Z",
+      "side": 1,
+      "message": "sure, thanks. i think the interfacing part - the way how u2fd forms u2f command and processes responses is most important here. if shorter key handles are needed we may need to switch to a v2 and make sure u2fd will work with it.",
+      "parentUuid": "44e72da9_002dc361",
+      "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
