@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "259c1ffd_ba648de2",
+        "filename": "baseboard/intelrvp/mchp_ec.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-08-19T19:59:50Z",
+      "side": 1,
+      "message": "yes, macro PWM_HW_CH_4 can replace 4. I misunderstood if PWM_HW_CH_4 will replace PWM_HW_CH_0 for CHIP_FAMILY_MEC172X.\nupdated it in Patch set 7.",
+      "parentUuid": "c9149001_e9a6e5b7",
+      "range": {
+        "startLine": 83,
+        "startChar": 13,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "da2fb401959b9299cfa8e1f0fd1b3fa23bc67ff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fe2b1d13_79bd4884",
