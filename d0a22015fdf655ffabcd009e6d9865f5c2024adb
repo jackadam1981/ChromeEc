@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a3e06c9_a07e9986",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2021-08-19T18:42:18Z",
+      "side": 1,
+      "message": "if you want to delete more code this property could be mostly replaced with `.name.lower()`",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "d0a22015fdf655ffabcd009e6d9865f5c2024adb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0cdd6c6_931cca0f",
         "filename": "util/run_host_test",
         "patchSetId": 1
