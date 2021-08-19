@@ -271,7 +271,14 @@ static void board_spi_disable(void)
 	/* Set pins to a state calming the sensor down. */
 	gpio_set_flags(GPIO_EC_SENSOR_SPI_CK, GPIO_OUT_LOW);
 	gpio_set_level(GPIO_EC_SENSOR_SPI_CK, 0);
+<<<<<<< HEAD   (81c4ad RT1715: update the driver for Kukui branch)
 	gpio_config_module(MODULE_SPI_MASTER, 0);
+=======
+	/* Pull SPI_NSS pin to low to prevent a leakage. */
+	gpio_set_flags(GPIO_EC_SENSOR_SPI_NSS, GPIO_OUT_LOW);
+	gpio_set_level(GPIO_EC_SENSOR_SPI_NSS, 0);
+	gpio_config_module(MODULE_SPI_CONTROLLER, 0);
+>>>>>>> CHANGE (32760f Fennel: pull sensor SPI_NSS to low in S5)
 
 	/* Disable spi peripheral and clocks. */
 	spi_enable(CONFIG_SPI_ACCEL_PORT, 0);
