@@ -1,0 +1,55 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: |
+   Battery fuel gauge parameters
+
+compatible: "battery-fuel-gauge"
+
+properties:
+   manuf_name:
+      description: Manufacturer name
+      type: string
+   device_name:
+      description: Model/Device name
+      type: string
+   ship_mode_wb_support:
+      description: |
+         Write Block Support. If wb_support is true, then we use a i2c write
+         block command instead of a 16-bit write. The effective difference is
+         that the i2c transaction will prefix the length (2) when wb_support
+         is enabled.
+      default: 0
+      type: int
+   ship_mode_reg_addr:
+      type: int
+   ship_mode_reg_data:
+      type: array
+   sleep_mode_support:
+      type: int
+   sleep_mode_reg_addr:
+      type: int
+   sleep_mode_reg_data:
+      type: int
+   fet_mfgacc_support:
+      description: Manufacturer access data support
+      type: int
+   fet_reg_addr:
+      type: int
+   fet_reg_mask:
+      type: int
+   fet_disconnect_val:
+      type: int
+   fet_cfet_mask:
+      description: CHG FET status mask
+      type: int
+   fet_cfet_off_val:
+      description: CHG FET offset value
+      type: int
+   imbalance_mv:
+      description: |
+         This property is used if CONFIG_BATTERY_MEASURE_IMBALANCE is defined.
+         It should be an enum and its value should be a name of function
+         which will be assigned to imbalance_mv pointer.
+      type: string

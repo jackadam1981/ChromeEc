@@ -1,0 +1,35 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description:
+   Information about battery
+   Voltage is in millivolts
+   Current is in milliamperes
+   Temperature is in Celsius degrees
+
+compatible: "battery-info"
+
+properties:
+   voltage_max:
+      type: int
+   voltage_normal:
+      type: int
+   voltage_min:
+      type: int
+   precharge_voltage:
+      type: int
+   precharge_current:
+      type: int
+   start_charging_min_c:
+      type: int
+   start_charging_max_c:
+      type: int
+   charging_min_c:
+      type: int
+   charging_max_c:
+      type: int
+   discharging_min_c:
+      type: int
+   discharging_max_c:
+      type: int
