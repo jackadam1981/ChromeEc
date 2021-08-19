@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e7c75a6_82232cb2",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2021-08-19T17:45:43Z",
+      "side": 1,
+      "message": "Not needed in Python 3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "10c0304a8773643114f36043df7d2c696ed18713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec6fe08c_65a4706e",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2021-08-19T17:45:43Z",
+      "side": 1,
+      "message": "suggestion/idea: define `SUCCESS \u003d 0` with the rest still as `auto`...",
+      "range": {
+        "startLine": 24,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "10c0304a8773643114f36043df7d2c696ed18713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54b96f86_fde4f350",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2021-08-19T17:45:43Z",
+      "side": 1,
+      "message": "...then you could get rid of this property...",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 12
+      },
+      "revId": "10c0304a8773643114f36043df7d2c696ed18713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b08adbe7_2e13a383",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2021-08-19T17:45:43Z",
+      "side": 1,
+      "message": "since this is in bytes mode this could be\n```\nproc.stdout.readinto(output_buffer)\n```\n\nBut it sorta seems like this should all be in text mode since it\u0027s meant for humans to look at? WDYT?",
+      "range": {
+        "startLine": 74,
+        "startChar": 6,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "10c0304a8773643114f36043df7d2c696ed18713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d195fbc_732c9475",
+        "filename": "util/run_host_test",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1301133
+      },
+      "writtenOn": "2021-08-19T17:45:43Z",
+      "side": 1,
+      "message": "...and then you can change this to `result.value`",
+      "range": {
+        "startLine": 118,
+        "startChar": 2,
+        "endLine": 118,
+        "endChar": 25
+      },
+      "revId": "10c0304a8773643114f36043df7d2c696ed18713",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
