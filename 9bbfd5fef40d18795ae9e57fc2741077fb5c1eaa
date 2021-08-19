@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83428350_62fa52a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-08-19T05:20:00Z",
+      "side": 1,
+      "message": "I think this can still come in handy when adding a new version of Zephyr eventually. I do also thing that there will come a time where we cannot delete the old version of Zephyr from our tree and we\u0027ll need to keep some kind of version check in place. Likely we\u0027ll be adding to these using GT/GTE macros.",
+      "revId": "9bbfd5fef40d18795ae9e57fc2741077fb5c1eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
