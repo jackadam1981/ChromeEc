@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "577eeabb_d99dfc0d",
+        "filename": "board/corori/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1511702
+      },
+      "writtenOn": "2021-08-19T06:07:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f23e9f86_4a7efece",
+      "range": {
+        "startLine": 779,
+        "startChar": 4,
+        "endLine": 779,
+        "endChar": 25
+      },
+      "revId": "f8c4583a700b6730f4ae1c6fb30a110bc84729a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7e0c9718_32051fba",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42dd6bf_04c894f2",
+        "filename": "board/corori/board.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1511702
+      },
+      "writtenOn": "2021-08-19T06:07:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e0c9718_32051fba",
+      "range": {
+        "startLine": 790,
+        "startChar": 4,
+        "endLine": 790,
+        "endChar": 26
+      },
+      "revId": "f8c4583a700b6730f4ae1c6fb30a110bc84729a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "975108a1_72209674",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-19T01:00:13Z",
       "side": 1,
       "message": "If we remove the ADC_SUB_ANALOG, it means we don\u0027t support the ADC_BUTTON.\nPlease remove the define CONFIG_ADC_BUTTON and related function",
+      "range": {
+        "startLine": 145,
+        "startChar": 5,
+        "endLine": 145,
+        "endChar": 17
+      },
+      "revId": "f8c4583a700b6730f4ae1c6fb30a110bc84729a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b8cc687_3e39246e",
+        "filename": "board/corori/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1511702
+      },
+      "writtenOn": "2021-08-19T06:07:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "975108a1_72209674",
       "range": {
         "startLine": 145,
         "startChar": 5,
