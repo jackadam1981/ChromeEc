@@ -76,13 +76,15 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 const struct pwm_t pwm_channels[] = {
 	[PWM_CH_LED1] = {
 		.channel = PWM_HW_CH_DCR0,
-		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_OPEN_DRAIN |
+			 PWM_CONFIG_ACTIVE_LOW,
 		.freq_hz = 324, /* maximum supported frequency */
 		.pcfsr_sel = PWM_PRESCALER_C4
 	},
 	[PWM_CH_LED2] = {
 		.channel = PWM_HW_CH_DCR1,
-		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
+		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_OPEN_DRAIN |
+			 PWM_CONFIG_ACTIVE_LOW,
 		.freq_hz = 324, /* maximum supported frequency */
 		.pcfsr_sel = PWM_PRESCALER_C4
 	},
