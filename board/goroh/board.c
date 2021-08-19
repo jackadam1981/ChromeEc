@@ -92,22 +92,24 @@ const struct pwm_t pwm_channels[] = {
 		.freq_hz = 25000, /* maximum supported frequency */
 		.pcfsr_sel = PWM_PRESCALER_C4
 	},
-	[PWM_CH_KB_BL] = {
+	[PWM_CH_KBLIGHT] = {
 		.channel = PWM_HW_CH_DCR3,
-		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
-		.freq_hz = 324, /* maximum supported frequency */
-		.pcfsr_sel = PWM_PRESCALER_C4
+		.flags = PWM_CONFIG_DSLEEP,
+		.freq_hz = 10000,
+		.pcfsr_sel = PWM_PRESCALER_C6
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pwm_channels) == PWM_CH_COUNT);
 
 static void board_suspend(void)
 {
+	gpio_set_level(GPIO_EN_PPVAR_KB_BL_X, 0);
 }
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_suspend, HOOK_PRIO_DEFAULT);
 
 static void board_resume(void)
 {
+	gpio_set_level(GPIO_EN_PPVAR_KB_BL_X, 1);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_resume, HOOK_PRIO_DEFAULT);
 
