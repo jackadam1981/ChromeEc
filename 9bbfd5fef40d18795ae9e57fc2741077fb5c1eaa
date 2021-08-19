@@ -88,6 +88,24 @@
       "parentUuid": "67e0f390_93c98ac2",
       "revId": "9bbfd5fef40d18795ae9e57fc2741077fb5c1eaa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "078196eb_3021ad71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-19T18:04:07Z",
+      "side": 1,
+      "message": "I meant a real example actually in zephyr, not something hypothetical.\n\nAnyway, as you mention, YAGNI should be taken into account. We aren\u0027t using IS_ZEPHYR_VERSION right now, so let\u0027s just delete it and we can make the right macros we actually need once we need them.\n\nNo sense in keeping this macro around if we aren\u0027t using it right now and there\u0027s debate if it\u0027s even a good pattern.",
+      "parentUuid": "86f68333_5f8fa9a5",
+      "revId": "9bbfd5fef40d18795ae9e57fc2741077fb5c1eaa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
