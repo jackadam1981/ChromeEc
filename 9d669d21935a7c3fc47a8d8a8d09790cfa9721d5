@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eaac0d21_5bdda7b4",
+        "filename": "chip/stm32/config-stm32l552.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-19T21:21:07Z",
+      "side": 1,
+      "message": "This file name should be config-stm32l552cx.h so that it\u0027s clear this is the 256 kB memory version. I would also maybe add a brief summary here of the memory map options. I was probably over-verbose,but you can refer to config-stm2g473xc.h for what I did as a summary.",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cc6bd9a_60ddc12e",
+        "filename": "chip/stm32/config-stm32l552.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-19T21:21:07Z",
+      "side": 1,
+      "message": "Where are the number of DMA channels and I2C port count defined? Are these the same across all L522 chip variants so they can be in the registers-stm32l522.h file?",
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7269e74_37177a5d",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-19T21:21:07Z",
+      "side": 1,
+      "message": "I would recommend adding \u0027cx\u0027 to both the CONFIG option and config-stm filename",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62e14451_413227c0",
+        "filename": "chip/stm32/gpio-stm32l5.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-19T21:21:07Z",
+      "side": 1,
+      "message": "I would have expected to see gpio_init() here and also the DECLARE_IRQ() macros to enable the EXTIN interrupts.",
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24bd39c1_9be4b592",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-19T21:21:07Z",
+      "side": 1,
+      "message": "What is the plan for all of these #if 0 sections?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 5
+      },
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f284e23_c5126eb3",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-19T21:21:07Z",
+      "side": 1,
+      "message": "would be better to have this be a macro defined in the L5 registers.h file.",
+      "range": {
+        "startLine": 766,
+        "startChar": 31,
+        "endLine": 766,
+        "endChar": 41
+      },
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
