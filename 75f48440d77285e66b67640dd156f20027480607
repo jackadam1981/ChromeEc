@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1a25b5b_d7dbef12",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 3899,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-19T20:24:59Z",
+      "side": 1,
+      "message": "the designated last entry should not have a \u0027,\u0027.",
+      "range": {
+        "startLine": 3899,
+        "startChar": 21,
+        "endLine": 3899,
+        "endChar": 22
+      },
+      "revId": "75f48440d77285e66b67640dd156f20027480607",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
