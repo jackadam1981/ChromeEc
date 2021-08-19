@@ -70,6 +70,24 @@
       "parentUuid": "020be9ad_c7fad13c",
       "revId": "79faf4845a89307a3ee7970d3ccf8983b325bbfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee50ef55_17c009df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1187265
+      },
+      "writtenOn": "2021-08-19T06:23:55Z",
+      "side": 1,
+      "message": "add CL for create specific DB USB configuration rather than keep USB3_ACTIVE, CL also change the FW_CONFIG remove DB_USB_ABSENT value to 0.\nhttps://chrome-internal-review.googlesource.com/c/chromeos/project/volteer/chronicler/+/4066744",
+      "parentUuid": "ff58020e_2316a496",
+      "revId": "79faf4845a89307a3ee7970d3ccf8983b325bbfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
