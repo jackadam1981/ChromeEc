@@ -16,6 +16,24 @@
       "message": "Hi Aseda:   \nThis is a very regrettable thing. This CL will cause the typeC C1 port to not be able to support AC only. We need to fall back to it. please help to review this CL, thanks",
       "revId": "856bf0a8a5c4b7f7bcd474c5f967591a8b57903f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "627409c5_5b1433a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-19T18:42:41Z",
+      "side": 1,
+      "message": "Why is that? It doesn\u0027t seem like this should affect that.",
+      "parentUuid": "acc6d6c1_b0b8f169",
+      "revId": "856bf0a8a5c4b7f7bcd474c5f967591a8b57903f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
