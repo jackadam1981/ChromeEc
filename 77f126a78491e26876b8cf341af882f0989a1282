@@ -16,6 +16,24 @@
       "message": "Generally LGTM, nice cleanup!",
       "revId": "77f126a78491e26876b8cf341af882f0989a1282",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d234ede8_37117b57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-19T17:47:01Z",
+      "side": 1,
+      "message": "This is a cherry-pick of an old CL from ToT to the firmware branch. We should make these changes on ToT instead.",
+      "parentUuid": "bd211f31_55144717",
+      "revId": "77f126a78491e26876b8cf341af882f0989a1282",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
