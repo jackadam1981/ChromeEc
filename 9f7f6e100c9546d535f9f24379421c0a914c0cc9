@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96c14a08_367a9b28",
+        "filename": "board/bugzzy/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-19T18:33:51Z",
+      "side": 1,
+      "message": "Ah 3 channels. There are two logical LEDs (power and battery)",
+      "parentUuid": "d3da1eb7_d31c643a",
+      "range": {
+        "startLine": 22,
+        "startChar": 22,
+        "endLine": 22,
+        "endChar": 28
+      },
+      "revId": "9f7f6e100c9546d535f9f24379421c0a914c0cc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1aa2da8c_e2dd147d",
