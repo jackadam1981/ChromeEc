@@ -34,6 +34,24 @@
       "parentUuid": "45447637_ec4f4f5c",
       "revId": "79faf4845a89307a3ee7970d3ccf8983b325bbfd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "020be9ad_c7fad13c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-08-19T01:34:19Z",
+      "side": 1,
+      "message": "Please correct me if I were wrong -- we are essentially hardcode it to USB3_ACTIVE. In this case there\u0027s really no need to use that particular value (whatever that is) in the FW_CONFIG. Therefore it should be removed for consistency, IMO.",
+      "parentUuid": "7beac0d7_deb45e14",
+      "revId": "79faf4845a89307a3ee7970d3ccf8983b325bbfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
