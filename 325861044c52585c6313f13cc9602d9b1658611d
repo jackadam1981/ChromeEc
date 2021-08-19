@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cbf19a7_25bc2f77",
+        "filename": "util/get_fips_fingerprint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-19T21:20:46Z",
+      "side": 1,
+      "message": "The hashes do match Cr50\u0027s computed hashes with this offset, but I\u0027m not sure if this is the correct way to find the offset.\n\nWDYT?",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 67
+      },
+      "revId": "325861044c52585c6313f13cc9602d9b1658611d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
