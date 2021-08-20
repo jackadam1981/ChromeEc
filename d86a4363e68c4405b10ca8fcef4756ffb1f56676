@@ -34,6 +34,23 @@
       "parentUuid": "e3972f6f_51b02bf6",
       "revId": "d86a4363e68c4405b10ca8fcef4756ffb1f56676",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67124b93_2faf4291",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2021-08-20T18:47:01Z",
+      "side": 1,
+      "message": "Let\u0027s drop this change and cherry-pick crrev.com/c/3093205 to main instead.",
+      "revId": "d86a4363e68c4405b10ca8fcef4756ffb1f56676",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
