@@ -2304,7 +2304,8 @@ static void tc_unattached_snk_run(const int port)
 	} else if (drp_state[port] == PD_DRP_TOGGLE_ON) {
 		/* DRP Toggle. The timer was checked above. */
 		set_state_tc(port, TC_UNATTACHED_SRC);
-	} else if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER) &&
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	} else if (tcpc_config[port].drv->enter_low_power_mode &&
 		   (drp_state[port] == PD_DRP_FORCE_SINK ||
 		    drp_state[port] == PD_DRP_TOGGLE_OFF ||
 		    cc_is_open(cc1, cc2))) {
@@ -2313,6 +2314,7 @@ static void tc_unattached_snk_run(const int port)
 		 * support DRP Autotoggle.
 		 */
 		set_state_tc(port, TC_LOW_POWER_MODE);
+#endif
 	}
 }
 
@@ -2848,11 +2850,13 @@ static void tc_unattached_src_run(const int port)
 	/*
 	 * Enter low power mode for TCPCs that do not support DRP Autotoggle.
 	 */
-	else if (IS_ENABLED(CONFIG_USB_PD_TCPC_LOW_POWER) &&
+#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+	else if (tcpc_config[port].drv->enter_low_power_mode &&
 		 (drp_state[port] == PD_DRP_FORCE_SOURCE ||
 		  drp_state[port] == PD_DRP_TOGGLE_OFF ||
 		  cc_is_open(cc1, cc2)))
 		set_state_tc(port, TC_LOW_POWER_MODE);
+#endif
 }
 
 static void tc_unattached_src_exit(const int port)

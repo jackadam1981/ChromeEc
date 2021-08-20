@@ -724,21 +724,6 @@ static int it83xx_tcpm_get_chip_info(int port, int live,
 	return EC_SUCCESS;
 }
 
-#ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-static int it83xx_tcpm_enter_low_power_mode(int port)
-{
-	/*
-	 * ITE embedded TCPC SLEEP_MASK_USB_PD flag is only controlled by
-	 * it83xx driver in set_pd_sleep_mask(), and do low power mode in
-	 * idle_task().
-	 * In deep sleep mode, ITE TCPC clock is turned off, and the
-	 * timer every 5ms to exit the mode and wakeup PD task to run
-	 * (ex. change the CC lines termination).
-	 */
-	return EC_SUCCESS;
-}
-#endif
-
 static void it83xx_tcpm_switch_plug_out_type(int port)
 {
 	enum tcpc_cc_voltage_status cc1, cc2;
@@ -894,7 +879,7 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 #endif
 	.get_chip_info		= &it83xx_tcpm_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
-	.enter_low_power_mode	= &it83xx_tcpm_enter_low_power_mode,
+	.enter_low_power_mode	= NULL,
 #endif
 #ifdef CONFIG_USB_PD_FRS_TCPC
 	.set_frs_enable		= &it83xx_tcpm_set_frs_enable,
