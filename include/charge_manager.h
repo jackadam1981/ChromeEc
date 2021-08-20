@@ -71,6 +71,9 @@ struct charge_port_info {
  * Called by charging tasks to update their available charge.
  *
  * @param supplier	Charge supplier to update.
+ *			Negative value (eg. CHARGE_SUPPLIER_NONE) isn't
+ *			available. We haven't create space (available_charge[])
+ *			for it to store current / voltage info.
  * @param port		Charge port to update.
  * @param charge	Charge port current / voltage. If NULL, current = 0
  * 			voltage = 0 will be used.

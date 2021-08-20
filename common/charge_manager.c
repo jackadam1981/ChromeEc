@@ -976,6 +976,13 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	int i;
 	int clear_override = 0;
 
+	/*
+	 * Negative index is out of available_charge[] array's space.
+	 * Write a data into the array with negative index will override
+	 * other global variables.
+	 */
+	ASSERT(supplier >= 0);
+
 	if (!is_valid_port(port)) {
 		CPRINTS("%s: p%d invalid", __func__, port);
 		return;
