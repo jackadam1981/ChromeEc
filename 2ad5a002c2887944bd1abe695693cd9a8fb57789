@@ -33,6 +33,24 @@
       "message": "General comment. This CL is a superposition of multiple changes: some variables, fields, functions renamed (salt_kh -\u003e drbg_entropy, salt_kek -\u003e hmac_key, _serive_key -\u003e app_hw_device_id, u2f_origin_user_keyhandle -\u003e u2f_origin_user_mac etc; or subtle u2f_origin_user_keypair -\u003e u2f_origin_user_key_pair that throws off grepping; btw capturing it here partially to simplify reviewing of future patchsets for future me); some functions split; and things move up and down within the file or to different files (which makes side to side comparison in gerrit useless - I keep this CL opened in 3 tabs to track things w/o losing the review point). It makes following what\u0027s just a refactoring w/o changing the behavior, what is replacing one rng with another, and what is a change in behavior close to impossible.\n\nPlease for all such cases, break it down into a sequence of separate CLs with refactorings / changes (even if individually CLs don\u0027t compile). It takes a lot of time to restore the mapping between old and new things and uncover what is just shuffling things around and what is the real change. You\u0027ll save more time on quick CL reviews and on quick +2s on trivial changes with real review and occasional comments/questions focused around meaningful stuff. On top of the increased review time, reviewers rarely have a big undivided block of time for an XL CL (while can often review XS-S-M CLs between other things), and that keeps delaying the start of review for days. Breaking down CLs does miracles to their time-to-review and thus time-to-land, which is even more important for tight schedules.\n\nHaving said all that, I went through all changes and didn\u0027t find much (see CIL), but chances that I missed something are higher that usual.",
       "revId": "2ad5a002c2887944bd1abe695693cd9a8fb57789",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2072c673_792781d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-20T02:53:24Z",
+      "side": 1,
+      "message": "Thanks for your time! Yes, it became too big - I wasn\u0027t sure about the end state and ended up in almost rewriting everything. You\u0027re right I could start first by moving functions into proper files as is, then renaming, but it will only help in few cases. the majority of work is in extracting and abstracting crypto from command processing which required rewriting and moving internals of functions.\nI can split CL now once it\u0027s clear where things should go. Will address comments in next revision.",
+      "parentUuid": "ea01c184_8a4d1cbf",
+      "revId": "2ad5a002c2887944bd1abe695693cd9a8fb57789",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
