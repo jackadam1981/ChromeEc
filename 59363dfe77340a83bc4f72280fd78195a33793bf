@@ -62,6 +62,40 @@
       "message": "TEST\u003dRun \"watch ectool motionsense lid_angle\"",
       "revId": "59363dfe77340a83bc4f72280fd78195a33793bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ff46c91_27a3f2df",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-08-20T03:41:06Z",
+      "side": 1,
+      "message": "also change the condition in update_rotation_matrix from\n`if (board_get_version() \u003e\u003d 2)` to `if (board_get_version() \u003e\u003d 2 \u0026\u0026 board_get_version() \u003e\u003d ??)`",
+      "revId": "59363dfe77340a83bc4f72280fd78195a33793bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "496f7b73_12c6d002",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-08-20T03:41:06Z",
+      "side": 1,
+      "message": "change this to (board_get_version() \u003e\u003d 2 \u0026\u0026 board_get_version() \u003c X)",
+      "revId": "59363dfe77340a83bc4f72280fd78195a33793bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
