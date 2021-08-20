@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b02ed04d_ac9ae912",
+        "filename": "board/gimble/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-20T00:25:54Z",
+      "side": 1,
+      "message": "No, C1_PPC/ C1_BC12 are all share same i2c bus with C1_TCPC which are using NPCX_I2C_PORT4_1.",
+      "parentUuid": "913e49f7_e67b4c0e",
+      "range": {
+        "startLine": 131,
+        "startChar": 41,
+        "endLine": 131,
+        "endChar": 43
+      },
+      "revId": "4c872e7424e22c8ed98e0f26ae88f5e10506b05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c165e7a2_d5f1cd45",
         "filename": "board/gimble/board.h",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-19T20:19:52Z",
       "side": 1,
       "message": "same question",
+      "range": {
+        "startLine": 134,
+        "startChar": 42,
+        "endLine": 134,
+        "endChar": 44
+      },
+      "revId": "4c872e7424e22c8ed98e0f26ae88f5e10506b05f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f72696f2_7f70b4e4",
+        "filename": "board/gimble/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-08-20T00:25:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c165e7a2_d5f1cd45",
       "range": {
         "startLine": 134,
         "startChar": 42,
