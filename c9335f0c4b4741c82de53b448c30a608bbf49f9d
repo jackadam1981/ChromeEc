@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5add1677_f2acfa42",
+        "filename": "driver/ppc/rt1718s.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-08-20T10:02:46Z",
+      "side": 1,
+      "message": "Can you describe more why this is needed? AFAIK, the function checks the FRS_MODE flag, and this is already set if it\u0027s in the FRS path. Will the TCPC read fail the FRS transistion?",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 155,
+        "endChar": 19
+      },
+      "revId": "c9335f0c4b4741c82de53b448c30a608bbf49f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c1f7f06_82a237b7",
+        "filename": "driver/ppc/rt1718s.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-08-20T10:02:46Z",
+      "side": 1,
+      "message": "Is this function on the critical path of enabling FRS? (I think this is called when the port firstly plugged). \n\nIf not, do we need to save the i2c read by replace update with write?",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 47
+      },
+      "revId": "c9335f0c4b4741c82de53b448c30a608bbf49f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
