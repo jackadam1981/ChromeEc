@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4c22c2d_6e447059",
+        "filename": "chip/stm32/config-stm32l552.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-08-20T21:11:18Z",
+      "side": 1,
+      "message": "Section 3.5 in the datasheet https://www.st.com/resource/en/datasheet/stm32l552ze.pdf does not mention anything other than 256 kB.  The chip I am doing this for is the L552ze version, so if you have seen something that applies to cx but not ze, then please let me know, then it should be modified.",
+      "parentUuid": "eaac0d21_5bdda7b4",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3cc6bd9a_60ddc12e",
         "filename": "chip/stm32/config-stm32l552.h",
         "patchSetId": 6
@@ -37,6 +61,24 @@
       "writtenOn": "2021-08-19T21:21:07Z",
       "side": 1,
       "message": "Where are the number of DMA channels and I2C port count defined? Are these the same across all L522 chip variants so they can be in the registers-stm32l522.h file?",
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef406b31_e690d55a",
+        "filename": "chip/stm32/config-stm32l552.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-08-20T21:11:18Z",
+      "side": 1,
+      "message": "Table 17 in the datasheet seems to indicate four I2C ports, for all L552 variants.\nLooking around, I was not able to see how other chips declare the number of I2C ports (other than having defines for I2C1_..., I2C2_... and so on), can you elaborate on what I need to add here?",
+      "parentUuid": "3cc6bd9a_60ddc12e",
       "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -81,6 +123,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e00ac14_3798570e",
+        "filename": "chip/stm32/gpio-stm32l5.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-08-20T21:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62e14451_413227c0",
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24bd39c1_9be4b592",
@@ -104,6 +164,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "44824896_5573f8be",
+        "filename": "chip/stm32/registers-stm32l5.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-08-20T21:11:18Z",
+      "side": 1,
+      "message": "Initially, I copied the stm32l4.h file, and as I modified every part which I could find in the L5 reference, I left the other parts in #if 0, in case they were indeed needed, and I had to come back and look closer in the reference manual.\n\nNow it seems that the code compiles and runs without these parts, so I have deleted them completely.  In case some register is required for USB or some other feature in the future, we can re-add.",
+      "parentUuid": "24bd39c1_9be4b592",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 5
+      },
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f284e23_c5126eb3",
@@ -117,6 +201,30 @@
       "writtenOn": "2021-08-19T21:21:07Z",
       "side": 1,
       "message": "would be better to have this be a macro defined in the L5 registers.h file.",
+      "range": {
+        "startLine": 766,
+        "startChar": 31,
+        "endLine": 766,
+        "endChar": 41
+      },
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa4beb7c_50942864",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-08-20T21:11:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6f284e23_c5126eb3",
       "range": {
         "startLine": 766,
         "startChar": 31,

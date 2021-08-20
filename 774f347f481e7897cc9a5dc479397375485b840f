@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a898418_2afd77cc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-08-20T21:11:18Z",
+      "side": 1,
+      "message": "Thanks for the useful comments.\n\nI have addressed most of the comments, asking further question about the others. \n And also gone over the register bitfields, and updated according to the L5 reference manual.\n \nCode again runs on my Nucleo board, though USB still does not work.",
+      "revId": "774f347f481e7897cc9a5dc479397375485b840f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
