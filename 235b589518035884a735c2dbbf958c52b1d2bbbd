@@ -159,6 +159,24 @@
       "parentUuid": "eed3fa0f_54b40712",
       "revId": "235b589518035884a735c2dbbf958c52b1d2bbbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13190f30_a2052afd",
+        "filename": "board/kano/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-08-20T15:03:51Z",
+      "side": 1,
+      "message": "Can this merge and than verify on proto?",
+      "parentUuid": "6061ff33_b27da069",
+      "revId": "235b589518035884a735c2dbbf958c52b1d2bbbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
