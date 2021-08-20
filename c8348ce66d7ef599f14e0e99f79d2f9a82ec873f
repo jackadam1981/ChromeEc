@@ -34,6 +34,24 @@
       "parentUuid": "d614fd6a_a8d2e595",
       "revId": "c8348ce66d7ef599f14e0e99f79d2f9a82ec873f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d1a667a_e039b11e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-08-20T04:42:13Z",
+      "side": 1,
+      "message": "Also, from ODM\u0027s report, when the system load is light-weight, there would be acoustic noise even when no charger attached.",
+      "parentUuid": "88e7b87a_f35d1ca6",
+      "revId": "c8348ce66d7ef599f14e0e99f79d2f9a82ec873f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
