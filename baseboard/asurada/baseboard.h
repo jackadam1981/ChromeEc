@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_BASEBOARD_H
 #define __CROS_EC_BASEBOARD_H
 
+#define CONFIG_IT83XX_HANDLE_IRQ_0
+
 /* IT81202-bx config */
 /*
  * NOTE: we need to make correct VCC voltage selection here if EC's VCC isn't

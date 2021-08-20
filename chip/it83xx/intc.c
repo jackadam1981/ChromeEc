@@ -40,6 +40,27 @@ void intc_cpu_int_group_0(void)
 DECLARE_IRQ(CPU_INT_GROUP_0, intc_cpu_int_group_0, 0);
 #endif
 
+static int command_software_interrupt(int argc, char **argv)
+{
+	char *e;
+	int irq;
+
+	if (argc != 2)
+		return EC_ERROR_PARAM_COUNT;
+
+	irq = strtoi(argv[1], &e, 0);
+	if (*e)
+		return EC_ERROR_PARAM1;
+
+	task_trigger_irq(irq);
+	ccprintf("IRQ: %d was sent\n", irq);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(irq, command_software_interrupt,
+			"number",
+			"trigger a software interrupt");
+
 void intc_cpu_int_group_5(void)
 {
 	/* Determine interrupt number. */
