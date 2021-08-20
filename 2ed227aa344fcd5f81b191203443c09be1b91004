@@ -16,6 +16,75 @@
       "message": "Deferring to wai-hong on this.  Are we allowed to change the behavior of the LED with respect to charging?",
       "revId": "2ed227aa344fcd5f81b191203443c09be1b91004",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66287921_0c3f1cb6",
+        "filename": "board/mrbland/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-20T16:56:37Z",
+      "side": 1,
+      "message": "Please check board/pompom/led.c as a reference.\n\nCheck the `led_id` and call different led_set_color_xxx() functions. Don\u0027t mix them together.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "2ed227aa344fcd5f81b191203443c09be1b91004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b9f9dca_0ef4f75d",
+        "filename": "board/mrbland/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-20T16:56:37Z",
+      "side": 1,
+      "message": "Rename it to power_ticks.",
+      "range": {
+        "startLine": 145,
+        "startChar": 12,
+        "endLine": 145,
+        "endChar": 19
+      },
+      "revId": "2ed227aa344fcd5f81b191203443c09be1b91004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e8bd33_75b1cc52",
+        "filename": "board/mrbland/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-20T16:56:37Z",
+      "side": 1,
+      "message": "Call the existing function `led_set_color_power()`. Cache the value to a local variable and call it at the end.",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 50
+      },
+      "revId": "2ed227aa344fcd5f81b191203443c09be1b91004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
