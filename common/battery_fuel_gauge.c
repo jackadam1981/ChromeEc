@@ -190,6 +190,14 @@ static enum ec_error_list battery_get_fet_status_regval(int *regval)
 		rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
 				    SB_ALT_MANUFACTURER_ACCESS, data,
 				    sizeof(data));
+		/* b:196936523
+		 * During cold boot,
+		 * sb_read_mfgacc() may read bad data from battery.
+		 */
+		if (rv)
+			rv = sb_read_mfgacc(PARAM_OPERATION_STATUS,
+				    SB_ALT_MANUFACTURER_ACCESS, data,
+				    sizeof(data));
 		/* Get the lowest 16bits of the OperationStatus() data */
 		*regval = data[2] | data[3] << 8;
 	} else
