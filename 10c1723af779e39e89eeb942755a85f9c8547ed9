@@ -76,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27a27e6b_512329d0",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-20T20:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69f399e2_4cc74867",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28df6e62_76240240",
@@ -89,6 +113,30 @@
       "writtenOn": "2021-08-20T01:36:21Z",
       "side": 1,
       "message": "same here: do we need it in every cr50 dev? maybe CR50_DEV_U2F_VERBOSE that you can define manually when building?\n\nsame in other places.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 10
+      },
+      "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24dc6810_5682e238",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-20T20:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28df6e62_76240240",
       "range": {
         "startLine": 71,
         "startChar": 1,
@@ -146,6 +194,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdff4903_ac84b57e",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-20T20:49:10Z",
+      "side": 1,
+      "message": "will do it in separate CL",
+      "parentUuid": "6161d261_119fe1c5",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 21
+      },
+      "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51d37054_0aacf66b",
@@ -183,6 +255,30 @@
       "side": 1,
       "message": "thanks for clarifying this. will revert to previous behavior in this regard. are there really such old, not updated systems with enrolled g2f in production? And since it\u0027s g2f specific and corp wants FedRAMP - is it really a bad thing that it will be recreated?\n \nany previous successful use of g2f would result in other keys being created.\n\nhowever, in this case it may be odd mix of FIPS and non-FIPS paths for g2f. g2f code will also change in FIPS mode. Now, on first load I\u0027d load old g2f key, and create new DRBG \u0026 HMAC keys in FIPS way. I use DRBG entropy size as a flag wherever it\u0027s FIPS or old path. If it will be the case - g2f path will use old key in a new way, breaking attestation. So, I\u0027d either need to have separate flag for g2f indicating it\u0027s origin or create other keys in non-FIPS way (still treat DRBG entropy as 256 bit, not 512 bit).",
       "parentUuid": "51d37054_0aacf66b",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 38
+      },
+      "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9437418_7d7e067c",
+        "filename": "common/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-20T20:49:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19e537e2_5d156765",
       "range": {
         "startLine": 60,
         "startChar": 2,
