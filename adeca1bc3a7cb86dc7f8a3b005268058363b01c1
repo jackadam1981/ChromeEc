@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "24613edf_fbce4cd6",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 615,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-20T20:35:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e257c76_f8c87a76",
+      "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4da0dbd_762412fc",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-07-19T22:46:16Z",
       "side": 1,
       "message": "What is the saved_conf used for here?",
+      "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "866ffc46_2f4530f4",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-20T20:35:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4da0dbd_762412fc",
       "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -70,6 +106,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "719c78b1_ce0d02da",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-20T20:35:53Z",
+      "side": 1,
+      "message": "I think this works as diana mentioned. If BMI3_SC_RESULT_MASK is set, then SUCCESS is returned. But default is EC_ERROR_NOT_CALIBRATED when BMI3_SC_RESULT_MASK is not set.",
+      "parentUuid": "5858840e_644f1d45",
+      "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fa76878_766c7f47",
@@ -83,6 +137,24 @@
       "writtenOn": "2021-07-19T14:15:19Z",
       "side": 1,
       "message": "Should this be wrapped in RETURN_ERROR too?",
+      "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d2236d4_fe43aa60",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-20T20:35:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fa76878_766c7f47",
       "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -104,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c0aec2_75db7cd8",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 850,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-20T20:35:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0de65d17_5e0cfb34",
+      "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f4989f2_e7aab6ad",
@@ -117,6 +207,24 @@
       "writtenOn": "2021-07-19T22:46:16Z",
       "side": 1,
       "message": "Probably include a comment explaining the difference in power mode between this and gyro?",
+      "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1fdd006_928fcc60",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 994,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-08-20T20:35:53Z",
+      "side": 1,
+      "message": "Will do my best. In Datasheet, accel mentions suspend but register set does not show a bit",
+      "parentUuid": "5f4989f2_e7aab6ad",
       "revId": "adeca1bc3a7cb86dc7f8a3b005268058363b01c1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
