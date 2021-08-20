@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3be39780_68c66f80",
+        "filename": "board/kano/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-08-20T15:01:36Z",
+      "side": 1,
+      "message": "I think we can remove it.",
+      "parentUuid": "6345e42c_e014c9c8",
+      "range": {
+        "startLine": 281,
+        "startChar": 10,
+        "endLine": 281,
+        "endChar": 28
+      },
+      "revId": "d39c7fac7fe3c5c7d96f1c54f0afcab8817b02ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "20c37826_12a0f560",
         "filename": "board/kano/usbc_config.c",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-19T21:44:24Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 283,
+        "startChar": 7,
+        "endLine": 283,
+        "endChar": 21
+      },
+      "revId": "d39c7fac7fe3c5c7d96f1c54f0afcab8817b02ac",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0af2336_345b269c",
+        "filename": "board/kano/usbc_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-08-20T15:01:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20c37826_12a0f560",
       "range": {
         "startLine": 283,
         "startChar": 7,
