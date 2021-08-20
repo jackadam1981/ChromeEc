@@ -85,6 +85,29 @@
       },
       "revId": "34396961d1a9bb917fe799398b8ffc63cdf11974",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac6e4e2c_c51d8eea",
+        "filename": "zephyr/shim/src/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-20T00:23:51Z",
+      "side": 1,
+      "message": "Is it possible to check that there is only one \"default_battery\" or does devicetree already guarantee no conflicts of the node labels?",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 49
+      },
+      "revId": "34396961d1a9bb917fe799398b8ffc63cdf11974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
