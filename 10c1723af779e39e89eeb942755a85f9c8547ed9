@@ -51,6 +51,98 @@
       "parentUuid": "44e72da9_002dc361",
       "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69f399e2_4cc74867",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-20T01:36:21Z",
+      "side": 1,
+      "message": "do we need it in every cr50 dev?",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 67,
+        "endChar": 10
+      },
+      "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28df6e62_76240240",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-20T01:36:21Z",
+      "side": 1,
+      "message": "same here: do we need it in every cr50 dev? maybe CR50_DEV_U2F_VERBOSE that you can define manually when building?\n\nsame in other places.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 72,
+        "endChar": 10
+      },
+      "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "632160e9_9d9d0796",
+        "filename": "board/cr50/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-20T01:36:21Z",
+      "side": 1,
+      "message": "still todo?",
+      "range": {
+        "startLine": 178,
+        "startChar": 4,
+        "endLine": 178,
+        "endChar": 21
+      },
+      "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51d37054_0aacf66b",
+        "filename": "common/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-20T01:36:21Z",
+      "side": 1,
+      "message": "we can return from u2f_try_load_state() with false if getvar(\u0026k_salt) succeeded but a later read_tpm_nvmem_hidden() failed. in this case state-\u003esalt is set from getvar(\u0026k_salt), but u2f_generate_state_keys() overwrites it with random value.\nthat\u0027s a change in behavior compared to before.\n\nwe can migrate from cr50 that has only NVMEM_VAR_G2F_SALT to this cr50 version. in this case we shall get the salt from NVMEM_VAR_G2F_SALT and continue with it to preserve keyhandles.",
+      "range": {
+        "startLine": 60,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 38
+      },
+      "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
