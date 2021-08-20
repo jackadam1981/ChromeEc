@@ -349,7 +349,7 @@ static void board_detect_motionsense(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_detect_motionsense,
 	     HOOK_PRIO_DEFAULT);
-DECLARE_HOOK(HOOK_INIT, board_detect_motionsense, HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_detect_motionsense, HOOK_PRIO_INIT_ADC + 3);
 
 /* ADC channels. Must be in the exactly same order as in enum adc_channel. */
 const struct adc_t adc_channels[] = {
