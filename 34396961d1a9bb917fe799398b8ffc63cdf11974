@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b098b6b_9079e50c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-20T00:20:07Z",
+      "side": 1,
+      "message": "This is moving in a great direction.",
+      "revId": "34396961d1a9bb917fe799398b8ffc63cdf11974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c19de7d0_924cf9ea",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-20T00:20:07Z",
+      "side": 1,
+      "message": "Need descriptions for all properties.\nNeed to mark properties as required or not to match battery.c",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 0
+      },
+      "revId": "34396961d1a9bb917fe799398b8ffc63cdf11974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e389c57c_1fe89d90",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-20T00:20:07Z",
+      "side": 1,
+      "message": "Needs a description for all properties.\nProperties need to be marked required to match battery.c",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "34396961d1a9bb917fe799398b8ffc63cdf11974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a28feb7f_3def75b7",
+        "filename": "zephyr/dts/bindings/battery/battery-smart.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-20T00:20:07Z",
+      "side": 1,
+      "message": "Does it make sense to put all the battery enums here?\nMy concern is someone adding a new battery.yaml via copy/paste and the enum isn\u0027t updated. A board could then add two different batteries that have the same enum.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 18
+      },
+      "revId": "34396961d1a9bb917fe799398b8ffc63cdf11974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
