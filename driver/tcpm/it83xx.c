@@ -724,6 +724,7 @@ static int it83xx_tcpm_get_chip_info(int port, int live,
 	return EC_SUCCESS;
 }
 
+#if 0
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
 static int it83xx_tcpm_enter_low_power_mode(int port)
 {
@@ -737,6 +738,7 @@ static int it83xx_tcpm_enter_low_power_mode(int port)
 	 */
 	return EC_SUCCESS;
 }
+#endif
 #endif
 
 static void it83xx_tcpm_switch_plug_out_type(int port)
@@ -894,7 +896,11 @@ const struct tcpm_drv it83xx_tcpm_drv = {
 #endif
 	.get_chip_info		= &it83xx_tcpm_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER
+#if 0
 	.enter_low_power_mode	= &it83xx_tcpm_enter_low_power_mode,
+#else
+	.enter_low_power_mode	= NULL,
+#endif
 #endif
 #ifdef CONFIG_USB_PD_FRS_TCPC
 	.set_frs_enable		= &it83xx_tcpm_set_frs_enable,
