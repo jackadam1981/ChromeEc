@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03a38cf0_2c3c1653",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-08-20T04:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e6c4c58_ff5ea70f",
+      "range": {
+        "startLine": 9,
+        "startChar": 32,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "59363dfe77340a83bc4f72280fd78195a33793bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9ec2637_0f97e456",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d865a9e7_44a251ff",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-08-20T04:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9ec2637_0f97e456",
+      "range": {
+        "startLine": 11,
+        "startChar": 20,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "59363dfe77340a83bc4f72280fd78195a33793bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c253c21_23367ebb",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-08-20T03:08:10Z",
       "side": 1,
       "message": "TEST\u003dRun \"watch ectool motionsense lid_angle\"",
+      "revId": "59363dfe77340a83bc4f72280fd78195a33793bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b743474_7c369f90",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-08-20T04:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c253c21_23367ebb",
       "revId": "59363dfe77340a83bc4f72280fd78195a33793bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -94,6 +160,24 @@
       "writtenOn": "2021-08-20T03:41:06Z",
       "side": 1,
       "message": "change this to (board_get_version() \u003e\u003d 2 \u0026\u0026 board_get_version() \u003c X)",
+      "revId": "59363dfe77340a83bc4f72280fd78195a33793bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81984d4f_38359859",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-08-20T04:32:25Z",
+      "side": 1,
+      "message": "Because board version 3 need support ICM 40608 and BMI160.\nFor ICM 40608, the board version not change.\nOr We detect gyro sensor in this function.",
+      "parentUuid": "496f7b73_12c6d002",
       "revId": "59363dfe77340a83bc4f72280fd78195a33793bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
