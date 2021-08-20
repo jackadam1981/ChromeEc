@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aea0124_6f738e5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-20T20:26:32Z",
+      "side": 1,
+      "message": "Looks like juniper ran out of flash space with this change.  You\u0027ll need to address that as parent CL before this will merge.\n\nSee this for tips on reducing the image:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/93adb802/docs/reducing_ec_image_size.md#",
+      "revId": "a7b9d456dc7de5cd2e7e389bd1a80471ee09e214",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
