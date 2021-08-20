@@ -5,9 +5,9 @@
 
 /* Intel ADLRVP board-specific common configuration */
 
-#include "bb_retimer.h"
 #include "charger.h"
 #include "common.h"
+#include "driver/retimer/bb_retimer.h"
 #include "hooks.h"
 #include "ioexpander.h"
 #include "isl9241.h"
