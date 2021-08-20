@@ -180,6 +180,24 @@
       "parentUuid": "496f7b73_12c6d002",
       "revId": "59363dfe77340a83bc4f72280fd78195a33793bf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db1291ac_a9f5e915",
+        "filename": "board/asurada/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-08-20T05:05:05Z",
+      "side": 1,
+      "message": "\u003e Or We detect gyro sensor in this function.\nsound good to me.\n\nMy main concern is that we modify motion_sensors in two different hooks when board id \u003e\u003d 3.\nSo please make sure for every board version, the content in motion_sensors is only updated once.",
+      "parentUuid": "81984d4f_38359859",
+      "revId": "59363dfe77340a83bc4f72280fd78195a33793bf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
