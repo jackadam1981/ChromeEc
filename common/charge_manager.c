@@ -1036,6 +1036,13 @@ static void charge_manager_make_change(enum charge_manager_change_type change,
 	}
 
 	if (change == CHANGE_CHARGE) {
+		/*
+		 * Negative index is out of available_charge[] array's space.
+		 * Write a data into the array with negative index will override
+		 * other global variables.
+		 */
+		ASSERT(supplier >= 0);
+
 		available_charge[supplier][port].current = charge->current;
 		available_charge[supplier][port].voltage = charge->voltage;
 		registration_time[port] = get_time();
