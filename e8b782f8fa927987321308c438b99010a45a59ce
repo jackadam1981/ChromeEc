@@ -39,6 +39,23 @@
       "message": "can you please share more details, we see ITE83xx can negotiate with charger (dead battery boot also) and also can detect DP \u0026 TBT",
       "revId": "e8b782f8fa927987321308c438b99010a45a59ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b53a938_2ec5df26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1191834
+      },
+      "writtenOn": "2021-08-22T13:49:59Z",
+      "side": 1,
+      "message": "Since the original CL cause side effect, we\u0027d like to revert it first.\nIt might be better to have another CL once better fix for original issue available.",
+      "revId": "e8b782f8fa927987321308c438b99010a45a59ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
