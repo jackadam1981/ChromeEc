@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "28ff793e_99e95714",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-08-22T15:46:27Z",
+      "side": 1,
+      "message": "Hi Vijay,\n\nThe test was on kracko, and the test results were updated on b:197298349. Since schedule of kracko meets FW qualification now as well as the critical issue of malfunction on C0 port caused by unable CC toggling. Sorry we have to revert the CL first to meet the schedule. Once this CL merges, I\u0027ll update the original CL to CL:3111455.\n\nThanks!",
+      "parentUuid": "d2269ccc_4ce00646",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "e8b782f8fa927987321308c438b99010a45a59ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e8dc3662_5517030b",
