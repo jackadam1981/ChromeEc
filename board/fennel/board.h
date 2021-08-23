@@ -87,6 +87,9 @@
 #define I2C_PORT_VIRTUAL_BATTERY    I2C_PORT_BATTERY
 #define I2C_PORT_BATTERY            2
 
+/* IT8801 I2C address */
+#define I2C_ADDR_IT8801_FLAGS    IT8801_I2C_ADDR1
+
 /* Enable Accel over SPI */
 #define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */
 
