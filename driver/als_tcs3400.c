@@ -258,7 +258,7 @@ tcs3400_adjust_sensor_for_saturation(struct motion_sensor_t *s,
 			return ret;
 	}
 
-	return ret;
+	return EC_SUCCESS;
 }
 
 /**
@@ -565,7 +565,7 @@ static int tcs3400_irq_handler(struct motion_sensor_t *s, uint32_t *event)
 	if (ret)
 		return ret;
 
-	return ret;
+	return EC_SUCCESS;
 }
 
 static int tcs3400_rgb_get_scale(const struct motion_sensor_t *s,
