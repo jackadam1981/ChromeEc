@@ -296,6 +296,24 @@ void __keep report_panic(void)
 	struct panic_data *pdata = pdata_ptr;
 	uint32_t sp;
 
+	/* Remove General Purpose Registers from panic data if needed */
+	if (IS_ENABLED(CONFIG_PANIC_STRIP_GPR)) {
+		/*
+		 * If it is software panic, don't remove R4 and R5 since they
+		 * contain the reason and additional information.
+		 */
+		if (in_interrupt_context()) {
+			pdata->cm.regs[CORTEX_PANIC_REGISTER_R4] = 0;
+			pdata->cm.regs[CORTEX_PANIC_REGISTER_R5] = 0;
+		}
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R6] = 0;
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R7] = 0;
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R8] = 0;
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R9] = 0;
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R10] = 0;
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R11] = 0;
+	}
+
 	pdata->magic = PANIC_DATA_MAGIC;
 	pdata->struct_size = sizeof(*pdata);
 	pdata->struct_version = 2;
@@ -312,8 +330,19 @@ void __keep report_panic(void)
 	    sp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE - 8 * sizeof(uint32_t)) {
 		const uint32_t *sregs = (const uint32_t *)sp;
 		int i;
-		for (i = 0; i < 8; i++)
+
+		/* Skip r0-r3 and r12 registers if necessary */
+		for (i = CORTEX_PANIC_FRAME_REGISTER_R0;
+		    i <= CORTEX_PANIC_FRAME_REGISTER_R12; i++)
+			if (IS_ENABLED(CONFIG_PANIC_STRIP_GPR))
+				pdata->cm.frame[i] = 0;
+			else
+				pdata->cm.frame[i] = sregs[i];
+
+		for (i = CORTEX_PANIC_FRAME_REGISTER_LR;
+		    i < NUM_CORTEX_PANIC_FRAME_REGISTERS; i++)
 			pdata->cm.frame[i] = sregs[i];
+
 		pdata->flags |= PANIC_DATA_FLAG_FRAME_VALID;
 	}
 
