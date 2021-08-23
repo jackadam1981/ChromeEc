@@ -16,6 +16,40 @@
       "message": "Hi Tommy, can you please help test it on Kracko? We dont have Kracko at Intel",
       "revId": "2e2d99f1af522ab90d0a8dfbda5805b3f52f31b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b024ade2_799aeec3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-23T20:44:46Z",
+      "side": 1,
+      "message": "This might still be WIP, in which case feel free to ignore this comment.",
+      "revId": "2e2d99f1af522ab90d0a8dfbda5805b3f52f31b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b215666f_52ccc218",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 2307,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-23T20:44:46Z",
+      "side": 1,
+      "message": "This should do the same thing as IS_ENABLED, and IS_ENABLED is preferred, unless it won\u0027t compile.",
+      "revId": "2e2d99f1af522ab90d0a8dfbda5805b3f52f31b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
