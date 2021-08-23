@@ -317,6 +317,30 @@ void __keep report_panic(void)
 		pdata->flags |= PANIC_DATA_FLAG_FRAME_VALID;
 	}
 
+	/* Remove General Purpose Registers from panic data if needed */
+	if (IS_ENABLED(CONFIG_PANIC_STRIP_GPR)) {
+		pdata->cm.frame[CORTEX_PANIC_FRAME_REGISTER_R0] = 0;
+		pdata->cm.frame[CORTEX_PANIC_FRAME_REGISTER_R1] = 0;
+		pdata->cm.frame[CORTEX_PANIC_FRAME_REGISTER_R2] = 0;
+		pdata->cm.frame[CORTEX_PANIC_FRAME_REGISTER_R3] = 0;
+		pdata->cm.frame[CORTEX_PANIC_FRAME_REGISTER_R12] = 0;
+
+		/*
+		 * If it is software panic, don't remove R4 and R5 since they
+		 * contain the reason and additional information.
+		 */
+		if (in_interrupt_context()) {
+			pdata->cm.regs[CORTEX_PANIC_REGISTER_R4] = 0;
+			pdata->cm.regs[CORTEX_PANIC_REGISTER_R5] = 0;
+		}
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R6] = 0;
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R7] = 0;
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R8] = 0;
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R9] = 0;
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R10] = 0;
+		pdata->cm.regs[CORTEX_PANIC_REGISTER_R11] = 0;
+	}
+
 	/* Save extra information */
 	pdata->cm.cfsr = CPU_NVIC_CFSR;
 	pdata->cm.bfar = CPU_NVIC_BFAR;
