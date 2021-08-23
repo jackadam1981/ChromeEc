@@ -47,6 +47,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9819a5a_86744369",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-08-23T17:23:00Z",
+      "side": 1,
+      "message": "It\u0027s a bit obscure, but I think I get what this test is for.\nWithout this change, pressing T2 at boot wouldn\u0027t trigger check_key_list() and spit \"KB boot key mask\" log.",
+      "parentUuid": "efc7ea96_6a06ca04",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "e1604551a57840ab19d3fec8f730e7fb3f06a27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c68ac4f_82094b3d",
