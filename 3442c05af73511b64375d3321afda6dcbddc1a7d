@@ -33,6 +33,24 @@
       "message": "Rob, are you committing this?",
       "revId": "3442c05af73511b64375d3321afda6dcbddc1a7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6d9e043_a6526ad0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-23T21:07:41Z",
+      "side": 1,
+      "message": "I was looking into adding tests. The host build is not great for this because it does not include an RO image, so the coverage is limited without some additional effort to make host build RO and RW images. I\u0027ve stuck on a P0 for the last week, so I haven\u0027t worked on this. \n\nIf we are comfortable submitting without these tests, I can rebase and submit.",
+      "parentUuid": "978b6115_b1e6180e",
+      "revId": "3442c05af73511b64375d3321afda6dcbddc1a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
