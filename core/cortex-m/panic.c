@@ -17,6 +17,21 @@
 #include "util.h"
 #include "watchdog.h"
 
+#define CORTEX_M_FRAME_R0_IDX	0
+#define CORTEX_M_FRAME_R1_IDX	1
+#define CORTEX_M_FRAME_R2_IDX	2
+#define CORTEX_M_FRAME_R3_IDX	3
+#define CORTEX_M_FRAME_R12_IDX	4
+
+#define CORTEX_M_REGS_R4_IDX	3
+#define CORTEX_M_REGS_R5_IDX	4
+#define CORTEX_M_REGS_R6_IDX	5
+#define CORTEX_M_REGS_R7_IDX	6
+#define CORTEX_M_REGS_R8_IDX	7
+#define CORTEX_M_REGS_R9_IDX	8
+#define CORTEX_M_REGS_R10_IDX	9
+#define CORTEX_M_REGS_R11_IDX	10
+
 /* Whether bus fault is ignored */
 static int bus_fault_ignored;
 
@@ -315,6 +330,31 @@ void __keep report_panic(void)
 		for (i = 0; i < 8; i++)
 			pdata->cm.frame[i] = sregs[i];
 		pdata->flags |= PANIC_DATA_FLAG_FRAME_VALID;
+	}
+
+	/* Remove General Purpose Registers from panic data if needed */
+	if (IS_ENABLED(CONFIG_PANIC_STRIP_GPR)) {
+		pdata->cm.frame[CORTEX_M_FRAME_R0_IDX] = 0;
+		pdata->cm.frame[CORTEX_M_FRAME_R1_IDX] = 0;
+		pdata->cm.frame[CORTEX_M_FRAME_R2_IDX] = 0;
+		pdata->cm.frame[CORTEX_M_FRAME_R3_IDX] = 0;
+		pdata->cm.frame[CORTEX_M_FRAME_R12_IDX] = 0;
+
+		pdata->cm.regs[CORTEX_M_REGS_R6_IDX] = 0;
+		pdata->cm.regs[CORTEX_M_REGS_R7_IDX] = 0;
+		pdata->cm.regs[CORTEX_M_REGS_R8_IDX] = 0;
+		pdata->cm.regs[CORTEX_M_REGS_R9_IDX] = 0;
+		pdata->cm.regs[CORTEX_M_REGS_R10_IDX] = 0;
+		pdata->cm.regs[CORTEX_M_REGS_R11_IDX] = 0;
+
+		/*
+		 * If it is software panic, don't remove R4 and R5 since they
+		 * contain the reason and additional information.
+		 */
+		if (in_interrupt_context()) {
+			pdata->cm.regs[CORTEX_M_REGS_R4_IDX] = 0;
+			pdata->cm.regs[CORTEX_M_REGS_R5_IDX] = 0;
+		}
 	}
 
 	/* Save extra information */
