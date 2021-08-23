@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1056429_672dbea9",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-08-23T22:45:30Z",
+      "side": 1,
+      "message": "This makes me very nervous. I assume by \"behave differently\" we had a test that passed without code coverage but failed with code coverage until a bug was fixed? Do you have a bug number I could look at?",
+      "range": {
+        "startLine": 142,
+        "startChar": 42,
+        "endLine": 142,
+        "endChar": 76
+      },
+      "revId": "91f70fe5286ed4655a8be96ec70d1d958b250036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
