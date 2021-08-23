@@ -52,6 +52,24 @@
       "parentUuid": "e7bd483f_95e755e5",
       "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ce59fe_54462285",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-08-23T21:30:26Z",
+      "side": 1,
+      "message": "These were the early development units and very few are even working still. We\u0027d have to have one of the few remaining early Servo_V4p1 devices combined with both a charger that supports 5A and a DUT that requests it. Chromestop doesn\u0027t supply those chargers by default and only a few DUTs request 5A. It\u0027s a very rare combination.\n\nThat rare combination was tested b:176110980 and showed it safe on the older servo hardware. Adding version control logic isn\u0027t needed to safely operate these devices since the elevated temperature was mild. It\u0027s only adding 0.125W of heat into the system at the full 5A.",
+      "parentUuid": "e15b2055_6e15930c",
+      "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
