@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ea303b_f42a5203",
+        "filename": "board/mrbland/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1510167
+      },
+      "writtenOn": "2021-08-23T01:26:38Z",
+      "side": 1,
+      "message": "Done, I have change this part, you can have a look.\n\nThanks.",
+      "parentUuid": "66287921_0c3f1cb6",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 27
+      },
+      "revId": "2ed227aa344fcd5f81b191203443c09be1b91004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b9f9dca_0ef4f75d",
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1291adda_8987cdb6",
+        "filename": "board/mrbland/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1510167
+      },
+      "writtenOn": "2021-08-23T01:26:38Z",
+      "side": 1,
+      "message": "Done, I have change this part, you can have a look.\n\nThanks.",
+      "parentUuid": "9b9f9dca_0ef4f75d",
+      "range": {
+        "startLine": 145,
+        "startChar": 12,
+        "endLine": 145,
+        "endChar": 19
+      },
+      "revId": "2ed227aa344fcd5f81b191203443c09be1b91004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1e8bd33_75b1cc52",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-08-20T16:56:37Z",
       "side": 1,
       "message": "Call the existing function `led_set_color_power()`. Cache the value to a local variable and call it at the end.",
+      "range": {
+        "startLine": 156,
+        "startChar": 3,
+        "endLine": 156,
+        "endChar": 50
+      },
+      "revId": "2ed227aa344fcd5f81b191203443c09be1b91004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6c4df5e_45e37f33",
+        "filename": "board/mrbland/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1510167
+      },
+      "writtenOn": "2021-08-23T01:26:38Z",
+      "side": 1,
+      "message": "Done, I have change this part, you can have a look.\n\nThanks.",
+      "parentUuid": "a1e8bd33_75b1cc52",
       "range": {
         "startLine": 156,
         "startChar": 3,
