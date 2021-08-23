@@ -350,7 +350,7 @@ DECLARE_HOOK(HOOK_INIT, board_rev_init, HOOK_PRIO_INIT_ADC + 1);
 #ifndef VARIANT_KUKUI_NO_SENSORS
 static struct mutex g_lid_mutex;
 
-static struct bmi_drv_data_t g_bmi160_data;
+static struct bmi_drv_data_t g_bmidrv_data;
 
 /* TCS3400 private data */
 static struct als_drv_data_t g_tcs3400_data = {
@@ -430,9 +430,41 @@ static const mat33_fp_t mag_standard_ref = {
 };
 #endif /* CONFIG_MAG_BMI_BMM150 */
 
+static int bmi_auto_init(const struct motion_sensor_t *cs)
+{
+	int ret = 0;
+	int sensor = cs - motion_sensors;
+	struct motion_sensor_t *s = &motion_sensors[sensor];
+
+	/* Try init BMI160 */
+	s->chip = MOTIONSENSE_CHIP_BMI160;
+	s->i2c_spi_addr_flags = BMI160_ADDR0_FLAGS;
+	ret = bmi160_drv.init(s);
+	if (!ret) {
+		CPRINTS("BMI160 found: %s", s->name);
+		s->drv = &bmi160_drv;
+		return ret;
+	}
+
+	/* Try init BMI260 */
+	s->chip = MOTIONSENSE_CHIP_BMI260;
+	s->i2c_spi_addr_flags = BMI260_ADDR0_FLAGS;
+	ret = bmi260_drv.init(s);
+	if (!ret) {
+		CPRINTS("BMI260 found: %s", s->name);
+		s->drv = &bmi260_drv;
+	}
+
+	return ret;
+}
+
+const struct accelgyro_drv bmi_auto_drv = {
+	.init = bmi_auto_init,
+};
+
 struct motion_sensor_t motion_sensors[] = {
 	/*
-	 * Note: bmi160: supports accelerometer and gyro sensor
+	 * Note: bmi160/260: supports accelerometer and gyro sensor
 	 * Requirement: accelerometer sensor must init before gyro sensor
 	 * DO NOT change the order of the following table.
 	 */
@@ -442,9 +474,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_ACCEL,
 	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &bmi160_drv,
+	 .drv = &bmi_auto_drv,
 	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_bmi160_data,
+	 .drv_data = &g_bmidrv_data,
 	 .port = I2C_PORT_ACCEL,
 	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 	 .rot_standard_ref = &lid_standard_ref,
@@ -465,9 +497,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_GYRO,
 	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &bmi160_drv,
+	 .drv = &bmi_auto_drv,
 	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_bmi160_data,
+	 .drv_data = &g_bmidrv_data,
 	 .port = I2C_PORT_ACCEL,
 	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 	 .default_range = 1000, /* dps */
@@ -482,9 +514,9 @@ struct motion_sensor_t motion_sensors[] = {
 	 .chip = MOTIONSENSE_CHIP_BMI160,
 	 .type = MOTIONSENSE_TYPE_MAG,
 	 .location = MOTIONSENSE_LOC_LID,
-	 .drv = &bmi160_drv,
+	 .drv = &bmi_auto_drv,
 	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_bmi160_data,
+	 .drv_data = &g_bmidrv_data,
 	 .port = I2C_PORT_ACCEL,
 	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 	 .default_range = BIT(11), /* 16LSB / uT, fixed */
