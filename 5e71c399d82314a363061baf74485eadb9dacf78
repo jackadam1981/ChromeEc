@@ -16,6 +16,29 @@
       "message": "Ting@, I got a symptom on Hayato rev1 (with ToT FW). The global variable timer_irq will be override to 0 when plug AC only on port 0.\nAnd it is because mt6360_update_charge_manager() will pass supplier \u003d -1 to charge_manager_make_change().\nThis is causing illegal instruction panic.\n\nDo you have the same symptom?",
       "revId": "5e71c399d82314a363061baf74485eadb9dacf78",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f05ed136_75c170dc",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-08-23T08:06:01Z",
+      "side": 1,
+      "message": "This can be moved to around line:979 for a valid value check.",
+      "range": {
+        "startLine": 1039,
+        "startChar": 0,
+        "endLine": 1044,
+        "endChar": 24
+      },
+      "revId": "5e71c399d82314a363061baf74485eadb9dacf78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
