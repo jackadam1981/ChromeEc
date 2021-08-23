@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64e11c40_b8aa1ecb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-23T20:48:13Z",
+      "side": 1,
+      "message": "This CL depends on a CL that is further up in the same relation chain. I think Cq-Depend might still work in this case, but the more natural way to do this would just be to reorder the CLs so that this CL (the dependent CL) comes later in the chain. More importantly, reordering will submit the fix before the new CL that requires it and thus avoid creating another point in the branch history where non-LPM TCPCs are broken.",
+      "revId": "f2f834b35d10cff2b63b5b594c7db5b8fa9edf81",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
