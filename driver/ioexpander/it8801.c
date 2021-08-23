@@ -22,13 +22,13 @@ static int it8801_ioex_set_level(int ioex, int port, int mask, int value);
 
 static int it8801_read(int reg, int *data)
 {
-	return i2c_read8(I2C_PORT_IO_EXPANDER_IT8801, IT8801_I2C_ADDR,
+	return i2c_read8(I2C_PORT_IO_EXPANDER_IT8801, I2C_ADDR_IT8801_FLAGS,
 		reg, data);
 }
 
 static int it8801_write(int reg, int data)
 {
-	return i2c_write8(I2C_PORT_IO_EXPANDER_IT8801, IT8801_I2C_ADDR,
+	return i2c_write8(I2C_PORT_IO_EXPANDER_IT8801, I2C_ADDR_IT8801_FLAGS,
 		reg, data);
 }
 
