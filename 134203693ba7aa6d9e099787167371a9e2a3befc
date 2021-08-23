@@ -16,6 +16,24 @@
       "message": "Do we care about other CPRINTs?\n",
       "revId": "134203693ba7aa6d9e099787167371a9e2a3befc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f4ce5f0_589bc6b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-23T13:18:47Z",
+      "side": 1,
+      "message": "I think the other CPRINTs are fine behind ESPI_DEBUG.",
+      "parentUuid": "203e58b1_8e32bbc0",
+      "revId": "134203693ba7aa6d9e099787167371a9e2a3befc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
