@@ -34,6 +34,23 @@
       "parentUuid": "3d8b6d5c_e9c51635",
       "revId": "08ad80b103fd4b6df491fbd18bb6cbeea1ff524f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b07792a3_7e87ff4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-08-23T04:20:51Z",
+      "side": 1,
+      "message": "I think we can abandon this CL, since we do not using vivaldi keyboard for drawper.",
+      "revId": "08ad80b103fd4b6df491fbd18bb6cbeea1ff524f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
