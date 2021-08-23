@@ -70,6 +70,24 @@
       "parentUuid": "e15b2055_6e15930c",
       "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e4ee4ab_22047462",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-23T22:31:28Z",
+      "side": 1,
+      "message": "I\u0027m convinced it\u0027s safe. Those 3A servos may not be able to supply a requested voltage to a DUT because of the extra R from the 3A cable. (Do you have any measurements on this?) So, I\u0027m wondering if we can provide a warning when we detect them or simply make servod refuse to connect and print \"your servo is not supported\".",
+      "parentUuid": "85ce59fe_54462285",
+      "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
