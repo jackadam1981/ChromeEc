@@ -98,6 +98,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e69ae7c2_5e2dd29b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-23T18:35:31Z",
+      "side": 1,
+      "message": "FWIW, Google\u0027s policy is to revert CLs that broke ToT first and debug the problem later, once ToT is fixed. (Prefer roll back to fix forward.) We don\u0027t always live by that, but I\u0027m glad to see that it was adhered to here.",
+      "parentUuid": "06158d5f_b90e55f4",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "e8b782f8fa927987321308c438b99010a45a59ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "e8dc3662_5517030b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
