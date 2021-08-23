@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "38d1de06_19ed3567",
+        "filename": "board/helios/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-08-23T15:12:24Z",
+      "side": 1,
+      "message": "Not strictly required, as ec_rate does not change, it\u0027s just a little more explicit.",
+      "parentUuid": "16f1fae0_4dd7cb9a",
+      "revId": "20e765824006397ff4d59e1edd1e04080f9f128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44e2139d_6cfefab6",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "Hi Tim,\nI reference board/asurada/board.c.\nIf you have any concern, I will remove it.",
       "parentUuid": "44e2139d_6cfefab6",
+      "range": {
+        "startLine": 384,
+        "startChar": 50,
+        "endLine": 384,
+        "endChar": 67
+      },
+      "revId": "20e765824006397ff4d59e1edd1e04080f9f128b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4905de6_d7780209",
+        "filename": "board/helios/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1327490
+      },
+      "writtenOn": "2021-08-23T15:12:24Z",
+      "side": 1,
+      "message": "This should work; DEFAULT is still after INIT_I2C, it\u0027s just a little more explicit.",
+      "parentUuid": "1265d918_9c83154a",
       "range": {
         "startLine": 384,
         "startChar": 50,
