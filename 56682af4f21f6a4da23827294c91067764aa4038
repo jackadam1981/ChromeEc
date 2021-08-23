@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7340233e_a704bf32",
+        "filename": "zephyr/dts/bindings/battery/as3gwrc3ka,c235-41.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "There quite a few batteries in the cros-ec code that incorrectly specify both the discharge-disabled and charge-disabled bits in this field.  I believe the correct behavior should be to specify only the discharge bit and use the CFET fields to check when the charging FET id disabled.\n\nI haven\u0027t dug up the datasheet for this battery, but this should be potentially fixed in a follow up CL.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26c25f9c_213ecf91",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "boolean type?",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c199aa4_48d6c9b1",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "boolean",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04f06708_8970f987",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "if",
+      "range": {
+        "startLine": 45,
+        "startChar": 17,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79ede638_65a53b24",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "If enabled, FET status is read using the ManufacturerBlockAccess (0x44) to read the OperationStatus (0x54) register. The fet_reg_mask and fet_disconnect_val properties must still be defined.",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 56
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eb6e083_43704ef4",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "Probably should be boolean.  battery_fuel_gauge.c explicitly checks for (mfgacc_support \u003d\u003d 1).",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 15
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebda8649_c1a313b8",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "reports discharging FET and charging FET status.\n\nAlso add: This property is ignored if fet_mfgacc_support is used.",
+      "range": {
+        "startLine": 50,
+        "startChar": 35,
+        "endLine": 50,
+        "endChar": 56
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4d97713_ee79a0fb",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "As a follow on CL, can CONFIG_BATTERY_MEASURE_IMBALANCE be eliminated and use just this property to determine if this feature is enabled?\n\nAlso, reference the Kconfig option instead of the cros-ec config.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 78
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d941037_b26f01e1",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "Reference the Kconfig option throughout this file instead of the legacy cros-ec option.",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 75
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5410a4dc_c1ef4a79",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "the battery",
+      "range": {
+        "startLine": 50,
+        "startChar": 63,
+        "endLine": 50,
+        "endChar": 72
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ace0f647_d7b4dd53",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "falls",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 25
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f3e36d0_9f2c56b9",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "the battery",
+      "range": {
+        "startLine": 57,
+        "startChar": 63,
+        "endLine": 57,
+        "endChar": 72
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15a21efa_daed0427",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "raises",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bc486f4_9728ff56",
+        "filename": "zephyr/dts/bindings/battery/lgc,ap16l8j.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-23T23:21:38Z",
+      "side": 1,
+      "message": "fet_reg_addr should be skipped because fet_mfgacc_support is present.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
