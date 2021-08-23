@@ -34,6 +34,24 @@
       "parentUuid": "50f823da_a1eb4009",
       "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e15b2055_6e15930c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-23T20:58:47Z",
+      "side": 1,
+      "message": "Can we detect \"servo_v4p1 devices with 3A cables\" by a board revision or something?",
+      "parentUuid": "e7bd483f_95e755e5",
+      "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
