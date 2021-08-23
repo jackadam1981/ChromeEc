@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3934f84_0ede0259",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-08-23T10:42:59Z",
+      "side": 1,
+      "message": "dedicated charging port.\n\nI guess the root cause is current_bc12_type is initialized to CHARGE_SUPPLIER_NONE, and then it calls `charge_manager_update_charge(current_bc12_type, port, NULL);`",
+      "parentUuid": "8cd054ca_0ad85690",
+      "revId": "5e71c399d82314a363061baf74485eadb9dacf78",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f05ed136_75c170dc",
