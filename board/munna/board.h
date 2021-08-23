@@ -109,6 +109,9 @@
 #define I2C_CONTROLLER_COUNT        3
 #define I2C_PORT_COUNT              3
 
+/* IT8801 I2C address */
+#define I2C_ADDR_IT8801_FLAGS    IT8801_I2C_ADDR1
+
 /* Enable Accel over SPI */
 #define CONFIG_SPI_ACCEL_PORT    0  /* The first SPI master port (SPI2) */
 

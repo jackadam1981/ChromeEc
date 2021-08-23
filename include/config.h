@@ -2570,7 +2570,11 @@
 /* Support CCGXXF I/O expander built inside PD chip */
 #undef CONFIG_IO_EXPANDER_CCGXXF
 
-/* Support IT8801 I/O expander. */
+/*
+ * Support IT8801 I/O expander.
+ * I2C address I2C_ADDR_IT8801_FLAGS and I2C port I2C_PORT_IO_EXPANDER_IT8801
+ * must be defined as well.
+ */
 #undef CONFIG_IO_EXPANDER_IT8801
 
 /* Support Nuvoton NCT38xx I/O expander. */
