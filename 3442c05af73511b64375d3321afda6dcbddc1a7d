@@ -51,6 +51,24 @@
       "parentUuid": "978b6115_b1e6180e",
       "revId": "3442c05af73511b64375d3321afda6dcbddc1a7d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2539db6a_313a2520",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-23T21:35:00Z",
+      "side": 1,
+      "message": "I\u0027m fine with submitting a unit test in a separate CL. I\u0027m also fine with submitting it with a RW only test.",
+      "parentUuid": "a6d9e043_a6526ad0",
+      "revId": "3442c05af73511b64375d3321afda6dcbddc1a7d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
