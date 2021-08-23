@@ -38,11 +38,6 @@ extern "C" {
 #define CHAR_BIT 8
 #endif
 
-enum sha_mode {
-	SHA1_MODE = 0,
-	SHA256_MODE = 1
-};
-
 /*
  * Use this structure to avoid alignment problems with input and output
  * pointers.
@@ -55,6 +50,9 @@ struct access_helper {
 int dcrypto_grab_sha_hw(void);
 void dcrypto_release_sha_hw(void);
 #endif
+
+/* Load data into KEYMGR SHA FIFO. */
+void dcrypto_sha_fifo_load(const void *data, size_t n);
 
 /*
  * BIGNUM.
