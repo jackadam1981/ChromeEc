@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5457b1c9_608987e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165609
+      },
+      "writtenOn": "2021-08-23T21:13:51Z",
+      "side": 1,
+      "message": "Lukasz, do we need to reboot, or can we just release the resources through tiny_servod or pyusb?",
+      "revId": "b7765cf92f2f5909095c736277ff77c18f62d530",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db96b0d4_4e87b24b",
