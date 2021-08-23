@@ -22,6 +22,30 @@
       },
       "revId": "91f70fe5286ed4655a8be96ec70d1d958b250036",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6699218_7a62b57f",
+        "filename": "zephyr/firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-23T22:54:45Z",
+      "side": 1,
+      "message": "crrev/c/3115428 is fixing one of those, and this wasn\u0027t the first of these I\u0027ve fixed. crrev/c/2934661 is a previous one.",
+      "parentUuid": "b1056429_672dbea9",
+      "range": {
+        "startLine": 142,
+        "startChar": 42,
+        "endLine": 142,
+        "endChar": 76
+      },
+      "revId": "91f70fe5286ed4655a8be96ec70d1d958b250036",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
