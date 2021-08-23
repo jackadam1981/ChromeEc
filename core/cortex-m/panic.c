@@ -312,8 +312,19 @@ void __keep report_panic(void)
 	    sp <= CONFIG_RAM_BASE + CONFIG_RAM_SIZE - 8 * sizeof(uint32_t)) {
 		const uint32_t *sregs = (const uint32_t *)sp;
 		int i;
-		for (i = 0; i < 8; i++)
+
+		/* Skip r0-r3 and r12 registers if necessary */
+		for (i = CORTEX_PANIC_FRAME_REGISTER_R0;
+		    i <= CORTEX_PANIC_FRAME_REGISTER_R12; i++)
+			if (IS_ENABLED(CONFIG_PANIC_STRIP_GPR))
+				pdata->cm.frame[i] = 0;
+			else
+				pdata->cm.frame[i] = sregs[i];
+
+		for (i = CORTEX_PANIC_FRAME_REGISTER_LR;
+		    i < NUM_CORTEX_PANIC_FRAME_REGISTERS; i++)
 			pdata->cm.frame[i] = sregs[i];
+
 		pdata->flags |= PANIC_DATA_FLAG_FRAME_VALID;
 	}
 
@@ -357,6 +368,24 @@ void exception_panic(void)
 		"mrs r1, psp\n"
 		"mrs r2, ipsr\n"
 		"mov r3, sp\n"
+#ifdef CONFIG_PANIC_STRIP_GPR
+		/*
+		 * If this is software panic, register r4 and r5 contain
+		 * additional info about panic. Clear r6-r11 always and r4, r5
+		 * if this is exception panic.
+		 */
+		"lsls r6, r2, #23\n"
+		/* Result != 0, exception panic, clear r4 and r5 */
+		"itt ne\n"
+		"movne r4, #0\n"
+		"movne r5, #0\n"
+		"mov r6, #0\n"
+		"mov r7, #0\n"
+		"mov r8, #0\n"
+		"mov r9, #0\n"
+		"mov r10, #0\n"
+		"mov r11, #0\n"
+#endif
 		"stmia r0, {r1-r11, lr}\n"
 		"mov sp, %[pstack]\n"
 		"bl report_panic\n" : :
