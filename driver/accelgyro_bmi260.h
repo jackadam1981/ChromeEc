@@ -26,6 +26,7 @@
 
 #define BMI260_CHIP_ID      0x00
 #define BMI260_CHIP_ID_MAJOR    0x27
+#define BMI220_CHIP_ID_MAJOR    0x26
 
 #define BMI260_ERR_REG          0x02
 
