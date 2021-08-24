@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77cfaa3f_8c28ac6c",
+        "filename": "board/brask/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-24T20:05:49Z",
+      "side": 1,
+      "message": "Curious: why not 3? So port numbers will be continuous 0,1,2,3",
+      "range": {
+        "startLine": 19,
+        "startChar": 30,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "0131db76aa49893723f8f29fec81163cf60627fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
