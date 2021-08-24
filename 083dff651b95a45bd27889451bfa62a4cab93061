@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96dbc30a_83bd90e1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-08-24T14:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "291a134e_34c288ac",
+      "range": {
+        "startLine": 14,
+        "startChar": 34,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0a42105f_c7ba80be",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "I\u0027ll try to split it since each patch be required to be build-able. I\u0027ll update the patch today later.",
       "parentUuid": "0a42105f_c7ba80be",
+      "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f47a03a0_23bf5d26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-08-24T14:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4800d79d_18dae773",
       "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -130,6 +172,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d73b650f_216aa023",
+        "filename": "board/brask/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-08-24T14:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3cc038b_1e76ae8b",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 0
+      },
+      "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cdcde65_92aed62c",
@@ -161,6 +227,24 @@
       "side": 1,
       "message": "ok, let me remove this.",
       "parentUuid": "1cdcde65_92aed62c",
+      "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4551d82f_46e0df45",
+        "filename": "board/brask/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-08-24T14:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f3c8087_ab801ceb",
       "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -202,6 +286,30 @@
       "side": 1,
       "message": "ok, i\u0027ll set it back to 400Khz",
       "parentUuid": "c6a3d8a6_586d7eef",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc33067d_00b13300",
+        "filename": "board/brask/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-08-24T14:03:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fafcaa74_360ac56e",
       "range": {
         "startLine": 49,
         "startChar": 10,
