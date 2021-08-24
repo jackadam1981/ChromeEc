@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e6bd1f4c_d0a4c14b",
+        "filename": "zephyr/boards/arm/herobrine_npcx9/herobrine_npcx9.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-24T20:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d6da0e4_f0b7c561",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "959c0f72_11c00549",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-24T18:44:37Z",
       "side": 1,
       "message": "Combine as a single statement.\nzephyr_library_sources_ifdef(CONFIG_NXP_RTC_PCF85063A nxp_rtc_pcf85063a.c\n rtc.c)",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1e24db4_fd0599f4",
+        "filename": "zephyr/drivers/cros_rtc/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-24T20:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "959c0f72_11c00549",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ea55baa8_e4f3a02f",
+        "filename": "zephyr/drivers/cros_rtc/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-24T20:03:33Z",
+      "side": 1,
+      "message": "Yeah, I forgot about this. Done",
+      "parentUuid": "ecbc507f_0a94c679",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7cc5b0f5_c221daa9",
         "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-24T18:44:37Z",
       "side": 1,
       "message": "Fix license header.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf86c87_68399803",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-24T20:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cc5b0f5_c221daa9",
       "range": {
         "startLine": 2,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "713d6e1f_9d7a7c17",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-24T20:03:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e516e58_25edbea6",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "265ebbda_6515cc24",
@@ -129,6 +249,24 @@
       "writtenOn": "2021-08-24T18:44:37Z",
       "side": 1,
       "message": "Why not just add common/rtc.c to the Zephyr build directly?",
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6aa4484_170f3e7a",
+        "filename": "zephyr/drivers/cros_rtc/rtc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-24T20:03:33Z",
+      "side": 1,
+      "message": "So CONFIG_PLATFORM_EC_HOSTCMD_RTC is defined but it\u0027s not bringing in rtc.c",
+      "parentUuid": "265ebbda_6515cc24",
       "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
