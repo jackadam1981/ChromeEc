@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d02420eb_95f126d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-08-24T02:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5560e577_e432e56e",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 15
+      },
+      "revId": "e1604551a57840ab19d3fec8f730e7fb3f06a27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "efc7ea96_6a06ca04",
@@ -71,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5999fb3_d0710eac",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-08-24T02:37:08Z",
+      "side": 1,
+      "message": "Hi,Philip\n   Yes, I tested it after hardware rework.\n   It really has nothing to do with ESC Key.But only \nthe output messages are different in the two cases:\n1). Press and hold ESC+ Refresh (T2) at the same time\n[0.005205 KB boot key mask 1]\n2). Only hold the Refresh (T2) message\n[0.036514 KB boot key mask 0]\nThank you.",
+      "parentUuid": "b9819a5a_86744369",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "e1604551a57840ab19d3fec8f730e7fb3f06a27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c68ac4f_82094b3d",
@@ -84,6 +132,24 @@
       "writtenOn": "2021-08-23T16:54:52Z",
       "side": 1,
       "message": "Please V+1 when you submit a tested CL. You don\u0027t have to wait until the CL is approved.",
+      "revId": "e1604551a57840ab19d3fec8f730e7fb3f06a27d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "942c31f7_28e19808",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-08-24T02:37:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c68ac4f_82094b3d",
       "revId": "e1604551a57840ab19d3fec8f730e7fb3f06a27d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
