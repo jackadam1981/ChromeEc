@@ -287,6 +287,29 @@
       },
       "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcb9a98_488670f8",
+        "filename": "common/u2f.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-24T00:37:42Z",
+      "side": 1,
+      "message": "ah good catch that we need to verify kh in all cases, and u2f_authorize_keyhandle is what does it.",
+      "range": {
+        "startLine": 268,
+        "startChar": 7,
+        "endLine": 268,
+        "endChar": 30
+      },
+      "revId": "10c1723af779e39e89eeb942755a85f9c8547ed9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

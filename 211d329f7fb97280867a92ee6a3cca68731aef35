@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "768a7abf_765620cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-24T00:37:42Z",
+      "side": 1,
+      "message": "Lgtm. Vadim (vbendeb), any further comments?",
+      "revId": "211d329f7fb97280867a92ee6a3cca68731aef35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f450f62d_2c586c74",
+        "filename": "common/u2f.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-08-24T00:37:42Z",
+      "side": 1,
+      "message": "one nit for the future: \n\nwith u2f_authorize_keyhandle() before pop_check_presence(), an attacker can go through possible authTimeSecrets w/o physical presence even if physical presence is required for the op. it\u0027s better if we only verify authTimeSecret after physical presence.\n\nnote that we rely on other KH checks to be done before phys presence (so that we can tell that the KH doesn\u0027t belong to cr50 when there are multiple SKs in the system), so the verification part w/o authTimeSecret check should stay before pop_check_presence.\n\nso, it\u0027s probably worth removing this TODO and doing what you described below in the next TODO - use u2f_authorize_keyhandle_with_secret() - at which point it makes sense to verify authValue. but then you\u0027d need to move u2f_authorize_keyhandle_with_secret() under the if (U2F_AUTH_CHECK_ONLY) branch as well.\n\nonly a nit for the future because:\n\n(1) currently we don\u0027t check authTimeSecret, so doesn\u0027t matter; \n\n(2) we already rely on authTimeSecret to be high-entropy (since it can be used w/o phys presence for ver 1), so checking it first is probably ok.",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 175,
+        "endChar": 12
+      },
+      "revId": "211d329f7fb97280867a92ee6a3cca68731aef35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
