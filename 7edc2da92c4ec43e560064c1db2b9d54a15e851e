@@ -16,6 +16,46 @@
       "message": "We probably don\u0027t want to compile BMI160 and BMI260 support at the same time. Request for comment.",
       "revId": "7edc2da92c4ec43e560064c1db2b9d54a15e851e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a0f52ca_94420b89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-08-24T03:29:58Z",
+      "side": 1,
+      "message": "Krane will use BMI220. So we will need a BMI220 change on ToT for AVL test. Then cherry-pick that here.",
+      "revId": "7edc2da92c4ec43e560064c1db2b9d54a15e851e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc5ef2b_ce363221",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-08-24T03:29:58Z",
+      "side": 1,
+      "message": "No ptrdiff_t in stddef.h.",
+      "range": {
+        "startLine": 436,
+        "startChar": 1,
+        "endLine": 436,
+        "endChar": 4
+      },
+      "revId": "7edc2da92c4ec43e560064c1db2b9d54a15e851e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
