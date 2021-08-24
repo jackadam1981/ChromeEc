@@ -33,6 +33,24 @@
       "message": "I\u0027m not totally certain what to think of this as a host command... On the one hand, it allows developers without an EC console to still change mfallow which could be nice.  On the other, is this command something we\u0027d really want the kernel or other entities to be using? \n\nAlso, I\u0027m not sure if this region represents a gap we can add to, or a gap created by deprecating old commands?  It might take a journey into the git history to figure out which option it is.",
       "revId": "a5ef26ff0841b54471729f21475829f0f8a01c9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc1a6da_e9fa064d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5640,
+      "author": {
+        "id": 1153746
+      },
+      "writtenOn": "2021-08-24T01:09:09Z",
+      "side": 1,
+      "message": "This feature request came from our display team. they were trying to test different docks with 2-lane and 4-lane capability they want override function.\n\naseda pointed out to a different region.",
+      "parentUuid": "e9b2c07b_dc8040f0",
+      "revId": "a5ef26ff0841b54471729f21475829f0f8a01c9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
