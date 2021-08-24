@@ -597,3 +597,21 @@ static void baseboard_init(void)
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_DEFAULT - 1);
+
+__override int board_get_vbus_voltage(int port)
+{
+	int voltage = 0;
+
+	switch (port) {
+	case 0:
+		voltage = adc_read_channel(ADC_VBUS);
+		break;
+	case 1:
+		rt1718s_get_adc(port, RT1718S_ADC_VBUS1, &voltage);
+		break;
+	default:
+		return 0;
+	}
+
+	return voltage;
+}
