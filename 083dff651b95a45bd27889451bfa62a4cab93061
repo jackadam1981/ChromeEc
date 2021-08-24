@@ -1,0 +1,107 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5d3b5b2_de5ab41d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-24T06:01:19Z",
+      "side": 1,
+      "message": "the rt1715 is technically a drop-in replacement for the\ntusb422. so the 8815 is functionally replaced with kb800x + rt1715.",
+      "range": {
+        "startLine": 14,
+        "startChar": 34,
+        "endLine": 14,
+        "endChar": 40
+      },
+      "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a42105f_c7ba80be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-24T06:01:19Z",
+      "side": 1,
+      "message": "there\u0027s a lot going on here. would it be feasible to split this\ninto patches focused on functional areas like i2c, tcpc+ppc, KB, etc.?\n\ni think the first patch could include most or even all the file deletes\nwith matching edits to *board.h.\n\ni realize splitting into too many patches can get tricky and maybe not worth\nthe trouble when it comes to interactions with the charger+tcpc+ppc because\nthey are so inter-related.",
+      "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d15afe5_2133978f",
+        "filename": "board/brask/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-24T06:01:19Z",
+      "side": 1,
+      "message": "delete?",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 0
+      },
+      "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cdcde65_92aed62c",
+        "filename": "board/brask/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-24T06:01:19Z",
+      "side": 1,
+      "message": "remove this file as well",
+      "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6a3d8a6_586d7eef",
+        "filename": "board/brask/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-24T06:01:19Z",
+      "side": 1,
+      "message": "let\u0027s start at 400 instead of 1Mhz for all of these\nbuses until we can verify 1MHz operation.",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 14
+      },
+      "revId": "083dff651b95a45bd27889451bfa62a4cab93061",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
