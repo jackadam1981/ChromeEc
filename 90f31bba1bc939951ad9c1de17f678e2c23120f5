@@ -124,6 +124,24 @@
       "parentUuid": "163b259f_0d80fcb4",
       "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "883ad569_4807ce14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-08-24T18:18:41Z",
+      "side": 1,
+      "message": "There are 2 drops, 0.5V on the high side and 0.25V on the ground return path so it\u0027s possible both are passing. There is a tolerance for a 0.5V drop on the high side and a 0.25V drop on the ground return line, this gives a budget of 0.05 ohms on the ground return before hitting the limit and a budget of 0.10 ohms on the high path.\n\n3 additions that are helping us:\n\n* The measurement included the resistance from an extra USB-C connector pair which I can\u0027t subtract out so the logical signal ground is a little bit closer than what I could measure.\n* The VBUS side has a 0.005 ohm shunt in series which I can\u0027t subtract out.\n* Cables frequently include thicker grounding paths so there is less resistance there.\n\nIt\u0027s possible we\u0027re near the edge of the spec. I\u0027d need to do more precise measurements to get the actual impedance on both ends. I had a quick chat with \nBenson and David about it. The primarily concern they raised is the supply voltage may be dropping higher than expected and if it could be the cause of PD negotiation failing on some devices. They suggested modifying the PD negotiation to return the deratting voltage may address this. I observed failures on some ChromeBoxes with prior tests in other unrelated issues. This may be the cause of it so I\u0027ll file a ticket to do more investigation into the voltage drop behavior and PD contracts.",
+      "parentUuid": "d3425e6f_b5fa82fe",
+      "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
