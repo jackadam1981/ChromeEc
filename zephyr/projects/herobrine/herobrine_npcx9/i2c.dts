@@ -106,7 +106,7 @@
 		compatible = "nxp,rtc-pcf85063a";
 		reg = <0x51>;
 		label = "RTC_PCF85063A";
-		irq-gpios = <&gpio0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+		irq-gpios = <&gpio0 2 0>;
 	};
 };
 
