@@ -39,6 +39,30 @@
       },
       "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fe28697_ec28a103",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-24T16:51:25Z",
+      "side": 1,
+      "message": "I started to suggest that, but it sounded like something that could easily grow to affect a lot of files outside the scope of this change. If it ends up being like that, how would you feel about creating a bug in http://b/hotlists/3278859 to clean up the macro usage here in general?",
+      "parentUuid": "b7cf669d_51e77164",
+      "range": {
+        "startLine": 881,
+        "startChar": 0,
+        "endLine": 883,
+        "endChar": 6
+      },
+      "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
