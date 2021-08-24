@@ -269,7 +269,7 @@ static void baseboard_sensors_init(void)
 DECLARE_HOOK(HOOK_INIT, baseboard_sensors_init, HOOK_PRIO_INIT_I2C + 1);
 
 /* Temperature sensor configuration */
-const struct temp_sensor_t temp_sensors[] = {
+struct temp_sensor_t temp_sensors[] = {
 	[TEMP_SENSOR_1_DDR_SOC] = {
 		.name = "DDR and SOC",
 		.type = TEMP_SENSOR_TYPE_BOARD,
@@ -389,6 +389,8 @@ BUILD_ASSERT(ARRAY_SIZE(thermal_params) == TEMP_SENSOR_COUNT);
 
 static void board_thermals_init(void)
 {
+	struct temp_sensor_t *ts;
+
 	if (get_board_id() == 1) {
 		/*
 		 * Board ID 1 only has 3 sensors and the AMBIENT sensor
@@ -399,6 +401,14 @@ static void board_thermals_init(void)
 		 */
 		adc_channels[ADC_TEMP_SENSOR_3_CHARGER].input_ch = NPCX_ADC_CH1;
 		adc_channels[ADC_TEMP_SENSOR_4_WWAN].input_ch = NPCX_ADC_CH1;
+
+		/* Sensor 3 is not configured */
+		ts = &temp_sensors[TEMP_SENSOR_2_AMBIENT];
+		ts->type = TEMP_SENSOR_TYPE_IGNORED;
+
+		/* Sensor 4 does not exist */
+		ts = &temp_sensors[TEMP_SENSOR_4_WWAN];
+		ts->type = TEMP_SENSOR_TYPE_IGNORED;
 	}
 }
 
