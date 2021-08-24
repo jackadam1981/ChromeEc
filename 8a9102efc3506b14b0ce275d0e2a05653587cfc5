@@ -22,6 +22,30 @@
       },
       "revId": "8a9102efc3506b14b0ce275d0e2a05653587cfc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71b8c9f8_72d148b0",
+        "filename": "board/hatch_fp/board_rw.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-08-24T17:30:10Z",
+      "side": 0,
+      "message": "Ohh noooo. Thanks for spotting this. I\u0027ll add a followup CL to fix.",
+      "parentUuid": "1fccadec_3677b4bb",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 99,
+        "endChar": 29
+      },
+      "revId": "8a9102efc3506b14b0ce275d0e2a05653587cfc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
