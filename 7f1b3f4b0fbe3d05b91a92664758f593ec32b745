@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d6da0e4_f0b7c561",
+        "filename": "zephyr/boards/arm/herobrine_npcx9/herobrine_npcx9.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-24T18:44:37Z",
+      "side": 1,
+      "message": "The board changes should be done in a separate CL.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 24
+      },
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "959c0f72_11c00549",
+        "filename": "zephyr/drivers/cros_rtc/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-24T18:44:37Z",
+      "side": 1,
+      "message": "Combine as a single statement.\nzephyr_library_sources_ifdef(CONFIG_NXP_RTC_PCF85063A nxp_rtc_pcf85063a.c\n rtc.c)",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 60
+      },
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecbc507f_0a94c679",
+        "filename": "zephyr/drivers/cros_rtc/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-24T18:44:37Z",
+      "side": 1,
+      "message": "These need to be organized as a choice.  The cros_rtc only supports one driver at a time.\n\nWe should also create a Github issue to request adding RTC set/get to the counter driver.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cc5b0f5_c221daa9",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-24T18:44:37Z",
+      "side": 1,
+      "message": "Fix license header.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e516e58_25edbea6",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-24T18:44:37Z",
+      "side": 1,
+      "message": "Fix license header.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 0
+      },
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "265ebbda_6515cc24",
+        "filename": "zephyr/drivers/cros_rtc/rtc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-24T18:44:37Z",
+      "side": 1,
+      "message": "Why not just add common/rtc.c to the Zephyr build directly?",
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
