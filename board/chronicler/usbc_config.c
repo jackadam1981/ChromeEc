@@ -317,7 +317,7 @@ static void ps8815_setup_eq(void)
 {
 	int rv;
 	const int port = tcpc_config[USBC_PORT_C1].i2c_info.port;
-	const int addr = tcpc_config[USBC_PORT_C1].i2c_info.addr_flags;
+	const int addr = PS8751_I2C_ADDR1_P1_FLAGS;
 
 	/* TX1 EQ 19db / TX2 EQ 19db */
 	rv = i2c_write8(port, addr, 0x20, 0x77);
@@ -370,6 +370,7 @@ void board_ps8xxx_init(void)
 	ps8815_setup_eq();
 	ps8811_setup_eq();
 }
+DECLARE_HOOK(HOOK_USB_PD_CONNECT, board_ps8xxx_init, HOOK_PRIO_LAST);
 DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_ps8xxx_init, HOOK_PRIO_LAST);
 
 void board_reset_pd_mcu(void)
