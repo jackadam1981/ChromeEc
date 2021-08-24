@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b7d7b37_dfc0c19b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-24T18:55:39Z",
+      "side": 1,
+      "message": "CQ failure:\nchip/mchp/lfw/ec_lfw.c:170: undefined reference to `memset\u0027 on adlrvpp_mchp1727 and \nmchpevb1 boards.",
+      "revId": "fa26992f88883a8460d65dc3a965aaad9cc094bc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
