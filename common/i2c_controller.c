@@ -116,6 +116,15 @@ const struct i2c_port_t *get_i2c_port(const int port)
 	return NULL;
 }
 
+static long long time_used, count;
+int command_i2c_benchmark(int argc, char** argv)
+{
+	CPRINTS("avg %lldus per function call, count = %lld",
+		time_used / count, count);
+	return 0;
+}
+DECLARE_CONSOLE_COMMAND(benchmark, command_i2c_benchmark, "", "");
+
 __maybe_unused static int chip_i2c_xfer_with_notify(
 	const int port, const uint16_t addr_flags,
 	const uint8_t *out, int out_size,
@@ -124,6 +133,7 @@ __maybe_unused static int chip_i2c_xfer_with_notify(
 	int ret;
 	uint16_t no_pec_af = addr_flags;
 	const struct i2c_port_t *i2c_port = get_i2c_port(port);
+	timestamp_t start, end;
 
 	if (i2c_port == NULL)
 		return EC_ERROR_INVAL;
@@ -137,12 +147,18 @@ __maybe_unused static int chip_i2c_xfer_with_notify(
 		 * remove the flag so it won't confuse chip driver.
 		 */
 		no_pec_af &= ~I2C_FLAG_PEC;
+	start = get_time();
 	if (i2c_port->drv)
 		ret = i2c_port->drv->xfer(i2c_port, no_pec_af,
 					  out, out_size, in, in_size, flags);
 	else
 		ret = chip_i2c_xfer(port, no_pec_af,
 				    out, out_size, in, in_size, flags);
+	if (port == 4) {
+		end = get_time();
+		time_used += end.val - start.val;
+		count++;
+	}
 
 	if (IS_ENABLED(CONFIG_I2C_XFER_BOARD_CALLBACK))
 		i2c_end_xfer_notify(port, addr_flags);
