@@ -16,7 +16,7 @@
 
 #include "common.h"
 #include "console.h"
-#include "driver/tcpm/ps8805_a2_fw_0x18.h"
+#include "driver/tcpm/ps8xxx_fw_update/ps8xxx_images/ps8805/ps8805_a2_fw_0x18.h"
 #include "ps8xxx.h"
 #include "tcpm/tcpci.h"
 #include "tcpm/tcpm.h"
@@ -1444,10 +1444,11 @@ int ps8xxx_update_image(int port, const uint8_t *image, size_t image_size)
 
 static int command_ps8805(int argc, char **argv)
 {
-	int port = USB_PD_PORT_DP;
+	int port = 1;
 	struct Ps8751 *me = &tcpc_info[port];
 	uint8_t const *image;
 	char image_ver[3];
+	int len = ARRAY_SIZE(PS8805_A2_FW_0x18_20210811_bin);
 
 	image = PS8805_A2_FW_0x18_20210811_bin;
 
@@ -1461,7 +1462,7 @@ static int command_ps8805(int argc, char **argv)
 		int image_rev;
 
 		ps8xxx_capture_device_id(me, 1);
-		ps8xxx_is_fw_compatible(me, PS8805_A2_FW_0x18_20210811_bin);
+		ps8xxx_is_fw_compatible(me, image);
 
 		image_ver[0] = image[0x2030 + 2];
 		image_ver[1] = image[0x2030 + 3];
@@ -1479,11 +1480,10 @@ static int command_ps8805(int argc, char **argv)
 		ccprintf("ps8805: chip_fw = 0x%02x, image_ver = 0x%02x, image_size = %d\n",
 			 me->chip.fw_rev,
 			 image_rev,
-			 ARRAY_SIZE(PS8805_A2_FW_0x18_20210811_bin));
+			 len);
 
 	} else if (!strcasecmp(argv[1], "up")) {
-		ps8xxx_update_image(port, image,
-				    ARRAY_SIZE(PS8805_A2_FW_0x18_20210811_bin));
+		ps8xxx_update_image(port, image, len);
 	} else {
 		return EC_ERROR_PARAM1;
 	}
