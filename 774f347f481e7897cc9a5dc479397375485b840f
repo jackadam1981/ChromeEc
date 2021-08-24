@@ -16,6 +16,52 @@
       "message": "Thanks for the useful comments.\n\nI have addressed most of the comments, asking further question about the others. \n And also gone over the register bitfields, and updated according to the L5 reference manual.\n \nCode again runs on my Nucleo board, though USB still does not work.",
       "revId": "774f347f481e7897cc9a5dc479397375485b840f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f29b87b_87489040",
+        "filename": "chip/stm32/config-stm32l552.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-24T20:01:59Z",
+      "side": 1,
+      "message": "If you are using the e version, then this value should be 512 kB",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "774f347f481e7897cc9a5dc479397375485b840f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c193ddad_2b1e02f7",
+        "filename": "chip/stm32/config-stm32l552.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-24T20:01:59Z",
+      "side": 1,
+      "message": "Did you verify these values are correct for your chip? This could be an issue if USB EP (end point) isn\u0027t working.",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "774f347f481e7897cc9a5dc479397375485b840f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
