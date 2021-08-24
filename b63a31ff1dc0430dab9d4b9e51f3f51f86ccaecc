@@ -16,6 +16,69 @@
       "message": "LGTM",
       "revId": "b63a31ff1dc0430dab9d4b9e51f3f51f86ccaecc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9163aba2_d72d9ebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-24T16:40:58Z",
+      "side": 1,
+      "message": "Just some nits.",
+      "revId": "b63a31ff1dc0430dab9d4b9e51f3f51f86ccaecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2811e555_864a69eb",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-24T16:40:58Z",
+      "side": 1,
+      "message": "You can combine it with the above if condition.",
+      "range": {
+        "startLine": 380,
+        "startChar": 2,
+        "endLine": 380,
+        "endChar": 36
+      },
+      "revId": "b63a31ff1dc0430dab9d4b9e51f3f51f86ccaecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed77f58e_88f563fe",
+        "filename": "driver/tcpm/ps8xxx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-24T16:40:58Z",
+      "side": 1,
+      "message": "Please add the function comment as the others.",
+      "range": {
+        "startLine": 129,
+        "startChar": 0,
+        "endLine": 130,
+        "endChar": 1
+      },
+      "revId": "b63a31ff1dc0430dab9d4b9e51f3f51f86ccaecc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
