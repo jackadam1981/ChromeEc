@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cc72787_559d59b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-08-24T09:49:06Z",
+      "side": 1,
+      "message": "Hi Vijay,\n\nChip IT83XX and IT8XXX2 are embedded TCPC in EC, our TCPC don\u0027t support auto toggle means that toggle Rd/Rp by TCPMv2 switching between tc_unattach_snk/src state. So if when TCPM should switch but enter LPM state, then ITE cc won\u0027t be toggled (ex. CL:3088161 the adding condition cc_is_open() ). \n\nIf we run with this chain, TCPMv2 won\u0027t go to LPM state, so pd task will always be waked up every 5ms even in G3, S5 and S3 state.\n\nWith this CL chain, does the FUSB302 cc toggle in S0, drp_state \u003d toggle_on and nothing connection?  ",
+      "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
