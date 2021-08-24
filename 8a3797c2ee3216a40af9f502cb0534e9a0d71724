@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2d7eeb3_a1d22b29",
+        "filename": "board/brask/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-24T19:52:43Z",
+      "side": 0,
+      "message": "nit: you can move all the removied GPIOs to the \"unused\" section",
+      "revId": "8a3797c2ee3216a40af9f502cb0534e9a0d71724",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

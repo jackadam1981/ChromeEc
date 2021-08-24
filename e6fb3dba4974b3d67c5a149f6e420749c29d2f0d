@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54290f9a_5bf39e12",
+        "filename": "baseboard/brask/baseboard.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-24T19:52:43Z",
+      "side": 1,
+      "message": "Please add CONFIG_MKBP_INPUT_DEVICES (as in CL 3098574), otherwise power button may not work",
+      "revId": "e6fb3dba4974b3d67c5a149f6e420749c29d2f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b06e37_62e04a95",
+        "filename": "board/brask/pwm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-24T19:52:43Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be 0?",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "e6fb3dba4974b3d67c5a149f6e420749c29d2f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
