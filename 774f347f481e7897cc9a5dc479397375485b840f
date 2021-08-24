@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d21d470_b7c1929a",
+        "filename": "chip/stm32/config-stm32l552.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-08-24T22:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f29b87b_87489040",
+      "range": {
+        "startLine": 7,
+        "startChar": 33,
+        "endLine": 7,
+        "endChar": 58
+      },
+      "revId": "774f347f481e7897cc9a5dc479397375485b840f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c193ddad_2b1e02f7",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-24T20:01:59Z",
       "side": 1,
       "message": "Did you verify these values are correct for your chip? This could be an issue if USB EP (end point) isn\u0027t working.",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "774f347f481e7897cc9a5dc479397375485b840f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1d5cabc_c7482afa",
+        "filename": "chip/stm32/config-stm32l552.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-08-24T22:01:48Z",
+      "side": 1,
+      "message": "I have updated the base address according to the datasheet, but USB still does not work.  It is probably something basic, as I cannot even get pullup to work, probably I have not enable alternate function on the particular pins properly.\n\nI want to submit this basic support, which allows code to run, and me interacting with it via serial console.  Then I can figure out my problem with USB afterwards.",
+      "parentUuid": "c193ddad_2b1e02f7",
       "range": {
         "startLine": 26,
         "startChar": 3,

@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfb7cf16_478037e4",
+        "filename": "chip/stm32/config-stm32l552.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-08-24T22:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a04d19e_e2b09f01",
+      "range": {
+        "startLine": 6,
+        "startChar": 3,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cc6bd9a_60ddc12e",
@@ -125,6 +149,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8fc1421c_5cf65570",
+        "filename": "chip/stm32/config-stm32l552.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-08-24T22:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "858ac034_97153e58",
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d7269e74_37177a5d",
@@ -138,6 +180,30 @@
       "writtenOn": "2021-08-19T21:21:07Z",
       "side": 1,
       "message": "I would recommend adding \u0027cx\u0027 to both the CONFIG option and config-stm filename",
+      "range": {
+        "startLine": 48,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 29
+      },
+      "revId": "9d669d21935a7c3fc47a8d8a8d09790cfa9721d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29faae0e_34e3b2a0",
+        "filename": "chip/stm32/config_chip.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-08-24T22:01:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7269e74_37177a5d",
       "range": {
         "startLine": 48,
         "startChar": 14,
