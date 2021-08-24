@@ -16,6 +16,29 @@
       "message": "Hi Vijay,\n\nChip IT83XX and IT8XXX2 are embedded TCPC in EC, our TCPC don\u0027t support auto toggle means that toggle Rd/Rp by TCPMv2 switching between tc_unattach_snk/src state. So if when TCPM should switch but enter LPM state, then ITE cc won\u0027t be toggled (ex. CL:3088161 the adding condition cc_is_open() ). \n\nIf we run with this chain, TCPMv2 won\u0027t go to LPM state, so pd task will always be waked up every 5ms even in G3, S5 and S3 state.\n\nWith this CL chain, does the FUSB302 cc toggle in S0, drp_state \u003d toggle_on and nothing connection?  ",
       "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7cf669d_51e77164",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-24T16:47:23Z",
+      "side": 1,
+      "message": "This is confusing. I think we should remove #ifdef CONFIG_USB_PD_TCPC_LOW_POWER from struct tcpm_drv definition (and define enter_low_power_mode to NULL):\n\n#ifdef CONFIG_USB_PD_TCPC_LOW_POWER\n\t/**\n\t * Instructs the TCPC to enter into low power mode.\n\t *\n\t * NOTE: Do no use tcpc_(read|write) style helper methods in this\n\t * function. You must use i2c_(read|write) directly.\n\t *\n\t * @param port Type-C port number\n\t *\n\t * @return EC_SUCCESS or error\n\t */\n\tint (*enter_low_power_mode)(int port);\n#endif\n\nThis will allow a hybrid combination (one with LPM and another without LPM).\n\nWe probably don\u0027t need CONFIG_USB_PD_TCPC_LOW_POWER at all since we can do the same check by enter_low_power_mode \u003d\u003d NULL.",
+      "range": {
+        "startLine": 881,
+        "startChar": 0,
+        "endLine": 883,
+        "endChar": 6
+      },
+      "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
