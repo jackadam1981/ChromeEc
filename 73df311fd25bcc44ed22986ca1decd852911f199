@@ -47,6 +47,30 @@
       },
       "revId": "73df311fd25bcc44ed22986ca1decd852911f199",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58425d49_e9d1c993",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-24T19:55:24Z",
+      "side": 1,
+      "message": "Hi Jeremy, \n\nI didn\u0027t mindlessly click on \u0027please fix\u0027 but pondered and decided to hold my +2 because I thought it was important to have correctly spelled subject lines (for grepping, of course). Sorry my intention wasn\u0027t clear and thank you for fixing this. \n\nFYI: You may probably see the Gerrit history and find my review style is consistent (and \u0027polite\u0027).",
+      "parentUuid": "8ed971d6_71358cc4",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "73df311fd25bcc44ed22986ca1decd852911f199",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
