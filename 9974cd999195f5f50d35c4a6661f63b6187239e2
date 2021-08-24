@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f95ec334_618a8c4a",
+        "filename": "board/brask/sensors.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-24T19:58:53Z",
+      "side": 1,
+      "message": "Better to fill the array with all elements equal to `thermal_cpu`",
+      "revId": "9974cd999195f5f50d35c4a6661f63b6187239e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
