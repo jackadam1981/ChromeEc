@@ -16,6 +16,92 @@
       "message": "can you review the CL and give me feedback.\n\nOnce all the issues are reported I will do final testing with a dock.\nthis change I submitted, I have not tested with the dock. I have just tried to address Diana comments. I will do final test once I address all the comments or after receving +2.",
       "revId": "7cbc6d029d3a4699dd2e963c28d390cb7cf41c0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19b66d5b_5f6376ae",
+        "filename": "board/willow/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-24T19:06:54Z",
+      "side": 1,
+      "message": "Is this a space issue? If so, it should go in its own commit.",
+      "revId": "7cbc6d029d3a4699dd2e963c28d390cb7cf41c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e77facb8_89e8a20a",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1539,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-24T19:06:54Z",
+      "side": 1,
+      "message": "Maybe say allowed or not allowed depending on the variable.",
+      "range": {
+        "startLine": 1538,
+        "startChar": 35,
+        "endLine": 1539,
+        "endChar": 24
+      },
+      "revId": "7cbc6d029d3a4699dd2e963c28d390cb7cf41c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db6c68dc_bde334cf",
+        "filename": "common/usb_pd_host_cmd.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-24T19:06:54Z",
+      "side": 1,
+      "message": "nit: extra whitespace",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 143,
+        "endChar": 0
+      },
+      "revId": "7cbc6d029d3a4699dd2e963c28d390cb7cf41c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ba7f4c_3b897784",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 6999,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-08-24T19:06:54Z",
+      "side": 1,
+      "message": "Do not move existing commands as once they are commited, that interface is deemed locked. Otherwise you may run into conflicts later with differing kernel versions or firmware versions.",
+      "range": {
+        "startLine": 6991,
+        "startChar": 0,
+        "endLine": 6999,
+        "endChar": 0
+      },
+      "revId": "7cbc6d029d3a4699dd2e963c28d390cb7cf41c0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
