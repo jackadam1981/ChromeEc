@@ -18,9 +18,16 @@
 #include "motion_sense_fifo.h"
 #include "spi.h"
 #include "task.h"
-#include "third_party/bmi260/accelgyro_bmi260_config_tbin.h"
 #include "timer.h"
 #include "util.h"
+
+#ifdef CONFIG_ACCELGYRO_BMI220
+#include "third_party/bmi260/accelgyro_bmi220_config_tbin.h"
+const unsigned char *g_bmi260_config_tbin = g_bmi220_config_tbin;
+const unsigned int g_bmi260_config_tbin_len = g_bmi220_config_tbin_len;
+#else
+#include "third_party/bmi260/accelgyro_bmi260_config_tbin.h"
+#endif /* CONFIG_ACCELGYRO_BMI220 */
 
 #define CPUTS(outstr) cputs(CC_ACCEL, outstr)
 #define CPRINTF(format, args...) cprintf(CC_ACCEL, format, ## args)
@@ -444,7 +451,7 @@ static int init(const struct motion_sensor_t *s)
 	if (ret)
 		return EC_ERROR_UNKNOWN;
 
-	if (tmp != BMI260_CHIP_ID_MAJOR)
+	if (tmp != BMI260_CHIP_ID_MAJOR && tmp != BMI220_CHIP_ID_MAJOR)
 		return EC_ERROR_ACCESS_DENIED;
 
 	if (s->type == MOTIONSENSE_TYPE_ACCEL) {
