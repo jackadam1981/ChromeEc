@@ -87,6 +87,30 @@
       },
       "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d00f481_f30c4edd",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 883,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-24T22:50:39Z",
+      "side": 1,
+      "message": "\u003e how would you feel about creating a bug in http://b/hotlists/3278859 to clean up the macro usage here in general?\n\ndone.",
+      "parentUuid": "f1bd96e8_32e32549",
+      "range": {
+        "startLine": 881,
+        "startChar": 0,
+        "endLine": 883,
+        "endChar": 6
+      },
+      "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
