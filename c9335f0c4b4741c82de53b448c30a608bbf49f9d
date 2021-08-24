@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58ae5511_06ba1c6e",
+        "filename": "driver/ppc/rt1718s.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-08-24T07:59:04Z",
+      "side": 1,
+      "message": "This function is called twice in the frs path, skipping the TCPC read saves ~1ms.\n\nThis is intended to be the same logic as CL:3109707.\nSince the FRS time on Tomato is reduced to ~12ms now, if you think this is too hacky, I can remove this one. (or one of the other hacks)",
+      "parentUuid": "5add1677_f2acfa42",
+      "range": {
+        "startLine": 155,
+        "startChar": 5,
+        "endLine": 155,
+        "endChar": 19
+      },
+      "revId": "c9335f0c4b4741c82de53b448c30a608bbf49f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0c1f7f06_82a237b7",
         "filename": "driver/ppc/rt1718s.c",
         "patchSetId": 5
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-20T10:02:46Z",
       "side": 1,
       "message": "Is this function on the critical path of enabling FRS? (I think this is called when the port firstly plugged). \n\nIf not, do we need to save the i2c read by replace update with write?",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 47
+      },
+      "revId": "c9335f0c4b4741c82de53b448c30a608bbf49f9d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b19e6edc_d4a343ce",
+        "filename": "driver/ppc/rt1718s.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-08-24T07:59:04Z",
+      "side": 1,
+      "message": "Yes it\u0027s on the critical path: pe_frs_snk_src_start_ams_entry -\u003e pe_invalidate_explicit_contract -\u003e pe_set_frs_enable(port, 0)",
+      "parentUuid": "0c1f7f06_82a237b7",
       "range": {
         "startLine": 202,
         "startChar": 0,
