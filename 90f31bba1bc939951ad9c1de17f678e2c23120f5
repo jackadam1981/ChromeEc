@@ -88,6 +88,24 @@
       "parentUuid": "85ce59fe_54462285",
       "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "163b259f_0d80fcb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-08-24T00:15:14Z",
+      "side": 1,
+      "message": "I was measuring a total circuit impedance of 0.120 ohms on the 5A cables so that would translate into 0.6V. I just ran a test with a 0.5A load and a 3A servo_v4p1. The voltage drop seen is about 0.065V. This would be a 0.65V drop at 5A and servo adds 0.130 ohms of resistance with the 3A cables compared to 0.120 ohms with the 5A cables. It looks like it\u0027s pretty close to the maximum impedance.\n\nIt\u0027s pretty close to the Figure 4-1 max IR drops:\nhttps://www.usb.org/sites/default/files/USB%20Type-C%20Spec%20R2.0%20-%20August%202019.pdf",
+      "parentUuid": "2e4ee4ab_22047462",
+      "revId": "90f31bba1bc939951ad9c1de17f678e2c23120f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
