@@ -34,7 +34,11 @@ enum chip_adc_channel {
  * Boards must provide this list of ADC channel definitions.
  * This must match the enum adc_channel list provided by the board.
  */
+#ifndef CONFIG_ADC_CHANNELS_RUNTIME_CONFIG
 extern const struct adc_t adc_channels[];
+#else
+extern struct adc_t adc_channels[];
+#endif
 
 /* Minimum and maximum values returned by adc_read_channel(). */
 #define ADC_READ_MIN 0

@@ -59,7 +59,11 @@ struct adc_t {
  * the enum adc_channel list provided by the board. Also, for STM32F0, this
  * must be ordered by AIN ID.
  */
+#ifndef CONFIG_ADC_CHANNELS_RUNTIME_CONFIG
 extern const struct adc_t adc_channels[];
+#else
+extern struct adc_t adc_channels[];
+#endif
 
 /* Disable ADC module when we don't need it anymore. */
 void adc_disable(void);
