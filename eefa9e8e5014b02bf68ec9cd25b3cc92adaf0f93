@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5dbbe10a_98c316a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-08-25T10:39:43Z",
+      "side": 1,
+      "message": "IIRC, we are not allowing to use the i2c runtime probe in the EC code to select the sensor. +Gwendal into discussion.",
+      "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
