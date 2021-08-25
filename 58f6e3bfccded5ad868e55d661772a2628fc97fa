@@ -33,6 +33,24 @@
       "message": "imo we should get something like this landed.",
       "revId": "58f6e3bfccded5ad868e55d661772a2628fc97fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da2c3d0_c5b10dd4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-25T17:36:47Z",
+      "side": 1,
+      "message": "Yeah, I can work on updating and improving the patch.  It\u0027s a bit of a bummer because it\u0027ll be unusable for the new zephyr boards, but maybe we can do something similar there.",
+      "parentUuid": "d566f286_472cee76",
+      "revId": "58f6e3bfccded5ad868e55d661772a2628fc97fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
