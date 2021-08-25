@@ -16,6 +16,23 @@
       "message": "It would help the reviewer if you can use cherry-pick option -x to indicate from which commit the cherry pick is.\n\nThere are slight changes: read_temp is not present in kukui and the config.h is slightly different.\n\nYou can update the commit message with:\n(cherry picked from commit 86be30f5c4220112c6303c176f12096151285515)\n\nand describe the conflicts with:\n\nConflicts:\n        driver/accelgyro_bmi160.c : \u003c to\n        driver/accelgyro_bmi160.h :   be\n        driver/mag_lis2mdl.c :        filled\n        include/config.h :          \u003e",
       "revId": "d47187a89f7879c7d7fe00aeaf901a70a74ac352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b94854_9171344a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-25T05:34:13Z",
+      "side": 1,
+      "message": "Consider cherry-picking commit 32412de5fe (\"driver: bmi160: Implement temperature reading\") so that this cherry-pick will be a little cleaner.",
+      "revId": "d47187a89f7879c7d7fe00aeaf901a70a74ac352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
