@@ -345,6 +345,8 @@ void __ram_code start_irq_handler(void)
 	else
 		ec_int = chip_get_ec_int();
 
+	BRAM_EC_INT = ec_int;
+
 #if defined(CONFIG_LOW_POWER_IDLE) && defined(CHIP_FAMILY_IT83XX)
 	clock_sleep_mode_wakeup_isr();
 #endif

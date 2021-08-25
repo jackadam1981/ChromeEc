@@ -73,6 +73,17 @@ int chip_get_ec_int(void)
 
 	for (i = 0; i < IT83XX_IRQ_COUNT; i++) {
 		ec_int = IT83XX_INTC_IVCT(cpu_int_entry_number);
+
+		asm volatile(
+			/*
+			 * the delay time between reading the first and second
+			 * IVCT register might need to be greater than 0.125us.
+			 * (EC's clock)
+			 */
+			".rept %0\n\t"
+			"nop\n\t"
+			".endr\n\t"
+			: : "i"(8));
 		/*
 		 * WORKAROUND: when the interrupt vector register isn't
 		 * latched in a load operation,

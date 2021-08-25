@@ -1455,7 +1455,9 @@ enum bram_indices {
 	/* EC logs status */
 	BRAM_IDX_EC_LOG_STATUS = 0xc,
 
-	/* offset 0x0d ~ 0x1f are reserved for future use. */
+	/* offset 0x0d ~ 0x1e are reserved for future use. */
+	BRAM_IDX_EC_INT = 0x1f,
+
 #if defined(CONFIG_HOSTCMD_LPC) || defined(CONFIG_HOSTCMD_ESPI)
 	/*
 	 * offset 0x20 ~ 0x7b are reserved for future use.
@@ -1497,6 +1499,8 @@ enum bram_ec_logs_status {
 	EC_LOG_SAVED_IN_FLASH = 1,
 	EC_LOG_SAVED_IN_MEMORY
 };
+
+#define BRAM_EC_INT             IT83XX_BRAM_BANK0(BRAM_IDX_EC_INT)
 
 #define BRAM_VALID_FLAGS0       IT83XX_BRAM_BANK0(BRAM_IDX_VALID_FLAGS0)
 #define BRAM_VALID_FLAGS1       IT83XX_BRAM_BANK0(BRAM_IDX_VALID_FLAGS1)
