@@ -62,9 +62,43 @@ __overridable int board_c1_ps8818_mux_set(const struct usb_mux *me,
 	return 0;
 }
 
+static int goroh_usb_c0_init_mux(const struct usb_mux *me)
+{
+	return virtual_usb_mux_driver.init(me);
+}
+
+static int goroh_usb_c0_set_mux(const struct usb_mux *me, mux_state_t mux_state,
+				bool *ack_required)
+{
+	/*
+	 * b/188376636: Inverse C0 polarity.
+	 * Goroh rev0 CC1/CC2 SBU1/SBU2 are reversed.
+	 * We report inversed polarity to the SoC and SoC we reverse the SBU
+	 * accordingly.
+	 */
+	mux_state = mux_state ^ USB_PD_MUX_POLARITY_INVERTED;
+
+	return virtual_usb_mux_driver.set(me, mux_state, ack_required);
+
+}
+
+static int goroh_usb_c0_get_mux(const struct usb_mux *me,
+				mux_state_t *mux_state)
+{
+	return virtual_usb_mux_driver.get(me, mux_state);
+}
+
+struct usb_mux_driver goroh_usb_c0_mux_driver = {
+	.init = goroh_usb_c0_init_mux,
+	.set = goroh_usb_c0_set_mux,
+	.get = goroh_usb_c0_get_mux,
+};
+
 const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	{
-		/* C0 no mux */
+		.usb_port = USBC_PORT_C0,
+		.driver = &goroh_usb_c0_mux_driver,
+		.hpd_update = &virtual_hpd_update,
 	},
 	{
 		.usb_port = USBC_PORT_C1,
