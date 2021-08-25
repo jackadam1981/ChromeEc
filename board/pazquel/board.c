@@ -27,6 +27,7 @@
 #include "pwm_chip.h"
 #include "system.h"
 #include "shi_chip.h"
+#include "sku.h"
 #include "switch.h"
 #include "tablet_mode.h"
 #include "task.h"
@@ -270,6 +271,20 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	},
 };
 
+static void board_update_sensor_config_from_sku(void)
+{
+	if (board_is_clamshell()) {
+		motion_sensor_count = 0;
+		gmr_tablet_switch_disable();
+		/* The sensors are not stuffed; don't allow lines to float */
+		gpio_set_flags(GPIO_ACCEL_GYRO_INT_L,
+			       GPIO_INPUT | GPIO_PULL_DOWN);
+		gpio_set_flags(GPIO_LID_ACCEL_INT_L,
+			       GPIO_INPUT | GPIO_PULL_DOWN);
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_update_sensor_config_from_sku,
+	     HOOK_PRIO_INIT_I2C + 2);
 /* Initialize board. */
 static void board_init(void)
 {
@@ -363,6 +378,21 @@ static void board_chipset_resume(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
 
+__override uint32_t board_get_sku_id(void)
+{
+	static int sku_id = -1;
+
+	if (sku_id == -1) {
+		int bits[3];
+
+		bits[0] = gpio_get_ternary(GPIO_SKU_ID0);
+		bits[1] = gpio_get_ternary(GPIO_SKU_ID1);
+		bits[2] = gpio_get_ternary(GPIO_SKU_ID2);
+		sku_id = binary_first_base3_from_bits(bits, ARRAY_SIZE(bits));
+	}
+
+	return (uint32_t)sku_id;
+}
 void board_set_switchcap_power(int enable)
 {
 	gpio_set_level(GPIO_SWITCHCAP_ON, enable);
@@ -600,4 +630,4 @@ struct motion_sensor_t motion_sensors[] = {
 	 .max_frequency = BMI_GYRO_MAX_FREQ,
 	},
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
