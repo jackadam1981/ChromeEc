@@ -22,6 +22,30 @@
       },
       "revId": "353f1ef81bc8337d02f05d4d1cf9b6ca588d8865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bbe0f0c_a1efff2c",
+        "filename": "board/brask/board.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-08-25T06:26:59Z",
+      "side": 1,
+      "message": "ok, let me change it to 60w now. We can refine it based on the result in b/197702356",
+      "parentUuid": "6afe28aa_60816154",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "353f1ef81bc8337d02f05d4d1cf9b6ca588d8865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
