@@ -81,6 +81,30 @@
       },
       "revId": "e6fb3dba4974b3d67c5a149f6e420749c29d2f0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c187637_d0cdfc69",
+        "filename": "board/brask/pwm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-25T04:31:53Z",
+      "side": 1,
+      "message": "5 seems correct. no change from brya. PWM_CH_FAN is now 0.",
+      "parentUuid": "c53b305d_803b0272",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "e6fb3dba4974b3d67c5a149f6e420749c29d2f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
