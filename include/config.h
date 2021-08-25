@@ -1360,6 +1360,8 @@
 #undef CONFIG_DCRYPTO_BOARD
 /* Build FIPS utils in the module */
 #undef CONFIG_FIPS_UTIL
+/* Build FIPS separately. Calculate and inject the checksum. */
+#undef CONFIG_FIPS_MODULE
 /*
  * This provides struct definitions and function declarations that can be
  * implemented by unit tests for testing code that depends on dcrypto.
