@@ -10,29 +10,29 @@
 
 #include "baseboard.h"
 
-/* [Core view]
+/*
  * RW only, no flash
- * +-------------------- 0x0
+ * +-------------------- 0xaf000 + 0
  * | ROM vectortable, .text, .rodata, .data LMA
- * +-------------------- 0xb000
+ * +-------------------- 0xaf000 + 0xb000 = 0xba000
  * | RAM .bss, .data
- * +-------------------- 0xfc00
+ * +-------------------- 0xaf000 + 0xfc00 = 0xbec00
  * | Reserved (padding for 1k-alignment)
- * +-------------------- 0xfdb0
+ * +-------------------- 0xaf000 + 0xfdb0 = 0xbedb0
  * | IPI shared buffer with AP (288 + 8) * 2
- * +-------------------- 0x10000
+ * +-------------------- 0xaf000 + 0x10000 = 0xbf000
  *
- * [Bus view]
- * The base address 0x0 is translate to 0xb0000. This means that this core
- * actually accesses physical address 0xb0000 when accesses 0x0 by
- * instructions.
+ * [Memory remap]
+ * The base address 0x0~0x1000 is translated to 0xaf000~0xb0000. This means
+ * that core 1 actually accesses physical address 0xaf000 when accesses 0x0
+ * from core view.
  */
-#define CONFIG_ROM_BASE 0x0
-#define CONFIG_RAM_BASE 0xb000
+#define CONFIG_ROM_BASE 0xaf000
+#define CONFIG_RAM_BASE 0xba000
 #define CONFIG_ROM_SIZE (CONFIG_RAM_BASE - CONFIG_ROM_BASE)
 #define CONFIG_RAM_SIZE ((CONFIG_IPC_SHARED_OBJ_ADDR & (~(0x400 - 1))) - \
 			 CONFIG_RAM_BASE)
 
-#define SCP_FW_END 0x10000
+#define SCP_FW_END 0xbf000
 
 #endif /* __CROS_EC_BOARD_H */

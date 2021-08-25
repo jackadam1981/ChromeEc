@@ -123,7 +123,11 @@
 #define   GIPC_IN(n)			BIT(n)
 
 /* UART */
+#ifdef CHIP_VARIANT_MT8195_CORE1
+#define SCP_UART_COUNT			3
+#else
 #define SCP_UART_COUNT			2
+#endif
 #define UART_TX_IRQ(n)			CONCAT3(SCP_IRQ_UART, n, _TX)
 #define UART_RX_IRQ(n)			CONCAT3(SCP_IRQ_UART, n, _RX)
 #define SCP_UART0_BASE			(SCP_REG_BASE + 0x26000)
@@ -206,7 +210,10 @@
 #define AP_GPIO_MODE20_SET		REG32(AP_GPIO_BASE + 0x0444)
 #define AP_GPIO_MODE20_CLR		REG32(AP_GPIO_BASE + 0x0448)
 
-#define SCP_UART2_BASE			(AP_GPIO_BASE + 0x1001100)
+#ifdef CHIP_VARIANT_MT8195_CORE1
+/* AP UART1 for core 1 */
+#define SCP_UART2_BASE			(AP_GPIO_BASE + 0x01001200)
+#endif
 
 #include "clock_regs.h"
 

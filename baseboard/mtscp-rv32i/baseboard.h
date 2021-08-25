@@ -58,10 +58,10 @@
 
 #ifdef CHIP_VARIANT_MT8195_CORE1
 /* Access DRAM through cached access */
-#define CONFIG_DRAM_BASE 0x11400000
+#define CONFIG_DRAM_BASE 0x13000000
 /* Shared memory address in AP physical address space. */
-#define CONFIG_DRAM_BASE_LOAD 0x51400000
-#define CONFIG_DRAM_SIZE 0x01400000 /* 20 MB */
+#define CONFIG_DRAM_BASE_LOAD 0x53000000
+#define CONFIG_DRAM_SIZE 0x01000000 /* 16 MB */
 #else
 /* Access DRAM through cached access */
 #define CONFIG_DRAM_BASE 0x10000000
@@ -69,6 +69,8 @@
 #define CONFIG_DRAM_BASE_LOAD 0x50000000
 #define CONFIG_DRAM_SIZE 0x01400000 /* 20 MB */
 #endif
+
+#define CONFIG_SCP_CORE1_RAM_SIZE 0x10000
 
 /* MPU settings */
 #define NR_MPU_ENTRIES 16
