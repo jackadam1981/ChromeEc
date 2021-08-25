@@ -14,9 +14,9 @@
 
 /* RW only, no flash */
 #undef  CONFIG_FW_INCLUDE_RO
-#define CONFIG_RO_MEM_OFF 0
+#define CONFIG_RO_MEM_OFF 0xaf000
 #define CONFIG_RO_SIZE 0
-#define CONFIG_RW_MEM_OFF 0
+#define CONFIG_RW_MEM_OFF 0xaf000
 #define CONFIG_RW_SIZE 0x10000 /* 64KB */
 #define CONFIG_EC_WRITABLE_STORAGE_OFF 0
 #define CONFIG_EC_PROTECTED_STORAGE_OFF 0
@@ -53,5 +53,7 @@
 #undef CONFIG_MPU
 /* TODO: core/riscv-rv32i pollution */
 #define __ram_code
+
+#define CONFIG_POLLING_UART
 
 #endif /* __CROS_EC_CONFIG_CHIP_H */

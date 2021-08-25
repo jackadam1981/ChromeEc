@@ -47,11 +47,13 @@ void uart_init(void)
 	UART_LCR(UARTN) &= ~UART_LCR_DLAB;
 	/* DLAB end */
 
+#ifndef CHIP_VARIANT_MT8195_CORE1
 	/* Enable received data interrupt */
 	UART_IER(UARTN) |= UART_IER_RDI;
 
 	task_enable_irq(UART_TX_IRQ(UARTN));
 	task_enable_irq(UART_RX_IRQ(UARTN));
+#endif
 #endif
 
 	init_done = 1;
@@ -125,6 +127,17 @@ static void uart_process(void)
 }
 
 #if (UARTN < SCP_UART_COUNT)
+#ifdef CHIP_VARIANT_MT8195_CORE1
+void uart_task(void *u)
+{
+	while (1) {
+		if (uart_rx_available() || tx_started)
+			uart_process();
+		else
+			task_wait_event(UART_IDLE_WAIT_US);
+	}
+}
+#else
 static void uart_irq_handler(void)
 {
 	extern volatile int ec_int;
@@ -143,6 +156,7 @@ static void uart_irq_handler(void)
 	}
 }
 DECLARE_IRQ(UART_INTC_GROUP, uart_irq_handler, 0);
+#endif
 #else
 
 #ifndef HAS_TASK_APUART
