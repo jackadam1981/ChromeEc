@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fe83230_2544da8d",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-25T15:38:15Z",
+      "side": 1,
+      "message": "Add tab to align continuation lines.",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 1
+      },
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b85631d_1ac33808",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-25T15:38:15Z",
+      "side": 1,
+      "message": "Create another `struct motion_sensor_t` variable for the BMI260 config. Copy the whole struct here.",
+      "range": {
+        "startLine": 399,
+        "startChar": 27,
+        "endLine": 399,
+        "endChar": 58
+      },
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f593f3e6_0376984a",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-25T15:38:15Z",
+      "side": 1,
+      "message": "Remove the {} for this one-line statement.",
+      "range": {
+        "startLine": 417,
+        "startChar": 63,
+        "endLine": 417,
+        "endChar": 65
+      },
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "038b66c7_e9a52520",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-25T15:38:15Z",
+      "side": 1,
+      "message": "Why define this CONFIG?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
