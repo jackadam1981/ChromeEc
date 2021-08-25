@@ -16,6 +16,23 @@
       "message": "IIRC, we are not allowing to use the i2c runtime probe in the EC code to select the sensor. +Gwendal into discussion.",
       "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b52c99a7_01ebe1d9",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-25T17:22:56Z",
+      "side": 1,
+      "message": "Instead of discovering the sensor at boot, could it be possible to know which sensor is present using the board version and cbi_get_board_version()?",
+      "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
