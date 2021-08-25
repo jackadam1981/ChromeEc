@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45ac3203_6792df74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-25T15:39:17Z",
+      "side": 1,
+      "message": "This change also needs to update zephyr/shim/src/adc.c. This defines the adc_channels for zephyr builds, regardless of the chipset used.",
+      "revId": "c515450dd845b55ea1b0ec6ed9dcf0d54cd57aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fba5186_8c84b791",
+        "filename": "chip/it83xx/adc_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-25T15:39:17Z",
+      "side": 1,
+      "message": "It will be a larger change initially, but how about adding #include \"adc_chip.h\" into include/adc.h, and then moving this extern declaration into include/adc.h?",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "c515450dd845b55ea1b0ec6ed9dcf0d54cd57aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
