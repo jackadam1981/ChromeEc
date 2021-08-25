@@ -270,6 +270,18 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	},
 };
 
+static void board_update_sensor_config_clamshell(void)
+{
+	motion_sensor_count = 0;
+	gmr_tablet_switch_disable();
+	/* The sensors are not stuffed; don't allow lines to float */
+	gpio_set_flags(GPIO_ACCEL_GYRO_INT_L,
+		       GPIO_INPUT | GPIO_PULL_DOWN);
+	gpio_set_flags(GPIO_LID_ACCEL_INT_L,
+		       GPIO_INPUT | GPIO_PULL_DOWN);
+}
+DECLARE_HOOK(HOOK_INIT, board_update_sensor_config_clamshell,
+	     HOOK_PRIO_INIT_I2C + 2);
 /* Initialize board. */
 static void board_init(void)
 {
@@ -600,6 +612,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .max_frequency = BMI_GYRO_MAX_FREQ,
 	},
 };
+<<<<<<< HEAD   (afdc6d hammer: Enable eel GMR function)
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 
 #ifndef TEST_BUILD
@@ -621,3 +634,6 @@ void lid_angle_peripheral_enable(int enable)
 	}
 }
 #endif
+=======
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+>>>>>>> CHANGE (026fce pazquel: Support clamshell SKUs)
