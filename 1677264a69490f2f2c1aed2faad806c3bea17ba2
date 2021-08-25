@@ -34,6 +34,24 @@
       "parentUuid": "15dd411c_034a2c89",
       "revId": "1677264a69490f2f2c1aed2faad806c3bea17ba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b0b55f_87717f84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1386300
+      },
+      "writtenOn": "2021-08-25T08:24:16Z",
+      "side": 1,
+      "message": "As per current setting in coreboot for fan the first threshold 75C is for TCPU which is for DTS temperature measured by on package sensor for silicon temperature. I feel that is fine at this stage, we might need to fine tune thresholds further if required in future for all sensors including TCPU. \n\nAlso, please note that when there is no load on system and TCPU temperature \u003c 75C, Fan supposed to be turned OFF. Please, check comment#11 on bug:186366441",
+      "parentUuid": "14ac6021_2f475a79",
+      "revId": "1677264a69490f2f2c1aed2faad806c3bea17ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
