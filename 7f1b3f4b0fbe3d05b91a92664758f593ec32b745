@@ -287,6 +287,24 @@
       "parentUuid": "c6aa4484_170f3e7a",
       "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea0353a_e1e4ccfc",
+        "filename": "zephyr/drivers/cros_rtc/rtc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-25T15:30:19Z",
+      "side": 1,
+      "message": "You just need to update zephyr/CMakelists.txt\n\nzephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_RTC common/rtc.c)",
+      "parentUuid": "12d4b906_6bd6daf7",
+      "revId": "7f1b3f4b0fbe3d05b91a92664758f593ec32b745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9519fb74_878d0805",
+        "filename": "zephyr/drivers/cros_rtc/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-25T15:30:19Z",
+      "side": 1,
+      "message": "I think it might make sense to consolidate zephyr/Kconfig.rtc and this file.\n\nzephyr/Kconfig provides the option CONFIG_PLATFORM_EC_RTC.  CONFIG_PLATFORM_EC_RTC implied the cros_rtc driver is available, so I don\u0027t think we need both CONFIG_PLATFORM_EC_RTC and CONFIG_CROS_RTC.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 19
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8873de7_7d78a16d",
+        "filename": "zephyr/drivers/cros_rtc/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-25T15:30:19Z",
+      "side": 1,
+      "message": "Add an actual label here\n    choice CROS_RTC_TYPE\n    prompt \"\u003cprompt\u003e\"\n    help\n       \u003cdescription\u003e\n\nThis allows defconfig files to override the default using this form:\n\nchoice CROS_RTC_TYPE\n    default CROS_RTC_NXP_PCF85063A",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11d5cde5_4342d9c8",
         "filename": "zephyr/drivers/cros_rtc/Kconfig",
         "patchSetId": 4
