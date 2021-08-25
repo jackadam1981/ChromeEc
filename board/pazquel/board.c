@@ -270,6 +270,18 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	},
 };
 
+static void board_update_sensor_config_clamshell(void)
+{
+	motion_sensor_count = 0;
+	gmr_tablet_switch_disable();
+	/* The sensors are not stuffed; don't allow lines to float */
+	gpio_set_flags(GPIO_ACCEL_GYRO_INT_L,
+		       GPIO_INPUT | GPIO_PULL_DOWN);
+	gpio_set_flags(GPIO_LID_ACCEL_INT_L,
+		       GPIO_INPUT | GPIO_PULL_DOWN);
+}
+DECLARE_HOOK(HOOK_INIT, board_update_sensor_config_clamshell,
+	     HOOK_PRIO_INIT_I2C + 2);
 /* Initialize board. */
 static void board_init(void)
 {
@@ -600,24 +612,4 @@ struct motion_sensor_t motion_sensors[] = {
 	 .max_frequency = BMI_GYRO_MAX_FREQ,
 	},
 };
-const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
-
-#ifndef TEST_BUILD
-/* This callback disables keyboard when convertibles are fully open */
-void lid_angle_peripheral_enable(int enable)
-{
-	int chipset_in_s0 = chipset_in_state(CHIPSET_STATE_ON);
-
-	if (enable) {
-		keyboard_scan_enable(1, KB_SCAN_DISABLE_LID_ANGLE);
-	} else {
-		/*
-		 * Ensure that the chipset is off before disabling the keyboard.
-		 * When the chipset is on, the EC keeps the keyboard enabled and
-		 * the AP decides whether to ignore input devices or not.
-		 */
-		if (!chipset_in_s0)
-			keyboard_scan_enable(0, KB_SCAN_DISABLE_LID_ANGLE);
-	}
-}
-#endif
+unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
