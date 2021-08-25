@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bfacea2_2c03fba3",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-25T21:13:58Z",
+      "side": 1,
+      "message": "Given the name, should we be checking the role is UFP before calling the function?",
+      "revId": "527d63e88cdb9bd46cc9aa9fc32671acb8559a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
