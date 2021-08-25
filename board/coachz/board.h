@@ -29,6 +29,8 @@
 #define CONFIG_BATTERY_FUEL_GAUGE
 #define CONFIG_BATTERY_VENDOR_PARAM
 
+#define CONFIG_CHIP_INIT_ROM_REGION
+
 /* BC 1.2 Charger */
 #define CONFIG_BC12_DETECT_PI3USB9201
 
@@ -45,6 +47,9 @@
 #define CONFIG_ACCELGYRO_BMI160_INT_EVENT \
 	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
 #define OPT3001_I2C_ADDR_FLAGS OPT3001_I2C_ADDR1_FLAGS
+#define CONFIG_ACCELGYRO_BMI260
+#define CONFIG_ACCELGYRO_BMI260_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(LID_ACCEL)
 
 #define CONFIG_TABLET_MODE
 #define CONFIG_TABLET_MODE_SWITCH
@@ -108,6 +113,8 @@ void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
 /* Base detection */
 void base_detect_interrupt(enum gpio_signal signal);
+/* motion sensor interrupt */
+void motion_interrupt(enum gpio_signal signal);
 
 #endif /* !defined(__ASSEMBLER__) */
 
