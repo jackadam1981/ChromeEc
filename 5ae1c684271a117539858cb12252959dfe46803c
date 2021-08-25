@@ -16,6 +16,24 @@
       "message": "Hrmm, no CQ runs for this? Is that intentional?",
       "revId": "5ae1c684271a117539858cb12252959dfe46803c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "659a86c7_da5f05e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-25T19:25:27Z",
+      "side": 1,
+      "message": "the vast majority of changes in this branch do not affect the CQ, so this is intentional,",
+      "parentUuid": "68dfa2e1_c4315ec8",
+      "revId": "5ae1c684271a117539858cb12252959dfe46803c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
