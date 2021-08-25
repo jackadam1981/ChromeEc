@@ -35,7 +35,7 @@ const struct board_batt_params board_battery_info[] = {
 	/* NVT CP813907-01 Battery Information */
 	[BATTERY_ATL_3S1P_606072] = {
 		.fuel_gauge = {
-			.manuf_name = "NVT",
+			.manuf_name = "Fujitsu",
 			.device_name = "CP813907-01",
 			.ship_mode = {
 				.reg_addr = 0x00,
