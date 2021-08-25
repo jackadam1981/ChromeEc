@@ -106,6 +106,24 @@
       "parentUuid": "21d37d4b_b6438248",
       "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a8fe41_a29c6533",
+        "filename": "driver/usb_mux/anx7451.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-25T20:53:00Z",
+      "side": 0,
+      "message": "I could possibly see something like this in the mux common code.  I very much want to avoid having any chipset hooks in the drivers when there\u0027s nothing about the chip itself causing the power sequencing dependency (the AMD muxes get to be their own special-case, since they are inherently tied to the chipset state :) )\n\nWe could try using the new flag from the last CL as an indication on leaving G3 that we need to restore any mux state that was set.  That would require caching the last set mux state, and I\u0027m contemplating whether that would be more or less of a bug-risk than this approach.  I can give it a shot.",
+      "parentUuid": "fe0fc1c6_e48012a6",
+      "revId": "d57d8602baa92efbddbd1dbd008ad42c6de53932",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
