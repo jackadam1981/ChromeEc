@@ -52,6 +52,24 @@
       "parentUuid": "14ac6021_2f475a79",
       "revId": "1677264a69490f2f2c1aed2faad806c3bea17ba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b75a7a35_6129c8b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-25T20:02:15Z",
+      "side": 1,
+      "message": "I\u0027m looking at Volteer as a reference and the fan starts to spin way before any component reaches 75C: https://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/coreboot/src/mainboard/google/volteer/variants/baseboard/devicetree.cb;l\u003d384\n\nOnly the CPU sensor tresholds are around 75C area, all other sensors trigger the fan at 39C",
+      "parentUuid": "08b0b55f_87717f84",
+      "revId": "1677264a69490f2f2c1aed2faad806c3bea17ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
