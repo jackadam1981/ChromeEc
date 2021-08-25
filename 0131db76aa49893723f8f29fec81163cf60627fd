@@ -22,6 +22,30 @@
       },
       "revId": "0131db76aa49893723f8f29fec81163cf60627fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c7f83c1_7331b9ad",
+        "filename": "board/brask/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-08-25T04:28:45Z",
+      "side": 1,
+      "message": "yeah, we can set it to 3. My original thought is to reserve the port 3 for the typec port because the SOC can support up to 4 typec ports. However, the brask only uses 3, so, it is ok to set it to 3. Let me change it in the next patch.",
+      "parentUuid": "77cfaa3f_8c28ac6c",
+      "range": {
+        "startLine": 19,
+        "startChar": 30,
+        "endLine": 19,
+        "endChar": 31
+      },
+      "revId": "0131db76aa49893723f8f29fec81163cf60627fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
