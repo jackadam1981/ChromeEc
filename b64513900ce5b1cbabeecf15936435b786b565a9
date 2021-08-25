@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19fa984a_e5819313",
+        "filename": "Makefile.rules",
+        "patchSetId": 6
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-25T22:06:22Z",
+      "side": 1,
+      "message": "This means the flat is created twice on all chip/g/ boards even if there isn\u0027t a fips module. Do you think that\u0027s ok?",
+      "range": {
+        "startLine": 440,
+        "startChar": 0,
+        "endLine": 440,
+        "endChar": 37
+      },
+      "revId": "b64513900ce5b1cbabeecf15936435b786b565a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
