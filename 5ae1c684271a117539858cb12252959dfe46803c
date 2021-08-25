@@ -34,6 +34,24 @@
       "parentUuid": "68dfa2e1_c4315ec8",
       "revId": "5ae1c684271a117539858cb12252959dfe46803c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac8f400f_8b0df4e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-08-25T19:28:02Z",
+      "side": 1,
+      "message": "How did this break chromeos-ec-headers? Should the firmware-ec-cq be building this package?",
+      "parentUuid": "659a86c7_da5f05e5",
+      "revId": "5ae1c684271a117539858cb12252959dfe46803c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
