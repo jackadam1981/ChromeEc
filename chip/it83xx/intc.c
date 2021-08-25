@@ -15,8 +15,9 @@
 
 int __ram_code intc_get_ec_int(void)
 {
-	extern volatile int ec_int;
-	return ec_int;
+	//extern volatile int ec_int;
+	//return ec_int;
+	return BRAM_EC_INT;
 }
 
 void intc_cpu_int_group_5(void)

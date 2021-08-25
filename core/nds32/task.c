@@ -333,7 +333,7 @@ void update_exc_start_time(void)
 }
 
 /* Interrupt number of EC modules */
-volatile int ec_int;
+//volatile int ec_int;
 
 void __ram_code start_irq_handler(void)
 {
@@ -341,9 +341,11 @@ void __ram_code start_irq_handler(void)
 	asm volatile ("smw.adm $r0, [$sp], $r2, 0");
 	/* If this is a SW interrupt */
 	if (get_itype() & 8)
-		ec_int = sw_int_num;
+		BRAM_EC_INT = sw_int_num;
 	else
-		ec_int = chip_get_ec_int();
+		BRAM_EC_INT = chip_get_ec_int();
+
+	//BRAM_EC_INT = ec_int;
 
 #if defined(CONFIG_LOW_POWER_IDLE) && defined(CHIP_FAMILY_IT83XX)
 	clock_sleep_mode_wakeup_isr();
@@ -355,8 +357,8 @@ void __ram_code start_irq_handler(void)
 	 * Track IRQ distribution.  No need for atomic add, because an IRQ
 	 * can't pre-empt itself.
 	 */
-	if ((ec_int > 0) && (ec_int < ARRAY_SIZE(irq_dist)))
-		irq_dist[ec_int]++;
+	if ((BRAM_EC_INT > 0) && (BRAM_EC_INT < ARRAY_SIZE(irq_dist)))
+		irq_dist[BRAM_EC_INT]++;
 #endif
 	/* restore r0, r1, and r2 */
 	asm volatile ("lmw.bim $r0, [$sp], $r2, 0");

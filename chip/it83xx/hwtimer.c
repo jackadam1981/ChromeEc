@@ -224,8 +224,6 @@ static void __hw_clock_source_irq(void)
 DECLARE_IRQ(CPU_INT_GROUP_3, __hw_clock_source_irq, 1);
 
 #ifdef IT83XX_EXT_OBSERVATION_REG_READ_TWO_TIMES
-/* Number of CPU cycles in 125 us */
-#define CYCLES_125NS (125*(PLL_CLOCK/SECOND) / 1000)
 uint32_t __ram_code ext_observation_reg_read(enum ext_timer_sel ext_timer)
 {
 	uint32_t prev_mask = read_clear_int_mask();
