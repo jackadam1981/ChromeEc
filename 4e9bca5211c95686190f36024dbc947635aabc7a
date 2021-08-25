@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79934f18_a93a41c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-25T15:43:25Z",
+      "side": 1,
+      "message": "See my comments in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3115729/4.\nThe code is similar, the cls should use the same Change-Id to track it easily.",
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7fe83230_2544da8d",
         "filename": "board/coachz/board.c",
         "patchSetId": 2
