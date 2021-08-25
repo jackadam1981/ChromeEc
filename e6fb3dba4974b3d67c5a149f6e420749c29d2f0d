@@ -57,6 +57,30 @@
       },
       "revId": "e6fb3dba4974b3d67c5a149f6e420749c29d2f0d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c53b305d_803b0272",
+        "filename": "board/brask/pwm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-08-25T04:15:38Z",
+      "side": 1,
+      "message": "From the schematics, it should be GPIOB7/PWM5. IIUC, this channel is the physical channel in the npc ec, am i understand correctly?",
+      "parentUuid": "e0b06e37_62e04a95",
+      "range": {
+        "startLine": 15,
+        "startChar": 13,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "e6fb3dba4974b3d67c5a149f6e420749c29d2f0d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
