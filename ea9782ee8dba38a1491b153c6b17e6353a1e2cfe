@@ -22,6 +22,30 @@
       },
       "revId": "ea9782ee8dba38a1491b153c6b17e6353a1e2cfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30c11d00_150c1ef1",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-25T23:46:05Z",
+      "side": 1,
+      "message": "i\u0027d put it before init.o - who knows if it will change. But if nothing is expected to change - it\u0027s good enough.",
+      "parentUuid": "96ef1f3b_3560bf55",
+      "range": {
+        "startLine": 136,
+        "startChar": 58,
+        "endLine": 136,
+        "endChar": 71
+      },
+      "revId": "ea9782ee8dba38a1491b153c6b17e6353a1e2cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
