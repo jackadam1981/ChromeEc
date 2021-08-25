@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96ef1f3b_3560bf55",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-25T20:42:34Z",
+      "side": 1,
+      "message": "Is this still close enough to the start of code?",
+      "range": {
+        "startLine": 136,
+        "startChar": 58,
+        "endLine": 136,
+        "endChar": 71
+      },
+      "revId": "ea9782ee8dba38a1491b153c6b17e6353a1e2cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
