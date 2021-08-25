@@ -377,10 +377,10 @@ power_chipset_handle_host_sleep_event(enum host_sleep_event state,
 {
 	if (state == HOST_SLEEP_EVENT_S3_SUSPEND) {
 		CPRINTS("AP suspend");
-		clock_select_clock(SCP_CLK_ULPOSC2_LOW_SPEED);
+		/* clock_select_clock(SCP_CLK_ULPOSC2_LOW_SPEED); */
 	} else if (state == HOST_SLEEP_EVENT_S3_RESUME) {
 		CPRINTS("AP resume");
-		clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED);
+		/* clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED); */
 	}
 }
 
@@ -415,10 +415,10 @@ void clock_init(void)
 		clock_calibrate_ulposc(&opp[i]);
 
 	/* select ULPOSC2 high speed SCP clock */
-	clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED);
+	/* clock_select_clock(SCP_CLK_ULPOSC2_HIGH_SPEED); */
 
 	/* select BCLK to use ULPOSC / 8 */
-	SCP_BCLK_CK_SEL = BCLK_CK_SEL_ULPOSC_DIV8;
+	/* SCP_BCLK_CK_SEL = BCLK_CK_SEL_ULPOSC_DIV8; */
 
 	/* enable default clock gate */
 	SCP_SET_CLK_CG |= CG_DMA_CH3 | CG_DMA_CH2 | CG_DMA_CH1 | CG_DMA_CH0 |
