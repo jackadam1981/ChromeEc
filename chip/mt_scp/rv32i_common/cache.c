@@ -40,11 +40,13 @@ void cache_init(void)
 		}
 	}
 
+#ifndef CHIP_VARIANT_MT8195_CORE1
 	/* enable mpu entries */
 	write_csr(CSR_MPU_ENTRY_EN, mpu_en);
 
 	/* enable mpu */
 	set_csr(CSR_MCTREN, CSR_MCTREN_MPU);
+#endif
 
 	/* fence */
 	asm volatile ("fence.i" ::: "memory");
