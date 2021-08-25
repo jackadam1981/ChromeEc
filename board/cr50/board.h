@@ -159,6 +159,7 @@
 
 /* Include crypto stuff, both software and hardware. Enable optimizations. */
 /* Use board specific version of dcrypto */
+#define CONFIG_FIPS_MODULE
 #define CONFIG_FIPS_UTIL
 #define CONFIG_DCRYPTO_BOARD
 #define CONFIG_UPTO_SHA512
