@@ -70,6 +70,24 @@
       "parentUuid": "ac8f400f_8b0df4e1",
       "revId": "5ae1c684271a117539858cb12252959dfe46803c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ba5acbf_c097d19e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-08-25T19:34:32Z",
+      "side": 1,
+      "message": "It\u0027s worth it for all the other developers to keep the CQ green. We shouldn\u0027t intentionally have gaps in testing if they can affect the whole CQ.",
+      "parentUuid": "ada872d9_ead1ff2d",
+      "revId": "5ae1c684271a117539858cb12252959dfe46803c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
