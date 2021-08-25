@@ -66,35 +66,56 @@ int cpu_int_entry_number;
 
 int chip_get_ec_int(void)
 {
-	extern volatile int ec_int;
+	//extern volatile int ec_int;
 
 #if defined(CHIP_FAMILY_IT8320)    /* N8 core */
 	int i;
 
 	for (i = 0; i < IT83XX_IRQ_COUNT; i++) {
-		ec_int = IT83XX_INTC_IVCT(cpu_int_entry_number);
+		BRAM_EC_INT = IT83XX_INTC_IVCT(cpu_int_entry_number);
+
+		asm volatile(
+			/*
+			 * the delay time between reading the first and second
+			 * IVCT register might need to be greater than 0.125us.
+			 * (EC's clock)
+			 */
+			".rept %0\n\t"
+			"nop\n\t"
+			".endr\n\t"
+			: : "i"(CYCLES_125NS));
 		/*
 		 * WORKAROUND: when the interrupt vector register isn't
 		 * latched in a load operation,
 		 * we read it again to make sure the value we got
 		 * is the correct value.
 		 */
-		if (ec_int == IT83XX_INTC_IVCT(cpu_int_entry_number))
+		if (BRAM_EC_INT == IT83XX_INTC_IVCT(cpu_int_entry_number))
 			break;
 	}
 	/* Determine interrupt number */
-	ec_int -= 16;
+	BRAM_EC_INT -= 16;
 #else /* defined(CHIP_FAMILY_IT8XXX2) RISCV core */
 	/* wait until two equal interrupt values are read */
 	do {
-		ec_int = IT83XX_INTC_AIVCT;
-	} while (ec_int != IT83XX_INTC_AIVCT);
-	ec_int -= 0x10;
+		BRAM_EC_INT = IT83XX_INTC_AIVCT;
+		asm volatile(
+			/*
+			 * the delay time between reading the first and second
+			 * IVCT register might need to be greater than 0.125us.
+			 * (EC's clock)
+			 */
+			".rept %0\n\t"
+			"nop\n\t"
+			".endr\n\t"
+			: : "i"(CYCLES_125NS));
+	} while (BRAM_EC_INT != IT83XX_INTC_AIVCT);
+	BRAM_EC_INT -= 0x10;
 	/* Unsupported EC INT number. */
-	if (chip_get_intc_group(ec_int) >= 16)
+	if (chip_get_intc_group(BRAM_EC_INT) >= 16)
 		return -1;
 #endif
-	return ec_int;
+	return BRAM_EC_INT;
 }
 
 int chip_get_intc_group(int irq)

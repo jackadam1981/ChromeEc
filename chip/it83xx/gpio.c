@@ -46,6 +46,8 @@ static const struct kbs_gpio_ctrl_t kbs_gpio_ctrl_regs[] = {
  */
 static volatile uint8_t *wuesr(uint8_t grp)
 {
+	ASSERT(grp);
+
 	/*
 	 * From WUESR1-WUESR4, the address increases by ones. From WUESR5 on
 	 * the address increases by fours.
@@ -881,6 +883,16 @@ static void __gpio_irq(void)
 #ifdef CONFIG_HOSTCMD_X86
 	if (irq == IT83XX_IRQ_WKINTAD)
 		return;
+#endif
+
+#if defined(CHIP_FAMILY_IT8320)
+	if (!gpio_irqs[irq].wuc_group) {
+		panic_printf("!!! int/bram-int: %d/%d 0x%x 0x%x itype=0x%x psw=0x%x\n",
+		irq, BRAM_EC_INT,
+		gpio_irqs[irq].wuc_group, gpio_irqs[irq].wuc_mask,
+		 get_itype(), get_psw());
+		//return;
+	}
 #endif
 
 	/*
