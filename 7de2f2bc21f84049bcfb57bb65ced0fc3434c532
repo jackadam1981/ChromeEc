@@ -283,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fc2b74e_79dc5b14",
+        "filename": "util/ectool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-25T00:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1518fe42_4da1ee21",
+      "range": {
+        "startLine": 1108,
+        "startChar": 5,
+        "endLine": 1108,
+        "endChar": 27
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e12eb6d5_5c38d118",
@@ -320,6 +344,30 @@
       "side": 1,
       "message": "Changed to an absolute path from mnt/host/source instead of a relative path from this script. This follows what\u0027s done by other scripts that reference chromeos_version.sh. If the path to chromeos_version.sh changes this script will break, but so will the other scripts, so it should be obvious.\n\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:infra/recipes/recipe_modules/cros_version/api.py;l\u003d14\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/factory/devtools/mk/toolkit_version.sh;l\u003d13\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/third_party/chromiumos-overlay/sys-boot/coreboot/coreboot-9999.ebuild;l\u003d181",
       "parentUuid": "e12eb6d5_5c38d118",
+      "range": {
+        "startLine": 28,
+        "startChar": 26,
+        "endLine": 28,
+        "endChar": 71
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9e3aa29_d386e716",
+        "filename": "util/getversion.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-25T00:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0264da4e_4234fec3",
       "range": {
         "startLine": 28,
         "startChar": 26,
@@ -415,6 +463,30 @@
       "side": 1,
       "message": "CROS_FWID_MISSING?",
       "parentUuid": "36d70acb_f2cff61c",
+      "range": {
+        "startLine": 228,
+        "startChar": 30,
+        "endLine": 228,
+        "endChar": 34
+      },
+      "revId": "7de2f2bc21f84049bcfb57bb65ced0fc3434c532",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4148f61_737444c1",
+        "filename": "util/getversion.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-25T00:17:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0380290_a86b552d",
       "range": {
         "startLine": 228,
         "startChar": 30,
