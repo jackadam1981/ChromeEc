@@ -16,6 +16,23 @@
       "message": "Patch set 7 should be good to run on any system.  It turns out that when we\u0027re in a healthy eSPI state where traffic is successful, it\u0027s waaaaaaay too much to trigger on ESPIIE_PERACC.  We can still log port80 and ACPI and such from their modules, which might be useful to bringup teams.\n\nDefinitely not in a fully polished state yet, as this should definitely all be behind a CONFIG option to avoid overrunning old boards flash space. ",
       "revId": "58f6e3bfccded5ad868e55d661772a2628fc97fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d566f286_472cee76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-08-25T17:32:26Z",
+      "side": 1,
+      "message": "imo we should get something like this landed.",
+      "revId": "58f6e3bfccded5ad868e55d661772a2628fc97fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
