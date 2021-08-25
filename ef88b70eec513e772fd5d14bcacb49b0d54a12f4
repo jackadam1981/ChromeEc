@@ -125,6 +125,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "17853600_97f8ef27",
+        "filename": "board/nucleo-f411re/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-25T17:26:46Z",
+      "side": 1,
+      "message": "It is better to keep to cherry-pick commits, gerrit is able to track them accross branches.",
+      "parentUuid": "3c1ca117_48f7766f",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cae6a421_53606f65",
         "filename": "include/ec_commands.h",
         "patchSetId": 2
