@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fb88b63_ed7b32d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-08-25T04:58:09Z",
+      "side": 1,
+      "message": "zephyr build failed, please fix. thanks\n\n\n/mnt/host/source/src/platform/ec/build/zephyr/projects/volteer/volteer/modules/ec/common/charge_manager.c: In function\n\u0027board_get_vbus_voltage\u0027:\n/mnt/host/source/src/platform/ec/build/zephyr/projects/volteer/volteer/modules/ec/common/charge_manager.c:356:26: error: \u0027ADC_VBUS\u0027 undeclared (first use in this function); did you mean \u0027DT_BUS\u0027?\nreturn adc_read_channel(ADC_VBUS);\n^~~~~~~~\nDT_BUS\n/mnt/host/source/src/platform/ec/build/zephyr/projects/volteer/volteer/modules/ec/common/charge_manager.c:356:26: note: each undeclared identifier is reported only once for each function it appears in\n\n}\n^",
+      "revId": "3c6d3b3db953d1b6d7694ab7553e5368b8ceb09a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
