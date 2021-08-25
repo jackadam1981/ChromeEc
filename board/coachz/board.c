@@ -13,6 +13,7 @@
 #include "extpower.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
+#include "driver/accelgyro_bmi260.h"
 #include "driver/ppc/sn5s330.h"
 #include "driver/tcpm/ps8xxx.h"
 #include "driver/tcpm/tcpci.h"
@@ -327,7 +328,7 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 /* Mutexes */
 static struct mutex g_lid_mutex;
 
-static struct bmi_drv_data_t g_bmi160_data;
+static struct bmi_drv_data_t g_bmi_data;
 
 /* Matrix to rotate accelerometer into standard reference frame */
 const mat33_fp_t lid_standard_ref = {
@@ -350,7 +351,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .location = MOTIONSENSE_LOC_LID,
 	 .drv = &bmi160_drv,
 	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_bmi160_data,
+	 .drv_data = &g_bmi_data,
 	 .port = I2C_PORT_SENSOR,
 	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 	 .rot_standard_ref = &lid_standard_ref,
@@ -371,7 +372,7 @@ struct motion_sensor_t motion_sensors[] = {
 	 .location = MOTIONSENSE_LOC_LID,
 	 .drv = &bmi160_drv,
 	 .mutex = &g_lid_mutex,
-	 .drv_data = &g_bmi160_data,
+	 .drv_data = &g_bmi_data,
 	 .port = I2C_PORT_SENSOR,
 	 .i2c_spi_addr_flags = BMI160_ADDR0_FLAGS,
 	 .default_range = 1000, /* dps */
@@ -380,7 +381,44 @@ struct motion_sensor_t motion_sensors[] = {
 	 .max_frequency = BMI_GYRO_MAX_FREQ,
 	},
 };
+
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+static void board_detect_motionsensor(void)
+{
+	int val = -1;
+
+	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		return;
+
+	/* Check base accelgyro chip */
+	bmi_read8(motion_sensors[LID_ACCEL].port,
+	motion_sensors[LID_ACCEL].i2c_spi_addr_flags,
+			BMI260_CHIP_ID, &val);
+	if (val == BMI260_CHIP_ID_MAJOR) {
+		motion_sensors[LID_ACCEL].chip = MOTIONSENSE_CHIP_BMI260;
+		motion_sensors[LID_ACCEL].drv = &bmi260_drv;
+		motion_sensors[LID_ACCEL].i2c_spi_addr_flags =
+			BMI260_ADDR0_FLAGS;
+		motion_sensors[LID_GYRO].chip = MOTIONSENSE_CHIP_BMI260;
+		motion_sensors[LID_GYRO].drv = &bmi260_drv;
+		motion_sensors[LID_GYRO].i2c_spi_addr_flags =
+			BMI260_ADDR0_FLAGS,
+		CPRINTS("LID Accelgyro: BMI260");
+	}
+
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, board_detect_motionsensor,
+	     HOOK_PRIO_DEFAULT);
+DECLARE_HOOK(HOOK_INIT, board_detect_motionsensor, HOOK_PRIO_DEFAULT + 1);
+
+void motion_interrupt(enum gpio_signal signal)
+{
+	if (motion_sensors[LID_ACCEL].chip == MOTIONSENSE_CHIP_BMI260)
+		bmi260_interrupt(signal);
+	else
+		bmi160_interrupt(signal);
+}
 
 /* Initialize board. */
 static void board_init(void)
