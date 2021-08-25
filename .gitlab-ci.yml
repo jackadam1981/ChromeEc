@@ -104,3 +104,17 @@ volteer:
     PROJECT_SUBDIR: "volteer/"
     VERSION: 26
   <<: *build_template
+
+coverage:
+  stage: test
+  variables:
+    VERSION: 26
+  script:
+    - zmake --zephyr-base "${ZEPHYR_BASE}${VERSION}"
+      --modules-dir "${MODULES_DIR}" -l DEBUG coverage
+      "${BUILD_DIR}/coverage"
+    - ls "${BUILD_DIR}/coverage" "${BUILD_DIR}/coverage/coverage_rpt"
+  artifacts:
+    paths:
+      - build/coverage/*
+    expire_in: 1 week
