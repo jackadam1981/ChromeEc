@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c9a1644_31f2dd0e",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-25T05:42:52Z",
+      "side": 1,
+      "message": "use board_ prefix.",
+      "revId": "78a1a645dc1855b05d8bc68d36545d59e2994227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d33a0b30_ff4c25eb",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-25T05:42:52Z",
+      "side": 1,
+      "message": "Discovery on the i2c bus is frowned up: when we have BMI260, we will fail first init of BMI160 by sending an i2c command to the wrong address and time out, delaying the boot process.\nIt would be better to identify the difference using board_get_version().",
+      "revId": "78a1a645dc1855b05d8bc68d36545d59e2994227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13181886_09db0880",
+        "filename": "board/kukui/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-25T05:42:52Z",
+      "side": 1,
+      "message": "You can move it line 55 and replace #ifndef KRANE with #else",
+      "revId": "78a1a645dc1855b05d8bc68d36545d59e2994227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
