@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82569ef1_9010b9ae",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2536,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-25T05:34:23Z",
+      "side": 1,
+      "message": "Remove this line, it will make LIS2DS merging (if it happens) slightly more difficult.",
+      "revId": "18e2c28810b9e01d76d675ebcc828c647fb88fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "653a630a_063275cb",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4903,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-25T05:34:23Z",
+      "side": 1,
+      "message": "It was before ICM chipset in the original patch.",
+      "revId": "18e2c28810b9e01d76d675ebcc828c647fb88fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
