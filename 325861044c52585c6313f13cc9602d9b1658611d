@@ -22,6 +22,30 @@
       },
       "revId": "325861044c52585c6313f13cc9602d9b1658611d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f85f9c1a_cc45a810",
+        "filename": "util/get_fips_fingerprint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-25T21:50:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3cbf19a7_25bc2f77",
+      "range": {
+        "startLine": 21,
+        "startChar": 9,
+        "endLine": 21,
+        "endChar": 67
+      },
+      "revId": "325861044c52585c6313f13cc9602d9b1658611d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
