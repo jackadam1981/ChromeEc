@@ -4,6 +4,10 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Discover all the unit tests in the ec3po directory and run them.
-python3 -m unittest discover -b -s util/ec3po/ -p "*_unittest.py"  \
-    && touch util/ec3po/.tests-passed
+my_dir="$(dirname -- "$0")"
+parent_dir="$(realpath -- "$my_dir/..")"
+
+PYTHONPATH="$parent_dir" python3 -s -m unittest \
+    ec3po.console_unittest \
+    ec3po.interpreter_unittest \
+    && touch -- "$my_dir/.tests-passed"
