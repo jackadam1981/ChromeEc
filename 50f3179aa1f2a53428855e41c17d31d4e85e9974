@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ef59f14_ab80fa6d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-08-26T19:36:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ca518ce7_fbc0738e",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "50f3179aa1f2a53428855e41c17d31d4e85e9974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ac373d9_5b1150cd",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-26T05:38:50Z",
       "side": 1,
       "message": "could you file a bug capturing more info about what\u0027s\nwrong and suggested fix?",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "50f3179aa1f2a53428855e41c17d31d4e85e9974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbfb39b0_956750d7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-08-26T19:36:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5ac373d9_5b1150cd",
       "range": {
         "startLine": 14,
         "startChar": 4,
