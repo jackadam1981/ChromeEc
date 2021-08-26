@@ -46,6 +46,9 @@ static const struct kbs_gpio_ctrl_t kbs_gpio_ctrl_regs[] = {
  */
 static volatile uint8_t *wuesr(uint8_t grp)
 {
+	/* grp = 0 will reset configuration of WUEMR4 (0xf01b03) register. */
+	ASSERT(grp);
+
 	/*
 	 * From WUESR1-WUESR4, the address increases by ones. From WUESR5 on
 	 * the address increases by fours.
