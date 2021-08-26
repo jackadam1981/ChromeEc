@@ -148,6 +148,94 @@ uint16_t _cpri__CompleteHash(CPRI_HASH_STATE *state,
 	return out_len;
 }
 
+/**
+ * @brief Start HMAC operation
+ *
+ * @param hashAlg IN: the algorithm to use
+ * @param sequence IN: indicates if the state should be saved
+ * @param state IN/OUT: the state buffer
+ * @param keySize IN: the size of HMAC key
+ * @param key IN: the HMAC key
+ * @param oPadKey OUT: the key prepared for the oPad round
+ *
+ * @return size of digest
+ */
+UINT16 _cpri__StartHMAC(TPM_ALG_ID hashAlg, BOOL sequence,
+			CPRI_HASH_STATE *state, UINT16 keySize, BYTE *key,
+			TPM2B *oPadKey)
+{
+	CPRI_HASH_STATE localState;
+	UINT16 blockSize = _cpri__GetHashBlockSize(hashAlg);
+	UINT16 digestSize;
+	BYTE *pb; /* temp pointer */
+	UINT32 i;
+
+	/**
+	 * If the key size is larger than the block size, then the hash of the
+	 * key is used as the key
+	 */
+	if (keySize > blockSize) {
+		/* Large key so digest */
+		if ((digestSize = _cpri__StartHash(hashAlg, FALSE,
+						   &localState)) == 0)
+			return 0;
+		_cpri__UpdateHash(&localState, keySize, key);
+		_cpri__CompleteHash(&localState, digestSize, oPadKey->buffer);
+		oPadKey->size = digestSize;
+	} else {
+		/* Key size is ok */
+		memcpy(oPadKey->buffer, key, keySize);
+		oPadKey->size = keySize;
+	}
+	/* XOR the key with iPad (0x36) */
+	pb = oPadKey->buffer;
+	for (i = oPadKey->size; i > 0; i--)
+		*pb++ ^= 0x36;
+	/* If the keySize is smaller than a block, fill the rest with 0x36 */
+	for (i = blockSize - oPadKey->size; i > 0; i--)
+		*pb++ = 0x36;
+	/* Increase the oPadSize to a full block */
+	oPadKey->size = blockSize;
+	/**
+	 * This will go in the caller's state structure and may be a sequence or
+	 * not.
+	 */
+	if ((digestSize = _cpri__StartHash(hashAlg, sequence, state)) > 0) {
+		_cpri__UpdateHash(state, oPadKey->size, oPadKey->buffer);
+		/* XOR the key block with 0x5c ^ 0x36 */
+		for (pb = oPadKey->buffer, i = blockSize; i > 0; i--)
+			*pb++ ^= (0x5c ^ 0x36);
+	}
+	return digestSize;
+}
+
+/**
+ * @brief Complete HMAC operation
+ *
+ * @param hashState IN: the state of hash stack
+ * @param oPadKey IN: the HMAC key in oPad format
+ * @param dOutSize IN: the size of digest buffer
+ * @param dOut OUT: hash digest
+ *
+ * @return size of digest
+ */
+UINT16 _cpri__CompleteHMAC(CPRI_HASH_STATE *hashState, TPM2B *oPadKey,
+			   UINT32 dOutSize, BYTE *dOut)
+{
+	BYTE digest[MAX_DIGEST_SIZE];
+	CPRI_HASH_STATE *state = (CPRI_HASH_STATE *)hashState;
+	CPRI_HASH_STATE localState;
+	UINT16 digestSize = _cpri__GetDigestSize(state->hashAlg);
+
+	_cpri__CompleteHash(hashState, digestSize, digest);
+	/* Using the local hash state, do a hash with the oPad */
+	if (_cpri__StartHash(state->hashAlg, FALSE, &localState) != digestSize)
+		return 0;
+	_cpri__UpdateHash(&localState, oPadKey->size, oPadKey->buffer);
+	_cpri__UpdateHash(&localState, digestSize, digest);
+	return _cpri__CompleteHash(&localState, dOutSize, dOut);
+}
+
 #ifdef CRYPTO_TEST_SETUP
 
 #include "console.h"
