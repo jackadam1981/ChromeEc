@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "92991c37_ad3a12bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-26T01:28:13Z",
+      "side": 1,
+      "message": "should i just default CONFIG_ADC_CHANNELS_RUNTIME_CONFIG to y\nand take out the const in zephyr/shim/src/adc.c?",
+      "parentUuid": "45ac3203_6792df74",
+      "revId": "c515450dd845b55ea1b0ec6ed9dcf0d54cd57aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5fba5186_8c84b791",
         "filename": "chip/it83xx/adc_chip.h",
         "patchSetId": 1
