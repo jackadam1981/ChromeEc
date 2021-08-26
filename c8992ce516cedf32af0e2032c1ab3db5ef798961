@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25ff9fdd_c9a38327",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1291807
+      },
+      "writtenOn": "2021-08-26T23:40:11Z",
+      "side": 1,
+      "message": "I made some minor tweaks to run_tests.sh, PTAL.\n\nThe main changes are using realpath to set an absolute path in PYTHONPATH, and using Python -s option.  I tried using Python -S option as well but mock comes from site-packages (and maybe more).\n\nEven before these changes, I already checked that Python automatically translates relative paths in PYTHONPATH to absolute, e.g. \"..\" becomes /mnt/host/source/src/platform/ec/util .  However that behavior is not documented in python(1), and it turns out command line flags can affect it, namely -S breaks it such that \"..\" itself ends up in sys.path.  While I wasn\u0027t able to use -S here, it seems safest to always use absolute paths in PYTHONPATH.\n\nHere is how the -S and -s options affect sys.path:\n\ncros1 [matthewb@idle:~/trunk/src/platform/ec/util/ec3po 0]$ mkdir -p ~/.local/lib64/python3.6/site-packages\ncros1 [matthewb@idle:~/trunk/src/platform/ec/util/ec3po 0]$ PYTHONPATH\u003d\"..\" python3 -c \u0027import sys, pprint; pprint.pprint(sys.path)\u0027\n[\u0027\u0027,\n \u0027/mnt/host/source/src/platform/ec/util\u0027,\n \u0027/usr/lib64/python36.zip\u0027,\n \u0027/usr/lib64/python3.6\u0027,\n \u0027/usr/lib64/python3.6/lib-dynload\u0027,\n \u0027/home/matthewb/.local/lib64/python3.6/site-packages\u0027,\n \u0027/usr/lib64/python3.6/site-packages\u0027]\ncros1 [matthewb@idle:~/trunk/src/platform/ec/util/ec3po 0]$ PYTHONPATH\u003d\"..\" python3 -s -\nc \u0027import sys, pprint; pprint.pprint(sys.path)\u0027\n[\u0027\u0027,\n \u0027/mnt/host/source/src/platform/ec/util\u0027,\n \u0027/usr/lib64/python36.zip\u0027,\n \u0027/usr/lib64/python3.6\u0027,\n \u0027/usr/lib64/python3.6/lib-dynload\u0027,\n \u0027/usr/lib64/python3.6/site-packages\u0027]\ncros1 [matthewb@idle:~/trunk/src/platform/ec/util/ec3po 0]$ PYTHONPATH\u003d\"..\" python3 -S -\nc \u0027import sys, pprint; pprint.pprint(sys.path)\u0027\n[\u0027\u0027,\n \u0027..\u0027,\n \u0027/usr/lib64/python36.zip\u0027,\n \u0027/usr/lib64/python3.6\u0027,\n \u0027/usr/lib64/python3.6\u0027,\n \u0027/usr/lib64/python3.6/lib-dynload\u0027]\ncros1 [matthewb@idle:~/trunk/src/platform/ec/util/ec3po 0]$ PYTHONPATH\u003d\"..\" python3 -S -s -c \u0027import sys, pprint; pprint.pprint(sys.path)\u0027\n[\u0027\u0027,\n \u0027..\u0027,\n \u0027/usr/lib64/python36.zip\u0027,\n \u0027/usr/lib64/python3.6\u0027,\n \u0027/usr/lib64/python3.6\u0027,\n \u0027/usr/lib64/python3.6/lib-dynload\u0027]\ncros1 [matthewb@idle:~/trunk/src/platform/ec/util/ec3po 0]$",
+      "revId": "c8992ce516cedf32af0e2032c1ab3db5ef798961",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
