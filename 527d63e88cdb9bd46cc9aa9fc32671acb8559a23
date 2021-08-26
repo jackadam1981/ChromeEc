@@ -52,6 +52,24 @@
       "parentUuid": "3b5559bb_47b02d98",
       "revId": "527d63e88cdb9bd46cc9aa9fc32671acb8559a23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca702288_5ded0486",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-26T18:09:22Z",
+      "side": 1,
+      "message": "I think I had put this check up here initially just when I was very debugging this issue. I do agree that this should come after pd_is_connected. I probably thought at the time that pd_is_disconnected() was about usb-pd instead of just type-c attach.",
+      "parentUuid": "3636628a_f6500acf",
+      "revId": "527d63e88cdb9bd46cc9aa9fc32671acb8559a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
