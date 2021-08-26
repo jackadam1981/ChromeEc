@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "edae362d_c9b971b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-26T12:04:21Z",
+      "side": 1,
+      "message": "This commit is cherry pick for below commit\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3099546/\nI will remove ec related files in 3099546 after this commit is approved",
+      "revId": "1fc94f93e1772cb3417f3f6915dd0dae46292cb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
