@@ -16,6 +16,24 @@
       "message": "Is this always the case on both ports?",
       "revId": "a79b8979cd454fa3449f9a62aae5f9d04f07349b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c2b63ba_2b213615",
+        "filename": "baseboard/honeybuns/usbc_support.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-26T17:42:50Z",
+      "side": 1,
+      "message": "port 0 is the only use case for this as it can be a UFP/SNK. port 1 is FORCE_SOURCE and should only be a DFP. I did make the return value more explicit about port 0, but this function should not be called for port 1.",
+      "parentUuid": "973adbb1_ef0a1706",
+      "revId": "a79b8979cd454fa3449f9a62aae5f9d04f07349b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
