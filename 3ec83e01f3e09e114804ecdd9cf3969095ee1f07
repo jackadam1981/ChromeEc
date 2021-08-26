@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure why the CR+2 carried over.  There is a one-line change between patchset 1 and 2.",
       "revId": "3ec83e01f3e09e114804ecdd9cf3969095ee1f07",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a915f085_fb3ba9a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-08-26T15:54:28Z",
+      "side": 1,
+      "message": "cjmcdonald fixed the repo configuration here (it was setup so that partners could do CQ+2 back in 2019, which took away the ability for us to have sticky +2 ... but now partners can\u0027t even do CQ+2 anymore, so the stick+2 is back).",
+      "parentUuid": "188124ae_050a2c3d",
+      "revId": "3ec83e01f3e09e114804ecdd9cf3969095ee1f07",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
