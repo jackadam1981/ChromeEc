@@ -96,7 +96,7 @@ enum fips_status fips_status(void);
  * or if it is enforced and in good health
  * @returns non-zero if crypto can be executed.
  */
-bool fips_crypto_allowed(void);
+int fips_crypto_allowed(void);
 
 /**
  * Update FIPS status without updating log
@@ -153,6 +153,13 @@ extern const struct fips_vtable *fips_vtable;
  * as the FIPS module for additional security.
  */
 void fips_set_callbacks(const struct fips_vtable *vtable);
+
+/**
+ * Run FIPS self-integrity, power-on and known-answer tests.
+ * Called from board_init() during power-up and resume from sleep.
+ * Enables crypto operation on successful completion.
+ */
+void fips_power_on(void);
 
 #ifdef __cplusplus
 }
