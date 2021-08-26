@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "025df986_3437402f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-26T21:32:57Z",
+      "side": 1,
+      "message": "We still want the default to be n as it saves data ram space.\n\n#ifdef CONFIG_ADC_CHANNELS_RUNTIME_CONFIG\nstruct adc_t adc_channels[] \u003d { DT_FOREACH_CHILD(\n\tDT_INST(0, named_adc_channels), ADC_CHANNEL_COMMA) };\n#else\nconst struct adc_t adc_channels[] \u003d { DT_FOREACH_CHILD(\n\tDT_INST(0, named_adc_channels), ADC_CHANNEL_COMMA) };\n#endif",
+      "parentUuid": "92991c37_ad3a12bd",
+      "revId": "c515450dd845b55ea1b0ec6ed9dcf0d54cd57aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5fba5186_8c84b791",
         "filename": "chip/it83xx/adc_chip.h",
         "patchSetId": 1
