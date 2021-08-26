@@ -34,6 +34,24 @@
       "parentUuid": "5bfacea2_2c03fba3",
       "revId": "527d63e88cdb9bd46cc9aa9fc32671acb8559a23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3636628a_f6500acf",
+        "filename": "common/usb_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-26T17:45:11Z",
+      "side": 1,
+      "message": "Done.  I half wonder if it would make sense to keep the pd_is_disconencted() check first, but I\u0027ll trust your judgement here",
+      "parentUuid": "3b5559bb_47b02d98",
+      "revId": "527d63e88cdb9bd46cc9aa9fc32671acb8559a23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
