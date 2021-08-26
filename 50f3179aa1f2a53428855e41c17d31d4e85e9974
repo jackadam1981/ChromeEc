@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca518ce7_fbc0738e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-26T05:14:25Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 10,
+        "startChar": 27,
+        "endLine": 10,
+        "endChar": 30
+      },
+      "revId": "50f3179aa1f2a53428855e41c17d31d4e85e9974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d076baeb_939df37a",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-26T05:14:25Z",
+      "side": 1,
+      "message": "nit: use BATTERY_TYPE_COUNT, looks like brya has 2 batteries",
+      "range": {
+        "startLine": 93,
+        "startChar": 29,
+        "endLine": 93,
+        "endChar": 30
+      },
+      "revId": "50f3179aa1f2a53428855e41c17d31d4e85e9974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
