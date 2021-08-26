@@ -29,8 +29,9 @@
 #define CONFIG_IPC_SHARED_OBJ_ADDR                                             \
 	(SCP_FW_END -                                                         \
 	 (CONFIG_IPC_SHARED_OBJ_BUF_SIZE + 2 * 4 /* int32_t */) * 2)
-#ifndef CHIP_VARIANT_MT8195_CORE1
 #define CONFIG_IPI
+
+#ifndef CHIP_VARIANT_MT8195_CORE1
 #define CONFIG_RPMSG_NAME_SERVICE
 #endif
 
