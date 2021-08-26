@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ac373d9_5b1150cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-26T05:38:50Z",
+      "side": 1,
+      "message": "could you file a bug capturing more info about what\u0027s\nwrong and suggested fix?",
+      "range": {
+        "startLine": 14,
+        "startChar": 4,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "50f3179aa1f2a53428855e41c17d31d4e85e9974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d076baeb_939df37a",
         "filename": "baseboard/brya/baseboard.h",
         "patchSetId": 1
@@ -37,6 +60,30 @@
       "writtenOn": "2021-08-26T05:14:25Z",
       "side": 1,
       "message": "nit: use BATTERY_TYPE_COUNT, looks like brya has 2 batteries",
+      "range": {
+        "startLine": 93,
+        "startChar": 29,
+        "endLine": 93,
+        "endChar": 30
+      },
+      "revId": "50f3179aa1f2a53428855e41c17d31d4e85e9974",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a0edce5_df960cbf",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-26T05:38:50Z",
+      "side": 1,
+      "message": "i haven\u0027t actually used this feature before,\nbut looking at the code, it does seem we need\n#define CONFIG_BATTERY_COUNT 1\nhere.",
+      "parentUuid": "d076baeb_939df37a",
       "range": {
         "startLine": 93,
         "startChar": 29,
