@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8830dc65_2ed9b99a",
+        "filename": "chip/it83xx/adc_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-26T01:20:34Z",
+      "side": 1,
+      "message": "ok. and yes, large change.",
+      "parentUuid": "5fba5186_8c84b791",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 0
+      },
+      "revId": "c515450dd845b55ea1b0ec6ed9dcf0d54cd57aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "944ad3ce_7c0b3035",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-25T17:31:42Z",
       "side": 1,
       "message": "config PLATFORM_EC_ADC_CHANNELS_RUNTIME_CONFIG",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "c515450dd845b55ea1b0ec6ed9dcf0d54cd57aab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ea2a243_31de666d",
+        "filename": "zephyr/Kconfig.adc",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-26T01:20:34Z",
+      "side": 1,
+      "message": "oops, forgot to run menuconfig",
+      "parentUuid": "944ad3ce_7c0b3035",
       "range": {
         "startLine": 48,
         "startChar": 0,
