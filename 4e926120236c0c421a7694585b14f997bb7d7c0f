@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "067c611d_e255ca88",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-26T21:21:43Z",
+      "side": 1,
+      "message": "ugh, pretty sure that was my emacs select-paste FAIL.",
+      "parentUuid": "88cb27cb_ec8dbc38",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "4e926120236c0c421a7694585b14f997bb7d7c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8cc466d0_d5d24eff",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-26T14:49:42Z",
       "side": 1,
       "message": "patch",
+      "range": {
+        "startLine": 15,
+        "startChar": 32,
+        "endLine": 15,
+        "endChar": 36
+      },
+      "revId": "4e926120236c0c421a7694585b14f997bb7d7c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26da3208_544d33e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-26T21:21:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cc466d0_d5d24eff",
       "range": {
         "startLine": 15,
         "startChar": 32,
