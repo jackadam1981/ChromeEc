@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cb1962e_6e3e5310",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2857,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-08-26T08:08:38Z",
+      "side": 1,
+      "message": "If drp_state is TOGGLE_ON, we should act as DRP, and as type-c spec says: \n4.5.2.2.3.2  Exiting from Unattached.SNK State \nA DRP shall transition to Unattached.SRC within tDRPTransition after the state of both CC pins is SNK.Open for tDRP − dcSRC.DRP ∙ tDRP, or if directed.\n\n4.5.2.2.7.2  Exiting from Unattached.SRC State \nA DRP shall transition to Unattached.SNK within tDRPTransition after dcSRC.DRP ∙ tDRP, or if directed. \n\nSo drp_state \u003d\u003d TOGGLE_ON should keep toggling even when cc is open.",
+      "range": {
+        "startLine": 2857,
+        "startChar": 4,
+        "endLine": 2857,
+        "endChar": 24
+      },
+      "revId": "2415e5e5167ddbfddc811a23946882d713bbcc6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
