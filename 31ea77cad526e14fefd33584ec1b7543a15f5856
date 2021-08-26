@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc32901a_f12fe986",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-26T12:00:34Z",
+      "side": 1,
+      "message": "This commit is cherry pick for below commit\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3099546/\nI will remove board files in 3099546 after this commit is approved.",
+      "revId": "31ea77cad526e14fefd33584ec1b7543a15f5856",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
