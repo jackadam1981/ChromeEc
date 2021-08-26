@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd9df32e_ee8c55fd",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-08-26T12:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7fe83230_2544da8d",
+      "range": {
+        "startLine": 396,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 1
+      },
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8b85631d_1ac33808",
@@ -84,6 +108,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4c4b75b1_a039c1f0",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-08-26T12:40:09Z",
+      "side": 1,
+      "message": "It can save some code size.",
+      "parentUuid": "8b85631d_1ac33808",
+      "range": {
+        "startLine": 399,
+        "startChar": 27,
+        "endLine": 399,
+        "endChar": 58
+      },
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f593f3e6_0376984a",
         "filename": "board/coachz/board.c",
         "patchSetId": 2
@@ -95,6 +143,30 @@
       "writtenOn": "2021-08-25T15:38:15Z",
       "side": 1,
       "message": "Remove the {} for this one-line statement.",
+      "range": {
+        "startLine": 417,
+        "startChar": 63,
+        "endLine": 417,
+        "endChar": 65
+      },
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16ff3f1f_a707703f",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-08-26T12:40:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f593f3e6_0376984a",
       "range": {
         "startLine": 417,
         "startChar": 63,
