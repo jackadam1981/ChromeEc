@@ -22,6 +22,8 @@
 #include "usb_pd_tbt.h"
 #include "usb_pd_tcpm.h"
 #include "util.h"
+#include "driver/retimer/bb_retimer_public.h"
+#include "timer.h"
 
 #include "gpio_list.h" /* Must come after other header files. */
 
@@ -115,3 +117,18 @@ const struct tcpc_config_t tcpc_config[] = {
 #endif
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == CONFIG_USB_PD_PORT_MAX_COUNT);
+
+__override int bb_retimer_reset(const struct usb_mux *me)
+{
+	/*
+	 * TODO(b/193402306, b/195375738): Remove this once transition to
+	 * QS Silicon is complete
+	 */
+	bb_retimer_power_enable(me, false);
+	msleep(5);
+	bb_retimer_power_enable(me, true);
+	msleep(25);
+	return EC_SUCCESS;
+}
+
+
