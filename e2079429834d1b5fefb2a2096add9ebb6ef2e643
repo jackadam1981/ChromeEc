@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3ec04af7_96f50953",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-27T21:53:40Z",
+      "side": 1,
+      "message": "should not be needed.\n\ncommon.h includes config.h which includes board.h\n\ni generally do expect source files to include\nwhat they use \"IWYU\", but board.h is a bit of a\nspecial case exception because of the specific\norder in which it is included.",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "e2079429834d1b5fefb2a2096add9ebb6ef2e643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ade2459_7a586cb3",
         "filename": "board/gimble/sensors.c",
         "patchSetId": 4
