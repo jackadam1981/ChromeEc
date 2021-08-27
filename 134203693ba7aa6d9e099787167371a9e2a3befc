@@ -34,6 +34,23 @@
       "parentUuid": "203e58b1_8e32bbc0",
       "revId": "134203693ba7aa6d9e099787167371a9e2a3befc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "590b6796_6a7174df",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-27T22:48:17Z",
+      "side": 1,
+      "message": "A lot of boards mask off CC_LPC, in CC_DEFAULT.  So if we want this to be always-always, we may consider ccprints.  Otherwise, we can keep it on the LPC channel.",
+      "revId": "134203693ba7aa6d9e099787167371a9e2a3befc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
