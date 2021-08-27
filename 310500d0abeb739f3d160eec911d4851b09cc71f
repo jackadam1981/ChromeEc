@@ -92,6 +92,30 @@
       },
       "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "088e6c7d_a46a8d1d",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T23:12:48Z",
+      "side": 1,
+      "message": "Keith, is there a convention for this?",
+      "parentUuid": "641203f8_64dd5c97",
+      "range": {
+        "startLine": 109,
+        "startChar": 24,
+        "endLine": 109,
+        "endChar": 56
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
