@@ -16,6 +16,24 @@
       "message": "Are there any details on why flashing the AP on Eve fails?",
       "revId": "57eedc9f433ca1035b2a9c9a6d67a29cc98734b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eee25ee2_eed9db26",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-08-27T18:08:39Z",
+      "side": 1,
+      "message": "I think with this implementation USB-SPI_V1 was still enabled. It\u0027s not a great solution, but it could be used instead.",
+      "parentUuid": "1e327fab_6832c735",
+      "revId": "57eedc9f433ca1035b2a9c9a6d67a29cc98734b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
