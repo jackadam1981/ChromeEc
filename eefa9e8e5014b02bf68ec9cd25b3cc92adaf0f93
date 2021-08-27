@@ -33,6 +33,24 @@
       "message": "Instead of discovering the sensor at boot, could it be possible to know which sensor is present using the board version and cbi_get_board_version()?",
       "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca4a503c_ff2560be",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-08-27T00:46:55Z",
+      "side": 1,
+      "message": "We need support KX022 and BMA253 on the same board version.",
+      "parentUuid": "b52c99a7_01ebe1d9",
+      "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
