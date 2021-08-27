@@ -93,6 +93,30 @@
       },
       "revId": "02ae27aac230375f0451de6f30253041d3db285e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7971be05_bffce908",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-27T16:58:23Z",
+      "side": 1,
+      "message": "If you\u0027re interested, you can take a look at test/kb_scan.c. It runs different tests across resets using a scratchpad. We can modify the host\u0027s panic handler:\n\n+++ b/core/host/panic.c\n@@ -5,6 +5,7 @@\n \n #include \u003cstdio.h\u003e\n #include \u003cstdlib.h\u003e\n+#include \"test_util.h\"\n\n #include \"stack_trace.h\"\n \n@@ -18,5 +19,8 @@ void panic_assert_fail(const char *msg, const char *func, const char *fname,\n        puts(\"Fail!\"); /* Inform test runner */\n        fflush(stdout);\n \n+       test_reboot_to_next_step(TEST_STATE_PANIC);",
+      "parentUuid": "08286664_fc02f3cc",
+      "range": {
+        "startLine": 984,
+        "startChar": 1,
+        "endLine": 984,
+        "endChar": 23
+      },
+      "revId": "02ae27aac230375f0451de6f30253041d3db285e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
