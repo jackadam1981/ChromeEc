@@ -169,6 +169,17 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 	return EC_SUCCESS;
 }
 
+__override int bb_retimer_reset(const struct usb_mux *me)
+{
+	bb_retimer_power_enable(me, false);
+	msleep(5);
+	bb_retimer_power_enable(me, true);
+	msleep(25);
+
+	return EC_SUCCESS;
+}
+
+
 void board_reset_pd_mcu(void)
 {
 	/* Using RT1716, no reset available for TCPC on port 0/ port 2 */
