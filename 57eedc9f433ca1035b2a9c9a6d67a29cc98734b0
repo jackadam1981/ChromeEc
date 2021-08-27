@@ -69,6 +69,24 @@
       "message": "The CS extension patch should also be reverted.",
       "revId": "57eedc9f433ca1035b2a9c9a6d67a29cc98734b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd323e36_09202166",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-27T18:21:49Z",
+      "side": 1,
+      "message": "The chip select patch landed in 0.5.40. Flashing the AP worked fine on all of our devices with 0.5.40.\n\nShould I still revert it?",
+      "parentUuid": "909d862f_3be21386",
+      "revId": "57eedc9f433ca1035b2a9c9a6d67a29cc98734b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
