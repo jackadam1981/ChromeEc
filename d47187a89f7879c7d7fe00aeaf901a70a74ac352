@@ -33,6 +33,24 @@
       "message": "Consider cherry-picking commit 32412de5fe (\"driver: bmi160: Implement temperature reading\") so that this cherry-pick will be a little cleaner.",
       "revId": "d47187a89f7879c7d7fe00aeaf901a70a74ac352",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dce58a9_96227f71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-08-27T08:12:41Z",
+      "side": 1,
+      "message": "And we also need fc298a0ada (\"driver: bmi260: integrate body detection\") to work properly when enable CONFIG_GESTURE_HOST_DETECTION.\n\nI will clean up some CL and cherry-pick some fixes soon.",
+      "parentUuid": "96b94854_9171344a",
+      "revId": "d47187a89f7879c7d7fe00aeaf901a70a74ac352",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
