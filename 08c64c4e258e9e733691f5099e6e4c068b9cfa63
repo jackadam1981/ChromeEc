@@ -94,6 +94,30 @@
       },
       "revId": "08c64c4e258e9e733691f5099e6e4c068b9cfa63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bb978d4_656932c8",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-27T19:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd96ec3d_9fef6f1e",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "08c64c4e258e9e733691f5099e6e4c068b9cfa63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
