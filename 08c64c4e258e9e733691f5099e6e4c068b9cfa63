@@ -70,6 +70,30 @@
       },
       "revId": "08c64c4e258e9e733691f5099e6e4c068b9cfa63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd96ec3d_9fef6f1e",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-27T18:43:21Z",
+      "side": 1,
+      "message": "I talked to Vadim S offline he says we might want a way to inject the fips module. Maybe we don\u0027t need to separate fips_module into its own section right now though.",
+      "parentUuid": "01b45da7_5a46a7fd",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "08c64c4e258e9e733691f5099e6e4c068b9cfa63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
