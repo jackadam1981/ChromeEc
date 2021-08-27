@@ -87,6 +87,24 @@
       "parentUuid": "909d862f_3be21386",
       "revId": "57eedc9f433ca1035b2a9c9a6d67a29cc98734b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c0663a9_432db57a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:26:09Z",
+      "side": 1,
+      "message": "I think suspect this CS extension is where the root of the problem is, and it is not necessary unless we are trying to run SPI protocol V2, I suggest to revert it just in case.",
+      "parentUuid": "cd323e36_09202166",
+      "revId": "57eedc9f433ca1035b2a9c9a6d67a29cc98734b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
