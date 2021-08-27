@@ -46,6 +46,30 @@
       },
       "revId": "08c64c4e258e9e733691f5099e6e4c068b9cfa63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01b45da7_5a46a7fd",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T17:17:35Z",
+      "side": 1,
+      "message": "so why not keep this section where it was before this change?",
+      "parentUuid": "f8a5c8ef_62ad03b9",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "08c64c4e258e9e733691f5099e6e4c068b9cfa63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
