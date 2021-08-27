@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c18f867f_69f838be",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-27T19:06:36Z",
+      "side": 1,
+      "message": "Since BMI160 and BMI260 share the same CHIP_ID register online discovery is acceptable. See another implementation at:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3118645",
+      "revId": "78a1a645dc1855b05d8bc68d36545d59e2994227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c9a1644_31f2dd0e",
