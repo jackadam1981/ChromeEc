@@ -16,6 +16,24 @@
       "message": "I don\u0027t have a problem with this approach, but would it be more future-proof to stick -D_GNU_SOURCE in our CPPFLAGS in Makefile.toolchain?\n\nHow does _GNU_SOURCE get defined in the C++ build? Can we cause the C build to do it the same way?",
       "revId": "1e533ff8ad9136e5ac4eb0cd1c3cf16842c7ffd1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f2cc31_8b2d3482",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-08-27T22:14:10Z",
+      "side": 1,
+      "message": "\u003e I don\u0027t have a problem with this approach, but would it be more future-proof to stick -D_GNU_SOURCE in our CPPFLAGS in Makefile.toolchain?\n\nIdeally we want to avoid _GNU_SOURCE completely since the purpose of it is to enable non-standard functionality. For that reason I\u0027d prefer to avoid adding it to the global flags for the whole build.\n\nHere\u0027s the reason why it\u0027s defined for C++: https://gcc.gnu.org/onlinedocs/libstdc++/faq.html#faq.predefined",
+      "parentUuid": "3fca932a_cb557ad4",
+      "revId": "1e533ff8ad9136e5ac4eb0cd1c3cf16842c7ffd1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
