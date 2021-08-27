@@ -39,13 +39,6 @@
  */
 
 /**
- * Special register values used in @ref bb_emul_set_read_fail_reg and
- * @ref bb_emul_set_write_fail_reg
- */
-#define BB_EMUL_FAIL_ALL_REG	(-1)
-#define BB_EMUL_NO_FAIL_REG	(-2)
-
-/**
  * @brief Get pointer to BB retimer emulator using device tree order number.
  *
  * @param ord Device tree order number obtained from DT_DEP_ORD macro
@@ -53,78 +46,6 @@
  * @return Pointer to BB retimer emulator
  */
 struct i2c_emul *bb_emul_get(int ord);
-
-/**
- * @brief Custom function type that is used as user-defined callback in read
- *        I2C messages handling.
- *
- * @param emul Pointer to BB retimer emulator
- * @param reg Address which is now accessed by read command
- * @param data Pointer to custom user data
- *
- * @return 0 on success. Value of @p reg should be set by @ref bb_emul_set_reg
- * @return 1 continue with normal BB retimer emulator handler
- * @return negative on error
- */
-typedef int (*bb_emul_read_func)(struct i2c_emul *emul, int reg, void *data);
-
-/**
- * @brief Custom function type that is used as user-defined callback in write
- *        I2C messages handling.
- *
- * @param emul Pointer to BB retimer emulator
- * @param reg Address which is now accessed by write command
- * @param val Value which is being written to @p reg
- * @param data Pointer to custom user data
- *
- * @return 0 on success
- * @return 1 continue with normal BB retimer emulator handler
- * @return negative on error
- */
-typedef int (*bb_emul_write_func)(struct i2c_emul *emul, int reg, uint32_t val,
-				  void *data);
-
-/**
- * @brief Lock access to BB retimer properties. After acquiring lock, user
- *        may change emulator behaviour in multi-thread setup.
- *
- * @param emul Pointer to BB retimer emulator
- * @param timeout Timeout in getting lock
- *
- * @return k_mutex_lock return code
- */
-int bb_emul_lock_data(struct i2c_emul *emul, k_timeout_t timeout);
-
-/**
- * @brief Unlock access to BB retimer properties.
- *
- * @param emul Pointer to BB retimer emulator
- *
- * @return k_mutex_unlock return code
- */
-int bb_emul_unlock_data(struct i2c_emul *emul);
-
-/**
- * @brief Set write handler for I2C messages. This function is called before
- *        generic handler.
- *
- * @param emul Pointer to BB retimer emulator
- * @param func Pointer to custom function
- * @param data User data passed on call of custom function
- */
-void bb_emul_set_write_func(struct i2c_emul *emul, bb_emul_write_func func,
-			    void *data);
-
-/**
- * @brief Set read handler for I2C messages. This function is called before
- *        generic handler.
- *
- * @param emul Pointer to BB retimer emulator
- * @param func Pointer to custom function
- * @param data User data passed on call of custom function
- */
-void bb_emul_set_read_func(struct i2c_emul *emul, bb_emul_read_func func,
-			   void *data);
 
 /**
  * @brief Set value of given register of BB retimer
@@ -144,24 +65,6 @@ void bb_emul_set_reg(struct i2c_emul *emul, int reg, uint32_t val);
  * @return Value of the register
  */
 uint32_t bb_emul_get_reg(struct i2c_emul *emul, int reg);
-
-/**
- * @brief Setup fail on read of given register of BB retimer
- *
- * @param emul Pointer to BB retimer emulator
- * @param reg Register address or one of special values (BB_EMUL_FAIL_ALL_REG,
- *            BB_EMUL_NO_FAIL_REG)
- */
-void bb_emul_set_read_fail_reg(struct i2c_emul *emul, int reg);
-
-/**
- * @brief Setup fail on write of given register of BB retimer
- *
- * @param emul Pointer to BB retimer emulator
- * @param reg Register address or one of special values (BB_EMUL_FAIL_ALL_REG,
- *            BB_EMUL_NO_FAIL_REG)
- */
-void bb_emul_set_write_fail_reg(struct i2c_emul *emul, int reg);
 
 /**
  * @brief Set if error should be generated when read only register is being
