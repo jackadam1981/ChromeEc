@@ -34,6 +34,41 @@
       "parentUuid": "1e327fab_6832c735",
       "revId": "57eedc9f433ca1035b2a9c9a6d67a29cc98734b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "518b9752_a34fbc75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:09:49Z",
+      "side": 1,
+      "message": "not yet.",
+      "parentUuid": "1e327fab_6832c735",
+      "revId": "57eedc9f433ca1035b2a9c9a6d67a29cc98734b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "909d862f_3be21386",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:09:49Z",
+      "side": 1,
+      "message": "The CS extension patch should also be reverted.",
+      "revId": "57eedc9f433ca1035b2a9c9a6d67a29cc98734b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
