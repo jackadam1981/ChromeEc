@@ -230,6 +230,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21a8c1ea_14665fc8",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-27T19:08:54Z",
+      "side": 1,
+      "message": "I modified the script to use the elf and flat filenames this passes in.",
+      "parentUuid": "7492e365_02d7ca87",
+      "range": {
+        "startLine": 144,
+        "startChar": 31,
+        "endLine": 144,
+        "endChar": 45
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8949416f_cc89b5f0",
@@ -407,6 +431,30 @@
       "writtenOn": "2021-08-27T18:21:06Z",
       "side": 1,
       "message": "should check if ${rw_flat} and ${rw_elf} files exist.",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd32896e_f8646936",
+        "filename": "util/get_fips_fingerprint.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-27T19:08:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "851b69ed_f8ddecac",
       "range": {
         "startLine": 30,
         "startChar": 8,
