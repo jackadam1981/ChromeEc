@@ -22,6 +22,30 @@
       },
       "revId": "08c64c4e258e9e733691f5099e6e4c068b9cfa63",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8a5c8ef_62ad03b9",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-27T15:33:40Z",
+      "side": 1,
+      "message": "It probably doesn\u0027t. Vadim S. fips_module doesn\u0027t need to be in its own section right? \n\nThe checksum just needs its own section, so we can inject the hash with objcopy update-section.",
+      "parentUuid": "d64c275d_2efddb9f",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 0
+      },
+      "revId": "08c64c4e258e9e733691f5099e6e4c068b9cfa63",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
