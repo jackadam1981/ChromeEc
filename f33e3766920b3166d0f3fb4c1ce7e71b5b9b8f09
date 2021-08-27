@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1427e719_7f6ba00b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-27T22:46:51Z",
+      "side": 1,
+      "message": "Sweet.  Does this also ensure we don\u0027t clear our discovery data during power transitions with sourcing partners?",
+      "revId": "f33e3766920b3166d0f3fb4c1ce7e71b5b9b8f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0afa22e5_4819d95f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6991,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-08-27T22:46:51Z",
+      "side": 1,
+      "message": "It seems like partner_amodes should clear on mode init, right?",
+      "revId": "f33e3766920b3166d0f3fb4c1ce7e71b5b9b8f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
