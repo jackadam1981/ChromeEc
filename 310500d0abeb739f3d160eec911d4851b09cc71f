@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1c567d0_ce6d4750",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-27T22:48:57Z",
+      "side": 1,
+      "message": "Could you also test if the RTC keeps counting during the PSL hibernate mode? like triggering EC hibernate, waiting a while, waking up, and checking the RTC value.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da27362c_71a1764d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-27T22:48:57Z",
+      "side": 1,
+      "message": "Could you test if the alarm can wake EC up from the PSL hibernate mode?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
