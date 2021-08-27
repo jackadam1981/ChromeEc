@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ade2459_7a586cb3",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-27T20:57:21Z",
+      "side": 1,
+      "message": "This is not only about rot matrix. How about `update_sensor_array`?",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 34
+      },
+      "revId": "e2079429834d1b5fefb2a2096add9ebb6ef2e643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df15613e_58d1138e",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-08-27T20:57:21Z",
+      "side": 1,
+      "message": "nit: IMU\n\nsame on line 271",
+      "range": {
+        "startLine": 268,
+        "startChar": 17,
+        "endLine": 268,
+        "endChar": 23
+      },
+      "revId": "e2079429834d1b5fefb2a2096add9ebb6ef2e643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
