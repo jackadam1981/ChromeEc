@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0cf2f5a_14c33f5e",
+        "filename": "board/felwinter/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-27T06:29:33Z",
+      "side": 1,
+      "message": "the original 60w limit is correct, it\u0027s just not\nrelevant when you limit your device to 45w.",
+      "range": {
+        "startLine": 102,
+        "startChar": 43,
+        "endLine": 102,
+        "endChar": 45
+      },
+      "revId": "9876d6d05c86cc42bee53a1c2bdb3863a72a38f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "097a41b0_4569b9d9",
+        "filename": "board/felwinter/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-08-27T06:29:33Z",
+      "side": 1,
+      "message": "why 45w? this wasn\u0027t clear in the bug.\nis this the design limit of your board?",
+      "range": {
+        "startLine": 105,
+        "startChar": 25,
+        "endLine": 105,
+        "endChar": 27
+      },
+      "revId": "9876d6d05c86cc42bee53a1c2bdb3863a72a38f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
