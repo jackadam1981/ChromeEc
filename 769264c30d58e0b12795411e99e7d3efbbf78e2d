@@ -34,6 +34,24 @@
       "parentUuid": "7f2cdcbc_2740ee73",
       "revId": "769264c30d58e0b12795411e99e7d3efbbf78e2d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9055c7c9_09595452",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1270601
+      },
+      "writtenOn": "2021-08-27T16:56:59Z",
+      "side": 1,
+      "message": "Yeah, I think we need some trybots that at least run `emerge` on `chromeos-bootimage` and `chromeos-ec-headers`.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3034852 This was another example of a CL that broke the CQ this week.",
+      "parentUuid": "c8bb084e_a6c01b63",
+      "revId": "769264c30d58e0b12795411e99e7d3efbbf78e2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
