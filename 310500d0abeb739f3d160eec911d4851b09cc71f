@@ -45,6 +45,29 @@
       },
       "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "641203f8_64dd5c97",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-27T23:01:16Z",
+      "side": 1,
+      "message": "I am not sure the convention: define the flag here or the named-gpios?",
+      "range": {
+        "startLine": 109,
+        "startChar": 24,
+        "endLine": 109,
+        "endChar": 56
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
