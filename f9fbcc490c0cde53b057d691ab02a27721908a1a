@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "344605eb_06a35b43",
+        "filename": "zephyr/drivers/cros_rtc/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9519fb74_878d0805",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 19
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8873de7_7d78a16d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-25T15:30:19Z",
       "side": 1,
       "message": "Add an actual label here\n    choice CROS_RTC_TYPE\n    prompt \"\u003cprompt\u003e\"\n    help\n       \u003cdescription\u003e\n\nThis allows defconfig files to override the default using this form:\n\nchoice CROS_RTC_TYPE\n    default CROS_RTC_NXP_PCF85063A",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d378d86_c94c13a9",
+        "filename": "zephyr/drivers/cros_rtc/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8873de7_7d78a16d",
       "range": {
         "startLine": 12,
         "startChar": 7,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d42f30f_711c09c8",
+        "filename": "zephyr/drivers/cros_rtc/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11d5cde5_4342d9c8",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 37
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "68b6710a_34915e73",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-25T00:37:54Z",
       "side": 1,
       "message": "The CROS_ prefix is a convention for the drivers in the shim layer. Name it CROS_RTC_NXP_PCF85063A?",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc8b4b59_b2dee2ec",
+        "filename": "zephyr/drivers/cros_rtc/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68b6710a_34915e73",
       "range": {
         "startLine": 27,
         "startChar": 7,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2ee6e0c_0ac8ae18",
+        "filename": "zephyr/drivers/cros_rtc/Kconfig",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4974a89c_5e66f660",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dfc6d92f_2d4ed657",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-08-25T00:37:54Z",
       "side": 1,
       "message": "Is it really needed? and the below \"task.h\"?",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 21
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a817a64e_3258e8b4",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dfc6d92f_2d4ed657",
       "range": {
         "startLine": 16,
         "startChar": 9,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1f03eb7_715ab06e",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3361b0d1_b06062d1",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 2
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ca0c38f_684f1dcc",
@@ -185,6 +353,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa7d4ae2_5d76e379",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ca0c38f_684f1dcc",
+      "range": {
+        "startLine": 72,
+        "startChar": 16,
+        "endLine": 72,
+        "endChar": 28
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fb87e7d2_61aa342c",
@@ -198,6 +390,30 @@
       "writtenOn": "2021-08-25T00:37:54Z",
       "side": 1,
       "message": "Maybe you can pick a shorter name, like time_reg, so you don\u0027t need to wrap so many lines to fit the 80 columns.",
+      "range": {
+        "startLine": 79,
+        "startChar": 9,
+        "endLine": 79,
+        "endChar": 21
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88cffd0_4d913a27",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb87e7d2_61aa342c",
       "range": {
         "startLine": 79,
         "startChar": 9,
@@ -233,6 +449,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3bcdef6_d59f4849",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "From the datasheet, the alarm registers don\u0027t include months and years and I thought that was odd too.",
+      "parentUuid": "ff9db39a_d9f7e0d5",
+      "range": {
+        "startLine": 91,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 18
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "055f8249_b80eea49",
         "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
         "patchSetId": 4
@@ -256,6 +496,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a482079_19684ba8",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "I\u0027ve seen other RTCs that encode BCD differently than this one. So these function might not be that useful outside this file.",
+      "parentUuid": "055f8249_b80eea49",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 1
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dd62667_3ca2f7be",
         "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
         "patchSetId": 4
@@ -267,6 +531,30 @@
       "writtenOn": "2021-08-25T00:37:54Z",
       "side": 1,
       "message": "What does 0x80 mean? Define it as a constant.",
+      "range": {
+        "startLine": 343,
+        "startChar": 48,
+        "endLine": 343,
+        "endChar": 52
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1adc872_611f4cf7",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dd62667_3ca2f7be",
       "range": {
         "startLine": 343,
         "startChar": 48,
@@ -302,6 +590,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "487dfc93_18eb97c9",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "I didn\u0027t find anything in the datasheet stating that a delay is needed after the soft reset.",
+      "parentUuid": "d27498ff_77d286f8",
+      "range": {
+        "startLine": 406,
+        "startChar": 43,
+        "endLine": 406,
+        "endChar": 54
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "993f1d2c_aec9494e",
         "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
         "patchSetId": 4
@@ -313,6 +625,30 @@
       "writtenOn": "2021-08-25T00:37:54Z",
       "side": 1,
       "message": "All upper cases?",
+      "range": {
+        "startLine": 436,
+        "startChar": 37,
+        "endLine": 436,
+        "endChar": 46
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e39eb4bc_3731a0ff",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-27T15:25:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "993f1d2c_aec9494e",
       "range": {
         "startLine": 436,
         "startChar": 37,
