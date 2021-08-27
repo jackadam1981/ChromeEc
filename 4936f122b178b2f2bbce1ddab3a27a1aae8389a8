@@ -22,6 +22,30 @@
       },
       "revId": "4936f122b178b2f2bbce1ddab3a27a1aae8389a8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be0cc1d3_c3f04685",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-27T16:29:58Z",
+      "side": 1,
+      "message": "yes, in https://gcc.gnu.org/onlinedocs/gcc/Developer-Options.html#Developer-Options and https://reproducible-builds.org/docs/randomness/",
+      "parentUuid": "51978907_51a9d150",
+      "range": {
+        "startLine": 136,
+        "startChar": 28,
+        "endLine": 136,
+        "endChar": 41
+      },
+      "revId": "4936f122b178b2f2bbce1ddab3a27a1aae8389a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
