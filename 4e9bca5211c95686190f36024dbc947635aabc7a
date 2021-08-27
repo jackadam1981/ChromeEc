@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5096c9e7_ada86a62",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-27T19:05:15Z",
+      "side": 1,
+      "message": "We are exchanging code space with static data space, so the gain may not be that much. Using a separate structure is standard practice.",
+      "parentUuid": "4c4b75b1_a039c1f0",
+      "range": {
+        "startLine": 399,
+        "startChar": 27,
+        "endLine": 399,
+        "endChar": 58
+      },
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f593f3e6_0376984a",
         "filename": "board/coachz/board.c",
         "patchSetId": 2

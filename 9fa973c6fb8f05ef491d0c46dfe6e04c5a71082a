@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39fdea4e_5f02b9d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-27T19:05:15Z",
+      "side": 1,
+      "message": "We are lucky BMI260 and BMI160 uses the same CHIP ID register, so online discovery is acceptable.",
+      "revId": "9fa973c6fb8f05ef491d0c46dfe6e04c5a71082a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
