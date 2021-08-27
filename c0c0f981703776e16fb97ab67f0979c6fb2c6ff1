@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35faf04c_53eebec1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "do we need to keep all these?",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b61d82b7_a5e7ed4d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "why does the hash need to be pasted into .elf file, could it be pasted into binary instead?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9bdf049_2b38d9c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "sorry, I  suspect since I did not participate in the discussions I might be missing something.\n\nAlso, patch description should clarify the new chain of make dependencies.",
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ba2027c_0b011a1b",
+        "filename": "Makefile.rules",
+        "patchSetId": 9
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "maybe let\u0027s call this PREFIPS or something to show a different step in the build",
+      "range": {
+        "startLine": 451,
+        "startChar": 29,
+        "endLine": 451,
+        "endChar": 37
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35827b13_296057f0",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "this invokes the script with three command line parameters, but the script expects two.",
+      "range": {
+        "startLine": 144,
+        "startChar": 31,
+        "endLine": 144,
+        "endChar": 45
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8949416f_cc89b5f0",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 9
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "this could be replaced with \n\n$(out)/RW/ec.%.flat: $(out)/RW/ec.%.fips.checksum.dump",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 0
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd339c8e_254f2a1d",
+        "filename": "util/get_fips_fingerprint.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "the script doensn\u0027t just calculate the hahs, it also pastes it into a file.\n\nPlease add a comment describing inputs and outputs/results.",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2654c668_07c4227f",
+        "filename": "util/get_fips_fingerprint.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "you can find the base as\n\nbase\u003d\"${rw_elf%.elf}\" and then use\n\n\"${base}.fips.checksum\", etc.\n\nshouldn\u0027t need rw_ext and build_dir in this case",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 24,
+        "endChar": 4
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4181fd10_791777de",
+        "filename": "util/get_fips_fingerprint.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "literal strings should be quoted or is this not a coding style requirement any more?",
+      "range": {
+        "startLine": 27,
+        "startChar": 25,
+        "endLine": 27,
+        "endChar": 43
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851b69ed_f8ddecac",
+        "filename": "util/get_fips_fingerprint.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "should check if ${rw_flat} and ${rw_elf} files exist.",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 21
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a91d3e5_14848ed1",
+        "filename": "util/get_fips_fingerprint.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "should return a nonzero value to indicate an error",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 10
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6538fa88_c38ed88c",
+        "filename": "util/get_fips_fingerprint.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-27T18:21:06Z",
+      "side": 1,
+      "message": "I must be missing something, but why not paste the hash straight into the .flat.prefips file?\n\n\nthen the rule could be\n\n%.flat: %.flat.prefips\n   get_fips_fingerprint.sh objcopy elfffile",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
