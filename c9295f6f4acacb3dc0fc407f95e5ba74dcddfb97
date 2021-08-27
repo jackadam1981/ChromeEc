@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43e57d9c_610e9ff1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-27T20:36:09Z",
+      "side": 1,
+      "message": "I don\u0027t see a description of the issue this addresses in the bug.\n\n1. Was this hook getting called before tcpc_config was set correctly based on CBI?\n2. Does it need to run on every connection?\n3. Would it be more appropriate to override board_ps8xxx_tcpm_init (see elemi/board.c) than to establish our own hook here?",
+      "revId": "c9295f6f4acacb3dc0fc407f95e5ba74dcddfb97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
