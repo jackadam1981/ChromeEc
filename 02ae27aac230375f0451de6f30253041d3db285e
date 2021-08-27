@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd2c1b9_7784877c",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 983,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-08-27T08:16:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f755ac16_0da30118",
+      "range": {
+        "startLine": 979,
+        "startChar": 0,
+        "endLine": 983,
+        "endChar": 4
+      },
+      "revId": "02ae27aac230375f0451de6f30253041d3db285e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d445976_9ba2c343",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-23T16:22:03Z",
       "side": 1,
       "message": "Thank you for adding this.\n\nIs it possible to add a unit test (e.g. in test/charge_manager.c)?",
+      "range": {
+        "startLine": 984,
+        "startChar": 1,
+        "endLine": 984,
+        "endChar": 23
+      },
+      "revId": "02ae27aac230375f0451de6f30253041d3db285e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08286664_fc02f3cc",
+        "filename": "common/charge_manager.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 984,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-08-27T08:16:18Z",
+      "side": 1,
+      "message": "The CL have passed unit test.\n(With this CL, calling charge_manager_update_charge() with negative \"supplier\" won\u0027t pass runtests)",
+      "parentUuid": "1d445976_9ba2c343",
       "range": {
         "startLine": 984,
         "startChar": 1,
