@@ -22,6 +22,30 @@
       },
       "revId": "e313d3348e35fbd59f2596e628f61cae4b974685",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99869c8d_1e2c453d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-08-28T00:58:13Z",
+      "side": 1,
+      "message": "This is similar design with redrix. Only removed few fuction. To avoid double efforts. I think this better thing.",
+      "parentUuid": "68998109_e84d1332",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "e313d3348e35fbd59f2596e628f61cae4b974685",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
