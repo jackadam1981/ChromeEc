@@ -5,11 +5,13 @@
 
 #include "amd_stt.h"
 #include "common.h"
+#include "chipset.h"
 #include "console.h"
 #include "driver/sb_rmi.h"
 #include "hooks.h"
 #include "math_util.h"
 #include "temp_sensor.h"
+#include "timer.h"
 #include "util.h"
 
 /* Debug flag can be toggled with console command: stt debug */
@@ -66,11 +68,24 @@ static int write_stt_sensor_val(enum amd_stt_pcb_sensor sensor, int temp_mk)
 	return sb_rmi_mailbox_xfer(SB_RMI_WRITE_STT_SENSOR_CMD, msgIn, &msgOut);
 }
 
+static timestamp_t resume_delay;
+
 static void amd_stt_handler(void)
 {
 	int rv;
 	int soc_temp_mk;
 	int ambient_temp_mk;
+
+	/* STT interface is only active in S0 */
+	if (!chipset_in_state(CHIPSET_STATE_ON) || resume_delay.val == 0) {
+		/* Reset the delay timer */
+		resume_delay.val = get_time().val + 6*SECOND;
+		return;
+	}
+
+	/* STT interface won't be ready for a few seconds after S0 */
+	if (!timestamp_expired(resume_delay, NULL))
+		return;
 
 	/*
 	 * TODO(b/192391025): Replace with temp_sensor_read_mk(TEMP_SENSOR_SOC)
