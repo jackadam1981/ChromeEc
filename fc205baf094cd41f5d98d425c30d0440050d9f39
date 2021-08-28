@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad7e7764_04bc1d81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-28T17:33:39Z",
+      "side": 1,
+      "message": "ectool.cc is still written in C. Would it be compatible with libec written in C++ (now and future)? If so, why don\u0027t we keep ectool.c as is?",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "fc205baf094cd41f5d98d425c30d0440050d9f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
