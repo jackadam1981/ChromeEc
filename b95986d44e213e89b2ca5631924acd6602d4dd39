@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c74b030_a0e61c97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-08-28T03:23:29Z",
+      "side": 1,
+      "message": "Restored ec_commands.h and ectool.c due to below commit is verified\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3121867",
+      "revId": "b95986d44e213e89b2ca5631924acd6602d4dd39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
