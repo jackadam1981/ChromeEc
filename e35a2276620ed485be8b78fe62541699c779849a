@@ -22,6 +22,30 @@
       },
       "revId": "e35a2276620ed485be8b78fe62541699c779849a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0467e447_4b0d1d25",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-08-30T16:50:06Z",
+      "side": 1,
+      "message": "Fixed. Thanks!",
+      "parentUuid": "1667f6d1_83603e53",
+      "range": {
+        "startLine": 335,
+        "startChar": 11,
+        "endLine": 335,
+        "endChar": 19
+      },
+      "revId": "e35a2276620ed485be8b78fe62541699c779849a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
