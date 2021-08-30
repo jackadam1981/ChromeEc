@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "898b5d17_d17584a5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-08-30T20:29:16Z",
+      "side": 1,
+      "message": "Can you update the script you use for generating these cherry-picks to include \"notify\u003dNONE\" so that they don\u0027t include the original author by default?\n\nContext: http://b/173118418#comment13 and http://b/173118418#comment20",
+      "revId": "08f974770457ce2b1319cb1c4bf9cc56b7868ca8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
