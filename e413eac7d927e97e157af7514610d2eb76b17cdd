@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c02dd29_573930ab",
+        "filename": "zephyr/zmake/zmake/__main__.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-30T23:34:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2634819c_a54e6c8b",
+      "range": {
+        "startLine": 237,
+        "startChar": 20,
+        "endLine": 237,
+        "endChar": 21
+      },
+      "revId": "e413eac7d927e97e157af7514610d2eb76b17cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3d76549_3ec39763",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-30T19:25:48Z",
       "side": 1,
       "message": "I\u0027m not exactly sure if I\u0027m a fan of allowing \"build all, but I want very specific toolchains\"\n\nWe should go with one of two approaches IMO ... either:\n\n1. Make an option for coverage on just one build, and people who need really specific toolchain setups can do it for both... or \n2. Make projects maintain a list of compatible toolchains, and a probe/search mechanism to find the first supported toolchain\n\n#2 sounds cleaner, #1 sounds easier",
+      "range": {
+        "startLine": 674,
+        "startChar": 34,
+        "endLine": 674,
+        "endChar": 47
+      },
+      "revId": "e413eac7d927e97e157af7514610d2eb76b17cdd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d371f8da_35291eae",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-30T23:34:38Z",
+      "side": 1,
+      "message": "#1 is not acceptable, because I want a combined coverage report that runs all projects and tests. So I would have to run coverage all each project, then combine the results, which is what `zmake coverage` does.\n#2 sounds hard, and I don\u0027t think there is a good way to probe.",
+      "parentUuid": "d3d76549_3ec39763",
       "range": {
         "startLine": 674,
         "startChar": 34,
