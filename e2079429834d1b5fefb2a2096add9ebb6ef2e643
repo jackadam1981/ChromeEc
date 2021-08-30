@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83f6d16a_e32e4726",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2021-08-30T06:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ec04af7_96f50953",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 15
+      },
+      "revId": "e2079429834d1b5fefb2a2096add9ebb6ef2e643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ade2459_7a586cb3",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51e3e6b0_dcfdd12c",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2021-08-30T06:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ade2459_7a586cb3",
+      "range": {
+        "startLine": 261,
+        "startChar": 12,
+        "endLine": 261,
+        "endChar": 34
+      },
+      "revId": "e2079429834d1b5fefb2a2096add9ebb6ef2e643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df15613e_58d1138e",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-08-27T20:57:21Z",
       "side": 1,
       "message": "nit: IMU\n\nsame on line 271",
+      "range": {
+        "startLine": 268,
+        "startChar": 17,
+        "endLine": 268,
+        "endChar": 23
+      },
+      "revId": "e2079429834d1b5fefb2a2096add9ebb6ef2e643",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f24685_2e038942",
+        "filename": "board/gimble/sensors.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2021-08-30T06:20:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df15613e_58d1138e",
       "range": {
         "startLine": 268,
         "startChar": 17,
