@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d1a324c_cab8d2cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T18:58:34Z",
+      "side": 1,
+      "message": "this patch deserves a TCG test run",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "196323fb1ad62508ffee8d1af30448cfb5367160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6759b372_5f4eda0f",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T18:58:34Z",
+      "side": 1,
+      "message": "shouln\u0027t there be a function to feed hmac with the digest to sign/encrypt?",
+      "range": {
+        "startLine": 222,
+        "startChar": 7,
+        "endLine": 222,
+        "endChar": 29
+      },
+      "revId": "196323fb1ad62508ffee8d1af30448cfb5367160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
