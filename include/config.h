@@ -2161,6 +2161,12 @@
 /* Define when LPC memory space needs to be populated. */
 #undef CONFIG_MOTION_FILL_LPC_SENSE_DATA
 
+/* Enables runtime probing of motion sensors. */
+#undef CONFIG_MOTION_SENSE_RUNTIME_PROBE
+
+/* Disables deferred call that probes motion sensors on boot-up. */
+#undef CONFIG_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL
+
 /******************************************************************************/
 /* Host to RAM (H2RAM) Memory Mapping */
 

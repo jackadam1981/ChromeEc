@@ -357,4 +357,38 @@ static inline void ec_motion_sensor_fill_values(
 	dst->data[2] = v[2];
 }
 
+#ifdef CONFIG_MOTION_SENSE_RUNTIME_PROBE
+
+/**
+ * This structure contains pointer to config of alternate sensor and enum of
+ * sensor which will be replaced if probing is successful.
+ */
+struct motion_sensors_alt_probe_t {
+	struct motion_sensor_t *config;
+	enum sensor_id sensor_id;
+};
+
+extern struct motion_sensors_alt_probe_t motion_sensors_alt_probe[];
+extern const int motion_sensors_alt_probe_count;
+
+/**
+ * On CrOS build, there's universal interrupt service routine that calls
+ * interrupt handler for currently selected sensors.
+ * On zephyr build, the ISR is specific for GPIO with name of it and suffix
+ * of "_ISR".
+ */
+#if !defined(CONFIG_ZEPHYR)
+void motion_sense_interrupt(enum gpio_signal signal);
+#endif
+
+/**
+ * If CONFIG_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL is defined, this function
+ * must be manually called in board logic code.
+ */
+#ifdef CONFIG_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL
+void motion_sense_probe_sensors(void);
+#endif
+
+#endif /* CONFIG_MOTION_SENSE_RUNTIME_PROBE */
+
 #endif /* __CROS_EC_MOTION_SENSE_H */
