@@ -225,6 +225,20 @@ def main(argv=None):
         type=pathlib.Path,
         help="The build directory used during configuration",
     )
+    class StoreDictKeyPair(argparse.Action):
+        def __call__(self, parser, namespace, values, option_string=None):
+            my_dict = {}
+            for kv in values.split(","):
+                k,v = kv.split("=")
+                my_dict[k] = v
+            setattr(namespace, self.dest, my_dict)
+
+    coverage.add_argument(
+        "--toolchain_map",
+        dest="toolchain_map",
+        action=StoreDictKeyPair,
+        default="",
+        metavar="KEY1=VAL1,KEY2=VAL2...")
 
     opts = parser.parse_args(argv)
 
