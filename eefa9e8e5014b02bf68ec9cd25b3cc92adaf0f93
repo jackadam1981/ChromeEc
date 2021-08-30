@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "164153aa_939575f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-30T07:13:22Z",
+      "side": 1,
+      "message": "- Expand: need to check on Rammus branch, probably on top of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3128756.\n\n- Run Sensor tast tests to ensure host is receiving events:\ntast run \u003cip\u003e hardware.SensorIioservice",
+      "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5dbbe10a_98c316a3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
