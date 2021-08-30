@@ -16,6 +16,24 @@
       "message": "I don\u0027t see a description of the issue this addresses in the bug.\n\n1. Was this hook getting called before tcpc_config was set correctly based on CBI?\n2. Does it need to run on every connection?\n3. Would it be more appropriate to override board_ps8xxx_tcpm_init (see elemi/board.c) than to establish our own hook here?",
       "revId": "c9295f6f4acacb3dc0fc407f95e5ba74dcddfb97",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19222a1f_7f212cc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1384576
+      },
+      "writtenOn": "2021-08-30T02:10:45Z",
+      "side": 1,
+      "message": "1. Chronicler only use db-type DB_USB3_ACTIVE ,So we setup main source in tcpc_config only, see CL:2978651.\n2. Done, see issuetracker.\n3. Done.",
+      "parentUuid": "43e57d9c_610e9ff1",
+      "revId": "c9295f6f4acacb3dc0fc407f95e5ba74dcddfb97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
