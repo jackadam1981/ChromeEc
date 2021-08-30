@@ -116,6 +116,30 @@
       },
       "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0250d557_fcef593d",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-08-30T23:40:42Z",
+      "side": 1,
+      "message": "BTW, the GPIO01 has an external pull-up, i.e. R163. It doesn\u0027t need any internal pull-up.\n\nWhere will the GPIO_ACTIVE_LOW flag be used? The polarity of the INT_L pin is not configurable for PCF85063A. It is ACTIVE_LOW only. The PCF85063A driver just configs the EC interrupt using the flag GPIO_INT_EDGE_FALLING. It seems unnecessary too.",
+      "parentUuid": "088e6c7d_a46a8d1d",
+      "range": {
+        "startLine": 109,
+        "startChar": 24,
+        "endLine": 109,
+        "endChar": 56
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
