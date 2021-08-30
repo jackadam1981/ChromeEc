@@ -451,15 +451,16 @@ static void clock_set_osc(enum clock_osc osc, enum clock_osc pll_osc)
 	}
 }
 
+static uint64_t clock_mask;
+
 void clock_enable_module(enum module_id module, int enable)
 {
-	static uint32_t clock_mask;
-	int new_mask;
+	uint64_t new_mask;
 
 	if (enable)
-		new_mask = clock_mask | BIT(module);
+		new_mask = clock_mask | BIT_ULL(module);
 	else
-		new_mask = clock_mask & ~BIT(module);
+		new_mask = clock_mask & ~BIT_ULL(module);
 
 	/* Only change clock if needed */
 	if (new_mask != clock_mask) {
@@ -488,10 +489,21 @@ void clock_enable_module(enum module_id module, int enable)
 			else if ((new_mask & (BIT(MODULE_SPI) |
 					      BIT(MODULE_SPI_CONTROLLER))) == 0)
 				STM32_RCC_APB2ENR &= ~STM32_RCC_APB2ENR_SPI1EN;
+		} else if (module == MODULE_USB) {
+#if defined(STM32_RCC_APB1ENR2_USBFSEN)
+			STM32_RCC_APB1ENR2 |= STM32_RCC_APB1ENR2_USBFSEN;
+#else
+			STM32_RCC_APB1ENR |= STM32_RCC_PB1_USB;
+#endif
 		}
 	}
 
 	clock_mask = new_mask;
+}
+
+int is_module_clock_enabled(enum module_id module)
+{
+	return !!(clock_mask & BIT_ULL(module));
 }
 
 void rtc_init(void)

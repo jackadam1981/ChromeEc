@@ -245,10 +245,13 @@ void clock_wait_bus_cycles(enum bus_type bus, uint32_t cycles)
 void clock_enable_module(enum module_id module, int enable)
 {
 	if (module == MODULE_USB) {
-		if (enable)
+		if (enable) {
 			STM32_RCC_CRRCR |= RCC_CRRCR_HSI48O;
-		else
+			STM32_RCC_APB1ENR |= STM32_RCC_PB1_USB;
+		} else {
+			STM32_RCC_APB1ENR &= ~STM32_RCC_PB1_USB;
 			STM32_RCC_CRRCR &= ~RCC_CRRCR_HSI48O;
+		}
 	} else if (module == MODULE_I2C) {
 		if (enable) {
 			/* Enable clocks to I2C modules if necessary */
@@ -277,3 +280,15 @@ void clock_enable_module(enum module_id module, int enable)
 			module);
 	}
 }
+
+int is_module_clock_enabled(enum module_id module)
+{
+	if (module == MODULE_USB)
+		return !!(STM32_RCC_APB1ENR & STM32_RCC_PB1_USB);
+	else if (module == MODULE_I2C)
+		return !!(STM32_RCC_APB1ENR1 & STM32_RCC_APB1ENR1_I2C1EN);
+	else if (module == MODULE_ADC)
+		return !!(STM32_RCC_APB2ENR & STM32_RCC_APB2ENR_ADC12EN);
+	return 0;
+}
+
