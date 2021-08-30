@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "423eadf3_7492d349",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-30T22:39:48Z",
+      "side": 1,
+      "message": "reference the Brya CL for better understanding",
+      "revId": "b5c6027ca1f78b3ae513a5e12615433164d40d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ba352924_f59c2bc9",
         "filename": "board/adlrvpp_ite/board.c",
         "patchSetId": 2
@@ -14,6 +31,29 @@
       "writtenOn": "2021-08-30T22:37:44Z",
       "side": 1,
       "message": "Pls add #ifdef BOARD_ADLRVPM_ITE and submit this CL for merging",
+      "revId": "b5c6027ca1f78b3ae513a5e12615433164d40d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ad48e71_10df54f7",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-30T22:39:48Z",
+      "side": 1,
+      "message": "file a separate bug for RVP",
+      "range": {
+        "startLine": 124,
+        "startChar": 4,
+        "endLine": 124,
+        "endChar": 36
+      },
       "revId": "b5c6027ca1f78b3ae513a5e12615433164d40d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
