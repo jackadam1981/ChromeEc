@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "982e7bcf_9b553a9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-30T23:28:33Z",
+      "side": 1,
+      "message": "this code doesn\u0027t work with simulator which uses OpenSSL version of  same functions and compiled without EMBEDDED_MODE flag. I think tpm_test.py is enough - it tests these specific functions. Note, I just moved them from tpm2 to cr50, no code change except for comments.",
+      "parentUuid": "7d1a324c_cab8d2cd",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "196323fb1ad62508ffee8d1af30448cfb5367160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6759b372_5f4eda0f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-30T18:58:34Z",
       "side": 1,
       "message": "shouln\u0027t there be a function to feed hmac with the digest to sign/encrypt?",
+      "range": {
+        "startLine": 222,
+        "startChar": 7,
+        "endLine": 222,
+        "endChar": 29
+      },
+      "revId": "196323fb1ad62508ffee8d1af30448cfb5367160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e309e6c5_7d93c364",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-30T23:28:33Z",
+      "side": 1,
+      "message": "TPM2 assumes it\u0027s _cpri__UpdateHash(). And for me I\u0027d need to add support for HMAC\u0027s opad being external to function before I\u0027d be able to switch to code in hmac_sw.c.",
+      "parentUuid": "6759b372_5f4eda0f",
       "range": {
         "startLine": 222,
         "startChar": 7,
