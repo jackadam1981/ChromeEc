@@ -143,6 +143,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0f870f8f_036ec5e4",
+        "filename": "board/nucleo-f411re/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-30T07:04:27Z",
+      "side": 1,
+      "message": "Trying your change, I find that CONFIG_MKBP_EVENT needs to be defined. It is required for the sensor stack to send interrupt event to the host.\nDid you try running tests like:\ntast run \u003cip\u003e hardware.SensorIioservice ?",
+      "parentUuid": "17853600_97f8ef27",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cae6a421_53606f65",
         "filename": "include/ec_commands.h",
         "patchSetId": 2

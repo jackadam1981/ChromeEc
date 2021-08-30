@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "015333e1_6653ab93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-08-30T07:04:27Z",
+      "side": 1,
+      "message": "I uploaded a list of CLs to update the driver.\nAs you can see, I pull in multiple CLs to [try to] be consistent with cros/main.\nIt makes review easier and allows tracking CLs across branches if a bug arises.\n\nI could not test on a real hardware, make sure\nSensor tast tests pass on the DUT:\n\ntast run \u003cip\u003e hardware.SensorIioservice",
+      "revId": "7e8e7fbb9f7994f03ba4ed5e8174957975158476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
