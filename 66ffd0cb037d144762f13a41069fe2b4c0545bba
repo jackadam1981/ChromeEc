@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46246a7e_8d9c7672",
+        "filename": "board/cr50/crypto_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T18:50:05Z",
+      "side": 1,
+      "message": "please add a comment that this is a copy of chip/g/crypto_api.c with some mods",
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a15c4ca3_269b7653",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T18:50:05Z",
+      "side": 1,
+      "message": "why is this necessary? This is not typical for Cr50 codebase and is confusing the reader.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "530b12b6_145ee701",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T18:50:05Z",
+      "side": 1,
+      "message": "for consistency, please use !fips_is_no_crypto_error() as in line 610",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 40
+      },
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "781778df_8514b6f6",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T18:50:05Z",
+      "side": 1,
+      "message": "does  this function have to continue in case of this error?",
+      "range": {
+        "startLine": 611,
+        "startChar": 2,
+        "endLine": 611,
+        "endChar": 35
+      },
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cafcd94_7ed7ca5a",
+        "filename": "board/cr50/fips.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T18:50:05Z",
+      "side": 1,
+      "message": "why does this have to change? Bool return type makes a perfect sense here",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 4
+      },
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
