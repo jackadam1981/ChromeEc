@@ -963,6 +963,19 @@ out_unlock:
 	return ret;
 }
 
+static int probe(const struct motion_sensor_t *s)
+{
+	int val;
+
+	if (icm_read8(s, ICM426XX_REG_WHO_AM_I, &val) != EC_SUCCESS)
+		return EC_ERROR_NOT_HANDLED;
+
+	if (val != ICM426XX_CHIP_ICM40608 && val != ICM426XX_CHIP_ICM42605)
+		return EC_ERROR_NOT_HANDLED;
+
+	return EC_SUCCESS;
+}
+
 const struct accelgyro_drv icm426xx_drv = {
 	.init = icm426xx_init,
 	.read = icm426xx_read,
@@ -975,6 +988,8 @@ const struct accelgyro_drv icm426xx_drv = {
 	.get_offset = icm426xx_get_offset,
 	.set_scale = icm_set_scale,
 	.get_scale = icm_get_scale,
+	.probe = probe,
+	.interrupt = icm426xx_interrupt,
 #ifdef CONFIG_ACCEL_INTERRUPTS
 	.irq_handler = icm426xx_irq_handler,
 #endif
