@@ -16,6 +16,24 @@
       "message": "Any reason to drop the task access indicators?",
       "revId": "a21cecdf596ea520de514ca632303c0d0188b179",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95883e21_20ba91ae",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6991,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-30T18:45:35Z",
+      "side": 0,
+      "message": "No. I think this snuck in when I rebased Sam\u0027s original change.",
+      "parentUuid": "2cde51ac_f1d2d93c",
+      "revId": "a21cecdf596ea520de514ca632303c0d0188b179",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

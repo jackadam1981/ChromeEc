@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d07d7f5f_c06569d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-30T18:45:35Z",
+      "side": 1,
+      "message": "AFAIK, we were already only clearing discovery data during Startup when we entered Startup *without* having just completed a PRS. This CL doesn\u0027t change that.\n\nIf you\u0027re talking about our discovery DPM request on chipset startup, I didn\u0027t touch the hook, and I endeavored not to change the behavior of the DPM request in this CL. Right now, one of the flag clears in mode init is load bearing for the discovery DPM request. I believe that to be unnecessary, and I aim to address it by fixing b:189353401.",
+      "parentUuid": "1427e719_7f6ba00b",
+      "revId": "f33e3766920b3166d0f3fb4c1ce7e71b5b9b8f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0afa22e5_4819d95f",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-27T22:46:51Z",
       "side": 1,
       "message": "It seems like partner_amodes should clear on mode init, right?",
+      "revId": "f33e3766920b3166d0f3fb4c1ce7e71b5b9b8f09",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "354f3ff2_39f2367b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6991,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-08-30T18:45:35Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "0afa22e5_4819d95f",
       "revId": "f33e3766920b3166d0f3fb4c1ce7e71b5b9b8f09",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
