@@ -22,6 +22,30 @@
       },
       "revId": "fc205baf094cd41f5d98d425c30d0440050d9f39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2870dfed_91fe2911",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-08-30T15:30:40Z",
+      "side": 1,
+      "message": "It\u0027s written in C, but this change compiles it with the C++ compiler. C++ is backwards compatible with C, so valid C code compiles with a C++ compiler, but the reverse is not true.\n\nIn order to be able to use the C++ classes that libec provides, ectool has to be compiled with C++. See https://crrev.com/c/2556758/22/util/ectool.cc as an example that uses libec\u0027s VersionCommand to replace EC_CMD_GET_CMD_VERSIONS.",
+      "parentUuid": "ad7e7764_04bc1d81",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "fc205baf094cd41f5d98d425c30d0440050d9f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
