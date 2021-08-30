@@ -8,6 +8,11 @@
 #include "hooks.h"
 #include "drivers/cros_cbi.h"
 
+/* Console output macros */
+#define CPUTS(outstr) cputs(CC_MOTION_SENSE, outstr)
+#define CPRINTS(format, args...) cprints(CC_MOTION_SENSE, format, ## args)
+#define CPRINTF(format, args...) cprintf(CC_MOTION_SENSE, format, ## args)
+
 #define SENSOR_MUTEX_NODE		DT_PATH(motionsense_mutex)
 #define SENSOR_MUTEX_NAME(id)		DT_CAT(MUTEX_, id)
 
@@ -121,6 +126,22 @@ DT_FOREACH_CHILD(SENSOR_ROT_REF_NODE, DECLARE_SENSOR_ROT_REF)
 		(.mutex = &SENSOR_MUTEX_NAME(DT_PHANDLE(id, mutex)),))
 
 /*
+ * Set the interrupt pin which is referred by the phandle.
+ */
+#define SENSOR_INT_SIGNAL(id)						\
+	IF_ENABLED(DT_NODE_HAS_PROP(id, int_signal),			\
+		(.int_signal = GPIO_SIGNAL(DT_PHANDLE(id, int_signal)),))
+
+/*
+ * Set flags based on values defined in the node.
+ */
+#define SENSOR_FLAGS(id)						\
+	.flags = 0							\
+	IF_ENABLED(DT_NODE_HAS_PROP(id, int_signal),			\
+		(|MOTIONSENSE_FLAG_INT_SIGNAL))			\
+	,
+
+/*
  * Get I2C port number which is referred by phandle.
  * See motionsense-sensor-base.yaml for DT example and details.
  */
@@ -196,7 +217,9 @@ DT_FOREACH_CHILD(SENSOR_ROT_REF_NODE, DECLARE_SENSOR_ROT_REF)
 	SENSOR_I2C_PORT(id)						\
 	SENSOR_ROT_STD_REF(id)						\
 	SENSOR_DRV_DATA(id)						\
-	SENSOR_CONFIG(id)
+	SENSOR_CONFIG(id)						\
+	SENSOR_INT_SIGNAL(id)						\
+	SENSOR_FLAGS(id)
 
 /* Create motion sensor node with node ID */
 #define DO_MK_SENSOR_ENTRY(						\
@@ -388,16 +411,92 @@ DECLARE_HOOK(HOOK_INIT, sensor_enable_irqs, HOOK_PRIO_DEFAULT);
 			     DT_NODE_HAS_PROP(id, alternate_indicator)), \
 		    (CHECK_AND_REPLACE_ALT_MOTION_SENSOR(id)), ())
 
-void motion_sensors_init_alt(void)
+#define ALT_PROBE_ENTRY(id)						\
+	{								\
+		.config = &motion_sensors_alt[SENSOR_ID(id)],		\
+		.sensor_id = SENSOR_ID(DT_PHANDLE(id, alternate_for)),	\
+	},
+
+#define ALT_PROBE_ARRAY(id)						\
+	COND_CODE_1(DT_NODE_HAS_PROP(id, runtime_probe),		\
+		(ALT_PROBE_ENTRY(id)),					\
+		())
+
+#ifdef CONFIG_PLATFORM_EC_MOTION_SENSE_RUNTIME_PROBE
+
+#define PROBE_SENSOR(id)						\
+{									\
+	int res;							\
+									\
+	CPRINTF("  Probing \"%s\" chip %d type %d loc %d - ",		\
+		motion_sensors_alt[SENSOR_ID(id)].name,			\
+		motion_sensors_alt[SENSOR_ID(id)].chip,			\
+		motion_sensors_alt[SENSOR_ID(id)].type,			\
+		motion_sensors_alt[SENSOR_ID(id)].location);		\
+									\
+	ASSERT(motion_sensors_alt[SENSOR_ID(id)].drv->probe != NULL);	\
+	res = motion_sensors_alt[SENSOR_ID(id)].drv->probe(		\
+			&motion_sensors_alt[SENSOR_ID(id)]);		\
+	CPRINTF("%sfound\n", (res != EC_SUCCESS ? "not " : ""));	\
+									\
+	if (res == EC_SUCCESS) {					\
+		REPLACE_ALT_MOTION_SENSOR(id,				\
+					DT_PHANDLE(id, alternate_for));	\
+	}								\
+}
+
+#define PROBE_IF_NEEDED(id)						\
+	COND_CODE_1(DT_NODE_HAS_PROP(id, runtime_probe),		\
+		(PROBE_SENSOR(id)),					\
+		())
+
+#ifndef CONFIG_PLATFORM_EC_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL
+static void motion_sense_probe_sensors(void)
+#else
+void motion_sense_probe_sensors(void)
+#endif
+{
+	CPRINTF("Probing alternative motion sensors:\n");
+	DT_FOREACH_CHILD(SENSOR_ALT_NODE, PROBE_IF_NEEDED)
+}
+
+#endif /* CONFIG_PLATFORM_EC_MOTION_SENSE_RUNTIME_PROBE */
+
+#if DT_NODE_EXISTS(SENSOR_ALT_NODE)
+static void motion_sensors_init_alt(void)
 {
 	const struct device *dev = device_get_binding("cros_cbi");
 
-	if (dev == NULL)
-		return;
+	if (dev != NULL) {
+		DT_FOREACH_CHILD(SENSOR_ALT_NODE, ALT_MOTION_SENSOR_INIT_ID)
+	}
 
-#if DT_NODE_EXISTS(SENSOR_ALT_NODE)
-	DT_FOREACH_CHILD(SENSOR_ALT_NODE, ALT_MOTION_SENSOR_INIT_ID)
+#if IS_ENABLED(CONFIG_PLATFORM_EC_MOTION_SENSE_RUNTIME_PROBE) && \
+	!IS_ENABLED(CONFIG_PLATFORM_EC_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL)
+	motion_sense_probe_sensors();
 #endif
 }
-
 DECLARE_HOOK(HOOK_INIT, motion_sensors_init_alt, HOOK_PRIO_INIT_I2C + 1);
+#endif
+
+#ifdef CONFIG_PLATFORM_EC_MOTION_SENSE_RUNTIME_PROBE
+
+#define DEF_MOTION_ISR_NAME_ENUM(id) \
+	DT_ENUM_UPPER_TOKEN(DT_PHANDLE(id, int_signal), enum_name)
+#define DEF_MOTION_ISR_NAME_ENUM_WITH_SUFFIX(name) DT_CAT(name, _ISR)
+#define DEF_MOTION_ISR_NAME(id) \
+	DEF_MOTION_ISR_NAME_ENUM_WITH_SUFFIX(DEF_MOTION_ISR_NAME_ENUM(id))
+
+#define DEF_MOTION_ISR(id) \
+void DEF_MOTION_ISR_NAME(id)(enum gpio_signal signal)		\
+{								\
+	ASSERT(motion_sensors[SENSOR_ID(id)].drv->interrupt);	\
+	motion_sensors[SENSOR_ID(id)].drv->interrupt(signal);	\
+}
+
+#define DEF_MOTION_CHECK_ISR(id) \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, int_signal), (DEF_MOTION_ISR(id)), ())
+
+DT_FOREACH_CHILD(SENSOR_NODE, DEF_MOTION_CHECK_ISR)
+
+#endif /* CONFIG_PLATFORM_EC_MOTION_SENSE_RUNTIME_PROBE */
