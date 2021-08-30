@@ -46,6 +46,30 @@
       },
       "revId": "fc205baf094cd41f5d98d425c30d0440050d9f39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e738778_8e3ecb67",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 21
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-08-30T17:11:00Z",
+      "side": 1,
+      "message": "What\u0027s the plan for rewriting ectool.c in c++? Are we going to rewrite an ectool sub-command as we add a class for each EC command to libec?\n\nlibec is hosted in src/platform2, right? That would make us submit two CLs per command (instead of one CL as we currently do). Why don\u0027t we ebuild libec from src/platform/ec? \n\nRelated to the question above: Any thoughts on how we do build tests and add unit tests?",
+      "parentUuid": "2870dfed_91fe2911",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 39
+      },
+      "revId": "fc205baf094cd41f5d98d425c30d0440050d9f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
