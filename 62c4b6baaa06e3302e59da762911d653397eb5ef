@@ -16,6 +16,24 @@
       "message": "We don\u0027t have permission to click CQ+2 on EC repository anymore, need help to commit this CL.",
       "revId": "62c4b6baaa06e3302e59da762911d653397eb5ef",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec136a96_1323e2aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-08-30T15:43:21Z",
+      "side": 1,
+      "message": "If you mark CLs as verified and auto-submit then we will know that you are ready to send this through as soon as it is CR+2 and we will CQ+2 on CR+2.",
+      "parentUuid": "55b832ba_9fb8cae8",
+      "revId": "62c4b6baaa06e3302e59da762911d653397eb5ef",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
