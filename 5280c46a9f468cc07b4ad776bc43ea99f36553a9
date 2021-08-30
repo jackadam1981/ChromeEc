@@ -22,6 +22,46 @@
       },
       "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d49dce25_bd79cffc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-30T23:43:24Z",
+      "side": 1,
+      "message": "lgtm overall",
+      "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61ea1dc_11e3ea0d",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-30T23:43:24Z",
+      "side": 1,
+      "message": "should it be with \u0027--binary\u0027? while I assume it works without it, sha256sum help says text mode is default.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 11
+      },
+      "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
