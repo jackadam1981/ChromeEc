@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b89c660_79821a9c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T21:09:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "95459e6b_3be77bfd",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 37
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b61d82b7_a5e7ed4d",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "The signer uses the .elf files.",
       "parentUuid": "b61d82b7_a5e7ed4d",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c00b003_1768fc5f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T21:09:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2f737a76_12e583a3",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -324,6 +372,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f6bb176_ed600989",
+        "filename": "util/get_fips_fingerprint.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T21:09:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cd339c8e_254f2a1d",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 31
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2654c668_07c4227f",
@@ -549,6 +621,30 @@
       "side": 1,
       "message": "The signer uses the elf files.",
       "parentUuid": "6538fa88_c38ed88c",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 13
+      },
+      "revId": "c0c0f981703776e16fb97ab67f0979c6fb2c6ff1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "052cb5ad_74c18e1d",
+        "filename": "util/get_fips_fingerprint.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T21:09:11Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5830899c_103dfdbe",
       "range": {
         "startLine": 51,
         "startChar": 2,

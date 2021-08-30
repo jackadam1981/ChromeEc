@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7ce489_68be5fcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T21:09:11Z",
+      "side": 1,
+      "message": "This patch deserves a better description:\n\nwhat is the chain of make dependencies now between .elf and .bin?\n\nIs it \u0027prefips\u0027 -\u003e flat.prefips -\u003e elf -\u003e flat or something else?\n\nThis should be expressed in Makefile.rules and an appropriate make function should be added to stay consistent with the rest of the targets.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
