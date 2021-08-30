@@ -16,6 +16,29 @@
       "message": "looks like we don\u0027t have to be able to paste the checksum into the elf file after all, in can go straight into .bin, like the RMA keys, is this right?",
       "revId": "19874305839a9423c6a102b81c8d11b0cca2684e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7df4cf8_f82dd530",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T19:52:33Z",
+      "side": 1,
+      "message": "technically this #if/#endif is not necessary: is there is no modules mapping into these sections (text.fips/rodata.fips), this code would be just a noop, so no need for conditional compilation here.\n\nAnd still no need to move the checksum space either.",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 25
+      },
+      "revId": "19874305839a9423c6a102b81c8d11b0cca2684e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
