@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28297786_aa9c11f0",
+        "filename": "board/cr50/dcrypto/compare.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-30T23:14:19Z",
+      "side": 1,
+      "message": "yes, so it\u0027s set to 0. I checked that faster path works, but it\u0027s disable.",
+      "parentUuid": "02558035_50ddb462",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "811f2e585ade4d64ef84224814074c1c22af5574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cc2e6d3_92512a7d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-30T20:07:11Z",
       "side": 1,
       "message": "Sorry, I don\u0027t understand why this is necessary and what the laundered value is.\n\nCan you please add to the comment a reference to an explanation.",
+      "range": {
+        "startLine": 307,
+        "startChar": 2,
+        "endLine": 312,
+        "endChar": 9
+      },
+      "revId": "811f2e585ade4d64ef84224814074c1c22af5574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34c7f1e_69867733",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-30T23:14:19Z",
+      "side": 1,
+      "message": "it basically makes compiler know nothing about variable without any code. this empty asm block just indicates that some compiler selected register is modified by empty code block, so that this \u0027value\u0027 should be treated as not coming from earlier expressions.",
+      "parentUuid": "0cc2e6d3_92512a7d",
       "range": {
         "startLine": 307,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92665612_2898a817",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-30T23:14:19Z",
+      "side": 1,
+      "message": "ah, thats my newly discovered trick. for zero it does nothing, for non-zero small positive numbers it increase number of non-zero bits, while for small negative numbers this unsigned multiplication make result further away from -1, so skipping instructions would prevent from getting \u0027b\u0027 with non-zero input. The problem is that in used cases test value can be easily in range 0xfffffff0 - 0xffffffff, so skipping comparison (movne in second variant https://godbolt.org/z/e6Wef96z6 and few other instructions) may result in good enough mask to get \u0027a\u0027:\n\n                              ; r0  \u003d test; r1 \u003d a, r2 \u003d b\n        adds    r3, r0, #0    ; r3 \u003d test\n                              ; test \u003d\u003d 0        test !\u003d 0\n        movne   r3, #1        ; r3 \u003d test \u003d\u003d 0   r3 \u003d 1\n        rsb     r0, r3, #0    ; r0 \u003d 0 - r3 \u003d 0  r0 \u003d -1\n        sub     r3, r3, #1    ; r3 \u003d -1          r3 \u003d -2 (!!)\n        and     r0, r0, r1    ; r0 \u003d 0           r0 \u003d -1 \u0026 a  \u003da\n        and     r3, r3, r2    ; r3 \u003d -1 \u0026 b \u003d b\n        orr     r0, r0, r3    ; choose a or b\nproblem here is r3 is very close all bits set, and skipping movne with test\u003d0xffffffff  makes it very dangerous. After writing this I came up with a simpler approach using value_barrier() :)",
+      "parentUuid": "9d72602d_6403fa99",
+      "range": {
+        "startLine": 361,
+        "startChar": 32,
+        "endLine": 361,
+        "endChar": 41
+      },
+      "revId": "811f2e585ade4d64ef84224814074c1c22af5574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5dbbdac_41c18346",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-08-30T20:07:11Z",
       "side": 1,
       "message": "this is not constant time, maybe remove the if() ?",
+      "range": {
+        "startLine": 475,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 13
+      },
+      "revId": "811f2e585ade4d64ef84224814074c1c22af5574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e34917db_6a80fcb8",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-30T23:14:19Z",
+      "side": 1,
+      "message": "yes, good point. I was thinking about it.",
+      "parentUuid": "d5dbbdac_41c18346",
       "range": {
         "startLine": 475,
         "startChar": 1,
