@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffcde553_d7277ed0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T19:48:46Z",
+      "side": 1,
+      "message": "looks like we don\u0027t have to be able to paste the checksum into the elf file after all, in can go straight into .bin, like the RMA keys, is this right?",
+      "revId": "19874305839a9423c6a102b81c8d11b0cca2684e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
