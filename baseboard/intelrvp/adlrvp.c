@@ -426,3 +426,13 @@ __override bool board_is_tbt_usb4_port(int port)
 
 	return tbt_usb4;
 }
+
+__override int bb_retimer_reset(const struct usb_mux *me)
+{
+	bb_retimer_power_enable(me, false);
+	msleep(5);
+	bb_retimer_power_enable(me, true);
+	msleep(25);
+
+	return EC_SUCCESS;
+}
