@@ -2161,6 +2161,7 @@
 /* Define when LPC memory space needs to be populated. */
 #undef CONFIG_MOTION_FILL_LPC_SENSE_DATA
 
+
 /******************************************************************************/
 /* Host to RAM (H2RAM) Memory Mapping */
 
