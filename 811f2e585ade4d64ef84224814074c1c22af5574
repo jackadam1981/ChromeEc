@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02558035_50ddb462",
+        "filename": "board/cr50/dcrypto/compare.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T20:07:11Z",
+      "side": 1,
+      "message": "do we need this speed up? I think for Cr50 code space is at a much higher premium than performance.",
+      "range": {
+        "startLine": 8,
+        "startChar": 1,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "811f2e585ade4d64ef84224814074c1c22af5574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cc2e6d3_92512a7d",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T20:07:11Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand why this is necessary and what the laundered value is.\n\nCan you please add to the comment a reference to an explanation.",
+      "range": {
+        "startLine": 307,
+        "startChar": 2,
+        "endLine": 312,
+        "endChar": 9
+      },
+      "revId": "811f2e585ade4d64ef84224814074c1c22af5574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d72602d_6403fa99",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T20:07:11Z",
+      "side": 1,
+      "message": "where does 11 come from? This check would fail if `test` exceeds 2^32/11",
+      "range": {
+        "startLine": 361,
+        "startChar": 32,
+        "endLine": 361,
+        "endChar": 41
+      },
+      "revId": "811f2e585ade4d64ef84224814074c1c22af5574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5dbbdac_41c18346",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-30T20:07:11Z",
+      "side": 1,
+      "message": "this is not constant time, maybe remove the if() ?",
+      "range": {
+        "startLine": 475,
+        "startChar": 1,
+        "endLine": 475,
+        "endChar": 13
+      },
+      "revId": "811f2e585ade4d64ef84224814074c1c22af5574",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
