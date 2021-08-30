@@ -121,6 +121,22 @@ DT_FOREACH_CHILD(SENSOR_ROT_REF_NODE, DECLARE_SENSOR_ROT_REF)
 		(.mutex = &SENSOR_MUTEX_NAME(DT_PHANDLE(id, mutex)),))
 
 /*
+ * Set the interrupt pin which is referred by the phandle.
+ */
+#define SENSOR_INT_SIGNAL(id)						\
+	IF_ENABLED(DT_NODE_HAS_PROP(id, int_signal),			\
+		(.int_signal = GPIO_SIGNAL(DT_PHANDLE(id, int_signal)),))
+
+/*
+ * Set flags based on values defined in the node.
+ */
+#define SENSOR_FLAGS(id)						\
+	.flags = 0							\
+	IF_ENABLED(DT_NODE_HAS_PROP(id, int_signal),			\
+		(| MOTIONSENSE_FLAG_INT_SIGNAL))			\
+	,
+
+/*
  * Get I2C port number which is referred by phandle.
  * See motionsense-sensor-base.yaml for DT example and details.
  */
@@ -195,8 +211,9 @@ DT_FOREACH_CHILD(SENSOR_ROT_REF_NODE, DECLARE_SENSOR_ROT_REF)
 	SENSOR_I2C_PORT(id)						\
 	SENSOR_ROT_STD_REF(id)						\
 	SENSOR_DRV_DATA(id)						\
-	SENSOR_CONFIG(id)
-
+	SENSOR_CONFIG(id)						\
+	SENSOR_INT_SIGNAL(id)						\
+	SENSOR_FLAGS(id)
 
 /* Create motion sensor node with node ID */
 #define DO_MK_SENSOR_ENTRY(						\
@@ -387,6 +404,33 @@ DECLARE_HOOK(HOOK_INIT, sensor_enable_irqs, HOOK_PRIO_DEFAULT);
 	COND_CODE_1(UTIL_AND(DT_NODE_HAS_PROP(id, alternate_for),        \
 			     DT_NODE_HAS_PROP(id, alternate_indicator)), \
 		    (CHECK_AND_REPLACE_ALT_MOTION_SENSOR(id)), ())
+
+#define ALT_PROBE_ENTRY(id)						\
+	{								\
+		.config = &motion_sensors_alt[SENSOR_ID(id)],		\
+		.sensor_id = SENSOR_ID(DT_PHANDLE(id, alternate_for)),	\
+	},
+
+#define ALT_PROBE_ARRAY(id)					\
+	COND_CODE_1(DT_NODE_HAS_PROP(id, runtime_probe),	\
+		(ALT_PROBE_ENTRY(id)),				\
+		())
+
+#ifdef CONFIG_MOTION_SENSE_RUNTIME_PROBE
+#if DT_NODE_EXISTS(SENSOR_ALT_NODE)
+struct motion_sensors_alt_probe_t motion_sensors_alt_probe[] = {
+	DT_FOREACH_CHILD(SENSOR_ALT_NODE, ALT_PROBE_ARRAY)
+};
+
+const int motion_sensors_alt_probe_count = ARRAY_SIZE(motion_sensors_alt_probe);
+
+#else
+
+const int motion_sensors_alt_probe_count;
+
+#endif
+
+#endif
 
 void motion_sensors_init_alt(void)
 {

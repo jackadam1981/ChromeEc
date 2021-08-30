@@ -1905,3 +1905,93 @@ DECLARE_CONSOLE_COMMAND(accelspoof, command_accelspoof,
 			"Enable/Disable spoofing of sensor readings.");
 #endif /* defined(CONFIG_CMD_ACCELSPOOF) */
 #endif /* defined(CONFIG_ACCEL_SPOOF_MODE) */
+
+#ifdef CONFIG_MOTION_SENSE_RUNTIME_PROBE
+
+#if defined(CONFIG_ZEPHYR)
+
+static void (*motion_sensor_interrupts[SENSOR_COUNT])(enum gpio_signal);
+#define DEF_MOTION_ISR_NAME(enum_name) DT_CAT(enum_name, _ISR)
+
+#define DEF_MOTION_ISR(id) \
+void \
+DEF_MOTION_ISR_NAME(DT_ENUM_UPPER_TOKEN( \
+			DT_PHANDLE(id, int_signal), enum_name)) \
+(enum gpio_signal signal) \
+{ \
+	motion_sensor_interrupts[SENSOR_ID(id)](signal); \
+}
+
+#define DEF_MOTION_CHECK_ISR(id) \
+	COND_CODE_1(DT_NODE_HAS_PROP(id, int_signal), (DEF_MOTION_ISR(id)), ())
+
+DT_FOREACH_CHILD(SENSOR_NODE, DEF_MOTION_CHECK_ISR)
+
+#else /* defined(CONFIG_ZEPHYR) */
+
+static struct motion_sensor_t *selectedSensors[SENSOR_COUNT];
+
+void motion_sense_interrupt(enum gpio_signal signal)
+{
+	int a;
+
+	for (a = 0; a < SENSOR_COUNT; a++) {
+		if (selectedSensors[a]->int_signal == signal) {
+			selectedSensors[a]->drv->interrupt(signal);
+			return;
+		}
+	}
+
+	ccprintf("Motion interrupt not handled: %d\n", signal);
+}
+
+#endif /* CONFIG_MOTION_SENSE_RUNTIME_PROBE */
+
+#ifndef CONFIG_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL
+static void motion_sense_probe_sensors(void)
+#else
+void motion_sense_probe_sensors(void)
+#endif
+{
+	int a;
+
+	for (a = 0; a < SENSOR_COUNT; a++)
+#if defined(CONFIG_ZEPHYR)
+		motion_sensor_interrupts[a] = motion_sensors[a].drv->interrupt;
+#else
+		selectedSensors[a] = motion_sensors + a;
+#endif
+
+	ccprintf("Probing motion sensors:\n");
+	for (a = 0; a < motion_sensors_alt_probe_count; a++) {
+		int res;
+		struct motion_sensors_alt_probe_t *mp =
+				&motion_sensors_alt_probe[a];
+		ccprintf("Probing \"%s\" chip %d type %d loc %d - ",
+			mp->config->name,
+			mp->config->chip,
+			mp->config->type,
+			mp->config->location);
+
+		ASSERT(mp->config->drv->probe != NULL);
+
+		res = mp->config->drv->probe(mp->config);
+		ccprintf("%sfound\n", (res != EC_SUCCESS ? "not " : ""));
+
+		if (res == EC_SUCCESS) {
+#if defined(CONFIG_ZEPHYR)
+			motion_sensor_interrupts[mp->sensor_id] =
+					mp->config->drv->interrupt;
+#else
+			selectedSensors[mp->sensor_id] = mp->config;
+#endif
+			motion_sensors[mp->sensor_id] = *mp->config;
+		}
+	}
+}
+
+#ifndef CONFIG_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL
+DECLARE_HOOK(HOOK_INIT, motion_sense_probe_sensors, HOOK_PRIO_INIT_I2C + 1);
+#endif
+
+#endif /* CONFIG_MOTION_SENSE_RUNTIME_PROBE */

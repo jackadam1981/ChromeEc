@@ -125,6 +125,23 @@ struct accelgyro_drv {
 	 */
 	int (*perform_calib)(struct motion_sensor_t *s,
 				int        enable);
+
+	/**
+	 * Function that probes if supported chip is present.
+	 * If function returns EC_SUCCESS the probe was successful and
+	 * chip returned correct value.
+	 * If other value is returned, that means that chip is missing.
+	 *
+	 * This pointer can be NULL if driver doesn't implement probing, or
+	 * chip doesn't have a method to probe it.
+	 */
+	int (*probe)(const struct motion_sensor_t *s);
+
+	/**
+	 * Interrupt handler for GPIO pin.
+	 */
+	void (*interrupt)(enum gpio_signal signal);
+
 	/**
 	 * handler for interrupts triggered by the sensor: it runs in task and
 	 * process the events that triggered an interrupt.
