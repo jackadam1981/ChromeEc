@@ -668,6 +668,19 @@ reset_failed:
 	return ret;
 }
 
+static int probe(const struct motion_sensor_t *s)
+{
+	int val;
+
+	if (i2c_read8(s->port, s->i2c_spi_addr_flags, 0x0F, &val) != EC_SUCCESS)
+		return EC_ERROR_HW_INTERNAL;
+
+	if (val != 0x14)
+		return EC_ERROR_HW_INTERNAL;
+
+	return EC_SUCCESS;
+}
+
 const struct accelgyro_drv kionix_accel_drv = {
 	.init = init,
 	.read = read,
@@ -678,6 +691,7 @@ const struct accelgyro_drv kionix_accel_drv = {
 	.get_data_rate = get_data_rate,
 	.set_offset = set_offset,
 	.get_offset = get_offset,
+	.probe = probe,
 };
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_ACCEL
