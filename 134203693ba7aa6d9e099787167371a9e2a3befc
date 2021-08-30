@@ -51,6 +51,24 @@
       "message": "A lot of boards mask off CC_LPC, in CC_DEFAULT.  So if we want this to be always-always, we may consider ccprints.  Otherwise, we can keep it on the LPC channel.",
       "revId": "134203693ba7aa6d9e099787167371a9e2a3befc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae92e2f_4f6617a5",
+        "filename": "chip/npcx/espi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-30T18:34:16Z",
+      "side": 1,
+      "message": "This is a good point. I imagine this message could be very noisy if there\u0027s a known eSPI issue during bringup. Keeping it on the LPC channel would allow developers to silence it.",
+      "parentUuid": "590b6796_6a7174df",
+      "revId": "134203693ba7aa6d9e099787167371a9e2a3befc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
