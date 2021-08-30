@@ -575,14 +575,20 @@ class Zmake:
 
             return 0
 
-    def _coverage_compile_only(self, project, build_dir, lcov_file):
-        self.logger.info("Building %s in %s", project.project_dir, build_dir)
+    def _coverage_compile_only(
+            self, project, build_dir, lcov_file, toolchain=None):
+        self.logger.info(
+            "Building %s in %s (toolchain=%s)",
+            project.project_dir,
+            build_dir,
+            toolchain)
         rv = self.configure(
             project_dir=project.project_dir,
             build_dir=build_dir,
             build_after_configure=False,
             test_after_configure=False,
             coverage=True,
+            toolchain=toolchain,
         )
         if rv:
             return rv
@@ -643,14 +649,20 @@ class Zmake:
 
         return self._run_lcov(build_dir, lcov_file, initial=True, gcov=gcov)
 
-    def _coverage_run_test(self, project, build_dir, lcov_file):
-        self.logger.info("Running test %s in %s", project.project_dir, build_dir)
+    def _coverage_run_test(self, project, build_dir,
+                           lcov_file, toolchain=None):
+        self.logger.info(
+            "Running test %s in %s (toolchain=%s)",
+            project.project_dir,
+            build_dir,
+            toolchain)
         rv = self.configure(
             project_dir=project.project_dir,
             build_dir=build_dir,
             build_after_configure=True,
             test_after_configure=True,
             coverage=True,
+            toolchain=toolchain,
         )
         if rv:
             return rv
@@ -659,7 +671,7 @@ class Zmake:
             gcov = build_dir / "build-{}".format(build_name) / "gcov.sh"
         return self._run_lcov(build_dir, lcov_file, initial=False, gcov=gcov)
 
-    def coverage(self, build_dir):
+    def coverage(self, build_dir, toolchain_map={}):
         """Builds all targets with coverage enabled, and then runs the tests."""
         all_lcov_files = []
         root_dir = self.module_paths["ec"] / "zephyr"
@@ -671,18 +683,23 @@ class Zmake:
                 str(rel_path).replace("/", "_") + ".info"
             )
             all_lcov_files.append(lcov_file)
+            toolchain = project.config.toolchain
+            if toolchain in toolchain_map:
+                toolchain = toolchain_map[toolchain]
             if is_test:
                 # Configure and run the test.
                 self.executor.append(
                     func=lambda: self._coverage_run_test(
-                        project, project_build_dir, lcov_file
+                        project, project_build_dir, lcov_file,
+                        toolchain=toolchain,
                     )
                 )
             else:
                 # Configure and compile the non-test project.
                 self.executor.append(
                     func=lambda: self._coverage_compile_only(
-                        project, project_build_dir, lcov_file
+                        project, project_build_dir, lcov_file,
+                        toolchain=toolchain,
                     )
                 )
 
