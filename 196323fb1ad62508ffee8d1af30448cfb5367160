@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "012ee25d_9ddf0a77",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-31T00:05:28Z",
+      "side": 1,
+      "message": "The TCG test can run against the embedded code on red board.",
+      "parentUuid": "982e7bcf_9b553a9e",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "196323fb1ad62508ffee8d1af30448cfb5367160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6759b372_5f4eda0f",
         "filename": "board/cr50/tpm2/hash.c",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "TPM2 assumes it\u0027s _cpri__UpdateHash(). And for me I\u0027d need to add support for HMAC\u0027s opad being external to function before I\u0027d be able to switch to code in hmac_sw.c.",
       "parentUuid": "6759b372_5f4eda0f",
+      "range": {
+        "startLine": 222,
+        "startChar": 7,
+        "endLine": 222,
+        "endChar": 29
+      },
+      "revId": "196323fb1ad62508ffee8d1af30448cfb5367160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb5504d4_8fde2fcf",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-31T00:05:28Z",
+      "side": 1,
+      "message": "so, initialization and finalization happens in hardware, but updates happen in software - do I get this right?",
+      "parentUuid": "e309e6c5_7d93c364",
       "range": {
         "startLine": 222,
         "startChar": 7,
