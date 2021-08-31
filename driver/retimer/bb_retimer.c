@@ -37,7 +37,13 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+/* TODO: File crosbug: HBR read is disabled hence cache values */
+#ifdef PLATFORM_EC_USBC_RETIMER_INTEL_HB
+#define BB_RETIMER_I2C_RETRY	(5 * 2)
+static uint32_t bbr_data[CONFIG_USB_PD_PORT_MAX_COUNT];
+#else
 #define BB_RETIMER_I2C_RETRY	5
+#endif
 
 /**
  * Utility functions
@@ -102,6 +108,10 @@ static int bb_retimer_write(const struct usb_mux *me,
 	buf[3] = (data >> 8) & 0xFF;
 	buf[4] = (data >> 16) & 0xFF;
 	buf[5] = (data >> 24) & 0xFF;
+
+#ifdef PLATFORM_EC_USBC_RETIMER_INTEL_HB
+	bbr_data[me->i2c_port] = data;
+#endif
 
 	/*
 	 * This I2C message will trigger retimer's internal write sequence
@@ -476,14 +486,20 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state,
 void bb_retimer_hpd_update(const struct usb_mux *me, mux_state_t mux_state,
 			   bool *ack_required)
 {
+#ifdef PLATFORM_EC_USBC_RETIMER_INTEL_HB
+	uint32_t retimer_con_reg = bbr_data[me->i2c_port];
+#else
 	uint32_t retimer_con_reg = 0;
+#endif
 
 	/* This driver does not use host command ACKs */
 	*ack_required = false;
 
+#ifndef PLATFORM_EC_USBC_RETIMER_INTEL_HB
 	if (bb_retimer_read(me, BB_RETIMER_REG_CONNECTION_STATE,
 			    &retimer_con_reg) != EC_SUCCESS)
 		return;
+#endif
 
 	/*
 	 * Bit 14: IRQ_HPD (ignored if BIT8 = 0)
