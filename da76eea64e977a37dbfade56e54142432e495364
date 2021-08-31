@@ -16,6 +16,24 @@
       "message": "Please move the GPIOs to UNUSED() section (in the bottom of the file) instead of deleting",
       "revId": "da76eea64e977a37dbfade56e54142432e495364",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ce27d3c_78254a6c",
+        "filename": "board/anahera/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-08-31T01:30:51Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "2f699d79_4e2a95f6",
+      "revId": "da76eea64e977a37dbfade56e54142432e495364",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
