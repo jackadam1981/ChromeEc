@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2348a655_3eb53a0e",
+        "filename": "board/nipperkin/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-08-31T11:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60a8ee21_919e538a",
+      "revId": "03a841075f39439eed6608876ab855d6704304fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "580c1d06_35ad26e9",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-08-31T11:21:37Z",
       "side": 1,
       "message": "enum led_port port,",
+      "revId": "03a841075f39439eed6608876ab855d6704304fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28fc8eeb_02347d91",
+        "filename": "board/nipperkin/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-08-31T11:40:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "580c1d06_35ad26e9",
       "revId": "03a841075f39439eed6608876ab855d6704304fd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
