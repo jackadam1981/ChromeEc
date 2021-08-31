@@ -227,6 +227,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a866d0d_87bb55d9",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-31T16:57:23Z",
+      "side": 1,
+      "message": "but doesn\u0027t the code below use dcrypto which this check shows as not available, won\u0027t everything else fail?",
+      "parentUuid": "35a140e2_dced6cc6",
+      "range": {
+        "startLine": 611,
+        "startChar": 2,
+        "endLine": 611,
+        "endChar": 35
+      },
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0cafcd94_7ed7ca5a",
         "filename": "board/cr50/fips.h",
         "patchSetId": 1
