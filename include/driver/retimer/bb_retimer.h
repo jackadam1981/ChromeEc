@@ -17,7 +17,11 @@
 #define BB_RETIMER_VENDOR_ID_2          0x8087
 
 #define BB_RETIMER_REG_DEVICE_ID	1
+#ifdef  CONFIG_USBC_RETIMER_INTEL_HB
+#define BB_RETIMER_DEVICE_ID		0x0D9C
+#else
 #define BB_RETIMER_DEVICE_ID		0x15EE
+#endif
 
 /* Connection State Register Attributes */
 #define BB_RETIMER_REG_CONNECTION_STATE		4
