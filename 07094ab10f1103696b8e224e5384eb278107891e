@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b9a31dd_b93a5448",
+        "filename": "board/cr50/dcrypto/p256_ec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-31T17:11:35Z",
+      "side": 1,
+      "message": "this is a Boolean test, could be\n\nif (p256_is_zero(d))\n  return 0;",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 25
+      },
+      "revId": "07094ab10f1103696b8e224e5384eb278107891e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d5783a_849cd105",
+        "filename": "board/cr50/dcrypto/p256_ec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-31T17:11:35Z",
+      "side": 1,
+      "message": "what\u0027s the point to clear up the signature, it is not a secret, is it?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 33
+      },
+      "revId": "07094ab10f1103696b8e224e5384eb278107891e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9196a330_5f774b52",
+        "filename": "board/cr50/dcrypto/p256_ec.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-31T17:11:35Z",
+      "side": 1,
+      "message": "checks could be if (!x)",
+      "range": {
+        "startLine": 88,
+        "startChar": 1,
+        "endLine": 88,
+        "endChar": 15
+      },
+      "revId": "07094ab10f1103696b8e224e5384eb278107891e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
