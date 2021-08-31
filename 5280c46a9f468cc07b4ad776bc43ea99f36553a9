@@ -110,6 +110,30 @@
       },
       "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ec1711b_d19d2647",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-31T00:10:01Z",
+      "side": 1,
+      "message": "ah, I misunderstood your comment, I thought -binary would make sha256sum output a binary blob instead of ascii.",
+      "parentUuid": "6c07ab17_7c0340d7",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 11
+      },
+      "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
