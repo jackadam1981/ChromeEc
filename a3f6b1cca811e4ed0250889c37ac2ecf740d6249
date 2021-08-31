@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "283f3dde_f57ead19",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 18
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-08-31T02:14:41Z",
+      "side": 1,
+      "message": "add a bit more descriptions",
+      "parentUuid": "646358bb_047fe964",
+      "revId": "a3f6b1cca811e4ed0250889c37ac2ecf740d6249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7b023e03_c46da75d",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 18
@@ -48,6 +66,24 @@
       "writtenOn": "2021-08-30T23:06:04Z",
       "side": 1,
       "message": "Duplicate?",
+      "revId": "a3f6b1cca811e4ed0250889c37ac2ecf740d6249",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "831fe4ea_a5c0eeaa",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 1184,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-08-31T02:14:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b023e03_c46da75d",
       "revId": "a3f6b1cca811e4ed0250889c37ac2ecf740d6249",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
