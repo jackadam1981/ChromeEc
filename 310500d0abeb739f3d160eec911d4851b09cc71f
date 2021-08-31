@@ -236,6 +236,30 @@
       },
       "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c760caf6_dfb8bcb9",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-31T19:05:45Z",
+      "side": 1,
+      "message": "I made the change as you\u0027ve suggested but I get a build error:\n\ndevicetree_unfixed.h:38359:39: error: \u0027DT_N_S_soc_if_S_io_i2c_ctrl4_port1_S_pcf85063a_51_P_int_gpios_IDX_0_VAL_pin\u0027 undeclared here (not in a function); did you mean \u0027DT_N_S_soc_if_S_io_i2c_ctrl4_port1_S_pcf85063a_51_P_int_gpios_IDX_0_PH\u0027?\n\nI wonder if my compatible is missing a field.\n\nI\u0027ve uploaded the change for you to take a look.",
+      "parentUuid": "365028a3_5ca2c04f",
+      "range": {
+        "startLine": 109,
+        "startChar": 24,
+        "endLine": 109,
+        "endChar": 56
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
