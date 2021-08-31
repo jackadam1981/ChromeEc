@@ -7,14 +7,35 @@
 #include "temp_sensor/temp_sensor.h"
 #include "adc.h"
 #include "temp_sensor/thermistor.h"
+// .read = DT_ENUM_TOKEN(node_id, get_temp_func), \
+// Set this to being my function in shim/thermistor.c
+
+#if DT_NODE_EXISTS(DT_PATH(named_temp_sensors))
+static int thermistor_get_temp(
+	const struct temp_sensor_t *sensor,
+			       int *temp_ptr)
+{
+	return  thermistor_get_temperature(
+		sensor->idx, temp_ptr, sensor->thermistor
+		);
+}
+#endif /* named_temp_sensors */
+
+#define GET_THERMISTOR_DATA(node_id) (struct thermistor_data_pair []) \
+	DT_PROP(node_id, data_pairs)
+
+#define GET_THERMISTOR_INFO(node_id) & (struct thermistor_info) {.scaling_factor = DT_PROP(node_id, scaling_factor), .num_pairs = DT_PROP(node_id, num_pairs), .data = GET_THERMISTOR_DATA(node_id)}
+
 
 #define TEMP_THERMISTOR(node_id)                               \
 	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {                    \
 		.name = DT_LABEL(node_id),                     \
-		.read = DT_ENUM_TOKEN(node_id, get_temp_func), \
+		.read = &thermistor_get_temp,                  \
 		.idx = ZSHIM_ADC_ID(DT_PHANDLE(node_id, adc)), \
 		.type = TEMP_SENSOR_TYPE_BOARD,                \
+		.thermistor = GET_THERMISTOR_INFO(DT_PHANDLE(node_id, thermistor)), \
 	},
+
 
 #if DT_NODE_EXISTS(DT_PATH(named_temp_sensors))
 const struct temp_sensor_t temp_sensors[] = {

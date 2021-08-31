@@ -129,7 +129,8 @@
 
 	named-temp-sensors {
 		charger {
-			compatible = "temp-3v3-13k7-47k-4050b";
+			thermistor = <&thermistor_3V3_30K9_47K_4050B>;
+			compatible = "temp-sensor";
 			label = "TEMP_SENSOR_CHARGER";
 			enum-name = "TEMP_SENSOR_CHARGER";
 			temp_fan_off = <40>;
@@ -140,7 +141,8 @@
 			adc = <&adc_charger>;
 		};
 		pp3300-regulator {
-			compatible = "temp-3v3-30k9-47k-4050b";
+			thermistor = <&thermistor_3V3_30K9_47K_4050B>;
+			compatible = "temp-sensor";
 			label = "TEMP_SENSOR_PP3300_REGULATOR";
 			enum-name = "TEMP_SENSOR_PP3300_REGULATOR";
 			temp_fan_off = <40>;
@@ -151,7 +153,8 @@
 			adc = <&adc_pp3300_regulator>;
 		};
 		ddr-soc {
-			compatible = "temp-3v3-51k1-47k-4050b";
+			thermistor = <&thermistor_3V3_30K9_47K_4050B>;
+			compatible = "temp-sensor";
 			label = "TEMP_SENSOR_DDR_SOC";
 			enum-name = "TEMP_SENSOR_DDR_SOC";
 			temp_fan_off = <35>;
@@ -162,7 +165,8 @@
 			adc = <&adc_ddr_soc>;
 		};
 		fan {
-			compatible = "temp-3v0-22k6-47k-4050b";
+			thermistor = <&thermistor_3V3_30K9_47K_4050B>;
+			compatible = "temp-sensor";
 			label = "TEMP_SENSOR_FAN";
 			enum-name = "TEMP_SENSOR_FAN";
 			temp_fan_off = <35>;
@@ -172,12 +176,47 @@
 			temp_host_release_high = <65>;
 			adc = <&adc_fan>;
 		};
+		
+
 	};
 
+	thermistor_3V3_30K9_47K_4050B: thermistor-3V3-30K9-47K-4050B { // wip
+		   compatible = "thermistor";
+		   scaling-factor = <11>;
+		   num-pairs = <10>;
+		   data-pairs = [fa
+		                 e2
+		                 c4
+		                 a4
+		                 68
+		                 4f
+		                 3c
+		                 2d
+		                 22
+		                 19];
+	};
+
+
+	thermistor_3V3_30K9_47K_4050B: thermistor-3V3-30K9-47K-4050B {
+		   compatible = "thermistor";
+		   // adc = <&adc0>;
+		   scaling-factor = <11>;
+		   num-pairs = <10>;
+		   data-pairs = [fa
+		                 e2
+		                 c4
+		                 a4
+		                 68
+		                 4f
+		                 3c
+		                 2d
+		                 22
+		                 19];
+	};
 	/*
-	 * Declare mutexes used by sensor drivers.
-	 * A mutex node is used to create an instance of mutex_t.
-	 * A mutex node is referenced by a sensor node if the
+	 * Demutexes used by sensor drivers.
+	 * A node is used to create an instance of mutex_t.
+	 * A node is referenced by a sensor node if the
 	 * corresponding sensor driver needs to use the
 	 * instance of the mutex.
 	 */
