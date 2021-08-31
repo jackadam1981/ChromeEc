@@ -16,6 +16,24 @@
       "message": "ERROR: [/builds/zephyr-ec/ec/build/zephyr/test/accel_cal:singleimage]app/libapp.a(accel_cal.c.obj):(.data._test_accel_cal.11400+0xc): undefined reference to `after_test\u0027\n",
       "revId": "3f8b34db6e5257d7702b4e2f11b496b87b665552",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af58ca20_010edccf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-08-31T17:13:33Z",
+      "side": 1,
+      "message": "OK, strange that we\u0027re not getting the after_test default implementation. Should be an easy fix.",
+      "parentUuid": "d8893258_966dcc8a",
+      "revId": "3f8b34db6e5257d7702b4e2f11b496b87b665552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
