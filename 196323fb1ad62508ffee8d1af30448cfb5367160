@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2857f32f_f1c75ead",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-31T01:07:58Z",
+      "side": 1,
+      "message": "ah, ok, will try this.",
+      "parentUuid": "012ee25d_9ddf0a77",
+      "range": {
+        "startLine": 15,
+        "startChar": 4,
+        "endLine": 15,
+        "endChar": 20
+      },
+      "revId": "196323fb1ad62508ffee8d1af30448cfb5367160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6759b372_5f4eda0f",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "so, initialization and finalization happens in hardware, but updates happen in software - do I get this right?",
       "parentUuid": "e309e6c5_7d93c364",
+      "range": {
+        "startLine": 222,
+        "startChar": 7,
+        "endLine": 222,
+        "endChar": 29
+      },
+      "revId": "196323fb1ad62508ffee8d1af30448cfb5367160",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "176084d0_d075b10d",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-31T01:07:58Z",
+      "side": 1,
+      "message": "this code currently use only software path as it assumes context should be saved in hashState. I want to deduplicate it with http://cs/chromeos_public/src/platform/cr50/board/cr50/dcrypto/hmac_sw.c?l\u003d26 which is also in software. It just do same thing.\n\nthis code came as is from https://crrev.com/c/3124035 - i just updated comments/formatting to match cr50 style.  \n\nNot a single operation changed.",
+      "parentUuid": "bb5504d4_8fde2fcf",
       "range": {
         "startLine": 222,
         "startChar": 7,
