@@ -86,6 +86,30 @@
       },
       "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c07ab17_7c0340d7",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-31T00:04:17Z",
+      "side": 1,
+      "message": "-b specifies that sha256sum should treat it\u0027s input as binary, and we feed data with dd in pipe. I suspect \u0027dd\u0027 sets that this is binary pipe. Line 51 converts sha256sum text output - digest in hexadecimal into binary.",
+      "parentUuid": "d87c434b_9bfe258d",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 11
+      },
+      "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
