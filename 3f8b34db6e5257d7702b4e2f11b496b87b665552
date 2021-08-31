@@ -52,6 +52,24 @@
       "parentUuid": "af58ca20_010edccf",
       "revId": "3f8b34db6e5257d7702b4e2f11b496b87b665552",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8277ba82_535155ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-08-31T22:31:02Z",
+      "side": 1,
+      "message": "Patch 2 should resolve this and should be merged regardless of fixing the gitlab issue as it does get the before_test function to run. I\u0027ll keep trying to find a fix to the actual test.",
+      "parentUuid": "e2a8ace1_f02650bf",
+      "revId": "3f8b34db6e5257d7702b4e2f11b496b87b665552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
