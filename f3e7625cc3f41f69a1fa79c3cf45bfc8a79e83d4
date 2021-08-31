@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d1f056b_c7b6c156",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-31T19:36:25Z",
+      "side": 1,
+      "message": "These changes potentially could affect honeybuns as that platform uses the STM32G4. Maybe these changes are fine, but I would like to understand what problems they are purporting to fix. From what I\u0027ve seen option byte programming was working just fine on honeybuns (at least for write protect regions)",
+      "revId": "f3e7625cc3f41f69a1fa79c3cf45bfc8a79e83d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "629fdb19_5702daed",
+        "filename": "chip/stm32/flash-stm32g4-l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-31T19:36:25Z",
+      "side": 1,
+      "message": "what is the purpose of this change. I recently merged cros/main into a FW branch and came across this conflict. There is no way the flash write protect mask for the entire L4 family should be fixed at 0xFF. The mask should reflect the number of flash pages supported by a particular chip. This inherently is dependent on the both the flash size and dualbank mode.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 6
+      },
+      "revId": "f3e7625cc3f41f69a1fa79c3cf45bfc8a79e83d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93571c48_da9ded28",
+        "filename": "chip/stm32/flash-stm32g4-l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-31T19:36:25Z",
+      "side": 1,
+      "message": "why was this changed? The option byte info can be read from either flash or from chip registers which are loaded from option byte memory.",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 230,
+        "endChar": 46
+      },
+      "revId": "f3e7625cc3f41f69a1fa79c3cf45bfc8a79e83d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7103be0_bfdeec42",
+        "filename": "chip/stm32/flash-stm32g4-l4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-08-31T19:36:25Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "revId": "f3e7625cc3f41f69a1fa79c3cf45bfc8a79e83d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
