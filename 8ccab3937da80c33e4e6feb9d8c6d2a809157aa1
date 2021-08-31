@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daee0ce8_8592fd0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-31T04:03:00Z",
+      "side": 1,
+      "message": "nit: pls add details",
+      "revId": "8ccab3937da80c33e4e6feb9d8c6d2a809157aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4048c31_3a22bb04",
+        "filename": "common/usbc/usbc_pd_policy.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-31T04:03:00Z",
+      "side": 1,
+      "message": "nit: lets remove extra tab from old code :)",
+      "range": {
+        "startLine": 43,
+        "startChar": 2,
+        "endLine": 43,
+        "endChar": 3
+      },
+      "revId": "8ccab3937da80c33e4e6feb9d8c6d2a809157aa1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
