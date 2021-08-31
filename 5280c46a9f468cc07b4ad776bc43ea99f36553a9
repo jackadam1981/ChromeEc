@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "28100beb_0b58318f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-08-31T15:28:33Z",
+      "side": 1,
+      "message": "\u003e This patch deserves a better description:\n\nI agree. Working on it.\n\nHow I have it might be wrong right now.\n\nIt\u0027s\n\nelf -\u003e flat.prefips -\u003e Modify the original elf by injecting fips hash\nModified elf still called .elf -\u003e .flat\n\nIt should probably be \nelf.prefips -\u003e flat.prefips -\u003e .elf -\u003e .flat\n\nThe thing is there are so many .elf dependencies, so we can\u0027t really change the elf extension easily.",
+      "parentUuid": "8f7ce489_68be5fcd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d49dce25_bd79cffc",
