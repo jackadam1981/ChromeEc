@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d15026bf_fac80627",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-31T11:21:37Z",
+      "side": 1,
+      "message": "Looks like a copy of Berknip led.c, which gives me confidence this is probably working as intended.",
+      "revId": "03a841075f39439eed6608876ab855d6704304fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60a8ee21_919e538a",
+        "filename": "board/nipperkin/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-31T11:21:37Z",
+      "side": 1,
+      "message": "nit: Prefix with LED_ to avoid future conflicts.",
+      "revId": "03a841075f39439eed6608876ab855d6704304fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "580c1d06_35ad26e9",
+        "filename": "board/nipperkin/led.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-08-31T11:21:37Z",
+      "side": 1,
+      "message": "enum led_port port,",
+      "revId": "03a841075f39439eed6608876ab855d6704304fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
