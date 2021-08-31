@@ -122,13 +122,3 @@ const struct board_batt_params board_battery_info[] = {
 BUILD_ASSERT(ARRAY_SIZE(board_battery_info) == BATTERY_TYPE_COUNT);
 
 const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_SMP;
-
-__override bool board_battery_is_initialized(void)
-{
-	bool batt_initialization_state;
-	int batt_status;
-
-	batt_initialization_state = (battery_status(&batt_status) ? false :
-		!!(batt_status & STATUS_INITIALIZED));
-	return batt_initialization_state;
-}

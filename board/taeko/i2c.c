@@ -34,6 +34,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_EC_I2C_USB_C0_PPC_BC_SCL,
 		.sda = GPIO_EC_I2C_USB_C0_PPC_BC_SDA,
 	},
+#if SUPPORT_DB_TCPC
 	{
 		/* I2C4 C1 TCPC */
 		.name = "tcpc1",
@@ -42,6 +43,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_EC_I2C_USB_C1_TCPC_SCL,
 		.sda = GPIO_EC_I2C_USB_C1_TCPC_SDA,
 	},
+#endif
 	{
 		/* I2C5 */
 		.name = "battery",
@@ -50,6 +52,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_EC_I2C_BAT_SCL,
 		.sda = GPIO_EC_I2C_BAT_SDA,
 	},
+#if SUPPORT_DB_TCPC
 	{
 		/* I2C6 */
 		.name = "ppc1",
@@ -58,6 +61,7 @@ const struct i2c_port_t i2c_ports[] = {
 		.scl = GPIO_EC_I2C_USB_C1_MIX_SCL,
 		.sda = GPIO_EC_I2C_USB_C1_MIX_SDA,
 	},
+#endif
 	{
 		/* I2C7 */
 		.name = "eeprom",
