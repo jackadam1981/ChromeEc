@@ -14,6 +14,10 @@
 / {
 	model = "Google Asurada Baseboard";
 
+	delete { /* zephyr,kscan = &kscan */
+		/delete-node/kscan@f01d00;
+	};
+
 	chosen {
 		zephyr,sram = &sram0;
 		zephyr,console = &uart1;
