@@ -7,7 +7,10 @@
 #include "compile_time_macros.h"
 #include "console.h"
 #include "cros_board_info.h"
+#include "driver/tcpm/ps8xxx_public.h"
 #include "fw_config.h"
+#include "gpio.h"
+#include "timer.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
@@ -35,17 +38,11 @@ void board_init_fw_config(void)
 
 	if (get_board_id() == 0) {
 		/*
-		 * Early boards have a zero'd out FW_CONFIG, so replace
-		 * it with a sensible default value. If DB_USB_ABSENT2
-		 * was used as an alternate encoding of DB_USB_ABSENT to
-		 * avoid the zero check, then fix it.
+		 * Early boards doesn't have correct FW_CONFIG, so replace
+		 * it with a sensible default value.
 		 */
-		if (fw_config.raw_value == 0) {
-			CPRINTS("CBI: FW_CONFIG is zero, using board defaults");
-			fw_config = fw_config_defaults;
-		} else if (fw_config.usb_db == DB_USB_ABSENT2) {
-			fw_config.usb_db = DB_USB_ABSENT;
-		}
+		CPRINTS("CBI: Using board defaults for early board");
+		fw_config = fw_config_defaults;
 	}
 }
 
