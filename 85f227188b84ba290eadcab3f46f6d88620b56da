@@ -69,6 +69,30 @@
       },
       "revId": "85f227188b84ba290eadcab3f46f6d88620b56da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d0aeb58_aa8e6b51",
+        "filename": "common/usbc/usbc_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-08-31T18:59:53Z",
+      "side": 1,
+      "message": "I think this is a missing checking, it applies to all. Unless we have different policy then provide board specific override implementation.",
+      "parentUuid": "770368c1_7b2e867f",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "85f227188b84ba290eadcab3f46f6d88620b56da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
