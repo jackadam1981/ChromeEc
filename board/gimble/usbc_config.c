@@ -188,6 +188,7 @@ void board_reset_pd_mcu(void)
 static void board_tcpc_init(void)
 {
 	int i;
+	int val;
 
 	/* Don't reset TCPCs after initial reset */
 	if (!system_jumped_late()) {
@@ -210,6 +211,23 @@ static void board_tcpc_init(void)
 	/* Enable BC1.2 interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
+	//if (i2c_read8(I2C_PORT_USB_C1_TCPC,
+	//	      PS8751_I2C_ADDR1_P0_FLAGS, 0x0a, &val) == EC_SUCCESS)
+	//	CPRINTS("ps8815: reg 0x0a was %02x", val);
+
+	/* Enable compliance test */
+	//if (i2c_write8(I2C_PORT_USB_C1_TCPC,
+	//	       PS8751_I2C_ADDR1_P0_FLAGS, 0x0a, 0x80) == EC_SUCCESS)
+	//	CPRINTS("ps8815: reg 0x0a set to 0x80");
+
+	if (i2c_read8(I2C_PORT_USB_C1_TCPC,
+	      PS8751_I2C_ADDR1_P1_FLAGS, 0x20, &val) == EC_SUCCESS)
+	CPRINTS("ps8815: reg 0x20 was %02x", val);
+
+	/* Tune up the EQ to 17db from 12db */
+	if (i2c_write8(I2C_PORT_USB_C1_TCPC,
+		       PS8751_I2C_ADDR1_P1_FLAGS, 0x20, 0x77) == EC_SUCCESS)
+		CPRINTS("ps8815: reg 0x20 set to 0x77");
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
