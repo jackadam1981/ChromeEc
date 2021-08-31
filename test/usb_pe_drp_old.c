@@ -79,6 +79,11 @@ void pd_set_error_recovery(int port)
 
 }
 
+int pd_check_vconn_swap(int port)
+{
+	return 1;
+}
+
 test_static void setup_source(void)
 {
 	/* Start PE. */

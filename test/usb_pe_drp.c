@@ -34,6 +34,11 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 	}
 };
 
+int pd_check_vconn_swap(int port)
+{
+	return 1;
+}
+
 void before_test(void)
 {
 	mock_tc_port_reset();
