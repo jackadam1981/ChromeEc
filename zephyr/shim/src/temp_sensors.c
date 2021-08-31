@@ -7,14 +7,19 @@
 #include "temp_sensor/temp_sensor.h"
 #include "adc.h"
 #include "temp_sensor/thermistor.h"
+#include "temp_sensor/zthermistor.h"
+// .read = DT_ENUM_TOKEN(node_id, get_temp_func), \
+// Set this to being my function in shim/thermistor.c
+
 
 #define TEMP_THERMISTOR(node_id)                               \
 	[ZSHIM_TEMP_SENSOR_ID(node_id)] = {                    \
 		.name = DT_LABEL(node_id),                     \
-		.read = DT_ENUM_TOKEN(node_id, get_temp_func), \
+		.read = &get_temp,			       \
 		.idx = ZSHIM_ADC_ID(DT_PHANDLE(node_id, adc)), \
 		.type = TEMP_SENSOR_TYPE_BOARD,                \
 	},
+
 
 #if DT_NODE_EXISTS(DT_PATH(named_temp_sensors))
 const struct temp_sensor_t temp_sensors[] = {
