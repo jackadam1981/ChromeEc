@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0b81144_3e84443a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-08-31T04:22:01Z",
+      "side": 1,
+      "message": "Would it be possible to run both toolchains on the CQ? Or are we OK with fixing this after the fact if a change breaks when building with the Zephyr SDK?\n\nTo Jack\u0027s point, we\u0027re either taking on the responsibility of fixing things when they happen on gitlab or we enforce that all projects build with both toolchains.",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "a5a9e43dc642a9536cf1986b0cf1af09b5aaa693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
