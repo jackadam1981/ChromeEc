@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "812a7ff3_5db1777d",
+        "filename": "board/nipperkin/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-08-31T08:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb4c28f5_4961014d",
+      "range": {
+        "startLine": 140,
+        "startChar": 30,
+        "endLine": 140,
+        "endChar": 37
+      },
+      "revId": "41a6e40b8f345ffc94ea1695ce10deb4652c4d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e07affe_8c9e1c4f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-08-31T07:34:00Z",
       "side": 1,
       "message": "CHIPSET_STATE_ANY_SUSPEND",
+      "range": {
+        "startLine": 144,
+        "startChar": 22,
+        "endLine": 145,
+        "endChar": 26
+      },
+      "revId": "41a6e40b8f345ffc94ea1695ce10deb4652c4d35",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6bb6ad5_0fa87e34",
+        "filename": "board/nipperkin/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-08-31T08:04:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e07affe_8c9e1c4f",
       "range": {
         "startLine": 144,
         "startChar": 22,
