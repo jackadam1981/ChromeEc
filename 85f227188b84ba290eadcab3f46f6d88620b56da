@@ -45,6 +45,30 @@
       },
       "revId": "85f227188b84ba290eadcab3f46f6d88620b56da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "770368c1_7b2e867f",
+        "filename": "common/usbc/usbc_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-08-31T18:36:33Z",
+      "side": 1,
+      "message": "seems like a generic as all boards need 5V to source it unless the TCPC or PPC has internal VR to generate 5V",
+      "parentUuid": "e12cf850_84246ef6",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "85f227188b84ba290eadcab3f46f6d88620b56da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
