@@ -32,7 +32,7 @@ struct cros_kb_raw_ite_config {
 
 /* Driver convenience defines */
 #define DRV_CONFIG(dev) ((const struct cros_kb_raw_ite_config *)(dev)->config)
-#define HAL_INSTANCE(dev) (struct kbs_reg *)(DRV_CONFIG(dev)->base)
+#define HAL_INSTANCE(dev) (struct kscan_it8xxx2_regs *)(DRV_CONFIG(dev)->base)
 
 static int kb_raw_ite_init(const struct device *dev)
 {
@@ -61,7 +61,7 @@ static int cros_kb_raw_ite_enable_interrupt(const struct device *dev,
 
 static int cros_kb_raw_ite_read_row(const struct device *dev)
 {
-	struct kbs_reg *const inst = HAL_INSTANCE(dev);
+	struct kscan_it8xxx2_regs *const inst = HAL_INSTANCE(dev);
 
 	/* Bits are active-low, so invert returned levels */
 	return ((inst->KBS_KSI) ^ 0xff);
@@ -71,7 +71,7 @@ static int cros_kb_raw_ite_drive_column(const struct device *dev, int col)
 {
 	int mask;
 	unsigned int key;
-	struct kbs_reg *const inst = HAL_INSTANCE(dev);
+	struct kscan_it8xxx2_regs *const inst = HAL_INSTANCE(dev);
 
 	/* Tri-state all outputs */
 	if (col == KEYBOARD_COLUMN_NONE)
@@ -122,7 +122,7 @@ static int cros_kb_raw_ite_init(const struct device *dev)
 {
 	unsigned int key;
 	const struct cros_kb_raw_ite_config *const config = DRV_CONFIG(dev);
-	struct kbs_reg *const inst = HAL_INSTANCE(dev);
+	struct kscan_it8xxx2_regs *const inst = HAL_INSTANCE(dev);
 
 	/* Ensure top-level interrupt is disabled */
 	cros_kb_raw_ite_enable_interrupt(dev, 0);
