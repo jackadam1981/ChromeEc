@@ -520,6 +520,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ab885d2_a1ff1529",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-31T16:18:12Z",
+      "side": 1,
+      "message": "No harm in moving to common/rtc.c for now.\nWhere is enum bcd_mask defined?  Is the patchset missing a header?",
+      "parentUuid": "3a482079_19684ba8",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 1
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dd62667_3ca2f7be",
         "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
         "patchSetId": 4

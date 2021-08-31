@@ -212,6 +212,30 @@
       },
       "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "365028a3_5ca2c04f",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-31T16:18:12Z",
+      "side": 1,
+      "message": "You should reference the node label from the named-gpios.  That way named-gpios is the source of truth for all pull-up/pull-downs.\n\nExample from volteer gpio.dts:\n\t\tgpio_usb_c1_rt_rst_odl: usb_c1_rt_rst_odl {\n\t\t\t#gpio-cells \u003d \u003c0\u003e;\n\t\t\tgpios \u003d \u003c\u0026gpio8 3 GPIO_ODR_LOW\u003e;\n\t\t\tenum-name \u003d \"GPIO_USB_C1_RT_RST_ODL\";\n\t\t\tlabel \u003d \"USB_C1_RT_RST_ODL\";\n\t\t};\n\nAnd the reference in bb_retimer.dts\n\tusb_c1_bb_retimer: jhl8040r@40 {\n\t\tcompatible \u003d \"intel,jhl8040r\";\n\t\treg \u003d \u003c0x40\u003e;\n\t\tlabel \u003d \"USB_C1_BB_RETIMER\";\n\t\tint-gpios \u003d \u003c\u0026gpio_usb_c1_mix_int_odl\u003e;\n\t\treset-gpios \u003d \u003c\u0026gpio_usb_c1_rt_rst_odl\u003e;\n\t\tls-en-gpios \u003d \u003c\u0026gpio_unused_gpio41\u003e;\n\t};",
+      "parentUuid": "0250d557_fcef593d",
+      "range": {
+        "startLine": 109,
+        "startChar": 24,
+        "endLine": 109,
+        "endChar": 56
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
