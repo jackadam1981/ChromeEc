@@ -11,6 +11,7 @@
 #include "charge_state_v2.h"
 #include "charger.h"
 #include "console.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -349,6 +350,11 @@ static enum usb_power_roles get_current_power_role(int port,
 	return role;
 }
 
+__overridable int board_get_vbus_voltage(int port)
+{
+	return 0;
+}
+
 static int get_vbus_voltage(int port, enum usb_power_roles current_role)
 {
 	int voltage_mv;
@@ -374,6 +380,8 @@ static int get_vbus_voltage(int port, enum usb_power_roles current_role)
 #elif defined(CONFIG_USB_PD_VBUS_MEASURE_NOT_PRESENT)
 		/* No VBUS ADC channel - voltage is unknown */
 		voltage_mv = 0;
+#elif defined(CONFIG_USB_PD_VBUS_MEASURE_BY_BOARD)
+		voltage_mv = board_get_vbus_voltage(port);
 #else
 		/* There is a single ADC that measures joint Vbus */
 		voltage_mv = adc_read_channel(ADC_VBUS);
@@ -752,8 +760,11 @@ static void charge_manager_refresh(void)
 			trigger_ocpc_reset();
 		}
 
-		if (board_set_active_charge_port(new_port) == EC_SUCCESS)
+		if (board_set_active_charge_port(new_port) == EC_SUCCESS) {
+			if (IS_ENABLED(CONFIG_EXTPOWER))
+				board_check_extpower();
 			break;
+		}
 
 		/* 'Dont charge' request must be accepted. */
 		ASSERT(new_port != CHARGE_PORT_NONE);
@@ -829,6 +840,13 @@ static void charge_manager_refresh(void)
 
 		CPRINTS("CL: p%d s%d i%d v%d", new_port, new_supplier,
 			new_charge_current, new_charge_voltage);
+
+		/*
+		 * (b:192638664) We try to check AC OK again to avoid
+		 * unsuccessful detection in the initial detection.
+		 */
+		if (IS_ENABLED(CONFIG_EXTPOWER))
+			board_check_extpower();
 	}
 
 	/*

@@ -324,6 +324,7 @@ enum usb_pe_state {
 	PE_SEND_ALERT,
 	PE_SRC_CHUNK_RECEIVED,
 	PE_SNK_CHUNK_RECEIVED,
+	PE_VCS_FORCE_VCONN,
 };
 
 /*
@@ -447,6 +448,9 @@ __maybe_unused static __const_data const char * const pe_state_names[] = {
 	[PE_SRC_CHUNK_RECEIVED] = "PE_SRC_Chunk_Received",
 	[PE_SNK_CHUNK_RECEIVED] = "PE_SNK_Chunk_Received",
 #endif
+#ifdef CONFIG_USBC_VCONN
+	[PE_VCS_FORCE_VCONN] = "PE_VCS_Force_Vconn",
+#endif
 #endif /* CONFIG_USB_PD_REV30 */
 };
 
@@ -475,6 +479,11 @@ GEN_NOT_SUPPORTED(PE_SRC_CHUNK_RECEIVED);
 GEN_NOT_SUPPORTED(PE_SNK_CHUNK_RECEIVED);
 #define PE_SNK_CHUNK_RECEIVED PE_SNK_CHUNK_RECEIVED_NOT_SUPPORTED
 #endif /* CONFIG_USB_PD_REV30 */
+
+#if !defined(CONFIG_USBC_VCONN) || !defined(CONFIG_USB_PD_REV30)
+GEN_NOT_SUPPORTED(PE_VCS_FORCE_VCONN);
+#define PE_VCS_FORCE_VCONN PE_VCS_FORCE_VCONN_NOT_SUPPORTED
+#endif
 
 #ifndef CONFIG_USB_PD_EXTENDED_MESSAGES
 GEN_NOT_SUPPORTED(PE_GIVE_BATTERY_CAP);
@@ -566,7 +575,7 @@ static struct policy_engine {
 	uint32_t events;
 
 	/* port address where soft resets are sent */
-	enum tcpm_transmit_type soft_reset_sop;
+	enum tcpm_sop_type soft_reset_sop;
 
 	/* Current limit / voltage based on the last request message */
 	uint32_t curr_limit;
@@ -581,7 +590,7 @@ static struct policy_engine {
 	struct partner_active_modes partner_amodes[AMODE_TYPE_COUNT];
 
 	/* Partner type to send */
-	enum tcpm_transmit_type tx_type;
+	enum tcpm_sop_type tx_type;
 
 	/* VDM - used to send information to shared VDM Request state */
 	uint32_t vdm_cnt;
@@ -633,7 +642,7 @@ static struct policy_engine {
 
 	/* Last received source cap */
 	uint32_t src_caps[PDO_MAX_OBJECTS];
-	int src_cap_cnt;
+	int src_cap_cnt; /* -1 on error retrieving source caps */
 
 	/* Last received sink cap */
 	uint32_t snk_caps[PDO_MAX_OBJECTS];
@@ -661,12 +670,12 @@ static const uint8_t vdo_ver[] = {
 	[PD_REV30] = VDM_VER20,
 };
 
-int pd_get_rev(int port, enum tcpm_transmit_type type)
+int pd_get_rev(int port, enum tcpm_sop_type type)
 {
 	return prl_get_rev(port, type);
 }
 
-int pd_get_vdo_ver(int port, enum tcpm_transmit_type type)
+int pd_get_vdo_ver(int port, enum tcpm_sop_type type)
 {
 	enum pd_rev_type rev = prl_get_rev(port, type);
 
@@ -684,7 +693,7 @@ static void pe_set_ready_state(int port)
 		set_state_pe(port, PE_SNK_READY);
 }
 
-static inline void send_data_msg(int port, enum tcpm_transmit_type type,
+static inline void send_data_msg(int port, enum tcpm_sop_type type,
 				 enum pd_data_msg_type msg)
 {
 	/* Clear any previous TX status before sending a new message */
@@ -693,14 +702,14 @@ static inline void send_data_msg(int port, enum tcpm_transmit_type type,
 }
 
 static __maybe_unused inline void send_ext_data_msg(
-	int port, enum tcpm_transmit_type type, enum pd_ext_msg_type msg)
+	int port, enum tcpm_sop_type type, enum pd_ext_msg_type msg)
 {
 	/* Clear any previous TX status before sending a new message */
 	PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 	prl_send_ext_data_msg(port, type, msg);
 }
 
-static inline void send_ctrl_msg(int port, enum tcpm_transmit_type type,
+static inline void send_ctrl_msg(int port, enum tcpm_sop_type type,
 				 enum pd_ctrl_msg_type msg)
 {
 	/* Clear any previous TX status before sending a new message */
@@ -917,7 +926,8 @@ static void pe_set_frs_enable(int port, int enable)
 	int current = PE_CHK_FLAG(port, PE_FLAGS_FAST_ROLE_SWAP_ENABLED);
 
 	/* This should only be called from the PD task */
-	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
+	if (!IS_ENABLED(TEST_BUILD))
+		assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
 
 	if (!IS_ENABLED(CONFIG_USB_PD_FRS) || !IS_ENABLED(CONFIG_USB_PD_REV30))
 		return;
@@ -1072,7 +1082,7 @@ static bool pe_can_send_sop_vdm(int port, int vdm_cmd)
 	return false;
 }
 
-static void pe_send_soft_reset(const int port, enum tcpm_transmit_type type)
+static void pe_send_soft_reset(const int port, enum tcpm_sop_type type)
 {
 	pe[port].soft_reset_sop = type;
 	set_state_pe(port, PE_SEND_SOFT_RESET);
@@ -1107,7 +1117,7 @@ static bool pe_check_outgoing_discard(int port)
 	 */
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED) &&
 				PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		enum tcpm_transmit_type sop =
+		enum tcpm_sop_type sop =
 				PD_HEADER_GET_SOP(rx_emsg[port].header);
 
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_DISCARDED);
@@ -1120,7 +1130,7 @@ static bool pe_check_outgoing_discard(int port)
 	return false;
 }
 
-void pe_report_error(int port, enum pe_error e, enum tcpm_transmit_type type)
+void pe_report_error(int port, enum pe_error e, enum tcpm_sop_type type)
 {
 	/* This should only be called from the PD task */
 	assert(port == TASK_ID_TO_PD_PORT(task_get_current()));
@@ -1213,11 +1223,11 @@ void pe_got_soft_reset(int port)
 	set_state_pe(port, PE_SOFT_RESET);
 }
 
-__overridable bool pd_can_source_from_device(int port, const int pdo_cnt,
+__overridable bool pd_can_charge_from_device(int port, const int pdo_cnt,
 				      const uint32_t *pdos)
 {
 	/*
-	 * Don't attempt to source from a device we have no SrcCaps from. Or, if
+	 * Don't attempt to charge from a device we have no SrcCaps from. Or, if
 	 * drp_state is FORCE_SOURCE then don't attempt a PRS.
 	 */
 	if (pdo_cnt == 0 || pd_get_dual_role(port) == PD_DRP_FORCE_SOURCE)
@@ -1265,7 +1275,7 @@ void pd_resume_check_pr_swap_needed(int port)
 	 */
 	if (pe_is_explicit_contract(port) &&
 	    pd_get_power_role(port) == PD_ROLE_SINK &&
-	    !pd_can_source_from_device(port, pd_get_src_cap_cnt(port),
+	    !pd_can_charge_from_device(port, pd_get_src_cap_cnt(port),
 				       pd_get_src_caps(port)) &&
 	    (!IS_ENABLED(CONFIG_CHARGE_MANAGER) ||
 	     charge_manager_get_active_charge_port() != port))
@@ -1330,10 +1340,16 @@ void pd_send_vdm(int port, uint32_t vid, int cmd, const uint32_t *data,
 	task_wake(PD_PORT_TO_TASK_ID(port));
 }
 
-static void pe_handle_detach(void)
+#ifdef TEST_BUILD
+/*
+ * Allow unit tests to access this function to clear internal state data between
+ * runs
+ */
+void pe_clear_port_data(int port)
+#else
+static void pe_clear_port_data(int port)
+#endif /* TEST_BUILD */
 {
-	const int port = TASK_ID_TO_PD_PORT(task_get_current());
-
 	/*
 	 * PD 3.0 Section 8.3.3.3.8
 	 * Note: The HardResetCounter is reset on a power cycle or Detach.
@@ -1342,6 +1358,9 @@ static void pe_handle_detach(void)
 
 	/* Reset port events */
 	pd_clear_events(port, GENMASK(31, 0));
+
+	/* But then set disconnected event */
+	pd_notify_event(port, PD_STATUS_EVENT_DISCONNECTED);
 
 	/* Tell Policy Engine to invalidate the explicit contract */
 	pe_invalidate_explicit_contract(port);
@@ -1357,6 +1376,13 @@ static void pe_handle_detach(void)
 
 	/* Exit BIST Test mode, in case the TCPC entered it. */
 	tcpc_set_bist_test_mode(port, false);
+}
+
+static void pe_handle_detach(void)
+{
+	const int port = TASK_ID_TO_PD_PORT(task_get_current());
+
+	pe_clear_port_data(port);
 }
 DECLARE_HOOK(HOOK_USB_PD_DISCONNECT, pe_handle_detach, HOOK_PRIO_DEFAULT);
 
@@ -1457,13 +1483,15 @@ static bool common_src_snk_dpm_requests(int port)
 		if (!PE_CHK_FLAG(port, PE_FLAGS_MODAL_OPERATION)) {
 			/*
 			 * Clear counters and reset timer to trigger a
-			 * port discovery.
+			 * port discovery, and also clear any pending VDM send
+			 * requests.
 			 */
 			pd_dfp_discovery_init(port);
 			pe[port].dr_swap_attempt_counter = 0;
 			pe[port].discover_identity_counter = 0;
 			pd_timer_enable(port, PE_TIMER_DISCOVER_IDENTITY,
 					PD_T_DISCOVER_IDENTITY);
+			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_VDM);
 		}
 		return true;
 	} else if (PE_CHK_DPM_REQUEST(port, DPM_REQUEST_VDM)) {
@@ -1740,7 +1768,7 @@ static void pe_update_src_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
 		return;
 
 	if (IS_ENABLED(CONFIG_CHARGE_MANAGER)) {
-		if (pd_can_source_from_device(port, pdo_cnt, pdos)) {
+		if (pd_can_charge_from_device(port, pdo_cnt, pdos)) {
 			charge_manager_update_dualrole(port, CAP_DEDICATED);
 		} else {
 			charge_manager_update_dualrole(port, CAP_DUALROLE);
@@ -1748,10 +1776,31 @@ static void pe_update_src_pdo_flags(int port, int pdo_cnt, uint32_t *pdos)
 	}
 }
 
+/*
+ * Evaluate whether our PR role is in the middle of changing, meaning we our
+ * current PR role is not the one we expect to have very shortly.
+ */
+bool pe_is_pr_swapping(int port)
+{
+	enum usb_pe_state cur_state = get_state_pe(port);
+
+	if (cur_state == PE_PRS_SRC_SNK_EVALUATE_SWAP ||
+	    cur_state == PE_PRS_SRC_SNK_TRANSITION_TO_OFF ||
+	    cur_state == PE_PRS_SNK_SRC_EVALUATE_SWAP ||
+	    cur_state == PE_PRS_SNK_SRC_TRANSITION_TO_OFF)
+		return true;
+
+	return false;
+}
+
 void pd_request_power_swap(int port)
 {
 	/* Ignore requests when the board does not wish to swap */
 	if (!pd_check_power_swap(port))
+		return;
+
+	/* Ignore requests when our power role is transitioning */
+	if (pe_is_pr_swapping(port))
 		return;
 
 	/*
@@ -1862,7 +1911,7 @@ __maybe_unused static bool pe_attempt_port_discovery(int port)
 	return false;
 }
 
-bool pd_setup_vdm_request(int port, enum tcpm_transmit_type tx_type,
+bool pd_setup_vdm_request(int port, enum tcpm_sop_type tx_type,
 		uint32_t *vdm, uint32_t vdo_cnt)
 {
 	if (vdo_cnt < VDO_HDR_SIZE || vdo_cnt > VDO_MAX_SIZE)
@@ -1984,6 +2033,8 @@ static void pe_sender_response_msg_entry(const int port)
  */
 static enum pe_msg_check pe_sender_response_msg_run(const int port)
 {
+	timestamp_t tx_success_ts;
+	uint32_t offset;
 	if (pd_timer_is_disabled(port, PE_TIMER_SENDER_RESPONSE)) {
 		/* Check for Discard */
 		if (PE_CHK_FLAG(port, PE_FLAGS_MSG_DISCARDED)) {
@@ -2002,9 +2053,19 @@ static enum pe_msg_check pe_sender_response_msg_run(const int port)
 		if (PE_CHK_FLAG(port, PE_FLAGS_TX_COMPLETE)) {
 			PE_CLR_FLAG(port, PE_FLAGS_TX_COMPLETE);
 
-			/* Initialize and run the SenderResponseTimer */
+			/* TCPC TX success time stamp */
+			tx_success_ts = prl_get_tcpc_tx_success_ts(port);
+			/* Calculate the delay from TX success to PE */
+			offset = time_since32(tx_success_ts);
+
+			/*
+			 * Initialize and run the SenderResponseTimer by
+			 * offsetting it with TX transmit success time.
+			 * This would remove the effect of the latency from
+			 * propagating the TX status.
+			 */
 			pd_timer_enable(port, PE_TIMER_SENDER_RESPONSE,
-					PD_T_SENDER_RESPONSE);
+					PD_T_SENDER_RESPONSE - offset);
 			return PE_MSG_SEND_COMPLETED;
 		}
 		return PE_MSG_SEND_PENDING;
@@ -2465,9 +2526,11 @@ static void pe_src_transition_supply_run(int port)
 			/*
 			 * Setup to get Device Policy Manager to request
 			 * Source Capabilities, if needed, for possible
-			 * PR_Swap
+			 * PR_Swap.  Get the number directly to avoid re-probing
+			 * if the partner generated an error and left -1 for the
+			 * count.
 			 */
-			if (pd_get_src_cap_cnt(port) == 0)
+			if (pe[port].src_cap_cnt == 0)
 				pd_dpm_request(port, DPM_REQUEST_GET_SRC_CAPS);
 
 			set_state_pe(port, PE_SRC_READY);
@@ -3074,13 +3137,17 @@ static void pe_snk_evaluate_capability_entry(int port)
 
 	/* Parse source caps if they have changed */
 	if (pe[port].src_cap_cnt != num ||
-	    memcmp(pdo, pe[port].src_caps, num << 2))
+	    memcmp(pdo, pe[port].src_caps, num << 2)) {
 		/*
 		 * If port policy preference is to be a power role source,
-		 * then request a power role swap.
+		 * then request a power role swap.  If we'd previously queued a
+		 * PR swap but can now charge from this device, clear it.
 		 */
-		if (!pd_can_source_from_device(port, num, pdo))
+		if (!pd_can_charge_from_device(port, num, pdo))
 			pd_request_power_swap(port);
+		else
+			PE_CLR_DPM_REQUEST(port, DPM_REQUEST_PR_SWAP);
+	}
 
 	pe_update_src_pdo_flags(port, num, pdo);
 	pd_set_src_caps(port, num, pdo);
@@ -3112,7 +3179,7 @@ static void pe_snk_select_capability_run(int port)
 {
 	uint8_t type;
 	uint8_t cnt;
-	enum tcpm_transmit_type sop;
+	enum tcpm_sop_type sop;
 	enum pe_msg_check msg_check;
 
 	/*
@@ -4364,6 +4431,17 @@ static void pe_prs_src_snk_transition_to_off_entry(int port)
 
 static void pe_prs_src_snk_transition_to_off_run(int port)
 {
+	/*
+	 * This is a non-interruptible AMS and power is transitioning - hard
+	 * reset on interruption.
+	 */
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+
+		tc_pr_swap_complete(port, 0);
+		set_state_pe(port, PE_SRC_HARD_RESET);
+	}
+
 	/* Give time for supply to power off */
 	if (pd_timer_is_expired(port, PE_TIMER_PS_SOURCE) &&
 	    pd_check_vbus_level(port, VBUS_SAFE0V))
@@ -6194,23 +6272,6 @@ static void pe_vcs_evaluate_swap_entry(int port)
 		/* NOTE: PE_VCS_Accept_Swap State embedded here */
 		PE_SET_FLAG(port, PE_FLAGS_ACCEPT);
 		send_ctrl_msg(port, TCPC_TX_SOP, PD_CTRL_ACCEPT);
-
-		/*
-		 * The USB PD 3.0 spec indicates that the initial VCONN source
-		 * shall cease sourcing VCONN within tVCONNSourceOff (25ms)
-		 * after receiving the PS_RDY message. However, some partners
-		 * begin sending SOP' messages only 1 ms after sending PS_RDY
-		 * during VCONN swap.
-		 *
-		 * Preemptively disable receipt of SOP' and SOP'' messages while
-		 * we wait for PS_RDY so we don't attempt to process messages
-		 * directed at the cable. If the partner fails to send PS_RDY we
-		 * perform a hard reset so no need to re-enable SOP' messages.
-		 *
-		 * We continue to source VCONN while we wait as required by the
-		 * spec.
-		 */
-		tcpm_sop_prime_enable(port, false);
 	}
 }
 
@@ -6258,7 +6319,7 @@ static void pe_vcs_send_swap_run(int port)
 {
 	uint8_t type;
 	uint8_t cnt;
-	enum tcpm_transmit_type sop;
+	enum tcpm_sop_type sop;
 	enum pe_msg_check msg_check;
 
 	/*
@@ -6290,11 +6351,6 @@ static void pe_vcs_send_swap_run(int port)
 			 */
 			if (type == PD_CTRL_ACCEPT) {
 				if (tc_is_vconn_src(port)) {
-					/*
-					 * Prevent receiving any SOP' and SOP''
-					 * messages while a swap is in progress.
-					 */
-					tcpm_sop_prime_enable(port, false);
 					set_state_pe(port,
 						PE_VCS_WAIT_FOR_VCONN_SWAP);
 				} else {
@@ -6313,15 +6369,28 @@ static void pe_vcs_send_swap_run(int port)
 				pe_set_ready_state(port);
 				return;
 			}
+
+			/*
+			 * The Policy Engine May transition to the
+			 * PE_VCS_Force_Vconn state when:
+			 * - A Not_Supported Message is received and
+			 * - The Port is not presently the VCONN Source
+			 */
+			if (type == PD_CTRL_NOT_SUPPORTED) {
+				if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
+							!tc_is_vconn_src(port))
+					set_state_pe(port, PE_VCS_FORCE_VCONN);
+				else
+					pe_set_ready_state(port);
+				return;
+			}
 		}
 		/*
-		 * Unexpected Data Message Received
+		 * Unexpected Message Received, send soft reset with SOP* of
+		 * incoming message.
 		 */
-		else {
-			/* Send Soft Reset */
-			pe_send_soft_reset(port, sop);
-			return;
-		}
+		pe_send_soft_reset(port, sop);
+		return;
 	}
 
 	/*
@@ -6349,6 +6418,22 @@ static void pe_vcs_wait_for_vconn_swap_entry(int port)
 
 	/* Start the VCONNOnTimer */
 	pd_timer_enable(port, PE_TIMER_VCONN_ON, PD_T_VCONN_SOURCE_ON);
+
+	/*
+	 * The USB PD 3.0 spec indicates that the initial VCONN source
+	 * shall cease sourcing VCONN within tVCONNSourceOff (25ms)
+	 * after receiving the PS_RDY message. However, some partners
+	 * begin sending SOP' messages only 1 ms after sending PS_RDY
+	 * during VCONN swap.
+	 *
+	 * Preemptively disable receipt of SOP' and SOP'' messages while
+	 * we wait for PS_RDY so we don't attempt to process messages
+	 * directed at the cable.
+	 *
+	 * We continue to source VCONN while we wait as required by the
+	 * spec.
+	 */
+	tcpm_sop_prime_enable(port, false);
 }
 
 static void pe_vcs_wait_for_vconn_swap_run(int port)
@@ -6358,14 +6443,25 @@ static void pe_vcs_wait_for_vconn_swap_run(int port)
 	 *  1) A PS_RDY Message is received.
 	 */
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
 		/*
 		 * PS_RDY message received
+		 *
+		 * Note: intentionally leave the receive flag set to indicate
+		 * our route on exit when PS_RDY is received.
 		 */
 		if ((PD_HEADER_CNT(rx_emsg[port].header) == 0) &&
-				(PD_HEADER_TYPE(rx_emsg[port].header) ==
-						PD_CTRL_PS_RDY)) {
+		    (PD_HEADER_EXT(rx_emsg[port].header) == 0) &&
+		    (PD_HEADER_TYPE(rx_emsg[port].header) == PD_CTRL_PS_RDY)) {
 			set_state_pe(port, PE_VCS_TURN_OFF_VCONN_SWAP);
+			return;
+		} else {
+			/*
+			 * Unexpected message received - reset with the SOP* of
+			 * the incoming message.
+			 */
+			PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+			pe_send_soft_reset(port,
+				PD_HEADER_GET_SOP(rx_emsg[port].header));
 			return;
 		}
 	}
@@ -6385,6 +6481,15 @@ static void pe_vcs_wait_for_vconn_swap_run(int port)
 
 static void pe_vcs_wait_for_vconn_swap_exit(int port)
 {
+	/*
+	 * If we exited without getting PS_RDY, re-enable SOP' messaging since
+	 * we are still the Vconn source.
+	 */
+	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED))
+		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
+	else
+		tcpm_sop_prime_enable(port, true);
+
 	pd_timer_disable(port, PE_TIMER_VCONN_ON);
 }
 
@@ -6436,14 +6541,9 @@ static void pe_vcs_turn_off_vconn_swap_entry(int port)
 static void pe_vcs_turn_off_vconn_swap_run(int port)
 {
 	/* Wait for VCONN to turn off */
-	if (pd_timer_is_disabled(port, PE_TIMER_TIMEOUT) &&
-	    PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_COMPLETE)) {
+	if (PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_COMPLETE)) {
 		PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_COMPLETE);
-		pd_timer_enable(port, PE_TIMER_TIMEOUT,
-				CONFIG_USBC_VCONN_SWAP_DELAY_US);
-	}
 
-	if (pd_timer_is_expired(port, PE_TIMER_TIMEOUT)) {
 		/*
 		 * A VCONN Swap Shall reset the DiscoverIdentityCounter
 		 * to zero
@@ -6451,16 +6551,9 @@ static void pe_vcs_turn_off_vconn_swap_run(int port)
 		pe[port].discover_identity_counter = 0;
 		pe[port].dr_swap_attempt_counter = 0;
 
-		if (pe[port].power_role == PD_ROLE_SOURCE)
-			set_state_pe(port, PE_SRC_READY);
-		else
-			set_state_pe(port, PE_SNK_READY);
+		pe_set_ready_state(port);
+		return;
 	}
-}
-
-static void pe_vcs_turn_off_vconn_swap_exit(int port)
-{
-	pd_timer_disable(port, PE_TIMER_TIMEOUT);
 }
 
 /*
@@ -6472,7 +6565,7 @@ static void pe_vcs_send_ps_rdy_swap_entry(int port)
 
 	/* Check for any interruptions to this non-interruptible AMS */
 	if (PE_CHK_FLAG(port, PE_FLAGS_MSG_RECEIVED)) {
-		enum tcpm_transmit_type sop =
+		enum tcpm_sop_type sop =
 				PD_HEADER_GET_SOP(rx_emsg[port].header);
 
 		PE_CLR_FLAG(port, PE_FLAGS_MSG_RECEIVED);
@@ -6515,6 +6608,50 @@ static void pe_vcs_send_ps_rdy_swap_run(int port)
 		/* PS_RDY didn't send, soft reset */
 		pe_send_soft_reset(port, TCPC_TX_SOP);
 	}
+}
+
+/*
+ * PE_VCS_Force_Vconn
+ */
+__maybe_unused static void pe_vcs_force_vconn_entry(int port)
+{
+	print_current_state(port);
+
+	/* Request DPM to turn on VCONN */
+	pd_request_vconn_swap_on(port);
+}
+
+__maybe_unused static void pe_vcs_force_vconn_run(int port)
+{
+	/*
+	 * The Policy Engine Shall transition back to either the PE_SRC_Ready
+	 * or PE_SNK_Ready state when:
+	 *  1) The Port’s VCONN is on.
+	 *
+	 *  Note we'll wait CONFIG_USBC_VCONN_SWAP_DELAY_US, as defined by the
+	 *  board, to ensure Vconn is on.
+	 */
+	if (pd_timer_is_disabled(port, PE_TIMER_TIMEOUT) &&
+	    PE_CHK_FLAG(port, PE_FLAGS_VCONN_SWAP_COMPLETE)) {
+		PE_CLR_FLAG(port, PE_FLAGS_VCONN_SWAP_COMPLETE);
+		pd_timer_enable(port, PE_TIMER_TIMEOUT,
+				CONFIG_USBC_VCONN_SWAP_DELAY_US);
+	}
+
+	if (pd_timer_is_expired(port, PE_TIMER_TIMEOUT)) {
+		/*
+		 * Note: A cable soft reset shouldn't be necessary as a
+		 * Not_Supported reply means the partner doesn't support
+		 * sourcing Vconn and did not communicate with the cable.
+		 */
+		pe_set_ready_state(port);
+		return;
+	}
+}
+
+__maybe_unused static void pe_vcs_force_vconn_exit(int port)
+{
+	pd_timer_disable(port, PE_TIMER_TIMEOUT);
 }
 
 /*
@@ -6625,7 +6762,7 @@ static void pe_dr_get_sink_cap_run(int port)
 	int cnt;
 	int ext;
 	enum pe_msg_check msg_check;
-	enum tcpm_transmit_type sop;
+	enum tcpm_sop_type sop;
 
 	/*
 	 * Check the state of the message sent
@@ -6767,7 +6904,7 @@ static void pe_dr_src_get_source_cap_run(int port)
 				 * If we'd prefer to charge from this partner,
 				 * then propose a PR swap.
 				 */
-				if (pd_can_source_from_device(port, cnt,
+				if (pd_can_charge_from_device(port, cnt,
 							      payload))
 					pd_request_power_swap(port);
 
@@ -6781,12 +6918,22 @@ static void pe_dr_src_get_source_cap_run(int port)
 								CAP_DUALROLE);
 
 				set_state_pe(port, PE_SRC_READY);
-			} else if (type == PD_CTRL_REJECT ||
-				   type == PD_CTRL_NOT_SUPPORTED) {
+			} else if ((cnt == 0) && (type == PD_CTRL_REJECT ||
+					type == PD_CTRL_NOT_SUPPORTED)) {
+				pd_set_src_caps(port, -1, NULL);
 				set_state_pe(port, PE_SRC_READY);
 			} else {
+				/*
+				 * On protocol error, consider source cap
+				 * retrieval a failure
+				 */
+				pd_set_src_caps(port, -1, NULL);
 				set_state_pe(port, PE_SEND_SOFT_RESET);
 			}
+			return;
+		} else {
+			pd_set_src_caps(port, -1, NULL);
+			set_state_pe(port, PE_SEND_SOFT_RESET);
 			return;
 		}
 	}
@@ -6823,7 +6970,10 @@ void pd_set_src_caps(int port, int cnt, uint32_t *src_caps)
 
 uint8_t pd_get_src_cap_cnt(int port)
 {
-	return pe[port].src_cap_cnt;
+	if (pe[port].src_cap_cnt > 0)
+		return pe[port].src_cap_cnt;
+
+	return 0;
 }
 
 /* Track access to the PD discovery structures during HC execution */
@@ -6860,7 +7010,7 @@ void pd_dfp_discovery_init(int port)
 }
 
 __maybe_unused void pd_discovery_access_clear(int port,
-			enum tcpm_transmit_type type)
+			enum tcpm_sop_type type)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 		assert(0);
@@ -6869,7 +7019,7 @@ __maybe_unused void pd_discovery_access_clear(int port,
 }
 
 __maybe_unused bool pd_discovery_access_validate(int port,
-			enum tcpm_transmit_type type)
+			enum tcpm_sop_type type)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 		assert(0);
@@ -6878,7 +7028,7 @@ __maybe_unused bool pd_discovery_access_validate(int port,
 }
 
 __maybe_unused struct pd_discovery *pd_get_am_discovery(int port,
-			enum tcpm_transmit_type type)
+			enum tcpm_sop_type type)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 		assert(0);
@@ -6889,7 +7039,7 @@ __maybe_unused struct pd_discovery *pd_get_am_discovery(int port,
 }
 
 __maybe_unused struct partner_active_modes *pd_get_partner_active_modes(
-			int port, enum tcpm_transmit_type type)
+			int port, enum tcpm_sop_type type)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
 		assert(0);
@@ -7148,7 +7298,6 @@ static __const_data const struct usb_state pe_states[] = {
 	[PE_VCS_TURN_OFF_VCONN_SWAP] = {
 		.entry = pe_vcs_turn_off_vconn_swap_entry,
 		.run   = pe_vcs_turn_off_vconn_swap_run,
-		.exit  = pe_vcs_turn_off_vconn_swap_exit,
 	},
 	[PE_VCS_SEND_PS_RDY_SWAP] = {
 		.entry = pe_vcs_send_ps_rdy_swap_entry,
@@ -7258,6 +7407,13 @@ static __const_data const struct usb_state pe_states[] = {
 		.exit  = pe_chunk_received_exit,
 	},
 #endif /* CONFIG_USB_PD_EXTENDED_MESSAGES */
+#ifdef CONFIG_USBC_VCONN
+	[PE_VCS_FORCE_VCONN] = {
+		.entry = pe_vcs_force_vconn_entry,
+		.run   = pe_vcs_force_vconn_run,
+		.exit  = pe_vcs_force_vconn_exit,
+	},
+#endif /* CONFIG_USBC_VCONN */
 #endif /* CONFIG_USB_PD_REV30 */
 };
 

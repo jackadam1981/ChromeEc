@@ -46,13 +46,19 @@ int dp_flags[CONFIG_USB_PD_PORT_MAX_COUNT];
 
 uint32_t dp_status[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+/* Console command multi-function preference set for a PD port. */
+
+__maybe_unused bool dp_port_mf_allow[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+		[0 ... CONFIG_USB_PD_PORT_MAX_COUNT - 1] = true};
+
+
 __overridable const struct svdm_response svdm_rsp = {
 	.identity = NULL,
 	.svids = NULL,
 	.modes = NULL,
 };
 
-static int pd_get_mode_idx(int port, enum tcpm_transmit_type type,
+static int pd_get_mode_idx(int port, enum tcpm_sop_type type,
 		uint16_t svid)
 {
 	int amode_idx;
@@ -67,7 +73,7 @@ static int pd_get_mode_idx(int port, enum tcpm_transmit_type type,
 	return -1;
 }
 
-static int pd_allocate_mode(int port, enum tcpm_transmit_type type,
+static int pd_allocate_mode(int port, enum tcpm_sop_type type,
 		uint16_t svid)
 {
 	int i, j;
@@ -180,6 +186,18 @@ int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 		pd_get_amode_data(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
 	uint32_t mode_caps;
 	uint32_t pin_caps;
+	int mf_pref;
+
+	/*
+	 * Default dp_port_mf_allow is true, we allow mf operation
+	 * if UFP_D supports it.
+	 */
+
+	if (IS_ENABLED(CONFIG_CMD_MFALLOW))
+		mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]) &&
+			dp_port_mf_allow[port];
+	else
+		mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
 
 	if (!modep)
 		return 0;
@@ -190,7 +208,7 @@ int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 	pin_caps = PD_DP_PIN_CAPS(mode_caps);
 
 	/* if don't want multi-function then ignore those pin configs */
-	if (!PD_VDO_DPSTS_MF_PREF(status))
+	if (!mf_pref)
 		pin_caps &= ~MODE_DP_PIN_MF_MASK;
 
 	/* TODO(crosbug.com/p/39656) revisit if DFP drives USB Gen 2 signals */
@@ -208,7 +226,7 @@ int pd_dfp_dp_get_pin_mode(int port, uint32_t status)
 }
 
 struct svdm_amode_data *pd_get_amode_data(int port,
-		enum tcpm_transmit_type type, uint16_t svid)
+		enum tcpm_sop_type type, uint16_t svid)
 {
 	int idx = pd_get_mode_idx(port, type, svid);
 	struct partner_active_modes *active =
@@ -222,7 +240,7 @@ struct svdm_amode_data *pd_get_amode_data(int port,
  * Enter default mode ( payload[0] == 0 ) or attempt to enter mode via svid &
  * opos
  */
-uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
+uint32_t pd_dfp_enter_mode(int port, enum tcpm_sop_type type,
 		uint16_t svid, int opos)
 {
 	int mode_idx = pd_allocate_mode(port, type, svid);
@@ -262,7 +280,7 @@ uint32_t pd_dfp_enter_mode(int port, enum tcpm_transmit_type type,
 }
 
 /* TODO(b/170372521) : Incorporate exit mode specific changes to DPM SM */
-int pd_dfp_exit_mode(int port, enum tcpm_transmit_type type, uint16_t svid,
+int pd_dfp_exit_mode(int port, enum tcpm_sop_type type, uint16_t svid,
 		int opos)
 {
 	struct svdm_amode_data *modep;
@@ -335,7 +353,7 @@ void dfp_consume_attention(int port, uint32_t *payload)
 		modep->fx->attention(port, payload);
 }
 
-void dfp_consume_identity(int port, enum tcpm_transmit_type type, int cnt,
+void dfp_consume_identity(int port, enum tcpm_sop_type type, int cnt,
 		uint32_t *payload)
 {
 	int ptype;
@@ -378,7 +396,7 @@ void dfp_consume_identity(int port, enum tcpm_transmit_type type, int cnt,
 	pd_set_identity_discovery(port, type, PD_DISC_COMPLETE);
 }
 
-void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
+void dfp_consume_svids(int port, enum tcpm_sop_type type, int cnt,
 		uint32_t *payload)
 {
 	int i;
@@ -423,7 +441,7 @@ void dfp_consume_svids(int port, enum tcpm_transmit_type type, int cnt,
 	pd_set_svids_discovery(port, type, PD_DISC_COMPLETE);
 }
 
-void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
+void dfp_consume_modes(int port, enum tcpm_sop_type type, int cnt,
 		uint32_t *payload)
 {
 	int svid_idx;
@@ -470,14 +488,14 @@ void dfp_consume_modes(int port, enum tcpm_transmit_type type, int cnt,
 			PD_DISC_COMPLETE);
 }
 
-int pd_alt_mode(int port, enum tcpm_transmit_type type, uint16_t svid)
+int pd_alt_mode(int port, enum tcpm_sop_type type, uint16_t svid)
 {
 	struct svdm_amode_data *modep = pd_get_amode_data(port, type, svid);
 
 	return (modep) ? modep->opos : -1;
 }
 
-void pd_set_identity_discovery(int port, enum tcpm_transmit_type type,
+void pd_set_identity_discovery(int port, enum tcpm_sop_type type,
 			       enum pd_discovery_state disc)
 {
 	struct pd_discovery *pd = pd_get_am_discovery(port, type);
@@ -486,7 +504,7 @@ void pd_set_identity_discovery(int port, enum tcpm_transmit_type type,
 }
 
 enum pd_discovery_state pd_get_identity_discovery(int port,
-						  enum tcpm_transmit_type type)
+						  enum tcpm_sop_type type)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port, type);
 
@@ -494,7 +512,7 @@ enum pd_discovery_state pd_get_identity_discovery(int port,
 }
 
 const union disc_ident_ack *pd_get_identity_response(int port,
-					       enum tcpm_transmit_type type)
+					       enum tcpm_sop_type type)
 {
 	if (type >= DISCOVERY_TYPE_COUNT)
 		return NULL;
@@ -526,7 +544,7 @@ uint8_t pd_get_product_type(int port)
 	return resp->idh.product_type;
 }
 
-void pd_set_svids_discovery(int port, enum tcpm_transmit_type type,
+void pd_set_svids_discovery(int port, enum tcpm_sop_type type,
 			       enum pd_discovery_state disc)
 {
 	struct pd_discovery *pd = pd_get_am_discovery(port, type);
@@ -535,28 +553,28 @@ void pd_set_svids_discovery(int port, enum tcpm_transmit_type type,
 }
 
 enum pd_discovery_state pd_get_svids_discovery(int port,
-		enum tcpm_transmit_type type)
+		enum tcpm_sop_type type)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port, type);
 
 	return disc->svids_discovery;
 }
 
-int pd_get_svid_count(int port, enum tcpm_transmit_type type)
+int pd_get_svid_count(int port, enum tcpm_sop_type type)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port, type);
 
 	return disc->svid_cnt;
 }
 
-uint16_t pd_get_svid(int port, uint16_t svid_idx, enum tcpm_transmit_type type)
+uint16_t pd_get_svid(int port, uint16_t svid_idx, enum tcpm_sop_type type)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port, type);
 
 	return disc->svids[svid_idx].svid;
 }
 
-void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
+void pd_set_modes_discovery(int port, enum tcpm_sop_type type,
 		uint16_t svid, enum pd_discovery_state disc)
 {
 	struct pd_discovery *pd = pd_get_am_discovery(port, type);
@@ -574,7 +592,7 @@ void pd_set_modes_discovery(int port, enum tcpm_transmit_type type,
 }
 
 enum pd_discovery_state pd_get_modes_discovery(int port,
-		enum tcpm_transmit_type type)
+		enum tcpm_sop_type type)
 {
 	const struct svid_mode_data *mode_data = pd_get_next_mode(port, type);
 
@@ -588,7 +606,7 @@ enum pd_discovery_state pd_get_modes_discovery(int port,
 	return mode_data->discovery;
 }
 
-int pd_get_mode_vdo_for_svid(int port, enum tcpm_transmit_type type,
+int pd_get_mode_vdo_for_svid(int port, enum tcpm_sop_type type,
 		uint16_t svid, uint32_t *vdo_out)
 {
 	int idx;
@@ -610,7 +628,7 @@ int pd_get_mode_vdo_for_svid(int port, enum tcpm_transmit_type type,
 }
 
 struct svid_mode_data *pd_get_next_mode(int port,
-		enum tcpm_transmit_type type)
+		enum tcpm_sop_type type)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port, type);
 	struct svid_mode_data *failed_mode_data = NULL;
@@ -645,14 +663,14 @@ struct svid_mode_data *pd_get_next_mode(int port,
 }
 
 uint32_t *pd_get_mode_vdo(int port, uint16_t svid_idx,
-		enum tcpm_transmit_type type)
+		enum tcpm_sop_type type)
 {
 	struct pd_discovery *disc = pd_get_am_discovery(port, type);
 
 	return disc->svids[svid_idx].mode_vdo;
 }
 
-bool pd_is_mode_discovered_for_svid(int port, enum tcpm_transmit_type type,
+bool pd_is_mode_discovered_for_svid(int port, enum tcpm_sop_type type,
 		uint16_t svid)
 {
 	const struct pd_discovery *disc = pd_get_am_discovery(port, type);
@@ -678,7 +696,7 @@ void notify_sysjump_ready(void)
 		task_set_event(sysjump_task_waiting, TASK_EVENT_SYSJUMP_READY);
 }
 
-static inline bool is_pd_rev3(int port, enum tcpm_transmit_type type)
+static inline bool is_pd_rev3(int port, enum tcpm_sop_type type)
 {
 	return pd_get_rev(port, type) == PD_REV30;
 }
@@ -830,7 +848,7 @@ bool is_active_cable_element_retimer(int port)
  * ############################################################################
  */
 
-uint32_t pd_get_tbt_mode_vdo(int port, enum tcpm_transmit_type type)
+uint32_t pd_get_tbt_mode_vdo(int port, enum tcpm_sop_type type)
 {
 	uint32_t tbt_mode_vdo[PDO_MODES];
 
@@ -942,13 +960,13 @@ enum tbt_compat_cable_speed get_tbt_cable_speed(int port)
 		max_tbt_speed : cable_tbt_speed;
 }
 
-int enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
+int enter_tbt_compat_mode(int port, enum tcpm_sop_type sop,
 			uint32_t *payload)
 {
 	union tbt_dev_mode_enter_cmd enter_dev_mode = { .raw_value = 0 };
 	union tbt_mode_resp_device dev_mode_resp;
 	union tbt_mode_resp_cable cable_mode_resp;
-	enum tcpm_transmit_type enter_mode_sop =
+	enum tcpm_sop_type enter_mode_sop =
 					sop == TCPC_TX_SOP_PRIME_PRIME ?
 						TCPC_TX_SOP_PRIME : sop;
 
@@ -1151,12 +1169,30 @@ __overridable int svdm_enter_dp_mode(int port, uint32_t mode_caps)
 	 * if we don't need to maintain HPD connectivity info in a low power
 	 * mode, then we shall exit DP Alt Mode.  (This is why we don't enter
 	 * when the SoC is off as opposed to suspend where adding a display
-	 * could cause a wake up.)
+	 * could cause a wake up.)  When in S5->S3 transition state, we
+	 * should treat it as a SoC off state.
 	 */
 #ifdef HAS_TASK_CHIPSET
-	if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+	if (!chipset_in_state(CHIPSET_STATE_ANY_SUSPEND | CHIPSET_STATE_ON))
 		return -1;
 #endif
+
+	/*
+	 * TCPMv2: Enable logging of CCD line state CCD_MODE_ODL.
+	 * DisplayPort Alternate mode requires that the SBU lines are used for
+	 * AUX communication.
+	 * However, in Chromebooks SBU signals are repurposed as USB2 signals
+	 * for CCD. This functionality is accomplished by override fets whose
+	 * state is controlled by CCD_MODE_ODL.
+	 *
+	 * This condition helps in debugging unexpected AUX timeout issues by
+	 * indicating the state of the CCD override fets.
+	 */
+#ifdef GPIO_CCD_MODE_ODL
+	if (!gpio_get_level(GPIO_CCD_MODE_ODL))
+		CPRINTS("WARNING: Tried to EnterMode DP with [CCD on AUX/SBU]");
+#endif
+
 	/* Only enter mode if device is DFP_D capable */
 	if (mode_caps & MODE_DP_SNK) {
 		svdm_safe_dp_mode(port);
@@ -1198,8 +1234,16 @@ __overridable uint8_t get_dp_pin_mode(int port)
 
 static mux_state_t svdm_dp_get_mux_mode(int port)
 {
-	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
 	int pin_mode = get_dp_pin_mode(port);
+	/* Default dp_port_mf_allow is true */
+	int mf_pref;
+
+	if (IS_ENABLED(CONFIG_CMD_MFALLOW))
+		mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]) &&
+			dp_port_mf_allow[port];
+	else
+		mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
+
 	/*
 	 * Multi-function operation is only allowed if that pin config is
 	 * supported.
@@ -1213,9 +1257,16 @@ static mux_state_t svdm_dp_get_mux_mode(int port)
 __overridable int svdm_dp_config(int port, uint32_t *payload)
 {
 	int opos = pd_alt_mode(port, TCPC_TX_SOP, USB_SID_DISPLAYPORT);
-	int mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
 	uint8_t pin_mode = get_dp_pin_mode(port);
 	mux_state_t mux_mode = svdm_dp_get_mux_mode(port);
+	/* Default dp_port_mf_allow is true */
+	int mf_pref;
+
+	if (IS_ENABLED(CONFIG_CMD_MFALLOW))
+		mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]) &&
+			dp_port_mf_allow[port];
+	else
+		mf_pref = PD_VDO_DPSTS_MF_PREF(dp_status[port]);
 
 	if (!pin_mode)
 		return 0;
@@ -1452,3 +1503,31 @@ const struct svdm_amode_fx supported_modes[] = {
 #endif /* CONFIG_USB_PD_TBT_COMPAT_MODE */
 };
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
+
+#ifdef CONFIG_CMD_MFALLOW
+static int command_mfallow(int argc, char **argv)
+{
+	char *e;
+	int port;
+
+	if (argc < 3)
+		return EC_ERROR_PARAM_COUNT;
+
+	port = strtoi(argv[1], &e, 10);
+	if (*e || port >= board_get_usb_pd_port_count())
+		return EC_ERROR_PARAM2;
+
+	if (!strcasecmp(argv[2], "true"))
+		dp_port_mf_allow[port] = true;
+	else if (!strcasecmp(argv[2], "false"))
+		dp_port_mf_allow[port] = false;
+	else
+		return EC_ERROR_PARAM1;
+
+	ccprintf("Port: %d multi function allowed is %s ", port, argv[2]);
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(mfallow, command_mfallow, "port [true | false]",
+		"Controls Multifunction choice during DP Altmode.");
+#endif
