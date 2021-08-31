@@ -8,6 +8,8 @@
 #include "console.h"
 #include "cros_board_info.h"
 #include "fw_config.h"
+#include "gpio.h"
+#include "timer.h"
 
 #define CPRINTS(format, args...) cprints(CC_CHIPSET, format, ## args)
 
@@ -47,6 +49,23 @@ void board_init_fw_config(void)
 			fw_config.usb_db = DB_USB_ABSENT;
 		}
 	}
+
+	/*
+	 * b/197585292
+	 * If DB isn't plugged into dut, it may cause TCPC1 initialization
+	 * abnormal.
+	 * This is used to detect if DB is plugged into dut. If not, set it as
+	 * DB_USB_ABSENT.
+	 * DB connector still have NC pin, maybe we can select one as DB
+	 * detection gpio next phase instead of USB_C1_RT_RST_R_ODL.
+	 */
+	gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 1);
+	msleep(5);
+	if (gpio_get_level(GPIO_USB_C1_RT_RST_R_ODL) == 0)
+		fw_config.usb_db = DB_USB_ABSENT;
+	else
+		fw_config.usb_db = DB_USB3_PS8815;
+	gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 0);
 }
 
 union taeko_cbi_fw_config get_fw_config(void)
