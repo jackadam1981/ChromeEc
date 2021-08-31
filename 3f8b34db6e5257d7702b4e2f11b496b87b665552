@@ -34,6 +34,24 @@
       "parentUuid": "d8893258_966dcc8a",
       "revId": "3f8b34db6e5257d7702b4e2f11b496b87b665552",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2a8ace1_f02650bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-31T17:19:53Z",
+      "side": 1,
+      "message": "Full output:\n\nERROR: [/builds/zephyr-ec/ec/build/zephyr/test/accel_cal:singleimage]FAILED: zephyr/zephyr_prebuilt.elf zephyr/zephyr_prebuilt.map /builds/zephyr-ec/ec/build/zephyr/test/accel_cal/build-singleimage/zephyr/zephyr_prebuilt.map\nERROR: [/builds/zephyr-ec/ec/build/zephyr/test/accel_cal:singleimage]: \u0026\u0026 ccache /usr/bin/gcc   zephyr/CMakeFiles/zephyr_prebuilt.dir/misc/empty_file.c.obj -o zephyr/zephyr_prebuilt.elf  zephyr/CMakeFiles/offsets.dir/./arch/posix/core/offsets/offsets.c.obj  -Wl,-T  zephyr/linker_zephyr_prebuilt.cmd  -Wl,-Map\u003d/builds/zephyr-ec/ec/build/zephyr/test/accel_cal/build-singleimage/zephyr/zephyr_prebuilt.map  -Wl,--whole-archive  app/libapp.a  zephyr/libzephyr.a  zephyr/arch/arch/posix/core/libarch__posix__core.a  zephyr/soc/posix/inf_clock/libsoc__posix__inf_clock.a  zephyr/boards/posix/native_posix/libboards__posix__native_posix.a  zephyr/subsys/testsuite/ztest/libsubsys__testsuite__ztest.a  zephyr/drivers/serial/libdrivers__serial.a  -Wl,--no-whole-archive  zephyr/kernel/libkernel.a  -L/builds/zephyr-ec/ec/build/zephyr/test/accel_cal/build-singleimage/zephyr  -Wl,--gc-sections  -Wl,--build-id\u003dnone  -Wl,--sort-common\u003ddescending  -Wl,--sort-section\u003dalignment  -Wl,-u,_OffsetAbsSyms  -Wl,-u,_ConfigAbsSyms  -m32  -ldl  -pthread  -lm \u0026\u0026 cd /builds/zephyr-ec/ec/build/zephyr/test/accel_cal/build-singleimage/zephyr \u0026\u0026 /usr/bin/cmake -E echo\nERROR: [/builds/zephyr-ec/ec/build/zephyr/test/accel_cal:singleimage]app/libapp.a(accel_cal.c.obj):(.data._test_accel_cal.11400+0xc): undefined reference to `after_test\u0027\nERROR: [/builds/zephyr-ec/ec/build/zephyr/test/accel_cal:singleimage]app/libapp.a(accel_cal.c.obj):(.data._test_accel_cal.11400+0x20): undefined reference to `after_test\u0027\nERROR: [/builds/zephyr-ec/ec/build/zephyr/test/accel_cal:singleimage]app/libapp.a(accel_cal.c.obj):(.data._test_accel_cal.11400+0x34): undefined reference to `after_test\u0027\nERROR: [/builds/zephyr-ec/ec/build/zephyr/test/accel_cal:singleimage]collect2: error: ld returned 1 exit status\nDEBUG: [/builds/zephyr-ec/ec/build/zephyr/test/accel_cal:singleimage]ninja: build stopped: subcommand failed.\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /builds/zephyr-ec/ec/build/zephyr/test/accel_cal/build-singleimage",
+      "parentUuid": "af58ca20_010edccf",
+      "revId": "3f8b34db6e5257d7702b4e2f11b496b87b665552",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
