@@ -232,6 +232,8 @@ struct motion_sensor_t motion_sensors[] = {
 			.odr = 10000 | ROUND_UP_FLAG,
 		},
 	 },
+	 .int_signal = GPIO_ACCEL_GYRO_INT_L,
+	 .flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 	},
 	[BASE_GYRO] = {
 	 .name = "Gyro",
@@ -248,6 +250,8 @@ struct motion_sensor_t motion_sensors[] = {
 	 .rot_standard_ref = &base_standard_ref_bmi160,
 	 .min_frequency = BMI_GYRO_MIN_FREQ,
 	 .max_frequency = BMI_GYRO_MAX_FREQ,
+	 .int_signal = GPIO_ACCEL_GYRO_INT_L,
+	 .flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 	},
 };
 unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
@@ -304,6 +308,8 @@ struct motion_sensor_t icm426xx_base_accel = {
 			.odr = 10000 | ROUND_UP_FLAG,
 		},
 	},
+	.int_signal = GPIO_ACCEL_GYRO_INT_L,
+	.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 };
 
 struct motion_sensor_t icm426xx_base_gyro = {
@@ -321,48 +327,26 @@ struct motion_sensor_t icm426xx_base_gyro = {
 	.rot_standard_ref = &base_standard_ref_icm426xx,
 	.min_frequency = ICM426XX_GYRO_MIN_FREQ,
 	.max_frequency = ICM426XX_GYRO_MAX_FREQ,
+	.int_signal = GPIO_ACCEL_GYRO_INT_L,
+	.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
 };
 
-static int base_accelgyro_config;
+struct motion_sensors_alt_probe_t motion_sensors_alt_probe[] = {
+	{
+		.config = &kx022_lid_accel,
+		.sensor_id = LID_ACCEL,
+	},
+	{
+		.config = &icm426xx_base_accel,
+		.sensor_id = BASE_ACCEL,
+	},
+	{
+		.config = &icm426xx_base_gyro,
+		.sensor_id = BASE_GYRO,
+	},
+};
 
-void motion_interrupt(enum gpio_signal signal)
-{
-	switch (base_accelgyro_config) {
-	case BASE_GYRO_ICM426XX:
-		icm426xx_interrupt(signal);
-		break;
-	case BASE_GYRO_BMI160:
-	default:
-		bmi160_interrupt(signal);
-		break;
-	}
-}
-
-static void board_detect_motionsensor(void)
-{
-	int ret;
-	int val;
-
-	/* Check lid accel chip */
-	ret = i2c_read8(I2C_PORT_SENSOR, BMA2x2_I2C_ADDR1_FLAGS,
-		BMA2x2_CHIP_ID_ADDR, &val);
-	if (ret)
-		motion_sensors[LID_ACCEL] = kx022_lid_accel;
-
-	CPRINTS("Lid Accel: %s", ret ? "KX022" : "BMA255");
-
-	/* Check base accelgyro chip */
-	ret = icm_read8(&icm426xx_base_accel, ICM426XX_REG_WHO_AM_I, &val);
-	if (val == ICM426XX_CHIP_ICM40608) {
-		motion_sensors[BASE_ACCEL] = icm426xx_base_accel;
-		motion_sensors[BASE_GYRO] = icm426xx_base_gyro;
-	}
-
-	base_accelgyro_config = (val == ICM426XX_CHIP_ICM40608)
-		 ? BASE_GYRO_ICM426XX : BASE_GYRO_BMI160;
-	CPRINTS("Base Accelgyro: %s", (val == ICM426XX_CHIP_ICM40608)
-		 ? "ICM40608" : "BMI160");
-}
+const int motion_sensors_alt_probe_count = ARRAY_SIZE(motion_sensors_alt_probe);
 
 static void board_update_sensor_config_from_sku(void)
 {
@@ -375,8 +359,8 @@ static void board_update_sensor_config_from_sku(void)
 		gpio_set_flags(GPIO_LID_ACCEL_INT_L,
 			       GPIO_INPUT | GPIO_PULL_DOWN);
 	} else {
-		board_detect_motionsensor();
 		motion_sensor_count = ARRAY_SIZE(motion_sensors);
+		motion_sense_probe_sensors();
 		/* Enable interrupt for the base accel sensor */
 		gpio_enable_interrupt(GPIO_ACCEL_GYRO_INT_L);
 	}

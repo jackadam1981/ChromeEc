@@ -123,8 +123,9 @@ enum battery_type {
 /* Reset all TCPCs. */
 void board_reset_pd_mcu(void);
 void board_set_tcpc_power_mode(int port, int mode);
-/* Motion sensor interrupt */
-void motion_interrupt(enum gpio_signal signal);
+
+#define CONFIG_MOTION_SENSE_RUNTIME_PROBE
+#define CONFIG_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL
 
 #endif /* !defined(__ASSEMBLER__) */
 
