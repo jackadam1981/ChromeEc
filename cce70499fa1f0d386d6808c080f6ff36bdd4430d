@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b596f87_c4b900d9",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-31T15:55:37Z",
+      "side": 1,
+      "message": "This appears to be used only for some DTS configurations. Also it doesn\u0027t seem to ever be read, so this is a bit of a hack to make it compile for now.",
+      "range": {
+        "startLine": 135,
+        "startChar": 34,
+        "endLine": 135,
+        "endChar": 58
+      },
+      "revId": "cce70499fa1f0d386d6808c080f6ff36bdd4430d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
