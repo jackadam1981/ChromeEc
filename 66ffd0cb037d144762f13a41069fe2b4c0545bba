@@ -83,6 +83,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f9e1204_c3f8150b",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-31T00:07:23Z",
+      "side": 1,
+      "message": "I think adding a new function of a few bytes is not a big deal in this case, but why not use the same name everywhere?\n\nAlso, a simple #define would work just as well, but will be more along the line with the rest of the code.",
+      "parentUuid": "d69b0a1e_65c50a43",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "530b12b6_145ee701",
