@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8adaafc_b5e84d5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-08-31T21:25:45Z",
+      "side": 1,
+      "message": "Abandon this CL and use CL:https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3132548",
+      "revId": "b5c6027ca1f78b3ae513a5e12615433164d40d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba352924_f59c2bc9",
@@ -49,6 +66,24 @@
       "side": 1,
       "message": "This WA change must be general for P \u0026 M until next si(Ko \u0026 RO ) comes.\nSo it is better to add in baseboard/intelrvp/adlrvp.c right?\nAs i missed seeing this CL, I have already made changes in \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3132548\nIf it is not required, i will abandon mine.",
       "parentUuid": "ba352924_f59c2bc9",
+      "revId": "b5c6027ca1f78b3ae513a5e12615433164d40d96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5805c0e7_7ef741db",
+        "filename": "board/adlrvpp_ite/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-08-31T21:25:45Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3f6999e4_4cc2ed19",
       "revId": "b5c6027ca1f78b3ae513a5e12615433164d40d96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
