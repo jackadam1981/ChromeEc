@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a929775a_4595858b",
+        "filename": "board/cr50/crypto_api.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-31T00:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46246a7e_8d9c7672",
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a15c4ca3_269b7653",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-08-30T18:50:05Z",
       "side": 1,
       "message": "why is this necessary? This is not typical for Cr50 codebase and is confusing the reader.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d69b0a1e_65c50a43",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-31T00:01:31Z",
+      "side": 1,
+      "message": "save code size. if I add:\nint crypto_enabled(void) { return fips_crypto_allowed(); }  - it adds new function.",
+      "parentUuid": "a15c4ca3_269b7653",
       "range": {
         "startLine": 71,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a66bb0_c35391f3",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-31T00:01:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "530b12b6_145ee701",
+      "range": {
+        "startLine": 79,
+        "startChar": 5,
+        "endLine": 79,
+        "endChar": 40
+      },
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "781778df_8514b6f6",
@@ -87,6 +153,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35a140e2_dced6cc6",
+        "filename": "board/cr50/fips.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-31T00:01:31Z",
+      "side": 1,
+      "message": "yes, to report all other errors. may help later with diagnostics as it writes everything in flash log.",
+      "parentUuid": "781778df_8514b6f6",
+      "range": {
+        "startLine": 611,
+        "startChar": 2,
+        "endLine": 611,
+        "endChar": 35
+      },
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0cafcd94_7ed7ca5a",
@@ -100,6 +190,30 @@
       "writtenOn": "2021-08-30T18:50:05Z",
       "side": 1,
       "message": "why does this have to change? Bool return type makes a perfect sense here",
+      "range": {
+        "startLine": 99,
+        "startChar": 3,
+        "endLine": 99,
+        "endChar": 4
+      },
+      "revId": "66ffd0cb037d144762f13a41069fe2b4c0545bba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10322f0b_28a2af42",
+        "filename": "board/cr50/fips.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-08-31T00:01:31Z",
+      "side": 1,
+      "message": "that was due to requirements for aliasing - types should be compatible, and for some reason compiler thinks bool !\u003d int.\n\nI\u0027m reverting it back to \u0027bool\u0027 and provide explicit crypto_allowed() definition.",
+      "parentUuid": "0cafcd94_7ed7ca5a",
       "range": {
         "startLine": 99,
         "startChar": 3,
