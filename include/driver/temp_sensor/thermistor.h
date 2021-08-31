@@ -8,10 +8,22 @@
 #ifndef __CROS_EC_TEMP_SENSOR_THERMISTOR_H
 #define __CROS_EC_TEMP_SENSOR_THERMISTOR_H
 
-struct thermistor_data_pair {
+/* #define __ALIGN_DATA_PAIRS() */
+/* #ifdef CONFIG_ZEPHYR */
+/* __attribute__((packed, aligned(2))) */
+/* #endif */
+
+// FIXME To make more compiler neutral, replace struct pair array with parallel arrays.
+struct thermistor_data_pair
+{
 	uint8_t mv;	/* Scaled voltage level at ADC (in mV) */
 	uint8_t temp;	/* Temperature in Celsius */
 };
+
+/* #if sizeof(thermistor_data_pair[2]) != sizeof(uint8_t[4]) */
+/* // Assert compiler packs thermistor_data_pair arrays. */
+/* #error */
+/* #endif */
 
 struct thermistor_info {
 	uint8_t scaling_factor;	/* Scaling factor for voltage in data pair. */
@@ -146,5 +158,8 @@ int get_temp_3v0_22k6_47k_4050b(int idx_adc, int *temp_ptr);
  */
 int get_temp_3v3_30k9_47k_4050b(int idx_adc, int *temp_ptr);
 #endif
+
+int thermistor_get_temperature(int idx_adc, int *temp_ptr,
+				      const struct thermistor_info *info);
 
 #endif  /* __CROS_EC_TEMP_SENSOR_THERMISTOR_NCP15WB_H */

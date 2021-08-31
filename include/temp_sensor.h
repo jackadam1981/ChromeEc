@@ -34,9 +34,12 @@ struct temp_sensor_t {
 	/* Temperature sensor type. */
 	enum temp_sensor_type type;
 	/* Read sensor value in K into temp_ptr; return non-zero if error. */
-	int (*read)(int idx, int *temp_ptr);
+	int (*read)(const struct temp_sensor_t *sensor, int *temp_ptr);
 	/* Index among the same kind of sensors. */
 	int idx;
+	#ifdef CONFIG_ZEPHYR
+	struct thermistor_info *thermistor;
+	#endif
 };
 
 #ifdef CONFIG_TEMP_SENSOR
@@ -45,6 +48,7 @@ struct temp_sensor_t {
  * in enum temp_sensor_id.
  */
 extern const struct temp_sensor_t temp_sensors[];
+extern const int temp_sensors_len;
 #endif
 
 /**
