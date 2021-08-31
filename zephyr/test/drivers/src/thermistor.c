@@ -19,21 +19,21 @@
 
 #define ADC_DEVICE_NODE		DT_NODELABEL(adc0)
 
-#define TEMP_3V3_13K7_47K_4050B_INST	DT_INST(0, temp_3v3_13k7_47k_4050b)
-#define ADC_CHANNEL_3V3_13K7_47K_4050B \
-		DT_PROP(DT_PHANDLE(TEMP_3V3_13K7_47K_4050B_INST, adc), channel)
+/* #define TEMP_3V3_13K7_47K_4050B_INST	DT_INST(0, temp_3v3_13k7_47k_4050b) */
+/* #define ADC_CHANNEL_3V3_13K7_47K_4050B \ */
+/* 		DT_PROP(DT_PHANDLE(TEMP_3V3_13K7_47K_4050B_INST, adc), channel) */
 
-#define TEMP_3V3_30K9_47K_4050B_INST	DT_INST(0, temp_3v3_30k9_47k_4050b)
-#define ADC_CHANNEL_3V3_30K9_47K_4050B \
-		DT_PROP(DT_PHANDLE(TEMP_3V3_30K9_47K_4050B_INST, adc), channel)
+/* #define TEMP_3V3_30K9_47K_4050B_INST	DT_INST(0, temp_3v3_30k9_47k_4050b) */
+/* #define ADC_CHANNEL_3V3_30K9_47K_4050B \ */
+/* 		DT_PROP(DT_PHANDLE(TEMP_3V3_30K9_47K_4050B_INST, adc), channel) */
 
-#define TEMP_3V3_51K1_47K_4050B_INST	DT_INST(0, temp_3v3_51k1_47k_4050b)
-#define ADC_CHANNEL_3V3_51K1_47K_4050B \
-		DT_PROP(DT_PHANDLE(TEMP_3V3_51K1_47K_4050B_INST, adc), channel)
+/* #define TEMP_3V3_51K1_47K_4050B_INST	DT_INST(0, temp_3v3_51k1_47k_4050b) */
+/* #define ADC_CHANNEL_3V3_51K1_47K_4050B \ */
+/* 		DT_PROP(DT_PHANDLE(TEMP_3V3_51K1_47K_4050B_INST, adc), channel) */
 
-#define TEMP_3V0_22K6_47K_4050B_INST	DT_INST(0, temp_3v0_22k6_47k_4050b)
-#define ADC_CHANNEL_3V0_22K6_47K_4050B \
-		DT_PROP(DT_PHANDLE(TEMP_3V0_22K6_47K_4050B_INST, adc), channel)
+/* #define TEMP_3V0_22K6_47K_4050B_INST	DT_INST(0, temp_3v0_22k6_47k_4050b) */
+/* #define ADC_CHANNEL_3V0_22K6_47K_4050B \ */
+/* 		DT_PROP(DT_PHANDLE(TEMP_3V0_22K6_47K_4050B_INST, adc), channel) */
 
 /* Conversion of temperature doesn't need to be 100% accurate */
 #define TEMP_EPS	2
@@ -44,71 +44,78 @@
  */
 static void test_thermistor_power_pin(void)
 {
-	const struct device *gpio_dev =
-		DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_PG_EC_DSW_PWROK_PATH, gpios));
-	const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE);
-	int temp;
+	/* const struct device *gpio_dev = */
+	/* 	DEVICE_DT_GET(DT_GPIO_CTLR(GPIO_PG_EC_DSW_PWROK_PATH, gpios)); */
+	/* const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE); */
+	/* int temp; */
 
-	zassert_not_null(gpio_dev, "Cannot get GPIO device");
-	zassert_not_null(adc_dev, "Cannot get ADC device");
+	/* zassert_not_null(gpio_dev, "Cannot get GPIO device"); */
+	/* zassert_not_null(adc_dev, "Cannot get ADC device"); */
 
 	/* Make sure that ADC return any valid value */
-	zassert_ok(adc_emul_const_value_set(adc_dev,
-					    ADC_CHANNEL_3V3_13K7_47K_4050B,
-					    1000),
-		   "adc_emul_const_value_set() failed");
-	zassert_ok(adc_emul_const_value_set(adc_dev,
-					    ADC_CHANNEL_3V3_30K9_47K_4050B,
-					    1000),
-		   "adc_emul_const_value_set() failed");
-	zassert_ok(adc_emul_const_value_set(adc_dev,
-					    ADC_CHANNEL_3V3_51K1_47K_4050B,
-					    1000),
-		   "adc_emul_const_value_set() failed");
-	zassert_ok(adc_emul_const_value_set(adc_dev,
-					    ADC_CHANNEL_3V0_22K6_47K_4050B,
-					    1000),
-		   "adc_emul_const_value_set() failed");
+	
 
-	/* pg_ec_dsw_pwrok = 0 means ADC is not powered. */
-	zassert_ok(gpio_emul_input_set(gpio_dev, GPIO_PG_EC_DSW_PWROK_PORT, 0),
-		   NULL);
-	zassert_equal(EC_ERROR_NOT_POWERED,
-		      get_temp_3v3_13k7_47k_4050b(
-					ADC_CHANNEL_3V3_13K7_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(EC_ERROR_NOT_POWERED,
-		      get_temp_3v3_30k9_47k_4050b(
-					ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(EC_ERROR_NOT_POWERED,
-		      get_temp_3v3_51k1_47k_4050b(
-					ADC_CHANNEL_3V3_51K1_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(EC_ERROR_NOT_POWERED,
-		      get_temp_3v0_22k6_47k_4050b(
-					ADC_CHANNEL_3V0_22K6_47K_4050B, &temp),
-		      NULL);
+#define FOO(ARG) printf("My label is %s\n", DT_PROP(ARG, label));
+	/* zassert_ok(adc_emul_const_value_set(adc_dev,\ */
+	/* 				    ADC_CHANNEL_3V3_13K7_47K_4050B,\ */
+	/* 				    1000),\ */
+	/* 	   "adc_emul_const_value_set() failed");\ */
 
-	/* pg_ec_dsw_pwrok = 1 means ADC is powered. */
-	zassert_ok(gpio_emul_input_set(gpio_dev, GPIO_PG_EC_DSW_PWROK_PORT, 1),
-		   NULL);
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_13k7_47k_4050b(
-					ADC_CHANNEL_3V3_13K7_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_30k9_47k_4050b(
-					ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_51k1_47k_4050b(
-					ADC_CHANNEL_3V3_51K1_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v0_22k6_47k_4050b(
-					ADC_CHANNEL_3V0_22K6_47K_4050B, &temp),
-		      NULL);
+
+	DT_FOREACH_CHILD(DT_PATH(named_temp_sensors), FOO)
+	  
+	/* zassert_ok(adc_emul_const_value_set(adc_dev, */
+	/* 				    ADC_CHANNEL_3V3_30K9_47K_4050B, */
+	/* 				    1000), */
+	/* 	   "adc_emul_const_value_set() failed"); */
+	/* zassert_ok(adc_emul_const_value_set(adc_dev, */
+	/* 				    ADC_CHANNEL_3V3_51K1_47K_4050B, */
+	/* 				    1000), */
+	/* 	   "adc_emul_const_value_set() failed"); */
+	/* zassert_ok(adc_emul_const_value_set(adc_dev, */
+	/* 				    ADC_CHANNEL_3V0_22K6_47K_4050B, */
+	/* 				    1000), */
+	/* 	   "adc_emul_const_value_set() failed"); */
+
+	/* /\* pg_ec_dsw_pwrok = 0 means ADC is not powered. *\/ */
+	/* zassert_ok(gpio_emul_input_set(gpio_dev, GPIO_PG_EC_DSW_PWROK_PORT, 0), */
+	/* 	   NULL); */
+	/* zassert_equal(EC_ERROR_NOT_POWERED, */
+	/* 	      get_temp_3v3_13k7_47k_4050b( */
+	/* 				ADC_CHANNEL_3V3_13K7_47K_4050B, &temp), */
+	/* 	      NULL); */
+	/* zassert_equal(EC_ERROR_NOT_POWERED, */
+	/* 	      get_temp_3v3_30k9_47k_4050b( */
+	/* 				ADC_CHANNEL_3V3_30K9_47K_4050B, &temp), */
+	/* 	      NULL); */
+	/* zassert_equal(EC_ERROR_NOT_POWERED, */
+	/* 	      get_temp_3v3_51k1_47k_4050b( */
+	/* 				ADC_CHANNEL_3V3_51K1_47K_4050B, &temp), */
+	/* 	      NULL); */
+	/* zassert_equal(EC_ERROR_NOT_POWERED, */
+	/* 	      get_temp_3v0_22k6_47k_4050b( */
+	/* 				ADC_CHANNEL_3V0_22K6_47K_4050B, &temp), */
+	/* 	      NULL); */
+
+	/* /\* pg_ec_dsw_pwrok = 1 means ADC is powered. *\/ */
+	/* zassert_ok(gpio_emul_input_set(gpio_dev, GPIO_PG_EC_DSW_PWROK_PORT, 1), */
+	/* 	   NULL); */
+	/* zassert_equal(EC_SUCCESS, */
+	/* 	      get_temp_3v3_13k7_47k_4050b( */
+	/* 				ADC_CHANNEL_3V3_13K7_47K_4050B, &temp), */
+	/* 	      NULL); */
+	/* zassert_equal(EC_SUCCESS, */
+	/* 	      get_temp_3v3_30k9_47k_4050b( */
+	/* 				ADC_CHANNEL_3V3_30K9_47K_4050B, &temp), */
+	/* 	      NULL); */
+	/* zassert_equal(EC_SUCCESS, */
+	/* 	      get_temp_3v3_51k1_47k_4050b( */
+	/* 				ADC_CHANNEL_3V3_51K1_47K_4050B, &temp), */
+	/* 	      NULL); */
+	/* zassert_equal(EC_SUCCESS, */
+	/* 	      get_temp_3v0_22k6_47k_4050b( */
+	/* 				ADC_CHANNEL_3V0_22K6_47K_4050B, &temp), */
+	/* 	      NULL); */
 
 }
 
@@ -119,49 +126,49 @@ static int adc_error_func(const struct device *dev, unsigned int channel,
 	return -EINVAL;
 }
 
-/** Test if get temp function return expected error on ADC malfunction */
-static void test_thermistor_adc_read_error(void)
-{
-	const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE);
-	int temp;
+/* /\** Test if get temp function return expected error on ADC malfunction *\/ */
+/* static void test_thermistor_adc_read_error(void) */
+/* { */
+/* 	const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE); */
+/* 	int temp; */
 
-	zassert_not_null(adc_dev, "Cannot get ADC device");
+/* 	zassert_not_null(adc_dev, "Cannot get ADC device"); */
 
-	/* Return error on all ADC channels */
-	zassert_ok(adc_emul_value_func_set(adc_dev,
-					   ADC_CHANNEL_3V3_13K7_47K_4050B,
-					   adc_error_func, NULL),
-		   "adc_emul_value_func_set() failed");
-	zassert_ok(adc_emul_value_func_set(adc_dev,
-					   ADC_CHANNEL_3V3_30K9_47K_4050B,
-					   adc_error_func, NULL),
-		   "adc_emul_value_func_set() failed");
-	zassert_ok(adc_emul_value_func_set(adc_dev,
-					   ADC_CHANNEL_3V3_51K1_47K_4050B,
-					   adc_error_func, NULL),
-		   "adc_emul_value_func_set() failed");
-	zassert_ok(adc_emul_value_func_set(adc_dev,
-					   ADC_CHANNEL_3V0_22K6_47K_4050B,
-					   adc_error_func, NULL),
-		   "adc_emul_value_func_set() failed");
+/* 	/\* Return error on all ADC channels *\/ */
+/* 	zassert_ok(adc_emul_value_func_set(adc_dev, */
+/* 					   ADC_CHANNEL_3V3_13K7_47K_4050B, */
+/* 					   adc_error_func, NULL), */
+/* 		   "adc_emul_value_func_set() failed"); */
+/* 	zassert_ok(adc_emul_value_func_set(adc_dev, */
+/* 					   ADC_CHANNEL_3V3_30K9_47K_4050B, */
+/* 					   adc_error_func, NULL), */
+/* 		   "adc_emul_value_func_set() failed"); */
+/* 	zassert_ok(adc_emul_value_func_set(adc_dev, */
+/* 					   ADC_CHANNEL_3V3_51K1_47K_4050B, */
+/* 					   adc_error_func, NULL), */
+/* 		   "adc_emul_value_func_set() failed"); */
+/* 	zassert_ok(adc_emul_value_func_set(adc_dev, */
+/* 					   ADC_CHANNEL_3V0_22K6_47K_4050B, */
+/* 					   adc_error_func, NULL), */
+/* 		   "adc_emul_value_func_set() failed"); */
 
-	zassert_equal(EC_ERROR_UNKNOWN,
-		      get_temp_3v3_13k7_47k_4050b(
-					ADC_CHANNEL_3V3_13K7_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(EC_ERROR_UNKNOWN,
-		      get_temp_3v3_30k9_47k_4050b(
-					ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(EC_ERROR_UNKNOWN,
-		      get_temp_3v3_51k1_47k_4050b(
-					ADC_CHANNEL_3V3_51K1_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(EC_ERROR_UNKNOWN,
-		      get_temp_3v0_22k6_47k_4050b(
-					ADC_CHANNEL_3V0_22K6_47K_4050B, &temp),
-		      NULL);
-}
+/* 	zassert_equal(EC_ERROR_UNKNOWN, */
+/* 		      get_temp_3v3_13k7_47k_4050b( */
+/* 					ADC_CHANNEL_3V3_13K7_47K_4050B, &temp), */
+/* 		      NULL); */
+/* 	zassert_equal(EC_ERROR_UNKNOWN, */
+/* 		      get_temp_3v3_30k9_47k_4050b( */
+/* 					ADC_CHANNEL_3V3_30K9_47K_4050B, &temp), */
+/* 		      NULL); */
+/* 	zassert_equal(EC_ERROR_UNKNOWN, */
+/* 		      get_temp_3v3_51k1_47k_4050b( */
+/* 					ADC_CHANNEL_3V3_51K1_47K_4050B, &temp), */
+/* 		      NULL); */
+/* 	zassert_equal(EC_ERROR_UNKNOWN, */
+/* 		      get_temp_3v0_22k6_47k_4050b( */
+/* 					ADC_CHANNEL_3V0_22K6_47K_4050B, &temp), */
+/* 		      NULL); */
+/* } */
 
 /** Get resistance of thermistor for given temperature */
 static int resistance(int t)
@@ -227,209 +234,209 @@ static int adc_temperature_func(const struct device *dev, unsigned int channel,
 	return 0;
 }
 
-/** Test conversion from ADC raw value to temperature */
-static void test_thermistor_3v3_13k7_47k_4050b(void)
-{
-	const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE);
-	struct thermistor_state state = {
-		.v = 3300,
-		.r = 13700,
-	};
-	int temp_expected;
-	int temp;
+/* /\** Test conversion from ADC raw value to temperature *\/ */
+/* static void test_thermistor_3v3_13k7_47k_4050b(void) */
+/* { */
+/* 	const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE); */
+/* 	struct thermistor_state state = { */
+/* 		.v = 3300, */
+/* 		.r = 13700, */
+/* 	}; */
+/* 	int temp_expected; */
+/* 	int temp; */
 
-	zassert_not_null(adc_dev, "Cannot get ADC device");
+/* 	zassert_not_null(adc_dev, "Cannot get ADC device"); */
 
-	/* Setup ADC channel */
-	zassert_ok(adc_emul_value_func_set(adc_dev,
-					   ADC_CHANNEL_3V3_13K7_47K_4050B,
-					   adc_temperature_func, &state),
-		   "adc_emul_value_func_set() failed");
+/* 	/\* Setup ADC channel *\/ */
+/* 	zassert_ok(adc_emul_value_func_set(adc_dev, */
+/* 					   ADC_CHANNEL_3V3_13K7_47K_4050B, */
+/* 					   adc_temperature_func, &state), */
+/* 		   "adc_emul_value_func_set() failed"); */
 
-	/* Makes sure that reference voltage is correct for given thermistor */
-	zassert_ok(adc_emul_ref_voltage_set(adc_dev, ADC_REF_INTERNAL, state.v),
-		   "adc_emul_ref_voltage_set() failed");
+/* 	/\* Makes sure that reference voltage is correct for given thermistor *\/ */
+/* 	zassert_ok(adc_emul_ref_voltage_set(adc_dev, ADC_REF_INTERNAL, state.v), */
+/* 		   "adc_emul_ref_voltage_set() failed"); */
 
-	/* Test whole supported range from 0*C to 100*C (273*K to 373*K) */
-	for (temp_expected = 273; temp_expected <= 373; temp_expected++) {
-		state.temp_expected = temp_expected;
-		zassert_equal(EC_SUCCESS,
-			      get_temp_3v3_13k7_47k_4050b(
-					ADC_CHANNEL_3V3_13K7_47K_4050B, &temp),
-			      NULL);
-		zassert_within(temp_expected, temp, TEMP_EPS,
-			       "Expected %d*K, got %d*K", temp_expected, temp);
-	}
+/* 	/\* Test whole supported range from 0*C to 100*C (273*K to 373*K) *\/ */
+/* 	for (temp_expected = 273; temp_expected <= 373; temp_expected++) { */
+/* 		state.temp_expected = temp_expected; */
+/* 		zassert_equal(EC_SUCCESS, */
+/* 			      get_temp_3v3_13k7_47k_4050b( */
+/* 					ADC_CHANNEL_3V3_13K7_47K_4050B, &temp), */
+/* 			      NULL); */
+/* 		zassert_within(temp_expected, temp, TEMP_EPS, */
+/* 			       "Expected %d*K, got %d*K", temp_expected, temp); */
+/* 	} */
 
-	/* Temperatures below 0*C should be reported as 0*C */
-	state.temp_expected = -15 + 273;
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_13k7_47k_4050b(
-				ADC_CHANNEL_3V3_13K7_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(273, temp, "Expected %d*K, got %d*K", 273, temp);
+/* 	/\* Temperatures below 0*C should be reported as 0*C *\/ */
+/* 	state.temp_expected = -15 + 273; */
+/* 	zassert_equal(EC_SUCCESS, */
+/* 		      get_temp_3v3_13k7_47k_4050b( */
+/* 				ADC_CHANNEL_3V3_13K7_47K_4050B, &temp), */
+/* 		      NULL); */
+/* 	zassert_equal(273, temp, "Expected %d*K, got %d*K", 273, temp); */
 
-	/* Temperatures above 100*C should be reported as 100*C */
-	state.temp_expected = 115 + 273;
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_13k7_47k_4050b(
-				ADC_CHANNEL_3V3_13K7_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(373, temp, "Expected %d*K, got %d*K", 373, temp);
-}
+/* 	/\* Temperatures above 100*C should be reported as 100*C *\/ */
+/* 	state.temp_expected = 115 + 273; */
+/* 	zassert_equal(EC_SUCCESS, */
+/* 		      get_temp_3v3_13k7_47k_4050b( */
+/* 				ADC_CHANNEL_3V3_13K7_47K_4050B, &temp), */
+/* 		      NULL); */
+/* 	zassert_equal(373, temp, "Expected %d*K, got %d*K", 373, temp); */
+/* } */
 
-/** Test conversion from ADC raw value to temperature */
-static void test_thermistor_3v3_30k9_47k_4050b(void)
-{
-	const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE);
-	struct thermistor_state state = {
-		.v = 3300,
-		.r = 30900,
-	};
-	int temp_expected;
-	int temp;
+/* /\** Test conversion from ADC raw value to temperature *\/ */
+/* static void test_thermistor_3v3_30k9_47k_4050b(void) */
+/* { */
+/* 	const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE); */
+/* 	struct thermistor_state state = { */
+/* 		.v = 3300, */
+/* 		.r = 30900, */
+/* 	}; */
+/* 	int temp_expected; */
+/* 	int temp; */
 
-	zassert_not_null(adc_dev, "Cannot get ADC device");
+/* 	zassert_not_null(adc_dev, "Cannot get ADC device"); */
 
-	/* Setup ADC channel */
-	zassert_ok(adc_emul_value_func_set(adc_dev,
-					   ADC_CHANNEL_3V3_30K9_47K_4050B,
-					   adc_temperature_func, &state),
-		   "adc_emul_value_func_set() failed");
+/* 	/\* Setup ADC channel *\/ */
+/* 	zassert_ok(adc_emul_value_func_set(adc_dev, */
+/* 					   ADC_CHANNEL_3V3_30K9_47K_4050B, */
+/* 					   adc_temperature_func, &state), */
+/* 		   "adc_emul_value_func_set() failed"); */
 
-	/* Makes sure that reference voltage is correct for given thermistor */
-	zassert_ok(adc_emul_ref_voltage_set(adc_dev, ADC_REF_INTERNAL, state.v),
-		   "adc_emul_ref_voltage_set() failed");
+/* 	/\* Makes sure that reference voltage is correct for given thermistor *\/ */
+/* 	zassert_ok(adc_emul_ref_voltage_set(adc_dev, ADC_REF_INTERNAL, state.v), */
+/* 		   "adc_emul_ref_voltage_set() failed"); */
 
-	/* Test whole supported range from 0*C to 100*C (273*K to 373*K) */
-	for (temp_expected = 273; temp_expected <= 373; temp_expected++) {
-		state.temp_expected = temp_expected;
-		zassert_equal(EC_SUCCESS,
-			      get_temp_3v3_30k9_47k_4050b(
-					ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
-			      NULL);
-		zassert_within(temp_expected, temp, TEMP_EPS,
-			       "Expected %d*K, got %d*K", temp_expected, temp);
-	}
+/* 	/\* Test whole supported range from 0*C to 100*C (273*K to 373*K) *\/ */
+/* 	for (temp_expected = 273; temp_expected <= 373; temp_expected++) { */
+/* 		state.temp_expected = temp_expected; */
+/* 		zassert_equal(EC_SUCCESS, */
+/* 			      get_temp_3v3_30k9_47k_4050b( */
+/* 					ADC_CHANNEL_3V3_30K9_47K_4050B, &temp), */
+/* 			      NULL); */
+/* 		zassert_within(temp_expected, temp, TEMP_EPS, */
+/* 			       "Expected %d*K, got %d*K", temp_expected, temp); */
+/* 	} */
 
-	/* Temperatures below 0*C should be reported as 0*C */
-	state.temp_expected = -15 + 273;
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_30k9_47k_4050b(
-				ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(273, temp, "Expected %d*K, got %d*K", 273, temp);
+/* 	/\* Temperatures below 0*C should be reported as 0*C *\/ */
+/* 	state.temp_expected = -15 + 273; */
+/* 	zassert_equal(EC_SUCCESS, */
+/* 		      get_temp_3v3_30k9_47k_4050b( */
+/* 				ADC_CHANNEL_3V3_30K9_47K_4050B, &temp), */
+/* 		      NULL); */
+/* 	zassert_equal(273, temp, "Expected %d*K, got %d*K", 273, temp); */
 
-	/* Temperatures above 100*C should be reported as 100*C */
-	state.temp_expected = 115 + 273;
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_30k9_47k_4050b(
-				ADC_CHANNEL_3V3_30K9_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(373, temp, "Expected %d*K, got %d*K", 373, temp);
-}
+/* 	/\* Temperatures above 100*C should be reported as 100*C *\/ */
+/* 	state.temp_expected = 115 + 273; */
+/* 	zassert_equal(EC_SUCCESS, */
+/* 		      get_temp_3v3_30k9_47k_4050b( */
+/* 				ADC_CHANNEL_3V3_30K9_47K_4050B, &temp), */
+/* 		      NULL); */
+/* 	zassert_equal(373, temp, "Expected %d*K, got %d*K", 373, temp); */
+/* } */
 
-/** Test conversion from ADC raw value to temperature */
-static void test_thermistor_3v3_51k1_47k_4050b(void)
-{
-	const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE);
-	struct thermistor_state state = {
-		.v = 3300,
-		.r = 51100,
-	};
-	int temp_expected;
-	int temp;
+/* /\** Test conversion from ADC raw value to temperature *\/ */
+/* static void test_thermistor_3v3_51k1_47k_4050b(void) */
+/* { */
+/* 	const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE); */
+/* 	struct thermistor_state state = { */
+/* 		.v = 3300, */
+/* 		.r = 51100, */
+/* 	}; */
+/* 	int temp_expected; */
+/* 	int temp; */
 
-	zassert_not_null(adc_dev, "Cannot get ADC device");
+/* 	zassert_not_null(adc_dev, "Cannot get ADC device"); */
 
-	/* Setup ADC channel */
-	zassert_ok(adc_emul_value_func_set(adc_dev,
-					   ADC_CHANNEL_3V3_51K1_47K_4050B,
-					   adc_temperature_func, &state),
-		   "adc_emul_value_func_set() failed");
+/* 	/\* Setup ADC channel *\/ */
+/* 	zassert_ok(adc_emul_value_func_set(adc_dev, */
+/* 					   ADC_CHANNEL_3V3_51K1_47K_4050B, */
+/* 					   adc_temperature_func, &state), */
+/* 		   "adc_emul_value_func_set() failed"); */
 
-	/* Makes sure that reference voltage is correct for given thermistor */
-	zassert_ok(adc_emul_ref_voltage_set(adc_dev, ADC_REF_INTERNAL, state.v),
-		   "adc_emul_ref_voltage_set() failed");
+/* 	/\* Makes sure that reference voltage is correct for given thermistor *\/ */
+/* 	zassert_ok(adc_emul_ref_voltage_set(adc_dev, ADC_REF_INTERNAL, state.v), */
+/* 		   "adc_emul_ref_voltage_set() failed"); */
 
-	/* Test whole supported range from 0*C to 100*C (273*K to 373*K) */
-	for (temp_expected = 273; temp_expected <= 373; temp_expected++) {
-		state.temp_expected = temp_expected;
-		zassert_equal(EC_SUCCESS,
-			      get_temp_3v3_51k1_47k_4050b(
-					ADC_CHANNEL_3V3_51K1_47K_4050B, &temp),
-			      NULL);
-		zassert_within(temp_expected, temp, TEMP_EPS,
-			       "Expected %d*K, got %d*K", temp_expected, temp);
-	}
+/* 	/\* Test whole supported range from 0*C to 100*C (273*K to 373*K) *\/ */
+/* 	for (temp_expected = 273; temp_expected <= 373; temp_expected++) { */
+/* 		state.temp_expected = temp_expected; */
+/* 		zassert_equal(EC_SUCCESS, */
+/* 			      get_temp_3v3_51k1_47k_4050b( */
+/* 					ADC_CHANNEL_3V3_51K1_47K_4050B, &temp), */
+/* 			      NULL); */
+/* 		zassert_within(temp_expected, temp, TEMP_EPS, */
+/* 			       "Expected %d*K, got %d*K", temp_expected, temp); */
+/* 	} */
 
-	/* Temperatures below 0*C should be reported as 0*C */
-	state.temp_expected = -15 + 273;
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_51k1_47k_4050b(
-				ADC_CHANNEL_3V3_51K1_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(273, temp, "Expected %d*K, got %d*K", 273, temp);
+/* 	/\* Temperatures below 0*C should be reported as 0*C *\/ */
+/* 	state.temp_expected = -15 + 273; */
+/* 	zassert_equal(EC_SUCCESS, */
+/* 		      get_temp_3v3_51k1_47k_4050b( */
+/* 				ADC_CHANNEL_3V3_51K1_47K_4050B, &temp), */
+/* 		      NULL); */
+/* 	zassert_equal(273, temp, "Expected %d*K, got %d*K", 273, temp); */
 
-	/* Temperatures above 100*C should be reported as 100*C */
-	state.temp_expected = 115 + 273;
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v3_51k1_47k_4050b(
-				ADC_CHANNEL_3V3_51K1_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(373, temp, "Expected %d*K, got %d*K", 373, temp);
-}
+/* 	/\* Temperatures above 100*C should be reported as 100*C *\/ */
+/* 	state.temp_expected = 115 + 273; */
+/* 	zassert_equal(EC_SUCCESS, */
+/* 		      get_temp_3v3_51k1_47k_4050b( */
+/* 				ADC_CHANNEL_3V3_51K1_47K_4050B, &temp), */
+/* 		      NULL); */
+/* 	zassert_equal(373, temp, "Expected %d*K, got %d*K", 373, temp); */
+/* } */
 
-/** Test conversion from ADC raw value to temperature */
-static void test_thermistor_3v0_22k6_47k_4050b(void)
-{
-	const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE);
-	struct thermistor_state state = {
-		.v = 3000,
-		.r = 22600,
-	};
-	int temp_expected;
-	int temp;
+/* /\** Test conversion from ADC raw value to temperature *\/ */
+/* static void test_thermistor_3v0_22k6_47k_4050b(void) */
+/* { */
+/* 	const struct device *adc_dev = DEVICE_DT_GET(ADC_DEVICE_NODE); */
+/* 	struct thermistor_state state = { */
+/* 		.v = 3000, */
+/* 		.r = 22600, */
+/* 	}; */
+/* 	int temp_expected; */
+/* 	int temp; */
 
-	zassert_not_null(adc_dev, "Cannot get ADC device");
+/* 	zassert_not_null(adc_dev, "Cannot get ADC device"); */
 
-	/* Setup ADC channel */
-	zassert_ok(adc_emul_value_func_set(adc_dev,
-					   ADC_CHANNEL_3V0_22K6_47K_4050B,
-					   adc_temperature_func, &state),
-		   "adc_emul_value_func_set() failed");
+/* 	/\* Setup ADC channel *\/ */
+/* 	zassert_ok(adc_emul_value_func_set(adc_dev, */
+/* 					   ADC_CHANNEL_3V0_22K6_47K_4050B, */
+/* 					   adc_temperature_func, &state), */
+/* 		   "adc_emul_value_func_set() failed"); */
 
-	/* Makes sure that reference voltage is correct for given thermistor */
-	zassert_ok(adc_emul_ref_voltage_set(adc_dev, ADC_REF_INTERNAL, state.v),
-		   "adc_emul_ref_voltage_set() failed");
+/* 	/\* Makes sure that reference voltage is correct for given thermistor *\/ */
+/* 	zassert_ok(adc_emul_ref_voltage_set(adc_dev, ADC_REF_INTERNAL, state.v), */
+/* 		   "adc_emul_ref_voltage_set() failed"); */
 
-	/* Test whole supported range from 0*C to 100*C (273*K to 373*K) */
-	for (temp_expected = 273; temp_expected <= 373; temp_expected++) {
-		state.temp_expected = temp_expected;
-		zassert_equal(EC_SUCCESS,
-			      get_temp_3v0_22k6_47k_4050b(
-					ADC_CHANNEL_3V0_22K6_47K_4050B, &temp),
-			      NULL);
-		zassert_within(temp_expected, temp, TEMP_EPS,
-			       "Expected %d*K, got %d*K", temp_expected, temp);
-	}
+/* 	/\* Test whole supported range from 0*C to 100*C (273*K to 373*K) *\/ */
+/* 	for (temp_expected = 273; temp_expected <= 373; temp_expected++) { */
+/* 		state.temp_expected = temp_expected; */
+/* 		zassert_equal(EC_SUCCESS, */
+/* 			      get_temp_3v0_22k6_47k_4050b( */
+/* 					ADC_CHANNEL_3V0_22K6_47K_4050B, &temp), */
+/* 			      NULL); */
+/* 		zassert_within(temp_expected, temp, TEMP_EPS, */
+/* 			       "Expected %d*K, got %d*K", temp_expected, temp); */
+/* 	} */
 
-	/* Temperatures below 0*C should be reported as 0*C */
-	state.temp_expected = -15 + 273;
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v0_22k6_47k_4050b(
-				ADC_CHANNEL_3V0_22K6_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(273, temp, "Expected %d*K, got %d*K", 273, temp);
+/* 	/\* Temperatures below 0*C should be reported as 0*C *\/ */
+/* 	state.temp_expected = -15 + 273; */
+/* 	zassert_equal(EC_SUCCESS, */
+/* 		      get_temp_3v0_22k6_47k_4050b( */
+/* 				ADC_CHANNEL_3V0_22K6_47K_4050B, &temp), */
+/* 		      NULL); */
+/* 	zassert_equal(273, temp, "Expected %d*K, got %d*K", 273, temp); */
 
-	/* Temperatures above 100*C should be reported as 100*C */
-	state.temp_expected = 115 + 273;
-	zassert_equal(EC_SUCCESS,
-		      get_temp_3v0_22k6_47k_4050b(
-				ADC_CHANNEL_3V0_22K6_47K_4050B, &temp),
-		      NULL);
-	zassert_equal(373, temp, "Expected %d*K, got %d*K", 373, temp);
-}
+/* 	/\* Temperatures above 100*C should be reported as 100*C *\/ */
+/* 	state.temp_expected = 115 + 273; */
+/* 	zassert_equal(EC_SUCCESS, */
+/* 		      get_temp_3v0_22k6_47k_4050b( */
+/* 				ADC_CHANNEL_3V0_22K6_47K_4050B, &temp), */
+/* 		      NULL); */
+/* 	zassert_equal(373, temp, "Expected %d*K, got %d*K", 373, temp); */
+/* } */
 
 void test_suite_thermistor(void)
 {
@@ -440,17 +447,21 @@ void test_suite_thermistor(void)
 	/* Before tests make sure that power pin is set. */
 	zassert_ok(gpio_emul_input_set(dev, GPIO_PG_EC_DSW_PWROK_PORT, 1),
 		   NULL);
-
+	
 	ztest_test_suite(thermistor,
-			 ztest_user_unit_test(test_thermistor_power_pin),
-			 ztest_user_unit_test(test_thermistor_adc_read_error),
-			 ztest_user_unit_test(
-					test_thermistor_3v3_13k7_47k_4050b),
-			 ztest_user_unit_test(
-					test_thermistor_3v3_30k9_47k_4050b),
-			 ztest_user_unit_test(
-					test_thermistor_3v3_51k1_47k_4050b),
-			 ztest_user_unit_test(
-					test_thermistor_3v0_22k6_47k_4050b));
-	ztest_run_test_suite(thermistor);
+			 ztest_user_unit_test(test_thermistor_power_pin));
+
+
+	/* ztest_test_suite(thermistor, */
+	/* 		 ztest_user_unit_test(test_thermistor_power_pin), */
+	/* 		 ztest_user_unit_test(test_thermistor_adc_read_error), */
+	/* 		 ztest_user_unit_test( */
+	/* 				test_thermistor_3v3_13k7_47k_4050b), */
+	/* 		 ztest_user_unit_test( */
+	/* 				test_thermistor_3v3_30k9_47k_4050b), */
+	/* 		 ztest_user_unit_test( */
+	/* 				test_thermistor_3v3_51k1_47k_4050b), */
+	/* 		 ztest_user_unit_test( */
+	/* 				test_thermistor_3v0_22k6_47k_4050b)); */
+	ztest_run_test_suite(thermistor); 
 }
