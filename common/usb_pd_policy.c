@@ -26,6 +26,7 @@
 #include "usb_common.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_tcpm.h"
 #include "usbc_ppc.h"
 
 #ifdef CONFIG_COMMON_RUNTIME
@@ -246,7 +247,7 @@ static inline bool is_limit_tbt_cable_speed(int port)
 	return !!(cable[port].flags & CABLE_FLAGS_TBT_COMPAT_LIMIT_SPEED);
 }
 
-static bool is_intel_svid(int port, enum tcpm_transmit_type type)
+static bool is_intel_svid(int port, enum tcpm_sop_type type)
 {
 	int i;
 
@@ -368,13 +369,13 @@ static int dfp_discover_svids(uint32_t *payload)
 	return 1;
 }
 
-struct pd_discovery *pd_get_am_discovery(int port, enum tcpm_transmit_type type)
+struct pd_discovery *pd_get_am_discovery(int port, enum tcpm_sop_type type)
 {
 	return &discovery[port][type];
 }
 
 struct partner_active_modes *
-pd_get_partner_active_modes(int port, enum tcpm_transmit_type type)
+pd_get_partner_active_modes(int port, enum tcpm_sop_type type)
 {
 	assert(type < AMODE_TYPE_COUNT);
 	return &partner_amodes[port][type];
@@ -424,7 +425,7 @@ static bool is_usb4_vdo(int port, int cnt, uint32_t *payload)
 
 static int process_am_discover_ident_sop(int port, int cnt, uint32_t head,
 					 uint32_t *payload,
-					 enum tcpm_transmit_type *rtype)
+					 enum tcpm_sop_type *rtype)
 {
 	pd_dfp_discovery_init(port);
 	dfp_consume_identity(port, TCPC_TX_SOP, cnt, payload);
@@ -490,8 +491,8 @@ static int process_am_discover_ident_sop_prime(int port, int cnt, uint32_t head,
 }
 
 static int process_am_discover_svids(int port, int cnt, uint32_t *payload,
-				     enum tcpm_transmit_type sop,
-				     enum tcpm_transmit_type *rtype)
+				     enum tcpm_sop_type sop,
+				     enum tcpm_sop_type *rtype)
 {
 	/*
 	 * The pd_discovery structure stores SOP and SOP' discovery results
@@ -540,9 +541,9 @@ static int process_am_discover_svids(int port, int cnt, uint32_t *payload,
 }
 
 static int process_tbt_compat_discover_modes(int port,
-					     enum tcpm_transmit_type sop,
+					     enum tcpm_sop_type sop,
 					     uint32_t *payload,
-					     enum tcpm_transmit_type *rtype)
+					     enum tcpm_sop_type *rtype)
 {
 	int rsize;
 
@@ -604,9 +605,9 @@ static int process_tbt_compat_discover_modes(int port,
 	return rsize;
 }
 
-static int obj_cnt_enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
+static int obj_cnt_enter_tbt_compat_mode(int port, enum tcpm_sop_type sop,
 					 uint32_t *payload,
-					 enum tcpm_transmit_type *rtype)
+					 enum tcpm_sop_type *rtype)
 {
 	struct pd_discovery *disc = &discovery[port][TCPC_TX_SOP_PRIME];
 
@@ -630,7 +631,7 @@ static int obj_cnt_enter_tbt_compat_mode(int port, enum tcpm_transmit_type sop,
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
 int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
-	    uint32_t head, enum tcpm_transmit_type *rtype)
+	    uint32_t head, enum tcpm_sop_type *rtype)
 {
 	int cmd = PD_VDO_CMD(payload[0]);
 	int cmd_type = PD_VDO_CMDT(payload[0]);
@@ -639,7 +640,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 	int rsize = 1; /* VDM header at a minimum */
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
-	enum tcpm_transmit_type sop = PD_HEADER_GET_SOP(head);
+	enum tcpm_sop_type sop = PD_HEADER_GET_SOP(head);
 #endif
 
 	/* Transmit SOP messages by default */
@@ -843,7 +844,7 @@ int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
 #else
 
 int pd_svdm(int port, int cnt, uint32_t *payload, uint32_t **rpayload,
-	    uint32_t head, enum tcpm_transmit_type *rtype)
+	    uint32_t head, enum tcpm_sop_type *rtype)
 {
 	return 0;
 }
@@ -917,9 +918,9 @@ int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload)
 		pd_log_event(PD_EVENT_ACC_RW_ERASE, 0, 0, NULL);
 		flash_offset =
 			CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF;
-		flash_physical_erase(CONFIG_EC_WRITABLE_STORAGE_OFF +
-					     CONFIG_RW_STORAGE_OFF,
-				     CONFIG_RW_SIZE);
+		crec_flash_physical_erase(CONFIG_EC_WRITABLE_STORAGE_OFF +
+					  CONFIG_RW_STORAGE_OFF,
+					  CONFIG_RW_SIZE);
 		rw_flash_changed = 1;
 		break;
 	case VDO_CMD_FLASH_WRITE:
@@ -928,7 +929,7 @@ int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload)
 		    (flash_offset <
 		     CONFIG_EC_WRITABLE_STORAGE_OFF + CONFIG_RW_STORAGE_OFF))
 			break;
-		flash_physical_write(flash_offset, 4 * (cnt - 1),
+		crec_flash_physical_write(flash_offset, 4 * (cnt - 1),
 				     (const char *)(payload + 1));
 		flash_offset += 4 * (cnt - 1);
 		rw_flash_changed = 1;
@@ -941,7 +942,7 @@ int pd_custom_flash_vdm(int port, int cnt, uint32_t *payload)
 			/* zeroes the area containing the RSA signature */
 			for (offset = FW_RW_END - RSANUMBYTES;
 			     offset < FW_RW_END; offset += 4)
-				flash_physical_write(offset, 4,
+				crec_flash_physical_write(offset, 4,
 						     (const char *)&zero);
 		}
 		break;

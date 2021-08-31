@@ -42,6 +42,7 @@ void before_test(void)
 	mock_dpm_reset();
 	mock_dp_alt_mode_reset();
 	mock_prl_reset();
+	pe_clear_port_data(PORT0);
 
 	/* Restart the PD task and let it settle */
 	task_set_event(TASK_ID_PD_C0, TASK_EVENT_RESET_DONE);
@@ -53,7 +54,7 @@ void before_test(void)
  * TODO: Add support for multiple data objects (when a test is added here that
  * needs it).
  */
-test_static void rx_message(enum pd_msg_type sop,
+test_static void rx_message(enum tcpm_sop_type sop,
 			    enum pd_ctrl_msg_type ctrl_msg,
 			    enum pd_data_msg_type data_msg,
 			    enum pd_power_role prole,
@@ -93,7 +94,7 @@ test_static int finish_src_discovery(int startup_cable_probes)
 		EC_SUCCESS, "%d");
 	mock_prl_message_sent(PORT0);
 	task_wait_event(10 * MSEC);
-	rx_message(PD_MSG_SOP, PD_CTRL_NOT_SUPPORTED, 0,
+	rx_message(TCPC_TX_SOP, PD_CTRL_NOT_SUPPORTED, 0,
 		   PD_ROLE_SINK, PD_ROLE_UFP, 0);
 
 	/*
@@ -114,7 +115,7 @@ test_static int finish_src_discovery(int startup_cable_probes)
 		EC_SUCCESS, "%d");
 	mock_prl_message_sent(PORT0);
 	task_wait_event(10 * MSEC);
-	rx_message(PD_MSG_SOP, PD_CTRL_NOT_SUPPORTED, 0,
+	rx_message(TCPC_TX_SOP, PD_CTRL_NOT_SUPPORTED, 0,
 		   PD_ROLE_SINK, PD_ROLE_UFP, 0);
 
 	return EC_SUCCESS;
@@ -169,7 +170,7 @@ test_static int test_send_caps_error_before_connected(void)
 	 */
 
 	/* REQUEST 5V, expect ACCEPT, PS_RDY. */
-	rx_message(PD_MSG_SOP, 0, PD_DATA_REQUEST,
+	rx_message(TCPC_TX_SOP, 0, PD_DATA_REQUEST,
 		   PD_ROLE_SINK, PD_ROLE_UFP, RDO_FIXED(1, 500, 500, 0));
 	TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPC_TX_SOP,
 					 PD_CTRL_ACCEPT, 0, 10 * MSEC),
@@ -204,7 +205,7 @@ test_static int test_send_caps_error_when_connected(void)
 	task_wait_event(10 * MSEC);
 
 	/* REQUEST 5V, expect ACCEPT, PS_RDY. */
-	rx_message(PD_MSG_SOP, 0, PD_DATA_REQUEST,
+	rx_message(TCPC_TX_SOP, 0, PD_DATA_REQUEST,
 		   PD_ROLE_SINK, PD_ROLE_UFP, RDO_FIXED(1, 500, 500, 0));
 	TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPC_TX_SOP,
 					 PD_CTRL_ACCEPT, 0, 10 * MSEC),
@@ -223,7 +224,7 @@ test_static int test_send_caps_error_when_connected(void)
 	 * Now connected. Send GET_SOURCE_CAP, to check how error sending
 	 * SOURCE_CAP is handled.
 	 */
-	rx_message(PD_MSG_SOP, PD_CTRL_GET_SOURCE_CAP, 0,
+	rx_message(TCPC_TX_SOP, PD_CTRL_GET_SOURCE_CAP, 0,
 		   PD_ROLE_SINK, PD_ROLE_UFP, 0);
 	TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPC_TX_SOP,
 					 0, PD_DATA_SOURCE_CAP, 10 * MSEC),
@@ -249,12 +250,74 @@ test_static int test_send_caps_error_when_connected(void)
 	return EC_SUCCESS;
 }
 
+/*
+ * Verify that when PR swap is interrupted during power transitiong, hard
+ * reset is sent
+ */
+test_static int test_interrupting_pr_swap(void)
+{
+	/* Enable PE as source, expect SOURCE_CAP. */
+	mock_tc_port[PORT0].power_role = PD_ROLE_SOURCE;
+	mock_tc_port[PORT0].pd_enable = 1;
+	mock_tc_port[PORT0].vconn_src = true;
+	TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPC_TX_SOP,
+					 0, PD_DATA_SOURCE_CAP, 10 * MSEC),
+		EC_SUCCESS, "%d");
+	mock_prl_message_sent(PORT0);
+	task_wait_event(10 * MSEC);
+
+	/* REQUEST 5V, expect ACCEPT, PS_RDY. */
+	rx_message(TCPC_TX_SOP, 0, PD_DATA_REQUEST,
+		   PD_ROLE_SINK, PD_ROLE_UFP, RDO_FIXED(1, 500, 500, 0));
+	TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPC_TX_SOP,
+					 PD_CTRL_ACCEPT, 0, 10 * MSEC),
+		EC_SUCCESS, "%d");
+	mock_prl_message_sent(PORT0);
+	TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPC_TX_SOP,
+					 PD_CTRL_PS_RDY, 0, 35 * MSEC),
+		EC_SUCCESS, "%d");
+	mock_prl_message_sent(PORT0);
+
+	TEST_EQ(finish_src_discovery(0), EC_SUCCESS, "%d");
+
+	task_wait_event(5 * SECOND);
+
+	/*
+	 * Now connected.  Initiate a PR swap and then interrupt it after the
+	 * Accept, when power is transitioning to off.
+	 */
+	rx_message(TCPC_TX_SOP, PD_CTRL_PR_SWAP, 0,
+		   PD_ROLE_SINK, PD_ROLE_UFP, 0);
+
+	TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPC_TX_SOP,
+					 PD_CTRL_ACCEPT, 0, 10 * MSEC),
+		EC_SUCCESS, "%d");
+	mock_prl_message_sent(PORT0);
+
+	task_wait_event(5 * SECOND);
+
+	/* Interrupt the non-interruptible AMS */
+	rx_message(TCPC_TX_SOP, PD_CTRL_PR_SWAP, 0,
+		   PD_ROLE_SINK, PD_ROLE_UFP, 0);
+
+	/*
+	 * Expect a hard reset since power was transitioning during this
+	 * interruption
+	 */
+	TEST_EQ(mock_prl_wait_for_tx_msg(PORT0, TCPC_TX_HARD_RESET,
+					 0, 0, 10 * MSEC),
+		EC_SUCCESS, "%d");
+
+	return EC_SUCCESS;
+}
+
 void run_test(int argc, char **argv)
 {
 	test_reset();
 
 	RUN_TEST(test_send_caps_error_before_connected);
 	RUN_TEST(test_send_caps_error_when_connected);
+	RUN_TEST(test_interrupting_pr_swap);
 
 	/* Do basic state machine validity checks last. */
 	RUN_TEST(test_pe_no_parent_cycles);
