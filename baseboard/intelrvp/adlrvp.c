@@ -17,6 +17,7 @@
 #include "system.h"
 #include "task.h"
 #include "usbc_ppc.h"
+#include "usb_tc_sm.h"
 #include "util.h"
 
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
@@ -425,4 +426,15 @@ __override bool board_is_tbt_usb4_port(int port)
 	}
 
 	return tbt_usb4;
+}
+
+__overridable bool port_discovery_vconn_swap_policy(int port,
+		bool vconn_swap_flag)
+{
+	if (IS_ENABLED(CONFIG_USBC_VCONN) && vconn_swap_flag &&
+		!tc_is_vconn_src(port) && pd_check_vconn_swap(port))
+		return true;
+
+	/* Do not perform a VCONN swap */
+	return false;
 }

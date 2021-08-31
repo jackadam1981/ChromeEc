@@ -101,6 +101,9 @@
 #define CONFIG_USBC_VCONN
 #define CONFIG_USBC_VCONN_SWAP
 
+#undef CONFIG_USBC_VCONN_SWAP_DELAY_US
+#define CONFIG_USBC_VCONN_SWAP_DELAY_US	8000
+
 /* Enabling Thunderbolt-compatible mode */
 #define CONFIG_USB_PD_TBT_COMPAT_MODE
 
