@@ -47,6 +47,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		.drv = &nct38xx_tcpm_drv,
 		.flags = TCPC_FLAGS_TCPCI_REV2_0,
 	},
+#if SUPPORT_DB_TCPC
 	[USBC_PORT_C1] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
@@ -57,6 +58,7 @@ const struct tcpc_config_t tcpc_config[] = {
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			 TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V,
 	},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(tcpc_config) == USBC_PORT_COUNT);
 BUILD_ASSERT(CONFIG_USB_PD_PORT_MAX_COUNT == USBC_PORT_COUNT);
@@ -68,12 +70,14 @@ struct ppc_config_t ppc_chips[] = {
 		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
 		.drv = &syv682x_drv,
 	},
+#if SUPPORT_DB_TCPC
 	[USBC_PORT_C1] = {
 		/* Compatible with Silicon Mitus SM536A0 */
 		.i2c_port = I2C_PORT_USB_C1_PPC,
 		.i2c_addr_flags = NX20P3483_ADDR2_FLAGS,
 		.drv = &nx20p348x_drv,
 	},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(ppc_chips) == USBC_PORT_COUNT);
 
@@ -86,11 +90,13 @@ unsigned int ppc_cnt = ARRAY_SIZE(ppc_chips);
  * to the virtual_usb_mux_driver so the AP gets notified of mux changes
  * and updates the TCSS configuration on state changes.
  */
+#if SUPPORT_DB_TCPC
 static const struct usb_mux usbc1_usb3_db_retimer = {
 	.usb_port = USBC_PORT_C1,
 	.driver = &tcpci_tcpm_usb_mux_driver,
 	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 };
+#endif
 
 const struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
@@ -98,6 +104,7 @@ const struct usb_mux usb_muxes[] = {
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 	},
+#if SUPPORT_DB_TCPC
 	[USBC_PORT_C1] = {
 		/* PS8815 DB */
 		.usb_port = USBC_PORT_C1,
@@ -105,6 +112,7 @@ const struct usb_mux usb_muxes[] = {
 		.hpd_update = &virtual_hpd_update,
 		.next_mux = &usbc1_usb3_db_retimer,
 	},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
 
@@ -114,10 +122,12 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 		.i2c_port = I2C_PORT_USB_C0_BC12,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
 	},
+#if SUPPORT_DB_TCPC
 	[USBC_PORT_C1] = {
 		.i2c_port = I2C_PORT_USB_C1_BC12,
 		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
 	},
+#endif
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
 
@@ -158,8 +168,8 @@ void board_reset_pd_mcu(void)
 	 */
 
 	gpio_set_level(GPIO_USB_C0_TCPC_RST_ODL, 0);
-	gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 0);
-
+	if (ec_cfg_usb_db_type() != DB_USB_ABSENT)
+		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 0);
 	/*
 	 * delay for power-on to reset-off and min. assertion time
 	 */
@@ -167,14 +177,13 @@ void board_reset_pd_mcu(void)
 	msleep(20);
 
 	gpio_set_level(GPIO_USB_C0_TCPC_RST_ODL, 1);
-	gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 1);
+	if (ec_cfg_usb_db_type() != DB_USB_ABSENT)
+		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 1);
 
 	/* wait for chips to come up */
 
 	msleep(50);
 }
-
-
 
 static void board_tcpc_init(void)
 {
@@ -193,15 +202,19 @@ static void board_tcpc_init(void)
 
 	/* Enable PPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_PPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
+	if (ec_cfg_usb_db_type() != DB_USB_ABSENT)
+		gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
 
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_TCPC_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
+	if (ec_cfg_usb_db_type() != DB_USB_ABSENT)
+		gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
 
 	/* Enable BC1.2 interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
-	gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
+	if (ec_cfg_usb_db_type() != DB_USB_ABSENT)
+		gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
+
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
 
@@ -210,11 +223,11 @@ uint16_t tcpc_get_alert_status(void)
 	uint16_t status = 0;
 
 	if (gpio_get_level(GPIO_USB_C0_TCPC_INT_ODL) == 0)
-		status |= PD_STATUS_TCPC_ALERT_0 | PD_STATUS_TCPC_ALERT_2;
-
+		status |= PD_STATUS_TCPC_ALERT_0;
+#if SUPPORT_DB_TCPC
 	if (gpio_get_level(GPIO_USB_C1_TCPC_INT_ODL) == 0)
 		status |= PD_STATUS_TCPC_ALERT_1;
-
+#endif
 	return status;
 }
 
@@ -222,8 +235,10 @@ int ppc_get_alert_status(int port)
 {
 	if (port == USBC_PORT_C0)
 		return gpio_get_level(GPIO_USB_C0_PPC_INT_ODL) == 0;
+#if SUPPORT_DB_TCPC
 	else if (port == USBC_PORT_C1)
 		return gpio_get_level(GPIO_USB_C1_PPC_INT_ODL) == 0;
+#endif
 	return 0;
 }
 
@@ -233,9 +248,11 @@ void tcpc_alert_event(enum gpio_signal signal)
 	case GPIO_USB_C0_TCPC_INT_ODL:
 		schedule_deferred_pd_interrupt(USBC_PORT_C0);
 		break;
+#if SUPPORT_DB_TCPC
 	case GPIO_USB_C1_TCPC_INT_ODL:
 		schedule_deferred_pd_interrupt(USBC_PORT_C1);
 		break;
+#endif
 	default:
 		break;
 	}
@@ -247,9 +264,11 @@ void bc12_interrupt(enum gpio_signal signal)
 	case GPIO_USB_C0_BC12_INT_ODL:
 		task_set_event(TASK_ID_USB_CHG_P0, USB_CHG_EVENT_BC12);
 		break;
+#if SUPPORT_DB_TCPC
 	case GPIO_USB_C1_BC12_INT_ODL:
 		task_set_event(TASK_ID_USB_CHG_P1, USB_CHG_EVENT_BC12);
 		break;
+#endif
 	default:
 		break;
 	}
@@ -261,10 +280,11 @@ void ppc_interrupt(enum gpio_signal signal)
 	case GPIO_USB_C0_PPC_INT_ODL:
 		syv682x_interrupt(USBC_PORT_C0);
 		break;
+#if SUPPORT_DB_TCPC
 	case GPIO_USB_C1_PPC_INT_ODL:
 		nx20p348x_interrupt(USBC_PORT_C1);
 		break;
-
+#endif
 	default:
 		break;
 	}
