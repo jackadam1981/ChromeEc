@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f9920d0_f218c4ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-31T15:58:19Z",
+      "side": 1,
+      "message": "My Herobrine board is okay. I didn\u0027t notice that the servo connector had come disconnected.",
+      "parentUuid": "a05e2610_29827b18",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da27362c_71a1764d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -61,6 +85,30 @@
       "writtenOn": "2021-08-27T22:48:57Z",
       "side": 1,
       "message": "Could you test if the alarm can wake EC up from the PSL hibernate mode?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19e90ef7_029d8ae4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-31T15:58:19Z",
+      "side": 1,
+      "message": "On the AP console, I set the RTC alarm for 10s. Than I execute hibernate on the EC console. But the system never wakes up.\n\nIs this the correct way to perform this test?",
+      "parentUuid": "da27362c_71a1764d",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "BTW, the GPIO01 has an external pull-up, i.e. R163. It doesn\u0027t need any internal pull-up.\n\nWhere will the GPIO_ACTIVE_LOW flag be used? The polarity of the INT_L pin is not configurable for PCF85063A. It is ACTIVE_LOW only. The PCF85063A driver just configs the EC interrupt using the flag GPIO_INT_EDGE_FALLING. It seems unnecessary too.",
       "parentUuid": "088e6c7d_a46a8d1d",
+      "range": {
+        "startLine": 109,
+        "startChar": 24,
+        "endLine": 109,
+        "endChar": 56
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4de04a37_d40fb569",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-08-31T15:58:19Z",
+      "side": 1,
+      "message": "I agree",
+      "parentUuid": "0250d557_fcef593d",
       "range": {
         "startLine": 109,
         "startChar": 24,
