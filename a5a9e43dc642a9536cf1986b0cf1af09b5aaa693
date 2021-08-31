@@ -22,6 +22,30 @@
       },
       "revId": "a5a9e43dc642a9536cf1986b0cf1af09b5aaa693",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96017d01_207753e2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-08-31T15:54:10Z",
+      "side": 1,
+      "message": "I don\u0027t know of any way to use the zephyr sdk on the CQ. I think the best we can do is that after something breaks on gitlab, we change the build env in the chroot to make it more similar, like I did with undefined vars in crrev/c/3131880",
+      "parentUuid": "e0b81144_3e84443a",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "a5a9e43dc642a9536cf1986b0cf1af09b5aaa693",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
