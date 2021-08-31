@@ -62,6 +62,30 @@
       },
       "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d87c434b_9bfe258d",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 12
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-08-31T00:00:31Z",
+      "side": 1,
+      "message": "this is converted to binary in line 51.\n\nBut I like the idea of generating a binary first and then converting it to hex.",
+      "parentUuid": "f61ea1dc_11e3ea0d",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 11
+      },
+      "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
