@@ -177,6 +177,10 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		ioex_set_level(rst_signal, 0);
 		msleep(1);
 	}
+
+	CPRINTF("%s: C%d was %s\n", __func__, me->usb_port,
+		enable ? "enabled" : "disabled");
+
 	return EC_SUCCESS;
 }
 
