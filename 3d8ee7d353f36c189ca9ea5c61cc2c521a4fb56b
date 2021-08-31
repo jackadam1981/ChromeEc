@@ -51,6 +51,23 @@
       "message": "LGTM, but someone at Intel should confirm.",
       "revId": "3d8ee7d353f36c189ca9ea5c61cc2c521a4fb56b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52aa9941_99ddaa4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-08-31T23:56:36Z",
+      "side": 1,
+      "message": "Note Ayushee is no longer at Intel.  \n\nThis looks correct - this code should be checking the PD revision to determine the correct format of the USB SuperSpeed Signalling bits [2:0].  The VDO version field is reserved in PD 2.0, and in PD 3.0 the VDO version is always 0 for the passive cable VDO.\n\n",
+      "revId": "3d8ee7d353f36c189ca9ea5c61cc2c521a4fb56b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
