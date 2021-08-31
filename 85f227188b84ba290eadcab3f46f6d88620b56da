@@ -22,6 +22,29 @@
       },
       "revId": "85f227188b84ba290eadcab3f46f6d88620b56da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12cf850_84246ef6",
+        "filename": "common/usbc/usbc_pd_policy.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-08-31T09:36:33Z",
+      "side": 1,
+      "message": "This could be board specific issue  right  or is this generic to all ?\n\nFor ADLRVP specific , i have pushed a CL -\u003e https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3132551",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "85f227188b84ba290eadcab3f46f6d88620b56da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
