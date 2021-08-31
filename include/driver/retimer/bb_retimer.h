@@ -18,7 +18,8 @@
 #define BB_RETIMER_VENDOR_ID_2          0x8087
 
 #define BB_RETIMER_REG_DEVICE_ID	1
-#define BB_RETIMER_DEVICE_ID		0x15EE
+#define BB_RETIMER_DEVICE_ID1		0x15EE
+#define BB_RETIMER_DEVICE_ID2		0x0D9C
 
 /* Connection State Register Attributes */
 #define BB_RETIMER_REG_CONNECTION_STATE		4
