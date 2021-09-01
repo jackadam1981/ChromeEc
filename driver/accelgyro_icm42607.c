@@ -1127,6 +1127,7 @@ const struct accelgyro_drv icm42607_drv = {
 	.set_scale = icm_set_scale,
 	.get_scale = icm_get_scale,
 #ifdef CONFIG_ACCEL_INTERRUPTS
+	.interrupt = icm42607_interrupt,
 	.irq_handler = icm42607_irq_handler,
 #endif
 };
