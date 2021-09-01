@@ -8,6 +8,10 @@
 #ifndef __CROS_EC_BASEBOARD_H
 #define __CROS_EC_BASEBOARD_H
 
+#undef CONFIG_WATCHDOG
+#undef PLL_CLOCK
+#define PLL_CLOCK 96000000
+
 /* Optional features */
 #define CONFIG_BATTERY_SMART
 #define CONFIG_BOARD_VERSION_GPIO
