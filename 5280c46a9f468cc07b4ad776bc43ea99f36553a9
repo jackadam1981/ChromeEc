@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cdc23af_540ea2b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-09-01T22:45:41Z",
+      "side": 1,
+      "message": "Ok I changed things around again\nNow it\u0027s \nelf -\u003e flat.prefips -\u003e elf.fips -\u003e hex/signed flat\n\nAll existing artifcats that depend on an elf file will use .elf.fips instead of .elf if CONFIG_FIPS_CHECKSUM is defined.\n\nI\u0027ll modify util/signer/bs to use ec.RW.elf.fips in a followup cl.",
+      "parentUuid": "28100beb_0b58318f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "5280c46a9f468cc07b4ad776bc43ea99f36553a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "d49dce25_bd79cffc",
