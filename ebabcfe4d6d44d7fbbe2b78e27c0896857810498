@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2996463_7ac51c45",
+        "filename": "zephyr/dts/bindings/emul/zephyr,bb-retimer.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-01T16:41:31Z",
+      "side": 1,
+      "message": "We should be prefixing our emulators with \"cros\" instead of \"zephyr\". When we eventually upstream these, this will cause a conflict.",
+      "range": {
+        "startLine": 7,
+        "startChar": 13,
+        "endLine": 7,
+        "endChar": 19
+      },
+      "revId": "ebabcfe4d6d44d7fbbe2b78e27c0896857810498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63f42f26_d43ef1e9",
+        "filename": "zephyr/dts/bindings/emul/zephyr,bb-retimer.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-01T16:41:31Z",
+      "side": 1,
+      "message": "\"bb-retimer-emul\" to make it more explicit.",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 30
+      },
+      "revId": "ebabcfe4d6d44d7fbbe2b78e27c0896857810498",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
