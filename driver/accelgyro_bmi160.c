@@ -386,7 +386,7 @@ int manage_activity(const struct motion_sensor_t *s,
 }
 
 #ifdef CONFIG_GESTURE_HOST_DETECTION
-int list_activities(const struct motion_sensor_t *s,
+static int list_activities(const struct motion_sensor_t *s,
 		    uint32_t *enabled,
 		    uint32_t *disabled)
 {
