@@ -16,6 +16,24 @@
       "message": "One nit... how would this CL affect trogdor?  It looks like baseboard/trogdor/usb_pd_policy.c has an override for these functions that are changing.  Or are those unused?",
       "revId": "9e597de562877b6e4f7256ae9eed7accf8788167",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59537849_9a8a8006",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-09-01T21:09:09Z",
+      "side": 1,
+      "message": "I think they are used. Maybe this needs to be ported to the trogdor pd policy?",
+      "parentUuid": "2beda622_7fdd7c7e",
+      "revId": "9e597de562877b6e4f7256ae9eed7accf8788167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
