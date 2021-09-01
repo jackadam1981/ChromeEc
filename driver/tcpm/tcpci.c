@@ -645,6 +645,7 @@ void tcpci_tcpc_alert(int port)
 	int status = 0;
 	int failed_attempts;
 	uint32_t pd_event = 0;
+	int retval = 0;
 
 	/* Read the Alert register from the TCPC */
 	tcpm_alert_status(port, &status);
@@ -661,11 +662,32 @@ void tcpci_tcpc_alert(int port)
 
 	/* Pull all RX messages from TCPC into EC memory */
 	failed_attempts = 0;
+<<<<<<< HEAD   (90bbf8ed4924c5996e44390195b640c79bc64125 kodama: reduce bitbang failrate)
 	while (status & TCPC_REG_ALERT_RX_STATUS) {
 		if (tcpm_enqueue_message(port))
+||||||| BASE   (a966e7f4cbaff174c92887da833f8f378e2e4291 zephyr: drivers: add BB retimer test suite)
+	while (alert & TCPC_REG_ALERT_RX_STATUS) {
+		if (tcpm_enqueue_message(port))
+=======
+	while (alert & TCPC_REG_ALERT_RX_STATUS) {
+		retval = tcpm_enqueue_message(port);
+		if (retval)
+>>>>>>> CHANGE (7b35af03ae2054071d34dc1fb7892cf7eb1f79d8 tcpm: Mitigate EC RX circular buffer overflow)
 			++failed_attempts;
 		if (tcpm_alert_status(port, &status))
 			++failed_attempts;
+
+
+		/*
+		 * EC RX FIFO is full. Deassert ALERT# line to exit interrupt
+		 * handler by discarding pending message from TCPC RX FIFO.
+		 */
+		if (retval == EC_ERROR_OVERFLOW) {
+			CPRINTS("C%d: PD RX OVF!", port);
+			tcpc_write16(port, TCPC_REG_ALERT,
+				TCPC_REG_ALERT_RX_STATUS |
+				TCPC_REG_ALERT_RX_BUF_OVF);
+		}
 
 		/* Ensure we don't loop endlessly */
 		if (failed_attempts >= MAX_ALLOW_FAILED_RX_READS) {
