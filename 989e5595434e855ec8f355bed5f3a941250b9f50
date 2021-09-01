@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a2d621e_6a9f9492",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-01T15:43:18Z",
+      "side": 1,
+      "message": "nit: It\u0027s usually useful to print \u003cstatus\u003e. (Line 451 as well)",
+      "range": {
+        "startLine": 393,
+        "startChar": 11,
+        "endLine": 393,
+        "endChar": 42
+      },
+      "revId": "989e5595434e855ec8f355bed5f3a941250b9f50",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
