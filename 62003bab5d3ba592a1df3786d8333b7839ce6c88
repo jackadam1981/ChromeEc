@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f738b423_5b5bdbab",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T05:21:27Z",
+      "side": 1,
+      "message": "I may be able to use queue_peek_units() to cover my queue reading and processing the mux entry before popping it.  Though I\u0027d need to double check whether the queue common code is multi-task safe or still needs a lock",
+      "parentUuid": "b01bbc46_48c84290",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6e6ffbe2_15325ba7",
         "filename": "driver/usb_mux/usb_mux.c",
         "patchSetId": 4
@@ -385,6 +403,24 @@
       "side": 1,
       "message": "In modern C++, this would be\n for (const auto \u0026entry : mux_queue)\n  if (entry-\u003eport // ...\n  \nIt looks like the closest analog with the generic queue API would be\n struct queue_iterator it;\n queue_begin(queue, \u0026it);\n for (; it.ptr !\u003d NULL; queue_next(queue, \u0026it))",
       "parentUuid": "f2b3e023_f2baa0f9",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aab5d60_e1483253",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T05:21:27Z",
+      "side": 1,
+      "message": "Ah, the C++ codebase I worked on at my last company was far from modern :)  I believe they were planning to incorporate C++11 just before the group was shut down and broken up in 2017.",
+      "parentUuid": "dbb3e435_b3e11f92",
       "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
