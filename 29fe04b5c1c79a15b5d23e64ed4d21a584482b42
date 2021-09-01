@@ -39,6 +39,24 @@
       "message": "nit: tc_check_vconn_swap() would be more correct, since we could also be disallowed from sending a Vconn swap if we\u0027re attached to a CTVPD",
       "revId": "29fe04b5c1c79a15b5d23e64ed4d21a584482b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9482f28_8333eca3",
+        "filename": "common/usbc/usbc_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-09-01T22:54:09Z",
+      "side": 1,
+      "message": "The tc_check_vconn_swap() is used in the context when port partner requests vconn swap and TC evaluates what to respond, accept/reject, etc, it checks for reject flag too. And here the case is if we  can request to be vconn source. I feel better not to mix those two. What do you think?",
+      "parentUuid": "fd24bc39_73892eee",
+      "revId": "29fe04b5c1c79a15b5d23e64ed4d21a584482b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
