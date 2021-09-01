@@ -84,6 +84,24 @@
       "message": "make it a separate CL, so that we can apply this change to other branch and other board if necessary.",
       "revId": "60b97626add574ce6af237ab9e5114cbb61cc91c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1509eaca_d668f398",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1512645
+      },
+      "writtenOn": "2021-09-01T04:16:46Z",
+      "side": 1,
+      "message": "+ new CL for avoid redefine list_activities\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3133188",
+      "parentUuid": "0936bd31_d1de2b41",
+      "revId": "60b97626add574ce6af237ab9e5114cbb61cc91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
