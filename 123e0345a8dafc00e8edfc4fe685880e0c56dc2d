@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6ef2f8a_1ddc0c92",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-01T15:00:40Z",
+      "side": 1,
+      "message": "All the llvms should have host as the backup.",
+      "revId": "123e0345a8dafc00e8edfc4fe685880e0c56dc2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e98c6153_0871e8b4",
+        "filename": "zephyr/projects/posix-ec/zmake.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-01T15:00:40Z",
+      "side": 1,
+      "message": "Should be `host`",
+      "range": {
+        "startLine": 4,
+        "startChar": 4,
+        "endLine": 4,
+        "endChar": 10
+      },
+      "revId": "123e0345a8dafc00e8edfc4fe685880e0c56dc2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e395758_b821642c",
+        "filename": "zephyr/test/accel_cal/zmake.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-01T15:00:40Z",
+      "side": 1,
+      "message": "host",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 10
+      },
+      "revId": "123e0345a8dafc00e8edfc4fe685880e0c56dc2d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
