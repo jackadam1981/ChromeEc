@@ -85,6 +85,24 @@
       "message": "looks like the build failed",
       "revId": "6ab542e6910f2ab490b7ac744677439882130923",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f55c9eb7_c22d5cac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-01T20:24:26Z",
+      "side": 1,
+      "message": "True, but the commands here are correct, there is just a failing test.",
+      "parentUuid": "bbc528e8_7473e527",
+      "revId": "6ab542e6910f2ab490b7ac744677439882130923",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
