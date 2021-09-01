@@ -380,6 +380,7 @@ const struct accelgyro_drv lis2ds_drv = {
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 #ifdef CONFIG_ACCEL_INTERRUPTS
+	.interrupt = lis2ds_interrupt,
 	.irq_handler = lis2ds_irq_handler,
 #endif /* CONFIG_ACCEL_INTERRUPTS */
 };

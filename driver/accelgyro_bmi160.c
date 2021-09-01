@@ -757,6 +757,7 @@ const struct accelgyro_drv bmi160_drv = {
 	.perform_calib = perform_calib,
 	.read_temp = bmi_read_temp,
 #ifdef CONFIG_ACCEL_INTERRUPTS
+	.interrupt = bmi160_interrupt,
 	.irq_handler = irq_handler,
 #endif
 #ifdef CONFIG_GESTURE_HOST_DETECTION

@@ -844,6 +844,7 @@ const struct accelgyro_drv lsm6dsm_drv = {
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 #ifdef CONFIG_ACCEL_INTERRUPTS
+	.interrupt = lsm6dsm_interrupt,
 	.irq_handler = irq_handler,
 #endif /* CONFIG_ACCEL_INTERRUPTS */
 };
