@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8d7d4a_36a30b0b",
+        "filename": "chip/it83xx/irq.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-09-01T10:50:00Z",
+      "side": 1,
+      "message": "I am still waiting our design team\u0027s simulation.\nBut stress test (child CL) result on EVB is good.",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 61
+      },
+      "revId": "02a88296d7a68bebdafe7d99129fef4c62ab365f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
