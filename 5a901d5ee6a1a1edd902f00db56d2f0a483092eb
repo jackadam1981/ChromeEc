@@ -22,6 +22,30 @@
       },
       "revId": "5a901d5ee6a1a1edd902f00db56d2f0a483092eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20b02c20_03bc228d",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-09-01T18:20:00Z",
+      "side": 1,
+      "message": "I added internal pulls (down and up for the boot0 and reset pins) so that making them input lets them get pulled to the values that are desired. Is it incorrect to emulate open-drain on these pins?",
+      "parentUuid": "d90f24a9_2f09f379",
+      "range": {
+        "startLine": 412,
+        "startChar": 31,
+        "endLine": 412,
+        "endChar": 40
+      },
+      "revId": "5a901d5ee6a1a1edd902f00db56d2f0a483092eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
