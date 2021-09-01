@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b5d1042_73ceebf2",
+        "filename": "common/usbc/usbc_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-01T20:45:54Z",
+      "side": 1,
+      "message": "Nit: The functions could be named better, but port_discovery_vconn_swap_policy is supposed to answer whether VCONN swap is *allowed*. pd_check_vconn_swap answers whether sourcing VCONN is *possible*. So I\u0027d change this comment to something like\n * 2) Sourcing VCONN is possible",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "29fe04b5c1c79a15b5d23e64ed4d21a584482b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
