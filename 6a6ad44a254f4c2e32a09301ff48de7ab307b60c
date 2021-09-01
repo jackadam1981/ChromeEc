@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e38831_994f3100",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-09-01T21:44:47Z",
+      "side": 1,
+      "message": "Do we need mutex lock?",
+      "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2653e2d6_719b169f",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-09-01T21:44:47Z",
+      "side": 1,
+      "message": "Should this be #define?",
+      "range": {
+        "startLine": 444,
+        "startChar": 32,
+        "endLine": 444,
+        "endChar": 45
+      },
+      "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c1b3149_e31d23da",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-09-01T21:44:47Z",
+      "side": 1,
+      "message": "Adding comment will make it simpler to read this code.",
+      "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00cef3bb_e9f31457",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-09-01T21:44:47Z",
+      "side": 1,
+      "message": "Can data have only one of the mask set at a given time or it can have GGPIOG0IS | GGPIOG1IS | GGPIOG2IS.",
+      "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
