@@ -89,6 +89,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d1bcde4_ea0ef476",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-01T22:32:43Z",
+      "side": 1,
+      "message": "FWIW, while experimenting with enabling it globally, the only build errors I discovered were for boards that don\u0027t support VCONN or muxes. I\u0027m guessing none of them are Chromebooks.\n\nWe also don\u0027t run out of flash space on any boards we care about. (RIP volteer reference boards)",
+      "parentUuid": "69ad9cfc_5b1ef18c",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d64f8f70_435b4c5c",

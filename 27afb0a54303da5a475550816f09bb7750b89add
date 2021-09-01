@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0789eebe_77fba2be",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-01T22:32:43Z",
+      "side": 1,
+      "message": "We\u0027re always running it before mode entry, because that seemed like the easiest thing to do and the most direct way to deal with devices that enforce tAMETimeout/tUSB4Timeout. It shouldn\u0027t interfere with anything as long as we only support being in one mode at a time.\n\nAlternatives off the top of my head:\n1. Giving the AP control over it. Presumably, this will be the endgame when mode support on the AP is fully developed. IIRC, the AP folks did not want control over this. (Prashant, is that accurate?)\n2. Keep track of tAMETimeout in the EC and only issue Data Reset after it expires. This would generate less traffic in some cases, but it would be more complicated, and I\u0027ll bet we\u0027d find devices that don\u0027t give us the whole tAMETimeout.",
+      "parentUuid": "0128d104_c1786b9f",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e4a0c45d_1653a4ec",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
