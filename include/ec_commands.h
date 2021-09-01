@@ -3931,6 +3931,10 @@ struct ec_response_keyboard_factory_test {
 #define EC_MKBP_FP_ERR_MATCH_YES_UPDATED       3
 #define EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED 5
 
+#define EC_MKBP_FP_MATCH_SUCCESS(x) ( \
+				(x) == EC_MKBP_FP_ERR_MATCH_YES || \
+				(x) == EC_MKBP_FP_ERR_MATCH_YES_UPDATED || \
+				(x) == EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED)
 
 #define EC_CMD_MKBP_WAKE_MASK 0x0069
 enum ec_mkbp_event_mask_action {
