@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af49ee3d_72e08763",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-01T02:12:37Z",
+      "side": 1,
+      "message": "Early feedback drive-by. I think you\u0027re on the right track",
+      "revId": "a34545f69f3a52f61efe442549ab79cef7ab3f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64de418f_b61802ea",
+        "filename": "zephyr/dts/bindings/temp/thermistor.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-01T02:12:37Z",
+      "side": 1,
+      "message": "cros,thermistor",
+      "range": {
+        "startLine": 7,
+        "startChar": 12,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "a34545f69f3a52f61efe442549ab79cef7ab3f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33aef935_16ade406",
+        "filename": "zephyr/dts/bindings/temp/thermistor.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-01T02:12:37Z",
+      "side": 1,
+      "message": "I think we want these to all be required, I can\u0027t think of an obvious default value.",
+      "range": {
+        "startLine": 16,
+        "startChar": 14,
+        "endLine": 16,
+        "endChar": 19
+      },
+      "revId": "a34545f69f3a52f61efe442549ab79cef7ab3f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95581a62_8e761fdf",
+        "filename": "zephyr/dts/bindings/temp/thermistor.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-01T02:12:37Z",
+      "side": 1,
+      "message": "nit: no need for quotes",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 18
+      },
+      "revId": "a34545f69f3a52f61efe442549ab79cef7ab3f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cac5839_060219dd",
+        "filename": "zephyr/dts/bindings/temp/thermistor.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-01T02:12:37Z",
+      "side": 1,
+      "message": "I think this is going away right?",
+      "range": {
+        "startLine": 35,
+        "startChar": 2,
+        "endLine": 35,
+        "endChar": 15
+      },
+      "revId": "a34545f69f3a52f61efe442549ab79cef7ab3f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
