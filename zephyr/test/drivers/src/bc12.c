@@ -185,8 +185,8 @@ static void test_bc12_pi3usb9201_client_mode(
 		port = USBC_PORT_C0;
 		voltage = USB_CHARGER_VOLTAGE_MV;
 	}
-	zassert_equal(charge_manager_get_active_charge_port(),
-		      port, NULL);
+	printf("Charge port %d\n", charge_manager_get_active_charge_port());
+	zassert_equal(charge_manager_get_active_charge_port(), port, NULL);
 	zassert_equal(charge_manager_get_supplier(),
 		      supplier, NULL);
 	zassert_equal(charge_manager_get_charger_current(),

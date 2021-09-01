@@ -3,6 +3,9 @@
  * found in the LICENSE file.
  */
 
+#define LOG_LEVEL CONFIG_I2C_LOG_LEVEL
+#include <logging/log.h>
+LOG_MODULE_REGISTER(ppc);
 #include <zephyr.h>
 #include <ztest.h>
 #include <ztest_assert.h>
