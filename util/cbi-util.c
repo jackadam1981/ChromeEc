@@ -82,6 +82,7 @@ static const char *field_name[] = {
 	"PCB_SUPPLIER",
 	"SSFC",
 	"REWORK_ID",
+	"KEYBOX",
 };
 BUILD_ASSERT(ARRAY_SIZE(field_name) == CBI_TAG_COUNT);
 
@@ -105,6 +106,10 @@ const char help_create[] =
 	"  --pcb_supplier <value>     PCB supplier\n"
 	"  --ssfc <value>             Second Source Factory Cache bit-field\n"
 	"  --rework_id <lvalue>       REWORK_ID\n"
+	/*
+	 * Note: keybox will be unique to each unit, and so isn't part of this
+	 * general image creation utility
+	 */
 	"\n"
 	"<value> must be a positive integer <= 0XFFFFFFFF, <lvalue> must be a\n"
 	"  positive integer <= 0xFFFFFFFFFFFFFFFF and field size can be\n"

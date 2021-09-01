@@ -5955,6 +5955,7 @@ enum cbi_data_tag {
 	/* Second Source Factory Cache */
 	CBI_TAG_SSFC = 8,          /* uint32_t bit field */
 	CBI_TAG_REWORK_ID = 9,     /* uint64_t or smaller */
+	CBI_TAG_KEYBOX = 10,	   /* 180 bytes */
 	CBI_TAG_COUNT,
 };
 
