@@ -1124,6 +1124,7 @@ const struct accelgyro_drv bmi3xx_drv = {
 	.perform_calib = perform_calib,
 	.read_temp = read_temp,
 #ifdef CONFIG_ACCEL_INTERRUPTS
+	.interrupt = bmi3xx_interrupt,
 	.irq_handler = irq_handler,
 #endif
 #ifdef CONFIG_BODY_DETECTION
