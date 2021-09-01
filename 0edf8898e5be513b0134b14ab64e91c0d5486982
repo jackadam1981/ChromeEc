@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0adcca23_b3dfd0c8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 7002,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T03:32:45Z",
+      "side": 1,
+      "message": "Task accesses move with the memset?",
+      "revId": "0edf8898e5be513b0134b14ab64e91c0d5486982",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
