@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7502bd7_97adbccc",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-01T14:47:08Z",
+      "side": 1,
+      "message": "If this isn\u0027t global, shall we also make this static for consistency (and move #ifdef CONFIG_GESTURE_HOST_DETECTION up here)?",
+      "range": {
+        "startLine": 325,
+        "startChar": 4,
+        "endLine": 325,
+        "endChar": 19
+      },
+      "revId": "b402de8d97b80319119463f20332d1eb9af61bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "227af709_179e56e9",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-01T14:47:08Z",
+      "side": 1,
+      "message": "It\u0027s nice if you could adjust the indentation.",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 25
+      },
+      "revId": "b402de8d97b80319119463f20332d1eb9af61bb3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
