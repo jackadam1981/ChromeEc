@@ -8254,6 +8254,7 @@ static void cmd_cbi_help(char *cmd)
 	"      7: PCB_VENDOR\n"
 	"      8: SSFC\n"
 	"      9: REWORK_ID\n"
+	"     10: KEYBOX\n"
 	"    <size> is the size of the data in byte. It should be zero for\n"
 	"      string types.\n"
 	"    <value/string> is an integer or a string to be set\n"
@@ -8267,6 +8268,11 @@ static void cmd_cbi_help(char *cmd)
 static int cmd_cbi_is_string_field(enum cbi_data_tag tag)
 {
 	return tag == CBI_TAG_DRAM_PART_NUM || tag == CBI_TAG_OEM_NAME;
+}
+
+static int cmd_cbi_is_byte_array(enum cbi_data_tag tag)
+{
+	return tag == CBI_TAG_KEYBOX;
 }
 
 /*
@@ -8317,6 +8323,18 @@ static int cmd_cbi(int argc, char *argv[])
 		}
 		if (cmd_cbi_is_string_field(tag)) {
 			printf("%.*s", rv, (const char *)ec_inbuf);
+		} else if (cmd_cbi_is_byte_array(tag)) {
+			const uint8_t * const buffer =
+					(const uint8_t * const)(ec_inbuf);
+
+			printf("As byte array:");
+			for (i = 0; i < rv; i++) {
+				if ((i % 16) == 0)
+					printf("\n");
+
+				printf(" %02x", buffer[i]);
+			}
+			printf("\n");
 		} else {
 			const uint8_t * const buffer =
 				(const uint8_t *const)(ec_inbuf);
@@ -8343,6 +8361,8 @@ static int cmd_cbi(int argc, char *argv[])
 		uint64_t val = 0;
 		uint8_t size;
 		uint8_t bad_size = 0;
+		uint8_t buf[UINT8_MAX];
+
 		if (argc < 5) {
 			fprintf(stderr, "Invalid number of params\n");
 			cmd_cbi_help(argv[0]);
@@ -8354,6 +8374,32 @@ static int cmd_cbi(int argc, char *argv[])
 		if (cmd_cbi_is_string_field(tag)) {
 			val_ptr = argv[3];
 			size = strlen((char *)(val_ptr)) + 1;
+		} else if (cmd_cbi_is_byte_array(tag)) {
+			const char *in_string = argv[3];
+			uint16_t nibbles = strlen(in_string);
+			uint8_t i = 0;   /* Index into byte array */
+
+			size = nibbles / 2;
+
+			if ((nibbles % 2) != 0) {
+				if (sscanf(in_string, "%1hhx", &buf[i]) != 1) {
+					fprintf(stderr, "Bad keybox string\n");
+					return -1;
+				}
+				i++;
+				size++;
+				in_string++;
+			}
+
+			for (; i < size; i++) {
+				if (sscanf(in_string, "%2hhx", &buf[i]) != 1) {
+					fprintf(stderr, "Bad keybox string\n");
+					return -1;
+				}
+				in_string += 2;
+			}
+
+			val_ptr = buf;
 		} else {
 			val = strtoul(argv[3], &e, 0);
 			/* strtoul sets an errno for invalid input. If the value
