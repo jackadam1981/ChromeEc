@@ -22,6 +22,23 @@
       },
       "revId": "29fe04b5c1c79a15b5d23e64ed4d21a584482b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd24bc39_73892eee",
+        "filename": "common/usbc/usbc_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T20:56:32Z",
+      "side": 1,
+      "message": "nit: tc_check_vconn_swap() would be more correct, since we could also be disallowed from sending a Vconn swap if we\u0027re attached to a CTVPD",
+      "revId": "29fe04b5c1c79a15b5d23e64ed4d21a584482b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
