@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90f24a9_2f09f379",
+        "filename": "util/flash_fp_mcu",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-09-01T17:54:15Z",
+      "side": 1,
+      "message": "This needs to be expanded to include herobrine. The hardware is as it should be. the pins should never be made to inputs by software.",
+      "range": {
+        "startLine": 412,
+        "startChar": 31,
+        "endLine": 412,
+        "endChar": 40
+      },
+      "revId": "5a901d5ee6a1a1edd902f00db56d2f0a483092eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
