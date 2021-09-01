@@ -1,0 +1,305 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0128d104_c1786b9f",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "I\u0027m not 100% sure I follow.  Are we always automatically running data reset before any mode entry when AP mode entry is enabled?  Did the AP folks request this for sequencing, or should they be in control of it?",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4a0c45d_1653a4ec",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7023,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Taken care of in pe_sender_response_msg_run()?",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a72a603_a1af4177",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7037,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Also check ext \u003d\u003d 0.  Extended control messages will actually have some data, but just to be on the defensive side...",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e957ec4_2da1a0e4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7074,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "pe_sender_response_msg_exit()",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4416dee_fe45e139",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7097,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Does this message start the tVconnReapplied timer?  That\u0027s my best guess from 7.1.15.1 UFP Vconn Power Cycle",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67e49f42_e8906140",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7098,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Any other message being treated as a protocol error?  Or is that taken care of naturally by the timer expiring at some point?",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "632bfbc8_96cae6e0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7114,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Should we actually have the DPM do this like the spec dictates, or is that a TODO for when the DPM becomes an actual state machine?",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce073a76_a5d464a0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7131,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Do you also feel vaguely confused how to reconcile the order of steps in 6.3.14 with the fact that the UFP already turned off Vconn in the last state?  If so, I can send an e-mail to the WG or check with Benson",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "750d0701_975be85b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7133,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "nit for a cleanup bug... this should be a tc_ function, right?  This would make no sense to call outside the PD stack",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4e7dd2e_e7d15646",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7144,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "I vote a new timer if the last state needs it too.  TIMEOUT shouldn\u0027t be used outside a single state since anyone can mess with it and leave it in some weird state",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfceb949_56f42fb4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7152,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "After tDataReset?",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe444473_cf0e1e14",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7167,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Should this timer be checked in all states?  Would this be a possible situation where a parent state can/should be checking this?",
+      "range": {
+        "startLine": 7167,
+        "startChar": 31,
+        "endLine": 7167,
+        "endChar": 55
+      },
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56a69f7b_beaa4c1f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7175,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Return after set_state",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5542ebf_58498de7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7177,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Use corresponding entry and exit sender response functions as well",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dedfef4c_5eefc1b6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7179,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "I vote error recovery on discard.  That seems like a protocol error if the partner sent a new message in the middle of this",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fc15c38_e9b77e46",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4217,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Don\u0027t forget our beloved zephyr config entries as well :D",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c78e4cc2_6919be8d",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "200-250 for comment accuracy",
+      "range": {
+        "startLine": 246,
+        "startChar": 49,
+        "endLine": 246,
+        "endChar": 54
+      },
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

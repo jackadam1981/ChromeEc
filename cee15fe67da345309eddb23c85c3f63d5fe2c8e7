@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69ad9cfc_5b1ef18c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "We\u0027ll call this a \"no\" for now, since I\u0027m not sure all Chromebooks can detach their USB 2.0 lines easily.",
+      "parentUuid": "65c22151_ea5a1c43",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d64f8f70_435b4c5c",
@@ -84,6 +102,24 @@
       "writtenOn": "2021-05-19T21:16:35Z",
       "side": 1,
       "message": "I\u0027d suggest pe_sender_response_msg_entry() and pe_sender_response_msg_run() for flag/timer management, plus it\u0027ll restore your DPM request in the event of a discard",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66a0786_b9f9ca50",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6853,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "pe_sender_response_msg_entry()",
+      "parentUuid": "d64f8f70_435b4c5c",
       "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -186,6 +222,24 @@
       "writtenOn": "2021-05-19T21:16:35Z",
       "side": 1,
       "message": "A pe_report_error exception will be needed for this state too",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5edba853_123c3da8",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6936,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Pretty sure this will still be needed for any state checking protocol error",
+      "parentUuid": "f1315c28_ea45ac0a",
       "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -339,6 +393,24 @@
       "writtenOn": "2021-05-19T21:16:35Z",
       "side": 1,
       "message": "10-20 ms",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86931fab_66d9eee6",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T04:32:57Z",
+      "side": 1,
+      "message": "Still needs fixed",
+      "parentUuid": "3ebcdd7c_ea7fa013",
       "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
