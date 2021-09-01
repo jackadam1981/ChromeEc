@@ -16,6 +16,24 @@
       "message": "CONFIG_HAS_TASK_PD_C0 seems conspicuously absent here.\nWhich tasks are actually running in the driver test app? I thought CONFIG_HAS_TASK_* got set automatically (as part of configuring the tasks for the app).",
       "revId": "459f192d3e581de02c8e1c36c088cbc7f7ed5e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0950e2f_78663493",
+        "filename": "zephyr/test/drivers/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-01T20:58:44Z",
+      "side": 1,
+      "message": "From the generated .config:\n 169 #                                                                                \n 170 # Tasks                                                                          \n 171 #                                                                                \n 172 CONFIG_HAS_TASK_CHARGER\u003dy                                                        \n 173 CONFIG_HAS_TASK_CHG_RAMP\u003dy                                                       \n 174 CONFIG_HAS_TASK_HOOKS\u003dy                                                          \n 175 CONFIG_HAS_TASK_HOSTCMD\u003dy                                                        \n 176 CONFIG_HAS_TASK_MOTIONSENSE\u003dy                                                    \n 177 CONFIG_HAS_TASK_PD_C0\u003dy                                                          \n 178 CONFIG_HAS_TASK_PD_C1\u003dy                                                          \n 179 # CONFIG_HAS_TASK_PD_C2 is not set                                               \n 180 # CONFIG_HAS_TASK_PD_C3 is not set                                               \n 181 CONFIG_HAS_TASK_PD_INT_C0\u003dy                                                      \n 182 # CONFIG_HAS_TASK_PD_INT_C1 is not set                                           \n 183 # CONFIG_HAS_TASK_PD_INT_C2 is not set                                           \n 184 # CONFIG_HAS_TASK_PD_INT_C3 is not set                                           \n 185 CONFIG_HAS_TASK_USB_CHG_P0\u003dy                                                     \n 186 CONFIG_HAS_TASK_USB_CHG_P1\u003dy                                                     \n 187 # CONFIG_HAS_TASK_USB_CHG_P2 is not set                                          \n 188 # end of Tasks\n \nThe prj.conf files for the actual boards contain explicit settings of CONFIG_HAS_TASK_ options. AFAIK, that\u0027s how we configure tasks in general in Zephyr. CONFIG_HAS_TASK_PD_C0 happens to default to \"y\" in Kconfig.tasks, so we don\u0027t need to set it explicitly in prj.conf. If you\u0027d prefer, I can set it explicitly here.\n\n(FTR, I find this confusing. I think we should either explicitly configure tasks in one place like we do in ECOS, or we should configure each of them automatically based on other config options for associated features.)",
+      "parentUuid": "2f6e92d0_cbe7c117",
+      "revId": "459f192d3e581de02c8e1c36c088cbc7f7ed5e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
