@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "986ce047_a35a9676",
+        "filename": "board/cr50/dcrypto/dcrypto_p256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-01T21:21:42Z",
+      "side": 1,
+      "message": "what is this sha?",
+      "range": {
+        "startLine": 12,
+        "startChar": 19,
+        "endLine": 12,
+        "endChar": 29
+      },
+      "revId": "20454e51866719e1cb667944aae2ada1161eb56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ed7d77_5662a417",
+        "filename": "board/cr50/dcrypto/dcrypto_p256.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-01T21:21:42Z",
+      "side": 1,
+      "message": "here and below: why is this change in behavior needed? The caller might not expect the values change if the operation did not succeed, this increases code size for no good reason.",
+      "range": {
+        "startLine": 1136,
+        "startChar": 0,
+        "endLine": 1142,
+        "endChar": 2
+      },
+      "revId": "20454e51866719e1cb667944aae2ada1161eb56f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
