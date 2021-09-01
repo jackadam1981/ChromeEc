@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fcc33998_6519bb55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-01T23:17:45Z",
+      "side": 1,
+      "message": "That\u0027s weird. Can you investigate why the second run makes EC/AP console not responsible? The Cr50 console work? If using CCD, does this issue happen?",
+      "parentUuid": "3f9920d0_f218c4ad",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da27362c_71a1764d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "On the AP console, I set the RTC alarm for 10s. Than I execute hibernate on the EC console. But the system never wakes up.\n\nIs this the correct way to perform this test?",
       "parentUuid": "da27362c_71a1764d",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0336e167_1af43cbb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-01T23:17:45Z",
+      "side": 1,
+      "message": "How did you perform the test? Be sure to \"power off\" AP, and no AC plugged, before you call \"hibernate\".\n\nThe RTC chip should assert its IRQ pin after 10s and then wake EC up from hibernate.",
+      "parentUuid": "19e90ef7_029d8ae4",
       "range": {
         "startLine": 19,
         "startChar": 0,
