@@ -392,7 +392,7 @@ static int init_config(const struct motion_sensor_t *s)
 	 * Due to i2c transaction timeout limit,
 	 * burst_write_len should not be above 2048 to prevent timeout.
 	 */
-	const int burst_write_len = 2048;
+	const int burst_write_len = 128;
 	/* We have to write the config even bytes of data every time */
 	BUILD_ASSERT((burst_write_len & 1) == 0);
 
