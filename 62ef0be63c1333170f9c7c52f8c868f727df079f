@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66a08fa2_0da6fd81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347380
+      },
+      "writtenOn": "2021-09-01T19:18:27Z",
+      "side": 1,
+      "message": "Servos spend most of their time in the RO region but a simplified assert print with just the file and line number shouldn\u0027t hamper detection of problems.",
+      "revId": "62ef0be63c1333170f9c7c52f8c868f727df079f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
