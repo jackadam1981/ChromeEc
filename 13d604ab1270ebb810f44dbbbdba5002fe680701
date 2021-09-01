@@ -51,6 +51,24 @@
       "parentUuid": "bbc9f89e_639e5995",
       "revId": "13d604ab1270ebb810f44dbbbdba5002fe680701",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "456a9813_de5f3a2f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-01T22:29:51Z",
+      "side": 1,
+      "message": "Yeah, this is triggered by the OWNERS file. If you want, you could change the OWNERS in this branch to remove the requirement. Probably depends on how often you will be doing this type of change.",
+      "parentUuid": "d924c393_02ca0858",
+      "revId": "13d604ab1270ebb810f44dbbbdba5002fe680701",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
