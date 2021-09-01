@@ -85,6 +85,24 @@
       "parentUuid": "488cd283_59347c1f",
       "revId": "e8f3f993e92e4f501f401a96db943689d6d27e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e684b464_60329131",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-01T08:06:08Z",
+      "side": 1,
+      "message": "Hi Mike,\nI think you should keep all other board.h CONFIG_ACCELGYRO_BMI260. But rename the macro in build.mk to CONFIG_ACCELGYRO_BMI2XX. And in include/config.h add this:\n  # if defined(CONFIG_ACCELGYRO_BMI220) || defined(CONFIG_ACCELGYRO_BMI260)\n  #define CONFIG_ACCELGYRO_BMI2XX\n  #endif",
+      "parentUuid": "e7026e38_9fa37148",
+      "revId": "e8f3f993e92e4f501f401a96db943689d6d27e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
