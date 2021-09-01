@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f6e92d0_cbe7c117",
+        "filename": "zephyr/test/drivers/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1212794
+      },
+      "writtenOn": "2021-09-01T20:17:33Z",
+      "side": 1,
+      "message": "CONFIG_HAS_TASK_PD_C0 seems conspicuously absent here.\nWhich tasks are actually running in the driver test app? I thought CONFIG_HAS_TASK_* got set automatically (as part of configuring the tasks for the app).",
+      "revId": "459f192d3e581de02c8e1c36c088cbc7f7ed5e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
