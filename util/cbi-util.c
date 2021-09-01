@@ -42,6 +42,7 @@ enum {
 	OPT_PCB_SUPPLIER,
 	OPT_SSFC,
 	OPT_REWORK_ID,
+	OPT_KEYBOX,
 	OPT_SIZE,
 	OPT_ERASE_BYTE,
 	OPT_SHOW_ALL,
@@ -60,6 +61,7 @@ static const struct option opts_create[] = {
 	{"pcb_supplier", 1, 0, OPT_PCB_SUPPLIER},
 	{"ssfc", 1, 0, OPT_SSFC},
 	{"rework_id", 1, 0, OPT_REWORK_ID},
+	{"keybox", 1, 0, OPT_KEYBOX},
 	{"size", 1, 0, OPT_SIZE},
 	{"erase_byte", 1, 0, OPT_ERASE_BYTE},
 	{NULL, 0, 0, 0}
@@ -83,6 +85,7 @@ static const char *field_name[] = {
 	"PCB_SUPPLIER",
 	"SSFC",
 	"REWORK_ID",
+	"KEYBOX",
 };
 BUILD_ASSERT(ARRAY_SIZE(field_name) == CBI_TAG_COUNT);
 
@@ -106,12 +109,14 @@ const char help_create[] =
 	"  --pcb_supplier <value>     PCB supplier\n"
 	"  --ssfc <value>             Second Source Factory Cache bit-field\n"
 	"  --rework_id <lvalue>       REWORK_ID\n"
+	"  --keybox <hex string>      Keybox\n"
 	"\n"
 	"<value> must be a positive integer <= 0XFFFFFFFF, <lvalue> must be a\n"
 	"  positive integer <= 0xFFFFFFFFFFFFFFFF and field size can be\n"
 	"  optionally specified by <value:size> notation: e.g. 0xabcd:4.\n"
 	"<size> must be a positive integer <= 0XFFFF.\n"
 	"<string> is a string\n"
+	"<hex string> is a string of ASCII hex to convert to bytes\n"
 	"\n";
 
 const char help_show[] =
@@ -132,6 +137,11 @@ struct integer_field {
 
 struct long_integer_field {
 	uint64_t val;
+	int size;
+};
+
+struct byte_array {
+	uint8_t val[UINT8_MAX];
 	int size;
 };
 
@@ -254,6 +264,7 @@ static int cmd_create(int argc, char **argv)
 		struct long_integer_field rework;
 		const char *dram_part_num;
 		const char *oem_name;
+		struct byte_array keybox;
 	} bi;
 	struct cbi_header *h;
 	int rv;
@@ -336,6 +347,12 @@ static int cmd_create(int argc, char **argv)
 			if (parse_uint64_field(optarg, &bi.rework))
 				return -1;
 			break;
+		case OPT_KEYBOX:
+			bi.keybox.size = ARRAY_SIZE(bi.keybox.val);
+			if (parse_hex_string(bi.keybox.val, &bi.keybox.size,
+					     optarg))
+				return -1;
+			break;
 		}
 	}
 
@@ -370,6 +387,7 @@ static int cmd_create(int argc, char **argv)
 	p = cbi_set_data(p, CBI_TAG_REWORK_ID, &bi.rework.val, bi.rework.size);
 	p = cbi_set_string(p, CBI_TAG_DRAM_PART_NUM, bi.dram_part_num);
 	p = cbi_set_string(p, CBI_TAG_OEM_NAME, bi.oem_name);
+	p = cbi_set_data(p, CBI_TAG_KEYBOX, &bi.keybox.val, bi.keybox.size);
 
 	h->total_size = p - cbi;
 	h->crc = cbi_crc8(h);
@@ -433,6 +451,21 @@ static void print_integer(const uint8_t *buf, enum cbi_data_tag tag)
 	}
 	printf("    %s: %llu (0x%llx, %u, %u)\n", name, (unsigned long long)v,
 		(unsigned long long)v, d->tag, d->size);
+}
+
+static void print_bytes(const uint8_t *buf, enum cbi_data_tag tag)
+{
+	struct cbi_data *d = cbi_find_tag(buf, tag);
+	const char *name;
+
+	if (!d)
+		return;
+
+	name = d->tag < CBI_TAG_COUNT ? field_name[d->tag] : "???";
+
+	printf("    %s:", name);
+	print_byte_array(d->value, d->size);
+	printf("    (%u, %u)\n", d->tag, d->size);
 }
 
 static int cmd_show(int argc, char **argv)
@@ -504,6 +537,7 @@ static int cmd_show(int argc, char **argv)
 	print_integer(buf, CBI_TAG_REWORK_ID);
 	print_string(buf, CBI_TAG_DRAM_PART_NUM);
 	print_string(buf, CBI_TAG_OEM_NAME);
+	print_bytes(buf, CBI_TAG_KEYBOX);
 
 	free(buf);
 
