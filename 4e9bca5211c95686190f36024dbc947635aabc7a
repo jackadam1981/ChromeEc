@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3676bfb5_64ba31bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-09-01T08:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9feb355_b940f904",
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fe83230_2544da8d",
@@ -178,6 +196,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de24ded2_f61b50c0",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-09-01T08:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5096c9e7_ada86a62",
+      "range": {
+        "startLine": 399,
+        "startChar": 27,
+        "endLine": 399,
+        "endChar": 58
+      },
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f593f3e6_0376984a",
@@ -262,6 +304,30 @@
       "side": 1,
       "message": "Please refer to the IssueTracker comment#10.",
       "parentUuid": "038b66c7_e9a52520",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f214a35_d40f945d",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-09-01T08:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3caaaec0_561b5ba6",
       "range": {
         "startLine": 32,
         "startChar": 0,
