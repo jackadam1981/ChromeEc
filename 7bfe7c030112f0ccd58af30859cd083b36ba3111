@@ -16,6 +16,23 @@
       "message": "\u003e Patch Set 7: Code-Review+2\n\u003e \n\u003e By voting Code-Review+2 the following files are still code-owner approved by \u003cGERRIT_ACCOUNT_1479762\u003e:\n\u003e * board/gimble/board.c\n\u003e * board/gimble/board.h\n\u003e * board/gimble/gpio.inc\n\u003e * board/gimble/sensors.c\n\u003e \n\nHi Boris, can you help to add CQ+2 on this CL?",
       "revId": "7bfe7c030112f0ccd58af30859cd083b36ba3111",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36a60d3e_e6480379",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-01T03:17:39Z",
+      "side": 1,
+      "message": "Sure. \nThe CL owner [Will Tsai] should be able to CQ+2. If it doesn\u0027t work please open a bug.",
+      "revId": "7bfe7c030112f0ccd58af30859cd083b36ba3111",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
