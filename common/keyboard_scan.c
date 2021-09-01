@@ -767,6 +767,9 @@ void keyboard_scan_task(void *u)
 	int wait_time;
 	uint32_t local_disable_scanning = 0;
 
+	if (IS_ENABLED(CONFIG_KEYBOARD_NOT_RAW))
+		keyboard_scan_init();
+
 	print_state(debounced_state, "init state");
 
 	keyboard_raw_task_start();
