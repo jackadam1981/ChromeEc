@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c94957f_0f8c5bda",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 450,
+      "author": {
+        "id": 1512645
+      },
+      "writtenOn": "2021-09-01T04:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee68f87_8182bd92",
+      "revId": "60b97626add574ce6af237ab9e5114cbb61cc91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e0df6cc_fa8d8868",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-08-31T17:32:00Z",
       "side": 1,
       "message": "nit: these printfs are not needed, because when -\u003einit() meber is called, the name of the sensor (-\u003ename) is printed. You can use \"bmi260 accel\" instead of \"lid accel\" like 401.",
+      "revId": "60b97626add574ce6af237ab9e5114cbb61cc91c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fdfa60f_7123809d",
+        "filename": "board/coachz/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1512645
+      },
+      "writtenOn": "2021-09-01T04:18:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e0df6cc_fa8d8868",
       "revId": "60b97626add574ce6af237ab9e5114cbb61cc91c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
