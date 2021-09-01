@@ -149,6 +149,7 @@ DECLARE_EC_TEST(test_all_tags)
 	uint32_t d32;
 	uint64_t d64;
 	const char string[] = "abc";
+	const char bytes[] = { 0, 1, 2, 3, 4, 5, 6, 7 };
 	uint8_t buf[32];
 	uint8_t size;
 	int count = 0;
@@ -187,6 +188,9 @@ DECLARE_EC_TEST(test_all_tags)
 		      EC_SUCCESS, NULL);
 	count++;
 	zassert_equal(cbi_set_board_info(CBI_TAG_REWORK_ID, &d8, sizeof(d8)),
+		      EC_SUCCESS, NULL);
+	count++;
+	zassert_equal(cbi_set_board_info(CBI_TAG_KEYBOX, bytes, sizeof(bytes)),
 		      EC_SUCCESS, NULL);
 	count++;
 
@@ -230,6 +234,10 @@ DECLARE_EC_TEST(test_all_tags)
 	zassert_true((unsigned long long)d64 == (unsigned long long)d8,
 		     "0x%llx, 0x%llx", (unsigned long long)d64,
 		     (unsigned long long)d8);
+	size = sizeof(buf);
+	zassert_equal(cbi_get_board_info(CBI_TAG_KEYBOX, buf, &size),
+		      EC_SUCCESS, NULL);
+	zassert_equal(memcmp(buf, bytes, sizeof(bytes)), 0, NULL);
 
 	/* Fail if a (new) tag is missing from the unit test. */
 	zassert_equal(count, CBI_TAG_COUNT, "%d, %d", count, CBI_TAG_COUNT);

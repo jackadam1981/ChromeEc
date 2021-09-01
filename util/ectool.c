@@ -8271,9 +8271,11 @@ static void cmd_cbi_help(char *cmd)
 	"      7: PCB_VENDOR\n"
 	"      8: SSFC\n"
 	"      9: REWORK_ID\n"
+	"     10: KEYBOX (hex byte string)\n"
 	"    <size> is the size of the data in byte. It should be zero for\n"
-	"      string types.\n"
-	"    <value/string> is an integer or a string to be set\n"
+	"      string types and byte arrays.\n"
+	"    <value/string> is an integer, a string, or a hex byte string to\n"
+	"      be set\n"
 	"    [get_flag] is combination of:\n"
 	"      01b: Invalidate cache and reload data from EEPROM\n"
 	"    [set_flag] is combination of:\n"
@@ -8284,6 +8286,11 @@ static void cmd_cbi_help(char *cmd)
 static int cmd_cbi_is_string_field(enum cbi_data_tag tag)
 {
 	return tag == CBI_TAG_DRAM_PART_NUM || tag == CBI_TAG_OEM_NAME;
+}
+
+static int cmd_cbi_is_byte_array(enum cbi_data_tag tag)
+{
+	return tag == CBI_TAG_KEYBOX;
 }
 
 /*
@@ -8334,6 +8341,12 @@ static int cmd_cbi(int argc, char *argv[])
 		}
 		if (cmd_cbi_is_string_field(tag)) {
 			printf("%.*s", rv, (const char *)ec_inbuf);
+		} else if (cmd_cbi_is_byte_array(tag)) {
+			const uint8_t * const buffer =
+					(const uint8_t * const)(ec_inbuf);
+
+			printf("As byte array:");
+			print_byte_array(buffer, rv);
 		} else {
 			const uint8_t * const buffer =
 				(const uint8_t *const)(ec_inbuf);
@@ -8360,6 +8373,8 @@ static int cmd_cbi(int argc, char *argv[])
 		uint64_t val = 0;
 		uint8_t size;
 		uint8_t bad_size = 0;
+		uint8_t buf[UINT8_MAX];
+
 		if (argc < 5) {
 			fprintf(stderr, "Invalid number of params\n");
 			cmd_cbi_help(argv[0]);
@@ -8371,6 +8386,17 @@ static int cmd_cbi(int argc, char *argv[])
 		if (cmd_cbi_is_string_field(tag)) {
 			val_ptr = argv[3];
 			size = strlen((char *)(val_ptr)) + 1;
+		} else if (cmd_cbi_is_byte_array(tag)) {
+			const char *in_string = argv[3];
+			int len = ARRAY_SIZE(buf);
+
+			if (parse_hex_string(buf, &len, in_string)) {
+				fprintf(stderr, "Invalid keybox string\n");
+				return -1;
+			}
+
+			size = (uint8_t)len;
+			val_ptr = buf;
 		} else {
 			val = strtoul(argv[3], &e, 0);
 			/* strtoul sets an errno for invalid input. If the value

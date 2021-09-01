@@ -480,6 +480,13 @@ static int cc_cbi(int argc, char **argv)
 		    setter->tag == CBI_TAG_OEM_NAME) {
 			setter->size = strlen(argv[3]) + 1;
 			memcpy(setter->data, argv[3], setter->size);
+		} else if (setter->tag == CBI_TAG_KEYBOX) {
+			/*
+			 * Keybox is 180 bytes, well outside our console input
+			 * limit
+			 */
+			ccprintf("Cannot set keybox from EC console\n");
+			return EC_ERROR_PARAM2;
 		} else {
 			uint64_t val = strtoull(argv[3], &e, 0);
 
