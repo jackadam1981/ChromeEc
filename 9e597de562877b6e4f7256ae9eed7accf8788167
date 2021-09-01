@@ -52,6 +52,24 @@
       "parentUuid": "59537849_9a8a8006",
       "revId": "9e597de562877b6e4f7256ae9eed7accf8788167",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b8abf48_aa826515",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1074,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-01T21:15:00Z",
+      "side": 1,
+      "message": "Ah, that makes sense.  It would probably be worth investigating a change similar to this (or changing the common code to be better used by trogdor) since trogdor doesn\u0027t appear to be setting USB safe state like it should.",
+      "parentUuid": "68ef8379_1cbcb115",
+      "revId": "9e597de562877b6e4f7256ae9eed7accf8788167",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
