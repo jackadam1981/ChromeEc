@@ -336,6 +336,30 @@
       },
       "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "355d1886_00567635",
+        "filename": "board/coachz/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-01T22:48:26Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Please make it a separate CL, before this one.\n\n+keithshort@ to check if it is a valid use.",
+      "parentUuid": "5f214a35_d40f945d",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 35
+      },
+      "revId": "4e9bca5211c95686190f36024dbc947635aabc7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
