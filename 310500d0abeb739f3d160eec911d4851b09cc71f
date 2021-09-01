@@ -356,6 +356,30 @@
       },
       "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04b6f66a_19d76ed3",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-01T23:41:19Z",
+      "side": 1,
+      "message": "To resolve this comment: go back to explicitly specifying the GPIO port and pin here \"int-gpios \u003d \u003c\u0026gpio0 2 0\u003e;\"\n\nIn a follow on CL, switch to using the \u003c\u0026gpio_rtc_ec_wake_odl\u003e; reference and update the driver to find the correct PHANDLE.  \nWe also need to address our use of the \"flags\" property in GPIO phandles because the GPIO_INPUT and other bits overflow the storage type for gpio_dt_spec-\u003edt_flags.",
+      "parentUuid": "60cb8d22_4fab8250",
+      "range": {
+        "startLine": 109,
+        "startChar": 24,
+        "endLine": 109,
+        "endChar": 56
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
