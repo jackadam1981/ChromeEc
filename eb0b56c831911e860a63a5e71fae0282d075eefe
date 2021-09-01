@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd3dd614_cde3cf19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-09-01T05:57:33Z",
+      "side": 1,
+      "message": "This is a feature-reduced version of crrev/c/2420477 for hotfix.\n\nPlease scrutinize this /heavily/ for any potential mis-handled scenarios, done by an amateur coder.",
+      "revId": "eb0b56c831911e860a63a5e71fae0282d075eefe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
