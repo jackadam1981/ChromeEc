@@ -46,6 +46,30 @@
       },
       "revId": "ea9782ee8dba38a1491b153c6b17e6353a1e2cfe",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d2cd66f_de67ccea",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-09-01T15:33:01Z",
+      "side": 1,
+      "message": "Do you think I need to move the fips module into its own section in this CL?",
+      "parentUuid": "30c11d00_150c1ef1",
+      "range": {
+        "startLine": 136,
+        "startChar": 58,
+        "endLine": 136,
+        "endChar": 71
+      },
+      "revId": "ea9782ee8dba38a1491b153c6b17e6353a1e2cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
