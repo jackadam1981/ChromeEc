@@ -16,6 +16,23 @@
       "message": "dcrypto p256 moved to separate file.",
       "revId": "72bb611f2d1806c18b356e2361bd9d34a368eb4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8376eafa_0f0d9323",
+        "filename": "board/cr50/dcrypto/dcrypto_p256.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-01T22:17:07Z",
+      "side": 1,
+      "message": "this is not an exact copy of the original file, why not copy it as is?",
+      "revId": "72bb611f2d1806c18b356e2361bd9d34a368eb4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
