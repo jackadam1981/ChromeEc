@@ -260,6 +260,30 @@
       },
       "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bbd408a_cba6ba33",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-01T15:58:54Z",
+      "side": 1,
+      "message": "The #gpio-cells property appears to be required to reference the GPIO phandle by the node name.\n\nYou\u0027re at least following the convention that we\u0027ve used for GPIO references.\n\nBoth the herobrine dts files should be to next child CL.",
+      "parentUuid": "c760caf6_dfb8bcb9",
+      "range": {
+        "startLine": 109,
+        "startChar": 24,
+        "endLine": 109,
+        "endChar": 56
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
