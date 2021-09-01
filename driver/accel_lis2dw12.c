@@ -606,6 +606,7 @@ const struct accelgyro_drv lis2dw12_drv = {
 	.set_offset = st_set_offset,
 	.get_offset = st_get_offset,
 #ifdef LIS2DW12_ENABLE_FIFO
+	.interrupt = lis2dw12_interrupt,
 	.irq_handler = lis2dw12_irq_handler,
 #endif /* CONFIG_ACCEL_INTERRUPTS && CONFIG_ACCEL_LIS2DW_AS_BASE */
 };
