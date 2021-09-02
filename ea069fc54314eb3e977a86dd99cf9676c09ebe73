@@ -52,6 +52,42 @@
       "parentUuid": "74452221_ca18fc28",
       "revId": "ea069fc54314eb3e977a86dd99cf9676c09ebe73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce032ce0_98e866a1",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-02T16:25:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "698ecf7b_318442c1",
+      "revId": "ea069fc54314eb3e977a86dd99cf9676c09ebe73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0183513e_9d09c33b",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-02T16:25:12Z",
+      "side": 1,
+      "message": "Done\n\nlets keep it, we can revert once BKC starts with ES2",
+      "parentUuid": "698ecf7b_318442c1",
+      "revId": "ea069fc54314eb3e977a86dd99cf9676c09ebe73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
