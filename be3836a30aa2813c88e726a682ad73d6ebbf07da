@@ -16,6 +16,24 @@
       "message": "Could we use doubles for the calculation instead of floats? Wouldn\u0027t that be less dependent on compiler flags?",
       "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540e382b_b7e9aa44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T15:50:33Z",
+      "side": 1,
+      "message": "I thought of that, but that would take a LOT of extra work to update all the underlying libraries that use the wrapper macro FLOAT_TO_FP() and fp_t. Unless you know of a compiler flag that will replace floats with doubles under the hood.",
+      "parentUuid": "bc51434b_bd5818b3",
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
