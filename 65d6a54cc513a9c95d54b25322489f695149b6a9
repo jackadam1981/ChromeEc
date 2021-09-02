@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58e0061c_31735e03",
+        "filename": "zephyr/fpu.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-02T19:41:42Z",
+      "side": 1,
+      "message": "drop",
+      "range": {
+        "startLine": 12,
+        "startChar": 34,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "65d6a54cc513a9c95d54b25322489f695149b6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c77c1ab_7b8c9596",
+        "filename": "zephyr/fpu.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-02T19:41:42Z",
+      "side": 1,
+      "message": "64-bit (with the hyphen)",
+      "range": {
+        "startLine": 22,
+        "startChar": 77,
+        "endLine": 23,
+        "endChar": 3
+      },
+      "revId": "65d6a54cc513a9c95d54b25322489f695149b6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab44295c_23232dd1",
+        "filename": "zephyr/fpu.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-02T19:41:42Z",
+      "side": 1,
+      "message": "why do we use these settings only if we\u0027re running ztest?\n\ndo we not want them to apply to the posix-ec build?",
+      "range": {
+        "startLine": 39,
+        "startChar": 40,
+        "endLine": 39,
+        "endChar": 52
+      },
+      "revId": "65d6a54cc513a9c95d54b25322489f695149b6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e26750b5_adb2fecd",
+        "filename": "zephyr/fpu.cmake",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-02T19:41:42Z",
+      "side": 1,
+      "message": "cmake uses two spaces for indentation, not tabs",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "65d6a54cc513a9c95d54b25322489f695149b6a9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -347,6 +347,30 @@
       },
       "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c7bcdba_9f4ae536",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-02T19:41:42Z",
+      "side": 1,
+      "message": "What different environments do you presume we\u0027ll need to run in?\n\nWould still vote for compare with tolerance here.",
+      "parentUuid": "138c1f42_5521d2f5",
+      "range": {
+        "startLine": 20,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
