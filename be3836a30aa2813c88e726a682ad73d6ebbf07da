@@ -143,6 +143,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d272faca_b33dad96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T19:36:50Z",
+      "side": 1,
+      "message": "I thought of that, but the online calibration has a dependency on the CONFIG_FPU because it\u0027s really just not accurate enough without it. So the libraries we depend on don\u0027t need FPU explicitly, but the calibration code does. I\u0027m not a fan of removing that requirement just for tests (though I did toy with the idea).\n\nMade this apply to all (SOC_POSIX \u0026\u0026 ZTEST)",
+      "parentUuid": "34976b2d_78a2ee6a",
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c097fd7_69593c94",
@@ -156,6 +174,30 @@
       "writtenOn": "2021-09-02T16:41:44Z",
       "side": 1,
       "message": "Remove",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 15
+      },
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "192cfea4_5382c803",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T19:36:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c097fd7_69593c94",
       "range": {
         "startLine": 14,
         "startChar": 0,
@@ -191,6 +233,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1498a6e5_63846cb0",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T19:36:50Z",
+      "side": 1,
+      "message": "Jeremy?",
+      "parentUuid": "4fcb43a1_4b333af2",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 66
+      },
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a9092003_d4dfabcb",
         "filename": "zephyr/test/accel_cal/CMakeLists.txt",
         "patchSetId": 2
@@ -202,6 +268,30 @@
       "writtenOn": "2021-09-02T16:41:44Z",
       "side": 1,
       "message": "coreboot-sdk is GCC 8.3.0\n\nsince this is a host test, did you mean LLVM?",
+      "range": {
+        "startLine": 17,
+        "startChar": 21,
+        "endLine": 17,
+        "endChar": 49
+      },
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdfde9df_d55f65e6",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T19:36:50Z",
+      "side": 1,
+      "message": "Thanks, OK, looking at the debug build logs I\u0027m seeing Clang 13.0.0. Updated.",
+      "parentUuid": "a9092003_d4dfabcb",
       "range": {
         "startLine": 17,
         "startChar": 21,
@@ -225,6 +315,30 @@
       "writtenOn": "2021-09-02T16:41:44Z",
       "side": 1,
       "message": "the typical way to solve this is to compare within a tolerance during the test assertion",
+      "range": {
+        "startLine": 20,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "138c1f42_5521d2f5",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T19:36:50Z",
+      "side": 1,
+      "message": "That\u0027s done in some places in the test, but this last bit is used to check that one algorithm\u0027s result is better than another\u0027s. I\u0027ve considered/tried:\n\n1. Updating the sample input - but this would potentially result in the same thing when running in yet another environment.\n2. Comparing with a tolerace - but again, the tolerance might need to increase again and again in different environments.\n3. This change which explicitly builds for a specific machine which makes the test deterministic.\n\nFeel free to suggest an alternate approach, but I think that this approach is the most forward compatible.",
+      "parentUuid": "55756553_941d2d01",
       "range": {
         "startLine": 20,
         "startChar": 39,
