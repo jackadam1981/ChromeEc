@@ -7039,7 +7039,7 @@ __maybe_unused bool pd_discovery_access_validate(int port,
 	return !(task_access[port][type] & ~BIT(task_get_current()));
 }
 
-__maybe_unused struct pd_discovery *pd_get_am_discovery(int port,
+__maybe_unused struct pd_discovery *pd_get_am_discovery_and_notify_access(int port,
 			enum tcpci_msg_type type)
 {
 	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
@@ -7047,6 +7047,16 @@ __maybe_unused struct pd_discovery *pd_get_am_discovery(int port,
 	ASSERT(type < DISCOVERY_TYPE_COUNT);
 
 	atomic_or(&task_access[port][type], BIT(task_get_current()));
+	return &pe[port].discovery[type];
+}
+
+__maybe_unused const struct pd_discovery *pd_get_am_discovery(int port,
+			enum tcpci_msg_type type)
+{
+	if (!IS_ENABLED(CONFIG_USB_PD_ALT_MODE_DFP))
+		assert(0);
+	ASSERT(type < DISCOVERY_TYPE_COUNT);
+
 	return &pe[port].discovery[type];
 }
 
