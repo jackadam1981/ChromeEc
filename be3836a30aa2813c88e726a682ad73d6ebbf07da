@@ -105,6 +105,24 @@
       "parentUuid": "bc7b9481_f6ee24d0",
       "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37af1d06_20f7658e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-09-02T16:22:43Z",
+      "side": 1,
+      "message": "Yeah, just for the host-based unit tests.\n\nAt a larger scope, what other tests are using CONFIG_FPU? Is their behavior correct without these flags? Does the behavior on the host with these flags match what happens on the target hardware (which doesn\u0027t have SSE or x64 instructions)?",
+      "parentUuid": "bc7b9481_f6ee24d0",
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
