@@ -87,6 +87,24 @@
       "parentUuid": "608c5092_c62520ee",
       "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83b4d419_b0e6f252",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T16:21:31Z",
+      "side": 1,
+      "message": "Well it works even in the chroot. So I\u0027m OK with it just always being there.",
+      "parentUuid": "bc7b9481_f6ee24d0",
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
