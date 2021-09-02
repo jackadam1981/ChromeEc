@@ -34,6 +34,24 @@
       "parentUuid": "f7dc3a0a_abe6f949",
       "revId": "ea069fc54314eb3e977a86dd99cf9676c09ebe73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "698ecf7b_318442c1",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-09-02T14:40:12Z",
+      "side": 1,
+      "message": "Also, if we are getting ES2 for M in next 2 wks time frame, do we no need to merge this change?",
+      "parentUuid": "74452221_ca18fc28",
+      "revId": "ea069fc54314eb3e977a86dd99cf9676c09ebe73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
