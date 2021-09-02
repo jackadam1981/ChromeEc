@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a997ee99_1ef8e01d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 16
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-02T19:43:43Z",
+      "side": 1,
+      "message": "s/loading/starting to execute/",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "472ddd627cd430cbf6e87141cc829df1f330b4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e6d56ec_556c7948",
+        "filename": "Makefile.rules",
+        "patchSetId": 16
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-02T19:43:43Z",
+      "side": 1,
+      "message": "this should be above line 427 to make sure that this rule is not available unless required.",
+      "range": {
+        "startLine": 429,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 39
+      },
+      "revId": "472ddd627cd430cbf6e87141cc829df1f330b4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5d72c31_59c2110e",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-02T19:43:43Z",
+      "side": 1,
+      "message": "Idealy objdump should match the architecture, also, it is enough to invoke objdump and awk just once:\n\nvals\u003d( $(/usr/bin/arm-none-eabi-objdump  -x -j .text \\\nbuild/cr50/RW/ec.RW.elf | awk \u0027\n{\n        if ($2 \u003d\u003d \".text\" ) {\n                file_offs \u003d $6\n                base_addr \u003d $5\n        }\n        if ($5 \u003d\u003d \"__fips_module_start\") {fips_start \u003d $1 }\n        if ($5 \u003d\u003d \"__fips_module_end\") {fips_end \u003d $1 }\n}\nEND { printf \"0x%s 0x%s 0x%s 0x%s\\n\", file_offs, base_addr, fips_start, fips_end }\u0027\n\nobjdump  -x -j .text | awk  ) )\n\nfile_offset\u003d${vals[0]}\nbase_addr\u003d${vals[1]}\n...",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "472ddd627cd430cbf6e87141cc829df1f330b4a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
