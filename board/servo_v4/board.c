@@ -307,7 +307,7 @@ int usb_i2c_board_is_enabled(void) { return 1; }
 
 
 /* Write a GPIO output on the tca6416 I2C ioexpander. */
-static void write_ioexpander(int bank, int gpio, int val)
+void write_ioexpander(int bank, int gpio, int val)
 {
 	int tmp;
 

@@ -264,5 +264,7 @@ void ext_hpd_detection_enable(int enable);
  * @param enable Enable CCD if true, otherwise disable
  */
 void ccd_enable(int enable);
+
+void write_ioexpander(int bank, int gpio, int val);
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */

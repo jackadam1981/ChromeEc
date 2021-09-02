@@ -63,6 +63,8 @@
 #define CC_SNK_WITH_PD	BIT(4)   /* Force enabling PD comm for sink role */
 #define CC_POLARITY	BIT(5)   /* CC polarity */
 
+#define CC_FASTBOOT_DFP	BIT(7)  /* Allow mux uServo->Fastboot on DFP */
+
 /* Servo v4 DP alt-mode configuration */
 #define ALT_DP_ENABLE		BIT(0)   /* Enable DP alt-mode or not */
 #define ALT_DP_PIN_C		BIT(1)   /* Pin assignment C supported */
