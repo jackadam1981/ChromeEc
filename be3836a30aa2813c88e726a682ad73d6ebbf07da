@@ -161,6 +161,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbf00f09_71565770",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T23:00:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "540e382b_b7e9aa44",
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c097fd7_69593c94",
@@ -363,6 +381,30 @@
       "side": 1,
       "message": "What different environments do you presume we\u0027ll need to run in?\n\nWould still vote for compare with tolerance here.",
       "parentUuid": "138c1f42_5521d2f5",
+      "range": {
+        "startLine": 20,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc12290f_227de02d",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T23:00:20Z",
+      "side": 1,
+      "message": "Even just ticking the compiler version might break this. No guarantee that the next version of Clang won\u0027t break. Seems safer to just restrict. I\u0027d hate to hunt this down 5 years from now on an uprev of the toolchain.",
+      "parentUuid": "1c7bcdba_9f4ae536",
       "range": {
         "startLine": 20,
         "startChar": 39,
