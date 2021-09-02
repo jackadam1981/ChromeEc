@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b16f997_dc9459cc",
+        "filename": "zephyr/dts/bindings/battery/as3gwrc3ka,c235-41.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "Sure, it looks like that. I will fix this.",
+      "parentUuid": "7340233e_a704bf32",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "26c25f9c_213ecf91",
         "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
         "patchSetId": 2
@@ -37,6 +61,78 @@
       "writtenOn": "2021-08-23T23:21:38Z",
       "side": 1,
       "message": "boolean type?",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "693a19bc_184bd158",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26c25f9c_213ecf91",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d594176_1fd36a4b",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "26c25f9c_213ecf91",
+      "range": {
+        "startLine": 22,
+        "startChar": 12,
+        "endLine": 22,
+        "endChar": 15
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "368fcb1b_2ac268f6",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "There is a problem with boolean values. They don\u0027t have value, they just are defined (true) or undefined (false). For this reason, I am unable to set them as defined by default. So again, yaml files can\u0027t define them as \"true\" 😕 If they are int, yaml files can define them as default 1.",
+      "parentUuid": "26c25f9c_213ecf91",
       "range": {
         "startLine": 22,
         "startChar": 12,
@@ -70,6 +166,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2302b35d_fae32760",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6c199aa4_48d6c9b1",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df07607c_046a2a73",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c199aa4_48d6c9b1",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04f06708_8970f987",
@@ -83,6 +227,54 @@
       "writtenOn": "2021-08-23T23:21:38Z",
       "side": 1,
       "message": "if",
+      "range": {
+        "startLine": 45,
+        "startChar": 17,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12d2c0e3_2424dfd3",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04f06708_8970f987",
+      "range": {
+        "startLine": 45,
+        "startChar": 17,
+        "endLine": 45,
+        "endChar": 19
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16962958_51d7a568",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "04f06708_8970f987",
       "range": {
         "startLine": 45,
         "startChar": 17,
@@ -116,6 +308,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "385bbd99_e9bcaa57",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79ede638_65a53b24",
+      "range": {
+        "startLine": 46,
+        "startChar": 9,
+        "endLine": 46,
+        "endChar": 56
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7eb6e083_43704ef4",
@@ -129,6 +345,30 @@
       "writtenOn": "2021-08-23T23:21:38Z",
       "side": 1,
       "message": "Probably should be boolean.  battery_fuel_gauge.c explicitly checks for (mfgacc_support \u003d\u003d 1).",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 47,
+        "endChar": 15
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f696aee_3b649c45",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eb6e083_43704ef4",
       "range": {
         "startLine": 47,
         "startChar": 12,
@@ -162,6 +402,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0df16d68_02444bb6",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebda8649_c1a313b8",
+      "range": {
+        "startLine": 50,
+        "startChar": 35,
+        "endLine": 50,
+        "endChar": 56
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4d97713_ee79a0fb",
@@ -175,6 +439,30 @@
       "writtenOn": "2021-08-23T23:21:38Z",
       "side": 1,
       "message": "As a follow on CL, can CONFIG_BATTERY_MEASURE_IMBALANCE be eliminated and use just this property to determine if this feature is enabled?\n\nAlso, reference the Kconfig option instead of the cros-ec config.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 78
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b20266a_308cc095",
+        "filename": "zephyr/dts/bindings/battery/battery-fuel-gauge.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-02T17:26:43Z",
+      "side": 1,
+      "message": "If CONFIG_BATTERY_MEASURE_IMBALANCE is not defined, there would be no imbalance_mv property in structure. So if battery has this field defined, but board not, there would be a compilation error.\nThere was no Kconfig for this, I will add it.",
+      "parentUuid": "f4d97713_ee79a0fb",
       "range": {
         "startLine": 75,
         "startChar": 0,
