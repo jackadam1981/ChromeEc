@@ -461,6 +461,30 @@
       },
       "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703288c1_1266bd33",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T23:59:38Z",
+      "side": 1,
+      "message": "I should mention that GCC without these flags is WAY off...\n\nWRONG (GCC)     cal_dist (0.000707) kasa_dist (0.000688)\nCORRECT (Clang) cal_dist (0.000776) kasa_dist (0.001385)\n\nSo I really don\u0027t think that we can put a tolerance on it.",
+      "parentUuid": "9749d420_63245d60",
+      "range": {
+        "startLine": 20,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
