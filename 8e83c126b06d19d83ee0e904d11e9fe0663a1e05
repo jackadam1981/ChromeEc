@@ -16,6 +16,24 @@
       "message": "(1) In the original proposal, Pazquel is a clamshell. If you want to support both clamshell and convertible, please initiate the discussion with Nigel separately to kick off a new project. (2) This should be a FIXUP to convert pazquel from a convertible config to clamshell config. Why do you add more sensor support?",
       "revId": "8e83c126b06d19d83ee0e904d11e9fe0663a1e05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "512ca39d_f3df39f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-02T02:34:06Z",
+      "side": 1,
+      "message": "Dear Philip:\n1. Clamshell is configured because of this discussion:\n   https://partnerissuetracker.corp.google.com/issues/187249927#comment30\n2.To configure clamshell config, I refer to lazor\n  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2391203\n  And the current configuration does add more sensors, which is only more convenient\n  when using the convertible in the future.\n  Clamshell config does not use those sensor configurations.",
+      "parentUuid": "14d15c82_8e3271a3",
+      "revId": "8e83c126b06d19d83ee0e904d11e9fe0663a1e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
