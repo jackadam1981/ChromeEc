@@ -51,6 +51,24 @@
       "message": "The patch looks good for this test, but what about other host-based unit tests? Do we need to apply it to any other tests, and if so, would it be better to have it in a top-level file for the bost-based unit tests?",
       "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "608c5092_c62520ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T16:18:26Z",
+      "side": 1,
+      "message": "Do you think we should just put it at the top level CMakeLists.txt and condition it on CONFIG_FPU?",
+      "parentUuid": "4cbf13da_f883ed6f",
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
