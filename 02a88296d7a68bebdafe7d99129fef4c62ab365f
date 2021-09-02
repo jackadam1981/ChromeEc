@@ -22,6 +22,30 @@
       },
       "revId": "02a88296d7a68bebdafe7d99129fef4c62ab365f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1d10310_12d1ff15",
+        "filename": "chip/it83xx/irq.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-09-02T06:36:39Z",
+      "side": 1,
+      "message": "Our design team confirmed the solution works.\nI also posted root cause in b:197308582",
+      "parentUuid": "3a8d7d4a_36a30b0b",
+      "range": {
+        "startLine": 133,
+        "startChar": 0,
+        "endLine": 137,
+        "endChar": 61
+      },
+      "revId": "02a88296d7a68bebdafe7d99129fef4c62ab365f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
