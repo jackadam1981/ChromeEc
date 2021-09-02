@@ -116,7 +116,7 @@ void chip_enable_irq(int irq)
 		IT83XX_INTC_REG(IT83XX_INTC_EXT_IER_OFF(group)) |= BIT(bit);
 }
 
-void chip_disable_irq(int irq)
+__ram_code void chip_disable_irq(int irq)
 {
 	int group = irq / 8;
 	int bit = irq % 8;

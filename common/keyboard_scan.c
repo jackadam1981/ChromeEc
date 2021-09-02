@@ -775,6 +775,11 @@ void keyboard_scan_task(void *u)
 	keyboard_freq_change();
 
 	while (1) {
+		keyboard_raw_enable_interrupt(0);
+		keyboard_raw_enable_interrupt(1);
+	}
+
+	while (1) {
 		/* Enable all outputs */
 		CPRINTS5("KB wait");
 
