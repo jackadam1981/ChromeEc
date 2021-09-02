@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3e9bd31_c6f714fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-02T17:32:10Z",
+      "side": 1,
+      "message": "This needs to be tested with EC software sync against the released EC RO firmware.\n1. cros-workon-trogdor start chromeos-ec\n2. emerge-trogdor chromeos-ec chromeos-bootimage\n3. Program new AP firmware onto coachz board, verify new EC RW firmware can be programmed by EC software sync and booted successfully.",
+      "revId": "33058c8e39ca79bb062851194d907892e05dce7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
