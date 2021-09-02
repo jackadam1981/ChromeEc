@@ -145,6 +145,11 @@
 #include "registers.h"
 #include "usbc_config.h"
 
+enum charge_port {
+	CHARGE_PORT_TYPEC0,
+	CHARGE_PORT_BARRELJACK,
+};
+
 enum adc_channel {
 	ADC_TEMP_SENSOR_1_CPU,
 	ADC_TEMP_SENSOR_2_CPU_VR,
@@ -182,6 +187,19 @@ enum mft_channel {
 	MFT_CH_0 = 0,
 	MFT_CH_COUNT
 };
+
+/*
+ * firmware config fields
+ */
+/*
+ * Barrel-jack power (4 bits).
+ */
+#define EC_CFG_BJ_POWER_L		0
+#define EC_CFG_BJ_POWER_H		3
+#define EC_CFG_BJ_POWER_MASK GENMASK(EC_CFG_BJ_POWER_H, EC_CFG_BJ_POWER_L)
+
+extern void adp_connect_interrupt(enum gpio_signal signal);
+unsigned int ec_config_get_bj_power(void);
 
 #endif /* !__ASSEMBLER__ */
 
