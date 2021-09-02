@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdceefe6_b509cd1c",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-02T22:07:32Z",
+      "side": 1,
+      "message": "Just to make sure I understand:\n\nFailure cases for fp_finger_match can be:\n\n negative value \u003d\u003e some sort of internal error\n EC_MKBP_FP_ERR_MATCH_NO (0) \n EC_MKBP_FP_ERR_MATCH_LOW_QUALITY (2)\n EC_MKBP_FP_ERR_MATCH_LOW_COVERAGE (4)\n \nBefore this change, we were converting EC_MKBP_FP_ERR_MATCH_LOW_QUALITY and EC_MKBP_FP_ERR_MATCH_LOW_COVERAGE errors to EC_MKBP_FP_ERR_MATCH_NO_INTERNAL because fgr was set to -1.\n\nIf I got that right, can you mention the exact error codes that were overwritten (LOW_QUALITY and LOW_COVERAGE) in the commit message?",
+      "range": {
+        "startLine": 150,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 16
+      },
+      "revId": "286aa91001526d3eb7c987956f8a3ac39f19390d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1da32af_058c5bfa",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-02T22:07:32Z",
+      "side": 1,
+      "message": "Can we do something like this to make it a little easier to read (double-check the logic is the same):\n\n \t\tif (fp_match_success(res)) {\n\t\t\tif (fgr \u003e\u003d 0 \u0026\u0026 fgr \u003c FP_MAX_FINGER_COUNT) {\n\t\t\t\tfp_enable_positive_match_secret(\n\t\t\t\t\tfgr, \u0026positive_match_secret_state);\n\t\t\t} else {\n\t\t\t\tres \u003d EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;\n\t\t\t}\n\t\t} else {\n\t\t\tres \u003d EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;\n\t\t\nwhere fp_match_success replaces the EC_MKBP_FP_MATCH_SUCCESS macro:\n\n static bool fp_match_success(int match_result)\n{\n\tif (match_result \u003d\u003d EC_MKBP_FP_ERR_MATCH_YES ||\n\t    match_result \u003d\u003d EC_MKBP_FP_ERR_MATCH_YES_UPDATED ||\n\t    match_result \u003d\u003d EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED) {\n\t\treturn true;\n\t}\n\treturn false;\n}",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "286aa91001526d3eb7c987956f8a3ac39f19390d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32ea7716_05ffe9a9",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-02T22:07:32Z",
+      "side": 1,
+      "message": "Can we do something like this to make it a little easier to read (double-check the logic is the same):\n\n \t\tif (fp_match_success(res)) {\n\t\t\tif (fgr \u003e\u003d 0 \u0026\u0026 fgr \u003c FP_MAX_FINGER_COUNT) {\n\t\t\t\tfp_enable_positive_match_secret(\n\t\t\t\t\tfgr, \u0026positive_match_secret_state);\n\t\t\t} else {\n\t\t\t\tres \u003d EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;\n\t\t\t}\n\t\t} else {\n\t\t\tres \u003d EC_MKBP_FP_ERR_MATCH_NO_INTERNAL;\n\t\t\nwhere fp_match_success replaces the EC_MKBP_FP_MATCH_SUCCESS macro:\n\n static bool fp_match_success(int match_result)\n{\n\tif (match_result \u003d\u003d EC_MKBP_FP_ERR_MATCH_YES ||\n\t    match_result \u003d\u003d EC_MKBP_FP_ERR_MATCH_YES_UPDATED ||\n\t    match_result \u003d\u003d EC_MKBP_FP_ERR_MATCH_YES_UPDATE_FAILED) {\n\t\treturn true;\n\t}\n\treturn false;\n}",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "286aa91001526d3eb7c987956f8a3ac39f19390d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
