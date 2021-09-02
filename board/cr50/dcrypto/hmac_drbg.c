@@ -142,8 +142,12 @@ void drbg_exit(struct drbg_ctx *ctx)
 	always_memset(ctx->v,  0x00, sizeof(ctx->v));
 }
 
+#define CRYPTO_TEST_CMD_RFC6979 0
+#define CRYPTO_TEST_CMD_HMAC_DRBG_RAND 0
+
 #ifdef CRYPTO_TEST_SETUP
 
+#if CRYPTO_TEST_CMD_RFC6979
 /*
  * from the RFC 6979 A.2.5 example:
  *
@@ -205,6 +209,9 @@ static int cmd_rfc6979(int argc, char **argv)
 }
 DECLARE_SAFE_CONSOLE_COMMAND(rfc6979, cmd_rfc6979, NULL, NULL);
 
+#endif
+
+#if CRYPTO_TEST_CMD_HMAC_DRBG_RAND
 /*
  * Test vectors from the NIST Cryptographic Algorithm Validation Program.
  *
@@ -349,6 +356,8 @@ static int cmd_hmac_drbg_rand(int argc, char **argv)
 	return 0;
 }
 DECLARE_SAFE_CONSOLE_COMMAND(hmac_drbg_rand, cmd_hmac_drbg_rand, NULL, NULL);
+
+#endif /* CRYPTO_TEST_CMD_HMAC_DRBG_RAND */
 
 enum drbg_command {
 	DRBG_INIT = 0,

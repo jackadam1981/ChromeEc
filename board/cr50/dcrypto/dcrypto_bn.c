@@ -1410,7 +1410,9 @@ int dcrypto_modexp_word(struct LITE_BIGNUM *output,
 	return result == 0;
 }
 
-#ifdef CRYPTO_TEST_SETUP
+#define CRYPTO_TEST_CMD_GENP 0
+
+#if defined(CRYPTO_TEST_SETUP) && defined(CRYPTO_TEST_CMD_GENP)
 #include "console.h"
 #include "shared_mem.h"
 #include "timer.h"
