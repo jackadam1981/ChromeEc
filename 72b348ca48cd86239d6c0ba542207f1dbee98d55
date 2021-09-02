@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36defbe2_a9e7b84d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-09-02T15:41:23Z",
+      "side": 1,
+      "message": "Fixed building issues. Some platform which included \"bb_retimer.h\" in their \"board.c\" files instead of including public API (\"bb_retimer_public.h\") failed to locate this header. \"bb_retimer.h\" was moved to be accessible by emulator code which need access to some internal values.",
+      "revId": "72b348ca48cd86239d6c0ba542207f1dbee98d55",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
