@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4262ca4_5d5ca58f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-02T20:37:19Z",
+      "side": 1,
+      "message": "I\u0027m using ServoV2.",
+      "parentUuid": "fcc33998_6519bb55",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da27362c_71a1764d",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -157,6 +181,30 @@
       "side": 1,
       "message": "How did you perform the test? Be sure to \"power off\" AP, and no AC plugged, before you call \"hibernate\".\n\nThe RTC chip should assert its IRQ pin after 10s and then wake EC up from hibernate.",
       "parentUuid": "19e90ef7_029d8ae4",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 61
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27e47c18_462c4416",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-02T20:37:19Z",
+      "side": 1,
+      "message": "I still might be performing the test correctly. On EC console.\n1) apshutdown\n2) rtc_alarm 20\n3) hibernate\nHibernating until wake pin asserted.\n\nBut it never wakes up.",
+      "parentUuid": "0336e167_1af43cbb",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -372,6 +420,30 @@
       "side": 1,
       "message": "To resolve this comment: go back to explicitly specifying the GPIO port and pin here \"int-gpios \u003d \u003c\u0026gpio0 2 0\u003e;\"\n\nIn a follow on CL, switch to using the \u003c\u0026gpio_rtc_ec_wake_odl\u003e; reference and update the driver to find the correct PHANDLE.  \nWe also need to address our use of the \"flags\" property in GPIO phandles because the GPIO_INPUT and other bits overflow the storage type for gpio_dt_spec-\u003edt_flags.",
       "parentUuid": "60cb8d22_4fab8250",
+      "range": {
+        "startLine": 109,
+        "startChar": 24,
+        "endLine": 109,
+        "endChar": 56
+      },
+      "revId": "310500d0abeb739f3d160eec911d4851b09cc71f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca125bef_81c1b11f",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-02T20:37:19Z",
+      "side": 1,
+      "message": "Your solution works and I\u0027ve change the code.",
+      "parentUuid": "04b6f66a_19d76ed3",
       "range": {
         "startLine": 109,
         "startChar": 24,

@@ -544,6 +544,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4310a5c9_2af9110c",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-02T20:37:19Z",
+      "side": 1,
+      "message": "enum bcd_mask is defined in the header file. nxp_rtc_pcf85063a.h",
+      "parentUuid": "6ab885d2_a1ff1529",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 1
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7dd62667_3ca2f7be",
         "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
         "patchSetId": 4
