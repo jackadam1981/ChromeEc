@@ -167,6 +167,10 @@ void usleep(unsigned us)
 	uint32_t evt = 0;
 	uint32_t t0;
 
+	/* If parameter us is 0, just return to avoid ASSERT(us) */
+	if (!us)
+		return;
+
 	if (IS_ENABLED(CONFIG_ZEPHYR)) {
 		while (us)
 			us = k_usleep(us);
