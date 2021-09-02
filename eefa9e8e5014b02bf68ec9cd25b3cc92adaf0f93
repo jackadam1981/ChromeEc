@@ -176,6 +176,24 @@
       "parentUuid": "e3d7dd9b_8dd557f2",
       "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc68e79_185e57cb",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-02T06:57:10Z",
+      "side": 1,
+      "message": "I think you can just cherry-pick the SSFC CL. Please make sure the ectool in the TOT/Factory branch can work correctly.",
+      "parentUuid": "300d4c0f_ffc8ec2f",
+      "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
