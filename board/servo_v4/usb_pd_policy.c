@@ -11,6 +11,7 @@
 #include "hooks.h"
 #include "host_command.h"
 #include "i2c.h"
+#include "pathsel.h"
 /* Just want the .h file for PS8742 definitions, not the large object file. */
 #define CONFIG_USB_MUX_PS8742
 #include "ps874x.h"
@@ -746,6 +747,43 @@ __override void pd_execute_data_swap(int port, int data_role)
 	 * TODO(b/137887386): Turn on the fastboot/DFU path when data swap to
 	 * DFP?
 	 */
+    if (port == CHG)
+		return;
+
+	switch (data_role) {
+	case PD_ROLE_DFP:
+		if (cc_config & CC_FASTBOOT_DFP) {
+			dut_to_host();
+		} else {
+			/* Disable USB2 lines from DUT */
+			gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 1);
+			uservo_to_host();
+		}
+		break;
+	case PD_ROLE_UFP:
+		/* Ensure that FASTBOOT is disabled */
+		gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_SEL, 1);
+
+        /* Enable USB2 lines */
+		gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 0);
+
+        /*
+		 * By default, uServo port will be enabled. Only if the user
+		 * explicitly enable CC_FASTBOOT_DFP then uServo is disabled.
+		 */
+		if (!(cc_config & CC_FASTBOOT_DFP))
+			uservo_to_host();
+		break;
+	case PD_ROLE_DISCONNECTED:
+		/* Disable USB2 lines */
+		gpio_set_level(GPIO_FASTBOOT_DUTHUB_MUX_EN_L, 1);
+
+        if (!(cc_config & CC_FASTBOOT_DFP))
+			uservo_to_host();
+		break;
+	default:
+		CPRINTS("C%d: %s: Invalid data_role:%d", port, __func__,  data_role);
+	}
 }
 
 __override void pd_check_pr_role(int port, int pr_role, int flags)
@@ -1409,7 +1447,19 @@ static int cmd_usbc_action(int argc, char *argv[])
 			return EC_ERROR_PARAM2;
 
 		allow_pr_swap = !!atoi(argv[2]);
-	} else {
+	} else if (!strcasecmp(argv[1], "fastboot")) {
+		if (argc == 2) {
+			CPRINTF("fastboot = %d\n",
+				!!(cc_config & CC_FASTBOOT_DFP));
+			return EC_SUCCESS;
+		}
+		if (argc != 3)
+			return EC_ERROR_PARAM2;
+		if (!!atoi(argv[2]))
+			cc_config |= CC_FASTBOOT_DFP;
+		else
+			cc_config &= ~CC_FASTBOOT_DFP;
+    } else {
 		return EC_ERROR_PARAM1;
 	}
 
