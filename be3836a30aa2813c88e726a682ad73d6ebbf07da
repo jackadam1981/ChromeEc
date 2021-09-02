@@ -123,6 +123,24 @@
       "parentUuid": "bc7b9481_f6ee24d0",
       "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34976b2d_78a2ee6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-02T16:25:00Z",
+      "side": 1,
+      "message": "True, perhaps we should also run this test with CONFIG_FPU off so that it uses all fixed point math.",
+      "parentUuid": "37af1d06_20f7658e",
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
