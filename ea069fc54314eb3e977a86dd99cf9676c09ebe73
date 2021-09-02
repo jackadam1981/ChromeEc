@@ -16,6 +16,24 @@
       "message": "#ifdef BOARD_ADLRVPM_ITE \n\ni think it applies only to M? ES2 is available for P?",
       "revId": "ea069fc54314eb3e977a86dd99cf9676c09ebe73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74452221_ca18fc28",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-09-02T14:36:30Z",
+      "side": 1,
+      "message": "K0 for P is available from this week onwards. So, Agree that no need of this change for P, from next release onwards.",
+      "parentUuid": "f7dc3a0a_abe6f949",
+      "revId": "ea069fc54314eb3e977a86dd99cf9676c09ebe73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
