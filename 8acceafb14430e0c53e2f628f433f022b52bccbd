@@ -22,6 +22,30 @@
       },
       "revId": "8acceafb14430e0c53e2f628f433f022b52bccbd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b1e8f00_a1d426b3",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 731,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-02T18:20:23Z",
+      "side": 1,
+      "message": "Oh, I forgot to emerge zephyr-build-tools, that is why I thought it worked.",
+      "parentUuid": "d9c80af8_ac8550ec",
+      "range": {
+        "startLine": 731,
+        "startChar": 20,
+        "endLine": 731,
+        "endChar": 52
+      },
+      "revId": "8acceafb14430e0c53e2f628f433f022b52bccbd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
