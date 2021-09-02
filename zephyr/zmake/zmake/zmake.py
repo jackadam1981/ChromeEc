@@ -728,7 +728,7 @@ class Zmake:
                     "-t",
                     "Zephyr EC Unittest",
                     "-p",
-                    self.checkout / "src",
+                    self.module_paths["ec"] / "src",
                     "-s",
                 ]
                 + all_lcov_files,
