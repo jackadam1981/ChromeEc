@@ -413,6 +413,30 @@
       },
       "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e2a9997_315cd770",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1331721
+      },
+      "writtenOn": "2021-09-02T23:04:54Z",
+      "side": 1,
+      "message": "\u003e en just ticking the compiler version might break this.\nThat\u0027s a strong argument *for* Jack\u0027s suggestion of using a tolerance in the comparison.",
+      "parentUuid": "dc12290f_227de02d",
+      "range": {
+        "startLine": 20,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
