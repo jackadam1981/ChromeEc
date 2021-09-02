@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8b4bc7e_f75f7ff2",
+        "filename": "common/usbc/usbc_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-09-02T03:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b5d1042_73ceebf2",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 27
+      },
+      "revId": "29fe04b5c1c79a15b5d23e64ed4d21a584482b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd24bc39_73892eee",
@@ -73,6 +97,24 @@
       "side": 1,
       "message": "We\u0027re not allowed to initiate Vconn swaps when we\u0027re connected to a CTVPD, so it\u0027s probably for the best to use it here as well and catch that case.",
       "parentUuid": "e9482f28_8333eca3",
+      "revId": "29fe04b5c1c79a15b5d23e64ed4d21a584482b42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8838df07_40eb85fe",
+        "filename": "common/usbc/usbc_pd_policy.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-09-02T03:38:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fe03ac6_62a5b9ea",
       "revId": "29fe04b5c1c79a15b5d23e64ed4d21a584482b42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
