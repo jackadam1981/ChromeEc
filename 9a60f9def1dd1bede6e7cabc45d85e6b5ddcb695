@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b3211b0_62646907",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-02T06:40:37Z",
+      "side": 1,
+      "message": "I think you can put this to the baseboard/brask/cbi.c. Besides, the cbi driver already cache the value to the ram, i think it is unnecessary to use the static variable to store it again.",
+      "range": {
+        "startLine": 49,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "9a60f9def1dd1bede6e7cabc45d85e6b5ddcb695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
