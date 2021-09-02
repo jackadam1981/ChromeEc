@@ -19,8 +19,13 @@
  * CONFIG_FLASH_PSTATE_LOCKED must be defined in order to enable write protect
  * using option bytes WRP registers.
  */
+<<<<<<< HEAD   (1f6aaf baklava: Add QSI PID/VID option)
 #undef CONFIG_SYSTEM_UNLOCKED
 #define CONFIG_FLASH_PSTATE_LOCKED
+=======
+#define CONFIG_SYSTEM_UNLOCKED /* Allow dangerous commands while in dev. */
+#undef CONFIG_FLASH_PSTATE_LOCKED
+>>>>>>> BRANCH (20c87c honeybuns: fix cbi write protect check)
 
 /* USB Type C and USB PD defines */
 #define USB_PD_PORT_HOST   0

@@ -51,7 +51,15 @@
 #ifdef STM32_FLASH_DBANK_MODE
 #define FLASH_WRP_MASK              (FLASH_PAGE_MAX_COUNT - 1)
 #else
+<<<<<<< HEAD   (1f6aaf baklava: Add QSI PID/VID option)
 #define FLASH_WRP_MASK              ((FLASH_PAGE_MAX_COUNT) / 2 - 1)
+=======
+#ifdef CHIP_FAMILY_STM32L4
+#define FLASH_WRP_MASK              0xFF
+#else
+#define FLASH_WRP_MASK              ((FLASH_PAGE_MAX_COUNT) / 2 - 1)
+#endif
+>>>>>>> BRANCH (20c87c honeybuns: fix cbi write protect check)
 #endif /* CONFIG_FLASH_DBANK_MODE */
 #define FLASH_WRP_START(val)        ((val) & FLASH_WRP_MASK)
 #define FLASH_WRP_END(val)          (((val) >> 16) & FLASH_WRP_MASK)
@@ -115,7 +123,12 @@ static int unlock(int locks)
 
 static void lock(void)
 {
-	STM32_FLASH_CR = FLASH_CR_LOCK;
+	STM32_FLASH_CR |= FLASH_CR_LOCK;
+}
+
+static void ob_lock(void)
+{
+	STM32_FLASH_CR |= FLASH_CR_OPTLOCK;
 }
 
 /*
@@ -160,11 +173,20 @@ static int commit_optb(void)
 {
 	int rv;
 
+	/*
+	 * Wait for last operation.
+	 */
+	rv = wait_while_busy();
+	if (rv)
+		return rv;
+
 	STM32_FLASH_CR |= FLASH_CR_OPTSTRT;
 
 	rv = wait_while_busy();
 	if (rv)
 		return rv;
+
+	ob_lock();
 	lock();
 
 	return EC_SUCCESS;
@@ -208,6 +230,7 @@ static void optb_get_wrp(enum wrp_region region, struct wrp_info *wrp)
 		 * start/end indices. If end >= start, then RO write protect is
 		 * enabled.
 		 */
+<<<<<<< HEAD   (1f6aaf baklava: Add QSI PID/VID option)
 		wrp->start = FLASH_WRP_START(STM32_FLASH_WRP1AR);
 		wrp->end = FLASH_WRP_END(STM32_FLASH_WRP1AR);
 		wrp->enable = wrp->end >= wrp->start;
@@ -219,6 +242,19 @@ static void optb_get_wrp(enum wrp_region region, struct wrp_info *wrp)
 		 */
 		wrp->start = FLASH_WRP_START(STM32_FLASH_WRP1BR);
 		wrp->end = FLASH_WRP_END(STM32_FLASH_WRP1BR);
+=======
+		wrp->start = FLASH_WRP_START(STM32_OPTB_WRP1AR);
+		wrp->end = FLASH_WRP_END(STM32_OPTB_WRP1AR);
+		wrp->enable = wrp->end >= wrp->start;
+	} else if (region == WRP_RW) {
+		/*
+		 * RW write always uses WRP1BR. If dual-bank mode is being used,
+		 * then WRP2AR must also be check to determine the full range of
+		 * flash page indices being protected.
+		 */
+		wrp->start = FLASH_WRP_START(STM32_OPTB_WRP1BR);
+		wrp->end = FLASH_WRP_END(STM32_OPTB_WRP1BR);
+>>>>>>> BRANCH (20c87c honeybuns: fix cbi write protect check)
 		wrp->enable = wrp->end >= wrp->start;
 #ifdef STM32_FLASH_DBANK_MODE
 		start = FLASH_WRP_START(STM32_FLASH_WRP2AR);
@@ -330,7 +366,7 @@ static void unprotect_all_blocks(void)
 	commit_optb();
 }
 
-int flash_physical_protect_at_boot(uint32_t new_flags)
+int crec_flash_physical_protect_at_boot(uint32_t new_flags)
 {
 	struct wrp_info wrp_ro;
 	struct wrp_info wrp_rw;
@@ -411,7 +447,7 @@ int flash_physical_protect_at_boot(uint32_t new_flags)
  */
 static int registers_need_reset(void)
 {
-	uint32_t flags = flash_get_protect();
+	uint32_t flags = crec_flash_get_protect();
 	int ro_at_boot = (flags & EC_FLASH_PROTECT_RO_AT_BOOT) ? 1 : 0;
 	/* The RO region is write-protected by the WRP1AR range. */
 	uint32_t wrp1ar = STM32_OPTB_WRP1AR;
@@ -426,7 +462,7 @@ static int registers_need_reset(void)
 /*****************************************************************************/
 /* Physical layer APIs */
 
-int flash_physical_write(int offset, int size, const char *data)
+int crec_flash_physical_write(int offset, int size, const char *data)
 {
 	uint32_t *address = (void *)(CONFIG_PROGRAM_MEMORY_BASE + offset);
 	int res = EC_SUCCESS;
@@ -434,6 +470,10 @@ int flash_physical_write(int offset, int size, const char *data)
 	int i;
 	int unaligned = (uint32_t)data & (STM32_FLASH_MIN_WRITE_SIZE - 1);
 	uint32_t *data32 = (void *)data;
+
+	/* Check Flash offset */
+	if (offset % STM32_FLASH_MIN_WRITE_SIZE)
+		return EC_ERROR_MEMORY_ALLOCATION;
 
 	if (unlock(FLASH_CR_LOCK) != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
@@ -501,7 +541,7 @@ exit_wr:
 	return res;
 }
 
-int flash_physical_erase(int offset, int size)
+int crec_flash_physical_erase(int offset, int size)
 {
 	int res = EC_SUCCESS;
 	int pg;
@@ -560,7 +600,7 @@ exit_er:
 	return res;
 }
 
-int flash_physical_get_protect(int block)
+int crec_flash_physical_get_protect(int block)
 {
 	struct wrp_info wrp_ro;
 	struct wrp_info wrp_rw;
@@ -576,7 +616,7 @@ int flash_physical_get_protect(int block)
  * Note: This does not need to update _NOW flags, as get_protect_flags
  * in common code already does so.
  */
-uint32_t flash_physical_get_protect_flags(void)
+uint32_t crec_flash_physical_get_protect_flags(void)
 {
 	uint32_t flags = 0;
 	struct wrp_info wrp_ro;
@@ -589,6 +629,11 @@ uint32_t flash_physical_get_protect_flags(void)
 	if (wrp_ro.start == FLASH_RO_FIRST_PAGE_IDX &&
 	    wrp_ro.end == FLASH_RO_LAST_PAGE_IDX)
 		flags |= EC_FLASH_PROTECT_RO_AT_BOOT;
+<<<<<<< HEAD   (1f6aaf baklava: Add QSI PID/VID option)
+=======
+
+	if (wrp_rw.enable) {
+>>>>>>> BRANCH (20c87c honeybuns: fix cbi write protect check)
 
 	/*
 	 * If RW write protection is enabled, verify that relevant flash pages
@@ -603,10 +648,18 @@ uint32_t flash_physical_get_protect_flags(void)
 			flags |= EC_FLASH_PROTECT_ROLLBACK_AT_BOOT;
 #endif /* CONFIG_ROLLBACK */
 #ifdef CONFIG_FLASH_PROTECT_RW
+<<<<<<< HEAD   (1f6aaf baklava: Add QSI PID/VID option)
 		if (wrp_rw.end == (PHYSICAL_BANKS - 1))
+=======
+		if (wrp_rw.end == PHYSICAL_BANKS)
+>>>>>>> BRANCH (20c87c honeybuns: fix cbi write protect check)
 			flags |= EC_FLASH_PROTECT_RW_AT_BOOT;
 #endif /* CONFIG_FLASH_PROTECT_RW */
+<<<<<<< HEAD   (1f6aaf baklava: Add QSI PID/VID option)
 		if (wrp_rw.end == (PHYSICAL_BANKS - 1) &&
+=======
+		if (wrp_rw.end == PHYSICAL_BANKS &&
+>>>>>>> BRANCH (20c87c honeybuns: fix cbi write protect check)
 		    wrp_rw.start == WP_BANK_OFFSET + WP_BANK_COUNT &&
 		    flags & EC_FLASH_PROTECT_RO_AT_BOOT)
 			flags |= EC_FLASH_PROTECT_ALL_AT_BOOT;
@@ -615,12 +668,12 @@ uint32_t flash_physical_get_protect_flags(void)
 	return flags;
 }
 
-int flash_physical_protect_now(int all)
+int crec_flash_physical_protect_now(int all)
 {
 	return EC_ERROR_INVAL;
 }
 
-uint32_t flash_physical_get_valid_flags(void)
+uint32_t crec_flash_physical_get_valid_flags(void)
 {
 	return EC_FLASH_PROTECT_RO_AT_BOOT |
 	       EC_FLASH_PROTECT_RO_NOW |
@@ -636,7 +689,7 @@ uint32_t flash_physical_get_valid_flags(void)
 	       EC_FLASH_PROTECT_ALL_NOW;
 }
 
-uint32_t flash_physical_get_writable_flags(uint32_t cur_flags)
+uint32_t crec_flash_physical_get_writable_flags(uint32_t cur_flags)
 {
 	uint32_t ret = 0;
 
@@ -667,10 +720,25 @@ uint32_t flash_physical_get_writable_flags(uint32_t cur_flags)
 	return ret;
 }
 
-int flash_pre_init(void)
+int crec_flash_physical_force_reload(void)
+{
+	int rv = unlock(FLASH_CR_OPTLOCK);
+
+	if (rv)
+		return rv;
+
+	/* Force a reboot; this should never return. */
+	STM32_FLASH_CR = FLASH_CR_OBL_LAUNCH;
+	while (1)
+		;
+
+	return EC_ERROR_UNKNOWN;
+}
+
+int crec_flash_pre_init(void)
 {
 	uint32_t reset_flags = system_get_reset_flags();
-	uint32_t prot_flags = flash_get_protect();
+	uint32_t prot_flags = crec_flash_get_protect();
 	int need_reset = 0;
 
 	/*
@@ -689,7 +757,7 @@ int flash_pre_init(void)
 			 * update to the write protect register and reboot so
 			 * it takes effect.
 			 */
-			flash_physical_protect_at_boot(
+			crec_flash_physical_protect_at_boot(
 				EC_FLASH_PROTECT_RO_AT_BOOT);
 			need_reset = 1;
 		}
@@ -703,7 +771,7 @@ int flash_pre_init(void)
 			 * to the check above.  One of them should be able to
 			 * go away.
 			 */
-			flash_protect_at_boot(
+			crec_flash_protect_at_boot(
 				prot_flags & EC_FLASH_PROTECT_RO_AT_BOOT);
 			need_reset = 1;
 		}
@@ -718,7 +786,8 @@ int flash_pre_init(void)
 		}
 	}
 
-	if ((flash_physical_get_valid_flags() & EC_FLASH_PROTECT_ALL_AT_BOOT) &&
+	if ((crec_flash_physical_get_valid_flags() &
+	    EC_FLASH_PROTECT_ALL_AT_BOOT) &&
 	    (!!(prot_flags & EC_FLASH_PROTECT_ALL_AT_BOOT) !=
 	     !!(prot_flags & EC_FLASH_PROTECT_ALL_NOW))) {
 		/*
@@ -733,7 +802,8 @@ int flash_pre_init(void)
 	}
 
 #ifdef CONFIG_FLASH_PROTECT_RW
-	if ((flash_physical_get_valid_flags() & EC_FLASH_PROTECT_RW_AT_BOOT) &&
+	if ((crec_flash_physical_get_valid_flags() &
+	    EC_FLASH_PROTECT_RW_AT_BOOT) &&
 	    (!!(prot_flags & EC_FLASH_PROTECT_RW_AT_BOOT) !=
 	     !!(prot_flags & EC_FLASH_PROTECT_RW_NOW))) {
 		/* RW_AT_BOOT and RW_NOW do not match. */
@@ -742,7 +812,7 @@ int flash_pre_init(void)
 #endif
 
 #ifdef CONFIG_ROLLBACK
-	if ((flash_physical_get_valid_flags() &
+	if ((crec_flash_physical_get_valid_flags() &
 	     EC_FLASH_PROTECT_ROLLBACK_AT_BOOT) &&
 	    (!!(prot_flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT) !=
 	     !!(prot_flags & EC_FLASH_PROTECT_ROLLBACK_NOW))) {
