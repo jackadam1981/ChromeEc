@@ -34,6 +34,24 @@
       "parentUuid": "14d15c82_8e3271a3",
       "revId": "8e83c126b06d19d83ee0e904d11e9fe0663a1e05",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42aca503_cfd5faa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-09-02T18:22:00Z",
+      "side": 1,
+      "message": "One patch should do one thing.\nIf we kick off a convertible project later, you can add more sensors.\nPlease remove the sensors we don\u0027t use for now.",
+      "parentUuid": "512ca39d_f3df39f6",
+      "revId": "8e83c126b06d19d83ee0e904d11e9fe0663a1e05",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
