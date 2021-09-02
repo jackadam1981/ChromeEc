@@ -22,6 +22,30 @@
       },
       "revId": "437b083f829922b947060cac12ade1412a077b51",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf80a878_fb76e44b",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-02T16:38:14Z",
+      "side": 1,
+      "message": "+1 to fix the indentation.",
+      "parentUuid": "83e9ccf0_1038c10a",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 4
+      },
+      "revId": "437b083f829922b947060cac12ade1412a077b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
