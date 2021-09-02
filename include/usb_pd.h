@@ -2137,7 +2137,18 @@ bool pd_discovery_access_validate(int port, enum tcpci_msg_type type);
  * @param type Transmit type (SOP, SOP') for discovered information
  * @return     pointer to PD alternate mode discovery results
  */
-struct pd_discovery *pd_get_am_discovery(int port,
+struct pd_discovery *pd_get_am_discovery_and_notify_access(int port,
+		enum tcpci_msg_type type);
+
+/*
+ * Returns the constant pointer to PD alternate mode discovery results
+ * Note: Caller function is expected to only read the discovery results.
+ *
+ * @param port USB-C port number
+ * @param type Transmit type (SOP, SOP') for discovered information
+ * @return     pointer to PD alternate mode discovery results
+ */
+const struct pd_discovery *pd_get_am_discovery(int port,
 		enum tcpci_msg_type type);
 
 /*
