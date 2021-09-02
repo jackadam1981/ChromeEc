@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83e9ccf0_1038c10a",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-02T15:33:51Z",
+      "side": 1,
+      "message": "nit \u0026 fyi: This indentation should be 3 tabs + 3 spaces to get the first param on each row vertically aligned. (It\u0027s not that important...)",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 4
+      },
+      "revId": "437b083f829922b947060cac12ade1412a077b51",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
