@@ -437,6 +437,30 @@
       },
       "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9749d420_63245d60",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-02T23:42:20Z",
+      "side": 1,
+      "message": "But if we use a tolerance and then tick the compiler, that uprev might push us out of the tolerance range. So we\u0027d have to hunt this down again. I don\u0027t want to start playing the game of \"well we just need to add X to the tolerance, that\u0027s still OK\". Well at what point do you know that you\u0027ve gone too far?\n\nHere we\u0027re compiling for a very specific arc which means that all builds will be the same.",
+      "parentUuid": "0e2a9997_315cd770",
+      "range": {
+        "startLine": 20,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
