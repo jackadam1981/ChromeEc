@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2c4d86f9_77a844f3",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-09-02T07:16:38Z",
+      "side": 1,
+      "message": "That exact topic is discussed in parent CL crrev/c/2420477 regarding \"nonatomic handling of register\".\n\n\u003e https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2420477/11/driver/tcpm/tcpci.c#1253\n\nThis non-atomicity is what I suggested deferring on for now. Hence split this CL off to be the most non-invasive mitigation.\n\nI do not believe a formal bug has been filed regarding ALERT register handling. I have not filed one since current code is sensitive to ordering, and doesn\u0027t exploit necessary features of TCPCI spec to handle ALERT registers asynchronously. For example: Extended Alerts (FRS) would need to be re-ordered to be handled first, in order to not block de-asserting ALERT# line due to Standard Alert register. Long I2C RX_BUF accesses would need to be interrupted on FRS ALERT. Etc.\n\nAnother example: we don\u0027t (currently) handle MessageID repeats /before/ packet queue. Working Groups have advised handling it there; in the interrupt handler. Such changes would be too major for this CL.",
+      "parentUuid": "0dfe8195_b35676cd",
+      "revId": "8c094dfd9a65ade715a52cfec25761e0f7e124ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1a298848_b932fd5e",
         "filename": "driver/tcpm/tcpci.c",
         "patchSetId": 3
@@ -48,6 +66,24 @@
       "writtenOn": "2021-09-01T19:58:17Z",
       "side": 1,
       "message": "nit: we\u0027re already logging the RX buffer overflow in the enqueue function.  Would it be more informative to also print if the alert register shows RX_BUF_OVF? That\u0027s one that we don\u0027t appear to at all be checking for right now.  I assume from your CL description there\u0027s follow-up to come for handling OVF by itself more. \n\nAlso, should this just break the loop?  That saves us running an extra enqueue failure before seeing RX status hopefully cleared the next time we retrieve the alert register",
+      "revId": "8c094dfd9a65ade715a52cfec25761e0f7e124ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d6246ad_b603207e",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-09-02T07:16:38Z",
+      "side": 1,
+      "message": "We don\u0027t handle RX_BUF_OVF anywhere currently. I split this CL for more rapid deployment.\n\nSee crrev/c/2420477 for only some of the changes necessary to achieve this.\n\nRETURN is not used because TCPCI v1.0 FIFO may have unknown depth. (In TCPCI r2.0 this was constrained to \"2\".) We may need to \"flush out\" multiple FIFO packets rapidly. Iterating until ALERT# RX_STATUS is cleared achieves this.",
+      "parentUuid": "9478a37c_ca79cced",
       "revId": "8c094dfd9a65ade715a52cfec25761e0f7e124ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
