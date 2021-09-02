@@ -158,6 +158,24 @@
       "parentUuid": "2f81e9a7_f5fa9c5b",
       "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "300d4c0f_ffc8ec2f",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-09-02T06:52:20Z",
+      "side": 1,
+      "message": "Because the SSFC CL dependent on \"CBI: Add MODEL_ID field\" , \"Support PCB supplier field\", \"add FW_CONFIG CBI field\".\nI am cherry-pick the CL for Add MODEL_ID, but I can\u0027t CQ+2.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3131948 \nOr I can cherry-pick SSFC CL only?",
+      "parentUuid": "e3d7dd9b_8dd557f2",
+      "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
