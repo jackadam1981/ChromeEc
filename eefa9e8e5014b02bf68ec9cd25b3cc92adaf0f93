@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "676998ed_17e98adc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-09-02T01:45:00Z",
+      "side": 1,
+      "message": "I will verify it on Rammus branch. Thanks.",
+      "parentUuid": "164153aa_939575f8",
+      "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5dbbe10a_98c316a3",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Okay, I can try it. Thanks",
       "parentUuid": "40591591_68bc7b22",
+      "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f81e9a7_f5fa9c5b",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-09-02T01:45:00Z",
+      "side": 1,
+      "message": "Hi Zhuohao,\nIf want to using SSFC, we need cherry-pick some CLs for CBI.\nCould you help review and merged it? Thanks.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3131948",
+      "parentUuid": "4188360e_a4e24b5f",
       "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
