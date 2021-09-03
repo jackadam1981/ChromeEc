@@ -33,6 +33,24 @@
       "message": "Does the config.star change still need to be cherry-picked to the firmware branch.",
       "revId": "baf82c013f4bcc7905271818ad1ee0af91d26786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c42593b4_3227b12f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1160139
+      },
+      "writtenOn": "2021-09-03T18:13:32Z",
+      "side": 1,
+      "message": "Strictly speaking no. But I think it\u0027s probably a good idea to keep them in sync for consistency, IMHO.",
+      "parentUuid": "683fbb06_6eced2d3",
+      "revId": "baf82c013f4bcc7905271818ad1ee0af91d26786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
