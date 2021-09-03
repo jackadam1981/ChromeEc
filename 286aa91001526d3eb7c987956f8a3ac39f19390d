@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5846c999_18fd1757",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-03T09:15:11Z",
+      "side": 1,
+      "message": "That\u0027s right, but MATCH_NO was converted to MATCH_NO_INTERNAL also. I changed the commit message.",
+      "parentUuid": "cdceefe6_b509cd1c",
+      "range": {
+        "startLine": 150,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 16
+      },
+      "revId": "286aa91001526d3eb7c987956f8a3ac39f19390d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f1da32af_058c5bfa",
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "f1da32af_058c5bfa",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "286aa91001526d3eb7c987956f8a3ac39f19390d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "45474bc9_563ab428",
+        "filename": "common/fpsensor/fpsensor.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-03T09:15:11Z",
+      "side": 1,
+      "message": "Done. Just one note - when match result is not success we need to check if the result is negative before overwriting it with MATCH_NO_INTERNAL, otherwise we will still convert MATCH_NO and MATCH_LOW_* to MATCH_NO_INTERNAL 😄",
+      "parentUuid": "32ea7716_05ffe9a9",
       "range": {
         "startLine": 153,
         "startChar": 2,
