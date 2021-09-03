@@ -123,6 +123,41 @@
       "message": "Hi Boris, for now we have the commits for sensors mapped and ectool could read temp info from all 4 sensors, Can we merge this commit now?\n\nPnP Team had tested with this patch and able to read/write FAN rpm and hence would be good, if this is committed, Thanks.",
       "revId": "1677264a69490f2f2c1aed2faad806c3bea17ba2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ab8544_5aef3453",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-03T21:23:16Z",
+      "side": 1,
+      "message": "DPTF commit merged 30 min ago, so yes, triggering the CQ..",
+      "parentUuid": "a4506992_5b53073b",
+      "revId": "1677264a69490f2f2c1aed2faad806c3bea17ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e85c3951_a30b2ce9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-03T21:23:16Z",
+      "side": 1,
+      "message": "Carry forward Caveh\u0027s +2",
+      "revId": "1677264a69490f2f2c1aed2faad806c3bea17ba2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
