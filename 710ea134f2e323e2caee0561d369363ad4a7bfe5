@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab6f5bd2_9fc707c2",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1911,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-03T22:02:41Z",
+      "side": 1,
+      "message": "Can this code move to zephyr/shim/src/motion_sensors.c instead? Or maybe a separate file under zephyr/shim/src.\n\nI don\u0027t see value in adding this support to the legacy cros-ec builds, so you can hopefully avoid creating CONFIG_MOTION_SENSE_RUNTIME_PROBE and CONFIG_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL - Just use the Kconfig equivalents.",
+      "range": {
+        "startLine": 1911,
+        "startChar": 0,
+        "endLine": 1911,
+        "endChar": 26
+      },
+      "revId": "710ea134f2e323e2caee0561d369363ad4a7bfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad56fe3a_abd370c0",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1919,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-03T22:02:41Z",
+      "side": 1,
+      "message": "Move this logic into the DEF_MOTION_ISR_NAME() macro.  This reference then becomes:\n    void DEF_MOTION_ISR_NAME(id)(enum gpio_signal signal)",
+      "range": {
+        "startLine": 1918,
+        "startChar": 20,
+        "endLine": 1919,
+        "endChar": 41
+      },
+      "revId": "710ea134f2e323e2caee0561d369363ad4a7bfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
