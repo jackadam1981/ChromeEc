@@ -33,6 +33,23 @@
       "message": "I have no power here, but attempting CR+2 anyways. ",
       "revId": "dad9ff66d55f01a423422365a0791456699817a1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df0c37db_75478826",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-03T18:14:18Z",
+      "side": 1,
+      "message": "i think you need to ask for an owners-override on cros-oncall\n\nweird how owners is applying to a firmware branch 😞",
+      "revId": "dad9ff66d55f01a423422365a0791456699817a1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
