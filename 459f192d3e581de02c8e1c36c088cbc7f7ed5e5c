@@ -34,6 +34,24 @@
       "parentUuid": "2f6e92d0_cbe7c117",
       "revId": "459f192d3e581de02c8e1c36c088cbc7f7ed5e5c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9704c7b8_fd3879bd",
+        "filename": "zephyr/test/drivers/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-03T16:19:04Z",
+      "side": 1,
+      "message": "+1 that tasks should automatically get enabled if the corresponding feature is enabled.  Filed b:198777314 to clean this up.",
+      "parentUuid": "c0950e2f_78663493",
+      "revId": "459f192d3e581de02c8e1c36c088cbc7f7ed5e5c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
