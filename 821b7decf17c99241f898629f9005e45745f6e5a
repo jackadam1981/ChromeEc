@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "039d97c8_e919770d",
+        "filename": "test/version.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-03T18:04:40Z",
+      "side": 1,
+      "message": "Why don\u0027t we check strlen(fw_version) \u003c 32?",
+      "range": {
+        "startLine": 31,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 41
+      },
+      "revId": "821b7decf17c99241f898629f9005e45745f6e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d28d111_97256b11",
+        "filename": "test/version.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-03T18:04:40Z",
+      "side": 1,
+      "message": "expected?",
+      "range": {
+        "startLine": 71,
+        "startChar": 39,
+        "endLine": 71,
+        "endChar": 45
+      },
+      "revId": "821b7decf17c99241f898629f9005e45745f6e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c9f963f_fcf1a39d",
+        "filename": "test/version.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-03T18:04:40Z",
+      "side": 1,
+      "message": "Why don\u0027t we check strlen(cros_fwid) \u003c 32?",
+      "range": {
+        "startLine": 85,
+        "startChar": 1,
+        "endLine": 85,
+        "endChar": 40
+      },
+      "revId": "821b7decf17c99241f898629f9005e45745f6e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3886ef5f_85c73eed",
+        "filename": "test/version.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-03T18:04:40Z",
+      "side": 1,
+      "message": "Is this needed?",
+      "range": {
+        "startLine": 135,
+        "startChar": 1,
+        "endLine": 135,
+        "endChar": 13
+      },
+      "revId": "821b7decf17c99241f898629f9005e45745f6e5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
