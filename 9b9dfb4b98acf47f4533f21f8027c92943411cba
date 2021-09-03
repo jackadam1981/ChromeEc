@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14856f6b_42d9493f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-03T21:11:06Z",
+      "side": 1,
+      "message": "Please add a comment in each file documenting the register used to get FET status and the bit definitions.  The fuel gauge settings are a frequent source of confusion, so the more details we put with these first batteries will hopefully establish a pattern for new batteries as they are added.",
+      "revId": "9b9dfb4b98acf47f4533f21f8027c92943411cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3d86c04_9d8a5019",
+        "filename": "zephyr/dts/bindings/battery/as3gwrc3ka,c235-41.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-03T21:11:06Z",
+      "side": 1,
+      "message": "Please add a comment indicating the source of this information: b/150833879\n\nReplicate the comment from the original commit:\nSBS_PackStatus_ACCESS register 0x99\nBit 3: XDSG (discharge disabled)\nBit 2: XCHG (charge disabled)",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "9b9dfb4b98acf47f4533f21f8027c92943411cba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
