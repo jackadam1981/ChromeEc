@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b236842_6a3c18f1",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1208,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-09-03T03:11:19Z",
+      "side": 1,
+      "message": "ACK.\n\nFiled an internal cleanup TODO in b/198712004.",
+      "parentUuid": "2c4d86f9_77a844f3",
+      "revId": "8c094dfd9a65ade715a52cfec25761e0f7e124ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a298848_b932fd5e",
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "We don\u0027t handle RX_BUF_OVF anywhere currently. I split this CL for more rapid deployment.\n\nSee crrev/c/2420477 for only some of the changes necessary to achieve this.\n\nRETURN is not used because TCPCI v1.0 FIFO may have unknown depth. (In TCPCI r2.0 this was constrained to \"2\".) We may need to \"flush out\" multiple FIFO packets rapidly. Iterating until ALERT# RX_STATUS is cleared achieves this.",
       "parentUuid": "9478a37c_ca79cced",
+      "revId": "8c094dfd9a65ade715a52cfec25761e0f7e124ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6eaa97c0_2e642aa0",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1217,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-09-03T03:11:19Z",
+      "side": 1,
+      "message": "ACK.\n\nAdditional actions can be discussed in b/198712004.\nAdded note about handling of RX_BUF_OVF.\n\nSee crrev/c/2420477 to see other places we have to set/clear RX_BUF_OVF on EX_STATUS clear.\n\n(I\u0027ve left suggested debug print out of this CL to minimize flash space implications for boards with \"2 bytes free\".)",
+      "parentUuid": "8d6246ad_b603207e",
       "revId": "8c094dfd9a65ade715a52cfec25761e0f7e124ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
