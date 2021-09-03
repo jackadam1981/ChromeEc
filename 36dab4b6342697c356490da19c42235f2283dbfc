@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb34b18_91afdc24",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-03T19:05:08Z",
+      "side": 1,
+      "message": "nit: add details what happens otherwise",
+      "range": {
+        "startLine": 12,
+        "startChar": 48,
+        "endLine": 12,
+        "endChar": 49
+      },
+      "revId": "36dab4b6342697c356490da19c42235f2283dbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dde5ae6d_0abb3b79",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-03T19:05:08Z",
+      "side": 1,
+      "message": "nit: run git hooks so that coding guidelines are maintained ",
+      "revId": "36dab4b6342697c356490da19c42235f2283dbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6f8bab9_3ca8edf4",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-03T19:05:08Z",
+      "side": 1,
+      "message": "nit: Warn p%d: hc_typec_discovery res busy",
+      "range": {
+        "startLine": 93,
+        "startChar": 13,
+        "endLine": 93,
+        "endChar": 75
+      },
+      "revId": "36dab4b6342697c356490da19c42235f2283dbfc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
