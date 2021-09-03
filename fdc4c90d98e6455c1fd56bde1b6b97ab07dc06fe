@@ -90,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "26edea07_1deb792e",
+        "filename": "zephyr/fpu.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T17:36:51Z",
+      "side": 1,
+      "message": "See https://gitlab.com/zephyr-ec/gitlab-ci-runner/-/blob/main/Dockerfile\n\nThis is the bionic gcc. Is there a reason Simon choose bionic, as opposed to a newer release?",
+      "parentUuid": "11a7dcb4_e035ca9c",
+      "range": {
+        "startLine": 10,
+        "startChar": 58,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "fdc4c90d98e6455c1fd56bde1b6b97ab07dc06fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "506ac2f6_36007155",
         "filename": "zephyr/fpu.cmake",
         "patchSetId": 4
