@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e373299_01e47806",
+        "filename": "zephyr/dts/bindings/battery/as3gwrc3ka,c235-41.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-03T17:31:11Z",
+      "side": 1,
+      "message": "There are datasheets for these batteries:\nhttps://issuetracker.google.com/150833879 \nhttps://issuetracker.google.com/148625782 \nhttps://issuetracker.google.com/130608940 \nhttps://issuetracker.google.com/130615670 \nhttps://issuetracker.google.com/144674480",
+      "parentUuid": "4b16f997_dc9459cc",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26c25f9c_213ecf91",
@@ -496,6 +520,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00724b23_d8abffe8",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-03T17:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d941037_b26f01e1",
+      "range": {
+        "startLine": 39,
+        "startChar": 36,
+        "endLine": 39,
+        "endChar": 75
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5410a4dc_c1ef4a79",
@@ -509,6 +557,30 @@
       "writtenOn": "2021-08-23T23:21:38Z",
       "side": 1,
       "message": "the battery",
+      "range": {
+        "startLine": 50,
+        "startChar": 63,
+        "endLine": 50,
+        "endChar": 72
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66f4b5da_e97b9f20",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-03T17:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5410a4dc_c1ef4a79",
       "range": {
         "startLine": 50,
         "startChar": 63,
@@ -542,6 +614,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd7197d1_487df714",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-03T17:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ace0f647_d7b4dd53",
+      "range": {
+        "startLine": 51,
+        "startChar": 21,
+        "endLine": 51,
+        "endChar": 25
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f3e36d0_9f2c56b9",
@@ -555,6 +651,30 @@
       "writtenOn": "2021-08-23T23:21:38Z",
       "side": 1,
       "message": "the battery",
+      "range": {
+        "startLine": 57,
+        "startChar": 63,
+        "endLine": 57,
+        "endChar": 72
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c52c7d27_f47969d4",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-03T17:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f3e36d0_9f2c56b9",
       "range": {
         "startLine": 57,
         "startChar": 63,
@@ -588,6 +708,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd596496_2d1924ec",
+        "filename": "zephyr/dts/bindings/battery/battery-info.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-03T17:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15a21efa_daed0427",
+      "range": {
+        "startLine": 58,
+        "startChar": 21,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bc486f4_9728ff56",
@@ -601,6 +745,30 @@
       "writtenOn": "2021-08-23T23:21:38Z",
       "side": 1,
       "message": "fet_reg_addr should be skipped because fet_mfgacc_support is present.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 18
+      },
+      "revId": "56682af4f21f6a4da23827294c91067764aa4038",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21b7179c_d3b5485f",
+        "filename": "zephyr/dts/bindings/battery/lgc,ap16l8j.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-03T17:31:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bc486f4_9728ff56",
       "range": {
         "startLine": 22,
         "startChar": 0,
