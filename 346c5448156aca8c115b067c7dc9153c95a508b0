@@ -16,6 +16,24 @@
       "message": "Deepti, does this help solve the issue?",
       "revId": "346c5448156aca8c115b067c7dc9153c95a508b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3297a4f6_bbe2a246",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1366765
+      },
+      "writtenOn": "2021-09-03T03:58:58Z",
+      "side": 1,
+      "message": "Yes, I verified on one Device for 100 coldboot cycles, issue is not seen",
+      "parentUuid": "c657ae9f_79e7bb99",
+      "revId": "346c5448156aca8c115b067c7dc9153c95a508b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
