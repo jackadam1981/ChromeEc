@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf42b3eb_ca0e987c",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-03T15:43:50Z",
+      "side": 1,
+      "message": "won\u0027t this be problematic if not all projects support the same version?\n\nwe could patch that up in zmake if it becomes an issue ... i.e., for the case of testall with manually specfied zephyr base, only test the projects which support that version (instead of erroring)",
+      "revId": "c61140506bdbbed9c8c364c306bd7365f31e0eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
