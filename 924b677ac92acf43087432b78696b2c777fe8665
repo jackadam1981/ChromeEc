@@ -16,6 +16,29 @@
       "message": "ping?",
       "revId": "924b677ac92acf43087432b78696b2c777fe8665",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e3bd075_8eaf9da7",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-03T15:41:56Z",
+      "side": 1,
+      "message": "Is it necessary to take coverage on all modules?\n\ngenerally we care just about the EC code (the code we control)",
+      "range": {
+        "startLine": 720,
+        "startChar": 0,
+        "endLine": 720,
+        "endChar": 38
+      },
+      "revId": "924b677ac92acf43087432b78696b2c777fe8665",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
