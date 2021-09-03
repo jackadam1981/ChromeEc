@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "931de889_3169314b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-03T21:35:54Z",
+      "side": 1,
+      "message": "Why would you power on the device without a DB?\nIn my opinion allocating a GPIO (in future design) to check whether the DB is connected would be just a waste of GPIO. DB should be always connected. We can move the discussion to b:197585292",
+      "revId": "ba310c521635b79c1deb6ceb23d52fc73741cc5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
