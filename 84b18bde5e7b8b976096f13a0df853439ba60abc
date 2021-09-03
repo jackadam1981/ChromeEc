@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "281baaf4_89828645",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-03T16:30:02Z",
+      "side": 1,
+      "message": "Fixed, thanks!",
+      "parentUuid": "04c8d904_aa6ba674",
+      "range": {
+        "startLine": 21,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 40
+      },
+      "revId": "84b18bde5e7b8b976096f13a0df853439ba60abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2966278_d7de53be",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-02T21:10:37Z",
       "side": 1,
       "message": "How about using an enum for readability?\n\nExample (untested):\n\n diff --git a/core/cortex-m/panic.c b/core/cortex-m/panic.c\nindex c1bfb4002..08f2555e1 100644\n--- a/core/cortex-m/panic.c\n+++ b/core/cortex-m/panic.c\n@@ -17,21 +17,6 @@\n #include \"util.h\"\n #include \"watchdog.h\"\n \n-#define CORTEX_M_FRAME_R0_IDX  0\n-#define CORTEX_M_FRAME_R1_IDX  1\n-#define CORTEX_M_FRAME_R2_IDX  2\n-#define CORTEX_M_FRAME_R3_IDX  3\n-#define CORTEX_M_FRAME_R12_IDX 4\n-\n-#define CORTEX_M_REGS_R4_IDX   3\n-#define CORTEX_M_REGS_R5_IDX   4\n-#define CORTEX_M_REGS_R6_IDX   5\n-#define CORTEX_M_REGS_R7_IDX   6\n-#define CORTEX_M_REGS_R8_IDX   7\n-#define CORTEX_M_REGS_R9_IDX   8\n-#define CORTEX_M_REGS_R10_IDX  9\n-#define CORTEX_M_REGS_R11_IDX  10\n-\n /* Whether bus fault is ignored */\n static int bus_fault_ignored;\n \n@@ -334,27 +319,26 @@ void __keep report_panic(void)\n \n        /* Remove General Purpose Registers from panic data if needed */\n        if (IS_ENABLED(CONFIG_PANIC_STRIP_GPR)) {\n-               pdata-\u003ecm.frame[CORTEX_M_FRAME_R0_IDX] \u003d 0;\n-               pdata-\u003ecm.frame[CORTEX_M_FRAME_R1_IDX] \u003d 0;\n-               pdata-\u003ecm.frame[CORTEX_M_FRAME_R2_IDX] \u003d 0;\n-               pdata-\u003ecm.frame[CORTEX_M_FRAME_R3_IDX] \u003d 0;\n-               pdata-\u003ecm.frame[CORTEX_M_FRAME_R12_IDX] \u003d 0;\n-\n-               pdata-\u003ecm.regs[CORTEX_M_REGS_R6_IDX] \u003d 0;\n-               pdata-\u003ecm.regs[CORTEX_M_REGS_R7_IDX] \u003d 0;\n-               pdata-\u003ecm.regs[CORTEX_M_REGS_R8_IDX] \u003d 0;\n-               pdata-\u003ecm.regs[CORTEX_M_REGS_R9_IDX] \u003d 0;\n-               pdata-\u003ecm.regs[CORTEX_M_REGS_R10_IDX] \u003d 0;\n-               pdata-\u003ecm.regs[CORTEX_M_REGS_R11_IDX] \u003d 0;\n+               pdata-\u003ecm.frame[CORTEX_PANIC_FRAME_REGISTER_R0] \u003d 0;\n+               pdata-\u003ecm.frame[CORTEX_PANIC_FRAME_REGISTER_R1] \u003d 0;\n+               pdata-\u003ecm.frame[CORTEX_PANIC_FRAME_REGISTER_R2] \u003d 0;\n+               pdata-\u003ecm.frame[CORTEX_PANIC_FRAME_REGISTER_R3] \u003d 0;\n+               pdata-\u003ecm.frame[CORTEX_PANIC_FRAME_REGISTER_R12] \u003d 0;\n \n                /*\n                 * If it is software panic, don\u0027t remove R4 and R5 since they\n                 * contain the reason and additional information.\n                 */\n                if (in_interrupt_context()) {\n-                       pdata-\u003ecm.regs[CORTEX_M_REGS_R4_IDX] \u003d 0;\n-                       pdata-\u003ecm.regs[CORTEX_M_REGS_R5_IDX] \u003d 0;\n+                       pdata-\u003ecm.regs[CORTEX_PANIC_REGISTER_R4] \u003d 0;\n+                       pdata-\u003ecm.regs[CORTEX_PANIC_REGISTER_R5] \u003d 0;\n                }\n+               pdata-\u003ecm.regs[CORTEX_PANIC_REGISTER_R6] \u003d 0;\n+               pdata-\u003ecm.regs[CORTEX_PANIC_REGISTER_R7] \u003d 0;\n+               pdata-\u003ecm.regs[CORTEX_PANIC_REGISTER_R8] \u003d 0;\n+               pdata-\u003ecm.regs[CORTEX_PANIC_REGISTER_R9] \u003d 0;\n+               pdata-\u003ecm.regs[CORTEX_PANIC_REGISTER_R10] \u003d 0;\n+               pdata-\u003ecm.regs[CORTEX_PANIC_REGISTER_R11] \u003d 0;\n        }\n \n        /* Save extra information */\ndiff --git a/include/panic.h b/include/panic.h\nindex 4160454ce..2ee9459ad 100644\n--- a/include/panic.h\n+++ b/include/panic.h\n@@ -19,14 +19,41 @@\n extern \"C\" {\n #endif\n \n+enum cortex_panic_frame_registers {\n+       CORTEX_PANIC_FRAME_REGISTER_R0 \u003d 0,\n+       CORTEX_PANIC_FRAME_REGISTER_R1,\n+       CORTEX_PANIC_FRAME_REGISTER_R2,\n+       CORTEX_PANIC_FRAME_REGISTER_R3,\n+       CORTEX_PANIC_FRAME_REGISTER_R12,\n+       CORTEX_PANIC_FRAME_REGISTER_LR,\n+       CORTEX_PANIC_FRAME_REGISTER_PC,\n+       CORTEX_PANIC_FRAME_REGISTER_PSR,\n+       NUM_CORTEX_PANIC_FRAME_REGISTERS\n+};\n+\n+enum cortex_panic_registers {\n+       CORTEX_PANIC_REGISTER_PSP \u003d 0,\n+       CORTEX_PANIC_REGISTER_IPSR,\n+       CORTEX_PANIC_REGISTER_MSP,\n+       CORTEX_PANIC_REGISTER_R4,\n+       CORTEX_PANIC_REGISTER_R5,\n+       CORTEX_PANIC_REGISTER_R6,\n+       CORTEX_PANIC_REGISTER_R7,\n+       CORTEX_PANIC_REGISTER_R8,\n+       CORTEX_PANIC_REGISTER_R9,\n+       CORTEX_PANIC_REGISTER_R10,\n+       CORTEX_PANIC_REGISTER_R11,\n+       CORTEX_PANIC_REGISTER_LR,\n+       NUM_CORTEX_PANIC_REGISTERS\n+};\n+\n /* ARM Cortex-Mx registers saved on panic */\n struct cortex_panic_data {\n-       uint32_t regs[12];        /* psp, ipsr, msp, r4-r11, lr(\u003dexc_return).\n-                                  * In version 1, that was uint32_t regs[11] \u003d\n-                                  * psp, ipsr, lr, r4-r11\n-                                  */\n-       uint32_t frame[8];        /* r0-r3, r12, lr, pc, xPSR */\n-\n+       uint32_t regs[NUM_CORTEX_PANIC_REGISTERS]; /* See enum\n+                                                   * cortex_panic_registers */\n+       uint32_t frame[NUM_CORTEX_PANIC_FRAME_REGISTERS]; /* See enum\n+                                                          * cortex_panic_frame_registers\n+                                                          */\n        uint32_t cfsr;\n        uint32_t bfar;\n        uint32_t mfar;",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 32
+      },
+      "revId": "84b18bde5e7b8b976096f13a0df853439ba60abc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dad8c736_67b86048",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-03T16:30:02Z",
+      "side": 1,
+      "message": "Implemented, thanks!",
+      "parentUuid": "d2966278_d7de53be",
       "range": {
         "startLine": 20,
         "startChar": 0,
