@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b13c58a5_25b3527d",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-03T17:20:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c26e0582_17ef39e2",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "fdc4c90d98e6455c1fd56bde1b6b97ab07dc06fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11a7dcb4_e035ca9c",
@@ -77,6 +101,30 @@
       "writtenOn": "2021-09-03T03:12:18Z",
       "side": 1,
       "message": "It\u0027s general now, not just for a certain test?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 9
+      },
+      "revId": "fdc4c90d98e6455c1fd56bde1b6b97ab07dc06fe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78dfedad_de906a3d",
+        "filename": "zephyr/fpu.cmake",
+        "patchSetId": 4
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-03T17:20:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "506ac2f6_36007155",
       "range": {
         "startLine": 14,
         "startChar": 0,

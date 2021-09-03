@@ -273,6 +273,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f0c609_a1add33a",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-03T17:20:34Z",
+      "side": 1,
+      "message": "Marking resolved to consolidate since we have another comment to the same effect.",
+      "parentUuid": "1498a6e5_63846cb0",
+      "range": {
+        "startLine": 15,
+        "startChar": 55,
+        "endLine": 15,
+        "endChar": 66
+      },
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a9092003_d4dfabcb",
@@ -477,6 +501,30 @@
       "side": 1,
       "message": "I should mention that GCC without these flags is WAY off...\n\nWRONG (GCC)     cal_dist (0.000707) kasa_dist (0.000688)\nCORRECT (Clang) cal_dist (0.000776) kasa_dist (0.001385)\n\nSo I really don\u0027t think that we can put a tolerance on it.",
       "parentUuid": "9749d420_63245d60",
+      "range": {
+        "startLine": 20,
+        "startChar": 39,
+        "endLine": 20,
+        "endChar": 69
+      },
+      "revId": "be3836a30aa2813c88e726a682ad73d6ebbf07da",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbd3cdc2_cf056065",
+        "filename": "zephyr/test/accel_cal/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-03T17:20:34Z",
+      "side": 1,
+      "message": "Marking as resolved, please re-open if this needs further discussion.",
+      "parentUuid": "703288c1_1266bd33",
       "range": {
         "startLine": 20,
         "startChar": 39,
