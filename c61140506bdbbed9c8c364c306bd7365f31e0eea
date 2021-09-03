@@ -16,6 +16,24 @@
       "message": "won\u0027t this be problematic if not all projects support the same version?\n\nwe could patch that up in zmake if it becomes an issue ... i.e., for the case of testall with manually specfied zephyr base, only test the projects which support that version (instead of erroring)",
       "revId": "c61140506bdbbed9c8c364c306bd7365f31e0eea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "82ffcc54_17a40375",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-03T15:49:56Z",
+      "side": 1,
+      "message": "Yes, that could become a problem.  zmake has some assumptions that don\u0027t always work outside of the chroot.",
+      "parentUuid": "bf42b3eb_ca0e987c",
+      "revId": "c61140506bdbbed9c8c364c306bd7365f31e0eea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
