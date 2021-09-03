@@ -16,6 +16,24 @@
       "message": "Is this something that should be upstreamed?",
       "revId": "42678186103d346a4d6f535b9d2f0e11f7cbfb3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b7c3f55_63d944a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507738
+      },
+      "writtenOn": "2021-09-03T10:05:15Z",
+      "side": 1,
+      "message": "Zephyr code probably doesn\u0027t benefit from this code right now. There is atmel_at24 emulator, but current test doesn\u0027t use \"custom functions\" feature. BMI160 emulator in upstream will be replaced by our code (I discussed this with Simon, when I was writing BMI emulator).\n\nIt may be worth it to upstream this if there is an active development of I2C emulators in the Zephyr repository. Otherwise, it may be problematic to upstream this code without a real use case.",
+      "parentUuid": "d90ceb08_37b961f1",
+      "revId": "42678186103d346a4d6f535b9d2f0e11f7cbfb3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
