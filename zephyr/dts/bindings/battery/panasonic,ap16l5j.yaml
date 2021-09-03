@@ -24,7 +24,11 @@ properties:
    fet_reg_mask:
       default: 0x4000
    fet_disconnect_val:
-      default: 0x0
+      default: 0x0000
+   fet_cfet_mask:
+      default: 0x8000
+   fet_cfet_off_val:
+      default: 0x0000
 
    # Battery info
    voltage_max:
