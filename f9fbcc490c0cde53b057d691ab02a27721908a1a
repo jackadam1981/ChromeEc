@@ -566,6 +566,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d15ca8_4b95164c",
+        "filename": "zephyr/drivers/cros_rtc/nxp_rtc_pcf85063a.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-03T16:25:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4310a5c9_2af9110c",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 1
+      },
+      "revId": "f9fbcc490c0cde53b057d691ab02a27721908a1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dd62667_3ca2f7be",
