@@ -338,6 +338,10 @@ const char *system_get_build_info(void);
  * Stay in RO next reboot, instead of potentially selecting RW during EFS.
  */
 #define SYSTEM_RESET_STAY_IN_RO         BIT(6)
+/*
+ * Hibernate reset. Reset EC when wake up from sleep mode (system hibernate).
+ */
+#define SYSTEM_RESET_HIBERNATE          BIT(7)
 
 /**
  * Reset the system.
