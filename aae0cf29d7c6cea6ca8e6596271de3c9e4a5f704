@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d11c2bc_08ba7e97",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-03T22:54:54Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 170,
+        "startChar": 37,
+        "endLine": 170,
+        "endChar": 57
+      },
+      "revId": "aae0cf29d7c6cea6ca8e6596271de3c9e4a5f704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fc2751eb_d881d690",
         "filename": "common/timer.c",
         "patchSetId": 3
@@ -14,6 +37,24 @@
       "writtenOn": "2021-09-02T21:39:56Z",
       "side": 1,
       "message": "Can we at least add some logging?",
+      "revId": "aae0cf29d7c6cea6ca8e6596271de3c9e4a5f704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "763bc959_538a37bf",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-03T22:54:54Z",
+      "side": 1,
+      "message": "Aseda, there are several calls which pass a variable length (probably to keep the overall loop time near a constant length). By accepting 0 as a valid length, callers don\u0027t need to check whether a wait is \u003e 0.\n\nI\u0027m not sure all the existing callers check wait \u003e 0. A bad thing about the current API behavior is that a bad call can cause a crash only randomly. As a matter of fact, I see some suspicious callers.\n\nSo, I think we should change the API so that it accepts 0 as a valid length. WDYT?",
+      "parentUuid": "fc2751eb_d881d690",
       "revId": "aae0cf29d7c6cea6ca8e6596271de3c9e4a5f704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
