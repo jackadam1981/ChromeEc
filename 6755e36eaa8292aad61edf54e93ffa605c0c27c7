@@ -22,6 +22,30 @@
       },
       "revId": "6755e36eaa8292aad61edf54e93ffa605c0c27c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0eb46b1_b3cafcbb",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/prj.conf",
+        "patchSetId": 10
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-03T17:27:06Z",
+      "side": 1,
+      "message": "I\u0027ll create a CL that adds CONFIG_CROS_RTC_NPCX\u003dy to lazor, trogdor, and herobrine_npcx7.",
+      "parentUuid": "a0503615_b945e83f",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 29
+      },
+      "revId": "6755e36eaa8292aad61edf54e93ffa605c0c27c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
