@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a8f88fb_def5f3c5",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1269501
+      },
+      "writtenOn": "2021-09-03T03:13:13Z",
+      "side": 1,
+      "message": "DEFER.\n\nAs \"TODO\" itself is extremely vague (total rewrite of ALERT handler?), I\u0027ve moved discussion over to b/198712004 as suggested by Diana.",
+      "parentUuid": "1a298848_b932fd5e",
+      "revId": "8c094dfd9a65ade715a52cfec25761e0f7e124ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9478a37c_ca79cced",
