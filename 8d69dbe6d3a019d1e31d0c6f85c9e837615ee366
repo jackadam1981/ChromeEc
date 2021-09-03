@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05a4e228_104d791c",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-03T22:18:05Z",
+      "side": 1,
+      "message": "Can this interrupt also be made common?  All implementations just generate a task event for TASK_EVENT_MOTION_SENSOR_INTERRUPT(\u003csensor_id\u003e).  Seems like the shared code can create a lookup table for the GPIO signal to sensor id.",
+      "range": {
+        "startLine": 383,
+        "startChar": 14,
+        "endLine": 383,
+        "endChar": 30
+      },
+      "revId": "8d69dbe6d3a019d1e31d0c6f85c9e837615ee366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
