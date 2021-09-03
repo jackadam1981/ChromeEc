@@ -50,6 +50,24 @@
       "message": "please add a comment that the checksum is put in a separate section to make it easier to inject it into the .elf file.",
       "revId": "af635a02ef88a55faf2093c9e877d4b5ff2b2860",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78449eb7_0170c2f5",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-09-03T15:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d678ecb_ca8d52d0",
+      "revId": "af635a02ef88a55faf2093c9e877d4b5ff2b2860",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
