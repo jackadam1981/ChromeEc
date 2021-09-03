@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b45ae7ef_74bd6ae4",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-03T21:52:53Z",
+      "side": 1,
+      "message": "This comment looks irrelevant..",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 4
+      },
+      "revId": "e3e2d7d68b5790e4044a1426d3f44f56fd1fceea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6e76cf_24c83e64",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-03T21:52:53Z",
+      "side": 1,
+      "message": "Shouldn\u0027t that be disabled for BMA422?..",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 47
+      },
+      "revId": "e3e2d7d68b5790e4044a1426d3f44f56fd1fceea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a1afb5_33d4eec0",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-03T21:52:53Z",
+      "side": 1,
+      "message": "Isn\u0027t it disabled by default?",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 47
+      },
+      "revId": "e3e2d7d68b5790e4044a1426d3f44f56fd1fceea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
