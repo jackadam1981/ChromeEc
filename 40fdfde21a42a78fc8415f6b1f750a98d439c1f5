@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52c5bad2_6ee3753b",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-03T20:40:12Z",
+      "side": 1,
+      "message": "delete \"much\"",
+      "range": {
+        "startLine": 463,
+        "startChar": 66,
+        "endLine": 463,
+        "endChar": 70
+      },
+      "revId": "40fdfde21a42a78fc8415f6b1f750a98d439c1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9776a158_06b7c3b2",
+        "filename": "zephyr/Kconfig.battery",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-03T20:40:12Z",
+      "side": 1,
+      "message": "Add a follow up CL to add a Kconfig for CHARGER_MIN_BAT_PCT_IMBALANCED_POWER_ON",
+      "range": {
+        "startLine": 474,
+        "startChar": 27,
+        "endLine": 474,
+        "endChar": 66
+      },
+      "revId": "40fdfde21a42a78fc8415f6b1f750a98d439c1f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
