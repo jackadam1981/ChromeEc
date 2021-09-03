@@ -22,6 +22,30 @@
       },
       "revId": "9a60f9def1dd1bede6e7cabc45d85e6b5ddcb695",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdee123f_6a63a18e",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-09-03T01:11:34Z",
+      "side": 1,
+      "message": "OK, I will remove this CL and use cbi_get_fw_config for bj adapter.",
+      "parentUuid": "1b3211b0_62646907",
+      "range": {
+        "startLine": 49,
+        "startChar": 12,
+        "endLine": 49,
+        "endChar": 20
+      },
+      "revId": "9a60f9def1dd1bede6e7cabc45d85e6b5ddcb695",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
