@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfdcf742_9bbec1ec",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-04T01:23:47Z",
+      "side": 0,
+      "message": "why do we now do RESET_MASK instead of STOP_MASK?",
+      "range": {
+        "startLine": 113,
+        "startChar": 28,
+        "endLine": 113,
+        "endChar": 61
+      },
+      "revId": "ea35354507745b5763bb85479a26409920ed37b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "698668b4_a4e70bd1",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-04T01:23:47Z",
+      "side": 0,
+      "message": "why did we switch to 6 (and 25 for HMAC)?",
+      "range": {
+        "startLine": 128,
+        "startChar": 36,
+        "endLine": 128,
+        "endChar": 42
+      },
+      "revId": "ea35354507745b5763bb85479a26409920ed37b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3fc7d7_59c3d70e",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-04T01:23:47Z",
+      "side": 0,
+      "message": "is it ok to do it in one GREG32(KEYMGR, SHA_RAND_STALL_CTL) \u003d ... operation with setting the stall frequency? we used to do separate writes to this register, now we do a single write.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 55
+      },
+      "revId": "ea35354507745b5763bb85479a26409920ed37b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

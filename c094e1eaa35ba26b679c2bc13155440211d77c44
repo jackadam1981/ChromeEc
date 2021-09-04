@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ffb5763_a6ce857b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-04T01:23:47Z",
+      "side": 1,
+      "message": "Looks generally reasonable to me. Some questions. But since I\u0027m not a keyladder expert can miss it\u0027s quirks - add mnissler@?",
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "645b2f28_8d610a27",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-04T01:23:47Z",
+      "side": 1,
+      "message": "we did we have groups of 8 words handled separately before? causing bursts on the bus?",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 36
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f1ea5f7_32023e1f",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-04T01:23:47Z",
+      "side": 1,
+      "message": "why don\u0027t have it as a part of dcrypto_sha_init()?",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 63
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "529d9b3f_9b1c9f80",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-04T01:23:47Z",
+      "side": 1,
+      "message": "do we even need to run the engine in this case and handle sha_init() in a special way? just fill in the constant or call the s/w function for this special case?",
+      "range": {
+        "startLine": 294,
+        "startChar": 2,
+        "endLine": 294,
+        "endChar": 71
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94c889b0_036e91e2",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-04T01:23:47Z",
+      "side": 1,
+      "message": "is there any harm in doing `GREG32(KEYMGR, SHA_TRIG) \u003d GC_KEYMGR_SHA_TRIG_TRIG_RESET_MASK;` before it?",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 295,
+        "endChar": 63
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0ddeea3_d66683bc",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-04T01:23:47Z",
+      "side": 1,
+      "message": "is there harm in doing `GREG32(KEYMGR, SHA_TRIG) \u003d GC_KEYMGR_SHA_TRIG_TRIG_RESET_MASK;` before it?",
+      "range": {
+        "startLine": 380,
+        "startChar": 1,
+        "endLine": 380,
+        "endChar": 17
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
