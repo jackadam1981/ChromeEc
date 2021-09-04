@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f94e1095_51ddab4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-04T01:49:21Z",
+      "side": 1,
+      "message": "what about other places where p256_int* is used? do we never take it from inputs that can be unaligned?\n\ne.g. in u2f.c we have this. note `serial` conversion from (uint8_t*) to (p256_int*):\n```\nsize_t g2f_attestation_cert_serial(const struct u2f_state *state,\n\t\t\t\t   const uint8_t *serial, uint8_t *buf)\n{\n[...]\n\treturn DCRYPTO_x509_gen_u2f_cert_name(\u0026d, \u0026pk_x, \u0026pk_y,\n\t\t\t\t\t      (p256_int *)serial, G2F_CERT_NAME,\n\t\t\t\t\t      buf,\n\t\t\t\t\t      G2F_ATTESTATION_CERT_MAX_LEN);\n}\n```\n",
+      "revId": "0b153509ed67d99f4ec85cf6fd88b094a8f9ace6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
