@@ -22,6 +22,30 @@
       },
       "revId": "69c55ab4baefa37199c5a7c558d6ceedaaced233",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "876bfe9e_c12f353b",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-04T13:59:11Z",
+      "side": 1,
+      "message": "line 136 applies to input objects, and this applies to resulting fips_module.o.  I didn\u0027t notice impact from line 136 though, but added it mostly to be sure that it doesn\u0027t produce native code (-fno-fat-lto-objects) and if some reordering happens, it won\u0027t affect next stages - documentation on -frandom-seed is rather poor and not clear wherever it should be used for inputs or outputs. I didn\u0027t notice any difference with this option too. Looks like we just remove sections it impacts on.\n\nMost code size impact was from -flto-partition\u003d1to1 and -fipa-pta. Both can be added to whole image build probably. Code blocks reordering sometimes makes smarter choices removing extra branches, but I noticed that explicitly setting -O1 for these functions does the same. Something -O2/-Os does hurts tight loops frequently.",
+      "parentUuid": "b0bd40bc_fbc163f1",
+      "range": {
+        "startLine": 141,
+        "startChar": 24,
+        "endLine": 141,
+        "endChar": 39
+      },
+      "revId": "69c55ab4baefa37199c5a7c558d6ceedaaced233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
