@@ -9,6 +9,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -255,6 +256,21 @@ static void set_initial_pwrbtn_state(void)
 		system_clear_reset_flags(EC_RESET_FLAG_AP_IDLE);
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 		CPRINTS("PB idle");
+		return;
+	} else if ((reset_flags & EC_RESET_FLAG_HIBERNATE) &&
+		   extpower_is_present() && !power_button_is_pressed() &&
+		   IS_ENABLED(CONFIG_VBOOT_EFS2)) {
+		/*
+		 * If the system is awakened by the extpower in the
+		 * hibernate mode, the system should keep in G3
+		 * instead of power on the AP to the S0.
+		 * However, we need to power on the AP if the power
+		 * button is pressed.
+		 * Note: the EFS2 is required here as non-EFS2 devices need
+		 * the AP to boot in order to jump to RW and negotiate PD.
+		 */
+		pwrbtn_state = PWRBTN_STATE_IDLE;
+		CPRINTS("PB idle as from hibernate");
 		return;
 	}
 
