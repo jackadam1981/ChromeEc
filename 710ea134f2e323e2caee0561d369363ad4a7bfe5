@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec54797f_dbed754d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-04T13:13:31Z",
+      "side": 1,
+      "message": "I feel like this change should really go under zephyr/shim/src/motionsense_sensors.c. We already have support for alternates there coming from DT and I would like to see us just building on existing logic. When we consolidate the two into a Zephyr only sensor framework this will make things very difficult.\n\nAt a high level view, I agree with having a probe method in the driver, I\u0027ve been wanting this for a long time.",
+      "revId": "710ea134f2e323e2caee0561d369363ad4a7bfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab6f5bd2_9fc707c2",
         "filename": "common/motion_sense.c",
         "patchSetId": 2
