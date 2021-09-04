@@ -22,6 +22,13 @@
 
 LOG_MODULE_REGISTER(shim_console, LOG_LEVEL_ERR);
 
+/* CONFIG_UART_SHELL_ON_DEV_NAME removed in 2.7+ */
+#ifdef CONFIG_UART_SHELL_ON_DEV_NAME
+#define UART_SHELL_DEV device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME)
+#else
+#define UART_SHELL_DEV DEVICE_DT_GET(DT_CHOSEN(zephyr_shell_uart))
+#endif
+
 static const struct shell *shell_zephyr;
 static struct k_poll_signal shell_uninit_signal;
 static struct k_poll_signal shell_init_signal;
@@ -62,8 +69,7 @@ static void uart_callback(const struct device *dev, void *user_data)
 
 static void shell_uninit_callback(const struct shell *shell, int res)
 {
-	const struct device *dev =
-		device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME);
+	const struct device *dev = UART_SHELL_DEV;
 
 	if (!res) {
 		/* Set the new callback */
@@ -88,8 +94,7 @@ int uart_shell_stop(void)
 	struct k_poll_event event = K_POLL_EVENT_INITIALIZER(
 		K_POLL_TYPE_SIGNAL, K_POLL_MODE_NOTIFY_ONLY,
 		&shell_uninit_signal);
-	const struct device *dev =
-		device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME);
+	const struct device *dev = UART_SHELL_DEV;
 
 	/* Clear all pending input */
 	uart_clear_input();
@@ -113,8 +118,7 @@ int uart_shell_stop(void)
 
 static void shell_init_from_work(struct k_work *work)
 {
-	const struct device *dev =
-		device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME);
+	const struct device *dev = UART_SHELL_DEV;
 	bool log_backend = CONFIG_SHELL_BACKEND_SERIAL_LOG_LEVEL > 0;
 	uint32_t level;
 	ARG_UNUSED(work);
@@ -138,8 +142,7 @@ static void shell_init_from_work(struct k_work *work)
 void uart_shell_start(void)
 {
 	static struct k_work shell_init_work;
-	const struct device *dev =
-		device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME);
+	const struct device *dev = UART_SHELL_DEV;
 	struct k_poll_event event = K_POLL_EVENT_INITIALIZER(
 		K_POLL_TYPE_SIGNAL, K_POLL_MODE_NOTIFY_ONLY,
 		&shell_init_signal);
@@ -237,8 +240,7 @@ void uart_flush_output(void)
 
 void uart_tx_flush(void)
 {
-	const struct device *dev =
-		device_get_binding(CONFIG_UART_SHELL_ON_DEV_NAME);
+	const struct device *dev = UART_SHELL_DEV;
 
 	while (!uart_irq_tx_complete(dev))
 		;
