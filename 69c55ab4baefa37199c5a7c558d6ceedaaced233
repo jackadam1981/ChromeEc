@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0bd40bc_fbc163f1",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-04T00:56:05Z",
+      "side": 1,
+      "message": "don\u0027t you set it already in this line\n  $(RW_FIPS_OBJS): CFLAGS +\u003d -frandom-seed\u003d0 -fno-fat-lto-objects",
+      "range": {
+        "startLine": 141,
+        "startChar": 24,
+        "endLine": 141,
+        "endChar": 39
+      },
+      "revId": "69c55ab4baefa37199c5a7c558d6ceedaaced233",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
