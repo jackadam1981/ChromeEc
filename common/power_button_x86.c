@@ -9,6 +9,7 @@
 #include "chipset.h"
 #include "common.h"
 #include "console.h"
+#include "extpower.h"
 #include "gpio.h"
 #include "hooks.h"
 #include "host_command.h"
@@ -274,6 +275,8 @@ static void set_initial_pwrbtn_state(void)
  */
 static void state_machine(uint64_t tnow)
 {
+	uint32_t reset_flags = system_get_reset_flags();
+
 	/* Not the time to move onto next state */
 	if (tnow < tnext_state)
 		return;
@@ -331,7 +334,20 @@ static void state_machine(uint64_t tnow)
 		pwrbtn_state = PWRBTN_STATE_IDLE;
 		break;
 	case PWRBTN_STATE_INIT_ON:
-
+		/*
+		 * If the system is woken by the extpower in the
+		 * hibernate mode, the system should keep in G3
+		 * instead of power on the AP to the S0.
+		 * However, if the power button is pressed,
+		 * we need to power on the AP to S0.
+		 */
+		if ((reset_flags & EC_RESET_FLAG_HIBERNATE) &&
+		    extpower_is_present() &&
+		    !power_button_is_pressed()) {
+			pwrbtn_state = PWRBTN_STATE_IDLE;
+			CPRINTS("Keep system in G3 if awake from extpower");
+			break;
+		}
 		/*
 		 * Before attempting to power the system on, we need to allow
 		 * time for charger, battery and USB-C PD initialization to be
