@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba68c9bf_0b01bb73",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-04T14:31:08Z",
+      "side": 0,
+      "message": "STOP_MASK assumes earlier we were in LIVESTREAM mode and stops it. \nIt doesn\u0027t bring device to known state, and actually bring it into odd state when I try to configure HW HMAC. In debugging why my HW HMAC produced wrong result I found that main difference from cr52 code is that the latter doesn\u0027t do it. So, I removed it first. But then I faced a bug which I introduced in case of 33-64 byte keys which resulted in attempt to set ONE-SHOT mode when LIVESTREAM was configured - state machine remained in an interesting state which led to wrong results. RESET_MASK however fixed this too (but didn\u0027t fix wrong results which were fixed by fixing root cause).\n \nRESET_MASK does soft reset of logic and brings device to known logical state, but doesn\u0027t clear secrets.  It seems better for reliability when different modes are used.",
+      "parentUuid": "dfdcf742_9bbec1ec",
+      "range": {
+        "startLine": 113,
+        "startChar": 28,
+        "endLine": 113,
+        "endChar": 61
+      },
+      "revId": "ea35354507745b5763bb85479a26409920ed37b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "698668b4_a4e70bd1",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a6e5331_9c360a52",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-04T14:31:08Z",
+      "side": 0,
+      "message": "for HMAC we deal with secret key, so adding stall cycles to better hide it. For SHA256 we typically process public data, so gain speed. Practically we only use 256-bit keys for all uses, so HMAC will use 25% cycles. HMAC DRBG 32-bit is impacted by 10% slowdown compared to 6%.",
+      "parentUuid": "698668b4_a4e70bd1",
+      "range": {
+        "startLine": 128,
+        "startChar": 36,
+        "endLine": 128,
+        "endChar": 42
+      },
+      "revId": "ea35354507745b5763bb85479a26409920ed37b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e3fc7d7_59c3d70e",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-04T01:23:47Z",
       "side": 0,
       "message": "is it ok to do it in one GREG32(KEYMGR, SHA_RAND_STALL_CTL) \u003d ... operation with setting the stall frequency? we used to do separate writes to this register, now we do a single write.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 55
+      },
+      "revId": "ea35354507745b5763bb85479a26409920ed37b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e72d6aa2_6fb37f28",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-04T14:31:08Z",
+      "side": 0,
+      "message": "Documentation says old stall should be disabled first for the new setting to take place. This is it.",
+      "parentUuid": "5e3fc7d7_59c3d70e",
       "range": {
         "startLine": 131,
         "startChar": 1,

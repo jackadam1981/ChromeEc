@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f6a7b06_22cbd3d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-04T14:31:08Z",
+      "side": 1,
+      "message": "he actually pointed me to where to look for working HW HMAC - that STOP_MASK below was bringing engine into odd state...",
+      "parentUuid": "828503fc_947b9af6",
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "645b2f28_8d610a27",
@@ -49,6 +67,30 @@
       "writtenOn": "2021-09-04T01:23:47Z",
       "side": 1,
       "message": "we did we have groups of 8 words handled separately before? causing bursts on the bus?",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 36
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77b32ac3_ac5d5044",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-04T14:31:08Z",
+      "side": 1,
+      "message": "no need for that - no real performance impact, just code size bloat. we write word by word - and i tried to make sure generated code is good enough, which affected loop structure.",
+      "parentUuid": "645b2f28_8d610a27",
       "range": {
         "startLine": 130,
         "startChar": 1,
@@ -84,6 +126,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb9f26ab_96050bae",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-04T14:31:08Z",
+      "side": 1,
+      "message": "because I do it differently for one-shot mode where I load message length in advance. RESET_MASK clears it, so need a different sequence.I can add a msglen parameter to sha_init and set it to zero - it\u0027s ignored by LIVESTREAM mode. Will check this.",
+      "parentUuid": "3f1ea5f7_32023e1f",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 63
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "529d9b3f_9b1c9f80",
         "filename": "board/cr50/dcrypto/sha_hw.c",
         "patchSetId": 4
@@ -95,6 +161,30 @@
       "writtenOn": "2021-09-04T01:23:47Z",
       "side": 1,
       "message": "do we even need to run the engine in this case and handle sha_init() in a special way? just fill in the constant or call the s/w function for this special case?",
+      "range": {
+        "startLine": 294,
+        "startChar": 2,
+        "endLine": 294,
+        "endChar": 71
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c4c2b40_e9b1e802",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-04T14:31:08Z",
+      "side": 1,
+      "message": "ha, 32 byte constant and memcpy takes more than one call :) i had same thought, but found this option is just a bit slower (since need to run SHA cycles), but smaller and since we never use it this way except for tests - better it will be short.",
+      "parentUuid": "529d9b3f_9b1c9f80",
       "range": {
         "startLine": 294,
         "startChar": 2,
@@ -130,6 +220,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb6dbd26_d8e38c0b",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-04T14:31:08Z",
+      "side": 1,
+      "message": "see above. RESET_MASK clears MSGLEN_LO. But I will try different sha_init() with msglen parameter. May be it will reduce code size.",
+      "parentUuid": "94c889b0_036e91e2",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 295,
+        "endChar": 63
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0ddeea3_d66683bc",
         "filename": "board/cr50/dcrypto/sha_hw.c",
         "patchSetId": 4
@@ -141,6 +255,30 @@
       "writtenOn": "2021-09-04T01:23:47Z",
       "side": 1,
       "message": "is there harm in doing `GREG32(KEYMGR, SHA_TRIG) \u003d GC_KEYMGR_SHA_TRIG_TRIG_RESET_MASK;` before it?",
+      "range": {
+        "startLine": 380,
+        "startChar": 1,
+        "endLine": 380,
+        "endChar": 17
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52fbf2e8_1b40f6b7",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-04T14:31:08Z",
+      "side": 1,
+      "message": "in theory - not, loaded HMAC key shouldn\u0027t be cleared, but will check this.",
+      "parentUuid": "f0ddeea3_d66683bc",
       "range": {
         "startLine": 380,
         "startChar": 1,
