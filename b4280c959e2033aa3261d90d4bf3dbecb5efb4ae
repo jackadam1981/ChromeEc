@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db09a036_f7320ca6",
+        "filename": "driver/accelgyro_bmi160.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-04T17:56:50Z",
+      "side": 1,
+      "message": "Here as well. \n\n(It\u0027s not really a big deal but this style is used everywhere in the codebase and easy to follow. So, please bear with us.)",
+      "range": {
+        "startLine": 389,
+        "startChar": 27,
+        "endLine": 391,
+        "endChar": 22
+      },
+      "revId": "b4280c959e2033aa3261d90d4bf3dbecb5efb4ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
