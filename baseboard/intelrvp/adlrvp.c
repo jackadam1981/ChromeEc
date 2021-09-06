@@ -16,6 +16,7 @@
 #include "sn5s330.h"
 #include "system.h"
 #include "task.h"
+#include "tusb1064.h"
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
@@ -323,6 +324,18 @@ DECLARE_HOOK(HOOK_INIT, enable_h1_irq, HOOK_PRIO_LAST);
 static void configure_retimer_usbmux(void)
 {
 	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+		/* Redriver on Port0 TUSB1044RNQR */
+		usb_muxes[TYPE_C_PORT_0].i2c_addr_flags =
+						TUSB1064_I2C_ADDR14_FLAGS;
+		usb_muxes[TYPE_C_PORT_0].driver = &tusb1064_usb_mux_driver;
+		/* No retimer on Port1 */
+#if defined(HAS_TASK_PD_C1)
+		usb_muxes[TYPE_C_PORT_1].driver = NULL;
+#endif
+		break;
+
 	case ADLP_LP5_T4_RVP_SKU_BOARD_ID:
 		/* No retimer on Port-2 */
 #if defined(HAS_TASK_PD_C2)
@@ -412,6 +425,12 @@ __override bool board_is_tbt_usb4_port(int port)
 	bool tbt_usb4 = true;
 
 	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+		/* No retimer on both ports */
+		tbt_usb4 = false;
+		break;
+
 	case ADLP_LP5_T4_RVP_SKU_BOARD_ID:
 		/* No retimer on Port-2 hence no platform level AUX & LSx mux */
 #if defined(HAS_TASK_PD_C2)
