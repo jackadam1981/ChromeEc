@@ -323,6 +323,14 @@ DECLARE_HOOK(HOOK_INIT, enable_h1_irq, HOOK_PRIO_LAST);
 static void configure_retimer_usbmux(void)
 {
 	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLN_LP5_ERB_REV1_SKU_BOARD_ID:
+		/* No retimer */
+		usb_muxes[TYPE_C_PORT_0].driver = NULL;
+#if defined(HAS_TASK_PD_C1)
+		usb_muxes[TYPE_C_PORT_1].driver = NULL;
+#endif
+		break;
+
 	case ADLP_LP5_T4_RVP_SKU_BOARD_ID:
 		/* No retimer on Port-2 */
 #if defined(HAS_TASK_PD_C2)
@@ -412,6 +420,11 @@ __override bool board_is_tbt_usb4_port(int port)
 	bool tbt_usb4 = true;
 
 	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLN_LP5_ERB_REV1_SKU_BOARD_ID:
+		/* No retimer on both ports */
+		tbt_usb4 = false;
+		break;
+
 	case ADLP_LP5_T4_RVP_SKU_BOARD_ID:
 		/* No retimer on Port-2 hence no platform level AUX & LSx mux */
 #if defined(HAS_TASK_PD_C2)
