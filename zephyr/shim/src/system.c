@@ -355,13 +355,17 @@ static int system_preinitialize(const struct device *unused)
 	 * previous power-on, and treat the second reset as a power-on instead
 	 * of a reset.
 	 */
-	if (IS_ENABLED(CONFIG_BOARD_RESET_AFTER_POWER_ON) &&
-	    system_get_reset_flags() & EC_RESET_FLAG_INITIAL_PWR) {
-		/* TODO(b/182875520): Change to use 2 second delay. */
-		while (1)
-			continue;
+#ifdef CONFIG_BOARD_RESET_AFTER_POWER_ON
+	if (system_get_reset_flags() & EC_RESET_FLAG_INITIAL_PWR) {
+		/*
+		 * The current initial stage couldn't use the kernel delay
+		 * function. Use imprecise delay from CPU nop to wait for the
+		 * external reset from H1.
+		 */
+		for (uint32_t i = CONFIG_PLATFORM_EC_WAIT_RESET_TIME; i; i--)
+			arch_nop();
 	}
-
+#endif
 	return 0;
 }
 

@@ -115,6 +115,17 @@ config PLATFORM_EC_BOARD_RESET_AFTER_POWER_ON
 	  the EC starts up, performs some amount of processing and then gets a
 	  reset that it is not expecting.
 
+config PLATFORM_EC_WAIT_RESET_TIME
+	hex "Wait H1 reset time in iteration"
+	default 0x2000000
+	depends on PLATFORM_EC_BOARD_RESET_AFTER_POWER_ON
+	help
+	  The current initial stage couldn't use the kernel delay function.
+	  Use imprecise delay from CPU nop to wait for the external reset from
+	  H1 instead.
+
+	  This option sets the iteration times for CPU nop.
+
 config PLATFORM_EC_BRINGUP
 	bool "Enable early bringup debugging features"
 	help
