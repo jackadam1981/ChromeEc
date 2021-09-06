@@ -16,6 +16,23 @@
       "message": "Should we remove those new added boards/baseboards. Look like this is not in this branch?",
       "revId": "eacbb2118b1eda0e364a708fd075d1c0441d5aff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa72a28c_fa87d104",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-09-06T10:02:27Z",
+      "side": 1,
+      "message": "I have tested by make BOARD \u003d \"lazor\", \"homestar\", \"pompom\", \"mrbland\", \"wormdingler\", \"marzipan\", \"coachz\", \"pazquel\", \"trogdor\".",
+      "revId": "eacbb2118b1eda0e364a708fd075d1c0441d5aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
