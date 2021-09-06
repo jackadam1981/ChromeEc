@@ -6754,6 +6754,19 @@ static void pe_vcs_cbl_send_soft_reset_exit(int port)
 	pe_sender_response_msg_exit(port);
 }
 
+static void pd_chipset_hardoff(void)
+{
+	int i;
+
+	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		if (tc_is_vconn_src(i) && !pd_check_vconn_swap(i))
+		/* Stop sourcing VCONN if 5v rail is turned off */
+			set_state_pe(i, PE_VCS_TURN_OFF_VCONN_SWAP);
+	}
+	CPRINTS("PD:G3");
+}
+DECLARE_HOOK(HOOK_CHIPSET_HARD_OFF, pd_chipset_hardoff, HOOK_PRIO_DEFAULT);
+
 #endif /* CONFIG_USBC_VCONN */
 
 /*
