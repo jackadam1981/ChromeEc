@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90d8d625_7d3eac8a",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-06T11:59:35Z",
+      "side": 1,
+      "message": "There are 3 typec ports.",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 24
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f124f0_985c6d12",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-06T11:59:35Z",
+      "side": 1,
+      "message": "I think you can remove this comment. The bug was fixed.",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 58
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ee6828_d50a1e23",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-06T11:59:35Z",
+      "side": 1,
+      "message": "remove this.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 58
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fef76e5_7f7027e1",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-06T11:59:35Z",
+      "side": 1,
+      "message": "Could you please double check with the HW team about this? It looks like the supported Barrel-jack are 90W,135W,190W",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc1ac070_92b3687c",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-06T11:59:35Z",
+      "side": 1,
+      "message": "It looks like function is only called by board.c. I think you can make it as the static function and remove the the board.h",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 41
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fff5707f_0cbbf872",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-06T11:59:35Z",
+      "side": 1,
+      "message": "This should be updated by extpower_init()",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 47
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cda070bb_4f2dc8f4",
+        "filename": "board/brask/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-06T11:59:35Z",
+      "side": 1,
+      "message": "Please check if this needs to be set to output low",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 59
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
