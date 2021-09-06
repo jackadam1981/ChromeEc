@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "904f32fe_9d259697",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-06T15:19:51Z",
+      "side": 1,
+      "message": "I add tracker number to apply new patch for it.",
+      "parentUuid": "b45ae7ef_74bd6ae4",
+      "range": {
+        "startLine": 210,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 4
+      },
+      "revId": "e3e2d7d68b5790e4044a1426d3f44f56fd1fceea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee6e76cf_24c83e64",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e906f3b9_210c6666",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-06T15:19:51Z",
+      "side": 1,
+      "message": "I remove it and add some comment.\nI\u0027ll also consult with EE if we can configure it as INPUT and PULL_DOWN for power saving.",
+      "parentUuid": "ee6e76cf_24c83e64",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 47
+      },
+      "revId": "e3e2d7d68b5790e4044a1426d3f44f56fd1fceea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8a1afb5_33d4eec0",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-03T21:52:53Z",
       "side": 1,
       "message": "Isn\u0027t it disabled by default?",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 249,
+        "endChar": 47
+      },
+      "revId": "e3e2d7d68b5790e4044a1426d3f44f56fd1fceea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3d0df2b_9a48cbd0",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-06T15:19:51Z",
+      "side": 1,
+      "message": "You are right.\nNew patch will leave comment only",
+      "parentUuid": "a8a1afb5_33d4eec0",
       "range": {
         "startLine": 248,
         "startChar": 1,
