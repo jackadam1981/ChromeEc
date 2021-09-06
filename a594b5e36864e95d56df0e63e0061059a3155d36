@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4218567_966a8cbc",
+        "filename": "board/brask/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-06T07:01:34Z",
+      "side": 1,
+      "message": "Please sort the enum by using the PWM channel. ie. PWM0 put to the first item.",
+      "range": {
+        "startLine": 173,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 30
+      },
+      "revId": "a594b5e36864e95d56df0e63e0061059a3155d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "313b9c66_e2fd2971",
+        "filename": "board/brask/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-06T07:01:34Z",
+      "side": 1,
+      "message": "Brask",
+      "range": {
+        "startLine": 5,
+        "startChar": 25,
+        "endLine": 5,
+        "endChar": 29
+      },
+      "revId": "a594b5e36864e95d56df0e63e0061059a3155d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f70ba9_cc540f80",
+        "filename": "board/brask/pwm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-06T07:01:34Z",
+      "side": 1,
+      "message": "Please sort the array by using the channel of the PWM. ie. put the channel 0 to the first item and channel 2 to the second item.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 3
+      },
+      "revId": "a594b5e36864e95d56df0e63e0061059a3155d36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
