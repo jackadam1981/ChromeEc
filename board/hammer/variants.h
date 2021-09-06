@@ -163,8 +163,14 @@
 #endif /* BOARD_HAMMER/WAND/WHISKERS */
 
 /* GMR sensor for tablet mode detection */
+<<<<<<< HEAD   (2fb25f usbpd: do not enter DP mode in S5->S3 transition)
 #if defined(BOARD_MASTERBALL) || defined(BOARD_MOONBALL) || \
     defined(BOARD_WHISKERS)
+=======
+#if defined(BOARD_DON) || defined(BOARD_MASTERBALL) || \
+    defined(BOARD_MOONBALL) || defined(BOARD_WHISKERS) || \
+    defined(BOARD_EEL)
+>>>>>>> CHANGE (611607 hammer: Enable eel GMR function)
 #define CONFIG_GMR_TABLET_MODE
 #endif
 
