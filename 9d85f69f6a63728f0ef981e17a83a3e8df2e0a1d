@@ -16,6 +16,23 @@
       "message": "It seems that the CL built fail on firmware-trogdor-13577.B-master. I have shared err message on b:198999172.",
       "revId": "9d85f69f6a63728f0ef981e17a83a3e8df2e0a1d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d443e2_c3d9ec60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-09-06T07:29:14Z",
+      "side": 1,
+      "message": "Can we consider fixing the issue on FW branch?",
+      "revId": "9d85f69f6a63728f0ef981e17a83a3e8df2e0a1d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
