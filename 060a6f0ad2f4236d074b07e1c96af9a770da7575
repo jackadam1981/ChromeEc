@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c47c7f_3567a0a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-07T15:56:47Z",
+      "side": 1,
+      "message": "firmware-ec-cq is failing to build the coachz with this error:\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: build/coachz/RW/driver/accelgyro_bmi260.o: in function `list_activities\u0027:\n/mnt/host/source/src/platform/ec/driver/accelgyro_bmi260.c:290: multiple definition of `list_activities\u0027; build/coachz/RW/driver/accelgyro_bmi160.o:/mnt/host/source/src/platform/ec/driver/accelgyro_bmi160.c:393: first defined here\ncollect2: error: ld returned 1 exit status\n\nI think the fix is to rename list_activities() to bmi160_list_activities() and bmi260_list_activities().  Please make this change in a separate changelist.",
+      "revId": "060a6f0ad2f4236d074b07e1c96af9a770da7575",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
