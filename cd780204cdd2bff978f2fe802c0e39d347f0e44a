@@ -16,6 +16,41 @@
       "message": "Sorry I\u0027m late jumping in on this CL. I\u0027m not a fan of defining the function in the yaml as an enum. May I suggest an alternate approach:\n\n1. Modify struct accelgyro_drv to include the new detect function signature, it\u0027ll be NULL by default.\n2. When initializing in shim/src/motionsense_sensors.c check each sensor\u0027s driver:\n   if (drv-\u003edetect !\u003d NULL \u0026\u0026 drv-\u003edetect(port, flags)) {\n     // Update the sensor.\n   }",
       "revId": "cd780204cdd2bff978f2fe802c0e39d347f0e44a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cb376f3_b4cd41ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-09-07T10:35:53Z",
+      "side": 1,
+      "message": "I also considerd this approach and I think it is better, but I didn\u0027t want to impact CrosEC (a new member in the structure).",
+      "parentUuid": "dd69cae6_77ec5605",
+      "revId": "cd780204cdd2bff978f2fe802c0e39d347f0e44a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59fbadb4_b60c134c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-09-07T10:35:53Z",
+      "side": 1,
+      "message": "I\u0027m abandoning the CLs now, because it is a duplicate of CL:3129961.",
+      "revId": "cd780204cdd2bff978f2fe802c0e39d347f0e44a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
