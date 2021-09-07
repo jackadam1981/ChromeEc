@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2abbae28_f3ef203c",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-07T01:57:33Z",
+      "side": 1,
+      "message": "only ERB doesn\u0027t have retimer or RVP also doesn\u0027t have it?\n\nADLN_LP5_SKU_BOARD_ID",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "e60a30fc6958f0692c3f0c71c7a25c72279457ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
