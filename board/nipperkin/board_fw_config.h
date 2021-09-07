@@ -3,35 +3,52 @@
  * found in the LICENSE file.
  */
 
-#ifndef _GUYBRUSH_BOARD_FW_CONFIG__H_
-#define _GUYBRUSH_BOARD_FW_CONFIG__H_
+#ifndef _NIPPERKIN_BOARD_FW_CONFIG__H_
+#define _NIPPERKIN_BOARD_FW_CONFIG__H_
 
 /****************************************************************************
- * Guybrush CBI FW Configuration
+ * Nipperkin CBI FW Configuration
  */
-
-/*
- * USB Daughter Board (2 bits)
- */
-#define FW_CONFIG_USB_DB_OFFSET			0
-#define FW_CONFIG_USB_DB_WIDTH			2
-#define FW_CONFIG_USB_DB_A1_PS8811_C1_PS8818	0
-
-/*
- * Form Factor (1 bits)
- */
-#define FW_CONFIG_FORM_FACTOR_OFFSET		2
-#define FW_CONFIG_FORM_FACTOR_WIDTH		1
-#define FW_CONFIG_FORM_FACTOR_CLAMSHELL		0
-#define FW_CONFIG_FORM_FACTOR_CONVERTIBLE	1
 
 /*
  * Keyboard Backlight (1 bit)
  */
-#define FW_CONFIG_KBLIGHT_OFFSET		3
+#define FW_CONFIG_KBLIGHT_OFFSET		0
 #define FW_CONFIG_KBLIGHT_WIDTH			1
 #define FW_CONFIG_KBLIGHT_NO			0
 #define FW_CONFIG_KBLIGHT_YES			1
 
+/*
+ * Finger Printer (1 bits)
+ */
+#define FW_CONFIG_FINGER_PRINTER_OFFSET		1
+#define FW_CONFIG_FINGER_PRINTER_WIDTH		1
 
-#endif /* _GUYBRUSH_CBI_FW_CONFIG__H_ */
+/*
+ * Wireless Lan (2 bits)
+ */
+#define FW_CONFIG_WLAN_OFFSET		2
+#define FW_CONFIG_WLAN_WIDTH		2
+
+/*
+ * WWAN (2 bits)
+ */
+#define FW_CONFIG_WWAN_OFFSET		4
+#define FW_CONFIG_WWAN_WIDTH		2
+
+/*
+ * Storage Type (1 bits)
+ */
+#define FW_CONFIG_STORAGE_OFFSET	6
+#define FW_CONFIG_STORAGE_WIDTH		1
+
+/*
+ * Keyboard (1 bits)
+ */
+#define FW_CONFIG_KEYBOARD_OFFSET		7
+#define FW_CONFIG_KEYBOARD_WIDTH		1
+#define FW_CONFIG_KEYBOARD_PRIVACY_YES		0
+#define FW_CONFIG_KEYBOARD_PRIVACY_NO		1
+
+
+#endif /* _NIPPERKIN_BOARD_FW_CONFIG__H_ */
