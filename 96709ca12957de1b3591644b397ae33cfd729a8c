@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55b3e3d8_813f5afa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-07T18:32:36Z",
+      "side": 1,
+      "message": "Hi Devin, the patch looks good. I just want it to clean up the code a little more using IS_ENABLED() macro. Thanks,",
+      "revId": "96709ca12957de1b3591644b397ae33cfd729a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47719ccd_a0c08748",
+        "filename": "common/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-07T18:32:36Z",
+      "side": 1,
+      "message": "If IS_ENABLED() macro is used, I think we can get rid of all these #if, #ifndef.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 33
+      },
+      "revId": "96709ca12957de1b3591644b397ae33cfd729a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403738d0_232eba31",
+        "filename": "common/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-07T18:32:36Z",
+      "side": 1,
+      "message": "Does \u0027if (!IS_ENABLED(CONFIG_CUSTOM_FAN_CONTROL)) { ... }\u0027 work?",
+      "range": {
+        "startLine": 127,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 33
+      },
+      "revId": "96709ca12957de1b3591644b397ae33cfd729a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
