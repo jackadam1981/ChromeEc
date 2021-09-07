@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54ed412b_e206c221",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-09-07T21:16:41Z",
+      "side": 1,
+      "message": "I am adding this one line of code here, at the same time as removing the below five lines from usb.c:\n\n#if defined(STM32_RCC_APB1ENR2_USBFSEN)\n\tSTM32_RCC_APB1ENR2 |\u003d STM32_RCC_APB1ENR2_USBFSEN;\n#else\n\tSTM32_RCC_APB1ENR |\u003d STM32_RCC_PB1_USB;\n#endif\n\nMy intention is that this CL should make no functional changes, but merely be a refactoring, which moves existing logic from the generic usb.c file into particular clock-stm32xx.c files, in order to avoid further #ifdefs in usb.c.  I still believe that to be true (that it does not cause functional changes.)\n\nAs you pointed out in another review, we could consider keeping the USB block under reset while the clock is being enabled, until after the clock is stable.  But that, I believe, should come as separate followup CLs, and I am hesitant to do so for chip families that I am not myself using and testing.",
+      "parentUuid": "0f222d5b_99f09967",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 20
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed1bb09f_ac5c1839",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-07T18:07:43Z",
       "side": 1,
       "message": "This should be checking the clock enable and not the reset trigger? \nSTM32_RCC_CRRCR |\u003d RCC_CRRCR_HSI48O is the clock enable line.",
+      "range": {
+        "startLine": 287,
+        "startChar": 12,
+        "endLine": 287,
+        "endChar": 49
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "935b6417_1dfea474",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-09-07T21:16:41Z",
+      "side": 1,
+      "message": "I do not believe that STM32_RCC_APB1ENR is a register used for reset trigger, rather, I think it is used for enabling particular peripheral clocks.  (Based on the description of a register of same name in the STM32L5xxx reference manual.)",
+      "parentUuid": "ed1bb09f_ac5c1839",
       "range": {
         "startLine": 287,
         "startChar": 12,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d6c6239_1e0b545d",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-09-07T21:16:41Z",
+      "side": 1,
+      "message": "Done.  By the way, it seems that the existing code in the ADC section of clock_enable_module is also conflating AHB2ENR and APB2ENR, in that it does logical or of values belonging to each of the two registers.  Maybe that is worth addressing in a separate CL.  I would like to keep this one as a no-op refactoring.",
+      "parentUuid": "8fc8f2f0_377f9db6",
+      "range": {
+        "startLine": 291,
+        "startChar": 12,
+        "endLine": 291,
+        "endChar": 29
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "660fe606_75cfbecb",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-07T18:07:43Z",
       "side": 1,
       "message": "Is this also reset, instead of the actual clock enable?",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 41
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4dbaba8a_95bf405c",
+        "filename": "chip/stm32/clock-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-09-07T21:16:41Z",
+      "side": 1,
+      "message": "Based solely on the \"EN\" in the register name, I believe this is an enable register, rather than reset.  But in any case, this is exactly the same code as was previously present in the usb.c file, so no functional change.",
+      "parentUuid": "660fe606_75cfbecb",
       "range": {
         "startLine": 220,
         "startChar": 3,
