@@ -68,6 +68,24 @@
       "message": "Hi Yu-An, please cherry-pick CL:4066744 to firmware branch and correct the cq-depend in commit message.",
       "revId": "baf82c013f4bcc7905271818ad1ee0af91d26786",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d56adf0_06863152",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1187265
+      },
+      "writtenOn": "2021-09-07T03:43:32Z",
+      "side": 1,
+      "message": "add CL chrome-internal:4107319 for Cq-Depend.",
+      "parentUuid": "cc4c4a39_d53948fb",
+      "revId": "baf82c013f4bcc7905271818ad1ee0af91d26786",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
