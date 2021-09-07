@@ -40,6 +40,11 @@ int ppc_err_prints(const char *string, int port, int error)
 #endif
 }
 
+__overridable bool board_is_port_ppc(int port)
+{
+	return true;
+}
+
 /* Simple wrappers to dispatch to the drivers. */
 
 int ppc_init(int port)
