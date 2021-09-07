@@ -16,6 +16,98 @@
       "message": "Friendly ping",
       "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f222d5b_99f09967",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-07T18:07:43Z",
+      "side": 1,
+      "message": "This is not the correct register, it should be RCC_APB1RSTR1. In addition, was this reset just not being done and is required? Does writing a one put the peripheral in reset and hold it, or does it just trigger the reset? It doesn\u0027t make sense to me to clear the reset when the module is being disabled. Also, I don\u0027t think it\u0027s intuitive to have the module reset as part of the clock enable.",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 20
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed1bb09f_ac5c1839",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-07T18:07:43Z",
+      "side": 1,
+      "message": "This should be checking the clock enable and not the reset trigger? \nSTM32_RCC_CRRCR |\u003d RCC_CRRCR_HSI48O is the clock enable line.",
+      "range": {
+        "startLine": 287,
+        "startChar": 12,
+        "endLine": 287,
+        "endChar": 49
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc8f2f0_377f9db6",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-07T18:07:43Z",
+      "side": 1,
+      "message": "This should be RCC_AHB2ENR",
+      "range": {
+        "startLine": 291,
+        "startChar": 12,
+        "endLine": 291,
+        "endChar": 29
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "660fe606_75cfbecb",
+        "filename": "chip/stm32/clock-stm32l.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-07T18:07:43Z",
+      "side": 1,
+      "message": "Is this also reset, instead of the actual clock enable?",
+      "range": {
+        "startLine": 220,
+        "startChar": 3,
+        "endLine": 220,
+        "endChar": 41
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
