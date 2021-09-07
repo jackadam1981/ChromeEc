@@ -16,6 +16,24 @@
       "message": "Why would you power on the device without a DB?\nIn my opinion allocating a GPIO (in future design) to check whether the DB is connected would be just a waste of GPIO. DB should be always connected. We can move the discussion to b:197585292",
       "revId": "ba310c521635b79c1deb6ceb23d52fc73741cc5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4dd0ec_c5ae2d74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-07T07:47:11Z",
+      "side": 1,
+      "message": "I separate two CL and move \"CONFIG_BRIGNUP removal\" to CL:3144416.\nAbout the purpose to add detection pin, I update to b:197585292.",
+      "parentUuid": "931de889_3169314b",
+      "revId": "ba310c521635b79c1deb6ceb23d52fc73741cc5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
