@@ -548,7 +548,7 @@ void usb_mux_set_safe_mode(int port)
 	}
 
 	/* Isolate the SBU lines. */
-	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+	if (IS_ENABLED(CONFIG_USBC_PPC_SBU) && board_is_port_ppc(port))
 		ppc_set_sbu(port, 0);
 }
 
@@ -559,7 +559,7 @@ void usb_mux_set_safe_mode_exit(int port)
 			    polarity_rm_dts(pd_get_polarity(port)));
 
 	/* Isolate the SBU lines. */
-	if (IS_ENABLED(CONFIG_USBC_PPC_SBU))
+	if (IS_ENABLED(CONFIG_USBC_PPC_SBU) && board_is_port_ppc(port))
 		ppc_set_sbu(port, 0);
 }
 
@@ -693,7 +693,7 @@ __overridable void pd_transition_voltage(int idx)
 
 __overridable void typec_set_source_current_limit(int p, enum tcpc_rp_value rp)
 {
-	if (IS_ENABLED(CONFIG_USBC_PPC))
+	if (IS_ENABLED(CONFIG_USBC_PPC) && board_is_port_ppc(p))
 		ppc_set_vbus_source_current_limit(p, rp);
 }
 
