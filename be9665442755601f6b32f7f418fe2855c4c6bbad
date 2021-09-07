@@ -16,6 +16,23 @@
       "message": "Hi Caveh, Boris, please help to review the patch. Thank you.",
       "revId": "be9665442755601f6b32f7f418fe2855c4c6bbad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ff228cc_915cf1ff",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-07T16:49:02Z",
+      "side": 1,
+      "message": "Different boards have different battery count. Shouldn\u0027t that config be in the \"board\" level (as opposed to \"baseboard\")?",
+      "revId": "be9665442755601f6b32f7f418fe2855c4c6bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
