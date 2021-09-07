@@ -293,7 +293,7 @@ void pd_set_polarity(int port, enum tcpc_cc_polarity polarity)
 {
 	tcpm_set_polarity(port, polarity);
 
-	if (IS_ENABLED(CONFIG_USBC_PPC_POLARITY))
+	if (IS_ENABLED(CONFIG_USBC_PPC_POLARITY) && board_is_port_ppc(port))
 		ppc_set_polarity(port, polarity);
 }
 
@@ -705,7 +705,7 @@ __overridable void pd_transition_voltage(int idx)
 
 __overridable void typec_set_source_current_limit(int p, enum tcpc_rp_value rp)
 {
-	if (IS_ENABLED(CONFIG_USBC_PPC))
+	if (IS_ENABLED(CONFIG_USBC_PPC) && board_is_port_ppc(p))
 		ppc_set_vbus_source_current_limit(p, rp);
 }
 
