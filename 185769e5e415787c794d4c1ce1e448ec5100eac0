@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee77aff5_5786df04",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-07T19:39:06Z",
+      "side": 1,
+      "message": "Do you think this type of USB enable should be used for other chip families? The steps make sense to me here, but I we are not doing them for the other families.",
+      "range": {
+        "startLine": 495,
+        "startChar": 7,
+        "endLine": 495,
+        "endChar": 26
+      },
+      "revId": "185769e5e415787c794d4c1ce1e448ec5100eac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cedfb6f_78514e5f",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-07T19:39:06Z",
+      "side": 1,
+      "message": "There is a utility function that can be called for this.\nwait_for_ready(volatile uint32_t *reg, uint32_t enable, uint32_t ready)",
+      "range": {
+        "startLine": 507,
+        "startChar": 3,
+        "endLine": 508,
+        "endChar": 5
+      },
+      "revId": "185769e5e415787c794d4c1ce1e448ec5100eac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
