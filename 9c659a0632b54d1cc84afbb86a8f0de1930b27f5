@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f47281af_92fdaeba",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-09-07T04:23:19Z",
+      "side": 1,
+      "message": "should this be hard coded to returning 1?",
+      "revId": "9c659a0632b54d1cc84afbb86a8f0de1930b27f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e24d7563_5fe21b58",
+        "filename": "test/usb_pe_drp_old.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-09-07T04:23:19Z",
+      "side": 1,
+      "message": "does this file need to be maintained?",
+      "revId": "9c659a0632b54d1cc84afbb86a8f0de1930b27f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
