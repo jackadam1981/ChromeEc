@@ -1045,7 +1045,7 @@ void tc_src_power_off(int port)
 /* Set what role the partner is right now, for the PPC and OCP module */
 static void tc_set_partner_role(int port, enum ppc_device_role role)
 {
-	if (IS_ENABLED(CONFIG_USBC_PPC))
+	if (IS_ENABLED(CONFIG_USBC_PPC) && board_is_port_ppc(port))
 		ppc_dev_is_connected(port, role);
 
 	if (IS_ENABLED(CONFIG_USBC_OCP)) {
@@ -1501,7 +1501,7 @@ static void restart_tc_sm(int port, enum usb_tc_state start_state)
 		/* Initialize USB mux to its default state */
 		usb_mux_init(port);
 
-	if (IS_ENABLED(CONFIG_USBC_PPC)) {
+	if (IS_ENABLED(CONFIG_USBC_PPC) && board_is_port_ppc(port)) {
 		/*
 		 * Wait to initialize the PPC after tcpc, which sets
 		 * the correct Rd values; otherwise the TCPC might
@@ -1862,7 +1862,8 @@ static void set_vconn(int port, int enable)
 	 * Disable PPC Vconn first then TCPC in case the voltage feeds back
 	 * to TCPC and damages.
 	 */
-	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && !enable)
+	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) &&
+		board_is_port_ppc(port) && !enable)
 		ppc_set_vconn(port, 0);
 
 	/*
@@ -1880,7 +1881,8 @@ static void set_vconn(int port, int enable)
 	 */
 	tcpm_set_vconn(port, enable);
 
-	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) && enable)
+	if (IS_ENABLED(CONFIG_USBC_PPC_VCONN) &&
+		board_is_port_ppc(port) && enable)
 		ppc_set_vconn(port, 1);
 }
 
