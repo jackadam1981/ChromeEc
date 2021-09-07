@@ -6562,6 +6562,7 @@ static void pe_vcs_turn_off_vconn_swap_run(int port)
 		 */
 		pe[port].discover_identity_counter = 0;
 		pe[port].dr_swap_attempt_counter = 0;
+		pe[port].vconn_swap_counter = 0;
 
 		pe_set_ready_state(port);
 		return;
