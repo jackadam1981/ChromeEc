@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d63857f1_62e38c0f",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-07T17:36:15Z",
+      "side": 1,
+      "message": "Should be pull-up, no? Please update the CL after you confirm with EE",
+      "parentUuid": "e906f3b9_210c6666",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 47
+      },
+      "revId": "e3e2d7d68b5790e4044a1426d3f44f56fd1fceea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8a1afb5_33d4eec0",
         "filename": "board/taeko/sensors.c",
         "patchSetId": 2
