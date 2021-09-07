@@ -1691,16 +1691,21 @@ static enum usb_pe_state get_last_state_pe(const int port)
 static void print_current_state(const int port)
 {
 	const char *mode = "";
+	enum usb_pe_state state = get_state_pe(port);
 
 	if (IS_ENABLED(CONFIG_USB_PD_REV30) &&
 			pe_in_frs_mode(port))
 		mode = " FRS-MODE";
 
-	if (IS_ENABLED(USB_PD_DEBUG_LABELS))
-		CPRINTS_L1("C%d: %s%s", port,
-			pe_state_names[get_state_pe(port)], mode);
-	else
-		CPRINTS("C%d: pe-st%d", port, get_state_pe(port));
+	if (state == PE_SNK_EVALUATE_CAPABILITY || state == PE_SNK_SELECT_CAPABILITY) {
+		return;
+	} else {
+		if (IS_ENABLED(USB_PD_DEBUG_LABELS))
+			CPRINTS_L1("C%d: %s%s", port,
+				pe_state_names[state], mode);
+		else
+			CPRINTS("C%d: pe-st%d", port, get_state_pe(port));
+	}
 }
 
 static void send_source_cap(int port)
@@ -1746,11 +1751,11 @@ static void pe_send_request_msg(int port)
 	pd_build_request(vpd_vdo, &rdo, &curr_limit,
 			&supply_voltage, port);
 
-	CPRINTF("C%d: Req [%d] %dmV %dmA", port, RDO_POS(rdo),
-					supply_voltage, curr_limit);
-	if (rdo & RDO_CAP_MISMATCH)
-		CPRINTF(" Mismatch");
-	CPRINTF("\n");
+//	CPRINTF("C%d: Req [%d] %dmV %dmA", port, RDO_POS(rdo),
+//					supply_voltage, curr_limit);
+//	if (rdo & RDO_CAP_MISMATCH)
+//		CPRINTF(" Mismatch");
+//	CPRINTF("\n");
 
 	pe[port].curr_limit = curr_limit;
 	pe[port].supply_voltage = supply_voltage;
