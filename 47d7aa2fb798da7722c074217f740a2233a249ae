@@ -89,6 +89,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8cd153d_b0b34df7",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-09-08T17:10:16Z",
+      "side": 1,
+      "message": "Scott and I had an offline discussion.  It turns out the bit layout of the two registers STM32_RCC_APB1RSTR1 and STM32_RCC_APB1ENR1 are identical, meaning that the bitfield values such as STM32_RCC_PB1_USB can be used for either of the two fields.  Whether it is a good idea to have such generic values defined can be debated, as it assume that all future chip families follow the same convention.  But for now, I want to carry over the code with as little change as possible.",
+      "parentUuid": "8be61806_22e87d1e",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 20
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed1bb09f_ac5c1839",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "STM32_RCC_PB1_USB is not bit in that register that\u0027s being checked. Plus the USB clock is enabled via this statement:\nSTM32_RCC_CRRCR |\u003d RCC_CRRCR_HSI48O;\n\nso to check if that module is enabled, then RCC_CRRCR_HSI48O must be checked.",
       "parentUuid": "935b6417_1dfea474",
+      "range": {
+        "startLine": 287,
+        "startChar": 12,
+        "endLine": 287,
+        "endChar": 49
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09a12ac4_8496d8f6",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-09-08T17:10:16Z",
+      "side": 1,
+      "message": "See discussion above, this bit does exist in STM32_RCC_APB1ENR, and it is better to check this one, in case of future modules being added, which also requires enabling the high speed 48 Mhz clock, without necessarily enabling the USB peripheral.",
+      "parentUuid": "286d669e_cee0813a",
       "range": {
         "startLine": 287,
         "startChar": 12,
