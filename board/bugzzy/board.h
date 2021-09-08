@@ -198,5 +198,6 @@ enum battery_type {
 };
 
 void panel_power_change_interrupt(enum gpio_signal signal);
+void lcd_reset_change_interrupt(enum gpio_signal signal);
 #endif /* !__ASSEMBLER__ */
 #endif /* __CROS_EC_BOARD_H */

@@ -714,11 +714,14 @@ static void panel_power_detect_init(void)
 DECLARE_HOOK(HOOK_INIT, panel_power_detect_init, HOOK_PRIO_DEFAULT);
 
 /**
- * Handle VPN / VSN for mipi display.
+ * Handle VSP / VSN for mipi display when lcd turns on
  */
 static void panel_power_change_deferred(void)
 {
 	int signal = gpio_get_level(GPIO_EN_PP1800_PANEL_S0);
+
+	if (signal == 0)
+		return;
 
 	gpio_set_level(GPIO_EN_LCD_ENP, signal);
 	msleep(1);
@@ -728,8 +731,37 @@ DECLARE_DEFERRED(panel_power_change_deferred);
 
 void panel_power_change_interrupt(enum gpio_signal signal)
 {
-	/* Reset lid debounce time */
 	hook_call_deferred(&panel_power_change_deferred_data, 1 * MSEC);
+}
+
+/*
+ * Detect LCD reset & control LCD DCDC power
+ */
+static void lcd_reset_detect_init(void)
+{
+	gpio_enable_interrupt(GPIO_DDI0_DDC_SCL);
+}
+DECLARE_HOOK(HOOK_INIT, lcd_reset_detect_init, HOOK_PRIO_DEFAULT);
+
+/*
+ * Handle VSP / VSN for mipi display when lcd turns off
+ */
+static void lcd_reset_change_deferred(void)
+{
+	int signal = gpio_get_level(GPIO_DDI0_DDC_SCL);
+
+	if (signal != 0)
+		return;
+
+	gpio_set_level(GPIO_EN_LCD_ENN, signal);
+	msleep(1);
+	gpio_set_level(GPIO_EN_LCD_ENP, signal);
+}
+DECLARE_DEFERRED(lcd_reset_change_deferred);
+
+void lcd_reset_change_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&lcd_reset_change_deferred_data, 1 * MSEC);
 }
 
 /**
