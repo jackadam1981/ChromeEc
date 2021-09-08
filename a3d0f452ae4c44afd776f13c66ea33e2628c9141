@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70947e8f_af6c809b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-08T00:59:09Z",
+      "side": 1,
+      "message": "this does not explain why \u0027buildall -j\u0027 was passing?\n\nAlso, how much is gained by using this function level optimization, do you have some numbers to compare? Does Cr50 have any performance problems this addition significantly improves? Otherwise IMHO it is better to stick with portable C code.",
+      "range": {
+        "startLine": 11,
+        "startChar": 40,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "a3d0f452ae4c44afd776f13c66ea33e2628c9141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29909135_648f46bc",
+        "filename": "board/cr50/dcrypto/internal.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-08T00:59:09Z",
+      "side": 1,
+      "message": "should this be #ifdef __gcc__ instead?",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 17
+      },
+      "revId": "a3d0f452ae4c44afd776f13c66ea33e2628c9141",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
