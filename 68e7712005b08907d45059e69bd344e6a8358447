@@ -16,6 +16,24 @@
       "message": "Could you expand on why this is needed / what problem does this solve?",
       "revId": "68e7712005b08907d45059e69bd344e6a8358447",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c12567d4_137e99aa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-09-08T00:56:04Z",
+      "side": 1,
+      "message": "It\u0027s same as b/188740216. Scout is copy from Genesis. TOT include this change (CL:2905159) but firmware-puff-13324.B doesn\u0027t.",
+      "parentUuid": "1f64a6f7_90ab19bf",
+      "revId": "68e7712005b08907d45059e69bd344e6a8358447",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
