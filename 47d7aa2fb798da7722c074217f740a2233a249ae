@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b853271a_a7c9bcba",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-08T17:10:28Z",
+      "side": 1,
+      "message": "I understand the confusion here. \n\nRCC_APB1ENR1 does have USB_EN as BIT(23) and this was being set in common code. It\u0027s just the G4 registers file associates STM32_RCC_PB1_USB with RCC APB1RSTR1 and there is also a USB reset bit in that register at BIT(23)",
+      "parentUuid": "8be61806_22e87d1e",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 20
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed1bb09f_ac5c1839",
@@ -197,6 +221,30 @@
       "writtenOn": "2021-09-08T17:10:16Z",
       "side": 1,
       "message": "See discussion above, this bit does exist in STM32_RCC_APB1ENR, and it is better to check this one, in case of future modules being added, which also requires enabling the high speed 48 Mhz clock, without necessarily enabling the USB peripheral.",
+      "parentUuid": "286d669e_cee0813a",
+      "range": {
+        "startLine": 287,
+        "startChar": 12,
+        "endLine": 287,
+        "endChar": 49
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "448af9ad_04a73d0d",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-08T17:10:28Z",
+      "side": 1,
+      "message": "Given my comment above this should still work, but it is changing it from checking the RCC_CRRCR_HSI48O bit. Both bits get set when the USB module is enabled, so either bit can be checked to see if it\u0027s enabled.",
       "parentUuid": "286d669e_cee0813a",
       "range": {
         "startLine": 287,
