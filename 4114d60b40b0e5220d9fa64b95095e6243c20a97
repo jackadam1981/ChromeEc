@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8778a2b_a7946df5",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-08T21:31:47Z",
+      "side": 1,
+      "message": "Is there a CONFIG option (such as CONFIG_SYS_CLOCK_HW_CYCLES_PER_SEC) that is available at this point that indicates how fast the CPU is running?\n\nIf the main clock module hasn\u0027t been initialized, then the CPU core is running at a much slower default speed, correct?\n\nIf CONFIG_SYS_CLOCK_HW_CYCLES_PER_SEC isn\u0027t yet available, I would suggest creating a CONFIG_PREINIT_HW_CYCLES_PER_SEC to represent the CPU core speed out of reset, then use a C macro to convert the HW cycles to the equivalent of a 2 second delay.",
+      "range": {
+        "startLine": 365,
+        "startChar": 20,
+        "endLine": 365,
+        "endChar": 54
+      },
+      "revId": "4114d60b40b0e5220d9fa64b95095e6243c20a97",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
