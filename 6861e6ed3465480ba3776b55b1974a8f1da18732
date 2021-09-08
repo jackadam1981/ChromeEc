@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "60f0423e_33a0c8bd",
+        "filename": "zephyr/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-09-08T07:17:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b948cb9_7d9cda62",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "6861e6ed3465480ba3776b55b1974a8f1da18732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e8a7070_67470f4a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-07T15:49:27Z",
       "side": 1,
       "message": "Can you use irq_lock() here to disable all interrupts?",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 0
+      },
+      "revId": "6861e6ed3465480ba3776b55b1974a8f1da18732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d973dc4_a8b690be",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-09-08T07:17:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e8a7070_67470f4a",
       "range": {
         "startLine": 161,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb2ceaa7_19309437",
+        "filename": "zephyr/drivers/cros_system/cros_system_it8xxx2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-09-08T07:17:39Z",
+      "side": 1,
+      "message": "This CL:3093834 adds wake-up CPU initialization setting. Setting this bit will wake up CPU if it is in low power mode and an interrupt is pending. So we don’t need to enable interrupts",
+      "parentUuid": "3a4f3959_ec997545",
+      "range": {
+        "startLine": 223,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 26
+      },
+      "revId": "6861e6ed3465480ba3776b55b1974a8f1da18732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d8e3602_19adaf66",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d147259_4d0592e6",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-09-08T07:17:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d8e3602_19adaf66",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "6861e6ed3465480ba3776b55b1974a8f1da18732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "503d0758_227e5224",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-09-07T15:49:27Z",
       "side": 1,
       "message": "Follow the example for the Lazor board.  CL:2861057\n\nMove this file to baseboard/asurada/hibernate.c and delete this function from baseboard/asurada/baseboard.c",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "6861e6ed3465480ba3776b55b1974a8f1da18732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e56f9ae_c0e05cef",
+        "filename": "zephyr/projects/asurada/hayato/src/hibernate.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-09-08T07:17:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "503d0758_227e5224",
       "range": {
         "startLine": 11,
         "startChar": 0,
