@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "628f91c4_ab8c1904",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-08T22:38:44Z",
+      "side": 1,
+      "message": "Some general questions about this:\n1. The purpose of vconn_swap_counter is to prevent us from getting stuck in a VCS loop during cable discovery with a UFP that wants VCONN. How will this change affect that case? (I think it would leave us vulnerable to VCS forever.)\n2. Are we actually in G3 when this happens? I wouldn\u0027t expect the EC to be up in that case. If we\u0027re in S5 or higher, I would have thought we would be able to supply VCONN.\n3. Is the inability to supply VCONN in a low power state board-specific? If so, should this code be board-specific in some way?",
+      "revId": "1d5a8cba0b509e9ea585b00274c9b5eaaee6e980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
