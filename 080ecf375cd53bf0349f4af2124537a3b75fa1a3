@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c9cd8c2b_51793274",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-08T21:51:26Z",
+      "side": 1,
+      "message": "I think a reasonable common place to do this might be power_ac_change in power/common.c. It should apply to every device we can plug an adapter into that has an AP.\n\n\u003e  task_wake(TASK_ID_CHIPSET);\n\nI\u0027m not sure if we could just add a condition to this line or if we would need to change something in chipset_task or one of the functions it calls. Basically, the idea would be to intercept what would otherwise be a changed system power state and not change it. (In Intel parlance, I think our current behavior is changing from S5 (EC on) to S0 (AP on), and our new behavior would be to stay in S5 in response to AC.)\n\nSince we\u0027re just doing this when the EC powers on, power_common_init might also be a reasonable place. (Change what power_chipset_init returns or what we do with it.)\n\nThe current location of the change would work for Intel, but I think that\u0027s mainly because the EC is turned off in G3 and goes through all its init hooks when it powers on. This isn\u0027t really related to the power button.\n\nAseda, does what I just wrote make sense? I feel like I\u0027m rambling.",
+      "parentUuid": "64113e48_0085494e",
+      "revId": "080ecf375cd53bf0349f4af2124537a3b75fa1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b22bb736_9661162d",
         "filename": "common/power_button_x86.c",
         "patchSetId": 1
