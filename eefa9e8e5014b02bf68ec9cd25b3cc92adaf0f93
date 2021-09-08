@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b860a77c_410f1cee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-09-08T07:35:24Z",
+      "side": 1,
+      "message": "Upload Patch set 2. It verify on rammus firmware barnch.",
+      "parentUuid": "676998ed_17e98adc",
+      "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5dbbe10a_98c316a3",
@@ -210,6 +228,24 @@
       "side": 1,
       "message": "Hi Zhuohao,\nI am cherry-pick SSFC CL to firmware and factory branch.\nBut I can not send to CQ for firmware branch.\nCould you help it? Thanks.\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3128387",
       "parentUuid": "dcc68e79_185e57cb",
+      "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05641f2e_42157a32",
+        "filename": "board/rammus/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-09-08T07:35:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0c36cf6_26acd6a6",
       "revId": "eefa9e8e5014b02bf68ec9cd25b3cc92adaf0f93",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
