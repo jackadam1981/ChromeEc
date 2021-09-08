@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b18b2a3_351b663e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-09-08T07:37:15Z",
+      "side": 1,
+      "message": "Branch should be dedede",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 11
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7016df3_1a9a445e",
+        "filename": "board/beetley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-09-08T07:37:15Z",
+      "side": 1,
+      "message": "we get board_id because blipper changes the hibernate setting, for beetley, we can delete this setting.",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 25
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6ce74e_080a03cf",
+        "filename": "board/beetley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-09-08T07:37:15Z",
+      "side": 1,
+      "message": "we get board_id because blipper changes the hibernate setting, for beetley, we can delete this setting.",
+      "range": {
+        "startLine": 347,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 34
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac0fe017_3fd5d9fc",
+        "filename": "board/beetley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-09-08T07:37:15Z",
+      "side": 1,
+      "message": "new project should only use this setting for hibernate mode",
+      "range": {
+        "startLine": 362,
+        "startChar": 2,
+        "endLine": 362,
+        "endChar": 31
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
