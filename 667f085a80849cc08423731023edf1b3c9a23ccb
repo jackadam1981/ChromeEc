@@ -22,6 +22,30 @@
       },
       "revId": "667f085a80849cc08423731023edf1b3c9a23ccb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "502cd171_3f0cee66",
+        "filename": "zephyr/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-08T15:46:15Z",
+      "side": 1,
+      "message": "Many drivers include header file by path \"driver/X.h\", which can\u0027t be included if root path is not added to include directories.\nIt looks like the root path is accessible during the CrOS EC build, so some files include headers using absolute path, especially for headers that are not in the include directory.",
+      "parentUuid": "9e3b4e8c_d9da7898",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 20
+      },
+      "revId": "667f085a80849cc08423731023edf1b3c9a23ccb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
