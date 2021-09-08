@@ -62,6 +62,52 @@
       },
       "revId": "710ea134f2e323e2caee0561d369363ad4a7bfe5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009520e2_f10a2ebb",
+        "filename": "include/accelgyro.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-08T05:07:47Z",
+      "side": 1,
+      "message": "Can we reformat to match (most) of this file?\n\n\u003cbody\u003e\n\n@s Pointer to sensor data.\n@return EC_SUCCESS if the probe was successful.",
+      "range": {
+        "startLine": 130,
+        "startChar": 4,
+        "endLine": 136,
+        "endChar": 43
+      },
+      "revId": "710ea134f2e323e2caee0561d369363ad4a7bfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de7b92a3_b6f55a9f",
+        "filename": "include/motion_sense.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-08T05:07:47Z",
+      "side": 1,
+      "message": "The wording here threw me off a bit. Am I correct understanding that config is the alternate sensor that can be used and that sensor_id is the position it will go in? So it would look something like:\n\nstruct motion_sensor_t *original \u003d sensors[probe-\u003esensor_id];\nif (original-\u003edrv-\u003eprobe(original) !\u003d EC_SUCCESS \u0026\u0026\n    probe-\u003econfig-\u003edrv-\u003eprobe(original) \u003d\u003d EC_SUCCESS) {\n  sensors[probe-\u003esensor_id] \u003d probe-\u003econfig;\n}",
+      "range": {
+        "startLine": 362,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 2
+      },
+      "revId": "710ea134f2e323e2caee0561d369363ad4a7bfe5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
