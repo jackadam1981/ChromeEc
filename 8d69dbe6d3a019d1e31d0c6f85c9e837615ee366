@@ -22,6 +22,30 @@
       },
       "revId": "8d69dbe6d3a019d1e31d0c6f85c9e837615ee366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e60a895e_8d7288c9",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-08T16:30:53Z",
+      "side": 1,
+      "message": "Hm.. Now that the cros doesn\u0027t have this probing implementation, and zephyr has generated ISRs, it is possible to remove this interrupt field and just generate the ISRs that will send the task events. Does it sound like a good idea?",
+      "parentUuid": "05a4e228_104d791c",
+      "range": {
+        "startLine": 383,
+        "startChar": 14,
+        "endLine": 383,
+        "endChar": 30
+      },
+      "revId": "8d69dbe6d3a019d1e31d0c6f85c9e837615ee366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
