@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c4d284_97c4e8d9",
+        "filename": "zephyr/boards/riscv/it8xxx2_evb/it8xxx2_evb.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-09-08T07:27:07Z",
+      "side": 1,
+      "message": "Separated CL:3146775",
+      "parentUuid": "60f0423e_33a0c8bd",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "6861e6ed3465480ba3776b55b1974a8f1da18732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e8a7070_67470f4a",
@@ -189,6 +213,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "955e812b_0003dd87",
+        "filename": "zephyr/projects/asurada/hayato/gpio.dts",
+        "patchSetId": 9
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-09-08T07:27:07Z",
+      "side": 1,
+      "message": "Separated CL:3146774",
+      "parentUuid": "1d147259_4d0592e6",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 34
+      },
+      "revId": "6861e6ed3465480ba3776b55b1974a8f1da18732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "503d0758_227e5224",
@@ -226,6 +274,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "503d0758_227e5224",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 52
+      },
+      "revId": "6861e6ed3465480ba3776b55b1974a8f1da18732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02dc8131_05d17175",
+        "filename": "zephyr/projects/asurada/hayato/src/hibernate.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-09-08T07:27:07Z",
+      "side": 1,
+      "message": "Separated CL:3146773",
+      "parentUuid": "0e56f9ae_c0e05cef",
       "range": {
         "startLine": 11,
         "startChar": 0,
