@@ -22,6 +22,53 @@
       },
       "revId": "0e5477cb866c9a89e790a5873106c2827c6ede42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ed0e878_4c278ccf",
+        "filename": "board/burnet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-08T22:29:16Z",
+      "side": 1,
+      "message": "Actually, as I think about this more, this is fine.  See comment in it8801.c",
+      "parentUuid": "ec569726_c8c6db4a",
+      "range": {
+        "startLine": 112,
+        "startChar": 20,
+        "endLine": 112,
+        "endChar": 36
+      },
+      "revId": "0e5477cb866c9a89e790a5873106c2827c6ede42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b939c85b_dca932fe",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-08T22:29:16Z",
+      "side": 1,
+      "message": "I think it would be better to change these macro names to something like:\n\nIT8801_KEYBOARD_PWM_I2C_PORT\nIT8801_KEYBOARD_PWM_I2C_ADDR_FLAGS\n\nAnd document that these values are only used when accessing the keyboard and PWM function of the IT8801 chip.  I/O expander functions are accessed using the ioex_config[] array.  A board could in theory have two IT8801 chips, one used for keyboard+PWM+GPIO, and a second used for GPIO only.\n\nA more involved change would be to break this driver into multiple files, but that is out of scope at the moment.",
+      "range": {
+        "startLine": 25,
+        "startChar": 18,
+        "endLine": 25,
+        "endChar": 68
+      },
+      "revId": "0e5477cb866c9a89e790a5873106c2827c6ede42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
