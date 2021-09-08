@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dee4c232_073442ce",
+        "filename": "board/beetley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1486294
+      },
+      "writtenOn": "2021-09-08T10:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7016df3_1a9a445e",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 25
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "40319b14_430fa5d7",
@@ -84,6 +108,30 @@
       "writtenOn": "2021-09-08T07:46:55Z",
       "side": 1,
       "message": "We should remove this, then use `.rot_standard_ref \u003d NULL,` for identity matrix",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 2
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66198e7a_55f97b96",
+        "filename": "board/beetley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1486294
+      },
+      "writtenOn": "2021-09-08T10:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "40319b14_430fa5d7",
       "range": {
         "startLine": 224,
         "startChar": 0,
@@ -117,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "861ba503_4c70af4e",
+        "filename": "board/beetley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1486294
+      },
+      "writtenOn": "2021-09-08T10:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ac5b412_ab8e7222",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 252,
+        "endChar": 39
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d916040_b1a66959",
@@ -130,6 +202,30 @@
       "writtenOn": "2021-09-08T08:00:42Z",
       "side": 1,
       "message": "const unsigned int motion_sensor_count \u003d ARRAY_SIZE(motion_sensors);",
+      "range": {
+        "startLine": 317,
+        "startChar": 0,
+        "endLine": 317,
+        "endChar": 62
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b8752cb_effb272a",
+        "filename": "board/beetley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1486294
+      },
+      "writtenOn": "2021-09-08T10:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d916040_b1a66959",
       "range": {
         "startLine": 317,
         "startChar": 0,
@@ -163,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d5d7af4_d4e178d3",
+        "filename": "board/beetley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1486294
+      },
+      "writtenOn": "2021-09-08T10:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a6ce74e_080a03cf",
+      "range": {
+        "startLine": 347,
+        "startChar": 1,
+        "endLine": 347,
+        "endChar": 34
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ac0fe017_3fd5d9fc",
@@ -186,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da32b32f_a2bccd27",
+        "filename": "board/beetley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1486294
+      },
+      "writtenOn": "2021-09-08T10:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac0fe017_3fd5d9fc",
+      "range": {
+        "startLine": 362,
+        "startChar": 2,
+        "endLine": 362,
+        "endChar": 31
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ae86e98_4938cb77",
@@ -199,6 +343,30 @@
       "writtenOn": "2021-09-08T08:00:42Z",
       "side": 1,
       "message": "remove this, we will not change the \u0027motion_sensor_count\u0027\nthen use \u0027const unsigned int motion_sensor_count \u003d ARRAY_SIZE(motion_sensors);\u0027 in board.c",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 42
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "93d09ead_22e19053",
+        "filename": "board/beetley/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1486294
+      },
+      "writtenOn": "2021-09-08T10:11:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ae86e98_4938cb77",
       "range": {
         "startLine": 41,
         "startChar": 0,
