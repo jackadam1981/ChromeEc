@@ -256,6 +256,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5ade5e8_ca2c23eb",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-09-08T17:14:51Z",
+      "side": 1,
+      "message": "The code in usb.c used to look like this, before I changed it to forward to this new method clock_is_module_enabled() which I introduced.\n\nint usb_is_enabled(void)\n{\n#if defined(STM32_RCC_APB1ENR2_USBFSEN)\n\treturn (STM32_RCC_APB1ENR2 \u0026 STM32_RCC_APB1ENR2_USBFSEN) ? 1 : 0;\n#else\n\treturn (STM32_RCC_APB1ENR \u0026 STM32_RCC_PB1_USB) ? 1 : 0;\n#endif\n}\n\nSo as far as I can tell, this CL will not change which register is being inspected.  And I stand by my previous comment, that checking this USB-specific register is the future-proof way.",
+      "parentUuid": "448af9ad_04a73d0d",
+      "range": {
+        "startLine": 287,
+        "startChar": 12,
+        "endLine": 287,
+        "endChar": 49
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8fc8f2f0_377f9db6",
