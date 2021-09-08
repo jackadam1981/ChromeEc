@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0ea68ef_db773235",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-09-08T02:34:58Z",
+      "side": 1,
+      "message": "still waiting for more test results.",
+      "revId": "9c659a0632b54d1cc84afbb86a8f0de1930b27f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "faa76867_ca8bfab4",
@@ -24,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7a2d169_0be7a6a6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 6762,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-09-08T02:34:58Z",
+      "side": 1,
+      "message": "Those two cases are different, CL:3131408 is for port discovery to check if it\u0027s OK to swap vconn so DUT can be vconn source. This one the DUT is already vconn source, need to check if board can still supply power and if not, turn off vconn. I was thinking to use tc_check_vconn_swap() too, but pd_check_vconn_swap() is more appropriate unless there is other consideration I missed.",
+      "parentUuid": "faa76867_ca8bfab4",
+      "range": {
+        "startLine": 6762,
+        "startChar": 29,
+        "endLine": 6762,
+        "endChar": 48
+      },
+      "revId": "9c659a0632b54d1cc84afbb86a8f0de1930b27f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f47281af_92fdaeba",
@@ -37,6 +78,24 @@
       "writtenOn": "2021-09-07T04:23:19Z",
       "side": 1,
       "message": "should this be hard coded to returning 1?",
+      "revId": "9c659a0632b54d1cc84afbb86a8f0de1930b27f5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eccb0860_e8a40cfe",
+        "filename": "test/usb_pe_drp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-09-08T02:34:58Z",
+      "side": 1,
+      "message": "In tests\u0027 code, I see hard coded return is allowed. I think this should not stop vconn swap in the tests, so I chose to return 1.",
+      "parentUuid": "f47281af_92fdaeba",
       "revId": "9c659a0632b54d1cc84afbb86a8f0de1930b27f5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
