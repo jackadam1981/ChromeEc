@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5c0cad3_5e762f91",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-08T02:38:36Z",
+      "side": 1,
+      "message": "for this one I\u0027m still exploring wherever +40 ms for power-up tests is fine or I need to replace it with fixed-values sign test (it will be a bit larger due to larger test inputs).",
+      "revId": "c8776a1890e37a6b0bd9759519ccc035c7ccd732",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
