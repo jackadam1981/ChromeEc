@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9291a570_c72b3274",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-08T23:49:46Z",
+      "side": 1,
+      "message": "You need to track whether the I/O expander interrupt and keyboard interrupt is enabled separately.",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e585513b_9e6c5e52",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-08T23:49:46Z",
+      "side": 1,
+      "message": "Follow the convention of the other I/O expander handlers and pass in the ioex index.",
+      "range": {
+        "startLine": 460,
+        "startChar": 38,
+        "endLine": 460,
+        "endChar": 42
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75faccdd_75fe6874",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-08T23:49:46Z",
+      "side": 1,
+      "message": "See above - you need to verify that the keyboard raw interrupt is enabled before waking the keyscan task.",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 0
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da5bed79_c8350fa9",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-08T23:49:46Z",
+      "side": 1,
+      "message": "Same here, because of the dual function, you don\u0027t want to generate I/O expander interrupts on key presses if the ioex interrupt is disabled.",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 0
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
