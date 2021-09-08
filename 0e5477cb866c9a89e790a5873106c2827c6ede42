@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec569726_c8c6db4a",
+        "filename": "board/burnet/board.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-08T22:07:21Z",
+      "side": 1,
+      "message": "Use I2C_ADDR_IT8801_FLAGS here instead.  Please fix this on all boards.",
+      "range": {
+        "startLine": 112,
+        "startChar": 20,
+        "endLine": 112,
+        "endChar": 36
+      },
+      "revId": "0e5477cb866c9a89e790a5873106c2827c6ede42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
