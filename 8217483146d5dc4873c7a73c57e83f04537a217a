@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "17e63f10_8ae11b61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407950
+      },
+      "writtenOn": "2021-09-08T13:16:58Z",
+      "side": 1,
+      "message": "No, erasing was the easiest option, but I agree this is not an elegant solution.\n\nNow content of these registers is not saved. More precisely, registers are saved but they are cleared earlier. This way we are sure that we are not sending uninitialized buffer, which may contain sensitive data.\n\nLet me know what do you think about it.",
+      "parentUuid": "35319945_6594711f",
+      "revId": "8217483146d5dc4873c7a73c57e83f04537a217a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "989092d5_aa8e1f7a",
