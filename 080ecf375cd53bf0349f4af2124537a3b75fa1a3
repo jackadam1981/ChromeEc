@@ -16,6 +16,29 @@
       "message": "We also need a solution for the ARM platforms and not just x86.",
       "revId": "080ecf375cd53bf0349f4af2124537a3b75fa1a3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b22bb736_9661162d",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-08T19:34:24Z",
+      "side": 1,
+      "message": "It seems like this check should go to `set_initial_pwrbtn_state` instead.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 48
+      },
+      "revId": "080ecf375cd53bf0349f4af2124537a3b75fa1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
