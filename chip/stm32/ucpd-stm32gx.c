@@ -894,7 +894,7 @@ static void ucpd_generate_bist_msg(int port)
 {
 	uint32_t const bist_msg[7] = {BDO_MODE_TEST_DATA, 0, 0, 0, 0, 0, 0};
 	uint16_t header;
-	enum tcpm_sop_type type = TCPC_TX_SOP;
+	enum tcpci_msg_type type = TCPCI_MSG_SOP;
 	int len;
 
 	header= PD_HEADER(
