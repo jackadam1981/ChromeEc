@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "177dd2b9_54de2c7b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-08T22:28:11Z",
+      "side": 1,
+      "message": "Add b:190390784. This is something I\u0027ve been meaning to clean up for a while.",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "1098b8ff_4ec656c6",
@@ -14,6 +31,108 @@
       "writtenOn": "2021-09-07T15:47:13Z",
       "side": 1,
       "message": "Waiting for Intel CR+1 to start Google review.",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c63cb9c_db2c186d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-08T22:28:11Z",
+      "side": 1,
+      "message": "First pass review, mostly avoiding style issues to discuss high-level approach.\n\nThank you Intel undertaking this valuable API improvement.",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6e99b5_3771712d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-08T22:28:11Z",
+      "side": 1,
+      "message": "If I\u0027m following this correctly, the change of disc to const above changes disc-\u003esvids to const svid_mode_data from svid_mode_data, which changes \u0026svids to const svid_mode_data*. modep is still non-const, so its data member is non-const svid_mode_data*. This cast casts away const to allow the assignment.\n\nPassing this const pointer into the stored active modes leaks a handle to the data out of our const/mutable distinction. There\u0027s probably a better way to do this. (Store the SVIDs directly in struct svdm_mode_data? Make svdm_amode_data.data const?)",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6abe5b6_f83ccff9",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-08T22:28:11Z",
+      "side": 1,
+      "message": "I don\u0027t think this change should be necessary. Returning an int from a const int lvalue should be allowed.",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e285347_bd611c3e",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-08T22:28:11Z",
+      "side": 1,
+      "message": "Make mode_data const?",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2ba5545_306ab119",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-08T22:28:11Z",
+      "side": 1,
+      "message": "This is also leaking out of the abstraction. Can pd_get_mode_vdo be made to return const *?",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6f08671e_c9e7f9d9",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7053,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-08T22:28:11Z",
+      "side": 1,
+      "message": "I think there\u0027s probably a good way to implement one of these functions in terms of the other, but which one is the outer one probably depends on the answer to my other questions about casting away const.",
       "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
