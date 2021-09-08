@@ -199,6 +199,7 @@ const struct temp_sensor_t temp_sensors[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
+static int board_id = -1;
 
 void board_init(void)
 {
@@ -242,6 +243,13 @@ void board_init(void)
 	on = chipset_in_state(CHIPSET_STATE_ON | CHIPSET_STATE_ANY_SUSPEND |
 			      CHIPSET_STATE_SOFT_OFF);
 	board_power_5v_enable(on);
+
+	if (board_id == -1) {
+		uint32_t val;
+
+		if (cbi_get_board_version(&val) == EC_SUCCESS)
+			board_id = val;
+	}
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
@@ -714,11 +722,14 @@ static void panel_power_detect_init(void)
 DECLARE_HOOK(HOOK_INIT, panel_power_detect_init, HOOK_PRIO_DEFAULT);
 
 /**
- * Handle VPN / VSN for mipi display.
+ * Handle VSP / VSN for mipi display when lcd turns on
  */
 static void panel_power_change_deferred(void)
 {
 	int signal = gpio_get_level(GPIO_EN_PP1800_PANEL_S0);
+
+	if (signal == 0 && board_id >= 3)
+		return;
 
 	gpio_set_level(GPIO_EN_LCD_ENP, signal);
 	msleep(1);
@@ -728,8 +739,47 @@ DECLARE_DEFERRED(panel_power_change_deferred);
 
 void panel_power_change_interrupt(enum gpio_signal signal)
 {
-	/* Reset lid debounce time */
 	hook_call_deferred(&panel_power_change_deferred_data, 1 * MSEC);
+}
+
+/*
+ * Detect LCD reset & control LCD DCDC power
+ */
+static void lcd_reset_detect_init(void)
+{
+	if (board_id == -1) {
+		uint32_t val;
+
+		if (cbi_get_board_version(&val) == EC_SUCCESS)
+			board_id = val;
+	}
+
+	if (board_id < 3)
+		return;
+
+	gpio_enable_interrupt(GPIO_DDI0_DDC_SCL);
+}
+DECLARE_HOOK(HOOK_INIT, lcd_reset_detect_init, HOOK_PRIO_DEFAULT);
+
+/*
+ * Handle VSP / VSN for mipi display when lcd turns off
+ */
+static void lcd_reset_change_deferred(void)
+{
+	int signal = gpio_get_level(GPIO_DDI0_DDC_SCL);
+
+	if (signal != 0)
+		return;
+
+	gpio_set_level(GPIO_EN_LCD_ENN, signal);
+	msleep(1);
+	gpio_set_level(GPIO_EN_LCD_ENP, signal);
+}
+DECLARE_DEFERRED(lcd_reset_change_deferred);
+
+void lcd_reset_change_interrupt(enum gpio_signal signal)
+{
+	hook_call_deferred(&lcd_reset_change_deferred_data, 1 * MSEC);
 }
 
 /**
