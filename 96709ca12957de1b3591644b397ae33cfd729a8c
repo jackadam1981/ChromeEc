@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "82e36f82_ea663806",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-09-08T02:23:11Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\nActually I have tried to use IS_ENABLE() mothed on this patch before. But the problem is the variable f, fmax and temp_fan_configured will become unused variable while compile. I have no idea now. 😟",
+      "parentUuid": "55b3e3d8_813f5afa",
+      "revId": "96709ca12957de1b3591644b397ae33cfd729a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47719ccd_a0c08748",
