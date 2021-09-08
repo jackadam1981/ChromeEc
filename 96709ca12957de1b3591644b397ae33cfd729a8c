@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecee7c40_a5ec8f1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-08T20:49:42Z",
+      "side": 1,
+      "message": "Yeah, unfortunately it doesn\u0027t work. We need a new macro (e.g. IS_DEFINED) which yields 1 for empty and non-empty macros. \n\nI did a little experiment. It requires us to scan all \u0027#undef CONFIG_*\u0027 and produce \u0027#define __ARG_PLACEHOLDER_* 0,\u0027. That\u0027ll allow us to group empty and non-empty macros together.\n\nSo, your patch is the best we can do under the current condition.",
+      "parentUuid": "82e36f82_ea663806",
+      "revId": "96709ca12957de1b3591644b397ae33cfd729a8c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "47719ccd_a0c08748",
