@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46ba1214_30c84dc6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-08T22:20:15Z",
+      "side": 1,
+      "message": "21-09-08 16:07:25.972 0x8010af00 PD_C1      (real size 1024):\tunused 248\tusage 776 / 1024 (75 %)\n21-09-08 16:07:25.988 0x8010add8 PD_C0      (real size 1024):\tunused 272\tusage 752 / 1024 (73 %)\n21-09-08 16:07:26.000 0x8010acb0 KEYSCAN    (real size 928):\tunused 240\tusage 688 / 928 (74 %)\n21-09-08 16:07:26.013 0x8010ab88 HOSTCMD    (real size 1024):\tunused 272\tusage 752 / 1024 (73 %)\n21-09-08 16:07:26.026 0x8010aa60 MOTIONSENSE (real size 928):\tunused 240\tusage 688 / 928 (74 %)\n21-09-08 16:07:26.038 0x8010a938 CHIPSET    (real size 832):\tunused 224\tusage 608 / 832 (73 %)\n21-09-08 16:07:26.051 0x8010a810 CHARGER    (real size 960):\tunused 240\tusage 720 / 960 (75 %)\n21-09-08 16:07:26.062 0x8010a6e8 USB_CHG_P1 (real size 800):\tunused 192\tusage 608 / 800 (76 %)\n21-09-08 16:07:26.075 0x8010a5c0 USB_CHG_P0 (real size 800):\tunused 272\tusage 528 / 800 (66 %)\n21-09-08 16:07:26.089 0x8010a498 HOOKS      (real size 672):\tunused 352\tusage 320 / 672 (47 %)\n21-09-08 16:07:26.100 0x80101a08 sysworkq   (real size 1024):\tunused 288\tusage 736 / 1024 (71 %)\n21-09-08 16:07:26.112 0x801017c8 shell_uart (real size 1056):\tunused 244\tusage 812 / 1056 (76 %)\n21-09-08 16:07:26.125 0x80101888 idle 00    (real size 256):\tunused 128\tusage 128 / 256 (50 %)\n21-09-08 16:07:26.137 0x80101948 main       (real size 1024):\tunused 344\tusage 680 / 1024 (66 %)\n21-09-08 16:07:26.150 0x80109cf0 IRQ 00     (real size 800):\tunused 296\tusage 504 / 800 (63 %)",
+      "revId": "819464f837133f559859636b72e1267a5b6d80d4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
