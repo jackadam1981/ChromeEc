@@ -49,6 +49,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40319b14_430fa5d7",
+        "filename": "board/beetley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2021-09-08T07:46:55Z",
+      "side": 1,
+      "message": "We should remove this, then use `.rot_standard_ref \u003d NULL,` for identity matrix",
+      "range": {
+        "startLine": 224,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 2
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ac5b412_ab8e7222",
+        "filename": "board/beetley/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1449895
+      },
+      "writtenOn": "2021-09-08T07:46:55Z",
+      "side": 1,
+      "message": "use `.rot_standard_ref \u003d NULL,` for identity matrix",
+      "range": {
+        "startLine": 252,
+        "startChar": 2,
+        "endLine": 252,
+        "endChar": 39
+      },
+      "revId": "82383f4afec19f05b136768cb17a13e6d665b06c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a6ce74e_080a03cf",
         "filename": "board/beetley/board.c",
         "patchSetId": 1
