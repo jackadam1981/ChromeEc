@@ -18,6 +18,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe40caf_8e7d33cd",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-08T00:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31e38831_994f3100",
+      "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b87ada_26470007",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-08T00:51:56Z",
+      "side": 1,
+      "message": "Done\nwe are updating the bits , I think it should be okay",
+      "parentUuid": "31e38831_994f3100",
+      "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2653e2d6_719b169f",
@@ -31,6 +67,54 @@
       "writtenOn": "2021-09-01T21:44:47Z",
       "side": 1,
       "message": "Should this be #define?",
+      "range": {
+        "startLine": 444,
+        "startChar": 32,
+        "endLine": 444,
+        "endChar": 45
+      },
+      "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "446f2bd0_5867b504",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-08T00:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2653e2d6_719b169f",
+      "range": {
+        "startLine": 444,
+        "startChar": 32,
+        "endLine": 444,
+        "endChar": 45
+      },
+      "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d65a97_fbe5fd6e",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-08T00:51:56Z",
+      "side": 1,
+      "message": "Done\n\nits a const variable taken from gpio_list.h",
+      "parentUuid": "2653e2d6_719b169f",
       "range": {
         "startLine": 444,
         "startChar": 32,
@@ -58,6 +142,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5880b1b8_ae1d2804",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-08T00:51:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4c1b3149_e31d23da",
+      "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00cef3bb_e9f31457",
@@ -71,6 +173,42 @@
       "writtenOn": "2021-09-01T21:44:47Z",
       "side": 1,
       "message": "Can data have only one of the mask set at a given time or it can have GGPIOG0IS | GGPIOG1IS | GGPIOG2IS.",
+      "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0ccb78f_92634e10",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-08T00:51:56Z",
+      "side": 1,
+      "message": "Done\n\nsame interrupt line is muxed inside the chip hence we have to search for all bits",
+      "parentUuid": "00cef3bb_e9f31457",
+      "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25bd56c5_503a0209",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-08T00:51:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00cef3bb_e9f31457",
       "revId": "6a6ad44a254f4c2e32a09301ff48de7ab307b60c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
