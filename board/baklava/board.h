@@ -11,6 +11,13 @@
 /* Baseboard features */
 #include "baseboard.h"
 
+/*
+ * Implementing this special descriptor allow WinUSB driver package
+ * installation to be automatic.
+ */
+#define CONFIG_MICROSOFT_OS_DESC
+#define USE_QSI_VID_PID
+
 /* Optional features */
 /*
  * For MP release, CONFIG_SYSTEM_UNLOCKED must be undefined, and

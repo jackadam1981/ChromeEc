@@ -83,6 +83,41 @@ const struct usb_config_descriptor USB_CONF_DESC(conf) = {
 	.bMaxPower = (CONFIG_USB_MAXPOWER_MA / 2),
 };
 
+#ifdef CONFIG_MICROSOFT_OS_DESC
+#define GET_MS_DESCRIPTOR 0x02
+#define USB_STR_MICROSOFT 0xEE
+#define USB_MS_SIGNATURE 	/* MSFT100 */		\
+	0x4D, 0x00, 0x53, 0x00, 0x46, 0x00, 0x54, 0x00,	\
+	0x31, 0x00, 0x30, 0x00, 0x30, 0x00
+#define USB_MS_COMPATID		/* WINUSB */		\
+	0x57, 0x49, 0x4E, 0x55, 0x53, 0x42, 0x00, 0x00
+
+/* OS Descriptor is base on the Microsoft specification */
+const uint8_t ms_os_string_desc [] = {	
+	0x12,			/* bLength */
+	USB_DT_STRING,		/* bDescriptorType */
+	USB_MS_SIGNATURE,	/* qwSignature[7] */
+	GET_MS_DESCRIPTOR,	/* bMS_VendorCode */
+	0x00			/* bPad */
+};
+
+/* Extended Compatible ID OS Feature Descriptor */
+const uint8_t compat_id_feature_desc [] = {
+	/* Header Section */
+	0x28, 0x00, 0x00, 0x00,	/* dwLength */
+	0x00, 0x01,		/* bcdVersiom = 1.00 */
+	0x04, 0x00,		/* wIndex */
+	0x01,			/* bCount */
+	0, 0, 0, 0, 0, 0, 0,	/* bReserved[7] */
+	/* Function Section 1 */
+	0x00,			/* bFirstInterfaceNumber */
+	0x01,
+	USB_MS_COMPATID,	/* compatID */
+	0, 0, 0, 0, 0, 0, 0, 0,	/* subCompatID */
+	0, 0, 0, 0, 0, 0	/* bReserved[6] */
+};
+#endif
+
 const uint8_t usb_string_desc[] = {
 	4, /* Descriptor size */
 	USB_DT_STRING,
@@ -210,6 +245,12 @@ static void ep0_rx(void)
 			ep0_send_descriptor(webusb_url, len, 0);
 			return;
 		}
+#elif defined(CONFIG_MICROSOFT_OS_DESC)
+		uint8_t bReq = req >> 8;
+		if (bReq == GET_MS_DESCRIPTOR) {
+			ep0_send_descriptor(compat_id_feature_desc, 0x28, 0);
+			return;
+		}
 #endif
 		goto unknown_req;
 	}
@@ -237,6 +278,14 @@ static void ep0_rx(void)
 			break;
 #endif
 		case USB_DT_STRING: /* Setup : Get string descriptor */
+#ifdef CONFIG_MICROSOFT_OS_DESC
+			/* OS string descriptor that is stored at index 0xEE */
+			if (idx == USB_STR_MICROSOFT) {
+				desc = (void *)&ms_os_string_desc;
+				len = desc[0];
+				break;
+			}
+#endif
 			if (idx >= USB_STR_COUNT)
 				/* The string does not exist : STALL */
 				goto unknown_req;
