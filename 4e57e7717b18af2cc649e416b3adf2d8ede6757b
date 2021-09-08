@@ -34,6 +34,24 @@
       "parentUuid": "f4c21cd7_afe0e0a6",
       "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51788b69_da88d220",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-08T00:39:35Z",
+      "side": 1,
+      "message": "Hi Daisuke, it did not help, I still see below error\n\n-09-07 17:36:18.282\n21-09-07 17:36:18.283 --- UART initialized after reboot ---\n21-09-07 17:36:18.288 [Image: RO, mtlrvpp_npcx_v1.1.19612-9457f30 2021-09-07 17:35:02 vphirema@vphirema3]\n21-09-07 17:36:18.303 [Reset cause: soft]\n21-09-07 17:36:18.305\n21-09-07 17:36:18.305 ASSERTION FAILURE \u0027tskid \u003c TASK_ID_COUNT\u0027 in timer_arm() at common/timer.c:131\n21-09-07 17:36:18.308\n21-09-07 17:36:18.308 \u003d\u003d\u003d PROCESS EXCEPTION: 00 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: ffffffff \u003d\u003d\u003d\n21-09-07 17:36:18.309 r0 :         r1 :         r2 :         r3 :\n21-09-07 17:36:18.311 r4 :dead6663 r5 :00000083 r6 :00000000 r7 :00000000\n21-09-07 17:36:18.315 r8 :00000000 r9 :00018d25 r10:00000039 r11:200c03a7\n21-09-07 17:36:18.319 r12:         sp :00000000 lr :         pc :\n21-09-07 17:36:18.325\n21-09-07 17:36:18.325 cfsr \u003d 0, shcsr \u003d 70000, hfsr \u003d 0, dfsr \u003d 0",
+      "parentUuid": "03f46855_6d995705",
+      "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
