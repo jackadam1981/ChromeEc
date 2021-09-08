@@ -33,6 +33,24 @@
       "message": "Different boards have different battery count. Shouldn\u0027t that config be in the \"board\" level (as opposed to \"baseboard\")?",
       "revId": "be9665442755601f6b32f7f418fe2855c4c6bbad",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61f61364_a952ff0d",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-09-08T18:29:03Z",
+      "side": 1,
+      "message": "As per the code, CONFIG_BATTERY_COUNT should always be set to 1.This do not reflect different batteries supported. It is set to value 2 if CONFIG_EC_EC_COMM_BATTERY is defined which is not true.",
+      "parentUuid": "9ff228cc_915cf1ff",
+      "revId": "be9665442755601f6b32f7f418fe2855c4c6bbad",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
