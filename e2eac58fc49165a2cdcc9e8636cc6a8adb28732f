@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "678c7b78_f956922d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-08T23:59:02Z",
+      "side": 1,
+      "message": "LGTM once you move CMakeLists.txt change to the parent CL.",
+      "revId": "e2eac58fc49165a2cdcc9e8636cc6a8adb28732f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f3a311b_9444ac9a",
+        "filename": "zephyr/projects/asurada/hayato/CMakeLists.txt",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-08T23:59:02Z",
+      "side": 1,
+      "message": "This file should be part of the parent CL:3146773",
+      "revId": "e2eac58fc49165a2cdcc9e8636cc6a8adb28732f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
