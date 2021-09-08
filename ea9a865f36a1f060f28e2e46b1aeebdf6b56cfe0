@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69eda87e_dbd72f9a",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4764,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-08T21:45:37Z",
+      "side": 1,
+      "message": "As a follow up CL, can you add Kconfig options for the MECC version.  At some point Intel will need to move RVP support over to Zephyr.",
+      "range": {
+        "startLine": 4764,
+        "startChar": 0,
+        "endLine": 4764,
+        "endChar": 40
+      },
+      "revId": "ea9a865f36a1f060f28e2e46b1aeebdf6b56cfe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
