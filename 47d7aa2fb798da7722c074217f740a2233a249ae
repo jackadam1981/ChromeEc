@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8be61806_22e87d1e",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-08T16:26:11Z",
+      "side": 1,
+      "message": "I had defined STM32_RCC_PB1_USB since it was used in STM32 common code for USB.\n/* --- RCC APB1RSTR1 Bit Definitions --- */\n#define STM32_RCC_APB1RSTR1_USB_RST     BIT(23)\n#define STM32_RCC_APB1RSTR              STM32_RCC_APB1RSTR1\n#define STM32_RCC_PB1_USB               STM32_RCC_APB1RSTR1_USB_RST\n\nFor the G4 family, STM32_RCC_PB1_USB is STM32_RCC_APB1RSTR1_USB_RST and it\u0027s in the reigster RCC_APB1RSTR1\n\nPlus it doesn\u0027t make sense to put the USB module into reset as part of the clock enable statement, unless it was being taken back out of reset (similar logic you implemented for L5). If that\u0027s not being done then this reset can\u0027t be here.",
+      "parentUuid": "54ed412b_e206c221",
+      "range": {
+        "startLine": 249,
+        "startChar": 3,
+        "endLine": 249,
+        "endChar": 20
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed1bb09f_ac5c1839",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "I do not believe that STM32_RCC_APB1ENR is a register used for reset trigger, rather, I think it is used for enabling particular peripheral clocks.  (Based on the description of a register of same name in the STM32L5xxx reference manual.)",
       "parentUuid": "ed1bb09f_ac5c1839",
+      "range": {
+        "startLine": 287,
+        "startChar": 12,
+        "endLine": 287,
+        "endChar": 49
+      },
+      "revId": "47d7aa2fb798da7722c074217f740a2233a249ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "286d669e_cee0813a",
+        "filename": "chip/stm32/clock-stm32g4.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-08T16:26:11Z",
+      "side": 1,
+      "message": "STM32_RCC_PB1_USB is not bit in that register that\u0027s being checked. Plus the USB clock is enabled via this statement:\nSTM32_RCC_CRRCR |\u003d RCC_CRRCR_HSI48O;\n\nso to check if that module is enabled, then RCC_CRRCR_HSI48O must be checked.",
+      "parentUuid": "935b6417_1dfea474",
       "range": {
         "startLine": 287,
         "startChar": 12,
