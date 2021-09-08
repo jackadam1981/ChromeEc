@@ -117,6 +117,24 @@
       "parentUuid": "763bc959_538a37bf",
       "revId": "aae0cf29d7c6cea6ca8e6596271de3c9e4a5f704",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d667828_6c056587",
+        "filename": "common/timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-08T15:45:18Z",
+      "side": 1,
+      "message": "Hi Martin,\n\nSince 0 is a valid value, we need to immediately return (like PS 3) instead of  calling ccprintf() (or any extra function).",
+      "parentUuid": "a3b6e4a6_85652c45",
+      "revId": "aae0cf29d7c6cea6ca8e6596271de3c9e4a5f704",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
