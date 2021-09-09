@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c46aded_08d28b27",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-09T17:11:19Z",
+      "side": 1,
+      "message": "Please put this change into another CL. Thank you,",
+      "revId": "d951307edd37d89cac283075dde99d86e04bd4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6243a7_00e4bef8",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-09T17:11:19Z",
+      "side": 1,
+      "message": "Please add this to include/config.h (i.e. #undef CONFIG_BATTERY_DEEP_CHARGE)",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 34
+      },
+      "revId": "d951307edd37d89cac283075dde99d86e04bd4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd8aeed8_c5a6953f",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 2118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-09T17:11:19Z",
+      "side": 1,
+      "message": "How about the following?\n\n  if (!battery_is_responsive()) {\n\nand define:\n\n  bool battery_is_responsive(void)\n  {\n      if (!(curr.batt.flags \u0026 BATT_FLAG_RESPONSIVE))\n          return false;\n      if (IS_ENABLED(CONFIG_BATTERY_DEEP_CHARGE)) {\n          if (!(curr.batt.flags \u0026 BATT_FLAG_BAD_VOLTAGE) \u0026\u0026\n\t\t curr.batt.voltage \u003c\u003d batt_info-\u003evoltage_min))\n          return false;\n      }\n      return true;\n  }",
+      "range": {
+        "startLine": 2113,
+        "startChar": 0,
+        "endLine": 2118,
+        "endChar": 6
+      },
+      "revId": "d951307edd37d89cac283075dde99d86e04bd4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
