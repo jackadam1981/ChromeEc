@@ -72,6 +72,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2a9c144f_a05d805d",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2308,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-09-09T05:27:29Z",
+      "side": 1,
+      "message": "Hi Abe,\nThis same function is what is getting called , when TC_LOW_POWER_MODE is set in \ntc_low_power_mode_run() at tcpm_enter_low_power_mode(). In the case of other tcpm chips(fusb302,rt1715..etc), this function will set corresponding registers, in this check condition itself. Ideally, isn\u0027t this supposed to be called only  after entering Low power mode, based on whichever condition?",
+      "range": {
+        "startLine": 2308,
+        "startChar": 12,
+        "endLine": 2308,
+        "endChar": 55
+      },
+      "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b7cf669d_51e77164",
         "filename": "driver/tcpm/it83xx.c",
         "patchSetId": 5
