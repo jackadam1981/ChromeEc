@@ -16,6 +16,24 @@
       "message": "Some general questions about this:\n1. The purpose of vconn_swap_counter is to prevent us from getting stuck in a VCS loop during cable discovery with a UFP that wants VCONN. How will this change affect that case? (I think it would leave us vulnerable to VCS forever.)\n2. Are we actually in G3 when this happens? I wouldn\u0027t expect the EC to be up in that case. If we\u0027re in S5 or higher, I would have thought we would be able to supply VCONN.\n3. Is the inability to supply VCONN in a low power state board-specific? If so, should this code be board-specific in some way?",
       "revId": "1d5a8cba0b509e9ea585b00274c9b5eaaee6e980",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe6e3ada_60fc996c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-09-09T04:44:09Z",
+      "side": 1,
+      "message": "1. In case of PE_VCS_TURN_OFF_VCONN_SWAP, discovery counter are cleared; how the vconn_swap_counter doesn\u0027t get reset? In the UFP case you mentioned, if DFP is rely on this counter to decide if more vconn swap request is needed, then it will be a problem. \n2. in G3, EC/H1/TCPC are on, SOC is down. \n3: ADL RVP or Brya, 5V A rail is turned off in G3 (somehow Volteer has 5V A rail turned on). when ADL system has device connected then enters G3, it couldn\u0027t supply vconn power, we need to turn off vconn if DUT is vconn source(CL:3144312) . also vconn_swap_counter needs to be reset to 0; otherwise, after power up system, it will increase this counter by 1; if we repeat multiple times(shutdown to G3 then power up), each time counter increase by 1, and eventually after power up from G3, counter exceeds max value and vconn swap won\u0027t happen anymore. This causes even Gatkex is connected to PD port, but we won\u0027t enter USB4. Unless  the PE states transition goes through some states which reset vconn swap. \nI will copy this discussion to issue tracker b:199254594",
+      "parentUuid": "628f91c4_ab8c1904",
+      "revId": "1d5a8cba0b509e9ea585b00274c9b5eaaee6e980",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
