@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39e4afec_9d0ba11d",
+        "filename": "zephyr/shim/src/motionsense_driver/icm426xx-drvinfo.inc",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T15:41:16Z",
+      "side": 1,
+      "message": "We should consider creating helper macros to create the contents of this file.  This is outside the scope of this CL.\n\nYuval - do you think this is doable?",
+      "revId": "e1d540e3db627b11f6a7ab54bb83dbf41122e92c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
