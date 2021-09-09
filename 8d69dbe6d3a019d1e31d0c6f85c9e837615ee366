@@ -46,6 +46,30 @@
       },
       "revId": "8d69dbe6d3a019d1e31d0c6f85c9e837615ee366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08b11a75_24b398d8",
+        "filename": "driver/accel_lis2ds.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T16:53:23Z",
+      "side": 1,
+      "message": "Moved discussion to b:194424288",
+      "parentUuid": "e60a895e_8d7288c9",
+      "range": {
+        "startLine": 383,
+        "startChar": 14,
+        "endLine": 383,
+        "endChar": 30
+      },
+      "revId": "8d69dbe6d3a019d1e31d0c6f85c9e837615ee366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
