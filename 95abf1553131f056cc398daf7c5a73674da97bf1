@@ -34,6 +34,24 @@
       "parentUuid": "75661fbc_128a7b78",
       "revId": "95abf1553131f056cc398daf7c5a73674da97bf1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee2f59b_3d77f08b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T16:53:34Z",
+      "side": 1,
+      "message": "We should change zephyr boards, but not change any cros-ec boards.",
+      "parentUuid": "535ccf8d_b79eab43",
+      "revId": "95abf1553131f056cc398daf7c5a73674da97bf1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
