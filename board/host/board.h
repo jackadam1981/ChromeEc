@@ -30,6 +30,7 @@
 #define CONFIG_USB_PD_CUSTOM_PDO
 #define CONFIG_USB_PD_DUAL_ROLE
 
+#define CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION
 #include "gpio_signal.h"
 
 enum temp_sensor_id {
