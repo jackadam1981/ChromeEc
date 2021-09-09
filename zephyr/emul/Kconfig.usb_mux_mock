@@ -1,0 +1,24 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+menuconfig EMUL_USB_MUX_MOCK
+	bool "Usb mux mock used for unit tests"
+	help
+	  Usb mux mock allows to set arbittrary return codes of usb mux
+	  functions. This allows to use this mux in unit tests of usb mux
+	  framework. Mock API is available in
+	  zephyr/include/emul/emul_usb_mux_mock.h
+
+if EMUL_USB_MUX_MOCK
+
+config USB_MUX_MOCK_NUM
+	int "Number of usb mux mock instances"
+	help
+	  Allows to select how many usb mux should be instantioned.
+
+module = USB_MUX_MOCK
+module-str = usb_mux_mock
+source "subsys/logging/Kconfig.template.log_config"
+
+endif # EMUL_USB_MUX_MOCK
