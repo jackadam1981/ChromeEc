@@ -12,6 +12,7 @@
 #include "hooks.h"
 #include "i2c.h"
 #include "intc.h"
+#include "it8801.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "lpc.h"
@@ -26,6 +27,23 @@
 #include "uart.h"
 #include "util.h"
 #include "gpio_list.h"
+
+struct ioexpander_config_t ioex_config[CONFIG_IO_EXPANDER_PORT_COUNT] = {
+	/* Port 0 for IT8801, use I2C port0_0 with address 0x38 (7-bit)*/
+	[0] = {
+		.i2c_host_port = IT8801_KEYBOARD_PWM_I2C_PORT,
+		.i2c_addr_flags = IT8801_I2C_ADDR1,
+		.drv = &it8801_ioexpander_drv,
+	},
+};
+
+__override const uint8_t kso_mapping[] = {
+	0, 1, 2, 3, 4, 5, 6, 18, 19, 20, 21, 11, 12,
+#ifdef CONFIG_KEYBOARD_KEYPAD
+	13, 14
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(kso_mapping) == KEYBOARD_COLS_MAX);
 
 #if defined(CONFIG_FANS) || defined(CONFIG_PWM)
 const struct fan_conf fan_conf_0 = {

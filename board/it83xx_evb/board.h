@@ -11,6 +11,19 @@
 /* Select Baseboard features */
 #include "baseboard.h"
 
+#undef CONFIG_KEYBOARD_COL2_INVERTED
+/* Use I/O expander  */
+#define CONFIG_IO_EXPANDER_IT8801
+#define CONFIG_IO_EXPANDER
+#define CONFIG_IO_EXPANDER_PORT_COUNT 1
+
+/* Setting master port */
+#define IT8801_KEYBOARD_PWM_I2C_PORT 1
+/* IT8801 I2C address */
+#define IT8801_KEYBOARD_PWM_I2C_ADDR_FLAGS    IT8801_I2C_ADDR1
+
+#define CONFIG_KEYBOARD_NOT_RAW
+
 /* Optional features */
 #define CONFIG_DAC
 
