@@ -64,9 +64,26 @@ static int it8801_check_vendor_id(void)
 }
 
 #ifdef CONFIG_KEYBOARD_NOT_RAW
+
+enum kso_alt_fun {
+	KSO18_ALT_FUN = 18,
+	KSO19_ALT_FUN,
+	KSO20_ALT_FUN,
+	KSO21_ALT_FUN,
+	KSO22_ALT_FUN
+};
+
+__overridable const uint8_t kso_mapping[] = {
+	0, 1, 20, 3, 4, 5, 6, 17, 18, 16, 15, 11, 12,
+#ifdef CONFIG_KEYBOARD_KEYPAD
+	13, 14
+#endif
+};
+BUILD_ASSERT(ARRAY_SIZE(kso_mapping) == KEYBOARD_COLS_MAX);
+
 void keyboard_raw_init(void)
 {
-	int ret;
+	int alt_reg = 0, i, ret;
 
 	/*  Verify Vendor ID registers. */
 	ret = it8801_check_vendor_id();
@@ -75,10 +92,31 @@ void keyboard_raw_init(void)
 		return;
 	}
 
-	/* KSO alternate function switching(KSO[21:20, 18]). */
-	it8801_write(IT8801_REG_GPIO01_KSO18, IT8801_REG_MASK_GPIOAFS_FUNC2);
-	it8801_write(IT8801_REG_GPIO22_KSO21, IT8801_REG_MASK_GPIOAFS_FUNC2);
-	it8801_write(IT8801_REG_GPIO23_KSO20, IT8801_REG_MASK_GPIOAFS_FUNC2);
+	/* KSO alternate function switching(KSO[22:18]). */
+	for (i = 0; i < KEYBOARD_COLS_MAX; i++) {
+		switch (kso_mapping[i]) {
+		case KSO18_ALT_FUN:
+			alt_reg = IT8801_REG_GPIO01_KSO18;
+			break;
+		case KSO19_ALT_FUN:
+			alt_reg = IT8801_REG_GPIO00_KSO19;
+			break;
+		case KSO20_ALT_FUN:
+			alt_reg = IT8801_REG_GPIO23_KSO20;
+			break;
+		case KSO21_ALT_FUN:
+			alt_reg = IT8801_REG_GPIO22_KSO21;
+			break;
+		case KSO22_ALT_FUN:
+			alt_reg = IT8801_REG_GPIO21_KSO22;
+			break;
+		default:
+			break;
+		}
+
+		if (alt_reg)
+			it8801_write(alt_reg, IT8801_REG_MASK_GPIOAFS_FUNC2);
+	}
 
 	/* Start with KEYBOARD_COLUMN_ALL, KSO[22:11, 6:0] output low. */
 	it8801_write(IT8801_REG_KSOMCR, IT8801_REG_MASK_AKSOSC);
@@ -109,14 +147,6 @@ void keyboard_raw_task_start(void)
 {
 	keyboard_raw_enable_interrupt(1);
 }
-
-__overridable const uint8_t kso_mapping[] = {
-	0, 1, 20, 3, 4, 5, 6, 17, 18, 16, 15, 11, 12,
-#ifdef CONFIG_KEYBOARD_KEYPAD
-	13, 14
-#endif
-};
-BUILD_ASSERT(ARRAY_SIZE(kso_mapping) == KEYBOARD_COLS_MAX);
 
 test_mockable void keyboard_raw_drive_column(int col)
 {

@@ -28,6 +28,7 @@
 #define IT8801_REG_GPIO10               0x12
 #define IT8801_REG_GPIO00_KSO19         0x0a
 #define IT8801_REG_GPIO01_KSO18         0x0b
+#define IT8801_REG_GPIO21_KSO22         0x1b
 #define IT8801_REG_GPIO22_KSO21         0x1c
 #define IT8801_REG_GPIO23_KSO20         0x1d
 #define IT8801_REG_MASK_GPIOAFS_PULLUP  BIT(7)
