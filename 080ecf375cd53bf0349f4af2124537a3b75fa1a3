@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "067e90cc_222b0f7e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-09T08:07:07Z",
+      "side": 1,
+      "message": "Aseda: From the b/197916691, it looks like some of the arm platform can pass the test. I think we probably need to ask the corresponding platform team to double check this? Maybe we can focus to fix the intel x86 first?\n\nAbe: Are you going to submit a change for it? I put the change here because we handle the power button to AP in this file.",
+      "parentUuid": "c9cd8c2b_51793274",
+      "revId": "080ecf375cd53bf0349f4af2124537a3b75fa1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b22bb736_9661162d",
         "filename": "common/power_button_x86.c",
         "patchSetId": 1
@@ -49,6 +67,30 @@
       "writtenOn": "2021-09-08T19:34:24Z",
       "side": 1,
       "message": "It seems like this check should go to `set_initial_pwrbtn_state` instead.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 344,
+        "endChar": 48
+      },
+      "revId": "080ecf375cd53bf0349f4af2124537a3b75fa1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9726c32a_4d4d206a",
+        "filename": "common/power_button_x86.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-09T08:07:07Z",
+      "side": 1,
+      "message": "ok, let me move it to the set_initial_pwrbtn_state",
+      "parentUuid": "b22bb736_9661162d",
       "range": {
         "startLine": 344,
         "startChar": 0,
