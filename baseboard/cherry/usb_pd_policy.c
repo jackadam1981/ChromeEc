@@ -203,6 +203,8 @@ void pd_power_supply_reset(int port)
 {
 	int prev_en;
 
+	if (port == 1)
+		CPRINTS("\x1b[1;31mpd_power_supply_reset\x1b[m");
 	prev_en = ppc_is_sourcing_vbus(port);
 
 	/* Disable VBUS. */

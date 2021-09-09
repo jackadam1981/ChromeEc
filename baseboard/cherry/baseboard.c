@@ -381,6 +381,7 @@ int rt1718s_gpio_ctrl(enum rt1718s_gpio_state state)
 {
 	const int port = 1;
 
+	CPRINTS("\x1b[1;31mrt1718s_gpio_ctrl %d\x1b[m", state);
 	switch (state) {
 	case RT1718S_GPIO_DISABLED:
 		/* gpio1 high, gpio2 low */
