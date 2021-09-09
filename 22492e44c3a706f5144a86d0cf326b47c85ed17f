@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29ded06_5f4e0266",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-09T00:37:14Z",
+      "side": 1,
+      "message": "Can you please clarify what this CL is trying to achieve? Is there any design document describing those changes? I\u0027m asking, because in my understanding prochot# should be used only as an emergency signal when the CPU is getting too hot. Not related to the wattage or any other system parameter. There are better ways to fine-tune CPU power consumption and throttling (as per Intel\u0027s guidelines), for example current reduction is more graceful.\nSame question for CL #3096806",
+      "revId": "22492e44c3a706f5144a86d0cf326b47c85ed17f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
