@@ -88,6 +88,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a88d5c6b_d14fba6e",
+        "filename": "board/nucleo-f411re/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-09-09T06:19:00Z",
+      "side": 1,
+      "message": "Board files are restored due to below commit\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3121866",
+      "parentUuid": "48573f01_d1eaae5e",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1558b82_0b69530e",
@@ -177,6 +195,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ab97905_75b9a423",
+        "filename": "board/nucleo-f411re/board.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-09-09T06:19:00Z",
+      "side": 1,
+      "message": "Board files are restored due to below commit\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3121866",
+      "parentUuid": "1eae8d4c_a9446f87",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cae6a421_53606f65",
@@ -194,6 +230,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd88df30_360d73a3",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2414,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-09-09T06:19:00Z",
+      "side": 1,
+      "message": "ec_commands.h file is restored due to below commit\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3121867",
+      "parentUuid": "cae6a421_53606f65",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e7d39cbb_e5cfd555",
@@ -207,6 +261,24 @@
       "writtenOn": "2021-08-18T04:31:28Z",
       "side": 1,
       "message": "Part of https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2374647, cherry-pick that CL instead.",
+      "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1332069_8e82ad0c",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4342,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-09-09T06:19:00Z",
+      "side": 1,
+      "message": "ectool.c file is restored due to below commit\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3121867",
+      "parentUuid": "e7d39cbb_e5cfd555",
       "revId": "ef88b70eec513e772fd5d14bcacb49b0d54a12f4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
