@@ -16,6 +16,23 @@
       "message": "hi Wai-hong,could you help to review this CL today. Thank you!",
       "revId": "6770566d3f908bdb5dcfac67d79123d3478a16c7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2262a347_ef192460",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-09T21:58:56Z",
+      "side": 1,
+      "message": "I can\u0027t attest that the gpio values match the hardware but the changes seem consistent with removing port C1. ",
+      "revId": "6770566d3f908bdb5dcfac67d79123d3478a16c7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
