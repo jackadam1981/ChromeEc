@@ -23,6 +23,7 @@ def third_party_module(name, checkout):
 known_modules = {
     "hal_stm32": third_party_module,
     "cmsis": third_party_module,
+    "nanopb": third_party_module,
     "ec": lambda name, checkout: (checkout / "src" / "platform" / "ec"),
 }
 
