@@ -73,6 +73,7 @@ void keyboard_raw_init(void)
 
 	/* KSO alternate function switching(KSO[21:20, 18]). */
 	it8801_write(IT8801_REG_GPIO01_KSO18, IT8801_REG_MASK_GPIOAFS_FUNC2);
+	it8801_write(IT8801_REG_GPIO00_KSO19, IT8801_REG_MASK_GPIOAFS_FUNC2);
 	it8801_write(IT8801_REG_GPIO22_KSO21, IT8801_REG_MASK_GPIOAFS_FUNC2);
 	it8801_write(IT8801_REG_GPIO23_KSO20, IT8801_REG_MASK_GPIOAFS_FUNC2);
 
@@ -107,7 +108,7 @@ void keyboard_raw_task_start(void)
 }
 
 static const uint8_t kso_mapping[] = {
-	0, 1, 20, 3, 4, 5, 6, 17, 18, 16, 15, 11, 12,
+	0, 1, 2, 3, 4, 5, 6, 18, 19, 20, 21, 11, 12,
 #ifdef CONFIG_KEYBOARD_KEYPAD
 	13, 14
 #endif
