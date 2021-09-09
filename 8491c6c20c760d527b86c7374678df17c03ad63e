@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1060a7a6_3036c587",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-09T02:52:28Z",
+      "side": 1,
+      "message": "this is a muxed interrupt with IOEX \u0026 Keyboard, we start seeing keyboard interrupts once we get keyboard_raw_enable_interrupt() function enables keyboard interrupts and it8801_ioex_enable_interrupt() enables IOEX interrupt bits",
+      "parentUuid": "9291a570_c72b3274",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e585513b_9e6c5e52",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-08T23:49:46Z",
       "side": 1,
       "message": "Follow the convention of the other I/O expander handlers and pass in the ioex index.",
+      "range": {
+        "startLine": 460,
+        "startChar": 38,
+        "endLine": 460,
+        "endChar": 42
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8daa9db9_7e949047",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-09T02:52:28Z",
+      "side": 1,
+      "message": "this is a deferred function so we have to extract ioex after processing the data , we might have to add additional logic if we have multiple it8801 in the system",
+      "parentUuid": "e585513b_9e6c5e52",
       "range": {
         "startLine": 460,
         "startChar": 38,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bc3f45fa_e2db927e",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-09T02:52:28Z",
+      "side": 1,
+      "message": "IT8801_REG_MASK_GISR_GKSIIS ensures its keyboard event",
+      "parentUuid": "75faccdd_75fe6874",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 0
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "da5bed79_c8350fa9",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 6
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-08T23:49:46Z",
       "side": 1,
       "message": "Same here, because of the dual function, you don\u0027t want to generate I/O expander interrupts on key presses if the ioex interrupt is disabled.",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 0
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43d51a6d_58c3c73b",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-09T02:52:28Z",
+      "side": 1,
+      "message": "IT8801_REG_MASK_GISR_GGPIOG*IS ensures these are IOEX interrupts.\nI will add additional comments for better readability",
+      "parentUuid": "da5bed79_c8350fa9",
       "range": {
         "startLine": 473,
         "startChar": 0,
