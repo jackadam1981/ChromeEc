@@ -16,6 +16,40 @@
       "message": "Reduce ampton power consumption ",
       "revId": "ab4f0b068e59598d48cdf48f522c2e48ce389bc3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8653ecb8_1e9e6315",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-09T20:48:33Z",
+      "side": 1,
+      "message": "Adding Henry, who maintains the octopus FW branch",
+      "revId": "ab4f0b068e59598d48cdf48f522c2e48ce389bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da827ffd_6adb6978",
+        "filename": "driver/tcpm/ps8xxx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-09T20:48:33Z",
+      "side": 1,
+      "message": "This doesn\u0027t look like a clean cherry-pick to submit?",
+      "revId": "ab4f0b068e59598d48cdf48f522c2e48ce389bc3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
