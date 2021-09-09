@@ -618,5 +618,10 @@ int ncp15wb_calculate_temp(uint16_t adc);
 #define I2C_BITBANG_PORT_COUNT 1
 #endif
 
+#ifdef TEST_SBS_CHARGING_V2
+#define CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION
+#undef  CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT
+#define CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT  (2*SECOND)
+#endif
 #endif  /* TEST_BUILD */
 #endif  /* __TEST_TEST_CONFIG_H */
