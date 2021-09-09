@@ -26,6 +26,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a08d17eb_c1b590a2",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T15:25:54Z",
+      "side": 1,
+      "message": "motion_sense_probe_sensors() is still referenced if there\u0027s a motionsense_sensor_alt node.  I believe this node is enabled for boards that use the SSFC property in CBI.",
+      "parentUuid": "cf67a681_24ab1816",
+      "range": {
+        "startLine": 190,
+        "startChar": 7,
+        "endLine": 190,
+        "endChar": 45
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e859a309_ff98bb9b",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T15:25:54Z",
+      "side": 1,
+      "message": "Line length.",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 76
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3f945712_dc97470e",
         "filename": "zephyr/shim/src/motionsense_sensors.c",
         "patchSetId": 5
@@ -42,6 +89,29 @@
         "startChar": 0,
         "endLine": 14,
         "endChar": 74
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aafc4b92_bdeb0bbe",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T15:25:54Z",
+      "side": 1,
+      "message": "Use COND_CODE_1 here, since IF_ENABLED() just expands to COND_CODE_1 anyway.  I find this easier to follow than the next OR operator.\n\n    .flags \u003d COND_CODE_1(DT_NODE_HAS_PROP(id, int_signal), \\\n        MOTIONSENSE_FLAG_INT_SIGNAL, 0)",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 0
       },
       "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -106,6 +176,30 @@
       "writtenOn": "2021-09-09T02:51:21Z",
       "side": 1,
       "message": "Will this not add the probe if we have `runtime-probe \u003d false;`?",
+      "range": {
+        "startLine": 449,
+        "startChar": 13,
+        "endLine": 449,
+        "endChar": 29
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbeb512d_242f862b",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T15:25:54Z",
+      "side": 1,
+      "message": "boolean property types are either present in the node to indicate true, or absent to indicate false.",
+      "parentUuid": "01dd9ec1_85e1f325",
       "range": {
         "startLine": 449,
         "startChar": 13,
