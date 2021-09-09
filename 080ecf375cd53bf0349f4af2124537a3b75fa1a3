@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e29f744_4b05ea58",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-09T17:28:11Z",
+      "side": 1,
+      "message": "Zhuohao, yeah that\u0027s fine. We just need to be cognizant of the other platforms. I\u0027d hope that a common solution would suffice.\n\nAbe, I\u0027d say that\u0027s not quite the right place. This is really only an issue coming out of hibernate and when we initially set the power button. When the EC is already up, but the SoC is in S5/Pseudo G3, plugging in external power won\u0027t cause the system to wake. When the EC starts up, it tries to automatically power on by pressing the power button. That\u0027s where I think we need to intercept it. I think for EFS chromeboxes, they don\u0027t do that. We need to apply that logic across the fleet.",
+      "parentUuid": "067e90cc_222b0f7e",
+      "revId": "080ecf375cd53bf0349f4af2124537a3b75fa1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b22bb736_9661162d",
         "filename": "common/power_button_x86.c",
         "patchSetId": 1
