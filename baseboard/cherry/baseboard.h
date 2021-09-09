@@ -235,6 +235,7 @@ enum rt1718s_gpio_state {
 	RT1718S_GPIO_DISABLED,
 	RT1718S_GPIO_ENABLE_SINK,
 	RT1718S_GPIO_ENABLE_SOURCE,
+	RT1718S_GPIO_DISABLE_SOURCE,
 };
 
 int rt1718s_gpio_ctrl(enum rt1718s_gpio_state state);
