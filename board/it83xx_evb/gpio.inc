@@ -17,6 +17,7 @@ GPIO_INT(WP_L,           PIN(E, 1), GPIO_INT_BOTH,                  switch_inter
 #ifdef CONFIG_LOW_POWER_IDLE
 GPIO_INT(UART1_RX,       PIN(B, 0), GPIO_INT_FALLING,               uart_deepsleep_interrupt) /* UART1 RX input */
 #endif
+GPIO_INT(IT8801_SMB_INT, PIN(A, 0), GPIO_INT_FALLING, io_expander_it8801_interrupt) /* KEYBOARD */
 
 GPIO(PCH_SMI_L,      PIN(D, 3), GPIO_OUT_HIGH)
 GPIO(PCH_SCI_L,      PIN(D, 4), GPIO_OUT_HIGH)
