@@ -52,6 +52,24 @@
       "parentUuid": "03f46855_6d995705",
       "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d71d8814_9952de1a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-09T15:57:31Z",
+      "side": 1,
+      "message": "That\u0027s a crash different from what I guessed. How timer_arm should behave in the pre-task context is undefined.\n\nOther boards using a discrete keyboard (kukui with stm32 or ite) are working without a crash (and calling keyboard_scan_init early in main). I think we should investigate the difference first (in i2c?). Maybe you can trace the calls from keyboard_scan_init to timer_arm.\n\nCalling keyboard_scan_init has to happen before vboot_main.",
+      "parentUuid": "51788b69_da88d220",
+      "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
