@@ -51,6 +51,24 @@
       "parentUuid": "eb017231_5842541d",
       "revId": "eacbb2118b1eda0e364a708fd075d1c0441d5aff",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85b4ed6_ecccd69a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-09-09T02:16:05Z",
+      "side": 1,
+      "message": "I have removed those new added board/baseboard. I\u0027m not sure if those new added zephyr should also be removed from this CL.",
+      "parentUuid": "77469edf_12400e62",
+      "revId": "eacbb2118b1eda0e364a708fd075d1c0441d5aff",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
