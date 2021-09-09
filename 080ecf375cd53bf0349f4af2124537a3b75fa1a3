@@ -74,6 +74,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81d9ecdd_0d689a1b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-09T20:21:13Z",
+      "side": 1,
+      "message": "OK, I didn\u0027t realize that the S5-to-S0 transition was effected by a pseudo button press. In that case, maybe power_button_init in power_button.c would be a good place?",
+      "parentUuid": "2e29f744_4b05ea58",
+      "revId": "080ecf375cd53bf0349f4af2124537a3b75fa1a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b22bb736_9661162d",
         "filename": "common/power_button_x86.c",
         "patchSetId": 1
