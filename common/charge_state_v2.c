@@ -1491,6 +1491,13 @@ static inline int battery_too_low(void)
 		 curr.batt.voltage <= batt_info->voltage_min));
 }
 
+#ifdef CONFIG_BATTERY_DEEP_CHARGE
+static inline int battery_vol_check_deepstatus(void)
+{
+	return (!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE) &&
+		 curr.batt.voltage <= batt_info->voltage_min);
+}
+#endif
 __attribute__((weak))
 enum critical_shutdown board_critical_shutdown_check(
 		struct charge_state_data *curr)
@@ -2103,7 +2110,12 @@ void charger_task(void *u)
 		}
 
 		/* If the battery is not responsive, try to wake it up. */
+#ifdef CONFIG_BATTERY_DEEP_CHARGE
+		if ((!(curr.batt.flags & BATT_FLAG_RESPONSIVE)) ||
+			battery_vol_check_deepstatus()) {
+#else
 		if (!(curr.batt.flags & BATT_FLAG_RESPONSIVE)) {
+#endif
 			wakeup_battery(&need_static);
 			goto wait_for_it;
 		}
