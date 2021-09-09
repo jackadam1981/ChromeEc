@@ -16,6 +16,29 @@
       "message": "Paul, could you add the bug number when you get a chance.",
       "revId": "76ecd2cd504f1ffe2c6773688411818a234b21b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b93f0683_d3c45efb",
+        "filename": "zephyr/zmake/zmake/modules.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-09T18:49:32Z",
+      "side": 1,
+      "message": "alphasort (nanopb \u003e ec)",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 11
+      },
+      "revId": "76ecd2cd504f1ffe2c6773688411818a234b21b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
