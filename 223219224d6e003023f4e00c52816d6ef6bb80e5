@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f126ef8_bd26f07a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T20:36:22Z",
+      "side": 1,
+      "message": "LGTM, with some changes to the help text.",
+      "revId": "223219224d6e003023f4e00c52816d6ef6bb80e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ef3d52c_797a42bc",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T20:36:22Z",
+      "side": 1,
+      "message": "My suggested text:\n\"This options specifies the number of CPU execution cycles per delay loop iteration, while waiting for the H1 to reset.\"",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "223219224d6e003023f4e00c52816d6ef6bb80e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46cf4cc3_597232d3",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T20:36:22Z",
+      "side": 1,
+      "message": "My suggested text: \"This option specifies the frequency (in Hz) of the CPU core when coming out of a power on reset.\"",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 42
+      },
+      "revId": "223219224d6e003023f4e00c52816d6ef6bb80e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
