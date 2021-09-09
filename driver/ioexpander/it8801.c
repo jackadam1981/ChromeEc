@@ -110,7 +110,7 @@ void keyboard_raw_task_start(void)
 	keyboard_raw_enable_interrupt(1);
 }
 
-static const uint8_t kso_mapping[] = {
+__overridable const uint8_t kso_mapping[] = {
 	0, 1, 20, 3, 4, 5, 6, 17, 18, 16, 15, 11, 12,
 #ifdef CONFIG_KEYBOARD_KEYPAD
 	13, 14
