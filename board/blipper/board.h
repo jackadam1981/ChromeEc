@@ -11,12 +11,15 @@
 /* Select Baseboard features */
 #define VARIANT_DEDEDE_EC_IT8320
 #include "baseboard.h"
-#undef GPIO_VOLUME_UP_L
-#undef GPIO_VOLUME_DOWN_L
-#undef CONFIG_VOLUME_BUTTONS
 
 /* Battery */
 #define CONFIG_BATTERY_FUEL_GAUGE
+#define CONFIG_BATTERY_V2
+#define CONFIG_BATTERY_COUNT 1
+#define CONFIG_HOSYCMD_BATTERY_V2
+
+/* Sysetem unlocked in early development */
+#define CONFIG_SYSTEM_UNLOCKED
 
 /* BC 1.2 */
 #define CONFIG_BC12_DETECT_PI3USB9201
@@ -34,6 +37,33 @@
 
 /* LED */
 #define CONFIG_LED_ONOFF_STATES
+
+/*SENSOR*/
+#define CONFIG_CMD_ACCELS
+#define CONFIG_CMD_ACCEL_INFO
+#define CONFIG_DYNAMIC_MOTION_SENSOR_COUNT
+
+#define CONFIG_ACCEL_LIS2DWL		/* Lid accel */
+#define CONFIG_ACCELGYRO_LSM6DSM    /* Base accel */
+
+/* Lid operates in forced mode, base in FIFO */
+#define CONFIG_ACCEL_FORCE_MODE_MASK BIT(LID_ACCEL)
+#define CONFIG_ACCEL_FIFO
+#define CONFIG_ACCEL_FIFO_SIZE 256	/* Must be a power of 2 */
+#define CONFIG_ACCEL_FIFO_THRES (CONFIG_ACCEL_FIFO_SIZE / 3)
+
+#define CONFIG_ACCEL_INTERRUPTS
+#define CONFIG_ACCEL_LSM6DSM_INT_EVENT \
+	TASK_EVENT_MOTION_SENSOR_INTERRUPT(BASE_ACCEL)
+
+#define CONFIG_LID_ANGLE
+#define CONFIG_LID_ANGLE_UPDATE
+#define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
+#define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
+
+#define CONFIG_TABLET_MODE
+#define CONFIG_TABLET_MODE_SWITCH
+#define CONFIG_GMR_TABLET_MODE
 
 /* PWM */
 #define CONFIG_PWM
@@ -79,7 +109,16 @@
 enum pwm_channel {
 	PWM_CH_LED_RED,
 	PWM_CH_LED_GREEN,
+	PWM_CH_LED_WHITE,
 	PWM_CH_COUNT,
+};
+
+/* Motion sensors */
+enum sensor_id {
+	LID_ACCEL,
+	BASE_ACCEL,
+	BASE_GYRO,
+	SENSOR_COUNT
 };
 
 /* ADC channels */
@@ -107,6 +146,8 @@ enum battery_type {
 	BATTERY_CELXPERT,
 	BATTERY_TYPE_COUNT,
 };
+
+void motion_interrupt(enum gpio_signal signal);
 
 #endif /* !__ASSEMBLER__ */
 
