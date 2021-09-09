@@ -203,6 +203,8 @@ void pd_power_supply_reset(int port)
 {
 	int prev_en;
 
+	if (port == 1)
+		CPRINTS("\x1b[1;31mpd_power_supply_reset\x1b[m");
 	prev_en = ppc_is_sourcing_vbus(port);
 
 	/* Disable VBUS. */
@@ -213,7 +215,7 @@ void pd_power_supply_reset(int port)
 		pd_set_vbus_discharge(port, 1);
 
 	if (port == 1)
-		rt1718s_gpio_ctrl(RT1718S_GPIO_DISABLED);
+		rt1718s_gpio_ctrl(RT1718S_GPIO_DISABLE_SOURCE);
 
 	/* Notify host of power info change. */
 	pd_send_host_event(PD_EVENT_POWER_CHANGE);
