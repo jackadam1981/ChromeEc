@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf67a681_24ab1816",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-09T02:51:21Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem necessary. If we always enable it would this not be compiled out if no node in the devicetree has a runtime-probe?",
+      "range": {
+        "startLine": 190,
+        "startChar": 7,
+        "endLine": 190,
+        "endChar": 45
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f945712_dc97470e",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-09T02:51:21Z",
+      "side": 1,
+      "message": "We should use Zephyr\u0027s logging (https://docs.zephyrproject.org/latest/reference/logging/index.html#logging-in-a-module)",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 74
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ada75c65_23ca2ec3",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-09T02:51:21Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to be used.",
+      "range": {
+        "startLine": 420,
+        "startChar": 8,
+        "endLine": 420,
+        "endChar": 23
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1e375f5_7440f93a",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-09T02:51:21Z",
+      "side": 1,
+      "message": "We should use Zephyr\u0027s __ASSERT (https://docs.zephyrproject.org/latest/reference/kernel/other/fatal.html?highlight\u003d__assert#assert)",
+      "range": {
+        "startLine": 437,
+        "startChar": 1,
+        "endLine": 437,
+        "endChar": 7
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01dd9ec1_85e1f325",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-09T02:51:21Z",
+      "side": 1,
+      "message": "Will this not add the probe if we have `runtime-probe \u003d false;`?",
+      "range": {
+        "startLine": 449,
+        "startChar": 13,
+        "endLine": 449,
+        "endChar": 29
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe8f782f_a3e27857",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-09T02:51:21Z",
+      "side": 1,
+      "message": "Deprecated, should be DT_STRING_UPPER_TOKEN",
+      "range": {
+        "startLine": 485,
+        "startChar": 1,
+        "endLine": 485,
+        "endChar": 20
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44f4d399_8e6b4721",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-09T02:51:21Z",
+      "side": 1,
+      "message": "__ASSERT from Zephyr",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 7
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
