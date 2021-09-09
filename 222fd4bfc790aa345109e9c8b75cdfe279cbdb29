@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a979aeda_4f28013d",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-09T19:59:43Z",
+      "side": 1,
+      "message": "Lets explicitly add\n\n#include \u003clogging/log.h\u003e",
+      "revId": "222fd4bfc790aa345109e9c8b75cdfe279cbdb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c022d9d2_1bdccbc2",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-09T19:59:43Z",
+      "side": 1,
+      "message": "I think this can go away still, please correct me if I mis-understood how this all works. I\u0027m going to split the comments to where they make sense.",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 5
+      },
+      "revId": "222fd4bfc790aa345109e9c8b75cdfe279cbdb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86d9c7e0_413d3684",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-09T19:59:43Z",
+      "side": 1,
+      "message": "No need to check if required,\n\nDT_FOREACH_CHILD(SENSOR_ALT_NODE, PROBE_IF_NEEDED) \u003d\u003e noop if no nodes have a probe",
+      "range": {
+        "startLine": 449,
+        "startChar": 4,
+        "endLine": 449,
+        "endChar": 26
+      },
+      "revId": "222fd4bfc790aa345109e9c8b75cdfe279cbdb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e13b9b_8a439e00",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-09T19:59:43Z",
+      "side": 1,
+      "message": "I believe you can just call motion_sense_probe_sensors() here, no need to guard it.",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 6
+      },
+      "revId": "222fd4bfc790aa345109e9c8b75cdfe279cbdb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
