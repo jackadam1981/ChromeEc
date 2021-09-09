@@ -101,6 +101,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01412f81_5504df6f",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-09T18:04:52Z",
+      "side": 1,
+      "message": "after some more optimizations i found a sweat spot in terms of size and performance and implemented it now.",
+      "parentUuid": "77b32ac3_ac5d5044",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 130,
+        "endChar": 36
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f1ea5f7_32023e1f",
@@ -138,6 +162,30 @@
       "side": 1,
       "message": "because I do it differently for one-shot mode where I load message length in advance. RESET_MASK clears it, so need a different sequence.I can add a msglen parameter to sha_init and set it to zero - it\u0027s ignored by LIVESTREAM mode. Will check this.",
       "parentUuid": "3f1ea5f7_32023e1f",
+      "range": {
+        "startLine": 235,
+        "startChar": 1,
+        "endLine": 235,
+        "endChar": 63
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "540e9986_78e8b859",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-09T18:04:52Z",
+      "side": 1,
+      "message": "ok, it seems I can combine everything in one init function.",
+      "parentUuid": "fb9f26ab_96050bae",
       "range": {
         "startLine": 235,
         "startChar": 1,
@@ -242,6 +290,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a06ac911_143d969b",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-09T18:04:52Z",
+      "side": 1,
+      "message": "implemented with unified init function.",
+      "parentUuid": "eb6dbd26_d8e38c0b",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 295,
+        "endChar": 63
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f0ddeea3_d66683bc",
@@ -279,6 +351,30 @@
       "side": 1,
       "message": "in theory - not, loaded HMAC key shouldn\u0027t be cleared, but will check this.",
       "parentUuid": "f0ddeea3_d66683bc",
+      "range": {
+        "startLine": 380,
+        "startChar": 1,
+        "endLine": 380,
+        "endChar": 17
+      },
+      "revId": "c094e1eaa35ba26b679c2bc13155440211d77c44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b276fde_14c4b647",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-09T18:04:52Z",
+      "side": 1,
+      "message": "it\u0027s possible and now implemented.",
+      "parentUuid": "52fbf2e8_1b40f6b7",
       "range": {
         "startLine": 380,
         "startChar": 1,
