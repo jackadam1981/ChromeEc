@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26e1f87f_a5ec7d73",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 894,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-09T17:17:33Z",
+      "side": 1,
+      "message": "I think now you can remove this (which is nice).",
+      "range": {
+        "startLine": 894,
+        "startChar": 0,
+        "endLine": 894,
+        "endChar": 36
+      },
+      "revId": "52af2cd489a9483a1a0de2667614559998e97564",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
