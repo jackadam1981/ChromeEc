@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "33ae8bfa_a8ef280f",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T19:44:31Z",
+      "side": 1,
+      "message": "I see this now, you\u0027re masking the interrupts inside the IT8801 chip.  Please add a comment here and in the enable interrupt routines.",
+      "parentUuid": "1060a7a6_3036c587",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e585513b_9e6c5e52",
         "filename": "driver/ioexpander/it8801.c",
         "patchSetId": 6
@@ -142,6 +166,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "838f4f4c_008c0c11",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T19:44:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bc3f45fa_e2db927e",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 0
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da5bed79_c8350fa9",
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "IT8801_REG_MASK_GISR_GGPIOG*IS ensures these are IOEX interrupts.\nI will add additional comments for better readability",
       "parentUuid": "da5bed79_c8350fa9",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 0
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9311499_90cad3a4",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-09T19:44:31Z",
+      "side": 1,
+      "message": "What I missed during my first review is that the KSIIER and GPIOPGxIER registers are used to mask/unmask the interrupts in the chip.\n\nPlease add some comments around these register updates so that it\u0027s clear that it\u0027s okay that the EC GPIO interrupt can remain enabled.",
+      "parentUuid": "43d51a6d_58c3c73b",
       "range": {
         "startLine": 473,
         "startChar": 0,
