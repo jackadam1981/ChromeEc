@@ -66,3 +66,23 @@ config EMUL_BB_RETIMER
 	  emulated I2C bus. It is used to test bb_retimer driver. It supports
 	  reads and writes to all emulator registers. Emulators API is
 	  available in zephyr/include/emul/emul_bb_retimer.h
+
+menuconfig EMUL_USB_MUX_MOCK
+	bool "Usb mux mock used for unit tests"
+	help
+	  Usb mux mock allows to set arbittrary return codes of usb mux
+	  functions. This allows to use this mux in unit tests of usb mux
+	  framework.
+
+if EMUL_USB_MUX_MOCK
+
+config USB_MUX_MOCK_NUM
+	int "Number of usb mux mock instances"
+	help
+	  Allows to select how many usb mux should be instantioned.
+
+module = USB_MUX_MOCK
+module-str = usb_mux_mock
+source "subsys/logging/Kconfig.template.log_config"
+
+endif # EMUL_USB_MUX_MOCK

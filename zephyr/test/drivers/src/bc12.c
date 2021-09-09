@@ -102,7 +102,8 @@ static const struct bc12_status bc12_chg_limits[] = {
  */
 __override uint8_t board_get_usb_pd_port_count(void)
 {
-	return 1;
+	// Use 3138216 here
+	return 2;
 }
 
 static void test_bc12_pi3usb9201_host_mode(void)

@@ -10,6 +10,7 @@
 #include "charger.h"
 #include "charger/isl9241_public.h"
 #include "config.h"
+#include "emul/emul_usb_mux_mock.h"
 #include "i2c/i2c.h"
 #include "power.h"
 #include "ppc/sn5s330_public.h"
@@ -134,6 +135,28 @@ struct usb_mux usbc1_virtual_usb_mux = {
 	.hpd_update = &virtual_hpd_update,
 };
 
+struct usb_mux usbc1_bb_retimer = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &bb_usb_retimer,
+	.next_mux = &usbc1_virtual_usb_mux,
+	.i2c_port = I2C_PORT_USB_C1,
+	.i2c_addr_flags = DT_REG_ADDR(DT_NODELABEL(usb_c1_bb_retimer_emul)),
+};
+
+struct usb_mux usbc1_usb_mux_mock2 = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &emul_usb_mux_mock,
+	.next_mux = &usbc1_bb_retimer,
+	.i2c_addr_flags = 2,
+};
+
+struct usb_mux usbc1_usb_mux_mock1 = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &emul_usb_mux_mock,
+	.next_mux = &usbc1_usb_mux_mock2,
+	.i2c_addr_flags = 1,
+};
+
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
@@ -142,11 +165,9 @@ struct usb_mux usb_muxes[] = {
 	},
 	[USBC_PORT_C1] = {
 		.usb_port = USBC_PORT_C1,
-		.driver = &bb_usb_retimer,
-		.next_mux = &usbc1_virtual_usb_mux,
-		.i2c_port = I2C_PORT_USB_C1,
-		.i2c_addr_flags = DT_REG_ADDR(DT_NODELABEL(
-					usb_c1_bb_retimer_emul)),
+		.driver = &emul_usb_mux_mock,
+		.next_mux = &usbc1_usb_mux_mock1,
+		.i2c_addr_flags = 0,
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
