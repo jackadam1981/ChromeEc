@@ -609,6 +609,21 @@
 #undef CONFIG_BATTERY_REVIVE_DISCONNECT
 
 /*
+ * Deep charge inspection is a battery protection mechanism:
+ * If battery voltage is lower than voltage_min, deep charge for more
+ * than precharge time The battery voltage is still lower than voltage_min,
+ * the system will stop charging
+ */
+#undef CONFIG_BATTERY_DEEP_CHARGE
+
+/*
+ * If battery voltage is lower than voltage_min, deep charge timer no more
+ * than 30 minutes , if need change the value , redefine
+ * CONFIG_BATTERY_DEEP_CHARGE_TIMEOUT_US
+ */
+#define CONFIG_BATTERY_DEEP_CHARGE_TIMEOUT_US  (30*60*1000000)
+
+/*
  * Specify the battery percentage at which the host is told it is full.
  * If this value is not specified the default is 97% set in battery.h.
  */
