@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7769d865_6abfd6ad",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-09T17:11:26Z",
+      "side": 1,
+      "message": "This Kconfig was deleted",
+      "parentUuid": "e859a309_ff98bb9b",
+      "range": {
+        "startLine": 194,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 76
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f945712_dc97470e",
@@ -108,6 +132,30 @@
       "writtenOn": "2021-09-09T02:51:21Z",
       "side": 1,
       "message": "We should use Zephyr\u0027s logging (https://docs.zephyrproject.org/latest/reference/logging/index.html#logging-in-a-module)",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 74
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b06cc221_37019cc5",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-09T17:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f945712_dc97470e",
       "range": {
         "startLine": 11,
         "startChar": 0,
@@ -143,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e9f251e6_4ee48740",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-09T17:11:26Z",
+      "side": 1,
+      "message": "My assumption was that there will be more flags in the future, so every flag will have its IF_ENABLED. On the CrOS side, there are flags like in_spoof_mode and int_active_high. Aren\u0027t they going to be added here in the future?",
+      "parentUuid": "aafc4b92_bdeb0bbe",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 0
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ada75c65_23ca2ec3",
         "filename": "zephyr/shim/src/motionsense_sensors.c",
         "patchSetId": 5
@@ -154,6 +226,30 @@
       "writtenOn": "2021-09-09T02:51:21Z",
       "side": 1,
       "message": "This doesn\u0027t seem to be used.",
+      "range": {
+        "startLine": 420,
+        "startChar": 8,
+        "endLine": 420,
+        "endChar": 23
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c53a27d5_d4ae8fa1",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-09T17:11:26Z",
+      "side": 1,
+      "message": "Right, my bad. Thanks",
+      "parentUuid": "ada75c65_23ca2ec3",
       "range": {
         "startLine": 420,
         "startChar": 8,
@@ -177,6 +273,30 @@
       "writtenOn": "2021-09-09T02:51:21Z",
       "side": 1,
       "message": "We should use Zephyr\u0027s __ASSERT (https://docs.zephyrproject.org/latest/reference/kernel/other/fatal.html?highlight\u003d__assert#assert)",
+      "range": {
+        "startLine": 437,
+        "startChar": 1,
+        "endLine": 437,
+        "endChar": 7
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8551d8_481a0820",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-09T17:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1e375f5_7440f93a",
       "range": {
         "startLine": 437,
         "startChar": 1,
@@ -281,6 +401,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89784aef_e8b6a054",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-09T17:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe8f782f_a3e27857",
+      "range": {
+        "startLine": 485,
+        "startChar": 1,
+        "endLine": 485,
+        "endChar": 20
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44f4d399_8e6b4721",
@@ -294,6 +438,30 @@
       "writtenOn": "2021-09-09T02:51:21Z",
       "side": 1,
       "message": "__ASSERT from Zephyr",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 7
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3915b6a2_05a6f3c3",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-09T17:11:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44f4d399_8e6b4721",
       "range": {
         "startLine": 493,
         "startChar": 1,
