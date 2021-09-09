@@ -93,6 +93,7 @@ static int manual_current;  /* Manual current override (-1 = no override) */
 static unsigned int user_current_limit = -1U;
 test_export_static timestamp_t shutdown_target_time;
 static timestamp_t precharge_start_time;
+static timestamp_t deepcharge_start_time;
 static struct sustain_soc sustain_soc;
 
 /*
@@ -1857,6 +1858,41 @@ static void wakeup_battery(int *need_static)
 	}
 }
 
+__test_only enum charge_state_v2 charge_get_state_v2(void)
+{
+	return curr.state;
+}
+
+static void deep_charge_battery(int *need_static)
+{
+	if (curr.state == ST_IDLE
+			&& (get_time().val > deepcharge_start_time.val +
+			CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT)) {
+		/* Deep charge time out , do nothing */
+		curr.requested_voltage = 0;
+		curr.requested_current = 0;
+	} else if (curr.state == ST_PRECHARGE
+			&& (get_time().val > deepcharge_start_time.val +
+			CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT)) {
+		/* We've tried long enough, give up */
+		CPRINTS("deep_charge,time out");
+		set_charge_state(ST_IDLE);
+		curr.requested_voltage = 0;
+		curr.requested_current = 0;
+	} else {
+		/* See if we can wake it up */
+		if (curr.state != ST_PRECHARGE) {
+			CPRINTS("deep_charge,try to precharge");
+			deepcharge_start_time = get_time();
+			*need_static = 1;
+		}
+		set_charge_state(ST_PRECHARGE);
+		curr.requested_voltage = batt_info->voltage_max;
+		curr.requested_current = batt_info->precharge_current;
+	}
+}
+
+
 static void revive_battery(int *need_static)
 {
 	if (IS_ENABLED(CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD)
@@ -2105,6 +2141,13 @@ void charger_task(void *u)
 		/* If the battery is not responsive, try to wake it up. */
 		if (!(curr.batt.flags & BATT_FLAG_RESPONSIVE)) {
 			wakeup_battery(&need_static);
+			goto wait_for_it;
+		}
+
+		if (IS_ENABLED(CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION)
+			&& !(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE)
+			&& (curr.batt.voltage <= batt_info->voltage_min)) {
+			deep_charge_battery(&need_static);
 			goto wait_for_it;
 		}
 
