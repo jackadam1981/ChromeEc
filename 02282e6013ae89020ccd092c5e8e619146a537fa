@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0977938b_9db8b7cd",
+        "filename": "zephyr/Kconfig.motionsense",
+        "patchSetId": 5
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-09T15:30:34Z",
+      "side": 1,
+      "message": "I have created a macro that extends to \"1\" if there is any runtime-probed sensor, so I can remove this config and ifdef the call to probe_sensors.",
+      "parentUuid": "a08d17eb_c1b590a2",
+      "range": {
+        "startLine": 190,
+        "startChar": 7,
+        "endLine": 190,
+        "endChar": 45
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e859a309_ff98bb9b",
         "filename": "zephyr/Kconfig.motionsense",
         "patchSetId": 5
@@ -199,6 +223,30 @@
       "writtenOn": "2021-09-09T15:25:54Z",
       "side": 1,
       "message": "boolean property types are either present in the node to indicate true, or absent to indicate false.",
+      "parentUuid": "01dd9ec1_85e1f325",
+      "range": {
+        "startLine": 449,
+        "startChar": 13,
+        "endLine": 449,
+        "endChar": 29
+      },
+      "revId": "02282e6013ae89020ccd092c5e8e619146a537fa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dd85ac0_818fcd22",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-09T15:30:34Z",
+      "side": 1,
+      "message": "You have found an issue with my code. The boolean value can\u0027t be assigned to false. If it is defined, it will always be true, missing property is false. But it looks like if you have this value in binding file, then if you don\u0027t define it, the node will have this property with value of 0. I wasn\u0027t aware of that, I thought that you just check if node has value.",
       "parentUuid": "01dd9ec1_85e1f325",
       "range": {
         "startLine": 449,
