@@ -1490,7 +1490,6 @@ static inline int battery_too_low(void)
 		(!(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE) &&
 		 curr.batt.voltage <= batt_info->voltage_min));
 }
-
 __attribute__((weak))
 enum critical_shutdown board_critical_shutdown_check(
 		struct charge_state_data *curr)
@@ -1857,6 +1856,36 @@ static void wakeup_battery(int *need_static)
 	}
 }
 
+static void deep_charge_battery(int *need_static)
+{
+	if (battery_seems_dead || battery_is_cut_off()) {
+		/* It's dead, do nothing */
+		set_charge_state(ST_IDLE);
+		curr.requested_voltage = 0;
+		curr.requested_current = 0;
+	} else if (curr.state == ST_PRECHARGE
+			&& (get_time().val > precharge_start_time.val +
+			CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT)) {
+		/* We've tried long enough, give up */
+		CPRINTS("deep_charge,battery seems to be dead");
+		battery_seems_dead = 1;
+		set_charge_state(ST_IDLE);
+		curr.requested_voltage = 0;
+		curr.requested_current = 0;
+	} else {
+		/* See if we can wake it up */
+		if (curr.state != ST_PRECHARGE) {
+			CPRINTS("deep_charge,try to wake battery");
+			precharge_start_time = get_time();
+			*need_static = 1;
+		}
+		set_charge_state(ST_PRECHARGE);
+		curr.requested_voltage = batt_info->voltage_max;
+		curr.requested_current = batt_info->precharge_current;
+	}
+}
+
+
 static void revive_battery(int *need_static)
 {
 	if (IS_ENABLED(CONFIG_BATTERY_REQUESTS_NIL_WHEN_DEAD)
@@ -2105,6 +2134,13 @@ void charger_task(void *u)
 		/* If the battery is not responsive, try to wake it up. */
 		if (!(curr.batt.flags & BATT_FLAG_RESPONSIVE)) {
 			wakeup_battery(&need_static);
+			goto wait_for_it;
+		}
+
+		if (IS_ENABLED(CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION)
+			&& !(curr.batt.flags & BATT_FLAG_BAD_VOLTAGE)
+			&& (curr.batt.voltage <= batt_info->voltage_min)) {
+			deep_charge_battery(&need_static);
 			goto wait_for_it;
 		}
 
