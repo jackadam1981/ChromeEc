@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52ed537e_4911eac6",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-10T16:35:54Z",
+      "side": 1,
+      "message": "Nit: I think this can now use the \"runtime\" check which is preferred when possible.\n\n   if (IS_ENABLED(CONFIG_RUNTIME_PROBE_CUSTOM_CALL))\n       motion_sense_probe_sensors()",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 74
+      },
+      "revId": "5425d886c2608d53ba1202dc11c508bea4df9774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
