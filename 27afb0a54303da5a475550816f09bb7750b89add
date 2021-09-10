@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1c5c34a_6454ca15",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7023,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4a0c45d_1653a4ec",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a72a603_a1af4177",
@@ -84,6 +102,24 @@
       "writtenOn": "2021-09-01T04:32:57Z",
       "side": 1,
       "message": "Also check ext \u003d\u003d 0.  Extended control messages will actually have some data, but just to be on the defensive side...",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ecdb48_d6b42710",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7037,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a72a603_a1af4177",
       "revId": "27afb0a54303da5a475550816f09bb7750b89add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -105,6 +141,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "34ca69b2_bafe157f",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7074,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e957ec4_2da1a0e4",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4416dee_fe45e139",
@@ -122,6 +176,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82fec92_6c288e8c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7097,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4416dee_fe45e139",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67e49f42_e8906140",
@@ -135,6 +207,24 @@
       "writtenOn": "2021-09-01T04:32:57Z",
       "side": 1,
       "message": "Any other message being treated as a protocol error?  Or is that taken care of naturally by the timer expiring at some point?",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c74ed0cc_82f9983b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7098,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "Another message should go to error recovery immediately. Fixed.",
+      "parentUuid": "67e49f42_e8906140",
       "revId": "27afb0a54303da5a475550816f09bb7750b89add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -158,6 +248,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "565862ca_d9957609",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7114,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "Are you referencing, \"Tell Device Policy Manager to perform Data Reset\" from the state diagram? That hadn\u0027t caught my eye, and I don\u0027t immediately see anywhere else where it says the DFP does this.\n\nAs a threshold issue, it seems entirely superfluous to do this in the DPM with its current design, in lockstep with the PE. With an independent DPM, this state would get more complicated by outsourcing the Data Reset, and I\u0027m not sure what that would get us in terms of separation of concerns.\n\nIf the spec didn\u0027t say which component did this, which one would you want to do it? If the PE sounds like as good a place as any, what if we left it this way, and I deleted \"Tell Device Policy Manager to\" in my ECR?",
+      "parentUuid": "632bfbc8_96cae6e0",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ce073a76_a5d464a0",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -169,6 +277,24 @@
       "writtenOn": "2021-09-01T04:32:57Z",
       "side": 1,
       "message": "Do you also feel vaguely confused how to reconcile the order of steps in 6.3.14 with the fact that the UFP already turned off Vconn in the last state?  If so, I can send an e-mail to the WG or check with Benson",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f16ce30_eb86b276",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7131,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "I wasn\u0027t, but I am a bit now.\n\nI think the most reasonable interpretation of the process in 6.3.14 is that it describes the entire Data Reset process, not the behavior in a particular state. (As a side note, I think this list of steps should go in the description of the *process* in 6.8.2, not the description of the message.) Step 3) Reset the cable would potentially start in PE_DDR_Wait_for_VCONN_Off and finish in PE_DDR_Perform_Data_Reset.\n\nBut that would imply that steps 1) and 2) take place in PE_DDR_Send_Data_Reset, presumably after receiving the Accept. (They could also happen at the very beginning of Wait_for_VCONN_Off or Perform_Data_Reset, depending on the initial VCONN Source, but that sounds pointlessly complicated.)\n\nThat implication is not reflected in the state diagram, and if it\u0027s correct, \"Tell the Device Policy Manager to perform Data Reset\" from the diagram would be ambiguous.\n\nIt\u0027s probably worth checking with the WG.",
+      "parentUuid": "ce073a76_a5d464a0",
       "revId": "27afb0a54303da5a475550816f09bb7750b89add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -190,6 +316,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04116346_baf4bc9c",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7133,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "I think you\u0027re probably right. Created b:199550504.",
+      "parentUuid": "750d0701_975be85b",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a4e7dd2e_e7d15646",
@@ -207,6 +351,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d52e57b2_a4c26269",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7144,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4e7dd2e_e7d15646",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfceb949_56f42fb4",
@@ -220,6 +382,24 @@
       "writtenOn": "2021-09-01T04:32:57Z",
       "side": 1,
       "message": "After tDataReset?",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adff60ea_d626ecd0",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7152,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "That would make the quote from the spec accurate. However, after reading further, I\u0027m confused.\n\n6.3.14 implies that tDataReset is a minimum time for the DFP to leave the lines disconnected (after resetting the cable?). 6.6.10.2 implies that tDataReset is a maximum time for the DFP to send Data_Reset_Complete after receiving the Accept. Those interpretations are mutually exclusive.\n\nThis would be another good question for the WG/Benson.",
+      "parentUuid": "cfceb949_56f42fb4",
       "revId": "27afb0a54303da5a475550816f09bb7750b89add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -247,6 +427,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e22ecc_a2953a69",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7167,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "As discussed elsewhere, I suspect that the intent of the spec was not that it be checked in all states.\n\nIf we used a parent state, and the intent were as I suspect, then the children of the parent state would be PE_DDR_Wait_for_VCONN_Off and PE_DDR_Perform_Data_Reset. This design would cause the timer to start at the beginning of either of those states as opposed to the end of PE_DDR_Send_Data_Reset, as specified. The timer is long enough that that probably wouldn\u0027t really matter.\n\nI\u0027d lean towards not using a parent state to conform more closely to the spec. If we wanted the spec to support an easier implementation (for us), I could submit an ECR that says to start it at the beginning of those two states instead of the end of Send_Data_Reset.",
+      "parentUuid": "fe444473_cf0e1e14",
+      "range": {
+        "startLine": 7167,
+        "startChar": 31,
+        "endLine": 7167,
+        "endChar": 55
+      },
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56a69f7b_beaa4c1f",
@@ -264,6 +468,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "759e32c4_21bd06b3",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7175,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56a69f7b_beaa4c1f",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5542ebf_58498de7",
@@ -277,6 +499,24 @@
       "writtenOn": "2021-09-01T04:32:57Z",
       "side": 1,
       "message": "Use corresponding entry and exit sender response functions as well",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4fc43af_19711f72",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7177,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "I think I just used this as a quick way to see whether the message had completed. SenderResponseTimer doesn\u0027t apply here.",
+      "parentUuid": "c5542ebf_58498de7",
       "revId": "27afb0a54303da5a475550816f09bb7750b89add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -300,6 +540,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43660f64_6229c4ec",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7179,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "I think you\u0027re probably right. Note, however, that Godzilla Creek, the only USB4 implementation I have access to, responds Not Supported to Data Reset Complete. I haven\u0027t seen it interrupt the process, but I\u0027m not sure what to expect.\n\nIt also feels a bit draconian to go into Error Recovery after they interrupted a process that, from both of our points of view, was already done.\n\n(As a side note, I was originally just firing and forgetting this from the exit function, because that\u0027s what the spec suggests that we do. I only added this check because our code was sending a PRS and discarding this. Since Godzilla Creek is clearly not waiting for it, I don\u0027t have any evidence of what could be expected to happen if we don\u0027t send it. The spec implies that the UFP is supposed to wait forever. I\u0027m feeling another ECR coming.)",
+      "parentUuid": "dedfef4c_5eefc1b6",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9fc15c38_e9b77e46",
         "filename": "include/config.h",
         "patchSetId": 6
@@ -311,6 +569,24 @@
       "writtenOn": "2021-09-01T04:32:57Z",
       "side": 1,
       "message": "Don\u0027t forget our beloved zephyr config entries as well :D",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50bf026b_5dd08375",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 4217,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fc15c38_e9b77e46",
       "revId": "27afb0a54303da5a475550816f09bb7750b89add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -328,6 +604,54 @@
       "writtenOn": "2021-09-01T04:32:57Z",
       "side": 1,
       "message": "200-250 for comment accuracy",
+      "range": {
+        "startLine": 246,
+        "startChar": 49,
+        "endLine": 246,
+        "endChar": 54
+      },
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "902e3854_261922e0",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "Done. Note that I haven\u0027t actually written code to use this. I can remove it from this CL if you want. (But see discussion of spec ambiguity elsewhere.)",
+      "parentUuid": "c78e4cc2_6919be8d",
+      "range": {
+        "startLine": 246,
+        "startChar": 49,
+        "endLine": 246,
+        "endChar": 54
+      },
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7daf725_3f7d524a",
+        "filename": "include/usb_pd.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c78e4cc2_6919be8d",
       "range": {
         "startLine": 246,
         "startChar": 49,

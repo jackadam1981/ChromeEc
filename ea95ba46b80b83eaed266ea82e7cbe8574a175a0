@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d364472d_2777593f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-10T22:24:28Z",
+      "side": 1,
+      "message": "There are some outstanding issues with this, but I think the comments pose enough unanswered questions that it wouldn\u0027t be ready to submit today anyway.\n\nThe issues for posterity:\n1. I left some TODOs. Doh!\n2. I created another timer, and that broke a static assert in usb_pd_timers.h. I think it\u0027s an easy fix, but I haven\u0027t tried it yet.\n3. I haven\u0027t tested my new code yet.",
+      "revId": "ea95ba46b80b83eaed266ea82e7cbe8574a175a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
