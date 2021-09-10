@@ -22,6 +22,30 @@
       },
       "revId": "5425d886c2608d53ba1202dc11c508bea4df9774",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fba15de4_131dc157",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-10T17:01:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52ed537e_4911eac6",
+      "range": {
+        "startLine": 458,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 74
+      },
+      "revId": "5425d886c2608d53ba1202dc11c508bea4df9774",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
