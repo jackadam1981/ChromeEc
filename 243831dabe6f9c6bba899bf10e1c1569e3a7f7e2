@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51203605_354da891",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-10T16:32:14Z",
+      "side": 1,
+      "message": "I\u0027ll note that this causes an extra I2C probe at runtime because the accel and gyro share a probe routine.\n\nThe alternative solution would be to check all ALT sensors for a matching drv-data property when a probe check passes and update all matching sensors. Probably not worth the added complexity.",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 17
+      },
+      "revId": "243831dabe6f9c6bba899bf10e1c1569e3a7f7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39d8587a_19ed073a",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-10T16:32:14Z",
+      "side": 1,
+      "message": "This should be enabled as:\n\n    choice PLATFORM_EC_ACCELGYRO_ICM_COMM\n        default PLATFORM_EC_ACCELGYRO_ICM_COMM_I2C",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 43
+      },
+      "revId": "243831dabe6f9c6bba899bf10e1c1569e3a7f7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
