@@ -298,20 +298,27 @@ void __keep report_panic(void)
 
 	/* Remove General Purpose Registers from panic data if needed */
 	if (IS_ENABLED(CONFIG_PANIC_STRIP_GPR)) {
-		/*
-		 * If it is software panic, don't remove R4 and R5 since they
-		 * contain the reason and additional information.
-		 */
-		if (in_interrupt_context()) {
-			pdata->cm.regs[CORTEX_PANIC_REGISTER_R4] = 0;
-			pdata->cm.regs[CORTEX_PANIC_REGISTER_R5] = 0;
+		int i;
+		int is_int = in_interrupt_context();
+
+		/* Skip r0-r3 and r12 registers if necessary */
+		for (i = CORTEX_PANIC_REGISTER_R4;
+		    i <= CORTEX_PANIC_REGISTER_R11; i++) {
+			switch (i)
+			{
+			/*
+			 * If it is software panic, don't remove R4 and R5 since they
+		 	 * contain the reason and additional information.
+		 	 */
+			case CONCAT2(CORTEX_PANIC_REGISTER_R,SOFTWARE_PANIC_REASON_REG):
+			case CONCAT2(CORTEX_PANIC_REGISTER_R,SOFTWARE_PANIC_INFO_REG):
+				if (!is_int)
+					break;
+			default:
+				pdata->cm.regs[i] = 0;
+				break;
+			}
 		}
-		pdata->cm.regs[CORTEX_PANIC_REGISTER_R6] = 0;
-		pdata->cm.regs[CORTEX_PANIC_REGISTER_R7] = 0;
-		pdata->cm.regs[CORTEX_PANIC_REGISTER_R8] = 0;
-		pdata->cm.regs[CORTEX_PANIC_REGISTER_R9] = 0;
-		pdata->cm.regs[CORTEX_PANIC_REGISTER_R10] = 0;
-		pdata->cm.regs[CORTEX_PANIC_REGISTER_R11] = 0;
 	}
 
 	pdata->magic = PANIC_DATA_MAGIC;
@@ -401,8 +408,8 @@ void exception_panic(void)
 #ifdef CONFIG_SOFTWARE_PANIC
 void software_panic(uint32_t reason, uint32_t info)
 {
-	__asm__("mov " STRINGIFY(SOFTWARE_PANIC_INFO_REG) ", %0\n"
-		"mov " STRINGIFY(SOFTWARE_PANIC_REASON_REG) ", %1\n"
+	__asm__("mov r" STRINGIFY(SOFTWARE_PANIC_INFO_REG) ", %0\n"
+		"mov r" STRINGIFY(SOFTWARE_PANIC_REASON_REG) ", %1\n"
 		"bl exception_panic\n"
 		: : "r"(info), "r"(reason));
 	__builtin_unreachable();

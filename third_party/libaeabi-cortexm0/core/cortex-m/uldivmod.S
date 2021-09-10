@@ -17,13 +17,12 @@
  */
 
 #include "software_panic.h"
+#include "compile_time_macros.h"
 
 
 	.syntax unified
 	.text
 	.code 16
-
-
 
 @ {unsigned long long quotient, unsigned long long remainder}
 @ __aeabi_uldivmod(unsigned long long numerator, unsigned long long denominator)
@@ -175,6 +174,6 @@ L_done_sub4:
 	pop	{r4, r5, r6, r7, pc}
 
 __aeabi_ldiv0:
-	ldr	SOFTWARE_PANIC_REASON_REG, =PANIC_SW_DIV_ZERO
-	mov	SOFTWARE_PANIC_INFO_REG, r14
+	ldr	CONCAT2(r,SOFTWARE_PANIC_REASON_REG), =PANIC_SW_DIV_ZERO
+	mov	CONCAT2(r,SOFTWARE_PANIC_INFO_REG), r14
 	bl	exception_panic

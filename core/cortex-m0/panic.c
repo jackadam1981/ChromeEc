@@ -172,8 +172,8 @@ void exception_panic(void)
 #ifdef CONFIG_SOFTWARE_PANIC
 void software_panic(uint32_t reason, uint32_t info)
 {
-	__asm__("mov " STRINGIFY(SOFTWARE_PANIC_INFO_REG) ", %0\n"
-		"mov " STRINGIFY(SOFTWARE_PANIC_REASON_REG) ", %1\n"
+	__asm__("mov r" STRINGIFY(SOFTWARE_PANIC_INFO_REG) ", %0\n"
+		"mov r" STRINGIFY(SOFTWARE_PANIC_REASON_REG) ", %1\n"
 		"bl exception_panic\n"
 		: : "r"(info), "r"(reason));
 	__builtin_unreachable();
