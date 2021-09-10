@@ -17,6 +17,23 @@
 #include <sys/util.h>
 #endif
 
+/*
+ * Macros to concatenate 2 - 4 tokens together to form a single token.
+ * Multiple levels of nesting are required to convince the preprocessor to
+ * expand currently-defined tokens before concatenation.
+ *
+ * For example, if you have
+ *     #define FOO 1
+ *     #define BAR1 42
+ * Then
+ *     #define BAZ CONCAT2(BAR, FOO)
+ * Will evaluate to BAR1, which then evaluates to 42.
+ */
+#define CONCAT_STAGE_1(w, x, y, z) w ## x ## y ## z
+#define CONCAT2(w, x) CONCAT_STAGE_1(w, x, , )
+#define CONCAT3(w, x, y) CONCAT_STAGE_1(w, x, y, )
+#define CONCAT4(w, x, y, z) CONCAT_STAGE_1(w, x, y, z)
+
 #ifdef __cplusplus
 #define _STATIC_ASSERT static_assert
 #else

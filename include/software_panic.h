@@ -9,8 +9,8 @@
 #define __CROS_EC_SOFTWARE_PANIC_H
 
 /* Holds software panic reason PANIC_SW_* */
-#define SOFTWARE_PANIC_REASON_REG	r4
-#define SOFTWARE_PANIC_INFO_REG		r5
+#define SOFTWARE_PANIC_REASON_REG	4
+#define SOFTWARE_PANIC_INFO_REG		5
 
 #define PANIC_SW_BASE		0xDEAD6660
 
