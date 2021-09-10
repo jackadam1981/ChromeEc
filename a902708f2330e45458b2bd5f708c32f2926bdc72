@@ -16,6 +16,46 @@
       "message": "Hi, this just takes care of pwm_led for the moment, figure I\u0027d base it on the existing pwm-leds binding, and then we can build up handling the extra PWM variations on top (dual led vs side select...) and have a generic cros LED driver. Let me know what you think.",
       "revId": "a902708f2330e45458b2bd5f708c32f2926bdc72",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad810d54_9f5f539b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-10T18:33:57Z",
+      "side": 1,
+      "message": "overall really nice cleanup 😊",
+      "revId": "a902708f2330e45458b2bd5f708c32f2926bdc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa260e56_b17a2560",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-10T18:33:57Z",
+      "side": 1,
+      "message": "any way to foreach this instead? seems like a hack",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "a902708f2330e45458b2bd5f708c32f2926bdc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
