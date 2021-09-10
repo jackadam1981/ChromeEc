@@ -85,6 +85,30 @@
       },
       "revId": "222fd4bfc790aa345109e9c8b75cdfe279cbdb29",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21cfbe26_640ff1c1",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-10T16:14:07Z",
+      "side": 1,
+      "message": "At a minimum this needs a guard of !CONFIG_PLATFORM_EC_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL.  If a board needs to perform custom actions (like enable power rails) before probing.\n\nBut I believe you\u0027re correct that RUNTIME_PROBE_REQUIRED isn\u0027t needed.",
+      "parentUuid": "71e13b9b_8a439e00",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 6
+      },
+      "revId": "222fd4bfc790aa345109e9c8b75cdfe279cbdb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
