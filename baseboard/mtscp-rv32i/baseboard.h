@@ -62,6 +62,9 @@
 #define CONFIG_PANIC_BASE_OFFSET 0x100 /* reserved for jump data */
 #define CONFIG_PANIC_DATA_BASE (CONFIG_PANIC_DRAM_BASE + CONFIG_PANIC_BASE_OFFSET)
 
+#define CONFIG_SCP_CORE1_RAM_SIZE 0x10000 /* 64K */
+#define CONFIG_SCP_CORE1_RAM_PADDING 0xc00 /* for 4K-alignment */
+
 /* MPU settings */
 #define NR_MPU_ENTRIES 16
 
