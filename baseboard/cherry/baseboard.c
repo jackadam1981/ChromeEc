@@ -78,6 +78,17 @@ const struct charger_config_t chg_chips[] = {
 	},
 };
 
+/* Override default setting, called after charger_chips_init */
+static void baseboard_charger_init(void)
+{
+	int reg = (4096 / ISL9238_INPUT_VOLTAGE_REF_STEP)
+			<< ISL9238_INPUT_VOLTAGE_REF_SHIFT;
+
+	i2c_write16(I2C_PORT_CHARGER, ISL923X_ADDR_FLAGS,
+			ISL9238_REG_INPUT_VOLTAGE, reg);
+}
+DECLARE_HOOK(HOOK_INIT, baseboard_charger_init, HOOK_PRIO_DEFAULT + 2);
+
 __override void board_hibernate_late(void)
 {
 	/*
