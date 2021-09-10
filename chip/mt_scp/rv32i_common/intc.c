@@ -10,6 +10,22 @@
 #include "intc.h"
 #include "registers.h"
 
+#ifdef CHIP_VARIANT_MT8195_CORE1
+#define SCP_CORE_INTC_IRQ_EN		SCP_CORE1_INTC_IRQ_EN
+#define SCP_CORE_INTC_SLP_WAKE_EN	SCP_CORE1_INTC_SLP_WAKE_EN
+#define SCP_CORE_INTC_IRQ_GRP		SCP_CORE1_INTC_IRQ_GRP
+#define SCP_CORE_INTC_IRQ_POL		SCP_CORE1_INTC_IRQ_POL
+#define SCP_CORE_INTC_IRQ_OUT		SCP_CORE1_INTC_IRQ_OUT
+#define SCP_CORE_INTC_IRQ_GRP_STA	SCP_CORE1_INTC_IRQ_GRP_STA
+#else
+#define SCP_CORE_INTC_IRQ_EN		SCP_CORE0_INTC_IRQ_EN
+#define SCP_CORE_INTC_SLP_WAKE_EN	SCP_CORE0_INTC_SLP_WAKE_EN
+#define SCP_CORE_INTC_IRQ_GRP		SCP_CORE0_INTC_IRQ_GRP
+#define SCP_CORE_INTC_IRQ_POL		SCP_CORE0_INTC_IRQ_POL
+#define SCP_CORE_INTC_IRQ_OUT		SCP_CORE0_INTC_IRQ_OUT
+#define SCP_CORE_INTC_IRQ_GRP_STA	SCP_CORE0_INTC_IRQ_GRP_STA
+#endif
+
 /*
  * INTC_GRP_0 is reserved.  See swirq of syscall_handler() in
  * core/riscv-rv32i/task.c for more details.
@@ -475,13 +491,13 @@ int chip_get_ec_int(void)
 	unsigned int group, sta;
 	int word;
 
-	if (!SCP_CORE0_INTC_IRQ_OUT)
+	if (!SCP_CORE_INTC_IRQ_OUT)
 		goto error;
 
 	group = read_csr(CSR_VIC_MICAUSE);
 
 	for (word = SCP_INTC_GRP_LEN - 1; word >= 0; --word) {
-		sta = SCP_CORE0_INTC_IRQ_GRP_STA(group, word);
+		sta = SCP_CORE_INTC_IRQ_GRP_STA(group, word);
 		if (sta) {
 			ec_int = __fls(sta) + word * 32;
 			return ec_int;
@@ -507,13 +523,13 @@ void chip_enable_irq(int irq)
 	mask = BIT(SCP_INTC_BIT(irq));
 
 	/* disable interrupt */
-	SCP_CORE0_INTC_IRQ_EN(word) &= ~mask;
+	SCP_CORE_INTC_IRQ_EN(word) &= ~mask;
 	/* set group */
-	SCP_CORE0_INTC_IRQ_GRP(group, word) |= mask;
+	SCP_CORE_INTC_IRQ_GRP(group, word) |= mask;
 	/* set as a wakeup source */
-	SCP_CORE0_INTC_SLP_WAKE_EN(word) |= mask;
+	SCP_CORE_INTC_SLP_WAKE_EN(word) |= mask;
 	/* enable interrupt */
-	SCP_CORE0_INTC_IRQ_EN(word) |= mask;
+	SCP_CORE_INTC_IRQ_EN(word) |= mask;
 }
 
 void chip_disable_irq(int irq)
@@ -550,19 +566,19 @@ void chip_init_irqs(void)
 	/* INTC init */
 	/* clear enable and wakeup settings */
 	for (word = 0; word < SCP_INTC_GRP_LEN; ++word) {
-		SCP_CORE0_INTC_IRQ_EN(word) = 0x0;
-		SCP_CORE0_INTC_SLP_WAKE_EN(word) = 0x0;
+		SCP_CORE_INTC_IRQ_EN(word) = 0x0;
+		SCP_CORE_INTC_SLP_WAKE_EN(word) = 0x0;
 
 		/* clear group settings */
 		for (group = 0; group < SCP_INTC_GRP_COUNT; ++group)
-			SCP_CORE0_INTC_IRQ_GRP(group, word) = 0x0;
+			SCP_CORE_INTC_IRQ_GRP(group, word) = 0x0;
 	}
 	/* reset to default polarity */
-	SCP_CORE0_INTC_IRQ_POL(0) = SCP_INTC_IRQ_POL0;
-	SCP_CORE0_INTC_IRQ_POL(1) = SCP_INTC_IRQ_POL1;
-	SCP_CORE0_INTC_IRQ_POL(2) = SCP_INTC_IRQ_POL2;
+	SCP_CORE_INTC_IRQ_POL(0) = SCP_INTC_IRQ_POL0;
+	SCP_CORE_INTC_IRQ_POL(1) = SCP_INTC_IRQ_POL1;
+	SCP_CORE_INTC_IRQ_POL(2) = SCP_INTC_IRQ_POL2;
 #if SCP_INTC_GRP_LEN > 3
-	SCP_CORE0_INTC_IRQ_POL(3) = SCP_INTC_IRQ_POL3;
+	SCP_CORE_INTC_IRQ_POL(3) = SCP_INTC_IRQ_POL3;
 #endif
 
 	/* GVIC init */
