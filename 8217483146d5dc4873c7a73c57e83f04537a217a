@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "660c0832_864b8803",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1334530
+      },
+      "writtenOn": "2021-09-10T00:45:27Z",
+      "side": 1,
+      "message": "I see. You\u0027re right, this does increase the complexity and looses a bit of context. I will attest that the asm looks correct and it shouldn\u0027t matter that we are clobbering the high regs, but I think it might be better to keep this in C for maintainability.\n\nThe only real concern I had was that we had a moment in time where the panic data block would be valid and it contained the general purpose regs.\n\nWould you consider something like https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3152707/2/core/cortex-m/panic.c#299 , where it only marks the block as valid (PANIC_DATA_MAGIC) after clearing the saved regs?\n\nIf the chip resets before marking it as valid, the panic block is simply another place in memory that holds the regs and sensitive info (like many other locations, exception frames, function frames ...), but the panic wouldn\u0027t be reported.",
+      "parentUuid": "17e63f10_8ae11b61",
+      "revId": "8217483146d5dc4873c7a73c57e83f04537a217a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "989092d5_aa8e1f7a",
