@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d91b425_34c706ce",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-10T00:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33ae8bfa_a8ef280f",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 0
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e585513b_9e6c5e52",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "this is a deferred function so we have to extract ioex after processing the data , we might have to add additional logic if we have multiple it8801 in the system",
       "parentUuid": "e585513b_9e6c5e52",
+      "range": {
+        "startLine": 460,
+        "startChar": 38,
+        "endLine": 460,
+        "endChar": 42
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d48c39df_eb1c2a29",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-10T00:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8daa9db9_7e949047",
       "range": {
         "startLine": 460,
         "startChar": 38,
@@ -251,6 +299,30 @@
       "side": 1,
       "message": "What I missed during my first review is that the KSIIER and GPIOPGxIER registers are used to mask/unmask the interrupts in the chip.\n\nPlease add some comments around these register updates so that it\u0027s clear that it\u0027s okay that the EC GPIO interrupt can remain enabled.",
       "parentUuid": "43d51a6d_58c3c73b",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 485,
+        "endChar": 0
+      },
+      "revId": "8491c6c20c760d527b86c7374678df17c03ad63e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4df3068e_0750ea51",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-10T00:48:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9311499_90cad3a4",
       "range": {
         "startLine": 473,
         "startChar": 0,
