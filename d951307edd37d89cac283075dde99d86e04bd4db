@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85ffaa57_9a2bf7b0",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-10T14:29:19Z",
+      "side": 1,
+      "message": "Hi Tang. I meant this file should be in a separate CL. It\u0027s a good practice to separate a CL adding a new feature from a CL enabling a board to use it.",
+      "parentUuid": "db61790e_bcc2b185",
+      "revId": "d951307edd37d89cac283075dde99d86e04bd4db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d6243a7_00e4bef8",
