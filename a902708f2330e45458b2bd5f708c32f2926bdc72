@@ -35,6 +35,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2147210_101e6d0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-10T18:57:35Z",
+      "side": 1,
+      "message": "Should use DT_FOREACH_PROP_ELEM, but overall looks good!",
+      "revId": "a902708f2330e45458b2bd5f708c32f2926bdc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa260e56_b17a2560",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-09-10T18:33:57Z",
       "side": 1,
       "message": "any way to foreach this instead? seems like a hack",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 6
+      },
+      "revId": "a902708f2330e45458b2bd5f708c32f2926bdc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3eda0330_ecec0c4d",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-10T18:57:35Z",
+      "side": 1,
+      "message": "Yes, there\u0027s a DT_FOREACH_PROP_ELEM",
+      "parentUuid": "fa260e56_b17a2560",
       "range": {
         "startLine": 32,
         "startChar": 0,
