@@ -16,6 +16,115 @@
       "message": "rebased and added control flag for ccd test command",
       "revId": "d1e8a3e7468bca8ea283b5d65a045abad8a46b2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "852f2ce3_a39810df",
+        "filename": "board/cr50/dcrypto/p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-10T22:24:04Z",
+      "side": 1,
+      "message": "I understand what\u0027s happening here, but why would p256_int be ever longer than 32 bytes, doesn\u0027t \u0027p256_\u0027 mean that this value must conform with the p256 curve?",
+      "range": {
+        "startLine": 143,
+        "startChar": 4,
+        "endLine": 143,
+        "endChar": 59
+      },
+      "revId": "d1e8a3e7468bca8ea283b5d65a045abad8a46b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48af314d_d43c13b8",
+        "filename": "board/cr50/dcrypto/p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-10T22:24:04Z",
+      "side": 1,
+      "message": "let\u0027s not do this - we\u0027re not going to run this on big endian platforms, and if we tried it would fail in many places.",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 163,
+        "endChar": 6
+      },
+      "revId": "d1e8a3e7468bca8ea283b5d65a045abad8a46b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa3d48f1_dd80f1d1",
+        "filename": "board/cr50/dcrypto/p256.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-10T22:24:04Z",
+      "side": 1,
+      "message": "might result in slightly smaller code if you define e as local variable and modify it before check in line 271. \n\nNot a biggie, but at least please add a comment describing how e and e1 values are different.",
+      "range": {
+        "startLine": 248,
+        "startChar": 1,
+        "endLine": 251,
+        "endChar": 0
+      },
+      "revId": "d1e8a3e7468bca8ea283b5d65a045abad8a46b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7ee7397_38f16006",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-10T22:24:04Z",
+      "side": 1,
+      "message": "changes to this file require running the TCG test (did you manage to set it up BTW?)",
+      "revId": "d1e8a3e7468bca8ea283b5d65a045abad8a46b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23a82509_59b0e7cb",
+        "filename": "common/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-10T22:24:04Z",
+      "side": 1,
+      "message": "can host code be modified to also produce an aligned value?",
+      "range": {
+        "startLine": 38,
+        "startChar": 3,
+        "endLine": 40,
+        "endChar": 43
+      },
+      "revId": "d1e8a3e7468bca8ea283b5d65a045abad8a46b2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
