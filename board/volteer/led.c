@@ -31,6 +31,7 @@ struct pwm_led led_color_map[] = {
 	[EC_LED_COLOR_AMBER] =  {  100,  20,     0 },
 };
 
+#ifndef CONFIG_ZEPHYR
 struct pwm_led pwm_leds[] = {
 	/* 2 RGB diffusers controlled by 1 set of 3 channels. */
 	[PWM_LED0] = {
@@ -39,6 +40,7 @@ struct pwm_led pwm_leds[] = {
 		.ch2 = PWM_CH_LED1_BLUE,
 	},
 };
+#endif
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
