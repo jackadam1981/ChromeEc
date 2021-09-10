@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37bd14c8_3bd9bae3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-10T18:20:40Z",
+      "side": 1,
+      "message": "Hi, this just takes care of pwm_led for the moment, figure I\u0027d base it on the existing pwm-leds binding, and then we can build up handling the extra PWM variations on top (dual led vs side select...) and have a generic cros LED driver. Let me know what you think.",
+      "revId": "a902708f2330e45458b2bd5f708c32f2926bdc72",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
