@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c70e68b_c3922c1d",
+        "filename": "zephyr/projects/trogdor/lazor/motionsense.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-10T16:44:44Z",
+      "side": 1,
+      "message": "I was aware of that, but I wasn\u0027t sure if the overhead is big enough to add complex checks.",
+      "parentUuid": "51203605_354da891",
+      "range": {
+        "startLine": 234,
+        "startChar": 0,
+        "endLine": 234,
+        "endChar": 17
+      },
+      "revId": "243831dabe6f9c6bba899bf10e1c1569e3a7f7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39d8587a_19ed073a",
         "filename": "zephyr/projects/trogdor/lazor/prj.conf",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-10T16:32:14Z",
       "side": 1,
       "message": "This should be enabled as:\n\n    choice PLATFORM_EC_ACCELGYRO_ICM_COMM\n        default PLATFORM_EC_ACCELGYRO_ICM_COMM_I2C",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 43
+      },
+      "revId": "243831dabe6f9c6bba899bf10e1c1569e3a7f7e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7eba5c87_f1c280e3",
+        "filename": "zephyr/projects/trogdor/lazor/prj.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-10T16:44:44Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem to work:\nwarning: ignoring malformed line \u0027choice PLATFORM_EC_ACCELGYRO_ICM_COMM\u0027\n\nBMI160 uses the same syntax that it enables the \"choice\" config. I have verified that it works and selects i2c instead of spi.",
+      "parentUuid": "39d8587a_19ed073a",
       "range": {
         "startLine": 154,
         "startChar": 0,
