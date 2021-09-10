@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf9ae5b2_e428f6fc",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-10T16:23:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a979aeda_4f28013d",
+      "revId": "222fd4bfc790aa345109e9c8b75cdfe279cbdb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c022d9d2_1bdccbc2",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f223780_38292d77",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-10T16:23:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c022d9d2_1bdccbc2",
+      "range": {
+        "startLine": 444,
+        "startChar": 0,
+        "endLine": 447,
+        "endChar": 5
+      },
+      "revId": "222fd4bfc790aa345109e9c8b75cdfe279cbdb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "86d9c7e0_413d3684",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-09-09T19:59:43Z",
       "side": 1,
       "message": "No need to check if required,\n\nDT_FOREACH_CHILD(SENSOR_ALT_NODE, PROBE_IF_NEEDED) \u003d\u003e noop if no nodes have a probe",
+      "range": {
+        "startLine": 449,
+        "startChar": 4,
+        "endLine": 449,
+        "endChar": 26
+      },
+      "revId": "222fd4bfc790aa345109e9c8b75cdfe279cbdb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02ea56e5_cf4e8750",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-10T16:23:59Z",
+      "side": 1,
+      "message": "Right, the check for probed sensors is redundant. It was added because I had an additional print in the function, but removed it when moved to zephyr logging.\nBut it is still required to check if sensor_alt node exists. Otherwise, there will be an error that this function is unused. Also the foreach can\u0027t be used on unexisting node.",
+      "parentUuid": "86d9c7e0_413d3684",
       "range": {
         "startLine": 449,
         "startChar": 4,
@@ -100,6 +166,30 @@
       "writtenOn": "2021-09-10T16:14:07Z",
       "side": 1,
       "message": "At a minimum this needs a guard of !CONFIG_PLATFORM_EC_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL.  If a board needs to perform custom actions (like enable power rails) before probing.\n\nBut I believe you\u0027re correct that RUNTIME_PROBE_REQUIRED isn\u0027t needed.",
+      "parentUuid": "71e13b9b_8a439e00",
+      "range": {
+        "startLine": 469,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 6
+      },
+      "revId": "222fd4bfc790aa345109e9c8b75cdfe279cbdb29",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a3b5238_c09737be",
+        "filename": "zephyr/shim/src/motionsense_sensors.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-09-10T16:23:59Z",
+      "side": 1,
+      "message": "The runtime probe was removed.",
       "parentUuid": "71e13b9b_8a439e00",
       "range": {
         "startLine": 469,
