@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57d01841_7185add9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-10T05:16:44Z",
+      "side": 1,
+      "message": "any specific issue fixed?",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "88fc7960983ae416d75cb56694dc7dd39a51ca89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "949c4b5c_79769324",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-10T05:16:44Z",
+      "side": 1,
+      "message": "nit: Not introduced by this CL but how about assigning to a variable so that we don\u0027t do cable discovery again?",
+      "revId": "88fc7960983ae416d75cb56694dc7dd39a51ca89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
