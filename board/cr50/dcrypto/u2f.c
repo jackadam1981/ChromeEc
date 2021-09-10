@@ -171,13 +171,25 @@ static enum ec_error_list u2f_origin_user_key_pair(
 		return EC_ERROR_INVAL;
 	}
 
-	/* TODO(sukhomlinov): implement new FIPS path. */
 	if (!app_hw_device_id(U2F_ORIGIN, state->hmac_key, dev_salt))
 		return EC_ERROR_UNKNOWN;
 
-	hmac_drbg_init(&drbg, state->drbg_entropy, P256_NBYTES, dev_salt,
-		       P256_NBYTES, NULL, 0);
+	/* Check that U2F state is valid. */
+	if (state->drbg_entropy_size != 64 && state->drbg_entropy_size != 32)
+		return EC_ERROR_HW_INTERNAL;
 
+	/**
+	 * Seed DRBG with 512 bit of entropy (256 bit if old keys are used).
+	 * nonce = []
+	 * personalization string = device id.
+	 */
+	hmac_drbg_init(&drbg, state->drbg_entropy, state->drbg_entropy_size,
+		       dev_salt, P256_NBYTES, NULL, 0);
+
+	/**
+	 * Additional data = key handle (public).
+	 * key handle contains fresh 256-bit random in origin_seed.
+	 */
 	hmac_drbg_generate(&drbg, key_seed, sizeof(key_seed), key_handle,
 			   key_handle_size);
 
@@ -412,19 +424,34 @@ enum ec_error_list u2f_sign(const struct u2f_state *state,
 static bool g2f_individual_key_pair(const struct u2f_state *state, p256_int *d,
 				    p256_int *pk_x, p256_int *pk_y)
 {
-	uint8_t buf[SHA256_DIGEST_SIZE];
+	uint32_t buf[SHA256_DIGEST_WORDS];
 
 	/* Incorporate HIK & diversification constant. */
-	if (!app_hw_device_id(U2F_ATTEST, state->salt, (uint32_t *)buf))
+	if (!app_hw_device_id(U2F_ATTEST, state->salt, buf))
 		return false;
 
-	/* Generate unbiased private key (non-FIPS path). */
-	while (!DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d, buf)) {
-		struct sha256_ctx sha;
+	if (state->drbg_entropy_size != 64) {
+		/* Generate unbiased private key (non-FIPS path). */
+		while (!DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d,
+						    (uint8_t *)buf)) {
+			struct sha256_ctx sha;
 
-		SHA256_hw_init(&sha);
-		SHA256_update(&sha, buf, sizeof(buf));
-		memcpy(buf, SHA256_final(&sha), sizeof(buf));
+			SHA256_hw_init(&sha);
+			SHA256_update(&sha, buf, sizeof(buf));
+			memcpy(buf, SHA256_final(&sha), sizeof(buf));
+		}
+	} else {
+		struct drbg_ctx drbg;
+
+		hmac_drbg_init(&drbg, state->drbg_entropy,
+			       state->drbg_entropy_size, buf, P256_NBYTES, NULL,
+			       0);
+
+		do {
+			hmac_drbg_generate(&drbg, buf, sizeof(buf), state->salt,
+					   sizeof(state->salt));
+		} while (!DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d,
+						      (uint8_t *)buf));
 	}
 
 	return true;
