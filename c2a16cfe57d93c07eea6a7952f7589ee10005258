@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9338adc3_e52ef3bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-10T17:05:55Z",
+      "side": 1,
+      "message": "Hmm, this tag *used* to work just last week. :/\n\nYou can remove it since you Cq-Depend on the ebuild CL now anyway.",
+      "revId": "c2a16cfe57d93c07eea6a7952f7589ee10005258",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
