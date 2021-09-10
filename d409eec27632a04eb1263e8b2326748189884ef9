@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "516c1fcb_73532c16",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-10T18:50:14Z",
+      "side": 1,
+      "message": "Sample output of `zmake configure -b zephyr/projects/asurada/hayato`\n\n```\nClearing old build directory /mnt/host/source/src/platform/ec/build/zephyr/projects/asurada/hayato\nToolchain \u003czmake.toolchains.CorebootSdkToolchain object at 0x7f14b2877048\u003e selected by probe function.\nBuilding zephyr/projects/asurada/hayato in /mnt/host/source/src/platform/ec/build/zephyr/projects/asurada/hayato.\nConfiguring zephyr/projects/asurada/hayato:ro.\nConfiguring zephyr/projects/asurada/hayato:rw.\nBuilding /mnt/host/source/src/platform/ec/build/zephyr/projects/asurada/hayato:ro: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/projects/asurada/hayato/build-ro\nMemory region         Used Size  Region Size  %age Used\n             ROM:      244988 B         1 MB     23.36%\n             RAM:       47544 B        56 KB     82.91%\n        IDT_LIST:          0 GB         2 KB      0.00%\nBuilding /mnt/host/source/src/platform/ec/build/zephyr/projects/asurada/hayato:rw: /usr/bin/ninja -C /mnt/host/source/src/platform/ec/build/zephyr/projects/asurada/hayato/build-rw\nMemory region         Used Size  Region Size  %age Used\n             ROM:      244988 B         1 MB     23.36%\n             RAM:       47544 B        56 KB     82.91%\n        IDT_LIST:          0 GB         2 KB      0.00%\n```",
+      "revId": "d409eec27632a04eb1263e8b2326748189884ef9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
