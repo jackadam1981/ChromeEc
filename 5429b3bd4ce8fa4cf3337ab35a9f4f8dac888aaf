@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1acfdaa_22fa2ff8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-10T19:00:03Z",
+      "side": 1,
+      "message": "I refactor the code a little further, I did not like \"while (true)\", esp. in an irq handler routine.\n\nI make it look like other drivers (used BMI160 as model) and call motion_sense_fifo_commit_data() only once.",
+      "revId": "5429b3bd4ce8fa4cf3337ab35a9f4f8dac888aaf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
