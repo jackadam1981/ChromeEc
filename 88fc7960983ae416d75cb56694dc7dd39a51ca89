@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98275e5e_999a5a17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-10T20:36:45Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "f3fbc9c6_ad60952e",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "88fc7960983ae416d75cb56694dc7dd39a51ca89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "949c4b5c_79769324",
@@ -79,6 +103,24 @@
       "side": 1,
       "message": "The discovery result is already saved to static struct policy_engine {} pe[]. So this is just an access function to read the data saved.",
       "parentUuid": "949c4b5c_79769324",
+      "revId": "88fc7960983ae416d75cb56694dc7dd39a51ca89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ab478a0_4c979405",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-10T20:36:45Z",
+      "side": 1,
+      "message": "ACK",
+      "parentUuid": "3b262243_939d72ef",
       "revId": "88fc7960983ae416d75cb56694dc7dd39a51ca89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
