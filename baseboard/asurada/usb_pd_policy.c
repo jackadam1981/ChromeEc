@@ -57,6 +57,13 @@ static int is_dp_muxable(int port)
 	return 1;
 }
 
+#define HDP_PULSE_MEASUREMENT_CNT 20
+static uint32_t usleep_data[HDP_PULSE_MEASUREMENT_CNT];
+static uint32_t usleep_avg, usleep_max;
+static uint32_t usleep_min = 0xffffffff;
+static int usleep_times;
+
+#include "hwtimer.h"
 __override int svdm_dp_attention(int port, uint32_t *payload)
 {
 	int lvl = PD_VDO_DPSTS_HPD_LVL(payload[1]);
@@ -65,8 +72,34 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 	int cur_lvl = svdm_get_hpd_gpio(port);
 #endif /* CONFIG_USB_PD_DP_HPD_GPIO */
 	mux_state_t mux_state;
+	uint32_t __t0;
 
 	dp_status[port] = payload[1];
+
+	/* generate IRQ_HPD pulse */
+	svdm_set_hpd_gpio(port, 0);
+	__t0 = __hw_clock_source_read();
+	usleep(HPD_DSTREAM_DEBOUNCE_IRQ);
+	__t0 = __hw_clock_source_read() - __t0;
+	svdm_set_hpd_gpio(port, 1);
+	usleep_data[usleep_times++] = __t0;
+	usleep_avg += __t0;
+	usleep_min = MIN(usleep_min, __t0);
+	usleep_max = MAX(usleep_max, __t0);
+	if (usleep_times >= HDP_PULSE_MEASUREMENT_CNT) {
+		CPRINTF("=== tested usleep(500) %d times ===\n", usleep_times);
+		for (int i = 0; i < usleep_times; i++) {
+			CPRINTF("[%d] %d (us)\n", i, usleep_data[i]);
+		}
+		CPRINTF("[MIN] %d (us)\n", usleep_min);
+		CPRINTF("[MAX] %d (us)\n", usleep_max);
+		CPRINTF("[AVG] %d (us)\n", usleep_avg / usleep_times);
+
+		usleep_times = 0;
+		usleep_avg = 0;
+		usleep_min = 0xffffffff;
+		usleep_max = 0;
+	}
 
 	if (!is_dp_muxable(port)) {
 		/* TODO(waihong): Info user? */
