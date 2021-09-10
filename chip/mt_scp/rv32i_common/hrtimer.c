@@ -81,6 +81,7 @@ static void timer_set_clock(int n, uint32_t clock_source)
 		(SCP_CORE_TIMER_EN(n) & ~TIMER_CLK_SRC_MASK) | clock_source;
 }
 
+#ifndef CHIP_VARIANT_MT8195_CORE1
 static void timer_reset(int n)
 {
 	timer_disable(n);
@@ -138,6 +139,7 @@ static int timer_reload_event_high(void)
 
 int __hw_clock_source_init(uint32_t start_t)
 {
+#ifndef CHIP_VARIANT_MT8195_CORE1
 	int t;
 
 	/* enable clock gate */
@@ -146,6 +148,7 @@ int __hw_clock_source_init(uint32_t start_t)
 	/* reset all timer, select 32768Hz clock source */
 	for (t = 0; t < NUM_TIMERS; ++t)
 		timer_reset(t);
+#endif
 
 	/* System timestamp timer */
 	timer_set_clock(TIMER_SYSTEM, TIMER_CLK_SRC_BCLK);
