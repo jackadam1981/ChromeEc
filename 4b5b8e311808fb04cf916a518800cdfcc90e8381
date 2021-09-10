@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d639e56_76473b10",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-10T13:56:24Z",
+      "side": 1,
+      "message": "indentaton needs adjusted so it aligns to the ( above",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 83,
+        "endChar": 3
+      },
+      "revId": "4b5b8e311808fb04cf916a518800cdfcc90e8381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c35dfcea_7291e635",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-10T13:56:24Z",
+      "side": 1,
+      "message": "indentation needs adjusted",
+      "range": {
+        "startLine": 96,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 2
+      },
+      "revId": "4b5b8e311808fb04cf916a518800cdfcc90e8381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a23426b3_b94e51c4",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-10T13:56:24Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 109,
+        "startChar": 1,
+        "endLine": 109,
+        "endChar": 2
+      },
+      "revId": "4b5b8e311808fb04cf916a518800cdfcc90e8381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "146dc2df_509f9561",
+        "filename": "zephyr/shim/src/system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-10T13:56:24Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 120,
+        "startChar": 2,
+        "endLine": 120,
+        "endChar": 3
+      },
+      "revId": "4b5b8e311808fb04cf916a518800cdfcc90e8381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84a083d1_1dc50735",
+        "filename": "zephyr/test/system/test_system.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-10T13:56:24Z",
+      "side": 1,
+      "message": "struct members are by default, zero. it\u0027s not necessary to write the explicit nulls",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 18
+      },
+      "revId": "4b5b8e311808fb04cf916a518800cdfcc90e8381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
