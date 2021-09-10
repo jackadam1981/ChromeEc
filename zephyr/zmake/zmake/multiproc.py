@@ -22,7 +22,8 @@ _logging_interrupt_pipe = os.pipe()
 _logging_cv = threading.Condition()
 # A map of file descriptors to their LogWriter
 _logging_map = {}
-
+# Should we log job names or not
+log_job_names = True
 
 def reset():
     """Reset this module to its starting state (useful for tests)"""
@@ -47,15 +48,18 @@ class LogWriter:
             key: log_level
             value: True if output was written at that level
         _job_id: The name to prepend to logged lines
+        _file_descriptor: The file descriptor being logged.
     """
 
-    def __init__(self, logger, log_level, log_level_override_func, job_id):
+    def __init__(self, logger, log_level, log_level_override_func,
+                 job_id, file_descriptor):
         self._logger = logger
         self._log_level = log_level
         self._override_func = log_level_override_func
         # A map whether output was printed at each logging level
         self._written_at_level = collections.defaultdict(lambda: False)
         self._job_id = job_id
+        self._file_descriptor = file_descriptor
 
     def log_line(self, line):
         """Log a line of output
@@ -73,7 +77,7 @@ class LogWriter:
             # greatly simplifies the logic that is needed to update the log
             # level.
             self._log_level = self._override_func(line, self._log_level)
-        if self._job_id:
+        if self._job_id and log_job_names:
             self._logger.log(self._log_level, "[%s]%s", self._job_id, line)
         else:
             self._logger.log(self._log_level, line)
@@ -89,6 +93,15 @@ class LogWriter:
             True if any output was written at that log level, False if not
         """
         return self._written_at_level[log_level]
+
+    def wait(self):
+        """Wait for this LogWriter to finish.
+
+        This method will block execution until all the logs have been flushed out.
+        """
+        with _logging_cv:
+            _logging_cv.wait_for(
+                lambda: not self._file_descriptor in _logging_map)
 
 
 def _log_fd(fd):
@@ -113,7 +126,7 @@ def _log_fd(fd):
             del _logging_map[fd]
             _logging_cv.notify_all()
             return
-        line = line.strip()
+        line = line.rstrip('\n')
         if line:
             writer.log_line(line)
 
@@ -190,7 +203,12 @@ def log_output(
             _logging_thread = threading.Thread(target=_logging_loop, daemon=True)
             _logging_thread.start()
 
-        writer = LogWriter(logger, log_level, log_level_override_func, job_id)
+        writer = LogWriter(
+            logger,
+            log_level,
+            log_level_override_func,
+            job_id,
+            file_descriptor)
         _logging_map[file_descriptor] = writer
         # Write a dummy byte to the pipe to break the select so we can add the
         # new fd.
