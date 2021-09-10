@@ -4,7 +4,7 @@
  */
 
 #include <device.h>
-#include <drivers/cros_bbram.h>
+#include <drivers/bbram.h>
 #include <drivers/cros_system.h>
 #include <logging/log.h>
 
@@ -67,7 +67,7 @@ int system_get_bbram(enum system_bbram_idx idx, uint8_t *value)
 	if (rc)
 		return rc;
 
-	rc = cros_bbram_read(bbram_dev, offset, size, value);
+	rc = bbram_read(bbram_dev, offset, size, value);
 
 	return rc ? EC_ERROR_INVAL : EC_SUCCESS;
 }
@@ -79,7 +79,7 @@ void chip_save_reset_flags(uint32_t flags)
 		return;
 	}
 
-	cros_bbram_write(bbram_dev, GET_BBRAM_OFFSET(saved_reset_flags),
+	bbram_write(bbram_dev, GET_BBRAM_OFFSET(saved_reset_flags),
 			 GET_BBRAM_SIZE(saved_reset_flags), (uint8_t *)&flags);
 }
 
@@ -92,7 +92,7 @@ uint32_t chip_read_reset_flags(void)
 		return 0;
 	}
 
-	cros_bbram_read(bbram_dev, GET_BBRAM_OFFSET(saved_reset_flags),
+	bbram_read(bbram_dev, GET_BBRAM_OFFSET(saved_reset_flags),
 			GET_BBRAM_SIZE(saved_reset_flags), (uint8_t *)&flags);
 
 	return flags;
@@ -105,7 +105,7 @@ int system_set_scratchpad(uint32_t value)
 		return -EC_ERROR_INVAL;
 	}
 
-	return cros_bbram_write(bbram_dev, GET_BBRAM_OFFSET(scratchpad),
+	return bbram_write(bbram_dev, GET_BBRAM_OFFSET(scratchpad),
 			 GET_BBRAM_SIZE(scratchpad), (uint8_t *)&value);
 }
 
@@ -116,7 +116,7 @@ int system_get_scratchpad(uint32_t *value)
 		return -EC_ERROR_INVAL;
 	}
 
-	if (cros_bbram_read(bbram_dev, GET_BBRAM_OFFSET(scratchpad),
+	if (bbram_read(bbram_dev, GET_BBRAM_OFFSET(scratchpad),
 			    GET_BBRAM_SIZE(scratchpad), (uint8_t *)value)) {
 		return -EC_ERROR_INVAL;
 	}
