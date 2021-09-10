@@ -146,7 +146,9 @@ static void ipi_enable_deferred(void)
 	hostcmd_init();
 #endif
 
+#if !defined CHIP_VARIANT_MT8195_CORE1
 	task_enable_irq(SCP_IRQ_GIPC_IN0);
+#endif
 }
 DECLARE_DEFERRED(ipi_enable_deferred);
 
