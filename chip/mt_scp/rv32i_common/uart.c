@@ -20,6 +20,12 @@
 #define UART_IDLE_WAIT_US 500
 #define UART_INTC_GROUP 12
 
+#ifdef CHIP_VARIANT_MT8195_CORE1
+#define SCP_CORE_INTC_UART_RX_IRQ SCP_CORE1_INTC_UART_RX_IRQ
+#else
+#define SCP_CORE_INTC_UART_RX_IRQ SCP_CORE0_INTC_UART_RX_IRQ
+#endif
+
 static uint8_t init_done, tx_started;
 
 void uart_init(void)
@@ -45,7 +51,6 @@ void uart_init(void)
 	UART_DLH(UARTN) = (div >> 8) & 0xff;
 	UART_LCR(UARTN) &= ~UART_LCR_DLAB;
 	/* DLAB end */
-
 	/* Enable received data interrupt */
 	UART_IER(UARTN) |= UART_IER_RDI;
 
@@ -136,7 +141,7 @@ static void uart_irq_handler(void)
 		break;
 	case UART_RX_IRQ(UARTN):
 		uart_process();
-		SCP_CORE0_INTC_UART_RX_IRQ(UARTN) = BIT(0);
+		SCP_CORE_INTC_UART_RX_IRQ(UARTN) = BIT(0);
 		asm volatile ("fence.i" ::: "memory");
 		task_clear_pending_irq(ec_int);
 		break;
@@ -158,4 +163,4 @@ void uart_task(void)
 			task_wait_event(UART_IDLE_WAIT_US);
 	}
 }
-#endif
+#endif /* UARTN < SCP_UART_COUNT */
