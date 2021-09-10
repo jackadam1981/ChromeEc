@@ -158,6 +158,10 @@
 #define SCP_CORE1_MON_LR_LATCH		REG32(SCP_REG_BASE + 0x400D4)
 #define SCP_CORE1_MON_SP_LATCH		REG32(SCP_REG_BASE + 0x400D8)
 
+#define SCP_CORE_WDT_KICK		CONCAT3(SCP_CORE, CORE_SN, _WDT_KICK)
+#define SCP_CORE_WDT_CFG		CONCAT3(SCP_CORE, CORE_SN, _WDT_CFG)
+#define SCP_CORE_WDT_IRQ		CONCAT3(SCP_CORE, CORE_SN, _WDT_IRQ)
+
 /* INTC */
 #define SCP_INTC_WORD(irq)		((irq) >> 5) /* word length = 2^5 */
 #define SCP_INTC_BIT(irq)		((irq) & 0x1F) /* bit shift =LSB[0:4] */
