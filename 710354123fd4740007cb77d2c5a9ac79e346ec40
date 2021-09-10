@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67df370_be532f7c",
+        "filename": "board/cr50/dcrypto/hmac_drbg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-09-10T21:20:40Z",
+      "side": 1,
+      "message": "ifdef",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 3
+      },
+      "revId": "710354123fd4740007cb77d2c5a9ac79e346ec40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0e84ff7_265c3b39",
+        "filename": "board/cr50/dcrypto/hmac_drbg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-09-10T21:20:40Z",
+      "side": 1,
+      "message": "can you make this part a separate CL?",
+      "range": {
+        "startLine": 461,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 35
+      },
+      "revId": "710354123fd4740007cb77d2c5a9ac79e346ec40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
