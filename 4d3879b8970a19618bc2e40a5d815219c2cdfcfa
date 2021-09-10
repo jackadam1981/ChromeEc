@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e5a1376_4d5db316",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-10T18:29:14Z",
+      "side": 1,
+      "message": "We also need to restrict this to EFS2 devices only as non-EFS2 devices need the AP to boot in order to jump to RW and negotiate PD.",
+      "revId": "4d3879b8970a19618bc2e40a5d815219c2cdfcfa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
