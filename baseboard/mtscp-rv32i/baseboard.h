@@ -8,7 +8,11 @@
 #ifndef __CROS_EC_BASEBOARD_H
 #define __CROS_EC_BASEBOARD_H
 
+#ifdef CHIP_VARIANT_MT8195_CORE1
+#define CC_DEFAULT (CC_ALL)
+#else
 #define CC_DEFAULT (CC_ALL & ~(CC_MASK(CC_HOSTCMD) | CC_MASK(CC_IPI)))
+#endif
 
 #define CONFIG_FLASH_SIZE_BYTES CONFIG_RAM_BASE
 #define CONFIG_LTO
@@ -21,7 +25,10 @@
 	(SCP_FW_END -                                                         \
 	 (CONFIG_IPC_SHARED_OBJ_BUF_SIZE + 2 * 4 /* int32_t */) * 2)
 #define CONFIG_IPI
+
+#ifndef CHIP_VARIANT_MT8195_CORE1
 #define CONFIG_RPMSG_NAME_SERVICE
+#endif
 
 #define SCP_IPI_INIT 0
 #define SCP_IPI_VDEC_H264 1
