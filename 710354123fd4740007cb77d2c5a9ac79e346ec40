@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dbb9fa50_5f9794ad",
+        "filename": "board/cr50/dcrypto/hmac_drbg.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-10T22:06:47Z",
+      "side": 1,
+      "message": "this is guaranteed to be defined, it would be zero if line 146 is not overridden",
+      "parentUuid": "e67df370_be532f7c",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 3
+      },
+      "revId": "710354123fd4740007cb77d2c5a9ac79e346ec40",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0e84ff7_265c3b39",
         "filename": "board/cr50/dcrypto/hmac_drbg.c",
         "patchSetId": 1
