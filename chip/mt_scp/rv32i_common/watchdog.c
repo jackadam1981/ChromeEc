@@ -10,9 +10,19 @@
 #include "registers.h"
 #include "watchdog.h"
 
+#ifdef CHIP_VARIANT_MT8195_CORE1
+#define SCP_CORE_WDT_KICK	SCP_CORE1_WDT_KICK
+#define SCP_CORE_WDT_CFG	SCP_CORE1_WDT_CFG
+#define SCP_CORE_WDT_IRQ	SCP_CORE1_WDT_IRQ
+#else
+#define SCP_CORE_WDT_KICK	SCP_CORE0_WDT_KICK
+#define SCP_CORE_WDT_CFG	SCP_CORE0_WDT_CFG
+#define SCP_CORE_WDT_IRQ	SCP_CORE0_WDT_IRQ
+#endif
+
 void watchdog_reload(void)
 {
-	SCP_CORE0_WDT_KICK = BIT(0);
+	SCP_CORE_WDT_KICK = BIT(0);
 }
 DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
@@ -21,11 +31,11 @@ int watchdog_init(void)
 	const uint32_t timeout = WDT_PERIOD(CONFIG_WATCHDOG_PERIOD_MS);
 
 	/* disable watchdog */
-	SCP_CORE0_WDT_CFG &= ~WDT_EN;
+	SCP_CORE_WDT_CFG &= ~WDT_EN;
 	/* clear watchdog irq */
-	SCP_CORE0_WDT_IRQ |= BIT(0);
+	SCP_CORE_WDT_IRQ |= BIT(0);
 	/* enable watchdog */
-	SCP_CORE0_WDT_CFG = WDT_EN | timeout;
+	SCP_CORE_WDT_CFG = WDT_EN | timeout;
 	/* reload watchdog */
 	watchdog_reload();
 
