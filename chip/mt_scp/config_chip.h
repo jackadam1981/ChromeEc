@@ -12,5 +12,9 @@
 #endif
 
 #if defined(CHIP_VARIANT_MT8195)
-#include "mt8195/config_chip.h"
+#include "mt8195/config_chip_mt8195.h"
+#endif
+
+#if defined(CHIP_VARIANT_MT8195_CORE1)
+#include "mt8195/config_chip_mt8195_core1.h"
 #endif
