@@ -34,8 +34,6 @@ struct pwm_led pwm_leds[CONFIG_LED_PWM_COUNT] = {
 		.ch0 = PWM_CH_LED1_WHITE,
 		.ch1 = PWM_CH_LED2_AMBER,
 		.ch2 = PWM_LED_NO_CHANNEL,
-		.enable = &pwm_enable,
-		.set_duty = &pwm_set_duty,
 	},
 };
 

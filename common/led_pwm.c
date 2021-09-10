@@ -68,11 +68,11 @@ void set_pwm_led_color(enum pwm_led_id id, int color)
 	}
 
 	if (led->ch0 != (enum pwm_channel)PWM_LED_NO_CHANNEL)
-		led->set_duty(led->ch0, duty.ch0);
+		pwm_set_duty(led->ch0, duty.ch0);
 	if (led->ch1 != (enum pwm_channel)PWM_LED_NO_CHANNEL)
-		led->set_duty(led->ch1, duty.ch1);
+		pwm_set_duty(led->ch1, duty.ch1);
 	if (led->ch2 != (enum pwm_channel)PWM_LED_NO_CHANNEL)
-		led->set_duty(led->ch2, duty.ch2);
+		pwm_set_duty(led->ch2, duty.ch2);
 }
 
 static void set_led_color(int color)
@@ -99,11 +99,11 @@ static void set_pwm_led_enable(enum pwm_led_id id, int enable)
 		return;
 
 	if (led->ch0 != (enum pwm_channel)PWM_LED_NO_CHANNEL)
-		led->enable(led->ch0, enable);
+		pwm_enable(led->ch0, enable);
 	if (led->ch1 != (enum pwm_channel)PWM_LED_NO_CHANNEL)
-		led->enable(led->ch1, enable);
+		pwm_enable(led->ch1, enable);
 	if (led->ch2 != (enum pwm_channel)PWM_LED_NO_CHANNEL)
-		led->enable(led->ch2, enable);
+		pwm_enable(led->ch2, enable);
 }
 
 static void init_leds_off(void)

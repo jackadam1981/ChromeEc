@@ -18,9 +18,6 @@ struct pwm_led {
 	enum pwm_channel ch0;
 	enum pwm_channel ch1;
 	enum pwm_channel ch2;
-
-	void (*enable)(enum pwm_channel ch, int enabled);
-	void (*set_duty)(enum pwm_channel ch, int percent);
 };
 
 enum pwm_led_id {
