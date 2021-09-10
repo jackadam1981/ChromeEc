@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3fbc9c6_ad60952e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-09-10T20:32:23Z",
+      "side": 1,
+      "message": "I did see an issue. somehow my ADL RVP system failed to discover cable, but still the dpm decide to enter USB4. With this fix, it won\u0027t try to enter USB4 since we don\u0027t have cable data. I don\u0027t have a stable way to reproduce the issue. Maybe it\u0027s timing.",
+      "parentUuid": "57d01841_7185add9",
+      "range": {
+        "startLine": 14,
+        "startChar": 5,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "88fc7960983ae416d75cb56694dc7dd39a51ca89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "949c4b5c_79769324",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-09-10T05:16:44Z",
       "side": 1,
       "message": "nit: Not introduced by this CL but how about assigning to a variable so that we don\u0027t do cable discovery again?",
+      "revId": "88fc7960983ae416d75cb56694dc7dd39a51ca89",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b262243_939d72ef",
+        "filename": "common/usbc/usb_mode.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-09-10T20:32:23Z",
+      "side": 1,
+      "message": "The discovery result is already saved to static struct policy_engine {} pe[]. So this is just an access function to read the data saved.",
+      "parentUuid": "949c4b5c_79769324",
       "revId": "88fc7960983ae416d75cb56694dc7dd39a51ca89",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
