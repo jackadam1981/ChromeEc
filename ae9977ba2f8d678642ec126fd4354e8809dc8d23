@@ -16,6 +16,24 @@
       "message": "Jack, these failures seem unrelated, can we chump?",
       "revId": "ae9977ba2f8d678642ec126fd4354e8809dc8d23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fa07a6f_7391252f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-11T02:44:02Z",
+      "side": 1,
+      "message": "Seems safe to me but you need to check with go/cros-oncall-weekly",
+      "parentUuid": "76d5053b_62069a67",
+      "revId": "ae9977ba2f8d678642ec126fd4354e8809dc8d23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
