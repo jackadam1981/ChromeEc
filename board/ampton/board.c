@@ -95,6 +95,11 @@ struct usb_mux ampton_usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
  */
 static int tune_mux(int port)
 {
+	/* workaround to solve SBU signal unnormal issue on G3 next boot*/
+	gpio_set_level(GPIO_CCD_MODE_ODL, 0);
+	msleep(200);
+	gpio_set_level(GPIO_CCD_MODE_ODL, 1);
+
 	/* Auto EQ disabled, compensate for channel lost up to 3.6dB */
 	mux_write(port, PS8XXX_REG_MUX_DP_EQ_CONFIGURATION, 0x98);
 	/* DP output swing adjustment +15% */
