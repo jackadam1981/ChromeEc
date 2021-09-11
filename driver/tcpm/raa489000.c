@@ -117,6 +117,13 @@ int raa489000_init(int port)
 	usleep(853);
 	charger_get_vbus_voltage(port, &vbus_mv);
 
+	if (pd_snk_is_vbus_provided(port) &&
+	    charge_manager_get_active_charge_port() == CHARGE_PORT_NONE) {
+		chg.current = 500;
+		chg.voltage = 5000;
+		charge_manager_update_charge(CHARGE_SUPPLIER_VBUS, port, &chg);
+		board_set_active_charge_port(port);
+	}
 	/*
 	 * Disable the ADC
 	 *
