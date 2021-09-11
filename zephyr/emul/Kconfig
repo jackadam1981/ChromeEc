@@ -66,3 +66,14 @@ config EMUL_BB_RETIMER
 	  emulated I2C bus. It is used to test bb_retimer driver. It supports
 	  reads and writes to all emulator registers. Emulators API is
 	  available in zephyr/include/emul/emul_bb_retimer.h
+
+DT_COMPAT_LN9310_EMUL := cros,ln9310-emul
+
+config EMUL_LN9310
+	bool "LN9310 switchcap emulator"
+	default $(dt_compat_enabled,$(DT_COMPAT_LN9310_EMUL))
+	depends on I2C_EMUL
+	help
+	  Enable the LN9310 emulator. This driver uses the emulated I2C bus. It
+	  is used to test the ln9310 driver. Emulator API is available in
+	  zephyr/include/emul/emul_ln9310.h
