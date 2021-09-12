@@ -69,6 +69,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07782f88_7a95fe6f",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-09-12T19:37:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9d6e99b5_3771712d",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6abe5b6_f83ccff9",
@@ -82,6 +100,24 @@
       "writtenOn": "2021-09-08T22:28:11Z",
       "side": 1,
       "message": "I don\u0027t think this change should be necessary. Returning an int from a const int lvalue should be allowed.",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0827c079_b8fc430d",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-09-12T19:37:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d6abe5b6_f83ccff9",
       "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -103,6 +139,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "999ba62f_b70ebcd8",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 645,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-09-12T19:37:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7e285347_bd611c3e",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d2ba5545_306ab119",
@@ -120,6 +174,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e8448f3_df792857",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 676,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-09-12T19:37:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d2ba5545_306ab119",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f08671e_c9e7f9d9",
@@ -133,6 +205,24 @@
       "writtenOn": "2021-09-08T22:28:11Z",
       "side": 1,
       "message": "I think there\u0027s probably a good way to implement one of these functions in terms of the other, but which one is the outer one probably depends on the answer to my other questions about casting away const.",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c9430d_2147f9d6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7053,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-09-12T19:37:50Z",
+      "side": 1,
+      "message": "removed all the castings for const.",
+      "parentUuid": "6f08671e_c9e7f9d9",
       "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
