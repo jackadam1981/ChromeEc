@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0974a427_fbdc9b4f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-12T04:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83f276f2_72b79129",
+      "revId": "637e97803a9ba350f7b242c68e2232edf01a6a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28a16dae_c88a777e",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-11T18:39:08Z",
       "side": 1,
       "message": "Why are we moving?",
+      "range": {
+        "startLine": 636,
+        "startChar": 0,
+        "endLine": 636,
+        "endChar": 62
+      },
+      "revId": "637e97803a9ba350f7b242c68e2232edf01a6a9c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed46295e_7dfa8400",
+        "filename": "board/pazquel/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-12T04:04:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28a16dae_c88a777e",
       "range": {
         "startLine": 636,
         "startChar": 0,
