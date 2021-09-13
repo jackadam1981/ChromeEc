@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bdb629d_9959df45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-13T23:48:17Z",
+      "side": 1,
+      "message": "\u003e Patch Set 3: Code-Review+2\n\u003e \n\u003e By voting Code-Review+2 the following files are now code-owner approved by \u003cGERRIT_ACCOUNT_1333748\u003e:\n\u003e * zephyr/emul/emul_bb_retimer.c\n\u003e * zephyr/emul/emul_bma255.c\n\u003e * zephyr/emul/emul_bmi.c\n\u003e * zephyr/emul/emul_tcs3400.c\n\u003e \n\nSo something isn\u0027t right here. Gerrit should obviously show the change of me adding the pointer to data but it just shows whitespace.",
+      "revId": "8e3abfaede453a95d26b3f637e0210dbb474ee45",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
