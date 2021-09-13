@@ -93,6 +93,30 @@
       },
       "revId": "96ae9e067b5a8eb613454f3a4241ac8702795ed6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "103d2b48_885b5f22",
+        "filename": "board/brask/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-13T20:39:38Z",
+      "side": 1,
+      "message": "You mean brask?\n\nIf brask doesn\u0027t use amber - please remove it from the code. There are 9 \"amber\" words in this file, none of them should be left",
+      "parentUuid": "f155139e_ddf43704",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 23
+      },
+      "revId": "96ae9e067b5a8eb613454f3a4241ac8702795ed6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
