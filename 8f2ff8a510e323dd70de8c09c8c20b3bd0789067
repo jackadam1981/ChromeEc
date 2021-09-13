@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18ebf78c_45ca0708",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1407014
+      },
+      "writtenOn": "2021-09-13T06:58:13Z",
+      "side": 1,
+      "message": "1. Have checked that register value 0x4B is 0x0c00 (4096mV)\n2. Device can draw 3A from 5V adapter.",
+      "revId": "8f2ff8a510e323dd70de8c09c8c20b3bd0789067",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
