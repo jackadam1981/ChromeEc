@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1bc56ed7_73cf27b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T23:10:38Z",
+      "side": 1,
+      "message": "I only see whitespace changes here. What are you fixing?",
+      "revId": "4403af7a195dc95b705d69af8ef96a664ae93f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f5305915_e114a09b",
         "filename": "zephyr/emul/emul_pi3usb9201.c",
         "patchSetId": 1
