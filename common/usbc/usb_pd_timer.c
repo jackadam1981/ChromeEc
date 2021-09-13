@@ -4,6 +4,7 @@
  */
 
 #include "assert.h"
+#include "atomic.h"
 #include "common.h"
 #include "console.h"
 #include "limits.h"
@@ -13,23 +14,33 @@
 
 #define MAX_PD_PORTS	CONFIG_USB_PD_PORT_MAX_COUNT
 #define MAX_PD_TIMERS	PD_TIMER_COUNT
-#define PD_TIMERS_ALL_MASK ((uint32_t)(((uint64_t)1 << PD_TIMER_COUNT) - 1))
+#define PD_TIMERS_ALL_MASK (PD_TIMER_COUNT == 64 ? UINT64_MAX : \
+		((uint64_t) 1 << PD_TIMER_COUNT) - 1)
 
 #define MAX_EXPIRE	(0x7FFFFFFF)
 #define NO_TIMEOUT	(-1)
 #define EXPIRE_NOW	(0)
 
-#define PD_SET_ACTIVE(p, m)	atomic_or(&timer_active[p], (m))
-#define PD_CLR_ACTIVE(p, m)	atomic_clear_bits(&timer_active[p], (m))
-#define PD_CHK_ACTIVE(p, m)	(timer_active[p] & (m))
+#define PD_SET_ACTIVE(p, m)	pd_timer_atomic_op(atomic_or, timer_active[p], \
+		(m))
+#define PD_CLR_ACTIVE(p, m)	pd_timer_atomic_op(atomic_clear_bits, \
+		timer_active[p], (m))
+#define PD_CHK_ACTIVE(p, m)	((timer_active[p][0] & ((m) >> 32)) | \
+		(timer_active[p][1] & (m)))
 
-#define PD_SET_DISABLED(p, m)	atomic_or(&timer_disabled[p], (m))
-#define PD_CLR_DISABLED(p, m)	atomic_clear_bits(&timer_disabled[p], (m))
-#define PD_CHK_DISABLED(p, m)	(timer_disabled[p] & (m))
+#define PD_SET_DISABLED(p, m)	pd_timer_atomic_op(atomic_or, \
+		timer_disabled[p], (m))
+#define PD_CLR_DISABLED(p, m)	pd_timer_atomic_op(atomic_clear_bits, \
+		timer_disabled[p], (m))
+#define PD_CHK_DISABLED(p, m)	((timer_disabled[p][0] & ((m) >> 32)) | \
+		(timer_disabled[p][1] & (m)))
 
-static uint32_t timer_active[MAX_PD_PORTS];
-static uint32_t timer_disabled[MAX_PD_PORTS];
+#define TIMER_FIELD_NUM_UINT32S 2
+static uint32_t timer_active[MAX_PD_PORTS][TIMER_FIELD_NUM_UINT32S];
+static uint32_t timer_disabled[MAX_PD_PORTS][TIMER_FIELD_NUM_UINT32S];
 static uint64_t timer_expires[MAX_PD_PORTS][MAX_PD_TIMERS];
+BUILD_ASSERT(sizeof(timer_active[0]) * CHAR_BIT >= PD_TIMER_COUNT);
+BUILD_ASSERT(sizeof(timer_disabled[0]) * CHAR_BIT >= PD_TIMER_COUNT);
 
 /*
  * CONFIG_CMD_PD_TIMER debug variables
@@ -82,9 +93,50 @@ __maybe_unused static __const_data const char * const pd_timer_names[] = {
  * already and will always return that it is still expired.  This timer state
  * will not adjust the task scheduling timeout value.
  */
+
+/*
+ * Performs an atomic operation on a PD timer bit field. Atomic operations
+ * require 32-bit operands, but there are more than 32 timers, so choose the
+ * correct operand and modify the mask accordingly.
+ *
+ * @param op          Atomic operation function to call
+ * @param timer_field Array of timer fields to operate on
+ * @param mask        64-bit mask to apply to the timer field
+ * @return True if any bit was set in the result of op; false otherwise
+ */
+static bool pd_timer_atomic_op(
+		atomic_val_t (*op)(atomic_t*, atomic_val_t),
+		uint32_t *const timer_field, const uint64_t mask)
+{
+	uint32_t *atomic_timer_field;
+	uint32_t atomic_mask;
+	atomic_val_t result_h = 0;
+	atomic_val_t result_l = 0;
+
+	/*
+	 * High-order mask bits correspond to field [0]. Low-order mask bits
+	 * correspond to field [1].
+	 */
+	atomic_mask = mask >> 32;
+	if (atomic_mask) {
+		atomic_timer_field = timer_field;
+		result_h = op(atomic_timer_field, atomic_mask) &
+			   atomic_mask;
+	}
+	atomic_mask = (uint32_t) mask;
+	if (atomic_mask) {
+		atomic_timer_field = timer_field + 1;
+		result_l = op(atomic_timer_field, atomic_mask) &
+			   atomic_mask;
+	}
+
+	return ((op == atomic_or) &&
+		(result_h || result_l));
+}
+
 static void pd_timer_inactive(int port, enum pd_task_timer timer)
 {
-	uint32_t mask = 1 << timer;
+	uint64_t mask = 1 << timer;
 
 	if (PD_CHK_ACTIVE(port, mask)) {
 		PD_CLR_ACTIVE(port, mask);
@@ -97,14 +149,14 @@ static void pd_timer_inactive(int port, enum pd_task_timer timer)
 
 static bool pd_timer_is_active(int port, enum pd_task_timer timer)
 {
-	uint32_t mask = 1 << timer;
+	uint64_t mask = 1 << timer;
 
 	return PD_CHK_ACTIVE(port, mask);
 }
 
 static bool pd_timer_is_inactive(int port, enum pd_task_timer timer)
 {
-	uint32_t mask = 1 << timer;
+	uint64_t mask = 1 << timer;
 
 	return !PD_CHK_ACTIVE(port, mask) && !PD_CHK_DISABLED(port, mask);
 }
@@ -123,7 +175,7 @@ void pd_timer_init(int port)
 
 void pd_timer_enable(int port, enum pd_task_timer timer, uint32_t expires_us)
 {
-	uint32_t mask = 1 << timer;
+	uint64_t mask = 1 << timer;
 
 	if (!PD_CHK_ACTIVE(port, mask)) {
 		PD_SET_ACTIVE(port, mask);
@@ -140,7 +192,7 @@ void pd_timer_enable(int port, enum pd_task_timer timer, uint32_t expires_us)
 
 void pd_timer_disable(int port, enum pd_task_timer timer)
 {
-	uint32_t mask = 1 << timer;
+	uint64_t mask = 1 << timer;
 
 	if (PD_CHK_ACTIVE(port, mask)) {
 		PD_CLR_ACTIVE(port, mask);
@@ -179,7 +231,7 @@ void pd_timer_disable_range(int port, enum pd_timer_range range)
 
 bool pd_timer_is_disabled(int port, enum pd_task_timer timer)
 {
-	uint32_t mask = 1 << timer;
+	uint64_t mask = 1 << timer;
 
 	return PD_CHK_DISABLED(port, mask);
 }
