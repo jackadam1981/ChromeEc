@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b04c3717_7655d085",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-13T23:02:35Z",
+      "side": 1,
+      "message": "Should be \u0027none\u0027\n\nThis is the remote branch, not your local one.",
+      "range": {
+        "startLine": 14,
+        "startChar": 7,
+        "endLine": 14,
+        "endChar": 30
+      },
+      "revId": "4403af7a195dc95b705d69af8ef96a664ae93f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5305915_e114a09b",
+        "filename": "zephyr/emul/emul_pi3usb9201.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-13T23:02:35Z",
+      "side": 1,
+      "message": "Remove formatting changes",
+      "range": {
+        "startLine": 173,
+        "startChar": 1,
+        "endLine": 181,
+        "endChar": 3
+      },
+      "revId": "4403af7a195dc95b705d69af8ef96a664ae93f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4937891_e750ae3c",
+        "filename": "zephyr/emul/emul_syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-13T23:02:35Z",
+      "side": 1,
+      "message": "Remove formatting changes",
+      "range": {
+        "startLine": 157,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 4
+      },
+      "revId": "4403af7a195dc95b705d69af8ef96a664ae93f00",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
