@@ -27,6 +27,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "8efe9220_f06e2540",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-13T23:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c813838f_b4d60ac4",
+      "range": {
+        "startLine": 13,
+        "startChar": 35,
+        "endLine": 13,
+        "endChar": 43
+      },
+      "revId": "99f4ee2b463aceacbdea12c37a483b993ebfec22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a8b32453_1b4dc4e8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -83,6 +107,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7313af88_9af6c0dc",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-13T23:15:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c48218aa_b93fa0f5",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 15
+      },
+      "revId": "99f4ee2b463aceacbdea12c37a483b993ebfec22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "676316f3_b7752bdf",
@@ -96,6 +144,30 @@
       "writtenOn": "2021-09-11T02:50:04Z",
       "side": 1,
       "message": "move to top of file",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 20
+      },
+      "revId": "99f4ee2b463aceacbdea12c37a483b993ebfec22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8ce1131_211fabf7",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-13T23:15:21Z",
+      "side": 1,
+      "message": "I was planning on deleting this, but decided to leave the command with a guard.",
+      "parentUuid": "676316f3_b7752bdf",
       "range": {
         "startLine": 114,
         "startChar": 0,
