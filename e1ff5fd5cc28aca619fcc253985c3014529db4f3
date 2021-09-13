@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96f5b248_efaa4d7f",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-09-13T05:49:21Z",
+      "side": 1,
+      "message": "Since this will expose the variable, how about changing the name to it8801_kso_mapping?\n\nAlso, you may want to add a declaration for this variable at the header file., e.g.\n\n  __override_proto extern const uint8_t it8801_kso_mapping[];",
+      "range": {
+        "startLine": 134,
+        "startChar": 28,
+        "endLine": 134,
+        "endChar": 39
+      },
+      "revId": "e1ff5fd5cc28aca619fcc253985c3014529db4f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
