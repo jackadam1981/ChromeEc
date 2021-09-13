@@ -16,6 +16,23 @@
       "message": "Differ to Aseda to check. Thanks! ",
       "revId": "04acfbca71c60b96546f1ca20d1315718607615d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b746fe2_fc077f7e",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-13T15:24:02Z",
+      "side": 1,
+      "message": "Which case is this meant to catch which the statement on line 144 doesn\u0027t?",
+      "revId": "04acfbca71c60b96546f1ca20d1315718607615d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
