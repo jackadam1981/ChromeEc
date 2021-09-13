@@ -16,6 +16,46 @@
       "message": "the reason - I found always_memset() frequently used with aligned data and thus having independent implementation hurts with a bit larger size and lower performance. It is basically a remnant from old cryptoc and since we merge it and have already better version, lets take advantage of it.",
       "revId": "7b5f13da67111bff74a1dccc2900901211a4f090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14d089b2_359dc904",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-13T15:18:21Z",
+      "side": 1,
+      "message": "do we really need both memset() and always_memset()?\n\nWhy not leave just always_memset() and name it memset() to minimize the amount of changes?",
+      "revId": "7b5f13da67111bff74a1dccc2900901211a4f090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "303eb1ea_08407e2d",
+        "filename": "board/cr50/dcrypto/util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-13T15:18:21Z",
+      "side": 1,
+      "message": "this cast is not needed.",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 16
+      },
+      "revId": "7b5f13da67111bff74a1dccc2900901211a4f090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
