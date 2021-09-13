@@ -90,6 +90,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93d2fd2c_124cdf4c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-13T22:11:52Z",
+      "side": 1,
+      "message": "Ruibin, I\u0027m not totally following your comment as it relates to this CL. The purpose of this CL is to keep the CL you linked from breaking things. If this CL, by itself, will unacceptably increase power usage, then the fix for that should go in this CL.\n\nIIUC, you\u0027re saying that we can still enter LPM (without auto toggle) if we only do it when CC is open. As I mentioned elsewhere, I\u0027m not super familiar with the requirements for LPM in the absence of auto toggle. If we\u0027re in LPM and not toggling, will the timing of exiting LPM (and resuming the PD task) allow us to respond to an attach in a compliant amount of time?",
+      "parentUuid": "dfad549b_852b7dc8",
+      "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a9c144f_a05d805d",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
@@ -101,6 +119,30 @@
       "writtenOn": "2021-09-09T05:27:29Z",
       "side": 1,
       "message": "Hi Abe,\nThis same function is what is getting called , when TC_LOW_POWER_MODE is set in \ntc_low_power_mode_run() at tcpm_enter_low_power_mode(). In the case of other tcpm chips(fusb302,rt1715..etc), this function will set corresponding registers, in this check condition itself. Ideally, isn\u0027t this supposed to be called only  after entering Low power mode, based on whichever condition?",
+      "range": {
+        "startLine": 2308,
+        "startChar": 12,
+        "endLine": 2308,
+        "endChar": 55
+      },
+      "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "994bad21_59561649",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 2308,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-13T22:11:52Z",
+      "side": 1,
+      "message": "This line of code isn\u0027t calling the function. It\u0027s just checking if the function is there. The set_state_tc() call below will enter the state you reference, and that state will call enter_low_power_mode.",
+      "parentUuid": "2a9c144f_a05d805d",
       "range": {
         "startLine": 2308,
         "startChar": 12,
