@@ -148,7 +148,17 @@ def write_version_header(version_str, output_path, static=False):
         output.write("#define {} {}\n".format(name, value))
 
     add_def("VERSION", version_str)
-    add_def("CROS_EC_VERSION32", version_str[:31])
+    short_version_str = version_str
+    # Try to get under 32 chars by removing hashes
+    while len(short_version_str) > 31:
+        idx = short_version_str.rfind(",")
+        if idx < 0:
+            idx = short_version_str.rfind("-")
+        if idx < 0:
+            break
+        short_version_str = short_version_str[:idx]
+    short_version_str = short_version_str[:31]
+    add_def("CROS_EC_VERSION32", short_version_str)
 
     if static:
         add_def("BUILDER", "reproducible@build")
