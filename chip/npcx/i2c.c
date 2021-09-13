@@ -894,7 +894,7 @@ void i2c_set_timeout(int port, uint32_t timeout)
 		timeout ? timeout : I2C_TIMEOUT_DEFAULT_US;
 }
 
-int chip_i2c_xfer(const int port,
+int chip_i2c_xfer_task_based(const int port,
 		  const uint16_t addr_flags,
 		  const uint8_t *out, int out_size,
 		  uint8_t *in, int in_size, int flags)
@@ -961,6 +961,28 @@ int chip_i2c_xfer(const int port,
 
 	return (p_status->err_code == SMB_OK) ? EC_SUCCESS : EC_ERROR_UNKNOWN;
 }
+
+int chip_i2c_xfer_raw(const int port,
+		  const uint16_t addr_flags,
+		  const uint8_t *out, int out_size,
+		  uint8_t *in, int in_size, int flags)
+{
+	/* TODO */
+	return 0;
+}
+
+int chip_i2c_xfer(const int port,
+		  const uint16_t addr_flags,
+		  const uint8_t *out, int out_size,
+		  uint8_t *in, int in_size, int flags)
+{
+	return task_start_called() ?
+		chip_i2c_xfer_task_based(port, addr_flags, out, out_size,
+					in, in_size, flags) :
+		chip_i2c_xfer_raw(port, addr_flags, out, out_size,
+					in, in_size, flags);
+}
+
 
 /**
  * Return raw I/O line levels (I2C_LINE_*) for a port when port is in alternate
