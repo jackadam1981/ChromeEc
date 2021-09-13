@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22fdf330_372f2b93",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-13T21:53:30Z",
+      "side": 1,
+      "message": "Hi Qijun, at a glance, the logic looks good. I think we need to work on naming (so that the feature will be easily understood).",
+      "revId": "796260e3878b7e9a157f6a610ec189baf09f872c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3418779d_830600b9",
+        "filename": "board/pazquel/board.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-13T21:53:30Z",
+      "side": 1,
+      "message": "You still need to move this to another CL. Please see my previous comment for rationale.",
+      "revId": "796260e3878b7e9a157f6a610ec189baf09f872c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c7c49b7_7439bc4e",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-13T21:53:30Z",
+      "side": 1,
+      "message": "How about CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION?",
+      "range": {
+        "startLine": 617,
+        "startChar": 7,
+        "endLine": 617,
+        "endChar": 33
+      },
+      "revId": "796260e3878b7e9a157f6a610ec189baf09f872c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebf1b4e6_794c13e5",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-13T21:53:30Z",
+      "side": 1,
+      "message": "How about \u0027precharge voltage \u0026 current are supplied and charging will be disabled after CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT seconds.\u0027?",
+      "range": {
+        "startLine": 620,
+        "startChar": 49,
+        "endLine": 621,
+        "endChar": 18
+      },
+      "revId": "796260e3878b7e9a157f6a610ec189baf09f872c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "255db8d4_7c93525f",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 622,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-13T21:53:30Z",
+      "side": 1,
+      "message": "Not needed. Please remove.",
+      "range": {
+        "startLine": 621,
+        "startChar": 21,
+        "endLine": 622,
+        "endChar": 40
+      },
+      "revId": "796260e3878b7e9a157f6a610ec189baf09f872c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7082eb3e_9e80b366",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 624,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-13T21:53:30Z",
+      "side": 1,
+      "message": "There is \u0027SECOND\u0027 macro.",
+      "range": {
+        "startLine": 624,
+        "startChar": 54,
+        "endLine": 624,
+        "endChar": 61
+      },
+      "revId": "796260e3878b7e9a157f6a610ec189baf09f872c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
