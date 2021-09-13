@@ -285,6 +285,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "319f6dfd_2b84c952",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-13T07:11:40Z",
+      "side": 1,
+      "message": "The CONFIG_EXTPOWER_GPIO has been added to the baseboard/brask/baseboard.h, it will update the status via the extpower_init() as i mentioned in above. I think you can remove it and add it back later if needed.",
+      "parentUuid": "fb369b4d_051377e6",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 47
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cda070bb_4f2dc8f4",
         "filename": "board/brask/gpio.inc",
         "patchSetId": 2
