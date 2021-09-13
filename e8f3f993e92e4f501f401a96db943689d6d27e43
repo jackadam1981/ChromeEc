@@ -121,6 +121,24 @@
       "parentUuid": "e684b464_60329131",
       "revId": "e8f3f993e92e4f501f401a96db943689d6d27e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b43e065_d0a63887",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-13T07:04:58Z",
+      "side": 1,
+      "message": "It\u0027s ok. I also made modification base on your CL. You can rebase your board specific CL on it. I will do some test and upload it this afternoon.",
+      "parentUuid": "66bc4b75_15998bc0",
+      "revId": "e8f3f993e92e4f501f401a96db943689d6d27e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
