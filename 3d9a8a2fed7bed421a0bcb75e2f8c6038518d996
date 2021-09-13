@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfad549b_852b7dc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-09-13T10:16:54Z",
+      "side": 1,
+      "message": "Yes, but we really need LPM state to stop TCPMv2 task event loop in S3/S5/G3 state for lower power consumption. \n\nHow about add (cc_is_open(cc1, cc2) \"\"\"\u0026\u0026 drp_state[port] !\u003d PD_DRP_TOGGLE_ON\"\"\") in https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3114705/2 ? Since spec says that drp_state \u003d\u003d TOGGLE_ON should keep toggling even when cc is open, then I think we don\u0027t need any changes in it83xx.c.\n\nLater, we will try to implement auto toggle by software.",
+      "parentUuid": "25f23f2d_ba1cdc5e",
+      "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2a9c144f_a05d805d",
