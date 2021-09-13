@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f88d9d2e_701e6a89",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-13T22:30:30Z",
+      "side": 1,
+      "message": "Yeah, it seems odd, I agree. The function basically just needs to return 0 if we\u0027re under 10v anything else to stop. I\u0027ll still update this so it\u0027s more logical.",
+      "parentUuid": "071e0f81_8ebe142b",
+      "range": {
+        "startLine": 120,
+        "startChar": 8,
+        "endLine": 120,
+        "endChar": 14
+      },
+      "revId": "d89554bd4f9230d4d4c8020d3a3b18fe4c2c8c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c8412ca_63e6fa33",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fc19e8e_9be5c9a5",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-13T22:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c8412ca_63e6fa33",
+      "revId": "d89554bd4f9230d4d4c8020d3a3b18fe4c2c8c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c166ed6d_55f65dd1",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-09-13T20:27:57Z",
       "side": 1,
       "message": "Remove these prints.",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 18
+      },
+      "revId": "d89554bd4f9230d4d4c8020d3a3b18fe4c2c8c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49824698_9e785e75",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-13T22:30:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c166ed6d_55f65dd1",
       "range": {
         "startLine": 399,
         "startChar": 0,
