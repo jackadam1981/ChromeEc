@@ -16,6 +16,23 @@
       "message": "shurst@ can you approve this in Wai-Hong\u0027s absence?",
       "revId": "420bf1526d13a064d672fa51e55a267eaa5e1277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d773edd9_ac78efe8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-13T22:47:36Z",
+      "side": 1,
+      "message": "Could you break this single CL into two:\n * one to update the battery info,\n * one to increase the string length?",
+      "revId": "420bf1526d13a064d672fa51e55a267eaa5e1277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
