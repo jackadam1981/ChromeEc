@@ -12,6 +12,7 @@
 #include "driver/accelgyro_bmi_common.h"
 #include "gpio.h"
 #include "hooks.h"
+#include "keyboard_8042.h"
 #include "keyboard_scan.h"
 #include "lid_switch.h"
 #include "power.h"
@@ -50,6 +51,29 @@ __override struct keyboard_scan_config keyscan_config = {
 	.min_post_scan_delay_us = 1000,
 	.poll_timeout_us = 100 * MSEC,
 };
+
+static const struct ec_response_keybd_config keybd1 = {
+	.num_top_row_keys = 10,
+	.action_keys = {
+		TK_BACK,		/* T1 */
+		TK_REFRESH,		/* T2 */
+		TK_FULLSCREEN,		/* T3 */
+		TK_OVERVIEW,		/* T4 */
+		TK_SNAPSHOT,		/* T5 */
+		TK_BRIGHTNESS_DOWN,	/* T6 */
+		TK_BRIGHTNESS_UP,	/* T7 */
+		TK_VOL_MUTE,		/* T8 */
+		TK_VOL_DOWN,		/* T9 */
+		TK_VOL_UP,		/* T10 */
+	},
+	/* No function keys, no numeric keypad and no screenlock key */
+};
+
+__override const struct ec_response_keybd_config
+*board_vivaldi_keybd_config(void)
+{
+	return &keybd1;
+}
 
 /* I2C port map */
 const struct i2c_port_t i2c_ports[] = {
