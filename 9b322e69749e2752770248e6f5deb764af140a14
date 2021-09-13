@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e768a2d5_c5f2a309",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1494,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-13T03:31:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62ab5093_e3e118c6",
+      "range": {
+        "startLine": 1494,
+        "startChar": 0,
+        "endLine": 1494,
+        "endChar": 4
+      },
+      "revId": "9b322e69749e2752770248e6f5deb764af140a14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1bc0140_2eff95c0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8558d66d_3e152121",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1500,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-13T03:31:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1bc0140_2eff95c0",
+      "range": {
+        "startLine": 1500,
+        "startChar": 2,
+        "endLine": 1500,
+        "endChar": 3
+      },
+      "revId": "9b322e69749e2752770248e6f5deb764af140a14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a476c6ef_9420e59c",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-10T14:29:19Z",
       "side": 1,
       "message": "I think the comment needs more explanation.\n\nIf this feature is enabled, CONFIG_BATTERY_PRECHARGE_TIMEOUT has to be set to (30*60), right? It means a normal precharge (i.e. !BATT_FLAG_RESPONSIVE) will be extended from 30 secs to 30 mins. Does it make sense? Shall we separately implement this feature so that the precharge will continue to work the same? \n\nI think there are other questions which need to be answered in the bug.",
+      "range": {
+        "startLine": 617,
+        "startChar": 7,
+        "endLine": 617,
+        "endChar": 33
+      },
+      "revId": "9b322e69749e2752770248e6f5deb764af140a14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0c3ecd0_812ab2e9",
+        "filename": "include/config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-13T03:31:44Z",
+      "side": 1,
+      "message": "According to your suggestion, this processing has been implemented separately, and the processing function is deep_charge_battery. The original wakeup_battery processing timeout is still 30 seconds.",
+      "parentUuid": "a476c6ef_9420e59c",
       "range": {
         "startLine": 617,
         "startChar": 7,
