@@ -22,6 +22,30 @@
       },
       "revId": "e1ff5fd5cc28aca619fcc253985c3014529db4f3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24aab573_cb22ca86",
+        "filename": "driver/ioexpander/it8801.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1273969
+      },
+      "writtenOn": "2021-09-13T06:52:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96f5b248_efaa4d7f",
+      "range": {
+        "startLine": 134,
+        "startChar": 28,
+        "endLine": 134,
+        "endChar": 39
+      },
+      "revId": "e1ff5fd5cc28aca619fcc253985c3014529db4f3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
