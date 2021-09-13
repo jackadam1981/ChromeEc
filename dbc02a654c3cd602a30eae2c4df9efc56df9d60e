@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70b5d1fc_fd22f425",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-09-13T05:22:48Z",
+      "side": 1,
+      "message": "Hi Sue,\nWould it be better to cherry-pick \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2994747 or \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2998509\nfor the common file include/config.h?",
+      "revId": "dbc02a654c3cd602a30eae2c4df9efc56df9d60e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
