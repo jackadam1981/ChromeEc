@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "025f383d_dc68a78a",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-09-13T06:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90d8d625_7d3eac8a",
+      "range": {
+        "startLine": 83,
+        "startChar": 6,
+        "endLine": 83,
+        "endChar": 24
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05f124f0_985c6d12",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-06T11:59:35Z",
       "side": 1,
       "message": "I think you can remove this comment. The bug was fixed.",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 58
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bcba8ed_89e496d5",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-09-13T06:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05f124f0_985c6d12",
       "range": {
         "startLine": 84,
         "startChar": 2,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1e54732_fda26620",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-09-13T06:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8ee6828_d50a1e23",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 58
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fef76e5_7f7027e1",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "792f9ab5_fd6c9b07",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-09-13T06:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6fef76e5_7f7027e1",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc1ac070_92b3687c",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-09-06T11:59:35Z",
       "side": 1,
       "message": "It looks like function is only called by board.c. I think you can make it as the static function and remove the the board.h",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 179,
+        "endChar": 41
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d8c3c3a_9b377c84",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-09-13T06:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc1ac070_92b3687c",
       "range": {
         "startLine": 179,
         "startChar": 0,
@@ -141,6 +261,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fb369b4d_051377e6",
+        "filename": "board/brask/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-09-13T06:54:15Z",
+      "side": 1,
+      "message": "Because AC will always present if system has power.\nSo puff claim AC present here directly.\nDo we need to remove this?",
+      "parentUuid": "fff5707f_0cbbf872",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 47
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cda070bb_4f2dc8f4",
         "filename": "board/brask/gpio.inc",
         "patchSetId": 2
@@ -152,6 +296,30 @@
       "writtenOn": "2021-09-06T11:59:35Z",
       "side": 1,
       "message": "Please check if this needs to be set to output low",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 59
+      },
+      "revId": "28b2e0ac4e940b29e5070ceed9aa261eb0b625e1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebf55535_baabfa20",
+        "filename": "board/brask/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-09-13T06:54:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cda070bb_4f2dc8f4",
       "range": {
         "startLine": 49,
         "startChar": 0,
