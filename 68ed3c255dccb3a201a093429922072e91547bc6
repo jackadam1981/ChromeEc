@@ -243,6 +243,24 @@
       "parentUuid": "6f08671e_c9e7f9d9",
       "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fa90b30_8ef8f39b",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 7053,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-13T21:03:43Z",
+      "side": 1,
+      "message": "Would it then be possible to implement pd_get_am_discovery_and_notify_access in terms of pd_get_am_discovery? You would need to cast away const in pd_get_am_discovery_and_notify_access, but I think that would be acceptable in this one case, since it\u0027s internal to the implementation of this API, and it would make the difference between these two functions very obvious.\n\n(In a perfect world, I\u0027d rather that the const function be implemented in terms of the non-const function, but that would make the bookkeeping for task_access a lot more complicated.)",
+      "parentUuid": "45c9430d_2147f9d6",
+      "revId": "68ed3c255dccb3a201a093429922072e91547bc6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

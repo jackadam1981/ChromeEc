@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85c37974_cf19d341",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-13T21:03:43Z",
+      "side": 1,
+      "message": "Nit: I would just as soon leave out this extra logging.",
+      "revId": "d79ded1e9eff3c783cbca37f6665b9f03d6c2192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60403d8c_c4e7ef69",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 7054,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-13T21:03:43Z",
+      "side": 1,
+      "message": "Nit: Typically, we would put the opening \"(\" on the previous line.",
+      "revId": "d79ded1e9eff3c783cbca37f6665b9f03d6c2192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
