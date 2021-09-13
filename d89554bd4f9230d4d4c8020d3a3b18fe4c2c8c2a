@@ -26,6 +26,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6c8412ca_63e6fa33",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-13T20:39:33Z",
+      "side": 1,
+      "message": "In a lot of functions like this, where the steps don\u0027t depend on one another, and the caller doesn\u0027t care why it specifically failed, we\u0027ll just OR in the status of each operation and return the combined status. If it\u0027s EC_SUCCESS, they all succeeded. If not one of them failed, and the caller has to do some kind of global cleanup/failure.\n\nThe way that these functions are being used right now, that pattern would fit. If we have anything smarter to do with specific error statuses in the driver, it might be worth returning the status for the individual failed operations. But if we\u0027re just testing by causing I2C errors and seeing if we catch them, the combined error status is probably fine and would be reduce the amount of code to read.",
+      "revId": "d89554bd4f9230d4d4c8020d3a3b18fe4c2c8c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c166ed6d_55f65dd1",
         "filename": "driver/ln9310.c",
         "patchSetId": 1
