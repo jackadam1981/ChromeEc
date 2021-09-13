@@ -43,8 +43,10 @@ static fp_t last_lid_angle_fp = FLOAT_TO_FP(-1);
 
 /* Current acceleration vectors and current lid angle. */
 static int lid_angle_deg;
+static int old_lid_angle_deg;
 
 static int lid_angle_is_reliable;
+static int old_lid_angle_is_reliable;
 
 /* Smoothed vectors to increase accurency. */
 static intv3_t smoothed_base, smoothed_lid;
@@ -481,10 +483,19 @@ end_calculate_lid_angle:
 
 int motion_lid_get_angle(void)
 {
-	if (lid_angle_is_reliable)
+	if (lid_angle_is_reliable) {
+		if (lid_angle_deg != old_lid_angle_deg)
+			ccprints("##########lid_angle_deg = %d##########", lid_angle_deg);
+		old_lid_angle_deg = lid_angle_deg;
+		old_lid_angle_is_reliable = lid_angle_is_reliable;
 		return lid_angle_deg;
-	else
+	}
+	else {
+		if (lid_angle_is_reliable != old_lid_angle_is_reliable)
+			ccprints("##########LID_ANGLE_UNRELIABLE##########");
+		old_lid_angle_is_reliable = lid_angle_is_reliable;
 		return LID_ANGLE_UNRELIABLE;
+	}
 }
 
 /*
