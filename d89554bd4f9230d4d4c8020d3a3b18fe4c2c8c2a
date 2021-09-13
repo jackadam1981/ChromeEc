@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "071e0f81_8ebe142b",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T20:27:57Z",
+      "side": 1,
+      "message": "gt_10v is (effectively) a bool, but we are returning it as a status. That seems wrong. Should this function take a bool* as input that could be set to the result?  Otherwise the caller can\u0027t tell the difference between \"I can\u0027t tell you the answer\" vs \"The answer is no\"",
+      "range": {
+        "startLine": 120,
+        "startChar": 8,
+        "endLine": 120,
+        "endChar": 14
+      },
+      "revId": "d89554bd4f9230d4d4c8020d3a3b18fe4c2c8c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c166ed6d_55f65dd1",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-13T20:27:57Z",
+      "side": 1,
+      "message": "Remove these prints.",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 18
+      },
+      "revId": "d89554bd4f9230d4d4c8020d3a3b18fe4c2c8c2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
