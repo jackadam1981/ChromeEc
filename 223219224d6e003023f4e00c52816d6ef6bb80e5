@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "171bd2da_6b91c27e",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-09-13T06:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ef3d52c_797a42bc",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 0
+      },
+      "revId": "223219224d6e003023f4e00c52816d6ef6bb80e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46cf4cc3_597232d3",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-09T20:36:22Z",
       "side": 1,
       "message": "My suggested text: \"This option specifies the frequency (in Hz) of the CPU core when coming out of a power on reset.\"",
+      "range": {
+        "startLine": 134,
+        "startChar": 0,
+        "endLine": 134,
+        "endChar": 42
+      },
+      "revId": "223219224d6e003023f4e00c52816d6ef6bb80e5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ff8ae76_aeb26312",
+        "filename": "zephyr/Kconfig",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1394446
+      },
+      "writtenOn": "2021-09-13T06:28:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46cf4cc3_597232d3",
       "range": {
         "startLine": 134,
         "startChar": 0,
