@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45ced80b_6256ecdb",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-14T04:52:44Z",
+      "side": 1,
+      "message": "What happens if we accidentally have a different order in the devicetree? Something like:\n\n\tnamed-i2c-ports {\n\t\tcompatible \u003d \"named-i2c-ports\";\n\n\t\tpower {\n\t\t\ti2c-port \u003d \u003c\u0026i2c1\u003e;\n\t\t\t...\n\t\t};\n\t\tbattery {\n\t\t\ti2c-port \u003d \u003c\u0026i2c0\u003e;\n\t\t\t...\n\t\t};\n\t};\n\t\nHere, the first node is on port 1. Will that make a difference? It seems to me that this would set the physical port for `power` to 0 and `battery` to 1, but I\u0027m not finding anywhere that this would cause an error except for the print-out of the portmap.",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "a2b4fd7683fe20df5da905abd52f7c3e5d753589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
