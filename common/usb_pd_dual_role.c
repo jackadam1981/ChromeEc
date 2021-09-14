@@ -178,8 +178,9 @@ void pd_extract_pdo_power(uint32_t pdo, uint32_t *ma, uint32_t *max_mv,
 		*min_mv = PDO_BATT_MIN_VOLTAGE(pdo);
 	}
 
-	if (*max_mv == 0) {
+	if (*max_mv == 0 || *min_mv == 0) {
 		*ma = 0;
+		*max_mv = 0;
 		*min_mv = 0;
 		return;
 	}
