@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d2837d3_3cd514ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-14T19:51:16Z",
+      "side": 1,
+      "message": "I\u0027ll note that herobrine_npcx9 currently only shows the first character of the hash.  Is there any value to the commit count - could that be removed or moved after the hash?\n\nRO:      herobrine_npcx9_v2.6.73695-ec:7\nRW:      herobrine_npcx9_v2.6.73695-ec:7\nBuild:   herobrine_npcx9_v2.6.73695-ec:7b0169,os:862339,cmsis:c3bd20,hal_stm32:f8ff8d\n         2021-09-13 16:30:07 keithshort@mtbaldy\n",
+      "revId": "bf5eb08e1ea7574535f8c0431bf2e0824ae7cc66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
