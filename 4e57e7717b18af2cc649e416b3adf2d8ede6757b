@@ -106,6 +106,24 @@
       "parentUuid": "8e341059_d1ee8f7e",
       "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8938ecac_317c09ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-14T04:25:08Z",
+      "side": 1,
+      "message": "1. yes we need this change for all MECC vendors. We need these transactions before the task is initialed, code should switch to regular implementation upon task initialization as in dummy  CL:3158962 \nWe can add a config CONFIG_EARLY_I2C_ACCESS and boards with this config can access this implementation.\n2. This is RVP specific requirement, not needed by Chromebooks.\nWe want to support multiple OS on same RVP with no BOM stuffing options.\nEX: Chrome uses 2-keys which are passthrough from H1, this is not applicable for alternate OS.",
+      "parentUuid": "a9bce998_2da6a230",
+      "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
