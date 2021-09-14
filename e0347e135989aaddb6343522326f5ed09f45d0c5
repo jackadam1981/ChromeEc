@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b8c857a_8cf9bceb",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1894,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-14T22:31:43Z",
+      "side": 1,
+      "message": "Why do we only do this if we were the Sink?",
+      "range": {
+        "startLine": 1894,
+        "startChar": 31,
+        "endLine": 1894,
+        "endChar": 55
+      },
+      "revId": "e0347e135989aaddb6343522326f5ed09f45d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
