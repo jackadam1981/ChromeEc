@@ -33,6 +33,24 @@
       "message": "Could you break this single CL into two:\n * one to update the battery info,\n * one to increase the string length?",
       "revId": "420bf1526d13a064d672fa51e55a267eaa5e1277",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7929e733_1a7faa5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512583
+      },
+      "writtenOn": "2021-09-14T01:44:59Z",
+      "side": 1,
+      "message": "OK. I have changed this CL for \u0027update the battery info\u0027, and created a CL for \u0027increase the string length\u0027(https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3159423). Hope you can help to review, thank you.",
+      "parentUuid": "d773edd9_ac78efe8",
+      "revId": "420bf1526d13a064d672fa51e55a267eaa5e1277",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
