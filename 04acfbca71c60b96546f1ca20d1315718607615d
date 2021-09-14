@@ -69,6 +69,24 @@
       "parentUuid": "385ca6b3_6e7f5cb1",
       "revId": "04acfbca71c60b96546f1ca20d1315718607615d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b436d910_92ddf87e",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-14T18:05:34Z",
+      "side": 1,
+      "message": "If the battery is capable then what else is needed? If the battery claims that its discharge FET is enabled and there is sufficient battery percentage, then that should be all that\u0027s needed. If the battery is lying however, that sounds like a battery issue.",
+      "parentUuid": "f442aa65_ee7977cd",
+      "revId": "04acfbca71c60b96546f1ca20d1315718607615d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
