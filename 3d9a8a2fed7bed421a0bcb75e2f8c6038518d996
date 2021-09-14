@@ -108,6 +108,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06827260_26e92395",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-09-14T10:06:58Z",
+      "side": 1,
+      "message": "For it83xx/it8xxx2, the plug-in interrupt would wakeup pd task,  then task check the partner connection on cc pins. We can respond to an attach in a compliant amount of time. But the problem is that TCPMv2 can\u0027t toggle Rp/Rd in LPM state when tDRPTransition time is up. \n\nI understand that the revert CL (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3114705/2) causes ITE pd cc not toggling, and this CL want to fix it.\n\nAfter reviewing original CL (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3088161) again, I found that the changes violates type-c spec, and left a comment there.",
+      "parentUuid": "93d2fd2c_124cdf4c",
+      "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a9c144f_a05d805d",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
