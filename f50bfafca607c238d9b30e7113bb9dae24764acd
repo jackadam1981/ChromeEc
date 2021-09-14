@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5543c0_02e87c27",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-14T20:47:49Z",
+      "side": 1,
+      "message": "the directory build-* are internal to zmake, and you shouldn\u0027t rely on their existance outside of zmake",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 48
+      },
+      "revId": "f50bfafca607c238d9b30e7113bb9dae24764acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff1f9123_a8e7461d",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-14T20:47:49Z",
+      "side": 1,
+      "message": "we are considering moving from ninja to makefiles due to multiple issues with ninja, meaning that this will break when we do that.\n\ncan it instead be handled in zmake so that it won\u0027t break when moving away from ninja?",
+      "range": {
+        "startLine": 60,
+        "startChar": 6,
+        "endLine": 60,
+        "endChar": 11
+      },
+      "revId": "f50bfafca607c238d9b30e7113bb9dae24764acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
