@@ -2,11 +2,24 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Common properties for temperature sensors
-# Zero values in degrees K(-273 in degrees C)in thermal thresholds will
-# be ignored
+description: >
+ Common properties for temperature sensors
+ Zero values in degrees K(-273 in degrees C)in thermal thresholds will
+ be ignored
+
+compatible: temp-sensor
 
 properties:
+    adc:
+      required: true
+      type: phandle
+      description: Adc?
+  
+    thermistor:
+      required: true
+      type: phandle
+      description: Underlying thermistor where we get temperature readings.
+
     label:
       required: true
       type: string
