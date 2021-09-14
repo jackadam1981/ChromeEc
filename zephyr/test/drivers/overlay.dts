@@ -145,8 +145,9 @@
 	};
 
 	named-temp-sensors {
-		charger {
-			compatible = "temp-3v3-13k7-47k-4050b";
+		charger { // switch
+			thermistor = <&thermistor_3V3_13K7_47K_4050B>;
+			compatible = "temp-sensor";
 			label = "TEMP_SENSOR_CHARGER";
 			enum-name = "TEMP_SENSOR_CHARGER";
 			temp_fan_off = <40>;
@@ -157,7 +158,8 @@
 			adc = <&adc_charger>;
 		};
 		pp3300-regulator {
-			compatible = "temp-3v3-30k9-47k-4050b";
+			thermistor = <&thermistor_3V3_30K9_47K_4050B>;
+			compatible = "temp-sensor";
 			label = "TEMP_SENSOR_PP3300_REGULATOR";
 			enum-name = "TEMP_SENSOR_PP3300_REGULATOR";
 			temp_fan_off = <40>;
@@ -167,8 +169,9 @@
 			temp_host_release_high = <65>;
 			adc = <&adc_pp3300_regulator>;
 		};
-		ddr-soc {
-			compatible = "temp-3v3-51k1-47k-4050b";
+		ddr-soc { // switch this one
+			thermistor = <&thermistor_3V3_51K1_47K_4050B>;
+			compatible = "temp-sensor";
 			label = "TEMP_SENSOR_DDR_SOC";
 			enum-name = "TEMP_SENSOR_DDR_SOC";
 			temp_fan_off = <35>;
@@ -178,8 +181,9 @@
 			temp_host_release_high = <65>;
 			adc = <&adc_ddr_soc>;
 		};
-		fan {
-			compatible = "temp-3v0-22k6-47k-4050b";
+		fan { 
+			thermistor = <&thermistor_3V0_22K6_47K_4050B>;
+			compatible = "temp-sensor";
 			label = "TEMP_SENSOR_FAN";
 			enum-name = "TEMP_SENSOR_FAN";
 			temp_fan_off = <35>;
@@ -189,12 +193,318 @@
 			temp_host_release_high = <65>;
 			adc = <&adc_fan>;
 		};
+		
+
+	};
+
+	thermistor_3V3_30K9_47K_4050B: thermistor-3V3-30K9-47K-4050B {
+	   status = "okay";
+	   compatible = "thermistor";
+	   scaling-factor = <11>;
+	   num-pairs = <10>;
+	   // here
+	   
+
+/*
+ * Data derived from Steinhart-Hart equation in a resistor divider circuit with
+ * Vdd=3300mV, R = 30.9Kohm, and thermistor (B = 4050, T0 = 298.15 K, nominal
+ * resistance (R0) = 47Kohm).
+ */
+		data-sample-0 {
+			milivolt = <(2753 / 11)>;
+			temp = <0>;
+			sample-number = <0>;
+			
+		};data-sample-1 {
+			milivolt = <(2487 / 11)>;
+			temp = <10>;
+			sample-number = <1>;
+			
+		};data-sample-2 {
+			milivolt = <(2165 / 11)>;
+			temp = <20>;
+			sample-number = <2>;
+			
+		};data-sample-3 {
+			milivolt = <(1813 / 11)>;
+			temp = <30>;
+			sample-number = <3>;
+			
+		};data-sample-4 {
+			milivolt = <(1145 / 11)>;
+			temp = <50>;
+			sample-number = <4>;
+			
+		};data-sample-5 {
+			milivolt = <(878 / 11)>;
+			temp = <60>;
+			sample-number = <5>;
+			
+		};data-sample-6 {
+			milivolt = <(665 / 11)>;
+			temp = <70>;
+			sample-number = <6>;
+			
+		};data-sample-7 {
+			milivolt = <(500 / 11)>;
+			temp = <80>;
+			sample-number = <7>;
+			
+		};data-sample-8 {
+			milivolt = <(375 / 11)>;
+			temp = <90>;
+			sample-number = <8>;
+			
+		};data-sample-9 {
+			milivolt = <(282 / 11)>;
+			temp = <100>;
+			sample-number = <9>;
+			
+		};
+	};
+
+
+	thermistor_3V0_22K6_47K_4050B: thermistor-3V0-22K6-47K-4050B {
+	   status = "okay";
+	   compatible = "thermistor";
+	   scaling-factor = <11>;
+	   num-pairs = <13>;
+/*
+ * Data derived from Steinhart-Hart equation in a resistor divider circuit with
+ * Vdd=3000mV, R = 22.6Kohm, and thermistor (B = 4050, T0 = 298.15 K, nominal
+ * resistance (R0) = 47Kohm).
+ */
+		data-sample-0 {
+			milivolt = <( 2619 / 11)>;
+			temp = <0>;
+			sample-number = <0>;
+			
+		};data-sample-1 {
+			milivolt = <( 2421 / 11)>;
+			temp = <10>;
+			sample-number = <1>;
+			
+		};data-sample-2 {
+			milivolt = <( 2168 / 11)>;
+			temp = <20>;
+			sample-number = <2>;
+			
+		};data-sample-3 {
+			milivolt = <( 1875 / 11)>;
+			temp = <30>;
+			sample-number = <3>;
+			
+		};data-sample-4 {
+			milivolt = <( 1563 / 11)>;
+			temp = <40>;
+			sample-number = <4>;
+			
+		};data-sample-5 {
+			milivolt = <( 1262 / 11)>;
+			temp = <50>;
+			sample-number = <5>;
+			
+		};data-sample-6 {
+			milivolt = <(  994 / 11)>;
+			temp = <60>;
+			sample-number = <6>;
+			
+		};data-sample-7 {
+			milivolt = <(  769 / 11)>;
+			temp = <70>;
+			sample-number = <7>;
+			
+		};data-sample-8 {
+			milivolt = <(  588 / 11)>;
+			temp = <80>;
+			sample-number = <8>;
+			
+		};data-sample-9 {
+			milivolt = <(  513 / 11)>;
+			temp = <85>;
+			sample-number = <9>;
+			
+		};data-sample-10 {
+			milivolt = <(  448 / 11)>;
+			temp = <90>;
+			sample-number = <10>;
+			
+		};data-sample-11 {
+			milivolt = <(  390 / 11)>;
+			temp = <95>;
+			sample-number = <11>;
+			
+		};data-sample-12 {
+			milivolt = <(  340 / 11)>;
+			temp = <10>;
+			sample-number = <12>;
+			
+		};
+	};
+
+	thermistor_3V3_13K7_47K_4050B: thermistor-3V3-13K7-47K-4050B {
+	   status = "okay";
+	   compatible = "thermistor";
+	   scaling-factor = <13>;
+	   num-pairs = <13>;
+
+/*
+ * Data derived from Steinhart-Hart equation in a resistor divider circuit with
+ * Vdd=3300mV, R = 13.7Kohm, and thermistor (B = 4050, T0 = 298.15 K, nominal
+ * resistance (R0) = 47Kohm).
+ */
+		data-sample-0 {
+			milivolt = <(3033 / 13)>;
+			temp = <0>;
+			sample-number = <0>;
+	
+		};data-sample-1 {
+			milivolt = <(2882 / 13)>;
+			temp = <10>;
+			sample-number = <1>;
+			
+		};data-sample-2 {
+			milivolt = <(2677 / 13)>;
+			temp = <20>;
+			sample-number = <2>;
+			
+		};data-sample-3 {
+			milivolt = <(2420 / 13)>;
+			temp = <30>;
+			sample-number = <3>;
+			
+		};data-sample-4 {
+			milivolt = <(2119 / 13)>;
+			temp = <40>;
+			sample-number = <4>;
+			
+		};data-sample-5 {
+			milivolt = <(1799 / 13)>;
+			temp = <50>;
+			sample-number = <5>;
+			
+		};data-sample-6 {
+			milivolt = <(1485 / 13)>;
+			temp = <60>;
+			sample-number = <6>;
+			
+		};data-sample-7 {
+			milivolt = <(1197 / 13)>;
+			temp = <70>;
+			sample-number = <7>;
+			
+		};data-sample-8 {
+			milivolt = <( 947 / 13)>;
+			temp = <80>;
+			sample-number = <8>;
+			
+		};data-sample-9 {
+			milivolt = <( 839 / 13)>;
+			temp = <85>;
+			sample-number = <9>;
+			
+		};data-sample-10 {
+			milivolt = <( 741 / 13)>;
+			temp = <90>;
+			sample-number = <10>;
+			
+		};data-sample-11 {
+			milivolt = <( 653 / 13)>;
+			temp = <95>;
+			sample-number = <11>;
+			
+		};data-sample-12 {
+			milivolt = <( 576 / 13)>;
+			temp = <100>;
+			sample-number = <12>;
+			
+		};
+	};
+
+
+	thermistor_3V3_51K1_47K_4050B: thermistor-3V3-51K1-47K-4050B {
+	   status = "okay";
+	   compatible = "thermistor";
+	   scaling-factor = <11>;
+	   num-pairs = <13>;
+
+/*
+ * Data derived from Steinhart-Hart equation in a resistor divider circuit with
+ * Vdd=3300mV, R = 51.1Kohm, and thermistor (B = 4050, T0 = 298.15 K, nominal
+ * resistance (R0) = 47Kohm).
+ */
+		data-sample-0 {
+			milivolt = <(2484 / 11)>;
+			temp = <0>;
+			sample-number = <0>;
+			
+		};data-sample-1 {
+			milivolt = <(2142 / 11)>;
+			temp = <10>;
+			sample-number = <1>;
+			
+		};data-sample-2 {
+			milivolt = <(1767 / 11)>;
+			temp = <20>;
+			sample-number = <2>;
+			
+		};data-sample-3 {
+			milivolt = <(1400 / 11)>;
+			temp = <30>;
+			sample-number = <3>;
+			
+		};data-sample-4 {
+			milivolt = <(1072 / 11)>;
+			temp = <40>;
+			sample-number = <4>;
+			
+		};data-sample-5 {
+			milivolt = <( 802 / 11)>;
+			temp = <50>;
+			sample-number = <5>;
+			
+		};data-sample-6 {
+			milivolt = <( 593 / 11)>;
+			temp = <60>;
+			sample-number = <6>;
+			
+		};data-sample-7 {
+			milivolt = <( 436 / 11)>;
+			temp = <70>;
+			sample-number = <7>;
+			
+		};data-sample-8 {
+			milivolt = <( 321 / 11)>;
+			temp = <80>;
+			sample-number = <8>;
+			
+		};data-sample-9 {
+			milivolt = <( 276 / 11)>;
+			temp = <85>;
+			sample-number = <9>;
+			
+		};data-sample-10 {
+			milivolt = <( 237 / 11)>;
+			temp = <90>;
+			sample-number = <10>;
+			
+		};data-sample-11 {
+			milivolt = <( 204 / 11)>;
+			temp = <95>;
+			sample-number = <11>;
+			
+		};data-sample-12 {
+			milivolt = <( 177 / 11)>;
+			temp = <100>;
+			sample-number = <12>;
+			
+		};
 	};
 
 	/*
-	 * Declare mutexes used by sensor drivers.
-	 * A mutex node is used to create an instance of mutex_t.
-	 * A mutex node is referenced by a sensor node if the
+	 * Demutexes used by sensor drivers.
+	 * A node is used to create an instance of mutex_t.
+	 * A node is referenced by a sensor node if the
 	 * corresponding sensor driver needs to use the
 	 * instance of the mutex.
 	 */
