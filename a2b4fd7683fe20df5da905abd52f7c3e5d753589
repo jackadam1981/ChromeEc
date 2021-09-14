@@ -22,6 +22,30 @@
       },
       "revId": "a2b4fd7683fe20df5da905abd52f7c3e5d753589",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d33d3eb_4bf56109",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-14T15:04:30Z",
+      "side": 1,
+      "message": "It should be fine.  The physical port number is only used during I2C port locking, so the actual order isn\u0027t important.  Only that ports that point to the same I2C bus need to have the same mutex.",
+      "parentUuid": "45ced80b_6256ecdb",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 26
+      },
+      "revId": "a2b4fd7683fe20df5da905abd52f7c3e5d753589",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
