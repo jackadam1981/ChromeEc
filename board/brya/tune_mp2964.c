@@ -18,12 +18,30 @@ const static struct mp2964_reg_val rail_b[] = {
 	{ MP2964_MFR_ALT_SET,     0xe081 },	/* ALERT_DELAY = 200ns */
 };
 
+const static struct mp2964_reg_val rail_a_15W[] = {
+	{ MP2964_MFR_VOUT_TRIM,     0x0CCD },
+	{ MP2964_MFR_IMON_SNS_OFFS, 0x039D },
+	{ MP2964_MFR_TRANS_FAST,    0x1AC3 },
+	{ MP2964_MFR_PSI_TRIM4,     0x1926 },
+	{ MP2964_MFR_PSI_TRIM1,     0x0000 },
+	{ MP2964_MFR_PSI_TRIM3,     0x24A0 },
+	{ MP2964_MFR_SLOPE_CNT_2P,  0x0000 },
+};
+const static struct mp2964_reg_val rail_b_15W[] = {
+	{ MP2964_MFR_VOUT_TRIM,     0x00DD },
+	{ MP2964_MFR_IMON_SNS_OFFS, 0x0351 },
+	{ MP2964_MFR_TRANS_FAST,    0x1AC3 },
+	{ MP2964_MFR_CONFIG2,       0x0140 },
+	{ MP2964_MFR_SLOPE_SR_DCM,  0x0002 },
+	{ MP2964_MFR_PSI_TRIM4,     0x1926 },
+};
+
 static void mp2964_on_startup(void)
 {
 	static int chip_updated;
-	int status;
+	int status = EC_SUCCESS;
 
-	if (get_board_id() != 1)
+	if (get_board_id() != 1 && get_board_id() != 2)
 		return;
 
 	if (chip_updated)
@@ -33,8 +51,16 @@ static void mp2964_on_startup(void)
 
 	ccprintf("%s: attempting to tune PMIC\n", __func__);
 
+	if (get_board_id() == 1) {
 	status = mp2964_tune(rail_a, ARRAY_SIZE(rail_a),
 			     rail_b, ARRAY_SIZE(rail_b));
+	}
+
+	if (get_board_id() == 2) {
+	status = mp2964_tune(rail_a_15W, ARRAY_SIZE(rail_a_15W),
+			     rail_b_15W, ARRAY_SIZE(rail_b_15W));
+	}
+
 	if (status != EC_SUCCESS)
 		ccprintf("%s: could not update all settings\n", __func__);
 }
