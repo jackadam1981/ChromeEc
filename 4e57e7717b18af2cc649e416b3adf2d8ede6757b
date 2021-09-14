@@ -88,6 +88,24 @@
       "parentUuid": "d71d8814_9952de1a",
       "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9bce998_2da6a230",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-09-14T03:41:03Z",
+      "side": 1,
+      "message": "Regarding kukui with stm32 or ite cases, i2c-stm32-f0.c is adopted if ec candidate is stm32. It uses the polling status instead of task event mechanism. (https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/chip/stm32/i2c-stm32f0.c#89) If the candidate is ite, they didn\u0027t enable  CONFIG_KEYBOARD_NOT_RAW and its io expander. (https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/baseboard/kukui/baseboard.h#99) That\u0027s why no symptom occurred on kukui with stm32 or ite. \n\nHence, I have two questions:\n1. Besides the npcx i2c driver, the other i2c drivers such as lm4, it83xx, mchp, mec1322, and stm32-f4 use task events mechanism also. If ec candidate switches to the other vendors, do they need to remove the original mechanism and use polling status to solve this symptom? Please notice polling status with usleep() function influences the ec performance a lot. We don\u0027t know the impact on the whole system.  \n2. No matter ite or npcx ec, the keyboard raw hardware is supported. Why don\u0027t we use keyboard raw driver directly? It\u0027s a little weird to use a keyboard controller outside.",
+      "parentUuid": "8e341059_d1ee8f7e",
+      "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
