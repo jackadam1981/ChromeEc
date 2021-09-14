@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8be926d3_178689a7",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-14T15:48:22Z",
+      "side": 1,
+      "message": "If *min_mv \u003d\u003d 0, shall we return *ma \u003d PD_MAX_CURRENT_MA? I wasn\u0027t able to find relevant description in the PD spec R3.0 V2.0. WDYT?",
+      "range": {
+        "startLine": 181,
+        "startChar": 21,
+        "endLine": 181,
+        "endChar": 33
+      },
+      "revId": "ab71cda2bfdad8e40dca99d808302d038ee17963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
