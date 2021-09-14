@@ -22,6 +22,30 @@
       },
       "revId": "e0347e135989aaddb6343522326f5ed09f45d0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5014738f_8d875576",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1894,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-14T22:40:07Z",
+      "side": 1,
+      "message": "If we\u0027re the source, then we should have (hopefully) gone to force sink by the time we can\u0027t supply Vconn which would force a severing of our previous connection via resistor change and Vbus discharge.\n\nPlus if we hard reset as a source, then Vconn would just come right back to us, which isn\u0027t what we want.",
+      "parentUuid": "3b8c857a_8cf9bceb",
+      "range": {
+        "startLine": 1894,
+        "startChar": 31,
+        "endLine": 1894,
+        "endChar": 55
+      },
+      "revId": "e0347e135989aaddb6343522326f5ed09f45d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
