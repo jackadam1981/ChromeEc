@@ -16,6 +16,29 @@
       "message": "I\u0027ll note that herobrine_npcx9 currently only shows the first character of the hash.  Is there any value to the commit count - could that be removed or moved after the hash?\n\nRO:      herobrine_npcx9_v2.6.73695-ec:7\nRW:      herobrine_npcx9_v2.6.73695-ec:7\nBuild:   herobrine_npcx9_v2.6.73695-ec:7b0169,os:862339,cmsis:c3bd20,hal_stm32:f8ff8d\n         2021-09-13 16:30:07 keithshort@mtbaldy\n",
       "revId": "bf5eb08e1ea7574535f8c0431bf2e0824ae7cc66",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97c89ab7_5e9d7dc3",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-14T20:45:16Z",
+      "side": 1,
+      "message": "so in get_version_string, the modules and hashes were actually a dictionary instead of a string, meaning we wouldn\u0027t have to parse out the commas\n\nadditionally, we make a 31-character version string in FRID/FWID as well, and this change wouldn\u0027t affect that\n\nI think get_version_string would need the API adjusted to return two strings, one which is full length, and one wich is 31 characters or less, and then both strings can get passed around to where they are needed (see version_str in the binman packer)",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 0
+      },
+      "revId": "bf5eb08e1ea7574535f8c0431bf2e0824ae7cc66",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
