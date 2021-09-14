@@ -139,6 +139,24 @@
       "parentUuid": "66bc4b75_15998bc0",
       "revId": "e8f3f993e92e4f501f401a96db943689d6d27e43",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b856fb9_c62942a1",
+        "filename": "driver/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-14T03:59:32Z",
+      "side": 1,
+      "message": "There are too many dependencies renaming 260 to 2xx. Zephyr also hard coded 260. Let\u0027s clean it up in another CL.",
+      "parentUuid": "9b43e065_d0a63887",
+      "revId": "e8f3f993e92e4f501f401a96db943689d6d27e43",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
