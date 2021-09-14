@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8db3b81_ab4e2642",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-14T15:26:19Z",
+      "side": 1,
+      "message": "Hi Tang, do you think you can add a unit test to test/sbs_charging_v2.c?",
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1150c1e_afce37b8",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1859,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-14T15:26:19Z",
+      "side": 1,
+      "message": "There are some duplicates here and in wakeup_battery. Do you think you can combine them?",
+      "range": {
+        "startLine": 1859,
+        "startChar": 12,
+        "endLine": 1859,
+        "endChar": 31
+      },
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11917867_2226d057",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-14T15:26:19Z",
+      "side": 1,
+      "message": "It\u0027s done in wakeup_battery. I don\u0027t think we need to repeat this.",
+      "range": {
+        "startLine": 1861,
+        "startChar": 0,
+        "endLine": 1865,
+        "endChar": 29
+      },
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1479ffa_a070b437",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-14T15:26:19Z",
+      "side": 1,
+      "message": "How about \u0027Low voltage protection for a battery\u0027? Then, you can add \u0027(a.k.a. deep charge inspection)\u0027 if you feel it\u0027s necessary.",
+      "range": {
+        "startLine": 612,
+        "startChar": 3,
+        "endLine": 612,
+        "endChar": 60
+      },
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
