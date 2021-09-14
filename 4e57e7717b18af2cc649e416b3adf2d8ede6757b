@@ -124,6 +124,24 @@
       "parentUuid": "a9bce998_2da6a230",
       "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77ef4527_1d1df6ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-14T04:55:13Z",
+      "side": 1,
+      "message": "1. Yeah, I think we should use blocking i2c APIs before tasks start.\n\n2. If this isn\u0027t for chromebooks, keyboard doesn\u0027t need to be scanned before tasks start (because scanning keyboard early is for recovery). I\u0027m confused.",
+      "parentUuid": "8938ecac_317c09ed",
+      "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
