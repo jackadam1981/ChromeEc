@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65f05a13_5603d59e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-09-14T09:56:25Z",
+      "side": 1,
+      "message": "Looks good, some minor comments.",
+      "revId": "46f55cf6e8107531a2c7a1202a13d6eb9566565f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6e7e304_301bb148",
+        "filename": "zephyr/emul/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-09-14T09:56:25Z",
+      "side": 1,
+      "message": "Lines above use tabs instead of spaces.",
+      "revId": "46f55cf6e8107531a2c7a1202a13d6eb9566565f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ff85904_614266e1",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-09-14T09:56:25Z",
+      "side": 1,
+      "message": "Does ln9310 support only one byte writes? If so, maybe better it would be to check this once at the beginning of the ln9310_emul_write_byte().",
+      "revId": "46f55cf6e8107531a2c7a1202a13d6eb9566565f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d24e436c_bd012d37",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-09-14T09:56:25Z",
+      "side": 1,
+      "message": "Similar to above comment. Does ln9310 support only one byte reads?",
+      "revId": "46f55cf6e8107531a2c7a1202a13d6eb9566565f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
