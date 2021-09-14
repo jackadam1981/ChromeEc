@@ -2,28 +2,53 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Common properties for thermistors
+description: Common properties for thermistors
+
+compatible: thermistor # TODO Why does adding cros break this?
 
 properties:
-  adc:
+  
+  scaling-factor:
     required: true
-    type: phandle
-    description: named-adc child node connected to the thermistor
+    type: int
+    description: Scaling factor for voltage pairs
 
-  get-temp-func:
-    type: string
-    required: false
+  num-pairs:
+    required: true
+    type: int
+    description: Number of associated pairs between temp-c and scale-mv
+
+  steinhart-reference-mv:
+    required: true
+    type: int
     description: >
-      Name of the board-provided function which reads the temperature. If you
-      have different values and need to add a new function, you can add that
-      here.
+      Used only for testing and getting initial data samples.
+      Is the reference milivolts for the reference ohms.
 
-      The name is get_temp_<v>_<rs>_<rn>_<b>:
+  steinhart-reference-res:
+    required: true
+    type: int
+    description: >
+      Used only for testing and getting initial data samples.
+      Is the reference ohms for the reference milivolts.
 
-      v: voltage of resistor-divider circuit
-      rs: value of the resistor that is in series with the thermistor
-      rn: nominal resistance of thermistor at 25C
-      b: B value for temperature range 25C to 100C
+child-binding:
+  description: The samples
 
-      See https://www.electronics-tutorials.ws/io/thermistors.html for more
-      information.
+  properties:
+    milivolt:
+      type: int
+      required: true
+      description: Voltage reading for a given temperature sample
+
+    temp:
+      type: int
+      required: true
+      description: Temperature in a temperature sample
+
+    sample-number:
+      type: int
+      required: true
+      description: The index of sample, needed for interpolation
+
+  

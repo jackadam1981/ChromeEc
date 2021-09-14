@@ -71,7 +71,7 @@ int thermistor_linear_interpolate(uint16_t mv,
 	defined(CONFIG_STEINHART_HART_6V0_51K1_47K_4050B) || \
 	defined(CONFIG_STEINHART_HART_3V0_22K6_47K_4050B) || \
 	defined(CONFIG_STEINHART_HART_3V3_30K9_47K_4050B)
-static int thermistor_get_temperature(int idx_adc, int *temp_ptr,
+int thermistor_get_temperature(int idx_adc, int *temp_ptr,
 		const struct thermistor_info *info)
 {
 	int mv;
@@ -245,7 +245,7 @@ int get_temp_3v0_22k6_47k_4050b(int idx_adc, int *temp_ptr)
  * resistance (R0) = 47Kohm).
  */
 #define THERMISTOR_SCALING_FACTOR_31_47 11
-static const struct thermistor_data_pair thermistor_data_31_47[] = {
+static const struct thermistor_data_pair thermistor_data_31_47[] = { // removeme done
 	{ 2753 / THERMISTOR_SCALING_FACTOR_31_47, 0   },
 	{ 2487 / THERMISTOR_SCALING_FACTOR_31_47, 10  },
 	{ 2165 / THERMISTOR_SCALING_FACTOR_31_47, 20  },

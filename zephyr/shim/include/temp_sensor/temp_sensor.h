@@ -13,6 +13,7 @@
 #define ZSHIM_TEMP_SENSOR_ID(node_id) DT_STRING_UPPER_TOKEN(node_id, enum_name)
 #define TEMP_SENSOR_ID_WITH_COMMA(node_id) ZSHIM_TEMP_SENSOR_ID(node_id),
 
+
 enum temp_sensor_id {
 #if DT_NODE_EXISTS(DT_PATH(named_temp_sensors))
 	DT_FOREACH_CHILD(DT_PATH(named_temp_sensors),
