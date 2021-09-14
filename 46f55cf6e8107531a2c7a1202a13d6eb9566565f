@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1a4d9096_a91d2a8f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-14T17:49:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db2cfe6b_d31d228f",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 9,
+        "endChar": 68
+      },
+      "revId": "46f55cf6e8107531a2c7a1202a13d6eb9566565f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "65f05a13_5603d59e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 5
@@ -58,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "10933946_9a7e58bc",
+        "filename": "zephyr/emul/CMakeLists.txt",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-14T17:49:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a6e7e304_301bb148",
+      "revId": "46f55cf6e8107531a2c7a1202a13d6eb9566565f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ff85904_614266e1",
@@ -75,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16faaa2e_818eafc8",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-14T17:49:51Z",
+      "side": 1,
+      "message": "I\u0027m not sure yet, the datasheet is very poor and doesn\u0027t even document half the registers. I\u0027ll do a clean-up pass once I\u0027ve tested the full driver.",
+      "parentUuid": "8ff85904_614266e1",
+      "revId": "46f55cf6e8107531a2c7a1202a13d6eb9566565f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d24e436c_bd012d37",
@@ -88,6 +148,24 @@
       "writtenOn": "2021-09-14T09:56:25Z",
       "side": 1,
       "message": "Similar to above comment. Does ln9310 support only one byte reads?",
+      "revId": "46f55cf6e8107531a2c7a1202a13d6eb9566565f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e042a72_04fc1742",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-14T17:49:51Z",
+      "side": 1,
+      "message": "See comment above.",
+      "parentUuid": "d24e436c_bd012d37",
       "revId": "46f55cf6e8107531a2c7a1202a13d6eb9566565f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
