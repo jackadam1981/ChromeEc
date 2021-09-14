@@ -168,6 +168,6 @@ static void sspi_init(void)
 
 	for (i = 0; i < spi_devices_used; i++)
 		/* Disabling spi module */
-		spi_enable(&spi_devices[i], 0);
+		spi_enable(&spi_devices[i], 1);
 }
 DECLARE_HOOK(HOOK_INIT, sspi_init, HOOK_PRIO_INIT_SPI);
