@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05a0bdb3_55ea02fc",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-14T21:57:54Z",
+      "side": 1,
+      "message": "do you plan to keep this workaround after switching\nto new SoC silicon?\n\nmaybe add a comment that this is a workaround for\nthe bonding issue.",
+      "range": {
+        "startLine": 431,
+        "startChar": 15,
+        "endLine": 431,
+        "endChar": 31
+      },
+      "revId": "cdae274bb673347be80509524f381aa943babeb4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
