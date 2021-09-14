@@ -51,6 +51,24 @@
       "parentUuid": "0b746fe2_fc077f7e",
       "revId": "04acfbca71c60b96546f1ca20d1315718607615d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f442aa65_ee7977cd",
+        "filename": "driver/tcpm/raa489000.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-14T16:09:48Z",
+      "side": 1,
+      "message": "Are we unable to boot and browning out in this case?  \n\nGenerally, we restricted the later if() statement to only apply in cases where the board is incapable of supporting itself on battery.  We would always prefer to have the charge manager select the active charge port through its normal channels instead of forcing the active charge port set, as we need to do here.",
+      "parentUuid": "385ca6b3_6e7f5cb1",
+      "revId": "04acfbca71c60b96546f1ca20d1315718607615d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
