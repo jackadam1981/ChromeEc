@@ -2,28 +2,55 @@
 # Use of this source code is governed by a BSD-style license that can be
 # found in the LICENSE file.
 
-# Common properties for thermistors
+# See https://www.electronics-tutorials.ws/io/thermistors.html for more information.
+
+description: Common properties for thermistors
+
+compatible: cros,thermistor
 
 properties:
-  adc:
+
+  scaling-factor:
     required: true
-    type: phandle
-    description: named-adc child node connected to the thermistor
+    type: int
+    description: Scaling factor for voltage pairs
 
-  get-temp-func:
-    type: string
-    required: false
+  num-pairs:
+    required: true
+    type: int
+    description: Number of sample data points for linear interpolation
+
+  steinhart-reference-mv:
+    required: true
+    type: int
     description: >
-      Name of the board-provided function which reads the temperature. If you
-      have different values and need to add a new function, you can add that
-      here.
+      Used only for testing.
+      Is the reference voltage for temperature 25C.
 
-      The name is get_temp_<v>_<rs>_<rn>_<b>:
+  steinhart-reference-res:
+    required: true
+    type: int
+    description: >
+      Used only for testing.
+      Is the reference resistance for temperature 25C.
 
-      v: voltage of resistor-divider circuit
-      rs: value of the resistor that is in series with the thermistor
-      rn: nominal resistance of thermistor at 25C
-      b: B value for temperature range 25C to 100C
+child-binding:
+  description: >
+    Data samples derived from Steinhart-Hart equation in a resistor divider circuit.
+    Used in linear interpolation.
 
-      See https://www.electronics-tutorials.ws/io/thermistors.html for more
-      information.
+  properties:
+    milivolt:
+      type: int
+      required: true
+      description: Voltage reading for a given temperature sample
+
+    temp:
+      type: int
+      required: true
+      description: Temperature in a datum sample
+
+    sample-number:
+      type: int
+      required: true
+      description: The index of a datum to maintain sample order to interpolate.
