@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77cc717f_12d6b8fa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-09-14T10:06:42Z",
+      "side": 1,
+      "message": "If drp_state is TOGGLE_ON, we should act as DRP, and as type-c spec says: \n4.5.2.2.3.2  Exiting from Unattached.SNK State \nA DRP shall transition to Unattached.SRC within tDRPTransition after the state of both CC pins is SNK.Open for tDRP − dcSRC.DRP ∙ tDRP, or if directed.\n\n4.5.2.2.7.2  Exiting from Unattached.SRC State \nA DRP shall transition to Unattached.SNK within tDRPTransition after dcSRC.DRP ∙ tDRP, or if directed. \n\nSo (the not support dual role auto toggle mode TCPC \u0026\u0026 PD_DRP_TOGGLE_ON of drp_state) should keep toggling within tDRPTransition even when cc is open.\n\nIf we want to go to LPM when drp_state is PD_DRP_TOGGLE_ON and cc is open, then we need to implement dual role auto toggle mode base on current TCPMv2 code. ",
+      "revId": "55f40b89d7f7b6cc3005e0d6fa755345d514a578",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
