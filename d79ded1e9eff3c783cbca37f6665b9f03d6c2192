@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "880215b6_4bf5d88d",
+        "filename": "common/usbc/usb_pd_host.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-14T16:01:12Z",
+      "side": 1,
+      "message": "If the AP is not retrying in this case, that\u0027s a separate issue that should be fixed. The AP should probably be the one that logs when this happens.\n\nBut still just a nit. I\u0027m willing to approve the CL with this logging.",
+      "parentUuid": "1120e4f3_598010ad",
+      "revId": "d79ded1e9eff3c783cbca37f6665b9f03d6c2192",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60403d8c_c4e7ef69",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 9
