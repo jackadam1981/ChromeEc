@@ -142,6 +142,24 @@
       "parentUuid": "8938ecac_317c09ed",
       "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d822e17_6160988d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-14T05:00:15Z",
+      "side": 1,
+      "message": "This is needed for the ChromeOS running on RVP. It may not be needed for actual Chromebooks as all the current EC that we use on x86 platforms come with built-in matrix keyboard.",
+      "parentUuid": "77ef4527_1d1df6ed",
+      "revId": "4e57e7717b18af2cc649e416b3adf2d8ede6757b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
