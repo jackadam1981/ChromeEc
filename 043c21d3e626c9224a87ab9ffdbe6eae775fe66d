@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "429c4ed7_f0a73cf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-09-14T02:04:44Z",
+      "side": 1,
+      "message": "I test on storo, use `ectool motionsense` can get sensor data, use `ectool motionsense lid_angle` can get right lid angle data, and factory test can test pass, thanks",
+      "revId": "043c21d3e626c9224a87ab9ffdbe6eae775fe66d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
