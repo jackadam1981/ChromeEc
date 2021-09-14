@@ -22,6 +22,30 @@
       },
       "revId": "f35881b4cc8be4b8ebd1e3b335d5540a2330d440",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125e59e3_cd244227",
+        "filename": "zephyr/shim/src/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-14T04:25:35Z",
+      "side": 1,
+      "message": "Oh, I see, removed in the next CL 😊",
+      "parentUuid": "df07f242_36a69a5c",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 29
+      },
+      "revId": "f35881b4cc8be4b8ebd1e3b335d5540a2330d440",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
