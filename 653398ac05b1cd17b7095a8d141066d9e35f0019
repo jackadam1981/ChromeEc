@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b0f1fdd_0892883b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2021-09-14T15:42:37Z",
+      "side": 1,
+      "message": "Since the FW could be shared with Blipper, could you also test on Blipper PVT device?",
+      "revId": "653398ac05b1cd17b7095a8d141066d9e35f0019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ae3c3e35_3e5f1c49",
@@ -14,6 +31,23 @@
       "writtenOn": "2021-09-14T08:03:00Z",
       "side": 1,
       "message": "Hi Shou-Chieh, could you help to review the CL, thanks.",
+      "revId": "653398ac05b1cd17b7095a8d141066d9e35f0019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a8f6bb_a11717cb",
+        "filename": "board/blipper/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1477752
+      },
+      "writtenOn": "2021-09-14T15:42:37Z",
+      "side": 1,
+      "message": "Blipper is MP-ed, can we set CONFIG_SYSTEM_UNLOCKED?",
       "revId": "653398ac05b1cd17b7095a8d141066d9e35f0019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
