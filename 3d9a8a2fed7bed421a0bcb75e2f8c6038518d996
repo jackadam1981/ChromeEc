@@ -126,6 +126,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f62ef596_4dada52f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-14T16:41:09Z",
+      "side": 1,
+      "message": "I added Diana. I think she is more familiar with this part of TCPMv2.\n\n\u003e For it83xx/it8xxx2, the plug-in interrupt would wakeup pd task,  then task check the partner connection on cc pins. We can respond to an attach in a compliant amount of time. But the problem is that TCPMv2 can\u0027t toggle Rp/Rd in LPM state when tDRPTransition time is up.\n\nIt looks like tc_low_power_mode_run should transition to an Unattached state or DRP Auto Toggle if supported after CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE (default 25 ms). Note that that delay is for debouncing CC. If the chip can get a stable CC faster than the default 25 ms, we can shorten it. If I understand your spec citation correctly, we should have up to 70 ms to transition out of LPM. (With our actual DRP timings in TCPMv2, I think we have ~41 ms.) When we transition to TC_DRP_AUTO_TOGGLE, we retain the current CC value for ~dcSRC.DRP * tDRP.\n\nAre you saying we should toggle CC immediately when we enter Auto Toggle? Or are you saying that we take too long to transition to TC_DRP_AUTO_TOGGLE? Or something else?\n\n\u003e I understand that the revert CL (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3114705/2) causes ITE pd cc not toggling, and this CL want to fix it.\n\u003e \n\u003e After reviewing original CL (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3088161) again, I found that the changes violates type-c spec, and left a comment there.\n\nIf possible, can we keep the discussion in this CL for the sake of comprehension?",
+      "parentUuid": "06827260_26e92395",
+      "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a9c144f_a05d805d",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
