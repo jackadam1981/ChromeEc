@@ -46,6 +46,29 @@
       },
       "revId": "e0347e135989aaddb6343522326f5ed09f45d0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "210c3510_13d16017",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4025,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-14T23:42:29Z",
+      "side": 1,
+      "message": "Does this actually happen?",
+      "range": {
+        "startLine": 4022,
+        "startChar": 0,
+        "endLine": 4025,
+        "endChar": 4
+      },
+      "revId": "e0347e135989aaddb6343522326f5ed09f45d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
