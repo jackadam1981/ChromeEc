@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c91a40cc_bb8210ee",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-14T20:22:18Z",
+      "side": 1,
+      "message": "Yes, if you have a brief description - it would really help. And change \"Tiger Lake\" to \"Alder Lake\" please",
+      "parentUuid": "292ba61e_37dba424",
+      "range": {
+        "startLine": 303,
+        "startChar": 3,
+        "endLine": 303,
+        "endChar": 13
+      },
+      "revId": "e5ad1e2c30d1a39913daf29577e5d097ccfa0971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fd79030_da453dcd",
         "filename": "board/brya/sensors.c",
         "patchSetId": 5
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a9a1ffc4_5427cfb4",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-14T20:22:18Z",
+      "side": 1,
+      "message": "Well, that comment is a suggestion and it says \"Please check the operation temp range of the charging inductor\". Did you check the datasheet? Also the values in the comment are different from the values below.",
+      "parentUuid": "5020bb7e_eac90d9b",
+      "range": {
+        "startLine": 349,
+        "startChar": 3,
+        "endLine": 350,
+        "endChar": 51
+      },
+      "revId": "e5ad1e2c30d1a39913daf29577e5d097ccfa0971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62eec373_25c13f7e",
         "filename": "board/brya/sensors.c",
         "patchSetId": 5
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "Wwan currently sends an alert to soc by itself, which is not controlled by ec, and here is to set a value that wwan cannot reach.\n\nIf you still need to give a value below 100C, can you suggest a value?",
       "parentUuid": "62eec373_25c13f7e",
+      "range": {
+        "startLine": 376,
+        "startChar": 33,
+        "endLine": 376,
+        "endChar": 36
+      },
+      "revId": "e5ad1e2c30d1a39913daf29577e5d097ccfa0971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a362a5b2_f1fadbea",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-14T20:22:18Z",
+      "side": 1,
+      "message": "This is exactly the reason we need some explanation in comment section. Do you know the WWAN module thermal tresholds?",
+      "parentUuid": "1bc3211a_3ff8594a",
       "range": {
         "startLine": 376,
         "startChar": 33,
