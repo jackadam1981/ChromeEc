@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4a345adb_3e51beb2",
+        "filename": "board/felwinter/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2021-09-15T10:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce9dae03_937a3512",
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6a935010_390956d6",
         "filename": "board/felwinter/ec.tasklist",
         "patchSetId": 15
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5ee27839_ede5de05",
+        "filename": "board/felwinter/ec.tasklist",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2021-09-15T10:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a935010_390956d6",
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1ef292f_5e950430",
         "filename": "board/felwinter/fw_config.h",
         "patchSetId": 15
@@ -48,6 +84,30 @@
       "writtenOn": "2021-09-13T20:58:19Z",
       "side": 1,
       "message": "nit:update",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c64023f_42d9cd7b",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2021-09-15T10:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1ef292f_5e950430",
       "range": {
         "startLine": 12,
         "startChar": 28,
@@ -83,6 +143,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f28e2452_dac739b8",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2021-09-15T10:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "387b58de_7279e956",
+      "range": {
+        "startLine": 14,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "acf2e99f_bb2aa6b4",
         "filename": "board/felwinter/gpio.inc",
         "patchSetId": 15
@@ -94,6 +178,24 @@
       "writtenOn": "2021-09-13T20:58:19Z",
       "side": 1,
       "message": "Please move all the unused GPIOs to the \"Unused pins\" section",
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "293928f1_483fbc26",
+        "filename": "board/felwinter/gpio.inc",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2021-09-15T10:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acf2e99f_bb2aa6b4",
       "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -121,6 +223,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1dad1a5_bbe163bb",
+        "filename": "board/felwinter/gpio.inc",
+        "patchSetId": 15
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2021-09-15T10:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "804b9e67_0dcb2a9f",
+      "range": {
+        "startLine": 28,
+        "startChar": 13,
+        "endLine": 28,
+        "endChar": 18
+      },
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88a56cea_838ad652",
@@ -134,6 +260,24 @@
       "writtenOn": "2021-09-13T20:58:19Z",
       "side": 1,
       "message": "Why not \n```\ntcpc_config[USBC_PORT_C1] \u003d tcpc_config_c1;\nppc_chips[USBC_PORT_C1] \u003d ppc_chips_c1;\nusb_muxes[USBC_PORT_C1] \u003d usb_muxes_c1;\n```\n?",
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f68c847_abc7eeec",
+        "filename": "board/felwinter/usbc_config.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1395690
+      },
+      "writtenOn": "2021-09-15T10:14:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88a56cea_838ad652",
       "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
