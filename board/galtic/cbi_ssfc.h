@@ -33,11 +33,21 @@ enum ec_ssfc_lid_sensor {
 	SSFC_SENSOR_LIS2DWL = 3
 };
 
+/*
+ * Battery Type (Bit 6)
+ */
+enum ec_ssfc_battery_type {
+	SSFC_BATTERY_TYPE_DEFAULT = 0,
+	SSFC_BATTERY_TYPE_2S = 1,
+	SSFC_BATTERY_TYPE_3S = 2
+};
+
 union dedede_cbi_ssfc {
 	struct {
 		uint32_t base_sensor : 3;
 		uint32_t lid_sensor : 3;
-		uint32_t reserved_2 : 26;
+		uint32_t battery_type : 1;
+		uint32_t reserved_2 : 25;
 	};
 	uint32_t raw_value;
 };
@@ -56,5 +66,11 @@ enum ec_ssfc_base_sensor get_cbi_ssfc_base_sensor(void);
  */
 enum ec_ssfc_lid_sensor get_cbi_ssfc_lid_sensor(void);
 
+/**
+ * Get the battery type from SSFC_CONFIG.
+ *
+ * @return the battery type.
+ */
+enum ec_ssfc_battery_type get_cbi_ssfc_battery_type(void);
 
 #endif /* _DEDEDE_CBI_SSFC__H_ */
