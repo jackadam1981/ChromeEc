@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "58943bb3_3b18a251",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-09-15T17:08:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4497507_616147de",
+      "revId": "99d68232b31d4aca52882cc6c43609d0c232126f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6582d4e2_5a9160f8",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-15T14:23:14Z",
       "side": 1,
       "message": "This has to accompany with coreboot change related to keeping the force_pwr GPIO kept low.",
+      "revId": "99d68232b31d4aca52882cc6c43609d0c232126f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c6e14f5_8413f619",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-09-15T17:08:12Z",
+      "side": 1,
+      "message": "Thanks, added dependency coreboot patch details",
+      "parentUuid": "6582d4e2_5a9160f8",
       "revId": "99d68232b31d4aca52882cc6c43609d0c232126f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
