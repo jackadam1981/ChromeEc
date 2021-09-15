@@ -140,6 +140,30 @@
       },
       "revId": "ea35354507745b5763bb85479a26409920ed37b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f541a598_7429d05d",
+        "filename": "board/cr50/dcrypto/sha_hw.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-15T02:03:55Z",
+      "side": 0,
+      "message": "yes, we still do a separate STALL_EN \u003d OFF before we change the settings.\n\nbut we also used to do separate FREQ\u003d2 and STALL_EN\u003dON writes here. now we just do `GREG32(KEYMGR, SHA_RAND_STALL_CTL) \u003d stall;` in one write. that\u0027s ok, right?",
+      "parentUuid": "e72d6aa2_6fb37f28",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 55
+      },
+      "revId": "ea35354507745b5763bb85479a26409920ed37b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
