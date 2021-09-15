@@ -16,6 +16,23 @@
       "message": "Hi Abe, Intel dont have commit queue rights.\nCan you please help submit it to commit?",
       "revId": "26df26126f709136b176f30690698979daf88d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c31bd933_673ee7f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-15T21:32:39Z",
+      "side": 1,
+      "message": "Per the builder output (not sure if Intel can see those), you need to update the definition of pd_get_am_discovery in TPCMv1 to match the changed prototype. Are you running make buildall?",
+      "revId": "26df26126f709136b176f30690698979daf88d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
