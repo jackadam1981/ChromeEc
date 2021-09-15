@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "70bb2c2f_9ed0688e",
+        "filename": "board/felwinter/board.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2021-09-15T12:29:16Z",
+      "side": 1,
+      "message": "switch to resolve",
+      "parentUuid": "4a345adb_3e51beb2",
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a935010_390956d6",
@@ -67,6 +85,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "6a935010_390956d6",
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbd860cf_39bbe073",
+        "filename": "board/felwinter/ec.tasklist",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2021-09-15T12:29:16Z",
+      "side": 1,
+      "message": "switch to resolve",
+      "parentUuid": "5ee27839_ede5de05",
       "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -108,6 +144,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "b1ef292f_5e950430",
+      "range": {
+        "startLine": 12,
+        "startChar": 28,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a3ad53_fd57d651",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2021-09-15T12:29:16Z",
+      "side": 1,
+      "message": "switch to resolve",
+      "parentUuid": "2c64023f_42d9cd7b",
       "range": {
         "startLine": 12,
         "startChar": 28,
@@ -165,6 +225,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cae1a9f4_d31e6c59",
+        "filename": "board/felwinter/fw_config.h",
+        "patchSetId": 15
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2021-09-15T12:29:16Z",
+      "side": 1,
+      "message": "switch to resolve",
+      "parentUuid": "f28e2452_dac739b8",
+      "range": {
+        "startLine": 14,
+        "startChar": 39,
+        "endLine": 14,
+        "endChar": 43
+      },
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acf2e99f_bb2aa6b4",
@@ -196,6 +280,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "acf2e99f_bb2aa6b4",
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d42f20e_b0f669a7",
+        "filename": "board/felwinter/gpio.inc",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2021-09-15T12:29:16Z",
+      "side": 1,
+      "message": "switch to resolve",
+      "parentUuid": "293928f1_483fbc26",
       "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -278,6 +380,24 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "88a56cea_838ad652",
+      "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4012194_f67adb3f",
+        "filename": "board/felwinter/usbc_config.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1259885
+      },
+      "writtenOn": "2021-09-15T12:29:16Z",
+      "side": 1,
+      "message": "switch to resolve",
+      "parentUuid": "7f68c847_abc7eeec",
       "revId": "090c9ddd7fd5808caa148c631406805f2bc9d6ae",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
