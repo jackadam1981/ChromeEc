@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5688e45e_1a169e67",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2021-09-15T13:04:21Z",
+      "side": 1,
+      "message": "Our number is follow #62\u0027s fan table.\nIf you have any questions about these numbers, you can discuss them on the issue tracker.\n\ncharge ic operating range -40 C to 125 C.",
+      "parentUuid": "a9a1ffc4_5427cfb4",
+      "range": {
+        "startLine": 349,
+        "startChar": 3,
+        "endLine": 350,
+        "endChar": 51
+      },
+      "revId": "e5ad1e2c30d1a39913daf29577e5d097ccfa0971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62eec373_25c13f7e",
         "filename": "board/brya/sensors.c",
         "patchSetId": 5
