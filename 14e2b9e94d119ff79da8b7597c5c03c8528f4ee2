@@ -67,6 +67,24 @@
       "message": "Hi Vijay,\nBesides adding the polling mode in each vendor\u0027s i2c driver, we propose another idea to use the I2C bitbang mode if the task doesn\u0027t start.\n\nCould you try the CL:3161869 to see if it can help to meet your requirement?",
       "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "120309df_6bb7ed7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-15T22:33:05Z",
+      "side": 1,
+      "message": "Hi CH,\nThis approach looks okay, but it may be little slow compared to polling mode I2C.\nAlso it contradicts the statement we have at\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/main.c#192",
+      "parentUuid": "30af64ec_a0f45456",
+      "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
