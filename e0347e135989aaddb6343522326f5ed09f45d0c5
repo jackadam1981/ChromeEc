@@ -69,6 +69,30 @@
       },
       "revId": "e0347e135989aaddb6343522326f5ed09f45d0c5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2dc49b7_71cf9c8e",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 4025,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-15T15:20:01Z",
+      "side": 1,
+      "message": "We\u0027re using the PG_PWR_S5 GPIO on guybrush to decide if Vconn can be sourced, and for our case there\u0027s some delay between when we enter G3 and when that GPIO drops.  So it could be in the 10s of ms, but I figured padding wouldn\u0027t hurt too much if other boards are also using GPIOs that take a little while to propagate.  I was hoping to make this work generally without having to dig into each board\u0027s criteria that it picked for pd_check_vconn_swap().",
+      "parentUuid": "210c3510_13d16017",
+      "range": {
+        "startLine": 4022,
+        "startChar": 0,
+        "endLine": 4025,
+        "endChar": 4
+      },
+      "revId": "e0347e135989aaddb6343522326f5ed09f45d0c5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
