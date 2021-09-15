@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bfd854d_71ab30d0",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-15T19:14:03Z",
+      "side": 1,
+      "message": "do not use g_bmi260_config_tbin here.\nPass tbin and tbin_len as argument, either g_bmi260_config_tbin or g_bmi220_config_tbin, depending of the type of sensor initialized.\nRemember that we may have board that are stuffed with either BMI220 or BMI260, and the EC knows only at init time.",
+      "revId": "f8ca27f0d867941d0de8afdd856ea0fdc730dff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15aa1684_0b3a8c76",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-15T19:14:03Z",
+      "side": 1,
+      "message": "#elif CONFIG_ACCELGYRO_BMI260",
+      "revId": "f8ca27f0d867941d0de8afdd856ea0fdc730dff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09f559af_526eb060",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5350,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-15T19:14:03Z",
+      "side": 1,
+      "message": "What happen when CONFIG_ACCELGYRO_BMI260 is not defined? I think the fixes I proposed in accelgyro_bmi_common.c should address the issue.",
+      "revId": "f8ca27f0d867941d0de8afdd856ea0fdc730dff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

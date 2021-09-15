@@ -67,6 +67,57 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "efc6c123_3565f6a3",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-15T19:14:03Z",
+      "side": 1,
+      "message": "This is wrong if you want to support both BMI220 and BMI260 on the same board.",
+      "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fb33a67_31581fe3",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-15T19:14:03Z",
+      "side": 1,
+      "message": "indentation:\n#if !defined(CONFIG_ACCELGYRO_BMI160) \u0026\u0026 \\\n    !defined(CONFIG_ACCELGYRO_BMI260) \u0026\u0026 \\\n    !defined(CONFIG_ACCELGYRO_BMI220) \u0026\u0026 \\\n    !defined(CONFIG_ACCELGYRO_BMI3XX)",
+      "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a749d7f6_1d958c16",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-15T19:14:03Z",
+      "side": 1,
+      "message": "The logic is not right: \n1 BMI220 is very similar to BMI260\n2 BMI160 and BMI220 drivers could be compiled together to be able to have SKU with BMI220 or BMI160.\n\nTherefore, the logic shoudl be:\n\n#if ( defined(CONFIG_ACCELGYRO_BMI260) || defined(CONFIG_ACCELGYRO_BMI220)) \u0026\u0026 \\\n    !defined(CONFIG_ACCELGYRO_BMI160)\n#define V(s_) 1\n#elif defined(CONFIG_ACCELGYRO_BMI160) \u0026\u0026 \\\n    (!defined(CONFIG_ACCELGYRO_BMI260) || defined(CONFIG_ACCELGYRO_BMI260))\n#define V(s_) 0\n#else\n#define V(s_) (((s_)-\u003echip \u003d! MOTIONSENSE_CHIP_BMI160)\n#endif",
+      "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e99eccf2_49240ec3",
         "filename": "include/config.h",
         "patchSetId": 3
@@ -108,6 +159,23 @@
         "endLine": 5338,
         "endChar": 6
       },
+      "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "670d7948_f119ce55",
+        "filename": "include/driver/accelgyro_bmi260.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-15T19:14:03Z",
+      "side": 1,
+      "message": "BMI220_CHIP_ID_MAJOR for consistency.",
       "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
