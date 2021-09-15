@@ -137,12 +137,24 @@ __maybe_unused static int chip_i2c_xfer_with_notify(
 		 * remove the flag so it won't confuse chip driver.
 		 */
 		no_pec_af &= ~I2C_FLAG_PEC;
-	if (i2c_port->drv)
+	if (i2c_port->drv) {
 		ret = i2c_port->drv->xfer(i2c_port, no_pec_af,
 					  out, out_size, in, in_size, flags);
-	else
+#ifdef CONFIG_I2C_BITBANG_WHEN_TASK_UNINIT
+	} else if (!task_start_called()) {
+		/* Try to put port in to raw bit bang mode. */
+		if (i2c_raw_mode(port, 1) != EC_SUCCESS)
+			return EC_ERROR_UNKNOWN;
+
+		ret = bitbang_drv.xfer(i2c_port, no_pec_af, out, out_size, in,
+					in_size, flags);
+		/* Go back from bitbang mode to normal mode */
+		i2c_raw_mode(port, 0);
+#endif
+	} else {
 		ret = chip_i2c_xfer(port, no_pec_af,
 				    out, out_size, in, in_size, flags);
+	}
 
 	if (IS_ENABLED(CONFIG_I2C_XFER_BOARD_CALLBACK))
 		i2c_end_xfer_notify(port, addr_flags);
