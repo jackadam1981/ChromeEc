@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "9a2bbdec_97e1c33e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-15T02:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15ed6f0a_194a6e29",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c70e21_c8d4325d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-15T02:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "886eb306_59566484",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "f8db3b81_ab4e2642",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 6
@@ -60,6 +108,24 @@
       "writtenOn": "2021-09-14T15:26:19Z",
       "side": 1,
       "message": "Hi Tang, do you think you can add a unit test to test/sbs_charging_v2.c?",
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcce1c37_7df0f288",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-15T02:51:07Z",
+      "side": 1,
+      "message": "This is an SI test and needs to be tested in a specific environment. The instrument is required to pull the battery voltage below 6V and test it under the state of keeping it below 6V in the precharge. So I think it is not necessary.",
+      "parentUuid": "f8db3b81_ab4e2642",
       "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -77,6 +143,30 @@
       "writtenOn": "2021-09-14T15:26:19Z",
       "side": 1,
       "message": "There are some duplicates here and in wakeup_battery. Do you think you can combine them?",
+      "range": {
+        "startLine": 1859,
+        "startChar": 12,
+        "endLine": 1859,
+        "endChar": 31
+      },
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17cc30e3_72454a35",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1859,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-15T02:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1150c1e_afce37b8",
       "range": {
         "startLine": 1859,
         "startChar": 12,
@@ -110,6 +200,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddc8ab37_8db04a96",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1865,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-15T02:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11917867_2226d057",
+      "range": {
+        "startLine": 1861,
+        "startChar": 0,
+        "endLine": 1865,
+        "endChar": 29
+      },
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1479ffa_a070b437",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-09-14T15:26:19Z",
       "side": 1,
       "message": "How about \u0027Low voltage protection for a battery\u0027? Then, you can add \u0027(a.k.a. deep charge inspection)\u0027 if you feel it\u0027s necessary.",
+      "range": {
+        "startLine": 612,
+        "startChar": 3,
+        "endLine": 612,
+        "endChar": 60
+      },
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49ac9860_0859b90e",
+        "filename": "include/config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 612,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-15T02:51:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d1479ffa_a070b437",
       "range": {
         "startLine": 612,
         "startChar": 3,
