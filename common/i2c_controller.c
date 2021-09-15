@@ -101,9 +101,11 @@ const struct i2c_port_t *get_i2c_port(const int port)
 	int i;
 
 	/* Find the matching port in i2c_ports[] table. */
-	for (i = 0; i < i2c_ports_used; i++) {
-		if (i2c_ports[i].port == port)
-			return &i2c_ports[i];
+	if (task_start_called()) {
+		for (i = 0; i < i2c_ports_used; i++) {
+			if (i2c_ports[i].port == port)
+				return &i2c_ports[i];
+		}
 	}
 
 	if (IS_ENABLED(CONFIG_I2C_BITBANG)) {
@@ -137,6 +139,7 @@ __maybe_unused static int chip_i2c_xfer_with_notify(
 		 * remove the flag so it won't confuse chip driver.
 		 */
 		no_pec_af &= ~I2C_FLAG_PEC;
+
 	if (i2c_port->drv)
 		ret = i2c_port->drv->xfer(i2c_port, no_pec_af,
 					  out, out_size, in, in_size, flags);
