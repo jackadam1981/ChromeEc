@@ -22,6 +22,30 @@
       },
       "revId": "ab71cda2bfdad8e40dca99d808302d038ee17963",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "057fbb34_125c44af",
+        "filename": "common/usb_pd_dual_role.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-09-15T01:13:36Z",
+      "side": 1,
+      "message": "It sounds legit to me.",
+      "parentUuid": "8be926d3_178689a7",
+      "range": {
+        "startLine": 181,
+        "startChar": 21,
+        "endLine": 181,
+        "endChar": 33
+      },
+      "revId": "ab71cda2bfdad8e40dca99d808302d038ee17963",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
