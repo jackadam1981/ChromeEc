@@ -2276,6 +2276,7 @@ static void register_sigaction(void)
 {
 	struct sigaction sigact;
 
+	memset(&sigact, 0, sizeof(sigact));
 	sigact.sa_handler = sighandler;
 	sigemptyset(&sigact.sa_mask);
 	sigact.sa_flags = 0;
