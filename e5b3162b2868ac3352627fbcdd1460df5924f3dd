@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04d1fddc_863fa210",
+        "filename": "board/primus/board.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-15T06:31:26Z",
+      "side": 1,
+      "message": "could you split this into a new file?\nnot sure what to call it... prochot.c or power_policy.c?\n\nalso, this is better done as a task. see power_button_task()\nor led_task() as an example. i think it\u0027s important to not\nuse the hook_task() as a worker task or state machine.\n\nit\u0027s probably OK to have the hook task send a tick message\nto your new task, or simply have an infinite loop in your\nnew task that sleeps for 1 second or whatever is appropriate.\n\nalso, split this up into some helper functions.",
+      "revId": "e5b3162b2868ac3352627fbcdd1460df5924f3dd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
