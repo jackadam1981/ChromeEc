@@ -212,6 +212,30 @@
       },
       "revId": "e5ad1e2c30d1a39913daf29577e5d097ccfa0971",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f6115e5_cde6e440",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-15T00:17:52Z",
+      "side": 1,
+      "message": "From b:191288950 looks like 95 is the limit, so I guess we can set 100 here, right?",
+      "parentUuid": "a362a5b2_f1fadbea",
+      "range": {
+        "startLine": 376,
+        "startChar": 33,
+        "endLine": 376,
+        "endChar": 36
+      },
+      "revId": "e5ad1e2c30d1a39913daf29577e5d097ccfa0971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
