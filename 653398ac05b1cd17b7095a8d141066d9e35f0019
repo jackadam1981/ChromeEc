@@ -52,6 +52,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78f3d1a_59d33417",
+        "filename": "board/blipper/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1486294
+      },
+      "writtenOn": "2021-09-15T02:55:28Z",
+      "side": 1,
+      "message": "Yes,the function only for convertible systems",
+      "parentUuid": "6fa42a07_5b388afc",
+      "revId": "653398ac05b1cd17b7095a8d141066d9e35f0019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "126b9064_1926f6a6",
@@ -65,6 +83,24 @@
       "writtenOn": "2021-09-14T17:25:48Z",
       "side": 1,
       "message": "I\u0027m not sure I understand why tablet mode would affect this?  The new board should use the same board version numbering as the old, since they\u0027re the same board in the EC code.",
+      "revId": "653398ac05b1cd17b7095a8d141066d9e35f0019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7e443a1_0fe636cb",
+        "filename": "board/blipper/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1486294
+      },
+      "writtenOn": "2021-09-15T02:55:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "126b9064_1926f6a6",
       "revId": "653398ac05b1cd17b7095a8d141066d9e35f0019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -100,6 +136,24 @@
       "side": 1,
       "message": "Agreed, this shouldn\u0027t be set on blipper.  \n\nYou may also find it\u0027s unnecessary to have this set in early development, as it supports many of the same features as disabling WP.  The only exception would be a few commands specifically using this config (ex. being able to change your CBI board version).",
       "parentUuid": "67a8f6bb_a11717cb",
+      "revId": "653398ac05b1cd17b7095a8d141066d9e35f0019",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d2c523_12818fec",
+        "filename": "board/blipper/board.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1486294
+      },
+      "writtenOn": "2021-09-15T02:55:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b77147a_79d18ab8",
       "revId": "653398ac05b1cd17b7095a8d141066d9e35f0019",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
