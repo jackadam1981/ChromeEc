@@ -2499,6 +2499,18 @@
 #undef CONFIG_I2C_BITBANG
 
 /*
+ * If defined and an I2C transaction is called before the task scheduling
+ * starts, switch the I2C pins from the I2C function to GPIO. Start the I2C
+ * transaction with the I2C bitbang driver's i2c_bitbang_xfer API.
+ * Enable this when:
+ * - An early I2C transaction is required (e.x. discrete keyboard) before the
+ *    task scheduling starts, and
+ * - The EC's I2C driver is implemented with the task-ware APIs
+ *    (e.x. task_wait_event/task_set_event).
+ */
+#undef CONFIG_I2C_BITBANG_WHEN_TASK_UNINIT
+
+/*
  * If defined, reduce I2C traffic from update functions (i2c_update8/16
  * and i2c_field_update8/16) by skipping the write if the new value is
  * unchanged from the old value. This assumes no side effects from writing an
@@ -6469,6 +6481,10 @@
 /* AMD STT requires AMD SB-RMI to be enabled */
 #if defined(CONFIG_AMD_STT) && !defined(CONFIG_AMD_SB_RMI)
 #define CONFIG_AMD_SB_RMI
+#endif
+
+#ifdef CONFIG_I2C_BITBANG_WHEN_TASK_UNINIT
+#define CONFIG_I2C_BITBANG
 #endif
 
 #endif  /* __CROS_EC_CONFIG_H */
