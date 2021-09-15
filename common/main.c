@@ -19,6 +19,7 @@
 #include "gpio.h"
 #include "hooks.h"
 #include "i2c.h"
+#include "i2c_bitbang.h"
 #include "keyboard_scan.h"
 #include "link_defs.h"
 #include "lpc.h"
@@ -38,6 +39,20 @@
 #define CPUTS(outstr) cputs(CC_SYSTEM, outstr)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
+
+static void enable_i2c_raw_mode(int enable)
+{
+#ifdef CONFIG_I2C_BITBANG
+	int i;
+
+	for (i = 0; i < i2c_bitbang_ports_used; i++) {
+		if (i2c_raw_mode(i2c_bitbang_ports[i].port, enable))
+			CPRINTS("I2C p%d: Failed to %s raw mode",
+				i2c_bitbang_ports[i].port,
+				enable ? "enable" : "disable");
+	}
+#endif
+}
 
 test_mockable __keep int main(void)
 {
@@ -194,6 +209,13 @@ test_mockable __keep int main(void)
 		 */
 		i2c_init();
 	}
+
+	/*
+	 * Enable I2C raw mode for the ports which need pre-task i2c
+	 * transactions.
+	 */
+	enable_i2c_raw_mode(1);
+
 #ifdef HAS_TASK_KEYSCAN
 	keyboard_scan_init();
 #endif
@@ -245,6 +267,13 @@ test_mockable __keep int main(void)
 		}
 	}
 #endif  /* !CONFIG_VBOOT_EFS && CONFIG_RWSIG && !HAS_TASK_RWSIG */
+
+	/*
+	 * Disable I2C raw mode for the ports which needed pre-task i2c
+	 * transactions as the task is about to start and the I2C can resume
+	 * to event based transactions.
+	 */
+	enable_i2c_raw_mode(0);
 
 	/*
 	 * Print the init time.  Not completely accurate because it can't take
