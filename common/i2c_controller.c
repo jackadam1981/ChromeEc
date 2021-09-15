@@ -137,9 +137,13 @@ __maybe_unused static int chip_i2c_xfer_with_notify(
 		 * remove the flag so it won't confuse chip driver.
 		 */
 		no_pec_af &= ~I2C_FLAG_PEC;
+
 	if (i2c_port->drv)
 		ret = i2c_port->drv->xfer(i2c_port, no_pec_af,
 					  out, out_size, in, in_size, flags);
+	else if (IS_ENABLED(CONFIG_I2C_BITBANG) && !task_start_called())
+		ret = bitbang_drv.xfer(i2c_port, no_pec_af, out, out_size, in,
+					in_size, flags);
 	else
 		ret = chip_i2c_xfer(port, no_pec_af,
 				    out, out_size, in, in_size, flags);
