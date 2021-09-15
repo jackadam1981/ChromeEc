@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e5ca29f_c4bf97db",
+        "filename": "board/brask/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1347775
+      },
+      "writtenOn": "2021-09-15T17:14:58Z",
+      "side": 1,
+      "message": "I think 1000 ms is fine based on our current usage. It would be different maybe if this device had a battery. This is what we had on Puff, I think we should leave as-is for now.",
+      "parentUuid": "d32e16ee_2e537df3",
+      "range": {
+        "startLine": 147,
+        "startChar": 25,
+        "endLine": 147,
+        "endChar": 29
+      },
+      "revId": "bcae6878104a8929848b73ce24851693009f916c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "069ba3ac_f6a88a2a",
         "filename": "board/brask/board.c",
         "patchSetId": 4
