@@ -62,3 +62,9 @@ enum fw_config_hdmi_type get_cbi_fw_config_hdmi(void)
 	return ((cached_fw_config & FW_CONFIG_HDMI_MASK)
 		>> FW_CONFIG_HDMI_OFFSET);
 }
+
+enum fw_config_battery_type get_cbi_fw_config_battery_type(void)
+{
+	return ((cached_fw_config & FW_CONFIG_BATTERY_MASK)
+		>> FW_CONFIG_BATTERY_OFFSET);
+}

@@ -70,11 +70,22 @@ enum fw_config_hdmi_type {
 #define FW_CONFIG_HDMI_OFFSET			17
 #define FW_CONFIG_HDMI_MASK			GENMASK(17, 17)
 
+/*
+ * Battery (1 bit)
+ */
+enum fw_config_battery_type {
+	BATTERY_CELL_TYPE_2S = 0,
+	BATTERY_CELL_TYPE_3S = 1,
+};
+#define FW_CONFIG_BATTERY_OFFSET		19
+#define FW_CONFIG_BATTERY_MASK			GENMASK(19, 19)
+
 enum fw_config_db get_cbi_fw_config_db(void);
 enum fw_config_kblight_type get_cbi_fw_config_kblight(void);
 enum fw_config_tablet_mode_type get_cbi_fw_config_tablet_mode(void);
 enum fw_config_numeric_pad_type get_cbi_fw_config_numeric_pad(void);
 enum fw_config_hdmi_type get_cbi_fw_config_hdmi(void);
+enum fw_config_battery_type get_cbi_fw_config_battery_type(void);
 
 int get_cbi_fw_config_keyboard(void);
 
