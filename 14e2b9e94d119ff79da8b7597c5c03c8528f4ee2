@@ -50,6 +50,23 @@
       "message": "Add Michal in this loop. Need more time to figure out the appropriate solution.",
       "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30af64ec_a0f45456",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-09-15T10:23:47Z",
+      "side": 1,
+      "message": "Hi Vijay,\nBesides adding the polling mode in each vendor\u0027s i2c driver, we propose another idea to use the I2C bitbang mode if the task doesn\u0027t start.\n\nCould you try the CL:3161869 to see if it can help to meet your requirement?",
+      "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
