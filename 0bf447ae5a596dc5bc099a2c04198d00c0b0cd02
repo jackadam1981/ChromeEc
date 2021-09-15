@@ -16,6 +16,23 @@
       "message": "to fix, you can just run \"black .\" in the zmake directory, and you should be done",
       "revId": "0bf447ae5a596dc5bc099a2c04198d00c0b0cd02",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d512eb3_d96158e1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-15T15:18:56Z",
+      "side": 1,
+      "message": "I don\u0027t think showing the diff is a bad idea tho... just don\u0027t manually try and fix it :P",
+      "revId": "0bf447ae5a596dc5bc099a2c04198d00c0b0cd02",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
