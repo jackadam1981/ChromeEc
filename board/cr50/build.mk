@@ -85,6 +85,7 @@ dirs-y += $(BDIR)/tpm2
 # Objects that we need to build
 board-y =  board.o
 board-y += ap_state.o
+board-$(CONFIG_CASE_CLOSED_DEBUG_V1)+=ccd_config.o
 board-y += closed_source_set1.o
 board-y += ec_state.o
 board-y += int_ap_extension.o
@@ -92,9 +93,12 @@ board-y += power_button.o
 board-y += servo_state.o
 board-y += ap_uart_state.o
 board-y += factory_mode.o
+board-$(CONFIG_PINWEAVER)+=pinweaver.o
 board-${CONFIG_RDD} += rdd.o
+board-$(CONFIG_RMA_AUTH)+=rma_auth.o
 board-${CONFIG_USB_SPI_V2} += usb_spi.o
 board-${CONFIG_USB_I2C} += usb_i2c.o
+board-$(CONFIG_U2F)+=u2f.o
 board-y += recovery_button.o
 
 fips-y=

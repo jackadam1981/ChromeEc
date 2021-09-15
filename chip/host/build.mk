@@ -14,6 +14,7 @@ ifndef CONFIG_KEYBOARD_NOT_RAW
 chip-$(HAS_TASK_KEYSCAN)+=keyboard_raw.o
 endif
 
+dirs-y += board/cr50
 ifeq ($(CONFIG_DCRYPTO),y)
 CPPFLAGS += -I$(abspath ./board/cr50/dcrypto)
 dirs-y += board/cr50/dcrypto
