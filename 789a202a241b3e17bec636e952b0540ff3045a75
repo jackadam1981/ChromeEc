@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "860729bf_6b8047dd",
+        "filename": "board/kukui/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 569,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-09-15T09:10:02Z",
+      "side": 1,
+      "message": "You might want to set is_bmi220_present \u003d true inside board_detect_bmi220.",
+      "range": {
+        "startLine": 569,
+        "startChar": 12,
+        "endLine": 569,
+        "endChar": 29
+      },
+      "revId": "789a202a241b3e17bec636e952b0540ff3045a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
