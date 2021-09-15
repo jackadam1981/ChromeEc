@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "069ba3ac_f6a88a2a",
+        "filename": "board/brask/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-15T02:58:50Z",
+      "side": 1,
+      "message": "I think this line should be inside the \"if\" above. Otherwise it might be called with pi \u003d { 0 }",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 29
+      },
+      "revId": "bcae6878104a8929848b73ce24851693009f916c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf5631c6_ce887b04",
+        "filename": "board/brask/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-15T02:58:50Z",
+      "side": 1,
+      "message": "Shouldn\u0027t CHARGE_PORT_COUNT be defined here?",
+      "range": {
+        "startLine": 152,
+        "startChar": 23,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "bcae6878104a8929848b73ce24851693009f916c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
