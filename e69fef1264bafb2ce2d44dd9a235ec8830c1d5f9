@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "371d65f2_f30941f5",
+        "filename": "board/redrix/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-15T22:20:35Z",
+      "side": 1,
+      "message": "Code duplication: why 2 modes are needed if all the values are equal?",
+      "range": {
+        "startLine": 85,
+        "startChar": 29,
+        "endLine": 85,
+        "endChar": 45
+      },
+      "revId": "e69fef1264bafb2ce2d44dd9a235ec8830c1d5f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
