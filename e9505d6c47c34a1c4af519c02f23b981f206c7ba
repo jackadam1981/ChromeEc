@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28041f41_2a3e9edf",
+        "filename": "zephyr/zmake/tests/test_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-15T22:51:00Z",
+      "side": 1,
+      "message": "instead of copy-pasting the test, use pytest.mark.parametrize to parametrize the existing test",
+      "range": {
+        "startLine": 170,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 20
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46ac95da_550e8e60",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-15T22:51:00Z",
+      "side": 1,
+      "message": "should be a tuple instead of a list",
+      "range": {
+        "startLine": 144,
+        "startChar": 72,
+        "endLine": 144,
+        "endChar": 73
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68440ee3_a7771480",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-15T22:51:00Z",
+      "side": 1,
+      "message": "instead of putting in commas, use a list to collect values and \u0027,\u0027.join(...), this is significantly less error prone",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 36
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fe86a0a_ec8abccf",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-15T22:51:00Z",
+      "side": 1,
+      "message": "if you start out vcs_hashes as \"_\", I think this \"first\" logic can be avoided",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2807e3b1_42de98c6",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-15T22:51:00Z",
+      "side": 1,
+      "message": "shouldn\u0027t they be the same at this point anyway?",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 50
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "849b6c73_bf9a9b34",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-15T22:51:00Z",
+      "side": 1,
+      "message": "assert len(short_version_string) \u003c\u003d 31\n\nprinciple: if something went wrong, fail loudly",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 52
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "737b6afa_a95e4d98",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-15T22:51:00Z",
+      "side": 1,
+      "message": "drop [ ... ] and it will return a tuple",
+      "range": {
+        "startLine": 141,
+        "startChar": 11,
+        "endLine": 141,
+        "endChar": 12
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a377c2b5_bb92614d",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-15T22:51:00Z",
+      "side": 1,
+      "message": "drop ( .. )",
+      "range": {
+        "startLine": 595,
+        "startChar": 8,
+        "endLine": 595,
+        "endChar": 9
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
