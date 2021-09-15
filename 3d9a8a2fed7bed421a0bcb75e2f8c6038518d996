@@ -144,6 +144,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c422a4e5_302eafa6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-09-15T10:40:49Z",
+      "side": 1,
+      "message": "\u003e It looks like tc_low_power_mode_run should transition to an Unattached state or DRP Auto Toggle if supported after CONFIG_USB_PD_TCPC_LPM_EXIT_DEBOUNCE (default 25 ms). Note that that delay is for debouncing CC. If the chip can get a stable CC faster than the default 25 ms, we can shorten it. If I understand your spec citation correctly, we should have up to 70 ms to transition out of LPM. (With our actual DRP timings in TCPMv2, I think we have ~41 ms.) When we transition to TC_DRP_AUTO_TOGGLE, we retain the current CC value for ~dcSRC.DRP * tDRP.\n\nFor not support auto toggle \u0026\u0026 support LPM case:\nI think we should have up to ~30ms(tDRP − dcSRC.DRP ∙ tDRP) or ~40ms(dcSRC.DRP ∙ tDRP) to transition out of LPM, then go to unattached state for toggling.\n\u003cp.s\u003e\n(dcSRC.DRP ∙ tDRP): cc keep asserting Rp time\n(tDRP − dcSRC.DRP ∙ tDRP): cc keep asserting Rd time\n\nBase on our TCPMv2 timing:\ntDRP \u003d tDRPTransition + (dcSRC.DRP ∙ tDRP) + (tDRP − dcSRC.DRP ∙ tDRP) + tDRPTransition\n~71ms \u003d ~0.5ms + 40ms + 30ms + ~0.5ms \nAbove times are ideal, it doesn\u0027t include cpu executing instruction times.  \n\nOr we could just implement auto toggle mode on it83xx/it8xxx2 for the requestion that do LPM when drp_state is PD_DRP_TOGGLE_ON and cc is open.  \n\n\n\u003e Are you saying we should toggle CC immediately when we enter Auto Toggle? Or are you saying that we take too long to transition to TC_DRP_AUTO_TOGGLE? Or something else?\n\nSorry, ** ** correct the time: \nBut the problem is that TCPMv2 can\u0027t toggle Rp/Rd in LPM state when ** (dcSRC.DRP ∙ tDRP) or (tDRP − dcSRC.DRP ∙ tDRP) ** time is up.\nSo (the not support dual role auto toggle mode TCPC \u0026\u0026 PD_DRP_TOGGLE_ON of drp_state) should keep toggling within ** (dcSRC.DRP ∙ tDRP) or (tDRP − dcSRC.DRP ∙ tDRP) ** even when cc is open.\n\nWe should toggle CC immediately when (dcSRC.DRP ∙ tDRP) or (tDRP − dcSRC.DRP ∙ tDRP) time is up.",
+      "parentUuid": "f62ef596_4dada52f",
+      "revId": "3d9a8a2fed7bed421a0bcb75e2f8c6038518d996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2a9c144f_a05d805d",
         "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
         "patchSetId": 5
