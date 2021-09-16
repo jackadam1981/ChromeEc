@@ -92,6 +92,13 @@ void set_usb_mux_with_current_data_role(int port)
 		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
 			tc_get_polarity(port));
 	/*
+	 * If new data role isn't DFP and we only support DFP, also disconnect.
+	 */
+	else if (IS_ENABLED(CONFIG_USBC_SS_MUX_UFP_ONLY) &&
+			tc_get_data_role(port) != PD_ROLE_UFP)
+		usb_mux_set(port, TYPEC_MUX_NONE, USB_SWITCH_DISCONNECT,
+			tc_get_polarity(port));
+	/*
 	 * Otherwise connect mux since we are in S3+
 	 */
 	else
