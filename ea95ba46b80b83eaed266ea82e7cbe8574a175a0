@@ -16,6 +16,92 @@
       "message": "There are some outstanding issues with this, but I think the comments pose enough unanswered questions that it wouldn\u0027t be ready to submit today anyway.\n\nThe issues for posterity:\n1. I left some TODOs. Doh!\n2. I created another timer, and that broke a static assert in usb_pd_timers.h. I think it\u0027s an easy fix, but I haven\u0027t tried it yet.\n3. I haven\u0027t tested my new code yet.",
       "revId": "ea95ba46b80b83eaed266ea82e7cbe8574a175a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbf7d4e2_aeb25318",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1552,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-16T21:24:04Z",
+      "side": 1,
+      "message": "True would indicate we ran a \"set_state\" to a new state?",
+      "range": {
+        "startLine": 1552,
+        "startChar": 10,
+        "endLine": 1552,
+        "endChar": 14
+      },
+      "revId": "ea95ba46b80b83eaed266ea82e7cbe8574a175a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ea95b0c_f5bb7e57",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 7031,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-16T21:24:04Z",
+      "side": 1,
+      "message": "What is msg_check if we fail to get a GoodCRC?  I\u0027ve never checked",
+      "range": {
+        "startLine": 7031,
+        "startChar": 12,
+        "endLine": 7031,
+        "endChar": 44
+      },
+      "revId": "ea95ba46b80b83eaed266ea82e7cbe8574a175a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ba86bcb_6f64d8d7",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 7152,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-16T21:24:04Z",
+      "side": 1,
+      "message": "I\u0027d guess it\u0027s right.  Have you tested data resetting with TBT or DP mode active, just to check?",
+      "range": {
+        "startLine": 7152,
+        "startChar": 2,
+        "endLine": 7152,
+        "endChar": 44
+      },
+      "revId": "ea95ba46b80b83eaed266ea82e7cbe8574a175a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a82cc09f_a706ce81",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 7169,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-16T21:24:04Z",
+      "side": 1,
+      "message": "Is this timer still being used?",
+      "revId": "ea95ba46b80b83eaed266ea82e7cbe8574a175a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

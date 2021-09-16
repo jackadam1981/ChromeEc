@@ -564,6 +564,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f31e443d_ebff97de",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 6971,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-16T21:24:04Z",
+      "side": 1,
+      "message": "I may have missed the longer comment block?  It looks like you settled on using the flag PE_FLAGS_DATA_RESET_COMPLETE to distinguish the message sending phase?",
+      "parentUuid": "c05fe3f1_18441ed0",
+      "revId": "cee15fe67da345309eddb23c85c3f63d5fe2c8e7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7a30f51_5c386738",

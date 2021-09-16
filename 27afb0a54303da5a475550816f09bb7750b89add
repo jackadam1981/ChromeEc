@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31f6b4d2_42b0f47e",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-16T21:24:04Z",
+      "side": 1,
+      "message": "Okay, so this sounds like good behavior for now.  Just make sure it\u0027s clear and commented as expected behavior",
+      "parentUuid": "5d876a16_aa2b3c43",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4a0c45d_1653a4ec",
@@ -264,6 +282,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2868767_2bfd10ce",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7114,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-16T21:24:04Z",
+      "side": 1,
+      "message": "We can keep this in the PE for now.  I think the spec assumes to some degree that the DPM is the one in charge of turning on/off Vconn and setting the muxes and such, which I assume is why it says the DPM should complete these steps.",
+      "parentUuid": "565862ca_d9957609",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ce073a76_a5d464a0",
@@ -295,6 +331,24 @@
       "side": 1,
       "message": "I wasn\u0027t, but I am a bit now.\n\nI think the most reasonable interpretation of the process in 6.3.14 is that it describes the entire Data Reset process, not the behavior in a particular state. (As a side note, I think this list of steps should go in the description of the *process* in 6.8.2, not the description of the message.) Step 3) Reset the cable would potentially start in PE_DDR_Wait_for_VCONN_Off and finish in PE_DDR_Perform_Data_Reset.\n\nBut that would imply that steps 1) and 2) take place in PE_DDR_Send_Data_Reset, presumably after receiving the Accept. (They could also happen at the very beginning of Wait_for_VCONN_Off or Perform_Data_Reset, depending on the initial VCONN Source, but that sounds pointlessly complicated.)\n\nThat implication is not reflected in the state diagram, and if it\u0027s correct, \"Tell the Device Policy Manager to perform Data Reset\" from the diagram would be ambiguous.\n\nIt\u0027s probably worth checking with the WG.",
       "parentUuid": "ce073a76_a5d464a0",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c895d83_cb843c52",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7131,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-16T21:24:04Z",
+      "side": 1,
+      "message": "Cool.  I\u0027ll send something out soon.",
+      "parentUuid": "0f16ce30_eb86b276",
       "revId": "27afb0a54303da5a475550816f09bb7750b89add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -406,6 +460,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f65f926_321895f6",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7152,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-16T21:24:04Z",
+      "side": 1,
+      "message": "Yup.  I\u0027ll CC Benson on the review first in case I\u0027m missing something obvious",
+      "parentUuid": "adff60ea_d626ecd0",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fe444473_cf0e1e14",
         "filename": "common/usbc/usb_pe_drp_sm.c",
         "patchSetId": 6
@@ -441,6 +513,30 @@
       "side": 1,
       "message": "As discussed elsewhere, I suspect that the intent of the spec was not that it be checked in all states.\n\nIf we used a parent state, and the intent were as I suspect, then the children of the parent state would be PE_DDR_Wait_for_VCONN_Off and PE_DDR_Perform_Data_Reset. This design would cause the timer to start at the beginning of either of those states as opposed to the end of PE_DDR_Send_Data_Reset, as specified. The timer is long enough that that probably wouldn\u0027t really matter.\n\nI\u0027d lean towards not using a parent state to conform more closely to the spec. If we wanted the spec to support an easier implementation (for us), I could submit an ECR that says to start it at the beginning of those two states instead of the end of Send_Data_Reset.",
       "parentUuid": "fe444473_cf0e1e14",
+      "range": {
+        "startLine": 7167,
+        "startChar": 31,
+        "endLine": 7167,
+        "endChar": 55
+      },
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24e4c754_87fec3c4",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7167,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-16T21:24:04Z",
+      "side": 1,
+      "message": "I was thinking the parent state\u0027s only job would be to check for expiration and run error recovery, not start the timer.  Just to reduce code duplication if the timer expiration needs checked in multiple states.  But it\u0027s up to you.",
+      "parentUuid": "a2e22ecc_a2953a69",
       "range": {
         "startLine": 7167,
         "startChar": 31,
@@ -552,6 +648,24 @@
       "side": 1,
       "message": "I think you\u0027re probably right. Note, however, that Godzilla Creek, the only USB4 implementation I have access to, responds Not Supported to Data Reset Complete. I haven\u0027t seen it interrupt the process, but I\u0027m not sure what to expect.\n\nIt also feels a bit draconian to go into Error Recovery after they interrupted a process that, from both of our points of view, was already done.\n\n(As a side note, I was originally just firing and forgetting this from the exit function, because that\u0027s what the spec suggests that we do. I only added this check because our code was sending a PRS and discarding this. Since Godzilla Creek is clearly not waiting for it, I don\u0027t have any evidence of what could be expected to happen if we don\u0027t send it. The spec implies that the UFP is supposed to wait forever. I\u0027m feeling another ECR coming.)",
       "parentUuid": "dedfef4c_5eefc1b6",
+      "revId": "27afb0a54303da5a475550816f09bb7750b89add",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13bd72c4_64a9a111",
+        "filename": "common/usbc/usb_pe_drp_sm.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7179,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-16T21:24:04Z",
+      "side": 1,
+      "message": "Is Godzilla Creek sending a message before we can send Data_Reset_Complete?  I\u0027d only expect discard if we tried sending Data_Reset_Complete and a message came in before we could do this.\n\nWell, if you want to get involved in some PD WG ECRs, I wouldn\u0027t object :)",
+      "parentUuid": "43660f64_6229c4ec",
       "revId": "27afb0a54303da5a475550816f09bb7750b89add",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
