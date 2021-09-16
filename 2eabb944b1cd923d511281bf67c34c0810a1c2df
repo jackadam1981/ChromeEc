@@ -16,6 +16,24 @@
       "message": "i just noticed zephyr/shim/chip/npcx/system_external_storage.c also defines\nthese bits. @keith, i assume these changes need to happen in both places?\n",
       "revId": "2eabb944b1cd923d511281bf67c34c0810a1c2df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e0dcb29_ed3a7b99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-09-16T06:53:54Z",
+      "side": 1,
+      "message": "Hi Caveh,\nThank you to find out this.\nI have also corrected these in the zephyr side in the new patch set.",
+      "parentUuid": "7e8c9da1_b3efd25d",
+      "revId": "2eabb944b1cd923d511281bf67c34c0810a1c2df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
