@@ -16,6 +16,24 @@
       "message": "How do beetley and blipper differ? I don\u0027t see any identifiers in this CL referencing beetley. Additionally, there are already beetley files. I\u0027m a bit confused...",
       "revId": "1abe505feb323e99d697a7c60b0775934ffd4cc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cbb8e74_be4b125d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1486294
+      },
+      "writtenOn": "2021-09-16T02:12:48Z",
+      "side": 1,
+      "message": "Beetley and Blipper share the board, the changes are very small, so use the code of Blipper on Beetley, and I will delete the file of Beetley.\nhttps://partnerissuetracker.corp.google.com/issues/199479277",
+      "parentUuid": "7dc6dcf8_5eaac49e",
+      "revId": "1abe505feb323e99d697a7c60b0775934ffd4cc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
