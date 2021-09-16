@@ -121,6 +121,24 @@
       "parentUuid": "b82ffb0d_e02c221f",
       "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06f5748f_d3f7fd27",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-16T20:45:11Z",
+      "side": 1,
+      "message": "Hi Mulin \u0026 CH,\n1. 100KHz is fine for RVP usage but kukui project has 400KHz cofig.\nTo avoid breaking other ECs, we can add separate config to switch to bitbang or regular I2C\n2. ACK\nAny GPIO can be used for bitbang but we are explicitly using I2C lines here.\nI guess this is okay for RVP usage.\n\nHi Dauiske - any suggestions, can we continue with this approach?",
+      "parentUuid": "2b239664_4d0887c0",
+      "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
