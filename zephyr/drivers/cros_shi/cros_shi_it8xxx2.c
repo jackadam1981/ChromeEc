@@ -18,6 +18,7 @@
 #include "chipset.h"
 #include "console.h"
 #include "host_command.h"
+#include "system.h"
 
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_SPI, format, ## args)
