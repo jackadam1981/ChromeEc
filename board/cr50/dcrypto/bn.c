@@ -1232,10 +1232,12 @@ static int bn_probable_prime(const struct LITE_BIGNUM *p)
 		int i;
 
 		/* pick random A, such that A < p */
-		rand_bytes(A_buf, bn_size(&A));
+		if (!fips_rand_bytes(A_buf, bn_size(&A)))
+			return 0;
+
 		for (i = A.dmax - 1; i >= 0; i--) {
 			while (BN_DIGIT(&A, i) > BN_DIGIT(p, i))
-				BN_DIGIT(&A, i) = rand();
+				BN_DIGIT(&A, i) = (uint32_t)fips_trng_rand32();
 			if (BN_DIGIT(&A, i) < BN_DIGIT(p, i))
 				break;
 		}
