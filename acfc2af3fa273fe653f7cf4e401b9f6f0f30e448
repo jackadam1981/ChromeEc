@@ -16,6 +16,24 @@
       "message": "is this supported by all EC vendors? or for some it will be a new requirement?",
       "revId": "acfc2af3fa273fe653f7cf4e401b9f6f0f30e448",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06d2caae_37d3b6c5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-09-16T01:54:05Z",
+      "side": 1,
+      "message": "Hi,\nThis CL is trying to provide a possible solution to issue b:199374643 and it is also discussed in the CL:3138215.\nI believe all the EC should support the bitbang (GPIIO) mode of I2C transaction.",
+      "parentUuid": "cf903ac3_23fbf3ee",
+      "revId": "acfc2af3fa273fe653f7cf4e401b9f6f0f30e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
