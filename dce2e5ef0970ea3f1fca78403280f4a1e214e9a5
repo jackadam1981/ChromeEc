@@ -190,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5be975b4_a525259b",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-16T23:46:41Z",
+      "side": 1,
+      "message": "I understand. Current \u0027recovery\u0027 is \u0027deep sleep\u0027 - it will restart all tests. But, yes for TRNG we may need a more specific recovery which would reduce probability of false failure from 2^-50 to 2^-300? 6 retries",
+      "parentUuid": "718f5272_4cbef438",
+      "range": {
+        "startLine": 207,
+        "startChar": 3,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ff5ecc0_692f81e3",
