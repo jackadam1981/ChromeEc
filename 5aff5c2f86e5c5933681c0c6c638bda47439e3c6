@@ -16,6 +16,23 @@
       "message": "Tested on STM32-F411RE and Raspberry pi 4b with ChromeOS",
       "revId": "5aff5c2f86e5c5933681c0c6c638bda47439e3c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6787bf38_058a9473",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-16T09:55:56Z",
+      "side": 1,
+      "message": "sorry, I\u0027m not quite sure why this is needed. The board nucleo-f411re shouldn\u0027t be needed for rammus?",
+      "revId": "5aff5c2f86e5c5933681c0c6c638bda47439e3c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
