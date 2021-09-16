@@ -45,7 +45,7 @@
 		};
 		uart1_rx {
 			gpios = <&gpiob 0 GPIO_INPUT_PULL_UP>;
-			#enum-name = "GPIO_UART1_RX";
+			enum-name = "GPIO_UART1_RX";
 			label = "UART1_RX";
 		};
 		pch_smi_l {

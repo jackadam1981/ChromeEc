@@ -163,6 +163,8 @@ static int command_idle_stats(int argc, char **argv)
 {
 	const struct device *sys_dev = device_get_binding("CROS_SYSTEM");
 
+	enable_sleep(SLEEP_MASK_SPI); //test power policy!
+
 	timestamp_t ts = get_time();
 	uint64_t deep_sleep_ticks = cros_system_deep_sleep_ticks(sys_dev);
 
