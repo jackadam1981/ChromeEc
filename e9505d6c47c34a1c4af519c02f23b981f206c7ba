@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99736b94_cfc8af26",
+        "filename": "zephyr/zmake/tests/test_version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T22:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28041f41_2a3e9edf",
+      "range": {
+        "startLine": 170,
+        "startChar": 4,
+        "endLine": 170,
+        "endChar": 20
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46ac95da_550e8e60",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-15T22:51:00Z",
       "side": 1,
       "message": "should be a tuple instead of a list",
+      "range": {
+        "startLine": 144,
+        "startChar": 72,
+        "endLine": 144,
+        "endChar": 73
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "420e6136_1cf663f9",
+        "filename": "zephyr/zmake/tests/test_zmake.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T22:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46ac95da_550e8e60",
       "range": {
         "startLine": 144,
         "startChar": 72,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1c41618_dfc01f6a",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T22:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68440ee3_a7771480",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 36
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fe86a0a_ec8abccf",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-15T22:51:00Z",
       "side": 1,
       "message": "if you start out vcs_hashes as \"_\", I think this \"first\" logic can be avoided",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 36
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23ae4610_dbf39777",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T22:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fe86a0a_ec8abccf",
       "range": {
         "startLine": 125,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e82684db_bf376d9b",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T22:42:18Z",
+      "side": 1,
+      "message": "No, because the short string omits the num_commits.",
+      "parentUuid": "2807e3b1_42de98c6",
+      "range": {
+        "startLine": 136,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 50
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "849b6c73_bf9a9b34",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-15T22:51:00Z",
       "side": 1,
       "message": "assert len(short_version_string) \u003c\u003d 31\n\nprinciple: if something went wrong, fail loudly",
+      "range": {
+        "startLine": 139,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 52
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e912811_f57e9227",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T22:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "849b6c73_bf9a9b34",
       "range": {
         "startLine": 139,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cd21179_b71d3e49",
+        "filename": "zephyr/zmake/zmake/version.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T22:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "737b6afa_a95e4d98",
+      "range": {
+        "startLine": 141,
+        "startChar": 11,
+        "endLine": 141,
+        "endChar": 12
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a377c2b5_bb92614d",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-09-15T22:51:00Z",
       "side": 1,
       "message": "drop ( .. )",
+      "range": {
+        "startLine": 595,
+        "startChar": 8,
+        "endLine": 595,
+        "endChar": 9
+      },
+      "revId": "e9505d6c47c34a1c4af519c02f23b981f206c7ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a704aa_6a0397a9",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 595,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-16T22:42:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a377c2b5_bb92614d",
       "range": {
         "startLine": 595,
         "startChar": 8,
