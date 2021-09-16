@@ -142,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "574ce004_ef16d8d6",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-16T23:29:45Z",
+      "side": 1,
+      "message": "I honestly is even more concerned about the behavior in the field. you have added checking for errors. so, the situation where we before would get  a bad random but continue will now turn into user-visible errors (failed to generate owner password -\u003e some error on OOBE screen).\n\nif we anticipate rare but possible TRNG errors, retrying might be a life-saver",
+      "parentUuid": "0cad54db_23cd3514",
+      "range": {
+        "startLine": 207,
+        "startChar": 3,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ff5ecc0_692f81e3",
@@ -226,6 +250,30 @@
       "side": 1,
       "message": "it\u0027s faster. same performance for 32 bytes vs. 4 bytes for DRBG. And code is actually smaller.",
       "parentUuid": "444e20e6_511ed0e7",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 12
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cfec8a4_2c820139",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-16T23:29:45Z",
+      "side": 1,
+      "message": "\u003e same performance for 32 bytes vs. 4 bytes for DRBG\n\nbut we eat 32 bytes of entropy instead of 4, so will need to re-seed DRBG sooner.",
+      "parentUuid": "15bb4de3_e1949d65",
       "range": {
         "startLine": 201,
         "startChar": 2,
