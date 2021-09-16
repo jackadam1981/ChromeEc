@@ -86,12 +86,20 @@
 
 &i2c1_0 {
 	status = "okay";
-	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	/*
+	 * TODO(b/199550987): ps8805A3: Inconsistent device information
+	 * The PS8805 supports 1 MHz during normal operation, but only
+	 * 400 Khz during firmware updates. The I2C passthru commands don't
+	 * currently support changing the I2C frequency or notifying the EC
+	 * that a programming operation is going to start.  Lower the clock
+	 * rate to 400 kHz for all operation.
+	 */
+	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
 &i2c2_0 {
 	status = "okay";
-	clock-frequency = <I2C_BITRATE_FAST_PLUS>;
+	clock-frequency = <I2C_BITRATE_FAST>;
 };
 
 &i2c3_0 {
