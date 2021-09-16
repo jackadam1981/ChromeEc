@@ -28,6 +28,7 @@
 #include "usart_rx_dma.h"
 #include "usb_gpio.h"
 #include "usb_i2c.h"
+#include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_config.h"
 #include "usb_spi.h"
@@ -36,6 +37,18 @@
 
 #define CPRINTS(format, args...) cprints(CC_SYSTEM, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_SYSTEM, format, ## args)
+
+struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
+    [CHG] = {
+        .port_addr = 0x10,
+        .driver = &ps874x_usb_mux_driver,
+    },
+
+    [DUT] = { /* DUT port with UFP mux */
+        .port_addr = 0x10,
+        .driver = &ps874x_usb_mux_driver,
+    }
+};
 
 /******************************************************************************
  * GPIO interrupt handlers.

@@ -132,6 +132,11 @@
 #undef CONFIG_USB_PD_INITIAL_DRP_STATE
 #define CONFIG_USB_PD_INITIAL_DRP_STATE PD_DRP_FORCE_SINK
 
+#define CONFIG_USB_MUX_PS8742
+#define CONFIG_USBC_SS_MUX
+#define CONFIG_USBC_SS_MUX_UFP_ONLY
+#define I2C_PORT_USB_MUX I2C_PORT_MASTER
+
 /* Variable-current Rp no connect and Ra attach macros */
 #define CC_NC(port, cc, sel)  (pd_tcpc_cc_nc(port, cc, sel))
 #define CC_RA(port, cc, sel)  (pd_tcpc_cc_ra(port, cc, sel))
