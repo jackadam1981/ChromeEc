@@ -69,6 +69,24 @@
       "parentUuid": "28176716_910887e9",
       "revId": "26df26126f709136b176f30690698979daf88d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58fd6596_a1ccc4c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-16T20:26:28Z",
+      "side": 1,
+      "message": "Thanks. If practical, please run this before uploading every time. If it takes too long, you can also CQ+1 the CL, and the builder will do it for you (without submitting).",
+      "parentUuid": "a35c24c8_e4bf099b",
+      "revId": "26df26126f709136b176f30690698979daf88d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

@@ -34,6 +34,24 @@
       "parentUuid": "01dac749_17773d7c",
       "revId": "ed8645333669254e8da13aa8342518eecd0d8566",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a15523_cffeb4fc",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-16T20:26:28Z",
+      "side": 1,
+      "message": "No problem. You\u0027ve probably already seen this, but just for reference, here\u0027s the guide for uploading changes to Gerrit: https://chromium.googlesource.com/chromiumos/docs/+/HEAD/contributing.md#Upload-changes.",
+      "parentUuid": "e1043409_e326f929",
+      "revId": "ed8645333669254e8da13aa8342518eecd0d8566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
