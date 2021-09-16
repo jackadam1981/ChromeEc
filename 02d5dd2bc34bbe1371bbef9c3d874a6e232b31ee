@@ -16,6 +16,29 @@
       "message": "Upload patch 8",
       "revId": "02d5dd2bc34bbe1371bbef9c3d874a6e232b31ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1b3614f_bb7e9cb8",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-16T16:37:14Z",
+      "side": 1,
+      "message": "Suggest to simplify: \n```\n#ifdef CONFIG_SYSTEM_UNLOCKED\n  if (!db_is_plugged)\n    return DB_USB_ABSENT;\n#endif /* CONFIG_SYSTEM_UNLOCKED */\n\n  return fw_config.usb_db;\n```",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 35
+      },
+      "revId": "02d5dd2bc34bbe1371bbef9c3d874a6e232b31ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
