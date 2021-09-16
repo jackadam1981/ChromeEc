@@ -16,6 +16,24 @@
       "message": "After upstream kscan CL is merged and cherry-picked into third-party, then we can merge this CL.",
       "revId": "9b80177fa65091de1842f2017e2ee80fdab0b36d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30e99db8_cee6aefb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-16T14:50:13Z",
+      "side": 1,
+      "message": "When it is ready to merge, set the Auto-Submit and I will come back around and CQ+2",
+      "parentUuid": "06136aa0_9896e136",
+      "revId": "9b80177fa65091de1842f2017e2ee80fdab0b36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
