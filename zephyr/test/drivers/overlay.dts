@@ -532,4 +532,11 @@
 		reg = <0x84>;
 		label = "I2C_MOCK";
 	};
+
+	tcpc_emul: tcpc_emul@82 {
+		compatible = "cros,tcpc-emul";
+		status = "okay";
+		reg = <0x82>;
+		label = "TCPC_EMUL";
+	};
 };
