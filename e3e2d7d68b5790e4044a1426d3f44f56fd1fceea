@@ -119,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c0ad5d9_4ea0ea51",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-16T06:50:33Z",
+      "side": 1,
+      "message": "Vendor recommend to configure EC gpio as high-z if we don\u0027t use INT1. Keep this pin as input w/o enable interrupt.",
+      "parentUuid": "d63857f1_62e38c0f",
+      "range": {
+        "startLine": 232,
+        "startChar": 0,
+        "endLine": 232,
+        "endChar": 47
+      },
+      "revId": "e3e2d7d68b5790e4044a1426d3f44f56fd1fceea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a8a1afb5_33d4eec0",
