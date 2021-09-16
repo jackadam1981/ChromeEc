@@ -217,6 +217,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f589b55f_f8d0865b",
+        "filename": "board/brya/sensors.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1506077
+      },
+      "writtenOn": "2021-09-16T10:43:55Z",
+      "side": 1,
+      "message": "At present, please help from the compal thermal team to explain how to obtain these data.\n\nCurrently known information:\ncharger_bq25720(charger ic):the recommended operating conditions is -20 to 125C,\nand the max absolute temperature is -40 to 150C.\nThe PP3300 regulator operating range -40 C to 125 C.",
+      "parentUuid": "5e9ffd41_6f58c563",
+      "range": {
+        "startLine": 349,
+        "startChar": 3,
+        "endLine": 350,
+        "endChar": 51
+      },
+      "revId": "e5ad1e2c30d1a39913daf29577e5d097ccfa0971",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "62eec373_25c13f7e",
         "filename": "board/brya/sensors.c",
         "patchSetId": 5
