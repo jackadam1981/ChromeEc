@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89f5aa53_286f691b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-09-16T17:06:50Z",
+      "side": 1,
+      "message": "More Delay requirement is not hitting now, after hardreset solution. Currently the USB4 in S0-\u003eG3-\u003e wake cycling passed for multiple retrails.Earlier, when transition is  from G3 to S5, it was VCONN must to be get turned ON within the time frameand in case, if it fails, cable identity fails and doesnt retry as well. But with hardreset solution, evn if it fails, it attempts soft reset and hard reset attempt again \u0026 is getting resolved.  For the time being i will abandon this change. In future, if we hit any failure due to this delay requirement, we  will add this back.",
+      "revId": "4156bbff914a7eb58108e52f5ea49cbfc554d54b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
