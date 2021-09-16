@@ -147,6 +147,7 @@ properties:
       - GPIO_SYS_RST_ODL
       - GPIO_TABLET_MODE_L
       - GPIO_TRACKPAD_INT_GATE
+      - GPIO_UART1_RX
       - GPIO_USB_A_LOW_PWR_OD
       - GPIO_USB_A0_FAULT_ODL
       - GPIO_USB_A0_OC_ODL
