@@ -49,6 +49,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "298bcdd5_33e38a47",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-16T22:29:03Z",
+      "side": 1,
+      "message": "is it worth retrying a few times before giving up?",
+      "range": {
+        "startLine": 207,
+        "startChar": 3,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ff5ecc0_692f81e3",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-16T22:29:03Z",
+      "side": 1,
+      "message": "how about adding fips_rand_nonzero_bytes()? it feels like it\u0027s a pretty common use case and it maybe simpler to filer out zeroes in the inner loop",
+      "range": {
+        "startLine": 311,
+        "startChar": 5,
+        "endLine": 311,
+        "endChar": 20
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "444e20e6_511ed0e7",
         "filename": "board/cr50/dcrypto/rsa.c",
         "patchSetId": 3
