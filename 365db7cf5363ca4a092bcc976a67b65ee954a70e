@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e1f3db8_2c0a5192",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-16T23:31:47Z",
+      "side": 1,
+      "message": "+2 with nits. the main is understanding if retrying would help. the rest is optimizations/cosmetics",
+      "revId": "365db7cf5363ca4a092bcc976a67b65ee954a70e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ed32f806_c3c57dce",
