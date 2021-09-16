@@ -103,6 +103,24 @@
       "parentUuid": "120309df_6bb7ed7b",
       "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b239664_4d0887c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-09-16T02:24:00Z",
+      "side": 1,
+      "message": "Hi Vijay:\n\nAdd one thing for CH\u0027s approach.\n1. It is only a little bit slower before tasks initiation is completed. Once task_start() was executed, the i2c driver resumes normal mode with its module. It\u0027s a riskless solution since we don\u0027t know when to switch polling and task event sync mechanisms via current i2c api interfaces.\n2. As CH mentioned, the most benefit of this approach is that it is for all ec vendors. Once the customers choose the other ec vendors for a chromebook or rvp system with discrete keyboards. They needn\u0027t implement the polling mode for i2c driver again.\n\nRegarding contradiction, the bitbang mode is also an implementation of i2c transaction. Isn\u0027t it?",
+      "parentUuid": "b82ffb0d_e02c221f",
+      "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
