@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "821851de_7d1f10cf",
+        "filename": "board/cr50/dcrypto/bn.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-16T22:25:02Z",
+      "side": 1,
+      "message": "do we care about rand_valid() here?",
+      "range": {
+        "startLine": 1240,
+        "startChar": 32,
+        "endLine": 1240,
+        "endChar": 48
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aba1ceab_c3056263",
+        "filename": "board/cr50/dcrypto/dcrypto_bn.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-16T22:25:02Z",
+      "side": 1,
+      "message": "check for rand_valid()?",
+      "range": {
+        "startLine": 1163,
+        "startChar": 11,
+        "endLine": 1164,
+        "endChar": 30
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "444e20e6_511ed0e7",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-16T22:25:02Z",
+      "side": 1,
+      "message": "why did we switch to generating random bytes in SHA256_DIGEST_SIZE increments? iiuc PS_len is always under a dozen bytes, so going byte-by-byte (as before) might be better. it is fips_rand_bytes, not fips_trng_bytes, so even fips_rand_bytes(r, 1) should be ok. or can do fips_rand_bytes(padded, PS_len), then scan for 0s, and starting with the first zero do fips_rand_bytes(padded, PS_len - index_of_zero).",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 12
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "32c5bca3_6794c7b5",
+        "filename": "board/cr50/dcrypto/trng.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-16T22:25:02Z",
+      "side": 1,
+      "message": "convert to (uint32_t)? do we care about checking rand_valid()?",
+      "range": {
+        "startLine": 219,
+        "startChar": 11,
+        "endLine": 219,
+        "endChar": 27
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
