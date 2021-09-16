@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bf579f5_fa82a5ad",
+        "filename": "board/cr50/dcrypto/bn.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-16T23:07:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "821851de_7d1f10cf",
+      "range": {
+        "startLine": 1240,
+        "startChar": 32,
+        "endLine": 1240,
+        "endChar": 48
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aba1ceab_c3056263",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-16T22:25:02Z",
       "side": 1,
       "message": "check for rand_valid()?",
+      "range": {
+        "startLine": 1163,
+        "startChar": 11,
+        "endLine": 1164,
+        "endChar": 30
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e71bf02a_5c3a4686",
+        "filename": "board/cr50/dcrypto/dcrypto_bn.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1164,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-16T23:07:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aba1ceab_c3056263",
       "range": {
         "startLine": 1163,
         "startChar": 11,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cad54db_23cd3514",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-16T23:07:57Z",
+      "side": 1,
+      "message": "when reading from TRNG regs happens there are retries. I\u0027m thinking about recovery from failed tests, but that would be better in fips_trng32(), not outside. we can power down TRNG, repeat health tests and if it works - continue. I will add it as a separate CL not to complicate this one.",
+      "parentUuid": "298bcdd5_33e38a47",
+      "range": {
+        "startLine": 207,
+        "startChar": 3,
+        "endLine": 208,
+        "endChar": 17
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1ff5ecc0_692f81e3",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-16T22:29:03Z",
       "side": 1,
       "message": "how about adding fips_rand_nonzero_bytes()? it feels like it\u0027s a pretty common use case and it maybe simpler to filer out zeroes in the inner loop",
+      "range": {
+        "startLine": 311,
+        "startChar": 5,
+        "endLine": 311,
+        "endChar": 20
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e957f58_7e1ca923",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-16T23:07:57Z",
+      "side": 1,
+      "message": "i was thinking this way at first, but didn\u0027t find another use for it outside PKCS1 padding, so decided not to complicate things.",
+      "parentUuid": "1ff5ecc0_692f81e3",
       "range": {
         "startLine": 311,
         "startChar": 5,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15bb4de3_e1949d65",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-16T23:07:57Z",
+      "side": 1,
+      "message": "it\u0027s faster. same performance for 32 bytes vs. 4 bytes for DRBG. And code is actually smaller.",
+      "parentUuid": "444e20e6_511ed0e7",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 12
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32c5bca3_6794c7b5",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-16T22:25:02Z",
       "side": 1,
       "message": "convert to (uint32_t)? do we care about checking rand_valid()?",
+      "range": {
+        "startLine": 219,
+        "startChar": 11,
+        "endLine": 219,
+        "endChar": 27
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "878b6eb2_8b6cd9ee",
+        "filename": "board/cr50/dcrypto/trng.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-16T23:07:57Z",
+      "side": 1,
+      "message": "it\u0027s testing code. but will add it.",
+      "parentUuid": "32c5bca3_6794c7b5",
       "range": {
         "startLine": 219,
         "startChar": 11,
