@@ -85,6 +85,24 @@
       "parentUuid": "30af64ec_a0f45456",
       "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82ffb0d_e02c221f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-09-16T01:47:14Z",
+      "side": 1,
+      "message": "Hi Vijay,\nAgree that this approach is a little bit slower as it only runs at 100 KHz. Does your requirement has a strict timing constrains? The benefit of this approach is it can support all the EC chips which also use task-aware i2c driver without touching their drivers.",
+      "parentUuid": "120309df_6bb7ed7b",
+      "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
