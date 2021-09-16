@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ec704a_292051b8",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-09-16T07:51:55Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3c40ed6e_f1e786f3",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 0
+      },
+      "revId": "6e2222eb2bde0de78d2120e518d9dd5a28fee0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e245f48_b8b02d45",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-15T16:34:34Z",
       "side": 1,
       "message": "This is how I understand the API group wanted this done instead.  It should be fixed here and in the rest of this driver.\n\nconst struct cros_kb_raw_ite_config *config \u003d dev-\u003econfig;\nstruct kscan_it8xxx2_regs *const inst \u003d config-\u003ebase;",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 59
+      },
+      "revId": "6e2222eb2bde0de78d2120e518d9dd5a28fee0a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5583c722_f446bcca",
+        "filename": "zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-09-16T07:51:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e245f48_b8b02d45",
       "range": {
         "startLine": 64,
         "startChar": 0,
