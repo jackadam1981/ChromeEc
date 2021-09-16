@@ -122,6 +122,24 @@
       "message": "FWIW herobrine_npcx7 did get removed (at least in zephyr): https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3150053\n\nI doubt we need to care about the non-zephyr one either.",
       "revId": "22b4a20123aeebeebce567d0303430cf2a03e958",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00db3368_d65b3988",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-16T21:37:33Z",
+      "side": 1,
+      "message": "The EC-OS one was just removed. Good to go.",
+      "parentUuid": "65fa08e6_3cd4275e",
+      "revId": "22b4a20123aeebeebce567d0303430cf2a03e958",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
