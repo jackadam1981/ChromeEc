@@ -18,6 +18,7 @@
 #include "chipset.h"
 #include "console.h"
 #include "host_command.h"
+#include "system.h"
 
 /* Console output macros */
 #define CPRINTS(format, args...) cprints(CC_SPI, format, ## args)
@@ -372,6 +373,7 @@ static int cros_shi_ite_init(const struct device *dev)
 	/* Enable SPI chip select pin interrupt */
 	gpio_enable_interrupt(GPIO_SPI0_CS);
 
+	disable_sleep(SLEEP_MASK_SPI); //test power policy!
 	return 0;
 }
 
