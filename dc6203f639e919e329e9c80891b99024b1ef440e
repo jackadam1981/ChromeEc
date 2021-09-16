@@ -118,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c018396_bad9615e",
+        "filename": "fuzz/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-16T07:40:46Z",
+      "side": 1,
+      "message": "how about just pinweaver_fuzz and u2f_fuzz?",
+      "parentUuid": "1080ed95_d38d8d01",
+      "range": {
+        "startLine": 12,
+        "startChar": 23,
+        "endLine": 12,
+        "endChar": 32
+      },
+      "revId": "dc6203f639e919e329e9c80891b99024b1ef440e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2117cecb_17a632aa",
