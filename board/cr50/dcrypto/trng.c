@@ -145,36 +145,6 @@ uint64_t read_rand(void)
 	       ((uint64_t)(reset_count < TRNG_RESET_COUNT) << 32);
 }
 
-/* TODO(sukhomlinov): replace uses with fips_trng32(). */
-uint32_t rand(void)
-{
-	/* Just ignore validity status. */
-	return (uint32_t)read_rand();
-}
-
-/* TODO(sukhomlinov): replace uses with fips_rand_bytes(). */
-void rand_bytes(void *buffer, size_t len)
-{
-	int random_togo = 0;
-	int buffer_index = 0;
-	uint32_t random_value;
-	uint8_t *buf = (uint8_t *) buffer;
-
-	/*
-	 * Retrieve random numbers in 4 byte quantities and pack as many bytes
-	 * as needed into 'buffer'. If len is not divisible by 4, the
-	 * remaining random bytes get dropped.
-	 */
-	while (buffer_index < len) {
-		if (!random_togo) {
-			random_value = rand();
-			random_togo = sizeof(random_value);
-		}
-		buf[buffer_index++] = random_value >>
-			((random_togo-- - 1) * 8);
-	}
-}
-
 /* Local switch to test command. Enable when work on it. */
 #ifndef CRYPTO_TEST_CMD_RAND
 #define CRYPTO_TEST_CMD_RAND 0
@@ -245,7 +215,7 @@ static int command_rand(int argc, char **argv)
 		uint32_t rvalue;
 		int size;
 
-		rvalue = rand();
+		rvalue = fips_trng_rand32();
 		/* update byte-level histogram */
 		for (size = 0; size < sizeof(rvalue); size++)
 			histogram[((uint8_t *)&rvalue)[size]]++;

@@ -1160,8 +1160,8 @@ BUILD_ASSERT((offsetof(struct DMEM_ctx, RR) & 31) == 0);
 static void rand64(uint32_t dst[2])
 {
 	do {
-		dst[0] = rand();
-		dst[1] = rand();
+		dst[0] = fips_trng_rand32();
+		dst[1] = fips_trng_rand32();
 	} while ((dst[0] | dst[1]) == 0);
 }
 

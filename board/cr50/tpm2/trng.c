@@ -24,7 +24,7 @@ CRYPT_RESULT _cpri__StirRandom(int32_t num, uint8_t *entropy)
  * field     |    size  |                  note
  * =========================================================================
  * text_len  |    2     | the number of random bytes to generate, big endian
- * type      |    1     | 0 = TRNG, 1 = FIPS TRNG, 2 = FIPS DRBG
+ * type      |    1     | 0, 1 = FIPS TRNG, 2 = FIPS DRBG
  *           |          | other values reserved for extensions
  */
 static enum vendor_cmd_rc trng_test(enum vendor_cmd_cc code, void *buf,
@@ -49,8 +49,6 @@ static enum vendor_cmd_rc trng_test(enum vendor_cmd_cc code, void *buf,
 
 	switch (op_type) {
 	case 0:
-		rand_bytes(buf, text_len);
-		break;
 	case 1:
 		if (!fips_trng_bytes(buf, text_len))
 			return VENDOR_RC_INTERNAL_ERROR;
