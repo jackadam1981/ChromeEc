@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aaa0f54_190fa871",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-09-16T14:14:02Z",
+      "side": 1,
+      "message": "Removed this redriver reference as that can be added as a seperate CL, along with tusb1044 driver code inclusion.\nAs part of initial PO, purpose, just disabling retimer is enough.",
+      "range": {
+        "startLine": 329,
+        "startChar": 2,
+        "endLine": 332,
+        "endChar": 61
+      },
+      "revId": "b4469eee0922026cfb080aa7ae20fafffc38532d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
