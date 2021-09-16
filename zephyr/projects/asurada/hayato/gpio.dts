@@ -318,6 +318,33 @@
 			enum-name = "GPIO_SPI_CS_GPG7";
 			label = "SPI_CS_GPG7";
 		};
+
+		nc_gpm2 {
+			gpios = <&gpiom 2 (GPIO_INPUT | GPIO_PULL_DOWN)>;
+			enum-name = "GPIO_M2";
+			label = "NC_GPM2";
+		};
+		nc_gpm3 {
+			gpios = <&gpiom 3 (GPIO_INPUT | GPIO_PULL_DOWN)>;
+			enum-name = "GPIO_M3";
+			label = "NC_GPM3";
+		};
+		nc_gpm6 {
+			gpios = <&gpiom 6 (GPIO_INPUT | GPIO_PULL_DOWN)>;
+			enum-name = "GPIO_M6";
+			label = "NC_GPM6";
+		};
+
+		nc_gpi7 {
+			gpios = <&gpioi 7 GPIO_OUT_LOW>;
+			enum-name = "GPIO_I7";
+			label = "NC_GPI7";
+		};
+		nc_gpg3 {
+			gpios = <&gpiog 3 GPIO_OUT_LOW>;
+			enum-name = "GPIO_G3";
+			label = "NC_GPG3";
+		};
 	};
 
 	hibernate-wake-pins {
