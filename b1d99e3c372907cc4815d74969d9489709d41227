@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "beb410b1_babaf760",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-16T14:54:43Z",
+      "side": 1,
+      "message": "On CL:3078412 we discussed moving .hpd_update into the .driver structure but rejected it at the time as too complicated.  Can you open a bug to consider that again?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 38
+      },
+      "revId": "b1d99e3c372907cc4815d74969d9489709d41227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
