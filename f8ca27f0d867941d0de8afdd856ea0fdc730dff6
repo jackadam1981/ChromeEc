@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4c99f84_88c9496a",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-16T09:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9bfd854d_71ab30d0",
+      "revId": "f8ca27f0d867941d0de8afdd856ea0fdc730dff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "15aa1684_0b3a8c76",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a56250c3_18dd18a1",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 546,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-16T09:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15aa1684_0b3a8c76",
+      "revId": "f8ca27f0d867941d0de8afdd856ea0fdc730dff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "09f559af_526eb060",
@@ -48,6 +84,24 @@
       "writtenOn": "2021-09-15T19:14:03Z",
       "side": 1,
       "message": "What happen when CONFIG_ACCELGYRO_BMI260 is not defined? I think the fixes I proposed in accelgyro_bmi_common.c should address the issue.",
+      "revId": "f8ca27f0d867941d0de8afdd856ea0fdc730dff6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f81a89c3_8e424fba",
+        "filename": "include/config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 5350,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-16T09:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f559af_526eb060",
       "revId": "f8ca27f0d867941d0de8afdd856ea0fdc730dff6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

@@ -82,6 +82,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5bc3ce5_3bcabaaf",
+        "filename": "driver/accelgyro_bmi260.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-16T09:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efc6c123_3565f6a3",
+      "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fb33a67_31581fe3",
@@ -99,6 +117,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "152aa88a_5b255a15",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-16T09:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fb33a67_31581fe3",
+      "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a749d7f6_1d958c16",
@@ -112,6 +148,24 @@
       "writtenOn": "2021-09-15T19:14:03Z",
       "side": 1,
       "message": "The logic is not right: \n1 BMI220 is very similar to BMI260\n2 BMI160 and BMI220 drivers could be compiled together to be able to have SKU with BMI220 or BMI160.\n\nTherefore, the logic shoudl be:\n\n#if ( defined(CONFIG_ACCELGYRO_BMI260) || defined(CONFIG_ACCELGYRO_BMI220)) \u0026\u0026 \\\n    !defined(CONFIG_ACCELGYRO_BMI160)\n#define V(s_) 1\n#elif defined(CONFIG_ACCELGYRO_BMI160) \u0026\u0026 \\\n    (!defined(CONFIG_ACCELGYRO_BMI260) || defined(CONFIG_ACCELGYRO_BMI260))\n#define V(s_) 0\n#else\n#define V(s_) (((s_)-\u003echip \u003d! MOTIONSENSE_CHIP_BMI160)\n#endif",
+      "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdb45173_31d002fa",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-16T09:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a749d7f6_1d958c16",
       "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -163,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "479b5b40_ef40942a",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 5338,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-16T09:50:52Z",
+      "side": 1,
+      "message": "Patchset 6 supports BMI220 and BMI260 at the same time. So this is removed.",
+      "parentUuid": "58263aa0_a64b9d1c",
+      "range": {
+        "startLine": 5334,
+        "startChar": 0,
+        "endLine": 5338,
+        "endChar": 6
+      },
+      "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "670d7948_f119ce55",
@@ -176,6 +254,24 @@
       "writtenOn": "2021-09-15T19:14:03Z",
       "side": 1,
       "message": "BMI220_CHIP_ID_MAJOR for consistency.",
+      "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc19a33d_25418435",
+        "filename": "include/driver/accelgyro_bmi260.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-16T09:50:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "670d7948_f119ce55",
       "revId": "299add46d49abc8576b77b5f006d17b8394c3847",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
