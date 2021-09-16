@@ -46,6 +46,30 @@
       },
       "revId": "1d8a14de334c25b1135fb0c8be263f9572af1479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba1a38e9_41d4bf2d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-16T03:34:46Z",
+      "side": 1,
+      "message": "right, we won\u0027t be able to do a CQ depend until the coreboot patch\ncomes over to chromium and gets a chromium patch number.",
+      "parentUuid": "a408c9aa_520896e6",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 57
+      },
+      "revId": "1d8a14de334c25b1135fb0c8be263f9572af1479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
