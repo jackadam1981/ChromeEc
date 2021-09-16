@@ -16,6 +16,24 @@
       "message": "Line over 80 columns.\n\nWhen you upload a new patchset, are you doing it with repo upload? I would have expected that to catch this.",
       "revId": "ed8645333669254e8da13aa8342518eecd0d8566",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1043409_e326f929",
+        "filename": "common/usb_pd_policy.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-09-16T17:05:36Z",
+      "side": 1,
+      "message": "Really sorry missed this time.I will ensure this is taken care.",
+      "parentUuid": "01dac749_17773d7c",
+      "revId": "ed8645333669254e8da13aa8342518eecd0d8566",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

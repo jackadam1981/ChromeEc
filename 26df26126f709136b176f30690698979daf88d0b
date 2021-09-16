@@ -51,6 +51,24 @@
       "parentUuid": "c31bd933_673ee7f0",
       "revId": "26df26126f709136b176f30690698979daf88d0b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a35c24c8_e4bf099b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-09-16T17:05:36Z",
+      "side": 1,
+      "message": "Yes I have taken care on Patch#12. No errors reported. Running again on patch#14 just to ensure no issues.\n\nbuildall completed successfully!\nSmallest free spaces in RO flash (bytes):\nbobba     :    112\nelm       :    112\nvolteer_apmodeentry:    224\nSmallest free spaces in RW flash (bytes):\nbobba     :    120\nvolteer_apmodeentry:    368\nterrador  :    460\nTightest boards\u0027 RW RAM images, bytes free:\nwhiskers  :    204\nminimuffin:    284\nzinger    :    284",
+      "parentUuid": "28176716_910887e9",
+      "revId": "26df26126f709136b176f30690698979daf88d0b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
