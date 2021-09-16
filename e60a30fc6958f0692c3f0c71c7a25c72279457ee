@@ -18,6 +18,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "250a97a5_7ec4033b",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-09-16T14:17:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5aaa0f54_190fa871",
+      "range": {
+        "startLine": 329,
+        "startChar": 2,
+        "endLine": 332,
+        "endChar": 61
+      },
+      "revId": "e60a30fc6958f0692c3f0c71c7a25c72279457ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2abbae28_f3ef203c",
@@ -31,6 +55,30 @@
       "writtenOn": "2021-09-07T01:57:33Z",
       "side": 1,
       "message": "only ERB doesn\u0027t have retimer or RVP also doesn\u0027t have it?\n\nADLN_LP5_SKU_BOARD_ID",
+      "range": {
+        "startLine": 18,
+        "startChar": 17,
+        "endLine": 18,
+        "endChar": 25
+      },
+      "revId": "e60a30fc6958f0692c3f0c71c7a25c72279457ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e444038_a91a0bb0",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-09-16T14:17:34Z",
+      "side": 1,
+      "message": "Included BID for ERB \u0026 RVP as both doesnt have retimer.",
+      "parentUuid": "2abbae28_f3ef203c",
       "range": {
         "startLine": 18,
         "startChar": 17,
