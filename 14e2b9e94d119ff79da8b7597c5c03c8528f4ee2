@@ -139,6 +139,24 @@
       "parentUuid": "2b239664_4d0887c0",
       "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a218774e_4953f836",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-16T22:48:41Z",
+      "side": 1,
+      "message": "Yeah, the bitbang approach makes sense to me here (and it\u0027s generic, which is great!). We only need to scan esc and power before task_start(). So, I think 100 kHz is fast enough.\n\nWe don\u0027t need to change the existing boards now but eventually we probably want them to switch to bitbang.",
+      "parentUuid": "06f5748f_d3f7fd27",
+      "revId": "14e2b9e94d119ff79da8b7597c5c03c8528f4ee2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
