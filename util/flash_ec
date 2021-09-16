@@ -52,6 +52,7 @@ BOARDS_IT83XX=(
 	adlrvpm_ite
 	adlrvpp_ite
 	it83xx_evb
+	it8xxx2_evb
 	jslrvp_ite
 	reef_it8320
 	tglrvpu_ite
@@ -61,7 +62,7 @@ BOARDS_IT83XX=(
 )
 
 BOARDS_IT83XX_SPI_PROGRAMMING=(
-	it8xxx2_evb
+
 	it8xxx2_pdevb
 )
 

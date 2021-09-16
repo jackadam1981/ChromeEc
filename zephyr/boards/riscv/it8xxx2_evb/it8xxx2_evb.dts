@@ -45,36 +45,36 @@
 		};
 		uart1_rx {
 			gpios = <&gpiob 0 GPIO_INPUT_PULL_UP>;
-			#enum-name = "GPIO_UART1_RX";
+			enum-name = "GPIO_UART1_RX";
 			label = "UART1_RX";
 		};
 		pch_smi_l {
-			gpios = <&gpiod 3 GPIO_OUT_HIGH>;
-			#enum-name = "GPIO_PCH_SMI_L";
+			gpios = <&gpiod 3 GPIO_OUT_LOW>;
+			enum-name = "GPIO_PCH_SMI_L";
 			label = "PCH_SMI_L";
 		};
 		pch_sci_l {
-			gpios = <&gpiod 4 GPIO_OUT_HIGH>;
-			#enum-name = "GPIO_PCH_SCI_L";
+			gpios = <&gpiod 4 GPIO_OUT_LOW>;
+			enum-name = "GPIO_PCH_SCI_L";
 			label = "PCH_SCI_L";
 		};
 		gate_a20_h {
-			gpios = <&gpiob 5 GPIO_OUT_HIGH>;
-			#enum-name = "GPIO_GATE_A20_H";
+			gpios = <&gpiob 5 GPIO_OUT_LOW>;
+			enum-name = "GPIO_GATE_A20_H";
 			label = "GATE_A20_H";
 		};
 		sys_reset_l {
-			gpios = <&gpiob 6 GPIO_OUT_HIGH>;
+			gpios = <&gpiob 6 GPIO_OUT_LOW>;
 			enum-name = "GPIO_SYS_RESET_L";
 			label = "SYS_RESET_L";
 		};
 		lpc_clkrun_l {
 			gpios = <&gpioh 0 GPIO_OUT_LOW>;
-			#enum-name = "GPIO_LPC_CLKRUN_L";
+			enum-name = "GPIO_LPC_CLKRUN_L";
 			label = "LPC_CLKRUN_L";
 		};
 		pch_wake_l {
-			gpios = <&gpiob 7 GPIO_OUT_HIGH>;
+			gpios = <&gpiob 7 GPIO_OUT_LOW>;
 			enum-name = "GPIO_EC_PCH_WAKE_ODL";
 			label = "PCH_WAKE_L";
 		};
@@ -117,6 +117,301 @@
 			gpios = <&gpioe 7 GPIO_INPUT>;
 			enum-name = "GPIO_EC_I2C5_BATTERY_SDA";
 			label = "I2C_E_SDA";
+		};
+
+		gpioa0 {
+			gpios = <&gpioa 0 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_A0";
+			label = "GPIOA0";
+		};
+		gpioa1 {
+			gpios = <&gpioa 1 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_A1";
+			label = "GPIOA1";
+		};
+		gpioa2 {
+			gpios = <&gpioa 2 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_A2";
+			label = "GPIOA2";
+		};
+		gpioa3 {
+			gpios = <&gpioa 3 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_A3";
+			label = "GPIOA3";
+		};
+		gpioa4 {
+			gpios = <&gpioa 4 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_A4";
+			label = "GPIOA4";
+		};
+		gpioa5 {
+			gpios = <&gpioa 5 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_A5";
+			label = "GPIOA5";
+		};
+		gpioa6 {
+			gpios = <&gpioa 6 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_A6";
+			label = "GPIOA6";
+		};
+
+		gpiob2 {
+			gpios = <&gpiob 2 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_B2";
+			label = "GPIOB2";
+		};
+
+		gpioc0 {
+			gpios = <&gpioc 0 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_C0";
+			label = "GPIOC0";
+		};
+		gpioc3 {
+			gpios = <&gpioc 3 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_C3";
+			label = "GPIOC3";
+		};
+		gpioc4 {
+			gpios = <&gpioc 4 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_C4";
+			label = "GPIOC4";
+		};
+		gpioc5 {
+			gpios = <&gpioc 5 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_C5";
+			label = "GPIOC5";
+		};
+		gpioc6 {
+			gpios = <&gpioc 6 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_C6";
+			label = "GPIOC6";
+		};
+
+		gpiod0 {
+			gpios = <&gpiod 0 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_D0";
+			label = "GPIOD0";
+		};
+		gpiod1 {
+			gpios = <&gpiod 1 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_D1";
+			label = "GPIOD1";
+		};
+		gpiod2 {
+			gpios = <&gpiod 2 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_D2";
+			label = "GPIOD2";
+		};
+		gpiod5 {
+			gpios = <&gpiod 5 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_D5";
+			label = "GPIOD5";
+		};
+		gpiod7 {
+			gpios = <&gpiod 7 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_D7";
+			label = "GPIOD7";
+		};
+
+		gpioe1 {
+			gpios = <&gpioe 1 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_E1";
+			label = "GPIOE1";
+		};
+		gpioe5 {
+			gpios = <&gpioe 5 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_E5";
+			label = "GPIOE5";
+		};
+		gpioe6 {
+			gpios = <&gpioe 6 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_E6";
+			label = "GPIOE6";
+		};
+
+		gpiof0 {
+			gpios = <&gpiof 0 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_F0";
+			label = "GPIOF0";
+		};
+		gpiof1 {
+			gpios = <&gpiof 1 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_F1";
+			label = "GPIOF1";
+		};
+		gpiof2 {
+			gpios = <&gpiof 2 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_F2";
+			label = "GPIOF2";
+		};
+		gpiof3 {
+			gpios = <&gpiof 3 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_F3";
+			label = "GPIOF3";
+		};
+		gpiof4 {
+			gpios = <&gpiof 4 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_F4";
+			label = "GPIOF4";
+		};
+		gpiof5 {
+			gpios = <&gpiof 5 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_F5";
+			label = "GPIOF5";
+		};
+		gpiof6 {
+			gpios = <&gpiof 6 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_F6";
+			label = "GPIOF6";
+		};
+
+		gpiog0 {
+			gpios = <&gpiog 0 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_G0";
+			label = "GPIOG0";
+		};
+		gpiog1 {
+			gpios = <&gpiog 1 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_G1";
+			label = "GPIOG1";
+		};
+		gpiog2 {
+			gpios = <&gpiog 2 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_G2";
+			label = "GPIOG2";
+		};
+		gpioh3 {
+			gpios = <&gpioh 3 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_H3";
+			label = "GPIOH3";
+		};
+		gpioh4 {
+			gpios = <&gpioh 4 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_H4";
+			label = "GPIOH4";
+		};
+		gpioh5 {
+			gpios = <&gpioh 5 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_H5";
+			label = "GPIOH5";
+		};
+		gpioh6 {
+			gpios = <&gpioh 6 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_H6";
+			label = "GPIOH6";
+		};
+
+		gpioi0 {
+			gpios = <&gpioi 0 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_I0";
+			label = "GPIOI0";
+		};
+		gpioi1 {
+			gpios = <&gpioi 1 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_I1";
+			label = "GPIOI1";
+		};
+		gpioi2 {
+			gpios = <&gpioi 2 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_I2";
+			label = "GPIOI2";
+		};
+		gpioi3 {
+			gpios = <&gpioi 3 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_I3";
+			label = "GPIOI3";
+		};
+		gpioi4 {
+			gpios = <&gpioi 4 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_I4";
+			label = "GPIOI4";
+		};
+		gpioi5 {
+			gpios = <&gpioi 5 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_I5";
+			label = "GPIOI5";
+		};
+		gpioi6 {
+			gpios = <&gpioi 6 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_I6";
+			label = "GPIOI6";
+		};
+		gpioi7 {
+			gpios = <&gpioi 7 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_I7";
+			label = "GPIOI7";
+		};
+
+		gpioj0 {
+			gpios = <&gpioj 0 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_J0";
+			label = "GPIOJ0";
+		};
+		gpioj1 {
+			gpios = <&gpioj 1 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_J1";
+			label = "GPIOJ1";
+		};
+		gpioj2 {
+			gpios = <&gpioj 2 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_J2";
+			label = "GPIOJ2";
+		};
+		gpioj3 {
+			gpios = <&gpioj 3 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_J3";
+			label = "GPIOJ3";
+		};
+		gpioj4 {
+			gpios = <&gpioj 4 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_J4";
+			label = "GPIOJ4";
+		};
+		gpioj5 {
+			gpios = <&gpioj 5 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_J5";
+			label = "GPIOJ5";
+		};
+		gpioj6 {
+			gpios = <&gpioj 6 GPIO_OUT_LOW>;
+			enum-name = "GPIO_J6";
+			label = "GPIOJ6";
+		};
+		gpioj7 {
+			gpios = <&gpioj 7 GPIO_OUT_LOW>;
+			enum-name = "GPIO_J7";
+			label = "GPIOJ7";
+		};
+
+		gpiom0 {
+			gpios = <&gpiom 0 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_M0";
+			label = "GPIOM0";
+		};
+		gpiom1 {
+			gpios = <&gpiom 1 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_M1";
+			label = "GPIOM1";
+		};
+		gpiom2 {
+			gpios = <&gpiom 2 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_M2";
+			label = "GPIOM2";
+		};
+		gpiom3 {
+			gpios = <&gpiom 3 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_M3";
+			label = "GPIOM3";
+		};
+		gpiom4 {
+			gpios = <&gpiom 4 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_M4";
+			label = "GPIOM4";
+		};
+		gpiom6 {
+			gpios = <&gpiom 6 GPIO_INPUT_PULL_DOWN>;
+			enum-name = "GPIO_M6";
+			label = "GPIOM6";
 		};
 
 		spi0_cs {

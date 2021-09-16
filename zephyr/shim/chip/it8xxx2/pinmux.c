@@ -34,6 +34,10 @@ static int it8xxx2_pinmux_init_latr(const struct device *dev)
 {
 	ARG_UNUSED(dev);
 
+	/* TODO */
+	const struct device *portb = DEVICE_DT_GET(DT_NODELABEL(pinmuxb));
+	pinmux_pin_set(portb, 0, IT8XXX2_PINMUX_FUNC_3);
+
 #if DT_NODE_HAS_STATUS(DT_NODELABEL(i2c0), okay) && \
 	DT_NODE_HAS_STATUS(DT_NODELABEL(pinmuxb), okay)
 	{

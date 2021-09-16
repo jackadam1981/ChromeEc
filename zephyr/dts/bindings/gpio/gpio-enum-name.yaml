@@ -147,6 +147,7 @@ properties:
       - GPIO_SYS_RST_ODL
       - GPIO_TABLET_MODE_L
       - GPIO_TRACKPAD_INT_GATE
+      - GPIO_UART1_RX
       - GPIO_USB_A_LOW_PWR_OD
       - GPIO_USB_A0_FAULT_ODL
       - GPIO_USB_A0_OC_ODL
@@ -178,3 +179,64 @@ properties:
       - GPIO_WP
       - GPIO_WP_L
       - GPIO_X_EC_GPIO2
+      - GPIO_PCH_SMI_L
+      - GPIO_PCH_SCI_L
+      - GPIO_GATE_A20_H
+      - GPIO_LPC_CLKRUN_L
+      - GPIO_A0
+      - GPIO_A1
+      - GPIO_A2
+      - GPIO_A3
+      - GPIO_A4
+      - GPIO_A5
+      - GPIO_A6
+      - GPIO_B2
+      - GPIO_C0
+      - GPIO_C3
+      - GPIO_C4
+      - GPIO_C5
+      - GPIO_C6
+      - GPIO_D0
+      - GPIO_D1
+      - GPIO_D2
+      - GPIO_D5
+      - GPIO_D7
+      - GPIO_E1
+      - GPIO_E5
+      - GPIO_E6
+      - GPIO_F0
+      - GPIO_F1
+      - GPIO_F2
+      - GPIO_F3
+      - GPIO_F4
+      - GPIO_F5
+      - GPIO_F6
+      - GPIO_G0
+      - GPIO_G1
+      - GPIO_G2
+      - GPIO_H3
+      - GPIO_H4
+      - GPIO_H5
+      - GPIO_H6
+      - GPIO_I0
+      - GPIO_I1
+      - GPIO_I2
+      - GPIO_I3
+      - GPIO_I4
+      - GPIO_I5
+      - GPIO_I6
+      - GPIO_I7
+      - GPIO_J0
+      - GPIO_J1
+      - GPIO_J2
+      - GPIO_J3
+      - GPIO_J4
+      - GPIO_J5
+      - GPIO_J6
+      - GPIO_J7
+      - GPIO_M0
+      - GPIO_M1
+      - GPIO_M2
+      - GPIO_M3
+      - GPIO_M4
+      - GPIO_M6

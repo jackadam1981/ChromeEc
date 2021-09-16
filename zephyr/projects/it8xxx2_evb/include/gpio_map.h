@@ -32,6 +32,8 @@
 	GPIO_INT(GPIO_POWER_BUTTON_L,					\
 		 GPIO_INT_EDGE_BOTH, power_button_interrupt)		\
 	GPIO_INT(GPIO_SPI0_CS,						\
-		 GPIO_INT_EDGE_FALLING, spi_event)
+		 GPIO_INT_EDGE_FALLING, spi_event)			\
+	GPIO_INT(GPIO_UART1_RX,						\
+		 GPIO_INT_EDGE_FALLING, uart_deepsleep_interrupt)
 
 #endif /* __ZEPHYR_GPIO_MAP_H */
