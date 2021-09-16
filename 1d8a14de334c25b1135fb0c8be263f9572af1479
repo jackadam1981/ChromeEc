@@ -22,6 +22,30 @@
       },
       "revId": "1d8a14de334c25b1135fb0c8be263f9572af1479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a408c9aa_520896e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-09-16T03:15:29Z",
+      "side": 1,
+      "message": "Vijay, I don\u0027t believe Chrome OS gerrit supports external mirror Cq dependencies. So this will need to \"Cq-Depend\" on the cherrypick to Chrome OS mirror (if a separate CL is created for it).",
+      "parentUuid": "087c8733_95c3c4a1",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 57
+      },
+      "revId": "1d8a14de334c25b1135fb0c8be263f9572af1479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
