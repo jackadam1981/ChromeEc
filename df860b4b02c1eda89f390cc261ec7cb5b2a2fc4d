@@ -34,6 +34,29 @@
       "parentUuid": "5c1d9d8d_bfdfb4bd",
       "revId": "df860b4b02c1eda89f390cc261ec7cb5b2a2fc4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81e6c6fa_297805f9",
+        "filename": "zephyr/include/emul/emul_usb_mux_mock.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-17T19:51:06Z",
+      "side": 1,
+      "message": "Initial thoughts, it seems like we should import a mocking library for this. Thoughts about bringing in fff (https://github.com/meekrosoft/fff) it\u0027s a single header and is already used in Android so I\u0027m sure the license is fine.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 2
+      },
+      "revId": "df860b4b02c1eda89f390cc261ec7cb5b2a2fc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
