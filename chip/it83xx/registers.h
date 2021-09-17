@@ -12,6 +12,11 @@
 #include "compile_time_macros.h"
 
 #define __ram_code __attribute__((section(__RAM_CODE_SECTION_NAME)))
+#ifdef CHIP_CORE_RISCV
+#define __ram_code_ilm0 __keep __attribute__((section(".ram_code_ilm0")))
+#else
+#define __ram_code_ilm0
+#endif
 
 /* IRQ numbers */
 /* Group 0 */

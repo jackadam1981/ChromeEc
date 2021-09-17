@@ -204,7 +204,7 @@ struct i2c_port_data {
 };
 static struct i2c_port_data pdata[I2C_PORT_COUNT];
 
-static int i2c_ch_reg_shift(int p)
+int __ram_code_ilm0 i2c_ch_reg_shift(int p)
 {
 	/*
 	 * only enhanced port needs to be changed the parameter of registers
@@ -243,7 +243,7 @@ static void i2c_reset(int p, int cause)
 	CPRINTS("I2C ch%d reset cause %d", p, cause);
 }
 
-static void i2c_r_last_byte(int p)
+void __ram_code_ilm0 i2c_r_last_byte(int p)
 {
 	struct i2c_port_data *pd = pdata + p;
 
@@ -255,7 +255,7 @@ static void i2c_r_last_byte(int p)
 		IT83XX_SMB_HOCTL(p) |= 0x20;
 }
 
-static void i2c_w2r_change_direction(int p)
+void __ram_code_ilm0 i2c_w2r_change_direction(int p)
 {
 	/* I2C switch direction */
 	if (IT83XX_SMB_HOCTL2(p) & 0x08) {
@@ -273,8 +273,9 @@ static void i2c_w2r_change_direction(int p)
 	}
 }
 
-static void i2c_pio_trans_data(int p, enum enhanced_i2c_transfer_direct direct,
-			       uint8_t data, int first_byte)
+void __ram_code_ilm0 i2c_pio_trans_data(int p,
+				enum enhanced_i2c_transfer_direct direct,
+				uint8_t data, int first_byte)
 {
 	struct i2c_port_data *pd = pdata + p;
 	int p_ch;
@@ -308,7 +309,7 @@ static void i2c_pio_trans_data(int p, enum enhanced_i2c_transfer_direct direct,
 	}
 }
 
-static int i2c_tran_write(int p)
+int __ram_code_ilm0 i2c_tran_write(int p)
 {
 	struct i2c_port_data *pd = pdata + p;
 
@@ -368,7 +369,7 @@ static int i2c_tran_write(int p)
 	return 1;
 }
 
-static int i2c_tran_read(int p)
+int __ram_code_ilm0 i2c_tran_read(int p)
 {
 	struct i2c_port_data *pd = pdata + p;
 
@@ -435,7 +436,7 @@ static int i2c_tran_read(int p)
 	return 1;
 }
 
-static void enhanced_i2c_start(int p)
+void __ram_code_ilm0 enhanced_i2c_start(int p)
 {
 	/* Shift register */
 	int p_ch = i2c_ch_reg_shift(p);
@@ -454,7 +455,7 @@ static void enhanced_i2c_start(int p)
 	IT83XX_I2C_CTR1(p_ch) = BIT(1);
 }
 
-static int enhanced_i2c_tran_write(int p)
+int __ram_code_ilm0 enhanced_i2c_tran_write(int p)
 {
 	struct i2c_port_data *pd = pdata + p;
 	uint8_t out_data;
@@ -505,7 +506,7 @@ static int enhanced_i2c_tran_write(int p)
 	return 1;
 }
 
-static int enhanced_i2c_tran_read(int p)
+int __ram_code_ilm0 enhanced_i2c_tran_read(int p)
 {
 	struct i2c_port_data *pd = pdata + p;
 	uint8_t in_data = 0;
@@ -569,7 +570,7 @@ static int enhanced_i2c_tran_read(int p)
 	return 1;
 }
 
-static int enhanced_i2c_error(int p)
+int __ram_code_ilm0 enhanced_i2c_error(int p)
 {
 	struct i2c_port_data *pd = pdata + p;
 	/* Shift register */
@@ -587,7 +588,7 @@ static int enhanced_i2c_error(int p)
 	return pd->err;
 }
 
-static int i2c_transaction(int p)
+int __ram_code_ilm0 i2c_transaction(int p)
 {
 	struct i2c_port_data *pd = pdata + p;
 	int p_ch;
@@ -629,7 +630,7 @@ static int i2c_transaction(int p)
 	return 0;
 }
 
-int i2c_is_busy(int port)
+int __ram_code_ilm0 i2c_is_busy(int port)
 {
 	int p_ch;
 
@@ -641,7 +642,7 @@ int i2c_is_busy(int port)
 	return (IT83XX_I2C_STR(p_ch) & E_HOSTA_BB);
 }
 
-int chip_i2c_xfer(int port, uint16_t addr_flags,
+int __ram_code_ilm0 chip_i2c_xfer(int port, uint16_t addr_flags,
 		  const uint8_t *out, int out_size,
 		  uint8_t *in, int in_size, int flags)
 {
@@ -716,7 +717,7 @@ int chip_i2c_xfer(int port, uint16_t addr_flags,
 	return pd->err;
 }
 
-int i2c_raw_get_scl(int port)
+int __ram_code_ilm0 i2c_raw_get_scl(int port)
 {
 	enum gpio_signal g;
 
@@ -728,7 +729,7 @@ int i2c_raw_get_scl(int port)
 	return 1;
 }
 
-int i2c_raw_get_sda(int port)
+int __ram_code_ilm0 i2c_raw_get_sda(int port)
 {
 	enum gpio_signal g;
 
@@ -740,7 +741,7 @@ int i2c_raw_get_sda(int port)
 	return 1;
 }
 
-int i2c_get_line_levels(int port)
+int __ram_code_ilm0 i2c_get_line_levels(int port)
 {
 	int pin_sts = 0;
 
@@ -755,12 +756,12 @@ int i2c_get_line_levels(int port)
 	return pin_sts;
 }
 
-void i2c_set_timeout(int port, uint32_t timeout)
+void __ram_code_ilm0 i2c_set_timeout(int port, uint32_t timeout)
 {
 	pdata[port].timeout_us = timeout ? timeout : I2C_TIMEOUT_DEFAULT_US;
 }
 
-void i2c_interrupt(int port)
+void __ram_code_ilm0 i2c_interrupt(int port)
 {
 	int id = pdata[port].task_waiting;
 

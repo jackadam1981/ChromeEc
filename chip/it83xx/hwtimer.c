@@ -90,7 +90,7 @@ static void free_run_timer_overflow(void)
 	update_exc_start_time();
 }
 
-static void event_timer_clear_pending_isr(void)
+void __ram_code_ilm0 event_timer_clear_pending_isr(void)
 {
 	/* w/c interrupt status */
 	task_clear_pending_irq(et_ctrl_regs[EVENT_EXT_TIMER].irq);
@@ -109,7 +109,7 @@ uint32_t __ram_code __hw_clock_source_read(void)
 #endif
 }
 
-void __hw_clock_source_set(uint32_t ts)
+void __ram_code_ilm0 __hw_clock_source_set(uint32_t ts)
 {
 	/* counting down timer, microseconds to timer counter register */
 	IT83XX_ETWD_ETXCNTLR(FREE_EXT_TIMER_H) = 0xffffffff - ts;
@@ -117,7 +117,7 @@ void __hw_clock_source_set(uint32_t ts)
 	IT83XX_ETWD_ETXCTRL(FREE_EXT_TIMER_L) |= BIT(1);
 }
 
-void __hw_clock_event_set(uint32_t deadline)
+void __ram_code_ilm0 __hw_clock_event_set(uint32_t deadline)
 {
 	uint32_t wait;
 	/* bit0, disable event timer */
@@ -134,7 +134,7 @@ void __hw_clock_event_set(uint32_t deadline)
 	task_enable_irq(et_ctrl_regs[EVENT_EXT_TIMER].irq);
 }
 
-uint32_t __hw_clock_event_get(void)
+uint32_t __ram_code_ilm0 __hw_clock_event_get(void)
 {
 	uint32_t next_event_us = __hw_clock_source_read();
 
@@ -151,7 +151,7 @@ uint32_t __hw_clock_event_get(void)
 	return next_event_us;
 }
 
-void __hw_clock_event_clear(void)
+void __ram_code_ilm0 __hw_clock_event_clear(void)
 {
 	/* stop event timer */
 	ext_timer_stop(EVENT_EXT_TIMER, 1);
@@ -173,7 +173,7 @@ int __hw_clock_source_init(uint32_t start_t)
 	return et_ctrl_regs[EVENT_EXT_TIMER].irq;
 }
 
-static void __hw_clock_source_irq(void)
+void __ram_code_ilm0 __hw_clock_source_irq(void)
 {
 	/* Determine interrupt number. */
 	int irq = intc_get_ec_int();

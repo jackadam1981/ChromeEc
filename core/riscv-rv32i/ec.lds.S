@@ -83,10 +83,7 @@ SECTIONS
 		       "__flash_dma_size < IT83XX_ILM_BLOCK_SIZE");
 		. = ALIGN(IT83XX_ILM_BLOCK_SIZE);
 		__ilm0_ram_code = .;
-		OUTDIR/chip/it83xx/i2c.o (.text*)
-		OUTDIR/chip/it83xx/i2c.o (.rodata)
-		OUTDIR/chip/it83xx/hwtimer.o (.text*)
-		OUTDIR/chip/it83xx/hwtimer.o (.rodata)
+		KEEP(*(.ram_code_ilm0))
 		. = ALIGN(16);
 #endif
 		*(.text*)
