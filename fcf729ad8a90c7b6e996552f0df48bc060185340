@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1196abcd_c5a96cfc",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-17T17:29:25Z",
+      "side": 1,
+      "message": "Relying on fact that `ec_response_get_version_v1` is extended version of `ec_response_get_version` is unsound for me. Can we try to avoid it? I think about two functions, but it will introduce code duplication.",
+      "range": {
+        "startLine": 1604,
+        "startChar": 0,
+        "endLine": 1606,
+        "endChar": 66
+      },
+      "revId": "fcf729ad8a90c7b6e996552f0df48bc060185340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
