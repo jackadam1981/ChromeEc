@@ -51,6 +51,24 @@
       "parentUuid": "3cf07670_f118ec81",
       "revId": "a7a018620237f90a4ba260d9898439884bdf73d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b668c23c_fa6d6c44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-17T17:27:39Z",
+      "side": 1,
+      "message": "I wouldn\u0027t bother trying to get this building locally right now unless you can\u0027t get the builder to pass after uploading to Gerrit again, and you\u0027re out of ideas.",
+      "parentUuid": "7d75fdf2_15ec1d60",
+      "revId": "a7a018620237f90a4ba260d9898439884bdf73d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
