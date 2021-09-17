@@ -421,7 +421,15 @@ SECTIONS
 		__bss_end = .;
 	} > IRAM
 
+#ifdef __clang__
+#ifdef CONFIG_EXTERNAL_STORAGE
+	.data : AT(LOADADDR(.rodata) + SIZEOF(.rodata)) {
+#else
+	.data : AT(ADDR(.rodata) + SIZEOF(.rodata)) {
+#endif
+#else
 	.data : {
+#endif /* __clang__ */
 		. = ALIGN(4);
 		__data_start = .;
 		*(.data.tasks)
@@ -471,7 +479,10 @@ SECTIONS
 		__shared_mem_buf = .;
 
 		/* NOTHING MAY GO AFTER THIS! */
-	} > IRAM AT > DATA_LMA_MEM_REGION
+	} > IRAM
+#ifndef __clang__
+		AT > DATA_LMA_MEM_REGION
+#endif /* __clang__ */
 
 	ASSERT((__shared_mem_buf + CONFIG_SHAREDMEM_MINIMUM_SIZE) <=
 	       (CONFIG_RAM_BASE + CONFIG_RAM_SIZE),
