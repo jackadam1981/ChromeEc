@@ -16,6 +16,23 @@
       "message": "Hi Abe,\n\nPlease submit to the commit queue",
       "revId": "a7a018620237f90a4ba260d9898439884bdf73d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cf07670_f118ec81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-09-17T16:29:49Z",
+      "side": 1,
+      "message": "make -j buildall test passed yesterday on this patch on two systems.\nNeed to understand why the CQ +1 failed on latest patch set. ",
+      "revId": "a7a018620237f90a4ba260d9898439884bdf73d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
