@@ -598,10 +598,10 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 	if (port)
 		return;
 
-	if (cc_pin == USBPD_CC_PIN_1)
-		gpio_set_level(GPIO_EN_USB_C0_CC1_VCONN, !!enabled);
-	else
-		gpio_set_level(GPIO_EN_USB_C0_CC2_VCONN, !!enabled);
+	//if (cc_pin == USBPD_CC_PIN_1)
+	//	gpio_set_level(GPIO_EN_USB_C0_CC1_VCONN, !!enabled);
+	//else
+	//	gpio_set_level(GPIO_EN_USB_C0_CC2_VCONN, !!enabled);
 }
 
 __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
