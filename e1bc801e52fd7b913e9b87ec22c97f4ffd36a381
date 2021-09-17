@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a88e0a_53f141ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-17T15:58:00Z",
+      "side": 1,
+      "message": "nit: Does \u0027Switch\u0027 imply we will continue to use bitbang even after tasks start? How about \u0027Use bitbang mode for pre-task transactions\u0027?",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 77
+      },
+      "revId": "e1bc801e52fd7b913e9b87ec22c97f4ffd36a381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8598cffb_1147c151",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-17T15:58:00Z",
+      "side": 1,
+      "message": "Luckily, kukui isn\u0027t using CONFIG_I2C_BITBANG. So, let\u0027s do:\n\n  else if (IS_ENABLED(CONFIG_I2C_BITBANG) \u0026\u0026 !task_start_called())\n\nso that this will be the default behavior. We don\u0027t need a new CONFIG. That\u0027ll make any board with bitbang support use bitbang for pre-task transactions.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 34
+      },
+      "revId": "e1bc801e52fd7b913e9b87ec22c97f4ffd36a381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b88232b_488c9a3b",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-17T15:58:00Z",
+      "side": 1,
+      "message": "If this fails, what would happen to the post-task transactions?",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "e1bc801e52fd7b913e9b87ec22c97f4ffd36a381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
