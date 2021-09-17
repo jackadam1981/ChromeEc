@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "8b8c4339_806462bb",
         "filename": "/COMMIT_MSG",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "flash size meaning the space taken by the image in flash? Why does this happen - it\u0027s a pretty important piece of information.",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e3c7ad43_61c8a622",
         "filename": "/COMMIT_MSG",
@@ -32,10 +33,10 @@
       "message": "I haven\u0027t investigated. It needs to be fixed, but I don\u0027t think it should prevent this change from landing since this change doesn\u0027t switch anything to clang; it just allows further development without carrying around patches.",
       "parentUuid": "8b8c4339_806462bb",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a7b6663e_e7498e34",
         "filename": "/COMMIT_MSG",
@@ -50,10 +51,10 @@
       "message": "This probably has been discussed before, but do I get it right, that for production builds of nocturne_fp gcc is used, and you use clang only in development environment?\n\nIf this is the case, I can\u0027t help it but think  that this is an unnecessary and counterproductive complication of the already complex ec build system. It is counterproductive, because in case you use clang for iterations when developing, debugging,testing, you could miss issues which are there in gcc but not in clang.\n\nBut this is my personal opinion, if others don\u0027t see a problem with this, they should be the reviewers.",
       "parentUuid": "e3c7ad43_61c8a622",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "fe2d7851_c011155b",
         "filename": "/COMMIT_MSG",
@@ -68,10 +69,10 @@
       "message": "The touchpad team has expressed interest in using clang as well. It\u0027s a little easier for them (or others) to help out when they have time if this lands rather than carrying around a series of patches. (They may be able to look at the flash size reporting)\n\nIt\u0027s also a little easier for me to make sure the clang version still builds and runs without having to rebase my changes all the time. So far there haven\u0027t been conflicts, but the longer we wait the more likely it will.",
       "parentUuid": "a7b6663e_e7498e34",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e9b93e2d_92188757",
         "filename": "/COMMIT_MSG",
@@ -86,10 +87,10 @@
       "message": "Tom, this is exactly what I am talking about: IMO one should not be using clang if the final build is produced by gcc toolchain, from the proper process/procedure point of view.\n\nYou just greatly reduce the likelihood of finding some subtle but important differences until it is too late.",
       "parentUuid": "fe2d7851_c011155b",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f8ec0ffc_95a5da40",
         "filename": "/COMMIT_MSG",
@@ -104,10 +105,10 @@
       "message": "I don\u0027t mean that I\u0027m running production tests or doing daily feature development with it. I just want to be able to be able to easily verify that it still compiles and then run my script that checks that it runs on nocturne. It\u0027s much easier to do this when I don\u0027t have to switch branches, cherry-pick, etc.\n\nThe added benefit is that since clang emits more warnings than gcc, I can easily make sure we\u0027re not introducing real bugs in the code that gcc is not catching.",
       "parentUuid": "e9b93e2d_92188757",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "50be68d9_2c3828e4",
         "filename": "/COMMIT_MSG",
@@ -122,10 +123,10 @@
       "message": "I think complicating the build system for this purpose is a too high a price to pay. Also, as most people are not using clang, this compilation mode is prone to getting broken every so often, it just is not viable.\n\nYou are saying it has not bitrotten yet and patches cleanly. Evne if this is merged, when someone makes an incompatible modification clang mode will get broken anyways and you\u0027d have to deal with it.",
       "parentUuid": "f8ec0ffc_95a5da40",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8362e427_9830d8a2",
         "filename": "/COMMIT_MSG",
@@ -140,10 +141,10 @@
       "message": "Sorry, I don\u0027t understand that argument.\n\nYes, if someone makes an incompatible modification in the future, things will break. But it will be easier to fix it then and can quickly be done by anyone rather than the few people who do build with clang on the side and have to carry around out-of-tree patches.\n\nIf there\u0027s basic clang support checked in, it\u0027s also possible to add a test somewhere that builds the EC with clang to catch those breaking modifications automatically.\n\n\"complicating the build system\" mostly involves replacing hardcoded \"gcc\" and \"g++\" strings with $(cc-name) which should be done anyway.\n\nWe\u0027ve had P0s recently where toolchain uprevs broke the tree (e.g. https://docs.google.com/document/d/1EnlFniwIJwU9PkHw486nA2Jca1mbwczl6NnZEPzMZN0/edit?usp\u003dsharing), building with clang regularly might help find those problems earlier.\n\nCost/benefit ratio looks favourable to me :-)",
       "parentUuid": "50be68d9_2c3828e4",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "907fbad9_4cc946ac",
         "filename": "/COMMIT_MSG",
@@ -158,10 +159,10 @@
       "message": "the change is much more than just replacing gcc with clang, command line options need to be tweaked, conditional compilation sections added, etc.\n\nAnd this will not eliminate the need for thorough testing before upreving the toolchain.\n\nAnd then again, as Patrick points out, we have periodic coverity scan results which greatly go ignored, but could be used to identify fix subtle problems.\n\nMy point is that the prod codebase should not be littered with the one off use case support.",
       "parentUuid": "8362e427_9830d8a2",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2faa1fa9_ddca4e6f",
         "filename": "/COMMIT_MSG",
@@ -176,10 +177,10 @@
       "message": "Experience from coreboot shows that supporting both gcc and clang can be rather annoying, at least when the result is supposed to be buildable: firmware has way too many requirements on precise compiler behavior for that to be simple.\n\nWe still don\u0027t support clang fully in coreboot yet, we keep the infrastructure around, but we don\u0027t test it regularly: it would be too depressing.\n\nSomething \"half-way\" that we could set up is a scan-build run with gcc as base compiler, similar to https://coreboot.org/scan-build/: scan-build is a variant of clang that does coverity-style static analysis (but also complains if stuff isn\u0027t clang-aware). The important bit is that it only generates a report about stuff instead of failing on every error. Since the main build is conducted by gcc, the Makefiles are happy.",
       "parentUuid": "907fbad9_4cc946ac",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0d869b03_e86ec2b7",
         "filename": "/COMMIT_MSG",
@@ -194,10 +195,10 @@
       "message": "The touchpad firmware is actually already built (and shipped) with clang. See why this is bad: http://b/76022938\n\nI think the issue mentioned there means we have to support clang. I\u0027m happy to help set up tooling to make testing it automated (which is part of the motivation mentioned in: https://groups.google.com/a/google.com/d/msg/chromeos-chatty-firmware/SqiiG0izA1A/B82hmMIgAwAJ)",
       "parentUuid": "2faa1fa9_ddca4e6f",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "574cead2_a8385feb",
         "filename": "/COMMIT_MSG",
@@ -212,10 +213,28 @@
       "message": "\"the change is much more than just replacing gcc with clang, command line options need to be tweaked, conditional compilation sections added, etc.\"\n\nThe conditional compilation sections are a there because clang found a bug that gcc had not surfaced. That\u0027s an argument *for* supporting clang, it improves code health.\n\n\"And this will not eliminate the need for thorough testing before upreving the toolchain.\"\n\nNobody is claiming that it will eliminate the need to test the toolchain. On the contrary, supporting another compiler increases test coverage.\n\n\"\nwe have periodic coverity scan results which greatly go ignored, but could be used to identify fix subtle problems.\n\"\n\nUsing coverity more is great! Getting even more coverage with clang *on top of using coverity more* is even better.\n\n\"\nMy point is that the prod codebase should not be littered with the one off use case support.\n\"\n\nThis is not \"one-off\". And this does not \"litter\" the codebase, I see the addition of \"-Wno-initializer-overrides\" and \"-Wno-inline-asm\" to the Makefile and \"-Wno-ignored-attributes\" pending a cleanup CL. Add to that the removal of a pragma for GCC, it looks like it\u0027s actually removing litter from the codebase.",
       "parentUuid": "907fbad9_4cc946ac",
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "916c93db_138b5573",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-17T23:47:24Z",
+      "side": 1,
+      "message": "Resolving outdated comments.",
+      "parentUuid": "574cead2_a8385feb",
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "8f0716ba_2e478851",
         "filename": "Makefile.toolchain",
@@ -235,10 +254,10 @@
         "endChar": 0
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "38ce28e1_1fe6c457",
         "filename": "Makefile.toolchain",
@@ -259,10 +278,34 @@
         "endChar": 0
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b970a65b_5a57a683",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-17T23:47:24Z",
+      "side": 1,
+      "message": "Resolving outdated comments.",
+      "parentUuid": "38ce28e1_1fe6c457",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 0
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "73264729_2267fc58",
         "filename": "core/cortex-m/build.mk",
@@ -282,10 +325,10 @@
         "endChar": 14
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9e8d86d7_74e3e311",
         "filename": "core/cortex-m/build.mk",
@@ -306,10 +349,34 @@
         "endChar": 14
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ee1a76b_4862791a",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-17T23:47:24Z",
+      "side": 1,
+      "message": "Resolving outdated comments.",
+      "parentUuid": "9e8d86d7_74e3e311",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 14
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "38964ff5_4cf0ae47",
         "filename": "core/cortex-m/build.mk",
@@ -329,10 +396,10 @@
         "endChar": 15
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "6875a548_37746022",
         "filename": "core/cortex-m/build.mk",
@@ -353,10 +420,10 @@
         "endChar": 15
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f19fd6e2_7f78b648",
         "filename": "core/cortex-m/build.mk",
@@ -377,10 +444,10 @@
         "endChar": 15
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "273c3afb_cfc05e5e",
         "filename": "core/cortex-m/build.mk",
@@ -401,10 +468,10 @@
         "endChar": 15
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "2f1d53a1_19c70eae",
         "filename": "core/cortex-m/build.mk",
@@ -425,10 +492,34 @@
         "endChar": 15
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84bef82e_9ebb440f",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-17T23:47:24Z",
+      "side": 1,
+      "message": "Resolving outdated comments.",
+      "parentUuid": "2f1d53a1_19c70eae",
+      "range": {
+        "startLine": 33,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 15
+      },
+      "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "2a3e887d_a510de78",
         "filename": "core/cortex-m/task.c",
@@ -448,10 +539,10 @@
         "endChar": 28
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "7e4dedc5_c998087c",
         "filename": "core/cortex-m/task.c",
@@ -472,10 +563,10 @@
         "endChar": 28
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": true
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "7fca5cd6_56ea51b7",
         "filename": "core/cortex-m/task.c",
@@ -496,8 +587,7 @@
         "endChar": 28
       },
       "revId": "7246553ca669d8a753b536b2b0c118c9691bc996",
-      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba",
-      "unresolved": false
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
