@@ -16,6 +16,92 @@
       "message": "1. Simply code of ec_cfg_usb_db_type\n2. Due to CL:3095438, mux HPD interface change, follow it to update usb_mux_hpd_update.\n",
       "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de868e9_993dda21",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T08:04:44Z",
+      "side": 1,
+      "message": "i\u0027m wondering if the boot issues you see are related to\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3139975\n\nit\u0027s pretty common for us to not have a USB DB plugged in on early boards,\nso i\u0027m a bit surprised at the amount of special case code needed here.",
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b0a5ddb_8ed7b9ac",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T08:04:44Z",
+      "side": 1,
+      "message": "i don\u0027t think CONFIG_SYSTEM_UNLOCKED makes sense here.\nif your early board is board ID 0, then simply special\ncase board ID 0.",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "856db0bd_1212186e",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T08:04:44Z",
+      "side": 1,
+      "message": "do you plan to support multiple types of USB DBs?",
+      "range": {
+        "startLine": 86,
+        "startChar": 24,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a43cab77_f06bfd13",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T08:04:44Z",
+      "side": 1,
+      "message": "i think it\u0027s better to override board_is_usb_pd_port_present()\ninstead.",
+      "range": {
+        "startLine": 304,
+        "startChar": 19,
+        "endLine": 304,
+        "endChar": 46
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
