@@ -22,6 +22,30 @@
       },
       "revId": "df3597b333b8f21e1d083827735513becd582d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30925b59_43ce2d5f",
+        "filename": "board/galtic/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1294441
+      },
+      "writtenOn": "2021-09-17T01:48:07Z",
+      "side": 1,
+      "message": "Depend on ME design, the 2S or 3S batteries can\u0027t support on the same board.\nI think it not have condition for 2S and 3S batteries on the same board.",
+      "parentUuid": "2d4941c8_1bb188f6",
+      "range": {
+        "startLine": 108,
+        "startChar": 29,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "df3597b333b8f21e1d083827735513becd582d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
