@@ -311,6 +311,8 @@ void board_pd_vconn_ctrl(int port, enum usbpd_cc_pin cc_pin, int enabled)
 	 * should already be set correctly in the PPC driver via the pd
 	 * state machine.
 	 */
+	if (port == 0)
+		ccprints("p%d Vconn%d switch en/dis%d", port, cc_pin, enabled);
 }
 
 int board_set_active_charge_port(int port)
