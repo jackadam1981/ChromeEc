@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "892cb009_edcaf107",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-09-17T06:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "420bcd76_65d71ced",
+      "revId": "acfc2af3fa273fe653f7cf4e401b9f6f0f30e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cf903ac3_23fbf3ee",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
@@ -83,6 +101,30 @@
       "writtenOn": "2021-09-17T00:04:22Z",
       "side": 1,
       "message": "nit: IS_ENABLED(CONFIG_I2C_BITBANG) \u0026\u0026",
+      "range": {
+        "startLine": 143,
+        "startChar": 11,
+        "endLine": 143,
+        "endChar": 12
+      },
+      "revId": "acfc2af3fa273fe653f7cf4e401b9f6f0f30e448",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f28f5c5_432f7675",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-09-17T06:20:47Z",
+      "side": 1,
+      "message": "I added a new flag to guard the code block here because the EC which implements its I2C driver with polling mode not have to switch to bitbang mode.",
+      "parentUuid": "30cef205_dc9cb0f1",
       "range": {
         "startLine": 143,
         "startChar": 11,
