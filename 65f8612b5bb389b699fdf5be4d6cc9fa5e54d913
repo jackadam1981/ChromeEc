@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a35b3d2d_d58bd131",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-17T13:48:07Z",
+      "side": 1,
+      "message": "Yes, the original problem is blocked by i2c storm of PS8815, and it\u0027s difficult to power on without DB even if we trigger powerbtn event.\n\nAfter merged CL-3139975, in most condition, it can power on without DB when plug in AC. But, it still has failure rate system cannot \"auto\" power on without DB.\nFrom log (I upload to comment#12 of b:197585292), it\u0027s late to acquire MB(USBC0) power source before PB task is timeout. System still can be turn on by trigger powerbtn this moment.\n\nI suspect it could be caused by task scheduling, but I\u0027m not familiar task scheduling. Could I have your advise?\n\nIf this condition is not problem, I\u0027ll remove DB detect policy and update patch later.",
+      "parentUuid": "5de868e9_993dda21",
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b0a5ddb_8ed7b9ac",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c00c813_8fa3887f",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-17T13:48:07Z",
+      "side": 1,
+      "message": "The purpose is to make sure this detection policy won\u0027t be built in after mass production.\n\nIf it\u0027s not good idea, I\u0027ll remove it.",
+      "parentUuid": "5b0a5ddb_8ed7b9ac",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "856db0bd_1212186e",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-09-17T08:04:44Z",
       "side": 1,
       "message": "do you plan to support multiple types of USB DBs?",
+      "range": {
+        "startLine": 86,
+        "startChar": 24,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ce7a5ae_95dd238a",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-17T13:48:07Z",
+      "side": 1,
+      "message": "It\u0027s just reserved and won\u0027t support it.",
+      "parentUuid": "856db0bd_1212186e",
       "range": {
         "startLine": 86,
         "startChar": 24,
