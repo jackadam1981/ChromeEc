@@ -880,7 +880,7 @@ DECLARE_DEFERRED(resume_pd_port);
 void pd_deferred_resume(int port)
 {
 	atomic_or(&pd_ports_to_resume, 1 << port);
-	hook_call_deferred(&resume_pd_port_data, 5 * SECOND);
+	hook_call_deferred(&resume_pd_port_data, 50 * SECOND);
 }
 #endif /* CONFIG_USB_PD_TCPM_TCPCI */
 
