@@ -321,3 +321,21 @@ static int board_get_temp(int idx, int *temp_k)
 		return EC_ERROR_NOT_POWERED;
 	return get_temp_3v3_30k9_47k_4050b(idx, temp_k);
 }
+
+/*****************************************************************************
+ * Board suspend / resume
+ */
+
+static void board_chipset_resume(void)
+{
+	ioex_set_level(IOEX_HDMI_DATA_EN, 1);
+	ioex_set_level(IOEX_EN_PWR_HDMI, 1);
+}
+DECLARE_HOOK(HOOK_CHIPSET_RESUME, board_chipset_resume, HOOK_PRIO_DEFAULT);
+
+static void board_chipset_suspend(void)
+{
+	ioex_set_level(IOEX_EN_PWR_HDMI, 0);
+	ioex_set_level(IOEX_HDMI_DATA_EN, 0);
+}
+DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, board_chipset_suspend, HOOK_PRIO_DEFAULT);
