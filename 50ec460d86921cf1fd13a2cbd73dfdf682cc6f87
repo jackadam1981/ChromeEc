@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e63c80f_60831c95",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-17T21:02:31Z",
+      "side": 1,
+      "message": "cbi-util allows us to choose what data to be included in the image. So, I think it still makes sense to update cbi-util.",
+      "range": {
+        "startLine": 12,
+        "startChar": 69,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8096b493_256e6f3d",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5958,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-17T21:02:31Z",
+      "side": 1,
+      "message": "Is this fixed or the max?",
+      "range": {
+        "startLine": 5958,
+        "startChar": 28,
+        "endLine": 5958,
+        "endChar": 37
+      },
+      "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f30a8a85_178b4cb1",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8257,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-17T21:02:31Z",
+      "side": 1,
+      "message": "What\u0027s the input format for \u0027set\u0027 command?",
+      "range": {
+        "startLine": 8257,
+        "startChar": 11,
+        "endLine": 8257,
+        "endChar": 17
+      },
+      "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "299544b5_ad3409c3",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8337,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-17T21:02:31Z",
+      "side": 1,
+      "message": "Do you mind moving this to util/misc_util.c? (It can go as a separate CL.)",
+      "range": {
+        "startLine": 8330,
+        "startChar": 0,
+        "endLine": 8337,
+        "endChar": 16
+      },
+      "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
