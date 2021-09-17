@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "da3aba75_ef287856",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-17T20:43:31Z",
+      "side": 1,
+      "message": "loading of keys is outside FIPS module - if keys exist it will successfully load keys. if not - it will fail due to fips_rand_bytes() fail. \nIf keys are provided to function - it will work if no FIPS errors or immediately return an error.\n\ncommands would fips old; fips sha; fips test and then test/tpmtest.py which would fail on u2f_generate returning an error",
+      "parentUuid": "514b9a00_2566885d",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "6f0d81def692228d5a1aaf951df691e141f3751d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "a74fa793_728e809b",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
