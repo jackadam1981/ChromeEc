@@ -69,6 +69,23 @@
       "parentUuid": "7d75fdf2_15ec1d60",
       "revId": "a7a018620237f90a4ba260d9898439884bdf73d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca629e4c_eba78b89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-17T17:36:59Z",
+      "side": 1,
+      "message": "Looks like the firmware-zephyr-cq fails because of the change to the return tupe of pd_get_am_discovery().  This function is also called by a Zephyr unit test.  Please update the following file for the changes made to include/usb_pd.h\n\n./zephyr/test/drivers/src/bb_retimer.c\n\nYou should be able to verify locally by running \"zmake testall\".\n",
+      "revId": "a7a018620237f90a4ba260d9898439884bdf73d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
