@@ -106,7 +106,7 @@ void pd_interrupt_handler_task(void *p)
 
 	while (1) {
 		const int evt = task_wait_event(-1);
-
+		ccprintf("C%d %s evt=0x%08x\n", port, __func__, evt);
 		if ((evt & PD_PROCESS_INTERRUPT) == 0)
 			continue;
 		/*
