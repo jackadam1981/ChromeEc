@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb5744b9_b7abdc63",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T22:28:00Z",
+      "side": 1,
+      "message": "at first glance, i thought this might go out of bounds when\nprocessing a V0 request. but, the result buffer is fixed\nsize, pre-allocated and zero\u0027d to args-\u003eresponse_max bytes\nin host_command.c:host_command_process().\nso, i think we can skip this memset.",
+      "range": {
+        "startLine": 1575,
+        "startChar": 14,
+        "endLine": 1575,
+        "endChar": 24
+      },
+      "revId": "fcf729ad8a90c7b6e996552f0df48bc060185340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1196abcd_c5a96cfc",
         "filename": "common/system.c",
         "patchSetId": 2
@@ -19,6 +42,53 @@
         "startChar": 0,
         "endLine": 1606,
         "endChar": 66
+      },
+      "revId": "fcf729ad8a90c7b6e996552f0df48bc060185340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66795d2b_945588d8",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T22:28:00Z",
+      "side": 1,
+      "message": "i agree that this is a bit quirky, but i think we should address this\nwith a bit of documentation here and in the interface definition\n(i.e. ec_commands.h).\nwe just need to clearly state that (and how) V1 is a superset of V0.",
+      "parentUuid": "1196abcd_c5a96cfc",
+      "range": {
+        "startLine": 1604,
+        "startChar": 0,
+        "endLine": 1606,
+        "endChar": 66
+      },
+      "revId": "fcf729ad8a90c7b6e996552f0df48bc060185340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d986e23e_530ff1bd",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T22:28:00Z",
+      "side": 1,
+      "message": "i\u0027d flip the logic so the V0 fall-back case is the \"else\" case.\n\nalso, ec_command(EC_CMD_GET_VERSION,...) should come back with EC_RES_INVALID_VERSION, thus avoiding the explicit check.\nthat\u0027ll make this look more like a waterfall of calls which\nmay look more intuitive.",
+      "range": {
+        "startLine": 1076,
+        "startChar": 5,
+        "endLine": 1076,
+        "endChar": 6
       },
       "revId": "fcf729ad8a90c7b6e996552f0df48bc060185340",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
