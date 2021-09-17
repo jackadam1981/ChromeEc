@@ -91,6 +91,30 @@
       },
       "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50836a1c_98d9c3a9",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8337,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-09-17T23:13:24Z",
+      "side": 1,
+      "message": "I\u0027d also like this to just output the raw binary data as well. Parsing this is going to be fragile...and I also need to extract this and store it as a binary file elsewhere in an init script. We don\u0027t have \u0027xxd\u0027 on ChromeOS devices so I\u0027m not sure if there\u0027s an easy way to convert from hex to binary in an init script otherwise; so binary would be easiest.",
+      "parentUuid": "299544b5_ad3409c3",
+      "range": {
+        "startLine": 8330,
+        "startChar": 0,
+        "endLine": 8337,
+        "endChar": 16
+      },
+      "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
