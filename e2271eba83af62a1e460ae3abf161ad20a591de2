@@ -16,6 +16,24 @@
       "message": "Hi Martin, can you reupload PS6? Thanks,",
       "revId": "e2271eba83af62a1e460ae3abf161ad20a591de2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fab83c3_5d3f53ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1255298
+      },
+      "writtenOn": "2021-09-17T20:32:22Z",
+      "side": 1,
+      "message": "Hi Daisuke,\nI didn\u0027t upload PS6, sound you did it after rebasing.\ndo you want me to rebase (repo sync) then cherry-pick this CL?",
+      "parentUuid": "c073671c_386480ca",
+      "revId": "e2271eba83af62a1e460ae3abf161ad20a591de2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
