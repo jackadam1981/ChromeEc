@@ -53,6 +53,93 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "241366f7_651e76c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T23:21:54Z",
+      "side": 1,
+      "message": "on very early brya, i saw some issues with the PB task timing out due to\nthe battery waking up slowly. we did not submit this change because it\nshouldn\u0027t be necessary.\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2766485",
+      "parentUuid": "a35b3d2d_d58bd131",
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "753e6a7f_17a28164",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T23:21:54Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be 0?",
+      "range": {
+        "startLine": 42,
+        "startChar": 42,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78a9e5e4_9bf7e000",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T23:21:54Z",
+      "side": 1,
+      "message": "the parade parts do not respond to I2C on first access because\nthey auto-sleep when I2C is idle.\nyou have to wake up the chip with an I2C read, then wait\n10ms, then issue the actual I2C read you\u0027re trying to perform.\n\nin addition to the 10ms wake-up delay, there\u0027s some time needed\nfor its firmware to boot. some registers don\u0027t read back correct\nvalues until the firmware is fully running.",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b54e3e6_3e39b772",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T23:21:54Z",
+      "side": 1,
+      "message": "this should be 1",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b0a5ddb_8ed7b9ac",
@@ -90,6 +177,30 @@
       "side": 1,
       "message": "The purpose is to make sure this detection policy won\u0027t be built in after mass production.\n\nIf it\u0027s not good idea, I\u0027ll remove it.",
       "parentUuid": "5b0a5ddb_8ed7b9ac",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ee015dd_1eb6e363",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T23:21:54Z",
+      "side": 1,
+      "message": "ya, this is not a good use of CONFIG_SYSTEM_UNLOCKED.\nboard_id() is a better check. it\u0027s really the board\nrevision, so it should increment with each board spin\nor build phase.\n\npersonally, i would not define CONFIG_SYSTEM_UNLOCKED\n(or remove it right after initial bringup/power-on)\nbecause the system\u0027s locked state is determined by whether\nprogrammables are write-protected, etc. even when\nCONFIG_SYSTEM_UNLOCKED is not defined.",
+      "parentUuid": "2c00c813_8fa3887f",
       "range": {
         "startLine": 74,
         "startChar": 8,
