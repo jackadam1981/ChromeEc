@@ -16,6 +16,24 @@
       "message": "Hi Caveh,\nIt seems that I lost the authority to \"commit-queue +2\".\nAny idea?\nOr can you help to \"commit-Queue +2\" for me?",
       "revId": "f6e71445ad4ae66ac6b316a77613e873b3609c73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3b4b004_2c180cf8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T08:44:20Z",
+      "side": 1,
+      "message": "ya, there seems to have been some policy changes... i\u0027m not sure how much\nof this is intentional.\n\nare you able to set the auto-submit flag when sending patches out for review?\nthat might help streamline the process.",
+      "parentUuid": "f6ab9df1_17630200",
+      "revId": "f6e71445ad4ae66ac6b316a77613e873b3609c73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
