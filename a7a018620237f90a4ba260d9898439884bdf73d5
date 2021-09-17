@@ -33,6 +33,24 @@
       "message": "make -j buildall test passed yesterday on this patch on two systems.\nNeed to understand why the CQ +1 failed on latest patch set. ",
       "revId": "a7a018620237f90a4ba260d9898439884bdf73d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d75fdf2_15ec1d60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-17T17:23:21Z",
+      "side": 1,
+      "message": "The builder that is failing is the zephyr test builder. (I forgot to mention this earlier.) If you click above on Checks -\u003e Error -\u003e firmware-zephyr-cq -\u003e Build, are you able to access the output?\n\nIt shows that the usages of this API in zephyr/test/drivers/src/bb_retimer.c need to be updated.\n\nThere\u0027s more info on running this locally at https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/zephyr_build.md and https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ztest.md#build-and-run. I\u0027ll admit that this documentation could be more fleshed out for partners.",
+      "parentUuid": "3cf07670_f118ec81",
+      "revId": "a7a018620237f90a4ba260d9898439884bdf73d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
