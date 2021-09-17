@@ -1,0 +1,446 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0f02860_3332ee08",
+        "filename": "board/primus/build.mk",
+        "patchSetId": 25
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "please keep list alphabetical",
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39c867b7_bceb8f10",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "should not be needed any more.  see\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3120317",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2837abf_9376025c",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "could you add a comment describing the arithmetic needed\nto convert from ADC reading to wattage?",
+      "range": {
+        "startLine": 29,
+        "startChar": 11,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "452a2f44_bcc5f7ab",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "should this be CONFIG_CHARGER_SENSE_RESISTOR_AC?",
+      "range": {
+        "startLine": 38,
+        "startChar": 18,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0361d04c_66c0c894",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "it may help to call these battery_voltage_mv or battery_mv\nso we don\u0027t loose track of the units.\n\nsame with battery_current_ma or battery_ma",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76940af0_20326006",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "initialize to 0",
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f0dd4d8_35cfa3a5",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "i think you should check for error here and potentially\ntrack failure with\nflags |\u003d BATT_FLAG_BAD_VOLTAGE",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0b2eb3_bf979830",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "is there a reason this cast is necessary?\nthis should already be a 16 bit value stored in an int?",
+      "range": {
+        "startLine": 57,
+        "startChar": 20,
+        "endLine": 57,
+        "endChar": 29
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be248e4_a8cf6a31",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "if BAD_VOLTAGE or BAD_CURRENT, you might have to stop here.\n\ni do see the occasional intermittent error on the EC logs about not\nbeing able to talk to the battery - so we should handle\nthat case gracefully. probably just skip this cycle and hope\nthe next cycle succeeds.",
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d7567b9_5549546e",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "add error checking here, too.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e4b2f8d_49a803d8",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "adapter_current_ma or adapter_ma?",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1483e9f5_04e1913c",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "assert",
+      "range": {
+        "startLine": 91,
+        "startChar": 17,
+        "endLine": 91,
+        "endChar": 24
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29e43be3_ec4b7575",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "only execute if get_option succeeded.",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 25
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c18fd4ed_9326b308",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "actual",
+      "range": {
+        "startLine": 104,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d509f2ae_328abf18",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "discharging",
+      "range": {
+        "startLine": 109,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 29
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c486fe55_1d1a6a39",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "i think it\u0027s better to have a _mW and _W variable so we don\u0027t\nrun into cases where the _W variable actually represents milliwatts.\n\nsame with other similar variables.",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 8
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "793996fc_7e396b08",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "help me understand - is this possible?\ndoesn\u0027t the charge manager limit\nwhat it negotiates with the charger to ADT_RATING?",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 34
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3af41d63_323f271e",
+        "filename": "board/primus/prochot.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "if this is only used in prochot.c,\nit can be moved into the file.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e02b0344_3b81e09a",
+        "filename": "board/primus/prochot.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "battery_continuous_discharge_wattage?",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "552b7127_4c074c0a",
+        "filename": "board/primus/prochot.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-17T07:46:41Z",
+      "side": 1,
+      "message": "these are going to be milli-watts, right?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
