@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44974ed7_cb0d90b1",
+        "filename": "common/usb_common.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 874,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-17T04:33:48Z",
+      "side": 1,
+      "message": "how about adding board_clear_pending_pd_interrupt() ?",
+      "revId": "9a8dead03f50633070e918587a76aba10dec59ca",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
