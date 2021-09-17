@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "277127e1_9506b6b7",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-17T17:05:48Z",
+      "side": 1,
+      "message": "nit: not used",
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2837abf_9376025c",
         "filename": "board/primus/prochot.c",
         "patchSetId": 25
@@ -387,6 +404,30 @@
       "writtenOn": "2021-09-17T07:46:41Z",
       "side": 1,
       "message": "if this is only used in prochot.c,\nit can be moved into the file.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cfc822c_6003425d",
+        "filename": "board/primus/prochot.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-17T17:05:48Z",
+      "side": 1,
+      "message": "nit: `batt_params` would be a more common way to shorten those words",
+      "parentUuid": "3af41d63_323f271e",
       "range": {
         "startLine": 11,
         "startChar": 0,
