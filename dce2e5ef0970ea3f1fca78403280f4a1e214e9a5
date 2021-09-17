@@ -332,6 +332,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0423e1e_4a7845fe",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-17T00:13:46Z",
+      "side": 1,
+      "message": "no. it os still 1 \u0027generate\u0027 for DBRG. we actually do it 8x less frequent by reading 32 bytes.\nDRBG is reseeded after 10000 reads - no matter 4 bytes or 32 bytes. If you read 4 bytes - you spend same time as 32, and just drop 28 bytes.",
+      "parentUuid": "3cfec8a4_2c820139",
+      "range": {
+        "startLine": 201,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 12
+      },
+      "revId": "dce2e5ef0970ea3f1fca78403280f4a1e214e9a5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "32c5bca3_6794c7b5",
