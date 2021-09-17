@@ -284,6 +284,9 @@ static void it83xx_enable_vconn(enum usbpd_port port, int enabled)
 	else
 		cc_pin = USBPD_CC_PIN_2;
 
+	if (port == 0)
+		ccprints("p%d cc%d Vconn%d en/dis%d", port, cc_pin, !cc_pin, enabled);
+
 	if (enabled) {
 		/* Disable unused CC to become VCONN */
 		if (cc_pin == USBPD_CC_PIN_1) {
