@@ -1568,7 +1568,7 @@ DECLARE_CONSOLE_COMMAND(rflags, command_rflags,
 static enum ec_status
 host_command_get_version(struct host_cmd_handler_args *args)
 {
-	struct ec_response_get_version *r = args->response;
+	struct ec_response_get_version_v1 *r = args->response;
 	enum ec_image active_slot = system_get_active_copy();
 
 	/* Clear optional fields (i.e. cros_fwid). */
@@ -1601,10 +1601,9 @@ host_command_get_version(struct host_cmd_handler_args *args)
 	}
 	if (args->version == 0)
 		/* cros_fwid_rw[32] is not present in version 0 */
-		args->response_size =
-			offsetof(struct ec_response_get_version, cros_fwid_rw);
-	else
 		args->response_size = sizeof(struct ec_response_get_version);
+	else
+		args->response_size = sizeof(struct ec_response_get_version_v1);
 
 	return EC_RES_SUCCESS;
 }
