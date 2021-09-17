@@ -16,6 +16,24 @@
       "message": "Rebased patch on top of tree. This required changes in hpd_update test. Added emul_usb_mux_hpd_update() to be used in usb_muxes[] in stubs.",
       "revId": "df860b4b02c1eda89f390cc261ec7cb5b2a2fc4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac360b24_41d131cf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-17T17:38:07Z",
+      "side": 1,
+      "message": "Thanks Tomasz, I\u0027ll review today. Sorry, got caught up with a bunch of things.",
+      "parentUuid": "5c1d9d8d_bfdfb4bd",
+      "revId": "df860b4b02c1eda89f390cc261ec7cb5b2a2fc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
