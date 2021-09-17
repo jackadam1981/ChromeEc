@@ -94,6 +94,30 @@
       },
       "revId": "1d8a14de334c25b1135fb0c8be263f9572af1479",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad43827b_0cb15b86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-09-17T19:17:21Z",
+      "side": 1,
+      "message": "BTW, here\u0027s the cherry-pick which you can CQ depend on : https://chromium-review.googlesource.com/c/chromiumos/third_party/coreboot/+/3167960",
+      "parentUuid": "09a4edf9_75b90087",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 57
+      },
+      "revId": "1d8a14de334c25b1135fb0c8be263f9572af1479",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
