@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "514b9a00_2566885d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-17T20:13:34Z",
+      "side": 1,
+      "message": "test should include:\n- create u2f key on cr50 before FIPS\n- update to cr50 with this fix\n- u2f still works",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 4
+      },
+      "revId": "6f0d81def692228d5a1aaf951df691e141f3751d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a74fa793_728e809b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-17T20:13:34Z",
+      "side": 1,
+      "message": "+2 with comment",
+      "revId": "6f0d81def692228d5a1aaf951df691e141f3751d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
