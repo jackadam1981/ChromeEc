@@ -46,6 +46,30 @@
       },
       "revId": "df3597b333b8f21e1d083827735513becd582d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c07fef_a236cd19",
+        "filename": "board/galtic/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-17T12:59:21Z",
+      "side": 1,
+      "message": "the issue there is that we may not apply the correct voltage to the battery  if we have both 2S and 3S batteries as a possibility with the same firmware. we would need to have a way to distinguish the boards.",
+      "parentUuid": "30925b59_43ce2d5f",
+      "range": {
+        "startLine": 108,
+        "startChar": 29,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "df3597b333b8f21e1d083827735513becd582d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
