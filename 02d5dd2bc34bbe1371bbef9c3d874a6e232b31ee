@@ -39,6 +39,30 @@
       },
       "revId": "02d5dd2bc34bbe1371bbef9c3d874a6e232b31ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99b2d30b_1894265d",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-17T02:57:45Z",
+      "side": 1,
+      "message": "Thanks to reminder, and it\u0027s done as patch 9.\n\nDue to CL:3095438, mux HPD interface change, I have to follow it to update.",
+      "parentUuid": "f1b3614f_bb7e9cb8",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 35
+      },
+      "revId": "02d5dd2bc34bbe1371bbef9c3d874a6e232b31ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

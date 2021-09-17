@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ef674a5_f41c78a3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-17T02:57:45Z",
+      "side": 1,
+      "message": "1. Simply code of ec_cfg_usb_db_type\n2. Due to CL:3095438, mux HPD interface change, follow it to update usb_mux_hpd_update.\n",
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
