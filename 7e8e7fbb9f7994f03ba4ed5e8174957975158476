@@ -63,6 +63,30 @@
       },
       "revId": "7e8e7fbb9f7994f03ba4ed5e8174957975158476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34ebb874_70cf48bb",
+        "filename": "driver/accelgyro_icm426xx.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1507338
+      },
+      "writtenOn": "2021-09-18T12:53:18Z",
+      "side": 1,
+      "message": "Apologize about mistake.\nI missed (0x68 \u003c\u003c 1) while upload patchset.\nI will re-pull all codes and will verify codes before create new patchset.",
+      "parentUuid": "02f2fc3a_881b8c2e",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "7e8e7fbb9f7994f03ba4ed5e8174957975158476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
