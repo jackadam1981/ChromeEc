@@ -1037,6 +1037,9 @@ static void tc_set_partner_role(int port, enum ppc_device_role role)
 	}
 }
 
+__overridable void board_post_pd_suspend(int port) {}
+__overridable void board_pre_pd_resume(int port) {}
+
 /*
  * Depending on the load on the processor and the tasks running
  * it can take a while for the task associated with this port
@@ -1075,7 +1078,9 @@ void pd_set_suspend(int port, int suspend)
 			}
 			msleep(SUSPEND_SLEEP_DELAY);
 		}
+		board_post_pd_suspend(port);
 	} else {
+		board_pre_pd_resume(port);
 		TC_CLR_FLAG(port, TC_FLAGS_REQUEST_SUSPEND);
 		task_wake(PD_PORT_TO_TASK_ID(port));
 	}

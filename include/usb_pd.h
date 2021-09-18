@@ -3086,6 +3086,22 @@ __override_proto void board_process_pd_alert(int port);
 void board_reset_pd_mcu(void);
 
 /**
+ * XXX Resets external PD chips including TCPCs and MCUs.
+ *
+ * XXX Boards must provide this when PDCMD (PD MCUs case) or PD INT (TCPC case)
+ * XXX tasks are present.
+ */
+__override_proto void board_post_pd_suspend(int port);
+
+/**
+ * XXX Resets external PD chips including TCPCs and MCUs.
+ *
+ * XXX Boards must provide this when PDCMD (PD MCUs case) or PD INT (TCPC case)
+ * XXX tasks are present.
+ */
+__override_proto void board_pre_pd_resume(int port);
+
+/**
  * Return true if specified PD port is debug accessory.
  *
  * @param port USB-C port number
