@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0cdee40f_dda35d99",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1441652
+      },
+      "writtenOn": "2021-09-18T07:01:42Z",
+      "side": 1,
+      "message": "Comments looks good, but `reserved-\u003ecros_fwid_ro` for me looks like access to field of structure, but in comment we just want to say that we changed its purpose. Could you change it to eg. `reserved --\u003e cros_fwid_ro`?",
+      "parentUuid": "2cfe1838_b4ed02e7",
+      "range": {
+        "startLine": 1604,
+        "startChar": 0,
+        "endLine": 1606,
+        "endChar": 66
+      },
+      "revId": "fcf729ad8a90c7b6e996552f0df48bc060185340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d986e23e_530ff1bd",
         "filename": "util/ectool.c",
         "patchSetId": 2
