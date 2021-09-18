@@ -86,6 +86,42 @@
       "message": "Looks like the firmware-zephyr-cq fails because of the change to the return tupe of pd_get_am_discovery().  This function is also called by a Zephyr unit test.  Please update the following file for the changes made to include/usb_pd.h\n\n./zephyr/test/drivers/src/bb_retimer.c\n\nYou should be able to verify locally by running \"zmake testall\".\n",
       "revId": "a7a018620237f90a4ba260d9898439884bdf73d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "247cfa99_c6c0351a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-09-18T19:07:06Z",
+      "side": 1,
+      "message": "Hi Abe,\n\nI assume access issue here.\nwhen i click on \"checks\" -\u003e Errors (0) , it displays 0.\nNo errors related to zephyr are found on patch#17\n\nI could reproduce and verify locally by using \"zmake testall\"\nand \"make -j buildall\" shows no error on Latest patch#18.\n\nIf still CQ run fails on patch#18 it would be an unfortunate thing as i cant access  the errors/failures occurred.",
+      "parentUuid": "b668c23c_fa6d6c44",
+      "revId": "a7a018620237f90a4ba260d9898439884bdf73d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "902cbba2_3f06836c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-09-18T19:07:06Z",
+      "side": 1,
+      "message": "Hi Keith\nThanks \"zmake testall\" helps to reproduce the error.",
+      "parentUuid": "ca629e4c_eba78b89",
+      "revId": "a7a018620237f90a4ba260d9898439884bdf73d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
