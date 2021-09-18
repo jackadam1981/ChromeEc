@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "708d4683_c5880564",
+        "filename": "board/brask/board.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-18T04:13:51Z",
+      "side": 1,
+      "message": "Boris, do we still need to move it? I think we can pass { 0 }.",
+      "parentUuid": "fd85a378_b1e96cbc",
+      "range": {
+        "startLine": 164,
+        "startChar": 1,
+        "endLine": 164,
+        "endChar": 29
+      },
+      "revId": "bcae6878104a8929848b73ce24851693009f916c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf5631c6_ce887b04",
         "filename": "board/brask/board.h",
         "patchSetId": 4
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "f24cf575_37f8f1ce",
+      "range": {
+        "startLine": 152,
+        "startChar": 23,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "bcae6878104a8929848b73ce24851693009f916c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef221941_55bdbb14",
+        "filename": "board/brask/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-18T04:13:51Z",
+      "side": 1,
+      "message": "Could you please put an ASSERT for checking the CHARGE_PORT_COUNT value?",
+      "parentUuid": "8b515a43_a7a6aad1",
       "range": {
         "startLine": 152,
         "startChar": 23,
