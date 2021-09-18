@@ -56,7 +56,8 @@ const struct tcpc_config_t tcpc_config[] = {
 		},
 		.drv = &ps8xxx_tcpm_drv,
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
-			 TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V,
+			 TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V |
+			 TCPC_FLAGS_SUSPEND_400KHZ,
 	},
 	[USBC_PORT_C2] = {
 		.bus_type = EC_BUS_TYPE_I2C,
@@ -318,6 +319,58 @@ void board_reset_pd_mcu(void)
 	/* wait for chips to come up */
 
 	msleep(50);
+}
+
+void board_post_pd_suspend(int usbc_port)
+{
+	int i2c_port;
+	const struct i2c_port_t *p;
+
+	if (!board_is_usb_pd_port_present(usbc_port))
+		return;
+
+	if (!(tcpc_config[usbc_port].flags & TCPC_FLAGS_SUSPEND_400KHZ))
+		return;
+
+	i2c_port = tcpc_config[usbc_port].i2c_info.port;
+	p = get_i2c_port(i2c_port);
+	if (p == NULL)
+		return;
+
+	if (p->kbps <= 400) {
+		CPRINTS("C%d speed already <= 400KHz for PD suspend",
+			usbc_port);
+		return;
+	}
+
+	CPRINTS("reducing C%d speed to 400KHz for PD suspend", usbc_port);
+	i2c_set_freq(i2c_port, I2C_FREQ_400KHZ);
+}
+
+void board_pre_pd_resume(int usbc_port)
+{
+	int i2c_port;
+	const struct i2c_port_t *p;
+
+	if (!board_is_usb_pd_port_present(usbc_port))
+		return;
+
+	if (!(tcpc_config[usbc_port].flags & TCPC_FLAGS_SUSPEND_400KHZ))
+		return;
+
+	i2c_port = tcpc_config[usbc_port].i2c_info.port;
+	p = get_i2c_port(i2c_port);
+	if (p == NULL)
+		return;
+
+	if (p->kbps != 1000) {
+		CPRINTS("C%d speed normally not 1MHz for PD resume",
+			usbc_port);
+		return;
+	}
+
+	CPRINTS("increasing C%d speed to 1MHz for PD resume", usbc_port);
+	i2c_set_freq(i2c_port, I2C_FREQ_1000KHZ);
 }
 
 static void enable_ioex(int ioex)
