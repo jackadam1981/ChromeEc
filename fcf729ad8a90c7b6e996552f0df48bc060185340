@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6977cf4f_0b1f1c00",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-09-18T01:53:49Z",
+      "side": 1,
+      "message": "Good catch, replaced with comment about assumption.",
+      "parentUuid": "cb5744b9_b7abdc63",
+      "range": {
+        "startLine": 1575,
+        "startChar": 14,
+        "endLine": 1575,
+        "endChar": 24
+      },
+      "revId": "fcf729ad8a90c7b6e996552f0df48bc060185340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1196abcd_c5a96cfc",
@@ -73,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2cfe1838_b4ed02e7",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-09-18T01:53:49Z",
+      "side": 1,
+      "message": "I added more documentation here and in ec_commands.h. PTAL.",
+      "parentUuid": "66795d2b_945588d8",
+      "range": {
+        "startLine": 1604,
+        "startChar": 0,
+        "endLine": 1606,
+        "endChar": 66
+      },
+      "revId": "fcf729ad8a90c7b6e996552f0df48bc060185340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d986e23e_530ff1bd",
         "filename": "util/ectool.c",
         "patchSetId": 2
@@ -84,6 +132,30 @@
       "writtenOn": "2021-09-17T22:28:00Z",
       "side": 1,
       "message": "i\u0027d flip the logic so the V0 fall-back case is the \"else\" case.\n\nalso, ec_command(EC_CMD_GET_VERSION,...) should come back with EC_RES_INVALID_VERSION, thus avoiding the explicit check.\nthat\u0027ll make this look more like a waterfall of calls which\nmay look more intuitive.",
+      "range": {
+        "startLine": 1076,
+        "startChar": 5,
+        "endLine": 1076,
+        "endChar": 6
+      },
+      "revId": "fcf729ad8a90c7b6e996552f0df48bc060185340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0eab29e_4060150d",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-09-18T01:53:49Z",
+      "side": 1,
+      "message": "ioctl no longer passes the ec response. Instead a protocol errorno is returned. See https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/3094528 and https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2937743 for context. I don\u0027t think we want to rely on that response. I think we should keep the explicit version check here. I did adjust this slightly to check for version 1 first to make it more waterfall.",
+      "parentUuid": "d986e23e_530ff1bd",
       "range": {
         "startLine": 1076,
         "startChar": 5,
