@@ -494,6 +494,7 @@ struct tcpm_drv {
 #define TCPC_FLAGS_TCPCI_REV2_0		BIT(3)
 #define TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V	BIT(4)
 #define TCPC_FLAGS_NO_DEBUG_ACC_CONTROL	BIT(5)
+#define TCPC_FLAGS_SUSPEND_400KHZ	BIT(6)
 
 struct tcpc_config_t {
 	enum ec_bus_type bus_type;	/* enum ec_bus_type */
