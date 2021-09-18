@@ -527,13 +527,15 @@ static int init(struct motion_sensor_t *s)
 	mutex_lock(s->mutex);
 	ret = st_raw_write8(s->port, s->i2c_spi_addr_flags,
 			    LIS2DW12_SOFT_RESET_ADDR, LIS2DW12_SOFT_RESET_MASK);
-	if (ret != EC_SUCCESS)
+	if (ret != EC_SUCCESS) {
+		ret = EC_ERROR_UNKNOWN;
 		goto err_unlock;
+	}
 
 	/* Wait End of Reset. */
 	do {
 		if (timeout > 10) {
-			ret = EC_RES_TIMEOUT;
+			ret = EC_ERROR_TIMEOUT;
 			goto err_unlock;
 		}
 
@@ -548,13 +550,17 @@ static int init(struct motion_sensor_t *s)
 	/* Enable BDU. */
 	ret = st_write_data_with_mask(s, LIS2DW12_BDU_ADDR, LIS2DW12_BDU_MASK,
 				      LIS2DW12_EN_BIT);
-	if (ret != EC_SUCCESS)
+	if (ret != EC_SUCCESS) {
+		ret = EC_ERROR_UNKNOWN;
 		goto err_unlock;
+	}
 
 	ret = st_write_data_with_mask(s, LIS2DW12_LIR_ADDR, LIS2DW12_LIR_MASK,
 				      LIS2DW12_EN_BIT);
-	if (ret != EC_SUCCESS)
+	if (ret != EC_SUCCESS) {
+		ret = EC_ERROR_UNKNOWN;
 		goto err_unlock;
+	}
 
 	/* Interrupt trigger level of power-on-reset is HIGH */
 	if (IS_ENABLED(LIS2DW12_ENABLE_FIFO) &&
@@ -562,8 +568,10 @@ static int init(struct motion_sensor_t *s)
 		ret = st_write_data_with_mask(s, LIS2DW12_H_ACTIVE_ADDR,
 						LIS2DW12_H_ACTIVE_MASK,
 						LIS2DW12_EN_BIT);
-		if (ret != EC_SUCCESS)
+		if (ret != EC_SUCCESS) {
+			ret = EC_ERROR_UNKNOWN;
 			goto err_unlock;
+		}
 	}
 
 	if (IS_ENABLED(CONFIG_ACCEL_LIS2DWL))
@@ -576,13 +584,17 @@ static int init(struct motion_sensor_t *s)
 		/* Set default Mode and Low Power Mode. */
 		ret = set_power_mode(s, LIS2DW12_LOW_POWER,
 				     LIS2DW12_LOW_POWER_MODE_2);
-	if (ret != EC_SUCCESS)
+	if (ret != EC_SUCCESS) {
+		ret = EC_ERROR_UNKNOWN;
 		goto err_unlock;
+	}
 
 	if (IS_ENABLED(LIS2DW12_ENABLE_FIFO)) {
 		ret = lis2dw12_config_interrupt(s);
-		if (ret != EC_SUCCESS)
+		if (ret != EC_SUCCESS) {
+			ret = EC_ERROR_UNKNOWN;
 			goto err_unlock;
+		}
 	}
 	mutex_unlock(s->mutex);
 
@@ -592,8 +604,8 @@ static int init(struct motion_sensor_t *s)
 
 err_unlock:
 	mutex_unlock(s->mutex);
-	CPRINTS("%s: MS Init type:0x%X Error", s->name, s->type);
-	return EC_ERROR_UNKNOWN;
+	CPRINTS("%s: MS Init type:0x%X Error(%d)", s->name, s->type, ret);
+	return ret;
 }
 
 const struct accelgyro_drv lis2dw12_drv = {
