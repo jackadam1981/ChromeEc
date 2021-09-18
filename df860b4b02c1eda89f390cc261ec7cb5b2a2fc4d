@@ -38,6 +38,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47c79733_50b3f062",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-18T15:19:40Z",
+      "side": 1,
+      "message": "This looks good, I just want to wait till Monday to talk to the rest of the team about bringing in FFF for the mocks. I think that since Zephyr is so slow we probably would want to just bring it into the chromium repo under third_party and push on Zephyr to adopt via https://github.com/zephyrproject-rtos/zephyr/issues/38643",
+      "revId": "df860b4b02c1eda89f390cc261ec7cb5b2a2fc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf264599_654b25fa",
+        "filename": "zephyr/include/emul/emul_usb_mux_mock.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-18T15:19:40Z",
+      "side": 1,
+      "message": "Remove @brief, should be only one sentence.",
+      "range": {
+        "startLine": 32,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 41
+      },
+      "revId": "df860b4b02c1eda89f390cc261ec7cb5b2a2fc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "81e6c6fa_297805f9",
         "filename": "zephyr/include/emul/emul_usb_mux_mock.h",
         "patchSetId": 6
