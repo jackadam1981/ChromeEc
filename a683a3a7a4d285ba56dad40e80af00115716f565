@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a892c17_2488c1a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-18T18:05:27Z",
+      "side": 1,
+      "message": "Hi Rob,\n\nDo you think you can update \u0027command versions\u0027 section of docs/ap-ec-comm.md with what we agreed/learned about upreving a command? I\u0027m thinking of something like:\n\n* Keep EC compatible with v0. Add a new response struct (_v1). Don\u0027t extend the existing one.\n* Host code should try v1 first then fall back to v0.",
+      "revId": "a683a3a7a4d285ba56dad40e80af00115716f565",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
