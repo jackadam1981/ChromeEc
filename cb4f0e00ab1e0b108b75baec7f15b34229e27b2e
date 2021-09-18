@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64b21835_53dffdcf",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-18T00:40:56Z",
+      "side": 1,
+      "message": "If CONFIG_USB_PD_RUNTIME_FLAGS is enabled and\n1. If charger source is set to RAA489000 in SSFC here\u0027s the log that is produced:\n21-09-17 12:47:45.081 [182.919270 Setting USB PD Flags:]\n21-09-17 12:47:45.088 [182.919468 Charger Type: RAA489000]\n21-09-17 12:47:45.091 [182.919670   USB_PD_DETECT: TCPC]\n21-09-17 12:47:45.098 [182.919847   USB_PD_DISCHARGE: TCPC]\n\nIf charger source is set to SM5803 in SSFC here\u0027s the log that is produced:\n1017 21-09-17 13:52:49.282 [389.372378 Setting USB PD Flags:]\n1018 21-09-17 13:52:49.288 [389.372573 Charger Type: SM5803]\n1019 21-09-17 13:52:49.292 [389.372775   USB_PD_DETECT: CHARGER]\n1020 21-09-17 13:52:49.295 [389.372961   USB_PD_DISCHARGE: GPIO]\n\nIF RUNTIME Flags are not enabled, this function will not run",
+      "revId": "cb4f0e00ab1e0b108b75baec7f15b34229e27b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20043486_93bebe0a",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-18T00:40:56Z",
+      "side": 1,
+      "message": "This is just an example where relevant USB_PD flags can be enabled based on the charger source.",
+      "revId": "cb4f0e00ab1e0b108b75baec7f15b34229e27b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e58c6b_8a738e2f",
+        "filename": "board/pirika/cbi_ssfc.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-18T00:40:56Z",
+      "side": 1,
+      "message": "These enums could be board specific and can be adjusted by partners. Just and example for using RAA489000 and SM5803 charger sources",
+      "revId": "cb4f0e00ab1e0b108b75baec7f15b34229e27b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb57ece3_5dc23ec5",
+        "filename": "common/usb_charger.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-18T00:40:56Z",
+      "side": 1,
+      "message": "When USB_PD_VBUS_DETECT_TCPC is set, task_wake function is not called:\n21-09-17 14:00:10.182 [442.208353 SSC: VBUS_DETECT-TCPC, task_wake not called]",
+      "revId": "cb4f0e00ab1e0b108b75baec7f15b34229e27b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32780408_e1fadd78",
+        "filename": "common/usb_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 858,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-18T00:40:56Z",
+      "side": 1,
+      "message": "ifdefs are added to make buildall pass.",
+      "revId": "cb4f0e00ab1e0b108b75baec7f15b34229e27b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "573c0f06_c1875c45",
+        "filename": "common/usb_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-18T00:40:56Z",
+      "side": 1,
+      "message": "This overridable function is added here to make buildall pass.",
+      "revId": "cb4f0e00ab1e0b108b75baec7f15b34229e27b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe78340d_f8e35e36",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-18T00:40:56Z",
+      "side": 1,
+      "message": "Here\u0027s the mask value produced when CONFIG_USB_PD_RUNTIME_FLAGS and CONFIG_USB_PD_VBUS_DETECT are enabled.\n21-09-17 12:47:45.386 [183.010415 SSFC: VBUS Detect- Run time flags enabled]\n21-09-17 12:47:45.393 [183.010628 SSC: mask with VBUS DETECT TCPC: 0x27F]\n\nIt is the same value that is produced when Runtime flags are disabled\n21-09-17 14:00:10.148 [442.193523 SSC: No RT flags, CONFIG VBUS DETECT TCPC]                                                    \n21-09-17 14:00:10.153 [442.193748 SSC: mask with VBUS DETECT TCPC: 0x27F]",
+      "revId": "cb4f0e00ab1e0b108b75baec7f15b34229e27b2e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
