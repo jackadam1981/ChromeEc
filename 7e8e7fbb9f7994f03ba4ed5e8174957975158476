@@ -39,6 +39,30 @@
       },
       "revId": "7e8e7fbb9f7994f03ba4ed5e8174957975158476",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02f2fc3a_881b8c2e",
+        "filename": "driver/accelgyro_icm426xx.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-18T07:16:57Z",
+      "side": 1,
+      "message": "Given we are using ICM426XX_ADDR0_FLAGS in board/nucleo-f411re/board.c, we should not have been able to detect the sensor.\n\nJuHyun, did you really test this particular CL. Can you check if using 0xd0 instead of 0x68 changes anything in your test?",
+      "parentUuid": "c20b4da1_8b8d1364",
+      "range": {
+        "startLine": 18,
+        "startChar": 8,
+        "endLine": 18,
+        "endChar": 34
+      },
+      "revId": "7e8e7fbb9f7994f03ba4ed5e8174957975158476",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
