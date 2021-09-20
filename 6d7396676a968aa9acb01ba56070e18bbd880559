@@ -22,6 +22,30 @@
       },
       "revId": "6d7396676a968aa9acb01ba56070e18bbd880559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43dc7c3b_99d7d5ff",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-20T19:02:33Z",
+      "side": 1,
+      "message": "The issue here is that zephyr error codes and cros error codes aren\u0027t very compatible. When an i2c write fails, st_raw_write8 returns -EIO. Which doesn\u0027t correspond to any of our error codes. So it would be very difficult for any consumer to make any sense of the error coming out of here.\n\nThe error in the soft reset test was my poor splitting. One of the lines from the next CL snuck into that one.",
+      "parentUuid": "c631a341_f885585d",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 25
+      },
+      "revId": "6d7396676a968aa9acb01ba56070e18bbd880559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
