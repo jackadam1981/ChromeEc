@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e46c527_9f59cbfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-20T16:32:04Z",
+      "side": 1,
+      "message": "Based on the TCPC_FLAGS_SUSPEND_400KHZ, I don\u0027t see the value of a board specific hook here.  I think the we should just have the common TCPCI driver doe the bus frequency change.",
+      "revId": "3be421316380b08f72b2e164985bf936330ce5a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
