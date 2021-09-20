@@ -22,6 +22,30 @@
       },
       "revId": "30e4fa60b43973cd174aea41ca21cfa2753672df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a45b1d11_ba6ccdba",
+        "filename": "zephyr/projects/volteer/volteer/pwm_leds.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-20T22:15:14Z",
+      "side": 1,
+      "message": "Agreed, what you have here is the clearest and easiest to read. I\u0027d stick with it.",
+      "parentUuid": "cbfd18e7_61713231",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 0
+      },
+      "revId": "30e4fa60b43973cd174aea41ca21cfa2753672df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
