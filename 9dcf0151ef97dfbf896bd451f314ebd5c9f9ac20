@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "452fe83e_8942d88e",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-20T22:08:47Z",
+      "side": 1,
+      "message": "Thinking this could be implemented with child nodes or something else to iterate on, but since no devices are using it, I\u0027m thinking it may not be worth the extra complexity. Will look into it for the gpio version.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 50
+      },
+      "revId": "9dcf0151ef97dfbf896bd451f314ebd5c9f9ac20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
