@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fca90d4_28608b88",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-20T16:14:49Z",
+      "side": 1,
+      "message": "We tried unsuccessfully to back this out on Volteer. Should we just remove this config and always enable the force DID code for the PS8815 and PS8805?",
+      "revId": "424e507f4db0bb82362f7572353c2d3fc8adba2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
