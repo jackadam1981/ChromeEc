@@ -16,6 +16,29 @@
       "message": "Close to 300 lines are just tables.",
       "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc72d210_33ab7453",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-20T23:24:46Z",
+      "side": 1,
+      "message": "Please fix indent.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 47
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
