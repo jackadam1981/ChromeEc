@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c68cea2e_bae2877c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-20T21:37:56Z",
+      "side": 1,
+      "message": "See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3171695/2/zephyr/test/drivers/src/stm_mems_common.c for a ztest mocking reference. It\u0027s not great, but it works for my tests so far.",
+      "parentUuid": "47c79733_50b3f062",
+      "revId": "df860b4b02c1eda89f390cc261ec7cb5b2a2fc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf264599_654b25fa",
         "filename": "zephyr/include/emul/emul_usb_mux_mock.h",
         "patchSetId": 6
