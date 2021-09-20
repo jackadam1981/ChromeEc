@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f60ee4_0ec1f193",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-20T21:20:23Z",
+      "side": 1,
+      "message": "If CONFIG_USB_PD_RUNTIME_FLAGS is enabled and\n1. If charger source is set to RAA489000 in SSFC here\u0027s the log that is produced:\n21-09-17 12:47:45.081 [182.919270 Setting USB PD Flags:]\n21-09-17 12:47:45.088 [182.919468 Charger Type: RAA489000]\n21-09-17 12:47:45.091 [182.919670   USB_PD_DETECT: TCPC]\n21-09-17 12:47:45.098 [182.919847   USB_PD_DISCHARGE: TCPC]\n\n2. If charger source is set to SM5803 in SSFC here\u0027s the log that is produced:\n1017 21-09-17 13:52:49.282 [389.372378 Setting USB PD Flags:]\n1018 21-09-17 13:52:49.288 [389.372573 Charger Type: SM5803]\n1019 21-09-17 13:52:49.292 [389.372775   USB_PD_DETECT: CHARGER]\n1020 21-09-17 13:52:49.295 [389.372961   USB_PD_DISCHARGE: GPIO]\n\nIF RUNTIME Flags are not enabled, this function will not run",
+      "revId": "306ef5eb332fbd52f9cd5a0d7c4d9b30383af53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c5507f1_b25daedd",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-20T21:20:23Z",
+      "side": 1,
+      "message": "This is just an example where relevant USB_PD flags can be enabled based on the charger source.",
+      "revId": "306ef5eb332fbd52f9cd5a0d7c4d9b30383af53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f010802_cf119333",
+        "filename": "board/pirika/cbi_ssfc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-20T21:20:23Z",
+      "side": 1,
+      "message": "These enums could be board specific and can be adjusted by partners. Just an example for using RAA489000 and SM5803 charger sources",
+      "revId": "306ef5eb332fbd52f9cd5a0d7c4d9b30383af53e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
