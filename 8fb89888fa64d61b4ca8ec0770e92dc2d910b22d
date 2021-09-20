@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "570b8285_3ae68137",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-20T21:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85b45c09_04c00c12",
+      "range": {
+        "startLine": 272,
+        "startChar": 3,
+        "endLine": 272,
+        "endChar": 8
+      },
+      "revId": "8fb89888fa64d61b4ca8ec0770e92dc2d910b22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "88c0bf46_9a654ce1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-20T21:26:24Z",
       "side": 1,
       "message": "since \"ret\" is just immediatly returned below, just write \"return EC_ERROR_INVAL\" directly",
+      "range": {
+        "startLine": 274,
+        "startChar": 3,
+        "endLine": 274,
+        "endChar": 9
+      },
+      "revId": "8fb89888fa64d61b4ca8ec0770e92dc2d910b22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6805bf_fe974281",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-20T21:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88c0bf46_9a654ce1",
       "range": {
         "startLine": 274,
         "startChar": 3,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ead2e840_2a72ed53",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-20T21:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c083459_71aa22e8",
+      "range": {
+        "startLine": 277,
+        "startChar": 3,
+        "endLine": 277,
+        "endChar": 9
+      },
+      "revId": "8fb89888fa64d61b4ca8ec0770e92dc2d910b22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "005f6208_c04feefc",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-20T21:26:24Z",
       "side": 1,
       "message": "delete this",
+      "range": {
+        "startLine": 279,
+        "startChar": 0,
+        "endLine": 279,
+        "endChar": 13
+      },
+      "revId": "8fb89888fa64d61b4ca8ec0770e92dc2d910b22d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d8629b1_0fb1d030",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-20T21:35:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "005f6208_c04feefc",
       "range": {
         "startLine": 279,
         "startChar": 0,
