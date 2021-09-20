@@ -16,6 +16,24 @@
       "message": "We tried unsuccessfully to back this out on Volteer. Should we just remove this config and always enable the force DID code for the PS8815 and PS8805?",
       "revId": "424e507f4db0bb82362f7572353c2d3fc8adba2b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1a4dbec_a3c9e226",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-20T22:19:44Z",
+      "side": 1,
+      "message": "most likely... at least in cases (boards) where we support firmware updates.",
+      "parentUuid": "0fca90d4_28608b88",
+      "revId": "424e507f4db0bb82362f7572353c2d3fc8adba2b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
