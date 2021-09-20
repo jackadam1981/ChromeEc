@@ -46,6 +46,30 @@
       },
       "revId": "6d7396676a968aa9acb01ba56070e18bbd880559",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d3aa577_c3da9f76",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-20T19:07:43Z",
+      "side": 1,
+      "message": "Based on what you describe here, this seems like a bodge for something that was incorrecly shimmed. If we\u0027re using Zephyr drivers in cros_ec, we need to translate the error codes at the shim layer support.",
+      "parentUuid": "43dc7c3b_99d7d5ff",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 25
+      },
+      "revId": "6d7396676a968aa9acb01ba56070e18bbd880559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
