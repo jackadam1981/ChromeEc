@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c631a341_f885585d",
+        "filename": "driver/accel_lis2dw12.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-20T17:57:02Z",
+      "side": 1,
+      "message": "Doesn\u0027t this mask errors in the low level driver?  For instance, if someone removed the i2c_lock()/i2c_unlock() from platform_ec_i2c_read(), then this will return EC_ERROR_UNKNOWN instead of EC_ERROR_INVAL.  You soft reset test would pass in this case.\n\nChanging most errors to EC_ERROR_UKNOWN",
+      "range": {
+        "startLine": 531,
+        "startChar": 0,
+        "endLine": 531,
+        "endChar": 25
+      },
+      "revId": "6d7396676a968aa9acb01ba56070e18bbd880559",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
