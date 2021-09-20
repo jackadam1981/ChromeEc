@@ -266,6 +266,16 @@ int i2c_xfer_unlocked(const int port,
 					 in, in_size);
 		}
 
+		switch (ret) {
+		case 0:
+			/* 0 is success for both ECOS and Zephyr. */
+			break;
+		case -EIO:
+			ret = EC_ERROR_INVAL;
+			break;
+		default:
+			ret = EC_ERROR_UNKNOWN;
+		}
 		return ret;
 #elif defined(CONFIG_I2C_XFER_LARGE_TRANSFER)
 		ret = i2c_xfer_no_retry(port, no_pec_af,
