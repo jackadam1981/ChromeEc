@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b85924e0_2f1313d5",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-20T17:48:34Z",
+      "side": 1,
+      "message": "this will accommodate got 63 timers and not 64.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "cf0598de17581e178df7fdc358e7646ca339ffc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

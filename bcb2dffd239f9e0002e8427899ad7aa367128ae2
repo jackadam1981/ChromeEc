@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67113764_72c08537",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-20T17:48:34Z",
+      "side": 0,
+      "message": "BUILD_ASSERT(PD_TIMER_COUNT \u003c\u003d (63 or 64 depending on how you implement PD_TIMERS_ALL_MASK)) instead of removing",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 35
+      },
+      "revId": "bcb2dffd239f9e0002e8427899ad7aa367128ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
