@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5216eb41_5f8fb9a9",
+        "filename": "board/blipper/board.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-20T17:04:28Z",
+      "side": 1,
+      "message": "You should probably guard this with some check with SSFC tablet mode.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 327,
+        "endChar": 0
+      },
+      "revId": "536595c17941e28d48b0dfa269541585d4a02aa6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
