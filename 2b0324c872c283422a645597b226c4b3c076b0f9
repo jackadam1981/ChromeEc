@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddadec4f_e5f19725",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-20T22:16:33Z",
+      "side": 1,
+      "message": "Looks good - I agree the current implementation is quite confusing.  You should also update led_pwm.c to reflect this change.",
+      "revId": "2b0324c872c283422a645597b226c4b3c076b0f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
