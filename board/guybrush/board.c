@@ -76,34 +76,6 @@ const int keyboard_factory_scan_pins_used =
 		ARRAY_SIZE(keyboard_factory_scan_pins);
 
 struct motion_sensor_t motion_sensors[] = {
-	[BASE_ACCEL] = {
-		.name = "Base Accel",
-		.active_mask = SENSOR_ACTIVE_S0_S3,
-		.chip = MOTIONSENSE_CHIP_BMI323,
-		.type = MOTIONSENSE_TYPE_ACCEL,
-		.location = MOTIONSENSE_LOC_BASE,
-		.drv = &bmi3xx_drv,
-		.mutex = &g_base_mutex,
-		.drv_data = &g_bmi323_data,
-		.port = I2C_PORT_SENSOR,
-		.i2c_spi_addr_flags = BMI3_ADDR_I2C_PRIM,
-		.rot_standard_ref = &base_standard_ref,
-		.min_frequency = BMI_ACCEL_MIN_FREQ,
-		.max_frequency = BMI_ACCEL_MAX_FREQ,
-		.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
-		.config = {
-			/* EC use accel for angle detection */
-			[SENSOR_CONFIG_EC_S0] = {
-				.odr = 12500 | ROUND_UP_FLAG,
-				.ec_rate = 100 * MSEC,
-			},
-			/* Sensor on in S3 */
-			[SENSOR_CONFIG_EC_S3] = {
-				.odr = 12500 | ROUND_UP_FLAG,
-				.ec_rate = 0,
-			},
-		},
-	},
 	[LID_ACCEL] = {
 		.name = "Lid Accel",
 		.active_mask = SENSOR_ACTIVE_S0_S3,
@@ -119,6 +91,34 @@ struct motion_sensor_t motion_sensors[] = {
 		.min_frequency = BMA4_ACCEL_MIN_FREQ,
 		.max_frequency = BMA4_ACCEL_MAX_FREQ,
 		.default_range = 2, /* g, enough for laptop. */
+		.config = {
+			/* EC use accel for angle detection */
+			[SENSOR_CONFIG_EC_S0] = {
+				.odr = 12500 | ROUND_UP_FLAG,
+				.ec_rate = 100 * MSEC,
+			},
+			/* Sensor on in S3 */
+			[SENSOR_CONFIG_EC_S3] = {
+				.odr = 12500 | ROUND_UP_FLAG,
+				.ec_rate = 0,
+			},
+		},
+	},
+	[BASE_ACCEL] = {
+		.name = "Base Accel",
+		.active_mask = SENSOR_ACTIVE_S0_S3,
+		.chip = MOTIONSENSE_CHIP_BMI323,
+		.type = MOTIONSENSE_TYPE_ACCEL,
+		.location = MOTIONSENSE_LOC_BASE,
+		.drv = &bmi3xx_drv,
+		.mutex = &g_base_mutex,
+		.drv_data = &g_bmi323_data,
+		.port = I2C_PORT_SENSOR,
+		.i2c_spi_addr_flags = BMI3_ADDR_I2C_PRIM,
+		.rot_standard_ref = &base_standard_ref,
+		.min_frequency = BMI_ACCEL_MIN_FREQ,
+		.max_frequency = BMI_ACCEL_MAX_FREQ,
+		.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
 		.config = {
 			/* EC use accel for angle detection */
 			[SENSOR_CONFIG_EC_S0] = {

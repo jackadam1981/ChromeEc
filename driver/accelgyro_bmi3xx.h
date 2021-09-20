@@ -253,18 +253,6 @@ enum sensor_index_t {
 	NUM_OF_PRIMARY_SENSOR,
 };
 
-/* Structure to define FIFO accel, gyro x, y and z axes */
-struct bmi3_fifo_data {
-	/* Data in x-axis */
-	int16_t x;
-
-	/* Data in y-axis */
-	int16_t y;
-
-	/* Data in z-axis */
-	int16_t z;
-};
-
 struct bmi3xx_drv_data {
 	struct accelgyro_saved_data_t saved_data[3];
 	uint8_t flags;

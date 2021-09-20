@@ -223,6 +223,12 @@ err_unlock:
 int bmi3_parse_fifo_data(struct motion_sensor_t *s, struct bmi3_fifo_frame
 			 *fifo_frame, uint32_t last_ts)
 {
+	struct bmi_drv_data_t *data = BMI_GET_DATA(s);
+	struct ec_response_motion_sensor_data vect;
+	int16_t raw_data[NUM_OF_PRIMARY_SENSOR][3];
+	bool observed[NUM_OF_PRIMARY_SENSOR];
+	uint8_t sens_cnt = 0, reg_data[2];
+
 	/* Start index for FIFO parsing after I2C sync byte removal */
 	size_t fifo_index = 2;
 
@@ -232,23 +238,12 @@ int bmi3_parse_fifo_data(struct motion_sensor_t *s, struct bmi3_fifo_frame
 	/* Variable to store I2C sync data which will get in FIFO data */
 	uint16_t i2c_sync_data, fifo_size = 0;
 
-	struct ec_response_motion_sensor_data vect;
-
-	bool observed[2];
-
-	struct bmi3_fifo_data raw_data[NUM_OF_PRIMARY_SENSOR];
-
-	uint8_t sens_cnt = 0, reg_data[2];
-
-	struct bmi_drv_data_t *data = BMI_GET_DATA(s);
-
 	intv3_t v;
 
 	if (s->type != MOTIONSENSE_TYPE_ACCEL)
 		return EC_SUCCESS;
 
 	if (!(data->flags & (BMI_FIFO_ALL_MASK << BMI_FIFO_FLAG_OFFSET))) {
-
 		/*
 		 * The FIFO was disabled while we were processing it
 		 * Flush potential left over:
@@ -273,18 +268,14 @@ int bmi3_parse_fifo_data(struct motion_sensor_t *s, struct bmi3_fifo_frame
 		 * then 0x80 may even come after
 		 * SENSOR ACCEL IS ENABLED
 		 */
-		if ((fifo_frame->available_fifo_sens & BMI3_FIFO_ACC_EN)
-		    && (fifo_size != 0)) {
+		if (fifo_frame->available_fifo_sens & BMI3_FIFO_ACC_EN) {
 			/* In-case of FIFO read fail it has only 0x8000 */
 			if (fifo_size >= 2) {
-				if (bmi3_buffer[fifo_index] == 0x00
-				    && bmi3_buffer[fifo_index+1] == 0x80) {
+				if (bmi3_buffer[fifo_index] == 0x00 &&
+				    bmi3_buffer[fifo_index+1] == 0x80)
 					break;
-				}
 			} else {
-				observed[SENSOR_ACCEL] = false;
-				observed[SENSOR_GYRO] = false;
-				fifo_size = 0;
+				break;
 			}
 
 			if (fifo_size >= BMI3_LENGTH_FIFO_ACC) {
@@ -296,23 +287,23 @@ int bmi3_parse_fifo_data(struct motion_sensor_t *s, struct bmi3_fifo_frame
 				i2c_sync_data = (uint16_t)((data_msb << 8)
 						| data_lsb);
 
-				if (i2c_sync_data
-				     != BMI3_FIFO_ACCEL_I2C_SYNC_FRAME) {
+				if (i2c_sync_data !=
+				    BMI3_FIFO_ACCEL_I2C_SYNC_FRAME) {
 					observed[SENSOR_ACCEL] = true;
-					raw_data[SENSOR_ACCEL].x =
+					raw_data[SENSOR_ACCEL][X] =
 						(int16_t)((data_msb << 8)
 						| data_lsb);
 					/* Accelerometer raw y data */
 					data_lsb = bmi3_buffer[fifo_index++];
 					data_msb = bmi3_buffer[fifo_index++];
-					raw_data[SENSOR_ACCEL].y =
+					raw_data[SENSOR_ACCEL][Y] =
 						(int16_t)((data_msb << 8)
 						| data_lsb);
 
 					/* Accelerometer raw z data */
 					data_lsb = bmi3_buffer[fifo_index++];
 					data_msb = bmi3_buffer[fifo_index++];
-					raw_data[SENSOR_ACCEL].z =
+					raw_data[SENSOR_ACCEL][Z] =
 						(int16_t)((data_msb << 8)
 						| data_lsb);
 				} else {
@@ -322,55 +313,46 @@ int bmi3_parse_fifo_data(struct motion_sensor_t *s, struct bmi3_fifo_frame
 
 				fifo_size -= BMI3_LENGTH_FIFO_ACC;
 			} else {
-				observed[SENSOR_ACCEL] = false;
-				observed[SENSOR_GYRO] = false;
-				fifo_size = 0;
+				break;
 			}
 		}
 
-		if ((fifo_frame->available_fifo_sens & BMI3_FIFO_GYR_EN)
-		    && (fifo_size != 0)) {
-
+		if (fifo_frame->available_fifo_sens & BMI3_FIFO_GYR_EN) {
 			/* In-case of FIFO read fail it has only 0x8000 */
 			if (fifo_size >= 2) {
 				if (bmi3_buffer[fifo_index] == 0x00 &&
-				    bmi3_buffer[fifo_index+1] == 0x80) {
+				    bmi3_buffer[fifo_index+1] == 0x80)
 					break;
-				}
 			} else {
-				observed[SENSOR_ACCEL] = false;
-				observed[SENSOR_GYRO] = false;
-				fifo_size = 0;
+				break;
 			}
 
 			if (fifo_size >= BMI3_LENGTH_FIFO_GYR) {
-
 				data_lsb = bmi3_buffer[fifo_index++];
 				data_msb = bmi3_buffer[fifo_index++];
 
 				/* To store the I2C sync data */
 				i2c_sync_data = (uint16_t)((data_msb << 8)
 						| data_lsb);
-				if (i2c_sync_data
-				    != BMI3_FIFO_GYRO_I2C_SYNC_FRAME) {
-
+				if (i2c_sync_data != 
+				    BMI3_FIFO_GYRO_I2C_SYNC_FRAME) {
 					observed[SENSOR_GYRO] = true;
 
-					raw_data[SENSOR_GYRO].x =
+					raw_data[SENSOR_GYRO][X] =
 						(int16_t)((data_msb << 8)
 						| data_lsb);
 
-					/* Accelerometer raw y data */
+					/* Gyroscope raw y data */
 					data_lsb = bmi3_buffer[fifo_index++];
 					data_msb = bmi3_buffer[fifo_index++];
-					raw_data[SENSOR_GYRO].y =
+					raw_data[SENSOR_GYRO][Y] =
 						(int16_t)((data_msb << 8)
 						| data_lsb);
 
-					/* Accelerometer raw z data */
+					/* Gyroscope raw z data */
 					data_lsb = bmi3_buffer[fifo_index++];
 					data_msb = bmi3_buffer[fifo_index++];
-					raw_data[SENSOR_GYRO].z =
+					raw_data[SENSOR_GYRO][Z]=
 						(int16_t)((data_msb << 8) |
 						data_lsb);
 				} else {
@@ -380,31 +362,27 @@ int bmi3_parse_fifo_data(struct motion_sensor_t *s, struct bmi3_fifo_frame
 
 				fifo_size -= BMI3_LENGTH_FIFO_GYR;
 			} else {
-				observed[SENSOR_ACCEL] = false;
-				observed[SENSOR_GYRO] = false;
-				fifo_size = 0;
+				break;
 			}
 		}
 
 		for (sens_cnt = 0; sens_cnt < NUM_OF_PRIMARY_SENSOR;
 		     sens_cnt++) {
-
 			if (observed[sens_cnt]) {
+				struct motion_sensor_t *sens_output =
+					s + sens_cnt;
 
-				struct motion_sensor_t *sens_output = s +
-								sens_cnt;
+				v[X] = raw_data[sens_cnt][X];
+				v[Y] = raw_data[sens_cnt][Y];
+				v[Z] = raw_data[sens_cnt][Z];
 
-				v[X] = raw_data[sens_cnt].x;
-				v[Y] = raw_data[sens_cnt].y;
-				v[Z] = raw_data[sens_cnt].z;
-
-				rotate(v, *s->rot_standard_ref, v);
+				rotate(v, *sens_output->rot_standard_ref, v);
 
 				vect.data[X] = v[X];
 				vect.data[Y] = v[Y];
 				vect.data[Z] = v[Z];
 				vect.flags = 0;
-				vect.sensor_num = s - motion_sensors + sens_cnt;
+				vect.sensor_num = sens_output - motion_sensors;
 				motion_sense_fifo_stage_data(&vect,
 						sens_output, 3, last_ts);
 			}
@@ -424,23 +402,23 @@ int bmi3_parse_fifo_data(struct motion_sensor_t *s, struct bmi3_fifo_frame
 static int irq_handler(struct motion_sensor_t *s,
 		uint32_t *event)
 {
-	int8_t has_read_fifo = 0;
+	bool has_read_fifo = false;
 	int ret = 0;
 	uint8_t reg_data[4];
 	uint16_t int_status;
 	uint16_t fifo_fill_level;
 
-	if ((s->type != MOTIONSENSE_TYPE_ACCEL)
-	    || (!(*event & CONFIG_ACCELGYRO_BMI3XX_INT_EVENT)))
+	if ((s->type != MOTIONSENSE_TYPE_ACCEL) ||
+	    (!(*event & CONFIG_ACCELGYRO_BMI3XX_INT_EVENT)))
 		return EC_ERROR_NOT_HANDLED;
 
 	/* Get the interrupt status */
 	ret = bmi3_read_n(s, BMI3_REG_INT_STATUS_INT1, reg_data, 4);
 	int_status = (uint16_t) reg_data[2] | ((uint16_t) reg_data[3] << 8);
 
-	if ((ret == EC_SUCCESS) && ((int_status & BMI3_INT_STATUS_FWM) ||
-					(int_status & BMI3_INT_STATUS_FFULL))) {
-
+	if ((ret == EC_SUCCESS) &&
+	    ((int_status & BMI3_INT_STATUS_FWM) ||
+	     (int_status & BMI3_INT_STATUS_FFULL))) {
 		struct bmi3_fifo_frame fifo_frame;
 
 		fifo_frame.data = bmi3_buffer;
@@ -481,11 +459,11 @@ static int irq_handler(struct motion_sensor_t *s,
 					fifo_frame.available_fifo_len);
 
 		bmi3_parse_fifo_data(s, &fifo_frame, last_interrupt_timestamp);
-		has_read_fifo = 1;
+		has_read_fifo = true;
 
-		if (IS_ENABLED(CONFIG_BMI_ORIENTATION_SENSOR))
-			if (BMI3_INT_STATUS_ORIENTATION & int_status)
-				irq_set_orientation(s);
+		if (IS_ENABLED(CONFIG_BMI_ORIENTATION_SENSOR) &&
+		    (BMI3_INT_STATUS_ORIENTATION & int_status))
+			irq_set_orientation(s);
 	}
 
 	if (IS_ENABLED(CONFIG_ACCEL_FIFO) && has_read_fifo)
