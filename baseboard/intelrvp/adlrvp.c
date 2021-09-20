@@ -19,6 +19,8 @@
 #include "usb_mux.h"
 #include "usbc_ppc.h"
 #include "util.h"
+#include "bq25710.h"
+#include "tusb1064.h"
 
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
@@ -235,7 +237,7 @@ struct ioexpander_config_t ioex_config[] = {
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
 
 /* Charger Chips */
-const struct charger_config_t chg_chips[] = {
+struct charger_config_t chg_chips[] = {
 	{
 		.i2c_port = I2C_PORT_CHARGER,
 		.i2c_addr_flags = ISL9241_ADDR_FLAGS,
@@ -331,10 +333,20 @@ static void configure_retimer_usbmux(void)
 	switch (ADL_RVP_BOARD_ID(board_get_version())) {
 	case ADLN_LP5_ERB_SKU_BOARD_ID:
 	case ADLN_LP5_RVP_SKU_BOARD_ID:
-		/* No retimer on Port0 & Port1 */
-		usb_muxes[TYPE_C_PORT_0].driver = NULL;
+		/* Redriver on Port0 TUSB1044RNQR */
+		usb_muxes[TYPE_C_PORT_0].i2c_addr_flags =
+					TUSB1064_I2C_ADDR14_FLAGS;
+		usb_muxes[TYPE_C_PORT_0].driver =
+					&tusb1064_usb_mux_driver;
+		usb_muxes[TYPE_C_PORT_0].hpd_update = tusb1044_hpd_update;
+
+		/* charger chip driver change */
+		chg_chips[0].i2c_addr_flags = BQ25710_SMBUS_ADDR1_FLAGS;
+		chg_chips[0].drv = &bq25710_drv;
+
 #if defined(HAS_TASK_PD_C1)
 		usb_muxes[TYPE_C_PORT_1].driver = NULL;
+		usb_muxes[TYPE_C_PORT_1].hpd_update = NULL;
 #endif
 		break;
 
