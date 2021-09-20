@@ -7,6 +7,7 @@
 
 #include "adc_chip.h"
 #include "button.h"
+#include "cbi_ssfc.h"
 #include "charge_manager.h"
 #include "charge_state_v2.h"
 #include "charger.h"
@@ -37,6 +38,7 @@
 #include "usb_charge.h"
 #include "usb_mux.h"
 #include "usb_pd.h"
+#include "usb_pd_flags.h"
 #include "usb_pd_tcpm.h"
 
 #define CPRINTUSB(format, args...) cprints(CC_USBCHARGE, format, ## args)
@@ -380,6 +382,34 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 		.next_mux = &usbc1_retimer,
 	},
 };
+
+/* Priority needs to be higher than usb_charger_init function
+ * as USB PD flags are used by pd_is_vbus_present function
+ *  which gets called by usb_charger_init
+ */
+#ifdef CONFIG_USB_PD_RUNTIME_FLAGS
+static void board_init_usb_pd_flags(void)
+{
+	CPRINTS("SSC: Setting USB PD Flags:");
+	if (get_cbi_ssfc_charger_type() == SSFC_CHARGER_RAA489000) {
+		CPRINTS("SSC: Charger Type: RAA489000");
+		set_usb_pd_vbus_detect(USB_PD_VBUS_DETECT_TCPC);
+		set_usb_pd_discharge(USB_PD_DISCHARGE_TCPC);
+
+		CPRINTS("\tUSB_PD_DETECT: TCPC");
+		CPRINTS("\tUSB_PD_DISCHARGE: TCPC");
+	} else if (get_cbi_ssfc_charger_type() == SSFC_CHARGER_SM5803) {
+		CPRINTS("SSC: Charger Type: SM5803");
+		set_usb_pd_vbus_detect(USB_PD_VBUS_DETECT_CHARGER);
+		set_usb_pd_discharge(USB_PD_DISCHARGE_GPIO);
+
+		CPRINTS("\tUSB_PD_DETECT: CHARGER");
+		CPRINTS("\tUSB_PD_DISCHARGE: GPIO");
+	}
+}
+DECLARE_HOOK(HOOK_INIT, board_init_usb_pd_flags,
+	     HOOK_PRIO_CHARGE_MANAGER_INIT);
+#endif
 
 void board_init(void)
 {
