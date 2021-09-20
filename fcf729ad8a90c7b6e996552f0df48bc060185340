@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "015f832b_5d5afe77",
+        "filename": "common/system.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1606,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-09-20T11:12:27Z",
+      "side": 1,
+      "message": "Does `reserved to cros_fwid_ro` work for you?",
+      "parentUuid": "0cdee40f_dda35d99",
+      "range": {
+        "startLine": 1604,
+        "startChar": 0,
+        "endLine": 1606,
+        "endChar": 66
+      },
+      "revId": "fcf729ad8a90c7b6e996552f0df48bc060185340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d986e23e_530ff1bd",
@@ -180,6 +204,30 @@
       "side": 1,
       "message": "ioctl no longer passes the ec response. Instead a protocol errorno is returned. See https://chromium-review.googlesource.com/c/chromiumos/third_party/kernel/+/3094528 and https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2937743 for context. I don\u0027t think we want to rely on that response. I think we should keep the explicit version check here. I did adjust this slightly to check for version 1 first to make it more waterfall.",
       "parentUuid": "d986e23e_530ff1bd",
+      "range": {
+        "startLine": 1076,
+        "startChar": 5,
+        "endLine": 1076,
+        "endChar": 6
+      },
+      "revId": "fcf729ad8a90c7b6e996552f0df48bc060185340",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5fc930ca_2d0ccca8",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1076,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-09-20T11:12:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0eab29e_4060150d",
       "range": {
         "startLine": 1076,
         "startChar": 5,
