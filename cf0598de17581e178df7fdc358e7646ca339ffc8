@@ -22,6 +22,30 @@
       },
       "revId": "cf0598de17581e178df7fdc358e7646ca339ffc8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "90c59181_a7076e6a",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-20T18:24:49Z",
+      "side": 1,
+      "message": "If I understand you correctly, the mask is correct for the current amount of timers (33), but it won\u0027t work for 64 timers, because\n (uint64_t) 1 \u003c\u003c 64\n\nis undefined, even though\n\n(uint64_t) 1 \u003c\u003c 64 - 1\n\nis the value we care about. There\u0027s no 128-bit integer type to promote to to do the computation.\n\nI believe this should fix it, although it\u0027s not as clean as I\u0027d prefer.\n\nAlternatively, I can confirm that PD_TIMER_COUNT \u003d\u003d 64 will cause a build error here. I could just update the commit message to say 63.",
+      "parentUuid": "b85924e0_2f1313d5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 64
+      },
+      "revId": "cf0598de17581e178df7fdc358e7646ca339ffc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

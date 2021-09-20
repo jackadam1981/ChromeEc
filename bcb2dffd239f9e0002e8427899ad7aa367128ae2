@@ -22,6 +22,30 @@
       },
       "revId": "bcb2dffd239f9e0002e8427899ad7aa367128ae2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49231bd0_050ff022",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-20T18:24:49Z",
+      "side": 0,
+      "message": "I moved this to the .c file. This allows me to 1) compare directly to the size of the bit fields, which is what I care about and 2) only evaluate this once during a build (less important).",
+      "parentUuid": "67113764_72c08537",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 197,
+        "endChar": 35
+      },
+      "revId": "bcb2dffd239f9e0002e8427899ad7aa367128ae2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
