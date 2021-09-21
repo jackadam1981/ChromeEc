@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "240d2a45_114e8d04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-21T19:29:32Z",
+      "side": 1,
+      "message": "See \"When reading through IO memory is set up for sensors (LPC is used), the first 2 entries must be accelerometers, then gyroscope.\", see for instance https://source.corp.google.com/chromeos_public/src/platform/ec/board/rammus/board.h;rcl\u003de7de2313be106dc09fdc2c67eda7c190be5fa3e4;l\u003d230\nIt is tied to the APCI register mapping, (See EC_MEMMAP_ACC_DATA).",
+      "parentUuid": "d9b3e652_c51acdcb",
+      "revId": "617e227ec18c84149f74cb81f72bbe2332fc9237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baf4ebe7_1ad56504",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-21T17:25:10Z",
       "side": 1,
       "message": "Is there a reason why this order should be in a particular way or its more of a convention?",
+      "revId": "617e227ec18c84149f74cb81f72bbe2332fc9237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be88bbd5_947a4083",
+        "filename": "board/guybrush/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-21T19:29:32Z",
+      "side": 1,
+      "message": "See below:\n1: gyro and accel together to process fifo (all IMU).\n2: 2 accel and 1 gyro first on Intel device to match ACPI register mapping.\nSee below.",
+      "parentUuid": "baf4ebe7_1ad56504",
       "revId": "617e227ec18c84149f74cb81f72bbe2332fc9237",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
