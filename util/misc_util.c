@@ -88,6 +88,63 @@ int is_string_printable(const char *buf)
 }
 
 /**
+ * Print a byte array to standard output, with 16 bytes per line
+ *
+ * @param bytes		Array of bytes to print
+ * @param len		Length of byte array
+ */
+void print_byte_array(const uint8_t * const bytes, int len)
+{
+	int i;
+
+	for (i = 0; i < len; i++) {
+		if ((i % 16) == 0)
+			printf("\n");
+
+		printf(" %02x", bytes[i]);
+	}
+	printf("\n");
+}
+
+/**
+ * Parse ASCII hex string into a byte array
+ *
+ * @param bytes		Byte array to fill with results
+ * @param len		Length of byte array, filled with space used on success
+ * @param in_string	Input string of ASCII hex characters
+ * @return		0 - Success, -1 - parsing failure
+ */
+int parse_hex_string(uint8_t *bytes, int *len, const char *in_string)
+{
+	int nibbles = strlen(in_string);
+	int i = 0;   /* Index into byte array */
+
+	/* Check we have a sufficient size to work with, or an empty string */
+	if ((*len < (nibbles / 2 + 1)) || (nibbles <= 0))
+		return -1;
+
+	*len = nibbles / 2;
+
+	if ((nibbles % 2) != 0) {
+		if (sscanf(in_string, "%1hhx", &bytes[i]) != 1)
+			return -1;
+
+		i++;
+		*len += 1;
+		in_string++;
+	}
+
+	for (; i < *len; i++) {
+		if (sscanf(in_string, "%2hhx", &bytes[i]) != 1)
+			return -1;
+
+		in_string += 2;
+	}
+
+	return 0;
+}
+
+/**
  * Get the versions of the command supported by the EC.
  *
  * @param cmd		Command
@@ -172,4 +229,3 @@ int kernel_version_ge(int major, int minor, int sublevel)
 
 	return ksublevel >= sublevel;
 }
-

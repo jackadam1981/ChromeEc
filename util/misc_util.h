@@ -39,6 +39,24 @@ char *read_file(const char *filename, int *size);
 int is_string_printable(const char *buf);
 
 /**
+ * Print a byte array to standard output, with 16 bytes per line
+ *
+ * @param bytes		Array of bytes to print
+ * @param len		Length of byte array
+ */
+void print_byte_array(const uint8_t * const bytes, int len);
+
+/**
+ * Parse ASCII hex string into a byte array
+ *
+ * @param bytes		Byte array to fill with results
+ * @param len		Length of byte array, filled with space used on success
+ * @param in_string	Input string of ASCII hex characters
+ * @return		0 - Success, -1 - parsing failure
+ */
+int parse_hex_string(uint8_t *bytes, int *len, const char *in_string);
+
+/**
  * Get the versions of the command supported by the EC.
  *
  * @param cmd		Command
