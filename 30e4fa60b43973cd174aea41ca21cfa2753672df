@@ -73,6 +73,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f4b7d9a1_96fac9fe",
+        "filename": "zephyr/dts/bindings/led/cros-ec,pwm-leds.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-21T18:04:10Z",
+      "side": 1,
+      "message": "Oh good idea, added an example for this one on an extra patch at the bottom of the stack, added an example on the -red one for this one (including all the colors, more copypastable).",
+      "parentUuid": "2161ce22_8033cc3f",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "30e4fa60b43973cd174aea41ca21cfa2753672df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "cbfd18e7_61713231",
         "filename": "zephyr/projects/volteer/volteer/pwm_leds.dts",
         "patchSetId": 1
