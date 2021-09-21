@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3a37084_e561f732",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T18:47:48Z",
+      "side": 1,
+      "message": "this is a ton of logic to encode into the yaml file!\n\ncan we be doing some of it in \"zmake coverage\" instead?",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 138,
+        "endChar": 10
+      },
+      "revId": "1840e765a6eaa53318a5c429a19e88bc40166fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
