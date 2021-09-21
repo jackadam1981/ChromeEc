@@ -20,6 +20,414 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61f508fd_41f75a82",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "indentation on this line needs adjusted (should align with left paren)",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 37
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af65984a_736fc15a",
+        "filename": "include/driver/temp_sensor/thermistor.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "intdent should align with left parenthesis",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 46
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7cfb16b_b96d782b",
+        "filename": "include/temp_sensor.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "preprocessor directives (e.g., #ifdef) should not be indented",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 21
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24797a32_562ed628",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "nit: indent by two spaces so we\u0027re consistent thru the file",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 1
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac070317_dbc792c5",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "on next line",
+      "range": {
+        "startLine": 1,
+        "startChar": 3,
+        "endLine": 1,
+        "endChar": 4
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "711d6b58_e1c4ad10",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "indent by two tabs",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 4
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1fd8ee3_2b7473f4",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "indent by two tabs",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 4
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9b673dd_ac3f9bdd",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "on next line",
+      "range": {
+        "startLine": 86,
+        "startChar": 4,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94adc5c7_124f40f6",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "same for the rest of these",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 20
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f552dcaa_994484c4",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "indent by two tabs",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 150,
+        "endChar": 4
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22360cb5_03597a27",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "next line",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 167,
+        "endChar": 18
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "074efe65_1a56d8a8",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "same for the rest of these",
+      "range": {
+        "startLine": 172,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 20
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a9361c6_24dbb34f",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "again for all of them",
+      "range": {
+        "startLine": 231,
+        "startChar": 0,
+        "endLine": 231,
+        "endChar": 1
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d87cbf02_23212c56",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "I think the cast can be dropped",
+      "range": {
+        "startLine": 21,
+        "startChar": 2,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cda3bb2_1f816d73",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 17
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "Drop duplicate blank line",
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc566498_32912b2b",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "interesting for sure",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 2
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f43764d3_06870893",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "using DT_FOREACH_CHILD inside of a function is not typical ... make a static array and use that in a regular loop here instead",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 68
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "967cd12e_111cc786",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "declarations should go at top of function",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 16
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc72d210_33ab7453",
         "filename": "zephyr/test/drivers/src/thermistor.c",
         "patchSetId": 17
@@ -36,6 +444,121 @@
         "startChar": 0,
         "endLine": 80,
         "endChar": 47
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f752718_1b8acaea",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 16
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b00f5265_d7c97a49",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "indent should align to left parenthesis",
+      "range": {
+        "startLine": 203,
+        "startChar": 6,
+        "endLine": 203,
+        "endChar": 23
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78e7581e_3c8a0cb5",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "should not be doubly-indented",
+      "range": {
+        "startLine": 216,
+        "startChar": 1,
+        "endLine": 216,
+        "endChar": 2
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fd1a4c7_97a80343",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "#defines should go outside of function",
+      "range": {
+        "startLine": 254,
+        "startChar": 0,
+        "endLine": 260,
+        "endChar": 60
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb7b336f_09d5734b",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T00:10:24Z",
+      "side": 1,
+      "message": "drop space",
+      "range": {
+        "startLine": 299,
+        "startChar": 4,
+        "endLine": 299,
+        "endChar": 5
       },
       "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
