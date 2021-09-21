@@ -8257,7 +8257,7 @@ int cmd_board_version(int argc, char *argv[])
 static void cmd_cbi_help(char *cmd)
 {
 	fprintf(stderr,
-	"  Usage: %s get <tag> [get_flag]\n"
+	"  Usage: %s get <tag> [get_flag] [format]\n"
 	"  Usage: %s set <tag> <value/string> <size> [set_flag]\n"
 	"  Usage: %s remove <tag> [set_flag]\n"
 	"    <tag> is one of:\n"
@@ -8278,6 +8278,9 @@ static void cmd_cbi_help(char *cmd)
 	"      be set\n"
 	"    [get_flag] is combination of:\n"
 	"      01b: Invalidate cache and reload data from EEPROM\n"
+	"    [format] is one of:\n"
+	"      Readable (default)\n"
+	"      Binary\n"
 	"    [set_flag] is combination of:\n"
 	"      01b: Skip write to EEPROM. Use for back-to-back writes\n"
 	"      10b: Set all fields to defaults first\n", cmd, cmd, cmd);
@@ -8320,6 +8323,7 @@ static int cmd_cbi(int argc, char *argv[])
 	if (!strcasecmp(argv[1], "get")) {
 		struct ec_params_get_cbi p = { 0 };
 		int i;
+		bool binary_dump = false;
 
 		p.tag = tag;
 		if (argc > 3) {
@@ -8327,6 +8331,16 @@ static int cmd_cbi(int argc, char *argv[])
 			if (e && *e) {
 				fprintf(stderr, "Bad flag\n");
 				return -1;
+			}
+			if (argc > 4) {
+				if (!strcasecmp(argv[4], "binary")) {
+					binary_dump = true;
+				} else if (!strcasecmp(argv[4], "readable")) {
+					binary_dump = false;
+				} else {
+					fprintf(stderr, "Bad format\n");
+					return -1;
+				}
 			}
 		}
 		rv = ec_command(EC_CMD_GET_CROS_BOARD_INFO, 0, &p, sizeof(p),
@@ -8339,6 +8353,12 @@ static int cmd_cbi(int argc, char *argv[])
 			fprintf(stderr, "Invalid size: %d\n", rv);
 			return -1;
 		}
+
+		if (binary_dump) {
+			fwrite(ec_inbuf, sizeof(uint8_t), rv, stdout);
+			return 0;
+		}
+
 		if (cmd_cbi_is_string_field(tag)) {
 			printf("%.*s", rv, (const char *)ec_inbuf);
 		} else if (cmd_cbi_is_byte_array(tag)) {
