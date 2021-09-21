@@ -24,6 +24,29 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "af3628c0_d02c7b59",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T02:58:00Z",
+      "side": 1,
+      "message": "Is this still accurate? Seems that the shim provides this and we need to provide a property in devicetree",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "9dcf0151ef97dfbf896bd451f314ebd5c9f9ac20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "452fe83e_8942d88e",
