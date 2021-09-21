@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a30c6fd2_14abd95c",
+        "filename": "zephyr/shim/include/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-21T19:16:37Z",
+      "side": 1,
+      "message": "The cros-ec implementation called _atomic_fetch_and().  According the GCC documentation, this function returns the previous value in *addr.\n\nhttps://gcc.gnu.org/onlinedocs/gcc/_005f_005fatomic-Builtins.html",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "cbb788bbcbe0b1dd2dad36e5612218b57015ce6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
