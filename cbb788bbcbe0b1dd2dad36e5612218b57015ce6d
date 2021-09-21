@@ -22,6 +22,30 @@
       },
       "revId": "cbb788bbcbe0b1dd2dad36e5612218b57015ce6d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea6efabd_75ceeb82",
+        "filename": "zephyr/shim/include/atomic.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-21T20:31:51Z",
+      "side": 1,
+      "message": "The function wasn\u0027t returning anything... so I made it return what I needed. I will replace that with returning the old value from the primitives and then will adjust for the value not being what I wanted in the calling function.",
+      "parentUuid": "a30c6fd2_14abd95c",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "cbb788bbcbe0b1dd2dad36e5612218b57015ce6d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
