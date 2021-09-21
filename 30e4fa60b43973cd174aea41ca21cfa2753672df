@@ -69,6 +69,30 @@
       },
       "revId": "30e4fa60b43973cd174aea41ca21cfa2753672df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15452bf2_9b3c39c9",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-21T09:38:35Z",
+      "side": 1,
+      "message": "Not in the current form, one of the platform (nocturne) is writing on it. We could restructure it to have a pointer in ram and the data constant separately, but this is already fairly cheap now that it\u0027s on uint8_t fields.",
+      "parentUuid": "339dc21e_e879c6ab",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "30e4fa60b43973cd174aea41ca21cfa2753672df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
