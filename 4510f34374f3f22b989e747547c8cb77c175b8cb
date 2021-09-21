@@ -16,6 +16,69 @@
       "message": "Most changes were just responding to comments.\n\nOne significant item is that instead of using macros to parameterize the thermistor tests, I\u0027m now only iterating over the temp_sensors array.\n\nIs this appropriate or is it in negation of the spirit of the test? It does seem a lot more clean now.",
       "revId": "4510f34374f3f22b989e747547c8cb77c175b8cb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2acc574e_cd7832ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T21:40:26Z",
+      "side": 1,
+      "message": "minor nit ... looking much better",
+      "revId": "4510f34374f3f22b989e747547c8cb77c175b8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3650052f_cb17978a",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T21:40:26Z",
+      "side": 1,
+      "message": "These comments need indented to two tabs as well... it\u0027s hard to read the DTS source without it",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "4510f34374f3f22b989e747547c8cb77c175b8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "246d2fa2_bd79b461",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-21T21:40:26Z",
+      "side": 1,
+      "message": "indentation kinda looking weird again... can you run clang-format on it?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "4510f34374f3f22b989e747547c8cb77c175b8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
