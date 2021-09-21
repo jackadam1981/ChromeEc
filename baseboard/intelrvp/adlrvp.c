@@ -433,3 +433,27 @@ __override bool board_is_tbt_usb4_port(int port)
 
 	return tbt_usb4;
 }
+
+/* Packet mode pin */
+#define IOEX_GPIO_H1_PACKET_MODE_PIN	PCA9675_IO_P11
+#define IOEX_GPIO_H1_PACKET_MODE_PORT	0
+__override void board_enable_packet_mode(bool enable)
+{
+	static bool pkt_mode_gpio_inted;
+
+	/*
+	 * TODO: Do IOEX initialization before HOOK task starts.
+	 */
+	if (!pkt_mode_gpio_inted) {
+		pca9675_ioexpander_drv.set_flags_by_mask(IOEX_C1_PCA9675,
+				IOEX_GPIO_H1_PACKET_MODE_PORT,
+				IOEX_GPIO_H1_PACKET_MODE_PIN,
+				GPIO_OUT_LOW);
+
+		pkt_mode_gpio_inted = true;
+	}
+
+	pca9675_ioexpander_drv.set_level(IOEX_C1_PCA9675,
+		IOEX_GPIO_H1_PACKET_MODE_PORT, IOEX_GPIO_H1_PACKET_MODE_PIN,
+		enable);
+}
