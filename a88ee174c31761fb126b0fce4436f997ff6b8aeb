@@ -89,6 +89,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4a03dc7_1fb35e41",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T03:15:12Z",
+      "side": 1,
+      "message": "File should be renamed to match the compatible string: cros,temp-sensor.yaml",
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24797a32_562ed628",
         "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
         "patchSetId": 17
@@ -105,6 +122,98 @@
         "startChar": 0,
         "endLine": 6,
         "endChar": 1
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc44c7a_1f97643f",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T03:15:12Z",
+      "side": 1,
+      "message": "Can you be more specific here? I would expect something like:\n\nphandle to a child of a \"named-adc-channels\" node.",
+      "range": {
+        "startLine": 16,
+        "startChar": 19,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b36e174c_b62d1be8",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T03:15:12Z",
+      "side": 1,
+      "message": "Default is false, don\u0027t include it",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 21
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0296094d_a896c16f",
+        "filename": "zephyr/dts/bindings/temp/thermistor.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T03:15:12Z",
+      "side": 1,
+      "message": "Celcius? Kelvin?",
+      "range": {
+        "startLine": 51,
+        "startChar": 19,
+        "endLine": 51,
+        "endChar": 30
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0bd8ada_674ee2e7",
+        "filename": "zephyr/dts/bindings/temp/thermistor.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T03:15:12Z",
+      "side": 1,
+      "message": "Lets name it `sample-index` to keep in line with the description",
+      "range": {
+        "startLine": 53,
+        "startChar": 11,
+        "endLine": 53,
+        "endChar": 17
       },
       "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -151,6 +260,29 @@
         "startChar": 0,
         "endLine": 2,
         "endChar": 4
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4c5adabf_d85f171c",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 17
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T03:15:12Z",
+      "side": 1,
+      "message": "break the lines here and below",
+      "range": {
+        "startLine": 19,
+        "startChar": 3,
+        "endLine": 19,
+        "endChar": 5
       },
       "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -342,6 +474,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fee9568c_44561967",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 17
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T03:15:12Z",
+      "side": 1,
+      "message": "Accidental delete?",
+      "range": {
+        "startLine": 206,
+        "startChar": 2,
+        "endLine": 208,
+        "endChar": 23
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4cda3bb2_1f816d73",
         "filename": "zephyr/test/drivers/overlay.dts",
         "patchSetId": 17
@@ -353,6 +508,29 @@
       "writtenOn": "2021-09-21T00:10:24Z",
       "side": 1,
       "message": "Drop duplicate blank line",
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "427e1ff0_75166a89",
+        "filename": "zephyr/test/drivers/overlay.dts",
+        "patchSetId": 17
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T03:15:12Z",
+      "side": 1,
+      "message": "nit: style guide says no single line comments replace with /* */",
+      "range": {
+        "startLine": 541,
+        "startChar": 0,
+        "endLine": 541,
+        "endChar": 2
+      },
       "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -375,6 +553,53 @@
         "startChar": 0,
         "endLine": 28,
         "endChar": 2
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df3ab608_d7b675dc",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T03:15:12Z",
+      "side": 1,
+      "message": "Aaron, did you ever file the issue on the GitHub page for the DT_CHILD_COUNT macro? I\u0027ve seen things like this before and I would be surprised if we\u0027re the only ones that need it.",
+      "parentUuid": "fc566498_32912b2b",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 2
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0727153f_6050c5d7",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T03:15:12Z",
+      "side": 1,
+      "message": "Can we use the same macro for the 1 +?",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 36
       },
       "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
@@ -444,6 +669,29 @@
         "startChar": 0,
         "endLine": 80,
         "endChar": 47
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75486240_1ac4ed55",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T03:15:12Z",
+      "side": 1,
+      "message": "You can declare the for loop variable in the for loop in zephyr code",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 16
       },
       "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
