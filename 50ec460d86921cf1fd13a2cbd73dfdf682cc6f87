@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ebf394b_3ff1b308",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-21T21:44:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e63c80f_60831c95",
+      "range": {
+        "startLine": 12,
+        "startChar": 69,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8096b493_256e6f3d",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eadaeea2_1cf2ba62",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 5958,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-21T21:44:53Z",
+      "side": 1,
+      "message": "It\u0027s the current proposed size.  More correctly, I\u0027ll just refer to it as a byte array (perhaps a large one :) )",
+      "parentUuid": "8096b493_256e6f3d",
+      "range": {
+        "startLine": 5958,
+        "startChar": 28,
+        "endLine": 5958,
+        "endChar": 37
+      },
+      "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f30a8a85_178b4cb1",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-17T21:02:31Z",
       "side": 1,
       "message": "What\u0027s the input format for \u0027set\u0027 command?",
+      "range": {
+        "startLine": 8257,
+        "startChar": 11,
+        "endLine": 8257,
+        "endChar": 17
+      },
+      "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcd97a14_3471bdf5",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8257,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-21T21:44:53Z",
+      "side": 1,
+      "message": "Added to the help",
+      "parentUuid": "f30a8a85_178b4cb1",
       "range": {
         "startLine": 8257,
         "startChar": 11,
@@ -107,6 +179,30 @@
       "side": 1,
       "message": "I\u0027d also like this to just output the raw binary data as well. Parsing this is going to be fragile...and I also need to extract this and store it as a binary file elsewhere in an init script. We don\u0027t have \u0027xxd\u0027 on ChromeOS devices so I\u0027m not sure if there\u0027s an easy way to convert from hex to binary in an init script otherwise; so binary would be easiest.",
       "parentUuid": "299544b5_ad3409c3",
+      "range": {
+        "startLine": 8330,
+        "startChar": 0,
+        "endLine": 8337,
+        "endChar": 16
+      },
+      "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89b92dc5_a0f53f5a",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8337,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-21T21:44:53Z",
+      "side": 1,
+      "message": "Okay, see the proceeding and following CLs for both the binary output option and misc_util additions",
+      "parentUuid": "50836a1c_98d9c3a9",
       "range": {
         "startLine": 8330,
         "startChar": 0,
