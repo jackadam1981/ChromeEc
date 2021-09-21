@@ -147,4 +147,7 @@ int get_temp_3v0_22k6_47k_4050b(int idx_adc, int *temp_ptr);
 int get_temp_3v3_30k9_47k_4050b(int idx_adc, int *temp_ptr);
 #endif
 
+int thermistor_get_temperature(int idx_adc, int *temp_ptr,
+			       const struct thermistor_info *info);
+
 #endif  /* __CROS_EC_TEMP_SENSOR_THERMISTOR_NCP15WB_H */
