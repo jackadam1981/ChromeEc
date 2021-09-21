@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c8ffc77_c774b035",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-21T23:36:59Z",
+      "side": 1,
+      "message": "+2 with comment",
+      "revId": "40d1b94f2bd4bb177ca7a33296c0e69df1a559af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5546099_13c665c3",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-21T23:36:59Z",
+      "side": 1,
+      "message": "any performance reason to end the chunk at SPI_HASH_CHUNK_SIZE boundary (ex: if SPI_HASH_CHUNK_SIZE is 64 and offset is 141, read only 64-(141 mod 64) \u003d 64-13 bytes in the 1st chunk)?",
+      "range": {
+        "startLine": 691,
+        "startChar": 12,
+        "endLine": 691,
+        "endChar": 57
+      },
+      "revId": "40d1b94f2bd4bb177ca7a33296c0e69df1a559af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
