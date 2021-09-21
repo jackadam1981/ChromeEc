@@ -16,6 +16,24 @@
       "message": "Do you have an example usage for Intel RVP?  What will board_enable_packet_mode() do if the packet mode GPIO isn\u0027t available?  Will vboot just fail in this case?\n\nDoes is make sense to provide a \"board_vboot_is_disabled()\" routine instead to completely bypass vboot if the packet mode GPIO isn\u0027t available?",
       "revId": "930326b0f1b9654069191fbbee1d0324314ea91f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca67ce20_435f5087",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-21T17:23:29Z",
+      "side": 1,
+      "message": "here is example CL CL:3173100 .\n\nI see \"VB Failed to verify RW\" messaged when PACKET mode GPIO is configured as unused and board boots.\n\nwe are looking for overridable function as the PACKET mode pin is on IOEX on ADL+ RVP instead of a physical GPIO.",
+      "parentUuid": "11956dc3_fcaffb40",
+      "revId": "930326b0f1b9654069191fbbee1d0324314ea91f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
