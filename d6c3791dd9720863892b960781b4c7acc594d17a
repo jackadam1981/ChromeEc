@@ -16,6 +16,24 @@
       "message": "Looks like I broke the Zephyr build, and I think I may have gotten something not quite right with high-order timer bits, based on my testing with my Data Reset CLs. I\u0027ll debug further when I get back next week.",
       "revId": "d6c3791dd9720863892b960781b4c7acc594d17a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a26e89a6_40e36071",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-21T15:46:30Z",
+      "side": 1,
+      "message": "I will push up a CL before your chain that will allow this CL to pass.  The problem was in the zephyr/shim/atomic.h file that didn\u0027t return a value for atomic_clear_bits.",
+      "parentUuid": "1685b624_4a33b207",
+      "revId": "d6c3791dd9720863892b960781b4c7acc594d17a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
