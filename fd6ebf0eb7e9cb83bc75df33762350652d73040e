@@ -22,6 +22,30 @@
       },
       "revId": "fd6ebf0eb7e9cb83bc75df33762350652d73040e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "535009c5_e4cc47a2",
+        "filename": "driver/accelgyro_bmi3xx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-21T19:12:17Z",
+      "side": 1,
+      "message": "Adding CqDepend to make sure the whole train goes together.",
+      "parentUuid": "3c1c5666_c51537d3",
+      "range": {
+        "startLine": 173,
+        "startChar": 14,
+        "endLine": 173,
+        "endChar": 16
+      },
+      "revId": "fd6ebf0eb7e9cb83bc75df33762350652d73040e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
