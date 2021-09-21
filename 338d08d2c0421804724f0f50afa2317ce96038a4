@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c89e97eb_2baf6f21",
+        "filename": "zephyr/dts/bindings/led/cros-ec,pwm-leds.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-21T16:55:20Z",
+      "side": 1,
+      "message": "Indicate the valid range for the brightness values.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "338d08d2c0421804724f0f50afa2317ce96038a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
