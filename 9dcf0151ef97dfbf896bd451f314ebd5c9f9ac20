@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c1cca8a0_6bdb21d3",
+        "filename": "board/volteer/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-21T09:51:37Z",
+      "side": 1,
+      "message": "If I move this separately from the shim implementation it would break the build, want me to move led.c and pwm_led.c separately from the yaml/dts changes?",
+      "parentUuid": "cfd2d0b6_a671eb3d",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 6
+      },
+      "revId": "9dcf0151ef97dfbf896bd451f314ebd5c9f9ac20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "af3628c0_d02c7b59",
         "filename": "zephyr/Kconfig.led",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-21T02:58:00Z",
       "side": 1,
       "message": "Is this still accurate? Seems that the shim provides this and we need to provide a property in devicetree",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "9dcf0151ef97dfbf896bd451f314ebd5c9f9ac20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10e58ace_0c62c90d",
+        "filename": "zephyr/Kconfig.led",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-21T09:51:37Z",
+      "side": 1,
+      "message": "Yeah should still be accurate, the shim provides led_get_brightness_range() and the maps, with this patch it\u0027s missing led_set_brightness() and the map of supported LEDs (the code in board/... is still enabled). I\u0027ll try see if I can mimic the current functions with some dt nodes based cycle.",
+      "parentUuid": "af3628c0_d02c7b59",
       "range": {
         "startLine": 26,
         "startChar": 3,
@@ -108,6 +156,30 @@
       "side": 1,
       "message": "You should add a build assert to check the length of brightness_range is EC_LED_COLOR_COUNT.",
       "parentUuid": "452fe83e_8942d88e",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 50
+      },
+      "revId": "9dcf0151ef97dfbf896bd451f314ebd5c9f9ac20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2234ae7c_9309d92f",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-21T09:51:37Z",
+      "side": 1,
+      "message": "Done,",
+      "parentUuid": "e2ab40bf_30d303c7",
       "range": {
         "startLine": 52,
         "startChar": 0,
