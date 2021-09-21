@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "38f72d1d_ba6b881b",
+        "filename": "board/volteer/led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-21T16:47:10Z",
+      "side": 1,
+      "message": "Put the board specific changes into a separate CL for a cleaner commit history.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 21
+      },
+      "revId": "30e4fa60b43973cd174aea41ca21cfa2753672df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2161ce22_8033cc3f",
+        "filename": "zephyr/dts/bindings/led/cros-ec,pwm-leds.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-21T16:47:10Z",
+      "side": 1,
+      "message": "Add an example here with comments.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "30e4fa60b43973cd174aea41ca21cfa2753672df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "cbfd18e7_61713231",
