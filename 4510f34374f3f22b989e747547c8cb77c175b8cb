@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "17657e88_ca3c10f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-21T21:29:51Z",
+      "side": 1,
+      "message": "Most changes were just responding to comments.\n\nOne significant item is that instead of using macros to parameterize the thermistor tests, I\u0027m now only iterating over the temp_sensors array.\n\nIs this appropriate or is it in negation of the spirit of the test? It does seem a lot more clean now.",
+      "revId": "4510f34374f3f22b989e747547c8cb77c175b8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
