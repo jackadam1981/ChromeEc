@@ -211,6 +211,30 @@
       },
       "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b89f576e_4dc2e994",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8337,
+      "author": {
+        "id": 1298800
+      },
+      "writtenOn": "2021-09-21T22:01:50Z",
+      "side": 1,
+      "message": "Thanks! LGTM from me for that part of it.",
+      "parentUuid": "89b92dc5_a0f53f5a",
+      "range": {
+        "startLine": 8330,
+        "startChar": 0,
+        "endLine": 8337,
+        "endChar": 16
+      },
+      "revId": "50ec460d86921cf1fd13a2cbd73dfdf682cc6f87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
