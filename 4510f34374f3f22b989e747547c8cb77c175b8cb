@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc528a70_8927f87a",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 18
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-21T23:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3650052f_cb17978a",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 3
+      },
+      "revId": "4510f34374f3f22b989e747547c8cb77c175b8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "246d2fa2_bd79b461",
@@ -71,6 +95,54 @@
       "writtenOn": "2021-09-21T21:40:26Z",
       "side": 1,
       "message": "indentation kinda looking weird again... can you run clang-format on it?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "4510f34374f3f22b989e747547c8cb77c175b8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32f18945_165e4ac7",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-21T23:23:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "246d2fa2_bd79b461",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 3
+      },
+      "revId": "4510f34374f3f22b989e747547c8cb77c175b8cb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e6cb931_e7cebd4c",
+        "filename": "zephyr/shim/src/temp_sensors.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-21T23:23:47Z",
+      "side": 1,
+      "message": "That helped..",
+      "parentUuid": "246d2fa2_bd79b461",
       "range": {
         "startLine": 19,
         "startChar": 0,
