@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1a93fc1_10c405de",
+        "filename": "util/misc_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-21T23:19:26Z",
+      "side": 1,
+      "message": "How do you like adding test/misc_util.c?",
+      "revId": "a9f4ac143d1e5b4ae2a853cfc9f05f20765154fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e11af5e_c4cb053d",
+        "filename": "util/misc_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-21T23:19:26Z",
+      "side": 1,
+      "message": "Why don\u0027t we return -1 on \u0027nibbles \u003d\u003d 0\u0027 as well?",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 3
+      },
+      "revId": "a9f4ac143d1e5b4ae2a853cfc9f05f20765154fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbc3b2ae_c864f344",
+        "filename": "util/misc_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-21T23:19:26Z",
+      "side": 1,
+      "message": "Is this used when the input string contains odd number of chars? Isn\u0027t it an invalid input or shouldn\u0027t we process the last char by %1hhx instead of the first one?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "a9f4ac143d1e5b4ae2a853cfc9f05f20765154fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
