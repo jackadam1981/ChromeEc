@@ -19,6 +19,7 @@
 
 #include "cros_board_info.h"
 #include "crc8.h"
+#include "misc_util.h"
 
 #define ARGS_MASK_BOARD_VERSION		BIT(0)
 #define ARGS_MASK_FILENAME		BIT(1)
@@ -151,69 +152,6 @@ static void print_help(void)
 		"Utility for CBI:Cros Board Info images.\n", cmd_name);
 	print_help_create();
 	print_help_show();
-}
-
-static int write_file(const char *filename, const char *buf, int size)
-{
-	FILE *f;
-	int i;
-
-	/* Write to file */
-	f = fopen(filename, "wb");
-	if (!f) {
-		perror("Error opening output file");
-		return -1;
-	}
-	i = fwrite(buf, 1, size, f);
-	fclose(f);
-	if (i != size) {
-		perror("Error writing to file");
-		return -1;
-	}
-
-	return 0;
-}
-
-static uint8_t *read_file(const char *filename, uint32_t *size_ptr)
-{
-	FILE *f;
-	uint8_t *buf;
-	long size;
-
-	*size_ptr = 0;
-
-	f = fopen(filename, "rb");
-	if (!f) {
-		fprintf(stderr, "Unable to open file %s\n", filename);
-		return NULL;
-	}
-
-	fseek(f, 0, SEEK_END);
-	size = ftell(f);
-	rewind(f);
-
-	if (size < 0 || size > UINT32_MAX) {
-		fclose(f);
-		return NULL;
-	}
-
-	buf = malloc(size);
-	if (!buf) {
-		fclose(f);
-		return NULL;
-	}
-
-	if (1 != fread(buf, size, 1, f)) {
-		fprintf(stderr, "Unable to read from %s\n", filename);
-		fclose(f);
-		free(buf);
-		return NULL;
-	}
-
-	fclose(f);
-
-	*size_ptr = size;
-	return buf;
 }
 
 static int estimate_field_size(uint32_t value)
