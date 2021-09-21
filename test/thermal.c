@@ -38,10 +38,10 @@ static int cpu_shutdown;
 static int fan_pct;
 static int no_temps_read;
 
-int mock_temp_get_val(int idx, int *temp_ptr)
+int mock_temp_get_val(const struct temp_sensor_t *sensor, int *temp_ptr)
 {
-	if (mock_temp[idx] >= 0) {
-		*temp_ptr = mock_temp[idx];
+	if (mock_temp[sensor->idx] >= 0) {
+		*temp_ptr = mock_temp[sensor->idx];
 		return EC_SUCCESS;
 	}
 

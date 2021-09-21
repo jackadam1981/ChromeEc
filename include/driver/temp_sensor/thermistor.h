@@ -8,6 +8,8 @@
 #ifndef __CROS_EC_TEMP_SENSOR_THERMISTOR_H
 #define __CROS_EC_TEMP_SENSOR_THERMISTOR_H
 
+#include "temp_sensor.h"
+
 struct thermistor_data_pair {
 	uint8_t mv;	/* Scaled voltage level at ADC (in mV) */
 	uint8_t temp;	/* Temperature in Celsius */
@@ -59,92 +61,114 @@ int ncp15wb_calculate_temp(uint16_t adc);
 
 #ifdef CONFIG_STEINHART_HART_3V3_13K7_47K_4050B
 /**
- * Reads the specified ADC channel and uses a lookup table and interpolation to
+ * Reads the sensor's ADC channel and uses a lookup table and interpolation to
  * return a temperature in degrees K.
  *
  * The lookup table is based off of a resistor divider circuit on 3.3V with a
  * 13.7K resistor in series with a thermistor with nominal value of 47K (at 25C)
  * and a B (25/100) value of 4050.
  *
- * @param idx_adc	The idx value from the temp_sensor_t struct, which is
+ * @param sensor	The temp_sensor_t struct that contains the
  *			the ADC channel to read and convert to degrees K
  * @param temp_ptr	Destination for temperature (in degrees K)
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int get_temp_3v3_13k7_47k_4050b(int idx_adc, int *temp_ptr);
+int get_temp_3v3_13k7_47k_4050b(const struct temp_sensor_t *sensor,
+				int *temp_ptr);
 #endif
 
 #ifdef CONFIG_STEINHART_HART_3V3_51K1_47K_4050B
 /**
- * Reads the specified ADC channel and uses a lookup table and interpolation to
+ * Reads the sensor's ADC channel and uses a lookup table and interpolation to
  * return a temperature in degrees K.
  *
  * The lookup table is based off of a resistor divider circuit on 3.3V with a
  * 51.1K resistor in series with a thermistor with nominal value of 47K (at 25C)
  * and a B (25/100) value of 4050.
  *
- * @param idx_adc	The idx value from the temp_sensor_t struct, which is
+ * @param sensor	The temp_sensor_t struct that contains the
  *			the ADC channel to read and convert to degrees K
  * @param temp_ptr	Destination for temperature (in degrees K)
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int get_temp_3v3_51k1_47k_4050b(int idx_adc, int *temp_ptr);
+int get_temp_3v3_51k1_47k_4050b(const struct temp_sensor_t *sensor,
+				int *temp_ptr);
 #endif
 
 #ifdef CONFIG_STEINHART_HART_6V0_51K1_47K_4050B
 /**
- * Reads the specified ADC channel and uses a lookup table and interpolation to
+ * Reads the sensor's ADC channel and uses a lookup table and interpolation to
  * return a temperature in degrees K.
  *
  * The lookup table is based off of a resistor divider circuit on 6.0V with a
  * 51.1K resistor in series with a thermistor with nominal value of 47K (at 25C)
  * and a B (25/100) value of 4050.
  *
- * @param idx_adc	The idx value from the temp_sensor_t struct, which is
+ * @param sensor	The temp_sensor_t struct that contains the
  *			the ADC channel to read and convert to degrees K
  * @param temp_ptr	Destination for temperature (in degrees K)
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int get_temp_6v0_51k1_47k_4050b(int idx_adc, int *temp_ptr);
+int get_temp_6v0_51k1_47k_4050b(const struct temp_sensor_t *sensor,
+				int *temp_ptr);
 #endif
 
 #ifdef CONFIG_STEINHART_HART_3V0_22K6_47K_4050B
 /**
- * Reads the specified ADC channel and uses a lookup table and interpolation to
+ * Reads the sensor's ADC channel and uses a lookup table and interpolation to
  * return a temperature in degrees K.
  *
  * The lookup table is based off of a resistor divider circuit on 3V with a
  * 22.6K resistor in series with a thermistor with nominal value of 47K (at 25C)
  * and a B (25/100) value of 4050.
  *
- * @param idx_adc	The idx value from the temp_sensor_t struct, which is
+ * @param sensor	The temp_sensor_t struct that contains the
  *			the ADC channel to read and convert to degrees K
  * @param temp_ptr	Destination for temperature (in degrees K)
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int get_temp_3v0_22k6_47k_4050b(int idx_adc, int *temp_ptr);
+int get_temp_3v0_22k6_47k_4050b(const struct temp_sensor_t *sensor,
+				int *temp_ptr);
 #endif
 
 #ifdef CONFIG_STEINHART_HART_3V3_30K9_47K_4050B
 /**
- * Reads the specified ADC channel and uses a lookup table and interpolation to
+ * Reads the sensor's ADC channel and uses a lookup table and interpolation to
  * return a temperature in degrees K.
  *
  * The lookup table is based off of a resistor divider circuit on 3.3V with a
  * 30.9K resistor in series with a thermistor with nominal value of 47K (at 25C)
  * and a B (25/100) value of 4050.
  *
- * @param idx_adc	The idx value from the temp_sensor_t struct, which is
+ * @param sensor	The temp_sensor_t struct that contains the
  *			the ADC channel to read and convert to degrees K
  * @param temp_ptr	Destination for temperature (in degrees K)
  *
  * @return EC_SUCCESS, or non-zero if error.
  */
-int get_temp_3v3_30k9_47k_4050b(int idx_adc, int *temp_ptr);
+int get_temp_3v3_30k9_47k_4050b(const struct temp_sensor_t *sensor,
+				int *temp_ptr);
 #endif
+
+/**
+ * Reads the sensor's ADC channel and uses a lookup table and interpolation to
+ * argument thermistor_info for interpolation to return a temperature in degrees
+ * K.
+ *
+ * @param sensor	The temp_sensor_t struct that contains the
+ *			the ADC channel to read and convert to degrees K
+ * @param temp_ptr	Destination for temperature (in degrees K)
+ * @param info	Structure containing information about the underlying thermistor
+ * that is necessary to interpolate temperature
+ *
+ * @return EC_SUCCESS, or non-zero if error.
+ */
+int thermistor_get_temperature(const struct temp_sensor_t *sensor,
+			       int *temp_ptr,
+			       const struct thermistor_info *info);
 
 #endif  /* __CROS_EC_TEMP_SENSOR_THERMISTOR_NCP15WB_H */

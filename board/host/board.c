@@ -36,7 +36,8 @@ test_mockable enum battery_present battery_is_present(void)
 	return BP_YES;
 }
 
-test_mockable_static int mock_temp_get_val(int idx, int *temp_ptr)
+test_mockable_static int mock_temp_get_val(const struct temp_sensor_t *sensor,
+					   int *temp_ptr)
 {
 	*temp_ptr = 0;
 	return EC_SUCCESS;

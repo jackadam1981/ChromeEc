@@ -70,9 +70,11 @@ int thermistor_linear_interpolate(uint16_t mv,
 	defined(CONFIG_STEINHART_HART_3V3_13K7_47K_4050B) || \
 	defined(CONFIG_STEINHART_HART_6V0_51K1_47K_4050B) || \
 	defined(CONFIG_STEINHART_HART_3V0_22K6_47K_4050B) || \
-	defined(CONFIG_STEINHART_HART_3V3_30K9_47K_4050B)
-static int thermistor_get_temperature(int idx_adc, int *temp_ptr,
-		const struct thermistor_info *info)
+	defined(CONFIG_STEINHART_HART_3V3_30K9_47K_4050B) || \
+	defined(CONFIG_ZEPHYR)
+int thermistor_get_temperature(const struct temp_sensor_t *sensor,
+			       int *temp_ptr,
+			       const struct thermistor_info *info)
 {
 	int mv;
 
@@ -84,7 +86,7 @@ static int thermistor_get_temperature(int idx_adc, int *temp_ptr,
 	if (!gpio_get_level(CONFIG_TEMP_SENSOR_POWER_GPIO))
 		return EC_ERROR_NOT_POWERED;
 #endif /* CONFIG_TEMP_SENSOR_POWER_GPIO */
-	mv = adc_read_channel(idx_adc);
+	mv = adc_read_channel(sensor->idx);
 	if (mv < 0)
 		return EC_ERROR_UNKNOWN;
 
@@ -123,9 +125,10 @@ static const struct thermistor_info thermistor_info_51_47 = {
 	.data = thermistor_data_51_47,
 };
 
-int get_temp_3v3_51k1_47k_4050b(int idx_adc, int *temp_ptr)
+int get_temp_3v3_51k1_47k_4050b(const struct temp_sensor_t *sensor,
+				int *temp_ptr)
 {
-	return thermistor_get_temperature(idx_adc, temp_ptr,
+	return thermistor_get_temperature(sensor->idx, temp_ptr,
 			&thermistor_info_51_47);
 }
 #endif /* CONFIG_STEINHART_HART_3V3_51K1_47K_4050B */
@@ -159,9 +162,10 @@ static const struct thermistor_info thermistor_info_13_47 = {
 	.data = thermistor_data_13_47,
 };
 
-int get_temp_3v3_13k7_47k_4050b(int idx_adc, int *temp_ptr)
+int get_temp_3v3_13k7_47k_4050b(const struct temp_sensor_t *sensor,
+				int *temp_ptr)
 {
-	return thermistor_get_temperature(idx_adc, temp_ptr,
+	return thermistor_get_temperature(sensor->idx, temp_ptr,
 			&thermistor_info_13_47);
 }
 #endif /* CONFIG_STEINHART_HART_3V3_13K7_47K_4050B */
@@ -195,9 +199,10 @@ static const struct thermistor_info thermistor_info_6v0_51_47 = {
 	.data = thermistor_data_6v0_51_47,
 };
 
-int get_temp_6v0_51k1_47k_4050b(int idx_adc, int *temp_ptr)
+int get_temp_6v0_51k1_47k_4050b(const struct temp_sensor_t *sensor,
+				int *temp_ptr)
 {
-	return thermistor_get_temperature(idx_adc, temp_ptr,
+	return thermistor_get_temperature(sensor->idx, temp_ptr,
 			&thermistor_info_6v0_51_47);
 }
 #endif /* CONFIG_STEINHART_HART_6V0_51K1_47K_4050B */
@@ -231,9 +236,10 @@ static const struct thermistor_info thermistor_info_22_47 = {
 	.data = thermistor_data_22_47,
 };
 
-int get_temp_3v0_22k6_47k_4050b(int idx_adc, int *temp_ptr)
+int get_temp_3v0_22k6_47k_4050b(const struct temp_sensor_t *sensor,
+				int *temp_ptr)
 {
-	return thermistor_get_temperature(idx_adc, temp_ptr,
+	return thermistor_get_temperature(sensor->idx, temp_ptr,
 			&thermistor_info_22_47);
 }
 #endif /* CONFIG_STEINHART_HART_3V0_22K6_47K_4050B */
@@ -264,9 +270,10 @@ static const struct thermistor_info thermistor_info_31_47 = {
 	.data = thermistor_data_31_47,
 };
 
-int get_temp_3v3_30k9_47k_4050b(int idx_adc, int *temp_ptr)
+int get_temp_3v3_30k9_47k_4050b(const struct temp_sensor_t *sensor,
+				int *temp_ptr)
 {
-	return thermistor_get_temperature(idx_adc, temp_ptr,
+	return thermistor_get_temperature(sensor->idx, temp_ptr,
 			&thermistor_info_31_47);
 }
 #endif /* CONFIG_STEINHART_HART_3V3_30K9_47K_4050B */
