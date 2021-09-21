@@ -7009,6 +7009,38 @@ enum ec_set_base_state_cmd {
 	EC_SET_BASE_STATE_RESET,
 };
 
+#define EC_CMD_I2C_CONTROL 0x0139
+
+/* Subcommands for I2C control */
+
+enum ec_i2c_control_command {
+	EC_I2C_CONTROL_GET_SPEED,
+	EC_I2C_CONTROL_SET_SPEED,
+};
+
+enum ec_i2c_control_speed {
+	EC_I2C_CONTROL_SPEED_UNKNOWN = 0,
+	EC_I2C_CONTROL_SPEED_100KHZ,
+	EC_I2C_CONTROL_SPEED_400KHZ,
+	EC_I2C_CONTROL_SPEED_1MHZ,
+
+	EC_I2C_CONTROL_SPEED_COUNT
+};
+
+struct ec_params_i2c_control {
+	uint8_t port;		/* I2C port number */
+	uint8_t cmd;		/* enum ec_i2c_control_command */
+	union {
+		uint8_t speed;	/* enum ec_i2c_control_speed */
+	} cmd_params;
+} __ec_align_size1;
+
+struct ec_response_i2c_control {
+	union {
+		uint8_t speed;	/* enum ec_i2c_control_speed */
+	} cmd_response;
+} __ec_align_size1;
+
 /*****************************************************************************/
 /* The command range 0x200-0x2FF is reserved for Rotor. */
 
