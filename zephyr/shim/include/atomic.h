@@ -8,9 +8,16 @@
 
 #include <sys/atomic.h>
 
-static inline void atomic_clear_bits(atomic_t *addr, atomic_val_t bits)
+/*
+ * atomic_clear_bits: clears the requested mask bits.
+ * atomic operations are supposed to return an atomic_val_t
+ * to indicate if bits were set during the atomic operation
+ * so this function will return that none were set.
+ */
+static inline atomic_val_t atomic_clear_bits(atomic_t *addr, atomic_val_t bits)
 {
-	atomic_and(addr, ~bits);
+	(void)atomic_and(addr, ~bits);
+	return 0;
 }
 
 #endif  /* __CROS_EC_ATOMIC_H */
