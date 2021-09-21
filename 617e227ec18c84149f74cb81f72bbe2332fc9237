@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9b3e652_c51acdcb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339295
+      },
+      "writtenOn": "2021-09-21T17:30:25Z",
+      "side": 1,
+      "message": "AFAIK, The LID_ACCEL and BASE_ACCEL should be the either 0 or 1 for kernel to be able to compute orientation propoerly. Just wondering if the reason for this is documented somewhere.\n\nenum sensor_id {\n\tLID_ACCEL,\n\tBASE_ACCEL,\n\tBASE_GYRO,\n\tSENSOR_COUNT\n\t}",
+      "revId": "617e227ec18c84149f74cb81f72bbe2332fc9237",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baf4ebe7_1ad56504",
