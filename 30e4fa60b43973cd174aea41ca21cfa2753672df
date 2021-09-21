@@ -46,6 +46,29 @@
       },
       "revId": "30e4fa60b43973cd174aea41ca21cfa2753672df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "339dc21e_e879c6ab",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-21T02:55:08Z",
+      "side": 1,
+      "message": "Can this be const?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 6
+      },
+      "revId": "30e4fa60b43973cd174aea41ca21cfa2753672df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
