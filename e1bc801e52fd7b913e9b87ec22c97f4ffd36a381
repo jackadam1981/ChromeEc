@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "89b4a07d_1fabb573",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-09-22T08:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55a88e0a_53f141ef",
+      "range": {
+        "startLine": 7,
+        "startChar": 5,
+        "endLine": 7,
+        "endChar": 77
+      },
+      "revId": "e1bc801e52fd7b913e9b87ec22c97f4ffd36a381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8598cffb_1147c151",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c39b9d14_7c392886",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-09-22T08:10:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8598cffb_1147c151",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 34
+      },
+      "revId": "e1bc801e52fd7b913e9b87ec22c97f4ffd36a381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9b88232b_488c9a3b",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-17T15:58:00Z",
       "side": 1,
       "message": "If this fails, what would happen to the post-task transactions?",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "e1bc801e52fd7b913e9b87ec22c97f4ffd36a381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cd8ce03_802cbc1b",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1121210
+      },
+      "writtenOn": "2021-09-22T08:10:14Z",
+      "side": 1,
+      "message": "Will check the return value of i2c_raw_mode() in next patchset.",
+      "parentUuid": "9b88232b_488c9a3b",
       "range": {
         "startLine": 153,
         "startChar": 2,
