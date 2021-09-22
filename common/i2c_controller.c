@@ -54,6 +54,19 @@ static volatile uint32_t i2c_port_active_list;
 BUILD_ASSERT(ARRAY_SIZE(port_mutex) < 32);
 static uint8_t port_protected[I2C_PORT_COUNT + I2C_BITBANG_PORT_COUNT];
 
+#ifdef CONFIG_CMD_I2C_SPEED
+
+static const char * const i2c_freq_str[] = {
+	[I2C_FREQ_1000KHZ] = "1000 kHz",
+	[I2C_FREQ_400KHZ] = "400 kHz",
+	[I2C_FREQ_100KHZ] = "100 kHz",
+	[I2C_FREQ_COUNT] = "unknown",
+};
+
+BUILD_ASSERT(ARRAY_SIZE(i2c_freq_str) == I2C_FREQ_COUNT + 1);
+
+#endif /* CONFIG_CMD_I2C_SPEED */
+
 #ifdef CONFIG_ZEPHYR
 static int init_port_mutex(const struct device *dev)
 {
@@ -1444,6 +1457,99 @@ i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU_PROTECT, i2c_command_passthru_protect,
 		     EC_VER_MASK(0));
 
+#ifdef CONFIG_HOSTCMD_I2C_CONTROL
+
+static enum ec_i2c_control_speed e2h(enum i2c_freq ec_i2c_freq)
+{
+	switch (ec_i2c_freq) {
+	case I2C_FREQ_100KHZ:
+		return EC_I2C_CONTROL_SPEED_100KHZ;
+	case I2C_FREQ_400KHZ:
+		return EC_I2C_CONTROL_SPEED_400KHZ;
+	case I2C_FREQ_1000KHZ:
+		return EC_I2C_CONTROL_SPEED_1MHZ;
+	default:
+		return EC_I2C_CONTROL_SPEED_UNKNOWN;
+	}
+}
+
+static enum i2c_freq h2e(enum ec_i2c_control_speed hc_speed)
+{
+	switch (hc_speed) {
+	case EC_I2C_CONTROL_SPEED_100KHZ:
+		return I2C_FREQ_100KHZ;
+	case EC_I2C_CONTROL_SPEED_400KHZ:
+		return I2C_FREQ_400KHZ;
+	case EC_I2C_CONTROL_SPEED_1MHZ:
+		return I2C_FREQ_1000KHZ;
+	default:
+		return I2C_FREQ_COUNT;
+	}
+}
+
+static enum ec_status
+i2c_command_control(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_i2c_control *params = args->params;
+	struct ec_response_i2c_control *resp = args->response;
+	enum i2c_freq old_ec_i2c_freq;
+	enum i2c_freq new_ec_i2c_freq;
+	const struct i2c_port_t *cfg;
+	enum ec_i2c_control_speed host_i2c_freq;
+	enum ec_error_list rv;
+
+	cfg = get_i2c_port(params->port);
+	if (!cfg)
+		return EC_RES_INVALID_PARAM;
+
+	switch (params->cmd) {
+	case EC_I2C_CONTROL_GET_SPEED:
+		old_ec_i2c_freq = i2c_get_freq(cfg->port);
+		host_i2c_freq = e2h(old_ec_i2c_freq);
+		if (host_i2c_freq == EC_I2C_CONTROL_SPEED_UNKNOWN)
+			return EC_RES_ERROR;
+		break;
+
+	case EC_I2C_CONTROL_SET_SPEED:
+		new_ec_i2c_freq = h2e(params->cmd_params.speed);
+		if (new_ec_i2c_freq == I2C_FREQ_COUNT)
+			return EC_RES_INVALID_PARAM;
+
+		old_ec_i2c_freq = i2c_get_freq(cfg->port);
+		host_i2c_freq = e2h(old_ec_i2c_freq);
+
+		rv = i2c_set_freq(cfg->port, new_ec_i2c_freq);
+		if (rv != EC_SUCCESS)
+			return EC_RES_ERROR;
+
+		if (IS_ENABLED(CONFIG_CMD_I2C_SPEED)) {
+			const char *os, *ns;
+
+			os = i2c_freq_str[old_ec_i2c_freq];
+			ns = i2c_freq_str[new_ec_i2c_freq];
+			CPRINTS("C%d: I2C speed changed from %s to %s",
+				params->port, os, ns);
+		} else {
+			CPRINTS("C%d: I2C speed changed from #%d to #%d",
+				params->port, old_ec_i2c_freq, new_ec_i2c_freq);
+		}
+		break;
+
+	default:
+		return EC_RES_INVALID_COMMAND;
+	}
+
+	resp->cmd_response.speed = host_i2c_freq;
+	args->response_size = sizeof(*resp);
+
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_I2C_CONTROL, i2c_command_control,
+		     EC_VER_MASK(0));
+
+#endif /* CONFIG_HOSTCMD_I2C_CONTROL */
+
 /*****************************************************************************/
 /* Console commands */
 
@@ -1725,15 +1831,6 @@ DECLARE_CONSOLE_COMMAND(i2cxfer, command_i2cxfer,
 #endif
 
 #ifdef CONFIG_CMD_I2C_SPEED
-
-static const char * const i2c_freq_str[] = {
-	[I2C_FREQ_1000KHZ] = "1000 kHz",
-	[I2C_FREQ_400KHZ] = "400 kHz",
-	[I2C_FREQ_100KHZ] = "100 kHz",
-	[I2C_FREQ_COUNT] = "unknown",
-};
-
-BUILD_ASSERT(ARRAY_SIZE(i2c_freq_str) == I2C_FREQ_COUNT + 1);
 
 static int command_i2c_speed(int argc, char **argv)
 {
