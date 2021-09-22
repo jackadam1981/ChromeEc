@@ -604,4 +604,12 @@ const struct i2c_port_t *get_i2c_port(const int port);
  */
 int i2c_get_physical_port(int enum_port);
 
+/**
+ * Board level to initialize I2C peripherals before task starts.
+ *
+ * Example: I/O expanders can be initialized to utilize GPIOs earlier
+ * than the HOOK task starts.
+ */
+__override_proto void board_i2c_peripherals_init(void);
+
 #endif  /* __CROS_EC_I2C_H */

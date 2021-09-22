@@ -199,9 +199,13 @@ test_mockable __keep int main(void)
 		 * Enable I2C raw mode for the ports which need pre-task i2c
 		 * transactions.
 		 */
-		if (IS_ENABLED(CONFIG_I2C_BITBANG))
+		if (IS_ENABLED(CONFIG_I2C_BITBANG)) {
 			enable_i2c_raw_mode(true);
+			/* Board level I2C peripherals initialization */
+			board_i2c_peripherals_init();
+		}
 	}
+
 
 #ifdef HAS_TASK_KEYSCAN
 	keyboard_scan_init();
