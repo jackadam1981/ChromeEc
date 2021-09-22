@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53d42af2_e35fabdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T15:56:00Z",
+      "side": 1,
+      "message": "This broke the build on gitlab:\n\n```\nERROR: [/builds/zephyr-ec/ec/build/coverage/test/drivers:singleimage]/builds/zephyr-ec/ec/zephyr/test/drivers/src/stm_mems_common.c:24:29: error: \u0027get_i2c_dev\u0027 defined but not used [-Werror\u003dunused-function]\nERROR: [/builds/zephyr-ec/ec/build/coverage/test/drivers:singleimage] static const struct device *get_i2c_dev(void)\nERROR: [/builds/zephyr-ec/ec/build/coverage/test/drivers:singleimage]                             ^~~~~~~~~~~\nERROR: [/builds/zephyr-ec/ec/build/coverage/test/drivers:singleimage]/builds/zephyr-ec/ec/zephyr/test/drivers/src/stm_mems_common.c:19:13: error: \u0027setup\u0027 defined but not used [-Werror\u003dunused-function]\nERROR: [/builds/zephyr-ec/ec/build/coverage/test/drivers:singleimage] static void setup(void)\nERROR: [/builds/zephyr-ec/ec/build/coverage/test/drivers:singleimage]             ^~~~~\nERROR: [/builds/zephyr-ec/ec/build/coverage/test/drivers:singleimage]cc1: all warnings being treated as errors\n```\n\nI\u0027ll change the build in chroot to start failing on this also.",
+      "revId": "f61e542f9871e9583e95b50599a9f41a9bf1024c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
