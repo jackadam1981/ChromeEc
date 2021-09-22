@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a27016c_7fe8954c",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-22T22:12:52Z",
+      "side": 1,
+      "message": "The is_alarm is not an argument. Change the argument?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 18
+      },
+      "revId": "c50f8ff2965e5fc16aa497260ae51a47fa3cdfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf828cac_6849b1f3",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-22T22:12:52Z",
+      "side": 1,
+      "message": "Could you add several spaces to align it to the above \"(\"? The following functions have the same issue.",
+      "range": {
+        "startLine": 47,
+        "startChar": 3,
+        "endLine": 47,
+        "endChar": 4
+      },
+      "revId": "c50f8ff2965e5fc16aa497260ae51a47fa3cdfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7982fcb_8713ea04",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-22T22:12:52Z",
+      "side": 1,
+      "message": "Why set this bit?",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 38
+      },
+      "revId": "c50f8ff2965e5fc16aa497260ae51a47fa3cdfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53c1b1d5_a51129ad",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-22T22:12:52Z",
+      "side": 1,
+      "message": "This line fits 80 columns?",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "c50f8ff2965e5fc16aa497260ae51a47fa3cdfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "18f7579f_b1ff049f",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-22T22:12:52Z",
+      "side": 1,
+      "message": "Looks like merging this line fits 80 columns, right?",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 4
+      },
+      "revId": "c50f8ff2965e5fc16aa497260ae51a47fa3cdfb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
