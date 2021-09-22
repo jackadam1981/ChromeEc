@@ -39,6 +39,30 @@
       },
       "revId": "40d1b94f2bd4bb177ca7a33296c0e69df1a559af",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5adcc267_38af1576",
+        "filename": "board/cr50/usb_spi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-22T00:11:47Z",
+      "side": 1,
+      "message": "I am not sure I understand how offset comes into this calculation.\n\nBut in general there should be no reason to limit the size of read by 64 bytes, this is the limit imposed by spi_read_chunk().\n\nWith CS controlled through GPIO we could read much longer blocks in one shot. Not that it matters much for the purposes of AP RO SPI verification driven by a human operator, but I opened a bug to see if this could be easily improved: b/200736744",
+      "parentUuid": "d5546099_13c665c3",
+      "range": {
+        "startLine": 691,
+        "startChar": 12,
+        "endLine": 691,
+        "endChar": 57
+      },
+      "revId": "40d1b94f2bd4bb177ca7a33296c0e69df1a559af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
