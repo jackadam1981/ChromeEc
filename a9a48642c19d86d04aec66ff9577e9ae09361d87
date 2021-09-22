@@ -39,6 +39,30 @@
       },
       "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1912c946_d6ed8de9",
+        "filename": "common/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-22T20:14:51Z",
+      "side": 1,
+      "message": "Yes , it works without i2c_init() being called on NPCX9 EC.",
+      "parentUuid": "39722849_349cef71",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 21
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
