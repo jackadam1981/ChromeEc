@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c31af00_708df68f",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-22T20:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc2317d3_bf87558b",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cb81034_3a9f63d4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-22T17:41:07Z",
       "side": 1,
       "message": "Denis indicated that the Zephyr API group recommends against using macros. You can assign your local variables to the dev-\u003econfig and dev-\u003edata directly without the cast.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f13f84c9_804d9791",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-22T20:28:36Z",
+      "side": 1,
+      "message": "Really. I don\u0027t know if I\u0027ve ever used an OS that relied so heavily on macros. I\u0027ve removed them.",
+      "parentUuid": "4cb81034_3a9f63d4",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59e1add6_fb854d7f",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-22T20:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "269e62a7_b80b4cb1",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e40dea8c_a9075b5e",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-22T17:41:07Z",
       "side": 1,
       "message": "These routines are duplicated from the NXP RTC driver.  Can you move to a common location? Please add a separate CL.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 0
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73b5fc70_9a44dbd5",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-22T20:28:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e40dea8c_a9075b5e",
       "range": {
         "startLine": 123,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c060da0c_f223bd1c",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-22T20:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89ea63fc_e1d8bdcb",
+      "range": {
+        "startLine": 148,
+        "startChar": 22,
+        "endLine": 148,
+        "endChar": 35
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "048170b6_78ea09c6",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-09-22T17:41:07Z",
       "side": 1,
       "message": "Nit - no need to check if the bit is set, you can just unconditionally clear it.\n\nThis can be cleaned up for the other uses in this function as well.",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 26
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "92614e5a_673a1d1c",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-22T20:28:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "048170b6_78ea09c6",
       "range": {
         "startLine": 384,
         "startChar": 0,
