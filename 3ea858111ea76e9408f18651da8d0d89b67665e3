@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "894f0e9b_5f773464",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-22T04:02:39Z",
+      "side": 1,
+      "message": "nit: naming:\nAP_RO_HASH_TYPE -\u003e AP_RO_HASH_TYPE_FACTORY\nGVD_HASH_TYPE -\u003e AP_RO_HASH_TYPE_GSCVD",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60daedd4_6b10b043",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-22T04:02:39Z",
+      "side": 1,
+      "message": "nit: keblock -\u003e keyblock",
+      "range": {
+        "startLine": 479,
+        "startChar": 11,
+        "endLine": 479,
+        "endChar": 25
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73a6535d_18fd30a8",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1327,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-22T04:02:39Z",
+      "side": 1,
+      "message": "so, am I right that command always assumes that it is v2 situation (i.e. we have the signed entry in the RO image itself), so if you send this command on all current devices it would return a failure.\n\nif so, deserves a more specific name (like ap_ro_check_v2), otherwise there will be confusion.",
+      "range": {
+        "startLine": 1327,
+        "startChar": 0,
+        "endLine": 1327,
+        "endChar": 75
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7ac452b_79f77723",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1355,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-22T04:02:39Z",
+      "side": 1,
+      "message": "so, until the 1st ap_ro_check_version2 command, if something was provisioned ta factory we will continue using that hash even if an image with GSVC region is installed.\n\nshall we update validate_ranges_sha() case to do ap_ro_check_version2() if the original hash was unsuccessful?",
+      "range": {
+        "startLine": 1355,
+        "startChar": 18,
+        "endLine": 1355,
+        "endChar": 41
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
