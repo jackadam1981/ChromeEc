@@ -15,6 +15,7 @@
 #include <soc.h>
 
 #include "renesas_rtc_idt1337ag.h"
+#include "rtc_common.h"
 
 #include <logging/log.h>
 LOG_MODULE_REGISTER(cros_rtc, LOG_LEVEL_ERR);
@@ -109,30 +110,6 @@ static int idt1337ag_write_reg(const struct device *dev,
 
 	return i2c_write(config->bus,
 		tx_buf, sizeof(tx_buf), config->i2c_addr_flags);
-}
-
-/*
- * val bits 7 to 4 - tens place
- * val bits 3 to 0 - ones place
- */
-static int bcd_to_dec(uint8_t val, enum bcd_mask mask)
-{
-	int tens = ((val & mask) >> 4) * 10;
-	int ones = (val & 0xf);
-
-	return tens + ones;
-}
-
-/*
- * val bits 7 to 4 - tens place
- * val bits 3 to 0 - ones place
- */
-static uint8_t dec_to_bcd(uint32_t val, enum bcd_mask mask)
-{
-	int tens = val / 10;
-	int ones = val - (tens * 10);
-
-	return ((tens << 4) & mask) | ones;
 }
 
 static int renesas_rtc_idt1337ag_read_seconds(const struct device *dev,
