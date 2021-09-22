@@ -212,6 +212,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5427a02a_e65df41e",
+        "filename": "zephyr/dts/bindings/temp/temp_sensor.yaml",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-22T14:39:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bdf87302_a8f143c8",
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24797a32_562ed628",
@@ -1248,6 +1266,30 @@
       "side": 1,
       "message": "Actually, how about I just use the information in the temp sensor struct?",
       "parentUuid": "f43764d3_06870893",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 68
+      },
+      "revId": "a88ee174c31761fb126b0fce4436f997ff6b8aeb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35ee64aa_ad22f68a",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 17
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-22T14:39:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "65f7b771_108447f8",
       "range": {
         "startLine": 59,
         "startChar": 1,
