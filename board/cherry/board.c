@@ -159,6 +159,22 @@ static void board_update_motion_sensor_config(void)
 	}
 }
 
+static void board_gpio_init(void)
+{
+	/*
+	 * GPIO definition changed:
+	 * board ver   < 2         >= 2
+	 * EN_KB_BL    GPA5        GPA6
+	 * I2C_PROG    GPH1,GPH2   GPA4,GPA5
+	 * KB_BL_PWM   GPA4(PWM4)  GPA3(PWM3)
+	 */
+	if (system_get_board_version() < 2)
+		gpio_set_flags(GPIO_EN_KB_BL_OLD, GPIO_OUT_LOW);
+	else
+		pwm_channels[PWM_CH_KBLIGHT].channel = 3;
+}
+DECLARE_HOOK(HOOK_INIT, board_gpio_init, HOOK_PRIO_DEFAULT - 1);
+
 /* Initialize board. */
 static void board_init(void)
 {
@@ -172,3 +188,11 @@ static void board_init(void)
 	board_update_motion_sensor_config();
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
+
+void board_kblight_enable(int enable)
+{
+	if (system_get_board_version() < 2)
+		gpio_set_level(GPIO_EN_KB_BL_OLD, enable);
+	else
+		gpio_set_level(GPIO_EN_KB_BL, enable);
+}
