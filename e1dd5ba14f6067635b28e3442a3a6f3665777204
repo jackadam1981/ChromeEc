@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fe8b32be_c1b00e9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-22T18:19:38Z",
+      "side": 1,
+      "message": "Ah, I had it wrong. It\u0027s the libftdi1.pc file that is missing.",
+      "parentUuid": "20ba0315_06deb43a",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 53
+      },
+      "revId": "e1dd5ba14f6067635b28e3442a3a6f3665777204",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b55084c8_68174369",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
