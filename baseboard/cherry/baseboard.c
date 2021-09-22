@@ -196,7 +196,7 @@ static void ppc_interrupt(enum gpio_signal signal)
  * so use the same frequency and prescaler register setting is required if
  * number of pwm channel greater than three.
  */
-const struct pwm_t pwm_channels[] = {
+struct pwm_t pwm_channels[] = {
 	[PWM_CH_LED1] = {
 		.channel = 0,
 		.flags = PWM_CONFIG_DSLEEP | PWM_CONFIG_ACTIVE_LOW,
