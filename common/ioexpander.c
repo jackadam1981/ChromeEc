@@ -169,6 +169,9 @@ int ioex_init(int ioex)
 	int rv;
 	int i;
 
+	if (ioex_config[ioex].flags & IOEX_FLAGS_PRE_TASK_INITIALIZED)
+		return EC_SUCCESS;
+
 	if (ioex_config[ioex].flags & IOEX_FLAGS_DISABLED)
 		return EC_ERROR_BUSY;
 
