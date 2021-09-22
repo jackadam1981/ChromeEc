@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91dce20f_150722ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-09-22T08:42:11Z",
+      "side": 1,
+      "message": "I think it\u0027s OK if keyboard backlight doesn\u0027t work on the proto devices, but please make sure it won\u0027t damage the tomato/cherry\u0027s proto boards.",
+      "parentUuid": "08717b72_7141d969",
+      "revId": "770a062e1e248e7a9efaf5bb9c8a42de35500bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d1a75e2_b37324c4",
