@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a2827c7_76003b5d",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-22T16:28:31Z",
+      "side": 1,
+      "message": "nit: could be more clear if this is something like \"FIFO_ENTRY\" since by itself it sounds like the size of the whole FIFO, rather than the words you want to read for one entry",
+      "revId": "aa82e2b8dccef9bd4ef5abe106d87298bc56951b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
