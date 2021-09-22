@@ -140,6 +140,30 @@
       },
       "revId": "e1bc801e52fd7b913e9b87ec22c97f4ffd36a381",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd5802c3_7cff2f60",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-22T16:33:27Z",
+      "side": 1,
+      "message": "Instead of switching on/off on each transaction, we can call i2c_raw_mode(1) for all ports in i2c_init and call i2c_raw_mode(0) before leaving the main(). It will not only remove the switching overhead but also allow us to handle errors from i2c_raw_mode properly (i.e. try again, print error, or assert).\n\nWe can add something like i2c_prepare_task_mode to i2c_controller.c. What do you think?",
+      "parentUuid": "0cd8ce03_802cbc1b",
+      "range": {
+        "startLine": 153,
+        "startChar": 2,
+        "endLine": 153,
+        "endChar": 14
+      },
+      "revId": "e1bc801e52fd7b913e9b87ec22c97f4ffd36a381",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
