@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3f1c04e_2572306c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-09-22T20:22:08Z",
+      "side": 1,
+      "message": "You might need a little bit of testing. We were already running into troubles scanning the keyboard over i2c (due to the overhead), not sure how much that would get slowed down with bitbanging.\n\nBTW, how much does this matter with the zephyr move?",
+      "parentUuid": "c6981c69_5ed5ad9f",
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39722849_349cef71",
