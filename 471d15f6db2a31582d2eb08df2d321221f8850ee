@@ -34,6 +34,24 @@
       "parentUuid": "c1b2c7c0_aa11dc5e",
       "revId": "471d15f6db2a31582d2eb08df2d321221f8850ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac33916_ffe40811",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-22T23:27:31Z",
+      "side": 1,
+      "message": "I agree this isn\u0027t the right way to fix it. I was hoping you might have some ideas on what is happening. I\u0027m not very familiar with this linker script.\n\nWithout this change, everything compiles and links with clang, but I never get any console output on dartmonkey.\n\nIf you want to try it, you can check out https://crrev.com/c/1474577 and build with:\n\n CC\u003darm-none-eabi-clang make BOARD\u003ddartmonkey -j\n\nI\u0027ll see if I can diff the working vs non-working image to see if there is anything obviously different.",
+      "parentUuid": "63c0dcac_dc5a3b03",
+      "revId": "471d15f6db2a31582d2eb08df2d321221f8850ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
