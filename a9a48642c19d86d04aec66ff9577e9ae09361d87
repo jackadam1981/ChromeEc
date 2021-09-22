@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6981c69_5ed5ad9f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-22T20:11:55Z",
+      "side": 1,
+      "message": "Hi Amstan, what do you think about making kukui boards use i2c_bitbang before tasks start? Some chips don\u0027t support polling mode. So, they need i2c bitbang and I\u0027m interested in unifying the pre-task transactions. Thanks,",
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39722849_349cef71",
