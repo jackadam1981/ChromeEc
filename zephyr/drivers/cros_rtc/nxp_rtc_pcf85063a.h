@@ -46,13 +46,4 @@
 #define MONTHS            5
 #define YEARS             6
 
-enum bcd_mask {
-	SECONDS_MASK = 0x70,
-	MINUTES_MASK = 0x70,
-	HOURS24_MASK = 0x30,
-	DAYS_MASK    = 0x30,
-	MONTHS_MASK  = 0x10,
-	YEARS_MASK   = 0xf0
-};
-
 #endif /* __CROS_EC_RTC_PCF85063A_H */
