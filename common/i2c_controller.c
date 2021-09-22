@@ -1444,6 +1444,92 @@ i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU_PROTECT, i2c_command_passthru_protect,
 		     EC_VER_MASK(0));
 
+#ifdef CONFIG_HOSTCMD_I2C_CONTROL
+
+static uint16_t e2khz(enum i2c_freq ec_i2c_freq)
+{
+	switch (ec_i2c_freq) {
+	case I2C_FREQ_100KHZ:
+		return 100;
+	case I2C_FREQ_400KHZ:
+		return 400;
+	case I2C_FREQ_1000KHZ:
+		return 1000;
+	default:
+		return EC_I2C_CONTROL_SPEED_UNKNOWN;
+	}
+}
+
+static enum i2c_freq khz2e(uint16_t hc_speed_khz)
+{
+	switch (hc_speed_khz) {
+	case 100:
+		return I2C_FREQ_100KHZ;
+	case 400:
+		return I2C_FREQ_400KHZ;
+	case 1000:
+		return I2C_FREQ_1000KHZ;
+	default:
+		return I2C_FREQ_COUNT;
+	}
+}
+
+static enum ec_status
+i2c_command_control(struct host_cmd_handler_args *args)
+{
+	const struct ec_params_i2c_control *params = args->params;
+	struct ec_response_i2c_control *resp = args->response;
+	enum i2c_freq old_i2c_freq;
+	enum i2c_freq new_i2c_freq;
+	const struct i2c_port_t *cfg;
+	uint16_t old_i2c_speed_khz;
+	uint16_t new_i2c_speed_khz;
+	enum ec_error_list rv;
+
+	cfg = get_i2c_port(params->port);
+	if (!cfg)
+		return EC_RES_INVALID_PARAM;
+
+	switch (params->cmd) {
+	case EC_I2C_CONTROL_GET_SPEED:
+		old_i2c_freq = i2c_get_freq(cfg->port);
+		old_i2c_speed_khz = e2khz(old_i2c_freq);
+		break;
+
+	case EC_I2C_CONTROL_SET_SPEED:
+		new_i2c_speed_khz = params->cmd_params.speed_khz;
+		new_i2c_freq = khz2e(new_i2c_speed_khz);
+		if (new_i2c_freq == I2C_FREQ_COUNT)
+			return EC_RES_INVALID_PARAM;
+
+		old_i2c_freq = i2c_get_freq(cfg->port);
+		old_i2c_speed_khz = e2khz(old_i2c_freq);
+
+		rv = i2c_set_freq(cfg->port, new_i2c_freq);
+		if (rv != EC_SUCCESS)
+			return EC_RES_ERROR;
+
+		CPRINTS("C%d: I2C speed changed from %d kHz to %d kHz",
+			params->port,
+			old_i2c_speed_khz,
+			new_i2c_speed_khz);
+		break;
+
+	default:
+		return EC_RES_INVALID_COMMAND;
+	}
+
+	resp->cmd_response.speed_khz = old_i2c_speed_khz;
+	args->response_size = sizeof(*resp);
+
+	return EC_RES_SUCCESS;
+}
+
+DECLARE_HOST_COMMAND(EC_CMD_I2C_CONTROL, i2c_command_control,
+		     EC_VER_MASK(0));
+
+#endif /* CONFIG_HOSTCMD_I2C_CONTROL */
+
 /*****************************************************************************/
 /* Console commands */
 
