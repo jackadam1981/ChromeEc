@@ -36,6 +36,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "17f79a0d_e7db316d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-22T18:34:17Z",
+      "side": 1,
+      "message": "overall this is turning out really nice",
+      "revId": "47cc456d5898c48a75f9728c0e47fcf6ea45072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e260583_76bc2178",
@@ -77,6 +94,86 @@
         "startChar": 0,
         "endLine": 151,
         "endChar": 46
+      },
+      "revId": "47cc456d5898c48a75f9728c0e47fcf6ea45072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ea6740e_c9b0dc76",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 19
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-22T18:34:17Z",
+      "side": 1,
+      "message": "remove blank line before };",
+      "revId": "47cc456d5898c48a75f9728c0e47fcf6ea45072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0432f579_6c36b059",
+        "filename": "zephyr/include/cros/thermistor/thermistor.dtsi",
+        "patchSetId": 19
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-22T18:34:17Z",
+      "side": 1,
+      "message": "same for the rest of them",
+      "revId": "47cc456d5898c48a75f9728c0e47fcf6ea45072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1451e169_d11f2474",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-22T18:34:17Z",
+      "side": 1,
+      "message": "multiline comments need formatted like this (first line has no text)\n\n /*\n  * blah blah blah\n  * blah blah\n  */\n \n(I know it\u0027s weird, but linux kernel style asks for it)",
+      "range": {
+        "startLine": 24,
+        "startChar": 1,
+        "endLine": 24,
+        "endChar": 2
+      },
+      "revId": "47cc456d5898c48a75f9728c0e47fcf6ea45072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985ba116_99b043d7",
+        "filename": "zephyr/test/drivers/src/thermistor.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-22T18:34:17Z",
+      "side": 1,
+      "message": "space after *",
+      "range": {
+        "startLine": 25,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 2
       },
       "revId": "47cc456d5898c48a75f9728c0e47fcf6ea45072e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
