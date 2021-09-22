@@ -22,6 +22,9 @@ static int current_percent;
 void __attribute__((weak)) board_kblight_init(void)
 { }
 
+void __attribute__((weak)) board_kblight_enable(int enable)
+{ }
+
 static int kblight_init(void)
 {
 	if (!kblight.drv || !kblight.drv->init)
@@ -60,6 +63,8 @@ int kblight_enable(int enable)
 #ifdef GPIO_EN_KEYBOARD_BACKLIGHT
 	gpio_set_level(GPIO_EN_KEYBOARD_BACKLIGHT, enable);
 #endif
+	board_kblight_enable(enable);
+
 	if (!kblight.drv || !kblight.drv->enable)
 		return -1;
 	return kblight.drv->enable(enable);
