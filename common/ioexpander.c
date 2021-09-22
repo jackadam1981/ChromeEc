@@ -172,6 +172,9 @@ int ioex_init(int ioex)
 	if (ioex_config[ioex].flags & IOEX_FLAGS_DISABLED)
 		return EC_ERROR_BUSY;
 
+	if (ioex_config[ioex].flags & IOEX_FLAGS_INITIALIZED)
+		return EC_SUCCESS;
+
 	if (drv->init != NULL) {
 		rv = drv->init(ioex);
 		if (rv != EC_SUCCESS)
@@ -335,4 +338,3 @@ static int command_ioex_get(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(ioexget, command_ioex_get,
 			     "[name]",
 			     "Read level of IO expander pin(s)");
-
