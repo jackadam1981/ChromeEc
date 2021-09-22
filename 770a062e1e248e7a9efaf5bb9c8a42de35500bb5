@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08717b72_7141d969",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-09-22T08:26:56Z",
+      "side": 1,
+      "message": "I think we can simply drop keyboard backlight support for old devices.\n\nChentsung, any concern?",
+      "revId": "770a062e1e248e7a9efaf5bb9c8a42de35500bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d1a75e2_b37324c4",
+        "filename": "board/cherry/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-09-22T08:26:56Z",
+      "side": 1,
+      "message": "this happens after pwm_init, so the it83xx internal registers may be incorrect.",
+      "revId": "770a062e1e248e7a9efaf5bb9c8a42de35500bb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
