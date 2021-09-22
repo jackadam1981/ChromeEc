@@ -16,6 +16,24 @@
       "message": "See my comment in the related CL: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3169964/comments/c1b2c7c0_aa11dc5e. I didn\u0027t look at this in detail to see what is exactly happening.",
       "revId": "1df463a25e36339dbec38ba36fafdcf13dd4d4fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3c2f953_55cee1cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-09-22T01:12:49Z",
+      "side": 1,
+      "message": "This might be fixed by specifying the LMA address explitliy with clang. (random guess).\n AT \u003e DATA_LMA_MEM_REGION.",
+      "parentUuid": "ba58148b_97f93ecf",
+      "revId": "1df463a25e36339dbec38ba36fafdcf13dd4d4fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
