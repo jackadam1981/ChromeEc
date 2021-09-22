@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75e44631_fa56cce1",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-09-22T15:11:21Z",
+      "side": 1,
+      "message": "nit: send an event",
+      "revId": "bec3c16d683d825099ea14a5f9bac091122efe38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62db7f8e_fff1c2f3",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-09-22T15:11:21Z",
+      "side": 1,
+      "message": "nit: new_rate_us * 95 / 100 would have more precision.",
+      "revId": "bec3c16d683d825099ea14a5f9bac091122efe38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
