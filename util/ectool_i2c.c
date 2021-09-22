@@ -122,6 +122,7 @@ static void cmd_i2c_help(void)
 {
 	fprintf(stderr,
 		"  Usage: i2cread <8 | 16> <port> <addr8> <offset>\n"
+		"  Usage: i2cspeed <port> [speed in kHz]\n"
 		"  Usage: i2cwrite <8 | 16> <port> <addr8> <offset> <data>\n"
 		"  Usage: i2cxfer <port> <addr7> <read_count> [bytes...]\n"
 		"    <port> i2c port number\n"
@@ -318,4 +319,116 @@ int cmd_i2c_xfer(int argc, char *argv[])
 	}
 
 	return 0;
+}
+
+static const char * const i2c_ctrl_speeds[] = {
+	[EC_I2C_CONTROL_SPEED_UNKNOWN] = "unknown",
+	[EC_I2C_CONTROL_SPEED_100KHZ] = "100 kHz",
+	[EC_I2C_CONTROL_SPEED_400KHZ] = "400 kHz",
+	[EC_I2C_CONTROL_SPEED_1MHZ] = "1000 kHz",
+};
+
+BUILD_ASSERT(ARRAY_SIZE(i2c_ctrl_speeds) == EC_I2C_CONTROL_SPEED_COUNT);
+
+static int i2c_get(int port)
+{
+	struct ec_params_i2c_control  p;
+	struct ec_response_i2c_control r;
+	uint8_t speed;
+	int rv;
+
+	memset(&p, 0, sizeof(p));
+	p.port = port;
+	p.cmd = EC_I2C_CONTROL_GET_SPEED;
+
+	rv = ec_command(EC_CMD_I2C_CONTROL, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	speed = r.cmd_response.speed;
+	if (speed < EC_I2C_CONTROL_SPEED_COUNT) {
+		printf("I2C port %d: speed: %s\n", port,
+		       i2c_ctrl_speeds[speed]);
+	} else {
+		printf("I2C port %d: speed code %u\n", port, speed);
+	}
+
+	return 0;
+}
+
+static int i2c_set(int port, int new_speed_kbps)
+{
+	struct ec_params_i2c_control  p;
+	struct ec_response_i2c_control r;
+	uint8_t new_speed;
+	uint8_t old_speed;
+	int rv;
+
+	switch (new_speed_kbps) {
+	case 0:
+		new_speed = EC_I2C_CONTROL_SPEED_UNKNOWN;
+		break;
+	case 100:
+		new_speed = EC_I2C_CONTROL_SPEED_100KHZ;
+		break;
+	case 400:
+		new_speed = EC_I2C_CONTROL_SPEED_400KHZ;
+		break;
+	case 1000:
+		new_speed = EC_I2C_CONTROL_SPEED_1MHZ;
+		break;
+	default:
+		fprintf(stderr, "I2C speed %d kbps is not supported\n",
+			new_speed_kbps);
+		return -1;
+	}
+
+	memset(&p, 0, sizeof(p));
+	p.port = port;
+	p.cmd = EC_I2C_CONTROL_SET_SPEED;
+	p.cmd_params.speed = new_speed;
+
+	rv = ec_command(EC_CMD_I2C_CONTROL, 0, &p, sizeof(p), &r, sizeof(r));
+	if (rv < 0)
+		return rv;
+
+	old_speed = r.cmd_response.speed;
+	if (old_speed >= EC_I2C_CONTROL_SPEED_COUNT)
+		old_speed = EC_I2C_CONTROL_SPEED_UNKNOWN;
+
+	printf("Port %d speed changed from %s to %s\n", port,
+	       i2c_ctrl_speeds[old_speed],
+	       i2c_ctrl_speeds[new_speed]);
+
+	return 0;
+}
+
+int cmd_i2c_speed(int argc, char *argv[])
+{
+	unsigned int port, speed;
+	char *e;
+
+	if (argc < 2 || argc > 3) {
+		fprintf(stderr, "argc %d\n", argc);
+		cmd_i2c_help();
+		return -1;
+	}
+
+	port = strtol(argv[1], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad port.\n");
+		return -1;
+	}
+
+	if (argc == 2)
+		return i2c_get(port);
+
+	speed = strtol(argv[2], &e, 0);
+	if (e && *e) {
+		fprintf(stderr, "Bad speed. "
+			"Typical speeds are one of {100,400,1000}.\n");
+		return -1;
+	}
+
+	return i2c_set(port, speed);
 }
