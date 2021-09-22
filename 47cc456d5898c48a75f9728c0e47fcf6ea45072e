@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2efa3ff0_79bc71c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-22T17:54:31Z",
+      "side": 1,
+      "message": "Marking unresolved so you can see it",
+      "parentUuid": "8ffc9938_55249508",
+      "revId": "47cc456d5898c48a75f9728c0e47fcf6ea45072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9e260583_76bc2178",
         "filename": "driver/temp_sensor/thermistor.c",
         "patchSetId": 19
