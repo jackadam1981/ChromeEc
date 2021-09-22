@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7c3388e_5d44c6f2",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-22T19:51:25Z",
+      "side": 1,
+      "message": "not much point in using enum as this is a field in a fixed size structure and needs to be of a guaranteed size.",
+      "parentUuid": "40ed1c48_072362ee",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50041c23_2c022706",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb473383_fcbf1006",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-22T19:51:25Z",
+      "side": 1,
+      "message": "this is not aligned: fmap_signature size is 8 bytes, so the offset of fmap_base is 10 bytes.",
+      "parentUuid": "50041c23_2c022706",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 10
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c60e26f_58e4b52e",
@@ -108,6 +156,30 @@
       "writtenOn": "2021-09-22T18:46:00Z",
       "side": 1,
       "message": "digest is a pointer inside ctx, and lifetime of ctx is within this block. need to move ctx outside, possible use union. or consider use union hash_ctx which includes all types. It will be same size.\nthen you would refer \u0026ctx.sha256 and \u0026ctx.sha512, digest will point inside ctx and everybody will be happy.",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 459,
+        "endChar": 30
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd4b260_db5298f8",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-22T19:51:25Z",
+      "side": 1,
+      "message": "ah, this is a great catch, I did not think about this, let me fix it.",
+      "parentUuid": "9c60e26f_58e4b52e",
       "range": {
         "startLine": 459,
         "startChar": 2,
@@ -188,6 +260,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1f752fc_ff02d1a7",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-22T19:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1e86e93_79f8d891",
+      "range": {
+        "startLine": 668,
+        "startChar": 5,
+        "endLine": 668,
+        "endChar": 12
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f099d56e_1db75e90",
@@ -211,6 +307,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "80444a12_c7aac30d",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-22T19:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f099d56e_1db75e90",
+      "range": {
+        "startLine": 969,
+        "startChar": 5,
+        "endLine": 969,
+        "endChar": 11
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e3f958f_e8c7e958",
@@ -224,6 +344,30 @@
       "writtenOn": "2021-09-22T18:46:00Z",
       "side": 1,
       "message": "DCRYPTO_equals() would be better",
+      "range": {
+        "startLine": 1216,
+        "startChar": 8,
+        "endLine": 1216,
+        "endChar": 14
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d484c59_2f96355d",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-22T19:51:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e3f958f_e8c7e958",
       "range": {
         "startLine": 1216,
         "startChar": 8,
