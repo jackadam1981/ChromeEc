@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ffc9938_55249508",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 19
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-22T17:54:01Z",
+      "side": 1,
+      "message": "I think this change also need to clean up:\n\nzephyr/shim/include/config_chip.h by removing CONFIG_STEINHART_HART_*\n\nzephyr/Kconfig.temperature can also remove PLATFORM_EC_STEINHART_HARD_*\n\nzephyr/test/drivers/prj.conf an zephyr/projects/volteer/volteer/prj.conf can also have these removed.",
+      "revId": "47cc456d5898c48a75f9728c0e47fcf6ea45072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e260583_76bc2178",
+        "filename": "driver/temp_sensor/thermistor.c",
+        "patchSetId": 19
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-22T17:54:01Z",
+      "side": 1,
+      "message": "Need to add: || defined(CONFIG_ZEPHYR)",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "47cc456d5898c48a75f9728c0e47fcf6ea45072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d07ab955_84686a55",
+        "filename": "include/driver/temp_sensor/thermistor.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-22T17:54:01Z",
+      "side": 1,
+      "message": "Please document",
+      "range": {
+        "startLine": 149,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 46
+      },
+      "revId": "47cc456d5898c48a75f9728c0e47fcf6ea45072e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
