@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca87f0fd_8751cb07",
+        "filename": "board/primus/build.mk",
+        "patchSetId": 25
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0f02860_3332ee08",
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "39c867b7_bceb8f10",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-17T07:46:41Z",
       "side": 1,
       "message": "should not be needed any more.  see\n\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3120317",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efda034a_b19ccfdf",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39c867b7_bceb8f10",
       "range": {
         "startLine": 6,
         "startChar": 0,
@@ -58,6 +100,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f58ffb0_9718c90d",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "277127e1_9506b6b7",
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2837abf_9376025c",
@@ -71,6 +131,30 @@
       "writtenOn": "2021-09-17T07:46:41Z",
       "side": 1,
       "message": "could you add a comment describing the arithmetic needed\nto convert from ADC reading to wattage?",
+      "range": {
+        "startLine": 29,
+        "startChar": 11,
+        "endLine": 29,
+        "endChar": 23
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d702124_c4e13652",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2837abf_9376025c",
       "range": {
         "startLine": 29,
         "startChar": 11,
@@ -104,6 +188,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4752b87_d54c6a5e",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "452a2f44_bcc5f7ab",
+      "range": {
+        "startLine": 38,
+        "startChar": 18,
+        "endLine": 38,
+        "endChar": 47
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0361d04c_66c0c894",
@@ -117,6 +225,30 @@
       "writtenOn": "2021-09-17T07:46:41Z",
       "side": 1,
       "message": "it may help to call these battery_voltage_mv or battery_mv\nso we don\u0027t loose track of the units.\n\nsame with battery_current_ma or battery_ma",
+      "range": {
+        "startLine": 46,
+        "startChar": 5,
+        "endLine": 46,
+        "endChar": 20
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1a9d895_c073cbe0",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0361d04c_66c0c894",
       "range": {
         "startLine": 46,
         "startChar": 5,
@@ -144,6 +276,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "212df616_168ee10e",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76940af0_20326006",
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f0dd4d8_35cfa3a5",
@@ -157,6 +307,30 @@
       "writtenOn": "2021-09-17T07:46:41Z",
       "side": 1,
       "message": "i think you should check for error here and potentially\ntrack failure with\nflags |\u003d BATT_FLAG_BAD_VOLTAGE",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 8
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c95a3a_4e72da2c",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f0dd4d8_35cfa3a5",
       "range": {
         "startLine": 52,
         "startChar": 1,
@@ -190,6 +364,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b68c0ea_6fabe23b",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "if I didn\u0027t add (int16_t), I found battery_current will return a very huge number frequently and cause prochot keep toggling.",
+      "parentUuid": "6b0b2eb3_bf979830",
+      "range": {
+        "startLine": 57,
+        "startChar": 20,
+        "endLine": 57,
+        "endChar": 29
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3be248e4_a8cf6a31",
@@ -207,6 +405,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2a5469_b67675b2",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "use if (get_batt_parameter()) to guard it.",
+      "parentUuid": "3be248e4_a8cf6a31",
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3d7567b9_5549546e",
@@ -220,6 +436,30 @@
       "writtenOn": "2021-09-17T07:46:41Z",
       "side": 1,
       "message": "add error checking here, too.",
+      "range": {
+        "startLine": 63,
+        "startChar": 1,
+        "endLine": 63,
+        "endChar": 8
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bfc010_78f92f5f",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d7567b9_5549546e",
       "range": {
         "startLine": 63,
         "startChar": 1,
@@ -253,6 +493,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc529fe0_117b05a8",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e4b2f8d_49a803d8",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 73,
+        "endChar": 20
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1483e9f5_04e1913c",
@@ -266,6 +530,30 @@
       "writtenOn": "2021-09-17T07:46:41Z",
       "side": 1,
       "message": "assert",
+      "range": {
+        "startLine": 91,
+        "startChar": 17,
+        "endLine": 91,
+        "endChar": 24
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59d907ec_d62e4065",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1483e9f5_04e1913c",
       "range": {
         "startLine": 91,
         "startChar": 17,
@@ -299,6 +587,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e00ef9b_83fe79f2",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29e43be3_ec4b7575",
+      "range": {
+        "startLine": 101,
+        "startChar": 1,
+        "endLine": 102,
+        "endChar": 25
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c18fd4ed_9326b308",
@@ -312,6 +624,30 @@
       "writtenOn": "2021-09-17T07:46:41Z",
       "side": 1,
       "message": "actual",
+      "range": {
+        "startLine": 104,
+        "startChar": 14,
+        "endLine": 104,
+        "endChar": 19
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "271969d4_df54c0de",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c18fd4ed_9326b308",
       "range": {
         "startLine": 104,
         "startChar": 14,
@@ -345,6 +681,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "36475ea6_59af964e",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d509f2ae_328abf18",
+      "range": {
+        "startLine": 109,
+        "startChar": 20,
+        "endLine": 109,
+        "endChar": 29
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c486fe55_1d1a6a39",
@@ -368,6 +728,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "216920cc_e29ed240",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c486fe55_1d1a6a39",
+      "range": {
+        "startLine": 117,
+        "startChar": 1,
+        "endLine": 117,
+        "endChar": 8
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "793996fc_7e396b08",
@@ -381,6 +765,30 @@
       "writtenOn": "2021-09-17T07:46:41Z",
       "side": 1,
       "message": "help me understand - is this possible?\ndoesn\u0027t the charge manager limit\nwhat it negotiates with the charger to ADT_RATING?",
+      "range": {
+        "startLine": 122,
+        "startChar": 5,
+        "endLine": 122,
+        "endChar": 34
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f487b24_4a4b9916",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 25
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "No chance to get more than 60w. I already fix it.",
+      "parentUuid": "793996fc_7e396b08",
       "range": {
         "startLine": 122,
         "startChar": 5,
@@ -438,6 +846,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bf7dcd3_2e76677e",
+        "filename": "board/primus/prochot.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7cfc822c_6003425d",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 19
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e02b0344_3b81e09a",
@@ -461,6 +893,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "362cf91e_ba9a88c4",
+        "filename": "board/primus/prochot.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e02b0344_3b81e09a",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 39
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "552b7127_4c074c0a",
@@ -474,6 +930,30 @@
       "writtenOn": "2021-09-17T07:46:41Z",
       "side": 1,
       "message": "these are going to be milli-watts, right?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 27
+      },
+      "revId": "c76eb1e1465b3a632bb3dfc13503717d32416e25",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2305456_683ba23e",
+        "filename": "board/primus/prochot.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-09-22T05:29:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "552b7127_4c074c0a",
       "range": {
         "startLine": 13,
         "startChar": 5,
