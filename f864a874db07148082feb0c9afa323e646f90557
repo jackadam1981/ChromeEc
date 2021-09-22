@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5126efe_1df02946",
+        "filename": "common/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-22T19:26:03Z",
+      "side": 1,
+      "message": "I think this belongs to i2c_bitbang.c.",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 31
+      },
+      "revId": "f864a874db07148082feb0c9afa323e646f90557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ee58d5c_d5c4a3ad",
+        "filename": "common/main.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-22T19:26:03Z",
+      "side": 1,
+      "message": "And we can wrap this by IS_ENABLED(CONFIG_I2C_BITBANG).",
+      "range": {
+        "startLine": 217,
+        "startChar": 1,
+        "endLine": 217,
+        "endChar": 20
+      },
+      "revId": "f864a874db07148082feb0c9afa323e646f90557",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
