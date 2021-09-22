@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2317d3_bf87558b",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-22T17:41:07Z",
+      "side": 1,
+      "message": "Is time_reg[] needed in the driver data?  Looks like array only ever stores data temporarily and doesn\u0027t need to be retained across API calls.\n\nI think you move this onto the stack and modify the write_time_regs/read_time_regs routines to accept a pointer to the timer regs to update on the chip or read from the chip.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 34
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cb81034_3a9f63d4",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-22T17:41:07Z",
+      "side": 1,
+      "message": "Denis indicated that the Zephyr API group recommends against using macros. You can assign your local variables to the dev-\u003econfig and dev-\u003edata directly without the cast.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "269e62a7_b80b4cb1",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-22T17:41:07Z",
+      "side": 1,
+      "message": "Change to (and all other functions):\n\tconst struct renesas_rtc_idt1337ag_config *const config \u003d \n\t    dev-\u003econfig;\n\tstruct renesas_rtc_idt1337ag_data *data \u003d dev-\u003edata;",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e40dea8c_a9075b5e",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-22T17:41:07Z",
+      "side": 1,
+      "message": "These routines are duplicated from the NXP RTC driver.  Can you move to a common location? Please add a separate CL.",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 146,
+        "endChar": 0
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89ea63fc_e1d8bdcb",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-22T17:41:07Z",
+      "side": 1,
+      "message": "Nit - change this to an enum throughout the file:\nenum timer_type {\n    RTC_TIMER,\n    ALARM_TIMER,\n}\n\nThis will make the caller self documenting:\nrenesas_rtc_idt1337ag_read_seconds(dev, value, RTC_TIMER);\nrenesas_rtc_idt1337ag_read_seconds(dev, value, ALARM_TIMER);",
+      "range": {
+        "startLine": 148,
+        "startChar": 22,
+        "endLine": 148,
+        "endChar": 35
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "048170b6_78ea09c6",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-22T17:41:07Z",
+      "side": 1,
+      "message": "Nit - no need to check if the bit is set, you can just unconditionally clear it.\n\nThis can be cleaned up for the other uses in this function as well.",
+      "range": {
+        "startLine": 384,
+        "startChar": 0,
+        "endLine": 384,
+        "endChar": 26
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
