@@ -2318,6 +2318,9 @@
 /* Command to get the EC uptime (and optionally AP reset stats) */
 #define CONFIG_HOSTCMD_GET_UPTIME_INFO
 
+/* Include host command to get or set I2C bus speed. */
+#undef CONFIG_HOSTCMD_I2C_SPEED
+
 /*
  * List of host commands whose debug output will be suppressed
  * By default remove periodic commands and commands called often (SENSE).
