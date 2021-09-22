@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e15f9910_bc542484",
+        "filename": "zephyr/dts/bindings/led/cros-ec,pwm-leds.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-22T18:45:41Z",
+      "side": 1,
+      "message": "What do you think about creating a sub-node to encapsulate both the color-map and the brightness range for each color?\n\nThe devicetree might look like:\n    color-green {\n        compatible \u003d \"led-color\";\n        color-map \u003d \u003c0 100 0\u003e;\n        brightness-range \u003d 255;\n    }",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "678712e17c6eb9ccd1d659f77f1817daccaf074b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
