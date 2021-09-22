@@ -87,7 +87,11 @@ struct fan_tach_t {
 	int s_duty;
 };
 
+#ifndef CONFIG_PWM_RUNTIME_CONFIG
 extern const struct pwm_t pwm_channels[];
+#else
+extern struct pwm_t pwm_channels[];
+#endif
 /* The list of tachometer channel of fans is instantiated in board.c. */
 extern const struct fan_tach_t fan_tach[];
 

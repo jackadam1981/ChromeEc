@@ -3407,6 +3407,9 @@
 /* Define clock input to PWM module. */
 #undef CONFIG_PWM_INPUT_LFCLK
 
+/* Allow runtime configuration of the pwm_channels[] array */
+#undef CONFIG_PWM_RUNTIME_CONFIG
+
 /*****************************************************************************/
 /* Support PWM output to display backlight */
 #undef CONFIG_PWM_DISPLIGHT
