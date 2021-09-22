@@ -53,7 +53,8 @@ HOSTGCOV=$(CURDIR)/util/llvm-gcov.sh
 C_WARN = -Wstrict-prototypes -Wdeclaration-after-statement -Wno-pointer-sign
 COMMON_WARN = -Wall -Wundef -Werror -Werror-implicit-function-declaration \
 	-Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member \
-	-fno-common -fno-strict-aliasing -fno-strict-overflow
+	-fno-common -fno-strict-aliasing -fno-strict-overflow \
+	-Werror=unused-function
 ifeq ($(cc-name),clang)
 COMMON_WARN+=-Werror=uninitialized
 endif
