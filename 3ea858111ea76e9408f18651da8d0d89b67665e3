@@ -50,6 +50,76 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "40ed1c48_072362ee",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-22T18:46:00Z",
+      "side": 1,
+      "message": "or may be even use enum if applicable.",
+      "parentUuid": "894f0e9b_5f773464",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 23
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50041c23_2c022706",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-22T18:46:00Z",
+      "side": 1,
+      "message": "is __packed needed? I\u0027d assume this to be aligned. You can use BUILD_ASSERT(offsetof() \u003d\u003d expected_offset) to double check alignments.",
+      "range": {
+        "startLine": 130,
+        "startChar": 2,
+        "endLine": 130,
+        "endChar": 10
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c60e26f_58e4b52e",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-22T18:46:00Z",
+      "side": 1,
+      "message": "digest is a pointer inside ctx, and lifetime of ctx is within this block. need to move ctx outside, possible use union. or consider use union hash_ctx which includes all types. It will be same size.\nthen you would refer \u0026ctx.sha256 and \u0026ctx.sha512, digest will point inside ctx and everybody will be happy.",
+      "range": {
+        "startLine": 459,
+        "startChar": 2,
+        "endLine": 459,
+        "endChar": 30
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60daedd4_6b10b043",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 3
@@ -90,6 +160,75 @@
         "startChar": 11,
         "endLine": 479,
         "endChar": 25
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1e86e93_79f8d891",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-22T18:46:00Z",
+      "side": 1,
+      "message": "DCRYPTO_equals() can be a more secure version",
+      "range": {
+        "startLine": 668,
+        "startChar": 5,
+        "endLine": 668,
+        "endChar": 12
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f099d56e_1db75e90",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-22T18:46:00Z",
+      "side": 1,
+      "message": "DCRYPTO_equals() can be more secure here",
+      "range": {
+        "startLine": 969,
+        "startChar": 5,
+        "endLine": 969,
+        "endChar": 11
+      },
+      "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3f958f_e8c7e958",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 1216,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-22T18:46:00Z",
+      "side": 1,
+      "message": "DCRYPTO_equals() would be better",
+      "range": {
+        "startLine": 1216,
+        "startChar": 8,
+        "endLine": 1216,
+        "endChar": 14
       },
       "revId": "3ea858111ea76e9408f18651da8d0d89b67665e3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
