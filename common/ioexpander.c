@@ -202,8 +202,16 @@ static void ioex_init_default(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_IO_EXPANDER_PORT_COUNT; i++)
+	for (i = 0; i < CONFIG_IO_EXPANDER_PORT_COUNT; i++) {
+		/*
+		 * IOEXes that are needed pre-task are already initialized at
+		 * board level hence skip re-initializing only those IOEXes.
+		 */
+		if (ioex_config[i].flags & IOEX_FLAGS_PRE_TASK_INITIALIZED)
+			continue;
+
 		ioex_init(i);
+	}
 }
 DECLARE_HOOK(HOOK_INIT, ioex_init_default, HOOK_PRIO_INIT_I2C + 1);
 
@@ -335,4 +343,3 @@ static int command_ioex_get(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(ioexget, command_ioex_get,
 			     "[name]",
 			     "Read level of IO expander pin(s)");
-
