@@ -16,6 +16,29 @@
       "message": "Looks good to me, letting other reviewers a chance to chime in before CQ+2...",
       "revId": "dd8787a20fd5469696f84de3ce442352e6e8435f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf037869_3680a2ef",
+        "filename": "board/brya/fans.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-22T23:27:09Z",
+      "side": 1,
+      "message": "this statement is now misleading.\n4200 is specific to board ID 2 and presumably\nlater boards as well.",
+      "range": {
+        "startLine": 36,
+        "startChar": 3,
+        "endLine": 36,
+        "endChar": 53
+      },
+      "revId": "dd8787a20fd5469696f84de3ce442352e6e8435f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
