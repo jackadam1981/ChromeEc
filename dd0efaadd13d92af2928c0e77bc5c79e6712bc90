@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32cf2a6a_4e9963bb",
+        "filename": "zephyr/drivers/cros_rtc/renesas_rtc_idt1337ag.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-22T21:22:48Z",
+      "side": 1,
+      "message": "Sorry my comment wasn\u0027t clear.  The API group recommended against macros for casting the \"struct device *\" pointer.  Not macros in general. 😊",
+      "parentUuid": "f13f84c9_804d9791",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 0
+      },
+      "revId": "dd0efaadd13d92af2928c0e77bc5c79e6712bc90",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "269e62a7_b80b4cb1",
