@@ -46,6 +46,30 @@
       },
       "revId": "1840e765a6eaa53318a5c429a19e88bc40166fcb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b516cac_3ed4492d",
+        "filename": ".gitlab-ci.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-22T19:43:33Z",
+      "side": 1,
+      "message": "No, but the long pipeline in a yaml file is a bit scary!\n\nlets consider cleaning this up in the future",
+      "parentUuid": "fa0094e7_3b80fbc3",
+      "range": {
+        "startLine": 138,
+        "startChar": 6,
+        "endLine": 138,
+        "endChar": 10
+      },
+      "revId": "1840e765a6eaa53318a5c429a19e88bc40166fcb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
