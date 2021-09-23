@@ -209,6 +209,13 @@ config PLATFORM_EC_CHARGER_BQ25720
 	  wide range of input power sources are supported such as high
 	  voltage USB-C power delivery.
 
+config PLATFORM_EC_CHARGER_RT9490
+	bool "Use the RT9490 charger"
+	depends on PLATFORM_EC_I2C
+	select PLATFORM_EC_CHARGER_OTG_SUPPORTED
+	help
+	  <TODO>
+
 config PLATFORM_EC_CHARGER_DISCHARGE_ON_AC
 	bool "Board supports discharge mode"
 	help
