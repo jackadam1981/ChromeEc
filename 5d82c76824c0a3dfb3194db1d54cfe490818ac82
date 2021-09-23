@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "304623da_d4a7993b",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1381658
+      },
+      "writtenOn": "2021-09-23T11:05:44Z",
+      "side": 1,
+      "message": "Should this be #else?",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 74
+      },
+      "revId": "5d82c76824c0a3dfb3194db1d54cfe490818ac82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
