@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bde2102b_549efcd7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-23T19:04:25Z",
+      "side": 1,
+      "message": "I\u0027d honestly have items 1-3 as one CL, and other checks as a separate CL (or CLs). this one is clearly a forced combo of several unrelated parts: \"switch ECDSA to use enum dcrypto_result\" (which is roughly items 1-3), \"added FIPS checks\", and others like better documentation or \"already initialized\" check for drbg. which is seen even from the construction of the 1st CL line.\n\nI\u0027m not going to block this one in any way, but I do suggest separating such things in a stack of CLs.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3810520c_6b704103",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-23T19:04:25Z",
+      "side": 1,
+      "message": "One real concern (p256_ec.c#147 + u2f.c#476). Other are nits/future questions.",
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "051fbeed_d46d5d7c",
+        "filename": "board/cr50/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-23T19:04:25Z",
+      "side": 1,
+      "message": "question: how do we decide which functions are \u0027int\u0027 and which are \u0027enum dcrypto_result\u0027?\ne.g. this one (and many other in dcrypto/) could also be enum dcrypto_result.\n\nnot suggesting making this change, but do we generally want to use dcrypto_result on more layers for better glitch protection?",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 10
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c4b9ae6_ca420c71",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-23T19:04:25Z",
+      "side": 1,
+      "message": "nit: not related to this CL. generally, deserves to be spilt into an XS CL of its own",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 14
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a03d3f27_a200f130",
+        "filename": "board/cr50/dcrypto/p256_ec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-23T19:04:25Z",
+      "side": 1,
+      "message": "nit: if we are touching this, shall we just say `p256_is_zero(n)` instead of `p256_is_zero(n) !\u003d 0` - sounds more natural",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 51
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d6d4ff3_b92228a1",
+        "filename": "board/cr50/dcrypto/p256_ec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-23T19:04:25Z",
+      "side": 1,
+      "message": "any chance for mul to fail for arbitrary x and y (e.g. too small / too big)? if yes, we now risk g2f_individual_key_pair() returning a failure instead of retrying.",
+      "range": {
+        "startLine": 147,
+        "startChar": 9,
+        "endLine": 147,
+        "endChar": 21
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b28a9d8_40692605",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-23T19:04:25Z",
+      "side": 1,
+      "message": "what if it\u0027s neither FAIL nor RETRY nor SUCCESS? we try again w/o doing buf -\u003e sha256(buf).\n\nto be future proof I suggest something like:\n\n```\n\t\twhile(1) {\n\t\t\tresult \u003d DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d,\n\t\t\t\t\t\t\t     (uint8_t *)buf);\n\t\t\tif (result \u003d\u003d DCRYPTO_SUCCESS)\n\t\t\t\tbreak;\n\t\t\tif (result !\u003d DCRYPTO_RETRY)\n\t\t\t\treturn false;\n\n\t\t\t// this block below probably deserves being extracted\n\t\t\t// as a method with self-commenting naming\n\t\t\t{\n\t\t\t\tstruct sha256_ctx sha;\n\t\t\t\tSHA256_hw_init(\u0026sha);\n\t\t\t\tSHA256_update(\u0026sha, buf, sizeof(buf));\n\t\t\t\tmemcpy(buf, SHA256_final(\u0026sha), sizeof(buf));\n\t\t\t}\t\t\t\n\t\t}\n```",
+      "range": {
+        "startLine": 476,
+        "startChar": 3,
+        "endLine": 476,
+        "endChar": 4
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
