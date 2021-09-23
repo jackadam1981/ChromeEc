@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89a8f990_a085f62a",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-23T19:22:46Z",
+      "side": 1,
+      "message": "This should be (no static and use struct emul, not struct i2c_emul):\n\nint ln9310_emul_is_initialized(const struct emul *emulator)\n\nThen, get the `struct ln9310_emul_data *` from `emulator-\u003edata`. From that pointer, you can check the registers.\n\nThe function should also go into emul_ln9310.h so the test can call it.",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 1
+      },
+      "revId": "8039b5d1c8517a0916a8005da2fee42feb873766",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
