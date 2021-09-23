@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51113e4b_1c82f047",
+        "filename": "zephyr/dts/bindings/temp/cros_temp_sensor.yaml",
+        "patchSetId": 20
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-23T18:06:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "69c9124d_e97120c3",
+      "range": {
+        "startLine": 41,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "413d5fff023c540e94936996c69930dc9b1adedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58682343_5a93affd",
@@ -71,6 +95,42 @@
       "writtenOn": "2021-09-23T03:31:53Z",
       "side": 1,
       "message": "nit: remove blank line",
+      "revId": "413d5fff023c540e94936996c69930dc9b1adedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9131f66d_6227653b",
+        "filename": "zephyr/dts/bindings/temp/cros_thermistor.yaml",
+        "patchSetId": 20
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-23T18:06:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58682343_5a93affd",
+      "revId": "413d5fff023c540e94936996c69930dc9b1adedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c220eed_dfff2a81",
+        "filename": "zephyr/dts/bindings/temp/cros_thermistor.yaml",
+        "patchSetId": 20
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-23T18:06:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58682343_5a93affd",
       "revId": "413d5fff023c540e94936996c69930dc9b1adedf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
