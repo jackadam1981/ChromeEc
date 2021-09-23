@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c47307_309f65c8",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-23T01:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75e44631_fa56cce1",
+      "revId": "bec3c16d683d825099ea14a5f9bac091122efe38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62db7f8e_fff1c2f3",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-22T15:11:21Z",
       "side": 1,
       "message": "nit: new_rate_us * 95 / 100 would have more precision.",
+      "revId": "bec3c16d683d825099ea14a5f9bac091122efe38",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf288ccd_5b763037",
+        "filename": "common/motion_sense.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-23T01:50:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62db7f8e_fff1c2f3",
       "revId": "bec3c16d683d825099ea14a5f9bac091122efe38",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
