@@ -949,8 +949,7 @@ static int update_static_battery_info(void)
 	 */
 	int rv, ret;
 
-	struct ec_response_battery_static_info_v1 *const bs =
-		&battery_static[BATT_IDX_MAIN];
+	struct battery_static_info *const bs = &battery_static[BATT_IDX_MAIN];
 
 	/* Clear all static information. */
 	memset(bs, 0, sizeof(*bs));
