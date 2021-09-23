@@ -356,6 +356,30 @@
       },
       "revId": "bcae6878104a8929848b73ce24851693009f916c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efc321d2_3c092d8b",
+        "filename": "board/brask/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1215230
+      },
+      "writtenOn": "2021-09-23T09:56:54Z",
+      "side": 1,
+      "message": "If not define CHARGE_PORT_COUNT here, it will build error when I add ASSERT here.\nIt will show CHARGE_PORT_COUNT undeclared here even I add (#include \"charge_manager.h\") in board.h",
+      "parentUuid": "ffa920ea_a811613d",
+      "range": {
+        "startLine": 152,
+        "startChar": 23,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "bcae6878104a8929848b73ce24851693009f916c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
