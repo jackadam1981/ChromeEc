@@ -25,7 +25,7 @@
 #define CONFIG_INTEL_RVP_MECC_VERSION_1_0
 
 /* Support early firmware selection */
-#define CONFIG_VBOOT_EFS2
+/*#define CONFIG_VBOOT_EFS2*/
 
 /* Chipset */
 #define CONFIG_CHIPSET_ALDERLAKE
