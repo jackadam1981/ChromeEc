@@ -512,6 +512,21 @@ SECTIONS
 
 	__image_size = __flash_used + SIZEOF(.rw_image_size_alignment);
 #endif
+#if defined(SECTION_IS_RW) && (CONFIG_FLASH_WRITE_SIZE > 0)
+	/* Validate that the alignment padding above is correct.
+	 * When RO is asked by the host to update RW, flash_command_write is
+	 * called:
+	 * flash_command_write()
+	 * 	crec_flash_write()
+	 * 		flash_range_ok()
+	 * In flash_range_ok(), there are three arguments: offset, size and
+	 * CONFIG_FLASH_WRITE_SIZE. If the RW image file size is not aligned
+	 * with CONFIG_FLASH_WRITE_SIZE, flash_range_ok() returns 0 and the
+	 * command fails.
+	 */
+	ASSERT(__image_size % CONFIG_FLASH_WRITE_SIZE == 0,
+	       "Error: RW image is not aligned to CONFIG_FLASH_WRITE_SIZE")
+#endif
 #endif /* CONFIG_CHIP_INIT_ROM_REGION */
 
 #ifdef CONFIG_FLASH_CROS
