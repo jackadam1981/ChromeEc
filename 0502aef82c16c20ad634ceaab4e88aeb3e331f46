@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d0fe217_ac266860",
+        "filename": "board/cr50/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-23T22:49:28Z",
+      "side": 1,
+      "message": "oh I didn\u0027t mean to single out this function. there are others. random example: fips_drbg_reseed_with_entropy()\n\nbut I\u0027m ok with it returning dcrypto_result",
+      "parentUuid": "1f68bfbd_c0827149",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 10
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c4b9ae6_ca420c71",
@@ -277,6 +301,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20ad975c_ad61b661",
+        "filename": "board/cr50/dcrypto/p256_ec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-23T22:49:28Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "caff4cf5_6e946b36",
+      "range": {
+        "startLine": 147,
+        "startChar": 9,
+        "endLine": 147,
+        "endChar": 21
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b28a9d8_40692605",
@@ -314,6 +362,30 @@
       "side": 1,
       "message": "ok, will do it this way. \nthis block of buf \u003d SHA256(buf) I can replace with just one-shot SHA256 call.",
       "parentUuid": "0b28a9d8_40692605",
+      "range": {
+        "startLine": 476,
+        "startChar": 3,
+        "endLine": 476,
+        "endChar": 4
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c60b8adc_d2e7edaa",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-23T22:49:28Z",
+      "side": 1,
+      "message": "\u003e I can replace with just one-shot SHA256 call.\n\nyep, a nice byproduct of the change",
+      "parentUuid": "ca2a5bf9_0b5cfcff",
       "range": {
         "startLine": 476,
         "startChar": 3,
