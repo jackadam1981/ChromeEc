@@ -158,6 +158,7 @@ static enum ec_error_list u2f_origin_user_key_pair(
 	struct drbg_ctx drbg;
 	size_t key_handle_size = 0;
 	uint8_t *key_handle = NULL;
+	enum dcrypto_result result;
 
 	if (kh_version == 0) {
 		key_handle_size = sizeof(struct u2f_key_handle_v0);
@@ -205,8 +206,12 @@ static enum ec_error_list u2f_origin_user_key_pair(
 		hmac_drbg_generate(&drbg, key_seed, sizeof(key_seed), dev_salt,
 				   P256_NBYTES);
 	}
-	if (!DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d, key_seed))
+	result = DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d, key_seed);
+
+	if (result == DCRYPTO_RETRY)
 		return EC_ERROR_TRY_AGAIN;
+	else if (result != DCRYPTO_OK)
+		return EC_ERROR_HW_INTERNAL;
 
 #ifdef CR50_DEV_U2F_VERBOSE
 	ccprintf("user private key %ph\n", HEX_BUF(d, sizeof(*d)));
@@ -418,7 +423,8 @@ enum ec_error_list u2f_sign(const struct u2f_state *state,
 
 	/* Sign. */
 	hmac_drbg_init_rfc6979(&ctx, &origin_d, &h);
-	result = (dcrypto_p256_ecdsa_sign(&ctx, &origin_d, &h, &r, &s) != 0) ?
+	result = (dcrypto_p256_ecdsa_sign(&ctx, &origin_d, &h, &r, &s) ==
+		  DCRYPTO_OK) ?
 			 EC_SUCCESS :
 			       EC_ERROR_HW_INTERNAL;
 
@@ -444,6 +450,7 @@ static bool g2f_individual_key_pair(const struct u2f_state *state, p256_int *d,
 				    p256_int *pk_x, p256_int *pk_y)
 {
 	uint32_t buf[SHA256_DIGEST_WORDS];
+	enum dcrypto_result result;
 
 	/* Incorporate HIK & diversification constant. */
 	if (!app_hw_device_id(U2F_ATTEST, state->salt, buf))
@@ -455,14 +462,19 @@ static bool g2f_individual_key_pair(const struct u2f_state *state, p256_int *d,
 
 	if (state->drbg_entropy_size != 64) {
 		/* Generate unbiased private key (non-FIPS path). */
-		while (!DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d,
-						    (uint8_t *)buf)) {
+		do {
 			struct sha256_ctx sha;
 
-			SHA256_hw_init(&sha);
-			SHA256_update(&sha, buf, sizeof(buf));
-			memcpy(buf, SHA256_final(&sha), sizeof(buf));
-		}
+			result = DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d,
+							     (uint8_t *)buf);
+			if (result == DCRYPTO_FAIL)
+				return false;
+			else if (result == DCRYPTO_RETRY) {
+				SHA256_hw_init(&sha);
+				SHA256_update(&sha, buf, sizeof(buf));
+				memcpy(buf, SHA256_final(&sha), sizeof(buf));
+			}
+		} while (result != DCRYPTO_OK);
 	} else {
 		struct drbg_ctx drbg;
 		uint8_t key_candidate[P256_NBYTES];
@@ -482,8 +494,11 @@ static bool g2f_individual_key_pair(const struct u2f_state *state, p256_int *d,
 			hmac_drbg_generate(&drbg, key_candidate,
 					   sizeof(key_candidate), buf,
 					   sizeof(buf));
-		} while (!DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d,
-						      key_candidate));
+			result = DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d,
+							     key_candidate);
+			if (result == DCRYPTO_FAIL)
+				return false;
+		} while (result != DCRYPTO_OK);
 	}
 
 	return true;
@@ -554,7 +569,8 @@ enum ec_error_list u2f_attest(const struct u2f_state *state,
 	/* Sign over the response w/ the attestation key. */
 	hmac_drbg_init_rfc6979(&dr_ctx, &d, &h);
 
-	result = (dcrypto_p256_ecdsa_sign(&dr_ctx, &d, &h, &r, &s) != 0) ?
+	result = (dcrypto_p256_ecdsa_sign(&dr_ctx, &d, &h, &r, &s) ==
+		  DCRYPTO_OK) ?
 			 EC_SUCCESS :
 			       EC_ERROR_HW_INTERNAL;
 	p256_clear(&d);
