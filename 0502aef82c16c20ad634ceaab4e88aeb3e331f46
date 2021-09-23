@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "f6cd7338_00998012",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-23T22:38:13Z",
+      "side": 1,
+      "message": "the reason I made it a single CL is that I wanted to avoid dcrypto_result -\u003e bool conversions in many places which will end-up being removed anyway - some of the low-level functions already use dcrypto_result, some not. Once I update return codes I\u0027d need to implement #6.\n#3 \u0026 #4 are just byproduct - make it easier to spot issues.",
+      "parentUuid": "bde2102b_549efcd7",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 58
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3810520c_6b704103",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -64,6 +88,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f68bfbd_c0827149",
+        "filename": "board/cr50/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-23T22:38:13Z",
+      "side": 1,
+      "message": "this is internal test function, only use for CRYPTO_TEST\u003d1, but made it enum dcrypto_result too. Generally I want to migrate all public API functions to enum dcrypto_result, and important low-level functions where crypto is involved and which are used by public functions. enum dcrypto_result is not \u0027free\u0027 - loading such constants takes it toll.",
+      "parentUuid": "051fbeed_d46d5d7c",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 10
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9c4b9ae6_ca420c71",
@@ -77,6 +125,54 @@
       "writtenOn": "2021-09-23T19:04:25Z",
       "side": 1,
       "message": "nit: not related to this CL. generally, deserves to be spilt into an XS CL of its own",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 14
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d27281_c45a01ac",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-23T22:38:13Z",
+      "side": 1,
+      "message": "Moved to a separate CL",
+      "parentUuid": "9c4b9ae6_ca420c71",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 251,
+        "endChar": 14
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e568976_0a36a4f7",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-23T22:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c4b9ae6_ca420c71",
       "range": {
         "startLine": 250,
         "startChar": 0,
@@ -110,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "100c9fee_f0b0792a",
+        "filename": "board/cr50/dcrypto/p256_ec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-23T22:38:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a03d3f27_a200f130",
+      "range": {
+        "startLine": 60,
+        "startChar": 31,
+        "endLine": 60,
+        "endChar": 51
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4d6d4ff3_b92228a1",
@@ -133,6 +253,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "caff4cf5_6e946b36",
+        "filename": "board/cr50/dcrypto/p256_ec.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-23T22:38:13Z",
+      "side": 1,
+      "message": "dcrypto_p256_base_point_mul() takes d as input and computes (x,y). For valid d (which we check in lines 134-136) it should always produce (x,y). Failure to do it means our P-256 implementation is broken. Same with pair-wise consistency test - if we sign and can\u0027t verify what we got - we have a problem. For many tests I already ran I didn\u0027t face this check to report an error.",
+      "parentUuid": "4d6d4ff3_b92228a1",
+      "range": {
+        "startLine": 147,
+        "startChar": 9,
+        "endLine": 147,
+        "endChar": 21
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0b28a9d8_40692605",
@@ -146,6 +290,30 @@
       "writtenOn": "2021-09-23T19:04:25Z",
       "side": 1,
       "message": "what if it\u0027s neither FAIL nor RETRY nor SUCCESS? we try again w/o doing buf -\u003e sha256(buf).\n\nto be future proof I suggest something like:\n\n```\n\t\twhile(1) {\n\t\t\tresult \u003d DCRYPTO_p256_key_from_bytes(pk_x, pk_y, d,\n\t\t\t\t\t\t\t     (uint8_t *)buf);\n\t\t\tif (result \u003d\u003d DCRYPTO_SUCCESS)\n\t\t\t\tbreak;\n\t\t\tif (result !\u003d DCRYPTO_RETRY)\n\t\t\t\treturn false;\n\n\t\t\t// this block below probably deserves being extracted\n\t\t\t// as a method with self-commenting naming\n\t\t\t{\n\t\t\t\tstruct sha256_ctx sha;\n\t\t\t\tSHA256_hw_init(\u0026sha);\n\t\t\t\tSHA256_update(\u0026sha, buf, sizeof(buf));\n\t\t\t\tmemcpy(buf, SHA256_final(\u0026sha), sizeof(buf));\n\t\t\t}\t\t\t\n\t\t}\n```",
+      "range": {
+        "startLine": 476,
+        "startChar": 3,
+        "endLine": 476,
+        "endChar": 4
+      },
+      "revId": "0502aef82c16c20ad634ceaab4e88aeb3e331f46",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2a5bf9_0b5cfcff",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-23T22:38:13Z",
+      "side": 1,
+      "message": "ok, will do it this way. \nthis block of buf \u003d SHA256(buf) I can replace with just one-shot SHA256 call.",
+      "parentUuid": "0b28a9d8_40692605",
       "range": {
         "startLine": 476,
         "startChar": 3,
