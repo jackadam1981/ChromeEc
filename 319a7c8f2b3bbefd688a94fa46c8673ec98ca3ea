@@ -16,6 +16,115 @@
       "message": "Note, I\u0027ll be on vacation until 9/27.",
       "revId": "319a7c8f2b3bbefd688a94fa46c8673ec98ca3ea",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "56f108f4_a0014b49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-23T03:24:01Z",
+      "side": 1,
+      "message": "Minor nits but LGTM overall",
+      "revId": "319a7c8f2b3bbefd688a94fa46c8673ec98ca3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c0584b_28626512",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-23T03:24:01Z",
+      "side": 1,
+      "message": "use STATIC_IF_NOT(TEST_BUILD)",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "319a7c8f2b3bbefd688a94fa46c8673ec98ca3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69d111ec_3ab4f1a1",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-23T03:24:01Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "319a7c8f2b3bbefd688a94fa46c8673ec98ca3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f50d73fd_f1780d9e",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-23T03:24:01Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 23
+      },
+      "revId": "319a7c8f2b3bbefd688a94fa46c8673ec98ca3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b6952cf_82fbf778",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-23T03:24:01Z",
+      "side": 1,
+      "message": "Please document these, for someone that hasn\u0027t worked with PD it\u0027s hard to tell what these are doing from the header.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 52
+      },
+      "revId": "319a7c8f2b3bbefd688a94fa46c8673ec98ca3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
