@@ -34,6 +34,24 @@
       "parentUuid": "4c43fb32_20ce4695",
       "revId": "68e465a4cb201373efaaa9583cf5a5db9f130502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d11c2f6_6a4af9f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T18:52:53Z",
+      "side": 1,
+      "message": "right, code browsing becomes much more informative when the return type is in the same line with the function name, and this is a de-facto standard in the EC codebase.",
+      "parentUuid": "f548f509_f61f74c0",
+      "revId": "68e465a4cb201373efaaa9583cf5a5db9f130502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
