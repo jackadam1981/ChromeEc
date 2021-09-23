@@ -33,6 +33,24 @@
       "message": "Per the bug, this is a significant reduction in charge current. Does it still meet our HW requirements for charging performance? I think it may, but I want to confirm that the testing was done.\n\n* A battery must take no longer than 4 hours to charge from 0 to 100% in the Active state (ACPI S0) at average load. (Average load is measured via average power consumption of power_LoadTest on the platform.)\n\n* A battery must take no longer than 3 hours to charge from 0 to 100% in the Suspend state (ACPI S3).\n\n* A battery must take no longer than 3 hours to charge from 0 to 100% in the Deep Sleep state (ACPI S5).",
       "revId": "987f04b89e1e109ba9542f0aa435e67b39409946",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fa376a5_3ea98c2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-09-23T06:55:42Z",
+      "side": 1,
+      "message": "Please check \u0027https://partnerissuetracker.corp.google.com/issues/199698814#comment6\u0027",
+      "parentUuid": "42554258_9bb16803",
+      "revId": "987f04b89e1e109ba9542f0aa435e67b39409946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
