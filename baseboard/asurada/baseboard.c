@@ -19,7 +19,6 @@
 #include "driver/accel_lis2dw12.h"
 #include "driver/als_tcs3400.h"
 #include "driver/bc12/mt6360.h"
-#include "driver/charger/isl923x.h"
 #include "driver/ppc/syv682x.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/temp_sensor/thermistor.h"
