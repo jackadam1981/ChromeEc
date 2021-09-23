@@ -285,6 +285,22 @@ SECTIONS
 	__flash_used = LOADADDR(.data) + SIZEOF(.data) - FW_OFF(SECTION);
 	__image_size = __flash_used;
 
+#if defined(SECTION_IS_RW) && (CONFIG_FLASH_WRITE_SIZE > 0)
+	/* Validate that the RW image is aligned correctly.
+	 * When RO is asked by the host to update RW, flash_command_write is
+	 * called:
+	 * flash_command_write()
+	 * 	crec_flash_write()
+	 * 		flash_range_ok()
+	 * In flash_range_ok(), there are three arguments: offset, size and
+	 * CONFIG_FLASH_WRITE_SIZE. If the RW image file size is not aligned
+	 * with CONFIG_FLASH_WRITE_SIZE, flash_range_ok() returns 0 and the
+	 * command fails.
+	 */
+	ASSERT(__image_size % CONFIG_FLASH_WRITE_SIZE == 0,
+	       "Error: RW image is not aligned to CONFIG_FLASH_WRITE_SIZE")
+#endif
+
 #ifdef CONFIG_FLASH_CROS
         /*
          * These linker labels are just for analysis and not used in the code.
