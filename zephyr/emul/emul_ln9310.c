@@ -29,6 +29,8 @@ struct ln9310_emul_data {
 	struct i2c_common_emul_data common;
 	/** The current emulated battery cell type */
 	enum battery_cell_type battery_cell_type;
+	/** Emulated INT1 MSK register */
+	uint8_t int1_msk_reg;
 	/** Emulated Lion control register */
 	uint8_t lion_ctrl_reg;
 	/** Emulated startup control register */
@@ -149,6 +151,10 @@ static int ln9310_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 	struct ln9310_emul_data *data = LN9310_DATA_FROM_I2C_EMUL(emul);
 
 	switch (reg) {
+	case LN9310_REG_INT1_MSK:
+		__ASSERT_NO_MSG(bytes == 1);
+		data->int1_msk_reg = val;
+		break;
 	case LN9310_REG_STARTUP_CTRL:
 		__ASSERT_NO_MSG(bytes == 1);
 		data->startup_ctrl_reg = val;
@@ -242,6 +248,10 @@ static int ln9310_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
 	struct ln9310_emul_data *data = LN9310_DATA_FROM_I2C_EMUL(emul);
 
 	switch (reg) {
+	case LN9310_REG_INT1_MSK:
+		__ASSERT_NO_MSG(bytes == 0);
+		*val = data->int1_msk_reg;
+		break;
 	case LN9310_REG_STARTUP_CTRL:
 		__ASSERT_NO_MSG(bytes == 0);
 		*val = data->startup_ctrl_reg;
@@ -324,6 +334,11 @@ static int ln9310_emul_access_reg(struct i2c_emul *emul, int reg, int bytes,
 				  bool read)
 {
 	return 0;
+}
+
+static int emul_ln9310_is_init(struct i2c_emul *emul)
+{
+	return !(emul->data->int1_msk_reg & LN9310_INT1_MODE);
 }
 
 static int emul_ln9310_init(const struct emul *emul,
