@@ -332,6 +332,30 @@
       },
       "revId": "bcae6878104a8929848b73ce24851693009f916c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffa920ea_a811613d",
+        "filename": "board/brask/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-23T09:40:19Z",
+      "side": 1,
+      "message": "other reviewers want it, so ya.\ni just don\u0027t want CHARGE_PORT_COUNT in the enum because\nit conflicts with charge_manager.h. i\u0027m actually surprised\nthis compiles 😕",
+      "parentUuid": "19548833_0e3716db",
+      "range": {
+        "startLine": 152,
+        "startChar": 23,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "bcae6878104a8929848b73ce24851693009f916c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
