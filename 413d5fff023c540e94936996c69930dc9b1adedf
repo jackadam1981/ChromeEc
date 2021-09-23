@@ -16,6 +16,63 @@
       "message": "So I accidentally forgot to add the changed cros_thermistor.yaml and cros_temp_sensor.yaml files so it just seemed like it was deleted in patches 18,19. My Bad.\n\nOtherwise, responded to all reviews. Thank you both for taking the time.",
       "revId": "413d5fff023c540e94936996c69930dc9b1adedf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ba778ea_1197fb5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-23T03:31:53Z",
+      "side": 1,
+      "message": "Minor nits here, I think this can merge tomorrow 😊",
+      "revId": "413d5fff023c540e94936996c69930dc9b1adedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69c9124d_e97120c3",
+        "filename": "zephyr/dts/bindings/temp/cros_temp_sensor.yaml",
+        "patchSetId": 20
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-23T03:31:53Z",
+      "side": 1,
+      "message": "The latest guideline from Zephyr are that:\n\n1. if you set `required: false` then don\u0027t include it, that\u0027s the default.\n2. Don\u0027t use default: \u003cvalue\u003e here, the default should be in the driver implementation using DT_PROP_OR. The reason is that you might have multiple driver implementations for the same compatible string and the default value might need to vary.\n\nPlease apply below too.",
+      "range": {
+        "startLine": 41,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 19
+      },
+      "revId": "413d5fff023c540e94936996c69930dc9b1adedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58682343_5a93affd",
+        "filename": "zephyr/dts/bindings/temp/cros_thermistor.yaml",
+        "patchSetId": 20
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-23T03:31:53Z",
+      "side": 1,
+      "message": "nit: remove blank line",
+      "revId": "413d5fff023c540e94936996c69930dc9b1adedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
