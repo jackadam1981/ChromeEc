@@ -34,6 +34,24 @@
       "parentUuid": "99902957_9357facd",
       "revId": "c1bb6cdffda63defc069397cd113ac28a592e5eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6cda04be_f0b249a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-09-23T23:35:09Z",
+      "side": 1,
+      "message": "I see.\n\nIf the current (i.e before this CL) behavior was present as of 13672.204.0, we might want to pull it in since 13572.204.0 is what is currently shopping on Drobit IIUC.",
+      "parentUuid": "1da08d56_5e3323c7",
+      "revId": "c1bb6cdffda63defc069397cd113ac28a592e5eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
