@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aef702e3_614d2ad1",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-23T17:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6a447e1_5ac6f428",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 114,
+        "endChar": 24
+      },
+      "revId": "eaf280f473394fe06abefea06e40bac17cf51c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4aae4db_b640c270",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "221b246e_93eec3bd",
+        "filename": "include/usb_descriptor.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-23T17:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4aae4db_b640c270",
+      "range": {
+        "startLine": 309,
+        "startChar": 10,
+        "endLine": 309,
+        "endChar": 13
+      },
+      "revId": "eaf280f473394fe06abefea06e40bac17cf51c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55850652_1e1db645",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-22T20:39:41Z",
       "side": 1,
       "message": "bool instead?",
+      "range": {
+        "startLine": 168,
+        "startChar": 1,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "eaf280f473394fe06abefea06e40bac17cf51c0c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c06cf689_e08fdfc0",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-23T17:26:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55850652_1e1db645",
       "range": {
         "startLine": 168,
         "startChar": 1,
