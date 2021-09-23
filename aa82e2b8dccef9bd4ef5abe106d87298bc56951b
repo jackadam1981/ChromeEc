@@ -16,6 +16,24 @@
       "message": "nit: could be more clear if this is something like \"FIFO_ENTRY\" since by itself it sounds like the size of the whole FIFO, rather than the words you want to read for one entry",
       "revId": "aa82e2b8dccef9bd4ef5abe106d87298bc56951b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66d986a1_b81c95a3",
+        "filename": "driver/accelgyro_bmi3xx.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-09-23T01:49:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a2827c7_76003b5d",
+      "revId": "aa82e2b8dccef9bd4ef5abe106d87298bc56951b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
