@@ -1,0 +1,37 @@
+/ {
+    board_names: board-names {
+        compatible = "board-names-enum";
+
+        coachz {
+            enum-name = "COACHZ";
+        };
+
+        homestar {
+            enum-name = "HOMESTAR";
+        };
+
+        lazor {
+            enum-name = "LAZOR";
+        };
+
+        marzipan {
+            enum-name = "MARZIPAN";
+        };
+
+        mrbland {
+            enum-name = "MRBLAND";
+        };
+
+        pazquel {
+            enum-name = "PAZQUEL";
+        };
+
+        pompom {
+            enum-name = "POMPOM";
+        };
+
+        wormdingler {
+            enum-name = "WORMDINGLER";
+        };
+    };   
+};

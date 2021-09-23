@@ -1,0 +1,73 @@
+/ {
+    gpio-led {
+		compatible = "gpio-led";
+
+        current_board: current-board {
+            compatible = "current-board";
+
+            current-board-name = "LAZOR";
+        };
+
+        brightness_range: brightness-range {
+            compatible = "led-brightness-range";
+
+            brightness-range-battery = < 0x0 0x0 0x1 0x0 0x0 0x1 >;
+        };
+
+        led-id {
+            compatible = "led-id-enum";
+
+            led_id_battery {
+                enum-name = "EC_LED_ID_BATTERY_LED";
+            };
+        };
+
+        battery-led-colors {
+            compatible = "battery-led-colors";
+
+            chipset-state; // bool
+
+            charge: power-state-charge {
+                led-color = "LED_AMBER";
+            };
+            discharge_s0: powewr-state-discharge-s0 {
+                led-color = "LED_BLUE";
+            };
+
+            discharge_s3: power-state-discharge-s3 {
+                led-color-1 = "LED_AMBER";
+                led-color-2 = "LED_OFF";
+                period = <4>;
+            };
+
+
+            discharge_s5: power-state-discharge-s5 {
+                led-color = "LED_OFF";
+            };
+
+            error: power-state-error {
+                led-color-1 = "LED_AMBER";
+                led-color-2 = "LED_OFF";
+                period = <2>;
+            };
+
+            near_full: power-state-near-full {
+                led-color = "LED_BLUE";
+            };
+
+            idle: power-state-idle {
+                led-color-1 = "LED_BLUE";
+                led-color-2 = "LED_AMBER";
+//                led-color-3 = "LED_BLUE"
+                led-color-3 = "LED_OFF";
+                period = <4>;
+            };
+        };
+
+        led_control: led-control {
+            compatible = "led-control";
+
+            led-color = "LED_BLUE";
+        };
+    };
+};

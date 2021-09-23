@@ -1,0 +1,91 @@
+/ {
+    brightness-range {
+        compatible = "led-brightness-range";
+        brightness-range-battery = [0 0 0 0 1 1]; // [Red Green Blue Yellow Amber White]
+        brightness-range-power = [0 0 0 0 0 1];
+    };
+
+    led-id {
+        compatible = "led-id-enum";
+
+        led_id_battery {
+            enum-name = "EC_LED_ID_BATTERY_LED";
+        };
+
+        led_id_power {
+            enum-name = "EC_LED_ID_POWER_LED";
+        };
+    };
+
+    led-colors {
+        compatible = "led-colors-enum";
+
+        led_color_amber {
+            enum-name = "LED_AMBER";
+        };
+
+        led_color_blue {
+            enum-name = "LED_BLUE";
+        };
+    };
+
+    battery-led-colors {
+        compatible = "battery-led-colors";
+
+        charge: power-state-charge {
+            led-color = "LED_AMBER";
+        };
+
+        discharge_s0: powewr-state-discharge-s0 {
+            led-color = "LED_BLUE";
+        };
+
+        discharge_s3: power-state-discharge-s3 {
+            led-color-1 = "LED_AMBER";
+            led-color-2 = "LED_OFF";
+            period = <4>;
+        };
+
+        discharge_s5: power-state-discharge-s5 {
+            led-color = "LED_OFF";
+        };
+
+        error: power-state-error {
+            led-color-1 = "LED_AMBER";
+            led-color-2 = "LED_OFF";
+            period = <2>;
+        };
+
+        near_full: power-state-near-full {
+            led-color = "LED_BLUE";
+        };
+
+        idle: power-state-idle {
+            led-color-1 = "LED_BLUE";
+            led-color-2 = "LED_AMBER";
+            period = <4>;
+        };
+    };
+
+    power-led-colors {
+        compatible = "power-led-colors";
+
+        power_state_s0: power-state-s0 {
+            led-color = "LED_WHITE";
+        };
+
+        power_state_s3: power-state-s3 {
+            led-color-1 = "LED_WHITE";
+            led-color-2 = "LED_OFF";
+            period = 4;
+        };
+
+        power_state_s5: power-state-s5 {
+            led-color = "LED_OFF";
+        };
+    };
+
+    led_control: led-control {
+        led-color = "LED_BLUE";
+    };
+};
