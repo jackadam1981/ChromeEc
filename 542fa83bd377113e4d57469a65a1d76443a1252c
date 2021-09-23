@@ -22,6 +22,30 @@
       },
       "revId": "542fa83bd377113e4d57469a65a1d76443a1252c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc642a65_3629e1b0",
+        "filename": "zephyr/dts/bindings/vendor-prefixes.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-23T23:19:13Z",
+      "side": 1,
+      "message": "Hmm cros-ec has been what we\u0027ve used for a long time ... if there\u0027s any instances of \"cros\" left make sure those get converted to \"cros-ec\".",
+      "parentUuid": "8889a73c_819942e8",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "542fa83bd377113e4d57469a65a1d76443a1252c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
