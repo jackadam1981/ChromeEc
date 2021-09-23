@@ -16,6 +16,29 @@
       "message": "Julius, thank you for taking a look.\n\nI made some changes and added some explanations.",
       "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f790d193_b3de5f8b",
+        "filename": "board/cr50/ap_ro_root_key_hash.inc",
+        "patchSetId": 8
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-23T09:52:26Z",
+      "side": 1,
+      "message": "Isn\u0027t this supposed to be root_key?",
+      "range": {
+        "startLine": 10,
+        "startChar": 28,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
