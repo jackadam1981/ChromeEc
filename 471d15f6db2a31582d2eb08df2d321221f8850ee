@@ -52,6 +52,24 @@
       "parentUuid": "63c0dcac_dc5a3b03",
       "revId": "471d15f6db2a31582d2eb08df2d321221f8850ee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d126954a_eb48316e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-09-23T06:58:58Z",
+      "side": 1,
+      "message": "I\u0027ve seen some other errors, maybe we don\u0027t have the same environment (I just update_chroot\u0027ed.)\n\n core/cortex-m/panic.c:356:3: error: inline asm clobber list contains reserved \n registers: R7 [-Werror,-Winline-asm]\n                 \"mov r0, %[pregs]\\n\"\n                 ^\n core/cortex-m/panic.c:356:3: note: Reserved registers on the clobber list may not \n be preserved across the asm statement, and clobbering them may lead to undefined \n behaviour.",
+      "parentUuid": "6ac33916_ffe40811",
+      "revId": "471d15f6db2a31582d2eb08df2d321221f8850ee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
