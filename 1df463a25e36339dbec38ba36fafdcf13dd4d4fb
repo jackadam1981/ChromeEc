@@ -34,6 +34,24 @@
       "parentUuid": "ba58148b_97f93ecf",
       "revId": "1df463a25e36339dbec38ba36fafdcf13dd4d4fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9058e105_f5556d3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-23T21:39:57Z",
+      "side": 1,
+      "message": "Ok, I fixed this by disabling the padding when using clang. I added an assert in https://crrev.com/c/3179317 that verifies the alignment. It seems that clang already has the correct alignment, so the additional padding is not necessary.",
+      "parentUuid": "e3c2f953_55cee1cd",
+      "revId": "1df463a25e36339dbec38ba36fafdcf13dd4d4fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
