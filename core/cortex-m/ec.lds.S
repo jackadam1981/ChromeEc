@@ -517,6 +517,13 @@ SECTIONS
 
 	__image_size = __flash_used + SIZEOF(.rw_image_size_alignment);
 #endif
+#if defined(SECTION_IS_RW) && defined(CONFIG_FLASH_WRITE_SIZE)
+	/* Validate that the alignment padding above is correct. See
+	 * https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/2999357/comments/75f138af_112cbc57
+	 */
+	ASSERT(__image_size % CONFIG_FLASH_WRITE_SIZE == 0,
+	       "Error: RW image is not aligned to CONFIG_FLASH_WRITE_SIZE")
+#endif
 #endif /* CONFIG_CHIP_INIT_ROM_REGION */
 
 #ifdef CONFIG_FLASH_CROS
