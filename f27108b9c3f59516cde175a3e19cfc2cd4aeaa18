@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7358d2fb_c63b5cfb",
+        "filename": "board/bugzzy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-23T18:12:55Z",
+      "side": 1,
+      "message": "If you wanted to avoid initializing the CBI here, you could set the priority to default+1 such that it would be guaranteed at this point.",
+      "range": {
+        "startLine": 762,
+        "startChar": 47,
+        "endLine": 762,
+        "endChar": 64
+      },
+      "revId": "f27108b9c3f59516cde175a3e19cfc2cd4aeaa18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec196175_65b6ef8f",
+        "filename": "board/bugzzy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-23T18:12:55Z",
+      "side": 1,
+      "message": "Maybe you can cancel the deferred function on a deassertion. I was wondering if it happen that you see two lows by chance.",
+      "revId": "f27108b9c3f59516cde175a3e19cfc2cd4aeaa18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
