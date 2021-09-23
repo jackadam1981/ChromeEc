@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "610a4c52_ba89e777",
+        "filename": "util/misc_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-23T21:33:51Z",
+      "side": 1,
+      "message": "I gave it a try and wrote up a test, but I\u0027m not sure how to get the linking to work right since it\u0027s not tied to a CONFIG option (so currently the build fails trying to find parse_hex_string).  Suggestions?",
+      "parentUuid": "d1a93fc1_10c405de",
+      "revId": "a9f4ac143d1e5b4ae2a853cfc9f05f20765154fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e11af5e_c4cb053d",
         "filename": "util/misc_util.c",
         "patchSetId": 1
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-21T23:19:26Z",
       "side": 1,
       "message": "Why don\u0027t we return -1 on \u0027nibbles \u003d\u003d 0\u0027 as well?",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 123,
+        "endChar": 3
+      },
+      "revId": "a9f4ac143d1e5b4ae2a853cfc9f05f20765154fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0289321_bdb82dc5",
+        "filename": "util/misc_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-23T21:33:51Z",
+      "side": 1,
+      "message": "Can do",
+      "parentUuid": "3e11af5e_c4cb053d",
       "range": {
         "startLine": 123,
         "startChar": 1,
@@ -54,6 +96,30 @@
       "writtenOn": "2021-09-21T23:19:26Z",
       "side": 1,
       "message": "Is this used when the input string contains odd number of chars? Isn\u0027t it an invalid input or shouldn\u0027t we process the last char by %1hhx instead of the first one?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 2
+      },
+      "revId": "a9f4ac143d1e5b4ae2a853cfc9f05f20765154fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71bcd0e0_702c7e43",
+        "filename": "util/misc_util.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-23T21:33:51Z",
+      "side": 1,
+      "message": "Yes, it\u0027s for the odd-case.  \n\nI think we can assume a leading zero on an odd-numbered input.  Something like \"123\" makes sense to translate into \"01 23\" as opposed to \"12 03\" or \"12 30\".  Though we could consider it invalid if we never want to make assumptions about where the extra 0 needs to go.",
+      "parentUuid": "fbc3b2ae_c864f344",
       "range": {
         "startLine": 128,
         "startChar": 0,
