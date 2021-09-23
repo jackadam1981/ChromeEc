@@ -11,6 +11,7 @@
 #include "charge_manager.h"
 #include "charger.h"
 #include "console.h"
+#include "driver/charger/rt9490.h"
 #include "driver/tcpm/it83xx_pd.h"
 #include "driver/usb_mux/ps8743.h"
 #include "hooks.h"
@@ -28,8 +29,8 @@
 const struct charger_config_t chg_chips[] = {
 	{
 		.i2c_port = I2C_PORT_CHARGER,
-		.i2c_addr_flags = 0,
-		.drv = NULL,
+		.i2c_addr_flags = RT9490_ADDR_FLAGS,
+		.drv = &rt9490_drv,
 	},
 };
 
