@@ -16,6 +16,24 @@
       "message": "I don\u0027t have a strong opinion, but honestly the \"before\" case seems better to me :D",
       "revId": "68e465a4cb201373efaaa9583cf5a5db9f130502",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f548f509_f61f74c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-23T18:46:29Z",
+      "side": 1,
+      "message": "tastes differ 😊 @vbendeb prefers return type and function name with \u0027(\u0027 on same line as it simplifies grep pattern.\nIn example I added the second line wrapped due to gerrit which does it on position column 76 or so in commit messages. In C it\u0027s just 2 liner:\n\nenum dcrypto_result DCRYPTO_p256_key_from_bytes(\n\tp256_int *x, p256_int *y, p256_int *d, const uint8_t bytes[P256_NBYTES])",
+      "parentUuid": "4c43fb32_20ce4695",
+      "revId": "68e465a4cb201373efaaa9583cf5a5db9f130502",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
