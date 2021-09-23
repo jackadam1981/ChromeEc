@@ -284,6 +284,30 @@
       },
       "revId": "bcae6878104a8929848b73ce24851693009f916c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05b3a541_b3f754d9",
+        "filename": "board/brask/board.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-23T06:49:07Z",
+      "side": 1,
+      "message": "like zhuohao noted, CHARGE_PORT_COUNT should not be here.\nwe really don\u0027t want CHARGE_PORT_COUNT as a macro and enum value.\nit is defined in charge_manager.h already and is the sum\nof type-c and dedicated (barrel-jack) ports.",
+      "parentUuid": "ef221941_55bdbb14",
+      "range": {
+        "startLine": 152,
+        "startChar": 23,
+        "endLine": 153,
+        "endChar": 2
+      },
+      "revId": "bcae6878104a8929848b73ce24851693009f916c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

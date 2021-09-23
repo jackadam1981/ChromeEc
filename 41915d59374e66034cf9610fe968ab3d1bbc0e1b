@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aba928d_426630a8",
+        "filename": "board/brask/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-23T06:49:07Z",
+      "side": 1,
+      "message": "i think you\u0027re going to get a false \"invalid port\"\nmessage here from ppc_is_sourcing_vbus().",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 30
+      },
+      "revId": "41915d59374e66034cf9610fe968ab3d1bbc0e1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
