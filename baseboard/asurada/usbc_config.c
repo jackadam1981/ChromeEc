@@ -12,7 +12,7 @@
 #include "button.h"
 #include "charger.h"
 #include "charge_state_v2.h"
-#include "charger/isl923x_public.h"
+#include "charger/rt9490.h"
 #include "console.h"
 #include "ec_commands.h"
 #include "extpower.h"
@@ -44,8 +44,8 @@
 const struct charger_config_t chg_chips[] = {
 	{
 		.i2c_port = I2C_PORT_CHARGER,
-		.i2c_addr_flags = ISL923X_ADDR_FLAGS,
-		.drv = &isl923x_drv,
+		.i2c_addr_flags = RT9490_ADDR_FLAGS,
+		.drv = &rt9490_drv,
 	},
 };
 
