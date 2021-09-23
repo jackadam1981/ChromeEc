@@ -248,6 +248,8 @@ bool fips_drbg_init(void)
 	if (!fips_crypto_allowed())
 		return false;
 
+	if (rand_state.drbg_initialized)
+		return true;
 	/**
 	 * initialize DRBG with 440 bits of entropy as required
 	 * by NIST SP 800-90A 10.1. Includes entropy and nonce,
@@ -270,7 +272,7 @@ bool fips_drbg_init(void)
 		       0);
 
 	set_fast_random_seed((uint32_t)fips_trng32(0));
-	rand_state.drbg_initialized = 1;
+	rand_state.drbg_initialized = true;
 	return true;
 }
 
@@ -278,7 +280,7 @@ bool fips_drbg_init(void)
 void fips_drbg_clear(void)
 {
 	drbg_exit(&fips_drbg);
-	rand_state.drbg_initialized = 0;
+	rand_state.drbg_initialized = false;
 }
 
 static bool fips_drbg_reseed_with_entropy(struct drbg_ctx *ctx)
