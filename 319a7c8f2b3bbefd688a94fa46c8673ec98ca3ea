@@ -58,6 +58,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c37041f1_a744b90c",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-23T20:04:02Z",
+      "side": 1,
+      "message": "using test_mockable_static now",
+      "parentUuid": "00c0584b_28626512",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "319a7c8f2b3bbefd688a94fa46c8673ec98ca3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69d111ec_3ab4f1a1",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-09-23T03:24:01Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 54,
+        "endChar": 23
+      },
+      "revId": "319a7c8f2b3bbefd688a94fa46c8673ec98ca3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d49e9a_4edb66a6",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-23T20:04:02Z",
+      "side": 1,
+      "message": "using test_mockable_static now",
+      "parentUuid": "69d111ec_3ab4f1a1",
       "range": {
         "startLine": 52,
         "startChar": 1,
@@ -104,6 +152,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd001bc_b72ba467",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-23T20:04:02Z",
+      "side": 1,
+      "message": "using test_mockable_static now",
+      "parentUuid": "f50d73fd_f1780d9e",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 23
+      },
+      "revId": "319a7c8f2b3bbefd688a94fa46c8673ec98ca3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b6952cf_82fbf778",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-09-23T03:24:01Z",
       "side": 1,
       "message": "Please document these, for someone that hasn\u0027t worked with PD it\u0027s hard to tell what these are doing from the header.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 307,
+        "endChar": 52
+      },
+      "revId": "319a7c8f2b3bbefd688a94fa46c8673ec98ca3ea",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8393fc36_435f93c8",
+        "filename": "include/usb_pd_timer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-23T20:04:02Z",
+      "side": 1,
+      "message": "These are internals and exported just for unit testing.  I added some comments but didn\u0027t go into great detail.",
+      "parentUuid": "4b6952cf_82fbf778",
       "range": {
         "startLine": 302,
         "startChar": 0,
