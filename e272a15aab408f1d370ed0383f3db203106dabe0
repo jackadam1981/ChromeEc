@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a83ad55_b6ec81ef",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T04:57:03Z",
+      "side": 1,
+      "message": "this check is not necessary once the entire function has been moved under CR50_DEV",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a25ec03_614c4b31",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 5
@@ -14,6 +31,24 @@
       "writtenOn": "2021-09-23T02:16:13Z",
       "side": 1,
       "message": "I wonder if we should put a lower limit on this number than 2^16. A fake FMAP structure could force the GSC to read up to (42 * 2^16) ~\u003d 2-3MB from flash here, and that is per fake FMAP (of which there could potentially be many in the RW section at higher alignments than the real FMAP). Realistically, something like 64 entries per FMAP should be more than we\u0027ll likely ever need and should limit this to a manageable level.",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f04c124_a37b182f",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T04:57:03Z",
+      "side": 1,
+      "message": "Changed this to return error if nareas exceeds 64.",
+      "parentUuid": "4a25ec03_614c4b31",
       "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -31,6 +66,30 @@
       "writtenOn": "2021-09-23T02:16:13Z",
       "side": 1,
       "message": "Same number but this should say sizeof(*fmap)",
+      "range": {
+        "startLine": 745,
+        "startChar": 31,
+        "endLine": 745,
+        "endChar": 36
+      },
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a9bdd53_6e522f00",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T04:57:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01521386_ce6651c9",
       "range": {
         "startLine": 745,
         "startChar": 31,
@@ -64,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "be07f95c_57ae1784",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T04:57:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ff81655e_8f1c26a5",
+      "range": {
+        "startLine": 781,
+        "startChar": 34,
+        "endLine": 781,
+        "endChar": 42
+      },
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e301acb7_6f4e00d2",
@@ -83,6 +166,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "237f9932_82a98c7c",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T04:57:03Z",
+      "side": 1,
+      "message": "will the fake FMAP include a properly signed RO_GSCVD section? I need to think a bit more about this and maybe we can discuss this a bit further. Let me defer this for now, I\u0027ll add a TODO",
+      "parentUuid": "e301acb7_6f4e00d2",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02b0bf41_c0fd341c",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 5
@@ -94,6 +195,30 @@
       "writtenOn": "2021-09-23T02:16:13Z",
       "side": 1,
       "message": "It\u0027s weird that you\u0027re using sizeof(signature) here and offsetof(ver_major) below, this is conceptually the same thing.",
+      "range": {
+        "startLine": 800,
+        "startChar": 37,
+        "endLine": 800,
+        "endChar": 64
+      },
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "efdf2bbb_829fcc33",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T04:57:03Z",
+      "side": 1,
+      "message": "good point, I modified this line a few times and left it in an inconsistent state, fixed.",
+      "parentUuid": "02b0bf41_c0fd341c",
       "range": {
         "startLine": 800,
         "startChar": 37,
@@ -123,6 +248,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "559dc8c7_478b6ad2",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T04:57:03Z",
+      "side": 1,
+      "message": "vb2_check_keyblock() calls more functions and would add a lot of code, I modified this patch to address the overflow concerns.",
+      "parentUuid": "10100f6b_b3f03c0f",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbb92b85_e0930bb1",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 5
@@ -140,6 +283,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "588b9ad6_63b5b0f1",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T04:57:03Z",
+      "side": 1,
+      "message": "I thought this was a requirement during the design discussion, but don\u0027t see it any more.\n\nChecking this guarantees that the RO_GSCVD location is in the validated RO space, I can drop this if you think this is not necessary, in fact checking that FPAP is covered by the signature increases the code size and makes it less clear.",
+      "parentUuid": "cbb92b85_e0930bb1",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfd341e3_1caa1c62",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 5
@@ -151,6 +312,24 @@
       "writtenOn": "2021-09-23T02:16:13Z",
       "side": 1,
       "message": "Why are the ranges verified before the signature / cached hash? You should always verify things from the top down so you touch as little potentially-malicious data as possible (even if it\u0027s not a real exploit vector, it could still be formatted to waste time and cause a practical denial of service).",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ad53b88_e5e4cecd",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-23T04:57:03Z",
+      "side": 1,
+      "message": "verify_ranges() first reads the ranges values from AP flash, note that this function is shared by the old and new AP RO verification flows.\n\nThe ranges values are needed for GVD verification. I agree that we could read the ranges values first, then verify  GVD and then verify the ranges, but this would cause some code expansion for no particularly good reason.",
+      "parentUuid": "bfd341e3_1caa1c62",
       "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
