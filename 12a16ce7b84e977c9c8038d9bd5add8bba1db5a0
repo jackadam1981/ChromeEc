@@ -39,6 +39,30 @@
       },
       "revId": "12a16ce7b84e977c9c8038d9bd5add8bba1db5a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb836c98_340b0709",
+        "filename": "driver/tcpm/it83xx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-09-23T10:28:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bea7878_082033e3",
+      "range": {
+        "startLine": 627,
+        "startChar": 29,
+        "endLine": 627,
+        "endChar": 43
+      },
+      "revId": "12a16ce7b84e977c9c8038d9bd5add8bba1db5a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
