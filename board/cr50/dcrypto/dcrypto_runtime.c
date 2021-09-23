@@ -417,7 +417,8 @@ static int ecdsa_sign_go(p256_int *r, p256_int *s)
 	hmac_drbg_reseed(&drbg, r->a, sizeof(r->a), s->a, sizeof(s->a), NULL,
 			 0);
 
-	ret = dcrypto_p256_ecdsa_sign(&drbg, &d, &message, r, s);
+	ret = (dcrypto_p256_ecdsa_sign(&drbg, &d, &message, r, s) ==
+	       DCRYPTO_OK);
 
 	drbg_exit(&drbg);
 	return ret;

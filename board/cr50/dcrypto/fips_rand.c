@@ -247,6 +247,9 @@ bool fips_drbg_init(void)
 	if (!fips_crypto_allowed())
 		return false;
 
+	if (rand_state.drbg_initialized)
+		return true;
+
 	/**
 	 * initialize DRBG with 440 bits of entropy as required
 	 * by NIST SP 800-90A 10.1. Includes entropy and nonce,
@@ -347,18 +350,6 @@ enum hmac_result fips_p256_hmac_drbg_generate(struct drbg_ctx *drbg,
 		err = p256_hmac_drbg_generate(drbg, out);
 	}
 	return err;
-}
-
-/* return codes match dcrypto_p256_ecdsa_sign */
-int fips_p256_ecdsa_sign(const p256_int *key, const p256_int *message,
-			 p256_int *r, p256_int *s)
-{
-	if (!fips_crypto_allowed())
-		return 0;
-	if (!rand_state.drbg_initialized && !fips_drbg_init())
-		return false;
-
-	return dcrypto_p256_fips_sign_internal(&fips_drbg, key, message, r, s);
 }
 
 #ifndef CRYPTO_TEST_CMD_RAND_PERF
