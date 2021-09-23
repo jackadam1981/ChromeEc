@@ -22,6 +22,30 @@
       },
       "revId": "7ae5215ed2d3b7184a9780f2c559e93da625588b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9bfab79_91d1df0b",
+        "filename": "board/cr50/dcrypto/dcrypto_runtime.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-23T22:58:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a0b981a_e9e3fc07",
+      "range": {
+        "startLine": 387,
+        "startChar": 6,
+        "endLine": 387,
+        "endChar": 31
+      },
+      "revId": "7ae5215ed2d3b7184a9780f2c559e93da625588b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
