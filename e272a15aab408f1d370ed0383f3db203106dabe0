@@ -1,0 +1,158 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a25ec03_614c4b31",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T02:16:13Z",
+      "side": 1,
+      "message": "I wonder if we should put a lower limit on this number than 2^16. A fake FMAP structure could force the GSC to read up to (42 * 2^16) ~\u003d 2-3MB from flash here, and that is per fake FMAP (of which there could potentially be many in the RW section at higher alignments than the real FMAP). Realistically, something like 64 entries per FMAP should be more than we\u0027ll likely ever need and should limit this to a manageable level.",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01521386_ce6651c9",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T02:16:13Z",
+      "side": 1,
+      "message": "Same number but this should say sizeof(*fmap)",
+      "range": {
+        "startLine": 745,
+        "startChar": 31,
+        "endLine": 745,
+        "endChar": 36
+      },
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff81655e_8f1c26a5",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T02:16:13Z",
+      "side": 1,
+      "message": "nit: if you want to avoid writing __LINE__ everywhere, this could be wrapped in  a helper macro",
+      "range": {
+        "startLine": 781,
+        "startChar": 34,
+        "endLine": 781,
+        "endChar": 42
+      },
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e301acb7_6f4e00d2",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T02:16:13Z",
+      "side": 1,
+      "message": "This is not sufficient. Someone could put a fake FMAP at a large alignment in the RW section and you would never reach the real FMAP. It needs to call the whole validation process from within this loop, and return to keep seeking from where it left off if there was any error along the verification process.",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02b0bf41_c0fd341c",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T02:16:13Z",
+      "side": 1,
+      "message": "It\u0027s weird that you\u0027re using sizeof(signature) here and offsetof(ver_major) below, this is conceptually the same thing.",
+      "range": {
+        "startLine": 800,
+        "startChar": 37,
+        "endLine": 800,
+        "endChar": 64
+      },
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10100f6b_b3f03c0f",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T02:16:13Z",
+      "side": 1,
+      "message": "These checks are not overflow safe. I\u0027d recommend you just copy vb2_check_keyblock() from vboot because it has been well-vetted to take care of all these tricky details.",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb92b85_e0930bb1",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T02:16:13Z",
+      "side": 1,
+      "message": "I don\u0027t understand why the GSC needs to waste time verifying this? These ranges are already signed and trusted, we should assume that they contain what they\u0027re meant to contain. (Also, the FMAP being covered is not actually a requirement of the design. The way RO verification is designed for coreboot, only the bootblock needs to be verified and then it contains the information needed to verify any other data loaded later itself, including the FMAP.)",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfd341e3_1caa1c62",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-23T02:16:13Z",
+      "side": 1,
+      "message": "Why are the ranges verified before the signature / cached hash? You should always verify things from the top down so you touch as little potentially-malicious data as possible (even if it\u0027s not a real exploit vector, it could still be formatted to waste time and cause a practical denial of service).",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
