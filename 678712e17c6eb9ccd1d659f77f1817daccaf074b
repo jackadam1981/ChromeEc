@@ -22,6 +22,30 @@
       },
       "revId": "678712e17c6eb9ccd1d659f77f1817daccaf074b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f49a4ab1_83e42330",
+        "filename": "zephyr/dts/bindings/led/cros-ec,pwm-leds.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-23T14:12:55Z",
+      "side": 1,
+      "message": "I was thinking to go more in a direction where we have sub-nodes to represent the led_id and maybe move the led phandle and birghtness-range map on it (the function using brighness-range has a led_id argument, so we may need ranges by led id rather than color). I\u0027ll see about reshuffling this if I can come up with a clean dt-based led_set_brightness. BTW I\u0027ve also learned about this (https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3177744) effort to rewrite this completely.",
+      "parentUuid": "e15f9910_bc542484",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 0
+      },
+      "revId": "678712e17c6eb9ccd1d659f77f1817daccaf074b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
