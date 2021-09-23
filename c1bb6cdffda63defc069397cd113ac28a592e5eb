@@ -16,6 +16,24 @@
       "message": "Thanks Diana,\nQuick q: will this fix be applicable to the volteer firmware branch?",
       "revId": "c1bb6cdffda63defc069397cd113ac28a592e5eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1da08d56_5e3323c7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-23T23:10:55Z",
+      "side": 1,
+      "message": "It would be applicable, though I\u0027m unclear how much trouble it would be causing on the branch at the moment.  Most transitions go through Unattached.SNK besides the suspend path, so they\u0027re likely to be clearing the mux state as-is for most customer cases. \n\nSo it\u0027s up to Abe :)",
+      "parentUuid": "99902957_9357facd",
+      "revId": "c1bb6cdffda63defc069397cd113ac28a592e5eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
