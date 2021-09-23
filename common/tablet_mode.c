@@ -69,6 +69,12 @@ void tablet_set_mode(int mode, uint32_t trigger)
 	if (tablet_mode_forced)
 		return;
 
+	if (gmr_sensor_at_360 && !mode) {
+		CPRINTS("Ignoring tablet mode exit while gmr sensor "
+			"reports 360-degree tablet mode.");
+		return;
+	}
+
 	if (mode)
 		tablet_mode |= trigger;
 	else
@@ -80,12 +86,6 @@ void tablet_set_mode(int mode, uint32_t trigger)
 
 	if (disabled) {
 		CPRINTS("Tablet mode set while disabled (ignoring)!");
-		return;
-	}
-
-	if (gmr_sensor_at_360 && !mode) {
-		CPRINTS("Ignoring tablet mode exit while gmr sensor "
-			"reports 360-degree tablet mode.");
 		return;
 	}
 
