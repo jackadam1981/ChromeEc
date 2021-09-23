@@ -7,7 +7,9 @@ dts-overlays:
   - battery.dts
   - gpio.dts
   - keyboard.dts
+  - led.dts
   - motionsense.dts
+  - prj.dts
 supported-toolchains:
   - coreboot-sdk
   - zephyr

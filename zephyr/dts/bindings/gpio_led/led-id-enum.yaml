@@ -1,0 +1,17 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: LED ID enum parent node
+
+compatible: "led-id-enum"
+
+child-binding:
+    description: IDs for the LEDs supported on the device
+    properties:
+        enum-name:
+            type: string
+            required: true
+            enum:
+                - EC_LED_ID_BATTERY_LED
+                - EC_LED_ID_POWER_LED

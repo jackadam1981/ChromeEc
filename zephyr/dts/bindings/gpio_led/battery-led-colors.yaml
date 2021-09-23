@@ -1,0 +1,73 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Battery LED colors parent node
+
+compatible: "battery-led-colors"
+
+properties:
+    chipset-state:
+        type: boolean
+        required: false
+        description: Whether to use chipset state
+
+child-binding:
+    description: LED colors generating enum
+    properties:
+        led-color:
+            type: string
+            required: false
+            description: LED color to set depending on power state
+            enum:
+                - LED_OFF
+                - LED_RED
+                - LED_GREEN
+                - LED_BLUE
+                - LED_YELLOW
+                - LED_AMBER
+                - LED_WHITE
+
+        led-color-1:
+            type: string
+            required: false
+            description: LED color to set depending on power state
+            enum:
+                - LED_OFF
+                - LED_RED
+                - LED_GREEN
+                - LED_BLUE
+                - LED_YELLOW
+                - LED_AMBER
+                - LED_WHITE
+
+        led-color-2:
+            type: string
+            required: false
+            description: LED color to set depending on power state
+            enum:
+                - LED_OFF
+                - LED_RED
+                - LED_GREEN
+                - LED_BLUE
+                - LED_YELLOW
+                - LED_AMBER
+                - LED_WHITE
+
+        led-color-3:
+            type: string
+            required: false
+            description: LED color to set depending on power state
+            enum:
+                - LED_OFF
+                - LED_RED
+                - LED_GREEN
+                - LED_BLUE
+                - LED_YELLOW
+                - LED_AMBER
+                - LED_WHITE
+
+        period:
+            type: int
+            required: false
+            description: If blinking LEDs, what's the period

@@ -232,8 +232,6 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD_VIVALDI
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_PWM_KBLIGHT
                                                 "${PLATFORM_EC}/common/keyboard_backlight.c"
                                                 "${PLATFORM_EC}/common/pwm_kblight.c")
-zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON
-                                                "${PLATFORM_EC}/common/led_common.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_PWM
                                                 "${PLATFORM_EC}/common/led_pwm.c")
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LID_ANGLE

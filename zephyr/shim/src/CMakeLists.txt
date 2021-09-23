@@ -29,6 +29,7 @@ zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_HOSTCMD_CONSOLE
                                                             console_buffer.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD    keyboard_raw.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_KEYBOARD    keyscan.c)
+zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_LED_COMMON  led_common.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_MKBP_EVENT  mkbp_event.c)
 zephyr_library_sources_ifdef(CONFIG_PLATFORM_EC_MOTIONSENSE
                                                             motionsense_sensors.c)
