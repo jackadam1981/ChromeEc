@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "56429f64_ca8833f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-24T23:37:40Z",
+      "side": 1,
+      "message": "CONFIG_CMD_I2C_SPEED has to be added to Zephyr configs too...",
+      "revId": "bb8f0aa1de12101fdbec298a67c9302abe1b166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2cc5359_120d1816",
         "filename": "common/i2c_controller.c",
         "patchSetId": 1
@@ -19,6 +36,29 @@
         "startChar": 12,
         "endLine": 1796,
         "endChar": 17
+      },
+      "revId": "bb8f0aa1de12101fdbec298a67c9302abe1b166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0bf3f6a7_75859889",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1796,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-24T23:37:40Z",
+      "side": 1,
+      "message": "\"port\" is mandatory, the square braces are not needed",
+      "range": {
+        "startLine": 1796,
+        "startChar": 4,
+        "endLine": 1796,
+        "endChar": 10
       },
       "revId": "bb8f0aa1de12101fdbec298a67c9302abe1b166a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
