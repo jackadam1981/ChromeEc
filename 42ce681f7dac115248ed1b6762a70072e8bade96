@@ -140,6 +140,30 @@
       },
       "revId": "42ce681f7dac115248ed1b6762a70072e8bade96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b3ac94e_e7698043",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-09-24T09:18:48Z",
+      "side": 1,
+      "message": "IIUC, all the EC related registers need this trick?",
+      "parentUuid": "7d70b954_2e0b602a",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 33
+      },
+      "revId": "42ce681f7dac115248ed1b6762a70072e8bade96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
