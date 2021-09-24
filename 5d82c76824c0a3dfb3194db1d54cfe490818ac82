@@ -22,6 +22,30 @@
       },
       "revId": "5d82c76824c0a3dfb3194db1d54cfe490818ac82",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d2e8540_63b0c4c9",
+        "filename": "driver/accelgyro_bmi_common.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-24T06:21:49Z",
+      "side": 1,
+      "message": "Yep that will work too. I will send a patchset to fix that.",
+      "parentUuid": "304623da_d4a7993b",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 74
+      },
+      "revId": "5d82c76824c0a3dfb3194db1d54cfe490818ac82",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
