@@ -16,6 +16,29 @@
       "message": "I created two tests. One was more to verify the switch over from uint32_t bit masks to uint64_t and the other is a more pd timer generic test.",
       "revId": "944d11f1d9b72030e3b948b9b05b716338f607f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5276ba3c_31d2db64",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-24T02:44:32Z",
+      "side": 1,
+      "message": "This is clever and I\u0027m a bit surprised we don\u0027t have a library for this in math_util.h. Would you be open to moving this logic in there in a follow-up CL?",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 172,
+        "endChar": 1
+      },
+      "revId": "944d11f1d9b72030e3b948b9b05b716338f607f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
