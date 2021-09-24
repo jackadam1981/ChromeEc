@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7983ab6_e09231af",
+        "filename": "board/bugzzy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-09-24T01:33:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7358d2fb_c63b5cfb",
+      "range": {
+        "startLine": 762,
+        "startChar": 47,
+        "endLine": 762,
+        "endChar": 64
+      },
+      "revId": "f27108b9c3f59516cde175a3e19cfc2cd4aeaa18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec196175_65b6ef8f",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-09-23T18:12:55Z",
       "side": 1,
       "message": "Maybe you can cancel the deferred function on a deassertion. I was wondering if it happen that you see two lows by chance.",
+      "revId": "f27108b9c3f59516cde175a3e19cfc2cd4aeaa18",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ceb2e2d_32e78e27",
+        "filename": "board/bugzzy/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1223409
+      },
+      "writtenOn": "2021-09-24T01:33:26Z",
+      "side": 1,
+      "message": "I have changed interrupt type to FALLING. This ISR will be executed when signal goes low. If two lows are detected, I think that control signals are just set low to low.",
+      "parentUuid": "ec196175_65b6ef8f",
       "revId": "f27108b9c3f59516cde175a3e19cfc2cd4aeaa18",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
