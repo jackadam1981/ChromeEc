@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8763251_be20acf3",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-24T16:24:11Z",
+      "side": 1,
+      "message": "This will need to be modified as well.",
+      "revId": "57124d71df09662de968f13710853bfd52ec08b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2665634_4b80d435",
+        "filename": "board/pirika/cbi_ssfc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-24T16:24:11Z",
+      "side": 1,
+      "message": "I wonder if generally we should allow room for expansion. It\u0027s hard to predict the future though and right now it\u0027s not likely that we\u0027d use a different charger.",
+      "revId": "57124d71df09662de968f13710853bfd52ec08b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
