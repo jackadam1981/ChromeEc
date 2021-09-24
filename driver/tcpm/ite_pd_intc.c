@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "hwtimer_chip.h"
 #include "it83xx_pd.h"
 #include "ite_pd_intc.h"
 #include "task.h"
@@ -85,3 +86,25 @@ void chip_pd_irq(enum usbpd_port port)
 		}
 	}
 }
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+void auto_toggle_timer_interrupt(void)
+{
+	/* Get current power role */
+	SET_MASK(IT83XX_USBPD_CCGCR(port), BIT(1));
+	IT83XX_USBPD_CCCSR(port) |= USBPD_REG_MASK_CC1_CC2_RP_RD_SELECT;
+
+	/* Toggle power role */
+	if ()
+		tcpm_set_cc(port, pull);
+		hw_cnt = MS_TO_COUNT(32768, 30/*ms*/);
+	else
+		tcpm_set_cc(port, pull);
+		hw_cnt = MS_TO_COUNT(32768, 40/*ms*/);
+
+	IT83XX_ETWD_ETXCNTLR(EVENT_EXT_TIMER) = 0xffffffff;
+	IT83XX_ETWD_ETXCTRL(EVENT_EXT_TIMER) |= BIT(1);
+
+	task_clear_pending_irq(IT83XX_IRQ_EXT_TIMER2);
+}
+#endif /* CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE */
