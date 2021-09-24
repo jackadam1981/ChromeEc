@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9ffe5f7_a7eed5f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-24T02:34:38Z",
+      "side": 1,
+      "message": "Looking good, do you mind adding a `zassert_true(ln9310_emul_is_init(emul));` to the init tests so that we\u0027re exercising this code?",
+      "revId": "9d2cceab23b1ef68bd349c8f89d03c52ec23967a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "554f44c3_e89dc7b8",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-24T02:34:38Z",
+      "side": 1,
+      "message": "While this is correct I\u0027m personally not a fan of just negating it and treating 0 \u003d\u003d false, can we do:\n\n(data-\u003eint1_msk_reg \u0026 LN9310_INT1_MODE) \u003d\u003d 0",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 49
+      },
+      "revId": "9d2cceab23b1ef68bd349c8f89d03c52ec23967a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40027652_b0c531e9",
+        "filename": "zephyr/include/emul/emul_ln9310.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-24T02:34:38Z",
+      "side": 1,
+      "message": "change to bool and add \"@return true if the ln9310 was initialized correctly\" to the documentation.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 3
+      },
+      "revId": "9d2cceab23b1ef68bd349c8f89d03c52ec23967a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
