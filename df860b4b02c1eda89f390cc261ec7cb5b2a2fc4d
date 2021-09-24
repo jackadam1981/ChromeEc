@@ -73,6 +73,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fd2114c_67417cb2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-09-24T13:46:53Z",
+      "side": 1,
+      "message": "I found out that it is not possible without a lot of changes to use ztest mock API here. usb_mux is used in some background tasks and ztest mock doesn\u0027t allow to call function without setting expected/return value. I will rewrite usb_mux test using FFF instead.",
+      "parentUuid": "c68cea2e_bae2877c",
+      "revId": "df860b4b02c1eda89f390cc261ec7cb5b2a2fc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cf264599_654b25fa",
         "filename": "zephyr/include/emul/emul_usb_mux_mock.h",
         "patchSetId": 6
