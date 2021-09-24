@@ -16,6 +16,52 @@
       "message": "Added this change on baseboard level, so other board will benefit from it too",
       "revId": "dd89cfe1f34b8707846e4d80f32c3eb0aff29f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "144d5118_57f206f6",
+        "filename": "baseboard/brya/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-24T01:11:24Z",
+      "side": 1,
+      "message": "are we assured that all variants are convertible devices?\n\nmy guess is that the answer is no.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "dd89cfe1f34b8707846e4d80f32c3eb0aff29f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6c383b5_75894ffb",
+        "filename": "board/brya/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-24T01:11:24Z",
+      "side": 1,
+      "message": "if the override function is at the baseboard level,\nshould this also be set at the baseboard level?",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "dd89cfe1f34b8707846e4d80f32c3eb0aff29f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
