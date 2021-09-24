@@ -52,6 +52,24 @@
       "parentUuid": "e3c2f953_55cee1cd",
       "revId": "1df463a25e36339dbec38ba36fafdcf13dd4d4fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97f61b7f_43cd29d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-09-24T01:12:43Z",
+      "side": 1,
+      "message": "Tom,\n\nI am seeing \"Error: RW image is not aligned to CONFIG_FLASH_WRITE_SIZE\" in my environment, and I can fix that by not reverting https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3169964/6, and explitly sepcify the LMA region by:\n\n } \u003e FLASH AT\u003e EC_IMAGE_LMA_MEM_REGION \u003d 0xFF  \n \nCan you have a try if this fix in your environment? (I just updated my chroot, so that\u0027s probably the reason we see different results.)",
+      "parentUuid": "9058e105_f5556d3e",
+      "revId": "1df463a25e36339dbec38ba36fafdcf13dd4d4fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
