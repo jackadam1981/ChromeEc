@@ -73,7 +73,7 @@ const struct power_signal_info power_signal_list[] = {
 		.name = "SLP_SUS_DEASSERTED",
 	},
 	[X86_RSMRST_L_PGOOD] = {
-		.gpio = GPIO_PG_EC_RSMRST_ODL,
+		.gpio = GPIO_RSMRST_L_PGOOD,
 		.flags = POWER_SIGNAL_ACTIVE_HIGH,
 		.name = "RSMRST_L_PGOOD",
 	},
@@ -121,7 +121,7 @@ void chipset_force_shutdown(enum chipset_shutdown_reason reason)
 	 */
 	/* Now wait for DSW_PWROK and  RSMRST_ODL to go away. */
 	while (intel_x86_get_pg_ec_dsw_pwrok() &&
-	       gpio_get_level(GPIO_PG_EC_RSMRST_ODL) && (timeout_ms > 0)) {
+	       gpio_get_level(GPIO_RSMRST_L_PGOOD) && (timeout_ms > 0)) {
 		msleep(1);
 		timeout_ms--;
 	};
