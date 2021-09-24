@@ -16,6 +16,24 @@
       "message": "Only for cortex-m?",
       "revId": "7ba38cff96db1b33cfe7e4b3d360d41a35c27fe2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b47215b_58d1bcca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-24T15:16:18Z",
+      "side": 1,
+      "message": "Good point. I think we should do it for all. I have been mainly focused on cortex-m as my first clang bringup, but let me see if the assert works on the others. It looks like this padding was only added in cortex-m.",
+      "parentUuid": "4a8dcf8f_cb3e260c",
+      "revId": "7ba38cff96db1b33cfe7e4b3d360d41a35c27fe2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
