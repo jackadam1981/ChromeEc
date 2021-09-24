@@ -52,8 +52,6 @@
  * 8 MHz 32-bit timer to handle events.
  */
 
-#define MS_TO_COUNT(hz, ms) ((hz) * (ms) / 1000)
-
 const struct ext_timer_ctrl_t et_ctrl_regs[] = {
 	{&IT83XX_INTC_IELMR19, &IT83XX_INTC_IPOLR19, &IT83XX_INTC_ISR19, 0x08,
 		IT83XX_IRQ_EXT_TIMER3},

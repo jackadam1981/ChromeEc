@@ -4,6 +4,7 @@
  */
 
 #include "common.h"
+#include "hwtimer_chip.h"
 #include "it83xx_pd.h"
 #include "ite_pd_intc.h"
 #include "task.h"
@@ -61,7 +62,7 @@ void chip_pd_irq(enum usbpd_port port)
 
 	if (IS_ENABLED(IT83XX_INTC_PLUG_IN_OUT_SUPPORT)) {
 		if (USBPD_IS_PLUG_IN_OUT_DETECT(port)) {
-			if (USBPD_IS_PLUG_IN(port))
+			if (USBPD_IS_PLUG_IN(port)) {
 				/*
 				 * When tcpc detect type-c plug in:
 				 * 1)If we are sink, disable detect interrupt,
@@ -70,13 +71,22 @@ void chip_pd_irq(enum usbpd_port port)
 				 * detection.
 				 */
 				switch_plug_out_type(port);
-			else
+
+				/* Stop auto toggle */
+				if (port == USBPD_PORT_A)
+					/* Disable timer1 interrupt */
+					task_disable_irq(IT83XX_IRQ_EXT_TIMER1);
+				else if (port == USBPD_PORT_B)
+					/* Disable timer2 interrupt */
+					task_disable_irq(IT83XX_IRQ_EXT_TIMER2);
+			} else {
 				/*
 				 * When tcpc detect type-c plug out:
 				 * switch to detect plug in.
 				 */
 				IT83XX_USBPD_TCDCR(port) &=
 					~USBPD_REG_PLUG_OUT_SELECT;
+			}
 
 			/* clear type-c device plug in/out detect interrupt */
 			IT83XX_USBPD_TCDCR(port) |=
@@ -85,3 +95,68 @@ void chip_pd_irq(enum usbpd_port port)
 		}
 	}
 }
+
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+void auto_toggle_timer_interrupt(enum usbpd_port port)
+{
+	uint32_t hw_cnt;
+
+	if (port == USBPD_PORT_A) {
+		/* Disable timer1 interrupt */
+		task_disable_irq(IT83XX_IRQ_EXT_TIMER1);
+
+		/* Get current power role */
+		if (USBPD_GET_CC1_PULL_REGISTER_SELECTION(port) ==  USBPD_POWER_ROLE_SRC) {
+			/* CCs assert Rd */
+			tcpm_set_cc(port, TYPEC_CC_RD);
+			hw_cnt = MS_TO_COUNT(1024, PD_T_DRP_SNK);
+		} else {
+			/* CCs assert Rp */
+			tcpm_set_cc(port, TYPEC_CC_RP);
+			hw_cnt = MS_TO_COUNT(1024, PD_T_DRP_SRC);
+		}
+
+		/*
+		 * Set timer1 count.
+		 * After write ET1CNTLLR, timer1 will start.
+		 */
+		IT83XX_ETWD_ET1CNTLHR = (uint8_t)((hw_cnt >> 8) & 0xff);
+		IT83XX_ETWD_ET1CNTLLR = (uint8_t)(hw_cnt & 0xff);
+
+		/* Clear timer1 interrupt status */
+		task_clear_pending_irq(IT83XX_IRQ_EXT_TIMER1);
+
+		/* Enable timer1 interrupt */
+		task_enable_irq(IT83XX_IRQ_EXT_TIMER1);
+	} else if (port == USBPD_PORT_B) {
+		/* Disable timer2 interrupt */
+		task_disable_irq(IT83XX_IRQ_EXT_TIMER2);
+
+		/* Get current power role */
+		if (USBPD_GET_CC1_PULL_REGISTER_SELECTION(port) ==  USBPD_POWER_ROLE_SRC) {
+			/* CCs assert Rd */
+			tcpm_set_cc(port, TYPEC_CC_RD);
+			hw_cnt = MS_TO_COUNT(32768, PD_T_DRP_SNK);
+		} else {
+			/* CCs assert Rp */
+			tcpm_set_cc(port, TYPEC_CC_RP);
+			hw_cnt = MS_TO_COUNT(32768, PD_T_DRP_SRC);
+		}
+
+		/*
+		 * Set timer2 count.
+		 * After write ET2CNTLLR, timer2 will start.
+		 */
+		IT83XX_ETWD_ET2CNTLH2R = (uint8_t)((hw_cnt >> 16) & 0xff);
+		IT83XX_ETWD_ET2CNTLHR = (uint8_t)((hw_cnt >> 8) & 0xff);
+		IT83XX_ETWD_ET2CNTLLR = (uint8_t)(hw_cnt & 0xff);
+
+
+		/* Clear timer2 interrupt status */
+		task_clear_pending_irq(IT83XX_IRQ_EXT_TIMER2);
+
+		/* Enable timer2 interrupt */
+		task_enable_irq(IT83XX_IRQ_EXT_TIMER2);
+	}
+}
+#endif /* CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE */

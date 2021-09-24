@@ -8,6 +8,7 @@
 #include "common.h"
 #include "config.h"
 #include "console.h"
+#include "hwtimer_chip.h"
 #include "it83xx_pd.h"
 #include "ite_pd_intc.h"
 #include "registers.h"
@@ -42,6 +43,8 @@ bool rx_en[IT83XX_USBPD_PHY_PORT_COUNT];
 STATIC_IF(CONFIG_USB_PD_DECODE_SOP)
 	bool sop_prime_en[IT83XX_USBPD_PHY_PORT_COUNT];
 static uint8_t tx_error_status[IT83XX_USBPD_PHY_PORT_COUNT] = {0};
+//uint8_t auto_toggle_port_status = 0;
+//uint64_t timer_buff = 0;
 
 const struct usbpd_ctrl_t usbpd_ctrl_regs[] = {
 	{&IT83XX_GPIO_GPCRF4, &IT83XX_GPIO_GPCRF5, IT83XX_IRQ_USBPD0},
@@ -748,6 +751,130 @@ void switch_plug_out_type(enum usbpd_port port)
 	it8xxx2_tcpm_switch_plug_out_type(port);
 }
 
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+static int it8xxx2_tcpm_drp_toggle(int port)
+{
+	uint32_t hw_cnt;
+	enum tcpc_cc_pull pull;
+
+	/* Select the minimal Rp value to save power */
+	it8xxx2_tcpm_select_rp_value(port, TYPEC_RP_USB);
+
+	/*
+	 * Unattached.SNK assert Rd for 40ms on TC_TIMER_NEXT_ROLE_SWAP timer,
+	 * then go to toggle state, so
+	 * Toggle start from PD_ROLE_SOURCE same as TCPCIv2 or
+	 * PD_ROLE_DEFAULT(port) or
+	 * tc[port].power_role?
+	 */
+	it8xxx2_set_power_role(port, PD_ROLE_SOURCE);
+
+	if (IS_ENABLED(DEBUG_ROLE_CTRL_UPDATES))
+		CPRINTS("C%d: SET_ROLE_CTRL rp=%d pull=%d role=0x%X",
+			port, TYPEC_RP_USB, TYPEC_CC_RP, PD_ROLE_SOURCE);
+#ifdef CONFIG_ZEPHYR
+	//TODO
+#else
+	if (port == 0) {
+		/* Clear timer1 interrupt status */
+		task_clear_pending_irq(IT83XX_IRQ_EXT_TIMER1);
+
+		/*
+		 * Set PD_T_DRP_SRC to timer1 count.
+		 * After write ET1CNTLLR, timer1 will start.
+		 */
+		hw_cnt = MS_TO_COUNT(1024, PD_T_DRP_SRC);
+		IT83XX_ETWD_ET1CNTLHR = (uint8_t)((hw_cnt >> 8) & 0xff);
+		IT83XX_ETWD_ET1CNTLLR = (uint8_t)(hw_cnt & 0xff);
+
+		/* Enable timer1 interrupt */
+		task_enable_irq(IT83XX_IRQ_EXT_TIMER1);
+	} else if (port == 1) {
+		/* Clear timer2 interrupt status */
+		task_clear_pending_irq(IT83XX_IRQ_EXT_TIMER2);
+
+		/*
+		 * Set PD_T_DRP_SRC to timer2 count.
+		 * After write ET2CNTLLR, timer2 will start.
+		 */
+		hw_cnt = MS_TO_COUNT(32768, PD_T_DRP_SRC);
+		IT83XX_ETWD_ET2CNTLH2R = (uint8_t)((hw_cnt >> 16) & 0xff);
+		IT83XX_ETWD_ET2CNTLHR = (uint8_t)((hw_cnt >> 8) & 0xff);
+		IT83XX_ETWD_ET2CNTLLR = (uint8_t)(hw_cnt & 0xff);
+
+		/* Enable timer2 interrupt */
+		task_enable_irq(IT83XX_IRQ_EXT_TIMER2);
+	}
+
+	/* Plug-in INT should be already on */
+
+#if 0
+	if (auto_toggle_port_status == 0) {
+		/*
+		 * The timer is idle, we set the count to timer for the pd port.
+		 */
+		auto_toggle_port_status |= AUTO_TOGGLE_ENABLE_RUNNING(port);
+
+		/*
+		 * We set the average Rp and Rd time to timer count, and
+		 * after write ET2CNTLLR timer will start.
+		 */
+		hw_cnt = (PD_T_DRP_SNK + PD_T_DRP_SRC) / 2;
+		hw_cnt = MS_TO_COUNT(32768, hw_cnt/*ms*/);
+		IT83XX_ETWD_ET2CNTLH2R = (uint8_t)((hw_cnt >> 16) & 0xff);
+		IT83XX_ETWD_ET2CNTLHR = (uint8_t)((hw_cnt >> 8) & 0xff);
+		IT83XX_ETWD_ET2CNTLLR = (uint8_t)(hw_cnt & 0xff);
+
+		/* Enable timer */
+		task_enable_irq(IT83XX_IRQ_EXT_TIMER2);
+	} else {
+		timer_buff = get_time().val + ((PD_T_DRP_SNK + PD_T_DRP_SRC) / 2);
+		auto_toggle_port_status &= ~ AUTO_TOGGLE_ENABLE_RUNNING(port);
+	}
+
+	/* Plug-in INT should already on */
+#endif
+#endif
+	return EC_SUCCESS;
+
+#if 0
+	/*
+	 * Set auto drp toggle
+	 *
+	 *     Set RC.DRP=1b (DRP)
+	 *     Set RC.RpValue=00b (smallest Rp to save power)
+	 *     Set RC.CC1=(Rp) or (Rd)
+	 *     Set RC.CC2=(Rp) or (Rd)
+	 *
+	 * TCPCI r1 wants both lines to be set to Rd
+	 * TCPCI r2 wants both lines to be set to Rp
+	 *
+	 * Set the Rp Value to be the minimal to save power
+	 */
+	pull = (tcpc_config[port].flags & TCPC_FLAGS_TCPCI_REV2_0)
+			? TYPEC_CC_RP : TYPEC_CC_RD;
+
+	rv = tcpci_set_role_ctrl(port, TYPEC_DRP, TYPEC_RP_USB, pull);
+	if (rv)
+		return rv;
+
+	/* Set up to catch LOOK4CONNECTION alerts */
+	rv = tcpc_update8(port,
+			  TCPC_REG_TCPC_CTRL,
+			  TCPC_REG_TCPC_CTRL_EN_LOOK4CONNECTION_ALERT,
+			  MASK_SET);
+	if (rv)
+		return rv;
+
+	/* Set Look4Connection command */
+	rv = tcpc_write(port, TCPC_REG_COMMAND,
+			TCPC_REG_COMMAND_LOOK4CONNECTION);
+
+	return rv;
+#endif
+}
+#endif
+
 static void it8xxx2_init(enum usbpd_port port, int role)
 {
 	uint8_t cc_config = (port == USBPD_PORT_C ?
@@ -824,6 +951,34 @@ static void it8xxx2_init(enum usbpd_port port, int role)
 #ifdef CONFIG_ZEPHYR
 	irq_connect_dynamic(usbpd_ctrl_regs[port].irq, 0,
 			(void (*)(const void *))chip_pd_irq, (void *)port, 0);
+	//TODO
+#else
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	/* Init Timer1 for auto toggle */
+	if (port == USBPD_PORT_A) {
+		/* Init timer1 for auto toggle */
+		/* Disable timer1 interrupt */
+		task_disable_irq(IT83XX_IRQ_EXT_TIMER1);
+		/* Set rising edge triggered */
+		IT83XX_INTC_IELMR3 |= BIT(6);
+		IT83XX_INTC_IPOLR3 &= ~BIT(6);
+		/* Clear timer1 interrupt status */
+		task_clear_pending_irq(IT83XX_IRQ_EXT_TIMER1);
+		/* Clock source is same with watchdog timer 1024Hz */
+	} else if (port == USBPD_PORT_B) {
+		/* Init timer2 for auto toggle */
+		//auto_toggle_port_status  &= ~AUTO_TOGGLE_ENABLE_RUNNING(port);
+		/* Disable timer2 interrupt */
+		task_disable_irq(IT83XX_IRQ_EXT_TIMER2);
+		/* Set rising edge triggered */
+		IT83XX_INTC_IELMR7 |= BIT(2);
+		IT83XX_INTC_IPOLR7 &= ~BIT(2);
+		/* Clear timer2 interrupt status */
+		task_clear_pending_irq(IT83XX_IRQ_EXT_TIMER2);
+		/* Set clock source */
+		IT83XX_ETWD_ET2PSR = EXT_PSR_32P768K_HZ;
+	}
+#endif
 #endif
 	task_enable_irq(usbpd_ctrl_regs[port].irq);
 	USBPD_START(port);
@@ -956,7 +1111,7 @@ const struct tcpm_drv it8xxx2_tcpm_drv = {
 	.get_message_raw	= &it8xxx2_tcpm_get_message_raw,
 	.transmit		= &it8xxx2_tcpm_transmit,
 #ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
-	.drp_toggle		= NULL,
+	.drp_toggle		= &it8xxx2_tcpm_drp_toggle,
 #endif
 	.get_chip_info		= &it8xxx2_tcpm_get_chip_info,
 #ifdef CONFIG_USB_PD_TCPC_LOW_POWER

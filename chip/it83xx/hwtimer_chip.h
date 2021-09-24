@@ -14,6 +14,7 @@
 #define EVENT_TIMER_US_TO_COUNT(us)  ((us) << TIMER_COUNT_1US_SHIFT)
 /* Event timer counter observation value to microseconds */
 #define EVENT_TIMER_COUNT_TO_US(cnt) ((cnt) >> TIMER_COUNT_1US_SHIFT)
+#define MS_TO_COUNT(hz, ms) ((hz) * (ms) / 1000)
 
 #define FREE_EXT_TIMER_L     EXT_TIMER_3
 #define FREE_EXT_TIMER_H     EXT_TIMER_4
