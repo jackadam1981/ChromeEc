@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a694d520_05662681",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-24T22:29:32Z",
+      "side": 1,
+      "message": "How about \u0027enum i2c_freq\u0027?",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 9
+      },
+      "revId": "2d1653dc3c81410f0890ef7af90eec3514ca8de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "05152437_f58b122e",
         "filename": "chip/npcx/i2c.c",
         "patchSetId": 1
