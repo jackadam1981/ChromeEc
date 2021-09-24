@@ -134,6 +134,15 @@ static void dcrypto_ecc_init(void)
 	CP1W(d, 0, 8);
 }
 
+/**
+ * This function serves as workaround for gcc 11.2 crash.
+ */
+static enum dcrypto_result fips_p256_hmac_drbg_generate(struct drbg_ctx *ctx,
+							p256_int *rnd)
+{
+	return p256_hmac_drbg_generate(ctx, rnd);
+}
+
 enum dcrypto_result dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg,
 					    const p256_int *key,
 					    const p256_int *message,
@@ -143,7 +152,7 @@ enum dcrypto_result dcrypto_p256_ecdsa_sign(struct drbg_ctx *drbg,
 	p256_int nonce;
 
 	/* Pick uniform 0 < k < R */
-	result = p256_hmac_drbg_generate(drbg, &nonce);
+	result = fips_p256_hmac_drbg_generate(drbg, &nonce);
 
 	result |= dcrypto_p256_ecdsa_sign_raw(&nonce, key, message, r, s);
 
