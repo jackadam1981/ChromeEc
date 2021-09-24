@@ -66,11 +66,13 @@ void fps_event(enum gpio_signal signal)
 	task_set_event(TASK_ID_FPSENSOR, TASK_EVENT_SENSOR_IRQ);
 }
 
+#if 0
 static void send_mkbp_event(uint32_t event)
 {
 	atomic_or(&fp_events, event);
 	mkbp_send_event(EC_MKBP_EVENT_FINGERPRINT);
 }
+#endif
 
 static inline int is_raw_capture(uint32_t mode)
 {
@@ -80,6 +82,7 @@ static inline int is_raw_capture(uint32_t mode)
 	     || capture_type == FP_CAPTURE_QUALITY_TEST);
 }
 
+#if 0
 #ifdef HAVE_FP_PRIVATE_DRIVER
 static inline int is_test_capture(uint32_t mode)
 {
@@ -230,14 +233,18 @@ static void fp_process_finger(void)
 	}
 }
 #endif /* HAVE_FP_PRIVATE_DRIVER */
+#endif
 
 void fp_task(void)
 {
+#if 0
 	int timeout_us = -1;
+#endif
 
 	CPRINTS("FP_SENSOR_SEL: %s",
 		fp_sensor_type_to_str(get_fp_sensor_type()));
 
+#if 0
 #ifdef HAVE_FP_PRIVATE_DRIVER
 	/* Reset and initialize the sensor IC */
 	fp_sensor_init();
@@ -332,6 +339,7 @@ void fp_task(void)
 		send_mkbp_event(evt);
 	}
 #endif /* !HAVE_FP_PRIVATE_DRIVER */
+#endif
 }
 
 static enum ec_status fp_command_passthru(struct host_cmd_handler_args *args)
