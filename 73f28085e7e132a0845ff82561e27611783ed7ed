@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffadacfb_d9e658bd",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-24T22:28:55Z",
+      "side": 1,
+      "message": "How about \u0027enum i2c_freq\u0027?",
+      "range": {
+        "startLine": 1021,
+        "startChar": 46,
+        "endLine": 1021,
+        "endChar": 69
+      },
+      "revId": "73f28085e7e132a0845ff82561e27611783ed7ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f835d92_35c6999c",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-24T22:28:55Z",
+      "side": 1,
+      "message": "And do \u0027bus_freq \u003d\u003d I2C_FREQ_400KHZ\u0027?",
+      "range": {
+        "startLine": 1068,
+        "startChar": 5,
+        "endLine": 1068,
+        "endChar": 25
+      },
+      "revId": "73f28085e7e132a0845ff82561e27611783ed7ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
