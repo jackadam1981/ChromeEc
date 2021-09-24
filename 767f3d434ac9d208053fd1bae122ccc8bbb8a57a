@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ac306b1_b27fe8b0",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-24T21:29:14Z",
+      "side": 1,
+      "message": "That\u0027s fine, but it can be #if instead of #elif to accomodate both being defined.",
+      "parentUuid": "baef16ff_20f86755",
+      "revId": "767f3d434ac9d208053fd1bae122ccc8bbb8a57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b829fa23_bb47f0e1",
         "filename": "zephyr/Kconfig.usbc",
         "patchSetId": 5
