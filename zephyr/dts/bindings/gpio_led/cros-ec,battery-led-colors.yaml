@@ -1,0 +1,57 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Battery LED colors parent node
+
+compatible: "cros-ec,battery-led-colors"
+
+child-binding:
+    description: Nodes based on charge state
+    properties:
+        charge-state:
+            description: This property is used to describe the power state
+                         of the node
+            type: string
+            required: true
+            enum:
+                - PWR_STATE_CHARGE
+                - PWR_STATE_DISCHARGE
+                - PWR_STATE_ERROR
+                - PWR_STATE_IDLE
+                - PWR_STATE_CHARGE_NEAR_FULL
+        chipset-state:
+            description: If the LED color depends on chipset state, this
+                         property is used to describe it. ANY is used if
+                         the color doesn't depend on the chipset state
+            type: string
+            required: true
+            enum:
+                - S0
+                - S3
+                - S5
+                - ANY
+        period:
+            description: In case of blinking LEDs, this is ON_SEC + OFF_SEC
+            type: int
+            required: false
+
+        on_sec:
+            description: In case of blinking LEDs, this is the on time secs
+            type: int
+            required: false
+
+    child-binding:
+        description: Color nodes describing color to set for this power state
+        properties:
+            led-color:
+                type: string
+                required: true
+                enum:
+                    - LED_OFF
+                    - LED_RED
+                    - LED_GREEN
+                    - LED_BLUE
+                    - LED_YELLOW
+                    - LED_WHITE
+                    - LED_AMBER
