@@ -46,6 +46,30 @@
       },
       "revId": "542fa83bd377113e4d57469a65a1d76443a1252c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4d9b3b16_a96cc5f9",
+        "filename": "zephyr/dts/bindings/vendor-prefixes.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-24T14:59:14Z",
+      "side": 1,
+      "message": "Yeah it looks like the majority of code uses cros-ec vs cros. So going with yours.",
+      "parentUuid": "bc642a65_3629e1b0",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 7
+      },
+      "revId": "542fa83bd377113e4d57469a65a1d76443a1252c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
