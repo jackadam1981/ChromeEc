@@ -124,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "12e3d400_75086ce7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-09-24T19:17:26Z",
+      "side": 1,
+      "message": "Writing this test using e.g. bb_retimer emulator is difficult, because there is need to setup emulator in such a way that driver function returns expected result. Also it makes sens to test this with chain of at least 3 usb muxes, so there would be need to add another USB mux emulator. I will look into it once again to check if all usb_mux functions can be tested using only bb_retimer emulator and virtual mux.",
+      "parentUuid": "039bda3f_3fd98c16",
+      "revId": "df860b4b02c1eda89f390cc261ec7cb5b2a2fc4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf264599_654b25fa",
