@@ -164,6 +164,30 @@
       },
       "revId": "42ce681f7dac115248ed1b6762a70072e8bade96",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1398c15a_c92093c9",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-09-24T09:42:10Z",
+      "side": 1,
+      "message": "No, we don\u0027t need to apply this trick to all EC registers.\nWe use the trick here is because we want to ensure PLL setting has been taken into control register before CPU excite wif.\nIn other functions, write setting to EC registers will be taken into registers.",
+      "parentUuid": "5b3ac94e_e7698043",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 33
+      },
+      "revId": "42ce681f7dac115248ed1b6762a70072e8bade96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
