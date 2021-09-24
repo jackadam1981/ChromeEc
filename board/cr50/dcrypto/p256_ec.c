@@ -72,7 +72,7 @@ enum dcrypto_result dcrypto_p256_fips_sign_internal(struct drbg_ctx *drbg,
 	p256_int k;
 
 	/* Pick uniform 0 < k < R */
-	result = fips_p256_hmac_drbg_generate(drbg, &k);
+	result = p256_hmac_drbg_generate(drbg, &k);
 
 	result |= dcrypto_p256_ecdsa_sign_raw(&k, key, message, r, s);
 
