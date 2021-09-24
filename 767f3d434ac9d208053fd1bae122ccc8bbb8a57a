@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2df39ac_42e30b1a",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-24T16:56:35Z",
+      "side": 1,
+      "message": "Is there any reason why this is exclusive with the WebUSB URL descriptor?",
+      "revId": "767f3d434ac9d208053fd1bae122ccc8bbb8a57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b829fa23_bb47f0e1",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-24T16:56:35Z",
+      "side": 1,
+      "message": "bools are implicitly false by default, so no need for this line.",
+      "revId": "767f3d434ac9d208053fd1bae122ccc8bbb8a57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
