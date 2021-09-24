@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05152437_f58b122e",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-24T22:20:07Z",
+      "side": 1,
+      "message": "Is it ok to forget the previous speeds? If setting a freq fails, don\u0027t we need to remember the speed which the port is operating at?",
+      "range": {
+        "startLine": 1113,
+        "startChar": 0,
+        "endLine": 1117,
+        "endChar": 2
+      },
+      "revId": "2d1653dc3c81410f0890ef7af90eec3514ca8de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
