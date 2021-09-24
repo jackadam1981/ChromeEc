@@ -26,6 +26,7 @@
 
 int fpc_fp_maintenance(uint16_t *error_state)
 {
+#if 0
 	int rv;
 	fp_sensor_info_t sensor_info;
 	timestamp_t start = get_time();
@@ -47,6 +48,7 @@ int fpc_fp_maintenance(uint16_t *error_state)
 
 	*error_state |= FP_ERROR_DEAD_PIXELS(sensor_info.num_defective_pixels);
 	CPRINTS("num_defective_pixels: %d", sensor_info.num_defective_pixels);
+#endif
 
 	return EC_SUCCESS;
 }
