@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4db4faef_67612f6e",
+        "filename": "baseboard/brya/baseboard.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-24T18:28:50Z",
+      "side": 1,
+      "message": "This is why tablet_mode() check is performed.",
+      "parentUuid": "144d5118_57f206f6",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "dd89cfe1f34b8707846e4d80f32c3eb0aff29f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d6c383b5_75894ffb",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-24T01:11:24Z",
       "side": 1,
       "message": "if the override function is at the baseboard level,\nshould this also be set at the baseboard level?",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "dd89cfe1f34b8707846e4d80f32c3eb0aff29f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70f055f_b773c247",
+        "filename": "board/brya/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-24T18:28:50Z",
+      "side": 1,
+      "message": "The function is not called if CONFIG_LID_ANGLE_UPDATE is not defined (clamshell case). Are you OK with that?",
+      "parentUuid": "d6c383b5_75894ffb",
       "range": {
         "startLine": 66,
         "startChar": 8,
