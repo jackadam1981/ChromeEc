@@ -269,8 +269,18 @@ static void zephyr_print(const char *buff, size_t size)
 	 * Also, console_buf_notify_chars uses a mutex, which may not be
 	 * locked in ISRs.
 	 */
-	if (k_is_in_isr() || shell_zephyr->ctx->state != SHELL_STATE_ACTIVE) {
+	if (shell_zephyr->ctx->state != SHELL_STATE_ACTIVE) {
 		printk("%s", buff);
+	} else if(k_is_in_isr()) {
+		size_t tmp_count;
+		size_t offset = 0;
+		do {
+			shell_zephyr->iface->api->write(shell_zephyr->iface,
+				&((const uint8_t *) buff)[offset], size,
+				&tmp_count);
+			offset += tmp_count;
+			size -= tmp_count;
+		} while (size && tmp_count != 0);
 	} else {
 		/*
 		 * On some platforms, shell_* functions are not as fast
