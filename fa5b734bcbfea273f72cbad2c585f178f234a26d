@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7239b9be_d82e81d0",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 7017,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-24T22:47:05Z",
+      "side": 1,
+      "message": "When do we use it? What does it do?",
+      "range": {
+        "startLine": 7017,
+        "startChar": 1,
+        "endLine": 7017,
+        "endChar": 19
+      },
+      "revId": "fa5b734bcbfea273f72cbad2c585f178f234a26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12e96d89_14b8a9f2",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 7022,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-24T22:47:05Z",
+      "side": 1,
+      "message": "Can we unify enum i2c_freq and enum ec_i2c_control_speed?",
+      "range": {
+        "startLine": 7022,
+        "startChar": 5,
+        "endLine": 7022,
+        "endChar": 25
+      },
+      "revId": "fa5b734bcbfea273f72cbad2c585f178f234a26d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
