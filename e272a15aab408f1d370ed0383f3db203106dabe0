@@ -184,6 +184,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af4a1030_527f678c",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-24T02:10:09Z",
+      "side": 1,
+      "message": "It may be properly signed, if a valid GSCVD (maybe from a different platform, or different firmware version of the same platform) is copied into the wrong location. That\u0027s why I\u0027m saying the whole verification process up to and including checking the range hashes needs to run from inside this loop, and if any part of it fails, we need to pick the search back up again here to see if we can find a better FMAP.",
+      "parentUuid": "237f9932_82a98c7c",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "02b0bf41_c0fd341c",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 5
@@ -266,6 +284,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e6e55e8e_7ae33b80",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-24T02:10:09Z",
+      "side": 1,
+      "message": "That\u0027s still not overflow safe. For example, when `kbc-\u003ekb-\u003ekeyblock_signature.sig_size` is 0xffffffff, `sig_offset + kbc-\u003ekb-\u003ekeyblock_signature.sig_size` will overflow and appear to be smaller than `size`.\n\nWriting code that is really fully overflow safe in all parts is not easy, I would really recommend you consider just copying the validation code we already have. Most of the extra functions are just thin inline wrappers for the same primtive (vb2_verify_member_inside()), so I doubt it would actually add that much to the binary.",
+      "parentUuid": "559dc8c7_478b6ad2",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbb92b85_e0930bb1",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 5
@@ -301,6 +337,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0e9bb860_4fe37130",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-24T02:10:09Z",
+      "side": 1,
+      "message": "Yes I think this should be dropped.",
+      "parentUuid": "588b9ad6_63b5b0f1",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "bfd341e3_1caa1c62",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 5
@@ -330,6 +384,24 @@
       "side": 1,
       "message": "verify_ranges() first reads the ranges values from AP flash, note that this function is shared by the old and new AP RO verification flows.\n\nThe ranges values are needed for GVD verification. I agree that we could read the ranges values first, then verify  GVD and then verify the ranges, but this would cause some code expansion for no particularly good reason.",
       "parentUuid": "bfd341e3_1caa1c62",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7db9b2ff_d228dc73",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-24T02:10:09Z",
+      "side": 1,
+      "message": "Yes, I think you should split loading and verifying of the ranges. (In fact I think it would be best if you just load the whole structure including signature and everything into dynamically allocated storage in one go, and then verify and use parts of it as needed. That\u0027s how vboot does these kinds of things.) It\u0027s important not to start hashing ranges before they have been verified, that would be an easy denial-of-service vector for clogging up the flash with a bunch of fake GSCVD structures that all for the GSC to hash the whole flash again and again.",
+      "parentUuid": "6ad53b88_e5e4cecd",
       "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
