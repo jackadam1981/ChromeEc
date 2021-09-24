@@ -36,6 +36,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3159c594_07e47cb4",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-24T22:52:00Z",
+      "side": 1,
+      "message": "Oh, so you\u0027re not actually merging this CL? I suppose that\u0027s fine if it\u0027s supposed to be an example. But they should keep in mind there are more changes that will need to be done. (which they may already be aware of)",
+      "parentUuid": "3ed16774_0ea2f04a",
+      "revId": "57124d71df09662de968f13710853bfd52ec08b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c2665634_4b80d435",
