@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77882b19_e9c4934e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-24T17:05:24Z",
+      "side": 1,
+      "message": "What does this mean? Padding is required for flash_range_ok regardless of linker/compiler, right? Or clang takes alignment as a parameter?",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 68
+      },
+      "revId": "776c7205d7dc56ad24d3602364c8a01e7f663457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66b7091c_9ff360f9",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 3
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-24T17:05:24Z",
+      "side": 1,
+      "message": "If the linked text is so important, we should copy it somewhere (link_defs.h, cros_versioin.h, or docs/*.md).",
+      "range": {
+        "startLine": 517,
+        "startChar": 4,
+        "endLine": 517,
+        "endChar": 106
+      },
+      "revId": "776c7205d7dc56ad24d3602364c8a01e7f663457",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
