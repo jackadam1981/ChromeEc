@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "baef16ff_20f86755",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-24T18:18:31Z",
+      "side": 1,
+      "message": "I think the reason for this is that webusb_url only exists when CONFIG_WEBUSB_URL is defined.",
+      "parentUuid": "c2df39ac_42e30b1a",
+      "revId": "767f3d434ac9d208053fd1bae122ccc8bbb8a57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b829fa23_bb47f0e1",
         "filename": "zephyr/Kconfig.usbc",
         "patchSetId": 5
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-24T16:56:35Z",
       "side": 1,
       "message": "bools are implicitly false by default, so no need for this line.",
+      "revId": "767f3d434ac9d208053fd1bae122ccc8bbb8a57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc29940_22b981e1",
+        "filename": "zephyr/Kconfig.usbc",
+        "patchSetId": 5
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-24T18:18:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b829fa23_bb47f0e1",
       "revId": "767f3d434ac9d208053fd1bae122ccc8bbb8a57a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
