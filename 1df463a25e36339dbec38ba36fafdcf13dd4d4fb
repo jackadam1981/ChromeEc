@@ -70,6 +70,24 @@
       "parentUuid": "9058e105_f5556d3e",
       "revId": "1df463a25e36339dbec38ba36fafdcf13dd4d4fb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79a0ee7b_22ff42e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-24T16:43:06Z",
+      "side": 1,
+      "message": "Interesting, now I\u0027m seeing the assert fire. However, if I disable it, the image boots fine and the console works.\n\nWith your suggestion the compilation works, but the console doesn\u0027t work. This is the same behavior that I was seeing before my changes. The issue hasn\u0027t been compilation or linking; the image doesn\u0027t get to the console.",
+      "parentUuid": "97f61b7f_43cd29d8",
+      "revId": "1df463a25e36339dbec38ba36fafdcf13dd4d4fb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
