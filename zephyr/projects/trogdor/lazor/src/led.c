@@ -17,10 +17,15 @@
 #include "system.h"
 #include "util.h"
 
+#include <devicetree.h>
+
 #define LED_ONE_SEC (1000 / HOOK_TICK_INTERVAL_MS)
 
 #define BAT_LED_ON 1
 #define BAT_LED_OFF 0
+
+#define BATT_LED_NODE    DT_PATH(gpio_led, battery_led_colors)
+#define LED_CONTROL      DT_NODELABEL(led_control)
 
 const enum ec_led_id supported_led_ids[] = {
 	EC_LED_ID_BATTERY_LED,
@@ -43,10 +48,13 @@ static void led_set_color(enum led_color color)
 		(color == LED_BLUE) ? BAT_LED_ON : BAT_LED_OFF);
 }
 
+static const uint8_t dt_brigthness_range[EC_LED_COLOR_COUNT] =
+	DT_PROP(DT_PATH(gpio_led, brightness_range), brightness_range_battery);
+
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
-	brightness_range[EC_LED_COLOR_AMBER] = 1;
-	brightness_range[EC_LED_COLOR_BLUE] = 1;
+	memcpy(brightness_range, dt_brigthness_range,
+		sizeof(dt_brigthness_range));
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
@@ -61,66 +69,159 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 	return EC_SUCCESS;
 }
 
+struct led_color_t {
+	int led_color;
+	int acc_period;
+};
+
+enum extra_flag_t {
+	NONE = 0,
+	CHFLAG_FORCE_IDLE,
+	CHFLAG_DEFAULT,
+	BATT_BELOW_10,
+	BATT_ABOVE_10,
+};
+
+enum chipset_state_t {
+	ANY = 0,
+	S0,
+	S3,
+	S5,
+};
+
+#define MAX_COLOR	4
+
+struct node_prop_t {
+	enum charge_state pwr_state;
+	enum chipset_state_t chipset_state;
+	enum extra_flag_t extra_flag;
+	struct led_color_t led_color[MAX_COLOR];
+};
+
+#define GET_PROP(id, prop) COND_CODE_1(DT_NODE_HAS_PROP(id, prop),	  \
+				       (DT_STRING_UPPER_TOKEN(id, prop)), \
+				       (0))
+
+/* TODO: Fix setting led_color values */
+#define SET_LED_VALUES(id)						  \
+	{								  \
+		.pwr_state = GET_PROP(id, charge_state),		  \
+		.chipset_state = GET_PROP(id, chipset_state),		  \
+		.extra_flag = GET_PROP(id, extra_flag),			  \
+		.led_color = {{0, 0},					  \
+			      {0, 1},					  \
+			      {0, 1},					  \
+			      {0, 1}					  \
+			     }						  \
+	},
+
+struct node_prop_t node_array[] = {
+	DT_FOREACH_CHILD(BATT_LED_NODE, SET_LED_VALUES)
+};
+
+static enum chipset_state_t get_chipset_state(void)
+{
+	enum chipset_state_t chipset_state;
+
+	if (chipset_in_state(CHIPSET_STATE_ON))
+		/* S0 */
+		chipset_state = S0;
+	else if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND))
+		/* S3 */
+		chipset_state = S3;
+	else if (chipset_in_state(CHIPSET_STATE_ANY_OFF))
+		/* S5 */
+		chipset_state = S5;
+
+	return chipset_state;
+}
+
+static int find_node(enum charge_state pwr_state)
+{
+	int i = 0;
+
+	for (i = 0; i < ARRAY_SIZE(node_array); i++) {
+		if (node_array[i].pwr_state == pwr_state)
+			break;
+	}
+
+	/* Check if this node depends on chipset state */
+	if (node_array[i].chipset_state != ANY) {
+		enum chipset_state_t chipset_state = get_chipset_state();
+
+		/* Continue at current index as nodes are in sequence */
+		while (node_array[i].chipset_state != chipset_state)
+			i++;
+	}
+
+	/* Check if the node depends on any special flags */
+	if (node_array[i].extra_flag != NONE) {
+		uint32_t chflags = charge_get_flags();
+
+		switch (node_array[i].extra_flag) {
+		case CHFLAG_FORCE_IDLE:
+		case CHFLAG_DEFAULT:
+			if (chflags & CHARGE_FLAG_FORCE_IDLE) {
+				while (node_array[i].extra_flag !=
+							CHFLAG_FORCE_IDLE)
+					i++;
+			} else {
+				while (node_array[i].extra_flag !=
+							CHFLAG_DEFAULT)
+					i++;
+			}
+			break;
+		case BATT_BELOW_10:
+		case BATT_ABOVE_10:
+			if (charge_get_percent() < 10) {
+				while (node_array[i].extra_flag !=
+							BATT_BELOW_10)
+					i++;
+			} else {
+				while (node_array[i].extra_flag !=
+							BATT_ABOVE_10)
+					i++;
+			}
+			break;
+		default:
+			break;
+		}
+	}
+
+	return i;
+}
+
+#define GET_PERIOD(n_idx, c_idx)  node_array[n_idx].led_color[c_idx].acc_period
+#define GET_COLOR(n_idx, c_idx)   node_array[n_idx].led_color[c_idx].led_color
+
+static int find_color(int node_idx, int ticks)
+{
+	int color_idx = 0;
+
+	/* If period value at index 0 is not 0, it's a blinking LED */
+	if (node_array[node_idx].led_color[0].acc_period != 0) {
+		ticks = ticks % GET_PERIOD(node_idx, MAX_COLOR - 1);
+
+		for (color_idx = 0; color_idx < MAX_COLOR; color_idx++) {
+			if (GET_PERIOD(node_idx, color_idx) < ticks)
+				break;
+		}
+	}
+
+	return GET_COLOR(node_idx, color_idx);
+}
+
 static void board_led_set_battery(void)
 {
-	static int battery_ticks;
 	int color = LED_OFF;
-	int period = 0;
-	uint32_t chflags = charge_get_flags();
+	int node = 0;
+	enum charge_state pwr_state = charge_get_state();
+	static int ticks;
 
-	battery_ticks++;
+	ticks++;
 
-	switch (charge_get_state()) {
-	case PWR_STATE_CHARGE:
-		/* Always indicate amber on when charging. */
-		color = LED_AMBER;
-		break;
-	case PWR_STATE_DISCHARGE:
-		if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
-			/* Discharging in S3: Amber 1 sec, off 3 sec */
-			period = (1 + 3) * LED_ONE_SEC;
-			battery_ticks = battery_ticks % period;
-			if (battery_ticks < 1 * LED_ONE_SEC)
-				color = LED_AMBER;
-			else
-				color = LED_OFF;
-		} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
-			/* Discharging in S5: off */
-			color = LED_OFF;
-		} else if (chipset_in_state(CHIPSET_STATE_ON)) {
-			/* Discharging in S0: Blue on */
-			color = LED_BLUE;
-		}
-		break;
-	case PWR_STATE_ERROR:
-		/* Battery error: Amber 1 sec, off 1 sec */
-		period = (1 + 1) * LED_ONE_SEC;
-		battery_ticks = battery_ticks % period;
-		if (battery_ticks < 1 * LED_ONE_SEC)
-			color = LED_AMBER;
-		else
-			color = LED_OFF;
-		break;
-	case PWR_STATE_CHARGE_NEAR_FULL:
-		/* Full Charged: Blue on */
-		color = LED_BLUE;
-		break;
-	case PWR_STATE_IDLE: /* External power connected in IDLE */
-		if (chflags & CHARGE_FLAG_FORCE_IDLE) {
-			/* Factory mode: Blue 2 sec, Amber 2 sec */
-			period = (2 + 2) * LED_ONE_SEC;
-			battery_ticks = battery_ticks % period;
-			if (battery_ticks < 2 * LED_ONE_SEC)
-				color = LED_BLUE;
-			else
-				color = LED_AMBER;
-		} else
-			color = LED_BLUE;
-		break;
-	default:
-		/* Other states don't alter LED behavior */
-		break;
-	}
+	node = find_node(pwr_state);
+	color = find_color(node, ticks);
 
 	led_set_color(color);
 }
@@ -147,7 +248,7 @@ void led_control(enum ec_led_id led_id, enum ec_led_state state)
 		return;
 	}
 
-	color = state ? LED_BLUE : LED_OFF;
+	color = state ? DT_STRING_UPPER_TOKEN(LED_CONTROL, led_color) : LED_OFF;
 
 	led_auto_control(EC_LED_ID_BATTERY_LED, 0);
 
