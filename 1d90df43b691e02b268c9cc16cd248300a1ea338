@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "986015ee_e9bf639b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-24T01:29:41Z",
+      "side": 1,
+      "message": "I broke down the entire driver implementation into smaller chunks so it is easier to review. This is the first part where I just make battery led SM generic. Later led.c file will be moved into driver directory in follow on CLs.",
+      "revId": "1d90df43b691e02b268c9cc16cd248300a1ea338",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
