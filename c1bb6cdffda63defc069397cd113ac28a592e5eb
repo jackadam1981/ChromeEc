@@ -52,6 +52,29 @@
       "parentUuid": "1da08d56_5e3323c7",
       "revId": "c1bb6cdffda63defc069397cd113ac28a592e5eb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1388bea_92b409d7",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-24T18:56:37Z",
+      "side": 1,
+      "message": "Can you either make this a detached function or at least comment in place to indicate the modes set the mux and they are being disconnected so need to disconnect mux?",
+      "range": {
+        "startLine": 716,
+        "startChar": 0,
+        "endLine": 718,
+        "endChar": 49
+      },
+      "revId": "c1bb6cdffda63defc069397cd113ac28a592e5eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
