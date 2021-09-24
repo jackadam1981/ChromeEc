@@ -102,7 +102,7 @@ static enum tcpc_cc_voltage_status it83xx_get_cc(
 		SET_MASK(cc_state, BIT(2));
 
 	/* sink */
-	if (USBPD_GET_POWER_ROLE(port) == USBPD_POWER_ROLE_CONSUMER) {
+	if (USBPD_GET_POWER_ROLE(port) == USBPD_POWER_ROLE_SNK) {
 		if (cc_pin == USBPD_CC_PIN_1)
 			ufp_volt = IT83XX_USBPD_UFPVDR(port) & 0x7;
 		else

@@ -129,7 +129,8 @@ int watchdog_init(void)
 	IT83XX_ETWD_EWDCNTLLR = wdt_count & 0xff;
 
 	/* Lock access to watchdog registers. */
-	IT83XX_ETWD_ETWCFG = 0x3f;
+	//IT83XX_ETWD_ETWCFG = 0x3f;
+	IT83XX_ETWD_ETWCFG = 0x3b; //don't lock timer1 cnt
 
 	return EC_SUCCESS;
 }

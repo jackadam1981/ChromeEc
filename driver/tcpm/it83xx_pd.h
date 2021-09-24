@@ -392,6 +392,10 @@
 #define IT83XX_IRQ_USBPD0	IT8XXX2_IRQ_USBPD0
 #define IT83XX_IRQ_USBPD1	IT8XXX2_IRQ_USBPD1
 #define IT83XX_IRQ_USBPD2	IT8XXX2_IRQ_USBPD2
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+#define IT83XX_IRQ_EXT_TIMER1	IT8XXX2_IRQ_TIMER5
+#define IT83XX_IRQ_EXT_TIMER2	IT8XXX2_IRQ_TIMER6
+#endif
 #define USB_VID_ITE		0x048d
 
 /* ITE chip supports PD features */
@@ -419,10 +423,8 @@ enum usbpd_dfp_volt_status {
 };
 
 enum usbpd_power_role {
-	USBPD_POWER_ROLE_CONSUMER,
-	USBPD_POWER_ROLE_PROVIDER,
-	USBPD_POWER_ROLE_CONSUMER_PROVIDER,
-	USBPD_POWER_ROLE_PROVIDER_CONSUMER,
+	USBPD_POWER_ROLE_SNK,
+	USBPD_POWER_ROLE_SRC,
 };
 
 enum tuning_unit {
@@ -443,6 +445,10 @@ struct cc_para_t {
 	enum tuning_unit rising_time;
 	enum tuning_unit falling_time;
 };
+
+/* Define flag for pd port auto toggle */
+/* The pd port enable auto toggle and get execution of timer */
+//define AUTO_TOGGLE_ENABLE_RUNNING(port)	BIT((port))
 
 extern const struct usbpd_ctrl_t usbpd_ctrl_regs[];
 void it8xxx2_clear_tx_error_status(enum usbpd_port port);

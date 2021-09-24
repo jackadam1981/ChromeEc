@@ -19,4 +19,16 @@
  */
 void chip_pd_irq(enum usbpd_port port);
 
+/**
+ * ITE timer interrupt routine for software auto toggle
+ *
+ * NOTE: In the future, we will have auto toggle register as TCPC spec defined,
+ *       then we may needn't this routine
+ *
+ * @param port Type-C port number
+ *
+ * @return none
+ */
+void auto_toggle_timer_interrupt(enum usbpd_port port);
+
 #endif /* __CROS_EC_ITE_PD_INTC_H */

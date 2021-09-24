@@ -105,8 +105,16 @@ void intc_cpu_int_group_12(void)
 	case IT83XX_IRQ_USBPD2:
 		chip_pd_irq(USBPD_PORT_C);
 		break;
-#endif
-#endif
+#endif /* CONFIG_USB_PD_TCPM_DRIVER_IT8XXX2 */
+#ifdef CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE
+	case IT83XX_IRQ_EXT_TIMER1:
+		auto_toggle_timer_interrupt(USBPD_PORT_A);
+		break;
+	case IT83XX_IRQ_EXT_TIMER2:
+		auto_toggle_timer_interrupt(USBPD_PORT_B);
+		break;
+#endif /* CONFIG_USB_PD_DUAL_ROLE_AUTO_TOGGLE */
+#endif /* CONFIG_USB_PD_TCPM_ITE_ON_CHIP */
 #ifdef CONFIG_SPI
 	case IT83XX_IRQ_SPI_PERIPHERAL:
 		spi_peripheral_int_handler();
