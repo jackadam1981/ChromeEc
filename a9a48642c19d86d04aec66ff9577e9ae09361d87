@@ -92,6 +92,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7ff82d5b_a4cf67b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1113904
+      },
+      "writtenOn": "2021-09-24T00:19:38Z",
+      "side": 1,
+      "message": "I believe juniper is a launched device with that i2c keyboard expander in it (with all the fun of recovery that it comes with).",
+      "parentUuid": "be330898_37bb61ed",
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39722849_349cef71",
         "filename": "common/main.c",
         "patchSetId": 9
