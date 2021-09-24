@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d202f3_837b89d3",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-24T19:47:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3a83ad55_b6ec81ef",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a25ec03_614c4b31",
@@ -200,6 +218,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe9aed2_0b02363a",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-24T19:47:27Z",
+      "side": 1,
+      "message": "yes, I understand your concern, I just am not totally sure what is the best way to address it, as mentioned, let\u0027s leave it out of this patch.",
+      "parentUuid": "af4a1030_527f678c",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02b0bf41_c0fd341c",
@@ -302,6 +338,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "12c6bc70_fc885441",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-24T19:47:27Z",
+      "side": 1,
+      "message": "Yes, I thought about that case too, added a function which hopefully does the right thing.",
+      "parentUuid": "e6e55e8e_7ae33b80",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cbb92b85_e0930bb1",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 5
@@ -349,6 +403,24 @@
       "side": 1,
       "message": "Yes I think this should be dropped.",
       "parentUuid": "588b9ad6_63b5b0f1",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0960137_08a9b330",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1059,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-24T19:47:27Z",
+      "side": 1,
+      "message": "dropped.",
+      "parentUuid": "0e9bb860_4fe37130",
       "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -402,6 +474,24 @@
       "side": 1,
       "message": "Yes, I think you should split loading and verifying of the ranges. (In fact I think it would be best if you just load the whole structure including signature and everything into dynamically allocated storage in one go, and then verify and use parts of it as needed. That\u0027s how vboot does these kinds of things.) It\u0027s important not to start hashing ranges before they have been verified, that would be an easy denial-of-service vector for clogging up the flash with a bunch of fake GSCVD structures that all for the GSC to hash the whole flash again and again.",
       "parentUuid": "6ad53b88_e5e4cecd",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f576ae8_18168439",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-24T19:47:27Z",
+      "side": 1,
+      "message": "I am sorry, but I respectfully disagree: the chance that gvd signature verification would fail is much lower, than the chance that the RO areas hash would not match. This is why it makes sense to check the hash first.\n\nUnless some other reviewer agrees that this order of operations change is necessary I would prefer to leave this as is.\n\nAlso, about \"would be best if you just load the whole structure\" - I think this is where the root of our disagreements is: there is not enough memory on Cr50 heap to allocate a buffer which would fit the fool RO_GSCVD section.\n\nThe elements (the keys and the signature) must be loaded no more than two at a time.",
+      "parentUuid": "7db9b2ff_d228dc73",
       "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
