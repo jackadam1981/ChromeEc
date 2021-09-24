@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed16774_0ea2f04a",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-24T20:11:22Z",
+      "side": 1,
+      "message": "So the changes in this file are to be used as an example by partners and when they actually enable the 2nd charger source (By enabling CONFIG_USB_PD_RUNTIME_FLAGS), they will also have to make necessary changes in the respective board.c files. Is my understanding wrong? What are your thoughts?",
+      "parentUuid": "c8763251_be20acf3",
+      "revId": "57124d71df09662de968f13710853bfd52ec08b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c2665634_4b80d435",
