@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3938e0fe_0028eb00",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-24T17:59:52Z",
+      "side": 1,
+      "message": "you\u0027re right, no need to handle power-up case differently. intermittent errors can also happen at that stage. Both tests only report errors when got enough statistics anyway.",
+      "parentUuid": "bce1be36_c151063a",
+      "range": {
+        "startLine": 164,
+        "startChar": 25,
+        "endLine": 164,
+        "endChar": 39
+      },
+      "revId": "7cbf53f7ceff1beb49b5d1737148cbc953ad1438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ecd61eee_c5234e2b",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-24T17:39:44Z",
       "side": 1,
       "message": "nit: this assumes FIPS_UNINITIALIZED is 0 or only has one bit set. otherwise, two different errors could reproduce FIPS_UNINITIALIZED when combined. let\u0027s make it an explicit requirement and clearer from the code.\n\nmaybe in `enum fips_status` have an alias for FIPS_UNINITIALIZED that is named FIPS_OK or FIPS_TRNG_OK or something and static_assert that it is 0 with a comment?",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 10
+      },
+      "revId": "7cbf53f7ceff1beb49b5d1737148cbc953ad1438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4319f04_ee090e43",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-24T17:59:52Z",
+      "side": 1,
+      "message": "yes, it is zero. I\u0027ll add static assert",
+      "parentUuid": "ecd61eee_c5234e2b",
       "range": {
         "startLine": 177,
         "startChar": 2,
