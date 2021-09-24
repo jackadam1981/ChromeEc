@@ -71,6 +71,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aca0cff3_3382b5ba",
+        "filename": "common/usb_pd_flags.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-24T22:42:22Z",
+      "side": 1,
+      "message": "Nevermind, I missed the fact that the distinction is made by setting the usb_pd_flags variable via the CBI SSFC from the board specific file.",
+      "parentUuid": "9e560406_8120fb72",
+      "revId": "87e36b8eef94964410866a78661e6924970f3adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f3e167d2_50580980",
