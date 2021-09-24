@@ -94,6 +94,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb23989e_79200e72",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-24T13:48:03Z",
+      "side": 1,
+      "message": "From \"PS8815 Application Note\", it defines I2C readable 10ms (at least) right after RST# is released.\n\nWhatever, I already move this I2C read after board_reset_pd_mcu.",
+      "parentUuid": "753e6a7f_17a28164",
+      "range": {
+        "startLine": 42,
+        "startChar": 42,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78a9e5e4_9bf7e000",
@@ -117,6 +141,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a89edc08_a3407d83",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-24T13:48:03Z",
+      "side": 1,
+      "message": "You are right.\nI saw this failure symptom yesterday when I have DB and test it.\nI move I2C read right after board_reset_pd_mcu() of board_tcpc_init(), and it can get positive result.",
+      "parentUuid": "78a9e5e4_9bf7e000",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5b54e3e6_3e39b772",
@@ -130,6 +178,30 @@
       "writtenOn": "2021-09-17T23:21:54Z",
       "side": 1,
       "message": "this should be 1",
+      "range": {
+        "startLine": 49,
+        "startChar": 42,
+        "endLine": 49,
+        "endChar": 43
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ba70f2_c6d34d05",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-24T13:48:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b54e3e6_3e39b772",
       "range": {
         "startLine": 49,
         "startChar": 42,
@@ -211,6 +283,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "01fe6f94_71dbe176",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-24T13:48:03Z",
+      "side": 1,
+      "message": "Thanks for your comment.\nI remove CONFIG_SYSTEM_UNLOCKED and check board_id.",
+      "parentUuid": "5ee015dd_1eb6e363",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 30
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "856db0bd_1212186e",
@@ -271,6 +367,30 @@
       "writtenOn": "2021-09-17T08:04:44Z",
       "side": 1,
       "message": "i think it\u0027s better to override board_is_usb_pd_port_present()\ninstead.",
+      "range": {
+        "startLine": 304,
+        "startChar": 19,
+        "endLine": 304,
+        "endChar": 46
+      },
+      "revId": "65f8612b5bb389b699fdf5be4d6cc9fa5e54d913",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7bbb59e6_2a906cda",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-24T13:48:03Z",
+      "side": 1,
+      "message": "I add condition to check db_is_plugged here as new patch.",
+      "parentUuid": "a43cab77_f06bfd13",
       "range": {
         "startLine": 304,
         "startChar": 19,
