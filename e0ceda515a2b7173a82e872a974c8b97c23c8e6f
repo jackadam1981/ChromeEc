@@ -43,6 +43,63 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "21c89b0a_a2033dd7",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-24T08:36:40Z",
+      "side": 1,
+      "message": "IIUC \u0027payload\u0027 is for v1 and \u0027descriptor\u0027 is for v2. Could you add a comment here for clarification?",
+      "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af16610e_b6052855",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-24T08:36:40Z",
+      "side": 1,
+      "message": "Is this field used anywhere?",
+      "range": {
+        "startLine": 171,
+        "startChar": 17,
+        "endLine": 171,
+        "endChar": 23
+      },
+      "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8df6e92_e25f058f",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-24T08:36:40Z",
+      "side": 1,
+      "message": "Can we call only one of find_v2_entry() and verify_ap_ro_check_space() based on the value of p_chk-\u003eheader.type?",
+      "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "eeb7e043_393676a6",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 8
@@ -54,6 +111,126 @@
       "writtenOn": "2021-09-24T02:10:09Z",
       "side": 1,
       "message": "This should probably print an error message to aid debugging in case we ever hit that limit legitimately in the future?",
+      "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ce7814_6fb8b212",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 788,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-24T08:36:40Z",
+      "side": 1,
+      "message": "Do we need to break from the outer loop as well?",
+      "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b48926d7_2860f2d3",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-24T08:36:40Z",
+      "side": 1,
+      "message": "Use EC_SUCCESS here?",
+      "range": {
+        "startLine": 841,
+        "startChar": 8,
+        "endLine": 841,
+        "endChar": 9
+      },
+      "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03530270_f5987d34",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1341,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-24T08:36:40Z",
+      "side": 1,
+      "message": "Extra space.",
+      "range": {
+        "startLine": 1341,
+        "startChar": 57,
+        "endLine": 1341,
+        "endChar": 58
+      },
+      "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c260022_5f360619",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1402,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-24T08:36:40Z",
+      "side": 1,
+      "message": "Duplicate comment?",
+      "range": {
+        "startLine": 1402,
+        "startChar": 42,
+        "endLine": 1402,
+        "endChar": 66
+      },
+      "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee07ee04_7ae8544d",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1417,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-24T08:36:40Z",
+      "side": 1,
+      "message": "Extra blank line.",
+      "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2a1902b_544592fe",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1471,
+      "author": {
+        "id": 1353551
+      },
+      "writtenOn": "2021-09-24T08:36:40Z",
+      "side": 1,
+      "message": "Is this change intentional?",
       "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
