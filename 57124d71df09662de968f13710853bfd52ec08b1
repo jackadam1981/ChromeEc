@@ -54,6 +54,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a98c067_637f0ab1",
+        "filename": "board/pirika/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-24T23:13:20Z",
+      "side": 1,
+      "message": "I am planning to merge this as the changes will not break anything until CONFIG_USB_PD_RUNTIME_FLAGS are enabled. Maybe I can add a comment around this saying it will need to be modified when CONFIG_USB_PD_RUNTIME_FLAGS is enabled. But I will consult with Marco on the status of 2nd source charger support requirement from partners and where Pirika is before merging this CL.",
+      "parentUuid": "3159c594_07e47cb4",
+      "revId": "57124d71df09662de968f13710853bfd52ec08b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "c2665634_4b80d435",
