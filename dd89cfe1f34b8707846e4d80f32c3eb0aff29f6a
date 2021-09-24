@@ -110,6 +110,30 @@
       },
       "revId": "dd89cfe1f34b8707846e4d80f32c3eb0aff29f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97fa0048_a8e77af4",
+        "filename": "board/brya/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-24T22:29:49Z",
+      "side": 1,
+      "message": "trying to reverse engineer the intent of these dependent flags:\n\nbaseboard.h has CONFIG_GMR_TABLET_MODE, so that already enables\nchecking GMR_TABLET_MODE_GPIO_L, etc.\n\ni think once you\u0027re at that level of commitment,\nwouldn\u0027t you also want CONFIG_LID_ANGLE and CONFIG_LID_ANGLE_UPDATE?\n\nso, enable/disable all 3 as a set? is there case on a brya\nvariant where you wouldn\u0027t enable/disable them as a set?",
+      "parentUuid": "b70f055f_b773c247",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "dd89cfe1f34b8707846e4d80f32c3eb0aff29f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
