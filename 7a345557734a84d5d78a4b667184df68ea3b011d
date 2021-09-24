@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "489f7335_524aead1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-24T19:19:34Z",
+      "side": 1,
+      "message": "when using those DCRYPTO functions that now accept size_t, do we need to assume that sizeof(size_t) \u003e\u003d sizeof(uint32_t)? would happen if we pass buffers coming from inputs that have uint32_t as the size field, for example.",
+      "revId": "7a345557734a84d5d78a4b667184df68ea3b011d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
