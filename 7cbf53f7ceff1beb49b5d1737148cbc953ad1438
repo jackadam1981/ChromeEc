@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bce1be36_c151063a",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-24T17:39:44Z",
+      "side": 1,
+      "message": "but why do we care if it\u0027s power_up or not? we only use retries if we need them. if at powerup it\u0027s impossible to get a test error, then it doesn\u0027t matter what value we set, it will only do it once. if it is possible, then even more importantly why don\u0027t we want to retry to handle that statistically unlikely but theoretically possible situation at that point?",
+      "range": {
+        "startLine": 164,
+        "startChar": 25,
+        "endLine": 164,
+        "endChar": 39
+      },
+      "revId": "7cbf53f7ceff1beb49b5d1737148cbc953ad1438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ecd61eee_c5234e2b",
+        "filename": "board/cr50/dcrypto/fips_rand.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-24T17:39:44Z",
+      "side": 1,
+      "message": "nit: this assumes FIPS_UNINITIALIZED is 0 or only has one bit set. otherwise, two different errors could reproduce FIPS_UNINITIALIZED when combined. let\u0027s make it an explicit requirement and clearer from the code.\n\nmaybe in `enum fips_status` have an alias for FIPS_UNINITIALIZED that is named FIPS_OK or FIPS_TRNG_OK or something and static_assert that it is 0 with a comment?",
+      "range": {
+        "startLine": 177,
+        "startChar": 2,
+        "endLine": 177,
+        "endChar": 10
+      },
+      "revId": "7cbf53f7ceff1beb49b5d1737148cbc953ad1438",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
