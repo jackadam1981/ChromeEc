@@ -94,6 +94,9 @@
 /* I2C speed console command */
 #define CONFIG_CMD_I2C_SPEED
 
+/* I2C speed host command */
+#define CONFIG_HOSTCMD_I2C_SPEED
+
 #define CONFIG_USBC_PPC_SYV682X
 #define CONFIG_USBC_PPC_NX20P3483
 
