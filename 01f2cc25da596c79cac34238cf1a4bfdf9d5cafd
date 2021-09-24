@@ -39,6 +39,54 @@
       },
       "revId": "01f2cc25da596c79cac34238cf1a4bfdf9d5cafd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66d8d0f_21c4c979",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-24T17:59:10Z",
+      "side": 1,
+      "message": "ACK (for future)",
+      "parentUuid": "a7443c69_b201adc9",
+      "range": {
+        "startLine": 168,
+        "startChar": 47,
+        "endLine": 168,
+        "endChar": 48
+      },
+      "revId": "01f2cc25da596c79cac34238cf1a4bfdf9d5cafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da71798_7d0e4357",
+        "filename": "power/host_sleep.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-24T17:59:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a7443c69_b201adc9",
+      "range": {
+        "startLine": 168,
+        "startChar": 47,
+        "endLine": 168,
+        "endChar": 48
+      },
+      "revId": "01f2cc25da596c79cac34238cf1a4bfdf9d5cafd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
