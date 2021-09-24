@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a694010b_9cf90fa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-09-24T08:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02a6da52_a149aed8",
+      "range": {
+        "startLine": 9,
+        "startChar": 69,
+        "endLine": 9,
+        "endChar": 73
+      },
+      "revId": "42ce681f7dac115248ed1b6762a70072e8bade96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "60eac0a4_17ed8b70",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc7da80_9bab8b93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-09-24T08:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60eac0a4_17ed8b70",
+      "range": {
+        "startLine": 12,
+        "startChar": 68,
+        "endLine": 12,
+        "endChar": 74
+      },
+      "revId": "42ce681f7dac115248ed1b6762a70072e8bade96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7571d2f2_c95cfb24",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-24T07:17:29Z",
       "side": 1,
       "message": "It seems on it\u0027s very common that ITE EC needs a load instructions to ensure a write to the control register propagating to the system. How can we make sure all the writes are correclty propagated? Do we have a list a registers which need this trick?",
+      "range": {
+        "startLine": 145,
+        "startChar": 1,
+        "endLine": 145,
+        "endChar": 33
+      },
+      "revId": "42ce681f7dac115248ed1b6762a70072e8bade96",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d70b954_2e0b602a",
+        "filename": "chip/it83xx/clock.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1153134
+      },
+      "writtenOn": "2021-09-24T08:15:31Z",
+      "side": 1,
+      "message": "Mostly we use barrier instruction to guarantee modification can be seen by any following instructions. See the below line 171. But it doesn\u0027t apply to EC registers.\n\nIf there is no barrier instruction in the function, we don\u0027t need to care about setting is taken into a register or not.",
+      "parentUuid": "7571d2f2_c95cfb24",
       "range": {
         "startLine": 145,
         "startChar": 1,
