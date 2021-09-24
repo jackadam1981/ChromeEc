@@ -17,10 +17,22 @@
 #include "system.h"
 #include "util.h"
 
+#include <devicetree.h>
+
 #define LED_ONE_SEC (1000 / HOOK_TICK_INTERVAL_MS)
 
 #define BAT_LED_ON 1
 #define BAT_LED_OFF 0
+
+#define BATT_LED_COLORS  DT_PATH(gpio_led, battery_led_colors)
+#define CHARGING         DT_NODELABEL(charging)
+#define DISCHARGE_S0     DT_NODELABEL(discharge_s0)
+#define DISCHARGE_S3     DT_NODELABEL(discharge_s3)
+#define DISCHARGE_S5     DT_NODELABEL(discharge_s5)
+#define ERROR            DT_NODELABEL(error)
+#define NEAR_FULL        DT_NODELABEL(near_full)
+#define IDLE             DT_NODELABEL(idle)
+#define LED_CONTROL      DT_NODELABEL(led_control)
 
 const enum ec_led_id supported_led_ids[] = {
 	EC_LED_ID_BATTERY_LED,
@@ -43,10 +55,13 @@ static void led_set_color(enum led_color color)
 		(color == LED_BLUE) ? BAT_LED_ON : BAT_LED_OFF);
 }
 
+static const uint8_t dt_brigthness_range[EC_LED_COLOR_COUNT] =
+	DT_PROP(DT_PATH(gpio_led, brightness_range), brightness_range_battery);
+
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
-	brightness_range[EC_LED_COLOR_AMBER] = 1;
-	brightness_range[EC_LED_COLOR_BLUE] = 1;
+	memcpy(brightness_range, dt_brigthness_range,
+		sizeof(dt_brigthness_range));
 }
 
 int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
@@ -72,50 +87,56 @@ static void board_led_set_battery(void)
 
 	switch (charge_get_state()) {
 	case PWR_STATE_CHARGE:
-		/* Always indicate amber on when charging. */
-		color = LED_AMBER;
+		color = DT_ENUM_TOKEN(CHARGING, led_color);
 		break;
 	case PWR_STATE_DISCHARGE:
-		if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
-			/* Discharging in S3: Amber 1 sec, off 3 sec */
-			period = (1 + 3) * LED_ONE_SEC;
-			battery_ticks = battery_ticks % period;
-			if (battery_ticks < 1 * LED_ONE_SEC)
-				color = LED_AMBER;
-			else
-				color = LED_OFF;
-		} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
-			/* Discharging in S5: off */
+		/* TODO: Need additional work to make it work for Coachz */
+		if (DT_PROP(BATT_LED_COLORS, chipset_state)) {
+			if (chipset_in_state(CHIPSET_STATE_ANY_SUSPEND)) {
+				/* Discharging in S3 */
+				period = DT_PROP(DISCHARGE_S3, period);
+				battery_ticks = battery_ticks % period;
+				if (battery_ticks < 1 * LED_ONE_SEC)
+					color = DT_ENUM_TOKEN(
+						  DISCHARGE_S3, led_color_1);
+				else
+					color = DT_ENUM_TOKEN(
+						  DISCHARGE_S3, led_color_2);
+			} else if (chipset_in_state(CHIPSET_STATE_ANY_OFF)) {
+				/* Discharging in S5 */
+				color = DT_ENUM_TOKEN(DISCHARGE_S5, led_color);
+			} else if (chipset_in_state(CHIPSET_STATE_ON)) {
+				/* Discharging in S0 */
+				color = DT_ENUM_TOKEN(DISCHARGE_S0, led_color);
+			}
+		} else
 			color = LED_OFF;
-		} else if (chipset_in_state(CHIPSET_STATE_ON)) {
-			/* Discharging in S0: Blue on */
-			color = LED_BLUE;
-		}
 		break;
 	case PWR_STATE_ERROR:
-		/* Battery error: Amber 1 sec, off 1 sec */
-		period = (1 + 1) * LED_ONE_SEC;
+		/* Battery error */
+		period = DT_PROP(ERROR, period);
 		battery_ticks = battery_ticks % period;
 		if (battery_ticks < 1 * LED_ONE_SEC)
-			color = LED_AMBER;
+			color = DT_ENUM_TOKEN(ERROR, led_color_1);
 		else
-			color = LED_OFF;
+			color = DT_ENUM_TOKEN(ERROR, led_color_2);
 		break;
 	case PWR_STATE_CHARGE_NEAR_FULL:
-		/* Full Charged: Blue on */
-		color = LED_BLUE;
+		/* Full Charged */
+		/* TODO: Need additional logic for chipset states */
+		color = DT_ENUM_TOKEN(NEAR_FULL, led_color);
 		break;
 	case PWR_STATE_IDLE: /* External power connected in IDLE */
 		if (chflags & CHARGE_FLAG_FORCE_IDLE) {
-			/* Factory mode: Blue 2 sec, Amber 2 sec */
-			period = (2 + 2) * LED_ONE_SEC;
+			/* Factory mode */
+			period = DT_PROP(IDLE, period);
 			battery_ticks = battery_ticks % period;
 			if (battery_ticks < 2 * LED_ONE_SEC)
-				color = LED_BLUE;
+				color = DT_ENUM_TOKEN(IDLE, led_color_1);
 			else
-				color = LED_AMBER;
+				color = DT_ENUM_TOKEN(IDLE, led_color_2);
 		} else
-			color = LED_BLUE;
+			color = DT_ENUM_TOKEN(IDLE, led_color_3);
 		break;
 	default:
 		/* Other states don't alter LED behavior */
@@ -147,7 +168,7 @@ void led_control(enum ec_led_id led_id, enum ec_led_state state)
 		return;
 	}
 
-	color = state ? LED_BLUE : LED_OFF;
+	color = state ? DT_ENUM_TOKEN(LED_CONTROL, led_color) : LED_OFF;
 
 	led_auto_control(EC_LED_ID_BATTERY_LED, 0);
 

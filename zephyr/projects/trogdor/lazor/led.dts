@@ -1,0 +1,64 @@
+/ {
+	gpio-led {
+		compatible = "gpio-led";
+
+		brightness_range: brightness-range {
+			compatible = "led-brightness-range";
+
+			brightness-range-battery = < 0x0 /* Red */
+						     0x0 /* Green */
+						     0x1 /* Blue */
+						     0x0 /* Yellow */
+						     0x0 /* White */
+						     0x1 /* Amber */
+						    >;
+		};
+
+		battery-led-colors {
+			compatible = "battery-led-colors";
+
+			chipset-state; // Bool
+
+			charging: power-state-charge {
+				led-color = "LED_AMBER";
+			};
+			discharge_s0: powewr-state-discharge-s0 {
+				led-color = "LED_BLUE";
+			};
+
+			discharge_s3: power-state-discharge-s3 {
+				led-color-1 = "LED_AMBER";
+				led-color-2 = "LED_OFF";
+				period = <4>;
+			};
+
+
+			discharge_s5: power-state-discharge-s5 {
+				led-color = "LED_OFF";
+			};
+
+			error: power-state-error {
+				led-color-1 = "LED_AMBER";
+				led-color-2 = "LED_OFF";
+				period = <2>;
+			};
+
+			near_full: power-state-near-full {
+				led-color = "LED_BLUE";
+			};
+
+			idle: power-state-idle {
+				led-color-1 = "LED_BLUE";
+				led-color-2 = "LED_AMBER";
+				led-color-3 = "LED_BLUE";
+				period = <4>;
+			};
+		};
+
+		led_control: led-control {
+			compatible = "led-control";
+
+			led-color = "LED_BLUE";
+		};
+	};
+};

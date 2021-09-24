@@ -1,0 +1,71 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Battery LED colors parent node
+
+compatible: "battery-led-colors"
+
+properties:
+    chipset-state:
+        type: boolean
+        required: false
+        description: True if LED Colors depend on chipset state,
+                     otherwise false
+
+child-binding:
+    description: These properties set the LED color based on the power
+                 state of the system.
+    properties:
+        led-color:
+            type: string
+            required: false
+            enum:
+                - LED_OFF
+                - LED_RED
+                - LED_GREEN
+                - LED_BLUE
+                - LED_YELLOW
+                - LED_AMBER
+                - LED_WHITE
+
+        led-color-1:
+            type: string
+            required: false
+            enum:
+                - LED_OFF
+                - LED_RED
+                - LED_GREEN
+                - LED_BLUE
+                - LED_YELLOW
+                - LED_AMBER
+                - LED_WHITE
+
+        led-color-2:
+            type: string
+            required: false
+            enum:
+                - LED_OFF
+                - LED_RED
+                - LED_GREEN
+                - LED_BLUE
+                - LED_YELLOW
+                - LED_AMBER
+                - LED_WHITE
+
+        led-color-3:
+            type: string
+            required: false
+            enum:
+                - LED_OFF
+                - LED_RED
+                - LED_GREEN
+                - LED_BLUE
+                - LED_YELLOW
+                - LED_AMBER
+                - LED_WHITE
+
+        period:
+            type: int
+            required: false
+            description: If blinking LEDs, what's the period value
