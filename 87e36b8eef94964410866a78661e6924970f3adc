@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df8cb390_cb77ab53",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-24T19:49:01Z",
+      "side": 1,
+      "message": "Fixed the Zephyr build",
+      "parentUuid": "45ff6e00_8c48e7de",
+      "revId": "87e36b8eef94964410866a78661e6924970f3adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "696c4fde_e358b4bb",
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9e560406_8120fb72",
+        "filename": "common/usb_pd_flags.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-24T19:49:01Z",
+      "side": 1,
+      "message": "Here\u0027s how this will work in different scenarios:\n\nTwo charger sources - one needs CONFIG_USB_PD_VBUS_DETECT_TCPC enabled, other needs CONFIG_USB_PD_VBUS_DETECT_CHARGER enabled\n\n1. Hardware that needs to support both the charger sources:\nHardware will enable CONFIG_USB_PD_FLAGS in board.h\nIt will also enable CONFIG_USB_PD_VBUS_DETECT_TCPC and CONFIG_USB_PD_VBUS_DETECT_CHARGER, but depending on the USB PD Flags set using CBI SSFC we can choose the correct vbus detect and take the correct code path \n\nThe code will behave exactly like how it works today in the following scenario:\n2. Harware only supports charger source with VBUS_DETECT_TCPC,\nIt will enable CONFIG_USB_PD_VBUS_DETECT_TCPC in board.h, CONFIG_USB_PD_FLAGS and CONFIG_USB_PD_VBUS_DETECT_CHARGER will remain disabled \n\n3. Hardware only supports charger source with VBUS_DETECT_CHARGER,\nIt will enable CONFIG_USB_PD_VBUS_DETECT_CHARGER in board.h, CONFIG_USB_PD_FLAGS and CONFIG_USB_PD_VBUS_DETECT_CHARGER will remain disabled.",
+      "parentUuid": "696c4fde_e358b4bb",
+      "revId": "87e36b8eef94964410866a78661e6924970f3adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3e167d2_50580980",
         "filename": "common/usb_pd_flags.c",
         "patchSetId": 9
@@ -48,6 +84,30 @@
       "writtenOn": "2021-09-24T16:23:40Z",
       "side": 1,
       "message": "Typo",
+      "range": {
+        "startLine": 27,
+        "startChar": 47,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "87e36b8eef94964410866a78661e6924970f3adc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7430d646_b199a95d",
+        "filename": "common/usb_pd_flags.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-24T19:49:01Z",
+      "side": 1,
+      "message": "Fixed, thanks for pointing this out!",
+      "parentUuid": "f3e167d2_50580980",
       "range": {
         "startLine": 27,
         "startChar": 47,
