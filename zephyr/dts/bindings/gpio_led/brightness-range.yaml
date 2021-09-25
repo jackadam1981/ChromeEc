@@ -12,3 +12,9 @@ properties:
         required: true
         description: Brightness range values for gpio leds,
                      1 for the enabled LEDs, otherwise 0
+
+    brightness-range-power:
+        type: array
+        required: false
+        description: Brightness range values for gpio leds,
+                     1 for the enabled LEDs, otherwise 0

@@ -7,11 +7,19 @@
 
 			brightness-range-battery = < 0x0 /* Red */
 						     0x0 /* Green */
-						     0x1 /* Blue */
+						     0x0 /* Blue */
 						     0x0 /* Yellow */
-						     0x0 /* White */
+						     0x1 /* White */
 						     0x1 /* Amber */
 						     >;
+
+			brightness-range-power = < 0x0 /* Red */
+						   0x0 /* Green */
+						   0x0 /* Blue */
+						   0x0 /* Yellow */
+						   0x0 /* White */
+						   0x1 /* Amber */
+						   >;
 		};
 
 		led-id {
@@ -20,29 +28,17 @@
 			led_id_battery {
 				enum-name = "EC_LED_ID_BATTERY_LED";
 			};
+
+			led_id_power {
+				enum-name = "EC_LED_ID_POWER_LED";
+			};
 		};
 
 		battery-led-colors {
 			compatible = "battery-led-colors";
 
-			chipset-state; // Bool
-
 			charging: power-state-charge {
 				led-color = "LED_AMBER";
-			};
-			discharge_s0: powewr-state-discharge-s0 {
-				led-color = "LED_BLUE";
-			};
-
-			discharge_s3: power-state-discharge-s3 {
-				led-color-1 = "LED_AMBER";
-				led-color-2 = "LED_OFF";
-				period = <4>; // Amber 1 sec, off 3 sec
-			};
-
-
-			discharge_s5: power-state-discharge-s5 {
-				led-color = "LED_OFF";
 			};
 
 			error: power-state-error {
@@ -52,14 +48,32 @@
 			};
 
 			near_full: power-state-near-full {
-				led-color = "LED_BLUE";
+				led-color = "LED_WHITE";
 			};
 
 			idle: power-state-idle {
-				led-color-1 = "LED_BLUE";
+				led-color-1 = "LED_WHITE";
 				led-color-2 = "LED_AMBER";
-				led-color-3 = "LED_BLUE";
-				period = <4>; // Blue 2 sec, Amber 2 sec
+				led-color-3 = "LED_WHITE";
+				period = <4>; // White 2 sec, Amber sec
+			};
+		};
+
+		power-led-colors {
+			compatible = "power-led-colors";
+
+			power_state_s0: power-state-s0 {
+				led-color = "LED_WHITE";
+			};
+
+			power_state_s3: power-state-s3 {
+				led-color-1 = "LED_WHITE";
+				led-color-2 = "LED_OFF";
+				period = <4>; // White 1 sec, off 3 sec
+			};
+
+			power_state_s5: power-state-s5 {
+				led-color = "LED_OFF";
 			};
 		};
 
