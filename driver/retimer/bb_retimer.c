@@ -77,7 +77,6 @@ static int bb_retimer_read(const struct usb_mux *me,
 		return EC_ERROR_UNKNOWN;
 
 	*data = buf[1] | (buf[2] << 8) | (buf[3] << 16) | (buf[4] << 24);
-
 	return EC_SUCCESS;
 }
 
@@ -120,6 +119,7 @@ static int bb_retimer_write(const struct usb_mux *me,
 		}
 		msleep(10);
 	}
+
 	return rv;
 }
 
@@ -390,9 +390,13 @@ static int retimer_set_state(const struct usb_mux *me, mux_state_t mux_state,
 	 * 0 - Normal
 	 * 1 - reversed
 	 */
-	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
-		set_retimer_con |= BB_RETIMER_CONNECTION_ORIENTATION;
-
+	if (mux_state & USB_PD_MUX_POLARITY_INVERTED) {
+		/* TODO: only set connector side retimer so TBT/USB4 work */
+		if (! ((me->i2c_addr_flags == 0x54) && (
+			mux_state & USB_PD_MUX_TBT_COMPAT_ENABLED ||
+			mux_state & USB_PD_MUX_USB4_ENABLED)))
+			set_retimer_con |= BB_RETIMER_CONNECTION_ORIENTATION;
+	}
 	/*
 	 * Bit 5: USB_3_CONNECTION
 	 * 0 - No USB3.1 Connection
@@ -527,6 +531,7 @@ static int retimer_init(const struct usb_mux *me)
 	}
 
 	rv = bb_retimer_power_enable(me, true);
+
 	if (rv != EC_SUCCESS)
 		return rv;
 
