@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "af1556ca_88e942a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-25T23:56:09Z",
+      "side": 1,
+      "message": "i\u0027m going to sync up with keith on how this will be handled in\nthe zephyr i2c shell.",
+      "parentUuid": "56429f64_ca8833f8",
+      "revId": "bb8f0aa1de12101fdbec298a67c9302abe1b166a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e2cc5359_120d1816",
         "filename": "common/i2c_controller.c",
         "patchSetId": 1
