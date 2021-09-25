@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ecec522_0370f05f",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1021,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-25T01:23:25Z",
+      "side": 1,
+      "message": "i think to do that properly, we would implement crbug.com/549286.\ni\u0027d rather not make such a global change in this patch series.\n\nwe would also loose the ability to specify non-standard frequencies.\nmaybe that\u0027s a plus 😊",
+      "parentUuid": "ffadacfb_d9e658bd",
+      "range": {
+        "startLine": 1021,
+        "startChar": 46,
+        "endLine": 1021,
+        "endChar": 69
+      },
+      "revId": "73f28085e7e132a0845ff82561e27611783ed7ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f835d92_35c6999c",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-24T22:28:55Z",
       "side": 1,
       "message": "And do \u0027bus_freq \u003d\u003d I2C_FREQ_400KHZ\u0027?",
+      "range": {
+        "startLine": 1068,
+        "startChar": 5,
+        "endLine": 1068,
+        "endChar": 25
+      },
+      "revId": "73f28085e7e132a0845ff82561e27611783ed7ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07ef985a_68cb0c6b",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1068,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-25T01:23:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8f835d92_35c6999c",
       "range": {
         "startLine": 1068,
         "startChar": 5,
