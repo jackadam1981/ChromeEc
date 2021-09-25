@@ -178,11 +178,19 @@
 
 #define I2C_ADDR_MP2964_FLAGS	0x20
 
+/* Configure mux at runtime */
+#define CONFIG_USB_MUX_RUNTIME_CONFIG
+#define CONFIG_USB_PD_TCPM_RT1715
+#define CONFIG_USB_PD_TCPC_RUNTIME_CONFIG
 /*
  * see b/174768555#comment22
  */
 #define USBC_PORT_C0_BB_RETIMER_I2C_ADDR	0x56
 #define USBC_PORT_C2_BB_RETIMER_I2C_ADDR	0x57
+
+/* USB4 Golden Gate dual retimers I2C addresses */
+#define USBC_PORT_C1_SOC_SIDE_BB_RETIMER_I2C_ADDR 0x54
+#define USBC_PORT_C1_CONN_SIDE_BB_RETIMER_I2C_ADDR 0x55
 
 /* Enabling Thunderbolt-compatible mode */
 #define CONFIG_USB_PD_TBT_COMPAT_MODE
