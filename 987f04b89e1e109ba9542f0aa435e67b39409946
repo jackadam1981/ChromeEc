@@ -69,6 +69,23 @@
       "parentUuid": "4fa376a5_3ea98c2a",
       "revId": "987f04b89e1e109ba9542f0aa435e67b39409946",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "043e7fb0_648101d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346692
+      },
+      "writtenOn": "2021-09-25T15:05:21Z",
+      "side": 1,
+      "message": "Adding Mike since Mike is the only one I know who helped on similar case: \n\nThe CQ error showed: \nfatal: couldn\u0027t find remote ref refs/heads/master\n[W git.go:289] Transient error string identified in STDERR: \"fatal: couldn\u0027t find remote ref refs/heads/master\\n\"\n[W git.go:300] Retrying after 2s (rc\u003d128): transient error string encountered\n\nSo I\u0027m guessing the old FW branch is still tracking `master` branch than `main`, not sure if that is expected or we need to change the manifest file for that branch too? Thanks! ",
+      "revId": "987f04b89e1e109ba9542f0aa435e67b39409946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
