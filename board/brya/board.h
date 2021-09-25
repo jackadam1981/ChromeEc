@@ -173,6 +173,10 @@
 
 #define I2C_ADDR_MP2964_FLAGS	0x20
 
+/* Configure mux at runtime */
+#define CONFIG_USB_MUX_RUNTIME_CONFIG
+#define CONFIG_USB_PD_TCPM_RT1715
+
 /*
  * see b/174768555#comment22
  */

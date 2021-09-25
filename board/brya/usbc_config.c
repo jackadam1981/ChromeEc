@@ -15,6 +15,7 @@
 #include "driver/retimer/bb_retimer_public.h"
 #include "driver/tcpm/nct38xx.h"
 #include "driver/tcpm/ps8xxx_public.h"
+#include "driver/tcpm/rt1715.h"
 #include "driver/tcpm/tcpci.h"
 #include "ec_commands.h"
 #include "fw_config.h"
@@ -52,9 +53,9 @@ const struct tcpc_config_t tcpc_config[] = {
 		.bus_type = EC_BUS_TYPE_I2C,
 		.i2c_info = {
 			.port = I2C_PORT_USB_C1_TCPC,
-			.addr_flags = PS8751_I2C_ADDR1_FLAGS,
+			.addr_flags = RT1715_I2C_ADDR_FLAGS,
 		},
-		.drv = &ps8xxx_tcpm_drv,
+		.drv = &rt1715_tcpm_drv,
 		.flags = TCPC_FLAGS_TCPCI_REV2_0 |
 			 TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V,
 	},
@@ -81,8 +82,8 @@ struct ppc_config_t ppc_chips[] = {
 	[USBC_PORT_C1] = {
 		/* Compatible with Silicon Mitus SM536A0 */
 		.i2c_port = I2C_PORT_USB_C1_PPC,
-		.i2c_addr_flags = NX20P3483_ADDR2_FLAGS,
-		.drv = &nx20p348x_drv,
+		.i2c_addr_flags = SYV682X_ADDR0_FLAGS,
+		.drv = &syv682x_drv,
 	},
 	[USBC_PORT_C2] = {
 		.i2c_port = I2C_PORT_USB_C0_C2_PPC,
@@ -109,7 +110,7 @@ static const struct usb_mux usbc2_tcss_usb_mux = {
 	.driver = &virtual_usb_mux_driver,
 	.hpd_update = &virtual_hpd_update,
 };
-
+#if 0
 /*
  * USB3 DB mux configuration - the top level mux still needs to be set
  * to the virtual_usb_mux_driver so the AP gets notified of mux changes
@@ -120,8 +121,28 @@ static const struct usb_mux usbc1_usb3_db_retimer = {
 	.driver = &tcpci_tcpm_usb_mux_driver,
 	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 };
+#endif
 
-const struct usb_mux usb_muxes[] = {
+#define USBC_PORT_C2_SOC_SIDE_BB_RETIMER_I2C_ADDR 0x54
+#define USBC_PORT_C2_CONN_SIDE_BB_RETIMER_I2C_ADDR 0x55
+
+static const struct usb_mux usbc1_tcss_usb_mux = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &virtual_usb_mux_driver,
+	.hpd_update = &virtual_hpd_update,
+};
+
+/* USB Mux Configuration for Soc side BB-Retimers for Dual retimer config */
+struct usb_mux soc_side_bb_retimer1_usb_mux = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &bb_usb_retimer,
+	.hpd_update = bb_retimer_hpd_update,
+	.i2c_port = I2C_PORT_USB_C1_PPC,
+	.i2c_addr_flags = USBC_PORT_C2_SOC_SIDE_BB_RETIMER_I2C_ADDR,
+	.next_mux = &usbc1_tcss_usb_mux,
+};
+
+struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
 		.driver = &bb_usb_retimer,
@@ -131,11 +152,20 @@ const struct usb_mux usb_muxes[] = {
 		.next_mux = &usbc0_tcss_usb_mux,
 	},
 	[USBC_PORT_C1] = {
+#if 0
 		/* PS8815 DB */
 		.usb_port = USBC_PORT_C1,
 		.driver = &virtual_usb_mux_driver,
 		.hpd_update = &virtual_hpd_update,
 		.next_mux = &usbc1_usb3_db_retimer,
+#else
+		.usb_port = USBC_PORT_C1,
+		.driver = &bb_usb_retimer,
+		.hpd_update = bb_retimer_hpd_update,
+		.i2c_port = I2C_PORT_USB_C1_PPC,
+		.i2c_addr_flags = USBC_PORT_C2_CONN_SIDE_BB_RETIMER_I2C_ADDR,
+		.next_mux = &soc_side_bb_retimer1_usb_mux,
+#endif
 	},
 	[USBC_PORT_C2] = {
 		.usb_port = USBC_PORT_C2,
@@ -216,6 +246,7 @@ void config_usb_db_type(void)
 __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 {
 	enum ioex_signal rst_signal;
+	enum gpio_signal gpio_rst_signal;
 
 	if (me->usb_port == USBC_PORT_C0) {
 		if (get_board_id() == 1)
@@ -227,6 +258,8 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 			rst_signal = IOEX_ID_1_USB_C2_RT_RST_ODL;
 		else
 			rst_signal = IOEX_USB_C2_RT_RST_ODL;
+	} else if (me->usb_port == USBC_PORT_C1) {
+		gpio_rst_signal = GPIO_USB_C1_RT_RST_R_ODL;
 	} else {
 		return EC_ERROR_INVAL;
 	}
@@ -243,7 +276,11 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		 * retimer_init() function ensures power is up before calling
 		 * this function.
 		 */
-		ioex_set_level(rst_signal, 1);
+		if (me->usb_port == USBC_PORT_C1) {
+			gpio_set_level(gpio_rst_signal, 1);
+		msleep(1);
+		} else {
+			ioex_set_level(rst_signal, 1);
 		/*
 		 * Allow 1ms time for the retimer to power up lc_domain
 		 * which powers I2C controller within retimer
@@ -262,9 +299,12 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 				return EC_ERROR_UNKNOWN;
 			if (val != 1)
 				return EC_ERROR_NOT_POWERED;
-		}
+		}}
 	} else {
-		ioex_set_level(rst_signal, 0);
+		if (me->usb_port == USBC_PORT_C1)
+			gpio_set_level(gpio_rst_signal, 0);
+		else
+			ioex_set_level(rst_signal, 0);
 		msleep(1);
 	}
 	return EC_SUCCESS;
@@ -286,7 +326,7 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(tcpc_rst, 0);
 	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
 		gpio_set_level(GPIO_USB_C1_RST_ODL, 0);
-		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 0);
+		//gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 0);
 	}
 
 	/*
@@ -298,7 +338,7 @@ void board_reset_pd_mcu(void)
 	gpio_set_level(tcpc_rst, 1);
 	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
 		gpio_set_level(GPIO_USB_C1_RST_ODL, 1);
-		gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 1);
+		//gpio_set_level(GPIO_USB_C1_RT_RST_R_ODL, 1);
 	}
 
 	/* wait for chips to come up */
@@ -453,7 +493,7 @@ __override bool board_is_tbt_usb4_port(int port)
 	if (port == USBC_PORT_C0 || port == USBC_PORT_C2)
 		return true;
 
-	return false;
+	return true;
 }
 
 __override enum tbt_compat_cable_speed board_get_max_tbt_speed(int port)
