@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "420a58a2_333b96ab",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-25T01:24:18Z",
+      "side": 1,
+      "message": "[CC from previous patch]\n\ni think to do that properly, we would implement crbug.com/549286.\ni\u0027d rather not make such a global change in this patch series.",
+      "parentUuid": "30798494_5de066df",
+      "range": {
+        "startLine": 122,
+        "startChar": 1,
+        "endLine": 122,
+        "endChar": 9
+      },
+      "revId": "2d1653dc3c81410f0890ef7af90eec3514ca8de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05152437_f58b122e",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-09-24T22:20:07Z",
       "side": 1,
       "message": "Is it ok to forget the previous speeds? If setting a freq fails, don\u0027t we need to remember the speed which the port is operating at?",
+      "range": {
+        "startLine": 1113,
+        "startChar": 0,
+        "endLine": 1117,
+        "endChar": 2
+      },
+      "revId": "2d1653dc3c81410f0890ef7af90eec3514ca8de4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4854d3c_c293ee14",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-25T01:24:18Z",
+      "side": 1,
+      "message": "we really want to invalidate any \"cached\" notion of configured\nspeed. this is called at init time or when a base clock has changed.\n\nwe do not use this value to set the port speed registers.\nit is only used to answer a port speed query.\na freq of 0 maps to i2c_freq.I2C_FREQ_COUNT which\ncallers of i2c_get_freq() can use to error-check.\n\nalso, the only case setting the freq could fail is the case where\nwe have an invalid i2c port number or controller number, so there\u0027s\nno associated freq to worry about.",
+      "parentUuid": "05152437_f58b122e",
       "range": {
         "startLine": 1113,
         "startChar": 0,
