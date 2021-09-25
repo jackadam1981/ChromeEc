@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c3c52d0_928a17ae",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-25T01:21:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "499e29a3_c2876416",
+      "range": {
+        "startLine": 1055,
+        "startChar": 5,
+        "endLine": 1055,
+        "endChar": 6
+      },
+      "revId": "715baa4ac91566715955950833d34d626871b925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3eb4ef33_274412e8",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-24T22:13:22Z",
       "side": 1,
       "message": "nit: maybe it\u0027s good time to rephrase the message. Something like \u0027ERR: i2c_%d src clock is not supported\u0027",
+      "range": {
+        "startLine": 1096,
+        "startChar": 4,
+        "endLine": 1096,
+        "endChar": 61
+      },
+      "revId": "715baa4ac91566715955950833d34d626871b925",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc185c80_d37f0831",
+        "filename": "chip/npcx/i2c.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1096,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-25T01:21:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eb4ef33_274412e8",
       "range": {
         "startLine": 1096,
         "startChar": 4,
