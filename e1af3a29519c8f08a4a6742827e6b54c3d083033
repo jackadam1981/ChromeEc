@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bea0f94_c943ae22",
+        "filename": "zephyr/dts/bindings/gpio_led/power-led-colors.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-25T01:48:17Z",
+      "side": 1,
+      "message": ".yaml for new power_led_colors node",
+      "revId": "e1af3a29519c8f08a4a6742827e6b54c3d083033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5feddbac_c2d2742b",
+        "filename": "zephyr/projects/trogdor/lazor/led.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-25T01:48:17Z",
+      "side": 1,
+      "message": "Added this to generate LED_ID_ENUM instead of hard coding.",
+      "revId": "e1af3a29519c8f08a4a6742827e6b54c3d083033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77fa7c46_da7384a9",
+        "filename": "zephyr/projects/trogdor/lazor/pompom_led.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-25T01:48:17Z",
+      "side": 1,
+      "message": "This file is not enabled but added to show how a .dts file will look like for the boards that support both battery_led and power_led (eg. pompom).",
+      "revId": "e1af3a29519c8f08a4a6742827e6b54c3d083033",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
