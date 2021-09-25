@@ -163,3 +163,10 @@ static void board_id_1_reclaim_adc(void)
 	gpio_set_alternate_function(GPIO_PORT_E, BIT(1), GPIO_ALT_FUNC_NONE);
 }
 DECLARE_HOOK(HOOK_INIT, board_id_1_reclaim_adc, HOOK_PRIO_INIT_ADC + 1);
+
+static void board_init(void)
+{
+	if (ec_cfg_usb_db_type() == DB_USB4_GG)
+		db_update_usb4_config_from_config();
+}
+DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
