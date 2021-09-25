@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b163061_59885d06",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 7035,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-25T02:13:27Z",
+      "side": 1,
+      "message": "Why is this union?",
+      "range": {
+        "startLine": 7033,
+        "startChar": 0,
+        "endLine": 7035,
+        "endChar": 14
+      },
+      "revId": "be733cde7e68d12adc2ff7a0f8e4671b095f77a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
