@@ -84,7 +84,8 @@ static int bb_retimer_read(const struct usb_mux *me,
 static int bb_retimer_write(const struct usb_mux *me,
 			    const uint8_t offset, uint32_t data)
 {
-	int rv, retry = 0;
+	int rv, retry =
+          	0;
 	uint8_t buf[BB_RETIMER_WRITE_SIZE];
 
 	/*
