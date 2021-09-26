@@ -135,8 +135,21 @@
 #define MP2964_MFR_TEMPERATURE_GAIN_SET		0xF5
 #define MP2964_MFR_PSYS_GAIN_SEL		0xF6
 
+enum reg_page {
+	REG_PAGE_0,
+	REG_PAGE_1,
+	REG_PAGE_0_1,
+	REG_PAGE_COUNT
+};
+
 struct mp2964_reg_val {
 	uint8_t reg;
+	uint16_t val;
+};
+
+struct mp2964_reg_dump_val {
+	uint8_t reg;
+	enum reg_page page;
 	uint16_t val;
 };
 
