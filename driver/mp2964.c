@@ -15,10 +15,133 @@
 #define MP2964_STORE_WAIT_US		(300 * MSEC)
 #define MP2964_RESTORE_WAIT_US		(2 * MSEC)
 
-enum reg_page {
-	REG_PAGE_0,
-	REG_PAGE_1,
-	REG_PAGE_COUNT
+static struct mp2964_reg_dump_val mp2964_dump_reg[] = {
+	{ MP2964_PAGE,                REG_PAGE_0_1 },
+	{ MP2964_OPERATION,           REG_PAGE_0_1 },
+	{ MP2964_LAST_FAULT_BLOCK,    REG_PAGE_0 },
+	{ MP2964_MFR_SINGLE_RW_ADDR,  REG_PAGE_0 },
+	{ MP2964_MFR_SINGLE_WR_DATA,  REG_PAGE_0 },
+	{ MP2964_MFR_GATECLK_DIS,     REG_PAGE_0 },
+	{ MP2964_MFR_IDROOP_CTRL,     REG_PAGE_0_1 },
+	{ MP2964_MFR_MTP_CTRL,        REG_PAGE_0 },
+	{ MP2964_MFR_PSYS_WARN_FILT_CNT,  REG_PAGE_0 },
+	{ MP2964_MFR_LOW_VOUT_TRIM,       REG_PAGE_0_1 },
+	{ MP2964_VOUT_COMMAND,            REG_PAGE_0_1 },
+	{ MP2964_MFR_VOUT_TRIM,           REG_PAGE_0_1 },
+	{ MP2964_VOUT_CAL_OFFSET,         REG_PAGE_0_1 },
+	{ MP2964_MFR_VOUT_MAX,            REG_PAGE_0_1 },
+	{ MP2964_VOUT_MARGIN_HIGH,        REG_PAGE_0_1 },
+	{ MP2964_VOUT_MARGIN_LOW,         REG_PAGE_0_1 },
+	{ MP2964_MFR_VBOOT,               REG_PAGE_0_1 },
+	{ MP2964_MFR_FS,                  REG_PAGE_0_1 },
+	{ MP2964_MFR_PHASE_NUM,           REG_PAGE_0_1 },
+	{ MP2964_MFR_DBG_ADC_CHANNEL,     REG_PAGE_0 },
+	{ MP2964_MFR_CONFIG1,             REG_PAGE_0_1 },
+	{ MP2964_MFR_IMON_SNS_OFFS,       REG_PAGE_0_1 },
+	{ MP2964_MFR_ADC_HOLD_TIME,       REG_PAGE_0 },
+	{ MP2964_MFR_PLATFORM_TIME_SET,   REG_PAGE_0_1 },
+	{ MP2964_MFR_DEBUG,               REG_PAGE_0 },
+	{ MP2964_MFR_APSI_CTRL,           REG_PAGE_0_1 },
+	{ MP2964_MFR_FS_LOOP_CYC_RIPPLE_SET,  REG_PAGE_0_1 },
+	{ MP2964_MFR_DC_CB_DYNC_SET,      REG_PAGE_0_1 },
+	{ MP2964_MFR_VOUT_CMPS_SET,       REG_PAGE_0_1 },
+	{ MP2964_MFR_PROTECT_MODE,        REG_PAGE_0_1 },
+	{ MP2964_VIN_ON,                  REG_PAGE_0 },
+	{ MP2964_VIN_OFF,                 REG_PAGE_0 },
+	{ MP2964_MFR_VCAL_FS_PI,          REG_PAGE_0_1 },
+	{ MP2964_IOUT_CAL_GAIN_SET,       REG_PAGE_0_1 },
+	{ MP2964_MFR_VR_CONFIG,           REG_PAGE_0_1 },
+	{ MP2964_MFR_AUDIBLE_REDUCE,      REG_PAGE_0_1 },
+	{ MP2964_MFR_VID_DOWN_DELAY,      REG_PAGE_0_1 },
+	{ MP2964_MFR_FILTER_SET,          REG_PAGE_0_1 },
+	{ MP2964_MFR_TRANS_FAST,          REG_PAGE_0_1 },
+	{ MP2964_MFR_EN_SEQUENCE_CFG,     REG_PAGE_0_1 },
+	{ MP2964_MFR_ALT_SET,             REG_PAGE_0_1 },
+	{ MP2964_MFR_SW_LF_SET,           REG_PAGE_0_1 },
+	{ MP2964_MFR_SW_HF_SET,           REG_PAGE_0_1 },
+	{ MP2964_MFR_TON_ADJ_PS1_SW_LF_TH,  REG_PAGE_0_1 },
+	{ MP2964_MFR_PS2_OFFSLOPE_TON_TH,   REG_PAGE_0_1 },
+	{ MP2964_MFR_TON_ADJ_PS1_SW_HF_TH,  REG_PAGE_0_1 },
+	{ MP2964_MFR_TON_ADJ_PS2_SW_HF_TH,  REG_PAGE_0_1 },
+	{ MP2964_MFR_SLOPE_CNT_SETPS1,      REG_PAGE_0_1 },
+	{ MP2964_MFR_SLOPE_SR_SETPS1,       REG_PAGE_0_1 },
+	{ MP2964_MFR_CONFIG2,             REG_PAGE_0_1 },
+	{ MP2964_MFR_CONFIG3,             REG_PAGE_0_1 },
+	{ MP2964_MFR_PSI_ICC_CTRL,        REG_PAGE_0_1 },
+	{ MP2964_MFR_APS_PHASE_HYS,       REG_PAGE_0_1 },
+	{ MP2964_MFR_VOUT_MAX_9BIT,       REG_PAGE_0_1 },
+	{ MP2964_MFR_SLOPE_CNT_DCM_SET,   REG_PAGE_0_1 },
+	{ MP2964_MFR_SLOPE_SR_DCM,        REG_PAGE_0_1 },
+	{ MP2964_MFR_SHUTDOWN_LEVEL,      REG_PAGE_0_1 },
+	{ MP2964_MFR_SYS_PASSWORD,        REG_PAGE_0 },
+	{ MP2964_MFR_ADDR_SVID_CTRL,      REG_PAGE_0_1 },
+	{ MP2964_MFR_ICC_MAX_SET,         REG_PAGE_0_1 },
+	{ MP2964_MFR_CYC_OCP_FACTOR,      REG_PAGE_0_1 },
+	{ MP2964_MFR_PWR_INDUCTOR_GAIN,   REG_PAGE_0_1 },
+	{ MP2964_MFR_OCP_OVP_DAC_LIMIT,   REG_PAGE_0_1 },
+	{ MP2964_MFR_OVP_UVP_SET,         REG_PAGE_0_1 },
+	{ MP2964_MFR_OCP_SET,             REG_PAGE_0_1 },
+	{ MP2964_PROTOCOL_ID_EN_RDY,      REG_PAGE_0 },
+	{ MP2964_MFR_SVID_CFG,            REG_PAGE_0 },
+	{ MP2964_VENDOR_ID_PRODUCT_ID,    REG_PAGE_0 },
+	{ MP2964_PRODUCT_DATA_CODE,       REG_PAGE_0 },
+	{ MP2964_LOT_CODE_VR,             REG_PAGE_0 },
+	{ MP2964_PS3_PS4_EXIT_DELAY,      REG_PAGE_0_1 },
+	{ MP2964_MFR_SR_FAST_TOLERANCE,   REG_PAGE_0_1 },
+	{ MP2964_MFR_SVID_06H_34H_VR,     REG_PAGE_0_1 },
+	{ MP2964_MFR_SVID_06H_34H_PSYS,   REG_PAGE_0 },
+	{ MP2964_MFR_STANDBY_HOT_SET,     REG_PAGE_0 },
+	{ MP2964_MFR_MIN_ON_TIME,         REG_PAGE_0 },
+	{ MP2964_MFR_MIN_OFF_TIME,        REG_PAGE_0 },
+	{ MP2964_MFR_MIN_HIZ_TIME,        REG_PAGE_0 },
+	{ MP2964_MFR_BLANK_TIME,          REG_PAGE_0_1 },
+	{ MP2964_MFR_PSI_TRIM4,           REG_PAGE_0_1 },
+	{ MP2964_MFR_PSI_TRIM1,           REG_PAGE_0 },
+	{ MP2964_MFR_PSI_TRIM2,           REG_PAGE_0 },
+	{ MP2964_MFR_PSI_TRIM3,           REG_PAGE_0 },
+	{ MP2964_MFR_VIN_HYS_OFFS_SET,    REG_PAGE_0 },
+	{ MP2964_MFR_PIN_MAX,             REG_PAGE_0 },
+	{ MP2964_MFR_AUXIMON_MAX_SET,     REG_PAGE_0 },
+	{ MP2964_MFR_ADDR_PMBUS,          REG_PAGE_0 },
+	{ MP2964_MFR_VIN_OV_UV_LIMIT,     REG_PAGE_0 },
+	{ MP2964_MFR_OTP_SET,             REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_CNT_1P,        REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_SR_1P,         REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_CNT_2P,        REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_SR_2P,         REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_CNT_3P,        REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_SR_3P,         REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_CNT_4P,        REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_SR_4P,         REG_PAGE_0 },
+	{ MP2964_RESERVED1,               REG_PAGE_0 },
+	{ MP2964_RESERVED2,               REG_PAGE_0 },
+	{ MP2964_RESERVED3,               REG_PAGE_0 },
+	{ MP2964_RESERVED4,               REG_PAGE_0 },
+	{ MP2964_RESERVED5,               REG_PAGE_0 },
+	{ MP2964_RESERVED6,               REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_CNT_5P,        REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_SR_5P,         REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_CNT_6P,        REG_PAGE_0 },
+	{ MP2964_MFR_SLOPE_SR_6P,         REG_PAGE_0 },
+	{ MP2964_MFR_CS_OFFSET2_3,        REG_PAGE_0 },
+	{ MP2964_MFR_CS_OFFSET4,          REG_PAGE_0 },
+	{ MP2964_RESERVED7,               REG_PAGE_0 },
+	{ MP2964_MFR_CS_OFFSET5_6,        REG_PAGE_0 },
+	{ MP2964_MFR_IMON_SVID1,          REG_PAGE_0 },
+	{ MP2964_MFR_IMON_SVID2,          REG_PAGE_0 },
+	{ MP2964_MFR_IMON_SVID3,          REG_PAGE_0 },
+	{ MP2964_MFR_IMON_SVID4,          REG_PAGE_0 },
+	{ MP2964_RESERVED8,               REG_PAGE_0 },
+	{ MP2964_RESERVED9,               REG_PAGE_0 },
+	{ MP2964_RESERVED10,              REG_PAGE_0 },
+	{ MP2964_MFR_IMON_SVID5,          REG_PAGE_0 },
+	{ MP2964_MFR_IMON_SVID6,          REG_PAGE_0 },
+	{ MP2964_MFR_CB_PI_SET,           REG_PAGE_0 },
+	{ MP2964_MFR_VIN_GAIN_SET,        REG_PAGE_0 },
+	{ MP2964_MFR_AUXIMON_SVID,        REG_PAGE_0 },
+	{ MP2964_MFR_PSYS_SVID,           REG_PAGE_0 },
+	{ MP2964_MFR_TEMPERATURE_GAIN_SET,  REG_PAGE_0 },
+	{ MP2964_MFR_PSYS_GAIN_SEL,       REG_PAGE_0 },
 };
 
 static int mp2964_write8(uint8_t reg, uint8_t value)
@@ -150,3 +273,56 @@ int mp2964_tune(const struct mp2964_reg_val *rail_a, int count_a,
 	else
 		return EC_SUCCESS;
 }
+
+static int command_mp2964_dump(int argc, char **argv)
+{
+	uint16_t outval;
+	int i;
+
+	i2c_lock(I2C_PORT_MP2964, 1);
+	if (mp2964_select_page(0) != EC_SUCCESS) {
+		i2c_lock(I2C_PORT_MP2964, 0);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	for (i = 0; i < ARRAY_SIZE(mp2964_dump_reg); i++) {
+		mp2964_read16(mp2964_dump_reg[i].reg, &outval);
+		mp2964_dump_reg[i].val = outval;
+	}
+	i2c_lock(I2C_PORT_MP2964, 0);
+
+	ccprintf("mp2964: Page 0 reg values\n");
+	for (i = 0; i < ARRAY_SIZE(mp2964_dump_reg); i++) {
+		ccprintf("mp2964: reg 0x%02x  val: 0x%04x\n",
+		mp2964_dump_reg[i].reg, mp2964_dump_reg[i].val);
+		usleep(2 * MSEC);
+	}
+
+	i2c_lock(I2C_PORT_MP2964, 1);
+	if (mp2964_select_page(1) != EC_SUCCESS) {
+		i2c_lock(I2C_PORT_MP2964, 0);
+		return EC_ERROR_UNKNOWN;
+	}
+
+	for (i = 0; i < ARRAY_SIZE(mp2964_dump_reg); i++) {
+		if (mp2964_dump_reg[i].page == REG_PAGE_0_1) {
+			mp2964_read16(mp2964_dump_reg[i].reg, &outval);
+			mp2964_dump_reg[i].val = outval;
+		}
+	}
+	i2c_lock(I2C_PORT_MP2964, 0);
+
+	ccprintf("mp2964: Page 1 reg values\n");
+	for (i = 0; i < ARRAY_SIZE(mp2964_dump_reg); i++) {
+		if (mp2964_dump_reg[i].page == REG_PAGE_0_1) {
+			ccprintf("mp2964: reg 0x%02x  val: 0x%04x\n",
+			mp2964_dump_reg[i].reg, mp2964_dump_reg[i].val);
+			usleep(2 * MSEC);
+		}
+	}
+	return EC_SUCCESS;
+}
+
+DECLARE_CONSOLE_COMMAND(mp2964_dump, command_mp2964_dump,
+			NULL,
+			"dump the MP2964 registers");
