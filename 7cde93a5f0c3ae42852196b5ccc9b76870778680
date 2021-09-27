@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0417792e_fd457fed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-27T21:12:22Z",
+      "side": 1,
+      "message": "I now realize I should move the clearing of the interrupt to after read function vs in the read byte function.",
+      "revId": "7cde93a5f0c3ae42852196b5ccc9b76870778680",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
