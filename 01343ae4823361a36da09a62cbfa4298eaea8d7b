@@ -16,6 +16,23 @@
       "message": "i\u0027ll grab this patch and do some testing on brya as well.",
       "revId": "01343ae4823361a36da09a62cbfa4298eaea8d7b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a7339fc_49135e5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-09-27T03:59:39Z",
+      "side": 1,
+      "message": "cros-ec parts of this CL look great. For Zephyr, we just got the syscon driver working, we should use it. See https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3177749 which I\u0027ve updated with the Zephyr logic from this CL.\n\nNote that we currently only have in `npcx.dtsi`:\nmdc: mdc@4000c000 {\n\tcompatible \u003d \"syscon\";\n\treg \u003d \u003c0x4000c000 0xa\u003e;\n\treg-io-width \u003d \u003c1\u003e;\n};\n\nSo the address needs to be corrected for npcx9.dtsi\n\nIf you\u0027d like to split this into a cros-ec and a Zephyr EC I think it\u0027ll be better. We\u0027ll need a fix upstream for the mdc register location + my CL to use it all. Would be nice to get https://github.com/zephyrproject-rtos/zephyr/pull/38762 in to avoid having to manually set CONFIG_SYSCON\u003dy everywhere too.",
+      "revId": "01343ae4823361a36da09a62cbfa4298eaea8d7b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
