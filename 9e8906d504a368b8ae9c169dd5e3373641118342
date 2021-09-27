@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20bb95eb_b57aafb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-27T22:25:15Z",
+      "side": 1,
+      "message": "Somewhat surprised that this works in the chroot, wondering if it would not make sense to add an #else case to define ppc_is_vbus_present() instead to return EC_SUCCESS if the config toggle is not active and remove these from all the baseboard files.",
+      "revId": "9e8906d504a368b8ae9c169dd5e3373641118342",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
