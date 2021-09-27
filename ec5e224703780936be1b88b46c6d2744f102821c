@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eed49e39_2c239a6c",
+        "filename": "zephyr/shim/chip/npcx/system_external_storage.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-27T21:18:58Z",
+      "side": 1,
+      "message": "I think this comment refers to the entire file. Maybe you should add a space after it.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 68
+      },
+      "revId": "ec5e224703780936be1b88b46c6d2744f102821c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "366b3024_6b81f276",
+        "filename": "zephyr/shim/chip/npcx/system_external_storage.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-27T21:18:58Z",
+      "side": 1,
+      "message": "I know this comment and the one below is carried over from the original file but they are duplicates of the comment at the beginning of this file.",
+      "range": {
+        "startLine": 114,
+        "startChar": 1,
+        "endLine": 114,
+        "endChar": 69
+      },
+      "revId": "ec5e224703780936be1b88b46c6d2744f102821c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74082e5a_8cfb71c7",
+        "filename": "zephyr/shim/chip/npcx/system_external_storage.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-09-27T21:18:58Z",
+      "side": 1,
+      "message": "I take it that the syscon api is enabled by CONFIG_SYSCON\u003dy and this config is temporary until the PR is submitted. Until the PR is submitted, should we check for CONFIG_SYSCON\u003dy before calling the api or do you think it\u0027s not worth it?",
+      "range": {
+        "startLine": 137,
+        "startChar": 1,
+        "endLine": 137,
+        "endChar": 16
+      },
+      "revId": "ec5e224703780936be1b88b46c6d2744f102821c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
