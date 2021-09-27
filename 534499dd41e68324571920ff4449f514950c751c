@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0621ff63_6e768577",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-27T22:08:17Z",
+      "side": 1,
+      "message": "Can you quote the build error message? May be useful to refer back to this, I see the same workaround is present in other baseboard file but I don\u0027t quite understand how removing the function definition fixes it.",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "534499dd41e68324571920ff4449f514950c751c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
