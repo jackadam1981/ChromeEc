@@ -116,8 +116,8 @@ struct usb_spi_state {
 	 * USB_SPI_REQ_DISABLE to the device control endpoint.  The
 	 * enabled_device flag is set by calling usb_spi_enable.
 	 */
-	int enabled_host;
-	int enabled_device;
+	bool enabled_host;
+	bool enabled_device;
 
 	/*
 	 * The current enabled state.  This is only updated in the deferred
@@ -129,7 +129,7 @@ struct usb_spi_state {
 	 * specific state update routines are only called from the deferred
 	 * callback.
 	 */
-	int enabled;
+	bool enabled;
 
 #ifdef CONFIG_USB_SPI_V2
 	/* Variable helping to keep track of multi packet write PDUs. */
