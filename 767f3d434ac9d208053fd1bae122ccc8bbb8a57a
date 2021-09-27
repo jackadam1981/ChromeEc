@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5fe44365_8acc331e",
+        "filename": "chip/stm32/usb.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-09-27T16:26:52Z",
+      "side": 1,
+      "message": "I changed to make them both #ifdefs, but had to make the local variables be either or so that it will compile if either config is defined at the same time.",
+      "parentUuid": "7ac306b1_b27fe8b0",
+      "revId": "767f3d434ac9d208053fd1bae122ccc8bbb8a57a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b829fa23_bb47f0e1",
         "filename": "zephyr/Kconfig.usbc",
         "patchSetId": 5
