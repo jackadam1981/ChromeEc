@@ -5,8 +5,12 @@
 
 #include <ztest.h>
 #include <drivers/emul.h>
+#include "kernel.h"
+#include "ztest_assert.h"
 #include "driver/ln9310.h"
 #include "emul/emul_ln9310.h"
+
+#define LN9310_TEST_DELAY_MS 50
 
 void test_ln9310_2s_no_startup__passes_init(void)
 {
@@ -22,6 +26,11 @@ void test_ln9310_2s_no_startup__passes_init(void)
 
 	zassert_ok(ln9310_init(), NULL);
 	zassert_true(ln9310_emul_is_init(emulator), NULL);
+
+	ln9310_interrupt(0);
+	k_msleep(LN9310_TEST_DELAY_MS);
+
+	zassert_true(ln9310_power_good(), NULL);
 }
 
 void test_ln9310_3s_no_startup__passes_init(void)
@@ -38,6 +47,11 @@ void test_ln9310_3s_no_startup__passes_init(void)
 
 	zassert_ok(ln9310_init(), NULL);
 	zassert_true(ln9310_emul_is_init(emulator), NULL);
+
+	ln9310_interrupt(0);
+	k_msleep(LN9310_TEST_DELAY_MS);
+
+	zassert_true(ln9310_power_good(), NULL);
 }
 
 void test_suite_ln9310(void)
