@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03345084_42952d28",
+        "filename": "zephyr/projects/trogdor/lazor/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-27T13:31:16Z",
+      "side": 0,
+      "message": "I think this would break all the other platforms that are still relying on the board files. How would you feel about keeping this and nibbling away the common parts into zephyr specific code a bit at a time? Alternative would be to split out the option but then we\u0027d start building even more platform specific code rather than less.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "584a379e741fa03875422045fab4bf730acccd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
