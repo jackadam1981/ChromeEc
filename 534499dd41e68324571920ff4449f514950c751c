@@ -22,6 +22,30 @@
       },
       "revId": "534499dd41e68324571920ff4449f514950c751c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e8ea1a9_607f76c7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-27T22:10:39Z",
+      "side": 1,
+      "message": "ERROR: [/builds/zephyr-ec/ec/build/volteer:ro]FAILED: zephyr/zephyr_prebuilt.elf zephyr/zephyr_prebuilt.map /builds/zephyr-ec/ec/build/volteer/build-ro/zephyr/zephyr_prebuilt.map \nERROR: [/builds/zephyr-ec/ec/build/volteer:ro]: \u0026\u0026 ccache /opt/zephyr-sdk/arm-zephyr-eabi/bin/arm-zephyr-eabi-gcc   zephyr/CMakeFiles/zephyr_prebuilt.dir/misc/empty_file.c.obj -o zephyr/zephyr_prebuilt.elf  zephyr/CMakeFiles/offsets.dir/./arch/arm/core/offsets/offsets.c.obj  -fuse-ld\u003dbfd  -Wl,-T  zephyr/linker_zephyr_prebuilt.cmd  -Wl,-Map\u003d/builds/zephyr-ec/ec/build/volteer/build-ro/zephyr/zephyr_prebuilt.map  -Wl,--whole-archive  app/libapp.a  zephyr/libzephyr.a  zephyr/arch/common/libarch__common.a  zephyr/arch/arch/arm/core/aarch32/libarch__arm__core__aarch32.a  zephyr/arch/arch/arm/core/aarch32/cortex_m/libarch__arm__core__aarch32__cortex_m.a  zephyr/arch/arch/arm/core/aarch32/mpu/libarch__arm__core__aarch32__mpu.a  zephyr/lib/libc/minimal/liblib__libc__minimal.a  zephyr/lib/posix/liblib__posix.a  zephyr/drivers/adc/libdrivers__adc.a  zephyr/drivers/gpio/libdrivers__gpio.a  zephyr/drivers/i2c/libdrivers__i2c.a  zephyr/drivers/pwm/libdrivers__pwm.a  zephyr/drivers/sensor/nuvoton_tach_npcx/libdrivers__sensor__nuvoton_tach_npcx.a  zephyr/drivers/espi/libdrivers__espi.a  zephyr/drivers/serial/libdrivers__serial.a  zephyr/drivers/bbram/libdrivers__bbram.a  -Wl,--no-whole-archive  zephyr/kernel/libkernel.a  -L\"/opt/zephyr-sdk/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.2.0/thumb/v7e-m+fp/hard\"  -L/builds/zephyr-ec/ec/build/volteer/build-ro/zephyr  -lgcc  zephyr/arch/common/libisr_tables.a  -mcpu\u003dcortex-m4  -mthumb  -mabi\u003daapcs  -mfpu\u003dfpv4-sp-d16  -Wl,--gc-sections  -Wl,--build-id\u003dnone  -Wl,--sort-common\u003ddescending  -Wl,--sort-section\u003dalignment  -Wl,-u,_OffsetAbsSyms  -Wl,-u,_ConfigAbsSyms  -nostdlib  -static  -no-pie  -Wl,-X  -Wl,-N  -Wl,--orphan-handling\u003dwarn \u0026\u0026 cd /builds/zephyr-ec/ec/build/volteer/build-ro/zephyr \u0026\u0026 /usr/bin/cmake -E echo\nERROR: [/builds/zephyr-ec/ec/build/volteer:ro]/opt/zephyr-sdk/arm-zephyr-eabi/bin/../lib/gcc/arm-zephyr-eabi/10.2.0/../../../../arm-zephyr-eabi/bin/ld.bfd: app/libapp.a(usb_pd_policy.c.obj): in function `pd_snk_is_vbus_provided\u0027:\nERROR: [/builds/zephyr-ec/ec/build/volteer:ro]/builds/zephyr-ec/ec/build/volteer/modules/ec/baseboard/volteer/usb_pd_policy.c:67: undefined reference to `ppc_is_vbus_present\u0027\nERROR: [/builds/zephyr-ec/ec/build/volteer:ro]collect2: error: ld returned 1 exit status\nDEBUG: [/builds/zephyr-ec/ec/build/volteer:ro]ninja: build stopped: subcommand failed.\nOSError: Execution failed (return code\u003d1): /usr/bin/ninja -C /builds/zephyr-ec/ec/build/volteer/build-ro",
+      "parentUuid": "0621ff63_6e768577",
+      "range": {
+        "startLine": 9,
+        "startChar": 11,
+        "endLine": 9,
+        "endChar": 40
+      },
+      "revId": "534499dd41e68324571920ff4449f514950c751c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
