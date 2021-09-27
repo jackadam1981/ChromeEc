@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f7a7d3_75d3e01b",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1421,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-27T23:13:58Z",
+      "side": 1,
+      "message": "Please also add a KConfig option PLATFORM_EC_CONSOLE_CMD_I2C_SPEED to zephyr/Kconfig.",
+      "range": {
+        "startLine": 1421,
+        "startChar": 8,
+        "endLine": 1421,
+        "endChar": 28
+      },
+      "revId": "ffaae9146ba37e46325983404f9498104010d000",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
