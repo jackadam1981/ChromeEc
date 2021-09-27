@@ -15,14 +15,36 @@ import os
 import subprocess
 import sys
 
+<<<<<<< HEAD   (8244ca Clean up cros-logging-import pylint attributes)
 # TODO(crbug/1181505): Code outside of chromite should not be importing from
 # chromite.api.gen.  Import json_format after that so we get the matching one.
 from chromite.api.gen.chromite.api import firmware_pb2
+=======
+# pylint: disable=import-error
+>>>>>>> BRANCH (4e2d19 it83xx: clock: fix sequence to set PLL control register)
 from google.protobuf import json_format
+<<<<<<< HEAD   (8244ca Clean up cros-logging-import pylint attributes)
 
 
 DEFAULT_BUNDLE_DIRECTORY = '/tmp/artifact_bundles'
 DEFAULT_BUNDLE_METADATA_FILE = '/tmp/artifact_bundle_metadata'
+=======
+# TODO(crbug/1181505): Code outside of chromite should not be importing from
+# chromite.api.gen.  Import json_format after that so we get the matching one.
+from chromite.api.gen.chromite.api import firmware_pb2
+>>>>>>> BRANCH (4e2d19 it83xx: clock: fix sequence to set PLL control register)
+
+
+DEFAULT_BUNDLE_DIRECTORY = '/tmp/artifact_bundles'
+DEFAULT_BUNDLE_METADATA_FILE = '/tmp/artifact_bundle_metadata'
+
+# The the list of boards whose on-device unit tests we will verify compilation.
+# TODO(b/172501728) On-device unit tests should build for all boards, but
+# they've bit rotted, so we only build the ones that compile.
+BOARDS_UNIT_TEST = [
+    'bloonchipper',
+    'dartmonkey',
+]
 
 
 def build(opts):
@@ -42,10 +64,19 @@ def build(opts):
 
     if opts.code_coverage:
         print("When --code-coverage is selected, 'build' is a no-op. "
+<<<<<<< HEAD   (8244ca Clean up cros-logging-import pylint attributes)
             "Run 'test' with --code-coverage instead.")
         return
 
     subprocess.run(['make', 'buildall_only', '-j{}'.format(opts.cpus)],
+=======
+              "Run 'test' with --code-coverage instead.")
+        return
+
+    cmd = ['make', 'buildall_only', '-j{}'.format(opts.cpus)]
+    print(f'# Running {" ".join(cmd)}.')
+    subprocess.run(cmd,
+>>>>>>> BRANCH (4e2d19 it83xx: clock: fix sequence to set PLL control register)
                    cwd=os.path.dirname(__file__),
                    check=True)
 
@@ -60,6 +91,7 @@ def bundle(opts):
 def get_bundle_dir(opts):
     """Get the directory for the bundle from opts or use the default.
 
+<<<<<<< HEAD   (8244ca Clean up cros-logging-import pylint attributes)
     Also create the directory if it doesn't exist."""
     bundle_dir = opts.output_dir if opts.output_dir else DEFAULT_BUNDLE_DIRECTORY
     if not os.path.isdir(bundle_dir):
@@ -110,6 +142,63 @@ def bundle_firmware(opts):
         meta.tarball_info.type = firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.EC
         # TODO(kmshelton): Populate the rest of metadata contents as it gets defined in
         # infra/proto/src/chromite/api/firmware.proto.
+=======
+    Also create the directory if it doesn't exist.
+    """
+    bundle_dir = opts.output_dir if opts.output_dir else \
+        DEFAULT_BUNDLE_DIRECTORY
+    if not os.path.isdir(bundle_dir):
+        os.mkdir(bundle_dir)
+    return bundle_dir
+
+
+def write_metadata(opts, info):
+    """Write the metadata about the bundle."""
+    bundle_metadata_file = opts.metadata if opts.metadata else \
+        DEFAULT_BUNDLE_METADATA_FILE
+    with open(bundle_metadata_file, 'w') as f:
+        f.write(json_format.MessageToJson(info))
+
+
+def bundle_coverage(opts):
+    """Bundles the artifacts from code coverage into its own tarball."""
+    info = firmware_pb2.FirmwareArtifactInfo()
+    info.bcs_version_info.version_string = opts.bcs_version
+    bundle_dir = get_bundle_dir(opts)
+    ec_dir = os.path.dirname(__file__)
+    tarball_name = 'coverage.tbz2'
+    tarball_path = os.path.join(bundle_dir, tarball_name)
+    cmd = ['tar', 'cvfj', tarball_path, 'lcov.info']
+    subprocess.run(cmd, cwd=os.path.join(ec_dir, 'build/coverage'), check=True)
+    meta = info.objects.add()
+    meta.file_name = tarball_name
+    meta.lcov_info.type = (
+        firmware_pb2.FirmwareArtifactInfo.LcovTarballInfo.LcovType.LCOV)
+
+    write_metadata(opts, info)
+
+
+def bundle_firmware(opts):
+    """Bundles the artifacts from each target into its own tarball."""
+    info = firmware_pb2.FirmwareArtifactInfo()
+    info.bcs_version_info.version_string = opts.bcs_version
+    bundle_dir = get_bundle_dir(opts)
+    ec_dir = os.path.dirname(__file__)
+    for build_target in sorted(os.listdir(os.path.join(ec_dir, 'build'))):
+        tarball_name = ''.join([build_target, '.firmware.tbz2'])
+        tarball_path = os.path.join(bundle_dir, tarball_name)
+        cmd = [
+            'tar', 'cvfj', tarball_path, '--exclude=*.o.d', '--exclude=*.o', '.'
+        ]
+        subprocess.run(
+            cmd, cwd=os.path.join(ec_dir, 'build', build_target), check=True)
+        meta = info.objects.add()
+        meta.file_name = tarball_name
+        meta.tarball_info.type = (
+            firmware_pb2.FirmwareArtifactInfo.TarballInfo.FirmwareType.EC)
+        # TODO(kmshelton): Populate the rest of metadata contents as it gets
+        # defined in infra/proto/src/chromite/api/firmware.proto.
+>>>>>>> BRANCH (4e2d19 it83xx: clock: fix sequence to set PLL control register)
 
     write_metadata(opts, info)
 
@@ -128,7 +217,13 @@ def test(opts):
     # Otherwise, build the 'runtests' target, which verifies all
     # posix-based unit tests build and pass.
     target = 'coverage' if opts.code_coverage else 'runtests'
+<<<<<<< HEAD   (8244ca Clean up cros-logging-import pylint attributes)
     subprocess.run(['make', target, '-j{}'.format(opts.cpus)],
+=======
+    cmd = ['make', target, '-j{}'.format(opts.cpus)]
+    print(f'# Running {" ".join(cmd)}.')
+    subprocess.run(cmd,
+>>>>>>> BRANCH (4e2d19 it83xx: clock: fix sequence to set PLL control register)
                    cwd=os.path.dirname(__file__),
                    check=True)
 
@@ -136,18 +231,34 @@ def test(opts):
         # Verify compilation of the on-device unit test binaries.
         # TODO(b/172501728) These should build  for all boards, but they've bit
         # rotted, so we only build the ones that compile.
+<<<<<<< HEAD   (8244ca Clean up cros-logging-import pylint attributes)
         subprocess.run(
             ['make', 'BOARD=bloonchipper', 'tests', '-j{}'.format(opts.cpus)],
             cwd=os.path.dirname(__file__),
             check=True)
+=======
+        cmd = ['make', '-j{}'.format(opts.cpus)]
+        cmd.extend(['tests-' + b for b in BOARDS_UNIT_TEST])
+        print(f'# Running {" ".join(cmd)}.')
+        subprocess.run(cmd,
+                       cwd=os.path.dirname(__file__),
+                       check=True)
+>>>>>>> BRANCH (4e2d19 it83xx: clock: fix sequence to set PLL control register)
 
 
 def main(args):
+<<<<<<< HEAD   (8244ca Clean up cros-logging-import pylint attributes)
     """Builds, bundles, or tests all of the EC targets and reports build metrics."""
+=======
+    """Builds, bundles, or tests all of the EC targets.
+
+    Additionally, the tool reports build metrics.
+    """
+>>>>>>> BRANCH (4e2d19 it83xx: clock: fix sequence to set PLL control register)
     opts = parse_args(args)
 
     if not hasattr(opts, 'func'):
-        print("Must select a valid sub command!")
+        print('Must select a valid sub command!')
         return -1
 
     # Run selected sub command function
@@ -178,6 +289,7 @@ def parse_args(args):
     parser.add_argument(
         '--metadata',
         required=False,
+<<<<<<< HEAD   (8244ca Clean up cros-logging-import pylint attributes)
         help=
         'Full pathname for the file in which to write build artifact metadata.',
     )
@@ -187,6 +299,17 @@ def parse_args(args):
         required=False,
         help=
         'Full pathanme for the directory in which to bundle build artifacts.',
+=======
+        help='Full pathname for the file in which to write build artifact '
+        'metadata.',
+    )
+
+    parser.add_argument(
+        '--output-dir',
+        required=False,
+        help='Full pathanme for the directory in which to bundle build '
+        'artifacts.',
+>>>>>>> BRANCH (4e2d19 it83xx: clock: fix sequence to set PLL control register)
     )
 
     parser.add_argument(
