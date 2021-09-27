@@ -104,6 +104,24 @@
       "parentUuid": "043e7fb0_648101d4",
       "revId": "987f04b89e1e109ba9542f0aa435e67b39409946",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a28e3e05_827dd89d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1393469
+      },
+      "writtenOn": "2021-09-27T16:51:39Z",
+      "side": 1,
+      "message": "Restored the master branch and filed a tracking bug: https://crbug.com/1253404",
+      "parentUuid": "24a05979_9cd2405c",
+      "revId": "987f04b89e1e109ba9542f0aa435e67b39409946",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
