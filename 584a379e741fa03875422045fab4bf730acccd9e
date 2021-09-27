@@ -46,6 +46,30 @@
       },
       "revId": "584a379e741fa03875422045fab4bf730acccd9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08231cdb_8cd888ac",
+        "filename": "zephyr/projects/trogdor/lazor/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-27T23:07:41Z",
+      "side": 0,
+      "message": "It should only affect the Lazor project. Should be fine.",
+      "parentUuid": "88e21a27_7d2a60e2",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "584a379e741fa03875422045fab4bf730acccd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
