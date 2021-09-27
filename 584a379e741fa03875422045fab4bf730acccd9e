@@ -22,6 +22,30 @@
       },
       "revId": "584a379e741fa03875422045fab4bf730acccd9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88e21a27_7d2a60e2",
+        "filename": "zephyr/projects/trogdor/lazor/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-09-27T21:05:31Z",
+      "side": 0,
+      "message": "Isn\u0027t this only applicable to Lazor project. For Lazor specifically it will not build the led.c file from its board directory but instead build the local file. But for all other projects, they will still build their board specific led.c files. \nEg. zephyr/projects/trogdor/trogdor/CMakeLists.txt still has this code and it will build the led.c file from its board directory.",
+      "parentUuid": "03345084_42952d28",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "584a379e741fa03875422045fab4bf730acccd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
