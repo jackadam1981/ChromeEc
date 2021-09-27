@@ -5,8 +5,28 @@
 
 #include <ztest.h>
 #include <drivers/emul.h>
+#include "kernel.h"
+#include "ztest_assert.h"
 #include "driver/ln9310.h"
 #include "emul/emul_ln9310.h"
+
+#define LN9310_TEST_DELAY_MS 50
+
+static void do_ln9310_interrupt(void)
+{
+	/*
+	 * TODO(b/201437348): Use gpio interrupt pins properly instead of
+	 * making direct interrupt call as part of this or system test
+	 */
+
+	ln9310_interrupt(0);
+
+	/*
+	 * TODO(b/201420132):  Zephyr driver unit tests: Implement approach for
+	 * tests to immediately schedule work to avoid any sleeping
+	 */
+	k_msleep(LN9310_TEST_DELAY_MS);
+}
 
 void test_ln9310_2s_no_startup__passes_init(void)
 {
@@ -22,6 +42,10 @@ void test_ln9310_2s_no_startup__passes_init(void)
 
 	zassert_ok(ln9310_init(), NULL);
 	zassert_true(ln9310_emul_is_init(emulator), NULL);
+
+	do_ln9310_interrupt();
+
+	zassert_true(ln9310_power_good(), NULL);
 }
 
 void test_ln9310_3s_no_startup__passes_init(void)
@@ -38,6 +62,10 @@ void test_ln9310_3s_no_startup__passes_init(void)
 
 	zassert_ok(ln9310_init(), NULL);
 	zassert_true(ln9310_emul_is_init(emulator), NULL);
+
+	do_ln9310_interrupt();
+
+	zassert_true(ln9310_power_good(), NULL);
 }
 
 void test_suite_ln9310(void)
