@@ -774,6 +774,55 @@ static int cros_flash_npcx_protect_now(const struct device *dev, int all)
 	return EC_SUCCESS;
 }
 
+static void cros_flash_npcx_get_jedec_id(const struct device *dev,
+					 uint8_t *dest)
+{
+	struct fiu_reg *const inst = HAL_INSTANCE(dev);
+
+	/* Lock physical flash operations */
+	crec_flash_lock_mapped_storage(1);
+
+	/* Read manufacturer and device ID */
+	cros_flash_npcx_exec_cmd(dev,
+				 SPI_NOR_CMD_RDID,
+				 UMA_CODE_CMD_RD_BYTE(3));
+
+	dest[0] = inst->UMA_DB0;
+	dest[1] = inst->UMA_DB1;
+	dest[2] = inst->UMA_DB2;
+
+	/* Unlock physical flash operations */
+	crec_flash_lock_mapped_storage(0);
+}
+
+static int command_flashchip(const struct shell *shell,
+			     size_t argc,
+			     char **argv)
+{
+	const struct device *dev = DEVICE_DT_GET(DT_NODELABEL(fiu0));
+	uint8_t jedec_id[3];
+	int status1;
+	int status2;
+
+	status1 = flash_get_status1(dev);
+	status2 = flash_get_status2(dev);
+
+	shell_fprintf(shell,
+		      SHELL_NORMAL,
+		      "Status 1: 0x%02x, Status 2: 0x%02x\n",
+		      status1, status2);
+
+	cros_flash_npcx_get_jedec_id(dev, jedec_id);
+	shell_fprintf(shell,
+		      SHELL_NORMAL,
+		      "Manufacturer: 0x%02x, DID: 0x%02x%02x\n",
+		      jedec_id[0], jedec_id[1], jedec_id[2]);
+
+	return 0;
+}
+SHELL_CMD_REGISTER(flashchip, NULL, "Information about flash chip",
+		command_flashchip);
+
 /* cros ec flash driver registration */
 static const struct cros_flash_driver_api cros_flash_npcx_driver_api = {
 	.init = cros_flash_npcx_init,
