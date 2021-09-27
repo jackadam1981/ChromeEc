@@ -110,6 +110,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f91d9cb1_fa4bd56e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-27T23:14:25Z",
+      "side": 1,
+      "message": "Under Zephyr, drivers are typically initialized before the kernel, but runtime use requires that the kernel is initialized.\n\nZephyr does have an upstream bit-bang I2C driver, but it isn\u0027t designed work using the same pins as the SoC native driver (no run-time pin configuration).  A quick look through the bit-bang driver and I don\u0027t see kernel services used, but the underlying GPIO driver might use them.\n\nThis approach of using both bit-bang and the native will likely take same significant work to make functional under Zephyr.  Can the keyboard IC get enabled after tasks and the kernel are running?",
+      "parentUuid": "ed7d89bc_2562ea58",
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39722849_349cef71",
         "filename": "common/main.c",
         "patchSetId": 9
