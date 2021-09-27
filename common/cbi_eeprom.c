@@ -36,7 +36,7 @@ static int eeprom_is_write_protected(void)
 #if defined(CONFIG_WP_ACTIVE_HIGH)
 	return gpio_get_level(GPIO_WP);
 #else
-	return !gpio_get_level(GPIO_WP_L);
+	return gpio_get_level(GPIO_WP_L);
 #endif
 }
 
