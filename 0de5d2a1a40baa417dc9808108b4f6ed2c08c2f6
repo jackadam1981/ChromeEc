@@ -16,6 +16,24 @@
       "message": "I am trying to understand why this config is required as it is not enabled in ec/boards/volteer/board.h\nI am afraid enabling this might alter the VBUS_DETECT behavior in volteer?",
       "revId": "0de5d2a1a40baa417dc9808108b4f6ed2c08c2f6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d300c492_80b3b975",
+        "filename": "zephyr/projects/volteer/volteer/prj.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-27T21:34:02Z",
+      "side": 1,
+      "message": "Ok, I found a different way to fix, that actually makes more sense.",
+      "parentUuid": "17638672_598404cf",
+      "revId": "0de5d2a1a40baa417dc9808108b4f6ed2c08c2f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
