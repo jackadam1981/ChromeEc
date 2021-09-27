@@ -63,6 +63,13 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 
 	/* Get max power that is under our max voltage input */
 	for (i = 0; i < src_cap_cnt; i++) {
+		int pdo_mv = ((src_caps[i] >> 10) & 0x3FF) * 50;
+		int pdo_ma = (src_caps[i] & 0x3FF) * 10;
+		int pdo_w  = (int) ((pdo_mv * pdo_ma) /1000000);
+
+		CPRINTS(" @ @ @ %s:  w:%d, mv:%d, ma:%d, src_caps:0x%8x",
+								__func__, pdo_w, pdo_mv, pdo_ma, src_caps[i]);
+
 		if (IS_ENABLED(CONFIG_USB_PD_ONLY_FIXED_PDOS) &&
 		    (src_caps[i] & PDO_TYPE_MASK) != PDO_TYPE_FIXED)
 			continue;
@@ -156,6 +163,7 @@ int pd_find_pdo_index(uint32_t src_cap_cnt, const uint32_t * const src_caps,
 	if (selected_pdo)
 		*selected_pdo = src_caps[ret];
 
+	CPRINTS(" @ @ @ %s:  ret:%d, src_caps:0x%8x", __func__, ret, src_caps[ret]);
 	return ret;
 }
 
