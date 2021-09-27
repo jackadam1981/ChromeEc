@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6709ca6f_ac90fe94",
+        "filename": "zephyr/drivers/cros_flash/cros_flash_npcx.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-27T19:30:26Z",
+      "side": 1,
+      "message": "Move this function into the shim/src/flash.c driver.  Extend the cros_flash API to add a \"get_manufacturer_id\" and \"get_protect_status\".",
+      "range": {
+        "startLine": 799,
+        "startChar": 0,
+        "endLine": 826,
+        "endChar": 0
+      },
+      "revId": "b809c326104f91500c87b3210668f83b449b2dfd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
