@@ -19,6 +19,7 @@
 #include "baseboard.h"
 
 #define CONFIG_SYSTEM_UNLOCKED
+#define CONFIG_USB_PD_TCPM_PS8815_FORCE_DID
 
 /*
  * This will happen automatically on NPCX9 ES2 and later. Do not remove
