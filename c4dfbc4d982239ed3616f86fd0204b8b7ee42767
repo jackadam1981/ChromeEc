@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61c8ac2_0538bfcf",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-28T23:27:23Z",
+      "side": 1,
+      "message": "this doesn\u0027t look right.\nthis should be a fixed number per port, not 2^n.",
+      "range": {
+        "startLine": 78,
+        "startChar": 25,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f7e72ee_83a75e5a",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-28T23:27:23Z",
+      "side": 1,
+      "message": "i\u0027d suggest using a per-port queue so we don\u0027t get interference\nfrom mis-behaving ports. i can envision a high-activity port\nfilling the shared queue, thus starving other ports. i think\na single task is OK, just need to round-robin the queues\nfor servicing.",
+      "range": {
+        "startLine": 93,
+        "startChar": 27,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ed95aed_c5e84b24",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-28T23:27:23Z",
+      "side": 1,
+      "message": "huh. what does const mean here?",
+      "range": {
+        "startLine": 93,
+        "startChar": 21,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
