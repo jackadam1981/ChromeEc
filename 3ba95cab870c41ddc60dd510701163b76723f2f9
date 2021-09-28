@@ -16,6 +16,24 @@
       "message": "Not sure which way is better.\n\nDoes __maybe_unused (or __attribute__((unused)) if you don\u0027t include common.h) work?",
       "revId": "3ba95cab870c41ddc60dd510701163b76723f2f9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c86876e_0cde56a5",
+        "filename": "test/rollback_entropy.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-28T15:37:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6e34d67_1c3cfa01",
+      "revId": "3ba95cab870c41ddc60dd510701163b76723f2f9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
