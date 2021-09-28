@@ -57,6 +57,30 @@
       },
       "revId": "abba51d8440ec50f413f1a9b0fd157ea8a6177c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42eb8423_5b096c64",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-28T19:29:13Z",
+      "side": 1,
+      "message": "Ok, I introduced an unused function and removed this flag, and the build failed, so you are correct.  I don\u0027t know how a unused function snuck into one of the tests then.",
+      "parentUuid": "1072b392_e6069cf3",
+      "range": {
+        "startLine": 57,
+        "startChar": 37,
+        "endLine": 57,
+        "endChar": 52
+      },
+      "revId": "abba51d8440ec50f413f1a9b0fd157ea8a6177c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
