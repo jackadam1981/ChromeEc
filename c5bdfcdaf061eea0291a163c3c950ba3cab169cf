@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38ef2602_03539da8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-28T18:21:57Z",
+      "side": 1,
+      "message": "This CL can be abandoned. STM32 EC should use CONFIG_I2C_XFER_LARGE_TRANSFER instead.",
+      "revId": "c5bdfcdaf061eea0291a163c3c950ba3cab169cf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
