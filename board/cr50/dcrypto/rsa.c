@@ -31,9 +31,8 @@ static uint32_t select(uint32_t mask, uint32_t a, uint32_t b)
 /* We use SHA256 context to store SHA1 context, so make sure it's ok. */
 BUILD_ASSERT(sizeof(struct sha256_ctx) >= sizeof(struct sha1_ctx));
 
-static void MGF1_xor(uint8_t *dst, uint32_t dst_len,
-		const uint8_t *seed, uint32_t seed_len,
-		enum hashing_mode hashing)
+static bool MGF1_xor(uint8_t *dst, uint32_t dst_len, const uint8_t *seed,
+		     uint32_t seed_len, enum hashing_mode hashing)
 {
 	union hash_ctx ctx;
 
@@ -44,17 +43,17 @@ static void MGF1_xor(uint8_t *dst, uint32_t dst_len,
 		uint8_t b0;
 	} cnt;
 	const uint8_t *digest;
-	const size_t hash_size = (hashing == HASH_SHA1) ? SHA1_DIGEST_SIZE :
-							SHA256_DIGEST_SIZE;
+	const size_t hash_size = DCRYPTO_hash_size(hashing);
+
+	if (hash_size == 0)
+		return false;
 
 	cnt.b0 = cnt.b1 = cnt.b2 = cnt.b3 = 0;
 	while (dst_len) {
 		size_t i;
 
-		if (hashing == HASH_SHA1)
-			SHA1_hw_init(&ctx.sha1);
-		else
-			SHA256_hw_init(&ctx.sha256);
+		if (DCRYPTO_hw_hash_init(&ctx, hashing) != DCRYPTO_OK)
+			return false;
 
 		HASH_update(&ctx, seed, seed_len);
 		HASH_update(&ctx, (uint8_t *)&cnt, sizeof(cnt));
@@ -65,6 +64,7 @@ static void MGF1_xor(uint8_t *dst, uint32_t dst_len,
 		if (!++cnt.b0)
 			++cnt.b1;
 	}
+	return true;
 }
 
 /*
@@ -78,12 +78,11 @@ static void MGF1_xor(uint8_t *dst, uint32_t dst_len,
  * };
  */
 /* encrypt */
-static int oaep_pad(uint8_t *output, uint32_t output_len,
-		const uint8_t *msg, uint32_t msg_len,
-		enum hashing_mode hashing, const char *label)
+static int oaep_pad(uint8_t *output, uint32_t output_len, const uint8_t *msg,
+		    uint32_t msg_len, enum hashing_mode hashing,
+		    const char *label)
 {
-	const size_t hash_size = (hashing == HASH_SHA1) ? SHA_DIGEST_SIZE
-		: SHA256_DIGEST_SIZE;
+	const size_t hash_size = DCRYPTO_hash_size(hashing);
 	uint8_t *const seed = output + 1;
 	uint8_t *const phash = seed + hash_size;
 	uint8_t *const PS = phash + hash_size;
@@ -93,27 +92,27 @@ static int oaep_pad(uint8_t *output, uint32_t output_len,
 	union hash_ctx ctx;
 
 	if (output_len < 2 + 2 * hash_size)
-		return 0;       /* Key size too small for chosen hash. */
+		return 0; /* Key size too small for chosen hash. */
 	if (msg_len > output_len - 2 - 2 * hash_size)
-		return 0;       /* Input message too large for key size. */
+		return 0; /* Input message too large for key size. */
 
 	always_memset(output, 0, output_len);
 	if (!fips_rand_bytes(seed, hash_size))
 		return 0;
 
-	if (hashing == HASH_SHA1)
-		SHA1_hw_init(&ctx.sha1);
-	else
-		SHA256_hw_init(&ctx.sha256);
+	if (DCRYPTO_hw_hash_init(&ctx, hashing) != DCRYPTO_OK)
+		return 0;
 
 	HASH_update(&ctx, label, label ? strlen(label) + 1 : 0);
 	memcpy(phash, HASH_final(&ctx)->b8, hash_size);
 	*one = 1;
 	memcpy(one + 1, msg, msg_len);
-	MGF1_xor(phash, hash_size + 1 + max_msg_len,
-		seed, hash_size, hashing);
-	MGF1_xor(seed, hash_size, phash, hash_size + 1 + max_msg_len,
-		hashing);
+	if (!MGF1_xor(phash, hash_size + 1 + max_msg_len, seed, hash_size,
+		      hashing) ||
+	    !MGF1_xor(seed, hash_size, phash, hash_size + 1 + max_msg_len,
+		      hashing))
+		return 0;
+
 	return 1;
 }
 
@@ -122,8 +121,7 @@ static int check_oaep_pad(uint8_t *out, size_t *out_len,
 			uint8_t *padded, size_t padded_len,
 			enum hashing_mode hashing, const char *label)
 {
-	const size_t hash_size = (hashing == HASH_SHA1) ? SHA_DIGEST_SIZE
-		: SHA256_DIGEST_SIZE;
+	const size_t hash_size = DCRYPTO_hash_size(hashing);
 	uint8_t *seed = padded + 1;
 	uint8_t *phash = seed + hash_size;
 	uint8_t *PS = phash + hash_size;
@@ -138,14 +136,15 @@ static int check_oaep_pad(uint8_t *out, size_t *out_len,
 		return 0;       /* Invalid input size. */
 
 	/* Recover seed. */
-	MGF1_xor(seed, hash_size, phash, hash_size + 1 + max_msg_len, hashing);
-	/* Recover db. */
-	MGF1_xor(phash, hash_size + 1 + max_msg_len, seed, hash_size, hashing);
+	if (!MGF1_xor(seed, hash_size, phash, hash_size + 1 + max_msg_len,
+		      hashing) ||
+	    /* Recover db. */
+	    !MGF1_xor(phash, hash_size + 1 + max_msg_len, seed, hash_size,
+		      hashing))
+		return 0;
 
-	if (hashing == HASH_SHA1)
-		SHA1_hw_init(&ctx.sha1);
-	else
-		SHA256_hw_init(&ctx.sha256);
+	if (DCRYPTO_hw_hash_init(&ctx, hashing) != DCRYPTO_OK)
+		return 0;
 	HASH_update(&ctx, label, label ? strlen(label) + 1 : 0);
 
 	/* bad should be zero if CRYPTO_OK is returned. */
@@ -380,8 +379,7 @@ static int pkcs1_pss_pad(uint8_t *padded, size_t padded_len,
 			const uint8_t *in, size_t in_len,
 			enum hashing_mode hashing)
 {
-	const uint32_t hash_size = (hashing == HASH_SHA1) ? SHA1_DIGEST_SIZE
-		: SHA256_DIGEST_SIZE;
+	const uint32_t hash_size = DCRYPTO_hash_size(hashing);
 	const uint32_t salt_len = MIN(padded_len - hash_size - 2, hash_size);
 	size_t db_len;
 	size_t ps_len;
@@ -393,10 +391,8 @@ static int pkcs1_pss_pad(uint8_t *padded, size_t padded_len,
 		return 0;
 	db_len = padded_len - hash_size - 1;
 
-	if (hashing == HASH_SHA1)
-		SHA1_hw_init(&ctx.sha1);
-	else
-		SHA256_hw_init(&ctx.sha256);
+	if (DCRYPTO_hw_hash_init(&ctx, hashing) != DCRYPTO_OK)
+		return 0;
 
 	/* Pilfer bits of output for temporary use. */
 	memset(padded, 0, 8);
@@ -415,7 +411,8 @@ static int pkcs1_pss_pad(uint8_t *padded, size_t padded_len,
 	memmove(padded + ps_len + 1, padded, salt_len);
 	memset(padded, 0, ps_len);
 	padded[ps_len] = 0x01;
-	MGF1_xor(padded, db_len, padded + db_len, hash_size, hashing);
+	if (!MGF1_xor(padded, db_len, padded + db_len, hash_size, hashing))
+		return 0;
 
 	/* Clear most significant bit. */
 	padded[0] &= 0x7F;
@@ -451,7 +448,8 @@ static int check_pkcs1_pss_pad(const uint8_t *in, size_t in_len,
 	bad |= padded[padded_len - 1] ^ 0xBC;
 
 	/* Recover DB. */
-	MGF1_xor(padded, db_len, padded + db_len, hash_size, hashing);
+	if (!MGF1_xor(padded, db_len, padded + db_len, hash_size, hashing))
+		return 0;
 	/* Clear top bit. */
 	padded[0] &= 0x7F;
 	/* Verify padding2. */
@@ -466,10 +464,9 @@ static int check_pkcs1_pss_pad(const uint8_t *in, size_t in_len,
 	/* Continue with zero-length salt if 0x01 was not found. */
 	salt_len = max_ps_len - i;
 
-	if (hashing == HASH_SHA1)
-		SHA1_hw_init(&ctx.sha1);
-	else
-		SHA256_hw_init(&ctx.sha256);
+	if (DCRYPTO_hw_hash_init(&ctx, hashing) != DCRYPTO_OK)
+		return 0;
+
 	HASH_update(&ctx, zeros, sizeof(zeros));
 	HASH_update(&ctx, in, in_len);
 	HASH_update(&ctx, padded + db_len - salt_len, salt_len);
