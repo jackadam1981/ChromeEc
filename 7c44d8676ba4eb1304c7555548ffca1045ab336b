@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28f5676b_fadd7085",
+        "filename": ".gitignore",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T00:31:47Z",
+      "side": 1,
+      "message": "related?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "7c44d8676ba4eb1304c7555548ffca1045ab336b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9336a856_0ca5dbfa",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T00:31:47Z",
+      "side": 1,
+      "message": "nit: indentation with spaces vs tab doesn\u0027t match the previous line",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 8
+      },
+      "revId": "7c44d8676ba4eb1304c7555548ffca1045ab336b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54de285c_0dcc0234",
+        "filename": "fuzz/fuzz_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T00:31:47Z",
+      "side": 1,
+      "message": "do we want dcrypto for fuzzing?\n+sukhomlinov, what does this turn on?",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 106,
+        "endChar": 22
+      },
+      "revId": "7c44d8676ba4eb1304c7555548ffca1045ab336b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
