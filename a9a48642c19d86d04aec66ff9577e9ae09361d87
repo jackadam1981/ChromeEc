@@ -146,6 +146,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b5804c0_53404415",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-28T23:03:23Z",
+      "side": 1,
+      "message": "Looks like Keyboard needs to initialized before task init for recovery mode mechanism, more discussion is available here CL:3138215\n\nCan we add CONFIG_I2C_BITBANG_WHEN_TASK_UNINIT config as in rev2 of this CL so that we don\u0027t break other boards?\n\nWe have follow on CLs CL:3183329 , CL:3183330 where we would need to enable IOEX \u0026 board ID reading pre-task for WIP CLs: CL:3173100 , CL:3038423",
+      "parentUuid": "10d3c890_b16acff4",
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39722849_349cef71",
         "filename": "common/main.c",
         "patchSetId": 9
