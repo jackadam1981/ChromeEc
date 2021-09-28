@@ -52,6 +52,24 @@
       "parentUuid": "99bb3a0c_3e75f9f1",
       "revId": "87ebfe5f6aee4f88a58851f0cda5ef4f8fab53ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f6623c0_88fcb074",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-28T17:16:13Z",
+      "side": 1,
+      "message": "Ah, right, I forgot that we set the strategy in the script: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/util/update_release_branch.py#226\n\nI get the same result when using the script.",
+      "parentUuid": "f3b5863c_86914d74",
+      "revId": "87ebfe5f6aee4f88a58851f0cda5ef4f8fab53ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
