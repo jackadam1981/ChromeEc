@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f085752_15824d0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-28T22:50:21Z",
+      "side": 1,
+      "message": "This is not the way we want to be processing mode changes I\u0027ve discovered after some work. the finish_write function doesnt have access to the previous value.\n\nThis logic needs to be in the write_byte portion of the emulator.\n",
+      "revId": "af3c5f2b79f834378979c6f32ec0f07ac8b69480",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
