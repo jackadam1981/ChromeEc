@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0d4a2c1_ef894227",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T15:31:13Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 21,
+        "startChar": 27,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "33c778633f669361c40cc6cc4e3857bbc97bfd8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ad03019_85cec170",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T15:31:13Z",
+      "side": 1,
+      "message": "Not reviewed fully yet. Quick questions:\n - any effect on performance? how much do those allocations \u0026 copying slow us down?\n - can it lead to compaction failure if it is started why spiflash is in progress? is it recoverable?\n - can a misbehaving host leave us in the state when this buffer is allocated and not released, thus preventing compaction and other ops that require heap? can we deal with it through timeouts? do we handle properly (and free the buffer) if the host starts a different op while an incomplete read is pending?",
+      "revId": "33c778633f669361c40cc6cc4e3857bbc97bfd8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de888d0e_ae3eaa6c",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T15:31:13Z",
+      "side": 1,
+      "message": "question: how do we limit config_rsp.max_read? do we guarantee that we never request more than we can allocate while idle (not during compaction)?",
+      "range": {
+        "startLine": 531,
+        "startChar": 6,
+        "endLine": 531,
+        "endChar": 44
+      },
+      "revId": "33c778633f669361c40cc6cc4e3857bbc97bfd8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
