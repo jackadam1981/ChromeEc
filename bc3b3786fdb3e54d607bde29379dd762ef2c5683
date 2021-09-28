@@ -39,6 +39,30 @@
       },
       "revId": "bc3b3786fdb3e54d607bde29379dd762ef2c5683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed499605_deca7dc5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7022,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-28T23:41:51Z",
+      "side": 1,
+      "message": "yes, this is to support the case where the I2C implementation on\nthe EC does not support/implement getting the I2C bus speed or\nthe value does not map to the \"standard\" speeds.",
+      "parentUuid": "bec47441_087d22a5",
+      "range": {
+        "startLine": 7022,
+        "startChar": 1,
+        "endLine": 7022,
+        "endChar": 29
+      },
+      "revId": "bc3b3786fdb3e54d607bde29379dd762ef2c5683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
