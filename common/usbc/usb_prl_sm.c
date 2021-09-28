@@ -1081,6 +1081,14 @@ static void prl_tx_construct_message(const int port)
 	const uint32_t header = pdmsg[port].xmit_type < NUM_SOP_STAR_TYPES ?
 		get_sop_star_header(port) : 0;
 
+	/*
+	 * If we received a message, but the PRL_RX state machine hasn't run
+	 * and forced discard yet, assume we shouldn't send this message to the
+	 * TCPC.
+	 */
+	if (tcpm_has_pending_message(port))
+		return;
+
 	/* Save SOP* so the correct msg_id_counter can be incremented */
 	prl_tx[port].last_xmit_type = pdmsg[port].xmit_type;
 
