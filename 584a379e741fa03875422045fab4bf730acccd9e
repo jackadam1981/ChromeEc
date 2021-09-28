@@ -70,6 +70,30 @@
       },
       "revId": "584a379e741fa03875422045fab4bf730acccd9e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc6056a1_38678af1",
+        "filename": "zephyr/projects/trogdor/lazor/CMakeLists.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-09-28T10:29:40Z",
+      "side": 0,
+      "message": "Oh I missed that this is the project specific config, right sry about that.",
+      "parentUuid": "08231cdb_8cd888ac",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 0
+      },
+      "revId": "584a379e741fa03875422045fab4bf730acccd9e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
