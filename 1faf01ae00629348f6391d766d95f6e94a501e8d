@@ -39,6 +39,30 @@
       },
       "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "055c94fb_73ad7315",
+        "filename": "chip/host/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-28T03:55:40Z",
+      "side": 1,
+      "message": "I didn\u0027t dig into where these are used in the pinweaver fuzzer. I didn\u0027t need these in my u2f fuzzer. So I\u0027m not sure if all fuzzers need to be build with these. I\u0027ll take a look.",
+      "parentUuid": "87ba6191_7e51d966",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
