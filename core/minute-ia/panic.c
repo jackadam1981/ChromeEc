@@ -112,6 +112,8 @@ void exception_panic(
 	register uint32_t edx asm("edx");
 	register uint32_t esi asm("esi");
 	register uint32_t edi asm("edi");
+	asm(""
+	    : "=r"(eax), "=r"(ebx), "=r"(ecx), "=r"(edx), "=r"(esi), "=r"(edi));
 
 	struct panic_data * const pdata = get_panic_data_write();
 
