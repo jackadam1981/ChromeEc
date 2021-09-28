@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aacecd89_733baea2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-09-28T11:51:43Z",
+      "side": 1,
+      "message": "In patchset 7, emul_usb_mux_mock is replaced by proxy usb_mux. Test put proxy between usb_mux API and driver. This way I am able to check which functions are called and force behavior not possible to set up in available usb mux emulator/driver (bb_retimer). Real drivers are still called. In future setup_ztest_proxy_*() functions can be replaced with simpler functions using FFF. ",
+      "revId": "5337d6c6483624225d4148a9c6b4828e5c0673e3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
