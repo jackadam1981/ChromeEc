@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5bed1ea_3aeaf1a6",
+        "filename": "board/cr50/dcrypto/hmac_drbg.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T01:03:19Z",
+      "side": 1,
+      "message": "oh I missed that the 2nd is 0x01",
+      "parentUuid": "46d551de_f992239d",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 45
+      },
+      "revId": "c448bf411f4da718e61dc4dde4610e7cf5ad8d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77b09bf1_eddb4081",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "hmac_drbg_reseed() does it. no need to duplicate.",
       "parentUuid": "77b09bf1_eddb4081",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "c448bf411f4da718e61dc4dde4610e7cf5ad8d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c45f572_d9c7124e",
+        "filename": "board/cr50/dcrypto/hmac_drbg.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T01:03:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "304720a5_c0223fbe",
       "range": {
         "startLine": 130,
         "startChar": 1,
