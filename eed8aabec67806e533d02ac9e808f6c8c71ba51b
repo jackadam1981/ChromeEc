@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c0d29edf_62ae3aa0",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-09-28T16:37:29Z",
+      "side": 1,
+      "message": "won\u0027t factories for old boards still need this command? Their AP RO won\u0027t have a hash.",
+      "range": {
+        "startLine": 535,
+        "startChar": 48,
+        "endLine": 536,
+        "endChar": 16
+      },
+      "revId": "eed8aabec67806e533d02ac9e808f6c8c71ba51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2311815c_5b57bf8c",
         "filename": "common/ap_ro_integrity_check.c",
         "patchSetId": 11
@@ -19,6 +42,98 @@
         "startChar": 1,
         "endLine": 1203,
         "endChar": 59
+      },
+      "revId": "eed8aabec67806e533d02ac9e808f6c8c71ba51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa8ab6eb_eebdf74a",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-09-28T16:37:29Z",
+      "side": 1,
+      "message": "validate_ap_ro2",
+      "range": {
+        "startLine": 1273,
+        "startChar": 14,
+        "endLine": 1273,
+        "endChar": 34
+      },
+      "revId": "eed8aabec67806e533d02ac9e808f6c8c71ba51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d75bf936_c33a19ef",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1361,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-09-28T16:37:29Z",
+      "side": 1,
+      "message": "We might need the vendor command even if we can\u0027t switch to AP RO v2 for some reason. Can you create this in a separate CL first and then modify it to use ap ro v2 validate in this CL?",
+      "range": {
+        "startLine": 1361,
+        "startChar": 0,
+        "endLine": 1361,
+        "endChar": 74
+      },
+      "revId": "eed8aabec67806e533d02ac9e808f6c8c71ba51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb41f503_57f81bf9",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1370,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-09-28T16:37:29Z",
+      "side": 1,
+      "message": "Call validate_ap_ro if the board uses the old scheme.",
+      "range": {
+        "startLine": 1370,
+        "startChar": 6,
+        "endLine": 1370,
+        "endChar": 26
+      },
+      "revId": "eed8aabec67806e533d02ac9e808f6c8c71ba51b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c77c5b9_c441217d",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-09-28T16:37:29Z",
+      "side": 1,
+      "message": "Restrict this with a capability.",
+      "range": {
+        "startLine": 1380,
+        "startChar": 23,
+        "endLine": 1380,
+        "endChar": 47
       },
       "revId": "eed8aabec67806e533d02ac9e808f6c8c71ba51b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
