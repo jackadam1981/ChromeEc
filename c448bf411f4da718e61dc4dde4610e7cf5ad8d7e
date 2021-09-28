@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46d551de_f992239d",
+        "filename": "board/cr50/dcrypto/hmac_drbg.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-28T00:52:42Z",
+      "side": 1,
+      "message": "note, second memset is 0x01, but yes, I can first clean everything and then initialize V.",
+      "parentUuid": "1eba4391_db008b8c",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 45
+      },
+      "revId": "c448bf411f4da718e61dc4dde4610e7cf5ad8d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77b09bf1_eddb4081",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-28T00:27:06Z",
       "side": 1,
       "message": "should we set reseed_counter to 0 at the end of this block?",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "c448bf411f4da718e61dc4dde4610e7cf5ad8d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "304720a5_c0223fbe",
+        "filename": "board/cr50/dcrypto/hmac_drbg.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-28T00:52:42Z",
+      "side": 1,
+      "message": "hmac_drbg_reseed() does it. no need to duplicate.",
+      "parentUuid": "77b09bf1_eddb4081",
       "range": {
         "startLine": 130,
         "startChar": 1,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e7e2193_dd9b1ccc",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-28T00:52:42Z",
+      "side": 1,
+      "message": "for u2f we create DRBG, use it and clean it up. we always create new DRBG in lines 184 and 201 on retry using fresh origin_seed from key_handle.",
+      "parentUuid": "28a5bf1e_7aef7efb",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 10
+      },
+      "revId": "c448bf411f4da718e61dc4dde4610e7cf5ad8d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0dc28259_dbbcbf01",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-28T00:27:06Z",
       "side": 1,
       "message": "is this related to the CL?",
+      "range": {
+        "startLine": 43,
+        "startChar": 19,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "c448bf411f4da718e61dc4dde4610e7cf5ad8d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda22c5d_71c2ccea",
+        "filename": "chip/host/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-28T00:52:42Z",
+      "side": 1,
+      "message": "yes. since hmac_drbg.c is compiled for host and now hmac_drbg_generate() started to call this function.",
+      "parentUuid": "0dc28259_dbbcbf01",
       "range": {
         "startLine": 43,
         "startChar": 19,
