@@ -23,7 +23,12 @@ CFLAGS_CPU+=-flto
 LDFLAGS_EXTRA+=-flto
 endif
 
-core-y=cpu.o debug.o init.o thumb_case.o div.o lmul.o ldivmod.o mula.o uldivmod.o
+core-y=cpu.o debug.o init.o thumb_case.o
+# When using clang, we get these as builtins from compiler-rt.
+ifneq ($(cc-name),clang)
+core-y+=div.o lmul.o ldivmod.o mula.o uldivmod.o
+endif
+
 core-y+=vecttable.o __builtin.o
 core-$(CONFIG_COMMON_PANIC_OUTPUT)+=panic.o
 core-$(CONFIG_COMMON_RUNTIME)+=switch.o task.o
