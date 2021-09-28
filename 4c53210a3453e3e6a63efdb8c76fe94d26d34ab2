@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "169f8293_b47dd12f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-28T22:24:14Z",
+      "side": 1,
+      "message": "Okay Scott, I could definitely use some PRL owner input on this.  The corner case we have is this: \n- PRL RX runs\n- PD_INT gets a RX notification\n- PRL_TX runs and sends a message to the TCPC\n- Next PRL_RX cycle sees the RX message and starts the discard process\n- PE gets confused when TX and response for \"discarded\" message come through, since it thought it was discarded when the TCPC in fact sent it...\n\nI can get it to reproduce pretty well with a dock that sends VDM:Attention right before my VDM:Exit mode.  \n\nThis fix makes my dock Exit Mode work reliably, but it seems like it still has a gap in which a RX alert could come in between this PRL call and the final sending of the message. That,and I\u0027m wondering if I should make sure it allows at least hard resets through.  Perhaps soft resets as well. \n\nOther options I considered:\n- Have the TCPC driver check whether a message is enqueued before writing transmit reg, and ignore the TX in TCPCI? \n- Have RX alert kick off the discard sooner in the PRL somehow? \n\nIt\u0027s tricky because whether to discard should depend on the TX type versus RX type spec-wise (discard if SOP received, not if SOP\u0027 or SOP\u0027\u0027 are received).  And also tricky because I worry about leaking the PRL layer into the TCPCI driver. ",
+      "revId": "4c53210a3453e3e6a63efdb8c76fe94d26d34ab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
