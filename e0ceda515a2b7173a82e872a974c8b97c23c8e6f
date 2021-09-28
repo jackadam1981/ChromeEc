@@ -323,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a317c38b_9d65a369",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-28T04:02:27Z",
+      "side": 1,
+      "message": "good point, changed the caller to check for non zero.",
+      "parentUuid": "0ce2ecb3_4647e7a7",
+      "range": {
+        "startLine": 841,
+        "startChar": 8,
+        "endLine": 841,
+        "endChar": 9
+      },
+      "revId": "e0ceda515a2b7173a82e872a974c8b97c23c8e6f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "03530270_f5987d34",
