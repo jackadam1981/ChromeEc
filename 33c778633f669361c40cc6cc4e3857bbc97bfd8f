@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2bb0689e_3dac4999",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-28T22:45:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0d4a2c1_ef894227",
+      "range": {
+        "startLine": 21,
+        "startChar": 27,
+        "endLine": 21,
+        "endChar": 31
+      },
+      "revId": "33c778633f669361c40cc6cc4e3857bbc97bfd8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3ad03019_85cec170",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -37,6 +61,24 @@
       "writtenOn": "2021-09-28T15:31:13Z",
       "side": 1,
       "message": "Not reviewed fully yet. Quick questions:\n - any effect on performance? how much do those allocations \u0026 copying slow us down?\n - can it lead to compaction failure if it is started why spiflash is in progress? is it recoverable?\n - can a misbehaving host leave us in the state when this buffer is allocated and not released, thus preventing compaction and other ops that require heap? can we deal with it through timeouts? do we handle properly (and free the buffer) if the host starts a different op while an incomplete read is pending?",
+      "revId": "33c778633f669361c40cc6cc4e3857bbc97bfd8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b4cb827_3bc30643",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-28T22:45:17Z",
+      "side": 1,
+      "message": "good questions.\n\n- It does affect performance, reading is getting 8% or so slower, still much faster than before introducing SPI transactions (which took four times the time). I will add more accurate measurements to the patch description.\n\n- compaction memory allocation has a loop where it is trying to acquire a buffer 50 times 100 ms apart. I think this is a good enough effort, but I will investigate the duty cycle of memory use of a typical flashrom read process, it will allow to make a more informed estimate.\n\n- yes, if flashrom process is interrupted without host reading the full buffer as presented the buffer will never be deallocated AND the dirver would be stuck polling  the USB queue. I\u0027ll add a timed call to return the buffer if there is no activity.",
+      "parentUuid": "3ad03019_85cec170",
       "revId": "33c778633f669361c40cc6cc4e3857bbc97bfd8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2021-09-28T15:31:13Z",
       "side": 1,
       "message": "question: how do we limit config_rsp.max_read? do we guarantee that we never request more than we can allocate while idle (not during compaction)?",
+      "range": {
+        "startLine": 531,
+        "startChar": 6,
+        "endLine": 531,
+        "endChar": 44
+      },
+      "revId": "33c778633f669361c40cc6cc4e3857bbc97bfd8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c48c564_034603e5",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-28T22:45:17Z",
+      "side": 1,
+      "message": "config_rsp.max_read is a constant set in line 393. It comes to 2040 bytes and our heap is in excess of 5K.\n\nThe heap slowly shrinking of course with code additions, do you think an assert is needed in the linker script?",
+      "parentUuid": "de888d0e_ae3eaa6c",
       "range": {
         "startLine": 531,
         "startChar": 6,
