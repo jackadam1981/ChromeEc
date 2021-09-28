@@ -128,6 +128,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "10d3c890_b16acff4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-09-28T05:55:57Z",
+      "side": 1,
+      "message": "In Zephyr, EC App is executed after I2C driver and kernel initialization. It should be no problem to use native I2C driver in the ec_app_main.c. I have verified it with npcx_evb by issuing I2C transaction here:\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/zephyr/app/ec/ec_app_main.c#54",
+      "parentUuid": "f91d9cb1_fa4bd56e",
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39722849_349cef71",
         "filename": "common/main.c",
         "patchSetId": 9
