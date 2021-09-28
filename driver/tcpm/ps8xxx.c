@@ -583,10 +583,14 @@ static int ps8815_make_device_id(int port, int *id)
 		*id = 1;
 		break;
 	case 0x0a01:
-		*id = 2;
+		*id = 3;
+		CPRINTS("==> PS8815 HW revision is A1, but force return
+			id as 3");
 		break;
 	case 0x0a02:
 		*id = 3;
+		CPRINTS("==> PS8815 HW revision is A2, and return id as
+			3");
 		break;
 	default:
 		return EC_ERROR_UNKNOWN;
