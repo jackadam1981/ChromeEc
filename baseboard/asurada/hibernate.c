@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "driver/charger/isl923x_public.h"
 #include "gpio.h"
@@ -30,8 +31,22 @@ __override void board_hibernate_late(void)
 
 	isl9238c_hibernate(CHARGER_SOLO);
 
+	/*
+	 * Try to put our battery fuel gauge into sleep mode
+	 * This command should be the later than the isl9238c_hibernate()
+	 * to prevent the charger i2c transaction waking the battery up
+	 * after battery in sleep mode.
+	 */
+	if (battery_sleep_fuel_gauge() != EC_SUCCESS)
+		cprints(CC_SYSTEM, "Failed to send battery sleep command");
+
 	gpio_set_level(GPIO_EN_SLP_Z, 1);
 
 	/* should not reach here */
 	__builtin_unreachable();
+}
+
+/* Hayato board specific hibernate implementation */
+__override void board_hibernate(void)
+{
 }
