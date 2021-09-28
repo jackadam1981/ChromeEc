@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "abd90182_248d7a21",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 9
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-28T15:42:28Z",
+      "side": 1,
+      "message": "I think this is redundant and too implementation specific. I think we should briefly say: \"This is used by flash_command_write for RW update.\" The error message explains what we\u0027re checking.",
+      "range": {
+        "startLine": 516,
+        "startChar": 0,
+        "endLine": 525,
+        "endChar": 18
+      },
+      "revId": "4f0e8d64f14ac5540c62d8bec885376d1e5b5f7c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
