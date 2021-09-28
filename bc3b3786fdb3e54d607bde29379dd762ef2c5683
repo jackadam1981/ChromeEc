@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04a9fd4e_caa37fd0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-28T23:33:07Z",
+      "side": 1,
+      "message": "nit: It\u0027s unusual to have ec_commands.h and command implementation are in different CLs. Do you mind merging them?",
+      "revId": "bc3b3786fdb3e54d607bde29379dd762ef2c5683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bec47441_087d22a5",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7022,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-28T23:33:07Z",
+      "side": 1,
+      "message": "Do we need this? How do we use it?",
+      "range": {
+        "startLine": 7022,
+        "startChar": 1,
+        "endLine": 7022,
+        "endChar": 29
+      },
+      "revId": "bc3b3786fdb3e54d607bde29379dd762ef2c5683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
