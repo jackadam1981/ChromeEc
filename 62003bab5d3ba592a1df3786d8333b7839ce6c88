@@ -72,6 +72,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9423230_d1568432",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-28T22:15:16Z",
+      "side": 1,
+      "message": "Okay, I started using common/queue.c and was assuming it would add too much space and we\u0027d just stick with my home-brewed queue.  But then it turned out we\u0027re already unconditionally building common/queue.c for everyone, so it worked out perfectly fine.",
+      "parentUuid": "f738b423_5b5bdbab",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e6ffbe2_15325ba7",
@@ -421,6 +439,24 @@
       "side": 1,
       "message": "Ah, the C++ codebase I worked on at my last company was far from modern :)  I believe they were planning to incorporate C++11 just before the group was shut down and broken up in 2017.",
       "parentUuid": "dbb3e435_b3e11f92",
+      "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bedfc77e_3a114ff0",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-28T22:15:16Z",
+      "side": 1,
+      "message": "I have delivered your iterators, and expect the keys to your kingdom in return",
+      "parentUuid": "0aab5d60_e1483253",
       "revId": "62003bab5d3ba592a1df3786d8333b7839ce6c88",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
