@@ -75,31 +75,36 @@ static char authcode[RMA_AUTHCODE_BUF_SIZE];
 static int tries_left;
 static uint64_t last_challenge_time;
 
-static void get_hmac_sha256(void *hmac_out, const uint8_t *secret,
+static bool get_hmac_sha256(void *hmac_out, const uint8_t *secret,
 			    size_t secret_size, const void *ch_ptr,
 			    size_t ch_size)
 {
 #ifdef USE_DCRYPTO
 	struct hmac_sha256_ctx hmac;
 
-	HMAC_SHA256_hw_init(&hmac, secret, secret_size);
+	if (DCRYPTO_hw_hmac_sha256_init(&hmac, secret, secret_size) !=
+	    DCRYPTO_OK)
+		return false;
 	HMAC_SHA256_update(&hmac, ch_ptr, ch_size);
-	memcpy(hmac_out, HMAC_SHA256_hw_final(&hmac), 32);
+	memcpy(hmac_out, HMAC_SHA256_final(&hmac), 32);
 #else
 	hmac_SHA256(hmac_out, secret, secret_size, ch_ptr, ch_size);
 #endif
+	return true;
 }
 
-static void hash_buffer(void *dest, size_t dest_size,
+static bool hash_buffer(void *dest, size_t dest_size,
 			const void *buffer, size_t buf_size)
 {
 	/* We know that the destination is no larger than 32 bytes. */
 	uint8_t temp[32];
 
-	get_hmac_sha256(temp, buffer, buf_size, buffer, buf_size);
+	if (!get_hmac_sha256(temp, buffer, buf_size, buffer, buf_size))
+		return false;
 
 	/* Or should we do XOR of the temp modulo dest size? */
 	memcpy(dest, temp, dest_size);
+	return true;
 }
 
 #ifdef CONFIG_RMA_AUTH_USE_P256
@@ -148,7 +153,8 @@ static int p256_get_pub_key_and_secret(uint8_t pub_key[P256_NBYTES],
 		}
 
 		/* Did not succeed, rehash the private key and try again. */
-		SHA256_hw_init(&sha);
+		if (DCRYPTO_hw_sha256_init(&sha) != DCRYPTO_OK)
+			return EC_ERROR_HW_INTERNAL;
 		SHA256_update(&sha, buf, sizeof(buf));
 		memcpy(buf, SHA256_final(&sha), sizeof(buf));
 	}
@@ -177,7 +183,7 @@ static int p256_get_pub_key_and_secret(uint8_t pub_key[P256_NBYTES],
 }
 #endif
 
-void get_rma_device_id(uint8_t rma_device_id[RMA_DEVICE_ID_SIZE])
+bool get_rma_device_id(uint8_t rma_device_id[RMA_DEVICE_ID_SIZE])
 {
 	uint8_t *chip_unique_id;
 	int chip_unique_id_size = system_get_chip_unique_id(&chip_unique_id);
@@ -198,9 +204,11 @@ void get_rma_device_id(uint8_t rma_device_id[RMA_DEVICE_ID_SIZE])
 		 * rma_challenge:device_id, let's use first few bytes of
 		 * its hash.
 		 */
-		hash_buffer(rma_device_id, RMA_DEVICE_ID_SIZE,
-			    chip_unique_id, chip_unique_id_size);
+		if (!hash_buffer(rma_device_id, RMA_DEVICE_ID_SIZE,
+				 chip_unique_id, chip_unique_id_size))
+			return false;
 	}
+	return true;
 }
 
 /**
@@ -236,9 +244,10 @@ int rma_create_challenge(void)
 		return EC_ERROR_UNKNOWN;
 
 	memcpy(c.board_id, &bid.type, sizeof(c.board_id));
-	get_rma_device_id(c.device_id);
+	if (!get_rma_device_id(c.device_id))
+		return EC_ERROR_HW_INTERNAL;
 
-	/* Calculate a new ephemeral key pair and the shared secret. */
+		/* Calculate a new ephemeral key pair and the shared secret. */
 #ifdef CONFIG_RMA_AUTH_USE_P256
 	if (p256_get_pub_key_and_secret(c.device_pub_key, secret) != EC_SUCCESS)
 		return EC_ERROR_UNKNOWN;
