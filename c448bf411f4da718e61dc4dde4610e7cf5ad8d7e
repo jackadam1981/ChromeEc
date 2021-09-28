@@ -16,6 +16,98 @@
       "message": "after careful reading of SP 800-90A slightly updated auto reseeding parameters.",
       "revId": "c448bf411f4da718e61dc4dde4610e7cf5ad8d7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eba4391_db008b8c",
+        "filename": "board/cr50/dcrypto/hmac_drbg.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T00:27:06Z",
+      "side": 1,
+      "message": "nit: maybe just `always_memset(ctx, 0, sizeof(*ctx))`? or just `drbg_exit(ctx)`?",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 76,
+        "endChar": 45
+      },
+      "revId": "c448bf411f4da718e61dc4dde4610e7cf5ad8d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77b09bf1_eddb4081",
+        "filename": "board/cr50/dcrypto/hmac_drbg.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T00:27:06Z",
+      "side": 1,
+      "message": "should we set reseed_counter to 0 at the end of this block?",
+      "range": {
+        "startLine": 130,
+        "startChar": 1,
+        "endLine": 139,
+        "endChar": 2
+      },
+      "revId": "c448bf411f4da718e61dc4dde4610e7cf5ad8d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28a5bf1e_7aef7efb",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T00:27:06Z",
+      "side": 1,
+      "message": "this unsets `magic` among other things and forces us to re-seed. and we need it (here and in a couple of other places you inserted it) since we seed with a deterministic u2f-specific thing, so need to reseed afterwards. correct?",
+      "range": {
+        "startLine": 214,
+        "startChar": 1,
+        "endLine": 214,
+        "endChar": 10
+      },
+      "revId": "c448bf411f4da718e61dc4dde4610e7cf5ad8d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc28259_dbbcbf01",
+        "filename": "chip/host/trng.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T00:27:06Z",
+      "side": 1,
+      "message": "is this related to the CL?",
+      "range": {
+        "startLine": 43,
+        "startChar": 19,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "c448bf411f4da718e61dc4dde4610e7cf5ad8d7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
