@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61e83bfb_bf94104b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-28T22:48:06Z",
+      "side": 1,
+      "message": "Update: testing is looking much better with b/195773400 fixed, but we\u0027ll still want to coordinate ensuring that boards using the virtual mux driver get this task setup before committing this CL.  \n\nUsing the mux task time debug, I see some mux sets taking upwards of 100ms, but they no longer interfere with the PD task operation. Many other mux sets are in the 10\u0027s of ms, and some of the HPD sets are in the 1\u0027s of ms at this point. \n\nHopefully if we get this committed, we can look at un-complicating some of our initial connection mux logic in get_mux_mode_to_set() now that the mux isn\u0027t holding up the PD tasks. ",
+      "revId": "3e61fe99c1b1a43f560dabdfbd8b5e5d730aff3a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
