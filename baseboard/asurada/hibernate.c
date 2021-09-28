@@ -3,6 +3,7 @@
  * found in the LICENSE file.
  */
 
+#include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "driver/charger/isl923x_public.h"
 #include "gpio.h"
@@ -34,4 +35,12 @@ __override void board_hibernate_late(void)
 
 	/* should not reach here */
 	__builtin_unreachable();
+}
+
+/* Hayato board specific hibernate implementation */
+__override void board_hibernate(void)
+{
+	/* Try to put our battery fuel gauge into sleep mode */
+	if (battery_sleep_fuel_gauge() != EC_SUCCESS)
+		cprints(CC_SYSTEM, "Failed to send battery sleep command");
 }
