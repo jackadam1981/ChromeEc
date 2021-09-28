@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42312257_93c8ee47",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-28T22:47:38Z",
+      "side": 1,
+      "message": "I thinks its better to rename\nGPIO_RSMRST_L_PGOOD to GPIO_PG_EC_RSMRST_ODL \nas name suggests this is coming from \u0027PG (power good) to EC\u0027\n",
+      "revId": "35ec39b75e0d2b7e8aa585e7579004d7bf1ba51a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
