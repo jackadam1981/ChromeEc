@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f2dda01_d27557e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T01:00:03Z",
+      "side": 1,
+      "message": "@Vadim, you are currently looking at u2f, you are better equipped for reviewing this",
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87ba6191_7e51d966",
+        "filename": "chip/host/config_chip.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-28T01:00:03Z",
+      "side": 1,
+      "message": "can we keep it TEST_CR50_FUZZ and build all fuzzers (pinweaver, u2f, ...) with it?",
+      "range": {
+        "startLine": 12,
+        "startChar": 37,
+        "endLine": 12,
+        "endChar": 56
+      },
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
