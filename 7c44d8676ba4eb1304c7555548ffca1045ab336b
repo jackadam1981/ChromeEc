@@ -68,6 +68,30 @@
       },
       "revId": "7c44d8676ba4eb1304c7555548ffca1045ab336b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6eb056db_befc693a",
+        "filename": "fuzz/fuzz_config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-28T01:26:04Z",
+      "side": 1,
+      "message": "on host it adds several platform-agnostic dcrypto files from board/cr50/dcrypto and several one from chip/host to emulate a bit of dcrypto functionality.\ncurrently due to many mocks we don\u0027t yet take advantage of platform agnostic part I added and mostly return \u0027success\u0027 in mock ups. but we can do more now.",
+      "parentUuid": "54de285c_0dcc0234",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 106,
+        "endChar": 22
+      },
+      "revId": "7c44d8676ba4eb1304c7555548ffca1045ab336b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
