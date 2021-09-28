@@ -13,7 +13,10 @@ $(call set-option,CROSS_COMPILE,\
 
 # CPU specific compilation flags
 CFLAGS_CPU+=-mthumb -Os
-ifneq ($(cc-name),clang)
+ifeq ($(cc-name),clang)
+# Link compiler-rt when using clang, so clang finds the builtins it provides.
+LDFLAGS_EXTRA+=-lclang_rt.builtins-arm
+else
 CFLAGS_CPU+=-mno-sched-prolog
 endif
 CFLAGS_CPU+=-mno-unaligned-access
@@ -23,7 +26,12 @@ CFLAGS_CPU+=-flto
 LDFLAGS_EXTRA+=-flto
 endif
 
-core-y=cpu.o debug.o init.o thumb_case.o div.o lmul.o ldivmod.o mula.o uldivmod.o
+core-y=cpu.o debug.o init.o thumb_case.o
+# When using clang, we get these as builtins from compiler-rt.
+ifneq ($(cc-name),clang)
+core-y+=div.o lmul.o ldivmod.o mula.o uldivmod.o
+endif
+
 core-y+=vecttable.o __builtin.o
 core-$(CONFIG_COMMON_PANIC_OUTPUT)+=panic.o
 core-$(CONFIG_COMMON_RUNTIME)+=switch.o task.o
