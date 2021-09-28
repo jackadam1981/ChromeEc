@@ -34,6 +34,24 @@
       "parentUuid": "ef3dec83_ed007b7d",
       "revId": "87ebfe5f6aee4f88a58851f0cda5ef4f8fab53ed",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b5863c_86914d74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-09-28T17:09:42Z",
+      "side": 1,
+      "message": "Oh, interesting. I tried to manually do the merge manually (not with the script), and I got merge conflicts:\n\n git checkout -b test-merge cros/firmware-fpmcu-bloonchipper-release\n git merge 4e2d1981915533a3f214b4075babd49c8ca6c0ef\n \nLet me try running the script to see if it happens.",
+      "parentUuid": "99bb3a0c_3e75f9f1",
+      "revId": "87ebfe5f6aee4f88a58851f0cda5ef4f8fab53ed",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
