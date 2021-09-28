@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5e43abc_b4b05542",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-28T04:47:30Z",
+      "side": 1,
+      "message": "This works but doesn\u0027t scale. Is it possible to support any number of length, more than 3? For example, put the led-color and the period definition in `child-binding`, like:\n    \n    power-state-discharge-s3 {\n        color-1 {\n            led-color \u003d \"LED_AMBER\";\n            period \u003d \u003c4\u003e\n        };\n        color-2 {\n            led-color \u003d \"LED_OFF\";\n            period \u003d \u003c4\u003e;\n        };\n    };\n    \nThe period is not necessary to be the same for all colors. For example, a device may uses a pattern: ON 1 second, OFF 3 seconds.",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "fd7dc954e553f74be9f7d1ba4a34d87250ba0ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2306bc97_ed581000",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-09-28T04:47:30Z",
+      "side": 1,
+      "message": "This seem to be designed to support the Lazor pattern specifically, which combines the charge state with the power state but just for DISCHARGE only. When change to make to support 3 power sub-states for other charge states? like CHARGING_S0, CHARGING_S3, CHARGING_S5.\n\nMaybe you can think of other design to generalize it, without enumerating all the combinations. For example, use a property to define what charge state this pattern for, and use a property to define what power state this pattern for; the code iterates all the child binding, matches them with the current charge state and the current power state, and use first matched pattern.\n\nThe dts looks like:\n\n\tpowewr-state-discharge-s0 {\n\t\tled-color \u003d \"LED_BLUE\";\n\t\tcharge-state \u003d \"DISCHARGE\";\n\t\tpower-state \u003d \"S0\";\n\t};\n\tpower-state-discharge-s3 {\n\t\tled-color-1 \u003d \"LED_AMBER\";\n\t\tled-color-2 \u003d \"LED_OFF\";\n\t\tperiod \u003d \u003c4\u003e;\n\t\tcharge-state \u003d \"DISCHARGE\";\n\t\tpower-state \u003d \"S3\";\n\t};\n\t\nIt is easy to support more extra states, like battery level, etc. We don\u0027t need to enumerating all the combinations.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "fd7dc954e553f74be9f7d1ba4a34d87250ba0ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
