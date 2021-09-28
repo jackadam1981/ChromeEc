@@ -512,6 +512,24 @@
       "parentUuid": "7f576ae8_18168439",
       "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f846507_2f99c0fc",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-28T20:55:39Z",
+      "side": 1,
+      "message": "I think keeping functions small makes the code easier to follow, I renamed the function into read_gscvd_header() to make its purpose clearer.",
+      "parentUuid": "54940ce8_35eaaec1",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
