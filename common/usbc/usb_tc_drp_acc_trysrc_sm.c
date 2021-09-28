@@ -1106,6 +1106,8 @@ int pd_fetch_acc_log_entry(int port)
 
 enum tcpc_cc_polarity pd_get_polarity(int port)
 {
+	if (port == 1)
+		return !tc[port].polarity;
 	return tc[port].polarity;
 }
 
