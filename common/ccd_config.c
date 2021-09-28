@@ -236,7 +236,7 @@ static int raw_has_password(void)
  * @param digest	Pointer to a CCD_PASSWORD_DIGEST_SIZE buffer
  * @param password	The password to digest
  */
-static void ccd_password_digest(uint8_t *digest, const char *password)
+static bool ccd_password_digest(uint8_t *digest, const char *password)
 {
 	struct sha256_ctx sha;
 	uint8_t *unique_id;
@@ -244,11 +244,13 @@ static void ccd_password_digest(uint8_t *digest, const char *password)
 
 	unique_id_len = system_get_chip_unique_id(&unique_id);
 
-	SHA256_hw_init(&sha);
+	if (DCRYPTO_hw_sha256_init(&sha) != DCRYPTO_OK)
+		return false;
 	SHA256_update(&sha, config.password_salt, sizeof(config.password_salt));
 	SHA256_update(&sha, unique_id, unique_id_len);
 	SHA256_update(&sha, password, strlen(password));
 	memcpy(digest, SHA256_final(&sha)->b8, CCD_PASSWORD_DIGEST_SIZE);
+	return true;
 }
 
 /**
@@ -284,7 +286,8 @@ static int raw_check_password(const char *password)
 	last_password_time = t;
 
 	/* Calculate the digest of the password */
-	ccd_password_digest(digest, password);
+	if (!ccd_password_digest(digest, password))
+		return EC_ERROR_HW_INTERNAL;
 
 	if (safe_memcmp(digest, config.password_digest,
 			sizeof(config.password_digest)))
@@ -320,7 +323,8 @@ static int raw_set_password(const char *password)
 		return EC_ERROR_HW_INTERNAL;
 
 	/* Update the password digest */
-	ccd_password_digest(config.password_digest, password);
+	if (!ccd_password_digest(config.password_digest, password))
+		return EC_ERROR_HW_INTERNAL;
 
 	/* Track whether we were opened when we set the password */
 	raw_set_flag(CCD_FLAG_PASSWORD_SET_WHEN_UNLOCKED,
