@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e358bdc7_9218ba94",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1276,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-28T22:42:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3cbd69d9_3a69aaa6",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "da6ad61f_171644c9",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "So I\u0027ve found a small hiccup in pushing these changes: there are a ton of boards overriding svdm_dp_config() that I hadn\u0027t noticed before the HPD API update.  So having the DPM set safe mode will be different behavior than these boards had before... I may need to think about this again when I get back.  And/or ping the owners of those boards to figure out if safe state was an oversight or something they intentionally avoid",
       "parentUuid": "da6ad61f_171644c9",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5fdb4b7_c20a1124",
+        "filename": "common/usb_pd_alt_mode_dfp.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-28T22:42:57Z",
+      "side": 1,
+      "message": "For TCPMv1 vs TCPMv2, I couldn\u0027t bring myself to intentionally break TCPMv1, so I added safe state there without adding the mux task support necessarily.  So it\u0027s just a little broken. \n\nFor adding safe state into the DPM, I\u0027ve actually convinced myself this should be okay for all boards, regardless of previous config functions, but cc\u0027d Tom in case we foresee something going wrong for trogdor.  We already have a safe state set in svdm_enter_dp_mode(), which is only overridden by an ITE EVB and kukui.  Evidently grunt used to override it as well to not set safe state, but got swept up in the USB consolidation a while back.  \n\nIt feels like this somewhat calls into question the exact timing of when we should set safe state (before entry or before DP config), but I\u0027m aiming to keep as much of our external-facing behavior as I can the same here.",
+      "parentUuid": "0c31eda2_214ee20c",
       "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -106,6 +142,42 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1442d17_23af3b10",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-28T22:42:57Z",
+      "side": 1,
+      "message": "Done done",
+      "parentUuid": "b601d794_3dd61854",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37acbefc_20f5a837",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-28T22:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b601d794_3dd61854",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bade965c_8c1fd687",
@@ -159,6 +231,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a358e52a_a93ded3d",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-28T22:42:57Z",
+      "side": 1,
+      "message": "I\u0027m going to assume it\u0027s silly go between none/USB three times in exit, but note in the commit message I changed this exit behavior in case it generates bugs for brya.",
+      "parentUuid": "8ab74729_c59e07ec",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d6613fd_f464ac61",
@@ -190,6 +280,24 @@
       "side": 1,
       "message": "I could be open to this.  The vdo_count method isn\u0027t ideal, and this is definitely the clunkiest feeling CL I\u0027ve worked on so far.  I don\u0027t enjoy owning clunky CLs",
       "parentUuid": "2d6613fd_f464ac61",
+      "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "139fa57a_ca623217",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-28T22:42:57Z",
+      "side": 1,
+      "message": "Okay, see previous CL now",
+      "parentUuid": "f29b4fd5_5b995bb4",
       "revId": "85510b0fe07594091975f77b62af378d6323ee2f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
