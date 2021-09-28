@@ -22,6 +22,11 @@ const struct board_batt_params board_battery_info[] = {
 				.reg_addr = 0x0,
 				.reg_data = { 0x10, 0x10 },
 			},
+			.sleep_mode = {
+				.sleep_supported = true,
+				.reg_addr = 0x00,
+				.reg_data = 0x0011,
+			},
 			.fet = {
 				.reg_addr = 0x99,
 				.reg_mask = 0x0c,
