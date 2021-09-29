@@ -22,6 +22,30 @@
       },
       "revId": "c8463f51c6c56b49fdaf8c8836a40e00892c7acd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324ba539_ca0cbe1f",
+        "filename": "test/usb_pd_timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-09-29T21:45:41Z",
+      "side": 1,
+      "message": "I don\u0027t think it matters. Be my guest to adjust this and take over the CL. I tried to avoid having knowledge of the macro implementation.  The macro will return zero or not zero.\n\nSo when you have something like the next for loop\n\n    TEST_EQ((PD_CHK_DISABLED(0, 1ULL \u003c\u003c bit) !\u003d 0), 1, \"%d\");\n\nhow would you write that, use TEST_NE and have it look the same as your suggested test?",
+      "parentUuid": "6ac68b82_3bb0b3ca",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "c8463f51c6c56b49fdaf8c8836a40e00892c7acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
