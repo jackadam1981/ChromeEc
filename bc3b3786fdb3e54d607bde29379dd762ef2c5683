@@ -105,6 +105,30 @@
       },
       "revId": "bc3b3786fdb3e54d607bde29379dd762ef2c5683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "14d6c7c8_43af14b6",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 7022,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-29T15:54:01Z",
+      "side": 1,
+      "message": "I think if a sub-command isn\u0027t supported, EC should return EC_RES_INVALID_COMMAND or something simlar. I think it\u0027s confusing to handle an error in a response struct.\n\nMaybe we don\u0027t need to use enum values (0, 1, 2,...) outside of the EC because the host needs to translate them to actual speeds (100 kHz, 400, 1000, ...) anyway.",
+      "parentUuid": "90d7b1ae_e09fba65",
+      "range": {
+        "startLine": 7022,
+        "startChar": 1,
+        "endLine": 7022,
+        "endChar": 29
+      },
+      "revId": "bc3b3786fdb3e54d607bde29379dd762ef2c5683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
