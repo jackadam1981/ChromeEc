@@ -548,6 +548,24 @@
       "parentUuid": "8f846507_2f99c0fc",
       "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e52032a_47cccd1c",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-29T00:13:28Z",
+      "side": 1,
+      "message": "1) yes, we can\u0027t have the entire GVD in memory in cr50 case.\n2) I don\u0027t see it as a major security concern if we check hashes first. yes, this would allow attackers to slow down cr50 checks, but we generally don\u0027t guard against DoS attacks if the attackers can access storage - they could just erase RW or OS and get a more reliable DoS that way. however, I believe we can avoid even such not very interesting attacks by checking the signature first.\n\nhow about we extract the read_signature_header .. verify_keyblock chain into a separate function and call it first. and I believe it only needs to be called if descriptor \u003d\u003d NULL, otherwise, gvd_cache_check is sufficient. so, the function would be even better:\n\nread_gscvd_header()\nif (descriptor) {\n  gvd_cache_check() and return -1 if doesn\u0027t match\n} else {\n  gvd_signature_check() and return -1 if doesn\u0027t match\n}\nverify_ranges() and return -1 if fail\nif (!descriptor) {\n  save_gvd_hash()\n}\n\nthis way we don\u0027t have a perf hit each time we do AP RO verification, but only if gvd_cache_check() doesn\u0027t match, and in that case the hashes better be good, otherwise the whole verification will fail. so it doesn\u0027t matter much if we spend some extra time to verify the signature first if it fails. and if the hashes verification succeeds we will ned to verify the GVD signature anyways.",
+      "parentUuid": "8f846507_2f99c0fc",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
