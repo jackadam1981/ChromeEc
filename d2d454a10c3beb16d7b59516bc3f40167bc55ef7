@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47904072_9c140999",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-29T16:16:22Z",
+      "side": 1,
+      "message": "That\u0027s right. I was looking for \u0027if (new_ec_i2c_freq \u003d\u003d old_ec_i2c_freq)\u0027. Why don\u0027t we handle it here instead of deep inside the driver? I think a good practice is to make driver APIs volatile and let the callers check and avoid redundant calls.",
+      "parentUuid": "2568d89e_1a703f32",
+      "range": {
+        "startLine": 1505,
+        "startChar": 10,
+        "endLine": 1505,
+        "endChar": 30
+      },
+      "revId": "d2d454a10c3beb16d7b59516bc3f40167bc55ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a47b6d44_0da11715",
         "filename": "common/i2c_controller.c",
         "patchSetId": 4
