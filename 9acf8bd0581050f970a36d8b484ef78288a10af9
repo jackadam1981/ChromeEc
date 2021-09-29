@@ -85,6 +85,30 @@
       },
       "revId": "9acf8bd0581050f970a36d8b484ef78288a10af9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec07974b_20c0c116",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-09-29T23:48:16Z",
+      "side": 1,
+      "message": "The schematic names are in the comment section on the same line? In this case it is PMIC_EC_RSMRST_ODL so I think it may not be helpful having another line in the board file.",
+      "parentUuid": "a9faaa91_9bf84408",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "9acf8bd0581050f970a36d8b484ef78288a10af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
