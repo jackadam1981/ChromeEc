@@ -142,6 +142,30 @@
       },
       "revId": "df3597b333b8f21e1d083827735513becd582d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "589d28cd_2adeaae3",
+        "filename": "board/galtic/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-09-29T16:40:29Z",
+      "side": 1,
+      "message": "I commented on the bug. I\u0027m wondering if we can hide this in SSFC instead of exposing this to the entire baseboard.",
+      "parentUuid": "5b1821fd_bb637c71",
+      "range": {
+        "startLine": 108,
+        "startChar": 29,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "df3597b333b8f21e1d083827735513becd582d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
