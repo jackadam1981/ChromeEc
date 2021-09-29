@@ -9,6 +9,7 @@
 #include "driver/accel_bma422.h"
 #include "driver/accel_bma4xx.h"
 #include "driver/accel_lis2dw12.h"
+#include "driver/accelgyro_lsm6dsm.h"
 #include "driver/accelgyro_lsm6dso.h"
 #include "fw_config.h"
 #include "hooks.h"
@@ -62,8 +63,9 @@ BUILD_ASSERT(ARRAY_SIZE(adc_channels) == ADC_CH_COUNT);
 K_MUTEX_DEFINE(g_lid_accel_mutex);
 K_MUTEX_DEFINE(g_base_accel_mutex);
 static struct stprivate_data g_lis2dw12_data;
-static struct lsm6dso_data lsm6dso_data;
 static struct accelgyro_saved_data_t g_bma422_data;
+static struct lsm6dso_data lsm6dso_data;
+static struct lsm6dsm_data lsm6dsm_data = LSM6DSM_DATA;
 
 /* TODO(b/201504044): calibrate the orientation matrix on later board stage */
 #if 0
@@ -79,7 +81,6 @@ static const mat33_fp_t base_standard_ref = {
 	{ 0, 0, FLOAT_TO_FP(-1)}
 };
 #endif
-
 
 struct motion_sensor_t bma422_lid_accel = {
 	.name = "Lid Accel - BMA",
@@ -108,6 +109,57 @@ struct motion_sensor_t bma422_lid_accel = {
 			.ec_rate = 0,
 		},
 	},
+};
+
+struct motion_sensor_t lsm6dsm_base_accel = {
+	.name = "Base Accel",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_LSM6DSM,
+	.type = MOTIONSENSE_TYPE_ACCEL,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &lsm6dsm_drv,
+	.mutex = &g_base_accel_mutex,
+	.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data,
+			MOTIONSENSE_TYPE_ACCEL),
+	.int_signal = GPIO_EC_IMU_INT_R_L,
+	.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
+	.rot_standard_ref = NULL,
+	.default_range = 4,  /* g, to meet CDD 7.3.1/C-1-4 reqs */
+	.min_frequency = LSM6DSM_ODR_MIN_VAL,
+	.max_frequency = LSM6DSM_ODR_MAX_VAL,
+	.config = {
+		/* EC use accel for angle detection */
+		[SENSOR_CONFIG_EC_S0] = {
+			.odr = 13000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+		/* Sensor on for angle detection */
+		[SENSOR_CONFIG_EC_S3] = {
+			.odr = 10000 | ROUND_UP_FLAG,
+			.ec_rate = 100 * MSEC,
+		},
+	},
+};
+
+struct motion_sensor_t lsm6dsm_base_gyro = {
+	.name = "Base Gyro",
+	.active_mask = SENSOR_ACTIVE_S0_S3,
+	.chip = MOTIONSENSE_CHIP_LSM6DSM,
+	.type = MOTIONSENSE_TYPE_GYRO,
+	.location = MOTIONSENSE_LOC_BASE,
+	.drv = &lsm6dsm_drv,
+	.mutex = &g_base_accel_mutex,
+	.drv_data = LSM6DSM_ST_DATA(lsm6dsm_data, MOTIONSENSE_TYPE_GYRO),
+	.int_signal = GPIO_EC_IMU_INT_R_L,
+	.flags = MOTIONSENSE_FLAG_INT_SIGNAL,
+	.port = I2C_PORT_SENSOR,
+	.i2c_spi_addr_flags = LSM6DSM_ADDR0_FLAGS,
+	.default_range = 1000 | ROUND_UP_FLAG, /* dps */
+	.rot_standard_ref = NULL,
+	.min_frequency = LSM6DSM_ODR_MIN_VAL,
+	.max_frequency = LSM6DSM_ODR_MAX_VAL,
 };
 
 struct motion_sensor_t motion_sensors[] = {
@@ -196,7 +248,6 @@ unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
 #endif
 
-
 static void board_detect_motionsensor(void)
 {
 	int ret;
@@ -252,12 +303,22 @@ static void baseboard_sensors_init(void)
 	 * Dynamic motion sensor count
 	 * All board supports tablet mode if board id > 0
 	 */
-	if (get_board_id() > 0 || ec_cfg_has_tabletmode()) {
+	if (ec_cfg_has_tabletmode()) {
 		/*
 		 * GPIO_EC_ACCEL_INT_R_L
 		 * The interrupt of lid accel is disabled by default.
 		 * We'll enable it later if lid accel is LIS2DW12.
 		 */
+
+		/* Change Request (b/199529373)
+		 * GYRO sensor change from ST LSM6DSOETR3TR to ST LSM6DS3TR-C
+		 *	LSM6DSOETR3TR base accel/gyro if board id = 0
+		 *	LSM6DS3TR-C Base accel/gyro if board id > 0
+		 */
+		if (get_board_id() > 0) {
+			motion_sensors[BASE_ACCEL] = lsm6dsm_base_accel;
+			motion_sensors[BASE_GYRO] = lsm6dsm_base_gyro;
+		}
 
 		/* Enable gpio interrupt for base accelgyro sensor */
 		gpio_enable_interrupt(GPIO_EC_IMU_INT_R_L);
@@ -287,7 +348,6 @@ void motion_interrupt(enum gpio_signal signal)
 	 * interrupt handler.
 	 */
 	CPRINTS("BMA422 interrupt");
-
 }
 
 /* Temperature sensor configuration */
@@ -317,7 +377,6 @@ const struct temp_sensor_t temp_sensors[] = {
 		.idx = ADC_TEMP_SENSOR_4_CPUCHOKE
 	},
 };
-
 
 BUILD_ASSERT(ARRAY_SIZE(temp_sensors) == TEMP_SENSOR_COUNT);
 
@@ -368,8 +427,8 @@ static const struct ec_thermal_config thermal_fan = {
 /* this should really be "const" */
 struct ec_thermal_config thermal_params[] = {
 	[TEMP_SENSOR_1_DDR_SOC] = thermal_cpu,
-	[TEMP_SENSOR_2_FAN]	= thermal_fan,
-	[TEMP_SENSOR_3_CHARGER]	= thermal_fan,
+	[TEMP_SENSOR_2_FAN] = thermal_fan,
+	[TEMP_SENSOR_3_CHARGER] = thermal_fan,
 	[TEMP_SENSOR_4_CPUCHOKE] = thermal_fan,
 };
 
