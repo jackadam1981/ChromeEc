@@ -16,6 +16,57 @@
       "message": "ping",
       "revId": "6d9600b10ba940fc9be1cbb8da69112e812083ce",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16273398_50edf995",
+        "filename": "board/nipperkin/board_fw_config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-09-29T02:50:04Z",
+      "side": 1,
+      "message": "nit: Fingerprint",
+      "revId": "6d9600b10ba940fc9be1cbb8da69112e812083ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0c6e4b1_b66a350e",
+        "filename": "board/nipperkin/board_fw_config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-09-29T02:50:04Z",
+      "side": 1,
+      "message": "EC does not do anything with storage, WWAN or fingerprint. So these entries can just be removed.",
+      "revId": "6d9600b10ba940fc9be1cbb8da69112e812083ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa06f7d2_0a33016e",
+        "filename": "board/nipperkin/board_fw_config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-09-29T02:50:04Z",
+      "side": 1,
+      "message": "Are you sure PRIVACY_YES \u003d\u003d 0?",
+      "revId": "6d9600b10ba940fc9be1cbb8da69112e812083ce",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
