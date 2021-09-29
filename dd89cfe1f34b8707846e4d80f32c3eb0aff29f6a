@@ -134,6 +134,30 @@
       },
       "revId": "dd89cfe1f34b8707846e4d80f32c3eb0aff29f6a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f49a969_3d8281a1",
+        "filename": "board/brya/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-09-29T00:14:16Z",
+      "side": 1,
+      "message": "Some of the clamshell devices (under brya) don\u0027t have the lid angle sensor at all, so adding CONFIG_LID_ANGLE and CONFIG_LID_ANGLE_UPDATE at the baseboard level is not possible.",
+      "parentUuid": "97fa0048_a8e77af4",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "dd89cfe1f34b8707846e4d80f32c3eb0aff29f6a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
