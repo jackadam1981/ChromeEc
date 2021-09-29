@@ -16,6 +16,24 @@
       "message": "Abe, volteer_apmodeentry broke by not having space.  I don\u0027t know if this board still needs to exist or what would be best to trim out of it. So pushed this up and leaving it to you to deal with volteer.\n\nThe original code had a problem with shifts.\n    uint64_t mask \u003d 1 \u003c\u003c offset;\nThis does a signed shift of a 32 bit value and then after shifting converts it to a 64 bit value and assigns.  During unit test, I noticed this was causing \u00271 \u003c\u003c 32\u0027 to return 1, which was surprising.\n\nI converted that code over to casting first.\n    uint64_t mask \u003d (uint64_t)1 \u003c\u003c offset;\nIn most of the builds, this worked fine and the unit tests were happy with it but some platforms are 32 bit and do not support 64 bit shifts.\n\nSo to make this generic, I ran with the least common denominator of 32 bit shifts and used a union to assign to the correct uint32_t.  This is the code that grew volteer to being too big.\n\nI created a unit test to verify the implementation was basically working.",
       "revId": "78b11536a6398abf81ab2dbf6f53963bbe126d5f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65a23f9a_a2fba7c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-29T21:28:57Z",
+      "side": 1,
+      "message": "\u003e Abe, volteer_apmodeentry broke by not having space.  I don\u0027t know if this board still needs to exist or what would be best to trim out of it. So pushed this up and leaving it to you to deal with volteer.\n\nLast time I talked with Intel, which was a couple months ago, they still wanted this around for testing. I\u0027ll ping them again to see if anyone is using it. In the meantime, I think it will be fine to remove more console commands from volteer (see previous CL). We don\u0027t use it as the test platform of record anymore.\n\n\u003e The original code had a problem with shifts.\n\nDoh! Thanks for figuring this out.",
+      "parentUuid": "5803dab2_d14f3a36",
+      "revId": "78b11536a6398abf81ab2dbf6f53963bbe126d5f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
