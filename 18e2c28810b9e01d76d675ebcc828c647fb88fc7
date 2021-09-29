@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a9ae98_d27bcf13",
+        "filename": "include/ec_commands.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2536,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-29T05:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82569ef1_9010b9ae",
+      "revId": "18e2c28810b9e01d76d675ebcc828c647fb88fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "653a630a_063275cb",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-08-25T05:34:23Z",
       "side": 1,
       "message": "It was before ICM chipset in the original patch.",
+      "revId": "18e2c28810b9e01d76d675ebcc828c647fb88fc7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d98274f4_dd2bfacc",
+        "filename": "util/ectool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 4903,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-09-29T05:29:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "653a630a_063275cb",
       "revId": "18e2c28810b9e01d76d675ebcc828c647fb88fc7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
