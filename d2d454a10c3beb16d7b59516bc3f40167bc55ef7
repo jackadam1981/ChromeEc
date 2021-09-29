@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb26b48c_fc484130",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1447,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-29T01:36:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ad7e039_1c2ccdfe",
+      "range": {
+        "startLine": 1447,
+        "startChar": 26,
+        "endLine": 1447,
+        "endChar": 31
+      },
+      "revId": "d2d454a10c3beb16d7b59516bc3f40167bc55ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "82e63fa1_3b50d942",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-28T23:30:22Z",
       "side": 1,
       "message": "Maybe we should return EC_RES_SUCCESS? Can you share your thoughts?",
+      "range": {
+        "startLine": 1505,
+        "startChar": 10,
+        "endLine": 1505,
+        "endChar": 30
+      },
+      "revId": "d2d454a10c3beb16d7b59516bc3f40167bc55ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2568d89e_1a703f32",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-29T01:36:04Z",
+      "side": 1,
+      "message": "this is where the host command requested a speed that has no\nmapping on the EC side. this could, for example, be an invalid\n(garbage) speed value in the request.",
+      "parentUuid": "82e63fa1_3b50d942",
       "range": {
         "startLine": 1505,
         "startChar": 10,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c38113a3_6429112d",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1509,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-29T01:36:04Z",
+      "side": 1,
+      "message": "oops, good gone.",
+      "parentUuid": "a47b6d44_0da11715",
+      "range": {
+        "startLine": 1509,
+        "startChar": 3,
+        "endLine": 1509,
+        "endChar": 12
+      },
+      "revId": "d2d454a10c3beb16d7b59516bc3f40167bc55ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4456c1b8_2cf58d86",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-28T23:30:22Z",
       "side": 1,
       "message": "Why not i2c_freq_str[freq]?",
+      "range": {
+        "startLine": 1512,
+        "startChar": 17,
+        "endLine": 1512,
+        "endChar": 32
+      },
+      "revId": "d2d454a10c3beb16d7b59516bc3f40167bc55ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7999eef2_16ff7c0a",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-29T01:36:04Z",
+      "side": 1,
+      "message": "code size. i figured the extra strings are not that useful.\nwe can (re)use them if the console command is also defined.\nWDYT?",
+      "parentUuid": "4456c1b8_2cf58d86",
       "range": {
         "startLine": 1512,
         "startChar": 17,
