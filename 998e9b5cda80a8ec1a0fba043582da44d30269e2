@@ -16,6 +16,24 @@
       "message": "You broke zmake coverage on gitlab. Since it passes the zephyr dir on the command line instead of detecting it, you can\u0027t have multiple zephyrs configured.\n\nhttps://gitlab.com/zephyr-ec/ec/-/jobs/1635396712",
       "revId": "998e9b5cda80a8ec1a0fba043582da44d30269e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0398817_d0d6d4d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-29T21:57:12Z",
+      "side": 1,
+      "message": "Can the gitlab yaml be fixed? We didn\u0027t have this issue with v2.5-\u003ev2.6 uprev.",
+      "parentUuid": "53d2da93_baf6e4a5",
+      "revId": "998e9b5cda80a8ec1a0fba043582da44d30269e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
