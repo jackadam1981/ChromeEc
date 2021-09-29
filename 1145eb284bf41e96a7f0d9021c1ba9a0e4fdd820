@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf776e6_c100813a",
+        "filename": "board/brask/board.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-29T06:01:41Z",
+      "side": 1,
+      "message": "maybe you can add a new entry to the `enum charge_port`, for example: CHARGE_PORT_ENUM_COUNT. After that, change the `CHARGE_PORT_BARRELJACK + 1` to the new value.",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 35
+      },
+      "revId": "1145eb284bf41e96a7f0d9021c1ba9a0e4fdd820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
