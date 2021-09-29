@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "198d397d_888fdc3b",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-29T15:41:43Z",
+      "side": 1,
+      "message": "The common queue code enforces that all queues must be a power of 2 in size.  So BIT() on the port count seemed like a reasonable way to scale for a shared queue while maintaining the power of 2 requirement.",
+      "parentUuid": "f61c8ac2_0538bfcf",
+      "range": {
+        "startLine": 78,
+        "startChar": 25,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f7e72ee_83a75e5a",
@@ -60,6 +84,54 @@
       "writtenOn": "2021-09-28T23:27:23Z",
       "side": 1,
       "message": "huh. what does const mean here?",
+      "range": {
+        "startLine": 93,
+        "startChar": 21,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7e6b8d2_45a0b38b",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-29T15:41:43Z",
+      "side": 1,
+      "message": "I can try coding it up and see how it tests.  Right now, the queue often only has one item in it, but I could see a bad port starving out the other ports potentially (especially with HPD updates)",
+      "parentUuid": "5f7e72ee_83a75e5a",
+      "range": {
+        "startLine": 93,
+        "startChar": 27,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b04685c_d860da39",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-29T15:41:43Z",
+      "side": 1,
+      "message": "It means the struct queue contents are constant, I believe.  It\u0027ll contain the queue size, as well as pointers to the policy, buffer space, and state.",
+      "parentUuid": "0ed95aed_c5e84b24",
       "range": {
         "startLine": 93,
         "startChar": 21,
