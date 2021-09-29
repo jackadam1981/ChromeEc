@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ac68b82_3bb0b3ca",
+        "filename": "test/usb_pd_timer.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-29T21:28:30Z",
+      "side": 1,
+      "message": "What about\n\n TEST_EQ(PD_CHK_ACTIVE(0, 1ULL \u003c\u003c bit), 0ULL, \"%llu\");\n\n?\n\nSimilar question for similar lines below.",
+      "range": {
+        "startLine": 23,
+        "startChar": 3,
+        "endLine": 24,
+        "endChar": 12
+      },
+      "revId": "c8463f51c6c56b49fdaf8c8836a40e00892c7acd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
