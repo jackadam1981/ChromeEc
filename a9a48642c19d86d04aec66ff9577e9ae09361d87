@@ -164,6 +164,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d248dc20_8f10ef85",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-29T23:11:09Z",
+      "side": 1,
+      "message": "Please change this to a bool type.",
+      "range": {
+        "startLine": 340,
+        "startChar": 25,
+        "endLine": 340,
+        "endChar": 35
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e6985a9_de67d094",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-29T23:11:09Z",
+      "side": 1,
+      "message": "I\u0027m confused about the implementation.  The commit message indicates that bitbang is used for all pre-task I2C transactions.  However, this code is only enabling the I2C ports listed in i2c_bitbang_ports[].  Most boards don\u0027t even enable I2C bitbang ports, including the ADLRVP board.\n\nIs there a separate CL that enables the bitbang port(s) on ADLRVP?  I think it would be helpful to see an example usage of this feature.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 0
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6fd466e_96eca173",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-29T23:11:09Z",
+      "side": 1,
+      "message": "If the board must setup the i2c_bitbang_ports[], I think the chip_i2c_xfer_with_notify() can be simplified by modifying get_i2c_port():\n\n    if (task_start_called())\n      /* search i2c_ports[] table */\n    \n    if (IS_ENABLED(CONFIG_I2C_BITBANG))\n      /* search i2c_bitbang_ports[] */\n    \n    return NULL;\n    \nSo before tasking is enabled, this routine will return NULL if there are no i2c_bitbang_ports[] and will prevent any I2C transaction. When CONFIG_I2C_BITBANG is enabled, it will only search the i2c_bitbang_ports[] before tasking is started.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f504b6b_5cb3f115",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-29T23:11:09Z",
+      "side": 1,
+      "message": "If you make the suggested change to get_i2c_port(), then this code can be deleted.  i2c_port will point to an entry from i2c_bitbang_ports, which will have i2c_port-\u003edrv already set to \u0026bitbang_drv.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 0
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "39722849_349cef71",
         "filename": "common/main.c",
         "patchSetId": 9
