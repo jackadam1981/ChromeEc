@@ -15,6 +15,11 @@
  */
 #undef CONFIG_KEYBOARD_VIVALDI
 
+/*
+ * Disable CBI WP check, we need to remove this config later
+ */
+#define CONFIG_BYPASS_CBI_EEPROM_WP_CHECK
+
 /* Baseboard features */
 #include "baseboard.h"
 
