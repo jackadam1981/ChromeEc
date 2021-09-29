@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96082b6b_fe443121",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-29T20:18:27Z",
+      "side": 1,
+      "message": "can u create a local function to do this test? might as well\nput the get_board_id()\u003d\u003d0 ... check in there when it is run\nfor the first time.\n\nlooks like the !db_is_plugged test is inverted.",
+      "range": {
+        "startLine": 233,
+        "startChar": 5,
+        "endLine": 233,
+        "endChar": 60
+      },
+      "revId": "103a1705b11939313c097c8bea543a0372f130b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
