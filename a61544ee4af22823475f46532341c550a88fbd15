@@ -34,6 +34,23 @@
       "parentUuid": "b44e2cb3_f2be5c26",
       "revId": "a61544ee4af22823475f46532341c550a88fbd15",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5d33fac_f95afc75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-29T20:52:42Z",
+      "side": 1,
+      "message": "I added the Cq-Depend to the commit message, so now gerrit won\u0027t let me CQ+2.",
+      "revId": "a61544ee4af22823475f46532341c550a88fbd15",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
