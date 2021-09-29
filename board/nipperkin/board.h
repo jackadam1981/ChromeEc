@@ -27,6 +27,13 @@
 
 /* Volume Button feature */
 
+/* PD power */
+#undef PD_MAX_CURRENT_MA
+#define PD_MAX_CURRENT_MA	3000
+#undef PD_MAX_VOLTAGE_MV
+#define PD_MAX_VOLTAGE_MV	20000
+#undef PD_MAX_POWER_MW
+#define PD_MAX_POWER_MW		((PD_MAX_VOLTAGE_MV * PD_MAX_CURRENT_MA) / 1000)
 /* Fan features */
 
 /* LED features */
