@@ -214,6 +214,30 @@
       },
       "revId": "df3597b333b8f21e1d083827735513becd582d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd31b7f_dd29956f",
+        "filename": "board/galtic/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-29T17:30:57Z",
+      "side": 1,
+      "message": "Yeah, I know SM exposed the strapping via a register which we used to pick our inits.  But I wasn\u0027t sure if RAA had something similar.",
+      "parentUuid": "5845e3e4_060e0eeb",
+      "range": {
+        "startLine": 108,
+        "startChar": 29,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "df3597b333b8f21e1d083827735513becd582d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
