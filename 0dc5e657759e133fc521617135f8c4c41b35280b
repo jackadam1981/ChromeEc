@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb54bf72_ba91d07e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-29T04:17:29Z",
+      "side": 1,
+      "message": "added processing the case of interrupted flashrom operation, verified that allocated memory is returned.",
+      "revId": "0dc5e657759e133fc521617135f8c4c41b35280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
