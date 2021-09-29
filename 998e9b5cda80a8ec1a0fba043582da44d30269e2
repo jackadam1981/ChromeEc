@@ -34,6 +34,24 @@
       "parentUuid": "53d2da93_baf6e4a5",
       "revId": "998e9b5cda80a8ec1a0fba043582da44d30269e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "79689f3d_01502e20",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-09-29T22:34:33Z",
+      "side": 1,
+      "message": "We didn\u0027t have any testall or coverage targets with 2.5 -\u003e 2.6.\n\nSee https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3194982",
+      "parentUuid": "c0398817_d0d6d4d8",
+      "revId": "998e9b5cda80a8ec1a0fba043582da44d30269e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
