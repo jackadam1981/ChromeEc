@@ -21,6 +21,7 @@ BUILD_ASSERT(sizeof(fw_config) == sizeof(uint32_t));
 static const union taeko_cbi_fw_config fw_config_defaults = {
 	.usb_db = DB_USB3_PS8815,
 	.kb_bl = KEYBOARD_BACKLIGHT_ENABLED,
+	.tabletmode = TABLETMODE_ENABLED,
 };
 
 /****************************************************************************
@@ -35,17 +36,11 @@ void board_init_fw_config(void)
 
 	if (get_board_id() == 0) {
 		/*
-		 * Early boards have a zero'd out FW_CONFIG, so replace
-		 * it with a sensible default value. If DB_USB_ABSENT2
-		 * was used as an alternate encoding of DB_USB_ABSENT to
-		 * avoid the zero check, then fix it.
+		 * Early boards doesn't have correct FW_CONFIG, so replace
+		 * it with a sensible default value.
 		 */
-		if (fw_config.raw_value == 0) {
-			CPRINTS("CBI: FW_CONFIG is zero, using board defaults");
-			fw_config = fw_config_defaults;
-		} else if (fw_config.usb_db == DB_USB_ABSENT2) {
-			fw_config.usb_db = DB_USB_ABSENT;
-		}
+		CPRINTS("CBI: Using board defaults for early board");
+		fw_config = fw_config_defaults;
 	}
 }
 
@@ -62,4 +57,9 @@ enum ec_cfg_usb_db_type ec_cfg_usb_db_type(void)
 bool ec_cfg_has_keyboard_backlight(void)
 {
 	return (fw_config.kb_bl == KEYBOARD_BACKLIGHT_ENABLED);
+}
+
+bool ec_cfg_has_tabletmode(void)
+{
+	return (fw_config.tabletmode == TABLETMODE_ENABLED);
 }
