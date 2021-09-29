@@ -16,6 +16,24 @@
       "message": "nit: add a comment about this change so that other MECC boards dont copy it",
       "revId": "9fb28abdd52dbbd90ace2073cc59aed0eb99b684",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ebfdebc_3d8b98d5",
+        "filename": "board/adlrvpp_ite/gpio.inc",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1116125
+      },
+      "writtenOn": "2021-09-29T15:37:50Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "843c5246_a780d4e2",
+      "revId": "9fb28abdd52dbbd90ace2073cc59aed0eb99b684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
