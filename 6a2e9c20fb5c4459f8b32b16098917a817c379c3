@@ -168,6 +168,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "686ae2e5_522d1b97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-09-29T17:10:03Z",
+      "side": 1,
+      "message": "Adding unit test is the patch owner\u0027s responsibility.\nPlease check ec/test/* - there are many examples you can reference.",
+      "parentUuid": "21f6a282_02d04504",
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d1150c1e_afce37b8",
         "filename": "common/charge_state_v2.c",
         "patchSetId": 6
