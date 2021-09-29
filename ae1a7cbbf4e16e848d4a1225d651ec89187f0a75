@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "295be28c_2030a8c2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-29T20:32:07Z",
+      "side": 1,
+      "message": "Please update the next release to 3.0.",
+      "revId": "ae1a7cbbf4e16e848d4a1225d651ec89187f0a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47bc0add_6851efc4",
+        "filename": "zephyr/zmake/zmake/project.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-29T20:32:07Z",
+      "side": 1,
+      "message": "I believe the next release will be 3.0, because 2.7 is the long term support candidate. See https://github.com/zephyrproject-rtos/zephyr/projects/9",
+      "range": {
+        "startLine": 70,
+        "startChar": 46,
+        "endLine": 70,
+        "endChar": 51
+      },
+      "revId": "ae1a7cbbf4e16e848d4a1225d651ec89187f0a75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
