@@ -566,6 +566,24 @@
       "parentUuid": "8f846507_2f99c0fc",
       "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30de1179_8f45e49e",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-29T01:44:39Z",
+      "side": 1,
+      "message": "\"Verifying the range table first reduces the attack surface because an attacker can no longer supply arbitrary ranges to your range parsing code to try to exploit some mistake that we may have missed.\"\n\nI did not want to change the code to avoid a however small code increase, but this is a good reason, thank you for your patience Julius.",
+      "parentUuid": "6e52032a_47cccd1c",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
