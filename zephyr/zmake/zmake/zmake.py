@@ -147,11 +147,17 @@ class Zmake:
     """
 
     def __init__(
-        self, checkout=None, jobserver=None, jobs=0, modules_dir=None, zephyr_base=None
+        self, checkout=None, jobserver=None, jobs=0, modules_dir=None, zephyr_base=None, zephyr_root=None
     ):
         zmake.multiproc.reset()
         self._checkout = checkout
         self._zephyr_base = zephyr_base
+        if checkout:
+            self._zephyr_root = checkout / "src" / "third_party" / "zephyr" / "main"
+        else:
+            self._zephyr_root = None
+        if zephyr_root:
+            self._zephyr_root = zephyr_root
 
         if modules_dir:
             self.module_paths = zmake.modules.locate_from_directory(modules_dir)
@@ -190,7 +196,7 @@ class Zmake:
         if self._zephyr_base:
             return self._zephyr_base
 
-        return util.locate_zephyr_base(self.checkout, version)
+        return util.locate_zephyr_base(self._zephyr_root, version)
 
     def configure(
         self,
