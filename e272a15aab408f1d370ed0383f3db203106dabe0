@@ -530,6 +530,24 @@
       "parentUuid": "54940ce8_35eaaec1",
       "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e370bbf_c9f5d63d",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1002133
+      },
+      "writtenOn": "2021-09-29T00:08:20Z",
+      "side": 1,
+      "message": "\u003e I am sorry, but I respectfully disagree: the chance that gvd signature verification would fail is much lower, than the chance that the RO areas hash would not match. This is why it makes sense to check the hash first.\n\nI don\u0027t understand what you are trying to argue for here? Efficiency? In the common case where verification succeeds, none of this matters. In the case where either of these are accidentally broken, the system refuses to boot anyway, there is no point in saving a couple of milliseconds when getting to that result. The only other situation where speed matters is when someone maliciously inserts bad descriptors in places on the RW flash that get parsed before the real descriptor, trying to get this code to waste minutes of time so the device practically appears dead on booting. In order to curtail that, it is imperative that we verify the range table before using it to check hashes, because otherwise it could just be written to always cover the whole flash for every fake entry.\n\nBesides, this is just basic security-conscious design: always verify data before using it. Verifying the range table first reduces the attack surface because an attacker can no longer supply arbitrary ranges to your range parsing code to try to exploit some mistake that we may have missed.",
+      "parentUuid": "8f846507_2f99c0fc",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
