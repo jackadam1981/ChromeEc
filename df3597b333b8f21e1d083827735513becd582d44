@@ -166,6 +166,30 @@
       },
       "revId": "df3597b333b8f21e1d083827735513becd582d44",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25f5970f_6f39a846",
+        "filename": "board/galtic/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-09-29T16:54:23Z",
+      "side": 1,
+      "message": "Is this something we could also read from the charger on startup?  I suppose that needs i2c to the charger to work, but this method requires i2c to the EEPROM to work.  Either introduces an external i2c dependency to pick the right default battery.",
+      "parentUuid": "589d28cd_2adeaae3",
+      "range": {
+        "startLine": 108,
+        "startChar": 29,
+        "endLine": 108,
+        "endChar": 35
+      },
+      "revId": "df3597b333b8f21e1d083827735513becd582d44",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
