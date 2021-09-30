@@ -162,7 +162,10 @@ static void pulse_leds(enum ec_led_colors color, int ontime, int period)
 
 static int show_charge_state(void)
 {
-	enum charge_state chg_st = charge_get_state();
+	/*Rajesh-start*/
+	//enum charge_state chg_st = charge_get_state();
+	  enum charge_state chg_st = PWR_STATE_CHARGE;
+	/*Rajesh-end*/
 
 	/*
 	 * The colors listed below are the default, but can be overridden.
@@ -198,6 +201,10 @@ static int show_charge_state(void)
 }
 
 #ifndef CONFIG_LED_PWM_CHARGE_STATE_ONLY
+/*Rajesh-start*/
+/*TODO: rajesh fix this*/
+int charge_get_percent(void);
+/*Rajesh-end*/
 static int show_battery_state(void)
 {
 	int batt_percentage = charge_get_percent();

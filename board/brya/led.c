@@ -25,6 +25,7 @@ const enum ec_led_id supported_led_ids[] = {
 
 const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
 
+#ifndef CONFIG_ZEPHYR
 /*
  * We only have a white and an amber LED, so setting any other color results in
  * both LEDs being off.
@@ -91,3 +92,4 @@ int led_set_brightness(enum ec_led_id led_id, const uint8_t *brightness)
 
 	return EC_SUCCESS;
 }
+#endif
