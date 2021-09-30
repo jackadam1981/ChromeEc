@@ -15,6 +15,10 @@
 #define VARIANT_KUKUI_TABLET_PWRBTN
 #undef CONFIG_CMD_MFALLOW
 
+/* save space at RO image */
+#ifdef SECTION_IS_RO
+#undef CONFIG_CMD_SYSINFO
+#endif
 
 #ifndef SECTION_IS_RW
 #define VARIANT_KUKUI_NO_SENSORS
