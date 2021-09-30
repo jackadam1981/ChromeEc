@@ -21,15 +21,75 @@
 #include <logging/log.h>
 LOG_MODULE_REGISTER(isl923x_emul, CONFIG_ISL923X_EMUL_LOG_LEVEL);
 
+#define ISL923X_DATA_FROM_I2C_EMUL(_emul)                                    \
+	CONTAINER_OF(CONTAINER_OF(_emul, struct i2c_common_emul_data, emul), \
+		     struct isl923x_emul_data, common)
+
 struct isl923x_emul_data {
 	/** Common I2C data */
 	struct i2c_common_emul_data common;
+	/** Emulated charge current limit register */
+	uint16_t current_limit_reg;
+	/** Emulated max voltage register */
+	uint16_t max_volt_reg;
 };
 
 struct isl923x_emul_cfg {
 	/** Common I2C config */
 	const struct i2c_common_emul_cfg common;
 };
+
+static int isl923x_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
+				  int bytes)
+{
+	struct isl923x_emul_data *data = ISL923X_DATA_FROM_I2C_EMUL(emul);
+
+	switch (reg) {
+	case ISL923X_REG_CHG_CURRENT:
+		__ASSERT_NO_MSG(bytes == 0 || bytes == 1);
+		if (bytes == 0)
+			*val = (uint8_t)(data->current_limit_reg & 0xff);
+		else
+			*val = (uint8_t)((data->current_limit_reg >> 8) & 0xff);
+		break;
+	case ISL923X_REG_SYS_VOLTAGE_MAX:
+		__ASSERT_NO_MSG(bytes == 0 || bytes == 1);
+		if (bytes == 0)
+			*val = (uint8_t)(data->max_volt_reg & 0xff);
+		else
+			*val = (uint8_t)((data->max_volt_reg >> 8) & 0xff);
+		break;
+	default:
+		return -EINVAL;
+	}
+	return 0;
+}
+
+static int isl923x_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
+				   int bytes)
+{
+	struct isl923x_emul_data *data = ISL923X_DATA_FROM_I2C_EMUL(emul);
+
+	switch (reg) {
+	case ISL923X_REG_CHG_CURRENT:
+		__ASSERT_NO_MSG(bytes == 1 || bytes == 2);
+		if (bytes == 1)
+			data->current_limit_reg = val & 0xfc;
+		else
+			data->current_limit_reg |= (val & 0x1f) << 8;
+		break;
+	case ISL923X_REG_SYS_VOLTAGE_MAX:
+		__ASSERT_NO_MSG(bytes == 1 || bytes == 2);
+		if (bytes == 1)
+			data->max_volt_reg = val & 0xf8;
+		else
+			data->max_volt_reg |= (val & 0x7f) << 8;
+		break;
+	default:
+		return -EINVAL;
+	}
+	return 0;
+}
 
 static int emul_isl923x_init(const struct emul *emul,
 			     const struct device *parent)
@@ -49,7 +109,10 @@ static int emul_isl923x_init(const struct emul *emul,
 
 #define INIT_ISL923X(n)                                                        \
 	static struct isl923x_emul_data isl923x_emul_data_##n = {              \
-		.common = {},                                                  \
+		.common = {                                                    \
+			.write_byte = isl923x_emul_write_byte,                 \
+			.read_byte = isl923x_emul_read_byte,                   \
+		},                                                             \
 	};                                                                     \
 	static struct isl923x_emul_cfg isl923x_emul_cfg_##n = {                \
 	.common = {                                                            \
