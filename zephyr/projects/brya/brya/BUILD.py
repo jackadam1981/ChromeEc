@@ -8,5 +8,7 @@ register_npcx_project(
     dts_overlays=[
         "cbi_eeprom.dts",
         "gpio.dts",
+        "pwm.dts",
+        "pwm_leds.dts",
     ],
 )
