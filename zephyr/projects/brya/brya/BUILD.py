@@ -11,5 +11,6 @@ register_npcx_project(
         "gpio.dts",
         "motionsense.dts",
         "pwm.dts",
+        "pwm_leds.dts",
     ],
 )
