@@ -162,7 +162,11 @@ static void pulse_leds(enum ec_led_colors color, int ontime, int period)
 
 static int show_charge_state(void)
 {
-	enum charge_state chg_st = charge_get_state();
+	/*TODO:b:202701454 commented charger_get_state(), 
+	 * once charger/battery changes will be enabled ,this workarround will go away*/
+	//enum charge_state chg_st = charge_get_state();
+	  enum charge_state chg_st = PWR_STATE_CHARGE;
+	/*End*/
 
 	/*
 	 * The colors listed below are the default, but can be overridden.
@@ -198,6 +202,9 @@ static int show_charge_state(void)
 }
 
 #ifndef CONFIG_LED_PWM_CHARGE_STATE_ONLY
+/*TODO:b:202701454 once charger/battery changes will be enabled ,this workarround will go away*/
+int charge_get_percent(void);
+/*End*/
 static int show_battery_state(void)
 {
 	int batt_percentage = charge_get_percent();
