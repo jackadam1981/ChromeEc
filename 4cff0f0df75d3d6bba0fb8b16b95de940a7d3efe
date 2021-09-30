@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8b9e1453_571aa762",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-30T06:48:35Z",
+      "side": 1,
+      "message": "yes. :\u003d just means that all other variables are expanded at assignment time, not later.\nFor the append operator ‘+\u003d’, the right-hand side is considered immediate if the variable was previously set as a simple variable (‘:\u003d’ or ‘::\u003d’), and deferred otherwise.",
+      "parentUuid": "f1831cd3_6e751cda",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 58
+      },
+      "revId": "4cff0f0df75d3d6bba0fb8b16b95de940a7d3efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "58efd78f_d1555fdb",
         "filename": "board/cr50/board.h",
         "patchSetId": 1
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-30T02:26:33Z",
       "side": 1,
       "message": "this is already defined in common.h, why duplicate it here?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "4cff0f0df75d3d6bba0fb8b16b95de940a7d3efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d0026fa_e7bc2265",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-30T06:48:35Z",
+      "side": 1,
+      "message": "I added it explicitly to add TODO comment.",
+      "parentUuid": "58efd78f_d1555fdb",
       "range": {
         "startLine": 33,
         "startChar": 0,
