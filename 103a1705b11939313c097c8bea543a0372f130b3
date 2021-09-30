@@ -22,6 +22,30 @@
       },
       "revId": "103a1705b11939313c097c8bea543a0372f130b3",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eafb6359_87a0fcd0",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-30T07:22:59Z",
+      "side": 1,
+      "message": "Oops, it\u0027s my missing.\n\nBtw, I create local function as board_detect_usb_db().",
+      "parentUuid": "96082b6b_fe443121",
+      "range": {
+        "startLine": 233,
+        "startChar": 5,
+        "endLine": 233,
+        "endChar": 60
+      },
+      "revId": "103a1705b11939313c097c8bea543a0372f130b3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
