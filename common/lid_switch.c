@@ -27,6 +27,7 @@
 
 static int debounced_lid_open;		/* Debounced lid state */
 static int forced_lid_open;	/* Forced lid open */
+static int forced_lid_switch_off; /* Forced lid switch off */
 
 /**
  * Get raw lid switch state.
@@ -45,6 +46,11 @@ static int raw_lid_open(void)
  */
 static void lid_switch_open(void)
 {
+	if (forced_lid_switch_off) {
+		CPRINTS("lid switch force off");
+		return;
+	}
+
 	if (debounced_lid_open) {
 		CPRINTS("lid already open");
 		return;
@@ -63,6 +69,11 @@ static void lid_switch_open(void)
  */
 static void lid_switch_close(void)
 {
+	if (forced_lid_switch_off) {
+		CPRINTS("lid switch force off");
+		return;
+	}
+
 	if (!debounced_lid_open) {
 		CPRINTS("lid already closed");
 		return;
@@ -137,6 +148,24 @@ static int command_lidclose(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(lidclose, command_lidclose,
 			NULL,
 			"Simulate lid close");
+
+static int command_lidswitchon(int argc, char **argv)
+{
+	forced_lid_switch_off = 0;
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(lidswitchon, command_lidswitchon,
+			NULL,
+			"Turn on lid switch");
+
+static int command_lidswitchoff(int argc, char **argv)
+{
+	forced_lid_switch_off = 1;
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(lidswitchoff, command_lidswitchoff,
+			NULL,
+			"Turn off lid switch");
 
 static int command_lidstate(int argc, char **argv)
 {
