@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "694524e7_6d0ef8ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2021-09-30T13:34:20Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with sensors so adding cros-ec-reviewers to get a domain expert.",
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "412a56c1_55bc4c89",
+        "filename": "board/scout/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2021-09-30T13:34:20Z",
+      "side": 1,
+      "message": "Consider setting to MOTIONSENSE_LOC_BASE instead since scout doesn\u0027t have a lid. Same below.",
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bbcf64a_c78970a9",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1360086
+      },
+      "writtenOn": "2021-09-30T13:34:20Z",
+      "side": 1,
+      "message": "I assume this is leftover from debugging. Should probably remove it.",
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
