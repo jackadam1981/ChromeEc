@@ -30,6 +30,10 @@ struct isl923x_emul_data {
 	struct i2c_common_emul_data common;
 	/** Emulated charge current limit register */
 	uint16_t current_limit_reg;
+	/** Emulated adapter current limit 1 register */
+	uint16_t adapter_current_limit1_reg;
+	/** Emulated adapter current limit 2 register */
+	uint16_t adapter_current_limit2_reg;
 	/** Emulated max voltage register */
 	uint16_t max_volt_reg;
 };
@@ -38,6 +42,13 @@ struct isl923x_emul_cfg {
 	/** Common I2C config */
 	const struct i2c_common_emul_cfg common;
 };
+
+struct i2c_emul *isl923x_emul_get_i2c_emul(const struct emul *emulator)
+{
+	struct isl923x_emul_data *data = emulator->data;
+
+	return &(data->common.emul);
+}
 
 static int isl923x_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
 				  int bytes)
@@ -58,6 +69,26 @@ static int isl923x_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
 			*val = (uint8_t)(data->max_volt_reg & 0xff);
 		else
 			*val = (uint8_t)((data->max_volt_reg >> 8) & 0xff);
+		break;
+	case ISL923X_REG_ADAPTER_CURRENT_LIMIT1:
+		__ASSERT_NO_MSG(bytes == 0 || bytes == 1);
+		if (bytes == 0)
+			*val = (uint8_t)(data->adapter_current_limit1_reg &
+					 0xff);
+		else
+			*val = (uint8_t)((data->adapter_current_limit1_reg >>
+					  8) &
+					 0xff);
+		break;
+	case ISL923X_REG_ADAPTER_CURRENT_LIMIT2:
+		__ASSERT_NO_MSG(bytes == 0 || bytes == 1);
+		if (bytes == 0)
+			*val = (uint8_t)(data->adapter_current_limit2_reg &
+					 0xff);
+		else
+			*val = (uint8_t)((data->adapter_current_limit2_reg >>
+					  8) &
+					 0xff);
 		break;
 	default:
 		return -EINVAL;
@@ -84,6 +115,20 @@ static int isl923x_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 			data->max_volt_reg = val & 0xf8;
 		else
 			data->max_volt_reg |= (val & 0x7f) << 8;
+		break;
+	case ISL923X_REG_ADAPTER_CURRENT_LIMIT1:
+		__ASSERT_NO_MSG(bytes == 1 || bytes == 2);
+		if (bytes == 1)
+			data->adapter_current_limit1_reg = val & 0xfc;
+		else
+			data->adapter_current_limit1_reg |= (val & 0x1f) << 8;
+		break;
+	case ISL923X_REG_ADAPTER_CURRENT_LIMIT2:
+		__ASSERT_NO_MSG(bytes == 1 || bytes == 2);
+		if (bytes == 1)
+			data->adapter_current_limit2_reg = val & 0xfc;
+		else
+			data->adapter_current_limit2_reg |= (val & 0x1f) << 8;
 		break;
 	default:
 		return -EINVAL;
