@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6581cb58_31a34a06",
+        "filename": "zephyr/zmake/pre-upload.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-30T22:00:56Z",
+      "side": 1,
+      "message": "Yeah, this is just a little wrapper script intended to run from a large variety of environments.  Bash is probably OK for that.",
+      "parentUuid": "4c380d8e_a017b263",
+      "revId": "2690c59ee95dbb16eefc5181da123472b1a4e1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "498c56f2_22212a48",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-09-30T21:57:08Z",
       "side": 1,
       "message": "Is there an invocation of black, etc. that will just make the changes? For me, it suggested diffs but didn\u0027t change the files.",
+      "revId": "2690c59ee95dbb16eefc5181da123472b1a4e1a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee186db2_73051077",
+        "filename": "zephyr/zmake/pre-upload.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-30T22:00:56Z",
+      "side": 1,
+      "message": "If you don\u0027t run with --check or --diff, it\u0027s going to edit the files directly.",
+      "parentUuid": "498c56f2_22212a48",
       "revId": "2690c59ee95dbb16eefc5181da123472b1a4e1a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
