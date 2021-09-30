@@ -6,6 +6,7 @@
 
 CORE:=cortex-m
 CFLAGS_CPU+=-march=armv7-m -mcpu=cortex-m3
+CFLAGS_CPU+=-Wno-stringop-overflow -Wno-array-parameter -Wno-stringop-overread
 
 ifeq ($(CONFIG_DCRYPTO),y)
 INCLUDE_ROOT := $(abspath ./include)
