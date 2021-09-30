@@ -34,6 +34,29 @@
       "parentUuid": "b2d5c554_69e5dcd0",
       "revId": "abdd5b99eed332250b399394b89cebf62c9afb99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcb4227f_9d1a4f54",
+        "filename": "board/kodama/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-30T21:30:21Z",
+      "side": 1,
+      "message": "This command is used by FAFT, so it\u0027s recommended to leave enabled.\nSee this doc for tips: https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/reducing_ec_image_size.md\n\nLooks like these commands can be disabled:\n#undef CONFIG_CMD_BUTTON\n#undef CONFIG_CMD_CHARGE_SUPPLIER_INFO\n#undef CONFIG_CMD_FLASH_WP\n#undef CONFIG_CMD_GETTIME\n\nPlease add this to the kukui/baseboard.h file instead because most of the kukui boards are tight on RO space.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "abdd5b99eed332250b399394b89cebf62c9afb99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
