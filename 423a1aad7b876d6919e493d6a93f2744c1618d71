@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dab9425d_b279cb4f",
+        "filename": "board/scout/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-30T14:58:04Z",
+      "side": 1,
+      "message": "nit, blank line between #defines above and this comment",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e08cacd8_289ae67b",
+        "filename": "board/scout/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-30T14:58:04Z",
+      "side": 1,
+      "message": "nit: style, blank line between arrays",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "412a56c1_55bc4c89",
         "filename": "board/scout/board.c",
         "patchSetId": 5
@@ -31,6 +77,52 @@
       "writtenOn": "2021-09-30T13:34:20Z",
       "side": 1,
       "message": "Consider setting to MOTIONSENSE_LOC_BASE instead since scout doesn\u0027t have a lid. Same below.",
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0204103_9a9d212b",
+        "filename": "board/scout/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-30T14:58:04Z",
+      "side": 1,
+      "message": "nit: style: use just a single space for indentation since you aren\u0027t aligning with anything else",
+      "range": {
+        "startLine": 64,
+        "startChar": 17,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac8a29ac_7c9d8033",
+        "filename": "board/scout/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-30T14:58:04Z",
+      "side": 1,
+      "message": "nit: style: space required before backslash",
+      "range": {
+        "startLine": 66,
+        "startChar": 36,
+        "endLine": 66,
+        "endChar": 37
+      },
       "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
