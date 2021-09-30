@@ -16,6 +16,24 @@
       "message": "what problems does this address? Could the source code be fixed instead?",
       "revId": "17857cb1a82b53c7c1a494f20c9c95e02a809fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16908cce_033eb415",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-30T06:52:01Z",
+      "side": 1,
+      "message": "all problems are in private-cr5x. In some cases it is possible to fix it, but as with previous fix with -Wno-string-overflow - it is challenging to explain compiler that enough storage is actually allocated.\nSo far it is a quick fix to enable compilation with gcc 11.2.",
+      "parentUuid": "f235d803_d0f52274",
+      "revId": "17857cb1a82b53c7c1a494f20c9c95e02a809fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
