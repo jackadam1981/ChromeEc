@@ -16,6 +16,23 @@
       "message": "Rebased and add CL number of Cq-Depend.",
       "revId": "108300bbd2decadca396348bccb925c13318e0ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4eb879c8_6a86ff18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-30T15:34:55Z",
+      "side": 1,
+      "message": "Looks like the Zephyr build for hayato is failing:\n\nERROR: [/tmp/zbuild-ist5m_we-hayato:ro]/mnt/host/source/src/platform/ec/zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c: In function \u0027cros_kb_raw_ite_read_row\u0027:\nERROR: [/tmp/zbuild-ist5m_we-hayato:ro]/mnt/host/source/src/platform/ec/zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c:65:15: error: dereferencing pointer to incomplete type \u0027struct kscan_it8xxx2_regs\u0027\nERROR: [/tmp/zbuild-ist5m_we-hayato:ro]  return ((inst-\u003eKBS_KSI) ^ 0xff);\nERROR: [/tmp/zbuild-ist5m_we-hayato:ro]               ^~\n",
+      "revId": "108300bbd2decadca396348bccb925c13318e0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
