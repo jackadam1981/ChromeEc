@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ee44c5b_6d465d3f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165921
+      },
+      "writtenOn": "2021-09-30T21:52:39Z",
+      "side": 1,
+      "message": "CL is fine, but do we have a generic charger interface we can use for this? I was rather hoping that we could run the same (or similar) charger test on any charger.",
+      "revId": "d0edf6b17724985b43683753789a08f807a904e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0de9cd82_3a251090",
