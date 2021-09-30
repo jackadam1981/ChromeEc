@@ -16,6 +16,29 @@
       "message": "refactored to have both schemes run though vendor command.",
       "revId": "ac191b601f7c00add5e88f76253551eba325f0df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f64a610_f98a0481",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-09-30T23:32:01Z",
+      "side": 1,
+      "message": "the only common part between descriptor \u003d\u003d NULL and descriptor !\u003d NULL cases is read_ranges().\n\ncan we just have two separate functions instead:\n```\nvalidate_cached_ap_ro_v2() {\n\tCPRINTS(\"%s: found v2 descriptor\", __func__);\n\tfmap_offset \u003d descriptor-\u003efmap_offset;\n\tgvdc.offset \u003d descriptor-\u003egvd_offset;\n\t\n\tread_ranges(...)\n\t\n\tif (gvd_cache_check(\u0026gvdc.gvd, \u0026ranges, descriptor)) {\n\t\tCPRINTS(\"GVD HASH MISMATCH!!\");\n\t\treturn -1;\n\t}\n\treturn validate_ranges_sha(ranges.ranges, gvdc.gvd.range_count,\n\t\t\t\t   gvdc.gvd.ranges_digest) \u003d\u003d\n\t\t\t       EC_SUCCESS ? 0 : -1;\n}\n```\n\nand \n\nvalidate_and_cache_ap_ro_v2_from_flash() to handle the other case 9and I don\u0027t insist on the name :))?",
+      "range": {
+        "startLine": 1285,
+        "startChar": 0,
+        "endLine": 1315,
+        "endChar": 2
+      },
+      "revId": "ac191b601f7c00add5e88f76253551eba325f0df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
