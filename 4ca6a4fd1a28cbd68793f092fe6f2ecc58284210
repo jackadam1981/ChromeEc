@@ -26,6 +26,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb04577d_a3adc76a",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-30T21:59:26Z",
+      "side": 1,
+      "message": "How about doing something like:\n#define REG_CHG_CURRENT_MASK GENMASK(12,2)\n\nif (bytes \u003d\u003d 1)\n    data-\u003ecurrent_limit_reg \u003d val \u0026 REG_CHG_CURRENT_MASK;\nelse\n    data-\u003ecurrent_limit_reg |\u003d (val \u003c\u003c 8) \u0026 REG_CHG_CURRENT_MASK;",
+      "parentUuid": "6d2ca34d_45e53865",
+      "range": {
+        "startLine": 77,
+        "startChar": 35,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "4ca6a4fd1a28cbd68793f092fe6f2ecc58284210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8919ae5d_0bd1eb6f",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-09-30T21:59:26Z",
+      "side": 1,
+      "message": "Use lower case here.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "4ca6a4fd1a28cbd68793f092fe6f2ecc58284210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dcfac13b_31176ee6",
         "filename": "zephyr/test/drivers/src/isl923x.c",
         "patchSetId": 2
