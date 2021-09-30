@@ -95,6 +95,7 @@ CPPFLAGS+=-Ibuiltin/
 else
 CPPFLAGS+=-Og
 endif
+
 CPPFLAGS+= -DCHROMIUM_EC=$(EMPTY)
 CFLAGS=$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(COMMON_WARN) $(CFLAGS_y)
 CFLAGS+= -ffunction-sections -fshort-wchar
@@ -103,6 +104,8 @@ ifneq ($(cc-name),clang)
 CFLAGS+= -ffat-lto-objects
 CFLAGS+= -fconserve-stack
 endif
+CFLAGS+=$(CFLAGS_CHIP) $(CFLAGS_BOARD)
+
 CXXFLAGS+=-DPROTOBUF_INLINE_NOT_IN_HEADERS=0
 
 FTDIVERSION:=$(shell $(PKG_CONFIG) --modversion libftdi1 2>/dev/null)
@@ -136,7 +139,7 @@ ifneq (${SYSROOT},)
   LDFLAGS_EXTRA+=--sysroot=${SYSROOT}
 endif
 LDFLAGS=-nostdlib -g -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
-	$(LDFLAGS_EXTRA) $(CFLAGS_CPU)
+	$(LDFLAGS_EXTRA) $(CFLAGS_CPU) $(CFLAGS_CHIP) $(CFLAGS_BOARD)
 BUILD_LDFLAGS=$(LIBFTDIUSB_LDLIBS)
 HOST_LDFLAGS=$(LIBFTDIUSB_LDLIBS)
 HOST_TEST_LDFLAGS=-Wl,-T core/host/host_exe.lds -lrt -pthread -rdynamic -lm\
