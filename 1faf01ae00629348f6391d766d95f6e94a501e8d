@@ -90,6 +90,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "196e0804_44b81d32",
+        "filename": "fuzz/u2f_fuzz.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-30T06:50:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b571f98_1db6251f",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f27fd014_ee1138e4",
+        "filename": "fuzz/u2f_fuzz.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-30T06:50:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b571f98_1db6251f",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 1
+      },
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "329943d7_479cd8e4",
         "filename": "fuzz/u2f_fuzz.cc",
         "patchSetId": 2
@@ -101,6 +149,30 @@
       "writtenOn": "2021-09-30T06:42:25Z",
       "side": 1,
       "message": "may be link https://source.corp.google.com/chromeos_public/src/platform/cr50/chip/host/trng.c?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 0
+      },
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87387e52_1ea44099",
+        "filename": "fuzz/u2f_fuzz.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-30T06:50:43Z",
+      "side": 1,
+      "message": "For which functions to mock, I simply followed the host_u2f test. I guess we want to mock this two functions so that generating random bytes can be more efficient since we don\u0027t need it to be actually random?",
+      "parentUuid": "329943d7_479cd8e4",
       "range": {
         "startLine": 42,
         "startChar": 0,
@@ -136,6 +208,54 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b993c1f7_fe544de7",
+        "filename": "fuzz/u2f_fuzz.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-30T06:50:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "05e3b5b5_8294b66b",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44d4d34f_592e59a3",
+        "filename": "fuzz/u2f_fuzz.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-30T06:50:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "05e3b5b5_8294b66b",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 1
+      },
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e465150_5578efe8",
         "filename": "fuzz/u2f_fuzz.cc",
         "patchSetId": 2
@@ -147,6 +267,54 @@
       "writtenOn": "2021-09-30T06:42:25Z",
       "side": 1,
       "message": "might be small for u2f_attest which return certificate which itself can be up to 315 bytes.",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96ffdfee_4d2891c7",
+        "filename": "fuzz/u2f_fuzz.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-30T06:50:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1e465150_5578efe8",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 20
+      },
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098b5a99_cbecf559",
+        "filename": "fuzz/u2f_fuzz.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-09-30T06:50:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1e465150_5578efe8",
       "range": {
         "startLine": 110,
         "startChar": 1,
