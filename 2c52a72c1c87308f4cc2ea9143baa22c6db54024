@@ -91,6 +91,30 @@
       },
       "revId": "2c52a72c1c87308f4cc2ea9143baa22c6db54024",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f73a9d4_51aa57f0",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-09-30T15:46:15Z",
+      "side": 1,
+      "message": "board_tcpc_init() is register to HOOK_INIT.\nhook_task is the first task to prior to other pd_task.\nEC need to complete all function which register HOOK_INIT, then enable the rest of the tasks.\nSo, board_tcpc_init() should run prior to tc_state_init.\nHowever, I just found one missing that usb_mux_hpd_update also call board_get_usb_pd_port_count().\n\nI\u0027ll move board_detect_usb_db_init right after ps8815_reset, provide another patch to you.",
+      "parentUuid": "5c814676_ba4a7d7c",
+      "range": {
+        "startLine": 343,
+        "startChar": 5,
+        "endLine": 343,
+        "endChar": 23
+      },
+      "revId": "2c52a72c1c87308f4cc2ea9143baa22c6db54024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
