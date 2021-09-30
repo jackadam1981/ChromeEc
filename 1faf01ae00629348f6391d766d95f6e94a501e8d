@@ -395,6 +395,29 @@
       },
       "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f6a7a8_c8cea81b",
+        "filename": "fuzz/u2f_fuzz.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-30T16:54:28Z",
+      "side": 1,
+      "message": "on second thought - i think it will only explore one path as key handler will never be authenticated - it does real HMAC computation and check. So, technically it is better to store some number of key handles returned by u2f_generate() and use it for u2f_sign() rather than filling it with random values. Same applies to u2f_attest().",
+      "range": {
+        "startLine": 241,
+        "startChar": 3,
+        "endLine": 242,
+        "endChar": 25
+      },
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
