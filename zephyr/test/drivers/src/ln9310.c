@@ -16,6 +16,8 @@
  */
 #define TEST_DELAY_MS 50
 
+#define AN_UNFIXED_CHIP_REV 0
+
 void test_ln9310_2s_powers_up(void)
 {
 	ln9310_reset_to_initial_state();
@@ -58,11 +60,66 @@ void test_ln9310_3s_powers_up(void)
 	zassert_true(ln9310_power_good(), NULL);
 }
 
+void test_ln9310_2s_software_enable(void)
+{
+	ln9310_reset_to_initial_state();
+	const struct emul *emulator =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
+
+	zassert_not_null(emulator, NULL);
+
+	ln9310_emul_set_context(emulator);
+	ln9310_emul_reset(emulator);
+	ln9310_emul_set_battery_cell_type(emulator, BATTERY_CELL_TYPE_2S);
+	ln9310_emul_set_version(emulator, AN_UNFIXED_CHIP_REV);
+
+	zassert_ok(ln9310_init(), NULL);
+	zassert_true(ln9310_emul_is_init(emulator), NULL);
+
+	k_msleep(TEST_DELAY_MS);
+
+	zassert_false(ln9310_power_good(), NULL);
+	ln9310_software_enable(1);
+
+	k_msleep(TEST_DELAY_MS);
+	zassert_true(ln9310_power_good(), NULL);
+
+	ln9310_software_enable(0);
+}
+
+void test_ln9310_3s_software_enable(void)
+{
+	ln9310_reset_to_initial_state();
+	const struct emul *emulator =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
+
+	zassert_not_null(emulator, NULL);
+
+	ln9310_emul_set_context(emulator);
+	ln9310_emul_reset(emulator);
+	ln9310_emul_set_battery_cell_type(emulator, BATTERY_CELL_TYPE_3S);
+	ln9310_emul_set_version(emulator, AN_UNFIXED_CHIP_REV);
+
+	zassert_ok(ln9310_init(), NULL);
+	zassert_true(ln9310_emul_is_init(emulator), NULL);
+
+	k_msleep(TEST_DELAY_MS);
+
+	zassert_false(ln9310_power_good(), NULL);
+	ln9310_software_enable(1);
+
+	k_msleep(TEST_DELAY_MS);
+	zassert_true(ln9310_power_good(), NULL);
+
+	ln9310_software_enable(0);
+}
+
 void test_suite_ln9310(void)
 {
 	ztest_test_suite(
 		ln9310,
 		ztest_unit_test(test_ln9310_2s_powers_up),
-		ztest_unit_test(test_ln9310_3s_powers_up));
+		ztest_unit_test(test_ln9310_3s_powers_up),
+		ztest_unit_test(test_ln9310_2s_software_enable));
 	ztest_run_test_suite(ln9310);
 }
