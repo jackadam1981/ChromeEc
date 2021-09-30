@@ -678,17 +678,17 @@ uint16_t tcpc_get_alert_status(void)
 int battery_get_vendor_param(uint32_t param, uint32_t *value)
 {
 	int rv;
-	uint8_t data[16] = {};
+	uint8_t data[12] = {};
 
-	/* only allow reading 0x70~0x7F, 16 byte data */
-	if (param < 0x70 || param >= 0x80)
+	/* only allow reading 0x2f~0x39, 11 byte data */
+	if (param < 0x2f || param >= 0x3a)
 		return EC_ERROR_ACCESS_DENIED;
 
-	rv = sb_read_string(0x70, data, sizeof(data));
+	rv = sb_read_string(0x2f, data, sizeof(data));
 	if (rv)
 		return rv;
 
-	*value = data[param - 0x70];
+	*value = data[param - 0x2f];
 	return EC_SUCCESS;
 }
 
