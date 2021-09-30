@@ -52,6 +52,23 @@
       "parentUuid": "16908cce_033eb415",
       "revId": "17857cb1a82b53c7c1a494f20c9c95e02a809fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f0c4578_e00be7e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-30T17:19:44Z",
+      "side": 1,
+      "message": "could the extra compilation flags be applied to Cr50 only?\n\nI know that now all these warning are false positives, but it would be really helpful to fix the issues, if any, and keep the options in place in case more problematic code is added in the future.",
+      "revId": "17857cb1a82b53c7c1a494f20c9c95e02a809fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
