@@ -23,7 +23,6 @@ void svdm_set_hpd_gpio(int port, int en)
 		gpio_set_level(GPIO_USB_C0_HPD_3V3, en);
 	} else if (port == 1) {
 		gpio_set_level(GPIO_USB_C1_HPD_3V3, en);
-		gpio_set_level(GPIO_USB_C1_HPD_IN, en);
 	}
 }
 
