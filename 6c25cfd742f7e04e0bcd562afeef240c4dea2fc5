@@ -16,6 +16,24 @@
       "message": "Once again, things that could have been brought to my attention during pre-upload!",
       "revId": "6c25cfd742f7e04e0bcd562afeef240c4dea2fc5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32decc5c_7bbac99b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-09-30T19:56:36Z",
+      "side": 1,
+      "message": "The issue is that these checks depend on some things in the chroot (flake8, isort, black), and some people like to run repo from outside the chroot.\n\nBut I\u0027m all ears to a solution that works around that.",
+      "parentUuid": "641d0fd7_6ce2cbae",
+      "revId": "6c25cfd742f7e04e0bcd562afeef240c4dea2fc5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
