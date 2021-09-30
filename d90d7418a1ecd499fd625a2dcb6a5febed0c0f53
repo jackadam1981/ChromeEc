@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b87c666_4846babf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-30T20:53:35Z",
+      "side": 1,
+      "message": "My bad just misread it again.",
+      "revId": "d90d7418a1ecd499fd625a2dcb6a5febed0c0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "34c5d627_8e4ffe31",
@@ -14,6 +31,30 @@
       "writtenOn": "2021-09-30T20:50:19Z",
       "side": 1,
       "message": "Is this branch possible given above assertion?",
+      "range": {
+        "startLine": 105,
+        "startChar": 2,
+        "endLine": 105,
+        "endChar": 17
+      },
+      "revId": "d90d7418a1ecd499fd625a2dcb6a5febed0c0f53",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afd6bc08_58671bb8",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-09-30T20:53:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34c5d627_8e4ffe31",
       "range": {
         "startLine": 105,
         "startChar": 2,
