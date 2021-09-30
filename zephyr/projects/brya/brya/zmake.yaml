@@ -5,6 +5,8 @@
 board: brya
 dts-overlays:
   - gpio.dts
+  - pwm.dts
+  - pwm_leds.dts
 supported-toolchains:
   - coreboot-sdk
   - zephyr
