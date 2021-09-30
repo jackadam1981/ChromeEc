@@ -48,6 +48,7 @@
 #include "usb_mux.h"
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
+#include "usb_tc_sm.h"
 
 static void bc12_interrupt(enum gpio_signal signal);
 static void ppc_interrupt(enum gpio_signal signal);
@@ -251,6 +252,17 @@ __maybe_unused void usb_a0_interrupt(enum gpio_signal signal)
 
 	for (int i = 0; i < USB_PORT_COUNT; i++)
 		usb_charge_set_mode(i, mode, USB_ALLOW_SUSPEND_CHARGE);
+
+	/*
+	 * Trigger hard reset to cycle Vbus on Type-C ports, recommended by
+	 * USB 3.2 spec 10.3.1.1.
+	 */
+	if (gpio_get_level(signal)) {
+		for (int i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+			if (tc_is_attached_src(i))
+				pd_dpm_request(i, DPM_REQUEST_HARD_RESET_SEND);
+		}
+	}
 }
 
 /* USB Mux */
