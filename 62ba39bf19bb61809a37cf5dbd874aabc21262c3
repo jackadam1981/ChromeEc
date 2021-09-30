@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e673fce_ff11d7f7",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-30T23:17:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f899c85_3971cd10",
+      "range": {
+        "startLine": 1449,
+        "startChar": 0,
+        "endLine": 1475,
+        "endChar": 1
+      },
+      "revId": "62ba39bf19bb61809a37cf5dbd874aabc21262c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "444476fe_0dc6baf0",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "374c492b_0a120c29",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-30T23:17:36Z",
+      "side": 1,
+      "message": "ya, that seems like a better definition than failing the call.\n\nalso, note that GET should be consistent with SET. SET returns\nthe previous value, so that portion of the call needs to behave\nthe same way as GET and we don\u0027t want SET to fail because we\ndon\u0027t know the current speed.",
+      "parentUuid": "444476fe_0dc6baf0",
+      "range": {
+        "startLine": 1496,
+        "startChar": 2,
+        "endLine": 1496,
+        "endChar": 19
+      },
+      "revId": "62ba39bf19bb61809a37cf5dbd874aabc21262c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "89089326_cadd9c28",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-30T16:32:08Z",
       "side": 1,
       "message": "nit: Looks like we do \"I2C%d: Speed changed...\" in this file.",
+      "range": {
+        "startLine": 1512,
+        "startChar": 11,
+        "endLine": 1512,
+        "endChar": 19
+      },
+      "revId": "62ba39bf19bb61809a37cf5dbd874aabc21262c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "105caf33_16751e37",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-30T23:17:36Z",
+      "side": 1,
+      "message": "oops, ya, not dealing with USB-C port numbers at this level.",
+      "parentUuid": "89089326_cadd9c28",
       "range": {
         "startLine": 1512,
         "startChar": 11,
