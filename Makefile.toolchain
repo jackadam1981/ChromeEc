@@ -48,6 +48,7 @@ C_WARN = -Wstrict-prototypes -Wdeclaration-after-statement -Wno-pointer-sign
 COMMON_WARN = -Wall -Wundef -Werror -Werror-implicit-function-declaration \
 	-Wno-trigraphs -Wno-format-security -Wno-address-of-packed-member \
 	-fno-common -fno-strict-aliasing -fno-strict-overflow
+COMMON_WARN += $(C_WARN_CHIP) $(C_WARN_BOARD)
 
 UBSAN_FLAGS=-fsanitize=array-bounds,vla-bound \
 	-fno-sanitize=vptr \
@@ -95,6 +96,7 @@ CPPFLAGS+=-Ibuiltin/
 else
 CPPFLAGS+=-Og
 endif
+CFLAGS+=$(CFLAGS_CHIP) $(CFLAGS_BOARD)
 CPPFLAGS+= -DCHROMIUM_EC=$(EMPTY)
 CFLAGS=$(CPPFLAGS) $(CFLAGS_CPU) $(CFLAGS_DEBUG) $(COMMON_WARN) $(CFLAGS_y)
 CFLAGS+= -ffunction-sections -fshort-wchar
@@ -136,7 +138,7 @@ ifneq (${SYSROOT},)
   LDFLAGS_EXTRA+=--sysroot=${SYSROOT}
 endif
 LDFLAGS=-nostdlib -g -Wl,-X -Wl,--gc-sections -Wl,--build-id=none \
-	$(LDFLAGS_EXTRA) $(CFLAGS_CPU)
+	$(LDFLAGS_EXTRA) $(CFLAGS_CPU) $(CFLAGS_CHIP) $(CFLAGS_BOARD)
 BUILD_LDFLAGS=$(LIBFTDIUSB_LDLIBS)
 HOST_LDFLAGS=$(LIBFTDIUSB_LDLIBS)
 HOST_TEST_LDFLAGS=-Wl,-T core/host/host_exe.lds -lrt -pthread -rdynamic -lm\
