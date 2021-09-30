@@ -672,6 +672,7 @@ static int check_chipid(struct common_hnd *chnd)
 	return 0;
 }
 
+#if 0
 /* DBGR Reset */
 static int dbgr_reset(struct common_hnd *chnd, unsigned char val)
 {
@@ -693,6 +694,7 @@ static int dbgr_reset(struct common_hnd *chnd, unsigned char val)
 
 	return 0;
 }
+#endif
 
 /* Exit DBGR mode */
 static int exit_dbgr_mode(struct common_hnd *chnd)
@@ -2387,7 +2389,7 @@ int main(int argc, char **argv)
 		else
 			command_erase(&chnd, chnd.flash_size, 0);
 		/* Call DBGR Rest to clear the EC lock status after erasing */
-		dbgr_reset(&chnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST);
+		//dbgr_reset(&chnd, RSTS_VCCDO_PW_ON|RSTS_HGRST|RSTS_GRST);
 	}
 
 	if (chnd.conf.output_filename) {
