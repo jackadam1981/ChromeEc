@@ -256,6 +256,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa42096_68804a5d",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-30T01:46:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e92a32a_7e0dafa6",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 0
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6fd466e_96eca173",
