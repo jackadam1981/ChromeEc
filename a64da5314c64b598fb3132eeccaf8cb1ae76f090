@@ -16,6 +16,29 @@
       "message": "Brask EC GPIO change ready for review.",
       "revId": "a64da5314c64b598fb3132eeccaf8cb1ae76f090",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "406538e0_23cac839",
+        "filename": "board/brask/gpio.inc",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-30T02:50:19Z",
+      "side": 1,
+      "message": "does A0 also need a PU?",
+      "range": {
+        "startLine": 109,
+        "startChar": 5,
+        "endLine": 109,
+        "endChar": 18
+      },
+      "revId": "a64da5314c64b598fb3132eeccaf8cb1ae76f090",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
