@@ -16,6 +16,24 @@
       "message": "What is kodama? and why do we have this specific problem only for this board?",
       "revId": "abdd5b99eed332250b399394b89cebf62c9afb99",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63daa19f_90d53122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-30T17:45:08Z",
+      "side": 1,
+      "message": "not intel old board, side effect of having additional code for i2c bitbang changes",
+      "parentUuid": "b2d5c554_69e5dcd0",
+      "revId": "abdd5b99eed332250b399394b89cebf62c9afb99",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
