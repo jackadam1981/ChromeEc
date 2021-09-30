@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0c3cd93c_5a4d1ce1",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-30T03:14:38Z",
+      "side": 1,
+      "message": "hmm... checking (new_ec_i2c_freq \u003d\u003d old_ec_i2c_freq)\nand deciding to treat it as a no-op is more of a policy\ndecision. i\u0027d rather leave it to the driver to decide\nhow to handle it.",
+      "parentUuid": "47904072_9c140999",
+      "range": {
+        "startLine": 1505,
+        "startChar": 10,
+        "endLine": 1505,
+        "endChar": 30
+      },
+      "revId": "d2d454a10c3beb16d7b59516bc3f40167bc55ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a47b6d44_0da11715",
         "filename": "common/i2c_controller.c",
         "patchSetId": 4
