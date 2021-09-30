@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "077cd84e_b1104ea9",
+        "filename": "zephyr/zmake/zmake/zmake.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 758,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-09-30T18:46:12Z",
+      "side": 1,
+      "message": "I\u0027m not sure why this is necessary. The genhtml man page says this should be enabled by default. Also note that genhtml appears to be responsible for the majority of the extra execution time associated with branch coverage.",
+      "revId": "47f0df0979009279d4a468496e3dc519f178cd8b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
