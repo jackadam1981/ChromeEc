@@ -113,13 +113,6 @@ static const struct charger_info isl9237_charger_info = {
 	.input_current_step = AC_REG_TO_CURRENT(INPUT_I_STEP),
 };
 
-static inline enum ec_error_list raw_read8(int chgnum, int offset, int *value)
-{
-	return i2c_read8(chg_chips[chgnum].i2c_port,
-			 chg_chips[chgnum].i2c_addr_flags,
-			 offset, value);
-}
-
 static inline enum ec_error_list raw_read16(int chgnum, int offset, int *value)
 {
 	return i2c_read16(chg_chips[chgnum].i2c_port,
@@ -134,6 +127,7 @@ static inline enum ec_error_list raw_write16(int chgnum, int offset, int value)
 			   offset, value);
 }
 
+#if defined(CONFIG_CHARGER_ISL9238C) || defined(CONFIG_CHARGER_RAA489000)
 static inline enum ec_error_list raw_update16(int chgnum, int offset, int mask,
 					      enum mask_update_action action)
 {
@@ -141,6 +135,7 @@ static inline enum ec_error_list raw_update16(int chgnum, int offset, int mask,
 			    chg_chips[chgnum].i2c_addr_flags,
 			    offset, mask, action);
 }
+#endif
 
 static enum ec_error_list isl9237_set_current(int chgnum, uint16_t current)
 {
