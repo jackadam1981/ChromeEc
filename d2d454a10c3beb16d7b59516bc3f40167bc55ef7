@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7c5a5ba_5323fba5",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-30T16:32:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0c3cd93c_5a4d1ce1",
+      "range": {
+        "startLine": 1505,
+        "startChar": 10,
+        "endLine": 1505,
+        "endChar": 30
+      },
+      "revId": "d2d454a10c3beb16d7b59516bc3f40167bc55ef7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a47b6d44_0da11715",

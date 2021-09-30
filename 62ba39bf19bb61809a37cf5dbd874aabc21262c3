@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f899c85_3971cd10",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1475,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-30T16:32:08Z",
+      "side": 1,
+      "message": "I think these are better be exported in i2c_controller.h. Chip drivers will call them.",
+      "range": {
+        "startLine": 1449,
+        "startChar": 0,
+        "endLine": 1475,
+        "endChar": 1
+      },
+      "revId": "62ba39bf19bb61809a37cf5dbd874aabc21262c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89089326_cadd9c28",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1512,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-30T16:32:08Z",
+      "side": 1,
+      "message": "nit: Looks like we do \"I2C%d: Speed changed...\" in this file.",
+      "range": {
+        "startLine": 1512,
+        "startChar": 11,
+        "endLine": 1512,
+        "endChar": 19
+      },
+      "revId": "62ba39bf19bb61809a37cf5dbd874aabc21262c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
