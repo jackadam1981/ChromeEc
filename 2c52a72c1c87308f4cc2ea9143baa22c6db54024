@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bcc3ac6_910c9ccb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-30T08:43:23Z",
+      "side": 1,
+      "message": "it would be better summary to describe\nthe improvement instead of stating the problem.",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "2c52a72c1c87308f4cc2ea9143baa22c6db54024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d674b422_b25a54ba",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-30T08:43:23Z",
+      "side": 1,
+      "message": "i think i2c_read8 returns an enum ec_error_list.\nyou\u0027ll have to compare the return value with EC_SUCCESS.\nbased on that, set db_usb_hw_pres. something like:\n\nrv \u003d i2c_read8...\ndb_usb_hw_pres \u003d (rv \u003d\u003d EC_SUCCESS)? DB_USB_PRESENT: DB_USB_NOT_PRESENT",
+      "range": {
+        "startLine": 217,
+        "startChar": 18,
+        "endLine": 217,
+        "endChar": 27
+      },
+      "revId": "2c52a72c1c87308f4cc2ea9143baa22c6db54024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "984ace8b_289640a1",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-30T08:43:23Z",
+      "side": 1,
+      "message": "you can probably rename board_detect_usb_db to board_detect_ps8815_db\nand include the\nec_cfg_usb_db_type() \u003d\u003d DB_USB3_PS8815\ncheck in that function so you don\u0027t have to repeat it all the time\nhere.",
+      "range": {
+        "startLine": 256,
+        "startChar": 5,
+        "endLine": 256,
+        "endChar": 68
+      },
+      "revId": "2c52a72c1c87308f4cc2ea9143baa22c6db54024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c814676_ba4a7d7c",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-09-30T08:43:23Z",
+      "side": 1,
+      "message": "i\u0027m not sure how early board_get_usb_pd_port_count() called.\nit may be before board_tcpc_init().\ncould you add a printf in each of these functions to see if\nboard_tcpc_init is really called before the first time\nboard_get_usb_pd_port_count is called?\n\nit looks like usbc/usb_tc_drp_acc_trysrc_sm.c:tc_state_init()\ncalls board_get_usb_pd_port_count() before board_tcpc_init()\nwhich would cause a problem.",
+      "range": {
+        "startLine": 343,
+        "startChar": 5,
+        "endLine": 343,
+        "endChar": 23
+      },
+      "revId": "2c52a72c1c87308f4cc2ea9143baa22c6db54024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
