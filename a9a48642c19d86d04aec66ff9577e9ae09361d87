@@ -185,6 +185,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae6ed766_57d03fa8",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-30T01:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d248dc20_8f10ef85",
+      "range": {
+        "startLine": 340,
+        "startChar": 25,
+        "endLine": 340,
+        "endChar": 35
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e6985a9_de67d094",
@@ -198,6 +222,30 @@
       "writtenOn": "2021-09-29T23:11:09Z",
       "side": 1,
       "message": "I\u0027m confused about the implementation.  The commit message indicates that bitbang is used for all pre-task I2C transactions.  However, this code is only enabling the I2C ports listed in i2c_bitbang_ports[].  Most boards don\u0027t even enable I2C bitbang ports, including the ADLRVP board.\n\nIs there a separate CL that enables the bitbang port(s) on ADLRVP?  I think it would be helpful to see an example usage of this feature.",
+      "range": {
+        "startLine": 344,
+        "startChar": 0,
+        "endLine": 350,
+        "endChar": 0
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e92a32a_7e0dafa6",
+        "filename": "common/i2c_bitbang.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 350,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-30T01:45:44Z",
+      "side": 1,
+      "message": "I have updated the commit as its needed on pre-task I2C ports only.\nEx: WIP CL:3194986 , will soon publish it for review",
+      "parentUuid": "0e6985a9_de67d094",
       "range": {
         "startLine": 344,
         "startChar": 0,
@@ -231,6 +279,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85fa48b2_210e1440",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-30T01:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6fd466e_96eca173",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 0
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f504b6b_5cb3f115",
@@ -244,6 +316,30 @@
       "writtenOn": "2021-09-29T23:11:09Z",
       "side": 1,
       "message": "If you make the suggested change to get_i2c_port(), then this code can be deleted.  i2c_port will point to an entry from i2c_bitbang_ports, which will have i2c_port-\u003edrv already set to \u0026bitbang_drv.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 0
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8555f7c_c2ae144f",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-30T01:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f504b6b_5cb3f115",
       "range": {
         "startLine": 144,
         "startChar": 0,
@@ -291,6 +387,54 @@
       "side": 1,
       "message": "Yes , it works without i2c_init() being called on NPCX9 EC.",
       "parentUuid": "39722849_349cef71",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 21
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4a83e21_fc413fa7",
+        "filename": "common/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-30T01:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1912c946_d6ed8de9",
+      "range": {
+        "startLine": 204,
+        "startChar": 2,
+        "endLine": 204,
+        "endChar": 21
+      },
+      "revId": "a9a48642c19d86d04aec66ff9577e9ae09361d87",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba2f802d_9227e5c9",
+        "filename": "common/main.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-09-30T01:45:44Z",
+      "side": 1,
+      "message": "Done\n\nMoved under CONFIG_I2C_CONTROLLER as this will be switched to i2C mode only if we have I2C controller",
+      "parentUuid": "1912c946_d6ed8de9",
       "range": {
         "startLine": 204,
         "startChar": 2,
