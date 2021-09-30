@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "560cb2e6_68a3142f",
+        "filename": "Makefile.rules",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-30T17:06:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8b9e1453_571aa762",
+      "range": {
+        "startLine": 241,
+        "startChar": 1,
+        "endLine": 242,
+        "endChar": 58
+      },
+      "revId": "4cff0f0df75d3d6bba0fb8b16b95de940a7d3efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58efd78f_d1555fdb",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I added it explicitly to add TODO comment.",
       "parentUuid": "58efd78f_d1555fdb",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 28
+      },
+      "revId": "4cff0f0df75d3d6bba0fb8b16b95de940a7d3efe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5ea6d07_0d9de96d",
+        "filename": "board/cr50/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-09-30T17:06:17Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d0026fa_e7bc2265",
       "range": {
         "startLine": 33,
         "startChar": 0,
