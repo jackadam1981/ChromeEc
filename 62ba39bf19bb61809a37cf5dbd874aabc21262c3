@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "444476fe_0dc6baf0",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-09-30T16:34:32Z",
+      "side": 1,
+      "message": "So, we will return EC_I2C_CONTROL_SPEED_UNKNOWN with EC_RES_SUCCESS?",
+      "range": {
+        "startLine": 1496,
+        "startChar": 2,
+        "endLine": 1496,
+        "endChar": 19
+      },
+      "revId": "62ba39bf19bb61809a37cf5dbd874aabc21262c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89089326_cadd9c28",
         "filename": "common/i2c_controller.c",
         "patchSetId": 6
