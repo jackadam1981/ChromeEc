@@ -74,7 +74,11 @@ __override void led_set_color_power(enum ec_led_colors color)
 	mt6360_led_enable(MT6360_LED_RGB1, color == EC_LED_COLOR_WHITE);
 }
 
-void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
+//ifndef CONFIG_ZEPHYR
+//struct pwm_led pwm_leds[] declare in shim/pwm_led.c
+//endif
+
+__override void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	if (led_id == EC_LED_ID_BATTERY_LED) {
 		brightness_range[EC_LED_COLOR_AMBER] =

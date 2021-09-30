@@ -50,7 +50,7 @@ BUILD_ASSERT(DT_INST_PROP_LEN(0, brightness_range) == EC_LED_COLOR_COUNT,
 static const uint8_t dt_brigthness_range[EC_LED_COLOR_COUNT] = DT_INST_PROP(
 		0, brightness_range);
 
-void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
+__overridable void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
 	/* led_id is ignored, same ranges for all LEDs */
 	memcpy(brightness_range, dt_brigthness_range,
