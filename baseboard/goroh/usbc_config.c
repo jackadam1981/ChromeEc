@@ -56,9 +56,82 @@ __overridable int board_c1_ps8818_mux_init(const struct usb_mux *me)
 __overridable int board_c1_ps8818_mux_set(const struct usb_mux *me,
 					  mux_state_t mux_state)
 {
+	int rv;
+
 	if (mux_state == USB_PD_MUX_NONE)
 		GPIO_SET_LEVEL(GPIO_EN_USB_C1_MUX_PWR, 0);
 
+	/* USB specific config */
+	if (mux_state & USB_PD_MUX_USB_ENABLED) {
+		/* Boost the USB gain */
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX1EQ_10G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_18DB);
+		if (rv)
+			return rv;
+
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX2EQ_10G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_18DB);
+		if (rv)
+			return rv;
+
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX1EQ_5G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_19DB);
+		if (rv)
+			return rv;
+
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_APTX2EQ_5G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_19DB);
+		if (rv)
+			return rv;
+	}
+
+	/* DP specific config */
+	if (mux_state & USB_PD_MUX_DP_ENABLED) {
+		/* Boost the DP gain */
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_DPEQ_LEVEL,
+					PS8818_DPEQ_LEVEL_UP_MASK,
+					PS8818_DPEQ_LEVEL_UP_19DB);
+		if (rv)
+			return rv;
+
+		/* Enable IN_HPD on the DB */
+		gpio_set_level(GPIO_USB_C1_HPD_IN, 1);
+	} else {
+		gpio_set_level(GPIO_USB_C1_HPD_IN, 0);
+	}
+
+	if (!(mux_state & USB_PD_MUX_POLARITY_INVERTED)) {
+		rv = ps8818_i2c_field_update8(me,
+					PS8818_REG_PAGE1,
+					PS8818_REG1_CRX1EQ_10G_LEVEL,
+					PS8818_EQ_LEVEL_UP_MASK,
+					PS8818_EQ_LEVEL_UP_19DB);
+		rv |= ps8818_i2c_write(me, PS8818_REG_PAGE1,
+					PS8818_REG1_APRX1_DE_LEVEL, 0x02);
+	}
+
+	/* set the RX input termination */
+	rv |= ps8818_i2c_field_update8(me,
+				PS8818_REG_PAGE1,
+				PS8818_REG1_RX_PHY,
+				PS8818_RX_INPUT_TERM_MASK,
+				PS8818_RX_INPUT_TERM_85_OHM);
+	/* set register 0x40 ICP1 for 1G PD loop */
+	rv |= ps8818_i2c_write(me, PS8818_REG_PAGE1, 0x40, 0x84);
 	return 0;
 }
 
