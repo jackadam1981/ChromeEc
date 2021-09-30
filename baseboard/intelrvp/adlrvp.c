@@ -213,6 +213,7 @@ struct ioexpander_config_t ioex_config[] = {
 		.i2c_host_port = I2C_PORT_TYPEC_0,
 		.i2c_addr_flags = I2C_ADDR_PCA9675_TCPC_AIC_IOEX,
 		.drv = &pca9675_ioexpander_drv,
+		.flags = IOEX_FLAGS_PRE_TASK_INITIALIZED,
 	},
 	[IOEX_C1_PCA9675] = {
 		.i2c_host_port = I2C_PORT_TYPEC_1,
@@ -312,8 +313,6 @@ static void board_connect_c0_sbu_deferred(void)
 	}
 }
 DECLARE_DEFERRED(board_connect_c0_sbu_deferred);
-/* Make sure SBU are routed to CCD or AUX based on CCD status at init */
-DECLARE_HOOK(HOOK_INIT, board_connect_c0_sbu_deferred, HOOK_PRIO_INIT_I2C + 2);
 
 void board_connect_c0_sbu(enum gpio_signal s)
 {
@@ -365,7 +364,6 @@ static void configure_retimer_usbmux(void)
 		break;
 	}
 }
-DECLARE_HOOK(HOOK_INIT, configure_retimer_usbmux, HOOK_PRIO_INIT_I2C + 1);
 
 /******************************************************************************/
 /* PWROK signal configuration */
@@ -447,4 +445,11 @@ __override bool board_is_tbt_usb4_port(int port)
 	}
 
 	return tbt_usb4;
+}
+
+__override void board_i2c_peripherals_init(void)
+{
+	ioex_init(IOEX_C0_PCA9675);
+	board_connect_c0_sbu_deferred();
+	configure_retimer_usbmux();
 }
