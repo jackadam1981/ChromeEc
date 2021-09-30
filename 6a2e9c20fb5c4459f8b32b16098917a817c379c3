@@ -184,6 +184,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "58cb4f96_cb3b2a02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-09-30T11:26:23Z",
+      "side": 1,
+      "message": "Have added the unit test function test_deep_charge_battery in test/sbs_charging_v2.c, Please check. Thanks",
+      "parentUuid": "686ae2e5_522d1b97",
+      "revId": "6a2e9c20fb5c4459f8b32b16098917a817c379c3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d1150c1e_afce37b8",
