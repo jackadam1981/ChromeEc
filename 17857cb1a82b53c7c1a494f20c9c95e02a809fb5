@@ -34,6 +34,24 @@
       "parentUuid": "f235d803_d0f52274",
       "revId": "17857cb1a82b53c7c1a494f20c9c95e02a809fb5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99f8135c_3d61f0de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-09-30T17:16:26Z",
+      "side": 1,
+      "message": "Examples of errors:\nprivate-cr52/common/x509.c:33:40: error: argument 4 of type \u0027const uint32_t *\u0027 {aka \u0027const unsigned int *\u0027} declared as a pointer [-Werror\u003darray-parameter\u003d]\n   33 |                        const uint32_t* salt) {\n      |                        ~~~~~~~~~~~~~~~~^~~~\nIn file included from private-cr52/common/x509.c:9:\n\nIn function \u0027ownerpin_hash\u0027,\n    inlined from \u0027ownerpin_init\u0027 at private-cr52/common/storage.c:538:12:\nprivate-cr52/common/storage.c:504:10: error: \u0027kl_derive\u0027 reading 32 bytes from a region of size 0 [-Werror\u003dstringop-overread]\n  504 |   return kl_derive(pin-\u003esalt, digest, dst);\n      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nprivate-cr52/common/storage.c: In function \u0027ownerpin_init\u0027:\nprivate-cr52/common/storage.c:504:10: note: referencing argument 1 of type \u0027const uint32_t *\u0027 {aka \u0027const unsigned int *\u0027}\nIn file included from private-cr52/common/storage.c:17:\nprivate-cr52/chip/g/kl.h:24:5: note: in a call to function \u0027kl_derive\u0027\n   24 | int kl_derive(const uint32_t salt[8], const uint32_t input[8],\n      |     ^~~~~~~~~\nIn function \u0027ownerpin_hash\u0027,\n    inlined from \u0027ownerpin_change\u0027 at private-cr52/common/storage.c:563:10:\nprivate-cr52/common/storage.c:504:10: error: \u0027kl_derive\u0027 reading 32 bytes from a region of size 0 [-Werror\u003dstringop-overread]\n  504 |   return kl_derive(pin-\u003esalt, digest, dst);\n      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nprivate-cr52/common/storage.c: In function \u0027ownerpin_change\u0027:\nprivate-cr52/common/storage.c:504:10: note: referencing argument 1 of type \u0027const uint32_t *\u0027 {aka \u0027const unsigned int *\u0027}\nIn file included from private-cr52/common/storage.c:17:\nprivate-cr52/chip/g/kl.h:24:5: note: in a call to function \u0027kl_derive\u0027\n   24 | int kl_derive(const uint32_t salt[8], const uint32_t input[8],\n      |     ^~~~~~~~~\nIn function \u0027ownerpin_hash\u0027,\n    inlined from \u0027ownerpin_check\u0027 at private-cr52/common/storage.c:655:7,\n    inlined from \u0027ownerpin_check\u0027 at private-cr52/common/storage.c:577:5:\nprivate-cr52/common/storage.c:504:10: error: \u0027kl_derive\u0027 reading 32 bytes from a region of size 0 [-Werror\u003dstringop-overread]\n  504 |   return kl_derive(pin-\u003esalt, digest, dst);\n      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nprivate-cr52/common/storage.c: In function \u0027ownerpin_check\u0027:\nprivate-cr52/common/storage.c:504:10: note: referencing argument 1 of type \u0027const uint32_t *\u0027 {aka \u0027const unsigned int *\u0027}\nIn file included from private-cr52/common/storage.c:17:\nprivate-cr52/chip/g/kl.h:24:5: note: in a call to function \u0027kl_derive\u0027\n   24 | int kl_derive(const uint32_t salt[8], const uint32_t input[8],\n      |     ^~~~~~~~~\nIn function \u0027ownerpin_check\u0027,\n    inlined from \u0027ownerpin_check\u0027 at private-cr52/common/storage.c:577:5:\nprivate-cr52/common/storage.c:660:8: error: \u0027fips_sha256_equal\u0027 reading 32 bytes from a region of size 0 [-Werror\u003dstringop-overread]\n  660 |   if (!fips_sha256_equal(hash, pin-\u003ehash)) {\n      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nprivate-cr52/common/storage.c: In function \u0027ownerpin_check\u0027:\nprivate-cr52/common/storage.c:660:8: note: referencing argument 2 of type \u0027const uint32_t *\u0027 {aka \u0027const unsigned int *\u0027}\nIn file included from private-cr52/common/storage.c:27:\nprivate-cr52/chip/g/fips/sha256.h:32:5: note: in a call to function \u0027fips_sha256_equal\u0027\n   32 | int fips_sha256_equal(const uint32_t a[SHA256_DIGEST_WORDS],\n      |     ^~~~~~~~~~~~~~~~~\ncc1: all warnings being treated as errors",
+      "parentUuid": "16908cce_033eb415",
+      "revId": "17857cb1a82b53c7c1a494f20c9c95e02a809fb5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
