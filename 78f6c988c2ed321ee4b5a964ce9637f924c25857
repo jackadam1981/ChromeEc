@@ -22,6 +22,30 @@
       },
       "revId": "78f6c988c2ed321ee4b5a964ce9637f924c25857",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4048568_7ad4c938",
+        "filename": "board/brask/i2c.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-09-30T13:57:46Z",
+      "side": 1,
+      "message": "Let me file a bug to double check the speed of these i2c buses. b/201642421",
+      "parentUuid": "0cd8a433_382973b4",
+      "range": {
+        "startLine": 25,
+        "startChar": 10,
+        "endLine": 25,
+        "endChar": 14
+      },
+      "revId": "78f6c988c2ed321ee4b5a964ce9637f924c25857",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
