@@ -40,6 +40,10 @@ struct isl923x_emul_data {
 	uint16_t manufacturer_id_reg;
 	/** Emulated device ID register */
 	uint16_t device_id_reg;
+	/** Emulated control 0 register */
+	uint16_t control_0_reg;
+	/** Emulated control 1 register */
+	uint16_t control_1_reg;
 };
 
 struct isl923x_emul_cfg {
@@ -125,6 +129,20 @@ static int isl923x_emul_read_byte(struct i2c_emul *emul, int reg, uint8_t *val,
 		else
 			*val = (uint8_t)((data->device_id_reg >> 8) & 0xff);
 		break;
+	case ISL923X_REG_CONTROL0:
+		__ASSERT_NO_MSG(bytes == 0 || bytes == 1);
+		if (bytes == 0)
+			*val = (uint8_t)(data->control_0_reg & 0xff);
+		else
+			*val = (uint8_t)((data->control_0_reg >> 8) & 0xff);
+		break;
+	case ISL923X_REG_CONTROL1:
+		__ASSERT_NO_MSG(bytes == 0 || bytes == 1);
+		if (bytes == 0)
+			*val = (uint8_t)(data->control_1_reg & 0xff);
+		else
+			*val = (uint8_t)((data->control_1_reg >> 8) & 0xff);
+		break;
 	default:
 		return -EINVAL;
 	}
@@ -164,6 +182,20 @@ static int isl923x_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 			data->adapter_current_limit2_reg = val & 0xfc;
 		else
 			data->adapter_current_limit2_reg |= (val & 0x1f) << 8;
+		break;
+	case ISL923X_REG_CONTROL0:
+		__ASSERT_NO_MSG(bytes == 1 || bytes == 2);
+		if (bytes == 1)
+			data->control_0_reg = val & 0xfe;
+		else
+			data->control_0_reg |= val << 8;
+		break;
+	case ISL923X_REG_CONTROL1:
+		__ASSERT_NO_MSG(bytes == 1 || bytes == 2);
+		if (bytes == 1)
+			data->control_1_reg = val & 0x7f;
+		else
+			data->control_1_reg |= val << 8;
 		break;
 	default:
 		return -EINVAL;
