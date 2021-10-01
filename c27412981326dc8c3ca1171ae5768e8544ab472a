@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "04452d31_bbe98af1",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-01T20:00:27Z",
+      "side": 1,
+      "message": "Sorry for the multiple replies.  Thinking about this more, you could do the following:\n\nioex_init() unconditionally sets IOEX_FLAGS_INITIALIZED (after the IOEX_FLAGS_DISABLED check).\n\nThen ioex_init_default() skips ports that have IOEX_FLAGS_INITIALIZED set.  This then only prevents the IOEX port from getting initialized by the HOOK_INIT.  Boards would be free to call ioex_init() multiple times if warranted.\n\nI also thing it could be a good cleanup to to change IOEX_FLAGS_DISABLED to IOEX_FLAGS_DEFAULT_INIT_DISABLED.  Then move the check of IOEX_FLAGS_DEFAULT_INIT_DISABLED also into ioex_init_default().  This way, all the board code can remove the explicit clear of the IOEX_FLAGS_DISABLED.  But this is outside the scope of your change.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "c27412981326dc8c3ca1171ae5768e8544ab472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5ca6022a_f104111e",
         "filename": "include/ioexpander.h",
         "patchSetId": 8
