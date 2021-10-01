@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50e7c477_1e45e738",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T19:22:33Z",
+      "side": 1,
+      "message": "Can you be more descriptive in the title? You should add something about checking power_good",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "2e9ee0a1d2207d671059389dcccccf807677a004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11c3446e_a82b6823",
         "filename": "zephyr/test/drivers/src/ln9310.c",
         "patchSetId": 9
