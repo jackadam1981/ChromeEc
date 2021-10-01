@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "015f1db1_6efb912d",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-01T04:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaea168a_17c9c304",
+      "range": {
+        "startLine": 73,
+        "startChar": 23,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6c2de9f_07b5dbd1",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-01T03:15:47Z",
       "side": 1,
       "message": "add one space.",
+      "range": {
+        "startLine": 136,
+        "startChar": 69,
+        "endLine": 136,
+        "endChar": 70
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "308994dc_cf3187f2",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-01T04:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6c2de9f_07b5dbd1",
       "range": {
         "startLine": 136,
         "startChar": 69,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baf57082_6d1728ab",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-01T04:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dbffb579_897ace1e",
+      "range": {
+        "startLine": 173,
+        "startChar": 17,
+        "endLine": 173,
+        "endChar": 19
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e3b2727_83145372",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-01T03:15:47Z",
       "side": 1,
       "message": "is this ADT_RATING_W?",
+      "range": {
+        "startLine": 175,
+        "startChar": 23,
+        "endLine": 175,
+        "endChar": 25
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40ce6157_a16711e7",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-01T04:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e3b2727_83145372",
       "range": {
         "startLine": 175,
         "startChar": 23,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f87bf8_00ab91b3",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-01T04:10:37Z",
+      "side": 1,
+      "message": "This is battery design capacity. This battery is 57Whr battery.",
+      "parentUuid": "d46b17c0_1baa67dc",
+      "range": {
+        "startLine": 179,
+        "startChar": 41,
+        "endLine": 179,
+        "endChar": 46
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6b36408_8927d98a",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-10-01T03:15:47Z",
       "side": 1,
       "message": "ADT_RATING_W + BATT_MAX_CONTINUE_DISCHARGE_WATT?",
+      "range": {
+        "startLine": 180,
+        "startChar": 18,
+        "endLine": 180,
+        "endChar": 21
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfe5e3ea_8b26a9c4",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-01T04:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6b36408_8927d98a",
       "range": {
         "startLine": 180,
         "startChar": 18,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4672c162_90bf52b2",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-01T04:10:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f5364b4_f40d2ee5",
+      "range": {
+        "startLine": 182,
+        "startChar": 23,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "64f089bf_1d576045",
@@ -202,6 +370,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfbd54eb_e0021746",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-01T04:10:37Z",
+      "side": 1,
+      "message": "I removed the 57Whr battery check, because we don\u0027t support less than 57Whr battery now.",
+      "parentUuid": "64f089bf_1d576045",
+      "range": {
+        "startLine": 185,
+        "startChar": 18,
+        "endLine": 185,
+        "endChar": 21
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec376e10_5d656810",
@@ -215,6 +407,30 @@
       "writtenOn": "2021-10-01T03:15:47Z",
       "side": 1,
       "message": "is that 10% down?",
+      "range": {
+        "startLine": 187,
+        "startChar": 23,
+        "endLine": 187,
+        "endChar": 26
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60994b9a_fd1601c2",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-01T04:10:37Z",
+      "side": 1,
+      "message": "I removed the 57Whr battery check, because we don\u0027t support less than 57Whr battery now.",
+      "parentUuid": "ec376e10_5d656810",
       "range": {
         "startLine": 187,
         "startChar": 23,
