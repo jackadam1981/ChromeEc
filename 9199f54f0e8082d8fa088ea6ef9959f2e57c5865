@@ -16,6 +16,24 @@
       "message": "I am not sure I understand why this complexity is required. Is it not possible to define a reduced set of compiler flags for the chip, and then add few extras for a certain board?",
       "revId": "9199f54f0e8082d8fa088ea6ef9959f2e57c5865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb7dc995_f8e5a269",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-01T17:22:08Z",
+      "side": 1,
+      "message": "No. Chip is loaded after Board and adds flags after it. So, chip overwrites flags that enables warnings for board.\nI could write \nTMP :\u003d $(CFLAGS_CPU)\nCFLAGS_CPU :\u003d .... $(TMP)\n\nbut it is not nice. I\u0027d prefer a cleaner way",
+      "parentUuid": "02ad2e6c_8576124d",
+      "revId": "9199f54f0e8082d8fa088ea6ef9959f2e57c5865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
