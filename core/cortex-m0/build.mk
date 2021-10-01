@@ -15,6 +15,9 @@ $(call set-option,CROSS_COMPILE,\
 CFLAGS_CPU+=-mthumb
 ifeq ($(cc-name),clang)
 CFLAGS_CPU+=-Oz		# Like -Os (and thus -O2), but reduces code size further.
+# Explicitly enable the machine outline optimization pass. This flag is
+# expected to be enabled with "-Oz" in future versions of clang.
+CFLAGS_CPU+=-moutline
 # Link compiler-rt when using clang, so clang finds the builtins it provides.
 LDFLAGS_EXTRA+=-lclang_rt.builtins-arm
 else
