@@ -16,6 +16,24 @@
       "message": "If you could remove (other) unnecessary #ifdef\u0027s, that\u0027ll be nice:\n\n  @@ -796,7 +796,6 @@ out:\n          return rv;\n   }\n \n  -#ifdef CONFIG_CHARGER_RAA489000\n   enum ec_error_list raa489000_is_acok(int chgnum, bool *acok)\n   {\n          int regval, rv;\n  @@ -916,9 +915,7 @@ void raa489000_hibernate(int chgnum, bool disable_adc)\n \n          cflush();\n   }\n  -#endif /* CONFIG_CHARGER_RAA489000 */\n \n  -#ifdef CONFIG_CHARGER_ISL9238C\n   enum ec_error_list isl9238c_hibernate(int chgnum)\n   {\n          /* Disable IMON */\n  @@ -958,7 +955,6 @@ enum ec_error_list isl9238c_resume(int chgnum)\n \n          return EC_SUCCESS;\n   }\n  -#endif /* CONFIG_CHARGER_ISL9238C */",
       "revId": "19f61563336f287e92fb9b843a2f018fcbc3e3d9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c156ed1_a7e6d2e7",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-01T22:00:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfdddd3a_65213237",
+      "revId": "19f61563336f287e92fb9b843a2f018fcbc3e3d9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
