@@ -34,6 +34,29 @@
       "parentUuid": "02ad2e6c_8576124d",
       "revId": "9199f54f0e8082d8fa088ea6ef9959f2e57c5865",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acc6ea9a_b94ad73c",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-01T17:52:35Z",
+      "side": 1,
+      "message": "this could have been assigned to a dedicated variable and used here and in line 106",
+      "range": {
+        "startLine": 141,
+        "startChar": 18,
+        "endLine": 141,
+        "endChar": 62
+      },
+      "revId": "9199f54f0e8082d8fa088ea6ef9959f2e57c5865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
