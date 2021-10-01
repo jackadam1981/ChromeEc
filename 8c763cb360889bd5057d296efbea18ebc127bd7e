@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1532360_a6eb3c10",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-01T21:44:38Z",
+      "side": 1,
+      "message": "IIRC my original intent here was that the alt mode modules would return 0 to indicate that they didn\u0027t have any more VDMs to send in whatever sequence they were doing. The DPM doesn\u0027t know how long the sequence is, so it keeps asking for the next VDM until it gets 0. I think the 0 comes from the usb_pd_alt_mode_dfp.c functions that generate the VDMs. It\u0027s probably good to decouple from that API for the sake of modernizing the policy layer.",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "8c763cb360889bd5057d296efbea18ebc127bd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d1709d0_85522670",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-01T21:44:38Z",
+      "side": 1,
+      "message": "Nit: You could just initialize vdo_count this way.",
+      "revId": "8c763cb360889bd5057d296efbea18ebc127bd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
