@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7be38e8_23e7e09c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-01T21:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50e7c477_1e45e738",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "2e9ee0a1d2207d671059389dcccccf807677a004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11c3446e_a82b6823",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-01T19:20:26Z",
       "side": 1,
       "message": "Maybe use this as both setup and teardown? Since we\u0027re running a lot of tests at the same time on the whole system, you don\u0027t know what state other tests will leave this driver in. Make sure it\u0027s reset before running your test.",
+      "range": {
+        "startLine": 60,
+        "startChar": 12,
+        "endLine": 60,
+        "endChar": 32
+      },
+      "revId": "2e9ee0a1d2207d671059389dcccccf807677a004",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53c835ba_75f2d121",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-01T21:48:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11c3446e_a82b6823",
       "range": {
         "startLine": 60,
         "startChar": 12,
