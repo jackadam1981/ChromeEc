@@ -418,6 +418,30 @@
       },
       "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2679ac37_2ca352b3",
+        "filename": "fuzz/u2f_fuzz.cc",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-10-01T02:45:37Z",
+      "side": 1,
+      "message": "In the u2f_generate case I also do u2f_sign and u2f_attest after getting the key handle returned by u2f_generate. Those calls explore the main paths. I just want to include random bytes call to u2f_sign/attests so that some other paths when the authentication don\u0027t pass will be explored too.",
+      "parentUuid": "53f6a7a8_c8cea81b",
+      "range": {
+        "startLine": 241,
+        "startChar": 3,
+        "endLine": 242,
+        "endChar": 25
+      },
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
