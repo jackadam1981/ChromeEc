@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99b2ec11_8bcd7c03",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1483403
+      },
+      "writtenOn": "2021-10-01T21:54:06Z",
+      "side": 1,
+      "message": "Why are there 2 possible values here? Is this really 2 different chips being handled by one driver? If so, we should add TODO to move these from Kconfig to dts, so that you could potentially have both revisions present in the same board.",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 20,
+        "endChar": 46
+      },
+      "revId": "122ab15ce5c5d0f7b21dabb10412479be3b852a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
