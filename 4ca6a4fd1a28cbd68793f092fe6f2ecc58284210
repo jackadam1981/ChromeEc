@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a9fc010_7c172252",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T05:11:04Z",
+      "side": 1,
+      "message": "Sure, the bitmask comes from the datasheet (will add in comment).",
+      "parentUuid": "cb04577d_a3adc76a",
+      "range": {
+        "startLine": 77,
+        "startChar": 35,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "4ca6a4fd1a28cbd68793f092fe6f2ecc58284210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8919ae5d_0bd1eb6f",
@@ -61,6 +85,30 @@
       "writtenOn": "2021-09-30T21:59:26Z",
       "side": 1,
       "message": "Use lower case here.",
+      "range": {
+        "startLine": 27,
+        "startChar": 5,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "4ca6a4fd1a28cbd68793f092fe6f2ecc58284210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ddfdc50_b529af26",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T05:11:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8919ae5d_0bd1eb6f",
       "range": {
         "startLine": 27,
         "startChar": 5,
@@ -94,6 +142,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c1f1f9c_2af9d33b",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T05:11:04Z",
+      "side": 1,
+      "message": "Wasn\u0027t sure since it was a unit, \"mv\" could be confused with \"move\". I went ahead and expanded to milli_volts",
+      "parentUuid": "dcfac13b_31176ee6",
+      "range": {
+        "startLine": 52,
+        "startChar": 23,
+        "endLine": 52,
+        "endChar": 24
+      },
+      "revId": "4ca6a4fd1a28cbd68793f092fe6f2ecc58284210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d38a6f4_a20522d2",
@@ -107,6 +179,30 @@
       "writtenOn": "2021-09-30T21:03:33Z",
       "side": 1,
       "message": "It seems non-trivial. I took me a bit of time to understand. Probably make it a special case, not in this loop.",
+      "range": {
+        "startLine": 63,
+        "startChar": 16,
+        "endLine": 63,
+        "endChar": 57
+      },
+      "revId": "4ca6a4fd1a28cbd68793f092fe6f2ecc58284210",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e73e8a58_c7cb2a4c",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T05:11:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d38a6f4_a20522d2",
       "range": {
         "startLine": 63,
         "startChar": 16,
