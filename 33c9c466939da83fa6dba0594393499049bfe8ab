@@ -70,6 +70,30 @@
       },
       "revId": "33c9c466939da83fa6dba0594393499049bfe8ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4383ae4_f1b7b6fe",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-01T19:03:10Z",
+      "side": 1,
+      "message": "I still think this can be handled by ioex_init().  But change the new flag name to IOEX_FLAGS_INITIALIZED.\n\nIOEX_FLAGS_INITIALIZED is initialized to zero for all ports.\n\nIf pre-task calls ioex_init(), the port is initialized, and the IOEX_FLAGS_INITIALIZED flag gets set.\n\nWhen ioex_init_default() is called during normal startup, ioex_init() is called on all ports unconditionally.  ioex_init() returns EC_SUCCESS for any ports initialized during pre-task.\n\nThis way, the board code only needs to call ioex_init() for the ports it needs, and the board code doesn\u0027t also have to also set IOEX_FLAGS_PRE_TASK_INITIALIZED flag.",
+      "parentUuid": "a7429bd1_05ee0964",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 61
+      },
+      "revId": "33c9c466939da83fa6dba0594393499049bfe8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
