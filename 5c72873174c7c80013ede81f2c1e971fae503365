@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e95e37_603dc78e",
+        "filename": "board/cr50/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T02:23:09Z",
+      "side": 1,
+      "message": "isn\u0027t it 6, not 7?\n\nany chance we can somehow make sure that we don\u0027t call it more times than we allocated the memory for?\n\ncan we have a variable for tracking offset and eventually assert that it is less than what we passed to alloca()? hopefully, the compiler can optimize it out.\n\nanother approach is to have a macro that does alloca and bn_init for the same size and call it 6 times. a bit less efficient, but lower chance to make a mistake. (and maybe the compiler can optimize out those consecutive separate alloca()s).\n\ne.g.\n#define bn_alloc_init(name, size) \\\n  uint8_t *buffer_##name \u003d alloca(size); \\\n  bn_init(\u0026name, buffer_##name, size);\n  \nor even\n#define bn_alloc_init(ptr, size) bn_init(ptr, alloca(size), size)\neven though size is calculated twice.",
+      "range": {
+        "startLine": 826,
+        "startChar": 27,
+        "endLine": 826,
+        "endChar": 28
+      },
+      "revId": "5c72873174c7c80013ede81f2c1e971fae503365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c25afd83_5f8b8f66",
+        "filename": "board/cr50/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1202,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T02:23:09Z",
+      "side": 1,
+      "message": "less important here, but maybe also have a macro that combines alloca and DCRYPTO_bn_wrap",
+      "range": {
+        "startLine": 1202,
+        "startChar": 1,
+        "endLine": 1202,
+        "endChar": 28
+      },
+      "revId": "5c72873174c7c80013ede81f2c1e971fae503365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
