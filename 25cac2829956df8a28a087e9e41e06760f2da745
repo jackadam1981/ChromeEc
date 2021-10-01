@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "693fabee_4b6db209",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-01T20:56:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "27d71f46_b91bc68a",
+      "range": {
+        "startLine": 114,
+        "startChar": 7,
+        "endLine": 114,
+        "endChar": 11
+      },
+      "revId": "25cac2829956df8a28a087e9e41e06760f2da745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a79c9e0c_db8280cd",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "I think it is more clear to know a function returns a value and you are explicitly ignoring it rather than the reader not knowing if you are not using it or you forgot to use it.",
       "parentUuid": "a79c9e0c_db8280cd",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 139,
+        "endChar": 8
+      },
+      "revId": "25cac2829956df8a28a087e9e41e06760f2da745",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60d890d5_29d31aa0",
+        "filename": "common/usbc/usb_pd_timer.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-01T20:56:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "745d88f0_2c8c5527",
       "range": {
         "startLine": 139,
         "startChar": 2,
