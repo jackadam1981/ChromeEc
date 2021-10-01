@@ -164,6 +164,64 @@
       },
       "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d1890f6_5194672b",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-01T21:27:03Z",
+      "side": 1,
+      "message": "Nit: We usually indent C and CPP independently.",
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91514eb2_1aca2b12",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-01T21:27:03Z",
+      "side": 1,
+      "message": "With one queue per port, would you be able to get rid of the muxing?",
+      "parentUuid": "c7e6b8d2_45a0b38b",
+      "range": {
+        "startLine": 93,
+        "startChar": 27,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f91dee86_1d65b5f0",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-01T21:27:03Z",
+      "side": 1,
+      "message": "Not necessarily asking for a change, but is there an advantage to the peek/lock/advance/unlock pattern here vs lock/remove/unlock? According to the comments for QUEUE_ADD_UNITS, queue_remove_unit might be faster here.",
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
