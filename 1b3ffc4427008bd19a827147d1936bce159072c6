@@ -16,6 +16,29 @@
       "message": "I\u0027m marking this as verified because I\u0027ve tested this in software but without taking a board and swapping out resistors I\u0027m not sure there\u0027s another way to verify other than looking at the datasheet.",
       "revId": "1b3ffc4427008bd19a827147d1936bce159072c6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20ecb667_ade775be",
+        "filename": "driver/charger/isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-01T21:42:37Z",
+      "side": 1,
+      "message": "I\u0027m not sure this statement is accurate.  The rev 1.00 data for the ISL9238 specifies \"By using the recommended current sense resistor values, the LSB of the register (bit 7) always translate to 128 mA\".\n\nI interpret this to mean that if the design uses an AC sense register different than 20 mohm, that the LSB value will also change.\n\nIt might make sense to open a bug with Renesas to get clarity on this.",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 0
+      },
+      "revId": "1b3ffc4427008bd19a827147d1936bce159072c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
