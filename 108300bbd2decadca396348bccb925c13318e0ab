@@ -33,6 +33,23 @@
       "message": "Looks like the Zephyr build for hayato is failing:\n\nERROR: [/tmp/zbuild-ist5m_we-hayato:ro]/mnt/host/source/src/platform/ec/zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c: In function \u0027cros_kb_raw_ite_read_row\u0027:\nERROR: [/tmp/zbuild-ist5m_we-hayato:ro]/mnt/host/source/src/platform/ec/zephyr/drivers/cros_kb_raw/cros_kb_raw_ite.c:65:15: error: dereferencing pointer to incomplete type \u0027struct kscan_it8xxx2_regs\u0027\nERROR: [/tmp/zbuild-ist5m_we-hayato:ro]  return ((inst-\u003eKBS_KSI) ^ 0xff);\nERROR: [/tmp/zbuild-ist5m_we-hayato:ro]               ^~\n",
       "revId": "108300bbd2decadca396348bccb925c13318e0ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd1bc93_44c2e926",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-10-01T03:06:57Z",
+      "side": 1,
+      "message": "I find that CQ builds with chromeos-v2.7, and the kscan and relation CLs haven\u0027t cherry-picked into chromeos-v2.7, so it shows the error, but building with chromeos-v2.6 is fine.",
+      "revId": "108300bbd2decadca396348bccb925c13318e0ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
