@@ -16,6 +16,40 @@
       "message": "Li and Divya, I cc\u0027d you here since there are a fair number of changes to the inner-workings of the TBT stack.  I\u0027ve tested with a TBT dock (passive cable) on voxel, but if there are additional conditions you\u0027d like to test before this is submitted, let me know.  This CL is designed to work both with boards that have configured mux tasks, and boards that haven\u0027t, and I\u0027ve tested both cases on voxel. ",
       "revId": "3025ded7e69dd16e6c0b8598195c9055f875dc73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7893834d_e8e3fd5d",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-01T22:41:41Z",
+      "side": 1,
+      "message": "Good catch.",
+      "revId": "3025ded7e69dd16e6c0b8598195c9055f875dc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "121381a7_9befe4d1",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-01T22:41:41Z",
+      "side": 1,
+      "message": "It seems like this state, when we construct the exit VDM, should be \"exit SOP,\" and the previous one where we set safe mode should be \"prepare to exit.\"\n\nI think the current arrangement is replicated in the other \"prepare\" states as well. Sorry to be tedious about this. I know I did it to myself this time.",
+      "revId": "3025ded7e69dd16e6c0b8598195c9055f875dc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
