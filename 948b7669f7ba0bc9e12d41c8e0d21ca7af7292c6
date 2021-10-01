@@ -24,6 +24,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0e8516b_e1774798",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T18:06:19Z",
+      "side": 1,
+      "message": "Done\n\nAlso moved to i2c_bitbang.h",
+      "parentUuid": "25cba2cc_9a4cfc9c",
+      "range": {
+        "startLine": 608,
+        "startChar": 1,
+        "endLine": 609,
+        "endChar": 1
+      },
+      "revId": "948b7669f7ba0bc9e12d41c8e0d21ca7af7292c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a11a7a2_7dd3f730",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T18:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25cba2cc_9a4cfc9c",
+      "range": {
+        "startLine": 608,
+        "startChar": 1,
+        "endLine": 609,
+        "endChar": 1
+      },
+      "revId": "948b7669f7ba0bc9e12d41c8e0d21ca7af7292c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b212412c_b97835c7",
@@ -37,6 +85,54 @@
       "writtenOn": "2021-10-01T16:59:38Z",
       "side": 1,
       "message": "I recommend naming \"board_pre_task_i2c_init()\" or \"board_pre_task_i2c_peripheral_init()\" to make this more obvious that this run before tasking is available.",
+      "range": {
+        "startLine": 613,
+        "startChar": 22,
+        "endLine": 613,
+        "endChar": 48
+      },
+      "revId": "948b7669f7ba0bc9e12d41c8e0d21ca7af7292c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbd7650e_53b0c61d",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T18:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b212412c_b97835c7",
+      "range": {
+        "startLine": 613,
+        "startChar": 22,
+        "endLine": 613,
+        "endChar": 48
+      },
+      "revId": "948b7669f7ba0bc9e12d41c8e0d21ca7af7292c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5a55ce0_0475b8bb",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T18:06:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b212412c_b97835c7",
       "range": {
         "startLine": 613,
         "startChar": 22,
