@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "682dc37c_54127cbf",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T20:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d76178f3_b223a0dd",
+      "revId": "c27412981326dc8c3ca1171ae5768e8544ab472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04452d31_bbe98af1",
@@ -41,6 +59,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f91ccf96_bd51c721",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T20:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "04452d31_bbe98af1",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "c27412981326dc8c3ca1171ae5768e8544ab472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12c90fa4_073b7207",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T20:55:13Z",
+      "side": 1,
+      "message": "Done\nsubmitted WIP CL:3200063",
+      "parentUuid": "04452d31_bbe98af1",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 0
+      },
+      "revId": "c27412981326dc8c3ca1171ae5768e8544ab472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ca6022a_f104111e",
@@ -54,6 +120,30 @@
       "writtenOn": "2021-10-01T19:40:20Z",
       "side": 1,
       "message": "\"IO Expander has been initialized\"",
+      "range": {
+        "startLine": 59,
+        "startChar": 3,
+        "endLine": 59,
+        "endChar": 45
+      },
+      "revId": "c27412981326dc8c3ca1171ae5768e8544ab472a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31b3ae99_17289dee",
+        "filename": "include/ioexpander.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T20:55:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ca6022a_f104111e",
       "range": {
         "startLine": 59,
         "startChar": 3,
