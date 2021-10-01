@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cddfa903_652ca70d",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-01T01:50:37Z",
+      "side": 1,
+      "message": "ah, just an unconventional order for specifying the storage class.\ndidn\u0027t think that would parse 😊\n\napparently dates back to 2014 (chromium:210533).",
+      "parentUuid": "198d397d_888fdc3b",
+      "range": {
+        "startLine": 78,
+        "startChar": 25,
+        "endLine": 78,
+        "endChar": 58
+      },
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5f7e72ee_83a75e5a",
