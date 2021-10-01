@@ -94,6 +94,30 @@
       },
       "revId": "33c9c466939da83fa6dba0594393499049bfe8ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd707b04_86398b00",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T19:39:02Z",
+      "side": 1,
+      "message": "Done\n\nMoved the flag out of ioex_config array declaration \nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3194986/4/baseboard/intelrvp/adlrvp.c#453",
+      "parentUuid": "bcac1cb1_bb9b7d38",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 61
+      },
+      "revId": "33c9c466939da83fa6dba0594393499049bfe8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
