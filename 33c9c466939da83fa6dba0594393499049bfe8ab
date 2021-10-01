@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bcac1cb1_bb9b7d38",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-01T17:04:19Z",
+      "side": 1,
+      "message": "Where is this flag set?  Is the board code expected to set this? \n\nIf the board code calls ioex_init() directly, I recommend to just guarding inside ioex_init().\n\nint ioex_init() {\n    if (ioex_config[i].flags \u0026 IOEX_FLAGS_PRE_TASK_INITIALIZED)\n        return EC_SUCCESS;\n    ioex_config[i].flags |\u003d IOEX_FLAGS_PRE_TASK_INITIALIZED;",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 61
+      },
+      "revId": "33c9c466939da83fa6dba0594393499049bfe8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
