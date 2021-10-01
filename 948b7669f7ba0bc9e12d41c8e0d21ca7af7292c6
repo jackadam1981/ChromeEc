@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25cba2cc_9a4cfc9c",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 609,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-01T16:59:38Z",
+      "side": 1,
+      "message": "Add a comment that this requires CONFIG_I2C_BITBANG.",
+      "range": {
+        "startLine": 608,
+        "startChar": 1,
+        "endLine": 609,
+        "endChar": 1
+      },
+      "revId": "948b7669f7ba0bc9e12d41c8e0d21ca7af7292c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b212412c_b97835c7",
+        "filename": "include/i2c.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 613,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-01T16:59:38Z",
+      "side": 1,
+      "message": "I recommend naming \"board_pre_task_i2c_init()\" or \"board_pre_task_i2c_peripheral_init()\" to make this more obvious that this run before tasking is available.",
+      "range": {
+        "startLine": 613,
+        "startChar": 22,
+        "endLine": 613,
+        "endChar": 48
+      },
+      "revId": "948b7669f7ba0bc9e12d41c8e0d21ca7af7292c6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
