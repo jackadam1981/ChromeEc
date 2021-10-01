@@ -295,6 +295,7 @@
 #undef CONFIG_CMD_MD
 #undef CONFIG_CMD_POWERINDEBUG
 #undef CONFIG_CMD_TIMERINFO
+#undef CONFIG_CMD_FLASH_WP
 
 /* save space at RO image */
 #ifdef SECTION_IS_RO
