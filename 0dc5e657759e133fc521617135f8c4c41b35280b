@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5600f13_bccd9e16",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:52:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ec3c89e_0d478df5",
+      "range": {
+        "startLine": 409,
+        "startChar": 36,
+        "endLine": 409,
+        "endChar": 38
+      },
+      "revId": "0dc5e657759e133fc521617135f8c4c41b35280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5d42bbf9_a263e71b",
@@ -196,6 +220,30 @@
       "side": 1,
       "message": "good point, shared_mem_release() should be called only in case total_read_count is non zero, I added the check.\n\nI can rearrange the code if you insist, but I really am trying to avoid code duplication to keep the code size addition to the minimum. Also, it seems to me that the complexity of handling write and then read will still be there in process_write_read_request().\n\nCan you take a look at the result and see that maybe it is clear enough now?",
       "parentUuid": "ead65bda_ca88edce",
+      "range": {
+        "startLine": 644,
+        "startChar": 4,
+        "endLine": 644,
+        "endChar": 22
+      },
+      "revId": "0dc5e657759e133fc521617135f8c4c41b35280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19344555_ec6295b3",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:52:25Z",
+      "side": 1,
+      "message": "yes, looks like now the logic is correct.\n\nI still feel it deserves the refactoring I mentioned above. it may even result in a smaller code since on one hand we add an extra check (and possibly function call, though likely the compiler will inline it since it\u0027s the only place where process_write_read_request() and process_pure_write_request() will be used), but on the other we remove multiple ifs along the way (when we decide if it\u0027s possible that it is a last transaction or check if we total_read_count was \u003e 0 and we need to shared_mem_release(). so, the results should be at least close (if not better in a separate case) both in code size and performance. but the difference in readability will be significant.\n\nbut I\u0027m ok to land this as-is and consider the refactoring separately.",
+      "parentUuid": "bc1108a3_74fa2ace",
       "range": {
         "startLine": 644,
         "startChar": 4,

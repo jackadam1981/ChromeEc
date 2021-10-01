@@ -16,6 +16,46 @@
       "message": "I did some basic read and write tests, I\u0027ll test more thoroughly is we agree that this is a good compromize.",
       "revId": "309723c5025e4cbcd55e77bae17cc0e891ad5181",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8cd1018c_962a38ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:52:25Z",
+      "side": 1,
+      "message": "+2, see notes",
+      "revId": "309723c5025e4cbcd55e77bae17cc0e891ad5181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e609550a_c624749c",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:52:25Z",
+      "side": 1,
+      "message": "ack, though I must admit it took me another minute to realize that for pure write transactions, which can be bigger than START_PAYLOAD_SIZE we never spin in this loop and go to raiden_state \u003d RAIDEN_WRITING instead.",
+      "range": {
+        "startLine": 638,
+        "startChar": 3,
+        "endLine": 640,
+        "endChar": 56
+      },
+      "revId": "309723c5025e4cbcd55e77bae17cc0e891ad5181",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
