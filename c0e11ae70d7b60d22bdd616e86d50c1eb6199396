@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc250796_4f00625e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-10-01T09:48:17Z",
+      "side": 1,
+      "message": "RW too big? Remove debug log to save some space.\n\narm-eabi/bin/ld: section .padding LMA [000000000803ffff,000000000803ffff] overlaps section .image.RW LMA [000000000801f000,000000000803ffff]\ncollect2: error: ld returned 1 exit status\nmake[2]: *** [Makefile.rules:508: build/krane/ec.obj] Error 1\nmake[1]: *** [Makefile.rules:254: proj-krane] Error 2",
+      "revId": "c0e11ae70d7b60d22bdd616e86d50c1eb6199396",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
