@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0d1dce9_d8f60d18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-10-01T07:43:06Z",
+      "side": 1,
+      "message": "zephyr test failed:\n START - test_bmi_acc_set_range\n Building C object modules/ec/shim/chip/npcx/npcx_monitor/CMakeFiles/npcx_monitor.dir/npcx_monitor.c.obj\n Linking C executable modules/ec/shim/chip/npcx/npcx_monitor/npcx_monitor.elf\n    Assertion failed at CMAKE_SOURCE_DIR/src/bmi260.c:454: check_set_acc_range_f: (exp_range_reg not equal to range_reg)\n Expected range reg 0x0, got 0x3; line 490\n FAIL - test_bmi_acc_set_range in 0.60 seconds",
+      "revId": "ea053832c3001e0edbc5cb60d80fb57c4d84f792",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
