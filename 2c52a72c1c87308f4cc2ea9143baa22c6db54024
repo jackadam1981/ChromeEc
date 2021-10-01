@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "795201ce_041e3811",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 15
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-10-01T13:07:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8bcc3ac6_910c9ccb",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 47
+      },
+      "revId": "2c52a72c1c87308f4cc2ea9143baa22c6db54024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d674b422_b25a54ba",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfcc4cce_4ab808ec",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-10-01T13:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d674b422_b25a54ba",
+      "range": {
+        "startLine": 217,
+        "startChar": 18,
+        "endLine": 217,
+        "endChar": 27
+      },
+      "revId": "2c52a72c1c87308f4cc2ea9143baa22c6db54024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "984ace8b_289640a1",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-09-30T08:43:23Z",
       "side": 1,
       "message": "you can probably rename board_detect_usb_db to board_detect_ps8815_db\nand include the\nec_cfg_usb_db_type() \u003d\u003d DB_USB3_PS8815\ncheck in that function so you don\u0027t have to repeat it all the time\nhere.",
+      "range": {
+        "startLine": 256,
+        "startChar": 5,
+        "endLine": 256,
+        "endChar": 68
+      },
+      "revId": "2c52a72c1c87308f4cc2ea9143baa22c6db54024",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd1a597e_598f2731",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-10-01T13:07:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "984ace8b_289640a1",
       "range": {
         "startLine": 256,
         "startChar": 5,
