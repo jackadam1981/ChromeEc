@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "867f1e34_1b761ae0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:12:25Z",
+      "side": 1,
+      "message": "4) fixed the approach taken by fips_aes256_kat() - to test the negative path, corrupt the encrypted value instead of returning an error",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 2
+      },
+      "revId": "5fb1a6ffe880e3b502eaff7b9794c8a22278cc36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd34cde9_3d62d7f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:12:25Z",
+      "side": 1,
+      "message": "+2 with nits",
+      "revId": "5fb1a6ffe880e3b502eaff7b9794c8a22278cc36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75be9bd4_736f6dc6",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:12:25Z",
+      "side": 1,
+      "message": "nit: would move this after the switch since it\u0027s always the same call for all valid modes",
+      "range": {
+        "startLine": 68,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 22
+      },
+      "revId": "5fb1a6ffe880e3b502eaff7b9794c8a22278cc36",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
