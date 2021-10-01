@@ -22,6 +22,30 @@
       },
       "revId": "7610ab5c494311e4df384f4e8001747f9be5cf2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15478294_daa6a238",
+        "filename": "zephyr/shim/src/flash.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-10-01T16:33:47Z",
+      "side": 1,
+      "message": "You\u0027re right, it may be a good idea to wrap it in ifdef",
+      "parentUuid": "79e213ed_317a4924",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 0
+      },
+      "revId": "7610ab5c494311e4df384f4e8001747f9be5cf2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
