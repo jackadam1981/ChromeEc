@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02ad2e6c_8576124d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-01T15:28:05Z",
+      "side": 1,
+      "message": "I am not sure I understand why this complexity is required. Is it not possible to define a reduced set of compiler flags for the chip, and then add few extras for a certain board?",
+      "revId": "9199f54f0e8082d8fa088ea6ef9959f2e57c5865",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
