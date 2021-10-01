@@ -16,6 +16,213 @@
       "message": "Hi Caveh, can you help to review this CL? Thank you.",
       "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aaea168a_17c9c304",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-01T03:15:47Z",
+      "side": 1,
+      "message": "please add a comment that you\u0027re sign-extending\nthe returned 16-bit signed value.",
+      "range": {
+        "startLine": 73,
+        "startChar": 23,
+        "endLine": 73,
+        "endChar": 32
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c2de9f_07b5dbd1",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-01T03:15:47Z",
+      "side": 1,
+      "message": "add one space.",
+      "range": {
+        "startLine": 136,
+        "startChar": 69,
+        "endLine": 136,
+        "endChar": 70
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbffb579_897ace1e",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-01T03:15:47Z",
+      "side": 1,
+      "message": "ADT_RATING_W + 5%?",
+      "range": {
+        "startLine": 173,
+        "startChar": 17,
+        "endLine": 173,
+        "endChar": 19
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e3b2727_83145372",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-01T03:15:47Z",
+      "side": 1,
+      "message": "is this ADT_RATING_W?",
+      "range": {
+        "startLine": 175,
+        "startChar": 23,
+        "endLine": 175,
+        "endChar": 25
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d46b17c0_1baa67dc",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-01T03:15:47Z",
+      "side": 1,
+      "message": "ADT_RATING_W - 5%, in mW?",
+      "range": {
+        "startLine": 179,
+        "startChar": 41,
+        "endLine": 179,
+        "endChar": 46
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f6b36408_8927d98a",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-01T03:15:47Z",
+      "side": 1,
+      "message": "ADT_RATING_W + BATT_MAX_CONTINUE_DISCHARGE_WATT?",
+      "range": {
+        "startLine": 180,
+        "startChar": 18,
+        "endLine": 180,
+        "endChar": 21
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f5364b4_f40d2ee5",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-01T03:15:47Z",
+      "side": 1,
+      "message": "more or less\n(ADT_RATING_W + BATT_MAX_CONTINUE_DISCHARGE_WATT) - 5%?",
+      "range": {
+        "startLine": 182,
+        "startChar": 23,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64f089bf_1d576045",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-01T03:15:47Z",
+      "side": 1,
+      "message": "(ADT_RATING_W + BATT_MAX_CONTINUE_DISCHARGE_WATT) - 5%?",
+      "range": {
+        "startLine": 185,
+        "startChar": 18,
+        "endLine": 185,
+        "endChar": 21
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec376e10_5d656810",
+        "filename": "board/primus/prochot.c",
+        "patchSetId": 27
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-01T03:15:47Z",
+      "side": 1,
+      "message": "is that 10% down?",
+      "range": {
+        "startLine": 187,
+        "startChar": 23,
+        "endLine": 187,
+        "endChar": 26
+      },
+      "revId": "eaf856c60b84892e09ad5c73d48f5e4c38b6d83c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
