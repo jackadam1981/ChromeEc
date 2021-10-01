@@ -16,6 +16,24 @@
       "message": "Hi Caveh,\nDo you think it is the timing to land this CL?\n\nAdd Rob and Raul to review it as early Guybrush board should also use ES1 chip. ",
       "revId": "1ade75d0a7f26edf6ad3934116ba13f47216d127",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e8fd5c6_b3705758",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-01T01:16:26Z",
+      "side": 1,
+      "message": "unfortunately, not. we are still using a lot of npcx9 ES1 boards.",
+      "parentUuid": "941ff1dd_4973c594",
+      "revId": "1ade75d0a7f26edf6ad3934116ba13f47216d127",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
