@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a164295_7aac9ce5",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T06:34:24Z",
+      "side": 1,
+      "message": "nit: prefix all of these with FUNCTIONAL_MODE_ and use all caps as per style guide.",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 30,
+        "endChar": 8
+      },
+      "revId": "861a9e523d124164f3b71e1c2420cac07bca70a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f753ac25_c8229629",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T06:34:24Z",
+      "side": 1,
+      "message": "nit: combine into 1\n\n__ASSERT(0, \"Unrecognized mode\");",
+      "range": {
+        "startLine": 151,
+        "startChar": 2,
+        "endLine": 152,
+        "endChar": 21
+      },
+      "revId": "861a9e523d124164f3b71e1c2420cac07bca70a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77a0e64a_bfc36c76",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T06:34:24Z",
+      "side": 1,
+      "message": "nit: zephyr includes should be in \u003c\u003e",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 25
+      },
+      "revId": "861a9e523d124164f3b71e1c2420cac07bca70a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f55c26_40ff2e7b",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T06:34:24Z",
+      "side": 1,
+      "message": "Replace with ztest_unit_test_setup_teardown and call ln9310_reset_to_initial_state() from the setup function.",
+      "range": {
+        "startLine": 65,
+        "startChar": 2,
+        "endLine": 65,
+        "endChar": 17
+      },
+      "revId": "861a9e523d124164f3b71e1c2420cac07bca70a4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
