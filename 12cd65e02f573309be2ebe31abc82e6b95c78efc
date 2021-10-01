@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c04c5e_1f91c886",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-01T18:51:58Z",
+      "side": 1,
+      "message": "Policy struct to identify if the node for this power_state depends on chflags and chipset_state",
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38cd162a_4626f573",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-01T18:51:58Z",
+      "side": 1,
+      "message": "Actual led values set during init and used during runtime.",
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5236c31_c3d8bd7d",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-01T18:51:58Z",
+      "side": 1,
+      "message": "I am not sure how to set color_2 and color_3 values in this Macro as I need to set those only if color_2 and color_3 nodes exist.\n\nOption 1:\nif (DT_NODE_EXISTS(DT_CHILD(id, color_2))) {\n    led_values[CHARGE_STATE(id)][CHIPSET_STATE(id)].color_2 \u003d \n            COLOR(id, color_2);\n} -\u003e This still tries to look for color_2 child node for each node ID, so the build fails\n\nOption 2:\n#if (DT_NODE_EXISTS(DT_CHILD(id, color_2))\n    led_values[CHARGE_STATE(id)][CHIPSET_STATE(id)].color_2 \u003d \n            COLOR(id, color_2);\n#endif -\u003e This still fails as it is not allowing #ifdefs within macro.\n\nOption 3: \nCODE_COND_1(DT_NODE_EXISTS(DT_CHILD(id, color_2), \n            led_values[CHARGE_STATE(id)][CHIPSET_STATE(id)].color_2 \u003d \n            COLOR(id, color_2), \n            ())\n-\u003e The build for this also fails",
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e36ff91_cd827e2d",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-01T18:51:58Z",
+      "side": 1,
+      "message": "Since this is applicable only to PWR_STATE_IDLE, should we remove chflags_enabled from policy and instead directly use: if (pwr_state \u003d\u003d PWR_STATE_IDLE) {....",
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
