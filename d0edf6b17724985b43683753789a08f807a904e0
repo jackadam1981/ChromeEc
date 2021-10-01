@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "50ea110e_bc3929ae",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T17:35:55Z",
+      "side": 1,
+      "message": "I\u0027ve started looking at that and the answer is \"not without some changes to the driver\". For now I\u0027ve been focusing on getting the Herobrine coverage number up. I can open a ticket as a TODO to enable this test for all chargers if you\u0027d like.",
+      "parentUuid": "1ee44c5b_6d465d3f",
+      "revId": "d0edf6b17724985b43683753789a08f807a904e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0de9cd82_3a251090",
         "filename": "zephyr/emul/emul_isl923x.c",
         "patchSetId": 1
