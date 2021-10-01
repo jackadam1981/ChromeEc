@@ -266,9 +266,9 @@ void exception_panic(void)
 		"ldr r1, [r3, #6*4]\n" /* retrieve exception PC */
 		"ldr r2, [r3, #5*4]\n" /* retrieve exception LR */
 		"bl debug_printf\n"
+		"bl cpu_reset\n"
 	: : "r"("PANIC PC=%08x LR=%08x\n\n"));
 #endif
-	cpu_reset();
 }
 
 void panic_reboot(void)
