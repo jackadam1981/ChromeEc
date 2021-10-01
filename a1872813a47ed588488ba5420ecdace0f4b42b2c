@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f94e1c2_2b018700",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-01T20:31:44Z",
+      "side": 1,
+      "message": "I would leave some values defined here and use them. For example an identity matrix\n```\n{ 1, 0, 0},\n{ 0, 1, 0},\n{ 0, 0, 1}\n```\nLater fix it with calibration, applying b/201504044",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 5
+      },
+      "revId": "a1872813a47ed588488ba5420ecdace0f4b42b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
