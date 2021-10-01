@@ -17,6 +17,12 @@
  */
 #define TEST_DELAY_MS 50
 
+/*
+ * Chip revisions below LN9310_BC_STS_C_CHIP_REV_FIXED require an alternative
+ * software startup to properly initialize and power up.
+ */
+#define REQUIRES_SOFTWARE_STARTUP_CHIP_REV (LN9310_BC_STS_C_CHIP_REV_FIXED - 1)
+
 static void test_ln9310_2s_powers_up(void)
 {
 	const struct emul *emulator =
@@ -32,6 +38,7 @@ static void test_ln9310_2s_powers_up(void)
 	zassert_ok(ln9310_init(), NULL);
 	zassert_true(ln9310_emul_is_init(emulator), NULL);
 
+	/* TODO(b/201420132) */
 	k_msleep(TEST_DELAY_MS);
 
 	zassert_true(ln9310_power_good(), NULL);
@@ -52,9 +59,74 @@ static void test_ln9310_3s_powers_up(void)
 	zassert_ok(ln9310_init(), NULL);
 	zassert_true(ln9310_emul_is_init(emulator), NULL);
 
+	/* TODO(b/201420132) */
 	k_msleep(TEST_DELAY_MS);
 
 	zassert_true(ln9310_power_good(), NULL);
+}
+
+static void test_ln9310_2s_software_enable(void)
+{
+	const struct emul *emulator =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
+
+	zassert_not_null(emulator, NULL);
+
+	ln9310_emul_set_context(emulator);
+	ln9310_emul_reset(emulator);
+	ln9310_emul_set_battery_cell_type(emulator, BATTERY_CELL_TYPE_2S);
+	ln9310_emul_set_version(emulator, REQUIRES_SOFTWARE_STARTUP_CHIP_REV);
+
+	zassert_ok(ln9310_init(), NULL);
+	zassert_true(ln9310_emul_is_init(emulator), NULL);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+
+	zassert_false(ln9310_power_good(), NULL);
+	ln9310_software_enable(1);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_true(ln9310_power_good(), NULL);
+
+	ln9310_software_enable(0);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
+}
+
+static void test_ln9310_3s_software_enable(void)
+{
+	const struct emul *emulator =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
+
+	zassert_not_null(emulator, NULL);
+
+	ln9310_emul_set_context(emulator);
+	ln9310_emul_reset(emulator);
+	ln9310_emul_set_battery_cell_type(emulator, BATTERY_CELL_TYPE_3S);
+	ln9310_emul_set_version(emulator, REQUIRES_SOFTWARE_STARTUP_CHIP_REV);
+
+	zassert_ok(ln9310_init(), NULL);
+	zassert_true(ln9310_emul_is_init(emulator), NULL);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
+
+	ln9310_software_enable(1);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_true(ln9310_power_good(), NULL);
+
+	ln9310_software_enable(0);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
 }
 
 static void reset_ln9310_state(void)
@@ -70,6 +142,12 @@ void test_suite_ln9310(void)
 					       reset_ln9310_state,
 					       reset_ln9310_state),
 		ztest_unit_test_setup_teardown(test_ln9310_3s_powers_up,
+					       reset_ln9310_state,
+					       reset_ln9310_state),
+		ztest_unit_test_setup_teardown(test_ln9310_2s_software_enable,
+					       reset_ln9310_state,
+					       reset_ln9310_state),
+		ztest_unit_test_setup_teardown(test_ln9310_3s_software_enable,
 					       reset_ln9310_state,
 					       reset_ln9310_state));
 	ztest_run_test_suite(ln9310);
