@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ed164c18_ece07162",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T06:38:10Z",
+      "side": 1,
+      "message": "Same here, mode to setup function",
+      "range": {
+        "startLine": 65,
+        "startChar": 1,
+        "endLine": 65,
+        "endChar": 30
+      },
+      "revId": "0f236304f6e80fb7b706cfb634f8fc5aa19e40f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ed09c4b_79f3ebf5",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T06:38:10Z",
+      "side": 1,
+      "message": "move to teardown function",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 87,
+        "endChar": 23
+      },
+      "revId": "0f236304f6e80fb7b706cfb634f8fc5aa19e40f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a9e2b86_6bdd7180",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-01T06:38:10Z",
+      "side": 1,
+      "message": "Don\u0027t forget to run test_ln9310_3s_software_enable",
+      "range": {
+        "startLine": 123,
+        "startChar": 2,
+        "endLine": 123,
+        "endChar": 49
+      },
+      "revId": "0f236304f6e80fb7b706cfb634f8fc5aa19e40f4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
