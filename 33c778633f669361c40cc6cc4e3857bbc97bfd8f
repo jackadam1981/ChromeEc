@@ -152,6 +152,30 @@
       },
       "revId": "33c778633f669361c40cc6cc4e3857bbc97bfd8f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88496668_90e76a49",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-01T02:34:39Z",
+      "side": 1,
+      "message": "there already is a config for enforcing the minimum heap size: CONFIG_SHAREDMEM_MINIMUM_SIZE\n\nI added a declaration for Cr50 to set it to 5500 bytes, which seems reasonable from the experience (right now we have more than 6k), and added a build assert to verify that this SPI buffer does not take more than half of that.\n\nBtw, the build result string reports a wrong number, this is a separate problem.",
+      "parentUuid": "cc425e13_7af4de77",
+      "range": {
+        "startLine": 531,
+        "startChar": 6,
+        "endLine": 531,
+        "endChar": 44
+      },
+      "revId": "33c778633f669361c40cc6cc4e3857bbc97bfd8f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }

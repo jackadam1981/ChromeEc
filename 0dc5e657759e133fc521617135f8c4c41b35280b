@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ec3c89e_0d478df5",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-01T02:34:39Z",
+      "side": 1,
+      "message": "34 allows to send 2040 bytes of flash chip contents in one PDU, seems a nice number close to 2K bytes, let me update the above comment to make this clearer.",
+      "parentUuid": "70dd3989_79dc3ced",
+      "range": {
+        "startLine": 409,
+        "startChar": 36,
+        "endLine": 409,
+        "endChar": 38
+      },
+      "revId": "0dc5e657759e133fc521617135f8c4c41b35280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5d42bbf9_a263e71b",
         "filename": "chip/g/usb_spi_v2.c",
         "patchSetId": 3
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-30T23:25:59Z",
       "side": 1,
       "message": "nit1: add an assert that SPI_MAX_SIZE \u003e START_PAYLOAD_SIZE\nnit2: can we get this constant from some common header for spi_controller and usb_spi_v2?",
+      "range": {
+        "startLine": 605,
+        "startChar": 0,
+        "endLine": 605,
+        "endChar": 24
+      },
+      "revId": "0dc5e657759e133fc521617135f8c4c41b35280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b37ccb68_fc93c537",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-01T02:34:39Z",
+      "side": 1,
+      "message": "moved declaration from spi_controller.c into spi_controller.h and added the build assert above.",
+      "parentUuid": "5d42bbf9_a263e71b",
       "range": {
         "startLine": 605,
         "startChar": 0,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "48b6c086_f90b1800",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-01T02:34:39Z",
+      "side": 1,
+      "message": "I guess this is confusing. The idea is that the read count needs to be limited in the first iteration, when there still is a write portion.\n\nTo make it clearer I change read_limit calculation to always subtract \u0027this_write_count\u0027 from the SPI buffer size, \u0027this_write_count\u0027 is set to zero after the first SPI subtransaction in the end of the first iteration, so the buffer size adjustment will happen only on the first iteration.\n\nlast_sub_transaction affects both reads and writes - this is a signal to the SPI driver to deassert CS after this transaction.\n\nlast_sub_transaction should be set in a separate check. Let me try to make the logic clearer.",
+      "parentUuid": "e149f8b2_a3c9d94a",
+      "range": {
+        "startLine": 626,
+        "startChar": 3,
+        "endLine": 626,
+        "endChar": 55
+      },
+      "revId": "0dc5e657759e133fc521617135f8c4c41b35280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ead65bda_ca88edce",
         "filename": "chip/g/usb_spi_v2.c",
         "patchSetId": 3
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-30T23:25:59Z",
       "side": 1,
       "message": "what if total_read_count \u003d\u003d 0 and we didn\u0027t allocate the buffer?\n\noverall, is it possible to extract the code that deals with sending the buffer into a sub-function? and make sure that all buffer allocation/deallocation is done outside?\n\nI also feel it will be just easier to do \n```\nif (total_read_count) {\n  return process_write_read_request();\n} else {\n  return process_pure_write_request();\n}\n```\nat the top level and have two separate functions even if the code is duplicated (and that part can be extracted into a common function) - the logic will be clearer than following individual nested \u0027if\u0027s",
+      "range": {
+        "startLine": 644,
+        "startChar": 4,
+        "endLine": 644,
+        "endChar": 22
+      },
+      "revId": "0dc5e657759e133fc521617135f8c4c41b35280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc1108a3_74fa2ace",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-01T02:34:39Z",
+      "side": 1,
+      "message": "good point, shared_mem_release() should be called only in case total_read_count is non zero, I added the check.\n\nI can rearrange the code if you insist, but I really am trying to avoid code duplication to keep the code size addition to the minimum. Also, it seems to me that the complexity of handling write and then read will still be there in process_write_read_request().\n\nCan you take a look at the result and see that maybe it is clear enough now?",
+      "parentUuid": "ead65bda_ca88edce",
       "range": {
         "startLine": 644,
         "startChar": 4,
