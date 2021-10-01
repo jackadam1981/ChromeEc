@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "527ad466_670d83f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:21:33Z",
+      "side": 1,
+      "message": "+2 but see the comment",
+      "revId": "5c72873174c7c80013ede81f2c1e971fae503365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "51e95e37_603dc78e",
@@ -38,6 +55,30 @@
       "side": 1,
       "message": "I tried to avoid multiple alloca() calls - they are relatively expensive as each includes stack alignment. But structuring code this way I saved around 100 bytes from code like \nbn_init(\u0026R, alloca(mod_len), mod_len);\nbn_init(\u0026nR, alloca(mod_len), mod_len);\nbn_init(\u0026Q, alloca(mod_len), mod_len);\nbn_init(\u0026T, alloca(mod_len + sizeof(uint32_t)), mod_len + sizeof(uint32_t));\nbn_init(\u0026nT, alloca(mod_len + sizeof(uint32_t)), mod_len + sizeof(uint32_t));\n\nbn_init(\u0026tmp, alloca(2* mod_len + sizeof(uint32_t)), mod_len); // note it allocates more than use initially, but bn_mul_ex() will have 2X size of result.\n\n...\n\nIt is 7, because last buffer will be expanded 2x during computation. Check tmp_buf in original code - 2X of MAX.",
       "parentUuid": "51e95e37_603dc78e",
+      "range": {
+        "startLine": 826,
+        "startChar": 27,
+        "endLine": 826,
+        "endChar": 28
+      },
+      "revId": "5c72873174c7c80013ede81f2c1e971fae503365",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739d4a60_6bd10450",
+        "filename": "board/cr50/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:21:33Z",
+      "side": 1,
+      "message": "how about this then:\n\n-\tbuffer \u003d alloca(mod_len * 7 + 3 * sizeof(uint32_t));\n+\tconst size_t buffer_size \u003d mod_len * 7 + 3 * sizeof(uint32_t);\n+\tbuffer \u003d alloca(buffer_size);\n+\tuint8_t *buffer_start \u003d buffer;\n+\n\tbn_init(\u0026R, buffer, mod_len);\n\tbuffer +\u003d mod_len;\n\n\tbn_init(\u0026nR, buffer, mod_len);\n\tbuffer +\u003d mod_len;\n\n\tbn_init(\u0026Q, buffer, mod_len);\n\tbuffer +\u003d mod_len;\n\n\t/* Can go negative, hence +1 */\n\tbn_init(\u0026T, buffer, mod_len + sizeof(uint32_t));\n\tbuffer +\u003d mod_len + sizeof(uint32_t);\n\n\t/* Can go negative */\n\tbn_init(\u0026nT, buffer, mod_len + sizeof(uint32_t));\n\tbuffer +\u003d mod_len + sizeof(uint32_t);\n\n\t/* The rest is 2*bn_size(mod) + 4, needs to hold Q*nT later */\n\tbn_init(\u0026tmp, buffer, mod_len + sizeof(uint32_t));\n+\tbuffer +\u003d 2 * mod_len + sizeof(uint32_t);\n+\n+\tassert(buffer - buffer_start \u003d\u003d buffer_size);\n+\t// OR if we don\u0027t have anything like assert():\n+\tif(buffer - buffer_start !\u003d buffer_size) return 0;",
+      "parentUuid": "456c866d_e4ede74f",
       "range": {
         "startLine": 826,
         "startChar": 27,
