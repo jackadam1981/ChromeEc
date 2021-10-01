@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cac2191_96b74117",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-10-01T01:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72f27b1a_84c1846e",
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6102427a_a20b9fe1",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-09-30T15:00:41Z",
       "side": 1,
       "message": "how come?",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 9
+      },
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08ab6856_2bf59aaf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-10-01T01:41:30Z",
+      "side": 1,
+      "message": "It still have some problem with interrupt pin. I had comment on the issue. The Dut can boot up so this CL wasn\u0027t verified.",
+      "parentUuid": "6102427a_a20b9fe1",
       "range": {
         "startLine": 11,
         "startChar": 5,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca28a21c_20390e9a",
+        "filename": "board/scout/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-10-01T01:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dab9425d_b279cb4f",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 13
+      },
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e08cacd8_289ae67b",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-09-30T14:58:04Z",
       "side": 1,
       "message": "nit: style, blank line between arrays",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5359c2f_e697c9f1",
+        "filename": "board/scout/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-10-01T01:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e08cacd8_289ae67b",
       "range": {
         "startLine": 53,
         "startChar": 0,
@@ -121,6 +211,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31a42be8_9922bde9",
+        "filename": "board/scout/board.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-10-01T01:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "412a56c1_55bc4c89",
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a0204103_9a9d212b",
@@ -134,6 +242,30 @@
       "writtenOn": "2021-09-30T14:58:04Z",
       "side": 1,
       "message": "nit: style: use just a single space for indentation since you aren\u0027t aligning with anything else",
+      "range": {
+        "startLine": 64,
+        "startChar": 17,
+        "endLine": 64,
+        "endChar": 18
+      },
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18fab97b_a8e98458",
+        "filename": "board/scout/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-10-01T01:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a0204103_9a9d212b",
       "range": {
         "startLine": 64,
         "startChar": 17,
@@ -167,6 +299,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcfe0ff4_9aefa567",
+        "filename": "board/scout/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-10-01T01:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac8a29ac_7c9d8033",
+      "range": {
+        "startLine": 66,
+        "startChar": 36,
+        "endLine": 66,
+        "endChar": 37
+      },
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4bbcf64a_c78970a9",
@@ -180,6 +336,24 @@
       "writtenOn": "2021-09-30T13:34:20Z",
       "side": 1,
       "message": "I assume this is leftover from debugging. Should probably remove it.",
+      "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4574720_03d3f7d6",
+        "filename": "driver/als_tcs3400.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1293891
+      },
+      "writtenOn": "2021-10-01T01:41:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4bbcf64a_c78970a9",
       "revId": "423a1aad7b876d6919e493d6a93f2744c1618d71",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
