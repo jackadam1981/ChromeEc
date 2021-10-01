@@ -353,6 +353,48 @@ void test_set_ac_prochot(void)
 			      current_milli_amps);
 	}
 }
+void test_set_dc_prochot(void)
+{
+	const struct emul *isl923x_emul = ISL923X_EMUL;
+	const struct device *i2c_dev = isl923x_emul_get_parent(isl923x_emul);
+	struct i2c_emul *i2c_emul = isl923x_emul_get_i2c_emul(isl923x_emul);
+	uint16_t expected_current_milli_amps[] = { 256,	 512,  1024,
+						   2048, 4096, 8192 };
+	uint16_t current_milli_amps;
+
+	/* Test can't set current above max */
+	zassert_equal(EC_ERROR_INVAL,
+		      isl923x_set_dc_prochot(
+			      CHARGER_NUM, ISL923X_DC_PROCHOT_CURRENT_MAX + 1),
+		      NULL);
+
+	/* Test failed I2C write to prochot register */
+	i2c_common_emul_set_write_fail_reg(i2c_emul, ISL923X_REG_PROCHOT_DC);
+	zassert_equal(EC_ERROR_INVAL, isl923x_set_dc_prochot(CHARGER_NUM, 0),
+		      NULL);
+
+	/* Clear write fail reg */
+	i2c_common_emul_set_write_fail_reg(i2c_emul,
+					   I2C_COMMON_EMUL_NO_FAIL_REG);
+
+	for (int i = 0; i < ARRAY_SIZE(expected_current_milli_amps); ++i) {
+		uint8_t reg_addr = ISL923X_REG_PROCHOT_DC;
+
+		zassert_ok(isl923x_set_dc_prochot(
+				   CHARGER_NUM, expected_current_milli_amps[i]),
+			   "Failed to set DC prochot to %dmA",
+			   expected_current_milli_amps[i]);
+		zassert_ok(i2c_write_read(i2c_dev, i2c_emul->addr, &reg_addr,
+					  sizeof(reg_addr), &current_milli_amps,
+					  sizeof(current_milli_amps)),
+			   "Failed to read DC prochot register");
+		zassert_equal(expected_current_milli_amps[i],
+			      current_milli_amps,
+			      "AC prochot expected %dmA but got %dmA",
+			      expected_current_milli_amps[i],
+			      current_milli_amps);
+	}
+}
 
 void test_suite_isl923x(void)
 {
@@ -367,6 +409,7 @@ void test_suite_isl923x(void)
 			 ztest_unit_test(test_status),
 			 ztest_unit_test(test_set_mode),
 			 ztest_unit_test(test_post_init),
-			 ztest_unit_test(test_set_ac_prochot));
+			 ztest_unit_test(test_set_ac_prochot),
+			 ztest_unit_test(test_set_dc_prochot));
 	ztest_run_test_suite(isl923x);
 }
