@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ff4ccf0_08f980ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:05:49Z",
+      "side": 1,
+      "message": "Small stuff...",
+      "revId": "fccc8b1ebb7f098cab0e07133eae9921cc7835d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "122b07dd_b718cb9f",
+        "filename": "board/cr50/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:05:49Z",
+      "side": 1,
+      "message": "this assumes little-endian, right? let\u0027s comment somewhere",
+      "range": {
+        "startLine": 59,
+        "startChar": 2,
+        "endLine": 59,
+        "endChar": 58
+      },
+      "revId": "fccc8b1ebb7f098cab0e07133eae9921cc7835d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e7173ca_bad9285f",
+        "filename": "board/cr50/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:05:49Z",
+      "side": 1,
+      "message": "guaranteed to be DCRYPTO_OK at this point",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 81,
+        "endChar": 14
+      },
+      "revId": "fccc8b1ebb7f098cab0e07133eae9921cc7835d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46ff8c05_4c2b8435",
+        "filename": "board/cr50/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:05:49Z",
+      "side": 1,
+      "message": "nit: does linter now insert leading/trailing spaces inside {}? iirc, {0, 0, 0, 0} used to be the right style",
+      "range": {
+        "startLine": 94,
+        "startChar": 18,
+        "endLine": 94,
+        "endChar": 30
+      },
+      "revId": "fccc8b1ebb7f098cab0e07133eae9921cc7835d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5508fb7_2f81230d",
+        "filename": "board/cr50/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:05:49Z",
+      "side": 1,
+      "message": "same style question: why spaces inside {}?",
+      "range": {
+        "startLine": 181,
+        "startChar": 31,
+        "endLine": 181,
+        "endChar": 32
+      },
+      "revId": "fccc8b1ebb7f098cab0e07133eae9921cc7835d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "520f6b05_b7c7196e",
+        "filename": "board/cr50/dcrypto/aes_cmac.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T23:05:49Z",
+      "side": 1,
+      "message": "nit: move to the top-level, re-use in command_test_subkey_gen and command_test_verify?",
+      "range": {
+        "startLine": 302,
+        "startChar": 1,
+        "endLine": 302,
+        "endChar": 27
+      },
+      "revId": "fccc8b1ebb7f098cab0e07133eae9921cc7835d3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
