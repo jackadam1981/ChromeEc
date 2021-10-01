@@ -33,6 +33,24 @@
       "message": "Failed build info (krane ran out of space): \n\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld: No room left in the flash\ncollect2: error: ld returned 1 exit status\nmake[2]: *** [Makefile.rules:547: build/krane/RW/ec.RW.elf] Error 1\nmake[1]: *** [Makefile.rules:252: proj-krane] Error 2\n  HOSTCC  util/lbplay\nmake[1]: *** Waiting for unfinished jobs....\n",
       "revId": "b53985b73e9b21524ee15941cfb62d93d64a68b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b34e63a_1e13a9c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T22:47:12Z",
+      "side": 1,
+      "message": "Okay, I see 24byte available. I will disable other console commands.\n\n *** 4180 bytes in flash and 11268 bytes in RAM still available on krane RO ****\n  *** 24 bytes in flash and 8244 bytes in RAM still available on krane RW ****",
+      "parentUuid": "db3a5cca_0df9fcce",
+      "revId": "b53985b73e9b21524ee15941cfb62d93d64a68b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
