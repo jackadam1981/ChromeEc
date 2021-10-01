@@ -1,0 +1,458 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5cc4c5d_7d9c77de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "mostly small stuff",
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2a68a087_42e14c7c",
+        "filename": "board/cr50/dcrypto/hash_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "nit: can have this call once after the switch(mode) block.",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 30
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b29bb91c_a2d9da5b",
+        "filename": "board/cr50/dcrypto/hash_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "do we need to check len inside this function for non SHA256 case? HMAC_SHA256_hw_init() that it replaced does len checks (and fallback to s/w) inside. same should be done for other hashes, or if we know we support only SHA256 here now, let\u0027s have it as the only available option inside switch(mode)",
+      "range": {
+        "startLine": 115,
+        "startChar": 20,
+        "endLine": 115,
+        "endChar": 40
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fb053d2_79a5d353",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "can we use dcrypto_result instead? or int as in oaep_pad and other functions in this file. currently there\u0027re too many return types variations: int(1\u003dsuccess), bool, dcrypto_result. let\u0027s remove one?",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "956a1114_00748e00",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "check for hash_size \u003d\u003d 0",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "594e506e_2c6e986e",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "check for hash_size \u003d\u003d 0",
+      "range": {
+        "startLine": 124,
+        "startChar": 14,
+        "endLine": 124,
+        "endChar": 23
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929dd247_093c278e",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "check for hash_size \u003d\u003d 0",
+      "range": {
+        "startLine": 382,
+        "startChar": 16,
+        "endLine": 382,
+        "endChar": 25
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "967a7163_99133750",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "why did we ned to make this change if it\u0027s always SHA256 and at the bottom level it\u0027s the same HMAC_SHA256_hw_init that always succeeds?",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 20
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31852921_945b43ae",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "same here: is it worth doing HMAC_SHA256_hw_init -\u003e DCRYPTO_hw_hmac_sha256_init is we know that it is always SHA256 (and HMAC_SHA256_hw_init will be eventually called). or there\u0027s a future refactoring that relies on it?",
+      "range": {
+        "startLine": 593,
+        "startChar": 2,
+        "endLine": 599,
+        "endChar": 28
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578f3590_85b837a1",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "is it important for anything btw?",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bd09685_fea98c48",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "can move into if-error-path",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 21
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7046ed3b_5cf616bb",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "same comment: is it worth handling an error that will never happen given that we know it\u0027s SHA256",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 27
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28badd6e_57e025f8",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "make it int and return EC_SUCCESS/EC_ERROR_HW_INTERNAL to keep with the style of this file.",
+      "range": {
+        "startLine": 239,
+        "startChar": 7,
+        "endLine": 239,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8206bbe1_4a50d539",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "same question re always succeeding function for SHA256",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 15
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bf7fa72_032119d8",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "int, EC_SUCCESS/PW_ERR_*\n\nnote: not very important since we plan to switch to https://chromium.googlesource.com/chromiumos/platform/pinweaver/+/refs/heads/main/pinweaver.c#164\n\nwhich assumes that EAL can return errors\n\nI suggest to stay closer to the new references code return \u0027int\u0027 and handle as handled there, e.g. https://chromium.googlesource.com/chromiumos/platform/pinweaver/+/refs/heads/main/pinweaver.c#373",
+      "range": {
+        "startLine": 184,
+        "startChar": 7,
+        "endLine": 184,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b49fbde5_1b6a537b",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "int, EC_SUCCESS/PW_ERR_*",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0794f3d9_4758f37b",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "int, EC_SUCCESS/EC_ERROR_*",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08809641_f3106a7b",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "why change from HMAC_SHA256_hw_final even though they are synonims? we do hw_init above",
+      "range": {
+        "startLine": 89,
+        "startChar": 18,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "342a8838_f07889a1",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "int, EC_SUCCESS/EC_ERROR_*",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ee93ce6_277f3ef7",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-01T22:53:42Z",
+      "side": 1,
+      "message": "int, EC_SUCCESS/EC_ERROR_*",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 4
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
