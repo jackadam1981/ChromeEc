@@ -49,6 +49,54 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "2f899461_2cc3ad4b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-01T17:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebc868a2_d14a9fb4",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "9acf8bd0581050f970a36d8b484ef78288a10af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6bae2dc_4e751603",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-01T17:25:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f203f85b_5c75dcbb",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "9acf8bd0581050f970a36d8b484ef78288a10af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "1d6d32ce_82ca9720",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -125,6 +173,30 @@
       "side": 1,
       "message": "Good observation, in old boards netnames were in comment in new boards they are moved to macro in board.h so that gpioget command reflects the schematics",
       "parentUuid": "ec07974b_20c0c116",
+      "range": {
+        "startLine": 36,
+        "startChar": 9,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "9acf8bd0581050f970a36d8b484ef78288a10af9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1839fbe_730ee8f6",
+        "filename": "board/yorp/gpio.inc",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-01T17:25:58Z",
+      "side": 1,
+      "message": "Updated now.",
+      "parentUuid": "cd7d79b7_f92e6c2d",
       "range": {
         "startLine": 36,
         "startChar": 9,
