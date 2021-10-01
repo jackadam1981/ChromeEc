@@ -22,6 +22,54 @@
       },
       "revId": "33c9c466939da83fa6dba0594393499049bfe8ab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75588cec_dc20f81f",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T18:11:04Z",
+      "side": 1,
+      "message": "Yes this will be set at board level\nex: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3194986/3/baseboard/intelrvp/adlrvp.c#216\n\nAs not all IOEX are needed pre-task we need to skip only those IOEX which are already initialized. I have updated the comment.\n\nwe may not be able to use IOEX_FLAGS_DISABLED approach as we need to initialize the pins using ioex_init()",
+      "parentUuid": "bcac1cb1_bb9b7d38",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 61
+      },
+      "revId": "33c9c466939da83fa6dba0594393499049bfe8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7429bd1_05ee0964",
+        "filename": "common/ioexpander.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-01T18:11:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bcac1cb1_bb9b7d38",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 61
+      },
+      "revId": "33c9c466939da83fa6dba0594393499049bfe8ab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
