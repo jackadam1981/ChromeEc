@@ -499,7 +499,11 @@ int isl923x_set_ac_prochot(int chgnum, uint16_t ma)
 		return EC_ERROR_INVAL;
 	}
 
-	rv = raw_write16(chgnum, ISL923X_REG_PROCHOT_AC, AC_CURRENT_TO_REG(ma));
+	/*
+	 * PROCHOT register doesn't take into account the resistor, simply mask
+	 * the mA value to keep it in the range specified by the datasheet.
+	 */
+	rv = raw_write16(chgnum, ISL923X_REG_PROCHOT_AC, ma & GENMASK(12, 7));
 	if (rv)
 		CPRINTS("%s set_ac_prochot failed (%d)", CHARGER_NAME, rv);
 	return rv;
@@ -514,7 +518,11 @@ int isl923x_set_dc_prochot(int chgnum, uint16_t ma)
 		return EC_ERROR_INVAL;
 	}
 
-	rv = raw_write16(chgnum, ISL923X_REG_PROCHOT_DC, CURRENT_TO_REG(ma));
+	/*
+	 * PROCHOT register doesn't take into account the resistor, simply mask
+	 * the mA value to keep it in the range specified by the datasheet.
+	 */
+	rv = raw_write16(chgnum, ISL923X_REG_PROCHOT_DC, ma & GENMASK(13, 8));
 	if (rv)
 		CPRINTS("%s set_dc_prochot failed (%d)", CHARGER_NAME, rv);
 	return rv;
