@@ -42,7 +42,7 @@
 #define CONFIG_LID_ANGLE_SENSOR_BASE BASE_ACCEL
 #define CONFIG_LID_ANGLE_SENSOR_LID LID_ACCEL
 #define CONFIG_LID_ANGLE_UPDATE
-/* BH1730 and TCS3400 ALS */
+/* OPT3001 and TCS3400 ALS */
 #define CONFIG_ALS
 #define ALS_COUNT 1
 #define I2C_PORT_ALS I2C_PORT_SENSOR
@@ -51,6 +51,8 @@
 
 /* Sensors without hardware FIFO are in forced mode */
 #define CONFIG_ACCEL_FORCE_MODE_MASK (BIT(BASE_ALS))
+<<<<<<< PATCH SET (f3855b board: nightfury: Remove BH1730 defines)
+=======
 
 /* Parameter to calculate LUX on Nightfury */
 #define CONFIG_ALS_BH1730_LUXTH_PARAMS
@@ -79,6 +81,7 @@
 #define BH1730_LUXTH4_D0_1K 11008
 #define BH1730_LUXTH4_D1_1K 10752
 
+>>>>>>> BASE      (6e64b4 ectool: Update bcfg to set battery config in CBI)
 /* USB Type C and USB PD defines */
 #define CONFIG_USB_MUX_RUNTIME_CONFIG
 #define CONFIG_USB_PD_COMM_LOCKED
