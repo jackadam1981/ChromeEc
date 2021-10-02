@@ -354,6 +354,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "165c4c56_ea6898db",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-02T00:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c6bc70_fc885441",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbb92b85_e0930bb1",
@@ -600,6 +618,48 @@
       "side": 1,
       "message": "\u003e 1) yes, we can\u0027t have the entire GVD in memory in cr50 case.\n\nOkay, fair enough, but that shouldn\u0027t be a requirement for checking these in different order. (FWIW, this code is already keeping both the root key and platform key in memory at the same time, which are by far the biggest pieces in all of this... seems a bit odd that you can fit both of those, but fitting the few small extra header structures and signatures on top of that breaks the bank?)\n\n\u003e but we generally don\u0027t guard against DoS attacks if the attackers can access storage - they could just erase RW or OS and get a more reliable DoS that way.\n\nNo, that\u0027s a very different thing. When an attacker erases RW SPI flash and the OS, we boot in recovery mode. We take great care to ensure that an attacker can never fully brick a device where write protection is still enabled, and the user can always recover it from USB again. But if RO verification doesn\u0027t work (or can be made to take so long that the user effectively thinks the device is dead -- remember, they\u0027re just seeing a black screen and 0 feedback while all this is happening), then the system cannot even boot into recovery mode, so I think it is very important for maintaining our existing robustness that nothing an attacker could do against this feature can lead to an effective denial of service.\n\n\u003e and I believe it only needs to be called if descriptor \u003d\u003d NULL, otherwise, gvd_cache_check is sufficient\n\nWhen the firmware is updated an old cache entry may still exist but no longer be valid, so this needs to be able to handle the case where the cached hash is present but doesn\u0027t match the flash.\n\nThe rough algorithm for all this should be:\n\n validate_ap_ro_v2() {\n   if (descriptor) {\n     if (descriptor.hash matches flash)\n       if (ranges on flash validate)\n         return success;\n   }\n   \n   for (every possible fmap offset in search order) {\n     if (try_location(offset) \u003d\u003d success)\n       return success;\n   }\n   \n   return failure;\n }\n \n try_location(offset) {\n   if (fmap validation mismatch)\n     return failure;\n   \n   read gscvd header from flash\n   if (gscvd magic/version mismatch)\n     return failure;\n     \n   find root key via gscvd header and read it from flash\n   if (root key hash mismatch)\n     return failure;\n     \n   read platform keyblock from flash\n   if (keyblock magic/version mismatch)\n     return failure;\n     \n   verify keyblock signature with root key\n   if (signature verification failure)\n     return failure;\n     \n   unload root key\n   load gscvd ranges and signature\n   verify gscvd header+ranges with keyblock key\n   if (signature verification failure)\n     return failure;\n     \n   verify range hashes\n   if (hash mismatch)\n     return failure;\n     \n    return success; \n }",
       "parentUuid": "6e52032a_47cccd1c",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c16fd8fd_71acb218",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-02T00:05:43Z",
+      "side": 1,
+      "message": "let\u0027s discuss the exhaustive fmap search and address it in a separate patch if still decided necessary, it would be a small incremental change.",
+      "parentUuid": "6256a6db_27027637",
+      "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5c3d620_9daad9c6",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-02T00:05:43Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "63c82868_667ca78d",
+      "range": {
+        "startLine": 1285,
+        "startChar": 0,
+        "endLine": 1315,
+        "endChar": 2
+      },
       "revId": "e272a15aab408f1d370ed0383f3db203106dabe0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
