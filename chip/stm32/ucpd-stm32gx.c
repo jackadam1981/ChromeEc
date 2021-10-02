@@ -794,7 +794,7 @@ static int stm32gx_ucpd_start_transmit(int port, enum ucpd_tx_msg msg_type)
 			STM32_UCPD_TX_ORDSETR(port) = ucpd_txorderset[type];
 		else
 			STM32_UCPD_TX_ORDSETR(port) =
-				ucpd_txorderset[TX_ORDERSET_SOP];
+				ucpd_txorderset[TCPCI_MSG_SOP];
 
 		/* Reset msg byte index */
 		ucpd_tx_active_buffer-> msg_index = 0;
