@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85870075_a26f32d2",
+        "filename": "board/cr50/dcrypto/hash_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a68a087_42e14c7c",
+      "range": {
+        "startLine": 93,
+        "startChar": 2,
+        "endLine": 93,
+        "endChar": 30
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b29bb91c_a2d9da5b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-01T22:53:42Z",
       "side": 1,
       "message": "do we need to check len inside this function for non SHA256 case? HMAC_SHA256_hw_init() that it replaced does len checks (and fallback to s/w) inside. same should be done for other hashes, or if we know we support only SHA256 here now, let\u0027s have it as the only available option inside switch(mode)",
+      "range": {
+        "startLine": 115,
+        "startChar": 20,
+        "endLine": 115,
+        "endChar": 40
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f65b409_c14d5a19",
+        "filename": "board/cr50/dcrypto/hash_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "HMAC_sw_init() does proper checks too. There are 2 cases for sw - more than block size (apply hash then) or less (add padding).",
+      "parentUuid": "b29bb91c_a2d9da5b",
       "range": {
         "startLine": 115,
         "startChar": 20,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ea8cf81_5b4b7d88",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "ok. i updated all bool \u0026 ints to enum dcrypto_result for all local functions, but RSA API will update in next CLs as many changes to tpm2/rsa.c which are unrelated.",
+      "parentUuid": "6fb053d2_79a5d353",
+      "range": {
+        "startLine": 34,
+        "startChar": 7,
+        "endLine": 34,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "956a1114_00748e00",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-01T22:53:42Z",
       "side": 1,
       "message": "check for hash_size \u003d\u003d 0",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 23
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7da216d_0042164c",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "956a1114_00748e00",
       "range": {
         "startLine": 85,
         "startChar": 14,
@@ -133,6 +229,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e190b9ce_a575ff9c",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "594e506e_2c6e986e",
+      "range": {
+        "startLine": 124,
+        "startChar": 14,
+        "endLine": 124,
+        "endChar": 23
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "929dd247_093c278e",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-10-01T22:53:42Z",
       "side": 1,
       "message": "check for hash_size \u003d\u003d 0",
+      "range": {
+        "startLine": 382,
+        "startChar": 16,
+        "endLine": 382,
+        "endChar": 25
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a6c602b_a0ca2a75",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "929dd247_093c278e",
       "range": {
         "startLine": 382,
         "startChar": 16,
@@ -179,6 +323,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf35e7ba_3416fec4",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "FIPS failure can occur at any time, and while underlying call never fails, we should block access to any crypto. If we won\u0027t check status code it may open door to some exploitations since HMAC won\u0027t be computed, etc.",
+      "parentUuid": "967a7163_99133750",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 20
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31852921_945b43ae",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-10-01T22:53:42Z",
       "side": 1,
       "message": "same here: is it worth doing HMAC_SHA256_hw_init -\u003e DCRYPTO_hw_hmac_sha256_init is we know that it is always SHA256 (and HMAC_SHA256_hw_init will be eventually called). or there\u0027s a future refactoring that relies on it?",
+      "range": {
+        "startLine": 593,
+        "startChar": 2,
+        "endLine": 599,
+        "endChar": 28
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b25c163_4b05661a",
+        "filename": "board/cr50/tpm2/endorsement.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "to gracefully handle FIPS failures.",
+      "parentUuid": "31852921_945b43ae",
       "range": {
         "startLine": 593,
         "startChar": 2,
@@ -225,6 +417,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8e94e22_4a418fb8",
+        "filename": "board/cr50/tpm2/hash.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "yes. see line 73 as example - we can pass TPM alg directly to hash_init",
+      "parentUuid": "578f3590_85b837a1",
+      "range": {
+        "startLine": 57,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 49
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5bd09685_fea98c48",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-10-01T22:53:42Z",
       "side": 1,
       "message": "can move into if-error-path",
+      "range": {
+        "startLine": 309,
+        "startChar": 1,
+        "endLine": 309,
+        "endChar": 21
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b0554eb_de083bf0",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bd09685_fea98c48",
       "range": {
         "startLine": 309,
         "startChar": 1,
@@ -271,6 +511,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ca1437f_51625bb3",
+        "filename": "board/cr50/tpm2/virtual_nvmem.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "errors can happen and simulated FIPS error specifically here will expose rma_device_id",
+      "parentUuid": "7046ed3b_5cf616bb",
+      "range": {
+        "startLine": 310,
+        "startChar": 5,
+        "endLine": 310,
+        "endChar": 27
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28badd6e_57e025f8",
@@ -284,6 +548,30 @@
       "writtenOn": "2021-10-01T22:53:42Z",
       "side": 1,
       "message": "make it int and return EC_SUCCESS/EC_ERROR_HW_INTERNAL to keep with the style of this file.",
+      "range": {
+        "startLine": 239,
+        "startChar": 7,
+        "endLine": 239,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc9ddfd_91ec02ad",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "28badd6e_57e025f8",
       "range": {
         "startLine": 239,
         "startChar": 7,
@@ -317,6 +605,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19dba0c9_a5af57c5",
+        "filename": "common/ccd_config.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8206bbe1_4a50d539",
+      "range": {
+        "startLine": 247,
+        "startChar": 1,
+        "endLine": 248,
+        "endChar": 15
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bf7fa72_032119d8",
@@ -330,6 +642,30 @@
       "writtenOn": "2021-10-01T22:53:42Z",
       "side": 1,
       "message": "int, EC_SUCCESS/PW_ERR_*\n\nnote: not very important since we plan to switch to https://chromium.googlesource.com/chromiumos/platform/pinweaver/+/refs/heads/main/pinweaver.c#164\n\nwhich assumes that EAL can return errors\n\nI suggest to stay closer to the new references code return \u0027int\u0027 and handle as handled there, e.g. https://chromium.googlesource.com/chromiumos/platform/pinweaver/+/refs/heads/main/pinweaver.c#373",
+      "range": {
+        "startLine": 184,
+        "startChar": 7,
+        "endLine": 184,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "591d24c7_a1aa8856",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bf7fa72_032119d8",
       "range": {
         "startLine": 184,
         "startChar": 7,
@@ -363,6 +699,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c94da647_aacb9582",
+        "filename": "common/pinweaver.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b49fbde5_1b6a537b",
+      "range": {
+        "startLine": 208,
+        "startChar": 7,
+        "endLine": 208,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0794f3d9_4758f37b",
@@ -376,6 +736,30 @@
       "writtenOn": "2021-10-01T22:53:42Z",
       "side": 1,
       "message": "int, EC_SUCCESS/EC_ERROR_*",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66cd2521_db7361a4",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0794f3d9_4758f37b",
       "range": {
         "startLine": 78,
         "startChar": 7,
@@ -409,6 +793,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26b469e8_7041e64c",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08809641_f3106a7b",
+      "range": {
+        "startLine": 89,
+        "startChar": 18,
+        "endLine": 89,
+        "endChar": 35
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "342a8838_f07889a1",
@@ -432,6 +840,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba5f2acc_6137d2d8",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "342a8838_f07889a1",
+      "range": {
+        "startLine": 96,
+        "startChar": 7,
+        "endLine": 96,
+        "endChar": 11
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ee93ce6_277f3ef7",
@@ -445,6 +877,30 @@
       "writtenOn": "2021-10-01T22:53:42Z",
       "side": 1,
       "message": "int, EC_SUCCESS/EC_ERROR_*",
+      "range": {
+        "startLine": 186,
+        "startChar": 0,
+        "endLine": 186,
+        "endChar": 4
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b8bd3024_f93273d4",
+        "filename": "common/rma_auth.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:05:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ee93ce6_277f3ef7",
       "range": {
         "startLine": 186,
         "startChar": 0,
