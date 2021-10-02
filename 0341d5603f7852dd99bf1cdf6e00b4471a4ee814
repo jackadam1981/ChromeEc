@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c897fc5_496822a5",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:13:55Z",
+      "side": 1,
+      "message": "yep",
+      "parentUuid": "2c415c3c_006f74ad",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 20
+      },
+      "revId": "0341d5603f7852dd99bf1cdf6e00b4471a4ee814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f05fa7ad_c388d187",
         "filename": "common/u2f.c",
         "patchSetId": 1
@@ -87,6 +111,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2299d1f8_ba2300bd",
+        "filename": "include/u2f.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:13:55Z",
+      "side": 1,
+      "message": "yes, in u2f_cmds.h",
+      "parentUuid": "7861de22_21598943",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 22
+      },
+      "revId": "0341d5603f7852dd99bf1cdf6e00b4471a4ee814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1c0d7394_08d8a371",
@@ -100,6 +148,30 @@
       "writtenOn": "2021-10-01T23:36:56Z",
       "side": 1,
       "message": "I understand we just follow the established approach, but curious: could we just use \n```\n#define U2F_V2_KH_SIZE (sizeof(struct u2f_key_handle_v2)) \n```\nin include/u2f.h? same for 0, 1.\n\nall those structures are defined in the same header. or is it because of C vs C++ or we need U2F_V2_KH_SIZE before we define u2f_key_handle_v2?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 65
+      },
+      "revId": "0341d5603f7852dd99bf1cdf6e00b4471a4ee814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ab78edf_328eb689",
+        "filename": "include/u2f_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T01:13:55Z",
+      "side": 1,
+      "message": "excellent question. I added u2f_key_handle_v0,v1 \u0026 v2 after defines and after old-style definitions (versioned / not-versioned) which are currently in use, so for me U2F_Vx_KH_SIZE was a guidance. Once userland will migrate to new types, i guess we can simplify it.",
+      "parentUuid": "1c0d7394_08d8a371",
       "range": {
         "startLine": 23,
         "startChar": 0,
