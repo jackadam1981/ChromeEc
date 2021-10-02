@@ -16,6 +16,24 @@
       "message": "I still don\u0027t understand why this dependency is not handled by make autodepend generation",
       "revId": "ee9456cede813798d3ee885edd4448bfdb2c081b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9c88aaa_ef9be1e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-02T03:54:28Z",
+      "side": 1,
+      "message": "rule to rebuild on configuration change is:\nhttp://cs/chromeos_public/src/platform/cr50/Makefile.rules?l\u003d502\n\nrw_objs for FIPS only adds dcrypto/fips_module.o, which depends on appropriate .o files in dcrypto/. There is no direct dependency of rw_objs on .c files of FIPS module. Now, when config changes, fips_module.o is not actually rebuilt, linking something built with other options.",
+      "parentUuid": "151d79ab_e199a493",
+      "revId": "ee9456cede813798d3ee885edd4448bfdb2c081b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
