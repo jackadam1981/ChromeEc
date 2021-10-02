@@ -112,6 +112,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28fb1b3d_d0d5e3b2",
+        "filename": "board/cr50/dcrypto/hash_api.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-02T02:53:39Z",
+      "side": 1,
+      "message": "Ack as discussed offline",
+      "parentUuid": "8f65b409_c14d5a19",
+      "range": {
+        "startLine": 115,
+        "startChar": 20,
+        "endLine": 115,
+        "endChar": 40
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6fb053d2_79a5d353",
@@ -337,6 +361,30 @@
       "side": 1,
       "message": "FIPS failure can occur at any time, and while underlying call never fails, we should block access to any crypto. If we won\u0027t check status code it may open door to some exploitations since HMAC won\u0027t be computed, etc.",
       "parentUuid": "967a7163_99133750",
+      "range": {
+        "startLine": 144,
+        "startChar": 1,
+        "endLine": 146,
+        "endChar": 20
+      },
+      "revId": "eaa068b4b27f6430d39be79d3ce80fb54c759a4e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02c6edf5_70f93a51",
+        "filename": "board/cr50/tpm2/ecc.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-02T02:53:39Z",
+      "side": 1,
+      "message": "Ack, as discussed offline, DCRYPTO_hw_hmac_sha256_init can actually fail",
+      "parentUuid": "bf35e7ba_3416fec4",
       "range": {
         "startLine": 144,
         "startChar": 1,
