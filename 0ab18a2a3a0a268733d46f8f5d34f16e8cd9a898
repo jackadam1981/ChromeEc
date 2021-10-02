@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cee40260_60165cc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-10-02T08:25:05Z",
+      "side": 1,
+      "message": "There was a bug in this CL, leading to 2 CLs that need to be merged:\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3133188\nhttps://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3150056\n",
+      "revId": "0ab18a2a3a0a268733d46f8f5d34f16e8cd9a898",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
