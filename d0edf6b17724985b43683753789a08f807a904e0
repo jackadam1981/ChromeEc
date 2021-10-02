@@ -53,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6606c4c_e7b82df0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-02T01:30:05Z",
+      "side": 1,
+      "message": "Thinking more about it (after Jeremy\u0027s comment) I think we\u0027ll naturally have all of this when we re-write drivers into the Zephyr drivers with proper bindings. I\u0027m not worried about tracking this over the next year before we start the \"great migration\"",
+      "parentUuid": "50ea110e_bc3929ae",
+      "revId": "d0edf6b17724985b43683753789a08f807a904e0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0de9cd82_3a251090",

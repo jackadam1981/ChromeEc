@@ -22,6 +22,30 @@
       },
       "revId": "122ab15ce5c5d0f7b21dabb10412479be3b852a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c738f92_ba2a1905",
+        "filename": "zephyr/test/drivers/src/isl923x.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-02T01:30:05Z",
+      "side": 1,
+      "message": "It\u0027s telling the chip which resistor is attached, I agree with what you\u0027re saying, that should be a part of the config in the DT bindings. This kind of stuff is around a lot and we\u0027ll run into these when we refactor cros-ec drivers into proper Zephyr drivers. I don\u0027t see much of a benefit in creating a bug now that will just live for a year. It\u0027ll happen organically when we migrate to Zephyr drivers.",
+      "parentUuid": "99b2ec11_8bcd7c03",
+      "range": {
+        "startLine": 19,
+        "startChar": 13,
+        "endLine": 20,
+        "endChar": 46
+      },
+      "revId": "122ab15ce5c5d0f7b21dabb10412479be3b852a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
