@@ -793,8 +793,7 @@ static int stm32gx_ucpd_start_transmit(int port, enum ucpd_tx_msg msg_type)
 		if (type <= TCPCI_MSG_CABLE_RESET)
 			STM32_UCPD_TX_ORDSETR(port) = ucpd_txorderset[type];
 		else
-			STM32_UCPD_TX_ORDSETR(port) =
-				ucpd_txorderset[TX_ORDERSET_SOP];
+			STM32_UCPD_TX_ORDSETR(port) = ucpd_txorderset[0];
 
 		/* Reset msg byte index */
 		ucpd_tx_active_buffer-> msg_index = 0;
