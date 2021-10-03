@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a1d1e2_ee272c5d",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-03T02:36:46Z",
+      "side": 1,
+      "message": "add deepcharge_start_time for deep_charge_battery",
+      "parentUuid": "ccc3e60b_3d51242a",
+      "range": {
+        "startLine": 1839,
+        "startChar": 24,
+        "endLine": 1839,
+        "endChar": 44
+      },
+      "revId": "357702bedde2a29fb82cb903eb34d2714d7fface",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3d77748_93d340b5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-30T18:22:15Z",
       "side": 1,
       "message": "This is no-op.",
+      "range": {
+        "startLine": 1871,
+        "startChar": 0,
+        "endLine": 1871,
+        "endChar": 28
+      },
+      "revId": "357702bedde2a29fb82cb903eb34d2714d7fface",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2588f71_e096ed82",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-03T02:36:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3d77748_93d340b5",
       "range": {
         "startLine": 1871,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae4b07e1_ee13d373",
+        "filename": "test/sbs_charging_v2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-03T02:36:46Z",
+      "side": 1,
+      "message": "/* recovery from a low voltage. */\nsb_write(SB_VOLTAGE, (bat_info-\u003evoltage_normal));\nusleep(1 * SECOND);\nstate_v2 \u003d charge_get_state_v2();\nTEST_ASSERT(state_v2 \u003d\u003d ST_CHARGE);",
+      "parentUuid": "ffe1f530_27d8d152",
+      "range": {
+        "startLine": 368,
+        "startChar": 11,
+        "endLine": 368,
+        "endChar": 35
+      },
+      "revId": "357702bedde2a29fb82cb903eb34d2714d7fface",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e85df8e7_eeae6ea9",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-09-30T18:22:15Z",
       "side": 1,
       "message": "A unit test is not allowed to sleep this much.",
+      "range": {
+        "startLine": 385,
+        "startChar": 1,
+        "endLine": 385,
+        "endChar": 44
+      },
+      "revId": "357702bedde2a29fb82cb903eb34d2714d7fface",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "597f86b9_b8e6d344",
+        "filename": "test/sbs_charging_v2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-03T02:36:46Z",
+      "side": 1,
+      "message": "#undef  CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT\n#define CONFIG_BATTERY_LOW_VOLTAGE_TIMEOUT  (60*SECOND)",
+      "parentUuid": "e85df8e7_eeae6ea9",
       "range": {
         "startLine": 385,
         "startChar": 1,
