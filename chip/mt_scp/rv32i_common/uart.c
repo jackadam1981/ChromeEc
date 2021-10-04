@@ -139,6 +139,7 @@ static void uart_process(void)
 }
 
 #if (UARTN < SCP_UART_COUNT)
+DECLARE_IRQ(UART_INTC_GROUP, uart_irq_handler, 0);
 static void uart_irq_handler(void)
 {
 	extern volatile int ec_int;
@@ -156,7 +157,6 @@ static void uart_irq_handler(void)
 		break;
 	}
 }
-DECLARE_IRQ(UART_INTC_GROUP, uart_irq_handler, 0);
 #else
 
 #ifndef HAS_TASK_APUART
