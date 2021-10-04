@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "541bd2b7_fdee318d",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-04T18:14:43Z",
+      "side": 1,
+      "message": "Taken from below under enable branch.",
+      "range": {
+        "startLine": 486,
+        "startChar": 0,
+        "endLine": 495,
+        "endChar": 0
+      },
+      "revId": "8aa914f8f470a61fb4623d1054bce7c2ec300906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "42eac761_6d02d59d",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-04T18:14:43Z",
+      "side": 1,
+      "message": "This is all reformatting (besides what was removed and added to aforementioned branch above) due to the removal of a branch.",
+      "range": {
+        "startLine": 504,
+        "startChar": 0,
+        "endLine": 576,
+        "endChar": 29
+      },
+      "revId": "8aa914f8f470a61fb4623d1054bce7c2ec300906",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
