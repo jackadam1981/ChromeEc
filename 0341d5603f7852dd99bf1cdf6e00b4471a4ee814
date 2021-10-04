@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b5537b2_423cec84",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-04T15:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c897fc5_496822a5",
+      "range": {
+        "startLine": 148,
+        "startChar": 0,
+        "endLine": 148,
+        "endChar": 20
+      },
+      "revId": "0341d5603f7852dd99bf1cdf6e00b4471a4ee814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f05fa7ad_c388d187",
@@ -78,6 +102,30 @@
       "writtenOn": "2021-10-01T23:36:56Z",
       "side": 1,
       "message": "iiuc we don\u0027t pass it now, so I wouldn\u0027t start checking until after it happens. let\u0027s keep authTimeSecret \u003d NULL for v1.",
+      "range": {
+        "startLine": 197,
+        "startChar": 2,
+        "endLine": 198,
+        "endChar": 43
+      },
+      "revId": "0341d5603f7852dd99bf1cdf6e00b4471a4ee814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31359845_3b499a00",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-04T15:07:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f05fa7ad_c388d187",
       "range": {
         "startLine": 197,
         "startChar": 2,
