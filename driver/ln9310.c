@@ -483,6 +483,16 @@ void ln9310_software_enable(int enable)
 	if (ln9310_reset_detected())
 		ln9310_init();
 
+	if (!startup_workaround_required) {
+		/*
+		 * for newer LN9310 revsisions, the startup workaround is not
+		 * required so the STANDBY_EN bit can just be set directly
+		 */
+		field_update8(LN9310_REG_STARTUP_CTRL,
+			      LN9310_STARTUP_STANDBY_EN, !enable);
+		return;
+	}
+
 	/* Dummy clear all interrupts */
 	status = raw_read8(LN9310_REG_INT1, &val);
 	if (status) {
@@ -491,83 +501,82 @@ void ln9310_software_enable(int enable)
 	}
 	CPRINTS("LN9310 cleared interrupts: 0x%x", val);
 
-	if (startup_workaround_required) {
-		if (enable) {
-			/*
-			* Software modification of LN9310 startup sequence w/ retry
-			* loop.
-			*
-			* (1) Clear interrupts
-			* (2) Precharge Cfly w/ overrides of internal LN9310 signals
-			* (3) disable overrides -> stop precharging Cfly
-			* (4.1) if < 100 ms elapsed since (2) -> trigger LN9310 internal
-			*                                        startup seq. 
-			* (4.2) else -> abort and optionally retry from step 2
-			*/
-			retry_count = 0;
-			while (!ln9310_init_completed && retry_count < LN9310_INIT_RETRY_COUNT) {
-				/* Precharge CFLY before starting up */
-				status = ln9310_precharge_cfly(&precharge_timeout);
-				if (status != EC_SUCCESS) {
-					CPRINTS("LN9310 failed to run Cfly precharge sequence");
-					status = ln9310_precharge_cfly_reset();
-					retry_count++;
-					continue;
-				}
-
-				/*
-				* Only start the SC if the cfly precharge
-				* hasn't timed out (i.e. ended too long ago)
-				*/
-				if (get_time().val < precharge_timeout) {
-					/* Clear the STANDBY_EN bit to enable the SC */
-					field_update8(LN9310_REG_STARTUP_CTRL,
-							LN9310_STARTUP_STANDBY_EN,
-							0);
-					if (get_time().val > precharge_timeout ) {
-						/*
-						* if timed out during previous I2C command, abort 
-						* startup attempt
-						*/
-						field_update8(LN9310_REG_STARTUP_CTRL,
-							LN9310_STARTUP_STANDBY_EN,
-							1);
-					} else {
-						/* all other paths should reattempt startup  */
-						ln9310_init_completed = true;
-					}
-				}
-				/* Reset to known state for config bits related to cfly precharge */
-				ln9310_precharge_cfly_reset();
+	if (enable) {
+		/*
+		 * Software modification of LN9310 startup sequence w/ retry
+		 * loop.
+		 *
+		 * (1) Clear interrupts
+		 * (2) Precharge Cfly w/ overrides of internal LN9310 signals
+		 * (3) disable overrides -> stop precharging Cfly
+		 * (4.1) if < 100 ms elapsed since (2) -> trigger LN9310
+		 * internal startup seq. (4.2) else -> abort and optionally
+		 * retry from step 2
+		 */
+		retry_count = 0;
+		while (!ln9310_init_completed &&
+		       retry_count < LN9310_INIT_RETRY_COUNT) {
+			/* Precharge CFLY before starting up */
+			status = ln9310_precharge_cfly(&precharge_timeout);
+			if (status != EC_SUCCESS) {
+				CPRINTS("LN9310 failed to run "
+					"Cfly precharge sequence");
+				status = ln9310_precharge_cfly_reset();
 				retry_count++;
+				continue;
 			}
 
-			if (!ln9310_init_completed) {
-				CPRINTS("LN9310 failed to start after %d retry attempts",
-						retry_count);
-			}
-		} else {
 			/*
-			* Internal LN9310 shutdown sequence is ok as is, so just reset
-			* the state to prepare for subsequent startup sequences.
-			*
-			* (1) set STANDBY_EN=1 to be sure the part turns off even if nEN=0
-			* (2) reset cfly precharge related registers to known initial state
-			*/
-			field_update8(LN9310_REG_STARTUP_CTRL,
-					LN9310_STARTUP_STANDBY_EN,
-					1);
-
+			 * Only start the SC if the cfly precharge
+			 * hasn't timed out (i.e. ended too long ago)
+			 */
+			if (get_time().val < precharge_timeout) {
+				/* Clear the STANDBY_EN bit to enable the SC */
+				field_update8(LN9310_REG_STARTUP_CTRL,
+					      LN9310_STARTUP_STANDBY_EN, 0);
+				if (get_time().val > precharge_timeout) {
+					/*
+					 * if timed out during previous I2C
+					 * command, abort startup attempt
+					 */
+					field_update8(LN9310_REG_STARTUP_CTRL,
+						      LN9310_STARTUP_STANDBY_EN,
+						      1);
+				} else {
+					/*
+					 * all other paths should reattempt
+					 * startup
+					 */
+					ln9310_init_completed = true;
+				}
+			}
+			/*
+			 * Reset to known state for config bits related to cfly
+			 * precharge
+			 */
 			ln9310_precharge_cfly_reset();
+			retry_count++;
+		}
+
+		if (!ln9310_init_completed) {
+			CPRINTS("LN9310 failed to start "
+				"after %d retry attempts",
+				retry_count);
 		}
 	} else {
 		/*
-		* for newer LN9310 revsisions, the startup workaround is not required
-		* so the STANDBY_EN bit can just be set directly
-		*/
+		 * Internal LN9310 shutdown sequence is ok as is, so just reset
+		 * the state to prepare for subsequent startup sequences.
+		 *
+		 * (1) set STANDBY_EN=1 to be sure the part turns off even if
+		 * nEN=0
+		 * (2) reset cfly precharge related registers to known
+		 * initial state
+		 */
 		field_update8(LN9310_REG_STARTUP_CTRL,
-					LN9310_STARTUP_STANDBY_EN,
-					!enable);
+			      LN9310_STARTUP_STANDBY_EN, 1);
+
+		ln9310_precharge_cfly_reset();
 	}
 	return;
 }
