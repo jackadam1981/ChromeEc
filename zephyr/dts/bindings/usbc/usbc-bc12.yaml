@@ -1,0 +1,25 @@
+description: USBC BC1.2
+
+compatible: "usbc-bc12"
+
+properties:
+  port:
+    type: phandle
+    required: true
+    description: |
+      I2C port used to communicate with controller
+
+  addr-flags:
+    type: string
+    default: "PI3USB9201_I2C_ADDR_3_FLAGS"
+    enum:
+      - "MT6360_PMU_I2C_ADDR_FLAGS"
+      - "MT6360_PMIC_I2C_ADDR_FLAGS"
+      - "MT6360_LDO_I2C_ADDR_FLAGS"
+      - "MT6360_PD_I2C_ADDR_FLAGS"
+      - "PI3USB9201_I2C_ADDR_0_FLAGS"
+      - "PI3USB9201_I2C_ADDR_1_FLAGS"
+      - "PI3USB9201_I2C_ADDR_2_FLAGS"
+      - "PI3USB9201_I2C_ADDR_3_FLAGS"
+    description: |
+      I2C address of controller
