@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "036a707f_4622b13c",
+        "filename": "zephyr/emul/emul_isl923x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-04T09:44:17Z",
+      "side": 1,
+      "message": "How about moving all of these in a common function or macro? (in a followup patch of course)",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 0
+      },
+      "revId": "d0c9fc4e88c39018473f48a71ae948f024357e3b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
