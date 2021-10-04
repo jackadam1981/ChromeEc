@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6c1852_6d836866",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-04T22:51:53Z",
+      "side": 1,
+      "message": "These names have more meaning regarding the I2C bus, as opposed to the USB-C port number.\n\nI also think we might need another level in the devicetree.  Maybe something like:\n\nusbc {\n    port0: usb-port0 {\n        compatible \"usbc-port\";\n        bc12 {\n            compatible \u003d \"pericom,pi3usb9201\";\n        };\n        tcpc {\n            compatible \u003d \"parade,ps8805\";\n        };\n        ppc {\n            compatible \u003d \"silergy,syv682x\";\n        };\n    };\n    port1: usb-port1 { ... }\n    port2: usb-port2 { ... }\n};\n\nEach driver would then use DT_FOREACH_STATUS_OKAY(compat, fn) to iterate over all USB ports, finding the enabled drivers.\n\nThe usb_port probably needs it\u0027s own driver, so we can do the equivalent of DT_INST_BUS() to associate the USB port number with each BC12, TCPC, PPC, driver initialized.\n\nI\u0027m not sure how feasible this is before the full USB-C upstream work.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "08a04c67ac0f6c921fda9a96c5341468b4910736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
