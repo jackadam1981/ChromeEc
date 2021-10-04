@@ -412,7 +412,7 @@ void i2c_target_service(i2c_req_t *req)
 /**
  * I2C0_IRQHandler() - Async Handler for I2C Target driver.
  */
-static void I2C0_IRQHandler(void)
+static void __keep I2C0_IRQHandler(void)
 {
 	i2c_target_handler(i2c_bus_ports[0]);
 }
@@ -420,7 +420,7 @@ static void I2C0_IRQHandler(void)
 /**
  * I2C1_IRQHandler() - Async Handler for I2C Target driver.
  */
-static void I2C1_IRQHandler(void)
+static void __keep I2C1_IRQHandler(void)
 {
 	i2c_target_handler(i2c_bus_ports[1]);
 }
