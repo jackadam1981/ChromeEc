@@ -311,6 +311,7 @@ void npcx_adc_register_thresh_irq(int threshold_idx,
 	SET_BIT(NPCX_THRCTL(threshold_idx), NPCX_THRCTL_THEN);
 }
 
+DECLARE_IRQ(NPCX_IRQ_ADC, adc_interrupt, 4);
 /**
  * ADC interrupt handler
  *
@@ -354,7 +355,6 @@ static void adc_interrupt(void)
 		}
 	}
 }
-DECLARE_IRQ(NPCX_IRQ_ADC, adc_interrupt, 4);
 
 /**
  * ADC initial.
