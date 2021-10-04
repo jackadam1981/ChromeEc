@@ -165,6 +165,7 @@ void __hw_clock_event_clear(void)
 	evt_cnt = 0;
 }
 
+DECLARE_IRQ(ITIM_INT(ITIM_EVENT_NO), __hw_clock_event_irq, 3);
 /* Irq for hwtimer event */
 static void __hw_clock_event_irq(void)
 {
@@ -196,7 +197,6 @@ static void __hw_clock_event_irq(void)
 #endif
 
 }
-DECLARE_IRQ(ITIM_INT(ITIM_EVENT_NO), __hw_clock_event_irq, 3);
 
 /*****************************************************************************/
 /* HWTimer tick handlers */
@@ -245,6 +245,7 @@ void __hw_clock_source_set(uint32_t ts)
 	hw_clock_source_set_preload(ts, 0);
 }
 
+DECLARE_IRQ(ITIM_INT(ITIM_SYSTEM_NO), __hw_clock_source_irq, 3);
 /* Irq for hwtimer tick */
 static void __hw_clock_source_irq(void)
 {
@@ -264,7 +265,6 @@ static void __hw_clock_source_irq(void)
 #endif
 	}
 }
-DECLARE_IRQ(ITIM_INT(ITIM_SYSTEM_NO), __hw_clock_source_irq, 3);
 
 /* Handle ITIM32 overflow if interrupt is disabled */
 void __hw_clock_handle_overflow(uint32_t clksrc_high)
