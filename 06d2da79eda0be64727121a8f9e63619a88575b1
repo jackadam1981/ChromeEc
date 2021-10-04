@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e87e13d_2c37d987",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-04T22:43:26Z",
+      "side": 1,
+      "message": "nit: Why are we commenting what it is versus writing it as bitwise code operations?",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 61
+      },
+      "revId": "06d2da79eda0be64727121a8f9e63619a88575b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
