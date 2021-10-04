@@ -154,7 +154,7 @@ void keyboard_raw_enable_interrupt(int enable)
 /*
  * Interrupt handler for the entire GPIO bank of keyboard rows.
  */
-static void keyboard_raw_interrupt(void)
+static void __keep keyboard_raw_interrupt(void)
 {
 	/* Clear pending input sources used by scanner */
 	NPCX_WKPCL(MIWU_TABLE_WKKEY, MIWU_GROUP_WKKEY) = 0xFF;
