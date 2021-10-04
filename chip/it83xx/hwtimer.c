@@ -173,7 +173,7 @@ int __hw_clock_source_init(uint32_t start_t)
 	return et_ctrl_regs[EVENT_EXT_TIMER].irq;
 }
 
-static void __hw_clock_source_irq(void)
+static void __keep __hw_clock_source_irq(void)
 {
 	/* Determine interrupt number. */
 	int irq = intc_get_ec_int();

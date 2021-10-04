@@ -87,7 +87,7 @@ int32_t audio_codec_wov_read(void *buf, uint32_t count)
 	return (void *)out - buf;
 }
 
-static void wov_fifo_interrupt_handler(void)
+static void __keep wov_fifo_interrupt_handler(void)
 {
 #ifdef HAS_TASK_WOV
 	task_wake(TASK_ID_WOV);
