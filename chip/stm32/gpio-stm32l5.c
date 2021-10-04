@@ -48,7 +48,7 @@ static void gpio_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, gpio_init, HOOK_PRIO_DEFAULT);
 
-static void _gpio_interrupt(void)
+static void __keep _gpio_interrupt(void)
 {
 	gpio_interrupt();
 }
