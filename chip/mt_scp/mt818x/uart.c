@@ -95,7 +95,7 @@ void uart_process(void)
 
 #if (UARTN < SCP_UART_COUNT)
 DECLARE_IRQ(UART_IRQ(UARTN), uart_interrupt, 2);
-static void uart_interrupt(void)
+static void __keep uart_interrupt(void)
 {
 	uint8_t ier;
 
@@ -107,7 +107,7 @@ static void uart_interrupt(void)
 }
 
 DECLARE_IRQ(UART_RX_IRQ(UARTN), uart_rx_interrupt, 2);
-static void uart_rx_interrupt(void)
+static void __keep uart_rx_interrupt(void)
 {
 	uint8_t ier;
 
