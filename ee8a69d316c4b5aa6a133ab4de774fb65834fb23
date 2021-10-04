@@ -16,6 +16,29 @@
       "message": "For early board, keep tabletmode setting",
       "revId": "ee8a69d316c4b5aa6a133ab4de774fb65834fb23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63e328c2_373706b0",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-04T22:13:51Z",
+      "side": 1,
+      "message": "This line is checking tablet_mode in the current config, which is not valid according to the comment above. Can you please clarify the meaning of this check?",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "ee8a69d316c4b5aa6a133ab4de774fb65834fb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
