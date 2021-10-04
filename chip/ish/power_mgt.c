@@ -740,7 +740,8 @@ DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats, "",
  * main FW only need handle PMU wakeup interrupt for D0i1 state, aontask will
  * handle PMU wakeup interrupt for other low power states
  */
-__maybe_unused static void pmu_wakeup_isr(void)
+__maybe_unused
+static void __keep pmu_wakeup_isr(void)
 {
 	/* at current nothing need to do */
 }
@@ -755,7 +756,8 @@ DECLARE_IRQ(ISH_PMU_WAKEUP_IRQ, pmu_wakeup_isr);
  *
  */
 
-__maybe_unused noreturn static void reset_prep_isr(void)
+__maybe_unused noreturn
+static void __keep reset_prep_isr(void)
 {
 	/* mask reset prep avail interrupt */
 	PMU_RST_PREP = PMU_RST_PREP_INT_MASK;
@@ -793,7 +795,7 @@ __maybe_unused static void handle_d3(uint32_t irq_vec)
 	}
 }
 
-static void d3_rise_isr(void)
+static void __keep d3_rise_isr(void)
 {
 	handle_d3(ISH_D3_RISE_VEC);
 }
