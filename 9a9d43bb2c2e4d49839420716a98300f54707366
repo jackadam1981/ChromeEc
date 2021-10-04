@@ -16,6 +16,29 @@
       "message": "Vadim, our CLs crossed, this is a fix",
       "revId": "9a9d43bb2c2e4d49839420716a98300f54707366",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eafcd416_328702ee",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 440,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-04T21:09:52Z",
+      "side": 1,
+      "message": "nit: uctx -\u003e ctx",
+      "range": {
+        "startLine": 440,
+        "startChar": 16,
+        "endLine": 440,
+        "endChar": 20
+      },
+      "revId": "9a9d43bb2c2e4d49839420716a98300f54707366",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
