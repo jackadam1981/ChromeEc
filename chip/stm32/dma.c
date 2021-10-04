@@ -375,7 +375,7 @@ DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_4_7, dma_event_interrupt_channel_4_7, 1);
 #else /* !CHIP_FAMILY_STM32F0 */
 
 #define DECLARE_DMA_IRQ(x) \
-	static void CONCAT2(dma_event_interrupt_channel_, x)(void) \
+	static void __keep CONCAT2(dma_event_interrupt_channel_, x)(void) \
 	{ \
 		dma_clear_isr(CONCAT2(STM32_DMAC_CH, x)); \
 		if (dma_irq[CONCAT2(STM32_DMAC_CH, x)].cb != NULL) \
