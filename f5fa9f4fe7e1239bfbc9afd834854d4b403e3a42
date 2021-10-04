@@ -16,6 +16,41 @@
       "message": "I built and flashed the Zephyr image and the device seems to work but is there some other way I can test this CL",
       "revId": "f5fa9f4fe7e1239bfbc9afd834854d4b403e3a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd5a20c1_8e1931d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-04T22:37:25Z",
+      "side": 1,
+      "message": "This change would be better if you restricted the implementation to the pi3usb9201 driver only.\n\nSomething like:\ncompatible: \"pericom,pi3usb9201\"\n\nproperties:\n  port:\n    type: phandle\n\n  i2c-addr-flags:\n  type: string\n  enum:\n      - \"PI3USB9201_I2C_ADDR_0_FLAGS\"\n      - \"PI3USB9201_I2C_ADDR_1_FLAGS\"\n      - \"PI3USB9201_I2C_ADDR_2_FLAGS\"\n      - \"PI3USB9201_I2C_ADDR_3_FLAGS\"\n      \n Then initailize the pi3usb9201_bc12_chips[] array based on device tree info.",
+      "revId": "f5fa9f4fe7e1239bfbc9afd834854d4b403e3a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ab37f40_d0a4fdb1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-04T22:37:25Z",
+      "side": 1,
+      "message": "To test BC1.2, you need to test host mode and client mode.\nTo test client mode, connect a USB-A cable to the DUTs type C using an A to C adapter.  You can verify the DUT starts charging using \"chgsup\".  Depending on what you connect to the USB-A cable, the DUT should charge at 500mA or 1.5A.\nTo test host mode, connect a non-PD device to the type C of the DUT.  The DUT should provide 5V power to the connected device.\n\nYou should also see debug messages from the pi3usb9201 driver indicating if it enabled host mode.",
+      "parentUuid": "0d64cbe1_4b5b8996",
+      "revId": "f5fa9f4fe7e1239bfbc9afd834854d4b403e3a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
