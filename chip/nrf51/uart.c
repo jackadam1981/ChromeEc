@@ -80,6 +80,7 @@ int uart_read_char(void)
 	return NRF51_UART_RXD;
 }
 
+DECLARE_IRQ(NRF51_PERID_USART, uart_interrupt, 2);
 /* Interrupt handler for console USART */
 static void uart_interrupt(void)
 {
@@ -100,7 +101,6 @@ static void uart_interrupt(void)
 #endif  /* CONFIG_UART_TX_DMA */
 
 }
-DECLARE_IRQ(NRF51_PERID_USART, uart_interrupt, 2);
 
 
 void uart_init(void)
