@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e54c7dc9_3d21466a",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-04T23:33:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c5e43abc_b4b05542",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "fd7dc954e553f74be9f7d1ba4a34d87250ba0ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bd6d50e0_826672ef",
@@ -83,6 +107,30 @@
       "writtenOn": "2021-09-28T04:47:30Z",
       "side": 1,
       "message": "This seem to be designed to support the Lazor pattern specifically, which combines the charge state with the power state but just for DISCHARGE only. When change to make to support 3 power sub-states for other charge states? like CHARGING_S0, CHARGING_S3, CHARGING_S5.\n\nMaybe you can think of other design to generalize it, without enumerating all the combinations. For example, use a property to define what charge state this pattern for, and use a property to define what power state this pattern for; the code iterates all the child binding, matches them with the current charge state and the current power state, and use first matched pattern.\n\nThe dts looks like:\n\n\tpowewr-state-discharge-s0 {\n\t\tled-color \u003d \"LED_BLUE\";\n\t\tcharge-state \u003d \"DISCHARGE\";\n\t\tpower-state \u003d \"S0\";\n\t};\n\tpower-state-discharge-s3 {\n\t\tled-color-1 \u003d \"LED_AMBER\";\n\t\tled-color-2 \u003d \"LED_OFF\";\n\t\tperiod \u003d \u003c4\u003e;\n\t\tcharge-state \u003d \"DISCHARGE\";\n\t\tpower-state \u003d \"S3\";\n\t};\n\t\nIt is easy to support more extra states, like battery level, etc. We don\u0027t need to enumerating all the combinations.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 51
+      },
+      "revId": "fd7dc954e553f74be9f7d1ba4a34d87250ba0ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "356ebb2a_ab45fa5d",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-04T23:33:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2306bc97_ed581000",
       "range": {
         "startLine": 29,
         "startChar": 0,

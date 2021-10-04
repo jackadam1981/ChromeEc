@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdc12cb2_d6af5125",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-04T23:33:33Z",
+      "side": 1,
+      "message": "Yes, updated to ANY to be clearer",
+      "parentUuid": "fc9249ff_1223e1c1",
+      "range": {
+        "startLine": 28,
+        "startChar": 18,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8971b437_30b7617f",
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "baead6e6_de575d23",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-04T23:33:33Z",
+      "side": 1,
+      "message": "period is the total of on_sec + off_sec. I was missing on_sec field which I added.\nLets say on_sec \u003d 2, off_sec \u003d 2.\nPeriod will be 4 (2 + 2)\n\nThe logic is (battery_ticks % period \u003c on_sec)\n\nSo for battery ticks:\n0 , 1 (0 % 4, 1 % 4 \u003c 2) -\u003e led on, \n2, 3 (2 % 4, 3 % 4 \u003e\u003d 2) -\u003e led off\n4, 5 led on, 6, 7 led off and so on.\n\nIt could be LED_COLOR and LED_OFF or it could be color_1 and color_2\nEg. 2 sec Amber, 2 sec Blue. So I have color_1 and color_2 fields",
+      "parentUuid": "8971b437_30b7617f",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0db3525_d57fdabf",
         "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
         "patchSetId": 5
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-04T16:11:34Z",
       "side": 1,
       "message": "What does it means? Do you need it, if the above `charge-state` support an enum to match any charge state (it doesn\u0027t care about the current charge state)?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d389907c_7200c9de",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-04T23:33:33Z",
+      "side": 1,
+      "message": "This flag is only for PWR_STATE_IDLE. If you will see board/lazor/led.c (ln. 109) , in PWR_STATE_IDLE, it looks for chflags to decide the color. Since it is only applicable to this particular state, does it make sense to remove this property and directly look up the enum pwr_state for this condition. See its use in current review led.c file",
+      "parentUuid": "a0db3525_d57fdabf",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -101,6 +173,24 @@
       "side": 1,
       "message": "Better to add some examples to describe its value. I am sure how this data represents. Do the same for the below `led_values` struct.",
       "parentUuid": "74c04c5e_1f91c886",
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e10f6c_706b75e2",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-04T23:33:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9f3e5bd5_7bdef8e5",
       "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -157,6 +247,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9df77d3_ec09ce7f",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-04T23:33:33Z",
+      "side": 1,
+      "message": "I had tried IF_ENABLED as well but I was missing the \u0027;\u0027, works now, thank you!",
+      "parentUuid": "fc011052_efe16fc8",
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e36ff91_cd827e2d",
@@ -170,6 +278,24 @@
       "writtenOn": "2021-10-01T18:51:58Z",
       "side": 1,
       "message": "Since this is applicable only to PWR_STATE_IDLE, should we remove chflags_enabled from policy and instead directly use: if (pwr_state \u003d\u003d PWR_STATE_IDLE) {....",
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e80d7a0c_e36c151f",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-04T23:33:33Z",
+      "side": 1,
+      "message": "It will also remove the need for adding color_3 node.",
+      "parentUuid": "4e36ff91_cd827e2d",
       "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
