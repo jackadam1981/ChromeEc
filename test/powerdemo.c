@@ -102,7 +102,7 @@ int power_demo_init(void)
 	return EC_SUCCESS;
 }
 
-
+DECLARE_IRQ(LM4_IRQ_GPIOD, __gpio_d_interrupt, 1);
 /* GPIO interrupt handler */
 static void __gpio_d_interrupt(void)
 {
@@ -123,9 +123,8 @@ static void __gpio_d_interrupt(void)
 	}
 }
 
-DECLARE_IRQ(LM4_IRQ_GPIOD, __gpio_d_interrupt, 1);
 
-
+DECLARE_IRQ(LM4_IRQ_TIMERW1A, __timer_w1_interrupt, 1);
 /* Timer interrupt handler */
 static void __timer_w1_interrupt(void)
 {
@@ -167,7 +166,6 @@ static void __timer_w1_interrupt(void)
 	}
 }
 
-DECLARE_IRQ(LM4_IRQ_TIMERW1A, __timer_w1_interrupt, 1);
 
 int power_demo_task(void)
 {
