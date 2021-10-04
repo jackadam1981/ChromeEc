@@ -1073,6 +1073,7 @@ const FPVW girq25_vw_handlers[MCHP_GIRQ25_NUM_M2S] = {
 	espi_vw_evt2_dflt,
 };
 
+DECLARE_IRQ(MCHP_IRQ_GIRQ24, espi_mswv1_interrupt, 2);
 /* Interrupt handler for eSPI virtual wires in MSVW00 - MSVW01 */
 static void espi_mswv1_interrupt(void)
 {
@@ -1091,9 +1092,9 @@ static void espi_mswv1_interrupt(void)
 		bpos = __builtin_ctz(girq24_result);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_GIRQ24, espi_mswv1_interrupt, 2);
 
 
+DECLARE_IRQ(MCHP_IRQ_GIRQ25, espi_msvw2_interrupt, 2);
 /* Interrupt handler for eSPI virtual wires in MSVW07 - MSVW10 */
 static void espi_msvw2_interrupt(void)
 {
@@ -1112,8 +1113,6 @@ static void espi_msvw2_interrupt(void)
 		bpos = __builtin_ctz(girq25_result);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_GIRQ25, espi_msvw2_interrupt, 2);
-
 
 
 /*
@@ -1133,6 +1132,7 @@ DECLARE_IRQ(MCHP_IRQ_GIRQ25, espi_msvw2_interrupt, 2);
  *	reception of channel enable messages from the eSPI Master.
  */
 
+DECLARE_IRQ(MCHP_IRQ_ESPI_RESET, espi_reset_isr, 3);
 /*
  * eSPI Reset change handler
  * Multiple scenarios must be handled.
@@ -1192,8 +1192,8 @@ static void espi_reset_isr(void)
 		CPRINTS("eSPI Reset assert");
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_RESET, espi_reset_isr, 3);
 
+DECLARE_IRQ(MCHP_IRQ_ESPI_VW_EN, espi_vw_en_isr, 2);
 /*
  * eSPI Virtual Wire channel enable handler
  * Must disable once VW Enable is set by eSPI Master
@@ -1212,9 +1212,8 @@ static void espi_vw_en_isr(void)
 	if (0x03 == (espi_channels_ready & 0x03))
 		espi_send_boot_load_done();
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_VW_EN, espi_vw_en_isr, 2);
 
-
+DECLARE_IRQ(MCHP_IRQ_ESPI_OOB_UP, espi_oob_tx_isr, 2);
 /*
  * eSPI OOB TX and OOB channel enable change interrupt handler
  */
@@ -1241,9 +1240,8 @@ static void espi_oob_tx_isr(void)
 		CPRINTS("eSPI OOB_UP status = 0x%x", sts);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_OOB_UP, espi_oob_tx_isr, 2);
 
-
+DECLARE_IRQ(MCHP_IRQ_ESPI_OOB_DN, espi_oob_rx_isr, 2);
 /* eSPI OOB RX interrupt handler */
 static void espi_oob_rx_isr(void)
 {
@@ -1255,9 +1253,8 @@ static void espi_oob_rx_isr(void)
 	/* Handle OOB Up transmit status: done and/or errors, if any */
 	CPRINTS("eSPI OOB_DN status = 0x%x", sts);
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_OOB_DN, espi_oob_rx_isr, 2);
 
-
+DECLARE_IRQ(MCHP_IRQ_ESPI_FC, espi_fc_isr, 2);
 /*
  * eSPI Flash Channel enable change and data transfer
  * interrupt handler
@@ -1286,9 +1283,8 @@ static void espi_fc_isr(void)
 		CPRINTS("eSPI FC status = 0x%x", sts);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_FC, espi_fc_isr, 2);
 
-
+DECLARE_IRQ(MCHP_IRQ_ESPI_PC, espi_pc_isr, 2);
 /* eSPI Peripheral Channel interrupt handler */
 static void espi_pc_isr(void)
 {
@@ -1312,8 +1308,6 @@ static void espi_pc_isr(void)
 		CPRINTS("eSPI PC status = 0x%x", sts);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_ESPI_PC, espi_pc_isr, 2);
-
 
 /************************************************************************/
 
