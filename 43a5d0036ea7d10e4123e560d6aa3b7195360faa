@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b7014ba_847d984a",
+        "filename": "board/zinger/runtime.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-04T01:59:33Z",
+      "side": 1,
+      "message": "I think we should move this line out of CONFIG_DEBUG_PRINTF guard to align the behaviour.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 18
+      },
+      "revId": "43a5d0036ea7d10e4123e560d6aa3b7195360faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
