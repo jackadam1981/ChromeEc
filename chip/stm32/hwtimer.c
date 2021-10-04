@@ -236,7 +236,7 @@ void __hw_clock_source_set(uint32_t ts)
 	STM32_TIM_CR1(TIM_CLOCK_LSB) |= 1;
 }
 
-static void __hw_clock_source_irq(void)
+static void __keep __hw_clock_source_irq(void)
 {
 	uint32_t stat_tim_msb = STM32_TIM_SR(TIM_CLOCK_MSB);
 

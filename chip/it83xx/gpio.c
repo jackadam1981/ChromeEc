@@ -866,7 +866,7 @@ static void gpio_interrupt(int port, uint8_t mask)
  * the interrupt number which was triggered, calls the master handler above,
  * and clears status registers.
  */
-static void __gpio_irq(void)
+static void __keep __gpio_irq(void)
 {
 	/* Determine interrupt number. */
 	int irq = intc_get_ec_int();
