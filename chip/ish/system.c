@@ -206,6 +206,9 @@ void clear_fabric_error(void)
 	clear_register(PER0_FABRIC_BASE + 0x1000 + ERROR_LOG);
 }
 
+#ifdef CONFIG_ISH_CLEAR_FABRIC_ERRORS
+DECLARE_IRQ(ISH_FABRIC_IRQ, fabric_isr);
+#endif
 static __maybe_unused void fabric_isr(void)
 {
 	/**
@@ -216,6 +219,3 @@ static __maybe_unused void fabric_isr(void)
 	if (FABRIC_AGENT_STATUS & FABRIC_MIA_STATUS_BIT_ERR)
 		FABRIC_AGENT_STATUS = FABRIC_AGENT_STATUS;
 }
-#ifdef CONFIG_ISH_CLEAR_FABRIC_ERRORS
-DECLARE_IRQ(ISH_FABRIC_IRQ, fabric_isr);
-#endif
