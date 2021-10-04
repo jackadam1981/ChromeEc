@@ -223,6 +223,8 @@ static void gpio_interrupt(int port, uint32_t mis)
 	}
 }
 
+DECLARE_IRQ(EC_GPIO0_IRQn, __gpio_0_interrupt, 1);
+
 /**
  * Handlers for each GPIO port. Read the interrupt status, call the common GPIO
  * interrupt handler and clear the GPIO hardware interrupt status.
@@ -238,4 +240,3 @@ static void gpio_interrupt(int port, uint32_t mis)
 
 GPIO_IRQ_FUNC(__gpio_0_interrupt, PORT_0);
 #undef GPIO_IRQ_FUNC
-DECLARE_IRQ(EC_GPIO0_IRQn, __gpio_0_interrupt, 1);
