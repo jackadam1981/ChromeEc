@@ -202,6 +202,7 @@ void __hw_clock_source_set64(uint64_t timestamp)
 	HPET_GENERAL_CONFIG |= HPET_ENABLE_CNF;
 }
 
+DECLARE_IRQ(ISH_HPET_TIMER1_IRQ, hw_clock_event_isr);
 static void hw_clock_event_isr(void)
 {
 	/* Clear interrupt */
@@ -210,7 +211,6 @@ static void hw_clock_event_isr(void)
 
 	process_timers(0);
 }
-DECLARE_IRQ(ISH_HPET_TIMER1_IRQ, hw_clock_event_isr);
 
 int __hw_clock_source_init64(uint64_t start_t)
 {
