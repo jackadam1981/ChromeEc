@@ -160,6 +160,7 @@ int uart_read_char(void)
 	return STM32_USART_RDR(UARTN_BASE);
 }
 
+DECLARE_IRQ(STM32_IRQ_USART(UARTN), uart_interrupt, 2);
 /* Interrupt handler for console USART */
 static void uart_interrupt(void)
 {
@@ -215,7 +216,6 @@ static void uart_interrupt(void)
 		STM32_USART_CR1(UARTN_BASE) |= STM32_USART_CR1_TXEIE;
 #endif
 }
-DECLARE_IRQ(STM32_IRQ_USART(UARTN), uart_interrupt, 2);
 
 /**
  * Handle clock frequency changes
