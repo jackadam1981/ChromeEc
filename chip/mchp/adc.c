@@ -139,6 +139,7 @@ static void adc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, adc_init, HOOK_PRIO_INIT_ADC);
 
+DECLARE_IRQ(MCHP_IRQ_ADC_SNGL, adc_interrupt, 2);
 static void adc_interrupt(void)
 {
 	MCHP_INT_DISABLE(MCHP_ADC_GIRQ) = MCHP_ADC_GIRQ_SINGLE_BIT;
@@ -154,4 +155,3 @@ static void adc_interrupt(void)
 	if (task_waiting != TASK_ID_INVALID)
 		task_wake(task_waiting);
 }
-DECLARE_IRQ(MCHP_IRQ_ADC_SNGL, adc_interrupt, 2);
