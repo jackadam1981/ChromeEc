@@ -1248,6 +1248,7 @@ enum ec_error_list stm32gx_ucpd_set_bist_test_mode(const int port,
 	return EC_SUCCESS;
 }
 
+DECLARE_IRQ(STM32_IRQ_UCPD1, stm32gx_ucpd1_irq, 1);
 static void stm32gx_ucpd1_irq(void)
 {
 	/* STM32_IRQ_UCPD indicates this is from UCPD1, so port = 0 */
@@ -1375,7 +1376,6 @@ static void stm32gx_ucpd1_irq(void)
 	/* Clear interrupts now that PD events have been set */
 	STM32_UCPD_ICR(port) = sr;
 }
-DECLARE_IRQ(STM32_IRQ_UCPD1, stm32gx_ucpd1_irq, 1);
 
 #ifdef CONFIG_STM32G4_UCPD_DEBUG
 static char ctrl_names[][12] = {
