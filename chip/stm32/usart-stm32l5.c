@@ -87,12 +87,11 @@ struct usart_hw_config const usart1_hw = {
 	.ops            = &usart_variant_hw_ops,
 };
 
+DECLARE_IRQ(STM32_IRQ_USART1, usart1_interrupt, 2);
 static void usart1_interrupt(void)
 {
 	usart_interrupt(configs[0]);
 }
-
-DECLARE_IRQ(STM32_IRQ_USART1, usart1_interrupt, 2);
 #endif
 
 #if defined(CONFIG_STREAM_USART2)
@@ -105,12 +104,11 @@ struct usart_hw_config const usart2_hw = {
 	.ops            = &usart_variant_hw_ops,
 };
 
+DECLARE_IRQ(STM32_IRQ_USART2, usart2_interrupt, 2);
 static void usart2_interrupt(void)
 {
 	usart_interrupt(configs[1]);
 }
-
-DECLARE_IRQ(STM32_IRQ_USART2, usart2_interrupt, 2);
 #endif
 
 #if defined(CONFIG_STREAM_USART3)
@@ -123,12 +121,11 @@ struct usart_hw_config const usart3_hw = {
 	.ops            = &usart_variant_hw_ops,
 };
 
+DECLARE_IRQ(STM32_IRQ_USART4, usart4_interrupt, 2);
 static void usart3_interrupt(void)
 {
 	usart_interrupt(configs[2]);
 }
-
-DECLARE_IRQ(STM32_IRQ_USART4, usart4_interrupt, 2);
 #endif
 
 #if defined(CONFIG_STREAM_USART4)
@@ -141,10 +138,9 @@ struct usart_hw_config const usart4_hw = {
 	.ops            = &usart_variant_hw_ops,
 };
 
+DECLARE_IRQ(STM32_IRQ_USART4, usart4_interrupt, 2);
 void usart4_interrupt(void)
 {
 	usart_interrupt(configs[2]);
 }
-
-DECLARE_IRQ(STM32_IRQ_USART4, usart4_interrupt, 2);
 #endif
