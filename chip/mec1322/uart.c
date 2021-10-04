@@ -100,6 +100,7 @@ static void uart_clear_rx_fifo(int channel)
 	MEC1322_UART_FCR = BIT(0) | BIT(1);
 }
 
+DECLARE_IRQ(MEC1322_IRQ_UART, uart_ec_interrupt, 1);
 /**
  * Interrupt handler for UART
  */
@@ -109,7 +110,6 @@ static void uart_ec_interrupt(void)
 	uart_process_input();
 	uart_process_output();
 }
-DECLARE_IRQ(MEC1322_IRQ_UART, uart_ec_interrupt, 1);
 
 void uart_init(void)
 {
