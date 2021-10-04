@@ -427,19 +427,19 @@ static void i2c_interrupt_handler(struct i2c_context *ctx)
 	task_set_event(ctx->wait_task_id, TASK_EVENT_I2C_IDLE);
 }
 
-static void i2c_isr_bus0(void)
+static void __keep i2c_isr_bus0(void)
 {
 	i2c_interrupt_handler(&i2c_ctxs[0]);
 }
 DECLARE_IRQ(ISH_I2C0_IRQ, i2c_isr_bus0);
 
-static void i2c_isr_bus1(void)
+static void __keep i2c_isr_bus1(void)
 {
 	i2c_interrupt_handler(&i2c_ctxs[1]);
 }
 DECLARE_IRQ(ISH_I2C1_IRQ, i2c_isr_bus1);
 
-static void i2c_isr_bus2(void)
+static void __keep i2c_isr_bus2(void)
 {
 	i2c_interrupt_handler(&i2c_ctxs[2]);
 }

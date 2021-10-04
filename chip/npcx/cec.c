@@ -782,7 +782,7 @@ static void cec_event_tx(void)
 		enter_state(CEC_STATE_INITIATOR_FREE_TIME);
 }
 
-static void cec_isr(void)
+static void __keep cec_isr(void)
 {
 	int mdl = NPCX_MFT_MODULE_1;
 	uint8_t events;
