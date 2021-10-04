@@ -509,7 +509,7 @@ void pd_rx_handler(void)
 	}
 }
 #ifdef CONFIG_USB_PD_RX_COMP_IRQ
-static void _pd_rx_handler(void)
+static void __keep _pd_rx_handler(void)
 {
 	pd_rx_handler();
 }

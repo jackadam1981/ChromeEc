@@ -984,8 +984,7 @@ static void usb_enumdone(void)
 	/* We can change to HS here. We will not go to HS today */
 	GR_USB_DCTL |= DCTL_CGOUTNAK;
 }
-
-static void usb_interrupt(void)
+static void __keep usb_interrupt(void)
 {
 	uint32_t status = GR_USB_GINTSTS & GR_USB_GINTMSK;
 	uint32_t oepint = status & GINTSTS(OEPINT);
