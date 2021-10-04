@@ -299,11 +299,11 @@ static void i2c_event_handler(int port)
 	}
 }
 
+DECLARE_IRQ(IRQ_SLAVE, i2c_event_interrupt, 2);
 static void i2c_event_interrupt(void)
 {
 	i2c_event_handler(I2C_PORT_EC);
 }
-DECLARE_IRQ(IRQ_SLAVE, i2c_event_interrupt, 2);
 #endif
 
 /*****************************************************************************/
