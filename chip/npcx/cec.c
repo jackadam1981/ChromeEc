@@ -787,6 +787,7 @@ static void cec_event_tx(void)
 		enter_state(CEC_STATE_INITIATOR_FREE_TIME);
 }
 
+DECLARE_IRQ(NPCX_IRQ_MFT_1, cec_isr, 4);
 static void cec_isr(void)
 {
 	int mdl = NPCX_MFT_MODULE_1;
@@ -817,7 +818,6 @@ static void cec_isr(void)
 	/* Clear handled events */
 	SET_FIELD(NPCX_TECLR(mdl), FIELD(0, 4), events);
 }
-DECLARE_IRQ(NPCX_IRQ_MFT_1, cec_isr, 4);
 
 static int cec_send(const uint8_t *msg, uint8_t len)
 {
