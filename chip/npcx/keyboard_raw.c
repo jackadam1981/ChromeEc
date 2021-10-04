@@ -149,6 +149,7 @@ void keyboard_raw_enable_interrupt(int enable)
 		task_disable_irq(NPCX_IRQ_KSI_WKINTC_1);
 }
 
+DECLARE_IRQ(NPCX_IRQ_KSI_WKINTC_1, keyboard_raw_interrupt, 5);
 /*
  * Interrupt handler for the entire GPIO bank of keyboard rows.
  */
@@ -160,7 +161,6 @@ void keyboard_raw_interrupt(void)
 	/* Wake the scan task */
 	task_wake(TASK_ID_KEYSCAN);
 }
-DECLARE_IRQ(NPCX_IRQ_KSI_WKINTC_1, keyboard_raw_interrupt, 5);
 
 int keyboard_raw_is_input_low(int port, int id)
 {
