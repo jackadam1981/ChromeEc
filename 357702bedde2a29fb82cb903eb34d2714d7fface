@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55e97b17_6b702ed5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-04T15:46:30Z",
+      "side": 1,
+      "message": "I think we need to use the same timer. It doesn\u0027t matter why PRECHARGE started. What matters is how long PRECHARGE is lasting.",
+      "parentUuid": "61a1d1e2_ee272c5d",
+      "range": {
+        "startLine": 1839,
+        "startChar": 24,
+        "endLine": 1839,
+        "endChar": 44
+      },
+      "revId": "357702bedde2a29fb82cb903eb34d2714d7fface",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3d77748_93d340b5",
