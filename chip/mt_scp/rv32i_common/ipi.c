@@ -170,6 +170,7 @@ static void ipi_handler(void)
 		ipi_recv_buf->id, ipi_recv_buf->buffer, ipi_recv_buf->len);
 }
 
+DECLARE_IRQ(7, irq_group7_handler, 0);
 static void irq_group7_handler(void)
 {
 	extern volatile int ec_int;
@@ -181,4 +182,3 @@ static void irq_group7_handler(void)
 		task_clear_pending_irq(ec_int);
 	}
 }
-DECLARE_IRQ(7, irq_group7_handler, 0);

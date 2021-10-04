@@ -42,6 +42,7 @@ void __hw_clock_source_set(uint32_t ts)
 	LM4_TIMER_TAV(6) = 0xffffffff - ts;
 }
 
+DECLARE_IRQ(LM4_IRQ_TIMERW0A, __hw_clock_source_irq, 1);
 static void __hw_clock_source_irq(void)
 {
 	uint32_t status = LM4_TIMER_RIS(6);
@@ -55,7 +56,6 @@ static void __hw_clock_source_irq(void)
 	 */
 	process_timers(status & 0x01);
 }
-DECLARE_IRQ(LM4_IRQ_TIMERW0A, __hw_clock_source_irq, 1);
 
 static void update_prescaler(void)
 {

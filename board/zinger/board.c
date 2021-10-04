@@ -24,13 +24,13 @@ static uint32_t rsa_workbuf[3 * RSANUMWORDS];
 static uint32_t * const rw_rst =
 	(uint32_t *)(CONFIG_PROGRAM_MEMORY_BASE+CONFIG_RW_MEM_OFF+4);
 
+DECLARE_IRQ(STM32_IRQ_EXTI4_15, pd_rx_interrupt, 1);
 /* External interrupt EXTINT7 for external comparator on PA7 */
 static void pd_rx_interrupt(void)
 {
 	/* trigger reception handling */
 	pd_rx_handler();
 }
-DECLARE_IRQ(STM32_IRQ_EXTI4_15, pd_rx_interrupt, 1);
 
 static void jump_to_rw(void)
 {

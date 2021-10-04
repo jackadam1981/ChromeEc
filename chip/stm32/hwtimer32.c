@@ -49,6 +49,7 @@ void __hw_clock_source_set(uint32_t ts)
 	STM32_TIM32_CNT(TIM_CLOCK32) = ts;
 }
 
+DECLARE_IRQ(IRQ_TIM(TIM_CLOCK32), __hw_clock_source_irq, 1);
 static void __hw_clock_source_irq(void)
 {
 	uint32_t stat_tim = STM32_TIM_SR(TIM_CLOCK32);
@@ -62,7 +63,6 @@ static void __hw_clock_source_irq(void)
 	 */
 	process_timers(stat_tim & 0x01);
 }
-DECLARE_IRQ(IRQ_TIM(TIM_CLOCK32), __hw_clock_source_irq, 1);
 
 void __hw_timer_enable_clock(int n, int enable)
 {

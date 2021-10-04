@@ -105,6 +105,7 @@ void keyboard_raw_enable_interrupt(int enable)
 	}
 }
 
+DECLARE_IRQ(KB_SCAN_ROW_IRQ, keyboard_raw_interrupt, 3);
 /**
  * Interrupt handler for the entire GPIO bank of keyboard rows.
  */
@@ -116,4 +117,3 @@ static void keyboard_raw_interrupt(void)
 	/* Wake the scan task */
 	task_wake(TASK_ID_KEYSCAN);
 }
-DECLARE_IRQ(KB_SCAN_ROW_IRQ, keyboard_raw_interrupt, 3);

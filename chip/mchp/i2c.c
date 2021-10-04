@@ -1042,6 +1042,19 @@ static void handle_interrupt(int controller)
 		task_set_event(id, TASK_EVENT_I2C_IDLE);
 }
 
+DECLARE_IRQ(MCHP_IRQ_I2C_0, i2c0_interrupt, 2);
+DECLARE_IRQ(MCHP_IRQ_I2C_1, i2c1_interrupt, 2);
+DECLARE_IRQ(MCHP_IRQ_I2C_2, i2c2_interrupt, 2);
+DECLARE_IRQ(MCHP_IRQ_I2C_3, i2c3_interrupt, 2);
+#if defined(CHIP_FAMILY_MEC172X)
+DECLARE_IRQ(MCHP_IRQ_I2C_4, i2c4_interrupt, 2);
+#elif defined(CHIP_FAMILY_MEC152X)
+DECLARE_IRQ(MCHP_IRQ_I2C_4, i2c4_interrupt, 2);
+DECLARE_IRQ(MCHP_IRQ_I2C_5, i2c5_interrupt, 2);
+DECLARE_IRQ(MCHP_IRQ_I2C_6, i2c6_interrupt, 2);
+DECLARE_IRQ(MCHP_IRQ_I2C_7, i2c7_interrupt, 2);
+#endif
+
 static void i2c0_interrupt(void)
 {
 	handle_interrupt(0);
@@ -1080,17 +1093,4 @@ static void i2c7_interrupt(void)
 {
 	handle_interrupt(7);
 }
-#endif
-
-DECLARE_IRQ(MCHP_IRQ_I2C_0, i2c0_interrupt, 2);
-DECLARE_IRQ(MCHP_IRQ_I2C_1, i2c1_interrupt, 2);
-DECLARE_IRQ(MCHP_IRQ_I2C_2, i2c2_interrupt, 2);
-DECLARE_IRQ(MCHP_IRQ_I2C_3, i2c3_interrupt, 2);
-#if defined(CHIP_FAMILY_MEC172X)
-DECLARE_IRQ(MCHP_IRQ_I2C_4, i2c4_interrupt, 2);
-#elif defined(CHIP_FAMILY_MEC152X)
-DECLARE_IRQ(MCHP_IRQ_I2C_4, i2c4_interrupt, 2);
-DECLARE_IRQ(MCHP_IRQ_I2C_5, i2c5_interrupt, 2);
-DECLARE_IRQ(MCHP_IRQ_I2C_6, i2c6_interrupt, 2);
-DECLARE_IRQ(MCHP_IRQ_I2C_7, i2c7_interrupt, 2);
 #endif

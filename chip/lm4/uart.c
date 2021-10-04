@@ -98,6 +98,7 @@ static void uart_clear_rx_fifo(int channel)
 		scratch = LM4_UART_DR(channel);
 }
 
+DECLARE_IRQ(LM4_IRQ_UART0, uart_ec_interrupt, 1);
 /**
  * Interrupt handler for UART0
  */
@@ -111,10 +112,11 @@ static void uart_ec_interrupt(void)
 	uart_process_input();
 	uart_process_output();
 }
-DECLARE_IRQ(LM4_IRQ_UART0, uart_ec_interrupt, 1);
 
 #ifdef CONFIG_UART_HOST
 
+/* Must be same prio as LPC interrupt handler so they don't preempt */
+DECLARE_IRQ(IRQ_UART_HOST, uart_host_interrupt, 2);
 /**
  * Interrupt handler for Host UART
  */
@@ -144,8 +146,6 @@ static void uart_host_interrupt(void)
 		lpc_comx_put_char(LM4_UART_DR(CONFIG_UART_HOST));
 #endif
 }
-/* Must be same prio as LPC interrupt handler so they don't preempt */
-DECLARE_IRQ(IRQ_UART_HOST, uart_host_interrupt, 2);
 
 #endif /* CONFIG_UART_HOST */
 
