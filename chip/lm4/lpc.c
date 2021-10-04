@@ -539,6 +539,7 @@ static void lpc_chipset_reset(void)
 DECLARE_DEFERRED(lpc_chipset_reset);
 #endif
 
+DECLARE_IRQ(LM4_IRQ_LPC, lpc_interrupt, 2);
 /**
  * LPC interrupt handler
  */
@@ -618,7 +619,6 @@ static void lpc_interrupt(void)
 			lpc_get_pltrst_asserted() ? "" : "de");
 	}
 }
-DECLARE_IRQ(LM4_IRQ_LPC, lpc_interrupt, 2);
 
 /* Enable LPC ACPI-EC interrupts */
 void lpc_enable_acpi_interrupts(void)
