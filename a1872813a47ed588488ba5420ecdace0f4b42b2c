@@ -22,6 +22,30 @@
       },
       "revId": "a1872813a47ed588488ba5420ecdace0f4b42b2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50a0b145_79178189",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-10-04T12:41:54Z",
+      "side": 1,
+      "message": "I\u0027m not quite understand your suggestion.\n\nIf I don\u0027t comment out \"lid_standard_ref and base_standard_ref\", it may have build error because of \"defined but not used\".\n\nWe\u0027d like to turn off motion sensor feature now until we get EVT unit and calibrate it.",
+      "parentUuid": "7f94e1c2_2b018700",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 5
+      },
+      "revId": "a1872813a47ed588488ba5420ecdace0f4b42b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
