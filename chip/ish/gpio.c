@@ -151,7 +151,7 @@ static void gpio_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, gpio_init, HOOK_PRIO_DEFAULT);
 
-static void gpio_interrupt(void)
+static void __keep gpio_interrupt(void)
 {
 	int i;
 	const struct gpio_info *g = gpio_list;
