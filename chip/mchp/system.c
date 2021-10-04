@@ -564,11 +564,11 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 		;
 }
 
+DECLARE_IRQ(MCHP_IRQ_HTIMER0, htimer_interrupt, 1);
 static void htimer_interrupt(void)
 {
 	/* Time to wake up */
 }
-DECLARE_IRQ(MCHP_IRQ_HTIMER0, htimer_interrupt, 1);
 
 enum ec_image system_get_shrspi_image_copy(void)
 {

@@ -153,6 +153,15 @@ int gpio_clear_pending_interrupt(enum gpio_signal signal)
 /*****************************************************************************/
 /* Interrupt handler */
 
+#ifdef CHIP_FAMILY_STM32F0
+DECLARE_IRQ(STM32_IRQ_EXTI0_1, _gpio_interrupt, STM32_IRQ_EXT0_1_PRIORITY);
+DECLARE_IRQ(STM32_IRQ_EXTI2_3, _gpio_interrupt, STM32_IRQ_EXT2_3_PRIORITY);
+DECLARE_IRQ(STM32_IRQ_EXTI4_15, _gpio_interrupt, STM32_IRQ_EXTI4_15_PRIORITY);
+static void _gpio_interrupt(void)
+{
+	gpio_interrupt();
+}
+#endif
 void __keep gpio_interrupt(void)
 {
 	int bit;
@@ -170,12 +179,3 @@ void __keep gpio_interrupt(void)
 			gpio_irq_handlers[signal](signal);
 	}
 }
-#ifdef CHIP_FAMILY_STM32F0
-static void _gpio_interrupt(void)
-{
-	gpio_interrupt();
-}
-DECLARE_IRQ(STM32_IRQ_EXTI0_1, _gpio_interrupt, STM32_IRQ_EXT0_1_PRIORITY);
-DECLARE_IRQ(STM32_IRQ_EXTI2_3, _gpio_interrupt, STM32_IRQ_EXT2_3_PRIORITY);
-DECLARE_IRQ(STM32_IRQ_EXTI4_15, _gpio_interrupt, STM32_IRQ_EXTI4_15_PRIORITY);
-#endif

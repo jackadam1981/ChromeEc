@@ -253,6 +253,7 @@ static void configure_pvd(void)
 	STM32_PWR_CR |= STM32_PWR_PVDE;
 }
 
+DECLARE_IRQ(STM32_IRQ_PVD, pvd_interrupt, HOOK_PRIO_FIRST);
 static void pvd_interrupt(void)
 {
 	/* Clear Pending Register */
@@ -260,7 +261,6 @@ static void pvd_interrupt(void)
 	/* Handle recovery by rebooting the system */
 	system_reset(0);
 }
-DECLARE_IRQ(STM32_IRQ_PVD, pvd_interrupt, HOOK_PRIO_FIRST);
 
 #endif /* CONFIG_PVD */
 

@@ -999,6 +999,8 @@ static void usb_enumdone(void)
 }
 
 
+DECLARE_IRQ(STM32_IRQ_OTG_FS, usb_interrupt, 1);
+DECLARE_IRQ(STM32_IRQ_OTG_HS, usb_interrupt, 1);
 static void usb_interrupt(void)
 {
 	uint32_t status = GR_USB_GINTSTS & GR_USB_GINTMSK;
@@ -1048,8 +1050,6 @@ static void usb_interrupt(void)
 
 	GR_USB_GINTSTS = status;
 }
-DECLARE_IRQ(STM32_IRQ_OTG_FS, usb_interrupt, 1);
-DECLARE_IRQ(STM32_IRQ_OTG_HS, usb_interrupt, 1);
 
 static void usb_softreset(void)
 {

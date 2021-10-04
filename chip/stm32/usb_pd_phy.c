@@ -446,6 +446,13 @@ uint64_t get_time_since_last_edge(int port)
 	return get_time().val - rx_edge_ts[port][prev_idx].val;
 }
 
+#ifdef CONFIG_USB_PD_RX_COMP_IRQ
+DECLARE_IRQ(STM32_IRQ_COMP, _pd_rx_handler, 1);
+static void _pd_rx_handler(void)
+{
+	pd_rx_handler();
+}
+#endif
 /* detect an edge on the PD RX pin */
 void pd_rx_handler(void)
 {
@@ -506,13 +513,6 @@ defined(CONFIG_USB_PD_LOW_POWER_IDLE_WHEN_CONNECTED)
 		}
 	}
 }
-#ifdef CONFIG_USB_PD_RX_COMP_IRQ
-static void _pd_rx_handler(void)
-{
-	pd_rx_handler();
-}
-DECLARE_IRQ(STM32_IRQ_COMP, _pd_rx_handler, 1);
-#endif
 
 /* --- release hardware --- */
 void pd_hw_release(int port)
