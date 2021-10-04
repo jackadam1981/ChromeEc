@@ -168,7 +168,7 @@ static void print_error(enum pd_rx_errors err)
 static timestamp_t rx_edge_ts[2][PD_RX_TRANSITION_COUNT];
 static int rx_edge_ts_idx[2];
 
-static void rx_event(void)
+static void __keep rx_event(void)
 {
 	int pending, i;
 	int next_idx;
