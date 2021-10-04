@@ -16,6 +16,23 @@
       "message": "ping",
       "revId": "af268fe1c0d59bfaea508604053016076cf40b4c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a117ab_08ec915d",
+        "filename": "board/nipperkin/board.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1390635
+      },
+      "writtenOn": "2021-10-04T14:06:26Z",
+      "side": 1,
+      "message": "nit: Please make the const names more descriptive. For example,\n\nkeybd_privacy_screen_backlight\nkeybd_no_privacy_screen_backlight\nkeybd_privacy_screen_no_backlight\nkeybd_no_privacy_screen_no_backlight",
+      "revId": "af268fe1c0d59bfaea508604053016076cf40b4c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
