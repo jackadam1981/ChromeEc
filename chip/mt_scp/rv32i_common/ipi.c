@@ -170,7 +170,7 @@ static void ipi_handler(void)
 		ipi_recv_buf->id, ipi_recv_buf->buffer, ipi_recv_buf->len);
 }
 
-static void irq_group7_handler(void)
+static void __keep irq_group7_handler(void)
 {
 	extern volatile int ec_int;
 
