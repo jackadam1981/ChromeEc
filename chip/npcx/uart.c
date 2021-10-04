@@ -196,6 +196,11 @@ int uart_read_char(void)
 	return uartn_read_char(CONSOLE_UART);
 }
 
+#ifdef NPCX_UART_FIFO_SUPPORT
+DECLARE_IRQ(CONSOLE_UART_IRQ, uart_ec_interrupt, 4);
+#else
+DECLARE_IRQ(CONSOLE_UART_IRQ, uart_ec_interrupt, 1);
+#endif
 /* Interrupt handler for Console UART */
 void uart_ec_interrupt(void)
 {
@@ -231,11 +236,6 @@ void uart_ec_interrupt(void)
 	uart_process_input();
 	uart_process_output();
 }
-#ifdef NPCX_UART_FIFO_SUPPORT
-DECLARE_IRQ(CONSOLE_UART_IRQ, uart_ec_interrupt, 4);
-#else
-DECLARE_IRQ(CONSOLE_UART_IRQ, uart_ec_interrupt, 1);
-#endif
 
 #ifdef CONFIG_UART_PAD_SWITCH
 /*
