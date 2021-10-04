@@ -108,6 +108,7 @@ static void uart_ec_interrupt(void)
 	IT83XX_UART_IER(UART_PORT) = uart_ier;
 }
 
+DECLARE_IRQ(CPU_INT_GROUP_9, intc_cpu_int_group_9, 1);
 static void intc_cpu_int_group_9(void)
 {
 	/* Determine interrupt number. */
@@ -121,7 +122,6 @@ static void intc_cpu_int_group_9(void)
 		break;
 	}
 }
-DECLARE_IRQ(CPU_INT_GROUP_9, intc_cpu_int_group_9, 1);
 
 static void uart_config(void)
 {

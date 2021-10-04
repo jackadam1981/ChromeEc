@@ -84,6 +84,7 @@ static void port_80_interrupt_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, port_80_interrupt_init, HOOK_PRIO_DEFAULT);
 
+DECLARE_IRQ(MEC1322_IRQ_TIMER16_1, port_80_interrupt, 2);
 static void port_80_interrupt(void)
 {
 	int data;
@@ -101,4 +102,3 @@ static void port_80_interrupt(void)
 	if (++idle_count >= INTERRUPT_DISABLE_IDLE_COUNT)
 		port_80_interrupt_disable();
 }
-DECLARE_IRQ(MEC1322_IRQ_TIMER16_1, port_80_interrupt, 2);

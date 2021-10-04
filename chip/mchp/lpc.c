@@ -641,6 +641,7 @@ void lpcrst_interrupt(enum gpio_signal signal)
 #endif
 }
 
+DECLARE_IRQ(MCHP_IRQ_EMI0, emi0_interrupt, 1);
 /*
  * TODO - Is this only for debug of EMI host communication
  * or logging of EMI host communication? We don't observe
@@ -654,7 +655,6 @@ static void emi0_interrupt(void)
 	CPRINTS("LPC Host 0x%02x -> EMI0 H2E(0)", h2e);
 	port_80_write(h2e);
 }
-DECLARE_IRQ(MCHP_IRQ_EMI0, emi0_interrupt, 1);
 
 /*
  * ISR empties BIOS Debug 0 FIFO and
@@ -726,6 +726,7 @@ static int acpi_ec0_custom(int is_cmd, uint8_t value,
 }
 #endif
 
+DECLARE_IRQ(MCHP_IRQ_ACPIEC0_IBF, acpi_0_interrupt, 1);
 static void acpi_0_interrupt(void)
 {
 	uint8_t value, result, is_cmd;
@@ -763,9 +764,9 @@ static void acpi_0_interrupt(void)
 	 */
 	lpc_generate_sci();
 }
-DECLARE_IRQ(MCHP_IRQ_ACPIEC0_IBF, acpi_0_interrupt, 1);
 
 #ifdef CONFIG_BOARD_ID_CMD_ACPI_EC1
+DECLARE_IRQ(MCHP_IRQ_ACPIEC0_OBE, acpi_0_obe_isr, 1);
 /*
  * ACPI EC0 output buffer empty ISR.
  * Used to handle custom ACPI EC0 command requiring
@@ -793,9 +794,9 @@ static void acpi_0_obe_isr(void)
 
 	lpc_generate_sci();
 }
-DECLARE_IRQ(MCHP_IRQ_ACPIEC0_OBE, acpi_0_obe_isr, 1);
 #endif
 
+DECLARE_IRQ(MCHP_IRQ_ACPIEC1_IBF, acpi_1_interrupt, 1);
 static void acpi_1_interrupt(void)
 {
 	uint8_t st = MCHP_ACPI_EC_STATUS(1);
@@ -847,9 +848,9 @@ static void acpi_1_interrupt(void)
 		host_command_received(&host_cmd_args);
 	}
 }
-DECLARE_IRQ(MCHP_IRQ_ACPIEC1_IBF, acpi_1_interrupt, 1);
 
 #ifdef HAS_TASK_KEYPROTO
+DECLARE_IRQ(MCHP_IRQ_8042EM_IBF, kb_ibf_interrupt, 1);
 /*
  * Reading data out of input buffer clears read-only status
  * in 8042EM. Next, we must clear aggregator status.
@@ -863,8 +864,8 @@ static void kb_ibf_interrupt(void)
 	MCHP_INT_SOURCE(MCHP_8042_GIRQ) = MCHP_8042_IBF_GIRQ_BIT;
 	task_wake(TASK_ID_KEYPROTO);
 }
-DECLARE_IRQ(MCHP_IRQ_8042EM_IBF, kb_ibf_interrupt, 1);
 
+DECLARE_IRQ(MCHP_IRQ_8042EM_OBE, kb_obe_interrupt, 1);
 /*
  * Interrupt generated when Host reads data byte from 8042EM
  * output buffer. The 8042EM STATUS.OBF bit will clear when the
@@ -877,7 +878,6 @@ static void kb_obe_interrupt(void)
 	MCHP_INT_SOURCE(MCHP_8042_GIRQ) = MCHP_8042_OBE_GIRQ_BIT;
 	task_wake(TASK_ID_KEYPROTO);
 }
-DECLARE_IRQ(MCHP_IRQ_8042EM_OBE, kb_obe_interrupt, 1);
 #endif
 
 /*
