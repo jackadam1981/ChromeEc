@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1300989_16da1c77",
+        "filename": "zephyr/projects/asurada/hayato/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-04T16:35:57Z",
+      "side": 1,
+      "message": "I don\u0027t believe this is needed. I absconded from another project and didn\u0027t see it would not be used but would increase the code size.\nThe line can be removed since the default for CONFIG_PLATFORM_EC_LED_PWM is \u0027n\u0027",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 82
+      },
+      "revId": "488f6c3953c639b93c7d8c7c0616710dac159f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e85f0169_3a927f3b",
+        "filename": "zephyr/projects/asurada/hayato/prj.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-04T16:35:57Z",
+      "side": 1,
+      "message": "CONFIG_PLATFORM_EC_CONSOLE_CMD_LEDTEST should default to \u0027n\u0027 if CONFIG_PLATFORM_EC_LED_PWM is disabled.",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 54
+      },
+      "revId": "488f6c3953c639b93c7d8c7c0616710dac159f41",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
