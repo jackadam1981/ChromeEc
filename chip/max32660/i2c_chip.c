@@ -408,6 +408,7 @@ void i2c_slave_service(i2c_req_t *req)
 	}
 }
 
+DECLARE_IRQ(EC_I2C0_IRQn, I2C0_IRQHandler, 1);
 /**
  * I2C0_IRQHandler() - Async Handler for I2C Slave driver.
  */
@@ -416,6 +417,7 @@ static void I2C0_IRQHandler(void)
 	i2c_slave_handler(i2c_bus_ports[0]);
 }
 
+DECLARE_IRQ(EC_I2C1_IRQn, I2C1_IRQHandler, 1);
 /**
  * I2C1_IRQHandler() - Async Handler for I2C Slave driver.
  */
@@ -423,9 +425,6 @@ static void I2C1_IRQHandler(void)
 {
 	i2c_slave_handler(i2c_bus_ports[1]);
 }
-
-DECLARE_IRQ(EC_I2C0_IRQn, I2C0_IRQHandler, 1);
-DECLARE_IRQ(EC_I2C1_IRQn, I2C1_IRQHandler, 1);
 
 /**
  * i2c_slave_service_read() - Services the Master I2C read from the slave.

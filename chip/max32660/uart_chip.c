@@ -219,6 +219,7 @@ int uart_read_char(void)
 	return uartn_read_char(UARTN);
 }
 
+DECLARE_IRQ(EC_UART_IRQn, uart_rxtx_interrupt, 1);
 /**
  * Interrupt handlers for UART
  */
@@ -230,7 +231,6 @@ static void uart_rxtx_interrupt(void)
 	uart_process_output();
 	uartn_clear_interrupt_flags(UARTN);
 }
-DECLARE_IRQ(EC_UART_IRQn, uart_rxtx_interrupt, 1);
 
 void uart_init(void)
 {

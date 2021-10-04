@@ -236,6 +236,8 @@ void __hw_clock_source_set(uint32_t ts)
 	STM32_TIM_CR1(TIM_CLOCK_LSB) |= 1;
 }
 
+DECLARE_IRQ(IRQ_MSB, __hw_clock_source_irq, 1);
+DECLARE_IRQ(IRQ_LSB, __hw_clock_source_irq, 1);
 static void __hw_clock_source_irq(void)
 {
 	uint32_t stat_tim_msb = STM32_TIM_SR(TIM_CLOCK_MSB);
@@ -250,8 +252,6 @@ static void __hw_clock_source_irq(void)
 	 */
 	process_timers(stat_tim_msb & 0x01);
 }
-DECLARE_IRQ(IRQ_MSB, __hw_clock_source_irq, 1);
-DECLARE_IRQ(IRQ_LSB, __hw_clock_source_irq, 1);
 
 void __hw_timer_enable_clock(int n, int enable)
 {
