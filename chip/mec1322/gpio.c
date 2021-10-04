@@ -266,6 +266,16 @@ static void gpio_interrupt(int girq, int port_offset)
 	}
 }
 
+/*
+ * Declare IRQs.  Nesting this macro inside the GPIO_IRQ_FUNC macro works
+ * poorly because DECLARE_IRQ() stringizes its inputs.
+ */
+DECLARE_IRQ(MEC1322_IRQ_GIRQ8, __girq_8_interrupt, 1);
+DECLARE_IRQ(MEC1322_IRQ_GIRQ9, __girq_9_interrupt, 1);
+DECLARE_IRQ(MEC1322_IRQ_GIRQ10, __girq_10_interrupt, 1);
+DECLARE_IRQ(MEC1322_IRQ_GIRQ11, __girq_11_interrupt, 1);
+DECLARE_IRQ(MEC1322_IRQ_GIRQ20, __girq_20_interrupt, 1);
+
 #define GPIO_IRQ_FUNC(irqfunc, girq, port_offset)  \
 	static void irqfunc(void)                  \
 	{                                          \
@@ -279,13 +289,3 @@ GPIO_IRQ_FUNC(__girq_11_interrupt, 11, 0);
 GPIO_IRQ_FUNC(__girq_20_interrupt, 20, 20);
 
 #undef GPIO_IRQ_FUNC
-
-/*
- * Declare IRQs.  Nesting this macro inside the GPIO_IRQ_FUNC macro works
- * poorly because DECLARE_IRQ() stringizes its inputs.
- */
-DECLARE_IRQ(MEC1322_IRQ_GIRQ8, __girq_8_interrupt, 1);
-DECLARE_IRQ(MEC1322_IRQ_GIRQ9, __girq_9_interrupt, 1);
-DECLARE_IRQ(MEC1322_IRQ_GIRQ10, __girq_10_interrupt, 1);
-DECLARE_IRQ(MEC1322_IRQ_GIRQ11, __girq_11_interrupt, 1);
-DECLARE_IRQ(MEC1322_IRQ_GIRQ20, __girq_20_interrupt, 1);
