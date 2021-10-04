@@ -281,6 +281,7 @@ int gpio_disable_interrupt(enum gpio_signal signal)
 	return EC_SUCCESS;
 }
 
+DECLARE_IRQ(NRF51_PERID_GPIOTE, gpio_interrupt, 1);
 /*
  * Clear interrupt and run handler.
  */
@@ -308,4 +309,3 @@ static void gpio_interrupt(void)
 			gpio_irq_handlers[signal](signal);
 	}
 }
-DECLARE_IRQ(NRF51_PERID_GPIOTE, gpio_interrupt, 1);
