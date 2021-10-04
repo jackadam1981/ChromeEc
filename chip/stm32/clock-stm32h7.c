@@ -437,7 +437,7 @@ void clock_refresh_console_in_use(void)
 {
 }
 
-static void lptim_interrupt(void)
+static void __keep lptim_interrupt(void)
 {
 	STM32_LPTIM_ICR(1) = STM32_LPTIM_INT_CMPM;
 }

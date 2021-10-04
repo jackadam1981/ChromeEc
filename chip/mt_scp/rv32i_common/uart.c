@@ -125,7 +125,7 @@ static void uart_process(void)
 }
 
 #if (UARTN < SCP_UART_COUNT)
-static void uart_irq_handler(void)
+static void __keep uart_irq_handler(void)
 {
 	extern volatile int ec_int;
 

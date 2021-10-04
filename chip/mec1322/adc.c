@@ -69,7 +69,7 @@ static void adc_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, adc_init, HOOK_PRIO_INIT_ADC);
 
-static void adc_interrupt(void)
+static void __keep adc_interrupt(void)
 {
 	/* Clear interrupt status bit */
 	MEC1322_ADC_CTRL |= BIT(7);
