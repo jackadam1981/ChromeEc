@@ -108,7 +108,7 @@ static void uart_ec_interrupt(void)
 	IT83XX_UART_IER(UART_PORT) = uart_ier;
 }
 
-static void intc_cpu_int_group_9(void)
+static void __keep intc_cpu_int_group_9(void)
 {
 	/* Determine interrupt number. */
 	int intc_group_9 = intc_get_ec_int();

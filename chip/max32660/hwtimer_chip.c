@@ -147,7 +147,7 @@ void __hw_clock_source_set(uint32_t ts)
 /**
  * Interrupt handler for Timer
  */
-static void __timer_event_isr(void)
+static void __keep __timer_event_isr(void)
 {
 	/* Clear the event timer */
 	TMR_EVENT->intr = MXC_F_TMR_INTR_IRQ_CLR;

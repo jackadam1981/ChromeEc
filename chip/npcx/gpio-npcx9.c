@@ -110,7 +110,7 @@ static void __gpio_rtc_interrupt(void)
 #endif
 	gpio_interrupt(WUI_INT(MIWU_TABLE_0, MIWU_GROUP_4));
 }
-static void __gpio_cr_sin2_interrupt(void)
+static void __keep __gpio_cr_sin2_interrupt(void)
 {
 #if defined(CONFIG_LOW_POWER_IDLE) && (CONFIG_CONSOLE_UART == 1)
 	/* Handle the interrupt from UART wakeup event */

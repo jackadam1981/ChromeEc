@@ -202,7 +202,7 @@ void __hw_clock_source_set64(uint64_t timestamp)
 	HPET_GENERAL_CONFIG |= HPET_ENABLE_CNF;
 }
 
-static void hw_clock_event_isr(void)
+static void __keep hw_clock_event_isr(void)
 {
 	/* Clear interrupt */
 	wait_while_settling(HPET_INT_STATUS_SETTLING);

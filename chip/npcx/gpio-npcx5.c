@@ -97,7 +97,7 @@ static void set_rtc_host_event(void)
 DECLARE_DEFERRED(set_rtc_host_event);
 #endif
 
-static void __gpio_rtc_interrupt(void)
+static void __keep __gpio_rtc_interrupt(void)
 {
 	/* Check pending bit 7 */
 #ifdef CONFIG_HOSTCMD_RTC

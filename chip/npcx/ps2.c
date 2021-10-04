@@ -247,7 +247,7 @@ static int ps2_is_rx_error(uint8_t ch)
 		return 0;
 }
 
-static void ps2_int_handler(void)
+static void __keep ps2_int_handler(void)
 {
 	uint8_t active_ch;
 
