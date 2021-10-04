@@ -46,6 +46,30 @@
       },
       "revId": "43a5d0036ea7d10e4123e560d6aa3b7195360faa",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d981edce_2df980a5",
+        "filename": "board/zinger/runtime.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 269,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-04T18:45:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64f805d9_7402ce40",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 269,
+        "endChar": 18
+      },
+      "revId": "43a5d0036ea7d10e4123e560d6aa3b7195360faa",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
