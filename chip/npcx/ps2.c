@@ -247,6 +247,7 @@ static int ps2_is_rx_error(uint8_t ch)
 		return 0;
 }
 
+DECLARE_IRQ(NPCX_IRQ_PS2, ps2_int_handler, 5);
 static void ps2_int_handler(void)
 {
 	uint8_t active_ch;
@@ -318,7 +319,6 @@ static void ps2_int_handler(void)
 	DEBUG_CPRINTF("\n");
 
 }
-DECLARE_IRQ(NPCX_IRQ_PS2, ps2_int_handler, 5);
 
 #ifdef CONFIG_CMD_PS2
 static int command_ps2ench(int argc, char **argv)

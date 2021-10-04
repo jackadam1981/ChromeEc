@@ -331,6 +331,7 @@ void system_reset_rtc_alarm(void)
 	LM4_HIBERNATE_HIBIC = LM4_HIBERNATE_HIBRIS;
 }
 
+DECLARE_IRQ(LM4_IRQ_HIBERNATE, __hibernate_irq, 1);
 /**
  * Hibernate module interrupt
  */
@@ -338,7 +339,6 @@ static void __hibernate_irq(void)
 {
 	system_reset_rtc_alarm();
 }
-DECLARE_IRQ(LM4_IRQ_HIBERNATE, __hibernate_irq, 1);
 
 /**
  * Enable hibernate interrupt
