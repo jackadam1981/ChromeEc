@@ -75,7 +75,7 @@ uint32_t task_set_event(task_id_t tskid, uint32_t event)
 	return 0;
 }
 
-static void tim2_interrupt(void)
+static void __keep tim2_interrupt(void)
 {
 	uint32_t stat = STM32_TIM_SR(2);
 
