@@ -91,8 +91,7 @@ static const struct ec_response_keybd_config lalala_keybd = {
 		TK_VOL_DOWN,		/* T9 */
 		TK_VOL_UP,		/* T10 */
 	},
-	/* No function keys, no numeric keypad, has screenlock key */
-	.capabilities = KEYBD_CAP_SCRNLOCK_KEY,
+	/* No function keys, no numeric keypad, no screenlock key */
 };
 
 __override const struct ec_response_keybd_config
