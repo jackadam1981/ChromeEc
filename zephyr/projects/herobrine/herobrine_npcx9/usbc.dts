@@ -1,0 +1,22 @@
+/* Copyright 2021 The Chromium OS Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+/ {
+	usbc {
+		port_power: port-power {
+			compatible = "usbc-bc12";
+			status = "okay";
+			port = <&i2c_power>;
+			addr-flags = "PI3USB9201_I2C_ADDR_3_FLAGS";
+		};
+
+		port_eeprom: port-eeprom {
+			compatible = "usbc-bc12";
+			status = "okay";
+			port = <&i2c_eeprom>;
+			addr-flags = "PI3USB9201_I2C_ADDR_3_FLAGS";
+		};
+	};
+};
