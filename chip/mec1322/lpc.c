@@ -292,6 +292,7 @@ static void lpc_chipset_reset(void)
 DECLARE_DEFERRED(lpc_chipset_reset);
 #endif
 
+DECLARE_IRQ(MEC1322_IRQ_GIRQ19, girq19_interrupt, 1);
 static void girq19_interrupt(void)
 {
 	/* Check interrupt result for LRESET# trigger */
@@ -316,13 +317,12 @@ static void girq19_interrupt(void)
 		MEC1322_INT_SOURCE(19) = BIT(1);
 	}
 }
-DECLARE_IRQ(MEC1322_IRQ_GIRQ19, girq19_interrupt, 1);
 
+DECLARE_IRQ(MEC1322_IRQ_EMI, emi_interrupt, 1);
 static void emi_interrupt(void)
 {
 	port_80_write(MEC1322_EMI_H2E_MBX);
 }
-DECLARE_IRQ(MEC1322_IRQ_EMI, emi_interrupt, 1);
 
 /*
  * Port80 POST code polling limitation:
@@ -345,6 +345,7 @@ int port_80_read(void)
 	return data;
 }
 
+DECLARE_IRQ(MEC1322_IRQ_ACPIEC0_IBF, acpi_0_interrupt, 1);
 static void acpi_0_interrupt(void)
 {
 	uint8_t value, result, is_cmd;
@@ -370,8 +371,8 @@ static void acpi_0_interrupt(void)
 	 */
 	lpc_generate_sci();
 }
-DECLARE_IRQ(MEC1322_IRQ_ACPIEC0_IBF, acpi_0_interrupt, 1);
 
+DECLARE_IRQ(MEC1322_IRQ_ACPIEC1_IBF, acpi_1_interrupt, 1);
 void acpi_1_interrupt(void)
 {
 	uint8_t st = MEC1322_ACPI_EC_STATUS(1);
@@ -416,9 +417,9 @@ void acpi_1_interrupt(void)
 	/* Hand off to host command handler */
 	host_command_received(&host_cmd_args);
 }
-DECLARE_IRQ(MEC1322_IRQ_ACPIEC1_IBF, acpi_1_interrupt, 1);
 
 #ifdef HAS_TASK_KEYPROTO
+DECLARE_IRQ(MEC1322_IRQ_8042EM_IBF, kb_ibf_interrupt, 1);
 void kb_ibf_interrupt(void)
 {
 	if (lpc_keyboard_input_pending())
@@ -426,13 +427,12 @@ void kb_ibf_interrupt(void)
 				    MEC1322_8042_STS & BIT(3));
 	task_wake(TASK_ID_KEYPROTO);
 }
-DECLARE_IRQ(MEC1322_IRQ_8042EM_IBF, kb_ibf_interrupt, 1);
 
+DECLARE_IRQ(MEC1322_IRQ_8042EM_OBF, kb_obf_interrupt, 1);
 void kb_obf_interrupt(void)
 {
 	task_wake(TASK_ID_KEYPROTO);
 }
-DECLARE_IRQ(MEC1322_IRQ_8042EM_OBF, kb_obf_interrupt, 1);
 #endif
 
 int lpc_keyboard_has_char(void)

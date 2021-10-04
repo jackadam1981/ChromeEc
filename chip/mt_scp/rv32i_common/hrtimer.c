@@ -192,6 +192,7 @@ void __hw_clock_event_set(uint32_t deadline)
 		timer_reload_event_high();
 }
 
+DECLARE_IRQ(6, irq_group6_handler, 0);
 static void irq_group6_handler(void)
 {
 	extern volatile int ec_int;
@@ -228,4 +229,3 @@ static void irq_group6_handler(void)
 		break;
 	}
 }
-DECLARE_IRQ(6, irq_group6_handler, 0);

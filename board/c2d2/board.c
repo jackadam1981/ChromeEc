@@ -1049,6 +1049,7 @@ void set_up_comparator(void)
 	task_enable_irq(STM32_IRQ_COMP);
 }
 
+DECLARE_IRQ(STM32_IRQ_COMP, h1_vref_change, 1);
 static void h1_vref_change(void)
 {
 	/* Ack the interrupt */
@@ -1059,7 +1060,6 @@ static void h1_vref_change(void)
 
 	hook_call_deferred(&update_vrefs_and_shifters_data, 0);
 }
-DECLARE_IRQ(STM32_IRQ_COMP, h1_vref_change, 1);
 
 /******************************************************************************
  * Initialize board.

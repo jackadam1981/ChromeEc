@@ -743,6 +743,9 @@ DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats, "",
 			"Print power management statistics");
 
 
+#ifdef CONFIG_ISH_PM_D0I1
+DECLARE_IRQ(ISH_PMU_WAKEUP_IRQ, pmu_wakeup_isr);
+#endif
 /**
  * main FW only need handle PMU wakeup interrupt for D0i1 state, aontask will
  * handle PMU wakeup interrupt for other low power states
@@ -753,16 +756,14 @@ static void pmu_wakeup_isr(void)
 	/* at current nothing need to do */
 }
 
-#ifdef CONFIG_ISH_PM_D0I1
-DECLARE_IRQ(ISH_PMU_WAKEUP_IRQ, pmu_wakeup_isr);
+#ifdef CONFIG_ISH_PM_RESET_PREP
+DECLARE_IRQ(ISH_RESET_PREP_IRQ, reset_prep_isr);
 #endif
-
 /**
  * from ISH5.0, when system doing S0->Sx transition, will receive reset prep
  * interrupt, will switch to aontask for handling
  *
  */
-
 __maybe_unused noreturn
 static void reset_prep_isr(void)
 {
@@ -779,10 +780,6 @@ static void reset_prep_isr(void)
 	system_reset(0);
 	__builtin_unreachable();
 }
-
-#ifdef CONFIG_ISH_PM_RESET_PREP
-DECLARE_IRQ(ISH_RESET_PREP_IRQ, reset_prep_isr);
-#endif
 
 __maybe_unused
 static void handle_d3(uint32_t irq_vec)

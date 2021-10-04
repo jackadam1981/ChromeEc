@@ -87,6 +87,7 @@ int32_t audio_codec_wov_read(void *buf, uint32_t count)
 	return (void *)out - buf;
 }
 
+DECLARE_IRQ(SCP_IRQ_MAD_FIFO, wov_fifo_interrupt_handler, 2);
 static void wov_fifo_interrupt_handler(void)
 {
 #ifdef HAS_TASK_WOV
@@ -98,7 +99,6 @@ static void wov_fifo_interrupt_handler(void)
 	/* Read to clear */
 	SCP_VIF_FIFO_IRQ_STATUS;
 }
-DECLARE_IRQ(SCP_IRQ_MAD_FIFO, wov_fifo_interrupt_handler, 2);
 
 int audio_codec_memmap_ap_to_ec(uintptr_t ap_addr, uintptr_t *ec_addr)
 {

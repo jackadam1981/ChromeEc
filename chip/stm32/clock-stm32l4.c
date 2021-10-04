@@ -968,6 +968,7 @@ static void set_rtc_host_event(void)
 DECLARE_DEFERRED(set_rtc_host_event);
 #endif
 
+DECLARE_IRQ(STM32_IRQ_RTC_ALARM, __rtc_alarm_irq, 1);
 test_mockable_static
 void __rtc_alarm_irq(void)
 {
@@ -983,8 +984,6 @@ void __rtc_alarm_irq(void)
 	}
 #endif
 }
-DECLARE_IRQ(STM32_IRQ_RTC_ALARM, __rtc_alarm_irq, 1);
-
 
 void print_system_rtc(enum console_channel ch)
 {
