@@ -46,6 +46,30 @@
       },
       "revId": "a1872813a47ed588488ba5420ecdace0f4b42b2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3352ede_1bacd331",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-04T22:07:50Z",
+      "side": 1,
+      "message": "\"We\u0027d like to turn off motion sensor feature\" - \nWhy? Does it make any harm?\n\n\u0027If I don\u0027t comment out \"lid_standard_ref and base_standard_ref\", it may have build error because of \"defined but not used\".\u0027 -  \nI mean returning the usage too, e.g. `.rot_standard_ref \u003d \u0026base_standard_ref,` and `.rot_standard_ref \u003d \u0026lid_standard_ref,`",
+      "parentUuid": "50a0b145_79178189",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 5
+      },
+      "revId": "a1872813a47ed588488ba5420ecdace0f4b42b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
