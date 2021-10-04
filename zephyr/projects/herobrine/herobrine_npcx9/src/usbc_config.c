@@ -5,7 +5,6 @@
 
 /* Herobrine board-specific USB-C configuration */
 
-#include "bc12/pi3usb9201_public.h"
 #include "charger.h"
 #include "charger/isl923x_public.h"
 #include "charge_manager.h"
@@ -185,18 +184,6 @@ const struct usb_mux usb_muxes[CONFIG_USB_PD_PORT_MAX_COUNT] = {
 
 const int usb_port_enable[USB_PORT_COUNT] = {
 	GPIO_EN_USB_A_5V,
-};
-
-/* BC1.2 */
-const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
-	{
-		.i2c_port = I2C_PORT_POWER,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
-	},
-	{
-		.i2c_port = I2C_PORT_EEPROM,
-		.i2c_addr_flags = PI3USB9201_I2C_ADDR_3_FLAGS,
-	},
 };
 
 /* Initialize board USC-C things */
