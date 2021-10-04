@@ -34,7 +34,7 @@ static int mock_read_fn(struct i2c_emul *emul, int reg, uint8_t *val, int bytes,
 }
 
 static int mock_write_fn(struct i2c_emul *emul, int reg, uint8_t val, int bytes,
-			void *data)
+			 void *data)
 {
 	ztest_check_expected_value(reg);
 	ztest_check_expected_value(val);
@@ -146,6 +146,44 @@ static void test_st_write_data_with_mask(void)
 		      EC_ERROR_INVAL);
 }
 
+static void test_st_get_resolution(void)
+{
+	int expected_resolution = 123;
+	int rv;
+
+	struct stprivate_data driver_data = {
+		.resol = expected_resolution,
+	};
+
+	const struct motion_sensor_t sensor = {
+		.drv_data = &driver_data,
+	};
+
+	rv = st_get_resolution(&sensor);
+	zassert_equal(rv, expected_resolution, "rv is %d but expected %d", rv,
+		      expected_resolution);
+}
+
+static void test_st_get_data_rate(void)
+{
+	int expected_data_rate = 123;
+	int rv;
+
+	struct stprivate_data driver_data = {
+		.base = {
+			.odr = expected_data_rate,
+		},
+	};
+
+	const struct motion_sensor_t sensor = {
+		.drv_data = &driver_data,
+	};
+
+	rv = st_get_data_rate(&sensor);
+	zassert_equal(rv, expected_data_rate, "rv is %d but expected %d", rv,
+		      expected_data_rate);
+}
+
 void test_suite_stm_mems_common(void)
 {
 	ztest_test_suite(
@@ -155,6 +193,8 @@ void test_suite_stm_mems_common(void)
 		ztest_unit_test_setup_teardown(test_st_raw_read_n_noinc, setup,
 					       unit_test_noop),
 		ztest_unit_test_setup_teardown(test_st_write_data_with_mask,
-					       setup, unit_test_noop));
+					       setup, unit_test_noop),
+		ztest_unit_test(test_st_get_resolution),
+		ztest_unit_test(test_st_get_data_rate));
 	ztest_run_test_suite(stm_mems_common);
 }
