@@ -1,6 +1,75 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc9249ff_1223e1c1",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-04T16:11:34Z",
+      "side": 1,
+      "message": "What does `NONE` mean? `ANY`?",
+      "range": {
+        "startLine": 28,
+        "startChar": 18,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8971b437_30b7617f",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-04T16:11:34Z",
+      "side": 1,
+      "message": "I am still not clear about this `period` value means. Could you give some description and an example, like how the led blinks if period\u003d4?",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0db3525_d57fdabf",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-04T16:11:34Z",
+      "side": 1,
+      "message": "What does it means? Do you need it, if the above `charge-state` support an enum to match any charge state (it doesn\u0027t care about the current charge state)?",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74c04c5e_1f91c886",
@@ -14,6 +83,24 @@
       "writtenOn": "2021-10-01T18:51:58Z",
       "side": 1,
       "message": "Policy struct to identify if the node for this power_state depends on chflags and chipset_state",
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f3e5bd5_7bdef8e5",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-04T16:11:34Z",
+      "side": 1,
+      "message": "Better to add some examples to describe its value. I am sure how this data represents. Do the same for the below `led_values` struct.",
+      "parentUuid": "74c04c5e_1f91c886",
       "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +135,24 @@
       "writtenOn": "2021-10-01T18:51:58Z",
       "side": 1,
       "message": "I am not sure how to set color_2 and color_3 values in this Macro as I need to set those only if color_2 and color_3 nodes exist.\n\nOption 1:\nif (DT_NODE_EXISTS(DT_CHILD(id, color_2))) {\n    led_values[CHARGE_STATE(id)][CHIPSET_STATE(id)].color_2 \u003d \n            COLOR(id, color_2);\n} -\u003e This still tries to look for color_2 child node for each node ID, so the build fails\n\nOption 2:\n#if (DT_NODE_EXISTS(DT_CHILD(id, color_2))\n    led_values[CHARGE_STATE(id)][CHIPSET_STATE(id)].color_2 \u003d \n            COLOR(id, color_2);\n#endif -\u003e This still fails as it is not allowing #ifdefs within macro.\n\nOption 3: \nCODE_COND_1(DT_NODE_EXISTS(DT_CHILD(id, color_2), \n            led_values[CHARGE_STATE(id)][CHIPSET_STATE(id)].color_2 \u003d \n            COLOR(id, color_2), \n            ())\n-\u003e The build for this also fails",
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc011052_efe16fc8",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-04T16:11:34Z",
+      "side": 1,
+      "message": "Using the option 3 is the right way. I guess you miss the `;`. Should be:\n\nCODE_COND_1(DT_NODE_EXISTS(DT_CHILD(id, color_2), \n            (led_values[CHARGE_STATE(id)][CHIPSET_STATE(id)].color_2 \u003d \n            COLOR(id, color_2);), \n            ())\n\nAs the else condition is empty, you can simply use IF_ENABLED() instead.",
+      "parentUuid": "b5236c31_c3d8bd7d",
       "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
