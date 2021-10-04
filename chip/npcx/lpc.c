@@ -518,6 +518,7 @@ static void handle_host_write(int is_cmd)
 /*****************************************************************************/
 /* Interrupt handlers */
 #ifdef HAS_TASK_KEYPROTO
+DECLARE_IRQ(NPCX_IRQ_KBC_IBF, lpc_kbc_ibf_interrupt, 4);
 /* KB controller input buffer full ISR */
 void lpc_kbc_ibf_interrupt(void)
 {
@@ -540,8 +541,8 @@ void lpc_kbc_ibf_interrupt(void)
 		CPRINTS("ibf isr spurious");
 	}
 }
-DECLARE_IRQ(NPCX_IRQ_KBC_IBF, lpc_kbc_ibf_interrupt, 4);
 
+DECLARE_IRQ(NPCX_IRQ_KBC_OBE, lpc_kbc_obe_interrupt, 4);
 /* KB controller output buffer empty ISR */
 void lpc_kbc_obe_interrupt(void)
 {
@@ -555,9 +556,9 @@ void lpc_kbc_obe_interrupt(void)
 
 	task_wake(TASK_ID_KEYPROTO);
 }
-DECLARE_IRQ(NPCX_IRQ_KBC_OBE, lpc_kbc_obe_interrupt, 4);
 #endif
 
+DECLARE_IRQ(NPCX_IRQ_PM_CHAN_IBF, lpc_pmc_ibf_interrupt, 4);
 /* PM channel input buffer full ISR */
 void lpc_pmc_ibf_interrupt(void)
 {
@@ -569,14 +570,14 @@ void lpc_pmc_ibf_interrupt(void)
 	else if (NPCX_HIPMST(PMC_HOST_CMD) & 0x02)
 		handle_host_write((NPCX_HIPMST(PMC_HOST_CMD)&0x08) ? 1 : 0);
 }
-DECLARE_IRQ(NPCX_IRQ_PM_CHAN_IBF, lpc_pmc_ibf_interrupt, 4);
 
+DECLARE_IRQ(NPCX_IRQ_PM_CHAN_OBE, lpc_pmc_obe_interrupt, 4);
 /* PM channel output buffer empty ISR */
 void lpc_pmc_obe_interrupt(void)
 {
 }
-DECLARE_IRQ(NPCX_IRQ_PM_CHAN_OBE, lpc_pmc_obe_interrupt, 4);
 
+DECLARE_IRQ(NPCX_IRQ_PORT80, lpc_port80_interrupt, 4);
 void lpc_port80_interrupt(void)
 {
 	uint8_t i;
@@ -623,7 +624,6 @@ void lpc_port80_interrupt(void)
 	/* Clear pending bit of host writing */
 	SET_BIT(NPCX_DP80STS, NPCX_DP80STS_FWR);
 }
-DECLARE_IRQ(NPCX_IRQ_PORT80, lpc_port80_interrupt, 4);
 
 /**
  * Preserve event masks across a sysjump.
