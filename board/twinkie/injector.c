@@ -66,6 +66,7 @@ static const struct res_cfg {
 #define GET_POLARITY(cc1, cc2) (CC_RD(cc2) || CC_RA(cc1))
 
 #ifdef HAS_TASK_SNIFFER
+DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_2_3, dma_event_interrupt_channel_3, 3);
 /* we don't have the default DMA handlers */
 static void dma_event_interrupt_channel_3(void)
 {
@@ -74,7 +75,6 @@ static void dma_event_interrupt_channel_3(void)
 		task_wake(TASK_ID_CONSOLE);
 	}
 }
-DECLARE_IRQ(STM32_IRQ_DMA_CHANNEL_2_3, dma_event_interrupt_channel_3, 3);
 #endif
 
 static void twinkie_init(void)
