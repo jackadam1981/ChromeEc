@@ -203,7 +203,7 @@ void tim_rx2_handler(uint32_t stat)
 	led_set_activity(1);
 }
 
-static void tim_dma_handler(void)
+static void __keep tim_dma_handler(void)
 {
 	stm32_dma_regs_t *dma = STM32_DMA1_REGS;
 	uint32_t stat = dma->isr & (STM32_DMA_ISR_HTIF(DMAC_TIM_RX1) |
