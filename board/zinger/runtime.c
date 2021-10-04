@@ -74,6 +74,7 @@ uint32_t task_set_event(task_id_t tskid, uint32_t event)
 	return 0;
 }
 
+DECLARE_IRQ(STM32_IRQ_TIM2, tim2_interrupt, 1);
 static void tim2_interrupt(void)
 {
 	uint32_t stat = STM32_TIM_SR(2);
@@ -89,7 +90,6 @@ static void tim2_interrupt(void)
 	STM32_TIM_SR(2) = ~stat & 3; /* clear interrupt flags */
 	task_clear_pending_irq(STM32_IRQ_TIM2);
 }
-DECLARE_IRQ(STM32_IRQ_TIM2, tim2_interrupt, 1);
 
 static void zinger_config_hispeed_clock(void)
 {

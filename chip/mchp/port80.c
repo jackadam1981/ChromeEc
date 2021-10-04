@@ -16,6 +16,7 @@
 
 
 #if defined(CHIP_FAMILY_MEC172X)
+DECLARE_IRQ(MCHP_IRQ_BDP0, port_80_interrupt, 3);
 /*
  * MEC172x family implements a new Port 0x80 capture block.
  * The BDP HW can capture 8, 16, and 32 bit writes.
@@ -41,8 +42,8 @@ static void port_80_interrupt(void)
 
 	MCHP_INT_SOURCE(MCHP_BDP0_GIRQ) = MCHP_BDP0_GIRQ_BIT;
 }
-DECLARE_IRQ(MCHP_IRQ_BDP0, port_80_interrupt, 3);
 #else
+DECLARE_IRQ(MCHP_IRQ_PORT80DBG0, port_80_interrupt, 3);
 /*
  * Interrupt fires when number of bytes written
  * to eSPI/LPC I/O 80h-81h exceeds Por80_0 FIFO level
@@ -77,5 +78,4 @@ static void port_80_interrupt(void)
 
 	MCHP_INT_SOURCE(MCHP_P80_GIRQ) = MCHP_P80_GIRQ_BIT(0);
 }
-DECLARE_IRQ(MCHP_IRQ_PORT80DBG0, port_80_interrupt, 3);
 #endif
