@@ -50,8 +50,6 @@
 		 ppc_interrupt)                                               \
 	GPIO_INT(GPIO_USB_C1_SWCTL_INT_ODL, GPIO_INT_EDGE_FALLING,            \
 		 ppc_interrupt)                                               \
-	GPIO_INT(GPIO_USB_C0_BC12_INT_L, GPIO_INT_EDGE_FALLING, usb0_evt)     \
-	GPIO_INT(GPIO_USB_C1_BC12_INT_L, GPIO_INT_EDGE_FALLING, usb1_evt)     \
 	GPIO_INT(GPIO_USB_A0_OC_ODL, GPIO_INT_EDGE_BOTH, usba_oc_interrupt)   \
 	GPIO_INT(GPIO_ACCEL_GYRO_INT_L, GPIO_INT_EDGE_FALLING,                \
 		 bmi260_interrupt)                                            \
