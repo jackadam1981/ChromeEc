@@ -96,6 +96,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4e822e9_5e2db29b",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-05T20:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e29a44c_1c6d42ac",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 61
+      },
+      "revId": "06d2da79eda0be64727121a8f9e63619a88575b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53d16abc_1469dc3d",
@@ -167,6 +191,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5755b9e3_c4193a85",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-05T20:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d39765b9_0a5481c7",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 54
+      },
+      "revId": "06d2da79eda0be64727121a8f9e63619a88575b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49cd48d0_68f32a14",
@@ -180,6 +228,30 @@
       "writtenOn": "2021-10-05T16:08:49Z",
       "side": 1,
       "message": "Here you want to make sure that the write was never executed (because there\u0027s nothing to write). You should call `i2c_common_emul_set_write_func` and have the `mock_write_fn` return -EIO.",
+      "range": {
+        "startLine": 126,
+        "startChar": 6,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "06d2da79eda0be64727121a8f9e63619a88575b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed59a42d_bb79167f",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-05T20:34:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49cd48d0_68f32a14",
       "range": {
         "startLine": 126,
         "startChar": 6,
@@ -251,6 +323,30 @@
       "side": 1,
       "message": "I see, but there\u0027s no assert that the write function was actually called right? This is what I don\u0027t like about the zephyr mocking framework (which we\u0027ll be swapping out this week I hope). It\u0027s not very explicit. So the issue here (for this test) is that if something else fails to return EC_ERROR_INVAL and mock_write_fn was never called, this test would still pass.",
       "parentUuid": "1a7c3c29_d0047100",
+      "range": {
+        "startLine": 130,
+        "startChar": 57,
+        "endLine": 131,
+        "endChar": 27
+      },
+      "revId": "06d2da79eda0be64727121a8f9e63619a88575b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c958ef3e_8db019e3",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-05T20:34:40Z",
+      "side": 1,
+      "message": "I believe I\u0027ve addressed this concern (and your other comment) by adding a call counter mechanism so that we can explicitly assert that the write func has been called zero or one times. It\u0027s sad ztest can\u0027t do this on its own...",
+      "parentUuid": "f866f421_cb9761d1",
       "range": {
         "startLine": 130,
         "startChar": 57,
