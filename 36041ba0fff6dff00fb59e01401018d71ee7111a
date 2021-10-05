@@ -39,6 +39,30 @@
       },
       "revId": "36041ba0fff6dff00fb59e01401018d71ee7111a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "afdc8250_27342bed",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-05T21:59:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eae38d8_73f53d4d",
+      "range": {
+        "startLine": 139,
+        "startChar": 43,
+        "endLine": 139,
+        "endChar": 44
+      },
+      "revId": "36041ba0fff6dff00fb59e01401018d71ee7111a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
