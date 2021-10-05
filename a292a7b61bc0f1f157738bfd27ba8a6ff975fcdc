@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e00be74_885cedb4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-05T17:32:13Z",
+      "side": 1,
+      "message": "This is very similar to CL 3096806, if you plan to add similar code to other boards it might be a good idea to combine this functionality in one place.",
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "751db0a0_051f455d",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-05T17:32:13Z",
+      "side": 1,
+      "message": "If the read failed we should terminate here (with some error code) and not attempt to write some invalid `reg` value to the charger.",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3796f053_d0ff9322",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-05T17:32:13Z",
+      "side": 1,
+      "message": "The logic below is more complicated, please explain it in the comment",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 34
+      },
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c07b895_b23081d1",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-05T17:32:13Z",
+      "side": 1,
+      "message": "nit: fix indentation",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 3
+      },
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96386403_272b5cf7",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-05T17:32:13Z",
+      "side": 1,
+      "message": "nit: fix indentation by moving ADT_RATING_W to the previous line\n\nsame on line 191",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 17
+      },
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36bfa6e_a23cd98a",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-05T17:32:13Z",
+      "side": 1,
+      "message": "nit: indentation",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 3
+      },
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
