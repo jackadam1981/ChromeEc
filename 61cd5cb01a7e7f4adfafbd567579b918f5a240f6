@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cafa7dd1_df9d55dc",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-10-05T00:45:05Z",
+      "side": 1,
+      "message": "Would it be possible to make this a const function? So the compiler can figure out that it never changes at runtime?",
+      "revId": "61cd5cb01a7e7f4adfafbd567579b918f5a240f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38cef68_52c5f612",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1267126
+      },
+      "writtenOn": "2021-10-05T00:45:05Z",
+      "side": 1,
+      "message": "It would rely on this being a const function too, not sure if that\u0027s possible.",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "61cd5cb01a7e7f4adfafbd567579b918f5a240f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
