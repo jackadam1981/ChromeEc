@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53d01e38_55b10e23",
+        "filename": "include/charge_state.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T21:58:12Z",
+      "side": 1,
+      "message": "Please make it a separate CL.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3401b56_ea637b40",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,battery-led-colors.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T21:58:12Z",
+      "side": 1,
+      "message": "It is now more general, not specific for showing the battery status. You can remove the term.\n\nAnd add a `led-id` property below. It is set to `EC_LED_ID_BATTERY_LED` for the lazor case. Some boards have more than one LEDs. These LEDs are assigned to different `led-id`.",
+      "range": {
+        "startLine": 5,
+        "startChar": 13,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d3756f_c8471b0b",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,battery-led-colors.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T21:58:12Z",
+      "side": 1,
+      "message": "Make it not required. Not defining it means \"don\u0027t care\" or ANY.",
+      "range": {
+        "startLine": 16,
+        "startChar": 12,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28218f9c_e6106fda",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,brightness-range.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T21:58:12Z",
+      "side": 1,
+      "message": "Need a property to define the `led-id`. Some boards have more than one LEDs; each LED has its own brightness range.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a656336d_8d257376",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T21:58:12Z",
+      "side": 1,
+      "message": "It needs to be moved to dts. A follow-up CL is fine.",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 50
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c2aa45d_4019f153",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T21:58:12Z",
+      "side": 1,
+      "message": "It needs to be moved to dts. In case there are multiple LEDs, should choose one.",
+      "range": {
+        "startLine": 248,
+        "startChar": 18,
+        "endLine": 248,
+        "endChar": 39
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

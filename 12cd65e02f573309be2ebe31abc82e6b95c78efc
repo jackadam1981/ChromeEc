@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0839f59e_793e36b7",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T21:58:12Z",
+      "side": 1,
+      "message": "Another way is to make the `chipset-state` not required. If the `chipset-state` property is not defined, it means \"dont care\". The above `charge-state` can do the same thing.",
+      "parentUuid": "bdc12cb2_d6af5125",
+      "range": {
+        "startLine": 28,
+        "startChar": 18,
+        "endLine": 28,
+        "endChar": 22
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8971b437_30b7617f",
@@ -97,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ff1b677f_c2dddb01",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T21:58:12Z",
+      "side": 1,
+      "message": "Thanks for explaining it.\n\nI saw your latest patch makes the colors in the child-binding. You can add the `period` to the child-binding too. Each color has its `period`. So you don\u0027t need this `on_sec`. The `period` in the child-binding is not required for a solid color (LID_OFF is a solid color).",
+      "parentUuid": "baead6e6_de575d23",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0db3525_d57fdabf",
         "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
         "patchSetId": 5
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "This flag is only for PWR_STATE_IDLE. If you will see board/lazor/led.c (ln. 109) , in PWR_STATE_IDLE, it looks for chflags to decide the color. Since it is only applicable to this particular state, does it make sense to remove this property and directly look up the enum pwr_state for this condition. See its use in current review led.c file",
       "parentUuid": "a0db3525_d57fdabf",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a85fa966_1f856003",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T21:58:12Z",
+      "side": 1,
+      "message": "I see. A better way to model it is to introduce a new `charge_flags` property. It is not required.\n\nThe dts nodes are like:\n    power-state-idle-forced {\n        charge-state \u003d \"IDLE\";\n        charge-flag \u003d \u003cCHARGE_FLAG_FORCE_IDLE\u003e;\n        /* Blue 2 sec, Amber 2 sec */\n    }\n    power-state-idle-default {\n        charge-state \u003d \"IDLE\";\n        charge-flag \u003d \u003c0\u003e;\n        /* Solid Blue */\n    }",
+      "parentUuid": "d389907c_7200c9de",
       "range": {
         "startLine": 32,
         "startChar": 0,
