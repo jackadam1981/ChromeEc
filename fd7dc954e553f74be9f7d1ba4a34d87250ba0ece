@@ -71,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5121ad7e_228ab6b8",
+        "filename": "zephyr/projects/trogdor/lazor/led.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-05T18:51:10Z",
+      "side": 1,
+      "message": "Talked to Fabio, this isn\u0027t required as this is gpio-led-behavior and not enumerating gpio leds (which is done in gpio.dts) file. So resolving this.",
+      "parentUuid": "bd6d50e0_826672ef",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 26
+      },
+      "revId": "fd7dc954e553f74be9f7d1ba4a34d87250ba0ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c82e4e7e_83cddd16",
@@ -84,6 +108,30 @@
       "writtenOn": "2021-09-28T14:13:42Z",
       "side": 1,
       "message": "This should probably be structured to give a range and point at a led id, so that it could be iterated over in led_get_brightness_range. Maybe bring it one step back on the tree and have the entries as \u003cled, range, ...\u003e as child nodes? That could save having to redo all the declaration for each LED type (battery, power...)",
+      "range": {
+        "startLine": 5,
+        "startChar": 20,
+        "endLine": 5,
+        "endChar": 36
+      },
+      "revId": "fd7dc954e553f74be9f7d1ba4a34d87250ba0ece",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54cddc57_e49e9b40",
+        "filename": "zephyr/projects/trogdor/lazor/led.dts",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-05T18:51:10Z",
+      "side": 1,
+      "message": "Discussed with Fabio, this is probably correct, resolving this for now. We can revisit in subsequent CLs if required.",
+      "parentUuid": "c82e4e7e_83cddd16",
       "range": {
         "startLine": 5,
         "startChar": 20,
