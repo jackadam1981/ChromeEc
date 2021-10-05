@@ -41,6 +41,11 @@
 		CONFIG_CHARGER_SENSE_RESISTOR_AC_BQ25710
 #endif
 
+#ifdef CONFIG_CHARGER_SENSE_RESISTOR_BQ25720
+	#undef CONFIG_CHARGER_SENSE_RESISTOR
+	#define CONFIG_CHARGER_SENSE_RESISTOR \
+		CONFIG_CHARGER_SENSE_RESISTOR_BQ25720
+#endif
 
 #define INPUT_RESISTOR_RATIO \
 	((CONFIG_CHARGER_SENSE_RESISTOR_AC) / DEFAULT_SENSE_RESISTOR)
@@ -718,7 +723,7 @@ static int console_bq25710_dump_regs(int argc, char **argv)
 
 	return 0;
 }
-DECLARE_CONSOLE_COMMAND(charger_dump, console_bq25710_dump_regs,
+DECLARE_CONSOLE_COMMAND(bq25710_dump, console_bq25710_dump_regs,
 			"charger_dump <chgnum>",
 			"Dump all charger registers");
 
