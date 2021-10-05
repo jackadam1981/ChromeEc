@@ -31,6 +31,36 @@ static int tusb1064_write(const struct usb_mux *me, uint8_t reg, uint8_t val)
 			  (int)reg, (int)val);
 }
 
+#if defined(CONFIG_USB_MUX_TUSB1044)
+
+/*
+ * This api is used to override the HPD infomartion received on HPD_IN pin.
+ * Writes HPD infomration to the General_1 Registor.
+ */
+void tusb1044_hpd_update(const struct usb_mux *me, mux_state_t mux_state)
+{
+	int res;
+	uint8_t reg;
+
+	res = tusb1064_read(me, TUSB1064_REG_GENERAL, &reg);
+	if (res)
+		return;
+
+	/*
+	 *  Overrides HPDIN pin state.
+		Settings of this bit will enable the Display port lanes.
+		0h = HPD_IN based on HPD_IN pin.
+		1h = HPD_IN high.
+	 */
+	if (mux_state & USB_PD_MUX_HPD_LVL)
+		reg |= REG_GENERAL_HPDIN_OVERRIDE;
+	else
+		reg &= ~REG_GENERAL_HPDIN_OVERRIDE;
+
+	tusb1064_write(me, TUSB1064_REG_GENERAL, reg);
+}
+#endif
+
 /* Writes control register to set switch mode */
 static int tusb1064_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 			    bool *ack_required)
@@ -46,6 +76,9 @@ static int tusb1064_set_mux(const struct usb_mux *me, mux_state_t mux_state,
 		reg |= REG_GENERAL_CTLSEL_ANYDP;
 	if (mux_state & USB_PD_MUX_POLARITY_INVERTED)
 		reg |= REG_GENERAL_FLIPSEL;
+	if (IS_ENABLED(CONFIG_USB_MUX_TUSB1044) &&
+			(mux_state & USB_PD_MUX_HPD_LVL))
+		reg |= REG_GENERAL_HPDIN_OVERRIDE;
 
 	return tusb1064_write(me, TUSB1064_REG_GENERAL, reg);
 }
@@ -67,7 +100,9 @@ static int tusb1064_get_mux(const struct usb_mux *me, mux_state_t *mux_state)
 		*mux_state |= USB_PD_MUX_DP_ENABLED;
 	if (reg & REG_GENERAL_FLIPSEL)
 		*mux_state |= USB_PD_MUX_POLARITY_INVERTED;
-
+	if (IS_ENABLED(CONFIG_USB_MUX_TUSB1044) &&
+			(reg & REG_GENERAL_HPDIN_OVERRIDE))
+		*mux_state |= USB_PD_MUX_HPD_LVL;
 	return EC_SUCCESS;
 }
 
