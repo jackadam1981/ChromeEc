@@ -39,6 +39,30 @@
       },
       "revId": "d102dfbf324602bd270ba7b0026fd820539cd97e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3788e749_3c854532",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-05T22:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e93e07d_ad3130df",
+      "range": {
+        "startLine": 796,
+        "startChar": 49,
+        "endLine": 796,
+        "endChar": 50
+      },
+      "revId": "d102dfbf324602bd270ba7b0026fd820539cd97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
