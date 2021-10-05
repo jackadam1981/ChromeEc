@@ -127,4 +127,6 @@
 #define TUSB1064_USB_EQ_UFP_10_7_DB 0xE
 #define TUSB1064_USB_EQ_UFP_11_1_DB 0xF
 
+void tusb1044_hpd_update(const struct usb_mux *me, mux_state_t mux_state);
+
 #endif /* __CROS_EC_TUSB1064_H */
