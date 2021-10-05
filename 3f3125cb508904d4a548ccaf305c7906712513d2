@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a3dd609_ecf554ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-05T19:33:57Z",
+      "side": 1,
+      "message": "split into multiple CLs",
+      "revId": "3f3125cb508904d4a548ccaf305c7906712513d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67f3af74_b0dcf3cd",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-05T19:33:57Z",
+      "side": 1,
+      "message": "nit: add in config.h",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "3f3125cb508904d4a548ccaf305c7906712513d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f41b4d30_ac67d502",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-05T19:33:57Z",
+      "side": 1,
+      "message": "in common/charger.c\nadd code to check the chg_chips[] and call these functions in array so that we can avoid separate commands",
+      "range": {
+        "startLine": 570,
+        "startChar": 24,
+        "endLine": 570,
+        "endChar": 36
+      },
+      "revId": "3f3125cb508904d4a548ccaf305c7906712513d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
