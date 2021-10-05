@@ -52,6 +52,24 @@
       "parentUuid": "c3b84ca8_69379ebd",
       "revId": "72313b6f7b8121112268e241397ee20f1451223f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3ea2e58_dd5879e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T23:28:27Z",
+      "side": 1,
+      "message": "Since we has already removed the herobrine_npcx7, rename is more preferred.\n\nThe overlay-trogdor-zephyr-private was introduced to add an extra firmware builder for Zephyr EC. But Herobrine uses the Zephyr EC only. So we don\u0027t need to create this extra overlay. Changing the USE flags in the existing herobrine overlay is fine.",
+      "parentUuid": "d8f49167_6220b3d0",
+      "revId": "72313b6f7b8121112268e241397ee20f1451223f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
