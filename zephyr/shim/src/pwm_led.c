@@ -18,9 +18,12 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(cros_ec_pwm_leds) <= 1,
 BUILD_ASSERT(DT_INST_PROP_LEN(0, leds) <= 2,
 	     "Unsupported number of LEDs defined");
 
-#define PWM_CHANNEL_BY_IDX(node_id, prop, idx, led_ch)          \
-	PWM_CHANNEL(DT_PWMS_CTLR_BY_IDX(                        \
-		DT_PHANDLE_BY_IDX(node_id, prop, idx), led_ch))
+#define PWM_CHANNEL_BY_IDX(node_id, prop, idx, led_ch)                    \
+	COND_CODE_1(DT_PROP_HAS_IDX(                                      \
+		DT_PHANDLE_BY_IDX(node_id, prop, idx), pwms, led_ch),     \
+		(PWM_CHANNEL(DT_PWMS_CTLR_BY_IDX(                         \
+			DT_PHANDLE_BY_IDX(node_id, prop, idx), led_ch))), \
+		(PWM_LED_NO_CHANNEL))
 
 #define PWM_LED_INIT(node_id, prop, idx) \
 	[PWM_LED##idx] = { \
