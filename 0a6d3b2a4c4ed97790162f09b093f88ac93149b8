@@ -375,6 +375,30 @@
       },
       "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f4d2685_486e15cb",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-05T21:49:13Z",
+      "side": 1,
+      "message": "ah, I mistyped, I meant to say \u0027flat\u0027 buffer, but this is not the case anyways.",
+      "parentUuid": "334a7c7b_adf2ef37",
+      "range": {
+        "startLine": 776,
+        "startChar": 7,
+        "endLine": 776,
+        "endChar": 37
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
