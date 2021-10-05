@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9709a461_d8952ef8",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-05T19:10:48Z",
+      "side": 1,
+      "message": "Add this config in config.h\n\ncheck if this is actually making GPIO pin high or doing some algorithm in chip and add comments accordingly \n\nnit: split this CL into 2\n1. add this HPD code\n2. enable in RVP code",
+      "revId": "67fb0fad8ee28dd587409796296652e55e444df2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00a5776c_6e7a128f",
         "filename": "driver/usb_mux/tusb1064.c",
         "patchSetId": 2
