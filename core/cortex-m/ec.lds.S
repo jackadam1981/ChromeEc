@@ -144,7 +144,13 @@ SECTIONS
 		KEEP(*(.roshared*))
 	} > SHARED_LIB
 #endif
-	.text : {
+	.text
+#ifdef __clang__
+#if defined(SECTION_IS_RO) && defined(NPCX_RO_HEADER)
+		. + LENGTH(FLASH_HDR)
+#endif
+#endif
+		: {
 		*(.text.vecttable)
 		. = ALIGN(4);
 		__image_data_offset = .;
