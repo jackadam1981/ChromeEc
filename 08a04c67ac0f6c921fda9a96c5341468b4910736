@@ -22,6 +22,30 @@
       },
       "revId": "08a04c67ac0f6c921fda9a96c5341468b4910736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2bbb8452_371c286e",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-05T17:52:20Z",
+      "side": 1,
+      "message": "I\u0027ve updated the device tree but I\u0027m having trouble with DT_FOREACH_STATUS_OKAY. I\u0027ll continue to play around with it until I can get it to work.",
+      "parentUuid": "4f6c1852_6d836866",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "08a04c67ac0f6c921fda9a96c5341468b4910736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
