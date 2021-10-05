@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a4b81f4_2a2365b7",
+        "filename": "driver/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-05T18:14:01Z",
+      "side": 0,
+      "message": "Here is where the mode change register can be interrupted before it is serviced, causing power_good to not be set.",
+      "revId": "98749ed0f9a285feada919170d8c0b1da86b43b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

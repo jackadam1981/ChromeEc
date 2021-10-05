@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "31e29d92_8cf5e941",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-05T18:14:01Z",
+      "side": 1,
+      "message": "My understanding of the flow is like:\n\n(1)\nln9310_init() on a fixed chip will fire a mode change interrupt due to a change in the STS register\n\n(2)\nThe code here clears all interrupts\n\t/* Dummy clear all interrupts */\n\tstatus \u003d raw_read8(LN9310_REG_INT1, \u0026val)\n\t\n(3) Now the chip and driver have been started but because the mode change interrupt was never serviced, power_good was never set by ln9310 interrupt handler.\n\nI\u0027ve also included a test that fails without this change as a follow up CL.",
+      "parentUuid": "8eb38e2c_fcc475d4",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "5a240fb0c9aa9a13e4638e00dc3cb04ef952cacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ef68a1f4_cb69d4ba",
