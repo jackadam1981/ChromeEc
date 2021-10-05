@@ -52,6 +52,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "98227a80_09a6445b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-10-05T03:18:38Z",
+      "side": 1,
+      "message": "This is blocked by https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3194984 now (they said it should be landed this week) since the toolchain is not working due to gcc version problems currently.",
+      "revId": "1faf01ae00629348f6391d766d95f6e94a501e8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "87ba6191_7e51d966",
