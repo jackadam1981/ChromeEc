@@ -141,6 +141,24 @@
       "parentUuid": "c84ac77e_6f717ced",
       "revId": "f5fa9f4fe7e1239bfbc9afd834854d4b403e3a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c53ad670_43e2ddc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T23:48:31Z",
+      "side": 1,
+      "message": "Sorry. The SuzyQ doesn\u0027t use the BC1.2 advertisement. It uses the Type-C advertisement instead. So the BC1.2 detects a SDP result. But the `chgup` results is 1.5A as the Type-C advertisement overrides it.\n\nLike Keith said, you can use a C-to-A cable to connect to another Trogdor device. The USB ports in Trogdor is under an internal hub. The hub advertises the CDP role, per http://b/issues/109907785#comment3",
+      "parentUuid": "7f2caa86_30d85e34",
+      "revId": "f5fa9f4fe7e1239bfbc9afd834854d4b403e3a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
