@@ -6,6 +6,7 @@
 /* Intel ADLRVP board-specific common configuration */
 
 #include "charger.h"
+#include "bq25710.h"
 #include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
 #include "hooks.h"
@@ -236,7 +237,7 @@ struct ioexpander_config_t ioex_config[] = {
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
 
 /* Charger Chips */
-const struct charger_config_t chg_chips[] = {
+struct charger_config_t chg_chips[] = {
 	{
 		.i2c_port = I2C_PORT_CHARGER,
 		.i2c_addr_flags = ISL9241_ADDR_FLAGS,
@@ -325,6 +326,23 @@ static void enable_h1_irq(void)
 }
 DECLARE_HOOK(HOOK_INIT, enable_h1_irq, HOOK_PRIO_LAST);
 
+static void configure_charger(void)
+{
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+		/* charger chip BQ25720 support */
+		chg_chips[0].i2c_addr_flags = BQ25710_SMBUS_ADDR1_FLAGS;
+		chg_chips[0].drv = &bq25710_drv;
+		break;
+
+	/* Add additional board SKUs */
+	default:
+		break;
+	}
+}
+DECLARE_HOOK(HOOK_INIT, configure_charger, HOOK_PRIO_INIT_I2C + 1);
+
 static void configure_retimer_usbmux(void)
 {
 	switch (ADL_RVP_BOARD_ID(board_get_version())) {
@@ -341,6 +359,9 @@ static void configure_retimer_usbmux(void)
 		usb_muxes[TYPE_C_PORT_1].driver = NULL;
 		usb_muxes[TYPE_C_PORT_1].hpd_update = NULL;
 #endif
+		/* charger chip BQ25720 support */
+		chg_chips[0].i2c_addr_flags = BQ25710_SMBUS_ADDR1_FLAGS;
+		chg_chips[0].drv = &bq25710_drv;
 		break;
 
 	case ADLP_LP5_T4_RVP_SKU_BOARD_ID:
