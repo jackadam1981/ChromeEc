@@ -41,6 +41,11 @@ struct ln9310_emul_data {
 	enum battery_cell_type battery_cell_type;
 	/** Current Functional Mode */
 	enum functional_mode current_mode;
+	/**
+	 * Register Interceptor for testing;
+	 * intercepts r/w and returns nonzero for failure
+	 */
+	bool (*reg_interceptor_fn)(int register);
 	/** Emulated TEST MODE CTRL register */
 	uint8_t test_mode_ctrl_reg;
 	/** Emulated FORCE SC21 CTRL 1 register */
@@ -93,6 +98,18 @@ struct ln9310_emul_data {
 
 static const struct emul *singleton;
 
+static bool default_reg_interceptor(int reg)
+{
+	return 0;
+}
+
+void ln9310_emul_set_reg_interceptor(const struct emul *emulator,
+				     bool (*reg_interceptor_fn)(int))
+{
+	struct ln9310_emul_data *data = emulator->data;
+
+	data->reg_interceptor_fn = reg_interceptor_fn;
+}
 
 static void do_ln9310_interrupt(struct ln9310_emul_data *data)
 {
@@ -178,6 +195,7 @@ void ln9310_emul_reset(const struct emul *emulator)
 
 	/* Only Reset the LN9310 Register Data */
 	memset(data, 0, sizeof(struct ln9310_emul_data));
+	data->reg_interceptor_fn = &default_reg_interceptor;
 	data->common = common;
 	data->current_mode = LN9310_SYS_STANDBY;
 }
@@ -227,6 +245,10 @@ enum battery_cell_type board_get_battery_cell_type(void)
 
 static int ln9310_emul_start_write(struct i2c_emul *emul, int reg)
 {
+	struct ln9310_emul_data *data = LN9310_DATA_FROM_I2C_EMUL(emul);
+
+	if (data->reg_interceptor_fn(reg))
+		return -EINVAL;
 	return 0;
 }
 
@@ -351,6 +373,10 @@ static int ln9310_emul_write_byte(struct i2c_emul *emul, int reg, uint8_t val,
 
 static int ln9310_emul_start_read(struct i2c_emul *emul, int reg)
 {
+	struct ln9310_emul_data *data = LN9310_DATA_FROM_I2C_EMUL(emul);
+
+	if (data->reg_interceptor_fn(reg))
+		return -EINVAL;
 	return 0;
 }
 

@@ -70,4 +70,14 @@ void ln9310_emul_set_vin_gt_10v(const struct emul *emulator, bool is_gt_10v);
  */
 bool ln9310_emul_is_init(const struct emul *emulator);
 
+/**
+ * @brief Sets a function with an int register parameter
+ * that intercepts each r/w and that returns true if r/w should fail.
+ *
+ * @param emulator The LN9310 emulator to set interceptor.
+ * @param reg_interceptor_fun The fn pointer of the interceptor.
+ */
+void ln9310_emul_set_reg_interceptor(const struct emul *emulator,
+				     bool (*reg_interceptor_fn)(int register));
+
 #endif /* ZEPHYR_INCLUDE_EMUL_EMUL_LN9310_H_ */
