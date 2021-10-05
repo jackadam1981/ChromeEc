@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee03fd5e_5b951e50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-05T21:26:05Z",
+      "side": 1,
+      "message": "most of TCG tests, and specific tests for RSA in tpm_test.py",
+      "parentUuid": "05f4a327_49a938c4",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4089f266_79fcbc79",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-05T20:11:24Z",
       "side": 1,
       "message": "one 0 is enough",
+      "range": {
+        "startLine": 406,
+        "startChar": 33,
+        "endLine": 406,
+        "endChar": 55
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2bf8801_f0b680e0",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-05T21:26:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4089f266_79fcbc79",
       "range": {
         "startLine": 406,
         "startChar": 33,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b87be12_10357ae9",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-05T21:26:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd1c04b0_bc0a521c",
+      "range": {
+        "startLine": 435,
+        "startChar": 26,
+        "endLine": 435,
+        "endChar": 28
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "74e4b879_f6f6b521",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-05T20:11:24Z",
       "side": 1,
       "message": "are we supporting multiple exponent values? Maybe check against 4 and 65537 if these are the only two we use?",
+      "range": {
+        "startLine": 519,
+        "startChar": 4,
+        "endLine": 519,
+        "endChar": 68
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48619984_ad592be8",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-05T21:26:05Z",
+      "side": 1,
+      "message": "technically we have no restrictions. exponent should be coprime with N, and easiest way to do it is to choose prime e like 3 or 65537. On Ti50 we drop all exponents not in the list 3,7,13,17,19,257,65537, but technically there is no need for that. \nTPM use standard exponent 65537 by default. I\u0027m not sure these checks will add value. Checking for e\u00261 at least checks exponent was set (not zero).",
+      "parentUuid": "74e4b879_f6f6b521",
       "range": {
         "startLine": 519,
         "startChar": 4,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1b54308e_85ead3f0",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-05T21:26:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a18281d_e12a5b4c",
+      "range": {
+        "startLine": 524,
+        "startChar": 6,
+        "endLine": 524,
+        "endChar": 37
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "04ee3403_f2dc1ecb",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-10-05T20:11:24Z",
       "side": 1,
       "message": "what does alloca() do, can this fail?\n\n\nalso, why not leave variable name to be encrypted_buf to reduce amount of code changes?",
+      "range": {
+        "startLine": 610,
+        "startChar": 1,
+        "endLine": 610,
+        "endChar": 26
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74903fd5_1a18b202",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-05T21:26:05Z",
+      "side": 1,
+      "message": "no. it subtracts this value from stack pointer. it can fail if there is not enough stack, but this would same with static array. I want to remove all artificial limits to RSA 3K/4K without increasing stack consumption when it is not needed. With alloca() I can support RSA 3K/4K if needed by enterprise teams (still need to allow this for TPM), but for currently used RSA 2K it won\u0027t add to stack use.",
+      "parentUuid": "04ee3403_f2dc1ecb",
       "range": {
         "startLine": 610,
         "startChar": 1,
@@ -162,6 +306,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "827c8b73_38e92f43",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-05T21:26:05Z",
+      "side": 1,
+      "message": "it is a combined buffer for padded and signature. alloca() does some aligning and calling it several times increase code size unnecessary, so I do it once.",
+      "parentUuid": "bbd2293b_575c0bde",
+      "range": {
+        "startLine": 705,
+        "startChar": 10,
+        "endLine": 705,
+        "endChar": 13
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1667aab9_12a55502",
@@ -175,6 +343,30 @@
       "writtenOn": "2021-10-05T20:11:24Z",
       "side": 1,
       "message": "has this API changed? Before DCRYPTO_bn_div was getting a pointer to a flag buffer, now it is  getting a pointer to a BIGNUM?",
+      "range": {
+        "startLine": 776,
+        "startChar": 7,
+        "endLine": 776,
+        "endChar": 37
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "334a7c7b_adf2ef37",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-05T21:26:05Z",
+      "side": 1,
+      "message": "ah, this is optimization. Earlier code probably is a leftover from something else as removed memcpy(phi_buf, N-\u003ed, bn_size(N)); actually made \u0026phi \u003d N, and it is not modified for DCRYPTO_bn_div(), so no need to copy it.\n\nAnd value in \u0026phi is restored in line 780 and checked to be correct in line 781.",
+      "parentUuid": "1667aab9_12a55502",
       "range": {
         "startLine": 776,
         "startChar": 7,
