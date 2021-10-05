@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05f4a327_49a938c4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-05T20:11:24Z",
+      "side": 1,
+      "message": "some of these tests verify key generation, right? (just checking!)",
+      "range": {
+        "startLine": 17,
+        "startChar": 5,
+        "endLine": 18,
+        "endChar": 9
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4089f266_79fcbc79",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-05T20:11:24Z",
+      "side": 1,
+      "message": "one 0 is enough",
+      "range": {
+        "startLine": 406,
+        "startChar": 33,
+        "endLine": 406,
+        "endChar": 55
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd1c04b0_bc0a521c",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-05T20:11:24Z",
+      "side": 1,
+      "message": "sizeof(ZEROS)",
+      "range": {
+        "startLine": 435,
+        "startChar": 26,
+        "endLine": 435,
+        "endChar": 28
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74e4b879_f6f6b521",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-05T20:11:24Z",
+      "side": 1,
+      "message": "are we supporting multiple exponent values? Maybe check against 4 and 65537 if these are the only two we use?",
+      "range": {
+        "startLine": 519,
+        "startChar": 4,
+        "endLine": 519,
+        "endChar": 68
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a18281d_e12a5b4c",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 524,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-05T20:11:24Z",
+      "side": 1,
+      "message": "add parens around this to be consistent?",
+      "range": {
+        "startLine": 524,
+        "startChar": 6,
+        "endLine": 524,
+        "endChar": 37
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04ee3403_f2dc1ecb",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 610,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-05T20:11:24Z",
+      "side": 1,
+      "message": "what does alloca() do, can this fail?\n\n\nalso, why not leave variable name to be encrypted_buf to reduce amount of code changes?",
+      "range": {
+        "startLine": 610,
+        "startChar": 1,
+        "endLine": 610,
+        "endChar": 26
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbd2293b_575c0bde",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-05T20:11:24Z",
+      "side": 1,
+      "message": "keep the name signature_buf?",
+      "range": {
+        "startLine": 705,
+        "startChar": 10,
+        "endLine": 705,
+        "endChar": 13
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1667aab9_12a55502",
+        "filename": "board/cr50/dcrypto/rsa.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-05T20:11:24Z",
+      "side": 1,
+      "message": "has this API changed? Before DCRYPTO_bn_div was getting a pointer to a flag buffer, now it is  getting a pointer to a BIGNUM?",
+      "range": {
+        "startLine": 776,
+        "startChar": 7,
+        "endLine": 776,
+        "endChar": 37
+      },
+      "revId": "0a6d3b2a4c4ed97790162f09b093f88ac93149b8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
