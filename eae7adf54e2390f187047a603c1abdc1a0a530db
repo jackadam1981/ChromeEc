@@ -39,6 +39,30 @@
       },
       "revId": "eae7adf54e2390f187047a603c1abdc1a0a530db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8fef55c_05eb588b",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-10-05T22:17:48Z",
+      "side": 1,
+      "message": "not the first time we\u0027ve done this abuse, I\u0027m OK with it",
+      "parentUuid": "5a4e6cb8_0c25fa15",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 41
+      },
+      "revId": "eae7adf54e2390f187047a603c1abdc1a0a530db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
