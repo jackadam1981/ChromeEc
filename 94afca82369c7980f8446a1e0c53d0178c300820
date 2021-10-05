@@ -45,6 +45,30 @@
       },
       "revId": "94afca82369c7980f8446a1e0c53d0178c300820",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3119f11_24f41cb9",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-05T16:11:42Z",
+      "side": 1,
+      "message": "Yes, but that will be a different test for the motion_sense subsystem. This is just testing the st_get_data_rate function (https://source.chromium.org/chromium/chromiumos/platform/ec/+/HEAD:driver/stm_mems_common.c;l\u003d113;drc\u003dac5965dfc3bf18bed40fc63de9629080be814a97)",
+      "parentUuid": "fae17b52_c680985b",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 174,
+        "endChar": 29
+      },
+      "revId": "94afca82369c7980f8446a1e0c53d0178c300820",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
