@@ -16,6 +16,29 @@
       "message": "Few comments about this before I forget: kicked around few ideas before landing on this:\n- tried to use a led-names string-array to map the led phandles to strings, but it\u0027s missing the string token property... guess we could propose to add it if we really want to take that route\n- tried child nodes with a phandle to the pwm-led node, wanted to use those to replace the leds phandle-array, but there\u0027s no good way of counting the child nodes (no LEN property) which makes other things harder (build assert and the config option)\n- thought about doing a pair of ec-led-name-0, ec-led-name-1 enum props, but I don\u0027t really like having dts enums trying to match C enums, especially having to redefine them multiple times\n- tried to use the child reg to generate the full PWM_LEDx but could not make it work, guess I could ditch the reg altogether and have another string, but as it is at least the value is checked (0 or 1)\n\nEnded up with this, should cover all existing pwm LED cases and we could even move brightness-range to be per led if we really want to. Still to figure how to handle sidesel but that shouldn\u0027t be too hard.",
       "revId": "eae7adf54e2390f187047a603c1abdc1a0a530db",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a4e6cb8_0c25fa15",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-05T22:14:56Z",
+      "side": 1,
+      "message": "Just to be clear, I have mixed feelings about this. :-)",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 41
+      },
+      "revId": "eae7adf54e2390f187047a603c1abdc1a0a530db",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
