@@ -1043,6 +1043,16 @@
 #undef CONFIG_CHARGER_BQ25720_VSYS_TH2_DV
 
 /*
+ * This config option is used to set the charger current sense resistor
+ * value. This is useful when more than one charger chips are defined
+ * for a platform. Using this we override the CONFIG_CHARGER_SENSE_RESISTOR
+ * value defined for other charger chips.
+ * With 10 milliohms resistor value defined, the charger provides charge
+ * current range of 64-mA to 8.128 A, with a 64-mA step resolution.
+ */
+#undef CONFIG_CHARGER_BQ25720_SENSE_RESISTOR
+
+/*
  * Board specific maximum input current limit, in mA.
  */
 #undef CONFIG_CHARGER_MAX_INPUT_CURRENT
