@@ -252,6 +252,30 @@
       },
       "revId": "0341d5603f7852dd99bf1cdf6e00b4471a4ee814",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "babb5e7f_35521204",
+        "filename": "include/u2f_cmds.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-05T18:13:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "513300a2_61a70243",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 65
+      },
+      "revId": "0341d5603f7852dd99bf1cdf6e00b4471a4ee814",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
