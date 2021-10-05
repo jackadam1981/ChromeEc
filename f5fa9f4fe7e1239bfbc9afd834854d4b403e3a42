@@ -69,6 +69,42 @@
       "parentUuid": "3ab37f40_d0a4fdb1",
       "revId": "f5fa9f4fe7e1239bfbc9afd834854d4b403e3a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c54ee113_c72fc2f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T16:59:33Z",
+      "side": 1,
+      "message": "Agree.\n\nSam, you may also add the interrupt GPIO to the node. It helps eliminating the legacy definition include/gpio_map.h. Probably a follow-up CL.",
+      "parentUuid": "fd5a20c1_8e1931d4",
+      "revId": "f5fa9f4fe7e1239bfbc9afd834854d4b403e3a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84ac77e_6f717ced",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T16:59:33Z",
+      "side": 1,
+      "message": "The Suzy-Q cable advertises 1.5A, though the backend USB supply may not be capable to do so. It is a convenient tool to verify the CDP discovery.\n\nThe normal USB hubs are SDP. You can get 500mA (USB2) or 900mA (USB3).",
+      "parentUuid": "2908ad9b_442e2945",
+      "revId": "f5fa9f4fe7e1239bfbc9afd834854d4b403e3a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
