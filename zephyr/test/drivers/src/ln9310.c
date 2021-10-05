@@ -23,6 +23,33 @@
  */
 #define REQUIRES_SOFTWARE_STARTUP_CHIP_REV (LN9310_BC_STS_C_CHIP_REV_FIXED - 1)
 
+static bool fail_chip_rev_reg(int reg)
+{
+	return reg == LN9310_REG_BC_STS_C;
+}
+
+static void test_ln9310_read_chip_fails(void)
+{
+	const struct emul *emulator =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
+
+	zassert_not_null(emulator, NULL);
+
+	ln9310_emul_set_context(emulator);
+	ln9310_emul_reset(emulator);
+	/* Battery and chip rev won't matter here so only testing one pair */
+	ln9310_emul_set_battery_cell_type(emulator, BATTERY_CELL_TYPE_2S);
+	ln9310_emul_set_version(emulator, LN9310_BC_STS_C_CHIP_REV_FIXED);
+	ln9310_emul_set_reg_interceptor(emulator, &fail_chip_rev_reg);
+
+	zassert_ok(!ln9310_init(), NULL);
+	zassert_false(ln9310_emul_is_init(emulator), NULL);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
+}
+
 static void test_ln9310_2s_powers_up(void)
 {
 	const struct emul *emulator =
@@ -194,6 +221,9 @@ void test_suite_ln9310(void)
 {
 	ztest_test_suite(
 		ln9310,
+		ztest_unit_test_setup_teardown(test_ln9310_read_chip_fails,
+					       reset_ln9310_state,
+					       reset_ln9310_state),
 		ztest_unit_test_setup_teardown(test_ln9310_2s_powers_up,
 					       reset_ln9310_state,
 					       reset_ln9310_state),
