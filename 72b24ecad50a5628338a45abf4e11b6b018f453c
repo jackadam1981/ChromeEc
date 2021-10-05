@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21752052_95bfbf31",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-05T19:27:34Z",
+      "side": 1,
+      "message": "Check on this:\n\npwms \u003d \u003c\u0026led3_red \u0026led2_green \u0026led1_blue\u003e;\n\n(gdb) p pwm_leds\n$3 \u003d {{ch0 \u003d PWM_DT_N_S_named_pwms_S_led3_red, \n    ch1 \u003d PWM_DT_N_S_named_pwms_S_led2_green, \n    ch2 \u003d PWM_DT_N_S_named_pwms_S_led1_blue, \n    enable \u003d 0x10073045 \u003cpwm_enable\u003e, \n    set_duty \u003d 0x100730d9 \u003cpwm_set_duty\u003e}}\n\n---\npwms \u003d \u003c\u0026led3_red \u0026led2_green\u003e;\n\n(gdb) p pwm_leds\n$1 \u003d {{ch0 \u003d PWM_DT_N_S_named_pwms_S_led3_red, \n    ch1 \u003d PWM_DT_N_S_named_pwms_S_led2_green, ch2 \u003d 255, \n    enable \u003d 0x10073045 \u003cpwm_enable\u003e, \n    set_duty \u003d 0x100730d9 \u003cpwm_set_duty\u003e}}\n\n---\npwms \u003d \u003c\u0026led3_red\u003e;\n\n(gdb) p pwm_leds\n$1 \u003d {{ch0 \u003d PWM_DT_N_S_named_pwms_S_led3_red, ch1 \u003d 255, ch2 \u003d 255, \n    enable \u003d 0x10073045 \u003cpwm_enable\u003e, \n    set_duty \u003d 0x100730d9 \u003cpwm_set_duty\u003e}}\n",
+      "revId": "72b24ecad50a5628338a45abf4e11b6b018f453c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
