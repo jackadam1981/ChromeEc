@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "624df2c9_77f3b1a9",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-05T15:56:05Z",
+      "side": 1,
+      "message": "Can you explain this? Seems like a no-op. If this is intended can we remove the assignment and replace with a comment explaining why no change is needed?",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 27
+      },
+      "revId": "8649237834564be145adaf13a524f488fbf49d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346f1600_dc1c0153",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-05T15:56:05Z",
+      "side": 1,
+      "message": "Please comment, when you first told me \"unfixed\" I thought you meant one that changes. Should include some language about \"chip versions below LN9310_BC_STS_C_CHIP_REV_FIXED include a bug which requires a software init\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 8,
+        "endLine": 20,
+        "endChar": 27
+      },
+      "revId": "8649237834564be145adaf13a524f488fbf49d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d483835e_e3db5b0c",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-05T15:56:05Z",
+      "side": 1,
+      "message": "Can you add a TODO with the bug for sleep on all of these, it\u0027s much easier to find and fix all of them that way.",
+      "range": {
+        "startLine": 77,
+        "startChar": 1,
+        "endLine": 77,
+        "endChar": 9
+      },
+      "revId": "8649237834564be145adaf13a524f488fbf49d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
