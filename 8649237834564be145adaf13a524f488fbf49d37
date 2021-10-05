@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e68ab376_7348a633",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-05T18:54:06Z",
+      "side": 1,
+      "message": "I see, `now_in_standby` made me assume that we\u0027re already in standby. Can we rename to new_mode_in_standby? same for now_switching_(2|3)1?",
+      "parentUuid": "7c1cd62e_46958383",
+      "range": {
+        "startLine": 141,
+        "startChar": 4,
+        "endLine": 141,
+        "endChar": 27
+      },
+      "revId": "8649237834564be145adaf13a524f488fbf49d37",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "346f1600_dc1c0153",
         "filename": "zephyr/test/drivers/src/ln9310.c",
         "patchSetId": 5
