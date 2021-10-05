@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a2d82c_317269fe",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-05T16:16:18Z",
+      "side": 1,
+      "message": "nit: style guide says we should have the leading /* on a line on its own.",
+      "range": {
+        "startLine": 1481,
+        "startChar": 1,
+        "endLine": 1483,
+        "endChar": 4
+      },
+      "revId": "07257fb9d7637314d787ddf66021c94ce91171a8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
