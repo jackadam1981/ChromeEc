@@ -324,7 +324,7 @@ static const struct RSA TEST_ENDORSEMENT_CA_RSA_PUB = {
 	.e = RSA_F4,
 	.N = {
 		.dmax = sizeof(TEST_ENDORSEMENT_CA_RSA_N) / sizeof(uint32_t),
-		.d = (struct access_helper *) TEST_ENDORSEMENT_CA_RSA_N,
+		.d = (struct access_helper_ *) TEST_ENDORSEMENT_CA_RSA_N,
 	},
 	.d = {
 		.dmax = 0,
@@ -336,7 +336,7 @@ static const struct RSA PROD_ENDORSEMENT_CA_RSA_PUB = {
 	.e = RSA_F4,
 	.N = {
 		.dmax = sizeof(PROD_ENDORSEMENT_CA_RSA_N) / sizeof(uint32_t),
-		.d = (struct access_helper *) PROD_ENDORSEMENT_CA_RSA_N,
+		.d = (struct access_helper_ *) PROD_ENDORSEMENT_CA_RSA_N,
 	},
 	.d = {
 		.dmax = 0,

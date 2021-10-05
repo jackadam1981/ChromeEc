@@ -104,7 +104,7 @@ CRYPT_RESULT _cpri__EncryptRSA(uint32_t *out_len, uint8_t *out,
 	reverse_tpm2b(key->publicKey);
 	rsa.e = key->exponent;
 	rsa.N.dmax = key->publicKey->size / sizeof(uint32_t);
-	rsa.N.d = (struct access_helper *) &key->publicKey->buffer;
+	rsa.N.d = (struct access_helper_ *) &key->publicKey->buffer;
 	rsa.d.dmax = 0;
 	rsa.d.d = NULL;
 
@@ -139,9 +139,9 @@ CRYPT_RESULT _cpri__DecryptRSA(uint32_t *out_len, uint8_t *out,
 
 	rsa.e = key->exponent;
 	rsa.N.dmax = key->publicKey->size / sizeof(uint32_t);
-	rsa.N.d = (struct access_helper *) &key->publicKey->buffer;
+	rsa.N.d = (struct access_helper_ *) &key->publicKey->buffer;
 	rsa.d.dmax = key->privateKey->size / sizeof(uint32_t);
-	rsa.d.d = (struct access_helper *) &key->privateKey->buffer;
+	rsa.d.d = (struct access_helper_ *) &key->privateKey->buffer;
 
 	result = DCRYPTO_rsa_decrypt(&rsa, out, out_len, in, in_len, padding,
 				hashing, label);
@@ -174,9 +174,9 @@ CRYPT_RESULT _cpri__SignRSA(uint32_t *out_len, uint8_t *out,
 
 	rsa.e = key->exponent;
 	rsa.N.dmax = key->publicKey->size / sizeof(uint32_t);
-	rsa.N.d = (struct access_helper *) &key->publicKey->buffer;
+	rsa.N.d = (struct access_helper_ *) &key->publicKey->buffer;
 	rsa.d.dmax = key->privateKey->size / sizeof(uint32_t);
-	rsa.d.d = (struct access_helper *) &key->privateKey->buffer;
+	rsa.d.d = (struct access_helper_ *) &key->privateKey->buffer;
 
 	/* TPM2 wrapper function fails to initialize out_len! */
 	*out_len = key->publicKey->size;
@@ -211,7 +211,7 @@ CRYPT_RESULT _cpri__ValidateSignatureRSA(
 
 	rsa.e = key->exponent;
 	rsa.N.dmax = key->publicKey->size / sizeof(uint32_t);
-	rsa.N.d = (struct access_helper *) &key->publicKey->buffer;
+	rsa.N.d = (struct access_helper_ *) &key->publicKey->buffer;
 	rsa.d.dmax = 0;
 	rsa.d.d = NULL;
 
@@ -281,7 +281,7 @@ static int generate_prime(struct LITE_BIGNUM *b, TPM_ALG_ID hashing,
 			TPM2B *seed, const char *label, TPM2B *extra,
 			uint32_t *counter)
 {
-	TPM2B_4_BYTE_VALUE marshaled_counter = { .t = {4} };
+	TPM2B_4_BYTE_VALUE marshaled_counter = { .t = {{0}, 4} };
 	uint32_t i;
 
 	for (i = 0; i < MAX_GENERATE_ATTEMPTS; i++) {
@@ -356,8 +356,8 @@ CRYPT_RESULT _cpri__GenerateKeyRSA(
 	struct LITE_BIGNUM N;
 
 	uint32_t counter = 0;
-	TPM2B_32_BYTE_VALUE local_seed = { .t = {32} };
-	TPM2B_32_BYTE_VALUE local_extra = { .t = {32} };
+	TPM2B_32_BYTE_VALUE local_seed = { .t = {{0}, 32} };
+	TPM2B_32_BYTE_VALUE local_extra = { .t = {{0}, 32} };
 
 	const TPM2B_SEED *endorsement_seed = HierarchyGetPrimarySeed(
 		TPM_RH_ENDORSEMENT);
@@ -480,7 +480,7 @@ enum {
 TPM2B_BYTE_VALUE(512);
 
 static const TPM2B_512_BYTE_VALUE RSA_768_N = {
-	.t = {96, {
+	.t = {{0}, 96, {
 			0xb0, 0xdb, 0xed, 0x46, 0xd9, 0x32, 0xf0, 0x7c,
 			0xd4, 0x20, 0x23, 0xd2, 0x35, 0x5a, 0x86, 0x17,
 			0xdb, 0x24, 0x72, 0x36, 0x33, 0x3b, 0xc2, 0x64,
@@ -498,7 +498,7 @@ static const TPM2B_512_BYTE_VALUE RSA_768_N = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_768_D = {
-	.t = {96, {
+	.t = {{0}, 96, {
 			0xae, 0xad, 0xb9, 0x50, 0x25, 0x8c, 0x1b, 0x5c,
 			0x9f, 0x42, 0xd3, 0x3e, 0x76, 0x75, 0xdf, 0x45,
 			0x46, 0xab, 0x5b, 0xa6, 0xce, 0xb9, 0x72, 0x49,
@@ -516,7 +516,7 @@ static const TPM2B_512_BYTE_VALUE RSA_768_D = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_768_P = {
-	.t = {48, {
+	.t = {{0}, 48, {
 			0xd6, 0x09, 0x64, 0xc8, 0xf3, 0x5c, 0x02, 0xc7,
 			0xc6, 0x47, 0x4e, 0x7f, 0x43, 0x9d, 0x31, 0x46,
 			0x7a, 0x33, 0x85, 0xa0, 0xa4, 0x16, 0xea, 0x22,
@@ -528,7 +528,7 @@ static const TPM2B_512_BYTE_VALUE RSA_768_P = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_768_Q = {
-	.t = {48, {
+	.t = {{0}, 48, {
 			0xd3, 0x88, 0x92, 0x2d, 0xd5, 0xc6, 0x29, 0xf4,
 			0xf0, 0x2e, 0x61, 0xf0, 0x60, 0xad, 0xa9, 0x46,
 			0x11, 0xa9, 0x0c, 0x69, 0x14, 0x31, 0x09, 0x36,
@@ -540,7 +540,7 @@ static const TPM2B_512_BYTE_VALUE RSA_768_Q = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_1024_N = {
-	.t = {128, {
+	.t = {{0}, 128, {
 			0xdf, 0x4e, 0xaf, 0x73, 0x45, 0x94, 0x98, 0x34,
 			0x30, 0x7e, 0x26, 0xad, 0x40, 0x83, 0xf9, 0x17,
 			0x21, 0xb0, 0x4e, 0x1b, 0x0d, 0x6a, 0x44, 0xce,
@@ -562,7 +562,7 @@ static const TPM2B_512_BYTE_VALUE RSA_1024_N = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_1024_D = {
-	.t = {128, {
+	.t = {{0}, 128, {
 			0x9a, 0x6d, 0x85, 0xf4, 0x07, 0xa8, 0x6d, 0x61,
 			0x9a, 0x2f, 0x83, 0x7b, 0xc8, 0xe3, 0xfb, 0x7c,
 			0xbd, 0xb5, 0x79, 0x2e, 0x48, 0x26, 0xb7, 0x92,
@@ -584,7 +584,7 @@ static const TPM2B_512_BYTE_VALUE RSA_1024_D = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_1024_P = {
-	.t = {64, {
+	.t = {{0}, 64, {
 			0xf9, 0x5e, 0x79, 0x65, 0x43, 0x70, 0x40, 0x83,
 			0x50, 0x0a, 0xbb, 0x61, 0xb3, 0x87, 0x7b, 0x24,
 			0x8f, 0x2a, 0x03, 0x5b, 0xb5, 0x4b, 0x94, 0x94,
@@ -598,7 +598,7 @@ static const TPM2B_512_BYTE_VALUE RSA_1024_P = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_1024_Q = {
-	.t = {64, {
+	.t = {{0}, 64, {
 			0xe5, 0x3e, 0xcd, 0x4b, 0x97, 0xc5, 0x96, 0x39,
 			0x70, 0x97, 0x3a, 0x10, 0xa9, 0xc3, 0x35, 0x0a,
 			0xd6, 0x2b, 0xf5, 0x12, 0x8d, 0xb2, 0xc0, 0x0b,
@@ -612,7 +612,7 @@ static const TPM2B_512_BYTE_VALUE RSA_1024_Q = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_2048_N = {
-	.t = {256, {
+	.t = {{0}, 256, {
 			0x9c, 0xd7, 0x61, 0x2e, 0x43, 0x8e, 0x15, 0xbe,
 			0xcd, 0x73, 0x9f, 0xb7, 0xf5, 0x86, 0x4b, 0xe3,
 			0x95, 0x90, 0x5c, 0x85, 0x19, 0x4c, 0x1d, 0x2e,
@@ -762,7 +762,7 @@ static const uint8_t RSA_2048_CERT[] = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_2048_D = {
-	.t  = {256, {
+	.t  = {{0}, 256, {
 			0x4e, 0x9d, 0x02, 0x1f, 0xdf, 0x4a, 0x8b, 0x89,
 			0xbc, 0x8f, 0x14, 0xe2, 0x6f, 0x15, 0x66, 0x5a,
 			0x67, 0x70, 0x19, 0x7f, 0xb9, 0x43, 0x56, 0x68,
@@ -800,7 +800,7 @@ static const TPM2B_512_BYTE_VALUE RSA_2048_D = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_2048_P = {
-	.t  = {128, {
+	.t  = {{0}, 128, {
 			0xc8, 0x80, 0x6f, 0xf6, 0x2f, 0xfb, 0x49, 0x8b,
 			0x77, 0x39, 0xe2, 0x3d, 0x3d, 0x1f, 0x4d, 0xf9,
 			0xbb, 0x54, 0x06, 0x0d, 0x71, 0xbf, 0x54, 0xb1,
@@ -822,7 +822,7 @@ static const TPM2B_512_BYTE_VALUE RSA_2048_P = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_2048_Q = {
-	.t  = {128, {
+	.t  = {{0}, 128, {
 			0xc8, 0x41, 0x2a, 0x42, 0xf1, 0x6a, 0x81, 0xac,
 			0x06, 0xab, 0xd0, 0xb7, 0xc0, 0xbb, 0xc6, 0x13,
 			0xdd, 0xfd, 0x5e, 0x3c, 0x77, 0xfe, 0xc1, 0x2e,
@@ -844,7 +844,7 @@ static const TPM2B_512_BYTE_VALUE RSA_2048_Q = {
 };
 
 static const TPM2B_512_BYTE_VALUE RSA_4096_N = {
-	.t  = {512, {
+	.t  = {{0}, 512, {
 			0xB4, 0xD2, 0xAB, 0x9C, 0xFA, 0x42, 0x9A, 0x37,
 			0x70, 0x2A, 0xE4, 0x2D, 0x87, 0x67, 0x7F, 0x15,
 			0xB6, 0x31, 0x06, 0x06, 0xD5, 0x5A, 0xE9, 0x8E,
@@ -953,7 +953,7 @@ static void rsa_command_handler(void *cmd_body,
 	 * EK Credential Profile spec.
 	 */
 	TPM2B_32_BYTE_VALUE RSA_TEMPLATE_EK_EXTRA = {
-		.t = {32, {
+		.t = {{0}, 32, {
 				0x68, 0xd1, 0xa2, 0x41, 0xfb, 0x27, 0x2f, 0x03,
 				0x90, 0xbf, 0xd0, 0x42, 0x8d, 0xad, 0xee, 0xb0,
 				0x2b, 0xf4, 0xa1, 0xcd, 0x46, 0xab, 0x6c, 0x39,
@@ -1152,7 +1152,7 @@ static void rsa_command_handler(void *cmd_body,
 		reverse_tpm2b(key.publicKey);
 		rsa.e = key.exponent;
 		rsa.N.dmax = key.publicKey->size / sizeof(uint32_t);
-		rsa.N.d = (struct access_helper *) &key.publicKey->buffer;
+		rsa.N.d = (struct access_helper_ *) &key.publicKey->buffer;
 		rsa.d.dmax = 0;
 		rsa.d.d = NULL;
 

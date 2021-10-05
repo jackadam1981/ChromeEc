@@ -106,6 +106,7 @@ BUILD_ASSERT(sizeof(TPM2_ECC_EK_NAME_TEMPLATE) == 2 + SHA256_DIGEST_SIZE);
  */
 static const TPM2B_4_BYTE_VALUE TPM2_ECC_EK_NAME_CR50 = {
 	.t = {
+		._pad = {0},
 		.size = 4,
 		.buffer = {
 			0xc2, 0xe0, 0x31, 0x93
@@ -120,8 +121,8 @@ CRYPT_RESULT _cpri__GenerateKeyEcc(
 	TPM_ECC_CURVE curve_id,	TPM_ALG_ID hash_alg,
 	TPM2B *seed, const char *label,	TPM2B *extra, UINT32 *counter)
 {
-	TPM2B_4_BYTE_VALUE marshaled_counter = { .t = {4} };
-	TPM2B_32_BYTE_VALUE local_seed = { .t = {32} };
+	TPM2B_4_BYTE_VALUE marshaled_counter = { .t = {{0}, 4} };
+	TPM2B_32_BYTE_VALUE local_seed = { .t = {{0}, 32} };
 	TPM2B *local_extra;
 	uint32_t count = 0;
 	uint8_t key_bytes[P256_NBYTES];
@@ -341,7 +342,7 @@ struct TPM2B_MAX_BUFFER_aligned {
 
 static const struct TPM2B_ECC_PARAMETER_aligned NIST_P256_d = {
 	.d = {
-		.t = {32, {
+		.t = {{0}, 32, {
 				0xfc, 0x44, 0x1e, 0x07, 0x74, 0x4e, 0x48, 0xf1,
 				0x09, 0xb7, 0xe6, 0x6b, 0x29, 0x48, 0x2f, 0x7b,
 				0x7e, 0x3e, 0xc9, 0x1f, 0xa2, 0x7f, 0xd4, 0x87,
@@ -353,7 +354,7 @@ static const struct TPM2B_ECC_PARAMETER_aligned NIST_P256_d = {
 
 static const struct TPM2B_ECC_PARAMETER_aligned NIST_P256_qx = {
 	.d = {
-		.t = {32, {
+		.t = {{0}, 32, {
 				0x12, 0xc3, 0xd6, 0xa2, 0x67, 0x9c, 0xa8, 0xee,
 				0x3c, 0x4d, 0x92, 0x7f, 0x20, 0x4e, 0xd5, 0xbc,
 				0xb4, 0x57, 0x7a, 0x04, 0xb0, 0xac, 0x02, 0xb2,
@@ -365,7 +366,7 @@ static const struct TPM2B_ECC_PARAMETER_aligned NIST_P256_qx = {
 
 static const struct TPM2B_ECC_PARAMETER_aligned NIST_P256_qy = {
 	.d = {
-		.t = {32, {
+		.t = {{0}, 32, {
 				0x5c, 0x85, 0xad, 0x74, 0x13, 0x97, 0x11, 0x72,
 				0xfc, 0xa5, 0x73, 0x8f, 0xee, 0x9d, 0x0e, 0x7b,
 				0xc5, 0x9f, 0xfd, 0x8a, 0x62, 0x6d, 0x68, 0x9b,

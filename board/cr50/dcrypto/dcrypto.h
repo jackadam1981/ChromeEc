@@ -710,10 +710,14 @@ struct access_helper {
 	uint32_t udata;
 } __packed;
 
+struct access_helper_ {
+	uint32_t udata;
+};
+
 
 struct LITE_BIGNUM {
 	uint32_t dmax;              /* Size of d, in 32-bit words. */
-	struct access_helper *d;  /* Word array, little endian format ... */
+	struct access_helper_ *d;  /* Word array, little endian format ... */
 };
 
 

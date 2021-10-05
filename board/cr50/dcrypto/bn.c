@@ -26,7 +26,7 @@ void DCRYPTO_bn_wrap(struct LITE_BIGNUM *b, void *buf, size_t len)
 	}
 
 	b->dmax = len / LITE_BN_BYTES;
-	b->d = (struct access_helper *) buf;
+	b->d = (struct access_helper_ *) buf;
 }
 
 int bn_eq(const struct LITE_BIGNUM *a, const struct LITE_BIGNUM *b)
@@ -381,7 +381,7 @@ static void bn_modexp_internal(struct LITE_BIGNUM *output,
 
 	bn_mont_mul(output, NULL, &acc, nprime, N);     /* Convert out. */
 	/* Copy to output buffer if necessary. */
-	if (acc.d != (struct access_helper *) acc_buf) {
+	if (acc.d != (struct access_helper_ *) acc_buf) {
 		memcpy(acc.d, acc_buf, bn_size(output));
 		*output = acc;
 	}
