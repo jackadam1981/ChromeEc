@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa1f3914_72cced7a",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-05T15:57:24Z",
+      "side": 1,
+      "message": "Same on these, please add TODO with bug number so it\u0027s easier to find using grep later.",
+      "range": {
+        "startLine": 136,
+        "startChar": 1,
+        "endLine": 136,
+        "endChar": 9
+      },
+      "revId": "25e4b1de9f711d6c4ae27e63225db6c041a12a5d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
