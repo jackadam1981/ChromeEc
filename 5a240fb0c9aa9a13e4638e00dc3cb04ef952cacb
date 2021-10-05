@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1ff8800_7211579d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T23:17:58Z",
+      "side": 1,
+      "message": "Thanks for the explanation.\n\nBut I still don\u0027t understand. The ln9310_init() sets the STANDBY_EN to 1. The operation mode is standby.\n\nAt the line 487 (the original code), the STANDBY_EN is still 1. Even the pending interrupt mask is cleared, the interrupt won\u0027t be triggered, as the mode won\u0027t change.\n\nWhen the STANDBY_EN is set to 0, at the line 568, the operation mode changes to a switching mode. Then the mode-change interrupt triggers. So the interrupt happens after the line 568.",
+      "parentUuid": "31e29d92_8cf5e941",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "5a240fb0c9aa9a13e4638e00dc3cb04ef952cacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ef68a1f4_cb69d4ba",
