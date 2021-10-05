@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dd747156_a2b22ede",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-05T17:25:31Z",
+      "side": 1,
+      "message": "This is just a personal UT philosophy of mine that doing the exact same math in the function under test and the test itself only verifies that bitwise operations are working. So instead I like to use known-good, pre-calculated test vectors because this would catch any arithmetic errors in the code. The comment is just to briefly describe where the value comes from to avoid magic numbers.",
+      "parentUuid": "7e87e13d_2c37d987",
+      "range": {
+        "startLine": 103,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 61
+      },
+      "revId": "06d2da79eda0be64727121a8f9e63619a88575b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "53d16abc_1469dc3d",
         "filename": "zephyr/test/drivers/src/stm_mems_common.c",
         "patchSetId": 1
@@ -61,6 +85,30 @@
       "writtenOn": "2021-10-05T16:08:49Z",
       "side": 1,
       "message": "nit: if we\u0027re returning -EIO we don\u0027t need this right?",
+      "range": {
+        "startLine": 110,
+        "startChar": 1,
+        "endLine": 110,
+        "endChar": 54
+      },
+      "revId": "06d2da79eda0be64727121a8f9e63619a88575b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b31a222_c3569fcf",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-05T17:25:31Z",
+      "side": 1,
+      "message": "I just tried removing it but we fail the test due to `Failed to find parameter val for mock_read_fn`. The problem is that since `st_write_data_with_mask()` does pass a valid / non-NULL output buffer to the read function, the logic I added to `mock_read_fn` on lines 29-32 expects an expected value to be supplied. I don\u0027t see a way in the ztest mocks to explicitly ignore such a param. `test_st_raw_read_n` works without this because a NULL pointer is passed in instead of an output buffer.\n\nI could either (1) leave this as is and add a comment clarifying that the \"read\" value is immaterial, or (2) come up with an alternate mechanism for enabling the output parameter, possibly using the arg parameter passed in when setting the mock.",
+      "parentUuid": "53d16abc_1469dc3d",
       "range": {
         "startLine": 110,
         "startChar": 1,
@@ -107,6 +155,30 @@
       "writtenOn": "2021-10-05T16:08:49Z",
       "side": 1,
       "message": "Can you explain? I\u0027m only seeing one assert for the error.",
+      "range": {
+        "startLine": 130,
+        "startChar": 57,
+        "endLine": 131,
+        "endChar": 27
+      },
+      "revId": "06d2da79eda0be64727121a8f9e63619a88575b1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7c3c29_d0047100",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1523797
+      },
+      "writtenOn": "2021-10-05T17:25:31Z",
+      "side": 1,
+      "message": "Yeah, we check the new written value on line 141 (`ztest_expect_value(mock_write_fn, val, expected_new_value);`)",
+      "parentUuid": "d5cc2d4d_39d89ea3",
       "range": {
         "startLine": 130,
         "startChar": 57,
