@@ -4560,6 +4560,11 @@
 #undef CONFIG_DP_REDRIVER_TDP142
 
 /*
+ * Config to enable TUSB1044 Type-c USB redriver
+ */
+#undef CONFIG_USB_MUX_TUSB1044
+
+/*
  * Define this to enable Type-C retimer firmware update. Each Type-C retimer
  * indicates its capability of supporting firmware update in usb_mux_driver.
  * This feature is available to TCPMv2 PD stack, also requires
