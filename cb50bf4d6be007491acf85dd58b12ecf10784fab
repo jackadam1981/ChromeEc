@@ -174,6 +174,30 @@
       },
       "revId": "cb50bf4d6be007491acf85dd58b12ecf10784fab",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3485f4ab_05e49f66",
+        "filename": "zephyr/test/drivers/src/usb_mux.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-05T15:42:13Z",
+      "side": 1,
+      "message": "Yeah, doesn\u0027t sound the same, but I\u0027m OK to clump all the sleep bugs under the same umbrella and we can split them out later if needed.",
+      "parentUuid": "80555df2_f64170a4",
+      "range": {
+        "startLine": 295,
+        "startChar": 1,
+        "endLine": 295,
+        "endChar": 13
+      },
+      "revId": "cb50bf4d6be007491acf85dd58b12ecf10784fab",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
