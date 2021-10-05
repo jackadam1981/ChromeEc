@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e00e5ec_034869a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-05T17:54:08Z",
+      "side": 1,
+      "message": "I think this is already possible using:\n* i2c_common_emul_set_write_fail_reg\n* i2c_common_emul_set_read_fail_reg\n* i2c_common_emul_set_write_func\n* i2c_common_emul_set_read_func",
+      "revId": "c4243b57699bfa43d321094ddf8dc5fefe30941c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
