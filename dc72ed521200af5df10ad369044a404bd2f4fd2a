@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fcb0173_47b53589",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-05T18:49:54Z",
+      "side": 1,
+      "message": "Can you also split this off to Kconfig.tcpc? Then add the logging template and use a default for the compat string so we don\u0027t have to explicitly set to `y`?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "666ce3e6_b2f9dc3a",
         "filename": "zephyr/include/emul/emul_tcpc.h",
         "patchSetId": 5
