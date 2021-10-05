@@ -16,6 +16,24 @@
       "message": "should be done through cq-depend",
       "revId": "41587eb97e0e833918b6fc952fe1263f07166e7a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8864f861_b7e08328",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-05T18:16:35Z",
+      "side": 1,
+      "message": "yes, I\u0027ll add a CL which will enable it after 3198155",
+      "parentUuid": "1e2d5fba_287eb969",
+      "revId": "41587eb97e0e833918b6fc952fe1263f07166e7a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
