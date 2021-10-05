@@ -16,6 +16,24 @@
       "message": "This is blocked by https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3194984 now (they said it should be landed this week) since the toolchain is not working due to gcc version problems currently.",
       "revId": "ebeae947e3f11ad55ad6130698a09a5adda86821",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4299bc1_0a178b0f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-10-05T04:35:07Z",
+      "side": 1,
+      "message": "Nvm, fixed.",
+      "parentUuid": "814816dd_27fce2c7",
+      "revId": "ebeae947e3f11ad55ad6130698a09a5adda86821",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
