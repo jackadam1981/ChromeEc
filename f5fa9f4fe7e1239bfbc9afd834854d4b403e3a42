@@ -105,6 +105,42 @@
       "parentUuid": "2908ad9b_442e2945",
       "revId": "f5fa9f4fe7e1239bfbc9afd834854d4b403e3a42",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad3f9a2b_e1a898d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-05T17:51:17Z",
+      "side": 1,
+      "message": "I\u0027ve added the inter GPIO to the node",
+      "parentUuid": "c54ee113_c72fc2f2",
+      "revId": "f5fa9f4fe7e1239bfbc9afd834854d4b403e3a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f2caa86_30d85e34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-05T17:51:17Z",
+      "side": 1,
+      "message": "With SuzyQ:\npi3usb9201[p0]: sts \u003d 0x40, lim \u003d 500 mA, supplier \u003d 5]\n\nchgsup\n\nport\u003d0, type\u003d2, cur\u003d1500mA, vtg\u003d5000mV, lsm\u003d1\n\nI\u0027ll add it to the commit message.",
+      "parentUuid": "c84ac77e_6f717ced",
+      "revId": "f5fa9f4fe7e1239bfbc9afd834854d4b403e3a42",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
