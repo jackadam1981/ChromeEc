@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2330f5b6_17262173",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 1861,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-05T00:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba7ea142_d5f4189f",
+      "revId": "82a4daf9311e18ca2c6715137f2a795c65541d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f1adce2_deabb521",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-04T15:46:30Z",
       "side": 1,
       "message": "__test_only",
+      "revId": "82a4daf9311e18ca2c6715137f2a795c65541d5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b6e87cc_8eb80591",
+        "filename": "include/charge_state.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-05T00:52:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f1adce2_deabb521",
       "revId": "82a4daf9311e18ca2c6715137f2a795c65541d5a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

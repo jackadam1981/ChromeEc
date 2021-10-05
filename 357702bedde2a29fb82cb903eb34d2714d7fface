@@ -72,6 +72,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c899b501_e254fb64",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-05T00:52:36Z",
+      "side": 1,
+      "message": "\u003e I think we need to use the same timer. It doesn\u0027t matter why PRECHARGE started. What matters is how long PRECHARGE is lasting.\n\nI think precharge_start_time timer also be set by wakeup_battery , because if not define CONFIG_BATTERY_LOW_VOLTAGE_PROTECTION , the timer will not be set by deep_charge_battery",
+      "parentUuid": "55e97b17_6b702ed5",
+      "range": {
+        "startLine": 1839,
+        "startChar": 24,
+        "endLine": 1839,
+        "endChar": 44
+      },
+      "revId": "357702bedde2a29fb82cb903eb34d2714d7fface",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3d77748_93d340b5",
