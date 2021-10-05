@@ -67,6 +67,16 @@ config EMUL_BB_RETIMER
 	  reads and writes to all emulator registers. Emulators API is
 	  available in zephyr/include/emul/emul_bb_retimer.h
 
+config EMUL_TCPC
+	bool "TCPC emulator"
+	select EMUL_COMMON_I2C
+	help
+	  Enable the TCPC emulator. This driver use emulated I2C bus. It is
+	  used to test tcpci code. It supports reads and writes to all emulator
+	  registers. Generic TCPC emulator can be used as the base for specific
+	  TCPC device emulator. TCPC emulator API is available in
+	  zephyr/include/emul/emul_tcpc.h
+
 rsource "Kconfig.ln9310"
 rsource "Kconfig.lis2dw12"
 rsource "Kconfig.i2c_mock"
