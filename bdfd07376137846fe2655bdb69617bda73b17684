@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f7ba9d2_24539e99",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-05T16:15:20Z",
+      "side": 1,
+      "message": "Will this break if we enable floating point in the test? Should use `zassert_within()` probably",
+      "range": {
+        "startLine": 297,
+        "startChar": 0,
+        "endLine": 305,
+        "endChar": 28
+      },
+      "revId": "bdfd07376137846fe2655bdb69617bda73b17684",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
