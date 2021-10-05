@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "8eb38e2c_fcc475d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-05T17:58:52Z",
+      "side": 1,
+      "message": "Does it mean setting the STANDBY_EN register will also clear the interrupt bitmask?\n\nLooks good if this is true. Can you point me the support material of this behavior?",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "5a240fb0c9aa9a13e4638e00dc3cb04ef952cacb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ef68a1f4_cb69d4ba",
