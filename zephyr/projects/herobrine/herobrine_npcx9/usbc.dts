@@ -12,6 +12,13 @@
 				port = <&i2c_power>;
 				i2c-addr-flags = "PI3USB9201_I2C_ADDR_3_FLAGS";
 			};
+			ppc {
+				compatible = "ti,sn5s330";
+				label = "ppc0";
+				status = "okay";
+				port = <&i2c_ppc0>;
+				i2c-addr-flags = "SN5S330_ADDR0_FLAGS";
+			};
 		};
 
 		port1: usbc-port1 {
@@ -20,6 +27,13 @@
 				status = "okay";
 				port = <&i2c_eeprom>;
 				i2c-addr-flags = "PI3USB9201_I2C_ADDR_3_FLAGS";
+			};
+			ppc {
+				compatible = "ti,sn5s330";
+				label = "ppc1";
+				status = "okay";
+				port = <&i2c_ppc1>;
+				i2c-addr-flags = "SN5S330_ADDR0_FLAGS";
 			};
 		};
 	};
