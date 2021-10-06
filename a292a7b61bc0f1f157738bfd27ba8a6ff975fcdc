@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14b85330_5c0771ba",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-06T04:54:05Z",
+      "side": 1,
+      "message": "there\u0027s a lot of duplication here with primus/prochot.c.\n\nplease try to combine the duplicate parts of these\ntwo files into common files.\n\nfor example, i think the charger specific code can mostly\ngo into baseboard/brya/charger_bq25720.c\n\nsome of the assert_prochot() functionality can probably\nbe shared as well... maybe the 95%/105% thresholds need\nto be board specific, but a lot of the logic seems to be\ncommon. we may a prochot.c at the baseboard level.\nplease pick a better name 😊",
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "751db0a0_051f455d",
         "filename": "board/gimble/prochot.c",
         "patchSetId": 7
