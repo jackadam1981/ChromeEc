@@ -110,6 +110,30 @@
       },
       "revId": "3f3125cb508904d4a548ccaf305c7906712513d2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f83c71f7_fdf9a880",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-06T18:54:42Z",
+      "side": 1,
+      "message": "to keep the code robust this is what I mean\n1. in commn.charger.c\n\nstatic int commamd_charger_dump(int argc, char **argv)\n{\nfor (i \u003c charger count)\n     chg_chips[i].driver.charger_dump_func()\n}\nDECLARE_CONSOLE_COMMAND(charger_dump, command_charger_dump, ***)\n\n2. in charger.h\nadd this new call call back function for dumping resisters \n\n3. make necessary changes in driver.c",
+      "parentUuid": "388cdd27_41b80b26",
+      "range": {
+        "startLine": 570,
+        "startChar": 24,
+        "endLine": 570,
+        "endChar": 36
+      },
+      "revId": "3f3125cb508904d4a548ccaf305c7906712513d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
