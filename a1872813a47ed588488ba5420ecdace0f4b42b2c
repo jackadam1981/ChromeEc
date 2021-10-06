@@ -70,6 +70,30 @@
       },
       "revId": "a1872813a47ed588488ba5420ecdace0f4b42b2c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "047835e4_6161e500",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-10-06T12:58:04Z",
+      "side": 1,
+      "message": "Due to we don\u0027t have mock-up dut to tune motion sensor orientation.\nWe are not sure if motion sensor profile is configured correctly.\nThat could be possible to impact our next build \"in factory\".\nEx. KB could be disable/Screen shows revert-display because incorrect motionsensor profile and tablet/tent/... is mis-triggered.\nSo, I\u0027m informed to disable it this phase.\n\nThat\u0027s the reason I create b/201504044 and keep tracking it. Could we have your help to approve it? Sorry to make any inconvenience.",
+      "parentUuid": "b3352ede_1bacd331",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 5
+      },
+      "revId": "a1872813a47ed588488ba5420ecdace0f4b42b2c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
