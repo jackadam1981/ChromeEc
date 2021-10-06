@@ -46,6 +46,30 @@
       },
       "revId": "08a04c67ac0f6c921fda9a96c5341468b4910736",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6d21fdf_5f3b0733",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/usbc.dts",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-06T16:50:38Z",
+      "side": 1,
+      "message": "DT_FOREACH_STATUS_OKAY is working now",
+      "parentUuid": "2bbb8452_371c286e",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 26
+      },
+      "revId": "08a04c67ac0f6c921fda9a96c5341468b4910736",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
