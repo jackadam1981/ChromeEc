@@ -634,6 +634,13 @@ config PLATFORM_EC_PWM_DISPLIGHT
 	  reference PWM_CH_DISPLIGHT to the PWM channel used for the
 	  display backlight control.
 
+config PLATFORM_EC_BOARD_PROCHOT_CONTROL
+	bool "Board prochot control"
+	help
+	  Enable PROCHOT assertion/deassertion function. According to the AC
+	  and DC power to determine PROCHOT should be asserted or deasserted,
+	  furthermore, to control the CPU frequences.
+
 config PLATFORM_EC_RTC
 	bool "Real-time clock (RTC)"
 	help

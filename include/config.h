@@ -1153,6 +1153,14 @@
 #undef CONFIG_CHARGER_EN_ACTIVE_LOW
 
 /*
+ * Define this option to control the PROCHOT assertion.
+ */
+#undef CONFIG_BOARD_PROCHOT_CONTROL
+#ifdef HAS_TASK_PROCHOT
+#define CONFIG_BOARD_PROCHOT_CONTROL
+#endif
+
+/*
  * OCPC - One Charger IC Per Type-C
  *
  * Define this if the board may have multiple charger ICs in the system.  The
