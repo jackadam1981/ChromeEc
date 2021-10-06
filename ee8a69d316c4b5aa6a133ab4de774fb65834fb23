@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "072283b8_4a4480b1",
+        "filename": "board/taeko/fw_config.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-10-06T12:44:38Z",
+      "side": 1,
+      "message": "--Tablet/Clamshell\nThe early board have tablet-mode dut and clamshell dut.\nIt can be identified by BIT15 if it\u0027s written to CBI correctly.\nTo make sure the behavior between both two dut works as expected, it can be test by enabling/disabling BIT15.\n\n--Keyboard Back-light\nWe didn\u0027t define BIT5 for KBBL before the SMT of early board.\nSo, we force KBBL function for early board that our PA(QAD) team can test it if they plug KB w/ backlight.",
+      "parentUuid": "63e328c2_373706b0",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 27
+      },
+      "revId": "ee8a69d316c4b5aa6a133ab4de774fb65834fb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b5b7a41_d85986be",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-10-05T21:36:14Z",
       "side": 1,
       "message": "nit: whitespace (new line) missing",
+      "revId": "ee8a69d316c4b5aa6a133ab4de774fb65834fb23",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa3e24c5_00738243",
+        "filename": "board/taeko/fw_config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-10-06T12:44:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b5b7a41_d85986be",
       "revId": "ee8a69d316c4b5aa6a133ab4de774fb65834fb23",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
