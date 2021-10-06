@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2e4871e5_574ea745",
+        "filename": "zephyr/dts/bindings/emul/cros,tcpc-emul.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-06T14:14:06Z",
+      "side": 1,
+      "message": "Makes sens. Removed these properties from TCPC emul dts.",
+      "parentUuid": "8851c1c3_59323ba5",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0fcb0173_47b53589",
         "filename": "zephyr/emul/Kconfig",
         "patchSetId": 5
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-05T18:49:54Z",
       "side": 1,
       "message": "Can you also split this off to Kconfig.tcpc? Then add the logging template and use a default for the compat string so we don\u0027t have to explicitly set to `y`?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 34
+      },
+      "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69351258_1d3fff84",
+        "filename": "zephyr/emul/Kconfig",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-06T14:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0fcb0173_47b53589",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -83,6 +131,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1f1b299e_be82e4c3",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-06T14:14:06Z",
+      "side": 1,
+      "message": "Modified functions to use `struct emul*`",
+      "parentUuid": "666ce3e6_b2f9dc3a",
+      "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b51e50cb_21fa9b71",
         "filename": "zephyr/include/emul/emul_tcpc.h",
         "patchSetId": 5
@@ -95,6 +161,30 @@
       "side": 1,
       "message": "\u003e \"transmiting\" is a possible misspelling of \"transmitting\".\n\nPlease fix.",
       "parentUuid": "40fcd6db_244f78d3",
+      "range": {
+        "startLine": 28,
+        "startChar": 62,
+        "endLine": 28,
+        "endChar": 73
+      },
+      "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33bb3727_99e5099c",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-06T14:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b51e50cb_21fa9b71",
       "range": {
         "startLine": 28,
         "startChar": 62,
@@ -119,6 +209,30 @@
       "side": 1,
       "message": "\u003e \"trnasmit\" is a possible misspelling of \"transmit\".\n\nPlease fix.",
       "parentUuid": "79314b55_aa13f0a9",
+      "range": {
+        "startLine": 149,
+        "startChar": 46,
+        "endLine": 149,
+        "endChar": 54
+      },
+      "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2d6777d_71c16255",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-06T14:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a149b81_512745d7",
       "range": {
         "startLine": 149,
         "startChar": 46,
@@ -154,6 +268,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f2ef0b92_c302efe6",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-06T14:14:06Z",
+      "side": 1,
+      "message": "Ok, now there is one get function.",
+      "parentUuid": "1c7064bd_50ff4579",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 71
+      },
+      "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "86c5729b_e622f81e",
         "filename": "zephyr/include/emul/emul_tcpc.h",
         "patchSetId": 5
@@ -165,6 +303,30 @@
       "writtenOn": "2021-10-05T18:47:35Z",
       "side": 1,
       "message": "Same here, can we do\n\nint tcpc_emul_get_reg(struct emul *emul, int reg, uint32_t *value);",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 61
+      },
+      "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dfd3b90_19da8096",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-06T14:14:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86c5729b_e622f81e",
       "range": {
         "startLine": 202,
         "startChar": 0,
