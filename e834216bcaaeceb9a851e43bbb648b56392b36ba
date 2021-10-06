@@ -85,6 +85,30 @@
       },
       "revId": "e834216bcaaeceb9a851e43bbb648b56392b36ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae2815a0_36282407",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-10-06T04:34:30Z",
+      "side": 1,
+      "message": "That CL is not merged yet, and I think this one will land first. Basically these are gcc 11 flags but the gcc 11 CL isn\u0027t landed yet so it\u0027s commented.",
+      "parentUuid": "69a98b36_253185be",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 2
+      },
+      "revId": "e834216bcaaeceb9a851e43bbb648b56392b36ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
