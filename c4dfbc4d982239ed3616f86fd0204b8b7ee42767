@@ -207,6 +207,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "434018d5_9a38421c",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-06T20:13:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d1890f6_5194672b",
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b7a9b9_e8aa5357",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-06T20:13:27Z",
+      "side": 1,
+      "message": "You mean the mutexing?  I don\u0027t think the queue library is task-safe enough for that.  It has some concurrency checking in its iterator, but none in queue_add_unit().  And actually, the concurrency checking in queue_next() just returns NULL if the queue changed, which is also the same thing it does if you\u0027re done iterating... \n\nI think we can get away with peeking the head sans mutex, since the mux task is the only one moving the head.  But since both the PD task and host command task add units, that means the enqueue should use a mutex.  And since the queue_next() concurrent write notification is non-ideal, a mutex simplifies the PD task check on whether items are complete.  Then we have the queue_count() check in the mux task, which could get away without a muxtex probably.  Worst case, the mux task under-counts how many items it has waiting, and is woken to check again by the task_wake() in the enqueue after the new item is added.\n\nAt any rate, per-port queues added.  It makes the init less convenient, but I\u0027m not enough of a macro wizard to figure out how to make QUEUE() work correctly on an array of queues.",
+      "parentUuid": "91514eb2_1aca2b12",
+      "range": {
+        "startLine": 93,
+        "startChar": 27,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f91dee86_1d65b5f0",
@@ -220,6 +262,24 @@
       "writtenOn": "2021-10-01T21:27:03Z",
       "side": 1,
       "message": "Not necessarily asking for a change, but is there an advantage to the peek/lock/advance/unlock pattern here vs lock/remove/unlock? According to the comments for QUEUE_ADD_UNITS, queue_remove_unit might be faster here.",
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9066ae54_b6d3009e",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-06T20:13:27Z",
+      "side": 1,
+      "message": "I want to keep the items in the queue until they\u0027ve been completed, since this keeps the PD task check for pending items simple.  If we removed them, then I imagine we\u0027d need a way for the mux task to indicate it\u0027s working on a request for a port number and then the PD task would check if (queue contains no mux sets \u0026\u0026 pending port !\u003d my port), versus just if (queue contains no mux sets)",
+      "parentUuid": "f91dee86_1d65b5f0",
       "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
