@@ -249,6 +249,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b90506c3_05ac54fb",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-06T20:28:16Z",
+      "side": 1,
+      "message": "\u003e You mean the mutexing?\n\nYes, that is what I meant :|\n\nAck. Making the queue library task-safe is well out of scope here.",
+      "parentUuid": "32b7a9b9_e8aa5357",
+      "range": {
+        "startLine": 93,
+        "startChar": 27,
+        "endLine": 93,
+        "endChar": 36
+      },
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f91dee86_1d65b5f0",
@@ -280,6 +304,24 @@
       "side": 1,
       "message": "I want to keep the items in the queue until they\u0027ve been completed, since this keeps the PD task check for pending items simple.  If we removed them, then I imagine we\u0027d need a way for the mux task to indicate it\u0027s working on a request for a port number and then the PD task would check if (queue contains no mux sets \u0026\u0026 pending port !\u003d my port), versus just if (queue contains no mux sets)",
       "parentUuid": "f91dee86_1d65b5f0",
+      "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51eebffb_aa9a6335",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-06T20:28:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9066ae54_b6d3009e",
       "revId": "c4dfbc4d982239ed3616f86fd0204b8b7ee42767",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
