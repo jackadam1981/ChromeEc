@@ -18,7 +18,8 @@ DECLARE_HOOK(HOOK_TICK, watchdog_reload, HOOK_PRIO_DEFAULT);
 
 int watchdog_init(void)
 {
-	const uint32_t timeout = WDT_PERIOD(CONFIG_WATCHDOG_PERIOD_MS);
+	/* const uint32_t timeout = WDT_PERIOD(CONFIG_WATCHDOG_PERIOD_MS); */
+	const uint32_t timeout = WDT_PERIOD(700);
 
 	/* disable watchdog */
 	SCP_CORE0_WDT_CFG &= ~WDT_EN;
