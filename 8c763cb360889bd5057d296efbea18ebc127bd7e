@@ -39,6 +39,24 @@
       "message": "Nit: You could just initialize vdo_count this way.",
       "revId": "8c763cb360889bd5057d296efbea18ebc127bd7e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c80f2a4_1b9a9b0d",
+        "filename": "common/usbc/usb_pd_dpm.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 383,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-06T20:26:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d1709d0_85522670",
+      "revId": "8c763cb360889bd5057d296efbea18ebc127bd7e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
