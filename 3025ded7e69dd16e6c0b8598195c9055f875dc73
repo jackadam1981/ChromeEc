@@ -50,6 +50,24 @@
       "message": "It seems like this state, when we construct the exit VDM, should be \"exit SOP,\" and the previous one where we set safe mode should be \"prepare to exit.\"\n\nI think the current arrangement is replicated in the other \"prepare\" states as well. Sorry to be tedious about this. I know I did it to myself this time.",
       "revId": "3025ded7e69dd16e6c0b8598195c9055f875dc73",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8bdaf054_1e7743be",
+        "filename": "common/usbc/tbt_alt_mode.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-06T20:15:20Z",
+      "side": 1,
+      "message": "Sure.  I think the DP module is self-consistent with this schema since all of its ACK states are named for the last thing the module did (ex. DP_ENTER_ACKED is waiting on the Status ACK, so it seems fine that PREPARE_EXIT is waiting on an exit ACK).  \n\nThis module is partly consistent with its naming scheme as \"named for message we\u0027re waiting on\" with the exception of START and ACTIVE, so we can fiddle with that.",
+      "parentUuid": "121381a7_9befe4d1",
+      "revId": "3025ded7e69dd16e6c0b8598195c9055f875dc73",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
