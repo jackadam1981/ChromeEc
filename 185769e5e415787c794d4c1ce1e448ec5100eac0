@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e306e7_f7d5d6c1",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-10-06T17:51:32Z",
+      "side": 1,
+      "message": "Parts of this sequence could certainly make sense for other chip families.  I do not think that any other have the PWR_CR2_USV bit though, and in general, I am worried about changing behavior for devices that I do not have on my desk to test.\n\nI do not want to make this change broader than just the L5xx family.",
+      "parentUuid": "ee77aff5_5786df04",
+      "range": {
+        "startLine": 495,
+        "startChar": 7,
+        "endLine": 495,
+        "endChar": 26
+      },
+      "revId": "185769e5e415787c794d4c1ce1e448ec5100eac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3cedfb6f_78514e5f",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-07T19:39:06Z",
       "side": 1,
       "message": "There is a utility function that can be called for this.\nwait_for_ready(volatile uint32_t *reg, uint32_t enable, uint32_t ready)",
+      "range": {
+        "startLine": 507,
+        "startChar": 3,
+        "endLine": 508,
+        "endChar": 5
+      },
+      "revId": "185769e5e415787c794d4c1ce1e448ec5100eac0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2803d0e5_758fca1c",
+        "filename": "chip/stm32/clock-stm32l4.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 508,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-10-06T17:51:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cedfb6f_78514e5f",
       "range": {
         "startLine": 507,
         "startChar": 3,
