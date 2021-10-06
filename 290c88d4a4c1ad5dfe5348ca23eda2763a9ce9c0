@@ -22,6 +22,30 @@
       },
       "revId": "290c88d4a4c1ad5dfe5348ca23eda2763a9ce9c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be11f5b1_c84c8bbb",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-06T22:59:15Z",
+      "side": 1,
+      "message": "Like, for loop the ports to gather whether they all have a queue count of 0?",
+      "parentUuid": "bcb415e7_11749894",
+      "range": {
+        "startLine": 179,
+        "startChar": 6,
+        "endLine": 179,
+        "endChar": 20
+      },
+      "revId": "290c88d4a4c1ad5dfe5348ca23eda2763a9ce9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
