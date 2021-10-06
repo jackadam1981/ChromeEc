@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9a705ba_ef8bd5b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-06T14:59:18Z",
+      "side": 1,
+      "message": "nit: pls add additional info, its not clear what this CL is doing",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "f0a0d13f43da11e801be73607c7e5b804a0dabdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e88109f8_967eac88",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-06T14:59:18Z",
+      "side": 1,
+      "message": "depends on?",
+      "range": {
+        "startLine": 121,
+        "startChar": 7,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "f0a0d13f43da11e801be73607c7e5b804a0dabdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "184c367d_88901421",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-06T14:59:18Z",
+      "side": 1,
+      "message": "removed now",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 4
+      },
+      "revId": "f0a0d13f43da11e801be73607c7e5b804a0dabdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
