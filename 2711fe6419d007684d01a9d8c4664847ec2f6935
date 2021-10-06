@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe43ced7_6efa875b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1477788
+      },
+      "writtenOn": "2021-10-06T15:35:33Z",
+      "side": 1,
+      "message": "These device trees have to be in this commit because I\u0027ve changed allowed enum name to be more descriptive. Without modifying dts, this commit would fail.",
+      "revId": "2711fe6419d007684d01a9d8c4664847ec2f6935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
