@@ -310,6 +310,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a009a8b_a9006bb7",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-06T18:46:23Z",
+      "side": 1,
+      "message": "If you want to save the memory space, you can think of other data structure, like a flat one-dimension array. The code is to loop through the array to match the proper row. The runtime is increased. If this array grows bigger, you can create some index to speed up the search time. This is a tradeoff between space and time.",
+      "parentUuid": "6c4ae310_620a1bb7",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "74c04c5e_1f91c886",
