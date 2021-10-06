@@ -16,6 +16,23 @@
       "message": "Hey Aseda, I cannot figure out how to make this change work properly in with the CONFIG_EXPERIMENTAL_CONSOLE enabled, can you advise?",
       "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "963a7563_a6c5b147",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-06T19:27:04Z",
+      "side": 1,
+      "message": "So in order to use the experimental console, you need to be running the EC-3PO interperter and console. Commands get sent in an encapsulated form to the EC and the console utility (ec/util/ec3po/console.py) does the presentation of the console. I would think you want to add this feature there instead.\n\nBut also your commit message says that you won\u0027t be running servod, therefore you won\u0027t be running EC-3PO at all.\n\nFor more info about EC-3PO, see https://chromium.googlesource.com/chromiumos/platform/ec/+/HEAD/docs/ec-3po-design.md.",
+      "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
