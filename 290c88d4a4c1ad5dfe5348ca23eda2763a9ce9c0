@@ -46,6 +46,30 @@
       },
       "revId": "290c88d4a4c1ad5dfe5348ca23eda2763a9ce9c0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebe4a584_dc331b37",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-06T23:43:03Z",
+      "side": 1,
+      "message": "I missed that this would need to be for every port. That would be a little clunkier than what I was thinking. I can\u0027t think of a way to do it that would be better than items_waiting.",
+      "parentUuid": "be11f5b1_c84c8bbb",
+      "range": {
+        "startLine": 179,
+        "startChar": 6,
+        "endLine": 179,
+        "endChar": 20
+      },
+      "revId": "290c88d4a4c1ad5dfe5348ca23eda2763a9ce9c0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
