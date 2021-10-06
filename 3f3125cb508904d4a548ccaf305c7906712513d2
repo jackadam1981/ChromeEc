@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "97b4a0c1_316d6d43",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-06T18:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67f3af74_b0dcf3cd",
+      "range": {
+        "startLine": 47,
+        "startChar": 2,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "3f3125cb508904d4a548ccaf305c7906712513d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f41b4d30_ac67d502",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-05T19:33:57Z",
       "side": 1,
       "message": "in common/charger.c\nadd code to check the chg_chips[] and call these functions in array so that we can avoid separate commands",
+      "range": {
+        "startLine": 570,
+        "startChar": 24,
+        "endLine": 570,
+        "endChar": 36
+      },
+      "revId": "3f3125cb508904d4a548ccaf305c7906712513d2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "388cdd27_41b80b26",
+        "filename": "driver/charger/isl9241.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-06T18:43:42Z",
+      "side": 1,
+      "message": "This change is made to avoid the linker error for multiple definition of \"charger_dump\". this was defined in both ISL9241 and BQ25710 drivers console commands. Please review if this still needs a change.",
+      "parentUuid": "f41b4d30_ac67d502",
       "range": {
         "startLine": 570,
         "startChar": 24,
