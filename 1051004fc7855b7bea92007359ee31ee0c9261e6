@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afd87033_4339114a",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-06T21:48:22Z",
+      "side": 1,
+      "message": "can you sort these alphanumerically please, and maybe put them one in a line to make it easier to keep track, the list seems to be growing.",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "1051004fc7855b7bea92007359ee31ee0c9261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d197cce0_4c58551e",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-06T21:48:22Z",
+      "side": 1,
+      "message": "do you not want this one included in regular images, even without CR50_DEV?",
+      "revId": "1051004fc7855b7bea92007359ee31ee0c9261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
