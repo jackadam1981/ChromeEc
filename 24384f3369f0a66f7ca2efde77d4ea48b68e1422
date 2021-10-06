@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16abccb5_0fb64e5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-06T02:55:21Z",
+      "side": 1,
+      "message": "ptal",
+      "revId": "24384f3369f0a66f7ca2efde77d4ea48b68e1422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4bf7e71_3045d1a6",
+        "filename": "chip/g/usb_spi.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-06T02:55:21Z",
+      "side": 1,
+      "message": "I modified this structure during debugging and noticed that these fields could be reduced in size, so making it here.",
+      "revId": "24384f3369f0a66f7ca2efde77d4ea48b68e1422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}

@@ -252,6 +252,30 @@
       },
       "revId": "0dc5e657759e133fc521617135f8c4c41b35280b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5a5aa69_864669c0",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-06T02:55:21Z",
+      "side": 1,
+      "message": "The latest patch untangles read and write phases.",
+      "parentUuid": "19344555_ec6295b3",
+      "range": {
+        "startLine": 644,
+        "startChar": 4,
+        "endLine": 644,
+        "endChar": 22
+      },
+      "revId": "0dc5e657759e133fc521617135f8c4c41b35280b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
