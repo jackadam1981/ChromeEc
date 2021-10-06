@@ -18,6 +18,16 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(cros_ec_pwm_leds) <= 1,
 BUILD_ASSERT(DT_INST_PROP_LEN(0, leds) <= 2,
 	     "Unsupported number of LEDs defined");
 
+#define PWM_LED_NAME(node_id) DT_STRING_TOKEN(node_id, ec_led_name),
+
+const enum ec_led_id supported_led_ids[] = {
+	DT_INST_FOREACH_CHILD(0, PWM_LED_NAME)
+};
+const int supported_led_ids_count = ARRAY_SIZE(supported_led_ids);
+
+BUILD_ASSERT(ARRAY_SIZE(supported_led_ids) == DT_INST_PROP_LEN(0, leds),
+	     "Mismatch count of LED device phandles and LED name map entries.");
+
 #define PWM_CHANNEL_BY_IDX(node_id, prop, idx, led_ch)          \
 	PWM_CHANNEL(DT_PWMS_CTLR_BY_IDX(                        \
 		DT_PHANDLE_BY_IDX(node_id, prop, idx), led_ch))
