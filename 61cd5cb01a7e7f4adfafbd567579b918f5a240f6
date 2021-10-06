@@ -59,6 +59,48 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37260825_72d3b062",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-06T00:25:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b845bb95_aea8086e",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 10
+      },
+      "revId": "61cd5cb01a7e7f4adfafbd567579b918f5a240f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b4d7801_31892d5b",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-06T00:25:10Z",
+      "side": 1,
+      "message": "Like Keith said, it is a run-time decision.",
+      "parentUuid": "b48dbb38_feea0581",
+      "revId": "61cd5cb01a7e7f4adfafbd567579b918f5a240f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "400df387_04c79096",
@@ -82,6 +124,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c30ce63_6df28b42",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-06T00:25:10Z",
+      "side": 1,
+      "message": "Right. It saves one variable.",
+      "parentUuid": "400df387_04c79096",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 28
+      },
+      "revId": "61cd5cb01a7e7f4adfafbd567579b918f5a240f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d38cef68_52c5f612",
@@ -95,6 +161,30 @@
       "writtenOn": "2021-10-05T00:45:05Z",
       "side": 1,
       "message": "It would rely on this being a const function too, not sure if that\u0027s possible.",
+      "range": {
+        "startLine": 82,
+        "startChar": 6,
+        "endLine": 82,
+        "endChar": 27
+      },
+      "revId": "61cd5cb01a7e7f4adfafbd567579b918f5a240f6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd866c6c_3c32791b",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/src/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-06T00:25:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d38cef68_52c5f612",
       "range": {
         "startLine": 82,
         "startChar": 6,
