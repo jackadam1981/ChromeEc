@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "06e86899_9271c644",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-06T00:08:03Z",
+      "side": 1,
+      "message": "I made period and on_sec optional. However, both the fields are necessary as the logic is\nif ((battery_ticks % period) \u003c on_sec)\n    color_1\nelse\n    color_2\n    \nIf period is moved in color_1 and color_2, then first we will have to check if color_2 exist, then get period from color_1 (period_color_1) and from color_2 (period_color_2) and do\n\nif ((battery_ticks % (period_color_1 + period_color_2)) \u003c period_color_1)\n     color_1\nelse\n     color_2\n    \nwhich I think increases the complexity, your thoughts?",
+      "parentUuid": "ff1b677f_c2dddb01",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0db3525_d57fdabf",
         "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
         "patchSetId": 5
@@ -204,6 +228,30 @@
       "side": 1,
       "message": "I see. A better way to model it is to introduce a new `charge_flags` property. It is not required.\n\nThe dts nodes are like:\n    power-state-idle-forced {\n        charge-state \u003d \"IDLE\";\n        charge-flag \u003d \u003cCHARGE_FLAG_FORCE_IDLE\u003e;\n        /* Blue 2 sec, Amber 2 sec */\n    }\n    power-state-idle-default {\n        charge-state \u003d \"IDLE\";\n        charge-flag \u003d \u003c0\u003e;\n        /* Solid Blue */\n    }",
       "parentUuid": "d389907c_7200c9de",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9748f1b5_81622277",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-06T00:08:03Z",
+      "side": 1,
+      "message": "Currently led_values are a combination of current power_state which is set using charge_get_state() and chipset_state (if applicable). So each node represents a unique charge_state. \nled_values[PWR_STATE_COUNT][CHIPSET_STATE_COUNT]. \n\nAnd we lookup values using current power state\npwr_state \u003d charge_get_state();\n\ncolor_1 \u003d led_values[pwr_state][ANY].color_1;\n\nAdding an additional node makes the code more complex when chflags are only used in PWR_STATE_IDLE. This makes it more simpler:\n\nif (pwr_state \u003d\u003d PWR_STATE_IDLE) {\n    if (chflags \u0026 CHARGE_FLAG_FORCE_IDLE) {\n        /* color_1 x sec, color_2 y sec */\n    } else\n        /* color_3 */\n}\n\nSo I removed the chflags property in the latest patch. Do you agree?",
+      "parentUuid": "a85fa966_1f856003",
       "range": {
         "startLine": 32,
         "startChar": 0,
@@ -368,6 +416,24 @@
       "side": 1,
       "message": "It will also remove the need for adding color_3 node.",
       "parentUuid": "4e36ff91_cd827e2d",
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "78dfba2b_017d9038",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-06T00:08:03Z",
+      "side": 1,
+      "message": "Marking this resolved, chflags property was removed.",
+      "parentUuid": "e80d7a0c_e36c151f",
       "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }

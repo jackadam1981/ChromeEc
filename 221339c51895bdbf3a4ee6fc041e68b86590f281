@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "724c2245_ec4b5b8d",
+        "filename": "include/charge_state.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-06T00:08:03Z",
+      "side": 1,
+      "message": "Done, CR: https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3205483",
+      "parentUuid": "53d01e38_55b10e23",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 16
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d3401b56_ea637b40",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-05T21:58:12Z",
       "side": 1,
       "message": "It is now more general, not specific for showing the battery status. You can remove the term.\n\nAnd add a `led-id` property below. It is set to `EC_LED_ID_BATTERY_LED` for the lazor case. Some boards have more than one LEDs. These LEDs are assigned to different `led-id`.",
+      "range": {
+        "startLine": 5,
+        "startChar": 13,
+        "endLine": 5,
+        "endChar": 21
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "132bfd4c_1014612d",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,battery-led-colors.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-06T00:08:03Z",
+      "side": 1,
+      "message": "Yes, this CL is only targeted to making battery_led_SM in lazor generic. I will add this in follow-up CL which also adds support for more than one LED_ID (power led). After that, 3rd CL will convert this code into a driver common driver file which will be applicable across all boards.",
+      "parentUuid": "d3401b56_ea637b40",
       "range": {
         "startLine": 5,
         "startChar": 13,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20950b5a_2c5d656d",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,battery-led-colors.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-06T00:08:03Z",
+      "side": 1,
+      "message": "Yes, this CL is only targeted to making battery_led_SM generic which has all the power states defined. I will make this change in follow-up CL which also adds support for power led which doesn\u0027t depend on power states.",
+      "parentUuid": "05d3756f_c8471b0b",
+      "range": {
+        "startLine": 16,
+        "startChar": 12,
+        "endLine": 16,
+        "endChar": 26
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "28218f9c_e6106fda",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-05T21:58:12Z",
       "side": 1,
       "message": "Need a property to define the `led-id`. Some boards have more than one LEDs; each LED has its own brightness range.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da324181_197aaffb",
+        "filename": "zephyr/dts/bindings/gpio_led/cros-ec,brightness-range.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-06T00:08:03Z",
+      "side": 1,
+      "message": "Yes, this CL is only targeted to making battery_led_SM generic. I will add this in follow-up CL which also adds support for more than one LED_ID (power led).",
+      "parentUuid": "28218f9c_e6106fda",
       "range": {
         "startLine": 8,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "71d4a19f_6da40290",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-06T00:08:03Z",
+      "side": 1,
+      "message": "Yes, this CL is only targeted to making battery_led_SM generic. I will add this in follow-up CL which also adds support for more than one LED_ID (power led).",
+      "parentUuid": "a656336d_8d257376",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 50
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c2aa45d_4019f153",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-10-05T21:58:12Z",
       "side": 1,
       "message": "It needs to be moved to dts. In case there are multiple LEDs, should choose one.",
+      "range": {
+        "startLine": 248,
+        "startChar": 18,
+        "endLine": 248,
+        "endChar": 39
+      },
+      "revId": "221339c51895bdbf3a4ee6fc041e68b86590f281",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e874fb41_79767f0d",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-06T00:08:03Z",
+      "side": 1,
+      "message": "Follow-up CL will bring support for more than one LED IDs.",
+      "parentUuid": "3c2aa45d_4019f153",
       "range": {
         "startLine": 248,
         "startChar": 18,
