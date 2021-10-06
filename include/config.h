@@ -3394,6 +3394,11 @@
  */
 #undef CONFIG_CPU_PROCHOT_ACTIVE_LOW
 
+/*
+ * Define this option to control the PROCHOT assertion.
+ */
+#undef CONFIG_CONTROL_PROCHOT
+
 /* Support PS/2 interface */
 #undef CONFIG_PS2
 
