@@ -62,6 +62,29 @@
       },
       "revId": "e834216bcaaeceb9a851e43bbb648b56392b36ba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69a98b36_253185be",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1293547
+      },
+      "writtenOn": "2021-10-06T04:30:53Z",
+      "side": 1,
+      "message": "nit: Should we comment out this line?",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 2
+      },
+      "revId": "e834216bcaaeceb9a851e43bbb648b56392b36ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
