@@ -520,6 +520,22 @@ static void console_handle_char(int c)
 		break;
 #endif /* !defined(CONFIG_EXPERIMENTAL_CONSOLE) */
 
+	case CTRL('C'):
+#ifndef CONFIG_EXPERIMENTAL_CONSOLE
+		/* Terminate this line */
+		ccputs("^C\n");
+#endif /* !defined(CONFIG_EXPERIMENTAL_CONSOLE) */
+
+		/* Start new line, discarding any existing partial input. */
+		input_pos = input_len = 0;
+		input_buf[0] = '\0';
+
+#ifndef CONFIG_EXPERIMENTAL_CONSOLE
+		/* Reprint prompt */
+		ccputs(PROMPT);
+#endif /* !defined(CONFIG_EXPERIMENTAL_CONSOLE) */
+		break;
+
 	case '\n':
 #ifndef CONFIG_EXPERIMENTAL_CONSOLE
 		/* Terminate this line */
