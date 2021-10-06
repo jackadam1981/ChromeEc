@@ -16,6 +16,24 @@
       "message": "Hey I sent few patches that should support this case a bit better (http://crrev.com/c/3207147). With those you should be able to change this one to:\n- use the generic led_set_brightness\n- drop the empty color-map- props (which will exclude some led_set_brightness cases as a side effect)\n- define the led mapping child nodes for left and right (see the child-binding example on the patch above)",
       "revId": "2b53c66b3daf5a23f369b090c0a0983c527acfbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f911f43c_13cec1f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1523717
+      },
+      "writtenOn": "2021-10-06T17:52:07Z",
+      "side": 1,
+      "message": "Thanks Fabio!",
+      "parentUuid": "19e6eca9_fb7dba8b",
+      "revId": "2b53c66b3daf5a23f369b090c0a0983c527acfbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
