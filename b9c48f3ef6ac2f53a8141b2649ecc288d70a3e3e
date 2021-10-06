@@ -22,6 +22,30 @@
       },
       "revId": "b9c48f3ef6ac2f53a8141b2649ecc288d70a3e3e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "306a5083_7a4b2253",
+        "filename": "board/cr50/dcrypto/bn.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-06T03:46:42Z",
+      "side": 1,
+      "message": "i\u0027ll think about good justification :) i hope this way it is easier for compiler to spot common subexpressions, but reality check confirms it results in same code.",
+      "parentUuid": "639acabf_044b09c2",
+      "range": {
+        "startLine": 357,
+        "startChar": 20,
+        "endLine": 357,
+        "endChar": 33
+      },
+      "revId": "b9c48f3ef6ac2f53a8141b2649ecc288d70a3e3e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
