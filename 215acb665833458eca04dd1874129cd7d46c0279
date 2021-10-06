@@ -39,6 +39,30 @@
       },
       "revId": "215acb665833458eca04dd1874129cd7d46c0279",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df0eb0d4_3b67f4bb",
+        "filename": "board/cr50/dcrypto/aes_cmac.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-06T03:42:58Z",
+      "side": 1,
+      "message": "this a good idea to move all constants into single place, and specifically for zero define a union covering various types \u0026 lengths. in some places it is uint8_t, in others - uint32_t. I\u0027ll do it as separate CL probably.",
+      "parentUuid": "8c0a9b3d_133af711",
+      "range": {
+        "startLine": 45,
+        "startChar": 1,
+        "endLine": 45,
+        "endChar": 39
+      },
+      "revId": "215acb665833458eca04dd1874129cd7d46c0279",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
