@@ -63,6 +63,30 @@
       },
       "revId": "d102dfbf324602bd270ba7b0026fd820539cd97e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f554c920_f9aa8540",
+        "filename": "chip/stm32/ucpd-stm32gx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-10-06T17:15:06Z",
+      "side": 1,
+      "message": "That \u0027else\u0027 is wrong, but I don\u0027t the proposed fix is correct.\n\nThe if clause handles SOP -\u003e Cable Reset, and the only type that does not handle is TCPCI_MSG_TX_BIST_MODE_2. And, that case is a \"don\u0027t care\" for the sync packets as it\u0027s just a continuous 1/0s bit pattern. I think the correct fix is to drop the \u0027else\u0027 portion of this check.\n\nenum tcpci_msg_type {\n\tTCPCI_MSG_SOP \u003d 0,\n\tTCPCI_MSG_SOP_PRIME \u003d 1,\n\tTCPCI_MSG_SOP_PRIME_PRIME \u003d 2,\n\tTCPCI_MSG_SOP_DEBUG_PRIME \u003d 3,\n\tTCPCI_MSG_SOP_DEBUG_PRIME_PRIME \u003d 4,\n\t/* Only a valid register setting for TRANSMIT */\n\tTCPCI_MSG_TX_HARD_RESET \u003d 5,\n\tTCPCI_MSG_CABLE_RESET \u003d 6,\n\t/* Only a valid register setting for TRANSMIT */\n\tTCPCI_MSG_TX_BIST_MODE_2 \u003d 7,\n\tTCPCI_MSG_INVALID \u003d 0xf,\n};",
+      "parentUuid": "3788e749_3c854532",
+      "range": {
+        "startLine": 796,
+        "startChar": 49,
+        "endLine": 796,
+        "endChar": 50
+      },
+      "revId": "d102dfbf324602bd270ba7b0026fd820539cd97e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
