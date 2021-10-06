@@ -20,6 +20,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0cfd0243_11b9f066",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-06T05:17:41Z",
+      "side": 1,
+      "message": "+2 with one nit. \n\nI\u0027d honestly have extracted the write part and read part into separate functions called from this one (and would expect the compiler to inline them anyways) for even better readability, but what we have now is already very readable.",
+      "revId": "24384f3369f0a66f7ca2efde77d4ea48b68e1422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b4bf7e71_3045d1a6",
         "filename": "chip/g/usb_spi.h",
         "patchSetId": 6
@@ -31,6 +48,29 @@
       "writtenOn": "2021-10-06T02:55:21Z",
       "side": 1,
       "message": "I modified this structure during debugging and noticed that these fields could be reduced in size, so making it here.",
+      "revId": "24384f3369f0a66f7ca2efde77d4ea48b68e1422",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "067febeb_fdfc77d5",
+        "filename": "chip/g/usb_spi_v2.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-06T05:17:41Z",
+      "side": 1,
+      "message": "nit: this whole thing can be moved after the while (read_so_far !\u003d total_read_count) loop. the only way we can have last_sub_transaction is if we had (this_read_count + read_so_far) \u003d\u003d total_read_count at the top of the loop, so now we have read_so_far \u003d\u003d total_read_count, which means we will fall out of the loop w/o checking for last_sub_transaction.",
+      "range": {
+        "startLine": 708,
+        "startChar": 3,
+        "endLine": 713,
+        "endChar": 0
+      },
       "revId": "24384f3369f0a66f7ca2efde77d4ea48b68e1422",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
