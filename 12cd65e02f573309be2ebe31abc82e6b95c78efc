@@ -169,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f96fb079_2e9ea662",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-06T18:29:25Z",
+      "side": 1,
+      "message": "This global `period` and `on_sec` seem difficult to explain. The `on_sec` is not necessary a ON state, like the color-1 is LID_OFF. And how to support 3 colors?\n\nYou don\u0027t need to support variant length of colors. You can define a max length, like 4. You can store the nodes into an array, with the color and the accumulate the periods.\n\nFor example:\n\n\tcolor-1 {\n\t\tled-color \u003d \"LED_BLUE\";\n\t\tperiod \u003d 2;\n\t};\n\tcolor-2 {\n\t\tled-color \u003d \"LED_AMBER\";\n\t\tperiod \u003d 2;\n\t};\n\tcolor-3 {\n\t\tled-color \u003d \"LED_OFF\";\n\t\tperiod \u003d 3;\n\t};\n\n\nThe array looks like:\n\n\tstruct led_color_t led_colors[MAX_COLORS] \u003d {\n\t\t{\n\t\t .led_color \u003d LED_BLUE,\t\n\t\t .acc_period \u003d 2,\n\t\t },\n\t\t {\n\t\t .led_color \u003d LED_AMBER,\n\t\t .acc_period \u003d 4,\n\t\t },\n\t\t {\n\t\t .led_color \u003d LED_OFF,\n\t\t .acc_period \u003d 7,\n\t\t }\n\t\t {\n\t\t .led_color \u003d LED_OFF,\n\t\t .acc_period \u003d 7,\n\t\t }\n\t};\n\nThe code is to loop through the array to check the matched range.\n\n\tt \u003d battery_ticks % led_colors[MAX_COLORS - 1].acc_period\n\tfor (i \u003d 0; i \u003c MAX_COLOR; i++)\n\t\tif (t \u003c led_colors[i].acc_period)\n\t\t\tbreak;\n\tcolor \u003d led_colors[i].led_color;",
+      "parentUuid": "06e86899_9271c644",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 26
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a0db3525_d57fdabf",
         "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
         "patchSetId": 5
@@ -252,6 +276,30 @@
       "side": 1,
       "message": "Currently led_values are a combination of current power_state which is set using charge_get_state() and chipset_state (if applicable). So each node represents a unique charge_state. \nled_values[PWR_STATE_COUNT][CHIPSET_STATE_COUNT]. \n\nAnd we lookup values using current power state\npwr_state \u003d charge_get_state();\n\ncolor_1 \u003d led_values[pwr_state][ANY].color_1;\n\nAdding an additional node makes the code more complex when chflags are only used in PWR_STATE_IDLE. This makes it more simpler:\n\nif (pwr_state \u003d\u003d PWR_STATE_IDLE) {\n    if (chflags \u0026 CHARGE_FLAG_FORCE_IDLE) {\n        /* color_1 x sec, color_2 y sec */\n    } else\n        /* color_3 */\n}\n\nSo I removed the chflags property in the latest patch. Do you agree?",
       "parentUuid": "a85fa966_1f856003",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "12cd65e02f573309be2ebe31abc82e6b95c78efc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c4ae310_620a1bb7",
+        "filename": "zephyr/dts/bindings/gpio_led/battery-led-colors.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-06T18:29:25Z",
+      "side": 1,
+      "message": "This confuses people. People don\u0027t know this PWR_STATE_IDLE special case that requires the extra color-3. It also limits the usage that the if condition has 2 colors and the else one has 1 color. How about the if condition has 1 color and the else one has 2 colors?\n\nI understand the waste of introducing one more dimension. How about an extra dimensions which supports any of this rare feature? like an extra-flag property. The CHARGE_FLAG_FORCE_IDLE is one of the flag. More future flags can be added if needed.\n\n    power-state-idle-forced {\n        charge-state \u003d \"IDLE\";\n        extra-flag \u003d \"CHARGE_FLAG_FORCE_IDLE_SET\";\n        /* Blue 2 sec, Amber 2 sec */\n    }\n    power-state-idle-default {\n        charge-state \u003d \"IDLE\";\n        extra-flag \u003d \"CHARGE_FLAG_FORCE_IDLE_CLEAR\";\n        /* Solid Blue */\n    }",
+      "parentUuid": "9748f1b5_81622277",
       "range": {
         "startLine": 32,
         "startChar": 0,
