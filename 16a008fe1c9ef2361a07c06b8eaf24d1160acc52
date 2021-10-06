@@ -16,6 +16,253 @@
       "message": "Fixed issues pointed by @Yuval Peress. Please review new version of the patch.",
       "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc767849_540ecc82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T17:20:03Z",
+      "side": 1,
+      "message": "Mostly nits at this point",
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c5eebea_0350888f",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T17:20:03Z",
+      "side": 1,
+      "message": "Could we return int and pass uint16_t *val? Keeps it consistent with other get/set functions and avoids confusing the error `return 0` with a 0 value register.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 8
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfc5a14f_ce58fe20",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T17:20:03Z",
+      "side": 1,
+      "message": "nit: use `bool`",
+      "range": {
+        "startLine": 143,
+        "startChar": 7,
+        "endLine": 143,
+        "endChar": 10
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6bb9b407_6816b948",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T17:20:03Z",
+      "side": 1,
+      "message": "-EINVAL",
+      "range": {
+        "startLine": 221,
+        "startChar": 10,
+        "endLine": 221,
+        "endChar": 12
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c65bc2fc_dd448842",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T17:20:03Z",
+      "side": 1,
+      "message": "-EINVAL",
+      "range": {
+        "startLine": 228,
+        "startChar": 10,
+        "endLine": 228,
+        "endChar": 12
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a857da4e_2f201cbb",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T17:20:03Z",
+      "side": 1,
+      "message": "-EINVAL",
+      "range": {
+        "startLine": 238,
+        "startChar": 9,
+        "endLine": 238,
+        "endChar": 11
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad5c6b9_97741774",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T17:20:03Z",
+      "side": 1,
+      "message": "These don\u0027t appear to be used, can we remove for now until needed?",
+      "range": {
+        "startLine": 283,
+        "startChar": 0,
+        "endLine": 313,
+        "endChar": 1
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8e1034b_5701fa78",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T17:20:03Z",
+      "side": 1,
+      "message": "Same here, I\u0027m not seeing how it\u0027s used.",
+      "range": {
+        "startLine": 316,
+        "startChar": 5,
+        "endLine": 316,
+        "endChar": 33
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b126b93f_45dca4ca",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T17:20:03Z",
+      "side": 1,
+      "message": "These as well (not used)",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 1
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5db809ac_ecbfa50c",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T17:20:03Z",
+      "side": 1,
+      "message": "Is there a case where we don\u0027t want this to error? Other emulators have been using __ASSERT_NO_MSG for these cases to make sure the request is valid.",
+      "range": {
+        "startLine": 571,
+        "startChar": 13,
+        "endLine": 571,
+        "endChar": 37
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a0cccc8_f9825332",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T17:20:03Z",
+      "side": 1,
+      "message": "Can we make this an enum?",
+      "range": {
+        "startLine": 230,
+        "startChar": 33,
+        "endLine": 230,
+        "endChar": 41
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
