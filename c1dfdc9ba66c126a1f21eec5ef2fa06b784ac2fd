@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1ea2070_efc88796",
+        "filename": "zephyr/test/drivers/src/stm_mems_common.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-06T19:17:11Z",
+      "side": 1,
+      "message": "nit: be explicit {0, 0, 0}",
+      "range": {
+        "startLine": 227,
+        "startChar": 28,
+        "endLine": 227,
+        "endChar": 34
+      },
+      "revId": "c1dfdc9ba66c126a1f21eec5ef2fa06b784ac2fd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
