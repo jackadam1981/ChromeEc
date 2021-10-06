@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c884f574_327c2b96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-06T02:31:19Z",
+      "side": 1,
+      "message": "It looks almost good. Just a few more fixes. Thanks,",
+      "revId": "957a4ba6faa73cf08a17ea523ccf5fa07667a3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79b078c8_3334cb52",
+        "filename": "board/host/board.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-06T02:31:19Z",
+      "side": 1,
+      "message": "I think you should move these in test/tesst_config.h. You can make the timeout short only for sbs_charging_v2:\n\n#ifdef TEST_SBS_CHARGING_V2\n...\n#endif",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 35,
+        "endChar": 54
+      },
+      "revId": "957a4ba6faa73cf08a17ea523ccf5fa07667a3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c28ae203_ad60d481",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 12
+      },
+      "lineNbr": 1882,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-06T02:31:19Z",
+      "side": 1,
+      "message": "Please remove.",
+      "range": {
+        "startLine": 1882,
+        "startChar": 43,
+        "endLine": 1882,
+        "endChar": 60
+      },
+      "revId": "957a4ba6faa73cf08a17ea523ccf5fa07667a3b5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
