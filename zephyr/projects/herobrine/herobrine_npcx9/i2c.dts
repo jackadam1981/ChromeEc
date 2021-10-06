@@ -38,6 +38,16 @@
 			enum-name = "I2C_PORT_CHARGER";
 			label = "CHARGER";
 		};
+		i2c_ppc0: ppc0 {
+			i2c-port = <&i2c1_0>;
+			enum-name = "I2C_PORT_PPC0";
+			label = "PPC0";
+		};
+		i2c_ppc1: ppc1 {
+			i2c-port = <&i2c2_0>;
+			enum-name = "I2C_PORT_PPC1";
+			label = "PPC1";
+		};
 		tcpc0 {
 			i2c-port = <&i2c1_0>;
 			enum-name = "I2C_PORT_TCPC0";
