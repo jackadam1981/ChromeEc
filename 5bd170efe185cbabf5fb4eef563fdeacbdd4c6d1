@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f36706_cf27cab2",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-06T18:34:43Z",
+      "side": 1,
+      "message": "I\u0027m probably using the wrong ports for ppc0 and ppc1.\n\nThe EC console displays:\nppc p0 Failed to set FUNC_SET3!]",
+      "range": {
+        "startLine": 42,
+        "startChar": 17,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "5bd170efe185cbabf5fb4eef563fdeacbdd4c6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
