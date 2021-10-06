@@ -51,6 +51,24 @@
       "parentUuid": "963a7563_a6c5b147",
       "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f17a88f_d69efc89",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-06T21:34:50Z",
+      "side": 1,
+      "message": "Yep, that sounds about right. EC-3PO calculates a CRC of the command and if it fails, then the command is rejected. But note that this is for enhanced consoles only and I don\u0027t think any board defines this currently.",
+      "parentUuid": "01dd4679_0289566e",
+      "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
