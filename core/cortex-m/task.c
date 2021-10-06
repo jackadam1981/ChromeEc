@@ -64,6 +64,7 @@ static uint32_t irq_dist[CONFIG_IRQ_COUNT];  /* Distribution of IRQ calls */
 #endif
 
 extern void __switchto(task_ *from, task_ *to);
+extern void __noswitch(void);
 extern int __task_start(int *task_stack_ready);
 
 #ifndef CONFIG_LOW_POWER_IDLE
@@ -349,7 +350,7 @@ void svc_handler(int desched, task_id_t resched)
 
 	/* Nothing to do */
 	if (next == current)
-		return;
+		return __noswitch();
 
 	/* Switch to new task */
 #ifdef CONFIG_TASK_PROFILING
