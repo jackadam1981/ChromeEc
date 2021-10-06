@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "140571cc_234e0555",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-06T22:27:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afd87033_4339114a",
+      "range": {
+        "startLine": 25,
+        "startChar": 12,
+        "endLine": 27,
+        "endChar": 53
+      },
+      "revId": "1051004fc7855b7bea92007359ee31ee0c9261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d197cce0_4c58551e",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-06T21:48:22Z",
       "side": 1,
       "message": "do you not want this one included in regular images, even without CR50_DEV?",
+      "revId": "1051004fc7855b7bea92007359ee31ee0c9261e6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b73c02fa_33bf99fa",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-06T22:27:32Z",
+      "side": 1,
+      "message": "it is only enabled with CRYPTO_TEST\u003d1 in build.mk, but I made it independent, so if there will be a need to include it in CR50_DEV, it can be easily added. I don\u0027t expect this to be a very important message as hardware failure is very unlikely.",
+      "parentUuid": "d197cce0_4c58551e",
       "revId": "1051004fc7855b7bea92007359ee31ee0c9261e6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
