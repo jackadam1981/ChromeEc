@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d5a737d_6a0e6acd",
+        "filename": "board/host/board.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-06T00:36:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a25ed85b_9b83c317",
+      "range": {
+        "startLine": 35,
+        "startChar": 45,
+        "endLine": 35,
+        "endChar": 54
+      },
+      "revId": "2f5fac05df62ea1605d5e7c52bcd962ec4c4760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ccca5723_c279a1d3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-05T16:07:53Z",
       "side": 1,
       "message": "Can you explain when we hit this case? We always try PRECHARGE then transition to IDLE after timeout, don\u0027t we?",
+      "range": {
+        "startLine": 1867,
+        "startChar": 0,
+        "endLine": 1872,
+        "endChar": 29
+      },
+      "revId": "2f5fac05df62ea1605d5e7c52bcd962ec4c4760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7a402aa_648dbcc5",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1872,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-06T00:36:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccca5723_c279a1d3",
       "range": {
         "startLine": 1867,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf91d769_61c230e1",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1877,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-06T00:36:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c793efc6_9f06012d",
+      "range": {
+        "startLine": 1877,
+        "startChar": 11,
+        "endLine": 1877,
+        "endChar": 22
+      },
+      "revId": "2f5fac05df62ea1605d5e7c52bcd962ec4c4760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "75e22eb7_39330eff",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-05T16:07:53Z",
       "side": 1,
       "message": "nit: Please say \"Start precharge for low voltage\".",
+      "range": {
+        "startLine": 1884,
+        "startChar": 12,
+        "endLine": 1884,
+        "endChar": 23
+      },
+      "revId": "2f5fac05df62ea1605d5e7c52bcd962ec4c4760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2703e10_381a0743",
+        "filename": "common/charge_state_v2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 1884,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-06T00:36:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75e22eb7_39330eff",
       "range": {
         "startLine": 1884,
         "startChar": 12,
@@ -116,6 +212,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a60cd8eb_afaa2863",
+        "filename": "test/sbs_charging_v2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 376,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-06T00:36:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a8a9cfb_9698882b",
+      "range": {
+        "startLine": 376,
+        "startChar": 44,
+        "endLine": 376,
+        "endChar": 45
+      },
+      "revId": "2f5fac05df62ea1605d5e7c52bcd962ec4c4760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e91b7038_680970c5",
@@ -139,6 +259,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2282c616_fdce49c2",
+        "filename": "test/sbs_charging_v2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-06T00:36:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e91b7038_680970c5",
+      "range": {
+        "startLine": 377,
+        "startChar": 1,
+        "endLine": 377,
+        "endChar": 20
+      },
+      "revId": "2f5fac05df62ea1605d5e7c52bcd962ec4c4760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "feeab34c_146f70e7",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-10-05T16:07:53Z",
       "side": 1,
       "message": "nit: please remove.",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 388,
+        "endChar": 2
+      },
+      "revId": "2f5fac05df62ea1605d5e7c52bcd962ec4c4760d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec3707d7_dbe1c202",
+        "filename": "test/sbs_charging_v2.c",
+        "patchSetId": 11
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1512300
+      },
+      "writtenOn": "2021-10-06T00:36:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "feeab34c_146f70e7",
       "range": {
         "startLine": 388,
         "startChar": 0,
