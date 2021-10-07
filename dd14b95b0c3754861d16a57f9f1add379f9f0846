@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a08b62a8_f572ba2b",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-07T20:33:53Z",
+      "side": 1,
+      "message": "Use DT_STRING_UPPER_TOKEN",
+      "range": {
+        "startLine": 21,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "dd14b95b0c3754861d16a57f9f1add379f9f0846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc40df83_1cb67c2e",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-07T20:33:53Z",
+      "side": 1,
+      "message": "Use PWM_LED_NAME(node_id) here.",
+      "range": {
+        "startLine": 85,
+        "startChar": 6,
+        "endLine": 85,
+        "endChar": 43
+      },
+      "revId": "dd14b95b0c3754861d16a57f9f1add379f9f0846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
