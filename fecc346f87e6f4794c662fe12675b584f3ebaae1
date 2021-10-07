@@ -63,6 +63,30 @@
       },
       "revId": "fecc346f87e6f4794c662fe12675b584f3ebaae1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "344c3e5e_5357da8c",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-07T16:57:48Z",
+      "side": 1,
+      "message": "ah, you are right, I just heeded the Tricium prompt, but in this case we do want to match literally.",
+      "parentUuid": "115007dd_5249875e",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "fecc346f87e6f4794c662fe12675b584f3ebaae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
