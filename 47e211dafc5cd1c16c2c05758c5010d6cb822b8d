@@ -49,6 +49,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbf15563_cf2c9c95",
+        "filename": "zephyr/shim/src/bc12_pi3usb9201.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-07T15:26:19Z",
+      "side": 1,
+      "message": "Because the CONFIG_PLATFORM_EC_BC12_DETECT_PI3USB9201 is shared by this new driver and the cros-ec driver, you should guard this file so it\u0027s only included if the device tree node is present.  This will let you put all the Herobrine changes into a separate CL, and we can also update the other boards as a separate effort.\n\n#define DT_DRV_COMPAT pericom_pi3usb9201\n#if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT)\n   ...\n#endif",
+      "revId": "47e211dafc5cd1c16c2c05758c5010d6cb822b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "173e638a_6a2968d3",
         "filename": "zephyr/shim/src/bc12_pi3usb9201.c",
         "patchSetId": 6
