@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6785ac8d_0ac708e6",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 732,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-10-07T01:26:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "804061ec_35a16ecb",
+      "range": {
+        "startLine": 732,
+        "startChar": 1,
+        "endLine": 732,
+        "endChar": 45
+      },
+      "revId": "ec1e68baa04f2c5c5c1345e42a5f82afe02d714e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2fc15c60_c2a7b0a6",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-06T10:22:47Z",
       "side": 1,
       "message": "Can we move this function to board_chipset_startup() below?",
+      "revId": "ec1e68baa04f2c5c5c1345e42a5f82afe02d714e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "152a24c3_36d68275",
+        "filename": "board/dooly/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1192,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-10-07T01:26:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2fc15c60_c2a7b0a6",
       "revId": "ec1e68baa04f2c5c5c1345e42a5f82afe02d714e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
