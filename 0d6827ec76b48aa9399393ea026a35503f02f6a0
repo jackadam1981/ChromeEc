@@ -22,6 +22,30 @@
       },
       "revId": "0d6827ec76b48aa9399393ea026a35503f02f6a0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1214364e_53dbfc77",
+        "filename": "board/cr50/build.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-07T02:40:17Z",
+      "side": 1,
+      "message": "EMBEDDED_MODE\u003d1 is used be the TPM2 Makefile. -DEMBEDDED_MODE is needed for proper processing of the tpm2 .h files.\n\nI guess I we remove \u0027CFLAGS +\u003d -DEMBEDDED_MODE` in the TPM2 Makefile, but technically speaking tpm make could be invoked from other trees also, so let\u0027s keep them  in both places.",
+      "parentUuid": "88211011_c9c12266",
+      "range": {
+        "startLine": 239,
+        "startChar": 17,
+        "endLine": 239,
+        "endChar": 57
+      },
+      "revId": "0d6827ec76b48aa9399393ea026a35503f02f6a0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
