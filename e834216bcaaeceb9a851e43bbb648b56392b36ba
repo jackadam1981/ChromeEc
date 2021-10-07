@@ -59,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbb9575f_fb624fe6",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-07T04:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "329993bb_c0d711bf",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 13
+      },
+      "revId": "e834216bcaaeceb9a851e43bbb648b56392b36ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c2dc218_09a0c625",
@@ -72,6 +96,30 @@
       "writtenOn": "2021-10-06T02:58:35Z",
       "side": 1,
       "message": "wrong indentation: see the line above",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 8
+      },
+      "revId": "e834216bcaaeceb9a851e43bbb648b56392b36ba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a410996_41d97cb9",
+        "filename": "Makefile.toolchain",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-07T04:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c2dc218_09a0c625",
       "range": {
         "startLine": 78,
         "startChar": 0,
