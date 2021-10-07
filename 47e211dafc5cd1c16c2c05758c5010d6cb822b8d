@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "27851d4d_350b31b4",
+        "filename": "zephyr/dts/bindings/usbc/pericom,pi3usb9201.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-07T15:53:15Z",
+      "side": 1,
+      "message": "The IRQ GPIO should be required. The task waits for the interrupt to do further detection. If the IRQ GPIO is not defined, the task is blocked there forever.",
+      "range": {
+        "startLine": 20,
+        "startChar": 14,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "47e211dafc5cd1c16c2c05758c5010d6cb822b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3cd61bf_ee8953f5",
         "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
         "patchSetId": 6
