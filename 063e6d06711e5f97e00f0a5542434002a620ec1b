@@ -40,6 +40,23 @@
       "tag": "mailMessageId\u003d\u003cCADEg7HkOi5upFV\u003d7q77JEvwqH8bEbB7kJAFnK0KkwCg0x12V7A@mail.gmail.com\u003e",
       "revId": "063e6d06711e5f97e00f0a5542434002a620ec1b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12acdbaa_f9a8c3dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-07T02:40:41Z",
+      "side": 1,
+      "message": "this one will wait till gcc 11.2 as this option doesn\u0027t work for gcc 8.3, so cq-depend should care about it.",
+      "revId": "063e6d06711e5f97e00f0a5542434002a620ec1b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
