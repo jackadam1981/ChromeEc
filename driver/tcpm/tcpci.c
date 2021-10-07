@@ -396,6 +396,7 @@ int tcpci_tcpm_select_rp_value(int port, int rp)
 	return EC_SUCCESS;
 }
 
+#ifdef CONFIG_USB_PD_DISCHARGE_TCPC
 void tcpci_tcpc_discharge_vbus(int port, int enable)
 {
 	if (IS_ENABLED(DEBUG_FORCED_DISCHARGE))
@@ -407,6 +408,7 @@ void tcpci_tcpc_discharge_vbus(int port, int enable)
 		     TCPC_REG_POWER_CTRL_FORCE_DISCHARGE,
 		     (enable) ? MASK_SET : MASK_CLR);
 }
+#endif /* CONFIG_USB_PD_DISCHARGE_TCPC */
 
 /*
  * Auto Discharge Disconnect is supposed to be enabled when we
