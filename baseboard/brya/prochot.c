@@ -31,11 +31,11 @@ struct batt_para batt_params;
 
 static int cal_sys_watt(void)
 {
+	int adapter_voltage_mv;
 	int Vacpacn;
 	int V_iadpt;
 	int IDPM;
 	int W_adpt;
-	int adapter_voltage_mv;
 
 	Vacpacn = adc_read_channel(ADC_IADPT);
 
