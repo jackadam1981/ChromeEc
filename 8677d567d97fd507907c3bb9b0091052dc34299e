@@ -16,6 +16,24 @@
       "message": "do we need to make this changes dependent on GCC version? I.e.\n\n#if GCC_VER \u003c 11.2\n#define __inline static inline\n#define __always_inline static inline\n#else\n#define __inline inline\n#define __always_inline ...\n#endif\n",
       "revId": "8677d567d97fd507907c3bb9b0091052dc34299e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5928d398_aa8513b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-07T02:36:40Z",
+      "side": 1,
+      "message": "this change works with any gcc version and in fact already used in other parts http://cs/chromeos_public/src/third_party/u-boot/files/include/linux/compiler_attributes.h?l\u003d68\nsomehow I even faced that __always_inline is defined for BOARD\u003dhost exactly the same way, so had to guard it with #ifdef.",
+      "parentUuid": "d6a3b29b_6f15d1f5",
+      "revId": "8677d567d97fd507907c3bb9b0091052dc34299e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
