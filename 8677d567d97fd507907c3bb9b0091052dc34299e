@@ -34,6 +34,24 @@
       "parentUuid": "d6a3b29b_6f15d1f5",
       "revId": "8677d567d97fd507907c3bb9b0091052dc34299e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "da88768d_c7eb9966",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-07T04:22:43Z",
+      "side": 1,
+      "message": "\u003e __always_inline is defined for BOARD\u003dhost exactly the same way\n\ncan we use some common definition in a single place for all BOARDs? e.g. include a common .h that defines it?\n\n\u003e gcc 11.2 changes semantic of how \u0027static inline\u0027 works with LTO\n\u003e this change works with any gcc version\n\ndoes going from static inline -\u003e inline change the visibility of the function? any opposite problems with linking on pre 11.2 gcc versions?",
+      "parentUuid": "5928d398_aa8513b0",
+      "revId": "8677d567d97fd507907c3bb9b0091052dc34299e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
