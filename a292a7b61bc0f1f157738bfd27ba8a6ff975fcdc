@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "034981c9_472cee73",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-07T01:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14b85330_5c0771ba",
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "751db0a0_051f455d",
@@ -48,6 +66,30 @@
       "writtenOn": "2021-10-05T17:32:13Z",
       "side": 1,
       "message": "If the read failed we should terminate here (with some error code) and not attempt to write some invalid `reg` value to the charger.",
+      "range": {
+        "startLine": 117,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 0
+      },
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dd52df91_763c93e0",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-07T01:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "751db0a0_051f455d",
       "range": {
         "startLine": 117,
         "startChar": 3,
@@ -81,6 +123,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "120b6118_83f28ed9",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-07T01:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3796f053_d0ff9322",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 159,
+        "endChar": 34
+      },
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5c07b895_b23081d1",
@@ -94,6 +160,30 @@
       "writtenOn": "2021-10-05T17:32:13Z",
       "side": 1,
       "message": "nit: fix indentation",
+      "range": {
+        "startLine": 180,
+        "startChar": 2,
+        "endLine": 180,
+        "endChar": 3
+      },
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73191ebc_0ab48dfb",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-07T01:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c07b895_b23081d1",
       "range": {
         "startLine": 180,
         "startChar": 2,
@@ -127,6 +217,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e43e40d9_2207e908",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-07T01:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96386403_272b5cf7",
+      "range": {
+        "startLine": 188,
+        "startChar": 4,
+        "endLine": 188,
+        "endChar": 17
+      },
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c36bfa6e_a23cd98a",
@@ -140,6 +254,30 @@
       "writtenOn": "2021-10-05T17:32:13Z",
       "side": 1,
       "message": "nit: indentation",
+      "range": {
+        "startLine": 199,
+        "startChar": 2,
+        "endLine": 199,
+        "endChar": 3
+      },
+      "revId": "a292a7b61bc0f1f157738bfd27ba8a6ff975fcdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f90e4a0c_e6a5327d",
+        "filename": "board/gimble/prochot.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1329118
+      },
+      "writtenOn": "2021-10-07T01:24:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c36bfa6e_a23cd98a",
       "range": {
         "startLine": 199,
         "startChar": 2,
