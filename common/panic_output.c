@@ -309,6 +309,12 @@ DECLARE_HOOK(HOOK_INIT, panic_init, HOOK_PRIO_LAST);
 DECLARE_HOOK(HOOK_CHIPSET_RESET, panic_init, HOOK_PRIO_LAST);
 
 #ifdef CONFIG_CMD_STACKOVERFLOW
+/* Disable infinite recursion warning, since we're intentionally doing that
+ * here. */
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winfinite-recursion"
+#endif /* __clang__ */
 static void stack_overflow_recurse(int n)
 {
 	ccprintf("+%d", n);
@@ -327,6 +333,9 @@ static void stack_overflow_recurse(int n)
 	 */
 	ccprintf("-%d", n);
 }
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif /* __clang__ */
 #endif /* CONFIG_CMD_STACKOVERFLOW */
 
 /*****************************************************************************/
