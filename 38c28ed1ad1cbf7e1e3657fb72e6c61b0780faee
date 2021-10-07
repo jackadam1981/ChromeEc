@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27d8a1f_c788a438",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-07T00:18:23Z",
+      "side": 1,
+      "message": "It only warned about ADC_VOL_DOWN_MASK, but ADC_VOL_UP_MASK looks like it\u0027s doing the same thing.",
+      "revId": "38c28ed1ad1cbf7e1e3657fb72e6c61b0780faee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
