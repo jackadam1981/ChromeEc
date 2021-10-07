@@ -396,7 +396,7 @@ int tcpci_tcpm_select_rp_value(int port, int rp)
 	return EC_SUCCESS;
 }
 
-void tcpci_tcpc_discharge_vbus(int port, int enable)
+__maybe_unused void tcpci_tcpc_discharge_vbus(int port, int enable)
 {
 	if (IS_ENABLED(DEBUG_FORCED_DISCHARGE))
 		CPRINTS("C%d: ForceDischarge %sABLED",

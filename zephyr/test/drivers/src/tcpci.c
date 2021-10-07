@@ -1011,6 +1011,27 @@ static void test_tcpci_set_bist_mode(void)
 	check_tcpci_reg(emul, exp_mask, TCPC_REG_ALERT_MASK);
 }
 
+/** Test TCPCI discharge vbus */
+static void test_tcpci_discharge_vbus(void)
+{
+	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
+	uint8_t exp_ctrl;
+
+	/* Only bit 2 should be changed */
+	exp_ctrl = 0x42;
+	tcpci_emul_set_reg(emul, TCPC_REG_POWER_CTRL, exp_ctrl);
+
+	/* Test discharge enable */
+	exp_ctrl |= 0x4;
+	tcpci_tcpc_discharge_vbus(USBC_PORT_C1, 1);
+	check_tcpci_reg(emul, exp_ctrl, TCPC_REG_POWER_CTRL);
+
+	/* Test discharge disable */
+	exp_ctrl &= ~0x4;
+	tcpci_tcpc_discharge_vbus(USBC_PORT_C1, 0);
+	check_tcpci_reg(emul, exp_ctrl, TCPC_REG_POWER_CTRL);
+}
+
 void test_suite_tcpci(void)
 {
 	struct tcpc_config_t tcpc_config_temp;
@@ -1045,7 +1066,8 @@ void test_suite_tcpci(void)
 			 ztest_user_unit_test(test_tcpci_drp_toggle),
 			 ztest_user_unit_test(test_tcpci_get_chip_info),
 			 ztest_user_unit_test(test_tcpci_low_power_mode),
-			 ztest_user_unit_test(test_tcpci_set_bist_mode));
+			 ztest_user_unit_test(test_tcpci_set_bist_mode),
+			 ztest_user_unit_test(test_tcpci_discharge_vbus));
 	ztest_run_test_suite(tcpci);
 
 	/* Restore original tcpc configuration */
