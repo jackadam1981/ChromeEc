@@ -105,6 +105,24 @@
       "parentUuid": "e8506d88_84d436dd",
       "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c90cb81_2416f159",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-10-07T20:53:21Z",
+      "side": 1,
+      "message": "I will not be using servod or dut-control, this is for the OpenTitan project, and on the PC side will be a Rust program from the OpenTitan github repo.  I am contemplating replicating some EC-3PO logic in this Rust program, but before starting, I would like to fully understand the wire protocol, in particular, how does EC-3PO know when an executing command is done producing output, so that EC-3PO should present a new prompt on the client tty?  (As far as I can tell there is no replacement for ccputs(PROMPT) in case the enhanced console is enabled, so I wonder how EC-3PO could know when the previous command is done.)",
+      "parentUuid": "5607ad82_2feb01fb",
+      "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
