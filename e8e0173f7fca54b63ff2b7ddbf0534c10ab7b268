@@ -16,6 +16,29 @@
       "message": "Okay Scott, see what you think of the TCPCI implementation ",
       "revId": "e8e0173f7fca54b63ff2b7ddbf0534c10ab7b268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5adad28_988fa1b8",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-10-07T17:46:44Z",
+      "side": 1,
+      "message": "I don\u0027t see any issues with this check. Tx messages should be discarded when a new message is received. As your comment mentions, this check needs to be distributed between the TCPC and the PRL.",
+      "range": {
+        "startLine": 1025,
+        "startChar": 1,
+        "endLine": 1028,
+        "endChar": 2
+      },
+      "revId": "e8e0173f7fca54b63ff2b7ddbf0534c10ab7b268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
