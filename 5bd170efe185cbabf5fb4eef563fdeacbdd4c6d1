@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a450a056_29f601a7",
+        "filename": "zephyr/dts/bindings/usbc/ti,sn5s330.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-07T18:24:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c498a94_21f13b5b",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "5bd170efe185cbabf5fb4eef563fdeacbdd4c6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07f36706_cf27cab2",
@@ -95,6 +119,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6521bf2_329bf4e4",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-07T18:24:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1bb44bd_abe5bcc7",
+      "range": {
+        "startLine": 42,
+        "startChar": 17,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "5bd170efe185cbabf5fb4eef563fdeacbdd4c6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1981c29e_14c814ee",
@@ -108,6 +156,24 @@
       "writtenOn": "2021-10-07T15:51:46Z",
       "side": 1,
       "message": "Guard this driver with #if DT_HAS_COMPAT_STATUS_OKAY(DT_DRV_COMPAT).  This allows this new driver to co-exist with boards that still define ppc_chips[] in a custom board C file.",
+      "revId": "5bd170efe185cbabf5fb4eef563fdeacbdd4c6d1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a0555c2_7ecc388e",
+        "filename": "zephyr/shim/src/ppc_sn5s330.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-07T18:24:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1981c29e_14c814ee",
       "revId": "5bd170efe185cbabf5fb4eef563fdeacbdd4c6d1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
