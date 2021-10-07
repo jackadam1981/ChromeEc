@@ -34,6 +34,24 @@
       "parentUuid": "c21e3296_20a21975",
       "revId": "3b0af3688b52219afe70c7bd19b32926487ebadc",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9ff9937_96c4e5d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-07T15:54:46Z",
+      "side": 1,
+      "message": "the problem is that many dcrypto files are not being recompiled when the set of env config options changes.\n\nThis must be because the generated .d files are not included in make. This is why I think this patch is incomplete, inclusion of the .d files should be added.",
+      "parentUuid": "9bc32042_bb1318eb",
+      "revId": "3b0af3688b52219afe70c7bd19b32926487ebadc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
