@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3802a12e_db94a122",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-07T22:17:45Z",
+      "side": 1,
+      "message": "Not sure if there is a better way to do this. An alternative is to use \n\n #pragma clang diagnostic ignored \"-Wnoinline-asm\"\n\nto disable the warning in this chunk of assembly. I was worried that might hide additional warnings in the assembly that come up in the future.\n\n",
+      "revId": "e3e54a8e75efdb64dc5a6378f9406644967e834a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
