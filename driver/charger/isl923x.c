@@ -1185,16 +1185,9 @@ static void dump_reg_range(int chgnum, int low, int high)
 	}
 }
 
-static int command_isl923x_dump(int argc, char **argv)
+static void command_isl923x_dump(int chgnum)
 {
-	int chgnum = 0;
-	char *e;
-
-	if (argc >= 2) {
-		chgnum = strtoi(argv[1], &e, 10);
-		if (*e)
-			return EC_ERROR_PARAM1;
-	}
+	CPRINTF("ISL923x registers\n");
 
 	dump_reg_range(chgnum, 0x14, 0x15);
 	if (IS_ENABLED(CONFIG_CHARGER_ISL9238C))
@@ -1205,11 +1198,7 @@ static int command_isl923x_dump(int argc, char **argv)
 	    IS_ENABLED(CONFIG_CHARGER_RAA489000))
 		dump_reg_range(chgnum, 0x4B, 0x4E);
 	dump_reg_range(chgnum, 0xFE, 0xFF);
-
-	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(charger_dump, command_isl923x_dump,
-			"charger_dump <chgnum>", "Dumps ISL923x registers");
 #endif /* CONFIG_CMD_CHARGER_DUMP */
 
 static enum ec_error_list isl923x_get_vbus_voltage(int chgnum, int port,
@@ -1456,5 +1445,8 @@ const struct charger_drv isl923x_drv = {
 #if defined(CONFIG_CHARGER_RAA489000) && defined(CONFIG_OCPC)
 	.enable_linear_charge = &raa489000_enable_linear_charge,
 	.set_vsys_compensation = &raa489000_set_vsys_compensation,
+#endif
+#ifdef CONFIG_CMD_CHARGER_DUMP
+	.dump_registers = &command_isl923x_dump,
 #endif
 };

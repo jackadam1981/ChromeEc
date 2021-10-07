@@ -239,6 +239,32 @@ DECLARE_CONSOLE_COMMAND(charger, command_charger,
 			"[chgnum] [input | current | voltage | dptf] [newval]",
 			"Get or set charger param(s)");
 
+#ifdef CONFIG_CMD_CHARGER_DUMP
+static int command_charger_dump(int argc, char **argv)
+{
+	char *e;
+	int chgnum = 0;
+
+	if (argc >= 2) {
+		chgnum = strtoi(argv[1], &e, 10);
+		if (*e)
+			return EC_ERROR_PARAM1;
+	}
+
+	if ((chgnum < 0) || (chgnum >= board_get_charger_chip_count())) {
+		CPRINTS("%s(%d) Invalid charger!", __func__, chgnum);
+		return EC_ERROR_PARAM1;
+	}
+
+	chg_chips[chgnum].drv->dump_registers(chgnum);
+
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(charger_dump, command_charger_dump,
+			"charger_dump <chgnum>",
+			"Dumps charger registers");
+#endif /* CONFIG_CMD_CHARGER_DUMP */
+
 /* Driver wrapper functions */
 
 static void charger_chips_init(void)
