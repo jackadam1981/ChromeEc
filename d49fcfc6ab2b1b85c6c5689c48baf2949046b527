@@ -69,6 +69,24 @@
       "parentUuid": "01dd4679_0289566e",
       "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8506d88_84d436dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-10-07T15:43:09Z",
+      "side": 1,
+      "message": "I can make it so that my new board/hyperdebug will define CONFIG_EXPERIMENTAL_CONSOLE.  However, one thing came to my mind, the design doc does not spell out any encoding of responses to commands.\nIn particular, I would like to run a command like \"gpioget\", in order to get a list of the signal names.  Currently, I process the textual output, and recognize the prompt (\"\u003e \" without newline) to know when the list is complete.  How does that work with the new console?  I assume that there will also be length, crc, and delimiters for each item of output from a command, and some sort of end-of-stream marker.\n\nIs any of that implemented?  If not, then I think I will have to stick to the non-experimental console for now, and then I would still like to submit this CL.",
+      "parentUuid": "5f17a88f_d69efc89",
+      "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
