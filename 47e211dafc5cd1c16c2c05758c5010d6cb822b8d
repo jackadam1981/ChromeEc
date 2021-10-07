@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f81100cf_eca54896",
+        "filename": "zephyr/dts/bindings/usbc/pericom,pi3usb9201.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-07T20:12:10Z",
+      "side": 1,
+      "message": "How about have the shim driver enable and define the interrupt?\n\nYou could add a HOOK_INIT to enable the pi3usb9201 interrupts, and then also provide a common interrupt routine.  Example HOOK_INIT https://chromium.googlesource.com/chromiumos/platform/ec/+/d90ac17a/zephyr/shim/src/motionsense_sensors.c#380\n\n\nvoid pi3usb9201_interrupt(enum gpio_signal signal)\n{\n    port \u003d pi3usb9201_gpio_to_port(signal);\n    task_set_event(USB_CHG_PORT_TO_TASK_ID(port), USB_CHG_EVENT_BC12); \n}",
+      "parentUuid": "d1265bba_4252ab42",
+      "range": {
+        "startLine": 20,
+        "startChar": 14,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "47e211dafc5cd1c16c2c05758c5010d6cb822b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e3cd61bf_ee8953f5",
         "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
         "patchSetId": 6
