@@ -177,6 +177,24 @@
       "parentUuid": "50503226_8539b5ff",
       "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbb308c6_c0ccc3ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-10-07T23:04:30Z",
+      "side": 1,
+      "message": "I do not know if you can exactly say that OpenTitan tool is similar to servod/dut-control, but they do share some functionality.\n\nOpenTitan tool is a command line tool to be used by firmware developers using  OpenTitan evaluation boards.  It will support a range of programmers, probably some standard USB-connected SPI EEPROM programmers, a dongle called UltraDebug developed by Google, and then also a new HyperDebug board, which in addition to SPI programming will have a number of UARTs, many GPIO pins, and will support I2C in either controller or peripheral mode, etc. all of which will be controlled through a USB connection.  This will allow thorough stimulation of the GSC firmware under test.\n\nWe decided on using the EC codebase for the HyperDebug board, as much of the UART/SPI forwarding is already implemented and used by Servo micro.\n\nI will still need to implement a Rust \"driver\" for HyperDebug to be part of the OpenTitan tool codebase, this will replicate a bit of servod functionality mostly the low-level encoding of USB protocols for SPI and I2C forwarding.  I do not believe it is advantageous to try to share code, though, as the OpenTitan project does not want to refer to ChromeOS repositories (we could get an exception for the HyperDebug firmware, since the OpenTitan developers will not usually be recompiling the firmware for their USB SPI programmers.)",
+      "parentUuid": "fa9c45a3_21e9fe73",
+      "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
