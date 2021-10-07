@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "373d8705_bcfb3c61",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-07T03:58:32Z",
+      "side": 1,
+      "message": "lgtm, but I\u0027ll leave to Mary final decision\n\nI never noticed errors so far. How to reproduce it?",
+      "revId": "fecc346f87e6f4794c662fe12675b584f3ebaae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c3e4a8c_ce971e6f",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-07T03:58:32Z",
+      "side": 1,
+      "message": "quotes not needed anymore?",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "fecc346f87e6f4794c662fe12675b584f3ebaae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
