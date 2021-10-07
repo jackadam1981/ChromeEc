@@ -16,6 +16,29 @@
       "message": "These device trees have to be in this commit because I\u0027ve changed allowed enum name to be more descriptive. Without modifying dts, this commit would fail.",
       "revId": "2711fe6419d007684d01a9d8c4664847ec2f6935",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b50aa719_5f4acad1",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-07T20:24:34Z",
+      "side": 1,
+      "message": "Can you get rid of this statement, if you change the i2c controller driver to use CONFIG_I2C_VIRTUAL_BATTERY instead of I2C_PORT_VIRTUAL_BATTERY?\n  \nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/d90ac17a/common/i2c_controller.c#1234",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 73
+      },
+      "revId": "2711fe6419d007684d01a9d8c4664847ec2f6935",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
