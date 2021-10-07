@@ -46,6 +46,30 @@
       },
       "revId": "0caf962311568d03d4f1c7563338785b17b63926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9a338b7_d3e68b3f",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-07T18:06:09Z",
+      "side": 1,
+      "message": "no :) I\u0027d prefer it to be printed for regular builds same way as we print remaining size available. I use V\u003d1 only for debugging. Could be a separate CL though. We still need to add functionality to support product digests and print when computed digest is different.",
+      "parentUuid": "be13c80b_ae35df27",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "0caf962311568d03d4f1c7563338785b17b63926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
