@@ -1,0 +1,45 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33496f69_025246e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-07T21:43:13Z",
+      "side": 1,
+      "message": "Just a typo. Please fix it.",
+      "revId": "b6525d4da9f8325016b5875f1d67c4ad10542682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a9abee_d3252b06",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-07T21:43:13Z",
+      "side": 1,
+      "message": "\u003e \"disbale\" is a possible misspelling of \"disable\".\n\nPlease fix.",
+      "parentUuid": "303239da_a3698b7c",
+      "range": {
+        "startLine": 1042,
+        "startChar": 27,
+        "endLine": 1042,
+        "endChar": 34
+      },
+      "revId": "b6525d4da9f8325016b5875f1d67c4ad10542682",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
