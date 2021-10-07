@@ -39,6 +39,30 @@
       },
       "revId": "fecc346f87e6f4794c662fe12675b584f3ebaae1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "115007dd_5249875e",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-07T14:51:51Z",
+      "side": 1,
+      "message": "We should keep the quotes, so it matches literally. Without the quotes checksum_section is matched as a regex.\n\nMaybe we should add a comment, because Tricium is going to keep warning about this.",
+      "parentUuid": "9c3e4a8c_ce971e6f",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 27
+      },
+      "revId": "fecc346f87e6f4794c662fe12675b584f3ebaae1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
