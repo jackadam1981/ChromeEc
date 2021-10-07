@@ -17,6 +17,7 @@
 #include "ppc/syv682x_public.h"
 #include "retimer/bb_retimer_public.h"
 #include "stubs.h"
+#include "tcpm/tcpci.h"
 #include "tcpm/tusb422_public.h"
 #include "tcpm/tusb422_public.h"
 #include "usb_mux.h"
@@ -149,6 +150,16 @@ struct usb_mux usbc1_virtual_usb_mux = {
 	.hpd_update = &virtual_hpd_update,
 };
 
+/** Structure used in TCPC usb mux tests */
+struct usb_mux usbc1_tcpci_usb_mux = {
+	.usb_port = USBC_PORT_C1,
+	.driver = &tcpci_tcpm_usb_mux_driver,
+	.i2c_port = I2C_PORT_USB_C1,
+	.i2c_addr_flags = DT_REG_ADDR(DT_NODELABEL(tcpci_emul)),
+	.flags = USB_MUX_FLAG_NOT_TCPC,
+	.next_mux = &usbc1_virtual_usb_mux,
+};
+
 struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
@@ -159,7 +170,7 @@ struct usb_mux usb_muxes[] = {
 		.usb_port = USBC_PORT_C1,
 		.driver = &bb_usb_retimer,
 		.hpd_update = bb_retimer_hpd_update,
-		.next_mux = &usbc1_virtual_usb_mux,
+		.next_mux = &usbc1_tcpci_usb_mux,
 		.i2c_port = I2C_PORT_USB_C1,
 		.i2c_addr_flags = DT_REG_ADDR(DT_NODELABEL(
 					usb_c1_bb_retimer_emul)),

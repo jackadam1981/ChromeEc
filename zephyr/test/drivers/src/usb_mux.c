@@ -443,7 +443,7 @@ static void test_usb_mux_low_power_mode(void)
 	 * TODO: Find way to setup PD stack in such state that notifing PD task
 	 *       results in required usb_mux_set call.
 	 */
-	org_mux[1] = NULL;
+	org_mux[2] = NULL;
 
 	/* Test enter to low power mode */
 	exp_mode = USB_PD_MUX_NONE;
