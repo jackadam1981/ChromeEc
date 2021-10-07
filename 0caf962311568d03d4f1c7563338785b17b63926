@@ -70,6 +70,30 @@
       },
       "revId": "0caf962311568d03d4f1c7563338785b17b63926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b58c5e6c_d3f3eb79",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-07T18:22:22Z",
+      "side": 1,
+      "message": "in this case it is better to add this as a makefile command where the image sizes are reported, to avoid printing this at random spots during make process. Let\u0027s do it separately.",
+      "parentUuid": "a9a338b7_d3e68b3f",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "0caf962311568d03d4f1c7563338785b17b63926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
