@@ -52,6 +52,24 @@
       "parentUuid": "5928d398_aa8513b0",
       "revId": "8677d567d97fd507907c3bb9b0091052dc34299e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf6000b_980b629f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-07T04:30:54Z",
+      "side": 1,
+      "message": "i didn\u0027t notice any side effects - this combination of inline (or __inline to be independent from C standard in use and always_inline attribute used for a long time.\nI think just inline or \u0027extern inline\u0027 should work if we would specify C99+ standard, which we don\u0027t. With gcc 11.2 and \u0027static inline\u0027 I got multiple ODRs, with just \u0027inline\u0027 - the opposite - symbol not found, and with \u0027extern inline\u0027 - i don\u0027t remember. \nMore details are https://gcc.gnu.org/onlinedocs/gcc/Inline.html\n\nAnd yes, I can move it to common.h if you think it make sense.",
+      "parentUuid": "da88768d_c7eb9966",
+      "revId": "8677d567d97fd507907c3bb9b0091052dc34299e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
