@@ -166,7 +166,15 @@ void exception_panic(void)
 		:
 		/* Constraints protecting these from being clobbered.
 		 * Gcc should be using r0 & r12 for pregs and pstack. */
-		"r1", "r2", "r3", "r4", "r5", "r6",
+			"r1", "r2",
+		/* clang reports "inline assembly requires more registers
+		 * than available". This is actually true for gcc as well,
+		 * but instead of warning, it just silently clobbers r3.
+		 */
+#ifndef __clang__
+			"r3",
+#endif
+			"r4", "r5", "r6",
 	/* clang warns that we're clobbering a reserved register:
 	 * inline asm clobber list contains reserved registers: R7
 	 * [-Werror,-Winline-asm]. The intent of the clobber list is
