@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7bed8aa_c3e05cbc",
+        "filename": "zephyr/dts/bindings/usbc/pericom,pi3usb9201.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-07T17:17:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a10393c_e0ab1582",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 0
+      },
+      "revId": "47e211dafc5cd1c16c2c05758c5010d6cb822b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "27851d4d_350b31b4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-07T15:53:15Z",
       "side": 1,
       "message": "The IRQ GPIO should be required. The task waits for the interrupt to do further detection. If the IRQ GPIO is not defined, the task is blocked there forever.",
+      "range": {
+        "startLine": 20,
+        "startChar": 14,
+        "endLine": 20,
+        "endChar": 19
+      },
+      "revId": "47e211dafc5cd1c16c2c05758c5010d6cb822b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1265bba_4252ab42",
+        "filename": "zephyr/dts/bindings/usbc/pericom,pi3usb9201.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-07T17:17:07Z",
+      "side": 1,
+      "message": "If this true, how should the interrupt be enabled in the shim layer?\n\nCurrently we have gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_L);\n\nand the\n\nusb_c1_bc12_int_l {\n                        gpios \u003d \u003c\u0026gpio8 2 (GPIO_INPUT | GPIO_PULL_UP)\u003e;\n                        enum-name \u003d \"GPIO_USB_C1_BC12_INT_L\";\n                        label \u003d \"USB_C1_BC12_INT_L\";\n                };",
+      "parentUuid": "27851d4d_350b31b4",
       "range": {
         "startLine": 20,
         "startChar": 14,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aa1216c_23223dd9",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/i2c.dts",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-07T17:17:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3cd61bf_ee8953f5",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "47e211dafc5cd1c16c2c05758c5010d6cb822b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fa18fd64_5b19a9a4",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-06T20:43:01Z",
       "side": 1,
       "message": "Also move into CL:3202997",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 63
+      },
+      "revId": "47e211dafc5cd1c16c2c05758c5010d6cb822b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54788e75_13d7e40a",
+        "filename": "zephyr/projects/herobrine/herobrine_npcx9/src/usbc_config.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-07T17:17:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa18fd64_5b19a9a4",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -110,6 +206,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "695490bc_8c7c24b5",
+        "filename": "zephyr/shim/src/bc12_pi3usb9201.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-07T17:17:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbf15563_cf2c9c95",
+      "revId": "47e211dafc5cd1c16c2c05758c5010d6cb822b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "173e638a_6a2968d3",
@@ -123,6 +237,30 @@
       "writtenOn": "2021-10-06T20:43:01Z",
       "side": 1,
       "message": "Use I2C_PORT() here instead:\n    .i2c_port \u003d I2C_PORT(DT_PHANDLE(DT_DRV_INST(inst), port))",
+      "range": {
+        "startLine": 17,
+        "startChar": 14,
+        "endLine": 18,
+        "endChar": 44
+      },
+      "revId": "47e211dafc5cd1c16c2c05758c5010d6cb822b8d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0e9d35b_ca5d7b9a",
+        "filename": "zephyr/shim/src/bc12_pi3usb9201.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1149894
+      },
+      "writtenOn": "2021-10-07T17:17:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "173e638a_6a2968d3",
       "range": {
         "startLine": 17,
         "startChar": 14,
