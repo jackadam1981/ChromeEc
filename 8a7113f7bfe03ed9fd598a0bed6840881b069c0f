@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fe7f68d_69243f30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-07T03:56:00Z",
+      "side": 1,
+      "message": "I downloaded all the patches in this chain and ran them against some debugging code for ztest\u0027s mock and everything actually checks out. I believe you\u0027re missing a repo sync which is causing your error. Please sync, rebase, try again and let me know if it works",
+      "revId": "8a7113f7bfe03ed9fd598a0bed6840881b069c0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
