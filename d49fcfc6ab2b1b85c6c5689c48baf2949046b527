@@ -123,6 +123,24 @@
       "parentUuid": "5607ad82_2feb01fb",
       "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00916d28_48499ebb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-07T21:15:40Z",
+      "side": 1,
+      "message": "EC-3PO can also be run standalone just by running console.py itself. It was intended to be somewhat portable. Is there a reason you wouldn\u0027t want to use that? What\u0027s the rust program?\n\nRegarding the console prompt on the TTY, see https://source.chromium.org/chromium/chromiumos/platform/ec/+/HEAD:util/ec3po/console.py;l\u003d634;drc\u003dc093782e21d65f9347ecbee745a16d459008492a. I did have a TODO there because, right now, EC-3PO doesn\u0027t know when the output is finished. It basically takes the output as received and presents it to the console. As such, the prompt gets printed before all the output is complete.\n\nIf commands were sent using host commands, then we would expect the response object and could wait until it\u0027s received priorto emitting the prompt.",
+      "parentUuid": "9c90cb81_2416f159",
+      "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
