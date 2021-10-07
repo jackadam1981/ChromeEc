@@ -316,6 +316,7 @@ static const struct ap_ro_check *p_chk =
  * reset.
  */
 static uint8_t validated_ap_ro_boot;
+static uint8_t triggered;
 
 /*
  * In dev signed Cr50 images this is the hash of
@@ -491,6 +492,7 @@ void ap_ro_device_reset(void)
 	if (validated_ap_ro_boot)
 		CPRINTS("%s: clear validated state", __func__);
 	validated_ap_ro_boot = 0;
+	triggered = 0;
 }
 
 /* Erase flash page containing the AP RO verification data hash. */
@@ -1359,6 +1361,7 @@ static uint8_t do_ap_ro_check(void)
 	enum ap_ro_check_vc_errors support_status;
 	bool v1_record_found;
 
+	triggered = 1;
 	support_status = ap_ro_check_unsupported(true);
 	if ((support_status == ARCVE_BOARD_ID_BLOCKED) ||
 	    (support_status == ARCVE_FLASH_READ_FAILED))
@@ -1397,6 +1400,11 @@ static uint8_t do_ap_ro_check(void)
 
 	disable_ap_spi_hash_shortcut();
 
+	/*
+	 * Reading AP RO flash resets the device which clears trigger. Set it to
+	 * 1 again, so the status survives AP RO verification.
+	 */
+	triggered = 1;
 	if (rv != EC_SUCCESS) {
 		/* Failure reason has already been reported. */
 		ap_ro_add_flash_event(APROF_CHECK_FAILED);
@@ -1507,13 +1515,15 @@ static int ap_ro_info_cmd(int argc, char **argv)
 	}
 #endif
 	rv = ap_ro_check_unsupported(false);
+	ccprintf("triggered : %s\n", triggered ? "yes" : "no");
+	ccprintf("validated : %s\n", rv ? "unsupported" :
+		 validated_ap_ro_boot ? "yes" : "no");
 	if (rv == ARCVE_FLASH_READ_FAILED)
 		return EC_ERROR_CRC; /* No verification possible. */
 	/* All other AP RO verificaiton unsupported reasons are fine */
 	if (rv)
 		return EC_SUCCESS;
 
-	ccprintf("boot validated: %s\n", validated_ap_ro_boot ? "yes" : "no");
 	ccprintf("sha256 hash %ph\n",
 		 HEX_BUF(p_chk->payload.digest, sizeof(p_chk->payload.digest)));
 	ccprintf("Covered ranges:\n");
@@ -1554,8 +1564,9 @@ static enum vendor_cmd_rc vc_get_ap_ro_status(enum vendor_cmd_cc code,
 	else if (validated_ap_ro_boot)
 		rv = AP_RO_PASS;
 
-	*response_size = 1;
+	*response_size = 2;
 	response[0] = rv;
+	response[1] = triggered;
 	return VENDOR_RC_SUCCESS;
 }
 DECLARE_VENDOR_COMMAND(VENDOR_CC_GET_AP_RO_STATUS, vc_get_ap_ro_status);
