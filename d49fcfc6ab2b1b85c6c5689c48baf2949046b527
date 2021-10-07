@@ -141,6 +141,24 @@
       "parentUuid": "9c90cb81_2416f159",
       "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50503226_8539b5ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1341996
+      },
+      "writtenOn": "2021-10-07T21:53:26Z",
+      "side": 1,
+      "message": "I see.  I guess that means it will not be straightforward how to use \"gpioget\" to programmatically retrieve a list of GPIO signal names with CONFIG_EXPERIMENTAL_CONSOLE, as there would be no way short of a timeout to recognize when the list is finished.\n\nThe Rust program that I need these features for is called OpenTitan tool https://github.com/lowRISC/opentitan/tree/master/sw/host/opentitantool, which has drivers for several debugging boards, one among them will be the EC-based HyperDebug.  It will be quite clunky, I think, to have a Python program as sub-process to OpenTitan tool, (which works with many short-lived invocations, without an equivalent of servod.)\n\nGiven the above, I want to still propose this change for the non-enhanced console (realizing that it will add a number of bytes to existing non-enhanced EC images, if they choose to cherry-pick it.)  I have adapted the code to not do anything on enhanced images, as the EC-3PO process will handle aborting a partial command.",
+      "parentUuid": "00916d28_48499ebb",
+      "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
