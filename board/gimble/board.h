@@ -185,6 +185,10 @@
 #define CONFIG_CHARGER_SENSE_RESISTOR		10
 #define CONFIG_CHARGER_SENSE_RESISTOR_AC	10
 
+/* PROCHOT defines */
+#define BATT_MAX_CONTINUE_DISCHARGE_WATT    45
+#define CONFIG_CONTROL_PROCHOT
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"	/* needed by registers.h */
