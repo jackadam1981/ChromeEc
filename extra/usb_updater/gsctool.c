@@ -2306,7 +2306,7 @@ static int process_get_apro_boot_status(struct transfer_descriptor *td)
 	}
 
 	/* Print the response and meaning, as in 'enum ap_ro_status'. */
-	printf("AP RO status = %d: ", response);
+	printf("apro result (%d)   : ", response);
 	switch (response) {
 	case AP_RO_NOT_RUN:
 		printf("not run\n");
@@ -2317,8 +2317,28 @@ static int process_get_apro_boot_status(struct transfer_descriptor *td)
 	case AP_RO_FAIL:
 		printf("FAIL\n");
 		break;
-	case AP_RO_UNSUPPORTED:
+	case AP_RO_UNSUPPORTED_TRIGGERED:
+	case AP_RO_UNSUPPORTED_UNKNOWN:
+	case AP_RO_UNSUPPORTED_NOT_TRIGGERED:
 		printf("unsupported\n");
+		break;
+	default:
+		fprintf(stderr, "unknown status\n");
+		return update_error;
+	}
+	printf("key combo detected: ");
+	switch (response) {
+	case AP_RO_NOT_RUN:
+	case AP_RO_UNSUPPORTED_NOT_TRIGGERED:
+		printf("no\n");
+		break;
+	case AP_RO_PASS:
+	case AP_RO_FAIL:
+	case AP_RO_UNSUPPORTED_TRIGGERED:
+		printf("yes\n");
+		break;
+	case AP_RO_UNSUPPORTED_UNKNOWN:
+		printf("unknown\n");
 		break;
 	default:
 		fprintf(stderr, "unknown status\n");
