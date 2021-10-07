@@ -411,6 +411,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "415f4617_d48ec677",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-07T15:46:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2b1da680_1deb4f2a",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 1
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5db809ac_ecbfa50c",
@@ -448,6 +472,30 @@
       "side": 1,
       "message": "TCPCI specification says that TCPC on sequential read may return all 1\u0027s and ACK, but it is implementation specific. Probably there is no situation where driver would use this behavior, so I remove error_on_sequnetial_* flag and always return -EIO in that case. I prefer it over assert, because failing assert will cause to stop all other unit tests, not only the failing one.",
       "parentUuid": "5db809ac_ecbfa50c",
+      "range": {
+        "startLine": 571,
+        "startChar": 13,
+        "endLine": 571,
+        "endChar": 37
+      },
+      "revId": "16a008fe1c9ef2361a07c06b8eaf24d1160acc52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4efc09d5_66d18cb6",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-07T15:46:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e76b7257_20e98050",
       "range": {
         "startLine": 571,
         "startChar": 13,

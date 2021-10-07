@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b35ae435_1e85c5d5",
+        "filename": "zephyr/dts/bindings/emul/cros,tcpc-emul.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-07T15:46:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e4871e5_574ea745",
+      "range": {
+        "startLine": 12,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 40
+      },
+      "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0fcb0173_47b53589",
@@ -143,6 +167,24 @@
       "side": 1,
       "message": "Modified functions to use `struct emul*`",
       "parentUuid": "666ce3e6_b2f9dc3a",
+      "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1a0e30d_cd5d4125",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-07T15:46:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f1b299e_be82e4c3",
       "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -280,6 +322,30 @@
       "side": 1,
       "message": "Ok, now there is one get function.",
       "parentUuid": "1c7064bd_50ff4579",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 71
+      },
+      "revId": "dc72ed521200af5df10ad369044a404bd2f4fd2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74c9425e_8c7e69f6",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-07T15:46:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f2ef0b92_c302efe6",
       "range": {
         "startLine": 184,
         "startChar": 0,
