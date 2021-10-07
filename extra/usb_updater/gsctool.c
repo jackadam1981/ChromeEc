@@ -260,6 +260,8 @@ static char *progname;
  */
 static const struct option_container cmd_line_options[] = {
 	/* name   has_arg    *flag  val */
+	{{"trigger_apro_validate", no_argument, NULL, 'Q'},
+	 "get the stored ap ro hash"},
 	{{"get_apro_hash", no_argument, NULL, 'A'},
 	 "get the stored ap ro hash"},
 	{{"any", no_argument, NULL, 'a'},
@@ -2284,6 +2286,51 @@ static int process_get_apro_hash(struct transfer_descriptor *td)
 	return 0;
 }
 
+static int validate_apro_hash(struct transfer_descriptor *td)
+{
+	size_t response_size;
+	uint8_t response;
+	const char * const desc = "trigger ap ro validate";
+	int rv = 0;
+
+	response_size = sizeof(response);
+
+	rv = send_vendor_command(td, VENDOR_CC_AP_RO_VALIDATE, NULL, 0,
+				 &response, &response_size);
+	if (rv != VENDOR_RC_SUCCESS) {
+		fprintf(stderr, "Error %d %s\n", rv, desc);
+		return update_error;
+	}
+	if (response_size != 1) {
+		fprintf(stderr, "Unexpected response size %zd while %s\n",
+			response_size, desc);
+		return update_error;
+	}
+
+	/* Print the response and meaning, as in 'enum ap_ro_status'. */
+	printf("AP RO status = %d: ", response);
+	switch (response) {
+	case AP_RO_NOT_RUN:
+		printf("not run\n");
+		break;
+	case AP_RO_PASS:
+		printf("pass\n");
+		break;
+	case AP_RO_FAIL:
+		printf("FAIL\n");
+		break;
+	case AP_RO_UNSUPPORTED:
+		printf("unsupported\n");
+		break;
+	default:
+		fprintf(stderr, "unknown status\n");
+		return update_error;
+	}
+
+	return 0;
+}
+
+
 static int process_get_apro_boot_status(struct transfer_descriptor *td)
 {
 	size_t response_size;
@@ -3032,6 +3079,7 @@ int main(int argc, char *argv[])
 	int try_all_transfer = 0;
 	int tpm_mode = 0;
 	int get_apro_hash = 0;
+	int trigger_apro_validate = 0;
 	int get_apro_boot_status = 0;
 	bool show_machine_output = false;
 	int tstamp = 0;
@@ -3100,6 +3148,9 @@ int main(int argc, char *argv[])
 		if (check_boolean(omap, i))
 			continue;
 		switch (i) {
+		case 'Q':
+			trigger_apro_validate = 1;
+			break;
 		case 'A':
 			get_apro_hash = 1;
 			break;
@@ -3260,6 +3311,7 @@ int main(int argc, char *argv[])
 	    !ccd_unlock &&
 	    !corrupt_inactive_rw &&
 	    !get_apro_hash &&
+	    !trigger_apro_validate &&
 	    !get_apro_boot_status &&
 	    !get_boot_mode &&
 	    !get_flog &&
@@ -3377,6 +3429,9 @@ int main(int argc, char *argv[])
 
 	if (sn_inc_rma)
 		process_sn_inc_rma(&td, sn_inc_rma_arg);
+
+	if (trigger_apro_validate)
+		exit(validate_apro_hash(&td));
 
 	if (get_apro_hash)
 		exit(process_get_apro_hash(&td));
