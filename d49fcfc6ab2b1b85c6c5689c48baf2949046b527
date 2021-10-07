@@ -87,6 +87,24 @@
       "parentUuid": "5f17a88f_d69efc89",
       "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5607ad82_2feb01fb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-07T18:33:46Z",
+      "side": 1,
+      "message": "It should look identical as it does today if you connect to the PTY exported by EC-3PO (i.e. the one returned by `dut-control ec_uart_pty`). I don\u0027t think we do any error handling for responses (at least the packed plaintext).",
+      "parentUuid": "e8506d88_84d436dd",
+      "revId": "d49fcfc6ab2b1b85c6c5689c48baf2949046b527",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
