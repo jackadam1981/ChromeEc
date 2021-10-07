@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f535b0_6a74b16e",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-07T17:50:29Z",
+      "side": 1,
+      "message": "can we add printing of digest on the screen? It will help to monitor if it changes unexpectedly...",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "0caf962311568d03d4f1c7563338785b17b63926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
