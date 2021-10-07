@@ -2287,7 +2287,7 @@ static int process_get_apro_hash(struct transfer_descriptor *td)
 static int process_get_apro_boot_status(struct transfer_descriptor *td)
 {
 	size_t response_size;
-	uint8_t response;
+	uint8_t response[2];
 	const char * const desc = "getting apro status";
 	int rv = 0;
 
@@ -2299,15 +2299,35 @@ static int process_get_apro_boot_status(struct transfer_descriptor *td)
 		fprintf(stderr, "Error %d %s\n", rv, desc);
 		return update_error;
 	}
-	if (response_size != 1) {
+	if (response_size == 2) {
+		printf("triggered    : %s\n", response[1] ? "yes" : "no");
+	} else if (response_size == 1) {
+		/* Print the response and meaning, as in 'enum ap_ro_status'. */
+		printf("triggered    : ");
+		switch (response[0]) {
+		case AP_RO_NOT_RUN:
+			printf("no\n");
+			break;
+		case AP_RO_PASS:
+		case AP_RO_FAIL:
+			printf("yes\n");
+			break;
+		case AP_RO_UNSUPPORTED:
+			printf("unknown\n");
+			break;
+		default:
+			fprintf(stderr, "unknown status\n");
+			return update_error;
+		}
+	} else {
 		fprintf(stderr, "Unexpected response size %zd while %s\n",
 			response_size, desc);
 		return update_error;
 	}
 
 	/* Print the response and meaning, as in 'enum ap_ro_status'. */
-	printf("AP RO status = %d: ", response);
-	switch (response) {
+	printf("validated (%d): ", response[0]);
+	switch (response[0]) {
 	case AP_RO_NOT_RUN:
 		printf("not run\n");
 		break;
