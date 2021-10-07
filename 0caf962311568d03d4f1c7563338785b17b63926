@@ -22,6 +22,30 @@
       },
       "revId": "0caf962311568d03d4f1c7563338785b17b63926",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be13c80b_ae35df27",
+        "filename": "util/inject_fips_fingerprint.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-07T18:03:01Z",
+      "side": 1,
+      "message": "we can add it, but it will not be showing up on make output unless V\u003d1 is set, will this addition still be useful?",
+      "parentUuid": "52f535b0_6a74b16e",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 35
+      },
+      "revId": "0caf962311568d03d4f1c7563338785b17b63926",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
