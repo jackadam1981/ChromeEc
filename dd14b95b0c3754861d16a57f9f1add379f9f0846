@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a5a0bfe_a3f0c8d4",
+        "filename": "zephyr/shim/src/pwm_led.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-08T11:07:18Z",
+      "side": 1,
+      "message": "...had to add a _WITH_COMMA variant as well",
+      "parentUuid": "7583d165_4729b5dd",
+      "range": {
+        "startLine": 21,
+        "startChar": 30,
+        "endLine": 21,
+        "endChar": 45
+      },
+      "revId": "dd14b95b0c3754861d16a57f9f1add379f9f0846",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc40df83_1cb67c2e",
