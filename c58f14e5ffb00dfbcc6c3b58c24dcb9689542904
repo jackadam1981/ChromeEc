@@ -22,6 +22,30 @@
       },
       "revId": "c58f14e5ffb00dfbcc6c3b58c24dcb9689542904",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6988849e_c05d3616",
+        "filename": "board/brya/board.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1265046
+      },
+      "writtenOn": "2021-10-08T05:48:06Z",
+      "side": 1,
+      "message": "Let me include the removal requirement for CONFIG_BYPASS_CBI_EEPROM_WP_CHECK to the issue",
+      "parentUuid": "ecceb082_0b36f1bc",
+      "range": {
+        "startLine": 19,
+        "startChar": 55,
+        "endLine": 19,
+        "endChar": 60
+      },
+      "revId": "c58f14e5ffb00dfbcc6c3b58c24dcb9689542904",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
