@@ -22,6 +22,30 @@
       },
       "revId": "0032ef6967b2e470e1573b8dc1411416bb8fd134",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1501213e_6e1e9d25",
+        "filename": "zephyr/emul/emul_clock_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-08T19:45:52Z",
+      "side": 1,
+      "message": "Thought about it, but wasn\u0027t sure it would be relevant, I\u0027ll add a mutex.",
+      "parentUuid": "bf098498_0a8dd164",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "0032ef6967b2e470e1573b8dc1411416bb8fd134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
