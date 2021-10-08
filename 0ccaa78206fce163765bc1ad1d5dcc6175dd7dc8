@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0de69315_25c73909",
+        "filename": "board/anahera/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-10-08T02:05:14Z",
+      "side": 1,
+      "message": "Yes, this is true. but we call fan table.",
+      "parentUuid": "896f68e9_6047ab88",
+      "range": {
+        "startLine": 37,
+        "startChar": 29,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "0ccaa78206fce163765bc1ad1d5dcc6175dd7dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96066167_1dcdef7f",
         "filename": "board/anahera/thermal.c",
         "patchSetId": 2
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0dbd6dac_de85fdb5",
+        "filename": "board/anahera/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-10-08T02:05:14Z",
+      "side": 1,
+      "message": "It will not go down multile levels at a time. since the temperature is linear and down slowly. we have around 2 degrees each step also prevent down multiple levels at a time.",
+      "parentUuid": "96066167_1dcdef7f",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 5
+      },
+      "revId": "0ccaa78206fce163765bc1ad1d5dcc6175dd7dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f396f5b2_36128fc1",
         "filename": "board/anahera/thermal.c",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-07T07:33:46Z",
       "side": 1,
       "message": "this seems dangerous.\nif you ever get a sensor mis-reading, you\u0027ll crash.\nit\u0027s safer to just assign the highest level.",
+      "range": {
+        "startLine": 134,
+        "startChar": 1,
+        "endLine": 134,
+        "endChar": 7
+      },
+      "revId": "0ccaa78206fce163765bc1ad1d5dcc6175dd7dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc7d1313_c205fe71",
+        "filename": "board/anahera/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1106416
+      },
+      "writtenOn": "2021-10-08T02:05:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f396f5b2_36128fc1",
       "range": {
         "startLine": 134,
         "startChar": 1,
