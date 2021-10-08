@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf098498_0a8dd164",
+        "filename": "zephyr/emul/emul_clock_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-08T19:23:16Z",
+      "side": 1,
+      "message": "is there a possible timing issue with using cb when it can be NULL until drv_clock_ctrl_async_on is called?  Possibly not do the call if this is already NULL?",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "0032ef6967b2e470e1573b8dc1411416bb8fd134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
