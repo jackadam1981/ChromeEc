@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3168ea8_378226dc",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-08T23:06:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4781eb25_390ea8fc",
+      "revId": "12a5e73216df509198326935760f69c22963824a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b76f508a_652beb80",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0b20f78_87f08f04",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-08T23:06:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b76f508a_652beb80",
+      "range": {
+        "startLine": 330,
+        "startChar": 12,
+        "endLine": 330,
+        "endChar": 36
+      },
+      "revId": "12a5e73216df509198326935760f69c22963824a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e3f2a59_277ff5a9",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-10-08T01:04:00Z",
       "side": 1,
       "message": "split it into 2 CLS\nsee if other boards need to define CONFIG_CHARGER_SENSE_RESISTOR_BQ25720",
+      "revId": "12a5e73216df509198326935760f69c22963824a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b263ed0a_c759d937",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-08T23:06:10Z",
+      "side": 1,
+      "message": "https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3211773\nDone",
+      "parentUuid": "5e3f2a59_277ff5a9",
       "revId": "12a5e73216df509198326935760f69c22963824a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
