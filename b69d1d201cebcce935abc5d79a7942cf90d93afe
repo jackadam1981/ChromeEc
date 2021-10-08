@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db0732e4_08925db6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2021-10-08T00:59:55Z",
+      "side": 1,
+      "message": "how about?\ncleanup: charger: consolidate charger_dump console commands",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "b69d1d201cebcce935abc5d79a7942cf90d93afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4323bcce_d03c265b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2021-10-08T00:59:55Z",
+      "side": 1,
+      "message": "nit: add bug etc",
+      "revId": "b69d1d201cebcce935abc5d79a7942cf90d93afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "703c38aa_f1ef360c",
+        "filename": "driver/charger/bd9995x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2021-10-08T00:59:55Z",
+      "side": 1,
+      "message": "nit: remove these additional prints in driver instead use\ncharger_info.name in charger.c file itself\nccprintf(\"Dump %d registers\\n\", charger_info[].name)",
+      "range": {
+        "startLine": 1473,
+        "startChar": 11,
+        "endLine": 1473,
+        "endChar": 45
+      },
+      "revId": "b69d1d201cebcce935abc5d79a7942cf90d93afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf1d8726_294d5cf5",
+        "filename": "include/charger.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2021-10-08T00:59:55Z",
+      "side": 1,
+      "message": "nit:\n#ifdef CONFIG_CMD_CHARGER_DUMP",
+      "revId": "b69d1d201cebcce935abc5d79a7942cf90d93afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
