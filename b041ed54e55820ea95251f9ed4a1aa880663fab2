@@ -51,6 +51,42 @@
       "parentUuid": "abf4ae80_2ce1941e",
       "revId": "b041ed54e55820ea95251f9ed4a1aa880663fab2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c66a6404_36b02263",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-08T21:46:11Z",
+      "side": 1,
+      "message": "https://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/include/config.h#777\n\nLooks like H1 has issue and other boards are using similar logic",
+      "parentUuid": "fbd229e6_577dbdb6",
+      "revId": "b041ed54e55820ea95251f9ed4a1aa880663fab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22c70dd3_d53db5dc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-08T21:46:11Z",
+      "side": 1,
+      "message": "EC will start with error recovery and CC will be in open state.\nWall adapter stops giving power if Rd is not pulled up\n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/refs/heads/main/common/usbc/usb_tc_drp_acc_trysrc_sm.c#1559",
+      "parentUuid": "db517a10_ec834e6c",
+      "revId": "b041ed54e55820ea95251f9ed4a1aa880663fab2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
