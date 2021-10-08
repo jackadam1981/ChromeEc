@@ -175,6 +175,7 @@ void panic_printf(const char *format, ...);
  * @param pdata pointer to saved panic data
  */
 void panic_data_print(const struct panic_data *pdata);
+void panic_data_ccprint(const struct panic_data *pdata);
 
 /**
  * Report an assertion failure and reset
