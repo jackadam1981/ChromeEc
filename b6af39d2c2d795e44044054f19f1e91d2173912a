@@ -87,6 +87,24 @@
       "parentUuid": "2732ae1e_7622078a",
       "revId": "b6af39d2c2d795e44044054f19f1e91d2173912a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69f42545_5fed36f6",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-08T15:44:17Z",
+      "side": 1,
+      "message": "I think that\u0027s acceptable. 1) #ifdefing would increase nominal test coverage, but this would still be code that wasn\u0027t covered. 2) To get to 100% test coverage, we\u0027re going to need to have multiple builds with multiple configs anyway.",
+      "parentUuid": "a4ceb396_19d0767e",
+      "revId": "b6af39d2c2d795e44044054f19f1e91d2173912a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
