@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cde951e_feb762ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-10-08T08:01:09Z",
+      "side": 1,
+      "message": "__init_rom macro is in e0bf946: (\"npcx: add support for rom resident sections\") which has too many dependant CLs. And we don\u0027t want to make large change on ec.lds.S layout in fw branch.\nIn stead, when include/common.h does not have this macro, we define an empty one.",
+      "revId": "6921a0ef802bc603d79064ce2df97c83e8a4137c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
