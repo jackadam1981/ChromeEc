@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244454e8_27d974bc",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-08T15:30:35Z",
+      "side": 1,
+      "message": "Isn\u0027t the SP register R13, not R12?\nYour change looks safe, but the existing comment is misleading.",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 23
+      },
+      "revId": "ffc32e4382257abf16ffd14ff99425cbffe7c984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
