@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb52e1a5_ce119028",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-10-08T12:27:21Z",
+      "side": 1,
+      "message": "I considered that, but these are not the same thing. Some chips e.g. npcx have more ports than controllers(CONFIG_I2C_MULTI_PORT_CONTROLLER), which would require implementing i2c_port_to_controller function. With the current DTS structure - named-i2c-ports this is not that easy, however, it can be the next step.",
+      "parentUuid": "f005091e_cf185853",
+      "revId": "6de1b7d88f6e412dab3c3f65eeb17289e38eff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "31560276_ce37b5fc",
         "filename": "common/i2c_controller.c",
         "patchSetId": 2
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-08T11:34:05Z",
       "side": 1,
       "message": "I am not sure about moving this if. If the port number is outside the valid range, then i2c_get_physical_port will read something outside buffer and this garbage can happen to look as valid port. Maybe better to leave this if as was and add this check additionally to i2c_get_physical_port function?",
+      "revId": "6de1b7d88f6e412dab3c3f65eeb17289e38eff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "545b15bd_9d2b91d9",
+        "filename": "common/i2c_controller.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-10-08T12:27:21Z",
+      "side": 1,
+      "message": "It has to be moved because it checks the range of the port_mutex array. The size of the array equals the number of physical ports, while the passed \u0027port\u0027 argument is an enum value. Anyway, I added the additional check to i2c_get_physical_port.",
+      "parentUuid": "31560276_ce37b5fc",
       "revId": "6de1b7d88f6e412dab3c3f65eeb17289e38eff20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -48,6 +84,24 @@
       "writtenOn": "2021-10-08T11:34:05Z",
       "side": 1,
       "message": "Is it possible to get the compat from first node of named i2c?",
+      "revId": "6de1b7d88f6e412dab3c3f65eeb17289e38eff20",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf25dd76_9d18f6a6",
+        "filename": "zephyr/shim/include/i2c/i2c.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-10-08T12:27:21Z",
+      "side": 1,
+      "message": "Unfortunately, it isn\u0027t. The compatible property is \"string-array\", it doesn\u0027t generate underscored token(STRING_TOKEN) as it is done for the \"string\" type.",
+      "parentUuid": "15337992_2ccaefba",
       "revId": "6de1b7d88f6e412dab3c3f65eeb17289e38eff20",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
