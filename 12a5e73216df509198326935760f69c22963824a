@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4781eb25_390ea8fc",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2021-10-08T01:04:00Z",
+      "side": 1,
+      "message": "arrange alphabetically",
+      "revId": "12a5e73216df509198326935760f69c22963824a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b76f508a_652beb80",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2021-10-08T01:04:00Z",
+      "side": 1,
+      "message": "nit: give an appropriate name now as its handling more that mux",
+      "range": {
+        "startLine": 330,
+        "startChar": 12,
+        "endLine": 330,
+        "endChar": 36
+      },
+      "revId": "12a5e73216df509198326935760f69c22963824a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e3f2a59_277ff5a9",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1185119
+      },
+      "writtenOn": "2021-10-08T01:04:00Z",
+      "side": 1,
+      "message": "split it into 2 CLS\nsee if other boards need to define CONFIG_CHARGER_SENSE_RESISTOR_BQ25720",
+      "revId": "12a5e73216df509198326935760f69c22963824a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
