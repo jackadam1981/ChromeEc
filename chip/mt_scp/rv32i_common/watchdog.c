@@ -6,8 +6,11 @@
 /* Watchdog driver */
 
 #include "common.h"
+#include "console.h"
 #include "hooks.h"
+#include "panic.h"
 #include "registers.h"
+#include "util.h"
 #include "watchdog.h"
 
 void watchdog_reload(void)
@@ -28,6 +31,26 @@ int watchdog_init(void)
 	SCP_CORE0_WDT_CFG = WDT_EN | timeout;
 	/* reload watchdog */
 	watchdog_reload();
+
+#ifdef CONFIG_PANIC_CONSOLE_OUTPUT
+	{
+		struct panic_data * panic = panic_get_data();
+
+		if (panic == NULL && SCP_CORE0_MON_PC_LATCH == 0)
+			return EC_SUCCESS;
+
+		ccprintf("[Previous Panic]\n");
+		if (panic) {
+			panic_data_ccprint(panic);
+		} else {
+			ccprintf("No panic data\n");
+		}
+		ccprintf("Latch PC:%x LR:%x SP:%x\n",
+			SCP_CORE0_MON_PC_LATCH,
+			SCP_CORE0_MON_LR_LATCH,
+			SCP_CORE0_MON_SP_LATCH);
+	}
+#endif
 
 	return EC_SUCCESS;
 }
