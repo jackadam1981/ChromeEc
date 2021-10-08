@@ -70,6 +70,30 @@
       },
       "revId": "0032ef6967b2e470e1573b8dc1411416bb8fd134",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b105916_98898779",
+        "filename": "zephyr/emul/emul_clock_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-08T21:48:30Z",
+      "side": 1,
+      "message": "OK, latest patch will enforce the state.",
+      "parentUuid": "358a0546_b6eeadcc",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "0032ef6967b2e470e1573b8dc1411416bb8fd134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
