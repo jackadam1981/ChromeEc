@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37a4436c_dc4c81ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-10-08T22:45:29Z",
+      "side": 1,
+      "message": "I am concerned this won\u0027t have alignment with go/zephyr-variants when we add project name support (when zmake.yaml no longer maps to one build)",
+      "revId": "df12f6a7abce83ca6678c25fc8698b9211db447d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
