@@ -39,6 +39,30 @@
       },
       "revId": "e8e0173f7fca54b63ff2b7ddbf0534c10ab7b268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d571f1d_3df699a7",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-08T19:27:40Z",
+      "side": 1,
+      "message": "Should we also be checking in the PRL layer function, like the previous iteration of this CL?  Or is it more precise to have drivers check this right before TX and let that cover this little gap?",
+      "parentUuid": "f5adad28_988fa1b8",
+      "range": {
+        "startLine": 1025,
+        "startChar": 1,
+        "endLine": 1028,
+        "endChar": 2
+      },
+      "revId": "e8e0173f7fca54b63ff2b7ddbf0534c10ab7b268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
