@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "637bdd40_9ca20428",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-08T15:49:01Z",
+      "side": 1,
+      "message": "Instead of adding a new command, can we add a sub-command to the existing command: \u0027charger [chgnum] dump\u0027? Are you concerned about code size?",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 25
+      },
+      "revId": "b69d1d201cebcce935abc5d79a7942cf90d93afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "703c38aa_f1ef360c",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
