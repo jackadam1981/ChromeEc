@@ -132,6 +132,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a940c56_5a2f0b98",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-08T23:11:58Z",
+      "side": 1,
+      "message": "I still see a new command (charger_dump) added and the existing command (charger) isn\u0027t changed. Am I missing anything? You may have uploaded an older patchset?",
+      "parentUuid": "c69af1ca_aaee52f9",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 25
+      },
+      "revId": "b69d1d201cebcce935abc5d79a7942cf90d93afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "703c38aa_f1ef360c",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
