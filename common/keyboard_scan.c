@@ -418,6 +418,27 @@ static int check_runtime_keys(const uint8_t *state)
 }
 #endif /* CONFIG_KEYBOARD_RUNTIME_KEYS */
 
+#define KEYBOARD_COL_KEY_D	2 /* KSO */
+#define KEYBOARD_ROW_KEY_D	4 /* KSI */
+
+__overridable void event_alt_d(void)
+{
+}
+
+static void check_hotkey_key(const uint8_t *state)
+{
+
+	/* event ALT+D */
+	if (state[KEYBOARD_COL_LEFT_ALT] == BIT(KEYBOARD_ROW_LEFT_ALT) &&
+		state[KEYBOARD_COL_KEY_D] == BIT(KEYBOARD_ROW_KEY_D))
+	{
+		CPRINTS("KB ALT+D is pressed!");
+		event_alt_d();
+	}
+
+	return;
+}
+
 /**
  * Check for ghosting in the keyboard state.
  *
@@ -556,6 +577,7 @@ static int check_keys_changed(uint8_t *state)
 
 		if (print_state_changes)
 			print_state(state, "state");
+		check_hotkey_key(state);
 
 #ifdef CONFIG_KEYBOARD_PRINT_SCAN_TIMES
 		/* Print delta times from now back to each previous scan */

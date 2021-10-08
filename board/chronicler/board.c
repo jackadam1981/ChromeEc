@@ -46,9 +46,9 @@ const struct fan_conf fan_conf_0 = {
 };
 
 const struct fan_rpm fan_rpm_0 = {
-	.rpm_min   = 3000,
-	.rpm_start = 5000,
-	.rpm_max   = 5100,
+	.rpm_min   =    0,
+	.rpm_start = 2500,
+	.rpm_max   = 5700,
 };
 
 const struct fan_t fans[FAN_CH_COUNT] = {
@@ -68,21 +68,21 @@ const struct fan_t fans[FAN_CH_COUNT] = {
  */
 const static struct ec_thermal_config thermal_config_without_fan = {
 	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(77),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(75),
 		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
 	},
 	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(68),
 	},
 };
 
 const static struct ec_thermal_config thermal_config_with_fan = {
 	.temp_host = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(77),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(75),
 		[EC_TEMP_THRESH_HALT] = C_TO_K(80),
 	},
 	.temp_host_release = {
-		[EC_TEMP_THRESH_HIGH] = C_TO_K(65),
+		[EC_TEMP_THRESH_HIGH] = C_TO_K(68),
 	},
 	/* For real temperature fan_table (0 ~ 99C) */
 	.temp_fan_off = C_TO_K(0),
@@ -105,12 +105,13 @@ struct fan_step {
 
 /* Fan control table */
 static const struct fan_step fan_table0[] = {
-	{.on = 30, .off =  0, .rpm = 3150 },		/* Fan level 0 */
-	{.on = 47, .off = 43, .rpm = 3500 },		/* Fan level 1 */
-	{.on = 50, .off = 47, .rpm = 3750 },		/* Fan level 2 */
-	{.on = 53, .off = 50, .rpm = 4200 },		/* Fan level 3 */
-	{.on = 56, .off = 53, .rpm = 4500 },		/* Fan level 4 */
-	{.on = 59, .off = 56, .rpm = 5000 },		/* Fan level 5 */
+	{.on = 20, .off =  0, .rpm =    0 },		/* Fan level 0 */
+	{.on = 40, .off = 39, .rpm = 2500 },		/* Fan level 1 */
+	{.on = 44, .off = 40, .rpm = 3200 },		/* Fan level 2 */
+	{.on = 49, .off = 44, .rpm = 3750 },		/* Fan level 3 */
+	{.on = 52, .off = 49, .rpm = 4800 },		/* Fan level 4 */
+	{.on = 55, .off = 52, .rpm = 5300 },		/* Fan level 5 */
+	{.on = 57, .off = 55, .rpm = 5700 },		/* Fan level 6 */
 };
 
 /* All fan tables must have the same number of levels */
@@ -118,7 +119,10 @@ static const struct fan_step fan_table0[] = {
 
 static const struct fan_step *fan_table = fan_table0;
 
-#define FAN_AVERAGE_TIME_SEC 5
+#define FAN_AVERAGE_TIME_SEC 3
+
+static int manual_thermal = -1;
+static int thermal_log = 0;
 
 int fan_percent_to_rpm(int fan, int pct)
 {
@@ -127,6 +131,9 @@ int fan_percent_to_rpm(int fan, int pct)
 	static int cnt, avg_pct, previous_pct;
 	int i;
 
+	if (thermal_log != 0)
+		cprints(CC_THERMAL, "thermal: %d", pct);
+
 	/* Average several times to smooth fan rotating speed. */
 	avg_pct += pct;
 
@@ -134,6 +141,9 @@ int fan_percent_to_rpm(int fan, int pct)
 		return fan_table[previous_level].rpm;
 
 	avg_pct = (int) avg_pct / FAN_AVERAGE_TIME_SEC;
+
+	if(manual_thermal != -1)
+		avg_pct = manual_thermal;
 
 	/*
 	 * Compare the pct and previous pct, we have the three paths :
@@ -160,7 +170,7 @@ int fan_percent_to_rpm(int fan, int pct)
 	if (current_level < 0)
 		current_level = 0;
 
-	if (current_level != previous_level)
+	if (current_level != previous_level || manual_thermal != -1)
 		cprints(CC_THERMAL, "Setting fan RPM to %d",
 			fan_table[current_level].rpm);
 
@@ -171,6 +181,50 @@ int fan_percent_to_rpm(int fan, int pct)
 	avg_pct = 0;
 
 	return fan_table[current_level].rpm;
+}
+
+static int command_manual_thermal(int argc, char **argv)
+{
+	char *e;
+	int t;
+
+	if (argc >= 2) {
+
+		t = strtoi(argv[1], &e, 10);
+
+		if (t == 500) {
+			thermal_log = 1;
+			ccprintf("Setup thermal log on\n");
+			return EC_SUCCESS;
+		}
+
+		if ((t < 0) || (t > 100))
+			return EC_ERROR_PARAM1;
+
+		manual_thermal = t;
+		ccprintf("Setup manual thermal value to %d\n",
+					manual_thermal);
+		return EC_SUCCESS;
+	}
+
+	ccprintf("manual thermal reset.\n");
+	manual_thermal = -1;
+	thermal_log = 0;
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(tt, command_manual_thermal, "[value]",
+			"Setup/Reset manual thermal value");
+
+void event_alt_d(void)
+{
+	char *argv[] = {NULL, "60"};
+
+	if(manual_thermal == -1)
+		command_manual_thermal(2, &argv[0]);
+	else if (manual_thermal == 60)
+		command_manual_thermal(1, NULL);
+
+	return;
 }
 
 /******************************************************************************/
