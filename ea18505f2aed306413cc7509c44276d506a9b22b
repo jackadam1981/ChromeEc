@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f9f3c104_37194c3d",
+        "filename": "zephyr/emul/Kconfig.tcpc",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-08T16:16:24Z",
+      "side": 1,
+      "message": "\u003e Are there TCPC devices that are completely different from what is said in TCPCI specification?\n\nUnfortunately, yes. These days, those mostly take the form of TCPCs that are embedded logic blocks in the EC chip. (I believe stm32gx is an example of this.) They don\u0027t use I2C, which by itself would make them technically not TCPCI. More annoyingly, they sometimes have completely different register sets.\n\nps8xxx.c is TCPCI-compatible. I don\u0027t think you need to worry about non-TCPCI TCPCs for herobrine coverage. But I\u0027d suggest using \"TCPCI\" in the names and  descriptions of various things for this emulator, so it\u0027s not confusing later when somebody writes an emulator for the stm32gx.",
+      "parentUuid": "fde16486_45d8af7a",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45aecf62_4ca50f6a",
         "filename": "zephyr/emul/Kconfig.tcpc",
         "patchSetId": 7
@@ -159,6 +183,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "20d63eec_a0594535",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-08T16:16:24Z",
+      "side": 1,
+      "message": "You\u0027re right. You could do some kind of operation to make this endian-agnostic, but that would make it more complicated and defeat the point.",
+      "parentUuid": "71cacd56_d1952f18",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f63d3bc3_40f00991",
@@ -190,6 +238,24 @@
       "side": 1,
       "message": "I tried to emulate that TCPC has two 30 bytes buffers for incoming messages. First buffer is extended to 264 bytes when dev_cap2.LongMessage bit is set.",
       "parentUuid": "f63d3bc3_40f00991",
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e77c53e_fc91d43e",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-08T16:16:24Z",
+      "side": 1,
+      "message": "Maybe I\u0027m misunderstanding. If there might be a problem here, feel free to not fix it in this CL, because I don\u0027t think any of our real TCPCs actually support long message.\n\nThat being said, if what you\u0027re trying to do here is emulate receiving a long message, I would think you would want to pass in a single 264-byte buffer, not a linked list of 30-byte buffers. If the TCPC doesn\u0027t support long messages, then you would only read 31 bytes from that buffer. From the point of view of the EC, a long message should show up as one big message.\n\nThere is a PD feature where long message can be split into multiple short messages (\"chunking\") for TCPCs that don\u0027t support long messages. When this happens, it\u0027s transparent to the TCPC, which will only see a succession of short messages. You won\u0027t need to do anything specific in the emulator to support this.",
+      "parentUuid": "17d4ab6b_b0d2b67f",
       "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -229,6 +295,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "04fd88ff_1527c0cb",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-08T16:16:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "24b25b3e_aceef818",
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2dd38851_774894a6",
@@ -260,6 +344,24 @@
       "side": 1,
       "message": "This function would be used only for handling TX and RX buffers. Additionally TCPC_REG_TX/RX_BUFFER is handled differently for rev1 and rev2. I tried approach with separate function to check if register is available on given revision, but it didn\u0027t make code cleaner. If I will find better approach for this, I will fix it in follow-up CL.",
       "parentUuid": "2dd38851_774894a6",
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14f279c_8cbb2c4d",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-08T16:16:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "cdeb3e0e_f9918793",
       "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -311,6 +413,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff4de84c_baf841eb",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-08T16:16:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9193dd48_f4e1dba2",
+      "range": {
+        "startLine": 26,
+        "startChar": 62,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "91373ff5_985d809a",
@@ -342,6 +468,24 @@
       "side": 1,
       "message": "I move it to .c",
       "parentUuid": "91373ff5_985d809a",
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c3a938_b680baee",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-08T16:16:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3839e4da_a977e1d1",
       "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
