@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6589ef6f_4a60b415",
+        "filename": "board/nipperkin/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-08T16:59:36Z",
+      "side": 1,
+      "message": "Why the choice of just checking the charger and memory temperature sensors?  (versus including the SOC sensor)  Please include some comments for the rationale in the code",
+      "range": {
+        "startLine": 102,
+        "startChar": 10,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "594bed2d6d9d915aa1655e8c9091c9a53d29c603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
