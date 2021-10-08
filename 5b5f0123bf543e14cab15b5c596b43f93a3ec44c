@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc022a0d_c2de6196",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-08T15:49:49Z",
+      "side": 1,
+      "message": "I think this should be LENGTH(EC_IMAGE_LMA_MEM_REGION).\n\nWhen CONFIG_CHIP_DATA_IN_INIT_ROM is enabled, the initialized data is stored separately from the .text and .rodata, and isn\u0027t considered part of the flash size/used calculation.\n\nFor more context, refer to this comment: \n\nhttps://chromium.googlesource.com/chromiumos/platform/ec/+/f9f8e2f3/core/cortex-m/ec.lds.S#543",
+      "range": {
+        "startLine": 500,
+        "startChar": 16,
+        "endLine": 500,
+        "endChar": 43
+      },
+      "revId": "5b5f0123bf543e14cab15b5c596b43f93a3ec44c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "696fc707_106cade4",
+        "filename": "core/riscv-rv32i/ec.lds.S",
+        "patchSetId": 30
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-08T15:49:49Z",
+      "side": 1,
+      "message": "This should be:\n#if defined(CONFIG_FLASH_PHYSICAL)\n\t__flash_size \u003d LENGTH(FLASH);\n#else\n\t__flash_size \u003d LENGTH(IROM);\n#endif",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 30
+      },
+      "revId": "5b5f0123bf543e14cab15b5c596b43f93a3ec44c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
