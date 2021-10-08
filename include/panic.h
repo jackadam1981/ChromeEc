@@ -176,6 +176,16 @@ void panic_printf(const char *format, ...);
  */
 void panic_data_print(const struct panic_data *pdata);
 
+#ifdef CONFIG_PANIC_CONSOLE_OUTPUT
+/*
+ * Print saved panic information on console channel to observe panic
+ * information by cros_scp
+ *
+ * @param pdata pointer to saved panic data
+ */
+void panic_data_ccprint(const struct panic_data *pdata);
+#endif
+
 /**
  * Report an assertion failure and reset
  *
