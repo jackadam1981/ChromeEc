@@ -42,7 +42,7 @@ static int cal_sys_watt(void)
 	/* the ratio selectable through IADPT_GAIN bit. */
 	V_iadpt = Vacpacn * 1000 / 40;
 
-	IDPM = V_iadpt / CONFIG_CHARGER_SENSE_RESISTOR_AC;
+	IDPM = V_iadpt / CONFIG_CHARGER_BQ25720_SENSE_RESISTOR_AC;
 
 	adapter_voltage_mv = charge_manager_get_charger_voltage();
 
