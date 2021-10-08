@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ccd6f49_10c83ccb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1104704
+      },
+      "writtenOn": "2021-10-08T21:46:34Z",
+      "side": 1,
+      "message": "Would not build in the builder, because python2 is still used:\nchromeos-ec-0.0.1-r3060:     subprocess.run([\u0027openssl\u0027, \u0027rsautl\u0027, \u0027-sign\u0027, \u0027-inkey\u0027, pem_file,\nchromeos-ec-0.0.1-r3060: AttributeError: \u0027module\u0027 object has no attribute \u0027run\u0027",
+      "revId": "d7b6fd2bc103a68778d9d8b48db9b33695f3a729",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
