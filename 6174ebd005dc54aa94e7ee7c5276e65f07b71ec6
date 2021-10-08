@@ -16,6 +16,24 @@
       "message": "Hello :-)\nThis CL breaks hayato build.",
       "revId": "6174ebd005dc54aa94e7ee7c5276e65f07b71ec6",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d3f67f_0c66e2a9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1288462
+      },
+      "writtenOn": "2021-10-08T09:42:36Z",
+      "side": 1,
+      "message": "\u003e Hello :-)\n\u003e This CL breaks hayato build.\n\nIt\u0027s fine on my hayato build, and after I repo sync, it\u0027s still fine.\nI guess that you don\u0027t have CL https://chromium-review.googlesource.com/c/chromiumos/third_party/zephyr/+/3206988 in chromeos-v2.7 branch.",
+      "parentUuid": "ebb3f850_4a2a1329",
+      "revId": "6174ebd005dc54aa94e7ee7c5276e65f07b71ec6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
