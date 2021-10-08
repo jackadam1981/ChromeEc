@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fde16486_45d8af7a",
+        "filename": "zephyr/emul/Kconfig.tcpc",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-08T13:32:03Z",
+      "side": 1,
+      "message": "Are there TCPC devices that are completely different from what is said in TCPCI specification? I was thinking that it will be possible to reuse this code in other TCPC emulators (e.g. ps8xxx.c) by adding tcpc_emul_dev_ops for specific device.",
+      "parentUuid": "a3041c2e_82e1d49c",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "45aecf62_4ca50f6a",
         "filename": "zephyr/emul/Kconfig.tcpc",
         "patchSetId": 7
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-07T22:49:53Z",
       "side": 1,
       "message": "Nit: uses the",
+      "range": {
+        "startLine": 12,
+        "startChar": 41,
+        "endLine": 12,
+        "endChar": 44
+      },
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22d49dd_98758d2c",
+        "filename": "zephyr/emul/Kconfig.tcpc",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-08T13:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45aecf62_4ca50f6a",
       "range": {
         "startLine": 12,
         "startChar": 41,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "71cacd56_d1952f18",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-08T13:32:03Z",
+      "side": 1,
+      "message": "Will be casting to uint16_t* endianness safe? I decided to use bit shifts to be sure that low byte will go to address reg and high byte goes to reg + 1. This makes easier handling I2C messages where low byte goes first.",
+      "parentUuid": "a165f6ea_41cb0b8c",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 2
+      },
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f63d3bc3_40f00991",
         "filename": "zephyr/emul/emul_tcpc.c",
         "patchSetId": 7
@@ -100,6 +172,24 @@
       "writtenOn": "2021-10-07T22:49:53Z",
       "side": 1,
       "message": "What is the use case for appending a second message here?",
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17d4ab6b_b0d2b67f",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-08T13:32:03Z",
+      "side": 1,
+      "message": "I tried to emulate that TCPC has two 30 bytes buffers for incoming messages. First buffer is extended to 264 bytes when dev_cap2.LongMessage bit is set.",
+      "parentUuid": "f63d3bc3_40f00991",
       "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -123,6 +213,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24b25b3e_aceef818",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-08T13:32:03Z",
+      "side": 1,
+      "message": "You are right that when there is no message in buffer, then TCPC shouldn\u0027t fail on RECEIVE_BUFFER. Instead it should return 0 for READABLE_BYTE_COUNT. Message is always cleared when alert RX message (bit 2) is cleared. To start reading message from the beginning, ResetReceiveBuffer command should be send.\n\nI will fix this part of the emulator",
+      "parentUuid": "7b3528be_94b4c4a0",
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2dd38851_774894a6",
         "filename": "zephyr/emul/emul_tcpc.c",
         "patchSetId": 7
@@ -134,6 +242,24 @@
       "writtenOn": "2021-10-07T22:49:53Z",
       "side": 1,
       "message": "Nit: You have enough checks like this that it might be worth writing a function like\n bool reg_valid_for_rev(int reg, uint8_t rev)\n \nand using that to validate register accesses.",
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdeb3e0e_f9918793",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-08T13:32:03Z",
+      "side": 1,
+      "message": "This function would be used only for handling TX and RX buffers. Additionally TCPC_REG_TX/RX_BUFFER is handled differently for rev1 and rev2. I tried approach with separate function to check if register is available on given revision, but it didn\u0027t make code cleaner. If I will find better approach for this, I will fix it in follow-up CL.",
+      "parentUuid": "2dd38851_774894a6",
       "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -163,6 +289,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9193dd48_f4e1dba2",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-08T13:32:03Z",
+      "side": 1,
+      "message": "This will be done by setting tcpc_emul_dev_ops. I am going to create test for ps8xxx.c which will require slight changes to TCPC emul. I will update this instruction after creating ps8xxx emulator.",
+      "parentUuid": "086bc5e6_fe00fdcb",
+      "range": {
+        "startLine": 26,
+        "startChar": 62,
+        "endLine": 27,
+        "endChar": 77
+      },
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "91373ff5_985d809a",
         "filename": "zephyr/include/emul/emul_tcpc.h",
         "patchSetId": 7
@@ -180,6 +330,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3839e4da_a977e1d1",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-08T13:32:03Z",
+      "side": 1,
+      "message": "I move it to .c",
+      "parentUuid": "91373ff5_985d809a",
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3fb68526_063192fd",
         "filename": "zephyr/include/emul/emul_tcpc.h",
         "patchSetId": 7
@@ -191,6 +359,30 @@
       "writtenOn": "2021-10-07T22:49:53Z",
       "side": 1,
       "message": "Nit: Spelling",
+      "range": {
+        "startLine": 80,
+        "startChar": 32,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1ca3f76_2080bb6f",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-08T13:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fb68526_063192fd",
       "range": {
         "startLine": 80,
         "startChar": 32,
@@ -224,6 +416,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9d0808_52b2d563",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-08T13:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba5a81a6_51a1cf72",
+      "range": {
+        "startLine": 86,
+        "startChar": 53,
+        "endLine": 86,
+        "endChar": 58
+      },
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9cf1d6ab_8c240d3d",
@@ -237,6 +453,30 @@
       "writtenOn": "2021-10-07T22:49:53Z",
       "side": 1,
       "message": "Nit: alert?",
+      "range": {
+        "startLine": 215,
+        "startChar": 10,
+        "endLine": 215,
+        "endChar": 15
+      },
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fef66d9a_915fbee6",
+        "filename": "zephyr/include/emul/emul_tcpc.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-08T13:32:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9cf1d6ab_8c240d3d",
       "range": {
         "startLine": 215,
         "startChar": 10,
