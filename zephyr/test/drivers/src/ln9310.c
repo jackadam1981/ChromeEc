@@ -105,6 +105,7 @@ static void test_ln9310_3s_powers_up(void)
 }
 
 static bool startup_workaround_attempted;
+static bool startup_workaround_should_fail;
 
 static int mock_write_fn_intercept_startup_workaround(struct i2c_emul *emul,
 						      int reg, uint8_t val,
@@ -117,6 +118,8 @@ static int mock_write_fn_intercept_startup_workaround(struct i2c_emul *emul,
 	startup_workaround_attempted = startup_workaround_attempted ||
 				       ((reg == LN9310_REG_TEST_MODE_CTRL) &&
 					(val == startup_workaround_val));
+	if (startup_workaround_should_fail)
+		return -1;
 
 	return 1;
 }
@@ -198,10 +201,49 @@ static void test_ln9310_3s_cfly_precharge_startup(void)
 	zassert_false(ln9310_power_good(), NULL);
 }
 
+static void test_ln9310_cfly_precharge_exceeds_retries(void)
+{
+	const struct emul *emulator =
+		emul_get_binding(DT_LABEL(DT_NODELABEL(ln9310)));
+
+	struct i2c_emul *emul = ln9310_emul_get_i2c_emul(emulator);
+
+	zassert_not_null(emulator, NULL);
+
+	ln9310_emul_set_context(emulator);
+	ln9310_emul_reset(emulator);
+	/*
+	 * Battery and chip rev won't matter for statement
+	 * coverage here so only testing one pair.
+	 */
+	ln9310_emul_set_battery_cell_type(emulator, BATTERY_CELL_TYPE_2S);
+	ln9310_emul_set_version(emulator,
+				REQUIRES_CFLY_PRECHARGE_STARTUP_CHIP_REV);
+
+	zassert_ok(ln9310_init(), NULL);
+	zassert_true(ln9310_emul_is_init(emulator), NULL);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
+
+	startup_workaround_should_fail = true;
+	i2c_common_emul_set_write_func(
+		emul, &mock_write_fn_intercept_startup_workaround, NULL);
+
+	ln9310_software_enable(1);
+	zassert_true(startup_workaround_attempted, NULL);
+
+	/* TODO(b/201420132) */
+	k_msleep(TEST_DELAY_MS);
+	zassert_false(ln9310_power_good(), NULL);
+}
+
 static void reset_ln9310_state(void)
 {
 	ln9310_reset_to_initial_state();
 	startup_workaround_attempted = false;
+	startup_workaround_should_fail = false;
 }
 
 void test_suite_ln9310(void)
@@ -217,6 +259,9 @@ void test_suite_ln9310(void)
 		ztest_unit_test_setup_teardown(test_ln9310_3s_powers_up,
 					       reset_ln9310_state,
 					       reset_ln9310_state),
+		ztest_unit_test_setup_teardown(
+			test_ln9310_cfly_precharge_exceeds_retries,
+			reset_ln9310_state, reset_ln9310_state),
 		ztest_unit_test_setup_teardown(
 			test_ln9310_2s_cfly_precharge_startup,
 			reset_ln9310_state, reset_ln9310_state),
