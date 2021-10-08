@@ -46,6 +46,30 @@
       },
       "revId": "0032ef6967b2e470e1573b8dc1411416bb8fd134",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "358a0546_b6eeadcc",
+        "filename": "zephyr/emul/emul_clock_control.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-08T20:06:50Z",
+      "side": 1,
+      "message": "I like that for \"simultaneous\" access restrictions on that structure... but think the following would be better for multiple calls.\n\nstatic void clock_ctrl_on_from_work(struct k_work *work)\n{\n\tstruct emul_clock_ctrl_data *data \u003d\n\t\tCONTAINER_OF(work, struct emul_clock_ctrl_data, async_on_work);\n\n\tk_mutex_lock(\u0026data-\u003ecb_mutex, K_FOREVER);\n\tdata-\u003estatus \u003d CLOCK_CONTROL_STATUS_ON;\n\tif (data-\u003ecb) {\n\t\tdata-\u003ecb(data-\u003ecb_dev, data-\u003ecb_subsys, data-\u003ecb_user_data);\n\t\tdata-\u003ecb \u003d NULL;\n\t\tdata-\u003ecb_dev \u003d NULL;\n\t\tdata-\u003ecb_subsys \u003d NULL;\n\t\tdata-\u003ecb_user_data \u003d NULL;\n\t}\n\tk_mutex_unlock(\u0026data-\u003ecb_mutex);\n}",
+      "parentUuid": "1501213e_6e1e9d25",
+      "range": {
+        "startLine": 59,
+        "startChar": 1,
+        "endLine": 59,
+        "endChar": 9
+      },
+      "revId": "0032ef6967b2e470e1573b8dc1411416bb8fd134",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
