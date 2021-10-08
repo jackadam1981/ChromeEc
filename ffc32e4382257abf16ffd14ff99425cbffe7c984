@@ -22,6 +22,30 @@
       },
       "revId": "ffc32e4382257abf16ffd14ff99425cbffe7c984",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b82712d_058a53c6",
+        "filename": "core/cortex-m/panic.c",
+        "patchSetId": 18
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-08T21:28:47Z",
+      "side": 1,
+      "message": "Yes, SP is R13.\n\nI think I see where the confusion from the comment lies. I meant that when the compiler allocates registers to hold \"pstack\" and \"pregs\", it will choose R0 and R12. i.e., \n\n mov sp, %[pstack]\n \nbecomes\n\n mov sp, r12\n \nI\u0027ll update the commit message to make this clearer.",
+      "parentUuid": "244454e8_27d974bc",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 23
+      },
+      "revId": "ffc32e4382257abf16ffd14ff99425cbffe7c984",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
