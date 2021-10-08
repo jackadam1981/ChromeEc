@@ -46,7 +46,7 @@ static int cal_sys_watt(void)
 	Vacpacn = V_iadpt * 1000 / 40;
 
 	/* Calculate the input current */
-	IDPM = Vacpacn / CONFIG_CHARGER_SENSE_RESISTOR_AC;
+	IDPM = Vacpacn / CONFIG_CHARGER_BQ25720_SENSE_RESISTOR_AC;
 
 	/* Current multiplied by 20v to calculate actual adapter wattage */
 	W_adpt = IDPM * 20 / 97 * 100;
