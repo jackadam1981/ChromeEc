@@ -22,6 +22,30 @@
       },
       "revId": "c1aae825f034331a270bca5fa25fffa89399bb57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84bf15d7_03c69d0b",
+        "filename": "test/tpm_test/ftdi_spi_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-09T04:51:08Z",
+      "side": 1,
+      "message": "this change has most significant impact on performance. I tested with various values and at 200us and many runs it never failed. I can increase it, but wouldn\u0027t like to move it back to 10000. Practically the damage would be that test will hang - it\u0027s not a production code, but it greatly improves speed. We can monitor stability and increase it if needed. Can you think about a stress test which would delay a chip to trigger a problem? If I remove this delay - test hangs after first few commands, so there should be some delay. I just don\u0027t know how large.",
+      "parentUuid": "daf7c371_a2269246",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 13
+      },
+      "revId": "c1aae825f034331a270bca5fa25fffa89399bb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
