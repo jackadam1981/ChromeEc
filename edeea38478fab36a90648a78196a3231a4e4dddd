@@ -22,6 +22,30 @@
       },
       "revId": "edeea38478fab36a90648a78196a3231a4e4dddd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0883ec94_ea2c1da2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1411064
+      },
+      "writtenOn": "2021-10-09T08:13:13Z",
+      "side": 1,
+      "message": "Yes, I did. I had to rework assigning physical ports to be like 0, 1, 2 .. instead of e.g.  0,4,5 ... and I tested it with \"i2c_portmap\".",
+      "parentUuid": "d14a65b2_4c836dbf",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 19
+      },
+      "revId": "edeea38478fab36a90648a78196a3231a4e4dddd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
