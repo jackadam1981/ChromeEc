@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3a484c8_c9762eb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-09T06:25:52Z",
+      "side": 1,
+      "message": "I think this is the problem. A declaration doesn\u0027t need to be guarded. Can you please instead remove the guard in tcpci.h?",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 40
+      },
+      "revId": "6e163a288f9a1eb343cb6abbfa5d4ce87c94c227",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
