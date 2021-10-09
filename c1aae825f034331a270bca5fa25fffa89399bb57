@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "daf7c371_a2269246",
+        "filename": "test/tpm_test/ftdi_spi_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-09T00:10:56Z",
+      "side": 1,
+      "message": "I am not sure about this one: when running embedded we have flow control which allows to move faster, as soon as the chip is ready. Here  there is no flow control, so if the chip is delayed for whatever reason it would get out of sync.\n\nI would suggest not change this.",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 13
+      },
+      "revId": "c1aae825f034331a270bca5fa25fffa89399bb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
