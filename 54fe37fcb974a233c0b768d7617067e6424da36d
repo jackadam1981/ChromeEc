@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2dae2b3a_4a641a0a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-09T04:43:04Z",
+      "side": 1,
+      "message": "i\u0027ll address other comments later",
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3da6564e_5a2c1592",
@@ -37,6 +54,30 @@
       "writtenOn": "2021-10-09T00:46:02Z",
       "side": 1,
       "message": "do we need it? we didn\u0027t do it before.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 62
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3166fe8_f87105f1",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-09T04:43:04Z",
+      "side": 1,
+      "message": "see comment above",
+      "parentUuid": "14ae4beb_691702bd",
       "range": {
         "startLine": 17,
         "startChar": 1,
@@ -95,6 +136,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7571a5a9_8e856372",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-09T04:43:04Z",
+      "side": 1,
+      "message": "i did many tests - surprisingly it is. i tried dozens ways to rewrite a loop. This combination of loop structure and -O results in performance of 730us when benchmarked by \u0027cipher\u0027 command. Any other -O - brings it immediately to 800us with size changes +/- 8 bytes. I can make it a bit smaller by implementing a simple loop but this will bring speed to 1100-1200us. I don\u0027t know how performance critical it is - it is use used for Nvmem page headers encryption/decryption. By merging outer+inner and removing same loop from DCRYPTO_aes_blocks() I save size a bit.",
+      "parentUuid": "58c1757c_f941d49a",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c36107dd_7d746958",
         "filename": "board/cr50/dcrypto/app_cipher.c",
         "patchSetId": 1
@@ -141,6 +206,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4f7f9dd2_ee03ff25",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-09T04:43:04Z",
+      "side": 1,
+      "message": "i\u0027ll check - when I combined outer \u0026 inner i got some code size saving. need to check such method will be inlined - it is compiled into 8 simple instructions and actual call won\u0027t help.",
+      "parentUuid": "5647026c_1634daab",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6671eb2b_cbf97813",
         "filename": "board/cr50/dcrypto/app_cipher.c",
         "patchSetId": 1
@@ -175,6 +264,30 @@
       "writtenOn": "2021-10-09T00:46:02Z",
       "side": 1,
       "message": "why the change? ws there a concern that 500 iterations takes longer than watchdog period? but it turned out to be too cautious?",
+      "range": {
+        "startLine": 338,
+        "startChar": 20,
+        "endLine": 338,
+        "endChar": 23
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af75c8e3_8d2d93cb",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-09T04:43:04Z",
+      "side": 1,
+      "message": "this is a testing code. replacing division with masking slightly reduce code size with CRYPTO_TEST and doesn\u0027t cause triggering watchdog even with less optimized code.",
+      "parentUuid": "f303ec3d_9e3821cf",
       "range": {
         "startLine": 338,
         "startChar": 20,
