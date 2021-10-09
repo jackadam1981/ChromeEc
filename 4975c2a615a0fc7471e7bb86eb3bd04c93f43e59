@@ -33,6 +33,24 @@
       "message": "May I ask the relationship between BMI220 and BCM260? noticed some code talking about 220 while the driver includes 260 instead. Thanks! ",
       "revId": "4975c2a615a0fc7471e7bb86eb3bd04c93f43e59",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a68502_c57a0796",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1442438
+      },
+      "writtenOn": "2021-10-09T00:55:06Z",
+      "side": 1,
+      "message": "Because BMI220 is highly similar to BMI260, we added BMI220 driver based on BMI260. You can refer to the cl crrev/c/3077595,thanks.",
+      "parentUuid": "3273e1e6_364b3404",
+      "revId": "4975c2a615a0fc7471e7bb86eb3bd04c93f43e59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
