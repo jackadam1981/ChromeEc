@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da6564e_5a2c1592",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-09T00:46:02Z",
+      "side": 1,
+      "message": "this is new. why didn\u0027t we need it before?",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14ae4beb_691702bd",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-09T00:46:02Z",
+      "side": 1,
+      "message": "do we need it? we didn\u0027t do it before.",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 62
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a2dfc06_3358c6d3",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-09T00:46:02Z",
+      "side": 1,
+      "message": "nit: how about doing the following instead:\n\n\tbool use_local_out \u003d false;\n\n\tif (is_not_aligned(out)) {\n\t\toutw \u003d buf;\n\t\tuse_local_out \u003d true;\n\t} else {\n\t\toutw \u003d (uint32_t *)out;\n\t}\n\t\n\tdcrypto_aes_process(\u0026outw, \u0026inw, 16);\n\n\tif (use_local_out)\n\t\tmemcpy(out, buf, sizeof(buf));",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58c1757c_f941d49a",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-09T00:46:02Z",
+      "side": 1,
+      "message": "btw is it true still?",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36107dd_7d746958",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-09T00:46:02Z",
+      "side": 1,
+      "message": "nit: add \"and that\u0027s why we don\u0027t read after the first 4 words are loaded, unless they are the only 4 words\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 44,
+        "endLine": 20,
+        "endChar": 56
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5647026c_1634daab",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-09T00:46:02Z",
+      "side": 1,
+      "message": "nit: extract loading 4 words into wfifo into a method",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6671eb2b_cbf97813",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-09T00:46:02Z",
+      "side": 1,
+      "message": "nit: extract waiting for and getting 4 words from rfifo into a method",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f303ec3d_9e3821cf",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-09T00:46:02Z",
+      "side": 1,
+      "message": "why the change? ws there a concern that 500 iterations takes longer than watchdog period? but it turned out to be too cautious?",
+      "range": {
+        "startLine": 338,
+        "startChar": 20,
+        "endLine": 338,
+        "endChar": 23
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
