@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50ad04a4_625783d3",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 39
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-11T22:09:06Z",
+      "side": 1,
+      "message": "This forward reference works with GCC?  Can run compare_build.sh against this change? Note that volteer is basically the only board that enables CONFIG_CHIP_INIT_ROM_REGION and CONFIG_CHIP_DATA_IN_INIT_ROM. So running compare build against any other cortex-m target (such as a Voxel) would be sufficient.",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 36
+      },
+      "revId": "00665d5c7a0a856f13c9ac95d318737076c9deee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
