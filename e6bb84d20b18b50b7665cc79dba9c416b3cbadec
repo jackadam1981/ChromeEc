@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec087bbc_559c05ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-11T23:00:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "387ee621_df685e3f",
+      "range": {
+        "startLine": 7,
+        "startChar": 18,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "e6bb84d20b18b50b7665cc79dba9c416b3cbadec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7fb84890_1e2473f2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-11T19:15:58Z",
       "side": 1,
       "message": "add rationale behind this change",
+      "range": {
+        "startLine": 11,
+        "startChar": 48,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "e6bb84d20b18b50b7665cc79dba9c416b3cbadec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff38d6cc_f2ad1f82",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-11T23:00:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7fb84890_1e2473f2",
       "range": {
         "startLine": 11,
         "startChar": 48,
@@ -70,6 +118,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6fac2e70_e339d1cb",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-11T23:00:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c6b7de27_4a7860ae",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "e6bb84d20b18b50b7665cc79dba9c416b3cbadec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cee1d1de_2d7cd003",
@@ -93,6 +165,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a80b580_30b9a580",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-11T23:00:39Z",
+      "side": 1,
+      "message": "Yes, BQ25710 is defined for hatch and octopus platforms. Changed the baseboard files for these.",
+      "parentUuid": "cee1d1de_2d7cd003",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 36
+      },
+      "revId": "e6bb84d20b18b50b7665cc79dba9c416b3cbadec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "085a0fc6_d137a120",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-10-11T19:15:58Z",
       "side": 1,
       "message": "nit: elif defined",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "e6bb84d20b18b50b7665cc79dba9c416b3cbadec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aeeff347_8d7c8f88",
+        "filename": "driver/charger/bq25710.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-11T23:00:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "085a0fc6_d137a120",
       "range": {
         "startLine": 49,
         "startChar": 0,
