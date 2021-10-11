@@ -318,7 +318,7 @@ static void i2c_freq_changed(void)
 	int freq = clock_get_freq();
 	int i;
 
-	for (i = 0; i < i2c_ports_used; i++) {
+	for (i = 0; i < board_get_i2c_ports_used(); i++) {
 		/*
 		 * From datasheet:
 		 *     SCL_PRD = 2 * (1 + TPR) * (SCL_LP + SCL_HP) * CLK_PRD
@@ -351,7 +351,7 @@ void i2c_init(void)
 	int i;
 
 	/* Enable I2C modules in run and sleep modes. */
-	for (i = 0; i < i2c_ports_used; i++)
+	for (i = 0; i < board_get_i2c_ports_used(); i++)
 		mask |= 1 << i2c_ports[i].port;
 
 	clock_enable_peripheral(CGC_OFFSET_I2C, mask,
@@ -361,7 +361,7 @@ void i2c_init(void)
 	gpio_config_module(MODULE_I2C, 1);
 
 	/* Initialize ports as controller, with interrupts enabled */
-	for (i = 0; i < i2c_ports_used; i++)
+	for (i = 0; i < board_get_i2c_ports_used(); i++)
 		LM4_I2C_MCR(i2c_ports[i].port) = 0x10;
 
 	/* Set initial clock frequency */

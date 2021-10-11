@@ -1115,7 +1115,7 @@ static void i2c_freq_changed(void)
 		i2c_stsobjs[i].kbps = 0;
 	}
 
-	for (i = 0; i < i2c_ports_used; i++) {
+	for (i = 0; i < board_get_i2c_ports_used(); i++) {
 		const struct i2c_port_t *p;
 		int ctrl;
 
@@ -1198,7 +1198,7 @@ void i2c_init(void)
 	/*
 	 * initialize smb status and register
 	 */
-	for (i = 0; i < i2c_ports_used; i++) {
+	for (i = 0; i < board_get_i2c_ports_used(); i++) {
 		volatile struct i2c_status *p_status;
 		int port = i2c_ports[i].port;
 		int ctrl = i2c_port_to_controller(port);
