@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fa530bd_68b7e59c",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 39
+      },
+      "lineNbr": 506,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-11T21:52:09Z",
+      "side": 1,
+      "message": "Unrelated to your change, but this padding is clearer if the #if/#else blocks were swapped.\n\n#if defined(SECTION_IS_RW) \u0026\u0026 (CONFIG_FLASH_WRITE_SIZE \u003e 4)\n    /* Add .rw_image_size_alignment */\n#else\n    __image_size \u003d\u003d __flash_used;\n#endif",
+      "range": {
+        "startLine": 506,
+        "startChar": 0,
+        "endLine": 506,
+        "endChar": 62
+      },
+      "revId": "798195d2452fd5498b57dec3c650341f7e0af79d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
