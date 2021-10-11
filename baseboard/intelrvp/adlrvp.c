@@ -444,6 +444,7 @@ static void configure_usbc_ports(void)
 	 */
 	charge_manager_set_dedicated_charge_port(adlrvp_usbc_ports);
 }
+
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
@@ -603,6 +604,26 @@ static void configure_i2c_ports(void)
 	}
 }
 
+static void configure_tasks(void)
+{
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+		if (usb_pd_get_port_count() < 3) {
+			task_add_to_disable_list(TASK_ID_PD_C3);
+			task_add_to_disable_list(TASK_ID_PD_INT_C3);
+			task_add_to_disable_list(TASK_ID_PD_C2);
+			task_add_to_disable_list(TASK_ID_PD_INT_C2);
+		}
+		break;
+	default:
+		break;
+	}
+}
+
 __override void board_pre_task_i2c_peripheral_init(void)
 {
 	/* Initialized IOEX-0 to access IOEX-GPIOs needed pre-task */
@@ -628,4 +649,7 @@ __override void board_pre_task_i2c_peripheral_init(void)
 
 	/* Configure i2c ports */
 	configure_i2c_ports();
+
+	/* Configure the tasks that must be enabled */
+	configure_tasks();
 }
