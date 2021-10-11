@@ -8,6 +8,7 @@
 
 #include <stdint.h>
 
+uint8_t get_board_id(void);
 /****************************************************************************
  * CBI FW_CONFIG layout for Brya board.
  *
