@@ -94,8 +94,12 @@ void process_timers(int overflow)
 	} while (next.val <= get_time().val);
 }
 
+<<<<<<< HEAD   (829417 watchdog: Save LR in panic data when watchdog triggers)
 #ifndef CONFIG_HW_SPECIFIC_UDELAY
 void udelay(unsigned us)
+=======
+__overridable void udelay(unsigned us)
+>>>>>>> CHANGE (d76500 npcx/timer: Unroll udelay)
 {
 	unsigned t0 = __hw_clock_source_read();
 
