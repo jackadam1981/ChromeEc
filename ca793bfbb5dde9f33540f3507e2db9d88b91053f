@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e0bb78e_72538541",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-11T19:08:37Z",
+      "side": 1,
+      "message": "CONFIG_BATTERY_RUNTIME_CONFIG ?\n\nLGTM. split it into several CLs, it will be easy for review",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "ca793bfbb5dde9f33540f3507e2db9d88b91053f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "20a6f980_47888684",
+        "filename": "baseboard/intelrvp/adlrvp_battery3s.c",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-11T19:08:37Z",
+      "side": 1,
+      "message": "rename file and delete 2s battery file",
+      "revId": "ca793bfbb5dde9f33540f3507e2db9d88b91053f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
