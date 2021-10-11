@@ -858,7 +858,7 @@ static void i2c_freq_changed(void)
 	int i, freq, port;
 
 	/* Set clock frequency for I2C ports */
-	for (i = 0; i < i2c_ports_used; i++) {
+	for (i = 0; i < board_get_i2c_ports_used(); i++) {
 		freq = i2c_ports[i].kbps;
 		port = i2c_ports[i].port;
 		if (port < I2C_STANDARD_PORT_COUNT)
@@ -882,7 +882,7 @@ void i2c_init(void)
 #endif
 
 	/* Enable I2C function. */
-	for (i = 0; i < i2c_ports_used; i++) {
+	for (i = 0; i < board_get_i2c_ports_used(); i++) {
 		/* I2c port mapping. */
 		p = i2c_ports[i].port;
 
