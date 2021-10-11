@@ -132,7 +132,7 @@ static void reset_controller(int controller)
 	udelay(100);
 	MEC1322_I2C_CONFIG(controller) &= ~BIT(9);
 
-	for (i = 0; i < i2c_ports_used; ++i)
+	for (i = 0; i < board_get_i2c_ports_used(); ++i)
 		if (controller == i2c_port_to_controller(i2c_ports[i].port)) {
 			configure_controller(controller, i2c_ports[i].kbps);
 			cdata[controller].transaction_state =
@@ -478,7 +478,7 @@ void i2c_init(void)
 	/* Configure GPIOs */
 	gpio_config_module(MODULE_I2C, 1);
 
-	for (i = 0; i < i2c_ports_used; ++i) {
+	for (i = 0; i < board_get_i2c_ports_used(); ++i) {
 		/*
 		 * If this controller has multiple ports, check if we already
 		 * configured it. If so, ensure previously configured bitrate

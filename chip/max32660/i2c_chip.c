@@ -273,7 +273,7 @@ void i2c_init(void)
 	gpio_config_module(MODULE_I2C, 1);
 
 	/* Initialize all I2C ports used. */
-	for (i = 0; i < i2c_ports_used; i++) {
+	for (i = 0; i < board_get_i2c_ports_used(); i++) {
 		port = i2c_ports[i].port;
 		i2c_init_peripheral(i2c_bus_ports[port],
 				    i2c_ports[i].kbps * 1000);

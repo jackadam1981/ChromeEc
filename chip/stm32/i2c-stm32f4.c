@@ -203,7 +203,7 @@ static const struct i2c_port_t *find_port(int port)
 	const struct i2c_port_t *p = i2c_ports;
 	int i;
 
-	for (i = 0; i < i2c_ports_used; i++, p++) {
+	for (i = 0; i < board_get_i2c_ports_used(); i++, p++) {
 		if (p->port == port)
 			return p;
 	}
@@ -722,7 +722,7 @@ static void i2c_freq_change(void)
 	const struct i2c_port_t *p = i2c_ports;
 	int i;
 
-	for (i = 0; i < i2c_ports_used; i++, p++)
+	for (i = 0; i < board_get_i2c_ports_used(); i++, p++)
 		i2c_set_freq_port(p);
 }
 
@@ -733,7 +733,7 @@ static void i2c_pre_freq_change_hook(void)
 	int i;
 
 	/* Lock I2C ports so freq change can't interrupt an I2C transaction */
-	for (i = 0; i < i2c_ports_used; i++, p++)
+	for (i = 0; i < board_get_i2c_ports_used(); i++, p++)
 		i2c_lock(p->port, 1);
 }
 DECLARE_HOOK(HOOK_PRE_FREQ_CHANGE, i2c_pre_freq_change_hook, HOOK_PRIO_DEFAULT);
@@ -747,7 +747,7 @@ static void i2c_freq_change_hook(void)
 	i2c_freq_change();
 
 	/* Unlock I2C ports we locked in pre-freq change hook */
-	for (i = 0; i < i2c_ports_used; i++, p++)
+	for (i = 0; i < board_get_i2c_ports_used(); i++, p++)
 		i2c_lock(p->port, 0);
 }
 DECLARE_HOOK(HOOK_FREQ_CHANGE, i2c_freq_change_hook, HOOK_PRIO_DEFAULT);
@@ -987,7 +987,7 @@ void i2c_init(void)
 	const struct i2c_port_t *p = i2c_ports;
 	int i;
 
-	for (i = 0; i < i2c_ports_used; i++, p++)
+	for (i = 0; i < board_get_i2c_ports_used(); i++, p++)
 		i2c_init_port(p);
 
 
