@@ -350,7 +350,6 @@ void __keep report_panic(void)
 	 * exception happened in a handler's context.
 	 */
 #endif
-	panic_reboot();
 }
 
 /**
@@ -377,6 +376,7 @@ void exception_panic(void)
 			"r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8", "r9",
 			"r10", "r11", "cc", "memory"
 		);
+	panic_reboot();
 }
 
 #ifdef CONFIG_SOFTWARE_PANIC
@@ -420,6 +420,41 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception)
 	}
 }
 #endif
+
+void panic_assert(const char *func, const char *file, uint16_t line)
+{
+	uint32_t *lregs = pdata_ptr->cm.regs;
+
+	/*
+	 * Panic data is cleared by PMIC reset on Nami. IPSR is used because
+	 * it's saved to BBRAM by the released RO (before PMIC reset). Bit
+	 * assignments are as follows:
+	 *
+	 * [31:16] Line #
+	 * [15:9]  Task #
+	 * [8:0]   Exception # (12 = Reserved for Debug)
+	 */
+	lregs[1] = line << 16 | (task_get_current() & 0x7f) << 9 | 12;
+	lregs[3] = (uint32_t)func;
+	lregs[4] = (uint32_t)file;
+
+	/*
+	 * Save registers. psp, r1 ~ r3 are not saved because they're probably
+	 * already clobbered (for printing assert info). IPSR, r4, r5 aren't
+	 * saved because they contain code location.
+	 */
+	asm volatile(
+		"mov r0, %[pregs]\n"
+		"stmia r0, {r6-r11, lr}\n"
+		"mov sp, %[pstack]\n" : :
+			[pregs] "r" (&lregs[5]),
+			[pstack] "r" (pstack_addr) :
+			"r0", "cc", "memory"
+		);
+
+	report_panic();
+	panic_reboot();
+}
 
 void bus_fault_handler(void)
 {

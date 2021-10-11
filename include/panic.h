@@ -157,6 +157,16 @@ void panic_get_reason(uint32_t *reason, uint32_t *info, uint8_t *exception);
 #endif
 
 /**
+ * Save code location in struct panic_data then reboot.
+ *
+ * @param func Function name (i.e. __func__). Stored in regs[3].
+ * @param file File path (i.e. __FILE__). Stored in regs[4].
+ * @param line Line number (i.e. __LINE__). Stored in IPSR.
+ */
+void panic_assert(const char *func, const char *file, uint16_t line)
+	__attribute__((noreturn));
+
+/**
  * Enable/disable bus fault handler
  *
  * @param ignored	Non-zero if ignoring bus fault
