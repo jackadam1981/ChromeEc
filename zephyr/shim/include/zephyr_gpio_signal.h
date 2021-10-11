@@ -42,6 +42,13 @@ BUILD_ASSERT(GPIO_COUNT < GPIO_LIMIT);
 #define NAMED_GPIO_NODELABEL(label, prop) \
 	GPIO_SIGNAL(DT_PHANDLE(DT_NODELABEL(label), prop))
 
+enum ioex_port {
+	IOEX_C0_NCT38XX = 0,
+	IOEX_C2_NCT38XX,
+	IOEX_ID_1_C0_NCT38XX,
+	IOEX_ID_1_C2_NCT38XX,
+	IOEX_PORT_COUNT
+};
 /*
  * Define enums for IO expanders and signals
  */
@@ -50,11 +57,21 @@ BUILD_ASSERT(GPIO_COUNT < GPIO_LIMIT);
 	COND_CODE_1(DT_NODE_HAS_PROP(id, enum_name), (IOEX_SIGNAL(id), ), ())
 enum ioex_signal {
 	IOEX_SIGNAL_START = GPIO_LIMIT + 1,
-	/* Used to ensure that the first IOEX signal is same as start */
 	__IOEX_PLACEHOLDER = GPIO_LIMIT,
-#if DT_NODE_EXISTS(DT_PATH(named_ioexes))
-	DT_FOREACH_CHILD(DT_PATH(named_ioexes), IOEX_SIGNAL_WITH_COMMA)
-#endif
+	IOEX_ID_1_USB_C0_RT_RST_ODL,
+	IOEX_ID_1_USB_C0_FRS_EN,
+	IOEX_ID_1_USB_C0_OC_ODL,
+	IOEX_ID_1_USB_C2_RT_RST_ODL,
+	IOEX_ID_1_USB_C2_FRS_EN,
+	IOEX_ID_1_USB_C1_OC_ODL,
+	IOEX_ID_1_USB_C2_OC_ODL,
+	IOEX_USB_C0_OC_ODL,
+	IOEX_USB_C0_FRS_EN,
+	IOEX_USB_C0_RT_RST_ODL,
+	IOEX_USB_C2_RT_RST_ODL,
+	IOEX_USB_C1_OC_ODL,
+	IOEX_USB_C2_OC_ODL,
+	IOEX_USB_C2_FRS_EN,
 	IOEX_SIGNAL_END,
 	IOEX_LIMIT = 0x1FFF,
 };
@@ -65,13 +82,17 @@ BUILD_ASSERT(IOEX_SIGNAL_END < IOEX_LIMIT);
 
 #define IOEX_COUNT (IOEX_SIGNAL_END - IOEX_SIGNAL_START)
 
-#define IOEXPANDER_ID_EXPAND(id) ioex_chip_##id
-#define IOEXPANDER_ID(id) IOEXPANDER_ID_EXPAND(id)
-#define IOEXPANDER_ID_FROM_INST_WITH_COMMA(id) IOEXPANDER_ID(id),
-enum ioexpander_id {
-	DT_FOREACH_STATUS_OKAY(cros_ioex_chip,
-		IOEXPANDER_ID_FROM_INST_WITH_COMMA)
-	CONFIG_IO_EXPANDER_PORT_COUNT
-};
-
-#undef IOEXPANDER_ID_FROM_INST_WITH_COMMA
+#include "ioexpander.h"
+/*
+ *  Define the IO expander IO in gpio.inc by the format:
+ *    IOEX(name, ioex_port, port, offset, flags)
+ *      - name: the name of this IO pin
+ *      - ioex: the IO expander port (defined in board.c) this IO
+ *                 pin belongs to.
+ *      - port: the port number in the IO expander chip.
+ *      - offset: the bit offset in the port above.
+ *      - flags: the same as the flags of GPIO.
+ *
+ */
+#define IOEX(name, ioex, port, index, flags) \
+			{#name, ioex, port, BIT(index), flags},
