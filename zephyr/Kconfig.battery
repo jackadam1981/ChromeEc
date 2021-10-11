@@ -717,7 +717,7 @@ choice PLATFORM_EC_BATTERY_API
 	  Select the battery API version. V2 is required on dual-battery-systems
 	  and hostless bases with a battery. V1 should not be used except for
 	  testing on legacy boards.
-      
+
 config PLATFORM_EC_BATTERY_V1
 	bool "Enable battery API v1"
 	depends on !PLATFORM_EC_BATTERY_V2
@@ -731,6 +731,14 @@ config PLATFORM_EC_BATTERY_V2
 	  This enables battery API version 2. This version can support multiple
 	  batteries and full size string values in the battery information
 	  including manufacturer, model, chemistry.
+
+config PLATFORM_EC_BATTERY_TYPE_NO_AUTO_DETECT
+	bool "Disable battery auto detection"
+	help
+	  Enable this option when the battery type cannot be distinguished
+	  based on only the manufacturer and device name. Your board code
+	  must call battery_set_fixed_battery_type() to set the fixed battery
+	  type, during board initialization.
 
 endchoice
 
