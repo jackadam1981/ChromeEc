@@ -479,6 +479,11 @@
 #undef CONFIG_BATTERY
 
 /*
+ * Allow run time configuration of battery config.
+ */
+#undef CONFIG_BATTERY_RUNTIME_CONFIG
+
+/*
  * Compile battery-specific code.
  *
  * Note that some boards have their own unique battery constants / functions.
