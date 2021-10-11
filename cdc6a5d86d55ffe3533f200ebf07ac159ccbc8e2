@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "402fdabc_19c09dbf",
+        "filename": "core/cortex-m/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-11T22:30:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1801e756_2db2e8aa",
+      "revId": "cdc6a5d86d55ffe3533f200ebf07ac159ccbc8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54c7c02e_70b8ee1f",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-10-11T22:05:12Z",
       "side": 1,
       "message": "i didn\u0027t see this on ToT, should we do this on ToT as well\nor is there another mechanism?",
+      "revId": "cdc6a5d86d55ffe3533f200ebf07ac159ccbc8e2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c82b934_5eeef44d",
+        "filename": "core/cortex-m/watchdog.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-11T22:30:51Z",
+      "side": 1,
+      "message": "ToT fix would be different (crrev.com/c/3218359) because we don\u0027t have to worry about the compatibility with chipset_panic_data_backup. It\u0027s a workaround for skylake boards. So, it\u0027s not required at ToT.",
+      "parentUuid": "54c7c02e_70b8ee1f",
       "revId": "cdc6a5d86d55ffe3533f200ebf07ac159ccbc8e2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
