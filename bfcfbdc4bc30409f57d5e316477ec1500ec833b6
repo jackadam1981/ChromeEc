@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d798fb8_9285ec94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-11T20:31:29Z",
+      "side": 1,
+      "message": "I had thought that PINMASK for one pin was functionally equivalent to PIN. (I see a fair amount of existing usage in gpio.inc files.) It\u0027s not clear to me just from looking at the commit message how these macros are interacting, but it would probably be good to update PIN to work with clang in this context.",
+      "revId": "bfcfbdc4bc30409f57d5e316477ec1500ec833b6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
