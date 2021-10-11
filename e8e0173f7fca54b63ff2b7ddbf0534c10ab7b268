@@ -63,6 +63,30 @@
       },
       "revId": "e8e0173f7fca54b63ff2b7ddbf0534c10ab7b268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bee93c42_3fdad95c",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-10-11T22:07:19Z",
+      "side": 1,
+      "message": "Isn\u0027t this code check that\u0027s added here the TCPC tx driver checking for an rx  message just before transmitting? What would the other driver check be?",
+      "parentUuid": "4d571f1d_3df699a7",
+      "range": {
+        "startLine": 1025,
+        "startChar": 1,
+        "endLine": 1028,
+        "endChar": 2
+      },
+      "revId": "e8e0173f7fca54b63ff2b7ddbf0534c10ab7b268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
