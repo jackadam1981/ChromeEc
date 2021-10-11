@@ -246,7 +246,7 @@ static void pi3usb9201_usb_charger_task(const int port)
 	 * Set most recent bc1.2 detection supplier result to
 	 * CHARGE_SUPPLIER_NONE for all ports.
 	 */
-	for (i = 0; i < board_get_usb_pd_port_count(); i++)
+	for (i = 0; i < usb_pd_get_port_count(); i++)
 		bc12_supplier[port] = CHARGE_SUPPLIER_NONE;
 
 	/*

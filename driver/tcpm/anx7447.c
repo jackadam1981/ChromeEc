@@ -295,6 +295,9 @@ static int anx7447_init(int port)
 
 	ASSERT(port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
+	if (port >= usb_pd_get_port_count())
+		return EC_ERROR_INVAL;
+
 	memset(&anx[port], 0, sizeof(struct anx_state));
 
 	/*
@@ -511,6 +514,9 @@ static int anx7447_mux_init(const struct usb_mux *me)
 	bool unused;
 
 	ASSERT(port < CONFIG_USB_PD_PORT_MAX_COUNT);
+
+	if (port >= usb_pd_get_port_count())
+		return EC_ERROR_INVAL;
 
 	memset(&mux[port], 0, sizeof(struct anx_usb_mux));
 

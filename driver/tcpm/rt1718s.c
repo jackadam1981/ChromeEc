@@ -532,7 +532,7 @@ static int command_rt1718s_gpio(int argc, char **argv)
 	int i, j;
 	uint32_t flags;
 
-	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 
 		if (tcpc_config[i].drv != &rt1718s_tcpm_drv)
 			continue;

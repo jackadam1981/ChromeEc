@@ -863,11 +863,11 @@ void tc_pd_connection(int port, int en)
 			int i;
 
 			/* If all ports are not connected, allow the sleep */
-			for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+			for (i = 0; i < usb_pd_get_port_count(); i++) {
 				if (pd_capable(i))
 					break;
 			}
-			if (i == board_get_usb_pd_port_count())
+			if (i == usb_pd_get_port_count())
 				enable_sleep(SLEEP_MASK_USB_PD);
 		}
 	}
@@ -1551,7 +1551,7 @@ void tc_state_init(int port)
 	}
 
 	/* If port is not available, there is nothing to initialize */
-	if (port >= board_get_usb_pd_port_count()) {
+	if (port >= usb_pd_get_port_count()) {
 		tc_enable_pd(port, 0);
 		TC_SET_FLAG(port, TC_FLAGS_REQUEST_SUSPEND);
 		return;
@@ -3972,7 +3972,7 @@ static void pd_chipset_reset(void)
 	if (!IS_ENABLED(CONFIG_USB_PE_SM))
 		return;
 
-	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		enum tcpci_msg_type tx;
 
 		/* Do not notify the AP of irrelevant past Hard Resets. */

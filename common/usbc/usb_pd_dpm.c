@@ -109,7 +109,7 @@ enum ec_status pd_request_vdm_attention(int port, const uint32_t *data,
 
 enum ec_status pd_request_enter_mode(int port, enum typec_mode mode)
 {
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	/* Only one enter request may be active at a time. */
@@ -515,7 +515,7 @@ static int count_port_bits(uint32_t bitmask)
 {
 	int i, total = 0;
 
-	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		if (bitmask & BIT(i))
 			total++;
 	}

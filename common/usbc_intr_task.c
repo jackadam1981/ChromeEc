@@ -99,7 +99,7 @@ void pd_interrupt_handler_task(void *p)
 	/*
 	 * If port does not exist, return
 	 */
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return;
 
 	pd_int_task_id[port] = task_get_current();

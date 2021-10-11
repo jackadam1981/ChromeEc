@@ -406,7 +406,7 @@ bool pd_is_try_source_capable(void)
 	uint8_t try_src = 0;
 	bool new_try_src;
 
-	for (i = 0; i < board_get_usb_pd_port_count(); i++)
+	for (i = 0; i < usb_pd_get_port_count(); i++)
 		try_src |= (pd_get_dual_role(i) == PD_DRP_TOGGLE_ON);
 
 	/*
