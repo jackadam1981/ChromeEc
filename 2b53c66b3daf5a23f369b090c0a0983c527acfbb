@@ -34,6 +34,24 @@
       "parentUuid": "19e6eca9_fb7dba8b",
       "revId": "2b53c66b3daf5a23f369b090c0a0983c527acfbb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea00202a_b35cf2ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-11T09:27:00Z",
+      "side": 1,
+      "message": "Hey no prob, in the meantime I managed to wrap this and submit http://crrev.com/c/3207995 and http://crrev.com/c/3207994, if you rebase on top of those you can drop board/brya/led.c entirely from the build file, so we only have the generic module. Sorry about getting in the way, this should be stable now.",
+      "parentUuid": "f911f43c_13cec1f6",
+      "revId": "2b53c66b3daf5a23f369b090c0a0983c527acfbb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
