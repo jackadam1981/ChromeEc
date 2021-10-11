@@ -23,6 +23,9 @@
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 
+/* Variable assigned with default number of typec ports */
+static int adlrvp_usbc_ports = CONFIG_USB_PD_PORT_MAX_COUNT;
+
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
 	[TYPE_C_PORT_0] = {
@@ -324,7 +327,7 @@ static void enable_h1_irq(void)
 }
 DECLARE_HOOK(HOOK_INIT, enable_h1_irq, HOOK_PRIO_LAST);
 
-static void configure_retimer_usbmux(void)
+static void reconfigure_board_specific_drivers(void)
 {
 	switch (ADL_RVP_BOARD_ID(board_get_version())) {
 	case ADLN_LP5_ERB_SKU_BOARD_ID:
@@ -334,6 +337,11 @@ static void configure_retimer_usbmux(void)
 #if defined(HAS_TASK_PD_C1)
 		usb_muxes[TYPE_C_PORT_1].driver = NULL;
 #endif
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+		/* Variable reassigned based on bid */
+		adlrvp_usbc_ports = 2;
 		break;
 
 	case ADLP_LP5_T4_RVP_SKU_BOARD_ID:
@@ -454,6 +462,6 @@ __override void board_pre_task_i2c_peripheral_init(void)
 	/* Make sure SBU are routed to CCD or AUX based on CCD status at init */
 	board_connect_c0_sbu_deferred();
 
-	/* Configure board specific retimer & mux */
-	configure_retimer_usbmux();
+	/* ReConfigure board specific drivers */
+	reconfigure_board_specific_drivers();
 }
