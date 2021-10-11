@@ -505,7 +505,7 @@ static void it8801_ioex_event_handler(void)
 	 * triggered.
 	 */
 	if (data & (IT8801_REG_MASK_GISR_GGPIOGXIS)) {
-		for (i = 0; i < CONFIG_IO_EXPANDER_PORT_COUNT; i++) {
+		for (i = 0; i < board_get_ioex_port_count(); i++) {
 			if (ioex_config[i].drv == &it8801_ioexpander_drv) {
 				/* Interrupt from GPIO port 0 is triggered */
 				if (data & IT8801_REG_MASK_GISR_GGPIOG0IS)

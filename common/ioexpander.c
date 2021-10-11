@@ -194,7 +194,7 @@ static void ioex_init_default(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_IO_EXPANDER_PORT_COUNT; i++) {
+	for (i = 0; i < board_get_ioex_port_count(); i++) {
 		/*
 		 * If the IO Expander has been initialized or if the default
 		 * initialization is disabled, skip initializing.
@@ -213,4 +213,9 @@ const char *ioex_get_name(enum ioex_signal signal)
 	const struct ioex_info *g = ioex_list + signal - IOEX_SIGNAL_START;
 
 	return g->name;
+}
+
+__overridable int board_get_ioex_port_count(void)
+{
+	return CONFIG_IO_EXPANDER_PORT_COUNT;
 }
