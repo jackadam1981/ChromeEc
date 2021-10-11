@@ -732,6 +732,13 @@ config PLATFORM_EC_BATTERY_V2
 	  batteries and full size string values in the battery information
 	  including manufacturer, model, chemistry.
 
+config PLATFORM_EC_BATTERY_TYPE_NO_AUTO_DETECT
+	bool "select battery type, when Auto detection doesn't work"
+	help
+	  Selects the correct battery type for pointing to the expected
+	  board_battery_info table. This is a special case where battery
+	  cannot be distinguished based on manufacturer name or device name.
+
 endchoice
 
 if PLATFORM_EC_BATTERY_V2
