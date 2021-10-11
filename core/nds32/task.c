@@ -539,6 +539,18 @@ void task_disable_task(task_id_t tskid)
 		__schedule(0, 0, 0);
 }
 
+int is_task_enabled(task_id_t tskid)
+{
+	if (tskid < TASK_ID_COUNT) {
+		if(tasks_enabled & (1<<tskid))
+			return true;
+		else
+			return false;
+	}
+
+	return false;
+}
+
 void __ram_code task_enable_irq(int irq)
 {
 	uint32_t int_mask = read_clear_int_mask();
@@ -667,10 +679,12 @@ void task_print_list(void)
 {
 	int i;
 
-	ccputs("Task Ready Name         Events      Time (s)  StkUsed\n");
+	ccputs("Task Ready En/Dis Name      Events      Time (s)  StkUsed\n");
 
 	for (i = 0; i < TASK_ID_COUNT; i++) {
 		char is_ready = (tasks_ready & (1<<i)) ? 'R' : ' ';
+		char is_enabled = (tasks_enabled & (BIT(i))) ? 'E' : 'D';
+
 		uint32_t *sp;
 
 		int stackused = tasks_init[i].stack_size;
@@ -680,9 +694,9 @@ void task_print_list(void)
 		     sp++)
 			stackused -= sizeof(uint32_t);
 
-		ccprintf("%4d %c %-16s %08x %11.6lld  %3d/%3d\n", i, is_ready,
-			 task_names[i], tasks[i].events, tasks[i].runtime,
-			 stackused, tasks_init[i].stack_size);
+		ccprintf("%4d %c %c %-16s %08x %11.6lld  %3d/%3d\n", i,
+			is_ready, is_enabled, task_names[i], tasks[i].events,
+			tasks[i].runtime, stackused, tasks_init[i].stack_size);
 		cflush();
 	}
 }

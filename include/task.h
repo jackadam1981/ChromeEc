@@ -284,6 +284,11 @@ void task_enable_task(task_id_t tskid);
 void task_disable_task(task_id_t tskid);
 
 /**
+ * Check if specific task is enabled.
+ */
+int is_task_enabled(task_id_t tskid);
+
+/**
  * Enable an interrupt.
  */
 void task_enable_irq(int irq);
