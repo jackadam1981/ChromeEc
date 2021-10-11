@@ -333,7 +333,10 @@ void __keep report_panic(void)
 	pdata->cm.bfar = CPU_NVIC_BFAR;
 	pdata->cm.mfar = CPU_NVIC_MFAR;
 	pdata->cm.shcsr = CPU_NVIC_SHCSR;
-	pdata->cm.hfsr = CPU_NVIC_HFSR;
+	if (pdata->flags & PANIC_DATA_FLAG_FRAME_VALID)
+		pdata->cm.hfsr = pdata->cm.frame[5];
+	else
+		pdata->cm.hfsr = CPU_NVIC_HFSR;
 	pdata->cm.dfsr = CPU_NVIC_DFSR;
 
 #ifdef CONFIG_UART_PAD_SWITCH
