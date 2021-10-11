@@ -35,6 +35,7 @@ static inline int board_dc_jack_present(void)
 static void board_dc_jack_handle(void)
 {
 	struct charge_port_info charge_dc_jack;
+	uint8_t dedicated_charge_port = board_get_dedicated_charge_port();
 
 	/* System is booted from DC Jack */
 	if (board_dc_jack_present()) {
