@@ -425,6 +425,18 @@ void task_disable_task(task_id_t tskid)
 		__schedule(0, 0);
 }
 
+int is_task_enabled(task_id_t tskid)
+{
+	if (tskid < TASK_ID_COUNT) {
+		if (tasks_enabled & (1<<tskid))
+			return true;
+		else
+			return false;
+	}
+
+	return false;
+}
+
 void task_enable_irq(int irq)
 {
 	unmask_interrupt(irq);
@@ -514,14 +526,16 @@ void task_print_list(void)
 	int i;
 
 	if (IS_ENABLED(CONFIG_FPU))
-		ccputs("Task Ready Name         Events      Time (s)  "
+		ccputs("Task Ready En/Dis Name         Events      Time (s)  "
 		       "  StkUsed UseFPU\n");
 	else
-		ccputs("Task Ready Name         Events      Time (s)  "
+		ccputs("Task Ready En/Dis Name         Events      Time (s)  "
 		       "StkUsed\n");
 
 	for (i = 0; i < TASK_ID_COUNT; i++) {
-		char is_ready = (tasks_ready & (1<<i)) ? 'R' : ' ';
+		char is_ready = (tasks_ready & (BIT(i))) ? 'R' : ' ';
+		char is_enabled = (tasks_enabled & (BIT(i))) ? 'E' : 'D';
+
 		uint32_t *sp;
 
 		int stackused = tasks_init[i].stack_size;
@@ -534,15 +548,15 @@ void task_print_list(void)
 		if (IS_ENABLED(CONFIG_FPU)) {
 			char use_fpu = tasks[i].use_fpu ? 'Y' : 'N';
 
-			ccprintf("%4d %c %-16s %08x %11.6lld  %3d/%3d %c\n",
-				 i, is_ready, task_get_name(i), tasks[i].events,
-				 tasks[i].runtime, stackused,
+			ccprintf("%4d %c %c %-16s %08x %11.6lld  %3d/%3d %c\n",
+				 i, is_ready, is_enabled, task_get_name(i),
+				 tasks[i].events, tasks[i].runtime, stackused,
 				 tasks_init[i].stack_size, use_fpu);
 		} else {
-			ccprintf("%4d %c %-16s %08x %11.6lld  %3d/%3d\n",
-				 i, is_ready, task_get_name(i), tasks[i].events,
-				 tasks[i].runtime, stackused,
-				 tasks_init[i].stack_size);
+			ccprintf("%4d %c %c %-16s %08x %11.6lld  %3d/%3d\n",
+				i, is_ready, is_enabled, task_get_name(i),
+				tasks[i].events, tasks[i].runtime, stackused,
+				tasks_init[i].stack_size);
 		}
 
 		cflush();
