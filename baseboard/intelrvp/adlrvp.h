@@ -168,6 +168,9 @@
 /* Config to get/set i2c port count at run time */
 #define CONFIG_I2C_PORT_COUNT_RUNTIME
 
+/* Config to let enable selected tasks */
+#define CONFIG_TASK_ENABLE_RUNTIME
+
 #ifndef __ASSEMBLER__
 
 enum adlrvp_charge_ports {
