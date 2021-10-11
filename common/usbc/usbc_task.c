@@ -163,7 +163,7 @@ void pd_task(void *u)
 	/*
 	 * If port does not exist, return
 	 */
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return;
 
 	while (1) {

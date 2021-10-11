@@ -48,7 +48,7 @@ static void clear_oc_tbl(void)
 {
 	int port;
 
-	for (port = 0; port < board_get_usb_pd_port_count(); port++)
+	for (port = 0; port < usb_pd_get_port_count(); port++)
 		/*
 		 * Only clear the table if the port partner is no longer
 		 * attached after debouncing.
@@ -63,7 +63,7 @@ DECLARE_DEFERRED(clear_oc_tbl);
 
 int usbc_ocp_add_event(int port)
 {
-	if ((port < 0) || (port >= board_get_usb_pd_port_count())) {
+	if ((port < 0) || (port >= usb_pd_get_port_count())) {
 		CPRINTS("%s(%d) Invalid port!", __func__, port);
 		return EC_ERROR_INVAL;
 	}
@@ -83,7 +83,7 @@ int usbc_ocp_add_event(int port)
 
 int usbc_ocp_clear_event_counter(int port)
 {
-	if ((port < 0) || (port >= board_get_usb_pd_port_count())) {
+	if ((port < 0) || (port >= usb_pd_get_port_count())) {
 		CPRINTS("%s(%d) Invalid port!", __func__, port);
 		return EC_ERROR_INVAL;
 	}
@@ -104,7 +104,7 @@ int usbc_ocp_clear_event_counter(int port)
 
 int usbc_ocp_is_port_latched_off(int port)
 {
-	if ((port < 0) || (port >= board_get_usb_pd_port_count())) {
+	if ((port < 0) || (port >= usb_pd_get_port_count())) {
 		CPRINTS("%s(%d) Invalid port!", __func__, port);
 		return 0;
 	}
@@ -114,7 +114,7 @@ int usbc_ocp_is_port_latched_off(int port)
 
 void usbc_ocp_snk_is_connected(int port, bool connected)
 {
-	if ((port < 0) || (port >= board_get_usb_pd_port_count())) {
+	if ((port < 0) || (port >= usb_pd_get_port_count())) {
 		CPRINTS("%s(%d) Invalid port!", __func__, port);
 		return;
 	}

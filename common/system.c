@@ -994,7 +994,7 @@ static int handle_pending_reboot(enum ec_reboot_cmd cmd)
 		if (IS_ENABLED(HAS_TASK_PD_C0)) {
 			int port;
 
-			for (port = 0; port < board_get_usb_pd_port_count();
+			for (port = 0; port < usb_pd_get_port_count();
 			     port++)
 				pd_set_suspend(port, 1);
 

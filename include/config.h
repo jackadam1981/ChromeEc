@@ -4529,9 +4529,6 @@
 /* Allow chip to go into low power idle even when a PD device is attached */
 #undef CONFIG_USB_PD_LOW_POWER_IDLE_WHEN_CONNECTED
 
-/* Number of USB PD ports */
-#undef CONFIG_USB_PD_PORT_MAX_COUNT
-
 /*
  * Number of ITE USB PD active ports
  * NOTE: The active port usage should follow the order of ITE TCPC port index.
