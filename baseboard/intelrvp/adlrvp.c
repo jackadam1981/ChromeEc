@@ -5,6 +5,7 @@
 
 /* Intel ADLRVP board-specific common configuration */
 
+#include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
@@ -25,6 +26,9 @@
 
 /* Variable to identify ADL M/N RVP. Default board is ADL-P RVP. */
 static int board_adl_m_n_rvp;
+
+/* battery 2S config */
+extern struct board_batt_params board_battery2S_info[];
 
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
@@ -382,6 +386,15 @@ static void identify_board_to_reconfigure(void)
 	}
 }
 
+static void reconfigure_battery_info(void)
+{
+	if (board_adl_m_n_rvp) {
+		board_battery_info[BATTERY_GETAC_SMP_HHP_408].batt_info =
+		board_battery2S_info[BATTERY_GETAC_SMP_HHP_408].batt_info;
+		CPRINTS("Battery info reconfigured!");
+	}
+}
+
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
@@ -477,4 +490,7 @@ __override void board_pre_task_i2c_peripheral_init(void)
 
 	/*Identify board type for common configuration at run time*/
 	identify_board_to_reconfigure();
+
+	/*reconfigure battery based on board */
+	reconfigure_battery_info();
 }

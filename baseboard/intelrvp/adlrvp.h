@@ -13,6 +13,9 @@
 
 #include "baseboard.h"
 
+/* Config Battery at run time */
+#define CONFIG_BATTERY_RUNTIME_CONFIG
+
 /* RVP Board ids */
 #define CONFIG_BOARD_VERSION_GPIO
 #define ADLM_LP4_RVP1_SKU_BOARD_ID	0x1
