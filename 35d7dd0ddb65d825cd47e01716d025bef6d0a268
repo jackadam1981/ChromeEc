@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea0d131_060ab28a",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-11T21:49:36Z",
+      "side": 1,
+      "message": "need CONFIG_PLATFORM_EC_ESPI_VW_SLP_S3 also ?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "35d7dd0ddb65d825cd47e01716d025bef6d0a268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
