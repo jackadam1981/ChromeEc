@@ -110,7 +110,7 @@ void process_timers(int overflow)
 	} while (next.val <= get_time().val);
 }
 
-void udelay(unsigned us)
+__overridable void udelay(unsigned us)
 {
 	unsigned t0 = __hw_clock_source_read();
 
