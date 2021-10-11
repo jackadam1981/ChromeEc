@@ -5,6 +5,7 @@
 
 /* Intel ADLRVP board-specific common configuration */
 
+#include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
@@ -463,4 +464,5 @@ __override void board_pre_task_i2c_peripheral_init(void)
 
 	/* ReConfigure board specific drivers */
 	reconfigure_board_specific_drivers();
+
 }
