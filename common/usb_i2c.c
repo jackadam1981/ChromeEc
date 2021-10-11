@@ -131,7 +131,7 @@ static void usb_i2c_execute(struct usb_i2c_config const *config)
 		config->buffer[0] = USB_I2C_WRITE_COUNT_INVALID;
 	} else if (read_count > CONFIG_USB_I2C_MAX_READ_COUNT) {
 		config->buffer[0] = USB_I2C_READ_COUNT_INVALID;
-	} else if (portindex >= i2c_ports_used) {
+	} else if (portindex >= board_get_i2c_ports_used()) {
 		config->buffer[0] = USB_I2C_PORT_INVALID;
 	} else if (addr_flags == USB_I2C_CMD_ADDR_FLAGS) {
 		/*

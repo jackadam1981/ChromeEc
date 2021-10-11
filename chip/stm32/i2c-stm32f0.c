@@ -622,7 +622,7 @@ void i2c_init(void)
 	const struct i2c_port_t *p = i2c_ports;
 	int i;
 
-	for (i = 0; i < i2c_ports_used; i++, p++)
+	for (i = 0; i < board_get_i2c_ports_used(); i++, p++)
 		i2c_init_port(p);
 
 #ifdef CONFIG_HOSTCMD_I2C_ADDR_FLAGS

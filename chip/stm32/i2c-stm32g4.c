@@ -416,7 +416,7 @@ static void i2c_pre_freq_change_hook(void)
 	int i;
 
 	/* Lock I2C ports so freq change can't interrupt an I2C transaction */
-	for (i = 0; i < i2c_ports_used; i++, p++)
+	for (i = 0; i < board_get_i2c_ports_used(); i++, p++)
 		i2c_lock(p->port, 1);
 }
 DECLARE_HOOK(HOOK_PRE_FREQ_CHANGE, i2c_pre_freq_change_hook, HOOK_PRIO_DEFAULT);
@@ -431,7 +431,7 @@ static void i2c_freq_change_hook(void)
 	 * Handle CPU clock changing frequency and unlock I2C ports we locked
 	 * in pre-freq change hook
 	 */
-	for (i = 0; i < i2c_ports_used; i++, p++) {
+	for (i = 0; i < board_get_i2c_ports_used(); i++, p++) {
 		i2c_set_timingr_port(p);
 		i2c_lock(p->port, 0);
 	}
@@ -452,6 +452,6 @@ void i2c_init(void)
 	/* Enable the I2C clock for all I2C ports */
 	clock_enable_module(MODULE_I2C, 1);
 	/* Per port configuration */
-	for (i = 0; i < i2c_ports_used; i++, p++)
+	for (i = 0; i < board_get_i2c_ports_used(); i++, p++)
 		i2c_init_port(p);
 }

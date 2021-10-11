@@ -403,7 +403,7 @@ static void reset_controller(int controller)
 	MCHP_EC_ID_RO = 0;
 	MCHP_I2C_CONFIG(raddr) &= ~BIT(9);
 
-	for (i = 0; i < i2c_ports_used; ++i)
+	for (i = 0; i < board_get_i2c_ports_used(); ++i)
 		if (controller == i2c_port_to_controller(i2c_ports[i].port)) {
 			configure_controller(controller, i2c_ports[i].port,
 					     i2c_ports[i].kbps);
@@ -978,7 +978,7 @@ void i2c_init(void)
 
 	memset(cdata, 0, sizeof(cdata));
 
-	for (i = 0; i < i2c_ports_used; ++i) {
+	for (i = 0; i < board_get_i2c_ports_used(); ++i) {
 		/* Assign I2C controller to I2C port */
 		i2c_p2c[i2c_ports[i].port] = i % MCHP_I2C_CTRL_MAX;
 

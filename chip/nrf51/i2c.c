@@ -63,7 +63,7 @@ void i2c_init(void)
 
 	gpio_config_module(MODULE_I2C, 1);
 
-	for (i = 0; i < i2c_ports_used; i++) {
+	for (i = 0; i < board_get_i2c_ports_used(); i++) {
 		if (i2c_ppi_chan[i] == -1) {
 			rv = ppi_request_channel(&i2c_ppi_chan[i]);
 			ASSERT(rv == EC_SUCCESS);

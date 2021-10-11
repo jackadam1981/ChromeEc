@@ -530,7 +530,7 @@ static void i2c_initial_board_config(struct i2c_context *ctx)
 
 void i2c_port_restore(void)
 {
-	for (int i = 0; i < i2c_ports_used; i++) {
+	for (int i = 0; i < board_get_i2c_ports_used(); i++) {
 		int port = i2c_ports[i].port;
 		i2c_init_hardware(&i2c_ctxs[port]);
 	}
@@ -538,7 +538,7 @@ void i2c_port_restore(void)
 
 void i2c_init(void)
 {
-	for (int i = 0; i < i2c_ports_used; i++) {
+	for (int i = 0; i < board_get_i2c_ports_used(); i++) {
 		int port = i2c_ports[i].port;
 		i2c_initial_board_config(&i2c_ctxs[port]);
 		/* Config speed from i2c_ports[] defined in board.c */

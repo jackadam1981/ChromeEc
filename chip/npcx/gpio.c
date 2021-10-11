@@ -272,7 +272,7 @@ static int gpio_is_i2c_pin(enum gpio_signal signal)
 {
 	int i;
 
-	for (i = 0; i < i2c_ports_used; i++)
+	for (i = 0; i < board_get_i2c_ports_used(); i++)
 		if (i2c_ports[i].scl == signal || i2c_ports[i].sda == signal)
 			return 1;
 
@@ -299,7 +299,7 @@ void gpio_enable_1p8v_i2c_wake_up_input(int enable)
 	int i;
 
 	/* Set input buffer of 1.8V i2c ports. */
-	for (i = 0; i < i2c_ports_used; i++) {
+	for (i = 0; i < board_get_i2c_ports_used(); i++) {
 		if (gpio_list[i2c_ports[i].scl].flags & GPIO_SEL_1P8V)
 			gpio_enable_wake_up_input(i2c_ports[i].scl, enable);
 		if (gpio_list[i2c_ports[i].sda].flags & GPIO_SEL_1P8V)
