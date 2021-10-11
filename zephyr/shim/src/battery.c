@@ -5,7 +5,8 @@
 
 #include<devicetree.h>
 #include"battery_fuel_gauge.h"
-
+#include"gpio.h"
+uint8_t get_board_id(void);
 #if DT_NODE_EXISTS(DT_PATH(batteries))
 
 #define NODE_FUEL_GAUGE(node) \
@@ -67,3 +68,15 @@ const enum battery_type DEFAULT_BATTERY_TYPE =
 #endif
 
 #endif /* DT_NODE_EXISTS(DT_PATH(batteries)) */
+enum battery_present battery_hw_present(void)
+{
+        enum gpio_signal batt_pres;
+
+        if (get_board_id() == 1)
+                batt_pres = GPIO_ID_1_EC_BATT_PRES_ODL;
+        else
+                batt_pres = GPIO_EC_BATT_PRES_ODL;
+
+        /* The GPIO is low when the battery is physically present */
+        return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
+}

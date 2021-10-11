@@ -144,10 +144,12 @@ __overridable int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		 * which powers I2C controller within retimer
 		 */
 		msleep(1);
+	        CPRINTS("Rajesh:power enabled");
 	} else {
 		gpio_set_level(control->retimer_rst_gpio, 0);
 		msleep(1);
 		gpio_set_level(control->usb_ls_en_gpio, 0);
+	        CPRINTS("Rajesh:power disabled");
 	}
 	return EC_SUCCESS;
 }

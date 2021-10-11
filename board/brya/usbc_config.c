@@ -33,9 +33,22 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+/*
+ * Return the board revision number.
+ */
+uint8_t get_board_id(void);
+
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+#ifdef CONFIG_ZEPHYR
+/* USB-A charging control */
+
+const int usb_port_enable[USB_PORT_COUNT] = {
+	GPIO_EN_PP5000_USBA_R,
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
+#endif
 /* USBC TCPC configuration */
 const struct tcpc_config_t tcpc_config[] = {
 	[USBC_PORT_C0] = {
@@ -121,6 +134,8 @@ static const struct usb_mux usbc1_usb3_db_retimer = {
 	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 };
 
+#define USBC_PORT_C0_BB_RETIMER_I2C_ADDR 0x56
+#define USBC_PORT_C2_BB_RETIMER_I2C_ADDR 0x57 
 const struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
@@ -175,31 +190,36 @@ BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
  */
 
 struct ioexpander_config_t ioex_config[] = {
-	[IOEX_C0_NCT38XX] = {
+	//[IOEX_C0_NCT38XX] = {
+	[0] = {
 		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
 		.i2c_addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
 		.drv = &nct38xx_ioexpander_drv,
 		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
 	},
-	[IOEX_C2_NCT38XX] = {
+	//[IOEX_C2_NCT38XX] = {
+	[1] = {
 		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
 		.i2c_addr_flags = NCT38XX_I2C_ADDR2_1_FLAGS,
 		.drv = &nct38xx_ioexpander_drv,
 		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
 	},
-	[IOEX_ID_1_C0_NCT38XX] = {
+	//[IOEX_ID_1_C0_NCT38XX] = {
+	[2] = {
 		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
 		.i2c_addr_flags = NCT38XX_I2C_ADDR1_1_FLAGS,
 		.drv = &nct38xx_ioexpander_drv,
 		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
 	},
-	[IOEX_ID_1_C2_NCT38XX] = {
+	//[IOEX_ID_1_C2_NCT38XX] = {
+	[3] = {
 		.i2c_host_port = I2C_PORT_USB_C0_C2_TCPC,
 		.i2c_addr_flags = NCT38XX_I2C_ADDR2_1_FLAGS,
 		.drv = &nct38xx_ioexpander_drv,
 		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
 	},
 };
+#define CONFIG_IO_EXPANDER_PORT_COUNT           4
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
 
 void config_usb_db_type(void)
@@ -215,8 +235,8 @@ void config_usb_db_type(void)
 
 __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 {
+//#if 0
 	enum ioex_signal rst_signal;
-
 	if (me->usb_port == USBC_PORT_C0) {
 		if (get_board_id() == 1)
 			rst_signal = IOEX_ID_1_USB_C0_RT_RST_ODL;
@@ -230,12 +250,12 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 	} else {
 		return EC_ERROR_INVAL;
 	}
-
 	/*
 	 * We do not have a load switch for the burnside bridge chips,
 	 * so we only need to sequence reset.
 	 */
 
+		CPRINTF("Rajesh:%s: enabled=%d",__func__,enable);
 	if (enable) {
 		/*
 		 * Tpw, minimum time from VCC to RESET_N de-assertion is 100us.
@@ -267,6 +287,7 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 		ioex_set_level(rst_signal, 0);
 		msleep(1);
 	}
+//#endif
 	return EC_SUCCESS;
 }
 
@@ -305,12 +326,12 @@ void board_reset_pd_mcu(void)
 
 	msleep(50);
 }
-
+//#if 0
 static void enable_ioex(int ioex)
 {
 	ioex_init(ioex);
 }
-
+//#endif
 static void board_tcpc_init(void)
 {
 	/* Don't reset TCPCs after initial reset */
@@ -323,11 +344,19 @@ static void board_tcpc_init(void)
 		 * been taken out of reset.
 		 */
 		if (get_board_id() == 1) {
-			enable_ioex(IOEX_ID_1_C0_NCT38XX);
-			enable_ioex(IOEX_ID_1_C2_NCT38XX);
+//#if 0
+			//enable_ioex(IOEX_ID_1_C0_NCT38XX);
+			//enable_ioex(IOEX_ID_1_C2_NCT38XX);
+			enable_ioex(2);
+			enable_ioex(3);
+//#endif
 		} else {
-			enable_ioex(IOEX_C0_NCT38XX);
-			enable_ioex(IOEX_C2_NCT38XX);
+//#if 0
+			//enable_ioex(IOEX_C0_NCT38XX);
+			//enable_ioex(IOEX_C2_NCT38XX);
+			enable_ioex(0);
+			enable_ioex(1);
+//#endif
 		}
 	}
 
