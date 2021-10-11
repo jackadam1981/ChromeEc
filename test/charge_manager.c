@@ -78,7 +78,7 @@ void pd_set_new_power_request(int port)
 static void clear_new_power_requests(void)
 {
 	int i;
-	for (i = 0; i < board_get_usb_pd_port_count(); ++i)
+	for (i = 0; i < usb_pd_get_port_count(); ++i)
 		new_power_request[i] = 0;
 }
 
@@ -115,7 +115,7 @@ static void initialize_charge_table(int current, int voltage, int ceil)
 	charge.current = current;
 	charge.voltage = voltage;
 
-	for (i = 0; i < board_get_usb_pd_port_count(); ++i) {
+	for (i = 0; i < usb_pd_get_port_count(); ++i) {
 		for (j = 0; j < CEIL_REQUESTOR_COUNT; ++j)
 			charge_manager_set_ceil(i, j, ceil);
 		charge_manager_update_dualrole(i, CAP_DEDICATED);
@@ -141,12 +141,12 @@ static int test_initialization(void)
 
 	/* Initialize all supplier/port pairs, except for the last one */
 	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-		for (j = 0; j < board_get_usb_pd_port_count(); ++j) {
+		for (j = 0; j < usb_pd_get_port_count(); ++j) {
 			if (i == 0)
 				charge_manager_update_dualrole(j,
 							       CAP_DEDICATED);
 			if (i == CHARGE_SUPPLIER_COUNT - 1 &&
-			    j == board_get_usb_pd_port_count() - 1)
+			    j == usb_pd_get_port_count() - 1)
 				break;
 			charge_manager_update_charge(i, j, &charge);
 		}
@@ -157,7 +157,7 @@ static int test_initialization(void)
 
 	/* Update last pair and verify a charge port has been selected */
 	charge_manager_update_charge(CHARGE_SUPPLIER_COUNT-1,
-				     board_get_usb_pd_port_count()-1,
+				     usb_pd_get_port_count()-1,
 				     &charge);
 	wait_for_charge_manager_refresh();
 	TEST_ASSERT(active_charge_port != CHARGE_PORT_NONE);
