@@ -145,5 +145,4 @@ enum nct38xx_boot_type nct38xx_get_boot_type(int port);
 void nct38xx_reset_notify(int port);
 
 extern const struct ioexpander_drv nct38xx_ioexpander_drv;
-
 #endif /* defined(__CROS_EC_USB_PD_TCPM_NCT38XX_H) */
