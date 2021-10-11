@@ -24,6 +24,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "766438f7_7de3236f",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-11T23:57:14Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4e0bb78e_72538541",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "ca793bfbb5dde9f33540f3507e2db9d88b91053f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f64a15d_0a96713c",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-11T23:57:14Z",
+      "side": 1,
+      "message": "Ack.\nHave split  this into 10 CLs. Will abandon this one .\n\nThe base of 1st CL pushed is  https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3216891",
+      "parentUuid": "4e0bb78e_72538541",
+      "range": {
+        "startLine": 17,
+        "startChar": 8,
+        "endLine": 17,
+        "endChar": 34
+      },
+      "revId": "ca793bfbb5dde9f33540f3507e2db9d88b91053f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "20a6f980_47888684",
