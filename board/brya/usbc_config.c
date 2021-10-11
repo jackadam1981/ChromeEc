@@ -162,6 +162,7 @@ const struct usb_mux usb_muxes[] = {
 };
 BUILD_ASSERT(ARRAY_SIZE(usb_muxes) == USBC_PORT_COUNT);
 
+#ifndef CONFIG_ZEPHYR
 /* BC1.2 charger detect configuration */
 const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	[USBC_PORT_C0] = {
@@ -178,6 +179,7 @@ const struct pi3usb9201_config_t pi3usb9201_bc12_chips[] = {
 	},
 };
 BUILD_ASSERT(ARRAY_SIZE(pi3usb9201_bc12_chips) == USBC_PORT_COUNT);
+#endif /* !CONFIG_ZEPHYR */
 
 /*
  * USB C0 and C2 uses burnside bridge chips and have their reset
@@ -386,14 +388,18 @@ static void board_tcpc_init(void)
 	/* Enable TCPC interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_C2_TCPC_INT_ODL);
 
+#ifndef CONFIG_ZEPHYR
 	/* Enable BC1.2 interrupts. */
 	gpio_enable_interrupt(GPIO_USB_C0_BC12_INT_ODL);
 	gpio_enable_interrupt(GPIO_USB_C2_BC12_INT_ODL);
+#endif /* !CONFIG_ZEPHYR */
 
 	if (ec_cfg_usb_db_type() != DB_USB_ABSENT) {
 		gpio_enable_interrupt(GPIO_USB_C1_PPC_INT_ODL);
 		gpio_enable_interrupt(GPIO_USB_C1_TCPC_INT_ODL);
+#ifndef CONFIG_ZEPHYR
 		gpio_enable_interrupt(GPIO_USB_C1_BC12_INT_ODL);
+#endif /* !CONFIG_ZEPHYR */
 	}
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_CHIPSET);
