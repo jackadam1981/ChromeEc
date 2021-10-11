@@ -120,7 +120,7 @@ const struct i2c_port_t *get_i2c_port(const int port)
 	 */
 	if (task_start_called()) {
 		/* Find the matching port in i2c_ports[] table. */
-		for (i = 0; i < i2c_ports_used; i++) {
+		for (i = 0; i < i2c_get_port_count(); i++) {
 			if (i2c_ports[i].port == port)
 				return &i2c_ports[i];
 		}
@@ -1573,7 +1573,7 @@ static int command_i2cprotect(int argc, char **argv)
 	if (argc == 1) {
 		int i, port;
 
-		for (i = 0; i < i2c_ports_used; i++) {
+		for (i = 0; i < i2c_get_port_count(); i++) {
 			port = i2c_ports[i].port;
 			ccprintf("Port %d: %s\n", port,
 			   port_protected[port] ? "Protected" : "Unprotected");
@@ -1651,7 +1651,7 @@ static int command_scan(int argc, char **argv)
 	const struct i2c_port_t *i2c_port;
 
 	if (argc == 1) {
-		for (port = 0; port < i2c_ports_used; port++)
+		for (port = 0; port < i2c_get_port_count(); port++)
 			scan_bus(i2c_ports[port].port, i2c_ports[port].name);
 
 		if (IS_ENABLED(CONFIG_I2C_BITBANG))
