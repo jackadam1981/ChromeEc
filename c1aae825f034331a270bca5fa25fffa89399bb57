@@ -46,6 +46,30 @@
       },
       "revId": "c1aae825f034331a270bca5fa25fffa89399bb57",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39931aa0_b8c57c28",
+        "filename": "test/tpm_test/ftdi_spi_tpm.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-11T16:17:59Z",
+      "side": 1,
+      "message": "ok, while this test is not automated this is fine, if it is used in automation this could cause flakiness, but we can revisit it then.",
+      "parentUuid": "84bf15d7_03c69d0b",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 13
+      },
+      "revId": "c1aae825f034331a270bca5fa25fffa89399bb57",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
