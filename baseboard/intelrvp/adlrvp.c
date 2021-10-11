@@ -494,3 +494,11 @@ __override void board_pre_task_i2c_peripheral_init(void)
 	/*reconfigure battery based on board */
 	reconfigure_battery_info();
 }
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	if (board_adl_m_n_rvp)
+		return (CONFIG_USB_PD_PORT_MAX_COUNT - 2);
+	else
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
