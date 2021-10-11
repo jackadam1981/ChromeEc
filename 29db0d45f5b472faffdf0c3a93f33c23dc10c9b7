@@ -37,6 +37,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3c5f4857_03556598",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1479762
+      },
+      "writtenOn": "2021-10-11T17:32:08Z",
+      "side": 1,
+      "message": "Where is 30 derived from? I\u0027m afraid that FAN will be ON most of the time, so just curious why \"30\".",
+      "range": {
+        "startLine": 339,
+        "startChar": 24,
+        "endLine": 339,
+        "endChar": 26
+      },
+      "revId": "29db0d45f5b472faffdf0c3a93f33c23dc10c9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "13f7e1db_bca908c8",
         "filename": "board/taeko/sensors.c",
         "patchSetId": 1
