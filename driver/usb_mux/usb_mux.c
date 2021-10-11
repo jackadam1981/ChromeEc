@@ -193,7 +193,7 @@ __maybe_unused void usb_mux_task(void *u)
 		/*
 		 * Round robin the ports, so no one port can monopolize the task
 		 */
-		for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+		for (port = 0; port < usb_pd_get_port_count(); port++) {
 			if (queue_count(&mux_queue[port])) {
 				/*
 				 * Process our first item.  Leave it in the
@@ -428,9 +428,8 @@ void usb_mux_init(int port)
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
-	if (port >= board_get_usb_pd_port_count()) {
+	if (port >= usb_pd_get_port_count())
 		return;
-	}
 
 	rv = configure_mux(port, USB_MUX_INIT, NULL);
 
@@ -498,7 +497,7 @@ static void perform_mux_set(int port, mux_state_t mux_mode,
 void usb_mux_set(int port, mux_state_t mux_mode,
 		 enum usb_switch usb_mode, int polarity)
 {
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return;
 
 	/* Block if we have no mux task, but otherwise queue it up and return */
@@ -539,7 +538,7 @@ bool usb_mux_set_completed(int port)
 
 static enum ec_error_list try_usb_mux_get(int port, mux_state_t *mux_state)
 {
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return EC_ERROR_INVAL;
 
 	/* Perform initialization if not initialized yet */
@@ -568,9 +567,8 @@ void usb_mux_flip(int port)
 {
 	mux_state_t mux_state;
 
-	if (port >= board_get_usb_pd_port_count()) {
+	if (port >= usb_pd_get_port_count())
 		return;
-	}
 
 	/* Perform initialization if not initialized yet */
 	if (!(flags[port] & USB_MUX_FLAG_INIT))
@@ -604,7 +602,7 @@ static void perform_mux_hpd_update(int port, mux_state_t hpd_state)
 
 void usb_mux_hpd_update(int port, mux_state_t hpd_state)
 {
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return;
 
 	/* Send to the mux task if present to maintain sequencing with sets */
@@ -638,7 +636,7 @@ static void mux_chipset_reset(void)
 {
 	int port;
 
-	for (port = 0; port < board_get_usb_pd_port_count(); ++port)
+	for (port = 0; port < usb_pd_get_port_count(); ++port)
 		configure_mux(port, USB_MUX_CHIPSET_RESET, NULL);
 }
 DECLARE_HOOK(HOOK_CHIPSET_RESET, mux_chipset_reset, HOOK_PRIO_DEFAULT);
@@ -652,7 +650,7 @@ static void usb_mux_reset_in_g3(void)
 	int port;
 	const struct usb_mux *mux_ptr;
 
-	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+	for (port = 0; port < usb_pd_get_port_count(); port++) {
 		mux_ptr = &usb_muxes[port];
 
 		while (mux_ptr) {
@@ -685,7 +683,7 @@ static int command_typec(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 
 	port = strtoi(argv[1], &e, 10);
-	if (*e || port >= board_get_usb_pd_port_count())
+	if (*e || port >= usb_pd_get_port_count())
 		return EC_ERROR_PARAM1;
 
 	if (argc < 3) {
@@ -728,7 +726,7 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	int port = p->port;
 	mux_state_t mux_state;
 
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	if (try_usb_mux_get(port, &mux_state))

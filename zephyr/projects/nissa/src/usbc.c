@@ -310,7 +310,7 @@ void usb_c1_interrupt(enum gpio_signal gpio)
 static void usbc_init(void)
 {
 	gpio_enable_interrupt(GPIO_USB_C0_PD_INT_ODL);
-	if (board_get_usb_pd_port_count() == 2)
+	if (usb_pd_get_port_count() == 2)
 		gpio_enable_interrupt(GPIO_USB_C1_PD_INT_ODL);
 }
 DECLARE_HOOK(HOOK_INIT, usbc_init, HOOK_PRIO_DEFAULT);

@@ -813,7 +813,7 @@ __override void tc_update_pd_sleep_mask(int port)
 	 * Otherwise, EC deep doze mode will be enabled.
 	 */
 	if (!prevent_deep_sleep) {
-		for (; i < board_get_usb_pd_port_count(); i++)
+		for (; i < usb_pd_get_port_count(); i++)
 			if (pd_capable(i))
 				prevent_deep_sleep = true;
 	}
