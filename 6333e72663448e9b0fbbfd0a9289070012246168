@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e805ad19_23258790",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-11T17:58:13Z",
+      "side": 1,
+      "message": "if IS_ENABLED(CONFIG_CMD_CHARGER_DUMP) \u0026\u0026 (** \u003d\u003d \"dump\") {\n   CPRINTS(\"Dump %s registers\", chg_chips[chgnum].drv-\u003eget_info(chgnum)\n   chg_chips[chgnum].drv-\u003edump_registers(chgnum);\n  }",
+      "revId": "6333e72663448e9b0fbbfd0a9289070012246168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52f4c8c1_d6a1eb91",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-11T17:58:13Z",
+      "side": 1,
+      "message": "| [dump]",
+      "revId": "6333e72663448e9b0fbbfd0a9289070012246168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b59b619a_d7b4ceea",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-11T17:58:13Z",
+      "side": 1,
+      "message": "chg_chips[chgnum].drv-\u003eget_info(chgnum)",
+      "range": {
+        "startLine": 261,
+        "startChar": 26,
+        "endLine": 261,
+        "endChar": 42
+      },
+      "revId": "6333e72663448e9b0fbbfd0a9289070012246168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
