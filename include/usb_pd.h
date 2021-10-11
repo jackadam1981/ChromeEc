@@ -3064,6 +3064,21 @@ __overridable void board_frs_handler(int port);
  */
 __override_proto uint8_t get_dp_pin_mode(int port);
 
+#ifdef CONFIG_USB_PD_COUNT_RUNTIME
+/**
+ * Get board specific usb pd port count
+ *
+ * @return number of usb pd ports
+ */
+uint8_t board_get_usb_pd_port_count(void);
+
+/**
+ * Set the number of usb pd ports for specific boards
+ *
+ * @param number of port count to set
+ */
+void usb_pd_set_port_count(int count);
+#else
 /**
  * Get board specific usb pd port count
  *
@@ -3071,7 +3086,7 @@ __override_proto uint8_t get_dp_pin_mode(int port);
  *         else return CONFIG_USB_PD_PORT_MAX_COUNT
  */
 __override_proto uint8_t board_get_usb_pd_port_count(void);
-
+#endif
 /**
  * Return true if specified PD port is present. This is similar to
  * checking CONFIG_USB_PD_PORT_MAX_COUNT but handles sparse numbering.

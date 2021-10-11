@@ -67,7 +67,7 @@ static void mock_reset_vbus_enabled(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
+	for (i = 0; i < board_get_usb_pd_port_count(); i++)
 		mock_set_vbus_enabled(i, false);
 }
 
