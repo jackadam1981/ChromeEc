@@ -16,6 +16,24 @@
       "message": "Longer term is it worth supporting out-of-chroot building?",
       "revId": "0d6006c9c37737e3351ae7d4368fd91ed1c2ac0f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6bf503eb_0ff8823b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-10-11T19:38:16Z",
+      "side": 1,
+      "message": "I think Simon insists on using it. Otherwise, most folks are using the chroot as it\u0027s a fully hermetic environment that has everything ready to go.\n\nOf note, it\u0027s not explcitly *supported*. You\u0027re on your own outside of the chroot, we\u0027re just willing to take patches that make it better.",
+      "parentUuid": "d91ceca3_8c032b77",
+      "revId": "0d6006c9c37737e3351ae7d4368fd91ed1c2ac0f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
