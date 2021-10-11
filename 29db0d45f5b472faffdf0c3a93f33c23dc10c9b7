@@ -16,6 +16,40 @@
       "message": "This modification adds the temperature values.",
       "revId": "29db0d45f5b472faffdf0c3a93f33c23dc10c9b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d21b0fa_f19844c0",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-11T17:24:23Z",
+      "side": 1,
+      "message": "Should we update the comment?",
+      "revId": "29db0d45f5b472faffdf0c3a93f33c23dc10c9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13f7e1db_bca908c8",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1513493
+      },
+      "writtenOn": "2021-10-11T17:24:23Z",
+      "side": 1,
+      "message": "Does this comment need to be updated?",
+      "revId": "29db0d45f5b472faffdf0c3a93f33c23dc10c9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
