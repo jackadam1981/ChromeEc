@@ -48,6 +48,9 @@
 #define I2C_BITBANG_PORT_COUNT 0
 #endif
 
+/* When number of i2c port count is not initialized */
+#define PORT_COUNT_UNINITIALIZED -1
+
 #ifdef CONFIG_ZEPHYR
 /* I2C_PORT_COUNT is bigger than the real count of used I2C devices, so
  * use a special define for that to save RAM.
@@ -117,7 +120,7 @@ const struct i2c_port_t *get_i2c_port(const int port)
 	 */
 	if (task_start_called()) {
 		/* Find the matching port in i2c_ports[] table. */
-		for (i = 0; i < i2c_ports_used; i++) {
+		for (i = 0; i < i2c_get_port_count(); i++) {
 			if (i2c_ports[i].port == port)
 				return &i2c_ports[i];
 		}
@@ -1570,7 +1573,7 @@ static int command_i2cprotect(int argc, char **argv)
 	if (argc == 1) {
 		int i, port;
 
-		for (i = 0; i < i2c_ports_used; i++) {
+		for (i = 0; i < i2c_get_port_count(); i++) {
 			port = i2c_ports[i].port;
 			ccprintf("Port %d: %s\n", port,
 			   port_protected[port] ? "Protected" : "Unprotected");
@@ -1648,7 +1651,7 @@ static int command_scan(int argc, char **argv)
 	const struct i2c_port_t *i2c_port;
 
 	if (argc == 1) {
-		for (port = 0; port < i2c_ports_used; port++)
+		for (port = 0; port < i2c_get_port_count(); port++)
 			scan_bus(i2c_ports[port].port, i2c_ports[port].name);
 
 		if (IS_ENABLED(CONFIG_I2C_BITBANG))
@@ -2080,3 +2083,26 @@ DECLARE_CONSOLE_COMMAND(i2ctest, command_i2ctest,
 			"i2ctest count|udelay|dev",
 			"I2C stress test");
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */
+
+#ifdef CONFIG_I2C_PORT_COUNT_RUNTIME
+static int i2c_port_count = PORT_COUNT_UNINITIALIZED;
+
+int i2c_get_port_count(void)
+{
+	if (i2c_port_count == PORT_COUNT_UNINITIALIZED)
+		i2c_port_count = i2c_ports_used;
+	return i2c_port_count;
+}
+
+void i2c_set_port_count(int count)
+{
+	/* Maximum i2c port count used is limited by variable-i2c_ports_used */
+	if (count < i2c_ports_used)
+		i2c_port_count = count;
+}
+#else
+int i2c_get_port_count(void)
+{
+	return i2c_ports_used;
+}
+#endif /* CONFIG_I2C_PORT_COUNT_RUNTIME */ 
