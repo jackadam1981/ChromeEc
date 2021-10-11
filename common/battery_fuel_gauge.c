@@ -14,11 +14,54 @@
 
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
+/*
+ * Authenticate the battery connected.
+ *
+ * Compare the manufacturer name read from the fuel gauge to the
+ * manufacturer names defined in the board_battery_info table. If
+ * a device name has been specified in the board_battery_info table,
+ * then both the manufacturer and device name must match.
+ */
+static bool authenticate_battery_type(int index, char *manuf_name)
+{
+	char device_name[32];
+
+	const struct fuel_gauge_info * const fuel_gauge =
+			&board_battery_info[index].fuel_gauge;
+	int len = 0;
+
+	/* check for valid index */
+	if (index >= BATTERY_TYPE_COUNT)
+		return false;
+
+	/* manufacturer name mismatch */
+	if (strcasecmp(manuf_name, fuel_gauge->manuf_name))
+		return false;
+
+	/* device name is specified in table */
+	if (fuel_gauge->device_name != NULL) {
+
+		/* Get the device name */
+		if (battery_device_name(device_name,
+				sizeof(device_name)))
+			return false;
+
+		len = strlen(fuel_gauge->device_name);
+
+		/* device name mismatch */
+		if (strncasecmp(device_name, fuel_gauge->device_name,
+					len))
+			return false;
+	}
+
+	CPRINTS("found batt:%s", fuel_gauge->manuf_name);
+	return true;
+}
 
 /* Get type of the battery connected on the board */
 static int get_battery_type(void)
 {
-	char manuf_name[32], device_name[32];
+	char manuf_name[32];
 	int i;
 	static enum battery_type battery_type = BATTERY_TYPE_COUNT;
 
@@ -33,44 +76,53 @@ static int get_battery_type(void)
 	if (battery_manufacturer_name(manuf_name, sizeof(manuf_name)))
 		return battery_type;
 
-	/*
-	 * Compare the manufacturer name read from the fuel gauge to the
-	 * manufacturer names defined in the board_battery_info table. If
-	 * a device name has been specified in the board_battery_info table,
-	 * then both the manufacturer and device name must match.
-	 */
-	for (i = 0; i < BATTERY_TYPE_COUNT; i++) {
-		const struct fuel_gauge_info * const fuel_gauge =
-			&board_battery_info[i].fuel_gauge;
-		int len = 0;
-
-		if (strcasecmp(manuf_name, fuel_gauge->manuf_name))
-			continue;
-
-		if (fuel_gauge->device_name != NULL) {
-
-			if (battery_device_name(device_name,
-						sizeof(device_name)))
-				continue;
-
-			len = strlen(fuel_gauge->device_name);
-			if (strncasecmp(device_name, fuel_gauge->device_name,
-						len))
-				continue;
-		}
-
-		CPRINTS("found batt:%s", fuel_gauge->manuf_name);
+#if defined(CONFIG_BATTERY_TYPE_NO_AUTO_DETECT)
+	i = board_get_default_battery_type();
+	if (authenticate_battery_type(i, manuf_name))
 		battery_type = i;
-		break;
+#else
+	for (i = 0; i < BATTERY_TYPE_COUNT; i++) {
+		if (authenticate_battery_type(i, manuf_name)) {
+			battery_type = i;
+			break;
+		}
 	}
+#endif
 
 	return battery_type;
 }
 
+#ifdef CONFIG_BATTERY_TYPE_NO_AUTO_DETECT
+
+/* Variable to decide the battery type */ 
+static int bat_type = -1;
+
+/*
+ * Function to get the battery type.
+ */
+int board_get_default_battery_type(void)
+{
+	if (bat_type == -1 )
+		bat_type = DEFAULT_BATTERY_TYPE;
+
+	return bat_type;
+}
+
+/*
+ * Function to set the battery type.
+ */
+void set_battery_type(int type)
+{
+	if (type < BATTERY_TYPE_COUNT)
+		bat_type = type;
+}
+
+#else
 __overridable int board_get_default_battery_type(void)
 {
 	return DEFAULT_BATTERY_TYPE;
 }
+#endif
 
 /*
  * Initialize the battery type for the board.

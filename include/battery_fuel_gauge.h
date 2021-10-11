@@ -78,12 +78,28 @@ int battery_bq4050_imbalance_mv(void);
 
 #endif
 
+#ifdef CONFIG_BATTERY_TYPE_NO_AUTO_DETECT
+/*
+ * Get the battery type of the board.
+ *
+ * @return type of battery
+ */
+int board_get_default_battery_type(void);
+
+/*
+ * Set the type of battery used by the board.
+ *
+ * @param type	Battery type
+ */
+void set_battery_type(int type);
+#else
 /**
  * Return the board-specific default battery type.
  *
  * @return a value of `enum battery_type`.
  */
 __override_proto int board_get_default_battery_type(void);
+#endif
 
 /**
  * Return 1 if CFET is disabled, 0 if enabled. -1 if an error was encountered.
