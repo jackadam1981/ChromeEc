@@ -338,7 +338,7 @@ static void usbc_init(void)
 	usbc_init_interrupt(0, &gpio_usb_c0_int_odl,
 			    &c0_callback,
 			    usb_c0_interrupt);
-	if (board_get_usb_pd_port_count() == 2)
+	if (usb_pd_get_port_count() == 2)
 		usbc_init_interrupt(1, &gpio_usb_c1_int_odl,
 				    &c1_callback,
 				    usb_c1_interrupt);

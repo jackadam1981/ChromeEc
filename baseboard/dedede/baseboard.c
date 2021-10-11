@@ -290,7 +290,7 @@ int extpower_is_present(void)
 	else if (IS_ENABLED(CONFIG_CHARGER_SM5803))
 		check_acok = sm5803_is_acok;
 
-	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+	for (port = 0; port < usb_pd_get_port_count(); port++) {
 		rv = check_acok(port, &acok);
 		if ((rv == EC_SUCCESS) && acok)
 			return 1;

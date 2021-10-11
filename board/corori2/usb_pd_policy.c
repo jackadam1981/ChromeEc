@@ -33,7 +33,7 @@ int pd_set_power_supply_ready(int port)
 {
 	int rv;
 
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return EC_ERROR_INVAL;
 
 	/* Disable charging. */
