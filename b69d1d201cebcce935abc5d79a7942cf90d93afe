@@ -156,6 +156,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f5ec85b_64b3388c",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-11T08:22:19Z",
+      "side": 1,
+      "message": "Hi,\n\nSorry, i think there is a confusion here.\n\"charger_dump\" command is an existing command implemented in charger/driver/ files \n\nex: DECLARE_CONSOLE_COMMAND(charger_dump, console_bd9995x_dump_regs,\n\t\t\tNULL,\n\t\t\t\"Dump all charger registers\");\n\nwe can find similar implementation in files\nex:\ndriver/charger/bq25710.c\ndriver/charger/bd9995x.c\ndriver/charger/isl923x.c\ndriver/charger/isl9241.c and driver/charger/sm5803.c\n\nI have placed this code from driver files to common/charger.c file. Hence from change set it looks like i might have added a new command but its an existing command.\n\nYes we can club both the commands \"charger\" and \"charger_dump\".\nbut I feel keeping it as a separate command will increase the readability and easy usage.\n\nI found we have separate dump commands implemented similar to this in EC i.e \n\"tcpci_dump\" \"ppc_dump\" \"pe \u003cport\u003e dump\" commands.",
+      "parentUuid": "8a940c56_5a2f0b98",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 25
+      },
+      "revId": "b69d1d201cebcce935abc5d79a7942cf90d93afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "703c38aa_f1ef360c",
         "filename": "driver/charger/bd9995x.c",
         "patchSetId": 1
