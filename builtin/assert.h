@@ -9,6 +9,7 @@
 /* Include CONFIG definitions for EC sources. */
 #ifndef THIRD_PARTY
 #include "common.h"
+#include "task.h"
 #endif
 
 #ifdef CONFIG_DEBUG_ASSERT
@@ -22,12 +23,15 @@ extern void panic_assert_fail(const char *fname, int linenum)
 			panic_assert_fail(__FILE__, __LINE__);	\
 	} while (0)
 #else
-extern void panic_assert_fail(const char *msg, const char *func,
-		const char *fname, int linenum) __attribute__((noreturn));
+void panic_printf(const char *format, ...);
 #define ASSERT(cond) do {					     \
-		if (!(cond))					     \
-			panic_assert_fail(#cond, __func__, __FILE__, \
-					__LINE__);		     \
+		if (!(cond)) {						      \
+			panic_printf("\nASSERT FAIL '%s' in %s() at %s:%d\n", \
+				     #cond, __func__, __FILE__, __LINE__);    \
+			/* Trigger WD for exception frame and reset. */	      \
+			interrupt_disable();				      \
+			while (1);					      \
+		}							      \
 	} while (0)
 #endif
 #else

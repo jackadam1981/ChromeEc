@@ -9,6 +9,7 @@
 #include "console.h"
 #include "hooks.h"
 #include "hwtimer.h"
+#include "hwtimer_chip.h"
 #include "system.h"
 #include "util.h"
 #include "task.h"
@@ -97,7 +98,14 @@ void process_timers(int overflow)
 #ifndef CONFIG_HW_SPECIFIC_UDELAY
 void udelay(unsigned us)
 {
-	unsigned t0 = __hw_clock_source_read();
+	uint32_t cnt, cnt2;
+	unsigned t0;
+
+	cnt = NPCX_ITCNT32;
+	while ((cnt2 = NPCX_ITCNT32) != cnt)
+		cnt = cnt2;
+
+	t0 = TICK_ITIM32_MAX_CNT - cnt;
 
 	/*
 	 * udelay() may be called with interrupts disabled, so we can't rely on
@@ -109,8 +117,11 @@ void udelay(unsigned us)
 	 * subtraction below can overflow.  That's acceptable, because the
 	 * watchdog timer would have tripped long before that anyway.
 	 */
-	while (__hw_clock_source_read() - t0 <= us)
-		;
+	do {
+		cnt = NPCX_ITCNT32;
+		while ((cnt2 = NPCX_ITCNT32) != cnt)
+			cnt = cnt2;
+	} while (TICK_ITIM32_MAX_CNT - cnt - t0 <= us);
 }
 #endif
 
