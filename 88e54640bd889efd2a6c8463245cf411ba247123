@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d79ec3d_ec5d55c1",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-11T23:10:29Z",
+      "side": 1,
+      "message": "return EC_ERROR_PARAM1+idx_provided ?",
+      "parentUuid": "d13f3633_6230765e",
+      "range": {
+        "startLine": 237,
+        "startChar": 3,
+        "endLine": 237,
+        "endChar": 56
+      },
+      "revId": "88e54640bd889efd2a6c8463245cf411ba247123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b9bd2cc_cff3f7d1",
         "filename": "common/charger.c",
         "patchSetId": 4
