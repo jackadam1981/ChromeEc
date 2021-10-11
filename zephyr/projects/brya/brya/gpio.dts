@@ -19,6 +19,25 @@
 			label = "GSC_EC_PWR_BTN_ODL";
 		};
 
+		gpio_ec_wp_l: ec_wp_l {
+			#gpio-cells = <0>;
+			gpios = <&gpioa 1 GPIO_INPUT>;
+			enum-name = "GPIO_EC_WP_L";
+			label = "EC_WP_L";
+		};
+
+		ec_batt_pres_odl {
+			gpios = <&gpioa 3 GPIO_INPUT>;
+			enum-name = "GPIO_BATT_PRES_ODL";
+			label = "EC_BATT_PRES_ODL";
+		};
+
+		id_1_ec_batt_pres_odl {
+			gpios = <&gpioe 1 GPIO_INPUT>;
+			enum-name = "GPIO_ID_1_EC_BATT_PRES_ODL";
+			label = "ID_1_EC_BATT_PRES_ODL";
+		};
+
 		wp_l {
 			gpios = <&gpioa 1 GPIO_INPUT>;
 			enum-name = "GPIO_WP_L";
@@ -142,6 +161,98 @@
 			enum-name = "GPIO_ENABLE_BACKLIGHT";
 			label = "EC_EDP_BL_EN";
 		};
+		seq_ec_dsw_pwrok {
+			gpios = <&gpioc 7 GPIO_INPUT>;
+			enum-name = "GPIO_SEQ_EC_DSW_PWROK";
+			label = "SEQ_EC_DSW_PWROK";
+		};
+		usb_c0_c2_tcpc_int_odl {
+			gpios = <&gpioe 0 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C0_C2_TCPC_INT_ODL";
+			label = "USB_C0_C2_TCPC_INT_ODL";
+		};
+		usb_c1_tcpc_int_odl {
+			gpios = <&gpioa 2 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C1_TCPC_INT_ODL";
+			label = "USB_C1_TCPC_INT_ODL";
+		};
+		usb_c0_ppc_int_odl {
+			gpios = <&gpio6 2 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C0_PPC_INT_ODL";
+			label = "USB_C0_PPC_INT_ODL";
+		};
+		usb_c1_ppc_int_odl {
+			gpios = <&gpiof 5 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C1_PPC_INT_ODL";
+			label = "USB_C1_PPC_INT_ODL";
+		};
+		usb_c2_ppc_int_odl {
+			gpios = <&gpio7 0 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C2_PPC_INT_ODL";
+			label = "USB_C2_PPC_INT_ODL";
+		};
+		gpio_usb_c0_bc12_int_odl: usb_c0_bc12_int_odl {
+			gpios = <&gpioc 6 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C0_BC12_INT_ODL";
+			label = "USB_C0_BC12_INT_ODL";
+		};
+		gpio_usb_c1_bc12_int_odl: usb_c1_bc12_int_odl {
+			gpios = <&gpio5 0 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C1_BC12_INT_ODL";
+			label = "USB_C1_BC12_INT_ODL";
+		};
+		gpio_usb_c2_bc12_int_odl: usb_c2_bc12_int_odl {
+			gpios = <&gpio8 3 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C2_BC12_INT_ODL";
+			label = "USB_C2_BC12_INT_ODL";
+		};
+		en_pp5000_usba_r {
+			gpios = <&gpiod 7 GPIO_OUT_LOW>;
+			enum-name = "GPIO_EN_PP5000_USBA_R";
+			label = "EN_PP5000_USBA_R";
+		};
+		usb_c1_rt_rst_r_odl {
+			gpios = <&gpio0 2 GPIO_ODR_LOW>;
+			enum-name = "GPIO_USB_C1_RT_RST_R_ODL";
+			label = "USB_C1_RT_RST_R_ODL";
+		};
+		usb_c1_rst_odl {
+			gpios = <&gpio9 6 GPIO_ODR_LOW>;
+			enum-name = "GPIO_USB_C1_RST_ODL";
+			label = "USB_C1_RST_ODL";
+		};
+		usb_c0_c2_tcpc_rst_odl {
+			gpios = <&gpioa 7 GPIO_ODR_LOW>;
+			enum-name = "GPIO_USB_C0_C2_TCPC_RST_ODL";
+			label = "USB_C0_C2_TCPC_RST_ODL";
+		};
+		id_1_usb_c0_c2_tcpc_rst_odl {
+			gpios = <&gpio3 4 GPIO_ODR_LOW>;
+			enum-name = "GPIO_ID_1_USB_C0_C2_TCPC_RST_ODL";
+			label = "ID_1_USB_C0_C2_TCPC_RST_ODL";
+		};
+		usb_c0_int_odl {
+			gpios = <&gpiob 1 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C0_INT_ODL";
+			label = "USB_C0_INT_ODL";
+		};
+		usb_c2_int_odl {
+			gpios = <&gpio4 1 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C2_INT_ODL";
+			label = "USB_C2_INT_ODL";
+		};
+		usb_c0_rt_int_odl: usb_c0_rt_int_odl {
+			#gpio-cells = <0>;
+			gpios = <&gpiob 1 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C0_RT_INT_ODL";
+			label = "USB_C0_RT_INT_ODL";
+		};
+		usb_c2_rt_int_odl: usb_c2_rt_int_odl {
+			#gpio-cells = <0>;
+			gpios = <&gpio4 1 GPIO_INPUT>;
+			enum-name = "GPIO_USB_C2_RT_INT_ODL";
+			label = "USB_C2_RT_INT_ODL";
+		};
 	};
 
 	hibernate-wake-pins {
@@ -151,5 +262,158 @@
 			&gsc_ec_pwr_btn_odl
 			&lid_open
 		>;
+	};
+
+	named-ioexes {
+		compatible = "named-ioexes";
+
+		id_1_usb_c0_rt_rst_odl {
+			gpios = <&ioex_chip2_port0 2 GPIO_ODR_LOW>;
+			enum-name = "IOEX_ID_1_USB_C0_RT_RST_ODL";
+			label = "IOEX_ID_1_USB_C0_RT_RST_ODL";
+		};
+		id_1_usb_c0_frs_en {
+			gpios = <&ioex_chip2_port0 4 GPIO_OUT_LOW>;
+			enum-name = "IOEX_ID_1_USB_C0_FRS_EN";
+			label = "IOEX_ID_1_USB_C0_FRS_EN";
+		};
+		id_1_usb_c0_oc_odl {
+			gpios = <&ioex_chip2_port0 6 GPIO_ODR_HIGH>;
+			enum-name = "IOEX_ID_1_USB_C0_OC_ODL";
+			label = "IOEX_ID_1_USB_C0_OC_ODL";
+		};
+		id_1_usb_c2_rt_rst_odl {
+			gpios = <&ioex_chip3_port0 2 GPIO_ODR_LOW>;
+			enum-name = "IOEX_ID_1_USB_C2_RT_RST_ODL";
+			label = "IOEX_ID_1_USB_C2_RT_RST_ODL";
+		};
+		id_1_usb_c2_frs_en {
+			gpios = <&ioex_chip3_port0 4 GPIO_OUT_LOW>;
+			enum-name = "IOEX_ID_1_USB_C2_FRS_EN";
+			label = "IOEX_ID_1_USB_C2_FRS_EN";
+		};
+		id_1_usb_c1_oc_odl {
+			gpios = <&ioex_chip3_port0 6 GPIO_ODR_HIGH>;
+			enum-name = "IOEX_ID_1_USB_C1_OC_ODL";
+			label = "IOEX_ID_1_USB_C1_OC_ODL";
+		};
+		id_1_usb_c2_oc_odl {
+			gpios = <&ioex_chip3_port0 7 GPIO_ODR_HIGH>;
+			enum-name = "IOEX_ID_1_USB_C2_OC_ODL";
+			label = "IOEX_ID_1_USB_C2_OC_ODL";
+		};
+		usb_c0_oc_odl {
+			gpios = <&ioex_chip0_port0 4 GPIO_ODR_HIGH>;
+			enum-name = "IOEX_USB_C0_OC_ODL";
+			label = "IOEX_USB_C0_OC_ODL";
+		};
+		usb_c0_frs_en {
+			gpios = <&ioex_chip0_port0 6 GPIO_OUT_LOW>;
+			enum-name = "IOEX_USB_C0_FRS_EN";
+			label = "IOEX_USB_C0_FRS_EN";
+		};
+		usb_c0_rt_rst_odl: usb_c0_rt_rst_odl {
+			#gpio-cells = <0>;
+			gpios = <&ioex_chip0_port0 7 GPIO_ODR_LOW>;
+			enum-name = "IOEX_USB_C0_RT_RST_ODL";
+			label = "IOEX_USB_C0_RT_RST_ODL";
+		};
+		usb_c2_rt_rst_odl: usb_c2_rt_rst_odl {
+			#gpio-cells = <0>;
+			gpios = <&ioex_chip1_port0 2 GPIO_ODR_LOW>;
+			enum-name = "IOEX_USB_C2_RT_RST_ODL";
+			label = "IOEX_USB_C2_RT_RST_ODL";
+		};
+		usb_c1_oc_odl {
+			gpios = <&ioex_chip1_port0 3 GPIO_ODR_HIGH>;
+			enum-name = "IOEX_USB_C1_OC_ODL";
+			label = "IOEX_USB_C1_OC_ODL";
+		};
+		usb_c2_oc_odl {
+			gpios = <&ioex_chip1_port0 4 GPIO_ODR_HIGH>;
+			enum-name = "IOEX_USB_C2_OC_ODL";
+			label = "IOEX_USB_C2_OC_ODL";
+		};
+		usb_c2_frs_en {
+			gpios = <&ioex_chip1_port0 6 GPIO_OUT_LOW>;
+			enum-name = "IOEX_USB_C2_FRS_EN";
+			label = "IOEX_USB_C2_FRS_EN";
+		};
+	};
+
+	/*
+	 *EC code assumes oder of ioex_chip will not change in below
+	 *configuration
+	 */
+	/*IOEX_C0_NCT38XX*/
+	ioex_chip0: ioex_chip0 {
+		compatible = "cros,ioex-chip";
+		i2c-port = <&tcpc0_2>;
+		i2c-addr = <0x70>;
+		drv = "nct38xx_ioexpander_drv";
+		flags = <0x01>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		ioex_chip0_port0: ioex_chip0_port0@0 {
+			compatible = "cros,ioex-port";
+			reg = <0>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+		};
+	};
+
+	/*IOEX_C2_NCT38XX*/
+	ioex_chip1: ioex_chip1 {
+		compatible = "cros,ioex-chip";
+		i2c-port = <&tcpc0_2>;
+		i2c-addr = <0x74>;
+		drv = "nct38xx_ioexpander_drv";
+		flags = <0x01>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		ioex_chip1_port0: ioex_chip1_port0@0 {
+			compatible = "cros,ioex-port";
+			reg = <0>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+		};
+	};
+
+	/*IOEX_ID_1_C0_NCT38XX*/
+	ioex_chip2: ioex_chip2 {
+		compatible = "cros,ioex-chip";
+		i2c-port = <&tcpc0_2>;
+		i2c-addr = <0x70>;
+		drv = "nct38xx_ioexpander_drv";
+		flags = <0x01>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		ioex_chip2_port0: ioex_chip2_port0@0 {
+			compatible = "cros,ioex-port";
+			reg = <0>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+		};
+	};
+
+	/*IOEX_ID_1_C2_NCT38XX*/
+	ioex_chip3: ioex_chip3 {
+		compatible = "cros,ioex-chip";
+		i2c-port = <&tcpc0_2>;
+		i2c-addr = <0x74>;
+		drv = "nct38xx_ioexpander_drv";
+		flags = <0x01>;
+		#address-cells = <1>;
+		#size-cells = <0>;
+		ioex_chip3_port0: ioex_chip3_port0@0 {
+			compatible = "cros,ioex-port";
+			reg = <0>;
+			gpio-controller;
+			#gpio-cells = <2>;
+			ngpios = <8>;
+		};
 	};
 };
