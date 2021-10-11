@@ -346,4 +346,18 @@ __override_proto int board_get_vbus_voltage(int port);
  */
 __attribute__((const)) int charge_manager_get_port_count(void);
 
+/**
+ * Get board specific dedicated charge port index
+ *
+ * @return dedicated charge port index
+ */
+int get_dedicated_charge_port(void);
+
+/**
+ * Set the dedicated charge port index at run time
+ *
+ * @param port index of dedicated charge port
+ */
+void set_dedicated_charge_port(int count);
+
 #endif /* __CROS_EC_CHARGE_MANAGER_H */

@@ -176,7 +176,7 @@ static int is_valid_port(int port)
 
 	/* Check if the port falls in the hole */
 	if (port >= board_get_usb_pd_port_count() &&
-	    port < CONFIG_USB_PD_PORT_MAX_COUNT)
+	    port < get_dedicated_charge_port())
 		return 0;
 	return 1;
 }
@@ -1497,16 +1497,17 @@ static enum ec_status hc_override_dedicated_charger_limit(
 		.current = p->current_lim,
 		.voltage = p->voltage_lim,
 	};
+	int dedicated_charge_port = get_dedicated_charge_port();
 
 	/*
 	 * Allow a change only if the dedicated charge port is used. Host needs
 	 * to apply a change every time a dedicated charger is plugged.
 	 */
-	if (charge_port != DEDICATED_CHARGE_PORT)
+	if (charge_port != dedicated_charge_port)
 		return EC_RES_UNAVAILABLE;
 
 	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
-				     DEDICATED_CHARGE_PORT, &ci);
+				     dedicated_charge_port, &ci);
 
 	return EC_RES_SUCCESS;
 }
@@ -1653,4 +1654,34 @@ __attribute__((const)) int charge_manager_get_port_count(void)
 {
 	return (board_get_usb_pd_port_count() +
 		CONFIG_DEDICATED_CHARGE_PORT_COUNT);
+}
+
+/* Variable to decide the dedicated charge port index at runtime */
+static int dedicated_port_index = -1;
+
+/*
+ * Get the port index of dedicated charge port.
+ */
+int get_dedicated_charge_port(void)
+{
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+	if (dedicated_port_index == -1)
+		dedicated_port_index = DEDICATED_CHARGE_PORT;
+
+	return dedicated_port_index;
+#else
+	return 0;
+#endif
+}
+
+/*
+ * Set the the port index of dedictaed charge port.
+ */
+void set_dedicated_charge_port(int count)
+{
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+	if ((count >= board_get_usb_pd_port_count())
+			&& (count < charge_manager_get_port_count()))
+		dedicated_port_index = count;
+#endif
 }
