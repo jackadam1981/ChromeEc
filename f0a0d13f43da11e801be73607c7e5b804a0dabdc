@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a594cbc1_f58cdb63",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-11T18:07:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9a705ba_ef8bd5b6",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "f0a0d13f43da11e801be73607c7e5b804a0dabdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e88109f8_967eac88",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab4164e_31800cd0",
+        "filename": "zephyr/Kconfig.powerseq",
+        "patchSetId": 5
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-11T18:07:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e88109f8_967eac88",
+      "range": {
+        "startLine": 121,
+        "startChar": 7,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "f0a0d13f43da11e801be73607c7e5b804a0dabdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "184c367d_88901421",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-06T14:59:18Z",
       "side": 1,
       "message": "removed now",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 4
+      },
+      "revId": "f0a0d13f43da11e801be73607c7e5b804a0dabdc",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe5ee3cb_59d14171",
+        "filename": "zephyr/projects/brya/brya/gpio.dts",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-11T18:07:32Z",
+      "side": 1,
+      "message": "The patch to rename RSMRST is not merged yet, will update once it is done.",
+      "parentUuid": "184c367d_88901421",
       "range": {
         "startLine": 85,
         "startChar": 0,
