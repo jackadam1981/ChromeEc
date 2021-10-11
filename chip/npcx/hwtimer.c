@@ -16,6 +16,7 @@
 #include "console.h"
 #include "task.h"
 #include "timer.h"
+#include "registers.h"
 #include "util.h"
 
 /* Depth of event timer */
@@ -338,4 +339,25 @@ int __hw_clock_source_init(uint32_t start_t)
 	task_enable_irq(ITIM_INT(ITIM_SYSTEM_NO));
 
 	return ITIM_INT(ITIM_SYSTEM_NO);
+}
+
+/*
+ * Unrolled udelay. It preserves LR, which points to the root cause of WD crash.
+ */
+__override void udelay(unsigned us)
+{
+	uint32_t cnt, cnt2;
+	unsigned t0;
+
+	cnt = NPCX_ITCNT_SYSTEM;
+	while ((cnt2 = NPCX_ITCNT_SYSTEM) != cnt)
+		cnt = cnt2;
+
+	t0 = TICK_ITIM32_MAX_CNT - cnt;
+
+	do {
+		cnt = NPCX_ITCNT_SYSTEM;
+		while ((cnt2 = NPCX_ITCNT_SYSTEM) != cnt)
+			cnt = cnt2;
+	} while (TICK_ITIM32_MAX_CNT - cnt - t0 <= us);
 }
