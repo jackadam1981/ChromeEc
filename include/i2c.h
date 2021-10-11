@@ -616,4 +616,9 @@ const struct i2c_port_t *get_i2c_port(const int port);
  */
 int i2c_get_physical_port(int enum_port);
 
+/*
+ * Get board specific count of i2c ports used
+ */
+__override_proto int board_get_i2c_ports_used(void);
+
 #endif  /* __CROS_EC_I2C_H */
