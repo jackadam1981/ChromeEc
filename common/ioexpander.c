@@ -201,7 +201,7 @@ static void ioex_init_default(void)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_IO_EXPANDER_PORT_COUNT; i++) {
+	for (i = 0; i < board_get_ioex_port_count(); i++) {
 		/*
 		 * If the IO Expander has been initialized or if the default
 		 * initialization is disabled, skip initializing.
@@ -343,3 +343,8 @@ static int command_ioex_get(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(ioexget, command_ioex_get,
 			     "[name]",
 			     "Read level of IO expander pin(s)");
+
+__overridable int board_get_ioex_port_count(void)
+{
+	return CONFIG_IO_EXPANDER_PORT_COUNT;
+}
