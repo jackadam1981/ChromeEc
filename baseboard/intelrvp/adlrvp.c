@@ -528,3 +528,11 @@ __override uint8_t board_get_ioex_port_count(void)
 	else
 		return CONFIG_IO_EXPANDER_PORT_COUNT;
 }
+
+__override int board_get_i2c_ports_used(void)
+{
+	if (board_adl_m_n_rvp)
+		return (I2C_CHAN_COUNT - 2);
+	else
+		return i2c_ports_used;
+}
