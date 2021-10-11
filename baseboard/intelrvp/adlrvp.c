@@ -395,6 +395,21 @@ static void reconfigure_battery_info(void)
 	}
 }
 
+#ifdef VARIANT_INTELRVP_EC_IT8320
+static void disable_unwanted_tasks(void)
+{
+	if (board_adl_m_n_rvp) {
+		task_disable_task(TASK_ID_PD_C2);
+		task_disable_task(TASK_ID_PD_C3);
+		task_disable_task(TASK_ID_PD_INT_C2);
+		task_disable_task(TASK_ID_PD_INT_C3);
+		CPRINTS("Tasks disabled!");
+	}
+
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, disable_unwanted_tasks, HOOK_PRIO_FIRST);
+#endif
+
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
