@@ -33,16 +33,6 @@
 #define CPRINTF(format, args...) cprintf(CC_CHARGER, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_CHARGER, format, ## args)
 
-/******************************************************************************/
-/* USB-A charging control */
-
-const int usb_port_enable[USB_PORT_COUNT] = {
-	GPIO_EN_PP5000_USBA_R,
-};
-BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
-
-/******************************************************************************/
-
 __override void board_cbi_init(void)
 {
 	config_usb_db_type();
@@ -105,19 +95,6 @@ int board_is_vbus_too_low(int port, enum chg_ramp_vbus_state ramp_state)
 }
 
 #endif /* CONFIG_CHARGE_RAMP_SW */
-
-enum battery_present battery_hw_present(void)
-{
-	enum gpio_signal batt_pres;
-
-	if (get_board_id() == 1)
-		batt_pres = GPIO_ID_1_EC_BATT_PRES_ODL;
-	else
-		batt_pres = GPIO_EC_BATT_PRES_ODL;
-
-	/* The GPIO is low when the battery is physically present */
-	return gpio_get_level(batt_pres) ? BP_NO : BP_YES;
-}
 
 /*
  * Explicitly apply the board ID 1 *gpio.inc settings to pins that

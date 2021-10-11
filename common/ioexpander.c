@@ -11,7 +11,9 @@
 #include "ioexpander.h"
 #include "system.h"
 #include "util.h"
-
+#ifdef CONFIG_ZEPHYR
+#define CONFIG_IO_EXPANDER_PORT_COUNT 4
+#endif
 #define CPRINTF(format, args...) cprintf(CC_GPIO, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_GPIO, format, ## args)
 
