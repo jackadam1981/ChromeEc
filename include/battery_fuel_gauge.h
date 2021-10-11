@@ -57,11 +57,19 @@ struct fuel_gauge_info {
 
 struct board_batt_params {
 	const struct fuel_gauge_info fuel_gauge;
+#ifdef CONFIG_BATTERY_RUNTIME_CONFIG
+	struct battery_info batt_info;
+#else
 	const struct battery_info batt_info;
+#endif
 };
 
 /* Forward declare board specific data used by common code */
+#ifdef CONFIG_BATTERY_RUNTIME_CONFIG
+extern struct board_batt_params board_battery_info[];
+#else
 extern const struct board_batt_params board_battery_info[];
+#endif
 extern const enum battery_type DEFAULT_BATTERY_TYPE;
 
 
