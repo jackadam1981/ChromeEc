@@ -29,7 +29,7 @@ static enum ec_status hc_typec_discovery(struct host_cmd_handler_args *args)
 	/* Confirm the number of HC VDOs matches our stored VDOs */
 	BUILD_ASSERT(sizeof(r->discovery_vdo) == sizeof(union disc_ident_ack));
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (p->port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	if (p->partner_type > TYPEC_PARTNER_SOP_PRIME)
@@ -104,7 +104,7 @@ static enum ec_status hc_typec_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_typec_control *p = args->params;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (p->port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	switch (p->command) {
@@ -131,7 +131,7 @@ static enum ec_status hc_typec_status(struct host_cmd_handler_args *args)
 	struct ec_response_typec_status *r = args->response;
 	const char *tc_state_name;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (p->port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	if (args->response_max < sizeof(*r))
