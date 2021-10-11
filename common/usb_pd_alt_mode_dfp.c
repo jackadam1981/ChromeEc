@@ -146,7 +146,7 @@ void pd_prepare_sysjump(void)
 	int i;
 
 	/* Exit modes before sysjump so we can cleanly enter again later */
-	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		/*
 		 * If the port is not capable of Alternate mode no need to
 		 * send the event.
@@ -1508,7 +1508,7 @@ static int command_mfallow(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 
 	port = strtoi(argv[1], &e, 10);
-	if (*e || port >= board_get_usb_pd_port_count())
+	if (*e || port >= usb_pd_get_port_count())
 		return EC_ERROR_PARAM2;
 
 	if (!strcasecmp(argv[2], "true"))

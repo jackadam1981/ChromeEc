@@ -27,7 +27,7 @@ int extpower_is_present(void)
 	int rv;
 	bool acok;
 
-	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+	for (port = 0; port < usb_pd_get_port_count(); port++) {
 		rv = raa489000_is_acok(port, &acok);
 		if ((rv == EC_SUCCESS) && acok)
 			return 1;

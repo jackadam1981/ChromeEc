@@ -33,7 +33,7 @@ static enum ec_status hc_pd_ports(struct host_cmd_handler_args *args)
 {
 	struct ec_response_usb_pd_ports *r = args->response;
 
-	r->num_ports = board_get_usb_pd_port_count();
+	r->num_ports = usb_pd_get_port_count();
 	args->response_size = sizeof(*r);
 
 	return EC_RES_SUCCESS;
@@ -82,7 +82,7 @@ static enum ec_status hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
 	const struct ec_params_pd_chip_info *p = args->params;
 	struct ec_response_pd_chip_info_v1 info;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (p->port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	if (tcpm_get_chip_info(p->port, p->live, &info))
@@ -110,7 +110,7 @@ static enum ec_status hc_remote_pd_set_amode(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_set_mode_request *p = args->params;
 
-	if ((p->port >= board_get_usb_pd_port_count()) ||
+	if ((p->port >= usb_pd_get_port_count()) ||
 	    (!p->svid) || (!p->opos))
 		return EC_RES_INVALID_PARAM;
 
@@ -143,7 +143,7 @@ static enum ec_status hc_remote_pd_discovery(struct host_cmd_handler_args *args)
 	const uint8_t *port = args->params;
 	struct ec_params_usb_pd_discovery_entry *r = args->response;
 
-	if (*port >= board_get_usb_pd_port_count())
+	if (*port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	r->vid = pd_get_identity_vid(*port);
@@ -166,7 +166,7 @@ static enum ec_status hc_remote_pd_get_amode(struct host_cmd_handler_args *args)
 	const struct ec_params_usb_pd_get_mode_request *p = args->params;
 	struct ec_params_usb_pd_get_mode_response *r = args->response;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (p->port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	/* no more to send */
@@ -203,7 +203,7 @@ static enum ec_status hc_remote_pd_dev_info(struct host_cmd_handler_args *args)
 	uint16_t dev_id;
 	uint32_t current_image;
 
-	if (*port >= board_get_usb_pd_port_count())
+	if (*port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	pd_dev_get_rw_hash(*port, &dev_id, r->dev_rw_hash, &current_image);
@@ -298,7 +298,7 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 	struct ec_response_usb_pd_control *r = args->response;
 	const char *task_state_name;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (p->port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	if (p->role >= USB_PD_CTRL_ROLE_COUNT ||
@@ -390,7 +390,7 @@ static enum ec_status hc_remote_flash(struct host_cmd_handler_args *args)
 	const uint32_t *data = &(p->size) + 1;
 	int i, size;
 
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	if (p->size + sizeof(*p) > args->params_size)
@@ -464,7 +464,7 @@ static enum ec_status hc_get_pd_port_caps(struct host_cmd_handler_args *args)
 	const struct ec_params_get_pd_port_caps *p = args->params;
 	struct ec_response_get_pd_port_caps *r = args->response;
 
-	if (p->port >= board_get_usb_pd_port_count())
+	if (p->port >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	/* Power Role */
@@ -503,7 +503,7 @@ static enum ec_status pd_control(struct host_cmd_handler_args *args)
 	const struct ec_params_pd_control *cmd = args->params;
 	int enable = 0;
 
-	if (cmd->chip >= board_get_usb_pd_port_count())
+	if (cmd->chip >= usb_pd_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	/* Always allow disable command */

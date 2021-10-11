@@ -127,7 +127,7 @@ static void reduce_input_voltage_when_full(void)
 	}
 
 	if (pd_get_max_voltage() != max_pd_voltage_mv) {
-		for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
+		for (port = 0; port < usb_pd_get_port_count(); port++)
 			pd_set_external_voltage_limit(port, max_pd_voltage_mv);
 	}
 }

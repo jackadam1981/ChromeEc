@@ -266,7 +266,7 @@ void board_reset_pd_mcu(void)
 
 	/*
 	 * board_init_ps8815_detection should be called before
-	 * board_get_usb_pd_port_count(). usb_mux_hpd_update can check
+	 * usb_pd_get_port_count(). usb_mux_hpd_update can check
 	 * pd port count.
 	 */
 	board_init_ps8815_detection();

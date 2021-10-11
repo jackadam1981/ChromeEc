@@ -261,7 +261,7 @@ DECLARE_HOOK(HOOK_INIT, baseboard_init, HOOK_PRIO_INIT_I2C + 1);
 #ifdef SECTION_IS_RW
 static void baseboard_power_on(void)
 {
-	int port_max = board_get_usb_pd_port_count();
+	int port_max = usb_pd_get_port_count();
 	int port;
 
 	CPRINTS("pwrbtn: power on: mf = %d", dock_mf);
@@ -302,7 +302,7 @@ static void baseboard_power_on(void)
 
 static void baseboard_power_off(void)
 {
-	int port_max = board_get_usb_pd_port_count();
+	int port_max = usb_pd_get_port_count();
 	int port;
 
 	CPRINTS("pwrbtn: power off");

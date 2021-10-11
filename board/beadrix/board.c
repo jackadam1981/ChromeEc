@@ -356,7 +356,7 @@ void board_set_charge_limit(int port, int supplier, int charge_ma, int max_ma,
 
 int board_set_active_charge_port(int port)
 {
-	int is_valid_port = (port >= 0 && port < board_get_usb_pd_port_count());
+	int is_valid_port = (port >= 0 && port < usb_pd_get_port_count());
 
 	if (!is_valid_port && port != CHARGE_PORT_NONE)
 		return EC_ERROR_INVAL;

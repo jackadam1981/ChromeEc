@@ -180,6 +180,9 @@ static void max14637_usb_charger_task(const int port)
 	const struct max14637_config_t * const cfg = &max14637_config[port];
 
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
+
+	if (port >= usb_pd_get_port_count())
+		return;
 	/*
 	 * Have chip enable active as default state so data switches are closed
 	 * and bc1.2 client side detection is not activated when the port power
@@ -229,7 +232,7 @@ static void bc12_chipset_startup(void)
 	 * event. If a legacy charger is connected to the port, then VBUS will
 	 * not drop even during the USB PD hard reset.
 	 */
-	for (port = 0; port < CONFIG_USB_PD_PORT_MAX_COUNT; port++)
+	for (port = 0; port < usb_pd_get_port_count(); port++)
 		task_set_event(USB_CHG_PORT_TO_TASK_ID(port),
 			       USB_CHG_EVENT_VBUS);
 }

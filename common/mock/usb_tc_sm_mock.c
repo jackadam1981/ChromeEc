@@ -26,7 +26,7 @@ void mock_tc_port_reset(void)
 {
 	int port;
 
-	for (port = 0 ; port < CONFIG_USB_PD_PORT_MAX_COUNT ; ++port) {
+	for (port = 0 ; port < usb_pd_get_port_count(); ++port) {
 		mock_tc_port[port].rev = PD_REV30;
 		mock_tc_port[port].pd_enable = 0;
 		mock_tc_port[port].msg_tx_id = 0;

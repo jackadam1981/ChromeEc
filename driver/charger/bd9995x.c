@@ -1316,7 +1316,7 @@ static void bd9995x_usb_charger_task(const int unused)
 	vbus_voltage = 0;
 #endif
 
-	for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+	for (port = 0; port < usb_pd_get_port_count(); port++) {
 		bc12_detected_type[port] = CHARGE_SUPPLIER_NONE;
 		bd9995x_enable_vbus_detect_interrupts(CHARGER_SOLO, port, 1);
 		bc12_det_mark[port] = 0;
@@ -1325,7 +1325,7 @@ static void bd9995x_usb_charger_task(const int unused)
 	while (1) {
 		sleep_usec = -1;
 		changed = 0;
-		for (port = 0; port < board_get_usb_pd_port_count(); port++) {
+		for (port = 0; port < usb_pd_get_port_count(); port++) {
 			/* Get port interrupts */
 			interrupts = bd9995x_get_interrupts(CHARGER_SOLO, port);
 			if (interrupts & BD9995X_CMD_INT_VBUS_DET ||

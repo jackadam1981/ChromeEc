@@ -31,7 +31,7 @@ void mock_pe_port_reset(void)
 {
 	int port;
 
-	for (port = 0 ; port < CONFIG_USB_PD_PORT_MAX_COUNT ; ++port) {
+	for (port = 0 ; port < usb_pd_get_port_count(); ++port) {
 		mock_pe_port[port].mock_pe_error = -1;
 		/* These mock variable only get set to 1 by various functions,
 		 * so initialize them to 0. Tests can verify they are still 0

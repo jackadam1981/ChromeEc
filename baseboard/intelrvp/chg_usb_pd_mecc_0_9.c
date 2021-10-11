@@ -80,7 +80,7 @@ void tcpc_alert_event(enum gpio_signal signal)
 {
 	int i;
 
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		if (tcpc_gpios[i].vbus.pin == signal) {
 			schedule_deferred_pd_interrupt(i);
 			break;
@@ -114,7 +114,7 @@ void board_tcpc_init(void)
 		board_reset_pd_mcu();
 
 	/* Enable TCPCx interrupt */
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++)
+	for (i = 0; i < usb_pd_get_port_count(); i++)
 		gpio_enable_interrupt(tcpc_gpios[i].vbus.pin);
 }
 DECLARE_HOOK(HOOK_INIT, board_tcpc_init, HOOK_PRIO_INIT_I2C + 1);

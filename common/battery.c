@@ -625,7 +625,7 @@ static void reduce_input_voltage_when_full(void)
 	int port;
 
 	port = charge_manager_get_active_charge_port();
-	if (port < 0 || port >= board_get_usb_pd_port_count())
+	if (port < 0 || port >= usb_pd_get_port_count())
 		return;
 
 	if (board_wants_reduced_input_voltage()) {

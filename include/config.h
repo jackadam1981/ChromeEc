@@ -4529,8 +4529,8 @@
 /* Allow chip to go into low power idle even when a PD device is attached */
 #undef CONFIG_USB_PD_LOW_POWER_IDLE_WHEN_CONNECTED
 
-/* Number of USB PD ports */
-#undef CONFIG_USB_PD_PORT_MAX_COUNT
+/* Retrieve number of USB PD ports at run time */
+#undef CONFIG_USB_PD_COUNT_RUNTIME
 
 /*
  * Number of ITE USB PD active ports

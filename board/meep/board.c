@@ -350,7 +350,8 @@ const int keyboard_factory_scan_pins_used =
 void board_overcurrent_event(int port, int is_overcurrented)
 {
 	/* Check that port number is valid. */
-	if ((port < 0) || (port >= CONFIG_USB_PD_PORT_MAX_COUNT))
+	if ((port < 0) || (port >= usb_pd_get_port_count()))
+
 		return;
 
 	/* Note that the level is inverted because the pin is active low. */

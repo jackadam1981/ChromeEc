@@ -26,7 +26,7 @@ void pd_power_supply_reset(int port)
 {
 	int prev_en;
 
-	if (port < 0 || port >= board_get_usb_pd_port_count())
+	if (port < 0 || port >= usb_pd_get_port_count())
 		return;
 
 	prev_en = charger_is_sourcing_otg_power(port);

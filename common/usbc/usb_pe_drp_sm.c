@@ -1421,7 +1421,7 @@ static void pe_update_waiting_batt_flag(void)
 	    battery_get_disconnect_state() != BATTERY_NOT_DISCONNECTED)
 		return;
 
-	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		if (PE_CHK_FLAG(i, PE_FLAGS_SNK_WAITING_BATT)) {
 			/*
 			 * Battery has gained sufficient charge to kick off PD

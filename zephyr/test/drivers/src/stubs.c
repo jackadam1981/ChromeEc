@@ -114,7 +114,7 @@ const enum battery_type DEFAULT_BATTERY_TYPE = BATTERY_LGC011;
 int board_set_active_charge_port(int port)
 {
 	int is_real_port = (port >= 0 &&
-			    port < CONFIG_USB_PD_PORT_MAX_COUNT);
+			    port < usb_pd_get_port_count());
 	int i;
 
 	if (!is_real_port && port != CHARGE_PORT_NONE)
@@ -124,7 +124,7 @@ int board_set_active_charge_port(int port)
 		CPRINTS("Disabling all charging port");
 
 		/* Disable all ports. */
-		for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+		for (i = 0; i < usb_pd_get_port_count(); i++) {
 			/*
 			 * Do not return early if one fails otherwise we can
 			 * get into a boot loop assertion failure.
@@ -149,7 +149,7 @@ int board_set_active_charge_port(int port)
 	 * Turn off the other ports' sink path FETs, before enabling the
 	 * requested charge port.
 	 */
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		if (i == port)
 			continue;
 

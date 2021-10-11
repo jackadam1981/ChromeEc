@@ -45,7 +45,7 @@ static int is_dp_muxable(int port)
 {
 	int i;
 
-	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		if (i != port) {
 			if (usb_mux_get(i) & USB_PD_MUX_DP_ENABLED)
 				return 0;

@@ -570,7 +570,7 @@ static void board_extpower(void)
 
 	if (chipset_in_or_transitioning_to_state(CHIPSET_STATE_SUSPEND)) {
 		drp_state = pd_get_drp_state_in_suspend();
-		for (port = 0; port < board_get_usb_pd_port_count(); port++)
+		for (port = 0; port < usb_pd_get_port_count(); port++)
 			if (pd_get_dual_role(port) != drp_state)
 				pd_set_dual_role(port, drp_state);
 	}
