@@ -33,13 +33,19 @@ static int get_battery_type(void)
 	if (battery_manufacturer_name(manuf_name, sizeof(manuf_name)))
 		return battery_type;
 
+#if defined(CONFIG_BATTERY_TYPE_NO_AUTO_DETECT)
+	i = board_get_default_battery_type();
+#else
+	i = 0;
+#endif
+
 	/*
 	 * Compare the manufacturer name read from the fuel gauge to the
 	 * manufacturer names defined in the board_battery_info table. If
 	 * a device name has been specified in the board_battery_info table,
 	 * then both the manufacturer and device name must match.
 	 */
-	for (i = 0; i < BATTERY_TYPE_COUNT; i++) {
+	for (; i < BATTERY_TYPE_COUNT; i++) {
 		const struct fuel_gauge_info * const fuel_gauge =
 			&board_battery_info[i].fuel_gauge;
 		int len = 0;
