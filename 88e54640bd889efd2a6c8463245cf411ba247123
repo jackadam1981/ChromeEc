@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d13f3633_6230765e",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-11T23:09:00Z",
+      "side": 1,
+      "message": "i think we can avoid this error print to reduce size\nand just do return EC_ERROR_PARAM1;",
+      "range": {
+        "startLine": 237,
+        "startChar": 3,
+        "endLine": 237,
+        "endChar": 56
+      },
+      "revId": "88e54640bd889efd2a6c8463245cf411ba247123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b9bd2cc_cff3f7d1",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-11T23:09:00Z",
+      "side": 1,
+      "message": "move to line 201",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 3
+      },
+      "revId": "88e54640bd889efd2a6c8463245cf411ba247123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
