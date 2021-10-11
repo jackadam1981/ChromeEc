@@ -395,6 +395,12 @@ config PLATFORM_EC_USB_PD_VBUS_MEASURE_ADC_EACH_PORT
 	  Enable this is there is a separate ADC channel for each USB-C VBUS
 	  voltage.
 
+config PLATFORM_EC_USB_PD_REQUIRE_AP_MODE_ENTRY
+	bool "USB Power delivery requires to enter AP mode"
+	help
+	  By Enabling this, the EC will wait for direction from the AP to enter
+          Type-C alternate modes or USB4
+
 endchoice  # Measuring VBUS voltage
 
 config PLATFORM_EC_USBC_VCONN
