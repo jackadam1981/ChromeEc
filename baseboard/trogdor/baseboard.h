@@ -143,7 +143,7 @@
 #define PD_OPERATING_POWER_MW   10000
 #define PD_MAX_POWER_MW         ((PD_MAX_VOLTAGE_MV * PD_MAX_CURRENT_MA) / 1000)
 #define PD_MAX_CURRENT_MA       3000
-#define PD_MAX_VOLTAGE_MV       20000
+#define PD_MAX_VOLTAGE_MV       10000
 
 /* Chipset */
 #define CONFIG_CHIPSET_SC7180
