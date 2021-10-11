@@ -3631,7 +3631,7 @@ static void init_vif_component_product_power_fields(
 static int gen_vif(const char *board,
 		   struct vif_t *vif)
 {
-	int max_component_index = board_get_usb_pd_port_count();
+	int max_component_index = usb_pd_get_port_count();
 
 	/*********************************************************************
 	 * Initialize the vif structure

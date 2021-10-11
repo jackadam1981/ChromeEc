@@ -45,7 +45,7 @@ void mock_prl_reset(void)
 
 	memset(mock_prl_port, 0, sizeof(mock_prl_port));
 
-	for (port = 0 ; port < CONFIG_USB_PD_PORT_MAX_COUNT ; ++port) {
+	for (port = 0 ; port < usb_pd_get_port_count(); ++port) {
 		mock_prl_port[port].last_tx_type = TCPCI_MSG_INVALID;
 		mock_prl_port[port].error_tx_type = TCPCI_MSG_INVALID;
 	}

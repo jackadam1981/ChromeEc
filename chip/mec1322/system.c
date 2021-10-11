@@ -299,7 +299,7 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 	 * Leave USB-C charging enabled in hibernate, in order to
 	 * allow wake-on-plug. 5V enable must be pulled low.
 	 */
-	switch (board_get_usb_pd_port_count()) {
+	switch (usb_pd_get_port_count()) {
 #if CONFIG_USB_PD_PORT_MAX_COUNT >= 2
 	case 2:
 		gpio_set_flags(GPIO_USB_C1_5V_EN, GPIO_PULL_DOWN | GPIO_INPUT);

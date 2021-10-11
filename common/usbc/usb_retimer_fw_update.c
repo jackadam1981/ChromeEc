@@ -182,6 +182,12 @@ void usb_retimer_fw_update_process_op(int port, int op)
 	ASSERT(port >= 0 && port < CONFIG_USB_PD_PORT_MAX_COUNT);
 
 	/*
+	 * If port does not exist, return
+	 */
+	if (port >= usb_pd_get_port_count())
+		return;
+
+	/*
 	 * TODO(b/179220036): check not overlapping requests;
 	 * not change cur_port if retimer scan is in progress
 	 */

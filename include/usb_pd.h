@@ -3065,6 +3065,13 @@ __overridable void board_frs_handler(int port);
 __override_proto uint8_t get_dp_pin_mode(int port);
 
 /**
+ * Get the number of usb pd ports
+ *
+ * @return number of usb pd ports
+ */
+uint8_t usb_pd_get_port_count(void);
+
+/**
  * Get board specific usb pd port count
  *
  * @return <= CONFIG_USB_PD_PORT_MAX_COUNT if configured in board file,

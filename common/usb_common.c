@@ -83,7 +83,7 @@ int remote_flashing(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 
 	port = strtoi(argv[1], &e, 10);
-	if (*e || port >= board_get_usb_pd_port_count())
+	if (*e || port >= usb_pd_get_port_count())
 		return EC_ERROR_PARAM2;
 
 	cnt = 0;
@@ -347,21 +347,30 @@ int pd_check_requested_voltage(uint32_t rdo, const int port)
 	return EC_SUCCESS;
 }
 
+/*
+ * Function to get the count of type c ports.
+ */
+uint8_t usb_pd_get_port_count(void)
+{
+	return (board_get_usb_pd_port_count());
+}
+
 __overridable uint8_t board_get_usb_pd_port_count(void)
 {
 	return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
 
+
 __overridable bool board_is_usb_pd_port_present(int port)
 {
 	/*
-	 * Use board_get_usb_pd_port_count() instead of checking
+	 * Use usb_pd_get_port_count() instead of checking
 	 * CONFIG_USB_PD_PORT_MAX_COUNT directly here for legacy boards
 	 * that implement board_get_usb_pd_port_count() but do not
 	 * implement board_is_usb_pd_port_present().
 	 */
 
-	return (port >= 0) && (port < board_get_usb_pd_port_count());
+	return (port >= 0) && (port < usb_pd_get_port_count());
 }
 
 __overridable bool board_is_dts_port(int port)
@@ -607,7 +616,7 @@ DECLARE_DEFERRED(re_enable_ports);
 
 void pd_handle_overcurrent(int port)
 {
-	if ((port < 0) || (port >= board_get_usb_pd_port_count())) {
+	if ((port < 0) || (port >= usb_pd_get_port_count())) {
 		CPRINTS("%s(%d) Invalid port!", __func__, port);
 		return;
 	}
@@ -829,7 +838,7 @@ void pd_set_vbus_discharge(int port, int enable)
 		inited[port] = true;
 	}
 #endif
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return;
 
 	mutex_lock(&discharge_lock[port]);
@@ -956,7 +965,7 @@ static int command_tcpc_dump(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 
 	port = atoi(argv[1]);
-	if ((port < 0) || (port >= board_get_usb_pd_port_count())) {
+	if ((port < 0) || (port >= usb_pd_get_port_count())) {
 		CPRINTS("%s(%d) Invalid port!", __func__, port);
 		return EC_ERROR_INVAL;
 	}

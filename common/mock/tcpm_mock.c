@@ -51,7 +51,7 @@ void mock_tcpm_reset(void)
 {
 	int port;
 
-	for (port = 0 ; port < CONFIG_USB_PD_PORT_MAX_COUNT ; ++port)
+	for (port = 0 ; port < usb_pd_get_port_count(); ++port)
 		mock_tcpm[port].mock_has_pending_message = 0;
 }
 

@@ -1423,7 +1423,7 @@ static void i2c_passthru_protect_tcpc_ports(void)
 		return;
 	}
 
-	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		/* TCPC tunnel not configured. No need to protect anything */
 		if (!I2C_STRIP_FLAGS(tcpc_config[i].i2c_info.addr_flags))
 			continue;

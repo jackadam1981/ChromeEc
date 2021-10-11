@@ -473,7 +473,7 @@ int board_set_active_charge_port(int port)
 	 * normal control.
 	 */
 	rv = EC_SUCCESS;
-	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		if (nct38xx_get_boot_type(i) == NCT38XX_BOOT_DEAD_BATTERY) {
 			CPRINTSUSB("Found dead battery on %d", i);
 			/*

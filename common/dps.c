@@ -222,7 +222,7 @@ int get_efficient_voltage(void)
 
 	batt_pwr = batt->current * batt->voltage / 1000;
 
-	for (int i = 0; i < board_get_usb_pd_port_count(); ++i) {
+	for (int i = 0; i < usb_pd_get_port_count(); ++i) {
 		const int cnt = pd_get_src_cap_cnt(i);
 		const uint32_t *src_caps = pd_get_src_caps(i);
 
@@ -352,7 +352,7 @@ static bool has_new_power_request(struct pdo_candidate *cand)
 			active_port, flag, req_pwr, req_mv, input_pwr, vbus,
 			input_curr, input_pwr_avg, input_curr_avg);
 
-	for (int i = 0; i < board_get_usb_pd_port_count(); ++i) {
+	for (int i = 0; i < usb_pd_get_port_count(); ++i) {
 		const uint32_t * const src_caps = pd_get_src_caps(i);
 
 		for (int j = 0; j < pd_get_src_cap_cnt(i); ++j) {
@@ -427,7 +427,7 @@ static bool has_new_power_request(struct pdo_candidate *cand)
 
 static bool has_srccap(void)
 {
-	for (int i = 0; i < board_get_usb_pd_port_count(); ++i) {
+	for (int i = 0; i < usb_pd_get_port_count(); ++i) {
 		if (pd_is_connected(i) &&
 		    pd_get_power_role(i) == PD_ROLE_SINK &&
 		    pd_get_src_cap_cnt(i) > 0)

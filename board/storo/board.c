@@ -453,7 +453,7 @@ int board_is_sourcing_vbus(int port)
 int board_set_active_charge_port(int port)
 {
 	int is_real_port = (port >= 0 &&
-			    port < board_get_usb_pd_port_count());
+			    port < usb_pd_get_port_count());
 	int i;
 	int old_port;
 
@@ -470,7 +470,7 @@ int board_set_active_charge_port(int port)
 
 	/* Disable all ports. */
 	if (port == CHARGE_PORT_NONE) {
-		for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+		for (i = 0; i < usb_pd_get_port_count(); i++) {
 			tcpc_write(i, TCPC_REG_COMMAND,
 				   TCPC_REG_COMMAND_SNK_CTRL_LOW);
 			raa489000_enable_asgate(i, false);
@@ -489,7 +489,7 @@ int board_set_active_charge_port(int port)
 	 * Turn off the other ports sink path FETs, before enabling the
 	 * requested charge port.
 	 */
-	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
+	for (i = 0; i < usb_pd_get_port_count(); i++) {
 		if (i == port)
 			continue;
 
@@ -537,7 +537,7 @@ __override void ocpc_get_pid_constants(int *kp, int *kp_div,
 
 __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 {
-	if (port < 0 || port > board_get_usb_pd_port_count())
+	if (port < 0 || port > usb_pd_get_port_count())
 		return;
 
 	raa489000_set_output_current(port, rp);
