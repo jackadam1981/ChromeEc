@@ -5,5 +5,10 @@
 register_npcx_project(
     project_name="brya",
     zephyr_board="brya",
-    dts_overlays=["gpio.dts"],
+    dts_overlays=[
+        "gpio.dts",
+        "cbi_eeprom.dts",
+        "usbc.dts",
+        "bb_retimer.dts",
+    ],
 )
