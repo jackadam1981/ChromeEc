@@ -167,6 +167,14 @@ static atomic_t tasks_ready = BIT(TASK_ID_HOOKS);
  */
 static atomic_t tasks_enabled = BIT(TASK_ID_HOOKS) | BIT(TASK_ID_IDLE);
 
+#ifdef CONFIG_TASK_ENABLE_RUNTIME
+/*
+ * Variable to hold the list of tasks that need not be enabled, eventhough
+ * present in ec.tasklist.
+ **/
+static atomic_t tasks_disabled_list;
+#endif /* CONFIG_TASK_ENABLE_RUNTIME */
+
 int start_called;  /* Has task swapping started */
 
 /* interrupt number of sw interrupt */
@@ -518,10 +526,33 @@ void set_int_ctrl(uint32_t val)
 	asm volatile ("mtsr %0, $INT_CTRL" : : "r"(val));
 }
 
+#ifdef CONFIG_TASK_ENABLE_RUNTIME
+void task_add_to_disable_list(task_id_t tskid)
+{
+	tasks_disabled_list |= BIT(tskid);
+}
+#endif /* CONFIG_TASK_ENABLE_RUNTIME */
+
 void task_enable_all_tasks(void)
 {
 	/* Mark all tasks as ready and able to run. */
 	tasks_ready = tasks_enabled = BIT(TASK_ID_COUNT) - 1;
+
+#ifdef CONFIG_TASK_ENABLE_RUNTIME
+	/*
+	 * When only some tasks listed under ec.tasklist must be enabled,
+	 * corresponding bits must be cleared from tasks_enabled and
+	 * tasks_ready varibles at run time, based on the list of tasks
+	 * in tasks_disabled_list.
+	 **/
+	for (int i = 0; i < TASK_ID_COUNT; i++) {
+		if (tasks_disabled_list & BIT(i)) {
+			atomic_clear_bits(&tasks_enabled, BIT(i));
+			atomic_clear_bits(&tasks_ready, BIT(i));
+		}
+	}
+#endif /* CONFIG_TASK_ENABLE_RUNTIME */
+
 	/* Reschedule the highest priority task. */
 	__schedule(0, 0, 0);
 }
@@ -667,10 +698,15 @@ void task_print_list(void)
 {
 	int i;
 
-	ccputs("Task Ready Name         Events      Time (s)  StkUsed\n");
+	ccputs("Task Ready En/Dis Name      Events      Time (s)  StkUsed\n");
 
 	for (i = 0; i < TASK_ID_COUNT; i++) {
-		char is_ready = ((uint32_t)tasks_ready & BIT(i)) ? 'R' : ' ';
+
+		char is_ready = ((uint32_t)tasks_ready &
+					(BIT(i))) ? 'R' : ' ';
+		char is_enabled = ((uint32_t)tasks_enabled &
+					(BIT(i))) ? 'E' : 'D';
+
 		uint32_t *sp;
 
 		int stackused = tasks_init[i].stack_size;
@@ -680,9 +716,10 @@ void task_print_list(void)
 		     sp++)
 			stackused -= sizeof(uint32_t);
 
-		ccprintf("%4d %c %-16s %08x %11.6lld  %3d/%3d\n", i, is_ready,
-			 task_names[i], (int)tasks[i].events, tasks[i].runtime,
-			 stackused, tasks_init[i].stack_size);
+		ccprintf("%4d %c %c %-16s %08x %11.6lld  %3d/%3d\n", i,
+			is_ready, is_enabled, task_names[i],
+			(int)tasks[i].events, tasks[i].runtime,
+			stackused, tasks_init[i].stack_size);
 		cflush();
 	}
 }

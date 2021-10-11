@@ -4033,6 +4033,11 @@
  */
 #undef CONFIG_TEST_MOCK_LIST
 
+/*
+ * Config to enable tasks at run time.
+ **/
+#undef CONFIG_TASK_ENABLE_RUNTIME
+
 /*****************************************************************************/
 /* Temperature sensor config */
 
