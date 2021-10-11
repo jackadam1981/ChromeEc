@@ -33,9 +33,22 @@
 #include "usb_pd.h"
 #include "usb_pd_tcpm.h"
 
+/*
+ * Return the board revision number.
+ */
+uint8_t get_board_id(void);
+
 #define CPRINTF(format, args...) cprintf(CC_USBPD, format, ## args)
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
 
+#ifdef CONFIG_ZEPHYR
+/* USB-A charging control */
+
+const int usb_port_enable[USB_PORT_COUNT] = {
+	GPIO_EN_PP5000_USBA_R,
+};
+BUILD_ASSERT(ARRAY_SIZE(usb_port_enable) == USB_PORT_COUNT);
+#endif
 /* USBC TCPC configuration */
 const struct tcpc_config_t tcpc_config[] = {
 	[USBC_PORT_C0] = {
@@ -121,6 +134,8 @@ static const struct usb_mux usbc1_usb3_db_retimer = {
 	.hpd_update = &ps8xxx_tcpc_update_hpd_status,
 };
 
+#define USBC_PORT_C0_BB_RETIMER_I2C_ADDR 0x56
+#define USBC_PORT_C2_BB_RETIMER_I2C_ADDR 0x57
 const struct usb_mux usb_muxes[] = {
 	[USBC_PORT_C0] = {
 		.usb_port = USBC_PORT_C0,
@@ -200,6 +215,7 @@ struct ioexpander_config_t ioex_config[] = {
 		.flags = IOEX_FLAGS_DEFAULT_INIT_DISABLED,
 	},
 };
+#define CONFIG_IO_EXPANDER_PORT_COUNT           4
 BUILD_ASSERT(ARRAY_SIZE(ioex_config) == CONFIG_IO_EXPANDER_PORT_COUNT);
 
 void config_usb_db_type(void)
@@ -216,7 +232,6 @@ void config_usb_db_type(void)
 __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 {
 	enum ioex_signal rst_signal;
-
 	if (me->usb_port == USBC_PORT_C0) {
 		if (get_board_id() == 1)
 			rst_signal = IOEX_ID_1_USB_C0_RT_RST_ODL;
@@ -230,7 +245,6 @@ __override int bb_retimer_power_enable(const struct usb_mux *me, bool enable)
 	} else {
 		return EC_ERROR_INVAL;
 	}
-
 	/*
 	 * We do not have a load switch for the burnside bridge chips,
 	 * so we only need to sequence reset.
@@ -305,12 +319,10 @@ void board_reset_pd_mcu(void)
 
 	msleep(50);
 }
-
 static void enable_ioex(int ioex)
 {
 	ioex_init(ioex);
 }
-
 static void board_tcpc_init(void)
 {
 	/* Don't reset TCPCs after initial reset */
