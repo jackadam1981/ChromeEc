@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba59a26f_bee73eaf",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-11T21:07:55Z",
+      "side": 1,
+      "message": "Can this be incorporated into usb_muxes in stubs.c? As it stands, this mux config is specific to this test and seems only partially connected to the device tree, i.e. sometimes you use the emulator to interact with it, and sometimes you use this structure directly.",
+      "revId": "e88c0022abaa8eb694a099c6957bae0ac272cedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0fa7065_d1645d89",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-11T21:07:55Z",
+      "side": 1,
+      "message": "Nit: Delete unneeded comma",
+      "range": {
+        "startLine": 1088,
+        "startChar": 13,
+        "endLine": 1088,
+        "endChar": 14
+      },
+      "revId": "e88c0022abaa8eb694a099c6957bae0ac272cedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c084bd36_3ddee271",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-11T21:07:55Z",
+      "side": 1,
+      "message": "Does the test suite depend on this test having run first to initialize the mux? If so, please at least note that here. Ideally, the tests would not require a specific order.",
+      "revId": "e88c0022abaa8eb694a099c6957bae0ac272cedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
