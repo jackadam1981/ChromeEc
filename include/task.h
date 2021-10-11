@@ -285,6 +285,13 @@ int task_start_called(void);
 void task_clear_fp_used(void);
 #endif
 
+#ifdef CONFIG_TASK_ENABLE_RUNTIME
+/*
+ * Add the task to the disable list of tasks at runtime.
+ **/
+void task_add_to_disable_list(task_id_t tskid);
+#endif /* CONFIG_TASK_ENABLE_RUNTIME */
+
 /**
  * Mark all tasks as ready to run and reschedule the highest priority task.
  */
