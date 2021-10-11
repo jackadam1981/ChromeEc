@@ -502,3 +502,13 @@ __override uint8_t board_get_usb_pd_port_count(void)
 	else
 		return CONFIG_USB_PD_PORT_MAX_COUNT;
 }
+
+__overridable uint8_t board_get_charge_port_count(void)
+{
+	if (board_adl_m_n_rvp)
+		return ((CONFIG_USB_PD_PORT_MAX_COUNT - 2) +
+				CONFIG_DEDICATED_CHARGE_PORT_COUNT);
+	else
+		return (CONFIG_USB_PD_PORT_MAX_COUNT +
+				CONFIG_DEDICATED_CHARGE_PORT_COUNT);
+}
