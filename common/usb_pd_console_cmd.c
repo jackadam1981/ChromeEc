@@ -85,7 +85,7 @@ static int command_pe(int argc, char **argv)
 
 	/* command: pe <port> <subcmd> <args> */
 	port = strtoi(argv[1], &e, 10);
-	if (*e || port >= board_get_usb_pd_port_count())
+	if (*e || port >= usb_pd_get_port_count())
 		return EC_ERROR_PARAM2;
 	if (!strncasecmp(argv[2], "dump", 4))
 		dump_pe(port);
@@ -121,7 +121,7 @@ static int command_cable(int argc, char **argv)
 		return EC_ERROR_PARAM_COUNT;
 
 	port = strtoi(argv[1], &e, 0);
-	if (*e || port >= board_get_usb_pd_port_count())
+	if (*e || port >= usb_pd_get_port_count())
 		return EC_ERROR_PARAM2;
 
 	ptype = get_usb_pd_cable_type(port);

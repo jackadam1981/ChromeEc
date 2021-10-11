@@ -1347,7 +1347,7 @@ int tcpci_get_chip_info(int port, int live,
 	int error;
 	int val;
 
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return EC_ERROR_INVAL;
 
 	i = &cached_info[port];
@@ -1427,7 +1427,7 @@ int tcpci_tcpm_init(int port)
 	int power_status;
 	int tries = TCPM_INIT_TRIES;
 
-	if (port >= board_get_usb_pd_port_count())
+	if (port >= usb_pd_get_port_count())
 		return EC_ERROR_INVAL;
 
 	while (1) {

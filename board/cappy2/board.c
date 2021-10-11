@@ -249,7 +249,7 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 
 __override void typec_set_source_current_limit(int port, enum tcpc_rp_value rp)
 {
-	if (port < 0 || port > board_get_usb_pd_port_count())
+	if (port < 0 || port > CONFIG_USB_PD_PORT_MAX_COUNT)
 		return;
 
 	raa489000_set_output_current(port, rp);
