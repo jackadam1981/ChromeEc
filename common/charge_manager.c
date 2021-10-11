@@ -37,6 +37,7 @@
 #define POWER_SWAP_TIMEOUT (PD_T_SRC_RECOVER_MAX + PD_T_SRC_TURN_ON + \
 			    PD_T_SAFE_0V + 500 * MSEC)
 
+#define DEDICATED_PORT_UNINITIALIZED -1
 /*
  * Default charge supplier priority
  *
@@ -169,14 +170,14 @@ static int is_sink(int port)
  * configuration. The ports that fall in that hole are invalid and this function
  * is used to check the validity of the ports.
  */
-static int is_valid_port(int port)
+static bool is_valid_port(int port)
 {
 	if (port < 0 || port >= charge_manager_get_port_count())
 		return 0;
 
 	/* Check if the port falls in the hole */
 	if (port >= board_get_usb_pd_port_count() &&
-	    port < CONFIG_USB_PD_PORT_MAX_COUNT)
+	    port != charge_manager_get_dedicated_charge_port())
 		return 0;
 	return 1;
 }
@@ -1491,16 +1492,17 @@ static enum ec_status hc_override_dedicated_charger_limit(
 		.current = p->current_lim,
 		.voltage = p->voltage_lim,
 	};
+	int dedicated_charge_port = charge_manager_get_dedicated_charge_port();
 
 	/*
 	 * Allow a change only if the dedicated charge port is used. Host needs
 	 * to apply a change every time a dedicated charger is plugged.
 	 */
-	if (charge_port != DEDICATED_CHARGE_PORT)
+	if (charge_port != dedicated_charge_port)
 		return EC_RES_UNAVAILABLE;
 
 	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
-				     DEDICATED_CHARGE_PORT, &ci);
+				     dedicated_charge_port, &ci);
 
 	return EC_RES_SUCCESS;
 }
@@ -1647,4 +1649,31 @@ __attribute__((const)) int charge_manager_get_port_count(void)
 {
 	return (usb_pd_get_port_count() +
 		CONFIG_DEDICATED_CHARGE_PORT_COUNT);
+}
+
+/* Variable to decide the dedicated charge port index at runtime */
+static int dedicated_port_index = DEDICATED_PORT_UNINITIALIZED;
+
+/*
+ * Get the port index of dedicated charge port.
+ */
+int charge_manager_get_dedicated_charge_port(void)
+{
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+	if (dedicated_port_index == DEDICATED_PORT_UNINITIALIZED)
+		dedicated_port_index = DEDICATED_CHARGE_PORT;
+#endif
+	return dedicated_port_index;
+}
+
+/*
+ * Set the the port index of dedicated charge port.
+ */
+void charge_manager_set_dedicated_charge_port(int count)
+{
+#if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+	if ((count >= usb_pd_get_port_count())
+			&& (count < charge_manager_get_port_count()))
+		dedicated_port_index = count;
+#endif
 }
