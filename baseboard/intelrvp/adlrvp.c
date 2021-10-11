@@ -418,6 +418,25 @@ static void configure_usb_ports(void)
 		break;
 	}
 }
+
+#ifdef VARIANT_INTELRVP_EC_IT8320
+static void disable_unwanted_tasks(void)
+{
+	if (adlrvp_usb_ports < 3) {
+		if (is_task_enabled(TASK_ID_PD_C3))
+			task_disable_task(TASK_ID_PD_C3);
+		if (is_task_enabled(TASK_ID_PD_C2))
+			task_disable_task(TASK_ID_PD_C2);
+		if (is_task_enabled(TASK_ID_PD_INT_C3))
+			task_disable_task(TASK_ID_PD_INT_C3);
+		if (is_task_enabled(TASK_ID_PD_INT_C2))
+			task_disable_task(TASK_ID_PD_INT_C2);
+		CPRINTS("Unwanted Tasks disabled!");
+	}
+}
+DECLARE_HOOK(HOOK_CHIPSET_STARTUP, disable_unwanted_tasks, HOOK_PRIO_FIRST);
+#endif
+
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
