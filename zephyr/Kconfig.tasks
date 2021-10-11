@@ -297,4 +297,11 @@ config HAS_TASK_USB_CHG_P2
 
 	  There is one of these tasks for each USB-C port on the device.
 
+config PLATFORM_EC_TASK_ENABLE_RUNTIME
+	bool "Enable only specific tasks at run time"
+	help
+	  Enable runtime adjustment of tasks that can be enabled. Board code can
+	  call task_add_to_disable_list() to limit the number of tasks to be
+	  enabled.
+
 endmenu # Tasks
