@@ -113,6 +113,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2735c143_d13b670e",
+        "filename": "zephyr/emul/Kconfig.tcpc",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-11T20:19:05Z",
+      "side": 1,
+      "message": "Thanks.",
+      "parentUuid": "f024e41f_72cd93d6",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "45aecf62_4ca50f6a",
@@ -298,6 +322,24 @@
       "side": 1,
       "message": "Right now this code allows to setup chain of two messages. Pointer to the first one is data-\u003erx_msg. Pointer to the second message is data-\u003erx_msg-\u003enext. Maybe it is not reasonable to limit this to two messages, only because TCPCI specification says that TCPC has two buffers for messages. I will keep it as it is now and provide fix (if required) later when it will be needed (e.g. for emulating partner device).",
       "parentUuid": "2e77c53e_fc91d43e",
+      "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "312f2b74_4c5e73b0",
+        "filename": "zephyr/emul/emul_tcpc.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-11T20:19:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e152d113_6b0e2814",
       "revId": "ea18505f2aed306413cc7509c44276d506a9b22b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
