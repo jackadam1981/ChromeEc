@@ -338,4 +338,12 @@ void board_fill_source_power_info(int port,
  * @param port  Dedicated charge port.
  */
 __override_proto int board_get_vbus_voltage(int port);
+
+/**
+ * Get charge port count
+ *
+ * @return charge port count
+ */
+__attribute__((const)) int charge_manager_get_port_count(void);
+
 #endif /* __CROS_EC_CHARGE_MANAGER_H */

@@ -171,7 +171,7 @@ static int is_sink(int port)
  */
 static int is_valid_port(int port)
 {
-	if (port < 0 || port >= CHARGE_PORT_COUNT)
+	if (port < 0 || port >= charge_manager_get_port_count())
 		return 0;
 
 	/* Check if the port falls in the hole */
@@ -217,7 +217,7 @@ static void charge_manager_init(void)
 {
 	int i, j;
 
-	for (i = 0; i < CHARGE_PORT_COUNT; ++i) {
+	for (i = 0; i < charge_manager_get_port_count(); ++i) {
 		if (!is_valid_port(i))
 			continue;
 		for (j = 0; j < CHARGE_SUPPLIER_COUNT; ++j) {
@@ -252,7 +252,7 @@ static int charge_manager_is_seeded(void)
 		return 1;
 
 	for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i) {
-		for (j = 0; j < CHARGE_PORT_COUNT; ++j) {
+		for (j = 0; j < charge_manager_get_port_count(); ++j) {
 			if (!is_valid_port(j))
 				continue;
 			if (available_charge[i][j].current ==
@@ -639,7 +639,7 @@ static void charge_manager_get_best_charge_port(int *new_port,
 		 * so make no assumptions about its consistency.
 		 */
 		for (i = 0; i < CHARGE_SUPPLIER_COUNT; ++i)
-			for (j = 0; j < CHARGE_PORT_COUNT; ++j) {
+			for (j = 0; j < charge_manager_get_port_count(); ++j) {
 				/* Skip this port if it is not valid. */
 				if (!is_valid_port(j))
 					continue;
@@ -1440,7 +1440,7 @@ static enum ec_status hc_pd_power_info(struct host_cmd_handler_args *args)
 	 * contract with ectool users. The invalid ports will have the response
 	 * voltage, current and power parameters set to 0.
 	 */
-	if (port >= CHARGE_PORT_COUNT)
+	if (port >= charge_manager_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	charge_manager_fill_power_info(port, r);
@@ -1457,7 +1457,7 @@ static enum ec_status hc_charge_port_count(struct host_cmd_handler_args *args)
 	struct ec_response_charge_port_count *resp = args->response;
 
 	args->response_size = sizeof(*resp);
-	resp->port_count = CHARGE_PORT_COUNT;
+	resp->port_count = charge_manager_get_port_count();
 
 	return EC_RES_SUCCESS;
 }
@@ -1472,7 +1472,7 @@ hc_charge_port_override(struct host_cmd_handler_args *args)
 	const int16_t override_port = p->override_port;
 
 	if (override_port < OVERRIDE_DONT_CHARGE ||
-	    override_port >= CHARGE_PORT_COUNT)
+	    override_port >= charge_manager_get_port_count())
 		return EC_RES_INVALID_PARAM;
 
 	return charge_manager_set_override(override_port) == EC_SUCCESS ?
@@ -1518,7 +1518,7 @@ static int command_charge_port_override(int argc, char **argv)
 	if (argc >= 2) {
 		port = strtoi(argv[1], &e, 0);
 		if (*e || port < OVERRIDE_DONT_CHARGE ||
-		    port >= CHARGE_PORT_COUNT)
+		    port >= charge_manager_get_port_count())
 			return EC_ERROR_PARAM1;
 		ret = charge_manager_set_override(port);
 	}
@@ -1641,4 +1641,10 @@ void board_fill_source_power_info(int port,
 	r->meas.current_max = 0;
 	r->meas.current_lim = 0;
 	r->max_power = 0;
+}
+
+__attribute__((const)) int charge_manager_get_port_count(void)
+{
+	return (usb_pd_get_port_count() +
+		CONFIG_DEDICATED_CHARGE_PORT_COUNT);
 }
