@@ -16,6 +16,23 @@
       "message": "By removing ifdef guard from tcpci.h as suggested in the comment, I was able to add unit test for this function.",
       "revId": "9f5b7b6fdce63b831e84b4400233d231c9276e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab44afe2_aafce595",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-11T20:15:35Z",
+      "side": 1,
+      "message": "If you are adding the test in this CL, you should change the commit message to reflect that. I would say adding the test is the main thing, and changing the preprocessor logic is only secondary.",
+      "revId": "9f5b7b6fdce63b831e84b4400233d231c9276e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
