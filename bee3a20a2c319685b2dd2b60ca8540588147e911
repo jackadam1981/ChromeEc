@@ -56,6 +56,30 @@
       },
       "revId": "bee3a20a2c319685b2dd2b60ca8540588147e911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7da607b7_fc409ccd",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-11T21:29:28Z",
+      "side": 1,
+      "message": "Agree. Or use:\n  uint8_t start \u003d 0x2f;\n  uint8_t size \u003d 11;\n  \nAnd replace the below values to `start` or `start + size`.",
+      "parentUuid": "1ebb24d2_79779229",
+      "range": {
+        "startLine": 681,
+        "startChar": 14,
+        "endLine": 681,
+        "endChar": 16
+      },
+      "revId": "bee3a20a2c319685b2dd2b60ca8540588147e911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
