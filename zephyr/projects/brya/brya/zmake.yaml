@@ -5,6 +5,7 @@
 board: brya
 dts-overlays:
   - gpio.dts
+  - cbi_eeprom.dts
 supported-toolchains:
   - coreboot-sdk
   - zephyr
