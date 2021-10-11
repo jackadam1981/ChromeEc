@@ -10,6 +10,7 @@
 #include "panic.h"
 #include "task.h"
 #include "timer.h"
+#include "util.h"
 #include "watchdog.h"
 
 /*
@@ -24,6 +25,7 @@ void __keep watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 {
 	uint32_t psp;
 	uint32_t *stack;
+	struct panic_data * const pdata = get_panic_data_write();
 
 	asm("mrs %0, psp" : "=r"(psp));
 	if ((excep_lr & 0xf) == 1) {
@@ -36,6 +38,9 @@ void __keep watchdog_trace(uint32_t excep_lr, uint32_t excep_sp)
 
 	panic_set_reason(PANIC_SW_WATCHDOG, stack[STACK_IDX_REG_PC],
 			 (excep_lr & 0xf) == 1 ? 0xff : task_get_current());
+
+	/* Copy exception frame to panic data. */
+	memcpy(pdata->cm.frame, stack, sizeof(pdata->cm.frame));
 
 	/*
 	 * This is our last breath, the last opportunity to sort out all

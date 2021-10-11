@@ -68,6 +68,11 @@ static int parse_panic_info_cm(const struct panic_data *pdata)
 	print_panic_reg(14, sregs, 5);
 	print_panic_reg(15, sregs, 6);
 
+	printf("cfsr = %x, ", pdata->cm.cfsr);
+	printf("shcsr = %x, ", pdata->cm.shcsr);
+	printf("hfsr = %x, ", pdata->cm.hfsr);
+	printf("dfsr = %x\n", pdata->cm.dfsr);
+
 	return 0;
 }
 
