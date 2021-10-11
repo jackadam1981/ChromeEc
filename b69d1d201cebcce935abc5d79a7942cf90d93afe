@@ -202,6 +202,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba5d883e_c7c94ba0",
+        "filename": "common/charger.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-11T23:00:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9397b73a_6eb99f56",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 25
+      },
+      "revId": "b69d1d201cebcce935abc5d79a7942cf90d93afe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "703c38aa_f1ef360c",

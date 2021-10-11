@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f1afc81_78c8e52f",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-11T23:00:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e805ad19_23258790",
+      "revId": "6333e72663448e9b0fbbfd0a9289070012246168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52f4c8c1_d6a1eb91",
@@ -35,6 +53,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "995f0b81_8bb47c56",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-11T23:00:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "52f4c8c1_d6a1eb91",
+      "revId": "6333e72663448e9b0fbbfd0a9289070012246168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b59b619a_d7b4ceea",
@@ -48,6 +84,30 @@
       "writtenOn": "2021-10-11T17:58:13Z",
       "side": 1,
       "message": "chg_chips[chgnum].drv-\u003eget_info(chgnum)",
+      "range": {
+        "startLine": 261,
+        "startChar": 26,
+        "endLine": 261,
+        "endChar": 42
+      },
+      "revId": "6333e72663448e9b0fbbfd0a9289070012246168",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc8f3890_1b70a068",
+        "filename": "common/charger.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-11T23:00:05Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b59b619a_d7b4ceea",
       "range": {
         "startLine": 261,
         "startChar": 26,
