@@ -22,6 +22,30 @@
       },
       "revId": "00665d5c7a0a856f13c9ac95d318737076c9deee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d265cd4_6f724ea8",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 39
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T00:18:49Z",
+      "side": 1,
+      "message": "There\u0027s a 1 byte difference when comparing voxel before and after this change when comparing the gcc version. It looks like it\u0027s \"__data_lma_start\":\n\norig:\n\n 100a2e20 R __data_lma_start\n \nvs with this change:\n\n 100a2e60 A __data_lma_start\n\nNeither of those values seems to match the LMA address of the .data section (0x100a2e74):\n\n arm-none-eabi-objdump -h /tmp/compare_build.nU66/ec-e157ee5ecf15df96a76555a0fd051aa4b1cf2462/build/voxel/RW/ec.RW.elf \n\n Sections:\nIdx Name          Size      VMA       LMA       File off  Algn\n  0 .text         00028040  10070000  10070000  00010000  2**2\n                  CONTENTS, ALLOC, LOAD, READONLY, CODE\n  1 .rodata       0000ae34  10098040  10098040  00038040  2**2\n                  CONTENTS, ALLOC, LOAD, READONLY, DATA\n  2 .data         00000538  200b8368  100a2e74  00048368  2**3\n                  CONTENTS, ALLOC, LOAD, DATA\n  3 .bss          00008050  200b0000  200b0000  00050000  2**3\n                  ALLOC\n  4 .bss.slow     00000318  200b8050  200b8050  00050000  2**3\n                  ALLOC\n  5 .debug_info   00124094  00000000  00000000  000488a0  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n  6 .debug_abbrev 000176b8  00000000  00000000  0016c934  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n  7 .debug_line   0003e645  00000000  00000000  00183fec  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n  8 .debug_str    00022902  00000000  00000000  001c2631  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n  9 .debug_loc    000512b4  00000000  00000000  001e4f33  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n 10 .debug_aranges 000000a8  00000000  00000000  002361e8  2**3\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n 11 .debug_ranges 0000c1a0  00000000  00000000  00236290  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n 12 .comment      00000023  00000000  00000000  00242430  2**0\n                  CONTENTS, READONLY\n 13 .debug_frame  0000a400  00000000  00000000  00242454  2**2\n                  CONTENTS, READONLY, DEBUGGING, OCTETS",
+      "parentUuid": "50ad04a4_625783d3",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 36
+      },
+      "revId": "00665d5c7a0a856f13c9ac95d318737076c9deee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
