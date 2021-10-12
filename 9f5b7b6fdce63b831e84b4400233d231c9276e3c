@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ec4578cf_77122d31",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-12T00:25:57Z",
+      "side": 1,
+      "message": "Hi Tomasz. buildall works without this, right? Our convention is we don\u0027t mark every maybe-unused API as __maybe_unused.",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 14
+      },
+      "revId": "9f5b7b6fdce63b831e84b4400233d231c9276e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab44afe2_aafce595",
         "filename": "zephyr/test/drivers/src/tcpci.c",
         "patchSetId": 4
@@ -31,6 +54,24 @@
       "writtenOn": "2021-10-11T20:15:35Z",
       "side": 1,
       "message": "If you are adding the test in this CL, you should change the commit message to reflect that. I would say adding the test is the main thing, and changing the preprocessor logic is only secondary.",
+      "revId": "9f5b7b6fdce63b831e84b4400233d231c9276e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "075d015f_429a78d3",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-12T00:25:57Z",
+      "side": 1,
+      "message": "+1.",
+      "parentUuid": "ab44afe2_aafce595",
       "revId": "9f5b7b6fdce63b831e84b4400233d231c9276e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
