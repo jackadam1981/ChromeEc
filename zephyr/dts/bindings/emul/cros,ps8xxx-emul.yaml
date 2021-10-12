@@ -1,0 +1,28 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: Zephyr PS8xxx emulator
+
+compatible: "cros,ps8xxx-emul"
+
+include: base.yaml
+
+properties:
+    tcpci-i2c:
+      type: phandle
+      required: true
+      description:
+        Base TCPCI emulator
+
+    p0-i2c-addr:
+      type: int
+      required: true
+      description:
+        First hidden I2C address
+
+    p1-i2c-addr:
+      type: int
+      required: true
+      description:
+        Second hidden I2C address
