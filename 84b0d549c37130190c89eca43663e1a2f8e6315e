@@ -16,6 +16,24 @@
       "message": "Do we need change for kukui firmware branch?",
       "revId": "84b0d549c37130190c89eca43663e1a2f8e6315e",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25a2b274_3d74334e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-10-12T07:54:29Z",
+      "side": 1,
+      "message": "\u003e Do we need change for kukui firmware branch?\n\nWe don\u0027t. It is picked to make other needed changes apply cleanly.",
+      "parentUuid": "0f619f40_8b9eee81",
+      "revId": "84b0d549c37130190c89eca43663e1a2f8e6315e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
