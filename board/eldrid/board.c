@@ -187,10 +187,12 @@ __override void board_set_charge_limit(int port, int supplier, int charge_ma,
 	 * 90% negotiated limit.
 	 */
 	charge_ma = charge_ma * 90 / 100;
+	charge_ma = MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT);
 
-	charge_set_input_current_limit(MAX(charge_ma,
-					CONFIG_CHARGER_INPUT_CURRENT),
-					charge_mv);
+	if (supplier == CHARGE_SUPPLIER_PD)
+		charge_ma = MIN(charge_ma, max_ma);
+
+	charge_set_input_current_limit(charge_ma, charge_mv);
 }
 
 /******************************************************************************/

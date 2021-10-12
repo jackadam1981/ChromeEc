@@ -98,9 +98,12 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, baseboard_chipset_resume, HOOK_PRIO_DEFAULT);
 __overridable void board_set_charge_limit(int port, int supplier, int charge_ma,
 			    int max_ma, int charge_mv)
 {
-	charge_set_input_current_limit(MAX(charge_ma,
-					   CONFIG_CHARGER_INPUT_CURRENT),
-				       charge_mv);
+	charge_ma = MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT);
+
+	if (supplier == CHARGE_SUPPLIER_PD)
+		charge_ma = MIN(charge_ma, max_ma);
+
+	charge_set_input_current_limit(charge_ma, charge_mv);
 }
 
 /* Keyboard scan setting */

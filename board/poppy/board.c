@@ -667,7 +667,12 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	if (charge_mv > 5000)
 		charge_ma -= 52;
 
-	charge_set_input_current_limit(MAX(charge_ma, ILIM_MIN_MA), charge_mv);
+	charge_ma = MAX(charge_ma, ILIM_MIN_MA);
+
+	if (supplier == CHARGE_SUPPLIER_PD)
+		charge_ma = MIN(charge_ma, max_ma);
+
+	charge_set_input_current_limit(charge_ma, charge_mv);
 }
 
 void board_hibernate(void)

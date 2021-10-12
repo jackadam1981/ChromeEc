@@ -768,6 +768,10 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 	 * Request at most 95% of what's desired.
 	 */
 	icl = icl * 95 / 100;
+
+	if (supplier == CHARGE_SUPPLIER_PD)
+		icl = MIN(icl, max_ma);
+
 	charge_set_input_current_limit(icl, charge_mv);
 }
 

@@ -59,6 +59,10 @@ static timestamp_t thermal_wait_until;
 static int throttled_ma = PD_MAX_CURRENT_MA;
 /* charge_ma in last board_set_charge_limit call */
 static int prev_charge_limit;
+/* max_ma in last board_set_charge_limit call */
+static int prev_max_ma;
+/* supplier in last board_set_charge_limit call */
+static int prev_supplier;
 /* charge_mv in last board_set_charge_limit call */
 static int prev_charge_mv;
 
@@ -76,9 +80,12 @@ int board_cut_off_battery(void)
 
 static void board_set_charge_limit_throttle(int charge_ma, int charge_mv)
 {
-	charge_set_input_current_limit(
-		MIN(throttled_ma, MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT)),
-		charge_mv);
+	charge_ma = MAX(charge_ma, CONFIG_CHARGER_INPUT_CURRENT);
+
+	if (prev_supplier == CHARGE_SUPPLIER_PD)
+		charge_ma = MIN(charge_ma, prev_max_ma);
+
+	charge_set_input_current_limit(MIN(throttled_ma, charge_ma), charge_mv);
 }
 
 static void battery_thermal_control(struct charge_state_data *curr)
@@ -362,5 +369,8 @@ void board_set_charge_limit(int port, int supplier, int charge_ma,
 {
 	prev_charge_limit = charge_ma;
 	prev_charge_mv = charge_mv;
+	prev_max_ma = max_ma;
+	prev_supplier = supplier;
+
 	board_set_charge_limit_throttle(charge_ma, charge_mv);
 }
