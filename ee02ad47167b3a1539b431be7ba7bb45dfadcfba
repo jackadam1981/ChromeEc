@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b674ab47_08ebfbd3",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-12T00:52:31Z",
+      "side": 1,
+      "message": "refer this CL:3211760 and you can add it in configure_retimer_usbmux() with appropriate name",
+      "range": {
+        "startLine": 389,
+        "startChar": 12,
+        "endLine": 389,
+        "endChar": 36
+      },
+      "revId": "ee02ad47167b3a1539b431be7ba7bb45dfadcfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f1606df_f0be4d55",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-12T00:52:31Z",
+      "side": 1,
+      "message": "move to line 153",
+      "revId": "ee02ad47167b3a1539b431be7ba7bb45dfadcfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd954546_de8e0178",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-12T00:52:31Z",
+      "side": 1,
+      "message": "pls publish a separate CL for this change, we need to add this config in ./util/config_allowed.txt",
+      "revId": "ee02ad47167b3a1539b431be7ba7bb45dfadcfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
