@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fd41768_5bb4f69e",
+        "filename": "board/anahera/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-12T03:58:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0de69315_25c73909",
+      "range": {
+        "startLine": 37,
+        "startChar": 29,
+        "endLine": 37,
+        "endChar": 38
+      },
+      "revId": "0ccaa78206fce163765bc1ad1d5dcc6175dd7dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96066167_1dcdef7f",
@@ -85,6 +109,54 @@
       "side": 1,
       "message": "It will not go down multile levels at a time. since the temperature is linear and down slowly. we have around 2 degrees each step also prevent down multiple levels at a time.",
       "parentUuid": "96066167_1dcdef7f",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 5
+      },
+      "revId": "0ccaa78206fce163765bc1ad1d5dcc6175dd7dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a7f0b37_3aba7e27",
+        "filename": "board/anahera/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-12T03:58:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0dbd6dac_de85fdb5",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 5
+      },
+      "revId": "0ccaa78206fce163765bc1ad1d5dcc6175dd7dc8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55fbf885_581f96f9",
+        "filename": "board/anahera/thermal.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-12T03:58:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0dbd6dac_de85fdb5",
       "range": {
         "startLine": 100,
         "startChar": 2,
