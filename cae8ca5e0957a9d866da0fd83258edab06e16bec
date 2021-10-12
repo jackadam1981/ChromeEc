@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f4f4bb2_3bd56c57",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-12T16:12:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3718372a_282e2919",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 60
+      },
+      "revId": "cae8ca5e0957a9d866da0fd83258edab06e16bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f56a7d8_c0b88242",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c0cda70_92b05d70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-12T16:12:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f56a7d8_c0b88242",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 62
+      },
+      "revId": "cae8ca5e0957a9d866da0fd83258edab06e16bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2bb368bf_8fc1c6d9",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-12T03:08:18Z",
       "side": 1,
       "message": "and this in a third",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 41
+      },
+      "revId": "cae8ca5e0957a9d866da0fd83258edab06e16bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "facfcb85_c1689647",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-12T16:12:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2bb368bf_8fc1c6d9",
       "range": {
         "startLine": 19,
         "startChar": 0,
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-12T03:08:18Z",
       "side": 1,
       "message": "over-indented?",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 10
+      },
+      "revId": "cae8ca5e0957a9d866da0fd83258edab06e16bec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbfecf7d_ec259e93",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-12T16:12:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acc10ccb_0a269057",
       "range": {
         "startLine": 187,
         "startChar": 8,
