@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3979da72_625db429",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-12T00:43:41Z",
+      "side": 1,
+      "message": "add additional ADL-N board SKU ?",
+      "range": {
+        "startLine": 7,
+        "startChar": 8,
+        "endLine": 7,
+        "endChar": 57
+      },
+      "revId": "7976d8f6fd05b4450bf8dc7b9276e08bd0567009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76bc5b63_ecc06ee2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-12T00:43:41Z",
+      "side": 1,
+      "message": "its already at one place, can you add code where these are being referenced, may be mux config code to start with?",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "7976d8f6fd05b4450bf8dc7b9276e08bd0567009",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
