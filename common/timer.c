@@ -211,9 +211,14 @@ void usleep(unsigned us)
 			  evt & ~TASK_EVENT_TIMER);
 }
 
+__test_only timestamp_t *get_time_mock = NULL;
+
 timestamp_t get_time(void)
 {
 	timestamp_t ts;
+
+	if (IS_ENABLED(CONFIG_ZTEST) && get_time_mock != NULL)
+		return *get_time_mock;
 
 	if (IS_ENABLED(CONFIG_HWTIMER_64BIT)) {
 		ts.val = __hw_clock_source_read64();
