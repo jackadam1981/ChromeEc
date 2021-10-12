@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "47e708d1_833e3488",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 39
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-12T04:07:58Z",
+      "side": 1,
+      "message": "I cannot pass buildall test, I have several build errors. Not sure if this is due to different build environment:\n\nsome of the error messages:\n\n  /opt/coreboot-/sdkopt//libcoreboot/-gccsdk//armlib-/eabigcc//8.3.0arm/-.eabi.//8.3.0./../../../../../.arm/-.eabi.//binarm/-ldeabi:/ binsection/ ld.:fill  sectionVMA  .[fill00000000100bf2a0 ,VMA00000000100bffff ][ 00000000100bf720overlaps, 00000000100bffffsection]  .overlapsrodata  sectionVMA  .[rodata00000000100b57f4 ,VMA00000000100bf2df ][    \n00000000100b74fc,00000000100bf75f]\n collect2: error: ld returned 1 exit status\n collect2: error: ld returned 1 exit status\n make[2]: *** [Makefile.rules:555: build/volteer/RO/ec.RO.elf] Error 1\n make[2]: *** [Makefile.rules:555: build/lingcod/RO/ec.RO.elf] Error 1\n make[1]: *** [Makefile.rules:255: proj-lingcod] Error 2\n make[1]: *** [Makefile.rules:255: proj-volteer] Error 2",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "00665d5c7a0a856f13c9ac95d318737076c9deee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4779dab0_7eb7b95f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 39
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-12T04:07:58Z",
+      "side": 1,
+      "message": "It seems only",
+      "revId": "00665d5c7a0a856f13c9ac95d318737076c9deee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50ad04a4_625783d3",
         "filename": "core/cortex-m/ec.lds.S",
         "patchSetId": 39
