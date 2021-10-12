@@ -65,6 +65,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e27cac40_1636ed99",
+        "filename": "driver/tcpm/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-12T15:36:20Z",
+      "side": 1,
+      "message": "Daisuke, __maybe_unused was my suggestion as an alternative to #ifdefing the function definition. But now that the #ifdef is removed from the header file (good catch), changing the C file isn\u0027t necessary.",
+      "parentUuid": "73d952c7_cc90d4c9",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 14
+      },
+      "revId": "9f5b7b6fdce63b831e84b4400233d231c9276e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ab44afe2_aafce595",
@@ -114,6 +138,24 @@
       "side": 1,
       "message": "Please check new version of commit message.",
       "parentUuid": "075d015f_429a78d3",
+      "revId": "9f5b7b6fdce63b831e84b4400233d231c9276e3c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9921ee1_9a2702bc",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1014,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-12T15:36:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "548931e0_87d8f37a",
       "revId": "9f5b7b6fdce63b831e84b4400233d231c9276e3c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
