@@ -25,13 +25,13 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(named_cbi_ssfc) < 2,
 	     "More than 1 CBI SSFS node");
 #define CBI_SSFC_NODE DT_INST(0, named_cbi_ssfc)
 
-#define CBI_SSFC_INIT_DEFAULT_ID(id)                                           \
-	do {                                                                   \
-		if (DT_PROP(id, default)) {                                    \
-			cached_ssfc.CBI_SSFC_UNION_ENTRY_NAME(DT_PARENT(id)) = \
-				DT_PROP(id, value);                            \
-		}                                                              \
-	} while (0);
+#define CBI_SSFC_INIT_DEFAULT_ID(id)                                 \
+	do {                                                         \
+		if (DT_PROP(id, default)) {                          \
+			data->cached_ssfc.CBI_SSFC_UNION_ENTRY_NAME( \
+				DT_PARENT(id)) = DT_PROP(id, value); \
+		}                                                    \
+	} while (0)
 
 #define CBI_SSFC_INIT_DEFAULT(inst) CBI_SSFC_INIT_DEFAULT_ID(DT_DRV_INST(inst))
 
@@ -46,7 +46,8 @@ BUILD_ASSERT(DT_NUM_INST_STATUS_OKAY(named_cbi_ssfc) < 2,
 
 #define CBI_SSFC_PARENT_VALUE_CASE_GENERATE(value_id, value_parent) \
 	case value_id:                                              \
-		return value_parent;
+		*value = value_parent;                              \
+		break;
 
 #define CBI_SSFC_PARENT_VALUE_CASE_ID(id)    \
 	CBI_SSFC_PARENT_VALUE_CASE_GENERATE( \
@@ -125,14 +126,13 @@ union cbi_ssfc {
 };
 
 BUILD_ASSERT(sizeof(union cbi_ssfc) == sizeof(uint32_t),
-	     "CBI SSFS structure exceedes 32 bits");
+	     "CBI SSFS structure exceeds 32 bits");
 
 DT_INST_FOREACH_STATUS_OKAY(CBI_SSFC_VALUE_BUILD_ASSERT)
 
 static const uint8_t ssfc_values[] = {
 	DT_INST_FOREACH_STATUS_OKAY(CBI_SSFC_VALUE_ARRAY)
 };
-static union cbi_ssfc cached_ssfc __attribute__((unused));
 
 /* CBI SSFC part end */
 
@@ -161,27 +161,34 @@ static void cros_cbi_ssfc_init(const struct device *dev)
 	LOG_INF("Read CBI SSFC : 0x%08X\n", data->cached_ssfc.raw_value);
 }
 
-static uint32_t cros_cbi_ssfc_get_parent_field_value(union cbi_ssfc cached_ssfc,
-						enum cbi_ssfc_value_id value_id)
+static int cros_cbi_ssfc_get_parent_field_value(union cbi_ssfc cached_ssfc,
+						enum cbi_ssfc_value_id value_id,
+						uint32_t *value)
 {
 	switch (value_id) {
 		DT_INST_FOREACH_STATUS_OKAY(CBI_SSFC_PARENT_VALUE_CASE)
 	default:
 		LOG_ERR("CBI SSFC parent field value not found: %d\n",
 		        value_id);
-		return 0;
+		return -EINVAL;
 	}
+	return 0;
 }
 
-static int cros_cbi_ec_ssfc_check_match(const struct device *dev,
-					enum cbi_ssfc_value_id value_id)
+static bool cros_cbi_ec_ssfc_check_match(const struct device *dev,
+					 enum cbi_ssfc_value_id value_id)
 {
 	struct cros_cbi_data *data = (struct cros_cbi_data *)(dev->data);
 	struct cros_cbi_config *cfg = (struct cros_cbi_config *)(dev->config);
+	int rc;
+	uint32_t value;
 
-	return cros_cbi_ssfc_get_parent_field_value(data->cached_ssfc,
-						    value_id) ==
-	       cfg->ssfc_values[value_id];
+	rc = cros_cbi_ssfc_get_parent_field_value(data->cached_ssfc,
+						    value_id, &value);
+	if (rc) {
+		return false;
+	}
+	return value == cfg->ssfc_values[value_id];
 }
 
 /* CBI SSFC part end */
