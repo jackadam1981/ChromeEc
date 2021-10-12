@@ -39,6 +39,29 @@
       },
       "revId": "71f93595c7e9762392158674f21aba3ba2115a4d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6157a7da_89fbe511",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-12T15:59:11Z",
+      "side": 1,
+      "message": "I searched through platform/cr50, and it looks like the inject fips fingerprint script is the only thing that uses the \".text\" section name, so I don\u0027t think moving the rest of this stuff to a different section will cause issues.",
+      "range": {
+        "startLine": 127,
+        "startChar": 1,
+        "endLine": 127,
+        "endChar": 13
+      },
+      "revId": "71f93595c7e9762392158674f21aba3ba2115a4d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
