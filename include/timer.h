@@ -177,4 +177,22 @@ static inline int time_after(uint32_t a, uint32_t b)
 	return time_until(a, b) < 0;
 }
 
+#ifdef CONFIG_ZTEST
+/**
+ * @brief Sets the timestamp to be returned by subsequent calls to get_time.
+ * Given the same argument, function is idempotent.
+ *
+ * @param time The timestamp that gets returned by subsequent get_time calls.
+ */
+void timer_mock_time(timestamp_t time);
+
+/**
+ * @brief Unmocks time such that subsequent calls to get_time return real
+ * unmocked timestamps. Function is idempotent.
+ *
+ * @param time The timestamp that gets returned by subsequent get_time calls.
+ */
+void timer_unmock_time(void);
+#endif /* CONFIG_ZTEST */
+
 #endif  /* __CROS_EC_TIMER_H */
