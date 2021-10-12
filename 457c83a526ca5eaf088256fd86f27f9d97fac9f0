@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0411976d_cd4b4f42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-12T16:13:17Z",
+      "side": 1,
+      "message": "Sure, I have added it to same patch. Let me know if it should be better in a separate CL.",
+      "parentUuid": "09a5147a_519d7c83",
+      "revId": "457c83a526ca5eaf088256fd86f27f9d97fac9f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d48e1a6c_60872bda",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95e31d04_a61730ec",
+        "filename": "baseboard/dedede/baseboard.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-12T16:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d48e1a6c_60872bda",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 47
+      },
+      "revId": "457c83a526ca5eaf088256fd86f27f9d97fac9f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f3eec2d_42c53563",
@@ -54,6 +96,30 @@
       "writtenOn": "2021-10-11T21:30:24Z",
       "side": 1,
       "message": "Move this so it\u0027s grouped with the other GPIO signals starting at line 107.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 49
+      },
+      "revId": "457c83a526ca5eaf088256fd86f27f9d97fac9f0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8088f819_3ab52848",
+        "filename": "board/akemi/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-12T16:13:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f3eec2d_42c53563",
       "range": {
         "startLine": 14,
         "startChar": 0,
