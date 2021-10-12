@@ -403,6 +403,7 @@ SECTIONS
 		__bss_libtpm2_end = .;
 
 		*(.bss)
+		*(.bss.*)
 
 		/*
 		 * Reserve space for deferred function firing times.
