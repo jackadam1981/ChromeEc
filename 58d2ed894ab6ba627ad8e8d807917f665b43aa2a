@@ -70,6 +70,24 @@
       "parentUuid": "4f4efb77_ea80a1a2",
       "revId": "58d2ed894ab6ba627ad8e8d807917f665b43aa2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "926ebb09_3d9b1393",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-12T16:58:10Z",
+      "side": 1,
+      "message": "Yes, agreed that FAFT would be unlikely to catch issues here.  If you have a TBT dock that also supports DP, there are some tast tests which you can run.  I\u0027ve been running those on Voxel to get confidence for the volteer platform.\n\nI can open a bug for enabling this task to discuss some manual test cases with Intel.",
+      "parentUuid": "4481fce6_6694e467",
+      "revId": "58d2ed894ab6ba627ad8e8d807917f665b43aa2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
