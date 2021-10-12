@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83cc9cda_1d9b1d5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-12T00:14:27Z",
+      "side": 1,
+      "message": "Nice clean-up. Thank you.",
+      "revId": "88e54640bd889efd2a6c8463245cf411ba247123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d13f3633_6230765e",
@@ -50,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8ce8614d_efe598f9",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-12T00:14:27Z",
+      "side": 1,
+      "message": "I think EC_ERROR_PARAM1 is enough. Console commands are for developers. We use ccprintf in console commands. I also agree the error message is too long. How about\n\n  if ((chgnum \u003c 0) || (chgnum \u003e\u003d board_get_charger_chip_count()))\n    return EC_ERROR_PARAM1;\n\n?",
+      "parentUuid": "4d79ec3d_ec5d55c1",
+      "range": {
+        "startLine": 237,
+        "startChar": 3,
+        "endLine": 237,
+        "endChar": 56
+      },
+      "revId": "88e54640bd889efd2a6c8463245cf411ba247123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6b9bd2cc_cff3f7d1",
         "filename": "common/charger.c",
         "patchSetId": 4
@@ -61,6 +102,30 @@
       "writtenOn": "2021-10-11T23:09:00Z",
       "side": 1,
       "message": "move to line 201",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 239,
+        "endChar": 3
+      },
+      "revId": "88e54640bd889efd2a6c8463245cf411ba247123",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88b11ae8_82eecd2a",
+        "filename": "common/charger.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-12T00:14:27Z",
+      "side": 1,
+      "message": "+1.",
+      "parentUuid": "6b9bd2cc_cff3f7d1",
       "range": {
         "startLine": 235,
         "startChar": 0,
