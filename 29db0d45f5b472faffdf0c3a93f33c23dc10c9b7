@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "192b28ed_568efbd5",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2021-10-12T07:40:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5d21b0fa_f19844c0",
+      "revId": "29db0d45f5b472faffdf0c3a93f33c23dc10c9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c5f4857_03556598",
@@ -58,6 +76,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83fb5248_7396953b",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2021-10-12T07:40:32Z",
+      "side": 1,
+      "message": "After discussing with the thermal team, we decided to change it back to the original 35 degrees. According to the measurement of the thermal team, if the temperature is set to 30 degrees, it may cause the fan to keep spinning and not stopping.",
+      "parentUuid": "3c5f4857_03556598",
+      "range": {
+        "startLine": 339,
+        "startChar": 24,
+        "endLine": 339,
+        "endChar": 26
+      },
+      "revId": "29db0d45f5b472faffdf0c3a93f33c23dc10c9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "13f7e1db_bca908c8",
@@ -71,6 +113,24 @@
       "writtenOn": "2021-10-11T17:24:23Z",
       "side": 1,
       "message": "Does this comment need to be updated?",
+      "revId": "29db0d45f5b472faffdf0c3a93f33c23dc10c9b7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "141b01b5_efec3f9f",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2021-10-12T07:40:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13f7e1db_bca908c8",
       "revId": "29db0d45f5b472faffdf0c3a93f33c23dc10c9b7",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
