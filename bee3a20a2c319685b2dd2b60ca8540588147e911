@@ -80,6 +80,30 @@
       },
       "revId": "bee3a20a2c319685b2dd2b60ca8540588147e911",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a2872bc_02c4c377",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-10-12T08:04:08Z",
+      "side": 1,
+      "message": "If set the array size to 11, the last bit of register 0x39 read will be 0, so need to set the array size to 12.",
+      "parentUuid": "7da607b7_fc409ccd",
+      "range": {
+        "startLine": 681,
+        "startChar": 14,
+        "endLine": 681,
+        "endChar": 16
+      },
+      "revId": "bee3a20a2c319685b2dd2b60ca8540588147e911",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
