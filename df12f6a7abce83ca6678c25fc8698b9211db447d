@@ -16,6 +16,24 @@
       "message": "I am concerned this won\u0027t have alignment with go/zephyr-variants when we add project name support (when zmake.yaml no longer maps to one build)",
       "revId": "df12f6a7abce83ca6678c25fc8698b9211db447d",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "165ec372_01c991e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-12T19:16:25Z",
+      "side": 1,
+      "message": "The --zephyr flag won\u0027t work as is once go/zephyr-variants lands. So I see this as an interim step.\n\nOnce go/zephyr-variants lands, we\u0027ll likely need a new option to zmake that simply outputs the project info.  Something like:\n    $ zmake show bobba\n    zmake project properties\n       program: octopus\n       chip: npcx7m6fb\n       output-format: npcx\n       name: bobba",
+      "parentUuid": "37a4436c_dc4c81ca",
+      "revId": "df12f6a7abce83ca6678c25fc8698b9211db447d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
