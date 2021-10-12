@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca574707_3c242794",
+        "filename": "zephyr/drivers/cros_cbi/cros_cbi.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1308749
+      },
+      "writtenOn": "2021-10-12T20:10:59Z",
+      "side": 1,
+      "message": "Same thing here.  Use DT_INST_FOREACH_STATUS_OKAY_VARGS to pass in cached_ssfc to CBI_SSFC_PARENT_VALUE_CASE.",
+      "range": {
+        "startLine": 169,
+        "startChar": 2,
+        "endLine": 169,
+        "endChar": 29
+      },
+      "revId": "1e4ae930092636135542b33421a9efe30232b8a7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
