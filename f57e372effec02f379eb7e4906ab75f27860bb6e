@@ -3,6 +3,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f040a418_57f39596",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-12T01:10:13Z",
+      "side": 1,
+      "message": "this needs to be based on the Type-C ports used + other I2C ports.\nit might break microchip adlrvp code.\n\nmove to board level or we have to find a generic way for adlrvp",
+      "revId": "f57e372effec02f379eb7e4906ab75f27860bb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "60b93237_2506d0cf",
+        "filename": "chip/it83xx/i2c.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-12T01:10:13Z",
+      "side": 1,
+      "message": "need to change for other EC chips also",
+      "revId": "f57e372effec02f379eb7e4906ab75f27860bb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c87bbe40_5373f222",
         "filename": "include/i2c.h",
         "patchSetId": 1
