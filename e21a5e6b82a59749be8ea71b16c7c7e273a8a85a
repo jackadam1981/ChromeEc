@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e24bc277_50b70643",
+        "filename": "include/config.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-12T04:07:54Z",
+      "side": 1,
+      "message": "also, this may be too generic a name. maybe\nCONFIG_BOARD_PROCHOT_CONTROL?",
+      "range": {
+        "startLine": 1143,
+        "startChar": 7,
+        "endLine": 1143,
+        "endChar": 29
+      },
+      "revId": "e21a5e6b82a59749be8ea71b16c7c7e273a8a85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a8a077ad_aebd80a3",
         "filename": "zephyr/shim/include/config_chip.h",
         "patchSetId": 10
