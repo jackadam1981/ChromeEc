@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "29b3c2c7_97df24e6",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-12T15:26:09Z",
+      "side": 1,
+      "message": "Don\u0027t you need \\n?",
+      "range": {
+        "startLine": 238,
+        "startChar": 29,
+        "endLine": 238,
+        "endChar": 30
+      },
+      "revId": "34396de139a62966ec7fef75e8f0589d49d6dc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c2de4da1_ebac6ff6",
         "filename": "common/charger.c",
         "patchSetId": 5
@@ -77,6 +100,30 @@
       "writtenOn": "2021-10-12T14:21:46Z",
       "side": 1,
       "message": "\"Get or set charger param(s). Dump registers.\"",
+      "range": {
+        "startLine": 253,
+        "startChar": 4,
+        "endLine": 253,
+        "endChar": 31
+      },
+      "revId": "34396de139a62966ec7fef75e8f0589d49d6dc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6412f8c4_6aa7e95a",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-12T15:26:09Z",
+      "side": 1,
+      "message": "To make it perfect, we need:\n\n  \"Get or set charger param(s)\"\n  #ifdef CONFIG_CMD_CHARGER_DUMP\n  \". Dump registers.\"\n  #endif\n\nI\u0027m not sure if this is too much for a console command. Alternatively, we can simply return error for \u0027dump\u0027 command if it\u0027s not supported:\n\n  } else if (strcasecmp(argv[1+idx_provided], \"dump\") \u003d\u003d 0) {\n    if (!IS_ENABLED(CONFIG_CMD_CHARGER_DUMP) ||\n        !chg_chips[chgnum]-\u003edump_registers) {\n      ccprintf(\"dump not supported\");\n      return EC_ERROR_PARAM0;\n    }\n    ...",
+      "parentUuid": "c2de4da1_ebac6ff6",
       "range": {
         "startLine": 253,
         "startChar": 4,
