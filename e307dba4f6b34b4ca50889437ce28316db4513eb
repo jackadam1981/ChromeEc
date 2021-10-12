@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8abbe258_613a4dff",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-12T15:50:55Z",
+      "side": 1,
+      "message": "why is this (apart from CFLAGS_CPU addition) not in the top level makefile",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 59
+      },
+      "revId": "e307dba4f6b34b4ca50889437ce28316db4513eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
