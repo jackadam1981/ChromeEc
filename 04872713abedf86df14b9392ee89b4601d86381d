@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6c5cacb_053af04d",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-12T14:53:15Z",
+      "side": 1,
+      "message": "You\u0027ll copy only one byte from data to value. Do you need to cast data to (uint32_t)? What does battparam command print? Callers are expecting uint32_t to be returned. If we\u0027re returning only a uint32_t, why are we reading whole 11-byte string? This function is copied in multiple boards. It looks bizarre to me.",
+      "range": {
+        "startLine": 693,
+        "startChar": 1,
+        "endLine": 693,
+        "endChar": 14
+      },
+      "revId": "04872713abedf86df14b9392ee89b4601d86381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
