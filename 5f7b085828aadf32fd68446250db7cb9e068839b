@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22863eb_9b770dc4",
+        "filename": "baseboard/brya/build.mk",
+        "patchSetId": 14
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2021-10-12T01:40:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d6652b3_cd168f46",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "5f7b085828aadf32fd68446250db7cb9e068839b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ff644ed_db714909",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-10-11T23:27:04Z",
       "side": 1,
       "message": "batt_params doesn\u0027t have to be global. It is primarily used in assert_prochot() and coould be passed to get_batt_parameter() for initialization",
+      "revId": "5f7b085828aadf32fd68446250db7cb9e068839b",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07764f09_6f26707a",
+        "filename": "baseboard/brya/prochot.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2021-10-12T01:40:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ff644ed_db714909",
       "revId": "5f7b085828aadf32fd68446250db7cb9e068839b",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
