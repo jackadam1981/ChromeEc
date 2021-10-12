@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d66735e0_75d9ba2a",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-12T11:18:33Z",
+      "side": 1,
+      "message": "It is possible to add tcpc mux to usb_muxes. It is done in #5 patch. I use usb_mux structure directly only to change flag USB_MUX_FLAG_NOT_TCPC, as init and low power functions behave differently with and without this flag.",
+      "parentUuid": "ba59a26f_bee73eaf",
+      "revId": "e88c0022abaa8eb694a099c6957bae0ac272cedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f0fa7065_d1645d89",
         "filename": "zephyr/test/drivers/src/tcpci.c",
         "patchSetId": 4
@@ -31,6 +49,30 @@
       "writtenOn": "2021-10-11T21:07:55Z",
       "side": 1,
       "message": "Nit: Delete unneeded comma",
+      "range": {
+        "startLine": 1088,
+        "startChar": 13,
+        "endLine": 1088,
+        "endChar": 14
+      },
+      "revId": "e88c0022abaa8eb694a099c6957bae0ac272cedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3874034_2e6e0552",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1088,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-12T11:18:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0fa7065_d1645d89",
       "range": {
         "startLine": 1088,
         "startChar": 13,
@@ -54,6 +96,24 @@
       "writtenOn": "2021-10-11T21:07:55Z",
       "side": 1,
       "message": "Does the test suite depend on this test having run first to initialize the mux? If so, please at least note that here. Ideally, the tests would not require a specific order.",
+      "revId": "e88c0022abaa8eb694a099c6957bae0ac272cedf",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80eef627_ac2cbd51",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 1278,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-12T11:18:33Z",
+      "side": 1,
+      "message": "All three tcpc usb mux tests can be run in different order. Init only wait for certain value in one register of TCPCI and clears alert register. It is possible for emulator to run any tcpc usb mux function without init without any issue.",
+      "parentUuid": "c084bd36_3ddee271",
       "revId": "e88c0022abaa8eb694a099c6957bae0ac272cedf",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
