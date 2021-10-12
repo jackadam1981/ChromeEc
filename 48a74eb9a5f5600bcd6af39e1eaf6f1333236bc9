@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ae5275f_d3d3e647",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2021-10-12T09:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a1180d5_3e8b3f0a",
+      "range": {
+        "startLine": 325,
+        "startChar": 3,
+        "endLine": 325,
+        "endChar": 48
+      },
+      "revId": "48a74eb9a5f5600bcd6af39e1eaf6f1333236bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "71cac510_c1bfc363",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-12T08:18:59Z",
       "side": 1,
       "message": "put your taeko bug here or remove if you\u0027re happy with these new values.",
+      "range": {
+        "startLine": 344,
+        "startChar": 3,
+        "endLine": 344,
+        "endChar": 48
+      },
+      "revId": "48a74eb9a5f5600bcd6af39e1eaf6f1333236bc9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b691a204_c5a0356c",
+        "filename": "board/taeko/sensors.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1461738
+      },
+      "writtenOn": "2021-10-12T09:17:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71cac510_c1bfc363",
       "range": {
         "startLine": 344,
         "startChar": 3,
