@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa37483a_6486badc",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-12T00:56:22Z",
+      "side": 1,
+      "message": "here \nstatic int adlrvp_usbc_ports \u003d CONFIG_USB_PD_PORT_MAX_COUNT \n\nin below code change it to 2 based on ID",
+      "revId": "c5f9d708d7df0882bd6abb9c6e4200bab268eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e55eb7c_89959300",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-12T00:56:22Z",
+      "side": 1,
+      "message": "here return adlrvp_usbc_port;",
+      "revId": "c5f9d708d7df0882bd6abb9c6e4200bab268eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ece24577_7aa3a491",
+        "filename": "common/usbc/usb_tc_drp_acc_trysrc_sm.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-12T00:56:22Z",
+      "side": 1,
+      "message": "pls split into 2 CLs",
+      "revId": "c5f9d708d7df0882bd6abb9c6e4200bab268eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
