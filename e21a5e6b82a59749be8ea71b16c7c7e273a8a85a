@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8a077ad_aebd80a3",
+        "filename": "zephyr/shim/include/config_chip.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-12T04:02:33Z",
+      "side": 1,
+      "message": "please also add the corresponding Kconfig.\nhave a look at some of the other patches that\nintroduce a new config for reference.",
+      "range": {
+        "startLine": 578,
+        "startChar": 7,
+        "endLine": 578,
+        "endChar": 29
+      },
+      "revId": "e21a5e6b82a59749be8ea71b16c7c7e273a8a85a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
