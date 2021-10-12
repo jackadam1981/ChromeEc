@@ -16,6 +16,24 @@
       "message": "I\u0027ll take your word for this. I don\u0027t know anything about DTS style.",
       "revId": "297f059830609ada0c081252d68b839ce4b8de22",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a14a6730_6594a09b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-12T10:18:51Z",
+      "side": 1,
+      "message": "Oh I\u0027m just going by the other examples in the main Zephyr boards/ directory and trying to be coherent with them. Don\u0027t think there\u0027s an actual formal coding style but the specs are here if you are curious: https://www.devicetree.org/",
+      "parentUuid": "c57de3b5_a09da1a2",
+      "revId": "297f059830609ada0c081252d68b839ce4b8de22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
