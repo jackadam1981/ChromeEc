@@ -89,19 +89,19 @@ int remote_flashing(int argc, char **argv)
 	if (!strcasecmp(argv[3], "erase")) {
 		cmd = VDO_CMD_FLASH_ERASE;
 		flash_offset[port] = 0;
-		ccprintf("ERASE ...");
+		ccprintf("ERASE");
 	} else if (!strcasecmp(argv[3], "reboot")) {
 		cmd = VDO_CMD_REBOOT;
-		ccprintf("REBOOT ...");
+		ccprintf("REBOOT");
 	} else if (!strcasecmp(argv[3], "signature")) {
 		cmd = VDO_CMD_ERASE_SIG;
-		ccprintf("ERASE SIG ...");
+		ccprintf("ERASE SIG");
 	} else if (!strcasecmp(argv[3], "info")) {
 		cmd = VDO_CMD_READ_INFO;
-		ccprintf("INFO...");
+		ccprintf("INFO");
 	} else if (!strcasecmp(argv[3], "version")) {
 		cmd = VDO_CMD_VERSION;
-		ccprintf("VERSION...");
+		ccprintf("VERSION");
 	} else {
 		int i;
 
@@ -111,10 +111,11 @@ int remote_flashing(int argc, char **argv)
 				return EC_ERROR_INVAL;
 		cmd = VDO_CMD_FLASH_WRITE;
 		cnt = argc;
-		ccprintf("WRITE %d @%04x ...", argc * 4,
+		ccprintf("WRITE %d @%04x ", argc * 4,
 			 flash_offset[port]);
 		flash_offset[port] += argc * 4;
 	}
+	ccprintf("...")
 
 	pd_send_vdm(port, USB_VID_GOOGLE, cmd, data, cnt);
 
@@ -143,8 +144,8 @@ bool pd_firmware_upgrade_check_power_readiness(int port)
 		if (batt.flags & BATT_FLAG_BAD_REMAINING_CAPACITY ||
 			batt.remaining_capacity <
 				MIN_BATTERY_FOR_PD_UPGRADE_MAH) {
-			CPRINTS("C%d: Cannot suspend for upgrade, not "
-					"enough battery (%dmAh)!",
+			CPRINTS("C%d: Low batt; can't upgrade "
+					"(%dmAh)!",
 					port, batt.remaining_capacity);
 			return false;
 		}
@@ -332,7 +333,7 @@ int pd_check_requested_voltage(uint32_t rdo, const int port)
 	if (max_ma > pdo_ma && !(rdo & RDO_CAP_MISMATCH))
 		return EC_ERROR_INVAL; /* too much max current */
 
-	CPRINTF("Requested %d mV %d mA (for %d/%d mA)\n",
+	CPRINTF("Req %dmV %dmA (for %d/%d mA)\n",
 		 ((pdo >> 10) & 0x3ff) * 50, (pdo & 0x3ff) * 10,
 		 op_ma * 10, max_ma * 10);
 
@@ -601,7 +602,7 @@ DECLARE_DEFERRED(re_enable_ports);
 void pd_handle_overcurrent(int port)
 {
 	if ((port < 0) || (port >= board_get_usb_pd_port_count())) {
-		CPRINTS("%s(%d) Invalid port!", __func__, port);
+		CPRINTS("%s(%d) Bad port!", __func__, port);
 		return;
 	}
 
@@ -974,7 +975,7 @@ static int command_tcpc_dump(int argc, char **argv)
 
 	port = atoi(argv[1]);
 	if ((port < 0) || (port >= board_get_usb_pd_port_count())) {
-		CPRINTS("%s(%d) Invalid port!", __func__, port);
+		CPRINTS("%s(%d) Bad port!", __func__, port);
 		return EC_ERROR_INVAL;
 	}
 	/* Dump TCPC registers. */
@@ -983,7 +984,7 @@ static int command_tcpc_dump(int argc, char **argv)
 	return EC_SUCCESS;
 }
 DECLARE_CONSOLE_COMMAND(tcpci_dump, command_tcpc_dump, "<Type-C port>",
-			"dump the TCPC regs");
+			"dump TCPC regs");
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
 
 void pd_srccaps_dump(int port)
@@ -991,18 +992,75 @@ void pd_srccaps_dump(int port)
 	int i;
 	const uint32_t *const srccaps = pd_get_src_caps(port);
 
+#ifndef CONFIG_SIMPLE_OUTPUT
+	uint32_t pdo;
+	uint32_t pdo_mask;
+	bool range_flag = true;
 	for (i = 0; i < pd_get_src_cap_cnt(port); ++i) {
 		uint32_t max_ma, max_mv, min_mv;
+		char* type;
+		pdo = srccaps[i];
+		pdo_mask = pdo & PDO_TYPE_MASK;
+		pd_extract_pdo_power(pdo, &max_ma, &max_mv, &min_mv);
 
-		pd_extract_pdo_power(srccaps[i], &max_ma, &max_mv, &min_mv);
-
-		if ((srccaps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
-			if (IS_ENABLED(CONFIG_USB_PD_REV30))
-				ccprintf("%d: %dmV-%dmV/%dmA\n", i, min_mv,
-					 max_mv, max_ma);
-		} else {
-			ccprintf("%d: %dmV/%dmA\n", i, max_mv, max_ma);
+		switch(pdo_mask) {
+			case PDO_TYPE_FIXED: 
+				type = "Fixed";
+				range_flag = false;
+				break;  
+			case PDO_TYPE_BATTERY: 
+				type = "Batt";
+				break;  
+			case PDO_TYPE_VARIABLE: 
+				type = "Var";
+				break;  
+			case PDO_TYPE_AUGMENTED:
+				type = "Augmnt";
+				if(!IS_ENABLED(CONFIG_USB_PD_REV30)) {
+					type = "Aug3.0";
+					range_flag = false;
+				}
+				break;
+			default: 
+				type = "?";
+				break;
 		}
+
+		ccprintf("Src %d: (%s) %dmV",i,type,max_mv);
+		if(range_flag) ccprintf("/%dmV",min_mv);
+		ccprintf(" %dm%c",max_ma, pdo_mask == PDO_TYPE_BATTERY ? 'W' : 'A');
+
+		if(pdo & PDO_FIXED_DUAL_ROLE) 		{ ccprintf(" DRP" ); }
+		if(pdo & PDO_FIXED_UNCONSTRAINED) 	{ ccprintf(" UP"  ); }
+		if(pdo & PDO_FIXED_COMM_CAP) 		{ ccprintf(" USB" ); }
+		if(pdo & PDO_FIXED_DATA_SWAP) 		{ ccprintf(" DRD" ); }
+		/* Note from ectool.c: FRS bits are reserved in PD 2.0 spec */
+		if(pdo & PDO_FIXED_FRS_CURR_MASK) 	{ ccprintf(" FRS" ); }
+
+#else
+	for (i = 0; i < pd_get_src_cap_cnt(port); ++i) {
+		uint32_t max_ma, max_mv, min_mv;
+		const uint32_t pdo = srccaps[i];
+		char type = '?';
+		pd_extract_pdo_power(pdo, &max_ma, &max_mv, &min_mv);
+
+		if	   ( (pdo & PDO_TYPE_MASK) == PDO_TYPE_FIXED) 		type =  'F';
+		else if( (pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY) 	type =  'B';
+		else if( (pdo & PDO_TYPE_MASK) == PDO_TYPE_VARIABLE) 	type =  'V';
+		else if( (pdo & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED)	type =  'A';
+
+		ccprintf("%d: %c %dmV/%dmV %dm%c",
+			i,type,max_mv,min_mv,max_ma, 
+			(pdo & PDO_TYPE_MASK) == PDO_TYPE_BATTERY ? 'W' : 'A');
+
+		if(pdo & PDO_FIXED_DUAL_ROLE) 		{ ccprintf(" D" ); }
+		if(pdo & PDO_FIXED_UNCONSTRAINED) 	{ ccprintf(" P" ); }
+		if(pdo & PDO_FIXED_COMM_CAP) 		{ ccprintf(" U" ); }
+		if(pdo & PDO_FIXED_DATA_SWAP) 		{ ccprintf(" R" ); }
+		/* Note from ectool.c: FRS bits are reserved in PD 2.0 spec */
+		if(pdo & PDO_FIXED_FRS_CURR_MASK) 	{ ccprintf(" F" ); }
+#endif
+		ccprintf("\n");
 	}
 }
 
