@@ -52,6 +52,24 @@
       "parentUuid": "82d977eb_60029069",
       "revId": "58d2ed894ab6ba627ad8e8d807917f665b43aa2a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4481fce6_6694e467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-12T05:36:40Z",
+      "side": 1,
+      "message": "i think it would be good to go back to some of the original setups that\nexposed this problem. intel had some TB dock that hit this originally\ni belive that would be a good check.\n\nbeyond that, i suspect any failures (new or old) aren\u0027t going to show up\nin FAFT and we\u0027ll have to monitor real world experience.",
+      "parentUuid": "4f4efb77_ea80a1a2",
+      "revId": "58d2ed894ab6ba627ad8e8d807917f665b43aa2a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
