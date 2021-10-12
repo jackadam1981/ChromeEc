@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "605a4409_6f990d8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-12T00:47:48Z",
+      "side": 1,
+      "message": "do we need this ? As version function info is called only once and also config is done at init we probably dont need this",
+      "revId": "50be884b579e3a668337988e91ab1388d5aca41f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
