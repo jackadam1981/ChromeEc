@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef759c3_379da5fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 39
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T18:31:44Z",
+      "side": 1,
+      "message": "One difference might be that I was testing \"make buildall\" only with this patch. I cherry-picked this patch to \"main\" and then did \"make buildall\". There are a lot of other changes in the stack, some of which I haven\u0027t yet fully tested with gcc.\n\nDoes it work if you cherry-pick? (I guess the CQ build is all that ultimately matters anyway though.)",
+      "parentUuid": "47e708d1_833e3488",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 36,
+        "endChar": 18
+      },
+      "revId": "00665d5c7a0a856f13c9ac95d318737076c9deee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "4779dab0_7eb7b95f",
@@ -120,6 +144,30 @@
       "side": 1,
       "message": "I\u0027ll try moving it so it\u0027s not a forward reference to see if that makes a difference.",
       "parentUuid": "9d265cd4_6f724ea8",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 36
+      },
+      "revId": "00665d5c7a0a856f13c9ac95d318737076c9deee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "335cb756_708f7e62",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 39
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T18:31:44Z",
+      "side": 1,
+      "message": "Actually, the above comment was wrong. I was looking at the smap for RO, but objdump\u0027ing RW.\n\nHere\u0027s the correct info from voxel. There\u0027s a 1-byte difference, which appears to only be in RO (RW address matches).\n\n original address from RO\u0027s smap:\n \n 100a2e20 R __data_lma_start\n \n new address from RO\u0027s smap:\n \n 100a2e60 A __data_lma_start\n \nIn both cases, when using objdump on RO.elf, .data starts at 100a2e60:\n\n arm-none-eabi-objdump -h /tmp/compare_build.Ltgh/ec-53a576c00f1b0d609d23a68a83e0340a14ee8fe5/build/voxel/RO/ec.RO.elf\n\n Sections:\nIdx Name          Size      VMA       LMA       File off  Algn\n  3 .data         00000538  200b8368  100a2e60  00058368  2**3\n                  CONTENTS, ALLOC, LOAD, DATA\n                  \n arm-none-eabi-objdump -h /tmp/compare_build.Ltgh/ec-f0c36b07d9efa2f5b12e5de7e794d723e8468e26/build/voxel/RO/ec.RO.elf \n\nSections:\nIdx Name          Size      VMA       LMA       File off  Algn\n  5 .data         00000538  200b8368  100a2e60  00058368  2**3\n                  CONTENTS, ALLOC, LOAD, DATA\n\n\nThe forward reference doesn\u0027t seem to be causing a problem and we were already using a forward reference with SIZEOF(.data) on line 356.\n\nConclusion: It looks like this actually fixes the gcc build as well. I guess we were getting lucky that copying from slightly outside of the data section worked. I\u0027ll open a bug to investigate the implications of the previously wrong code.",
+      "parentUuid": "e67457b6_15536f53",
       "range": {
         "startLine": 358,
         "startChar": 0,
