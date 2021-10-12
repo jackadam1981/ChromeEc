@@ -46,6 +46,30 @@
       },
       "revId": "00665d5c7a0a856f13c9ac95d318737076c9deee",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e67457b6_15536f53",
+        "filename": "core/cortex-m/ec.lds.S",
+        "patchSetId": 39
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-12T00:24:21Z",
+      "side": 1,
+      "message": "I\u0027ll try moving it so it\u0027s not a forward reference to see if that makes a difference.",
+      "parentUuid": "9d265cd4_6f724ea8",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 36
+      },
+      "revId": "00665d5c7a0a856f13c9ac95d318737076c9deee",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
