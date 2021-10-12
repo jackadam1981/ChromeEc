@@ -22,6 +22,30 @@
       },
       "revId": "35d7dd0ddb65d825cd47e01716d025bef6d0a268",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19d748d_e0b250db",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-12T20:27:34Z",
+      "side": 1,
+      "message": "This is not defined in brya configuration.",
+      "parentUuid": "4ea0d131_060ab28a",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "35d7dd0ddb65d825cd47e01716d025bef6d0a268",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
