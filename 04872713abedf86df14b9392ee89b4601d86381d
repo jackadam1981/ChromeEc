@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc86d532_07feb09e",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-12T15:07:32Z",
+      "side": 1,
+      "message": "const.",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 19
+      },
+      "revId": "04872713abedf86df14b9392ee89b4601d86381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21518f01_7387992e",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-12T15:07:32Z",
+      "side": 1,
+      "message": "nit: size + 1 /* terminating null */",
+      "range": {
+        "startLine": 683,
+        "startChar": 14,
+        "endLine": 683,
+        "endChar": 16
+      },
+      "revId": "04872713abedf86df14b9392ee89b4601d86381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a6c5cacb_053af04d",
         "filename": "board/homestar/board.c",
         "patchSetId": 2
