@@ -22,6 +22,30 @@
       },
       "revId": "c1382d50b0b61940276818ddd803c3112076523c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c96e9890_93511dc3",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-12T20:34:11Z",
+      "side": 1,
+      "message": "Two questions:\n1) What is the advantage of __test_only over ifdef CONFIG_ZTEST?\n2) Although it is only a tiny nominal amount, wouldn\u0027t this approach slightly increase the .code section memory footprint during non-test builds?",
+      "parentUuid": "3a325650_f66c9176",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 25
+      },
+      "revId": "c1382d50b0b61940276818ddd803c3112076523c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
