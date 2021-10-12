@@ -159,6 +159,54 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "938bee03_f0df6011",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-12T00:10:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2dfc06_3358c6d3",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c167e08_f5d56828",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-12T00:10:12Z",
+      "side": 1,
+      "message": "i implemented as you proposed, but it added 8 bytes to code.",
+      "parentUuid": "4a2dfc06_3358c6d3",
+      "range": {
+        "startLine": 126,
+        "startChar": 1,
+        "endLine": 126,
+        "endChar": 14
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "58c1757c_f941d49a",
