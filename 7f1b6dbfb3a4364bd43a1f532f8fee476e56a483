@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23e0951c_0190fd51",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1148900
+      },
+      "writtenOn": "2021-10-12T20:06:48Z",
+      "side": 1,
+      "message": "The cq failure doesn\u0027t seem to have anything to do with this change:\n\nAttributeError(\u0027\u0027NoneType\u0027 object has no attribute \u0027gs_bucket\u0027\u0027)\n\n...so I\u0027m going to chump this CL.\n",
+      "revId": "7f1b6dbfb3a4364bd43a1f532f8fee476e56a483",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
