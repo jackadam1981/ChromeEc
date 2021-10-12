@@ -15,7 +15,7 @@
 #include "usbc_ppc.h"
 
 #if CONFIG_USB_PD_3A_PORTS != 1
-#error Cherry reference must have at least one 3.0 A port
+#error Corsola reference must have at least one 3.0 A port
 #endif
 
 #define CPRINTS(format, args...) cprints(CC_USBPD, format, ## args)
@@ -123,7 +123,7 @@ __override int svdm_dp_attention(int port, uint32_t *payload)
 	}
 
 	/*
-	 * Cherry can only output to 1 display port at a time.
+	 * Corsola can only output to 1 display port at a time.
 	 * This implements FCFS policy by changing the aux channel. If a
 	 * display is connected to the either port (says A), and the port A
 	 * will be served until the display is disconnected from port A.
@@ -176,13 +176,6 @@ int pd_snk_is_vbus_provided(int port)
 {
 	static atomic_t vbus_prev[CONFIG_USB_PD_PORT_MAX_COUNT];
 	int vbus;
-
-	/*
-	 * Use ppc_is_vbus_present for all ports on Cherry, and
-	 * port 1 on other devices.
-	 */
-	if (IS_ENABLED(BOARD_CHERRY) || port == 1)
-		return ppc_is_vbus_present(port);
 
 	/* b/181203590: use ADC for port 0 (syv682x) */
 	vbus = (adc_read_channel(ADC_VBUS) >= PD_V_SINK_DISCONNECT_MAX);

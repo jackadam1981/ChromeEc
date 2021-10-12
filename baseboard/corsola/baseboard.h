@@ -3,7 +3,7 @@
  * found in the LICENSE file.
  */
 
-/* Cherry board configuration */
+/* Corsola board configuration */
 
 #ifndef __CROS_EC_BASEBOARD_H
 #define __CROS_EC_BASEBOARD_H
@@ -49,9 +49,7 @@
 #define CONFIG_BATTERY_SMART
 
 /* BC12 */
-#ifdef BOARD_CHERRY
 #define CONFIG_BC12_DETECT_PI3USB9201
-#endif
 #define CONFIG_BC12_DETECT_MT6360
 #undef CONFIG_BC12_SINGLE_DRIVER
 #define CONFIG_USB_CHARGER
