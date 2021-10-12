@@ -1,6 +1,52 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "284e047f_e59beda4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-12T18:34:05Z",
+      "side": 1,
+      "message": "This only comes into play when the EC controls the CBI WP. (CONFIG_EEPROM_CBI_WP) which has a carveout in the check.",
+      "range": {
+        "startLine": 11,
+        "startChar": 39,
+        "endLine": 11,
+        "endChar": 57
+      },
+      "revId": "2cdba6805da0816d5ded090855fa037cf6552027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "babb864a_36b4d6c3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-12T18:34:05Z",
+      "side": 1,
+      "message": "I don\u0027t understand this as the reason for removing the check. Also, those aren\u0027t the only items in the CBI.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "2cdba6805da0816d5ded090855fa037cf6552027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b56ae3ff_a19a39f9",
@@ -31,6 +77,23 @@
       "writtenOn": "2021-10-08T06:03:08Z",
       "side": 1,
       "message": "aseda, any objections?",
+      "revId": "2cdba6805da0816d5ded090855fa037cf6552027",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d20edcbc_10ac4737",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-12T18:34:05Z",
+      "side": 1,
+      "message": "My understanding is that Brya followed suit after Volteer. Volteer needed CONFIG_BYPASS_CBI_EEPROM during development because the CBI WP was decoupled. Speaking with the Brya EE folks, it sounded like they were doing the same as Volteer. Therefore, I don\u0027t see why this check needs to be removed?\n\n* You should bypass the WP check if the WPs are decoupled.\n* If the EC does not control the EEPROM CBI WP, then you can only bypass the check with CONFIG_SYSTEM_UNLOCKED. This represents the development phase.",
       "revId": "2cdba6805da0816d5ded090855fa037cf6552027",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
