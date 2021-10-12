@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "848aa7c3_040afca6",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-12T00:04:00Z",
+      "side": 1,
+      "message": "app_cipher code loads a hidden key, but never resets it. this is a safety precaution to ensure AES engine is in the known state.",
+      "parentUuid": "3da6564e_5a2c1592",
+      "range": {
+        "startLine": 16,
+        "startChar": 1,
+        "endLine": 16,
+        "endChar": 71
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "14ae4beb_691702bd",
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "see comment above",
       "parentUuid": "14ae4beb_691702bd",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 62
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d18823fa_8eff9f74",
+        "filename": "board/cr50/dcrypto/aes.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-12T00:04:00Z",
+      "side": 1,
+      "message": "it resets AES engine data path (but not control registers). mostly to ensure AES engine is in a known state.",
+      "parentUuid": "a3166fe8_f87105f1",
       "range": {
         "startLine": 17,
         "startChar": 1,
@@ -158,6 +206,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd07b13d_fb351246",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-12T00:04:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7571a5a9_8e856372",
+      "range": {
+        "startLine": 16,
+        "startChar": 41,
+        "endLine": 17,
+        "endChar": 24
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c36107dd_7d746958",
@@ -171,6 +243,30 @@
       "writtenOn": "2021-10-09T00:46:02Z",
       "side": 1,
       "message": "nit: add \"and that\u0027s why we don\u0027t read after the first 4 words are loaded, unless they are the only 4 words\"",
+      "range": {
+        "startLine": 20,
+        "startChar": 44,
+        "endLine": 20,
+        "endChar": 56
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fe42855_fe768db2",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-12T00:04:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c36107dd_7d746958",
       "range": {
         "startLine": 20,
         "startChar": 44,
@@ -228,6 +324,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "779aa485_a7502f61",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-12T00:04:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f7f9dd2_ee03ff25",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 39,
+        "endChar": 12
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6671eb2b_cbf97813",
@@ -241,6 +361,30 @@
       "writtenOn": "2021-10-09T00:46:02Z",
       "side": 1,
       "message": "nit: extract waiting for and getting 4 words from rfifo into a method",
+      "range": {
+        "startLine": 53,
+        "startChar": 3,
+        "endLine": 65,
+        "endChar": 13
+      },
+      "revId": "54fe37fcb974a233c0b768d7617067e6424da36d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e03853b6_c9de62c0",
+        "filename": "board/cr50/dcrypto/app_cipher.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-12T00:04:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6671eb2b_cbf97813",
       "range": {
         "startLine": 53,
         "startChar": 3,
