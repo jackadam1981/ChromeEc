@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b79cdb02_9569ee29",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-13T22:20:15Z",
+      "side": 1,
+      "message": "Nit: This comparison will happen implicitly in the conversion to bool. You don\u0027t technically need to do it explicitly.",
+      "range": {
+        "startLine": 225,
+        "startChar": 55,
+        "endLine": 225,
+        "endChar": 59
+      },
+      "revId": "3d10a3f98bacd064c95eff165ab58cbdf300fe4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
