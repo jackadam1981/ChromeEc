@@ -16,6 +16,29 @@
       "message": "rebase needed",
       "revId": "8e21f6442b42937a178679a3a4096dd1c9bc07c8",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbaf4616_b6c1d201",
+        "filename": "board/primus/board.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-13T23:28:08Z",
+      "side": 1,
+      "message": "do you still need this now that you\u0027re using HAS_TASK_PROCHOT?",
+      "range": {
+        "startLine": 145,
+        "startChar": 8,
+        "endLine": 145,
+        "endChar": 30
+      },
+      "revId": "8e21f6442b42937a178679a3a4096dd1c9bc07c8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
