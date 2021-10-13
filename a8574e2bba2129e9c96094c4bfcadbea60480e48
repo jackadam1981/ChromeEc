@@ -142,6 +142,30 @@
       },
       "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd50ab21_ef4ccea2",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T18:24:53Z",
+      "side": 1,
+      "message": "I tend to see it as an additional confusion for the end user who would need to understand the difference between \u0027disable EC UART\u0027 and \u0027tristate EC UART\", and they do\u0027t really care.\n\nIf we did not add another option the check for pulldown would  be\n\nccd_block \u0026 (CCD_BLOCK_EC_UART | CCD_BLOCK_EC_CR50_COM) \u003d\u003d (CCD_BLOCK_EC_UART | CCD_BLOCK_EC_CR50_COM)\n\ni.e. do not add it if both bits are set.\n\nThis way we\u0027d add less code and achieve the same goal.",
+      "parentUuid": "ef61832d_b41896b3",
+      "range": {
+        "startLine": 509,
+        "startChar": 16,
+        "endLine": 509,
+        "endChar": 38
+      },
+      "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
