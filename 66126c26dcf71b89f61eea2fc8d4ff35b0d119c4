@@ -37,6 +37,40 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66078dd0_e764eb88",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-13T22:42:08Z",
+      "side": 1,
+      "message": "Nit: I think calls to this macro and function would be more readable if reg came first and exp_val second.",
+      "revId": "66126c26dcf71b89f61eea2fc8d4ff35b0d119c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a7ecc1d_4f00647a",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-13T22:42:08Z",
+      "side": 1,
+      "message": "Parenthesize macro params",
+      "revId": "66126c26dcf71b89f61eea2fc8d4ff35b0d119c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d06eb9ac_6f7cd56c",
         "filename": "zephyr/test/drivers/src/tcpci.c",
         "patchSetId": 9
