@@ -22,6 +22,30 @@
       },
       "revId": "fc1f83b0a3218a8729d7b1ee3a1b611655351065",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cc47d1a_0ec89660",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T22:09:51Z",
+      "side": 1,
+      "message": "I\u0027ll do that. I\u0027ve just been doing whatever clang-format chose to do.",
+      "parentUuid": "5ffb8843_a507d745",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 0
+      },
+      "revId": "fc1f83b0a3218a8729d7b1ee3a1b611655351065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
