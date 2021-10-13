@@ -159,6 +159,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9638f989_444a76a0",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-13T14:24:58Z",
+      "side": 1,
+      "message": "Yes, a chip name is informative but \u0027Dump\u0027 is redundant because you just ran \u0027charger 0 dump\u0027...",
+      "parentUuid": "3f3f6999_51c5e0d3",
+      "range": {
+        "startLine": 238,
+        "startChar": 12,
+        "endLine": 238,
+        "endChar": 16
+      },
+      "revId": "34396de139a62966ec7fef75e8f0589d49d6dc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2de4da1_ebac6ff6",
