@@ -26,6 +26,47 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "274a474a_2e007b27",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-13T22:49:08Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "25d3bce6_6cbf2b8f",
+      "range": {
+        "startLine": 819,
+        "startChar": 1,
+        "endLine": 819,
+        "endChar": 17
+      },
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b432d42_c085a491",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-13T22:49:08Z",
+      "side": 1,
+      "message": "If you are going to pass in a variable for the value here, it should be a different variable than exp_ctrl. After this call, this value isn\u0027t \"expected.\" It\u0027s actual. But I think it might be even easier to follow if you just directly put the bit field names in the function call, e.g. TCPC_REG_POWER_CTRL_VOLT_ALARM_DIS | TCPC_REG_POWER_CTRL_FORCE_DISCHARGE.",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "03b666a9_b82466ba",
         "filename": "zephyr/test/drivers/src/tcpci.c",
         "patchSetId": 1
@@ -54,6 +95,40 @@
       "writtenOn": "2021-10-13T17:23:24Z",
       "side": 1,
       "message": "Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "907bc864_e0f50524",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-13T22:49:08Z",
+      "side": 1,
+      "message": "You can do this in the initialization here and elsewhere.",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "02120a61_2463f2cf",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-13T22:49:08Z",
+      "side": 1,
+      "message": "I think this is probably fine for now, but just a note for when we get into slightly higher-level testing: Our PD stack isn\u0027t expecting the TCPC to change flags spontaneously (or at all). It might behave unexpectedly in response to this kind of change.",
       "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -147,6 +222,23 @@
         "endLine": 939,
         "endChar": 36
       },
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b996e07b_706a743d",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-13T22:49:08Z",
+      "side": 1,
+      "message": "These values are uint16_t, so I think the proper value to compare to would be 0.",
       "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
