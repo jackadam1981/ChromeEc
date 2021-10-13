@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4bd9a30e_8a0d32e3",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-13T20:03:08Z",
+      "side": 1,
+      "message": "Infact,I2C_CHAN_COUNT is based on typec ports + other i2c ports.\n\nIn board specific files, i2c_ports_used is getting assigned based on I2C_CHAN_COUNT. \nAlso , for microchip based board, the value that will get returned will be i2c_ports_used itself, as the flag - board_adl_m_n_rvp is not set .\n\nreference From boardlevl file on  default value taken:\nBUILD_ASSERT(ARRAY_SIZE(i2c_ports) \u003d\u003d I2C_CHAN_COUNT);\nconst unsigned int i2c_ports_used \u003d ARRAY_SIZE(i2c_ports);",
+      "parentUuid": "f040a418_57f39596",
+      "revId": "f57e372effec02f379eb7e4906ab75f27860bb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60b93237_2506d0cf",
         "filename": "chip/it83xx/i2c.c",
         "patchSetId": 1
