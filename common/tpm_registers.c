@@ -1023,10 +1023,24 @@ void tpm_task(void *u)
 
 #ifdef CONFIG_EXTENSION_COMMAND
 		if (IS_CUSTOM_CODE(command_code)) {
+			uint32_t flags;
+
 			response_size = buffer_size;
-			call_extension_command(tpmh, &response_size,
-					       alt_if_command ?
-					       VENDOR_CMD_FROM_USB : 0);
+
+			/*
+			 * For AP RO validate subcommand there is no need to
+			 * set the USB flag in case it is triggered by button
+			 * presses.
+			 */
+			if (alt_if_command &&
+			    (be16toh(tpmh->subcommand_code) !=
+			     VENDOR_CC_AP_RO_VALIDATE)) {
+				flags = VENDOR_CMD_FROM_USB;
+			} else {
+				flags = 0;
+			}
+
+			call_extension_command(tpmh, &response_size, flags);
 		} else
 #endif
 		{
