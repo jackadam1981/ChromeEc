@@ -46,6 +46,30 @@
       },
       "revId": "49f3ee53737d1837674c91ee8ec4582f381919df",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f03e83a_21b81ad4",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1565,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T01:53:51Z",
+      "side": 1,
+      "message": "ok, why not enhance the one byte return value to return another state?",
+      "parentUuid": "555cf1ba_6b9a6ff2",
+      "range": {
+        "startLine": 1560,
+        "startChar": 0,
+        "endLine": 1565,
+        "endChar": 18
+      },
+      "revId": "49f3ee53737d1837674c91ee8ec4582f381919df",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
