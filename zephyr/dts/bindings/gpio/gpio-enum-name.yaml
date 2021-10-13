@@ -142,6 +142,7 @@ properties:
       - GPIO_SWITCHCAP_ON_L
       - GPIO_SWITCHCAP_PG
       - GPIO_SWITCHCAP_PG_INT_L
+      - GPIO_SYS_PWROK_EC
       - GPIO_SYS_RESET_L
       - GPIO_SYS_RST_ODL
       - GPIO_TABLET_MODE_L
