@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c4e802ab_ef7df536",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-13T19:54:38Z",
+      "side": 1,
+      "message": "We will have to use this as a global static variable, for it\u0027s usage n other function below, -\u003e board_get_usb_pd_port_count() .\nAlso, we may have to follow the same method , in the case of other overridable functions like - board_get_charge_port_count() , board_get_i2c_ports_used() , board_get_ioex_port_count etc.\nSo, In that case, multiple global static variables have to be declared in the beginning of file to handle default case ad reassign here in this  function  based  on bid.\nBut , if we follow flag method, just a single global static variable will be only required and it can handle the default value changes in all those overridable functions.\nBut, based on your this comment, i think its better idea on setting the flag  (board_adl_m_n_rvp)variable in this function itself, based on bid, instead of setting in identify_board_to_reconfigure()  (CL -\u003e https://chromium-review.googlesource.com/c/chromiumos/platform/ec/+/3216892/1/baseboard/intelrvp/adlrvp.c#370 )\nWhat do you think?\nEven battery reconfiguration, i can move to this same function.",
+      "parentUuid": "fa37483a_6486badc",
+      "revId": "c5f9d708d7df0882bd6abb9c6e4200bab268eee8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "5e55eb7c_89959300",
         "filename": "baseboard/intelrvp/adlrvp.c",
         "patchSetId": 1
