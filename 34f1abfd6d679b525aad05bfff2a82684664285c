@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af846b04_8da5b097",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1125984
+      },
+      "writtenOn": "2021-10-13T20:06:23Z",
+      "side": 1,
+      "message": "Did you consider doing the clamping in charge_set_input_current_limit() instead?",
+      "revId": "34f1abfd6d679b525aad05bfff2a82684664285c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49d80499_47f0028a",
