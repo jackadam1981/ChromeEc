@@ -540,7 +540,9 @@ int zephyr_shim_setup_espi(void)
 		.max_freq = 50,
 	};
 
-	espi_dev = DEVICE_DT_GET(ESPI_NODE);
+	/* TODO */
+	//espi_dev = DEVICE_DT_GET(ESPI_NODE);
+	espi_dev = NULL;
 	if (!device_is_ready(espi_dev)) {
 		LOG_ERR("Error: device %s is not ready", espi_dev->name);
 		return -1;
