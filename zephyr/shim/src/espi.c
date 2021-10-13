@@ -200,7 +200,8 @@ uint8_t *lpc_get_memmap_range(void)
 					   &lpc_memmap);
 
 	if (result != EC_SUCCESS)
-		LOG_ERR("Get lpc_memmap failed (%d)!\n", result);
+		result++;
+		//LOG_ERR("Get lpc_memmap failed (%d)!\n", result);
 
 	return (uint8_t *)lpc_memmap;
 }
