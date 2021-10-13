@@ -5,6 +5,7 @@
 
 /* Intel ADLRVP board-specific common configuration */
 
+#include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "bq25710.h"
 #include "common.h"
@@ -24,6 +25,8 @@
 
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
+
+static enum battery_type bat_cell_type;
 
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
@@ -388,6 +391,23 @@ static void configure_retimer_usbmux(void)
 	}
 }
 
+static void configure_battery_cell_type(void)
+{
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+		/* configure Battery to 2S based */
+		bat_cell_type = BATTERY_GETAC_SMP_HHP_408_2S;
+		break;
+	default:
+		/* configure Battery to 3S based */
+		bat_cell_type = BATTERY_GETAC_SMP_HHP_408_3S;
+		break;
+	}
+}
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
@@ -483,4 +503,15 @@ __override void board_pre_task_i2c_peripheral_init(void)
 
 	/* Configure board specific retimer & mux */
 	configure_retimer_usbmux();
+
+	/* Configure battery cell type */
+	configure_battery_cell_type();
+}
+
+__override int board_get_default_battery_type(void)
+{
+	if (bat_cell_type == BATTERY_GETAC_SMP_HHP_408_3S)
+		return DEFAULT_BATTERY_TYPE;
+	else
+		return BATTERY_GETAC_SMP_HHP_408_2S;
 }
