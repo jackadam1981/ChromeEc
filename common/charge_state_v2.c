@@ -2515,7 +2515,7 @@ int charge_prevent_power_on(int power_button_pressed)
 		prevent_power_on = 1;
 #endif /* CONFIG_SYSTEM_UNLOCKED */
 
-	return prevent_power_on;
+	return 0;
 }
 
 static int battery_near_full(void)
