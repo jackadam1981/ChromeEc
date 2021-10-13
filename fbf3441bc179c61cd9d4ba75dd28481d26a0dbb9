@@ -16,6 +16,23 @@
       "message": "Relanding the u2f fuzzer CL after modifying the fuzzer to work with the update u2f codebase. Thanks.",
       "revId": "fbf3441bc179c61cd9d4ba75dd28481d26a0dbb9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e53661cb_8a813776",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-13T02:31:24Z",
+      "side": 1,
+      "message": "Are both of the items in the revert reason addressed? \n\n\"This patch breaks building of \u0027make buildall\u0027 and seems to be leaving some generated files in the root directory.\"",
+      "revId": "fbf3441bc179c61cd9d4ba75dd28481d26a0dbb9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
