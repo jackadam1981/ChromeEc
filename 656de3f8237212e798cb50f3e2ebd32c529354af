@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0fc4176_54bcab6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2021-10-13T15:28:52Z",
+      "side": 1,
+      "message": "Thank you, Sue!",
+      "revId": "656de3f8237212e798cb50f3e2ebd32c529354af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "545c9a8a_1660f415",
+        "filename": "board/scout/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1115641
+      },
+      "writtenOn": "2021-10-13T15:28:52Z",
+      "side": 1,
+      "message": "Nice -- I think this was the line I missed in my quick cherry-pick attempt",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 22
+      },
+      "revId": "656de3f8237212e798cb50f3e2ebd32c529354af",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
