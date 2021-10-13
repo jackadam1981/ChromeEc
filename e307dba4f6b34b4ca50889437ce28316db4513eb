@@ -1,6 +1,40 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a17c60e8_3562f1b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-10-13T15:19:15Z",
+      "side": 1,
+      "message": "Looks reasonable, just some things that could be clarified (either in gerrit comments or in the Makefile comments)",
+      "revId": "e307dba4f6b34b4ca50889437ce28316db4513eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fa6bacf_a33f4a1f",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1118539
+      },
+      "writtenOn": "2021-10-13T15:19:15Z",
+      "side": 1,
+      "message": "\"this workaround\" refers to checking the version, so after the gcc11 transition, we\u0027d just set the flags unconditionally, right?\n\nAlso, these two items are independent, so even when IPA modref is fixed (in 11.3 or whenever), we\u0027ll need to keep the other flag, right?",
+      "revId": "e307dba4f6b34b4ca50889437ce28316db4513eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8abbe258_613a4dff",
