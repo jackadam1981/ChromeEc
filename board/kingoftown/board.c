@@ -7,6 +7,7 @@
 
 #include "adc_chip.h"
 #include "button.h"
+#include "charge_state.h"
 #include "extpower.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
@@ -239,3 +240,9 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+/* Battery vendor parameter */
+const struct battery_vendor_param_t battery_vendor_param = {
+	.start = 0x70,
+	.size = 16,
+};
