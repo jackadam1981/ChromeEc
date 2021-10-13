@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6509a045_07e432a2",
+        "filename": "core/cortex-m/build.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-13T16:31:47Z",
+      "side": 1,
+      "message": "-fno-ipa-modref will remain while gcc has ICE problem. Who knows, it may be in 11.3 or 12, so will update it accordingly.\n\n\nAs for -flinker-output\u003dnolto-rel - this a a change in linker behavior which seems to happen in gcc 10.x, and it will have to remain. It changes LTO output to machine code. gcc 8.3 did this by default with partial linkking.",
+      "parentUuid": "2fa6bacf_a33f4a1f",
+      "revId": "e307dba4f6b34b4ca50889437ce28316db4513eb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8abbe258_613a4dff",
