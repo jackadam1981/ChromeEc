@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a29970a2_f18bec21",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 2321,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T01:25:05Z",
+      "side": 1,
+      "message": "I don\u0027t understand why interpretation of result[0] changes if the result is 2 bytes in size.\n\nAnd it will still be interpreted the old way in line 2330, those interpretations will allow to tell if the command was triggered or not anyways.",
+      "range": {
+        "startLine": 2305,
+        "startChar": 0,
+        "endLine": 2321,
+        "endChar": 3
+      },
+      "revId": "3c257384ac322ce315c820ab5d4a921f343efcb0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
