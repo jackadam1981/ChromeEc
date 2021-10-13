@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c930a1a_9d7aa43e",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 682,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-10-13T10:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dc86d532_07feb09e",
+      "range": {
+        "startLine": 681,
+        "startChar": 0,
+        "endLine": 682,
+        "endChar": 19
+      },
+      "revId": "04872713abedf86df14b9392ee89b4601d86381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21518f01_7387992e",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91bd24cb_52013fc3",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-10-13T10:09:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21518f01_7387992e",
+      "range": {
+        "startLine": 683,
+        "startChar": 14,
+        "endLine": 683,
+        "endChar": 16
+      },
+      "revId": "04872713abedf86df14b9392ee89b4601d86381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6c5cacb_053af04d",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-12T14:53:15Z",
       "side": 1,
       "message": "You\u0027ll copy only one byte from data to value. Do you need to cast data to (uint32_t)? What does battparam command print? Callers are expecting uint32_t to be returned. If we\u0027re returning only a uint32_t, why are we reading whole 11-byte string? This function is copied in multiple boards. It looks bizarre to me.",
+      "range": {
+        "startLine": 693,
+        "startChar": 1,
+        "endLine": 693,
+        "endChar": 14
+      },
+      "revId": "04872713abedf86df14b9392ee89b4601d86381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b97b8eb4_3924ca40",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-10-13T10:09:29Z",
+      "side": 1,
+      "message": "Battery vendor param value is a string, such as \"W1SZ14T009B\", it only by block read, a single register can\u0027t read, so we need to define all the memory(11 byte) to hold its value.\n`ectool batteryParam get \u003creg\u003e` cmd read a register string. I think since uint32_t can\u0027t return all strings, so returns a register string.",
+      "parentUuid": "a6c5cacb_053af04d",
       "range": {
         "startLine": 693,
         "startChar": 1,
