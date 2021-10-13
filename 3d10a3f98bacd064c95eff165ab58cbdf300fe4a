@@ -46,6 +46,30 @@
       },
       "revId": "3d10a3f98bacd064c95eff165ab58cbdf300fe4a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75509e25_f89a8140",
+        "filename": "zephyr/emul/emul_ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-13T23:06:29Z",
+      "side": 1,
+      "message": "Ack\n\n(If you\u0027re not going to act on a nit, you can just mark it as resolved. :) I appreciate that you provided rationale, though.)",
+      "parentUuid": "6e0455a2_f3acff86",
+      "range": {
+        "startLine": 225,
+        "startChar": 55,
+        "endLine": 225,
+        "endChar": 59
+      },
+      "revId": "3d10a3f98bacd064c95eff165ab58cbdf300fe4a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
