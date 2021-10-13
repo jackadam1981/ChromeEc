@@ -70,6 +70,30 @@
       },
       "revId": "732b5b17392553139f57e36ea550348cf7d2a0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7294353_9f31d769",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1311438
+      },
+      "writtenOn": "2021-10-13T19:28:49Z",
+      "side": 1,
+      "message": "you are right, I updated the patch. Thanks.",
+      "parentUuid": "8fff7708_abf32551",
+      "range": {
+        "startLine": 496,
+        "startChar": 14,
+        "endLine": 496,
+        "endChar": 49
+      },
+      "revId": "732b5b17392553139f57e36ea550348cf7d2a0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
