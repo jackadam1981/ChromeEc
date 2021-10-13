@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "500b5bc3_8daa53e4",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-13T04:37:57Z",
+      "side": 1,
+      "message": "i just remembered that parade parts go to sleep after 1 - 2 seconds\nwhen I2C is idle and nothing is plugged in. i\u0027m not sure that\u0027s for\nall registers or just the TCPCI registers.. you will likely need\nto do a wake-up read first. the standard way to do that is to read\na register and if it fails, wait 10ms for it to wake up.\nif the read does not fail, he chip is already awake.\n\nthe conventional register to read for wake-up is 0xa0 on page 3.",
+      "range": {
+        "startLine": 168,
+        "startChar": 5,
+        "endLine": 168,
+        "endChar": 14
+      },
+      "revId": "8198d6b2eb1e8c34c097ece16fede2c5a1fd2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
