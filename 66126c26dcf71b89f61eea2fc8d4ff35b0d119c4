@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07f48754_8ab43db7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-13T11:47:26Z",
+      "side": 1,
+      "message": "This patch is split into few smaller ones to make this CL more manageable. Decided to move TCPCI emulator to USB port C0, because I am going to use USB port C1 and i2c1 bus for PS8xxx test. (I need to put PS8xxx on i2c1 bus, because of required i2c addresses by this device and using i2c1 for C0 and i2c0 for C1 would be unnecessary confusing) ",
+      "revId": "66126c26dcf71b89f61eea2fc8d4ff35b0d119c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
