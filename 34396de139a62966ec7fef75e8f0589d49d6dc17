@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14c6c6bd_0150bf8f",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-13T13:49:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "45a6f0f1_a674d9b8",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 0
+      },
+      "revId": "34396de139a62966ec7fef75e8f0589d49d6dc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6393b9e0_ed1d9dcf",
@@ -77,6 +101,54 @@
       "writtenOn": "2021-10-12T15:26:09Z",
       "side": 1,
       "message": "Don\u0027t you need \\n?",
+      "range": {
+        "startLine": 238,
+        "startChar": 29,
+        "endLine": 238,
+        "endChar": 30
+      },
+      "revId": "34396de139a62966ec7fef75e8f0589d49d6dc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f3f6999_51c5e0d3",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-13T13:49:48Z",
+      "side": 1,
+      "message": "It was present as part of charger_dump implementation hence thought of adding it here. This displays the name of the charger chip on the board.",
+      "parentUuid": "6393b9e0_ed1d9dcf",
+      "range": {
+        "startLine": 238,
+        "startChar": 12,
+        "endLine": 238,
+        "endChar": 16
+      },
+      "revId": "34396de139a62966ec7fef75e8f0589d49d6dc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "419dee71_7985617c",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-13T13:49:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "29b3c2c7_97df24e6",
       "range": {
         "startLine": 238,
         "startChar": 29,
@@ -124,6 +196,30 @@
       "side": 1,
       "message": "To make it perfect, we need:\n\n  \"Get or set charger param(s)\"\n  #ifdef CONFIG_CMD_CHARGER_DUMP\n  \". Dump registers.\"\n  #endif\n\nI\u0027m not sure if this is too much for a console command. Alternatively, we can simply return error for \u0027dump\u0027 command if it\u0027s not supported:\n\n  } else if (strcasecmp(argv[1+idx_provided], \"dump\") \u003d\u003d 0) {\n    if (!IS_ENABLED(CONFIG_CMD_CHARGER_DUMP) ||\n        !chg_chips[chgnum]-\u003edump_registers) {\n      ccprintf(\"dump not supported\");\n      return EC_ERROR_PARAM0;\n    }\n    ...",
       "parentUuid": "c2de4da1_ebac6ff6",
+      "range": {
+        "startLine": 253,
+        "startChar": 4,
+        "endLine": 253,
+        "endChar": 31
+      },
+      "revId": "34396de139a62966ec7fef75e8f0589d49d6dc17",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d36d6e2c_144302b2",
+        "filename": "common/charger.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-13T13:49:48Z",
+      "side": 1,
+      "message": "EC_ERROR_PARAM0 is not available hence changed it to \"EC_ERROR_PARAM1+idx_provided\" which points to the \"dump\" parameter",
+      "parentUuid": "6412f8c4_6aa7e95a",
       "range": {
         "startLine": 253,
         "startChar": 4,
