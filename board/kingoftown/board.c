@@ -7,6 +7,7 @@
 
 #include "adc_chip.h"
 #include "button.h"
+#include "charge_state.h"
 #include "extpower.h"
 #include "driver/accel_bma2x2.h"
 #include "driver/accelgyro_bmi_common.h"
@@ -239,3 +240,25 @@ struct motion_sensor_t motion_sensors[] = {
 	},
 };
 const unsigned int motion_sensor_count = ARRAY_SIZE(motion_sensors);
+
+int battery_get_vendor_param(uint32_t param, uint32_t *value)
+{
+	int rv;
+	uint8_t data[16] = {};
+
+	/* only allow reading 0x70~0x7F, 16 byte data */
+	if (param < 0x70 || param >= 0x80)
+		return EC_ERROR_ACCESS_DENIED;
+
+	rv = sb_read_string(0x70, data, sizeof(data));
+	if (rv)
+		return rv;
+
+	*value = data[param - 0x70];
+	return EC_SUCCESS;
+}
+
+int battery_set_vendor_param(uint32_t param, uint32_t value)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
