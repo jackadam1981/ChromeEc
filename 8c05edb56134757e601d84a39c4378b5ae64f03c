@@ -33,6 +33,24 @@
       "message": "usb_muxes is already externed in include/usb_mux.h. I would suggest using usb_muxes to get a handle to this usb_mux in the test. My intent in asking to incorporate this mux into usb_muxes was that all the tests would get the same view of the hardware, and having them all use the typical means to access it is part of that.",
       "revId": "8c05edb56134757e601d84a39c4378b5ae64f03c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a089ef33_1d81db3d",
+        "filename": "zephyr/test/drivers/include/stubs.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-13T11:53:16Z",
+      "side": 1,
+      "message": "Removed this extern. Test is now using usb_muxes. There is assert in test to check if expected usb_mux has correct driver.",
+      "parentUuid": "0f92b429_94f7b1f5",
+      "revId": "8c05edb56134757e601d84a39c4378b5ae64f03c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
