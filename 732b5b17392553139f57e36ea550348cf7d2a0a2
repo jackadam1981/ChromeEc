@@ -22,6 +22,30 @@
       },
       "revId": "732b5b17392553139f57e36ea550348cf7d2a0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0936714_384c072a",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1311438
+      },
+      "writtenOn": "2021-10-13T18:57:53Z",
+      "side": 1,
+      "message": "Thanks for the review. I thought this condition is required to throw error when the given size is beyond 8 bytes for the rework_id tag.",
+      "parentUuid": "731478ce_7c7c2409",
+      "range": {
+        "startLine": 496,
+        "startChar": 14,
+        "endLine": 496,
+        "endChar": 49
+      },
+      "revId": "732b5b17392553139f57e36ea550348cf7d2a0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
