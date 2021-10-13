@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a658ec1_b903a26b",
+        "filename": "zephyr/emul/emul_syv682x.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-13T03:25:25Z",
+      "side": 1,
+      "message": "I\u0027m not sure I follow this\n1. the test calls this with val \u003d\u003d BIT(2)\n2. val_interrupt \u003d BIT(2) \u0026 0x0c \u003d\u003e BIT(2)\n3. control_4_cond \u003d BIT(2)\n4. reg[ctrl_4] \u003d (reg[ctrl_4] \u0026 ~ 0x0c) // clear BIT(2) and BIT(3)\n       | BIT(2); // Add BIT(2) back in because that\u0027s what val was\n       \nWhen you try to read the register below you:\n1. Read the register and store it into buf\n2. Update the register with\n   (*buf \u0026 ~SYV682X_CONTROL_4_INT_MASK) | data-\u003econtrol_4_cond\n   This removes BIT(2) and BIT(3) from the register value then adds\n   the old values back in (which is BIT(2) in this case).\n   \nSo where I\u0027m confused is that the comment says that reading the register should clear the bits, shouldn\u0027t it be just (*buf \u0026 ~SYV682X_CONTROL_4_INT_MASK)?",
+      "range": {
+        "startLine": 87,
+        "startChar": 1,
+        "endLine": 94,
+        "endChar": 51
+      },
+      "revId": "cc3e62be12fbd5142c8efa53ef9847b6db005899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19bdbe41_c895bdea",
+        "filename": "zephyr/include/emul/emul_syv682x.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-13T03:25:25Z",
+      "side": 1,
+      "message": "Since you\u0027re only updating 2 bits here can we make those the parameters? Can the signature be:\n\nvoid syv682x_emul_set_control_4_interrupts(\n        struct i2c_emul *emul, bool vbat_ovp, bool vconn_ocp);",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 31
+      },
+      "revId": "cc3e62be12fbd5142c8efa53ef9847b6db005899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2a6a71_b066de58",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-13T03:25:25Z",
+      "side": 1,
+      "message": "Can you add /* TODO(b/201420132) */ for all the msleep commands? We really need to figure out a way to stop sleeping on tests.",
+      "range": {
+        "startLine": 131,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "cc3e62be12fbd5142c8efa53ef9847b6db005899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0530bfb_500b83fc",
+        "filename": "zephyr/test/drivers/src/ppc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-13T03:25:25Z",
+      "side": 1,
+      "message": "Comment says 100ms but sleep is 60, can you add more details?",
+      "range": {
+        "startLine": 146,
+        "startChar": 1,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "cc3e62be12fbd5142c8efa53ef9847b6db005899",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
