@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d61699d_da379a32",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-13T23:29:55Z",
+      "side": 1,
+      "message": "oops, didn\u0027t want the auto-selected \"resolved\" button checked.",
+      "parentUuid": "a42644a2_67d758a1",
+      "revId": "6b1bdb2d7b9f917bf1787e44fb70873dccd0c70d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "50198f00_61246244",
         "filename": "baseboard/brya/prochot.c",
         "patchSetId": 22
