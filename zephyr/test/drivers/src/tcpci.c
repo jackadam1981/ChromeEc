@@ -136,10 +136,219 @@ static void test_tcpci_release(void)
 	check_tcpci_reg(emul, 0, TCPC_REG_ALERT);
 }
 
+/** Test TCPCI get cc */
+static void test_tcpci_get_cc(void)
+{
+	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
+	enum tcpc_cc_voltage_status cc1, cc2;
+
+	/* Set DRP */
+	tcpci_emul_set_reg(emul, TCPC_REG_ROLE_CTRL,
+			   TCPC_REG_ROLE_CTRL_DRP_MASK);
+
+	/* Test DRP with open state */
+	tcpci_emul_set_reg(emul, TCPC_REG_CC_STATUS, 0);
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_get_cc(USBC_PORT_C0, &cc1, &cc2),
+		      NULL);
+	zassert_equal(TYPEC_CC_VOLT_OPEN, cc1, NULL);
+	zassert_equal(TYPEC_CC_VOLT_OPEN, cc2, NULL);
+
+	/* Test DRP with cc1 open state, cc2 src RA */
+	tcpci_emul_set_reg(emul, TCPC_REG_CC_STATUS, 0x04);
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_get_cc(USBC_PORT_C0, &cc1, &cc2),
+		      NULL);
+	zassert_equal(TYPEC_CC_VOLT_OPEN, cc1, NULL);
+	zassert_equal(TYPEC_CC_VOLT_RA, cc2, NULL);
+
+	/* Test DRP with cc1 src RA, cc2 src RD */
+	tcpci_emul_set_reg(emul, TCPC_REG_CC_STATUS, 0x09);
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_get_cc(USBC_PORT_C0, &cc1, &cc2),
+		      NULL);
+	zassert_equal(TYPEC_CC_VOLT_RA, cc1, NULL);
+	zassert_equal(TYPEC_CC_VOLT_RD, cc2, NULL);
+
+	/* Test DRP with cc1 snk open, cc2 snk default */
+	tcpci_emul_set_reg(emul, TCPC_REG_CC_STATUS, 0x14);
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_get_cc(USBC_PORT_C0, &cc1, &cc2),
+		      NULL);
+	zassert_equal(TYPEC_CC_VOLT_OPEN, cc1, NULL);
+	zassert_equal(TYPEC_CC_VOLT_RP_DEF, cc2, NULL);
+
+	/* Test DRP with cc1 snk 1.5, cc2 snk 3.0 */
+	tcpci_emul_set_reg(emul, TCPC_REG_CC_STATUS, 0x1e);
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_get_cc(USBC_PORT_C0, &cc1, &cc2),
+		      NULL);
+	zassert_equal(TYPEC_CC_VOLT_RP_1_5, cc1, NULL);
+	zassert_equal(TYPEC_CC_VOLT_RP_3_0, cc2, NULL);
+
+	/* Test no DRP with cc1 src open, cc2 src RA */
+	tcpci_emul_set_reg(emul, TCPC_REG_ROLE_CTRL, 0x05);
+	tcpci_emul_set_reg(emul, TCPC_REG_CC_STATUS, 0x04);
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_get_cc(USBC_PORT_C0, &cc1, &cc2),
+		      NULL);
+	zassert_equal(TYPEC_CC_VOLT_OPEN, cc1, NULL);
+	zassert_equal(TYPEC_CC_VOLT_RA, cc2, NULL);
+
+	/* Test no DRP with cc1 src RD, cc2 snk default */
+	tcpci_emul_set_reg(emul, TCPC_REG_ROLE_CTRL, 0x09);
+	tcpci_emul_set_reg(emul, TCPC_REG_CC_STATUS, 0x06);
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_get_cc(USBC_PORT_C0, &cc1, &cc2),
+		      NULL);
+	zassert_equal(TYPEC_CC_VOLT_RD, cc1, NULL);
+	zassert_equal(TYPEC_CC_VOLT_RP_DEF, cc2, NULL);
+
+	/* Test no DRP with cc1 snk default, cc2 snk open */
+	tcpci_emul_set_reg(emul, TCPC_REG_ROLE_CTRL, 0x0a);
+	tcpci_emul_set_reg(emul, TCPC_REG_CC_STATUS, 0x01);
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_get_cc(USBC_PORT_C0, &cc1, &cc2),
+		      NULL);
+	zassert_equal(TYPEC_CC_VOLT_RP_DEF, cc1, NULL);
+	zassert_equal(TYPEC_CC_VOLT_OPEN, cc2, NULL);
+
+	/* Test no DRP with cc1 snk 3.0, cc2 snk 1.5 */
+	tcpci_emul_set_reg(emul, TCPC_REG_ROLE_CTRL, 0x0a);
+	tcpci_emul_set_reg(emul, TCPC_REG_CC_STATUS, 0x0b);
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_get_cc(USBC_PORT_C0, &cc1, &cc2),
+		      NULL);
+	zassert_equal(TYPEC_CC_VOLT_RP_3_0, cc1, NULL);
+	zassert_equal(TYPEC_CC_VOLT_RP_1_5, cc2, NULL);
+}
+
+/** Test TCPCI set cc */
+static void test_tcpci_set_cc(void)
+{
+	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
+	struct i2c_emul *i2c_emul;
+
+	i2c_emul = tcpci_emul_get_i2c_emul(emul);
+
+	/* Test setting default RP and cc open */
+	zassert_equal(EC_SUCCESS,
+		      tcpci_tcpm_select_rp_value(USBC_PORT_C0, TYPEC_RP_USB),
+		      NULL);
+	zassert_equal(EC_SUCCESS,
+		      tcpci_tcpm_set_cc(USBC_PORT_C0, TYPEC_CC_OPEN), NULL);
+	check_tcpci_reg(emul, 0x0f, TCPC_REG_ROLE_CTRL);
+
+	/* Test error on failed role ctrl set */
+	i2c_common_emul_set_write_fail_reg(i2c_emul, TCPC_REG_ROLE_CTRL);
+	zassert_equal(EC_ERROR_INVAL,
+		      tcpci_tcpm_set_cc(USBC_PORT_C0, TYPEC_CC_OPEN), NULL);
+	i2c_common_emul_set_write_fail_reg(i2c_emul,
+					   I2C_COMMON_EMUL_NO_FAIL_REG);
+
+
+	/* Test setting 1.5 RP and cc RD */
+	zassert_equal(EC_SUCCESS,
+		      tcpci_tcpm_select_rp_value(USBC_PORT_C0, TYPEC_RP_1A5),
+		      NULL);
+	zassert_equal(EC_SUCCESS,
+		      tcpci_tcpm_set_cc(USBC_PORT_C0, TYPEC_CC_RD), NULL);
+	check_tcpci_reg(emul, 0x1a, TCPC_REG_ROLE_CTRL);
+
+	/* Test setting 3.0 RP and cc RP */
+	zassert_equal(EC_SUCCESS,
+		      tcpci_tcpm_select_rp_value(USBC_PORT_C0, TYPEC_RP_3A0),
+		      NULL);
+	zassert_equal(EC_SUCCESS,
+		      tcpci_tcpm_set_cc(USBC_PORT_C0, TYPEC_CC_RP), NULL);
+	check_tcpci_reg(emul, 0x25, TCPC_REG_ROLE_CTRL);
+
+	/* Test setting 3.0 RP and cc RA */
+	zassert_equal(EC_SUCCESS,
+		      tcpci_tcpm_set_cc(USBC_PORT_C0, TYPEC_CC_RA), NULL);
+	check_tcpci_reg(emul, 0x20, TCPC_REG_ROLE_CTRL);
+}
+
+/** Test TCPCI set polarity */
+static void test_tcpci_set_polarity(void)
+{
+	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
+	struct i2c_emul *i2c_emul;
+	uint8_t exp_ctrl;
+
+	i2c_emul = tcpci_emul_get_i2c_emul(emul);
+
+	/* Only bit 0 should be changed */
+	exp_ctrl = 0x1c;
+	tcpci_emul_set_reg(emul, TCPC_REG_TCPC_CTRL, exp_ctrl);
+
+	/* Test error on failed polarity set */
+	i2c_common_emul_set_write_fail_reg(i2c_emul, TCPC_REG_TCPC_CTRL);
+	zassert_equal(EC_ERROR_INVAL,
+		      tcpci_tcpm_set_polarity(USBC_PORT_C0, POLARITY_CC2),
+		      NULL);
+	i2c_common_emul_set_write_fail_reg(i2c_emul,
+					   I2C_COMMON_EMUL_NO_FAIL_REG);
+	check_tcpci_reg(emul, exp_ctrl, TCPC_REG_TCPC_CTRL);
+
+	/* Test setting polarity CC2 */
+	exp_ctrl |= 0x1;
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_set_polarity(USBC_PORT_C0,
+							  POLARITY_CC2), NULL);
+	check_tcpci_reg(emul, exp_ctrl, TCPC_REG_TCPC_CTRL);
+
+	/* Test setting polarity CC1 */
+	exp_ctrl &= ~0x1;
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_set_polarity(USBC_PORT_C0,
+							  POLARITY_CC1), NULL);
+	check_tcpci_reg(emul, exp_ctrl, TCPC_REG_TCPC_CTRL);
+
+	/* Test setting polarity CC2 DTS */
+	exp_ctrl |= 0x1;
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_set_polarity(USBC_PORT_C0,
+							  POLARITY_CC2_DTS),
+		      NULL);
+	check_tcpci_reg(emul, exp_ctrl, TCPC_REG_TCPC_CTRL);
+
+	/* Test setting polarity CC1 DTS */
+	exp_ctrl &= ~0x1;
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_set_polarity(USBC_PORT_C0,
+							  POLARITY_CC1_DTS),
+		      NULL);
+	check_tcpci_reg(emul, exp_ctrl, TCPC_REG_TCPC_CTRL);
+}
+
+/** Test TCPCI set vconn */
+static void test_tcpci_set_vconn(void)
+{
+	const struct emul *emul = emul_get_binding(DT_LABEL(EMUL_LABEL));
+	struct i2c_emul *i2c_emul;
+	uint8_t exp_ctrl;
+
+	i2c_emul = tcpci_emul_get_i2c_emul(emul);
+
+	/* Only bit 0 should be changed */
+	exp_ctrl = 0x42;
+	tcpci_emul_set_reg(emul, TCPC_REG_POWER_CTRL, exp_ctrl);
+
+	/* Test error on failed vconn set */
+	i2c_common_emul_set_write_fail_reg(i2c_emul, TCPC_REG_POWER_CTRL);
+	zassert_equal(EC_ERROR_INVAL, tcpci_tcpm_set_vconn(USBC_PORT_C0, 1),
+		      NULL);
+	i2c_common_emul_set_write_fail_reg(i2c_emul,
+					   I2C_COMMON_EMUL_NO_FAIL_REG);
+	check_tcpci_reg(emul, exp_ctrl, TCPC_REG_POWER_CTRL);
+
+	/* Test vconn enable */
+	exp_ctrl |= 0x1;
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_set_vconn(USBC_PORT_C0, 1), NULL);
+	check_tcpci_reg(emul, exp_ctrl, TCPC_REG_POWER_CTRL);
+
+	/* Test vconn disable */
+	exp_ctrl &= ~0x1;
+	zassert_equal(EC_SUCCESS, tcpci_tcpm_set_vconn(USBC_PORT_C0, 0), NULL);
+	check_tcpci_reg(emul, exp_ctrl, TCPC_REG_POWER_CTRL);
+}
+
 void test_suite_tcpci(void)
 {
 	ztest_test_suite(tcpci,
 			 ztest_user_unit_test(test_tcpci_init),
-			 ztest_user_unit_test(test_tcpci_release));
+			 ztest_user_unit_test(test_tcpci_release),
+			 ztest_user_unit_test(test_tcpci_get_cc),
+			 ztest_user_unit_test(test_tcpci_set_cc),
+			 ztest_user_unit_test(test_tcpci_set_polarity),
+			 ztest_user_unit_test(test_tcpci_set_vconn));
 	ztest_run_test_suite(tcpci);
 }
