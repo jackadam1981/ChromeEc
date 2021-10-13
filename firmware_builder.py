@@ -60,6 +60,14 @@ def build(opts):
                    cwd=os.path.dirname(__file__),
                    check=True)
 
+    # Ensure that there are no regressions for boards that build successfully
+    # with clang: b/172020503.
+    cmd = ['./util/build_with_clang.py']
+    print(f'# Running {" ".join(cmd)}.')
+    subprocess.run(cmd,
+                   cwd=os.path.dirname(__file__),
+                   check=True)
+
 
 def bundle(opts):
     if opts.code_coverage:
