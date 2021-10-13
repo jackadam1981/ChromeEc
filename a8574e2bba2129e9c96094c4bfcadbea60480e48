@@ -118,6 +118,30 @@
       },
       "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef61832d_b41896b3",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-13T17:44:22Z",
+      "side": 1,
+      "message": "CCD_BLOCK_EC_UART is for ec uart\nBLOCK_EC_CR50_COMM is for packet mode \nand \nTRISTATE_EC is a flag for the pulldown.\n\nIt\u0027s three flags for the same interface, but they control three things.\n\nIf we combine the flags, we\u0027ll have to do some stuff like \nGWRITE_FIELD(PINMUX, DIOB5_CTL, PD,\n\t\t\t     !!(ccd_block ^ (CCD_BLOCK_EC_UART | CCD_BLOCK_EC_CR50_COM));\n\t\t\t     \n\t\t\t   \nI think having a separate flag for the pulldown is more intuitive. The name TRISTATE_EC just explains why we\u0027re disabling all of this EC stuff with ccdblock TRISTATE_EC.",
+      "parentUuid": "dfeced05_f7fd64df",
+      "range": {
+        "startLine": 509,
+        "startChar": 16,
+        "endLine": 509,
+        "endChar": 38
+      },
+      "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
