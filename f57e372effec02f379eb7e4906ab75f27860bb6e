@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1d6cbc8_15975325",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-13T20:09:20Z",
+      "side": 1,
+      "message": "may be we can use board_get_usb_pd_port_count() + 1\nthough MCHP is ADL-P only 2 type-c ports are enabled",
+      "parentUuid": "4bd9a30e_8a0d32e3",
+      "revId": "f57e372effec02f379eb7e4906ab75f27860bb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60b93237_2506d0cf",
         "filename": "chip/it83xx/i2c.c",
         "patchSetId": 1
