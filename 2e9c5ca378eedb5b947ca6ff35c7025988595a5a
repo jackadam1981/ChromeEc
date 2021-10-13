@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52e58c4f_1d8be46f",
+        "filename": "baseboard/brya/baseboard.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-13T04:23:45Z",
+      "side": 1,
+      "message": "umm... don\u0027t these evaluate to 0 due to integer division?\nmight have to turn these into \"functions\"\n\nPROCHOT_DEASSERTION_BATTERY_VALUE(v) ((v) * 85 / 100)\n\nor leave the \"/ 100\" in the main code?",
+      "range": {
+        "startLine": 148,
+        "startChar": 40,
+        "endLine": 148,
+        "endChar": 48
+      },
+      "revId": "2e9c5ca378eedb5b947ca6ff35c7025988595a5a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
