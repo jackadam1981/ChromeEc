@@ -190,6 +190,30 @@
       },
       "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "513e423b_3ba81ef3",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-13T19:39:06Z",
+      "side": 1,
+      "message": "Disabling all output with one flag makes things easier, because we can keep most of the flags handling the same and just call uartn_tx_disconnect in 535 with ccd_update state.\n\nIf we start blocking uart pd separately, I need to add logic to enable/disable the uart pd in ccd_update_state.",
+      "parentUuid": "2708b858_a3361c7c",
+      "range": {
+        "startLine": 509,
+        "startChar": 16,
+        "endLine": 509,
+        "endChar": 38
+      },
+      "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
