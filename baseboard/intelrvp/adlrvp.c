@@ -5,6 +5,7 @@
 
 /* Intel ADLRVP board-specific common configuration */
 
+#include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
@@ -23,6 +24,9 @@
 
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
+
+/* battery 2S config */
+extern struct board_batt_params board_battery2S_info[];
 
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
@@ -371,6 +375,22 @@ static void configure_retimer_usbmux(void)
 	}
 }
 
+static void configure_battery(void)
+{
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+		/* Reconfigure Battery to 2S based */
+		board_battery_info[BATTERY_GETAC_SMP_HHP_408].batt_info =
+		board_battery2S_info[BATTERY_GETAC_SMP_HHP_408].batt_info;
+		break;
+	default:
+		break;
+	}
+}
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
@@ -463,4 +483,7 @@ __override void board_pre_task_i2c_peripheral_init(void)
 
 	/* Configure board specific retimer & mux */
 	configure_retimer_usbmux();
+
+	/* Configure battery config */
+	configure_battery();
 }
