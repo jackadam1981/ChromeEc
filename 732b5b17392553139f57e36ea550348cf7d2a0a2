@@ -46,6 +46,30 @@
       },
       "revId": "732b5b17392553139f57e36ea550348cf7d2a0a2",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fff7708_abf32551",
+        "filename": "common/cbi.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-13T19:14:04Z",
+      "side": 1,
+      "message": "Hi  Thejaswani. If size \u003e 8, we want to throw an error, whether tag is REWORK_ID or not, right? In other words, it doesn\u0027t matter what the tag is if the size is \u003e 8, does it?",
+      "parentUuid": "c0936714_384c072a",
+      "range": {
+        "startLine": 496,
+        "startChar": 14,
+        "endLine": 496,
+        "endChar": 49
+      },
+      "revId": "732b5b17392553139f57e36ea550348cf7d2a0a2",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
