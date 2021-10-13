@@ -70,6 +70,30 @@
       },
       "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63588455_eb00d873",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-13T16:30:23Z",
+      "side": 1,
+      "message": "CCD_BLOCK_EC_UART blocks the CCD EC UART output. It should not block packet mode, because that would prevent the EC from verifying RW and it could prevent the device from booting. It\u0027s mostly used to prevent cr50 from interfering with servo ec uart in test situations. They don\u0027t want to have to worry about interfering with packet mode.",
+      "parentUuid": "89e33a9e_67c50db9",
+      "range": {
+        "startLine": 509,
+        "startChar": 16,
+        "endLine": 509,
+        "endChar": 38
+      },
+      "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
