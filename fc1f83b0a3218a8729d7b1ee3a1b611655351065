@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ffb8843_a507d745",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-13T22:02:29Z",
+      "side": 1,
+      "message": "nit: You should format all of these tests to follow\n\n\t\tztest_unit_test_setup_teardown(\n\t\t\ttest_ln9310_2s_battery_read_fails,\n\t\t\treset_ln9310_state,\n\t\t\treset_ln9310_state),",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 321,
+        "endChar": 0
+      },
+      "revId": "fc1f83b0a3218a8729d7b1ee3a1b611655351065",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
