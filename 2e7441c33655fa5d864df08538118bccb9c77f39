@@ -16,6 +16,24 @@
       "message": "+Denis\n\nAfter we switch to Zephyr, do we still want to put source code in (base)board/ folder? Or move to zephyr/projects/?",
       "revId": "2e7441c33655fa5d864df08538118bccb9c77f39",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68a04a62_83e1d7ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-13T19:20:03Z",
+      "side": 1,
+      "message": "As long as we have cros-ec builds and not just a zephyr tree, we should make sure all duplicate code is in only one location, in this case it would land in (base)board/\n\nOnce the cleanup to remove the shim layer, the code that was shared in (base)board/ will get migrated to a better location in zephyr",
+      "parentUuid": "1719a547_b6342925",
+      "revId": "2e7441c33655fa5d864df08538118bccb9c77f39",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
