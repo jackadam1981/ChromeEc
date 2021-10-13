@@ -56,6 +56,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fc36296d_b29801e6",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-13T21:11:16Z",
+      "side": 1,
+      "message": "Since it is P based boards, flag(board_adl_m_n_rvp) will not be set \u0026 so will return original i2c_ports_used configured in board file.\nAlso, though its a P board, num of usb ports configured also doesnt get affected for mchp1521 , even though only 2 typec ports are used , as CONFIG_USB_PD_PORT_MAX_COUNT is based on pd tasks defined in tasklist in board level.int\nBut, this makes me think that, for mchp based , v will be restricted in using only P boards. If we intend to use M boards any time, we will hit the issue of this i2c ports for sure. But, in that case, returning  (board_get_usb_pd_port_count() + 1 )  for ite based boards will cause problem for this i2c port num, as they have typec ports + 2 i2c ports .\n\nMay be setting this flag(board_adl_m_n_rvp) only for ITE based boards using config VARIANT_INTELRVP_EC_IT8320 in the case of M boards, may help resolve problem.",
+      "parentUuid": "e1d6cbc8_15975325",
+      "revId": "f57e372effec02f379eb7e4906ab75f27860bb6e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "60b93237_2506d0cf",
         "filename": "chip/it83xx/i2c.c",
         "patchSetId": 1
