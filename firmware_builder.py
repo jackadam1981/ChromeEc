@@ -99,6 +99,14 @@ def parse_memsize(filename, metric, variant):
             fw_section.total = int(parts[3]) * UNITS[parts[4]]
             fw_section.track_on_gerrit = False
 
+    # Ensure that there are no regressions for boards that build successfully
+    # with clang: b/172020503.
+    cmd = ['./util/build_with_clang.py']
+    print(f'# Running {" ".join(cmd)}.')
+    subprocess.run(cmd,
+                   cwd=os.path.dirname(__file__),
+                   check=True)
+
 
 def bundle(opts):
     if opts.code_coverage:
