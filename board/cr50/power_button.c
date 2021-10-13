@@ -150,7 +150,22 @@ DECLARE_DEFERRED(rctd_poll);
  * sequence is not running.
  */
 static uint32_t rctd_start_time;
+static uint8_t apro_easy;
 
+static int trigger_ap_ro_validate(void)
+{
+	CPRINTS("RO Validation triggered");
+	ap_ro_add_flash_event(APROF_CHECK_TRIGGERED);
+
+	if (validate_ap_ro() == EC_ERROR_CRC) {
+		/* Validation failed, no go. */
+		ap_ro_verification_failed_ = true;
+		disable_sleep(SLEEP_MASK_AP_RO_VERIFICATION);
+		keep_ec_in_reset();
+	}
+
+	return 0;
+}
 /*
  * rctd_poll_handler - periodically check states of power button and refresh
  * key.
@@ -167,6 +182,9 @@ static int rctd_poll_handler(void)
 	static uint8_t ref_debounced_state;
 	static uint8_t ref_debounce_counter;
 
+
+	if (apro_easy)
+		return trigger_ap_ro_validate();
 	/*
 	 * H1 DIORx pins provide current state of both the power button and
 	 * escape key.
@@ -231,17 +249,8 @@ static int rctd_poll_handler(void)
 		return 1;
 	}
 
-	CPRINTS("RO Validation triggered");
-	ap_ro_add_flash_event(APROF_CHECK_TRIGGERED);
+	return trigger_ap_ro_validate();
 
-	if (validate_ap_ro() == EC_ERROR_CRC) {
-		/* Validation failed, no go. */
-		ap_ro_verification_failed_ = true;
-		disable_sleep(SLEEP_MASK_AP_RO_VERIFICATION);
-		keep_ec_in_reset();
-	}
-
-	return 0;
 }
 
 static void rctd_poll(void)
@@ -357,6 +366,21 @@ void board_physical_presence_enable(int enable)
 	else
 		enable_sleep(SLEEP_MASK_PHYSICAL_PRESENCE);
 }
+
+static int command_apro_easy(int argc, char **argv)
+{
+	int new_state;
+	if (argc == 2) {
+		if (!parse_bool(argv[1], &new_state))
+			return EC_ERROR_PARAM1;
+		apro_easy = new_state;
+	}
+	ccprintf("easy: %d",  apro_easy);
+	return EC_SUCCESS;
+}
+DECLARE_CONSOLE_COMMAND(apro_easy, command_apro_easy, "[BOOL]",
+			"trigger apro verify with powerbutton");
+
 
 static int command_powerbtn(int argc, char **argv)
 {
