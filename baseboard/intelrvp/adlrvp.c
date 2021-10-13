@@ -5,6 +5,7 @@
 
 /* Intel ADLRVP board-specific common configuration */
 
+#include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
@@ -22,6 +23,9 @@
 
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
+
+/* battery 2S config */
+extern struct board_batt_params board_battery2S_info[];
 
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
@@ -324,9 +328,9 @@ static void enable_h1_irq(void)
 }
 DECLARE_HOOK(HOOK_INIT, enable_h1_irq, HOOK_PRIO_LAST);
 
-static void configure_retimer_usbmux(void)
+static void configure_retimer_usbmux(int bid)
 {
-	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	switch (bid) {
 	case ADLN_LP5_ERB_SKU_BOARD_ID:
 	case ADLN_LP5_RVP_SKU_BOARD_ID:
 		/* No retimer on Port0 & Port1 */
@@ -364,6 +368,20 @@ static void configure_retimer_usbmux(void)
 	}
 }
 
+static void configure_battery(int bid)
+{
+	switch (bid) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+		/* Reconfigure Battery to 2S based */
+		board_battery_info[BATTERY_GETAC_SMP_HHP_408].batt_info =
+		board_battery2S_info[BATTERY_GETAC_SMP_HHP_408].batt_info;
+		break;
+	default:
+		break;
+	}
+}
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
@@ -448,12 +466,20 @@ __override bool board_is_tbt_usb4_port(int port)
 
 __override void board_pre_task_i2c_peripheral_init(void)
 {
+	int bid;
+
 	/* Initialized IOEX-0 to access IOEX-GPIOs needed pre-task */
 	ioex_init(IOEX_C0_PCA9675);
 
 	/* Make sure SBU are routed to CCD or AUX based on CCD status at init */
 	board_connect_c0_sbu_deferred();
 
+	/* Retrieve Board id */
+	bid = (ADL_RVP_BOARD_ID(board_get_version()));
+
 	/* Configure board specific retimer & mux */
-	configure_retimer_usbmux();
+	configure_retimer_usbmux(bid);
+
+	/* Configure battery config */
+	configure_battery(bid);
 }
