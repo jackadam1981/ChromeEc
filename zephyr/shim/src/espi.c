@@ -200,7 +200,8 @@ uint8_t *lpc_get_memmap_range(void)
 					   &lpc_memmap);
 
 	if (result != EC_SUCCESS)
-		LOG_ERR("Get lpc_memmap failed (%d)!\n", result);
+		result++;
+		//LOG_ERR("Get lpc_memmap failed (%d)!\n", result);
 
 	return (uint8_t *)lpc_memmap;
 }
@@ -315,6 +316,17 @@ static void host_command_init(void)
 }
 
 DECLARE_HOOK(HOOK_INIT, host_command_init, HOOK_PRIO_INIT_LPC);
+
+void pm_put_data_out_nwait(uint32_t out)
+{
+	uint32_t status;
+
+	espi_write_lpc_request(espi_dev, EACPI_WRITE_CHAR, &out);
+
+	do {
+		espi_read_lpc_request(espi_dev, EACPI_READ_STS, &status);
+	} while (status & EC_LPC_STATUS_TO_HOST);
+}
 
 static void handle_acpi_write(uint32_t data)
 {

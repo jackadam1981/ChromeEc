@@ -1,0 +1,13 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+if BOARD_ADLRVP_ITE
+
+config BOARD
+	default "adlrvp_ite"
+
+config TASK_KEYSCAN_STACK_SIZE
+	default 1024
+
+endif # BOARD_ADLRVP_ITE
