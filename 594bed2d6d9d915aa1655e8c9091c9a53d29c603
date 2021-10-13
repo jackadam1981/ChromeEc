@@ -22,6 +22,30 @@
       },
       "revId": "594bed2d6d9d915aa1655e8c9091c9a53d29c603",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11f208ac_d2b02736",
+        "filename": "board/nipperkin/thermal.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1294793
+      },
+      "writtenOn": "2021-10-13T01:06:18Z",
+      "side": 1,
+      "message": "Hi Diana\nThis fan curve is temporarily, we will update another one when we get new DUT.",
+      "parentUuid": "6589ef6f_4a60b415",
+      "range": {
+        "startLine": 102,
+        "startChar": 10,
+        "endLine": 102,
+        "endChar": 29
+      },
+      "revId": "594bed2d6d9d915aa1655e8c9091c9a53d29c603",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
