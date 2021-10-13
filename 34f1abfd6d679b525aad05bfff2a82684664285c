@@ -63,6 +63,30 @@
       },
       "revId": "34f1abfd6d679b525aad05bfff2a82684664285c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9fff8a11_3181dcb0",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1190764
+      },
+      "writtenOn": "2021-10-13T23:14:13Z",
+      "side": 1,
+      "message": "i think we should not modify existing logic as a side effect\nof global changes.\n\nnocturne, for example, implements the same 95% derating,\nit\u0027s just done inline instead of a named function and is\nnot being changed by this patch.",
+      "parentUuid": "6297db0c_57f8bf4e",
+      "range": {
+        "startLine": 549,
+        "startChar": 1,
+        "endLine": 549,
+        "endChar": 10
+      },
+      "revId": "34f1abfd6d679b525aad05bfff2a82684664285c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
