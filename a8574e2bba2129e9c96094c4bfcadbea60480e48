@@ -166,6 +166,30 @@
       },
       "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2708b858_a3361c7c",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-13T18:40:59Z",
+      "side": 1,
+      "message": "I think this will require significant modifications to how uart tx is enabled in ccd_update_state, because we will need to start checking CCD_BLOCK_EC_CR50_COM. I guess we could separate enabling the pulldown from disabling ec uart tx.\n\nIt\u0027s easier to have three separate flags.\n\nI think it makes sense if you tristate the ec uart, then the outputs, EC comm and ec uart, will be disabled.\n\nI can rename the flag to CCDBLOCK_EC_UART_PD and make the user set these three flags independently.",
+      "parentUuid": "dd50ab21_ef4ccea2",
+      "range": {
+        "startLine": 509,
+        "startChar": 16,
+        "endLine": 509,
+        "endChar": 38
+      },
+      "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
