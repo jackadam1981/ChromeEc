@@ -2452,9 +2452,6 @@
  */
 #undef CONFIG_HWTIMER_64BIT
 
-/* Use a hardware specific udelay(). */
-#undef CONFIG_HW_SPECIFIC_UDELAY
-
 /*****************************************************************************/
 /* I2C configuration */
 
