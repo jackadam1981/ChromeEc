@@ -149,6 +149,9 @@
 #define CONFIG_BATTERY_COUNT	1
 #define CONFIG_HOSTCMD_BATTERY_V2
 
+/* Config Battery at run time */
+#define CONFIG_BATTERY_RUNTIME_CONFIG
+
 #ifndef __ASSEMBLER__
 
 enum adlrvp_charge_ports {

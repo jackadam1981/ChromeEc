@@ -5,6 +5,7 @@
 
 /* Intel ADLRVP board-specific common configuration */
 
+#include "battery_fuel_gauge.h"
 #include "charger.h"
 #include "common.h"
 #include "driver/retimer/bb_retimer_public.h"
@@ -25,6 +26,9 @@
 
 /* Variable flag to identify ADL M/N RVP. Default board is ADL-P RVP. */
 static int board_adl_m_n_rvp;
+
+/* battery 2S config */
+extern struct board_batt_params board_battery2S_info[];
 
 /* TCPC AIC GPIO Configuration */
 const struct tcpc_aic_gpio_config_t tcpc_aic_gpios[] = {
@@ -341,6 +345,9 @@ static void reconfigure_board_specific_drivers(void)
 	case ADLM_LP5_RVP2_SKU_BOARD_ID:
 	case ADLM_LP5_RVP3_SKU_BOARD_ID:
 		board_adl_m_n_rvp = true;
+		/* Reconfigure Battery to 2S based */
+		board_battery_info[BATTERY_GETAC_SMP_HHP_408].batt_info =
+		board_battery2S_info[BATTERY_GETAC_SMP_HHP_408].batt_info;
 		break;
 
 	case ADLP_LP5_T4_RVP_SKU_BOARD_ID:
