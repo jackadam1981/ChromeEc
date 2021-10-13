@@ -10,6 +10,10 @@
 #define CPRINTS(format, args...) cprints(CC_USBCHARGE, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_USBCHARGE, format, ## args)
 
+#if defined(CONFIG_USB_MUX_TUSB1044) && defined(CONFIG_USB_MUX_TUSB1064)
+#error "Must choose CONFIG_USB_MUX_TUSB1044 or CONFIG_USB_MUX_TUSB1044"
+#endif
+
 /*
  * configuration bits which never change in the General Register
  * e.g. REG_GENERAL_DP_EN_CTRL or REG_GENERAL_EQ_OVERRIDE
