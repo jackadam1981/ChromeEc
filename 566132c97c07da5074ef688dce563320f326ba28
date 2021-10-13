@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb8e2cd_1ec1c3d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-13T19:25:36Z",
+      "side": 1,
+      "message": "The tests looks like you are going in the right direction.  I am not a fan of magic numbers... please go through and replace with existing defined labels (and ORs of multiple if needed)",
+      "revId": "566132c97c07da5074ef688dce563320f326ba28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef24bb12_c6c76388",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-13T19:25:36Z",
+      "side": 1,
+      "message": "please use standard defined values instead of magic numbers for here and the rest of the file. It will make the test more clear.",
+      "range": {
+        "startLine": 157,
+        "startChar": 46,
+        "endLine": 157,
+        "endChar": 50
+      },
+      "revId": "566132c97c07da5074ef688dce563320f326ba28",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
