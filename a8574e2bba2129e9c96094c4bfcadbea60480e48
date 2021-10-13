@@ -94,6 +94,30 @@
       },
       "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfeced05_f7fd64df",
+        "filename": "board/cr50/rdd.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-13T16:59:02Z",
+      "side": 1,
+      "message": "could EC be tristated if both BLOCK_EC_UART and BLOCK_EC_CR50_COMM are enabled?\n\nI just find it confusing having three knobs for the same interface.",
+      "parentUuid": "63588455_eb00d873",
+      "range": {
+        "startLine": 509,
+        "startChar": 16,
+        "endLine": 509,
+        "endChar": 38
+      },
+      "revId": "a8574e2bba2129e9c96094c4bfcadbea60480e48",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
