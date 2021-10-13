@@ -22,6 +22,30 @@
       },
       "revId": "34f1abfd6d679b525aad05bfff2a82684664285c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6297db0c_57f8bf4e",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-13T08:26:12Z",
+      "side": 1,
+      "message": "I think charger_derate() is out-of-topic for this change. It only gets called at hook_init which only happens at RO or sysjump from RO to RW:\n\n1. PD comm won\u0027t be ready at RO init.\n2. If it sysjumps from RO to RW, the previous PD supplier information won\u0027t be carried into the RW image.\n\nWDYT?",
+      "parentUuid": "49d80499_47f0028a",
+      "range": {
+        "startLine": 549,
+        "startChar": 1,
+        "endLine": 549,
+        "endChar": 10
+      },
+      "revId": "34f1abfd6d679b525aad05bfff2a82684664285c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
