@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a779d4d6_61535816",
+        "filename": "baseboard/brya/prochot.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2021-10-13T03:51:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "abfb5256_ed05d8ab",
+      "range": {
+        "startLine": 46,
+        "startChar": 17,
+        "endLine": 46,
+        "endChar": 19
+      },
+      "revId": "cfe4d9ea345abe5153469f64d7de6733664fd385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67b6b9d4_5dfeeef9",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-12T05:05:02Z",
       "side": 1,
       "message": "all of these ratios or thresholds should be constants at the top of\nthe file as these may need to be tuned later in the project or\ncustomized for different boards.",
+      "range": {
+        "startLine": 178,
+        "startChar": 47,
+        "endLine": 178,
+        "endChar": 53
+      },
+      "revId": "cfe4d9ea345abe5153469f64d7de6733664fd385",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26e3534a_c9c2a30e",
+        "filename": "baseboard/brya/prochot.c",
+        "patchSetId": 15
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1477740
+      },
+      "writtenOn": "2021-10-13T03:51:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67b6b9d4_5dfeeef9",
       "range": {
         "startLine": 178,
         "startChar": 47,
