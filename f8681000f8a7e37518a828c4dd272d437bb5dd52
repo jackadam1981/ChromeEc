@@ -1,0 +1,232 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25d3bce6_6cbf2b8f",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "I think it\u0027d be easier to follow if we wrote these values referencing the tcpci.h macros instead of what their raw value should be.",
+      "range": {
+        "startLine": 819,
+        "startChar": 1,
+        "endLine": 819,
+        "endChar": 17
+      },
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03b666a9_b82466ba",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d62b18_3f8ab4d3",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b0493f7_9f3e450c",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "nit: It looks like we use language like \"set\" instead of \"changed\" in other portions of this CL. It looks like we\u0027re only testing if it\u0027s set here instead of changed so I\u0027d change this to \"should be set\"",
+      "range": {
+        "startLine": 878,
+        "startChar": 37,
+        "endLine": 878,
+        "endChar": 54
+      },
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "715e9f85_040b147e",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "Although it\u0027s somewhat obvious that these values are arbitrary, I\u0027d prefer if it if we explicitly stated it as so, either as part of the variable name or in a comment.",
+      "range": {
+        "startLine": 917,
+        "startChar": 0,
+        "endLine": 919,
+        "endChar": 13
+      },
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4596e89b_a3434d40",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 939,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "nit: my preference is to have this this in setup and teardown test fixtures whenever I\u0027m intentionally failing registers.",
+      "range": {
+        "startLine": 938,
+        "startChar": 1,
+        "endLine": 939,
+        "endChar": 36
+      },
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4fcaa24_4338c31f",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b195720_6816b835",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26dce0ab_328d9765",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "I think it\u0027d be easier to follow if we separated Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c96d28e8_28b68da7",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07dd13dd_01aab006",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9859b65e_3c6cdbfd",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1425418
+      },
+      "writtenOn": "2021-10-13T17:23:24Z",
+      "side": 1,
+      "message": "Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
