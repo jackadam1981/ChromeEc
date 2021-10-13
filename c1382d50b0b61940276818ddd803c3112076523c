@@ -46,6 +46,30 @@
       },
       "revId": "c1382d50b0b61940276818ddd803c3112076523c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fd67a74_acc43ad5",
+        "filename": "common/timer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-13T02:41:11Z",
+      "side": 1,
+      "message": "1. It\u0027s much more readable and easier to understand what\u0027s going on\n2. Nope, the LTO (link time optimizer) should catch that it\u0027s never used and remove it.",
+      "parentUuid": "c96e9890_93511dc3",
+      "range": {
+        "startLine": 214,
+        "startChar": 0,
+        "endLine": 228,
+        "endChar": 25
+      },
+      "revId": "c1382d50b0b61940276818ddd803c3112076523c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
