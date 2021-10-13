@@ -8,6 +8,7 @@
 #include <zephyr.h>
 
 #include "hwtimer.h"
+#include "timer.h"
 
 uint64_t __hw_clock_source_read64(void)
 {
@@ -23,7 +24,7 @@ uint32_t __hw_clock_event_get(void)
 	return 0;
 }
 
-void udelay(unsigned us)
+__override void udelay(unsigned us)
 {
 	k_busy_wait(us);
 }
