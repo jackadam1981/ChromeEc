@@ -833,6 +833,9 @@ static int parse_params(char *s, uint8_t *params)
 	return len;
 }
 
+DECLARE_CONSOLE_COMMAND(hostcmd, command_host_command,
+			"cmd ver param",
+			"Fake host command");
 static int command_host_command(int argc, char **argv)
 {
 	struct host_cmd_handler_args args;
@@ -897,12 +900,12 @@ static int command_host_command(int argc, char **argv)
 	shared_mem_release(cmd_params);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(hostcmd, command_host_command,
-			"cmd ver param",
-			"Fake host command");
 #endif /* CONFIG_CMD_HOSTCMD */
 
 #ifdef CONFIG_CMD_HCDEBUG
+DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
+			"hcdebug [off | normal | every | params]",
+			"Set host command debug output mode");
 static int command_hcdebug(int argc, char **argv)
 {
 	if (argc > 1) {
@@ -924,7 +927,4 @@ static int command_hcdebug(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(hcdebug, command_hcdebug,
-			"hcdebug [off | normal | every | params]",
-			"Set host command debug output mode");
 #endif /* CONFIG_CMD_HCDEBUG */
