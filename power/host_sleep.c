@@ -199,6 +199,14 @@ void sleep_reset_tracking(void)
 	sleep_timeout_callback = NULL;
 }
 
+DECLARE_CONSOLE_COMMAND(sleeptimeout, command_sleep_fail_timeout,
+		"[default | infinite | <msec>]",
+		"Display or set host sleep failure detection timeout.\n"
+		"Valid arguments are:\n"
+		" default\n"
+		" infinite - disables the timeout\n"
+		" <msec> - custom length in milliseconds\n"
+		" <none> - prints the current setting");
 static int command_sleep_fail_timeout(int argc, char **argv)
 {
 	if (argc < 2) {
@@ -232,14 +240,6 @@ static int command_sleep_fail_timeout(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(sleeptimeout, command_sleep_fail_timeout,
-		"[default | infinite | <msec>]",
-		"Display or set host sleep failure detection timeout.\n"
-		"Valid arguments are:\n"
-		" default\n"
-		" infinite - disables the timeout\n"
-		" <msec> - custom length in milliseconds\n"
-		" <none> - prints the current setting");
 
 
 #else /* !CONFIG_POWER_SLEEP_FAILURE_DETECTION */

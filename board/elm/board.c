@@ -244,14 +244,14 @@ void board_reset_pd_mcu(void)
 	hook_call_deferred(&deferred_reset_pd_mcu_data, 10*MSEC);
 }
 
+DECLARE_CONSOLE_COMMAND(resetpd, command_pd_reset,
+			"",
+			"Reset PD IC");
 static int command_pd_reset(int argc, char **argv)
 {
 	board_reset_pd_mcu();
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(resetpd, command_pd_reset,
-			"",
-			"Reset PD IC");
 
 /**
  * There is a level shift for AC_OK & LID_OPEN signal between AP & EC,

@@ -330,6 +330,9 @@ static void uart_comx_putc_wait(int c)
 		uart_comx_putc(c);
 }
 
+DECLARE_CONSOLE_COMMAND(comxtest, command_comxtest,
+			"[string]",
+			"Write test data to COMx uart");
 static int command_comxtest(int argc, char **argv)
 {
 	/* Put characters to COMX port */
@@ -345,8 +348,5 @@ static int command_comxtest(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(comxtest, command_comxtest,
-			"[string]",
-			"Write test data to COMx uart");
 
 #endif /* CONFIG_CMD_COMXTEST */

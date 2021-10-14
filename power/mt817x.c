@@ -785,6 +785,9 @@ static const char * const state_name[] = {
 	"on",
 };
 
+DECLARE_CONSOLE_COMMAND(power, command_power,
+			"on/off",
+			"Turn AP power on/off");
 static int command_power(int argc, char **argv)
 {
 	int v;
@@ -813,6 +816,3 @@ static int command_power(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(power, command_power,
-			"on/off",
-			"Turn AP power on/off");

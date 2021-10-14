@@ -853,6 +853,9 @@ void chipset_reset(enum chipset_shutdown_reason reason)
  */
 static int fake_suspend = -1;
 
+DECLARE_CONSOLE_COMMAND(fakesuspend, command_fake_suspend,
+			"on/off/reset",
+			"Fake the AP_SUSPEND signal");
 static int command_fake_suspend(int argc, char **argv)
 {
 	int v;
@@ -875,9 +878,6 @@ static int command_fake_suspend(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fakesuspend, command_fake_suspend,
-			"on/off/reset",
-			"Fake the AP_SUSPEND signal");
 
 /* Get system sleep state through GPIOs */
 static inline int chipset_get_sleep_signal(void)
@@ -1147,6 +1147,9 @@ static const char * const state_name[] = {
 	"on",
 };
 
+DECLARE_CONSOLE_COMMAND(power, command_power,
+			"on/off",
+			"Turn AP power on/off");
 static int command_power(int argc, char **argv)
 {
 	int v;
@@ -1173,6 +1176,3 @@ static int command_power(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(power, command_power,
-			"on/off",
-			"Turn AP power on/off");

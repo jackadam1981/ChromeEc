@@ -319,6 +319,10 @@ void uart_sbu_tick(void)
 }
 DECLARE_HOOK(HOOK_TICK, uart_sbu_tick, HOOK_PRIO_DEFAULT);
 
+DECLARE_CONSOLE_COMMAND(uart, command_uart,
+	"[off|on18|on33|flip18|flip33|auto]",
+	"Set the sbu uart state\n"
+	"WARNING: 3.3v may damage 1.8v devices.\n");
 static int command_uart(int argc, char **argv)
 {
 	const char *uart_state_str = "off";
@@ -349,10 +353,6 @@ static int command_uart(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(uart, command_uart,
-	"[off|on18|on33|flip18|flip33|auto]",
-	"Set the sbu uart state\n"
-	"WARNING: 3.3v may damage 1.8v devices.\n");
 
 static void set_led_a(int r, int g, int b)
 {
@@ -456,6 +456,9 @@ void button_interrupt(enum gpio_signal signal)
 	hook_call_deferred(&button_interrupt_deferred_data, 0);
 }
 
+DECLARE_CONSOLE_COMMAND(mux, command_mux,
+	"[off|A|B]",
+	"Get/set the mux and enable state of the TYPE-C mux");
 static int command_mux(int argc, char **argv)
 {
 	char *mux_state_str = "off";
@@ -479,9 +482,6 @@ static int command_mux(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(mux, command_mux,
-	"[off|A|B]",
-	"Get/set the mux and enable state of the TYPE-C mux");
 
 /******************************************************************************
  * Initialize board.

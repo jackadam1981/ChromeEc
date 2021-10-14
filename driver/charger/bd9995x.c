@@ -1464,6 +1464,9 @@ static int read_ext(int chgnum, uint8_t cmd)
 	return read;
 }
 
+DECLARE_CONSOLE_COMMAND(charger_dump, console_bd9995x_dump_regs,
+			NULL,
+			"Dump all charger registers");
 /* Dump all readable registers on bd9995x */
 static void console_bd9995x_dump_regs(int chgnum)
 {
@@ -1484,6 +1487,9 @@ static void console_bd9995x_dump_regs(int chgnum)
 #endif /* CONFIG_CMD_CHARGER_DUMP */
 
 #ifdef CONFIG_CMD_CHARGER
+DECLARE_CONSOLE_COMMAND(bd9995x, console_command_bd9995x,
+			"bd9995x <r/w> <reg_hex> <cmd_type> | <val_hex>",
+			"Read or write a charger register");
 static int console_command_bd9995x(int argc, char **argv)
 {
 	int rv, reg, data, val;
@@ -1524,9 +1530,6 @@ static int console_command_bd9995x(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(bd9995x, console_command_bd9995x,
-			"bd9995x <r/w> <reg_hex> <cmd_type> | <val_hex>",
-			"Read or write a charger register");
 #endif /* CONFIG_CMD_CHARGER */
 
 #ifdef CONFIG_CHARGER_PSYS_READ
@@ -1574,6 +1577,9 @@ static int bd9995x_enable_psys(int chgnum)
 			BD9995X_EXTENDED_COMMAND);
 }
 
+DECLARE_CONSOLE_COMMAND(psys, console_command_psys,
+			NULL,
+			"Get the system power in mW");
 /**
  * Get system power.
  *
@@ -1595,9 +1601,6 @@ static int console_command_psys(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(psys, console_command_psys,
-			NULL,
-			"Get the system power in mW");
 #endif /* CONFIG_CHARGER_PSYS_READ */
 
 #ifdef CONFIG_CMD_CHARGER_ADC_AMON_BMON
@@ -1669,6 +1672,9 @@ static int bd9995x_amon_bmon(int chgnum, int amon_bmon)
 	return EC_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(amonbmon, console_command_amon_bmon,
+			"amonbmon [a|b]",
+			"Get charger AMON/BMON voltage diff, current");
 /**
  * Get charger AMON and BMON current.
  */
@@ -1686,9 +1692,6 @@ static int console_command_amon_bmon(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(amonbmon, console_command_amon_bmon,
-			"amonbmon [a|b]",
-			"Get charger AMON/BMON voltage diff, current");
 #endif /* CONFIG_CMD_CHARGER_ADC_AMON_BMON */
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_CHARGER

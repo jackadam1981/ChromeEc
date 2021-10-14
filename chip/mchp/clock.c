@@ -701,6 +701,9 @@ void __idle(void)
 }
 
 #ifdef CONFIG_CMD_IDLE_STATS
+DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
+			"",
+			"Print last idle stats");
 /**
  * Print low power idle statistics
  */
@@ -724,11 +727,16 @@ static int command_idle_stats(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
-			"",
-			"Print last idle stats");
 #endif /* defined(CONFIG_CMD_IDLE_STATS) */
 
+DECLARE_CONSOLE_COMMAND(dsleep, command_dsleep,
+		"[ on | off | <timeout> sec]",
+		"Deep sleep clock settings:\nUse 'on' to force deep "
+		"sleep NOT to enter heavy sleep mode.\nUse 'off' to "
+		"allow deep sleep to use heavy sleep whenever conditions "
+		"allow.\n"
+		"Give a timeout value for the console in use timeout.\n"
+		"See also 'sleep mask'.");
 /**
  * Configure deep sleep clock settings.
  */
@@ -769,12 +777,4 @@ static int command_dsleep(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(dsleep, command_dsleep,
-		"[ on | off | <timeout> sec]",
-		"Deep sleep clock settings:\nUse 'on' to force deep "
-		"sleep NOT to enter heavy sleep mode.\nUse 'off' to "
-		"allow deep sleep to use heavy sleep whenever conditions "
-		"allow.\n"
-		"Give a timeout value for the console in use timeout.\n"
-		"See also 'sleep mask'.");
 #endif /* CONFIG_LOW_POWER_IDLE */

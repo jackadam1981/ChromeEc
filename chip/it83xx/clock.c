@@ -679,6 +679,9 @@ void __ram_code __idle(void)
 
 #ifdef CONFIG_LOW_POWER_IDLE
 #ifdef CONFIG_CMD_IDLE_STATS
+DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
+			"",
+			"Print last idle stats");
 /**
  * Print low power idle statistics
  */
@@ -694,9 +697,6 @@ static int command_idle_stats(int argc, char **argv)
 	ccprintf("Total time on:                       %.6llds\n\n", ts.val);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
-			"",
-			"Print last idle stats");
 
 #endif /* CONFIG_CMD_IDLE_STATS */
 #endif /* CONFIG_LOW_POWER_IDLE */

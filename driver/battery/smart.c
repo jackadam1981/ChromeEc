@@ -491,6 +491,9 @@ int battery_wait_for_stable(void)
 }
 
 #if defined(CONFIG_CMD_BATTFAKE)
+DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
+			"percent (-1 = use real level)",
+			"Set fake battery level");
 static int command_battfake(int argc, char **argv)
 {
 	char *e;
@@ -509,10 +512,10 @@ static int command_battfake(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
-			"percent (-1 = use real level)",
-			"Set fake battery level");
 
+DECLARE_CONSOLE_COMMAND(batttempfake, command_batttempfake,
+			"temperature (-1 = use real temperature)",
+			"Set fake battery temperature in deciKelvin (2731 = 273.1 K = 0 deg C)");
 static int command_batttempfake(int argc, char **argv)
 {
 	char *e;
@@ -532,12 +535,12 @@ static int command_batttempfake(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(batttempfake, command_batttempfake,
-			"temperature (-1 = use real temperature)",
-			"Set fake battery temperature in deciKelvin (2731 = 273.1 K = 0 deg C)");
 #endif
 
 #ifdef CONFIG_CMD_BATT_MFG_ACCESS
+DECLARE_CONSOLE_COMMAND(battmfgacc, command_batt_mfg_access_read,
+			"cmd block | len",
+			"Read battery manufacture access data");
 static int command_batt_mfg_access_read(int argc, char **argv)
 {
 	char *e;
@@ -576,9 +579,6 @@ static int command_batt_mfg_access_read(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(battmfgacc, command_batt_mfg_access_read,
-			"cmd block | len",
-			"Read battery manufacture access data");
 #endif /* CONFIG_CMD_BATT_MFG_ACCESS */
 
 /*****************************************************************************/

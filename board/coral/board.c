@@ -932,6 +932,9 @@ static void print_form_factor_list(int low, int high)
 	}
 }
 
+DECLARE_CONSOLE_COMMAND(sku, command_sku,
+			"<board|line0|line1|form [low high]>",
+			"Get board id, sku, form factor");
 static int command_sku(int argc, char **argv)
 {
 	enum adc_channel chan;
@@ -975,9 +978,6 @@ static int command_sku(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(sku, command_sku,
-			"<board|line0|line1|form [low high]>",
-			"Get board id, sku, form factor");
 
 __override uint32_t board_get_sku_id(void)
 {
