@@ -161,6 +161,9 @@
 /* Config Battery at run time */
 #define CONFIG_BATTERY_RUNTIME_CONFIG
 
+/* Limited USB_PD_PORT COUNT for specific sku */
+#define ADL_N_M_USB_PD_PORT_MAX_COUNT 2
+
 #ifndef __ASSEMBLER__
 
 enum adlrvp_charge_ports {
