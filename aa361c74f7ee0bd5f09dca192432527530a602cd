@@ -16,6 +16,24 @@
       "message": "Replaced magic values with defines from tcpm/tcpci.h. Please check test_tcpci_get_cc() which is rewritten for readability. ",
       "revId": "aa361c74f7ee0bd5f09dca192432527530a602cd",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13fbbe4a_44e5ae63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-14T15:06:46Z",
+      "side": 1,
+      "message": "That function reads so much better. Thank you",
+      "parentUuid": "05b48fc1_3bbb4d33",
+      "revId": "aa361c74f7ee0bd5f09dca192432527530a602cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
