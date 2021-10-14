@@ -153,6 +153,9 @@ DECLARE_HOOK(HOOK_LID_CHANGE, kblight_lid_change, HOOK_PRIO_DEFAULT);
 /*
  * Console and host commands
  */
+DECLARE_CONSOLE_COMMAND(kblight, cc_kblight,
+			"percent",
+			"Get/set keyboard backlight");
 static int cc_kblight(int argc, char **argv)
 {
 	if (argc >= 2) {
@@ -169,8 +172,6 @@ static int cc_kblight(int argc, char **argv)
 		 kblight_get_enabled());
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(kblight, cc_kblight, "percent",
-			"Get/set keyboard backlight");
 
 DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_KEYBOARD_BACKLIGHT,
 		     hc_get_keyboard_backlight,

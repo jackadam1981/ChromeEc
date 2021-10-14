@@ -1048,6 +1048,9 @@ DECLARE_SAFE_CONSOLE_COMMAND(flashinfo, command_flash_info, NULL,
 #endif /* CONFIG_CMD_FLASHINFO */
 
 #ifdef CONFIG_CMD_FLASH
+DECLARE_CONSOLE_COMMAND(flasherase, command_flash_erase,
+			"offset size",
+			"Erase flash");
 static int command_flash_erase(int argc, char **argv)
 {
 	int offset = -1;
@@ -1064,9 +1067,10 @@ static int command_flash_erase(int argc, char **argv)
 	ccprintf("Erasing %d bytes at 0x%x...\n", size, offset);
 	return crec_flash_erase(offset, size);
 }
-DECLARE_CONSOLE_COMMAND(flasherase, command_flash_erase, "offset size",
-			"Erase flash");
 
+DECLARE_CONSOLE_COMMAND(flashwrite, command_flash_write,
+			"offset size",
+			"Write pattern to flash");
 static int command_flash_write(int argc, char **argv)
 {
 	int offset = -1;
@@ -1104,9 +1108,10 @@ static int command_flash_write(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(flashwrite, command_flash_write, "offset size",
-			"Write pattern to flash");
 
+DECLARE_CONSOLE_COMMAND(flashread, command_flash_read,
+			"offset [size]",
+			"Read flash");
 static int command_flash_read(int argc, char **argv)
 {
 	int offset = -1;
@@ -1151,11 +1156,18 @@ static int command_flash_read(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(flashread, command_flash_read, "offset [size]",
-			"Read flash");
 #endif
 
 #ifdef CONFIG_CMD_FLASH_WP
+DECLARE_CONSOLE_COMMAND(flashwp, command_flash_wp,
+			"<BOOLEAN> | now | all | noall"
+#ifdef CONFIG_FLASH_PROTECT_RW
+			" | rw | norw"
+#endif
+#ifdef CONFIG_ROLLBACK
+			" | rb | norb"
+#endif
+			, "Modify flash write protect");
 static int command_flash_wp(int argc, char **argv)
 {
 	int val;
@@ -1197,16 +1209,6 @@ static int command_flash_wp(int argc, char **argv)
 
 	return EC_ERROR_PARAM1;
 }
-DECLARE_CONSOLE_COMMAND(flashwp, command_flash_wp,
-			"<BOOLEAN> | now | all | noall"
-#ifdef CONFIG_FLASH_PROTECT_RW
-			" | rw | norw"
-#endif
-#ifdef CONFIG_ROLLBACK
-			" | rb | norb"
-#endif
-			,
-			"Modify flash write protect");
 #endif /* CONFIG_CMD_FLASH_WP */
 
 /*****************************************************************************/

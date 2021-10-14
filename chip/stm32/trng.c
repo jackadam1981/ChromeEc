@@ -103,6 +103,8 @@ test_mockable void trng_exit(void)
  * update RO once in production.
  */
 #if defined(SECTION_IS_RW)
+DECLARE_CONSOLE_COMMAND(rand, command_rand,
+			NULL, "Output random bytes to console.");
 static int command_rand(int argc, char **argv)
 {
 	uint8_t data[32];
@@ -115,8 +117,6 @@ static int command_rand(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(rand, command_rand, NULL,
-			"Output random bytes to console.");
 
 DECLARE_HOST_COMMAND(EC_CMD_RAND_NUM, host_command_rand,
 		     EC_VER_MASK(EC_VER_RAND_NUM));

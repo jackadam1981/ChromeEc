@@ -155,6 +155,7 @@ thermal_exit:
 	thermal_wait_until.val = get_time().val + (3 * SECOND);
 }
 
+DECLARE_CONSOLE_COMMAND(jc, command_jc, "", "mt6370 junction temp");
 static int command_jc(int argc, char **argv)
 {
 	static int prev_jc_temp;
@@ -167,7 +168,6 @@ static int command_jc(int argc, char **argv)
 	prev_jc_temp = jc_temp;
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(jc, command_jc, "", "mt6370 junction temp");
 
 /*
  * b/143318064: A workwround for mt6370 bad buck efficiency.
