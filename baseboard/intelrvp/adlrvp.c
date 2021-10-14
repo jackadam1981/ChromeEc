@@ -460,6 +460,18 @@ static void configure_usbc_ports(void)
 
 	/* set the number of usb pd ports */
 	usb_pd_set_port_count(adlrvp_usbc_ports);
+
+	/*
+	 * set the dedicated charge port's index.
+	 *
+	 * The index of dedicated charge port is generally
+	 * set as the last port, after all typec ports. As
+	 * typec ports starts at index 0, total number of
+	 * typec ports will be the equivalent index of
+	 * dedicated charge port. So, pass the number of
+	 * usbc ports to set the dedicated charge port.
+	 */
+	charge_manager_set_dedicated_charge_port(adlrvp_usbc_ports);
 }
 /******************************************************************************/
 /* PWROK signal configuration */
