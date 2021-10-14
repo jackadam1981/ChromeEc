@@ -1542,6 +1542,9 @@ hc_override_dedicated_charger_limit(struct host_cmd_handler_args *args)
 }
 #endif
 
+DECLARE_CONSOLE_COMMAND(chgoverride, command_charge_port_override,
+	"[port | -1 | -2]",
+	"Force charging from a given port (-1 = off, -2 = disable charging)");
 static int command_charge_port_override(int argc, char **argv)
 {
 	int port = OVERRIDE_OFF;
@@ -1560,9 +1563,6 @@ static int command_charge_port_override(int argc, char **argv)
 		 (argc >= 2 && ret == EC_SUCCESS) ? port : override_port);
 	return ret;
 }
-DECLARE_CONSOLE_COMMAND(
-	chgoverride, command_charge_port_override, "[port | -1 | -2]",
-	"Force charging from a given port (-1 = off, -2 = disable charging)");
 
 #ifdef CONFIG_CHARGE_MANAGER_EXTERNAL_POWER_LIMIT
 static void charge_manager_set_external_power_limit(int current_lim,
@@ -1606,6 +1606,9 @@ hc_external_power_limit(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(chglim, command_external_power_limit,
+	"[max_current (mA)] [max_voltage (mV)]",
+	"Set max charger current / voltage");
 static int command_external_power_limit(int argc, char **argv)
 {
 	int max_current;
@@ -1631,12 +1634,11 @@ static int command_external_power_limit(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(chglim, command_external_power_limit,
-			"[max_current (mA)] [max_voltage (mV)]",
-			"Set max charger current / voltage");
 #endif /* CONFIG_CHARGE_MANAGER_EXTERNAL_POWER_LIMIT */
 
 #ifdef CONFIG_CMD_CHARGE_SUPPLIER_INFO
+DECLARE_CONSOLE_COMMAND(chgsup, charge_supplier_info,
+			NULL, "print chg supplier info");
 static int charge_supplier_info(int argc, char **argv)
 {
 	int p, s;
@@ -1673,8 +1675,6 @@ static int charge_supplier_info(int argc, char **argv)
 	ccprintf("\n");
 	return 0;
 }
-DECLARE_CONSOLE_COMMAND(chgsup, charge_supplier_info, NULL,
-			"print chg supplier info");
 #endif
 
 __overridable int board_charge_port_is_sink(int port)

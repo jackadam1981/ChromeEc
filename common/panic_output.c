@@ -333,6 +333,13 @@ static void stack_overflow_recurse(int n)
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_CRASH
+DECLARE_CONSOLE_COMMAND(crash, command_crash,
+		"[assert | divzero | udivzero"
+#ifdef CONFIG_CMD_STACKOVERFLOW
+			" | stack"
+#endif
+			" | unaligned | watchdog | hang]",
+		"Crash the system (for testing)");
 static int command_crash(int argc, char **argv)
 {
 	if (argc < 2)
@@ -376,15 +383,11 @@ static int command_crash(int argc, char **argv)
 	/* Everything crashes, so shouldn't get back here */
 	return EC_ERROR_UNKNOWN;
 }
-DECLARE_CONSOLE_COMMAND(crash, command_crash,
-			"[assert | divzero | udivzero"
-#ifdef CONFIG_CMD_STACKOVERFLOW
-			" | stack"
-#endif
-			" | unaligned | watchdog | hang]",
-			"Crash the system (for testing)");
 #endif /* CONFIG_CMD_CRASH */
 
+DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo,
+			NULL,
+			"Print info from a previous panic");
 static int command_panicinfo(int argc, char **argv)
 {
 	struct panic_data *const pdata_ptr = panic_get_data();
@@ -405,8 +408,6 @@ static int command_panicinfo(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo, NULL,
-			"Print info from a previous panic");
 
 /*****************************************************************************/
 /* Host commands */

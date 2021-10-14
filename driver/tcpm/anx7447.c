@@ -247,6 +247,9 @@ int anx7447_flash_erase(int port)
 					    0 /* suppress console if empty */);
 }
 
+DECLARE_CONSOLE_COMMAND(anx_ocm, command_anx_ocm,
+			"port [erase]",
+			"Print OCM status or erases OCM for a given port.");
 /* Add console command to erase OCM flash if needed. */
 static int command_anx_ocm(int argc, char **argv)
 {
@@ -277,8 +280,6 @@ static int command_anx_ocm(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(anx_ocm, command_anx_ocm, "port [erase]",
-			"Print OCM status or erases OCM for a given port.");
 #endif
 
 static int anx7447_init(int port)
