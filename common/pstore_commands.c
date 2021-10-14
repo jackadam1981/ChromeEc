@@ -10,6 +10,9 @@
 #include "host_command.h"
 #include "util.h"
 
+DECLARE_HOST_COMMAND(EC_CMD_PSTORE_INFO,
+		     pstore_command_get_info,
+		     EC_VER_MASK(0));
 static enum ec_status
 pstore_command_get_info(struct host_cmd_handler_args *args)
 {
@@ -23,10 +26,10 @@ pstore_command_get_info(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PSTORE_INFO,
-		     pstore_command_get_info,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_PSTORE_READ,
+		     pstore_command_read,
+		     EC_VER_MASK(0));
 static enum ec_status pstore_command_read(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pstore_read *p = args->params;
@@ -60,10 +63,10 @@ static enum ec_status pstore_command_read(struct host_cmd_handler_args *args)
 	args->response_size = p->size;
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PSTORE_READ,
-		     pstore_command_read,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_PSTORE_WRITE,
+		     pstore_command_write,
+		     EC_VER_MASK(0));
 static enum ec_status pstore_command_write(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pstore_write *p = args->params;
@@ -97,6 +100,3 @@ static enum ec_status pstore_command_write(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PSTORE_WRITE,
-		     pstore_command_write,
-		     EC_VER_MASK(0));
