@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea5e660c_29870a58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T20:11:45Z",
+      "side": 1,
+      "message": "please update the test clause with an example of generated ouput",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 9
+      },
+      "revId": "bdb3b12622cb8ff3a17f664c0545c46a66e9cc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "5a4a9322_1e3f3cea",
@@ -14,6 +37,23 @@
       "writtenOn": "2021-10-14T18:16:08Z",
       "side": 1,
       "message": "ping",
+      "revId": "bdb3b12622cb8ff3a17f664c0545c46a66e9cc31",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f332ee47_6bb49cc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T20:11:45Z",
+      "side": 1,
+      "message": "with a nit",
       "revId": "bdb3b12622cb8ff3a17f664c0545c46a66e9cc31",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
