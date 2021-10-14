@@ -63,6 +63,8 @@ static uint32_t get_supported_switches(void)
 	return val;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_INFO, mkbp_get_info,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status mkbp_get_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_mkbp_info *p = args->params;
@@ -152,6 +154,3 @@ static enum ec_status mkbp_get_info(struct host_cmd_handler_args *args)
 	}
 	return EC_RES_SUCCESS;
 }
-
-DECLARE_HOST_COMMAND(EC_CMD_MKBP_INFO, mkbp_get_info,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
