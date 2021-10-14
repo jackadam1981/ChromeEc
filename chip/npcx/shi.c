@@ -1059,6 +1059,8 @@ static void shi_init(void)
 /* Call hook before chipset sets initial power state and calls resume hooks */
 DECLARE_HOOK(HOOK_INIT, shi_init, HOOK_PRIO_INIT_CHIPSET - 1);
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, shi_get_protocol_info,
+EC_VER_MASK(0));
 /**
  * Get protocol information
  */
@@ -1076,5 +1078,3 @@ static enum ec_status shi_get_protocol_info(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, shi_get_protocol_info,
-		     EC_VER_MASK(0));
