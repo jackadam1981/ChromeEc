@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6becbb4_d3e1f2f6",
+        "filename": "common/tpm_registers.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-14T15:03:15Z",
+      "side": 0,
+      "message": "I think it would be better to keep all of the vendor command code handling in call_extension_command.\n\nCould we use different flags here to specify the vendor command is from ALT_IF and then allow certain ALT_IF vendor commands in call_extension_command?\n\nMaybe use (VENDOR_CMD_FROM_USB | VENDOR_CMD_FROM_ALT_IF) as the flags here.\n\nIn the call_extension_command VENDOR_CMD_FROM_USB check add a new section \ncase VENDOR_CC_AP_RO_VALIDATE:\n    if (flags \u0026 VENDOR_CMD_FROM_ALT_IF)\n        break;\n    else\n        goto ignore_cmd;",
+      "range": {
+        "startLine": 1029,
+        "startChar": 12,
+        "endLine": 1029,
+        "endChar": 31
+      },
+      "revId": "fdf35d0b476089cb2c08bc13ac5dda2782d505cd",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
