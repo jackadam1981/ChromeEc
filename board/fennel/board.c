@@ -664,6 +664,9 @@ static int it8801_get_target_channel(enum pwm_channel *channel,
 	return *channel >= 1;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_DUTY,
+		     host_command_pwm_set_duty,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 {
@@ -680,10 +683,10 @@ host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_DUTY,
-		     host_command_pwm_set_duty,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_DUTY,
+		     host_command_pwm_get_duty,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_pwm_get_duty(struct host_cmd_handler_args *args)
 {
@@ -700,7 +703,4 @@ host_command_pwm_get_duty(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_DUTY,
-		     host_command_pwm_get_duty,
-		     EC_VER_MASK(0));
 #endif
