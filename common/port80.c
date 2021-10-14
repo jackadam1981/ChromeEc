@@ -127,6 +127,9 @@ static void port80_dump_buffer(void)
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(port80, command_port80,
+			"[scroll | intprint | flush]",
+			"Print port80 writes or toggle port80 scrolling");
 static int command_port80(int argc, char **argv)
 {
 	/*
@@ -154,9 +157,6 @@ static int command_port80(int argc, char **argv)
 	port80_dump_buffer();
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(port80, command_port80,
-			"[scroll | intprint | flush]",
-			"Print port80 writes or toggle port80 scrolling");
 
 enum ec_status port80_last_boot(struct host_cmd_handler_args *args)
 {

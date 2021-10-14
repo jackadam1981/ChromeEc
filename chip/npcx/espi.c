@@ -681,6 +681,9 @@ void espi_init(void)
 		espi_enable_vw_int(&espi_vw_int_list[i]);
 }
 
+DECLARE_CONSOLE_COMMAND(espi, command_espi,
+			"cfg/vms/vsm/en/dis [channel]",
+			"eSPI configurations");
 static int command_espi(int argc, char **argv)
 {
 	uint32_t chan;
@@ -733,6 +736,3 @@ static int command_espi(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(espi, command_espi,
-			"cfg/vms/vsm/en/dis [channel]",
-			"eSPI configurations");
