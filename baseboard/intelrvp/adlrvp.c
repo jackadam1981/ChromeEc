@@ -516,3 +516,21 @@ __override int board_get_ioex_port_count(void)
 	else
 		return CONFIG_IO_EXPANDER_PORT_COUNT;
 }
+
+__override int board_get_i2c_ports_used(void)
+{
+	if (board_adl_m_n_rvp)
+	/* For MCHP based RVPs, the number of I2C ports
+	 * is based on typec ports and other i2c ports.
+	 * For M/N RVPS, the i2c_ports_used returned can
+	 * be the default.
+	 * */ 
+#ifndef VARIANT_INTELRVP_EC_MCHP
+		return (I2C_CHAN_COUNT - 2);
+#else
+		return i2c_ports_used;
+#endif
+	else
+		return i2c_ports_used;
+}
+
