@@ -195,6 +195,9 @@ void power_button_interrupt(enum gpio_signal signal)
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn,
+			"[msec]",
+			"Simulate power button press");
 static int command_powerbtn(int argc, char **argv)
 {
 	int ms = 200;  /* Press duration in ms */
@@ -221,6 +224,3 @@ static int command_powerbtn(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(powerbtn, command_powerbtn,
-			"[msec]",
-			"Simulate power button press");
