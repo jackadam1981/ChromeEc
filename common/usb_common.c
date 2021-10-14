@@ -961,6 +961,8 @@ void tcpc_dump_registers(int port, const struct tcpc_reg_dump_map *reg,
 
 }
 
+DECLARE_CONSOLE_COMMAND(tcpci_dump, command_tcpc_dump, "<Type-C port>",
+			"dump the TCPC regs");
 static int command_tcpc_dump(int argc, char **argv)
 {
 	int port;
@@ -978,8 +980,6 @@ static int command_tcpc_dump(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(tcpci_dump, command_tcpc_dump, "<Type-C port>",
-			"dump the TCPC regs");
 #endif /* defined(CONFIG_CMD_TCPC_DUMP) */
 
 void pd_srccaps_dump(int port)

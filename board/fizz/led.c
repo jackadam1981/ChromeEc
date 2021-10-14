@@ -181,6 +181,9 @@ void led_critical(void)
 		set_color(EC_LED_ID_POWER_LED, LED_RED, 100);
 }
 
+DECLARE_CONSOLE_COMMAND(led, command_led,
+			"[debug|red|green|amber|off|alert|crit]",
+			"Turn on/off LED.");
 static int command_led(int argc, char **argv)
 {
 	enum ec_led_id id = EC_LED_ID_POWER_LED;
@@ -208,9 +211,6 @@ static int command_led(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(led, command_led,
-			"[debug|red|green|amber|off|alert|crit]",
-			"Turn on/off LED.");
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {
