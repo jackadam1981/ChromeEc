@@ -22,6 +22,30 @@
       },
       "revId": "8198d6b2eb1e8c34c097ece16fede2c5a1fd2309",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "10927310_cabb6e0b",
+        "filename": "board/taeko/usbc_config.c",
+        "patchSetId": 16
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1477218
+      },
+      "writtenOn": "2021-10-14T06:40:39Z",
+      "side": 1,
+      "message": "From Paraetech. feedback as b:197585292:comment#17, PS8815 enter standby mode around 3 seconds after PS8815\u0027s RESET# is de-asserted and no USB-C connections.\n\nSo, I think we don\u0027t need to check if PS8815 enter standby (sleep) mode during EC booting.",
+      "parentUuid": "500b5bc3_8daa53e4",
+      "range": {
+        "startLine": 168,
+        "startChar": 5,
+        "endLine": 168,
+        "endChar": 14
+      },
+      "revId": "8198d6b2eb1e8c34c097ece16fede2c5a1fd2309",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
