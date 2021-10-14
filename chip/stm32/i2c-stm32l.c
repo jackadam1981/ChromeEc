@@ -414,11 +414,11 @@ void i2c_init(void)
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(i2cdump, command_i2cdump,
+			NULL,
+			"Dump I2C regs");
 static int command_i2cdump(int argc, char **argv)
 {
 	dump_i2c_reg(I2C_PORT_MASTER, "dump");
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(i2cdump, command_i2cdump,
-			NULL,
-			"Dump I2C regs");
