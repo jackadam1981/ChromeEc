@@ -148,6 +148,7 @@ static void npcx_lct_init(void)
 DECLARE_HOOK(HOOK_INIT, npcx_lct_init, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_CMD_RTC_ALARM
+DECLARE_CONSOLE_COMMAND(lctalarm, command_lctalarm, "", "");
 static int command_lctalarm(int argc, char **argv)
 {
 	char *e;
@@ -172,5 +173,4 @@ static int command_lctalarm(int argc, char **argv)
 
 	return 0;
 }
-DECLARE_CONSOLE_COMMAND(lctalarm, command_lctalarm, "", "");
 #endif
