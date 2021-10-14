@@ -136,6 +136,9 @@ static void set_duty_cycle(int fan, int percent)
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(fanauto, cc_fanauto,
+			"{fan}",
+			"Enable thermal fan control");
 static int cc_fanauto(int argc, char **argv)
 {
 	char *e;
@@ -156,8 +159,6 @@ static int cc_fanauto(int argc, char **argv)
 	set_thermal_control_enabled(fan, 1);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fanauto, cc_fanauto, "{fan}",
-			"Enable thermal fan control");
 
 /* Return 0 for off, 1 for on, -1 for unknown */
 static int is_powered(int fan)

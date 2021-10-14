@@ -9,6 +9,10 @@
 #include "console.h"
 #include "usart.h"
 
+DECLARE_CONSOLE_COMMAND(usart_info,
+			command_usart_info,
+			NULL,
+			"Display USART info");
 static int command_usart_info(int argc, char **argv)
 {
 	struct usart_configs configs = usart_get_configs();
@@ -38,6 +42,3 @@ static int command_usart_info(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-
-DECLARE_CONSOLE_COMMAND(usart_info, command_usart_info, NULL,
-			"Display USART info");

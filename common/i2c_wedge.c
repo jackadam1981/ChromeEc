@@ -246,6 +246,10 @@ static void i2c_bang_wedge_read(int addr, int reg, int bit_count, int reboot)
 #define WEDGE_READ 2
 #define WEDGE_REBOOT 4
 
+DECLARE_CONSOLE_COMMAND(i2cwedge, command_i2c_wedge,
+			"i2cwedge addr out_byte "
+				"[wedge_flag [wedge_bit_count]]",
+			"Wedge host I2C bus");
 static int command_i2c_wedge(int argc, char **argv)
 {
 	int addr, reg, wedge_flag = 0, wedge_bit_count = -1;
@@ -322,16 +326,13 @@ static int command_i2c_wedge(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(i2cwedge, command_i2c_wedge,
-			"i2cwedge addr out_byte "
-			"[wedge_flag [wedge_bit_count]]",
-			"Wedge host I2C bus");
 
+DECLARE_CONSOLE_COMMAND(i2cunwedge, command_i2c_unwedge,
+	"",
+	"Unwedge host I2C bus");
 static int command_i2c_unwedge(int argc, char **argv)
 {
 	i2c_unwedge(I2C_PORT_HOST);
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(i2cunwedge, command_i2c_unwedge, "",
-			"Unwedge host I2C bus");

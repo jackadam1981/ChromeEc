@@ -55,6 +55,11 @@ static void show_val(uint32_t address, uint32_t index, enum format fmt)
 	cflush();
 }
 
+DECLARE_CONSOLE_COMMAND_FLAGS
+	(md, command_mem_dump,
+	 "[.b|.h|.s] addr [count]",
+	 "dump memory values, optionally specifying the format",
+	 CMD_FLAG_RESTRICTED);
 static int command_mem_dump(int argc, char **argv)
 {
 	uint32_t address, i, num = 1;
@@ -105,13 +110,14 @@ static int command_mem_dump(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND_FLAGS(
-	md, command_mem_dump, "[.b|.h|.s] addr [count]",
-	"dump memory values, optionally specifying the format",
-	CMD_FLAG_RESTRICTED);
 #endif /* CONFIG_CMD_MD */
 
 #ifdef CONFIG_CMD_RW
+DECLARE_CONSOLE_COMMAND_FLAGS
+	(rw, command_read_word,
+	 "[.b|.h] addr [value]",
+	 "Read or write a word in memory optionally specifying the size",
+	 CMD_FLAG_RESTRICTED);
 static int command_read_word(int argc, char **argv)
 {
 	volatile uint32_t *address;
@@ -188,8 +194,4 @@ static int command_read_word(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND_FLAGS(
-	rw, command_read_word, "[.b|.h] addr [value]",
-	"Read or write a word in memory optionally specifying the size",
-	CMD_FLAG_RESTRICTED);
-#endif /* CONFIG_CMD_RW */
+#endif	/* CONFIG_CMD_RW */
