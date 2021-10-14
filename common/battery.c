@@ -333,6 +333,8 @@ static void clear_pending_cutoff(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, clear_pending_cutoff, HOOK_PRIO_DEFAULT);
 
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cutoff,
+		EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_battery_cutoff *p;
@@ -357,8 +359,6 @@ static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 
 	return rv;
 }
-DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cutoff,
-		EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static void check_pending_cutoff(void)
 {
@@ -442,6 +442,9 @@ DECLARE_CONSOLE_COMMAND(battparam, console_command_battery_vendor_param,
 			"<param> [value]",
 			"Get or set battery vendor parameters");
 
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_VENDOR_PARAM,
+		     host_command_battery_vendor_param,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_battery_vendor_param(struct host_cmd_handler_args *args)
 {
@@ -464,14 +467,14 @@ host_command_battery_vendor_param(struct host_cmd_handler_args *args)
 	rv = battery_get_vendor_param(p->param, &r->value);
 	return rv;
 }
-DECLARE_HOST_COMMAND(EC_CMD_BATTERY_VENDOR_PARAM,
-		     host_command_battery_vendor_param,
-		     EC_VER_MASK(0));
 #endif /* CONFIG_BATTERY_VENDOR_PARAM */
 
 #ifdef CONFIG_BATTERY_V2
 #ifdef CONFIG_HOSTCMD_BATTERY_V2
 static void battery_update(enum battery_index i);
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_GET_STATIC,
+		     host_command_battery_get_static,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status
 host_command_battery_get_static(struct host_cmd_handler_args *args)
 {
@@ -511,10 +514,10 @@ host_command_battery_get_static(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_BATTERY_GET_STATIC,
-		     host_command_battery_get_static,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_GET_DYNAMIC,
+		     host_command_battery_get_dynamic,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_battery_get_dynamic(struct host_cmd_handler_args *args)
 {
@@ -529,9 +532,6 @@ host_command_battery_get_dynamic(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_BATTERY_GET_DYNAMIC,
-		     host_command_battery_get_dynamic,
-		     EC_VER_MASK(0));
 #endif /* CONFIG_HOSTCMD_BATTERY_V2 */
 
 #ifdef HAS_TASK_HOSTCMD
