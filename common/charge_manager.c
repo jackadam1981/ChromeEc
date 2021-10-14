@@ -1477,6 +1477,9 @@ int charge_manager_get_source_pdo(const uint32_t **src_pdo, const int port)
 }
 #endif /* CONFIG_USB_PD_MAX_SINGLE_SOURCE_CURRENT && !CONFIG_USB_PD_TCPMV2 */
 
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_POWER_INFO,
+		     hc_pd_power_info,
+		     EC_VER_MASK(0));
 static enum ec_status hc_pd_power_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_power_info *p = args->params;
@@ -1500,9 +1503,10 @@ static enum ec_status hc_pd_power_info(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_POWER_INFO, hc_pd_power_info,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_CHARGE_PORT_COUNT,
+		     hc_charge_port_count,
+		     EC_VER_MASK(0));
 static enum ec_status hc_charge_port_count(struct host_cmd_handler_args *args)
 {
 	struct ec_response_charge_port_count *resp = args->response;
@@ -1512,9 +1516,10 @@ static enum ec_status hc_charge_port_count(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_CHARGE_PORT_COUNT, hc_charge_port_count,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_PD_CHARGE_PORT_OVERRIDE,
+		     hc_charge_port_override,
+		     EC_VER_MASK(0));
 static enum ec_status
 hc_charge_port_override(struct host_cmd_handler_args *args)
 {
@@ -1529,10 +1534,11 @@ hc_charge_port_override(struct host_cmd_handler_args *args)
 		       EC_RES_SUCCESS :
 		       EC_RES_ERROR;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PD_CHARGE_PORT_OVERRIDE, hc_charge_port_override,
-		     EC_VER_MASK(0));
 
 #if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
+DECLARE_HOST_COMMAND(EC_CMD_OVERRIDE_DEDICATED_CHARGER_LIMIT,
+		     hc_override_dedicated_charger_limit,
+		     EC_VER_MASK(0));
 static enum ec_status
 hc_override_dedicated_charger_limit(struct host_cmd_handler_args *args)
 {
@@ -1554,8 +1560,6 @@ hc_override_dedicated_charger_limit(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_OVERRIDE_DEDICATED_CHARGER_LIMIT,
-		     hc_override_dedicated_charger_limit, EC_VER_MASK(0));
 #endif
 
 static int command_charge_port_override(int argc, char **argv)
@@ -1609,6 +1613,9 @@ static void charge_manager_external_power_limit_off(void)
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, charge_manager_external_power_limit_off,
 	     HOOK_PRIO_DEFAULT);
 
+DECLARE_HOST_COMMAND(EC_CMD_EXTERNAL_POWER_LIMIT,
+		     hc_external_power_limit,
+		     EC_VER_MASK(1));
 static enum ec_status
 hc_external_power_limit(struct host_cmd_handler_args *args)
 {
@@ -1618,8 +1625,6 @@ hc_external_power_limit(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_EXTERNAL_POWER_LIMIT, hc_external_power_limit,
-		     EC_VER_MASK(1));
 
 static int command_external_power_limit(int argc, char **argv)
 {

@@ -29,6 +29,9 @@
 
 #ifdef HAS_TASK_HOSTCMD
 
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_PORTS,
+		     hc_pd_ports,
+		     EC_VER_MASK(0));
 static enum ec_status hc_pd_ports(struct host_cmd_handler_args *args)
 {
 	struct ec_response_usb_pd_ports *r = args->response;
@@ -38,9 +41,11 @@ static enum ec_status hc_pd_ports(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_PORTS, hc_pd_ports, EC_VER_MASK(0));
 
 #ifdef CONFIG_HOSTCMD_RWHASHPD
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_RW_HASH_ENTRY,
+		     hc_remote_rw_hash_entry,
+		     EC_VER_MASK(0));
 static enum ec_status
 hc_remote_rw_hash_entry(struct host_cmd_handler_args *args)
 {
@@ -69,11 +74,12 @@ hc_remote_rw_hash_entry(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_RW_HASH_ENTRY, hc_remote_rw_hash_entry,
-		     EC_VER_MASK(0));
 #endif /* CONFIG_HOSTCMD_RWHASHPD */
 
 #if defined(CONFIG_EC_CMD_PD_CHIP_INFO) && !defined(CONFIG_USB_PD_TCPC)
+DECLARE_HOST_COMMAND(EC_CMD_PD_CHIP_INFO,
+		     hc_remote_pd_chip_info,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pd_chip_info *p = args->params;
@@ -97,11 +103,12 @@ static enum ec_status hc_remote_pd_chip_info(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PD_CHIP_INFO, hc_remote_pd_chip_info,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 #endif /* CONFIG_EC_CMD_PD_CHIP_INFO && !CONFIG_USB_PD_TCPC */
 
 #ifdef CONFIG_USB_PD_ALT_MODE_DFP
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_SET_AMODE,
+		     hc_remote_pd_set_amode,
+		     EC_VER_MASK(0));
 static enum ec_status hc_remote_pd_set_amode(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_set_mode_request *p = args->params;
@@ -131,9 +138,10 @@ static enum ec_status hc_remote_pd_set_amode(struct host_cmd_handler_args *args)
 	}
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_SET_AMODE, hc_remote_pd_set_amode,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DISCOVERY,
+		     hc_remote_pd_discovery,
+		     EC_VER_MASK(0));
 static enum ec_status hc_remote_pd_discovery(struct host_cmd_handler_args *args)
 {
 	const uint8_t *port = args->params;
@@ -152,9 +160,10 @@ static enum ec_status hc_remote_pd_discovery(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DISCOVERY, hc_remote_pd_discovery,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_GET_AMODE,
+		     hc_remote_pd_get_amode,
+		     EC_VER_MASK(0));
 static enum ec_status hc_remote_pd_get_amode(struct host_cmd_handler_args *args)
 {
 	struct svdm_amode_data *modep;
@@ -184,12 +193,13 @@ static enum ec_status hc_remote_pd_get_amode(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_GET_AMODE, hc_remote_pd_get_amode,
-		     EC_VER_MASK(0));
 
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */
 
 #ifdef CONFIG_COMMON_RUNTIME
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DEV_INFO,
+		     hc_remote_pd_dev_info,
+		     EC_VER_MASK(0));
 static enum ec_status hc_remote_pd_dev_info(struct host_cmd_handler_args *args)
 {
 	const uint8_t *port = args->params;
@@ -209,8 +219,6 @@ static enum ec_status hc_remote_pd_dev_info(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_DEV_INFO, hc_remote_pd_dev_info,
-		     EC_VER_MASK(0));
 
 static const enum pd_dual_role_states dual_role_map[USB_PD_CTRL_ROLE_COUNT] = {
 	[USB_PD_CTRL_ROLE_TOGGLE_ON] = PD_DRP_TOGGLE_ON,
@@ -291,6 +299,9 @@ static uint8_t pd_get_role_flags(int port)
 			0);
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL,
+		     hc_usb_pd_control,
+		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_control *p = args->params;
@@ -379,11 +390,12 @@ static enum ec_status hc_usb_pd_control(struct host_cmd_handler_args *args)
 	}
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_CONTROL, hc_usb_pd_control,
-		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 #endif /* CONFIG_COMMON_RUNTIME */
 
 #if defined(CONFIG_HOSTCMD_FLASHPD) && defined(CONFIG_USB_PD_TCPMV2)
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_FW_UPDATE,
+			hc_remote_flash,
+			EC_VER_MASK(0));
 static enum ec_status hc_remote_flash(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_fw_update *p = args->params;
@@ -449,7 +461,6 @@ static enum ec_status hc_remote_flash(struct host_cmd_handler_args *args)
 
 	return rv;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_FW_UPDATE, hc_remote_flash, EC_VER_MASK(0));
 #endif /* CONFIG_HOSTCMD_FLASHPD && CONFIG_USB_PD_TCPMV2 */
 
 __overridable enum ec_pd_port_location board_get_pd_port_location(int port)
@@ -458,6 +469,9 @@ __overridable enum ec_pd_port_location board_get_pd_port_location(int port)
 	return EC_PD_PORT_LOCATION_UNKNOWN;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_PD_PORT_CAPS,
+		     hc_get_pd_port_caps,
+		     EC_VER_MASK(0));
 static enum ec_status hc_get_pd_port_caps(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_get_pd_port_caps *p = args->params;
@@ -490,10 +504,9 @@ static enum ec_status hc_get_pd_port_caps(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PD_PORT_CAPS, hc_get_pd_port_caps,
-		     EC_VER_MASK(0));
 
 #ifdef CONFIG_HOSTCMD_PD_CONTROL
+DECLARE_HOST_COMMAND(EC_CMD_PD_CONTROL, pd_control, EC_VER_MASK(0));
 static enum ec_status pd_control(struct host_cmd_handler_args *args)
 {
 	static int pd_control_disabled[CONFIG_USB_PD_PORT_MAX_COUNT];
@@ -532,7 +545,6 @@ static enum ec_status pd_control(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PD_CONTROL, pd_control, EC_VER_MASK(0));
 #endif /* CONFIG_HOSTCMD_PD_CONTROL */
 
 #if !defined(CONFIG_USB_PD_TCPM_STUB) && !defined(TEST_BUILD)
@@ -543,6 +555,8 @@ DECLARE_HOST_COMMAND(EC_CMD_PD_CONTROL, pd_control, EC_VER_MASK(0));
  */
 static atomic_t pd_host_event_status __aligned(4);
 
+DECLARE_HOST_COMMAND(EC_CMD_PD_HOST_EVENT_STATUS, hc_pd_host_event_status,
+		     EC_VER_MASK(0));
 static enum ec_status
 hc_pd_host_event_status(struct host_cmd_handler_args *args)
 {
@@ -554,8 +568,6 @@ hc_pd_host_event_status(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PD_HOST_EVENT_STATUS, hc_pd_host_event_status,
-		     EC_VER_MASK(0));
 #endif /* ! CONFIG_USB_PD_TCPM_STUB && ! TEST_BUILD */
 
 #endif /* HAS_TASK_HOSTCMD */
