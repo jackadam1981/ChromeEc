@@ -1116,6 +1116,9 @@ int keyboard_get_keyboard_id(void)
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_KEYBOARD
+DECLARE_CONSOLE_COMMAND(ksstate, command_ksstate,
+			"ksstate [on | off | force]",
+			"Show or toggle printing keyboard scan state");
 static int command_ksstate(int argc, char **argv)
 {
 	if (argc > 1) {
@@ -1136,10 +1139,10 @@ static int command_ksstate(int argc, char **argv)
 		 print_state_changes ? "on" : "off");
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ksstate, command_ksstate,
-			"ksstate [on | off | force]",
-			"Show or toggle printing keyboard scan state");
 
+DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press,
+			"[col row [0 | 1]]",
+			"Simulate keypress");
 static int command_keyboard_press(int argc, char **argv)
 {
 	if (argc == 1) {
@@ -1181,7 +1184,4 @@ static int command_keyboard_press(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(kbpress, command_keyboard_press,
-			"[col row [0 | 1]]",
-			"Simulate keypress");
 #endif

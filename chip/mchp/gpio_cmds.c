@@ -21,6 +21,9 @@
 
 
 
+DECLARE_CONSOLE_COMMAND(gpgetcfg, cmd_gp_get_config,
+			"[number]",
+			"Read GPIO config");
 static int cmd_gp_get_config(int argc, char **argv)
 {
 	char *e;
@@ -56,10 +59,10 @@ static int cmd_gp_get_config(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(gpgetcfg, cmd_gp_get_config,
-			"[number]",
-			"Read GPIO config");
 
+DECLARE_CONSOLE_COMMAND(gpsetcfg, cmd_gp_set_config,
+			"gp_num val",
+			"Set GPIO config");
 static int cmd_gp_set_config(int argc, char **argv)
 {
 	char *e;
@@ -91,6 +94,3 @@ static int cmd_gp_set_config(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(gpsetcfg, cmd_gp_set_config,
-			"gp_num val",
-			"Set GPIO config");
