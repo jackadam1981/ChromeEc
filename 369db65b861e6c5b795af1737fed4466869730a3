@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99a2d93c_97006942",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-14T22:15:38Z",
+      "side": 1,
+      "message": "it is included by default in make buildall",
+      "parentUuid": "9c884731_87a135f0",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b352f8c1_36358e39",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-14T21:39:04Z",
       "side": 1,
       "message": "what\u0027s currently in the list for buildall in cr50_stab?",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "586c060e_40fe884f",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-14T22:15:38Z",
+      "side": 1,
+      "message": "build all boards, including private  + build all tests",
+      "parentUuid": "b352f8c1_36358e39",
       "range": {
         "startLine": 48,
         "startChar": 20,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cada7cae_a7005a17",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-14T22:15:38Z",
+      "side": 1,
+      "message": "try_buildboards looks for all boards and tries to build each",
+      "parentUuid": "65b3a06e_87eb901f",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f43f7134_ea83e124",
         "filename": "firmware_builder.py",
         "patchSetId": 1
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-14T21:39:04Z",
       "side": 1,
       "message": "do we need this?",
+      "range": {
+        "startLine": 228,
+        "startChar": 42,
+        "endLine": 228,
+        "endChar": 59
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9cc6720_cf67caf6",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-14T22:15:38Z",
+      "side": 1,
+      "message": "i guess this is for analysis of failures. I see no reason to remove it",
+      "parentUuid": "f43f7134_ea83e124",
       "range": {
         "startLine": 228,
         "startChar": 42,
