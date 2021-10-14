@@ -89,6 +89,9 @@ struct battery_static_info {
 	char model_ext[32];		/* SB_DEVICE_NAME */
 	char serial_ext[32];		/* SB_SERIAL_NUMBER */
 	char type_ext[32];		/* SB_DEVICE_CHEMISTRY */
+#ifdef CONFIG_BATTERY_VENDOR_PARAM
+	uint8_t vendor_param[32];
+#endif
 };
 
 extern struct battery_static_info battery_static[];
@@ -165,6 +168,9 @@ struct battery_info {
 	int8_t charging_max_c;
 	int8_t discharging_min_c;
 	int8_t discharging_max_c;
+#ifdef CONFIG_BATTERY_VENDOR_PARAM
+	uint8_t vendor_param_start;
+#endif
 };
 
 /**
