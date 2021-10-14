@@ -923,6 +923,9 @@ static int usb_save_serial(const char *serialno)
 	return rv;
 }
 
+DECLARE_CONSOLE_COMMAND(serialno, command_serialno,
+	"load/set [value]",
+	"Read and write USB serial number");
 static int command_serialno(int argc, char **argv)
 {
 	struct usb_string_desc *sd = usb_serialno_desc;
@@ -949,9 +952,6 @@ static int command_serialno(int argc, char **argv)
 	return rv;
 }
 
-DECLARE_CONSOLE_COMMAND(serialno, command_serialno,
-	"load/set [value]",
-	"Read and write USB serial number");
 
 #endif  /* CONFIG_USB_SERIALNO */
 

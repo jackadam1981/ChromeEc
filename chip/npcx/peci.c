@@ -283,6 +283,9 @@ static void peci_done_interrupt(void){
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(pecitemp, command_peci_temp,
+		NULL,
+		"Print CPU temperature");
 static int command_peci_temp(int argc, char **argv)
 {
 	int t = peci_get_cpu_temp();
@@ -293,6 +296,3 @@ static int command_peci_temp(int argc, char **argv)
 	ccprintf("CPU temp = %d K = %d\n", t, K_TO_C(t));
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(pecitemp, command_peci_temp,
-		NULL,
-		"Print CPU temperature");
