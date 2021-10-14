@@ -389,6 +389,9 @@ int board_cut_off_battery(void);
  */
 int battery_is_cut_off(void);
 
+/* Forward declare board specific battery vendor param used by common code */
+extern uint32_t battery_vendor_param_start;
+
 /**
  * Read battery vendor parameter.
  *
