@@ -16,6 +16,24 @@
       "message": "Is this a board specific phenomenon or do you think all users would require this?",
       "revId": "04dabe2f388250ab9a4bafced129a357d592ab1a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "12b82788_dcd73770",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1123814
+      },
+      "writtenOn": "2021-10-14T17:09:58Z",
+      "side": 1,
+      "message": "This follows the PPC and not the board. So I think it\u0027s a part variance issue. something about how the M1 machines draw current when charging at 20V VBUS exposes it. The failure rate against this host machine was ~3%.\n\nChromeOS ports would not see this as they only source current at 5V VBUS.",
+      "parentUuid": "1bba96d9_51bf121e",
+      "revId": "04dabe2f388250ab9a4bafced129a357d592ab1a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
