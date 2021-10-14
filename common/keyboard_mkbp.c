@@ -182,6 +182,9 @@ static void keyscan_copy_config(const struct ec_mkbp_config *src,
 	dst->flags = new_flags;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_SET_CONFIG,
+		     host_command_mkbp_set_config,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_mkbp_set_config(struct host_cmd_handler_args *args)
 {
@@ -195,10 +198,10 @@ host_command_mkbp_set_config(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_MKBP_SET_CONFIG,
-		     host_command_mkbp_set_config,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_GET_CONFIG,
+		     host_command_mkbp_get_config,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_mkbp_get_config(struct host_cmd_handler_args *args)
 {
@@ -219,6 +222,3 @@ host_command_mkbp_get_config(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_MKBP_GET_CONFIG,
-		     host_command_mkbp_get_config,
-		     EC_VER_MASK(0));
