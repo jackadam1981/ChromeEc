@@ -408,6 +408,9 @@ static int tmp006_print(int idx)
 	return EC_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(tmp006, command_sensor_info,
+			"[ <index> ]",
+			"Print TMP006 sensors");
 static int command_sensor_info(int argc, char **argv)
 {
 	int i;
@@ -433,8 +436,6 @@ static int command_sensor_info(int argc, char **argv)
 
 	return rv1;
 }
-DECLARE_CONSOLE_COMMAND(tmp006, command_sensor_info, "[ <index> ]",
-			"Print TMP006 sensors");
 #endif
 
 /* Disable the t6cal command until/unless we have FP support in printf */

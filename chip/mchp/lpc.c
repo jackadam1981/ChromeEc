@@ -940,13 +940,13 @@ void lpc_disable_acpi_interrupts(void)
 	task_disable_irq(MCHP_IRQ_ACPIEC0_IBF);
 }
 
+DECLARE_CONSOLE_COMMAND(lpcinit, lpc_command_init, NULL, NULL);
 /* On boards without a host, this command is used to set up LPC */
 static int lpc_command_init(int argc, char **argv)
 {
 	lpc_init();
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(lpcinit, lpc_command_init, NULL, NULL);
 
 DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
 		lpc_get_protocol_info,
@@ -970,6 +970,8 @@ static enum ec_status lpc_get_protocol_info(struct host_cmd_handler_args *args)
 }
 
 #ifdef CONFIG_MCHP_DEBUG_LPC
+DECLARE_CONSOLE_COMMAND(lpc, command_lpc, "[sci|smi|wake]",
+	"Trigger SCI/SMI");
 static int command_lpc(int argc, char **argv)
 {
 	if (argc == 1)
@@ -985,5 +987,4 @@ static int command_lpc(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(lpc, command_lpc, "[sci|smi|wake]", "Trigger SCI/SMI");
 #endif

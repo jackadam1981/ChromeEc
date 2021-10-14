@@ -110,6 +110,9 @@ static void amd_stt_handler(void)
 }
 DECLARE_HOOK(HOOK_SECOND, amd_stt_handler, HOOK_PRIO_TEMP_SENSOR + 1);
 
+DECLARE_CONSOLE_COMMAND(stt, command_stt,
+			"<apu|ambient|gpu|debug> <temp in mK>",
+			"Write an STT mK temperature to AP");
 static int command_stt(int argc, char **argv)
 {
 	int sensor_id;
@@ -138,6 +141,3 @@ static int command_stt(int argc, char **argv)
 
 	return write_stt_sensor_val(sensor_id, temp);
 }
-DECLARE_CONSOLE_COMMAND(stt, command_stt,
-			"<apu|ambient|gpu|debug> <temp in mK>",
-			"Write an STT mK temperature to AP");

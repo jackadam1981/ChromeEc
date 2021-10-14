@@ -402,6 +402,9 @@ void board_debug_gpio(enum debug_gpio trigger, int level, int pulse_usec)
 	}
 }
 
+DECLARE_CONSOLE_COMMAND(dplane, command_dplane,
+			"<2 | 4>",
+			"MST lane control.");
 static int command_dplane(int argc, char **argv)
 {
 	char *e;
@@ -430,4 +433,3 @@ static int command_dplane(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(dplane, command_dplane, "<2 | 4>", "MST lane control.");

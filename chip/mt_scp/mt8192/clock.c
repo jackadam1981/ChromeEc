@@ -368,6 +368,8 @@ void clock_init(void)
 }
 
 #ifdef DEBUG
+DECLARE_CONSOLE_COMMAND(ulposc, command_ulposc, "[ulposc]",
+			"Measure ULPOSC frequency");
 int command_ulposc(int argc, char *argv[])
 {
 	int i;
@@ -378,6 +380,4 @@ int command_ulposc(int argc, char *argv[])
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ulposc, command_ulposc, "[ulposc]",
-			"Measure ULPOSC frequency");
 #endif

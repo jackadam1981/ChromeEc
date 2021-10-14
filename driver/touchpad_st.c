@@ -1795,6 +1795,10 @@ USB_DECLARE_EP(USB_EP_ST_TOUCHPAD_INT, st_tp_interrupt_tx, st_tp_interrupt_tx,
 
 #endif
 
+DECLARE_CONSOLE_COMMAND(touchpad_st, command_touchpad_st,
+			"<enable | disable | version | calibrate | dump | "
+			"memory_dump <enable|disable>>",
+			"Read write spi. id is spi_devices array index");
 /* Debugging commands */
 static int command_touchpad_st(int argc, char **argv)
 {
@@ -1839,7 +1843,3 @@ static int command_touchpad_st(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 	}
 }
-DECLARE_CONSOLE_COMMAND(touchpad_st, command_touchpad_st,
-			"<enable | disable | version | calibrate | dump | "
-			"memory_dump <enable|disable>>",
-			"Read write spi. id is spi_devices array index");
