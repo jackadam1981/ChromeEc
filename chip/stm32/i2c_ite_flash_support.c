@@ -225,6 +225,9 @@ unlock:
 	return ret;
 }
 
+DECLARE_CONSOLE_COMMAND(
+	enable_ite_dfu, command_enable_ite_dfu, "",
+	"Enable ITE Direct Firmware Update (DFU) mode");
 /* Enable ITE direct firmware update (DFU) mode. */
 static int command_enable_ite_dfu(int argc, char **argv)
 {
@@ -335,10 +338,10 @@ static int command_enable_ite_dfu(int argc, char **argv)
 
 	return cprint_ite_chip_id();
 }
-DECLARE_CONSOLE_COMMAND(
-	enable_ite_dfu, command_enable_ite_dfu, "",
-	"Enable ITE Direct Firmware Update (DFU) mode");
 
+DECLARE_CONSOLE_COMMAND(
+	get_ite_chipid, command_get_ite_chipid, "",
+	"Read ITE EC chip ID, version, flash size (must be in DFU mode)");
 /* Read ITE chip ID.  Can be used to verify ITE DFU mode. */
 static int command_get_ite_chipid(int argc, char **argv)
 {
@@ -351,6 +354,3 @@ static int command_get_ite_chipid(int argc, char **argv)
 
 	return cprint_ite_chip_id();
 }
-DECLARE_CONSOLE_COMMAND(
-	get_ite_chipid, command_get_ite_chipid, "",
-	"Read ITE EC chip ID, version, flash size (must be in DFU mode)");
