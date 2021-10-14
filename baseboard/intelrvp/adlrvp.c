@@ -545,3 +545,18 @@ __overridable int board_get_dedicated_charge_port(void)
 	/* Tot num of dedicated charge ports = tot num of typec ports */
 	return adlrvp_usbc_ports;
 }
+
+__override int board_get_ioex_port_count(void)
+{
+	/* A single TCPC AIC has 2 ioexpander ports.
+	 * For ADL RVP with 4 typec ports, 2 TCPC AICs are
+	 * used and hence, default CONFIG_IO_EXPANDER_PORT_COUNT
+	 * which is 4 will be returned. In the case of RVPs with
+	 * typec ports < 3, only one TCPC AIC is used. Hence,
+	 * (CONFIG_IO_EXPANDER_PORT_COUNT -2) is returned in this case.
+	 **/
+	if (adlrvp_usbc_ports > 2)
+		return CONFIG_IO_EXPANDER_PORT_COUNT;
+	else
+		return (CONFIG_IO_EXPANDER_PORT_COUNT - 2);
+}
