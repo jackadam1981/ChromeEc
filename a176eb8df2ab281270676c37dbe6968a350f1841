@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b252f8b_c1ceac7b",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-14T21:07:07Z",
+      "side": 1,
+      "message": "When a WD warning triggers, LR is passed to watchdog_trace and printed. Then this handler returns and more code will be executed (in the same task or in another task). In 500 ms, WD reset triggers. The warning may or may not reflect the actual code causing the reset.\n\nI think the previous code uses a WD warning to print info and trigger a reset. This seems to guarantee there would be no code running between warning and reset.\n\nAny comment?",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 28
+      },
+      "revId": "a176eb8df2ab281270676c37dbe6968a350f1841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
