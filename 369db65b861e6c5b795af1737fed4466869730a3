@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c884731_87a135f0",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-14T21:39:04Z",
+      "side": 1,
+      "message": "how about also `make BOARD\u003dcr50` w/o CR50_DEV or CRYPTO_TEST?",
+      "range": {
+        "startLine": 28,
+        "startChar": 4,
+        "endLine": 28,
+        "endChar": 9
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b352f8c1_36358e39",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-14T21:39:04Z",
+      "side": 1,
+      "message": "what\u0027s currently in the list for buildall in cr50_stab?",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65b3a06e_87eb901f",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-14T21:39:04Z",
+      "side": 1,
+      "message": "does it make sense to specify a specific target for make? and what is the default - try_buildboards?",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f43f7134_ea83e124",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-14T21:39:04Z",
+      "side": 1,
+      "message": "do we need this?",
+      "range": {
+        "startLine": 228,
+        "startChar": 42,
+        "endLine": 228,
+        "endChar": 59
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
