@@ -65,6 +65,7 @@ DECLARE_CONSOLE_COMMAND(adc, command_adc,
 			"[name]",
 			"Print ADC channel(s)");
 
+DECLARE_HOST_COMMAND(EC_CMD_ADC_READ, hc_adc_read, EC_VER_MASK(0));
 static enum ec_status hc_adc_read(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_adc_read *params = args->params;
@@ -83,5 +84,4 @@ static enum ec_status hc_adc_read(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*resp);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_ADC_READ, hc_adc_read, EC_VER_MASK(0));
 #endif /* CONFIG_ADC_PROFILE_FAST_CONTINUOUS */
