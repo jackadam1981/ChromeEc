@@ -356,6 +356,9 @@ void chg_ramp_task(void *u)
 }
 
 #ifdef CONFIG_CMD_CHGRAMP
+DECLARE_CONSOLE_COMMAND(chgramp, command_chgramp,
+	"",
+	"Dump charge ramp state info");
 static int command_chgramp(int argc, char **argv)
 {
 	int i;
@@ -377,7 +380,4 @@ static int command_chgramp(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(chgramp, command_chgramp,
-	"",
-	"Dump charge ramp state info");
 #endif
