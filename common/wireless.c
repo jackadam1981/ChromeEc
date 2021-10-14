@@ -110,6 +110,9 @@ void wireless_set_state(enum wireless_power_state state)
 	}
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_SWITCH_ENABLE_WIRELESS,
+		     wireless_enable_cmd,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status wireless_enable_cmd(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_switch_enable_wireless_v1 *p = args->params;
@@ -134,9 +137,6 @@ static enum ec_status wireless_enable_cmd(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_SWITCH_ENABLE_WIRELESS,
-		     wireless_enable_cmd,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static int command_wireless(int argc, char **argv)
 {
