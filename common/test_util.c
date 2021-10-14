@@ -205,13 +205,13 @@ static void preserve_state(void)
 }
 DECLARE_HOOK(HOOK_SYSJUMP, preserve_state, HOOK_PRIO_DEFAULT);
 
+DECLARE_CONSOLE_COMMAND(runtest, command_run_test,
+			NULL, NULL);
 static int command_run_test(int argc, char **argv)
 {
 	run_test(argc, argv);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(runtest, command_run_test,
-			NULL, NULL);
 
 #ifndef CONFIG_ZEPHYR
 void z_ztest_run_test_suite(const char *name, struct unit_test *suite)
