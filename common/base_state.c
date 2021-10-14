@@ -52,6 +52,8 @@ DECLARE_CONSOLE_COMMAND(
 	basestate, command_setbasestate, "[attach | detach | reset]",
 	"Manually force base state to attached, detached or reset.");
 
+DECLARE_HOST_COMMAND(EC_CMD_SET_BASE_STATE, hostcmd_setbasestate,
+		     EC_VER_MASK(0));
 static enum ec_status hostcmd_setbasestate(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_set_base_state *params = args->params;
@@ -63,5 +65,3 @@ static enum ec_status hostcmd_setbasestate(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_SET_BASE_STATE, hostcmd_setbasestate,
-		     EC_VER_MASK(0));
