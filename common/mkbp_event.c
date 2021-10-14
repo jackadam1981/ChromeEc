@@ -545,6 +545,9 @@ static enum ec_status hc_mkbp_wake_mask(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(mkbpwakemask, command_mkbp_wake_mask,
+			"[event | hostevent] [new_mask]",
+			"Show or set MKBP event/hostevent wake mask");
 static int command_mkbp_wake_mask(int argc, char **argv)
 {
 	if (argc == 3) {
@@ -576,7 +579,4 @@ static int command_mkbp_wake_mask(int argc, char **argv)
 #endif /* CONFIG_MKBP_EVENT_WAKEUP_MASK */
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(mkbpwakemask, command_mkbp_wake_mask,
-			"[event | hostevent] [new_mask]",
-			"Show or set MKBP event/hostevent wake mask");
 #endif /* CONFIG_MKBP_(HOST)?EVENT_WAKEUP_MASK */

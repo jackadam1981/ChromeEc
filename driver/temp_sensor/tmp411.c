@@ -233,6 +233,11 @@ static int print_status(void)
 	return EC_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(tmp411, command_tmp411,
+	"[settemp|setbyte <offset> <value>] or [getbyte <offset>] or"
+	"[power <on|off>]. "
+	"Temps in Celsius.",
+	"Print tmp411 temp sensor status or set parameters.");
 static int command_tmp411(int argc, char **argv)
 {
 	char *command;
@@ -302,12 +307,6 @@ static int command_tmp411(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(
-	tmp411, command_tmp411,
-	"[settemp|setbyte <offset> <value>] or [getbyte <offset>] or"
-	"[power <on|off>]. "
-	"Temps in Celsius.",
-	"Print tmp411 temp sensor status or set parameters.");
 #endif
 
 int tmp411_set_power(enum tmp411_power_state power_on)

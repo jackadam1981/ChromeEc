@@ -662,6 +662,9 @@ static int help(const char *cmd)
 }
 #endif
 
+DECLARE_CONSOLE_COMMAND(lightbar, command_lightbar,
+			"[help | on | off | demo]",
+			"get/set lightbar status");
 static int command_lightbar(int argc, char **argv)
 {
 	/* no args = dump lightbar status */
@@ -715,8 +718,6 @@ static int command_lightbar(int argc, char **argv)
 	return EC_ERROR_INVAL;
 }
 
-DECLARE_CONSOLE_COMMAND(lightbar, command_lightbar, "[help | on | off | demo]",
-			"get/set lightbar status");
 
 /****************************************************************************/
 /* EC host commands (ectool) for lightbar */

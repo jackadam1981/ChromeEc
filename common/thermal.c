@@ -241,6 +241,9 @@ DECLARE_HOOK(HOOK_SECOND, thermal_control, HOOK_PRIO_TEMP_SENSOR_DONE);
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(thermalget, command_thermalget,
+			NULL,
+			"Print thermal parameters (degrees Kelvin)");
 static int command_thermalget(int argc, char **argv)
 {
 	int i;
@@ -257,9 +260,12 @@ static int command_thermalget(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(thermalget, command_thermalget, NULL,
-			"Print thermal parameters (degrees Kelvin)");
 
+
+DECLARE_CONSOLE_COMMAND(thermalset, command_thermalset,
+			"sensor warn [high [shutdown [fan_off [fan_max]]]]",
+			"Set thermal parameters (degrees Kelvin)."
+			" Use -1 to skip.");
 static int command_thermalset(int argc, char **argv)
 {
 	unsigned int n;
@@ -301,10 +307,6 @@ static int command_thermalset(int argc, char **argv)
 	command_thermalget(0, 0);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(thermalset, command_thermalset,
-			"sensor warn [high [shutdown [fan_off [fan_max]]]]",
-			"Set thermal parameters (degrees Kelvin)."
-			" Use -1 to skip.");
 
 /*****************************************************************************/
 /* Host commands. We'll reuse the host command number, but this is version 1,

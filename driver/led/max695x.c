@@ -99,6 +99,9 @@ static void max695x_shutdown(void)
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, max695x_shutdown, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_CMD_SEVEN_SEG_DISPLAY
+DECLARE_CONSOLE_COMMAND(seg, console_command_max695x_write,
+			"<val>",
+			"Write to 7 segment display in hex");
 static int console_command_max695x_write(int argc, char **argv)
 {
 	char *e;
@@ -114,6 +117,4 @@ static int console_command_max695x_write(int argc, char **argv)
 
 	return display_7seg_write(SEVEN_SEG_CONSOLE_DISPLAY, val);
 }
-DECLARE_CONSOLE_COMMAND(seg, console_command_max695x_write, "<val>",
-			"Write to 7 segment display in hex");
 #endif

@@ -254,6 +254,11 @@ static int print_status(void)
 	return EC_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(adt7481, command_adt7481,
+	"[settemp|setbyte <offset> <value>] or [getbyte <offset>] or"
+	"[power <on|off>]. "
+	"Temps in Celsius.",
+	"Print tmp432 temp sensor status or set parameters.");
 static int command_adt7481(int argc, char **argv)
 {
 	char *command;
@@ -323,12 +328,6 @@ static int command_adt7481(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(
-	adt7481, command_adt7481,
-	"[settemp|setbyte <offset> <value>] or [getbyte <offset>] or"
-	"[power <on|off>]. "
-	"Temps in Celsius.",
-	"Print tmp432 temp sensor status or set parameters.");
 #endif
 
 int adt7481_set_power(enum adt7481_power_state power_on)
