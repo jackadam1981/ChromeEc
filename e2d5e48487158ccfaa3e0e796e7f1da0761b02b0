@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "109e8af2_8eada968",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-14T20:30:20Z",
+      "side": 1,
+      "message": "Was this tested in runtime?  I\u0027m seeing stack traces on voxel and bisected it down to this CL: \n\n21-10-14 14:28:10.072 --- UART initialized after reboot ---\n21-10-14 14:28:10.075 [Image: RO, voxel_v2.0.10758-e2d5e4848 voxel_14281.0.21_10_14 2021-10-13 19:20:30 dzigterman@ziggy]\n21-10-14 14:28:10.082 [Reset cause: soft]\n21-10-14 14:28:10.085 \n21-10-14 14:28:10.085 \u003d\u003d\u003d HANDLER EXCEPTION: 05 \u003d\u003d\u003d\u003d\u003d\u003d xPSR: 81000000 \u003d\u003d\u003d\n21-10-14 14:28:10.088 �0�:016b0004 �1�:bfffffff �2�:200b26d8 �3�:00000000\n21-10-14 14:28:10.095 �4�:200b25f0 �5�:64040140 �6�:200b8050 �7�:00000000\n21-10-14 14:28:10.098 �8�:200b25f0 �9�:200b14f8 r10:00000000 r11:10099294\n21-10-14 14:28:10.105 r12:00000001 sp :200b0320 lr :10076603 pc :10074882\n21-10-14 14:28:10.110 Precise data bus error, bfar \u003d 16b0004\n21-10-14 14:28:10.111 cfsr \u003d 8200, shcsr \u003d 70002, hfsr \u003d 0, dfsr \u003d 0\n21-10-14 14:28:10.115 \n21-10-14 14:28:10.115 \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d Process Stack Contents \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n21-10-14 14:28:10.121 00000000: 100cfc00 00002a3d 00002751 00002731\n21-10-14 14:28:10.125 00000010: 00002741 00002711 000027e1 00002791\n21-10-14 14:28:10.128 00000020: 000027a1 000027b1 00002771 000027c1\n21-10-14 14:28:10.131 00000030: 00002721 00002781 00002761 000027d1\n21-10-14 14:28:10.138 \n21-10-14 14:28:10.138 Rebooting...\n",
+      "revId": "e2d5e48487158ccfaa3e0e796e7f1da0761b02b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
