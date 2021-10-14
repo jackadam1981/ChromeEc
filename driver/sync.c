@@ -110,6 +110,9 @@ static int sync_init(struct motion_sensor_t *s)
 }
 
 #ifdef CONFIG_SYNC_COMMAND
+DECLARE_CONSOLE_COMMAND(sync, command_sync,
+	"[count]",
+	"Simulates sync events");
 static int command_sync(int argc, char **argv)
 {
 	int count = 1, i;
@@ -122,9 +125,6 @@ static int command_sync(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(sync, command_sync,
-	"[count]",
-	"Simulates sync events");
 #endif
 
 const struct accelgyro_drv sync_drv = {
