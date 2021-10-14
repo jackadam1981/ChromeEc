@@ -75,6 +75,9 @@ static void dump_pe(int port)
 	}
 }
 
+DECLARE_CONSOLE_COMMAND(pe, command_pe,
+			"<port> dump",
+			"USB PE");
 static int command_pe(int argc, char **argv)
 {
 	int port;
@@ -92,9 +95,6 @@ static int command_pe(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(pe, command_pe,
-			"<port> dump",
-			"USB PE");
 #endif /* CONFIG_CMD_USB_PD_PE */
 
 #ifdef CONFIG_CMD_USB_PD_CABLE
@@ -108,6 +108,9 @@ static const char * const cable_curr[] = {
 	[USB_VBUS_CUR_5A] = "5A",
 };
 
+DECLARE_CONSOLE_COMMAND(pdcable, command_cable,
+			"<port>",
+			"Cable Characteristics");
 static int command_cable(int argc, char **argv)
 {
 	int port;
@@ -216,9 +219,6 @@ static int command_cable(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND(pdcable, command_cable,
-			"<port>",
-			"Cable Characteristics");
 #endif /* CONFIG_CMD_USB_PD_CABLE */
 
 #endif /* CONFIG_USB_PD_ALT_MODE_DFP */

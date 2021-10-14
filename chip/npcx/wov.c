@@ -1822,6 +1822,25 @@ void wov_handle_event(enum wov_events event)
 #ifdef DEBUG_AUDIO_CODEC
 static uint32_t voice_buffer[VOICE_BUF_SIZE] = {0};
 
+DECLARE_CONSOLE_COMMAND(wov, command_wov,
+		"init\n"
+		"mute <enable|disable>\n"
+		"capram\n"
+		"cfgsrc <mono|stereo|left|right>\n"
+		"cfgbit <16|18|20|24>\n"
+		"cfgsfs <8000|12000|16000|24000|32000|48000>\n"
+		"cfgbck <32fs|48fs|64fs|128fs|256fs>\n"
+		"cfgfmt <i2s|right|left|pcma|pcmb|tdm>\n"
+		"cfgmod <off|vad|ram|i2s|rami2s>\n"
+		"cfgtdm [0~496 0~496 0~3]>\n"
+		"cfgdckV <0.75|1.0|1.2|2.4|3.0>\n"
+		"cfgdckR <0.75|1.0|1.2|2.4|3.0>\n"
+		"cfgdckI <0.75|1.0|1.2|2.4|3.0>\n"
+		"cfgget\n"
+		"fmul2 <enable|disable>\n"
+		"vadsens <0~31>\n"
+		"gain <0~31>",
+		"wov configuration");
 /* voice data 16Khz 2ch 16bit 1s */
 static int command_wov(int argc, char **argv)
 {
@@ -2048,24 +2067,4 @@ static int command_wov(int argc, char **argv)
 
 	return EC_ERROR_INVAL;
 }
-
-DECLARE_CONSOLE_COMMAND(wov, command_wov,
-		"init\n"
-		"mute <enable|disable>\n"
-		"capram\n"
-		"cfgsrc <mono|stereo|left|right>\n"
-		"cfgbit <16|18|20|24>\n"
-		"cfgsfs <8000|12000|16000|24000|32000|48000>\n"
-		"cfgbck <32fs|48fs|64fs|128fs|256fs>\n"
-		"cfgfmt <i2s|right|left|pcma|pcmb|tdm>\n"
-		"cfgmod <off|vad|ram|i2s|rami2s>\n"
-		"cfgtdm [0~496 0~496 0~3]>\n"
-		"cfgdckV <0.75|1.0|1.2|2.4|3.0>\n"
-		"cfgdckR <0.75|1.0|1.2|2.4|3.0>\n"
-		"cfgdckI <0.75|1.0|1.2|2.4|3.0>\n"
-		"cfgget\n"
-		"fmul2 <enable|disable>\n"
-		"vadsens <0~31>\n"
-		"gain <0~31>",
-		"wov configuration");
 #endif
