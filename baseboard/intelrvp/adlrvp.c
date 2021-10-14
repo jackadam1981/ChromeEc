@@ -539,3 +539,9 @@ __overridable int board_get_charge_port_count(void)
 {
 	return (adlrvp_usbc_ports + CONFIG_DEDICATED_CHARGE_PORT_COUNT);
 }
+
+__overridable int board_get_dedicated_charge_port(void)
+{
+	/* Tot num of dedicated charge ports = tot num of typec ports */
+	return adlrvp_usbc_ports;
+}
