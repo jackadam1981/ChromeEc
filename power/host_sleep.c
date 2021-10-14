@@ -25,6 +25,9 @@ __overridable void power_chipset_handle_host_sleep_event(
 	/* Default weak implementation -- no action required. */
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT,
+		     host_command_host_sleep_event,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status
 host_command_host_sleep_event(struct host_cmd_handler_args *args)
 {
@@ -71,9 +74,6 @@ host_command_host_sleep_event(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_SLEEP_EVENT,
-		     host_command_host_sleep_event,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 enum host_sleep_event power_get_host_sleep_state(void)
 {
