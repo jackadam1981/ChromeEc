@@ -9,6 +9,9 @@
 #include "host_command.h"
 #include "util.h"
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_UPTIME_INFO,
+	host_command_get_uptime_info,
+	EC_VER_MASK(0));
 static enum ec_status
 host_command_get_uptime_info(struct host_cmd_handler_args *args)
 {
@@ -37,6 +40,3 @@ host_command_get_uptime_info(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return rc == EC_SUCCESS ? EC_RES_SUCCESS : EC_RES_ERROR;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_UPTIME_INFO,
-	host_command_get_uptime_info,
-	EC_VER_MASK(0));
