@@ -422,6 +422,9 @@ static void simulate_button(uint32_t button_mask, int press_ms)
 #endif /* #ifdef CONFIG_SIMULATED_BUTTON */
 
 #ifdef CONFIG_CMD_BUTTON
+DECLARE_CONSOLE_COMMAND(button, console_command_button,
+			"vup|vdown|rec msec",
+			"Simulate button press");
 static int console_command_button(int argc, char **argv)
 {
 	int press_ms = 50;
@@ -464,8 +467,6 @@ static int console_command_button(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(button, console_command_button, "vup|vdown|rec msec",
-			"Simulate button press");
 #endif /* CONFIG_CMD_BUTTON */
 
 #ifdef CONFIG_HOSTCMD_BUTTON

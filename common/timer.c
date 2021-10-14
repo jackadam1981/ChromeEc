@@ -352,6 +352,10 @@ static void timer_sysjump(void)
 DECLARE_HOOK(HOOK_SYSJUMP, timer_sysjump, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_CMD_WAITMS
+/* Typically a large delay (e.g. 3s) will cause a reset */
+DECLARE_CONSOLE_COMMAND(waitms, command_wait,
+			"msec",
+			"Busy-wait for msec (large delays will reset)");
 static int command_wait(int argc, char **argv)
 {
 	char *e;
@@ -381,12 +385,12 @@ static int command_wait(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-/* Typically a large delay (e.g. 3s) will cause a reset */
-DECLARE_CONSOLE_COMMAND(waitms, command_wait, "msec",
-			"Busy-wait for msec (large delays will reset)");
 #endif
 
 #ifdef CONFIG_CMD_FORCETIME
+DECLARE_CONSOLE_COMMAND(forcetime, command_force_time,
+			"hi lo",
+			"Force current time");
 /*
  * Force the hwtimer to a given time. This may have undesired consequences,
  * especially when going "backward" in time, because task deadlines are
@@ -413,8 +417,6 @@ static int command_force_time(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(forcetime, command_force_time, "hi lo",
-			"Force current time");
 #endif
 
 #ifdef CONFIG_CMD_GETTIME

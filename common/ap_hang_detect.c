@@ -209,6 +209,9 @@ hang_detect_host_command(struct host_cmd_handler_args *args)
 /*****************************************************************************/
 /* Console command */
 
+DECLARE_CONSOLE_COMMAND(hangdet, command_hang_detect,
+			NULL,
+			"Print hang detect state");
 static int command_hang_detect(int argc, char **argv)
 {
 	ccprintf("flags:  0x%x\n", hdparams.flags);
@@ -234,5 +237,3 @@ static int command_hang_detect(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(hangdet, command_hang_detect, NULL,
-			"Print hang detect state");

@@ -255,6 +255,9 @@ static int mcdp_appstest(uint8_t cmd, int paramc, char **paramv)
 	return EC_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(mcdp, command_mcdp,
+			"info|devid <id>|appstest <cmd> [<params>]",
+			"USB PD");
 int command_mcdp(int argc, char **argv)
 {
 	int rv = EC_SUCCESS;
@@ -301,6 +304,4 @@ int command_mcdp(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(mcdp, command_mcdp,
-			"info|devid <id>|appstest <cmd> [<params>]", "USB PD");
 #endif /* CONFIG_CMD_MCDP */
