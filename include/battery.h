@@ -390,6 +390,12 @@ int board_cut_off_battery(void);
 int battery_is_cut_off(void);
 
 /**
+ * Forward declare starting byte of board specific battery vendor param used by
+ * common/battery.c, and should be defined in each board/battery.c.
+ */
+extern uint32_t battery_vendor_param_start;
+
+/**
  * Read battery vendor parameter.
  *
  * Vendor parameter handlers are implemented in a board-specific battery.c

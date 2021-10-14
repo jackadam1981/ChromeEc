@@ -595,6 +595,12 @@
 #undef CONFIG_BATTERY_VENDOR_PARAM
 
 /*
+ * Size of vendor-specific parameters stored in the battery to read and write.
+ * See common/battery.c for definitions.
+ */
+#undef CONFIG_BATTERY_VENDOR_PARAM_SIZE
+
+/*
  * TODO(crosbug.com/p/29467): allows charging of a dead battery that
  * requests nil for current and voltage. Remove this workaround when
  * possible.

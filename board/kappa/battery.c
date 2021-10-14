@@ -73,3 +73,6 @@ enum battery_present battery_hw_present(void)
 {
 	return gpio_get_level(GPIO_EC_BATT_PRES_ODL) ? BP_NO : BP_YES;
 }
+
+/* Starting byte of specific battery vendor parameter */
+uint32_t battery_vendor_param_start = 0x70;
