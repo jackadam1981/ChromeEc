@@ -264,6 +264,9 @@ static void print_hook_delay(uint32_t interval, uint32_t delay, uint32_t avg)
 	ccprintf("  Average:     %7d us (%d%%)\n\n", avg, percent_avg);
 }
 
+DECLARE_CONSOLE_COMMAND(hookstats, command_stats,
+			NULL,
+			"Print stats of hooks");
 static int command_stats(int argc, char **argv)
 {
 	int i;
@@ -283,7 +286,4 @@ static int command_stats(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(hookstats, command_stats,
-			NULL,
-			"Print stats of hooks");
 #endif
