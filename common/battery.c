@@ -404,6 +404,35 @@ int battery_is_cut_off(void)
 #endif  /* CONFIG_BATTERY_CUT_OFF */
 
 #ifdef CONFIG_BATTERY_VENDOR_PARAM
+__overridable int battery_get_vendor_param(uint32_t param, uint32_t *value)
+{
+	uint8_t *data = NULL;
+	int rv;
+
+	/**
+	 * Only allow reading battery_vendor_param.start ~
+	 * battery_vendor_param.start + (battery_vendor_param.size -1),
+	 * battery_vendor_param.size bytes data in total.
+	 */
+	if (param < battery_vendor_param.start ||
+		param > battery_vendor_param.start +
+		(battery_vendor_param.size - 1))
+		return EC_ERROR_ACCESS_DENIED;
+
+	rv = sb_read_string(battery_vendor_param.start, data,
+			battery_vendor_param.size);
+	if (rv)
+		return rv;
+
+	*value = data[param - battery_vendor_param.start];
+	return EC_SUCCESS;
+}
+
+__overridable int battery_set_vendor_param(uint32_t param, uint32_t value)
+{
+	return EC_ERROR_UNIMPLEMENTED;
+}
+
 static int console_command_battery_vendor_param(int argc, char **argv)
 {
 	uint32_t param;
