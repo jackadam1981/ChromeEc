@@ -178,6 +178,10 @@ static int print_status(void)
 	return EC_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(g78x, command_g78x,
+	"[settemp|setbyte <offset> <value>] or [getbyte <offset>]. "
+	"Temps in Celsius.",
+	"Print g781/g782 temp sensor status or set parameters.");
 static int command_g78x(int argc, char **argv)
 {
 	char *command;
@@ -231,8 +235,4 @@ static int command_g78x(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(g78x, command_g78x,
-	"[settemp|setbyte <offset> <value>] or [getbyte <offset>]. "
-	"Temps in Celsius.",
-	"Print g781/g782 temp sensor status or set parameters.");
 #endif
