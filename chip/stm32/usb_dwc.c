@@ -1314,6 +1314,9 @@ static void usb_info(void)
 	}
 }
 
+DECLARE_CONSOLE_COMMAND(usb, command_usb,
+			"[on|off|info]",
+			"Get/set the USB connection state and PHY selection");
 static int command_usb(int argc, char **argv)
 {
 	if (argc > 1) {
@@ -1328,9 +1331,6 @@ static int command_usb(int argc, char **argv)
 
 	return EC_ERROR_PARAM1;
 }
-DECLARE_CONSOLE_COMMAND(usb, command_usb,
-			"[on|off|info]",
-			"Get/set the USB connection state and PHY selection");
 
 #ifdef CONFIG_USB_SERIALNO
 /* This will be subbed into USB_STR_SERIALNO. */
@@ -1391,6 +1391,9 @@ static int usb_save_serial(const char *serialno)
 	return rv;
 }
 
+DECLARE_CONSOLE_COMMAND(serialno, command_serialno,
+	"load/set [value]",
+	"Read and write USB serial number");
 static int command_serialno(int argc, char **argv)
 {
 	struct usb_string_desc *sd = usb_serialno_desc;
@@ -1417,7 +1420,4 @@ static int command_serialno(int argc, char **argv)
 	return rv;
 }
 
-DECLARE_CONSOLE_COMMAND(serialno, command_serialno,
-	"load/set [value]",
-	"Read and write USB serial number");
 #endif  /* CONFIG_USB_SERIALNO */

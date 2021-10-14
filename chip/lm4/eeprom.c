@@ -137,6 +137,9 @@ int eeprom_hide(int block)
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(eeinfo, command_eeprom_info,
+			NULL,
+			"Print EEPROM info");
 static int command_eeprom_info(int argc, char **argv)
 {
 	ccprintf("%d blocks @ %d bytes, hide=0x%08x\n",
@@ -144,11 +147,11 @@ static int command_eeprom_info(int argc, char **argv)
 		 LM4_EEPROM_EEHIDE);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(eeinfo, command_eeprom_info,
-			NULL,
-			"Print EEPROM info");
 
 
+DECLARE_CONSOLE_COMMAND(eeread, command_eeprom_read,
+			"block [offset]",
+			"Read a word of EEPROM");
 static int command_eeprom_read(int argc, char **argv)
 {
 	int block = 0;
@@ -175,11 +178,11 @@ static int command_eeprom_read(int argc, char **argv)
 		ccprintf("%d:%d = 0x%08x\n", block, offset, d);
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(eeread, command_eeprom_read,
-			"block [offset]",
-			"Read a word of EEPROM");
 
 
+DECLARE_CONSOLE_COMMAND(eewrite, command_eeprom_write,
+			"block offset value",
+			"Write a word of EEPROM");
 static int command_eeprom_write(int argc, char **argv)
 {
 	int block = 0;
@@ -203,12 +206,12 @@ static int command_eeprom_write(int argc, char **argv)
 	ccprintf("Writing 0x%08x to %d:%d...\n", d, block, offset);
 	return eeprom_write(block, offset, sizeof(d), (char *)&d);
 }
-DECLARE_CONSOLE_COMMAND(eewrite, command_eeprom_write,
-			"block offset value",
-			"Write a word of EEPROM");
 
 
 #ifdef CONSOLE_COMMAND_EEHIDE
+DECLARE_CONSOLE_COMMAND(eehide, command_eeprom_hide,
+			"block",
+			"Hide a block of EEPROM");
 static int command_eeprom_hide(int argc, char **argv)
 {
 	int block = 0;
@@ -224,9 +227,6 @@ static int command_eeprom_hide(int argc, char **argv)
 	ccprintf("Hiding block %d\n", block);
 	return eeprom_hide(block);
 }
-DECLARE_CONSOLE_COMMAND(eehide, command_eeprom_hide,
-			"block",
-			"Hide a block of EEPROM");
 #endif
 
 

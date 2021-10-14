@@ -507,6 +507,12 @@ void dps_task(void *u)
 	}
 }
 
+DECLARE_CONSOLE_COMMAND(dps, command_dps,
+			"en|dis|debug <int>\n"
+			"\t\t set(kmore|kless|ksample|kwindow) <int>\n"
+			"\t\t set(tstable|tcheck) <int>\n"
+			"\t\t fakepwr [dis|<mV> <mA>]",
+			"Print/set Dynamic PDO Selection state.");
 static int command_dps(int argc, char **argv)
 {
 	int port = charge_manager_get_active_charge_port();
@@ -634,9 +640,3 @@ static int command_dps(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(dps, command_dps,
-			"en|dis|debug <int>\n"
-			"\t\t set(kmore|kless|ksample|kwindow) <int>\n"
-			"\t\t set(tstable|tcheck) <int>\n"
-			"\t\t fakepwr [dis|<mV> <mA>]",
-			"Print/set Dynamic PDO Selection state.");
