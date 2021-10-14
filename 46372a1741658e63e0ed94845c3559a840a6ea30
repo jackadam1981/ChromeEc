@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5cf8a34_b4ca5980",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-14T01:31:29Z",
+      "side": 1,
+      "message": "These should be in a struct mock_read_intercept_reg_to_fail, then pass them as the data field of the function.",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 398,
+        "endChar": 37
+      },
+      "revId": "46372a1741658e63e0ed94845c3559a840a6ea30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4eb1994_ec4ccafc",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-14T01:31:29Z",
+      "side": 1,
+      "message": "nit: I don\u0027t think you need \u0027\u0026\u0027 for function pointers.",
+      "range": {
+        "startLine": 429,
+        "startChar": 10,
+        "endLine": 429,
+        "endChar": 11
+      },
+      "revId": "46372a1741658e63e0ed94845c3559a840a6ea30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "595b7c91_b8e0640c",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-14T01:31:29Z",
+      "side": 1,
+      "message": "Lets use \u0027true\u0027, this makes me think that 2, 3, 4, etc are also reasonable values",
+      "range": {
+        "startLine": 435,
+        "startChar": 24,
+        "endLine": 435,
+        "endChar": 25
+      },
+      "revId": "46372a1741658e63e0ed94845c3559a840a6ea30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5597fbc6_e5cbef1f",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-14T01:31:29Z",
+      "side": 1,
+      "message": "Won\u0027t be needed once you set this up as a struct that\u0027s created in the test\u0027s stack",
+      "range": {
+        "startLine": 461,
+        "startChar": 1,
+        "endLine": 462,
+        "endChar": 31
+      },
+      "revId": "46372a1741658e63e0ed94845c3559a840a6ea30",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
