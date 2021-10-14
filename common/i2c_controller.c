@@ -1308,6 +1308,7 @@ static inline int is_i2c_port_virtual_battery(int port)
 }
 #endif /* CONFIG_I2C_VIRTUAL_BATTERY */
 
+DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU, i2c_command_passthru, EC_VER_MASK(0));
 static enum ec_status i2c_command_passthru(struct host_cmd_handler_args *args)
 {
 #ifdef CONFIG_ZEPHYR
@@ -1434,7 +1435,6 @@ static enum ec_status i2c_command_passthru(struct host_cmd_handler_args *args)
 	 */
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU, i2c_command_passthru, EC_VER_MASK(0));
 
 static void i2c_passthru_protect_port(uint32_t port)
 {
@@ -1467,6 +1467,8 @@ static void i2c_passthru_protect_tcpc_ports(void)
 #endif
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU_PROTECT, i2c_command_passthru_protect,
+		     EC_VER_MASK(0));
 static enum ec_status
 i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 {
@@ -1523,11 +1525,11 @@ i2c_command_passthru_protect(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_I2C_PASSTHRU_PROTECT, i2c_command_passthru_protect,
-		     EC_VER_MASK(0));
 
 #ifdef CONFIG_HOSTCMD_I2C_CONTROL
 
+DECLARE_HOST_COMMAND(EC_CMD_I2C_CONTROL, i2c_command_control,
+		     EC_VER_MASK(0));
 static enum ec_status
 i2c_command_control(struct host_cmd_handler_args *args)
 {
@@ -1591,8 +1593,6 @@ i2c_command_control(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_I2C_CONTROL, i2c_command_control,
-		     EC_VER_MASK(0));
 
 #endif /* CONFIG_HOSTCMD_I2C_CONTROL */
 
