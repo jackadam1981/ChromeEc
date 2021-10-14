@@ -319,6 +319,9 @@ int cbi_get_factory_calibration_data(uint32_t *calibration_data)
 				  (uint8_t *)calibration_data, &size);
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_CROS_BOARD_INFO,
+		     hc_cbi_get,
+		     EC_VER_MASK(0));
 static enum ec_status hc_cbi_get(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_get_cbi *p = args->params;
@@ -333,7 +336,6 @@ static enum ec_status hc_cbi_get(struct host_cmd_handler_args *args)
 	args->response_size = size;
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_CROS_BOARD_INFO, hc_cbi_get, EC_VER_MASK(0));
 
 static enum ec_status
 common_cbi_set(const struct __ec_align4 ec_params_set_cbi *p)
@@ -388,6 +390,9 @@ common_cbi_set(const struct __ec_align4 ec_params_set_cbi *p)
 	return EC_RES_SUCCESS;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_SET_CROS_BOARD_INFO,
+		     hc_cbi_set,
+		     EC_VER_MASK(0));
 static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 {
 	const struct __ec_align4 ec_params_set_cbi *p = args->params;
@@ -398,7 +403,6 @@ static enum ec_status hc_cbi_set(struct host_cmd_handler_args *args)
 
 	return common_cbi_set(p);
 }
-DECLARE_HOST_COMMAND(EC_CMD_SET_CROS_BOARD_INFO, hc_cbi_set, EC_VER_MASK(0));
 
 #ifdef CONFIG_CMD_CBI
 static void print_tag(const char *const tag, int rv, const uint32_t *val)
