@@ -300,6 +300,9 @@ static enum ec_error_list ioex_set(const char *name, int value)
 	return ioex_set_level(signal, value);
 }
 
+DECLARE_CONSOLE_COMMAND(ioexset, command_ioex_set,
+			"name <0 | 1>",
+			"Set level of a IO expander IO");
 static int command_ioex_set(int argc, char **argv)
 {
 	char *e;
@@ -317,9 +320,6 @@ static int command_ioex_set(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ioexset, command_ioex_set,
-			"name <0 | 1>",
-			"Set level of a IO expander IO");
 
 static int command_ioex_get(int argc, char **argv)
 {
