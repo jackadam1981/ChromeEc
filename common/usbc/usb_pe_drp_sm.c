@@ -3643,6 +3643,7 @@ static void pe_snk_hard_reset_entry(int port)
 	    ((port == charge_manager_get_active_charge_port() ||
 	     (charge_manager_get_active_charge_port() == CHARGE_PORT_NONE))) &&
 	    system_get_reset_flags() & EC_RESET_FLAG_SYSJUMP) {
+	/* When the board is non-efs2 and EC_RW is up to be SW sync by BIOS, this happens. */
 		CPRINTS("C%d: Disabling port to avoid brown out, "
 			"please reboot EC to enable port again", port);
 		set_state_pe(port, PE_SRC_DISABLED);
