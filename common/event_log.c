@@ -131,6 +131,10 @@ retry:
 }
 
 #ifdef CONFIG_CMD_DLOG
+DECLARE_CONSOLE_COMMAND(dlog,
+			command_dlog,
+			"[clear]",
+			"Display/clear TPM event logs");
 /*
  * Display TPM event logs.
  */
@@ -179,8 +183,4 @@ static int command_dlog(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(dlog,
-			command_dlog,
-			"[clear]",
-			"Display/clear TPM event logs");
 #endif

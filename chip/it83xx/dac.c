@@ -44,6 +44,9 @@ static void dac_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, dac_init, HOOK_PRIO_INIT_DAC);
 
+DECLARE_CONSOLE_COMMAND(dac, command_dac,
+			"[ch2-5] [0-3300mV]",
+			"Enable or disable(0mV) DAC output voltage.");
 static int command_dac(int argc, char **argv)
 {
 	char *e;
@@ -85,6 +88,3 @@ static int command_dac(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(dac, command_dac,
-			"[ch2-5] [0-3300mV]",
-			"Enable or disable(0mV) DAC output voltage.");

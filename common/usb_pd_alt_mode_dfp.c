@@ -1502,6 +1502,8 @@ const struct svdm_amode_fx supported_modes[] = {
 const int supported_modes_cnt = ARRAY_SIZE(supported_modes);
 
 #ifdef CONFIG_CMD_MFALLOW
+DECLARE_CONSOLE_COMMAND(mfallow, command_mfallow, "port [true | false]",
+		"Controls Multifunction choice during DP Altmode.");
 static int command_mfallow(int argc, char **argv)
 {
 	char *e;
@@ -1525,6 +1527,4 @@ static int command_mfallow(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND(mfallow, command_mfallow, "port [true | false]",
-		"Controls Multifunction choice during DP Altmode.");
 #endif

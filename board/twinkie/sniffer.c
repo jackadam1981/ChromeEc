@@ -392,11 +392,11 @@ static void sniffer_sysjump(void)
 }
 DECLARE_HOOK(HOOK_SYSJUMP, sniffer_sysjump, HOOK_PRIO_DEFAULT);
 
+DECLARE_CONSOLE_COMMAND(sniffer, command_sniffer,
+			"[]", "Buffering status");
 static int command_sniffer(int argc, char **argv)
 {
 	ccprintf("Seq number:%d Overflows: %d\n", seq, oflow);
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(sniffer, command_sniffer,
-			"[]", "Buffering status");
