@@ -705,6 +705,8 @@ static void print_stats(const char *name, const struct pm_stat *stat)
 			 name, stat->count, stat->total_time_us);
 }
 
+DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats, "",
+			"Print power management statistics");
 /**
  * Print low power idle statistics
  */
@@ -733,8 +735,6 @@ static int command_idle_stats(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats, "",
-			"Print power management statistics");
 
 /**
  * main FW only need handle PMU wakeup interrupt for D0i1 state, aontask will

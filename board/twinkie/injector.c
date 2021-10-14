@@ -569,6 +569,9 @@ static int cmd_trace(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(twinkie, command_tw,
+			"[send|fsm|cc|resistor|txclock|rxthresh|vbus|vconn]",
+			"Manual Twinkie tweaking");
 static int command_tw(int argc, char **argv)
 {
 	if (!strcasecmp(argv[1], "send"))
@@ -600,6 +603,3 @@ static int command_tw(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(twinkie, command_tw,
-			"[send|fsm|cc|resistor|txclock|rxthresh|vbus|vconn]",
-			"Manual Twinkie tweaking");

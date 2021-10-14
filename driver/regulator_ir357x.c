@@ -195,6 +195,9 @@ static int ir357x_check(void)
 }
 
 #ifdef CONFIG_CMD_REGULATOR
+DECLARE_CONSOLE_COMMAND(ir357x, command_ir357x,
+			"[check|write]",
+			"IR357x core regulator control");
 static int command_ir357x(int argc, char **argv)
 {
 	int reg, val;
@@ -233,8 +236,6 @@ static int command_ir357x(int argc, char **argv)
 
 	return EC_ERROR_INVAL;
 }
-DECLARE_CONSOLE_COMMAND(ir357x, command_ir357x, "[check|write]",
-			"IR357x core regulator control");
 #endif
 
 static void ir357x_hot_settings(void)

@@ -467,6 +467,9 @@ void baseboard_power_button_evt(int level)
 			   POWER_BUTTON_DEBOUNCE_USEC);
 }
 
+DECLARE_CONSOLE_COMMAND(pwr_btn, command_pwr_btn,
+			"<on|off|mf>",
+			"Simulate Power Button Press");
 static int command_pwr_btn(int argc, char **argv)
 {
 	if (argc == 1) {
@@ -486,7 +489,5 @@ static int command_pwr_btn(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(pwr_btn, command_pwr_btn, "<on|off|mf>",
-			"Simulate Power Button Press");
 
 #endif

@@ -974,6 +974,7 @@ static enum ec_status lpc_get_protocol_info(struct host_cmd_handler_args *args)
 }
 
 #if DEBUG_LPC
+DECLARE_CONSOLE_COMMAND(lpc, command_lpc, "[sci|smi|wake]", "Trigger SCI/SMI");
 static int command_lpc(int argc, char **argv)
 {
 	if (argc == 1)
@@ -989,6 +990,4 @@ static int command_lpc(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(lpc, command_lpc, "[sci|smi|wake]", "Trigger SCI/SMI");
-
 #endif
