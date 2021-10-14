@@ -168,6 +168,9 @@ enum ec_status port80_last_boot(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_PORT80_READ,
+		port80_command_read,
+		EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status port80_command_read(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_port80_read *p = args->params;
@@ -202,9 +205,6 @@ static enum ec_status port80_command_read(struct host_cmd_handler_args *args)
 
 	return EC_RES_INVALID_PARAM;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PORT80_READ,
-		port80_command_read,
-		EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static void port80_log_resume(void)
 {

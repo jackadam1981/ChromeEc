@@ -513,6 +513,9 @@ DECLARE_CONSOLE_COMMAND(hostevent, command_host_event,
 
 #ifdef CONFIG_HOSTCMD_X86
 
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_SMI_MASK,
+		     host_event_get_smi_mask,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_event_get_smi_mask(struct host_cmd_handler_args *args)
 {
@@ -523,10 +526,10 @@ host_event_get_smi_mask(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_SMI_MASK,
-		     host_event_get_smi_mask,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_SCI_MASK,
+		     host_event_get_sci_mask,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_event_get_sci_mask(struct host_cmd_handler_args *args)
 {
@@ -537,10 +540,10 @@ host_event_get_sci_mask(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_SCI_MASK,
-		     host_event_get_sci_mask,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_WAKE_MASK,
+		     host_event_get_wake_mask,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_event_get_wake_mask(struct host_cmd_handler_args *args)
 {
@@ -551,10 +554,10 @@ host_event_get_wake_mask(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_WAKE_MASK,
-		     host_event_get_wake_mask,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SMI_MASK,
+		     host_event_set_smi_mask,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_event_set_smi_mask(struct host_cmd_handler_args *args)
 {
@@ -563,10 +566,10 @@ host_event_set_smi_mask(struct host_cmd_handler_args *args)
 	lpc_set_host_event_mask(LPC_HOST_EVENT_SMI, p->mask);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SMI_MASK,
-		     host_event_set_smi_mask,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SCI_MASK,
+		     host_event_set_sci_mask,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_event_set_sci_mask(struct host_cmd_handler_args *args)
 {
@@ -575,10 +578,10 @@ host_event_set_sci_mask(struct host_cmd_handler_args *args)
 	lpc_set_host_event_mask(LPC_HOST_EVENT_SCI, p->mask);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_SCI_MASK,
-		     host_event_set_sci_mask,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_WAKE_MASK,
+		     host_event_set_wake_mask,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_event_set_wake_mask(struct host_cmd_handler_args *args)
 {
@@ -588,9 +591,6 @@ host_event_set_wake_mask(struct host_cmd_handler_args *args)
 	active_wm_set_by_host = !!p->mask;
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_SET_WAKE_MASK,
-		     host_event_set_wake_mask,
-		     EC_VER_MASK(0));
 
 uint8_t lpc_is_active_wm_set_by_host(void)
 {
@@ -599,6 +599,9 @@ uint8_t lpc_is_active_wm_set_by_host(void)
 
 #endif  /* CONFIG_HOSTCMD_X86 */
 
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_B,
+		     host_event_get_b,
+		     EC_VER_MASK(0));
 static enum ec_status host_event_get_b(struct host_cmd_handler_args *args)
 {
 	struct ec_response_host_event_mask *r = args->response;
@@ -608,10 +611,10 @@ static enum ec_status host_event_get_b(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_B,
-		     host_event_get_b,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_CLEAR,
+		     host_event_clear,
+		     EC_VER_MASK(0));
 static enum ec_status host_event_clear(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
@@ -619,10 +622,10 @@ static enum ec_status host_event_clear(struct host_cmd_handler_args *args)
 	host_clear_events(p->mask);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_CLEAR,
-		     host_event_clear,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_CLEAR_B,
+		     host_event_clear_b,
+		     EC_VER_MASK(0));
 static enum ec_status host_event_clear_b(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_host_event_mask *p = args->params;
@@ -630,9 +633,6 @@ static enum ec_status host_event_clear_b(struct host_cmd_handler_args *args)
 	host_clear_events_b(p->mask);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_CLEAR_B,
-		     host_event_clear_b,
-		     EC_VER_MASK(0));
 
 static enum ec_status host_event_action_get(struct host_cmd_handler_args *args)
 {
@@ -764,6 +764,9 @@ host_event_action_clear(struct host_cmd_handler_args *args)
 	return result;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT,
+		     host_command_host_event,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_host_event(struct host_cmd_handler_args *args)
 {
@@ -782,10 +785,6 @@ host_command_host_event(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	}
 }
-
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT,
-		     host_command_host_event,
-		     EC_VER_MASK(0));
 
 #define LAZY_WAKE_MASK_SYSJUMP_TAG		0x4C4D /* LM - Lazy Mask*/
 #define LAZY_WAKE_MASK_HOOK_VERSION		1
