@@ -277,6 +277,9 @@ void board_print_temps(void)
 				   temps_interval * SECOND);
 }
 
+DECLARE_CONSOLE_COMMAND(tempslog, command_temps_log,
+			"seconds",
+			"Print temp sensors periodically");
 static int command_temps_log(int argc, char **argv)
 {
 	char *e = NULL;
@@ -292,8 +295,6 @@ static int command_temps_log(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(tempslog, command_temps_log, "seconds",
-			"Print temp sensors periodically");
 
 /*
  * b/164921478: On G3->S5, wait for RSMRST_L to be deasserted before asserting

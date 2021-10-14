@@ -866,6 +866,9 @@ err_free:
 /* Serial NOR Flash console commands. */
 
 #ifdef CONFIG_CMD_SPI_NOR
+DECLARE_CONSOLE_COMMAND(spinorinfo, command_spi_nor_info,
+			"[device]",
+			"Report Serial NOR Flash device information");
 static int command_spi_nor_info(int argc, char **argv)
 {
 	int rv = EC_SUCCESS;
@@ -929,11 +932,12 @@ static int command_spi_nor_info(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(spinorinfo, command_spi_nor_info, "[device]",
-			"Report Serial NOR Flash device information");
-#endif /* CONFIG_CMD_SPI_NOR */
+#endif  /* CONFIG_CMD_SPI_NOR */
 
 #ifdef CONFIG_CMD_SPI_NOR
+DECLARE_CONSOLE_COMMAND(spinorerase, command_spi_nor_erase,
+			"device [offset] [size]",
+			"Erase flash");
 static int command_spi_nor_erase(int argc, char **argv)
 {
 	const struct spi_nor_device_t *spi_nor_device;
@@ -958,11 +962,12 @@ static int command_spi_nor_erase(int argc, char **argv)
 		 spi_nor_device->name);
 	return spi_nor_erase(spi_nor_device, offset, size);
 }
-DECLARE_CONSOLE_COMMAND(spinorerase, command_spi_nor_erase,
-			"device [offset] [size]", "Erase flash");
-#endif /* CONFIG_CMD_SPI_NOR */
+#endif  /* CONFIG_CMD_SPI_NOR */
 
 #ifdef CONFIG_CMD_SPI_NOR
+DECLARE_CONSOLE_COMMAND(spinorwrite, command_spi_nor_write,
+			"device [offset] [size]",
+			"Write pattern to flash");
 static int command_spi_nor_write(int argc, char **argv)
 {
 	const struct spi_nor_device_t *spi_nor_device;
@@ -1008,11 +1013,12 @@ static int command_spi_nor_write(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(spinorwrite, command_spi_nor_write,
-			"device [offset] [size]", "Write pattern to flash");
-#endif /* CONFIG_CMD_SPI_NOR */
+#endif  /* CONFIG_CMD_SPI_NOR */
 
 #ifdef CONFIG_CMD_SPI_NOR
+DECLARE_CONSOLE_COMMAND(spinorread, command_spi_nor_read,
+			"device [offset] [size]",
+			"Read flash");
 static int command_spi_nor_read(int argc, char **argv)
 {
 	const struct spi_nor_device_t *spi_nor_device;
@@ -1069,6 +1075,4 @@ err_free:
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(spinorread, command_spi_nor_read,
-			"device [offset] [size]", "Read flash");
-#endif /* CONFIG_CMD_SPI_NOR */
+#endif  /* CONFIG_CMD_SPI_NOR */
