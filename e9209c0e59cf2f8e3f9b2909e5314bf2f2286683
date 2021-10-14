@@ -16,6 +16,24 @@
       "message": "I\u0027m trying to cherry pick onto  cros/main (782c7b1f1) and getting a build failure? \n\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld:build/voxel/RW/ec.RW.lds:3889: syntax error\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile.rules:547: build/voxel/RW/ec.RW.elf] Error 1\nmake: *** Waiting for unfinished jobs....\n/opt/coreboot-sdk/lib/gcc/arm-eabi/8.3.0/../../../../arm-eabi/bin/ld:build/voxel/RO/ec.RO.lds:3901: syntax error\ncollect2: error: ld returned 1 exit status\nmake: *** [Makefile.rules:552: build/voxel/RO/ec.RO.elf] Error 1\n",
       "revId": "e9209c0e59cf2f8e3f9b2909e5314bf2f2286683",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7808c464_c0ab4581",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-14T23:51:12Z",
+      "side": 1,
+      "message": "Fixed (missing semicolon)",
+      "parentUuid": "934bace5_946676f1",
+      "revId": "e9209c0e59cf2f8e3f9b2909e5314bf2f2286683",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
