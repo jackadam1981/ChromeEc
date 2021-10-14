@@ -1570,6 +1570,9 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_ACCELS
+DECLARE_CONSOLE_COMMAND(accelrange, command_accelrange,
+	"id [data [roundup]]",
+	"Read or write accelerometer range");
 static int command_accelrange(int argc, char **argv)
 {
 	char *e;
@@ -1613,10 +1616,10 @@ static int command_accelrange(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(accelrange, command_accelrange,
-	"id [data [roundup]]",
-	"Read or write accelerometer range");
 
+DECLARE_CONSOLE_COMMAND(accelres, command_accelresolution,
+	"id [data [roundup]]",
+	"Read or write accelerometer resolution");
 static int command_accelresolution(int argc, char **argv)
 {
 	char *e;
@@ -1661,10 +1664,10 @@ static int command_accelresolution(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(accelres, command_accelresolution,
-	"id [data [roundup]]",
-	"Read or write accelerometer resolution");
 
+DECLARE_CONSOLE_COMMAND(accelrate, command_accel_data_rate,
+	"id [data [roundup]]",
+	"Read or write accelerometer ODR");
 static int command_accel_data_rate(int argc, char **argv)
 {
 	char *e;
@@ -1718,10 +1721,10 @@ static int command_accel_data_rate(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(accelrate, command_accel_data_rate,
-	"id [data [roundup]]",
-	"Read or write accelerometer ODR");
 
+DECLARE_CONSOLE_COMMAND(accelread, command_accel_read_xyz,
+	"id [n]",
+	"Read sensor x/y/z");
 static int command_accel_read_xyz(int argc, char **argv)
 {
 	char *e;
@@ -1757,10 +1760,10 @@ static int command_accel_read_xyz(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND(accelread, command_accel_read_xyz,
-	"id [n]",
-	"Read sensor x/y/z");
 
+DECLARE_CONSOLE_COMMAND(accelinit, command_accel_init,
+	"id",
+	"Init sensor");
 static int command_accel_init(int argc, char **argv)
 {
 	char *e;
@@ -1782,11 +1785,12 @@ static int command_accel_init(int argc, char **argv)
 	ccprintf("%s: state %d - %d\n", sensor->name, sensor->state, ret);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(accelinit, command_accel_init,
-	"id",
-	"Init sensor");
 
 #ifdef CONFIG_CMD_ACCEL_INFO
+DECLARE_CONSOLE_COMMAND(accelinfo, command_display_accel_info,
+	"on/off [interval]",
+	"Print motion sensor info, lid angle calculations"
+	" and set calculation frequency.");
 static int command_display_accel_info(int argc, char **argv)
 {
 	int val, i, j;
@@ -1828,10 +1832,6 @@ static int command_display_accel_info(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(accelinfo, command_display_accel_info,
-	"on/off [interval]",
-	"Print motion sensor info, lid angle calculations"
-	" and set calculation frequency.");
 #endif /* CONFIG_CMD_ACCEL_INFO */
 
 #endif /* CONFIG_CMD_ACCELS */

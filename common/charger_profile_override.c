@@ -134,6 +134,9 @@ enum ec_status charger_profile_override_set_param(uint32_t param,
 }
 
 #ifdef CONFIG_CMD_CHARGER_PROFILE_OVERRIDE
+DECLARE_CONSOLE_COMMAND(fastcharge, command_fastcharge,
+			"[on|off]",
+			"Get or set fast charging profile");
 static int command_fastcharge(int argc, char **argv)
 {
 	if (argc > 1 && !parse_bool(argv[1], &fast_charging_allowed))
@@ -143,9 +146,6 @@ static int command_fastcharge(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fastcharge, command_fastcharge,
-			"[on|off]",
-			"Get or set fast charging profile");
 #endif
 
 /*
@@ -153,6 +153,9 @@ DECLARE_CONSOLE_COMMAND(fastcharge, command_fastcharge,
  * fast charging profile is selected.
  */
 #ifdef CONFIG_CMD_CHARGER_PROFILE_OVERRIDE_TEST
+DECLARE_CONSOLE_COMMAND(fastchgtest, command_fastcharge_test,
+			"off | on tempflag[1|0] vtgflag[1|0] temp_c vtg_mV",
+			"Check if fastcharge profile works");
 static int command_fastcharge_test(int argc, char **argv)
 {
 	char *e;
@@ -195,7 +198,4 @@ static int command_fastcharge_test(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fastchgtest, command_fastcharge_test,
-			"off | on tempflag[1|0] vtgflag[1|0] temp_c vtg_mV",
-			"Check if fastcharge profile works");
 #endif

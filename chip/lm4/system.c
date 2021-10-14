@@ -690,6 +690,9 @@ void print_system_rtc(enum console_channel ch)
 }
 
 #ifdef CONFIG_CMD_RTC
+DECLARE_CONSOLE_COMMAND(rtc, command_system_rtc,
+			"[set <seconds>]",
+			"Get/set real-time clock");
 static int command_system_rtc(int argc, char **argv)
 {
 	if (argc == 3 && !strcasecmp(argv[1], "set")) {
@@ -707,11 +710,11 @@ static int command_system_rtc(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(rtc, command_system_rtc,
-			"[set <seconds>]",
-			"Get/set real-time clock");
 
 #ifdef CONFIG_CMD_RTC_ALARM
+DECLARE_CONSOLE_COMMAND(rtc_alarm, command_rtc_alarm_test,
+			"[seconds [microseconds]]",
+			"Test alarm");
 /**
  * Test the RTC alarm by setting an interrupt on RTC match.
  */
@@ -740,9 +743,6 @@ static int command_rtc_alarm_test(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(rtc_alarm, command_rtc_alarm_test,
-			"[seconds [microseconds]]",
-			"Test alarm");
 #endif /* CONFIG_CMD_RTC_ALARM */
 #endif /* CONFIG_CMD_RTC */
 
