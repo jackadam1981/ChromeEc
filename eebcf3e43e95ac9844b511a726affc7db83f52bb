@@ -22,6 +22,23 @@
       },
       "revId": "eebcf3e43e95ac9844b511a726affc7db83f52bb",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb530b3e_05abfdf3",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1415203
+      },
+      "writtenOn": "2021-10-14T18:16:53Z",
+      "side": 1,
+      "message": "should there be error return instead of void if read was unsuccessful?",
+      "revId": "eebcf3e43e95ac9844b511a726affc7db83f52bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
