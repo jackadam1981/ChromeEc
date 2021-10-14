@@ -452,6 +452,9 @@ static void dump_cbi(void)
 static uint8_t buf[sizeof(struct ec_params_set_cbi) + \
 		       CONFIG_CONSOLE_INPUT_LINE_SIZE];
 
+DECLARE_CONSOLE_COMMAND(cbi, cc_cbi, "[set <tag> <value> <size> | "
+			"remove <tag>] [init | skip_write]",
+			"Print or change Cros Board Info from flash");
 static int cc_cbi(int argc, char **argv)
 {
 	struct __ec_align4 ec_params_set_cbi * setter =
@@ -541,9 +544,6 @@ static int cc_cbi(int argc, char **argv)
 
 	return EC_ERROR_UNKNOWN;
 }
-DECLARE_CONSOLE_COMMAND(cbi, cc_cbi, "[set <tag> <value> <size> | "
-			"remove <tag>] [init | skip_write]",
-			"Print or change Cros Board Info from flash");
 #endif /* CONFIG_CMD_CBI */
 
 #ifndef HAS_TASK_CHIPSET

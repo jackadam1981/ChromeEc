@@ -686,6 +686,12 @@ static enum ec_status hc_pchg_update(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(pchg, cc_pchg,
+			"\n\t<port>"
+			"\n\t<port> reset [download]"
+			"\n\t<port> enable"
+			"\n\t<port> disable",
+			"Control peripheral chargers");
 static int cc_pchg(int argc, char **argv)
 {
 	int port;
@@ -732,9 +738,3 @@ static int cc_pchg(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(pchg, cc_pchg,
-			"\n\t<port>"
-			"\n\t<port> reset [download]"
-			"\n\t<port> enable"
-			"\n\t<port> disable",
-			"Control peripheral chargers");

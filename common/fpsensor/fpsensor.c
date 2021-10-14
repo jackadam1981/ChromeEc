@@ -762,6 +762,9 @@ static enum ec_error_list fp_console_action(uint32_t mode)
 	return EC_ERROR_TIMEOUT;
 }
 
+DECLARE_CONSOLE_COMMAND_FLAGS(fpcapture, command_fpcapture, NULL,
+			      "Capture fingerprint in PGM format",
+			      CMD_FLAG_RESTRICTED);
 static int command_fpcapture(int argc, char **argv)
 {
 	int capture_type = FP_CAPTURE_SIMPLE_IMAGE;
@@ -791,10 +794,10 @@ static int command_fpcapture(int argc, char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND_FLAGS(fpcapture, command_fpcapture, NULL,
-			      "Capture fingerprint in PGM format",
-			      CMD_FLAG_RESTRICTED);
 
+DECLARE_CONSOLE_COMMAND_FLAGS(fpenroll, command_fpenroll, NULL,
+			      "Enroll a new fingerprint",
+			      CMD_FLAG_RESTRICTED);
 static int command_fpenroll(int argc, char **argv)
 {
 	enum ec_error_list rc;
@@ -832,11 +835,10 @@ static int command_fpenroll(int argc, char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND_FLAGS(fpenroll, command_fpenroll, NULL,
-			      "Enroll a new fingerprint",
-			      CMD_FLAG_RESTRICTED);
 
 
+DECLARE_CONSOLE_COMMAND(fpmatch, command_fpmatch, NULL,
+			"Run match algorithm against finger");
 static int command_fpmatch(int argc, char **argv)
 {
 	enum ec_error_list rc = fp_console_action(FP_MODE_MATCH);
@@ -852,9 +854,9 @@ static int command_fpmatch(int argc, char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND(fpmatch, command_fpmatch, NULL,
-			"Run match algorithm against finger");
 
+DECLARE_CONSOLE_COMMAND(fpclear, command_fpclear, NULL,
+			"Clear fingerprint sensor context");
 static int command_fpclear(int argc, char **argv)
 {
 	/*
@@ -870,9 +872,9 @@ static int command_fpclear(int argc, char **argv)
 
 	return rc;
 }
-DECLARE_CONSOLE_COMMAND(fpclear, command_fpclear, NULL,
-			"Clear fingerprint sensor context");
 
+DECLARE_CONSOLE_COMMAND(fpmaintenance, command_fpmaintenance, NULL,
+			"Run fingerprint sensor maintenance");
 static int command_fpmaintenance(int argc, char **argv)
 {
 #ifdef HAVE_FP_PRIVATE_DRIVER
@@ -881,7 +883,5 @@ static int command_fpmaintenance(int argc, char **argv)
 	return EC_SUCCESS;
 #endif /* #ifdef HAVE_FP_PRIVATE_DRIVER */
 }
-DECLARE_CONSOLE_COMMAND(fpmaintenance, command_fpmaintenance, NULL,
-			"Run fingerprint sensor maintenance");
 
 #endif /* CONFIG_CMD_FPSENSOR_DEBUG */
