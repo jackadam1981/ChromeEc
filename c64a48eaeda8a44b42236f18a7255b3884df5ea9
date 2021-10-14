@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de5a489a_2c98c3ba",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-14T06:17:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "905e6d7e_dd358501",
+      "revId": "c64a48eaeda8a44b42236f18a7255b3884df5ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8385123a_ba73fb8e",
@@ -41,6 +59,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8376b038_8785fae2",
+        "filename": "driver/usb_mux/tusb1064.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-14T06:17:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8385123a_ba73fb8e",
+      "range": {
+        "startLine": 136,
+        "startChar": 74,
+        "endLine": 136,
+        "endChar": 75
+      },
+      "revId": "c64a48eaeda8a44b42236f18a7255b3884df5ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1984181d_a0048521",
@@ -54,6 +96,24 @@
       "writtenOn": "2021-10-13T17:06:07Z",
       "side": 1,
       "message": "nit: move it to line 5058",
+      "revId": "c64a48eaeda8a44b42236f18a7255b3884df5ea9",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4df5d587_26658455",
+        "filename": "include/config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 4563,
+      "author": {
+        "id": 1380943
+      },
+      "writtenOn": "2021-10-14T06:17:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1984181d_a0048521",
       "revId": "c64a48eaeda8a44b42236f18a7255b3884df5ea9",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
