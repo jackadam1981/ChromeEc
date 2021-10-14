@@ -1532,6 +1532,9 @@ void ucpd_info(int port)
 	ucpd_task_log_dump();
 }
 
+DECLARE_CONSOLE_COMMAND(ucpd, command_ucpd,
+			"[rst|info|bist|hard|pol <0|1>|cc xx <rd|rp|open>|log",
+			"ucpd peripheral debug and control options");
 static int command_ucpd(int argc, char **argv)
 {
 	uint32_t tx_data = 0;
@@ -1606,7 +1609,4 @@ static int command_ucpd(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ucpd, command_ucpd,
-			"[rst|info|bist|hard|pol <0|1>|cc xx <rd|rp|open>|log",
-			"ucpd peripheral debug and control options");
 #endif
