@@ -25,6 +25,11 @@
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 
+/* Variable to hold the number of typec usb ports. This is static because
+ * at run time, this is reconfigurable based on board id.
+ **/
+static int adlrvp_usb_ports = CONFIG_USB_PD_PORT_MAX_COUNT;
+
 /* battery 2S config */
 extern struct board_batt_params board_battery2S_info[];
 
@@ -391,6 +396,28 @@ static void configure_battery(void)
 		break;
 	}
 }
+
+static void configure_usb_ports(void)
+{
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+	/* For MCHP based M/N boards, the number of
+	 * typec ports is already 2. This config check
+	 * will protect from reconfiguration of number
+	 * of typec ports in MCHP based boards
+	 **/
+#ifndef VARIANT_INTELRVP_EC_MCHP
+		adlrvp_usb_ports = 2;
+#endif
+		break;
+	default:
+		break;
+	}
+}
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
@@ -486,4 +513,12 @@ __override void board_pre_task_i2c_peripheral_init(void)
 
 	/* Configure battery config */
 	configure_battery();
+
+	/* Configure the number of typec usb ports */
+	configure_usb_ports();
+}
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	return adlrvp_usb_ports;
 }
