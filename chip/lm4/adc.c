@@ -205,15 +205,15 @@ DECLARE_IRQ(LM4_IRQ_ADC0_SS3, ss3_interrupt, 2);
 /* Console commands */
 
 #ifdef CONFIG_CMD_ECTEMP
+DECLARE_CONSOLE_COMMAND(ectemp, command_ectemp,
+			NULL,
+			"Print EC temperature");
 static int command_ectemp(int argc, char **argv)
 {
 	int t = adc_read_channel(ADC_CH_EC_TEMP);
 	ccprintf("EC temperature is %d K = %d C\n", t, K_TO_C(t));
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ectemp, command_ectemp,
-			NULL,
-			"Print EC temperature");
 #endif
 
 /*****************************************************************************/
