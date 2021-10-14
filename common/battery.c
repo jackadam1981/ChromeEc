@@ -326,6 +326,8 @@ static void clear_pending_cutoff(void)
 }
 DECLARE_HOOK(HOOK_AC_CHANGE, clear_pending_cutoff, HOOK_PRIO_DEFAULT);
 
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cutoff,
+		EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_battery_cutoff *p;
@@ -350,8 +352,6 @@ static enum ec_status battery_command_cutoff(struct host_cmd_handler_args *args)
 
 	return rv;
 }
-DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cutoff,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static void check_pending_cutoff(void)
 {
@@ -466,6 +466,9 @@ DECLARE_CONSOLE_COMMAND(battparam, console_command_battery_vendor_param,
 			"<param> [value]",
 			"Get or set battery vendor parameters");
 
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_VENDOR_PARAM,
+		     host_command_battery_vendor_param,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_battery_vendor_param(struct host_cmd_handler_args *args)
 {
@@ -488,8 +491,6 @@ host_command_battery_vendor_param(struct host_cmd_handler_args *args)
 	rv = battery_get_vendor_param(p->param, &r->value);
 	return rv;
 }
-DECLARE_HOST_COMMAND(EC_CMD_BATTERY_VENDOR_PARAM,
-		     host_command_battery_vendor_param, EC_VER_MASK(0));
 #endif /* CONFIG_BATTERY_VENDOR_PARAM */
 
 void battery_compensate_params(struct batt_params *batt)
