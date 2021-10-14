@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9800db91_43feb25f",
+        "filename": "board/krabby/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-10-14T08:17:04Z",
+      "side": 1,
+      "message": "Remove this if there\u0027s no bmi accelgyro.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "12a8ff8789407469f2c2933c5dba1523eab7ce59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "198b7591_81682117",
+        "filename": "board/krabby/usbc_config.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1000160
+      },
+      "writtenOn": "2021-10-14T08:17:04Z",
+      "side": 1,
+      "message": "Remove this include.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 31
+      },
+      "revId": "12a8ff8789407469f2c2933c5dba1523eab7ce59",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
