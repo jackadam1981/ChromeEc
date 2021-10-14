@@ -18,6 +18,41 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9db2605b_81eb5d08",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-14T16:22:39Z",
+      "side": 1,
+      "message": "Posted comments to the bug.",
+      "parentUuid": "1df082a9_f6d73dc2",
+      "revId": "fed5538adb204b33369e6471b636b5d87c0baeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c7b9737_ba91da1d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-14T16:22:39Z",
+      "side": 1,
+      "message": "This is going to be a good cleanup. Thanks, Tommy.",
+      "revId": "fed5538adb204b33369e6471b636b5d87c0baeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fc057e63_61254910",
@@ -36,6 +71,29 @@
         "startChar": 0,
         "endLine": 421,
         "endChar": 19
+      },
+      "revId": "fed5538adb204b33369e6471b636b5d87c0baeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "775f6152_6b90d1ea",
+        "filename": "include/battery.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-14T16:22:39Z",
+      "side": 1,
+      "message": "You don\u0027t need this at the moment. Please see comment #4 in the bug.",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 16
       },
       "revId": "fed5538adb204b33369e6471b636b5d87c0baeec",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
