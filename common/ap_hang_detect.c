@@ -159,6 +159,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, hang_detect_shutdown, HOOK_PRIO_DEFAULT);
 /*****************************************************************************/
 /* Host command */
 
+DECLARE_HOST_COMMAND(EC_CMD_HANG_DETECT,
+		     hang_detect_host_command,
+		     EC_VER_MASK(0));
 static enum ec_status
 hang_detect_host_command(struct host_cmd_handler_args *args)
 {
@@ -201,9 +204,6 @@ hang_detect_host_command(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HANG_DETECT,
-		     hang_detect_host_command,
-		     EC_VER_MASK(0));
 
 /*****************************************************************************/
 /* Console command */
