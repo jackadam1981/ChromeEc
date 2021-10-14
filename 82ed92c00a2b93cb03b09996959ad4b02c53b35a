@@ -16,6 +16,23 @@
       "message": "this is just a copy. only adjusted year in header",
       "revId": "82ed92c00a2b93cb03b09996959ad4b02c53b35a",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "211572b0_52303387",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-14T22:39:59Z",
+      "side": 1,
+      "message": "i rebased on top of original script to make it easier to review differences",
+      "revId": "82ed92c00a2b93cb03b09996959ad4b02c53b35a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
