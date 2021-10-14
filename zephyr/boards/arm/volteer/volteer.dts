@@ -199,6 +199,18 @@
 			size = <2>;
 		};
 	};
+	
+	cbi-board-version {
+		compatible = "named-cbi-board-version";
+
+		board_ver_0_0: 0_0 {
+			range = <0 0>;
+		};
+		board_ver_1_10: 1_10 {
+			range = <1 10>;
+		};
+	};
+	
 };
 
 &uart1 {
