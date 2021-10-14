@@ -1582,6 +1582,9 @@ i2c_command_control(struct host_cmd_handler_args *args)
 /* Console commands */
 
 #ifdef CONFIG_CMD_I2C_PROTECT
+DECLARE_CONSOLE_COMMAND(i2cprotect, command_i2cprotect,
+			"[port]",
+			"Protect I2C bus");
 static int command_i2cprotect(int argc, char **argv)
 {
 	if (argc == 1) {
@@ -1613,9 +1616,6 @@ static int command_i2cprotect(int argc, char **argv)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(i2cprotect, command_i2cprotect,
-			"[port]",
-			"Protect I2C bus");
 #endif
 
 #ifdef CONFIG_CMD_I2C_SCAN
@@ -1658,6 +1658,9 @@ scan_bus_exit:
 	ccputs("\n");
 }
 
+DECLARE_CONSOLE_COMMAND(i2cscan, command_scan,
+			"i2cscan [port]",
+			"Scan I2C ports for devices");
 static int command_scan(int argc, char **argv)
 {
 	int port;
@@ -1689,12 +1692,16 @@ static int command_scan(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(i2cscan, command_scan,
-			"i2cscan [port]",
-			"Scan I2C ports for devices");
 #endif
 
 #ifdef CONFIG_CMD_I2C_XFER
+DECLARE_CONSOLE_COMMAND(i2cxfer, command_i2cxfer,
+			"r/r16/rlen/w/w16 port addr offset [value | len]"
+#ifdef CONFIG_CMD_I2C_XFER_RAW
+			"\nraw port addr read_count [bytes_to_write..]"
+#endif /* CONFIG_CMD_I2C_XFER_RAW */
+			,
+			"Read write I2C");
 static int command_i2cxfer(int argc, char **argv)
 {
 	int port;
@@ -1849,13 +1856,6 @@ static int command_i2cxfer(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(i2cxfer, command_i2cxfer,
-			"r/r16/rlen/w/w16 port addr offset [value | len]"
-#ifdef CONFIG_CMD_I2C_XFER_RAW
-			"\nraw port addr read_count [bytes_to_write..]"
-#endif /* CONFIG_CMD_I2C_XFER_RAW */
-			,
-			"Read write I2C");
 #endif
 
 #ifdef CONFIG_CMD_I2C_SPEED
@@ -1869,6 +1869,9 @@ static const char * const i2c_freq_str[] = {
 
 BUILD_ASSERT(ARRAY_SIZE(i2c_freq_str) == I2C_FREQ_COUNT + 1);
 
+DECLARE_CONSOLE_COMMAND(i2cspeed, command_i2c_speed,
+			"port [speed in kHz]",
+			"Get or set I2C port speed");
 static int command_i2c_speed(int argc, char **argv)
 {
 	int port;
@@ -1926,9 +1929,6 @@ static int command_i2c_speed(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND(i2cspeed, command_i2c_speed,
-			"port [speed in kHz]",
-			"Get or set I2C port speed");
 
 #endif /* CONFIG_CMD_I2C_SPEED */
 
@@ -1953,6 +1953,9 @@ static void i2c_test_status(struct i2c_test_results *i2c_test, int test_dev)
 }
 
 #define I2C_STRESS_TEST_DATA_VERIFY_RETRY_COUNT 3
+DECLARE_CONSOLE_COMMAND(i2ctest, command_i2ctest,
+			"i2ctest count|udelay|dev",
+			"I2C stress test");
 static int command_i2ctest(int argc, char **argv)
 {
 	char *e;
@@ -2093,7 +2096,4 @@ static int command_i2ctest(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(i2ctest, command_i2ctest,
-			"i2ctest count|udelay|dev",
-			"I2C stress test");
 #endif /* CONFIG_CMD_I2C_STRESS_TEST */

@@ -103,6 +103,9 @@ DECLARE_HOOK(HOOK_INIT, als_task_init, HOOK_PRIO_ALS_INIT);
 /* Console commands */
 
 #ifdef CONFIG_CMD_ALS
+DECLARE_CONSOLE_COMMAND(als, command_als,
+			NULL,
+			"Print ALS values");
 static int command_als(int argc, char **argv)
 {
 	int i, rv, val;
@@ -121,7 +124,4 @@ static int command_als(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(als, command_als,
-			NULL,
-			"Print ALS values");
 #endif
