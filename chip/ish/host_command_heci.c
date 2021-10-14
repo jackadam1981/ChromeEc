@@ -123,6 +123,8 @@ static void cros_ec_ishtp_subsys_new_msg_received(const heci_handle_t handle,
  */
 #define HECI_CROS_EC_LIMIT_PACKET_SIZE 256
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, heci_get_protocol_info,
+EC_VER_MASK(0));
 /**
  * Get protocol information
  */
@@ -139,8 +141,6 @@ static enum ec_status heci_get_protocol_info(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, heci_get_protocol_info,
-EC_VER_MASK(0));
 
 static int cros_ec_ishtp_subsys_initialize(const heci_handle_t heci_handle)
 {
