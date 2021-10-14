@@ -71,6 +71,8 @@ static void read_rwsig_info(struct ec_response_rwsig_info *r)
 	r->key_is_valid = (rv == EC_SUCCESS);
 }
 
+DECLARE_CONSOLE_COMMAND(rwsiginfo, command_rwsig_info, NULL,
+			"Display rwsig info on console.");
 static int command_rwsig_info(int argc, char **argv)
 {
 	int i;
@@ -90,8 +92,6 @@ static int command_rwsig_info(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(rwsiginfo, command_rwsig_info, NULL,
-			"Display rwsig info on console.");
 
 DECLARE_HOST_COMMAND(EC_CMD_RWSIG_INFO, host_command_rwsig_info,
 		     EC_VER_MASK(EC_VER_RWSIG_INFO));

@@ -1850,6 +1850,8 @@ static int sm5803_ramp_get_current_limit(int chgnum)
 #endif /* CONFIG_CHARGE_RAMP_HW */
 
 #ifdef CONFIG_CMD_CHARGER_DUMP
+DECLARE_CONSOLE_COMMAND(charger_dump, command_sm5803_dump,
+			"charger_dump [chgnum]", "Dumps SM5803 registers");
 static int command_sm5803_dump(int argc, char **argv)
 {
 	int reg;
@@ -1894,8 +1896,6 @@ static int command_sm5803_dump(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(charger_dump, command_sm5803_dump,
-			"charger_dump [chgnum]", "Dumps SM5803 registers");
 #endif /* CONFIG_CMD_CHARGER_DUMP */
 
 const struct charger_drv sm5803_drv = {

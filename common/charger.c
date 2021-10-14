@@ -184,6 +184,9 @@ void print_charger_debug(int chgnum)
 		ccputs("disabled\n");
 }
 
+DECLARE_CONSOLE_COMMAND(charger, command_charger,
+			"[chgnum] [input | current | voltage | dptf] [newval]",
+			"Get or set charger param(s)");
 static int command_charger(int argc, char **argv)
 {
 	int d;
@@ -235,9 +238,6 @@ static int command_charger(int argc, char **argv)
 	}
 }
 
-DECLARE_CONSOLE_COMMAND(charger, command_charger,
-			"[chgnum] [input | current | voltage | dptf] [newval]",
-			"Get or set charger param(s)");
 
 /* Driver wrapper functions */
 

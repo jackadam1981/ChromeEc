@@ -126,6 +126,9 @@ int gt7288_read_ptp_report(struct gt7288_ptp_report *report)
 }
 
 #ifdef CONFIG_CMD_GT7288
+DECLARE_CONSOLE_COMMAND(gt7288_desc, command_gt7288_read_desc,
+			"register",
+			"Read a descriptor on the GT7288");
 static int command_gt7288_read_desc(int argc, char **argv)
 {
 	uint16_t register_id;
@@ -150,10 +153,9 @@ static int command_gt7288_read_desc(int argc, char **argv)
 	ccprintf("\n");
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(gt7288_desc, command_gt7288_read_desc,
-			"register",
-			"Read a descriptor on the GT7288");
 
+DECLARE_CONSOLE_COMMAND(gt7288_repdesc, command_gt7288_read_report_descriptor,
+			"", "Read the report descriptor on the GT7288");
 static int command_gt7288_read_report_descriptor(int argc, char **argv)
 {
 	int i;
@@ -182,9 +184,9 @@ static int command_gt7288_read_report_descriptor(int argc, char **argv)
 	ccprintf("\n");
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(gt7288_repdesc, command_gt7288_read_report_descriptor,
-			"", "Read the report descriptor on the GT7288");
 
+DECLARE_CONSOLE_COMMAND(gt7288_ver, command_gt7288_ver, "",
+			"Read version information from the GT7288");
 static int command_gt7288_ver(int argc, char **argv)
 {
 	struct gt7288_version_info info;
@@ -197,9 +199,9 @@ static int command_gt7288_ver(int argc, char **argv)
 	ccprintf("Version ID: 0x%04X\n", info.version_id);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(gt7288_ver, command_gt7288_ver, "",
-			"Read version information from the GT7288");
 
+DECLARE_CONSOLE_COMMAND(gt7288_rep, command_gt7288_report, "",
+			"Read a report from the GT7288.");
 static int command_gt7288_report(int argc, char **argv)
 {
 	int i;
@@ -222,6 +224,4 @@ static int command_gt7288_report(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(gt7288_rep, command_gt7288_report, "",
-			"Read a report from the GT7288.");
 #endif /* CONFIG_CMD_GT7288 */

@@ -666,6 +666,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, bq25710_chipset_suspend, HOOK_PRIO_DEFAULT);
 #endif
 
 #ifdef CONFIG_CMD_CHARGER_DUMP
+DECLARE_CONSOLE_COMMAND(charger_dump, console_bq25710_dump_regs,
+			"charger_dump <chgnum>",
+			"Dump all charger registers");
 static int console_bq25710_dump_regs(int argc, char **argv)
 {
 	int i;
@@ -718,9 +721,6 @@ static int console_bq25710_dump_regs(int argc, char **argv)
 
 	return 0;
 }
-DECLARE_CONSOLE_COMMAND(charger_dump, console_bq25710_dump_regs,
-			"charger_dump <chgnum>",
-			"Dump all charger registers");
 
 #endif /* CONFIG_CMD_CHARGER_DUMP */
 
