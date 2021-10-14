@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a608b0_34904a59",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T21:12:10Z",
+      "side": 1,
+      "message": "what is the purpose of this variable - it is not used anyhwere",
+      "range": {
+        "startLine": 270,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 23
+      },
+      "revId": "989fa1b3730ac4af3c31195fa2af51b67c7011e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a6552b_db1ea1e1",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T21:12:10Z",
+      "side": 1,
+      "message": "this should be inside the if() in the next line.",
+      "range": {
+        "startLine": 345,
+        "startChar": 2,
+        "endLine": 345,
+        "endChar": 28
+      },
+      "revId": "989fa1b3730ac4af3c31195fa2af51b67c7011e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ded20ddc_bfa0bc7a",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 659,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T21:12:10Z",
+      "side": 1,
+      "message": "here and in other places - should\u0027t this be calling always_memset()?",
+      "range": {
+        "startLine": 659,
+        "startChar": 2,
+        "endLine": 659,
+        "endChar": 8
+      },
+      "revId": "989fa1b3730ac4af3c31195fa2af51b67c7011e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3cba55c6_dd47a2b2",
+        "filename": "board/cr50/dcrypto/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-14T21:12:10Z",
+      "side": 1,
+      "message": "one cflush()  before this block should be enough. Maybe one in the end just in case.",
+      "revId": "989fa1b3730ac4af3c31195fa2af51b67c7011e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
