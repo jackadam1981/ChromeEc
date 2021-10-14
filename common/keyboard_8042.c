@@ -1042,6 +1042,26 @@ test_mockable void keyboard_update_button(enum keyboard_button_type button,
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_KEYBOARD
+
+/* Zephyr only provides these as subcommands*/
+#ifndef CONFIG_ZEPHYR
+DECLARE_CONSOLE_COMMAND(typematic, command_typematic,
+			"[first] [inter]",
+			"Get/set typematic delays");
+DECLARE_CONSOLE_COMMAND(codeset, command_codeset,
+			"[set]",
+			"Get/set keyboard codeset");
+DECLARE_CONSOLE_COMMAND(ctrlram, command_controller_ram,
+			"index [value]",
+			"Get/set keyboard controller RAM");
+DECLARE_CONSOLE_COMMAND(kblog, command_keyboard_log,
+			"[on | off]",
+			"Print or toggle keyboard event log");
+DECLARE_CONSOLE_COMMAND(kbd, command_keyboard,
+			"[on | off]",
+			"Print or toggle keyboard info");
+#endif
+
 static int command_typematic(int argc, char **argv)
 {
 	int i;
@@ -1159,6 +1179,7 @@ static int command_keyboard(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
+
 static int command_8042_internal(int argc, char **argv)
 {
 	int i;
@@ -1202,24 +1223,6 @@ static int command_8042_internal(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-/* Zephyr only provides these as subcommands*/
-#ifndef CONFIG_ZEPHYR
-DECLARE_CONSOLE_COMMAND(typematic, command_typematic,
-			"[first] [inter]",
-			"Get/set typematic delays");
-DECLARE_CONSOLE_COMMAND(codeset, command_codeset,
-			"[set]",
-			"Get/set keyboard codeset");
-DECLARE_CONSOLE_COMMAND(ctrlram, command_controller_ram,
-			"index [value]",
-			"Get/set keyboard controller RAM");
-DECLARE_CONSOLE_COMMAND(kblog, command_keyboard_log,
-			"[on | off]",
-			"Print or toggle keyboard event log");
-DECLARE_CONSOLE_COMMAND(kbd, command_keyboard,
-			"[on | off]",
-			"Print or toggle keyboard info");
-#endif
 
 static int command_8042(int argc, char **argv)
 {
