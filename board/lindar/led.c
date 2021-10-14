@@ -721,6 +721,9 @@ DECLARE_CONSOLE_COMMAND(lightbar, command_lightbar, "[help | on | off | demo]",
 /****************************************************************************/
 /* EC host commands (ectool) for lightbar */
 /****************************************************************************/
+DECLARE_HOST_COMMAND(EC_CMD_LIGHTBAR_CMD,
+		     lpc_cmd_lightbar,
+		     EC_VER_MASK(0));
 static enum ec_status lpc_cmd_lightbar(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_lightbar *in = args->params;
@@ -757,5 +760,3 @@ static enum ec_status lpc_cmd_lightbar(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-
-DECLARE_HOST_COMMAND(EC_CMD_LIGHTBAR_CMD, lpc_cmd_lightbar, EC_VER_MASK(0));
