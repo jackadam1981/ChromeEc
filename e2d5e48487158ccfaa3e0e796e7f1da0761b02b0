@@ -52,6 +52,24 @@
       "parentUuid": "0bde04ab_3520b9ad",
       "revId": "e2d5e48487158ccfaa3e0e796e7f1da0761b02b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a020493_bd59809c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-14T21:32:43Z",
+      "side": 1,
+      "message": "Guybrush appears to just periodically print a watchdog and we don\u0027t get a version banner or anything readable before it (log acquired from c2d2): \n21-10-14 15:30:13.543 ��������������������������������EC! ʿ���Lʙ0�Y�e+�S�9�WP3�m��j�����������������������������������EC! ʿ���Lʙ0�Y�e+�S�9�WP3�m��j���### WATCHDOG PC\u003d0000c241 / LR\u003d0000c159 / pSP\u003d00000000 (task 24) ###\n21-10-14 15:30:15.162 ��������������������������������EC! ʿ���Lʙ0�Y�e+�S�9�WP3�m��j���### WATCHDOG PC\u003d0000c241 / LR\u003d0000c159 / pSP\u003d00000000 (task 24) ###\n21-10-14 15:30:16.794 ��������������������������������EC! ʿ���Lʙ0�Y�e+�S�9�WP3�m��j���### WATCHDOG PC\u003d0000c241 / LR\u003d0000c159 / pSP\u003d00000000 (task 24) ###\n21-10-14 15:30:18.425 ��������������������������������EC! ʿ���Lʙ0�Y�e+�S�9�WP3�m��j���### WATCHDOG PC\u003d0000c241 / LR\u003d0000c159 / pSP\u003d00000000 (task 24) ###\n\nGuybrush smap: \n100801e0 t _data_start\n100801e4 t _data_end\n100801e8 t _data_lma_start\n100801ec T __aeabi_unwind_cpp_pr0\n\n$ arm-none-eabi-objdump -h build/guybrush/RO/ec.RO.elf \n\nbuild/guybrush/RO/ec.RO.elf:     file format elf32-littlearm\n\nSections:\nIdx Name          Size      VMA       LMA       File off  Algn\n  0 .header       00000040  10080000  10080000  00010000  2**0\n                  CONTENTS, ALLOC, LOAD, READONLY, DATA\n  1 .text         00027ce8  10080000  10080040  00020000  2**2\n                  CONTENTS, ALLOC, LOAD, READONLY, CODE\n  2 .rodata       0000b9b8  100a7ce8  100a7d28  00047ce8  2**2\n                  CONTENTS, ALLOC, LOAD, READONLY, DATA\n  3 .data         00000570  200c89b0  100b36e0  000589b0  2**3\n                  CONTENTS, ALLOC, LOAD, DATA\n  4 .bss          000083b0  200c0000  200c0000  00060000  2**3\n                  ALLOC\n  5 .bss.slow     00000600  200c83b0  200c83b0  00060000  2**3\n                  ALLOC\n  6 .debug_info   00121e5b  00000000  00000000  00058f20  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n  7 .debug_abbrev 00016b65  00000000  00000000  0017ad7b  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n  8 .debug_line   0003d55e  00000000  00000000  001918e0  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n  9 .debug_str    00022783  00000000  00000000  001cee3e  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n 10 .debug_loc    000520b1  00000000  00000000  001f15c1  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n 11 .debug_aranges 000000b0  00000000  00000000  00243678  2**3\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n 12 .debug_ranges 0000c2e0  00000000  00000000  00243728  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n 13 .comment      00000023  00000000  00000000  0024fa08  2**0\n                  CONTENTS, READONLY\n 14 .debug_frame  0000a57c  00000000  00000000  0024fa2c  2**2\n                  CONTENTS, READONLY, DEBUGGING, OCTETS",
+      "parentUuid": "f8907b5a_2b9df036",
+      "revId": "e2d5e48487158ccfaa3e0e796e7f1da0761b02b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
