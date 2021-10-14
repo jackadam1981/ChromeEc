@@ -475,7 +475,9 @@ static int kb800x_enter_low_power_mode(const struct usb_mux *me)
 }
 
 #ifdef CONFIG_CMD_RETIMER
-
+DECLARE_CONSOLE_COMMAND(kbxfer, console_command_kb800x_xfer,
+			"<port> <r/w> <reg> | <val>",
+			"Read or write to KB retimer register");
 static int console_command_kb800x_xfer(int argc, char **argv)
 {
 	char rw, *e;
@@ -534,9 +536,6 @@ static int console_command_kb800x_xfer(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(kbxfer, console_command_kb800x_xfer,
-			"<port> <r/w> <reg> | <val>",
-			"Read or write to KB retimer register");
 #endif /* CONFIG_CMD_RETIMER */
 
 const struct usb_mux_driver kb800x_usb_mux_driver = {

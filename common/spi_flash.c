@@ -480,6 +480,9 @@ int spi_flash_set_protect(unsigned int offset, unsigned int bytes)
 	return spi_flash_set_status(sr1, sr2);
 }
 
+DECLARE_CONSOLE_COMMAND(spi_flashinfo, command_spi_flashinfo,
+	NULL,
+	"Print SPI flash info");
 static int command_spi_flashinfo(int argc, char **argv)
 {
 	uint8_t jedec[3];
@@ -506,9 +509,6 @@ static int command_spi_flashinfo(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(spi_flashinfo, command_spi_flashinfo,
-	NULL,
-	"Print SPI flash info");
 
 #ifdef CONFIG_HOSTCMD_FLASH_SPI_INFO
 DECLARE_HOST_COMMAND(EC_CMD_FLASH_SPI_INFO,

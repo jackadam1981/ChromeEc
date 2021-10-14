@@ -157,6 +157,9 @@ void system_hibernate(uint32_t seconds, uint32_t microseconds)
 }
 
 #ifdef CONFIG_PM
+DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
+		"",
+		"Print last idle stats");
 /**
  * Print low power idle statistics
  */
@@ -172,9 +175,6 @@ static int command_idle_stats(int argc, char **argv)
 	ccprintf("Total time on:                       %.6llds\n", ts.val);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
-		"",
-		"Print last idle stats");
 #endif
 
 const char *system_get_chip_vendor(void)
