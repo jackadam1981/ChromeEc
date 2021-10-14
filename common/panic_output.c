@@ -411,6 +411,9 @@ DECLARE_CONSOLE_COMMAND(panicinfo, command_panicinfo, NULL,
 /*****************************************************************************/
 /* Host commands */
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_PANIC_INFO,
+		     host_command_panic_info,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_panic_info(struct host_cmd_handler_args *args)
 {
@@ -432,5 +435,3 @@ host_command_panic_info(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PANIC_INFO, host_command_panic_info,
-		     EC_VER_MASK(0));

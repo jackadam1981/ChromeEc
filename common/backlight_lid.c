@@ -62,6 +62,9 @@ void backlight_interrupt(enum gpio_signal signal)
 }
 #endif
 
+DECLARE_HOST_COMMAND(EC_CMD_SWITCH_ENABLE_BKLIGHT,
+		     switch_command_enable_backlight,
+		     EC_VER_MASK(0));
 /**
  * Host command to toggle backlight.
  *
@@ -77,5 +80,3 @@ switch_command_enable_backlight(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_SWITCH_ENABLE_BKLIGHT,
-		     switch_command_enable_backlight, EC_VER_MASK(0));

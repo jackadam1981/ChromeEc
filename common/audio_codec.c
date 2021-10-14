@@ -98,6 +98,7 @@ static char *strcmd[] = {
 BUILD_ASSERT(ARRAY_SIZE(sub_cmds) == ARRAY_SIZE(strcmd));
 #endif
 
+DECLARE_HOST_COMMAND(EC_CMD_EC_CODEC, host_command, EC_VER_MASK(0));
 static enum ec_status host_command(struct host_cmd_handler_args *args)
 {
 	const struct ec_param_ec_codec *p = args->params;
@@ -111,7 +112,6 @@ static enum ec_status host_command(struct host_cmd_handler_args *args)
 
 	return EC_RES_INVALID_PARAM;
 }
-DECLARE_HOST_COMMAND(EC_CMD_EC_CODEC, host_command, EC_VER_MASK(0));
 
 /*
  * Exported interfaces.
