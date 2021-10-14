@@ -34,6 +34,24 @@
       "parentUuid": "109e8af2_8eada968",
       "revId": "e2d5e48487158ccfaa3e0e796e7f1da0761b02b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8907b5a_2b9df036",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-14T21:21:49Z",
+      "side": 1,
+      "message": "Yes, I have a number of the boards in the TEST line I can try. I\u0027ll grab guybrush next. \n\nOn this commit (e2d5e4848) I see this in the .smap file: \n100a2ca0 R __init_rom_start\n100a2cc0 R ec_fmap\n100a2e60 A __data_lma_start\n200b0000 B __bss_start\n\nAnd here\u0027s that output: \n$ arm-none-eabi-objdump -h build/voxel/RO/ec.RO.elf\n\nbuild/voxel/RO/ec.RO.elf:     file format elf32-littlearm\n\nSections:\nIdx Name          Size      VMA       LMA       File off  Algn\n  0 .header       00000040  10070000  10070000  00010000  2**0\n                  CONTENTS, ALLOC, LOAD, READONLY, DATA\n  1 .text         00027f10  10070000  10070040  00020000  2**2\n                  CONTENTS, ALLOC, LOAD, READONLY, CODE\n  2 .rodata       0000af10  10097f10  10097f50  00047f10  2**2\n                  CONTENTS, ALLOC, LOAD, READONLY, DATA\n  3 .data         00000538  200b8368  100a2e60  00058368  2**3\n                  CONTENTS, ALLOC, LOAD, DATA\n  4 .bss          00008050  200b0000  200b0000  00060000  2**3\n                  ALLOC\n  5 .bss.slow     00000318  200b8050  200b8050  00060000  2**3\n                  ALLOC\n  6 .debug_info   00123b32  00000000  00000000  000588a0  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n  7 .debug_abbrev 000175b4  00000000  00000000  0017c3d2  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n  8 .debug_line   0003e476  00000000  00000000  00193986  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n  9 .debug_str    00022847  00000000  00000000  001d1dfc  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n 10 .debug_loc    00050f17  00000000  00000000  001f4643  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n 11 .debug_aranges 000000a8  00000000  00000000  00245560  2**3\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n 12 .debug_ranges 0000c188  00000000  00000000  00245608  2**0\n                  CONTENTS, READONLY, DEBUGGING, OCTETS\n 13 .comment      00000023  00000000  00000000  00251790  2**0\n                  CONTENTS, READONLY\n 14 .debug_frame  0000a3ac  00000000  00000000  002517b4  2**2\n                  CONTENTS, READONLY, DEBUGGING, OCTETS",
+      "parentUuid": "0bde04ab_3520b9ad",
+      "revId": "e2d5e48487158ccfaa3e0e796e7f1da0761b02b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
