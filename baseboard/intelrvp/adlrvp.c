@@ -584,6 +584,54 @@ static void configure_ioex_ports(void)
 		break;
 	}
 }
+
+static void configure_i2c_ports(void)
+{
+	int adlrvp_usbc_ports;
+
+	adlrvp_usbc_ports = usb_pd_get_port_count();
+
+	/*
+	 * For ADL, the number of I2C ports is based on
+	 * typec ports and other i2c ports used.
+	 * For MCHP based, there is only 1 extra i2c port
+	 * used, other than typec based ports, while other
+	 * ITE/NPCX based ADL RVPs are using 2 extra i2c
+	 * ports, other than typec based ports.
+	 * **/
+#ifndef VARIANT_INTELRVP_EC_MCHP
+	i2c_set_port_count(adlrvp_usbc_ports + 2);
+#else
+	i2c_set_port_count(adlrvp_usbc_ports + 1);
+#endif /* VARIANT_INTELRVP_EC_MCHP */
+
+
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+	/* I2C Lines must be reconfigured as GPIO INPUTS */
+#if defined(HAS_TASK_PD_C2)
+	gpio_config_pin(MODULE_I2C, GPIO_USBC_TCPC_I2C_DATA_P1, 0);
+	gpio_config_pin(MODULE_I2C, GPIO_USBC_TCPC_I2C_CLK_P1, 0);
+	gpio_set_flags(GPIO_USBC_TCPC_I2C_CLK_P1, GPIO_INPUT|GPIO_PULL_DOWN);
+	gpio_set_flags(GPIO_USBC_TCPC_I2C_DATA_P1, GPIO_INPUT|GPIO_PULL_DOWN);
+#endif
+
+#if defined(HAS_TASK_PD_C3)
+	gpio_config_pin(MODULE_I2C, GPIO_USBC_TCPC_I2C_CLK_P3, 0);
+	gpio_config_pin(MODULE_I2C, GPIO_USBC_TCPC_I2C_DATA_P3, 0);
+	gpio_set_flags(GPIO_USBC_TCPC_I2C_DATA_P3, GPIO_INPUT|GPIO_PULL_DOWN);
+	gpio_set_flags(GPIO_USBC_TCPC_I2C_CLK_P3, GPIO_INPUT|GPIO_PULL_DOWN);
+#endif
+		break;
+	default:
+		break;
+	}
+}
+
 __override void board_pre_task_i2c_peripheral_init(void)
 {
 	/* Initialized IOEX-0 to access IOEX-GPIOs needed pre-task */
@@ -606,4 +654,7 @@ __override void board_pre_task_i2c_peripheral_init(void)
 
 	/* Configure ioex ports based on the board */
 	configure_ioex_ports();
+
+	/* Configure i2c ports */
+	configure_i2c_ports();
 }

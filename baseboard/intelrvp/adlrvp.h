@@ -165,6 +165,9 @@
 /* Config to indicate battery type doesn't auto detect */
 #define CONFIG_BATTERY_TYPE_NO_AUTO_DETECT
 
+/* Config to get/set i2c port count at run time */
+#define CONFIG_I2C_PORT_COUNT_RUNTIME
+
 #ifndef __ASSEMBLER__
 
 enum adlrvp_charge_ports {
