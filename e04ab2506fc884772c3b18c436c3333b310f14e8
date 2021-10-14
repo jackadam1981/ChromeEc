@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ed52b9a_3af426b8",
+        "filename": "common/led_pwm.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-14T14:13:22Z",
+      "side": 1,
+      "message": "Don\u0027t think we can submit temporary workaround to the common code base. Can you keep this off-tree or sort out the dependency first?",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 7
+      },
+      "revId": "e04ab2506fc884772c3b18c436c3333b310f14e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbfd7c21_95589615",
+        "filename": "zephyr/projects/brya/brya/CMakeLists.txt",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-14T14:13:22Z",
+      "side": 1,
+      "message": "nit: space after #",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 15,
+        "endChar": 2
+      },
+      "revId": "e04ab2506fc884772c3b18c436c3333b310f14e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0133c4_bfb72fdc",
+        "filename": "zephyr/projects/brya/brya/include/pwm_map.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-14T14:13:22Z",
+      "side": 1,
+      "message": "these should not be needed anymore (will clean them up for volteer as well)",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "e04ab2506fc884772c3b18c436c3333b310f14e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d82841f_9834d90f",
+        "filename": "zephyr/projects/brya/brya/include/pwm_map.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-14T14:13:22Z",
+      "side": 1,
+      "message": "think this is not needed either (I\u0027ll clean it from existing files)",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 34
+      },
+      "revId": "e04ab2506fc884772c3b18c436c3333b310f14e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0115cb09_e0da37b4",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-14T14:13:22Z",
+      "side": 1,
+      "message": "does this belong to this patch?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 17
+      },
+      "revId": "e04ab2506fc884772c3b18c436c3333b310f14e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57e7cc37_6a27c538",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-14T14:13:22Z",
+      "side": 1,
+      "message": "nit: add an empty line before this one",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 5
+      },
+      "revId": "e04ab2506fc884772c3b18c436c3333b310f14e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0acf84fe_e4609d8f",
+        "filename": "zephyr/projects/brya/brya/pwm.dts",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1478788
+      },
+      "writtenOn": "2021-10-14T14:13:22Z",
+      "side": 1,
+      "message": "nit: I think these should be sorted by label/node label rather than pwm entry (led1... led2...)",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 6
+      },
+      "revId": "e04ab2506fc884772c3b18c436c3333b310f14e8",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
