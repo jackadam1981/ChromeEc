@@ -532,3 +532,11 @@ __overridable int board_get_dedicated_charge_port(void)
 {
 	return adlrvp_usb_ports;
 }
+
+__override int board_get_ioex_port_count(void)
+{
+	if (adlrvp_usb_ports > 2)
+		return CONFIG_IO_EXPANDER_PORT_COUNT;
+	else
+		return (CONFIG_IO_EXPANDER_PORT_COUNT -2);
+}
