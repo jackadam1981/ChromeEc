@@ -265,6 +265,8 @@ DECLARE_HOOK(HOOK_TICK, update_leds, HOOK_PRIO_DEFAULT);
 #endif /* CONFIG_LED_PWM_TASK_DISABLED */
 
 #ifdef CONFIG_CMD_LEDTEST
+DECLARE_CONSOLE_COMMAND(ledtest, command_ledtest,
+			"<pwm led idx> <enable|disable> [color|off]", "");
 static int command_ledtest(int argc, char **argv)
 {
 	int enable;
@@ -312,6 +314,4 @@ static int command_ledtest(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ledtest, command_ledtest,
-			"<pwm led idx> <enable|disable> [color|off]", "");
 #endif /* defined(CONFIG_CMD_LEDTEST) */

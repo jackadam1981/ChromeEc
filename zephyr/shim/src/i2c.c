@@ -123,6 +123,8 @@ int i2c_get_physical_port(int enum_port)
 }
 
 #ifdef CONFIG_PLATFORM_EC_CONSOLE_CMD_I2C_PORTMAP
+DECLARE_CONSOLE_COMMAND(i2c_portmap, command_i2c_portmap, NULL,
+			"Show I2C port mapping");
 static int command_i2c_portmap(int argc, char **argv)
 {
 	int i;
@@ -138,8 +140,6 @@ static int command_i2c_portmap(int argc, char **argv)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(i2c_portmap, command_i2c_portmap, NULL,
-			"Show I2C port mapping");
 #endif /* CONFIG_PLATFORM_EC_CONSOLE_CMD_I2C_PORTMAP */
 
 int chip_i2c_set_freq(int port, enum i2c_freq freq)

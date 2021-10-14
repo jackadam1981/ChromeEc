@@ -459,6 +459,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clear_events_copy_b, HOOK_PRIO_DEFAULT);
 
 /*****************************************************************************/
 /* Console commands */
+DECLARE_CONSOLE_COMMAND(hostevent, command_host_event,
+			"[set | clear | clearb | smi | sci | wake | always_report] [mask]",
+			"Print / set host event state");
 static int command_host_event(int argc, char **argv)
 {
 	/* Handle sub-commands */
@@ -505,10 +508,6 @@ static int command_host_event(int argc, char **argv)
 #endif
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(
-	hostevent, command_host_event,
-	"[set | clear | clearb | smi | sci | wake | always_report] [mask]",
-	"Print / set host event state");
 
 /*****************************************************************************/
 /* Host commands */

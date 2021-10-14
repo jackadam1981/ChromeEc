@@ -133,27 +133,33 @@ void enable_lid_detect(bool enable)
 	}
 }
 
+DECLARE_CONSOLE_COMMAND(lidopen, command_lidopen,
+			NULL,
+			"Simulate lid open");
 static int command_lidopen(int argc, char **argv)
 {
 	lid_switch_open();
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(lidopen, command_lidopen, NULL, "Simulate lid open");
 
+DECLARE_CONSOLE_COMMAND(lidclose, command_lidclose,
+			NULL,
+			"Simulate lid close");
 static int command_lidclose(int argc, char **argv)
 {
 	lid_switch_close();
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(lidclose, command_lidclose, NULL, "Simulate lid close");
 
+DECLARE_CONSOLE_COMMAND(lidstate, command_lidstate,
+			NULL,
+			"Get state of lid");
 static int command_lidstate(int argc, char **argv)
 {
 	ccprintf("lid state: %s\n", debounced_lid_open ? "open" : "closed");
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(lidstate, command_lidstate, NULL, "Get state of lid");
 
 /**
  * Host command to enable/disable lid opened.

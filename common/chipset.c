@@ -24,6 +24,9 @@
 /* Console commands */
 
 #ifdef CONFIG_CMD_POWER_AP
+DECLARE_CONSOLE_COMMAND(apreset, command_apreset,
+			NULL,
+			"Issue AP reset");
 static int command_apreset(int argc, char **argv)
 {
 	/* Force the chipset to reset */
@@ -31,16 +34,15 @@ static int command_apreset(int argc, char **argv)
 	chipset_reset(CHIPSET_RESET_CONSOLE_CMD);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(apreset, command_apreset, NULL, "Issue AP reset");
 
+DECLARE_CONSOLE_COMMAND(apshutdown, command_apshutdown,
+			NULL,
+			"Force AP shutdown");
 static int command_apshutdown(int argc, char **argv)
 {
 	chipset_force_shutdown(CHIPSET_SHUTDOWN_CONSOLE_CMD);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(apshutdown, command_apshutdown, NULL,
-			"Force AP shutdown");
-
 #endif
 
 #ifdef CONFIG_HOSTCMD_AP_RESET

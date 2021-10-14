@@ -108,6 +108,9 @@ void button_event(enum gpio_signal signal)
 	CPRINTS("VBUS %d", vbus_present);
 }
 
+DECLARE_CONSOLE_COMMAND(vbus, command_vbus_toggle,
+			"",
+			"Toggle VBUS detected");
 static int command_vbus_toggle(int argc, char **argv)
 {
 	vbus_present = !vbus_present;
@@ -115,7 +118,6 @@ static int command_vbus_toggle(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(vbus, command_vbus_toggle, "", "Toggle VBUS detected");
 
 int pd_snk_is_vbus_provided(int port)
 {
