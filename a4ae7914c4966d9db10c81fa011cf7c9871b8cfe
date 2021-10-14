@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19db2615_3b6c45e7",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-14T01:43:45Z",
+      "side": 1,
+      "message": "These should go into a struct, you can create the struct in your test (on the stack) and pass it as the void *data to the intercept function.",
+      "range": {
+        "startLine": 339,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 0
+      },
+      "revId": "a4ae7914c4966d9db10c81fa011cf7c9871b8cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40681c48_bad1473d",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-14T01:43:45Z",
+      "side": 1,
+      "message": "These will be removed once you\u0027ve replaced with a struct",
+      "range": {
+        "startLine": 402,
+        "startChar": 1,
+        "endLine": 403,
+        "endChar": 22
+      },
+      "revId": "a4ae7914c4966d9db10c81fa011cf7c9871b8cfe",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
