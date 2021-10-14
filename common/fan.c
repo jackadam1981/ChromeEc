@@ -347,6 +347,9 @@ void dptf_set_fan_duty_target(int pct)
 /*****************************************************************************/
 /* Host commands */
 
+DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_FAN_TARGET_RPM,
+		     hc_pwm_get_fan_target_rpm,
+		     EC_VER_MASK(0));
 static enum ec_status
 hc_pwm_get_fan_target_rpm(struct host_cmd_handler_args *args)
 {
@@ -361,9 +364,10 @@ hc_pwm_get_fan_target_rpm(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_FAN_TARGET_RPM, hc_pwm_get_fan_target_rpm,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_FAN_TARGET_RPM,
+		     hc_pwm_set_fan_target_rpm,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status
 hc_pwm_set_fan_target_rpm(struct host_cmd_handler_args *args)
 {
@@ -397,9 +401,10 @@ hc_pwm_set_fan_target_rpm(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_FAN_TARGET_RPM, hc_pwm_set_fan_target_rpm,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
+DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_FAN_DUTY,
+		     hc_pwm_set_fan_duty,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status hc_pwm_set_fan_duty(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pwm_set_fan_duty_v1 *p_v1 = args->params;
@@ -421,9 +426,10 @@ static enum ec_status hc_pwm_set_fan_duty(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_FAN_DUTY, hc_pwm_set_fan_duty,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
+DECLARE_HOST_COMMAND(EC_CMD_THERMAL_AUTO_FAN_CTRL,
+		     hc_thermal_auto_fan_ctrl,
+		     EC_VER_MASK(0)|EC_VER_MASK(1));
 static enum ec_status
 hc_thermal_auto_fan_ctrl(struct host_cmd_handler_args *args)
 {
@@ -445,8 +451,7 @@ hc_thermal_auto_fan_ctrl(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_THERMAL_AUTO_FAN_CTRL, hc_thermal_auto_fan_ctrl,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
+
 
 /*****************************************************************************/
 /* Hooks */

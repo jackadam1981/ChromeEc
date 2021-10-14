@@ -185,6 +185,9 @@ DECLARE_CONSOLE_COMMAND(usbchargemode, command_set_mode,
 /*****************************************************************************/
 /* Host commands */
 
+DECLARE_HOST_COMMAND(EC_CMD_USB_CHARGE_SET_MODE,
+		     usb_charge_command_set_mode,
+		     EC_VER_MASK(0));
 static enum ec_status
 usb_charge_command_set_mode(struct host_cmd_handler_args *args)
 {
@@ -196,8 +199,6 @@ usb_charge_command_set_mode(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_CHARGE_SET_MODE, usb_charge_command_set_mode,
-		     EC_VER_MASK(0));
 
 /*****************************************************************************/
 /* Hooks */

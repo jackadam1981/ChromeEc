@@ -331,6 +331,8 @@ static void ipi_hostcmd_handler(int32_t id, void *buf, uint32_t len)
 }
 DECLARE_IPI(IPI_HOST_COMMAND, ipi_hostcmd_handler, 0);
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, ipi_get_protocol_info,
+		     EC_VER_MASK(0));
 /*
  * Get protocol information
  */
@@ -347,8 +349,6 @@ static enum ec_status ipi_get_protocol_info(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, ipi_get_protocol_info,
-		     EC_VER_MASK(0));
 #endif
 
 static void ipi_enable_ipc0_deferred(void)
