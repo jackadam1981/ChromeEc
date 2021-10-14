@@ -621,6 +621,9 @@ DECLARE_CONSOLE_COMMAND(battmfgacc, command_batt_mfg_access_read,
 /* Smart battery pass-through
  */
 #ifdef CONFIG_SB_PASSTHROUGH
+DECLARE_HOST_COMMAND(EC_CMD_SB_READ_WORD,
+		     host_command_sb_read_word,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_sb_read_word(struct host_cmd_handler_args *args)
 {
@@ -640,9 +643,10 @@ host_command_sb_read_word(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_SB_READ_WORD, host_command_sb_read_word,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_SB_WRITE_WORD,
+		     host_command_sb_write_word,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_sb_write_word(struct host_cmd_handler_args *args)
 {
@@ -657,9 +661,10 @@ host_command_sb_write_word(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_SB_WRITE_WORD, host_command_sb_write_word,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_SB_READ_BLOCK,
+		     host_command_sb_read_block,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_sb_read_block(struct host_cmd_handler_args *args)
 {
@@ -678,17 +683,16 @@ host_command_sb_read_block(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_SB_READ_BLOCK, host_command_sb_read_block,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_SB_WRITE_BLOCK,
+		     host_command_sb_write_block,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_sb_write_block(struct host_cmd_handler_args *args)
 {
 	/* Not implemented */
 	return EC_RES_INVALID_COMMAND;
 }
-DECLARE_HOST_COMMAND(EC_CMD_SB_WRITE_BLOCK, host_command_sb_write_block,
-		     EC_VER_MASK(0));
 #endif
 
 #ifdef CONFIG_CMD_I2C_STRESS_TEST_BATTERY

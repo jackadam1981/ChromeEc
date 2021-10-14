@@ -384,9 +384,14 @@ static const struct cros_shi_it8xxx2_cfg cros_shi_cfg = {
 	CONFIG_PLATFORM_EC_GPIO_INIT_PRIORITY
 #error "CROS_SHI must initialize after the GPIOs initialization"
 #endif
-DEVICE_DT_INST_DEFINE(0, cros_shi_ite_init, NULL, NULL, &cros_shi_cfg,
-		      POST_KERNEL, CONFIG_CROS_SHI_IT8XXX2_INIT_PRIORITY, NULL);
+DEVICE_DT_INST_DEFINE(0, cros_shi_ite_init, NULL,
+		      NULL, &cros_shi_cfg, POST_KERNEL,
+		      CONFIG_CROS_SHI_IT8XXX2_INIT_PRIORITY,
+		      NULL);
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
+		     spi_get_protocol_info,
+		     EC_VER_MASK(0));
 /* Get protocol information */
 enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args)
 {
@@ -402,5 +407,3 @@ enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args)
 
 	return EC_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, spi_get_protocol_info,
-		     EC_VER_MASK(0));
