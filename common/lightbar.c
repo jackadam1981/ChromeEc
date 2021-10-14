@@ -1699,6 +1699,9 @@ DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, lightbar_shutdown, HOOK_PRIO_DEFAULT);
 /* Host commands via LPC bus */
 /****************************************************************************/
 
+DECLARE_HOST_COMMAND(EC_CMD_LIGHTBAR_CMD,
+		     lpc_cmd_lightbar,
+		     EC_VER_MASK(0));
 static enum ec_status lpc_cmd_lightbar(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_lightbar *in = args->params;
@@ -1884,9 +1887,6 @@ static enum ec_status lpc_cmd_lightbar(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_LIGHTBAR_CMD,
-		     lpc_cmd_lightbar,
-		     EC_VER_MASK(0));
 
 /****************************************************************************/
 /* EC console commands */
