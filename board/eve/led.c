@@ -632,6 +632,9 @@ void led_task(void *u)
 
 /******************************************************************/
 /* Console commands */
+DECLARE_CONSOLE_COMMAND(led, command_led,
+			"[debug|red|green|blue|white|amber|off <0|1>]",
+			"Change LED color");
 static int command_led(int argc, char **argv)
 {
 	int side = LED_BOTH;
@@ -670,6 +673,3 @@ static int command_led(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(led, command_led,
-			"[debug|red|green|blue|white|amber|off <0|1>]",
-			"Change LED color");

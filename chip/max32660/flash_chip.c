@@ -301,6 +301,8 @@ int crec_flash_pre_init(void)
 /*****************************************************************************/
 /* Test Commands */
 
+DECLARE_CONSOLE_COMMAND(flashtest1, command_flash_test1, "flashtest1",
+			"Flash chip routine tests");
 /*
  * Read, Write, and Erase a page of flash memory using chip routines
  * NOTE: This is a DESTRUCTIVE test for the range of flash pages tested
@@ -398,5 +400,3 @@ static int command_flash_test1(int argc, char **argv)
 	CPRINTS("done command_flash_test1.");
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(flashtest1, command_flash_test1, "flashtest1",
-			"Flash chip routine tests");

@@ -353,6 +353,8 @@ static void __keep clock_fast_wakeup_irq(void)
 }
 
 /* Console command */
+DECLARE_CONSOLE_COMMAND(ulposc, command_ulposc, "[calibrate]",
+			"Calibrate ULPOSC frequency");
 static int command_ulposc(int argc, char *argv[])
 {
 	if (argc > 1 && !strncmp(argv[1], "cal", 3)) {
@@ -368,5 +370,3 @@ static int command_ulposc(int argc, char *argv[])
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ulposc, command_ulposc, "[calibrate]",
-			"Calibrate ULPOSC frequency");

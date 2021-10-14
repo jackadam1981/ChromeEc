@@ -122,6 +122,9 @@ static void ina2xx_dump(uint8_t idx)
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(ina, command_ina,
+			"<index> [config|calib|mask|alert <val>]",
+			"INA2XX power/current sensing");
 static int command_ina(int argc, char **argv)
 {
 	char *e;
@@ -160,7 +163,4 @@ static int command_ina(int argc, char **argv)
 
 	return EC_ERROR_INVAL;
 }
-DECLARE_CONSOLE_COMMAND(ina, command_ina,
-			"<index> [config|calib|mask|alert <val>]",
-			"INA2XX power/current sensing");
 #endif
