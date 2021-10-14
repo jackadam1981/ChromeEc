@@ -25,6 +25,9 @@
 #define CPRINTS(format, args...) cprints(CC_COMMAND, format, ## args)
 #define CPRINTF(format, args...) cprintf(CC_COMMAND, format, ## args)
 
+/* Variable to hold the number of typec usb ports based on board type */
+static uint8_t adlrvp_usbc_ports;
+
 /* battery 2S config */
 extern struct board_batt_params board_battery2S_info[];
 
@@ -391,6 +394,22 @@ static void configure_battery(void)
 		break;
 	}
 }
+
+static void configure_usbc_ports(void)
+{
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+		adlrvp_usbc_ports = 2;
+		break;
+	default:
+		adlrvp_usbc_ports = CONFIG_USB_PD_PORT_MAX_COUNT;
+		break;
+	}
+}
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
@@ -486,4 +505,12 @@ __override void board_pre_task_i2c_peripheral_init(void)
 
 	/* Configure battery config */
 	configure_battery();
+
+	/* Configure the number of typec usb ports */
+	configure_usbc_ports();
+}
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	return adlrvp_usbc_ports;
 }
