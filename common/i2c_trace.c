@@ -153,6 +153,11 @@ static int command_i2ctrace_enable(int port, int addr_lo, int addr_hi)
 	return EC_ERROR_MEMORY_ALLOCATION;
 }
 
+DECLARE_CONSOLE_COMMAND(i2ctrace,
+			command_i2ctrace,
+			"[list | disable <id> | enable <port> <address> | "
+			"enable <port> <address-low> <address-high>]",
+			"Trace I2C transactions");
 static int command_i2ctrace(int argc, char **argv)
 {
 	int id_or_port;
@@ -197,7 +202,3 @@ static int command_i2ctrace(int argc, char **argv)
 
 	return EC_ERROR_PARAM1;
 }
-DECLARE_CONSOLE_COMMAND(i2ctrace, command_i2ctrace,
-			"[list | disable <id> | enable <port> <address> | "
-			"enable <port> <address-low> <address-high>]",
-			"Trace I2C transactions");

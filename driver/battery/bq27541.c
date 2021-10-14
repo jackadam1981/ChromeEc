@@ -389,6 +389,9 @@ enum battery_disconnect_state battery_get_disconnect_state(void)
 }
 #endif /* CONFIG_BATTERY_REVIVE_DISCONNECT */
 
+DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
+			"percent (-1 = use real level)",
+			"Set fake battery level");
 static int command_battfake(int argc, char **argv)
 {
 	char *e;
@@ -407,9 +410,6 @@ static int command_battfake(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(battfake, command_battfake,
-			"percent (-1 = use real level)",
-			"Set fake battery level");
 
 #ifdef CONFIG_CMD_PWR_AVG
 int battery_get_avg_current(void)

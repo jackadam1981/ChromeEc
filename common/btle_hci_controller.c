@@ -431,6 +431,9 @@ static uint8_t hci_buf[200];
 #define MAX_BLE_HCI_PARAMS 8
 static uint32_t param[MAX_BLE_HCI_PARAMS];
 
+DECLARE_CONSOLE_COMMAND(ble_hci_cmd, command_ble_hci_cmd,
+			"opcode len uint32 uint32 uint32... (little endian)",
+			"Send an hci command of length len");
 static int command_ble_hci_cmd(int argc, char **argv)
 {
 	static struct hciCmdHdr header;
@@ -471,10 +474,10 @@ static int command_ble_hci_cmd(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ble_hci_cmd, command_ble_hci_cmd,
-			"opcode len uint32 uint32 uint32... (little endian)",
-			"Send an hci command of length len");
 
+DECLARE_CONSOLE_COMMAND(hcitool, command_hcitool,
+			"cmd ogf ocf b0 b1 b2 b3... or lcmd opcode len uint32.. (little endian)",
+			"Send an hci command of length len");
 static int command_hcitool(int argc, char **argv)
 {
 	static struct hciCmdHdr header;
@@ -511,11 +514,10 @@ static int command_hcitool(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(
-	hcitool, command_hcitool,
-	"cmd ogf ocf b0 b1 b2 b3... or lcmd opcode len uint32.. (little endian)",
-	"Send an hci command of length len");
 
+DECLARE_CONSOLE_COMMAND(ble_hci_acl, command_ble_hci_acl,
+			"hdr len uint32 uint32 uint32... (little endian)",
+			"Send hci acl data of length len");
 static int command_ble_hci_acl(int argc, char **argv)
 {
 	static struct hciAclHdr header;
@@ -556,10 +558,10 @@ static int command_ble_hci_acl(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ble_hci_acl, command_ble_hci_acl,
-			"hdr len uint32 uint32 uint32... (little endian)",
-			"Send hci acl data of length len");
 
+DECLARE_CONSOLE_COMMAND(ble_hci_adv, command_ble_hci_adv,
+			"adv [params=0] [scan_rsp=0]",
+			"Use pre-defined parameters to start advertising");
 static int command_ble_hci_adv(int argc, char **argv)
 {
 	static struct hciCmdHdr header;
@@ -625,8 +627,5 @@ static int command_ble_hci_adv(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ble_hci_adv, command_ble_hci_adv,
-			"adv [params=0] [scan_rsp=0]",
-			"Use pre-defined parameters to start advertising");
 
 #endif /* CONFIG_BLUETOOTH_HCI_DEBUG */

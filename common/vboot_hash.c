@@ -328,6 +328,9 @@ static int get_offset(int offset)
 /****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_HASH
+DECLARE_CONSOLE_COMMAND(hash, command_hash,
+			"[abort | ro | rw] | [<offset> <size> [<nonce>]]",
+			"Request hash recomputation");
 static int command_hash(int argc, char **argv)
 {
 	uint32_t offset =
@@ -390,9 +393,6 @@ static int command_hash(int argc, char **argv)
 		return vboot_hash_start(offset, size, NULL, 0,
 					VBOOT_HASH_DEFERRED);
 }
-DECLARE_CONSOLE_COMMAND(hash, command_hash,
-			"[abort | ro | rw] | [<offset> <size> [<nonce>]]",
-			"Request hash recomputation");
 #endif /* CONFIG_CMD_HASH */
 /****************************************************************************/
 /* Host commands */

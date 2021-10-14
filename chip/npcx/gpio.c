@@ -665,6 +665,9 @@ void gpio_interrupt(struct npcx_wui wui_int)
 
 #undef GPIO_IRQ_FUNC
 #if DEBUG_GPIO && defined(CONFIG_LOW_POWER_IDLE)
+DECLARE_CONSOLE_COMMAND(gpiodisable, command_gpiodisable,
+		"info/list/next/<num> on|off",
+		"Disable GPIO input buffer to investigate power consumption");
 /*
  * Command used to disable input buffer of gpios one by one to
  * investigate power consumption
@@ -757,7 +760,4 @@ static int command_gpiodisable(int argc, char **argv)
 	}
 	return EC_ERROR_INVAL;
 }
-DECLARE_CONSOLE_COMMAND(
-	gpiodisable, command_gpiodisable, "info/list/next/<num> on|off",
-	"Disable GPIO input buffer to investigate power consumption");
 #endif
