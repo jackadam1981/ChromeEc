@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d955b8a_8f3a126d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-14T21:45:51Z",
+      "side": 1,
+      "message": "LGTM modulo nits",
+      "revId": "4fb374b56fcbd233a6cfd9b7cc58c59c3ee031f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e35ea283_482b5351",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-14T21:45:51Z",
+      "side": 1,
+      "message": "Nit: I had to look at the implementation to see the difference between the rev 1 and rev 2 tests. A comment noting that the correct register values differ only in Rp vs Rd might be helpful.",
+      "revId": "4fb374b56fcbd233a6cfd9b7cc58c59c3ee031f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c74b941_33c671cf",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-14T21:45:51Z",
+      "side": 1,
+      "message": "Nit: We usually put each variable declaration on its own line. I\u0027m not sure if Zephyr style has an opinion about this.",
+      "revId": "4fb374b56fcbd233a6cfd9b7cc58c59c3ee031f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
