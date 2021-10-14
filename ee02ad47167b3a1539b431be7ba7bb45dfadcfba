@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "786f2336_13de7917",
+        "filename": "baseboard/intelrvp/adlrvp.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-14T20:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b674ab47_08ebfbd3",
+      "range": {
+        "startLine": 389,
+        "startChar": 12,
+        "endLine": 389,
+        "endChar": 36
+      },
+      "revId": "ee02ad47167b3a1539b431be7ba7bb45dfadcfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0f1606df_f0be4d55",
@@ -41,6 +65,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7afdb693_6bc3c750",
+        "filename": "baseboard/intelrvp/adlrvp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-14T20:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f1606df_f0be4d55",
+      "revId": "ee02ad47167b3a1539b431be7ba7bb45dfadcfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd954546_de8e0178",
@@ -54,6 +96,42 @@
       "writtenOn": "2021-10-12T00:52:31Z",
       "side": 1,
       "message": "pls publish a separate CL for this change, we need to add this config in ./util/config_allowed.txt",
+      "revId": "ee02ad47167b3a1539b431be7ba7bb45dfadcfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "96b56600_8ba17055",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-14T20:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd954546_de8e0178",
+      "revId": "ee02ad47167b3a1539b431be7ba7bb45dfadcfba",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5228b4_7aaf74bf",
+        "filename": "include/battery_fuel_gauge.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1365384
+      },
+      "writtenOn": "2021-10-14T20:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd954546_de8e0178",
       "revId": "ee02ad47167b3a1539b431be7ba7bb45dfadcfba",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
