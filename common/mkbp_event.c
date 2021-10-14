@@ -394,6 +394,9 @@ static const struct mkbp_event_source *find_mkbp_event_source(uint8_t type)
 #endif
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_NEXT_EVENT,
+		     mkbp_get_next_event,
+		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 {
 	static int last;
@@ -456,12 +459,12 @@ static enum ec_status mkbp_get_next_event(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_NEXT_EVENT,
-		     mkbp_get_next_event,
-		     EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2));
 
 #ifdef CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK
 #ifdef CONFIG_MKBP_USE_HOST_EVENT
+DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_WAKE_MASK,
+		     mkbp_get_host_event_wake_mask,
+		     EC_VER_MASK(0));
 static enum ec_status
 mkbp_get_host_event_wake_mask(struct host_cmd_handler_args *args)
 {
@@ -472,14 +475,14 @@ mkbp_get_host_event_wake_mask(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HOST_EVENT_GET_WAKE_MASK,
-		     mkbp_get_host_event_wake_mask,
-		     EC_VER_MASK(0));
 #endif /* CONFIG_MKBP_USE_HOST_EVENT */
 #endif /* CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK */
 
 #if defined(CONFIG_MKBP_EVENT_WAKEUP_MASK) ||	\
 	defined(CONFIG_MKBP_HOST_EVENT_WAKEUP_MASK)
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_WAKE_MASK,
+		     hc_mkbp_wake_mask,
+		     EC_VER_MASK(0));
 static enum ec_status hc_mkbp_wake_mask(struct host_cmd_handler_args *args)
 {
 	struct ec_response_mkbp_event_wake_mask *r = args->response;
@@ -543,9 +546,6 @@ static enum ec_status hc_mkbp_wake_mask(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_MKBP_WAKE_MASK,
-		     hc_mkbp_wake_mask,
-		     EC_VER_MASK(0));
 
 static int command_mkbp_wake_mask(int argc, char **argv)
 {

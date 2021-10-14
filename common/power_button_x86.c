@@ -518,6 +518,8 @@ static void powerbtn_x86_changed(void)
 }
 DECLARE_HOOK(HOOK_POWER_BUTTON_CHANGE, powerbtn_x86_changed, HOOK_PRIO_DEFAULT);
 
+DECLARE_HOST_COMMAND(EC_CMD_CONFIG_POWER_BUTTON, hc_config_powerbtn_x86,
+		     EC_VER_MASK(0));
 /**
  * Handle configuring the power button behavior through a host command
  */
@@ -530,8 +532,6 @@ static enum ec_status hc_config_powerbtn_x86(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_CONFIG_POWER_BUTTON, hc_config_powerbtn_x86,
-		     EC_VER_MASK(0));
 
 
 /*
