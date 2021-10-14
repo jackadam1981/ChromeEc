@@ -77,6 +77,9 @@ static const char *lock_to_string(const enum bus_lock val)
 	return names[val];
 }
 
+DECLARE_CONSOLE_COMMAND(bus_status, command_bus_status,
+			"",
+			"Gets the bus state for swappable pins");
 static int command_bus_status(int argc, char **argv)
 {
 	if (argc > 1)
@@ -88,9 +91,6 @@ static int command_bus_status(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(bus_status, command_bus_status,
-			"",
-			"Gets the bus state for swappable pins");
 
 
 /******************************************************************************

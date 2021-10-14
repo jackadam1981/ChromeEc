@@ -366,6 +366,8 @@ void base_pwr_fault_interrupt(enum gpio_signal s)
 	}
 }
 
+DECLARE_CONSOLE_COMMAND(basedebug, command_basedetectdebug, "[ena|dis]",
+			"En/Disable base detection debug");
 static int command_basedetectdebug(int argc, char **argv)
 {
 	if ((argc > 1) && !parse_bool(argv[1], &debug))
@@ -375,9 +377,6 @@ static int command_basedetectdebug(int argc, char **argv)
 						  "forced " : "", state);
 	return EC_SUCCESS;
 }
-
-DECLARE_CONSOLE_COMMAND(basedebug, command_basedetectdebug, "[ena|dis]",
-			"En/Disable base detection debug");
 
 
 void base_force_state(enum ec_set_base_state_cmd state)
