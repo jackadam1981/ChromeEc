@@ -119,6 +119,7 @@ DECLARE_CONSOLE_COMMAND(deviceevent, command_device_event,
 /*****************************************************************************/
 /* Host commands */
 
+DECLARE_HOST_COMMAND(EC_CMD_DEVICE_EVENT, device_event_cmd, EC_VER_MASK(0));
 static enum ec_status device_event_cmd(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_device_event *p = args->params;
@@ -143,4 +144,3 @@ static enum ec_status device_event_cmd(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_DEVICE_EVENT, device_event_cmd, EC_VER_MASK(0));
