@@ -985,6 +985,9 @@ DECLARE_HOOK(HOOK_USB_PM_CHANGE, keyboard_usb_pm_change, HOOK_PRIO_DEFAULT);
 /*****************************************************************************/
 /* Host commands */
 
+DECLARE_HOST_COMMAND(EC_CMD_MKBP_SIMULATE_KEY,
+		     mkbp_command_simulate_key,
+		     EC_VER_MASK(0));
 static enum ec_status
 mkbp_command_simulate_key(struct host_cmd_handler_args *args)
 {
@@ -1001,9 +1004,6 @@ mkbp_command_simulate_key(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_MKBP_SIMULATE_KEY,
-		     mkbp_command_simulate_key,
-		     EC_VER_MASK(0));
 
 #ifdef CONFIG_KEYBOARD_FACTORY_TEST
 
@@ -1070,6 +1070,9 @@ done:
 	return shorted;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_KEYBOARD_FACTORY_TEST,
+		     keyboard_factory_test,
+		     EC_VER_MASK(0));
 static enum ec_status keyboard_factory_test(struct host_cmd_handler_args *args)
 {
 	struct ec_response_keyboard_factory_test *r = args->response;
@@ -1088,9 +1091,6 @@ static enum ec_status keyboard_factory_test(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_KEYBOARD_FACTORY_TEST,
-		     keyboard_factory_test,
-		     EC_VER_MASK(0));
 #endif
 
 #ifdef CONFIG_KEYBOARD_LANGUAGE_ID
