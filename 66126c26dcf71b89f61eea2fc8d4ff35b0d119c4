@@ -18,6 +18,23 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "690cc3bb_f2c1b2e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-14T01:18:33Z",
+      "side": 1,
+      "message": "Nothing to add past Abe\u0027s comments.",
+      "revId": "66126c26dcf71b89f61eea2fc8d4ff35b0d119c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67c650cc_1148bd61",
@@ -31,6 +48,24 @@
       "writtenOn": "2021-10-13T22:14:09Z",
       "side": 1,
       "message": "Just curious: I think this is part of the Zephyr distro, like drivers/gpio/gpio_emul.h. Why do we include that with angle brackets and this with quotes? Have we set up our include paths such that it doesn\u0027t make a difference?",
+      "revId": "66126c26dcf71b89f61eea2fc8d4ff35b0d119c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0f6788a_d332f054",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-14T01:18:33Z",
+      "side": 1,
+      "message": "This is not yet a part of upstream Zephyr. I\u0027m currently working on a proposal for Zephyr to accept this/similar bus emulation model",
+      "parentUuid": "67c650cc_1148bd61",
       "revId": "66126c26dcf71b89f61eea2fc8d4ff35b0d119c4",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -116,6 +151,30 @@
       "writtenOn": "2021-10-13T22:14:09Z",
       "side": 1,
       "message": "Is this a typo?",
+      "range": {
+        "startLine": 89,
+        "startChar": 37,
+        "endLine": 89,
+        "endChar": 44
+      },
+      "revId": "66126c26dcf71b89f61eea2fc8d4ff35b0d119c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f82666b9_d1ae4700",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1333748
+      },
+      "writtenOn": "2021-10-14T01:18:33Z",
+      "side": 1,
+      "message": "Seems to be used a lot through the file, I doubt it\u0027s a typo. Though it\u0027s not clear what it means. I agree that the documentation should detail this.",
+      "parentUuid": "e2bb0c02_bc2dec96",
       "range": {
         "startLine": 89,
         "startChar": 37,
