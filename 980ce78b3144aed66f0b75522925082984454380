@@ -22,6 +22,30 @@
       },
       "revId": "980ce78b3144aed66f0b75522925082984454380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7272b1aa_07fedf84",
+        "filename": "board/kingoftown/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-14T03:44:36Z",
+      "side": 1,
+      "message": "Hi Daisuke,\n\nI\u0027m not sure if it is proper to go with this chain. If it is fine, I suppose that crrev.com/c/3195685 should be modified as well.",
+      "parentUuid": "e44eaee6_e136e99d",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 1
+      },
+      "revId": "980ce78b3144aed66f0b75522925082984454380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
