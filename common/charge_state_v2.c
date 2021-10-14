@@ -2780,6 +2780,8 @@ void trigger_ocpc_reset(void)
 /*****************************************************************************/
 /* Host commands */
 
+DECLARE_HOST_COMMAND(EC_CMD_CHARGE_CONTROL, charge_command_charge_control,
+		     EC_VER_MASK(1) | EC_VER_MASK(2));
 static enum ec_status
 charge_command_charge_control(struct host_cmd_handler_args *args)
 {
@@ -2817,8 +2819,6 @@ charge_command_charge_control(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_CHARGE_CONTROL, charge_command_charge_control,
-		     EC_VER_MASK(1) | EC_VER_MASK(2));
 
 static void reset_current_limit(void)
 {
@@ -2827,6 +2827,8 @@ static void reset_current_limit(void)
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, reset_current_limit, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, reset_current_limit, HOOK_PRIO_DEFAULT);
 
+DECLARE_HOST_COMMAND(EC_CMD_CHARGE_CURRENT_LIMIT, charge_command_current_limit,
+		     EC_VER_MASK(0));
 static enum ec_status
 charge_command_current_limit(struct host_cmd_handler_args *args)
 {
@@ -2836,8 +2838,6 @@ charge_command_current_limit(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_CHARGE_CURRENT_LIMIT, charge_command_current_limit,
-		     EC_VER_MASK(0));
 
 /*
  * Expose charge/battery related state
@@ -2875,6 +2875,8 @@ static int charge_get_charge_state_debug(int param, uint32_t *value)
 	return EC_SUCCESS;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_CHARGE_STATE, charge_command_charge_state,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status
 charge_command_charge_state(struct host_cmd_handler_args *args)
 {
@@ -3005,8 +3007,6 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 	return rv;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_CHARGE_STATE, charge_command_charge_state,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 /*****************************************************************************/
 /* Console commands */

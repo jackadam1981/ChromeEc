@@ -18,6 +18,8 @@ static void cutoff(void)
 }
 DECLARE_DEFERRED(cutoff);
 
+DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cut_off,
+		     EC_VER_MASK(0));
 static enum ec_status
 battery_command_cut_off(struct host_cmd_handler_args *args)
 {
@@ -32,5 +34,3 @@ battery_command_cut_off(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_BATTERY_CUT_OFF, battery_command_cut_off,
-		     EC_VER_MASK(0));
