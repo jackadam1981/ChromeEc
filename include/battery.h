@@ -389,6 +389,14 @@ int board_cut_off_battery(void);
  */
 int battery_is_cut_off(void);
 
+/* Battery vendor parameter */
+struct battery_vendor_param_t {
+	uint32_t start;
+	int size;
+};
+/* Forward declare board specific data used by common code */
+extern const struct battery_vendor_param_t battery_vendor_param;
+
 /**
  * Read battery vendor parameter.
  *
@@ -398,7 +406,7 @@ int battery_is_cut_off(void);
  * @param value		Location to store retrieved value.
  * @return non-zero if error.
  */
-int battery_get_vendor_param(uint32_t param, uint32_t *value);
+__override_proto int battery_get_vendor_param(uint32_t param, uint32_t *value);
 
 /**
  * Write battery vendor parameter.
@@ -409,7 +417,7 @@ int battery_get_vendor_param(uint32_t param, uint32_t *value);
  * @param value		Value to write to the battery.
  * @return non-zero if error.
  */
-int battery_set_vendor_param(uint32_t param, uint32_t value);
+__override_proto int battery_set_vendor_param(uint32_t param, uint32_t value);
 
 /**
  * Wait for battery stable.
