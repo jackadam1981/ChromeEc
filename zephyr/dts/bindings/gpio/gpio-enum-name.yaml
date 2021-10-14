@@ -156,6 +156,7 @@ properties:
       - GPIO_USB_C0_PD_INT_ODL
       - GPIO_USB_C0_PD_RST_L
       - GPIO_USB_C0_PPC_INT_ODL
+      - GPIO_USB_C0_PPC_BC12_INT_ODL
       - GPIO_USB_C0_SWCTL_INT_ODL
       - GPIO_USB_C0_TCPC_INT_ODL
       - GPIO_USB_C1_BC12_INT_L
@@ -177,3 +178,30 @@ properties:
       - GPIO_WP
       - GPIO_WP_L
       - GPIO_X_EC_GPIO2
+      - GPIO_UART1_RX
+      - GPIO_USB_C1_BC12_CHARGER_INT_ODL
+      - GPIO_EN_PP5000_Z2
+      - GPIO_EN_ULP
+      - GPIO_AP_EC_SYSRST_ODL
+      - GPIO_AP_EC_WDTRST_L
+      - GPIO_EC_AP_DP_HPD_ODL
+      - GPIO_USB_C0_PPC_FRSINFO
+      - GPIO_I2C_A_SCL
+      - GPIO_I2C_A_SDA
+      - GPIO_I2C_D_SCL
+      - GPIO_I2C_D_SDA
+      - GPIO_HDMI_PRSNT_ODL
+      - GPIO_PG_PP5000_Z2_OD
+      - GPIO_PG_MT6315_PROC_B_ODL
+      - GPIO_EC_PEN_CHG_DIS_ODL
+      - GPIO_NC_GPA3
+      - GPIO_NC_GPA6
+      - GPIO_NC_GPA7
+      - GPIO_NC_GPC3
+      - GPIO_NC_GPD7
+      - GPIO_NC_GPF1
+      - GPIO_SPI_CLK_GPG7
+      - GPIO_NC_GPH0
+      - GPIO_NC_GPH6
+      - GPIO_NC_GPI7
+      - GPIO_NC_GPM6
