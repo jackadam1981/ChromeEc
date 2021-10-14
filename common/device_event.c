@@ -87,6 +87,9 @@ void device_enable_event(enum ec_device_event event)
 /* Console commands */
 
 #ifdef CONFIG_CMD_DEVICE_EVENT
+DECLARE_CONSOLE_COMMAND(deviceevent, command_device_event,
+			"[set | clear | enable] [mask]",
+			"Print / set device event state");
 static int command_device_event(int argc, char **argv)
 {
 	/* Handle sub-commands */
@@ -111,9 +114,6 @@ static int command_device_event(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(deviceevent, command_device_event,
-			"[set | clear | enable] [mask]",
-			"Print / set device event state");
 #endif
 
 /*****************************************************************************/
