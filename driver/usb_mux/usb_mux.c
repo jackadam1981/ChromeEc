@@ -702,6 +702,9 @@ static void usb_mux_reset_in_g3(void)
 DECLARE_HOOK(HOOK_CHIPSET_HARD_OFF, usb_mux_reset_in_g3, HOOK_PRIO_DEFAULT);
 
 #ifdef CONFIG_CMD_TYPEC
+DECLARE_CONSOLE_COMMAND(typec, command_typec,
+			"[port|debug] [none|usb|dp|dock]",
+			"Control type-C connector muxing");
 static int command_typec(int argc, char **argv)
 {
 	const char *const mux_name[] = { "none", "usb", "dp", "dock" };
@@ -750,8 +753,6 @@ static int command_typec(int argc, char **argv)
 		    polarity_rm_dts(pd_get_polarity(port)));
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(typec, command_typec, "[port|debug] [none|usb|dp|dock]",
-			"Control type-C connector muxing");
 #endif
 
 DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,

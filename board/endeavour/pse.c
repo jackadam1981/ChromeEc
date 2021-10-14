@@ -173,6 +173,9 @@ DECLARE_HOOK(HOOK_CHIPSET_RESUME, pse_init, HOOK_PRIO_DEFAULT);
 /* Also reset the PSE on a reboot to toggle the power. */
 DECLARE_HOOK(HOOK_CHIPSET_RESET, pse_init, HOOK_PRIO_DEFAULT);
 
+DECLARE_CONSOLE_COMMAND(pse, command_pse,
+			"<port# 0-3> <off | on | min | max>",
+			"Set PSE port power");
 static int command_pse(int argc, char **argv)
 {
 	int port;
@@ -205,8 +208,6 @@ static int command_pse(int argc, char **argv)
 	else
 		return EC_ERROR_PARAM2;
 }
-DECLARE_CONSOLE_COMMAND(pse, command_pse, "<port# 0-3> <off | on | min | max>",
-			"Set PSE port power");
 
 static int ec_command_pse_status(int port, uint8_t *status)
 {

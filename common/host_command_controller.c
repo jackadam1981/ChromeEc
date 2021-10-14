@@ -183,6 +183,9 @@ int pd_host_command(int command, int version, const void *outdata, int outsize,
 	return rv;
 }
 
+DECLARE_CONSOLE_COMMAND(pdcmd, command_pd_mcu,
+			"cmd ver [params]",
+			"Send PD host command");
 static int command_pd_mcu(int argc, char **argv)
 {
 	char *e;
@@ -218,5 +221,3 @@ static int command_pd_mcu(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(pdcmd, command_pd_mcu, "cmd ver [params]",
-			"Send PD host command");
