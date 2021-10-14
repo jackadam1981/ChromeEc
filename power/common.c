@@ -904,6 +904,9 @@ inline void power_set_pause_in_s5(int pause)
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(powerinfo, command_powerinfo,
+			NULL,
+			"Show current power state");
 static int command_powerinfo(int argc, char **argv)
 {
 	/*
@@ -915,10 +918,11 @@ static int command_powerinfo(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(powerinfo, command_powerinfo, NULL,
-			"Show current power state");
 
 #ifdef CONFIG_CMD_POWERINDEBUG
+DECLARE_CONSOLE_COMMAND(powerindebug, command_powerindebug,
+			"[mask]",
+			"Get/set power input debug mask");
 static int command_powerindebug(int argc, char **argv)
 {
 	const struct power_signal_info *s = power_signal_list;
@@ -949,11 +953,13 @@ static int command_powerindebug(int argc, char **argv)
 
 	return EC_SUCCESS;
 };
-DECLARE_CONSOLE_COMMAND(powerindebug, command_powerindebug, "[mask]",
-			"Get/set power input debug mask");
 #endif
 
 #ifdef CONFIG_CMD_S5_TIMEOUT
+DECLARE_CONSOLE_COMMAND(s5_timeout, command_s5_timeout,
+			"[sec]",
+			"Set the timeout from S5 to G3 transition, "
+			"-1 to indicate no transition");
 /* Allow command-line access to configure our S5 delay for power testing */
 static int command_s5_timeout(int argc, char **argv)
 {
@@ -972,12 +978,12 @@ static int command_s5_timeout(int argc, char **argv)
 	ccprintf("S5 inactivity timeout: %d s\n", s5_inactivity_timeout);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(s5_timeout, command_s5_timeout, "[sec]",
-			"Set the timeout from S5 to G3 transition, "
-			"-1 to indicate no transition");
 #endif
 
 #ifdef CONFIG_HIBERNATE
+DECLARE_CONSOLE_COMMAND(hibdelay, command_hibernation_delay,
+			"[sec]",
+			"Set the delay before going into hibernation");
 static int command_hibernation_delay(int argc, char **argv)
 {
 	char *e;
@@ -1000,8 +1006,6 @@ static int command_hibernation_delay(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(hibdelay, command_hibernation_delay, "[sec]",
-			"Set the delay before going into hibernation");
 
 DECLARE_HOST_COMMAND(EC_CMD_HIBERNATION_DELAY,
 		     host_command_hibernation_delay,
@@ -1057,6 +1061,9 @@ host_command_pause_in_s5(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(pause_in_s5, command_pause_in_s5,
+			"[on|off]",
+			"Should the AP pause in S5 during shutdown?");
 static int command_pause_in_s5(int argc, char **argv)
 {
 	if (argc > 1 && !parse_bool(argv[1], &pause_in_s5))
@@ -1066,8 +1073,7 @@ static int command_pause_in_s5(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(pause_in_s5, command_pause_in_s5, "[on|off]",
-			"Should the AP pause in S5 during shutdown?");
+DECLARE_CONSOLE_COMMAND(pause_in_s5, command_pause_in_s5,
 #endif /* CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5 */
 
 #ifdef CONFIG_POWER_PP5000_CONTROL

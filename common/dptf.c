@@ -174,6 +174,9 @@ DECLARE_HOOK(HOOK_SECOND, thermal_control_dptf, HOOK_PRIO_TEMP_SENSOR_DONE);
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(dptftemp, command_dptftemp,
+			NULL,
+			"Print DPTF thermal parameters (degrees Kelvin)");
 static int command_dptftemp(int argc, char **argv)
 {
 	int id, t;
@@ -197,5 +200,8 @@ static int command_dptftemp(int argc, char **argv)
 	ccprintf("AP seen mask: 0x%08x\n", (int)dptf_seen);
 	return EC_SUCCESS;
 }
+<<<<<<< HEAD
 DECLARE_CONSOLE_COMMAND(dptftemp, command_dptftemp, NULL,
 			"Print DPTF thermal parameters (degrees Kelvin)");
+=======
+>>>>>>> e789564b0c (tree: Move DECLARE_CONSOLE_COMMAND before command definition)
