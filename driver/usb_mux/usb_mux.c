@@ -754,6 +754,9 @@ DECLARE_CONSOLE_COMMAND(typec, command_typec, "[port|debug] [none|usb|dp|dock]",
 			"Control type-C connector muxing");
 #endif
 
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO,
+		     hc_usb_pd_mux_info,
+		     EC_VER_MASK(0));
 static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_usb_pd_mux_info *p = args->params;
@@ -777,9 +780,10 @@ static enum ec_status hc_usb_pd_mux_info(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_INFO, hc_usb_pd_mux_info,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_ACK,
+		     hc_usb_pd_mux_ack,
+		     EC_VER_MASK(0));
 static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 {
 	__maybe_unused const struct ec_params_usb_pd_mux_ack *p = args->params;
@@ -792,4 +796,3 @@ static enum ec_status hc_usb_pd_mux_ack(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_PD_MUX_ACK, hc_usb_pd_mux_ack, EC_VER_MASK(0));
