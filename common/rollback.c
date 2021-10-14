@@ -415,6 +415,9 @@ out:
 }
 DECLARE_DEFERRED(add_entropy_deferred);
 
+DECLARE_HOST_COMMAND(EC_CMD_ADD_ENTROPY,
+		     hc_rollback_add_entropy,
+		     EC_VER_MASK(0));
 static enum ec_status
 hc_rollback_add_entropy(struct host_cmd_handler_args *args)
 {
@@ -438,9 +441,6 @@ hc_rollback_add_entropy(struct host_cmd_handler_args *args)
 
 	return EC_RES_INVALID_PARAM;
 }
-DECLARE_HOST_COMMAND(EC_CMD_ADD_ENTROPY,
-		     hc_rollback_add_entropy,
-		     EC_VER_MASK(0));
 #endif /* CONFIG_RNG */
 #endif /* CONFIG_ROLLBACK_SECRET_SIZE */
 #endif /* CONFIG_ROLLBACK_UPDATE */
@@ -491,6 +491,9 @@ DECLARE_SAFE_CONSOLE_COMMAND(rollbackinfo, command_rollback_info,
 			     NULL,
 			     "Print rollback info");
 
+DECLARE_HOST_COMMAND(EC_CMD_ROLLBACK_INFO,
+		     host_command_rollback_info,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_rollback_info(struct host_cmd_handler_args *args)
 {
@@ -515,6 +518,3 @@ failed:
 	clear_rollback(&data);
 	return ret;
 }
-DECLARE_HOST_COMMAND(EC_CMD_ROLLBACK_INFO,
-		     host_command_rollback_info,
-		     EC_VER_MASK(0));
