@@ -118,6 +118,8 @@ static int command_rand(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(rand, command_rand,
 			NULL, "Output random bytes to console.");
 
+DECLARE_HOST_COMMAND(EC_CMD_RAND_NUM, host_command_rand,
+		     EC_VER_MASK(EC_VER_RAND_NUM));
 static enum ec_status host_command_rand(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_rand_num *p = args->params;
@@ -139,7 +141,5 @@ static enum ec_status host_command_rand(struct host_cmd_handler_args *args)
 	return EC_SUCCESS;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_RAND_NUM, host_command_rand,
-		     EC_VER_MASK(EC_VER_RAND_NUM));
 #endif /* SECTION_IS_RW */
 #endif /* CONFIG_CMD_RAND */
