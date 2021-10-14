@@ -334,6 +334,7 @@ void fp_task(void)
 #endif /* !HAVE_FP_PRIVATE_DRIVER */
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_FP_PASSTHRU, fp_command_passthru, EC_VER_MASK(0));
 static enum ec_status fp_command_passthru(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_passthru *params = args->params;
@@ -364,8 +365,9 @@ static enum ec_status fp_command_passthru(struct host_cmd_handler_args *args)
 	args->response_size = params->len;
 	return ret;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_PASSTHRU, fp_command_passthru, EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_FP_INFO, fp_command_info,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_fp_info *r = args->response;
@@ -386,8 +388,6 @@ static enum ec_status fp_command_info(struct host_cmd_handler_args *args)
 			sizeof(struct ec_response_fp_info_v0);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_INFO, fp_command_info,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 BUILD_ASSERT(FP_CONTEXT_NONCE_BYTES == 12);
 
@@ -405,6 +405,7 @@ int validate_fp_buffer_offset(const uint32_t buffer_size, const uint32_t offset,
 	return EC_SUCCESS;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_FP_FRAME, fp_command_frame, EC_VER_MASK(0));
 static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_frame *params = args->params;
@@ -525,8 +526,8 @@ static enum ec_status fp_command_frame(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_FRAME, fp_command_frame, EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_FP_STATS, fp_command_stats, EC_VER_MASK(0));
 static enum ec_status fp_command_stats(struct host_cmd_handler_args *args)
 {
 	struct ec_response_fp_stats *r = args->response;
@@ -546,7 +547,6 @@ static enum ec_status fp_command_stats(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_STATS, fp_command_stats, EC_VER_MASK(0));
 
 static bool template_needs_validation_value(
 	struct ec_fp_template_encryption_metadata *enc_info)
@@ -569,6 +569,7 @@ static int validate_template_format(
 	return EC_RES_SUCCESS;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_FP_TEMPLATE, fp_command_template, EC_VER_MASK(0));
 static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_template *params = args->params;
@@ -668,7 +669,6 @@ static enum ec_status fp_command_template(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_TEMPLATE, fp_command_template, EC_VER_MASK(0));
 
 #ifdef CONFIG_CMD_FPSENSOR_DEBUG
 /* --- Debug console commands --- */

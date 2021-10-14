@@ -108,6 +108,7 @@ int fp_get_next_event(uint8_t *out)
 }
 DECLARE_EVENT_SOURCE(EC_MKBP_EVENT_FINGERPRINT, fp_get_next_event);
 
+DECLARE_HOST_COMMAND(EC_CMD_FP_SEED, fp_command_tpm_seed, EC_VER_MASK(0));
 static enum ec_status fp_command_tpm_seed(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_seed *params = args->params;
@@ -126,13 +127,14 @@ static enum ec_status fp_command_tpm_seed(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_SEED, fp_command_tpm_seed, EC_VER_MASK(0));
 
 int fp_tpm_seed_is_set(void)
 {
 	return fp_encryption_status & FP_ENC_STATUS_SEED_SET;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_FP_ENC_STATUS, fp_command_encryption_status,
+		     EC_VER_MASK(0));
 static enum ec_status
 fp_command_encryption_status(struct host_cmd_handler_args *args)
 {
@@ -144,8 +146,6 @@ fp_command_encryption_status(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_ENC_STATUS, fp_command_encryption_status,
-		     EC_VER_MASK(0));
 
 static int validate_fp_mode(const uint32_t mode)
 {
@@ -199,6 +199,7 @@ int fp_set_sensor_mode(uint32_t mode, uint32_t *mode_output)
 	return EC_RES_SUCCESS;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_FP_MODE, fp_command_mode, EC_VER_MASK(0));
 static enum ec_status fp_command_mode(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_mode *p = args->params;
@@ -211,8 +212,8 @@ static enum ec_status fp_command_mode(struct host_cmd_handler_args *args)
 
 	return ret;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_MODE, fp_command_mode, EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_FP_CONTEXT, fp_command_context, EC_VER_MASK(1));
 static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_fp_context_v1 *p = args->params;
@@ -241,7 +242,6 @@ static enum ec_status fp_command_context(struct host_cmd_handler_args *args)
 
 	return EC_RES_INVALID_PARAM;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_CONTEXT, fp_command_context, EC_VER_MASK(1));
 
 int fp_enable_positive_match_secret(uint32_t fgr,
 				    struct positive_match_secret_state *state)
@@ -269,6 +269,8 @@ void fp_disable_positive_match_secret(
 	state->deadline.val = 0;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET, fp_command_read_match_secret,
+		     EC_VER_MASK(0));
 static enum ec_status fp_command_read_match_secret(
 	struct host_cmd_handler_args *args)
 {
@@ -309,5 +311,3 @@ static enum ec_status fp_command_read_match_secret(
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FP_READ_MATCH_SECRET, fp_command_read_match_secret,
-		     EC_VER_MASK(0));

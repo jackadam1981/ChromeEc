@@ -232,6 +232,7 @@ static int ec_command_pse_status(int port, uint8_t *status)
 	return 0;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_PSE, ec_command_pse, EC_VER_MASK(0));
 static enum ec_status ec_command_pse(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pse *p = args->params;
@@ -263,4 +264,3 @@ static enum ec_status ec_command_pse(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PSE, ec_command_pse, EC_VER_MASK(0));
