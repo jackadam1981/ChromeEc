@@ -70,6 +70,24 @@
       "parentUuid": "f8907b5a_2b9df036",
       "revId": "e2d5e48487158ccfaa3e0e796e7f1da0761b02b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4498289e_563e1384",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1314845
+      },
+      "writtenOn": "2021-10-14T21:42:11Z",
+      "side": 1,
+      "message": "voxel looks correct. __data_lma_start is 0x100a2e60, which matches the LMA shown in objdump (fifth column):\n\n 3 .data         00000538  200b8368  100a2e60  00058368  2**3\n                  CONTENTS, ALLOC, LOAD, DATA\n\nBut obviously something is happening. The fact that it\u0027s getting all the way to the UART output suggests that the init logic that copies the data from LMA to VMA succeeded. Though perhaps the range is somehow wrong (before this change __data_lma_start was 0x100a2e20).\n\nAre you able to narrow down where the fault is occurring either via JTAG/SWD or adding a busy loop (while (true){}) in main.c?\n\nUntil I resolve the issue, I can create a CL to add #ifdef __clang__ around the change so that it\u0027s not blocking anyone.",
+      "parentUuid": "1a020493_bd59809c",
+      "revId": "e2d5e48487158ccfaa3e0e796e7f1da0761b02b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
