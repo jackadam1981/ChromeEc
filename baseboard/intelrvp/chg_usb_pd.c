@@ -16,7 +16,8 @@
 bool is_typec_port(int port)
 {
 #if CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0
-	return !(port == DEDICATED_CHARGE_PORT || port == CHARGE_PORT_NONE);
+	return !(port == board_get_dedicated_charge_port() ||
+			port == CHARGE_PORT_NONE);
 #else
 	return !(port == CHARGE_PORT_NONE);
 #endif /* CONFIG_DEDICATED_CHARGE_PORT_COUNT > 0 */
@@ -35,6 +36,7 @@ static inline int board_dc_jack_present(void)
 static void board_dc_jack_handle(void)
 {
 	struct charge_port_info charge_dc_jack;
+	int dedicated_charge_port = board_get_dedicated_charge_port();
 
 	/* System is booted from DC Jack */
 	if (board_dc_jack_present()) {
@@ -47,7 +49,7 @@ static void board_dc_jack_handle(void)
 	}
 
 	charge_manager_update_charge(CHARGE_SUPPLIER_DEDICATED,
-				DEDICATED_CHARGE_PORT, &charge_dc_jack);
+				dedicated_charge_port, &charge_dc_jack);
 }
 #endif
 
@@ -99,7 +101,8 @@ int board_set_active_charge_port(int port)
 	 * When the Type-C is active port, hardware circuit will
 	 * block DC jack from enabling +VADP_OUT.
 	 */
-	if (port != DEDICATED_CHARGE_PORT && board_dc_jack_present()) {
+	if (port != board_get_dedicated_charge_port() &&
+			board_dc_jack_present()) {
 		CPRINTS("DC Jack present, Skip enable p%d", port);
 		return EC_ERROR_INVAL;
 	}
