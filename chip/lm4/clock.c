@@ -389,6 +389,9 @@ void __idle(void)
 /* Console commands */
 
 #ifdef CONFIG_CMD_SLEEP
+DECLARE_CONSOLE_COMMAND(sleep, command_sleep,
+			"[level [clock] [sram pm] [flash pm]]",
+			"Drop into sleep");
 /**
  * Measure baseline for power consumption.
  *
@@ -549,9 +552,6 @@ static int command_sleep(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(sleep, command_sleep,
-			"[level [clock] [sram pm] [flash pm]]",
-			"Drop into sleep");
 #endif /* CONFIG_CMD_SLEEP */
 
 #ifdef CONFIG_CMD_PLL

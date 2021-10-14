@@ -623,6 +623,13 @@ static void clock_chipset_shutdown(void)
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
+DECLARE_CONSOLE_COMMAND(clock, command_clock,
+			"hsi | msi"
+#ifdef STM32_HSE_CLOCK
+			" | hse | pll"
+#endif
+			,
+			"Set clock frequency");
 static int command_clock(int argc, char **argv)
 {
 	if (argc >= 2) {
@@ -646,13 +653,6 @@ static int command_clock(int argc, char **argv)
 	ccprintf("Clock frequency is now %d Hz\n", freq);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(clock, command_clock,
-			"hsi | msi"
-#ifdef STM32_HSE_CLOCK
-			" | hse | pll"
-#endif
-			,
-			"Set clock frequency");
 
 uint32_t rtcss_to_us(uint32_t rtcss)
 {
@@ -1109,6 +1109,9 @@ void __idle(void)
 
 /*****************************************************************************/
 /* Console commands */
+DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
+			"",
+			"Print last idle stats");
 /* Print low power idle statistics. */
 static int command_idle_stats(int argc, char **argv)
 {
@@ -1124,7 +1127,4 @@ static int command_idle_stats(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
-			"",
-			"Print last idle stats");
 #endif /* CONFIG_LOW_POWER_IDLE */

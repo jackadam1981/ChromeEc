@@ -546,6 +546,9 @@ static void dump_reg_range(int chgnum, int low, int high)
 	}
 }
 
+DECLARE_CONSOLE_COMMAND(charger_dump, command_isl9241_dump,
+			"charger_dump <chgnum>",
+			"Dumps ISL9241 registers");
 static int command_isl9241_dump(int argc, char **argv)
 {
 	char *e;
@@ -567,9 +570,6 @@ static int command_isl9241_dump(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(charger_dump, command_isl9241_dump,
-			"charger_dump <chgnum>",
-			"Dumps ISL9241 registers");
 #endif /* CONFIG_CMD_CHARGER_DUMP */
 
 const struct charger_drv isl9241_drv = {

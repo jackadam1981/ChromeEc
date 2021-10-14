@@ -12,6 +12,9 @@
 #include "timer.h"
 #include "util.h"
 
+DECLARE_CONSOLE_COMMAND(spixfer, command_spixfer,
+			"rlen/w id offset [value | len]",
+			"Read write spi. id is spi_devices array index");
 static int command_spixfer(int argc, char **argv)
 {
 	int dev_id;
@@ -65,6 +68,3 @@ static int command_spixfer(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(spixfer, command_spixfer,
-			"rlen/w id offset [value | len]",
-			"Read write spi. id is spi_devices array index");

@@ -59,6 +59,9 @@ static void f75303_sensor_poll(void)
 }
 DECLARE_HOOK(HOOK_SECOND, f75303_sensor_poll, HOOK_PRIO_TEMP_SENSOR);
 
+DECLARE_CONSOLE_COMMAND(f75303, f75303_set_fake_temp,
+		"<index> <value>|off",
+		"Set fake temperature of sensor f75303.");
 static int f75303_set_fake_temp(int argc, char **argv)
 {
 	int index;
@@ -88,6 +91,3 @@ static int f75303_set_fake_temp(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(f75303, f75303_set_fake_temp,
-		"<index> <value>|off",
-		"Set fake temperature of sensor f75303.");
