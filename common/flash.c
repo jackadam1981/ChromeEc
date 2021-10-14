@@ -1238,6 +1238,13 @@ DECLARE_CONSOLE_COMMAND(flashwp, command_flash_wp,
 #define EC_FLASH_REGION_START MIN(CONFIG_EC_PROTECTED_STORAGE_OFF, \
 				  CONFIG_EC_WRITABLE_STORAGE_OFF)
 
+#ifdef CONFIG_FLASH_MULTIPLE_REGION
+#define FLASH_INFO_VER EC_VER_MASK(2)
+#else
+#define FLASH_INFO_VER (EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2))
+#endif
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_INFO,
+		     flash_command_get_info, FLASH_INFO_VER);
 static enum ec_status flash_command_get_info(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_info_2 *p_2 = args->params;
@@ -1325,15 +1332,11 @@ static enum ec_status flash_command_get_info(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 #endif  /* CONFIG_FLASH_MULTIPLE_REGION */
 }
-#ifdef CONFIG_FLASH_MULTIPLE_REGION
-#define FLASH_INFO_VER EC_VER_MASK(2)
-#else
-#define FLASH_INFO_VER (EC_VER_MASK(0) | EC_VER_MASK(1) | EC_VER_MASK(2))
-#endif
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_INFO,
-		     flash_command_get_info, FLASH_INFO_VER);
 
 
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_READ,
+		     flash_command_read,
+		     EC_VER_MASK(0));
 static enum ec_status flash_command_read(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_read *p = args->params;
@@ -1349,10 +1352,10 @@ static enum ec_status flash_command_read(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_READ,
-		     flash_command_read,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_WRITE,
+		     flash_command_write,
+		     EC_VER_MASK(0) | EC_VER_MASK(EC_VER_FLASH_WRITE));
 /**
  * Flash write command
  *
@@ -1380,9 +1383,6 @@ static enum ec_status flash_command_write(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_WRITE,
-		     flash_command_write,
-		     EC_VER_MASK(0) | EC_VER_MASK(EC_VER_FLASH_WRITE));
 
 #ifndef CONFIG_FLASH_MULTIPLE_REGION
 /*
@@ -1396,6 +1396,12 @@ BUILD_ASSERT(CONFIG_EC_WRITABLE_STORAGE_SIZE % CONFIG_FLASH_ERASE_SIZE == 0);
 
 #endif
 
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_ERASE, flash_command_erase,
+		EC_VER_MASK(0)
+#ifdef CONFIG_FLASH_DEFERRED_ERASE
+		| EC_VER_MASK(1)
+#endif
+		);
 static enum ec_status flash_command_erase(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_erase *p = args->params;
@@ -1458,13 +1464,14 @@ static enum ec_status flash_command_erase(struct host_cmd_handler_args *args)
 }
 
 
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_ERASE, flash_command_erase,
-		EC_VER_MASK(0)
-#ifdef CONFIG_FLASH_DEFERRED_ERASE
-		| EC_VER_MASK(1)
-#endif
-		);
-
+/*
+ * TODO(crbug.com/239197) : Adding both versions to the version mask is a
+ * temporary workaround for a problem in the cros_ec driver. Drop
+ * EC_VER_MASK(0) once cros_ec driver can send the correct version.
+ */
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_PROTECT,
+		     flash_command_protect,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status flash_command_protect(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_protect *p = args->params;
@@ -1501,15 +1508,10 @@ static enum ec_status flash_command_protect(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-/*
- * TODO(crbug.com/239197) : Adding both versions to the version mask is a
- * temporary workaround for a problem in the cros_ec driver. Drop
- * EC_VER_MASK(0) once cros_ec driver can send the correct version.
- */
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_PROTECT,
-		     flash_command_protect,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_REGION_INFO,
+		     flash_command_region_info,
+		     EC_VER_MASK(EC_VER_FLASH_REGION_INFO));
 static enum ec_status
 flash_command_region_info(struct host_cmd_handler_args *args)
 {
@@ -1545,21 +1547,18 @@ flash_command_region_info(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_REGION_INFO,
-		     flash_command_region_info,
-		     EC_VER_MASK(EC_VER_FLASH_REGION_INFO));
 
 
 #ifdef CONFIG_FLASH_SELECT_REQUIRED
 
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_SELECT,
+		     flash_command_select,
+		     EC_VER_MASK(0));
 static enum ec_status flash_command_select(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_flash_select *p = args->params;
 
 	return crec_board_flash_select(p->select);
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_SELECT,
-		     flash_command_select,
-		     EC_VER_MASK(0));
 
 #endif /* CONFIG_FLASH_SELECT_REQUIRED */
