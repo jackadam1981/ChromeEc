@@ -440,6 +440,27 @@ static void configure_battery_type(void)
 	/* Set the fixed battery type */
 	battery_set_fixed_battery_type(bat_cell_type);
 }
+
+static void configure_usbc_ports(void)
+{
+	int adlrvp_usbc_ports;
+
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+		adlrvp_usbc_ports = ADL_N_M_USB_PD_PORT_MAX_COUNT;
+		break;
+	default:
+		adlrvp_usbc_ports = CONFIG_USB_PD_PORT_MAX_COUNT;
+		break;
+	}
+
+	/* set the number of usb pd ports */
+	usb_pd_set_port_count(adlrvp_usbc_ports);
+}
 /******************************************************************************/
 /* PWROK signal configuration */
 /*
@@ -538,4 +559,7 @@ __override void board_pre_task_i2c_peripheral_init(void)
 
 	/* Configure battery type */
 	configure_battery_type();
+
+	/* Configure the number of typec usb ports */
+	configure_usbc_ports();
 }
