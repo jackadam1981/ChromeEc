@@ -2640,6 +2640,7 @@ int charge_set_output_current_limit(int chgnum, int ma, int mv)
 int charge_set_input_current_limit(int ma, int mv)
 {
 	__maybe_unused int chgnum = 0;
+	__maybe_unused int pd_current_uncapped;
 
 	if (IS_ENABLED(CONFIG_OCPC))
 		chgnum = charge_get_active_chg_chip();
@@ -2694,6 +2695,15 @@ int charge_set_input_current_limit(int ma, int mv)
 	/* Limit input current limit to max limit for this board */
 	ma = MIN(ma, CONFIG_CHARGER_MAX_INPUT_CURRENT);
 #endif
+
+#ifdef CONFIG_CHARGE_MANAGER
+	/* clamp the input current to not exceeded the PD's limitation. */
+	pd_current_uncapped = charge_manager_get_pd_current_uncapped();
+	if (pd_current_uncapped != CHARGE_CURRENT_UNINITIALIZED &&
+	    ma > pd_current_uncapped)
+		ma = pd_current_uncapped;
+#endif
+
 	curr.desired_input_current = ma;
 #ifdef CONFIG_EC_EC_COMM_BATTERY_CLIENT
 	/* Wake up charger task to allocate current between lid and base. */
