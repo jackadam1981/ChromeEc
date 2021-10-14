@@ -70,6 +70,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce062cc8_6395119c",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-14T21:35:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e0f6788a_d332f054",
+      "revId": "66126c26dcf71b89f61eea2fc8d4ff35b0d119c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66078dd0_e764eb88",
@@ -271,6 +289,30 @@
       "side": 1,
       "message": "It is typo. It should be vSafe0V. In tcpc_config there is possibility to add flag TCPC_FLAGS_TCPCI_REV2_0_NO_VSAFE0V, when TCPC is TCPCI rev2.0, but doesn\u0027t have vSafe0V bit in extended status register. tcpci_tcpm_init() should check this flag and set alert_mask appropriately.",
       "parentUuid": "f82666b9_d1ae4700",
+      "range": {
+        "startLine": 89,
+        "startChar": 37,
+        "endLine": 89,
+        "endChar": 44
+      },
+      "revId": "66126c26dcf71b89f61eea2fc8d4ff35b0d119c4",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd172643_57eabcfe",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 9
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1305927
+      },
+      "writtenOn": "2021-10-14T21:35:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e6cd925b_344e9d12",
       "range": {
         "startLine": 89,
         "startChar": 37,
