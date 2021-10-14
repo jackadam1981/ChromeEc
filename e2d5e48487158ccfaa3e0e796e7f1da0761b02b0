@@ -106,6 +106,24 @@
       "parentUuid": "4498289e_563e1384",
       "revId": "e2d5e48487158ccfaa3e0e796e7f1da0761b02b0",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ddf9d5e_10e0a978",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 42
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-14T23:06:38Z",
+      "side": 1,
+      "message": "while(1) debugging on voxel narrowed down to somewhere in vboot_get_rw_hash()\n\nI\u0027m not totally certain what to do with guybrush to debug, since it seems to be a strange jumble of boot output.  But I could grab a dalboz or metaknight and see what it does.",
+      "parentUuid": "fb0e17a1_624e37ff",
+      "revId": "e2d5e48487158ccfaa3e0e796e7f1da0761b02b0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
