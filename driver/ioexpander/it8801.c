@@ -545,6 +545,8 @@ static void dump_register(int reg)
 		ccprintf("ERR (%d)\n", rv);
 }
 
+DECLARE_CONSOLE_COMMAND(it8801_dump, it8801_dump, "NULL",
+			"Dumps IT8801 registers");
 static int it8801_dump(int argc, char **argv)
 {
 	dump_register(IT8801_REG_KSIIER);
@@ -554,8 +556,6 @@ static int it8801_dump(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(it8801_dump, it8801_dump, "NULL",
-			"Dumps IT8801 registers");
 
 #ifdef CONFIG_IO_EXPANDER_IT8801_PWM
 
