@@ -508,3 +508,11 @@ __overridable int board_get_dedicated_charge_port(void)
 		else
 		return DEDICATED_CHARGE_PORT;
 }
+
+__override int board_get_ioex_port_count(void)
+{
+	if (board_adl_m_n_rvp)
+		return (CONFIG_IO_EXPANDER_PORT_COUNT - 2);
+	else
+		return CONFIG_IO_EXPANDER_PORT_COUNT;
+}
