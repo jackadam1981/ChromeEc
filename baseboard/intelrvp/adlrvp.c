@@ -560,3 +560,20 @@ __override int board_get_ioex_port_count(void)
 	else
 		return (CONFIG_IO_EXPANDER_PORT_COUNT - 2);
 }
+
+__override int board_get_i2c_ports_used(void)
+{
+/*
+ * For ADL, the number of I2C ports is based on
+ * typec ports and other i2c ports used. For MCHP based,
+ * there is only 1 extra i2c port used, other
+ * than typec based ports, while other ITE/NPCX
+ * based ADL RVPs are using 2 extra i2c ports, other
+ * than typec based ports.
+ **/
+#ifndef VARIANT_INTELRVP_EC_MCHP
+	return (adlrvp_usbc_ports + 2);
+#else
+	return (adlrvp_usbc_ports + 1);
+#endif
+}
