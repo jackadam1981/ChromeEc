@@ -29,6 +29,10 @@ uint64_t __keep __aeabi_llsr(uint64_t v, uint32_t shift)
 
 #ifdef CONFIG_LLSR_TEST
 
+DECLARE_CONSOLE_COMMAND(
+		llsrtest, command_llsr,
+		"",
+		"Run tests against the LLSR ABI. Prints SUCCESS or FAILURE.");
 static int command_llsr(int argc, char **argv)
 {
 	/* Volatile to prevent compilier optimization from interfering. */
@@ -57,9 +61,5 @@ static int command_llsr(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND(
-		llsrtest, command_llsr,
-		"",
-		"Run tests against the LLSR ABI. Prints SUCCESS or FAILURE.");
 
 #endif  /* CONFIG_LLSR_TEST */
