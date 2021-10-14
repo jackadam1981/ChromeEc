@@ -806,6 +806,9 @@ static int flash_spi_sel_lock(int enable)
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(flash_spi_lock, command_flash_spi_sel_lock,
+			"[on | off]",
+			"Lock spi flash interface selection");
 static int command_flash_spi_sel_lock(int argc, char **argv)
 {
 	int ena;
@@ -818,10 +821,10 @@ static int command_flash_spi_sel_lock(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(flash_spi_lock, command_flash_spi_sel_lock,
-			"[on | off]",
-			"Lock spi flash interface selection");
 
+DECLARE_CONSOLE_COMMAND(flash_tristate, command_flash_tristate,
+			"[on | off]",
+			"Tristate spi flash pins");
 static int command_flash_tristate(int argc, char **argv)
 {
 	int ena;
@@ -835,11 +838,11 @@ static int command_flash_tristate(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(flash_tristate, command_flash_tristate,
-			"[on | off]",
-			"Tristate spi flash pins");
 #endif /* CONFIG_CMD_FLASH_TRISTATE */
 
+DECLARE_CONSOLE_COMMAND(flashchip, command_flash_chip,
+			NULL,
+			"Print flash chip info");
 static int command_flash_chip(int argc, char **argv)
 {
 	uint8_t jedec_id[3];
@@ -853,6 +856,3 @@ static int command_flash_chip(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(flashchip, command_flash_chip,
-			NULL,
-			"Print flash chip info");
