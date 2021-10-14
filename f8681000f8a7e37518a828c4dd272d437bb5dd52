@@ -48,6 +48,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "219282e3_44601f73",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 819,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "274a474a_2e007b27",
+      "range": {
+        "startLine": 819,
+        "startChar": 1,
+        "endLine": 819,
+        "endChar": 17
+      },
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b432d42_c085a491",
@@ -61,6 +85,24 @@
       "writtenOn": "2021-10-13T22:49:08Z",
       "side": 1,
       "message": "If you are going to pass in a variable for the value here, it should be a different variable than exp_ctrl. After this call, this value isn\u0027t \"expected.\" It\u0027s actual. But I think it might be even easier to follow if you just directly put the bit field names in the function call, e.g. TCPC_REG_POWER_CTRL_VOLT_ALARM_DIS | TCPC_REG_POWER_CTRL_FORCE_DISCHARGE.",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "836f3c1d_648ba2f9",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Expected value depends on initial value, because only one bit should be changed. I decided, that first, register is set to initial_ctrl value. Later expected value is set using initial value and changed bit.",
+      "parentUuid": "2b432d42_c085a491",
       "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -82,6 +124,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64264ce3_20c27b10",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 823,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03b666a9_b82466ba",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56d62b18_3f8ab4d3",
@@ -99,6 +159,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "af18f678_78c8c803",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56d62b18_3f8ab4d3",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "907bc864_e0f50524",
@@ -112,6 +190,24 @@
       "writtenOn": "2021-10-13T22:49:08Z",
       "side": 1,
       "message": "You can do this in the initialization here and elsewhere.",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b8c1aa1_12c18c9b",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "907bc864_e0f50524",
       "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -156,6 +252,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ff23c8f_ad27c6f5",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6b0493f7_9f3e450c",
+      "range": {
+        "startLine": 878,
+        "startChar": 37,
+        "endLine": 878,
+        "endChar": 54
+      },
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "715e9f85_040b147e",
@@ -169,6 +289,30 @@
       "writtenOn": "2021-10-13T17:23:24Z",
       "side": 1,
       "message": "Although it\u0027s somewhat obvious that these values are arbitrary, I\u0027d prefer if it if we explicitly stated it as so, either as part of the variable name or in a comment.",
+      "range": {
+        "startLine": 917,
+        "startChar": 0,
+        "endLine": 919,
+        "endChar": 13
+      },
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acf70d64_809d25d9",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Added comment in code.",
+      "parentUuid": "715e9f85_040b147e",
       "range": {
         "startLine": 917,
         "startChar": 0,
@@ -243,6 +387,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4848ace1_d6477e22",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Here vendor is compared with info.vendor_id. NULL is just because there is no additional message on assert fail.",
+      "parentUuid": "b996e07b_706a743d",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c4fcaa24_4338c31f",
@@ -256,6 +418,24 @@
       "writtenOn": "2021-10-13T17:23:24Z",
       "side": 1,
       "message": "Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebad249c_24e8de3f",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c4fcaa24_4338c31f",
       "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -277,6 +457,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bba513d8_1b6fd494",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b195720_6816b835",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26dce0ab_328d9765",
@@ -290,6 +488,24 @@
       "writtenOn": "2021-10-13T17:23:24Z",
       "side": 1,
       "message": "I think it\u0027d be easier to follow if we separated Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ed7d1783_a1ff7646",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26dce0ab_328d9765",
       "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
@@ -311,6 +527,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0fc97d8_a357f42b",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c96d28e8_28b68da7",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07dd13dd_01aab006",
@@ -328,6 +562,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03c035fc_ed363e42",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07dd13dd_01aab006",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9859b65e_3c6cdbfd",
@@ -341,6 +593,24 @@
       "writtenOn": "2021-10-13T17:23:24Z",
       "side": 1,
       "message": "Same as 819",
+      "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6858484a_37695999",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-14T13:54:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9859b65e_3c6cdbfd",
       "revId": "f8681000f8a7e37518a828c4dd272d437bb5dd52",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
