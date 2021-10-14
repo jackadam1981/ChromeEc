@@ -155,6 +155,9 @@ DECLARE_CONSOLE_COMMAND(temps, command_temps,
 /*****************************************************************************/
 /* Host commands */
 
+DECLARE_HOST_COMMAND(EC_CMD_TEMP_SENSOR_GET_INFO,
+		     temp_sensor_command_get_info,
+		     EC_VER_MASK(0));
 static enum ec_status
 temp_sensor_command_get_info(struct host_cmd_handler_args *args)
 {
@@ -172,6 +175,3 @@ temp_sensor_command_get_info(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_TEMP_SENSOR_GET_INFO,
-		     temp_sensor_command_get_info,
-		     EC_VER_MASK(0));
