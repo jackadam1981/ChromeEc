@@ -11,6 +11,8 @@
 #include "host_command.h"
 #include "regulator.h"
 
+DECLARE_HOST_COMMAND(EC_CMD_REGULATOR_GET_INFO, hc_regulator_get_info,
+		     EC_VER_MASK(0));
 static enum ec_status
 hc_regulator_get_info(struct host_cmd_handler_args *args)
 {
@@ -30,9 +32,9 @@ hc_regulator_get_info(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_REGULATOR_GET_INFO, hc_regulator_get_info,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_REGULATOR_ENABLE, hc_regulator_enable,
+		     EC_VER_MASK(0));
 static enum ec_status
 hc_regulator_enable(struct host_cmd_handler_args *args)
 {
@@ -46,9 +48,9 @@ hc_regulator_enable(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_REGULATOR_ENABLE, hc_regulator_enable,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_REGULATOR_IS_ENABLED, hc_regulator_is_enabled,
+		     EC_VER_MASK(0));
 static enum ec_status
 hc_regulator_is_enabled(struct host_cmd_handler_args *args)
 {
@@ -64,9 +66,9 @@ hc_regulator_is_enabled(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_REGULATOR_IS_ENABLED, hc_regulator_is_enabled,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_REGULATOR_GET_VOLTAGE, hc_regulator_get_voltage,
+		     EC_VER_MASK(0));
 static enum ec_status
 hc_regulator_get_voltage(struct host_cmd_handler_args *args)
 {
@@ -84,8 +86,6 @@ hc_regulator_get_voltage(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_REGULATOR_GET_VOLTAGE, hc_regulator_get_voltage,
-		     EC_VER_MASK(0));
 
 static enum ec_status
 hc_regulator_set_voltage(struct host_cmd_handler_args *args)
