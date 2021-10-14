@@ -508,6 +508,9 @@ DECLARE_CONSOLE_COMMAND(spi_flashinfo, command_spi_flashinfo, NULL,
 			"Print SPI flash info");
 
 #ifdef CONFIG_HOSTCMD_FLASH_SPI_INFO
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_SPI_INFO,
+		     flash_command_spi_info,
+		     EC_VER_MASK(0));
 static enum ec_status flash_command_spi_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_flash_spi_info *r = args->response;
@@ -521,9 +524,7 @@ static enum ec_status flash_command_spi_info(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_SPI_INFO, flash_command_spi_info,
-		     EC_VER_MASK(0));
-#endif /* CONFIG_HOSTCMD_FLASH_SPI_INFO */
+#endif  /* CONFIG_HOSTCMD_FLASH_SPI_INFO */
 
 #ifdef CONFIG_CMD_SPI_FLASH
 static int command_spi_flasherase(int argc, char **argv)

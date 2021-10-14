@@ -464,6 +464,9 @@ void host_command_task(void *u)
 /*****************************************************************************/
 /* Host commands */
 
+DECLARE_HOST_COMMAND(EC_CMD_PROTO_VERSION,
+		     host_command_proto_version,
+		     EC_VER_MASK(0));
 /* TODO(crosbug.com/p/11223): Remove this once the kernel no longer cares */
 static enum ec_status
 host_command_proto_version(struct host_cmd_handler_args *args)
@@ -475,9 +478,10 @@ host_command_proto_version(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PROTO_VERSION, host_command_proto_version,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_HELLO,
+		     host_command_hello,
+		     EC_VER_MASK(0));
 static enum ec_status host_command_hello(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_hello *p = args->params;
@@ -489,8 +493,10 @@ static enum ec_status host_command_hello(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HELLO, host_command_hello, EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_READ_TEST,
+		     host_command_read_test,
+		     EC_VER_MASK(0));
 static enum ec_status host_command_read_test(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_read_test *p = args->params;
@@ -510,9 +516,11 @@ static enum ec_status host_command_read_test(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_READ_TEST, host_command_read_test, EC_VER_MASK(0));
 
 #ifndef CONFIG_HOSTCMD_X86
+DECLARE_HOST_COMMAND(EC_CMD_READ_MEMMAP,
+		     host_command_read_memmap,
+		     EC_VER_MASK(0));
 /*
  * Host command to read memory map is not needed on LPC, because LPC can
  * directly map the data to the host's memory space.
@@ -540,10 +548,11 @@ host_command_read_memmap(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_READ_MEMMAP, host_command_read_memmap,
-		     EC_VER_MASK(0));
 #endif
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_CMD_VERSIONS,
+		     host_command_get_cmd_versions,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status
 host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 {
@@ -564,8 +573,6 @@ host_command_get_cmd_versions(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_CMD_VERSIONS, host_command_get_cmd_versions,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 static int host_command_is_suppressed(uint16_t cmd)
 {
@@ -722,6 +729,9 @@ uint16_t host_command_process(struct host_cmd_handler_args *args)
 }
 
 #ifdef CONFIG_HOST_COMMAND_STATUS
+DECLARE_HOST_COMMAND(EC_CMD_GET_COMMS_STATUS,
+		     host_command_get_comms_status,
+		     EC_VER_MASK(0));
 /* Returns current command status (busy or not) */
 static enum ec_status
 host_command_get_comms_status(struct host_cmd_handler_args *args)
@@ -734,9 +744,10 @@ host_command_get_comms_status(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_GET_COMMS_STATUS, host_command_get_comms_status,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE,
+		     host_command_resend_response,
+		     EC_VER_MASK(0));
 /* Resend the last saved response */
 static enum ec_status
 host_command_resend_response(struct host_cmd_handler_args *args)
@@ -750,8 +761,6 @@ host_command_resend_response(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_RESEND_RESPONSE, host_command_resend_response,
-		     EC_VER_MASK(0));
 #endif /* CONFIG_HOST_COMMAND_STATUS */
 
 /* Returns what we tell it to. */

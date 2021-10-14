@@ -157,6 +157,9 @@ static int keyscan_seq_collect(struct ec_params_keyscan_seq_ctrl *req,
 	return sizeof(*resp) + resp->collect.num_items;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_KEYSCAN_SEQ_CTRL,
+		     keyscan_seq_ctrl,
+		     EC_VER_MASK(0));
 static enum ec_status keyscan_seq_ctrl(struct host_cmd_handler_args *args)
 {
 	struct ec_params_keyscan_seq_ctrl req, *msg;
@@ -196,5 +199,3 @@ static enum ec_status keyscan_seq_ctrl(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-
-DECLARE_HOST_COMMAND(EC_CMD_KEYSCAN_SEQ_CTRL, keyscan_seq_ctrl, EC_VER_MASK(0));
