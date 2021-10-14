@@ -46,6 +46,30 @@
       },
       "revId": "980ce78b3144aed66f0b75522925082984454380",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b417a1e_a2aa8303",
+        "filename": "board/kingoftown/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-14T16:28:01Z",
+      "side": 1,
+      "message": "That\u0027s right. crrev.com/c/3220718 will replace crrev.com/c/3195685. I posted a comment.",
+      "parentUuid": "7272b1aa_07fedf84",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 1
+      },
+      "revId": "980ce78b3144aed66f0b75522925082984454380",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
