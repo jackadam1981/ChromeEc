@@ -380,6 +380,9 @@ void emmc_ap_jump_to_bl(enum gpio_signal signal)
 }
 #endif
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
+		_spi_get_protocol_info,
+		EC_VER_MASK(0));
 /* Get protocol information */
 static enum ec_status _spi_get_protocol_info(struct host_cmd_handler_args *args)
 {
@@ -395,8 +398,6 @@ static enum ec_status _spi_get_protocol_info(struct host_cmd_handler_args *args)
 
 	return EC_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, _spi_get_protocol_info,
-		     EC_VER_MASK(0));
 
 enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args)
 {

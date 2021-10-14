@@ -77,6 +77,9 @@ static bool want_reboot_ap_at_g3; /* Want to reboot AP from G3? */
 /* Want to reboot AP from G3 with delay? */
 static uint64_t reboot_ap_at_g3_delay;
 
+DECLARE_HOST_COMMAND(EC_CMD_REBOOT_AP_ON_G3,
+		     host_command_reboot_ap_on_g3,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status
 host_command_reboot_ap_on_g3(struct host_cmd_handler_args *args)
 {
@@ -98,8 +101,6 @@ host_command_reboot_ap_on_g3(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_REBOOT_AP_ON_G3, host_command_reboot_ap_on_g3,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 __overridable int power_signal_get_level(enum gpio_signal signal)
 {
@@ -347,6 +348,9 @@ static void power_set_active_wake_mask(void)
  */
 static struct smart_discharge_zone sdzone;
 
+DECLARE_HOST_COMMAND(EC_CMD_SMART_DISCHARGE,
+		     hc_smart_discharge,
+		     EC_VER_MASK(0));
 static enum ec_status hc_smart_discharge(struct host_cmd_handler_args *args)
 {
 	static uint16_t hours_to_zero;
@@ -385,8 +389,6 @@ static enum ec_status hc_smart_discharge(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_SMART_DISCHARGE, hc_smart_discharge,
-		     EC_VER_MASK(0));
 
 __overridable enum critical_shutdown
 board_system_is_idle(uint64_t last_shutdown_time, uint64_t *target,
@@ -1001,6 +1003,9 @@ static int command_hibernation_delay(int argc, char **argv)
 DECLARE_CONSOLE_COMMAND(hibdelay, command_hibernation_delay, "[sec]",
 			"Set the delay before going into hibernation");
 
+DECLARE_HOST_COMMAND(EC_CMD_HIBERNATION_DELAY,
+		     host_command_hibernation_delay,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_hibernation_delay(struct host_cmd_handler_args *args)
 {
@@ -1031,11 +1036,12 @@ host_command_hibernation_delay(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(struct ec_response_hibernation_delay);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_HIBERNATION_DELAY, host_command_hibernation_delay,
-		     EC_VER_MASK(0));
 #endif /* CONFIG_HIBERNATE */
 
 #ifdef CONFIG_POWER_SHUTDOWN_PAUSE_IN_S5
+DECLARE_HOST_COMMAND(EC_CMD_GSV_PAUSE_IN_S5,
+		     host_command_pause_in_s5,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_pause_in_s5(struct host_cmd_handler_args *args)
 {
@@ -1050,8 +1056,6 @@ host_command_pause_in_s5(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GSV_PAUSE_IN_S5, host_command_pause_in_s5,
-		     EC_VER_MASK(0));
 
 static int command_pause_in_s5(int argc, char **argv)
 {

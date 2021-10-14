@@ -835,6 +835,7 @@ static int cec_send(const uint8_t *msg, uint8_t len)
 	return 0;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_CEC_WRITE_MSG, hc_cec_write, EC_VER_MASK(0));
 static enum ec_status hc_cec_write(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_cec_write *params = args->params;
@@ -850,7 +851,6 @@ static enum ec_status hc_cec_write(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_CEC_WRITE_MSG, hc_cec_write, EC_VER_MASK(0));
 
 static int cec_set_enable(uint8_t enable)
 {
