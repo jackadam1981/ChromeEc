@@ -298,6 +298,9 @@ exit:
 		task_wait_event(-1);
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_RWSIG_ACTION,
+		     rwsig_cmd_action,
+		     EC_VER_MASK(0));
 static enum ec_status rwsig_cmd_action(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_rwsig_action *p = args->params;
@@ -315,11 +318,11 @@ static enum ec_status rwsig_cmd_action(struct host_cmd_handler_args *args)
 	args->response_size = 0;
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_RWSIG_ACTION,
-		     rwsig_cmd_action,
-		     EC_VER_MASK(0));
 
 #else /* !HAS_TASK_RWSIG */
+DECLARE_HOST_COMMAND(EC_CMD_RWSIG_CHECK_STATUS,
+		     rwsig_cmd_check_status,
+		     EC_VER_MASK(0));
 static enum ec_status rwsig_cmd_check_status(struct host_cmd_handler_args *args)
 {
 	struct ec_response_rwsig_check_status *r = args->response;
@@ -330,7 +333,4 @@ static enum ec_status rwsig_cmd_check_status(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_RWSIG_CHECK_STATUS,
-		     rwsig_cmd_check_status,
-		     EC_VER_MASK(0));
 #endif
