@@ -253,6 +253,9 @@ void print_battery_debug(void)
 	print_battery_info();
 }
 
+DECLARE_CONSOLE_COMMAND(battery, command_battery,
+			"<repeat_count> <sleep_ms>",
+			"Print battery info");
 static int command_battery(int argc, char **argv)
 {
 	int repeat = 1;
@@ -292,8 +295,6 @@ static int command_battery(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(battery, command_battery, "<repeat_count> <sleep_ms>",
-			"Print battery info");
 
 #ifdef CONFIG_BATTERY_CUT_OFF
 int battery_is_cut_off(void)
@@ -364,6 +365,9 @@ static void check_pending_cutoff(void)
 }
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, check_pending_cutoff, HOOK_PRIO_LAST);
 
+DECLARE_CONSOLE_COMMAND(cutoff, command_cutoff,
+		"[at-shutdown]",
+		"Cut off the battery output");
 static int command_cutoff(int argc, char **argv)
 {
 	int rv;
@@ -386,8 +390,6 @@ static int command_cutoff(int argc, char **argv)
 
 	return EC_ERROR_UNKNOWN;
 }
-DECLARE_CONSOLE_COMMAND(cutoff, command_cutoff, "[at-shutdown]",
-			"Cut off the battery output");
 #else
 int battery_is_cut_off(void)
 {
@@ -428,6 +430,9 @@ __overridable int battery_set_vendor_param(uint32_t param, uint32_t value)
 	return EC_ERROR_UNIMPLEMENTED;
 }
 
+DECLARE_CONSOLE_COMMAND(battparam, console_command_battery_vendor_param,
+			"<param> [value]",
+			"Get or set battery vendor parameters");
 static int console_command_battery_vendor_param(int argc, char **argv)
 {
 	uint32_t param;
@@ -462,9 +467,6 @@ static int console_command_battery_vendor_param(int argc, char **argv)
 	ccprintf("0x%08x\n", value);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(battparam, console_command_battery_vendor_param,
-			"<param> [value]",
-			"Get or set battery vendor parameters");
 
 DECLARE_HOST_COMMAND(EC_CMD_BATTERY_VENDOR_PARAM,
 		     host_command_battery_vendor_param,

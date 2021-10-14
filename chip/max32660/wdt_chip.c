@@ -56,6 +56,8 @@ int watchdog_init(void)
 	return EC_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(wdttest, command_watchdog_test, "wdttest",
+			"Force a WDT reset.");
 static int command_watchdog_test(int argc, char **argv)
 {
 	starve_dog = 1;
@@ -63,5 +65,3 @@ static int command_watchdog_test(int argc, char **argv)
 	CPRINTS("done command_watchdog_test.");
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(wdttest, command_watchdog_test, "wdttest",
-			"Force a WDT reset.");

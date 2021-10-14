@@ -535,6 +535,9 @@ void task_print_list(void)
 	}
 }
 
+DECLARE_CONSOLE_COMMAND(taskinfo, command_task_info,
+			NULL,
+			"Print task info");
 static int command_task_info(int argc, char **argv)
 {
 	task_print_list();
@@ -565,9 +568,14 @@ static int command_task_info(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(taskinfo, command_task_info, NULL, "Print task info");
 
-__maybe_unused static int command_task_ready(int argc, char **argv)
+#ifdef CONFIG_CMD_TASKREADY
+DECLARE_CONSOLE_COMMAND(taskready, command_task_ready,
+			"[setmask]",
+			"Print/set ready tasks");
+#endif
+__maybe_unused
+static int command_task_ready(int argc, char **argv)
 {
 	if (argc < 2) {
 		ccprintf("tasks_ready: 0x%08x\n", (int)tasks_ready);
@@ -579,11 +587,6 @@ __maybe_unused static int command_task_ready(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-
-#ifdef CONFIG_CMD_TASKREADY
-DECLARE_CONSOLE_COMMAND(taskready, command_task_ready, "[setmask]",
-			"Print/set ready tasks");
-#endif
 
 void task_pre_init(void)
 {

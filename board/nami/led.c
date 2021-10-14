@@ -585,6 +585,9 @@ static void print_config(enum ec_led_id id)
 	ccprintf("  Interval:%d\n", tick[id].interval);
 }
 
+DECLARE_CONSOLE_COMMAND(led, command_led,
+			"[debug|red|green|amber|off|alert|s0|s3|s5|conf|factory]",
+			"Turn on/off LED.");
 static int command_led(int argc, char **argv)
 {
 	enum ec_led_id id = EC_LED_ID_BATTERY_LED;
@@ -624,10 +627,6 @@ static int command_led(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(
-	led, command_led,
-	"[debug|red|green|amber|off|alert|s0|s3|s5|conf|factory]",
-	"Turn on/off LED.");
 
 void led_get_brightness_range(enum ec_led_id led_id, uint8_t *brightness_range)
 {

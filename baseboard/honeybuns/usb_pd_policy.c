@@ -69,6 +69,9 @@ static int src_host_pdo_cnt_override;
 #define PD_DR_SWAP_ATTEMPT_MAX 3
 static int pd_dr_swap_attempt_count[CONFIG_USB_PD_PORT_MAX_COUNT];
 
+DECLARE_CONSOLE_COMMAND(hostpdo, command_hostpdo,
+			"<0|1|2|3|4>",
+			"Limit number of PDOs for C0");
 static int command_hostpdo(int argc, char **argv)
 {
 	char *e;
@@ -85,8 +88,6 @@ static int command_hostpdo(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(hostpdo, command_hostpdo, "<0|1|2|3|4>",
-			"Limit number of PDOs for C0");
 
 int dpm_get_source_pdo(const uint32_t **src_pdo, const int port)
 {
