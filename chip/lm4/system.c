@@ -750,6 +750,9 @@ DECLARE_CONSOLE_COMMAND(rtc_alarm, command_rtc_alarm_test,
 /* Host commands */
 
 #ifdef CONFIG_HOSTCMD_RTC
+DECLARE_HOST_COMMAND(EC_CMD_RTC_GET_VALUE,
+		     system_rtc_get_value,
+		     EC_VER_MASK(0));
 static enum ec_status system_rtc_get_value(struct host_cmd_handler_args *args)
 {
 	struct ec_response_rtc *r = args->response;
@@ -759,10 +762,10 @@ static enum ec_status system_rtc_get_value(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_RTC_GET_VALUE,
-		     system_rtc_get_value,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_RTC_SET_VALUE,
+		     system_rtc_set_value,
+		     EC_VER_MASK(0));
 static enum ec_status system_rtc_set_value(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_rtc *p = args->params;
@@ -770,7 +773,4 @@ static enum ec_status system_rtc_set_value(struct host_cmd_handler_args *args)
 	system_set_rtc(p->time);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_RTC_SET_VALUE,
-		     system_rtc_set_value,
-		     EC_VER_MASK(0));
 #endif /* CONFIG_HOSTCMD_RTC */
