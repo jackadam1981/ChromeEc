@@ -406,6 +406,8 @@ void lpc_clear_acpi_status_mask(uint8_t mask)
 	espi_write_lpc_request(espi_dev, EACPI_WRITE_STS, &status);
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, lpc_get_protocol_info,
+		     EC_VER_MASK(0));
 /* Get protocol information */
 static enum ec_status lpc_get_protocol_info(struct host_cmd_handler_args *args)
 {
@@ -421,8 +423,6 @@ static enum ec_status lpc_get_protocol_info(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO, lpc_get_protocol_info,
-		     EC_VER_MASK(0));
 
 /*
  * This function is needed only for the obsolete platform which uses the GPIO
