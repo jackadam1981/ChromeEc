@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2ea4349_6b00d309",
+        "filename": "driver/usb_mux/tusb1064.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1296157
+      },
+      "writtenOn": "2021-10-14T16:28:43Z",
+      "side": 1,
+      "message": "nit: i think you can remove this as its added in header file",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 3
+      },
+      "revId": "eebcf3e43e95ac9844b511a726affc7db83f52bb",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
