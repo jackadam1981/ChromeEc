@@ -470,6 +470,7 @@ DECLARE_CONSOLE_COMMAND(button, console_command_button,
 #endif /* CONFIG_CMD_BUTTON */
 
 #ifdef CONFIG_HOSTCMD_BUTTON
+DECLARE_HOST_COMMAND(EC_CMD_BUTTON, host_command_button, EC_VER_MASK(0));
 static enum ec_status host_command_button(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_button *p = args->params;
@@ -489,7 +490,6 @@ static enum ec_status host_command_button(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_BUTTON, host_command_button, EC_VER_MASK(0));
 
 #endif /* CONFIG_HOSTCMD_BUTTON */
 
