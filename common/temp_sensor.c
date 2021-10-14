@@ -145,13 +145,13 @@ int print_temps(void)
 /* Console commands */
 
 #ifdef CONFIG_CMD_TEMP_SENSOR
+DECLARE_CONSOLE_COMMAND(temps, command_temps,
+			NULL,
+			"Print temp sensors");
 static int command_temps(int argc, char **argv)
 {
 	return print_temps();
 }
-DECLARE_CONSOLE_COMMAND(temps, command_temps,
-			NULL,
-			"Print temp sensors");
 #endif
 
 /*****************************************************************************/
