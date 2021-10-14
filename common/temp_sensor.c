@@ -106,7 +106,7 @@ DECLARE_HOOK(HOOK_INIT, temp_sensor_init, HOOK_PRIO_DEFAULT);
 /* Console commands */
 
 #ifdef CONFIG_CMD_TEMP_SENSOR
-int console_command_temps(int argc, char **argv)
+static int _console_command_temps(int argc, char **argv)
 {
 	int t, i;
 	int rv, rv1 = EC_SUCCESS;
@@ -144,9 +144,14 @@ int console_command_temps(int argc, char **argv)
 
 	return rv1;
 }
-DECLARE_CONSOLE_COMMAND(temps, console_command_temps,
+DECLARE_CONSOLE_COMMAND(temps, _console_command_temps,
 			NULL,
 			"Print temp sensors");
+
+int console_command_temps(int argc, char **argv)
+{
+	return _console_command_temps(argc, argv);
+}
 #endif
 
 /*****************************************************************************/
