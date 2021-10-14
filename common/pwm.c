@@ -58,6 +58,9 @@ __attribute__((weak)) uint16_t pwm_get_raw_duty(enum pwm_channel ch)
 	return (pwm_get_duty(ch) * 65535) / 100;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_DUTY,
+		     host_command_pwm_set_duty,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 {
@@ -72,10 +75,10 @@ host_command_pwm_set_duty(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PWM_SET_DUTY,
-		     host_command_pwm_set_duty,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_DUTY,
+		     host_command_pwm_get_duty,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_pwm_get_duty(struct host_cmd_handler_args *args)
 {
@@ -92,9 +95,6 @@ host_command_pwm_get_duty(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PWM_GET_DUTY,
-		     host_command_pwm_get_duty,
-		     EC_VER_MASK(0));
 
 /**
  * Print status of a PWM channel.
