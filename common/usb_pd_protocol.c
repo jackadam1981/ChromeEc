@@ -5096,6 +5096,30 @@ void pd_update_contract(int port)
 
 #endif /* CONFIG_USB_PD_DUAL_ROLE */
 
+DECLARE_CONSOLE_COMMAND(pd, command_pd,
+			"version"
+			"|dump"
+#ifdef CONFIG_USB_PD_TRY_SRC
+			"|trysrc"
+#endif
+			" [0|1|2]"
+#ifdef CONFIG_CMD_PD_DEV_DUMP_INFO
+			"|rwhashtable"
+#endif
+			"\n\t<port> state"
+#ifdef CONFIG_USB_PD_DUAL_ROLE
+			"|tx|bist_rx|bist_tx|charger|dev"
+			"\n\t<port> disable|enable|soft|info|hard|ping"
+			"\n\t<port> dualrole [on|off|freeze|sink|source]"
+			"\n\t<port> swap [power|data|vconn]"
+			"\n\t<port> vdm [ping|curr|vers]"
+#ifdef CONFIG_CMD_PD_FLASH
+			"\n\t<port> flash [erase|reboot|signature|info|version]"
+#endif /* CONFIG_CMD_PD_FLASH */
+#endif /* CONFIG_USB_PD_DUAL_ROLE */
+			"\n\t<port> srccaps",
+			"USB PD");
+
 static int command_pd(int argc, char **argv)
 {
 	int port;
@@ -5319,30 +5343,6 @@ static int command_pd(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(pd, command_pd,
-			"version"
-			"|dump"
-#ifdef CONFIG_USB_PD_TRY_SRC
-			"|trysrc"
-#endif
-			" [0|1|2]"
-#ifdef CONFIG_CMD_PD_DEV_DUMP_INFO
-			"|rwhashtable"
-#endif
-			"\n\t<port> state"
-#ifdef CONFIG_USB_PD_DUAL_ROLE
-			"|tx|bist_rx|bist_tx|charger|dev"
-			"\n\t<port> disable|enable|soft|info|hard|ping"
-			"\n\t<port> dualrole [on|off|freeze|sink|source]"
-			"\n\t<port> swap [power|data|vconn]"
-			"\n\t<port> vdm [ping|curr|vers]"
-#ifdef CONFIG_CMD_PD_FLASH
-			"\n\t<port> flash [erase|reboot|signature|info|version]"
-#endif /* CONFIG_CMD_PD_FLASH */
-#endif /* CONFIG_USB_PD_DUAL_ROLE */
-			"\n\t<port> srccaps",
-			"USB PD");
-
 #ifdef HAS_TASK_HOSTCMD
 
 #ifdef CONFIG_HOSTCMD_FLASHPD

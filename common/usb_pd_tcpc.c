@@ -1408,6 +1408,9 @@ void tcpc_i2c_process(int read, int port, int len, uint8_t *payload,
 #endif
 
 #ifdef CONFIG_COMMON_RUNTIME
+DECLARE_CONSOLE_COMMAND(tcpc, command_tcpc,
+			"dump [0|1]\n\t<port> [clock|state]",
+			"Type-C Port Controller");
 static int command_tcpc(int argc, char **argv)
 {
 	int port;
@@ -1462,7 +1465,4 @@ static int command_tcpc(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(tcpc, command_tcpc,
-			"dump [0|1]\n\t<port> [clock|state]",
-			"Type-C Port Controller");
 #endif
