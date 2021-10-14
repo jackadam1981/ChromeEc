@@ -106,7 +106,7 @@ int board_set_active_charge_port(int port)
 #endif /* CONFIG_DEDICATED_CHARGE_PORT_COUNT */
 
 	/* Make sure non-charging ports are disabled */
-	for (i = 0; i < CONFIG_USB_PD_PORT_MAX_COUNT; i++) {
+	for (i = 0; i < board_get_usb_pd_port_count(); i++) {
 		if (i == port)
 			continue;
 
