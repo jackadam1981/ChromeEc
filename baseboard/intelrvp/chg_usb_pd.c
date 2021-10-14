@@ -67,7 +67,7 @@ static void board_charge_init(void)
 	};
 
 	/* Initialize all charge suppliers to seed the charge manager */
-	for (port = 0; port < CHARGE_PORT_COUNT; port++) {
+	for (port = 0; port < board_get_charge_port_count(); port++) {
 		for (supplier = 0; supplier < CHARGE_SUPPLIER_COUNT; supplier++)
 			charge_manager_update_charge(supplier, port,
 				&charge_init);
@@ -84,7 +84,7 @@ int board_set_active_charge_port(int port)
 	int i;
 	/* charge port is a realy physical port */
 	int is_real_port = (port >= 0 &&
-			port < CHARGE_PORT_COUNT);
+			port < board_get_charge_port_count());
 	/* check if we are source vbus on that port */
 	int source = board_vbus_source_enabled(port);
 
