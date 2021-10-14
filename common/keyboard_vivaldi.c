@@ -69,6 +69,8 @@ static const uint16_t action_scancodes[] = {
 
 static const struct ec_response_keybd_config *vivaldi_keybd;
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_KEYBD_CONFIG, get_vivaldi_keybd_config,
+		     EC_VER_MASK(0));
 static enum
 ec_status get_vivaldi_keybd_config(struct host_cmd_handler_args *args)
 {
@@ -81,8 +83,6 @@ ec_status get_vivaldi_keybd_config(struct host_cmd_handler_args *args)
 	}
 	return EC_RES_ERROR;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_KEYBD_CONFIG, get_vivaldi_keybd_config,
-		     EC_VER_MASK(0));
 
 #ifdef CONFIG_KEYBOARD_CUSTOMIZATION
 

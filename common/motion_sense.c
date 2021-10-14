@@ -1063,6 +1063,9 @@ static struct motion_sensor_t
 	return host_sensor_id_to_real_sensor(host_id);
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_MOTION_SENSE_CMD, host_cmd_motion_sense,
+		     EC_VER_MASK(1) | EC_VER_MASK(2) | EC_VER_MASK(3) |
+		     EC_VER_MASK(4));
 static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_motion_sense *in = args->params;
@@ -1578,9 +1581,6 @@ static enum ec_status host_cmd_motion_sense(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_MOTION_SENSE_CMD, host_cmd_motion_sense,
-		     EC_VER_MASK(1) | EC_VER_MASK(2) | EC_VER_MASK(3) |
-		     EC_VER_MASK(4));
 
 /*****************************************************************************/
 /* Console commands */

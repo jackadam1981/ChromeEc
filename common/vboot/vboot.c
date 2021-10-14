@@ -100,6 +100,7 @@ static int verify_slot(enum ec_image slot)
 	return EC_SUCCESS;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_EFS_VERIFY, hc_verify_slot, EC_VER_MASK(0));
 static enum ec_status hc_verify_slot(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_efs_verify *p = args->params;
@@ -117,7 +118,6 @@ static enum ec_status hc_verify_slot(struct host_cmd_handler_args *args)
 	}
 	return verify_slot(slot) ? EC_RES_ERROR : EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_EFS_VERIFY, hc_verify_slot, EC_VER_MASK(0));
 
 static int verify_and_jump(void)
 {
