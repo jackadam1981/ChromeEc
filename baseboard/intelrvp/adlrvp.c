@@ -500,3 +500,11 @@ __overridable int board_get_charge_port_count(void)
 		return (CONFIG_USB_PD_PORT_MAX_COUNT +
 				CONFIG_DEDICATED_CHARGE_PORT_COUNT);
 }
+
+__overridable int board_get_dedicated_charge_port(void)
+{
+	if (board_adl_m_n_rvp)
+		return (DEDICATED_CHARGE_PORT - 2);
+		else
+		return DEDICATED_CHARGE_PORT;
+}
