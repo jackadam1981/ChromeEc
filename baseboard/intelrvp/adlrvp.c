@@ -527,3 +527,8 @@ __overridable int board_get_charge_port_count(void)
 {
 	return (adlrvp_usb_ports + CONFIG_DEDICATED_CHARGE_PORT_COUNT);
 }
+
+__overridable int board_get_dedicated_charge_port(void)
+{
+	return adlrvp_usb_ports;
+}
