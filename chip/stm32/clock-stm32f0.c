@@ -479,6 +479,9 @@ void rtc_set(uint32_t sec)
 
 #if defined(CONFIG_LOW_POWER_IDLE) && defined(CONFIG_COMMON_RUNTIME)
 #ifdef CONFIG_CMD_IDLE_STATS
+DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
+			"",
+			"Print last idle stats");
 /**
  * Print low power idle statistics
  */
@@ -496,8 +499,5 @@ static int command_idle_stats(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
-			"",
-			"Print last idle stats");
 #endif /* CONFIG_CMD_IDLE_STATS */
 #endif
