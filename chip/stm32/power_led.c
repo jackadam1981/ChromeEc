@@ -137,6 +137,9 @@ void power_led_task(void)
 
 #define CONFIG_CMD_POWERLED
 #ifdef CONFIG_CMD_POWERLED
+DECLARE_CONSOLE_COMMAND(powerled, command_powerled,
+		"[off | on | suspend]",
+		"Change power LED state");
 static int command_powerled(int argc, char **argv)
 {
 	enum powerled_state state;
@@ -156,7 +159,4 @@ static int command_powerled(int argc, char **argv)
 	powerled_set_state(state);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(powerled, command_powerled,
-		"[off | on | suspend]",
-		"Change power LED state");
 #endif

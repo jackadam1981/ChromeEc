@@ -188,6 +188,8 @@ void sy21612_task(void *u)
 #endif
 
 #ifdef CONFIG_CMD_CHARGER
+DECLARE_CONSOLE_COMMAND(sy21612, command_sy21612,
+			NULL, NULL);
 static int command_sy21612(int argc, char **argv)
 {
 	int i, val, rv;
@@ -208,6 +210,4 @@ static int command_sy21612(int argc, char **argv)
 
 	return 0;
 }
-DECLARE_CONSOLE_COMMAND(sy21612, command_sy21612,
-			NULL, NULL);
 #endif
