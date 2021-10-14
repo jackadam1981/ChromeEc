@@ -137,6 +137,9 @@ int usb_charge_set_mode(int port_id, enum usb_charge_mode mode,
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(usbchargemode, command_set_mode,
+			"[<port> <0 | 1 | 2 | 3> [<0 | 1>]]",
+			"Set USB charge mode");
 static int command_set_mode(int argc, char **argv)
 {
 	int port_id = -1;
@@ -171,9 +174,6 @@ static int command_set_mode(int argc, char **argv)
 
 	return usb_charge_set_mode(port_id, mode, inhibit_charge);
 }
-DECLARE_CONSOLE_COMMAND(usbchargemode, command_set_mode,
-			"[<port> <0 | 1 | 2 | 3> [<0 | 1>]]",
-			"Set USB charge mode");
 
 /*****************************************************************************/
 /* Host commands */
