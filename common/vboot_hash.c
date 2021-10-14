@@ -451,6 +451,9 @@ static int host_start_hash(const struct ec_params_vboot_hash *p)
 		return EC_RES_ERROR;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_VBOOT_HASH,
+		     host_command_vboot_hash,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_vboot_hash(struct host_cmd_handler_args *args)
 {
@@ -491,5 +494,3 @@ host_command_vboot_hash(struct host_cmd_handler_args *args)
 		return EC_RES_INVALID_PARAM;
 	}
 }
-DECLARE_HOST_COMMAND(EC_CMD_VBOOT_HASH, host_command_vboot_hash,
-		     EC_VER_MASK(0));

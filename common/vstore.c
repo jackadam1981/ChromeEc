@@ -35,6 +35,7 @@ static const int vstore_size =
 	sizeof(struct vstore_slot) * CONFIG_VSTORE_SLOT_COUNT;
 BUILD_ASSERT(ARRAY_SIZE(vstore_slots) <= EC_VSTORE_SLOT_MAX);
 
+DECLARE_HOST_COMMAND(EC_CMD_VSTORE_INFO, vstore_info, EC_VER_MASK(0));
 /*
  * vstore_info - Get slot count and mask of locked slots.
  */
@@ -53,7 +54,6 @@ static enum ec_status vstore_info(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_VSTORE_INFO, vstore_info, EC_VER_MASK(0));
 
 /*
  * vstore_read - Read slot from temporary secure storage.

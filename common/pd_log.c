@@ -56,6 +56,9 @@ void pd_log_recv_vdm(int port, int cnt, uint32_t *payload)
 	}
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_PD_GET_LOG_ENTRY,
+		     hc_pd_get_log_entry,
+		     EC_VER_MASK(0));
 /* we are a PD MCU/EC, send back the events to the host */
 static enum ec_status hc_pd_get_log_entry(struct host_cmd_handler_args *args)
 {
@@ -83,9 +86,10 @@ dequeue_retry:
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PD_GET_LOG_ENTRY, hc_pd_get_log_entry,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_PD_WRITE_LOG_ENTRY,
+		     hc_pd_write_log_entry,
+		     EC_VER_MASK(0));
 static enum ec_status hc_pd_write_log_entry(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_pd_write_log_entry *p = args->params;
@@ -115,8 +119,6 @@ static enum ec_status hc_pd_write_log_entry(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_PD_WRITE_LOG_ENTRY, hc_pd_write_log_entry,
-		     EC_VER_MASK(0));
 #else /* !HAS_TASK_HOSTCMD */
 /* we are a PD accessory, send back the events as a VDM (VDO_CMD_GET_LOG) */
 int pd_vdm_get_log_entry(uint32_t *payload)
