@@ -316,6 +316,9 @@ static void __keep ps2_int_handler(void)
 DECLARE_IRQ(NPCX_IRQ_PS2, ps2_int_handler, 5);
 
 #ifdef CONFIG_CMD_PS2
+DECLARE_CONSOLE_COMMAND(ps2ench, command_ps2ench,
+			"ps2_ench channel 1|0",
+			"Enable/Disable PS/2 channel");
 static int command_ps2ench(int argc, char **argv)
 {
 	uint8_t ch;
@@ -336,9 +339,10 @@ static int command_ps2ench(int argc, char **argv)
 
 	return 0;
 }
-DECLARE_CONSOLE_COMMAND(ps2ench, command_ps2ench, "ps2_ench channel 1|0",
-			"Enable/Disable PS/2 channel");
 
+DECLARE_CONSOLE_COMMAND(ps2write, command_ps2write,
+		"ps2_write channel data",
+		"Write data byte to PS/2 channel ");
 static int command_ps2write(int argc, char **argv)
 {
 	uint8_t ch, data;
@@ -354,6 +358,4 @@ static int command_ps2write(int argc, char **argv)
 	ps2_transmit_byte(ch, data);
 	return 0;
 }
-DECLARE_CONSOLE_COMMAND(ps2write, command_ps2write, "ps2_write channel data",
-			"Write data byte to PS/2 channel ");
 #endif

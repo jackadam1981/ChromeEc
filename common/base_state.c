@@ -33,6 +33,9 @@ void base_set_state(int state)
 }
 #endif
 
+DECLARE_CONSOLE_COMMAND(basestate, command_setbasestate,
+	"[attach | detach | reset]",
+	"Manually force base state to attached, detached or reset.");
 static int command_setbasestate(int argc, char **argv)
 {
 	if (argc != 2)
@@ -47,10 +50,8 @@ static int command_setbasestate(int argc, char **argv)
 		return EC_ERROR_PARAM1;
 
 	return EC_SUCCESS;
+
 }
-DECLARE_CONSOLE_COMMAND(
-	basestate, command_setbasestate, "[attach | detach | reset]",
-	"Manually force base state to attached, detached or reset.");
 
 DECLARE_HOST_COMMAND(EC_CMD_SET_BASE_STATE, hostcmd_setbasestate,
 		     EC_VER_MASK(0));
