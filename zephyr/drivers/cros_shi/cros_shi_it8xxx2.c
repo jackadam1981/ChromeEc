@@ -389,6 +389,9 @@ DEVICE_DT_INST_DEFINE(0, cros_shi_ite_init, NULL,
 		      CONFIG_CROS_SHI_IT8XXX2_INIT_PRIORITY,
 		      NULL);
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
+		     spi_get_protocol_info,
+		     EC_VER_MASK(0));
 /* Get protocol information */
 enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args)
 {
@@ -404,6 +407,3 @@ enum ec_status spi_get_protocol_info(struct host_cmd_handler_args *args)
 
 	return EC_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_PROTOCOL_INFO,
-		     spi_get_protocol_info,
-		     EC_VER_MASK(0));
