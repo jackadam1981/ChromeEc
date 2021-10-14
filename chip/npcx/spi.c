@@ -233,6 +233,9 @@ static int printrx(const char *desc, const uint8_t *txdata, int txlen,
 	return EC_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(spirom, command_spirom,
+		NULL,
+		"Test reading SPI EEPROM");
 static int command_spirom(int argc, char **argv)
 {
 	uint8_t txmandev[] = {0x90, 0x00, 0x00, 0x00};
@@ -253,7 +256,4 @@ static int command_spirom(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(spirom, command_spirom,
-		NULL,
-		"Test reading SPI EEPROM");
 #endif

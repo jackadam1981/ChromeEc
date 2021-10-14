@@ -123,6 +123,9 @@ int lp5562_set_pc(int engine, int val)
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_POWERLED
+DECLARE_CONSOLE_COMMAND(lp5562, command_lp5562,
+			"on | off | <red> <green> <blue>",
+			"Set the color of the LED");
 static int command_lp5562(int argc, char **argv)
 {
 	if (argc == 4) {
@@ -154,7 +157,4 @@ static int command_lp5562(int argc, char **argv)
 
 	return EC_ERROR_INVAL;
 }
-DECLARE_CONSOLE_COMMAND(lp5562, command_lp5562,
-			"on | off | <red> <green> <blue>",
-			"Set the color of the LED");
 #endif
