@@ -471,3 +471,22 @@ __override void board_pre_task_i2c_peripheral_init(void)
 	/* ReConfigure board specific drivers */
 	reconfigure_board_specific_drivers();
 }
+
+__override uint8_t board_get_usb_pd_port_count(void)
+{
+	if (board_adl_m_n_rvp) {
+	/*
+	 * For MCHP based M/N boards, the number of
+	 * typec ports is already 2. This config check
+	 * will protect the reconfiguration of number
+	 * of typec ports in MCHP based boards
+	 **/
+#ifndef VARIANT_INTELRVP_EC_MCHP 
+		return (CONFIG_USB_PD_PORT_MAX_COUNT - 2);
+#else
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+#endif
+	}
+	else
+		return CONFIG_USB_PD_PORT_MAX_COUNT;
+}
