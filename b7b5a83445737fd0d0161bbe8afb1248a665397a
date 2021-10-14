@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1456d0b7_28c962e1",
+        "filename": "common/temp_sensor.c",
+        "patchSetId": 3
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-14T23:22:46Z",
+      "side": 1,
+      "message": "Can you please do:\n\nint print_temps(void)\n{\n\tint t, i;\n\tint rv, rv1 \u003d EC_SUCCESS;\n\n\tfor (i \u003d 0; i \u003c TEMP_SENSOR_COUNT; ++i) {\n\t\tccprintf(\"  %-20s: \", temp_sensors[i].name);\n\t\trv \u003d temp_sensor_read(i, \u0026t);\n\t\tif (rv)\n\t\t\trv1 \u003d rv;\n\n\t\tswitch (rv) {\n\t\tcase EC_SUCCESS:\n\t\t\tccprintf(\"%d K \u003d %d C\", t, K_TO_C(t));\n#ifdef CONFIG_THROTTLE_AP\n\t\t\tif (thermal_params[i].temp_fan_off \u0026\u0026\n\t\t\t    thermal_params[i].temp_fan_max)\n\t\t\t\tccprintf(\"  %d%%\",\n\t\t\t\t\t thermal_fan_percent(\n\t\t\t\t\t\t thermal_params[i].temp_fan_off,\n\t\t\t\t\t\t thermal_params[i].temp_fan_max,\n\t\t\t\t\t\t t));\n#endif\n\t\t\tccprintf(\"\\n\");\n\t\t\tbreak;\n\t\tcase EC_ERROR_NOT_POWERED:\n\t\t\tccprintf(\"Not powered\\n\");\n\t\t\tbreak;\n\t\tcase EC_ERROR_NOT_CALIBRATED:\n\t\t\tccprintf(\"Not calibrated\\n\");\n\t\t\tbreak;\n\t\tdefault:\n\t\t\tccprintf(\"Error %d\\n\", rv);\n\t\t}\n\t}\n\n\treturn rv1;\n}\n\n#ifdef CONFIG_CMD_TEMP_SENSOR\nstatic int command_temps(int argc, char **argv)\n{\n\treturn print_temps();\n}\nDECLARE_CONSOLE_COMMAND(temps, command_temps,\n\t\t\tNULL,\n\t\t\t\"Print temp sensors\");\n#endif\n\nThen, you can make thermal.c call print_temps.",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 6
+      },
+      "revId": "b7b5a83445737fd0d0161bbe8afb1248a665397a",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
