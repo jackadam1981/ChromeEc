@@ -163,6 +163,9 @@ void mp4245_get_status(void)
 	ccprintf("\tIlim   = %d mA, Ibus = %d mA\n", ilim, ibus);
 }
 
+DECLARE_CONSOLE_COMMAND(mp4245, command_mp4245,
+			"<info|dump|vbus|ilim>",
+			"Turn on/off|set vbus.");
 static int command_mp4245(int argc, char **argv)
 {
 	char *e;
@@ -194,5 +197,3 @@ static int command_mp4245(int argc, char **argv)
 	}
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(mp4245, command_mp4245, "<info|dump|vbus|ilim>",
-			"Turn on/off|set vbus.");

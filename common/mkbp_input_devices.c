@@ -195,6 +195,9 @@ static void simulate_key(int row, int col, int pressed)
 	mkbp_fifo_add((uint8_t)EC_MKBP_EVENT_KEY_MATRIX, simulated_key);
 }
 
+DECLARE_CONSOLE_COMMAND(kbpress, command_mkbp_keyboard_press,
+			"[col row [0 | 1]]",
+			"Simulate keypress");
 static int command_mkbp_keyboard_press(int argc, char **argv)
 {
 	if (argc == 1) {
@@ -236,7 +239,5 @@ static int command_mkbp_keyboard_press(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(kbpress, command_mkbp_keyboard_press,
-			"[col row [0 | 1]]", "Simulate keypress");
 
 #endif /* !defined(HAS_TASK_KEYSCAN) */

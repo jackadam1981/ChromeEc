@@ -306,6 +306,9 @@ int gl3590_enable_ports(int hub, uint8_t port_mask, bool enable)
 }
 
 #ifdef CONFIG_CMD_GL3590
+DECLARE_CONSOLE_COMMAND(gl3590, command_gl3590,
+			"<enable | disable> <port_bitmask>",
+			"Manage GL3590 USB3.1 hub and its ports");
 static int command_gl3590(int argc, char **argv)
 {
 	char *e;
@@ -332,7 +335,4 @@ static int command_gl3590(int argc, char **argv)
 
 	return EC_ERROR_PARAM1;
 }
-DECLARE_CONSOLE_COMMAND(gl3590, command_gl3590,
-			"<enable | disable> <port_bitmask>",
-			"Manage GL3590 USB3.1 hub and its ports");
 #endif /* CONFIG_CMD_GL3590 */

@@ -653,6 +653,11 @@ const struct pchg_drv ctn730_drv = {
 	.update_close = ctn730_update_close,
 };
 
+DECLARE_CONSOLE_COMMAND(ctn730, cc_ctn730,
+			"<port> dump/bist <tag/id>"
+			"\n\t<port> dump <tag>"
+			"\n\t<port> bist <test_id>",
+			"Control ctn730");
 static int cc_ctn730(int argc, char **argv)
 {
 	int port;
@@ -714,8 +719,3 @@ static int cc_ctn730(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ctn730, cc_ctn730,
-			"<port> dump/bist <tag/id>"
-			"\n\t<port> dump <tag>"
-			"\n\t<port> bist <test_id>",
-			"Control ctn730");

@@ -1176,6 +1176,9 @@ static enum ec_status host_command_sysinfo(struct host_cmd_handler_args *args)
 #endif
 
 #ifdef CONFIG_CMD_SCRATCHPAD
+DECLARE_CONSOLE_COMMAND(scratchpad, command_scratchpad,
+			"[val]",
+			"Get or set scratchpad value");
 static int command_scratchpad(int argc, char **argv)
 {
 	int rv = EC_SUCCESS;
@@ -1202,10 +1205,13 @@ static int command_scratchpad(int argc, char **argv)
 		ccprintf("Scratchpad: 0x%08x\n", scratchpad_value);
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(scratchpad, command_scratchpad, "[val]",
-			"Get or set scratchpad value");
 #endif /* CONFIG_CMD_SCRATCHPAD */
 
+#ifdef CONFIG_HIBERNATE
+DECLARE_CONSOLE_COMMAND(hibernate, command_hibernate,
+			"[sec] [usec]",
+			"Hibernate the EC");
+#endif /* CONFIG_HIBERNATE */
 __maybe_unused static int command_hibernate(int argc, char **argv)
 {
 	int seconds = 0;
@@ -1231,10 +1237,6 @@ __maybe_unused static int command_hibernate(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-#ifdef CONFIG_HIBERNATE
-DECLARE_CONSOLE_COMMAND(hibernate, command_hibernate, "[sec] [usec]",
-			"Hibernate the EC");
-#endif /* CONFIG_HIBERNATE */
 
 /*
  * A typical build string has the following format
@@ -1349,6 +1351,9 @@ static int command_version(int argc, char **argv)
 DECLARE_SAFE_CONSOLE_COMMAND(version, command_version, NULL, "Print versions");
 
 #ifdef CONFIG_CMD_SYSJUMP
+DECLARE_CONSOLE_COMMAND(sysjump, command_sysjump,
+			"[RO | RW | A | B | addr | disable]",
+			"Jump to a system image or address");
 static int command_sysjump(int argc, char **argv)
 {
 	uint32_t addr;
@@ -1388,11 +1393,13 @@ static int command_sysjump(int argc, char **argv)
 	jump_to_image(addr);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(sysjump, command_sysjump,
-			"[RO | RW | A | B | addr | disable]",
-			"Jump to a system image or address");
 #endif
 
+DECLARE_CONSOLE_COMMAND(
+	reboot, command_reboot,
+	"[hard|soft] [preserve] [ap-off] [wait-ext] [cancel] [ap-off-in-ro]"
+	" [ro]",
+	"Reboot the EC");
 static int command_reboot(int argc, char **argv)
 {
 	int flags = SYSTEM_RESET_MANUALLY_TRIGGERED;
@@ -1433,11 +1440,6 @@ static int command_reboot(int argc, char **argv)
 	system_reset(flags);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(
-	reboot, command_reboot,
-	"[hard|soft] [preserve] [ap-off] [wait-ext] [cancel] [ap-off-in-ro]"
-	" [ro]",
-	"Reboot the EC");
 
 #ifdef CONFIG_CMD_SYSLOCK
 static int command_system_lock(int argc, char **argv)
@@ -1486,6 +1488,9 @@ DECLARE_SAFE_CONSOLE_COMMAND(sleepmask, command_sleepmask,
 #endif
 
 #ifdef CONFIG_CMD_JUMPTAGS
+DECLARE_CONSOLE_COMMAND(jumptags, command_jumptags,
+			NULL,
+			"List jump tags");
 static int command_jumptags(int argc, char **argv)
 {
 	const struct jump_tag *t;
@@ -1507,10 +1512,12 @@ static int command_jumptags(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(jumptags, command_jumptags, NULL, "List jump tags");
 #endif /* CONFIG_CMD_JUMPTAGS */
 
 #ifdef CONFIG_EMULATED_SYSRQ
+DECLARE_CONSOLE_COMMAND(sysrq, command_sysrq,
+			"[key]",
+			"Simulate sysrq press (default: x)");
 static int command_sysrq(int argc, char **argv)
 {
 	char key = 'x';
@@ -1522,19 +1529,18 @@ static int command_sysrq(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(sysrq, command_sysrq, "[key]",
-			"Simulate sysrq press (default: x)");
 #endif /* CONFIG_EMULATED_SYSRQ */
 
 #ifdef CONFIG_CMD_RESET_FLAGS
+DECLARE_CONSOLE_COMMAND(rflags, command_rflags,
+			NULL,
+			"Print reset flags saved in non-volatile memory");
 static int command_rflags(int argc, char **argv)
 {
 	print_reset_flags(chip_read_reset_flags());
 	ccprintf("\n");
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(rflags, command_rflags, NULL,
-			"Print reset flags saved in non-volatile memory");
 #endif
 
 /*****************************************************************************/

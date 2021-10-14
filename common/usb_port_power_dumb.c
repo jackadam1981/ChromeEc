@@ -88,6 +88,9 @@ usb_port_command_set_mode(struct host_cmd_handler_args *args)
 /*****************************************************************************/
 /* Console commands */
 
+DECLARE_CONSOLE_COMMAND(usbchargemode, command_set_mode,
+			"[<port> <on | off>]",
+			"Set USB charge mode");
 static int command_set_mode(int argc, char **argv)
 {
 	int port_id = -1;
@@ -115,8 +118,7 @@ static int command_set_mode(int argc, char **argv)
 
 	return EC_ERROR_PARAM_COUNT;
 }
-DECLARE_CONSOLE_COMMAND(usbchargemode, command_set_mode, "[<port> <on | off>]",
-			"Set USB charge mode");
+
 
 /*****************************************************************************/
 /* Hooks */
