@@ -72,6 +72,9 @@ int peci_temp_sensor_get_val(int idx, int *temp_ptr)
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_PECI
+DECLARE_CONSOLE_COMMAND(peci, peci_cmd,
+			"addr wlen rlen cmd timeout(us)",
+			"PECI command");
 static int peci_cmd(int argc, char **argv)
 {
 	uint8_t r_buf[PECI_READ_DATA_FIFO_SIZE] = {0};
@@ -143,10 +146,10 @@ static int peci_cmd(int argc, char **argv)
 	ccprintf("PECI read data: %ph\n", HEX_BUF(r_buf, peci.r_len));
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(peci, peci_cmd,
-			"addr wlen rlen cmd timeout(us)",
-			"PECI command");
 
+DECLARE_CONSOLE_COMMAND(pecitemp, command_peci_temp,
+			NULL,
+			"Print CPU temperature");
 static int command_peci_temp(int argc, char **argv)
 {
 	int t;
@@ -159,7 +162,4 @@ static int command_peci_temp(int argc, char **argv)
 	ccprintf("CPU temp: %d K, %d C\n", t, K_TO_C(t));
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(pecitemp, command_peci_temp,
-			NULL,
-			"Print CPU temperature");
 #endif /* CONFIG_CMD_PECI */

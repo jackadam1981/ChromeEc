@@ -112,6 +112,9 @@ static void print_channel(enum pwm_channel ch, int max_duty)
 		ccprintf("  %d: disabled\n", ch);
 }
 
+DECLARE_CONSOLE_COMMAND(pwmduty, cc_pwm_duty,
+			"[channel [<percent> | -1=disable] | [raw <value>]]",
+			"Get/set PWM duty cycles ");
 static int cc_pwm_duty(int argc, char **argv)
 {
 	int value = 0;
@@ -161,9 +164,6 @@ static int cc_pwm_duty(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(pwmduty, cc_pwm_duty,
-			"[channel [<percent> | -1=disable] | [raw <value>]]",
-			"Get/set PWM duty cycles ");
 #endif /* CONFIG_PWM */
 
 /*

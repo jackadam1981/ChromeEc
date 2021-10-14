@@ -365,6 +365,9 @@ static void clock_chipset_shutdown(void)
 DECLARE_HOOK(HOOK_CHIPSET_SHUTDOWN, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
 DECLARE_HOOK(HOOK_CHIPSET_SUSPEND, clock_chipset_shutdown, HOOK_PRIO_DEFAULT);
 
+DECLARE_CONSOLE_COMMAND(clock, command_clock,
+			"hsi | msi",
+			"Set clock frequency");
 static int command_clock(int argc, char **argv)
 {
 	if (argc >= 2) {
@@ -379,6 +382,3 @@ static int command_clock(int argc, char **argv)
 	ccprintf("Clock frequency is now %d Hz\n", freq);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(clock, command_clock,
-			"hsi | msi",
-			"Set clock frequency");
