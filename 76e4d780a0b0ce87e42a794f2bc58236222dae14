@@ -16,6 +16,40 @@
       "message": "Lgtm, but hcyang@ please also confirm",
       "revId": "76e4d780a0b0ce87e42a794f2bc58236222dae14",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90473852_6e621aed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-10-14T02:53:25Z",
+      "side": 1,
+      "message": "Nit: this two lines of comments are incorrect. Should be \"authTimeSecretHash\".\nhttps://source.chromium.org/chromiumos/chromiumos/codesearch/+/main:src/platform/cr50/include/u2f.h;l\u003d145,159",
+      "revId": "76e4d780a0b0ce87e42a794f2bc58236222dae14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acbee93f_c6b42063",
+        "filename": "common/u2f.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1520327
+      },
+      "writtenOn": "2021-10-14T02:53:25Z",
+      "side": 1,
+      "message": "Should we use another variable `authTimeSecretHash` instead of putting the sha256 result into the original variable? This way the variable name will be less confusing, and we won\u0027t be passing `authTimeSecret` as the function parameter named `authTimeSecretHash`.",
+      "revId": "76e4d780a0b0ce87e42a794f2bc58236222dae14",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
