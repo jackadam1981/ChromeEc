@@ -143,6 +143,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "86df228a_381dbb06",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-14T16:05:11Z",
+      "side": 1,
+      "message": "Jian, sorry again but you should be able to use \u0027size\u0027 for data[] because it\u0027s const. It doesn\u0027t work?",
+      "parentUuid": "4f11e9d1_fc25ed73",
+      "range": {
+        "startLine": 683,
+        "startChar": 14,
+        "endLine": 683,
+        "endChar": 16
+      },
+      "revId": "04872713abedf86df14b9392ee89b4601d86381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6c5cacb_053af04d",
