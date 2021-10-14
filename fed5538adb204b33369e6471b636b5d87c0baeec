@@ -78,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a04cd6b3_f25f9c32",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-14T16:38:13Z",
+      "side": 1,
+      "message": "Agree. It is a vendor-specific register; not every battery has this register, right? Tommy, Do you know what batteries have this inform?",
+      "parentUuid": "fc057e63_61254910",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 19
+      },
+      "revId": "fed5538adb204b33369e6471b636b5d87c0baeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "775f6152_6b90d1ea",
         "filename": "include/battery.h",
         "patchSetId": 1
