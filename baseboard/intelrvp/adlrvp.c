@@ -555,6 +555,35 @@ __override bool board_is_tbt_usb4_port(int port)
 	return tbt_usb4;
 }
 
+/*
+ * Configure the ports of ioexpander based on board tye.
+ *
+ * A single TCPC AIC has 2 ioexpander ports. For ADL RVP with 4 typec ports,
+ * 2 TCPC AICs are used. But, in the case of some skus with typec ports < 3,
+ * only one TCPC AIC is used. In this case, it is not required to initialize
+ * those ioex ports which are absent. Setting the flag
+ * IOEX_FLAGS_DEFAULT_INIT_DISABLED for the corresponding ioex port ensures
+ * that, the specific port will not be initialized.
+ **/
+static void configure_ioex_ports(void)
+{
+	switch (ADL_RVP_BOARD_ID(board_get_version())) {
+	case ADLM_LP4_RVP1_SKU_BOARD_ID:
+	case ADLM_LP5_RVP2_SKU_BOARD_ID:
+	case ADLM_LP5_RVP3_SKU_BOARD_ID:
+	case ADLN_LP5_ERB_SKU_BOARD_ID:
+	case ADLN_LP5_RVP_SKU_BOARD_ID:
+#if defined(HAS_TASK_PD_C2)
+		ioex_config[IOEX_C2_PCA9675].flags =
+			IOEX_FLAGS_DEFAULT_INIT_DISABLED;
+		ioex_config[IOEX_C3_PCA9675].flags =
+			IOEX_FLAGS_DEFAULT_INIT_DISABLED;
+#endif
+		break;
+	default:
+		break;
+	}
+}
 __override void board_pre_task_i2c_peripheral_init(void)
 {
 	/* Initialized IOEX-0 to access IOEX-GPIOs needed pre-task */
@@ -574,4 +603,7 @@ __override void board_pre_task_i2c_peripheral_init(void)
 
 	/* Configure the number of typec usb ports */
 	configure_usbc_ports();
+
+	/* Configure ioex ports based on the board */
+	configure_ioex_ports();
 }
