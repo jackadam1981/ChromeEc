@@ -11,6 +11,7 @@
 #include "usb_pd_tcpm.h"
 
 #ifdef CONFIG_HOSTCMD_LOCATE_CHIP
+DECLARE_HOST_COMMAND(EC_CMD_LOCATE_CHIP, hc_locate_chip, EC_VER_MASK(0));
 static enum ec_status hc_locate_chip(struct host_cmd_handler_args *args)
 {
 	const struct ec_params_locate_chip *params = args->params;
@@ -52,7 +53,6 @@ static enum ec_status hc_locate_chip(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*resp);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_LOCATE_CHIP, hc_locate_chip, EC_VER_MASK(0));
 /* If the params union expands in the future, need to bump EC_VER_MASK */
 BUILD_ASSERT(sizeof(struct ec_params_locate_chip) == 4);
 #endif /* CONFIG_HOSTCMD_LOCATE_CHIP */

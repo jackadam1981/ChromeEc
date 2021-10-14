@@ -747,6 +747,9 @@ void crec_flash_lock_mapped_storage(int lock)
 #if defined(CONFIG_HOSTCMD_FLASH_SPI_INFO) && !defined(BOARD_NPCX_EVB)
 /* NPCX EVB uses implementation from spi_flash.c */
 
+DECLARE_HOST_COMMAND(EC_CMD_FLASH_SPI_INFO,
+		     flash_command_spi_info,
+		     EC_VER_MASK(0));
 static enum ec_status flash_command_spi_info(struct host_cmd_handler_args *args)
 {
 	struct ec_response_flash_spi_info *r = args->response;
@@ -759,9 +762,6 @@ static enum ec_status flash_command_spi_info(struct host_cmd_handler_args *args)
 	args->response_size = sizeof(*r);
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_FLASH_SPI_INFO,
-		     flash_command_spi_info,
-		     EC_VER_MASK(0));
 
 #endif
 
