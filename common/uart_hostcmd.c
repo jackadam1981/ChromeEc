@@ -9,14 +9,22 @@
 #include "host_command.h"
 #include "uart.h"
 
+DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_SNAPSHOT, host_command_console_snapshot,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_console_snapshot(struct host_cmd_handler_args *args)
 {
 	return uart_console_read_buffer_init();
 }
-DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_SNAPSHOT, host_command_console_snapshot,
-		     EC_VER_MASK(0));
 
+#ifdef CONFIG_CONSOLE_ENABLE_READ_V1
+#define READ_V1_MASK EC_VER_MASK(1)
+#else
+#define READ_V1_MASK 0
+#endif
+
+DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_READ, host_command_console_read,
+		     EC_VER_MASK(0) | READ_V1_MASK);
 static enum ec_status
 host_command_console_read(struct host_cmd_handler_args *args)
 {
@@ -43,12 +51,3 @@ host_command_console_read(struct host_cmd_handler_args *args)
 	}
 	return EC_RES_INVALID_PARAM;
 }
-
-#ifdef CONFIG_CONSOLE_ENABLE_READ_V1
-#define READ_V1_MASK EC_VER_MASK(1)
-#else
-#define READ_V1_MASK 0
-#endif
-
-DECLARE_HOST_COMMAND(EC_CMD_CONSOLE_READ, host_command_console_read,
-		     EC_VER_MASK(0) | READ_V1_MASK);
