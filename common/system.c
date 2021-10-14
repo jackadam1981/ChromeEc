@@ -1164,6 +1164,8 @@ DECLARE_SAFE_CONSOLE_COMMAND(sysinfo, command_sysinfo,
 			     NULL,
 			     "Print system info");
 
+DECLARE_HOST_COMMAND(EC_CMD_SYSINFO, host_command_sysinfo,
+		     EC_VER_MASK(EC_VER_SYSINFO));
 static enum ec_status host_command_sysinfo(struct host_cmd_handler_args *args)
 {
 	struct ec_response_sysinfo *r = args->response;
@@ -1176,8 +1178,6 @@ static enum ec_status host_command_sysinfo(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
-DECLARE_HOST_COMMAND(EC_CMD_SYSINFO, host_command_sysinfo,
-		     EC_VER_MASK(EC_VER_SYSINFO));
 #endif
 
 #ifdef CONFIG_CMD_SCRATCHPAD
@@ -1555,6 +1555,9 @@ DECLARE_CONSOLE_COMMAND(rflags, command_rflags,
 /*****************************************************************************/
 /* Host commands */
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_VERSION,
+		     host_command_get_version,
+		     EC_VER_MASK(0) | EC_VER_MASK(1));
 static enum ec_status
 host_command_get_version(struct host_cmd_handler_args *args)
 {
@@ -1606,11 +1609,11 @@ host_command_get_version(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_VERSION,
-		     host_command_get_version,
-		     EC_VER_MASK(0) | EC_VER_MASK(1));
 
 #ifdef CONFIG_HOSTCMD_SKUID
+DECLARE_HOST_COMMAND(EC_CMD_GET_SKU_ID,
+		     host_command_get_sku_id,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_get_sku_id(struct host_cmd_handler_args *args)
 {
@@ -1621,12 +1624,12 @@ host_command_get_sku_id(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_SKU_ID,
-		     host_command_get_sku_id,
-		     EC_VER_MASK(0));
 #endif
 
 #ifdef CONFIG_HOSTCMD_AP_SET_SKUID
+DECLARE_HOST_COMMAND(EC_CMD_SET_SKU_ID,
+		     host_command_set_sku_id,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_set_sku_id(struct host_cmd_handler_args *args)
 {
@@ -1636,12 +1639,12 @@ host_command_set_sku_id(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_SET_SKU_ID,
-		     host_command_set_sku_id,
-		     EC_VER_MASK(0));
 #endif
 
 #ifdef CONFIG_KEYBOARD_LANGUAGE_ID
+DECLARE_HOST_COMMAND(EC_CMD_GET_KEYBOARD_ID,
+		     host_command_get_keyboard_id,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_get_keyboard_id(struct host_cmd_handler_args *args)
 {
@@ -1652,11 +1655,11 @@ host_command_get_keyboard_id(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_KEYBOARD_ID,
-		     host_command_get_keyboard_id,
-		     EC_VER_MASK(0));
 #endif
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_BUILD_INFO,
+		     host_command_build_info,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_build_info(struct host_cmd_handler_args *args)
 {
@@ -1665,10 +1668,10 @@ host_command_build_info(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_BUILD_INFO,
-		     host_command_build_info,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_CHIP_INFO,
+		     host_command_get_chip_info,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_get_chip_info(struct host_cmd_handler_args *args)
 {
@@ -1682,10 +1685,10 @@ host_command_get_chip_info(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_CHIP_INFO,
-		     host_command_get_chip_info,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_GET_BOARD_VERSION,
+		     host_command_get_board_version,
+		     EC_VER_MASK(0));
 static enum ec_status
 host_command_get_board_version(struct host_cmd_handler_args *args)
 {
@@ -1703,10 +1706,10 @@ host_command_get_board_version(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_GET_BOARD_VERSION,
-		     host_command_get_board_version,
-		     EC_VER_MASK(0));
 
+DECLARE_HOST_COMMAND(EC_CMD_REBOOT_EC,
+		     host_command_reboot,
+		     EC_VER_MASK(0));
 static enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 {
 	struct ec_params_reboot_ec p;
@@ -1761,9 +1764,6 @@ static enum ec_status host_command_reboot(struct host_cmd_handler_args *args)
 		return EC_RES_ERROR;
 	}
 }
-DECLARE_HOST_COMMAND(EC_CMD_REBOOT_EC,
-		     host_command_reboot,
-		     EC_VER_MASK(0));
 
 int system_can_boot_ap(void)
 {
