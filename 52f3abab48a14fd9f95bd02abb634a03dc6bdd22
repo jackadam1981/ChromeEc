@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08823c58_7c439fb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-14T00:30:09Z",
+      "side": 1,
+      "message": "Just nits.",
+      "revId": "52f3abab48a14fd9f95bd02abb634a03dc6bdd22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f10a001e_1d85abe9",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-14T00:30:09Z",
+      "side": 1,
+      "message": "Extra spaces.",
+      "range": {
+        "startLine": 308,
+        "startChar": 12,
+        "endLine": 308,
+        "endChar": 13
+      },
+      "revId": "52f3abab48a14fd9f95bd02abb634a03dc6bdd22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e74f01b1_30eebcfa",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-14T00:30:09Z",
+      "side": 1,
+      "message": "Extra new lines; one is enough.",
+      "range": {
+        "startLine": 325,
+        "startChar": 0,
+        "endLine": 325,
+        "endChar": 0
+      },
+      "revId": "52f3abab48a14fd9f95bd02abb634a03dc6bdd22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d802c05_57daa2c7",
+        "filename": "zephyr/test/drivers/src/ln9310.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-14T00:30:09Z",
+      "side": 1,
+      "message": "Is it intended to call ln9310_software_enable(1) twice?",
+      "range": {
+        "startLine": 327,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 42
+      },
+      "revId": "52f3abab48a14fd9f95bd02abb634a03dc6bdd22",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
