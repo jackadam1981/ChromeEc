@@ -138,6 +138,9 @@ static enum ec_status wireless_enable_cmd(struct host_cmd_handler_args *args)
 	return EC_RES_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(wireless, command_wireless,
+			"[now [suspend]]",
+			"Get/set wireless flags");
 static int command_wireless(int argc, char **argv)
 {
 	char *e;
@@ -164,6 +167,3 @@ static int command_wireless(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(wireless, command_wireless,
-			"[now [suspend]]",
-			"Get/set wireless flags");

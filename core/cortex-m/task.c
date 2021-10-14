@@ -1010,6 +1010,9 @@ DECLARE_SAFE_CONSOLE_COMMAND(taskinfo, command_task_info,
 			     "Print task info");
 
 #ifdef CONFIG_CMD_TASKREADY
+DECLARE_CONSOLE_COMMAND(taskready, command_task_ready,
+			"[setmask]",
+			"Print/set ready tasks");
 static int command_task_ready(int argc, char **argv)
 {
 	if (argc < 2) {
@@ -1022,9 +1025,6 @@ static int command_task_ready(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(taskready, command_task_ready,
-			"[setmask]",
-			"Print/set ready tasks");
 #endif
 
 void task_pre_init(void)
@@ -1078,6 +1078,9 @@ int task_start(void)
 }
 
 #ifdef CONFIG_CMD_TASK_RESET
+DECLARE_CONSOLE_COMMAND(taskreset, command_task_reset,
+			"task_id",
+			"Reset a task");
 static int command_task_reset(int argc, char **argv)
 {
 	task_id_t id;
@@ -1093,7 +1096,4 @@ static int command_task_reset(int argc, char **argv)
 
 	return EC_ERROR_PARAM_COUNT;
 }
-DECLARE_CONSOLE_COMMAND(taskreset, command_task_reset,
-			"task_id",
-			"Reset a task");
 #endif  /* CONFIG_CMD_TASK_RESET */
