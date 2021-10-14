@@ -18,6 +18,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b58208a_3151de34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-14T09:20:26Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "af846b04_8da5b097",
+      "revId": "34f1abfd6d679b525aad05bfff2a82684664285c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49d80499_47f0028a",
@@ -79,6 +97,30 @@
       "side": 1,
       "message": "i think we should not modify existing logic as a side effect\nof global changes.\n\nnocturne, for example, implements the same 95% derating,\nit\u0027s just done inline instead of a named function and is\nnot being changed by this patch.",
       "parentUuid": "6297db0c_57f8bf4e",
+      "range": {
+        "startLine": 549,
+        "startChar": 1,
+        "endLine": 549,
+        "endChar": 10
+      },
+      "revId": "34f1abfd6d679b525aad05bfff2a82684664285c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3966d7a0_e44fb967",
+        "filename": "board/atlas/board.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-14T09:20:26Z",
+      "side": 1,
+      "message": "I made this into charge_set_input_current_limit(). This should be solved the most cases. (But for atals, the HOOK_INIT called charge\u0027r\u0027_set_input_current_limit that directly interacts with the charger, is not covered in this patch) .",
+      "parentUuid": "9fff8a11_3181dcb0",
       "range": {
         "startLine": 549,
         "startChar": 1,
