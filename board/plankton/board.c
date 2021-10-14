@@ -555,6 +555,9 @@ static int sn75dp130_redriver_init(void)
 	return rv;
 }
 
+DECLARE_CONSOLE_COMMAND(usbc_action, cmd_usbc_action,
+			"<5v|12v|20v|ccd|dev|usb|dp|flip|pol0|pol1|drp>",
+			"Set Plankton type-C port state");
 static int cmd_usbc_action(int argc, char *argv[])
 {
 	enum usbc_action act;
@@ -591,9 +594,6 @@ static int cmd_usbc_action(int argc, char *argv[])
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(usbc_action, cmd_usbc_action,
-			"<5v|12v|20v|ccd|dev|usb|dp|flip|pol0|pol1|drp>",
-			"Set Plankton type-C port state");
 
 int board_in_hub_mode(void)
 {
@@ -634,12 +634,12 @@ void board_maybe_reset_usb_hub(void)
 		board_usb_hub_reset();
 }
 
+DECLARE_CONSOLE_COMMAND(hub_reset, cmd_usb_hub_reset,
+			NULL, "Reset USB hub");
 static int cmd_usb_hub_reset(int argc, char *argv[])
 {
 	return board_usb_hub_reset();
 }
-DECLARE_CONSOLE_COMMAND(hub_reset, cmd_usb_hub_reset,
-			NULL, "Reset USB hub");
 
 static void board_usb_hub_reset_no_return(void)
 {
@@ -754,6 +754,8 @@ static void board_init(void)
 }
 DECLARE_HOOK(HOOK_INIT, board_init, HOOK_PRIO_DEFAULT);
 
+DECLARE_CONSOLE_COMMAND(fakedisconnect, cmd_fake_disconnect,
+			"<delay_ms> <duration_ms>", NULL);
 static int cmd_fake_disconnect(int argc, char *argv[])
 {
 	int delay_ms, duration_ms;
@@ -781,8 +783,6 @@ static int cmd_fake_disconnect(int argc, char *argv[])
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fakedisconnect, cmd_fake_disconnect,
-			"<delay_ms> <duration_ms>", NULL);
 
 static void trigger_dfu_release(void)
 {
@@ -791,6 +791,7 @@ static void trigger_dfu_release(void)
 }
 DECLARE_DEFERRED(trigger_dfu_release);
 
+DECLARE_CONSOLE_COMMAND(dfu, cmd_trigger_dfu, NULL, NULL);
 static int cmd_trigger_dfu(int argc, char *argv[])
 {
 	gpio_set_level(GPIO_CASE_CLOSE_DFU_L, 0);
@@ -800,4 +801,3 @@ static int cmd_trigger_dfu(int argc, char *argv[])
 	hook_call_deferred(&trigger_dfu_release_data, 1500 * MSEC);
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(dfu, cmd_trigger_dfu, NULL, NULL);
