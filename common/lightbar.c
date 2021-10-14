@@ -1936,6 +1936,9 @@ static void show_msg_names(void)
 		 lightbar_cmds[st.cur_seq].string);
 }
 
+DECLARE_CONSOLE_COMMAND(lightbar, command_lightbar,
+			"[help | COMMAND [ARGS]]",
+			"Get/set lightbar state");
 static int command_lightbar(int argc, char **argv)
 {
 	int i;
@@ -2063,6 +2066,3 @@ static int command_lightbar(int argc, char **argv)
 
 	return EC_ERROR_INVAL;
 }
-DECLARE_CONSOLE_COMMAND(lightbar, command_lightbar,
-			"[help | COMMAND [ARGS]]",
-			"Get/set lightbar state");
