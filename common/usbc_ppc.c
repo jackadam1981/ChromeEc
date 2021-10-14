@@ -304,6 +304,8 @@ int ppc_is_vbus_present(int port)
 #endif /* defined(CONFIG_USB_PD_VBUS_DETECT_PPC) */
 
 #ifdef CONFIG_CMD_PPC_DUMP
+DECLARE_CONSOLE_COMMAND(ppc_dump, command_ppc_dump, "<Type-C port>",
+			"dump the PPC regs");
 static int command_ppc_dump(int argc, char **argv)
 {
 	int port;
@@ -325,6 +327,4 @@ static int command_ppc_dump(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(ppc_dump, command_ppc_dump, "<Type-C port>",
-			"dump the PPC regs");
 #endif /* defined(CONFIG_CMD_PPC_DUMP) */
