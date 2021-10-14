@@ -622,6 +622,9 @@ void motion_sense_fifo_reset(void)
 }
 
 #ifdef CONFIG_CMD_ACCEL_FIFO
+DECLARE_CONSOLE_COMMAND(fiforead, motion_sense_read_fifo,
+	"id",
+	"Read Fifo sensor");
 static int motion_sense_read_fifo(int argc, char **argv)
 {
 	int count, i;
@@ -650,7 +653,4 @@ static int motion_sense_read_fifo(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND(fiforead, motion_sense_read_fifo,
-	"id",
-	"Read Fifo sensor");
 #endif /* defined(CONFIG_CMD_ACCEL_FIFO) */
