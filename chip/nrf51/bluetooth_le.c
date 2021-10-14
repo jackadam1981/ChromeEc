@@ -410,6 +410,9 @@ static void fill_packet(struct ble_pdu *adv, uint64_t addr, int type,
 	adv->header.adv.length = fill_payload(adv->payload, addr, name_length);
 }
 
+DECLARE_CONSOLE_COMMAND(ble_adv, command_ble_adv,
+			"type len [reps] [interval = 100000 (100ms)]",
+			"Send a BLE packet of type type of length len");
 static int command_ble_adv(int argc, char **argv)
 {
 	int type, length, reps, interval;
@@ -467,10 +470,10 @@ static int command_ble_adv(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(ble_adv, command_ble_adv,
-			"type len [reps] [interval = 100000 (100ms)]",
-			"Send a BLE packet of type type of length len");
 
+DECLARE_CONSOLE_COMMAND(ble_scan, command_ble_adv_scan,
+			"chan [num] [addr0]",
+			"Scan for [num] BLE packets on channel chan");
 static int command_ble_adv_scan(int argc, char **argv)
 {
 	int chan, packets, i;
@@ -531,6 +534,3 @@ static int command_ble_adv_scan(int argc, char **argv)
 
 	return rv;
 }
-DECLARE_CONSOLE_COMMAND(ble_scan, command_ble_adv_scan,
-			"chan [num] [addr0]",
-			"Scan for [num] BLE packets on channel chan");

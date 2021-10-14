@@ -142,6 +142,9 @@ void throttle_ap_prochot_input_interrupt(enum gpio_signal signal)
 /*****************************************************************************/
 /* Console commands */
 #ifdef CONFIG_CMD_APTHROTTLE
+DECLARE_CONSOLE_COMMAND(apthrottle, command_apthrottle,
+			NULL,
+			"Display the AP throttling state");
 static int command_apthrottle(int argc, char **argv)
 {
 	int i;
@@ -158,7 +161,4 @@ static int command_apthrottle(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(apthrottle, command_apthrottle,
-			NULL,
-			"Display the AP throttling state");
 #endif

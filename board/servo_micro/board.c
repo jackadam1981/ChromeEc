@@ -166,6 +166,9 @@ USB_STREAM_CONFIG_USART_IFACE(usart4_usb,
 /******************************************************************************
  * Check parity setting on usarts.
  */
+DECLARE_CONSOLE_COMMAND(parity, command_uart_parity,
+			"usart[2|3|4] [0|1|2]",
+			"Set parity on uart");
 static int command_uart_parity(int argc, char **argv)
 {
 	int parity = 0, newparity;
@@ -200,13 +203,13 @@ static int command_uart_parity(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(parity, command_uart_parity,
-			"usart[2|3|4] [0|1|2]",
-			"Set parity on uart");
 
 /******************************************************************************
  * Set baud rate setting on usarts.
  */
+DECLARE_CONSOLE_COMMAND(baud, command_uart_baud,
+			"usart[2|3|4] rate",
+			"Set baud rate on uart");
 static int command_uart_baud(int argc, char **argv)
 {
 	int baud = 0;
@@ -233,13 +236,13 @@ static int command_uart_baud(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(baud, command_uart_baud,
-			"usart[2|3|4] rate",
-			"Set baud rate on uart");
 
 /******************************************************************************
  * Hold the usart pins low while disabling it, or return it to normal.
  */
+DECLARE_CONSOLE_COMMAND(hold_usart_low, command_hold_usart_low,
+			"usart[2|3|4] [0|1]?",
+			"Get/set the hold-low state for usart port");
 static int command_hold_usart_low(int argc, char **argv)
 {
 	/* Each bit represents if that port rx is being held low */
@@ -301,9 +304,6 @@ static int command_hold_usart_low(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(hold_usart_low, command_hold_usart_low,
-			"usart[2|3|4] [0|1]?",
-			"Get/set the hold-low state for usart port");
 
 /******************************************************************************
  * Define the strings used in our USB descriptors.

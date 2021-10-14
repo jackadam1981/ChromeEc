@@ -1059,6 +1059,10 @@ static void do_cc(int cc_config_new)
 	}
 }
 
+DECLARE_CONSOLE_COMMAND(cc, command_cc,
+			"[off|on|src|snk|pdsnk|drp|srcdts|snkdts|pdsnkdts|"
+			"drpdts] [cc1|cc2]",
+			"Servo_v4 DTS and CHG mode");
 static int command_cc(int argc, char **argv)
 {
 	int cc_config_new = cc_config;
@@ -1106,10 +1110,6 @@ static int command_cc(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(cc, command_cc,
-			"[off|on|src|snk|pdsnk|drp|srcdts|snkdts|pdsnkdts|"
-			"drpdts] [cc1|cc2]",
-			"Servo_v4 DTS and CHG mode");
 
 static void fake_disconnect_end(void)
 {
@@ -1128,6 +1128,8 @@ static void fake_disconnect_start(void)
 }
 DECLARE_DEFERRED(fake_disconnect_start);
 
+DECLARE_CONSOLE_COMMAND(fakedisconnect, cmd_fake_disconnect,
+			"<delay_ms> <duration_ms>", NULL);
 static int cmd_fake_disconnect(int argc, char *argv[])
 {
 	int delay_ms, duration_ms;
@@ -1155,9 +1157,10 @@ static int cmd_fake_disconnect(int argc, char *argv[])
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(fakedisconnect, cmd_fake_disconnect,
-			"<delay_ms> <duration_ms>", NULL);
 
+DECLARE_CONSOLE_COMMAND(ada_srccaps, cmd_ada_srccaps,
+			"",
+			"Print adapter SrcCap");
 static int cmd_ada_srccaps(int argc, char *argv[])
 {
 	int i;
@@ -1176,9 +1179,6 @@ static int cmd_ada_srccaps(int argc, char *argv[])
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ada_srccaps, cmd_ada_srccaps,
-			"",
-			"Print adapter SrcCap");
 
 static int cmd_dp_action(int argc, char *argv[])
 {
@@ -1284,6 +1284,10 @@ static int cmd_dp_action(int argc, char *argv[])
 	return EC_SUCCESS;
 }
 
+DECLARE_CONSOLE_COMMAND(usbc_action, cmd_usbc_action,
+			"5v|12v|20v|dev|pol0|pol1|drp|dp|chg x(x=voltage)|"
+			"drswap [1|0]|prswap [1|0]",
+			"Set Servo v4 type-C port state");
 static int cmd_usbc_action(int argc, char *argv[])
 {
 	if (argc >= 2 && !strcasecmp(argv[1], "dp"))
@@ -1365,7 +1369,3 @@ static int cmd_usbc_action(int argc, char *argv[])
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(usbc_action, cmd_usbc_action,
-			"5v|12v|20v|dev|pol0|pol1|drp|dp|chg x(x=voltage)|"
-			"drswap [1|0]|prswap [1|0]",
-			"Set Servo v4 type-C port state");
