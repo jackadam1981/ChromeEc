@@ -1,0 +1,21 @@
+# Copyright 2021 The Chromium OS Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+description: CBI Board Version
+
+compatible: "named-cbi-board-version"
+
+child-binding:
+    description:
+        CBI Board Version.
+    properties:
+        range:
+            type: array
+            required: true
+            description:
+              Range of the board version
+        alternative-device:
+            type: phandle
+            description:
+              Alternative device that should be used

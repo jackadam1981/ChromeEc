@@ -461,6 +461,11 @@ static void motion_sensors_init_alt(void)
 DECLARE_HOOK(HOOK_INIT, motion_sensors_init_alt, HOOK_PRIO_INIT_I2C + 1);
 #endif /* DT_NODE_EXISTS(SENSOR_ALT_NODE) */
 
+void motionsensor_replace(int id)
+{
+	printk("DN: motionsensor_replace: %d \n", id);
+}
+
 #define DEF_MOTION_ISR_NAME_ENUM(id) \
 	DT_STRING_UPPER_TOKEN(DT_PHANDLE(id, int_signal), enum_name)
 #define DEF_MOTION_ISR_NAME_ENUM_WITH_SUFFIX(name) DT_CAT(name, _ISR)

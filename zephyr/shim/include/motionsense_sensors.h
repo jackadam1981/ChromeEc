@@ -45,6 +45,18 @@ enum sensor_alt_id {
 };
 
 /*
+ * Enum definition for motionsensor_replace argument "id"
+ */
+#define ALT_DEV_ID_MOTION(id)			id
+#define ALT_SENSOR_ID_WITH_COMMA(id)		ALT_DEV_ID_MOTION(id),
+
+enum alt_dev_id_motion {
+#if DT_NODE_EXISTS(SENSOR_ALT_NODE)
+	DT_FOREACH_CHILD(SENSOR_ALT_NODE, ALT_SENSOR_ID_WITH_COMMA)
+#endif
+};
+
+/*
  * Find the accelerometers for lid angle calculation.
  *
  * The angle calculation requires two accelerometers. One is on the lid
@@ -107,5 +119,7 @@ enum sensor_alt_id {
 #ifdef CONFIG_PLATFORM_EC_MOTION_SENSE_RUNTIME_PROBE_CUSTOM_CALL
 void motion_sense_probe_sensors(void);
 #endif
+
+void motionsensor_replace(int id);
 
 #endif /* __CROS_EC_MOTIONSENSE_SENSORS_H */

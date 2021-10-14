@@ -6,6 +6,8 @@
 #include <drivers/cros_cbi.h>
 #include "cros_board_info.h"
 #include <logging/log.h>
+#include "hooks.h"
+#include "motionsense_sensors.h"
 
 LOG_MODULE_REGISTER(cros_cbi, LOG_LEVEL_ERR);
 
@@ -137,6 +139,15 @@ static const uint8_t ssfc_values[] = {
 
 /* CBI SSFC part end */
 
+/* CBI Board version */
+
+struct cbi_board_ver {
+	uint32_t ranges[CBI_BOARD_VER_COUNT][2];
+};
+
+/* CBI Board version end */
+
+
 /* Device config */
 struct cros_cbi_config {
 	/* SSFC values for specific configs */
@@ -147,6 +158,7 @@ struct cros_cbi_config {
 struct cros_cbi_data {
 	/* Cached SSFC configs */
 	union cbi_ssfc cached_ssfc;
+	struct cbi_board_ver board_ver;
 };
 
 /* CBI SSFC part */
@@ -196,6 +208,40 @@ static bool cros_cbi_ec_ssfc_check_match(const struct device *dev,
 /* CBI SSFC part end */
 #undef DT_DRV_COMPAT
 
+/* CBI Board Version */
+#define DT_DRV_COMPAT CBI_BOARD_VER_COMPAT
+
+#define CBI_BOARD_VER_REP_ID(id) \
+	do {                                                            \
+		if (cros_cbi_ec_board_ver(dev, CBI_BOARD_VER_ID(id))) { \
+			DT_STRING_TOKEN(DT_PHANDLE(id, alternative_device), replace_routine)(DT_PHANDLE(id, alternative_device)); \
+		}                                                       \
+	} while (0);
+
+static bool cros_cbi_ec_board_ver(const struct device *dev, enum cbi_board_ver_id board_ver_id)
+{
+	struct cros_cbi_data *data = (struct cros_cbi_data *)(dev->data);
+	int rc;
+	uint32_t ver;
+
+	rc = cbi_get_board_version(&ver);
+
+	if (rc || board_ver_id >= CBI_BOARD_VER_COUNT) {
+		return false;
+	}
+	return ((ver >= data->board_ver.ranges[board_ver_id][0]) && (ver <= data->board_ver.ranges[board_ver_id][1]));
+}
+
+static int cros_cbi_ec_board_ver_replace_alt(const struct device *dev)
+{
+	DT_FOREACH_CHILD(CBI_BOARD_VER_NODE, CBI_BOARD_VER_REP_ID)
+
+	return 0;
+}
+
+#undef DT_DRV_COMPAT
+/* CBI Board Version end */
+
 static int cros_cbi_ec_init(const struct device *dev)
 {
 	cros_cbi_ssfc_init(dev);
@@ -207,6 +253,7 @@ static int cros_cbi_ec_init(const struct device *dev)
 static const struct cros_cbi_driver_api cros_cbi_driver_api = {
 	.init = cros_cbi_ec_init,
 	.ssfc_check_match = cros_cbi_ec_ssfc_check_match,
+	.board_ver_check = cros_cbi_ec_board_ver,
 };
 
 static int cbi_init(const struct device *dev)
@@ -216,11 +263,31 @@ static int cbi_init(const struct device *dev)
 	return 0;
 }
 
+
+static void board_ver_test(void)
+{
+	const struct device *dev = device_get_binding("cros_cbi");
+
+	cros_cbi_ec_board_ver_replace_alt(dev);
+
+	printk("DN: board_ver_check 0: %d\n", cros_cbi_board_ver_check(dev, 0));
+	printk("DN: board_ver_check 1: %d\n", cros_cbi_board_ver_check(dev, 1));
+	printk("DN: board_ver_check 2: %d\n", cros_cbi_board_ver_check(dev, 2));
+}
+DECLARE_HOOK(HOOK_INIT, board_ver_test, HOOK_PRIO_DEFAULT);
+
+
 static const struct cros_cbi_config cros_cbi_cfg = {
 	.ssfc_values = ssfc_values,
 };
 
-static struct cros_cbi_data cros_cbi_data;
+#define CBI_BOARD_VER_ID_RANGE_INIT(id) {DT_PROP_BY_IDX(id, range, 0), DT_PROP_BY_IDX(id, range, 1)},
+
+static struct cros_cbi_data cros_cbi_data = {
+	.board_ver.ranges = {
+		DT_FOREACH_CHILD(DT_INST(0, CBI_BOARD_VER_COMPAT), CBI_BOARD_VER_ID_RANGE_INIT)
+	},
+};
 
 DEVICE_DEFINE(cros_cbi, CROS_CBI_LABEL, cbi_init, NULL, &cros_cbi_data,
 	      &cros_cbi_cfg, PRE_KERNEL_1, CONFIG_KERNEL_INIT_PRIORITY_DEFAULT,

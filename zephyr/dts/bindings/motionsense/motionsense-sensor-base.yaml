@@ -65,6 +65,14 @@ properties:
   runtime-probe:
     type: boolean
     description: runtime probing of sensor will be executed if true
+  replace-routine:
+    type: string
+    description: |
+        Routine to replace alternative. The function should be like:
+        void function_name(int id). The "id" argument should be the node id.
+        It should represent enum value prepared by alternative devices driver.
+    enum:
+      - "motionsensor_replace"
   int-signal:
     type: phandle
     description: pin which triggers interrupt for sensor
