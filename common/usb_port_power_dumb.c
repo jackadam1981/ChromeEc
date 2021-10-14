@@ -70,6 +70,9 @@ int usb_charge_set_mode(int port_id, enum usb_charge_mode mode,
 	return EC_SUCCESS;
 }
 
+DECLARE_HOST_COMMAND(EC_CMD_USB_CHARGE_SET_MODE,
+		     usb_port_command_set_mode,
+		     EC_VER_MASK(0));
 static enum ec_status
 usb_port_command_set_mode(struct host_cmd_handler_args *args)
 {
@@ -81,9 +84,6 @@ usb_port_command_set_mode(struct host_cmd_handler_args *args)
 
 	return EC_RES_SUCCESS;
 }
-DECLARE_HOST_COMMAND(EC_CMD_USB_CHARGE_SET_MODE,
-		     usb_port_command_set_mode,
-		     EC_VER_MASK(0));
 
 /*****************************************************************************/
 /* Console commands */
