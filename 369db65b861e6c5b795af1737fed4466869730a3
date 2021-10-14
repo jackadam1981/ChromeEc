@@ -144,6 +144,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "58c033f6_43cdd7ed",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1152319
+      },
+      "writtenOn": "2021-10-14T23:41:29Z",
+      "side": 1,
+      "message": "so, what make target do we build by default? any reason to pick a smaller target?",
+      "parentUuid": "cada7cae_a7005a17",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f43f7134_ea83e124",
         "filename": "firmware_builder.py",
         "patchSetId": 1
