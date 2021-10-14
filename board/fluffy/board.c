@@ -77,6 +77,9 @@ static void print_port_status(void)
 	CPRINTS("USB MUX: %s", gpio_get_level(GPIO_EN_USB_MUX2) ? "ON" : "OFF");
 }
 
+DECLARE_CONSOLE_COMMAND(ccflip, command_cc_flip,
+			"<enable/disable>",
+			"enable or disable flipping CC orientation");
 static int command_cc_flip(int argc, char *argv[])
 {
 	int enable;
@@ -106,9 +109,6 @@ static int command_cc_flip(int argc, char *argv[])
 	print_port_status();
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(ccflip, command_cc_flip,
-			"<enable/disable>",
-			"enable or disable flipping CC orientation");
 /*
  * Support tca6416 I2C ioexpander.
  */

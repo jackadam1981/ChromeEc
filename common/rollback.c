@@ -349,6 +349,9 @@ int rollback_add_entropy(const uint8_t *data, unsigned int len)
 	return rollback_update(-1, data, len);
 }
 
+DECLARE_CONSOLE_COMMAND(rollbackupdate, command_rollback_update,
+			"min_version",
+			"Update rollback info");
 static int command_rollback_update(int argc, char **argv)
 {
 	int32_t min_version;
@@ -364,11 +367,11 @@ static int command_rollback_update(int argc, char **argv)
 
 	return rollback_update_version(min_version);
 }
-DECLARE_CONSOLE_COMMAND(rollbackupdate, command_rollback_update,
-			"min_version",
-			"Update rollback info");
 
 #ifdef CONFIG_ROLLBACK_SECRET_SIZE
+DECLARE_CONSOLE_COMMAND(rollbackaddent, command_rollback_add_entropy,
+			"data",
+			"Add entropy to rollback block");
 static int command_rollback_add_entropy(int argc, char **argv)
 {
 	int len;
@@ -380,9 +383,6 @@ static int command_rollback_add_entropy(int argc, char **argv)
 
 	return rollback_add_entropy(argv[1], len);
 }
-DECLARE_CONSOLE_COMMAND(rollbackaddent, command_rollback_add_entropy,
-			"data",
-			"Add entropy to rollback block");
 
 #ifdef CONFIG_RNG
 static int add_entropy_action;

@@ -532,6 +532,9 @@ void __idle(void)
 	}
 }
 
+DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
+			"",
+			"Print last idle stats");
 /* Print low power idle statistics. */
 static int command_idle_stats(int argc, char **argv)
 {
@@ -547,7 +550,4 @@ static int command_idle_stats(int argc, char **argv)
 
 	return EC_SUCCESS;
 }
-DECLARE_CONSOLE_COMMAND(idlestats, command_idle_stats,
-			"",
-			"Print last idle stats");
 #endif /* CONFIG_LOW_POWER_IDLE */
