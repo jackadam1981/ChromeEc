@@ -3026,6 +3026,9 @@ charge_command_charge_state(struct host_cmd_handler_args *args)
 
 #ifdef CONFIG_CMD_PWR_AVG
 
+DECLARE_CONSOLE_COMMAND(pwr_avg, command_pwr_avg,
+			NULL,
+			"Get 1 min power average");
 static int command_pwr_avg(int argc, char **argv)
 {
 	int avg_mv;
@@ -3046,9 +3049,6 @@ static int command_pwr_avg(int argc, char **argv)
 	return EC_SUCCESS;
 }
 
-DECLARE_CONSOLE_COMMAND(pwr_avg, command_pwr_avg,
-			NULL,
-			"Get 1 min power average");
 
 #endif /* CONFIG_CMD_PWR_AVG */
 
