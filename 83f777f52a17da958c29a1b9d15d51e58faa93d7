@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbaaa255_56a0b93c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1346479
+      },
+      "writtenOn": "2021-10-15T14:20:22Z",
+      "side": 1,
+      "message": "If CONFIG_PLATFORM_EC_CONSOLE_USES_PRINTK is no longer needed, please remove it. The CONFIG was added to have an easier way to avoid the ITE device bug that CL:3206988 fixed and serves no other purpose.",
+      "revId": "83f777f52a17da958c29a1b9d15d51e58faa93d7",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
