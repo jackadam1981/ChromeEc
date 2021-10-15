@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab20feec_210cf5b9",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-10-15T13:38:03Z",
+      "side": 1,
+      "message": "I think when usb mux task is not enabled case the expected code has to be base code. But here it is not happening like that. is it missing adding the condition check: if (IS_ENABLED(HAS_TASK_USB_MUX))",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
