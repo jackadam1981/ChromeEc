@@ -46,6 +46,30 @@
       },
       "revId": "461cfc6905c0f985e98bb6b525098b0fdf3d715c",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b07a571_fd0a63c3",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-15T01:39:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a886da1_03f1604d",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 0
+      },
+      "revId": "461cfc6905c0f985e98bb6b525098b0fdf3d715c",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
