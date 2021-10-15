@@ -1032,6 +1032,8 @@ static int command_flash_info(int argc, char **argv)
 		ccputs(" STUCK");
 	if (flags & EC_FLASH_PROTECT_ERROR_INCONSISTENT)
 		ccputs(" INCONSISTENT");
+	if (flags & EC_FLASH_PROTECT_ERROR_UNKNOWN)
+		ccputs(" UNKNOWN_ERROR");
 #ifdef CONFIG_ROLLBACK
 	if (flags & EC_FLASH_PROTECT_ROLLBACK_AT_BOOT)
 		ccputs(" rollback_at_boot");
