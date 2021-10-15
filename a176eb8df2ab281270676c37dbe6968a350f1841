@@ -46,6 +46,30 @@
       },
       "revId": "a176eb8df2ab281270676c37dbe6968a350f1841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d6cd231_b505c471",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1106949
+      },
+      "writtenOn": "2021-10-15T15:29:37Z",
+      "side": 1,
+      "message": "That seems the same as my understanding. I\u0027m saying there is code execution between 1 and 2, which may make the printed info irrelevant to the WD reset.\n\nOption 1 is probably what we used to do before this change (2814041). Option 2 doesn\u0027t work because print time will keep changing and varies chip to chip.",
+      "parentUuid": "9795f30e_e5cad719",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 28
+      },
+      "revId": "a176eb8df2ab281270676c37dbe6968a350f1841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
