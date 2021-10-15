@@ -16,6 +16,57 @@
       "message": "Look like many boards from copy Coachz. but they didn\u0027t use this feature. Suspect they are forgot to remove this specific feature.",
       "revId": "8a2129624f25bf114371a83c8f7ffb59c2a821d5",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e23dab90_3e3104b9",
+        "filename": "board/kappa/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-15T10:31:49Z",
+      "side": 1,
+      "message": "I suppose it\u0027s more appropriate to put this battery related definition in battery.c other than board.c.",
+      "revId": "8a2129624f25bf114371a83c8f7ffb59c2a821d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e91e638_1a02acf2",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-15T10:31:49Z",
+      "side": 1,
+      "message": "Since the board \"eve\" takes different route for `battery_get_vendor_param` and `battery_set_vendor_param`, conditional compilation is adopt here to separate from this specific board.",
+      "revId": "8a2129624f25bf114371a83c8f7ffb59c2a821d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9d67d29_b51cbb3a",
+        "filename": "common/battery.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-15T10:31:49Z",
+      "side": 1,
+      "message": "Since we don\u0027t have malloc in ChromeEC, it seems that the only way to define the size of an array is with token.",
+      "revId": "8a2129624f25bf114371a83c8f7ffb59c2a821d5",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
