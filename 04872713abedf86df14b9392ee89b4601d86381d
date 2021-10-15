@@ -167,6 +167,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df3e7981_57f34f7f",
+        "filename": "board/homestar/board.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1503037
+      },
+      "writtenOn": "2021-10-15T02:07:36Z",
+      "side": 1,
+      "message": "Yes, although size is const, it can\u0027t be used for array definitions.",
+      "parentUuid": "86df228a_381dbb06",
+      "range": {
+        "startLine": 683,
+        "startChar": 14,
+        "endLine": 683,
+        "endChar": 16
+      },
+      "revId": "04872713abedf86df14b9392ee89b4601d86381d",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a6c5cacb_053af04d",
