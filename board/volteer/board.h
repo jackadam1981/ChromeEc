@@ -175,6 +175,9 @@
 /* Disable volume button in ectool */
 #undef CONFIG_HOSTCMD_BUTTON
 
+/* Disable verbose output in EC pd */
+#define CONFIG_SIMPLE_OUTPUT
+
 #ifndef __ASSEMBLER__
 
 #include "gpio_signal.h"
