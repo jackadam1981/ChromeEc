@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "2737de11_ce0a837d",
+        "filename": "common/battery.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1444467
+      },
+      "writtenOn": "2021-10-15T01:37:06Z",
+      "side": 1,
+      "message": "Hi Wai-Hong,\n\nI suppose it should be specific vendor batteries that have this info. You can refer to b:203031618 and b:155936029 for more details.\n\nThanks!",
+      "parentUuid": "a04cd6b3_f25f9c32",
+      "range": {
+        "startLine": 409,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 19
+      },
+      "revId": "fed5538adb204b33369e6471b636b5d87c0baeec",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "775f6152_6b90d1ea",
         "filename": "include/battery.h",
         "patchSetId": 1
