@@ -751,71 +751,6 @@ static int find_areas(uint32_t offset, uint16_t nareas,
 }
 
 /**
- * Find FMAP header in AP flash and copy it into the passed in structure.
- *
- * Verify validity of the found header.
- *
- * @param fmh pointer to the header to copy to
- *
- * @return offset of FMAP in AP flash, or zero, if not found.
- */
-static uint32_t find_fmap(struct fmap_header *fmh)
-{
-	uint32_t offset;
-	uint32_t step = MAX_SUPPORTED_FLASH_SIZE / 2;
-	uint32_t skip_mask = ~(MAX_SUPPORTED_FLASH_SIZE - 1);
-	bool fmap_found = false;
-
-	do {
-		for (offset = 0; offset < MAX_SUPPORTED_FLASH_SIZE;
-		     offset += step) {
-			if ((offset & skip_mask) == 0)
-				continue;
-
-			if (read_ap_spi(fmh->fmap_signature, offset,
-					sizeof(fmh->fmap_signature), __LINE__))
-				return 0;
-
-			if (!memcmp(fmh->fmap_signature, FMAP_SIGNATURE,
-				    sizeof(fmh->fmap_signature))) {
-				/*
-				 * TODO(vbendeb): address the possibility of a
-				 * fake FMAP placed in addition to the real
-				 * one.
-				 */
-				fmap_found = true;
-				break;
-			}
-		}
-		step >>= 1;
-		skip_mask >>= 1;
-
-	} while ((step >= LOWEST_FMAP_ALIGNMENT) && !fmap_found);
-
-	if (!fmap_found) {
-		CPRINTS("Could not find FMAP");
-		return 0;
-	}
-
-	/* Read the rest of fmap header. */
-	if (read_ap_spi(
-		    &fmh->fmap_ver_major, offset + sizeof(fmh->fmap_signature),
-		    sizeof(*fmh) - sizeof(fmh->fmap_signature),
-		    __LINE__))
-		return 0;
-
-	/* Verify fmap validity. */
-	if ((fmh->fmap_ver_major != FMAP_MAJOR_VERSION) ||
-	    (fmh->fmap_ver_minor != FMAP_MINOR_VERSION) ||
-	    (fmh->fmap_size > MAX_SUPPORTED_FLASH_SIZE)) {
-		CPRINTS("invalid FMAP contents");
-		return 0;
-	}
-
-	return offset;
-}
-
-/**
  * Read gsc verification data from AP flash.
  *
  * @param fmap_offset offset of FMAP in AP flash, used for validity check
@@ -1271,35 +1206,28 @@ static int8_t validate_cached_ap_ro_v2(const struct gvd_descriptor *descriptor)
 		EC_SUCCESS ? 0 : -1;
 }
 
-/*
- **
+/**
  * Try validating AP RO.
  *
- * This function looks for gsc_verification_data structure in AP flash through
- * FMAP, and then verifies cryptographically the validity of the contents,
- * starting with the hash of the root key, then signature of the key block,
- * and then signature of gsc_verification_data and the hash of the RO ranges.
+ * This function receives an offset of FMAP in the AP flash and the number of
+ * areas in the FMAP. The function looks for the RO_GSCVD area, and if found
+ * tries to cryptographically verify the GVD, starting with the hash of the
+ * root key, then signature of the key block, and then signature of
+ * gsc_verification_data and the hash of the RO ranges.
  *
  * @return zero on success, non zero on failure.
  */
-static int8_t validate_and_cache_ap_ro_v2_from_flash(void)
+static int8_t check_fmap_location(uint32_t fmap_offset, uint16_t nareas)
 {
-	uint32_t fmap_offset;
-	struct fmap_header fmh;
 	struct gvd_container gvdc;
 	struct kb_container kbc;
 	struct vb2_packed_key *rootk;
 	struct vb_rsa_pubk pubk;
 	struct fmap_area_header fmap;
 	struct fmap_area_header gscvd;
-
 	int rv = -1;
 
-	fmap_offset = find_fmap(&fmh);
-	if (!fmap_offset)
-		return -1;
-
-	if (find_areas(fmap_offset + sizeof(fmh), fmh.fmap_nareas,
+	if (find_areas(fmap_offset + sizeof(struct fmap_header), nareas,
 		       &fmap, &gscvd))
 		return -1;
 	gvdc.offset = gscvd.area_offset;
@@ -1344,6 +1272,58 @@ exit:
 		shared_mem_release(rootk);
 
 	return rv;
+}
+
+/*
+ * Iterate through AP flash at 4K intervals looking for FMAP. Once FMAP is
+ * found call a function to verify the FMAP GVD section. Return if
+ * verification succeds, if it fails - keep scanning the flash looking for
+ * more FMAP sections.
+ *
+ * Return zero if a valid GVD was found, -1 otherwise.
+ */
+static int8_t validate_and_cache_ap_ro_v2_from_flash(void)
+{
+	uint32_t offset;
+	struct fmap_header fmh;
+	bool fmap_found = false;
+
+	for (offset = 0; offset < MAX_SUPPORTED_FLASH_SIZE;
+	     offset += LOWEST_FMAP_ALIGNMENT) {
+
+		if (read_ap_spi(fmh.fmap_signature, offset,
+				sizeof(fmh.fmap_signature), __LINE__))
+			return -1;
+
+		if (memcmp(fmh.fmap_signature, FMAP_SIGNATURE,
+			   sizeof(fmh.fmap_signature)))
+			continue; /* Not an FMAP candidate. */
+
+		/* Read the rest of fmap header. */
+		if (read_ap_spi(&fmh.fmap_ver_major, offset +
+				sizeof(fmh.fmap_signature),
+				sizeof(fmh) - sizeof(fmh.fmap_signature),
+				__LINE__))
+			return -1;
+
+		/* Verify fmap validity. */
+		if ((fmh.fmap_ver_major != FMAP_MAJOR_VERSION) ||
+		    (fmh.fmap_ver_minor != FMAP_MINOR_VERSION) ||
+		    (fmh.fmap_size > MAX_SUPPORTED_FLASH_SIZE)) {
+			CPRINTS("invalid FMAP contents at %x", offset);
+			continue;
+		}
+
+		fmap_found = true;
+
+		if (!check_fmap_location(offset, fmh.fmap_nareas))
+			return 0;
+	}
+
+	if (!fmap_found)
+		CPRINTS("Could not find FMAP");
+
+	return -1;
 }
 
 static uint8_t do_ap_ro_check(void)
