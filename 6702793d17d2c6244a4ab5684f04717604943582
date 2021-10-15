@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c45cfe61_5b21b55c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-15T00:53:09Z",
+      "side": 1,
+      "message": "Looks much clearer now!",
+      "revId": "6702793d17d2c6244a4ab5684f04717604943582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "acd26344_338a80b1",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-15T00:53:09Z",
+      "side": 1,
+      "message": "this should be enum ap_ro_status and it should be initialized to AP_RO_NOT_RUN just in case the enum ever changes.",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 14
+      },
+      "revId": "6702793d17d2c6244a4ab5684f04717604943582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e29954bd_755e773b",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-15T00:53:09Z",
+      "side": 1,
+      "message": "this should be checked against AP_RO_NOT_RUN",
+      "range": {
+        "startLine": 491,
+        "startChar": 5,
+        "endLine": 491,
+        "endChar": 16
+      },
+      "revId": "6702793d17d2c6244a4ab5684f04717604943582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2349d6_a7f87494",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-15T00:53:09Z",
+      "side": 1,
+      "message": "and this should have been inside the if() all along.",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 29
+      },
+      "revId": "6702793d17d2c6244a4ab5684f04717604943582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5694c995_d35f0282",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2346,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-15T00:53:09Z",
+      "side": 1,
+      "message": "why does it have to be parsed and printed twice? I mean if we already printed pass or fail above it is clear that combo has been detected.\n\nIs this not enough to just print one of\n\n- not supported not run\n- not supported triggered\n- not run\n- passed\n- failed",
+      "range": {
+        "startLine": 2309,
+        "startChar": 1,
+        "endLine": 2346,
+        "endChar": 2
+      },
+      "revId": "6702793d17d2c6244a4ab5684f04717604943582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
