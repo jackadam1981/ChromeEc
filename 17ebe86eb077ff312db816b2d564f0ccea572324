@@ -24,6 +24,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c7ccfd8_5feb43ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-10-15T06:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fda7e356_af739d23",
+      "range": {
+        "startLine": 15,
+        "startChar": 67,
+        "endLine": 15,
+        "endChar": 74
+      },
+      "revId": "17ebe86eb077ff312db816b2d564f0ccea572324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0692dd4a_b6f8a09a",
@@ -47,6 +71,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca591e17_14571901",
+        "filename": "baseboard/cherry/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-10-15T06:03:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0692dd4a_b6f8a09a",
+      "range": {
+        "startLine": 249,
+        "startChar": 20,
+        "endLine": 249,
+        "endChar": 36
+      },
+      "revId": "17ebe86eb077ff312db816b2d564f0ccea572324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc7ff445_6daf7820",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-15T05:38:36Z",
       "side": 1,
       "message": "Will this break the USB connection after resuming from S3?",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 51
+      },
+      "revId": "17ebe86eb077ff312db816b2d564f0ccea572324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e730ad6_dff2e3d5",
+        "filename": "baseboard/cherry/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1141739
+      },
+      "writtenOn": "2021-10-15T06:03:12Z",
+      "side": 1,
+      "message": "no, this interrupt only triggers in depthcharge, won\u0027t trigger on suspend/resume.",
+      "parentUuid": "cc7ff445_6daf7820",
       "range": {
         "startLine": 264,
         "startChar": 4,
