@@ -95,6 +95,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c29bdaa_93cd1083",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-15T04:55:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "586c060e_40fe884f",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 33
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65b3a06e_87eb901f",
@@ -166,6 +190,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c99c334_eab1b496",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-15T04:55:56Z",
+      "side": 1,
+      "message": "we build all boards and then add special cr50 specific targets which frequently left untested. \nwhat is built for CR50:\nmake BOARD\u003dcr50  as part of buildall\nmake BOARD\u003dcr50 CR50_DEV\u003d1\nmake BOARD\u003dcr50 CRYPTO_TEST\u003d1\n\nwe also build all other boards and build tests, but not run them. Running tests is done by tests() below.",
+      "parentUuid": "58c033f6_43cdd7ed",
+      "range": {
+        "startLine": 53,
+        "startChar": 12,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f43f7134_ea83e124",
@@ -227,6 +275,30 @@
       "side": 1,
       "message": "maybe this could be used for supplying output to the builder, if we ever need to deviate from using \u0027emerge-reef chromeos-ec\u0027 used now on branches.",
       "parentUuid": "c9cc6720_cf67caf6",
+      "range": {
+        "startLine": 228,
+        "startChar": 42,
+        "endLine": 228,
+        "endChar": 59
+      },
+      "revId": "369db65b861e6c5b795af1737fed4466869730a3",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b47797dd_7065e4ab",
+        "filename": "firmware_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1324172
+      },
+      "writtenOn": "2021-10-15T04:55:56Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c43fa532_be6c1cd5",
       "range": {
         "startLine": 228,
         "startChar": 42,
