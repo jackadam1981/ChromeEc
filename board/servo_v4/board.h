@@ -85,6 +85,9 @@
 #undef CONFIG_LID_SWITCH
 #undef CONFIG_HIBERNATE
 
+/* Disable verbose output in EC pd */
+#define CONFIG_SIMPLE_OUTPUT
+
 /* Remove console commands / features for flash / RAM savings */
 #undef CONFIG_USB_PD_HOST_CMD
 #undef CONFIG_CONSOLE_CMDHELP
