@@ -187,6 +187,30 @@
       },
       "revId": "27f9d126c5fe8893c502594b686550d03d016450",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "838d118e_2ee58577",
+        "filename": "board/kingoftown/led.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T16:16:42Z",
+      "side": 1,
+      "message": "It meant it won\u0027t work. In the next tick, the above line 112 `power_ticks++` is always 0 -\u003e 1. It won\u0027t count to 2 or above.",
+      "parentUuid": "f11d0cdf_b7ae12a7",
+      "range": {
+        "startLine": 121,
+        "startChar": 1,
+        "endLine": 121,
+        "endChar": 17
+      },
+      "revId": "27f9d126c5fe8893c502594b686550d03d016450",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
