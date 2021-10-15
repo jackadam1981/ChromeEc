@@ -22,6 +22,30 @@
       },
       "revId": "ea6ada379605e24d2c76bb5eb4995bb503e78d1f",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96399b2f_bf9affc4",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-15T20:28:04Z",
+      "side": 1,
+      "message": "I\u0027m hoping to balance the resource usage here versus the responsiveness we need.  In most connections, there\u0027s a flurry of mux sets at the beginning of connection, but few to none during the time the connection is up past that. There\u0027s a major exception in docks which frequently send DP IRQs, and then some events such as power up may trigger mux sets on multiple ports at once.  So if we find the single task is too stressed by one of these workloads, then we can explore multiple tasks.\n\nFor issue 2, I\u0027m not totally sure I get the problem.  I think I\u0027d expect: \n- Port 2 queues a mux set\n- mux task calls set on the first C2 mux (BB retimer)\n- this mux doesn\u0027t require an ACK, so mux task moves to next mux set (C2 virtual)\n- this mux requires an ACK, so the mux task waits for its C2 ACK\n- Port 1 queues a mux set\n- Once port 2 ACK comes in, mux task grabs its next work item\n- Mux task begins mux set for port 1\n- Mux task calls set on first mux (C1 BB retimer)\n- mux task calls set on second mux (C1 virtual) \n- mux task waits on port 1 ACK\n\nThe mux sets should be serialized and both performed fully.  I\u0027d like to understand the necessities of the HPD case more here, in case there\u0027s something missing in how HPD and IRQ sequencing needs to happen.  I\u0027m hoping that at the end of this CL stack, we can have really clear denotations in the code for when and how we need to be waiting to ensure sequencing works well.",
+      "parentUuid": "729aa663_31d59827",
+      "range": {
+        "startLine": 341,
+        "startChar": 11,
+        "endLine": 341,
+        "endChar": 27
+      },
+      "revId": "ea6ada379605e24d2c76bb5eb4995bb503e78d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
