@@ -45,6 +45,54 @@
       },
       "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a435f43_5f05cc97",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-15T16:54:05Z",
+      "side": 1,
+      "message": "Ah, thanks for the insight.  I was working off the description in b/186777984 and hadn\u0027t realized we won\u0027t always get an ACK.\n\nSo we should be waiting on an ACK when: \n- mux state changes\n- data role changes\n\nWhat about HPD state changes? Do those generate/require ACKs?",
+      "parentUuid": "ac5c4810_0620ded9",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca522c71_4c4b7cb3",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1287197
+      },
+      "writtenOn": "2021-10-15T16:54:05Z",
+      "side": 1,
+      "message": "Do you mean keeping the series of \"if\" clauses we had previously if no mux task is present ?\n\nI was hoping we could move all the virtual mux boards to the USB task, so behavior is unified between all the boards on ToT.  Are there boards which use the virtual mux and shouldn\u0027t add the USB mux task?",
+      "parentUuid": "ab20feec_210cf5b9",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 14
+      },
+      "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
