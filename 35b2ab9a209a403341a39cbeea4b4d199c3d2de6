@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2c46eb8_b8cc26c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-15T17:12:31Z",
+      "side": 1,
+      "message": "I guess this is almost the same as disabling this logging,but I think this is OK as a temp measure until we figure out the reason for some devices reporting this excessively in low power modes.",
+      "revId": "35b2ab9a209a403341a39cbeea4b4d199c3d2de6",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
