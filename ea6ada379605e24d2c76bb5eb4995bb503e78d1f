@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729aa663_31d59827",
+        "filename": "driver/usb_mux/usb_mux.c",
+        "patchSetId": 14
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-10-15T15:43:00Z",
+      "side": 1,
+      "message": "Hope my following observations are correct !\n\nI think USB MUX task is made one task for all the ports. In this case it won\u0027t work in case of ack_required cases. Any reason it is not made per port basis as similar to pd task per port ?\n\nFor example port 0 case ack_required is set to TRUE.\nack_task[0] \u003d TASK_ID_INVALID, \nnow usb mux task will be in wait state. port 1 and port 2 is not configured until ack comes from AP for port 0. issue: delay in configuring the other ports\n\nSecond problem is: \n  port 2 case ack is set true. port 1 ack invokes the usb mux task. \n   issue: same mux mode won\u0027t be configured to retimer and virtual mux",
+      "range": {
+        "startLine": 341,
+        "startChar": 11,
+        "endLine": 341,
+        "endChar": 27
+      },
+      "revId": "ea6ada379605e24d2c76bb5eb4995bb503e78d1f",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
