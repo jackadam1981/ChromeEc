@@ -517,4 +517,28 @@ config PLATFORM_EC_BATT_FULL_CHIPSET_OFF_INPUT_LIMIT_MV
 	  This condition is checked on chipset shutdown and startup, AC change
 	  and battery SOC change.
 
+config PLATFORM_EC_BATTERY_V1
+	bool "Enable battery API v1"
+	depends on !PLATFORM_EC_BATTERY_V2
+	help
+	  This enables battery API version 1. Unless you have a reason, you
+	  should use v2.
+
+config PLATFORM_EC_BATTERY_V2
+	bool "Enable battery API v2"
+	default y if PLATFORM_EC_BATTERY
+	help
+	  This enables battery API version 2. This version can support multiple
+	  batteries and full size string values in the battery information
+	  including manufacturer, model, chemistry. Unless you have a reason,
+	  you shouldn't use v1.
+
+config PLATFORM_EC_BATTERY_COUNT
+	int "Battery count"
+	default 1
+	help
+	  The number of batteries in the system. It matters only when
+	  PLATFORM_EC_BATTERY_V2 is enabled. Note this is different from
+	  BATTERY_TYPE_COUNT.
+
 endif # PLATFORM_EC_BATTERY
