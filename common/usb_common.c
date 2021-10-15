@@ -993,16 +993,65 @@ void pd_srccaps_dump(int port)
 
 	for (i = 0; i < pd_get_src_cap_cnt(port); ++i) {
 		uint32_t max_ma, max_mv, min_mv;
+		const uint32_t pdo = srccaps[i];
+		const uint32_t pdo_mask = pdo & PDO_TYPE_MASK;
 
-		pd_extract_pdo_power(srccaps[i], &max_ma, &max_mv, &min_mv);
+#ifndef CONFIG_SIMPLE_OUTPUT
+		char* type;
+		bool range_flag = true;
+		pd_extract_pdo_power(pdo, &max_ma, &max_mv, &min_mv);
 
-		if ((srccaps[i] & PDO_TYPE_MASK) == PDO_TYPE_AUGMENTED) {
-			if (IS_ENABLED(CONFIG_USB_PD_REV30))
-				ccprintf("%d: %dmV-%dmV/%dmA\n", i, min_mv,
-					 max_mv, max_ma);
-		} else {
-			ccprintf("%d: %dmV/%dmA\n", i, max_mv, max_ma);
+		switch(pdo_mask) {
+			case PDO_TYPE_FIXED: 
+				type = "Fixed";
+				range_flag = false;
+				break;  
+			case PDO_TYPE_BATTERY: 
+				type = "Battery";
+				break;  
+			case PDO_TYPE_VARIABLE: 
+				type = "Variable";
+				break;  
+			case PDO_TYPE_AUGMENTED:
+				type = "Augmnt";
+				if(!IS_ENABLED(CONFIG_USB_PD_REV30)) {
+					type = "Aug3.0";
+					range_flag = false;
+				}
+				break;
+			default: 
+				type = "?";
+				break;
 		}
+
+		ccprintf("Src %d: (%s) %dmV",i,type,max_mv);
+		if(range_flag) ccprintf("-%dmV",min_mv);
+		ccprintf("/%dm%c",max_ma, pdo_mask == PDO_TYPE_BATTERY ? 'W' : 'A');
+
+		if(pdo & PDO_FIXED_DUAL_ROLE) 		{ ccprintf(" DRP" ); }
+		if(pdo & PDO_FIXED_UNCONSTRAINED) 	{ ccprintf(" UP"  ); }
+		if(pdo & PDO_FIXED_COMM_CAP) 		{ ccprintf(" USB" ); }
+		if(pdo & PDO_FIXED_DATA_SWAP) 		{ ccprintf(" DRD" ); }
+		/* Note from ectool.c: FRS bits are reserved in PD 2.0 spec */
+		if(pdo & PDO_FIXED_FRS_CURR_MASK) 	{ ccprintf(" FRS" ); }
+#else
+		char type;
+		pd_extract_pdo_power(pdo, &max_ma, &max_mv, &min_mv);
+
+		switch(pdo_mask) {
+			case PDO_TYPE_FIXED:    		type = 'F'; break;
+			case PDO_TYPE_BATTERY:  		type = 'B'; break;
+			case PDO_TYPE_VARIABLE: 		type = 'V'; break;
+			case PDO_TYPE_AUGMENTED:		type = 'A'; break;
+			default: 						type = '?'; break;
+		}
+
+		ccprintf("%d: (%c) %dmV/%dmV %dm%c PDO: 0x%x",
+			i,type,max_mv,min_mv,max_ma, 
+			pdo_mask == PDO_TYPE_BATTERY ? 'W' : 'A',
+			pdo);
+#endif
+		ccprintf("\n");
 	}
 }
 
