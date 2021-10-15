@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5acd4d5b_93eef6fe",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-10-15T23:27:03Z",
+      "side": 1,
+      "message": "this is pretty odd for a python script ... since you are just running external commands:\n\n #!/bin/bash\n set -e\n set -x\n BOARDS_THAT_COMPILE_WITH_CLANG\u003d(\n     dartmonkey\n     bloonchipper\n     nucleo-f412zg\n     ...\n )\n for board in \"${BOARDS_THAT...[@]}\"; do\n     make CC\u003darm-none-eabi-clang BOARD\u003d\"${board}\" -j\n done",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "256ed497530447085d921e89e6cdb8b5c5fedd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d92465f6_db7d2563",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-10-15T23:27:03Z",
+      "side": 1,
+      "message": "subprocess.run(cmd, check\u003dTrue)",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 31
+      },
+      "revId": "256ed497530447085d921e89e6cdb8b5c5fedd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
