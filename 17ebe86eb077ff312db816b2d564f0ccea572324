@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fda7e356_af739d23",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-15T05:38:36Z",
+      "side": 1,
+      "message": "nit: 72cs per line.",
+      "range": {
+        "startLine": 15,
+        "startChar": 67,
+        "endLine": 15,
+        "endChar": 74
+      },
+      "revId": "17ebe86eb077ff312db816b2d564f0ccea572324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc7ff445_6daf7820",
+        "filename": "baseboard/cherry/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-15T05:38:36Z",
+      "side": 1,
+      "message": "Will this break the USB connection after resuming from S3?",
+      "range": {
+        "startLine": 264,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 51
+      },
+      "revId": "17ebe86eb077ff312db816b2d564f0ccea572324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
