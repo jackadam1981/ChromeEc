@@ -22,6 +22,29 @@
       },
       "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac5c4810_0620ded9",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1344535
+      },
+      "writtenOn": "2021-10-15T15:14:07Z",
+      "side": 1,
+      "message": "from kernel (AP) to EC ACK comes only if the previous mux mode and current mux mode is not same or previous data role(DFP/UFP) and current data role is not same.\n\nThe usb mux task queue may filled same mux mode several times. in that case the no ACK comes from AP, so usb task waits unnecessarily 100 msec. \n\n*ack_required has to be placed under condition checks or not fill the same mux mode in buffer",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
