@@ -640,6 +640,7 @@
  * This is required on dual-battery systems, and on on hostless bases with a
  * battery.
  */
+#undef CONFIG_BATTERY_V1
 #undef CONFIG_BATTERY_V2
 
 /*
@@ -5838,6 +5839,12 @@
 #define CONFIG_BATTERY_COUNT 1
 #endif
 #endif /* CONFIG_EC_EC_COMM_BATTERY */
+
+/*****************************************************************************/
+/* If battery_v2 isn't used, it's v1. */
+#if defined(CONFIG_BATTERY) && !defined(CONFIG_BATTERY_V2)
+#define CONFIG_BATTERY_V1
+#endif
 
 /*****************************************************************************/
 /* Define derived USB PD Discharge common path */
