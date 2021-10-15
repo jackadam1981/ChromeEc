@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec2d056f_5ecfbfc2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-15T15:18:20Z",
+      "side": 1,
+      "message": "one more nit",
+      "revId": "2a51250f58992b6c0bf6eae7d284e2f9439bded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62822ca2_420286d1",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 8
+      },
+      "lineNbr": 1556,
+      "author": {
+        "id": 1000039
+      },
+      "writtenOn": "2021-10-15T15:18:20Z",
+      "side": 1,
+      "message": "this would be clearer if it checked the return value explicitly:\n\n(ap_ro_check_unsupported(false) !\u003d ARCVE_OK)",
+      "range": {
+        "startLine": 1556,
+        "startChar": 5,
+        "endLine": 1556,
+        "endChar": 35
+      },
+      "revId": "2a51250f58992b6c0bf6eae7d284e2f9439bded0",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
