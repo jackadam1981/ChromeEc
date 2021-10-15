@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "803301ef_0646e965",
+        "filename": "util/build_with_clang.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1330845
+      },
+      "writtenOn": "2021-10-15T23:28:08Z",
+      "side": 1,
+      "message": "To add to this, it\u0027s OK if it\u0027s Python if it\u0027s in firmware_builder.py ... and I\u0027d most like to see that, but putting just this is a python script is weird",
+      "parentUuid": "5acd4d5b_93eef6fe",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "256ed497530447085d921e89e6cdb8b5c5fedd86",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d92465f6_db7d2563",
         "filename": "util/build_with_clang.py",
         "patchSetId": 5
