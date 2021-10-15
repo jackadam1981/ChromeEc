@@ -41,6 +41,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2225f389_7a041f9b",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-15T01:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acd26344_338a80b1",
+      "range": {
+        "startLine": 318,
+        "startChar": 0,
+        "endLine": 318,
+        "endChar": 14
+      },
+      "revId": "6702793d17d2c6244a4ab5684f04717604943582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e29954bd_755e773b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-15T00:53:09Z",
       "side": 1,
       "message": "this should be checked against AP_RO_NOT_RUN",
+      "range": {
+        "startLine": 491,
+        "startChar": 5,
+        "endLine": 491,
+        "endChar": 16
+      },
+      "revId": "6702793d17d2c6244a4ab5684f04717604943582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7d8c2ad_fc7d26e4",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-15T01:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e29954bd_755e773b",
       "range": {
         "startLine": 491,
         "startChar": 5,
@@ -87,6 +135,30 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "944ab32c_5b903fd7",
+        "filename": "common/ap_ro_integrity_check.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 493,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-15T01:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc2349d6_a7f87494",
+      "range": {
+        "startLine": 493,
+        "startChar": 1,
+        "endLine": 493,
+        "endChar": 29
+      },
+      "revId": "6702793d17d2c6244a4ab5684f04717604943582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5694c995_d35f0282",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-15T00:53:09Z",
       "side": 1,
       "message": "why does it have to be parsed and printed twice? I mean if we already printed pass or fail above it is clear that combo has been detected.\n\nIs this not enough to just print one of\n\n- not supported not run\n- not supported triggered\n- not run\n- passed\n- failed",
+      "range": {
+        "startLine": 2309,
+        "startChar": 1,
+        "endLine": 2346,
+        "endChar": 2
+      },
+      "revId": "6702793d17d2c6244a4ab5684f04717604943582",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96708c46_5bbed5dd",
+        "filename": "extra/usb_updater/gsctool.c",
+        "patchSetId": 7
+      },
+      "lineNbr": 2346,
+      "author": {
+        "id": 1136059
+      },
+      "writtenOn": "2021-10-15T01:39:28Z",
+      "side": 1,
+      "message": "Is this ok?",
+      "parentUuid": "5694c995_d35f0282",
       "range": {
         "startLine": 2309,
         "startChar": 1,
