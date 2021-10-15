@@ -35,6 +35,24 @@
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40e10038_e29aef4b",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 933,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-15T07:53:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e35ea283_482b5351",
+      "revId": "4fb374b56fcbd233a6cfd9b7cc58c59c3ee031f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0c74b941_33c671cf",
@@ -48,6 +66,24 @@
       "writtenOn": "2021-10-14T21:45:51Z",
       "side": 1,
       "message": "Nit: We usually put each variable declaration on its own line. I\u0027m not sure if Zephyr style has an opinion about this.",
+      "revId": "4fb374b56fcbd233a6cfd9b7cc58c59c3ee031f1",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98fd4061_bd5a4b54",
+        "filename": "zephyr/test/drivers/src/tcpci.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1511343
+      },
+      "writtenOn": "2021-10-15T07:53:09Z",
+      "side": 1,
+      "message": "I saw some instances of multiple variables in one line in Zephyr and didn\u0027t found anything about that in coding guidelines (https://docs.zephyrproject.org/latest/contribute/coding_guidelines/index.html). If required, I will create separate CL with one variable per line after this patchset. Most of CLs in this patchset have CR+2 and I would prefer to merge them first.",
+      "parentUuid": "0c74b941_33c671cf",
       "revId": "4fb374b56fcbd233a6cfd9b7cc58c59c3ee031f1",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
