@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0692dd4a_b6f8a09a",
+        "filename": "baseboard/cherry/baseboard.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1182824
+      },
+      "writtenOn": "2021-10-15T05:41:04Z",
+      "side": 1,
+      "message": "It\u0027s better to renaming this function since it\u0027s now related to XHCI hub.",
+      "range": {
+        "startLine": 249,
+        "startChar": 20,
+        "endLine": 249,
+        "endChar": 36
+      },
+      "revId": "17ebe86eb077ff312db816b2d564f0ccea572324",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "cc7ff445_6daf7820",
         "filename": "baseboard/cherry/baseboard.c",
         "patchSetId": 5
