@@ -93,6 +93,30 @@
       },
       "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5645b323_2a79cb28",
+        "filename": "driver/usb_mux/virtual.c",
+        "patchSetId": 10
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1181774
+      },
+      "writtenOn": "2021-10-15T19:00:39Z",
+      "side": 1,
+      "message": "\u003e What about HPD state changes? Do those generate/require ACKs?\n\nHPD is part of the USB_PD_MUX_INFO command response, so the AP would send an ACK if something changes there (not sure about the \"require\" part though...)",
+      "parentUuid": "9a435f43_5f05cc97",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 22
+      },
+      "revId": "9e3ddeb639a5644d1eed184a8ff1cdcff8bb5e75",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
