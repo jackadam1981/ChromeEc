@@ -22,6 +22,30 @@
       },
       "revId": "a176eb8df2ab281270676c37dbe6968a350f1841",
       "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9795f30e_e5cad719",
+        "filename": "chip/npcx/watchdog.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1132339
+      },
+      "writtenOn": "2021-10-15T02:41:17Z",
+      "side": 1,
+      "message": "If I understand correctly (from the comments of this two CLs: CL:20091 and CL:1060937), the watchdog expiration rule seems to be:\n1. 1100 ms \u003c expiration time \u003c 1600 ms : only print the panic trace but reset EC. (keep EC still work normally)\n2. expiration time \u003e 1600 ms: print the panic trace (at 1100 ms) and reset EC (at 1600 ms.)\nIf my understanding is not correct or the rule is not practical now, we can change it.\nOne possible solution:\n1. change the AUX (warning timer) from 1100 to 1600. If the AUX timer expires, print the trace and \"trigger a reset\".\n2 Change the WATCHDOG_PERIOD from 1600 to 1600+N. N is the time requires to print the trace.\n\nAny comment is appreciated.",
+      "parentUuid": "3b252f8b_c1ceac7b",
+      "range": {
+        "startLine": 118,
+        "startChar": 6,
+        "endLine": 118,
+        "endChar": 28
+      },
+      "revId": "a176eb8df2ab281270676c37dbe6968a350f1841",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
     }
   ]
 }
