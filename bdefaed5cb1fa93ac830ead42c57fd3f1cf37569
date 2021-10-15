@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3608b8d_efd17869",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-15T19:36:49Z",
+      "side": 1,
+      "message": "nit: Empty line before this would be good.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 15
+      },
+      "revId": "bdefaed5cb1fa93ac830ead42c57fd3f1cf37569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b75f8e3_c8873cdd",
+        "filename": "zephyr/projects/brya/brya/CMakeLists.txt",
+        "patchSetId": 11
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-15T19:36:49Z",
+      "side": 1,
+      "message": "Does any file need to be included here?",
+      "revId": "bdefaed5cb1fa93ac830ead42c57fd3f1cf37569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ac3f4ed_019db6f5",
+        "filename": "zephyr/projects/brya/brya/prj.conf",
+        "patchSetId": 11
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-15T19:36:49Z",
+      "side": 1,
+      "message": "not: Remove extra line.",
+      "revId": "bdefaed5cb1fa93ac830ead42c57fd3f1cf37569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bcaf923_563d7adc",
+        "filename": "zephyr/projects/brya/brya/pwm_leds.dts",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1129265
+      },
+      "writtenOn": "2021-10-15T19:36:49Z",
+      "side": 1,
+      "message": "nit: Remove extra lines.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "bdefaed5cb1fa93ac830ead42c57fd3f1cf37569",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
