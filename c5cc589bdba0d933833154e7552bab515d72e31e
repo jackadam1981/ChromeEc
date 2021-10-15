@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd5b3bd_00dd288f",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "What happen if the dt definition has less or more elements than the EC_LED_COLOR_COUNT? Could you add a BUILD_ASSERT to ensure the number of elements matches?",
+      "range": {
+        "startLine": 52,
+        "startChar": 1,
+        "endLine": 52,
+        "endChar": 71
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6993705_90f7e94d",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "Separate this brightness change and the \"cros-ec,brightness-range.yaml\" to a standalone CL.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 31
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e91ebf0f_34106599",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "Please add a prefix to the name and the below types. The name is too general and easy to conflict with other uses.",
+      "range": {
+        "startLine": 77,
+        "startChar": 5,
+        "endLine": 77,
+        "endChar": 17
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bff65f6_72feb264",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "Add the unit, like BATT_BELOW_10_PCT",
+      "range": {
+        "startLine": 81,
+        "startChar": 12,
+        "endLine": 81,
+        "endChar": 14
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6793731c_d580e148",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "Can reuse the POWER_S* defined in `include/power.h`?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 2
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "423e857b_6f9a9255",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "Add a comment why pick 4.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 0
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "343f18a1_e7d6b129",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "The multiple-line comment looks like:\n\n /*\n  * LINE1\n  * LINE2\n  */",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 3
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a8ef56b_870b651d",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "Only apply to the first period prop? How about the second color has a missing period prop.",
+      "range": {
+        "startLine": 105,
+        "startChar": 13,
+        "endLine": 105,
+        "endChar": 73
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "418d4f41_12cf98f1",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "Can it be described using a MACRO? How about the nodes, like 3 and 4, don\u0027t exist?",
+      "range": {
+        "startLine": 139,
+        "startChar": 16,
+        "endLine": 142,
+        "endChar": 44
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d86262c_a47b664d",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "Space. The below lines have the similar problem.",
+      "range": {
+        "startLine": 176,
+        "startChar": 34,
+        "endLine": 176,
+        "endChar": 35
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16aae2c7_f4d0b79a",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "You may print some error if an unsupported enum is used.",
+      "range": {
+        "startLine": 193,
+        "startChar": 8,
+        "endLine": 193,
+        "endChar": 9
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65d55aed_6da4d2d9",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "return i here; to differentiate the matched and non-matched cases.",
+      "range": {
+        "startLine": 229,
+        "startChar": 2,
+        "endLine": 229,
+        "endChar": 8
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c4f5dc3_23a53784",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "If the above loop finishes but no matched node has been found, should return some error.",
+      "range": {
+        "startLine": 232,
+        "startChar": 1,
+        "endLine": 232,
+        "endChar": 9
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f29544a7_b4bf030b",
+        "filename": "zephyr/projects/trogdor/lazor/src/led.c",
+        "patchSetId": 13
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "Separate this change and the \"cros-ec,led-control.yaml\" file to a standalone CL.",
+      "range": {
+        "startLine": 292,
+        "startChar": 17,
+        "endLine": 292,
+        "endChar": 62
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00c2a9a5_6a8a89b6",
+        "filename": "zephyr/projects/trogdor/lazor/zmake.yaml",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1000407
+      },
+      "writtenOn": "2021-10-15T17:00:41Z",
+      "side": 1,
+      "message": "Separate this change and `led.dts` to a standalone CL. We usually separate the board (lazor) specific change from the general framework change.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 11
+      },
+      "revId": "c5cc589bdba0d933833154e7552bab515d72e31e",
+      "serverId": "3ce6091f-6c88-37e8-8c75-72f92ae8dfba"
+    }
+  ]
+}
