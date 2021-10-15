@@ -5840,6 +5840,12 @@
 #endif /* CONFIG_EC_EC_COMM_BATTERY */
 
 /*****************************************************************************/
+/* If battery_v2 isn't used, it's v1. */
+#if defined(CONFIG_BATTERY) && !defined(CONFIG_BATTERY_V2)
+#define CONFIG_BATTERY_V1
+#endif
+
+/*****************************************************************************/
 /* Define derived USB PD Discharge common path */
 #if defined(CONFIG_USB_PD_DISCHARGE_GPIO) || \
 	defined(CONFIG_USB_PD_DISCHARGE_TCPC) || \
