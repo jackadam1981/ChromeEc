@@ -78,8 +78,8 @@ GPIO(EN_NFC_BUZZER,                  PIN(0, 5), GPIO_OUT_LOW)
 /* Wireless Charger */
 /* TODO(b/191418683): Implement Qi Driver */
 GPIO(EC_QI_PWR,                      PIN(D, 2), GPIO_OUT_HIGH)
-GPIO(EC_I2C_QI_RESET_L,              PIN(9, 3), GPIO_OUT_HIGH)
-GPIO(EC_I2C_QI_INT_ODL,              PIN(9, 6), GPIO_INPUT)
+GPIO(EC_QI_RESET_L,              PIN(9, 3), GPIO_OUT_HIGH)
+GPIO(EC_QI_INT_ODL,              PIN(9, 6), GPIO_INPUT)
 
 /* HDMI CEC */
 /* TODO(b/197474873): Enable HDMI CEC */

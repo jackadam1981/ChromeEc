@@ -1319,6 +1319,7 @@
 
 /* Wireless chargers */
 #undef CONFIG_WIRELESS_CHARGER_P9221_R7
+#undef CONFIG_CPS8100
 
 /*
  * Workaround npcx9 A1 chip's bug for download_from_flash API in th booter.
